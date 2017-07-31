@@ -11,3 +11,16 @@ Therefore, I am writing VSG to help with future code reviews.
 ## Language
 
 I have choosen to implement the program in Python so I can further my learning of the language.
+
+## Design Strategy
+
+### Architecture
+
+The program will be designed around rules.
+The rules will be atomic so they can be added or removed easily.
+
+### Configuration
+
+My plan is to use a JSON file to configure the program.
+You will be able to turn off rules and configure rules through the file.
+
