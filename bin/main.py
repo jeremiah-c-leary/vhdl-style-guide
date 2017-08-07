@@ -5,7 +5,7 @@ import sys
 
 # Rules
 sys.path.append('..\modules')
-import rule_whitespace
+import rule_list
 
 def parse_command_line_arguments():
     '''Parses the command line arguments and returns them.'''
@@ -39,10 +39,11 @@ def main():
     '''Main routine of the VHDL Style Guide (VSG) program.'''
 
     commandLineArguments = parse_command_line_arguments()
-    print commandLineArguments
     vhdlList = open_vhdl_file(commandLineArguments)
+    oRules = rule_list.list()
+    oRules.check_rules(vhdlList)
+    oRules.report_violations(commandLineArguments.filename)
 
-    print vhdlList
 
 if __name__ == '__main__':
     main()

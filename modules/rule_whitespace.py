@@ -14,13 +14,14 @@ class rule_001(whitespace_rule):
     def __init__(self):
         whitespace_rule.__init__(self)
         self.identifier = '001'
+        self.description = 'Remove trailing whitespace.'
 
     def analyze(self, lines):
         lFailureLines = []
         for iLineNumber, sLine in enumerate(lines):
             if sLine.endswith(' '):
-                lFailureLines.append(iLineNumber)
-        return {self.name: {self.identifier: lFailureLines}}
+                lFailureLines.append(iLineNumber + 1)
+        self.violations = lFailureLines
 
 
 class rule_002(whitespace_rule):
@@ -29,11 +30,12 @@ class rule_002(whitespace_rule):
     def __init__(self):
         whitespace_rule.__init__(self)
         self.identifier = '002'
+        self.description = 'Replace tabs with spaces.'
 
     def analyze(self, lines):
         lFailureLines = []
         for iLineNumber, sLine in enumerate(lines):
             if '\t' in sLine:
-                lFailureLines.append(iLineNumber)
-        return {self.name: {self.identifier: lFailureLines}}
+                lFailureLines.append(iLineNumber + 1)
+        self.violations = lFailureLines
 
