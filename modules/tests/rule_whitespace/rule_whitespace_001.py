@@ -47,6 +47,46 @@ class testRuleWhitespaceMethods(unittest.TestCase):
         oRule.analyze(lLines)
         self.assertEqual(oRule.violations, dExpected)
 
+    def test_rule_003_exists(self):
+        oRule = rule_whitespace.rule_003()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'whitespace')
+        self.assertEqual(oRule.identifier, '003')
+
+    def test_rule_003(self):
+        oRule = rule_whitespace.rule_003()
+
+        dExpected = [2,4,6]
+        lLines = []
+        lLines.append('  This is a test of tabs;')
+        lLines.append('  This is a test of tabs ;')
+        lLines.append('  This is a test of tabs;')
+        lLines.append('  This is a test of tabs    ;')
+        lLines.append('  This is a test; of tabs')
+        lLines.append('  This is a test ; of tabs')
+        oRule.analyze(lLines)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_004_exists(self):
+        oRule = rule_whitespace.rule_004()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'whitespace')
+        self.assertEqual(oRule.identifier, '004')
+
+    def test_rule_004(self):
+        oRule = rule_whitespace.rule_004()
+
+        dExpected = [2,4,6]
+        lLines = []
+        lLines.append('  This is a test of tabs,')
+        lLines.append('  This is a test of tabs ,')
+        lLines.append('  This is a test of tabs,')
+        lLines.append('  This is a test of tabs    ,')
+        lLines.append('  This is a test, of tabs')
+        lLines.append('  This is a test , of tabs')
+        oRule.analyze(lLines)
+        self.assertEqual(oRule.violations, dExpected)
+
 
 if __name__ == '__main__':
     unittest.main()

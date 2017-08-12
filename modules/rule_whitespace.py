@@ -39,3 +39,35 @@ class rule_002(whitespace_rule):
                 lFailureLines.append(iLineNumber + 1)
         self.violations = lFailureLines
 
+
+class rule_003(whitespace_rule):
+    '''Whitespace rule 003 checks for spaces before semicolons'''
+
+    def __init__(self):
+        whitespace_rule.__init__(self)
+        self.identifier = '003'
+        self.description = 'Remove spaces before semicolons.'
+
+    def analyze(self, lines):
+        lFailureLines = []
+        for iLineNumber, sLine in enumerate(lines):
+            if ' ;' in sLine:
+                lFailureLines.append(iLineNumber + 1)
+        self.violations = lFailureLines
+
+
+class rule_004(whitespace_rule):
+    '''Whitespace rule 004 checks for spaces before commas.'''
+
+    def __init__(self):
+        whitespace_rule.__init__(self)
+        self.identifier = '004'
+        self.description = 'Remove spaces before commas.'
+
+    def analyze(self, lines):
+        lFailureLines = []
+        for iLineNumber, sLine in enumerate(lines):
+            if ' ,' in sLine:
+                lFailureLines.append(iLineNumber + 1)
+        self.violations = lFailureLines
+
