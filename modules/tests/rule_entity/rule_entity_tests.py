@@ -156,6 +156,94 @@ class testRuleEntityMethods(unittest.TestCase):
         oRule.analyze(lLines)
         self.assertEqual(oRule.violations, dExpected)
 
+    def test_rule_008_exists(self):
+        oRule = rule_entity.rule_008()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'entity')
+        self.assertEqual(oRule.identifier, '008')
+
+    def test_rule_008(self):
+        oRule = rule_entity.rule_008()
+
+        dExpected = [12]
+        lLines = []
+        lLines.append('  This is a test of ending entity')
+        lLines.append('   ')
+        lLines.append('entity  blah   is  ')
+        lLines.append('port (')
+        lLines.append('   ')
+        lLines.append('   ')
+        lLines.append('     Entity blah is   ')
+        lLines.append('    port (')
+        lLines.append ('')
+        lLines.append('Entity   blah   IS')
+        lLines.append ('')
+        lLines.append('  PORT (  ')
+        lLines.append ('')
+        lLines.append('Entity   blah   IS')
+        lLines.append('    port (  ')
+        oRule.analyze(lLines)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_009_exists(self):
+        oRule = rule_entity.rule_009()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'entity')
+        self.assertEqual(oRule.identifier, '009')
+
+    def test_rule_009(self):
+        oRule = rule_entity.rule_009()
+
+        dExpected = [4, 12]
+        lLines = []
+        lLines.append('  This is a test of ending entity')
+        lLines.append('   ')
+        lLines.append('entity  blah   is  ')
+        lLines.append('port    (')
+        lLines.append('   ')
+        lLines.append('   ')
+        lLines.append('     Entity blah is   ')
+        lLines.append('    port (')
+        lLines.append ('')
+        lLines.append('Entity   blah   IS')
+        lLines.append ('')
+        lLines.append('  PORT (  ')
+        lLines.append ('')
+        lLines.append('Entity   blah   IS')
+        lLines.append('    port (  ')
+        oRule.analyze(lLines)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_010_exists(self):
+        oRule = rule_entity.rule_010()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'entity')
+        self.assertEqual(oRule.identifier, '010')
+
+    def test_rule_010(self):
+        oRule = rule_entity.rule_010()
+
+        dExpected = [4]
+        lLines = []
+        lLines.append('  This is a test of ending entity')
+        lLines.append('   ')
+        lLines.append('entity  blah   is  ')
+        lLines.append('port    (')
+        lLines.append('   ')
+        lLines.append('   ')
+        lLines.append('     Entity blah is   ')
+        lLines.append('    port (')
+        lLines.append ('')
+        lLines.append('Entity   blah   IS')
+        lLines.append ('')
+        lLines.append('  PORT (  ')
+        lLines.append ('')
+        lLines.append('Entity   blah   IS')
+        lLines.append('    port (  ')
+        oRule.analyze(lLines)
+        self.assertEqual(oRule.violations, dExpected)
+
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -65,7 +65,7 @@ class rule_004(entity_rule):
     def __init__(self):
         entity_rule.__init__(self)
         self.identifier = '004'
-        self.description = 'Change entity keyword to lowercase.'
+        self.description = 'Change "entity" keyword to lowercase.'
 
     def analyze(self, lines):
         lFailureLines = []
@@ -98,7 +98,7 @@ class rule_006(entity_rule):
     def __init__(self):
         entity_rule.__init__(self)
         self.identifier = '006'
-        self.description = 'Change entity keyword to lowercase.'
+        self.description = 'Change "is" keyword to lowercase.'
 
     def analyze(self, lines):
         lFailureLines = []
@@ -125,35 +125,52 @@ class rule_007(entity_rule):
         self.violations = lFailureLines
 
 
-#class rule_007(entity_rule):
-#    '''Entity rule 007 checks for a blank line above the entity keyword.'''
-#
-#    def __init__(self):
-#        entity_rule.__init__(self)
-#        self.identifier = '007'
-#        self.description = 'Remove blank line above use keyword.'
-#
-#    def analyze(self, lines):
-#        lFailureLines = []
-#        for iLineNumber, sLine in enumerate(lines):
-#            if re.match('^\s*use', sLine.lower()):
-#                if re.match('^\s*$', lines[iLineNumber - 1]):
-#                    lFailureLines.append(iLineNumber + 1)
-#        self.violations = lFailureLines
-#
-#
-#class rule_008(entity_rule):
-#    '''Entity rule 008 checks indentation of the use keyword.'''
-#
-#    def __init__(self):
-#        entity_rule.__init__(self)
-#        self.identifier = '008'
-#        self.description = 'Change indent of use keyword to 2 spaces.'
-#
-#    def analyze(self, lines):
-#        lFailureLines = []
-#        for iLineNumber, sLine in enumerate(lines):
-#            if re.match('^\s*use', sLine.lower()):
-#                if not re.match('^\s\suse', sLine.lower()):
-#                    lFailureLines.append(iLineNumber + 1)
-#        self.violations = lFailureLines
+class rule_008(entity_rule):
+    '''Entity rule 008 checks for a "entity" in the line above the port keyword.'''
+
+    def __init__(self):
+        entity_rule.__init__(self)
+        self.identifier = '008'
+        self.description = 'Remove lines between port and entity keywords.'
+
+    def analyze(self, lines):
+        lFailureLines = []
+        for iLineNumber, sLine in enumerate(lines):
+            if re.match('^\s*port', sLine.lower()):
+                if not re.match('^\s*entity', lines[iLineNumber - 1].lower()):
+                    lFailureLines.append(iLineNumber + 1)
+        self.violations = lFailureLines
+
+
+class rule_009(entity_rule):
+    '''Entity rule 009 checks indentation of the "port" keyword.'''
+
+    def __init__(self):
+        entity_rule.__init__(self)
+        self.identifier = '009'
+        self.description = 'Change indent of "port" keyword to 4 spaces.'
+
+    def analyze(self, lines):
+        lFailureLines = []
+        for iLineNumber, sLine in enumerate(lines):
+            if re.match('^\s*port', sLine.lower()):
+                if not re.match('^\s\s\s\sport', sLine.lower()):
+                    lFailureLines.append(iLineNumber + 1)
+        self.violations = lFailureLines
+
+
+class rule_010(entity_rule):
+    '''Entity rule 010 checks spacing between "port" and the open parenthesis.'''
+
+    def __init__(self):
+        entity_rule.__init__(self)
+        self.identifier = '010'
+        self.description = 'Change spacing between "port" and "(" to one space.'
+
+    def analyze(self, lines):
+        lFailureLines = []
+        for iLineNumber, sLine in enumerate(lines):
+            if re.match('^\s*port', sLine.lower()):
+                if not re.match('^\s*port \(', sLine.lower()):
+                    lFailureLines.append(iLineNumber + 1)
+        self.violations = lFailureLines
