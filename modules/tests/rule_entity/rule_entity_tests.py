@@ -194,7 +194,7 @@ class testRuleEntityMethods(unittest.TestCase):
     def test_rule_009(self):
         oRule = rule_entity.rule_009()
 
-        dExpected = [4, 12]
+        dExpected = [4, 15]
         lLines = []
         lLines.append('  This is a test of ending entity')
         lLines.append('   ')
@@ -203,7 +203,7 @@ class testRuleEntityMethods(unittest.TestCase):
         lLines.append('   ')
         lLines.append('   ')
         lLines.append('     Entity blah is   ')
-        lLines.append('    port (')
+        lLines.append('  port (')
         lLines.append ('')
         lLines.append('Entity   blah   IS')
         lLines.append ('')
@@ -243,6 +243,172 @@ class testRuleEntityMethods(unittest.TestCase):
         oRule.analyze(lLines)
         self.assertEqual(oRule.violations, dExpected)
 
+    def test_rule_011_exists(self):
+        oRule = rule_entity.rule_011()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'entity')
+        self.assertEqual(oRule.identifier, '011')
+
+    def test_rule_011(self):
+        oRule = rule_entity.rule_011()
+
+        dExpected = [6,7,11]
+        lLines = []
+        lLines.append('  This is a test of ending entity')
+        lLines.append('   ')
+        lLines.append('entity  blah   is  ')
+        lLines.append('port    (')
+        lLines.append('    port_1 : in  std_logic;')
+        lLines.append('     port_2 : out std_logic;')
+        lLines.append('  port_3 :  in    std_logic;')
+        lLines.append('')
+        lLines.append('    port_4   :   out   std_logic;')
+        lLines.append('    port_5   : inout   std_logic;')
+        lLines.append('   port_6    :   in std_logic;')
+        lLines.append('end blah;')
+        lLines.append('   ')
+        oRule.analyze(lLines)
+        self.assertEqual(oRule.violations, dExpected)
+
+
+    def test_rule_012_exists(self):
+        oRule = rule_entity.rule_012()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'entity')
+        self.assertEqual(oRule.identifier, '012')
+
+    def test_rule_012(self):
+        oRule = rule_entity.rule_012()
+
+        dExpected = [7,11]
+        lLines = []
+        lLines.append('  This is a test of ending entity')
+        lLines.append('   ')
+        lLines.append('entity  blah   is  ')
+        lLines.append('port    (')
+        lLines.append('    port_1 : in  std_logic;')
+        lLines.append('     port_2 : out std_logic;')
+        lLines.append('  port_3 :  in    std_logic;')
+        lLines.append('')
+        lLines.append('    port_4   :   out   std_logic;')
+        lLines.append('    port_5   : inout   std_logic;')
+        lLines.append('   port_6    :   in std_logic;')
+        lLines.append('end blah;')
+        lLines.append('   ')
+        oRule.analyze(lLines)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_013_exists(self):
+        oRule = rule_entity.rule_013()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'entity')
+        self.assertEqual(oRule.identifier, '013')
+
+    def test_rule_013(self):
+        oRule = rule_entity.rule_013()
+
+        dExpected = [6]
+        lLines = []
+        lLines.append('  This is a test of ending entity')
+        lLines.append('   ')
+        lLines.append('entity  blah   is  ')
+        lLines.append('port    (')
+        lLines.append('    port_1 : in  std_logic;')
+        lLines.append('     port_2 : out std_logic;')
+        lLines.append('  port_3 :  in    std_logic;')
+        lLines.append('')
+        lLines.append('    port_4   :   out   std_logic;')
+        lLines.append('    port_5   : inout   std_logic;')
+        lLines.append('   port_6    :   in std_logic;')
+        lLines.append('end blah;')
+        lLines.append('   ')
+        oRule.analyze(lLines)
+        self.assertEqual(oRule.violations, dExpected)
+
+
+    def test_rule_014_exists(self):
+        oRule = rule_entity.rule_014()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'entity')
+        self.assertEqual(oRule.identifier, '014')
+
+    def test_rule_014(self):
+        oRule = rule_entity.rule_014()
+
+        dExpected = [5,11]
+        lLines = []
+        lLines.append('  This is a test of ending entity')
+        lLines.append('   ')
+        lLines.append('entity  blah   is  ')
+        lLines.append('port    (')
+        lLines.append('    port_1 : in  std_logic;')
+        lLines.append('     port_2 : out std_logic;')
+        lLines.append('  port_3 :  in    std_logic;')
+        lLines.append('')
+        lLines.append('    port_4   :   out   std_logic;')
+        lLines.append('    port_5   : inout   std_logic;')
+        lLines.append('   port_6    :   in std_logic;')
+        lLines.append('   port_7    : inout std_logic;')
+        lLines.append('end blah;')
+        lLines.append('   ')
+        oRule.analyze(lLines)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_015_exists(self):
+        oRule = rule_entity.rule_015()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'entity')
+        self.assertEqual(oRule.identifier, '015')
+
+    def test_rule_015(self):
+        oRule = rule_entity.rule_015()
+
+        dExpected = [9]
+        lLines = []
+        lLines.append('  This is a test of ending entity')
+        lLines.append('   ')
+        lLines.append('entity  blah   is  ')
+        lLines.append('port    (')
+        lLines.append('    port_1 : in  std_logic;')
+        lLines.append('     port_2 : out std_logic;')
+        lLines.append('  port_3 :  in    std_logic;')
+        lLines.append('')
+        lLines.append('    port_4   :   out   std_logic;')
+        lLines.append('    port_5   : inout   std_logic;')
+        lLines.append('   port_6    :   in std_logic;')
+        lLines.append('   port_7    : inout std_logic;')
+        lLines.append('end blah;')
+        lLines.append('   ')
+        oRule.analyze(lLines)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_016_exists(self):
+        oRule = rule_entity.rule_016()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'entity')
+        self.assertEqual(oRule.identifier, '016')
+
+    def test_rule_016(self):
+        oRule = rule_entity.rule_016()
+
+        dExpected = [10]
+        lLines = []
+        lLines.append('  This is a test of ending entity')
+        lLines.append('   ')
+        lLines.append('entity  blah   is  ')
+        lLines.append('port    (')
+        lLines.append('    port_1 : in  std_logic;')
+        lLines.append('     port_2 : out std_logic;')
+        lLines.append('  port_3 :  in    std_logic;')
+        lLines.append('')
+        lLines.append('    port_4   :   out   std_logic;')
+        lLines.append('    port_5   : inout   std_logic;')
+        lLines.append('   port_6    :   in std_logic;')
+        lLines.append('   port_7    : inout std_logic;')
+        lLines.append('end blah;')
+        lLines.append('   ')
+        oRule.analyze(lLines)
+        self.assertEqual(oRule.violations, dExpected)
 
 
 if __name__ == '__main__':
