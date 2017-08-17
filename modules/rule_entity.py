@@ -126,18 +126,18 @@ class rule_007(entity_rule):
 
 
 class rule_008(entity_rule):
-    '''Entity rule 008 checks for a "entity" in the line above the port keyword.'''
+    '''Entity rule 008 checks for a blank line above the port keyword.'''
 
     def __init__(self):
         entity_rule.__init__(self)
         self.identifier = '008'
-        self.description = 'Remove lines between port and entity keywords.'
+        self.description = 'Remove blank lines above "port" keyword.'
 
     def analyze(self, lines):
         lFailureLines = []
         for iLineNumber, sLine in enumerate(lines):
             if re.match('^\s*port', sLine.lower()):
-                if not re.match('^\s*entity', lines[iLineNumber - 1].lower()):
+                if re.match('^\s*$', lines[iLineNumber - 1].lower()):
                     lFailureLines.append(iLineNumber + 1)
         self.violations = lFailureLines
 
@@ -342,3 +342,171 @@ class rule_016(entity_rule):
                 fEntityFound = True
         self.violations = lFailureLines
 
+
+class rule_017(entity_rule):
+    '''Entity rule 017 checks the entity name is uppercase in the entity declaration line.'''
+
+    def __init__(self):
+        entity_rule.__init__(self)
+        self.identifier = '017'
+        self.description = 'Change entity name to all uppercase.'
+
+    def analyze(self, lines):
+        lFailureLines = []
+        for iLineNumber, sLine in enumerate(lines):
+            if re.match('^\s*entity', sLine.lower()):
+                lLine = sLine.split()
+                if lLine[1] != lLine[1].upper():
+                    lFailureLines.append(iLineNumber + 1)
+        self.violations = lFailureLines
+
+
+class rule_018(entity_rule):
+    '''Entity rule 018 checks for spaces before the "end" keyword.'''
+
+    def __init__(self):
+        entity_rule.__init__(self)
+        self.identifier = '018'
+        self.description = 'Change the number of spaces after the "inout" keyword to one space.'
+
+    def analyze(self, lines):
+        lFailureLines = []
+        fEntityFound = False
+        fPortMapFound = False
+        for iLineNumber, sLine in enumerate(lines):
+            if fEntityFound:
+                if re.match('^\s*end', sLine.lower()):
+                    if not re.match('^end', sLine.lower()):
+                        lFailureLines.append(iLineNumber + 1)
+            if re.match('\s*entity', sLine.lower()):
+                fEntityFound = True
+        self.violations = lFailureLines
+
+
+class rule_019(entity_rule):
+    '''Entity rule 019 checks the "end" keyword is lowercase.'''
+
+    def __init__(self):
+        entity_rule.__init__(self)
+        self.identifier = '019'
+        self.description = 'Change "end" keyword to lowercase.'
+
+    def analyze(self, lines):
+        lFailureLines = []
+        fEntityFound = False
+        fPortMapFound = False
+        for iLineNumber, sLine in enumerate(lines):
+            if fEntityFound:
+                if re.match('^\s*end', sLine.lower()):
+                    if not re.match('^\s*end', sLine):
+                        lFailureLines.append(iLineNumber + 1)
+            if re.match('\s*entity', sLine.lower()):
+                fEntityFound = True
+        self.violations = lFailureLines
+
+
+class rule_020(entity_rule):
+    '''Entity rule 020 checks for a single space after the "end" keyword'''
+
+    def __init__(self):
+        entity_rule.__init__(self)
+        self.identifier = '020'
+        self.description = 'Reduce spaces after "end" keyword to one.'
+
+    def analyze(self, lines):
+        lFailureLines = []
+        fEntityFound = False
+        fPortMapFound = False
+        for iLineNumber, sLine in enumerate(lines):
+            if fEntityFound:
+                if re.match('^\s*end', sLine.lower()):
+                    if re.match('^\s*end\s\s+', sLine.lower()):
+                        lFailureLines.append(iLineNumber + 1)
+            if re.match('\s*entity', sLine.lower()):
+                fEntityFound = True
+        self.violations = lFailureLines
+
+
+class rule_021(entity_rule):
+    '''Entity rule 021 checks entity name is uppercase in "end" keyword line.'''
+
+    def __init__(self):
+        entity_rule.__init__(self)
+        self.identifier = '021'
+        self.description = 'Uppercase entity name.'
+
+    def analyze(self, lines):
+        lFailureLines = []
+        fEntityFound = False
+        fPortMapFound = False
+        for iLineNumber, sLine in enumerate(lines):
+            if fEntityFound:
+                if re.match('^\s*end', sLine.lower()):
+                    lLine = sLine.split()
+                    if lLine[1] != lLine[1].upper():
+                        lFailureLines.append(iLineNumber + 1)
+            if re.match('\s*entity', sLine.lower()):
+                fEntityFound = True
+        self.violations = lFailureLines
+
+
+class rule_022(entity_rule):
+    '''Entity rule 022 checks port names are uppercase.'''
+
+    def __init__(self):
+        entity_rule.__init__(self)
+        self.identifier = '022'
+        self.description = 'Uppercase port name.'
+
+    def analyze(self, lines):
+        lFailureLines = []
+        fEntityFound = False
+        fPortMapFound = False
+        for iLineNumber, sLine in enumerate(lines):
+            if fEntityFound:
+                if re.match('^\s*end', sLine.lower()):
+                    break
+                if fPortMapFound:
+                    if re.match('^\s*--', sLine):
+                        continue
+                    if re.match('^\s*$', sLine):
+                        continue
+                    lLine = sLine.split()
+                    if lLine[0] != lLine[0].upper():
+                        lFailureLines.append(iLineNumber + 1)
+                if re.match('^\s*port', sLine.lower()):
+                    fPortMapFound = True
+            if re.match('\s*entity', sLine.lower()):
+                fEntityFound = True
+        self.violations = lFailureLines
+
+
+class rule_023(entity_rule):
+    '''Entity rule 023 checks port names have I_, O_ or IO_ prefixes.'''
+
+    def __init__(self):
+        entity_rule.__init__(self)
+        self.identifier = '023'
+        self.description = 'Add proper prefix indicating port direction.'
+
+    def analyze(self, lines):
+        lFailureLines = []
+        fEntityFound = False
+        fPortMapFound = False
+        for iLineNumber, sLine in enumerate(lines):
+            if fEntityFound:
+                if re.match('^\s*end', sLine.lower()):
+                    break
+                if fPortMapFound:
+                    if re.match('^\s*--', sLine):
+                        continue
+                    if re.match('^\s*$', sLine):
+                        continue
+                    lLine = sLine.lower().split()
+                    if not(lLine[0].startswith('i_') or lLine[0].startswith('o_') or lLine[0].startswith('io_')):
+                        lFailureLines.append(iLineNumber + 1)
+                if re.match('^\s*port', sLine.lower()):
+                    fPortMapFound = True
+            if re.match('\s*entity', sLine.lower()):
+                fEntityFound = True
+        self.violations = lFailureLines

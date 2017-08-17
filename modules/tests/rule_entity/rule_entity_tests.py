@@ -410,6 +410,214 @@ class testRuleEntityMethods(unittest.TestCase):
         oRule.analyze(lLines)
         self.assertEqual(oRule.violations, dExpected)
 
+    def test_rule_017_exists(self):
+        oRule = rule_entity.rule_017()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'entity')
+        self.assertEqual(oRule.identifier, '017')
+
+    def test_rule_017(self):
+        oRule = rule_entity.rule_017()
+
+        dExpected = [2,4]
+        lLines = []
+        lLines.append('   ')
+        lLines.append('entity  blah   is  ')
+        lLines.append('entity  BLAH   is  ')
+        lLines.append('entity  Blah   is  ')
+        lLines.append('entity  BLAH   is  ')
+        lLines.append('   ')
+        oRule.analyze(lLines)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_018_exists(self):
+        oRule = rule_entity.rule_018()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'entity')
+        self.assertEqual(oRule.identifier, '018')
+
+    def test_rule_018(self):
+        oRule = rule_entity.rule_018()
+
+        dExpected = [10,15]
+        lLines = []
+        lLines.append('   ')
+        lLines.append('entity  blah   is  ')
+        lLines.append('  port (')
+        lLines.append('  );')
+        lLines.append('end blah;')
+        lLines.append('   ')
+        lLines.append('entity  blah   is  ')
+        lLines.append('  port (')
+        lLines.append('  );')
+        lLines.append(' end blah;')
+        lLines.append('   ')
+        lLines.append('entity  blah   is  ')
+        lLines.append('  port (')
+        lLines.append('  );')
+        lLines.append('   end blah;')
+        lLines.append('   ')
+        oRule.analyze(lLines)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_019_exists(self):
+        oRule = rule_entity.rule_019()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'entity')
+        self.assertEqual(oRule.identifier, '019')
+
+    def test_rule_019(self):
+        oRule = rule_entity.rule_019()
+
+        dExpected = [5,15]
+        lLines = []
+        lLines.append('   ')
+        lLines.append('entity  blah   is  ')
+        lLines.append('  port (')
+        lLines.append('  );')
+        lLines.append('eNd blah;')
+        lLines.append('   ')
+        lLines.append('entity  blah   is  ')
+        lLines.append('  port (')
+        lLines.append('  );')
+        lLines.append(' end blah;')
+        lLines.append('   ')
+        lLines.append('entity  blah   is  ')
+        lLines.append('  port (')
+        lLines.append('  );')
+        lLines.append('   END blah;')
+        lLines.append('   ')
+        oRule.analyze(lLines)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_020_exists(self):
+        oRule = rule_entity.rule_020()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'entity')
+        self.assertEqual(oRule.identifier, '020')
+
+    def test_rule_020(self):
+        oRule = rule_entity.rule_020()
+
+        dExpected = [5,10]
+        lLines = []
+        lLines.append('   ')
+        lLines.append('entity  blah   is  ')
+        lLines.append('  port (')
+        lLines.append('  );')
+        lLines.append('eNd   blah;')
+        lLines.append('   ')
+        lLines.append('entity  blah   is  ')
+        lLines.append('  port (')
+        lLines.append('  );')
+        lLines.append(' end     blah;')
+        lLines.append('   ')
+        lLines.append('entity  blah   is  ')
+        lLines.append('  port (')
+        lLines.append('  );')
+        lLines.append('   END blah;')
+        lLines.append('   ')
+        oRule.analyze(lLines)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_021_exists(self):
+        oRule = rule_entity.rule_021()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'entity')
+        self.assertEqual(oRule.identifier, '021')
+
+    def test_rule_021(self):
+        oRule = rule_entity.rule_021()
+
+        dExpected = [10, 15]
+        lLines = []
+        lLines.append('   ')
+        lLines.append('entity  blah   is  ')
+        lLines.append('  port (')
+        lLines.append('  );')
+        lLines.append('eNd   BLAH;')
+        lLines.append('   ')
+        lLines.append('entity  blah   is  ')
+        lLines.append('  port (')
+        lLines.append('  );')
+        lLines.append(' end     blah;')
+        lLines.append('   ')
+        lLines.append('entity  blah   is  ')
+        lLines.append('  port (')
+        lLines.append('  );')
+        lLines.append('   END BLAh;')
+        lLines.append('   ')
+        oRule.analyze(lLines)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_022_exists(self):
+        oRule = rule_entity.rule_022()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'entity')
+        self.assertEqual(oRule.identifier, '022')
+
+    def test_rule_022(self):
+        oRule = rule_entity.rule_022()
+
+        dExpected = [5,7,14,16]
+        lLines = []
+        lLines.append('   ')
+        lLines.append('entity  blah   is  ')
+        lLines.append('port    (')
+        lLines.append('    PORT_1 : in  std_logic;')
+        lLines.append('     POrt_2 : out std_logic;')
+        lLines.append('--  ');
+        lLines.append('  poRT_3 :  in    std_logic;')
+        lLines.append('')
+        lLines.append('    PORT_4   :   out   std_logic;')
+        lLines.append('  --  ');
+        lLines.append('    PORT_5   : inout   std_logic;')
+        lLines.append('    --  ');
+        lLines.append('    ')
+        lLines.append('   pORt_6    :   in std_logic;')
+        lLines.append('    --  ');
+        lLines.append('   porT_7    : inout std_logic;')
+        lLines.append('  ')
+        lLines.append('end blah;')
+        lLines.append('   ')
+        oRule.analyze(lLines)
+        self.assertEqual(oRule.violations, dExpected)
+
+
+    def test_rule_023_exists(self):
+        oRule = rule_entity.rule_023()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'entity')
+        self.assertEqual(oRule.identifier, '023')
+
+    def test_rule_023(self):
+        oRule = rule_entity.rule_023()
+
+        dExpected = [7,9,14,15,17]
+        lLines = []
+        lLines.append('   ')
+        lLines.append('entity  blah   is  ')
+        lLines.append('port    (')
+        lLines.append('    I_PORT_1 : in  std_logic;')
+        lLines.append('     O_POrt_2 : out std_logic;')
+        lLines.append('--  ');
+        lLines.append('  poRT_3 :  in    std_logic;')
+        lLines.append('')
+        lLines.append('    PORT_4   :   out   std_logic;')
+        lLines.append('  --  ');
+        lLines.append('    IO_PORT_5   : inout   std_logic;')
+        lLines.append('    --  ');
+        lLines.append('    ')
+        lLines.append('   pORt_6    :   in std_logic;')
+        lLines.append('   pORt_7    :   out std_logic;')
+        lLines.append('    --  ');
+        lLines.append('   porT_8    : inout std_logic;')
+        lLines.append('  ')
+        lLines.append('end blah;')
+        lLines.append('   ')
+        oRule.analyze(lLines)
+        self.assertEqual(oRule.violations, dExpected)
+
 
 if __name__ == '__main__':
     unittest.main()

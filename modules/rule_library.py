@@ -110,7 +110,7 @@ class rule_006(library_rule):
 
 
 class rule_007(library_rule):
-    '''Library rule 007 checks for a blank line above the library keyword.'''
+    '''Library rule 007 checks for a blank line above the "use" keyword.'''
 
     def __init__(self):
         library_rule.__init__(self)
