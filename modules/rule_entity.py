@@ -510,3 +510,52 @@ class rule_023(entity_rule):
             if re.match('\s*entity', sLine.lower()):
                 fEntityFound = True
         self.violations = lFailureLines
+
+
+class rule_024(entity_rule):
+    '''Entity rule 024 checks the closing parenthesis for ports are on a line by itself and one line above the "end" keyword.'''
+
+    def __init__(self):
+        entity_rule.__init__(self)
+        self.identifier = '024'
+        self.description = 'Closing parenthesis must be on a line by itself and above the "end" keyword.'
+
+    def analyze(self, lines):
+        lFailureLines = []
+        fEntityFound = False
+        fPortMapFound = False
+        for iLineNumber, sLine in enumerate(lines):
+            if fEntityFound:
+                if re.match('^\s*end', sLine.lower()):
+                    if not re.match('^\s*\)', lines[iLineNumber - 1]):                 
+                        lFailureLines.append(iLineNumber + 1)
+                if re.match('^\s*port', sLine.lower()):
+                    fPortMapFound = True
+            if re.match('\s*entity', sLine.lower()):
+                fEntityFound = True
+        self.violations = lFailureLines
+
+
+class rule_025(entity_rule):
+    '''Entity rule 025 checks the indentation of closing parenthesis for port maps.'''
+
+    def __init__(self):
+        entity_rule.__init__(self)
+        self.identifier = '025'
+        self.description = 'Closing parenthesis must be on a line by itself and above the "end" keyword.'
+
+    def analyze(self, lines):
+        lFailureLines = []
+        fEntityFound = False
+        fPortMapFound = False
+        for iLineNumber, sLine in enumerate(lines):
+            if fEntityFound:
+                if fPortMapFound:
+                    if re.match('^\s*\)', sLine):
+                        if not re.match('^\s\s\)', sLine):
+                            lFailureLines.append(iLineNumber + 1)
+                if re.match('^\s*port', sLine.lower()):
+                    fPortMapFound = True
+            if re.match('\s*entity', sLine.lower()):
+                fEntityFound = True
+        self.violations = lFailureLines

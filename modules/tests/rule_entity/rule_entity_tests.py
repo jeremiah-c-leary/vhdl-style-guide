@@ -619,5 +619,63 @@ class testRuleEntityMethods(unittest.TestCase):
         self.assertEqual(oRule.violations, dExpected)
 
 
+    def test_rule_024_exists(self):
+        oRule = rule_entity.rule_024()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'entity')
+        self.assertEqual(oRule.identifier, '024')
+
+    def test_rule_024(self):
+        oRule = rule_entity.rule_024()
+
+        dExpected = [4,13]
+        lLines = []
+        lLines.append('   ')
+        lLines.append('entity  blah   is  ')
+        lLines.append('  port (')
+        lLines.append('eNd   blah;')
+        lLines.append('   ')
+        lLines.append('entity  blah   is  ')
+        lLines.append('  port (')
+        lLines.append('  );')
+        lLines.append(' end     blah;')
+        lLines.append('   ')
+        lLines.append('entity  blah   is  ')
+        lLines.append('  port (')
+        lLines.append('   END blah;')
+        lLines.append('   ')
+        oRule.analyze(lLines)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_025_exists(self):
+        oRule = rule_entity.rule_025()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'entity')
+        self.assertEqual(oRule.identifier, '025')
+
+    def test_rule_025(self):
+        oRule = rule_entity.rule_025()
+
+        dExpected = [9,14]
+        lLines = []
+        lLines.append('   ')
+        lLines.append('entity  blah   is  ')
+        lLines.append('  port (')
+        lLines.append('  );')
+        lLines.append('eNd   blah;')
+        lLines.append('   ')
+        lLines.append('entity  blah   is  ')
+        lLines.append('  port (')
+        lLines.append(' );')
+        lLines.append(' end     blah;')
+        lLines.append('   ')
+        lLines.append('entity  blah   is  ')
+        lLines.append('  port (')
+        lLines.append('     );')
+        lLines.append('   END blah;')
+        lLines.append('   ')
+        oRule.analyze(lLines)
+        self.assertEqual(oRule.violations, dExpected)
+
 if __name__ == '__main__':
     unittest.main()
