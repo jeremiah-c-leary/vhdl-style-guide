@@ -6,6 +6,14 @@ import rule_entity
 import os
 
 
+# Read in test file used for all tests
+lLines = []
+with open('entity_test_input.vhd') as oFile:
+    for sLine in oFile:
+        lLines.append(sLine.rstrip())
+oFile.close()
+
+
 class testRuleEntityMethods(unittest.TestCase):
 
     def test_rule_001_exists(self):
@@ -17,13 +25,7 @@ class testRuleEntityMethods(unittest.TestCase):
     def test_rule_001(self):
         oRule = rule_entity.rule_001()
 
-        dExpected = [2,4]
-        lLines = []
-        lLines.append('  This is a test of ending entity')
-        lLines.append(' entity ')
-        lLines.append('entity')
-        lLines.append('     Entity  ')
-        lLines.append('Entity')
+        dExpected = [19,34]
         oRule.analyze(lLines)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -36,13 +38,7 @@ class testRuleEntityMethods(unittest.TestCase):
     def test_rule_002(self):
         oRule = rule_entity.rule_002()
 
-        dExpected = [3,5]
-        lLines = []
-        lLines.append('  This is a test of ending entity')
-        lLines.append(' entity blah is')
-        lLines.append('entity  blah   is')
-        lLines.append('     Entity blah    is  ')
-        lLines.append('Entity   blah is')
+        dExpected = [19,34]
         oRule.analyze(lLines)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -55,16 +51,7 @@ class testRuleEntityMethods(unittest.TestCase):
     def test_rule_003(self):
         oRule = rule_entity.rule_003()
 
-        dExpected = [4,8]
-        lLines = []
-        lLines.append('  This is a test of ending entity')
-        lLines.append('   ')
-        lLines.append(' entity blah is')
-        lLines.append('entity  blah   is')
-        lLines.append('   ')
-        lLines.append('   ')
-        lLines.append('     Entity blah    is  ')
-        lLines.append('Entity   blah is')
+        dExpected = [34]
         oRule.analyze(lLines)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -77,16 +64,7 @@ class testRuleEntityMethods(unittest.TestCase):
     def test_rule_004(self):
         oRule = rule_entity.rule_004()
 
-        dExpected = [7,8]
-        lLines = []
-        lLines.append('  This is a test of ending entity')
-        lLines.append('   ')
-        lLines.append(' entity blah iS')
-        lLines.append('entity  blah   is')
-        lLines.append('   ')
-        lLines.append('   ')
-        lLines.append('     Entity blah    is  ')
-        lLines.append('Entity   blah IS')
+        dExpected = [19,34]
         oRule.analyze(lLines)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -99,16 +77,7 @@ class testRuleEntityMethods(unittest.TestCase):
     def test_rule_005(self):
         oRule = rule_entity.rule_005()
 
-        dExpected = [4,7]
-        lLines = []
-        lLines.append('  This is a test of ending entity')
-        lLines.append('   ')
-        lLines.append(' entity blah iS')
-        lLines.append('entity  blah  ')
-        lLines.append('   ')
-        lLines.append('   ')
-        lLines.append('     Entity blah    ')
-        lLines.append('Entity   blah IS')
+        dExpected = [49]
         oRule.analyze(lLines)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -121,16 +90,7 @@ class testRuleEntityMethods(unittest.TestCase):
     def test_rule_006(self):
         oRule = rule_entity.rule_006()
 
-        dExpected = [3,8]
-        lLines = []
-        lLines.append('  This is a test of ending entity')
-        lLines.append('   ')
-        lLines.append(' entity blah iS')
-        lLines.append('entity  blah is  ')
-        lLines.append('   ')
-        lLines.append('   ')
-        lLines.append('     Entity blah is   ')
-        lLines.append('Entity   blah IS')
+        dExpected = [19]
         oRule.analyze(lLines)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -143,16 +103,7 @@ class testRuleEntityMethods(unittest.TestCase):
     def test_rule_007(self):
         oRule = rule_entity.rule_007()
 
-        dExpected = [4,8]
-        lLines = []
-        lLines.append('  This is a test of ending entity')
-        lLines.append('   ')
-        lLines.append(' entity blah iS')
-        lLines.append('entity  blah   is  ')
-        lLines.append('   ')
-        lLines.append('   ')
-        lLines.append('     Entity blah is   ')
-        lLines.append('Entity   blah   IS')
+        dExpected = [19,34]
         oRule.analyze(lLines)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -165,23 +116,7 @@ class testRuleEntityMethods(unittest.TestCase):
     def test_rule_008(self):
         oRule = rule_entity.rule_008()
 
-        dExpected = [12]
-        lLines = []
-        lLines.append('  This is a test of ending entity')
-        lLines.append('   ')
-        lLines.append('entity  blah   is  ')
-        lLines.append('port (')
-        lLines.append('   ')
-        lLines.append('   ')
-        lLines.append('     Entity blah is   ')
-        lLines.append('    port (')
-        lLines.append ('')
-        lLines.append('Entity   blah   IS')
-        lLines.append ('')
-        lLines.append('  PORT (  ')
-        lLines.append ('')
-        lLines.append('Entity   blah   IS')
-        lLines.append('    port (  ')
+        dExpected = [25,56]
         oRule.analyze(lLines)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -194,23 +129,7 @@ class testRuleEntityMethods(unittest.TestCase):
     def test_rule_009(self):
         oRule = rule_entity.rule_009()
 
-        dExpected = [4, 15]
-        lLines = []
-        lLines.append('  This is a test of ending entity')
-        lLines.append('   ')
-        lLines.append('entity  blah   is  ')
-        lLines.append('port    (')
-        lLines.append('   ')
-        lLines.append('   ')
-        lLines.append('     Entity blah is   ')
-        lLines.append('  port (')
-        lLines.append ('')
-        lLines.append('Entity   blah   IS')
-        lLines.append ('')
-        lLines.append('  PORT (  ')
-        lLines.append ('')
-        lLines.append('Entity   blah   IS')
-        lLines.append('    port (  ')
+        dExpected = [39,56]
         oRule.analyze(lLines)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -223,23 +142,7 @@ class testRuleEntityMethods(unittest.TestCase):
     def test_rule_010(self):
         oRule = rule_entity.rule_010()
 
-        dExpected = [4]
-        lLines = []
-        lLines.append('  This is a test of ending entity')
-        lLines.append('   ')
-        lLines.append('entity  blah   is  ')
-        lLines.append('port    (')
-        lLines.append('   ')
-        lLines.append('   ')
-        lLines.append('     Entity blah is   ')
-        lLines.append('    port (')
-        lLines.append ('')
-        lLines.append('Entity   blah   IS')
-        lLines.append ('')
-        lLines.append('  PORT (  ')
-        lLines.append ('')
-        lLines.append('Entity   blah   IS')
-        lLines.append('    port (  ')
+        dExpected = [25,56]
         oRule.analyze(lLines)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -252,21 +155,7 @@ class testRuleEntityMethods(unittest.TestCase):
     def test_rule_011(self):
         oRule = rule_entity.rule_011()
 
-        dExpected = [6,7,11]
-        lLines = []
-        lLines.append('  This is a test of ending entity')
-        lLines.append('   ')
-        lLines.append('entity  blah   is  ')
-        lLines.append('port    (')
-        lLines.append('    port_1 : in  std_logic;')
-        lLines.append('     port_2 : out std_logic;')
-        lLines.append('  port_3 :  in    std_logic;')
-        lLines.append('')
-        lLines.append('    port_4   :   out   std_logic;')
-        lLines.append('    port_5   : inout   std_logic;')
-        lLines.append('   port_6    :   in std_logic;')
-        lLines.append('end blah;')
-        lLines.append('   ')
+        dExpected = [27,29,43,45,57,59,61]
         oRule.analyze(lLines)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -280,21 +169,7 @@ class testRuleEntityMethods(unittest.TestCase):
     def test_rule_012(self):
         oRule = rule_entity.rule_012()
 
-        dExpected = [7,11]
-        lLines = []
-        lLines.append('  This is a test of ending entity')
-        lLines.append('   ')
-        lLines.append('entity  blah   is  ')
-        lLines.append('port    (')
-        lLines.append('    port_1 : in  std_logic;')
-        lLines.append('     port_2 : out std_logic;')
-        lLines.append('  port_3 :  in    std_logic;')
-        lLines.append('')
-        lLines.append('    port_4   :   out   std_logic;')
-        lLines.append('    port_5   : inout   std_logic;')
-        lLines.append('   port_6    :   in std_logic;')
-        lLines.append('end blah;')
-        lLines.append('   ')
+        dExpected = [29,40,60]
         oRule.analyze(lLines)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -307,24 +182,9 @@ class testRuleEntityMethods(unittest.TestCase):
     def test_rule_013(self):
         oRule = rule_entity.rule_013()
 
-        dExpected = [6]
-        lLines = []
-        lLines.append('  This is a test of ending entity')
-        lLines.append('   ')
-        lLines.append('entity  blah   is  ')
-        lLines.append('port    (')
-        lLines.append('    port_1 : in  std_logic;')
-        lLines.append('     port_2 : out std_logic;')
-        lLines.append('  port_3 :  in    std_logic;')
-        lLines.append('')
-        lLines.append('    port_4   :   out   std_logic;')
-        lLines.append('    port_5   : inout   std_logic;')
-        lLines.append('   port_6    :   in std_logic;')
-        lLines.append('end blah;')
-        lLines.append('   ')
+        dExpected = [27,30,44,58]
         oRule.analyze(lLines)
         self.assertEqual(oRule.violations, dExpected)
-
 
     def test_rule_014_exists(self):
         oRule = rule_entity.rule_014()
@@ -335,22 +195,7 @@ class testRuleEntityMethods(unittest.TestCase):
     def test_rule_014(self):
         oRule = rule_entity.rule_014()
 
-        dExpected = [5,11]
-        lLines = []
-        lLines.append('  This is a test of ending entity')
-        lLines.append('   ')
-        lLines.append('entity  blah   is  ')
-        lLines.append('port    (')
-        lLines.append('    port_1 : in  std_logic;')
-        lLines.append('     port_2 : out std_logic;')
-        lLines.append('  port_3 :  in    std_logic;')
-        lLines.append('')
-        lLines.append('    port_4   :   out   std_logic;')
-        lLines.append('    port_5   : inout   std_logic;')
-        lLines.append('   port_6    :   in std_logic;')
-        lLines.append('   port_7    : inout std_logic;')
-        lLines.append('end blah;')
-        lLines.append('   ')
+        dExpected = [12,26,29,40,43,57,60,74]
         oRule.analyze(lLines)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -363,22 +208,7 @@ class testRuleEntityMethods(unittest.TestCase):
     def test_rule_015(self):
         oRule = rule_entity.rule_015()
 
-        dExpected = [9]
-        lLines = []
-        lLines.append('  This is a test of ending entity')
-        lLines.append('   ')
-        lLines.append('entity  blah   is  ')
-        lLines.append('port    (')
-        lLines.append('    port_1 : in  std_logic;')
-        lLines.append('     port_2 : out std_logic;')
-        lLines.append('  port_3 :  in    std_logic;')
-        lLines.append('')
-        lLines.append('    port_4   :   out   std_logic;')
-        lLines.append('    port_5   : inout   std_logic;')
-        lLines.append('   port_6    :   in std_logic;')
-        lLines.append('   port_7    : inout std_logic;')
-        lLines.append('end blah;')
-        lLines.append('   ')
+        dExpected = [13,30,41,44,61,75]
         oRule.analyze(lLines)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -391,22 +221,7 @@ class testRuleEntityMethods(unittest.TestCase):
     def test_rule_016(self):
         oRule = rule_entity.rule_016()
 
-        dExpected = [10]
-        lLines = []
-        lLines.append('  This is a test of ending entity')
-        lLines.append('   ')
-        lLines.append('entity  blah   is  ')
-        lLines.append('port    (')
-        lLines.append('    port_1 : in  std_logic;')
-        lLines.append('     port_2 : out std_logic;')
-        lLines.append('  port_3 :  in    std_logic;')
-        lLines.append('')
-        lLines.append('    port_4   :   out   std_logic;')
-        lLines.append('    port_5   : inout   std_logic;')
-        lLines.append('   port_6    :   in std_logic;')
-        lLines.append('   port_7    : inout std_logic;')
-        lLines.append('end blah;')
-        lLines.append('   ')
+        dExpected = [28,45,59,62]
         oRule.analyze(lLines)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -419,14 +234,7 @@ class testRuleEntityMethods(unittest.TestCase):
     def test_rule_017(self):
         oRule = rule_entity.rule_017()
 
-        dExpected = [2,4]
-        lLines = []
-        lLines.append('   ')
-        lLines.append('entity  blah   is  ')
-        lLines.append('entity  BLAH   is  ')
-        lLines.append('entity  Blah   is  ')
-        lLines.append('entity  BLAH   is  ')
-        lLines.append('   ')
+        dExpected = [19,34]
         oRule.analyze(lLines)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -439,24 +247,7 @@ class testRuleEntityMethods(unittest.TestCase):
     def test_rule_018(self):
         oRule = rule_entity.rule_018()
 
-        dExpected = [10,15]
-        lLines = []
-        lLines.append('   ')
-        lLines.append('entity  blah   is  ')
-        lLines.append('  port (')
-        lLines.append('  );')
-        lLines.append('end blah;')
-        lLines.append('   ')
-        lLines.append('entity  blah   is  ')
-        lLines.append('  port (')
-        lLines.append('  );')
-        lLines.append(' end blah;')
-        lLines.append('   ')
-        lLines.append('entity  blah   is  ')
-        lLines.append('  port (')
-        lLines.append('  );')
-        lLines.append('   end blah;')
-        lLines.append('   ')
+        dExpected = [33,47]
         oRule.analyze(lLines)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -469,24 +260,7 @@ class testRuleEntityMethods(unittest.TestCase):
     def test_rule_019(self):
         oRule = rule_entity.rule_019()
 
-        dExpected = [5,15]
-        lLines = []
-        lLines.append('   ')
-        lLines.append('entity  blah   is  ')
-        lLines.append('  port (')
-        lLines.append('  );')
-        lLines.append('eNd blah;')
-        lLines.append('   ')
-        lLines.append('entity  blah   is  ')
-        lLines.append('  port (')
-        lLines.append('  );')
-        lLines.append(' end blah;')
-        lLines.append('   ')
-        lLines.append('entity  blah   is  ')
-        lLines.append('  port (')
-        lLines.append('  );')
-        lLines.append('   END blah;')
-        lLines.append('   ')
+        dExpected = [47,63]
         oRule.analyze(lLines)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -499,24 +273,7 @@ class testRuleEntityMethods(unittest.TestCase):
     def test_rule_020(self):
         oRule = rule_entity.rule_020()
 
-        dExpected = [5,10]
-        lLines = []
-        lLines.append('   ')
-        lLines.append('entity  blah   is  ')
-        lLines.append('  port (')
-        lLines.append('  );')
-        lLines.append('eNd   blah;')
-        lLines.append('   ')
-        lLines.append('entity  blah   is  ')
-        lLines.append('  port (')
-        lLines.append('  );')
-        lLines.append(' end     blah;')
-        lLines.append('   ')
-        lLines.append('entity  blah   is  ')
-        lLines.append('  port (')
-        lLines.append('  );')
-        lLines.append('   END blah;')
-        lLines.append('   ')
+        dExpected = [33,63]
         oRule.analyze(lLines)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -529,24 +286,7 @@ class testRuleEntityMethods(unittest.TestCase):
     def test_rule_021(self):
         oRule = rule_entity.rule_021()
 
-        dExpected = [10, 15]
-        lLines = []
-        lLines.append('   ')
-        lLines.append('entity  blah   is  ')
-        lLines.append('  port (')
-        lLines.append('  );')
-        lLines.append('eNd   BLAH;')
-        lLines.append('   ')
-        lLines.append('entity  blah   is  ')
-        lLines.append('  port (')
-        lLines.append('  );')
-        lLines.append(' end     blah;')
-        lLines.append('   ')
-        lLines.append('entity  blah   is  ')
-        lLines.append('  port (')
-        lLines.append('  );')
-        lLines.append('   END BLAh;')
-        lLines.append('   ')
+        dExpected = [33,47]
         oRule.analyze(lLines)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -559,27 +299,7 @@ class testRuleEntityMethods(unittest.TestCase):
     def test_rule_022(self):
         oRule = rule_entity.rule_022()
 
-        dExpected = [5,7,14,16]
-        lLines = []
-        lLines.append('   ')
-        lLines.append('entity  blah   is  ')
-        lLines.append('port    (')
-        lLines.append('    PORT_1 : in  std_logic;')
-        lLines.append('     POrt_2 : out std_logic;')
-        lLines.append('--  ');
-        lLines.append('  poRT_3 :  in    std_logic;')
-        lLines.append('')
-        lLines.append('    PORT_4   :   out   std_logic;')
-        lLines.append('  --  ');
-        lLines.append('    PORT_5   : inout   std_logic;')
-        lLines.append('    --  ');
-        lLines.append('    ')
-        lLines.append('   pORt_6    :   in std_logic;')
-        lLines.append('    --  ');
-        lLines.append('   porT_7    : inout std_logic;')
-        lLines.append('  ')
-        lLines.append('end blah;')
-        lLines.append('   ')
+        dExpected = [12,13,14,26,27,28,40,41,42,60,61,62,74,75,76]
         oRule.analyze(lLines)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -593,28 +313,7 @@ class testRuleEntityMethods(unittest.TestCase):
     def test_rule_023(self):
         oRule = rule_entity.rule_023()
 
-        dExpected = [7,9,14,15,17]
-        lLines = []
-        lLines.append('   ')
-        lLines.append('entity  blah   is  ')
-        lLines.append('port    (')
-        lLines.append('    I_PORT_1 : in  std_logic;')
-        lLines.append('     O_POrt_2 : out std_logic;')
-        lLines.append('--  ');
-        lLines.append('  poRT_3 :  in    std_logic;')
-        lLines.append('')
-        lLines.append('    PORT_4   :   out   std_logic;')
-        lLines.append('  --  ');
-        lLines.append('    IO_PORT_5   : inout   std_logic;')
-        lLines.append('    --  ');
-        lLines.append('    ')
-        lLines.append('   pORt_6    :   in std_logic;')
-        lLines.append('   pORt_7    :   out std_logic;')
-        lLines.append('    --  ');
-        lLines.append('   porT_8    : inout std_logic;')
-        lLines.append('  ')
-        lLines.append('end blah;')
-        lLines.append('   ')
+        dExpected = [12,13,14,29,30,31,43,44,45,60,61,62,74,75,76]
         oRule.analyze(lLines)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -628,22 +327,7 @@ class testRuleEntityMethods(unittest.TestCase):
     def test_rule_024(self):
         oRule = rule_entity.rule_024()
 
-        dExpected = [4,13]
-        lLines = []
-        lLines.append('   ')
-        lLines.append('entity  blah   is  ')
-        lLines.append('  port (')
-        lLines.append('eNd   blah;')
-        lLines.append('   ')
-        lLines.append('entity  blah   is  ')
-        lLines.append('  port (')
-        lLines.append('  );')
-        lLines.append(' end     blah;')
-        lLines.append('   ')
-        lLines.append('entity  blah   is  ')
-        lLines.append('  port (')
-        lLines.append('   END blah;')
-        lLines.append('   ')
+        dExpected = [33,63]
         oRule.analyze(lLines)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -656,24 +340,7 @@ class testRuleEntityMethods(unittest.TestCase):
     def test_rule_025(self):
         oRule = rule_entity.rule_025()
 
-        dExpected = [9,14]
-        lLines = []
-        lLines.append('   ')
-        lLines.append('entity  blah   is  ')
-        lLines.append('  port (')
-        lLines.append('  );')
-        lLines.append('eNd   blah;')
-        lLines.append('   ')
-        lLines.append('entity  blah   is  ')
-        lLines.append('  port (')
-        lLines.append(' );')
-        lLines.append(' end     blah;')
-        lLines.append('   ')
-        lLines.append('entity  blah   is  ')
-        lLines.append('  port (')
-        lLines.append('     );')
-        lLines.append('   END blah;')
-        lLines.append('   ')
+        dExpected = [46,77]
         oRule.analyze(lLines)
         self.assertEqual(oRule.violations, dExpected)
 

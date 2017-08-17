@@ -3,6 +3,12 @@ import rule
 import re
 
 
+def is_entity(fFlag, sLine):
+    if re.match('\s*entity', sLine.lower()):
+        return True
+    return fFlag
+
+
 class entity_rule(rule.rule):
     
     def __init__(self):
@@ -103,7 +109,7 @@ class rule_006(entity_rule):
     def analyze(self, lines):
         lFailureLines = []
         for iLineNumber, sLine in enumerate(lines):
-            if re.match('^\s*entity', sLine.lower()):
+            if re.match('^\s*entity\s.*\sis', sLine.lower()):
                 if not re.match('^.*\s\s*is', sLine):
                     lFailureLines.append(iLineNumber + 1)
         self.violations = lFailureLines
@@ -152,10 +158,19 @@ class rule_009(entity_rule):
 
     def analyze(self, lines):
         lFailureLines = []
+        fEntityFound = False
+        fPortMapFound = False
         for iLineNumber, sLine in enumerate(lines):
-            if re.match('^\s*port', sLine.lower()):
-                if not re.match('^\s\sport', sLine.lower()):
-                    lFailureLines.append(iLineNumber + 1)
+            if fEntityFound:
+                if re.match('^\s*end', sLine.lower()):
+                    fEntityFound = False
+                    fPortMapFound = False
+            if fEntityFound and not fPortMapFound:
+                if re.match('^\s*port', sLine.lower()):
+                    fPortMapFound = True
+                    if not re.match('^\s\sport', sLine.lower()):
+                        lFailureLines.append(iLineNumber + 1)
+            fEntityFound = is_entity(fEntityFound, sLine)
         self.violations = lFailureLines
 
 
@@ -169,10 +184,20 @@ class rule_010(entity_rule):
 
     def analyze(self, lines):
         lFailureLines = []
+        fEntityFound = False
+        fPortMapFound = False
         for iLineNumber, sLine in enumerate(lines):
-            if re.match('^\s*port', sLine.lower()):
-                if not re.match('^\s*port \(', sLine.lower()):
-                    lFailureLines.append(iLineNumber + 1)
+            if fEntityFound:
+                if re.match('^\s*end', sLine.lower()):
+                    fEntityFound = False
+                    fPortMapFound = False
+                if not fPortMapFound:
+                    if re.match('^\s*port', sLine.lower()):
+                        fPortMapFound = True
+                        if not re.match('^\s*port \(', sLine.lower()):
+                            lFailureLines.append(iLineNumber + 1)
+            fEntityFound = is_entity(fEntityFound, sLine)
+      
         self.violations = lFailureLines
 
 
@@ -182,29 +207,29 @@ class rule_011(entity_rule):
     def __init__(self):
         entity_rule.__init__(self)
         self.identifier = '011'
-        self.description = 'Change indent of "port" keyword to 4 spaces.'
+        self.description = 'Change indent of port to 4 spaces.'
 
     def analyze(self, lines):
         lFailureLines = []
         fEntityFound = False
         fPortMapFound = False
         for iLineNumber, sLine in enumerate(lines):
-            if fEntityFound:
-                if re.match('^\s*end', sLine.lower()):
-                    break
             if fPortMapFound:
-                if not re.match('^\s*$', sLine):
+                if re.match('^\s*\w\w*\s*:\s*[in|out|inout]', sLine.lower()):
                     if not re.match('^\s\s\s\s\w', sLine):
                         lFailureLines.append(iLineNumber + 1)
-            if re.match('^\s*port', sLine.lower()) and fEntityFound:
-                fPortMapFound = True
-            if re.match('\s*entity', sLine.lower()):
-                fEntityFound = True
+            if fEntityFound:
+                if re.match('^\s*end', sLine.lower()):
+                    fEntityFound = False
+                    fPortMapFound = False
+                if re.match('^\s*port', sLine.lower()):
+                    fPortMapFound = True
+            fEntityFound = is_entity(fEntityFound, sLine)
         self.violations = lFailureLines
 
 
 class rule_012(entity_rule):
-    '''Entity rule 012 checks for a single space after the colon in a port declaration for "in" ports.'''
+    '''Entity rule 012 checks for a single space after the colon in a port declaration for "in" and "inout" ports.'''
 
     def __init__(self):
         entity_rule.__init__(self)
@@ -216,23 +241,22 @@ class rule_012(entity_rule):
         fEntityFound = False
         fPortMapFound = False
         for iLineNumber, sLine in enumerate(lines):
+            if fPortMapFound:
+                if re.match('^\s*\w\w*\s*:\s*in\s', sLine.lower()):
+                    if not re.match('^\s*\w\w*\s*:\sin', sLine.lower()):
+                        lFailureLines.append(iLineNumber + 1)
             if fEntityFound:
                 if re.match('^\s*end', sLine.lower()):
-                    break
-            if fPortMapFound:
-                if not re.match('^\s*$', sLine):
-                    if re.match('^.*:\s*in', sLine.lower()):
-                        if not re.match('^.*:\sin', sLine.lower()):
-                            lFailureLines.append(iLineNumber + 1)
-            if re.match('^\s*port', sLine.lower()) and fEntityFound:
-                fPortMapFound = True
-            if re.match('\s*entity', sLine.lower()):
-                fEntityFound = True
+                    fEntityFound = False
+                    fPortMapFound = False
+                if re.match('^\s*port', sLine.lower()):
+                    fPortMapFound = True
+            fEntityFound = is_entity(fEntityFound, sLine)
         self.violations = lFailureLines
 
 
 class rule_013(entity_rule):
-    '''Entity rule 013 checks for three spaces after the colon in a port declaration for "out" ports.'''
+    '''Entity rule 013 checks for one space after the colon in a port declaration for "out" ports.'''
 
     def __init__(self):
         entity_rule.__init__(self)
@@ -244,18 +268,17 @@ class rule_013(entity_rule):
         fEntityFound = False
         fPortMapFound = False
         for iLineNumber, sLine in enumerate(lines):
+            if fPortMapFound:
+                if re.match('^\s*\w\w*\s*:\s*out\s', sLine.lower()):
+                    if not re.match('^\s*\w\w*\s*:\sout', sLine.lower()):
+                        lFailureLines.append(iLineNumber + 1)
             if fEntityFound:
                 if re.match('^\s*end', sLine.lower()):
-                    break
-            if fPortMapFound:
-                if not re.match('^\s*$', sLine):
-                    if re.match('^.*:\s*out', sLine.lower()):
-                        if not re.match('^.*:\s\s\sout', sLine.lower()):
-                            lFailureLines.append(iLineNumber + 1)
-            if re.match('^\s*port', sLine.lower()) and fEntityFound:
-                fPortMapFound = True
-            if re.match('\s*entity', sLine.lower()):
-                fEntityFound = True
+                    fEntityFound = False
+                    fPortMapFound = False
+                if re.match('^\s*port', sLine.lower()):
+                    fPortMapFound = True
+            fEntityFound = is_entity(fEntityFound, sLine)
         self.violations = lFailureLines
 
 
@@ -272,46 +295,44 @@ class rule_014(entity_rule):
         fEntityFound = False
         fPortMapFound = False
         for iLineNumber, sLine in enumerate(lines):
+            if fPortMapFound:
+                if re.match('^\s*\w\w*\s*:\s*in\s', sLine.lower()):
+                    if not re.match('^\s*\w\w*\s*:\s*in\s\s\s\s\w', sLine.lower()):
+                        lFailureLines.append(iLineNumber + 1)
             if fEntityFound:
                 if re.match('^\s*end', sLine.lower()):
-                    break
-            if fPortMapFound:
-                if not re.match('^\s*$', sLine):
-                    if re.match('^.*:\s*in\s', sLine.lower()):
-                        if not re.match('^.*:\s*in\s\s\s\s\w', sLine.lower()):
-                            lFailureLines.append(iLineNumber + 1)
-            if re.match('^\s*port', sLine.lower()) and fEntityFound:
-                fPortMapFound = True
-            if re.match('\s*entity', sLine.lower()):
-                fEntityFound = True
+                    fEntityFound = False
+                    fPortMapFound = False
+                if re.match('^\s*port', sLine.lower()):
+                    fPortMapFound = True
+            fEntityFound = is_entity(fEntityFound, sLine)
         self.violations = lFailureLines
 
 
 class rule_015(entity_rule):
-    '''Entity rule 015 checks for a single space after "out" keyword in a port declaration for "out" ports.'''
+    '''Entity rule 015 checks for three spaces after "out" keyword in a port declaration for "out" ports.'''
 
     def __init__(self):
         entity_rule.__init__(self)
         self.identifier = '015'
-        self.description = 'Change the number of spaces after the "out" keyword to one space.'
+        self.description = 'Change the number of spaces after the "out" keyword to three spaces.'
 
     def analyze(self, lines):
         lFailureLines = []
         fEntityFound = False
         fPortMapFound = False
         for iLineNumber, sLine in enumerate(lines):
+            if fPortMapFound:
+                if re.match('^\s*\w\w*\s*:\s*out\s', sLine.lower()):
+                    if not re.match('^\s*\w\w*\s*:\s*out\s\s\s\w', sLine.lower()):
+                        lFailureLines.append(iLineNumber + 1)
             if fEntityFound:
                 if re.match('^\s*end', sLine.lower()):
-                    break
-            if fPortMapFound:
-                if not re.match('^\s*$', sLine):
-                    if re.match('^.*:\s*out\s', sLine.lower()):
-                        if not re.match('^.*:\s*out\s\w', sLine.lower()):
-                            lFailureLines.append(iLineNumber + 1)
-            if re.match('^\s*port', sLine.lower()) and fEntityFound:
-                fPortMapFound = True
-            if re.match('\s*entity', sLine.lower()):
-                fEntityFound = True
+                    fEntityFound = False
+                    fPortMapFound = False
+                if re.match('^\s*port', sLine.lower()):
+                    fPortMapFound = True
+            fEntityFound = is_entity(fEntityFound, sLine)
         self.violations = lFailureLines
 
 
@@ -328,18 +349,17 @@ class rule_016(entity_rule):
         fEntityFound = False
         fPortMapFound = False
         for iLineNumber, sLine in enumerate(lines):
+            if fPortMapFound:
+                if re.match('^\s*\w\w*\s*:\s*inout\s', sLine.lower()):
+                    if not re.match('^\s*\w\w*\s*:\s*inout\s\w', sLine.lower()):
+                        lFailureLines.append(iLineNumber + 1)
             if fEntityFound:
                 if re.match('^\s*end', sLine.lower()):
-                    break
-            if fPortMapFound:
-                if not re.match('^\s*$', sLine):
-                    if re.match('^.*:\s*inout\s', sLine.lower()):
-                        if not re.match('^.*:\s*inout\s\w', sLine.lower()):
-                            lFailureLines.append(iLineNumber + 1)
-            if re.match('^\s*port', sLine.lower()) and fEntityFound:
-                fPortMapFound = True
-            if re.match('\s*entity', sLine.lower()):
-                fEntityFound = True
+                    fEntityFound = False
+                    fPortMapFound = False
+                if re.match('^\s*port', sLine.lower()):
+                    fPortMapFound = True
+            fEntityFound = is_entity(fEntityFound, sLine)
         self.violations = lFailureLines
 
 
@@ -465,7 +485,8 @@ class rule_022(entity_rule):
         for iLineNumber, sLine in enumerate(lines):
             if fEntityFound:
                 if re.match('^\s*end', sLine.lower()):
-                    break
+                    fEntityFound = False
+                    fPortMapFound = False
                 if fPortMapFound:
                     if re.match('^\s*--', sLine):
                         continue
@@ -496,15 +517,13 @@ class rule_023(entity_rule):
         for iLineNumber, sLine in enumerate(lines):
             if fEntityFound:
                 if re.match('^\s*end', sLine.lower()):
-                    break
+                    fEntityFound = False
+                    fPortMapFound = False
                 if fPortMapFound:
-                    if re.match('^\s*--', sLine):
-                        continue
-                    if re.match('^\s*$', sLine):
-                        continue
-                    lLine = sLine.lower().split()
-                    if not(lLine[0].startswith('i_') or lLine[0].startswith('o_') or lLine[0].startswith('io_')):
-                        lFailureLines.append(iLineNumber + 1)
+                    if re.match('^\s*\w\w+\s*:\s*[in|out|inout]', sLine.lower()):
+                        lLine = sLine.lower().split()
+                        if not(lLine[0].startswith('i_') or lLine[0].startswith('o_') or lLine[0].startswith('io_')):
+                            lFailureLines.append(iLineNumber + 1)
                 if re.match('^\s*port', sLine.lower()):
                     fPortMapFound = True
             if re.match('\s*entity', sLine.lower()):
