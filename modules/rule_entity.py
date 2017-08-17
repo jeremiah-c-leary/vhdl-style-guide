@@ -578,3 +578,186 @@ class rule_025(entity_rule):
             if re.match('\s*entity', sLine.lower()):
                 fEntityFound = True
         self.violations = lFailureLines
+
+
+class rule_026(entity_rule):
+    '''Entity rule 026 checks for a blank line above the "generic" keyword.'''
+
+    def __init__(self):
+        entity_rule.__init__(self)
+        self.identifier = '026'
+        self.description = 'Remove blank lines above "generic" keyword.'
+
+    def analyze(self, lines):
+        lFailureLines = []
+        for iLineNumber, sLine in enumerate(lines):
+            if re.match('^\s*generic', sLine.lower()):
+                if re.match('^\s*$', lines[iLineNumber - 1].lower()):
+                    lFailureLines.append(iLineNumber + 1)
+        self.violations = lFailureLines
+
+
+class rule_027(entity_rule):
+    '''Entity rule 027 checks indentation of the "generic" keyword.'''
+
+    def __init__(self):
+        entity_rule.__init__(self)
+        self.identifier = '027'
+        self.description = 'Change indent of "generic" keyword to 2 spaces.'
+
+    def analyze(self, lines):
+        lFailureLines = []
+        fEntityFound = False
+        fGenericMapFound = False
+        for iLineNumber, sLine in enumerate(lines):
+            if fEntityFound:
+                if re.match('^\s*end', sLine.lower()):
+                    fEntityFound = False
+                    fGenericMapFound = False
+            if fEntityFound and not fGenericMapFound:
+                if re.match('^\s*generic', sLine.lower()):
+                    fPortMapFound = True
+                    if not re.match('^\s\sgeneric', sLine.lower()):
+                        lFailureLines.append(iLineNumber + 1)
+            fEntityFound = is_entity(fEntityFound, sLine)
+        self.violations = lFailureLines
+
+
+class rule_028(entity_rule):
+    '''Entity rule 028 checks spacing between "generic" keyword and the open parenthesis.'''
+
+    def __init__(self):
+        entity_rule.__init__(self)
+        self.identifier = '028'
+        self.description = 'Change spacing between "generic" and "(" to one space.'
+
+    def analyze(self, lines):
+        lFailureLines = []
+        fEntityFound = False
+        fGenericMapFound = False
+        for iLineNumber, sLine in enumerate(lines):
+            if fEntityFound:
+                if re.match('^\s*port\s\s*\(', sLine.lower()):
+                    fEntityFound = False
+                    fGenericMapFound = False
+                if not fGenericMapFound:
+                    if re.match('^\s*generic', sLine.lower()):
+                        fGenericMapFound = True
+                        if not re.match('^\s*generic \(', sLine.lower()):
+                            lFailureLines.append(iLineNumber + 1)
+            fEntityFound = is_entity(fEntityFound, sLine)
+      
+        self.violations = lFailureLines
+
+
+class rule_029(entity_rule):
+    '''Entity rule 029 checks indentation of generics.'''
+
+    def __init__(self):
+        entity_rule.__init__(self)
+        self.identifier = '029'
+        self.description = 'Change indent of generic to 4 spaces.'
+
+    def analyze(self, lines):
+        lFailureLines = []
+        fEntityFound = False
+        fGenericMapFound = False
+        for iLineNumber, sLine in enumerate(lines):
+            if fGenericMapFound:
+                if re.match('^\s*\w\w*\s*:\s*\w\w*\s\s*:', sLine.lower()):
+                    if not re.match('^\s\s\s\s\w', sLine):
+                        lFailureLines.append(iLineNumber + 1)
+            if fEntityFound:
+                if re.match('^\s*port\s\s*\(', sLine.lower()):
+                    fEntityFound = False
+                    fGenericMapFound = False
+                if re.match('^\s*generic', sLine.lower()):
+                    fGenericMapFound = True
+            fEntityFound = is_entity(fEntityFound, sLine)
+        self.violations = lFailureLines
+
+
+class rule_030(entity_rule):
+    '''Entity rule 030 checks for a single space after the colon in a generic declaration.'''
+
+    def __init__(self):
+        entity_rule.__init__(self)
+        self.identifier = '030'
+        self.description = 'Reduce number of spaces after the colon to 1.'
+
+    def analyze(self, lines):
+        lFailureLines = []
+        fEntityFound = False
+        fGenericMapFound = False
+        for iLineNumber, sLine in enumerate(lines):
+            if fGenericMapFound:
+                if re.match('^\s*\w\w*\s*:\s*\w\w*\s:=', sLine.lower()):
+                    if not re.match('^\s*\w\w*\s*:\s\w', sLine.lower()):
+                        lFailureLines.append(iLineNumber + 1)
+            if fEntityFound:
+                if re.match('^\s*port', sLine.lower()):
+                    fEntityFound = False
+                    fGenericMapFound = False
+                if re.match('^\s*generic', sLine.lower()):
+                    fGenericMapFound = True
+            fEntityFound = is_entity(fEntityFound, sLine)
+        self.violations = lFailureLines
+
+
+class rule_031(entity_rule):
+    '''Entity rule 031 checks for a single space after the default assignment in a generic declaration.'''
+
+    def __init__(self):
+        entity_rule.__init__(self)
+        self.identifier = '031'
+        self.description = 'Reduce number of spaces after the default assignment to 1.'
+
+    def analyze(self, lines):
+        lFailureLines = []
+        fEntityFound = False
+        fGenericMapFound = False
+        for iLineNumber, sLine in enumerate(lines):
+            if fGenericMapFound:
+                if re.match('^\s*\w\w*\s*:\s*\w\w*\s\s*:=', sLine.lower()):
+                    if not re.match('^\s*\w\w*\s*:\s*\w\w*\s\s*:=\s[\w\'"]', sLine.lower()):
+                        lFailureLines.append(iLineNumber + 1)
+            if fEntityFound:
+                if re.match('^\s*port', sLine.lower()):
+                    fEntityFound = False
+                    fGenericMapFound = False
+                if re.match('^\s*generic', sLine.lower()):
+                    fGenericMapFound = True
+            fEntityFound = is_entity(fEntityFound, sLine)
+        self.violations = lFailureLines
+
+
+class rule_032(entity_rule):
+    '''Entity rule 032 checks generic names are uppercase.'''
+
+    def __init__(self):
+        entity_rule.__init__(self)
+        self.identifier = '032'
+        self.description = 'Uppercase generic name.'
+
+    def analyze(self, lines):
+        lFailureLines = []
+        fEntityFound = False
+        fGenericMapFound = False
+        for iLineNumber, sLine in enumerate(lines):
+            if fEntityFound:
+                if re.match('^\s*port', sLine.lower()):
+                    fEntityFound = False
+                    fGenericMapFound = False
+                if fGenericMapFound:
+                    if re.match('^\s*--', sLine):
+                        continue
+                    if re.match('^\s*$', sLine):
+                        continue
+                    lLine = sLine.split()
+                    if lLine[0] != lLine[0].upper():
+                        lFailureLines.append(iLineNumber + 1)
+                if re.match('^\s*generic', sLine.lower()):
+                    fGenericMapFound = True
+            if re.match('\s*entity', sLine.lower()):
+                fEntityFound = True
+        self.violations = lFailureLines
