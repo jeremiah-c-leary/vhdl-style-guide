@@ -761,3 +761,37 @@ class rule_032(entity_rule):
             if re.match('\s*entity', sLine.lower()):
                 fEntityFound = True
         self.violations = lFailureLines
+
+
+class rule_033(entity_rule):
+    '''Entity rule 033 checks the indentation of closing parenthesis for generic maps.'''
+
+    def __init__(self):
+        entity_rule.__init__(self)
+        self.identifier = '033'
+        self.description = 'Closing parenthesis must be on a line by itself and above the "port" keyword.'
+
+    def analyze(self, lines):
+        lFailureLines = []
+        fEntityFound = False
+        fGenericMapFound = False
+        fClosingParenFound = False
+        for iLineNumber, sLine in enumerate(lines):
+            if fEntityFound:
+                if fGenericMapFound:
+                    if re.match('^\s*\)', sLine):
+                        if not re.match('^\s\s\)', sLine):
+                            lFailureLines.append(iLineNumber + 1)
+                        else:
+                            fClosingParenFound = True
+                    if re.match('^\s*port\s', sLine.lower()):
+                        fEntityFound = False
+                        fGenericMapFound = False
+                        if not fClosingParenFound:
+                            lFailureLines.append(iLineNumber + 1)
+                        fClosingParenFound = False
+                if re.match('^\s*generic', sLine.lower()):
+                    fGenericMapFound = True
+            if re.match('\s*entity', sLine.lower()):
+                fEntityFound = True
+        self.violations = lFailureLines

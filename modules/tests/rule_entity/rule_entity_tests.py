@@ -435,6 +435,18 @@ class testRuleEntityMethods(unittest.TestCase):
         oRule.analyze(lLines)
         self.assertEqual(oRule.violations, dExpected)
 
+    def test_rule_033_exists(self):
+        oRule = rule_entity.rule_033()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'entity')
+        self.assertEqual(oRule.identifier, '033')
+
+    def test_rule_033(self):
+        oRule = rule_entity.rule_033()
+
+        dExpected = [98]
+        oRule.analyze(lLines)
+        self.assertEqual(oRule.violations, dExpected)
 
 if __name__ == '__main__':
     unittest.main()
