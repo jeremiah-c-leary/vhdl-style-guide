@@ -442,6 +442,8 @@ class rule_020(entity_rule):
                 if re.match('^\s*end', sLine.lower()):
                     if re.match('^\s*end\s\s+', sLine.lower()):
                         lFailureLines.append(iLineNumber + 1)
+                    fEntityFound = False
+                    fPortMapFound = False
             if re.match('\s*entity', sLine.lower()):
                 fEntityFound = True
         self.violations = lFailureLines
@@ -465,6 +467,7 @@ class rule_021(entity_rule):
                     lLine = sLine.split()
                     if lLine[1] != lLine[1].upper():
                         lFailureLines.append(iLineNumber + 1)
+                    fEntityFound = False
             if re.match('\s*entity', sLine.lower()):
                 fEntityFound = True
         self.violations = lFailureLines
@@ -548,6 +551,8 @@ class rule_024(entity_rule):
                 if re.match('^\s*end', sLine.lower()):
                     if not re.match('^\s*\)', lines[iLineNumber - 1]):                 
                         lFailureLines.append(iLineNumber + 1)
+                    fEntityFound = False
+                    fPortMapFound = False
                 if re.match('^\s*port', sLine.lower()):
                     fPortMapFound = True
             if re.match('\s*entity', sLine.lower()):

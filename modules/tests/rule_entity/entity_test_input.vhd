@@ -101,3 +101,9 @@ entity ENTITY1 is
     IO_PORT3 : inout std_logic
   );
 end ENTITY1
+
+architecture RTL of ENTITY1 is
+
+begin
+end  rtl;
+
