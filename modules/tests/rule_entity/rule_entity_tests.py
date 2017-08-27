@@ -448,5 +448,45 @@ class testRuleEntityMethods(unittest.TestCase):
         oRule.analyze(lLines)
         self.assertEqual(oRule.violations, dExpected)
 
+    def test_rule_034_exists(self):
+        oRule = rule_entity.rule_034()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'entity')
+        self.assertEqual(oRule.identifier, '034')
+
+    def test_rule_034(self):
+        oRule = rule_entity.rule_034()
+
+        dExpected = [66,82,95]
+        oRule.analyze(lLines)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_035_exists(self):
+        oRule = rule_entity.rule_035()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'entity')
+        self.assertEqual(oRule.identifier, '035')
+
+    def test_rule_035(self):
+        oRule = rule_entity.rule_035()
+
+        dExpected = [25,39]
+        oRule.analyze(lLines)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_036_exists(self):
+        oRule = rule_entity.rule_036()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'entity')
+        self.assertEqual(oRule.identifier, '036')
+
+    def test_rule_036(self):
+        oRule = rule_entity.rule_036()
+
+        dExpected = [43,58,75]
+        oRule.analyze(lLines)
+        self.assertEqual(oRule.violations, dExpected)
+
+
 if __name__ == '__main__':
     unittest.main()

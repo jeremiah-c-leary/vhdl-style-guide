@@ -800,3 +800,77 @@ class rule_033(entity_rule):
             if re.match('\s*entity', sLine.lower()):
                 fEntityFound = True
         self.violations = lFailureLines
+
+
+class rule_034(entity_rule):
+    '''Entity rule 034 checks the "generic" keyword is lowercase.'''
+
+    def __init__(self):
+        entity_rule.__init__(self)
+        self.identifier = '034'
+        self.description = 'Lowercase "generic" keyword.'
+
+    def analyze(self, lines):
+        lFailureLines = []
+        fEntityFound = False
+        fGenericMapFound = False
+        for iLineNumber, sLine in enumerate(lines):
+            if fEntityFound:
+                if re.match('^\s*port', sLine.lower()):
+                    fEntityFound = False
+                    fGenericMapFound = False
+                if re.match('^\s*generic', sLine.lower()):
+                    if not re.match('^\s*generic', sLine):
+                        lFailureLines.append(iLineNumber + 1)
+            if re.match('\s*entity', sLine.lower()):
+                fEntityFound = True
+        self.violations = lFailureLines
+
+
+class rule_035(entity_rule):
+    '''Entity rule 035 checks the "port" keyword is lowercase.'''
+
+    def __init__(self):
+        entity_rule.__init__(self)
+        self.identifier = '035'
+        self.description = 'Lowercase "port" keyword.'
+
+    def analyze(self, lines):
+        lFailureLines = []
+        fEntityFound = False
+        for iLineNumber, sLine in enumerate(lines):
+            if fEntityFound:
+                if re.match('^\s*port', sLine.lower()):
+                    fEntityFound = False
+                    if not re.match('^\s*port', sLine):
+                        lFailureLines.append(iLineNumber + 1)
+            if re.match('\s*entity', sLine.lower()):
+                fEntityFound = True
+        self.violations = lFailureLines
+
+
+class rule_036(entity_rule):
+    '''Entity rule 036 checks for default assignments in port declarations.'''
+
+    def __init__(self):
+        entity_rule.__init__(self)
+        self.identifier = '036'
+        self.description = 'Remove default assignment in port declaration'
+
+    def analyze(self, lines):
+        lFailureLines = []
+        fEntityFound = False
+        fPortMapFound = False
+        for iLineNumber, sLine in enumerate(lines):
+            if fPortMapFound:
+                if re.match('^.*:=', sLine):
+                    lFailureLines.append(iLineNumber + 1)
+            if fEntityFound:
+                if re.match('^\s*end', sLine.lower()):
+                    fEntityFound = False
+                    fPortMapFound = False
+                if re.match('^\s*port', sLine.lower()):
+                    fPortMapFound = True
+            if re.match('\s*entity', sLine.lower()):
+                fEntityFound = True
+        self.violations = lFailureLines
