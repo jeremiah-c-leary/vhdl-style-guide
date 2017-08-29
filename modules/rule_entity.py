@@ -396,6 +396,7 @@ class rule_018(entity_rule):
         for iLineNumber, sLine in enumerate(lines):
             if fEntityFound:
                 if re.match('^\s*end', sLine.lower()):
+                    fEntityFound = False
                     if not re.match('^end', sLine.lower()):
                         lFailureLines.append(iLineNumber + 1)
             if re.match('\s*entity', sLine.lower()):

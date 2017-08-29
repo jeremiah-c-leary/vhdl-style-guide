@@ -105,5 +105,5 @@ end ENTITY1
 architecture RTL of ENTITY1 is
 
 begin
-end  rtl;
+   end  rtl;
 
