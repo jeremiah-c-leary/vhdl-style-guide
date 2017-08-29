@@ -886,3 +886,31 @@ class rule_036(entity_rule):
             if re.match('\s*entity', sLine.lower()):
                 fEntityFound = True
         self.violations = lFailureLines
+
+
+class rule_037(entity_rule):
+    '''Entity rule 037 checks for multiple ports declared on single line.'''
+
+    def __init__(self):
+        entity_rule.__init__(self)
+        self.identifier = '037'
+        self.description = 'Place multiple ports on their own lines.'
+
+    def analyze(self, lines):
+        lFailureLines = []
+        fEntityFound = False
+        fPortMapFound = False
+        for iLineNumber, sLine in enumerate(lines):
+            if fPortMapFound:
+                if re.match('^.*,.*:', sLine):
+                    lFailureLines.append(iLineNumber + 1)
+            if fEntityFound:
+                if re.match('^\s*end', sLine.lower()):
+                    fEntityFound = False
+                    fPortMapFound = False
+                if re.match('^\s*port', sLine.lower()):
+                    fPortMapFound = True
+            if re.match('\s*entity', sLine.lower()):
+                fEntityFound = True
+        self.violations = lFailureLines
+

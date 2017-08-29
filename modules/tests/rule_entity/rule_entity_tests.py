@@ -330,7 +330,7 @@ class testRuleEntityMethods(unittest.TestCase):
         oRule = rule_entity.rule_023()
         oRule.port_direction = 'Suffix'
 
-        dExpected = [9,10,11,12,13,14,26,27,28,29,30,31,40,41,42,43,44,45,57,58,59,60,61,62,71,72,73,74,75,76,87,88,89]
+        dExpected = [9,10,11,12,13,14,26,27,28,29,30,31,40,41,42,43,44,45,57,58,59,60,61,62,71,72,73,74,75,76,87,88,89,119,120,121]
         oRule.analyze(lLines)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -504,6 +504,18 @@ class testRuleEntityMethods(unittest.TestCase):
         oRule.analyze(lLines)
         self.assertEqual(oRule.violations, dExpected)
 
+    def test_rule_037_exists(self):
+        oRule = rule_entity.rule_037()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'entity')
+        self.assertEqual(oRule.identifier, '037')
+
+    def test_rule_037(self):
+        oRule = rule_entity.rule_037()
+
+        dExpected = [119,121]
+        oRule.analyze(lLines)
+        self.assertEqual(oRule.violations, dExpected)
 
 if __name__ == '__main__':
     unittest.main()
