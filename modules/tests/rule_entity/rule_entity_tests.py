@@ -310,10 +310,27 @@ class testRuleEntityMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'entity')
         self.assertEqual(oRule.identifier, '023')
 
-    def test_rule_023(self):
+    def test_rule_023_prefix(self):
         oRule = rule_entity.rule_023()
+        oRule.port_direction = 'Prefix'
 
-        dExpected = [12,13,14,29,30,31,43,44,45,60,61,62,74,75,76]
+        dExpected = [12,13,14,29,30,31,43,44,45,60,61,62,74,75,76,99,100,101]
+        oRule.analyze(lLines)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_023_none(self):
+        oRule = rule_entity.rule_023()
+        oRule.port_direction = None
+
+        dExpected = []
+        oRule.analyze(lLines)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_023_suffix(self):
+        oRule = rule_entity.rule_023()
+        oRule.port_direction = 'Suffix'
+
+        dExpected = [9,10,11,12,13,14,26,27,28,29,30,31,40,41,42,43,44,45,57,58,59,60,61,62,71,72,73,74,75,76,87,88,89]
         oRule.analyze(lLines)
         self.assertEqual(oRule.violations, dExpected)
 

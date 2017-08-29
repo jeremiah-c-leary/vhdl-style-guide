@@ -96,9 +96,9 @@ entity ENTITY1 is
     G_GENERIC1 : std_logic := '0';
     G_GENERIC2 : std_logic := '1');
   port (
-    I_PORT1 : in    std_logic;
-    O_PORT2 : out   std_logic;
-    IO_PORT3 : inout std_logic
+    PORT1_I : in    std_logic;
+    PORT2_O : out   std_logic;
+    PORT3_IO : inout std_logic
   );
 end ENTITY1
 

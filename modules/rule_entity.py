@@ -511,12 +511,19 @@ class rule_023(entity_rule):
     def __init__(self):
         entity_rule.__init__(self)
         self.identifier = '023'
-        self.description = 'Add proper prefix indicating port direction.'
+        self.description = 'Add proper prefix or suffix indicating port direction.'
+        self.port_direction = 'Prefix'
+
+    def configure(self, dConfig):
+        if 'port_direction' in dConfig['entity']['rule_023']:
+            self.port_direction = dConfig['entity']['rule_023']['port_direction']
 
     def analyze(self, lines):
         lFailureLines = []
         fEntityFound = False
         fPortMapFound = False
+        if not self.port_direction:
+            self.violations = lFailureLines
         for iLineNumber, sLine in enumerate(lines):
             if fEntityFound:
                 if re.match('^\s*end', sLine.lower()):
@@ -525,8 +532,12 @@ class rule_023(entity_rule):
                 if fPortMapFound:
                     if re.match('^\s*\w\w+\s*:\s*[in|out|inout]', sLine.lower()):
                         lLine = sLine.lower().split()
-                        if not(lLine[0].startswith('i_') or lLine[0].startswith('o_') or lLine[0].startswith('io_')):
-                            lFailureLines.append(iLineNumber + 1)
+                        if self.port_direction == 'Prefix':
+                          if not(lLine[0].startswith('i_') or lLine[0].startswith('o_') or lLine[0].startswith('io_')):
+                              lFailureLines.append(iLineNumber + 1)
+                        if self.port_direction == 'Suffix':
+                          if not(lLine[0].endswith('_i') or lLine[0].endswith('_o') or lLine[0].endswith('_io')):
+                              lFailureLines.append(iLineNumber + 1)
                 if re.match('^\s*port', sLine.lower()):
                     fPortMapFound = True
             if re.match('\s*entity', sLine.lower()):
@@ -566,7 +577,7 @@ class rule_025(entity_rule):
     def __init__(self):
         entity_rule.__init__(self)
         self.identifier = '025'
-        self.description = 'Closing parenthesis must be on a line by itself and above the "end" keyword.'
+        self.description = 'Indention of closing parenthesis should be two spaces.'
 
     def analyze(self, lines):
         lFailureLines = []
@@ -774,7 +785,7 @@ class rule_033(entity_rule):
     def __init__(self):
         entity_rule.__init__(self)
         self.identifier = '033'
-        self.description = 'Closing parenthesis must be on a line by itself and above the "port" keyword.'
+        self.description = 'Closing parenthesis should be 2 spaces.'
 
     def analyze(self, lines):
         lFailureLines = []
