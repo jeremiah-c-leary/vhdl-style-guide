@@ -273,7 +273,7 @@ class testRuleEntityMethods(unittest.TestCase):
     def test_rule_020(self):
         oRule = rule_entity.rule_020()
 
-        dExpected = [33,63]
+        dExpected = [63,91]
         oRule.analyze(lLines)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -461,7 +461,7 @@ class testRuleEntityMethods(unittest.TestCase):
     def test_rule_033(self):
         oRule = rule_entity.rule_033()
 
-        dExpected = [98]
+        dExpected = [85,117]
         oRule.analyze(lLines)
         self.assertEqual(oRule.violations, dExpected)
 

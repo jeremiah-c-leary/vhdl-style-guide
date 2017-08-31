@@ -440,7 +440,7 @@ class rule_020(entity_rule):
         fPortMapFound = False
         for iLineNumber, sLine in enumerate(lines):
             if fEntityFound:
-                if re.match('^\s*end', sLine.lower()):
+                if re.match('^\s*end\s\s*entity', sLine.lower()):
                     if re.match('^\s*end\s\s+', sLine.lower()):
                         lFailureLines.append(iLineNumber + 1)
                     fEntityFound = False
@@ -466,8 +466,9 @@ class rule_021(entity_rule):
             if fEntityFound:
                 if re.match('^\s*end', sLine.lower()):
                     lLine = sLine.split()
-                    if lLine[1] != lLine[1].upper():
-                        lFailureLines.append(iLineNumber + 1)
+                    if len(lLine) > 2:
+                        if lLine[2] != lLine[2].upper():
+                            lFailureLines.append(iLineNumber + 1)
                     fEntityFound = False
             if re.match('\s*entity', sLine.lower()):
                 fEntityFound = True
@@ -586,6 +587,9 @@ class rule_025(entity_rule):
         fPortMapFound = False
         for iLineNumber, sLine in enumerate(lines):
             if fEntityFound:
+                if re.match('^\s*end', sLine.lower()):
+                    fEntityFound = False
+                    fPortMapFound = False
                 if fPortMapFound:
                     if re.match('^\s*\)', sLine):
                         if not re.match('^\s\s\)', sLine):
@@ -799,14 +803,14 @@ class rule_033(entity_rule):
                     if re.match('^\s*\)', sLine):
                         if not re.match('^\s\s\)', sLine):
                             lFailureLines.append(iLineNumber + 1)
-                        else:
-                            fClosingParenFound = True
+#                        else:
+#                            fClosingParenFound = True
                     if re.match('^\s*port\s', sLine.lower()):
                         fEntityFound = False
                         fGenericMapFound = False
-                        if not fClosingParenFound:
-                            lFailureLines.append(iLineNumber + 1)
-                        fClosingParenFound = False
+#                        if not fClosingParenFound:
+#                            lFailureLines.append(iLineNumber + 1)
+#                        fClosingParenFound = False
                 if re.match('^\s*generic', sLine.lower()):
                     fGenericMapFound = True
             if re.match('\s*entity', sLine.lower()):
