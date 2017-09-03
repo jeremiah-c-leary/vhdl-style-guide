@@ -57,6 +57,11 @@ class list():
         self.rules.append(rule_entity.rule_035())
         self.rules.append(rule_entity.rule_036())
         self.rules.append(rule_entity.rule_037())
+        self.rules.append(rule_entity.rule_038())
+        self.rules.append(rule_entity.rule_039())
+        self.rules.append(rule_entity.rule_040())
+        self.rules.append(rule_entity.rule_041())
+        self.rules.append(rule_entity.rule_042())
 
     def check_rules(self, lines):
         dRuleViolations = {}
