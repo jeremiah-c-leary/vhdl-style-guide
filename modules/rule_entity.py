@@ -918,3 +918,129 @@ class rule_037(entity_rule):
                 fEntityFound = True
         self.violations = lFailureLines
 
+
+class rule_038(entity_rule):
+    '''Entity rule 038 checks for a single space after the "entity" keyword in the closing of the entity.'''
+
+    def __init__(self):
+        entity_rule.__init__(self)
+        self.identifier = '038'
+        self.description = 'Reduce spaces after "entity" keyword to one.'
+
+    def analyze(self, lines):
+        lFailureLines = []
+        fEntityFound = False
+        fPortMapFound = False
+        for iLineNumber, sLine in enumerate(lines):
+            if fEntityFound:
+                if re.match('^\s*end\s\s*entity', sLine.lower()):
+                    if re.match('^\s*end\s\s*entity\s\s+', sLine.lower()):
+                        lFailureLines.append(iLineNumber + 1)
+                    fEntityFound = False
+                    fPortMapFound = False
+            if re.match('\s*entity', sLine.lower()):
+                fEntityFound = True
+        self.violations = lFailureLines
+
+
+class rule_039(entity_rule):
+    '''Entity rule 039 checks the "entity" keyword is lower case in the closing of the entity.'''
+
+    def __init__(self):
+        entity_rule.__init__(self)
+        self.identifier = '039'
+        self.description = 'Change "entity" keyword to lower case.'
+
+    def analyze(self, lines):
+        lFailureLines = []
+        fEntityFound = False
+        fPortMapFound = False
+        for iLineNumber, sLine in enumerate(lines):
+            if fEntityFound:
+                if re.match('^\s*end\s\s*entity', sLine.lower()):
+                    lLine = sLine.split()
+                    if len(lLine) >= 3:
+                        if not lLine[1] == 'entity':
+                            lFailureLines.append(iLineNumber + 1)
+                    fEntityFound = False
+                    fPortMapFound = False
+            if re.match('\s*entity', sLine.lower()):
+                fEntityFound = True
+        self.violations = lFailureLines
+
+
+class rule_040(entity_rule):
+    '''Entity rule 040 checks the closing parenthesis for generics are on a line by itself and one line above the "port" keyword.'''
+
+    def __init__(self):
+        entity_rule.__init__(self)
+        self.identifier = '040'
+        self.description = 'Closing parenthesis must be on a line by itself and above the "port" keyword.'
+
+    def analyze(self, lines):
+        lFailureLines = []
+        fEntityFound = False
+        for iLineNumber, sLine in enumerate(lines):
+            if fEntityFound:
+                if re.match('^\s*port', sLine.lower()):
+                    if not re.match('^\s*\)', lines[iLineNumber - 1]):                 
+                        lFailureLines.append(iLineNumber + 1)
+                    fEntityFound = False
+            if re.match('\s*entity', sLine.lower()):
+                fEntityFound = True
+        self.violations = lFailureLines
+
+
+class rule_041(entity_rule):
+    '''Entity rule 041 checks generic names have G_ prefixe.'''
+
+    def __init__(self):
+        entity_rule.__init__(self)
+        self.identifier = '041'
+        self.description = 'Add G_ to generic name.'
+
+    def analyze(self, lines):
+        lFailureLines = []
+        fEntityFound = False
+        fGenericMapFound = False
+        for iLineNumber, sLine in enumerate(lines):
+            if fEntityFound:
+                if re.match('^\s*port\s*\(', sLine.lower()):
+                    fEntityFound = False
+                    fGenericMapFound = False
+                if fGenericMapFound:
+                    if re.match('^\s*\w\w+\s*:', sLine):
+                        lLine = sLine.lower().split()
+                        if not lLine[0].startswith('g_'):
+                            lFailureLines.append(iLineNumber + 1)
+                if re.match('^\s*generic\s\s*\(', sLine.lower()):
+                    fGenericMapFound = True
+            if re.match('\s*entity', sLine.lower()):
+                fEntityFound = True
+        self.violations = lFailureLines
+
+
+class rule_042(entity_rule):
+    '''Entity rule 042 checks the "end" keyword, "entity" keyword, and entity name are on the same line.'''
+
+    def __init__(self):
+        entity_rule.__init__(self)
+        self.identifier = '042'
+        self.description = 'The "end" keyword, "entity" keyword and entity name need to be on the same line.'
+
+    def analyze(self, lines):
+        lFailureLines = []
+        fEntityFound = False
+        fPortMapFound = False
+        for iLineNumber, sLine in enumerate(lines):
+            if fEntityFound:
+                if re.match('^\s*end\s\s*entity', sLine.lower()):
+                    lLine = sLine.split()
+                    if not len(lLine) >= 3:
+                        if not (lLine[0] == 'end' and lLine[1] == 'entity' and not lLine[2].startswith('--')):
+                            lFailureLines.append(iLineNumber + 1)
+                    fEntityFound = False
+                    fPortMapFound = False
+            if re.match('\s*entity', sLine.lower()):
+                fEntityFound = True
+        self.violations = lFailureLines

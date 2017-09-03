@@ -517,5 +517,71 @@ class testRuleEntityMethods(unittest.TestCase):
         oRule.analyze(lLines)
         self.assertEqual(oRule.violations, dExpected)
 
+    def test_rule_038_exists(self):
+        oRule = rule_entity.rule_038()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'entity')
+        self.assertEqual(oRule.identifier, '038')
+
+    def test_rule_038(self):
+        oRule = rule_entity.rule_038()
+
+        dExpected = [33,63,123]
+        oRule.analyze(lLines)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_039_exists(self):
+        oRule = rule_entity.rule_039()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'entity')
+        self.assertEqual(oRule.identifier, '039')
+
+    def test_rule_039(self):
+        oRule = rule_entity.rule_039()
+
+        dExpected = [47,78]
+        oRule.analyze(lLines)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_040_exists(self):
+        oRule = rule_entity.rule_040()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'entity')
+        self.assertEqual(oRule.identifier, '040')
+
+    def test_rule_040(self):
+        oRule = rule_entity.rule_040()
+
+        dExpected = [25,56,98]
+        oRule.analyze(lLines)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_041_exists(self):
+        oRule = rule_entity.rule_041()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'entity')
+        self.assertEqual(oRule.identifier, '041')
+
+    def test_rule_041(self):
+        oRule = rule_entity.rule_041()
+
+        dExpected = [67,96,116]
+        oRule.analyze(lLines)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_042_exists(self):
+        oRule = rule_entity.rule_042()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'entity')
+        self.assertEqual(oRule.identifier, '042')
+
+    def test_rule_042(self):
+        oRule = rule_entity.rule_042()
+
+        dExpected = [103]
+        oRule.analyze(lLines)
+        self.assertEqual(oRule.violations, dExpected)
+
+
 if __name__ == '__main__':
     unittest.main()
