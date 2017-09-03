@@ -330,7 +330,7 @@ class testRuleEntityMethods(unittest.TestCase):
         oRule = rule_entity.rule_023()
         oRule.port_direction = 'Suffix'
 
-        dExpected = [9,10,11,12,13,14,26,27,28,29,30,31,40,41,42,43,44,45,57,58,59,60,61,62,71,72,73,74,75,76,87,88,89,120]
+        dExpected = [9,10,11,12,13,14,26,27,28,29,30,31,40,41,42,43,44,45,57,58,59,60,61,62,71,72,73,74,75,76,87,88,89,120, 129,130,131]
         oRule.analyze(lLines)
         self.assertEqual(oRule.violations, dExpected)
 

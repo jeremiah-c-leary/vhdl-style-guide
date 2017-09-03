@@ -122,3 +122,14 @@ entity ENTITY1 is
   );
 end entity  ENTITY1
 
+-- Check if no generic is present
+
+entity ENTITY1 is
+  port (
+    I_PORT1 : in    std_logic;
+    O_PORT2 : out   std_logic;
+    IO_PORT3 : inout std_logic
+  );
+end entity ENTITY1
+
+

@@ -980,12 +980,17 @@ class rule_040(entity_rule):
     def analyze(self, lines):
         lFailureLines = []
         fEntityFound = False
+        fGenericMapFound = False
         for iLineNumber, sLine in enumerate(lines):
             if fEntityFound:
                 if re.match('^\s*port', sLine.lower()):
-                    if not re.match('^\s*\)', lines[iLineNumber - 1]):                 
-                        lFailureLines.append(iLineNumber + 1)
+                    if fGenericMapFound:
+                        if not re.match('^\s*\)', lines[iLineNumber - 1]):                 
+                            lFailureLines.append(iLineNumber + 1)
                     fEntityFound = False
+                    fGenericMapFound = False
+                if re.match('^\s*generic\s\s*\(', sLine.lower()):
+                    fGenericMapFound = True
             if re.match('\s*entity', sLine.lower()):
                 fEntityFound = True
         self.violations = lFailureLines
