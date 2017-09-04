@@ -94,31 +94,60 @@ class testRuleArchitectureMethods(unittest.TestCase):
         oRule.analyze(lLines)
         self.assertEqual(oRule.violations, dExpected)
 
-#    def test_rule_007_exists(self):
-#        oRule = rule_architecture.rule_007()
-#        self.assertTrue(oRule)
-#        self.assertEqual(oRule.name, 'architecture')
-#        self.assertEqual(oRule.identifier, '007')
-#
-#    def test_rule_007(self):
-#        oRule = rule_architecture.rule_007()
-#
-#        dExpected = [16,23,26,29]
-#        oRule.analyze(lLines)
-#        self.assertEqual(oRule.violations, dExpected)
-#
-#    def test_rule_008_exists(self):
-#        oRule = rule_architecture.rule_008()
-#        self.assertTrue(oRule)
-#        self.assertEqual(oRule.name, 'architecture')
-#        self.assertEqual(oRule.identifier, '008')
-#
-#    def test_rule_008(self):
-#        oRule = rule_architecture.rule_008()
-#
-#        dExpected = [14,16,26,29]
-#        oRule.analyze(lLines)
-#        self.assertEqual(oRule.violations, dExpected)
+    def test_rule_007(self):
+        oRule = rule_architecture.rule_007()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'architecture')
+        self.assertEqual(oRule.identifier, '007')
+        dExpected = [22]
+        oRule.analyze(lLines)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_008(self):
+        oRule = rule_architecture.rule_008()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'architecture')
+        self.assertEqual(oRule.identifier, '008')
+        dExpected = [24,31]
+        oRule.analyze(lLines)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_009(self):
+        oRule = rule_architecture.rule_009()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'architecture')
+        self.assertEqual(oRule.identifier, '009')
+        dExpected = [7,13,24,31]
+        oRule.analyze(lLines)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_010(self):
+        oRule = rule_architecture.rule_010()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'architecture')
+        self.assertEqual(oRule.identifier, '010')
+        dExpected = [13]
+        oRule.analyze(lLines)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_011(self):
+        oRule = rule_architecture.rule_011()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'architecture')
+        self.assertEqual(oRule.identifier, '011')
+        dExpected = [24]
+        oRule.analyze(lLines)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_012(self):
+        oRule = rule_architecture.rule_012()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'architecture')
+        self.assertEqual(oRule.identifier, '012')
+        dExpected = [7,18,31]
+        oRule.analyze(lLines)
+        self.assertEqual(oRule.violations, dExpected)
+
 
 if __name__ == '__main__':
     unittest.main()

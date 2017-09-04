@@ -16,14 +16,12 @@ class rule_001(architecture_rule):
     def __init__(self):
         architecture_rule.__init__(self)
         self.identifier = '001'
-        self.description = 'Remove spaces before architecture keyword.'
+        self.solution = 'Remove spaces before architecture keyword.'
 
     def analyze(self, lines):
-        lFailureLines = []
         for iLineNumber, sLine in enumerate(lines):
             if re.match('^\s\s*architecture', sLine.lower()):
-                lFailureLines.append(iLineNumber + 1)
-        self.violations = lFailureLines
+                self.add_violation(iLineNumber)
 
 
 class rule_002(architecture_rule):
@@ -32,16 +30,14 @@ class rule_002(architecture_rule):
     def __init__(self):
         architecture_rule.__init__(self)
         self.identifier = '002'
-        self.description = 'Remove extra spaces after architecture keyword.'
+        self.solution = 'Remove extra spaces after architecture keyword.'
 
     def analyze(self, lines):
-        lFailureLines = []
         for iLineNumber, sLine in enumerate(lines):
             if re.match('^\s*architecture', sLine.lower()):
                 if re.match('^\s*architecture\s\s*\w\w+\s\s*of\s\s*\w\w+\s\s*is', sLine.lower()):
                     if not re.match('^\s*architecture\s\w\w+\sof\s\w\w+\sis', sLine.lower()):
-                        lFailureLines.append(iLineNumber + 1)
-        self.violations = lFailureLines
+                        self.add_violation(iLineNumber)
 
 
 class rule_003(architecture_rule):
@@ -50,15 +46,13 @@ class rule_003(architecture_rule):
     def __init__(self):
         architecture_rule.__init__(self)
         self.identifier = '003'
-        self.description = 'Add blank line above architecture keyword.'
+        self.solution = 'Add blank line above architecture keyword.'
 
     def analyze(self, lines):
-        lFailureLines = []
         for iLineNumber, sLine in enumerate(lines):
             if re.match('^\s*architecture', sLine.lower()):
                 if not re.match('^\s*$', lines[iLineNumber - 1]):
-                    lFailureLines.append(iLineNumber + 1)
-        self.violations = lFailureLines
+                    self.add_violation(iLineNumber)
 
 
 class rule_004(architecture_rule):
@@ -67,15 +61,13 @@ class rule_004(architecture_rule):
     def __init__(self):
         architecture_rule.__init__(self)
         self.identifier = '004'
-        self.description = 'Change architecture keyword to lowercase.'
+        self.solution = 'Change architecture keyword to lowercase.'
 
     def analyze(self, lines):
-        lFailureLines = []
         for iLineNumber, sLine in enumerate(lines):
             if re.match('^\s*architecture', sLine.lower()):
                 if not re.match('^\s*architecture', sLine):
-                    lFailureLines.append(iLineNumber + 1)
-        self.violations = lFailureLines
+                    self.add_violation(iLineNumber)
 
 
 class rule_005(architecture_rule):
@@ -84,18 +76,16 @@ class rule_005(architecture_rule):
     def __init__(self):
         architecture_rule.__init__(self)
         self.identifier = '005'
-        self.description = 'Change use keyword to lowercase.'
+        self.solution = 'Change use keyword to lowercase.'
 
     def analyze(self, lines):
-        lFailureLines = []
         for iLineNumber, sLine in enumerate(lines):
             if re.match('^\s*architecture', sLine.lower()):
                 lLine = sLine.lower().split()
                 if len(lLine) < 3:
-                    lFailureLines.append(iLineNumber + 1)
+                    self.add_violation(iLineNumber)
                 elif not lLine[2] == "of":
-                    lFailureLines.append(iLineNumber + 1)
-        self.violations = lFailureLines
+                    self.add_violation(iLineNumber)
 
 
 class rule_006(architecture_rule):
@@ -104,66 +94,140 @@ class rule_006(architecture_rule):
     def __init__(self):
         architecture_rule.__init__(self)
         self.identifier = '006'
-        self.description = 'Change use keyword to lowercase.'
+        self.solution = 'Change use keyword to lowercase.'
 
     def analyze(self, lines):
-        lFailureLines = []
         for iLineNumber, sLine in enumerate(lines):
             if re.match('^\s*architecture', sLine.lower()):
                 lLine = sLine.lower().split()
                 if len(lLine) < 5:
-                    lFailureLines.append(iLineNumber + 1)
+                    self.add_violation(iLineNumber)
                 elif not lLine[4] == "is":
-                    lFailureLines.append(iLineNumber + 1)
-        self.violations = lFailureLines
+                    self.add_violation(iLineNumber)
 
 
+class rule_007(architecture_rule):
+    '''Architecture rule 007 checks for spaces at the beginning of the line for the "begin" keyword.'''
 
-#class rule_006(architecture_rule):
-#    '''Architecture rule 006 checks for a single space after the use keyword.'''
-#
-#    def __init__(self):
-#        architecture_rule.__init__(self)
-#        self.identifier = '006'
-#        self.description = 'Remove extra spaces after use keyword.'
-#
-#    def analyze(self, lines):
-#        lFailureLines = []
-#        for iLineNumber, sLine in enumerate(lines):
-#            if re.match('^\s*use\s\s+', sLine.lower()):
-#                lFailureLines.append(iLineNumber + 1)
-#        self.violations = lFailureLines
-#
-#
-#class rule_007(architecture_rule):
-#    '''Architecture rule 007 checks for a blank line above the "use" keyword.'''
-#
-#    def __init__(self):
-#        architecture_rule.__init__(self)
-#        self.identifier = '007'
-#        self.description = 'Remove blank line above use keyword.'
-#
-#    def analyze(self, lines):
-#        lFailureLines = []
-#        for iLineNumber, sLine in enumerate(lines):
-#            if re.match('^\s*use', sLine.lower()):
-#                if re.match('^\s*$', lines[iLineNumber - 1]):
-#                    lFailureLines.append(iLineNumber + 1)
-#        self.violations = lFailureLines
-#
-#
-#class rule_008(architecture_rule):
-#    '''Architecture rule 008 checks indentation of the use keyword.'''
-#
-#    def __init__(self):
-#        architecture_rule.__init__(self)
-#        self.identifier = '008'
-#        self.description = 'Change indent of use keyword to 2 spaces.'
-#
-#    def analyze(self, lines):
-#        lFailureLines = []
-#        for iLineNumber, sLine in enumerate(lines):
-#            if re.match('^\s*use', sLine.lower()):
-#                if not re.match('^\s\suse', sLine.lower()):
-#                    lFailureLines.append(iLineNumber + 1)
-#        self.violations = lFailureLines
+    def __init__(self):
+        architecture_rule.__init__(self)
+        self.identifier = '007'
+        self.solution = 'Remove spaces before "begin" keyword.'
+
+    def analyze(self, lines):
+        fArchitectureFound = False
+        for iLineNumber, sLine in enumerate(lines):
+            if fArchitectureFound:
+                if re.match('^\s*begin', sLine.lower()):
+                    if re.match('^\s\s*begin', sLine.lower()):
+                        self.add_violation(iLineNumber)
+                    fArchitectureFound = False
+            if re.match('^\s*architecture', sLine.lower()):
+                fArchitectureFound = True
+
+
+class rule_008(architecture_rule):
+    '''Architecture rule 008 checks for spaces at the beginning of the line for the "end architecture" keywords.'''
+
+    def __init__(self):
+        architecture_rule.__init__(self)
+        self.identifier = '008'
+        self.solution = 'Remove spaces before "end" keyword.'
+
+    def analyze(self, lines):
+        fArchitectureFound = False
+        for iLineNumber, sLine in enumerate(lines):
+            if fArchitectureFound:
+                if re.match('^\s*end\s\s*architecture', sLine.lower()):
+                    if re.match('^\s\s*end', sLine.lower()):
+                        self.add_violation(iLineNumber)
+                    fArchitectureFound = False
+            if re.match('^\s*architecture', sLine.lower()):
+                fArchitectureFound = True
+
+
+class rule_009(architecture_rule):
+    '''Architecture rule 009 checks for the "end" and "architecture" keyword are lower case.'''
+
+    def __init__(self):
+        architecture_rule.__init__(self)
+        self.identifier = '009'
+        self.solution = 'Ensure "end" and "architecture" keywords are lower case.'
+
+    def analyze(self, lines):
+        fArchitectureFound = False
+        for iLineNumber, sLine in enumerate(lines):
+            if fArchitectureFound:
+                if re.match('^\s*end\s\s*architecture', sLine.lower()):
+                    if not re.match('^\s*end\s\s*architecture', sLine):
+                        self.add_violation(iLineNumber)
+                    fArchitectureFound = False
+            if re.match('^\s*architecture', sLine.lower()):
+                fArchitectureFound = True
+
+class rule_010(architecture_rule):
+    '''Architecture rule 010 checks for the entity name exists on the same line as the "end" and "architecture" keywords.'''
+
+    def __init__(self):
+        architecture_rule.__init__(self)
+        self.identifier = '010'
+        self.solution = 'Add architecture name.'
+
+    def analyze(self, lines):
+        fArchitectureFound = False
+        for iLineNumber, sLine in enumerate(lines):
+            if fArchitectureFound:
+                if re.match('^\s*end\s\s*architecture', sLine.lower()):
+                    lLine = sLine.split()
+                    if len(lLine) > 2:
+                        if lLine[2].startswith('--'):
+                            self.add_violation(iLineNumber)
+                    else:
+                        self.add_violation(iLineNumber)
+                    fArchitectureFound = False
+            if re.match('^\s*architecture', sLine.lower()):
+                fArchitectureFound = True
+
+
+class rule_011(architecture_rule):
+    '''Architecture rule 011 checks the entity name is upper case on the closing "end architecture" line.'''
+
+    def __init__(self):
+        architecture_rule.__init__(self)
+        self.identifier = '011'
+        self.solution = 'Uppercase architecture name.'
+
+    def analyze(self, lines):
+        fArchitectureFound = False
+        for iLineNumber, sLine in enumerate(lines):
+            if fArchitectureFound:
+                if re.match('^\s*end\s\s*architecture', sLine.lower()):
+                    lLine = sLine.split()
+                    if len(lLine) > 2:
+                        if not lLine[2].startswith('--'):
+                            if not lLine[2] == lLine[2].upper():
+                                self.add_violation(iLineNumber)
+                    fArchitectureFound = False
+            if re.match('^\s*architecture', sLine.lower()):
+                fArchitectureFound = True
+
+
+class rule_012(architecture_rule):
+    '''Architecture rule 012 checks for a single space between the "end" and "architecture" keywords.'''
+
+    def __init__(self):
+        architecture_rule.__init__(self)
+        self.identifier = '012'
+        self.solution = 'Single space between "end" and "architecture" keywords.'
+
+    def analyze(self, lines):
+        fArchitectureFound = False
+        for iLineNumber, sLine in enumerate(lines):
+            if fArchitectureFound:
+                if re.match('^\s*end\s\s*architecture', sLine.lower()):
+                    if (len(sLine.split()) > 2):
+                        if not re.match('^\s*end\sarchitecture\s\w', sLine.lower()):
+                            self.add_violation(iLineNumber)
+                    fArchitectureFound = False
+            if re.match('^\s*architecture', sLine.lower()):
+                fArchitectureFound = True

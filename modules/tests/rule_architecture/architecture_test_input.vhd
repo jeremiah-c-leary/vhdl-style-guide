@@ -4,29 +4,29 @@ architecture ARCH of ENTITY is
 
 begin
 
-end ARCH;
+End  architecture ARCH;
 
   architecture ARCH of ENTITY is
 
 begin
 
-end ARCH
+end Architecture
 architecture  ARCH  of  ENTITY  is
 
 begin
 
-end ARCH
+end  architecture ARCH
 
   Architecture ARch Of entity Is
 
  begin
 
-end ArCh
+ eND architecture ArCh
 
 architecture ARch
  of ENTITY is
 
 begin
 
-end ARCH
+ end archITecture   ARCH
 
