@@ -151,4 +151,28 @@ class rule_008(signal_rule):
                     self.add_violation(iLineNumber)
 
 
-# check for alignment of :'s across multiple lines
+class rule_009(signal_rule):
+    '''Signal rule 009 checks the colons are in the same column for all signals.'''
+
+    def __init__(self):
+        signal_rule.__init__(self)
+        self.identifier = '009'
+        self.solution = 'Align colon with right most colon.'
+
+    def analyze(self, lines):
+        iMaximumColumn = 0
+        # Search for the largest column that contains the first colon
+        for iLineNumber, sLine in enumerate(lines):
+            if not self._isSignal(sLine):
+                continue
+            iCurrentColumn = sLine.find(':')
+            if iMaximumColumn < iCurrentColumn:
+                iMaximumColumn = iCurrentColumn
+        self.solution = 'Align colon to column ' + str(iMaximumColumn + 1) + '.'
+        # Compare each signals colon column to the largest found
+        for iLineNumber, sLine in enumerate(lines):
+            if not self._isSignal(sLine):
+                continue
+            iCurrentColumn = sLine.find(':')
+            if not iMaximumColumn == sLine.find(':'):
+                self.add_violation(iLineNumber)

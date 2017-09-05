@@ -16,7 +16,7 @@ oFile.close()
 
 class testRuleEntityMethods(unittest.TestCase):
 
-    def test_rule_001_exists(self):
+    def test_rule_001(self):
         oRule = rule_signal.rule_001()
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'signal')
@@ -25,7 +25,7 @@ class testRuleEntityMethods(unittest.TestCase):
         oRule.analyze(lLines)
         self.assertEqual(oRule.violations, dExpected)
 
-    def test_rule_002_exists(self):
+    def test_rule_002(self):
         oRule = rule_signal.rule_002()
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'signal')
@@ -34,7 +34,7 @@ class testRuleEntityMethods(unittest.TestCase):
         oRule.analyze(lLines)
         self.assertEqual(oRule.violations, dExpected)
 
-    def test_rule_003_exists(self):
+    def test_rule_003(self):
         oRule = rule_signal.rule_003()
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'signal')
@@ -43,7 +43,7 @@ class testRuleEntityMethods(unittest.TestCase):
         oRule.analyze(lLines)
         self.assertEqual(oRule.violations, dExpected)
 
-    def test_rule_004_exists(self):
+    def test_rule_004(self):
         oRule = rule_signal.rule_004()
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'signal')
@@ -52,7 +52,7 @@ class testRuleEntityMethods(unittest.TestCase):
         oRule.analyze(lLines)
         self.assertEqual(oRule.violations, dExpected)
 
-    def test_rule_005_exists(self):
+    def test_rule_005(self):
         oRule = rule_signal.rule_005()
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'signal')
@@ -61,7 +61,7 @@ class testRuleEntityMethods(unittest.TestCase):
         oRule.analyze(lLines)
         self.assertEqual(oRule.violations, dExpected)
 
-    def test_rule_006_exists(self):
+    def test_rule_006(self):
         oRule = rule_signal.rule_006()
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'signal')
@@ -70,7 +70,7 @@ class testRuleEntityMethods(unittest.TestCase):
         oRule.analyze(lLines)
         self.assertEqual(oRule.violations, dExpected)
 
-    def test_rule_007_exists(self):
+    def test_rule_007(self):
         oRule = rule_signal.rule_007()
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'signal')
@@ -97,6 +97,16 @@ class testRuleEntityMethods(unittest.TestCase):
         oRule.prefixes = ['a_','b_','d_','e_']
         oRule.analyze(lLines)
         self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_009(self):
+        oRule = rule_signal.rule_009()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'signal')
+        self.assertEqual(oRule.identifier, '009')
+        dExpected = [5,6,7,8,9,10,11,12,13,14,15,16,19,21]
+        oRule.analyze(lLines)
+        self.assertEqual(oRule.violations, dExpected)
+
 
 if __name__ == '__main__':
     unittest.main()
