@@ -15,3 +15,9 @@ class rule():
 
     def add_violation(self, lineNumber):
         self.violations.append(lineNumber + 1)
+
+    def _isLowercase(self, sString):
+        if sString == sString.lower():
+            return True
+        else:
+            return False
