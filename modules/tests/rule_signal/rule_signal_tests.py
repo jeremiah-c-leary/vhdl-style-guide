@@ -79,5 +79,24 @@ class testRuleEntityMethods(unittest.TestCase):
         oRule.analyze(lLines)
         self.assertEqual(oRule.violations, dExpected)
 
+    def test_rule_008_with_no_prefixes(self):
+        oRule = rule_signal.rule_008()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'signal')
+        self.assertEqual(oRule.identifier, '008')
+        dExpected = []
+        oRule.analyze(lLines)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_008_with_prefixes(self):
+        oRule = rule_signal.rule_008()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'signal')
+        self.assertEqual(oRule.identifier, '008')
+        dExpected = [9,12,13,14,15,16,19,21]
+        oRule.prefixes = ['a_','b_','d_','e_']
+        oRule.analyze(lLines)
+        self.assertEqual(oRule.violations, dExpected)
+
 if __name__ == '__main__':
     unittest.main()

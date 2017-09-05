@@ -93,6 +93,7 @@ class list():
         self.rules.append(rule_signal.rule_005())
         self.rules.append(rule_signal.rule_006())
         self.rules.append(rule_signal.rule_007())
+        self.rules.append(rule_signal.rule_008())
 
     def check_rules(self, lines):
         dRuleViolations = {}

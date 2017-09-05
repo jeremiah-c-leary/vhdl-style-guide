@@ -123,5 +123,32 @@ class rule_007(signal_rule):
                 if ':=' in sLine:
                     self.add_violation(iLineNumber)
 
-# check signal name prefixes
+
+class rule_008(signal_rule):
+    '''Signal rule 008 checks for prefixes in signal names.'''
+
+    def __init__(self):
+        signal_rule.__init__(self)
+        self.identifier = '008'
+        self.solution = 'Remove default assignment.'
+        self.prefixes = None
+
+    def analyze(self, lines):
+        if not self.prefixes:
+            return
+        for iLineNumber, sLine in enumerate(lines):
+            if not self._isSignal(sLine):
+                continue
+            for sSignalName in sLine.split(':')[0].split():
+                if sSignalName.lower() == 'signal':
+                    continue
+                fPrefixFound = False
+                for sPrefixName in self.prefixes:
+                    if sSignalName.startswith(sPrefixName):
+                        fPrefixFound = True
+                        break
+                if not fPrefixFound:
+                    self.add_violation(iLineNumber)
+
+
 # check for alignment of :'s across multiple lines

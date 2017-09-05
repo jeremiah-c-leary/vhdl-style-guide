@@ -2,23 +2,23 @@
 
 architecture ARCH of ENTITY is
 
-  signal sig : std_logic_vector(31 downto 0);
-   signal SIg :  std_logic_vector(31 downto 0);
-  Signal sig: std_logic_vector(31 downto 0);
- signal  sig : std_logic_vector(31 downto 0);
+  signal a_sig : std_logic_vector(31 downto 0);
+   signal a_SIg :  std_logic_vector(31 downto 0);
+  Signal b_sig: std_logic_vector(31 downto 0);
+ signal  b_sig : std_logic_vector(31 downto 0);
   signal  siG : std_logic_vector(31 downto 0);
-  signal sig :std_logic_vector(31 downto 0);
-  siGNal sig: std_logic_vector(31 downto 0) := "0";
+  signal d_sig :std_logic_vector(31 downto 0);
+  siGNal e_sig: std_logic_vector(31 downto 0) := "0";
   signal   SIg : std_logic_vector(31 downto 0);
   signAL sig :   std_logic_vector(31 downto 0);
   signal sig :std_logic_vector(31 downto 0);
      signal sIg : std_logic_vector(31 downto 0);
   signal sig :   std_logic_vector(31 downto 0) := (others => '0');
 
-  signal sig1, sig2 : std_logic;
-  signal sig1, sig2: std_logic;
-  signal sig1, sig2 :std_logic;
-  signal sig1, sig2:std_logic;
+  signal e_sig1, d_sig2 : std_logic;
+  signal a_sig1, c_sig2: std_logic;
+  signal b_sig1, b_sig2 :std_logic;
+  signal c_sig1, a_sig2:std_logic;
 
 begin
 
