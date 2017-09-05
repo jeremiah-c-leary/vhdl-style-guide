@@ -22,7 +22,7 @@ class rule_001(entity_rule):
     def __init__(self):
         entity_rule.__init__(self)
         self.identifier = '001'
-        self.description = 'Remove spaces before entity keyword.'
+        self.solution = 'Remove spaces before entity keyword.'
 
     def analyze(self, lines):
         lFailureLines = []
@@ -38,7 +38,7 @@ class rule_002(entity_rule):
     def __init__(self):
         entity_rule.__init__(self)
         self.identifier = '002'
-        self.description = 'Remove extra spaces after entity keyword.'
+        self.solution = 'Remove extra spaces after entity keyword.'
 
     def analyze(self, lines):
         lFailureLines = []
@@ -54,7 +54,7 @@ class rule_003(entity_rule):
     def __init__(self):
         entity_rule.__init__(self)
         self.identifier = '003'
-        self.description = 'Add blank line above entity keyword.'
+        self.solution = 'Add blank line above entity keyword.'
 
     def analyze(self, lines):
         lFailureLines = []
@@ -71,7 +71,7 @@ class rule_004(entity_rule):
     def __init__(self):
         entity_rule.__init__(self)
         self.identifier = '004'
-        self.description = 'Change "entity" keyword to lowercase.'
+        self.solution = 'Change "entity" keyword to lowercase.'
 
     def analyze(self, lines):
         lFailureLines = []
@@ -88,7 +88,7 @@ class rule_005(entity_rule):
     def __init__(self):
         entity_rule.__init__(self)
         self.identifier = '005'
-        self.description = 'Add "is" keyword to same line as "entity" keyword.'
+        self.solution = 'Add "is" keyword to same line as "entity" keyword.'
 
     def analyze(self, lines):
         lFailureLines = []
@@ -104,7 +104,7 @@ class rule_006(entity_rule):
     def __init__(self):
         entity_rule.__init__(self)
         self.identifier = '006'
-        self.description = 'Change "is" keyword to lowercase.'
+        self.solution = 'Change "is" keyword to lowercase.'
 
     def analyze(self, lines):
         lFailureLines = []
@@ -120,7 +120,7 @@ class rule_007(entity_rule):
     def __init__(self):
         entity_rule.__init__(self)
         self.identifier = '007'
-        self.description = 'Remove extra spaces before "is" keyword.'
+        self.solution = 'Remove extra spaces before "is" keyword.'
 
     def analyze(self, lines):
         lFailureLines = []
@@ -137,7 +137,7 @@ class rule_008(entity_rule):
     def __init__(self):
         entity_rule.__init__(self)
         self.identifier = '008'
-        self.description = 'Remove blank lines above "port" keyword.'
+        self.solution = 'Remove blank lines above "port" keyword.'
 
     def analyze(self, lines):
         lFailureLines = []
@@ -154,7 +154,7 @@ class rule_009(entity_rule):
     def __init__(self):
         entity_rule.__init__(self)
         self.identifier = '009'
-        self.description = 'Change indent of "port" keyword to 2 spaces.'
+        self.solution = 'Change indent of "port" keyword to 2 spaces.'
 
     def analyze(self, lines):
         lFailureLines = []
@@ -180,7 +180,7 @@ class rule_010(entity_rule):
     def __init__(self):
         entity_rule.__init__(self)
         self.identifier = '010'
-        self.description = 'Change spacing between "port" and "(" to one space.'
+        self.solution = 'Change spacing between "port" and "(" to one space.'
 
     def analyze(self, lines):
         lFailureLines = []
@@ -207,7 +207,7 @@ class rule_011(entity_rule):
     def __init__(self):
         entity_rule.__init__(self)
         self.identifier = '011'
-        self.description = 'Change indent of port to 4 spaces.'
+        self.solution = 'Change indent of port to 4 spaces.'
 
     def analyze(self, lines):
         lFailureLines = []
@@ -234,7 +234,7 @@ class rule_012(entity_rule):
     def __init__(self):
         entity_rule.__init__(self)
         self.identifier = '012'
-        self.description = 'Reduce number of spaces after the colon to 1.'
+        self.solution = 'Reduce number of spaces after the colon to 1.'
 
     def analyze(self, lines):
         lFailureLines = []
@@ -261,7 +261,7 @@ class rule_013(entity_rule):
     def __init__(self):
         entity_rule.__init__(self)
         self.identifier = '013'
-        self.description = 'Change number of spaces before "out" to 3.'
+        self.solution = 'Change number of spaces before "out" to 3.'
 
     def analyze(self, lines):
         lFailureLines = []
@@ -288,7 +288,7 @@ class rule_014(entity_rule):
     def __init__(self):
         entity_rule.__init__(self)
         self.identifier = '014'
-        self.description = 'Change the number of spaces after the "in" keyword to four spaces.'
+        self.solution = 'Change the number of spaces after the "in" keyword to four spaces.'
 
     def analyze(self, lines):
         lFailureLines = []
@@ -315,7 +315,7 @@ class rule_015(entity_rule):
     def __init__(self):
         entity_rule.__init__(self)
         self.identifier = '015'
-        self.description = 'Change the number of spaces after the "out" keyword to three spaces.'
+        self.solution = 'Change the number of spaces after the "out" keyword to three spaces.'
 
     def analyze(self, lines):
         lFailureLines = []
@@ -342,7 +342,7 @@ class rule_016(entity_rule):
     def __init__(self):
         entity_rule.__init__(self)
         self.identifier = '016'
-        self.description = 'Change the number of spaces after the "inout" keyword to one space.'
+        self.solution = 'Change the number of spaces after the "inout" keyword to one space.'
 
     def analyze(self, lines):
         lFailureLines = []
@@ -369,7 +369,7 @@ class rule_017(entity_rule):
     def __init__(self):
         entity_rule.__init__(self)
         self.identifier = '017'
-        self.description = 'Change entity name to all uppercase.'
+        self.solution = 'Change entity name to all uppercase.'
 
     def analyze(self, lines):
         lFailureLines = []
@@ -387,7 +387,7 @@ class rule_018(entity_rule):
     def __init__(self):
         entity_rule.__init__(self)
         self.identifier = '018'
-        self.description = 'Change the number of spaces after the "inout" keyword to one space.'
+        self.solution = 'Change the number of spaces after the "inout" keyword to one space.'
 
     def analyze(self, lines):
         lFailureLines = []
@@ -410,7 +410,7 @@ class rule_019(entity_rule):
     def __init__(self):
         entity_rule.__init__(self)
         self.identifier = '019'
-        self.description = 'Change "end" keyword to lowercase.'
+        self.solution = 'Change "end" keyword to lowercase.'
 
     def analyze(self, lines):
         lFailureLines = []
@@ -432,7 +432,7 @@ class rule_020(entity_rule):
     def __init__(self):
         entity_rule.__init__(self)
         self.identifier = '020'
-        self.description = 'Reduce spaces after "end" keyword to one.'
+        self.solution = 'Reduce spaces after "end" keyword to one.'
 
     def analyze(self, lines):
         lFailureLines = []
@@ -456,7 +456,7 @@ class rule_021(entity_rule):
     def __init__(self):
         entity_rule.__init__(self)
         self.identifier = '021'
-        self.description = 'Uppercase entity name.'
+        self.solution = 'Uppercase entity name.'
 
     def analyze(self, lines):
         lFailureLines = []
@@ -481,7 +481,7 @@ class rule_022(entity_rule):
     def __init__(self):
         entity_rule.__init__(self)
         self.identifier = '022'
-        self.description = 'Uppercase port name.'
+        self.solution = 'Uppercase port name.'
 
     def analyze(self, lines):
         lFailureLines = []
@@ -513,7 +513,7 @@ class rule_023(entity_rule):
     def __init__(self):
         entity_rule.__init__(self)
         self.identifier = '023'
-        self.description = 'Add proper prefix or suffix indicating port direction.'
+        self.solution = 'Add proper prefix or suffix indicating port direction.'
         self.port_direction = 'Prefix'
 
     def configure(self, dConfig):
@@ -553,7 +553,7 @@ class rule_024(entity_rule):
     def __init__(self):
         entity_rule.__init__(self)
         self.identifier = '024'
-        self.description = 'Closing parenthesis must be on a line by itself and above the "end" keyword.'
+        self.solution = 'Closing parenthesis must be on a line by itself and above the "end" keyword.'
 
     def analyze(self, lines):
         lFailureLines = []
@@ -579,7 +579,7 @@ class rule_025(entity_rule):
     def __init__(self):
         entity_rule.__init__(self)
         self.identifier = '025'
-        self.description = 'Indention of closing parenthesis should be two spaces.'
+        self.solution = 'Indention of closing parenthesis should be two spaces.'
 
     def analyze(self, lines):
         lFailureLines = []
@@ -607,7 +607,7 @@ class rule_026(entity_rule):
     def __init__(self):
         entity_rule.__init__(self)
         self.identifier = '026'
-        self.description = 'Remove blank lines above "generic" keyword.'
+        self.solution = 'Remove blank lines above "generic" keyword.'
 
     def analyze(self, lines):
         lFailureLines = []
@@ -624,7 +624,7 @@ class rule_027(entity_rule):
     def __init__(self):
         entity_rule.__init__(self)
         self.identifier = '027'
-        self.description = 'Change indent of "generic" keyword to 2 spaces.'
+        self.solution = 'Change indent of "generic" keyword to 2 spaces.'
 
     def analyze(self, lines):
         lFailureLines = []
@@ -650,7 +650,7 @@ class rule_028(entity_rule):
     def __init__(self):
         entity_rule.__init__(self)
         self.identifier = '028'
-        self.description = 'Change spacing between "generic" and "(" to one space.'
+        self.solution = 'Change spacing between "generic" and "(" to one space.'
 
     def analyze(self, lines):
         lFailureLines = []
@@ -677,7 +677,7 @@ class rule_029(entity_rule):
     def __init__(self):
         entity_rule.__init__(self)
         self.identifier = '029'
-        self.description = 'Change indent of generic to 4 spaces.'
+        self.solution = 'Change indent of generic to 4 spaces.'
 
     def analyze(self, lines):
         lFailureLines = []
@@ -704,7 +704,7 @@ class rule_030(entity_rule):
     def __init__(self):
         entity_rule.__init__(self)
         self.identifier = '030'
-        self.description = 'Reduce number of spaces after the colon to 1.'
+        self.solution = 'Reduce number of spaces after the colon to 1.'
 
     def analyze(self, lines):
         lFailureLines = []
@@ -731,7 +731,7 @@ class rule_031(entity_rule):
     def __init__(self):
         entity_rule.__init__(self)
         self.identifier = '031'
-        self.description = 'Reduce number of spaces after the default assignment to 1.'
+        self.solution = 'Reduce number of spaces after the default assignment to 1.'
 
     def analyze(self, lines):
         lFailureLines = []
@@ -758,7 +758,7 @@ class rule_032(entity_rule):
     def __init__(self):
         entity_rule.__init__(self)
         self.identifier = '032'
-        self.description = 'Uppercase generic name.'
+        self.solution = 'Uppercase generic name.'
 
     def analyze(self, lines):
         lFailureLines = []
@@ -790,7 +790,7 @@ class rule_033(entity_rule):
     def __init__(self):
         entity_rule.__init__(self)
         self.identifier = '033'
-        self.description = 'Closing parenthesis should be 2 spaces.'
+        self.solution = 'Closing parenthesis should be 2 spaces.'
 
     def analyze(self, lines):
         lFailureLines = []
@@ -824,7 +824,7 @@ class rule_034(entity_rule):
     def __init__(self):
         entity_rule.__init__(self)
         self.identifier = '034'
-        self.description = 'Lowercase "generic" keyword.'
+        self.solution = 'Lowercase "generic" keyword.'
 
     def analyze(self, lines):
         lFailureLines = []
@@ -849,7 +849,7 @@ class rule_035(entity_rule):
     def __init__(self):
         entity_rule.__init__(self)
         self.identifier = '035'
-        self.description = 'Lowercase "port" keyword.'
+        self.solution = 'Lowercase "port" keyword.'
 
     def analyze(self, lines):
         lFailureLines = []
@@ -871,7 +871,7 @@ class rule_036(entity_rule):
     def __init__(self):
         entity_rule.__init__(self)
         self.identifier = '036'
-        self.description = 'Remove default assignment in port declaration'
+        self.solution = 'Remove default assignment in port declaration'
 
     def analyze(self, lines):
         lFailureLines = []
@@ -898,7 +898,7 @@ class rule_037(entity_rule):
     def __init__(self):
         entity_rule.__init__(self)
         self.identifier = '037'
-        self.description = 'Place multiple ports on their own lines.'
+        self.solution = 'Place multiple ports on their own lines.'
 
     def analyze(self, lines):
         lFailureLines = []
@@ -925,7 +925,7 @@ class rule_038(entity_rule):
     def __init__(self):
         entity_rule.__init__(self)
         self.identifier = '038'
-        self.description = 'Reduce spaces after "entity" keyword to one.'
+        self.solution = 'Reduce spaces after "entity" keyword to one.'
 
     def analyze(self, lines):
         lFailureLines = []
@@ -949,7 +949,7 @@ class rule_039(entity_rule):
     def __init__(self):
         entity_rule.__init__(self)
         self.identifier = '039'
-        self.description = 'Change "entity" keyword to lower case.'
+        self.solution = 'Change "entity" keyword to lower case.'
 
     def analyze(self, lines):
         lFailureLines = []
@@ -975,7 +975,7 @@ class rule_040(entity_rule):
     def __init__(self):
         entity_rule.__init__(self)
         self.identifier = '040'
-        self.description = 'Closing parenthesis must be on a line by itself and above the "port" keyword.'
+        self.solution = 'Closing parenthesis must be on a line by itself and above the "port" keyword.'
 
     def analyze(self, lines):
         lFailureLines = []
@@ -1002,7 +1002,7 @@ class rule_041(entity_rule):
     def __init__(self):
         entity_rule.__init__(self)
         self.identifier = '041'
-        self.description = 'Add G_ to generic name.'
+        self.solution = 'Add G_ to generic name.'
 
     def analyze(self, lines):
         lFailureLines = []
@@ -1031,7 +1031,7 @@ class rule_042(entity_rule):
     def __init__(self):
         entity_rule.__init__(self)
         self.identifier = '042'
-        self.description = 'The "end" keyword, "entity" keyword and entity name need to be on the same line.'
+        self.solution = 'The "end" keyword, "entity" keyword and entity name need to be on the same line.'
 
     def analyze(self, lines):
         lFailureLines = []
