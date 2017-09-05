@@ -1,12 +1,12 @@
 
 
-architecture ARCH of ENTITY is
+architecture Arch of ENTITY is
 
 begin
 
 End  architecture ARCH;
 
-  architecture ARCH of ENTITY is
+  architecture ARCH of EntITY is
 
 begin
 
@@ -17,7 +17,7 @@ begin
 
 end  architecture ARCH
 
-  Architecture ARch Of entity Is
+ Architecture ARch Of entity Is
 
  begin
 
@@ -30,3 +30,6 @@ begin
 
  end archITecture   ARCH
 
+architecture ARCH of ENTITY is
+begin
+end architecture ARCH;

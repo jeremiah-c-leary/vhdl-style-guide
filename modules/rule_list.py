@@ -2,6 +2,7 @@
 import rule_whitespace
 import rule_library
 import rule_entity
+import rule_architecture
 
 class list():
     ''' Contains a list of all rules to be checked.  It also contains methods to check the rules.'''
@@ -62,6 +63,24 @@ class list():
         self.rules.append(rule_entity.rule_040())
         self.rules.append(rule_entity.rule_041())
         self.rules.append(rule_entity.rule_042())
+        self.rules.append(rule_architecture.rule_001())
+        self.rules.append(rule_architecture.rule_002())
+        self.rules.append(rule_architecture.rule_003())
+        self.rules.append(rule_architecture.rule_004())
+        self.rules.append(rule_architecture.rule_005())
+        self.rules.append(rule_architecture.rule_006())
+        self.rules.append(rule_architecture.rule_007())
+        self.rules.append(rule_architecture.rule_008())
+        self.rules.append(rule_architecture.rule_009())
+        self.rules.append(rule_architecture.rule_010())
+        self.rules.append(rule_architecture.rule_011())
+        self.rules.append(rule_architecture.rule_012())
+        self.rules.append(rule_architecture.rule_013())
+        self.rules.append(rule_architecture.rule_014())
+        self.rules.append(rule_architecture.rule_015())
+        self.rules.append(rule_architecture.rule_016())
+        self.rules.append(rule_architecture.rule_017())
+        self.rules.append(rule_architecture.rule_018())
 
     def check_rules(self, lines):
         dRuleViolations = {}

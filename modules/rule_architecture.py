@@ -231,3 +231,107 @@ class rule_012(architecture_rule):
                     fArchitectureFound = False
             if re.match('^\s*architecture', sLine.lower()):
                 fArchitectureFound = True
+
+
+class rule_013(architecture_rule):
+    '''Architecture rule 013 checks the architecture name is upper case in the architecture declaration.'''
+
+    def __init__(self):
+        architecture_rule.__init__(self)
+        self.identifier = '013'
+        self.solution = 'Upper case architecture name.'
+
+    def analyze(self, lines):
+        for iLineNumber, sLine in enumerate(lines):
+            if re.match('^\s*architecture', sLine.lower()):
+                if re.match('^\s*architecture\s\s*\w\w+\s\s*of\s\s*\w\w+\s\s*is', sLine.lower()):
+                    lLine = sLine.split()
+                    if not lLine[1] == lLine[1].upper():
+                        self.add_violation(iLineNumber)
+
+
+class rule_014(architecture_rule):
+    '''Architecture rule 013 checks the entity name is upper case in the architecture declaration.'''
+
+    def __init__(self):
+        architecture_rule.__init__(self)
+        self.identifier = '014'
+        self.solution = 'Upper case entity name.'
+
+    def analyze(self, lines):
+        for iLineNumber, sLine in enumerate(lines):
+            if re.match('^\s*architecture', sLine.lower()):
+                if re.match('^\s*architecture\s\s*\w\w+\s\s*of\s\s*\w\w+\s\s*is', sLine.lower()):
+                    lLine = sLine.split()
+                    if not lLine[3] == lLine[3].upper():
+                        self.add_violation(iLineNumber)
+
+
+class rule_015(architecture_rule):
+    '''Architecture rule 015 checks for a blank line below the architecture keyword.'''
+
+    def __init__(self):
+        architecture_rule.__init__(self)
+        self.identifier = '015'
+        self.solution = 'Add blank line below architecture keyword.'
+
+    def analyze(self, lines):
+        for iLineNumber, sLine in enumerate(lines):
+            if re.match('^\s*architecture\s\s*\w\w+\s\s*of\s\s*\w\w+\s\s*is', sLine.lower()):
+                if not re.match('^\s*$', lines[iLineNumber + 1]):
+                    self.add_violation(iLineNumber)
+
+
+class rule_016(architecture_rule):
+    '''Architecture rule 016 checks for a blank line above the "begin" keyword.'''
+
+    def __init__(self):
+        architecture_rule.__init__(self)
+        self.identifier = '016'
+        self.solution = 'Add blank line above the "begin" keyword.'
+
+    def analyze(self, lines):
+        fArchitectureFound = False
+        for iLineNumber, sLine in enumerate(lines):
+            if fArchitectureFound:
+                if re.match('^\s*begin', sLine.lower()):
+                    if not re.match('^\s*$', lines[iLineNumber - 1]):
+                        self.add_violation(iLineNumber)
+                    fArchitectureFound = False
+            if re.match('^\s*architecture\s\s*\w\w+\s\s*of\s\s*\w\w+\s\s*is', sLine.lower()):
+                fArchitectureFound = True
+
+
+class rule_017(architecture_rule):
+    '''Architecture rule 017 checks for a blank line below the "begin" keyword.'''
+
+    def __init__(self):
+        architecture_rule.__init__(self)
+        self.identifier = '017'
+        self.solution = 'Add blank line below the "begin" keyword.'
+
+    def analyze(self, lines):
+        fArchitectureFound = False
+        for iLineNumber, sLine in enumerate(lines):
+            if fArchitectureFound:
+                if re.match('^\s*begin', sLine.lower()):
+                    if not re.match('^\s*$', lines[iLineNumber + 1]):
+                        self.add_violation(iLineNumber)
+                    fArchitectureFound = False
+            if re.match('^\s*architecture\s\s*\w\w+\s\s*of\s\s*\w\w+\s\s*is', sLine.lower()):
+                fArchitectureFound = True
+
+
+class rule_018(architecture_rule):
+    '''Architecture rule 018 checks for a blank line above the "end architecture" keywords.'''
+
+    def __init__(self):
+        architecture_rule.__init__(self)
+        self.identifier = '018'
+        self.solution = 'Add blank line above the "end architecture" keywords.'
+
+    def analyze(self, lines):
+        for iLineNumber, sLine in enumerate(lines):
+            if re.match('^\s*end\s\s*architecture\s\s*\w\w+', sLine.lower()):
+                if not re.match('^\s*$', lines[iLineNumber - 1]):
+                    self.add_violation(iLineNumber)
