@@ -5,6 +5,7 @@ import rule_entity
 import rule_architecture
 import rule_signal
 import rule_constant
+import rule_concurrent
 
 class list():
     ''' Contains a list of all rules to be checked.  It also contains methods to check the rules.'''
@@ -106,6 +107,11 @@ class list():
         self.rules.append(rule_constant.rule_007())
         self.rules.append(rule_constant.rule_008())
         self.rules.append(rule_constant.rule_009())
+
+        self.rules.append(rule_concurrent.rule_001())
+        self.rules.append(rule_concurrent.rule_002())
+        self.rules.append(rule_concurrent.rule_003())
+
 
     def check_rules(self, lines):
         dRuleViolations = {}

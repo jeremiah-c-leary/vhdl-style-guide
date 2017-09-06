@@ -1,4 +1,5 @@
 
+import re
 
 class rule():
 
@@ -21,3 +22,18 @@ class rule():
             return True
         else:
             return False
+
+    def _insideProcess(self, sString, fFlag):
+        if re.match('^\s*process', sString.lower()) or re.match('^\s*\w+\s*:\s*process', sString.lower()):
+            return True
+        elif re.match('^\s*end\s+process', sString.lower()):
+            return False
+        else:
+            return fFlag
+
+    def _isConcurrent(self, sString):
+        if re.match('^\s*\w+\s*<=', sString):
+            return True
+        else:
+            return False
+
