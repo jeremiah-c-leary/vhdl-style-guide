@@ -4,6 +4,7 @@ import rule_library
 import rule_entity
 import rule_architecture
 import rule_signal
+import rule_constant
 
 class list():
     ''' Contains a list of all rules to be checked.  It also contains methods to check the rules.'''
@@ -95,6 +96,16 @@ class list():
         self.rules.append(rule_signal.rule_007())
         self.rules.append(rule_signal.rule_008())
         self.rules.append(rule_signal.rule_009())
+
+        self.rules.append(rule_constant.rule_001())
+        self.rules.append(rule_constant.rule_002())
+        self.rules.append(rule_constant.rule_003())
+        self.rules.append(rule_constant.rule_004())
+        self.rules.append(rule_constant.rule_005())
+        self.rules.append(rule_constant.rule_006())
+        self.rules.append(rule_constant.rule_007())
+        self.rules.append(rule_constant.rule_008())
+        self.rules.append(rule_constant.rule_009())
 
     def check_rules(self, lines):
         dRuleViolations = {}
