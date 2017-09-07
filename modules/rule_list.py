@@ -6,6 +6,7 @@ import rule_architecture
 import rule_signal
 import rule_constant
 import rule_concurrent
+import rule_process
 
 class list():
     ''' Contains a list of all rules to be checked.  It also contains methods to check the rules.'''
@@ -111,6 +112,18 @@ class list():
         self.rules.append(rule_concurrent.rule_001())
         self.rules.append(rule_concurrent.rule_002())
         self.rules.append(rule_concurrent.rule_003())
+
+        self.rules.append(rule_process.rule_001())
+        self.rules.append(rule_process.rule_002())
+        self.rules.append(rule_process.rule_003())
+        self.rules.append(rule_process.rule_004())
+        self.rules.append(rule_process.rule_005())
+        self.rules.append(rule_process.rule_006())
+        self.rules.append(rule_process.rule_007())
+        self.rules.append(rule_process.rule_008())
+        self.rules.append(rule_process.rule_009())
+        self.rules.append(rule_process.rule_010())
+        self.rules.append(rule_process.rule_011())
 
 
     def check_rules(self, lines):

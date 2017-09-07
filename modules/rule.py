@@ -8,6 +8,7 @@ class rule():
         self.identifier = identifier
         self.solution = None
         self.violations = []
+        self._fInsideProcess = False
 
     def report_violations(self,filename):
         if len(self.violations) > 0:
@@ -23,13 +24,17 @@ class rule():
         else:
             return False
 
-    def _insideProcess(self, sString, fFlag):
+    def _insideProcess(self, sString):
+        if self._isProcess(sString):
+            self._fInsideProcess = True
+        elif re.match('^\s*end\s+process', sString.lower()):
+            self._fInsideProcess = False
+
+    def _isProcess(self, sString):
         if re.match('^\s*process', sString.lower()) or re.match('^\s*\w+\s*:\s*process', sString.lower()):
             return True
-        elif re.match('^\s*end\s+process', sString.lower()):
-            return False
         else:
-            return fFlag
+            return False
 
     def _isConcurrent(self, sString):
         if re.match('^\s*\w+\s*<=', sString):
