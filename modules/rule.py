@@ -9,6 +9,7 @@ class rule():
         self.solution = None
         self.violations = []
         self._fInsideProcess = False
+        self.indentSize = 2
 
     def report_violations(self,filename):
         if len(self.violations) > 0:
@@ -16,7 +17,7 @@ class rule():
                 print filename + ":" + str(violation) + ":" + self.name + "_" + self.identifier + ": " + self.solution
 
     def add_violation(self, lineNumber):
-        self.violations.append(lineNumber + 1)
+        self.violations.append(lineNumber)
 
     def _isLowercase(self, sString):
         if sString == sString.lower():

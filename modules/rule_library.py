@@ -9,6 +9,10 @@ class library_rule(rule.rule):
         rule.rule.__init__(self)
         self.name = 'library'
 
+    def _checkIndent(self, oLine, iLineNumber):
+        if not re.match('^\s{' + str(self.indentSize * oLine.indentLevel) + '}\S', oLine.line):
+            self.add_violation(iLineNumber)
+
 
 class rule_001(library_rule):
     '''Library rule 001 checks for spaces at the beginning of the line.'''
@@ -18,10 +22,10 @@ class rule_001(library_rule):
         self.identifier = '001'
         self.solution = 'Remove spaces before "library" keyword.'
 
-    def analyze(self, lines):
-        for iLineNumber, sLine in enumerate(lines):
-            if re.match('^\s\s*library', sLine.lower()):
-                self.add_violation(iLineNumber)
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isLibrary:
+                self._checkIndent(oLine, iLineNumber)
 
 
 class rule_002(library_rule):
@@ -32,10 +36,11 @@ class rule_002(library_rule):
         self.identifier = '002'
         self.solution = 'Remove extra spaces after "library" keyword.'
 
-    def analyze(self, lines):
-        for iLineNumber, sLine in enumerate(lines):
-            if re.match('^\s*library\s\s+', sLine.lower()):
-                self.add_violation(iLineNumber)
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isLibrary:
+                if re.match('^\s*\S+\s\s+', oLine.line):
+                    self.add_violation(iLineNumber)
 
 
 class rule_003(library_rule):
@@ -46,10 +51,10 @@ class rule_003(library_rule):
         self.identifier = '003'
         self.solution = 'Add blank line above "library" keyword.'
 
-    def analyze(self, lines):
-        for iLineNumber, sLine in enumerate(lines):
-            if re.match('^\s*library', sLine.lower()):
-                if not re.match('^\s*$', lines[iLineNumber - 1]):
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isLibrary:
+                if not oFile.lines[iLineNumber - 1].isBlank:
                     self.add_violation(iLineNumber)
 
 
@@ -61,10 +66,10 @@ class rule_004(library_rule):
         self.identifier = '004'
         self.solution = 'Change "library" keyword to lowercase.'
 
-    def analyze(self, lines):
-        for iLineNumber, sLine in enumerate(lines):
-            if re.match('^\s*library', sLine.lower()):
-                if not re.match('^\s*library', sLine):
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isLibrary:
+                if not re.match('^\s*library', oLine.line):
                     self.add_violation(iLineNumber)
 
 
@@ -76,10 +81,10 @@ class rule_005(library_rule):
         self.identifier = '005'
         self.solution = 'Change "use" keyword to lowercase.'
 
-    def analyze(self, lines):
-        for iLineNumber, sLine in enumerate(lines):
-            if re.match('^\s*use', sLine.lower()):
-                if not re.match('^\s*use', sLine):
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isLibraryUse:
+                if not re.match('^\s*use', oLine.line):
                     self.add_violation(iLineNumber)
 
 
@@ -91,10 +96,11 @@ class rule_006(library_rule):
         self.identifier = '006'
         self.solution = 'Remove extra spaces after "use" keyword.'
 
-    def analyze(self, lines):
-        for iLineNumber, sLine in enumerate(lines):
-            if re.match('^\s*use\s\s+', sLine.lower()):
-                self.add_violation(iLineNumber)
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isLibraryUse:
+                if re.match('^\s*\S+\s\s+', oLine.line):
+                    self.add_violation(iLineNumber)
 
 
 class rule_007(library_rule):
@@ -105,10 +111,10 @@ class rule_007(library_rule):
         self.identifier = '007'
         self.solution = 'Remove blank line(s) above "use" keyword.'
 
-    def analyze(self, lines):
-        for iLineNumber, sLine in enumerate(lines):
-            if re.match('^\s*use', sLine.lower()):
-                if re.match('^\s*$', lines[iLineNumber - 1]):
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isLibraryUse:
+                if oFile.lines[iLineNumber - 1].isBlank:
                     self.add_violation(iLineNumber)
 
 
@@ -120,8 +126,7 @@ class rule_008(library_rule):
         self.identifier = '008'
         self.solution = 'Change indent of "use" keyword to 2 spaces.'
 
-    def analyze(self, lines):
-        for iLineNumber, sLine in enumerate(lines):
-            if re.match('^\s*use', sLine.lower()):
-                if not re.match('^\s\suse', sLine.lower()):
-                    self.add_violation(iLineNumber)
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isLibraryUse:
+                self._checkIndent(oLine, iLineNumber)
