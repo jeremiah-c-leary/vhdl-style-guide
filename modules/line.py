@@ -6,10 +6,15 @@ class line():
         self.line = line
         self.lineLower = line.lower()
         self.indentLevel = None
+        ## Misc attributes
         self.isBlank = False
+        self.isComment = False
         ## Library attributes
         self.isLibrary = False
         self.isLibraryUse = False
-        self.isComment = False
+        ## Entity attributes
+        self.insideEntity = False
+        self.isEntityDeclaration = False
+        self.isEndEntityDeclaration = False
 
 

@@ -45,5 +45,41 @@ class testLineMethods(unittest.TestCase):
         oLine.indentLevel = 10
         self.assertEqual(oLine.indentLevel, 10)
 
+    def test_entity_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.insideEntity, False)
+        oLine.insideEntity = True
+        self.assertEqual(oLine.insideEntity, True)
+
+    def test_inside_entity_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.insideEntity, False)
+        oLine.insideEntity = True
+        self.assertEqual(oLine.insideEntity, True)
+
+    def test_entity_declaration_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isEntityDeclaration, False)
+        oLine.isEntityDeclaration= True
+        self.assertEqual(oLine.isEntityDeclaration, True)
+
+    def test_end_entity_declaration_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isEndEntityDeclaration, False)
+        oLine.isEndEntityDeclaration= True
+        self.assertEqual(oLine.isEndEntityDeclaration, True)
+
+#    def test_inside_generic_attribute(self):
+#        oLine = line.line('contents of Line')
+#        self.assertEqual(oLine.insideGeneric, False)
+#        oLine.insideGeneric = True
+#        self.assertEqual(oLine.insideGeneric, True)
+#
+#    def test_generic_declaration_attribute(self):
+#        oLine = line.line('contents of Line')
+#        self.assertEqual(oLine.isGenericDeclaration, False)
+#        oLine.isGenericDeclaration= True
+#        self.assertEqual(oLine.isGenericDeclaration, True)
+
 if __name__ == '__main__':
     unittest.main()
