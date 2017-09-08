@@ -251,3 +251,18 @@ class rule_015(entity_rule):
                 if not len(lLine) >= 3:
                     if not (lLine[0] == 'end' and lLine[1] == 'entity' and not lLine[2].startswith('--')):
                         self.add_violation(iLineNumber)
+
+
+class rule_016(entity_rule):
+    '''Entity rule 016 checks for a blank line above the "end entity" keywords.'''
+
+    def __init__(self):
+        entity_rule.__init__(self)
+        self.identifier = '016'
+        self.solution = 'Remove blank line(s) above "end entity" keywords.'
+
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isEndEntityDeclaration:
+                if oFile.lines[iLineNumber - 1].isBlank:
+                    self.add_violation(iLineNumber)

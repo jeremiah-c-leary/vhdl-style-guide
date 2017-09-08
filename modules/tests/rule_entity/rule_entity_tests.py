@@ -162,6 +162,15 @@ class testRuleEntityMethods(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
+    def test_rule_016(self):
+        oRule = rule_entity.rule_016()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'entity')
+        self.assertEqual(oRule.identifier, '016')
+
+        dExpected = [33]
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
 
 if __name__ == '__main__':
     unittest.main()

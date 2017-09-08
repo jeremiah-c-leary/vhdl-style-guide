@@ -159,5 +159,26 @@ class testRulePortMethods(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
+    def test_rule_014(self):
+        oRule = rule_port.rule_014()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'port')
+        self.assertEqual(oRule.identifier, '014')
+
+        dExpected = [31,62]
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_015(self):
+        oRule = rule_port.rule_015()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'port')
+        self.assertEqual(oRule.identifier, '015')
+
+        dExpected = [46,77]
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+
+
 if __name__ == '__main__':
     unittest.main()
