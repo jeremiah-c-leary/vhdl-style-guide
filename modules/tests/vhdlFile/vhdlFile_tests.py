@@ -58,6 +58,81 @@ class testVhdlFileMethods(unittest.TestCase):
             else:
                 self.assertFalse(oLine.isLibraryUse)
 
+    def test_insideEntity_assignment(self):
+        oFile = vhdlFile.vhdlFile('../rule_entity/entity_test_input.vhd')
+        lExpected = [0,1,2,17,18,48,64,79,92,93,104,105,106,107,108,109,110,111,112,124,125,126,134,135]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFile.lines):
+            if not oLine.insideEntity:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
 
+    def test_isEntityDeclaration_assignment(self):
+        oFile = vhdlFile.vhdlFile('../rule_entity/entity_test_input.vhd')
+        lExpected = [3,19,34,49,65,80,94,113,127]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFile.lines):
+            if oLine.isEntityDeclaration:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
+    def test_isEndEntityDeclaration_assignment(self):
+        oFile = vhdlFile.vhdlFile('../rule_entity/entity_test_input.vhd')
+        lExpected = [16,33,47,63,78,91,103,123,133]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFile.lines):
+            if oLine.isEndEntityDeclaration:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
+    def test_insidePortMap_assignment(self):
+        oFile = vhdlFile.vhdlFile('../rule_port/port_test_input.vhd')
+        lExpected = [8,9,10,11,12,13,14,15,25,26,27,28,29,30,31,39,40,41,42,43,44,45,46,56,57,58,59,60,61,62,70,71,72,73,74,75,76,77,86,87,88,89,90,98,99,100,101,102,118,119,120,121,122,128,129,130,131,132]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFile.lines):
+            if oLine.insidePortMap:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
+    def test_isPortKeyword_assignment(self):
+        oFile = vhdlFile.vhdlFile('../rule_port/port_test_input.vhd')
+        lExpected = [8,25,39,56,70,86,98,118,128]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFile.lines):
+            if oLine.isPortKeyword:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
+    def test_isEndPortMap_assignment(self):
+        oFile = vhdlFile.vhdlFile('../rule_port/port_test_input.vhd')
+        lExpected = [15,31,46,62,77,90,102,122,132]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFile.lines):
+            if oLine.isEndPortMap:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
+    def test_isPortDeclaration_assignment(self):
+        oFile = vhdlFile.vhdlFile('../rule_port/port_test_input.vhd')
+        lExpected = [9,10,11,12,13,14,26,27,28,29,30,31,40,41,42,43,44,45,57,58,59,60,61,62,71,72,73,74,75,76,87,88,89,99,100,101,119,120,121,129,130,131]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFile.lines):
+            if oLine.isPortDeclaration:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
 if __name__ == '__main__':
     unittest.main()

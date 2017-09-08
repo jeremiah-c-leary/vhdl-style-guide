@@ -9,10 +9,6 @@ class library_rule(rule.rule):
         rule.rule.__init__(self)
         self.name = 'library'
 
-    def _checkIndent(self, oLine, iLineNumber):
-        if not re.match('^\s{' + str(self.indentSize * oLine.indentLevel) + '}\S', oLine.line):
-            self.add_violation(iLineNumber)
-
 
 class rule_001(library_rule):
     '''Library rule 001 checks for spaces at the beginning of the line.'''

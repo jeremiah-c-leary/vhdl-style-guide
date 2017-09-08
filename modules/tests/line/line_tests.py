@@ -69,6 +69,31 @@ class testLineMethods(unittest.TestCase):
         oLine.isEndEntityDeclaration= True
         self.assertEqual(oLine.isEndEntityDeclaration, True)
 
+    def test_inside_port_map_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.insidePortMap, False)
+        oLine.insidePortMap = True
+        self.assertEqual(oLine.insidePortMap, True)
+
+    def test_isPortDeclaration_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isPortDeclaration, False)
+        oLine.isPortDeclaration = True
+        self.assertEqual(oLine.isPortDeclaration, True)
+
+    def test_isPortKeyword_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isPortKeyword, False)
+        oLine.isPortKeyword = True
+        self.assertEqual(oLine.isPortKeyword, True)
+
+    def test_isEndPortMap_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isEndPortMap, False)
+        oLine.isEndPortMap= True
+        self.assertEqual(oLine.isEndPortMap, True)
+
+
 #    def test_inside_generic_attribute(self):
 #        oLine = line.line('contents of Line')
 #        self.assertEqual(oLine.insideGeneric, False)

@@ -43,3 +43,7 @@ class rule():
         else:
             return False
 
+    def _checkIndent(self, oLine, iLineNumber):
+        if not re.match('^\s{' + str(self.indentSize * oLine.indentLevel) + '}\S', oLine.line):
+            self.add_violation(iLineNumber)
+

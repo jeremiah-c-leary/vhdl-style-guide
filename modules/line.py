@@ -16,5 +16,10 @@ class line():
         self.insideEntity = False
         self.isEntityDeclaration = False
         self.isEndEntityDeclaration = False
+        ## Port attributes
+        self.insidePortMap = False
+        self.isPortDeclaration = False
+        self.isPortKeyword = False
+        self.isEndPortMap = False
 
 
