@@ -12,6 +12,7 @@ class vhdlFile():
         fInsideEntity = False
         fInsidePortMapDeclaration = False
         fInsideGenericMapDeclaration = False
+        fInsideArchitecture = False
         iOpenParenthesis = 0;
         iCloseParenthesis = 0;
         with open (filename) as oFile:
@@ -84,6 +85,21 @@ class vhdlFile():
                             iOpenParenthesis = 0
                             iCloseParenthesis = 0
                             oLine.isEndGenericMap = True
+
+                # Check architecture declarations
+                if re.match('^\s*architecture', oLine.lineLower) and not fInsideArchitecture:
+                    fInsideArchitecture = True
+                    oLine.isArchitectureKeyword = True
+                    oLine.indentLevel = 0
+                if fInsideArchitecture:
+                    oLine.insideArchitecture = True
+                    if re.match('^\s*begin', oLine.lineLower):
+                        oLine.isArchitectureBegin = True
+                        oLine.indentLevel = 0
+                    if re.match('^\s*end\s+architecture', oLine.lineLower):
+                        fInsideArchitecture = False
+                        oLine.isEndArchitecture = True
+                        oLine.indentLevel = 0
 
 
                 # Add line to file

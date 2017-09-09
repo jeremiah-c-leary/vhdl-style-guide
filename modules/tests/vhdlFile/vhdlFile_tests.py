@@ -180,5 +180,51 @@ class testVhdlFileMethods(unittest.TestCase):
         # Compare
         self.assertEqual(lActual, lExpected)
 
+
+
+    def test_insideArchitecture_assignment(self):
+        oFile = vhdlFile.vhdlFile('../rule_architecture/architecture_test_input.vhd')
+        lExpected = [3,4,5,6,7,9,10,11,12,13,14,15,16,17,18,20,21,22,23,24,26,27,28,29,30,31,33,34,35]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFile.lines):
+            if oLine.insideArchitecture:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
+    def test_isArchitectureBegin_assignment(self):
+        oFile = vhdlFile.vhdlFile('../rule_architecture/architecture_test_input.vhd')
+        lExpected = [5,11,16,22,29,34]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFile.lines):
+            if oLine.isArchitectureBegin:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
+    def test_isArchitectureKeyword_assignment(self):
+        oFile = vhdlFile.vhdlFile('../rule_architecture/architecture_test_input.vhd')
+        lExpected = [3,9,14,20,26,33]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFile.lines):
+            if oLine.isArchitectureKeyword:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
+    def test_isEndArchitecture_assignment(self):
+        oFile = vhdlFile.vhdlFile('../rule_architecture/architecture_test_input.vhd')
+        lExpected = [7,13,18,24,31,35]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFile.lines):
+            if oLine.isEndArchitecture:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
 if __name__ == '__main__':
     unittest.main()

@@ -26,4 +26,9 @@ class line():
         self.isGenericDeclaration = False
         self.isGenericKeyword = False
         self.isEndGenericMap = False
+        ## Architecture attributes
+        self.insideArchitecture = False
+        self.isArchitectureBegin = False
+        self.isArchitectureKeyword = False
+        self.isEndArchitecture = False
 

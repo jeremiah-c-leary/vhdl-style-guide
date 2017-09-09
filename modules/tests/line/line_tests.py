@@ -117,5 +117,30 @@ class testLineMethods(unittest.TestCase):
         oLine.isEndGenericMap= True
         self.assertEqual(oLine.isEndGenericMap, True)
 
+    def test_inside_architecture_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.insideArchitecture, False)
+        oLine.insideArchitecture = True
+        self.assertEqual(oLine.insideArchitecture, True)
+
+    def test_isArchitectureBegin_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isArchitectureBegin, False)
+        oLine.isArchitectureBegin = True
+        self.assertEqual(oLine.isArchitectureBegin, True)
+
+    def test_isArchitectureKeyword_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isArchitectureKeyword, False)
+        oLine.isArchitectureKeyword = True
+        self.assertEqual(oLine.isArchitectureKeyword, True)
+
+    def test_isEndArchitecture_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isEndArchitecture, False)
+        oLine.isEndArchitecture = True
+        self.assertEqual(oLine.isEndArchitecture, True)
+
+
 if __name__ == '__main__':
     unittest.main()
