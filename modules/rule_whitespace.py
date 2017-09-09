@@ -16,9 +16,9 @@ class rule_001(whitespace_rule):
         self.identifier = '001'
         self.solution = 'Remove trailing whitespace.'
 
-    def analyze(self, lines):
-        for iLineNumber, sLine in enumerate(lines):
-            if sLine.endswith(' '):
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.line.endswith(' '):
                 self.add_violation(iLineNumber)
 
 
@@ -30,9 +30,9 @@ class rule_002(whitespace_rule):
         self.identifier = '002'
         self.solution = 'Replace tabs with spaces.'
 
-    def analyze(self, lines):
-        for iLineNumber, sLine in enumerate(lines):
-            if '\t' in sLine:
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if '\t' in oLine.line:
                 self.add_violation(iLineNumber)
 
 
@@ -44,9 +44,9 @@ class rule_003(whitespace_rule):
         self.identifier = '003'
         self.solution = 'Remove spaces before semicolons.'
 
-    def analyze(self, lines):
-        for iLineNumber, sLine in enumerate(lines):
-            if ' ;' in sLine:
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if ' ;' in oLine.line:
                 self.add_violation(iLineNumber)
 
 
@@ -58,7 +58,7 @@ class rule_004(whitespace_rule):
         self.identifier = '004'
         self.solution = 'Remove spaces before commas.'
 
-    def analyze(self, lines):
-        for iLineNumber, sLine in enumerate(lines):
-            if ' ,' in sLine:
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if ' ,' in oLine.line:
                 self.add_violation(iLineNumber)
