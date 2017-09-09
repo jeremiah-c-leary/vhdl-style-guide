@@ -4,15 +4,10 @@ sys.path.append('..\..')
 import unittest
 import rule_architecture
 import os
-
+import vhdlFile
 
 # Read in test file used for all tests
-lLines = []
-with open('architecture_test_input.vhd') as oFile:
-    for sLine in oFile:
-        lLines.append(sLine.rstrip())
-oFile.close()
-
+oFile = vhdlFile.vhdlFile('architecture_test_input.vhd')
 
 class testRuleArchitectureMethods(unittest.TestCase):
 
@@ -26,7 +21,7 @@ class testRuleArchitectureMethods(unittest.TestCase):
         oRule = rule_architecture.rule_001()
 
         dExpected = [9,20]
-        oRule.analyze(lLines)
+        oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_002_exists(self):
@@ -39,7 +34,7 @@ class testRuleArchitectureMethods(unittest.TestCase):
         oRule = rule_architecture.rule_002()
 
         dExpected = [14]
-        oRule.analyze(lLines)
+        oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_003_exists(self):
@@ -52,7 +47,7 @@ class testRuleArchitectureMethods(unittest.TestCase):
         oRule = rule_architecture.rule_003()
 
         dExpected = [14]
-        oRule.analyze(lLines)
+        oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_004_exists(self):
@@ -65,7 +60,7 @@ class testRuleArchitectureMethods(unittest.TestCase):
         oRule = rule_architecture.rule_004()
 
         dExpected = [20]
-        oRule.analyze(lLines)
+        oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_005_exists(self):
@@ -78,7 +73,7 @@ class testRuleArchitectureMethods(unittest.TestCase):
         oRule = rule_architecture.rule_005()
 
         dExpected = [26]
-        oRule.analyze(lLines)
+        oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_006_exists(self):
@@ -91,7 +86,7 @@ class testRuleArchitectureMethods(unittest.TestCase):
         oRule = rule_architecture.rule_006()
 
         dExpected = [26]
-        oRule.analyze(lLines)
+        oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_007(self):
@@ -100,7 +95,7 @@ class testRuleArchitectureMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'architecture')
         self.assertEqual(oRule.identifier, '007')
         dExpected = [22]
-        oRule.analyze(lLines)
+        oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_008(self):
@@ -109,7 +104,7 @@ class testRuleArchitectureMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'architecture')
         self.assertEqual(oRule.identifier, '008')
         dExpected = [24,31]
-        oRule.analyze(lLines)
+        oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_009(self):
@@ -118,7 +113,7 @@ class testRuleArchitectureMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'architecture')
         self.assertEqual(oRule.identifier, '009')
         dExpected = [7,13,24,31]
-        oRule.analyze(lLines)
+        oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_010(self):
@@ -127,7 +122,7 @@ class testRuleArchitectureMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'architecture')
         self.assertEqual(oRule.identifier, '010')
         dExpected = [13]
-        oRule.analyze(lLines)
+        oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_011(self):
@@ -136,7 +131,7 @@ class testRuleArchitectureMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'architecture')
         self.assertEqual(oRule.identifier, '011')
         dExpected = [24]
-        oRule.analyze(lLines)
+        oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_012(self):
@@ -144,8 +139,8 @@ class testRuleArchitectureMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'architecture')
         self.assertEqual(oRule.identifier, '012')
-        dExpected = [7,18,31]
-        oRule.analyze(lLines)
+        dExpected = [7,18]
+        oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_013(self):
@@ -154,7 +149,7 @@ class testRuleArchitectureMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'architecture')
         self.assertEqual(oRule.identifier, '013')
         dExpected = [3,20]
-        oRule.analyze(lLines)
+        oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_014(self):
@@ -163,7 +158,7 @@ class testRuleArchitectureMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'architecture')
         self.assertEqual(oRule.identifier, '014')
         dExpected = [9,20]
-        oRule.analyze(lLines)
+        oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_015(self):
@@ -171,8 +166,8 @@ class testRuleArchitectureMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'architecture')
         self.assertEqual(oRule.identifier, '015')
-        dExpected = [33]
-        oRule.analyze(lLines)
+        dExpected = [26,33]
+        oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_016(self):
@@ -181,7 +176,7 @@ class testRuleArchitectureMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'architecture')
         self.assertEqual(oRule.identifier, '016')
         dExpected = [34]
-        oRule.analyze(lLines)
+        oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_017(self):
@@ -190,7 +185,7 @@ class testRuleArchitectureMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'architecture')
         self.assertEqual(oRule.identifier, '017')
         dExpected = [34]
-        oRule.analyze(lLines)
+        oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_018(self):
@@ -199,7 +194,7 @@ class testRuleArchitectureMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'architecture')
         self.assertEqual(oRule.identifier, '018')
         dExpected = [35]
-        oRule.analyze(lLines)
+        oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
 if __name__ == '__main__':
