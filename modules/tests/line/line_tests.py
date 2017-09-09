@@ -93,18 +93,29 @@ class testLineMethods(unittest.TestCase):
         oLine.isEndPortMap= True
         self.assertEqual(oLine.isEndPortMap, True)
 
+    def test_inside_generic_map_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.insideGenericMap, False)
+        oLine.insideGenericMap = True
+        self.assertEqual(oLine.insideGenericMap, True)
 
-#    def test_inside_generic_attribute(self):
-#        oLine = line.line('contents of Line')
-#        self.assertEqual(oLine.insideGeneric, False)
-#        oLine.insideGeneric = True
-#        self.assertEqual(oLine.insideGeneric, True)
-#
-#    def test_generic_declaration_attribute(self):
-#        oLine = line.line('contents of Line')
-#        self.assertEqual(oLine.isGenericDeclaration, False)
-#        oLine.isGenericDeclaration= True
-#        self.assertEqual(oLine.isGenericDeclaration, True)
+    def test_generic_declaration_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isGenericDeclaration, False)
+        oLine.isGenericDeclaration = True
+        self.assertEqual(oLine.isGenericDeclaration, True)
+
+    def test_isGenericKeyword_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isGenericKeyword, False)
+        oLine.isGenericKeyword = True
+        self.assertEqual(oLine.isGenericKeyword, True)
+
+    def test_isEndGenericMap_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isEndGenericMap, False)
+        oLine.isEndGenericMap= True
+        self.assertEqual(oLine.isEndGenericMap, True)
 
 if __name__ == '__main__':
     unittest.main()

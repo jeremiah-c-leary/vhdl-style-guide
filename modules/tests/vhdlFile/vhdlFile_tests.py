@@ -134,5 +134,51 @@ class testVhdlFileMethods(unittest.TestCase):
                 lActual.append(iIndex)
         # Compare
         self.assertEqual(lActual, lExpected)
+
+
+    def test_insideGenericMap_assignment(self):
+        oFile = vhdlFile.vhdlFile('../rule_generic/generic_test_input.vhd')
+        lExpected = [4,5,6,7,20,21,22,23,35,36,37,38,51,52,53,54,66,67,68,69,82,83,84,85,95,96,97,114,115,116,117]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFile.lines):
+            if oLine.insideGenericMap:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
+    def test_isGenericKeyword_assignment(self):
+        oFile = vhdlFile.vhdlFile('../rule_generic/generic_test_input.vhd')
+        lExpected = [4,20,35,51,66,82,95,114]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFile.lines):
+            if oLine.isGenericKeyword:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
+    def test_isEndGenericMap_assignment(self):
+        oFile = vhdlFile.vhdlFile('../rule_generic/generic_test_input.vhd')
+        lExpected = [7,23,38,54,69,85,97,117]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFile.lines):
+            if oLine.isEndGenericMap:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
+    def test_isPortDeclaration_assignment(self):
+        oFile = vhdlFile.vhdlFile('../rule_generic/generic_test_input.vhd')
+        lExpected = [5,6,21,22,36,37,52,53,67,68,83,84,96,97,115,116]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFile.lines):
+            if oLine.isGenericDeclaration:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
 if __name__ == '__main__':
     unittest.main()

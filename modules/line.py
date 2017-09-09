@@ -21,5 +21,9 @@ class line():
         self.isPortDeclaration = False
         self.isPortKeyword = False
         self.isEndPortMap = False
-
+        ## Generic attributes
+        self.insideGenericMap = False
+        self.isGenericDeclaration = False
+        self.isGenericKeyword = False
+        self.isEndGenericMap = False
 

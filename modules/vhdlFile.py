@@ -11,6 +11,7 @@ class vhdlFile():
     def _processFile(self, filename):
         fInsideEntity = False
         fInsidePortMapDeclaration = False
+        fInsideGenericMapDeclaration = False
         iOpenParenthesis = 0;
         iCloseParenthesis = 0;
         with open (filename) as oFile:
@@ -43,6 +44,7 @@ class vhdlFile():
                     fInsideEntity = False
                     oLine.isEndEntityDeclaration = True
                     oLine.indentLevel = 0
+
                 # Check port map declarations
                 if fInsideEntity:
                     if re.match('^\s*port', oLine.lineLower) and not fInsidePortMapDeclaration:
@@ -63,6 +65,25 @@ class vhdlFile():
                             iCloseParenthesis = 0
                             oLine.isEndPortMap = True
 
+                # Check generic map declarations
+                if fInsideEntity:
+                    if re.match('^\s*generic', oLine.lineLower) and not fInsideGenericMapDeclaration:
+                        fInsideGenericMapDeclaration = True
+                        oLine.isGenericKeyword = True
+                        oLine.indentLevel = 1
+                    if fInsideGenericMapDeclaration:
+                        oLine.insideGenericMap = True
+                        if re.match('^\s*\S+.*:', oLine.line):
+                            oLine.isGenericDeclaration = True
+                            oLine.indentLevel = 2
+                        iOpenParenthesis += oLine.line.count('(')
+                        iCloseParenthesis += oLine.line.count(')')
+                        if iOpenParenthesis == iCloseParenthesis:
+                            oLine.indentLevel = 1
+                            fInsideGenericMapDeclaration = False
+                            iOpenParenthesis = 0
+                            iCloseParenthesis = 0
+                            oLine.isEndGenericMap = True
 
 
                 # Add line to file
