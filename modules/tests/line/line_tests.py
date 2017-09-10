@@ -1,6 +1,7 @@
 
 import sys
 sys.path.append('..\..')
+sys.path.append('..')
 import unittest
 import line
 
@@ -146,6 +147,13 @@ class testLineMethods(unittest.TestCase):
         self.assertEqual(oLine.isSignal, False)
         oLine.isSignal = True
         self.assertEqual(oLine.isSignal, True)
+
+    def test_isConstant_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isConstant, False)
+        oLine.isConstant = True
+        self.assertEqual(oLine.isConstant, True)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -33,4 +33,6 @@ class line():
         self.isEndArchitecture = False
         ## Signal attributes
         self.isSignal = False
+        ## Constant attributes
+        self.isConstant = False
 
