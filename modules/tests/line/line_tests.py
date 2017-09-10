@@ -60,13 +60,13 @@ class testLineMethods(unittest.TestCase):
     def test_entity_declaration_attribute(self):
         oLine = line.line('contents of Line')
         self.assertEqual(oLine.isEntityDeclaration, False)
-        oLine.isEntityDeclaration= True
+        oLine.isEntityDeclaration = True
         self.assertEqual(oLine.isEntityDeclaration, True)
 
     def test_end_entity_declaration_attribute(self):
         oLine = line.line('contents of Line')
         self.assertEqual(oLine.isEndEntityDeclaration, False)
-        oLine.isEndEntityDeclaration= True
+        oLine.isEndEntityDeclaration = True
         self.assertEqual(oLine.isEndEntityDeclaration, True)
 
     def test_inside_port_map_attribute(self):
@@ -90,7 +90,7 @@ class testLineMethods(unittest.TestCase):
     def test_isEndPortMap_attribute(self):
         oLine = line.line('contents of Line')
         self.assertEqual(oLine.isEndPortMap, False)
-        oLine.isEndPortMap= True
+        oLine.isEndPortMap = True
         self.assertEqual(oLine.isEndPortMap, True)
 
     def test_inside_generic_map_attribute(self):
@@ -114,7 +114,7 @@ class testLineMethods(unittest.TestCase):
     def test_isEndGenericMap_attribute(self):
         oLine = line.line('contents of Line')
         self.assertEqual(oLine.isEndGenericMap, False)
-        oLine.isEndGenericMap= True
+        oLine.isEndGenericMap = True
         self.assertEqual(oLine.isEndGenericMap, True)
 
     def test_inside_architecture_attribute(self):
@@ -141,6 +141,11 @@ class testLineMethods(unittest.TestCase):
         oLine.isEndArchitecture = True
         self.assertEqual(oLine.isEndArchitecture, True)
 
+    def test_isSignal_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isSignal, False)
+        oLine.isSignal = True
+        self.assertEqual(oLine.isSignal, True)
 
 if __name__ == '__main__':
     unittest.main()

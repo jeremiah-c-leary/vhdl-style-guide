@@ -31,4 +31,6 @@ class line():
         self.isArchitectureBegin = False
         self.isArchitectureKeyword = False
         self.isEndArchitecture = False
+        ## Signal attributes
+        self.isSignal = False
 

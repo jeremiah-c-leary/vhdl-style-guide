@@ -101,6 +101,12 @@ class vhdlFile():
                         oLine.isEndArchitecture = True
                         oLine.indentLevel = 0
 
+                # Check Signal declarations
+                if fInsideArchitecture:
+                    if re.match('^\s*signal', oLine.lineLower):
+                        oLine.isSignal = True
+                        oLine.indentLevel = 1
+
 
                 # Add line to file
                 self.lines.append(oLine)
