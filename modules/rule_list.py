@@ -7,6 +7,8 @@ import rule_signal
 import rule_constant
 import rule_concurrent
 import rule_process
+import rule_port
+import rule_generic
 
 class list():
     ''' Contains a list of all rules to be checked.  It also contains methods to check the rules.'''
@@ -43,32 +45,34 @@ class list():
         self.rules.append(rule_entity.rule_014())
         self.rules.append(rule_entity.rule_015())
         self.rules.append(rule_entity.rule_016())
-        self.rules.append(rule_entity.rule_017())
-        self.rules.append(rule_entity.rule_018())
-        self.rules.append(rule_entity.rule_019())
-        self.rules.append(rule_entity.rule_020())
-        self.rules.append(rule_entity.rule_021())
-        self.rules.append(rule_entity.rule_022())
-        self.rules.append(rule_entity.rule_023())
-        self.rules.append(rule_entity.rule_024())
-        self.rules.append(rule_entity.rule_025())
-        self.rules.append(rule_entity.rule_026())
-        self.rules.append(rule_entity.rule_027())
-        self.rules.append(rule_entity.rule_028())
-        self.rules.append(rule_entity.rule_029())
-        self.rules.append(rule_entity.rule_030())
-        self.rules.append(rule_entity.rule_031())
-        self.rules.append(rule_entity.rule_032())
-        self.rules.append(rule_entity.rule_033())
-        self.rules.append(rule_entity.rule_034())
-        self.rules.append(rule_entity.rule_035())
-        self.rules.append(rule_entity.rule_036())
-        self.rules.append(rule_entity.rule_037())
-        self.rules.append(rule_entity.rule_038())
-        self.rules.append(rule_entity.rule_039())
-        self.rules.append(rule_entity.rule_040())
-        self.rules.append(rule_entity.rule_041())
-        self.rules.append(rule_entity.rule_042())
+
+        self.rules.append(rule_port.rule_001())
+        self.rules.append(rule_port.rule_002())
+        self.rules.append(rule_port.rule_003())
+        self.rules.append(rule_port.rule_004())
+        self.rules.append(rule_port.rule_005())
+        self.rules.append(rule_port.rule_006())
+        self.rules.append(rule_port.rule_007())
+        self.rules.append(rule_port.rule_008())
+        self.rules.append(rule_port.rule_009())
+        self.rules.append(rule_port.rule_010())
+        self.rules.append(rule_port.rule_011())
+        self.rules.append(rule_port.rule_012())
+        self.rules.append(rule_port.rule_013())
+        self.rules.append(rule_port.rule_014())
+        self.rules.append(rule_port.rule_015())
+
+        self.rules.append(rule_generic.rule_001())
+        self.rules.append(rule_generic.rule_002())
+        self.rules.append(rule_generic.rule_003())
+        self.rules.append(rule_generic.rule_004())
+        self.rules.append(rule_generic.rule_005())
+        self.rules.append(rule_generic.rule_006())
+        self.rules.append(rule_generic.rule_007())
+        self.rules.append(rule_generic.rule_008())
+        self.rules.append(rule_generic.rule_009())
+        self.rules.append(rule_generic.rule_010())
+        self.rules.append(rule_generic.rule_011())
 
         self.rules.append(rule_architecture.rule_001())
         self.rules.append(rule_architecture.rule_002())
@@ -126,10 +130,10 @@ class list():
         self.rules.append(rule_process.rule_011())
 
 
-    def check_rules(self, lines):
+    def check_rules(self, oFile):
         dRuleViolations = {}
         for oRule in self.rules:
-            oRule.analyze(lines)
+            oRule.analyze(oFile)
 
     def report_violations(self, filename):
         for oRule in self.rules:

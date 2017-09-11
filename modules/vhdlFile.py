@@ -95,7 +95,7 @@ class vhdlFile():
                     oLine.indentLevel = 0
                 if fInsideArchitecture:
                     oLine.insideArchitecture = True
-                    if re.match('^\s*begin', oLine.lineLower):
+                    if re.match('^\s*begin', oLine.lineLower) and not fInsideProcess:
                         oLine.isArchitectureBegin = True
                         oLine.indentLevel = 0
                     if re.match('^\s*end\s+architecture', oLine.lineLower):

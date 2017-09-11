@@ -33,3 +33,14 @@ begin
 architecture ARCH of ENTITY is
 begin
 end architecture ARCH;
+
+architecture ARCH of ENTITY is
+
+begin
+
+  process () is
+  begin
+  end process;
+
+end architecture ARCH;
+

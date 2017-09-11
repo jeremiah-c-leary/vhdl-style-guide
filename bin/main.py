@@ -6,6 +6,7 @@ import sys
 # Rules
 sys.path.append('..\modules')
 import rule_list
+import vhdlFile
 
 def parse_command_line_arguments():
     '''Parses the command line arguments and returns them.'''
@@ -23,25 +24,12 @@ def parse_command_line_arguments():
         return parser.parse_args()
 
 
-def open_vhdl_file(commandLineArguments):
-    '''This opens the VHDL file, reads it, removes ending CRLF's and LFs, and return a list.'''
-
-    vhdlList = []
-
-    with open(commandLineArguments.filename, 'r') as vhdlFile:
-        for line in vhdlFile:
-            vhdlList.append(line.strip('\n'))
-
-    return vhdlList
-
-
 def main():
     '''Main routine of the VHDL Style Guide (VSG) program.'''
 
     commandLineArguments = parse_command_line_arguments()
-    vhdlList = open_vhdl_file(commandLineArguments)
     oRules = rule_list.list()
-    oRules.check_rules(vhdlList)
+    oRules.check_rules(vhdlFile.vhdlFile(commandLineArguments.filename))
     oRules.report_violations(commandLineArguments.filename)
 
 

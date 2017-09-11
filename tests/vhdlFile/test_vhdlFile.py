@@ -180,7 +180,7 @@ class testVhdlFileMethods(unittest.TestCase):
 
     def test_insideArchitecture_assignment(self):
         oFile = vhdlFile.vhdlFile('tests/rule_architecture/architecture_test_input.vhd')
-        lExpected = [3,4,5,6,7,9,10,11,12,13,14,15,16,17,18,20,21,22,23,24,26,27,28,29,30,31,33,34,35]
+        lExpected = [3,4,5,6,7,9,10,11,12,13,14,15,16,17,18,20,21,22,23,24,26,27,28,29,30,31,33,34,35,37,38,39,40,41,42,43,44,45]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
@@ -191,7 +191,7 @@ class testVhdlFileMethods(unittest.TestCase):
 
     def test_isArchitectureBegin_assignment(self):
         oFile = vhdlFile.vhdlFile('tests/rule_architecture/architecture_test_input.vhd')
-        lExpected = [5,11,16,22,29,34]
+        lExpected = [5,11,16,22,29,34,39]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
@@ -202,7 +202,7 @@ class testVhdlFileMethods(unittest.TestCase):
 
     def test_isArchitectureKeyword_assignment(self):
         oFile = vhdlFile.vhdlFile('tests/rule_architecture/architecture_test_input.vhd')
-        lExpected = [3,9,14,20,26,33]
+        lExpected = [3,9,14,20,26,33,37]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
@@ -213,7 +213,7 @@ class testVhdlFileMethods(unittest.TestCase):
 
     def test_isEndArchitecture_assignment(self):
         oFile = vhdlFile.vhdlFile('tests/rule_architecture/architecture_test_input.vhd')
-        lExpected = [7,13,18,24,31,35]
+        lExpected = [7,13,18,24,31,35,45]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
