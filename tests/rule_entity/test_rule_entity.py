@@ -1,13 +1,10 @@
 
-import sys
-sys.path.append('..\..')
 import unittest
-import rule_entity
-import os
-import vhdlFile
+from modules import rule_entity
+from modules import vhdlFile
 
 
-oFile = vhdlFile.vhdlFile('entity_test_input.vhd')
+oFile = vhdlFile.vhdlFile('tests/rule_entity/entity_test_input.vhd')
 
 
 class testRuleEntityMethods(unittest.TestCase):

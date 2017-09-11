@@ -1,13 +1,10 @@
 
-import sys
-sys.path.append('..\..')
 import unittest
-import rule_port
-import os
-import vhdlFile
+from modules import rule_port
+from modules import vhdlFile
 
 
-oFile = vhdlFile.vhdlFile('port_test_input.vhd')
+oFile = vhdlFile.vhdlFile('tests/rule_port/port_test_input.vhd')
 
 
 class testRulePortMethods(unittest.TestCase):

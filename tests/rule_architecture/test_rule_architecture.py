@@ -1,13 +1,10 @@
 
-import sys
-sys.path.append('..\..')
 import unittest
-import rule_architecture
-import os
-import vhdlFile
+from modules import rule_architecture
+from modules import vhdlFile
 
 # Read in test file used for all tests
-oFile = vhdlFile.vhdlFile('architecture_test_input.vhd')
+oFile = vhdlFile.vhdlFile('tests/rule_architecture/architecture_test_input.vhd')
 
 class testRuleArchitectureMethods(unittest.TestCase):
 

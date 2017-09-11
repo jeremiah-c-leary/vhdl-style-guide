@@ -1,20 +1,11 @@
 
-import sys
-sys.path.append('..\..')
 import unittest
-import rule_library
-import os
-import vhdlFile
+from modules import rule_library
+from modules import vhdlFile
 
 
 # Read in test file used for all tests
-oFile = vhdlFile.vhdlFile('library_test_input.vhd')
-#oFile = []
-#with open('library_test_input.vhd') as oFile:
-#    for sLine in oFile:
-#        oFile.append(sLine.rstrip())
-#oFile.close()
-
+oFile = vhdlFile.vhdlFile('tests/rule_library/library_test_input.vhd')
 
 class testRuleLibraryMethods(unittest.TestCase):
 

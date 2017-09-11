@@ -1,9 +1,8 @@
 
-import sys
-sys.path.append('..\..')
-sys.path.append('..')
+#from .context import modules
 import unittest
-import line
+
+from modules import line
 
 class testLineMethods(unittest.TestCase):
 

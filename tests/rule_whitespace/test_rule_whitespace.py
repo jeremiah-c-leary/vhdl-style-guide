@@ -1,11 +1,8 @@
 
-import sys
-sys.path.append('..\..')
 import unittest
-import rule_whitespace
-import os
-import vhdlFile
-import line
+from modules import rule_whitespace
+from modules import vhdlFile
+from modules import line
 
 
 class testRuleWhitespaceMethods(unittest.TestCase):
@@ -16,7 +13,7 @@ class testRuleWhitespaceMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'whitespace')
         self.assertEqual(oRule.identifier, '001')
 
-        oFile = vhdlFile.vhdlFile('whitespace_test_input.txt')
+        oFile = vhdlFile.vhdlFile('tests/rule_whitespace/whitespace_test_input.txt')
 
         dExpected = [2,4]
         oFile.lines.append(line.line('  This is a test of ending whitespace'))
@@ -33,7 +30,7 @@ class testRuleWhitespaceMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'whitespace')
         self.assertEqual(oRule.identifier, '002')
 
-        oFile = vhdlFile.vhdlFile('whitespace_test_input.txt')
+        oFile = vhdlFile.vhdlFile('tests/rule_whitespace/whitespace_test_input.txt')
 
         dExpected = [1,2,5]
         oFile.lines.append(line.line('  This is a test of tabs\t'))
@@ -51,7 +48,7 @@ class testRuleWhitespaceMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'whitespace')
         self.assertEqual(oRule.identifier, '003')
 
-        oFile = vhdlFile.vhdlFile('whitespace_test_input.txt')
+        oFile = vhdlFile.vhdlFile('tests/rule_whitespace/whitespace_test_input.txt')
 
         dExpected = [2,4,6]
         oFile.lines.append(line.line('  This is a test of tabs;'))
@@ -69,7 +66,7 @@ class testRuleWhitespaceMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'whitespace')
         self.assertEqual(oRule.identifier, '004')
 
-        oFile = vhdlFile.vhdlFile('whitespace_test_input.txt')
+        oFile = vhdlFile.vhdlFile('tests/rule_whitespace/whitespace_test_input.txt')
 
         dExpected = [2,4,6]
         oFile.lines.append(line.line('  This is a test of tabs,'))
