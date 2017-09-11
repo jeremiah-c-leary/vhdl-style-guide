@@ -29,4 +29,10 @@ begin
          h or i
      j or k;
 
+label:a<=b;
+ label :a<=b;
+  label : a <= b;
+  label : a <= b or c
+               d or e;
+
 end architecture ARCH;

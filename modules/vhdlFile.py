@@ -136,7 +136,7 @@ class vhdlFile():
 
                 # Check concurrent declarations
                 if fInsideArchitecture and not fInsideProcess:
-                    if re.match('^\s*\S+\s*<=', oLine.line):
+                    if re.match('^\s*\w+\s*<=', oLine.line) or re.match('^\s*\w+\s*:\s*\w+\s*<=', oLine.line):
                         fInsideConcurrent = True
                         oLine.indentLevel = 1
                         oLine.isConcurrentBegin = True

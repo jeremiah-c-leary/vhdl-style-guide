@@ -116,6 +116,8 @@ class list():
         self.rules.append(rule_concurrent.rule_001())
         self.rules.append(rule_concurrent.rule_002())
         self.rules.append(rule_concurrent.rule_003())
+        self.rules.append(rule_concurrent.rule_004())
+        self.rules.append(rule_concurrent.rule_005())
 
         self.rules.append(rule_process.rule_001())
         self.rules.append(rule_process.rule_002())

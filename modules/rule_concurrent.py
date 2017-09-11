@@ -38,6 +38,9 @@ class rule_002(concurrent_rule):
                 if re.match('^\s*\w+\s*<=\s*\w+', oLine.line):
                     if not re.match('^\s*\w+\s*<=\s\w', oLine.line):
                         self.add_violation(iLineNumber)
+                elif re.match('^\s*\w+\s*:\s*\w+\s*<=\s*\w+', oLine.line):
+                    if not re.match('^\s*\w+\s*:\s*\w+\s*<=\s\w', oLine.line):
+                        self.add_violation(iLineNumber)
 
 
 class rule_003(concurrent_rule):
@@ -58,6 +61,40 @@ class rule_003(concurrent_rule):
                 else:
                     if not re.match('\s{' + str(iAlignmentColumn) + '}\S', oLine.line):
                         self.add_violation(iLineNumber)
+
+
+class rule_004(concurrent_rule):
+    '''Constant rule 004 checks there is at least a single space before the assignment.'''
+
+    def __init__(self):
+        concurrent_rule.__init__(self)
+        self.identifier = '004'
+        self.solution = 'Add a single space before the <=.'
+
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isConcurrentBegin:
+                if re.match('^\s*\w+\s*<=', oLine.line):
+                    if not re.match('^\s*\w+\s+<=', oLine.line):
+                        self.add_violation(iLineNumber)
+                elif re.match('^\s*\w+\s*:\s*\w+\s*<=', oLine.line):
+                    if not re.match('^\s*\w+\s*:\s*\w+\s+<=', oLine.line):
+                        self.add_violation(iLineNumber)
+
+
+class rule_005(concurrent_rule):
+    '''Constant rule 005 checks for labels on concurrent assignments.'''
+
+    def __init__(self):
+        concurrent_rule.__init__(self)
+        self.identifier = '005'
+        self.solution = 'Remove label on concurrent assignment.'
+
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isConcurrentBegin:
+                if re.match('^\s*\w+\s*:\s*\w+\s*<=', oLine.line):
+                    self.add_violation(iLineNumber)
 
 # TODO:
 # assignments lined up to the same column
