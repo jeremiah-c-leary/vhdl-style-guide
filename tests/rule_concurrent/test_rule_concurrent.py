@@ -1,18 +1,10 @@
 
-import sys
-sys.path.append('..\..')
 import unittest
-import rule_concurrent
-import os
-
+from modules import rule_concurrent
+from modules import vhdlFile
 
 # Read in test file used for all tests
-lLines = []
-with open('concurrent_test_input.vhd') as oFile:
-    for sLine in oFile:
-        lLines.append(sLine.rstrip())
-oFile.close()
-
+oFile = vhdlFile.vhdlFile('tests/rule_concurrent/concurrent_test_input.vhd')
 
 class testRuleConcurrentMethods(unittest.TestCase):
 
@@ -22,7 +14,7 @@ class testRuleConcurrentMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'concurrent')
         self.assertEqual(oRule.identifier, '001')
         dExpected = [7,11,24]
-        oRule.analyze(lLines)
+        oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_002(self):
@@ -31,7 +23,7 @@ class testRuleConcurrentMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'concurrent')
         self.assertEqual(oRule.identifier, '002')
         dExpected = [7,8,24]
-        oRule.analyze(lLines)
+        oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_003(self):
@@ -40,7 +32,7 @@ class testRuleConcurrentMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'concurrent')
         self.assertEqual(oRule.identifier, '003')
         dExpected = [28,29,30]
-        oRule.analyze(lLines)
+        oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
 

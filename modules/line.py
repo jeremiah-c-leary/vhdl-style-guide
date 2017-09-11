@@ -40,4 +40,8 @@ class line():
         self.isProcessBegin = False
         self.isProcessKeyword = False
         self.isEndProcess = False
+        ## Concurrent attributes
+        self.insideConcurrent = False
+        self.isConcurrentBegin = False
+        self.isEndConcurrent = False
 

@@ -177,5 +177,23 @@ class testLineMethods(unittest.TestCase):
         oLine.isEndProcess = True
         self.assertEqual(oLine.isEndProcess, True)
 
+    def test_insideConcurrent_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.insideConcurrent, False)
+        oLine.insideConcurrent = True
+        self.assertEqual(oLine.insideConcurrent, True)
+
+    def test_isConcurrentBegin_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isConcurrentBegin, False)
+        oLine.isConcurrentBegin = True
+        self.assertEqual(oLine.isConcurrentBegin, True)
+
+    def test_isEndConcurrent_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isEndConcurrent, False)
+        oLine.isEndConcurrent = True
+        self.assertEqual(oLine.isEndConcurrent, True)
+
 if __name__ == '__main__':
     unittest.main()

@@ -14,6 +14,7 @@ class vhdlFile():
         fInsideGenericMapDeclaration = False
         fInsideArchitecture = False
         fInsideProcess = False
+        fInsideConcurrent = False
         iOpenParenthesis = 0;
         iCloseParenthesis = 0;
         with open (filename) as oFile:
@@ -129,6 +130,20 @@ class vhdlFile():
                             fInsideProcess = False
                             oLine.indentLevel = 1
                             oLine.isEndProcess = True
+
+                # Check concurrent declarations
+                if fInsideArchitecture and not fInsideProcess:
+                    if re.match('^\s*\S+\s*<=', oLine.line):
+                        fInsideConcurrent = True
+                        oLine.indentLevel = 1
+                        oLine.isConcurrentBegin = True
+                    if fInsideConcurrent:
+                        oLine.insideConcurrent = True
+                        if re.match('.*;', oLine.line):
+                            fInsideConcurrent = False
+                            oLine.isEndConcurrent = True
+
+
 
                 # Add line to file
                 self.lines.append(oLine)

@@ -288,7 +288,38 @@ class testVhdlFileMethods(unittest.TestCase):
         # Compare
         self.assertEqual(lActual, lExpected)
 
+    def test_insideConcurrent_assignment(self):
+        oFile = vhdlFile.vhdlFile('tests/rule_concurrent/concurrent_test_input.vhd')
+        lExpected = [6,7,8,9,10,11,23,24,26,27,28,29,30]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFile.lines):
+            if oLine.insideConcurrent:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
 
+    def test_isConcurrentBegin_assignment(self):
+        oFile = vhdlFile.vhdlFile('tests/rule_concurrent/concurrent_test_input.vhd')
+        lExpected = [6,7,8,9,11,23,24,26]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFile.lines):
+            if oLine.isConcurrentBegin:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
+    def test_isEndConcurrent_assignment(self):
+        oFile = vhdlFile.vhdlFile('tests/rule_concurrent/concurrent_test_input.vhd')
+        lExpected = [6,7,8,10,11,23,24,30]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFile.lines):
+            if oLine.isEndConcurrent:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
 
 
 if __name__ == '__main__':

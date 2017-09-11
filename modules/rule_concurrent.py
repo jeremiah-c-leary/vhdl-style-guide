@@ -18,13 +18,10 @@ class rule_001(concurrent_rule):
         self.identifier = '001'
         self.solution = 'Ensure there are only two spaces before concurrent assignment.'
 
-    def analyze(self, lines):
-        for iLineNumber, sLine in enumerate(lines):
-            self._insideProcess(sLine)
-            if not self._fInsideProcess:
-                if self._isConcurrent(sLine):
-                    if not re.match('^\s\s\w', sLine):
-                        self.add_violation(iLineNumber)
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isConcurrentBegin:
+                self._checkIndent(oLine, iLineNumber)
 
 
 class rule_002(concurrent_rule):
@@ -35,14 +32,12 @@ class rule_002(concurrent_rule):
         self.identifier = '002'
         self.solution = 'Remove all but one space after the <=.'
 
-    def analyze(self, lines):
-        for iLineNumber, sLine in enumerate(lines):
-            self._insideProcess(sLine)
-            if not self._fInsideProcess:
-                if self._isConcurrent(sLine):
-                    if re.match('^\s*\w+\s*<=\s*\w+', sLine):
-                        if not re.match('^\s*\w+\s*<=\s\w', sLine):
-                            self.add_violation(iLineNumber)
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isConcurrentBegin:
+                if re.match('^\s*\w+\s*<=\s*\w+', oLine.line):
+                    if not re.match('^\s*\w+\s*<=\s\w', oLine.line):
+                        self.add_violation(iLineNumber)
 
 
 class rule_003(concurrent_rule):
@@ -53,19 +48,20 @@ class rule_003(concurrent_rule):
         self.identifier = '003'
         self.solution = 'Align first character in row to the column of text one space after the <=.'
 
-    def analyze(self, lines):
+    def analyze(self, oFile):
         fMultiline = False
-        for iLineNumber, sLine in enumerate(lines):
-            self._insideProcess(sLine)
-            if not self._fInsideProcess:
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.insideConcurrent:
+                if oLine.isConcurrentBegin and oLine.isEndConcurrent:
+                    continue
                 if fMultiline:
-                    if not re.match('\s{' + str(iAlignmentColumn) + '}\S', sLine):
+                    if not re.match('\s{' + str(iAlignmentColumn) + '}\S', oLine.line):
                         self.add_violation(iLineNumber)
-                if self._isConcurrent(sLine):
-                    if not ';' in sLine:
-                        iAlignmentColumn = sLine.find('<') + 3
+                if oLine.isConcurrentBegin:
+                    if not oLine.isEndConcurrent:
+                        iAlignmentColumn = oLine.line.find('<') + 3
                         fMultiline = True
-                if ';' in sLine:
+                if oLine.isEndConcurrent:
                     fMultiline = False
 
 # TODO:
