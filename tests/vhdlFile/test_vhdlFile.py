@@ -34,6 +34,17 @@ class testVhdlFileMethods(unittest.TestCase):
             else:
                 self.assertFalse(oLine.isBlank)
 
+    def test_comment_assignment(self):
+        oFile = vhdlFile.vhdlFile('tests/rule_process/process_test_input.vhd')
+        lExpected = [50]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFile.lines):
+            if oLine.isComment:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
     def test_library_assignment(self):
         oFile = vhdlFile.vhdlFile('tests/rule_library/library_test_input.vhd')
         lExpected = [3,7,9,13,20,21]
@@ -246,7 +257,7 @@ class testVhdlFileMethods(unittest.TestCase):
 
     def test_insideProcess_assignment(self):
         oFile = vhdlFile.vhdlFile('tests/rule_process/process_test_input.vhd')
-        lExpected = [6,7,8,9,11,12,13,14,15,17,18,19,20,21,22,24,25,26,27,28,29,30,32,33,34,35,36,38,39,40,41,42,46,47,48]
+        lExpected = [6,7,8,9,11,12,13,14,15,17,18,19,20,21,22,24,25,26,27,28,29,30,32,33,34,35,36,38,39,40,41,42,46,47,48,51,52,53,55,56,57,58,59,60,63,64,65]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
@@ -257,7 +268,7 @@ class testVhdlFileMethods(unittest.TestCase):
 
     def test_isProcessBegin_assignment(self):
         oFile = vhdlFile.vhdlFile('tests/rule_process/process_test_input.vhd')
-        lExpected = [6,13,20,28,34,40,47]
+        lExpected = [6,13,20,28,34,40,47,52,59,64]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
@@ -268,7 +279,7 @@ class testVhdlFileMethods(unittest.TestCase):
 
     def test_isProcessKeyword_assignment(self):
         oFile = vhdlFile.vhdlFile('tests/rule_process/process_test_input.vhd')
-        lExpected = [6,11,17,24,32,38,46]
+        lExpected = [6,11,17,24,32,38,46,51,55,63]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
@@ -279,7 +290,7 @@ class testVhdlFileMethods(unittest.TestCase):
 
     def test_isEndProcess_assignment(self):
         oFile = vhdlFile.vhdlFile('tests/rule_process/process_test_input.vhd')
-        lExpected = [9,15,22,30,36,42,48]
+        lExpected = [9,15,22,30,36,42,48,53,60,65]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
@@ -287,6 +298,41 @@ class testVhdlFileMethods(unittest.TestCase):
                 lActual.append(iIndex)
         # Compare
         self.assertEqual(lActual, lExpected)
+
+    def test_insideSensitivityList_assignment(self):
+        oFile = vhdlFile.vhdlFile('tests/rule_process/process_test_input.vhd')
+        lExpected = [6,11,12,17,18,19,24,25,26,27,32,33,38,39,46,51,55,56,57,63]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFile.lines):
+            if oLine.insideSensitivityList:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
+    def test_isSensitivityListBegin_assignment(self):
+        oFile = vhdlFile.vhdlFile('tests/rule_process/process_test_input.vhd')
+        lExpected = [6,11,17,24,32,38,46,51,55,63]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFile.lines):
+            if oLine.isSensitivityListBegin:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
+    def test_isSensitivityListEnd_assignment(self):
+        oFile = vhdlFile.vhdlFile('tests/rule_process/process_test_input.vhd')
+        lExpected = [6,12,19,27,33,39,46,51,57,63]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFile.lines):
+            if oLine.isSensitivityListEnd:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
+
 
     def test_insideConcurrent_assignment(self):
         oFile = vhdlFile.vhdlFile('tests/rule_concurrent/concurrent_test_input.vhd')

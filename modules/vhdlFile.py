@@ -16,6 +16,8 @@ class vhdlFile():
         fFoundArchitectureBegin = False
         fInsideProcess = False
         fInsideConcurrent = False
+        fInsideSensitivityList = False
+
         iOpenParenthesis = 0;
         iCloseParenthesis = 0;
         with open (filename) as oFile:
@@ -24,6 +26,9 @@ class vhdlFile():
                 # Check for blank lines
                 if re.match('^\s*$', oLine.line):
                     oLine.isBlank = True
+                # Check for comment lines
+                if re.match('^\s*--', oLine.line):
+                    oLine.isComment = True
                 # Check for library lines
                 if re.match('^\s*library', oLine.lineLower):
                     oLine.isLibrary = True
@@ -126,6 +131,19 @@ class vhdlFile():
                         oLine.indentLevel = 1
                     if fInsideProcess == True:
                         oLine.insideProcess = True
+                        # Check sensitivity list
+                        if '(' in oLine.line and not fInsideSensitivityList:
+                            fInsideSensitivityList = True
+                            oLine.isSensitivityListBegin = True
+                        if fInsideSensitivityList:
+                            oLine.insideSensitivityList = True
+                            iOpenParenthesis += oLine.line.count('(')
+                            iCloseParenthesis += oLine.line.count(')')
+                            if iOpenParenthesis == iCloseParenthesis:
+                                fInsideSensitivityList = False
+                                oLine.isSensitivityListEnd = True
+                                iOpenParenthesis = 0
+                                iCloseParenthesis = 0
                         if re.match('^.*\s+begin', oLine.lineLower) or re.match('^\s*begin', oLine.lineLower):
                             oLine.indentLevel = 1
                             oLine.isProcessBegin = True
@@ -133,6 +151,7 @@ class vhdlFile():
                             fInsideProcess = False
                             oLine.indentLevel = 1
                             oLine.isEndProcess = True
+
 
                 # Check concurrent declarations
                 if fInsideArchitecture and not fInsideProcess:

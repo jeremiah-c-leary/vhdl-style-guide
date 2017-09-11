@@ -40,6 +40,9 @@ class line():
         self.isProcessBegin = False
         self.isProcessKeyword = False
         self.isEndProcess = False
+        self.insideSensitivityList = False
+        self.isSensitivityListBegin = False
+        self.isSensitivityListEnd = False
         ## Concurrent attributes
         self.insideConcurrent = False
         self.isConcurrentBegin = False

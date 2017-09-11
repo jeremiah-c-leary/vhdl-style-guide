@@ -177,6 +177,24 @@ class testLineMethods(unittest.TestCase):
         oLine.isEndProcess = True
         self.assertEqual(oLine.isEndProcess, True)
 
+    def test_insideSensitivityList_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.insideSensitivityList, False)
+        oLine.insideSensitivityList = True
+        self.assertEqual(oLine.insideSensitivityList, True)
+
+    def test_isSensitivityListBegin_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isSensitivityListBegin, False)
+        oLine.isSensitivityListBegin = True
+        self.assertEqual(oLine.isSensitivityListBegin, True)
+
+    def test_isSensitivityListEnd_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isSensitivityListEnd, False)
+        oLine.isSensitivityListEnd = True
+        self.assertEqual(oLine.isSensitivityListEnd, True)
+
     def test_insideConcurrent_attribute(self):
         oLine = line.line('contents of Line')
         self.assertEqual(oLine.insideConcurrent, False)
