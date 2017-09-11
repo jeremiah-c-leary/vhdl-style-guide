@@ -244,5 +244,52 @@ class testVhdlFileMethods(unittest.TestCase):
         # Compare
         self.assertEqual(lActual, lExpected)
 
+    def test_insideProcess_assignment(self):
+        oFile = vhdlFile.vhdlFile('tests/rule_process/process_test_input.vhd')
+        lExpected = [6,7,8,9,11,12,13,14,15,17,18,19,20,21,22,24,25,26,27,28,29,30,32,33,34,35,36,38,39,40,41,42,46,47,48]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFile.lines):
+            if oLine.insideProcess:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
+    def test_isProcessBegin_assignment(self):
+        oFile = vhdlFile.vhdlFile('tests/rule_process/process_test_input.vhd')
+        lExpected = [6,13,20,28,34,40,47]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFile.lines):
+            if oLine.isProcessBegin:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
+    def test_isProcessKeyword_assignment(self):
+        oFile = vhdlFile.vhdlFile('tests/rule_process/process_test_input.vhd')
+        lExpected = [6,11,17,24,32,38,46]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFile.lines):
+            if oLine.isProcessKeyword:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
+    def test_isEndProcess_assignment(self):
+        oFile = vhdlFile.vhdlFile('tests/rule_process/process_test_input.vhd')
+        lExpected = [9,15,22,30,36,42,48]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFile.lines):
+            if oLine.isEndProcess:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
+
+
+
 if __name__ == '__main__':
     unittest.main()

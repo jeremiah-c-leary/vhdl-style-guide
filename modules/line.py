@@ -35,4 +35,9 @@ class line():
         self.isSignal = False
         ## Constant attributes
         self.isConstant = False
+        ## Process attributes
+        self.insideProcess = False
+        self.isProcessBegin = False
+        self.isProcessKeyword = False
+        self.isEndProcess = False
 

@@ -153,6 +153,29 @@ class testLineMethods(unittest.TestCase):
         oLine.isConstant = True
         self.assertEqual(oLine.isConstant, True)
 
+    def test_insideProcess_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.insideProcess, False)
+        oLine.insideProcess = True
+        self.assertEqual(oLine.insideProcess, True)
+
+    def test_isProcessBegin_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isProcessBegin, False)
+        oLine.isProcessBegin = True
+        self.assertEqual(oLine.isProcessBegin, True)
+
+    def test_isProcessKeyword_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isProcessKeyword, False)
+        oLine.isProcessKeyword = True
+        self.assertEqual(oLine.isProcessKeyword, True)
+
+    def test_isEndProcess_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isEndProcess, False)
+        oLine.isEndProcess = True
+        self.assertEqual(oLine.isEndProcess, True)
 
 if __name__ == '__main__':
     unittest.main()

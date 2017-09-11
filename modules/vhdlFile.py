@@ -13,6 +13,7 @@ class vhdlFile():
         fInsidePortMapDeclaration = False
         fInsideGenericMapDeclaration = False
         fInsideArchitecture = False
+        fInsideProcess = False
         iOpenParenthesis = 0;
         iCloseParenthesis = 0;
         with open (filename) as oFile:
@@ -112,6 +113,22 @@ class vhdlFile():
                     if re.match('^\s*constant', oLine.lineLower):
                         oLine.isConstant = True
                         oLine.indentLevel = 1
+
+                # Check process declarations
+                if fInsideArchitecture:
+                    if re.match('^\s*process', oLine.lineLower) or re.match('^\s*\S+\s*:\s*process', oLine.lineLower):
+                        fInsideProcess = True
+                        oLine.isProcessKeyword = True
+                        oLine.indentLevel = 1
+                    if fInsideProcess == True:
+                        oLine.insideProcess = True
+                        if re.match('^.*\s+begin', oLine.lineLower) or re.match('^\s*begin', oLine.lineLower):
+                            oLine.indentLevel = 1
+                            oLine.isProcessBegin = True
+                        if re.match('^\s*end\s+process', oLine.lineLower):
+                            fInsideProcess = False
+                            oLine.indentLevel = 1
+                            oLine.isEndProcess = True
 
                 # Add line to file
                 self.lines.append(oLine)
