@@ -130,6 +130,15 @@ class list():
         self.rules.append(rule_process.rule_009())
         self.rules.append(rule_process.rule_010())
         self.rules.append(rule_process.rule_011())
+        self.rules.append(rule_process.rule_012())
+        self.rules.append(rule_process.rule_013())
+        self.rules.append(rule_process.rule_014())
+        self.rules.append(rule_process.rule_015())
+        self.rules.append(rule_process.rule_016())
+        self.rules.append(rule_process.rule_017())
+        self.rules.append(rule_process.rule_018())
+        self.rules.append(rule_process.rule_019())
+        self.rules.append(rule_process.rule_020())
 
 
     def check_rules(self, oFile):

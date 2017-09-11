@@ -15,6 +15,7 @@ class vhdlFile():
         fInsideArchitecture = False
         fFoundArchitectureBegin = False
         fInsideProcess = False
+        fFoundProcessBegin = False
         fInsideConcurrent = False
         fInsideSensitivityList = False
 
@@ -132,7 +133,7 @@ class vhdlFile():
                     if fInsideProcess == True:
                         oLine.insideProcess = True
                         # Check sensitivity list
-                        if '(' in oLine.line and not fInsideSensitivityList:
+                        if '(' in oLine.line and not fInsideSensitivityList and not fFoundProcessBegin:
                             fInsideSensitivityList = True
                             oLine.isSensitivityListBegin = True
                         if fInsideSensitivityList:
@@ -147,10 +148,12 @@ class vhdlFile():
                         if re.match('^.*\s+begin', oLine.lineLower) or re.match('^\s*begin', oLine.lineLower):
                             oLine.indentLevel = 1
                             oLine.isProcessBegin = True
+                            fFoundProcessBegin = True
                         if re.match('^\s*end\s+process', oLine.lineLower):
                             fInsideProcess = False
                             oLine.indentLevel = 1
                             oLine.isEndProcess = True
+                            fFoundProcessBegin = False
 
 
                 # Check concurrent declarations
