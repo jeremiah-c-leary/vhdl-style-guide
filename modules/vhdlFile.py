@@ -107,6 +107,11 @@ class vhdlFile():
                         oLine.isSignal = True
                         oLine.indentLevel = 1
 
+                # Check Constant declarations
+                if fInsideArchitecture:
+                    if re.match('^\s*constant', oLine.lineLower):
+                        oLine.isConstant = True
+                        oLine.indentLevel = 1
 
                 # Add line to file
                 self.lines.append(oLine)

@@ -9,9 +9,6 @@ class constant_rule(rule.rule):
         rule.rule.__init__(self)
         self.name = 'constant'
 
-    def _isConstant(self, sString):
-        return re.match('^\s*constant', sString.lower())
-
 
 class rule_001(constant_rule):
     '''Constant rule 001 checks for the proper indentation at the beginning of the line.'''
@@ -21,10 +18,10 @@ class rule_001(constant_rule):
         self.identifier = '001'
         self.solution = 'Ensure there are only two spaces before constant keyword.'
 
-    def analyze(self, lines):
-        for iLineNumber, sLine in enumerate(lines):
-            if self._isConstant(sLine):
-                if not re.match('^\s\sconstant', sLine.lower()):
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isConstant:
+                if not re.match('^\s\sconstant', oLine.lineLower):
                     self.add_violation(iLineNumber)
 
 
@@ -36,10 +33,10 @@ class rule_002(constant_rule):
         self.identifier = '002'
         self.solution = 'Lower case "constant" keyword.'
 
-    def analyze(self, lines):
-        for iLineNumber, sLine in enumerate(lines):
-            if self._isConstant(sLine):
-                if not re.match('^\s*constant', sLine):
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isConstant:
+                if not re.match('^\s*constant', oLine.line):
                     self.add_violation(iLineNumber)
 
 
@@ -51,10 +48,10 @@ class rule_003(constant_rule):
         self.identifier = '003'
         self.solution = 'Remove all but one space after the "constant" keyword.'
 
-    def analyze(self, lines):
-        for iLineNumber, sLine in enumerate(lines):
-            if self._isConstant(sLine):
-                if not re.match('^\s*constant\s\w', sLine.lower()):
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isConstant:
+                if not re.match('^\s*constant\s\w', oLine.lineLower):
                     self.add_violation(iLineNumber)
 
 
@@ -66,10 +63,10 @@ class rule_004(constant_rule):
         self.identifier = '004'
         self.solution = 'Change constant name to lowercase.'
 
-    def analyze(self, lines):
-        for iLineNumber, sLine in enumerate(lines):
-            if self._isConstant(sLine):
-                if not self._isLowercase(sLine.split()[1]):
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isConstant:
+                if not self._isLowercase(oLine.line.split()[1]):
                     self.add_violation(iLineNumber)
 
 
@@ -81,10 +78,10 @@ class rule_005(constant_rule):
         self.identifier = '005'
         self.solution = 'Ensure only a single space after the colon.'
 
-    def analyze(self, lines):
-        for iLineNumber, sLine in enumerate(lines):
-            if self._isConstant(sLine):
-                if not re.match('^\s*constant\s+\w+\s*:\s\w', sLine.lower()):
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isConstant:
+                if not re.match('^\s*constant\s+\w+\s*:\s\w', oLine.lineLower):
                     self.add_violation(iLineNumber)
 
 
@@ -96,10 +93,10 @@ class rule_006(constant_rule):
         self.identifier = '006'
         self.solution = 'Add a single space before the colon.'
 
-    def analyze(self, lines):
-        for iLineNumber, sLine in enumerate(lines):
-            if self._isConstant(sLine):
-                if re.match('^\s*constant\s+\w+:', sLine.lower()):
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isConstant:
+                if re.match('^\s*constant\s+\w+:', oLine.lineLower):
                     self.add_violation(iLineNumber)
 
 
@@ -111,10 +108,10 @@ class rule_007(constant_rule):
         self.identifier = '007'
         self.solution = 'move assignment to same line as constant declaration.'
 
-    def analyze(self, lines):
-        for iLineNumber, sLine in enumerate(lines):
-            if self._isConstant(sLine):
-                if not ':=' in sLine:
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isConstant:
+                if not ':=' in oLine.line:
                     self.add_violation(iLineNumber)
 
 
@@ -126,10 +123,10 @@ class rule_008(constant_rule):
         self.identifier = '008'
         self.solution = 'Add c_ prefix to constant.'
 
-    def analyze(self, lines):
-        for iLineNumber, sLine in enumerate(lines):
-            if self._isConstant(sLine):
-                if not re.match('^\s*constant\s+c_', sLine.lower()):
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isConstant:
+                if not re.match('^\s*constant\s+c_', oLine.lineLower):
                     self.add_violation(iLineNumber)
 
 class rule_009(constant_rule):
@@ -140,20 +137,20 @@ class rule_009(constant_rule):
         self.identifier = '009'
         self.solution = 'Align colon with right most colon.'
 
-    def analyze(self, lines):
+    def analyze(self, oFile):
         iMaximumColumn = 0
         # Search for the largest column that contains the first colon
-        for iLineNumber, sLine in enumerate(lines):
-            if not self._isConstant(sLine):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if not oLine.isConstant:
                 continue
-            iCurrentColumn = sLine.find(':')
+            iCurrentColumn = oLine.line.find(':')
             if iMaximumColumn < iCurrentColumn:
                 iMaximumColumn = iCurrentColumn
         self.solution = 'Align colon to column ' + str(iMaximumColumn + 1) + '.'
         # Compare each constants colon column to the largest found
-        for iLineNumber, sLine in enumerate(lines):
-            if not self._isConstant(sLine):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if not oLine.isConstant:
                 continue
-            iCurrentColumn = sLine.find(':')
-            if not iMaximumColumn == sLine.find(':'):
+            iCurrentColumn = oLine.line.find(':')
+            if not iMaximumColumn == oLine.line.find(':'):
                 self.add_violation(iLineNumber)

@@ -233,6 +233,16 @@ class testVhdlFileMethods(unittest.TestCase):
         # Compare
         self.assertEqual(lActual, lExpected)
 
+    def test_isConstant_assignment(self):
+        oFile = vhdlFile.vhdlFile('tests/rule_constant/constant_test_input.vhd')
+        lExpected = [5,6,7,8,9,10]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFile.lines):
+            if oLine.isConstant:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
 
 if __name__ == '__main__':
     unittest.main()
