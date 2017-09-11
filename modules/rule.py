@@ -8,7 +8,6 @@ class rule():
         self.identifier = identifier
         self.solution = None
         self.violations = []
-        self._fInsideProcess = False
         self.indentSize = 2
 
     def report_violations(self,filename):
@@ -21,24 +20,6 @@ class rule():
 
     def _isLowercase(self, sString):
         if sString == sString.lower():
-            return True
-        else:
-            return False
-
-    def _insideProcess(self, sString):
-        if self._isProcess(sString):
-            self._fInsideProcess = True
-        elif re.match('^\s*end\s+process', sString.lower()):
-            self._fInsideProcess = False
-
-    def _isProcess(self, sString):
-        if re.match('^\s*process', sString.lower()) or re.match('^\s*\w+\s*:\s*process', sString.lower()):
-            return True
-        else:
-            return False
-
-    def _isConcurrent(self, sString):
-        if re.match('^\s*\w+\s*<=', sString):
             return True
         else:
             return False
