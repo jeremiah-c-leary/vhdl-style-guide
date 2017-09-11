@@ -49,20 +49,15 @@ class rule_003(concurrent_rule):
         self.solution = 'Align first character in row to the column of text one space after the <=.'
 
     def analyze(self, oFile):
-        fMultiline = False
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.insideConcurrent:
                 if oLine.isConcurrentBegin and oLine.isEndConcurrent:
                     continue
-                if fMultiline:
+                if oLine.isConcurrentBegin:
+                    iAlignmentColumn = oLine.line.find('<') + 3
+                else:
                     if not re.match('\s{' + str(iAlignmentColumn) + '}\S', oLine.line):
                         self.add_violation(iLineNumber)
-                if oLine.isConcurrentBegin:
-                    if not oLine.isEndConcurrent:
-                        iAlignmentColumn = oLine.line.find('<') + 3
-                        fMultiline = True
-                if oLine.isEndConcurrent:
-                    fMultiline = False
 
 # TODO:
 # assignments lined up to the same column
