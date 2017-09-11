@@ -13,6 +13,7 @@ class vhdlFile():
         fInsidePortMapDeclaration = False
         fInsideGenericMapDeclaration = False
         fInsideArchitecture = False
+        fFoundArchitectureBegin = False
         fInsideProcess = False
         fInsideConcurrent = False
         iOpenParenthesis = 0;
@@ -95,11 +96,13 @@ class vhdlFile():
                     oLine.indentLevel = 0
                 if fInsideArchitecture:
                     oLine.insideArchitecture = True
-                    if re.match('^\s*begin', oLine.lineLower) and not fInsideProcess:
+                    if re.match('^\s*begin', oLine.lineLower) and not fFoundArchitectureBegin:
+                        fFoundArchitectureBegin = True
                         oLine.isArchitectureBegin = True
                         oLine.indentLevel = 0
                     if re.match('^\s*end\s+architecture', oLine.lineLower):
                         fInsideArchitecture = False
+                        fFoundArchitectureBegin = False
                         oLine.isEndArchitecture = True
                         oLine.indentLevel = 0
 
