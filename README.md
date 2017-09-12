@@ -19,8 +19,20 @@ I have choosen to implement the program in Python so I can further my learning o
 The program will be designed around rules.
 The rules will be atomic so they can be added or removed easily.
 
+
 ### Configuration
 
 My plan is to use a JSON file to configure the program.
 You will be able to turn off rules and configure rules through the file.
+
+## Testing
+
+I will be using TDD for development.
+Tests are located under the tests directory.
+
+### Executing tests
+
+You can run all the tests at the top level by invoking the following command:
+
+python -m unittest discover
 
