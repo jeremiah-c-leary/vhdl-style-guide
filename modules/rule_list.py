@@ -139,6 +139,11 @@ class list():
         self.rules.append(rule_process.rule_018())
         self.rules.append(rule_process.rule_019())
         self.rules.append(rule_process.rule_020())
+        self.rules.append(rule_process.rule_021())
+        self.rules.append(rule_process.rule_022())
+        self.rules.append(rule_process.rule_023())
+        self.rules.append(rule_process.rule_024())
+        self.rules.append(rule_process.rule_025())
 
 
     def check_rules(self, oFile):

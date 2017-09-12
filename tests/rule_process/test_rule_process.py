@@ -188,6 +188,50 @@ class testRuleConcurrentMethods(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
+    def test_rule_021(self):
+        oRule = rule_process.rule_021()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'process')
+        self.assertEqual(oRule.identifier, '021')
+        dExpected = [13,20,28,34,40,47,52,64]
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_022(self):
+        oRule = rule_process.rule_022()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'process')
+        self.assertEqual(oRule.identifier, '022')
+        dExpected = [47,52,59,64]
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_023(self):
+        oRule = rule_process.rule_023()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'process')
+        self.assertEqual(oRule.identifier, '023')
+        dExpected = [48,53,60,65]
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_024(self):
+        oRule = rule_process.rule_024()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'process')
+        self.assertEqual(oRule.identifier, '024')
+        dExpected = [63]
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_025(self):
+        oRule = rule_process.rule_025()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'process')
+        self.assertEqual(oRule.identifier, '025')
+        dExpected = [68]
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
 
 if __name__ == '__main__':
     unittest.main()

@@ -323,6 +323,82 @@ class rule_020(process_rule):
                     if not re.match('^\s{' + str(iAlignmentColumn + 1) + '}\S', oLine.line):
                         self.add_violation(iLineNumber)
 
-#TODO:
-# check for indentation of declarations between "process" and "begin" keywords
 
+class rule_021(process_rule):
+    '''Process rule 021 checks for a blank line above the "begin" keyword.'''
+
+    def __init__(self):
+        process_rule.__init__(self)
+        self.identifier = '021'
+        self.solution = 'Add blank line above the "begin" keyword.'
+
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isProcessBegin:
+                if not oFile.lines[iLineNumber - 1].isBlank:
+                    self.add_violation(iLineNumber)
+
+
+class rule_022(process_rule):
+    '''Process rule 022 checks for a blank line below the "begin" keyword.'''
+
+    def __init__(self):
+        process_rule.__init__(self)
+        self.identifier = '022'
+        self.solution = 'Add blank line below the "begin" keyword.'
+
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isProcessBegin:
+                if not oFile.lines[iLineNumber + 1].isBlank:
+                    self.add_violation(iLineNumber)
+
+
+class rule_023(process_rule):
+    '''Process rule 023 checks for a blank line above the "end process" keywords.'''
+
+    def __init__(self):
+        process_rule.__init__(self)
+        self.identifier = '023'
+        self.solution = 'Add blank line above the "end process" keywords.'
+
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isEndProcess:
+                if not oFile.lines[iLineNumber - 1].isBlank:
+                    self.add_violation(iLineNumber)
+
+
+class rule_024(process_rule):
+    '''Process rule 024 checks for a single space after the process label and the :.'''
+
+    def __init__(self):
+        process_rule.__init__(self)
+        self.identifier = '024'
+        self.solution = 'Ensure a single space exists between process label and :.'
+
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isProcessKeyword:
+                if re.match('^\s*\S+\s*:', oLine.line):
+                    if not re.match('^\s*\S+\s:', oLine.line):
+                        self.add_violation(iLineNumber)
+
+
+class rule_025(process_rule):
+    '''Process rule 025 checks for a single space after the : and before the "process" keyword.'''
+
+    def __init__(self):
+        process_rule.__init__(self)
+        self.identifier = '025'
+        self.solution = 'Ensure a single space exists between the : and the "process" keyword.'
+
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isProcessKeyword:
+                if re.match('^\s*\S+\s*:\s*\S+', oLine.line):
+                    if not re.match('^\s*\S+\s*:\s\S', oLine.line):
+                        self.add_violation(iLineNumber)
+
+#TODO:
+# Remove spaces after ( and before )

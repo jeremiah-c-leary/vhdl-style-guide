@@ -60,8 +60,15 @@ proc_name : process (one, two, three) is
   end process;
 
   a<=b;
-  PROC_NAME:process (one) is
+  PROC_NAME: process (one) is
   begin
+  end process PROC_NAME;
+
+
+  PROC_NAME :process (one) is
+
+  begin
+  
   end process PROC_NAME;
 
 end architecture ARCH;
