@@ -177,6 +177,12 @@ class testLineMethods(unittest.TestCase):
         oLine.isEndProcess = True
         self.assertEqual(oLine.isEndProcess, True)
 
+    def test_isProcessDeclarative_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isProcessDeclarative, False)
+        oLine.isProcessDeclarative = True
+        self.assertEqual(oLine.isProcessDeclarative, True)
+
     def test_insideSensitivityList_attribute(self):
         oLine = line.line('contents of Line')
         self.assertEqual(oLine.insideSensitivityList, False)

@@ -324,34 +324,59 @@ class rule_020(process_rule):
                         self.add_violation(iLineNumber)
 
 
-class rule_021(process_rule):
-    '''Process rule 021 checks for a blank line above the "begin" keyword.'''
-
-    def __init__(self):
-        process_rule.__init__(self)
-        self.identifier = '021'
-        self.solution = 'Add blank line above the "begin" keyword.'
-
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isProcessBegin:
-                if not oFile.lines[iLineNumber - 1].isBlank:
-                    self.add_violation(iLineNumber)
-
-
 class rule_022(process_rule):
-    '''Process rule 022 checks for a blank line below the "begin" keyword.'''
+    '''Process rule 022 checks for a blank line after the "begin" keyword.'''
 
     def __init__(self):
         process_rule.__init__(self)
         self.identifier = '022'
-        self.solution = 'Add blank line below the "begin" keyword.'
+        self.solution = 'Add blank line after the "begin" keyword.'
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isProcessBegin:
                 if not oFile.lines[iLineNumber + 1].isBlank:
                     self.add_violation(iLineNumber)
+
+
+class rule_021(process_rule):
+    '''Process rule 021 checks for blank lines between the end of the sensitivity list and before the "begin" keyword.'''
+
+    def __init__(self):
+        process_rule.__init__(self)
+        self.identifier = '021'
+        self.solution = 'Remove blank lines between the end of the sensitivity list and before the "begin" keyword.'
+
+    def analyze(self, oFile):
+        fCheckForBlanks = False
+        fBlanksFound = False
+        fNonBlanksFound = False
+        fSkipProcess = False
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.insideProcess:
+                if oLine.isProcessBegin and oLine.isSensitivityListEnd:
+                    fSkipProcess = True
+                if oLine.isSensitivityListEnd and oFile.lines[iLineNumber + 1].isProcessBegin:
+                    fSkipProcess = True
+                if fSkipProcess:
+                    if oLine.isEndProcess:
+                        fSkipProcess = False
+                    continue
+#                print (str(iLineNumber) + '  ' + str(fBlanksFound) + '  ' + str(fNonBlanksFound) + '  ' + oLine.line)
+                if oLine.isProcessBegin:
+                    if fBlanksFound and not fNonBlanksFound:
+                        self.add_violation(iLineNumber)
+                    fCheckForBlanks = False
+                    fBlanksFound = False
+                    fNonBlanksFound = False
+                    fSkipProcess = True
+                if fCheckForBlanks:
+                    if oLine.isBlank:
+                        fBlanksFound = True
+                    else:
+                        fNonBlanksFound = True
+                if oLine.isSensitivityListEnd:
+                    fCheckForBlanks = True
 
 
 class rule_023(process_rule):
@@ -399,6 +424,84 @@ class rule_025(process_rule):
                 if re.match('^\s*\S+\s*:\s*\S+', oLine.line):
                     if not re.match('^\s*\S+\s*:\s\S', oLine.line):
                         self.add_violation(iLineNumber)
+
+
+class rule_026(process_rule):
+    '''Process rule 026 checks for blank lines between the end of the sensitivity list and process declarative lines.'''
+
+    def __init__(self):
+        process_rule.__init__(self)
+        self.identifier = '026'
+        self.solution = 'Ensure a single blank line between the end of the sensitivity list and the next non-blank line.'
+
+    def analyze(self, oFile):
+        fCheckForBlanks = False
+        fBlanksFound = False
+        fNonBlanksFound = False
+        fSkipProcess = False
+        iBlankCount = 0
+        iFailingLineNumber = 0
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.insideProcess:
+                if oLine.isProcessBegin and oLine.isSensitivityListEnd:
+                    fSkipProcess = True
+                if oLine.isSensitivityListEnd and oFile.lines[iLineNumber + 1].isProcessBegin:
+                    fSkipProcess = True
+                if fSkipProcess:
+                    if oLine.isEndProcess:
+                        fSkipProcess = False
+                    continue
+                if fCheckForBlanks:
+                    if oLine.isBlank:
+                        iBlankCount += 1
+                    else:
+                        if not iBlankCount == 1 and not oLine.isProcessBegin:
+                            self.add_violation(iFailingLineNumber)
+                        fSkipProcess = True
+                        fCheckForBlanks = False
+                        iBlankCount = 0
+                if oLine.isSensitivityListEnd:
+                    fCheckForBlanks = True
+                    iFailingLineNumber = iLineNumber
+
+
+class rule_027(process_rule):
+    '''Process rule 027 checks for blank lines between the process declarative lines and the "begin" keyword.'''
+
+    def __init__(self):
+        process_rule.__init__(self)
+        self.identifier = '027'
+        self.solution = 'Ensure a single blank line between the last non-blank line and the "begin" keyword.'
+
+    def analyze(self, oFile):
+        fCheckForBlanks = False
+        fBlanksFound = False
+        fNonBlanksFound = False
+        fSkipProcess = False
+        iBlankCount = 0
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.insideProcess:
+                if oLine.isProcessBegin and oLine.isSensitivityListEnd:
+                    fSkipProcess = True
+                if oLine.isSensitivityListEnd and oFile.lines[iLineNumber + 1].isProcessBegin:
+                    fSkipProcess = True
+                if fSkipProcess:
+                    if oLine.isEndProcess:
+                        fSkipProcess = False
+                    continue
+                if fCheckForBlanks:
+                    if oLine.isBlank:
+                        iBlankCount += 1
+                    if not oLine.isBlank and not oLine.isProcessBegin:
+                        iBlankCount = 0
+                    if oLine.isProcessBegin:
+                        if not iBlankCount == 1:
+                            self.add_violation(iLineNumber)
+                        fSkipProcess = True
+                        fCheckForBlanks = False
+                        iBlankCount = 0
+                if oLine.isSensitivityListEnd:
+                    fCheckForBlanks = True
 
 #TODO:
 # Remove spaces after ( and before )

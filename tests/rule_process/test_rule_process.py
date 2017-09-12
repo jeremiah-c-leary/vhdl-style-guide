@@ -193,7 +193,7 @@ class testRuleConcurrentMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'process')
         self.assertEqual(oRule.identifier, '021')
-        dExpected = [13,20,28,34,40,47,52,64]
+        dExpected = [59,70]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -230,6 +230,24 @@ class testRuleConcurrentMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'process')
         self.assertEqual(oRule.identifier, '025')
         dExpected = [68]
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_026(self):
+        oRule = rule_process.rule_026()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'process')
+        self.assertEqual(oRule.identifier, '026')
+        dExpected = [75]
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_027(self):
+        oRule = rule_process.rule_027()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'process')
+        self.assertEqual(oRule.identifier, '027')
+        dExpected = [77,84]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 

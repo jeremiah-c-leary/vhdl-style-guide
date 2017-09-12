@@ -71,5 +71,27 @@ proc_name : process (one, two, three) is
   
   end process PROC_NAME;
 
+
+  PROC_NAME : process (one) is
+    -- This is a comment
+  begin
+  
+  end process PROC_NAME;
+
+  PROC_NAME : process (one) is
+
+    -- This is a comment
+  begin
+  
+  end process PROC_NAME;
+
+  PROC_NAME : process (one) is
+
+    -- This is a comment
+
+  begin
+  
+  end process PROC_NAME;
+
 end architecture ARCH;
 
