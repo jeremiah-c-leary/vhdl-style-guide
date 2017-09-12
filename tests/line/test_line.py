@@ -219,5 +219,48 @@ class testLineMethods(unittest.TestCase):
         oLine.isEndConcurrent = True
         self.assertEqual(oLine.isEndConcurrent, True)
 
+    def test_insideIf_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.insideIf, False)
+        oLine.insideIf= True
+        self.assertEqual(oLine.insideIf, True)
+
+    def test_isIfKeyword_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isIfKeyword, False)
+        oLine.isIfKeyword = True
+        self.assertEqual(oLine.isIfKeyword, True)
+
+    def test_isThenKeyword_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isThenKeyword, False)
+        oLine.isThenKeyword = True
+        self.assertEqual(oLine.isThenKeyword, True)
+
+    def test_isElseIfKeyword_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isElseIfKeyword, False)
+        oLine.isElseIfKeyword = True
+        self.assertEqual(oLine.isElseIfKeyword, True)
+
+    def test_isEndIfKeyword_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isEndIfKeyword, False)
+        oLine.isEndIfKeyword = True
+        self.assertEqual(oLine.isEndIfKeyword, True)
+
+    def test_isIfEnd_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isIfEnd, False)
+        oLine.isIfEnd = True
+        self.assertEqual(oLine.isIfEnd, True)
+
+    def test_isElseKeyword_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isElseKeyword, False)
+        oLine.isElseKeyword = True
+        self.assertEqual(oLine.isElseKeyword, True)
+
+
 if __name__ == '__main__':
     unittest.main()

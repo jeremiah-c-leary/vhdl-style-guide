@@ -28,3 +28,10 @@ class rule():
         if not re.match('^\s{' + str(self.indentSize * oLine.indentLevel) + '}\S', oLine.line):
             self.add_violation(iLineNumber)
 
+    def _check_no_blank_line_after(self, oFile, iLineNumber): 
+        if oFile.lines[iLineNumber + 1].isBlank:
+            self.add_violation(iLineNumber)
+
+    def _check_no_blank_line_before(self, oFile, iLineNumber): 
+        if oFile.lines[iLineNumber - 1].isBlank:
+            self.add_violation(iLineNumber)

@@ -48,4 +48,12 @@ class line():
         self.insideConcurrent = False
         self.isConcurrentBegin = False
         self.isEndConcurrent = False
+        ## If attributes
+        self.insideIf = False
+        self.isElseKeyword = False
+        self.isElseIfKeyword = False
+        self.isEndIfKeyword = False
+        self.isIfEnd = False
+        self.isIfKeyword = False
+        self.isThenKeyword = False
 

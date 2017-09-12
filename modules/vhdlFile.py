@@ -19,8 +19,13 @@ class vhdlFile():
         fInsideConcurrent = False
         fInsideSensitivityList = False
 
+        fInsideIfStatement = False
+
         iOpenParenthesis = 0;
         iCloseParenthesis = 0;
+
+        iCurrentIndentLevel = 0;
+
         with open (filename) as oFile:
             for sLine in oFile:
                 oLine = line.line(sLine.rstrip())
@@ -145,15 +150,18 @@ class vhdlFile():
                                 oLine.isSensitivityListEnd = True
                                 iOpenParenthesis = 0
                                 iCloseParenthesis = 0
+                                iCurrentIndentLevel = 2
                         if re.match('^.*\s+begin', oLine.lineLower) or re.match('^\s*begin', oLine.lineLower):
                             oLine.indentLevel = 1
                             oLine.isProcessBegin = True
                             fFoundProcessBegin = True
+                            iCurrentIndentLevel = 2
                         if re.match('^\s*end\s+process', oLine.lineLower):
                             fInsideProcess = False
                             oLine.indentLevel = 1
                             oLine.isEndProcess = True
                             fFoundProcessBegin = False
+                            iCurrentIndentLevel = 1
 
 
                 # Check concurrent declarations
@@ -168,7 +176,29 @@ class vhdlFile():
                             fInsideConcurrent = False
                             oLine.isEndConcurrent = True
 
-
+                # Check if statements
+                if fInsideProcess:
+                    if re.match('^\s*if', oLine.lineLower):
+                        oLine.isIfKeyword = True
+                        fInsideIfStatement = True
+                        oLine.indentLevel = iCurrentIndentLevel
+                        iCurrentIndentLevel += 1
+                    if re.match('^\s*elsif', oLine.lineLower):
+                        oLine.isElseIfKeyword = True
+                        fInsideIfStatement = True
+                        oLine.indentLevel = iCurrentIndentLevel - 1
+                    if re.match('^\s*end\s+if', oLine.lineLower):
+                        oLine.isEndIfKeyword = True
+                        iCurrentIndentLevel -= 1
+                        oLine.indentLevel = iCurrentIndentLevel
+                    if fInsideIfStatement:
+                        oLine.insideIf = True
+                    if fInsideIfStatement and 'then' in oLine.lineLower:
+                        oLine.isThenKeyword = True
+                        fInsideIfStatement = False
+                    if re.match('^\s*else', oLine.lineLower):
+                        oLine.isElseKeyword = True
+                        oLine.indentLevel = iCurrentIndentLevel - 1
 
                 # Add line to file
                 self.lines.append(oLine)
