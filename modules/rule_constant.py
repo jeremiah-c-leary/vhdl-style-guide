@@ -21,8 +21,7 @@ class rule_001(constant_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isConstant:
-                if not re.match('^\s\sconstant', oLine.lineLower):
-                    self.add_violation(iLineNumber)
+                self._check_indent(oLine, iLineNumber)
 
 
 class rule_002(constant_rule):
@@ -51,7 +50,7 @@ class rule_003(constant_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isConstant:
-                if not re.match('^\s*constant\s\w', oLine.lineLower):
+                if not re.match('^\s*constant\s\S', oLine.lineLower):
                     self.add_violation(iLineNumber)
 
 
@@ -66,8 +65,7 @@ class rule_004(constant_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isConstant:
-                if not self._isLowercase(oLine.line.split()[1]):
-                    self.add_violation(iLineNumber)
+                self._is_lowercase(oLine.line.split()[1], iLineNumber)
 
 
 class rule_005(constant_rule):
@@ -96,7 +94,7 @@ class rule_006(constant_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isConstant:
-                if re.match('^\s*constant\s+\w+:', oLine.lineLower):
+                if re.match('^\s*constant\s+\S+:', oLine.lineLower):
                     self.add_violation(iLineNumber)
 
 
@@ -151,6 +149,5 @@ class rule_009(constant_rule):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if not oLine.isConstant:
                 continue
-            iCurrentColumn = oLine.line.find(':')
             if not iMaximumColumn == oLine.line.find(':'):
                 self.add_violation(iLineNumber)

@@ -21,7 +21,7 @@ class rule_001(architecture_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isArchitectureKeyword:
-                self._checkIndent(oLine, iLineNumber)
+                self._check_indent(oLine, iLineNumber)
 
 
 class rule_002(architecture_rule):
@@ -35,8 +35,7 @@ class rule_002(architecture_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isArchitectureKeyword:
-                lLine = oLine.line.split()
-                if len(lLine) > 4:
+                if len(oLine.line.split()) > 4:
                     if not re.match('^\s*architecture\s\S+\sof\s\S+\sis', oLine.lineLower):
                         self.add_violation(iLineNumber)
 
@@ -52,8 +51,7 @@ class rule_003(architecture_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isArchitectureKeyword:
-                if not oFile.lines[iLineNumber - 1].isBlank:
-                    self.add_violation(iLineNumber)
+                self._check_blank_line_before(oFile, iLineNumber)
 
 
 class rule_004(architecture_rule):
@@ -118,7 +116,7 @@ class rule_007(architecture_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isArchitectureBegin:
-                self._checkIndent(oLine, iLineNumber)
+                self._check_indent(oLine, iLineNumber)
 
 
 class rule_008(architecture_rule):
@@ -132,7 +130,7 @@ class rule_008(architecture_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isEndArchitecture:
-                self._checkIndent(oLine, iLineNumber)
+                self._check_indent(oLine, iLineNumber)
 
 
 class rule_009(architecture_rule):
@@ -148,6 +146,7 @@ class rule_009(architecture_rule):
             if oLine.isEndArchitecture:
                 if not re.match('^\s*end\s\s*architecture', oLine.line):
                     self.add_violation(iLineNumber)
+
 
 class rule_010(architecture_rule):
     '''Architecture rule 010 checks for the entity name exists on the same line as the "end" and "architecture" keywords.'''
@@ -182,8 +181,7 @@ class rule_011(architecture_rule):
                 lLine = oLine.line.split()
                 if len(lLine) > 2:
                     if not lLine[2].startswith('--'):
-                        if not lLine[2] == lLine[2].upper():
-                            self.add_violation(iLineNumber)
+                        self._is_uppercase(lLine[2], iLineNumber)
 
 
 class rule_012(architecture_rule):
@@ -215,8 +213,7 @@ class rule_013(architecture_rule):
             if oLine.isArchitectureKeyword:
                 if re.match('^\s*\S+\s\s*\S+\s\s*of\s\s*\S+\s\s*is', oLine.lineLower):
                     lLine = oLine.line.split()
-                    if not lLine[1] == lLine[1].upper():
-                        self.add_violation(iLineNumber)
+                    self._is_uppercase(lLine[1], iLineNumber)
 
 
 class rule_014(architecture_rule):
@@ -232,8 +229,7 @@ class rule_014(architecture_rule):
             if oLine.isArchitectureKeyword:
                 if re.match('^\s*\S+\s\s*\S+\s\s*of\s\s*\S+\s\s*is', oLine.lineLower):
                     lLine = oLine.line.split()
-                    if not lLine[3] == lLine[3].upper():
-                        self.add_violation(iLineNumber)
+                    self._is_uppercase(lLine[3], iLineNumber)
 
 
 class rule_015(architecture_rule):
@@ -247,8 +243,7 @@ class rule_015(architecture_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isArchitectureKeyword:
-                if not oFile.lines[iLineNumber + 1].isBlank:
-                    self.add_violation(iLineNumber)
+                self._check_blank_line_after(oFile, iLineNumber)
 
 
 class rule_016(architecture_rule):
@@ -262,8 +257,7 @@ class rule_016(architecture_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isArchitectureBegin:
-                if not oFile.lines[iLineNumber - 1].isBlank:
-                    self.add_violation(iLineNumber)
+                self._check_blank_line_before(oFile, iLineNumber)
 
 
 class rule_017(architecture_rule):
@@ -277,8 +271,7 @@ class rule_017(architecture_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isArchitectureBegin:
-                if not oFile.lines[iLineNumber + 1].isBlank:
-                    self.add_violation(iLineNumber)
+                self._check_blank_line_after(oFile, iLineNumber)
 
 
 class rule_018(architecture_rule):
@@ -292,5 +285,4 @@ class rule_018(architecture_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isEndArchitecture:
-                if not oFile.lines[iLineNumber - 1].isBlank:
-                    self.add_violation(iLineNumber)
+                self._check_blank_line_before(oFile, iLineNumber)

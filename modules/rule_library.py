@@ -21,7 +21,7 @@ class rule_001(library_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isLibrary:
-                self._checkIndent(oLine, iLineNumber)
+                self._check_indent(oLine, iLineNumber)
 
 
 class rule_002(library_rule):
@@ -50,8 +50,7 @@ class rule_003(library_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isLibrary:
-                if not oFile.lines[iLineNumber - 1].isBlank:
-                    self.add_violation(iLineNumber)
+                self._check_blank_line_before(oFile, iLineNumber)
 
 
 class rule_004(library_rule):
@@ -65,8 +64,7 @@ class rule_004(library_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isLibrary:
-                if not re.match('^\s*library', oLine.line):
-                    self.add_violation(iLineNumber)
+                self._is_lowercase(self._get_first_word(oLine), iLineNumber)
 
 
 class rule_005(library_rule):
@@ -80,8 +78,7 @@ class rule_005(library_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isLibraryUse:
-                if not re.match('^\s*use', oLine.line):
-                    self.add_violation(iLineNumber)
+                self._is_lowercase(self._get_first_word(oLine), iLineNumber)
 
 
 class rule_006(library_rule):
@@ -110,8 +107,7 @@ class rule_007(library_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isLibraryUse:
-                if oFile.lines[iLineNumber - 1].isBlank:
-                    self.add_violation(iLineNumber)
+                self._check_no_blank_line_before(oFile, iLineNumber)
 
 
 class rule_008(library_rule):
@@ -125,4 +121,4 @@ class rule_008(library_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isLibraryUse:
-                self._checkIndent(oLine, iLineNumber)
+                self._check_indent(oLine, iLineNumber)

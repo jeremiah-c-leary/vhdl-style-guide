@@ -21,8 +21,7 @@ class rule_001(signal_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isSignal:
-                if not re.match('^\s\ssignal', oLine.lineLower):
-                    self.add_violation(iLineNumber)
+                self._check_indent(oLine, iLineNumber)
 
 
 class rule_002(signal_rule):
@@ -31,13 +30,12 @@ class rule_002(signal_rule):
     def __init__(self):
         signal_rule.__init__(self)
         self.identifier = '002'
-        self.solution = 'Remove spaces before signal keyword.'
+        self.solution = 'Lowercase "signal" keyword.'
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isSignal:
-                if not re.match('^\s*signal', oLine.line):
-                    self.add_violation(iLineNumber)
+                self._is_lowercase(self._get_first_word(oLine), iLineNumber)
 
 
 class rule_003(signal_rule):
@@ -66,8 +64,7 @@ class rule_004(signal_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isSignal:
-                if not self._isLowercase(oLine.line.split()[1]):
-                    self.add_violation(iLineNumber)
+                self._is_lowercase(oLine.line.split()[1], iLineNumber)
 
 
 class rule_005(signal_rule):
@@ -81,7 +78,7 @@ class rule_005(signal_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isSignal:
-                if not re.match('^\s*signal\s+.*\s*:\s\w', oLine.lineLower):
+                if not re.match('^\s*signal\s+.*\s*:\s\S', oLine.lineLower):
                     self.add_violation(iLineNumber)
 
 
@@ -96,7 +93,7 @@ class rule_006(signal_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isSignal:
-                if re.match('^\s*signal\s+.*\w:', oLine.lineLower):
+                if re.match('^\s*signal\s+.*\S:', oLine.lineLower):
                     self.add_violation(iLineNumber)
 
 

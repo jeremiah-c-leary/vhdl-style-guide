@@ -9,7 +9,6 @@ class process_rule(rule.rule):
         rule.rule.__init__(self)
         self.name = 'process'
 
-  
 
 class rule_001(process_rule):
     '''Process rule 001 checks for the proper indentation at the beginning of the line.'''
@@ -17,12 +16,12 @@ class rule_001(process_rule):
     def __init__(self):
         process_rule.__init__(self)
         self.identifier = '001'
-        self.solution = 'Ensure there are only two spaces before process declaration.'
+        self.solution = 'Check indentation before process declaration.'
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isProcessKeyword:
-                self._checkIndent(oLine, iLineNumber)
+                self._check_indent(oLine, iLineNumber)
 
 
 class rule_002(process_rule):
@@ -47,12 +46,12 @@ class rule_003(process_rule):
     def __init__(self):
         process_rule.__init__(self)
         self.identifier = '003'
-        self.solution = 'Ensure there are only two spaces before "begin" keyword.'
+        self.solution = 'Check indentation before "begin" keyword.'
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isProcessBegin:
-                self._checkIndent(oLine, iLineNumber)
+                self._check_indent(oLine, iLineNumber)
 
 
 class rule_004(process_rule):
@@ -67,8 +66,7 @@ class rule_004(process_rule):
         fInsideProcess = False
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isProcessBegin:
-                if not re.match('^.*begin', oLine.line):
-                    self.add_violation(iLineNumber)
+                self._is_lowercase(self._get_first_word(oLine), iLineNumber)
 
 
 class rule_005(process_rule):
@@ -97,7 +95,7 @@ class rule_006(process_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isEndProcess:
-                self._checkIndent(oLine, iLineNumber)
+                self._check_indent(oLine, iLineNumber)
 
 
 class rule_007(process_rule):
@@ -111,7 +109,7 @@ class rule_007(process_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isEndProcess:
-                if not re.match('^\s*\w+\s\w', oLine.line):
+                if not re.match('^\s*\S+\s\S', oLine.line):
                     self.add_violation(iLineNumber)
 
 
@@ -126,8 +124,7 @@ class rule_008(process_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isEndProcess:
-                if not re.match('^\s*end', oLine.line):
-                    self.add_violation(iLineNumber)
+                self._is_lowercase(self._get_first_word(oLine), iLineNumber)
 
 
 class rule_009(process_rule):
@@ -171,8 +168,7 @@ class rule_011(process_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isEndProcess:
-                if not oFile.lines[iLineNumber + 1].isBlank:
-                    self.add_violation(iLineNumber)
+                self._check_blank_line_after(oFile, iLineNumber)
 
 
 class rule_012(process_rule):
@@ -280,7 +276,7 @@ class rule_018(process_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isEndProcess:
-                if not re.match('^\s*\w+\s+\w+\s+\w+', oLine.line):
+                if not re.match('^\s*\S+\s+\S+\s+\S+', oLine.line):
                       self.add_violation(iLineNumber)
 
 
@@ -296,9 +292,7 @@ class rule_019(process_rule):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isEndProcess:
                 if re.match('^\s*\w+\s+\w+\s+\w+', oLine.line):
-                    lLine = oLine.line.split()
-                    if not lLine[2] == lLine[2].upper():
-                        self.add_violation(iLineNumber)
+                    self._is_uppercase(oLine.line.split()[2], iLineNumber)
 
 
 class rule_020(process_rule):
@@ -317,11 +311,9 @@ class rule_020(process_rule):
                 if oLine.isSensitivityListBegin:
                     iAlignmentColumn = oLine.line.find('(')
                 elif oLine.isSensitivityListEnd and re.match('^\s*\)', oLine.line):
-                    if not re.match('^\s{' + str(iAlignmentColumn) + '}\S', oLine.line):
-                        self.add_violation(iLineNumber)
+                    self._check_multiline_alignment(iAlignmentColumn, oLine, iLineNumber)
                 else:
-                    if not re.match('^\s{' + str(iAlignmentColumn + 1) + '}\S', oLine.line):
-                        self.add_violation(iLineNumber)
+                    self._check_multiline_alignment(iAlignmentColumn + 1, oLine, iLineNumber)
 
 
 class rule_022(process_rule):
@@ -335,8 +327,7 @@ class rule_022(process_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isProcessBegin:
-                if not oFile.lines[iLineNumber + 1].isBlank:
-                    self.add_violation(iLineNumber)
+                self._check_blank_line_after(oFile, iLineNumber)
 
 
 class rule_021(process_rule):
@@ -362,7 +353,6 @@ class rule_021(process_rule):
                     if oLine.isEndProcess:
                         fSkipProcess = False
                     continue
-#                print (str(iLineNumber) + '  ' + str(fBlanksFound) + '  ' + str(fNonBlanksFound) + '  ' + oLine.line)
                 if oLine.isProcessBegin:
                     if fBlanksFound and not fNonBlanksFound:
                         self.add_violation(iLineNumber)
@@ -390,8 +380,7 @@ class rule_023(process_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isEndProcess:
-                if not oFile.lines[iLineNumber - 1].isBlank:
-                    self.add_violation(iLineNumber)
+                self._check_blank_line_before(oFile, iLineNumber)
 
 
 class rule_024(process_rule):

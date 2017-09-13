@@ -22,7 +22,7 @@ class rule_001(if_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isIfKeyword or oLine.isElseIfKeyword or oLine.isEndIfKeyword or oLine.isElseKeyword:
-                self._checkIndent(oLine, iLineNumber)
+                self._check_indent(oLine, iLineNumber)
 
 
 class rule_002(if_rule):

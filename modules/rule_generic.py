@@ -22,8 +22,7 @@ class rule_001(generic_rule):
         lFailureLines = []
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isGenericKeyword:
-                if oFile.lines[iLineNumber - 1].isBlank:
-                    self.add_violation(iLineNumber)
+                self._check_no_blank_line_before(oFile, iLineNumber)
 
 
 class rule_002(generic_rule):
@@ -37,7 +36,7 @@ class rule_002(generic_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isGenericKeyword:
-                self._checkIndent(oLine, iLineNumber)
+                self._check_indent(oLine, iLineNumber)
 
 
 class rule_003(generic_rule):
@@ -66,7 +65,7 @@ class rule_004(generic_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isGenericDeclaration and not oLine.isEndGenericMap:
-                self._checkIndent(oLine, iLineNumber)
+                self._check_indent(oLine, iLineNumber)
 
 
 class rule_005(generic_rule):
@@ -94,9 +93,6 @@ class rule_006(generic_rule):
         self.solution = 'Reduce number of spaces after the default assignment to 1.'
 
     def analyze(self, oFile):
-        lFailureLines = []
-        fEntityFound = False
-        fGenericMapFound = False
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isGenericDeclaration:
                 if re.match('^\s*\S+\s*:\s*\S+\s*:=', oLine.line):
@@ -113,14 +109,9 @@ class rule_007(generic_rule):
         self.solution = 'Uppercase generic name.'
 
     def analyze(self, oFile):
-        lFailureLines = []
-        fEntityFound = False
-        fGenericMapFound = False
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isGenericDeclaration:
-                lLine = oLine.line.split()
-                if lLine[0] != lLine[0].upper():
-                    self.add_violation(iLineNumber)
+                self._is_uppercase(oLine.line.split()[0], iLineNumber)
 
 
 class rule_008(generic_rule):
@@ -132,13 +123,9 @@ class rule_008(generic_rule):
         self.solution = 'Closing parenthesis should be 2 spaces.'
 
     def analyze(self, oFile):
-        lFailureLines = []
-        fEntityFound = False
-        fGenericMapFound = False
-        fClosingParenFound = False
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isEndGenericMap and not oLine.isGenericDeclaration:
-                self._checkIndent(oLine, iLineNumber)
+                self._check_indent(oLine, iLineNumber)
 
 
 class rule_009(generic_rule):
@@ -152,8 +139,7 @@ class rule_009(generic_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isGenericKeyword:
-                if not re.match('^\s*generic', oLine.line):
-                    self.add_violation(iLineNumber)
+                self._is_lowercase(oLine.line.split()[0], iLineNumber)
 
 
 class rule_010(generic_rule):
@@ -182,6 +168,5 @@ class rule_011(generic_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isGenericDeclaration:
-                lLine = oLine.lineLower.split()
-                if not lLine[0].startswith('g_'):
+                if not oLine.lineLower.split()[0].startswith('g_'):
                     self.add_violation(iLineNumber)

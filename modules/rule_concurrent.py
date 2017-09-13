@@ -21,7 +21,7 @@ class rule_001(concurrent_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isConcurrentBegin:
-                self._checkIndent(oLine, iLineNumber)
+                self._check_indent(oLine, iLineNumber)
 
 
 class rule_002(concurrent_rule):
@@ -59,8 +59,7 @@ class rule_003(concurrent_rule):
                 if oLine.isConcurrentBegin:
                     iAlignmentColumn = oLine.line.find('<') + 3
                 else:
-                    if not re.match('\s{' + str(iAlignmentColumn) + '}\S', oLine.line):
-                        self.add_violation(iLineNumber)
+                    self._check_multiline_alignment(iAlignmentColumn, oLine, iLineNumber)
 
 
 class rule_004(concurrent_rule):

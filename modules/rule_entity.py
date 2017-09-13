@@ -28,7 +28,7 @@ class rule_001(entity_rule):
         lFailureLines = []
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isEntityDeclaration:
-                self._checkIndent(oLine, iLineNumber)
+                self._check_indent(oLine, iLineNumber)
 
 
 class rule_002(entity_rule):
@@ -43,7 +43,7 @@ class rule_002(entity_rule):
         lFailureLines = []
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isEntityDeclaration:
-                if re.match('^\s*\w+\s\s+', oLine.line):
+                if re.match('^\s*\S+\s\s+', oLine.line):
                     self.add_violation(iLineNumber)
 
 
@@ -59,8 +59,7 @@ class rule_003(entity_rule):
         lFailureLines = []
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isEntityDeclaration:
-                if not oFile.lines[iLineNumber - 1].isBlank:
-                    self.add_violation(iLineNumber)
+                self._check_blank_line_before(oFile, iLineNumber)
 
 
 class rule_004(entity_rule):
@@ -74,8 +73,7 @@ class rule_004(entity_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isEntityDeclaration:
-                if not re.match('^\s*entity', oLine.line):
-                    self.add_violation(iLineNumber)
+                self._is_lowercase(oLine.line.split()[0], iLineNumber)
 
 
 class rule_005(entity_rule):
@@ -117,7 +115,6 @@ class rule_007(entity_rule):
         self.solution = 'Remove extra spaces before "is" keyword.'
 
     def analyze(self, oFile):
-        lFailureLines = []
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isEntityDeclaration:
                 if re.match('^.*\s\s+is', oLine.lineLower):
@@ -135,9 +132,7 @@ class rule_008(entity_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isEntityDeclaration:
-                lLine = oLine.line.split()
-                if lLine[1] != lLine[1].upper():
-                    self.add_violation(iLineNumber)
+                self._is_uppercase(oLine.line.split()[1], iLineNumber)
 
 
 class rule_009(entity_rule):
@@ -151,7 +146,7 @@ class rule_009(entity_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isEndEntityDeclaration:
-                self._checkIndent(oLine, iLineNumber)
+                self._check_indent(oLine, iLineNumber)
 
 
 class rule_010(entity_rule):
@@ -165,8 +160,7 @@ class rule_010(entity_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isEndEntityDeclaration:
-                if not re.match('^\s*end', oLine.line):
-                    self.add_violation(iLineNumber)
+                self._is_lowercase(oLine.line.split()[0], iLineNumber)
 
 
 class rule_011(entity_rule):
@@ -180,7 +174,7 @@ class rule_011(entity_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isEndEntityDeclaration:
-                if re.match('^\s*\w+\s\s+\w', oLine.line):
+                if re.match('^\s*\S+\s\s+\S', oLine.line):
                     self.add_violation(iLineNumber)
 
 
@@ -197,8 +191,7 @@ class rule_012(entity_rule):
             if oLine.isEndEntityDeclaration:
                 lLine = oLine.line.split()
                 if len(lLine) > 2:
-                    if lLine[2] != lLine[2].upper():
-                        self.add_violation(iLineNumber)
+                    self._is_uppercase(lLine[2], iLineNumber)
 
 
 class rule_013(entity_rule):
@@ -229,8 +222,7 @@ class rule_014(entity_rule):
             if oLine.isEndEntityDeclaration:
                 lLine = oLine.line.split()
                 if len(lLine) >= 3:
-                    if not lLine[1] == 'entity':
-                        self.add_violation(iLineNumber)
+                    self._is_lowercase(lLine[1], iLineNumber)
 
 
 class rule_015(entity_rule):
@@ -242,9 +234,6 @@ class rule_015(entity_rule):
         self.solution = 'The "end" keyword, "entity" keyword and entity name need to be on the same line.'
 
     def analyze(self, oFile):
-        lFailureLines = []
-        fEntityFound = False
-        fPortMapFound = False
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isEndEntityDeclaration:
                 lLine = oLine.line.split()
@@ -264,5 +253,4 @@ class rule_016(entity_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isEndEntityDeclaration:
-                if oFile.lines[iLineNumber - 1].isBlank:
-                    self.add_violation(iLineNumber)
+                self._check_no_blank_line_before(oFile, iLineNumber)

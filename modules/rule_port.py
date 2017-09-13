@@ -3,12 +3,6 @@ import rule
 import re
 
 
-def is_entity(fFlag, oLine):
-    if re.match('\s*entity', oLine.lower()):
-        return True
-    return fFlag
-
-
 class port_rule(rule.rule):
     
     def __init__(self):
@@ -27,8 +21,7 @@ class rule_001(port_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isPortKeyword:
-                if oFile.lines[iLineNumber - 1].isBlank:
-                    self.add_violation(iLineNumber)
+                self._check_no_blank_line_before(oFile, iLineNumber)
 
 
 class rule_002(port_rule):
@@ -42,7 +35,7 @@ class rule_002(port_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isPortKeyword:
-                self._checkIndent(oLine, iLineNumber)
+                self._check_indent(oLine, iLineNumber)
 
 
 class rule_003(port_rule):
@@ -66,12 +59,12 @@ class rule_004(port_rule):
     def __init__(self):
         port_rule.__init__(self)
         self.identifier = '004'
-        self.solution = 'Change indent of port to 4 spaces.'
+        self.solution = 'Change indent of port.'
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isPortDeclaration and not oLine.isEndPortMap:
-                self._checkIndent(oLine, iLineNumber)
+                self._check_indent(oLine, iLineNumber)
 
 
 class rule_005(port_rule):
@@ -165,9 +158,7 @@ class rule_010(port_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isPortDeclaration:
-                lLine = oLine.line.split()
-                if lLine[0] != lLine[0].upper():
-                    self.add_violation(iLineNumber)
+                self._is_uppercase(self._get_first_word(oLine), iLineNumber)
 
 
 class rule_011(port_rule):
@@ -178,10 +169,6 @@ class rule_011(port_rule):
         self.identifier = '011'
         self.solution = 'Add proper prefix or suffix indicating port direction.'
         self.port_direction = 'Prefix'
-
-    def configure(self, dConfig):
-        if 'port_direction' in dConfig['entity']['rule_011']:
-            self.port_direction = dConfig['entity']['rule_011']['port_direction']
 
     def analyze(self, oFile):
         if not self.port_direction:
@@ -254,5 +241,5 @@ class rule_015(port_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isEndPortMap and not oLine.isPortDeclaration:
-                self._checkIndent(oLine, iLineNumber)
+                self._check_indent(oLine, iLineNumber)
 
