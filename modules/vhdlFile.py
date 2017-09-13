@@ -21,6 +21,10 @@ class vhdlFile():
 
         fInsideIfStatement = False
 
+        fInsideCase = False
+        fInsideCaseWhen = False
+
+
         iOpenParenthesis = 0;
         iCloseParenthesis = 0;
 
@@ -199,6 +203,30 @@ class vhdlFile():
                     if re.match('^\s*else', oLine.lineLower):
                         oLine.isElseKeyword = True
                         oLine.indentLevel = iCurrentIndentLevel - 1
+
+                # Check case statements
+                if fInsideProcess:
+                    if re.match('^\s*case\s', oLine.lineLower):
+                        oLine.isCaseKeyword = True
+                        oLine.indentLevel = iCurrentIndentLevel
+                        iCurrentIndentLevel += 2
+                        fInsideCase = True
+                    if fInsideCase:
+                        if re.match('^\s*.*\sis\s', oLine.lineLower) or re.match('^\s*.*\sis$', oLine.lineLower):
+                            oLine.isCaseIsKeyword = True
+                            fInsideCase = False
+                    if re.match('^\s*when\s', oLine.lineLower):
+                        oLine.isCaseWhenKeyword = True
+                        oLine.indentLevel = iCurrentIndentLevel - 1
+                        fInsideCaseWhen = True
+                    if fInsideCaseWhen:
+                        oLine.insideCaseWhen = True
+                        if re.match('^\s*.*=>', oLine.line):
+                            fInsideCaseWhen = False
+                            oLine.isCaseWhenEnd = True
+                    if re.match('^\s*end\s+case', oLine.lineLower):
+                        oLine.isEndCaseKeyword = True
+                        oLine.indentLevel = iCurrentIndentLevel - 2
 
                 # Add line to file
                 self.lines.append(oLine)

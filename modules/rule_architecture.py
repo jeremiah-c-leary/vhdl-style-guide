@@ -51,7 +51,7 @@ class rule_003(architecture_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isArchitectureKeyword:
-                self._check_blank_line_before(oFile, iLineNumber)
+                self._is_blank_line_before(oFile, iLineNumber)
 
 
 class rule_004(architecture_rule):
@@ -243,7 +243,7 @@ class rule_015(architecture_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isArchitectureKeyword:
-                self._check_blank_line_after(oFile, iLineNumber)
+                self._is_blank_line_after(oFile, iLineNumber)
 
 
 class rule_016(architecture_rule):
@@ -257,7 +257,7 @@ class rule_016(architecture_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isArchitectureBegin:
-                self._check_blank_line_before(oFile, iLineNumber)
+                self._is_blank_line_before(oFile, iLineNumber)
 
 
 class rule_017(architecture_rule):
@@ -271,7 +271,7 @@ class rule_017(architecture_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isArchitectureBegin:
-                self._check_blank_line_after(oFile, iLineNumber)
+                self._is_blank_line_after(oFile, iLineNumber)
 
 
 class rule_018(architecture_rule):
@@ -285,4 +285,4 @@ class rule_018(architecture_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isEndArchitecture:
-                self._check_blank_line_before(oFile, iLineNumber)
+                self._is_blank_line_before(oFile, iLineNumber)

@@ -261,6 +261,42 @@ class testLineMethods(unittest.TestCase):
         oLine.isElseKeyword = True
         self.assertEqual(oLine.isElseKeyword, True)
 
+    def test_isCaseKeyword_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isCaseKeyword, False)
+        oLine.isCaseKeyword = True
+        self.assertEqual(oLine.isCaseKeyword, True)
+
+    def test_isCaseWhenKeyword_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isCaseWhenKeyword, False)
+        oLine.isCaseWhenKeyword = True
+        self.assertEqual(oLine.isCaseWhenKeyword, True)
+
+    def test_isCaseWhenEnd_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isCaseWhenEnd, False)
+        oLine.isCaseWhenEnd = True
+        self.assertEqual(oLine.isCaseWhenEnd, True)
+
+    def test_insideCaseWhen_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.insideCaseWhen, False)
+        oLine.insideCaseWhen = True
+        self.assertEqual(oLine.insideCaseWhen, True)
+
+    def test_isEndCaseKeyword_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isEndCaseKeyword, False)
+        oLine.isEndCaseKeyword = True
+        self.assertEqual(oLine.isEndCaseKeyword, True)
+
+    def test_isCaseIsKeyword_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isCaseIsKeyword, False)
+        oLine.isCaseIsKeyword = True
+        self.assertEqual(oLine.isCaseIsKeyword, True)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -168,7 +168,7 @@ class rule_011(process_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isEndProcess:
-                self._check_blank_line_after(oFile, iLineNumber)
+                self._is_blank_line_after(oFile, iLineNumber)
 
 
 class rule_012(process_rule):
@@ -327,7 +327,7 @@ class rule_022(process_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isProcessBegin:
-                self._check_blank_line_after(oFile, iLineNumber)
+                self._is_blank_line_after(oFile, iLineNumber)
 
 
 class rule_021(process_rule):
@@ -380,7 +380,7 @@ class rule_023(process_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isEndProcess:
-                self._check_blank_line_before(oFile, iLineNumber)
+                self._is_blank_line_before(oFile, iLineNumber)
 
 
 class rule_024(process_rule):

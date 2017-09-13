@@ -22,7 +22,7 @@ class rule_001(generic_rule):
         lFailureLines = []
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isGenericKeyword:
-                self._check_no_blank_line_before(oFile, iLineNumber)
+                self._is_no_blank_line_before(oFile, iLineNumber)
 
 
 class rule_002(generic_rule):

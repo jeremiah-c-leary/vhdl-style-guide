@@ -56,4 +56,11 @@ class line():
         self.isIfEnd = False
         self.isIfKeyword = False
         self.isThenKeyword = False
+        ## Case attributes
+        self.insideCaseWhen = False
+        self.isCaseIsKeyword = False
+        self.isCaseKeyword = False
+        self.isCaseWhenEnd = False
+        self.isCaseWhenKeyword = False
+        self.isEndCaseKeyword = False
 

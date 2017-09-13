@@ -21,7 +21,7 @@ class rule_001(port_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isPortKeyword:
-                self._check_no_blank_line_before(oFile, iLineNumber)
+                self._is_no_blank_line_before(oFile, iLineNumber)
 
 
 class rule_002(port_rule):

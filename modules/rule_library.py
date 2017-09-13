@@ -50,7 +50,7 @@ class rule_003(library_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isLibrary:
-                self._check_blank_line_before(oFile, iLineNumber)
+                self._is_blank_line_before(oFile, iLineNumber)
 
 
 class rule_004(library_rule):
@@ -107,7 +107,7 @@ class rule_007(library_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isLibraryUse:
-                self._check_no_blank_line_before(oFile, iLineNumber)
+                self._is_no_blank_line_before(oFile, iLineNumber)
 
 
 class rule_008(library_rule):

@@ -29,25 +29,25 @@ class rule():
         if not re.match('^\s{' + str(self.indentSize * oLine.indentLevel) + '}\S', oLine.line):
             self.add_violation(iLineNumber)
 
-    def _check_no_blank_line_after(self, oFile, iLineNumber): 
+    def _is_no_blank_line_after(self, oFile, iLineNumber): 
         '''Adds a violation if the line after iLineNumber is blank.
            This is typically used to compress lines together.'''
         if oFile.lines[iLineNumber + 1].isBlank:
             self.add_violation(iLineNumber)
 
-    def _check_no_blank_line_before(self, oFile, iLineNumber):
+    def _is_no_blank_line_before(self, oFile, iLineNumber):
         '''Adds a violation if the line before iLineNumber is blank.
            This is typically used to compress lines together.'''
         if oFile.lines[iLineNumber - 1].isBlank:
             self.add_violation(iLineNumber)
 
-    def _check_blank_line_after(self, oFile, iLineNumber): 
+    def _is_blank_line_after(self, oFile, iLineNumber): 
         '''Adds a violation if the line after iLineNumber is not blank.
            This is typically used to compress lines together.'''
         if not oFile.lines[iLineNumber + 1].isBlank:
             self.add_violation(iLineNumber)
 
-    def _check_blank_line_before(self, oFile, iLineNumber):
+    def _is_blank_line_before(self, oFile, iLineNumber):
         '''Adds a violation if the line before iLineNumber is not blank.
            This is typically used to compress lines together.'''
         if not oFile.lines[iLineNumber - 1].isBlank:
@@ -70,3 +70,12 @@ class rule():
 
     def _get_first_word(self, oLine):
         return self._get_word(oLine, 0)
+
+    def _is_single_space_after(self, sString, oLine, iLineNumber):
+        if not re.match('^.*\s+' + sString + '\s\S', oLine.lineLower):
+            self.add_violation(iLineNumber)
+
+    def _is_single_space_before(self, sString, oLine, iLineNumber):
+        if not re.match('^.*\S\s' + sString + '\s', oLine.lineLower) and \
+           not re.match('^.*\S\s' + sString + '$', oLine.lineLower):
+            self.add_violation(iLineNumber)

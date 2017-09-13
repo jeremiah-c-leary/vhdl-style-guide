@@ -59,7 +59,7 @@ class rule_003(entity_rule):
         lFailureLines = []
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isEntityDeclaration:
-                self._check_blank_line_before(oFile, iLineNumber)
+                self._is_blank_line_before(oFile, iLineNumber)
 
 
 class rule_004(entity_rule):
@@ -253,4 +253,4 @@ class rule_016(entity_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isEndEntityDeclaration:
-                self._check_no_blank_line_before(oFile, iLineNumber)
+                self._is_no_blank_line_before(oFile, iLineNumber)

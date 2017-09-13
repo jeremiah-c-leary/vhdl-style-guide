@@ -102,7 +102,7 @@ class rule_006(if_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isThenKeyword:
-                self._check_no_blank_line_after(oFile, iLineNumber)
+                self._is_no_blank_line_after(oFile, iLineNumber)
 
 
 class rule_007(if_rule):
@@ -116,7 +116,7 @@ class rule_007(if_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isElseIfKeyword:
-                self._check_no_blank_line_before(oFile, iLineNumber)
+                self._is_no_blank_line_before(oFile, iLineNumber)
 
 
 class rule_008(if_rule):
@@ -130,7 +130,7 @@ class rule_008(if_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isEndIfKeyword:
-                self._check_no_blank_line_before(oFile, iLineNumber)
+                self._is_no_blank_line_before(oFile, iLineNumber)
 
 
 class rule_009(if_rule):
@@ -176,7 +176,7 @@ class rule_010(if_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isElseKeyword:
-                self._check_no_blank_line_before(oFile, iLineNumber)
+                self._is_no_blank_line_before(oFile, iLineNumber)
 
 
 class rule_011(if_rule):
@@ -190,7 +190,7 @@ class rule_011(if_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isElseKeyword:
-                self._check_no_blank_line_after(oFile, iLineNumber)
+                self._is_no_blank_line_after(oFile, iLineNumber)
 
 #TODO:
 # check if, then, elsif, end if keywords are lower case
