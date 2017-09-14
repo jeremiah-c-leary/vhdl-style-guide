@@ -39,6 +39,10 @@ class vhdlFile():
                 # Check for comment lines
                 if re.match('^\s*--', oLine.line):
                     oLine.isComment = True
+                    oLine.indentLevel = iCurrentIndentLevel
+                if '--' in oLine.line:
+                    oLine.hasComment = True
+                    oLine.commentColumn = oLine.line.find('--')
                 # Check for library lines
                 if re.match('^\s*library', oLine.lineLower):
                     oLine.isLibrary = True
@@ -51,18 +55,21 @@ class vhdlFile():
                 if re.match('^\s*entity', oLine.lineLower):
                     fInsideEntity = True
                     oLine.isEntityDeclaration = True
+                    iCurrentIndentLevel = 1
+                    oLine.indentLevel = 0
                 # Assign inside entity attribute
                 if fInsideEntity:
                     oLine.insideEntity = True
-                    if oLine.isEntityDeclaration:
-                        oLine.indentLevel = 0
-                    else:
-                        oLine.indentLevel = 1
+#                    if oLine.isEntityDeclaration:
+#                        oLine.indentLevel = 0
+#                    else:
+#                        oLine.indentLevel = 1
                 # Check for the end of the entity
                 if re.match('^\s*end\s+entity', oLine.lineLower):
                     fInsideEntity = False
                     oLine.isEndEntityDeclaration = True
                     oLine.indentLevel = 0
+                    iCurrentIndentLevel = 0
 
                 # Check port map declarations
                 if fInsideEntity:
@@ -70,6 +77,7 @@ class vhdlFile():
                         fInsidePortMapDeclaration = True
                         oLine.isPortKeyword = True
                         oLine.indentLevel = 1
+                        iCurrentIndentLevel = 2
                     if fInsidePortMapDeclaration:
                         oLine.insidePortMap = True
                         if re.match('^\s*\S+.*:', oLine.line):
@@ -83,6 +91,7 @@ class vhdlFile():
                             iOpenParenthesis = 0
                             iCloseParenthesis = 0
                             oLine.isEndPortMap = True
+                            iCurrentIndentLevel = 1
 
                 # Check generic map declarations
                 if fInsideEntity:
@@ -90,6 +99,7 @@ class vhdlFile():
                         fInsideGenericMapDeclaration = True
                         oLine.isGenericKeyword = True
                         oLine.indentLevel = 1
+                        iCurrentIndentLevel = 2
                     if fInsideGenericMapDeclaration:
                         oLine.insideGenericMap = True
                         if re.match('^\s*\S+.*:', oLine.line):
@@ -103,12 +113,14 @@ class vhdlFile():
                             iOpenParenthesis = 0
                             iCloseParenthesis = 0
                             oLine.isEndGenericMap = True
+                            iCurrentIndentLevel = 2
 
                 # Check architecture declarations
                 if re.match('^\s*architecture', oLine.lineLower) and not fInsideArchitecture:
                     fInsideArchitecture = True
                     oLine.isArchitectureKeyword = True
                     oLine.indentLevel = 0
+                    iCurrentIndentLevel = 1
                 if fInsideArchitecture:
                     oLine.insideArchitecture = True
                     if re.match('^\s*begin', oLine.lineLower) and not fFoundArchitectureBegin:

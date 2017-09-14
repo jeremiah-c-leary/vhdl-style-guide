@@ -8,7 +8,10 @@ class line():
         self.indentLevel = None
         ## Misc attributes
         self.isBlank = False
+        ## Comment attributes
         self.isComment = False
+        self.hasComment = False
+        self.commentColumn = None
         ## Library attributes
         self.isLibrary = False
         self.isLibraryUse = False

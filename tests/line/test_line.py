@@ -29,11 +29,23 @@ class testLineMethods(unittest.TestCase):
         oLine.isLibraryUse = True
         self.assertTrue(oLine.isLibraryUse)
 
-    def test_comment_attribute(self):
+    def test_isComment_attribute(self):
         oLine = line.line('contents of line')
         self.assertFalse(oLine.isComment)
         oLine.isComment = True
         self.assertTrue(oLine.isComment)
+
+    def test_hasComment_attribute(self):
+        oLine = line.line('contents of line')
+        self.assertFalse(oLine.hasComment)
+        oLine.hasComment = True
+        self.assertTrue(oLine.hasComment)
+
+    def test_commentColumn_attribute(self):
+        oLine = line.line('contents of line')
+        self.assertEqual(oLine.commentColumn, None)
+        oLine.commentColumn = 20
+        self.assertEqual(oLine.commentColumn, 20)
 
     def test_line_lowering_attribute(self):
         oLine = line.line('ContenTs oF Line')
