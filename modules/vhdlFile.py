@@ -24,6 +24,7 @@ class vhdlFile():
         fInsideCase = False
         fInsideCaseWhen = False
 
+        fInsideSequential = False
 
         iOpenParenthesis = 0;
         iCloseParenthesis = 0;
@@ -239,6 +240,20 @@ class vhdlFile():
                     if re.match('^\s*end\s+case', oLine.lineLower):
                         oLine.isEndCaseKeyword = True
                         oLine.indentLevel = iCurrentIndentLevel - 2
+
+                # Check sequential statements
+                if fInsideProcess:
+                    if re.match('^.*<=', oLine.line):
+                        oLine.isSequential = True
+                        oLine.indentLevel = iCurrentIndentLevel
+                        fInsideSequential = True
+                        oLine.sequentialAlignmentColumn = oLine.line.find('<=')
+                    if fInsideSequential:
+                        oLine.insideSequential = True
+                        if ';' in oLine.line:
+                            fInsideSequential = False
+                            oLine.isSequentialEnd = True
+
 
                 # Add line to file
                 self.lines.append(oLine)

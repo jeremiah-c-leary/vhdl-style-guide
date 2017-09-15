@@ -309,6 +309,29 @@ class testLineMethods(unittest.TestCase):
         oLine.isCaseIsKeyword = True
         self.assertEqual(oLine.isCaseIsKeyword, True)
 
+    def test_insideSequential_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.insideSequential, False)
+        oLine.insideSequential = True
+        self.assertEqual(oLine.insideSequential, True)
+
+    def test_isSequential_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isSequential, False)
+        oLine.isSequential = True
+        self.assertEqual(oLine.isSequential, True)
+
+    def test_isSequentialEnd_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isSequentialEnd, False)
+        oLine.isSequentialEnd = True
+        self.assertEqual(oLine.isSequentialEnd, True)
+
+    def test_sequentialAlignmentColumn_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.sequentialAlignmentColumn, None)
+        oLine.sequentialAlignmentColumn = 32
+        self.assertEqual(oLine.sequentialAlignmentColumn, 32)
 
 if __name__ == '__main__':
     unittest.main()

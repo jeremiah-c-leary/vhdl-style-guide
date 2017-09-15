@@ -66,4 +66,9 @@ class line():
         self.isCaseWhenEnd = False
         self.isCaseWhenKeyword = False
         self.isEndCaseKeyword = False
+        ## Sequential attributes
+        self.insideSequential = False
+        self.isSequentialEnd = False
+        self.isSequential = False
+        self.sequentialAlignmentColumn = None
 
