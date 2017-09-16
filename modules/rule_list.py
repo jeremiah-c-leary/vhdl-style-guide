@@ -12,6 +12,7 @@ import rule_generic
 import rule_if
 import rule_case
 import rule_comment
+import rule_sequential
 
 class list():
     ''' Contains a list of all rules to be checked.  It also contains methods to check the rules.'''
@@ -174,8 +175,15 @@ class list():
         self.rules.append(rule_if.rule_010())
         self.rules.append(rule_if.rule_011())
 
+        self.rules.append(rule_sequential.rule_001())
+        self.rules.append(rule_sequential.rule_002())
+        self.rules.append(rule_sequential.rule_003())
+        self.rules.append(rule_sequential.rule_004())
+
         self.rules.append(rule_comment.rule_001())
         self.rules.append(rule_comment.rule_002())
+
+
 
     def check_rules(self, oFile):
         dRuleViolations = {}

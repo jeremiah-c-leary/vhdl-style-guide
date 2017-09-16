@@ -41,7 +41,7 @@ class testVhdlFileSequentialAssignments(unittest.TestCase):
     def test_sequentialAlignmentColumn_assignment(self):
         oFile = vhdlFile.vhdlFile('tests/rule_sequential/sequential_test_input.vhd')
         #lExpected = [13,14,15,20,21,22,26,27,28,32,33,34,38,39,40,53,56,57,63,65,66,71,73,75,80,81,83,88,89,90]
-        lExpected =  [ 6, 6, 6,10,10,10,10,10,10,10,10,10,10,10,10, 8, 8, 8,10,12,12,10,14,14,10,10,12,10,10,10]
+        lExpected =  [ 6, 4, 6,11,10,10,10,10, 8,10,10,10, 9,10, 9, 8, 7, 8,10,12,13,10,15,14,10, 8,12,10, 8,11]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
