@@ -26,5 +26,14 @@ class testRuleCommentMethods(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
+    def test_rule_003(self):
+        oRule = rule_comment.rule_003()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'comment')
+        self.assertEqual(oRule.identifier, '003')
+        dExpected = ['26-33','39-46']
+        oRule.analyze(vhdlFile.vhdlFile('tests/rule_comment/comment_process_test_input.vhd'))
+        self.assertEqual(oRule.violations, dExpected)
+
 if __name__ == '__main__':
     unittest.main()

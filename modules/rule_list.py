@@ -185,6 +185,7 @@ class list():
 
         self.rules.append(rule_comment.rule_001())
         self.rules.append(rule_comment.rule_002())
+        self.rules.append(rule_comment.rule_003())
 
 
 
