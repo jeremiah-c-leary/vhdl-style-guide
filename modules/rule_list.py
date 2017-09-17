@@ -80,6 +80,7 @@ class list():
         self.rules.append(rule_generic.rule_009())
         self.rules.append(rule_generic.rule_010())
         self.rules.append(rule_generic.rule_011())
+        self.rules.append(rule_generic.rule_012())
 
         self.rules.append(rule_architecture.rule_001())
         self.rules.append(rule_architecture.rule_002())

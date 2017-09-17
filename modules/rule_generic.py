@@ -1,6 +1,7 @@
 
 import rule
 import re
+import line
 
 
 class generic_rule(rule.rule):
@@ -11,7 +12,7 @@ class generic_rule(rule.rule):
 
 
 class rule_001(generic_rule):
-    '''Entity rule 001 checks for a blank line above the "generic" keyword.'''
+    '''Generic rule 001 checks for a blank line above the "generic" keyword.'''
 
     def __init__(self):
         generic_rule.__init__(self)
@@ -26,7 +27,7 @@ class rule_001(generic_rule):
 
 
 class rule_002(generic_rule):
-    '''Entity rule 002 checks indentation of the "generic" keyword.'''
+    '''Generic rule 002 checks indentation of the "generic" keyword.'''
 
     def __init__(self):
         generic_rule.__init__(self)
@@ -40,7 +41,7 @@ class rule_002(generic_rule):
 
 
 class rule_003(generic_rule):
-    '''Entity rule 003 checks spacing between "generic" keyword and the open parenthesis.'''
+    '''Generic rule 003 checks spacing between "generic" keyword and the open parenthesis.'''
 
     def __init__(self):
         generic_rule.__init__(self)
@@ -55,7 +56,7 @@ class rule_003(generic_rule):
 
 
 class rule_004(generic_rule):
-    '''Entity rule 004 checks indentation of generics.'''
+    '''Generic rule 004 checks indentation of generics.'''
 
     def __init__(self):
         generic_rule.__init__(self)
@@ -69,7 +70,7 @@ class rule_004(generic_rule):
 
 
 class rule_005(generic_rule):
-    '''Entity rule 005 checks for a single space after the colon in a generic declaration.'''
+    '''Generic rule 005 checks for a single space after the colon in a generic declaration.'''
 
     def __init__(self):
         generic_rule.__init__(self)
@@ -85,7 +86,7 @@ class rule_005(generic_rule):
 
 
 class rule_006(generic_rule):
-    '''Entity rule 006 checks for a single space after the default assignment in a generic declaration.'''
+    '''Generic rule 006 checks for a single space after the default assignment in a generic declaration.'''
 
     def __init__(self):
         generic_rule.__init__(self)
@@ -101,7 +102,7 @@ class rule_006(generic_rule):
 
 
 class rule_007(generic_rule):
-    '''Entity rule 007 checks generic names are uppercase.'''
+    '''Generic rule 007 checks generic names are uppercase.'''
 
     def __init__(self):
         generic_rule.__init__(self)
@@ -115,7 +116,7 @@ class rule_007(generic_rule):
 
 
 class rule_008(generic_rule):
-    '''Entity rule 008 checks the indentation of closing parenthesis for generic maps.'''
+    '''Generic rule 008 checks the indentation of closing parenthesis for generic maps.'''
 
     def __init__(self):
         generic_rule.__init__(self)
@@ -129,7 +130,7 @@ class rule_008(generic_rule):
 
 
 class rule_009(generic_rule):
-    '''Entity rule 009 checks the "generic" keyword is lowercase.'''
+    '''Generic rule 009 checks the "generic" keyword is lowercase.'''
 
     def __init__(self):
         generic_rule.__init__(self)
@@ -143,7 +144,7 @@ class rule_009(generic_rule):
 
 
 class rule_010(generic_rule):
-    '''Entity rule 010 checks the closing parenthesis for generics are on a line by itself.'''
+    '''Generic rule 010 checks the closing parenthesis for generics are on a line by itself.'''
 
     def __init__(self):
         generic_rule.__init__(self)
@@ -158,7 +159,7 @@ class rule_010(generic_rule):
 
 
 class rule_011(generic_rule):
-    '''Entity rule 011 checks generic names have G_ prefixe.'''
+    '''Generic rule 011 checks generic names have G_ prefixe.'''
 
     def __init__(self):
         generic_rule.__init__(self)
@@ -170,3 +171,32 @@ class rule_011(generic_rule):
             if oLine.isGenericDeclaration:
                 if not oLine.lineLower.split()[0].startswith('g_'):
                     self.add_violation(iLineNumber)
+
+
+class rule_012(generic_rule):
+    '''Generic rule 012 ensures the alignment of the : operator for every generic in the entity.'''
+
+    def __init__(self):
+        generic_rule.__init__(self)
+        self.identifier = '012'
+        self.solution = 'Inconsistent alignment of ":" in generic declaration of entity.'
+
+    def analyze(self, oFile):
+        lGroup = []
+        fGroupFound = False
+        iStartGroupIndex = None
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isGenericKeyword and not fGroupFound:
+                fGroupFound = True
+                iStartGroupIndex = iLineNumber
+            if oLine.isEndGenericMap:
+                lGroup.append(oLine)
+                fGroupFound = False
+                self._check_keyword_alignment(iStartGroupIndex, ':', lGroup)
+                lGroup = []
+                iStartGroupIndex = None
+            if fGroupFound:
+                if oLine.isGenericDeclaration:
+                  lGroup.append(oLine)
+                else:
+                  lGroup.append(line.line('Removed line'))
