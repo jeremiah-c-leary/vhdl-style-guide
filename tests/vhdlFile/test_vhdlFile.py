@@ -69,7 +69,7 @@ class testVhdlFileMethods(unittest.TestCase):
 
     def test_insideEntity_assignment(self):
         oFile = vhdlFile.vhdlFile('tests/rule_entity/entity_test_input.vhd')
-        lExpected = [0,1,2,17,18,48,64,79,92,93,104,105,106,107,108,109,110,111,112,124,125,126,134,135]
+        lExpected = [0,1,2,17,18,48,64,79,92,93,104,105,106,107,108,109,110,111,112,124,125,126,134,135,136,137,145]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
@@ -80,7 +80,7 @@ class testVhdlFileMethods(unittest.TestCase):
 
     def test_isEntityDeclaration_assignment(self):
         oFile = vhdlFile.vhdlFile('tests/rule_entity/entity_test_input.vhd')
-        lExpected = [3,19,34,49,65,80,94,113,127]
+        lExpected = [3,19,34,49,65,80,94,113,127,138]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
@@ -91,7 +91,7 @@ class testVhdlFileMethods(unittest.TestCase):
 
     def test_isEndEntityDeclaration_assignment(self):
         oFile = vhdlFile.vhdlFile('tests/rule_entity/entity_test_input.vhd')
-        lExpected = [16,33,47,63,78,91,103,123,133]
+        lExpected = [16,33,47,63,78,91,103,123,133,144]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
@@ -102,7 +102,7 @@ class testVhdlFileMethods(unittest.TestCase):
 
     def test_insidePortMap_assignment(self):
         oFile = vhdlFile.vhdlFile('tests/rule_port/port_test_input.vhd')
-        lExpected = [8,9,10,11,12,13,14,15,25,26,27,28,29,30,31,39,40,41,42,43,44,45,46,56,57,58,59,60,61,62,70,71,72,73,74,75,76,77,86,87,88,89,90,98,99,100,101,102,118,119,120,121,122,128,129,130,131,132]
+        lExpected = [8,9,10,11,12,13,14,15,25,26,27,28,29,30,31,39,40,41,42,43,44,45,46,56,57,58,59,60,61,62,70,71,72,73,74,75,76,77,86,87,88,89,90,98,99,100,101,102,118,119,120,121,122,128,129,130,131,132,133]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
@@ -124,7 +124,7 @@ class testVhdlFileMethods(unittest.TestCase):
 
     def test_isEndPortMap_assignment(self):
         oFile = vhdlFile.vhdlFile('tests/rule_port/port_test_input.vhd')
-        lExpected = [15,31,46,62,77,90,102,122,132]
+        lExpected = [15,31,46,62,77,90,102,122,133]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):

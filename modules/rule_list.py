@@ -51,6 +51,7 @@ class list():
         self.rules.append(rule_entity.rule_014())
         self.rules.append(rule_entity.rule_015())
         self.rules.append(rule_entity.rule_016())
+        self.rules.append(rule_entity.rule_017())
 
         self.rules.append(rule_port.rule_001())
         self.rules.append(rule_port.rule_002())

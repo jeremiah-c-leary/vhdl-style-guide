@@ -61,10 +61,6 @@ class vhdlFile():
                 # Assign inside entity attribute
                 if fInsideEntity:
                     oLine.insideEntity = True
-#                    if oLine.isEntityDeclaration:
-#                        oLine.indentLevel = 0
-#                    else:
-#                        oLine.indentLevel = 1
                 # Check for the end of the entity
                 if re.match('^\s*end\s+entity', oLine.lineLower):
                     fInsideEntity = False
@@ -81,7 +77,7 @@ class vhdlFile():
                         iCurrentIndentLevel = 2
                     if fInsidePortMapDeclaration:
                         oLine.insidePortMap = True
-                        if re.match('^\s*\S+.*:', oLine.line):
+                        if re.match('^\s*\S+.*:', oLine.line) and not oLine.isComment:
                             oLine.isPortDeclaration = True
                             oLine.indentLevel = 2
                         iOpenParenthesis += oLine.line.count('(')
