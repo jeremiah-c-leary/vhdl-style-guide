@@ -44,5 +44,15 @@ class testRuleSequentialMethods(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
+    def test_rule_005(self):
+        oRule = rule_sequential.rule_005()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'sequential')
+        self.assertEqual(oRule.identifier, '005')
+        dExpected = ['13-15','20-22', '26-28','38-40','53-58','65-66','73-75','80-81','88-90']
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+
+
 if __name__ == '__main__':
     unittest.main()

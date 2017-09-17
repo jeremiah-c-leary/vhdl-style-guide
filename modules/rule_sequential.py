@@ -75,3 +75,36 @@ class rule_004(sequential_rule):
                 self._check_multiline_alignment(iAlignmentColumn, oLine, iLineNumber)
 
 
+class rule_005(sequential_rule):
+    '''Sequential rule 005 ensures the alignment of the "<=" keyword over multiple lines.'''
+
+    def __init__(self):
+        sequential_rule.__init__(self)
+        self.identifier = '005'
+        self.solution = 'Inconsistent alignment of "<=" in group of lines.'
+
+    def analyze(self, oFile):
+        lGroup = []
+        fGroupFound = False
+        iStartGroupIndex = None
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isSequential and not fGroupFound:
+                fGroupFound = True
+                iStartGroupIndex = iLineNumber
+            if not oLine.insideSequential and fGroupFound:
+                fGroupFound = False
+                iKeywordAlignment = None
+                for oGroupLine in lGroup:
+                    if not iKeywordAlignment:
+                        iKeywordAlignment = oGroupLine.line.find('<=')
+                    elif not iKeywordAlignment == oGroupLine.line.find('<='):
+                        self.add_violation(str(iStartGroupIndex) + '-' + str(iStartGroupIndex + len(lGroup) - 1))
+                        break
+                lGroup = []
+                iStartGroupIndex = None
+            if fGroupFound:
+                lGroup.append(oLine)
+
+
+
+
