@@ -336,7 +336,7 @@ class testVhdlFileMethods(unittest.TestCase):
 
     def test_insideConcurrent_assignment(self):
         oFile = vhdlFile.vhdlFile('tests/rule_concurrent/concurrent_test_input.vhd')
-        lExpected = [6,7,8,9,10,11,23,24,26,27,28,29,30,32,33,34,35,36]
+        lExpected = [6,7,8,9,10,11,23,24,26,27,28,29,30,32,33,34,35,36,38,39,40,41,42]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
@@ -347,7 +347,7 @@ class testVhdlFileMethods(unittest.TestCase):
 
     def test_isConcurrentBegin_assignment(self):
         oFile = vhdlFile.vhdlFile('tests/rule_concurrent/concurrent_test_input.vhd')
-        lExpected = [6,7,8,9,11,23,24,26,32,33,34,35]
+        lExpected = [6,7,8,9,11,23,24,26,32,33,34,35,38,39,42]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
@@ -358,7 +358,7 @@ class testVhdlFileMethods(unittest.TestCase):
 
     def test_isEndConcurrent_assignment(self):
         oFile = vhdlFile.vhdlFile('tests/rule_concurrent/concurrent_test_input.vhd')
-        lExpected = [6,7,8,10,11,23,24,30,32,33,34,36]
+        lExpected = [6,7,8,10,11,23,24,30,32,33,34,36,38,41,42]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):

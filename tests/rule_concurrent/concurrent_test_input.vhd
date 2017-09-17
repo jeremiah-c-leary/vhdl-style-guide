@@ -35,4 +35,10 @@ label:a<=b;
   label : a <= b or c
                d or e;
 
+  a <= b;
+  b <= c or
+       d or e
+       and f;
+  c <= d;
+
 end architecture ARCH;
