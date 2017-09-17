@@ -79,3 +79,14 @@ class rule():
         if not re.match('^.*\S\s' + sString + '\s', oLine.lineLower) and \
            not re.match('^.*\S\s' + sString + '$', oLine.lineLower):
             self.add_violation(iLineNumber)
+
+    def _check_keyword_alignment(self, iStartGroupIndex, sKeyword, lGroup):
+        iKeywordAlignment = None
+        for oGroupLine in lGroup:
+            if sKeyword in oGroupLine.line:
+                if not iKeywordAlignment:
+                    iKeywordAlignment = oGroupLine.line.find(sKeyword)
+                elif not iKeywordAlignment == oGroupLine.line.find(sKeyword):
+                    self.add_violation(str(iStartGroupIndex) + '-' + str(iStartGroupIndex + len(lGroup) - 1))
+                    break
+

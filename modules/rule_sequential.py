@@ -9,6 +9,7 @@ class sequential_rule(rule.rule):
         rule.rule.__init__(self)
         self.name = 'sequential'
 
+
 # TODO:
 # 4) Check for alignment of <= based on some form of grouping (sequential lines, process, whole file?)
 
@@ -93,13 +94,7 @@ class rule_005(sequential_rule):
                 iStartGroupIndex = iLineNumber
             if not oLine.insideSequential and fGroupFound:
                 fGroupFound = False
-                iKeywordAlignment = None
-                for oGroupLine in lGroup:
-                    if not iKeywordAlignment:
-                        iKeywordAlignment = oGroupLine.line.find('<=')
-                    elif not iKeywordAlignment == oGroupLine.line.find('<='):
-                        self.add_violation(str(iStartGroupIndex) + '-' + str(iStartGroupIndex + len(lGroup) - 1))
-                        break
+                self._check_keyword_alignment(iStartGroupIndex, '<=', lGroup)
                 lGroup = []
                 iStartGroupIndex = None
             if fGroupFound:

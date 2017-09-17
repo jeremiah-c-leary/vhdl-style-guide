@@ -181,6 +181,7 @@ class list():
         self.rules.append(rule_sequential.rule_002())
         self.rules.append(rule_sequential.rule_003())
         self.rules.append(rule_sequential.rule_004())
+        self.rules.append(rule_sequential.rule_005())
 
         self.rules.append(rule_comment.rule_001())
         self.rules.append(rule_comment.rule_002())
