@@ -78,6 +78,39 @@ class testRuleWhitespaceMethods(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
+    def test_rule_005(self):
+        oRule = rule_whitespace.rule_005()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'whitespace')
+        self.assertEqual(oRule.identifier, '005')
+
+        oFile = vhdlFile.vhdlFile('tests/rule_whitespace/whitespace_test_input.txt')
+
+        dExpected = [1,3]
+        oFile.lines.append(line.line('  This is a test of parenthesis ( failure'))
+        oFile.lines.append(line.line('  This is a test of parenthesis (pass'))
+        oFile.lines.append(line.line('  This is a test of parentehsis (  failure'))
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_006(self):
+        oRule = rule_whitespace.rule_006()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'whitespace')
+        self.assertEqual(oRule.identifier, '006')
+
+        oFile = vhdlFile.vhdlFile('tests/rule_whitespace/whitespace_test_input.txt')
+
+        dExpected = [1,3]
+        oFile.lines.append(line.line('  This is a test of parenthesis (failure )'))
+        oFile.lines.append(line.line('  This is a test of parenthesis (pass)'))
+        oFile.lines.append(line.line('  This is a test of parentehsis (failure   )'))
+        oFile.lines.append(line.line('   ) pass'))
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+
+
+
 
 if __name__ == '__main__':
     unittest.main()

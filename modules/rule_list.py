@@ -23,6 +23,8 @@ class list():
         self.rules.append(rule_whitespace.rule_002())
         self.rules.append(rule_whitespace.rule_003())
         self.rules.append(rule_whitespace.rule_004())
+        self.rules.append(rule_whitespace.rule_005())
+        self.rules.append(rule_whitespace.rule_006())
 
         self.rules.append(rule_library.rule_001())
         self.rules.append(rule_library.rule_002())

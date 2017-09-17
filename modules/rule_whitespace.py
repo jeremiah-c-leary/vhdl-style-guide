@@ -1,5 +1,6 @@
 
 import rule
+import re
 
 class whitespace_rule(rule.rule):
     
@@ -62,3 +63,32 @@ class rule_004(whitespace_rule):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if ' ,' in oLine.line:
                 self.add_violation(iLineNumber)
+
+
+class rule_005(whitespace_rule):
+    '''Whitespace rule 005 checks for spaces after an open parenthesis.'''
+
+    def __init__(self):
+        whitespace_rule.__init__(self)
+        self.identifier = '005'
+        self.solution = 'Remove spaces after open (.'
+
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if re.match('^.*\(\s+', oLine.line):
+                self.add_violation(iLineNumber)
+
+
+class rule_006(whitespace_rule):
+    '''Whitespace rule 006 checks for spaces after an open parenthesis.'''
+
+    def __init__(self):
+        whitespace_rule.__init__(self)
+        self.identifier = '006'
+        self.solution = 'Remove spaces before close ).'
+
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if re.match('^.*\s+\)', oLine.line) and not re.match('^\s+\)', oLine.line):
+                self.add_violation(iLineNumber)
+
