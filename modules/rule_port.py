@@ -243,3 +243,47 @@ class rule_015(port_rule):
             if oLine.isEndPortMap and not oLine.isPortDeclaration:
                 self._check_indent(oLine, iLineNumber)
 
+
+class rule_016(port_rule):
+    '''Entity rule 016 checks for a port definition on the same line as the port keyword.'''
+
+    def __init__(self):
+        port_rule.__init__(self)
+        self.identifier = '016'
+        self.solution = 'Move port definition to it\'s own line.'
+
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isPortKeyword:
+                if re.match('^\s*port\s*\(\s*\S+\s*:', oLine.lineLower):
+                    self.add_violation(iLineNumber)
+
+
+class rule_017(port_rule):
+    '''Entity rule 017 checks the "port" keyword is lowercase.'''
+
+    def __init__(self):
+        port_rule.__init__(self)
+        self.identifier = '017'
+        self.solution = 'Change "port" keyword to lowercase.'
+
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isPortKeyword:
+                if not re.match('^\s*port', oLine.line):
+                    self.add_violation(iLineNumber)
+
+
+class rule_018(port_rule):
+    '''Entity rule 018 checks the port type is lowercase.'''
+
+    def __init__(self):
+        port_rule.__init__(self)
+        self.identifier = '018'
+        self.solution = 'Change port type to lowercase.'
+
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isPortDeclaration:
+                sLine = oLine.line.split(':')[1]
+                self._is_lowercase(sLine.split()[1],iLineNumber)

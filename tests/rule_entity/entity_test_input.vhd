@@ -100,7 +100,7 @@ entity ENTITY1 is
     PORT2_O : out   std_logic;
     PORT3_IO : inout std_logic
   );
-end ENTITY1
+end ENT1
 
 architecture RTL of ENTITY1 is
 

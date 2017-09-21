@@ -92,3 +92,16 @@ class rule_006(whitespace_rule):
             if re.match('^.*\s+\)', oLine.line) and not re.match('^\s+\)', oLine.line):
                 self.add_violation(iLineNumber)
 
+
+class rule_007(whitespace_rule):
+    '''Whitespace rule 007 checks for spaces after a comma.'''
+
+    def __init__(self):
+        whitespace_rule.__init__(self)
+        self.identifier = '007'
+        self.solution = 'Add a space after the comma.'
+
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if re.match('^.*,\S', oLine.line):
+                self.add_violation(iLineNumber)

@@ -109,6 +109,21 @@ class testRuleWhitespaceMethods(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
+    def test_rule_007(self):
+        oRule = rule_whitespace.rule_007()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'whitespace')
+        self.assertEqual(oRule.identifier, '007')
+
+        oFile = vhdlFile.vhdlFile('tests/rule_whitespace/whitespace_test_input.txt')
+
+        dExpected = [1,3]
+        oFile.lines.append(line.line('  This is a test,of commas (failure )'))
+        oFile.lines.append(line.line('  This is a test, of commas (pass)'))
+        oFile.lines.append(line.line('  This is a test of commas,(failure   )'))
+        oFile.lines.append(line.line('   ) pass'))
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
 
 
 

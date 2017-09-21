@@ -62,7 +62,7 @@ class vhdlFile():
                 if fInsideEntity:
                     oLine.insideEntity = True
                 # Check for the end of the entity
-                if re.match('^\s*end\s+entity', oLine.lineLower):
+                if re.match('^\s*end', oLine.lineLower) and not fInsidePortMapDeclaration and not fInsideGenericMapDeclaration and fInsideEntity:
                     fInsideEntity = False
                     oLine.isEndEntityDeclaration = True
                     oLine.indentLevel = 0
@@ -77,7 +77,7 @@ class vhdlFile():
                         iCurrentIndentLevel = 2
                     if fInsidePortMapDeclaration:
                         oLine.insidePortMap = True
-                        if re.match('^\s*\S+.*:', oLine.line) and not oLine.isComment:
+                        if re.match('^\s*\w+.*:', oLine.line) and not oLine.isComment and not oLine.isPortKeyword:
                             oLine.isPortDeclaration = True
                             oLine.indentLevel = 2
                         iOpenParenthesis += oLine.line.count('(')
@@ -239,7 +239,7 @@ class vhdlFile():
 
                 # Check sequential statements
                 if fInsideProcess:
-                    if re.match('^.*<=', oLine.line):
+                    if re.match('^.*<=', oLine.line) and not oLine.isComment:
                         oLine.isSequential = True
                         oLine.indentLevel = iCurrentIndentLevel
                         fInsideSequential = True

@@ -29,7 +29,7 @@ begin
 
       when c = 1 =>
 
-        a <= b;
+      --  a <= b;
         c <=d;
         e <= f;
 

@@ -25,6 +25,7 @@ class list():
         self.rules.append(rule_whitespace.rule_004())
         self.rules.append(rule_whitespace.rule_005())
         self.rules.append(rule_whitespace.rule_006())
+        self.rules.append(rule_whitespace.rule_007())
 
         self.rules.append(rule_library.rule_001())
         self.rules.append(rule_library.rule_002())
@@ -68,6 +69,9 @@ class list():
         self.rules.append(rule_port.rule_013())
         self.rules.append(rule_port.rule_014())
         self.rules.append(rule_port.rule_015())
+        self.rules.append(rule_port.rule_016())
+        self.rules.append(rule_port.rule_017())
+        self.rules.append(rule_port.rule_018())
 
         self.rules.append(rule_generic.rule_001())
         self.rules.append(rule_generic.rule_002())

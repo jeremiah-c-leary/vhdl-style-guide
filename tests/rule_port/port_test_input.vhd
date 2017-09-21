@@ -24,7 +24,7 @@ end entity ENTITY1
 
   PORt   (
     i_port1 : in  std_logic;
-  o_port2 :  out   std_logic;
+  o_port2 :  out   STD_LOGIC;
     io_port3 : inout       std_logic;
       PORT4 :in std_logic;
     PORT5 :  out std_logic;
@@ -41,7 +41,7 @@ end entity ENTITY1
     o_port2 : out      std_logic;
     io_port3 :  inout std_logic;
       PORT4 : in std_logic := '0';
-    PORT5 :    out std_logic;
+    PORT5 :    out STD_LOGIC;
      PORT6 : inout     std_logic
  );
  END ENTITY entiTY3
@@ -95,7 +95,7 @@ entity ENTITY1 is
   Generic (
     A_GENERIC1 : std_logic := '0';
     G_GENERIC2 : std_logic := '1');
-  port (
+  Port (
     PORT1_I : in    std_logic;
     PORT2_O : out   std_logic;
     PORT3_IO : inout std_logic
@@ -134,3 +134,12 @@ entity ENTITY1 is
 end entity ENTITY1
 
 
+-- Check if port exists on port keyword line
+
+entity ENTITY1 is
+  port (I_PORT1 : in    std_logic;
+    O_PORT2 : out   std_logic;
+    IO_PORT3 : inout std_logic
+    --- debug ports: can be removed or left unconnected for the application circuit ---
+  );
+end entity ENTITY1
