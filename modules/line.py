@@ -71,4 +71,8 @@ class line():
         self.isSequentialEnd = False
         self.isSequential = False
         self.sequentialAlignmentColumn = None
+        ## Component attributes
+        self.insideComponent = False
+        self.isComponentDeclaration = False
+        self.isComponentEnd = False
 

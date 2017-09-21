@@ -26,6 +26,8 @@ class vhdlFile():
 
         fInsideSequential = False
 
+        fInsideComponent = False
+
         iOpenParenthesis = 0;
         iCloseParenthesis = 0;
 
@@ -129,6 +131,17 @@ class vhdlFile():
                         fFoundArchitectureBegin = False
                         oLine.isEndArchitecture = True
                         oLine.indentLevel = 0
+
+                # Check Component declarations
+                if re.match('^\s*component', oLine.lineLower) and not fInsideComponent:
+                    oLine.isComponentDeclaration = True
+                    fInsideComponent = True
+
+                if fInsideComponent:
+                    oLine.insideComponent = True
+                    if re.match('^\s*end\s+component', oLine.lineLower):
+                        oLine.isComponentEnd = True
+                        fInsideComponent = False
 
                 # Check Signal declarations
                 if fInsideArchitecture:

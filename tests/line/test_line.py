@@ -333,5 +333,23 @@ class testLineMethods(unittest.TestCase):
         oLine.sequentialAlignmentColumn = 32
         self.assertEqual(oLine.sequentialAlignmentColumn, 32)
 
+    def test_inside_component_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.insideComponent, False)
+        oLine.insideComponent = True
+        self.assertEqual(oLine.insideComponent, True)
+
+    def test_component_declaration_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isComponentDeclaration, False)
+        oLine.isComponentDeclaration = True
+        self.assertEqual(oLine.isComponentDeclaration, True)
+
+    def test_end_component_declaration_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isComponentEnd, False)
+        oLine.isComponentEnd = True
+        self.assertEqual(oLine.isComponentEnd, True)
+
 if __name__ == '__main__':
     unittest.main()
