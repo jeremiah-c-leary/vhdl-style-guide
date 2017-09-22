@@ -30,7 +30,7 @@ class rule_002(port_rule):
     def __init__(self):
         port_rule.__init__(self)
         self.identifier = '002'
-        self.solution = 'Change indent of "port" keyword to 2 spaces.'
+        self.solution = 'Change indent of "port" keyword.'
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -174,7 +174,7 @@ class rule_011(port_rule):
         if not self.port_direction:
             self.violations = []
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isPortDeclaration:
+            if oLine.isPortDeclaration and oLine.insideEntity:
                 lLine = oLine.lineLower.split()
                 if self.port_direction == 'Prefix':
                     if not(lLine[0].startswith('i_') or lLine[0].startswith('o_') or lLine[0].startswith('io_')):
@@ -236,7 +236,7 @@ class rule_015(port_rule):
     def __init__(self):
         port_rule.__init__(self)
         self.identifier = '015'
-        self.solution = 'Indention of closing parenthesis should be two spaces.'
+        self.solution = 'Fix indention of closing parenthesis.'
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):

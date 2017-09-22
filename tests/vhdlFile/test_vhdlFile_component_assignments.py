@@ -38,6 +38,50 @@ class testVhdlFileComponentAssignments(unittest.TestCase):
         # Compare
         self.assertEqual(lActual, lExpected)
 
+    def test_insidePortMap_assignment(self):
+        oFile = vhdlFile.vhdlFile('tests/rule_component/component_test_input.vhd')
+        lExpected = [6,7,8,9,10,11,17,18,19,20,21,22,28,29,30,31,32,33,37,38,39,40,41,42,46,47,48,49,50,51,58,59,60,61,62,63,67,68,69,70,71,72,73,74]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFile.lines):
+            if oLine.insidePortMap:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
+    def test_isPortKeyword_assignment(self):
+        oFile = vhdlFile.vhdlFile('tests/rule_component/component_test_input.vhd')
+        lExpected = [6,17,28,37,46,58,67]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFile.lines):
+            if oLine.isPortKeyword:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
+    def test_isEndPortMap_assignment(self):
+        oFile = vhdlFile.vhdlFile('tests/rule_component/component_test_input.vhd')
+        lExpected = [11,22,33,42,51,63,74]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFile.lines):
+            if oLine.isEndPortMap:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
+    def test_isPortDeclaration_assignment(self):
+        oFile = vhdlFile.vhdlFile('tests/rule_component/component_test_input.vhd')
+        lExpected = [7,8,9,10,18,19,20,21,29,30,31,32,38,39,40,41,47,48,49,50,59,60,61,62,69,70,71,72]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFile.lines):
+            if oLine.isPortDeclaration:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
 #    def test_componentAlignmentColumn_assignment(self):
 #        oFile = vhdlFile.vhdlFile('tests/rule_component/component_test_input.vhd')
 #        #lExpected = [13,14,15,20,21,22,26,27,28,33,34,38,39,40,53,56,57,63,65,66,71,73,75,80,81,83,88,89,90]

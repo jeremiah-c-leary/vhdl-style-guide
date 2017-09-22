@@ -71,26 +71,38 @@ class vhdlFile():
                     iCurrentIndentLevel = 0
 
                 # Check port map declarations
-                if fInsideEntity:
+                if fInsideEntity or fInsideComponent:
                     if re.match('^\s*port', oLine.lineLower) and not fInsidePortMapDeclaration:
                         fInsidePortMapDeclaration = True
                         oLine.isPortKeyword = True
-                        oLine.indentLevel = 1
-                        iCurrentIndentLevel = 2
+                        if fInsideEntity:
+                            oLine.indentLevel = 1
+                            iCurrentIndentLevel = 2
+                        else:
+                            oLine.indentLevel = 2
+                            iCurrentIndentLevel = 3
+
                     if fInsidePortMapDeclaration:
                         oLine.insidePortMap = True
                         if re.match('^\s*\w+.*:', oLine.line) and not oLine.isComment and not oLine.isPortKeyword:
                             oLine.isPortDeclaration = True
-                            oLine.indentLevel = 2
+                            if fInsideEntity:
+                                oLine.indentLevel = 2
+                            else:
+                                oLine.indentLevel = 3
                         iOpenParenthesis += oLine.line.count('(')
                         iCloseParenthesis += oLine.line.count(')')
                         if iOpenParenthesis == iCloseParenthesis:
-                            oLine.indentLevel = 1
                             fInsidePortMapDeclaration = False
                             iOpenParenthesis = 0
                             iCloseParenthesis = 0
                             oLine.isEndPortMap = True
-                            iCurrentIndentLevel = 1
+                            if fInsideEntity:
+                                oLine.indentLevel = 1
+                                iCurrentIndentLevel = 1
+                            else:
+                                oLine.indentLevel = 2
+                                iCurrentIndentLevel = 2
 
                 # Check generic map declarations
                 if fInsideEntity:
