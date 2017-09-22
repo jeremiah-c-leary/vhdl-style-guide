@@ -249,30 +249,30 @@ class rule_016(component_rule):
                 self._is_no_blank_line_before(oFile, iLineNumber)
 
 
-#class rule_017(component_rule):
-#    '''Component rule 017 ensures the alignment of the : operator for every port in the component.'''
-#
-#    def __init__(self):
-#        component_rule.__init__(self)
-#        self.identifier = '017'
-#        self.solution = 'Inconsistent alignment of ":" in port declaration of component.'
-#
-#    def analyze(self, oFile):
-#        lGroup = []
-#        fGroupFound = False
-#        iStartGroupIndex = None
-#        for iLineNumber, oLine in enumerate(oFile.lines):
-#            if oLine.isPortKeyword and not fGroupFound:
-#                fGroupFound = True
-#                iStartGroupIndex = iLineNumber
-#            if oLine.isEndPortMap:
-#                lGroup.append(oLine)
-#                fGroupFound = False
-#                self._check_keyword_alignment(iStartGroupIndex, ':', lGroup)
-#                lGroup = []
-#                iStartGroupIndex = None
-#            if fGroupFound:
-#                if oLine.isPortDeclaration:
-#                  lGroup.append(oLine)
-#                else:
-#                  lGroup.append(line.line('Removed line'))
+class rule_017(component_rule):
+    '''Component rule 017 ensures the alignment of the : operator for every port in the component.'''
+
+    def __init__(self):
+        component_rule.__init__(self)
+        self.identifier = '017'
+        self.solution = 'Inconsistent alignment of ":" in port declaration of component.'
+
+    def analyze(self, oFile):
+        lGroup = []
+        fGroupFound = False
+        iStartGroupIndex = None
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isPortKeyword and not fGroupFound:
+                fGroupFound = True
+                iStartGroupIndex = iLineNumber
+            if oLine.isEndPortMap:
+                lGroup.append(oLine)
+                fGroupFound = False
+                self._check_keyword_alignment(iStartGroupIndex, ':', lGroup)
+                lGroup = []
+                iStartGroupIndex = None
+            if fGroupFound:
+                if oLine.isPortDeclaration:
+                  lGroup.append(oLine)
+                else:
+                  lGroup.append(line.line('Removed line'))
