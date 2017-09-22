@@ -2,9 +2,13 @@
 
 import argparse
 import sys
+import os
 
-# Rules
-sys.path.append('..\modules')
+# Get the path to the executable
+executablePath = os.path.dirname(os.path.realpath(__file__))
+
+# Import program modules
+sys.path.append(executablePath + '\..\modules')
 import rule_list
 import vhdlFile
 
