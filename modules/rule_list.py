@@ -25,10 +25,6 @@ def load_base_rules ():
                     lRules.append(obj())
     return lRules
 
-#lRules = load_base_rules()
-
-#for oRule in lRules:
-#    print (oRule.name + '_' + oRule.identifier)
 
 class list():
     ''' Contains a list of all rules to be checked.  It also contains methods to check the rules.'''
@@ -42,5 +38,13 @@ class list():
             oRule.analyze(oFile)
 
     def report_violations(self, filename):
+        sFileTitle = 'File:  ' + filename
+        print (sFileTitle)
+        print ('=' * len(sFileTitle))
+        iFailures = 0
         for oRule in self.rules:
-            oRule.report_violations(filename)
+            iFailures += oRule.report_violations(filename)
+        print ('=' * len(sFileTitle))
+        print ('Total Rules Checked: ' + str(len(self.rules)))
+        print ('Total Rules Failed:  ' + str(iFailures))
+

@@ -12,8 +12,14 @@ class rule():
 
     def report_violations(self,filename):
         if len(self.violations) > 0:
+            print (self.name + '_' + self.identifier + ':  ' + self.solution + '...FAILED')
             for violation in self.violations:
-                print filename + ":" + str(violation) + ":" + self.name + "_" + self.identifier + ": " + self.solution
+                print '    ' + str(violation)
+            return 1
+        else:
+            return 0
+#            print (self.name + '_' + self.identifier + ':  ' + self.solution + '...PASSED')
+
 
     def add_violation(self, lineNumber):
         self.violations.append(lineNumber)
