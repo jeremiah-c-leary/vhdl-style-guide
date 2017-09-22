@@ -37,12 +37,12 @@ end entity ENTITY1
     G_GeneRIC2 :std_logic :='1'
   );
    PORt (
-    i_port1 :   in      std_logic;
+    i_port1 :   IN      std_logic;
     o_port2 : out      std_logic;
     io_port3 :  inout std_logic;
-      PORT4 : in std_logic := '0';
-    PORT5 :    out STD_LOGIC;
-     PORT6 : inout     std_logic
+      PORT4 : iN std_logic := '0';
+    PORT5 :    oUt STD_LOGIC;
+     PORT6 : inOut     std_logic
  );
  END ENTITY entiTY3
 

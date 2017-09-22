@@ -11,7 +11,7 @@ class port_rule(rule.rule):
 
 
 class rule_001(port_rule):
-    '''Entity rule 001 checks for a blank line above the port keyword.'''
+    '''Port rule 001 checks for a blank line above the port keyword.'''
 
     def __init__(self):
         port_rule.__init__(self)
@@ -25,7 +25,7 @@ class rule_001(port_rule):
 
 
 class rule_002(port_rule):
-    '''Entity rule 002 checks indentation of the "port" keyword.'''
+    '''Port rule 002 checks indentation of the "port" keyword.'''
 
     def __init__(self):
         port_rule.__init__(self)
@@ -39,7 +39,7 @@ class rule_002(port_rule):
 
 
 class rule_003(port_rule):
-    '''Entity rule 003 checks spacing between "port" and the open parenthesis.'''
+    '''Port rule 003 checks spacing between "port" and the open parenthesis.'''
 
     def __init__(self):
         port_rule.__init__(self)
@@ -54,7 +54,7 @@ class rule_003(port_rule):
 
 
 class rule_004(port_rule):
-    '''Entity rule 004 checks indentation of ports.'''
+    '''Port rule 004 checks indentation of ports.'''
 
     def __init__(self):
         port_rule.__init__(self)
@@ -68,7 +68,7 @@ class rule_004(port_rule):
 
 
 class rule_005(port_rule):
-    '''Entity rule 005 checks for a single space after the colon in a port declaration for "in" and "inout" ports.'''
+    '''Port rule 005 checks for a single space after the colon in a port declaration for "in" and "inout" ports.'''
 
     def __init__(self):
         port_rule.__init__(self)
@@ -84,7 +84,7 @@ class rule_005(port_rule):
 
 
 class rule_006(port_rule):
-    '''Entity rule 006 checks for one space after the colon in a port declaration for "out" ports.'''
+    '''Port rule 006 checks for one space after the colon in a port declaration for "out" ports.'''
 
     def __init__(self):
         port_rule.__init__(self)
@@ -100,7 +100,7 @@ class rule_006(port_rule):
 
 
 class rule_007(port_rule):
-    '''Entity rule 007 checks for four spaces after the "in" keyword in a port declaration for "in" ports.'''
+    '''Port rule 007 checks for four spaces after the "in" keyword in a port declaration for "in" ports.'''
 
     def __init__(self):
         port_rule.__init__(self)
@@ -116,7 +116,7 @@ class rule_007(port_rule):
 
 
 class rule_008(port_rule):
-    '''Entity rule 008 checks for three spaces after "out" keyword in a port declaration for "out" ports.'''
+    '''Port rule 008 checks for three spaces after "out" keyword in a port declaration for "out" ports.'''
 
     def __init__(self):
         port_rule.__init__(self)
@@ -132,7 +132,7 @@ class rule_008(port_rule):
 
 
 class rule_009(port_rule):
-    '''Entity rule 009 checks for a single space after "inout" keyword in a port declaration for "inout" ports.'''
+    '''Port rule 009 checks for a single space after "inout" keyword in a port declaration for "inout" ports.'''
 
     def __init__(self):
         port_rule.__init__(self)
@@ -148,7 +148,7 @@ class rule_009(port_rule):
 
 
 class rule_010(port_rule):
-    '''Entity rule 010 checks port names are uppercase.'''
+    '''Port rule 010 checks port names are uppercase.'''
 
     def __init__(self):
         port_rule.__init__(self)
@@ -162,7 +162,7 @@ class rule_010(port_rule):
 
 
 class rule_011(port_rule):
-    '''Entity rule 011 checks port names have I_, O_ or IO_ prefixes.'''
+    '''Port rule 011 checks port names have I_, O_ or IO_ prefixes.'''
 
     def __init__(self):
         port_rule.__init__(self)
@@ -186,7 +186,7 @@ class rule_011(port_rule):
 
 
 class rule_012(port_rule):
-    '''Entity rule 012 checks for default assignments in port declarations.'''
+    '''Port rule 012 checks for default assignments in port declarations.'''
 
     def __init__(self):
         port_rule.__init__(self)
@@ -201,7 +201,7 @@ class rule_012(port_rule):
 
 
 class rule_013(port_rule):
-    '''Entity rule 013 checks for multiple ports declared on single line.'''
+    '''Port rule 013 checks for multiple ports declared on single line.'''
 
     def __init__(self):
         port_rule.__init__(self)
@@ -216,7 +216,7 @@ class rule_013(port_rule):
 
 
 class rule_014(port_rule):
-    '''Entity rule 014 checks the closing parenthesis for ports are on a line by itself.'''
+    '''Port rule 014 checks the closing parenthesis for ports are on a line by itself.'''
 
     def __init__(self):
         port_rule.__init__(self)
@@ -231,7 +231,7 @@ class rule_014(port_rule):
 
 
 class rule_015(port_rule):
-    '''Entity rule 015 checks the indentation of closing parenthesis for port maps.'''
+    '''Port rule 015 checks the indentation of closing parenthesis for port maps.'''
 
     def __init__(self):
         port_rule.__init__(self)
@@ -245,7 +245,7 @@ class rule_015(port_rule):
 
 
 class rule_016(port_rule):
-    '''Entity rule 016 checks for a port definition on the same line as the port keyword.'''
+    '''Port rule 016 checks for a port definition on the same line as the port keyword.'''
 
     def __init__(self):
         port_rule.__init__(self)
@@ -260,7 +260,7 @@ class rule_016(port_rule):
 
 
 class rule_017(port_rule):
-    '''Entity rule 017 checks the "port" keyword is lowercase.'''
+    '''Port rule 017 checks the "port" keyword is lowercase.'''
 
     def __init__(self):
         port_rule.__init__(self)
@@ -275,7 +275,7 @@ class rule_017(port_rule):
 
 
 class rule_018(port_rule):
-    '''Entity rule 018 checks the port type is lowercase.'''
+    '''Port rule 018 checks the port type is lowercase.'''
 
     def __init__(self):
         port_rule.__init__(self)
@@ -287,3 +287,19 @@ class rule_018(port_rule):
             if oLine.isPortDeclaration:
                 sLine = oLine.line.split(':')[1]
                 self._is_lowercase(sLine.split()[1],iLineNumber)
+
+
+class rule_019(port_rule):
+    '''Port rule 019 checks the port direction is lowercase.'''
+
+    def __init__(self):
+        port_rule.__init__(self)
+        self.identifier = '019'
+        self.solution = 'Change port direction to lowercase.'
+
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isPortDeclaration:
+                sLine = oLine.line.split(':')[1]
+                self._is_lowercase(sLine.split()[0],iLineNumber)
+
