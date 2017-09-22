@@ -1,6 +1,9 @@
 
 import unittest
-from modules import rule_entity
+import sys
+sys.path.append('modules')
+
+from modules.rules import rule_entity
 from modules import vhdlFile
 
 

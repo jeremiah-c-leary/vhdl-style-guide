@@ -1,6 +1,9 @@
 
 import unittest
-from modules import rule_architecture
+import sys
+sys.path.append('modules')
+
+from modules.rules import rule_architecture
 from modules import vhdlFile
 
 # Read in test file used for all tests

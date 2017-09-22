@@ -1,6 +1,9 @@
 
 import unittest
-from modules import rule_process
+import sys
+sys.path.append('modules')
+
+from modules.rules import rule_process
 from modules import vhdlFile
 
 # Read in test file used for all tests

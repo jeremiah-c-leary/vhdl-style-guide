@@ -1,6 +1,9 @@
 
 import unittest
-from modules import rule_constant
+import sys
+sys.path.append('modules')
+
+from modules.rules import rule_constant
 from modules import vhdlFile
 
 

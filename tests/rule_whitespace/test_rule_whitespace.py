@@ -1,6 +1,9 @@
 
 import unittest
-from modules import rule_whitespace
+import sys
+sys.path.append('modules')
+
+from modules.rules import rule_whitespace
 from modules import vhdlFile
 from modules import line
 
