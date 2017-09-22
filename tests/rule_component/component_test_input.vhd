@@ -24,32 +24,32 @@ architecture ARCH of ENTITY is
 
   -- Indentation checks
 
- component COMP1 is
+ component  COMP1
     port (
       port_1 : in    std_logic;
       port_2 : in    std_logic;
       port_3 : inout std_logic;
       port_4 : out   std_logic;
     );
-   end component COMP1;
+   end component  COMP1;
  
-  component COMP1 is
+  component COMP1  is
      port (
      port_1 : in    std_logic;
       port_2 : in    std_logic;
        port_3 : inout std_logic;
       port_4 : out   std_logic;
    );
-  end component COMP1;
+  end component;
 
-   component COMP1 is
+   component   COMP1 is
    port (
       port_1 : in    std_logic;
       port_2 : in    std_logic;
       port_3 : inout std_logic;
       port_4 : out   std_logic;
       );
- end component COMP1;
+ end  component COMP1;
 
   -- Blank line tests
 

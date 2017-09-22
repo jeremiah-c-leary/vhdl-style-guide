@@ -136,12 +136,14 @@ class vhdlFile():
                 if re.match('^\s*component', oLine.lineLower) and not fInsideComponent:
                     oLine.isComponentDeclaration = True
                     fInsideComponent = True
+                    oLine.indentLevel = 1
 
                 if fInsideComponent:
                     oLine.insideComponent = True
                     if re.match('^\s*end\s+component', oLine.lineLower):
                         oLine.isComponentEnd = True
                         fInsideComponent = False
+                        oLine.indentLevel = 1
 
                 # Check Signal declarations
                 if fInsideArchitecture:

@@ -13,6 +13,7 @@ import rule_if
 import rule_case
 import rule_comment
 import rule_sequential
+import rule_component
 
 class list():
     ''' Contains a list of all rules to be checked.  It also contains methods to check the rules.'''
@@ -194,7 +195,23 @@ class list():
         self.rules.append(rule_comment.rule_002())
         self.rules.append(rule_comment.rule_003())
 
-
+        self.rules.append(rule_component.rule_001())
+        self.rules.append(rule_component.rule_002())
+        self.rules.append(rule_component.rule_003())
+        self.rules.append(rule_component.rule_004())
+        self.rules.append(rule_component.rule_005())
+        self.rules.append(rule_component.rule_006())
+        self.rules.append(rule_component.rule_007())
+        self.rules.append(rule_component.rule_008())
+        self.rules.append(rule_component.rule_009())
+        self.rules.append(rule_component.rule_010())
+        self.rules.append(rule_component.rule_011())
+        self.rules.append(rule_component.rule_012())
+        self.rules.append(rule_component.rule_013())
+        self.rules.append(rule_component.rule_014())
+        self.rules.append(rule_component.rule_015())
+        self.rules.append(rule_component.rule_016())
+#        self.rules.append(rule_component.rule_017())
 
     def check_rules(self, oFile):
         dRuleViolations = {}
