@@ -153,8 +153,9 @@ class rule_009(architecture_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isEndArchitecture:
-                if not re.match('^\s*end\s\s*architecture', oLine.line):
-                    self.add_violation(iLineNumber)
+                if re.match('^\s*end\s\s*architecture', oLine.lineLower):
+                    if not re.match('^\s*end\s\s*architecture', oLine.line):
+                        self.add_violation(iLineNumber)
 
 
 class rule_010(architecture_rule):
@@ -163,7 +164,7 @@ class rule_010(architecture_rule):
     def __init__(self):
         architecture_rule.__init__(self)
         self.identifier = '010'
-        self.solution = 'Add architecture name.'
+        self.solution = 'End of architecture follows this format: end architecture <architecture name>.'
         self.phase = 1
 
     def analyze(self, oFile):
@@ -208,8 +209,9 @@ class rule_012(architecture_rule):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isEndArchitecture:
                 if (len(oLine.line.split()) > 1):
-                    if not re.match('^\s*end\sarchitecture', oLine.lineLower):
-                        self.add_violation(iLineNumber)
+                    if re.match('^\s*end\s+architecture', oLine.lineLower):
+                        if not re.match('^\s*end\sarchitecture', oLine.lineLower):
+                            self.add_violation(iLineNumber)
 
 
 class rule_013(architecture_rule):
@@ -304,3 +306,71 @@ class rule_018(architecture_rule):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isEndArchitecture:
                 self._is_blank_line_before(oFile, iLineNumber)
+
+
+class rule_019(architecture_rule):
+    '''Architecture rule 019 checks the "of" keyword is lower case.'''
+
+    def __init__(self):
+        architecture_rule.__init__(self)
+        self.identifier = '019'
+        self.solution = 'Change "of" keyword to lowercase.'
+        self.phase = 6
+
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isArchitectureKeyword:
+                if re.match('^\s*\w+\s+\w+\s+of', oLine.lineLower):
+                    if not re.match('^\s*\w+\s+\w+\s+of', oLine.line):
+                        self.add_violation(iLineNumber)
+
+
+class rule_020(architecture_rule):
+    '''Architecture rule 020 checks the "is" keyword is lower case.'''
+
+    def __init__(self):
+        architecture_rule.__init__(self)
+        self.identifier = '020'
+        self.solution = 'Change "is" keyword to lowercase.'
+        self.phase = 6
+
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isArchitectureKeyword:
+                if re.match('^\s*architecture\s+\w+\s+of\s+\w+\s+is', oLine.lineLower):
+                    if not re.match('^\s*\w+\s+\w+\s+\w+\s+\w+\s+is', oLine.line):
+                        self.add_violation(iLineNumber)
+
+
+class rule_021(architecture_rule):
+    '''Architecture rule 021 checks the "begin" keyword is lower case.'''
+
+    def __init__(self):
+        architecture_rule.__init__(self)
+        self.identifier = '021'
+        self.solution = 'Change "begin" keyword to lowercase.'
+        self.phase = 6
+
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isArchitectureBegin:
+                if not re.match('^\s*begin', oLine.line):
+                    self.add_violation(iLineNumber)
+
+
+class rule_022(architecture_rule):
+    '''Architecture rule 022 checks for a single space after the "end architecture" keywords and the architecture name.'''
+
+    def __init__(self):
+        architecture_rule.__init__(self)
+        self.identifier = '022'
+        self.solution = 'Ensure a single space exists between "architecture" and the architecture name.'
+        self.phase = 2
+
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isEndArchitecture:
+                if re.match('^\s*end\s+architecture\s+\w', oLine.lineLower):
+                    if not re.match('^\s*end\s+architecture\s\w', oLine.lineLower):
+                        self.add_violation(iLineNumber)
+

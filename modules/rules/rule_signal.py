@@ -173,3 +173,20 @@ class rule_009(signal_rule):
             iCurrentColumn = oLine.line.find(':')
             if not iMaximumColumn == oLine.line.find(':'):
                 self.add_violation(iLineNumber)
+
+
+class rule_010(signal_rule):
+    '''Signal rule 010 checks the signal type is lowercase.'''
+
+    def __init__(self):
+        signal_rule.__init__(self)
+        self.identifier = '010'
+        self.solution = 'Change signal type to lowercase.'
+        self.phase = 6
+
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isSignal:
+                if re.match('^\s*signal\s+\w+\s+:\s+\w', oLine.lineLower):
+                    self._is_lowercase(oLine.line.split()[3], iLineNumber)
+

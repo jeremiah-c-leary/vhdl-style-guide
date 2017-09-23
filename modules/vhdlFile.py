@@ -142,12 +142,13 @@ class vhdlFile():
                         oLine.isArchitectureBegin = True
                         oLine.indentLevel = 0
                         iCurrentIndentLevel = 1
-                    if re.match('^\s*end\s+architecture', oLine.lineLower):
-                        fInsideArchitecture = False
-                        fFoundArchitectureBegin = False
-                        oLine.isEndArchitecture = True
-                        oLine.indentLevel = 0
-                        iCurrentIndentLevel = 0
+                    if not fInsideProcess and not fInsideCase:
+                        if re.match('^\s*end\s+', oLine.lineLower):
+                            fInsideArchitecture = False
+                            fFoundArchitectureBegin = False
+                            oLine.isEndArchitecture = True
+                            oLine.indentLevel = 0
+                            iCurrentIndentLevel = 0
 
                 # Check Component declarations
                 if re.match('^\s*component', oLine.lineLower) and not fInsideComponent:

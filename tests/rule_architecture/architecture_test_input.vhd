@@ -26,11 +26,11 @@ end  architecture ARCH
 architecture ARch
  of ENTITY is
 
-begin
+BEGIN
 
  end archITecture   ARCH
 
-architecture ARCH of ENTITY is
+architecture ARCH of ENTITY iS
 begin
 end architecture ARCH;
 
@@ -44,3 +44,14 @@ begin
 
 end architecture ARCH;
 
+architecture ARCH of ENTITY is
+
+begin
+
+  process () is
+  begin
+  end process;
+
+end ARCH;
+
+-- Comment
