@@ -17,6 +17,7 @@ class rule_001(comment_rule):
         comment_rule.__init__(self)
         self.identifier = '001'
         self.solution = 'Ensure proper indentation of comment.'
+        self.phase = 4
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -26,8 +27,12 @@ class rule_001(comment_rule):
                         if not oLine.commentColumn == (oLine.indentLevel * self.indentSize):
                             self.add_violation(iLineNumber)
                 else:
-                    if not oLine.commentColumn == (oLine.indentLevel * self.indentSize):
-                        self.add_violation(iLineNumber)
+                    if oFile.lines[iLineNumber + 1].isCaseWhenKeyword:
+                        if not oLine.commentColumn == (oLine.indentLevel * self.indentSize) and not oLine.commentColumn == ((oLine.indentLevel - 1) * self.indentSize):
+                            self.add_violation(iLineNumber)
+                    else:
+                        if not oLine.commentColumn == (oLine.indentLevel * self.indentSize):
+                            self.add_violation(iLineNumber)
 
 
 class rule_002(comment_rule):
@@ -37,19 +42,30 @@ class rule_002(comment_rule):
         comment_rule.__init__(self)
         self.identifier = '002'
         self.solution = 'Ensure proper alignment of comment with previous line.'
+        self.phase = 5
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if iLineNumber > 0:
                 oPreviousLine = oFile.lines[iLineNumber - 1]
             if not oLine.isComment and oLine.hasComment:
-                if not oPreviousLine.isComment and oPreviousLine.hasComment:
-                    if not oLine.commentColumn == oPreviousLine.commentColumn:
-                        self.add_violation(iLineNumber)
-                if oPreviousLine.isComment:
-                    if not oPreviousLine.commentColumn == (oPreviousLine.indentLevel * self.indentSize):
+                if oLine.isCaseWhenKeyword:
+                    if not oPreviousLine.isComment and oPreviousLine.hasComment:
                         if not oLine.commentColumn == oPreviousLine.commentColumn:
                             self.add_violation(iLineNumber)
+                    if oPreviousLine.isComment:
+                        if not oPreviousLine.commentColumn == (oPreviousLine.indentLevel * self.indentSize) and \
+                           not oPreviousLine.commentColumn == ((oPreviousLine.indentLevel - 1) * self.indentSize):
+                            if not oLine.commentColumn == oPreviousLine.commentColumn:
+                                self.add_violation(iLineNumber)
+                else:
+                    if not oPreviousLine.isComment and oPreviousLine.hasComment:
+                        if not oLine.commentColumn == oPreviousLine.commentColumn:
+                            self.add_violation(iLineNumber)
+                    if oPreviousLine.isComment:
+                        if not oPreviousLine.commentColumn == (oPreviousLine.indentLevel * self.indentSize):
+                            if not oLine.commentColumn == oPreviousLine.commentColumn:
+                                self.add_violation(iLineNumber)
             if oLine.isComment:
                 if oPreviousLine.hasComment:
                     if not oPreviousLine.isComment:
@@ -65,6 +81,7 @@ class rule_003(comment_rule):
         comment_rule.__init__(self)
         self.identifier = '003'
         self.solution = 'Inconsistent alignment of comments within process.'
+        self.phase = 5
 
     def analyze(self, oFile):
         lGroup = []

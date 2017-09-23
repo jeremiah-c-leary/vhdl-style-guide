@@ -18,6 +18,7 @@ class rule_001(component_rule):
         component_rule.__init__(self)
         self.identifier = '001'
         self.solution = 'Improper indentation.'
+        self.phase = 4
 
     def analyze(self, oFile):
         lFailureLines = []
@@ -33,6 +34,7 @@ class rule_002(component_rule):
         component_rule.__init__(self)
         self.identifier = '002'
         self.solution = 'Remove extra spaces after "component" keyword.'
+        self.phase = 2
 
     def analyze(self, oFile):
         lFailureLines = []
@@ -48,6 +50,7 @@ class rule_003(component_rule):
         component_rule.__init__(self)
         self.identifier = '003'
         self.solution = 'Add blank line above component keyword.'
+        self.phase = 3
 
     def analyze(self, oFile):
         lFailureLines = []
@@ -63,6 +66,7 @@ class rule_004(component_rule):
         component_rule.__init__(self)
         self.identifier = '004'
         self.solution = 'Change "component" keyword to lowercase.'
+        self.phase = 6
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -77,6 +81,7 @@ class rule_005(component_rule):
         component_rule.__init__(self)
         self.identifier = '005'
         self.solution = 'Add "is" keyword to same line as "component" keyword.'
+        self.phase = 1
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -91,6 +96,7 @@ class rule_006(component_rule):
         component_rule.__init__(self)
         self.identifier = '006'
         self.solution = 'Change "is" keyword to lowercase.'
+        self.phase = 6
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -107,6 +113,7 @@ class rule_007(component_rule):
         component_rule.__init__(self)
         self.identifier = '007'
         self.solution = 'Remove extra spaces before "is" keyword.'
+        self.phase = 2
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -122,6 +129,7 @@ class rule_008(component_rule):
         component_rule.__init__(self)
         self.identifier = '008'
         self.solution = 'Change component name to all uppercase.'
+        self.phase = 6
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -136,6 +144,7 @@ class rule_009(component_rule):
         component_rule.__init__(self)
         self.identifier = '009'
         self.solution = 'Improper indentatioon.'
+        self.phase = 4
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -150,6 +159,7 @@ class rule_010(component_rule):
         component_rule.__init__(self)
         self.identifier = '010'
         self.solution = 'Change "end" keyword to lowercase.'
+        self.phase = 6
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -164,6 +174,7 @@ class rule_011(component_rule):
         component_rule.__init__(self)
         self.identifier = '011'
         self.solution = 'Reduce spaces after "end" keyword to one.'
+        self.phase = 2
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -178,6 +189,7 @@ class rule_012(component_rule):
         component_rule.__init__(self)
         self.identifier = '012'
         self.solution = 'Uppercase component name.'
+        self.phase = 6
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -194,6 +206,7 @@ class rule_013(component_rule):
         component_rule.__init__(self)
         self.identifier = '013'
         self.solution = 'Reduce spaces after "component" keyword to one.'
+        self.phase = 2
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -209,6 +222,7 @@ class rule_014(component_rule):
         component_rule.__init__(self)
         self.identifier = '014'
         self.solution = 'Change "component" keyword to lower case.'
+        self.phase = 6
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -225,6 +239,7 @@ class rule_015(component_rule):
         component_rule.__init__(self)
         self.identifier = '015'
         self.solution = 'The "end" keyword, "component" keyword and component name need to be on the same line.'
+        self.phase = 1
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -242,6 +257,7 @@ class rule_016(component_rule):
         component_rule.__init__(self)
         self.identifier = '016'
         self.solution = 'Remove blank line(s) above "end component" keywords.'
+        self.phase = 3
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -256,6 +272,7 @@ class rule_017(component_rule):
         component_rule.__init__(self)
         self.identifier = '017'
         self.solution = 'Inconsistent alignment of ":" in port declaration of component.'
+        self.phase = 5
 
     def analyze(self, oFile):
         lGroup = []

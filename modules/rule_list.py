@@ -31,20 +31,36 @@ class list():
 
     def __init__(self):
         self.rules = load_base_rules()
+        self.iNumberRulesRan = 0
+        self.lastPhaseRan = 0
 
     def check_rules(self, oFile):
-        dRuleViolations = {}
-        for oRule in self.rules:
-            oRule.analyze(oFile)
+        self.iNumberRulesRan = 0
+        iFailures = 0
+        for phase in range(1,10):
+            iPhaseRuleCount = 0
+            print ('Running Phase ' + str(phase) + '...')
+            for oRule in self.rules:
+                if oRule.phase == phase:
+                    oRule.analyze(oFile)
+                    iFailures += len(oRule.violations)
+                    self.iNumberRulesRan += 1
+                    iPhaseRuleCount += 1
+                    self.lastPhaseRan = phase
+            if iFailures > 0 or iPhaseRuleCount == 0:
+                break
 
     def report_violations(self, filename):
         sFileTitle = 'File:  ' + filename
         print (sFileTitle)
         print ('=' * len(sFileTitle))
         iFailures = 0
-        for oRule in self.rules:
-            iFailures += oRule.report_violations(filename)
+        for phase in range(1,self.lastPhaseRan + 1):
+            print ('Phase ' + str(phase) + '...')
+            for oRule in self.rules:
+                if oRule.phase == phase:
+                    iFailures += oRule.report_violations(filename)
         print ('=' * len(sFileTitle))
-        print ('Total Rules Checked: ' + str(len(self.rules)))
+        print ('Total Rules Checked: ' + str(self.iNumberRulesRan))
         print ('Total Rules Failed:  ' + str(iFailures))
 

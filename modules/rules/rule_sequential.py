@@ -20,6 +20,7 @@ class rule_001(sequential_rule):
         sequential_rule.__init__(self)
         self.identifier = '001'
         self.solution = 'Ensure proper indentation.'
+        self.phase = 4
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -34,6 +35,7 @@ class rule_002(sequential_rule):
         sequential_rule.__init__(self)
         self.identifier = '002'
         self.solution = 'Ensure a single space exists after the "<=" keyword.'
+        self.phase = 2
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -49,6 +51,7 @@ class rule_003(sequential_rule):
         sequential_rule.__init__(self)
         self.identifier = '003'
         self.solution = 'Ensure a single space exists before the "<=" keyword.'
+        self.phase = 2
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -64,6 +67,7 @@ class rule_004(sequential_rule):
         sequential_rule.__init__(self)
         self.identifier = '004'
         self.solution = 'Align with space after the "<=" keyword.'
+        self.phase = 5
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -83,6 +87,7 @@ class rule_005(sequential_rule):
         sequential_rule.__init__(self)
         self.identifier = '005'
         self.solution = 'Inconsistent alignment of "<=" in group of lines.'
+        self.phase = 5
 
     def analyze(self, oFile):
         lGroup = []

@@ -17,6 +17,7 @@ class rule_001(port_rule):
         port_rule.__init__(self)
         self.identifier = '001'
         self.solution = 'Remove blank lines above "port" keyword.'
+        self.phase = 3
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -31,6 +32,7 @@ class rule_002(port_rule):
         port_rule.__init__(self)
         self.identifier = '002'
         self.solution = 'Change indent of "port" keyword.'
+        self.phase = 4
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -45,6 +47,7 @@ class rule_003(port_rule):
         port_rule.__init__(self)
         self.identifier = '003'
         self.solution = 'Change spacing between "port" and "(" to one space.'
+        self.phase = 2
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -60,6 +63,7 @@ class rule_004(port_rule):
         port_rule.__init__(self)
         self.identifier = '004'
         self.solution = 'Change indent of port.'
+        self.phase = 4
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -74,6 +78,7 @@ class rule_005(port_rule):
         port_rule.__init__(self)
         self.identifier = '005'
         self.solution = 'Reduce number of spaces after the colon to 1.'
+        self.phase = 2
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -90,6 +95,7 @@ class rule_006(port_rule):
         port_rule.__init__(self)
         self.identifier = '006'
         self.solution = 'Change number of spaces before "out" to 3.'
+        self.phase = 2
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -106,6 +112,7 @@ class rule_007(port_rule):
         port_rule.__init__(self)
         self.identifier = '007'
         self.solution = 'Change the number of spaces after the "in" keyword to four spaces.'
+        self.phase = 2
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -122,6 +129,7 @@ class rule_008(port_rule):
         port_rule.__init__(self)
         self.identifier = '008'
         self.solution = 'Change the number of spaces after the "out" keyword to three spaces.'
+        self.phase = 2
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -138,6 +146,7 @@ class rule_009(port_rule):
         port_rule.__init__(self)
         self.identifier = '009'
         self.solution = 'Change the number of spaces after the "inout" keyword to one space.'
+        self.phase = 2
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -154,6 +163,7 @@ class rule_010(port_rule):
         port_rule.__init__(self)
         self.identifier = '010'
         self.solution = 'Uppercase port name.'
+        self.phase = 6
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -169,6 +179,7 @@ class rule_011(port_rule):
         self.identifier = '011'
         self.solution = 'Add proper prefix or suffix indicating port direction.'
         self.port_direction = 'Prefix'
+        self.phase = 7
 
     def analyze(self, oFile):
         if not self.port_direction:
@@ -192,6 +203,7 @@ class rule_012(port_rule):
         port_rule.__init__(self)
         self.identifier = '012'
         self.solution = 'Remove default assignment in port declaration'
+        self.phase = 1
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -207,6 +219,7 @@ class rule_013(port_rule):
         port_rule.__init__(self)
         self.identifier = '013'
         self.solution = 'Place multiple ports on their own lines.'
+        self.phase = 1
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -222,6 +235,7 @@ class rule_014(port_rule):
         port_rule.__init__(self)
         self.identifier = '014'
         self.solution = 'Closing parenthesis must be on a line by itself and above the "end" keyword.'
+        self.phase = 1
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -237,6 +251,7 @@ class rule_015(port_rule):
         port_rule.__init__(self)
         self.identifier = '015'
         self.solution = 'Fix indention of closing parenthesis.'
+        self.phase = 4
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -251,6 +266,7 @@ class rule_016(port_rule):
         port_rule.__init__(self)
         self.identifier = '016'
         self.solution = 'Move port definition to it\'s own line.'
+        self.phase = 1
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -266,6 +282,7 @@ class rule_017(port_rule):
         port_rule.__init__(self)
         self.identifier = '017'
         self.solution = 'Change "port" keyword to lowercase.'
+        self.phase = 6
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -281,6 +298,7 @@ class rule_018(port_rule):
         port_rule.__init__(self)
         self.identifier = '018'
         self.solution = 'Change port type to lowercase.'
+        self.phase = 6
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -296,6 +314,7 @@ class rule_019(port_rule):
         port_rule.__init__(self)
         self.identifier = '019'
         self.solution = 'Change port direction to lowercase.'
+        self.phase = 6
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):

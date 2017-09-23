@@ -18,6 +18,7 @@ class rule_001(if_rule):
         if_rule.__init__(self)
         self.identifier = '001'
         self.solution = 'Ensure proper indentation.'
+        self.phase = 4
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -32,6 +33,7 @@ class rule_002(if_rule):
         if_rule.__init__(self)
         self.identifier = '002'
         self.solution = 'Enclose boolean expression in ()\'s.'
+        self.phase = 1
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -50,6 +52,7 @@ class rule_003(if_rule):
         if_rule.__init__(self)
         self.identifier = '003'
         self.solution = 'Ensure only a single space exists between the "if" keyword and the (.' 
+        self.phase = 2
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -66,6 +69,7 @@ class rule_004(if_rule):
         if_rule.__init__(self)
         self.identifier = '004'
         self.solution = 'Ensure only a single space exists between the ) and "then" keyword.' 
+        self.phase = 2
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -82,6 +86,7 @@ class rule_005(if_rule):
         if_rule.__init__(self)
         self.identifier = '005'
         self.solution = 'Ensure only a single space exists between the "elsif" keyword and the (.' 
+        self.phase = 2
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -98,6 +103,7 @@ class rule_006(if_rule):
         if_rule.__init__(self)
         self.identifier = '006'
         self.solution = 'Remove blank line(s) after the "then" keyword.' 
+        self.phase = 3
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -112,6 +118,7 @@ class rule_007(if_rule):
         if_rule.__init__(self)
         self.identifier = '007'
         self.solution = 'Remove blank line(s) before the "elsif" keyword.' 
+        self.phase = 3
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -126,6 +133,7 @@ class rule_008(if_rule):
         if_rule.__init__(self)
         self.identifier = '008'
         self.solution = 'Remove blank line(s) before the "end if" keyword.' 
+        self.phase = 3
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -140,6 +148,7 @@ class rule_009(if_rule):
         if_rule.__init__(self)
         self.identifier = '009'
         self.solution = 'Align with space after ( in first line of boolean expression.' 
+        self.phase = 5
 
     def analyze(self, oFile):
         fCheckAlignment = False
@@ -172,6 +181,7 @@ class rule_010(if_rule):
         if_rule.__init__(self)
         self.identifier = '010'
         self.solution = 'Remove blank line(s) before the "else" keyword.' 
+        self.phase = 3
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -186,6 +196,7 @@ class rule_011(if_rule):
         if_rule.__init__(self)
         self.identifier = '011'
         self.solution = 'Remove blank line(s) after the "else" keyword.' 
+        self.phase = 3
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):

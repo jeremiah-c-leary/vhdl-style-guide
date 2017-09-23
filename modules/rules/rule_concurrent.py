@@ -17,6 +17,7 @@ class rule_001(concurrent_rule):
         concurrent_rule.__init__(self)
         self.identifier = '001'
         self.solution = 'Ensure there are only two spaces before concurrent assignment.'
+        self.phase = 4
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -31,6 +32,7 @@ class rule_002(concurrent_rule):
         concurrent_rule.__init__(self)
         self.identifier = '002'
         self.solution = 'Remove all but one space after the <=.'
+        self.phase = 2
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -50,6 +52,7 @@ class rule_003(concurrent_rule):
         concurrent_rule.__init__(self)
         self.identifier = '003'
         self.solution = 'Align first character in row to the column of text one space after the <=.'
+        self.phase = 5
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -69,6 +72,7 @@ class rule_004(concurrent_rule):
         concurrent_rule.__init__(self)
         self.identifier = '004'
         self.solution = 'Add a single space before the <=.'
+        self.phase = 2
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -88,6 +92,7 @@ class rule_005(concurrent_rule):
         concurrent_rule.__init__(self)
         self.identifier = '005'
         self.solution = 'Remove label on concurrent assignment.'
+        self.phase = 1
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -103,6 +108,7 @@ class rule_006(concurrent_rule):
         concurrent_rule.__init__(self)
         self.identifier = '006'
         self.solution = 'Inconsistent alignment of "<=" in group of lines.'
+        self.phase = 5
 
     def analyze(self, oFile):
         lGroup = []

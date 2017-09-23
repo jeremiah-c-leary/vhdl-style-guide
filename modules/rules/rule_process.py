@@ -17,6 +17,7 @@ class rule_001(process_rule):
         process_rule.__init__(self)
         self.identifier = '001'
         self.solution = 'Check indentation before process declaration.'
+        self.phase = 4
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -31,6 +32,7 @@ class rule_002(process_rule):
         process_rule.__init__(self)
         self.identifier = '002'
         self.solution = 'Remove all but one space between the "process" keyword and the (.' 
+        self.phase = 2
 
     def analyze(self, oFile):
         fInsideProcess = False
@@ -47,6 +49,7 @@ class rule_003(process_rule):
         process_rule.__init__(self)
         self.identifier = '003'
         self.solution = 'Check indentation before "begin" keyword.'
+        self.phase = 4
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -61,6 +64,7 @@ class rule_004(process_rule):
         process_rule.__init__(self)
         self.identifier = '004'
         self.solution = 'Lowercase the "begin" keyword.' 
+        self.phase = 6
 
     def analyze(self, oFile):
         fInsideProcess = False
@@ -76,6 +80,7 @@ class rule_005(process_rule):
         process_rule.__init__(self)
         self.identifier = '005'
         self.solution = 'Lowercase the "process" keyword.' 
+        self.phase = 6
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -91,6 +96,7 @@ class rule_006(process_rule):
         process_rule.__init__(self)
         self.identifier = '006'
         self.solution = 'Ensure there are only two spaces before "end" keyword.'
+        self.phase = 4
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -105,6 +111,7 @@ class rule_007(process_rule):
         process_rule.__init__(self)
         self.identifier = '007'
         self.solution = 'Ensure there are only one space between the "end" and "process" keywords.'
+        self.phase = 2
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -120,6 +127,7 @@ class rule_008(process_rule):
         process_rule.__init__(self)
         self.identifier = '008'
         self.solution = 'Lowercase the "end" keyword.'
+        self.phase = 6
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -134,6 +142,7 @@ class rule_009(process_rule):
         process_rule.__init__(self)
         self.identifier = '009'
         self.solution = 'Lowercase the "process" keyword.'
+        self.phase = 6
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -149,6 +158,7 @@ class rule_010(process_rule):
         process_rule.__init__(self)
         self.identifier = '010'
         self.solution = 'Place "begin" keyword on seperate line.'
+        self.phase = 1
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -164,6 +174,7 @@ class rule_011(process_rule):
         process_rule.__init__(self)
         self.identifier = '011'
         self.solution = 'Add a blank line after the "end process" keywords.'
+        self.phase = 3
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -178,6 +189,7 @@ class rule_012(process_rule):
         process_rule.__init__(self)
         self.identifier = '012'
         self.solution = 'Add "is" keyword after the closing parenthesis.'
+        self.phase = 1
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -193,6 +205,7 @@ class rule_013(process_rule):
         process_rule.__init__(self)
         self.identifier = '013'
         self.solution = 'Lowercase "is" keyword.'
+        self.phase = 6
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -209,6 +222,7 @@ class rule_014(process_rule):
         process_rule.__init__(self)
         self.identifier = '014'
         self.solution = 'Ensure only a single space exists between the ) and "is" keyword.'
+        self.phase = 2
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -225,6 +239,7 @@ class rule_015(process_rule):
         process_rule.__init__(self)
         self.identifier = '015'
         self.solution = 'Add a space or a comment above the "process" keyword.'
+        self.phase = 3
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -240,6 +255,7 @@ class rule_016(process_rule):
         process_rule.__init__(self)
         self.identifier = '016'
         self.solution = 'Add a label for the process.'
+        self.phase = 1
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -255,6 +271,7 @@ class rule_017(process_rule):
         process_rule.__init__(self)
         self.identifier = '017'
         self.solution = 'Uppercase process label.'
+        self.phase = 6
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -272,6 +289,7 @@ class rule_018(process_rule):
         process_rule.__init__(self)
         self.identifier = '018'
         self.solution = 'Add a label for the "end process".'
+        self.phase = 1
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -287,6 +305,7 @@ class rule_019(process_rule):
         process_rule.__init__(self)
         self.identifier = '019'
         self.solution = 'Uppercase the label.'
+        self.phase = 6
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -302,6 +321,7 @@ class rule_020(process_rule):
         process_rule.__init__(self)
         self.identifier = '020'
         self.solution = 'Fix indentation of sensitivity list.'
+        self.phase = 5
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -323,6 +343,7 @@ class rule_022(process_rule):
         process_rule.__init__(self)
         self.identifier = '022'
         self.solution = 'Add blank line after the "begin" keyword.'
+        self.phase = 3
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -337,6 +358,7 @@ class rule_021(process_rule):
         process_rule.__init__(self)
         self.identifier = '021'
         self.solution = 'Remove blank lines between the end of the sensitivity list and before the "begin" keyword.'
+        self.phase = 3
 
     def analyze(self, oFile):
         fCheckForBlanks = False
@@ -376,6 +398,7 @@ class rule_023(process_rule):
         process_rule.__init__(self)
         self.identifier = '023'
         self.solution = 'Add blank line above the "end process" keywords.'
+        self.phase = 3
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -390,6 +413,7 @@ class rule_024(process_rule):
         process_rule.__init__(self)
         self.identifier = '024'
         self.solution = 'Ensure a single space exists between process label and :.'
+        self.phase = 2
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -406,6 +430,7 @@ class rule_025(process_rule):
         process_rule.__init__(self)
         self.identifier = '025'
         self.solution = 'Ensure a single space exists between the : and the "process" keyword.'
+        self.phase = 2
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -422,6 +447,7 @@ class rule_026(process_rule):
         process_rule.__init__(self)
         self.identifier = '026'
         self.solution = 'Ensure a single blank line between the end of the sensitivity list and the next non-blank line.'
+        self.phase = 3
 
     def analyze(self, oFile):
         fCheckForBlanks = False
@@ -461,6 +487,7 @@ class rule_027(process_rule):
         process_rule.__init__(self)
         self.identifier = '027'
         self.solution = 'Ensure a single blank line between the last non-blank line and the "begin" keyword.'
+        self.phase = 3
 
     def analyze(self, oFile):
         fCheckForBlanks = False

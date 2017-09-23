@@ -18,6 +18,7 @@ class rule_001(generic_rule):
         generic_rule.__init__(self)
         self.identifier = '001'
         self.solution = 'Remove blank lines above "generic" keyword.'
+        self.phase = 3
 
     def analyze(self, oFile):
         lFailureLines = []
@@ -33,6 +34,7 @@ class rule_002(generic_rule):
         generic_rule.__init__(self)
         self.identifier = '002'
         self.solution = 'Change indent of "generic" keyword to 2 spaces.'
+        self.phase = 4
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -47,6 +49,7 @@ class rule_003(generic_rule):
         generic_rule.__init__(self)
         self.identifier = '003'
         self.solution = 'Change spacing between "generic" and "(" to one space.'
+        self.phase = 2
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -62,6 +65,7 @@ class rule_004(generic_rule):
         generic_rule.__init__(self)
         self.identifier = '004'
         self.solution = 'Change indent of generic to 4 spaces.'
+        self.phase = 4
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -76,6 +80,7 @@ class rule_005(generic_rule):
         generic_rule.__init__(self)
         self.identifier = '005'
         self.solution = 'Reduce number of spaces after the colon to 1.'
+        self.phase = 2
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -92,6 +97,7 @@ class rule_006(generic_rule):
         generic_rule.__init__(self)
         self.identifier = '006'
         self.solution = 'Reduce number of spaces after the default assignment to 1.'
+        self.phase = 2
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -108,6 +114,7 @@ class rule_007(generic_rule):
         generic_rule.__init__(self)
         self.identifier = '007'
         self.solution = 'Uppercase generic name.'
+        self.phase = 6
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -122,6 +129,7 @@ class rule_008(generic_rule):
         generic_rule.__init__(self)
         self.identifier = '008'
         self.solution = 'Closing parenthesis should be 2 spaces.'
+        self.phase = 4
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -136,6 +144,7 @@ class rule_009(generic_rule):
         generic_rule.__init__(self)
         self.identifier = '009'
         self.solution = 'Lowercase "generic" keyword.'
+        self.phase = 6
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -150,6 +159,7 @@ class rule_010(generic_rule):
         generic_rule.__init__(self)
         self.identifier = '010'
         self.solution = 'Closing parenthesis must be on a line by itself.'
+        self.phase = 1
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -165,6 +175,7 @@ class rule_011(generic_rule):
         generic_rule.__init__(self)
         self.identifier = '011'
         self.solution = 'Add G_ to generic name.'
+        self.phase = 7
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -180,6 +191,7 @@ class rule_012(generic_rule):
         generic_rule.__init__(self)
         self.identifier = '012'
         self.solution = 'Inconsistent alignment of ":" in generic declaration of entity.'
+        self.phase = 5
 
     def analyze(self, oFile):
         lGroup = []

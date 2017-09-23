@@ -17,6 +17,7 @@ class rule_001(signal_rule):
         signal_rule.__init__(self)
         self.identifier = '001'
         self.solution = 'Ensure there are only two spaces before signal keyword.'
+        self.phase = 4
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -31,6 +32,7 @@ class rule_002(signal_rule):
         signal_rule.__init__(self)
         self.identifier = '002'
         self.solution = 'Lowercase "signal" keyword.'
+        self.phase = 6
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -45,6 +47,7 @@ class rule_003(signal_rule):
         signal_rule.__init__(self)
         self.identifier = '003'
         self.solution = 'Remove all but one space after the "signal" keyword.'
+        self.phase = 2
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -60,6 +63,7 @@ class rule_004(signal_rule):
         signal_rule.__init__(self)
         self.identifier = '004'
         self.solution = 'Change signal name to lowercase.'
+        self.phase = 6
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -74,6 +78,7 @@ class rule_005(signal_rule):
         signal_rule.__init__(self)
         self.identifier = '005'
         self.solution = 'Ensure only a signal space after the colon.'
+        self.phase = 2
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -89,6 +94,7 @@ class rule_006(signal_rule):
         signal_rule.__init__(self)
         self.identifier = '006'
         self.solution = 'Add a single space before the colon.'
+        self.phase = 2
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -104,6 +110,7 @@ class rule_007(signal_rule):
         signal_rule.__init__(self)
         self.identifier = '007'
         self.solution = 'Remove default assignment.'
+        self.phase = 1
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -120,6 +127,7 @@ class rule_008(signal_rule):
         self.identifier = '008'
         self.solution = 'Remove default assignment.'
         self.prefixes = None
+        self.phase = 7
 
     def analyze(self, oFile):
         if not self.prefixes:
@@ -146,6 +154,7 @@ class rule_009(signal_rule):
         signal_rule.__init__(self)
         self.identifier = '009'
         self.solution = 'Align colon with right most colon.'
+        self.phase = 5
 
     def analyze(self, oFile):
         iMaximumColumn = 0

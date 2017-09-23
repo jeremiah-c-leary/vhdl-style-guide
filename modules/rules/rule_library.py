@@ -17,6 +17,7 @@ class rule_001(library_rule):
         library_rule.__init__(self)
         self.identifier = '001'
         self.solution = 'Remove spaces before "library" keyword.'
+        self.phase = 4
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -31,6 +32,7 @@ class rule_002(library_rule):
         library_rule.__init__(self)
         self.identifier = '002'
         self.solution = 'Remove extra spaces after "library" keyword.'
+        self.phase = 2
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -46,6 +48,7 @@ class rule_003(library_rule):
         library_rule.__init__(self)
         self.identifier = '003'
         self.solution = 'Add blank line above "library" keyword.'
+        self.phase = 3
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -60,6 +63,7 @@ class rule_004(library_rule):
         library_rule.__init__(self)
         self.identifier = '004'
         self.solution = 'Change "library" keyword to lowercase.'
+        self.phase = 6
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -74,6 +78,7 @@ class rule_005(library_rule):
         library_rule.__init__(self)
         self.identifier = '005'
         self.solution = 'Change "use" keyword to lowercase.'
+        self.phase = 6
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -88,6 +93,7 @@ class rule_006(library_rule):
         library_rule.__init__(self)
         self.identifier = '006'
         self.solution = 'Remove extra spaces after "use" keyword.'
+        self.phase = 2
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -103,6 +109,7 @@ class rule_007(library_rule):
         library_rule.__init__(self)
         self.identifier = '007'
         self.solution = 'Remove blank line(s) above "use" keyword.'
+        self.phase = 3
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -117,6 +124,7 @@ class rule_008(library_rule):
         library_rule.__init__(self)
         self.identifier = '008'
         self.solution = 'Change indent of "use" keyword to 2 spaces.'
+        self.phase = 4
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):

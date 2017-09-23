@@ -12,12 +12,13 @@ class instantiation_rule(rule.rule):
 
 
 class rule_001(instantiation_rule):
-    '''Instantiation rule 001 checks for proper indent of instnatiations.'''
+    '''Instantiation rule 001 checks for proper indent of instantiations.'''
 
     def __init__(self):
         instantiation_rule.__init__(self)
         self.identifier = '001'
         self.solution = 'Improper indentation.'
+        self.phase = 4
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -32,6 +33,7 @@ class rule_002(instantiation_rule):
         instantiation_rule.__init__(self)
         self.identifier = '002'
         self.solution = 'Ensure only one space after the :.'
+        self.phase = 2
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -46,6 +48,7 @@ class rule_003(instantiation_rule):
         instantiation_rule.__init__(self)
         self.identifier = '003'
         self.solution = 'Ensure only one space before the :.'
+        self.phase = 2
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -61,6 +64,7 @@ class rule_004(instantiation_rule):
         instantiation_rule.__init__(self)
         self.identifier = '004'
         self.solution = 'Add blank line above instantiation keyword.'
+        self.phase = 3
 
     def analyze(self, oFile):
         lFailureLines = []
@@ -76,6 +80,7 @@ class rule_005(instantiation_rule):
         instantiation_rule.__init__(self)
         self.identifier = '005'
         self.solution = 'Place "port map" keywords on the next line by itself'
+        self.phase = 1
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -91,6 +96,7 @@ class rule_006(instantiation_rule):
         instantiation_rule.__init__(self)
         self.identifier = '006'
         self.solution = 'Change "port map" keywords to lowercase.'
+        self.phase = 6
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -106,6 +112,7 @@ class rule_007(instantiation_rule):
         instantiation_rule.__init__(self)
         self.identifier = '007'
         self.solution = 'Place closing ); on it\'s own line.'
+        self.phase = 1
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -120,6 +127,7 @@ class rule_008(instantiation_rule):
         instantiation_rule.__init__(self)
         self.identifier = '008'
         self.solution = 'Change instance name to all uppercase.'
+        self.phase = 6
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -134,6 +142,7 @@ class rule_009(instantiation_rule):
         instantiation_rule.__init__(self)
         self.identifier = '009'
         self.solution = 'Change entity name to all uppercase.'
+        self.phase = 6
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -154,6 +163,7 @@ class rule_010(instantiation_rule):
         instantiation_rule.__init__(self)
         self.identifier = '010'
         self.solution = 'Inconsistent alignment of "=>" in port assignments of instantiation.'
+        self.phase = 5
 
     def analyze(self, oFile):
         lGroup = []
@@ -182,6 +192,7 @@ class rule_011(instantiation_rule):
         instantiation_rule.__init__(self)
         self.identifier = '011'
         self.solution = 'Uppercase port name.'
+        self.phase = 6
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):

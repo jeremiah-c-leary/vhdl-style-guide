@@ -9,6 +9,7 @@ class rule():
         self.solution = None
         self.violations = []
         self.indentSize = 2
+        self.phase = None
 
     def report_violations(self,filename):
         if len(self.violations) > 0:

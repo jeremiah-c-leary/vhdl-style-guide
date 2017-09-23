@@ -17,6 +17,7 @@ class rule_001(constant_rule):
         constant_rule.__init__(self)
         self.identifier = '001'
         self.solution = 'Ensure there are only two spaces before constant keyword.'
+        self.phase = 4
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -31,6 +32,7 @@ class rule_002(constant_rule):
         constant_rule.__init__(self)
         self.identifier = '002'
         self.solution = 'Lower case "constant" keyword.'
+        self.phase = 6
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -46,6 +48,7 @@ class rule_003(constant_rule):
         constant_rule.__init__(self)
         self.identifier = '003'
         self.solution = 'Remove all but one space after the "constant" keyword.'
+        self.phase = 2
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -61,6 +64,7 @@ class rule_004(constant_rule):
         constant_rule.__init__(self)
         self.identifier = '004'
         self.solution = 'Change constant name to lowercase.'
+        self.phase = 6
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -75,6 +79,7 @@ class rule_005(constant_rule):
         constant_rule.__init__(self)
         self.identifier = '005'
         self.solution = 'Ensure only a single space after the colon.'
+        self.phase = 2
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -90,6 +95,7 @@ class rule_006(constant_rule):
         constant_rule.__init__(self)
         self.identifier = '006'
         self.solution = 'Add a single space before the colon.'
+        self.phase = 2
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -105,6 +111,7 @@ class rule_007(constant_rule):
         constant_rule.__init__(self)
         self.identifier = '007'
         self.solution = 'move assignment to same line as constant declaration.'
+        self.phase = 1
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -120,12 +127,14 @@ class rule_008(constant_rule):
         constant_rule.__init__(self)
         self.identifier = '008'
         self.solution = 'Add c_ prefix to constant.'
+        self.phase = 7
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isConstant:
                 if not re.match('^\s*constant\s+c_', oLine.lineLower):
                     self.add_violation(iLineNumber)
+
 
 class rule_009(constant_rule):
     '''Constant rule 009 checks the colons are in the same column for all constants.'''
@@ -134,6 +143,7 @@ class rule_009(constant_rule):
         constant_rule.__init__(self)
         self.identifier = '009'
         self.solution = 'Align colon with right most colon.'
+        self.phase = 5
 
     def analyze(self, oFile):
         iMaximumColumn = 0

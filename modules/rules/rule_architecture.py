@@ -17,6 +17,7 @@ class rule_001(architecture_rule):
         architecture_rule.__init__(self)
         self.identifier = '001'
         self.solution = 'Remove spaces before architecture keyword.'
+        self.phase = 4
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -31,6 +32,7 @@ class rule_002(architecture_rule):
         architecture_rule.__init__(self)
         self.identifier = '002'
         self.solution = 'Remove extra spaces after architecture keyword.'
+        self.phase = 2
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -47,6 +49,7 @@ class rule_003(architecture_rule):
         architecture_rule.__init__(self)
         self.identifier = '003'
         self.solution = 'Add blank line above architecture keyword.'
+        self.phase = 3
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -61,6 +64,7 @@ class rule_004(architecture_rule):
         architecture_rule.__init__(self)
         self.identifier = '004'
         self.solution = 'Change architecture keyword to lowercase.'
+        self.phase = 6
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -75,7 +79,8 @@ class rule_005(architecture_rule):
     def __init__(self):
         architecture_rule.__init__(self)
         self.identifier = '005'
-        self.solution = 'Change use keyword to lowercase.'
+        self.solution = 'Ensure "of" keyword is on the same line as the "architecture" keyword.'
+        self.phase = 1
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -93,7 +98,8 @@ class rule_006(architecture_rule):
     def __init__(self):
         architecture_rule.__init__(self)
         self.identifier = '006'
-        self.solution = 'Change use keyword to lowercase.'
+        self.solution = 'Ensure "is" keyword is on the same line as the "architecture" keyword.'
+        self.phase = 1
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -112,6 +118,7 @@ class rule_007(architecture_rule):
         architecture_rule.__init__(self)
         self.identifier = '007'
         self.solution = 'Remove spaces before "begin" keyword.'
+        self.phase = 4
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -126,6 +133,7 @@ class rule_008(architecture_rule):
         architecture_rule.__init__(self)
         self.identifier = '008'
         self.solution = 'Remove spaces before "end" keyword.'
+        self.phase = 4
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -140,6 +148,7 @@ class rule_009(architecture_rule):
         architecture_rule.__init__(self)
         self.identifier = '009'
         self.solution = 'Ensure "end" and "architecture" keywords are lower case.'
+        self.phase = 6
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -155,6 +164,7 @@ class rule_010(architecture_rule):
         architecture_rule.__init__(self)
         self.identifier = '010'
         self.solution = 'Add architecture name.'
+        self.phase = 1
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -174,6 +184,7 @@ class rule_011(architecture_rule):
         architecture_rule.__init__(self)
         self.identifier = '011'
         self.solution = 'Uppercase architecture name.'
+        self.phase = 6
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -191,6 +202,7 @@ class rule_012(architecture_rule):
         architecture_rule.__init__(self)
         self.identifier = '012'
         self.solution = 'Single space between "end" and "architecture" keywords.'
+        self.phase = 2
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -207,6 +219,7 @@ class rule_013(architecture_rule):
         architecture_rule.__init__(self)
         self.identifier = '013'
         self.solution = 'Upper case architecture name.'
+        self.phase = 6
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -223,6 +236,7 @@ class rule_014(architecture_rule):
         architecture_rule.__init__(self)
         self.identifier = '014'
         self.solution = 'Upper case entity name.'
+        self.phase = 6
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -239,6 +253,7 @@ class rule_015(architecture_rule):
         architecture_rule.__init__(self)
         self.identifier = '015'
         self.solution = 'Add blank line below architecture keyword.'
+        self.phase = 3
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -253,6 +268,7 @@ class rule_016(architecture_rule):
         architecture_rule.__init__(self)
         self.identifier = '016'
         self.solution = 'Add blank line above the "begin" keyword.'
+        self.phase = 3
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -267,6 +283,7 @@ class rule_017(architecture_rule):
         architecture_rule.__init__(self)
         self.identifier = '017'
         self.solution = 'Add blank line below the "begin" keyword.'
+        self.phase = 3
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -281,6 +298,7 @@ class rule_018(architecture_rule):
         architecture_rule.__init__(self)
         self.identifier = '018'
         self.solution = 'Add blank line above the "end architecture" keywords.'
+        self.phase = 3
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
