@@ -118,7 +118,8 @@ class vhdlFile():
                         oLine.insideGenericMap = True
                         if re.match('^\s*\S+.*:', oLine.line):
                             oLine.isGenericDeclaration = True
-                            oLine.indentLevel = 2
+                            if not oLine.isGenericKeyword:
+                                oLine.indentLevel = 2
                         iOpenParenthesis += oLine.line.count('(')
                         iCloseParenthesis += oLine.line.count(')')
                         if iOpenParenthesis == iCloseParenthesis:
@@ -142,7 +143,7 @@ class vhdlFile():
                         oLine.isArchitectureBegin = True
                         oLine.indentLevel = 0
                         iCurrentIndentLevel = 1
-                    if not fInsideProcess and not fInsideCase:
+                    if not fInsideProcess and not fInsideCase and not fInsideComponent:
                         if re.match('^\s*end\s+', oLine.lineLower):
                             fInsideArchitecture = False
                             fFoundArchitectureBegin = False

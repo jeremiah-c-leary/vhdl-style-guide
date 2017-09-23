@@ -40,7 +40,8 @@ class rule_002(component_rule):
         lFailureLines = []
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isComponentDeclaration:
-                self._is_single_space_after('component', oLine, iLineNumber)
+                if re.match('^\s*component\s\s+\w', oLine.lineLower):
+                    self.add_violation(iLineNumber)
 
 
 class rule_003(component_rule):
@@ -179,7 +180,9 @@ class rule_011(component_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isComponentEnd:
-                self._is_single_space_after('end', oLine, iLineNumber)
+                if re.match('^\s*end\s+\w', oLine.lineLower):
+                    if not re.match('^\s*end\s\w', oLine.lineLower):
+                        self.add_violation(iLineNumber)
 
 
 class rule_012(component_rule):

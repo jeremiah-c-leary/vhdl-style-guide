@@ -118,7 +118,7 @@ class rule_007(generic_rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isGenericDeclaration:
+            if oLine.isGenericDeclaration and not oLine.isGenericKeyword:
                 self._is_uppercase(oLine.line.split()[0], iLineNumber)
 
 
@@ -179,7 +179,7 @@ class rule_011(generic_rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isGenericDeclaration:
+            if oLine.isGenericDeclaration and not oLine.isGenericKeyword:
                 if not oLine.lineLower.split()[0].startswith('g_'):
                     self.add_violation(iLineNumber)
 
@@ -198,10 +198,10 @@ class rule_012(generic_rule):
         fGroupFound = False
         iStartGroupIndex = None
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isGenericKeyword and not fGroupFound:
+            if oLine.isGenericKeyword and not fGroupFound and not oLine.isGenericDeclaration:
                 fGroupFound = True
                 iStartGroupIndex = iLineNumber
-            if oLine.isEndGenericMap:
+            if oLine.isEndGenericMap and fGroupFound:
                 lGroup.append(oLine)
                 fGroupFound = False
                 self._check_keyword_alignment(iStartGroupIndex, ':', lGroup)
@@ -212,3 +212,18 @@ class rule_012(generic_rule):
                   lGroup.append(oLine)
                 else:
                   lGroup.append(line.line('Removed line'))
+
+
+class rule_013(generic_rule):
+    '''Generic rule 013 checks for a generic keyword on the same line as a generic declaration.'''
+
+    def __init__(self):
+        generic_rule.__init__(self)
+        self.identifier = '013'
+        self.solution = 'Move generic declaration to it\'s own line.'
+        self.phase = 1
+
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isGenericDeclaration and oLine.isGenericKeyword:
+                self.add_violation(iLineNumber)
