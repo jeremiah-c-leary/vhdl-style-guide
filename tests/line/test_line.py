@@ -351,5 +351,35 @@ class testLineMethods(unittest.TestCase):
         oLine.isComponentEnd = True
         self.assertEqual(oLine.isComponentEnd, True)
 
+    def test_inside_instantiation_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.insideInstantiation, False)
+        oLine.insideInstantiation = True
+        self.assertEqual(oLine.insideInstantiation, True)
+
+    def test_instantiation_declaration_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isInstantiationDeclaration, False)
+        oLine.isInstantiationDeclaration = True
+        self.assertEqual(oLine.isInstantiationDeclaration, True)
+
+    def test_instantiation_port_keyword_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isInstantiationPortKeyword, False)
+        oLine.isInstantiationPortKeyword = True
+        self.assertEqual(oLine.isInstantiationPortKeyword, True)
+
+    def test_instantiation_port_end_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isInstantiationPortEnd, False)
+        oLine.isInstantiationPortEnd= True
+        self.assertEqual(oLine.isInstantiationPortEnd, True)
+
+    def test_instantiation_port_assignment_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isInstantiationPortAssignment, False)
+        oLine.isInstantiationPortAssignment= True
+        self.assertEqual(oLine.isInstantiationPortAssignment, True)
+
 if __name__ == '__main__':
     unittest.main()

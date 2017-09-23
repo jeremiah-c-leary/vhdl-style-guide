@@ -28,6 +28,9 @@ class vhdlFile():
 
         fInsideComponent = False
 
+        fInsideInstantiation = False
+        fInsideInstantiationPortMap = False
+
         iOpenParenthesis = 0;
         iCloseParenthesis = 0;
 
@@ -138,11 +141,13 @@ class vhdlFile():
                         fFoundArchitectureBegin = True
                         oLine.isArchitectureBegin = True
                         oLine.indentLevel = 0
+                        iCurrentIndentLevel = 1
                     if re.match('^\s*end\s+architecture', oLine.lineLower):
                         fInsideArchitecture = False
                         fFoundArchitectureBegin = False
                         oLine.isEndArchitecture = True
                         oLine.indentLevel = 0
+                        iCurrentIndentLevel = 0
 
                 # Check Component declarations
                 if re.match('^\s*component', oLine.lineLower) and not fInsideComponent:
@@ -276,6 +281,31 @@ class vhdlFile():
                         if ';' in oLine.line:
                             fInsideSequential = False
                             oLine.isSequentialEnd = True
+
+                # Check instantiation statements
+                if fInsideArchitecture and not fInsideProcess and not oLine.isConcurrentBegin and not fInsideComponent:
+                    if re.match('^\s*\w+\s*:\s*\w+', oLine.line):
+                        oLine.isInstantiationDeclaration = True
+                        oLine.indentLevel = iCurrentIndentLevel
+                        iCurrentIndentLevel += 1
+                        fInsideInstantiation = True
+                if fInsideInstantiation:
+                    oLine.insideInstantiation = True
+                    if re.match('^.*\s*port\s+map', oLine.lineLower):
+                        if not oLine.indentLevel:
+                            oLine.indentLevel = iCurrentIndentLevel
+                        iCurrentIndentLevel += 1
+                        oLine.isInstantiationPortKeyword = True
+                        fInsideInstantiationPortMap = True
+                    if re.match('^.*=>', oLine.line):
+                        oLine.indentLevel = iCurrentIndentLevel
+                        oLine.isInstantiationPortAssignment = True
+                    if ');' in oLine.line and fInsideInstantiationPortMap:
+                        fInsideInstantiation = False
+                        oLine.isInstantiationPortEnd = True
+                        if not oLine.indentLevel:
+                            oLine.indentLevel = iCurrentIndentLevel - 1
+                        iCurrentIndentLevel -= 2
 
 
                 # Add line to file

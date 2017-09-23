@@ -75,4 +75,10 @@ class line():
         self.insideComponent = False
         self.isComponentDeclaration = False
         self.isComponentEnd = False
+        ## Instantiation attributes
+        self.insideInstantiation = False
+        self.isInstantiationDeclaration = False
+        self.isInstantiationPortKeyword = False
+        self.isInstantiationPortEnd = False
+        self.isInstantiationPortAssignment = False
 
