@@ -49,7 +49,7 @@ class list():
         iFailures = 0
         for phase in range(1,10):
             iPhaseRuleCount = 0
-            print ('Running Phase ' + str(phase) + '...')
+#            print ('Running Phase ' + str(phase) + '...')
             for oRule in self.rules:
                 if oRule.phase == phase:
                     oRule.analyze(self.oVhdlFile)
@@ -58,7 +58,6 @@ class list():
                     iPhaseRuleCount += 1
                     self.lastPhaseRan = phase
             if iFailures > 0 or iPhaseRuleCount == 0:
-                print (str(iFailures))
                 break
 
     def report_violations(self):
