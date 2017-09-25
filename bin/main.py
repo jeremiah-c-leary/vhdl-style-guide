@@ -33,9 +33,9 @@ def main():
     '''Main routine of the VHDL Style Guide (VSG) program.'''
 
     commandLineArguments = parse_command_line_arguments()
-    oRules = rule_list.list()
-    oRules.check_rules(vhdlFile.vhdlFile(commandLineArguments.filename))
-    oRules.report_violations(commandLineArguments.filename)
+    oRules = rule_list.list(vhdlFile.vhdlFile(commandLineArguments.filename))
+    oRules.check_rules()
+    oRules.report_violations()
 
 
 if __name__ == '__main__':

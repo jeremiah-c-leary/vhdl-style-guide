@@ -282,7 +282,7 @@ class rule_017(component_rule):
         fGroupFound = False
         iStartGroupIndex = None
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isPortKeyword and not fGroupFound:
+            if oLine.isPortKeyword and not fGroupFound and not oLine.insideEntity:
                 fGroupFound = True
                 iStartGroupIndex = iLineNumber
             if oLine.isEndPortMap:

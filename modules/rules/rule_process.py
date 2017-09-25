@@ -337,12 +337,12 @@ class rule_020(process_rule):
 
 
 class rule_022(process_rule):
-    '''Process rule 022 checks for a blank line after the "begin" keyword.'''
+    '''Process rule 022 checks for a blank line below the "begin" keyword.'''
 
     def __init__(self):
         process_rule.__init__(self)
         self.identifier = '022'
-        self.solution = 'Add blank line after the "begin" keyword.'
+        self.solution = 'Add blank line below the "begin" keyword.'
         self.phase = 3
 
     def analyze(self, oFile):
@@ -519,5 +519,5 @@ class rule_027(process_rule):
                 if oLine.isSensitivityListEnd:
                     fCheckForBlanks = True
 
-#TODO:
+#TODOu
 # Remove spaces after ( and before )

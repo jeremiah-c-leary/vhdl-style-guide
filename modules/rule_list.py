@@ -5,7 +5,7 @@ import re
 import importlib
 import inspect
 
-def load_base_rules ():
+def load_base_rules():
     pysearchre = re.compile('.py$', re.IGNORECASE)
     rulefiles = filter(pysearchre.search, os.listdir(os.path.join(os.path.dirname(__file__),'rules')))
     form_module = lambda fp: '.' + os.path.splitext(fp)[0]
@@ -26,15 +26,25 @@ def load_base_rules ():
     return lRules
 
 
+def maximum_phase(lRules):
+    maximumPhaseNumber = 0
+    for oRule in lRules:
+        if oRule.phase > maximumPhaseNumber:
+            maximumPhaseNumber = oRule.phase
+    return maximumPhaseNumber
+
+
 class list():
     ''' Contains a list of all rules to be checked.  It also contains methods to check the rules.'''
 
-    def __init__(self):
+    def __init__(self, oVhdlFile):
         self.rules = load_base_rules()
         self.iNumberRulesRan = 0
         self.lastPhaseRan = 0
+        self.oVhdlFile = oVhdlFile
+        self.maximumPhase = maximum_phase(self.rules)
 
-    def check_rules(self, oFile):
+    def check_rules(self):
         self.iNumberRulesRan = 0
         iFailures = 0
         for phase in range(1,10):
@@ -42,24 +52,30 @@ class list():
             print ('Running Phase ' + str(phase) + '...')
             for oRule in self.rules:
                 if oRule.phase == phase:
-                    oRule.analyze(oFile)
+                    oRule.analyze(self.oVhdlFile)
                     iFailures += len(oRule.violations)
                     self.iNumberRulesRan += 1
                     iPhaseRuleCount += 1
                     self.lastPhaseRan = phase
             if iFailures > 0 or iPhaseRuleCount == 0:
+                print (str(iFailures))
                 break
 
-    def report_violations(self, filename):
-        sFileTitle = 'File:  ' + filename
+    def report_violations(self):
+        sFileTitle = 'File:  ' + self.oVhdlFile.filename
         print (sFileTitle)
         print ('=' * len(sFileTitle))
         iFailures = 0
-        for phase in range(1,self.lastPhaseRan + 1):
-            print ('Phase ' + str(phase) + '...')
-            for oRule in self.rules:
-                if oRule.phase == phase:
-                    iFailures += oRule.report_violations(filename)
+        for phase in range(1,self.maximumPhase + 1):
+            if phase <= self.lastPhaseRan:
+                print ('Phase ' + str(phase) + '... Reporting')
+                for iLineNumber in range (1, len(self.oVhdlFile.lines)):
+                    for oRule in self.rules:
+                        if oRule.phase == phase:
+                            iFailures += oRule.report_violations(iLineNumber)
+            else:
+                print ('Phase ' + str(phase) + '... Not executed')
+
         print ('=' * len(sFileTitle))
         print ('Total Rules Checked: ' + str(self.iNumberRulesRan))
         print ('Total Rules Failed:  ' + str(iFailures))

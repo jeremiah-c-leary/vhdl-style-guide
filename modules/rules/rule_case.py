@@ -118,12 +118,12 @@ class rule_007(case_rule):
 
 
 class rule_008(case_rule):
-    '''Case rule 008 ensures a blank line exists after the "case" keyword.'''
+    '''Case rule 008 ensures a blank line exists below the "case" keyword.'''
 
     def __init__(self):
         case_rule.__init__(self)
         self.identifier = '008'
-        self.solution = 'Ensure a blank line exists after the "case" keyword.'
+        self.solution = 'Ensure a blank line exists below the "case" keyword.'
         self.phase = 3
 
     def analyze(self, oFile):
@@ -133,12 +133,12 @@ class rule_008(case_rule):
 
 
 class rule_009(case_rule):
-    '''Case rule 009 ensures a blank line exists before the "end case" keywords.'''
+    '''Case rule 009 ensures a blank line exists above the "end case" keywords.'''
 
     def __init__(self):
         case_rule.__init__(self)
         self.identifier = '009'
-        self.solution = 'Ensure a blank line exists before the "end case" keywords.'
+        self.solution = 'Ensure a blank line exists above the "end case" keywords.'
         self.phase = 3
 
     def analyze(self, oFile):
@@ -148,12 +148,12 @@ class rule_009(case_rule):
 
 
 class rule_010(case_rule):
-    '''Case rule 010 ensures a blank line exists after the "end case" keywords.'''
+    '''Case rule 010 ensures a blank line exists below the "end case" keywords.'''
 
     def __init__(self):
         case_rule.__init__(self)
         self.identifier = '010'
-        self.solution = 'Ensure a blank line exists after the "end case" keywords.'
+        self.solution = 'Ensure a blank line exists below the "end case" keywords.'
         self.phase = 3
 
     def analyze(self, oFile):

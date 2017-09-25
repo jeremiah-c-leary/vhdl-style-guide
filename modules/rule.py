@@ -11,12 +11,19 @@ class rule():
         self.indentSize = 2
         self.phase = None
 
-    def report_violations(self,filename):
+    def report_violations(self, iLineNumber):
         if len(self.violations) > 0:
-            print (self.name + '_' + self.identifier + ':  ' + self.solution + '...FAILED')
-            for violation in self.violations:
-                print '    ' + str(violation)
-            return 1
+            if iLineNumber in self.violations:
+                
+                print ('  ' + (self.name + '_' + self.identifier).ljust(25) + ' | ' + str(iLineNumber).rjust(10) + ' | ' + self.solution)
+                return 1
+            elif not isinstance(self.violations[0], int):
+                for sViolation in self.violations:
+                    if sViolation.startswith(str(iLineNumber) + '-'):
+                        print ('  ' + (self.name + '_' + self.identifier).ljust(25) + ' | ' + sViolation.rjust(10) + ' | ' + self.solution)
+                return 1
+            else:
+                return 0
         else:
             return 0
 #            print (self.name + '_' + self.identifier + ':  ' + self.solution + '...PASSED')
