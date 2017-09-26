@@ -179,7 +179,7 @@ class rule_011(generic_rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isGenericDeclaration and not oLine.isGenericKeyword:
+            if oLine.isGenericDeclaration and not oLine.isGenericKeyword and not oLine.insideComponent:
                 if not oLine.lineLower.split()[0].startswith('g_'):
                     self.add_violation(iLineNumber)
 

@@ -108,27 +108,27 @@ class vhdlFile():
                                 iCurrentIndentLevel = 2
 
                 # Check generic map declarations
-                if fInsideEntity:
+                if fInsideEntity or fInsideComponent:
                     if re.match('^\s*generic', oLine.lineLower) and not fInsideGenericMapDeclaration:
                         fInsideGenericMapDeclaration = True
                         oLine.isGenericKeyword = True
-                        oLine.indentLevel = 1
-                        iCurrentIndentLevel = 2
+                        oLine.indentLevel = iCurrentIndentLevel
+                        iCurrentIndentLevel += 1
                     if fInsideGenericMapDeclaration:
                         oLine.insideGenericMap = True
                         if re.match('^\s*\S+.*:', oLine.line):
                             oLine.isGenericDeclaration = True
                             if not oLine.isGenericKeyword:
-                                oLine.indentLevel = 2
+                                oLine.indentLevel = iCurrentIndentLevel
                         iOpenParenthesis += oLine.line.count('(')
                         iCloseParenthesis += oLine.line.count(')')
                         if iOpenParenthesis == iCloseParenthesis:
-                            oLine.indentLevel = 1
+                            oLine.indentLevel = iCurrentIndentLevel - 1
                             fInsideGenericMapDeclaration = False
                             iOpenParenthesis = 0
                             iCloseParenthesis = 0
                             oLine.isEndGenericMap = True
-                            iCurrentIndentLevel = 2
+                            iCurrentIndentLevel = iCurrentIndentLevel - 2
 
                 # Check architecture declarations
                 if re.match('^\s*architecture', oLine.lineLower) and not fInsideArchitecture:
