@@ -81,4 +81,7 @@ class line():
         self.isInstantiationPortKeyword = False
         self.isInstantiationPortEnd = False
         self.isInstantiationPortAssignment = False
+        self.isInstantiationGenericKeyword = False
+        self.isInstantiationGenericEnd = False
+        self.isInstantiationGenericAssignment = False
 

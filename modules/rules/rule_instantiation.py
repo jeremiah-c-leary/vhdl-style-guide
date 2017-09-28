@@ -22,7 +22,7 @@ class rule_001(instantiation_rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isInstantiationDeclaration or oLine.isInstantiationPortAssignment or oLine.isInstantiationPortEnd or oLine.isInstantiationPortKeyword:
+            if oLine.isInstantiationDeclaration or oLine.isInstantiationPortAssignment or oLine.isInstantiationPortEnd or oLine.isInstantiationPortKeyword or oLine.isInstantiationGenericAssignment or oLine.isInstantiationGenericEnd or oLine.isInstantiationGenericKeyword:
                 self._check_indent(oLine, iLineNumber)
 
 
@@ -58,12 +58,12 @@ class rule_003(instantiation_rule):
 
 
 class rule_004(instantiation_rule):
-    '''Instantiation rule 004 checks for a blank line above the instantiation keyword.'''
+    '''Instantiation rule 004 checks for a blank line above the instantiation declaration.'''
 
     def __init__(self):
         instantiation_rule.__init__(self)
         self.identifier = '004'
-        self.solution = 'Add blank line above instantiation keyword.'
+        self.solution = 'Add blank line above instantiation declaration.'
         self.phase = 3
 
     def analyze(self, oFile):
@@ -200,81 +200,124 @@ class rule_011(instantiation_rule):
                 self._is_uppercase(oLine.line.split()[0], iLineNumber)
 
 
-#class rule_012(instantiation_rule):
-#    '''Instantiation rule 012 checks instantiation name is uppercase in "end" keyword line.'''
-#
-#    def __init__(self):
-#        instantiation_rule.__init__(self)
-#        self.identifier = '012'
-#        self.solution = 'Uppercase instantiation name.'
-#
-#    def analyze(self, oFile):
-#        for iLineNumber, oLine in enumerate(oFile.lines):
-#            if oLine.isInstantiationEnd:
-#                lLine = oLine.line.split()
-#                if len(lLine) > 2:
-#                    self._is_uppercase(lLine[2], iLineNumber)
-#
-#
-#class rule_013(instantiation_rule):
-#    '''Instantiation rule 013 checks for a single space after the "instantiation" keyword in the closing of the instantiation.'''
-#
-#    def __init__(self):
-#        instantiation_rule.__init__(self)
-#        self.identifier = '013'
-#        self.solution = 'Reduce spaces after "instantiation" keyword to one.'
-#
-#    def analyze(self, oFile):
-#        for iLineNumber, oLine in enumerate(oFile.lines):
-#            if oLine.isInstantiationEnd:
-#                if len(oLine.line.split()) >= 3:
-#                   self._is_single_space_after('instantiation', oLine, iLineNumber)
-#
-#
-#class rule_014(instantiation_rule):
-#    '''Instantiation rule 014 checks the "instantiation" keyword is lower case in the closing of the instantiation.'''
-#
-#    def __init__(self):
-#        instantiation_rule.__init__(self)
-#        self.identifier = '014'
-#        self.solution = 'Change "instantiation" keyword to lower case.'
-#
-#    def analyze(self, oFile):
-#        for iLineNumber, oLine in enumerate(oFile.lines):
-#            if oLine.isInstantiationEnd:
-#                lLine = oLine.line.split()
-#                if len(lLine) >= 3:
-#                    self._is_lowercase(lLine[1], iLineNumber)
-#
-#
-#class rule_015(instantiation_rule):
-#    '''Instantiation rule 015 checks the "end" keyword, "instantiation" keyword, and instantiation name are on the same line.'''
-#
-#    def __init__(self):
-#        instantiation_rule.__init__(self)
-#        self.identifier = '015'
-#        self.solution = 'The "end" keyword, "instantiation" keyword and instantiation name need to be on the same line.'
-#
-#    def analyze(self, oFile):
-#        for iLineNumber, oLine in enumerate(oFile.lines):
-#            if oLine.isInstantiationEnd:
-#                lLine = oLine.line.split()
-#                if not len(lLine) >= 3:
-#                    if not (lLine[0] == 'end' and lLine[1] == 'instantiation' and not lLine[2].startswith('--')):
-#                        self.add_violation(iLineNumber)
-#
-#
-#class rule_016(instantiation_rule):
-#    '''Instantiation rule 016 checks for a blank line above the "end instantiation" keywords.'''
-#
-#    def __init__(self):
-#        instantiation_rule.__init__(self)
-#        self.identifier = '016'
-#        self.solution = 'Remove blank line(s) above "end instantiation" keywords.'
-#
-#    def analyze(self, oFile):
-#        for iLineNumber, oLine in enumerate(oFile.lines):
-#            if oLine.isInstantiationEnd:
-#                self._is_no_blank_line_before(oFile, iLineNumber)
-#
-#
+class rule_012(instantiation_rule):
+    '''Instantiation rule 012 checks the instantiation declaration and "generic map" keywords are not on the same line.'''
+
+    def __init__(self):
+        instantiation_rule.__init__(self)
+        self.identifier = '012'
+        self.solution = 'Place "generic map" keywords on the next line by itself'
+        self.phase = 1
+
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isInstantiationDeclaration:
+                if oLine.isInstantiationGenericKeyword:
+                    self.add_violation(iLineNumber)
+
+
+class rule_013(instantiation_rule):
+    '''Instantiation rule 013 checks the "generic map" keywords are lower case.'''
+
+    def __init__(self):
+        instantiation_rule.__init__(self)
+        self.identifier = '013'
+        self.solution = 'Change "generic map" keywords to lowercase.'
+        self.phase = 6
+
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isInstantiationGenericKeyword:
+                if not re.match('^.*generic\s+map', oLine.line):
+                    self.add_violation(iLineNumber)
+
+
+class rule_014(instantiation_rule):
+    '''Instantiation rule 014 checks the closing ) for the generic map is on it's own line.'''
+
+    def __init__(self):
+        instantiation_rule.__init__(self)
+        self.identifier = '014'
+        self.solution = 'Place closing ) on it\'s own line.'
+        self.phase = 1
+
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isInstantiationGenericEnd and (oLine.isInstantiationGenericAssignment or oLine.isInstantiationGenericKeyword):
+                self.add_violation(iLineNumber)
+
+
+class rule_015(instantiation_rule):
+    '''Instantiation rule 015 ensures the alignment of the => operator for every generic in the instantiation.'''
+
+    def __init__(self):
+        instantiation_rule.__init__(self)
+        self.identifier = '015'
+        self.solution = 'Inconsistent alignment of "=>" in generic assignments of instantiation.'
+        self.phase = 5
+
+    def analyze(self, oFile):
+        lGroup = []
+        fGroupFound = False
+        iStartGroupIndex = None
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isInstantiationGenericKeyword and not fGroupFound:
+                fGroupFound = True
+                iStartGroupIndex = iLineNumber
+            if oLine.isInstantiationGenericEnd:
+                lGroup.append(oLine)
+                fGroupFound = False
+                self._check_keyword_alignment(iStartGroupIndex, '=>', lGroup)
+                lGroup = []
+                iStartGroupIndex = None
+            if fGroupFound:
+                if oLine.isInstantiationGenericAssignment:
+                  lGroup.append(oLine)
+                else:
+                  lGroup.append(line.line('Removed line'))
+
+
+class rule_016(instantiation_rule):
+    '''Instantiation rule 016 checks the generic name is uppercase.'''
+
+    def __init__(self):
+        instantiation_rule.__init__(self)
+        self.identifier = '016'
+        self.solution = 'Uppercase generic name.'
+        self.phase = 6
+
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isInstantiationGenericAssignment and not oLine.isInstantiationGenericKeyword:
+                self._is_uppercase(oLine.line.split()[0], iLineNumber)
+
+
+class rule_017(instantiation_rule):
+    '''Instantiation rule 016 checks for generic map keyword and generic assignment on the same line.'''
+
+    def __init__(self):
+        instantiation_rule.__init__(self)
+        self.identifier = '017'
+        self.solution = 'Move generic assignment to it\'s own line.'
+        self.phase = 1 
+
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isInstantiationGenericAssignment and oLine.isInstantiationGenericKeyword:
+                self.add_violation(iLineNumber)
+
+
+class rule_018(instantiation_rule):
+    '''Instantiation rule 018 checks for a single space between map and ('''
+
+    def __init__(self):
+        instantiation_rule.__init__(self)
+        self.identifier = '018'
+        self.solution = 'Ensure a single space exists between "map" and (.'
+        self.phase = 2 
+
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isInstantiationGenericKeyword or oLine.isInstantiationPortKeyword:
+                if not re.match('^.*\smap\s\(', oLine.lineLower):
+                    self.add_violation(iLineNumber)

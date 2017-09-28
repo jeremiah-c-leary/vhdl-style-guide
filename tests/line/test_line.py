@@ -381,5 +381,24 @@ class testLineMethods(unittest.TestCase):
         oLine.isInstantiationPortAssignment= True
         self.assertEqual(oLine.isInstantiationPortAssignment, True)
 
+    def test_instantiation_generic_keyword_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isInstantiationGenericKeyword, False)
+        oLine.isInstantiationGenericKeyword = True
+        self.assertEqual(oLine.isInstantiationGenericKeyword, True)
+
+    def test_instantiation_generic_end_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isInstantiationGenericEnd, False)
+        oLine.isInstantiationGenericEnd= True
+        self.assertEqual(oLine.isInstantiationGenericEnd, True)
+
+    def test_instantiation_generic_assignment_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isInstantiationGenericAssignment, False)
+        oLine.isInstantiationGenericAssignment= True
+        self.assertEqual(oLine.isInstantiationGenericAssignment, True)
+
+
 if __name__ == '__main__':
     unittest.main()

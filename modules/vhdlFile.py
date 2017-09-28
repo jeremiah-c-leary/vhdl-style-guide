@@ -30,6 +30,7 @@ class vhdlFile():
 
         fInsideInstantiation = False
         fInsideInstantiationPortMap = False
+        fInsideInstantiationGenericMap = False
 
         iOpenParenthesis = 0;
         iCloseParenthesis = 0;
@@ -299,15 +300,33 @@ class vhdlFile():
                         iCurrentIndentLevel += 1
                         oLine.isInstantiationPortKeyword = True
                         fInsideInstantiationPortMap = True
+                    if re.match('^.*\s*generic\s+map', oLine.lineLower):
+                        if not oLine.indentLevel:
+                            oLine.indentLevel = iCurrentIndentLevel
+                        iCurrentIndentLevel += 1
+                        oLine.isInstantiationGenericKeyword = True
+                        fInsideInstantiationGenericMap = True
                     if re.match('^.*=>', oLine.line):
-                        oLine.indentLevel = iCurrentIndentLevel
-                        oLine.isInstantiationPortAssignment = True
+                        if not oLine.indentLevel:
+                            oLine.indentLevel = iCurrentIndentLevel
+                        if fInsideInstantiationPortMap:
+                            oLine.isInstantiationPortAssignment = True
+                        else:
+                            oLine.isInstantiationGenericAssignment = True
                     if ');' in oLine.line and fInsideInstantiationPortMap:
                         fInsideInstantiation = False
+                        fInsideInstantiationPortMap = False
                         oLine.isInstantiationPortEnd = True
                         if not oLine.indentLevel:
                             oLine.indentLevel = iCurrentIndentLevel - 1
                         iCurrentIndentLevel -= 2
+                    if ')' in oLine.line and fInsideInstantiationGenericMap:
+                        fInsideInstantiationGenericMap = False
+                        oLine.isInstantiationGenericEnd = True
+                        if not oLine.indentLevel:
+                            oLine.indentLevel = iCurrentIndentLevel - 1
+                        iCurrentIndentLevel -= 1
+
 
 
                 # Add line to file

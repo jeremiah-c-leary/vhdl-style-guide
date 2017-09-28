@@ -60,5 +60,51 @@ class testVhdlFileInstantiationAssignments(unittest.TestCase):
         # Compare
         self.assertEqual(lActual, lExpected)
 
+    def test_isInstantiationGenericKeyword_assignment(self):
+        oFile = vhdlFile.vhdlFile('tests/rule_instantiation/instantiation_generic_test_input.vhd')
+        lExpected = [7,22,33,44,54,63,73]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFile.lines):
+            if oLine.isInstantiationGenericKeyword:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
+    def test_isInstantiationGenericEnd_assignment(self):
+        oFile = vhdlFile.vhdlFile('tests/rule_instantiation/instantiation_generic_test_input.vhd')
+        lExpected = [10,25,36,46,56,65,73]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFile.lines):
+            if oLine.isInstantiationGenericEnd:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
+    def test_isInstantiationGenericAssignment_assignment(self):
+        oFile = vhdlFile.vhdlFile('tests/rule_instantiation/instantiation_generic_test_input.vhd')
+        lExpected = [8,9,23,24,34,35,45,46,54,55,64,65]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFile.lines):
+            if oLine.isInstantiationGenericAssignment:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
+    def test_isInstantiationIdention_assignment(self):
+        self.maxDiff = None
+        oFile = vhdlFile.vhdlFile('tests/rule_instantiation/instantiation_generic_test_input.vhd')
+        #lExpected = [ 6, 7, 8, 9,10,11,12,13,14,15,21,22,23,24,25,26,27,28,29,30,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49,50,51,53,54,55,56,57,58,59,60,61,63,64,65,66,67,68,69,70,72,73,74,75,76,77,78]
+        lExpected =  [ 1, 2, 3, 3, 2, 2, 3, 3, 3, 2, 1, 2, 3, 3, 2, 2, 3, 3, 3, 2, 1, 2, 3, 3, 2, 2, 3, 3, 3, 2, 1, 2, 3, 3, 2, 3, 3, 3, 2, 1, 2, 3, 2, 2, 3, 3, 3, 2, 1, 3, 3, 2, 3, 3, 3, 2, 1, 2, 2, 3, 3, 3, 2] 
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFile.lines):
+            if oLine.insideInstantiation:
+                lActual.append(oLine.indentLevel)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
 if __name__ == '__main__':
     unittest.main()
