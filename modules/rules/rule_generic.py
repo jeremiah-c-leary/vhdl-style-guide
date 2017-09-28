@@ -64,7 +64,7 @@ class rule_004(generic_rule):
     def __init__(self):
         generic_rule.__init__(self)
         self.identifier = '004'
-        self.solution = 'Change indent of generic to 4 spaces.'
+        self.solution = 'Check indentation.'
         self.phase = 4
 
     def analyze(self, oFile):
@@ -128,7 +128,7 @@ class rule_008(generic_rule):
     def __init__(self):
         generic_rule.__init__(self)
         self.identifier = '008'
-        self.solution = 'Closing parenthesis should be 2 spaces.'
+        self.solution = 'Check indentation.'
         self.phase = 4
 
     def analyze(self, oFile):
