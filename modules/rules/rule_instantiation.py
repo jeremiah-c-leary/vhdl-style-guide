@@ -38,7 +38,8 @@ class rule_002(instantiation_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isInstantiationDeclaration:
-                self._is_single_space_after(':', oLine, iLineNumber)
+                if not re.match('^\s*\S+\s*:\s\S', oLine.line):
+                    self.add_violation(iLineNumber)
 
 
 class rule_003(instantiation_rule):

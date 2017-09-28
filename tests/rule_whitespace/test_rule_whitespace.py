@@ -124,6 +124,7 @@ class testRuleWhitespaceMethods(unittest.TestCase):
         oFile.lines.append(line.line('  This is a test,of commas (failure )'))
         oFile.lines.append(line.line('  This is a test, of commas (pass)'))
         oFile.lines.append(line.line('  This is a test of commas,(failure   )'))
+        oFile.lines.append(line.line('  This is a test of commas -- 1,2,3,4 (PASS)'))
         oFile.lines.append(line.line('   ) pass'))
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)

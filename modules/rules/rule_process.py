@@ -31,7 +31,7 @@ class rule_002(process_rule):
     def __init__(self):
         process_rule.__init__(self)
         self.identifier = '002'
-        self.solution = 'Remove all but one space between the "process" keyword and the (.' 
+        self.solution = 'Ensure a single space exists between the "process" keyword and the (.' 
         self.phase = 2
 
     def analyze(self, oFile):
