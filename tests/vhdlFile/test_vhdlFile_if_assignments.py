@@ -71,6 +71,20 @@ class testVhdlFileIfAssignments(unittest.TestCase):
         # Compare
         self.assertEqual(lActual, lExpected)
 
+    def test_ifIndent_assignment(self):
+        self.maxDiff = None
+        oFile = vhdlFile.vhdlFile('tests/rule_if/if_test_input.vhd')
+#       lExpected = [   0,   1,2,   3,4,   5,6,7,8,9,10,11,  12,13,  14,15,16,17,  18,19,  20,  21,22,23,24,25,26,27,  28,  29]       
+        lExpected = [None,None,0,None,0,None,1,1,2,3, 3, 2,None, 2,None, 3, 3, 2,None, 2,None,None, 3, 3, 2, 3, 3, 2,None,None]
+        # Generic actual list
+        lActual = []
+        iMaxCheck = len(lExpected)
+        for iIndex, oLine in enumerate(oFile.lines):
+            if iIndex == iMaxCheck:
+                break
+            lActual.append(oLine.indentLevel)
+        # Compare
+        self.assertEqual(lActual, lExpected)
 
 
 if __name__ == '__main__':

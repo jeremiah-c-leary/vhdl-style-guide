@@ -84,4 +84,11 @@ class line():
         self.isInstantiationGenericKeyword = False
         self.isInstantiationGenericEnd = False
         self.isInstantiationGenericAssignment = False
-
+        ## Package attributes
+        self.insidePackage = False
+        self.isPackageKeyword = False
+        self.isPackageEnd = False
+        ## Package Body attributes
+        self.insidePackageBody = False
+        self.isPackageBodyKeyword = False
+        self.isPackageBodyEnd = False

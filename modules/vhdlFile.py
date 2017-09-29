@@ -32,6 +32,9 @@ class vhdlFile():
         fInsideInstantiationPortMap = False
         fInsideInstantiationGenericMap = False
 
+        fInsidePackage = False
+        fInsidePackageBody = False
+
         iOpenParenthesis = 0;
         iCloseParenthesis = 0;
 
@@ -50,6 +53,9 @@ class vhdlFile():
                 if '--' in oLine.line:
                     oLine.hasComment = True
                     oLine.commentColumn = oLine.line.find('--')
+                # Check for null statements
+                if re.match('^\s*null\s*;', oLine.lineLower):
+                    oLine.indentLevel = iCurrentIndentLevel
                 # Check for library lines
                 if re.match('^\s*library', oLine.lineLower):
                     oLine.isLibrary = True
@@ -152,11 +158,27 @@ class vhdlFile():
                             oLine.indentLevel = 0
                             iCurrentIndentLevel = 0
 
+                # Check package declarations
+                if re.match('^\s*package', oLine.lineLower) and not fInsidePackage and not fInsidePackageBody:
+                    fInsidePackage = True
+                    oLine.isPackageKeyword = True
+                    oLine.indentLevel = 0
+                    iCurrentIndentLevel = 1
+                if fInsidePackage:
+                    oLine.insidePackage = True
+                    if not fInsideProcess and not fInsideCase and not fInsideComponent:
+                        if re.match('^\s*end\s+', oLine.lineLower):
+                            fInsidePackage = False
+                            oLine.isPackageEnd = True
+                            oLine.indentLevel = 0
+                            iCurrentIndentLevel = 0
+
                 # Check Component declarations
                 if re.match('^\s*component', oLine.lineLower) and not fInsideComponent:
                     oLine.isComponentDeclaration = True
                     fInsideComponent = True
                     oLine.indentLevel = 1
+                    iCurrentIndentLevel += 1
 
                 if fInsideComponent:
                     oLine.insideComponent = True
@@ -271,6 +293,7 @@ class vhdlFile():
                     if re.match('^\s*end\s+case', oLine.lineLower):
                         oLine.isEndCaseKeyword = True
                         oLine.indentLevel = iCurrentIndentLevel - 2
+                        iCurrentIndentLevel -= 2
 
                 # Check sequential statements
                 if fInsideProcess:

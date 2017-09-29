@@ -399,6 +399,41 @@ class testLineMethods(unittest.TestCase):
         oLine.isInstantiationGenericAssignment= True
         self.assertEqual(oLine.isInstantiationGenericAssignment, True)
 
+    def test_inside_package_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.insidePackage, False)
+        oLine.insidePackage = True
+        self.assertEqual(oLine.insidePackage, True)
+
+    def test_isPackageKeyword_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isPackageKeyword, False)
+        oLine.isPackageKeyword = True
+        self.assertEqual(oLine.isPackageKeyword, True)
+
+    def test_isPackageEnd_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isPackageEnd, False)
+        oLine.isPackageEnd = True
+        self.assertEqual(oLine.isPackageEnd, True)
+
+    def test_inside_packageBody_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.insidePackageBody, False)
+        oLine.insidePackageBody = True
+        self.assertEqual(oLine.insidePackageBody, True)
+
+    def test_isPackageBodyKeyword_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isPackageBodyKeyword, False)
+        oLine.isPackageBodyKeyword = True
+        self.assertEqual(oLine.isPackageBodyKeyword, True)
+
+    def test_isPackageBodyEnd_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isPackageBodyEnd, False)
+        oLine.isPackageBodyEnd = True
+        self.assertEqual(oLine.isPackageBodyEnd, True)
 
 if __name__ == '__main__':
     unittest.main()
