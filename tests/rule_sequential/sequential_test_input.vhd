@@ -61,7 +61,7 @@ begin
       when a = 1 =>
 
         a <= b;
-        if a = 1 then
+        if a <= 1 then
           c <=  d;
            e <= f;
         end if;

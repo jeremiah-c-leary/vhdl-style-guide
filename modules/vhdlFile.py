@@ -158,6 +158,21 @@ class vhdlFile():
                             oLine.indentLevel = 0
                             iCurrentIndentLevel = 0
 
+                # Check package body declarations
+                if re.match('^\s*package\s+body', oLine.lineLower) and not fInsidePackageBody:
+                    fInsidePackageBody = True
+                    oLine.isPackageBodyKeyword = True
+                    oLine.indentLevel = 0
+                    iCurrentIndentLevel = 1
+                if fInsidePackageBody:
+                    oLine.insidePackageBody = True
+                    if not fInsideProcess and not fInsideCase and not fInsideComponent:
+                        if re.match('^\s*end\s+', oLine.lineLower):
+                            fInsidePackageBody = False
+                            oLine.isPackageBodyEnd = True
+                            oLine.indentLevel = 0
+                            iCurrentIndentLevel = 0
+
                 # Check package declarations
                 if re.match('^\s*package', oLine.lineLower) and not fInsidePackage and not fInsidePackageBody:
                     fInsidePackage = True
@@ -186,6 +201,7 @@ class vhdlFile():
                         oLine.isComponentEnd = True
                         fInsideComponent = False
                         oLine.indentLevel = 1
+                        iCurrentIndentLevel -= 1
 
                 # Check Signal declarations
                 if fInsideArchitecture:
@@ -297,7 +313,7 @@ class vhdlFile():
 
                 # Check sequential statements
                 if fInsideProcess:
-                    if re.match('^.*<=', oLine.line) and not oLine.isComment:
+                    if re.match('^.*<=', oLine.line) and not oLine.isComment and not oLine.insideIf:
                         oLine.isSequential = True
                         oLine.indentLevel = iCurrentIndentLevel
                         fInsideSequential = True

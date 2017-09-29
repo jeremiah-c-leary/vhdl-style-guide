@@ -322,3 +322,19 @@ class rule_018(instantiation_rule):
             if oLine.isInstantiationGenericKeyword or oLine.isInstantiationPortKeyword:
                 if not re.match('^.*\smap\s\(', oLine.lineLower):
                     self.add_violation(iLineNumber)
+
+
+class rule_019(instantiation_rule):
+    '''Instantiation rule 019 checks for a blank line below the end of the port declaration.'''
+
+    def __init__(self):
+        instantiation_rule.__init__(self)
+        self.identifier = '019'
+        self.solution = 'Add blank line below instantiation declaration.'
+        self.phase = 3
+
+    def analyze(self, oFile):
+        lFailureLines = []
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isInstantiationPortEnd:
+                self._is_blank_line_after(oFile, iLineNumber)

@@ -12,7 +12,7 @@ package PACK is
     );
   end component COMP;
 
-end package PACK;
+end  package PACK;
 
 
 PACKAGE PACK is
@@ -28,8 +28,8 @@ PACKAGE PACK is
     );
   end component COMP;
 
-end PACKAGE pack;
-  package PACK IS
+end PACKAGE  pack;
+  package PACK  IS
 
   component COMP is
     generic (
@@ -44,7 +44,7 @@ end PACKAGE pack;
 
    END package PACK;
 
-package pack is
+package  pack is
   component COMP is
     generic (
       GENERIC_1 : std_logic := '0'
@@ -70,4 +70,4 @@ package PACK
     );
   end component COMP;
 
-end package;
+end  package;
