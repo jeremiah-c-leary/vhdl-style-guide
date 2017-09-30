@@ -93,5 +93,14 @@ proc_name : process (one, two, three) is
   
   end process PROC_NAME;
 
+
+  PROC_NAME : process (one) is
+
+    variable var_1 : std_logic_vector(1 downto 0);
+
+  begin
+  
+  end process PROC_NAME;
+
 end architecture ARCH;
 

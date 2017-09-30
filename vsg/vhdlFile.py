@@ -18,6 +18,7 @@ class vhdlFile():
         fFoundProcessBegin = False
         fInsideConcurrent = False
         fInsideSensitivityList = False
+        fSensitivityListFound = False
 
         fInsideIfStatement = False
 
@@ -47,12 +48,12 @@ class vhdlFile():
                 if re.match('^\s*$', oLine.line):
                     oLine.isBlank = True
                 # Check for comment lines
-                if re.match('^\s*--', oLine.line):
-                    oLine.isComment = True
-                    oLine.indentLevel = iCurrentIndentLevel
                 if '--' in oLine.line:
                     oLine.hasComment = True
                     oLine.commentColumn = oLine.line.find('--')
+                if re.match('^\s*--', oLine.line):
+                    oLine.isComment = True
+                    oLine.indentLevel = iCurrentIndentLevel
                 # Check for null statements
                 if re.match('^\s*null\s*;', oLine.lineLower):
                     oLine.indentLevel = iCurrentIndentLevel
@@ -217,16 +218,17 @@ class vhdlFile():
 
                 # Check process declarations
                 if fInsideArchitecture:
-                    if re.match('^\s*process', oLine.lineLower) or re.match('^\s*\S+\s*:\s*process', oLine.lineLower):
+                    if re.match('^\s*process', oLine.lineLower) or re.match('^\s*\S+\s*:\s*process', oLine.lineLower) and not oLine.isComment:
                         fInsideProcess = True
                         oLine.isProcessKeyword = True
                         oLine.indentLevel = 1
                     if fInsideProcess == True:
                         oLine.insideProcess = True
                         # Check sensitivity list
-                        if '(' in oLine.line and not fInsideSensitivityList and not fFoundProcessBegin:
+                        if '(' in oLine.line and not fInsideSensitivityList and not fFoundProcessBegin and not fSensitivityListFound:
                             fInsideSensitivityList = True
                             oLine.isSensitivityListBegin = True
+                            fSensitivityListFound = True
                         if fInsideSensitivityList:
                             oLine.insideSensitivityList = True
                             iOpenParenthesis += oLine.line.count('(')
@@ -248,6 +250,7 @@ class vhdlFile():
                             oLine.isEndProcess = True
                             fFoundProcessBegin = False
                             iCurrentIndentLevel = 1
+                            fSensitivityListFound = False
 
 
                 # Check concurrent declarations
