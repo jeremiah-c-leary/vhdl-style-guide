@@ -8,8 +8,7 @@ import os
 executablePath = os.path.dirname(os.path.realpath(__file__))
 
 # Import program modules
-sys.path.append(executablePath + '\..\modules')
-#sys.path.append(executablePath + '\..\\rules')
+sys.path.append(executablePath + '\..\\vsg')
 import rule_list
 import vhdlFile
 
