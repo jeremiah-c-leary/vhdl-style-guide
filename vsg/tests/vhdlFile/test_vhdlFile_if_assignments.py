@@ -3,7 +3,7 @@ import os
 import unittest
 from vsg import vhdlFile
 
-oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','if','if_test_input.vhd'))
+oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','if_statement','if_test_input.vhd'))
 
 class testVhdlFileIfAssignments(unittest.TestCase):
 

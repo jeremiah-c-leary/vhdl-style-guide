@@ -2,16 +2,16 @@ import os
 
 import unittest
 
-from vsg.rules import if
+from vsg.rules import if_statement
 from vsg import vhdlFile
 
 # Read in test file used for all tests
-oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','if','if_test_input.vhd'))
+oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','if_statement','if_test_input.vhd'))
 
 class testRuleIfMethods(unittest.TestCase):
 
     def test_rule_001(self):
-        oRule = if.rule_001()
+        oRule = if_statement.rule_001()
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'if')
         self.assertEqual(oRule.identifier, '001')
@@ -20,7 +20,7 @@ class testRuleIfMethods(unittest.TestCase):
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_002(self):
-        oRule = if.rule_002()
+        oRule = if_statement.rule_002()
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'if')
         self.assertEqual(oRule.identifier, '002')
@@ -29,7 +29,7 @@ class testRuleIfMethods(unittest.TestCase):
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_003(self):
-        oRule = if.rule_003()
+        oRule = if_statement.rule_003()
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'if')
         self.assertEqual(oRule.identifier, '003')
@@ -38,7 +38,7 @@ class testRuleIfMethods(unittest.TestCase):
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_004(self):
-        oRule = if.rule_004()
+        oRule = if_statement.rule_004()
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'if')
         self.assertEqual(oRule.identifier, '004')
@@ -47,7 +47,7 @@ class testRuleIfMethods(unittest.TestCase):
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_005(self):
-        oRule = if.rule_005()
+        oRule = if_statement.rule_005()
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'if')
         self.assertEqual(oRule.identifier, '005')
@@ -56,7 +56,7 @@ class testRuleIfMethods(unittest.TestCase):
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_006(self):
-        oRule = if.rule_006()
+        oRule = if_statement.rule_006()
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'if')
         self.assertEqual(oRule.identifier, '006')
@@ -65,7 +65,7 @@ class testRuleIfMethods(unittest.TestCase):
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_007(self):
-        oRule = if.rule_007()
+        oRule = if_statement.rule_007()
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'if')
         self.assertEqual(oRule.identifier, '007')
@@ -74,7 +74,7 @@ class testRuleIfMethods(unittest.TestCase):
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_008(self):
-        oRule = if.rule_008()
+        oRule = if_statement.rule_008()
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'if')
         self.assertEqual(oRule.identifier, '008')
@@ -83,7 +83,7 @@ class testRuleIfMethods(unittest.TestCase):
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_009(self):
-        oRule = if.rule_009()
+        oRule = if_statement.rule_009()
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'if')
         self.assertEqual(oRule.identifier, '009')
@@ -92,7 +92,7 @@ class testRuleIfMethods(unittest.TestCase):
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_010(self):
-        oRule = if.rule_010()
+        oRule = if_statement.rule_010()
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'if')
         self.assertEqual(oRule.identifier, '010')
@@ -101,7 +101,7 @@ class testRuleIfMethods(unittest.TestCase):
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_011(self):
-        oRule = if.rule_011()
+        oRule = if_statement.rule_011()
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'if')
         self.assertEqual(oRule.identifier, '011')
