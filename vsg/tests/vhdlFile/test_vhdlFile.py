@@ -3,18 +3,18 @@ import os
 import unittest
 from vsg import vhdlFile
 
-sFileLibraryName = os.path.join(os.path.dirname(__file__),'..','rule_library','library_test_input.vhd')
+sFileLibraryName = os.path.join(os.path.dirname(__file__),'..','library','library_test_input.vhd')
 oFileLibrary = vhdlFile.vhdlFile(sFileLibraryName)
 
-oFileSignal = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','rule_signal','signal_test_input.vhd'))
+oFileSignal = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','signal','signal_test_input.vhd'))
 
-oFileProcess = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','rule_process','process_test_input.vhd'))
-oFilePort = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','rule_port','port_test_input.vhd'))
-oFileGeneric = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','rule_generic','generic_test_input.vhd'))
-oFileEntity = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','rule_entity','entity_test_input.vhd'))
-oFileConcurrent = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','rule_concurrent','concurrent_test_input.vhd'))
-oFileArchitecture = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','rule_architecture','architecture_test_input.vhd'))
-oFileConstant = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','rule_constant','constant_test_input.vhd'))
+oFileProcess = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','process','process_test_input.vhd'))
+oFilePort = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','port','port_test_input.vhd'))
+oFileGeneric = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','generic','generic_test_input.vhd'))
+oFileEntity = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','entity','entity_test_input.vhd'))
+oFileConcurrent = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','concurrent','concurrent_test_input.vhd'))
+oFileArchitecture = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','architecture','architecture_test_input.vhd'))
+oFileConstant = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','constant','constant_test_input.vhd'))
 
 
 class testVhdlFileMethods(unittest.TestCase):

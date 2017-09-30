@@ -3,8 +3,8 @@ import os
 import unittest
 from vsg import vhdlFile
 
-oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','rule_instantiation','instantiation_test_input.vhd'))
-oFileGeneric = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','rule_instantiation','instantiation_generic_test_input.vhd'))
+oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','instantiation','instantiation_test_input.vhd'))
+oFileGeneric = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','instantiation','instantiation_generic_test_input.vhd'))
 
 
 class testVhdlFileInstantiationAssignments(unittest.TestCase):

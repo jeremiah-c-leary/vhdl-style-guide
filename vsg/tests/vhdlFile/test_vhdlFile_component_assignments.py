@@ -3,7 +3,7 @@ import os
 import unittest
 from vsg import vhdlFile
 
-oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','rule_component','component_test_input.vhd'))
+oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','component','component_test_input.vhd'))
 
 class testVhdlFileComponentAssignments(unittest.TestCase):
 

@@ -3,7 +3,7 @@ import os
 import unittest
 from vsg import vhdlFile
 
-oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','rule_package_body','package_body_test_input.vhd'))
+oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','package_body','package_body_test_input.vhd'))
 
 class testVhdlFilePackageBodyMethods(unittest.TestCase):
 

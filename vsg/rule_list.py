@@ -21,7 +21,7 @@ def load_base_rules():
     for module in modules:
         for name, obj in inspect.getmembers(module):
             if inspect.isclass(obj):
-                if 'rule_' in obj.__name__:
+                if not obj.__name__.startswith('__'):
                     lRules.append(obj())
     return lRules
 
