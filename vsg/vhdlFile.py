@@ -36,6 +36,8 @@ class vhdlFile():
         fInsidePackage = False
         fInsidePackageBody = False
 
+        fInsideGenerate = False
+
         iOpenParenthesis = 0;
         iCloseParenthesis = 0;
 
@@ -151,7 +153,7 @@ class vhdlFile():
                         oLine.isArchitectureBegin = True
                         oLine.indentLevel = 0
                         iCurrentIndentLevel = 1
-                    if not fInsideProcess and not fInsideCase and not fInsideComponent:
+                    if not fInsideProcess and not fInsideCase and not fInsideComponent and not fInsideGenerate:
                         if re.match('^\s*end\s+', oLine.lineLower):
                             fInsideArchitecture = False
                             fFoundArchitectureBegin = False
@@ -252,12 +254,29 @@ class vhdlFile():
                             iCurrentIndentLevel = 1
                             fSensitivityListFound = False
 
+                # Check generate declarations
+                if fInsideArchitecture:
+                    if re.match('^\s*\w+\s*:\s*if', oLine.lineLower):
+                        fInsideGenerate = True
+                    if fInsideGenerate:
+                        if re.match('^\s*\w+\s*:\s*if\s.*\sgenerate', oLine.lineLower):
+                            oLine.isGenerateKeyword = True
+                            oLine.indentLevel = iCurrentIndentLevel
+                        if re.match('^\s*begin', oLine.lineLower):
+                            oLine.isGenerateBegin = True
+                            oLine.indentLevel = iCurrentIndentLevel
+                            iCurrentIndentLevel += 1
+                        if re.match('^\s*end\s+generate', oLine.lineLower):
+                            fInsideGenerate = False
+                            oLine.isGenerateEnd = True
+                            iCurrentIndentLevel -= 1
+                            oLine.indentLevel = iCurrentIndentLevel
 
                 # Check concurrent declarations
                 if fInsideArchitecture and not fInsideProcess:
                     if re.match('^\s*\w+\s*<=', oLine.line) or re.match('^\s*\w+\s*:\s*\w+\s*<=', oLine.line):
                         fInsideConcurrent = True
-                        oLine.indentLevel = 1
+                        oLine.indentLevel = iCurrentIndentLevel
                         oLine.isConcurrentBegin = True
                     if fInsideConcurrent:
                         oLine.insideConcurrent = True
@@ -328,7 +347,7 @@ class vhdlFile():
                             oLine.isSequentialEnd = True
 
                 # Check instantiation statements
-                if fInsideArchitecture and not fInsideProcess and not oLine.isConcurrentBegin and not fInsideComponent:
+                if fInsideArchitecture and not fInsideProcess and not oLine.isConcurrentBegin and not fInsideComponent and not fInsideGenerate:
                     if re.match('^\s*\w+\s*:\s*\w+', oLine.line):
                         oLine.isInstantiationDeclaration = True
                         oLine.indentLevel = iCurrentIndentLevel

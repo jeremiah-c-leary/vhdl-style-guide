@@ -435,5 +435,30 @@ class testLineMethods(unittest.TestCase):
         oLine.isPackageBodyEnd = True
         self.assertEqual(oLine.isPackageBodyEnd, True)
 
+    def test_insideGenerate_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.insideGenerate, False)
+        oLine.insideGenerate = True
+        self.assertEqual(oLine.insideGenerate, True)
+
+    def test_isGenerateBegin_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isGenerateBegin, False)
+        oLine.isGenerateBegin = True
+        self.assertEqual(oLine.isGenerateBegin, True)
+
+    def test_isGenerateKeyword_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isGenerateKeyword, False)
+        oLine.isGenerateKeyword = True
+        self.assertEqual(oLine.isGenerateKeyword, True)
+
+    def test_isGenerateEnd_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isGenerateEnd, False)
+        oLine.isGenerateEnd = True
+        self.assertEqual(oLine.isGenerateEnd, True)
+
+
 if __name__ == '__main__':
     unittest.main()

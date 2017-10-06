@@ -92,3 +92,8 @@ class line():
         self.insidePackageBody = False
         self.isPackageBodyKeyword = False
         self.isPackageBodyEnd = False
+        ## Generate attributes
+        self.insideGenerate = False
+        self.isGenerateBegin = False
+        self.isGenerateKeyword = False
+        self.isGenerateEnd = False
