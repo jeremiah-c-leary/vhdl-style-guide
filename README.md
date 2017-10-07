@@ -25,6 +25,15 @@ The rules will be atomic so they can be added or removed easily.
 My plan is to use a JSON file to configure the program.
 You will be able to turn off rules and configure rules through the file.
 
+## Installation
+
+After downloading the source, issue the following command:
+
+  python setup.py install
+
+This will install the vsg package and binary.
+If you add the path to the binary to your PATH environment variable, then the program can be called directly.
+
 ## Testing
 
 I will be using TDD for development.
@@ -34,7 +43,7 @@ Tests are located under the tests directory.
 
 You can run all the tests at the top level by invoking the following command:
 
-python -m unittest discover
+ python setup.py test
 
 ## Phases
 
