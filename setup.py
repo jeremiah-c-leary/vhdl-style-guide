@@ -23,9 +23,10 @@ setup(name='vsg',
         author='Jeremiah C Leary',
         author_email='jeremiah.c.leary@gmail.com',
         license='GNU General Public License',
-        packages=['vsg'],
+        packages=['vsg','vsg.rules'],
         zip_safe=False,
         test_suite='nose.collector',
         tests_require=['nose'],
+        scripts=['bin/vsg']
         )
         
