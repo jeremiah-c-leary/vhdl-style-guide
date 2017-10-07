@@ -181,7 +181,7 @@ class rule_010(instantiation_rule):
                 lGroup = []
                 iStartGroupIndex = None
             if fGroupFound:
-                if oLine.isInstantiationPortAssignment:
+                if oLine.isInstantiationPortAssignment and not oLine.isInstantiationPortKeyword:
                   lGroup.append(oLine)
                 else:
                   lGroup.append(line.line('Removed line'))
@@ -197,7 +197,7 @@ class rule_011(instantiation_rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isInstantiationPortAssignment:
+            if oLine.isInstantiationPortAssignment and not oLine.isInstantiationPortKeyword:
                 self._is_uppercase(oLine.line.split()[0], iLineNumber)
 
 
@@ -338,3 +338,20 @@ class rule_019(instantiation_rule):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isInstantiationPortEnd:
                 self._is_blank_line_after(oFile, iLineNumber)
+
+
+class rule_020(instantiation_rule):
+    '''Instantiation rule 020 checks for a port assignment on the same line as the port map keywords.'''
+
+    def __init__(self):
+        instantiation_rule.__init__(self)
+        self.identifier = '020'
+        self.solution = 'Move port assignment to it\'s own line.'
+        self.phase = 1
+
+    def analyze(self, oFile):
+        lFailureLines = []
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isInstantiationPortAssignment and oLine.isInstantiationPortKeyword:
+                self.add_violation(iLineNumber)
+

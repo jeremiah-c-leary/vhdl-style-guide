@@ -6,6 +6,7 @@ from vsg import vhdlFile
 
 # Read in test file used for all tests
 oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','case','case_test_input.vhd'))
+oFileSequential = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','case','case_sequential_test_input.vhd'))
 
 class testRuleConcurrentMethods(unittest.TestCase):
 
@@ -106,6 +107,15 @@ class testRuleConcurrentMethods(unittest.TestCase):
         self.assertEqual(oRule.identifier, '011')
         dExpected = [46,59]
         oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_012(self):
+        oRule = case.rule_012()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'case')
+        self.assertEqual(oRule.identifier, '012')
+        dExpected = [11,12,16]
+        oRule.analyze(oFileSequential)
         self.assertEqual(oRule.violations, dExpected)
 
 if __name__ == '__main__':

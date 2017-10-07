@@ -181,6 +181,22 @@ class rule_011(case_rule):
             if oLine.insideCaseWhen:
                 self._check_multiline_alignment(iAlignmentColumn, oLine, iLineNumber)
 
+
+class rule_012(case_rule):
+    '''Case rule 012 ensures a when keyword is not on the same line as a sequential statement.'''
+
+    def __init__(self):
+        case_rule.__init__(self)
+        self.identifier = '012'
+        self.solution = 'Move sequential statement to it\'s own line.'
+        self.phase = 1
+
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isCaseWhenEnd and oLine.isSequential:
+                self.add_violation(iLineNumber)
+
+
 #TODO:
 # multiline case alignment
 # keywords are lower case
