@@ -1,5 +1,5 @@
 
-import rule
+from vsg import rule
 import re
 
 class whitespace_rule(rule.rule):

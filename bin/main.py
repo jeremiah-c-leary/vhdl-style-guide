@@ -1,4 +1,4 @@
-
+#!/usr/bin/python
 
 import argparse
 import sys
@@ -8,9 +8,9 @@ import os
 executablePath = os.path.dirname(os.path.realpath(__file__))
 
 # Import program modules
-sys.path.append(executablePath + '\..\\vsg')
-import rule_list
-import vhdlFile
+sys.path.append(os.path.join(executablePath,'..'))
+from vsg import rule_list
+from vsg import vhdlFile
 
 def parse_command_line_arguments():
     '''Parses the command line arguments and returns them.'''

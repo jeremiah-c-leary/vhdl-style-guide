@@ -11,11 +11,11 @@ def load_base_rules():
     form_module = lambda fp: '.' + os.path.splitext(fp)[0]
     rulesList = map(form_module, rulefiles)
     # import paraent module / namespace
-    importlib.import_module('rules')
+    importlib.import_module('vsg.rules')
     modules = []
     for rule in rulesList:
         if not rule.startswith('.__'):
-            modules.append(importlib.import_module(rule, package="rules"))
+            modules.append(importlib.import_module(rule, package="vsg.rules"))
 
     lRules = []
     for module in modules:
