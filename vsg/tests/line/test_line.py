@@ -459,6 +459,35 @@ class testLineMethods(unittest.TestCase):
         oLine.isGenerateEnd = True
         self.assertEqual(oLine.isGenerateEnd, True)
 
+    def test_insideFunction_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.insideFunction, False)
+        oLine.insideFunction = True
+        self.assertEqual(oLine.insideFunction, True)
+
+    def test_isFunctionBegin_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isFunctionBegin, False)
+        oLine.isFunctionBegin = True
+        self.assertEqual(oLine.isFunctionBegin, True)
+
+    def test_isFunctionKeyword_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isFunctionKeyword, False)
+        oLine.isFunctionKeyword = True
+        self.assertEqual(oLine.isFunctionKeyword, True)
+
+    def test_isFunctionEnd_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isFunctionEnd, False)
+        oLine.isFunctionEnd = True
+        self.assertEqual(oLine.isFunctionEnd, True)
+
+    def test_isFunctionReturn_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isFunctionReturn, False)
+        oLine.isFunctionReturn = True
+        self.assertEqual(oLine.isFunctionReturn, True)
 
 if __name__ == '__main__':
     unittest.main()

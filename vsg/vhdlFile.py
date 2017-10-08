@@ -38,6 +38,8 @@ class vhdlFile():
 
         fInsideGenerate = False
 
+        fInsideFunction = False
+
         iOpenParenthesis = 0;
         iCloseParenthesis = 0;
 
@@ -148,12 +150,12 @@ class vhdlFile():
                     iCurrentIndentLevel = 1
                 if fInsideArchitecture:
                     oLine.insideArchitecture = True
-                    if re.match('^\s*begin', oLine.lineLower) and not fFoundArchitectureBegin:
+                    if re.match('^\s*begin', oLine.lineLower) and not fFoundArchitectureBegin and not fInsideFunction:
                         fFoundArchitectureBegin = True
                         oLine.isArchitectureBegin = True
                         oLine.indentLevel = 0
                         iCurrentIndentLevel = 1
-                    if not fInsideProcess and not fInsideCase and not fInsideComponent and not fInsideGenerate:
+                    if not fInsideProcess and not fInsideCase and not fInsideComponent and not fInsideGenerate and not fInsideFunction:
                         if re.match('^\s*end\s+', oLine.lineLower):
                             fInsideArchitecture = False
                             fFoundArchitectureBegin = False
@@ -285,7 +287,7 @@ class vhdlFile():
                             oLine.isEndConcurrent = True
 
                 # Check if statements
-                if fInsideProcess:
+                if fInsideProcess or fInsideFunction:
                     if re.match('^\s*if', oLine.lineLower):
                         oLine.isIfKeyword = True
                         fInsideIfStatement = True
@@ -332,6 +334,27 @@ class vhdlFile():
                         oLine.isEndCaseKeyword = True
                         oLine.indentLevel = iCurrentIndentLevel - 2
                         iCurrentIndentLevel -= 2
+
+                # Check function declarations
+                if fInsideArchitecture:
+                    if re.match('^\s*function\s', oLine.lineLower):
+                        fInsideFunction = True
+                        oLine.isFunctionKeyword = True
+                        oLine.indentLevel = iCurrentIndentLevel
+                        iCurrentIndentLevel += 1
+                    if fInsideFunction:
+                        oLine.insideFunction = True
+                        if re.match('^\s*begin', oLine.lineLower):
+                            oLine.isFunctionBegin = True
+                            oLine.indentLevel = iCurrentIndentLevel - 1
+                        if re.match('^\s*return', oLine.lineLower):
+                            oLine.isFunctionReturn = True
+                            oLine.indentLevel = iCurrentIndentLevel 
+                        if re.match('^\s*end', oLine.lineLower) and not oLine.isEndIfKeyword:
+                            oLine.isFunctionEnd = True
+                            oLine.indentLevel = iCurrentIndentLevel - 1
+                            iCurrentIndentLevel -= 1
+                            fInsideFunction = False
 
                 # Check sequential statements
                 if fInsideProcess:

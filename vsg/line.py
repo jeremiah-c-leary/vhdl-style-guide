@@ -97,3 +97,10 @@ class line():
         self.isGenerateBegin = False
         self.isGenerateKeyword = False
         self.isGenerateEnd = False
+        ## Function attributes
+        self.insideFunction = False
+        self.isFunctionBegin = False
+        self.isFunctionKeyword = False
+        self.isFunctionEnd = False
+        self.isFunctionReturn = False
+

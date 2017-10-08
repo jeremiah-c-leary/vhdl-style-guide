@@ -15,7 +15,7 @@ oFileEntity = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','ent
 oFileConcurrent = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','concurrent','concurrent_test_input.vhd'))
 oFileArchitecture = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','architecture','architecture_test_input.vhd'))
 oFileConstant = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','constant','constant_test_input.vhd'))
-
+oFileFunction = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','function','function_test_input.vhd'))
 
 class testVhdlFileMethods(unittest.TestCase):
 
@@ -222,6 +222,16 @@ class testVhdlFileMethods(unittest.TestCase):
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFileArchitecture.lines):
+            if oLine.isEndArchitecture:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
+    def test_isEndArchitecture_function_assignment(self):
+        lExpected = [18]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFileFunction.lines):
             if oLine.isEndArchitecture:
                 lActual.append(iIndex)
         # Compare
