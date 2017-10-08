@@ -95,6 +95,7 @@ class testRuleWhitespaceMethods(unittest.TestCase):
         oFile.lines.append(line.line('  This is a test of parenthesis ( failure'))
         oFile.lines.append(line.line('  This is a test of parenthesis (pass'))
         oFile.lines.append(line.line('  This is a test of parentehsis (  failure'))
+        oFile.lines.append(line.line('  This is a test of parentehsis (  7 pass'))
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 

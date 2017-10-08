@@ -77,7 +77,8 @@ class rule_005(whitespace_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if re.match('^.*\(\s+', oLine.line):
-                self.add_violation(iLineNumber)
+                if not re.match('^.*\(\s+[0-9]',oLine.line):
+                    self.add_violation(iLineNumber)
 
 
 class rule_006(whitespace_rule):
