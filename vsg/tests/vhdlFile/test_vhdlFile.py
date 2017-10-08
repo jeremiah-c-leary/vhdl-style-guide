@@ -228,7 +228,7 @@ class testVhdlFileMethods(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isEndArchitecture_function_assignment(self):
-        lExpected = [18]
+        lExpected = [30]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFileFunction.lines):
