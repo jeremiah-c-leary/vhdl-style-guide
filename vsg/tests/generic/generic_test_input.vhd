@@ -18,7 +18,7 @@ end entity ENTITY1
 
  entITy   entiTY2  IS
   generic (
-       G_GENERIC1 : std_logic :='0';
+       G_GENERIC1 : std_logic :='0'; G_GENERIC_3 : std_logic := '1';
     G_generic2 : std_logic := '1'
   );
 
