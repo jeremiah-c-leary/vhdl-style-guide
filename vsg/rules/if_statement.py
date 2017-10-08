@@ -203,5 +203,21 @@ class rule_011(if_rule):
             if oLine.isElseKeyword and not oFile.lines[iLineNumber + 2].isCaseKeyword:
                 self._is_no_blank_line_after(oFile, iLineNumber)
 
+
+class rule_012(if_rule):
+    '''If rule 012 checks for code after the "then" keyword.'''
+
+    def __init__(self):
+        if_rule.__init__(self)
+        self.identifier = '012'
+        self.solution = 'Move code after "then" keyword to the next line.' 
+        self.phase = 1
+
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isThenKeyword:
+                if re.match('^.*\sthen\s+\w', oLine.lineLower):
+                    self.add_violation(iLineNumber)
+
 #TODO:
 # check if, then, elsif, end if keywords are lower case

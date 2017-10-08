@@ -95,6 +95,10 @@ begin
 	g <= z;
     end if;
 
+    if (a = 2) then b <= d;
+    elsif (b = 3) then c <= e;
+    elsif (c = 4) then -- Not an error
+    end if;
 
 
   end process PROC_NAME;
