@@ -89,6 +89,11 @@ begin
        c<= d;
          e <= f;
 
+        a <= b or
+           -- c <= d or
+           -- e <= f or
+             c;
+
     end case;
 
 

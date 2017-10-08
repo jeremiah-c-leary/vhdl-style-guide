@@ -1,5 +1,6 @@
 
 from vsg import rule
+from vsg import line
 import re
 
 
@@ -76,7 +77,7 @@ class rule_004(sequential_rule):
             if oLine.isSequential:
                 iAlignmentColumn = oLine.line.find('<=') + len('<= ')
                 continue
-            if oLine.insideSequential:
+            if oLine.insideSequential and not oLine.isComment:
                 self._check_multiline_alignment(iAlignmentColumn, oLine, iLineNumber)
 
 
@@ -103,8 +104,25 @@ class rule_005(sequential_rule):
                 lGroup = []
                 iStartGroupIndex = None
             if fGroupFound:
-                lGroup.append(oLine)
+                if oLine.isComment:
+                    lGroup.append(line.line('Removed line'))
+                else:
+                    lGroup.append(oLine)
 
 
+class rule_006(sequential_rule):
+    '''Sequential rule 006 checks for commented out lines within a multiline sequential statement.'''
+
+    def __init__(self):
+        sequential_rule.__init__(self)
+        self.identifier = '006'
+        self.solution = 'Remove comment.'
+        self.phase = 1
+
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.insideSequential and oLine.isComment:
+                self.add_violation(iLineNumber)
+           
 
 

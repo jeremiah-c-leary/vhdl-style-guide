@@ -15,6 +15,15 @@ begin
           d <= f;
       end case;
 
+    else
+
+      case b
+        when 1 =>
+          c <= d;
+        when 2 =>
+          d <= f;
+      end case;
+
     end if;
 
   end process PROC_1;

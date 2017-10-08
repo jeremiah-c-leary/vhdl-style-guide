@@ -200,7 +200,7 @@ class rule_011(if_rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isElseKeyword:
+            if oLine.isElseKeyword and not oFile.lines[iLineNumber + 2].isCaseKeyword:
                 self._is_no_blank_line_after(oFile, iLineNumber)
 
 #TODO:

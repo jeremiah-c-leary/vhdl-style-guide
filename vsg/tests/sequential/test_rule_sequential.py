@@ -56,6 +56,14 @@ class testRuleSequentialMethods(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
+    def test_rule_006(self):
+        oRule = sequential.rule_006()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'sequential')
+        self.assertEqual(oRule.identifier, '006')
+        dExpected = [93,94]
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
 
 if __name__ == '__main__':
     unittest.main()
