@@ -98,6 +98,8 @@ begin
     if (a = 2) then b <= d;
     elsif (b = 3) then c <= e;
     elsif (c = 4) then -- Not an error
+      c <= f;
+    else g <= x;
     end if;
 
 

@@ -358,7 +358,7 @@ class vhdlFile():
 
                 # Check sequential statements
                 if fInsideProcess:
-                    if re.match('^.*<=', oLine.line) and not oLine.isComment and not oLine.insideIf:
+                    if re.match('^.*<=', oLine.line) and not oLine.isComment and not oLine.insideIf and not oLine.isElseKeyword:
                         oLine.isSequential = True
                         oLine.indentLevel = iCurrentIndentLevel
                         fInsideSequential = True

@@ -210,7 +210,7 @@ class rule_012(if_rule):
     def __init__(self):
         if_rule.__init__(self)
         self.identifier = '012'
-        self.solution = 'Move code after "then" keyword to the next line.' 
+        self.solution = 'Move code after "then" or "else" keyword to the next line.' 
         self.phase = 1
 
     def analyze(self, oFile):
@@ -218,6 +218,10 @@ class rule_012(if_rule):
             if oLine.isThenKeyword:
                 if re.match('^.*\sthen\s+\w', oLine.lineLower):
                     self.add_violation(iLineNumber)
+            elif oLine.isElseKeyword:
+                if re.match('^.*\selse\s+\w', oLine.lineLower):
+                    self.add_violation(iLineNumber)
+               
 
 #TODO:
 # check if, then, elsif, end if keywords are lower case
