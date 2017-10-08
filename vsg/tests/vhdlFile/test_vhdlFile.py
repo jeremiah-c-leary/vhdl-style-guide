@@ -318,7 +318,7 @@ class testVhdlFileMethods(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_insideConcurrent_assignment(self):
-        lExpected = [6,7,8,9,10,11,23,24,26,27,28,29,30,32,33,34,35,36,38,39,40,41,42]
+        lExpected = [6,7,8,9,10,11,23,24,26,27,28,29,30,32,33,34,35,36,38,39,40,41,42,44,45,46]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFileConcurrent.lines):
@@ -328,7 +328,7 @@ class testVhdlFileMethods(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isConcurrentBegin_assignment(self):
-        lExpected = [6,7,8,9,11,23,24,26,32,33,34,35,38,39,42]
+        lExpected = [6,7,8,9,11,23,24,26,32,33,34,35,38,39,42,44,45]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFileConcurrent.lines):
@@ -338,7 +338,7 @@ class testVhdlFileMethods(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isEndConcurrent_assignment(self):
-        lExpected = [6,7,8,10,11,23,24,30,32,33,34,36,38,41,42]
+        lExpected = [6,7,8,10,11,23,24,30,32,33,34,36,38,41,42,44,46]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFileConcurrent.lines):

@@ -11,7 +11,7 @@ class concurrent_rule(rule.rule):
 
 
 class rule_001(concurrent_rule):
-    '''Constant rule 001 checks for the proper indentation at the beginning of the line.'''
+    '''Concurrent rule 001 checks for the proper indentation at the beginning of the line.'''
 
     def __init__(self):
         concurrent_rule.__init__(self)
@@ -26,7 +26,7 @@ class rule_001(concurrent_rule):
 
 
 class rule_002(concurrent_rule):
-    '''Constant rule 002 checks there is a single space after the assignment.'''
+    '''Concurrent rule 002 checks there is a single space after the assignment.'''
 
     def __init__(self):
         concurrent_rule.__init__(self)
@@ -46,7 +46,7 @@ class rule_002(concurrent_rule):
 
 
 class rule_003(concurrent_rule):
-    '''Constant rule 003 checks the alignment of multiline concurrent assignments.'''
+    '''Concurrent rule 003 checks the alignment of multiline concurrent assignments.'''
 
     def __init__(self):
         concurrent_rule.__init__(self)
@@ -66,7 +66,7 @@ class rule_003(concurrent_rule):
 
 
 class rule_004(concurrent_rule):
-    '''Constant rule 004 checks there is at least a single space before the assignment.'''
+    '''Concurrent rule 004 checks there is at least a single space before the assignment.'''
 
     def __init__(self):
         concurrent_rule.__init__(self)
@@ -86,7 +86,7 @@ class rule_004(concurrent_rule):
 
 
 class rule_005(concurrent_rule):
-    '''Constant rule 005 checks for labels on concurrent assignments.'''
+    '''Concurrent rule 005 checks for labels on concurrent assignments.'''
 
     def __init__(self):
         concurrent_rule.__init__(self)
@@ -127,3 +127,17 @@ class rule_006(concurrent_rule):
                 lGroup.append(oLine)
 
 
+class rule_007(concurrent_rule):
+    '''Concurrent rule 007 checks for code after the "else" keyword.'''
+
+    def __init__(self):
+        concurrent_rule.__init__(self)
+        self.identifier = '007'
+        self.solution = 'Move code after "else" to the next line.'
+        self.phase = 1
+
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.insideConcurrent:
+                if re.match('^.*\selse\s+\w', oLine.lineLower):
+                    self.add_violation(iLineNumber)

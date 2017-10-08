@@ -63,5 +63,14 @@ class testRuleConcurrentMethods(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
+    def test_rule_007(self):
+        oRule = concurrent.rule_007()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'concurrent')
+        self.assertEqual(oRule.identifier, '007')
+        dExpected = [44]
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+
 if __name__ == '__main__':
     unittest.main()
