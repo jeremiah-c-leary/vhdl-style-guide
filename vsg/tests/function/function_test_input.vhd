@@ -24,6 +24,14 @@ architecture ARCH of ENTITY_1 is
    end;
   signal a : std_logic;
 
+  
+  function func_1 (a : integer
+                   b : integer
+                  ) return integer is
+  begin
+
+  end;
+
 begin
 
 

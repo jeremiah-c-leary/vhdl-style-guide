@@ -370,7 +370,7 @@ class vhdlFile():
                             oLine.isSequentialEnd = True
 
                 # Check instantiation statements
-                if fInsideArchitecture and not fInsideProcess and not oLine.isConcurrentBegin and not fInsideComponent and not fInsideGenerate:
+                if fInsideArchitecture and not fInsideProcess and not oLine.isConcurrentBegin and not fInsideComponent and not fInsideGenerate and not fInsideFunction:
                     if re.match('^\s*\w+\s*:\s*\w+', oLine.line):
                         oLine.isInstantiationDeclaration = True
                         oLine.indentLevel = iCurrentIndentLevel
