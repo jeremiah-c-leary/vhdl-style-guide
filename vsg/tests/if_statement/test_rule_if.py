@@ -119,6 +119,15 @@ class testRuleIfMethods(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
+    def test_rule_010_case(self):
+        oRule = if_statement.rule_010()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'if')
+        self.assertEqual(oRule.identifier, '010')
+        dExpected = []
+        oRule.analyze(oFileCase)
+        self.assertEqual(oRule.violations, dExpected)
+
     def test_rule_011(self):
         oRule = if_statement.rule_011()
         self.assertTrue(oRule)

@@ -185,7 +185,7 @@ class rule_010(if_rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isElseKeyword:
+            if oLine.isElseKeyword and not oFile.lines[iLineNumber - 2].isEndCaseKeyword:
                 self._is_no_blank_line_before(oFile, iLineNumber)
 
 
