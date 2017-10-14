@@ -102,6 +102,12 @@ begin
     else g <= x;
     end if;
 
+    if (a = 2) then b <= '1'; else b <= '0'; end if;
+
+    if (a = 2) then
+      a <= '0'; elsif
+      (b = 3) then b <= '1'; else
+      c <= '1'; end if;
 
   end process PROC_NAME;
 

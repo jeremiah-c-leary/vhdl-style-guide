@@ -41,7 +41,7 @@ class rule_002(if_rule):
                 if not re.match('^\s*if\s*\(', oLine.lineLower):
                     self.add_violation(iLineNumber)
             if oLine.isElseIfKeyword:
-                if not re.match('^\s*elsif\s*\(', oLine.lineLower):
+                if re.match('^\s*elsif\s+\w', oLine.lineLower):
                     self.add_violation(iLineNumber)
 
 
@@ -97,7 +97,7 @@ class rule_005(if_rule):
 
 
 class rule_006(if_rule):
-    '''If rule 006 checks for an empty line after the if statement.'''
+    '''If rule 006 checks for an empty line after the then keyword.'''
 
     def __init__(self):
         if_rule.__init__(self)
@@ -107,7 +107,7 @@ class rule_006(if_rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isThenKeyword and not oFile.lines[iLineNumber + 2].isCaseKeyword:
+            if oLine.isThenKeyword and not oFile.lines[iLineNumber + 2].isCaseKeyword and not oLine.isEndIfKeyword:
                 self._is_no_blank_line_after(oFile, iLineNumber)
 
 
@@ -137,7 +137,7 @@ class rule_008(if_rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isEndIfKeyword and not oFile.lines[iLineNumber - 2].isEndCaseKeyword:
+            if oLine.isEndIfKeyword and not oFile.lines[iLineNumber - 2].isEndCaseKeyword and not oLine.isIfKeyword:
                 self._is_no_blank_line_before(oFile, iLineNumber)
 
 
@@ -185,7 +185,7 @@ class rule_010(if_rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isElseKeyword and not oFile.lines[iLineNumber - 2].isEndCaseKeyword:
+            if oLine.isElseKeyword and not oFile.lines[iLineNumber - 2].isEndCaseKeyword and not oLine.isIfKeyword:
                 self._is_no_blank_line_before(oFile, iLineNumber)
 
 
@@ -200,7 +200,7 @@ class rule_011(if_rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isElseKeyword and not oFile.lines[iLineNumber + 2].isCaseKeyword:
+            if oLine.isElseKeyword and not oFile.lines[iLineNumber + 2].isCaseKeyword and not oLine.isEndIfKeyword:
                 self._is_no_blank_line_after(oFile, iLineNumber)
 
 
@@ -222,6 +222,37 @@ class rule_012(if_rule):
                 if re.match('^.*\selse\s+\w', oLine.lineLower):
                     self.add_violation(iLineNumber)
                
+
+class rule_013(if_rule):
+    '''If rule 013 checks the "else" keyword is on it's own line.'''
+
+    def __init__(self):
+        if_rule.__init__(self)
+        self.identifier = '013'
+        self.solution = 'Move "else" keyword to it\'s own line.' 
+        self.phase = 1
+
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isElseKeyword:
+                if not re.match('^\s*else', oLine.lineLower):
+                    self.add_violation(iLineNumber)
+
+
+class rule_014(if_rule):
+    '''If rule 014 checks the "end if" keyword is on it's own line.'''
+
+    def __init__(self):
+        if_rule.__init__(self)
+        self.identifier = '014'
+        self.solution = 'Move "end if" keyword to it\'s own line.' 
+        self.phase = 1
+
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isEndIfKeyword:
+                if not re.match('^\s*end\s+if', oLine.lineLower):
+                    self.add_violation(iLineNumber)
 
 #TODO:
 # check if, then, elsif, end if keywords are lower case

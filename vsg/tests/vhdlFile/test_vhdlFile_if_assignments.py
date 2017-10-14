@@ -9,7 +9,7 @@ class testVhdlFileIfAssignments(unittest.TestCase):
 
 
     def test_insideIf_assignment(self):
-        lExpected = [8,13,14,19,20,21,24,30,31,32,33,41,42,43,46,52,53,54,57,66,67,68,73,80,91,98,99,100]
+        lExpected = [8,13,14,19,20,21,24,30,31,32,33,41,42,43,46,52,53,54,57,66,67,68,73,80,91,98,99,100,105,107,108,109]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
@@ -19,7 +19,7 @@ class testVhdlFileIfAssignments(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isElseIfKeyword_assignment(self):
-        lExpected = [24,73,99,100]
+        lExpected = [24,73,99,100,108]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
@@ -29,7 +29,7 @@ class testVhdlFileIfAssignments(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isEndIfKeyword_assignment(self):
-        lExpected = [11,17,27,36,39,49,50,60,62,78,89,96,103]
+        lExpected = [11,17,27,36,39,49,50,60,62,78,89,96,103,105,110]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
@@ -39,7 +39,7 @@ class testVhdlFileIfAssignments(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isIfKeyword_assignment(self):
-        lExpected = [8,13,19,30,33,41,46,52,57,66,80,91,98]
+        lExpected = [8,13,19,30,33,41,46,52,57,66,80,91,98,105,107]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
@@ -49,7 +49,7 @@ class testVhdlFileIfAssignments(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isThenKeyword_assignment(self):
-        lExpected = [8,14,21,24,32,33,43,46,54,57,68,73,80,91,98,99,100]
+        lExpected = [8,14,21,24,32,33,43,46,54,57,68,73,80,91,98,99,100,105,107,109]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
@@ -59,7 +59,7 @@ class testVhdlFileIfAssignments(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isElseKeyword_assignment(self):
-        lExpected = [85,94,102]
+        lExpected = [85,94,102,105,109]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):

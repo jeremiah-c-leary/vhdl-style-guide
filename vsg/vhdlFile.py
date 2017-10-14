@@ -293,22 +293,23 @@ class vhdlFile():
                         fInsideIfStatement = True
                         oLine.indentLevel = iCurrentIndentLevel
                         iCurrentIndentLevel += 1
-                    if re.match('^\s*elsif', oLine.lineLower):
+                    if re.match('^\s*elsif', oLine.lineLower) or re.match('^.*\selsif', oLine.lineLower):
                         oLine.isElseIfKeyword = True
                         fInsideIfStatement = True
                         oLine.indentLevel = iCurrentIndentLevel - 1
-                    if re.match('^\s*end\s+if', oLine.lineLower):
-                        oLine.isEndIfKeyword = True
-                        iCurrentIndentLevel -= 1
-                        oLine.indentLevel = iCurrentIndentLevel
                     if fInsideIfStatement:
                         oLine.insideIf = True
                     if fInsideIfStatement and 'then' in oLine.lineLower:
                         oLine.isThenKeyword = True
                         fInsideIfStatement = False
-                    if re.match('^\s*else', oLine.lineLower):
+                    if re.match('^\s*else', oLine.lineLower) or re.match('^.*\selse', oLine.lineLower):
                         oLine.isElseKeyword = True
                         oLine.indentLevel = iCurrentIndentLevel - 1
+                    if re.match('^\s*end\s+if', oLine.lineLower) or re.match('^.*\send\s+if', oLine.lineLower):
+                        oLine.isEndIfKeyword = True
+                        iCurrentIndentLevel -= 1
+                        oLine.indentLevel = iCurrentIndentLevel
+                        fInsideIfStatement = False
 
                 # Check case statements
                 if fInsideProcess:

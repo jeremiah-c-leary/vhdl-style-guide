@@ -16,7 +16,7 @@ class testRuleIfMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'if')
         self.assertEqual(oRule.identifier, '001')
-        dExpected = [11,13,24,27,33,36,39,60,85]
+        dExpected = [11,13,24,27,33,36,39,60,85,108,109,110]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -151,7 +151,25 @@ class testRuleIfMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'if')
         self.assertEqual(oRule.identifier, '012')
-        dExpected = [98,99,102]
+        dExpected = [98,99,102,105,109]
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_013(self):
+        oRule = if_statement.rule_013()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'if')
+        self.assertEqual(oRule.identifier, '013')
+        dExpected = [105,109]
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_014(self):
+        oRule = if_statement.rule_014()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'if')
+        self.assertEqual(oRule.identifier, '014')
+        dExpected = [105,110]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
