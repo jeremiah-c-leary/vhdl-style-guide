@@ -179,7 +179,7 @@ class rule_011(port_rule):
         self.identifier = '011'
         self.solution = 'Add proper prefix or suffix indicating port direction.'
 #        self.port_direction = 'Prefix'
-        self.port_direction = 'Suffix'
+        self.port_direction = None
         self.phase = 7
 
     def analyze(self, oFile):
