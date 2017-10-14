@@ -312,7 +312,7 @@ class vhdlFile():
                         fInsideIfStatement = False
 
                 # Check case statements
-                if fInsideProcess:
+                if fInsideProcess or fInsideFunction:
                     if re.match('^\s*case\s', oLine.lineLower):
                         oLine.isCaseKeyword = True
                         oLine.indentLevel = iCurrentIndentLevel
@@ -351,7 +351,7 @@ class vhdlFile():
                         if re.match('^\s*return', oLine.lineLower):
                             oLine.isFunctionReturn = True
                             oLine.indentLevel = iCurrentIndentLevel 
-                        if re.match('^\s*end', oLine.lineLower) and not oLine.isEndIfKeyword:
+                        if re.match('^\s*end', oLine.lineLower) and not oLine.isEndIfKeyword and not oLine.isEndCaseKeyword:
                             oLine.isFunctionEnd = True
                             oLine.indentLevel = iCurrentIndentLevel - 1
                             iCurrentIndentLevel -= 1

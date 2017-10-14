@@ -32,6 +32,19 @@ architecture ARCH of ENTITY_1 is
 
   end;
 
+
+  function func_1 (a : integer) return integer is
+  begin
+
+    case A is
+      when 0 =>
+      when 1 =>
+      when others =>
+    end case;
+
+  end;
+
+
 begin
 
 

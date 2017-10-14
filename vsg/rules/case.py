@@ -183,18 +183,19 @@ class rule_011(case_rule):
 
 
 class rule_012(case_rule):
-    '''Case rule 012 ensures a when keyword is not on the same line as a sequential statement.'''
+    '''Case rule 012 ensures code does not exist after the => operator.'''
 
     def __init__(self):
         case_rule.__init__(self)
         self.identifier = '012'
-        self.solution = 'Move sequential statement to it\'s own line.'
+        self.solution = 'Move code after the => operator to it\'s own line.'
         self.phase = 1
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isCaseWhenEnd and oLine.isSequential:
-                self.add_violation(iLineNumber)
+            if oLine.isCaseWhenEnd:
+                if re.match('^.*=>\s*\w', oLine.line):
+                    self.add_violation(iLineNumber)
 
 
 #TODO:

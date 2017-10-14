@@ -96,6 +96,8 @@ begin
 
     end case;
 
+    a <=
+         b;
 
   end process PROC_2;
 

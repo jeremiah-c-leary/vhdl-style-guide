@@ -41,8 +41,9 @@ class rule_002(sequential_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isSequential:
-                if not re.match('^.*<=\s\S', oLine.line):
-                    self.add_violation(iLineNumber)
+                if re.match('^.*<=\s*\S', oLine.line):
+                  if not re.match('^.*<=\s\S', oLine.line):
+                      self.add_violation(iLineNumber)
 
 
 class rule_003(sequential_rule):
