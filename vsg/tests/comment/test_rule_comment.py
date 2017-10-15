@@ -54,6 +54,11 @@ class testRuleCommentMethods(unittest.TestCase):
         oRule.analyze(oFileProcess)
         self.assertEqual(oRule.violations, dExpected)
 
+    def test_rule_004(self):
+        oRule = comment.rule_004()
+        dExpected = [39]
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
 
 if __name__ == '__main__':
     unittest.main()

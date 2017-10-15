@@ -104,3 +104,21 @@ class rule_003(comment_rule):
                     lGroup.append(oLine)
 
 
+class rule_004(comment_rule):
+    '''Comment rule 004 ensures there is at least one space before comments on a line with code.'''
+
+    def __init__(self):
+        comment_rule.__init__(self)
+        self.identifier = '004'
+        self.solution = 'Add a space before the comment --'
+        self.phase = 2 
+
+    def analyze(self, oFile):
+        lGroup = []
+        fGroupFound = False
+        iStartGroupIndex = None
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.hasComment and not oLine.isComment:
+                if not re.match('^.*\s--', oLine.line):
+                    self.add_violation(iLineNumber)
+

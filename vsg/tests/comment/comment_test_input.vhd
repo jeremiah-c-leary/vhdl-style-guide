@@ -36,7 +36,7 @@ end architecture
 
 entity ENTITY is
   generic (
-    G_GENERIC_1 : std_logic := '1';  -- Comment
+    G_GENERIC_1 : std_logic := '1';-- Comment
     G_GENERIC_2 : std_logic := '0';   -- Comment
     -- Comment
     G_GENERIC_3 : std_logic := '1';  -- Comment
