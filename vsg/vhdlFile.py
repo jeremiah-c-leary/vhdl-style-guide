@@ -22,6 +22,8 @@ class vhdlFile():
 
         fInsideIfStatement = False
 
+        fInsideForLoop = False
+
         fInsideCase = False
         fInsideCaseWhen = False
 
@@ -285,6 +287,21 @@ class vhdlFile():
                         if re.match('.*;', oLine.line):
                             fInsideConcurrent = False
                             oLine.isEndConcurrent = True
+
+                # check for loop statements
+                if fInsideProcess:
+                    if re.match('^\s*for\s.*\sin\s.*\sloop', oLine.lineLower):
+                        oLine.isForLoopKeyword = True
+                        fInsideForLoop = True
+                        oLine.indentLevel = iCurrentIndentLevel
+                        iCurrentIndentLevel += 1
+                    if fInsideForLoop:
+                        oLine.insideForLoop = True
+                        if re.match('^\s*end\s+loop', oLine.lineLower):
+                            oLine.isForLoopEnd = True
+                            iCurrentIndentLevel -= 1
+                            oLine.indentLevel = iCurrentIndentLevel
+                            fInsideForLoop = False
 
                 # Check if statements
                 if fInsideProcess or fInsideFunction:

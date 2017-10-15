@@ -489,5 +489,24 @@ class testLineMethods(unittest.TestCase):
         oLine.isFunctionReturn = True
         self.assertEqual(oLine.isFunctionReturn, True)
 
+    def test_insideForLoop_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.insideForLoop, False)
+        oLine.insideForLoop = True
+        self.assertEqual(oLine.insideForLoop, True)
+
+    def test_isForLoopKeyword_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isForLoopKeyword, False)
+        oLine.isForLoopKeyword = True
+        self.assertEqual(oLine.isForLoopKeyword, True)
+
+    def test_isForLoopEnd_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isForLoopEnd, False)
+        oLine.isForLoopEnd = True
+        self.assertEqual(oLine.isForLoopEnd, True)
+
+
 if __name__ == '__main__':
     unittest.main()
