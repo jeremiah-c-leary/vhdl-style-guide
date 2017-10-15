@@ -371,3 +371,20 @@ class rule_021(instantiation_rule):
             if oLine.isInstantiationPortAssignment:
                 if re.match('^\s*\S+\s*=>\s*\S+,\s*\S+\s*=>', oLine.line):
                     self.add_violation(iLineNumber)
+
+
+class rule_022(instantiation_rule):
+    '''Instantiation rule 022 checks for a single space after the => operator.'''
+
+    def __init__(self):
+        instantiation_rule.__init__(self)
+        self.identifier = '022'
+        self.solution = 'Only a single space after => operator.'
+        self.phase = 2
+
+    def analyze(self, oFile):
+        lFailureLines = []
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isInstantiationPortAssignment and not oLine.isInstantiationPortKeyword:
+                if not re.match('^.*=>\s\S+', oLine.line):
+                    self.add_violation(iLineNumber)

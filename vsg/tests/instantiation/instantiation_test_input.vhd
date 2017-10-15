@@ -23,8 +23,8 @@ begin
   U_INST1 : InST1
     port map (
      port_1 => w_port_1,
-     port_2 => w_port_2,
-     port_3 => w_port_3
+     port_2 =>  w_port_2,
+     port_3 =>w_port_3
     );
   U_INST1 : INST1
 

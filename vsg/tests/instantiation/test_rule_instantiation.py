@@ -232,6 +232,15 @@ class testRuleInstantiationMethods(unittest.TestCase):
         oRule.analyze(oFilePort)
         self.assertEqual(oRule.violations, dExpected)
 
+    def test_rule_022(self):
+        oRule = instantiation.rule_022()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'instantiation')
+        self.assertEqual(oRule.identifier, '022')
+
+        dExpected = [26,27]
+        oRule.analyze(oFilePort)
+        self.assertEqual(oRule.violations, dExpected)
 
 if __name__ == '__main__':
     unittest.main()
