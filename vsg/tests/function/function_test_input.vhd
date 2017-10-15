@@ -13,7 +13,7 @@ architecture ARCH of ENTITY_1 is
   end;
 
 
- function func_1 (a : integer) return integer is
+ function  func_1 (a : integer) return integer is
    begin
      return 10;
  end;
@@ -25,15 +25,15 @@ architecture ARCH of ENTITY_1 is
   signal a : std_logic;
 
   
-  function func_1 (a : integer
+  function func_1(a : integer
                    b : integer
                   ) return integer is
-  begin
+  BEGIN
 
   end;
 
 
-  function func_1 (a : integer) return integer is
+  FUNCTION func_1 (a : integer) return integer is
   begin
 
     case A is

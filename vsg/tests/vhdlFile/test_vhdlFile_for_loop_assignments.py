@@ -38,7 +38,6 @@ class testVhdlFileForLoopAssignments(unittest.TestCase):
         # Compare
         self.assertEqual(lActual, lExpected)
 
-
     def test_ForLoopIndent(self):
         #           [   0,   1,2,   3,4,   5,6,7,   8,9,10,11,  12,13,   14]
         lExpected = [None,None,0,None,0,None,1,1,None,2, 3, 2,None, 1, None]

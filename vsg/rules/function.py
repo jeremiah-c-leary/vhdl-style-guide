@@ -25,85 +25,72 @@ class rule_001(function_rule):
                 self._check_indent(oLine, iLineNumber)
 
 
-#class rule_002(function_rule):
-#    '''Function rule 002 checks there is a single space between the function keyword and the (.'''
-#
-#    def __init__(self):
-#        function_rule.__init__(self)
-#        self.identifier = '002'
-#        self.solution = 'Ensure a single space exists between the "function" keyword and the (.' 
-#        self.phase = 2
-#
-#    def analyze(self, oFile):
-#        fInsideFunction = False
-#        for iLineNumber, oLine in enumerate(oFile.lines):
-#            if oLine.isFunctionKeyword:
-#                if not re.match('^\s*.*function\s\(', oLine.lineLower):
-#                    self.add_violation(iLineNumber)
-#
-#
-#class rule_003(function_rule):
-#    '''Function rule 003 checks for the proper indentation at the beginning of the line.'''
-#
-#    def __init__(self):
-#        function_rule.__init__(self)
-#        self.identifier = '003'
-#        self.solution = 'Check indentation before "begin" keyword.'
-#        self.phase = 4
-#
-#    def analyze(self, oFile):
-#        for iLineNumber, oLine in enumerate(oFile.lines):
-#            if oLine.isFunctionBegin:
-#                self._check_indent(oLine, iLineNumber)
-#
-#
-#class rule_004(function_rule):
-#    '''Function rule 004 checks the "begin" keyword is lower case.'''
-#
-#    def __init__(self):
-#        function_rule.__init__(self)
-#        self.identifier = '004'
-#        self.solution = 'Lowercase the "begin" keyword.' 
-#        self.phase = 6
-#
-#    def analyze(self, oFile):
-#        fInsideFunction = False
-#        for iLineNumber, oLine in enumerate(oFile.lines):
-#            if oLine.isFunctionBegin:
-#                self._is_lowercase(self._get_first_word(oLine), iLineNumber)
-#
-#
-#class rule_005(function_rule):
-#    '''Function rule 004 checks the "function" keyword is lower case.'''
-#
-#    def __init__(self):
-#        function_rule.__init__(self)
-#        self.identifier = '005'
-#        self.solution = 'Lowercase the "function" keyword.' 
-#        self.phase = 6
-#
-#    def analyze(self, oFile):
-#        for iLineNumber, oLine in enumerate(oFile.lines):
-#            if oLine.isFunctionKeyword:
-#                if not re.match('^\s*.*function', oLine.line):
-#                    self.add_violation(iLineNumber)
-#
-#
-#class rule_006(function_rule):
-#    '''Function rule 006 checks for the proper indentation at the beginning of the line.'''
-#
-#    def __init__(self):
-#        function_rule.__init__(self)
-#        self.identifier = '006'
-#        self.solution = 'Ensure there are only two spaces before "end" keyword.'
-#        self.phase = 4
-#
-#    def analyze(self, oFile):
-#        for iLineNumber, oLine in enumerate(oFile.lines):
-#            if oLine.isEndFunction:
-#                self._check_indent(oLine, iLineNumber)
-#
-#
+class rule_002(function_rule):
+    '''Function rule 002 checks there is a single space between the function keyword and the function name.'''
+
+    def __init__(self):
+        function_rule.__init__(self)
+        self.identifier = '002'
+        self.solution = 'Ensure a single space exists between the "function" keyword and the function name.' 
+        self.phase = 2
+
+    def analyze(self, oFile):
+        fInsideFunction = False
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isFunctionKeyword:
+                if not re.match('^\s*function\s\w', oLine.lineLower):
+                    self.add_violation(iLineNumber)
+
+
+class rule_003(function_rule):
+    '''Function rule 003 checks there is a single space between the function name and the (.'''
+
+    def __init__(self):
+        function_rule.__init__(self)
+        self.identifier = '003'
+        self.solution = 'Ensure a single space exists between the function name and the (.' 
+        self.phase = 2
+
+    def analyze(self, oFile):
+        fInsideFunction = False
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isFunctionKeyword:
+                if not re.match('^\s*function\s+\w+\s\(', oLine.lineLower):
+                    self.add_violation(iLineNumber)
+
+
+class rule_004(function_rule):
+    '''Function rule 004 checks the "begin" keyword is lower case.'''
+
+    def __init__(self):
+        function_rule.__init__(self)
+        self.identifier = '004'
+        self.solution = 'Lowercase the "begin" keyword.' 
+        self.phase = 6
+
+    def analyze(self, oFile):
+        fInsideFunction = False
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isFunctionBegin:
+                self._is_lowercase(self._get_first_word(oLine), iLineNumber)
+
+
+class rule_005(function_rule):
+    '''Function rule 005 checks the "function" keyword is lower case.'''
+
+    def __init__(self):
+        function_rule.__init__(self)
+        self.identifier = '005'
+        self.solution = 'Lowercase the "function" keyword.' 
+        self.phase = 6
+
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isFunctionKeyword:
+                if not re.match('^\s*function', oLine.line):
+                    self.add_violation(iLineNumber)
+
+
 #class rule_007(function_rule):
 #    '''Function rule 007 checks for a single space between the "end" and "function" keywords.'''
 #

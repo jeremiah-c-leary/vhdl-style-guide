@@ -20,42 +20,42 @@ class testRuleProcessMethods(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
-#    def test_rule_002(self):
-#        oRule = function.rule_002()
-#        self.assertTrue(oRule)
-#        self.assertEqual(oRule.name, 'function')
-#        self.assertEqual(oRule.identifier, '002')
-#        dExpected = [17,24]
-#        oRule.analyze(oFile)
-#        self.assertEqual(oRule.violations, dExpected)
-#
-#    def test_rule_003(self):
-#        oRule = function.rule_003()
-#        self.assertTrue(oRule)
-#        self.assertEqual(oRule.name, 'function')
-#        self.assertEqual(oRule.identifier, '003')
-#        dExpected = [20,40]
-#        oRule.analyze(oFile)
-#        self.assertEqual(oRule.violations, dExpected)
-#
-#    def test_rule_004(self):
-#        oRule = function.rule_004()
-#        self.assertTrue(oRule)
-#        self.assertEqual(oRule.name, 'function')
-#        self.assertEqual(oRule.identifier, '004')
-#        dExpected = [20,28]
-#        oRule.analyze(oFile)
-#        self.assertEqual(oRule.violations, dExpected)
-#
-#    def test_rule_005(self):
-#        oRule = function.rule_005()
-#        self.assertTrue(oRule)
-#        self.assertEqual(oRule.name, 'function')
-#        self.assertEqual(oRule.identifier, '005')
-#        dExpected = [17,24,32]
-#        oRule.analyze(oFile)
-#        self.assertEqual(oRule.violations, dExpected)
-#
+    def test_rule_002(self):
+        oRule = function.rule_002()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'function')
+        self.assertEqual(oRule.identifier, '002')
+        dExpected = [16]
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_003(self):
+        oRule = function.rule_003()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'function')
+        self.assertEqual(oRule.identifier, '003')
+        dExpected = [28]
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_004(self):
+        oRule = function.rule_004()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'function')
+        self.assertEqual(oRule.identifier, '004')
+        dExpected = [31]
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_005(self):
+        oRule = function.rule_005()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'function')
+        self.assertEqual(oRule.identifier, '005')
+        dExpected = [36]
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+
 #    def test_rule_006(self):
 #        oRule = function.rule_006()
 #        self.assertTrue(oRule)
