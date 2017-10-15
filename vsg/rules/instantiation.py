@@ -355,3 +355,19 @@ class rule_020(instantiation_rule):
             if oLine.isInstantiationPortAssignment and oLine.isInstantiationPortKeyword:
                 self.add_violation(iLineNumber)
 
+
+class rule_021(instantiation_rule):
+    '''Instantiation rule 021 checks multiple port assignments on the same line.'''
+
+    def __init__(self):
+        instantiation_rule.__init__(self)
+        self.identifier = '021'
+        self.solution = 'Move multiple port assignments to their own lines.'
+        self.phase = 1
+
+    def analyze(self, oFile):
+        lFailureLines = []
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isInstantiationPortAssignment:
+                if re.match('^\s*\S+\s*=>\s*\S+,\s*\S+\s*=>', oLine.line):
+                    self.add_violation(iLineNumber)
