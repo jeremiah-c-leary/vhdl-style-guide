@@ -107,4 +107,8 @@ class line():
         self.insideForLoop = False
         self.isForLoopKeyword = False
         self.isForLoopEnd = False
+        ## Type attributes
+        self.insideType = False
+        self.isTypeKeyword = False
+        self.isTypeEnd = False
 

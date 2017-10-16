@@ -507,6 +507,23 @@ class testLineMethods(unittest.TestCase):
         oLine.isForLoopEnd = True
         self.assertEqual(oLine.isForLoopEnd, True)
 
+    def test_isTypeEnd_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isTypeEnd, False)
+        oLine.isTypeEnd = True
+        self.assertEqual(oLine.isTypeEnd, True)
+
+    def test_isTypeKeyword_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isTypeKeyword, False)
+        oLine.isTypeKeyword = True
+        self.assertEqual(oLine.isTypeKeyword, True)
+
+    def test_insideType_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.insideType, False)
+        oLine.insideType= True
+        self.assertEqual(oLine.insideType, True)
 
 if __name__ == '__main__':
     unittest.main()

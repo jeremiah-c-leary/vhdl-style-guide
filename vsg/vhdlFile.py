@@ -22,6 +22,8 @@ class vhdlFile():
 
         fInsideIfStatement = False
 
+        fInsideType = False
+
         fInsideForLoop = False
 
         fInsideCase = False
@@ -373,6 +375,22 @@ class vhdlFile():
                             oLine.indentLevel = iCurrentIndentLevel - 1
                             iCurrentIndentLevel -= 1
                             fInsideFunction = False
+
+                # Check type declarations
+                if fInsideArchitecture:
+                    if re.match('^\s*type\s', oLine.lineLower):
+                        fInsideType = True
+                        oLine.isTypeKeyword = True
+                        oLine.indentLevel = iCurrentIndentLevel
+                        iCurrentIndentLevel += 1
+                    if fInsideType:
+                        oLine.insideType = True
+                        if not oLine.isTypeKeyword and not oLine.isBlank:
+                            oLine.indentLevel = iCurrentIndentLevel
+                        if ';' in oLine.line:
+                            fInsideType = False
+                            oLine.isTypeEnd = True
+                            iCurrentIndentLevel -= 1
 
                 # Check sequential statements
                 if fInsideProcess:
