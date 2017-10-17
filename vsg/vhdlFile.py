@@ -219,7 +219,7 @@ class vhdlFile():
                         oLine.indentLevel = 1
 
                 # Check Constant declarations
-                if fInsideArchitecture:
+                if fInsideArchitecture or fInsidePackage:
                     if re.match('^\s*constant', oLine.lineLower):
                         oLine.isConstant = True
                         oLine.indentLevel = 1
@@ -377,7 +377,7 @@ class vhdlFile():
                             fInsideFunction = False
 
                 # Check type declarations
-                if fInsideArchitecture:
+                if fInsideArchitecture or fInsidePackage:
                     if re.match('^\s*type\s', oLine.lineLower):
                         fInsideType = True
                         oLine.isTypeKeyword = True

@@ -13,3 +13,9 @@ constant const  :  std_logic:='0';
 begin
 
 end architecture ARCH;
+
+package PACK is
+
+  constant const : std_logic := '0';
+
+end package PACK;

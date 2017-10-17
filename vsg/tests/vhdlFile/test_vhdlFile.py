@@ -248,7 +248,7 @@ class testVhdlFileMethods(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isConstant_assignment(self):
-        lExpected = [5,6,7,8,9,10]
+        lExpected = [5,6,7,8,9,10,19]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFileConstant.lines):
