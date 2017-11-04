@@ -27,7 +27,7 @@ end entity ENTITY1
   o_port2 :  out   STD_LOGIC;
     io_port3 : inout       std_logic;
       PORT4 :in std_logic;
-    PORT5 :  out std_logic;
+    PORT5 :  out std_logic_vector(G_GENERIC1 downto 0);
     PORT6 : inout std_logic  );
 
  end entity    entiTY2

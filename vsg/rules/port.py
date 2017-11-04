@@ -305,7 +305,11 @@ class rule_018(port_rule):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isPortDeclaration:
                 sLine = oLine.line.split(':')[1]
-                self._is_lowercase(sLine.split()[1],iLineNumber)
+                if '(' in sLine:
+                    sLine = sLine.split('(')[0]
+                    self._is_lowercase(sLine, iLineNumber)
+                else:
+                    self._is_lowercase(sLine.split()[1],iLineNumber)
 
 
 class rule_019(port_rule):

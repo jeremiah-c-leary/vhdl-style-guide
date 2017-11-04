@@ -41,6 +41,7 @@ class vhdlFile():
         fInsidePackageBody = False
 
         fInsideGenerate = False
+        fGenerateBeginFound = False
 
         fInsideFunction = False
 
@@ -229,7 +230,7 @@ class vhdlFile():
                     if re.match('^\s*process', oLine.lineLower) or re.match('^\s*\S+\s*:\s*process', oLine.lineLower) and not oLine.isComment:
                         fInsideProcess = True
                         oLine.isProcessKeyword = True
-                        oLine.indentLevel = 1
+                        oLine.indentLevel = iCurrentIndentLevel
                     if fInsideProcess == True:
                         oLine.insideProcess = True
                         # Check sensitivity list
@@ -246,18 +247,18 @@ class vhdlFile():
                                 oLine.isSensitivityListEnd = True
                                 iOpenParenthesis = 0
                                 iCloseParenthesis = 0
-                                iCurrentIndentLevel = 2
+                                iCurrentIndentLevel += 1
                         if re.match('^.*\s+begin', oLine.lineLower) or re.match('^\s*begin', oLine.lineLower):
-                            oLine.indentLevel = 1
+                            oLine.indentLevel = iCurrentIndentLevel - 1
                             oLine.isProcessBegin = True
                             fFoundProcessBegin = True
-                            iCurrentIndentLevel = 2
+                            #iCurrentIndentLevel += 1
                         if re.match('^\s*end\s+process', oLine.lineLower):
                             fInsideProcess = False
-                            oLine.indentLevel = 1
+                            oLine.indentLevel = iCurrentIndentLevel - 1
                             oLine.isEndProcess = True
                             fFoundProcessBegin = False
-                            iCurrentIndentLevel = 1
+                            iCurrentIndentLevel = iCurrentIndentLevel - 1
                             fSensitivityListFound = False
 
                 # Check generate declarations
@@ -268,15 +269,17 @@ class vhdlFile():
                         if re.match('^\s*\w+\s*:\s*if\s.*\sgenerate', oLine.lineLower):
                             oLine.isGenerateKeyword = True
                             oLine.indentLevel = iCurrentIndentLevel
+                            iCurrentIndentLevel += 1
                         if re.match('^\s*begin', oLine.lineLower):
                             oLine.isGenerateBegin = True
-                            oLine.indentLevel = iCurrentIndentLevel
-                            iCurrentIndentLevel += 1
+                            oLine.indentLevel = iCurrentIndentLevel - 1
+                            fGenerateBeginFound = True
                         if re.match('^\s*end\s+generate', oLine.lineLower):
                             fInsideGenerate = False
                             oLine.isGenerateEnd = True
                             iCurrentIndentLevel -= 1
                             oLine.indentLevel = iCurrentIndentLevel
+                            fGenerateBeginFound = False
 
                 # Check concurrent declarations
                 if fInsideArchitecture and not fInsideProcess:
