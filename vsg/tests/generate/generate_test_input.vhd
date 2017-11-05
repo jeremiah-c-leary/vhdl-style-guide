@@ -13,7 +13,7 @@ begin
     a <= b;
    end generate generate_1;
 
- GENERATE_1 : if CONDITION = '1' GENERATE
+ generate_1 : if CONDITION = '1' GENERATE
    BEGIN
     a <= b;
 END GENERATE generate_1;
