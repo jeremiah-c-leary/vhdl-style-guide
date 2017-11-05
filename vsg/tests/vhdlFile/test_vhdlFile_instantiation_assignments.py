@@ -5,6 +5,7 @@ from vsg import vhdlFile
 
 oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','instantiation','instantiation_test_input.vhd'))
 oFileGeneric = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','instantiation','instantiation_generic_test_input.vhd'))
+oFileGenerate = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','instantiation','instantiation_generate_test_input.vhd'))
 
 
 class testVhdlFileInstantiationAssignments(unittest.TestCase):
@@ -99,6 +100,16 @@ class testVhdlFileInstantiationAssignments(unittest.TestCase):
         for iIndex, oLine in enumerate(oFileGeneric.lines):
             if oLine.insideInstantiation:
                 lActual.append(oLine.indentLevel)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
+    def test_isInstantiation_assignment_inside_generate(self):
+        lExpected = [8]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFileGenerate.lines):
+            if oLine.isInstantiationDeclaration:
+                lActual.append(iIndex)
         # Compare
         self.assertEqual(lActual, lExpected)
 
