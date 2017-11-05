@@ -106,7 +106,6 @@ class line():
         self.isFunctionEnd = False
         self.isFunctionReturn = False
         ## For Loop attributes
-        self.insideForLoop = False
         self.isForLoopKeyword = False
         self.isForLoopEnd = False
         ## Type attributes

@@ -9,7 +9,7 @@ class testVhdlFileForLoopAssignments(unittest.TestCase):
 
 
     def test_isForLoopKeyword(self):
-        lExpected = [9]
+        lExpected = [9,19,21,26]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
@@ -19,21 +19,11 @@ class testVhdlFileForLoopAssignments(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isForLoopEnd(self):
-        lExpected = [11]
+        lExpected = [11,23,24,28]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
             if oLine.isForLoopEnd:
-                lActual.append(iIndex)
-        # Compare
-        self.assertEqual(lActual, lExpected)
-
-    def test_insideForLoop(self):
-        lExpected = [9,10,11]
-        # Generic actual list
-        lActual = []
-        for iIndex, oLine in enumerate(oFile.lines):
-            if oLine.insideForLoop:
                 lActual.append(iIndex)
         # Compare
         self.assertEqual(lActual, lExpected)
