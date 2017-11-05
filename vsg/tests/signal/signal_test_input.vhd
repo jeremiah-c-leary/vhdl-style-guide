@@ -10,7 +10,7 @@ architecture ARCH of ENTITY is
   signal d_sig :std_logic_vector(31 downto 0);
   siGNal e_sig: std_logic_vector(31 downto 0) := "0";
   signal   SIg : STD_LOGIC_VECTOR(31 downto 0);
-  signAL sig :   std_logic_vector(31 downto 0);
+  signAL sig :   std_logic_vector(GENERIC_1 downto 0);
   signal sig :std_logic_vector(31 downto 0);
      signal sIg : std_logic_vector(31 downto 0);
   signal sig :   std_logic_vector(31 downto 0) := (others => '0');

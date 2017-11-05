@@ -188,5 +188,9 @@ class rule_010(signal_rule):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isSignal:
                 if re.match('^\s*signal\s+\w+\s+:\s+\w', oLine.lineLower):
-                    self._is_lowercase(oLine.line.split()[3], iLineNumber)
+                    sLine = oLine.line.split()[3]
+                    if '(' in sLine:
+                        self._is_lowercase(sLine.split('(')[0], iLineNumber)
+                    else:
+                        self._is_lowercase(oLine.line.split()[3], iLineNumber)
 
