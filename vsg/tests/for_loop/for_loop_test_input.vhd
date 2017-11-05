@@ -16,11 +16,11 @@ begin
   begin
 
     if (A = 1) then
-      for index in 3 to 72 loop
+       for index in 3 to 72 loop
         sig1(index) <= '1';
-        for j in 0 to 32 loop
+       for j in 0 to 32 loop
           sig2(index) <= '0';
-        end loop;
+         end loop;
       end loop;
     elsif (B = 0) then
       for index in 2 to 16 loop
