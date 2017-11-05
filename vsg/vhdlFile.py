@@ -31,6 +31,8 @@ class vhdlFile():
 
         fInsideSequential = False
 
+        fInsideVariableAssignment = False
+
         fInsideComponent = False
 
         fInsideInstantiation = False
@@ -414,8 +416,20 @@ class vhdlFile():
                             fInsideSequential = False
                             oLine.isSequentialEnd = True
 
+                # Check variable assignment statements
+                if fInsideProcess:
+                    if re.match('^.*:=', oLine.line) and not oLine.isComment and not oLine.insideIf and not oLine.isElseKeyword and not oLine.isVariable:
+                        oLine.isVariableAssignment = True
+                        oLine.indentLevel = iCurrentIndentLevel
+                        fInsideVariableAssignment = True
+                        oLine.variableAssignmentAlignmentColumn = oLine.line.find(':=')
+                    if fInsideVariableAssignment:
+                        oLine.insideVariableAssignment = True
+                        if ';' in oLine.line:
+                            fInsideVariableAssignment = False
+                            oLine.isVariableAssignmentEnd = True
+
                 # Check instantiation statements
-#                if fInsideArchitecture and not fInsideProcess and not oLine.isConcurrentBegin and not fInsideComponent and not fInsideGenerate and not fInsideFunction:
                 if fInsideArchitecture and not fInsideProcess and not oLine.isConcurrentBegin and not fInsideComponent and not oLine.isGenerateKeyword and not fInsideFunction:
                     if re.match('^\s*\w+\s*:\s*\w+', oLine.line):
                         oLine.isInstantiationDeclaration = True

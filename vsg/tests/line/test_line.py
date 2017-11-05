@@ -531,5 +531,30 @@ class testLineMethods(unittest.TestCase):
         oLine.isVariable = True
         self.assertEqual(oLine.isVariable, True)
 
+    def test_insideVariableAssignment_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.insideVariableAssignment, False)
+        oLine.insideVariableAssignment = True
+        self.assertEqual(oLine.insideVariableAssignment, True)
+
+    def test_isVariableAssignment_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isVariableAssignment, False)
+        oLine.isVariableAssignment = True
+        self.assertEqual(oLine.isVariableAssignment, True)
+
+    def test_isVariableAssignmentEnd_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isVariableAssignmentEnd, False)
+        oLine.isVariableAssignmentEnd = True
+        self.assertEqual(oLine.isVariableAssignmentEnd, True)
+
+    def test_variableAssignmentAlignmentColumn_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.variableAssignmentAlignmentColumn, None)
+        oLine.variableAssignmentAlignmentColumn = 32
+        self.assertEqual(oLine.variableAssignmentAlignmentColumn, 32)
+
+
 if __name__ == '__main__':
     unittest.main()

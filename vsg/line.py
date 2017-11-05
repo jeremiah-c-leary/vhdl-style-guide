@@ -113,4 +113,9 @@ class line():
         self.insideType = False
         self.isTypeKeyword = False
         self.isTypeEnd = False
+        ## Variable Assignment attributes
+        self.insideVariableAssignment = False
+        self.isVariableAssignmentEnd = False
+        self.isVariableAssignment = False
+        self.variableAssignmentAlignmentColumn = None
 

@@ -16,7 +16,7 @@ class rule_001(variable_rule):
     def __init__(self):
         variable_rule.__init__(self)
         self.identifier = '001'
-        self.solution = 'Ensure there are only two spaces before variable keyword.'
+        self.solution = 'Ensure proper indentation.'
         self.phase = 4
 
     def analyze(self, oFile):
