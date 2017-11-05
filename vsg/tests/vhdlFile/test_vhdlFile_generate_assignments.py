@@ -9,7 +9,7 @@ class testVhdlFileGenerateAssignments(unittest.TestCase):
 
 
     def test_isGenerateKeyword(self):
-        lExpected = [6,11,16,21,26,31,36,41,46,51,55]
+        lExpected = [6,11,16,21,26,31,36,41,46,51,55,59]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
@@ -29,7 +29,7 @@ class testVhdlFileGenerateAssignments(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isGenerateEnd(self):
-        lExpected = [9,14,19,24,29,34,39,44,49,54,57]
+        lExpected = [9,14,19,24,29,34,39,44,49,54,57,61]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):

@@ -56,6 +56,20 @@ class rule_003(generate_rule):
                 self._is_blank_line_after(oFile, iLineNumber)
 
 
+class rule_004(generate_rule):
+    '''Generate rule 004 checks for a blank line before the "generate" keyword.'''
+
+    def __init__(self):
+        generate_rule.__init__(self)
+        self.identifier = '004'
+        self.solution = 'Add blank line above the "generate" keyword.'
+        self.phase = 3
+
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isGenerateKeyword:
+                self._is_blank_line_before(oFile, iLineNumber)
+
 
 
 #class rule_002(generate_rule):

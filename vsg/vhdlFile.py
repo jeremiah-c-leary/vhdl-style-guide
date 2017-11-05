@@ -161,7 +161,7 @@ class vhdlFile():
                         oLine.indentLevel = 0
                         iCurrentIndentLevel = 1
                     if not fInsideProcess and not fInsideCase and not fInsideComponent and not fInsideGenerate and not fInsideFunction:
-                        if re.match('^\s*end\s+', oLine.lineLower):
+                        if re.match('^\s*end', oLine.lineLower):
                             fInsideArchitecture = False
                             fFoundArchitectureBegin = False
                             oLine.isEndArchitecture = True
@@ -263,10 +263,10 @@ class vhdlFile():
 
                 # Check generate declarations
                 if fInsideArchitecture:
-                    if re.match('^\s*\w+\s*:\s*if', oLine.lineLower):
+                    if re.match('^\s*\w+\s*:\s*if', oLine.lineLower) or re.match('^\s*\w+\s*:\s*for\s.*\sgenerate', oLine.lineLower):
                         fInsideGenerate = True
                     if fInsideGenerate:
-                        if re.match('^\s*\w+\s*:\s*if\s.*\sgenerate', oLine.lineLower):
+                        if re.match('^\s*\w+\s*:\s*if\s.*\sgenerate', oLine.lineLower) or re.match('^\s*\w+\s*:\s*for\s.*\sgenerate', oLine.lineLower):
                             oLine.isGenerateKeyword = True
                             oLine.indentLevel = iCurrentIndentLevel
                             iCurrentIndentLevel += 1

@@ -55,3 +55,19 @@ begin
 end ARCH;
 
 -- Comment
+
+architecture ARCH of ENTITY is
+
+begin
+
+  GEN1 : if CONDITION = 1 generate
+
+    process () is
+    begin
+    end process;
+
+  end generate;
+
+end;
+
+-- Comment
