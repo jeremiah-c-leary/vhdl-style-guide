@@ -525,5 +525,11 @@ class testLineMethods(unittest.TestCase):
         oLine.insideType= True
         self.assertEqual(oLine.insideType, True)
 
+    def test_isVariable_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isVariable, False)
+        oLine.isVariable = True
+        self.assertEqual(oLine.isVariable, True)
+
 if __name__ == '__main__':
     unittest.main()

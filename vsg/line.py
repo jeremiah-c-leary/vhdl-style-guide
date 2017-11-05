@@ -38,6 +38,8 @@ class line():
         self.isSignal = False
         ## Constant attributes
         self.isConstant = False
+        ## Variable attributes
+        self.isVariable = False
         ## Process attributes
         self.insideProcess = False
         self.isProcessBegin = False

@@ -225,6 +225,12 @@ class vhdlFile():
                         oLine.isConstant = True
                         oLine.indentLevel = 1
 
+                # Check Variable declarations
+                if fInsideArchitecture:
+                    if re.match('^\s*variable', oLine.lineLower):
+                        oLine.isVariable = True
+                        oLine.indentLevel = iCurrentIndentLevel
+
                 # Check process declarations
                 if fInsideArchitecture:
                     if re.match('^\s*process', oLine.lineLower) or re.match('^\s*\S+\s*:\s*process', oLine.lineLower) and not oLine.isComment:
