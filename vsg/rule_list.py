@@ -8,10 +8,14 @@ import inspect
 
 def get_python_modules_from_directory(sDirectoryName, lModules):
 
-    lDirectoryContents = os.listdir(sDirectoryName)
-    for sFileName in lDirectoryContents:
-        if '.py' in sFileName and not '.pyc' in sFileName and not sFileName.startswith('__'):
-            lModules.append(sFileName.replace('.py',''))
+    try:
+        lDirectoryContents = os.listdir(sDirectoryName)
+        for sFileName in lDirectoryContents:
+            if '.py' in sFileName and not '.pyc' in sFileName and not sFileName.startswith('__'):
+                lModules.append(sFileName.replace('.py',''))
+    except:
+        print ('ERROR: directory ' + sDirectoryName + ' could not be found.')
+        exit()
 
 
 def get_rules_from_module(lModules, lRules):
