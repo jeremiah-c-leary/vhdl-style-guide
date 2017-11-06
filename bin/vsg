@@ -19,7 +19,8 @@ def parse_command_line_arguments():
                                      description='Analyzes VHDL files\
                                                   for style guide violations.')
 
-    parser.add_argument('-f', '--filename', required=True)
+    parser.add_argument('-f', '--filename', required=True, help = 'File to analyze')
+    parser.add_argument('-l', '--local_rules', help = 'Path to local rules')
 
     if len(sys.argv) == 1:
         parser.print_help()
@@ -32,7 +33,12 @@ def main():
     '''Main routine of the VHDL Style Guide (VSG) program.'''
 
     commandLineArguments = parse_command_line_arguments()
-    oRules = rule_list.list(vhdlFile.vhdlFile(commandLineArguments.filename))
+
+    ### Add local rule path to system path so the rules can be loaded
+    if commandLineArguments.local_rules:
+        sys.path.append(os.path.abspath(commandLineArguments.local_rules))
+
+    oRules = rule_list.list(vhdlFile.vhdlFile(commandLineArguments.filename), commandLineArguments.local_rules)
     oRules.check_rules()
     oRules.report_violations()
 

@@ -5,6 +5,34 @@ import re
 import importlib
 import inspect
 
+
+def get_python_modules_from_directory(sDirectoryName, lModules):
+
+    lDirectoryContents = os.listdir(sDirectoryName)
+    for sFileName in lDirectoryContents:
+        if '.py' in sFileName and not '.pyc' in sFileName and not sFileName.startswith('__'):
+            lModules.append(sFileName.replace('.py',''))
+
+
+def get_rules_from_module(lModules, lRules):
+
+    for sModuleName in lModules:
+        for name, obj in inspect.getmembers(importlib.import_module(sModuleName)):
+            if name.startswith('rule_'):
+                lRules.append(obj())
+
+
+def load_local_rules(sDirectoryName):
+    '''Loads rules from the directory passed to this routine.'''
+
+    lLocalModules = []
+    get_python_modules_from_directory(sDirectoryName, lLocalModules)
+ 
+    lRules = []
+    get_rules_from_module(lLocalModules, lRules)
+    return lRules
+
+
 def load_base_rules():
     pysearchre = re.compile('.py$', re.IGNORECASE)
     rulefiles = filter(pysearchre.search, os.listdir(os.path.join(os.path.dirname(__file__),'rules')))
@@ -37,8 +65,10 @@ def maximum_phase(lRules):
 class list():
     ''' Contains a list of all rules to be checked.  It also contains methods to check the rules.'''
 
-    def __init__(self, oVhdlFile):
+    def __init__(self, oVhdlFile, sLocalRulesDirectory=None):
         self.rules = load_base_rules()
+        if sLocalRulesDirectory:
+            self.rules.extend(load_local_rules(sLocalRulesDirectory))
         self.iNumberRulesRan = 0
         self.lastPhaseRan = 0
         self.oVhdlFile = oVhdlFile
@@ -49,7 +79,6 @@ class list():
         iFailures = 0
         for phase in range(1,10):
             iPhaseRuleCount = 0
-#            print ('Running Phase ' + str(phase) + '...')
             for oRule in self.rules:
                 if oRule.phase == phase:
                     oRule.analyze(self.oVhdlFile)
@@ -77,5 +106,5 @@ class list():
 
         print ('=' * len(sFileTitle))
         print ('Total Rules Checked: ' + str(self.iNumberRulesRan))
-        print ('Total Rules Failed:  ' + str(iFailures))
+        print ('Total Failures:      ' + str(iFailures))
 

@@ -45,6 +45,14 @@ You can run all the tests at the top level by invoking the following command:
 
  python setup.py test
 
+## Local rules
+
+VSG supports customization by allowing localized rules.
+This is simply a directory with an __init__.py file and one or more python files.
+The files should follow the same structure and naming convention as the rules found in the vsg/rules directory.
+
+The localized rules will be used when the -l command line argument is given.
+
 ## Phases
 
 The rules will be grouped together and ran in phases.
