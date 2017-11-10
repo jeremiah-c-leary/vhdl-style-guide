@@ -76,4 +76,4 @@ entity ENTITY is
 end entity ENTITY;
 
 
-
+-- End of file comments are okay

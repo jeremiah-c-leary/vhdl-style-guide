@@ -20,6 +20,7 @@ class rule_001(comment_rule):
         self.phase = 4
 
     def analyze(self, oFile):
+        iFileLength = len(oFile.lines)
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isComment:
                 if oFile.lines[iLineNumber - 1].hasComment:
@@ -27,12 +28,15 @@ class rule_001(comment_rule):
                         if not oLine.commentColumn == (oLine.indentLevel * self.indentSize):
                             self.add_violation(iLineNumber)
                 else:
-                    if oFile.lines[iLineNumber + 1].isCaseWhenKeyword:
-                        if not oLine.commentColumn == (oLine.indentLevel * self.indentSize) and not oLine.commentColumn == ((oLine.indentLevel - 1) * self.indentSize):
-                            self.add_violation(iLineNumber)
-                    else:
-                        if not oLine.commentColumn == (oLine.indentLevel * self.indentSize):
-                            self.add_violation(iLineNumber)
+                    try:
+                        if oFile.lines[iLineNumber + 1].isCaseWhenKeyword:
+                            if not oLine.commentColumn == (oLine.indentLevel * self.indentSize) and not oLine.commentColumn == ((oLine.indentLevel - 1) * self.indentSize):
+                                self.add_violation(iLineNumber)
+                        else:
+                            if not oLine.commentColumn == (oLine.indentLevel * self.indentSize):
+                                self.add_violation(iLineNumber)
+                    except IndexError:
+                        pass
 
 
 class rule_002(comment_rule):
