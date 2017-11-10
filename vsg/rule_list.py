@@ -112,3 +112,12 @@ class list():
         print ('Total Rules Checked: ' + str(self.iNumberRulesRan))
         print ('Total Failures:      ' + str(iFailures))
 
+    def configure(self, configurationFile):
+        '''Configures individual rules based on dictionary passed.'''
+        if configurationFile:
+            for oRule in self.rules:
+                if oRule.name + '_' + oRule.identifier in configurationFile['rule']:
+                    if 'disable' in configurationFile['rule'][oRule.name + '_' + oRule.identifier]:
+                        if configurationFile['rule'][oRule.name + '_' + oRule.identifier]['disable'] == "True":
+                            oRule.disable_rule()
+

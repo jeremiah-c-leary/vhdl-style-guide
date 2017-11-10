@@ -88,4 +88,20 @@ This phase checks capitalization rules
 
 This phase checks naming restrictions for signals, constants, ports, etc...
 
+## Disabling rules
+
+Any rule can be disabled by using the -c --configuration option and using a JSON file.
+Below is an example of a JSON file which disables the rule **entity_004**
+
+```json
+{
+  "rule":{
+    "entity_004":{
+        "disable":"True"
+    }
+  }
+}
+```
+
+Any number of rules can be disabled.
 
