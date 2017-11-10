@@ -33,7 +33,7 @@ class rule_002(generic_rule):
     def __init__(self):
         generic_rule.__init__(self)
         self.identifier = '002'
-        self.solution = 'Change indent of "generic" keyword to 2 spaces.'
+        self.solution = 'Ensure proper indentation.'
         self.phase = 4
 
     def analyze(self, oFile):
@@ -64,7 +64,7 @@ class rule_004(generic_rule):
     def __init__(self):
         generic_rule.__init__(self)
         self.identifier = '004'
-        self.solution = 'Check indentation.'
+        self.solution = 'Ensure proper indentation.'
         self.phase = 4
 
     def analyze(self, oFile):
@@ -128,7 +128,7 @@ class rule_008(generic_rule):
     def __init__(self):
         generic_rule.__init__(self)
         self.identifier = '008'
-        self.solution = 'Check indentation.'
+        self.solution = 'Ensure proper indentation.'
         self.phase = 4
 
     def analyze(self, oFile):

@@ -16,7 +16,7 @@ class rule_001(package_rule):
     def __init__(self):
         package_rule.__init__(self)
         self.identifier = '001'
-        self.solution = 'Remove spaces before package keyword.'
+        self.solution = 'Ensure proper indentation.'
         self.phase = 4
 
     def analyze(self, oFile):

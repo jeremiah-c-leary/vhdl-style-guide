@@ -23,7 +23,7 @@ class rule_001(entity_rule):
     def __init__(self):
         entity_rule.__init__(self)
         self.identifier = '001'
-        self.solution = 'Remove spaces before entity keyword.'
+        self.solution = 'Ensure proper indentation.'
         self.phase = 4
 
     def analyze(self, oFile):
@@ -152,7 +152,7 @@ class rule_009(entity_rule):
     def __init__(self):
         entity_rule.__init__(self)
         self.identifier = '009'
-        self.solution = 'Remove spaces before the "end" keyword.'
+        self.solution = 'Ensure proper indentation.'
         self.phase = 4
 
     def analyze(self, oFile):

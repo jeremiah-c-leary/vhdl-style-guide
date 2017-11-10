@@ -16,7 +16,7 @@ class rule_001(generate_rule):
     def __init__(self):
         generate_rule.__init__(self)
         self.identifier = '001'
-        self.solution = 'Remove spaces before generate keyword.'
+        self.solution = 'Ensure proper indentation.'
         self.phase = 4
 
     def analyze(self, oFile):
@@ -179,7 +179,7 @@ class rule_005(generate_rule):
 #    def __init__(self):
 #        generate_rule.__init__(self)
 #        self.identifier = '007'
-#        self.solution = 'Remove spaces before "begin" keyword.'
+#        self.solution = 'Ensure proper indentation.'
 #        self.phase = 4
 #
 #    def analyze(self, oFile):
@@ -194,7 +194,7 @@ class rule_005(generate_rule):
 #    def __init__(self):
 #        generate_rule.__init__(self)
 #        self.identifier = '008'
-#        self.solution = 'Remove spaces before "end" keyword.'
+#        self.solution = 'Ensure proper indentation.'
 #        self.phase = 4
 #
 #    def analyze(self, oFile):

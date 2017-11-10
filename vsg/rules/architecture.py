@@ -16,7 +16,7 @@ class rule_001(architecture_rule):
     def __init__(self):
         architecture_rule.__init__(self)
         self.identifier = '001'
-        self.solution = 'Remove spaces before architecture keyword.'
+        self.solution = 'Ensure proper indentation.'
         self.phase = 4
 
     def analyze(self, oFile):
@@ -117,7 +117,7 @@ class rule_007(architecture_rule):
     def __init__(self):
         architecture_rule.__init__(self)
         self.identifier = '007'
-        self.solution = 'Remove spaces before "begin" keyword.'
+        self.solution = 'Ensure proper indentation.'
         self.phase = 4
 
     def analyze(self, oFile):
@@ -132,7 +132,7 @@ class rule_008(architecture_rule):
     def __init__(self):
         architecture_rule.__init__(self)
         self.identifier = '008'
-        self.solution = 'Remove spaces before "end" keyword.'
+        self.solution = 'Ensure proper indentation.'
         self.phase = 4
 
     def analyze(self, oFile):

@@ -16,7 +16,7 @@ class rule_001(library_rule):
     def __init__(self):
         library_rule.__init__(self)
         self.identifier = '001'
-        self.solution = 'Remove spaces before "library" keyword.'
+        self.solution = 'Ensure proper indentation.'
         self.phase = 4
 
     def analyze(self, oFile):
@@ -123,7 +123,7 @@ class rule_008(library_rule):
     def __init__(self):
         library_rule.__init__(self)
         self.identifier = '008'
-        self.solution = 'Change indent of "use" keyword to 2 spaces.'
+        self.solution = 'Ensure proper indentation.'
         self.phase = 4
 
     def analyze(self, oFile):

@@ -16,7 +16,7 @@ class rule_001(process_rule):
     def __init__(self):
         process_rule.__init__(self)
         self.identifier = '001'
-        self.solution = 'Check indentation before process declaration.'
+        self.solution = 'Ensure proper indentation.'
         self.phase = 4
 
     def analyze(self, oFile):
@@ -48,7 +48,7 @@ class rule_003(process_rule):
     def __init__(self):
         process_rule.__init__(self)
         self.identifier = '003'
-        self.solution = 'Check indentation before "begin" keyword.'
+        self.solution = 'Ensure proper indentation.'
         self.phase = 4
 
     def analyze(self, oFile):
@@ -95,7 +95,7 @@ class rule_006(process_rule):
     def __init__(self):
         process_rule.__init__(self)
         self.identifier = '006'
-        self.solution = 'Ensure there are only two spaces before "end" keyword.'
+        self.solution = 'Ensure proper indentation.'
         self.phase = 4
 
     def analyze(self, oFile):

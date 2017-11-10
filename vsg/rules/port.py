@@ -31,7 +31,7 @@ class rule_002(port_rule):
     def __init__(self):
         port_rule.__init__(self)
         self.identifier = '002'
-        self.solution = 'Change indent of "port" keyword.'
+        self.solution = 'Ensure proper indentation.'
         self.phase = 4
 
     def analyze(self, oFile):
@@ -62,7 +62,7 @@ class rule_004(port_rule):
     def __init__(self):
         port_rule.__init__(self)
         self.identifier = '004'
-        self.solution = 'Change indent of port.'
+        self.solution = 'Ensure proper indentation.'
         self.phase = 4
 
     def analyze(self, oFile):
@@ -251,7 +251,7 @@ class rule_015(port_rule):
     def __init__(self):
         port_rule.__init__(self)
         self.identifier = '015'
-        self.solution = 'Fix indention of closing parenthesis.'
+        self.solution = 'Ensure proper indentation.'
         self.phase = 4
 
     def analyze(self, oFile):

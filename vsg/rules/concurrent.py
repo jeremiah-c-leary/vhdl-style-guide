@@ -16,7 +16,7 @@ class rule_001(concurrent_rule):
     def __init__(self):
         concurrent_rule.__init__(self)
         self.identifier = '001'
-        self.solution = 'Ensure there are only two spaces before concurrent assignment.'
+        self.solution = 'Ensure proper indentation.'
         self.phase = 4
 
     def analyze(self, oFile):

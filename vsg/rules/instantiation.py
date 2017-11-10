@@ -17,7 +17,7 @@ class rule_001(instantiation_rule):
     def __init__(self):
         instantiation_rule.__init__(self)
         self.identifier = '001'
-        self.solution = 'Improper indentation.'
+        self.solution = 'Ensure proper indentation.'
         self.phase = 4
 
     def analyze(self, oFile):

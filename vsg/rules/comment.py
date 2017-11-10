@@ -16,7 +16,7 @@ class rule_001(comment_rule):
     def __init__(self):
         comment_rule.__init__(self)
         self.identifier = '001'
-        self.solution = 'Ensure proper indentation of comment.'
+        self.solution = 'Ensure proper indentation.'
         self.phase = 4
 
     def analyze(self, oFile):

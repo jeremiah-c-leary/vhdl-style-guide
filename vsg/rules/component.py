@@ -17,7 +17,7 @@ class rule_001(component_rule):
     def __init__(self):
         component_rule.__init__(self)
         self.identifier = '001'
-        self.solution = 'Improper indentation.'
+        self.solution = 'Ensure proper indentation.'
         self.phase = 4
 
     def analyze(self, oFile):
@@ -144,7 +144,7 @@ class rule_009(component_rule):
     def __init__(self):
         component_rule.__init__(self)
         self.identifier = '009'
-        self.solution = 'Improper indentatioon.'
+        self.solution = 'Ensure proper indentation.'
         self.phase = 4
 
     def analyze(self, oFile):

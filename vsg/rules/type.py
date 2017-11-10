@@ -16,7 +16,7 @@ class rule_001(type_rule):
     def __init__(self):
         type_rule.__init__(self)
         self.identifier = '001'
-        self.solution = 'Ensure there are only two spaces before "type" keyword.'
+        self.solution = 'Ensure proper indentation.'
         self.phase = 4
 
     def analyze(self, oFile):
@@ -77,7 +77,7 @@ class rule_005(type_rule):
     def __init__(self):
         type_rule.__init__(self)
         self.identifier = '005'
-        self.solution = 'Ensure line is indented 2 spaces in from type keyword.'
+        self.solution = 'Ensure proper indentation.'
         self.phase = 4
 
     def analyze(self, oFile):
