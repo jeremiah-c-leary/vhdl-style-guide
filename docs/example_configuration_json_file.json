@@ -1,0 +1,10 @@
+{
+  "global":{
+    "indentSize":2
+  },
+  "rule":{
+    "architecture_010":{
+        "disable":"True"
+    }
+  }
+}

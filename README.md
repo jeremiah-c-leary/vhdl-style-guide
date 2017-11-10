@@ -19,12 +19,6 @@ I have choosen to implement the program in Python so I can further my learning o
 The program will be designed around rules.
 The rules will be atomic so they can be added or removed easily.
 
-
-### Configuration
-
-My plan is to use a JSON file to configure the program.
-You will be able to turn off rules and configure rules through the file.
-
 ## Installation
 
 After downloading the source, issue the following command:
@@ -88,7 +82,9 @@ This phase checks capitalization rules
 
 This phase checks naming restrictions for signals, constants, ports, etc...
 
-## Disabling rules
+## Configuring rules
+
+### Disabling a rule
 
 Any rule can be disabled by using the -c --configuration option and using a JSON file.
 Below is an example of a JSON file which disables the rule **entity_004**
@@ -103,5 +99,15 @@ Below is an example of a JSON file which disables the rule **entity_004**
 }
 ```
 
-Any number of rules can be disabled.
+### Setting the indent increment size
+
+The indent increment size can be configured using the global attribute **indentSize**:
+
+```json
+{
+  "global":{
+    "indentSize":4
+  }
+}
+```
 
