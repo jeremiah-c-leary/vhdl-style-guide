@@ -33,11 +33,16 @@ class testRuleMethods(unittest.TestCase):
         oRule = rule.rule()
         self.assertEqual(oRule.violations, [])
         oRule.add_violation(1)
-        self.assertEqual(oRule.violations, [2])
+        self.assertEqual(oRule.violations, [1])
         oRule.add_violation(10)
         oRule.add_violation(33)
-        self.assertEqual(oRule.violations, [2,11,34])
+        self.assertEqual(oRule.violations, [1,10,33])
 
+    def test_rule_disable(self):
+        oRule = rule.rule()
+        self.assertFalse(oRule.disable)
+        oRule.disable_rule()
+        self.assertTrue(oRule.disable)
 
 if __name__ == '__main__':
     unittest.main()

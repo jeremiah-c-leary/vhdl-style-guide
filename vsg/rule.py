@@ -10,6 +10,10 @@ class rule():
         self.violations = []
         self.indentSize = 2
         self.phase = None
+        self.disable = False
+
+    def disable_rule(self):
+        self.disable = True
 
     def report_violations(self, iLineNumber):
         if len(self.violations) > 0:

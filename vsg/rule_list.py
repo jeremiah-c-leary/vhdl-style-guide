@@ -84,7 +84,7 @@ class list():
         for phase in range(1,10):
             iPhaseRuleCount = 0
             for oRule in self.rules:
-                if oRule.phase == phase:
+                if oRule.phase == phase and not oRule.disable:
                     oRule.analyze(self.oVhdlFile)
                     iFailures += len(oRule.violations)
                     self.iNumberRulesRan += 1
