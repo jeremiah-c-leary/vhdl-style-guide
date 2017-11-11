@@ -296,3 +296,18 @@ class rule_017(component_rule):
                   lGroup.append(oLine)
                 else:
                   lGroup.append(line.line('Removed line'))
+
+
+class rule_018(component_rule):
+    '''Component rule 018 checks for a blank line below the "end component" keywords.'''
+
+    def __init__(self):
+        component_rule.__init__(self)
+        self.identifier = '018'
+        self.solution = 'Add blank line after "end component" keywords.'
+        self.phase = 3
+
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isComponentEnd:
+                self._is_blank_line_after(oFile, iLineNumber)

@@ -180,6 +180,15 @@ class testRuleComponentMethods(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
+    def test_rule_018(self):
+        oRule = component.rule_018()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'component')
+        self.assertEqual(oRule.identifier, '018')
+
+        dExpected = [65]
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
 
 if __name__ == '__main__':
     unittest.main()
