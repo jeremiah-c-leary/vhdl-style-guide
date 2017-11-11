@@ -172,19 +172,29 @@ class rule_010(port_rule):
 
 
 class rule_011(port_rule):
-    '''Port rule 011 checks port names have I_, O_ or IO_ prefixes.'''
+    '''Port rule 011 checks port names have I_, O_ or IO_ prefixes.
+
+         The valid options for self.port_direction are:
+            None (default)   No checks are made.
+            Prefix           Checks for I_, O_, and IO_ in front of port names.
+            Suffix           Checks for _I, _O, and _IO at the end of port names.
+    '''
 
     def __init__(self):
         port_rule.__init__(self)
         self.identifier = '011'
         self.solution = 'Add proper prefix or suffix indicating port direction.'
-#        self.port_direction = 'Prefix'
         self.port_direction = None
         self.phase = 7
 
     def analyze(self, oFile):
         if not self.port_direction:
             self.violations = []
+        if self.port_direction == 'Prefix':
+            self.solution = 'Add proper prefix indicating port direction.'
+        if self.port_direction == 'Suffix':
+            self.solution = 'Add proper suffix indicating port direction.'
+
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isPortDeclaration and oLine.insideEntity:
                 lLine = oLine.lineLower.split()

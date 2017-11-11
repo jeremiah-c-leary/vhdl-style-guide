@@ -38,11 +38,48 @@ class testRuleMethods(unittest.TestCase):
         oRule.add_violation(33)
         self.assertEqual(oRule.violations, [1,10,33])
 
-    def test_rule_disable(self):
+    def test_rule_configure(self):
         oRule = rule.rule()
-        self.assertFalse(oRule.disable)
-        oRule.disable_rule()
-        self.assertTrue(oRule.disable)
+        oRule.name = 'xyz'
+        oRule.identifier = '001'
+        oRule.solution = 'This is my solution'
+        self.assertEqual(oRule.name,'xyz')
+        self.assertEqual(oRule.identifier,'001')
+        self.assertEqual(oRule.solution,'This is my solution')
+        self.assertEqual(oRule.disable,False)
+        self.assertEqual(oRule.indentSize,2)
+
+        dConfiguration = {}
+        dConfiguration['rule'] = {}
+        dConfiguration['rule']['xyz_001'] = {}
+        dConfiguration['rule']['xyz_001']['disable'] = True
+
+        oRule.configure(dConfiguration)
+        
+        self.assertEqual(oRule.disable,True)
+
+
+        dConfiguration['rule']['xyz_002'] = {}
+        dConfiguration['rule']['xyz_002']['disable'] = False
+
+        oRule.configure(dConfiguration)
+        
+        self.assertEqual(oRule.disable,True)
+
+        dConfiguration['rule']['xyz_001']['solution'] = 'This is the new solution'
+
+        oRule.configure(dConfiguration)
+
+        self.assertEqual(oRule.solution,'This is the new solution')
+
+        dConfiguration['rule']['global'] = {}
+        dConfiguration['rule']['global']['indentSize'] = 4
+
+        oRule.configure(dConfiguration)
+
+        self.assertEqual(oRule.indentSize,4)
+
+
 
 if __name__ == '__main__':
     unittest.main()

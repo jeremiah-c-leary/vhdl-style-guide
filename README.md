@@ -84,9 +84,10 @@ This phase checks naming restrictions for signals, constants, ports, etc...
 
 ## Configuring rules
 
+Any attribute of any rule can be configured by using the --configuration option and a JSON file.
+
 ### Disabling a rule
 
-Any rule can be disabled by using the -c --configuration option and using a JSON file.
 Below is an example of a JSON file which disables the rule **entity_004**
 
 ```json
@@ -101,13 +102,28 @@ Below is an example of a JSON file which disables the rule **entity_004**
 
 ### Setting the indent increment size
 
-The indent increment size can be configured using the global attribute **indentSize**:
+The indent increment size can be configured on an per rule basis:
 
 ```json
 {
-  "global":{
-    "indentSize":4
-  }
+  "rule":{
+      "entity_004":{
+        "indentSize":4
+      }
 }
 ```
 
+or the indent increment size can be configured for every rule using **global**:
+
+
+```json
+{
+  "rule":{
+      "global":{
+        "indentSize":4
+      }
+}
+```
+
+Use **global** to configure the attribute of all rules.
+The **global** value can be overridden by a specific rule value.

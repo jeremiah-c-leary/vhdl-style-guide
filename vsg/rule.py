@@ -12,8 +12,35 @@ class rule():
         self.phase = None
         self.disable = False
 
-    def disable_rule(self):
-        self.disable = True
+    def configure(self, dConfiguration):
+        '''Configures attributes on rules using a dictionary of the following form:
+
+            dConfiguration['rule'] = {}
+            dConfiguration['rule']['xyz_001'] = {}
+            dConfiguration['rule']['xyz_001']['disable'] = True
+            dConfiguration['rule']['xyz_001']['solution'] = 'This is the new solution'
+            dConfiguration['rule']['xyz_002'] = {}
+            dConfiguration['rule']['xyz_002']['disable'] = False
+            dConfiguration['rule']['global'] = {}
+            dConfiguration['rule']['global']['indentSize'] = 4
+
+          The rule:global dictionary will apply to all rules.
+          Individual rule attributes can be modified with [self.name_self.identifier].
+        '''
+
+        try:
+            for sAttributeName in dConfiguration['rule']['global']:
+                if sAttributeName in self.__dict__:
+                    self.__dict__[sAttributeName] = dConfiguration['rule']['global'][sAttributeName]
+        except KeyError:
+            pass
+
+        try:
+            for sAttributeName in dConfiguration['rule'][self.name + '_' + self.identifier]:
+                if sAttributeName in self.__dict__:
+                    self.__dict__[sAttributeName] = dConfiguration['rule'][self.name + '_' + self.identifier][sAttributeName]
+        except KeyError:
+            pass
 
     def report_violations(self, iLineNumber):
         if len(self.violations) > 0:

@@ -1,10 +1,13 @@
 {
-  "global":{
-    "indentSize":2
-  },
   "rule":{
+    "global":{
+        "phase":1
+    },
     "architecture_010":{
         "disable":"True"
+    },
+    "port_011":{
+        "port_direction":"Suffix"
     }
   }
 }
