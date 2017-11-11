@@ -6,6 +6,8 @@ class vhdlFile():
     def __init__(self, filename):
         self.filename = filename
         self.lines = [line.line('')]
+        self.hasArchitecture = False
+        self.hasEntity = False
         self._processFile(filename)
 
     def _processFile(self, filename):
@@ -76,6 +78,7 @@ class vhdlFile():
                     oLine.indentLevel = 1
                 # Check for entity
                 if re.match('^\s*entity', oLine.lineLower):
+                    self.hasEntity = True
                     fInsideEntity = True
                     oLine.isEntityDeclaration = True
                     iCurrentIndentLevel = 1
@@ -149,6 +152,7 @@ class vhdlFile():
 
                 # Check architecture declarations
                 if re.match('^\s*architecture', oLine.lineLower) and not fInsideArchitecture:
+                    self.hasArchitecture = True
                     fInsideArchitecture = True
                     oLine.isArchitectureKeyword = True
                     oLine.indentLevel = 0

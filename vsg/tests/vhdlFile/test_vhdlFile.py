@@ -16,6 +16,7 @@ oFileConcurrent = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..',
 oFileArchitecture = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','architecture','architecture_test_input.vhd'))
 oFileConstant = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','constant','constant_test_input.vhd'))
 oFileFunction = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','function','function_test_input.vhd'))
+oFileWhitespace = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','whitespace','whitespace_test_input.txt'))
 
 class testVhdlFileMethods(unittest.TestCase):
 
@@ -357,6 +358,15 @@ class testVhdlFileMethods(unittest.TestCase):
         # Compare
         self.assertEqual(lActual, lExpected)
 
+    def test_hasEntity_assignment(self):
+        self.assertFalse(oFileConcurrent.hasEntity)
+        self.assertTrue(oFilePort.hasEntity)
+        self.assertTrue(oFileEntity.hasEntity)
+
+    def test_hasArchitecture_assignment(self):
+        self.assertFalse(oFileWhitespace.hasArchitecture)
+        self.assertTrue(oFileConcurrent.hasArchitecture)
+        self.assertTrue(oFileProcess.hasArchitecture)
 
 if __name__ == '__main__':
     unittest.main()
