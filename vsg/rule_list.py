@@ -11,7 +11,7 @@ def get_python_modules_from_directory(sDirectoryName, lModules):
     try:
         lDirectoryContents = os.listdir(sDirectoryName)
         for sFileName in lDirectoryContents:
-            if '.py' in sFileName and not '.pyc' in sFileName and not sFileName.startswith('__'):
+            if sFileName.endswith('.py') and not sFileName.startswith('__'):
                 lModules.append(sFileName.replace('.py',''))
     except:
         print ('ERROR: directory ' + sDirectoryName + ' could not be found.')
@@ -21,6 +21,7 @@ def get_python_modules_from_directory(sDirectoryName, lModules):
 def get_rules_from_module(lModules, lRules):
 
     for sModuleName in lModules:
+        print sModuleName
         for name, obj in inspect.getmembers(importlib.import_module(sModuleName)):
             if name.startswith('rule_'):
                 lRules.append(obj())
