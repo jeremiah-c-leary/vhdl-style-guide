@@ -18,12 +18,18 @@ package PACK is
 
   type A is (B, C, D, E ,F, G);
 
-  type  a is (B, C,
+  type  a is  (B, C,
     D, E,
     -- This is a comment
       F, G);
 
   TYPE a is range 0 to 9;
+
+  type a  is (
+    A, B,
+    -- comment
+    C
+  );
 
 begin
 

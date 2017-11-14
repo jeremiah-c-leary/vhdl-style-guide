@@ -400,6 +400,8 @@ class vhdlFile():
                             fInsideType = False
                             oLine.isTypeEnd = True
                             iCurrentIndentLevel -= 1
+                            if re.match('^\s*\)\s*;', oLine.line):
+                                oLine.indentLevel = iCurrentIndentLevel
 
                 # Check sequential statements
                 if fInsideProcess:

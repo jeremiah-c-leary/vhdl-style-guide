@@ -84,3 +84,35 @@ class rule_005(type_rule):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.insideType and not oLine.isTypeKeyword:
                 self._check_indent(oLine, iLineNumber)
+
+
+class rule_006(type_rule):
+    '''Signal rule 006 checks for a single space before the "is" keyword.'''
+
+    def __init__(self):
+        type_rule.__init__(self)
+        self.identifier = '006'
+        self.solution = 'Ensure a single space before the "is" keyword.'
+        self.phase = 2
+
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isTypeKeyword:
+                if not re.match('^.*\w\sis', oLine.lineLower):
+                    self.add_violation(iLineNumber)
+
+                
+class rule_007(type_rule):
+    '''Signal rule 007 checks for a single space after the "is" keyword.'''
+
+    def __init__(self):
+        type_rule.__init__(self)
+        self.identifier = '007'
+        self.solution = 'Ensure a single space after the "is" keyword.'
+        self.phase = 2
+
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isTypeKeyword:
+                if not re.match('^.*\sis\s\S', oLine.lineLower):
+                    self.add_violation(iLineNumber)
