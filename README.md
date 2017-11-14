@@ -21,12 +21,25 @@ The rules will be atomic so they can be added or removed easily.
 
 ## Installation
 
+### pyPI
+
+This module can be installed using PIP.
+
+```
+pip install vsg
+```
+
+This will retrieve the latest released version
+
+### manual install
+
 After downloading the source, issue the following command:
 
   python setup.py install
 
 This will install the vsg package and binary.
 If you add the path to the binary to your PATH environment variable, then the program can be called directly.
+This method can be used if you want to use the latest unreleased version.
 
 ## Testing
 
