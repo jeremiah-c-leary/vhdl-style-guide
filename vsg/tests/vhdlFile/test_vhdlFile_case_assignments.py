@@ -9,7 +9,7 @@ class testVhdlFileIfAssignments(unittest.TestCase):
 
 
     def test_isCaseKeyword_assignment(self):
-        lExpected = [9,41]
+        lExpected = [9,41,77]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
@@ -19,7 +19,7 @@ class testVhdlFileIfAssignments(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isCaseIsKeyword_assignment(self):
-        lExpected = [9,43]
+        lExpected = [9,43,77]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
@@ -39,7 +39,7 @@ class testVhdlFileIfAssignments(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isEndCaseKeyword_assignment(self):
-        lExpected = [33,70]
+        lExpected = [33,70,79]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):

@@ -71,5 +71,13 @@ begin
 
   end process PROC_1;
 
+  PROC_1 : process (a, b, c) is
+  begin
+
+    case(boolean)is
+
+    end case;
+
+  end process PROC_1;
 
 end architecture ARCH;

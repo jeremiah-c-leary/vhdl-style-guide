@@ -341,13 +341,13 @@ class vhdlFile():
 
                 # Check case statements
                 if fInsideProcess or fInsideFunction:
-                    if re.match('^\s*case\s', oLine.lineLower):
+                    if re.match('^\s*case[\s|\(]', oLine.lineLower):
                         oLine.isCaseKeyword = True
                         oLine.indentLevel = iCurrentIndentLevel
                         iCurrentIndentLevel += 2
                         fInsideCase = True
                     if fInsideCase:
-                        if re.match('^\s*.*\sis\s', oLine.lineLower) or re.match('^\s*.*\sis$', oLine.lineLower):
+                        if re.match('^\s*.*[\s|\)]is\s', oLine.lineLower) or re.match('^\s*.*[\s|\)]is$', oLine.lineLower):
                             oLine.isCaseIsKeyword = True
                             fInsideCase = False
                     if re.match('^\s*when\s', oLine.lineLower):
