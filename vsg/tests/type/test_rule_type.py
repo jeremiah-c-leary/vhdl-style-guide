@@ -84,6 +84,14 @@ class testRuleSignalMethods(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
+    def test_rule_009(self):
+        oRule = type.rule_009()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'type')
+        self.assertEqual(oRule.identifier, '009')
+        dExpected = [6,21]
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
 
 if __name__ == '__main__':
     unittest.main()

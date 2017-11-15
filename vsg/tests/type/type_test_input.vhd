@@ -25,7 +25,7 @@ package PACK is
 
   TYPE a is range 0 to 9;
 
-  type a  is (
+  type a  is (--This is a comment
     A, B,
     -- comment
     C
