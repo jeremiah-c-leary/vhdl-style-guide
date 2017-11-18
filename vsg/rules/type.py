@@ -98,7 +98,6 @@ class rule_006(type_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isTypeKeyword:
-                print oLine.line
                 if not re.match('^\s*type\s*\w+\sis', oLine.lineLower):
                     self.add_violation(iLineNumber)
 
