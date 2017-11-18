@@ -41,6 +41,8 @@ class testFixRuleEntityMethods(unittest.TestCase):
         oRule.fix(oFile)
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, [])
+        self.assertEqual(oFile.lines[51].line, '')
+        self.assertTrue(oFile.lines[51].isBlank)
 
     def test_fix_rule_006(self):
         oRule = entity.rule_006()
