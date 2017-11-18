@@ -141,7 +141,7 @@ class rule_005(entity_rule):
                 if oFile.lines[iSearchIndex].isGenericKeyword or oFile.lines[iSearchIndex].isPortKeyword:
                     break
 
-        self.violations = []
+        self._clear_violations()
 
 
 class rule_006(entity_rule):
