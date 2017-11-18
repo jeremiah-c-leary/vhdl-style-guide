@@ -32,6 +32,9 @@ class rule_001(entity_rule):
             if oLine.isEntityDeclaration:
                 self._check_indent(oLine, iLineNumber)
 
+    def fix(self, oFile):
+        self._fix_indent(oFile)
+
 
 class rule_002(entity_rule):
     '''Entity rule 002 checks for a single space after the entity keyword.'''
@@ -49,6 +52,15 @@ class rule_002(entity_rule):
                 if re.match('^\s*\S+\s\s+', oLine.line):
                     self.add_violation(iLineNumber)
 
+    def fix(self, oFile):
+        self.analyze(oFile)
+        for iLineNumber in self.violations:
+            oLine = oFile.lines[iLineNumber]
+            oLine.line = re.sub(r'^(\s*entity)\s+', r'\1 ', oLine.line, flags=re.IGNORECASE)
+            oLine.lineLower = oLine.line.lower()
+
+        self._clear_violations()
+
 
 class rule_003(entity_rule):
     '''Entity rule 003 checks for a blank line above the entity keyword.'''
@@ -65,6 +77,12 @@ class rule_003(entity_rule):
             if oLine.isEntityDeclaration:
                 self._is_blank_line_before(oFile, iLineNumber)
 
+    def fix(self, oFile):
+        self.analyze(oFile)
+        for iLineNumber in self.violations[::-1]:
+            oFile.lines.insert(iLineNumber, line.blank_line()) 
+        self._clear_violations()
+
 
 class rule_004(entity_rule):
     '''Entity rule 004 checks the entity keyword is lower case.'''
@@ -80,9 +98,15 @@ class rule_004(entity_rule):
             if oLine.isEntityDeclaration:
                 self._is_lowercase(oLine.line.split()[0], iLineNumber)
 
+    def fix(self, oFile):
+        self.analyze(oFile)
+        for iLineNumber in self.violations:
+            self._lower_case(oFile.lines[iLineNumber], 'entity')
+        self._clear_violations()
+
 
 class rule_005(entity_rule):
-    '''Entity rule 005 checks the is keyword is on the same line as the entity keyword.'''
+    '''Entity rule 005 checks the "is" keyword is on the same line as the entity keyword.'''
 
     def __init__(self):
         entity_rule.__init__(self)
@@ -114,6 +138,12 @@ class rule_006(entity_rule):
                     if not re.match('^\s*\S+\s+\S+\s\s*is', oLine.line):
                         self.add_violation(iLineNumber)
 
+    def fix(self, oFile):
+        self.analyze(oFile)
+        for iLineNumber in self.violations:
+            self._lower_case(oFile.lines[iLineNumber], 'is')
+        self._clear_violations()
+
 
 class rule_007(entity_rule):
     '''Entity rule 007 checks for a single space before the "is" keyword.'''
@@ -130,6 +160,15 @@ class rule_007(entity_rule):
                 if re.match('^.*\s\s+is', oLine.lineLower):
                     self.add_violation(iLineNumber)
 
+    def fix(self, oFile):
+        self.analyze(oFile)
+        for iLineNumber in self.violations:
+            oLine = oFile.lines[iLineNumber]
+            oLine.line = re.sub(r'\s+(is)', r' \1', oLine.line, flags=re.IGNORECASE)
+            oLine.lineLower = oLine.line.lower()
+
+        self._clear_violations()
+
 
 class rule_008(entity_rule):
     '''Entity rule 008 checks the entity name is uppercase in the entity declaration line.'''
@@ -144,6 +183,12 @@ class rule_008(entity_rule):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isEntityDeclaration:
                 self._is_uppercase(oLine.line.split()[1], iLineNumber)
+
+    def fix(self, oFile):
+        self.analyze(oFile)
+        for iLineNumber in self.violations:
+            self._upper_case(oFile.lines[iLineNumber], oFile.lines[iLineNumber].line.split()[1])
+        self._clear_violations()
 
 
 class rule_009(entity_rule):
@@ -160,6 +205,9 @@ class rule_009(entity_rule):
             if oLine.isEndEntityDeclaration:
                 self._check_indent(oLine, iLineNumber)
 
+    def fix(self, oFile):
+        self._fix_indent(oFile)
+
 
 class rule_010(entity_rule):
     '''Entity rule 010 checks the "end" keyword is lowercase.'''
@@ -174,6 +222,12 @@ class rule_010(entity_rule):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isEndEntityDeclaration:
                 self._is_lowercase(oLine.line.split()[0], iLineNumber)
+
+    def fix(self, oFile):
+        self.analyze(oFile)
+        for iLineNumber in self.violations:
+            self._lower_case(oFile.lines[iLineNumber], 'end')
+        self._clear_violations()
 
 
 class rule_011(entity_rule):
@@ -190,6 +244,15 @@ class rule_011(entity_rule):
             if oLine.isEndEntityDeclaration:
                 if re.match('^\s*\S+\s\s+\S', oLine.line):
                     self.add_violation(iLineNumber)
+
+    def fix(self, oFile):
+        self.analyze(oFile)
+        for iLineNumber in self.violations:
+            oLine = oFile.lines[iLineNumber]
+            oLine.line = re.sub(r'^(\s*end)\s+', r'\1 ', oLine.line, flags=re.IGNORECASE)
+            oLine.lineLower = oLine.line.lower()
+
+        self._clear_violations()
 
 
 class rule_012(entity_rule):
@@ -208,6 +271,12 @@ class rule_012(entity_rule):
                 if len(lLine) > 2:
                     self._is_uppercase(lLine[2], iLineNumber)
 
+    def fix(self, oFile):
+        self.analyze(oFile)
+        for iLineNumber in self.violations:
+            self._upper_case(oFile.lines[iLineNumber], oFile.lines[iLineNumber].line.split()[2])
+        self._clear_violations()
+
 
 class rule_013(entity_rule):
     '''Entity rule 013 checks for a single space after the "entity" keyword in the closing of the entity.'''
@@ -223,6 +292,15 @@ class rule_013(entity_rule):
             if oLine.isEndEntityDeclaration:
                 if re.match('^\s*\S+\s\s*\S+\s\s+', oLine.line):
                     self.add_violation(iLineNumber)
+
+    def fix(self, oFile):
+        self.analyze(oFile)
+        for iLineNumber in self.violations:
+            oLine = oFile.lines[iLineNumber]
+            oLine.line = re.sub(r'^(\s*end\s+entity)\s+', r'\1 ', oLine.line, flags=re.IGNORECASE)
+            oLine.lineLower = oLine.line.lower()
+
+        self._clear_violations()
 
 
 class rule_014(entity_rule):
@@ -240,6 +318,12 @@ class rule_014(entity_rule):
                 lLine = oLine.line.split()
                 if len(lLine) >= 3:
                     self._is_lowercase(lLine[1], iLineNumber)
+
+    def fix(self, oFile):
+        self.analyze(oFile)
+        for iLineNumber in self.violations:
+            self._lower_case(oFile.lines[iLineNumber], 'entity')
+        self._clear_violations()
 
 
 class rule_015(entity_rule):
@@ -259,6 +343,14 @@ class rule_015(entity_rule):
                     if not (lLine[0] == 'end' and lLine[1] == 'entity' and not lLine[2].startswith('--')):
                         self.add_violation(iLineNumber)
 
+    def fix(self, oFile):
+        self.analyze(oFile)
+        for iLineNumber in self.violations:
+            oLine = oFile.lines[iLineNumber]
+            oLine.line = re.sub(r'^(\s*end)', r'\1 entity', oLine.line, flags=re.IGNORECASE)
+            oLine.lineLower = oLine.line.lower()
+        self._clear_violations()
+
 
 class rule_016(entity_rule):
     '''Entity rule 016 checks for a blank line above the "end entity" keywords.'''
@@ -273,6 +365,13 @@ class rule_016(entity_rule):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isEndEntityDeclaration:
                 self._is_no_blank_line_before(oFile, iLineNumber)
+
+    def fix(self, oFile):
+        self.analyze(oFile)
+        for iLineNumber in self.violations[::-1]:
+            while oFile.lines[iLineNumber - 1].isBlank:
+                oFile.lines.pop(iLineNumber - 1)
+        self._clear_violations()
 
 
 class rule_017(entity_rule):
