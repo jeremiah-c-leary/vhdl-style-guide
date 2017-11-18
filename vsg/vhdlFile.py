@@ -8,9 +8,15 @@ class vhdlFile():
         self.lines = [line.line('')]
         self.hasArchitecture = False
         self.hasEntity = False
-        self._processFile(filename)
+        self._processFile()
 
-    def _processFile(self, filename):
+    def write(self):
+        with open(self.filename, 'w') as oFile:
+            for oLine in self.lines[1:]:
+                oFile.write(oLine.line + '\n')
+        oFile.close()
+
+    def _processFile(self):
         fInsideEntity = False
         fInsidePortMapDeclaration = False
         fInsideGenericMapDeclaration = False
@@ -52,7 +58,7 @@ class vhdlFile():
 
         iCurrentIndentLevel = 0;
 
-        with open (filename) as oFile:
+        with open (self.filename) as oFile:
             for sLine in oFile:
                 oLine = line.line(sLine.rstrip())
                 # Check for blank lines
@@ -476,3 +482,4 @@ class vhdlFile():
                 # Add line to file
                 self.lines.append(oLine)
 
+        oFile.close()

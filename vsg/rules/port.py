@@ -39,6 +39,11 @@ class rule_002(port_rule):
             if oLine.isPortKeyword:
                 self._check_indent(oLine, iLineNumber)
 
+    def fix(self, oFile):
+        self.analyze(oFile)
+        for iLineNumber in self.violations:
+            self._fix_indent(oFile.lines[iLineNumber])
+
 
 class rule_003(port_rule):
     '''Port rule 003 checks spacing between "port" and the open parenthesis.'''

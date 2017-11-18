@@ -79,6 +79,11 @@ class list():
         self.oVhdlFile = oVhdlFile
         self.maximumPhase = maximum_phase(self.rules)
 
+    def fix(self):
+        for phase in range(1,10):
+           for oRule in self.rules:
+               oRule.fix(self.oVhdlFile)
+
     def check_rules(self):
         self.iNumberRulesRan = 0
         iFailures = 0

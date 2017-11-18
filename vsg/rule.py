@@ -60,8 +60,14 @@ class rule():
 #            print (self.name + '_' + self.identifier + ':  ' + self.solution + '...PASSED')
 
 
+    def fix(self, oFile):
+        return
+
     def add_violation(self, lineNumber):
         self.violations.append(lineNumber)
+
+    def _clear_violations(self):
+        self.violations = []
 
     def _isLowercase(self, sString):
         if sString == sString.lower():
@@ -73,6 +79,11 @@ class rule():
         '''Adds a violation if the indent of the line does not match the desired level.'''
         if not re.match('^\s{' + str(self.indentSize * oLine.indentLevel) + '}\S', oLine.line):
             self.add_violation(iLineNumber)
+
+    def _fix_indent(self, oLine):
+        oLine.line = ' '*oLine.indentLevel*self.indentSize + oLine.line.lstrip()
+        oLine.lineLower = oLine.line.lower()
+        self._clear_violations()
 
     def _is_no_blank_line_after(self, oFile, iLineNumber): 
         '''Adds a violation if the line after iLineNumber is blank.
