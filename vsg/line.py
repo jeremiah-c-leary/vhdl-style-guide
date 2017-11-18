@@ -117,6 +117,10 @@ class line():
         self.isVariableAssignment = False
         self.variableAssignmentAlignmentColumn = None
 
+    def update_line(self, sLine):
+        self.line = sLine
+        self.lineLower = sLine.lower()
+
 
 class blank_line(line):
 

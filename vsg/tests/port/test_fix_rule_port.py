@@ -2,7 +2,6 @@ import os
 
 import unittest
 import sys
-import copy
 
 from vsg.rules import port
 from vsg import vhdlFile
@@ -11,10 +10,22 @@ from vsg import vhdlFile
 oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','port','port_test_input.vhd'))
 
 
-class testRulePortMethods(unittest.TestCase):
+class testFixRulePortMethods(unittest.TestCase):
+
+    def test_fix_rule_001(self):
+        oRule = port.rule_001()
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, [])
 
     def test_fix_rule_002(self):
         oRule = port.rule_002()
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, [])
+
+    def test_fix_rule_003(self):
+        oRule = port.rule_003()
         oRule.fix(oFile)
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, [])
@@ -25,8 +36,111 @@ class testRulePortMethods(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, [])
 
+    def test_fix_rule_005(self):
+        oRule = port.rule_005()
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, [])
+
+    def test_fix_rule_006(self):
+        oRule = port.rule_006()
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, [])
+
+    def test_fix_rule_007(self):
+        oRule = port.rule_007()
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, [])
+
+    def test_fix_rule_008(self):
+        oRule = port.rule_008()
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, [])
+
+    def test_fix_rule_009(self):
+        oRule = port.rule_009()
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, [])
+
+    def test_fix_rule_010(self):
+        oRule = port.rule_010()
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, [])
+
+#    def test_fix_rule_011_prefix(self):
+#        oRule = port.rule_011()
+#        oRule.fix(oFile)
+#        dExpected = [12,13,14,29,30,31,43,44,45,60,61,62,74,75,76,99,100,101]
+#        oRule.anal[](oFile)
+#        self.assertEqual(oRule.violations, dExpected)
+#
+#    def test_fix_rule_011_none(self):
+#        oRule = port.rule_011()
+#        oRule.fix(oFile)
+#
+#    def test_fix_rule_011_suf[](self):
+#        oRule = port.rule_011()
+#        oRule.port_direction = 'Suffix'
+#
+#        dExpected = [9,10,11,12,13,14,26,27,28,29,30,31,40,41,42,43,44,45,57,58,59,60,61,62,71,72,73,74,75,76,87,88,89,119,120,121,129,130,131,141,142]
+#        oRule.analyze(oFile)
+#        self.assertEqual(oRule.violations, dExpected)
+
+    def test_fix_rule_012(self):
+        oRule = port.rule_012()
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, [])
+
+    def test_fix_rule_013(self):
+        oRule = port.rule_013()
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, [])
+
+    def test_fix_rule_014(self):
+        oRule = port.rule_014()
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, [])
+
     def test_fix_rule_015(self):
         oRule = port.rule_015()
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, [])
+
+    def test_fix_rule_016(self):
+        oRule = port.rule_016()
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, [])
+
+    def test_fix_rule_017(self):
+        oRule = port.rule_017()
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, [])
+
+    def test_fix_rule_018(self):
+        oRule = port.rule_018()
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, [])
+
+    def test_fix_rule_019(self):
+        oRule = port.rule_019()
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, [])
+
+    def test_fix_rule_020(self):
+        oRule = port.rule_020()
         oRule.fix(oFile)
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, [])
