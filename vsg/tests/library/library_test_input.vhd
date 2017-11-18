@@ -23,7 +23,7 @@ LIBRARY     lib5;
   use lib6.comp.all;
   use lib6.comp2.all;
 
-USE lib6.comp3.all;
+USE lib6.comp3.all;   -- USE 
   Use   lib6.comp4.all;
 
     uSe   lib6.comp5.all;

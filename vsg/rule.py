@@ -151,3 +151,8 @@ class rule():
                     self.add_violation(str(iStartGroupIndex) + '-' + str(iStartGroupIndex + len(lGroup) - 1))
                     break
 
+    def _lower_case(self, oLine, sKeyword):
+        oLine.line = re.sub(sKeyword, sKeyword.lower(), oLine.line, flags=re.IGNORECASE)
+        oLine.lineLower = oLine.line.lower()
+    
+        

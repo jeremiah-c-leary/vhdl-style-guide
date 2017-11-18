@@ -18,25 +18,39 @@ class rule_001(comment_rule):
         self.identifier = '001'
         self.solution = 'Ensure proper indentation.'
         self.phase = 4
+        self.correctCommentColumn = []
 
     def analyze(self, oFile):
-        iFileLength = len(oFile.lines)
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isComment:
                 if oFile.lines[iLineNumber - 1].hasComment:
                     if oFile.lines[iLineNumber - 1].isComment:
                         if not oLine.commentColumn == (oLine.indentLevel * self.indentSize):
                             self.add_violation(iLineNumber)
+                            self.correctCommentColumn.append(oLine.indentLevel * self.indentSize)
                 else:
                     try:
                         if oFile.lines[iLineNumber + 1].isCaseWhenKeyword:
                             if not oLine.commentColumn == (oLine.indentLevel * self.indentSize) and not oLine.commentColumn == ((oLine.indentLevel - 1) * self.indentSize):
                                 self.add_violation(iLineNumber)
+                                self.correctCommentColumn.append(oLine.indentLevel * self.indentSize)
                         else:
                             if not oLine.commentColumn == (oLine.indentLevel * self.indentSize):
                                 self.add_violation(iLineNumber)
+                                self.correctCommentColumn.append(oLine.indentLevel * self.indentSize)
                     except IndexError:
                         pass
+
+    def fix(self, oFile):
+        self.analyze(oFile)
+        for iViolationIndex, iLineNumber in enumerate(self.violations):
+            oLine = oFile.lines[iLineNumber]
+            oLine.line = ' '*self.correctCommentColumn[iViolationIndex] + oLine.line.lstrip()
+            oLine.lineLower = oLine.line.lower()
+            oLine.commentColumn = self.correctCommentColumn[iViolationIndex]
+
+        self._clear_violations()
+        self.correctCommentColumn = []
 
 
 class rule_002(comment_rule):

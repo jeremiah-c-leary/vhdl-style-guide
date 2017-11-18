@@ -1,5 +1,4 @@
 
-
 class line():
 
     def __init__(self, line):
@@ -118,3 +117,9 @@ class line():
         self.isVariableAssignment = False
         self.variableAssignmentAlignmentColumn = None
 
+
+class blank_line(line):
+
+    def __init__(self):
+        line.__init__(self, '')
+        self.isBlank = True

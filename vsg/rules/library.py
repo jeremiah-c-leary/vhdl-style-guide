@@ -1,5 +1,6 @@
 
 from vsg import rule
+from vsg import line
 import re
 
 
@@ -24,6 +25,9 @@ class rule_001(library_rule):
             if oLine.isLibrary:
                 self._check_indent(oLine, iLineNumber)
 
+    def fix(self, oFile):
+        self._fix_indent(oFile)
+
 
 class rule_002(library_rule):
     '''Library rule 002 checks for a single space after the library keyword.'''
@@ -40,6 +44,15 @@ class rule_002(library_rule):
                 if re.match('^\s*\S+\s\s+', oLine.line):
                     self.add_violation(iLineNumber)
 
+    def fix(self, oFile):
+        self.analyze(oFile)
+        for iLineNumber in self.violations:
+            oLine = oFile.lines[iLineNumber]
+            oLine.line = re.sub(r'^(\s*library)\s+', r'\1 ', oLine.line, flags=re.IGNORECASE)
+            oLine.lineLower = oLine.line.lower()
+
+        self._clear_violations()
+           
 
 class rule_003(library_rule):
     '''Library rule 003 checks for a blank line above the library keyword.'''
@@ -54,6 +67,12 @@ class rule_003(library_rule):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isLibrary:
                 self._is_blank_line_before(oFile, iLineNumber)
+
+    def fix(self, oFile):
+        self.analyze(oFile)
+        for iLineNumber in self.violations[::-1]:
+            oFile.lines.insert(iLineNumber, line.blank_line()) 
+        self._clear_violations()
 
 
 class rule_004(library_rule):
@@ -70,6 +89,11 @@ class rule_004(library_rule):
             if oLine.isLibrary:
                 self._is_lowercase(self._get_first_word(oLine), iLineNumber)
 
+    def fix(self, oFile):
+        self.analyze(oFile)
+        for iLineNumber in self.violations:
+            self._lower_case(oFile.lines[iLineNumber], 'library')
+        self._clear_violations()
 
 class rule_005(library_rule):
     '''Library rule 005 checks the use keyword is lower case.'''
@@ -84,6 +108,12 @@ class rule_005(library_rule):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isLibraryUse:
                 self._is_lowercase(self._get_first_word(oLine), iLineNumber)
+
+    def fix(self, oFile):
+        self.analyze(oFile)
+        for iLineNumber in self.violations:
+            self._lower_case(oFile.lines[iLineNumber], 'use')
+        self._clear_violations()
 
 
 class rule_006(library_rule):
@@ -101,6 +131,14 @@ class rule_006(library_rule):
                 if re.match('^\s*\S+\s\s+', oLine.line):
                     self.add_violation(iLineNumber)
 
+    def fix(self, oFile):
+        self.analyze(oFile)
+        for iLineNumber in self.violations:
+            oLine = oFile.lines[iLineNumber]
+            oLine.line = re.sub(r'^(\s*\S+)\s+', r'\1 ', oLine.line)
+            oLine.lineLower = oLine.line.lower()
+        self._clear_violations()
+
 
 class rule_007(library_rule):
     '''Library rule 007 checks for a blank line above the "use" keyword.'''
@@ -116,6 +154,13 @@ class rule_007(library_rule):
             if oLine.isLibraryUse:
                 self._is_no_blank_line_before(oFile, iLineNumber)
 
+    def fix(self, oFile):
+        self.analyze(oFile)
+        for iLineNumber in self.violations[::-1]:
+            while oFile.lines[iLineNumber - 1].isBlank:
+                oFile.lines.pop(iLineNumber - 1)
+        self._clear_violations()
+
 
 class rule_008(library_rule):
     '''Library rule 008 checks indentation of the use keyword.'''
@@ -130,3 +175,6 @@ class rule_008(library_rule):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isLibraryUse:
                 self._check_indent(oLine, iLineNumber)
+
+    def fix(self, oFile):
+        self._fix_indent(oFile)
