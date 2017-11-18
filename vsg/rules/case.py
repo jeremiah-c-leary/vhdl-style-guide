@@ -24,6 +24,9 @@ class rule_001(case_rule):
             if oLine.isCaseKeyword or oLine.isCaseWhenKeyword or oLine.isEndCaseKeyword:
                 self._check_indent(oLine, iLineNumber)
 
+    def fix(self, oFile):
+        self._fix_indent(oFile)
+
 
 class rule_002(case_rule):
     '''Case rule 002 checks for a single space after the "case" keyword.'''

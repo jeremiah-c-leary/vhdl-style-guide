@@ -25,6 +25,9 @@ class rule_001(if_rule):
             if oLine.isIfKeyword or oLine.isElseIfKeyword or oLine.isEndIfKeyword or oLine.isElseKeyword:
                 self._check_indent(oLine, iLineNumber)
 
+    def fix(self, oFile):
+        self._fix_indent(oFile)
+
 
 class rule_002(if_rule):
     '''If rule 002 checks the if boolean expression is enclosed in ()'s.'''

@@ -24,6 +24,9 @@ class rule_001(signal_rule):
             if oLine.isSignal:
                 self._check_indent(oLine, iLineNumber)
 
+    def fix(self,oFile):
+        self._fix_indent(oFile)
+
 
 class rule_002(signal_rule):
     '''Signal rule 002 checks the "signal" keyword is lowercase.'''

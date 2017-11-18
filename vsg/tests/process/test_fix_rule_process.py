@@ -11,6 +11,19 @@ oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','process',
 
 class testRuleProcessMethods(unittest.TestCase):
 
+
+    def test_rule_001(self):
+        oRule = process.rule_001()
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, [])
+
+    def test_rule_003(self):
+        oRule = process.rule_003()
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, [])
+
     def test_rule_006(self):
         oRule = process.rule_006()
         oRule.fix(oFile)

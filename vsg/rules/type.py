@@ -24,6 +24,9 @@ class rule_001(type_rule):
             if oLine.isTypeKeyword:
                 self._check_indent(oLine, iLineNumber)
 
+    def fix(self, oFile):
+        self._fix_indent(oFile)
+
 
 class rule_002(type_rule):
     '''Type rule 002 checks the "type" keyword is lowercase.'''
@@ -84,6 +87,9 @@ class rule_005(type_rule):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.insideType and not oLine.isTypeKeyword:
                 self._check_indent(oLine, iLineNumber)
+
+    def fix(self, oFile):
+        self._fix_indent(oFile)
 
 
 class rule_006(type_rule):

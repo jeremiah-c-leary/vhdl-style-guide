@@ -28,6 +28,9 @@ class rule_001(sequential_rule):
             if oLine.isSequential:
                 self._check_indent(oLine, iLineNumber)
 
+    def fix(self, oFile):
+        self._fix_indent(oFile)
+
 
 class rule_002(sequential_rule):
     '''Sequential rule 002 checks for a single space after the "<=" keyword.'''

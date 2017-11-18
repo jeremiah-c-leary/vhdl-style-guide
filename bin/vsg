@@ -51,12 +51,13 @@ def main():
     oVhdlFile = vhdlFile.vhdlFile(commandLineArguments.filename)
     oRules = rule_list.list(oVhdlFile, commandLineArguments.local_rules)
     oRules.configure(configuration)
+
     if commandLineArguments.fix:
         oRules.fix()
         oVhdlFile.write()
-    else:
-        oRules.check_rules()
-        oRules.report_violations()
+
+    oRules.check_rules()
+    oRules.report_violations()
 
 if __name__ == '__main__':
     main()

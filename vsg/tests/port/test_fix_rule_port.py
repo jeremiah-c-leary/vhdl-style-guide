@@ -13,13 +13,23 @@ oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','port','po
 
 class testRulePortMethods(unittest.TestCase):
 
-
     def test_fix_rule_002(self):
         oRule = port.rule_002()
         oRule.fix(oFile)
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, [])
 
+    def test_fix_rule_004(self):
+        oRule = port.rule_004()
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, [])
+
+    def test_fix_rule_015(self):
+        oRule = port.rule_015()
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, [])
 
 if __name__ == '__main__':
     unittest.main()

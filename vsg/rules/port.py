@@ -73,6 +73,9 @@ class rule_004(port_rule):
             if oLine.isPortDeclaration and not oLine.isEndPortMap:
                 self._check_indent(oLine, iLineNumber)
 
+    def fix(self, oFile):
+        self._fix_indent(oFile)
+
 
 class rule_005(port_rule):
     '''Port rule 005 checks for a single space after the colon in a port declaration for "in" and "inout" ports.'''
@@ -271,6 +274,9 @@ class rule_015(port_rule):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isEndPortMap and not oLine.isPortDeclaration:
                 self._check_indent(oLine, iLineNumber)
+
+    def fix(self, oFile):
+        self._fix_indent(oFile)
 
 
 class rule_016(port_rule):

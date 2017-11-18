@@ -24,6 +24,9 @@ class rule_001(process_rule):
             if oLine.isProcessKeyword:
                 self._check_indent(oLine, iLineNumber)
 
+    def fix(self, oFile):
+        self._fix_indent(oFile)
+
 
 class rule_002(process_rule):
     '''Process rule 002 checks there is a single space between the process keyword and the (.'''
@@ -55,6 +58,9 @@ class rule_003(process_rule):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isProcessBegin:
                 self._check_indent(oLine, iLineNumber)
+
+    def fix(self, oFile):
+        self._fix_indent(oFile)
 
 
 class rule_004(process_rule):
