@@ -285,7 +285,7 @@ class rule_017(component_rule):
             if oLine.isPortKeyword and not fGroupFound and not oLine.insideEntity:
                 fGroupFound = True
                 iStartGroupIndex = iLineNumber
-            if oLine.isEndPortMap:
+            if oLine.isEndPortMap and not oLine.insideEntity:
                 lGroup.append(oLine)
                 fGroupFound = False
                 self._check_keyword_alignment(iStartGroupIndex, ':', lGroup)

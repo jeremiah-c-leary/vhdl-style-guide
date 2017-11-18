@@ -425,3 +425,7 @@ class rule_017(entity_rule):
                   lGroup.append(oLine)
                 else:
                   lGroup.append(line.line('Removed line'))
+
+    def fix(self, oFile):
+        self._fix_keyword_alignment(oFile)
+

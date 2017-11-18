@@ -11,6 +11,8 @@ class rule():
         self.indentSize = 2
         self.phase = None
         self.disable = False
+        self.dFix = {}
+        self.dFix['violations'] = {}
 
     def configure(self, dConfiguration):
         '''Configures attributes on rules using a dictionary of the following form:
@@ -59,7 +61,6 @@ class rule():
             return 0
 #            print (self.name + '_' + self.identifier + ':  ' + self.solution + '...PASSED')
 
-
     def fix(self, oFile):
         return
 
@@ -68,6 +69,8 @@ class rule():
 
     def _clear_violations(self):
         self.violations = []
+        self.dFix = {}
+        self.dFix['violations'] = {}
 
     def _isLowercase(self, sString):
         if sString == sString.lower():
@@ -143,13 +146,41 @@ class rule():
 
     def _check_keyword_alignment(self, iStartGroupIndex, sKeyword, lGroup):
         iKeywordAlignment = None
-        for oGroupLine in lGroup:
+        iMaximumKeywordColumn = 0
+
+        sViolationRange = str(iStartGroupIndex) + '-' + str(iStartGroupIndex + len(lGroup) - 1)
+        self.dFix['violations'][sViolationRange] = {}
+        self.dFix['violations'][sViolationRange]['line'] = {}
+        for iIndex, oGroupLine in enumerate(lGroup):
             if sKeyword in oGroupLine.line:
+                self.dFix['violations'][sViolationRange]['line'][iStartGroupIndex + iIndex] = {}
+    
+                self.dFix['violations'][sViolationRange]['line'][iStartGroupIndex + iIndex]['keywordColumn'] = oGroupLine.line.find(sKeyword)
+                if oGroupLine.line.find(sKeyword) > iMaximumKeywordColumn:
+                    iMaximumKeywordColumn = oGroupLine.line.find(sKeyword)
+       
                 if not iKeywordAlignment:
                     iKeywordAlignment = oGroupLine.line.find(sKeyword)
                 elif not iKeywordAlignment == oGroupLine.line.find(sKeyword):
-                    self.add_violation(str(iStartGroupIndex) + '-' + str(iStartGroupIndex + len(lGroup) - 1))
-                    break
+                    if not sViolationRange in self.violations:
+                        self.add_violation(sViolationRange)
+                    
+        self.dFix['violations'][sViolationRange]['maximumKeywordColumn'] = iMaximumKeywordColumn
+
+    def _fix_keyword_alignment(self, oFile):
+        self.analyze(oFile)
+        for sKey in self.dFix['violations']:
+            iMaximumKeywordColumn = self.dFix['violations'][sKey]['maximumKeywordColumn']
+            for iLineNumber in self.dFix['violations'][sKey]['line']:
+                iKeywordColumn = self.dFix['violations'][sKey]['line'][iLineNumber]['keywordColumn']
+                if iKeywordColumn == iMaximumKeywordColumn:
+                    continue
+                oLine = oFile.lines[iLineNumber]
+                oLine.line = oLine.line[:iKeywordColumn - 1] + ' '*(iMaximumKeywordColumn - iKeywordColumn) + oLine.line[iKeywordColumn - 1:]
+                oLine.lineLower = oLine.line.lower()
+
+        self._clear_violations()
+
 
     def _lower_case(self, oLine, sKeyword):
         oLine.line = re.sub(sKeyword, sKeyword.lower(), oLine.line, flags=re.IGNORECASE)
