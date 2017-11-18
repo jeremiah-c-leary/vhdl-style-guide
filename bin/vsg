@@ -21,8 +21,9 @@ def parse_command_line_arguments():
                                                   for style guide violations.')
 
     parser.add_argument('-f', '--filename', required=True, help = 'File to analyze')
-    parser.add_argument('-l', '--local_rules', help = 'Path to local rules')
-    parser.add_argument('-c', '--configuration', help = 'JSON configuration file')
+    parser.add_argument('--local_rules', help = 'Path to local rules')
+    parser.add_argument('--configuration', help = 'JSON configuration file')
+    parser.add_argument('--fix', default=False, action='store_true', help = 'Fix issues found')
 
     if len(sys.argv) == 1:
         parser.print_help()
@@ -47,12 +48,15 @@ def main():
     ### Add local rule path to system path so the rules can be loaded
     if commandLineArguments.local_rules:
         sys.path.append(os.path.abspath(commandLineArguments.local_rules))
-
-    oRules = rule_list.list(vhdlFile.vhdlFile(commandLineArguments.filename), commandLineArguments.local_rules)
+    oVhdlFile = vhdlFile.vhdlFile(commandLineArguments.filename)
+    oRules = rule_list.list(oVhdlFile, commandLineArguments.local_rules)
     oRules.configure(configuration)
-    oRules.check_rules()
-    oRules.report_violations()
-
+    if commandLineArguments.fix:
+        oRules.fix()
+        oVhdlFile.write()
+    else:
+        oRules.check_rules()
+        oRules.report_violations()
 
 if __name__ == '__main__':
     main()
