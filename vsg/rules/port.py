@@ -40,9 +40,7 @@ class rule_002(port_rule):
                 self._check_indent(oLine, iLineNumber)
 
     def fix(self, oFile):
-        self.analyze(oFile)
-        for iLineNumber in self.violations:
-            self._fix_indent(oFile.lines[iLineNumber])
+        self._fix_indent(oFile)
 
 
 class rule_003(port_rule):

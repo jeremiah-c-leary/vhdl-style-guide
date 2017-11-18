@@ -80,9 +80,14 @@ class rule():
         if not re.match('^\s{' + str(self.indentSize * oLine.indentLevel) + '}\S', oLine.line):
             self.add_violation(iLineNumber)
 
-    def _fix_indent(self, oLine):
-        oLine.line = ' '*oLine.indentLevel*self.indentSize + oLine.line.lstrip()
-        oLine.lineLower = oLine.line.lower()
+    def _fix_indent(self, oFile):
+        '''Fixes indent violations.'''
+        self.analyze(oFile)
+        for iLineNumber in self.violations:
+            oLine = oFile.lines[iLineNumber]
+            oLine.line = ' '*oLine.indentLevel*self.indentSize + oLine.line.lstrip()
+            oLine.lineLower = oLine.line.lower()
+
         self._clear_violations()
 
     def _is_no_blank_line_after(self, oFile, iLineNumber): 

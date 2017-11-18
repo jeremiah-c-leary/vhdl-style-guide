@@ -104,9 +104,7 @@ class rule_006(process_rule):
                 self._check_indent(oLine, iLineNumber)
 
     def fix(self, oFile):
-        self.analyze(oFile)
-        for iLineNumber in self.violations:
-            self._fix_indent(oFile.lines[iLineNumber])
+        self._fix_indent(oFile)
 
 class rule_007(process_rule):
     '''Process rule 007 checks for a single space between the "end" and "process" keywords.'''
