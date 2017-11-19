@@ -1,4 +1,5 @@
 
+from vsg import line
 import re
 
 class rule():
@@ -181,13 +182,18 @@ class rule():
 
         self._clear_violations()
 
-
     def _lower_case(self, oLine, sKeyword):
-        oLine.line = re.sub(sKeyword, sKeyword.lower(), oLine.line, flags=re.IGNORECASE)
+        oLine.line = re.sub(' ' + sKeyword + ' ', ' ' + sKeyword.lower() + ' ', oLine.line, 1, flags=re.IGNORECASE)
+        oLine.line = re.sub(' ' + sKeyword + '$', ' ' + sKeyword.lower(), oLine.line, 1, flags=re.IGNORECASE)
+        oLine.line = re.sub('^' + sKeyword + '$', sKeyword.lower(), oLine.line, 1, flags=re.IGNORECASE)
+        oLine.line = re.sub('^' + sKeyword + ' ', sKeyword.lower() + ' ', oLine.line, 1, flags=re.IGNORECASE)
         oLine.lineLower = oLine.line.lower()
     
     def _upper_case(self, oLine, sKeyword):
-        oLine.line = re.sub(sKeyword, sKeyword.upper(), oLine.line, flags=re.IGNORECASE)
+        oLine.line = re.sub(' ' + sKeyword + ' ', ' ' + sKeyword.upper() + ' ', oLine.line, 1, flags=re.IGNORECASE)
+        oLine.line = re.sub(' ' + sKeyword + '$', ' ' + sKeyword.upper(), oLine.line, 1, flags=re.IGNORECASE)
+        oLine.line = re.sub('^' + sKeyword + '$', sKeyword.upper(), oLine.line, 1, flags=re.IGNORECASE)
+        oLine.line = re.sub('^' + sKeyword + ' ', sKeyword.upper() + ' ', oLine.line, 1, flags=re.IGNORECASE)
         oLine.lineLower = oLine.line.lower()
     
     def _enforce_one_space_after_word(self, oLine, sWord):
@@ -200,3 +206,10 @@ class rule():
         while oFile.lines[iLineNumber - 1].isBlank:
             oFile.lines.pop(iLineNumber - 1)
             iLineNumber -= 1
+
+    def _insert_blank_line_above(self, oFile, iLineNumber):
+        oFile.lines.insert(iLineNumber, line.blank_line())
+
+    def _insert_blank_line_below(self, oFile, iLineNumber):
+        oFile.lines.insert(iLineNumber + 1, line.blank_line())
+
