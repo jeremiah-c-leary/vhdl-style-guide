@@ -1,6 +1,8 @@
 
 from vsg import rule
+from vsg import line
 import re
+import copy
 
 
 class port_rule(rule.rule):
@@ -71,7 +73,6 @@ class rule_003(port_rule):
             oLine = oFile.lines[iLineNumber]
             oLine.update_line(re.sub(r'(port)\s*\(', r'\1 (', oLine.line, flags=re.IGNORECASE))
         self._clear_violations()
-
 
 
 class rule_004(port_rule):
@@ -308,6 +309,23 @@ class rule_013(port_rule):
                 if re.match('^.*,.*:', oLine.line):
                     self.add_violation(iLineNumber)
 
+    def fix(self, oFile):
+        self.analyze(oFile)
+        for iLineNumber in self.violations[::-1]:
+            oLine = oFile.lines[iLineNumber]
+            iNumberOfPorts = oLine.line.split(':')[0].count(',') + 1
+            ### Replicate ports ###
+            for iIndex in range(1, iNumberOfPorts):
+                oFile.lines.insert(iLineNumber, copy.deepcopy(oLine))
+            ### Split ports
+            for iIndex in range(0, iNumberOfPorts):
+                oLine = oFile.lines[iLineNumber + iIndex]
+                sLine = oLine.line.split(':')[0]
+                lPorts = sLine.split(',')
+                oLine.update_line(lPorts[iIndex] + ' :' + oLine.line.split(':')[1])
+            
+        self._clear_violations()
+
 
 class rule_014(port_rule):
     '''Port rule 014 checks the closing parenthesis for ports are on a line by itself.'''
@@ -323,6 +341,19 @@ class rule_014(port_rule):
             if oLine.isEndPortMap:
                 if not re.match('^\s*\)', oLine.line):                 
                     self.add_violation(iLineNumber)
+
+    def fix(self, oFile):
+        self.analyze(oFile)
+        for iLineNumber in self.violations[::-1]:
+            oFile.lines[iLineNumber].line = re.sub(r'\)(\s*);', r' \1 ', oFile.lines[iLineNumber].line)
+            oFile.lines[iLineNumber].isEndPortMap = False
+            oFile.lines.insert(iLineNumber + 1, line.line('  );'))
+            oFile.lines[iLineNumber + 1].isEndPortMap = True
+            oFile.lines[iLineNumber + 1].insidePortMap = True
+            oFile.lines[iLineNumber + 1].indentLevel = oFile.lines[iLineNumber].indentLevel - 1
+
+             
+        self._clear_violations()
 
 
 class rule_015(port_rule):
@@ -357,6 +388,19 @@ class rule_016(port_rule):
             if oLine.isPortKeyword:
                 if re.match('^\s*port\s*\(\s*\S+\s*:', oLine.lineLower):
                     self.add_violation(iLineNumber)
+
+    def fix(self, oFile):
+        self.analyze(oFile)
+        for iLineNumber in self.violations[::-1]:
+            oFile.lines.insert(iLineNumber + 1, copy.deepcopy(oFile.lines[iLineNumber]))
+            oLine = oFile.lines[iLineNumber]
+            oLine.update_line(oLine.line.split('(')[0] + ' (')
+            oLine = oFile.lines[iLineNumber + 1]
+            oLine.update_line('  ' + oLine.line.split('(')[1])
+            oLine.isPortKeyword = False
+            oLine.isPortDeclaration = True
+            
+        self._clear_violations()
 
 
 class rule_017(port_rule):
