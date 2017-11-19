@@ -1,8 +1,8 @@
 
 import sys
-sys.path.append('..\..')
+
 import unittest
-import rule
+from vsg import rule
 
 
 class testRuleMethods(unittest.TestCase):
