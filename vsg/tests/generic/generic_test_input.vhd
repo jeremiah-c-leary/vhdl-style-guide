@@ -65,7 +65,7 @@ End  entity  ENTITY1
 entity ENTITY1 is
  geneRIC (
     A_generic1 :std_logic := '0';
-   G_GENERIC2 : std_logic :='1'
+   G_GENERIC2: std_logic :='1'
   );
   port (
     I_PORT1 : in    std_logic;

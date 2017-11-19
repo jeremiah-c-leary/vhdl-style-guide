@@ -1,7 +1,8 @@
 
 from vsg import rule
-import re
 from vsg import line
+import re
+import copy
 
 
 class generic_rule(rule.rule):
@@ -26,6 +27,13 @@ class rule_001(generic_rule):
             if oLine.isGenericKeyword:
                 self._is_no_blank_line_before(oFile, iLineNumber)
 
+    def fix(self, oFile):
+        self.analyze(oFile)
+        for iLineNumber in self.violations[::-1]:
+            while oFile.lines[iLineNumber - 1].isBlank:
+                oFile.lines.pop(iLineNumber - 1)
+        self._clear_violations()
+
 
 class rule_002(generic_rule):
     '''Generic rule 002 checks indentation of the "generic" keyword.'''
@@ -40,6 +48,9 @@ class rule_002(generic_rule):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isGenericKeyword:
                 self._check_indent(oLine, iLineNumber)
+
+    def fix(self, oFile):
+        self._fix_indent(oFile)
 
 
 class rule_003(generic_rule):
@@ -57,6 +68,12 @@ class rule_003(generic_rule):
                 if not re.match('^\s*\S+\s\(', oLine.line):
                     self.add_violation(iLineNumber)
 
+    def fix(self, oFile):
+        self.analyze(oFile)
+        for iLineNumber in self.violations:
+            self._enforce_one_space_after_word(oFile.lines[iLineNumber], 'generic')
+        self._clear_violations()
+
 
 class rule_004(generic_rule):
     '''Generic rule 004 checks indentation of generics.'''
@@ -71,6 +88,9 @@ class rule_004(generic_rule):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isGenericDeclaration and not oLine.isEndGenericMap:
                 self._check_indent(oLine, iLineNumber)
+
+    def fix(self, oFile):
+        self._fix_indent(oFile)
 
 
 class rule_005(generic_rule):
@@ -89,6 +109,12 @@ class rule_005(generic_rule):
                     if not re.match('^\s*\S+\s*:\s\S', oLine.line):
                         self.add_violation(iLineNumber)
 
+    def fix(self, oFile):
+        self.analyze(oFile)
+        for iLineNumber in self.violations:
+            self._enforce_one_space_after_word(oFile.lines[iLineNumber], ':')
+        self._clear_violations()
+
 
 class rule_006(generic_rule):
     '''Generic rule 006 checks for a single space after the default assignment in a generic declaration.'''
@@ -106,6 +132,12 @@ class rule_006(generic_rule):
                     if not re.match('^\s*\S+\s*:\s*\S+\s*:=\s[\S\'"]', oLine.line):
                         self.add_violation(iLineNumber)
 
+    def fix(self, oFile):
+        self.analyze(oFile)
+        for iLineNumber in self.violations:
+            self._enforce_one_space_after_word(oFile.lines[iLineNumber], ':=')
+        self._clear_violations()
+
 
 class rule_007(generic_rule):
     '''Generic rule 007 checks generic names are uppercase.'''
@@ -121,6 +153,11 @@ class rule_007(generic_rule):
             if oLine.isGenericDeclaration and not oLine.isGenericKeyword:
                 self._is_uppercase(oLine.line.split()[0], iLineNumber)
 
+    def fix(self, oFile):
+        self.analyze(oFile)
+        for iLineNumber in self.violations:
+            self._upper_case(oFile.lines[iLineNumber], oFile.lines[iLineNumber].line.split()[0])
+        self._clear_violations()
 
 class rule_008(generic_rule):
     '''Generic rule 008 checks the indentation of closing parenthesis for generic maps.'''
@@ -136,6 +173,9 @@ class rule_008(generic_rule):
             if oLine.isEndGenericMap and not oLine.isGenericDeclaration:
                 self._check_indent(oLine, iLineNumber)
 
+    def fix(self, oFile):
+        self._fix_indent(oFile)
+
 
 class rule_009(generic_rule):
     '''Generic rule 009 checks the "generic" keyword is lowercase.'''
@@ -150,6 +190,12 @@ class rule_009(generic_rule):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isGenericKeyword:
                 self._is_lowercase(oLine.line.split()[0], iLineNumber)
+
+    def fix(self, oFile):
+        self.analyze(oFile)
+        for iLineNumber in self.violations:
+            self._lower_case(oFile.lines[iLineNumber], 'generic')
+        self._clear_violations()
 
 
 class rule_010(generic_rule):
@@ -167,21 +213,33 @@ class rule_010(generic_rule):
                 if not re.match('^\s*\)', oLine.line):
                     self.add_violation(iLineNumber)
 
+    def fix(self, oFile):
+        self.analyze(oFile)
+        for iLineNumber in self.violations[::-1]:
+            oFile.lines[iLineNumber].line = re.sub(r'\)(\s*);', r' \1 ', oFile.lines[iLineNumber].line)
+            oFile.lines[iLineNumber].isEndGenericMap = False
+            oFile.lines.insert(iLineNumber + 1, line.line('  );'))
+            oFile.lines[iLineNumber + 1].isEndGenericMap = True
+            oFile.lines[iLineNumber + 1].insideGenericMap = True
+            oFile.lines[iLineNumber + 1].indentLevel = oFile.lines[iLineNumber].indentLevel - 1
+             
+        self._clear_violations()
 
-class rule_011(generic_rule):
-    '''Generic rule 011 checks generic names have G_ prefixe.'''
 
-    def __init__(self):
-        generic_rule.__init__(self)
-        self.identifier = '011'
-        self.solution = 'Add G_ to generic name.'
-        self.phase = 7
-
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isGenericDeclaration and not oLine.isGenericKeyword and not oLine.insideComponent:
-                if not oLine.lineLower.split()[0].startswith('g_'):
-                    self.add_violation(iLineNumber)
+#class rule_011(generic_rule):
+#    '''Generic rule 011 checks generic names have G_ prefixe.'''
+#
+#    def __init__(self):
+#        generic_rule.__init__(self)
+#        self.identifier = '011'
+#        self.solution = 'Add G_ to generic name.'
+#        self.phase = 7
+#
+#    def analyze(self, oFile):
+#        for iLineNumber, oLine in enumerate(oFile.lines):
+#            if oLine.isGenericDeclaration and not oLine.isGenericKeyword and not oLine.insideComponent:
+#                if not oLine.lineLower.split()[0].startswith('g_'):
+#                    self.add_violation(iLineNumber)
 
 
 class rule_012(generic_rule):
@@ -213,6 +271,9 @@ class rule_012(generic_rule):
                 else:
                   lGroup.append(line.line('Removed line'))
 
+    def fix(self, oFile):
+        self._fix_keyword_alignment(oFile)
+
 
 class rule_013(generic_rule):
     '''Generic rule 013 checks for a generic keyword on the same line as a generic declaration.'''
@@ -228,6 +289,20 @@ class rule_013(generic_rule):
             if oLine.isGenericDeclaration and oLine.isGenericKeyword:
                 self.add_violation(iLineNumber)
 
+    def fix(self, oFile):
+        self.analyze(oFile)
+        for iLineNumber in self.violations[::-1]:
+            oFile.lines.insert(iLineNumber + 1, copy.deepcopy(oFile.lines[iLineNumber]))
+            oLine = oFile.lines[iLineNumber]
+            oLine.update_line(oLine.line.split('(')[0] + ' (')
+            oLine.isGenericDeclaration = False
+            oLine = oFile.lines[iLineNumber + 1]
+            oLine.update_line('  ' + oLine.line.split('(')[1])
+            oLine.isGenericKeyword = False
+            oLine.isGenericDeclaration = True
+            oLine.insideGenericMap = True
+            
+        self._clear_violations()
 
 class rule_014(generic_rule):
     '''Generic rule 014 checks for at least a single space before the :.'''
@@ -244,6 +319,12 @@ class rule_014(generic_rule):
                 if re.match('^\s*\S+\s*:\s*\S+\s*:=', oLine.line):
                     if not re.match('^\s*\S+\s+:', oLine.line):
                         self.add_violation(iLineNumber)
+
+    def fix(self, oFile):
+        self.analyze(oFile)
+        for iLineNumber in self.violations:
+            self._enforce_one_space_before_word(oFile.lines[iLineNumber], ':')
+        self._clear_violations()
 
 
 class rule_015(generic_rule):
@@ -274,6 +355,9 @@ class rule_015(generic_rule):
                   lGroup.append(oLine)
                 else:
                   lGroup.append(line.line('Removed line'))
+
+    def fix(self, oFile):
+        self._fix_keyword_alignment(oFile)
 
 
 class rule_016(generic_rule):

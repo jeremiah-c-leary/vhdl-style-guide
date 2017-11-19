@@ -399,6 +399,7 @@ class rule_016(port_rule):
             oLine.update_line('  ' + oLine.line.split('(')[1])
             oLine.isPortKeyword = False
             oLine.isPortDeclaration = True
+            oLine.insidePortMap = True
             
         self._clear_violations()
 

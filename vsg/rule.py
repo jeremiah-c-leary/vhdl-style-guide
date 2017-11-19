@@ -190,4 +190,8 @@ class rule():
         oLine.line = re.sub(sKeyword, sKeyword.upper(), oLine.line, flags=re.IGNORECASE)
         oLine.lineLower = oLine.line.lower()
     
-        
+    def _enforce_one_space_after_word(self, oLine, sWord):
+        oLine.update_line(re.sub(r'(' + sWord + ')\s*(\S)', r'\1 \2', oLine.line, 1, flags=re.IGNORECASE))
+
+    def _enforce_one_space_before_word(self, oLine, sWord):
+        oLine.update_line(re.sub(r'(\S)\s*(' + sWord + ')', r'\1 \2', oLine.line, 1, flags=re.IGNORECASE))
