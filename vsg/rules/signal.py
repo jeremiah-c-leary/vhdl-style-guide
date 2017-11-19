@@ -1,5 +1,6 @@
 
 from vsg import rule
+from vsg import line
 import re
 
 
@@ -42,6 +43,12 @@ class rule_002(signal_rule):
             if oLine.isSignal:
                 self._is_lowercase(self._get_first_word(oLine), iLineNumber)
 
+    def fix(self, oFile):
+        self.analyze(oFile)
+        for iLineNumber in self.violations:
+            self._lower_case(oFile.lines[iLineNumber], 'signal')
+        self._clear_violations()
+
 
 class rule_003(signal_rule):
     '''Signal rule 003 checks there is a single space after the "signal" keyword.'''
@@ -58,6 +65,12 @@ class rule_003(signal_rule):
                 if not re.match('^\s*signal\s\w', oLine.lineLower):
                     self.add_violation(iLineNumber)
 
+    def fix(self, oFile):
+        self.analyze(oFile)
+        for iLineNumber in self.violations:
+            self._enforce_one_space_after_word(oFile.lines[iLineNumber], 'signal')
+        self._clear_violations()
+
 
 class rule_004(signal_rule):
     '''Signal rule 004 checks the signal name is lowercase.'''
@@ -72,6 +85,12 @@ class rule_004(signal_rule):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isSignal:
                 self._is_lowercase(oLine.line.split()[1], iLineNumber)
+
+    def fix(self, oFile):
+        self.analyze(oFile)
+        for iLineNumber in self.violations:
+            self._lower_case(oFile.lines[iLineNumber], oFile.lines[iLineNumber].line.split()[1])
+        self._clear_violations()
 
 
 class rule_005(signal_rule):
@@ -89,6 +108,12 @@ class rule_005(signal_rule):
                 if not re.match('^\s*signal\s+.*\s*:\s\S', oLine.lineLower):
                     self.add_violation(iLineNumber)
 
+    def fix(self, oFile):
+        self.analyze(oFile)
+        for iLineNumber in self.violations:
+            self._enforce_one_space_after_word(oFile.lines[iLineNumber], ':')
+        self._clear_violations()
+
 
 class rule_006(signal_rule):
     '''Signal rule 006 checks there is at least a single space before the colon.'''
@@ -105,6 +130,11 @@ class rule_006(signal_rule):
                 if re.match('^\s*signal\s+.*\S:', oLine.lineLower):
                     self.add_violation(iLineNumber)
 
+    def fix(self, oFile):
+        self.analyze(oFile)
+        for iLineNumber in self.violations:
+            self._enforce_one_space_before_word(oFile.lines[iLineNumber], ':')
+        self._clear_violations()
 
 class rule_007(signal_rule):
     '''Signal rule 007 checks for default assignments in signal declarations.'''
@@ -120,6 +150,10 @@ class rule_007(signal_rule):
             if oLine.isSignal:
                 if ':=' in oLine.line:
                     self.add_violation(iLineNumber)
+
+    def fix(self, oFile):
+        ''' This rule will not be automatically fixed.'''
+        return
 
 
 class rule_008(signal_rule):
@@ -160,22 +194,27 @@ class rule_009(signal_rule):
         self.phase = 5
 
     def analyze(self, oFile):
-        iMaximumColumn = 0
-        # Search for the largest column that contains the first colon
+        lGroup = []
+        fGroupFound = False
+        iStartGroupIndex = None
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if not oLine.isSignal:
-                continue
-            iCurrentColumn = oLine.line.find(':')
-            if iMaximumColumn < iCurrentColumn:
-                iMaximumColumn = iCurrentColumn
-        self.solution = 'Align colon to column ' + str(iMaximumColumn + 1) + '.'
-        # Compare each signals colon column to the largest found
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if not oLine.isSignal:
-                continue
-            iCurrentColumn = oLine.line.find(':')
-            if not iMaximumColumn == oLine.line.find(':'):
-                self.add_violation(iLineNumber)
+            if oLine.isArchitectureKeyword and not fGroupFound:
+                fGroupFound = True
+                iStartGroupIndex = iLineNumber
+            if oLine.isEndArchitecture:
+                lGroup.append(oLine)
+                fGroupFound = False
+                self._check_keyword_alignment(iStartGroupIndex, ':', lGroup)
+                lGroup = []
+                iStartGroupIndex = None
+            if fGroupFound:
+                if oLine.isSignal:
+                  lGroup.append(oLine)
+                else:
+                  lGroup.append(line.line('Removed line'))
+
+    def fix(self, oFile):
+        self._fix_keyword_alignment(oFile)
 
 
 class rule_010(signal_rule):
@@ -197,3 +236,14 @@ class rule_010(signal_rule):
                     else:
                         self._is_lowercase(oLine.line.split()[3], iLineNumber)
 
+    def fix(self, oFile):
+        self.analyze(oFile)
+        for iLineNumber in self.violations:
+            oLine = oFile.lines[iLineNumber]
+            sLine = oLine.line.split()[3]
+            if '(' in sLine:
+                self._lower_case(oLine, sLine.split('(')[0])
+            else:
+                self._lower_case(oLine, sLine.split()[3])
+
+        self._clear_violations()

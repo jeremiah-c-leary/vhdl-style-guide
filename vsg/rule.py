@@ -187,6 +187,7 @@ class rule():
         oLine.line = re.sub(' ' + sKeyword + '$', ' ' + sKeyword.lower(), oLine.line, 1, flags=re.IGNORECASE)
         oLine.line = re.sub('^' + sKeyword + '$', sKeyword.lower(), oLine.line, 1, flags=re.IGNORECASE)
         oLine.line = re.sub('^' + sKeyword + ' ', sKeyword.lower() + ' ', oLine.line, 1, flags=re.IGNORECASE)
+        oLine.line = re.sub(' ' + sKeyword + '\(', ' ' + sKeyword.lower() + '\(', oLine.line, 1, flags=re.IGNORECASE)
         oLine.lineLower = oLine.line.lower()
     
     def _upper_case(self, oLine, sKeyword):
@@ -194,6 +195,7 @@ class rule():
         oLine.line = re.sub(' ' + sKeyword + '$', ' ' + sKeyword.upper(), oLine.line, 1, flags=re.IGNORECASE)
         oLine.line = re.sub('^' + sKeyword + '$', sKeyword.upper(), oLine.line, 1, flags=re.IGNORECASE)
         oLine.line = re.sub('^' + sKeyword + ' ', sKeyword.upper() + ' ', oLine.line, 1, flags=re.IGNORECASE)
+        oLine.line = re.sub(' ' + sKeyword + '\(', ' ' + sKeyword.upper() + '\(', oLine.line, 1, flags=re.IGNORECASE)
         oLine.lineLower = oLine.line.lower()
     
     def _enforce_one_space_after_word(self, oLine, sWord):
