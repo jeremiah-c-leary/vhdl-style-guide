@@ -37,19 +37,19 @@ class testFixRuleArchitectureMethods(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
-    def test_fix_rule_005(self):
-        oRule = architecture.rule_005()
-        dExpected = []
-        oRule.fix(oFile)
-        oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
-
-    def test_fix_rule_006(self):
-        oRule = architecture.rule_006()
-        dExpected = []
-        oRule.fix(oFile)
-        oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
+#    def test_fix_rule_005(self):
+#        oRule = architecture.rule_005()
+#        dExpected = []
+#        oRule.fix(oFile)
+#        oRule.analyze(oFile)
+#        self.assertEqual(oRule.violations, dExpected)
+#
+#    def test_fix_rule_006(self):
+#        oRule = architecture.rule_006()
+#        dExpected = []
+#        oRule.fix(oFile)
+#        oRule.analyze(oFile)
+#        self.assertEqual(oRule.violations, dExpected)
 
     def test_fix_rule_007(self):
         oRule = architecture.rule_007()
@@ -72,12 +72,12 @@ class testFixRuleArchitectureMethods(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
-    def test_fix_rule_010(self):
-        oRule = architecture.rule_010()
-        dExpected = []
-        oRule.fix(oFile)
-        oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
+#    def test_fix_rule_010(self):
+#        oRule = architecture.rule_010()
+#        dExpected = []
+#        oRule.fix(oFile)
+#        oRule.analyze(oFile)
+#        self.assertEqual(oRule.violations, dExpected)
 
     def test_fix_rule_011(self):
         oRule = architecture.rule_011()
