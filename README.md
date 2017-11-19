@@ -1,56 +1,214 @@
-# vhdl-style-guide (VSG)
-Style guide enforcement for VHDL
+Vhdl Style Guide (VSG)
+======================
 
-After recently performing code reviews for some VHDL, there were quite a few style issues.
-I believe these issues distracted from the true purpose of the code review.
+**Coding style enforcement for VHDL.**
 
-We typically use Spyglass as a static analyzer, but it does not cover all the style issues I am interested in.
+After recently performing code reviews, most of the issues found were related to style.
+Time spent in code reviews addressing style issues is a waste.
+Depending on your process, style issues can take a lot of time to resolve.
 
-Therefore, I am writing VSG to help with future code reviews.
+1. Create finding/ticket/issue
+2. Disposition
+3. Fix
+4. Verify fix
 
-## Language
+Spending less time on style issues, leaves more time to analyze the substance of the code.
+Ultimately, this will reduce the amount of time performing code reviews.
+Spending more time on substance than style will result in higher quality code that ultimately costs less.
 
-I have choosen to implement the program in Python so I can further my learning of the language.
+## Key benefits
 
-## Design Strategy
+* Define VHDL coding standards
+* Makes coding standards visible to everyone
+* Improve code reviews
+* Quickly bring code up to current standards
 
-### Architecture
+VSG allows the style of the code to be defined and enforced over part or the entire code base.
+Configurations allow for multiple coding standards.
 
-The program will be designed around rules.
-The rules will be atomic so they can be added or removed easily.
+## Key Features
+
+* Command line tool
+  - integrate into continuous integration flow
+* Fixes and/or reports issues found
+  - whitespace
+    - horizontal
+    - vertical
+  - upper and lower case
+  - keyword alignments
+  - etc...
+* Fully configurable rules via JSON configuration file
+  - Disable rules
+  - Alter behavior of existing rules
+  - Change phase of execution
+* Localize rule sets
+  - Create your own rules using python
+  - Use existing rules as a template
+  - Fully integrates into base rule set
 
 ## Installation
 
-### pyPI
-
-This module can be installed using PIP.
+You can get the latest released version of VSG via **pip**.
 
 ```
 pip install vsg
 ```
 
-This will retrieve the latest released version
+The latest development version can be cloned...
 
-### manual install
+```
+git clone https://github.com/jeremiah-c-leary/vhdl-style-guide.git
+```
+...and then installed locally...
+```
+python setup.py install
+```
 
-After downloading the source, issue the following command:
+## Usage
 
-  python setup.py install
+VSG is a command line tool and is invoked with...
+```
+$vsg
 
-This will install the vsg package and binary.
-If you add the path to the binary to your PATH environment variable, then the program can be called directly.
-This method can be used if you want to use the latest unreleased version.
+usage: VHDL Style Guide (VSG) [-h] -f FILENAME [--local_rules LOCAL_RULES]
+                              [--configuration CONFIGURATION] [--fix]
 
-## Testing
+Analyzes VHDL files for style guide violations.
 
-I will be using TDD for development.
-Tests are located under the tests directory.
+optional arguments:
+  -h, --help            show this help message and exit
+  -f FILENAME, --filename FILENAME
+                        File to analyze
+  --local_rules LOCAL_RULES
+                        Path to local rules
+  --configuration CONFIGURATION
+                        JSON configuration file
+  --fix                 Fix issues found
+```
 
-### Executing tests
+Here is an example output running against a test file:
+```
+$ vsg -f PIC.vhd 
+File:  PIC.vhd
+==============
+Phase 1... Reporting
+Phase 2... Reporting
+Phase 3... Reporting
+Phase 4... Reporting
+Phase 5... Reporting
+  comment_002               |         51 | Ensure proper alignment of comment with previous line.
+  comment_002               |         52 | Ensure proper alignment of comment with previous line.
+  comment_002               |         54 | Ensure proper alignment of comment with previous line.
+  comment_002               |         55 | Ensure proper alignment of comment with previous line.
+  comment_003               |     76-256 | Inconsistent alignment of comments within process.
+  sequential_005            |      87-93 | Inconsistent alignment of "<=" in group of lines.
+  sequential_005            |    102-103 | Inconsistent alignment of "<=" in group of lines.
+  sequential_005            |    105-108 | Inconsistent alignment of "<=" in group of lines.
+  sequential_005            |    110-113 | Inconsistent alignment of "<=" in group of lines.
+  sequential_005            |    115-118 | Inconsistent alignment of "<=" in group of lines.
+  sequential_005            |    120-124 | Inconsistent alignment of "<=" in group of lines.
+  sequential_005            |    129-133 | Inconsistent alignment of "<=" in group of lines.
+  sequential_005            |    160-161 | Inconsistent alignment of "<=" in group of lines.
+  sequential_005            |    173-174 | Inconsistent alignment of "<=" in group of lines.
+  comment_002               |        183 | Ensure proper alignment of comment with previous line.
+  sequential_005            |    225-226 | Inconsistent alignment of "<=" in group of lines.
+  sequential_005            |    238-239 | Inconsistent alignment of "<=" in group of lines.
+Phase 6... Not executed
+Phase 7... Not executed
+==============
+Total Rules Checked: 204
+Total Failures:      523
+```
 
-You can run all the tests at the top level by invoking the following command:
+## Configuring
 
- python setup.py test
+Any attribute of any rule can be configured by using the --configuration option and a JSON file.
+This is the basic form of a configuration file: 
+
+```json
+{
+    "rule":{
+        "global":{
+            "attributeName":"AttributeValue" 
+        },
+        "ruleId_ruleNumber":{
+            "attributeName":"AttributeValue" 
+        }
+    }
+}
+```
+
+### Example Configuration: Disabling a rule
+
+Below is an example of a JSON file which disables the rule **entity_004**
+
+```json
+{
+    "rule":{
+        "entity_004":{
+            "disable":"True"
+        }
+    }
+}
+```
+
+### Example Configuration: Setting the indent increment size
+
+The indent increment size is the number of spaces an indent level takes.
+It can be configured on an per rule basis...
+
+```json
+{
+    "rule":{
+        "entity_004":{
+            "indentSize":4
+        }
+    }
+}
+```
+
+...or configured for every rule using **global**:
+
+
+```json
+{
+    "rule":{
+        "global":{
+            "indentSize":4
+        }
+    }
+}
+```
+
+The **global** value will be overridden if the same attribute is specified for an individual rule.
+
+## Running Tests
+
+You can run all the tests at the top level by invoking the following command...
+
+```
+$ python setup.py test
+running test
+Searching for nose
+.
+.
+.
+
+----------------------------------------------------------------------
+Ran 578 tests in 0.364s
+
+OK
+```
+...or...
+```
+$ python -m unittest discover
+..................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................
+----------------------------------------------------------------------
+Ran 578 tests in 0.072s
+
+OK
+```
+
 
 ## Local rules
 
@@ -62,8 +220,8 @@ The localized rules will be used when the -l command line argument is given.
 
 ## Phases
 
-The rules will be grouped together and ran in phases.
-If a phase failes, then successive phases will not execute.
+The rules are grouped together and ran in phases.
+If issues are found during a phase, then successive phases will not execute.
 
 ### Phase 1 - Structural
 
@@ -95,48 +253,3 @@ This phase checks capitalization rules
 
 This phase checks naming restrictions for signals, constants, ports, etc...
 
-## Configuring rules
-
-Any attribute of any rule can be configured by using the --configuration option and a JSON file.
-
-### Disabling a rule
-
-Below is an example of a JSON file which disables the rule **entity_004**
-
-```json
-{
-  "rule":{
-    "entity_004":{
-        "disable":"True"
-    }
-  }
-}
-```
-
-### Setting the indent increment size
-
-The indent increment size can be configured on an per rule basis:
-
-```json
-{
-  "rule":{
-      "entity_004":{
-        "indentSize":4
-      }
-}
-```
-
-or the indent increment size can be configured for every rule using **global**:
-
-
-```json
-{
-  "rule":{
-      "global":{
-        "indentSize":4
-      }
-}
-```
-
-Use **global** to configure the attribute of all rules.
-The **global** value can be overridden by a specific rule value.
