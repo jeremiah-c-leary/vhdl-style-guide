@@ -26,5 +26,6 @@ LIBRARY     lib5;
 USE lib6.comp3.all;   -- USE 
   Use   lib6.comp4.all;
 
+
     uSe   lib6.comp5.all;
 

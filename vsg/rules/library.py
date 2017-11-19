@@ -157,8 +157,7 @@ class rule_007(library_rule):
     def fix(self, oFile):
         self.analyze(oFile)
         for iLineNumber in self.violations[::-1]:
-            while oFile.lines[iLineNumber - 1].isBlank:
-                oFile.lines.pop(iLineNumber - 1)
+            self._remove_blank_lines_above(oFile, iLineNumber)
         self._clear_violations()
 
 

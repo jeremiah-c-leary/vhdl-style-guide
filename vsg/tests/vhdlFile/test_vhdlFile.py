@@ -42,7 +42,7 @@ class testVhdlFileMethods(unittest.TestCase):
         for iIndex, oLine in enumerate(oFileLibrary.lines):
             if iIndex == 1 or iIndex == 2 or iIndex == 6 or iIndex == 8 or iIndex == 11 or \
                iIndex == 12 or iIndex == 15 or iIndex == 17 or iIndex == 18 or iIndex == 19 or \
-               iIndex == 22 or iIndex == 25 or iIndex == 28 or iIndex == 30:
+               iIndex == 22 or iIndex == 25 or iIndex == 28 or iIndex == 29 or iIndex == 31:
                 self.assertTrue(oLine.isBlank)
             else:
                 self.assertFalse(oLine.isBlank)
@@ -68,7 +68,7 @@ class testVhdlFileMethods(unittest.TestCase):
                 self.assertFalse(oLine.isLibrary)
 
     def test_library_use_assignment(self):
-        lExpected = [4,5,10,14,16,23,24,26,27,29]
+        lExpected = [4,5,10,14,16,23,24,26,27,30]
         # Compare
         for iIndex, oLine in enumerate(oFileLibrary.lines):
             if iIndex in lExpected:
@@ -78,7 +78,7 @@ class testVhdlFileMethods(unittest.TestCase):
                 self.assertFalse(oLine.isLibraryUse)
 
     def test_insideEntity_assignment(self):
-        lExpected = [0,1,2,17,18,48,64,79,92,93,104,105,106,107,108,109,110,111,112,124,125,126,134,135,136,137,145]
+        lExpected = [0,1,2,17,18,48,64,79,92,93,104,105,106,107,108,109,110,111,112,124,125,126,134,135,136,137,147]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFileEntity.lines):
@@ -98,7 +98,7 @@ class testVhdlFileMethods(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isEndEntityDeclaration_assignment(self):
-        lExpected = [16,33,47,63,78,91,103,123,133,144]
+        lExpected = [16,33,47,63,78,91,103,123,133,146]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFileEntity.lines):

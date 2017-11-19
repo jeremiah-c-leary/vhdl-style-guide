@@ -141,5 +141,7 @@ entity ENTITY1 is
     O_PORT2  : out   std_logic;
     IO_PORT3 : inout std_logic
   );
+
+
 end entity ENTITY1
 
