@@ -3,7 +3,15 @@ VHDL Style Guide (VSG)
 
 **Coding style enforcement for VHDL.**
 
-![Build Status](https://travis-ci.org/jeremiah-c-leary/vhdl-style-guide?branch=master)
+![alt text](https://travis-ci.org/jeremiah-c-leary/vhdl-style-guide?branch=master)
+
+<div>
+  <!-- Build Status -->
+  <a href="https://travis-ci.org/jeremiah-c-leary/vhdl-style-guide">
+    <img src="https://img.shields.io/travis/jeremiah-c-leary/vhdl-style-guide/master.svg?style=flat-square"
+      alt="Build Status" />
+  </a>
+</div>
 
 After recently performing code reviews, most of the issues found were related to style.
 Time spent in code reviews addressing style issues is a waste.
