@@ -1,6 +1,7 @@
 
 from vsg import rule
 import re
+import copy
 
 
 class concurrent_rule(rule.rule):
@@ -24,6 +25,9 @@ class rule_001(concurrent_rule):
             if oLine.isConcurrentBegin:
                 self._check_indent(oLine, iLineNumber)
 
+    def fix(self, oFile):
+        self._fix_indent(oFile)
+
 
 class rule_002(concurrent_rule):
     '''Concurrent rule 002 checks there is a single space after the assignment.'''
@@ -43,6 +47,10 @@ class rule_002(concurrent_rule):
                 elif re.match('^\s*\w+\s*:\s*\w+\s*<=\s*\S+', oLine.line):
                     if not re.match('^\s*\w+\s*:\s*\w+\s*<=\s\S', oLine.line):
                         self.add_violation(iLineNumber)
+
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            self._enforce_one_space_after_word(oFile.lines[iLineNumber], '<=')
 
 
 class rule_003(concurrent_rule):
@@ -64,6 +72,10 @@ class rule_003(concurrent_rule):
                 else:
                     self._check_multiline_alignment(iAlignmentColumn, oLine, iLineNumber)
 
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.dFix['violations']:
+            self._fix_multiline_alignment(oFile, iLineNumber)
+
 
 class rule_004(concurrent_rule):
     '''Concurrent rule 004 checks there is at least a single space before the assignment.'''
@@ -84,6 +96,11 @@ class rule_004(concurrent_rule):
                     if not re.match('^\s*\w+\s*:\s*\w+\s+<=', oLine.line):
                         self.add_violation(iLineNumber)
 
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            oLine = oFile.lines[iLineNumber]
+            oLine.update_line(oLine.line.replace('<=',' <='))
+
 
 class rule_005(concurrent_rule):
     '''Concurrent rule 005 checks for labels on concurrent assignments.'''
@@ -99,6 +116,11 @@ class rule_005(concurrent_rule):
             if oLine.isConcurrentBegin:
                 if re.match('^\s*\w+\s*:\s*\w+\s*<=', oLine.line):
                     self.add_violation(iLineNumber)
+
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            oLine = oFile.lines[iLineNumber]
+            oLine.update_line(oLine.line[oLine.line.find(':') + 1:])
 
 
 class rule_006(concurrent_rule):
@@ -126,6 +148,9 @@ class rule_006(concurrent_rule):
             if fGroupFound:
                 lGroup.append(oLine)
 
+    def fix(self, oFile):
+        self._fix_keyword_alignment(oFile)
+
 
 class rule_007(concurrent_rule):
     '''Concurrent rule 007 checks for code after the "else" keyword.'''
@@ -141,3 +166,14 @@ class rule_007(concurrent_rule):
             if oLine.insideConcurrent:
                 if re.match('^.*\selse\s+\w', oLine.lineLower):
                     self.add_violation(iLineNumber)
+
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations[::-1]:
+            oLine = oFile.lines[iLineNumber]
+            iIndex = oLine.line.find(' else') + len(' else')
+            oFile.lines.insert(iLineNumber + 1, copy.deepcopy(oLine))
+            oLine.isEndConcurrent = False
+            oLine.update_line(oLine.line[:iIndex])
+            oLine = oFile.lines[iLineNumber + 1]
+            oLine.isConcurrentBegin = False
+            oLine.update_line(oLine.line[iIndex:])

@@ -490,9 +490,7 @@ class rule_020(port_rule):
                 if not re.match('^.*\s+:',oLine.line):
                     self.add_violation(iLineNumber)
 
-    def fix(self, oFile):
-        self.analyze(oFile)
+    def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
             oLine = oFile.lines[iLineNumber]
-            oLine.update_line(re.sub(r'^(.*)(\s*):', r'\1 :', oLine.line, flags=re.IGNORECASE))
-        self._clear_violations()
+            oLine.update_line(oLine.line.replace(':',' :'))
