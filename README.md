@@ -22,7 +22,7 @@ Depending on your process, style issues can take a lot of time to resolve.
 
 Spending less time on style issues, leaves more time to analyze the substance of the code.
 Ultimately, this will reduce the amount of time performing code reviews.
-Spending more time on substance than style will result in higher quality code that ultimately costs less.
+Spending more time on substance than style will result in higher quality code that costs less.
 
 ## Key benefits
 
