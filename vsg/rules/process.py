@@ -1,5 +1,6 @@
 
 from vsg import rule
+from vsg import line
 import re
 
 
@@ -44,6 +45,10 @@ class rule_002(process_rule):
                 if not re.match('^\s*.*process\s\(', oLine.lineLower):
                     self.add_violation(iLineNumber)
 
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            self._enforce_one_space_after_word(oFile.lines[iLineNumber], 'process')
+
 
 class rule_003(process_rule):
     '''Process rule 003 checks for the proper indentation at the beginning of the line.'''
@@ -78,6 +83,10 @@ class rule_004(process_rule):
             if oLine.isProcessBegin:
                 self._is_lowercase(self._get_first_word(oLine), iLineNumber)
 
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            self._lower_case(oFile.lines[iLineNumber], 'begin')
+
 
 class rule_005(process_rule):
     '''Process rule 004 checks the "process" keyword is lower case.'''
@@ -93,6 +102,10 @@ class rule_005(process_rule):
             if oLine.isProcessKeyword:
                 if not re.match('^\s*.*process', oLine.line):
                     self.add_violation(iLineNumber)
+
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            self._lower_case(oFile.lines[iLineNumber], 'process')
 
 
 class rule_006(process_rule):
@@ -112,6 +125,7 @@ class rule_006(process_rule):
     def fix(self, oFile):
         self._fix_indent(oFile)
 
+
 class rule_007(process_rule):
     '''Process rule 007 checks for a single space between the "end" and "process" keywords.'''
 
@@ -127,6 +141,10 @@ class rule_007(process_rule):
                 if not re.match('^\s*\S+\s\S', oLine.line):
                     self.add_violation(iLineNumber)
 
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            self._enforce_one_space_after_word(oFile.lines[iLineNumber], 'end')
+
 
 class rule_008(process_rule):
     '''Process rule 008 checks the "end" keyword is lowercase.'''
@@ -141,6 +159,10 @@ class rule_008(process_rule):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isEndProcess:
                 self._is_lowercase(self._get_first_word(oLine), iLineNumber)
+
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            self._lower_case(oFile.lines[iLineNumber], 'end')
 
 
 class rule_009(process_rule):
@@ -158,6 +180,10 @@ class rule_009(process_rule):
                 if not re.match('^\s*\w+\s+process', oLine.line):
                     self.add_violation(iLineNumber)
 
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            self._lower_case(oFile.lines[iLineNumber], 'process')
+
 
 class rule_010(process_rule):
     '''Process rule 010 checks the "begin" keyword is on it's own line.'''
@@ -174,7 +200,15 @@ class rule_010(process_rule):
                 if not re.match('^\s*begin', oLine.lineLower):
                     self.add_violation(iLineNumber)
 
-
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations[::-1]:
+            oLine = oFile.lines[iLineNumber]
+            oLine.update_line(re.sub('begin', ' '*len('begin'), oLine.line, 1, flags=re.IGNORECASE))
+            oLine.isProcessBegin = False
+            oFile.lines.insert(iLineNumber + 1, line.line('  begin'))
+            oFile.lines[iLineNumber + 1].isProcessBegin = True
+           
+             
 class rule_011(process_rule):
     '''Process rule 010 checks for a blank line after the "end process" keywords.'''
 
@@ -188,6 +222,10 @@ class rule_011(process_rule):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isEndProcess:
                 self._is_blank_line_after(oFile, iLineNumber)
+
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations[::-1]:
+            self._insert_blank_line_below(oFile, iLineNumber)
 
 
 class rule_012(process_rule):
@@ -204,6 +242,12 @@ class rule_012(process_rule):
             if oLine.isSensitivityListEnd:
                 if not re.match('^.*\)\s*is', oLine.lineLower):
                     self.add_violation(iLineNumber)
+
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            oLine = oFile.lines[iLineNumber]
+            iInsertIndex = oLine.line.rfind(')')
+            oLine.update_line(oLine.line[:iInsertIndex + 1] + ' is ' + oLine.line[iInsertIndex + 1:])
 
 
 class rule_013(process_rule):
@@ -222,6 +266,10 @@ class rule_013(process_rule):
                     if not re.match('^.*\)\s*is', oLine.line):
                       self.add_violation(iLineNumber)
 
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            self._lower_case(oFile.lines[iLineNumber], 'is')
+
 
 class rule_014(process_rule):
     '''Process rule 014 checks for a single space between the ) and "is" keyword.'''
@@ -239,6 +287,10 @@ class rule_014(process_rule):
                     if not re.match('^.*\)\sis', oLine.lineLower):
                       self.add_violation(iLineNumber)
 
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            self._enforce_one_space_before_word(oFile.lines[iLineNumber], 'is')
+
 
 class rule_015(process_rule):
     '''Process rule 015 checks for a blank line or a comment line above the "process" keyword.'''
@@ -255,6 +307,10 @@ class rule_015(process_rule):
                 if not oFile.lines[iLineNumber - 1].isBlank and not oFile.lines[iLineNumber - 1].isComment:
                       self.add_violation(iLineNumber)
 
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations[::-1]:
+            self._insert_blank_line_above(oFile, iLineNumber)
+
 
 class rule_016(process_rule):
     '''Process rule 016 checks a process has a label.'''
@@ -270,6 +326,10 @@ class rule_016(process_rule):
             if oLine.isProcessKeyword:
                 if not re.match('^\s*\S+\s*:', oLine.line):
                       self.add_violation(iLineNumber)
+
+    def _fix_violations(self, oFile):
+        '''This requires the user to fix.'''
+        return
 
 
 class rule_017(process_rule):
@@ -289,6 +349,11 @@ class rule_017(process_rule):
                     if not lLine[0] == lLine[0].upper():
                         self.add_violation(iLineNumber)
 
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            lLine = oFile.lines[iLineNumber].line.split(':')
+            self._upper_case(oFile.lines[iLineNumber], lLine[0].rstrip().lstrip())
+
 
 class rule_018(process_rule):
     '''Process rule 018 checks the "end process" has a label.'''
@@ -305,6 +370,10 @@ class rule_018(process_rule):
                 if not re.match('^\s*\S+\s+\S+\s+\S+', oLine.line):
                       self.add_violation(iLineNumber)
 
+    def _fix_violations(self, oFile):
+        '''The user must fix this issue.'''
+        return
+
 
 class rule_019(process_rule):
     '''Process rule 019 checks the "end process" label is uppercase.'''
@@ -320,6 +389,11 @@ class rule_019(process_rule):
             if oLine.isEndProcess:
                 if re.match('^\s*\w+\s+\w+\s+\w+', oLine.line):
                     self._is_uppercase(oLine.line.split()[2], iLineNumber)
+
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            lLine = oFile.lines[iLineNumber].line.split()
+            self._upper_case(oFile.lines[iLineNumber], lLine[2])
 
 
 class rule_020(process_rule):
@@ -343,20 +417,9 @@ class rule_020(process_rule):
                 else:
                     self._check_multiline_alignment(iAlignmentColumn + 1, oLine, iLineNumber)
 
-
-class rule_022(process_rule):
-    '''Process rule 022 checks for a blank line below the "begin" keyword.'''
-
-    def __init__(self):
-        process_rule.__init__(self)
-        self.identifier = '022'
-        self.solution = 'Add blank line below the "begin" keyword.'
-        self.phase = 3
-
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isProcessBegin:
-                self._is_blank_line_after(oFile, iLineNumber)
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.dFix['violations']:
+            self._fix_multiline_alignment(oFile, iLineNumber)
 
 
 class rule_021(process_rule):
@@ -398,6 +461,29 @@ class rule_021(process_rule):
                 if oLine.isSensitivityListEnd:
                     fCheckForBlanks = True
 
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations[::-1]:
+            self._remove_blank_lines_above(oFile, iLineNumber)
+
+
+class rule_022(process_rule):
+    '''Process rule 022 checks for a blank line below the "begin" keyword.'''
+
+    def __init__(self):
+        process_rule.__init__(self)
+        self.identifier = '022'
+        self.solution = 'Add blank line below the "begin" keyword.'
+        self.phase = 3
+
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isProcessBegin:
+                self._is_blank_line_after(oFile, iLineNumber)
+
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations[::-1]:
+            self._insert_blank_line_below(oFile, iLineNumber)
+
 
 class rule_023(process_rule):
     '''Process rule 023 checks for a blank line above the "end process" keywords.'''
@@ -412,6 +498,10 @@ class rule_023(process_rule):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isEndProcess:
                 self._is_blank_line_before(oFile, iLineNumber)
+
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations[::-1]:
+            self._insert_blank_line_above(oFile, iLineNumber)
 
 
 class rule_024(process_rule):
@@ -430,6 +520,10 @@ class rule_024(process_rule):
                     if not re.match('^\s*\S+\s:', oLine.line):
                         self.add_violation(iLineNumber)
 
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            self._enforce_one_space_before_word(oFile.lines[iLineNumber], ':')
+
 
 class rule_025(process_rule):
     '''Process rule 025 checks for a single space after the : and before the "process" keyword.'''
@@ -446,6 +540,10 @@ class rule_025(process_rule):
                 if re.match('^\s*\S+\s*:\s*\S+', oLine.line):
                     if not re.match('^\s*\S+\s*:\s\S', oLine.line):
                         self.add_violation(iLineNumber)
+
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            self._enforce_one_space_after_word(oFile.lines[iLineNumber], ':')
 
 
 class rule_026(process_rule):
@@ -487,6 +585,11 @@ class rule_026(process_rule):
                     fCheckForBlanks = True
                     iFailingLineNumber = iLineNumber
 
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations[::-1]:
+            self._insert_blank_line_below(oFile, iLineNumber)
+            oFile.lines[iLineNumber + 1].insideProcess = True
+
 
 class rule_027(process_rule):
     '''Process rule 027 checks for blank lines between the process declarative lines and the "begin" keyword.'''
@@ -526,6 +629,12 @@ class rule_027(process_rule):
                         iBlankCount = 0
                 if oLine.isSensitivityListEnd:
                     fCheckForBlanks = True
+
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations[::-1]:
+            self._insert_blank_line_above(oFile, iLineNumber)
+            oFile.lines[iLineNumber].insideProcess = True
+
 
 #TODOu
 # Remove spaces after ( and before )

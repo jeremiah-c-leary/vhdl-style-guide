@@ -63,6 +63,11 @@ class rule():
 #            print (self.name + '_' + self.identifier + ':  ' + self.solution + '...PASSED')
 
     def fix(self, oFile):
+        self.analyze(oFile)
+        self._fix_violations(oFile)
+        self._clear_violations()
+
+    def _fix_violations(self, oFile):
         return
 
     def add_violation(self, lineNumber):
@@ -121,6 +126,12 @@ class rule():
     def _check_multiline_alignment(self, iColumn, oLine, iLineNumber):
         if not re.match('\s{' + str(iColumn) + '}\S', oLine.line):
             self.add_violation(iLineNumber)
+            self.dFix['violations'][iLineNumber] = {}
+            self.dFix['violations'][iLineNumber]['column'] = iColumn
+
+    def _fix_multiline_alignment(self, oFile, iLineNumber):
+        oLine = oFile.lines[iLineNumber]
+        oLine.update_line(' '*self.dFix['violations'][iLineNumber]['column'] + oLine.line.lstrip())
 
     def _is_uppercase(self, sString, iLineNumber):
         if not sString == sString.upper():
@@ -187,6 +198,7 @@ class rule():
         oLine.line = re.sub(' ' + sKeyword + '$', ' ' + sKeyword.lower(), oLine.line, 1, flags=re.IGNORECASE)
         oLine.line = re.sub('^' + sKeyword + '$', sKeyword.lower(), oLine.line, 1, flags=re.IGNORECASE)
         oLine.line = re.sub('^' + sKeyword + ' ', sKeyword.lower() + ' ', oLine.line, 1, flags=re.IGNORECASE)
+        oLine.line = re.sub(' ' + sKeyword + ';', ' ' + sKeyword.lower() + ';', oLine.line, 1, flags=re.IGNORECASE)
         oLine.line = re.sub(' ' + sKeyword + '\(', ' ' + sKeyword.lower() + '\(', oLine.line, 1, flags=re.IGNORECASE)
         oLine.lineLower = oLine.line.lower()
     
@@ -195,6 +207,7 @@ class rule():
         oLine.line = re.sub(' ' + sKeyword + '$', ' ' + sKeyword.upper(), oLine.line, 1, flags=re.IGNORECASE)
         oLine.line = re.sub('^' + sKeyword + '$', sKeyword.upper(), oLine.line, 1, flags=re.IGNORECASE)
         oLine.line = re.sub('^' + sKeyword + ' ', sKeyword.upper() + ' ', oLine.line, 1, flags=re.IGNORECASE)
+        oLine.line = re.sub(' ' + sKeyword + ';', ' ' + sKeyword.upper() + ';', oLine.line, 1, flags=re.IGNORECASE)
         oLine.line = re.sub(' ' + sKeyword + '\(', ' ' + sKeyword.upper() + '\(', oLine.line, 1, flags=re.IGNORECASE)
         oLine.lineLower = oLine.line.lower()
     
