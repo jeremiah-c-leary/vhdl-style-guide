@@ -3,8 +3,6 @@ VHDL Style Guide (VSG)
 
 **Coding style enforcement for VHDL.**
 
-![alt text](https://travis-ci.org/jeremiah-c-leary/vhdl-style-guide?branch=master)
-
 <div>
   <!-- Build Status -->
   <a href="https://travis-ci.org/jeremiah-c-leary/vhdl-style-guide">
