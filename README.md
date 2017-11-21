@@ -1,7 +1,9 @@
-Vhdl Style Guide (VSG)
+VHDL Style Guide (VSG)
 ======================
 
 **Coding style enforcement for VHDL.**
+
+[![Build Status](https://travis-ci.org/jeremiah-c-leary/vhdl-style-guide?branch=master)](https://travis-ci.org/jeremiah-c-leary/vhdl-style-guide)
 
 After recently performing code reviews, most of the issues found were related to style.
 Time spent in code reviews addressing style issues is a waste.
