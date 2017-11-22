@@ -74,6 +74,19 @@ architecture ARCH of ENTITY is
     );
   end component COMP1;
 
+
+  component COMP1
+    is
+    port (
+      port_1 : in    std_logic;
+      port_2 : in    std_logic;
+      port_3 : inout std_logic;
+      port_4 : out   std_logic;
+
+    );
+  end component COMP1;
+  -- This is a comment
+
 begin
 
 end architecture ARCH;

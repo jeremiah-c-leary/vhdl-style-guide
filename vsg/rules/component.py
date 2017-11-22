@@ -5,14 +5,16 @@ from vsg import line
 
 
 class component_rule(rule.rule):
-    
+
     def __init__(self):
         rule.rule.__init__(self)
         self.name = 'component'
 
 
 class rule_001(component_rule):
-    '''Component rule 001 checks for spaces before the "component" keyword.'''
+    '''
+    Component rule 001 checks for spaces before the "component" keyword.
+    '''
 
     def __init__(self):
         component_rule.__init__(self)
@@ -26,9 +28,14 @@ class rule_001(component_rule):
             if oLine.isComponentDeclaration:
                 self._check_indent(oLine, iLineNumber)
 
+    def fix(self, oFile):
+        self._fix_indent(oFile)
+
 
 class rule_002(component_rule):
-    '''Component rule 002 checks for a single space after the "component" keyword.'''
+    '''
+    Component rule 002 checks for a single space after the "component" keyword.
+    '''
 
     def __init__(self):
         component_rule.__init__(self)
@@ -43,9 +50,15 @@ class rule_002(component_rule):
                 if re.match('^\s*component\s\s+\w', oLine.lineLower):
                     self.add_violation(iLineNumber)
 
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            self._enforce_one_space_after_word(oFile.lines[iLineNumber], 'component')
+
 
 class rule_003(component_rule):
-    '''Component rule 003 checks for a blank line above the component keyword.'''
+    '''
+    Component rule 003 checks for a blank line above the component keyword.
+    '''
 
     def __init__(self):
         component_rule.__init__(self)
@@ -59,9 +72,15 @@ class rule_003(component_rule):
             if oLine.isComponentDeclaration:
                 self._is_blank_line_before(oFile, iLineNumber)
 
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations[::-1]:
+            self._insert_blank_line_above(oFile, iLineNumber)
+
 
 class rule_004(component_rule):
-    '''Component rule 004 checks the component keyword is lower case.'''
+    '''
+    Component rule 004 checks the component keyword is lower case.
+    '''
 
     def __init__(self):
         component_rule.__init__(self)
@@ -74,9 +93,13 @@ class rule_004(component_rule):
             if oLine.isComponentDeclaration:
                 self._is_lowercase(oLine.line.split()[0], iLineNumber)
 
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            self._lower_case(oFile.lines[iLineNumber], 'component')
+
 
 class rule_005(component_rule):
-    '''Component rule 005 checks the is keyword is on the same line as the component keyword.'''
+    '''Component rule 005 checks the "is" keyword is on the same line as the component keyword.'''
 
     def __init__(self):
         component_rule.__init__(self)
@@ -89,6 +112,27 @@ class rule_005(component_rule):
             if oLine.isComponentDeclaration:
                 if not re.match('^.*\s\s*is', oLine.lineLower):
                     self.add_violation(iLineNumber)
+
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            oLine = oFile.lines[iLineNumber]
+            oLine.line = re.sub(r'^(\s*component\s+\w+)', r'\1 is', oLine.line, re.IGNORECASE)
+            oLine.lineLower = oLine.line.lower()
+            ### Search for "is" on the next line
+            iSearchIndex = iLineNumber
+            while True:
+                iSearchIndex += 1
+                oLine = oFile.lines[iSearchIndex]
+                if re.match('^\s*is', oLine.line, re.IGNORECASE):
+                    oLine.line = re.sub(r'^(\s*)is', r'\1  ', oLine.line)
+                    oLine.lineLower = oLine.line.lower()
+                    if re.match('^\s*$', oLine.line):
+                        oLine.line = ''
+                        oLine.lineLower = ''
+                        oLine.isBlank = True
+                if oFile.lines[iSearchIndex].isGenericKeyword or oFile.lines[iSearchIndex].isPortKeyword:
+                    break
+
 
 class rule_006(component_rule):
     '''Component rule 006 checks the "is" keyword is lower case.'''
@@ -107,6 +151,11 @@ class rule_006(component_rule):
                     if not re.match('^\s*\S+\s+\S+\s\s*is', oLine.line):
                         self.add_violation(iLineNumber)
 
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            self._lower_case(oFile.lines[iLineNumber], 'is')
+
+
 class rule_007(component_rule):
     '''Component rule 007 checks for a single space before the "is" keyword.'''
 
@@ -121,6 +170,11 @@ class rule_007(component_rule):
             if oLine.isComponentDeclaration:
                 if len(oLine.line.split()) > 2:
                     self._is_single_space_before('is', oLine, iLineNumber)
+
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            oLine = oFile.lines[iLineNumber]
+            oLine.update_line(re.sub(r'\s+(is)', r' \1', oLine.line, flags=re.IGNORECASE))
 
 
 class rule_008(component_rule):
@@ -137,6 +191,11 @@ class rule_008(component_rule):
             if oLine.isComponentDeclaration:
                 self._is_uppercase(oLine.line.split()[1], iLineNumber)
 
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            lLine = oFile.lines[iLineNumber].line.split()
+            self._upper_case(oFile.lines[iLineNumber], lLine[1])
+
 
 class rule_009(component_rule):
     '''Component rule 009 checks for spaces before the "end" keyword.'''
@@ -152,6 +211,9 @@ class rule_009(component_rule):
             if oLine.isComponentEnd:
                 self._check_indent(oLine, iLineNumber)
 
+    def fix(self, oFile):
+        self._fix_indent(oFile)
+
 
 class rule_010(component_rule):
     '''Component rule 010 checks the "end" keyword is lowercase.'''
@@ -166,6 +228,10 @@ class rule_010(component_rule):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isComponentEnd:
                 self._is_lowercase(oLine.line.split()[0], iLineNumber)
+
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            self._lower_case(oFile.lines[iLineNumber], 'end')
 
 
 class rule_011(component_rule):
@@ -184,6 +250,10 @@ class rule_011(component_rule):
                     if not re.match('^\s*end\s\w', oLine.lineLower):
                         self.add_violation(iLineNumber)
 
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            self._enforce_one_space_after_word(oFile.lines[iLineNumber], 'end')
+
 
 class rule_012(component_rule):
     '''Component rule 012 checks component name is uppercase in "end" keyword line.'''
@@ -201,6 +271,11 @@ class rule_012(component_rule):
                 if len(lLine) > 2:
                     self._is_uppercase(lLine[2], iLineNumber)
 
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            lLine = oFile.lines[iLineNumber].line.split()
+            self._upper_case(oFile.lines[iLineNumber], lLine[2])
+
 
 class rule_013(component_rule):
     '''Component rule 013 checks for a single space after the "component" keyword in the closing of the component.'''
@@ -215,11 +290,18 @@ class rule_013(component_rule):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isComponentEnd:
                 if len(oLine.line.split()) >= 3:
-                   self._is_single_space_after('component', oLine, iLineNumber)
+                    self._is_single_space_after('component', oLine, iLineNumber)
+
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            self._enforce_one_space_after_word(oFile.lines[iLineNumber], 'component')
 
 
 class rule_014(component_rule):
-    '''Component rule 014 checks the "component" keyword is lower case in the closing of the component.'''
+    '''
+    Component rule 014 checks the "component" keyword is lower case in the
+    closing of the component.
+    '''
 
     def __init__(self):
         component_rule.__init__(self)
@@ -234,9 +316,16 @@ class rule_014(component_rule):
                 if len(lLine) >= 3:
                     self._is_lowercase(lLine[1], iLineNumber)
 
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            self._lower_case(oFile.lines[iLineNumber], 'component')
+
 
 class rule_015(component_rule):
-    '''Component rule 015 checks the "end" keyword, "component" keyword, and component name are on the same line.'''
+    '''
+    Component rule 015 checks the "end" keyword, "component" keyword, 
+    and component name are on the same line.
+    '''
 
     def __init__(self):
         component_rule.__init__(self)
@@ -252,9 +341,19 @@ class rule_015(component_rule):
                     if not (lLine[0] == 'end' and lLine[1] == 'component' and not lLine[2].startswith('--')):
                         self.add_violation(iLineNumber)
 
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            oLine = oFile.lines[iLineNumber]
+            lLine = oLine.line.split()
+            if not lLine[1].lower() == 'component':
+                lLine.insert(1, 'component')
+                oLine.update_line(' '.join(lLine))
+
 
 class rule_016(component_rule):
-    '''Component rule 016 checks for a blank line above the "end component" keywords.'''
+    '''
+    Component rule 016 checks for a blank line above the "end component" keywords.
+    '''
 
     def __init__(self):
         component_rule.__init__(self)
@@ -268,8 +367,16 @@ class rule_016(component_rule):
                 self._is_no_blank_line_before(oFile, iLineNumber)
 
 
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations[::-1]:
+            self._remove_blank_lines_above(oFile, iLineNumber)
+
+
 class rule_017(component_rule):
-    '''Component rule 017 ensures the alignment of the : operator for every port in the component.'''
+    '''
+    Component rule 017 ensures the alignment of the : operator for every
+    port in the component.
+    '''
 
     def __init__(self):
         component_rule.__init__(self)
@@ -282,24 +389,31 @@ class rule_017(component_rule):
         fGroupFound = False
         iStartGroupIndex = None
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isPortKeyword and not fGroupFound and not oLine.insideEntity:
-                fGroupFound = True
-                iStartGroupIndex = iLineNumber
-            if oLine.isEndPortMap and not oLine.insideEntity:
-                lGroup.append(oLine)
-                fGroupFound = False
-                self._check_keyword_alignment(iStartGroupIndex, ':', lGroup)
-                lGroup = []
-                iStartGroupIndex = None
+            if not oLine.insideEntity:
+                if oLine.isPortKeyword and not fGroupFound:
+                    fGroupFound = True
+                    iStartGroupIndex = iLineNumber
+                if oLine.isEndPortMap:
+                    lGroup.append(oLine)
+                    fGroupFound = False
+                    self._check_keyword_alignment(iStartGroupIndex, ':', lGroup)
+                    lGroup = []
+                    iStartGroupIndex = None
             if fGroupFound:
                 if oLine.isPortDeclaration:
-                  lGroup.append(oLine)
+                    lGroup.append(oLine)
                 else:
-                  lGroup.append(line.line('Removed line'))
+                    lGroup.append(line.line('Removed line'))
+
+    def fix(self, oFile):
+        self._fix_keyword_alignment(oFile)
 
 
 class rule_018(component_rule):
-    '''Component rule 018 checks for a blank line below the "end component" keywords.'''
+    '''
+    Component rule 018 checks for a blank line below the
+    "end component" keywords.
+    '''
 
     def __init__(self):
         component_rule.__init__(self)
@@ -311,3 +425,8 @@ class rule_018(component_rule):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isComponentEnd:
                 self._is_blank_line_after(oFile, iLineNumber)
+
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations[::-1]:
+            self._insert_blank_line_below(oFile, iLineNumber)
+
