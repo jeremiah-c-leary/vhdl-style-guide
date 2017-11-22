@@ -1,18 +1,28 @@
-language: python
-
-dist: trusty
-
-python:
-  - "2.7"
 
 # command to install
 install:
   - pip install codecov
   - python setup.py install
 
+# Sonarsource setup
+dist: trusty
+sudo: required
+
+jdk:
+  - oraclejdk8
+
 addons:
   sonarcloud:
     organization: "Jeremiah Leary"
+
+cache:
+  directories:
+    - '$HOME/.sonar/cache'
+
+language: python
+
+python:
+  - "2.7"
 
 # command to run tests
 script:
