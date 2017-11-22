@@ -5,14 +5,16 @@ import re
 
 
 class signal_rule(rule.rule):
-    
+
     def __init__(self):
         rule.rule.__init__(self)
         self.name = 'signal'
 
 
 class rule_001(signal_rule):
-    '''Signal rule 001 checks for the proper indentation at the beginning of the line.'''
+    '''
+    Signal rule 001 checks for the proper indentation at the beginning of the line.
+    '''
 
     def __init__(self):
         signal_rule.__init__(self)
@@ -25,12 +27,14 @@ class rule_001(signal_rule):
             if oLine.isSignal:
                 self._check_indent(oLine, iLineNumber)
 
-    def fix(self,oFile):
+    def fix(self, oFile):
         self._fix_indent(oFile)
 
 
 class rule_002(signal_rule):
-    '''Signal rule 002 checks the "signal" keyword is lowercase.'''
+    '''
+    Signal rule 002 checks the "signal" keyword is lowercase.
+    '''
 
     def __init__(self):
         signal_rule.__init__(self)
@@ -43,15 +47,15 @@ class rule_002(signal_rule):
             if oLine.isSignal:
                 self._is_lowercase(self._get_first_word(oLine), iLineNumber)
 
-    def fix(self, oFile):
-        self.analyze(oFile)
+    def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
             self._lower_case(oFile.lines[iLineNumber], 'signal')
-        self._clear_violations()
 
 
 class rule_003(signal_rule):
-    '''Signal rule 003 checks there is a single space after the "signal" keyword.'''
+    '''
+    Signal rule 003 checks there is a single space after the "signal" keyword.
+    '''
 
     def __init__(self):
         signal_rule.__init__(self)
@@ -65,15 +69,15 @@ class rule_003(signal_rule):
                 if not re.match('^\s*signal\s\w', oLine.lineLower):
                     self.add_violation(iLineNumber)
 
-    def fix(self, oFile):
-        self.analyze(oFile)
+    def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
             self._enforce_one_space_after_word(oFile.lines[iLineNumber], 'signal')
-        self._clear_violations()
 
 
 class rule_004(signal_rule):
-    '''Signal rule 004 checks the signal name is lowercase.'''
+    '''
+    Signal rule 004 checks the signal name is lowercase.
+    '''
 
     def __init__(self):
         signal_rule.__init__(self)
@@ -86,15 +90,15 @@ class rule_004(signal_rule):
             if oLine.isSignal:
                 self._is_lowercase(oLine.line.split()[1], iLineNumber)
 
-    def fix(self, oFile):
-        self.analyze(oFile)
+    def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
             self._lower_case(oFile.lines[iLineNumber], oFile.lines[iLineNumber].line.split()[1])
-        self._clear_violations()
 
 
 class rule_005(signal_rule):
-    '''Signal rule 005 checks there is a single space after the colon.'''
+    '''
+    Signal rule 005 checks there is a single space after the colon.
+    '''
 
     def __init__(self):
         signal_rule.__init__(self)
@@ -108,15 +112,15 @@ class rule_005(signal_rule):
                 if not re.match('^\s*signal\s+.*\s*:\s\S', oLine.lineLower):
                     self.add_violation(iLineNumber)
 
-    def fix(self, oFile):
-        self.analyze(oFile)
+    def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
             self._enforce_one_space_after_word(oFile.lines[iLineNumber], ':')
-        self._clear_violations()
 
 
 class rule_006(signal_rule):
-    '''Signal rule 006 checks there is at least a single space before the colon.'''
+    '''
+    Signal rule 006 checks there is at least a single space before the colon.
+    '''
 
     def __init__(self):
         signal_rule.__init__(self)
@@ -130,14 +134,15 @@ class rule_006(signal_rule):
                 if re.match('^\s*signal\s+.*\S:', oLine.lineLower):
                     self.add_violation(iLineNumber)
 
-    def fix(self, oFile):
-        self.analyze(oFile)
+    def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
             self._enforce_one_space_before_word(oFile.lines[iLineNumber], ':')
-        self._clear_violations()
+
 
 class rule_007(signal_rule):
-    '''Signal rule 007 checks for default assignments in signal declarations.'''
+    '''
+    Signal rule 007 checks for default assignments in signal declarations.
+    '''
 
     def __init__(self):
         signal_rule.__init__(self)
@@ -154,7 +159,9 @@ class rule_007(signal_rule):
 
 
 class rule_008(signal_rule):
-    '''Signal rule 008 checks for prefixes in signal names.'''
+    '''
+    Signal rule 008 checks for prefixes in signal names.
+    '''
 
     def __init__(self):
         signal_rule.__init__(self)
@@ -183,7 +190,9 @@ class rule_008(signal_rule):
 
 
 class rule_009(signal_rule):
-    '''Signal rule 009 checks the colons are in the same column for all signals.'''
+    '''
+    Signal rule 009 checks the colons are in the same column for all signals.
+    '''
 
     def __init__(self):
         signal_rule.__init__(self)
@@ -207,16 +216,18 @@ class rule_009(signal_rule):
                 iStartGroupIndex = None
             if fGroupFound:
                 if oLine.isSignal:
-                  lGroup.append(oLine)
+                    lGroup.append(oLine)
                 else:
-                  lGroup.append(line.line('Removed line'))
+                    lGroup.append(line.line('Removed line'))
 
     def fix(self, oFile):
         self._fix_keyword_alignment(oFile)
 
 
 class rule_010(signal_rule):
-    '''Signal rule 010 checks the signal type is lowercase.'''
+    '''
+    Signal rule 010 checks the signal type is lowercase.
+    '''
 
     def __init__(self):
         signal_rule.__init__(self)
