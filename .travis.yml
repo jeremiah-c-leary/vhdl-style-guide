@@ -1,5 +1,7 @@
 language: python
 
+dist: trusty
+
 python:
   - "2.7"
 
@@ -8,9 +10,14 @@ install:
   - pip install codecov
   - python setup.py install
 
+addons:
+  sonarcloud:
+    organization: "Jeremiah Leary"
+
 # command to run tests
 script:
   - coverage run setup.py test
+  - sonar-scanner
 
 after_success:
   - codecov
