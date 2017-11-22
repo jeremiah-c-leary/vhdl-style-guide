@@ -144,16 +144,13 @@ class rule_007(signal_rule):
         self.identifier = '007'
         self.solution = 'Remove default assignment.'
         self.phase = 1
+        self.fixable = False  # Allow the user to decide if these should be removed
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isSignal:
                 if ':=' in oLine.line:
                     self.add_violation(iLineNumber)
-
-    def fix(self, oFile):
-        ''' This rule will not be automatically fixed.'''
-        return
 
 
 class rule_008(signal_rule):
@@ -165,6 +162,7 @@ class rule_008(signal_rule):
         self.solution = 'Remove default assignment.'
         self.prefixes = None
         self.phase = 7
+        self.fixable = False  # The user will have to fix any desired prefixes.
 
     def analyze(self, oFile):
         if not self.prefixes:

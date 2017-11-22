@@ -171,6 +171,3 @@ class testRuleGenericMethods(unittest.TestCase):
         dExpected = [21]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
-
-if __name__ == '__main__':
-    unittest.main()

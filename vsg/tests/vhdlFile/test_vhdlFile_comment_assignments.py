@@ -37,7 +37,3 @@ class testVhdlFileCommentAssignments(unittest.TestCase):
                 lActual.append(oLine.commentColumn)
         # Compare
         self.assertEqual(lActual, lExpected)
-
-
-if __name__ == '__main__':
-    unittest.main()

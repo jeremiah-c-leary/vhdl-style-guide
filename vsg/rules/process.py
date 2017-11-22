@@ -320,16 +320,13 @@ class rule_016(process_rule):
         self.identifier = '016'
         self.solution = 'Add a label for the process.'
         self.phase = 1
+        self.fixable = False   # The user must add the label
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isProcessKeyword:
                 if not re.match('^\s*\S+\s*:', oLine.line):
                       self.add_violation(iLineNumber)
-
-    def _fix_violations(self, oFile):
-        '''This requires the user to fix.'''
-        return
 
 
 class rule_017(process_rule):
@@ -363,16 +360,13 @@ class rule_018(process_rule):
         self.identifier = '018'
         self.solution = 'Add a label for the "end process".'
         self.phase = 1
+        self.fixable = False  # The user must add the label
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isEndProcess:
                 if not re.match('^\s*\S+\s+\S+\s+\S+', oLine.line):
                       self.add_violation(iLineNumber)
-
-    def _fix_violations(self, oFile):
-        '''The user must fix this issue.'''
-        return
 
 
 class rule_019(process_rule):

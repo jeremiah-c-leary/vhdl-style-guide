@@ -1,14 +1,7 @@
 
 from vsg import rule
-import re
 from vsg import line
-
-
-def is_entity(fFlag, oLine):
-    if re.match('\s*entity', oLine.lower()):
-        return True
-    return fFlag
-
+import re
 
 class entity_rule(rule.rule):
     

@@ -12,6 +12,7 @@ class rule():
         self.indentSize = 2
         self.phase = None
         self.disable = False
+        self.fixable = True
         self.dFix = {}
         self.dFix['violations'] = {}
 

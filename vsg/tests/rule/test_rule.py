@@ -78,8 +78,3 @@ class testRuleMethods(unittest.TestCase):
         oRule.configure(dConfiguration)
 
         self.assertEqual(oRule.indentSize,4)
-
-
-
-if __name__ == '__main__':
-    unittest.main()

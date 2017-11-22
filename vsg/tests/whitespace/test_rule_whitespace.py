@@ -131,8 +131,3 @@ class testRuleWhitespaceMethods(unittest.TestCase):
         oFile.lines.append(line.line('   ) pass'))
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
-
-
-
-if __name__ == '__main__':
-    unittest.main()

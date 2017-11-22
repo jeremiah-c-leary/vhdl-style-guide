@@ -241,6 +241,3 @@ class testRuleInstantiationMethods(unittest.TestCase):
         dExpected = [26,27]
         oRule.analyze(oFilePort)
         self.assertEqual(oRule.violations, dExpected)
-
-if __name__ == '__main__':
-    unittest.main()

@@ -58,6 +58,3 @@ class testRuleGenerateMethods(unittest.TestCase):
         dExpected = [11,16]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
-
-if __name__ == '__main__':
-    unittest.main()

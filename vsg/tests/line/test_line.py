@@ -548,7 +548,3 @@ class testLineMethods(unittest.TestCase):
         self.assertEqual(oLine.variableAssignmentAlignmentColumn, None)
         oLine.variableAssignmentAlignmentColumn = 32
         self.assertEqual(oLine.variableAssignmentAlignmentColumn, 32)
-
-
-if __name__ == '__main__':
-    unittest.main()

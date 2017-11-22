@@ -117,6 +117,3 @@ class testRuleConcurrentMethods(unittest.TestCase):
         dExpected = [11,12,16]
         oRule.analyze(oFileSequential)
         self.assertEqual(oRule.violations, dExpected)
-
-if __name__ == '__main__':
-    unittest.main()

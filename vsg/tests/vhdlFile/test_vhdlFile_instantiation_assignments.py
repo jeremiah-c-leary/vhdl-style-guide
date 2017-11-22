@@ -112,6 +112,3 @@ class testVhdlFileInstantiationAssignments(unittest.TestCase):
                 lActual.append(iIndex)
         # Compare
         self.assertEqual(lActual, lExpected)
-
-if __name__ == '__main__':
-    unittest.main()

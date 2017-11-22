@@ -16,7 +16,3 @@ class testRuleSequentialMethods(unittest.TestCase):
         oRule.fix(oFile)
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, [])
-
-
-if __name__ == '__main__':
-    unittest.main()

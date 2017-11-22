@@ -90,7 +90,3 @@ class testRuleConstantMethods(unittest.TestCase):
         dExpected = [5,6,8,9,10,19]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
-
-
-if __name__ == '__main__':
-    unittest.main()

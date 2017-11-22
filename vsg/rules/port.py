@@ -249,6 +249,7 @@ class rule_011(port_rule):
         self.solution = 'Add proper prefix or suffix indicating port direction.'
         self.port_direction = None
         self.phase = 7
+        self.fixable = False  # This requires the user to fix as this could cover multiple files.
 
     def analyze(self, oFile):
         if not self.port_direction:
@@ -269,10 +270,6 @@ class rule_011(port_rule):
                            lLine[0].endswith('_i,') or lLine[0].endswith('_o,') or lLine[0].endswith('_io,')):
                         self.add_violation(iLineNumber)
 
-    def fix(self, oFile):
-        ''' A fix would modify code and will not be implemented at this time.'''
-        return
-
 
 class rule_012(port_rule):
     '''Port rule 012 checks for default assignments in port declarations.'''
@@ -282,16 +279,13 @@ class rule_012(port_rule):
         self.identifier = '012'
         self.solution = 'Remove default assignment in port declaration'
         self.phase = 1
+        self.fixable = False  # Allow user to fix the default assignments
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isPortDeclaration:
                 if re.match('^.*:=', oLine.line):
                     self.add_violation(iLineNumber)
-
-    def fix(self, oFile):
-        ''' A fix would modify code and will not be implemented at this time.'''
-        return
 
 
 class rule_013(port_rule):
@@ -351,7 +345,6 @@ class rule_014(port_rule):
             oFile.lines[iLineNumber + 1].isEndPortMap = True
             oFile.lines[iLineNumber + 1].insidePortMap = True
             oFile.lines[iLineNumber + 1].indentLevel = oFile.lines[iLineNumber].indentLevel - 1
-
              
         self._clear_violations()
 

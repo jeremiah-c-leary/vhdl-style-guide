@@ -162,6 +162,3 @@ class testFixRuleArchitectureMethods(unittest.TestCase):
         oRule.fix(oFile)
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
-
-if __name__ == '__main__':
-    unittest.main()

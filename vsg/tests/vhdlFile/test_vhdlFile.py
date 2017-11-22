@@ -367,6 +367,3 @@ class testVhdlFileMethods(unittest.TestCase):
         self.assertFalse(oFileWhitespace.hasArchitecture)
         self.assertTrue(oFileConcurrent.hasArchitecture)
         self.assertTrue(oFileProcess.hasArchitecture)
-
-if __name__ == '__main__':
-    unittest.main()

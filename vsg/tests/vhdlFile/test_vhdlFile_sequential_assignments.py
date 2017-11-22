@@ -59,6 +59,3 @@ class testVhdlFileVariableAssignmentAssignments(unittest.TestCase):
                 lActual.append(oLine.indentLevel)
         # Compare
         self.assertEqual(lActual, lExpected)
-
-if __name__ == '__main__':
-    unittest.main()

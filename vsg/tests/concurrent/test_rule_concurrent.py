@@ -71,6 +71,3 @@ class testRuleConcurrentMethods(unittest.TestCase):
         dExpected = [44]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
-
-if __name__ == '__main__':
-    unittest.main()
