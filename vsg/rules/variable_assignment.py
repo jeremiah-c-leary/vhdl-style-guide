@@ -5,14 +5,11 @@ import re
 
 
 class variable_assignment_rule(rule.rule):
-    
+
     def __init__(self):
         rule.rule.__init__(self)
         self.name = 'variable_assignment'
 
-
-# TODO:
-# 4) Check for alignment of := based on some form of grouping (variable_assignment lines, process, whole file?)
 
 class rule_001(variable_assignment_rule):
     '''Variable assignment rule 001 checks for the proper indentation at the beginning of the line.'''
@@ -28,6 +25,9 @@ class rule_001(variable_assignment_rule):
             if oLine.isVariableAssignment:
                 self._check_indent(oLine, iLineNumber)
 
+    def fix(self, oFile):
+        self._fix_indent(oFile)
+
 
 class rule_002(variable_assignment_rule):
     '''Variable assignment rule 002 checks for a single space after the ":=" keyword.'''
@@ -42,8 +42,12 @@ class rule_002(variable_assignment_rule):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isVariableAssignment:
                 if re.match('^.*:=\s*\S', oLine.line):
-                  if not re.match('^.*:=\s\S', oLine.line):
-                      self.add_violation(iLineNumber)
+                    if not re.match('^.*:=\s\S', oLine.line):
+                        self.add_violation(iLineNumber)
+
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            self._enforce_one_space_after_word(oFile.lines[iLineNumber], ':=')
 
 
 class rule_003(variable_assignment_rule):
@@ -60,6 +64,10 @@ class rule_003(variable_assignment_rule):
             if oLine.isVariableAssignment:
                 if not re.match('^.*\s+:=', oLine.line):
                     self.add_violation(iLineNumber)
+
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            self._enforce_one_space_before_word(oFile.lines[iLineNumber], ':=')
 
 
 class rule_004(variable_assignment_rule):
@@ -80,6 +88,10 @@ class rule_004(variable_assignment_rule):
                 continue
             if oLine.insideVariableAssignment and not oLine.isComment:
                 self._check_multiline_alignment(iAlignmentColumn, oLine, iLineNumber)
+
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.dFix['violations']:
+            self._fix_multiline_alignment(oFile, iLineNumber)
 
 
 class rule_005(variable_assignment_rule):
@@ -110,6 +122,9 @@ class rule_005(variable_assignment_rule):
                 else:
                     lGroup.append(oLine)
 
+    def fix(self, oFile):
+        self._fix_keyword_alignment(oFile)
+
 
 class rule_006(variable_assignment_rule):
     '''Variable assignment rule 006 checks for commented out lines within a multiline variable_assignment statement.'''
@@ -119,11 +134,9 @@ class rule_006(variable_assignment_rule):
         self.identifier = '006'
         self.solution = 'Remove comment.'
         self.phase = 1
+        self.fixable = False  # User will have to decide how to handle the comments.
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.insideVariableAssignment and oLine.isComment:
                 self.add_violation(iLineNumber)
-           
-
-
