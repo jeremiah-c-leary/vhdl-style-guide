@@ -3,11 +3,16 @@ VHDL Style Guide (VSG)
 
 **Coding style enforcement for VHDL.**
 
-<div>
+<div align="center">
   <!-- Build Status -->
   <a href="https://travis-ci.org/jeremiah-c-leary/vhdl-style-guide">
     <img src="https://img.shields.io/travis/jeremiah-c-leary/vhdl-style-guide/master.svg?style=flat-square"
       alt="Build Status" />
+  </a>
+  <!-- Test Coverage -->
+  <a href="https://codecov.io/github/jeremiah-c-leary/vhdl-style-guide">
+    <img src="https://img.shields.io/codecov/c/github/jeremiah-c-leary/vhdl-style-guide/master.svg?style=flat-square"
+      alt="Test Coverage" />
   </a>
 </div>
 
