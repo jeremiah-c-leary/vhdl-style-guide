@@ -10,7 +10,7 @@ from vsg import vhdlFile
 # Read in test file used for all tests
 oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','variable','variable_test_input.vhd'))
 
-class testRuleSignalMethods(unittest.TestCase):
+class testRuleVariableMethods(unittest.TestCase):
 
     def test_rule_001(self):
         oRule = variable.rule_001()
@@ -75,31 +75,12 @@ class testRuleSignalMethods(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
-#    def test_rule_008_with_no_prefixes(self):
-#        oRule = variable.rule_008()
-#        self.assertTrue(oRule)
-#        self.assertEqual(oRule.name, 'variable')
-#        self.assertEqual(oRule.identifier, '008')
-#        dExpected = []
-#        oRule.analyze(oFile)
-#        self.assertEqual(oRule.violations, dExpected)
-#
-#    def test_rule_008_with_prefixes(self):
-#        oRule = variable.rule_008()
-#        self.assertTrue(oRule)
-#        self.assertEqual(oRule.name, 'variable')
-#        self.assertEqual(oRule.identifier, '008')
-#        dExpected = [9,12,13,14,15,16,19,21]
-#        oRule.prefixes = ['a_','b_','d_','e_']
-#        oRule.analyze(oFile)
-#        self.assertEqual(oRule.violations, dExpected)
-
     def test_rule_009(self):
         oRule = variable.rule_009()
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'variable')
         self.assertEqual(oRule.identifier, '009')
-        dExpected = [5,6,7,8,9,10,11,12,13,14,15,16,19,21]
+        dExpected = ['3-25']
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -108,6 +89,6 @@ class testRuleSignalMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'variable')
         self.assertEqual(oRule.identifier, '010')
-        dExpected = [12]
+        dExpected = [12,18]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)

@@ -15,7 +15,7 @@ architecture ARCH of ENTITY is
      variable sIg : std_logic_vector(31 downto 0);
   variable sig :   std_logic_vector(31 downto 0) := (others => '0');
 
-  variable e_sig1, d_sig2 : std_logic;
+  variable e_sig1, d_sig2 : STD_LOGIC;
   variable a_sig1, c_sig2: std_logic;
   variable b_sig1, b_sig2 :std_logic;
   variable c_sig1, a_sig2:std_logic;

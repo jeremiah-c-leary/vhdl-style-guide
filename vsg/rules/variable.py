@@ -1,17 +1,20 @@
 
 from vsg import rule
+from vsg import line
 import re
 
 
 class variable_rule(rule.rule):
-    
+
     def __init__(self):
         rule.rule.__init__(self)
         self.name = 'variable'
 
 
 class rule_001(variable_rule):
-    '''Signal rule 001 checks for the proper indentation at the beginning of the line.'''
+    '''
+    Signal rule 001 checks for the proper indentation at the beginning of the line.
+    '''
 
     def __init__(self):
         variable_rule.__init__(self)
@@ -24,9 +27,14 @@ class rule_001(variable_rule):
             if oLine.isVariable:
                 self._check_indent(oLine, iLineNumber)
 
+    def fix(self, oFile):
+        self._fix_indent(oFile)
+
 
 class rule_002(variable_rule):
-    '''Signal rule 002 checks the "variable" keyword is lowercase.'''
+    '''
+    Signal rule 002 checks the "variable" keyword is lowercase.
+    '''
 
     def __init__(self):
         variable_rule.__init__(self)
@@ -39,9 +47,15 @@ class rule_002(variable_rule):
             if oLine.isVariable:
                 self._is_lowercase(self._get_first_word(oLine), iLineNumber)
 
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            self._lower_case(oFile.lines[iLineNumber], 'variable')
+
 
 class rule_003(variable_rule):
-    '''Signal rule 003 checks there is a single space after the "variable" keyword.'''
+    '''
+    Signal rule 003 checks there is a single space after the "variable" keyword.
+    '''
 
     def __init__(self):
         variable_rule.__init__(self)
@@ -55,9 +69,15 @@ class rule_003(variable_rule):
                 if not re.match('^\s*variable\s\w', oLine.lineLower):
                     self.add_violation(iLineNumber)
 
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            self._enforce_one_space_after_word(oFile.lines[iLineNumber], 'variable')
+
 
 class rule_004(variable_rule):
-    '''Signal rule 004 checks the variable name is lowercase.'''
+    '''
+    Signal rule 004 checks the variable name is lowercase.
+    '''
 
     def __init__(self):
         variable_rule.__init__(self)
@@ -70,9 +90,15 @@ class rule_004(variable_rule):
             if oLine.isVariable:
                 self._is_lowercase(oLine.line.split()[1], iLineNumber)
 
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            self._lower_case(oFile.lines[iLineNumber], oFile.lines[iLineNumber].line.split()[1])
+
 
 class rule_005(variable_rule):
-    '''Signal rule 005 checks there is a single space after the colon.'''
+    '''
+    Signal rule 005 checks there is a single space after the colon.
+    '''
 
     def __init__(self):
         variable_rule.__init__(self)
@@ -86,9 +112,15 @@ class rule_005(variable_rule):
                 if not re.match('^\s*variable\s+.*\s*:\s\S', oLine.lineLower):
                     self.add_violation(iLineNumber)
 
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            self._enforce_one_space_after_word(oFile.lines[iLineNumber], ':')
+
 
 class rule_006(variable_rule):
-    '''Signal rule 006 checks there is at least a single space before the colon.'''
+    '''
+    Signal rule 006 checks there is at least a single space before the colon.
+    '''
 
     def __init__(self):
         variable_rule.__init__(self)
@@ -102,15 +134,22 @@ class rule_006(variable_rule):
                 if re.match('^\s*variable\s+.*\S:', oLine.lineLower):
                     self.add_violation(iLineNumber)
 
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            self._enforce_one_space_before_word(oFile.lines[iLineNumber], ':')
+
 
 class rule_007(variable_rule):
-    '''Signal rule 007 checks for default assignments in variable declarations.'''
+    '''
+    Signal rule 007 checks for default assignments in variable declarations.
+    '''
 
     def __init__(self):
         variable_rule.__init__(self)
         self.identifier = '007'
         self.solution = 'Remove default assignment.'
         self.phase = 1
+        self.fixable = False  # Allow the user to decide if these should be removed
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -119,36 +158,10 @@ class rule_007(variable_rule):
                     self.add_violation(iLineNumber)
 
 
-#class rule_008(variable_rule):
-#    '''Signal rule 008 checks for prefixes in variable names.'''
-#
-#    def __init__(self):
-#        variable_rule.__init__(self)
-#        self.identifier = '008'
-#        self.solution = 'Remove default assignment.'
-#        self.prefixes = None
-#        self.phase = 7
-#
-#    def analyze(self, oFile):
-#        if not self.prefixes:
-#            return
-#        for iLineNumber, oLine in enumerate(oFile.lines):
-#            if not oLine.isVariable:
-#                continue
-#            for sSignalName in oLine.line.split(':')[0].split():
-#                if sSignalName.lower() == 'variable':
-#                    continue
-#                fPrefixFound = False
-#                for sPrefixName in self.prefixes:
-#                    if sSignalName.startswith(sPrefixName):
-#                        fPrefixFound = True
-#                        break
-#                if not fPrefixFound:
-#                    self.add_violation(iLineNumber)
-
-
 class rule_009(variable_rule):
-    '''Signal rule 009 checks the colons are in the same column for all variables.'''
+    '''
+    Signal rule 009 checks the colons are in the same column for all variables.
+    '''
 
     def __init__(self):
         variable_rule.__init__(self)
@@ -157,26 +170,33 @@ class rule_009(variable_rule):
         self.phase = 5
 
     def analyze(self, oFile):
-        iMaximumColumn = 0
-        # Search for the largest column that contains the first colon
+        lGroup = []
+        fGroupFound = False
+        iStartGroupIndex = None
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if not oLine.isVariable:
-                continue
-            iCurrentColumn = oLine.line.find(':')
-            if iMaximumColumn < iCurrentColumn:
-                iMaximumColumn = iCurrentColumn
-        self.solution = 'Align colon to column ' + str(iMaximumColumn + 1) + '.'
-        # Compare each variables colon column to the largest found
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if not oLine.isVariable:
-                continue
-            iCurrentColumn = oLine.line.find(':')
-            if not iMaximumColumn == oLine.line.find(':'):
-                self.add_violation(iLineNumber)
+            if oLine.isArchitectureKeyword and not fGroupFound:
+                fGroupFound = True
+                iStartGroupIndex = iLineNumber
+            if oLine.isEndArchitecture:
+                lGroup.append(oLine)
+                fGroupFound = False
+                self._check_keyword_alignment(iStartGroupIndex, ':', lGroup)
+                lGroup = []
+                iStartGroupIndex = None
+            if fGroupFound:
+                if oLine.isVariable:
+                    lGroup.append(oLine)
+                else:
+                    lGroup.append(line.line('Removed line'))
+
+    def fix(self, oFile):
+        self._fix_keyword_alignment(oFile)
 
 
 class rule_010(variable_rule):
-    '''Signal rule 010 checks the variable type is lowercase.'''
+    '''
+    Signal rule 010 checks the variable type is lowercase.
+    '''
 
     def __init__(self):
         variable_rule.__init__(self)
@@ -187,10 +207,18 @@ class rule_010(variable_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isVariable:
-                if re.match('^\s*variable\s+\w+\s+:\s+\w', oLine.lineLower):
-                    sLine = oLine.line.split()[3]
+                if re.match('^\s*variable\s+.*:\s*\w', oLine.lineLower):
+                    sLine = oLine.line.split(':')[1].lstrip().rstrip().replace(';', '')
                     if '(' in sLine:
                         self._is_lowercase(sLine.split('(')[0], iLineNumber)
                     else:
-                        self._is_lowercase(oLine.line.split()[3], iLineNumber)
+                        self._is_lowercase(sLine, iLineNumber)
 
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            oLine = oFile.lines[iLineNumber]
+            sLine = oLine.line.split(':')[1].lstrip().rstrip().replace(';', '')
+            if '(' in sLine:
+                self._lower_case(oFile.lines[iLineNumber], sLine.split('(')[0])
+            else:
+                self._lower_case(oFile.lines[iLineNumber], sLine)
