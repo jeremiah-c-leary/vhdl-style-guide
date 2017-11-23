@@ -4,6 +4,11 @@ VHDL Style Guide (VSG)
 **Coding style enforcement for VHDL.**
 
 <div align="center">
+  <!-- PyPI version -->
+  <a href="https://pypi.python.org/pypi/vsg">
+    <img src="https://img.shields.io/pypi/v/vsg.svg=flat-square"
+      alt="PyPI Version" />
+  </a>
   <!-- Build Status -->
   <a href="https://travis-ci.org/jeremiah-c-leary/vhdl-style-guide">
     <img src="https://img.shields.io/travis/jeremiah-c-leary/vhdl-style-guide/master.svg?style=flat-square"
