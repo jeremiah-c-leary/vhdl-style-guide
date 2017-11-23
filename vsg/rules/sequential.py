@@ -5,7 +5,7 @@ import re
 
 
 class sequential_rule(rule.rule):
-    
+
     def __init__(self):
         rule.rule.__init__(self)
         self.name = 'sequential'
@@ -45,8 +45,12 @@ class rule_002(sequential_rule):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isSequential:
                 if re.match('^.*<=\s*\S', oLine.line):
-                  if not re.match('^.*<=\s\S', oLine.line):
-                      self.add_violation(iLineNumber)
+                    if not re.match('^.*<=\s\S', oLine.line):
+                        self.add_violation(iLineNumber)
+
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            self._enforce_one_space_after_word(oFile.lines[iLineNumber], '<=')
 
 
 class rule_003(sequential_rule):
@@ -63,6 +67,10 @@ class rule_003(sequential_rule):
             if oLine.isSequential:
                 if not re.match('^.*\s+<=', oLine.line):
                     self.add_violation(iLineNumber)
+
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            self._enforce_one_space_before_word(oFile.lines[iLineNumber], '<=')
 
 
 class rule_004(sequential_rule):
@@ -83,6 +91,10 @@ class rule_004(sequential_rule):
                 continue
             if oLine.insideSequential and not oLine.isComment:
                 self._check_multiline_alignment(iAlignmentColumn, oLine, iLineNumber)
+
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.dFix['violations']:
+            self._fix_multiline_alignment(oFile, iLineNumber)
 
 
 class rule_005(sequential_rule):
@@ -113,6 +125,9 @@ class rule_005(sequential_rule):
                 else:
                     lGroup.append(oLine)
 
+    def fix(self, oFile):
+        self._fix_keyword_alignment(oFile)
+
 
 class rule_006(sequential_rule):
     '''Sequential rule 006 checks for commented out lines within a multiline sequential statement.'''
@@ -127,6 +142,7 @@ class rule_006(sequential_rule):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.insideSequential and oLine.isComment:
                 self.add_violation(iLineNumber)
-           
 
-
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations[::-1]:
+            oFile.lines.pop(iLineNumber)
