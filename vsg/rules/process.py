@@ -439,7 +439,7 @@ class rule_021(process_rule):
                 if fSkipProcess:
                     if oLine.isEndProcess:
                         fSkipProcess = False
-                    continue
+                    continue  #  pragma: no cover
                 if oLine.isProcessBegin:
                     if fBlanksFound and not fNonBlanksFound:
                         self.add_violation(iLineNumber)
@@ -565,7 +565,7 @@ class rule_026(process_rule):
                 if fSkipProcess:
                     if oLine.isEndProcess:
                         fSkipProcess = False
-                    continue
+                    continue  #  pragma: no cover
                 if fCheckForBlanks:
                     if oLine.isBlank:
                         iBlankCount += 1
@@ -609,7 +609,7 @@ class rule_027(process_rule):
                 if fSkipProcess:
                     if oLine.isEndProcess:
                         fSkipProcess = False
-                    continue
+                    continue  #  pragma: no cover
                 if fCheckForBlanks:
                     if oLine.isBlank:
                         iBlankCount += 1

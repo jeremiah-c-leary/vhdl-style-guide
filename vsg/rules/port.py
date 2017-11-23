@@ -427,6 +427,7 @@ class rule_018(port_rule):
         self.identifier = '018'
         self.solution = 'Change port type to lowercase.'
         self.phase = 6
+        self.fixable = False
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -437,12 +438,6 @@ class rule_018(port_rule):
                     self._is_lowercase(sLine, iLineNumber)
                 else:
                     self._is_lowercase(sLine.split()[1],iLineNumber)
-
-    def fix(self, oFile):
-        ''' I think this rule should only lowercase VHDL keywords.
-            I will wait until the rule is updated before implementing a fix.
-        '''
-        return
 
 
 class rule_019(port_rule):
