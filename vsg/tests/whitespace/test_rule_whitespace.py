@@ -91,13 +91,23 @@ class testRuleWhitespaceMethods(unittest.TestCase):
 
         oFile = vhdlFile.vhdlFile(sFileName)
 
-        dExpected = [1,3]
+        dExpected = [1,3,5]
         oFile.lines.append(line.line('  This is a test of parenthesis ( failure'))
         oFile.lines.append(line.line('  This is a test of parenthesis (pass'))
         oFile.lines.append(line.line('  This is a test of parentehsis (  failure'))
         oFile.lines.append(line.line('  This is a test of parentehsis (  7 pass'))
+        oFile.lines.append(line.line('  This is a test of parenthesis ( pass) --  ( pass'))
+        oFile.lines[5].hasComment = True
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, [])
+        self.assertEqual(oFile.lines[1].line, '  This is a test of parenthesis (failure')
+        self.assertEqual(oFile.lines[2].line, '  This is a test of parenthesis (pass')
+        self.assertEqual(oFile.lines[3].line, '  This is a test of parentehsis (failure')
+        self.assertEqual(oFile.lines[4].line, '  This is a test of parentehsis (  7 pass')
+        self.assertEqual(oFile.lines[5].line, '  This is a test of parenthesis (pass) --  ( pass')
 
     def test_006(self):
         oRule = whitespace.rule_006()
@@ -107,13 +117,23 @@ class testRuleWhitespaceMethods(unittest.TestCase):
 
         oFile = vhdlFile.vhdlFile(sFileName)
 
-        dExpected = [1,3]
+        dExpected = [1,3,5]
         oFile.lines.append(line.line('  This is a test of parenthesis (failure )'))
         oFile.lines.append(line.line('  This is a test of parenthesis (pass)'))
         oFile.lines.append(line.line('  This is a test of parentehsis (failure   )'))
         oFile.lines.append(line.line('   ) pass'))
+        oFile.lines.append(line.line('  This is a test of parentehsis (pass ) --  ) pass'))
+        oFile.lines[5].hasComment = True
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, [])
+        self.assertEqual(oFile.lines[1].line, '  This is a test of parenthesis (failure)')
+        self.assertEqual(oFile.lines[2].line, '  This is a test of parenthesis (pass)')
+        self.assertEqual(oFile.lines[3].line, '  This is a test of parentehsis (failure)')
+        self.assertEqual(oFile.lines[4].line, '   ) pass')
+        self.assertEqual(oFile.lines[5].line, '  This is a test of parentehsis (pass) --  ) pass')
 
     def test_007(self):
         oRule = whitespace.rule_007()
