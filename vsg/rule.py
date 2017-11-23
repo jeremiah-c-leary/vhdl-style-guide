@@ -182,7 +182,7 @@ class rule():
                 if iKeywordColumn == iMaximumKeywordColumn:
                     continue
                 oLine = oFile.lines[iLineNumber]
-                oLine.line = oLine.line[:iKeywordColumn - 1] + ' '*(iMaximumKeywordColumn - iKeywordColumn) + oLine.line[iKeywordColumn - 1:]
+                oLine.line = oLine.line[:iKeywordColumn] + ' '*(iMaximumKeywordColumn - iKeywordColumn) + oLine.line[iKeywordColumn:]
                 oLine.lineLower = oLine.line.lower()
 
     def _lower_case(self, oLine, sKeyword):

@@ -451,7 +451,7 @@ class rule_018(entity_rule):
                 lGroup = []
                 iStartGroupIndex = None
             if fGroupFound:
-                if oLine.isPortDeclaration:
+                if oLine.hasComment and not oLine.isComment:
                   lGroup.append(oLine)
                 else:
                   lGroup.append(line.line('Removed line'))

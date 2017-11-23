@@ -2,6 +2,7 @@ import os
 
 import unittest
 import sys
+import pprint
 
 from vsg.rules import entity
 from vsg import vhdlFile
@@ -122,3 +123,5 @@ class testFixRuleEntityMethods(unittest.TestCase):
         oRule.fix(oFile)
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, [])
+        self.assertEqual(oFile.lines[21].line, '       G_GENERIC1 : std_logic :=\'0\';          -- Comment')
+        self.assertEqual(oFile.lines[22].line, '    G_generic2 : std_logic := \'1\'             -- Comment')
