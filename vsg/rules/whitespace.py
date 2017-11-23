@@ -2,8 +2,9 @@
 from vsg import rule
 import re
 
+
 class whitespace_rule(rule.rule):
-    
+
     def __init__(self):
         rule.rule.__init__(self)
         self.name = 'whitespace'
@@ -23,6 +24,11 @@ class rule_001(whitespace_rule):
             if oLine.line.endswith(' '):
                 self.add_violation(iLineNumber)
 
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            oLine = oFile.lines[iLineNumber]
+            oLine.update_line(re.sub(r'\s+$', '', oLine.line))
+
 
 class rule_002(whitespace_rule):
     '''Whitespace rule 002 checks for tabs in lines'''
@@ -31,11 +37,17 @@ class rule_002(whitespace_rule):
         whitespace_rule.__init__(self)
         self.identifier = '002'
         self.solution = 'Replace tabs with spaces.'
+        self.phase = 1
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if '\t' in oLine.line:
                 self.add_violation(iLineNumber)
+
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            oLine = oFile.lines[iLineNumber]
+            oLine.update_line(re.sub(r'\t', '  ', oLine.line))
 
 
 class rule_003(whitespace_rule):
@@ -51,6 +63,11 @@ class rule_003(whitespace_rule):
             if ' ;' in oLine.line:
                 self.add_violation(iLineNumber)
 
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            oLine = oFile.lines[iLineNumber]
+            oLine.update_line(re.sub(r'(\s+;)', r';', oLine.line))
+
 
 class rule_004(whitespace_rule):
     '''Whitespace rule 004 checks for spaces before commas.'''
@@ -65,6 +82,11 @@ class rule_004(whitespace_rule):
             if ' ,' in oLine.line:
                 self.add_violation(iLineNumber)
 
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            oLine = oFile.lines[iLineNumber]
+            oLine.update_line(re.sub(r'(\s+,)', r',', oLine.line))
+
 
 class rule_005(whitespace_rule):
     '''Whitespace rule 005 checks for spaces after an open parenthesis.'''
@@ -77,8 +99,13 @@ class rule_005(whitespace_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if re.match('^.*\(\s+', oLine.line):
-                if not re.match('^.*\(\s+[0-9]',oLine.line):
+                if not re.match('^.*\(\s+[0-9]', oLine.line):
                     self.add_violation(iLineNumber)
+
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            oLine = oFile.lines[iLineNumber]
+            oLine.update_line(re.sub(r'\((\s+)([A-Za-z_\(])', r'(', oLine.line))
 
 
 class rule_006(whitespace_rule):
@@ -94,6 +121,11 @@ class rule_006(whitespace_rule):
             if re.match('^.*\s+\)', oLine.line) and not re.match('^\s+\)', oLine.line):
                 self.add_violation(iLineNumber)
 
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            oLine = oFile.lines[iLineNumber]
+            oLine.update_line(re.sub(r'\s+\)', r')', oLine.line))
+
 
 class rule_007(whitespace_rule):
     '''Whitespace rule 007 checks for spaces after a comma.'''
@@ -107,3 +139,8 @@ class rule_007(whitespace_rule):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if re.match('^.*,\S', oLine.line) and not re.match('^.*--.*,\S', oLine.line):
                 self.add_violation(iLineNumber)
+
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            oLine = oFile.lines[iLineNumber]
+            oLine.update_line(re.sub(r',(\S)', r', \1', oLine.line))
