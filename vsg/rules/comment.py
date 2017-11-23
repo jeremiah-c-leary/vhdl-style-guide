@@ -1,10 +1,11 @@
 
 from vsg import rule
-import re
 from vsg import line
+import re
+
 
 class comment_rule(rule.rule):
-    
+
     def __init__(self):
         rule.rule.__init__(self)
         self.name = 'comment'
@@ -45,7 +46,7 @@ class rule_001(comment_rule):
         self.analyze(oFile)
         for iViolationIndex, iLineNumber in enumerate(self.violations):
             oLine = oFile.lines[iLineNumber]
-            oLine.line = ' '*self.correctCommentColumn[iViolationIndex] + oLine.line.lstrip()
+            oLine.line = ' ' * self.correctCommentColumn[iViolationIndex] + oLine.line.lstrip()
             oLine.lineLower = oLine.line.lower()
             oLine.commentColumn = self.correctCommentColumn[iViolationIndex]
 
@@ -129,7 +130,7 @@ class rule_004(comment_rule):
         comment_rule.__init__(self)
         self.identifier = '004'
         self.solution = 'Add a space before the comment --'
-        self.phase = 2 
+        self.phase = 2
 
     def analyze(self, oFile):
         lGroup = []
@@ -139,4 +140,3 @@ class rule_004(comment_rule):
             if oLine.hasComment and not oLine.isComment:
                 if not re.match('^.*\s--', oLine.line):
                     self.add_violation(iLineNumber)
-
