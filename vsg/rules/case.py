@@ -4,7 +4,7 @@ import re
 
 
 class case_rule(rule.rule):
-    
+
     def __init__(self):
         rule.rule.__init__(self)
         self.name = 'case'
@@ -43,6 +43,10 @@ class rule_002(case_rule):
                 if not re.match('^\s*case\s\S', oLine.lineLower):
                     self.add_violation(iLineNumber)
 
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            self._enforce_one_space_after_word(oFile.lines[iLineNumber], 'case')
+
 
 class rule_003(case_rule):
     '''Case rule 003 checks for a single space before the "is" keyword.'''
@@ -57,6 +61,10 @@ class rule_003(case_rule):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isCaseIsKeyword:
                 self._is_single_space_before('is', oLine, iLineNumber)
+
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            self._enforce_one_space_before_word(oFile.lines[iLineNumber], 'is')
 
 
 class rule_004(case_rule):
@@ -73,6 +81,10 @@ class rule_004(case_rule):
             if oLine.isCaseWhenKeyword:
                 self._is_single_space_after('when', oLine, iLineNumber)
 
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            self._enforce_one_space_after_word(oFile.lines[iLineNumber], 'when')
+
 
 class rule_005(case_rule):
     '''Case rule 005 checks for a single space before the "=>" keyword.'''
@@ -87,6 +99,10 @@ class rule_005(case_rule):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isCaseWhenEnd:
                 self._is_single_space_before('=>', oLine, iLineNumber)
+
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            self._enforce_one_space_before_word(oFile.lines[iLineNumber], '=>')
 
 
 class rule_006(case_rule):
@@ -104,6 +120,10 @@ class rule_006(case_rule):
                 if not re.match('^\s*end\scase', oLine.lineLower):
                     self.add_violation(iLineNumber)
 
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            self._enforce_one_space_after_word(oFile.lines[iLineNumber], 'end')
+
 
 class rule_007(case_rule):
     '''Case rule 007 ensures a blank line exists before the "case" keyword.'''
@@ -118,6 +138,10 @@ class rule_007(case_rule):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isCaseKeyword:
                 self._is_blank_line_before(oFile, iLineNumber)
+
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations[::-1]:
+            self._insert_blank_line_above(oFile, iLineNumber)
 
 
 class rule_008(case_rule):
@@ -134,6 +158,10 @@ class rule_008(case_rule):
             if oLine.isCaseIsKeyword:
                 self._is_blank_line_after(oFile, iLineNumber)
 
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations[::-1]:
+            self._insert_blank_line_below(oFile, iLineNumber)
+
 
 class rule_009(case_rule):
     '''Case rule 009 ensures a blank line exists above the "end case" keywords.'''
@@ -149,6 +177,10 @@ class rule_009(case_rule):
             if oLine.isEndCaseKeyword:
                 self._is_blank_line_before(oFile, iLineNumber)
 
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations[::-1]:
+            self._insert_blank_line_above(oFile, iLineNumber)
+
 
 class rule_010(case_rule):
     '''Case rule 010 ensures a blank line exists below the "end case" keywords.'''
@@ -163,6 +195,10 @@ class rule_010(case_rule):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isEndCaseKeyword:
                 self._is_blank_line_after(oFile, iLineNumber)
+
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations[::-1]:
+            self._insert_blank_line_below(oFile, iLineNumber)
 
 
 class rule_011(case_rule):
@@ -184,6 +220,10 @@ class rule_011(case_rule):
             if oLine.insideCaseWhen:
                 self._check_multiline_alignment(iAlignmentColumn, oLine, iLineNumber)
 
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.dFix['violations']:
+            self._fix_multiline_alignment(oFile, iLineNumber)
+
 
 class rule_012(case_rule):
     '''Case rule 012 ensures code does not exist after the => operator.'''
@@ -200,10 +240,12 @@ class rule_012(case_rule):
                 if re.match('^.*=>\s*\w', oLine.line):
                     self.add_violation(iLineNumber)
 
-
-#TODO:
-# multiline case alignment
-# keywords are lower case
-
-
-
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations[::-1]:
+            oFile.lines.insert(iLineNumber + 1, oFile.lines[iLineNumber])
+            oLine = oFile.lines[iLineNumber]
+            iIndex = oLine.line.find('=>') + len('=>') + 1
+            oLine.update_line(oLine.line[:iIndex])
+            oLine = oFile.lines[iLineNumber + 1]
+            oLine.update_line(oLine.line[iIndex:])
+            oLine.isCaseWhenEnd = False
