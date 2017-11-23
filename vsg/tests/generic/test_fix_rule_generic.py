@@ -71,6 +71,8 @@ class testFixRuleGenericMethods(unittest.TestCase):
         oRule.fix(oFile)
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, [])
+        self.assertEqual(oFile.lines[96].indentLevel, oFile.lines[95].indentLevel)
+        self.assertEqual(oFile.lines[97].indentLevel, oFile.lines[96].indentLevel - 1)
 
 #    def test_fix_rule_011(self):
 #        oRule = generic.rule_011()
