@@ -233,3 +233,9 @@ class rule():
     def _insert_blank_line_below(self, oFile, iLineNumber):
         oFile.lines.insert(iLineNumber + 1, line.blank_line())
 
+
+
+def debug_lines(oFile, iLineNumber, iNumberOfLines):
+
+    for iIndex in range (0, iNumberOfLines):
+        print oFile.lines[iLineNumber + iIndex].line

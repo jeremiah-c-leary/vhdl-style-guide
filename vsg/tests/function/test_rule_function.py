@@ -9,7 +9,7 @@ from vsg import vhdlFile
 # Read in test file used for all tests
 oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','function','function_test_input.vhd'))
 
-class testRuleProcessMethods(unittest.TestCase):
+class testRuleFunctionMethods(unittest.TestCase):
 
     def test_rule_001(self):
         oRule = function.rule_001()
