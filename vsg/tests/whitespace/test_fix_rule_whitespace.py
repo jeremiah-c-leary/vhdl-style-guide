@@ -102,6 +102,10 @@ class testFixRuleWhitespaceMethods(unittest.TestCase):
         oFile.lines.append(line.line('  This is a test of parentehsis (  7 pass'))
         oRule.fix(oFile)
         oRule.analyze(oFile)
+        self.assertEqual(oFile.lines[1].line, '  This is a test of parenthesis (failure')
+        self.assertEqual(oFile.lines[2].line, '  This is a test of parenthesis (pass')
+        self.assertEqual(oFile.lines[3].line, '  This is a test of parentehsis (failure')
+        self.assertEqual(oFile.lines[4].line, '  This is a test of parentehsis (  7 pass')
         self.assertEqual(oRule.violations, dExpected)
 
     def test_fix_006(self):

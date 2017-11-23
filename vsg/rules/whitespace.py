@@ -37,7 +37,7 @@ class rule_002(whitespace_rule):
         whitespace_rule.__init__(self)
         self.identifier = '002'
         self.solution = 'Replace tabs with spaces.'
-        self.phase = 1
+        self.phase = 0
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
@@ -47,7 +47,7 @@ class rule_002(whitespace_rule):
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
             oLine = oFile.lines[iLineNumber]
-            oLine.update_line(re.sub(r'\t', '  ', oLine.line))
+            oLine.update_line(oLine.line.replace('\t', '  '))
 
 
 class rule_003(whitespace_rule):
@@ -105,7 +105,7 @@ class rule_005(whitespace_rule):
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
             oLine = oFile.lines[iLineNumber]
-            oLine.update_line(re.sub(r'\((\s+)([A-Za-z_\(])', r'(', oLine.line))
+            oLine.update_line(re.sub(r'\((\s+)([A-Za-z_\(])', r'(\2', oLine.line))
 
 
 class rule_006(whitespace_rule):

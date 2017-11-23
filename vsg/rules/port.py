@@ -407,7 +407,7 @@ class rule_016(port_rule):
             oLine.isPortKeyword = False
             oLine.isPortDeclaration = True
             oLine.insidePortMap = True
-            
+            oLine.indentLevel = oFile.lines[iLineNumber].indentLevel + 1
 
 
 class rule_017(port_rule):

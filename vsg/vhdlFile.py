@@ -60,6 +60,7 @@ class vhdlFile():
 
         with open (self.filename) as oFile:
             for sLine in oFile:
+                sLine = sLine.replace('\t', '  ')
                 oLine = line.line(sLine.rstrip())
                 # Check for blank lines
                 if re.match('^\s*$', oLine.line):

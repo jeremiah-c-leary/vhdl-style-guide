@@ -8,6 +8,7 @@ from vsg import vhdlFile
 
 
 oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','port','port_test_input.vhd'))
+oFile_rule_016 = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','port','port_test_input.vhd'))
 
 
 class testFixRulePortMethods(unittest.TestCase):
@@ -118,9 +119,10 @@ class testFixRulePortMethods(unittest.TestCase):
 
     def test_fix_rule_016(self):
         oRule = port.rule_016()
-        oRule.fix(oFile)
-        oRule.analyze(oFile)
+        oRule.fix(oFile_rule_016)
+        oRule.analyze(oFile_rule_016)
         self.assertEqual(oRule.violations, [])
+        self.assertEqual(oFile_rule_016.lines[140].indentLevel + 1, oFile_rule_016.lines[141].indentLevel)
 
     def test_fix_rule_017(self):
         oRule = port.rule_017()
