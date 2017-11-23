@@ -15,7 +15,7 @@ package PACK is
 end  package PACK;
 
 
-PACKAGE PACK is
+PACKAGE PACK -- This is a comment
 
   component COMP is
     generic (
@@ -55,10 +55,10 @@ package  pack is
       PORT_3 : out   std_logic;
     );
   end component COMP;
-end PACK;
+end  PACK;
 
 package PACK
-
+  is
   component COMP is
     generic (
       GENERIC_1 : std_logic := '0'
