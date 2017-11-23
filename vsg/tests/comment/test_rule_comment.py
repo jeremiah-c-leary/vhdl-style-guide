@@ -30,20 +30,20 @@ class testRuleCommentMethods(unittest.TestCase):
         oRule.analyze(oFileCase)
         self.assertEqual(oRule.violations, dExpected)
 
-    def test_rule_002(self):
-        oRule = comment.rule_002()
-        self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'comment')
-        self.assertEqual(oRule.identifier, '002')
-        dExpected = [18,19,26,27,30,40,43,44,45,46,49,50,51,52,54,59,62,63,64,65,68,69,70,71,73]
-        oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
-
-    def test_rule_002_case(self):
-        oRule = comment.rule_002()
-        dExpected = [23]
-        oRule.analyze(oFileCase)
-        self.assertEqual(oRule.violations, dExpected)
+#    def test_rule_002(self):
+#        oRule = comment.rule_002()
+#        self.assertTrue(oRule)
+#        self.assertEqual(oRule.name, 'comment')
+#        self.assertEqual(oRule.identifier, '002')
+#        dExpected = [18,19,26,27,30,40,43,44,45,46,49,50,51,52,54,59,62,63,64,65,68,69,70,71,73]
+#        oRule.analyze(oFile)
+#        self.assertEqual(oRule.violations, dExpected)
+#
+#    def test_rule_002_case(self):
+#        oRule = comment.rule_002()
+#        dExpected = [23]
+#        oRule.analyze(oFileCase)
+#        self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_003(self):
         oRule = comment.rule_003()

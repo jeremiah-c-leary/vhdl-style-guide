@@ -42,55 +42,53 @@ class rule_001(comment_rule):
                     except IndexError:
                         pass
 
-    def fix(self, oFile):
-        self.analyze(oFile)
+    def _fix_violations(self, oFile):
         for iViolationIndex, iLineNumber in enumerate(self.violations):
             oLine = oFile.lines[iLineNumber]
             oLine.line = ' ' * self.correctCommentColumn[iViolationIndex] + oLine.line.lstrip()
             oLine.lineLower = oLine.line.lower()
             oLine.commentColumn = self.correctCommentColumn[iViolationIndex]
 
-        self._clear_violations()
         self.correctCommentColumn = []
 
 
-class rule_002(comment_rule):
-    '''Case rule 002 checks for the proper alignment of comments.'''
-
-    def __init__(self):
-        comment_rule.__init__(self)
-        self.identifier = '002'
-        self.solution = 'Ensure proper alignment of comment with previous line.'
-        self.phase = 5
-
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if iLineNumber > 0:
-                oPreviousLine = oFile.lines[iLineNumber - 1]
-            if not oLine.isComment and oLine.hasComment:
-                if oLine.isCaseWhenKeyword:
-                    if not oPreviousLine.isComment and oPreviousLine.hasComment:
-                        if not oLine.commentColumn == oPreviousLine.commentColumn:
-                            self.add_violation(iLineNumber)
-                    if oPreviousLine.isComment:
-                        if not oPreviousLine.commentColumn == (oPreviousLine.indentLevel * self.indentSize) and \
-                           not oPreviousLine.commentColumn == ((oPreviousLine.indentLevel - 1) * self.indentSize):
-                            if not oLine.commentColumn == oPreviousLine.commentColumn:
-                                self.add_violation(iLineNumber)
-                else:
-                    if not oPreviousLine.isComment and oPreviousLine.hasComment:
-                        if not oLine.commentColumn == oPreviousLine.commentColumn:
-                            self.add_violation(iLineNumber)
-                    if oPreviousLine.isComment:
-                        if not oPreviousLine.commentColumn == (oPreviousLine.indentLevel * self.indentSize):
-                            if not oLine.commentColumn == oPreviousLine.commentColumn:
-                                self.add_violation(iLineNumber)
-            if oLine.isComment:
-                if oPreviousLine.hasComment:
-                    if not oPreviousLine.isComment:
-                        if not oLine.commentColumn == oPreviousLine.commentColumn:
-                            if not oLine.commentColumn == (oLine.indentLevel * self.indentSize):
-                                self.add_violation(iLineNumber)
+# class rule_002(comment_rule):
+#     '''Case rule 002 checks for the proper alignment of comments.'''
+#
+#     def __init__(self):
+#         comment_rule.__init__(self)
+#         self.identifier = '002'
+#         self.solution = 'Ensure proper alignment of comment with previous line.'
+#         self.phase = 5
+#
+#     def analyze(self, oFile):
+#         for iLineNumber, oLine in enumerate(oFile.lines):
+#             if iLineNumber > 0:
+#                 oPreviousLine = oFile.lines[iLineNumber - 1]
+#             if not oLine.isComment and oLine.hasComment:
+#                 if oLine.isCaseWhenKeyword:
+#                     if not oPreviousLine.isComment and oPreviousLine.hasComment:
+#                         if not oLine.commentColumn == oPreviousLine.commentColumn:
+#                             self.add_violation(iLineNumber)
+#                     if oPreviousLine.isComment:
+#                         if not oPreviousLine.commentColumn == (oPreviousLine.indentLevel * self.indentSize) and \
+#                            not oPreviousLine.commentColumn == ((oPreviousLine.indentLevel - 1) * self.indentSize):
+#                             if not oLine.commentColumn == oPreviousLine.commentColumn:
+#                                 self.add_violation(iLineNumber)
+#                 else:
+#                     if not oPreviousLine.isComment and oPreviousLine.hasComment:
+#                         if not oLine.commentColumn == oPreviousLine.commentColumn:
+#                             self.add_violation(iLineNumber)
+#                     if oPreviousLine.isComment:
+#                         if not oPreviousLine.commentColumn == (oPreviousLine.indentLevel * self.indentSize):
+#                             if not oLine.commentColumn == oPreviousLine.commentColumn:
+#                                 self.add_violation(iLineNumber)
+#             if oLine.isComment:
+#                 if oPreviousLine.hasComment:
+#                     if not oPreviousLine.isComment:
+#                         if not oLine.commentColumn == oPreviousLine.commentColumn:
+#                             if not oLine.commentColumn == (oLine.indentLevel * self.indentSize):
+#                                 self.add_violation(iLineNumber)
 
 
 class rule_003(comment_rule):
@@ -122,6 +120,9 @@ class rule_003(comment_rule):
                 else:
                     lGroup.append(oLine)
 
+    def fix(self, oFile):
+        self._fix_keyword_alignment(oFile)
+
 
 class rule_004(comment_rule):
     '''Comment rule 004 ensures there is at least one space before comments on a line with code.'''
@@ -140,3 +141,7 @@ class rule_004(comment_rule):
             if oLine.hasComment and not oLine.isComment:
                 if not re.match('^.*\s--', oLine.line):
                     self.add_violation(iLineNumber)
+
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            self._enforce_one_space_before_word(oFile.lines[iLineNumber], '--')
