@@ -6,7 +6,7 @@ VHDL Style Guide (VSG)
 <div align="center">
   <!-- PyPI version -->
   <a href="https://pypi.python.org/pypi/vsg">
-    <img src="https://img.shields.io/pypi/v/vsg.svg=flat-square"
+    <img src="https://img.shields.io/pypi/v/vsg.svg?style=flat-square"
       alt="PyPI Version" />
   </a>
   <!-- Build Status -->
