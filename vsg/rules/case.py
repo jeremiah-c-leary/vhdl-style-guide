@@ -24,8 +24,9 @@ class rule_001(case_rule):
             if oLine.isCaseKeyword or oLine.isCaseWhenKeyword or oLine.isEndCaseKeyword:
                 self._check_indent(oLine, iLineNumber)
 
-    def fix(self, oFile):
-        self._fix_indent(oFile)
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            self._fix_indent(oFile.lines[iLineNumber])
 
 
 class rule_002(case_rule):

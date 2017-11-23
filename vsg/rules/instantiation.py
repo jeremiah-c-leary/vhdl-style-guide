@@ -28,8 +28,9 @@ class rule_001(instantiation_rule):
             if oLine.isInstantiationDeclaration or oLine.isInstantiationPortAssignment or oLine.isInstantiationPortEnd or oLine.isInstantiationPortKeyword or oLine.isInstantiationGenericAssignment or oLine.isInstantiationGenericEnd or oLine.isInstantiationGenericKeyword:
                 self._check_indent(oLine, iLineNumber)
 
-    def fix(self, oFile):
-        self._fix_indent(oFile)
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            self._fix_indent(oFile.lines[iLineNumber])
 
 
 class rule_002(instantiation_rule):
@@ -256,7 +257,7 @@ class rule_010(instantiation_rule):
                 else:
                     lGroup.append(line.line('Removed line'))
 
-    def fix(self, oFile):
+    def _fix_violations(self, oFile):
         self._fix_keyword_alignment(oFile)
 
 
@@ -390,7 +391,7 @@ class rule_015(instantiation_rule):
                 else:
                     lGroup.append(line.line('Removed line'))
 
-    def fix(self, oFile):
+    def _fix_violations(self, oFile):
         self._fix_keyword_alignment(oFile)
 
 

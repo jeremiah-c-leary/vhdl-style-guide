@@ -24,8 +24,9 @@ class rule_001(architecture_rule):
             if oLine.isArchitectureKeyword:
                 self._check_indent(oLine, iLineNumber)
 
-    def fix(self, oFile):
-        self._fix_indent(oFile)
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            self._fix_indent(oFile.lines[iLineNumber])
 
 
 class rule_002(architecture_rule):
@@ -44,14 +45,12 @@ class rule_002(architecture_rule):
                     if not re.match('^\s*architecture\s\S+\sof\s\S+\sis', oLine.lineLower):
                         self.add_violation(iLineNumber)
 
-    def fix(self, oFile):
-        self.analyze(oFile)
+    def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
             self._enforce_one_space_after_word(oFile.lines[iLineNumber], 'architecture')
             self._enforce_one_space_before_word(oFile.lines[iLineNumber], 'of')
             self._enforce_one_space_after_word(oFile.lines[iLineNumber], 'of')
             self._enforce_one_space_before_word(oFile.lines[iLineNumber], 'is')
-        self._clear_violations()
 
 
 class rule_003(architecture_rule):
@@ -68,11 +67,9 @@ class rule_003(architecture_rule):
             if oLine.isArchitectureKeyword:
                 self._is_blank_line_before(oFile, iLineNumber)
 
-    def fix(self, oFile):
-        self.analyze(oFile)
+    def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:
             self._insert_blank_line_above(oFile, iLineNumber)
-        self._clear_violations()
 
 
 class rule_004(architecture_rule):
@@ -90,11 +87,9 @@ class rule_004(architecture_rule):
                 if not re.match('^\s*architecture', oLine.line):
                     self.add_violation(iLineNumber)
 
-    def fix(self, oFile):
-        self.analyze(oFile)
+    def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
             self._lower_case(oFile.lines[iLineNumber], 'architecture')
-        self._clear_violations()
 
 
 class rule_005(architecture_rule):
@@ -149,8 +144,9 @@ class rule_007(architecture_rule):
             if oLine.isArchitectureBegin:
                 self._check_indent(oLine, iLineNumber)
 
-    def fix(self, oFile):
-        self._fix_indent(oFile)
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            self._fix_indent(oFile.lines[iLineNumber])
 
 
 class rule_008(architecture_rule):
@@ -167,8 +163,9 @@ class rule_008(architecture_rule):
             if oLine.isEndArchitecture:
                 self._check_indent(oLine, iLineNumber)
 
-    def fix(self, oFile):
-        self._fix_indent(oFile)
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            self._fix_indent(oFile.lines[iLineNumber])
 
 
 class rule_009(architecture_rule):
@@ -187,12 +184,10 @@ class rule_009(architecture_rule):
                     if not re.match('^\s*end\s\s*architecture', oLine.line):
                         self.add_violation(iLineNumber)
 
-    def fix(self, oFile):
-        self.analyze(oFile)
+    def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
             self._lower_case(oFile.lines[iLineNumber], 'end')
             self._lower_case(oFile.lines[iLineNumber], 'architecture')
-        self._clear_violations()
 
 
 class rule_010(architecture_rule):
@@ -232,11 +227,9 @@ class rule_011(architecture_rule):
                     if not lLine[2].startswith('--'):
                         self._is_uppercase(lLine[2], iLineNumber)
 
-    def fix(self, oFile):
-        self.analyze(oFile)
+    def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
             self._upper_case(oFile.lines[iLineNumber], oFile.lines[iLineNumber].line.split()[2])
-        self._clear_violations()
 
 
 class rule_012(architecture_rule):
@@ -256,11 +249,9 @@ class rule_012(architecture_rule):
                         if not re.match('^\s*end\sarchitecture', oLine.lineLower):
                             self.add_violation(iLineNumber)
 
-    def fix(self, oFile):
-        self.analyze(oFile)
+    def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
             self._enforce_one_space_after_word(oFile.lines[iLineNumber], 'end')
-        self._clear_violations()
 
 
 class rule_013(architecture_rule):
@@ -279,11 +270,9 @@ class rule_013(architecture_rule):
                     lLine = oLine.line.split()
                     self._is_uppercase(lLine[1], iLineNumber)
 
-    def fix(self, oFile):
-        self.analyze(oFile)
+    def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
             self._upper_case(oFile.lines[iLineNumber], oFile.lines[iLineNumber].line.split()[1])
-        self._clear_violations()
 
 
 class rule_014(architecture_rule):
@@ -302,11 +291,9 @@ class rule_014(architecture_rule):
                     lLine = oLine.line.split()
                     self._is_uppercase(lLine[3], iLineNumber)
 
-    def fix(self, oFile):
-        self.analyze(oFile)
+    def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
             self._upper_case(oFile.lines[iLineNumber], oFile.lines[iLineNumber].line.split()[3])
-        self._clear_violations()
 
 
 class rule_015(architecture_rule):
@@ -323,11 +310,9 @@ class rule_015(architecture_rule):
             if oLine.isArchitectureKeyword:
                 self._is_blank_line_after(oFile, iLineNumber)
 
-    def fix(self, oFile):
-        self.analyze(oFile)
+    def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:
             self._insert_blank_line_below(oFile, iLineNumber)
-        self._clear_violations()
 
 
 class rule_016(architecture_rule):
@@ -344,11 +329,9 @@ class rule_016(architecture_rule):
             if oLine.isArchitectureBegin:
                 self._is_blank_line_before(oFile, iLineNumber)
 
-    def fix(self, oFile):
-        self.analyze(oFile)
+    def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:
             self._insert_blank_line_above(oFile, iLineNumber)
-        self._clear_violations()
 
 
 class rule_017(architecture_rule):
@@ -365,11 +348,9 @@ class rule_017(architecture_rule):
             if oLine.isArchitectureBegin:
                 self._is_blank_line_after(oFile, iLineNumber)
 
-    def fix(self, oFile):
-        self.analyze(oFile)
+    def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:
             self._insert_blank_line_below(oFile, iLineNumber)
-        self._clear_violations()
 
 
 class rule_018(architecture_rule):
@@ -386,11 +367,9 @@ class rule_018(architecture_rule):
             if oLine.isEndArchitecture:
                 self._is_blank_line_before(oFile, iLineNumber)
 
-    def fix(self, oFile):
-        self.analyze(oFile)
+    def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:
             self._insert_blank_line_above(oFile, iLineNumber)
-        self._clear_violations()
 
 
 class rule_019(architecture_rule):
@@ -409,11 +388,9 @@ class rule_019(architecture_rule):
                     if not re.match('^\s*\w+\s+\w+\s+of', oLine.line):
                         self.add_violation(iLineNumber)
 
-    def fix(self, oFile):
-        self.analyze(oFile)
+    def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
             self._lower_case(oFile.lines[iLineNumber], 'of')
-        self._clear_violations()
 
 
 class rule_020(architecture_rule):
@@ -432,11 +409,9 @@ class rule_020(architecture_rule):
                     if not re.match('^\s*\w+\s+\w+\s+\w+\s+\w+\s+is', oLine.line):
                         self.add_violation(iLineNumber)
 
-    def fix(self, oFile):
-        self.analyze(oFile)
+    def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
             self._lower_case(oFile.lines[iLineNumber], 'is')
-        self._clear_violations()
 
 
 class rule_021(architecture_rule):
@@ -454,11 +429,9 @@ class rule_021(architecture_rule):
                 if not re.match('^\s*begin', oLine.line):
                     self.add_violation(iLineNumber)
 
-    def fix(self, oFile):
-        self.analyze(oFile)
+    def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
             self._lower_case(oFile.lines[iLineNumber], 'begin')
-        self._clear_violations()
 
 
 class rule_022(architecture_rule):
@@ -477,9 +450,7 @@ class rule_022(architecture_rule):
                     if not re.match('^\s*end\s+architecture\s\w', oLine.lineLower):
                         self.add_violation(iLineNumber)
 
-    def fix(self, oFile):
-        self.analyze(oFile)
+    def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
             self._enforce_one_space_after_word(oFile.lines[iLineNumber], 'architecture')
-        self._clear_violations()
 

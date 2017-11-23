@@ -27,12 +27,10 @@ class rule_001(generic_rule):
             if oLine.isGenericKeyword:
                 self._is_no_blank_line_before(oFile, iLineNumber)
 
-    def fix(self, oFile):
-        self.analyze(oFile)
+    def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:
             while oFile.lines[iLineNumber - 1].isBlank:
                 oFile.lines.pop(iLineNumber - 1)
-        self._clear_violations()
 
 
 class rule_002(generic_rule):
@@ -49,8 +47,9 @@ class rule_002(generic_rule):
             if oLine.isGenericKeyword:
                 self._check_indent(oLine, iLineNumber)
 
-    def fix(self, oFile):
-        self._fix_indent(oFile)
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            self._fix_indent(oFile.lines[iLineNumber])
 
 
 class rule_003(generic_rule):
@@ -68,11 +67,9 @@ class rule_003(generic_rule):
                 if not re.match('^\s*\S+\s\(', oLine.line):
                     self.add_violation(iLineNumber)
 
-    def fix(self, oFile):
-        self.analyze(oFile)
+    def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
             self._enforce_one_space_after_word(oFile.lines[iLineNumber], 'generic')
-        self._clear_violations()
 
 
 class rule_004(generic_rule):
@@ -89,8 +86,9 @@ class rule_004(generic_rule):
             if oLine.isGenericDeclaration and not oLine.isEndGenericMap:
                 self._check_indent(oLine, iLineNumber)
 
-    def fix(self, oFile):
-        self._fix_indent(oFile)
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            self._fix_indent(oFile.lines[iLineNumber])
 
 
 class rule_005(generic_rule):
@@ -109,11 +107,9 @@ class rule_005(generic_rule):
                     if not re.match('^\s*\S+\s*:\s\S', oLine.line):
                         self.add_violation(iLineNumber)
 
-    def fix(self, oFile):
-        self.analyze(oFile)
+    def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
             self._enforce_one_space_after_word(oFile.lines[iLineNumber], ':')
-        self._clear_violations()
 
 
 class rule_006(generic_rule):
@@ -132,11 +128,9 @@ class rule_006(generic_rule):
                     if not re.match('^\s*\S+\s*:\s*\S+\s*:=\s[\S\'"]', oLine.line):
                         self.add_violation(iLineNumber)
 
-    def fix(self, oFile):
-        self.analyze(oFile)
+    def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
             self._enforce_one_space_after_word(oFile.lines[iLineNumber], ':=')
-        self._clear_violations()
 
 
 class rule_007(generic_rule):
@@ -153,11 +147,9 @@ class rule_007(generic_rule):
             if oLine.isGenericDeclaration and not oLine.isGenericKeyword:
                 self._is_uppercase(oLine.line.split()[0], iLineNumber)
 
-    def fix(self, oFile):
-        self.analyze(oFile)
+    def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
             self._upper_case(oFile.lines[iLineNumber], oFile.lines[iLineNumber].line.split()[0])
-        self._clear_violations()
 
 class rule_008(generic_rule):
     '''Generic rule 008 checks the indentation of closing parenthesis for generic maps.'''
@@ -173,8 +165,9 @@ class rule_008(generic_rule):
             if oLine.isEndGenericMap and not oLine.isGenericDeclaration:
                 self._check_indent(oLine, iLineNumber)
 
-    def fix(self, oFile):
-        self._fix_indent(oFile)
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            self._fix_indent(oFile.lines[iLineNumber])
 
 
 class rule_009(generic_rule):
@@ -191,11 +184,9 @@ class rule_009(generic_rule):
             if oLine.isGenericKeyword:
                 self._is_lowercase(oLine.line.split()[0], iLineNumber)
 
-    def fix(self, oFile):
-        self.analyze(oFile)
+    def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
             self._lower_case(oFile.lines[iLineNumber], 'generic')
-        self._clear_violations()
 
 
 class rule_010(generic_rule):
@@ -213,8 +204,7 @@ class rule_010(generic_rule):
                 if not re.match('^\s*\)', oLine.line):
                     self.add_violation(iLineNumber)
 
-    def fix(self, oFile):
-        self.analyze(oFile)
+    def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:
             oFile.lines[iLineNumber].line = re.sub(r'\)(\s*);', r' \1 ', oFile.lines[iLineNumber].line)
             oFile.lines[iLineNumber].isEndGenericMap = False
@@ -223,7 +213,6 @@ class rule_010(generic_rule):
             oFile.lines[iLineNumber + 1].insideGenericMap = True
             oFile.lines[iLineNumber + 1].indentLevel = oFile.lines[iLineNumber].indentLevel - 1
              
-        self._clear_violations()
 
 
 #class rule_011(generic_rule):
@@ -271,7 +260,7 @@ class rule_012(generic_rule):
                 else:
                   lGroup.append(line.line('Removed line'))
 
-    def fix(self, oFile):
+    def _fix_violations(self, oFile):
         self._fix_keyword_alignment(oFile)
 
 
@@ -289,8 +278,7 @@ class rule_013(generic_rule):
             if oLine.isGenericDeclaration and oLine.isGenericKeyword:
                 self.add_violation(iLineNumber)
 
-    def fix(self, oFile):
-        self.analyze(oFile)
+    def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:
             oFile.lines.insert(iLineNumber + 1, copy.deepcopy(oFile.lines[iLineNumber]))
             oLine = oFile.lines[iLineNumber]
@@ -302,7 +290,6 @@ class rule_013(generic_rule):
             oLine.isGenericDeclaration = True
             oLine.insideGenericMap = True
             
-        self._clear_violations()
 
 class rule_014(generic_rule):
     '''Generic rule 014 checks for at least a single space before the :.'''
@@ -320,11 +307,9 @@ class rule_014(generic_rule):
                     if not re.match('^\s*\S+\s+:', oLine.line):
                         self.add_violation(iLineNumber)
 
-    def fix(self, oFile):
-        self.analyze(oFile)
+    def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
             self._enforce_one_space_before_word(oFile.lines[iLineNumber], ':')
-        self._clear_violations()
 
 
 class rule_015(generic_rule):
@@ -356,7 +341,7 @@ class rule_015(generic_rule):
                 else:
                   lGroup.append(line.line('Removed line'))
 
-    def fix(self, oFile):
+    def _fix_violations(self, oFile):
         self._fix_keyword_alignment(oFile)
 
 

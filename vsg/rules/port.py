@@ -13,7 +13,9 @@ class port_rule(rule.rule):
 
 
 class rule_001(port_rule):
-    '''Port rule 001 checks for a blank line above the port keyword.'''
+    '''
+    Port rule 001 checks for a blank line above the port keyword.
+    '''
 
     def __init__(self):
         port_rule.__init__(self)
@@ -26,16 +28,16 @@ class rule_001(port_rule):
             if oLine.isPortKeyword:
                 self._is_no_blank_line_before(oFile, iLineNumber)
 
-    def fix(self, oFile):
-        self.analyze(oFile)
+    def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:
             while oFile.lines[iLineNumber - 1].isBlank:
                 oFile.lines.pop(iLineNumber - 1)
-        self._clear_violations()
 
 
 class rule_002(port_rule):
-    '''Port rule 002 checks indentation of the "port" keyword.'''
+    '''
+    Port rule 002 checks indentation of the "port" keyword.
+    '''
 
     def __init__(self):
         port_rule.__init__(self)
@@ -48,12 +50,15 @@ class rule_002(port_rule):
             if oLine.isPortKeyword:
                 self._check_indent(oLine, iLineNumber)
 
-    def fix(self, oFile):
-        self._fix_indent(oFile)
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            self._fix_indent(oFile.lines[iLineNumber])
 
 
 class rule_003(port_rule):
-    '''Port rule 003 checks spacing between "port" and the open parenthesis.'''
+    '''
+    Port rule 003 checks spacing between "port" and the open parenthesis.
+    '''
 
     def __init__(self):
         port_rule.__init__(self)
@@ -67,16 +72,16 @@ class rule_003(port_rule):
                 if not re.match('^\s*\S+\s\(', oLine.line):
                     self.add_violation(iLineNumber)
 
-    def fix(self, oFile):
-        self.analyze(oFile)
+    def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
             oLine = oFile.lines[iLineNumber]
             oLine.update_line(re.sub(r'(port)\s*\(', r'\1 (', oLine.line, flags=re.IGNORECASE))
-        self._clear_violations()
 
 
 class rule_004(port_rule):
-    '''Port rule 004 checks indentation of ports.'''
+    '''
+    Port rule 004 checks indentation of ports.
+    '''
 
     def __init__(self):
         port_rule.__init__(self)
@@ -89,12 +94,15 @@ class rule_004(port_rule):
             if oLine.isPortDeclaration and not oLine.isEndPortMap:
                 self._check_indent(oLine, iLineNumber)
 
-    def fix(self, oFile):
-        self._fix_indent(oFile)
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            self._fix_indent(oFile.lines[iLineNumber])
 
 
 class rule_005(port_rule):
-    '''Port rule 005 checks for a single space after the colon in a port declaration for "in" and "inout" ports.'''
+    '''
+    Port rule 005 checks for a single space after the colon in a port declaration for "in" and "inout" ports.
+    '''
 
     def __init__(self):
         port_rule.__init__(self)
@@ -109,16 +117,16 @@ class rule_005(port_rule):
                     if not re.match('^\s*\S+\s*:\sin', oLine.lineLower):
                         self.add_violation(iLineNumber)
 
-    def fix(self, oFile):
-        self.analyze(oFile)
+    def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
             oLine = oFile.lines[iLineNumber]
             oLine.update_line(re.sub(r'^(\s*\S+\s*:)(\s*)', r'\1 ', oLine.line, flags=re.IGNORECASE))
-        self._clear_violations()
 
 
 class rule_006(port_rule):
-    '''Port rule 006 checks for one space after the colon in a port declaration for "out" ports.'''
+    '''
+    Port rule 006 checks for one space after the colon in a port declaration for "out" ports.
+    '''
 
     def __init__(self):
         port_rule.__init__(self)
@@ -133,16 +141,16 @@ class rule_006(port_rule):
                     if not re.match('^\s*\S+\s*:\sout', oLine.lineLower):
                         self.add_violation(iLineNumber)
 
-    def fix(self, oFile):
-        self.analyze(oFile)
+    def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
             oLine = oFile.lines[iLineNumber]
             oLine.update_line(re.sub(r'^(\s*\S+\s*:)(\s*)', r'\1 ', oLine.line, flags=re.IGNORECASE))
-        self._clear_violations()
 
 
 class rule_007(port_rule):
-    '''Port rule 007 checks for four spaces after the "in" keyword in a port declaration for "in" ports.'''
+    '''
+    Port rule 007 checks for four spaces after the "in" keyword in a port declaration for "in" ports.
+    '''
 
     def __init__(self):
         port_rule.__init__(self)
@@ -157,16 +165,16 @@ class rule_007(port_rule):
                     if not re.match('^\s*\S+\s*:\s*in\s\s\s\s\S+', oLine.lineLower):
                         self.add_violation(iLineNumber)
 
-    def fix(self, oFile):
-        self.analyze(oFile)
+    def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
             oLine = oFile.lines[iLineNumber]
             oLine.update_line(re.sub(r'^(\s*\S+\s*:\s*in)(\s*)', r'\1    ', oLine.line, flags=re.IGNORECASE))
-        self._clear_violations()
 
 
 class rule_008(port_rule):
-    '''Port rule 008 checks for three spaces after "out" keyword in a port declaration for "out" ports.'''
+    '''
+    Port rule 008 checks for three spaces after "out" keyword in a port declaration for "out" ports.
+    '''
 
     def __init__(self):
         port_rule.__init__(self)
@@ -181,16 +189,16 @@ class rule_008(port_rule):
                     if not re.match('^\s*\S+\s*:\s*out\s\s\s\S+', oLine.lineLower):
                         self.add_violation(iLineNumber)
 
-    def fix(self, oFile):
-        self.analyze(oFile)
+    def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
             oLine = oFile.lines[iLineNumber]
             oLine.update_line(re.sub(r'^(\s*\S+\s*:\s*out)(\s*)', r'\1   ', oLine.line, flags=re.IGNORECASE))
-        self._clear_violations()
 
 
 class rule_009(port_rule):
-    '''Port rule 009 checks for a single space after "inout" keyword in a port declaration for "inout" ports.'''
+    '''
+    Port rule 009 checks for a single space after "inout" keyword in a port declaration for "inout" ports.
+    '''
 
     def __init__(self):
         port_rule.__init__(self)
@@ -205,16 +213,16 @@ class rule_009(port_rule):
                     if not re.match('^\s*\S+\s*:\s*inout\s\S+', oLine.lineLower):
                         self.add_violation(iLineNumber)
 
-    def fix(self, oFile):
-        self.analyze(oFile)
+    def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
             oLine = oFile.lines[iLineNumber]
             oLine.update_line(re.sub(r'^(\s*\S+\s*:\s*inout)(\s*)', r'\1 ', oLine.line, flags=re.IGNORECASE))
-        self._clear_violations()
 
 
 class rule_010(port_rule):
-    '''Port rule 010 checks port names are uppercase.'''
+    '''
+    Port rule 010 checks port names are uppercase.
+    '''
 
     def __init__(self):
         port_rule.__init__(self)
@@ -227,20 +235,20 @@ class rule_010(port_rule):
             if oLine.isPortDeclaration:
                 self._is_uppercase(self._get_first_word(oLine), iLineNumber)
 
-    def fix(self, oFile):
-        self.analyze(oFile)
+    def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
             self._upper_case(oFile.lines[iLineNumber], oFile.lines[iLineNumber].line.split()[0])
-        self._clear_violations()
 
 
 class rule_011(port_rule):
-    '''Port rule 011 checks port names have I_, O_ or IO_ prefixes.
+    '''
+    Port rule 011 checks port names have I_, O_ or IO_ prefixes.
 
          The valid options for self.port_direction are:
             None (default)   No checks are made.
             Prefix           Checks for I_, O_, and IO_ in front of port names.
             Suffix           Checks for _I, _O, and _IO at the end of port names.
+    
     '''
 
     def __init__(self):
@@ -272,7 +280,9 @@ class rule_011(port_rule):
 
 
 class rule_012(port_rule):
-    '''Port rule 012 checks for default assignments in port declarations.'''
+    '''
+    Port rule 012 checks for default assignments in port declarations.
+    '''
 
     def __init__(self):
         port_rule.__init__(self)
@@ -289,7 +299,9 @@ class rule_012(port_rule):
 
 
 class rule_013(port_rule):
-    '''Port rule 013 checks for multiple ports declared on single line.'''
+    '''
+    Port rule 013 checks for multiple ports declared on single line.
+    '''
 
     def __init__(self):
         port_rule.__init__(self)
@@ -303,8 +315,7 @@ class rule_013(port_rule):
                 if re.match('^.*,.*:', oLine.line):
                     self.add_violation(iLineNumber)
 
-    def fix(self, oFile):
-        self.analyze(oFile)
+    def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:
             oLine = oFile.lines[iLineNumber]
             iNumberOfPorts = oLine.line.split(':')[0].count(',') + 1
@@ -318,11 +329,12 @@ class rule_013(port_rule):
                 lPorts = sLine.split(',')
                 oLine.update_line(lPorts[iIndex] + ' :' + oLine.line.split(':')[1])
             
-        self._clear_violations()
 
 
 class rule_014(port_rule):
-    '''Port rule 014 checks the closing parenthesis for ports are on a line by itself.'''
+    '''
+    Port rule 014 checks the closing parenthesis for ports are on a line by itself.
+    '''
 
     def __init__(self):
         port_rule.__init__(self)
@@ -336,8 +348,7 @@ class rule_014(port_rule):
                 if not re.match('^\s*\)', oLine.line):                 
                     self.add_violation(iLineNumber)
 
-    def fix(self, oFile):
-        self.analyze(oFile)
+    def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:
             oFile.lines[iLineNumber].line = re.sub(r'\)(\s*);', r' \1 ', oFile.lines[iLineNumber].line)
             oFile.lines[iLineNumber].isEndPortMap = False
@@ -346,11 +357,12 @@ class rule_014(port_rule):
             oFile.lines[iLineNumber + 1].insidePortMap = True
             oFile.lines[iLineNumber + 1].indentLevel = oFile.lines[iLineNumber].indentLevel - 1
              
-        self._clear_violations()
 
 
 class rule_015(port_rule):
-    '''Port rule 015 checks the indentation of closing parenthesis for port maps.'''
+    '''
+    Port rule 015 checks the indentation of closing parenthesis for port maps.
+    '''
 
     def __init__(self):
         port_rule.__init__(self)
@@ -363,12 +375,15 @@ class rule_015(port_rule):
             if oLine.isEndPortMap and not oLine.isPortDeclaration:
                 self._check_indent(oLine, iLineNumber)
 
-    def fix(self, oFile):
-        self._fix_indent(oFile)
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            self._fix_indent(oFile.lines[iLineNumber])
 
 
 class rule_016(port_rule):
-    '''Port rule 016 checks for a port definition on the same line as the port keyword.'''
+    '''
+    Port rule 016 checks for a port definition on the same line as the port keyword.
+    '''
 
     def __init__(self):
         port_rule.__init__(self)
@@ -382,8 +397,7 @@ class rule_016(port_rule):
                 if re.match('^\s*port\s*\(\s*\S+\s*:', oLine.lineLower):
                     self.add_violation(iLineNumber)
 
-    def fix(self, oFile):
-        self.analyze(oFile)
+    def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:
             oFile.lines.insert(iLineNumber + 1, copy.deepcopy(oFile.lines[iLineNumber]))
             oLine = oFile.lines[iLineNumber]
@@ -394,11 +408,12 @@ class rule_016(port_rule):
             oLine.isPortDeclaration = True
             oLine.insidePortMap = True
             
-        self._clear_violations()
 
 
 class rule_017(port_rule):
-    '''Port rule 017 checks the "port" keyword is lowercase.'''
+    '''
+    Port rule 017 checks the "port" keyword is lowercase.
+    '''
 
     def __init__(self):
         port_rule.__init__(self)
@@ -412,15 +427,15 @@ class rule_017(port_rule):
                 if not re.match('^\s*port', oLine.line):
                     self.add_violation(iLineNumber)
 
-    def fix(self, oFile):
-        self.analyze(oFile)
+    def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
             self._lower_case(oFile.lines[iLineNumber], 'port')
-        self._clear_violations()
 
 
 class rule_018(port_rule):
-    '''Port rule 018 checks the port type is lowercase.'''
+    '''
+    Port rule 018 checks the port type is lowercase.
+    '''
 
     def __init__(self):
         port_rule.__init__(self)
@@ -441,7 +456,9 @@ class rule_018(port_rule):
 
 
 class rule_019(port_rule):
-    '''Port rule 019 checks the port direction is lowercase.'''
+    '''
+    Port rule 019 checks the port direction is lowercase.
+    '''
 
     def __init__(self):
         port_rule.__init__(self)
@@ -455,16 +472,16 @@ class rule_019(port_rule):
                 sLine = oLine.line.split(':')[1]
                 self._is_lowercase(sLine.split()[0],iLineNumber)
 
-    def fix(self, oFile):
-        self.analyze(oFile)
+    def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
             sLine = oFile.lines[iLineNumber].line.split(':')[1]
             self._lower_case(oFile.lines[iLineNumber], sLine.split()[0])
-        self._clear_violations()
 
 
 class rule_020(port_rule):
-    '''Port rule 020 checks there is at least one space before the :.'''
+    '''
+    Port rule 020 checks there is at least one space before the :.
+    '''
 
     def __init__(self):
         port_rule.__init__(self)

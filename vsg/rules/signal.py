@@ -27,8 +27,9 @@ class rule_001(signal_rule):
             if oLine.isSignal:
                 self._check_indent(oLine, iLineNumber)
 
-    def fix(self, oFile):
-        self._fix_indent(oFile)
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            self._fix_indent(oFile.lines[iLineNumber])
 
 
 class rule_002(signal_rule):
@@ -220,7 +221,7 @@ class rule_009(signal_rule):
                 else:
                     lGroup.append(line.line('Removed line'))
 
-    def fix(self, oFile):
+    def _fix_violations(self, oFile):
         self._fix_keyword_alignment(oFile)
 
 
@@ -245,8 +246,7 @@ class rule_010(signal_rule):
                     else:
                         self._is_lowercase(oLine.line.split()[3], iLineNumber)
 
-    def fix(self, oFile):
-        self.analyze(oFile)
+    def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
             oLine = oFile.lines[iLineNumber]
             sLine = oLine.line.split()[3]
@@ -254,5 +254,3 @@ class rule_010(signal_rule):
                 self._lower_case(oLine, sLine.split('(')[0])
             else:
                 self._lower_case(oLine, sLine.split()[3])
-
-        self._clear_violations()

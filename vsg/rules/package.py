@@ -26,8 +26,9 @@ class rule_001(package_rule):
             if oLine.isPackageKeyword or oLine.isPackageEnd:
                 self._check_indent(oLine, iLineNumber)
 
-    def fix(self, oFile):
-        self._fix_indent(oFile)
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            self._fix_indent(oFile.lines[iLineNumber])
 
 
 class rule_002(package_rule):

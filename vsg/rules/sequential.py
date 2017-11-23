@@ -11,11 +11,10 @@ class sequential_rule(rule.rule):
         self.name = 'sequential'
 
 
-# TODO:
-# 4) Check for alignment of <= based on some form of grouping (sequential lines, process, whole file?)
-
 class rule_001(sequential_rule):
-    '''Sequential rule 001 checks for the proper indentation at the beginning of the line.'''
+    '''
+    Sequential rule 001 checks for the proper indentation at the beginning of the line.
+    '''
 
     def __init__(self):
         sequential_rule.__init__(self)
@@ -28,12 +27,15 @@ class rule_001(sequential_rule):
             if oLine.isSequential:
                 self._check_indent(oLine, iLineNumber)
 
-    def fix(self, oFile):
-        self._fix_indent(oFile)
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            self._fix_indent(oFile.lines[iLineNumber])
 
 
 class rule_002(sequential_rule):
-    '''Sequential rule 002 checks for a single space after the "<=" keyword.'''
+    '''
+    Sequential rule 002 checks for a single space after the "<=" keyword.
+    '''
 
     def __init__(self):
         sequential_rule.__init__(self)
@@ -54,7 +56,9 @@ class rule_002(sequential_rule):
 
 
 class rule_003(sequential_rule):
-    '''Sequential rule 003 checks for a single space before the "<=" keyword.'''
+    '''
+    Sequential rule 003 checks for a single space before the "<=" keyword.
+    '''
 
     def __init__(self):
         sequential_rule.__init__(self)
@@ -74,7 +78,9 @@ class rule_003(sequential_rule):
 
 
 class rule_004(sequential_rule):
-    '''Sequential rule 004 ensures the alignment of multiline sequential statements.'''
+    '''
+    Sequential rule 004 ensures the alignment of multiline sequential statements.
+    '''
 
     def __init__(self):
         sequential_rule.__init__(self)
@@ -98,7 +104,9 @@ class rule_004(sequential_rule):
 
 
 class rule_005(sequential_rule):
-    '''Sequential rule 005 ensures the alignment of the "<=" keyword over multiple lines.'''
+    '''
+    Sequential rule 005 ensures the alignment of the "<=" keyword over multiple lines.
+    '''
 
     def __init__(self):
         sequential_rule.__init__(self)
@@ -125,12 +133,14 @@ class rule_005(sequential_rule):
                 else:
                     lGroup.append(oLine)
 
-    def fix(self, oFile):
+    def _fix_violations(self, oFile):
         self._fix_keyword_alignment(oFile)
 
 
 class rule_006(sequential_rule):
-    '''Sequential rule 006 checks for commented out lines within a multiline sequential statement.'''
+    '''
+    Sequential rule 006 checks for commented out lines within a multiline sequential statement.
+    '''
 
     def __init__(self):
         sequential_rule.__init__(self)

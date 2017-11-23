@@ -26,8 +26,9 @@ class rule_001(for_loop_rule):
             if oLine.isForLoopKeyword or oLine.isForLoopEnd:
                 self._check_indent(oLine, iLineNumber)
 
-    def fix(self, oFile):
-        self._fix_indent(oFile)
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            self._fix_indent(oFile.lines[iLineNumber])
 
 
 # class rule_002(for_loop_rule):

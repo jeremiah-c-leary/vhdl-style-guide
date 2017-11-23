@@ -90,15 +90,9 @@ class rule():
         if not re.match('^\s{' + str(self.indentSize * oLine.indentLevel) + '}\S', oLine.line):
             self.add_violation(iLineNumber)
 
-    def _fix_indent(self, oFile):
+    def _fix_indent(self, oLine):
         '''Fixes indent violations.'''
-        self.analyze(oFile)
-        for iLineNumber in self.violations:
-            oLine = oFile.lines[iLineNumber]
-            oLine.line = ' '*oLine.indentLevel*self.indentSize + oLine.line.lstrip()
-            oLine.lineLower = oLine.line.lower()
-
-        self._clear_violations()
+        oLine.update_line(' '*oLine.indentLevel*self.indentSize + oLine.line.lstrip())
 
     def _is_no_blank_line_after(self, oFile, iLineNumber): 
         '''Adds a violation if the line after iLineNumber is blank.
@@ -181,7 +175,6 @@ class rule():
         self.dFix['violations'][sViolationRange]['maximumKeywordColumn'] = iMaximumKeywordColumn
 
     def _fix_keyword_alignment(self, oFile):
-        self.analyze(oFile)
         for sKey in self.dFix['violations']:
             iMaximumKeywordColumn = self.dFix['violations'][sKey]['maximumKeywordColumn']
             for iLineNumber in self.dFix['violations'][sKey]['line']:
@@ -191,8 +184,6 @@ class rule():
                 oLine = oFile.lines[iLineNumber]
                 oLine.line = oLine.line[:iKeywordColumn - 1] + ' '*(iMaximumKeywordColumn - iKeywordColumn) + oLine.line[iKeywordColumn - 1:]
                 oLine.lineLower = oLine.line.lower()
-
-        self._clear_violations()
 
     def _lower_case(self, oLine, sKeyword):
         oLine.line = re.sub(' ' + sKeyword + ' ', ' ' + sKeyword.lower() + ' ', oLine.line, 1, flags=re.IGNORECASE)

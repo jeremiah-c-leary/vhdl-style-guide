@@ -120,7 +120,7 @@ class rule_003(comment_rule):
                 else:
                     lGroup.append(oLine)
 
-    def fix(self, oFile):
+    def _fix_violations(self, oFile):
         self._fix_keyword_alignment(oFile)
 
 

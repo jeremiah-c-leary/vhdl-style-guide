@@ -27,8 +27,9 @@ class rule_001(constant_rule):
             if oLine.isConstant:
                 self._check_indent(oLine, iLineNumber)
 
-    def fix(self, oFile):
-        self._fix_indent(oFile)
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            self._fix_indent(oFile.lines[iLineNumber])
 
 
 class rule_002(constant_rule):
@@ -190,5 +191,5 @@ class rule_009(constant_rule):
                 else:
                     lGroup.append(line.line('Removed line'))
 
-    def fix(self, oFile):
+    def _fix_violations(self, oFile):
         self._fix_keyword_alignment(oFile)

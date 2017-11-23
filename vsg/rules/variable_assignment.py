@@ -25,8 +25,9 @@ class rule_001(variable_assignment_rule):
             if oLine.isVariableAssignment:
                 self._check_indent(oLine, iLineNumber)
 
-    def fix(self, oFile):
-        self._fix_indent(oFile)
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            self._fix_indent(oFile.lines[iLineNumber])
 
 
 class rule_002(variable_assignment_rule):
@@ -122,7 +123,7 @@ class rule_005(variable_assignment_rule):
                 else:
                     lGroup.append(oLine)
 
-    def fix(self, oFile):
+    def _fix_violations(self, oFile):
         self._fix_keyword_alignment(oFile)
 
 
