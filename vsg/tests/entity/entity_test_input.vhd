@@ -18,17 +18,17 @@ end entity ENTITY1
 
  entITy   entiTY2  IS
   generic (
-       G_GENERIC1 : std_logic :='0';
-    G_generic2 : std_logic := '1'
+       G_GENERIC1 : std_logic :='0';-- Comment
+    G_generic2 : std_logic := '1'             -- Comment
   );
 
   PORt   (
-    i_port1 : in  std_logic;
-  o_port2 :  out   std_logic;
-    io_port3 : inout       std_logic;
-      PORT4 :in std_logic;
-    PORT5 :  out std_logic;
-    PORT6 : inout std_logic  );
+    i_port1 : in  std_logic;           -- Comment
+  o_port2 :  out   std_logic;      -- Comment
+    io_port3 : inout       std_logic;    -- Comment
+      PORT4 :in std_logic;   -- Comment
+    PORT5 :  out std_logic;--Comment
+    PORT6 : inout std_logic  );--Comment
 
  end entity    entiTY2
     eNTITY   entiTY3    is
