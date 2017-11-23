@@ -363,12 +363,10 @@ class rule_015(entity_rule):
                         self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
-        self.analyze(oFile)
         for iLineNumber in self.violations:
             oLine = oFile.lines[iLineNumber]
             oLine.line = re.sub(r'^(\s*end)', r'\1 entity', oLine.line, flags=re.IGNORECASE)
             oLine.lineLower = oLine.line.lower()
-        self._clear_violations()
 
 
 class rule_016(entity_rule):
