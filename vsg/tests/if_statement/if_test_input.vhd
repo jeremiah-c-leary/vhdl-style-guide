@@ -109,6 +109,13 @@ begin
       (b = 3) then b <= '1'; else
       c <= '1'; end if;
 
+    if (a = 2) then
+      a <= '0';
+    elsif (a = 3 or
+             b = 4) then
+      a <= '1';
+    end if;
+
   end process PROC_NAME;
 
 end architecture ARCH;

@@ -223,6 +223,10 @@ class rule():
             oFile.lines.pop(iLineNumber - 1)
             iLineNumber -= 1
 
+    def _remove_blank_lines_below(self, oFile, iLineNumber):
+        while oFile.lines[iLineNumber + 1].isBlank:
+            oFile.lines.pop(iLineNumber + 1)
+
     def _insert_blank_line_above(self, oFile, iLineNumber):
         oFile.lines.insert(iLineNumber, line.blank_line())
 

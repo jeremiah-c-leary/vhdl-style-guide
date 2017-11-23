@@ -106,7 +106,7 @@ class testRuleIfMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'if')
         self.assertEqual(oRule.identifier, '009')
-        dExpected = [20,21,67,68]
+        dExpected = [20,21,67,68,115]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
