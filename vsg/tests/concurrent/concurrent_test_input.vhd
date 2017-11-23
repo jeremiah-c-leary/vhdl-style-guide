@@ -45,4 +45,6 @@ label:a<=b;
   a <= b when g = '1' else -- Not an error
        c;
 
+  a <= b when g = '1' else '1'; -- Not an error
+
 end architecture ARCH;
