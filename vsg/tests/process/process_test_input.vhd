@@ -5,7 +5,7 @@ begin
 
   process (one, two, three) IS begin
 
-
+    -- This is a comment
     end process;
 
   process (one, two,

@@ -48,7 +48,7 @@ class testVhdlFileMethods(unittest.TestCase):
                 self.assertFalse(oLine.isBlank)
 
     def test_comment_assignment(self):
-        lExpected = [50,76,83,90]
+        lExpected = [8,50,76,83,90]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFileProcess.lines):
