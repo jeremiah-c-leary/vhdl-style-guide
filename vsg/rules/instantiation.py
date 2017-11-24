@@ -281,7 +281,6 @@ class rule_011(instantiation_rule):
         for iLineNumber in self.violations:
             oLine = oFile.lines[iLineNumber]
             sPortName = oLine.line.split('=>')[0].split('(')[0].lstrip().rstrip()
-            print '{0:5d} | {1:10s} | {2:s}'.format(iLineNumber, sPortName, oLine.line)
             self._upper_case(oLine, sPortName)
 
 
