@@ -280,7 +280,9 @@ class rule_011(instantiation_rule):
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
             oLine = oFile.lines[iLineNumber]
-            self._upper_case(oLine, oLine.line.split()[0])
+            sPortName = oLine.line.split('=>')[0].split('(')[0].lstrip().rstrip()
+            print '{0:5d} | {1:10s} | {2:s}'.format(iLineNumber, sPortName, oLine.line)
+            self._upper_case(oLine, sPortName)
 
 
 class rule_012(instantiation_rule):

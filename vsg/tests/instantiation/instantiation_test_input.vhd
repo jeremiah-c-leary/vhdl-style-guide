@@ -66,5 +66,11 @@ begin
     );
  --This is a comment
 
+  U_INST1 : INST1
+    port map (
+      port_1(3 downto 0)  => w_port_1,
+      port_2 (3 downto 0) => w_port_2
+    );
+
 end architecture ARCH;
 
