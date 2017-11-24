@@ -253,4 +253,4 @@ class rule_010(signal_rule):
             if '(' in sLine:
                 self._lower_case(oLine, sLine.split('(')[0])
             else:
-                self._lower_case(oLine, sLine.split()[3])
+                self._lower_case(oLine, sLine)

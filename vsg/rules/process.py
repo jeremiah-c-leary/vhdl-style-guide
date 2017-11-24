@@ -210,6 +210,7 @@ class rule_010(process_rule):
             oLine.isProcessBegin = False
             oFile.lines.insert(iLineNumber + 1, line.line('  begin'))
             oFile.lines[iLineNumber + 1].isProcessBegin = True
+            oFile.lines[iLineNumber + 1].indentLevel = oLine.indentLevel
            
              
 class rule_011(process_rule):

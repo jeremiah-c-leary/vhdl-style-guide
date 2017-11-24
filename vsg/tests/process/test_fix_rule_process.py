@@ -2,7 +2,7 @@ import os
 
 import unittest
 import sys
-
+from vsg import rule
 from vsg.rules import process
 from vsg import vhdlFile
 
@@ -80,6 +80,11 @@ class testFixRuleProcessMethods(unittest.TestCase):
         oRule.fix(oFile)
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
+        self.assertFalse(oFile.lines[6].isProcessBegin)
+        self.assertTrue(oFile.lines[6].isProcessKeyword)
+        self.assertTrue(oFile.lines[7].isProcessBegin)
+        self.assertFalse(oFile.lines[7].isProcessKeyword)
+        self.assertEqual(oFile.lines[7].indentLevel, oFile.lines[6].indentLevel)
 
     def test_fix_rule_011(self):
         oRule = process.rule_011()

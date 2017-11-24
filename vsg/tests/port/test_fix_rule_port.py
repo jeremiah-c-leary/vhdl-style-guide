@@ -110,6 +110,10 @@ class testFixRulePortMethods(unittest.TestCase):
         oRule.fix(oFile)
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, [])
+        self.assertFalse(oFile.lines[30].isEndPortMap)
+        self.assertTrue(oFile.lines[31].insidePortMap)
+        self.assertTrue(oFile.lines[31].isEndPortMap)
+        self.assertTrue(oFile.lines[31].insideEntity)
 
     def test_fix_rule_015(self):
         oRule = port.rule_015()
