@@ -210,6 +210,11 @@ class rule_010(architecture_rule):
                 else:
                     self.add_violation(iLineNumber)
 
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            oLine = oFile.lines[iLineNumber]
+            oLine.update_line(re.sub(r'^(\s*end)', r'\1 architecture', oLine.line, flags=re.IGNORECASE))
+
 
 class rule_011(architecture_rule):
     '''Architecture rule 011 checks the entity name is upper case on the closing "end architecture" line.'''
