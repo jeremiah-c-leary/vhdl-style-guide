@@ -352,6 +352,7 @@ class rule_014(port_rule):
         for iLineNumber in self.violations[::-1]:
             oFile.lines[iLineNumber].line = re.sub(r'\)(\s*);', r' \1 ', oFile.lines[iLineNumber].line)
             oFile.lines[iLineNumber].isEndPortMap = False
+            oFile.lines[iLineNumber].indentLevel += 1
             oFile.lines.insert(iLineNumber + 1, line.line('  );'))
             oFile.lines[iLineNumber + 1].isEndPortMap = True
             oFile.lines[iLineNumber + 1].insidePortMap = True
