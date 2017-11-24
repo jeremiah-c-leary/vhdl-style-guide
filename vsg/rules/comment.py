@@ -24,32 +24,11 @@ class rule_001(comment_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isComment:
-                if oFile.lines[iLineNumber - 1].hasComment:
-                    if oFile.lines[iLineNumber - 1].isComment:
-                        if not oLine.commentColumn == (oLine.indentLevel * self.indentSize):
-                            self.add_violation(iLineNumber)
-                            self.correctCommentColumn.append(oLine.indentLevel * self.indentSize)
-                else:
-                    try:
-                        if oFile.lines[iLineNumber + 1].isCaseWhenKeyword:
-                            if not oLine.commentColumn == (oLine.indentLevel * self.indentSize) and not oLine.commentColumn == ((oLine.indentLevel - 1) * self.indentSize):
-                                self.add_violation(iLineNumber)
-                                self.correctCommentColumn.append(oLine.indentLevel * self.indentSize)
-                        else:
-                            if not oLine.commentColumn == (oLine.indentLevel * self.indentSize):
-                                self.add_violation(iLineNumber)
-                                self.correctCommentColumn.append(oLine.indentLevel * self.indentSize)
-                    except IndexError:
-                        pass
+                self._check_indent(oLine, iLineNumber)
 
     def _fix_violations(self, oFile):
-        for iViolationIndex, iLineNumber in enumerate(self.violations):
-            oLine = oFile.lines[iLineNumber]
-            oLine.line = ' ' * self.correctCommentColumn[iViolationIndex] + oLine.line.lstrip()
-            oLine.lineLower = oLine.line.lower()
-            oLine.commentColumn = self.correctCommentColumn[iViolationIndex]
-
-        self.correctCommentColumn = []
+        for iLineNumber in self.violations:
+            self._fix_indent(oFile.lines[iLineNumber])
 
 
 # class rule_002(comment_rule):

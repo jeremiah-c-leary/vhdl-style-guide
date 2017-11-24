@@ -361,6 +361,8 @@ class vhdlFile():
                         oLine.isCaseWhenKeyword = True
                         oLine.indentLevel = iCurrentIndentLevel - 1
                         fInsideCaseWhen = True
+                        if self.lines[-1].isComment:
+                            self.lines[-1].indentLevel -= 1 
                     if fInsideCaseWhen:
                         oLine.insideCaseWhen = True
                         if re.match('^\s*.*=>', oLine.line):
