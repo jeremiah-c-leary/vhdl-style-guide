@@ -71,3 +71,12 @@ class testRuleConcurrentMethods(unittest.TestCase):
         dExpected = [44,48]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_008(self):
+        oRule = concurrent.rule_008()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'concurrent')
+        self.assertEqual(oRule.identifier, '008')
+        dExpected = ['6-11']
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)

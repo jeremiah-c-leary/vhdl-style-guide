@@ -12,7 +12,9 @@ class concurrent_rule(rule.rule):
 
 
 class rule_001(concurrent_rule):
-    '''Concurrent rule 001 checks for the proper indentation at the beginning of the line.'''
+    '''
+    Concurrent rule 001 checks for the proper indentation at the beginning of the line.
+    '''
 
     def __init__(self):
         concurrent_rule.__init__(self)
@@ -31,7 +33,9 @@ class rule_001(concurrent_rule):
 
 
 class rule_002(concurrent_rule):
-    '''Concurrent rule 002 checks there is a single space after the assignment.'''
+    '''
+    Concurrent rule 002 checks there is a single space after the assignment.
+    '''
 
     def __init__(self):
         concurrent_rule.__init__(self)
@@ -42,11 +46,11 @@ class rule_002(concurrent_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isConcurrentBegin:
-                if re.match('^\s*\w+\s*<=\s*\S+', oLine.line):
-                    if not re.match('^\s*\w+\s*<=\s\S', oLine.line):
+                if re.match('^\s*\w+\s*<=\s*[\w|(]', oLine.line):
+                    if not re.match('^\s*\w+\s*<=\s[\w|(]', oLine.line):
                         self.add_violation(iLineNumber)
-                elif re.match('^\s*\w+\s*:\s*\w+\s*<=\s*\S+', oLine.line):
-                    if not re.match('^\s*\w+\s*:\s*\w+\s*<=\s\S', oLine.line):
+                elif re.match('^\s*\w+\s*:\s*\w+\s*<=\s*[\w|(]', oLine.line):
+                    if not re.match('^\s*\w+\s*:\s*\w+\s*<=\s[\w|(]', oLine.line):
                         self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
@@ -55,7 +59,9 @@ class rule_002(concurrent_rule):
 
 
 class rule_003(concurrent_rule):
-    '''Concurrent rule 003 checks the alignment of multiline concurrent assignments.'''
+    '''
+    Concurrent rule 003 checks the alignment of multiline concurrent assignments.
+    '''
 
     def __init__(self):
         concurrent_rule.__init__(self)
@@ -79,7 +85,9 @@ class rule_003(concurrent_rule):
 
 
 class rule_004(concurrent_rule):
-    '''Concurrent rule 004 checks there is at least a single space before the assignment.'''
+    '''
+    Concurrent rule 004 checks there is at least a single space before the assignment.
+    '''
 
     def __init__(self):
         concurrent_rule.__init__(self)
@@ -104,7 +112,9 @@ class rule_004(concurrent_rule):
 
 
 class rule_005(concurrent_rule):
-    '''Concurrent rule 005 checks for labels on concurrent assignments.'''
+    '''
+    Concurrent rule 005 checks for labels on concurrent assignments.
+    '''
 
     def __init__(self):
         concurrent_rule.__init__(self)
@@ -125,7 +135,9 @@ class rule_005(concurrent_rule):
 
 
 class rule_006(concurrent_rule):
-    '''Sequential rule 006 ensures the alignment of the "<=" keyword over multiple lines.'''
+    '''
+    Concurrent rule 006 ensures the alignment of the "<=" keyword over multiple lines.
+    '''
 
     def __init__(self):
         concurrent_rule.__init__(self)
@@ -154,7 +166,9 @@ class rule_006(concurrent_rule):
 
 
 class rule_007(concurrent_rule):
-    '''Concurrent rule 007 checks for code after the "else" keyword.'''
+    '''
+    Concurrent rule 007 checks for code after the "else" keyword.
+    '''
 
     def __init__(self):
         concurrent_rule.__init__(self)
@@ -178,3 +192,34 @@ class rule_007(concurrent_rule):
             oLine = oFile.lines[iLineNumber + 1]
             oLine.isConcurrentBegin = False
             oLine.update_line(oLine.line[iIndex:])
+
+
+class rule_008(concurrent_rule):
+    '''
+    Concurrent rule 008 ensures the alignment of comments in sequential conccurent statements.
+    '''
+
+    def __init__(self):
+        concurrent_rule.__init__(self)
+        self.identifier = '008'
+        self.solution = 'Inconsistent alignment of comments in group of lines.'
+        self.phase = 5
+
+    def analyze(self, oFile):
+        lGroup = []
+        fGroupFound = False
+        iStartGroupIndex = None
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isConcurrentBegin and not fGroupFound:
+                fGroupFound = True
+                iStartGroupIndex = iLineNumber
+            if not oLine.insideConcurrent and fGroupFound:
+                fGroupFound = False
+                self._check_keyword_alignment(iStartGroupIndex, '--', lGroup)
+                lGroup = []
+                iStartGroupIndex = None
+            if fGroupFound:
+                lGroup.append(oLine)
+
+    def _fix_violations(self, oFile):
+        self._fix_keyword_alignment(oFile)

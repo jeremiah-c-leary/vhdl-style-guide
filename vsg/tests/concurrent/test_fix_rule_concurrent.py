@@ -57,3 +57,10 @@ class testFixRuleConcurrentMethods(unittest.TestCase):
         oRule.fix(oFile)
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
+
+    def test_fix_rule_008(self):
+        oRule = concurrent.rule_007()
+        dExpected = []
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)

@@ -3,12 +3,12 @@ architecture ARCH of ENTITY is
 
 begin
 
-  a <= b;
- a<=b;
-  a<=    (b);
-  a <=
-       b;
-    a <= b;
+  a <= b;      -- Comment
+ a<=b;             -- Comment
+  a<=    (b); -- Comment
+  a <=                 -- Comment
+       b;     
+    a <= b;       -- Comment
 
   process () is
   begin
