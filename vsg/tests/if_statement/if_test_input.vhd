@@ -114,7 +114,7 @@ begin
     elsif (a = 3 or
              b = 4) then
       a <= '1';
-    end if;
+    end  if;
 
   end process PROC_NAME;
 
