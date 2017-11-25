@@ -19,10 +19,6 @@ class rule_012(case_rule):
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:
-            oFile.lines.insert(iLineNumber + 1, oFile.lines[iLineNumber])
-            oLine = oFile.lines[iLineNumber]
-            iIndex = oLine.line.find('=>') + len('=>') + 1
-            oLine.update_line(oLine.line[:iIndex])
-            oLine = oFile.lines[iLineNumber + 1]
-            oLine.update_line(oLine.line[iIndex:])
-            oLine.isCaseWhenEnd = False
+            self._split_line_after_word(oFile, iLineNumber, '=>')
+            oFile.lines[iLineNumber + 1].isCaseWhenEnd = False
+            oFile.lines[iLineNumber + 1].indentLevel += 1

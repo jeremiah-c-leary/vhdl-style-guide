@@ -3,6 +3,7 @@ import unittest
 
 from vsg.rules import case
 from vsg import vhdlFile
+from vsg import utils
 
 # Read in test file used for all tests
 oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','case','case_test_input.vhd'))
@@ -93,3 +94,6 @@ class testFixRuleCaseMethods(unittest.TestCase):
         oRule.fix(oFileSequential)
         oRule.analyze(oFileSequential)
         self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oFileSequential.lines[11].line,'      when 0 =>')
+        self.assertEqual(oFileSequential.lines[12].line,' b <= \'0\';')
+        self.assertEqual(oFileSequential.lines[12].indentLevel, oFileSequential.lines[11].indentLevel + 1)
