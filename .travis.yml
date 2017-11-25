@@ -23,15 +23,15 @@ install:
 #  directories:
 #    - '$HOME/.sonar/cache'
 
-language:
-  - python
-  - ruby
-
-rvm:
-  - 2.2.0
+language: python
 
 python:
   - "2.7"
+
+language: ruby
+
+rvm:
+  - 2.2.0
 
 before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
