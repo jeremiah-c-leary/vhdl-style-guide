@@ -2,7 +2,6 @@ import os
 
 import unittest
 import sys
-import pprint
 
 from vsg.rules import entity
 from vsg import vhdlFile

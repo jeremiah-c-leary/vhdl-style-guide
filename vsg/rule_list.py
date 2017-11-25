@@ -5,6 +5,7 @@ import re
 import importlib
 import inspect
 
+import vsg.rules
 
 def get_python_modules_from_directory(sDirectoryName, lModules):
 
@@ -43,7 +44,7 @@ def load_base_rules():
     rulefiles = filter(pysearchre.search, os.listdir(os.path.join(os.path.dirname(__file__),'rules')))
     form_module = lambda fp: '.' + os.path.splitext(fp)[0]
     rulesList = map(form_module, rulefiles)
-    # import paraent module / namespace
+    # import parent module / namespace
     importlib.import_module('vsg.rules')
     modules = []
     for rule in rulesList:
@@ -56,8 +57,23 @@ def load_base_rules():
             if inspect.isclass(obj):
                 if not obj.__name__.startswith('__') and not obj.__name__.endswith('_rule'):
                     lRules.append(obj())
+
     return lRules
 
+def load_rules():
+    '''
+    Loads rules from the vsg/rules directory.
+    '''
+    
+    lRules = []
+    for name, oPackage in inspect.getmembers(importlib.import_module('vsg.rules')):
+        if inspect.ismodule(oPackage):
+            for name, oRule in inspect.getmembers(oPackage):
+                if inspect.isclass(oRule):
+                    if name.startswith('rule_'):
+                        lRules.append(oRule())
+
+    return lRules
 
 def maximum_phase(lRules):
     maximumPhaseNumber = 0
@@ -71,7 +87,8 @@ class list():
     ''' Contains a list of all rules to be checked.  It also contains methods to check the rules.'''
 
     def __init__(self, oVhdlFile, sLocalRulesDirectory=None):
-        self.rules = load_base_rules()
+        self.rules = (load_rules())
+        self.rules.extend(load_base_rules())
         if sLocalRulesDirectory:
             self.rules.extend(load_local_rules(sLocalRulesDirectory))
         self.iNumberRulesRan = 0

@@ -2,7 +2,6 @@ import os
 
 import unittest
 import sys
-import pprint
 
 from vsg.rules import port
 from vsg import vhdlFile
@@ -107,7 +106,6 @@ class testFixRulePortMethods(unittest.TestCase):
         self.assertEqual(oRule.violations, [])
 
     def test_fix_rule_014(self):
-        pp = pprint.PrettyPrinter(indent=4)
         oRule = port.rule_014()
         oRule.fix(oFile)
         oRule.analyze(oFile)
@@ -120,7 +118,6 @@ class testFixRulePortMethods(unittest.TestCase):
         self.assertTrue(oFile.lines[31].insideEntity)
         self.assertFalse(oFile.lines[31].isPortDeclaration)
         self.assertEqual(oFile.lines[31].indentLevel, oFile.lines[29].indentLevel - 1)
-        pp.pprint(oFile.lines[31].__dict__)
 
     def test_fix_rule_015(self):
         oRule = port.rule_015()
