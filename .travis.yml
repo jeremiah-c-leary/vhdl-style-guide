@@ -37,11 +37,11 @@ before_script:
 # command to run tests
 script:
   - coverage run setup.py test
-  - bundle exec rspec
+#  - bundle exec rspec
 #  - sonar-scanner
 
 after_success:
   - codecov
 
-#after_script:
-#  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
