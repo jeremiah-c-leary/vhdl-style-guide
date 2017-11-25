@@ -23,12 +23,12 @@ install:
 #  directories:
 #    - '$HOME/.sonar/cache'
 
-language: python
+language:
+  - python
+  - ruby
 
 python:
   - "2.7"
-
-language: ruby
 
 rvm:
   - 2.2.0
