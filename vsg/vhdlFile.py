@@ -392,7 +392,7 @@ class vhdlFile():
                         if re.match('^\s*return', oLine.lineLower):
                             oLine.isFunctionReturn = True
                             oLine.indentLevel = iCurrentIndentLevel 
-                        if re.match('^\s*end', oLine.lineLower) and not oLine.isEndIfKeyword and not oLine.isEndCaseKeyword:
+                        if re.match('^\s*end', oLine.lineLower) and not oLine.isEndIfKeyword and not oLine.isEndCaseKeyword and not oLine.isForLoopEnd:
                             oLine.isFunctionEnd = True
                             oLine.indentLevel = iCurrentIndentLevel - 1
                             iCurrentIndentLevel -= 1
