@@ -379,7 +379,7 @@ class vhdlFile():
 
                 # Check function declarations
                 if fInsideArchitecture:
-                    if re.match('^\s*function\s', oLine.lineLower):
+                    if re.match('^\s*function\s', oLine.lineLower) or re.match('^\s*impure\s', oLine.lineLower):
                         fInsideFunction = True
                         oLine.isFunctionKeyword = True
                         oLine.indentLevel = iCurrentIndentLevel

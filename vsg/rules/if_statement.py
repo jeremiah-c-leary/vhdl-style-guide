@@ -1,7 +1,7 @@
 
 from vsg import rule
 import re
-
+import copy
 
 class if_rule(rule.rule):
 
@@ -261,7 +261,7 @@ class rule_012(if_rule):
     def __init__(self):
         if_rule.__init__(self)
         self.identifier = '012'
-        self.solution = 'Move code after "then" or "else" keyword to the next line.'
+        self.solution = 'Move code after "then" keyword to the next line.'
         self.phase = 1
 
     def analyze(self, oFile):
@@ -269,28 +269,14 @@ class rule_012(if_rule):
             if oLine.isThenKeyword:
                 if re.match('^.*\sthen\s+\w', oLine.lineLower):
                     self.add_violation(iLineNumber)
-            elif oLine.isElseKeyword:
-                if re.match('^.*\selse\s+\w', oLine.lineLower):
-                    self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:
-            oFile.lines.insert(iLineNumber + 1,oFile.lines[iLineNumber])
-            oLine = oFile.lines[iLineNumber]
-            if oLine.isThenKeyword:
-                iIndex = oLine.line.find(' then') + len(' then') + 1
-                oLine.update_line(oLine.line[:iIndex])
-                oLine.isThenKeyword = False
-                oLine = oFile.lines[iLineNumber + 1]
-                oLine.update_line(oLine.line[iIndex:])
-                oLine.isIfKeyword = False
-            elif oLine.isElseKeyword:
-                iIndex = oLine.line.find(' else') + len(' else') + 1
-                oLine.update_line(oLine.line[:iIndex])
-                oLine.isElseKeyword = False
-                oLine = oFile.lines[iLineNumber + 1]
-                oLine.update_line(oLine.line[iIndex:])
-                oLine.isIfKeyword = False
+            self._split_line_after_word(oFile, iLineNumber, ' then')
+            oFile.lines[iLineNumber].isThenKeyword = False
+            oFile.lines[iLineNumber + 1].isIfKeyword = False
+            oFile.lines[iLineNumber + 1].isIfKeyword = False
+            oFile.lines[iLineNumber + 1].indentLevel += 1
 
 
 class rule_013(if_rule):
@@ -310,14 +296,12 @@ class rule_013(if_rule):
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:
-            oFile.lines.insert(iLineNumber + 1,oFile.lines[iLineNumber])
-            oLine = oFile.lines[iLineNumber]
-            iIndex = oLine.line.find(' else')
-            oLine.update_line(oLine.line[:iIndex])
-            oLine.isElseKeyword = False
-            oLine = oFile.lines[iLineNumber + 1]
-            oLine.update_line(oLine.line[iIndex:])
-            oLine.isIfKeyword = False
+            self._split_line_before_word(oFile, iLineNumber, ' else')
+            oFile.lines[iLineNumber].isElseKeyword = False
+            oFile.lines[iLineNumber + 1].isIfKeyword = False
+            oFile.lines[iLineNumber + 1].isElseIfKeyword = False
+            oFile.lines[iLineNumber + 1].isThenKeyword = False
+            oFile.lines[iLineNumber + 1].indentLevel -= 1
 
 
 class rule_014(if_rule):
@@ -337,17 +321,13 @@ class rule_014(if_rule):
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:
-            oFile.lines.insert(iLineNumber + 1,oFile.lines[iLineNumber])
-            oLine = oFile.lines[iLineNumber]
-            iIndex = oLine.line.find(' end')
-            oLine.update_line(oLine.line[:iIndex])
-            oLine.isEndIfKeyword = False
-            oLine = oFile.lines[iLineNumber + 1]
-            oLine.update_line(oLine.line[iIndex:])
-            oLine.isIfKeyword = False
-            oLine.isElseKeyword = False
-            oLine.isElseIfKeyword = False
-            oLine.isThenKeyword = False
+            self._split_line_before_word(oFile, iLineNumber, ' end')
+            oFile.lines[iLineNumber].isEndIfKeyword = False
+            oFile.lines[iLineNumber + 1].isIfKeyword = False
+            oFile.lines[iLineNumber + 1].isElseIfKeyword = False
+            oFile.lines[iLineNumber + 1].isElseKeyword = False
+            oFile.lines[iLineNumber + 1].isThenKeyword = False
+            oFile.lines[iLineNumber + 1].indentLevel -= 1
 
 
 class rule_015(if_rule):
@@ -369,3 +349,28 @@ class rule_015(if_rule):
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
             self._enforce_one_space_after_word(oFile.lines[iLineNumber], 'end')
+
+
+class rule_016(if_rule):
+    '''If rule 016 checks for code after the "else" keyword.'''
+
+    def __init__(self):
+        if_rule.__init__(self)
+        self.identifier = '016'
+        self.solution = 'Move code after "else" keyword to the next line.'
+        self.phase = 1
+
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isElseKeyword:
+                if re.match('^.*\selse\s+\w', oLine.lineLower):
+                    self.add_violation(iLineNumber)
+
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations[::-1]:
+            self._split_line_after_word(oFile, iLineNumber, ' else')
+            oFile.lines[iLineNumber + 1].isElseKeyword = False
+            oFile.lines[iLineNumber].isIfKeyword = False
+            oFile.lines[iLineNumber].isElseIfKeyword = False
+            oFile.lines[iLineNumber].isThenKeyword = False
+            oFile.lines[iLineNumber + 1].indentLevel += 1

@@ -44,6 +44,12 @@ architecture ARCH of ENTITY_1 is
 
   end;
 
+  impure function func_1 (a : integer) return integer is
+    variable var_a : std_logic;
+    variable var_b : integer;
+  begin
+    return 0;
+  end func_1;
 
 begin
 

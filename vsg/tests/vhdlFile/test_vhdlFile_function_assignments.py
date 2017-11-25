@@ -9,7 +9,7 @@ class testVhdlFileFunctionAssignments(unittest.TestCase):
 
 
     def test_isFunctionKeyword(self):
-        lExpected = [4,16,21,28,36]
+        lExpected = [4,16,21,28,36,47]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
@@ -19,7 +19,7 @@ class testVhdlFileFunctionAssignments(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isFunctionBegin(self):
-        lExpected = [5,17,22,31,37]
+        lExpected = [5,17,22,31,37,50]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
@@ -29,7 +29,7 @@ class testVhdlFileFunctionAssignments(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isFunctionEnd(self):
-        lExpected = [13,19,24,33,45]
+        lExpected = [13,19,24,33,45,52]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
@@ -39,7 +39,7 @@ class testVhdlFileFunctionAssignments(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_insideFunction(self):
-        lExpected = [4,5,6,7,8,9,10,11,12,13,16,17,18,19,21,22,23,24,28,29,30,31,32,33,36,37,38,39,40,41,42,43,44,45]
+        lExpected = [4,5,6,7,8,9,10,11,12,13,16,17,18,19,21,22,23,24,28,29,30,31,32,33,36,37,38,39,40,41,42,43,44,45,47,48,49,50,51,52]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
@@ -49,7 +49,7 @@ class testVhdlFileFunctionAssignments(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isFunctionReturn(self):
-        lExpected = [8,10,18,23]
+        lExpected = [8,10,18,23,51]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
