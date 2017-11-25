@@ -25,6 +25,10 @@ install:
 
 language:
   - python
+  - ruby
+
+rvm:
+  - 2.2.0
 
 python:
   - "2.7"
