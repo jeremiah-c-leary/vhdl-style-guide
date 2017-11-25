@@ -91,8 +91,6 @@ class list():
         self.rules.extend(load_base_rules())
         if sLocalRulesDirectory:
             self.rules.extend(load_local_rules(sLocalRulesDirectory))
-        for oRule in self.rules:
-            print oRule.name + '\t' + oRule.identifier
         self.iNumberRulesRan = 0
         self.lastPhaseRan = 0
         self.oVhdlFile = oVhdlFile
