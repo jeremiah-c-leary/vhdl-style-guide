@@ -5,7 +5,7 @@ import sys
 
 from vsg.rules import instantiation
 from vsg import vhdlFile
-
+from vsg import utils
 
 oFilePort = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','instantiation','instantiation_test_input.vhd'))
 oFileGeneric = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','instantiation','instantiation_generic_test_input.vhd'))
@@ -137,6 +137,7 @@ class testFixRuleInstantiationMethods(unittest.TestCase):
         oRule.fix(oFilePort)
         oRule.analyze(oFilePort)
         self.assertEqual(oRule.violations, [])
+        self.assertEqual(oFilePort.lines[64].indentLevel, oFilePort.lines[63].indentLevel + 1)
 
     def test_fix_rule_021(self):
         oRule = instantiation.rule_021()
