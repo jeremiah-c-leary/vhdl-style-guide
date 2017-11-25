@@ -273,8 +273,9 @@ class rule_012(if_rule):
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:
             self._split_line_after_word(oFile, iLineNumber, ' then')
-            oFile.lines[iLineNumber].isThenKeyword = False
-            oFile.lines[iLineNumber + 1].isIfKeyword = False
+            oFile.lines[iLineNumber].isEndIfKeyword = False
+            oFile.lines[iLineNumber].isElseKeyword = False
+            oFile.lines[iLineNumber + 1].isThenKeyword = False
             oFile.lines[iLineNumber + 1].isIfKeyword = False
             oFile.lines[iLineNumber + 1].indentLevel += 1
 

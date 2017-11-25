@@ -127,6 +127,8 @@ class testFixRuleIfMethods(unittest.TestCase):
         self.assertEqual(oFile.lines[107].line, '    if (a = 2) then')
         self.assertEqual(oFile.lines[108].line, ' b <= \'1\'; else b <= \'0\'; end if;')
         self.assertEqual(oFile.lines[108].indentLevel, oFile.lines[107].indentLevel + 1)
+        self.assertFalse(oFile.lines[107].isEndIfKeyword)
+        self.assertFalse(oFile.lines[107].isElseKeyword)
 
     def test_fix_rule_013(self):
         oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','if_statement','if_test_input.vhd'))
