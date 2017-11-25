@@ -14,25 +14,31 @@ class rule_018(entity_rule):
         self.solution = 'Inconsistent alignment of comments in entity.'
         self.phase = 5
 
+    def _search_for_group(self, fGroupFound, oLine, iStartGroupIndex, iLineNumber):
+        if not fGroupFound and oLine.insideEntity:
+            return True, iLineNumber
+        return fGroupFound, iStartGroupIndex
+
+    def _store_lines_for_group(self, fGroupFound, oLine, lGroup):
+        if fGroupFound:
+            if oLine.hasComment and not oLine.isComment:
+                lGroup.append(oLine)
+            else:
+                lGroup.append(line.line('Removed line'))
+
     def analyze(self, oFile):
         lGroup = []
         fGroupFound = False
         iStartGroupIndex = None
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if not fGroupFound and oLine.insideEntity:
-                fGroupFound = True
-                iStartGroupIndex = iLineNumber
+            fGroupFound, iStartGroupIndex = self._search_for_group(fGroupFound, oLine, iStartGroupIndex, iLineNumber)
             if oLine.isEndEntityDeclaration:
                 lGroup.append(oLine)
                 fGroupFound = False
                 self._check_keyword_alignment(iStartGroupIndex, '--', lGroup)
                 lGroup = []
                 iStartGroupIndex = None
-            if fGroupFound:
-                if oLine.hasComment and not oLine.isComment:
-                  lGroup.append(oLine)
-                else:
-                  lGroup.append(line.line('Removed line'))
+            self._store_lines_for_group(fGroupFound, oLine, lGroup)
 
     def _fix_violations(self, oFile):
         self._fix_keyword_alignment(oFile)
