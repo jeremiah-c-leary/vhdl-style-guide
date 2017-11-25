@@ -79,12 +79,6 @@ class rule():
         self.dFix = {}
         self.dFix['violations'] = {}
 
-    def _isLowercase(self, sString):
-        if sString == sString.lower():
-            return True
-        else:
-            return False
-
     def _check_indent(self, oLine, iLineNumber):
         '''Adds a violation if the indent of the line does not match the desired level.'''
         if not re.match('^\s{' + str(self.indentSize * oLine.indentLevel) + '}\S', oLine.line):
@@ -223,10 +217,3 @@ class rule():
 
     def _insert_blank_line_below(self, oFile, iLineNumber):
         oFile.lines.insert(iLineNumber + 1, line.blank_line())
-
-
-
-def debug_lines(oFile, iLineNumber, iNumberOfLines):
-
-    for iIndex in range (0, iNumberOfLines):
-        print '{0:5d} | {1:s}'.format(iLineNumber + iIndex, oFile.lines[iLineNumber + iIndex].line)
