@@ -53,6 +53,8 @@ class vhdlFile():
 
         fInsideFunction = False
 
+        fInsideForLoop = False
+
         iOpenParenthesis = 0;
         iCloseParenthesis = 0;
 
@@ -171,7 +173,7 @@ class vhdlFile():
                         oLine.isArchitectureBegin = True
                         oLine.indentLevel = 0
                         iCurrentIndentLevel = 1
-                    if not fInsideProcess and not fInsideCase and not fInsideComponent and not fInsideGenerate and not fInsideFunction:
+                    if not fInsideProcess and not fInsideCase and not fInsideComponent and not fInsideGenerate and not fInsideFunction and not fInsideForLoop:
                         if re.match('^\s*end', oLine.lineLower):
                             fInsideArchitecture = False
                             fFoundArchitectureBegin = False
@@ -311,15 +313,17 @@ class vhdlFile():
                             oLine.isEndConcurrent = True
 
                 # check for loop statements
-                if fInsideProcess:
+                if fInsideArchitecture:
                     if re.match('^\s*for\s.*\sin\s.*\sloop', oLine.lineLower):
                         oLine.isForLoopKeyword = True
                         oLine.indentLevel = iCurrentIndentLevel
                         iCurrentIndentLevel += 1
+                        fInsideForLoop = True
                     if re.match('^\s*end\s+loop', oLine.lineLower):
                         oLine.isForLoopEnd = True
                         iCurrentIndentLevel -= 1
                         oLine.indentLevel = iCurrentIndentLevel
+                        fInsideForLoop = False
 
                 # Check if statements
                 if fInsideProcess or fInsideFunction:
