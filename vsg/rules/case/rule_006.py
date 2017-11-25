@@ -2,6 +2,7 @@
 from vsg.rules.case import case_rule
 import re
 
+
 class rule_006(case_rule):
     '''Case rule 006 checks for a single space between the "end" and "case" keywords.'''
 
@@ -14,8 +15,7 @@ class rule_006(case_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isEndCaseKeyword:
-                if not re.match('^\s*end\scase', oLine.lineLower):
-                    self.add_violation(iLineNumber)
+                self._is_single_space_after('end', oLine, iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

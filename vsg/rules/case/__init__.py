@@ -1,8 +1,9 @@
 
 from vsg import rule
 
+
 class case_rule(rule.rule):
-    
+
     def __init__(self):
         rule.rule.__init__(self)
         self.name = 'case'

@@ -2,6 +2,7 @@
 from vsg.rules.case import case_rule
 import re
 
+
 class rule_012(case_rule):
     '''Case rule 012 ensures code does not exist after the => operator.'''
 
