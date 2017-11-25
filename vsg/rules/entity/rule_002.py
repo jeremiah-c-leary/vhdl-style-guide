@@ -16,7 +16,6 @@ class rule_002(entity_rule):
         self.phase = 2
 
     def analyze(self, oFile):
-        lFailureLines = []
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isEntityDeclaration:
                 if re.match('^\s*\S+\s\s+', oLine.line):
