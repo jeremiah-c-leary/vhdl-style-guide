@@ -4,6 +4,7 @@ import unittest
 
 from vsg.rules import generic
 from vsg import vhdlFile
+from vsg import utils
 
 
 oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','generic','generic_test_input.vhd'))
@@ -88,9 +89,12 @@ class testFixRuleGenericMethods(unittest.TestCase):
 
     def test_fix_rule_013(self):
         oRule = generic.rule_013()
+        utils.debug_lines(oFile, 137, 5)
         oRule.fix(oFile)
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, [])
+        self.assertEqual(oFile.lines[140].indentLevel, oFile.lines[139].indentLevel + 1)
+        utils.debug_lines(oFile, 137, 5)
 
     def test_fix_rule_014(self):
         oRule = generic.rule_014()

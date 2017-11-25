@@ -290,6 +290,7 @@ class rule_013(generic_rule):
             oLine.isGenericKeyword = False
             oLine.isGenericDeclaration = True
             oLine.insideGenericMap = True
+            oLine.indentLevel = oFile.lines[iLineNumber].indentLevel + 1
             
 
 class rule_014(generic_rule):
