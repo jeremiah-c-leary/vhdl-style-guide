@@ -69,9 +69,6 @@ class rule():
         self._fix_violations(oFile)
         self._clear_violations()
 
-    def _fix_violations(self, oFile):
-        return
-
     def add_violation(self, lineNumber):
         self.violations.append(lineNumber)
 
