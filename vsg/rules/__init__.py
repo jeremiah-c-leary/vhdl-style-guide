@@ -6,5 +6,6 @@ from vsg.rules import concurrent
 from vsg.rules import constant
 from vsg.rules import entity
 from vsg.rules import for_loop
+from vsg.rules import function
 from vsg.rules import generic
 from vsg.rules import instantiation
