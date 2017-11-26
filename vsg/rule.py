@@ -33,19 +33,8 @@ class rule():
           Individual rule attributes can be modified with [self.name_self.identifier].
         '''
 
-        try:
-            for sAttributeName in dConfiguration['rule']['global']:
-                if sAttributeName in self.__dict__:
-                    self.__dict__[sAttributeName] = dConfiguration['rule']['global'][sAttributeName]
-        except KeyError:
-            pass
-
-        try:
-            for sAttributeName in dConfiguration['rule'][self.name + '_' + self.identifier]:
-                if sAttributeName in self.__dict__:
-                    self.__dict__[sAttributeName] = dConfiguration['rule'][self.name + '_' + self.identifier][sAttributeName]
-        except KeyError:
-            pass
+        self._configure_global_rule_attributes(dConfiguration)
+        self._configure_rule_attributes(dConfiguration)
 
     def report_violations(self, iLineNumber):
         if len(self.violations) > 0:
@@ -174,11 +163,8 @@ class rule():
             iMaximumKeywordColumn = self.dFix['violations'][sKey]['maximumKeywordColumn']
             for iLineNumber in self.dFix['violations'][sKey]['line']:
                 iKeywordColumn = self.dFix['violations'][sKey]['line'][iLineNumber]['keywordColumn']
-                if iKeywordColumn == iMaximumKeywordColumn:
-                    continue
                 oLine = oFile.lines[iLineNumber]
-                oLine.line = oLine.line[:iKeywordColumn] + ' '*(iMaximumKeywordColumn - iKeywordColumn) + oLine.line[iKeywordColumn:]
-                oLine.lineLower = oLine.line.lower()
+                oLine.update_line(oLine.line[:iKeywordColumn] + ' '*(iMaximumKeywordColumn - iKeywordColumn) + oLine.line[iKeywordColumn:])
 
     def _lower_case(self, oLine, sKeyword):
         oLine.line = re.sub(' ' + sKeyword + ' ', ' ' + sKeyword.lower() + ' ', oLine.line, 1, flags=re.IGNORECASE)
@@ -234,3 +220,19 @@ class rule():
             oLine.update_line(oLine.line[:iIndex])
             oLine = oFile.lines[iLineNumber + 1]
             oLine.update_line(oLine.line[iIndex:])
+
+    def _configure_global_rule_attributes(self, dConfiguration):
+        try:
+            for sAttributeName in dConfiguration['rule']['global']:
+                if sAttributeName in self.__dict__:
+                    self.__dict__[sAttributeName] = dConfiguration['rule']['global'][sAttributeName]
+        except KeyError:
+            pass
+
+    def _configure_rule_attributes(self, dConfiguration):
+        try:
+            for sAttributeName in dConfiguration['rule'][self.name + '_' + self.identifier]:
+                if sAttributeName in self.__dict__:
+                    self.__dict__[sAttributeName] = dConfiguration['rule'][self.name + '_' + self.identifier][sAttributeName]
+        except KeyError:
+            pass
