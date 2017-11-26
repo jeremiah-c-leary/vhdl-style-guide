@@ -15,3 +15,4 @@ from vsg.rules import library
 from vsg.rules import package
 from vsg.rules import port
 from vsg.rules import process
+from vsg.rules import sequential
