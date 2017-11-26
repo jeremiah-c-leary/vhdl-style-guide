@@ -73,18 +73,6 @@ class rule():
         '''Fixes indent violations.'''
         oLine.update_line(' '*oLine.indentLevel*self.indentSize + oLine.line.lstrip())
 
-    def _is_blank_line_after(self, oFile, iLineNumber): 
-        '''Adds a violation if the line after iLineNumber is not blank.
-           This is typically used to compress lines together.'''
-        if not oFile.lines[iLineNumber + 1].isBlank:
-            self.add_violation(iLineNumber)
-
-    def _is_blank_line_before(self, oFile, iLineNumber):
-        '''Adds a violation if the line before iLineNumber is not blank.
-           This is typically used to compress lines together.'''
-        if not oFile.lines[iLineNumber - 1].isBlank:
-            self.add_violation(iLineNumber)
-
     def _check_multiline_alignment(self, iColumn, oLine, iLineNumber):
         if not re.match('\s{' + str(iColumn) + '}\S', oLine.line):
             self.add_violation(iLineNumber)

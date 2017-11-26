@@ -1,5 +1,6 @@
 
 from vsg.rules.instantiation import instantiation_rule
+from vsg import check
 
 
 class rule_019(instantiation_rule):
@@ -17,7 +18,7 @@ class rule_019(instantiation_rule):
         lFailureLines = []
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isInstantiationPortEnd:
-                self._is_blank_line_after(oFile, iLineNumber)
+                check.is_blank_line_after(self, oFile, iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:

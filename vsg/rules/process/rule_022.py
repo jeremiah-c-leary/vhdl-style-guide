@@ -1,5 +1,6 @@
 
 from vsg.rules.process import process_rule
+from vsg import check
 
 
 class rule_022(process_rule):
@@ -16,7 +17,7 @@ class rule_022(process_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isProcessBegin:
-                self._is_blank_line_after(oFile, iLineNumber)
+                check.is_blank_line_after(self, oFile, iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:
