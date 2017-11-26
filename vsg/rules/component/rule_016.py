@@ -1,5 +1,6 @@
 
 from vsg.rules.component import component_rule
+from vsg import check
 
 
 class rule_016(component_rule):
@@ -16,7 +17,7 @@ class rule_016(component_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isComponentEnd:
-                self._is_no_blank_line_before(oFile, iLineNumber)
+                check.is_no_blank_line_before(self, oFile, iLineNumber)
 
 
     def _fix_violations(self, oFile):

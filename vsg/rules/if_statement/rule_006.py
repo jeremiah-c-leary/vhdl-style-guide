@@ -1,5 +1,6 @@
 
 from vsg.rules.if_statement import if_rule
+from vsg import check
 
 
 class rule_006(if_rule):
@@ -14,7 +15,7 @@ class rule_006(if_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isThenKeyword and not oFile.lines[iLineNumber + 2].isCaseKeyword and not oLine.isEndIfKeyword:
-                self._is_no_blank_line_after(oFile, iLineNumber)
+                check.is_no_blank_line_after(self, oFile, iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:

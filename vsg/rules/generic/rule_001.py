@@ -1,5 +1,6 @@
 
 from vsg.rules.generic import generic_rule
+from vsg import check
 
 
 class rule_001(generic_rule):
@@ -15,7 +16,7 @@ class rule_001(generic_rule):
         lFailureLines = []
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isGenericKeyword:
-                self._is_no_blank_line_before(oFile, iLineNumber)
+                check.is_no_blank_line_before(self, oFile, iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:
