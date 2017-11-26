@@ -1,21 +1,19 @@
 
-from vsg.rules.entity import entity_rule
+from vsg.rules.architecture import architecture_rule
 
 
-class rule_001(entity_rule):
-    '''
-    Entity rule 001 checks for spaces before the entity keyword.
-    '''
+class rule_008(architecture_rule):
+    '''Architecture rule 008 checks for spaces at the beginning of the line for the "end architecture" keywords.'''
 
     def __init__(self):
-        entity_rule.__init__(self)
-        self.identifier = '001'
+        architecture_rule.__init__(self)
+        self.identifier = '008'
         self.solution = 'Ensure proper indentation.'
         self.phase = 4
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isEntityDeclaration:
+            if oLine.isEndArchitecture:
                 self._check_indent(oLine, iLineNumber)
 
     def _fix_violations(self, oFile):

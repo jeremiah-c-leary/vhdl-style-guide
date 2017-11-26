@@ -2,11 +2,11 @@
 from vsg import rule
 
 
-class entity_rule(rule.rule):
+class architecture_rule(rule.rule):
 
     def __init__(self):
         rule.rule.__init__(self)
-        self.name = 'entity'
+        self.name = 'architecture'
 
 
 from rule_001 import rule_001
@@ -27,3 +27,8 @@ from rule_015 import rule_015
 from rule_016 import rule_016
 from rule_017 import rule_017
 from rule_018 import rule_018
+from rule_019 import rule_019
+from rule_020 import rule_020
+from rule_021 import rule_021
+from rule_022 import rule_022
+from rule_023 import rule_023
