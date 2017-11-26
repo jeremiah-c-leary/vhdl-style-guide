@@ -17,3 +17,4 @@ from vsg.rules import port
 from vsg.rules import process
 from vsg.rules import sequential
 from vsg.rules import signal
+from vsg.rules import type
