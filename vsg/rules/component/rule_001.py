@@ -1,5 +1,6 @@
 
 from vsg.rules.component import component_rule
+from vsg import check
 
 
 class rule_001(component_rule):
@@ -17,7 +18,7 @@ class rule_001(component_rule):
         lFailureLines = []
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isComponentDeclaration:
-                self._check_indent(oLine, iLineNumber)
+                check.indent(self, oLine, iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

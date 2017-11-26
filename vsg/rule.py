@@ -69,11 +69,6 @@ class rule():
         self.dFix = {}
         self.dFix['violations'] = {}
 
-    def _check_indent(self, oLine, iLineNumber):
-        '''Adds a violation if the indent of the line does not match the desired level.'''
-        if not re.match('^\s{' + str(self.indentSize * oLine.indentLevel) + '}\S', oLine.line):
-            self.add_violation(iLineNumber)
-
     def _fix_indent(self, oLine):
         '''Fixes indent violations.'''
         oLine.update_line(' '*oLine.indentLevel*self.indentSize + oLine.line.lstrip())

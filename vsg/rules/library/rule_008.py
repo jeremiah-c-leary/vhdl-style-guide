@@ -1,5 +1,6 @@
 
 from vsg.rules.library import library_rule
+from vsg import check
 
 
 class rule_008(library_rule):
@@ -16,7 +17,7 @@ class rule_008(library_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isLibraryUse:
-                self._check_indent(oLine, iLineNumber)
+                check.indent(self, oLine, iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

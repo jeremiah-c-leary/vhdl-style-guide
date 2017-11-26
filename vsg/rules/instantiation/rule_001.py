@@ -1,5 +1,6 @@
 
 from vsg.rules.instantiation import instantiation_rule
+from vsg import check
 
 
 class rule_001(instantiation_rule):
@@ -16,7 +17,7 @@ class rule_001(instantiation_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isInstantiationDeclaration or oLine.isInstantiationPortAssignment or oLine.isInstantiationPortEnd or oLine.isInstantiationPortKeyword or oLine.isInstantiationGenericAssignment or oLine.isInstantiationGenericEnd or oLine.isInstantiationGenericKeyword:
-                self._check_indent(oLine, iLineNumber)
+                check.indent(self, oLine, iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

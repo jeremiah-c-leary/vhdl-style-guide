@@ -1,5 +1,6 @@
 
 from vsg.rules.if_statement import if_rule
+from vsg import check
 
 
 class rule_001(if_rule):
@@ -14,7 +15,7 @@ class rule_001(if_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isIfKeyword or oLine.isElseIfKeyword or oLine.isEndIfKeyword or oLine.isElseKeyword:
-                self._check_indent(oLine, iLineNumber)
+                check.indent(self, oLine, iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

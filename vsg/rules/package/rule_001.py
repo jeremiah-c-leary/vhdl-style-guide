@@ -1,5 +1,6 @@
 
 from vsg.rules.package import package_rule
+from vsg import check
 
 
 class rule_001(package_rule):
@@ -16,7 +17,7 @@ class rule_001(package_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isPackageKeyword or oLine.isPackageEnd:
-                self._check_indent(oLine, iLineNumber)
+                check.indent(self, oLine, iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

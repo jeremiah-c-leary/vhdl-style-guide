@@ -1,5 +1,6 @@
 
 from vsg.rules.type import type_rule
+from vsg import check
 
 
 class rule_005(type_rule):
@@ -16,7 +17,7 @@ class rule_005(type_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.insideType and not oLine.isTypeKeyword:
-                self._check_indent(oLine, iLineNumber)
+                check.indent(self, oLine, iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

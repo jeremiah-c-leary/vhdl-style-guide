@@ -1,5 +1,6 @@
 
 from vsg.rules.function import function_rule
+from vsg import check
 
 
 class rule_001(function_rule):
@@ -16,7 +17,7 @@ class rule_001(function_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isFunctionKeyword or oLine.isFunctionBegin or oLine.isFunctionEnd or oLine.isFunctionReturn:
-                self._check_indent(oLine, iLineNumber)
+                check.indent(self, oLine, iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
