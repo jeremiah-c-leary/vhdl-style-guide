@@ -37,21 +37,16 @@ class rule():
         self._configure_rule_attributes(dConfiguration)
 
     def report_violations(self, iLineNumber):
-        if len(self.violations) > 0:
-            if iLineNumber in self.violations:
-                
-                print ('  ' + (self.name + '_' + self.identifier).ljust(25) + ' | ' + str(iLineNumber).rjust(10) + ' | ' + self.solution)
-                return 1
-            elif not isinstance(self.violations[0], int):
-                for sViolation in self.violations:
-                    if sViolation.startswith(str(iLineNumber) + '-'):
-                        print ('  ' + (self.name + '_' + self.identifier).ljust(25) + ' | ' + sViolation.rjust(10) + ' | ' + self.solution)
-                return 1
-            else:
-                return 0
+        if iLineNumber in self.violations:
+            
+            print ('  ' + (self.name + '_' + self.identifier).ljust(25) + ' | ' + str(iLineNumber).rjust(10) + ' | ' + self.solution)
+            return 1
         else:
+            for sViolation in self.violations:
+                if str(sViolation).startswith(str(iLineNumber) + '-'):
+                    print ('  ' + (self.name + '_' + self.identifier).ljust(25) + ' | ' + sViolation.rjust(10) + ' | ' + self.solution)
+                    return 1
             return 0
-#            print (self.name + '_' + self.identifier + ':  ' + self.solution + '...PASSED')
 
     def fix(self, oFile):
         self.analyze(oFile)
