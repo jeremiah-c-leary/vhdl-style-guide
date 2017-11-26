@@ -1,4 +1,5 @@
 from setuptools import setup
+from setuptools import find_packages
 
 def readme():
     with open('README.md') as f:
@@ -6,7 +7,7 @@ def readme():
 
 setup(
   name='vsg',
-  version='0.2',
+  version='0.3',
   description='VHDL Style Guide',
   long_description=readme(),
   classifiers=[
@@ -25,7 +26,7 @@ setup(
   author='Jeremiah C Leary',
   author_email='jeremiah.c.leary@gmail.com',
   license='GNU General Public License',
-  packages=['vsg','vsg.rules'],
+  packages=find_packages(),
   zip_safe=False,
   test_suite='nose.collector',
   tests_require=['nose'],
