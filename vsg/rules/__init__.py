@@ -3,6 +3,7 @@ from vsg.rules import case
 from vsg.rules import comment
 from vsg.rules import component
 from vsg.rules import concurrent
+from vsg.rules import constant
 from vsg.rules import entity
 from vsg.rules import generic
 from vsg.rules import instantiation
