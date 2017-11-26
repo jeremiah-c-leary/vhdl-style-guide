@@ -14,3 +14,4 @@ from vsg.rules import instantiation
 from vsg.rules import library
 from vsg.rules import package
 from vsg.rules import port
+from vsg.rules import process
