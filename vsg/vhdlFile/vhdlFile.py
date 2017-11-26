@@ -1,5 +1,5 @@
 import re
-import line
+from vsg import line
 
 class vhdlFile():
 
