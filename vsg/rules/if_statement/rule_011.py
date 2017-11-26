@@ -1,0 +1,21 @@
+
+from vsg.rules.if_statement import if_rule
+
+
+class rule_011(if_rule):
+    '''If rule 011 checks for an empty line after the "else" keyword.'''
+
+    def __init__(self):
+        if_rule.__init__(self)
+        self.identifier = '011'
+        self.solution = 'Remove blank line(s) after the "else" keyword.'
+        self.phase = 3
+
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            if oLine.isElseKeyword and not oFile.lines[iLineNumber + 2].isCaseKeyword and not oLine.isEndIfKeyword:
+                self._is_no_blank_line_after(oFile, iLineNumber)
+
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations[::-1]:
+            self._remove_blank_lines_below(oFile, iLineNumber)

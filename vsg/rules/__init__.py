@@ -9,4 +9,5 @@ from vsg.rules import for_loop
 from vsg.rules import function
 from vsg.rules import generate
 from vsg.rules import generic
+from vsg.rules import if_statement
 from vsg.rules import instantiation
