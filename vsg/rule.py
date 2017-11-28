@@ -105,20 +105,18 @@ class rule():
         sViolationRange = str(iStartGroupIndex) + '-' + str(iStartGroupIndex + len(lGroup) - 1)
         self.dFix['violations'][sViolationRange] = {}
         self.dFix['violations'][sViolationRange]['line'] = {}
+
         for iIndex, oGroupLine in enumerate(lGroup):
             if sKeyword in oGroupLine.line:
                 self.dFix['violations'][sViolationRange]['line'][iStartGroupIndex + iIndex] = {}
-    
                 self.dFix['violations'][sViolationRange]['line'][iStartGroupIndex + iIndex]['keywordColumn'] = oGroupLine.line.find(sKeyword)
 
                 iMaximumKeywordColumn = get_maximum_keyword_column(oGroupLine, sKeyword, iMaximumKeywordColumn)
 
                 iKeywordAlignment = update_keyword_alignment(oGroupLine, sKeyword, iKeywordAlignment)
 
-                if not iKeywordAlignment == oGroupLine.line.find(sKeyword):
-                    if not sViolationRange in self.violations:
-                        self.add_violation(sViolationRange)
-                    
+                add_keyword_alignment_violation(self, oGroupLine, sKeyword, iKeywordAlignment, sViolationRange)
+
         self.dFix['violations'][sViolationRange]['maximumKeywordColumn'] = iMaximumKeywordColumn
 
     def _fix_keyword_alignment(self, oFile):
@@ -211,4 +209,7 @@ def update_keyword_alignment(oLine, sKeyword, iKeywordAlignment):
         return oLine.line.find(sKeyword)
     return iKeywordAlignment
     
-   
+def add_keyword_alignment_violation(self, oLine, sKeyword, iKeywordAlignment, sViolationRange):
+    if not iKeywordAlignment == oLine.line.find(sKeyword):
+        if not sViolationRange in self.violations:
+            self.add_violation(sViolationRange)
