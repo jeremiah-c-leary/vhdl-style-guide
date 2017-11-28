@@ -51,7 +51,9 @@ class rule():
     def fix(self, oFile):
         self.analyze(oFile)
         self._fix_violations(oFile)
-        self._clear_violations()
+        self.violations = []
+        self.dFix = {}
+        self.dFix['violations'] = {}
 
     def _fix_violations(self, oFile):
         return
@@ -59,10 +61,10 @@ class rule():
     def add_violation(self, lineNumber):
         self.violations.append(lineNumber)
 
-    def _clear_violations(self):
-        self.violations = []
-        self.dFix = {}
-        self.dFix['violations'] = {}
+#    def _clear_violations(self):
+#        self.violations = []
+#        self.dFix = {}
+#        self.dFix['violations'] = {}
 
     def _fix_indent(self, oLine):
         '''Fixes indent violations.'''
@@ -104,7 +106,6 @@ class rule():
     def _check_keyword_alignment(self, iStartGroupIndex, sKeyword, lGroup):
         iKeywordAlignment = None
         iMaximumKeywordColumn = 0
-
         sViolationRange = str(iStartGroupIndex) + '-' + str(iStartGroupIndex + len(lGroup) - 1)
         self.dFix['violations'][sViolationRange] = {}
         self.dFix['violations'][sViolationRange]['line'] = {}

@@ -30,5 +30,5 @@ class rule_014(port_rule):
             oFile.lines.insert(iLineNumber + 1, line.line('  );'))
             oFile.lines[iLineNumber + 1].isEndPortMap = True
             oFile.lines[iLineNumber + 1].insidePortMap = True
-            oFile.lines[iLineNumber + 1].insideEntity = True
+            oFile.lines[iLineNumber + 1].insideEntity = oFile.lines[iLineNumber].insideEntity
             oFile.lines[iLineNumber + 1].indentLevel = oFile.lines[iLineNumber].indentLevel - 1

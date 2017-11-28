@@ -115,7 +115,7 @@ class testFixRulePortMethods(unittest.TestCase):
         self.assertEqual(oFile.lines[30].indentLevel, oFile.lines[29].indentLevel)
         self.assertTrue(oFile.lines[31].insidePortMap)
         self.assertTrue(oFile.lines[31].isEndPortMap)
-        self.assertTrue(oFile.lines[31].insideEntity)
+        self.assertEqual(oFile.lines[31].insideEntity, oFile.lines[30].insideEntity)
         self.assertFalse(oFile.lines[31].isPortDeclaration)
         self.assertEqual(oFile.lines[31].indentLevel, oFile.lines[29].indentLevel - 1)
 
