@@ -1,6 +1,7 @@
 
 from vsg.rules.port import port_rule
 from vsg import check
+from vsg import fix
 
 
 class rule_002(port_rule):
@@ -21,4 +22,4 @@ class rule_002(port_rule):
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
-            self._fix_indent(oFile.lines[iLineNumber])
+            fix.indent(self, oFile.lines[iLineNumber])

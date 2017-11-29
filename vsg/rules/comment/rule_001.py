@@ -1,6 +1,7 @@
 
 from vsg.rules.comment import comment_rule
 from vsg import check
+from vsg import fix
 
 
 class rule_001(comment_rule):
@@ -20,4 +21,4 @@ class rule_001(comment_rule):
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
-            self._fix_indent(oFile.lines[iLineNumber])
+            fix.indent(self, oFile.lines[iLineNumber])
