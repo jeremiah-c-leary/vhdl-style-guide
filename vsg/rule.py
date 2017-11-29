@@ -67,12 +67,6 @@ class rule():
     def _get_first_word(self, oLine):
         return self._get_word(oLine, 0)
 
-    def _insert_blank_line_above(self, oFile, iLineNumber):
-        oFile.lines.insert(iLineNumber, line.blank_line())
-
-    def _insert_blank_line_below(self, oFile, iLineNumber):
-        oFile.lines.insert(iLineNumber + 1, line.blank_line())
-
     def _split_line_after_word(self, oFile, iLineNumber, sWord):
             oFile.lines.insert(iLineNumber + 1,copy.deepcopy(oFile.lines[iLineNumber]))
             oLine = oFile.lines[iLineNumber]

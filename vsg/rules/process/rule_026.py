@@ -1,5 +1,6 @@
 
 from vsg.rules.process import process_rule
+from vsg import fix
 
 
 class rule_026(process_rule):
@@ -45,5 +46,5 @@ class rule_026(process_rule):
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:
-            self._insert_blank_line_below(oFile, iLineNumber)
+            fix.insert_blank_line_below(self, oFile, iLineNumber)
             oFile.lines[iLineNumber + 1].insideProcess = True

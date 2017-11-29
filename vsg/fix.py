@@ -1,4 +1,6 @@
 
+from vsg import line
+
 import re
 
 def indent(self, oLine):
@@ -46,3 +48,9 @@ def remove_blank_lines_above(self, oFile, iLineNumber):
 def remove_blank_lines_below(self, oFile, iLineNumber):
     while oFile.lines[iLineNumber + 1].isBlank:
         oFile.lines.pop(iLineNumber + 1)
+
+def insert_blank_line_above(self, oFile, iLineNumber):
+    oFile.lines.insert(iLineNumber, line.blank_line())
+
+def insert_blank_line_below(self, oFile, iLineNumber):
+    oFile.lines.insert(iLineNumber + 1, line.blank_line())

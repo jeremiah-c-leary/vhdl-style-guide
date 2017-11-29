@@ -1,5 +1,6 @@
 
 from vsg.rules.process import process_rule
+from vsg import fix
 
 
 class rule_015(process_rule):
@@ -21,4 +22,4 @@ class rule_015(process_rule):
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:
-            self._insert_blank_line_above(oFile, iLineNumber)
+            fix.insert_blank_line_above(self, oFile, iLineNumber)

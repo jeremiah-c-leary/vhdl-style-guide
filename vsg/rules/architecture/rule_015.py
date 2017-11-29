@@ -1,5 +1,6 @@
 
 from vsg.rules.architecture import architecture_rule
+from vsg import fix
 from vsg import check
 
 
@@ -19,4 +20,4 @@ class rule_015(architecture_rule):
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:
-            self._insert_blank_line_below(oFile, iLineNumber)
+            fix.insert_blank_line_below(self, oFile, iLineNumber)
