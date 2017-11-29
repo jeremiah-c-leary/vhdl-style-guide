@@ -1,5 +1,6 @@
 
 from vsg.rules.port import port_rule
+from vsg import fix
 from vsg import check
 
 
@@ -21,4 +22,4 @@ class rule_010(port_rule):
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
-            self._upper_case(oFile.lines[iLineNumber], oFile.lines[iLineNumber].line.split()[0])
+            fix.upper_case(self, oFile.lines[iLineNumber], oFile.lines[iLineNumber].line.split()[0])

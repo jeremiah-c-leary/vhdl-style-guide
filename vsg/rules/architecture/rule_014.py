@@ -1,5 +1,6 @@
 
 from vsg.rules.architecture import architecture_rule
+from vsg import fix
 from vsg import check
 
 import re
@@ -23,4 +24,4 @@ class rule_014(architecture_rule):
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
-            self._upper_case(oFile.lines[iLineNumber], oFile.lines[iLineNumber].line.split()[3])
+            fix.upper_case(self, oFile.lines[iLineNumber], oFile.lines[iLineNumber].line.split()[3])

@@ -1,5 +1,6 @@
 
 from vsg.rules.instantiation import instantiation_rule
+from vsg import fix
 from vsg import check
 
 
@@ -23,4 +24,4 @@ class rule_011(instantiation_rule):
         for iLineNumber in self.violations:
             oLine = oFile.lines[iLineNumber]
             sPortName = oLine.line.split('=>')[0].split('(')[0].lstrip().rstrip()
-            self._upper_case(oLine, sPortName)
+            fix.upper_case(self, oLine, sPortName)

@@ -1,5 +1,6 @@
 
 from vsg.rules.instantiation import instantiation_rule
+from vsg import fix
 
 import re
 
@@ -23,5 +24,5 @@ class rule_006(instantiation_rule):
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
-            self._lower_case(oFile.lines[iLineNumber], 'port')
-            self._lower_case(oFile.lines[iLineNumber], 'map')
+            fix.lower_case(self, oFile.lines[iLineNumber], 'port')
+            fix.lower_case(self, oFile.lines[iLineNumber], 'map')

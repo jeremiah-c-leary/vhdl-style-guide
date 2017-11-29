@@ -1,5 +1,6 @@
 
 from vsg.rules.component import component_rule
+from vsg import fix
 from vsg import check
 
 
@@ -22,4 +23,4 @@ class rule_012(component_rule):
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
             lLine = oFile.lines[iLineNumber].line.split()
-            self._upper_case(oFile.lines[iLineNumber], lLine[2])
+            fix.upper_case(self, oFile.lines[iLineNumber], lLine[2])

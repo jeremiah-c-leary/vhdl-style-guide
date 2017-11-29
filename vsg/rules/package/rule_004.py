@@ -1,5 +1,6 @@
 
 from vsg.rules.package import package_rule
+from vsg import fix
 
 import re
 
@@ -23,4 +24,4 @@ class rule_004(package_rule):
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
-            self._lower_case(oFile.lines[iLineNumber], 'package')
+            fix.lower_case(self, oFile.lines[iLineNumber], 'package')

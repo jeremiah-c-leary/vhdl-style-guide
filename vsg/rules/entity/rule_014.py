@@ -1,5 +1,6 @@
 
 from vsg.rules.entity import entity_rule
+from vsg import fix
 from vsg import check
 
 
@@ -23,4 +24,4 @@ class rule_014(entity_rule):
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
-            self._lower_case(oFile.lines[iLineNumber], 'entity')
+            fix.lower_case(self, oFile.lines[iLineNumber], 'entity')

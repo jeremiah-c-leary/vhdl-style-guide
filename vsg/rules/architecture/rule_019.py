@@ -1,5 +1,6 @@
 
 from vsg.rules.architecture import architecture_rule
+from vsg import fix
 
 import re
 
@@ -22,4 +23,4 @@ class rule_019(architecture_rule):
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
-            self._lower_case(oFile.lines[iLineNumber], 'of')
+            fix.lower_case(self, oFile.lines[iLineNumber], 'of')

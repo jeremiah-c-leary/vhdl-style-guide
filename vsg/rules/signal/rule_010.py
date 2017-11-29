@@ -1,5 +1,6 @@
 
 from vsg.rules.signal import signal_rule
+from vsg import fix
 from vsg import check
 
 import re
@@ -31,6 +32,6 @@ class rule_010(signal_rule):
             oLine = oFile.lines[iLineNumber]
             sLine = oLine.line.split()[3]
             if '(' in sLine:
-                self._lower_case(oLine, sLine.split('(')[0])
+                fix.lower_case(self, oLine, sLine.split('(')[0])
             else:
-                self._lower_case(oLine, sLine)
+                fix.lower_case(self, oLine, sLine)

@@ -1,5 +1,6 @@
 
 from vsg.rules.variable import variable_rule
+from vsg import fix
 from vsg import check
 
 import re
@@ -31,6 +32,6 @@ class rule_010(variable_rule):
             oLine = oFile.lines[iLineNumber]
             sLine = oLine.line.split(':')[1].lstrip().rstrip().replace(';', '')
             if '(' in sLine:
-                self._lower_case(oFile.lines[iLineNumber], sLine.split('(')[0])
+                fix.lower_case(self, oFile.lines[iLineNumber], sLine.split('(')[0])
             else:
-                self._lower_case(oFile.lines[iLineNumber], sLine)
+                fix.lower_case(self, oFile.lines[iLineNumber], sLine)

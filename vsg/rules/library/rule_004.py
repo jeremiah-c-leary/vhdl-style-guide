@@ -1,5 +1,6 @@
 
 from vsg.rules.library import library_rule
+from vsg import fix
 from vsg import check
 
 
@@ -21,4 +22,4 @@ class rule_004(library_rule):
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
-            self._lower_case(oFile.lines[iLineNumber], 'library')
+            fix.lower_case(self, oFile.lines[iLineNumber], 'library')
