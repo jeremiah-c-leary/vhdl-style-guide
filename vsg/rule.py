@@ -115,7 +115,8 @@ class rule():
 
                 iKeywordAlignment = update_keyword_alignment(oGroupLine, sKeyword, iKeywordAlignment)
 
-                add_keyword_alignment_violation(self, oGroupLine, sKeyword, iKeywordAlignment, sViolationRange)
+                if not iKeywordAlignment == oGroupLine.line.find(sKeyword):
+                    add_range_violation(self, sViolationRange)
 
         self.dFix['violations'][sViolationRange]['maximumKeywordColumn'] = iMaximumKeywordColumn
 
@@ -209,7 +210,6 @@ def update_keyword_alignment(oLine, sKeyword, iKeywordAlignment):
         return oLine.line.find(sKeyword)
     return iKeywordAlignment
     
-def add_keyword_alignment_violation(self, oLine, sKeyword, iKeywordAlignment, sViolationRange):
-    if not iKeywordAlignment == oLine.line.find(sKeyword):
+def add_range_violation(self, sViolationRange):
         if not sViolationRange in self.violations:
             self.add_violation(sViolationRange)
