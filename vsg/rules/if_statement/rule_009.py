@@ -1,5 +1,6 @@
 
 from vsg.rules.if_statement import if_rule
+from vsg import check
 
 import re
 
@@ -31,7 +32,7 @@ class rule_009(if_rule):
                     fCheckAlignment = True
                 continue #  pragma: no cover
             if oLine.insideIf and fCheckAlignment:
-                self._check_multiline_alignment(iAlignmentColumn + 1, oLine, iLineNumber)
+                check.multiline_alignment(self, iAlignmentColumn + 1, oLine, iLineNumber)
             if oLine.isThenKeyword:
                 fCheckAlignment = False
 

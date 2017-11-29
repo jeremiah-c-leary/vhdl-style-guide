@@ -1,5 +1,6 @@
 
 from vsg.rules.process import process_rule
+from vsg import check
 
 import re
 
@@ -23,9 +24,9 @@ class rule_020(process_rule):
                 if oLine.isSensitivityListBegin:
                     iAlignmentColumn = oLine.line.find('(')
                 elif oLine.isSensitivityListEnd and re.match('^\s*\)', oLine.line):
-                    self._check_multiline_alignment(iAlignmentColumn, oLine, iLineNumber)
+                    check.multiline_alignment(self, iAlignmentColumn, oLine, iLineNumber)
                 else:
-                    self._check_multiline_alignment(iAlignmentColumn + 1, oLine, iLineNumber)
+                    check.multiline_alignment(self, iAlignmentColumn + 1, oLine, iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.dFix['violations']:

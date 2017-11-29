@@ -1,5 +1,6 @@
 
 from vsg.rules.case import case_rule
+from vsg import check
 
 
 class rule_011(case_rule):
@@ -19,7 +20,7 @@ class rule_011(case_rule):
                 iAlignmentColumn = (oLine.indentLevel * self.indentSize) + len('when ')
                 continue
             if oLine.insideCaseWhen:
-                self._check_multiline_alignment(iAlignmentColumn, oLine, iLineNumber)
+                check.multiline_alignment(self, iAlignmentColumn, oLine, iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.dFix['violations']:

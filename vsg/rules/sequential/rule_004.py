@@ -1,5 +1,6 @@
 
 from vsg.rules.sequential import sequential_rule
+from vsg import check
 
 
 class rule_004(sequential_rule):
@@ -21,7 +22,7 @@ class rule_004(sequential_rule):
                 iAlignmentColumn = oLine.line.find('<=') + len('<= ')
                 continue
             if oLine.insideSequential and not oLine.isComment:
-                self._check_multiline_alignment(iAlignmentColumn, oLine, iLineNumber)
+                check.multiline_alignment(self, iAlignmentColumn, oLine, iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.dFix['violations']:

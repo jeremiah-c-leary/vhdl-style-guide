@@ -64,3 +64,10 @@ def update_keyword_alignment(oLine, sKeyword, iKeywordAlignment):
 def add_range_violation(self, sViolationRange):
         if not sViolationRange in self.violations:
             self.add_violation(sViolationRange)
+
+def multiline_alignment(self, iColumn, oLine, iLineNumber):
+    if not re.match('\s{' + str(iColumn) + '}\S', oLine.line):
+        self.add_violation(iLineNumber)
+        self.dFix['violations'][iLineNumber] = {}
+        self.dFix['violations'][iLineNumber]['column'] = iColumn
+

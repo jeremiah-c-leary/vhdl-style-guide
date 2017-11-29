@@ -1,5 +1,6 @@
 
 from vsg.rules.variable_assignment import variable_assignment_rule
+from vsg import check
 
 
 class rule_004(variable_assignment_rule):
@@ -19,7 +20,7 @@ class rule_004(variable_assignment_rule):
                 iAlignmentColumn = oLine.line.find(':=') + len(':= ')
                 continue
             if oLine.insideVariableAssignment and not oLine.isComment:
-                self._check_multiline_alignment(iAlignmentColumn, oLine, iLineNumber)
+                check.multiline_alignment(self, iAlignmentColumn, oLine, iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.dFix['violations']:

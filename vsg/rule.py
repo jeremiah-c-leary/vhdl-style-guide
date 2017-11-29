@@ -65,12 +65,6 @@ class rule():
         '''Fixes indent violations.'''
         oLine.update_line(' '*oLine.indentLevel*self.indentSize + oLine.line.lstrip())
 
-    def _check_multiline_alignment(self, iColumn, oLine, iLineNumber):
-        if not re.match('\s{' + str(iColumn) + '}\S', oLine.line):
-            self.add_violation(iLineNumber)
-            self.dFix['violations'][iLineNumber] = {}
-            self.dFix['violations'][iLineNumber]['column'] = iColumn
-
     def _fix_multiline_alignment(self, oFile, iLineNumber):
         oLine = oFile.lines[iLineNumber]
         oLine.update_line(' '*self.dFix['violations'][iLineNumber]['column'] + oLine.line.lstrip())

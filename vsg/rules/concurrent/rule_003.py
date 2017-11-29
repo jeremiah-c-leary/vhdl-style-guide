@@ -1,5 +1,6 @@
 
 from vsg.rules.concurrent import concurrent_rule
+from vsg import check
 
 
 class rule_003(concurrent_rule):
@@ -21,7 +22,7 @@ class rule_003(concurrent_rule):
                 if oLine.isConcurrentBegin:
                     iAlignmentColumn = oLine.line.find('<') + 3
                 else:
-                    self._check_multiline_alignment(iAlignmentColumn, oLine, iLineNumber)
+                    check.multiline_alignment(self, iAlignmentColumn, oLine, iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.dFix['violations']:
