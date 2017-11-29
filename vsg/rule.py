@@ -75,16 +75,6 @@ class rule():
     def _get_first_word(self, oLine):
         return self._get_word(oLine, 0)
 
-    def _is_single_space_after(self, sString, oLine, iLineNumber):
-        if not re.match('^.*\s+' + sString + '\s\S', oLine.lineLower):
-            self.add_violation(iLineNumber)
-
-    def _is_single_space_before(self, sString, oLine, iLineNumber):
-        if not re.match('^.*\S\s' + sString + '\s', oLine.lineLower) and \
-           not re.match('^.*\S\s' + sString + '$', oLine.lineLower):
-            self.add_violation(iLineNumber)
-
-
     def _fix_keyword_alignment(self, oFile):
         for sKey in self.dFix['violations']:
             iMaximumKeywordColumn = self.dFix['violations'][sKey]['maximumKeywordColumn']

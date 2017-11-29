@@ -78,3 +78,12 @@ def is_uppercase(self, sString, iLineNumber):
 def is_lowercase(self, sString, iLineNumber):
     if not sString == sString.lower():
         self.add_violation(iLineNumber)
+
+def is_single_space_after(self, sString, oLine, iLineNumber):
+    if not re.match('^.*\s+' + sString + '\s\S', oLine.lineLower):
+        self.add_violation(iLineNumber)
+
+def is_single_space_before(self, sString, oLine, iLineNumber):
+    if not re.match('^.*\S\s' + sString + '\s', oLine.lineLower) and \
+       not re.match('^.*\S\s' + sString + '$', oLine.lineLower):
+        self.add_violation(iLineNumber)

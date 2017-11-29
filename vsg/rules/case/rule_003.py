@@ -1,5 +1,6 @@
 
 from vsg.rules.case import case_rule
+from vsg import check
 
 
 class rule_003(case_rule):
@@ -14,7 +15,7 @@ class rule_003(case_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isCaseIsKeyword:
-                self._is_single_space_before('is', oLine, iLineNumber)
+                check.is_single_space_before(self, 'is', oLine, iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

@@ -1,5 +1,6 @@
 
 from vsg.rules.component import component_rule
+from vsg import check
 
 import re
 
@@ -17,7 +18,7 @@ class rule_007(component_rule):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isComponentDeclaration:
                 if len(oLine.line.split()) > 2:
-                    self._is_single_space_before('is', oLine, iLineNumber)
+                    check.is_single_space_before(self, 'is', oLine, iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
