@@ -1,6 +1,7 @@
 
 from vsg.rules.sequential import sequential_rule
 from vsg import check
+from vsg import fix
 from vsg import line
 
 
@@ -35,4 +36,4 @@ class rule_005(sequential_rule):
                     lGroup.append(oLine)
 
     def _fix_violations(self, oFile):
-        self._fix_keyword_alignment(oFile)
+        fix.keyword_alignment(self, oFile)

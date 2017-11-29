@@ -1,6 +1,7 @@
 
 from vsg.rules.concurrent import concurrent_rule
 from vsg import check
+from vsg import fix
 
 
 class rule_006(concurrent_rule):
@@ -31,4 +32,4 @@ class rule_006(concurrent_rule):
                 lGroup.append(oLine)
 
     def _fix_violations(self, oFile):
-        self._fix_keyword_alignment(oFile)
+        fix.keyword_alignment(self, oFile)

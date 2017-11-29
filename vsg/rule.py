@@ -71,14 +71,6 @@ class rule():
     def _get_first_word(self, oLine):
         return self._get_word(oLine, 0)
 
-    def _fix_keyword_alignment(self, oFile):
-        for sKey in self.dFix['violations']:
-            iMaximumKeywordColumn = self.dFix['violations'][sKey]['maximumKeywordColumn']
-            for iLineNumber in self.dFix['violations'][sKey]['line']:
-                iKeywordColumn = self.dFix['violations'][sKey]['line'][iLineNumber]['keywordColumn']
-                oLine = oFile.lines[iLineNumber]
-                oLine.update_line(oLine.line[:iKeywordColumn] + ' '*(iMaximumKeywordColumn - iKeywordColumn) + oLine.line[iKeywordColumn:])
-
     def _lower_case(self, oLine, sKeyword):
         oLine.line = re.sub(' ' + sKeyword + ' ', ' ' + sKeyword.lower() + ' ', oLine.line, 1, flags=re.IGNORECASE)
         oLine.line = re.sub(' ' + sKeyword + '$', ' ' + sKeyword.lower(), oLine.line, 1, flags=re.IGNORECASE)

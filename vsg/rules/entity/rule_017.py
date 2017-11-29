@@ -1,6 +1,7 @@
 
 from vsg.rules.entity import entity_rule
 from vsg import check
+from vsg import fix
 from vsg import line
 
 
@@ -36,4 +37,4 @@ class rule_017(entity_rule):
                   lGroup.append(line.line('Removed line'))
 
     def _fix_violations(self, oFile):
-        self._fix_keyword_alignment(oFile)
+        fix.keyword_alignment(self, oFile)
