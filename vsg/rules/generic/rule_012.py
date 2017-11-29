@@ -1,5 +1,6 @@
 
 from vsg.rules.generic import generic_rule
+from vsg import check
 from vsg import line
 
 class rule_012(generic_rule):
@@ -22,7 +23,7 @@ class rule_012(generic_rule):
             if oLine.isEndGenericMap and fGroupFound:
                 lGroup.append(oLine)
                 fGroupFound = False
-                self._check_keyword_alignment(iStartGroupIndex, ':', lGroup)
+                check.keyword_alignment(self, iStartGroupIndex, ':', lGroup)
                 lGroup = []
                 iStartGroupIndex = None
             if fGroupFound:

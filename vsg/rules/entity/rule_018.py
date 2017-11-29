@@ -1,5 +1,6 @@
 
 from vsg.rules.entity import entity_rule
+from vsg import check
 from vsg import line
 
 
@@ -35,7 +36,7 @@ class rule_018(entity_rule):
             if oLine.isEndEntityDeclaration:
                 lGroup.append(oLine)
                 fGroupFound = False
-                self._check_keyword_alignment(iStartGroupIndex, '--', lGroup)
+                check.keyword_alignment(self, iStartGroupIndex, '--', lGroup)
                 lGroup = []
                 iStartGroupIndex = None
             self._store_lines_for_group(fGroupFound, oLine, lGroup)

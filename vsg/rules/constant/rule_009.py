@@ -1,6 +1,6 @@
 
 from vsg.rules.constant import constant_rule
-
+from vsg import check
 from vsg import line
 
 
@@ -26,7 +26,7 @@ class rule_009(constant_rule):
             if oLine.isEndArchitecture:
                 lGroup.append(oLine)
                 fGroupFound = False
-                self._check_keyword_alignment(iStartGroupIndex, ':', lGroup)
+                check.keyword_alignment(self, iStartGroupIndex, ':', lGroup)
                 lGroup = []
                 iStartGroupIndex = None
             if fGroupFound:

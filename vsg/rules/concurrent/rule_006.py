@@ -1,5 +1,6 @@
 
 from vsg.rules.concurrent import concurrent_rule
+from vsg import check
 
 
 class rule_006(concurrent_rule):
@@ -23,7 +24,7 @@ class rule_006(concurrent_rule):
                 iStartGroupIndex = iLineNumber
             if not oLine.insideConcurrent and fGroupFound:
                 fGroupFound = False
-                self._check_keyword_alignment(iStartGroupIndex, '<=', lGroup)
+                check.keyword_alignment(self, iStartGroupIndex, '<=', lGroup)
                 lGroup = []
                 iStartGroupIndex = None
             if fGroupFound:

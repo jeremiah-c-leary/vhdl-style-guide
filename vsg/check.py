@@ -30,3 +30,37 @@ def is_blank_line_before(self, oFile, iLineNumber):
     if not oFile.lines[iLineNumber - 1].isBlank:
         self.add_violation(iLineNumber)
 
+def keyword_alignment(self, iStartGroupIndex, sKeyword, lGroup):
+    iKeywordAlignment = None
+    iMaximumKeywordColumn = 0
+    sViolationRange = str(iStartGroupIndex) + '-' + str(iStartGroupIndex + len(lGroup) - 1)
+    self.dFix['violations'][sViolationRange] = {}
+    self.dFix['violations'][sViolationRange]['line'] = {}
+
+    for iIndex, oGroupLine in enumerate(lGroup):
+        if sKeyword in oGroupLine.line:
+            self.dFix['violations'][sViolationRange]['line'][iStartGroupIndex + iIndex] = {}
+            self.dFix['violations'][sViolationRange]['line'][iStartGroupIndex + iIndex]['keywordColumn'] = oGroupLine.line.find(sKeyword)
+
+            iMaximumKeywordColumn = get_maximum_keyword_column(oGroupLine, sKeyword, iMaximumKeywordColumn)
+
+            iKeywordAlignment = update_keyword_alignment(oGroupLine, sKeyword, iKeywordAlignment)
+
+            if not iKeywordAlignment == oGroupLine.line.find(sKeyword):
+                add_range_violation(self, sViolationRange)
+
+    self.dFix['violations'][sViolationRange]['maximumKeywordColumn'] = iMaximumKeywordColumn
+
+def get_maximum_keyword_column(oLine, sKeyword, iMaximumKeywordColumn):
+    if oLine.line.find(sKeyword) > iMaximumKeywordColumn:
+        return oLine.line.find(sKeyword)
+    return iMaximumKeywordColumn
+
+def update_keyword_alignment(oLine, sKeyword, iKeywordAlignment):
+    if not iKeywordAlignment:
+        return oLine.line.find(sKeyword)
+    return iKeywordAlignment
+    
+def add_range_violation(self, sViolationRange):
+        if not sViolationRange in self.violations:
+            self.add_violation(sViolationRange)

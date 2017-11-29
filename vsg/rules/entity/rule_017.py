@@ -1,5 +1,6 @@
 
 from vsg.rules.entity import entity_rule
+from vsg import check
 from vsg import line
 
 
@@ -25,7 +26,7 @@ class rule_017(entity_rule):
             if oLine.isEndPortMap and oLine.insideEntity:
                 lGroup.append(oLine)
                 fGroupFound = False
-                self._check_keyword_alignment(iStartGroupIndex, ':', lGroup)
+                check.keyword_alignment(self, iStartGroupIndex, ':', lGroup)
                 lGroup = []
                 iStartGroupIndex = None
             if fGroupFound:

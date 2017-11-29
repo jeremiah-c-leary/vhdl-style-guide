@@ -1,5 +1,6 @@
 
 from vsg.rules.sequential import sequential_rule
+from vsg import check
 from vsg import line
 
 
@@ -24,7 +25,7 @@ class rule_005(sequential_rule):
                 iStartGroupIndex = iLineNumber
             if not oLine.insideSequential and fGroupFound:
                 fGroupFound = False
-                self._check_keyword_alignment(iStartGroupIndex, '<=', lGroup)
+                check.keyword_alignment(self, iStartGroupIndex, '<=', lGroup)
                 lGroup = []
                 iStartGroupIndex = None
             if fGroupFound:

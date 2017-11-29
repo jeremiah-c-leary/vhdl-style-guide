@@ -1,5 +1,6 @@
 
 from vsg.rules.component import component_rule
+from vsg import check
 from vsg import line
 
 
@@ -27,7 +28,7 @@ class rule_017(component_rule):
                 if oLine.isEndPortMap:
                     lGroup.append(oLine)
                     fGroupFound = False
-                    self._check_keyword_alignment(iStartGroupIndex, ':', lGroup)
+                    check.keyword_alignment(self, iStartGroupIndex, ':', lGroup)
                     lGroup = []
                     iStartGroupIndex = None
             if fGroupFound:

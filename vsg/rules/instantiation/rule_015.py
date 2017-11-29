@@ -1,5 +1,6 @@
 
 from vsg.rules.instantiation import instantiation_rule
+from vsg import check
 from vsg import line
 
 
@@ -25,7 +26,7 @@ class rule_015(instantiation_rule):
             if oLine.isInstantiationGenericEnd:
                 lGroup.append(oLine)
                 fGroupFound = False
-                self._check_keyword_alignment(iStartGroupIndex, '=>', lGroup)
+                check.keyword_alignment(self, iStartGroupIndex, '=>', lGroup)
                 lGroup = []
                 iStartGroupIndex = None
             if fGroupFound:

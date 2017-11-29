@@ -1,5 +1,6 @@
 
 from vsg.rules.comment import comment_rule
+from vsg import check
 from vsg import line
 
 
@@ -23,7 +24,7 @@ class rule_003(comment_rule):
             if oLine.isEndProcess:
                 lGroup.append(oLine)
                 fGroupFound = False
-                self._check_keyword_alignment(iStartGroupIndex, '--', lGroup)
+                check.keyword_alignment(self, iStartGroupIndex, '--', lGroup)
                 lGroup = []
                 iStartGroupIndex = None
             if fGroupFound:

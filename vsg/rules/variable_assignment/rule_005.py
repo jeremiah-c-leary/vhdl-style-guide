@@ -1,5 +1,6 @@
 
 from vsg.rules.variable_assignment import variable_assignment_rule
+from vsg import check
 from vsg import line
 
 
@@ -22,7 +23,7 @@ class rule_005(variable_assignment_rule):
                 iStartGroupIndex = iLineNumber
             if not oLine.insideVariableAssignment and fGroupFound:
                 fGroupFound = False
-                self._check_keyword_alignment(iStartGroupIndex, ':=', lGroup)
+                check.keyword_alignment(self, iStartGroupIndex, ':=', lGroup)
                 lGroup = []
                 iStartGroupIndex = None
             if fGroupFound:
