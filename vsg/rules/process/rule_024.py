@@ -1,5 +1,6 @@
 
 from vsg.rules.process import process_rule
+from vsg import fix
 
 import re
 
@@ -24,4 +25,4 @@ class rule_024(process_rule):
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
-            self._enforce_one_space_before_word(oFile.lines[iLineNumber], ':')
+            fix.enforce_one_space_before_word(self, oFile.lines[iLineNumber], ':')

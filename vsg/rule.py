@@ -67,12 +67,6 @@ class rule():
     def _get_first_word(self, oLine):
         return self._get_word(oLine, 0)
 
-    def _enforce_one_space_after_word(self, oLine, sWord):
-        oLine.update_line(re.sub(r'(' + sWord + ')\s*(\S)', r'\1 \2', oLine.line, 1, flags=re.IGNORECASE))
-
-    def _enforce_one_space_before_word(self, oLine, sWord):
-        oLine.update_line(re.sub(r'(\S)\s*(' + sWord + ')', r'\1 \2', oLine.line, 1, flags=re.IGNORECASE))
-
     def _remove_blank_lines_above(self, oFile, iLineNumber):
         while oFile.lines[iLineNumber - 1].isBlank:
             oFile.lines.pop(iLineNumber - 1)

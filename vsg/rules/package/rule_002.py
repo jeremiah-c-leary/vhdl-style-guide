@@ -1,5 +1,6 @@
 
 from vsg.rules.package import package_rule
+from vsg import fix
 
 import re
 
@@ -25,5 +26,5 @@ class rule_002(package_rule):
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
-            self._enforce_one_space_after_word(oFile.lines[iLineNumber], 'package')
-            self._enforce_one_space_before_word(oFile.lines[iLineNumber], 'is')
+            fix.enforce_one_space_after_word(self, oFile.lines[iLineNumber], 'package')
+            fix.enforce_one_space_before_word(self, oFile.lines[iLineNumber], 'is')

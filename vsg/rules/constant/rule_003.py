@@ -1,5 +1,6 @@
 
 from vsg.rules.constant import constant_rule
+from vsg import fix
 
 import re
 
@@ -23,4 +24,4 @@ class rule_003(constant_rule):
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
-            self._enforce_one_space_after_word(oFile.lines[iLineNumber], 'constant')
+            fix.enforce_one_space_after_word(self, oFile.lines[iLineNumber], 'constant')

@@ -1,5 +1,6 @@
 
 from vsg.rules.architecture import architecture_rule
+from vsg import fix
 
 import re
 
@@ -24,4 +25,4 @@ class rule_022(architecture_rule):
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
-            self._enforce_one_space_after_word(oFile.lines[iLineNumber], 'architecture')
+            fix.enforce_one_space_after_word(self, oFile.lines[iLineNumber], 'architecture')

@@ -1,5 +1,6 @@
 
 from vsg.rules.if_statement import if_rule
+from vsg import fix
 
 import re
 
@@ -22,4 +23,4 @@ class rule_005(if_rule):
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
-            self._enforce_one_space_after_word(oFile.lines[iLineNumber], 'elsif')
+            fix.enforce_one_space_after_word(self, oFile.lines[iLineNumber], 'elsif')

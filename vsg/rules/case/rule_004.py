@@ -1,5 +1,6 @@
 
 from vsg.rules.case import case_rule
+from vsg import fix
 from vsg import check
 
 
@@ -19,4 +20,4 @@ class rule_004(case_rule):
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
-            self._enforce_one_space_after_word(oFile.lines[iLineNumber], 'when')
+            fix.enforce_one_space_after_word(self, oFile.lines[iLineNumber], 'when')

@@ -1,5 +1,6 @@
 
 from vsg.rules.signal import signal_rule
+from vsg import fix
 
 import re
 
@@ -23,4 +24,4 @@ class rule_003(signal_rule):
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
-            self._enforce_one_space_after_word(oFile.lines[iLineNumber], 'signal')
+            fix.enforce_one_space_after_word(self, oFile.lines[iLineNumber], 'signal')
