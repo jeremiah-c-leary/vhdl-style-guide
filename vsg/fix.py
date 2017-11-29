@@ -18,21 +18,18 @@ def multiline_alignment(self, oFile, iLineNumber):
     oLine.update_line(' '*self.dFix['violations'][iLineNumber]['column'] + oLine.line.lstrip())
 
 def lower_case(self, oLine, sKeyword):
-    oLine.line = re.sub(' ' + sKeyword + ' ', ' ' + sKeyword.lower() + ' ', oLine.line, 1, flags=re.IGNORECASE)
-    oLine.line = re.sub(' ' + sKeyword + '$', ' ' + sKeyword.lower(), oLine.line, 1, flags=re.IGNORECASE)
-    oLine.line = re.sub('^' + sKeyword + '$', sKeyword.lower(), oLine.line, 1, flags=re.IGNORECASE)
-    oLine.line = re.sub('^' + sKeyword + ' ', sKeyword.lower() + ' ', oLine.line, 1, flags=re.IGNORECASE)
-    oLine.line = re.sub(' ' + sKeyword + ';', ' ' + sKeyword.lower() + ';', oLine.line, 1, flags=re.IGNORECASE)
-    oLine.line = re.sub(' ' + sKeyword + '\(', ' ' + sKeyword.lower() + '(', oLine.line, 1, flags=re.IGNORECASE)
-    oLine.lineLower = oLine.line.lower()
+    change_word(self, oLine, sKeyword, sKeyword.lower())
 
 def upper_case(self, oLine, sKeyword):
-    oLine.line = re.sub(' ' + sKeyword + ' ', ' ' + sKeyword.upper() + ' ', oLine.line, 1, flags=re.IGNORECASE)
-    oLine.line = re.sub(' ' + sKeyword + '$', ' ' + sKeyword.upper(), oLine.line, 1, flags=re.IGNORECASE)
-    oLine.line = re.sub('^' + sKeyword + '$', sKeyword.upper(), oLine.line, 1, flags=re.IGNORECASE)
-    oLine.line = re.sub('^' + sKeyword + ' ', sKeyword.upper() + ' ', oLine.line, 1, flags=re.IGNORECASE)
-    oLine.line = re.sub(' ' + sKeyword + ';', ' ' + sKeyword.upper() + ';', oLine.line, 1, flags=re.IGNORECASE)
-    oLine.line = re.sub(' ' + sKeyword + '\(', ' ' + sKeyword.upper() + '(', oLine.line, 1, flags=re.IGNORECASE)
+    change_word(self, oLine, sKeyword, sKeyword.upper())
+
+def change_word(self, oLine, sWord, sNewWord):
+    oLine.line = re.sub(' ' + sWord + ' ', ' ' + sNewWord + ' ', oLine.line, 1, flags=re.IGNORECASE)
+    oLine.line = re.sub(' ' + sWord + '$', ' ' + sNewWord, oLine.line, 1, flags=re.IGNORECASE)
+    oLine.line = re.sub('^' + sWord + '$', sNewWord, oLine.line, 1, flags=re.IGNORECASE)
+    oLine.line = re.sub('^' + sWord + ' ', sNewWord + ' ', oLine.line, 1, flags=re.IGNORECASE)
+    oLine.line = re.sub(' ' + sWord + ';', ' ' + sNewWord + ';', oLine.line, 1, flags=re.IGNORECASE)
+    oLine.line = re.sub(' ' + sWord + '\(', ' ' + sNewWord + '(', oLine.line, 1, flags=re.IGNORECASE)
     oLine.lineLower = oLine.line.lower()
 
 def enforce_one_space_after_word(self, oLine, sWord):
