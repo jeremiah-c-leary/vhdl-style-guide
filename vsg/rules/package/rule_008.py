@@ -1,5 +1,6 @@
 
 from vsg.rules.package import package_rule
+from vsg import check
 
 import re
 
@@ -20,7 +21,7 @@ class rule_008(package_rule):
             if oLine.isPackageEnd:
                 if re.match('^\s*end\s+package\s+\w', oLine.lineLower):
                     lLine = oLine.line.split()
-                    self._is_uppercase(lLine[2], iLineNumber)
+                    check.is_uppercase(self, lLine[2], iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

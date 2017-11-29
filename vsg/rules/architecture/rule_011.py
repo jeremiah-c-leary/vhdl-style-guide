@@ -1,5 +1,6 @@
 
 from vsg.rules.architecture import architecture_rule
+from vsg import check
 
 
 class rule_011(architecture_rule):
@@ -17,7 +18,7 @@ class rule_011(architecture_rule):
                 lLine = oLine.line.split()
                 if len(lLine) > 2:
                     if not lLine[2].startswith('--'):
-                        self._is_uppercase(lLine[2], iLineNumber)
+                        check.is_uppercase(self, lLine[2], iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

@@ -1,5 +1,6 @@
 
 from vsg.rules.variable import variable_rule
+from vsg import check
 
 
 class rule_002(variable_rule):
@@ -16,7 +17,7 @@ class rule_002(variable_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isVariable:
-                self._is_lowercase(self._get_first_word(oLine), iLineNumber)
+                check.is_lowercase(self, self._get_first_word(oLine), iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

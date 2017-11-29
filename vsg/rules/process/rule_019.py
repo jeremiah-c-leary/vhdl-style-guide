@@ -1,5 +1,6 @@
 
 from vsg.rules.process import process_rule
+from vsg import check
 
 import re
 
@@ -19,7 +20,7 @@ class rule_019(process_rule):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isEndProcess:
                 if re.match('^\s*\w+\s+\w+\s+\w+', oLine.line):
-                    self._is_uppercase(oLine.line.split()[2], iLineNumber)
+                    check.is_uppercase(self, oLine.line.split()[2], iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

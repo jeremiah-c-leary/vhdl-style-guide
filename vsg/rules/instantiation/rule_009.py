@@ -1,5 +1,6 @@
 
 from vsg.rules.instantiation import instantiation_rule
+from vsg import check
 
 import re
 
@@ -19,12 +20,12 @@ class rule_009(instantiation_rule):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isInstantiationDeclaration:
                 if re.match('^\s*\w+\s+:\s+\w+', oLine.line):
-                    self._is_uppercase(oLine.line.split()[2], iLineNumber)
+                    check.is_uppercase(self, oLine.line.split()[2], iLineNumber)
                 elif re.match('^\s*\w+:\w+', oLine.line):
                     lLine = oLine.line.split(':')[1].split()
-                    self._is_uppercase(lLine[0], iLineNumber)
+                    check.is_uppercase(self, lLine[0], iLineNumber)
                 else:
-                    self._is_uppercase(oLine.line.split()[1], iLineNumber)
+                    check.is_uppercase(self, oLine.line.split()[1], iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

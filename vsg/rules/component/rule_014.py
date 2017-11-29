@@ -1,5 +1,6 @@
 
 from vsg.rules.component import component_rule
+from vsg import check
 
 
 class rule_014(component_rule):
@@ -19,7 +20,7 @@ class rule_014(component_rule):
             if oLine.isComponentEnd:
                 lLine = oLine.line.split()
                 if len(lLine) >= 3:
-                    self._is_lowercase(lLine[1], iLineNumber)
+                    check.is_lowercase(self, lLine[1], iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

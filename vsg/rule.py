@@ -69,14 +69,6 @@ class rule():
         oLine = oFile.lines[iLineNumber]
         oLine.update_line(' '*self.dFix['violations'][iLineNumber]['column'] + oLine.line.lstrip())
 
-    def _is_uppercase(self, sString, iLineNumber):
-        if not sString == sString.upper():
-            self.add_violation(iLineNumber)
-
-    def _is_lowercase(self, sString, iLineNumber):
-        if not sString == sString.lower():
-            self.add_violation(iLineNumber)
-
     def _get_word(self, oLine, iIndex):
         return oLine.line.split()[iIndex]
 

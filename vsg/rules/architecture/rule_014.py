@@ -1,5 +1,6 @@
 
 from vsg.rules.architecture import architecture_rule
+from vsg import check
 
 import re
 
@@ -18,7 +19,7 @@ class rule_014(architecture_rule):
             if oLine.isArchitectureKeyword:
                 if re.match('^\s*\S+\s\s*\S+\s\s*of\s\s*\S+\s\s*is', oLine.lineLower):
                     lLine = oLine.line.split()
-                    self._is_uppercase(lLine[3], iLineNumber)
+                    check.is_uppercase(self, lLine[3], iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

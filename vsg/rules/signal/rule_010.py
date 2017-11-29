@@ -1,5 +1,6 @@
 
 from vsg.rules.signal import signal_rule
+from vsg import check
 
 import re
 
@@ -21,9 +22,9 @@ class rule_010(signal_rule):
                 if re.match('^\s*signal\s+\w+\s+:\s+\w', oLine.lineLower):
                     sLine = oLine.line.split()[3]
                     if '(' in sLine:
-                        self._is_lowercase(sLine.split('(')[0], iLineNumber)
+                        check.is_lowercase(self, sLine.split('(')[0], iLineNumber)
                     else:
-                        self._is_lowercase(oLine.line.split()[3], iLineNumber)
+                        check.is_lowercase(self, oLine.line.split()[3], iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

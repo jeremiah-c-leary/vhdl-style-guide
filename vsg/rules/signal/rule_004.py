@@ -1,5 +1,6 @@
 
 from vsg.rules.signal import signal_rule
+from vsg import check
 
 
 class rule_004(signal_rule):
@@ -16,7 +17,7 @@ class rule_004(signal_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isSignal:
-                self._is_lowercase(oLine.line.split()[1], iLineNumber)
+                check.is_lowercase(self, oLine.line.split()[1], iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

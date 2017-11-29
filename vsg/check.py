@@ -71,3 +71,10 @@ def multiline_alignment(self, iColumn, oLine, iLineNumber):
         self.dFix['violations'][iLineNumber] = {}
         self.dFix['violations'][iLineNumber]['column'] = iColumn
 
+def is_uppercase(self, sString, iLineNumber):
+    if not sString == sString.upper():
+        self.add_violation(iLineNumber)
+
+def is_lowercase(self, sString, iLineNumber):
+    if not sString == sString.lower():
+        self.add_violation(iLineNumber)

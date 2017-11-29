@@ -1,5 +1,6 @@
 
 from vsg.rules.port import port_rule
+from vsg import check
 
 
 class rule_010(port_rule):
@@ -16,7 +17,7 @@ class rule_010(port_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isPortDeclaration:
-                self._is_uppercase(self._get_first_word(oLine), iLineNumber)
+                check.is_uppercase(self, self._get_first_word(oLine), iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

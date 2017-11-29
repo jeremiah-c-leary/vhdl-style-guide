@@ -1,5 +1,6 @@
 
 from vsg.rules.port import port_rule
+from vsg import check
 
 
 class rule_019(port_rule):
@@ -17,7 +18,7 @@ class rule_019(port_rule):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isPortDeclaration:
                 sLine = oLine.line.split(':')[1]
-                self._is_lowercase(sLine.split()[0],iLineNumber)
+                check.is_lowercase(self, sLine.split()[0],iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

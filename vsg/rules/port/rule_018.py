@@ -1,5 +1,6 @@
 
 from vsg.rules.port import port_rule
+from vsg import check
 
 
 class rule_018(port_rule):
@@ -20,6 +21,6 @@ class rule_018(port_rule):
                 sLine = oLine.line.split(':')[1]
                 if '(' in sLine:
                     sLine = sLine.split('(')[0]
-                    self._is_lowercase(sLine, iLineNumber)
+                    check.is_lowercase(self, sLine, iLineNumber)
                 else:
-                    self._is_lowercase(sLine.split()[1],iLineNumber)
+                    check.is_lowercase(self, sLine.split()[1],iLineNumber)

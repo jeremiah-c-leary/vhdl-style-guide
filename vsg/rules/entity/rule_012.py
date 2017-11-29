@@ -1,5 +1,6 @@
 
 from vsg.rules.entity import entity_rule
+from vsg import check
 
 
 class rule_012(entity_rule):
@@ -18,7 +19,7 @@ class rule_012(entity_rule):
             if oLine.isEndEntityDeclaration:
                 lLine = oLine.line.split()
                 if len(lLine) > 2:
-                    self._is_uppercase(lLine[2], iLineNumber)
+                    check.is_uppercase(self, lLine[2], iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

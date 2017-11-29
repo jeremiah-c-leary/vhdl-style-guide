@@ -1,5 +1,6 @@
 
 from vsg.rules.variable import variable_rule
+from vsg import check
 
 import re
 
@@ -21,9 +22,9 @@ class rule_010(variable_rule):
                 if re.match('^\s*variable\s+.*:\s*\w', oLine.lineLower):
                     sLine = oLine.line.split(':')[1].lstrip().rstrip().replace(';', '')
                     if '(' in sLine:
-                        self._is_lowercase(sLine.split('(')[0], iLineNumber)
+                        check.is_lowercase(self, sLine.split('(')[0], iLineNumber)
                     else:
-                        self._is_lowercase(sLine, iLineNumber)
+                        check.is_lowercase(self, sLine, iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
