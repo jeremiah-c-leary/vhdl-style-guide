@@ -1,5 +1,6 @@
 
 from vsg.rules.if_statement import if_rule
+from vsg import fix
 from vsg import check
 
 
@@ -19,4 +20,4 @@ class rule_010(if_rule):
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:
-            self._remove_blank_lines_above(oFile, iLineNumber)
+            fix.remove_blank_lines_above(self, oFile, iLineNumber)
