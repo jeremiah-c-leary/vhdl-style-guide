@@ -1,6 +1,7 @@
 
 from vsg.rules.process import process_rule
 from vsg import check
+from vsg import fix
 
 import re
 
@@ -30,4 +31,4 @@ class rule_020(process_rule):
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.dFix['violations']:
-            self._fix_multiline_alignment(oFile, iLineNumber)
+            fix.multiline_alignment(self, oFile, iLineNumber)

@@ -10,3 +10,8 @@ def keyword_alignment(self, oFile):
             iKeywordColumn = self.dFix['violations'][sKey]['line'][iLineNumber]['keywordColumn']
             oLine = oFile.lines[iLineNumber]
             oLine.update_line(oLine.line[:iKeywordColumn] + ' '*(iMaximumKeywordColumn - iKeywordColumn) + oLine.line[iKeywordColumn:])
+
+def multiline_alignment(self, oFile, iLineNumber):
+    oLine = oFile.lines[iLineNumber]
+    oLine.update_line(' '*self.dFix['violations'][iLineNumber]['column'] + oLine.line.lstrip())
+

@@ -61,10 +61,6 @@ class rule():
 #        self.dFix = {}
 #        self.dFix['violations'] = {}
 
-    def _fix_multiline_alignment(self, oFile, iLineNumber):
-        oLine = oFile.lines[iLineNumber]
-        oLine.update_line(' '*self.dFix['violations'][iLineNumber]['column'] + oLine.line.lstrip())
-
     def _get_word(self, oLine, iIndex):
         return oLine.line.split()[iIndex]
 

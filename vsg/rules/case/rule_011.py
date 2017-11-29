@@ -1,6 +1,7 @@
 
 from vsg.rules.case import case_rule
 from vsg import check
+from vsg import fix
 
 
 class rule_011(case_rule):
@@ -24,4 +25,4 @@ class rule_011(case_rule):
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.dFix['violations']:
-            self._fix_multiline_alignment(oFile, iLineNumber)
+            fix.multiline_alignment(self, oFile, iLineNumber)
