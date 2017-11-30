@@ -5,7 +5,7 @@ import sys
 
 from vsg.rules import instantiation
 from vsg import vhdlFile
-from vsg import utils
+from vsg.tests import utils
 
 oFilePort = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','instantiation','instantiation_test_input.vhd'))
 oFileGeneric = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','instantiation','instantiation_generic_test_input.vhd'))

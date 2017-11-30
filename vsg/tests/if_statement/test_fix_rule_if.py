@@ -4,7 +4,7 @@ import unittest
 
 from vsg.rules import if_statement
 from vsg import vhdlFile
-from vsg import utils
+from vsg.tests import utils
 
 # Read in test file used for all tests
 oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','if_statement','if_test_input.vhd'))
