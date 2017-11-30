@@ -1,5 +1,6 @@
 
 from vsg.rules.if_statement import if_rule
+from vsg import utilities
 
 import re
 
@@ -21,7 +22,7 @@ class rule_012(if_rule):
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:
-            self._split_line_after_word(oFile, iLineNumber, ' then')
+            utilities.split_line_after_word(self, oFile, iLineNumber, ' then')
             oFile.lines[iLineNumber].isEndIfKeyword = False
             oFile.lines[iLineNumber].isElseKeyword = False
             oFile.lines[iLineNumber + 1].isThenKeyword = False

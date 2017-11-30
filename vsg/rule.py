@@ -67,22 +67,6 @@ class rule():
     def _get_first_word(self, oLine):
         return self._get_word(oLine, 0)
 
-    def _split_line_after_word(self, oFile, iLineNumber, sWord):
-            oFile.lines.insert(iLineNumber + 1,copy.deepcopy(oFile.lines[iLineNumber]))
-            oLine = oFile.lines[iLineNumber]
-            iIndex = oLine.line.find(sWord) + len(sWord)
-            oLine.update_line(oLine.line[:iIndex])
-            oLine = oFile.lines[iLineNumber + 1]
-            oLine.update_line(oLine.line[iIndex:])
-
-    def _split_line_before_word(self, oFile, iLineNumber, sWord):
-            oFile.lines.insert(iLineNumber + 1,copy.deepcopy(oFile.lines[iLineNumber]))
-            oLine = oFile.lines[iLineNumber]
-            iIndex = oLine.line.find(sWord)
-            oLine.update_line(oLine.line[:iIndex])
-            oLine = oFile.lines[iLineNumber + 1]
-            oLine.update_line(oLine.line[iIndex:])
-
     def _configure_global_rule_attributes(self, dConfiguration):
         try:
             for sAttributeName in dConfiguration['rule']['global']:

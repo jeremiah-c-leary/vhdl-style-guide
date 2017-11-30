@@ -1,5 +1,6 @@
 
 from vsg.rules.case import case_rule
+from vsg import utilities
 import re
 
 
@@ -20,6 +21,6 @@ class rule_012(case_rule):
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:
-            self._split_line_after_word(oFile, iLineNumber, '=>')
+            utilities.split_line_after_word(self, oFile, iLineNumber, '=>')
             oFile.lines[iLineNumber + 1].isCaseWhenEnd = False
             oFile.lines[iLineNumber + 1].indentLevel += 1
