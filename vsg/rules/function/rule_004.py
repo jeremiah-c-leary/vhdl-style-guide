@@ -1,5 +1,6 @@
 
 from vsg.rules.function import function_rule
+from vsg import utilities
 from vsg import fix
 from vsg import check
 
@@ -19,7 +20,7 @@ class rule_004(function_rule):
         fInsideFunction = False
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isFunctionBegin:
-                check.is_lowercase(self, self._get_first_word(oLine), iLineNumber)
+                check.is_lowercase(self, utilities.get_first_word(oLine), iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

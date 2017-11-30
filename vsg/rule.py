@@ -61,12 +61,6 @@ class rule():
 #        self.dFix = {}
 #        self.dFix['violations'] = {}
 
-    def _get_word(self, oLine, iIndex):
-        return oLine.line.split()[iIndex]
-
-    def _get_first_word(self, oLine):
-        return self._get_word(oLine, 0)
-
     def _configure_global_rule_attributes(self, dConfiguration):
         try:
             for sAttributeName in dConfiguration['rule']['global']:

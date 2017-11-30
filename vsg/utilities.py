@@ -16,3 +16,10 @@ def split_line_before_word(self, oFile, iLineNumber, sWord):
         oLine.update_line(oLine.line[:iIndex])
         oLine = oFile.lines[iLineNumber + 1]
         oLine.update_line(oLine.line[iIndex:])
+
+def get_word(oLine, iIndex):
+    return oLine.line.split()[iIndex]
+
+def get_first_word(oLine):
+    return get_word(oLine, 0)
+

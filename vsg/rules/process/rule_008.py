@@ -1,5 +1,6 @@
 
 from vsg.rules.process import process_rule
+from vsg import utilities
 from vsg import fix
 from vsg import check
 
@@ -18,7 +19,7 @@ class rule_008(process_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isEndProcess:
-                check.is_lowercase(self, self._get_first_word(oLine), iLineNumber)
+                check.is_lowercase(self, utilities.get_first_word(oLine), iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
