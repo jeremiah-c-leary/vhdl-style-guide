@@ -1,6 +1,7 @@
 import re
 from vsg import line
 
+
 class vhdlFile():
 
     def __init__(self, filename):
@@ -55,12 +56,12 @@ class vhdlFile():
 
         fInsideForLoop = False
 
-        iOpenParenthesis = 0;
-        iCloseParenthesis = 0;
+        iOpenParenthesis = 0
+        iCloseParenthesis = 0
 
-        iCurrentIndentLevel = 0;
+        iCurrentIndentLevel = 0
 
-        with open (self.filename) as oFile:
+        with open(self.filename) as oFile:
             for sLine in oFile:
                 sLine = sLine.replace('\t', '  ')
                 oLine = line.line(sLine.rstrip())
@@ -250,7 +251,7 @@ class vhdlFile():
                         fInsideProcess = True
                         oLine.isProcessKeyword = True
                         oLine.indentLevel = iCurrentIndentLevel
-                    if fInsideProcess == True:
+                    if fInsideProcess:
                         oLine.insideProcess = True
                         # Check sensitivity list
                         if '(' in oLine.line and not fInsideSensitivityList and not fFoundProcessBegin and not fSensitivityListFound:
@@ -271,7 +272,6 @@ class vhdlFile():
                             oLine.indentLevel = iCurrentIndentLevel - 1
                             oLine.isProcessBegin = True
                             fFoundProcessBegin = True
-                            #iCurrentIndentLevel += 1
                         if re.match('^\s*end\s+process', oLine.lineLower):
                             fInsideProcess = False
                             oLine.indentLevel = iCurrentIndentLevel - 1
@@ -366,7 +366,7 @@ class vhdlFile():
                         oLine.indentLevel = iCurrentIndentLevel - 1
                         fInsideCaseWhen = True
                         if self.lines[-1].isComment:
-                            self.lines[-1].indentLevel -= 1 
+                            self.lines[-1].indentLevel -= 1
                     if fInsideCaseWhen:
                         oLine.insideCaseWhen = True
                         if re.match('^\s*.*=>', oLine.line):
@@ -391,7 +391,7 @@ class vhdlFile():
                             oLine.indentLevel = iCurrentIndentLevel - 1
                         if re.match('^\s*return', oLine.lineLower):
                             oLine.isFunctionReturn = True
-                            oLine.indentLevel = iCurrentIndentLevel 
+                            oLine.indentLevel = iCurrentIndentLevel
                         if re.match('^\s*end', oLine.lineLower) and not oLine.isEndIfKeyword and not oLine.isEndCaseKeyword and not oLine.isForLoopEnd:
                             oLine.isFunctionEnd = True
                             oLine.indentLevel = iCurrentIndentLevel - 1
@@ -483,8 +483,6 @@ class vhdlFile():
                         if not oLine.indentLevel:
                             oLine.indentLevel = iCurrentIndentLevel - 1
                         iCurrentIndentLevel -= 1
-
-
 
                 # Add line to file
                 self.lines.append(oLine)
