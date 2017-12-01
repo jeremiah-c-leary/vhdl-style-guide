@@ -10,6 +10,7 @@ class rule_006(architecture_rule):
         self.identifier = '006'
         self.solution = 'Ensure "is" keyword is on the same line as the "architecture" keyword.'
         self.phase = 1
+        self.fixable = False  # There is an example of this for entity
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):

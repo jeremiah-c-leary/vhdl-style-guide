@@ -10,8 +10,9 @@ class rule_016(generic_rule):
     def __init__(self):
         generic_rule.__init__(self)
         self.identifier = '016'
-        self.solution = 'Move multiple generates to their own lines.'
+        self.solution = 'Move multiple generics to their own lines.'
         self.phase = 1
+        self.fixable = False  # Need to figure out how to fix this
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):

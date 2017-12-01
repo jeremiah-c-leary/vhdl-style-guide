@@ -44,22 +44,15 @@ class rule():
         return 0
 
     def fix(self, oFile):
-        self.analyze(oFile)
-        self._fix_violations(oFile)
-        self.violations = []
-        self.dFix = {}
-        self.dFix['violations'] = {}
-
-    def _fix_violations(self, oFile):
-        return
+        if self.fixable:
+            self.analyze(oFile)
+            self._fix_violations(oFile)
+            self.violations = []
+            self.dFix = {}
+            self.dFix['violations'] = {}
 
     def add_violation(self, lineNumber):
         self.violations.append(lineNumber)
-
-#    def _clear_violations(self):
-#        self.violations = []
-#        self.dFix = {}
-#        self.dFix['violations'] = {}
 
     def _configure_global_rule_attributes(self, dConfiguration):
         try:
