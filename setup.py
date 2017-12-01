@@ -1,9 +1,11 @@
 from setuptools import setup
 from setuptools import find_packages
 
+
 def readme():
     with open('README.md') as f:
         return f.read()
+
 
 setup(
   name='vsg',
@@ -31,6 +33,5 @@ setup(
   test_suite='nose.collector',
   tests_require=['nose'],
   scripts=['bin/vsg'],
-  keywords = ['vhdl', 'style']
+  keywords=['vhdl', 'style']
 )
-        

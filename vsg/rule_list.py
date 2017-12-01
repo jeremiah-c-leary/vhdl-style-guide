@@ -22,7 +22,6 @@ def get_python_modules_from_directory(sDirectoryName, lModules):
 def get_rules_from_module(lModules, lRules):
 
     for sModuleName in lModules:
-        print sModuleName
         for name, obj in inspect.getmembers(importlib.import_module(sModuleName)):
             if name.startswith('rule_'):
                 lRules.append(obj())
@@ -54,9 +53,8 @@ def load_base_rules():
     lRules = []
     for module in modules:
         for name, obj in inspect.getmembers(module):
-            if inspect.isclass(obj):
-                if not obj.__name__.startswith('__') and not obj.__name__.endswith('_rule'):
-                    lRules.append(obj())
+            if inspect.isclass(obj) and not obj.__name__.startswith('__') and not obj.__name__.endswith('_rule'):
+                lRules.append(obj())
 
     return lRules
 
@@ -69,9 +67,8 @@ def load_rules():
     for name, oPackage in inspect.getmembers(importlib.import_module('vsg.rules')):
         if inspect.ismodule(oPackage):
             for name, oRule in inspect.getmembers(oPackage):
-                if inspect.isclass(oRule):
-                    if name.startswith('rule_'):
-                        lRules.append(oRule())
+                if inspect.isclass(oRule) and name.startswith('rule_'):
+                    lRules.append(oRule())
 
     return lRules
 
