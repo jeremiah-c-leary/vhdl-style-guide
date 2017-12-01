@@ -61,6 +61,7 @@ class line():
         self.isIfKeyword = False
         self.isThenKeyword = False
         ## Case attributes
+        self.insideCase = False
         self.insideCaseWhen = False
         self.isCaseIsKeyword = False
         self.isCaseKeyword = False
@@ -79,9 +80,11 @@ class line():
         ## Instantiation attributes
         self.insideInstantiation = False
         self.isInstantiationDeclaration = False
+        self.insideInstantiationPortMap = False
         self.isInstantiationPortKeyword = False
         self.isInstantiationPortEnd = False
         self.isInstantiationPortAssignment = False
+        self.insideInstantiationGenericMap = False
         self.isInstantiationGenericKeyword = False
         self.isInstantiationGenericEnd = False
         self.isInstantiationGenericAssignment = False
@@ -105,6 +108,7 @@ class line():
         self.isFunctionEnd = False
         self.isFunctionReturn = False
         ## For Loop attributes
+        self.insideForLoop = False
         self.isForLoopKeyword = False
         self.isForLoopEnd = False
         ## Type attributes

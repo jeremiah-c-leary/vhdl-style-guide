@@ -273,6 +273,12 @@ class testLineMethods(unittest.TestCase):
         oLine.isElseKeyword = True
         self.assertEqual(oLine.isElseKeyword, True)
 
+    def test_insideCase_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.insideCase, False)
+        oLine.insideCase = True
+        self.assertEqual(oLine.insideCase, True)
+
     def test_isCaseKeyword_attribute(self):
         oLine = line.line('contents of Line')
         self.assertEqual(oLine.isCaseKeyword, False)
@@ -363,6 +369,12 @@ class testLineMethods(unittest.TestCase):
         oLine.isInstantiationDeclaration = True
         self.assertEqual(oLine.isInstantiationDeclaration, True)
 
+    def test_inside_instantiation_port_map_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.insideInstantiationPortMap, False)
+        oLine.insideInstantiationPortMap = True
+        self.assertEqual(oLine.insideInstantiationPortMap, True)
+
     def test_instantiation_port_keyword_attribute(self):
         oLine = line.line('contents of Line')
         self.assertEqual(oLine.isInstantiationPortKeyword, False)
@@ -380,6 +392,12 @@ class testLineMethods(unittest.TestCase):
         self.assertEqual(oLine.isInstantiationPortAssignment, False)
         oLine.isInstantiationPortAssignment= True
         self.assertEqual(oLine.isInstantiationPortAssignment, True)
+
+    def test_inside_instantiation_generic_map_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.insideInstantiationGenericMap, False)
+        oLine.insideInstantiationGenericMap = True
+        self.assertEqual(oLine.insideInstantiationGenericMap, True)
 
     def test_instantiation_generic_keyword_attribute(self):
         oLine = line.line('contents of Line')
@@ -488,6 +506,12 @@ class testLineMethods(unittest.TestCase):
         self.assertEqual(oLine.isFunctionReturn, False)
         oLine.isFunctionReturn = True
         self.assertEqual(oLine.isFunctionReturn, True)
+
+    def test_insideForLoop_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.insideForLoop, False)
+        oLine.insideForLoop = True
+        self.assertEqual(oLine.insideForLoop, True)
 
     def test_isForLoopKeyword_attribute(self):
         oLine = line.line('contents of Line')
