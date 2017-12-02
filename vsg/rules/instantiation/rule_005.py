@@ -19,10 +19,10 @@ class rule_005(instantiation_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isInstantiationDeclaration and oLine.isInstantiationPortKeyword:
-                    self.add_violation(iLineNumber)
+                self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
+        for iLineNumber in self.violations[::-1]:
             oLine = oFile.lines[iLineNumber]
             iIndex = oLine.lineLower.find(' port ')
             oFile.lines.insert(iLineNumber + 1, copy.deepcopy(oLine))
