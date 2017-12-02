@@ -6,7 +6,7 @@ import copy
 
 class rule_005(instantiation_rule):
     '''
-    Instantiation rule 005 checks the instantiation declaration and 
+    Instantiation rule 005 checks the instantiation declaration and
     "port map" keywords are not on the same line.
     '''
 
