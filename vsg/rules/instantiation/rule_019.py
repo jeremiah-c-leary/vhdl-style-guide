@@ -1,26 +1,15 @@
 
-from vsg.rules.instantiation import instantiation_rule
-from vsg import fix
-from vsg import check
+from vsg.rules import line_below_rule
 
 
-class rule_019(instantiation_rule):
+class rule_019(line_below_rule):
     '''
-    Instantiation rule 019 checks for a blank line below the end of the port declaration.
+    Instantiation rule 019 checks for a blank line below the end of the port
+    declaration.
     '''
 
     def __init__(self):
-        instantiation_rule.__init__(self)
+        line_below_rule.__init__(self)
+        self.name = 'instantiation'
         self.identifier = '019'
-        self.solution = 'Add blank line below instantiation declaration.'
-        self.phase = 3
-
-    def analyze(self, oFile):
-        lFailureLines = []
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isInstantiationPortEnd:
-                check.is_blank_line_after(self, oFile, iLineNumber)
-
-    def _fix_violations(self, oFile):
-        for iLineNumber in self.violations[::-1]:
-            fix.insert_blank_line_below(self, oFile, iLineNumber)
+        self.condition = 'isInstantiationPortEnd'

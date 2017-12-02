@@ -1,3 +1,7 @@
+
+from line_above_rule import line_above_rule
+from line_below_rule import line_below_rule
+
 from vsg.rules import architecture
 from vsg.rules import case
 from vsg.rules import comment
