@@ -31,6 +31,14 @@ package PACK is
     C
   );
 
+  a <= b;
+  type a is (
+    A, B,
+    -- comment
+    C
+  );
+  a <= b;
+
 begin
 
 end package PACK;

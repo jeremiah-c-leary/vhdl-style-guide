@@ -92,3 +92,22 @@ class testRuleSignalMethods(unittest.TestCase):
         dExpected = [6,21]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_010(self):
+        oRule = type.rule_010()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'type')
+        self.assertEqual(oRule.identifier, '010')
+        dExpected = [35]
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_011(self):
+        oRule = type.rule_011()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'type')
+        self.assertEqual(oRule.identifier, '011')
+        dExpected = [39]
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+

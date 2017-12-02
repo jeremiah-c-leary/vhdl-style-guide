@@ -10,6 +10,10 @@ class line_above_rule(rule.rule):
         rule.rule.__init__(self)
         self.solution = 'Insert blank line above.'
         self.phase = 3
+        # The user updates the attributes below
+        self.name = None
+        self.identifier = None
+        self.confition = None
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
