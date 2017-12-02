@@ -18,21 +18,19 @@ class rule_013(port_rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isPortDeclaration:
-                if re.match('^.*,.*:', oLine.line):
-                    self.add_violation(iLineNumber)
+            if oLine.isPortDeclaration and re.match('^.*,.*:', oLine.line):
+                self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:
             oLine = oFile.lines[iLineNumber]
             iNumberOfPorts = oLine.line.split(':')[0].count(',') + 1
-            ### Replicate ports ###
+            # Replicate ports
             for iIndex in range(1, iNumberOfPorts):
                 oFile.lines.insert(iLineNumber, copy.deepcopy(oLine))
-            ### Split ports
+            # Split ports
             for iIndex in range(0, iNumberOfPorts):
                 oLine = oFile.lines[iLineNumber + iIndex]
-                sLine = oLine.line.split(':')[0]
-                lPorts = sLine.split(',')
-                oLine.update_line(lPorts[iIndex] + ' :' + oLine.line.split(':')[1])
-            
+                lLine = oLine.line.split(':')
+                lPorts = lLine[0].split(',')
+                oLine.update_line(lPorts[iIndex] + ' :' + lLine[1])

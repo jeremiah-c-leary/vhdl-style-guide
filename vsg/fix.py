@@ -1,5 +1,6 @@
 
 from vsg import line
+from vsg import utilities
 
 import re
 
@@ -20,19 +21,10 @@ def multiline_alignment(self, oFile, iLineNumber):
     oLine.update_line(' '*self.dFix['violations'][iLineNumber]['column'] + oLine.line.lstrip())
 
 def lower_case(self, oLine, sKeyword):
-    change_word(self, oLine, sKeyword, sKeyword.lower())
+    utilities.change_word(oLine, sKeyword, sKeyword.lower())
 
 def upper_case(self, oLine, sKeyword):
-    change_word(self, oLine, sKeyword, sKeyword.upper())
-
-def change_word(self, oLine, sWord, sNewWord):
-    oLine.line = re.sub(' ' + sWord + ' ', ' ' + sNewWord + ' ', oLine.line, 1, flags=re.IGNORECASE)
-    oLine.line = re.sub(' ' + sWord + '$', ' ' + sNewWord, oLine.line, 1, flags=re.IGNORECASE)
-    oLine.line = re.sub('^' + sWord + '$', sNewWord, oLine.line, 1, flags=re.IGNORECASE)
-    oLine.line = re.sub('^' + sWord + ' ', sNewWord + ' ', oLine.line, 1, flags=re.IGNORECASE)
-    oLine.line = re.sub(' ' + sWord + ';', ' ' + sNewWord + ';', oLine.line, 1, flags=re.IGNORECASE)
-    oLine.line = re.sub(' ' + sWord + '\(', ' ' + sNewWord + '(', oLine.line, 1, flags=re.IGNORECASE)
-    oLine.lineLower = oLine.line.lower()
+    utilities.change_word(oLine, sKeyword, sKeyword.upper())
 
 def enforce_one_space_after_word(self, oLine, sWord):
     oLine.update_line(re.sub(r'(' + sWord + ')\s*(\S)', r'\1 \2', oLine.line, 1, flags=re.IGNORECASE))

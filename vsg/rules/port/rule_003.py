@@ -17,9 +17,8 @@ class rule_003(port_rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isPortKeyword:
-                if not re.match('^\s*\S+\s\(', oLine.line):
-                    self.add_violation(iLineNumber)
+            if oLine.isPortKeyword and not re.match('^\s*\S+\s\(', oLine.line):
+                self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

@@ -7,20 +7,21 @@ import re
 
 class rule_014(port_rule):
     '''
-    Port rule 014 checks the closing parenthesis for ports are on a line by itself.
+    Port rule 014 checks the closing parenthesis for ports are on a line by
+    itself.
     '''
 
     def __init__(self):
         port_rule.__init__(self)
         self.identifier = '014'
-        self.solution = 'Closing parenthesis must be on a line by itself and above the "end" keyword.'
+        self.solution = 'Closing parenthesis must be on a line by itself and \
+                         above the "end" keyword.'
         self.phase = 1
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isEndPortMap:
-                if not re.match('^\s*\)', oLine.line):                 
-                    self.add_violation(iLineNumber)
+            if oLine.isEndPortMap and not re.match('^\s*\)', oLine.line):
+                self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:

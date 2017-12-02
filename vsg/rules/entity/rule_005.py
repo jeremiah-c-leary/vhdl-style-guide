@@ -6,7 +6,8 @@ import re
 
 class rule_005(entity_rule):
     '''
-    Entity rule 005 checks the "is" keyword is on the same line as the entity keyword.
+    Entity rule 005 checks the "is" keyword is on the same line as the
+    entity keyword.
     '''
 
     def __init__(self):
@@ -17,8 +18,7 @@ class rule_005(entity_rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isEntityDeclaration:
-                if not re.match('^.*\s\s*is', oLine.lineLower):
+            if oLine.isEntityDeclaration and not re.match('^.*\s\s*is', oLine.lineLower):
                     self.add_violation(iLineNumber)
 
     def _clear_line(self, oLine):

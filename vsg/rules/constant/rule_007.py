@@ -16,6 +16,5 @@ class rule_007(constant_rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isConstant:
-                if ':=' not in oLine.line:
-                    self.add_violation(iLineNumber)
+            if oLine.isConstant and ':=' not in oLine.line:
+                self.add_violation(iLineNumber)

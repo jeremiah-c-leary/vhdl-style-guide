@@ -18,9 +18,8 @@ class rule_007(concurrent_rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.insideConcurrent:
-                if re.match('^.*\selse\s+[\w|\']', oLine.lineLower):
-                    self.add_violation(iLineNumber)
+            if oLine.insideConcurrent and re.match('^.*\selse\s+[\w|\']', oLine.lineLower):
+                self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:

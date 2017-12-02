@@ -22,8 +22,7 @@ class rule_004(sequential_rule):
                 continue
             if oLine.isSequential:
                 iAlignmentColumn = oLine.line.find('<=') + len('<= ')
-                continue
-            if oLine.insideSequential and not oLine.isComment:
+            if oLine.insideSequential and not oLine.isComment and not oLine.isSequential:
                 check.multiline_alignment(self, iAlignmentColumn, oLine, iLineNumber)
 
     def _fix_violations(self, oFile):

@@ -17,9 +17,8 @@ class rule_007(package_rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isPackageEnd:
-                if not re.match('^\s*end\s+package', oLine.lineLower):
-                    self.add_violation(iLineNumber)
+            if oLine.isPackageEnd and not re.match('^\s*end\s+package', oLine.lineLower):
+                self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

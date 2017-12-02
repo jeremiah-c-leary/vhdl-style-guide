@@ -15,8 +15,7 @@ class rule_012(case_rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isCaseWhenEnd:
-                if re.match('^.*=>\s*\w', oLine.line):
+            if oLine.isCaseWhenEnd and re.match('^.*=>\s*\w', oLine.line):
                     self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):

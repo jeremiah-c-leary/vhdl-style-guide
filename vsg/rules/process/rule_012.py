@@ -17,9 +17,8 @@ class rule_012(process_rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isSensitivityListEnd:
-                if not re.match('^.*\)\s*is', oLine.lineLower):
-                    self.add_violation(iLineNumber)
+            if oLine.isSensitivityListEnd and not re.match('^.*\)\s*is', oLine.lineLower):
+                self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

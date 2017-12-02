@@ -17,9 +17,8 @@ class rule_006(library_rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isLibraryUse:
-                if re.match('^\s*\S+\s\s+', oLine.line):
-                    self.add_violation(iLineNumber)
+            if oLine.isLibraryUse and re.match('^\s*\S+\s\s+', oLine.line):
+                self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
