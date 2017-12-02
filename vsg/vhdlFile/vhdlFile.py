@@ -13,12 +13,6 @@ class vhdlFile():
         self.hasEntity = False
         self._processFile()
 
-    def write(self):
-        with open(self.filename, 'w') as oFile:
-            for oLine in self.lines[1:]:
-                oFile.write(oLine.line + '\n')
-        oFile.close()
-
     def _processFile(self):
 
         dVars = {}

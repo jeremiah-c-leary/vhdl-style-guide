@@ -37,6 +37,11 @@ def read_configuration_file(commandLineArguments):
         with open(commandLineArguments.configuration) as json_file:
             return json.load(json_file)
 
+def write_vhdl_file(oVhdlFile):
+    with open(oVhdlFile.filename, 'w') as oFile:
+        for oLine in oVhdlFile.lines[1:]:
+            oFile.write(oLine.line + '\n')
+    oFile.close()
 
 def main():
     '''Main routine of the VHDL Style Guide (VSG) program.'''
@@ -54,7 +59,7 @@ def main():
 
     if commandLineArguments.fix:
         oRules.fix()
-        oVhdlFile.write()
+        write_vhdl_file(oVhdlFile)
 
     oRules.check_rules()
     oRules.report_violations()
