@@ -7,7 +7,8 @@ from vsg import line
 
 class rule_005(sequential_rule):
     '''
-    Sequential rule 005 ensures the alignment of the "<=" keyword over multiple lines.
+    Sequential rule 005 ensures the alignment of the "<=" keyword over
+    multiple lines.
     '''
 
     def __init__(self):

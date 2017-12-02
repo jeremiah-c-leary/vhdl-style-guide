@@ -4,13 +4,18 @@ from vsg import check
 from vsg import fix
 from vsg import line
 
+
 class rule_012(generic_rule):
-    '''Generic rule 012 ensures the alignment of the : operator for every generic in the entity.'''
+    '''
+    Generic rule 012 ensures the alignment of the : operator for every
+    generic in the entity.
+    '''
 
     def __init__(self):
         generic_rule.__init__(self)
         self.identifier = '012'
-        self.solution = 'Inconsistent alignment of ":" in generic declaration of entity.'
+        self.solution = 'Inconsistent alignment of ":" in generic declaration \
+                         of entity.'
         self.phase = 5
 
     def analyze(self, oFile):
@@ -29,9 +34,9 @@ class rule_012(generic_rule):
                 iStartGroupIndex = None
             if fGroupFound:
                 if oLine.isGenericDeclaration:
-                  lGroup.append(oLine)
+                    lGroup.append(oLine)
                 else:
-                  lGroup.append(line.line('Removed line'))
+                    lGroup.append(line.line('Removed line'))
 
     def _fix_violations(self, oFile):
         fix.keyword_alignment(self, oFile)

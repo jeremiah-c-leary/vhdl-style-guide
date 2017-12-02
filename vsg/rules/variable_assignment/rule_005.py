@@ -6,7 +6,10 @@ from vsg import line
 
 
 class rule_005(variable_assignment_rule):
-    '''Variable assignment rule 005 ensures the alignment of the ":=" keyword over multiple lines.'''
+    '''
+    Variable assignment rule 005 ensures the alignment of the ":=" keyword 
+    over multiple lines.
+    '''
 
     def __init__(self):
         variable_assignment_rule.__init__(self)

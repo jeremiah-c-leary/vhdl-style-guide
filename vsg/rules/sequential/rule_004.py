@@ -6,7 +6,8 @@ from vsg import fix
 
 class rule_004(sequential_rule):
     '''
-    Sequential rule 004 ensures the alignment of multiline sequential statements.
+    Sequential rule 004 ensures the alignment of multiline sequential
+    statements.
     '''
 
     def __init__(self):

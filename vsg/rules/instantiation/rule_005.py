@@ -3,9 +3,11 @@ from vsg.rules.instantiation import instantiation_rule
 
 import copy
 
+
 class rule_005(instantiation_rule):
     '''
-    Instantiation rule 005 checks the instantiation declaration and "port map" keywords are not on the same line.
+    Instantiation rule 005 checks the instantiation declaration and 
+    "port map" keywords are not on the same line.
     '''
 
     def __init__(self):
@@ -16,8 +18,7 @@ class rule_005(instantiation_rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isInstantiationDeclaration:
-                if oLine.isInstantiationPortKeyword:
+            if oLine.isInstantiationDeclaration and oLine.isInstantiationPortKeyword:
                     self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
