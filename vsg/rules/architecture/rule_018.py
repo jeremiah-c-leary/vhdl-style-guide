@@ -1,23 +1,15 @@
 
-from vsg.rules.architecture import architecture_rule
-from vsg import fix
-from vsg import check
+from vsg.rules import line_above_rule
 
 
-class rule_018(architecture_rule):
-    '''Architecture rule 018 checks for a blank line above the "end architecture" keywords.'''
+class rule_018(line_above_rule):
+    '''
+    Architecture rule 018 checks for a blank line above the "end architecture"
+    keywords.
+    '''
 
     def __init__(self):
-        architecture_rule.__init__(self)
+        line_above_rule.__init__(self)
+        self.name = 'architecture'
         self.identifier = '018'
-        self.solution = 'Add blank line above the "end architecture" keywords.'
-        self.phase = 3
-
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isEndArchitecture:
-                check.is_blank_line_before(self, oFile, iLineNumber)
-
-    def _fix_violations(self, oFile):
-        for iLineNumber in self.violations[::-1]:
-            fix.insert_blank_line_above(self, oFile, iLineNumber)
+        self.condition = 'isEndArchitecture'

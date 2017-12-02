@@ -1,25 +1,14 @@
 
-from vsg.rules.process import process_rule
-from vsg import fix
-from vsg import check
+from vsg.rules import line_below_rule
 
 
-class rule_011(process_rule):
+class rule_011(line_below_rule):
     '''
     Process rule 010 checks for a blank line after the "end process" keywords.
     '''
 
     def __init__(self):
-        process_rule.__init__(self)
+        line_below_rule.__init__(self)
+        self.name = 'process'
         self.identifier = '011'
-        self.solution = 'Add a blank line after the "end process" keywords.'
-        self.phase = 3
-
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isEndProcess:
-                check.is_blank_line_after(self, oFile, iLineNumber)
-
-    def _fix_violations(self, oFile):
-        for iLineNumber in self.violations[::-1]:
-            fix.insert_blank_line_below(self, oFile, iLineNumber)
+        self.condition = 'isEndProcess'

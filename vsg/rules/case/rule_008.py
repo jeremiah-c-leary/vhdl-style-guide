@@ -1,23 +1,14 @@
 
-from vsg.rules.case import case_rule
-from vsg import fix
-from vsg import check
+from vsg.rules import line_below_rule
 
 
-class rule_008(case_rule):
-    '''Case rule 008 ensures a blank line exists below the "case" keyword.'''
+class rule_008(line_below_rule):
+    '''
+    Case rule 008 ensures a blank line exists below the "case" keyword.
+    '''
 
     def __init__(self):
-        case_rule.__init__(self)
+        line_below_rule.__init__(self)
+        self.name = 'case'
         self.identifier = '008'
-        self.solution = 'Ensure a blank line exists below the "case" keyword.'
-        self.phase = 3
-
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isCaseIsKeyword:
-                check.is_blank_line_after(self, oFile, iLineNumber)
-
-    def _fix_violations(self, oFile):
-        for iLineNumber in self.violations[::-1]:
-            fix.insert_blank_line_below(self, oFile, iLineNumber)
+        self.condition = 'isCaseIsKeyword'
