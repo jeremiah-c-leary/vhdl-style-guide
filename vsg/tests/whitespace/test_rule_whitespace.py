@@ -97,7 +97,9 @@ class testRuleWhitespaceMethods(unittest.TestCase):
         oFile.lines.append(line.line('  This is a test of parentehsis (  failure'))
         oFile.lines.append(line.line('  This is a test of parentehsis (  7 pass'))
         oFile.lines.append(line.line('  This is a test of parenthesis ( pass) --  ( pass'))
+        oFile.lines.append(line.line(' --  This is a test of parenthesis ( pass)'))
         oFile.lines[5].hasComment = True
+        oFile.lines[6].isComment = True
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
         oRule.fix(oFile)
@@ -108,6 +110,8 @@ class testRuleWhitespaceMethods(unittest.TestCase):
         self.assertEqual(oFile.lines[3].line, '  This is a test of parentehsis (failure')
         self.assertEqual(oFile.lines[4].line, '  This is a test of parentehsis (  7 pass')
         self.assertEqual(oFile.lines[5].line, '  This is a test of parenthesis (pass) --  ( pass')
+        self.assertEqual(oFile.lines[6].line, ' --  This is a test of parenthesis ( pass)')
+   
 
     def test_006(self):
         oRule = whitespace.rule_006()
