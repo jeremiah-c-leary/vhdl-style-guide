@@ -79,6 +79,17 @@ class testVhdlFileMethods(unittest.TestCase):
             else:
                 self.assertFalse(oLine.isLibraryUse)
 
+    def test_library_use_assignment_in_port_map(self):
+        lExpected = []
+        # Compare
+        for iIndex, oLine in enumerate(oFilePort.lines):
+            if iIndex in lExpected:
+                self.assertTrue(oLine.isLibraryUse)
+                self.assertEqual(oLine.indentLevel, 1)
+            else:
+                self.assertFalse(oLine.isLibraryUse)
+
+
     def test_insideEntity_assignment(self):
         lExpected = [0,1,2,17,18,48,64,79,92,93,104,105,106,107,108,109,110,111,112,124,125,126,134,135,136,137,147]
         # Generic actual list
@@ -106,6 +117,19 @@ class testVhdlFileMethods(unittest.TestCase):
         for iIndex, oLine in enumerate(oFileEntity.lines):
             if oLine.isEndEntityDeclaration:
                 lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
+    def test_port_map_indent(self):
+        #           [   0,   1,   2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,  17]
+        lExpected = [None,None,None,0,1,2,2,1,1,2, 2, 2, 2, 2, 2, 1, 0,None]
+        # Generic actual list
+        lActual = []
+        iMaxCheck = len(lExpected)
+        for iIndex, oLine in enumerate(oFilePort.lines):
+            if iIndex == iMaxCheck:
+                break
+            lActual.append(oLine.indentLevel)
         # Compare
         self.assertEqual(lActual, lExpected)
 
