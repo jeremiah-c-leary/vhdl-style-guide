@@ -121,6 +121,10 @@ class line():
         self.isVariableAssignmentEnd = False
         self.isVariableAssignment = False
         self.variableAssignmentAlignmentColumn = None
+        # Assert attributes
+        self.isAssertKeyword = False
+        self.isAssertEnd = False
+        self.insideAssert = False
 
     def update_line(self, sLine):
         self.line = sLine

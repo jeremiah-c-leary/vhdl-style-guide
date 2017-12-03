@@ -22,6 +22,11 @@ def update_architecture_attributes(oPreviousLine, oCurrentLine):
     if oPreviousLine.insideArchitecture and not oPreviousLine.isEndArchitecture:
         oCurrentLine.insideArchitecture = True
 
+def update_assert_attributes(oPreviousLine, oCurrentLine):
+
+    if oPreviousLine.insideAssert and not oPreviousLine.isAssertEnd:
+        oCurrentLine.insideAssert = True
+
 
 def update_process_attributes(oPreviousLine, oCurrentLine):
 
@@ -137,6 +142,7 @@ def inside_attributes(oPreviousLine, oCurrentLine):
     update_port_map_attributes(oPreviousLine, oCurrentLine)
     update_generic_map_attributes(oPreviousLine, oCurrentLine)
     update_architecture_attributes(oPreviousLine, oCurrentLine)
+    update_assert_attributes(oPreviousLine, oCurrentLine)
     update_process_attributes(oPreviousLine, oCurrentLine)
     update_concurrent_attributes(oPreviousLine, oCurrentLine)
     update_sensitivity_list_attributes(oPreviousLine, oCurrentLine)

@@ -31,6 +31,7 @@ class vhdlFile():
                 classify.comment(dVars, oLine)
                 classify.library(oLine)
                 classify.entity(self, dVars, oLine)
+                classify.assert_statement(dVars, oLine)
 
                 if oLine.insideEntity or oLine.insideComponent:
                     classify.port(dVars, oLine)

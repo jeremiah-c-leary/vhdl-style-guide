@@ -578,3 +578,21 @@ class testLineMethods(unittest.TestCase):
         self.assertEqual(oLine.variableAssignmentAlignmentColumn, None)
         oLine.variableAssignmentAlignmentColumn = 32
         self.assertEqual(oLine.variableAssignmentAlignmentColumn, 32)
+
+    def test_isAssertKeyword_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertFalse(oLine.isAssertKeyword)
+        oLine.isAssertKeyword = True
+        self.assertTrue(oLine.isAssertKeyword)
+
+    def test_isAssertEnd_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertFalse(oLine.isAssertEnd)
+        oLine.isAssertEnd = True
+        self.assertTrue(oLine.isAssertEnd)
+
+    def test_insideAssert_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertFalse(oLine.insideAssert)
+        oLine.insideAssert = True
+        self.assertTrue(oLine.insideAssert)

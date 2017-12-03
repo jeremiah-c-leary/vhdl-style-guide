@@ -6,6 +6,7 @@ from indent_rule import indent_rule
 from single_space_after_rule import single_space_after_rule
 
 from vsg.rules import architecture
+from vsg.rules import assert_statement
 from vsg.rules import case
 from vsg.rules import comment
 from vsg.rules import component
