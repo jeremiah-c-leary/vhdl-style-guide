@@ -1,5 +1,7 @@
 
 from vsg.rules.port import port_rule
+from vsg import fix
+from vsg import check
 
 import re
 
@@ -17,12 +19,10 @@ class rule_006(port_rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isPortDeclaration:
-                if re.match('^\s*\S+\s*:\s*out', oLine.lineLower):
-                    if not re.match('^\s*\S+\s*:\sout', oLine.lineLower):
-                        self.add_violation(iLineNumber)
+            if oLine.isPortDeclaration and re.match('^\s*\S+\s*:\s*out', oLine.lineLower):
+                check.is_single_space_before(self, 'out', oLine, iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
             oLine = oFile.lines[iLineNumber]
-            oLine.update_line(re.sub(r'^(\s*\S+\s*:)(\s*)', r'\1 ', oLine.line, flags=re.IGNORECASE))
+            fix.enforce_one_space_before_word(self, oLine, 'out')
