@@ -9,7 +9,7 @@ def readme():
 
 setup(
   name='vsg',
-  version='0.3',
+  version='0.4',
   description='VHDL Style Guide',
   long_description=readme(),
   classifiers=[
