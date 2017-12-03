@@ -1,17 +1,18 @@
 
-from vsg.rules.library import library_rule
+from vsg import rule
 from vsg import utilities
 from vsg import fix
 from vsg import check
 
 
-class rule_004(library_rule):
+class rule_004(rule.rule):
     '''
     Library rule 004 checks the library keyword is lower case.
     '''
 
     def __init__(self):
-        library_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'library'
         self.identifier = '004'
         self.solution = 'Change "library" keyword to lowercase.'
         self.phase = 6

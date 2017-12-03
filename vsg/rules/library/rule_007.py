@@ -1,16 +1,17 @@
 
-from vsg.rules.library import library_rule
+from vsg import rule
 from vsg import fix
 from vsg import check
 
 
-class rule_007(library_rule):
+class rule_007(rule.rule):
     '''
     Library rule 007 checks for a blank line above the "use" keyword.
     '''
 
     def __init__(self):
-        library_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'library'
         self.identifier = '007'
         self.solution = 'Remove blank line(s) above "use" keyword.'
         self.phase = 3

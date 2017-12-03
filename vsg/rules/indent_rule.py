@@ -13,12 +13,13 @@ class indent_rule(rule.rule):
 
     def __init__(self):
         rule.rule.__init__(self)
-        self.solution = 'Invalid indentation.'
-        self.phase = 4
         # These are filled out when creating a new rule
         self.name = None
         self.identifier = None
         self.sTrigger = None
+        # Leave everything below this alone
+        self.solution = 'Invalid indentation.'
+        self.phase = 4
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
