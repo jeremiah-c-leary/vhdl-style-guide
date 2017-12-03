@@ -12,7 +12,7 @@ Welcome to vhdl-style-guide's documentation!
 
    installing
    usage
-
+   rules
 
 Indices and tables
 ==================
