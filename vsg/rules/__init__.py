@@ -2,6 +2,7 @@
 from line_above_rule import line_above_rule
 from line_below_rule import line_below_rule
 from keyword_alignment_rule import keyword_alignment_rule
+from indent_rule import indent_rule
 
 from vsg.rules import architecture
 from vsg.rules import case

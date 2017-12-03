@@ -97,3 +97,11 @@ class testFixRuleCaseMethods(unittest.TestCase):
         self.assertEqual(oFileSequential.lines[11].line,'      when 0 =>')
         self.assertEqual(oFileSequential.lines[12].line,' b <= \'0\';')
         self.assertEqual(oFileSequential.lines[12].indentLevel, oFileSequential.lines[11].indentLevel + 1)
+
+    def test_fix_rule_013(self):
+        oRule = case.rule_013()
+        dExpected = []
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+

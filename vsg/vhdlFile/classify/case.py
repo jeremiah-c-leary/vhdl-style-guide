@@ -28,3 +28,4 @@ def case(self, dVars, oLine):
     # Check for null statements
     if re.match('^\s*null\s*;', oLine.lineLower):
         oLine.indentLevel = dVars['iCurrentIndentLevel']
+        oLine.isCaseNull = True

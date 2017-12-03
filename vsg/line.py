@@ -68,6 +68,7 @@ class line():
         self.isCaseWhenEnd = False
         self.isCaseWhenKeyword = False
         self.isEndCaseKeyword = False
+        self.isCaseNull = False
         # Sequential attributes
         self.insideSequential = False
         self.isSequentialEnd = False

@@ -28,7 +28,7 @@ begin
 
       when   others =>
 
-        null;
+          null;
 
      end  case;
    -- This will be an error

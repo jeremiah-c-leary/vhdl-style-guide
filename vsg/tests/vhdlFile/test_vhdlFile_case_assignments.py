@@ -5,8 +5,8 @@ from vsg import vhdlFile
 
 oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','case','case_test_input.vhd'))
 
-class testVhdlFileIfAssignments(unittest.TestCase):
 
+class testVhdlFileIfAssignments(unittest.TestCase):
 
     def test_isCaseKeyword_assignment(self):
         lExpected = [9,41,77]
@@ -79,5 +79,15 @@ class testVhdlFileIfAssignments(unittest.TestCase):
             if iIndex == iMaxCheck:
                 break
             lActual.append(oLine.indentLevel)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
+    def test_isCaseNull_assignment(self):
+        lExpected = [31,68]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFile.lines):
+            if oLine.isCaseNull:
+                lActual.append(iIndex)
         # Compare
         self.assertEqual(lActual, lExpected)

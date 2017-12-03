@@ -315,6 +315,12 @@ class testLineMethods(unittest.TestCase):
         oLine.isCaseIsKeyword = True
         self.assertEqual(oLine.isCaseIsKeyword, True)
 
+    def test_isCaseNull_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isCaseNull, False)
+        oLine.isCaseNull = True
+        self.assertEqual(oLine.isCaseNull, True)
+
     def test_insideSequential_attribute(self):
         oLine = line.line('contents of Line')
         self.assertEqual(oLine.insideSequential, False)
