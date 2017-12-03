@@ -5,41 +5,41 @@ class line():
         self.line = line
         self.lineLower = line.lower()
         self.indentLevel = None
-        ## Misc attributes
+        # Misc attributes
         self.isBlank = False
-        ## Comment attributes
+        # Comment attributes
         self.isComment = False
         self.hasComment = False
         self.commentColumn = None
-        ## Library attributes
+        # Library attributes
         self.isLibrary = False
         self.isLibraryUse = False
-        ## Entity attributes
+        # Entity attributes
         self.insideEntity = False
         self.isEntityDeclaration = False
         self.isEndEntityDeclaration = False
-        ## Port attributes
+        # Port attributes
         self.insidePortMap = False
         self.isPortDeclaration = False
         self.isPortKeyword = False
         self.isEndPortMap = False
-        ## Generic attributes
+        # Generic attributes
         self.insideGenericMap = False
         self.isGenericDeclaration = False
         self.isGenericKeyword = False
         self.isEndGenericMap = False
-        ## Architecture attributes
+        # Architecture attributes
         self.insideArchitecture = False
         self.isArchitectureBegin = False
         self.isArchitectureKeyword = False
         self.isEndArchitecture = False
-        ## Signal attributes
+        # Signal attributes
         self.isSignal = False
-        ## Constant attributes
+        # Constant attributes
         self.isConstant = False
-        ## Variable attributes
+        # Variable attributes
         self.isVariable = False
-        ## Process attributes
+        # Process attributes
         self.insideProcess = False
         self.isProcessBegin = False
         self.isProcessKeyword = False
@@ -48,11 +48,11 @@ class line():
         self.insideSensitivityList = False
         self.isSensitivityListBegin = False
         self.isSensitivityListEnd = False
-        ## Concurrent attributes
+        # Concurrent attributes
         self.insideConcurrent = False
         self.isConcurrentBegin = False
         self.isEndConcurrent = False
-        ## If attributes
+        # If attributes
         self.insideIf = False
         self.isElseKeyword = False
         self.isElseIfKeyword = False
@@ -60,7 +60,7 @@ class line():
         self.isIfEnd = False
         self.isIfKeyword = False
         self.isThenKeyword = False
-        ## Case attributes
+        # Case attributes
         self.insideCase = False
         self.insideCaseWhen = False
         self.isCaseIsKeyword = False
@@ -68,16 +68,16 @@ class line():
         self.isCaseWhenEnd = False
         self.isCaseWhenKeyword = False
         self.isEndCaseKeyword = False
-        ## Sequential attributes
+        # Sequential attributes
         self.insideSequential = False
         self.isSequentialEnd = False
         self.isSequential = False
         self.sequentialAlignmentColumn = None
-        ## Component attributes
+        # Component attributes
         self.insideComponent = False
         self.isComponentDeclaration = False
         self.isComponentEnd = False
-        ## Instantiation attributes
+        # Instantiation attributes
         self.insideInstantiation = False
         self.isInstantiationDeclaration = False
         self.insideInstantiationPortMap = False
@@ -88,34 +88,34 @@ class line():
         self.isInstantiationGenericKeyword = False
         self.isInstantiationGenericEnd = False
         self.isInstantiationGenericAssignment = False
-        ## Package attributes
+        # Package attributes
         self.insidePackage = False
         self.isPackageKeyword = False
         self.isPackageEnd = False
-        ## Package Body attributes
+        # Package Body attributes
         self.insidePackageBody = False
         self.isPackageBodyKeyword = False
         self.isPackageBodyEnd = False
-        ## Generate attributes
+        # Generate attributes
         self.insideGenerate = False
         self.isGenerateBegin = False
         self.isGenerateKeyword = False
         self.isGenerateEnd = False
-        ## Function attributes
+        # Function attributes
         self.insideFunction = False
         self.isFunctionBegin = False
         self.isFunctionKeyword = False
         self.isFunctionEnd = False
         self.isFunctionReturn = False
-        ## For Loop attributes
+        # For Loop attributes
         self.insideForLoop = False
         self.isForLoopKeyword = False
         self.isForLoopEnd = False
-        ## Type attributes
+        # Type attributes
         self.insideType = False
         self.isTypeKeyword = False
         self.isTypeEnd = False
-        ## Variable Assignment attributes
+        # Variable Assignment attributes
         self.insideVariableAssignment = False
         self.isVariableAssignmentEnd = False
         self.isVariableAssignment = False

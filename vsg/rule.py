@@ -3,6 +3,7 @@ from vsg import line
 import re
 import copy
 
+
 class rule():
 
     def __init__(self, name=None, identifier=None):

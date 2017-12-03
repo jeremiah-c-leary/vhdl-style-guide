@@ -7,13 +7,14 @@ import inspect
 
 import vsg.rules
 
+
 def get_python_modules_from_directory(sDirectoryName, lModules):
 
     try:
         lDirectoryContents = os.listdir(sDirectoryName)
         for sFileName in lDirectoryContents:
             if sFileName.endswith('.py') and not sFileName.startswith('__'):
-                lModules.append(sFileName.replace('.py',''))
+                lModules.append(sFileName.replace('.py', ''))
     except:
         print ('ERROR: directory ' + sDirectoryName + ' could not be found.')
         exit()
@@ -32,37 +33,17 @@ def load_local_rules(sDirectoryName):
 
     lLocalModules = []
     get_python_modules_from_directory(sDirectoryName, lLocalModules)
- 
+
     lRules = []
     get_rules_from_module(lLocalModules, lRules)
     return lRules
 
 
-def load_base_rules():
-    pysearchre = re.compile('.py$', re.IGNORECASE)
-    rulefiles = filter(pysearchre.search, os.listdir(os.path.join(os.path.dirname(__file__),'rules')))
-    form_module = lambda fp: '.' + os.path.splitext(fp)[0]
-    rulesList = map(form_module, rulefiles)
-    # import parent module / namespace
-    importlib.import_module('vsg.rules')
-    modules = []
-    for rule in rulesList:
-        if not rule.startswith('.__'):
-            modules.append(importlib.import_module(rule, package="vsg.rules"))
-
-    lRules = []
-    for module in modules:
-        for name, obj in inspect.getmembers(module):
-            if inspect.isclass(obj) and not obj.__name__.startswith('__') and not obj.__name__.endswith('_rule'):
-                lRules.append(obj())
-
-    return lRules
-
 def load_rules():
     '''
     Loads rules from the vsg/rules directory.
     '''
-    
+
     lRules = []
     for name, oPackage in inspect.getmembers(importlib.import_module('vsg.rules')):
         if inspect.ismodule(oPackage):
@@ -71,6 +52,7 @@ def load_rules():
                     lRules.append(oRule())
 
     return lRules
+
 
 def maximum_phase(lRules):
     maximumPhaseNumber = 0
@@ -85,7 +67,6 @@ class list():
 
     def __init__(self, oVhdlFile, sLocalRulesDirectory=None):
         self.rules = (load_rules())
-        self.rules.extend(load_base_rules())
         if sLocalRulesDirectory:
             self.rules.extend(load_local_rules(sLocalRulesDirectory))
         self.iNumberRulesRan = 0
@@ -94,14 +75,14 @@ class list():
         self.maximumPhase = maximum_phase(self.rules)
 
     def fix(self):
-        for phase in range(1,10):
-           for oRule in self.rules:
-               oRule.fix(self.oVhdlFile)
+        for phase in range(1, 10):
+            for oRule in self.rules:
+                oRule.fix(self.oVhdlFile)
 
     def check_rules(self):
         self.iNumberRulesRan = 0
         iFailures = 0
-        for phase in range(1,10):
+        for phase in range(1, 10):
             iPhaseRuleCount = 0
             for oRule in self.rules:
                 if oRule.phase == phase and not oRule.disable:
@@ -118,10 +99,10 @@ class list():
         print (sFileTitle)
         print ('=' * len(sFileTitle))
         iFailures = 0
-        for phase in range(1,self.maximumPhase + 1):
+        for phase in range(1, self.maximumPhase + 1):
             if phase <= self.lastPhaseRan:
                 print ('Phase ' + str(phase) + '... Reporting')
-                for iLineNumber in range (1, len(self.oVhdlFile.lines)):
+                for iLineNumber in range(1, len(self.oVhdlFile.lines)):
                     for oRule in self.rules:
                         if oRule.phase == phase:
                             iFailures += oRule.report_violations(iLineNumber)
@@ -137,4 +118,3 @@ class list():
         if configurationFile:
             for oRule in self.rules:
                 oRule.configure(configurationFile)
-
