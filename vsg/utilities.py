@@ -3,7 +3,7 @@ import copy
 import re
 
 
-def split_line_after_word(self, oFile, iLineNumber, sWord):
+def split_line_after_word(oFile, iLineNumber, sWord):
     oFile.lines.insert(iLineNumber + 1, copy.deepcopy(oFile.lines[iLineNumber]))
     oLine = oFile.lines[iLineNumber]
     iIndex = oLine.line.find(sWord) + len(sWord)
@@ -12,7 +12,7 @@ def split_line_after_word(self, oFile, iLineNumber, sWord):
     oLine.update_line(oLine.line[iIndex:])
 
 
-def split_line_before_word(self, oFile, iLineNumber, sWord):
+def split_line_before_word(oFile, iLineNumber, sWord):
     oFile.lines.insert(iLineNumber + 1, copy.deepcopy(oFile.lines[iLineNumber]))
     oLine = oFile.lines[iLineNumber]
     iIndex = oLine.line.find(sWord)
