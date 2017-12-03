@@ -7,9 +7,9 @@ entity ENTITY1 is
   );
   port (
     I_PORT1 : in    std_logic;
-    O_PORT2 : out   std_logic;
-    IO_PORT3 : inout std_logic;
-    use_4 : in std_logic;
+    O_PORT2 : out   t_USER_DEFINED_TYPE;
+    IO_PORT3 : inout std_logic_vector(1 downto 0);
+    use_4 : in integer;
     port5 : out std_logic;
     port6 : inout std_logic
   );
@@ -23,12 +23,12 @@ end entity ENTITY1
   );
 
   PORt   (
-    i_port1 : in  std_logic;
+    i_port1 : in  SIGNED;
   o_port2 :  out   STD_LOGIC;
-    io_port3 : inout       std_logic;
-      PORT4 :in std_logic;
-    USE_5 :  out std_logic_vector(G_GENERIC1 downto 0);
-    PORT6 : inout std_logic  );
+    io_port3 : inout       NATURAL;
+      PORT4 :in INTEGER;
+    USE_5 :  out STD_LOGIC_VECTOR(G_GENERIC1 downto 0);
+    PORT6 : inout UNSIGNED  );
 
  end entity    entiTY2
     eNTITY   entiTY3    is

@@ -138,12 +138,11 @@ class testFixRulePortMethods(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, [])
 
-####  RULE 18 needs to be re-worked before it can fix anything
-#    def test_fix_rule_018(self):
-#        oRule = port.rule_018()
-#        oRule.fix(oFile)
-#        oRule.analyze(oFile)
-#        self.assertEqual(oRule.violations, [])
+    def test_fix_rule_018(self):
+        oRule = port.rule_018()
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, [])
 
     def test_fix_rule_019(self):
         oRule = port.rule_019()

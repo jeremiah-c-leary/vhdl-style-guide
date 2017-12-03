@@ -37,3 +37,27 @@ def change_word(oLine, sWord, sNewWord):
     oLine.line = re.sub(' ' + sWord + ';', ' ' + sNewWord + ';', oLine.line, 1, flags=re.IGNORECASE)
     oLine.line = re.sub(' ' + sWord + '\(', ' ' + sNewWord + '(', oLine.line, 1, flags=re.IGNORECASE)
     oLine.lineLower = oLine.line.lower()
+
+
+def remove_text_after_word(sKeyword, sWord):
+    if sKeyword in sWord:
+        sWord = sWord[:sWord.find(sKeyword)]
+    return sWord
+
+
+def is_vhdl_keyword(sWord):
+    lKeywords = []
+    lKeywords.append('std_logic')
+    lKeywords.append('std_logic_vector')
+    lKeywords.append('integer')
+    lKeywords.append('signed')
+    lKeywords.append('unsigned')
+    lKeywords.append('natural')
+
+    sWord = remove_text_after_word(')', sWord)
+    sWord = remove_text_after_word(';', sWord)
+
+    if sWord.lower() in lKeywords:
+        return True
+    else:
+        return False
