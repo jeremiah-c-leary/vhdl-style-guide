@@ -24,6 +24,11 @@ VHDL Style Guide (VSG)
     <img src="https://img.shields.io/codecov/c/github/jeremiah-c-leary/vhdl-style-guide/master.svg?style=flat-square"
       alt="Test Coverage" />
   </a>
+  <!-- Read The Docs -->
+  <a href="http://vhdl-style-guide.readthedocs.io/en/latest/index.html">
+    <img src="https://img.shields.io/readthedocs/vsg.svg?style=flat-square"
+      alt="Read The Docs" />
+  </a>
 </div>
 
 After recently performing code reviews, most of the issues found were related to style.

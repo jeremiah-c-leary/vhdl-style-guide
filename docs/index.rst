@@ -11,6 +11,7 @@ Welcome to vhdl-style-guide's documentation!
    :caption: Contents:
 
    installing
+   usage
 
 
 Indices and tables
