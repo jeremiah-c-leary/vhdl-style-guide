@@ -77,7 +77,8 @@ class list():
     def fix(self):
         for phase in range(1, 10):
             for oRule in self.rules:
-                oRule.fix(self.oVhdlFile)
+                if oRule.phase == phase and not oRule.disable:
+                    oRule.fix(self.oVhdlFile)
 
     def check_rules(self):
         self.iNumberRulesRan = 0
