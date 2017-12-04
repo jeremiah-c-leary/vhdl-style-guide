@@ -5,7 +5,8 @@ from vsg.rules import architecture
 from vsg import vhdlFile
 
 # Read in test file used for all tests
-oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','architecture','architecture_test_input.vhd'))
+oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'architecture_test_input.vhd'))
+oFileRule010 = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'architecture_test_input.vhd'))
 
 class testFixRuleArchitectureMethods(unittest.TestCase):
 
@@ -74,9 +75,9 @@ class testFixRuleArchitectureMethods(unittest.TestCase):
 
     def test_fix_rule_010(self):
         oRule = architecture.rule_010()
-        dExpected = [72]
-        oRule.fix(oFile)
-        oRule.analyze(oFile)
+        dExpected = []
+        oRule.fix(oFileRule010)
+        oRule.analyze(oFileRule010)
         self.assertEqual(oRule.violations, dExpected)
 
     def test_fix_rule_011(self):
@@ -169,3 +170,11 @@ class testFixRuleArchitectureMethods(unittest.TestCase):
         oRule.fix(oFile)
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
+
+    def test_fix_rule_024(self):
+        oRule = architecture.rule_024()
+        dExpected = [13,71]
+        oRule.fix(oFile)
+        oRule.analyze(oFileRule010)
+        self.assertEqual(oRule.violations, dExpected)
+

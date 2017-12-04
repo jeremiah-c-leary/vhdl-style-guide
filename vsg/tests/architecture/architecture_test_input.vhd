@@ -10,7 +10,7 @@ End  architecture ARCH;
 
 begin
 
-end Architecture
+end Architecture;
 architecture  ARCH  of  ENTITY  is
 
 begin
