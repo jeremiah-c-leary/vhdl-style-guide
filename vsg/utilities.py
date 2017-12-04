@@ -53,6 +53,7 @@ def is_vhdl_keyword(sWord):
     lKeywords.append('signed')
     lKeywords.append('unsigned')
     lKeywords.append('natural')
+    lKeywords.append('std_ulogic')
 
     sWord = remove_text_after_word(')', sWord)
     sWord = remove_text_after_word(';', sWord)
