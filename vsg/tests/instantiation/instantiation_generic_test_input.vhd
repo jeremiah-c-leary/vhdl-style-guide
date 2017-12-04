@@ -5,7 +5,7 @@ begin
 
   U_INST1 : INST1
     generic map (
-      GENERIC_1 => generic_1,
+      GENERIC_1 => generic_1,  -- This tests closing ) do not mess things up
       GENERIC_2 => generic_2
     )
     port map (

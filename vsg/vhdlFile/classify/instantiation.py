@@ -34,7 +34,7 @@ def instantiation(dVars, oLine):
             if not oLine.indentLevel:
                 oLine.indentLevel = dVars['iCurrentIndentLevel'] - 1
             dVars['iCurrentIndentLevel'] -= 2
-        if ')' in oLine.line and oLine.insideInstantiationGenericMap:
+        if ')' in oLine.lineNoComment and oLine.insideInstantiationGenericMap:
             oLine.isInstantiationGenericEnd = True
             if not oLine.indentLevel:
                 oLine.indentLevel = dVars['iCurrentIndentLevel'] - 1

@@ -1,16 +1,18 @@
 architecture_010
-----------------
+################
 
 This rule checks for the keyword *architecture* in the *end architecture* statement.
 It is clearer to the reader to state what is ending.
 
-Violation
-~~~~~~~~~
+**Violation**
 
-   end [ARCHITECTURE NAME];
+.. code-block:: vhdl
 
-Fix
-~~~
+   end ARCHITECTURE_NAME;
 
-   end architecture [ARCHITECTURE NAME];
+**Fix**
+
+.. code-block:: vhdl
+
+   end architecture ARCHITECTURE_NAME;
 

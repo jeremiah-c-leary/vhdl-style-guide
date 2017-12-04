@@ -13,8 +13,8 @@ Welcome to vhdl-style-guide's documentation!
    installing
    usage
    rules
-   architecture_010
-   architecture_024
+   architecture_rules
+   instantiation_rules
    library
    entity
 
