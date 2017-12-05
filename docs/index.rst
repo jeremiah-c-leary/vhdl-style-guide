@@ -14,9 +14,9 @@ Welcome to vhdl-style-guide's documentation!
    usage
    rules
    architecture_rules
+   entity_rules
    instantiation_rules
    library
-   entity
 
 Indices and tables
 ==================

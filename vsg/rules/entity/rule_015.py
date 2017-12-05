@@ -18,10 +18,8 @@ class rule_015(entity_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isEndEntityDeclaration:
-                lLine = oLine.line.split()
-                if not len(lLine) >= 3:
-                    if not (lLine[0] == 'end' and lLine[1] == 'entity' and not lLine[2].startswith('--')):
-                        self.add_violation(iLineNumber)
+                if not re.match('^\s*end\s+entity', oLine.line, re.IGNORECASE):
+                    self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

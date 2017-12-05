@@ -191,3 +191,13 @@ class testRuleEntityMethods(unittest.TestCase):
         dExpected = ['19-33']
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_019(self):
+        oRule = entity.rule_019()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'entity')
+        self.assertEqual(oRule.identifier, '019')
+
+        dExpected = [133]
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)

@@ -100,7 +100,7 @@ entity ENTITY1 is
     PORT2_O : out   std_logic;
     PORT3_IO : inout std_logic
   );
-end ENT1
+end ENT1;
 
 architecture RTL of ENTITY1 is
 
@@ -130,7 +130,7 @@ entity ENTITY1 is
     O_PORT2 : out   std_logic;
     IO_PORT3 : inout std_logic
   );
-end entity ENTITY1
+end entity;
 
 
 -- Check proper alignment of :'s does not cause an error
