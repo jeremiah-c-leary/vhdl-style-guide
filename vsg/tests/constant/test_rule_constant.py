@@ -81,3 +81,12 @@ class testRuleConstantMethods(unittest.TestCase):
         dExpected = ['3-15']
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_010(self):
+        oRule = constant.rule_010()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'constant')
+        self.assertEqual(oRule.identifier, '010')
+        dExpected = [9]
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)

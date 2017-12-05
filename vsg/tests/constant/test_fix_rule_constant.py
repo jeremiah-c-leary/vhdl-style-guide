@@ -62,3 +62,10 @@ class testFixRuleConstantMethods(unittest.TestCase):
         oRule.fix(oFile)
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
+
+    def test_fix_rule_010(self):
+        oRule = constant.rule_010()
+        dExpected = []
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)

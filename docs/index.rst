@@ -14,6 +14,7 @@ Welcome to vhdl-style-guide's documentation!
    usage
    rules
    architecture_rules
+   constant_rules
    entity_rules
    instantiation_rules
    library
