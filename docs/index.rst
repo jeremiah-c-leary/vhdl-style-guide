@@ -7,17 +7,12 @@ Welcome to vhdl-style-guide's documentation!
 ============================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :caption: Contents:
 
    installing
    usage
    rules
-   architecture_rules
-   constant_rules
-   entity_rules
-   instantiation_rules
-   library
 
 Indices and tables
 ==================
