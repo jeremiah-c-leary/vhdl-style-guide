@@ -7,6 +7,7 @@ class whitespace_rule(rule.rule):
     def __init__(self):
         rule.rule.__init__(self)
         self.name = 'whitespace'
+        self.phase = 2
 
 
 from rule_001 import rule_001

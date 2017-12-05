@@ -17,6 +17,7 @@ class testRuleWhitespaceMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'whitespace')
         self.assertEqual(oRule.identifier, '001')
+        self.assertEqual(oRule.phase, 2)
 
         oFile = vhdlFile.vhdlFile(sFileName)
 
@@ -34,6 +35,7 @@ class testRuleWhitespaceMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'whitespace')
         self.assertEqual(oRule.identifier, '002')
+        self.assertEqual(oRule.phase, 0)
 
         oFile = vhdlFile.vhdlFile(sFileName)
 
@@ -52,6 +54,7 @@ class testRuleWhitespaceMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'whitespace')
         self.assertEqual(oRule.identifier, '003')
+        self.assertEqual(oRule.phase, 2)
 
         oFile = vhdlFile.vhdlFile(sFileName)
 
@@ -70,6 +73,7 @@ class testRuleWhitespaceMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'whitespace')
         self.assertEqual(oRule.identifier, '004')
+        self.assertEqual(oRule.phase, 2)
 
         oFile = vhdlFile.vhdlFile(sFileName)
 
@@ -88,6 +92,7 @@ class testRuleWhitespaceMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'whitespace')
         self.assertEqual(oRule.identifier, '005')
+        self.assertEqual(oRule.phase, 2)
 
         oFile = vhdlFile.vhdlFile(sFileName)
 
@@ -118,6 +123,7 @@ class testRuleWhitespaceMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'whitespace')
         self.assertEqual(oRule.identifier, '006')
+        self.assertEqual(oRule.phase, 2)
 
         oFile = vhdlFile.vhdlFile(sFileName)
 
@@ -144,6 +150,7 @@ class testRuleWhitespaceMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'whitespace')
         self.assertEqual(oRule.identifier, '007')
+        self.assertEqual(oRule.phase, 2)
 
         oFile = vhdlFile.vhdlFile(sFileName)
 
