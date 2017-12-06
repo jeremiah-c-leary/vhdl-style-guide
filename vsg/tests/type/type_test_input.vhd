@@ -39,6 +39,8 @@ package PACK is
   );
   a <= b;
 
+    subtype a is range 0 to 9;
+
 begin
 
 end package PACK;

@@ -549,6 +549,24 @@ class testLineMethods(unittest.TestCase):
         oLine.insideType= True
         self.assertEqual(oLine.insideType, True)
 
+    def test_isSubtypeEnd_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isSubtypeEnd, False)
+        oLine.isSubtypeEnd = True
+        self.assertEqual(oLine.isSubtypeEnd, True)
+
+    def test_isSubtypeKeyword_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isSubtypeKeyword, False)
+        oLine.isSubtypeKeyword = True
+        self.assertEqual(oLine.isSubtypeKeyword, True)
+
+    def test_insideSubtype_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.insideSubtype, False)
+        oLine.insideSubtype= True
+        self.assertEqual(oLine.insideSubtype, True)
+
     def test_isVariable_attribute(self):
         oLine = line.line('contents of Line')
         self.assertEqual(oLine.isVariable, False)

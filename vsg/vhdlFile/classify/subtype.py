@@ -1,18 +1,18 @@
 import re
 
 
-def type(dVars, oLine):
+def subtype(dVars, oLine):
 
-    if re.match('^\s*type\s', oLine.line, re.IGNORECASE):
-        oLine.isTypeKeyword = True
-        oLine.insideType = True
+    if re.match('^\s*subtype\s', oLine.line, re.IGNORECASE):
+        oLine.isSubtypeKeyword = True
+        oLine.insideSubtype = True
         oLine.indentLevel = dVars['iCurrentIndentLevel']
         dVars['iCurrentIndentLevel'] += 1
-    if oLine.insideType:
-        if not oLine.isTypeKeyword and not oLine.isBlank:
+    if oLine.insideSubtype:
+        if not oLine.isSubtypeKeyword and not oLine.isBlank:
             oLine.indentLevel = dVars['iCurrentIndentLevel']
         if ';' in oLine.line:
-            oLine.isTypeEnd = True
+            oLine.isSubtypeEnd = True
             dVars['iCurrentIndentLevel'] -= 1
             if re.match('^\s*\)\s*;', oLine.line):
                 oLine.indentLevel = dVars['iCurrentIndentLevel']

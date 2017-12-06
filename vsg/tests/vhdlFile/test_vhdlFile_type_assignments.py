@@ -50,3 +50,33 @@ class testVhdlFileTypeAssignments(unittest.TestCase):
             lActual.append(oLine.indentLevel)
         # Compare
         self.assertEqual(lActual, lExpected)
+
+    def test_isSubtypeKeyword(self):
+        lExpected = [42]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFile.lines):
+            if oLine.isSubtypeKeyword:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
+    def test_isSubtypeEnd(self):
+        lExpected = [42]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFile.lines):
+            if oLine.isSubtypeEnd:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
+    def test_insideSubtype(self):
+        lExpected = [42]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFile.lines):
+            if oLine.insideSubtype:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
