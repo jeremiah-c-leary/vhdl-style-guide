@@ -52,6 +52,7 @@ class vhdlFile():
                     classify.concurrent(dVars, oLine)
 
                 classify.forLoop(dVars, oLine)
+                classify.whileLoop(dVars, oLine)
 
                 # Check if statements
                 if oLine.insideProcess or oLine.insideFunction:
@@ -65,8 +66,8 @@ class vhdlFile():
                 # Check sequential statements
                 if oLine.insideProcess:
                     classify.sequential(dVars, oLine)
+                if oLine.insideProcess or oLine.insideFunction:
                     classify.variable_assignment(dVars, oLine)
-
                 # Check instantiation statements
                 if oLine.insideArchitecture and not oLine.insideProcess and \
                    not oLine.isConcurrentBegin and \

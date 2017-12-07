@@ -1,5 +1,4 @@
 
-#from .context import vsg
 import unittest
 
 from vsg import line
@@ -530,6 +529,24 @@ class testLineMethods(unittest.TestCase):
         self.assertEqual(oLine.isForLoopEnd, False)
         oLine.isForLoopEnd = True
         self.assertEqual(oLine.isForLoopEnd, True)
+
+    def test_insideWhileLoop_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.insideWhileLoop, False)
+        oLine.insideWhileLoop = True
+        self.assertEqual(oLine.insideWhileLoop, True)
+
+    def test_isWhileLoopKeyword_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isWhileLoopKeyword, False)
+        oLine.isWhileLoopKeyword = True
+        self.assertEqual(oLine.isWhileLoopKeyword, True)
+
+    def test_isWhileLoopEnd_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isWhileLoopEnd, False)
+        oLine.isWhileLoopEnd = True
+        self.assertEqual(oLine.isWhileLoopEnd, True)
 
     def test_isTypeEnd_attribute(self):
         oLine = line.line('contents of Line')

@@ -8,7 +8,7 @@ def forLoop(dVars, oLine):
         oLine.insideForLoop = True
         oLine.indentLevel = dVars['iCurrentIndentLevel']
         dVars['iCurrentIndentLevel'] += 1
-    if re.match('^\s*end\s+loop', oLine.lineLower):
+    if re.match('^\s*end\s+loop', oLine.lineLower) and not oLine.insideWhileLoop:
         oLine.isForLoopEnd = True
         dVars['iCurrentIndentLevel'] -= 1
         oLine.indentLevel = dVars['iCurrentIndentLevel']

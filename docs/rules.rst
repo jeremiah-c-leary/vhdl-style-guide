@@ -8,3 +8,4 @@ The rules are divided into catagories depending on the part of the VHDL code bei
 .. include:: entity_rules.rst
 .. include:: instantiation_rules.rst
 .. include:: subtype_rules.rst
+.. include:: while_loop_rules.rst

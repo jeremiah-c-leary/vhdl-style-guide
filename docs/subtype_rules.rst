@@ -14,25 +14,34 @@ The indent amount can be controlled by the **indentSize** attribute on the rule.
 
 .. code-block:: vhdl
 
-   architecture RTL of entity FIFO is
-
-         subtype width is range 0 to 9;
-
-   subtype length is range 5 to 20;
-
+   function FUNC1 (v : in natural) return natural is
+     variable temp, log : natural;
    begin
+
+   while (temp /= 0) loop
+       temp := temp/2;
+     end loop;
+
+     return temp;
+
+   end function FUNC1;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   architecture RTL of entity FIFO is
-
-     subtype width is range 0 to 9;
-
-     subtype length is range 5 to 20;
-
+   function FUNC1 (v : in natural) return natural is
+     variable temp, log : natural;
    begin
+
+     while (temp /= 0) loop
+       temp := temp/2;
+     end loop;
+
+     return temp;
+
+   end function FUNC1;
+
 
 **Configuration**
 

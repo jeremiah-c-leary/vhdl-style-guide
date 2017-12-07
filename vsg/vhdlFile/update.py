@@ -141,6 +141,11 @@ def update_for_loop_attributes(oPreviousLine, oCurrentLine):
     if oPreviousLine.insideForLoop and not oPreviousLine.isForLoopEnd:
         oCurrentLine.insideForLoop = True
 
+def update_while_loop_attributes(oPreviousLine, oCurrentLine):
+
+    if oPreviousLine.insideWhileLoop and not oPreviousLine.isWhileLoopEnd:
+        oCurrentLine.insideWhileLoop = True
+
 
 def inside_attributes(oPreviousLine, oCurrentLine):
 
@@ -168,3 +173,4 @@ def inside_attributes(oPreviousLine, oCurrentLine):
     update_function_attributes(oPreviousLine, oCurrentLine)
     update_generate_attributes(oPreviousLine, oCurrentLine)
     update_for_loop_attributes(oPreviousLine, oCurrentLine)
+    update_while_loop_attributes(oPreviousLine, oCurrentLine)

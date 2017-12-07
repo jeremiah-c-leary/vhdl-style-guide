@@ -118,6 +118,10 @@ class line():
         self.insideForLoop = False
         self.isForLoopKeyword = False
         self.isForLoopEnd = False
+        # While Loop attributes
+        self.insideWhileLoop = False
+        self.isWhileLoopKeyword = False
+        self.isWhileLoopEnd = False
         # Type attributes
         self.insideType = False
         self.isTypeKeyword = False
