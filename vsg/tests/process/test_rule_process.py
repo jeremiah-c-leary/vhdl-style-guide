@@ -187,7 +187,7 @@ class testRuleProcessMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'process')
         self.assertEqual(oRule.identifier, '020')
-        dExpected = [19,25,26,27,33]
+        dExpected = [19,25,26]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -251,5 +251,14 @@ class testRuleProcessMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'process')
         self.assertEqual(oRule.identifier, '027')
         dExpected = [77,84]
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_028(self):
+        oRule = process.rule_028()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'process')
+        self.assertEqual(oRule.identifier, '028')
+        dExpected = [27,33]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)

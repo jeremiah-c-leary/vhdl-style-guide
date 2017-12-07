@@ -6,15 +6,15 @@ from vsg import fix
 import re
 
 
-class rule_020(process_rule):
+class rule_028(process_rule):
     '''
-    Process rule 020 checks the indentation on multiline sensitivity lists.
+    Process rule 028 checks the indentation of the closing parenthesis if it is on a line by itself.
     '''
 
     def __init__(self):
         process_rule.__init__(self)
-        self.identifier = '020'
-        self.solution = 'Fix indentation of sensitivity list.'
+        self.identifier = '028'
+        self.solution = 'Align closing parenthesis with opening parenthesis.'
         self.phase = 5
 
     def analyze(self, oFile):
@@ -25,9 +25,7 @@ class rule_020(process_rule):
                 if oLine.isSensitivityListBegin:
                     iAlignmentColumn = oLine.line.find('(')
                 elif oLine.isSensitivityListEnd and re.match('^\s*\)', oLine.line):
-                    continue
-                else:
-                    check.multiline_alignment(self, iAlignmentColumn + 1, oLine, iLineNumber)
+                    check.multiline_alignment(self, iAlignmentColumn, oLine, iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.dFix['violations']:

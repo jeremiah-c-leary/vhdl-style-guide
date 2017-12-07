@@ -30,7 +30,7 @@ begIN
     end  process;
 
 proCEss (one, two, three
-          )   Is -- This is a comment
+            )   Is -- This is a comment
   begin
 
   End process;
