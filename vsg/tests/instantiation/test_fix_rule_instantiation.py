@@ -9,6 +9,7 @@ from vsg.tests import utils
 
 oFilePort = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','instantiation','instantiation_test_input.vhd'))
 oFileGeneric = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','instantiation','instantiation_generic_test_input.vhd'))
+oFileComment = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'instantiation_comment_test_input.vhd'))
 
 class testFixRuleInstantiationMethods(unittest.TestCase):
 
@@ -150,3 +151,12 @@ class testFixRuleInstantiationMethods(unittest.TestCase):
         oRule.fix(oFilePort)
         oRule.analyze(oFilePort)
         self.assertEqual(oRule.violations, [])
+
+    def test_fix_rule_023(self):
+        oRule = instantiation.rule_023()
+        oRule.fix(oFileComment)
+        oRule.analyze(oFileComment)
+        self.assertEqual(oRule.violations, [])
+        self.assertEqual(oFileComment.lines[24].line,'      generic_1 => \'0\',')
+        self.assertEqual(oFileComment.lines[29].line,'      port_2 => \'1\',')
+        self.assertEqual(oFileComment.lines[31].line,'      port_4 => \'1\'')

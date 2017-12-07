@@ -5,7 +5,8 @@ from vsg.rules import component
 from vsg import vhdlFile
 
 
-oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','component','component_test_input.vhd'))
+oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'component_test_input.vhd'))
+oFileComment = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'component_comment_test_input.vhd'))
 
 
 class testRuleComponentMethods(unittest.TestCase):
@@ -188,4 +189,14 @@ class testRuleComponentMethods(unittest.TestCase):
 
         dExpected = [65,87]
         oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_019(self):
+        oRule = component.rule_019()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'component')
+        self.assertEqual(oRule.identifier, '019')
+
+        dExpected = [7,12,14]
+        oRule.analyze(oFileComment)
         self.assertEqual(oRule.violations, dExpected)

@@ -7,8 +7,9 @@ from vsg.rules import instantiation
 from vsg import vhdlFile
 
 
-oFilePort = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','instantiation','instantiation_test_input.vhd'))
-oFileGeneric = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','instantiation','instantiation_generic_test_input.vhd'))
+oFilePort = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'instantiation_test_input.vhd'))
+oFileGeneric = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'instantiation_generic_test_input.vhd'))
+oFileComment = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'instantiation_comment_test_input.vhd'))
 
 class testRuleInstantiationMethods(unittest.TestCase):
 
@@ -240,4 +241,14 @@ class testRuleInstantiationMethods(unittest.TestCase):
 
         dExpected = [26,27]
         oRule.analyze(oFilePort)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_023(self):
+        oRule = instantiation.rule_023()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'instantiation')
+        self.assertEqual(oRule.identifier, '023')
+
+        dExpected = [24,29,31]
+        oRule.analyze(oFileComment)
         self.assertEqual(oRule.violations, dExpected)
