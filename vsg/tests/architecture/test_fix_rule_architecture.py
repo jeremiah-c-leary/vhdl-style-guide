@@ -3,10 +3,13 @@ import unittest
 
 from vsg.rules import architecture
 from vsg import vhdlFile
+from vsg.tests import utils
 
 # Read in test file used for all tests
 oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'architecture_test_input.vhd'))
 oFileRule010 = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'architecture_test_input.vhd'))
+oFileIs = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'architecture_is_test_input.vhd'))
+
 
 class testFixRuleArchitectureMethods(unittest.TestCase):
 
@@ -45,12 +48,16 @@ class testFixRuleArchitectureMethods(unittest.TestCase):
 #        oRule.analyze(oFile)
 #        self.assertEqual(oRule.violations, dExpected)
 #
-#    def test_fix_rule_006(self):
-#        oRule = architecture.rule_006()
-#        dExpected = []
-#        oRule.fix(oFile)
-#        oRule.analyze(oFile)
-#        self.assertEqual(oRule.violations, dExpected)
+    def test_fix_rule_006(self):
+        oRule = architecture.rule_006()
+        dExpected = []
+        oRule.fix(oFileIs)
+        oRule.analyze(oFileIs)
+        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oFileIs.lines[2].line, 'architecture RTL of FIFO is')
+        self.assertEqual(oFileIs.lines[3].line, '')
+        self.assertEqual(oFileIs.lines[3].isBlank, True)
+        self.assertEqual(oFileIs.lines[9].line, 'architecture RTL of FIFO is')
 
     def test_fix_rule_007(self):
         oRule = architecture.rule_007()

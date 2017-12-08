@@ -7,6 +7,7 @@ from vsg import vhdlFile
 # Read in test file used for all tests
 oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','architecture','architecture_test_input.vhd'))
 oFileComment = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','architecture','architecture_comment_test_input.vhd'))
+oFileIs = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'architecture_is_test_input.vhd'))
 
 class testRuleArchitectureMethods(unittest.TestCase):
 
@@ -84,8 +85,8 @@ class testRuleArchitectureMethods(unittest.TestCase):
     def test_rule_006(self):
         oRule = architecture.rule_006()
 
-        dExpected = [26]
-        oRule.analyze(oFile)
+        dExpected = [2,9]
+        oRule.analyze(oFileIs)
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_007(self):

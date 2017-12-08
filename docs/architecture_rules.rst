@@ -1,6 +1,30 @@
 Architecture Rules
 ------------------
 
+architecture_005
+################
+
+This rule checks for the *is* keyword is on the same line as the *architecture* keyword.
+Keeping the *is* on the same line reduces file length.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   architecture RTL of FIFO
+     is
+
+   architecture RTL of FIFO
+
+**Fix**
+
+.. code-block:: vhdl
+
+   architecture RTL of FIFO is
+
+   architecture RTL of FIFO is
+
+
 architecture_010
 ################
 

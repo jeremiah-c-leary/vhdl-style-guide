@@ -62,3 +62,21 @@ def is_vhdl_keyword(sWord):
         return True
     else:
         return False
+
+
+def clear_is_from_line(oLine):
+    oLine.update_line(re.sub(r'^(\s*)is', r'\1  ', oLine.line))
+    if re.match('^\s*$', oLine.line):
+        oLine.update_line('')
+        oLine.isBlank = True
+
+
+def search_for_and_remove_is_keyword(oFile, iLineNumber):
+    iSearchIndex = iLineNumber
+    while True:
+        iSearchIndex += 1
+        oLine = oFile.lines[iSearchIndex]
+        if re.match('^\s*is', oLine.line, re.IGNORECASE):
+            clear_is_from_line(oLine)
+        if not oLine.isBlank:
+            break
