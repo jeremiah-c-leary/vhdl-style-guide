@@ -1,21 +1,27 @@
 
 from vsg.rules.generic import generic_rule
+from vsg import utilities
 
 import re
 
 
 class rule_016(generic_rule):
-    '''Generic rule 016 checks for multiple generate terms on a single line.'''
+    '''
+    Generic rule 016 checks for multiple generic terms on a single line.
+    '''
 
     def __init__(self):
         generic_rule.__init__(self)
         self.identifier = '016'
         self.solution = 'Move multiple generics to their own lines.'
         self.phase = 1
-        self.fixable = False  # Need to figure out how to fix this
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isGenericDeclaration:
-                if re.match('^\s*\w+\s*:.*;\s*\w+\s*:', oLine.line):
-                    self.add_violation(iLineNumber)
+            if oLine.isGenericDeclaration and oLine.line.count(';') > 1:
+                self.add_violation(iLineNumber)
+
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations[::-1]:
+            for i in range(0, oFile.lines[iLineNumber].line.count(';')):
+                utilities.split_line_after_word(oFile, iLineNumber + i, ';')

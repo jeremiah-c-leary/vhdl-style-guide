@@ -7,7 +7,8 @@ from vsg import vhdlFile
 from vsg.tests import utils
 
 
-oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','generic','generic_test_input.vhd'))
+oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'generic_test_input.vhd'))
+oFileMultiple = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'generic_multiple_on_one_line_test_input.vhd'))
 
 
 class testFixRuleGenericMethods(unittest.TestCase):
@@ -106,8 +107,17 @@ class testFixRuleGenericMethods(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, [])
 
-#    def test_fix_rule_016(self):
-#        oRule = generic.rule_016()
-#        oRule.fix(oFile)
-#        oRule.analyze(oFile)
-#        self.assertEqual(oRule.violations, [])
+    def test_fix_rule_016(self):
+        oRule = generic.rule_016()
+        oRule.fix(oFileMultiple)
+        oRule.analyze(oFileMultiple)
+        self.assertEqual(oRule.violations, [])
+        self.assertEqual(oFileMultiple.lines[4].line,'  generic (')
+        self.assertEqual(oFileMultiple.lines[5].line,'    G_GENERIC1 : std_logic := \'0\';')
+        self.assertEqual(oFileMultiple.lines[6].line,'G_GENERIC2 : std_logic := \'1\';')
+        self.assertEqual(oFileMultiple.lines[7].line,'G_GENERIC3 : std_logic := \'1\';')
+        self.assertEqual(oFileMultiple.lines[8].line,'G_GENERIC4 : std_logic := \'1\';')
+        self.assertEqual(oFileMultiple.lines[9].line,'G_GENERIC5 : std_logic := \'1\'')
+        self.assertEqual(oFileMultiple.lines[10].line,'  );')
+
+

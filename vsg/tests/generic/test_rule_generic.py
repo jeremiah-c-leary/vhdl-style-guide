@@ -4,10 +4,11 @@ import unittest
 
 from vsg.rules import generic
 from vsg import vhdlFile
+from vsg.tests import utils
 
 
-oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','generic','generic_test_input.vhd'))
-
+oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'generic_test_input.vhd'))
+oFileMultiple = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'generic_multiple_on_one_line_test_input.vhd'))
 
 class testRuleGenericMethods(unittest.TestCase):
 
@@ -171,3 +172,9 @@ class testRuleGenericMethods(unittest.TestCase):
         dExpected = [21]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
+
+        oRule.violations = []
+        dExpected = [5]
+        oRule.analyze(oFileMultiple)
+        self.assertEqual(oRule.violations, dExpected)
+
