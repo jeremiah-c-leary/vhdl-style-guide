@@ -3,6 +3,8 @@ from vsg.rules.entity import entity_rule
 from vsg import fix
 from vsg import check
 
+import re
+
 
 class rule_012(entity_rule):
     '''
@@ -18,8 +20,8 @@ class rule_012(entity_rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isEndEntityDeclaration:
-                lLine = oLine.line.split()
-                if len(lLine) > 2:
+                if re.match('^\s*end\s+entity\s+\w+', oLine.line, re.IGNORECASE):
+                    lLine = oLine.line.split()
                     check.is_uppercase(self, lLine[2], iLineNumber)
 
     def _fix_violations(self, oFile):
