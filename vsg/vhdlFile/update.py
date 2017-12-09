@@ -22,11 +22,11 @@ def update_architecture_attributes(oPreviousLine, oCurrentLine):
     if oPreviousLine.insideArchitecture and not oPreviousLine.isEndArchitecture:
         oCurrentLine.insideArchitecture = True
 
+
 def update_assert_attributes(oPreviousLine, oCurrentLine):
 
     if oPreviousLine.insideAssert and not oPreviousLine.isAssertEnd:
         oCurrentLine.insideAssert = True
-
 
 def update_process_attributes(oPreviousLine, oCurrentLine):
 
@@ -140,6 +140,7 @@ def update_for_loop_attributes(oPreviousLine, oCurrentLine):
 
     if oPreviousLine.insideForLoop and not oPreviousLine.isForLoopEnd:
         oCurrentLine.insideForLoop = True
+
 
 def update_while_loop_attributes(oPreviousLine, oCurrentLine):
 

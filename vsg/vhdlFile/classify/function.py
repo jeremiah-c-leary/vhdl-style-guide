@@ -15,7 +15,8 @@ def function(dVars, oLine):
         if re.match('^\s*return', oLine.lineLower):
             oLine.isFunctionReturn = True
             oLine.indentLevel = dVars['iCurrentIndentLevel']
-        if re.match('^\s*end', oLine.lineLower) and not oLine.isEndIfKeyword and not oLine.isEndCaseKeyword and not oLine.isForLoopEnd and not oLine.isWhileLoopEnd:
+        if re.match('^\s*end', oLine.lineLower) and not oLine.isEndIfKeyword and \
+           not oLine.isEndCaseKeyword and not oLine.isForLoopEnd and not oLine.isWhileLoopEnd:
             oLine.isFunctionEnd = True
             oLine.indentLevel = dVars['iCurrentIndentLevel'] - 1
             dVars['iCurrentIndentLevel'] -= 1

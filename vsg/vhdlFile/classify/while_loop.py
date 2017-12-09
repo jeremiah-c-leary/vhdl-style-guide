@@ -1,7 +1,7 @@
 import re
 
 
-def whileLoop(dVars, oLine):
+def while_loop(dVars, oLine):
 
     if re.match('^\s*while\s.*\sloop', oLine.line, re.IGNORECASE):
         oLine.isWhileLoopKeyword = True

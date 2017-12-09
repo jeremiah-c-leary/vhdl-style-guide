@@ -1,7 +1,7 @@
 import re
 
 
-def packageBody(dVars, oLine):
+def package_body(dVars, oLine):
 
     # Check package body declarations
     if re.match('^\s*package\s+body', oLine.lineLower) and not oLine.insidePackageBody:

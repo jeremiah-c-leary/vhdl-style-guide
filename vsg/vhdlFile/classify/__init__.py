@@ -11,10 +11,10 @@ from forLoop import forLoop
 from function import function
 from generate import generate
 from generic import generic
-from ifStatement import ifStatement
+from if_statement import if_statement
 from instantiation import instantiation
 from library import library
-from packageBody import packageBody
+from package_body import package_body
 from package import package
 from port import port
 from process import process
@@ -24,4 +24,4 @@ from subtype import subtype
 from type import type
 from variable_assignment import variable_assignment
 from variable import variable
-from whileLoop import whileLoop
+from while_loop import while_loop

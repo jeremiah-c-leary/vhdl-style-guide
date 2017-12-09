@@ -38,7 +38,7 @@ class vhdlFile():
                     classify.generic(dVars, oLine)
 
                 classify.architecture(self, dVars, oLine)
-                classify.packageBody(dVars, oLine)
+                classify.package_body(dVars, oLine)
                 classify.package(dVars, oLine)
                 classify.component(dVars, oLine)
                 classify.signal(dVars, oLine)
@@ -52,11 +52,11 @@ class vhdlFile():
                     classify.concurrent(dVars, oLine)
 
                 classify.forLoop(dVars, oLine)
-                classify.whileLoop(dVars, oLine)
+                classify.while_loop(dVars, oLine)
 
                 # Check if statements
                 if oLine.insideProcess or oLine.insideFunction:
-                    classify.ifStatement(dVars, oLine)
+                    classify.if_statement(dVars, oLine)
 
                 classify.case(self, dVars, oLine)
                 if not oLine.insidePackage:

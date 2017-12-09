@@ -40,7 +40,7 @@ class rule():
     def report_violations(self, iLineNumber):
         for sViolation in self.violations:
             if str(sViolation).startswith(str(iLineNumber) + '-') or str(iLineNumber) == str(sViolation):
-                print ('  ' + (self.name + '_' + self.identifier).ljust(25) + ' | ' + str(sViolation).rjust(10) + ' | ' + self.solution)
+                print('  ' + (self.name + '_' + self.identifier).ljust(25) + ' | ' + str(sViolation).rjust(10) + ' | ' + self.solution)
                 return 1
         return 0
 

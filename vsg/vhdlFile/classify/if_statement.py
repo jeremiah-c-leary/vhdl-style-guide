@@ -1,7 +1,7 @@
 import re
 
 
-def ifStatement(dVars, oLine):
+def if_statement(dVars, oLine):
 
     if re.match('^\s*if', oLine.lineLower):
         oLine.isIfKeyword = True
