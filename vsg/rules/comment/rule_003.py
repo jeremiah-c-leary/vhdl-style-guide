@@ -13,7 +13,7 @@ class rule_003(rule.rule):
         self.name = 'comment'
         self.identifier = '003'
         self.solution = 'Inconsistent alignment of comments within process.'
-        self.phase = 5
+        self.phase = 6
 
     def analyze(self, oFile):
         lGroup = []

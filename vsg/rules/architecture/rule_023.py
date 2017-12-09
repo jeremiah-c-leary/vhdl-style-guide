@@ -15,7 +15,7 @@ class rule_023(rule.rule):
         self.name = 'architecture'
         self.identifier = '023'
         self.solution = 'Inconsistent alignment of comments.'
-        self.phase = 5
+        self.phase = 6
 
     def analyze(self, oFile):
         lGroup = []
