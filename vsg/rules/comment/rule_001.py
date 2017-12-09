@@ -1,14 +1,15 @@
 
-from vsg.rules.comment import comment_rule
+from vsg import rule
 from vsg import check
 from vsg import fix
 
 
-class rule_001(comment_rule):
+class rule_001(rule.rule):
     '''Case rule 001 checks for the proper alignment of comments.'''
 
     def __init__(self):
-        comment_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'comment'
         self.identifier = '001'
         self.solution = 'Ensure proper indentation.'
         self.phase = 4

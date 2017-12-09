@@ -1,14 +1,15 @@
 
-from vsg.rules.component import component_rule
+from vsg import rule
 from vsg import fix
 from vsg import check
 
 
-class rule_008(component_rule):
+class rule_008(rule.rule):
     '''Component rule 008 checks the component name is uppercase in the component declaration line.'''
 
     def __init__(self):
-        component_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'component'
         self.identifier = '008'
         self.solution = 'Change component name to all uppercase.'
         self.phase = 6

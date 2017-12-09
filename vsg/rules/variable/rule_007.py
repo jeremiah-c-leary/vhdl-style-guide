@@ -1,14 +1,15 @@
 
-from vsg.rules.variable import variable_rule
+from vsg import rule
 
 
-class rule_007(variable_rule):
+class rule_007(rule.rule):
     '''
     Signal rule 007 checks for default assignments in variable declarations.
     '''
 
     def __init__(self):
-        variable_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'variable'
         self.identifier = '007'
         self.solution = 'Remove default assignment.'
         self.phase = 1

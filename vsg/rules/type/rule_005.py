@@ -1,16 +1,17 @@
 
-from vsg.rules.type import type_rule
+from vsg import rule
 from vsg import check
 from vsg import fix
 
 
-class rule_005(type_rule):
+class rule_005(rule.rule):
     '''
     Type rule 005 checks for the proper indentation of multiline types.
     '''
 
     def __init__(self):
-        type_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'type'
         self.identifier = '005'
         self.solution = 'Ensure proper indentation.'
         self.phase = 4

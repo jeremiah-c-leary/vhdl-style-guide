@@ -1,14 +1,15 @@
 
-from vsg.rules.signal import signal_rule
+from vsg import rule
 
 
-class rule_008(signal_rule):
+class rule_008(rule.rule):
     '''
     Signal rule 008 checks for prefixes in signal names.
     '''
 
     def __init__(self):
-        signal_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'signal'
         self.identifier = '008'
         self.solution = 'Remove default assignment.'
         self.prefixes = None

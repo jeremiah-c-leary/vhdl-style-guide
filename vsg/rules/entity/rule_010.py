@@ -1,16 +1,17 @@
 
-from vsg.rules.entity import entity_rule
+from vsg import rule
 from vsg import fix
 from vsg import check
 
 
-class rule_010(entity_rule):
+class rule_010(rule.rule):
     '''
     Entity rule 010 checks the "end" keyword is lowercase.
     '''
 
     def __init__(self):
-        entity_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'entity'
         self.identifier = '010'
         self.solution = 'Change "end" keyword to lowercase.'
         self.phase = 6

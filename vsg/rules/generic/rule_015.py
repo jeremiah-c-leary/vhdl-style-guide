@@ -1,18 +1,19 @@
 
-from vsg.rules.generic import generic_rule
+from vsg import rule
 from vsg import check
 from vsg import fix
 from vsg import line
 
 
-class rule_015(generic_rule):
+class rule_015(rule.rule):
     '''
     Generic rule 015 ensures the alignment of the := operator for every
     generic in the entity.
     '''
 
     def __init__(self):
-        generic_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'generic'
         self.identifier = '015'
         self.solution = 'Inconsistent alignment of ":=" in generic \
                          declaration of entity.'

@@ -1,17 +1,18 @@
 
-from vsg.rules.instantiation import instantiation_rule
+from vsg import rule
 from vsg import fix
 
 import re
 
 
-class rule_002(instantiation_rule):
+class rule_002(rule.rule):
     '''
     Instantiation rule 002 checks for a single space after the :
     '''
 
     def __init__(self):
-        instantiation_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'instantiation'
         self.identifier = '002'
         self.solution = 'Ensure only one space after the :.'
         self.phase = 2

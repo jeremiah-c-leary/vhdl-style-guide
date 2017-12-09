@@ -1,17 +1,18 @@
 
-from vsg.rules.architecture import architecture_rule
+from vsg import rule
 from vsg import fix
 
 import re
 
 
-class rule_022(architecture_rule):
+class rule_022(rule.rule):
     '''
     Architecture rule 022 checks for a single space after the "end architecture" keywords and the architecture name.
     '''
 
     def __init__(self):
-        architecture_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'architecture'
         self.identifier = '022'
         self.solution = 'Ensure a single space exists between "architecture" and the architecture name.'
         self.phase = 2

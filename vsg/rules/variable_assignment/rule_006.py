@@ -1,12 +1,13 @@
 
-from vsg.rules.variable_assignment import variable_assignment_rule
+from vsg import rule
 
 
-class rule_006(variable_assignment_rule):
+class rule_006(rule.rule):
     '''Variable assignment rule 006 checks for commented out lines within a multiline variable_assignment statement.'''
 
     def __init__(self):
-        variable_assignment_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'variable_assignment'
         self.identifier = '006'
         self.solution = 'Remove comment.'
         self.phase = 1

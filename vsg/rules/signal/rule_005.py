@@ -1,17 +1,18 @@
 
-from vsg.rules.signal import signal_rule
+from vsg import rule
 from vsg import fix
 
 import re
 
 
-class rule_005(signal_rule):
+class rule_005(rule.rule):
     '''
     Signal rule 005 checks there is a single space after the colon.
     '''
 
     def __init__(self):
-        signal_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'signal'
         self.identifier = '005'
         self.solution = 'Ensure only a signal space after the colon.'
         self.phase = 2

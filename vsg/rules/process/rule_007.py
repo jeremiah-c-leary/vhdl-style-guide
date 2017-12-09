@@ -1,17 +1,18 @@
 
-from vsg.rules.process import process_rule
+from vsg import rule
 from vsg import fix
 
 import re
 
 
-class rule_007(process_rule):
+class rule_007(rule.rule):
     '''
     Process rule 007 checks for a single space between the "end" and "process" keywords.
     '''
 
     def __init__(self):
-        process_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'process'
         self.identifier = '007'
         self.solution = 'Ensure there are only one space between the "end" and "process" keywords.'
         self.phase = 2

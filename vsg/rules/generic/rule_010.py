@@ -1,14 +1,16 @@
 
-from vsg.rules.generic import generic_rule
+from vsg import rule
 from vsg import line
 
 import re
 
-class rule_010(generic_rule):
+
+class rule_010(rule.rule):
     '''Generic rule 010 checks the closing parenthesis for generics are on a line by itself.'''
 
     def __init__(self):
-        generic_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'generic'
         self.identifier = '010'
         self.solution = 'Closing parenthesis must be on a line by itself.'
         self.phase = 1

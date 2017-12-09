@@ -1,17 +1,18 @@
 
-from vsg.rules.package import package_rule
+from vsg import rule
 from vsg import fix
 
 import re
 
 
-class rule_006(package_rule):
+class rule_006(rule.rule):
     '''
     Package rule 006 checks for the "end" and "package" keyword are lower case.
     '''
 
     def __init__(self):
-        package_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'package'
         self.identifier = '006'
         self.solution = 'Ensure "end" and "package" keywords are lower case.'
         self.phase = 6

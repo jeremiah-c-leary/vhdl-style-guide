@@ -1,18 +1,19 @@
 
-from vsg.rules.instantiation import instantiation_rule
+from vsg import rule
 from vsg import fix
 from vsg import check
 
 import re
 
 
-class rule_009(instantiation_rule):
+class rule_009(rule.rule):
     '''
     Instantiation rule 009 checks the entity name is uppercase in the instantiation declaration line.
     '''
 
     def __init__(self):
-        instantiation_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'instantiation'
         self.identifier = '009'
         self.solution = 'Change entity name to all uppercase.'
         self.phase = 6

@@ -1,17 +1,18 @@
 
-from vsg.rules.type import type_rule
+from vsg import rule
 from vsg import line
 
 import re
 
 
-class rule_008(type_rule):
+class rule_008(rule.rule):
     '''
     Type rule 008 checks the closing parenthesis of a multi-line type declaration is on it's own line.
     '''
 
     def __init__(self):
-        type_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'type'
         self.identifier = '008'
         self.solution = 'Move the closing parenthesis to it\'s own line.'
         self.phase = 1

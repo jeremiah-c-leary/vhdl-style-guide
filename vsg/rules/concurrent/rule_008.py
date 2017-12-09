@@ -1,16 +1,17 @@
 
-from vsg.rules.concurrent import concurrent_rule
+from vsg import rule
 from vsg import check
 from vsg import fix
 
 
-class rule_008(concurrent_rule):
+class rule_008(rule.rule):
     '''
     Concurrent rule 008 ensures the alignment of comments in sequential conccurent statements.
     '''
 
     def __init__(self):
-        concurrent_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'concurrent'
         self.identifier = '008'
         self.solution = 'Inconsistent alignment of comments in group of lines.'
         self.phase = 5

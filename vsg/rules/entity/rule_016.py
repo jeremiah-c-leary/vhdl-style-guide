@@ -1,16 +1,17 @@
 
-from vsg.rules.entity import entity_rule
+from vsg import rule
 from vsg import fix
 from vsg import check
 
 
-class rule_016(entity_rule):
+class rule_016(rule.rule):
     '''
     Entity rule 016 checks for a blank line above the "end entity" keywords.
     '''
 
     def __init__(self):
-        entity_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'entity'
         self.identifier = '016'
         self.solution = 'Remove blank line(s) above "end entity" keywords.'
         self.phase = 3

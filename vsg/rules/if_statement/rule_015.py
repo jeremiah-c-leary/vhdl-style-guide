@@ -1,15 +1,16 @@
 
-from vsg.rules.if_statement import if_rule
+from vsg import rule
 from vsg import fix
 
 import re
 
 
-class rule_015(if_rule):
+class rule_015(rule.rule):
     '''If rule 015 checks there is a single space between the "end" and "if" keywords.'''
 
     def __init__(self):
-        if_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'if'
         self.identifier = '015'
         self.solution = 'Ensure only a single space exists between the "end" and "if" keywords.'
         self.phase = 2

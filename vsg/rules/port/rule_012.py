@@ -1,16 +1,17 @@
 
-from vsg.rules.port import port_rule
+from vsg import rule
 
 import re
 
 
-class rule_012(port_rule):
+class rule_012(rule.rule):
     '''
     Port rule 012 checks for default assignments in port declarations.
     '''
 
     def __init__(self):
-        port_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'port'
         self.identifier = '012'
         self.solution = 'Remove default assignment in port declaration'
         self.phase = 1

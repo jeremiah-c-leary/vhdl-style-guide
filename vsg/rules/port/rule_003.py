@@ -1,16 +1,17 @@
 
-from vsg.rules.port import port_rule
+from vsg import rule
 
 import re
 
 
-class rule_003(port_rule):
+class rule_003(rule.rule):
     '''
     Port rule 003 checks spacing between "port" and the open parenthesis.
     '''
 
     def __init__(self):
-        port_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'port'
         self.identifier = '003'
         self.solution = 'Change spacing between "port" and "(" to one space.'
         self.phase = 2

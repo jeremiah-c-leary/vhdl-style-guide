@@ -1,14 +1,15 @@
 
-from vsg.rules.variable_assignment import variable_assignment_rule
+from vsg import rule
 from vsg import check
 from vsg import fix
 
 
-class rule_001(variable_assignment_rule):
+class rule_001(rule.rule):
     '''Variable assignment rule 001 checks for the proper indentation at the beginning of the line.'''
 
     def __init__(self):
-        variable_assignment_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'variable_assignment'
         self.identifier = '001'
         self.solution = 'Ensure proper indentation.'
         self.phase = 4

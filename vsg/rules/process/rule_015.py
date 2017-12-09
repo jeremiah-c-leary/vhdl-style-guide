@@ -1,15 +1,16 @@
 
-from vsg.rules.process import process_rule
+from vsg import rule
 from vsg import fix
 
 
-class rule_015(process_rule):
+class rule_015(rule.rule):
     '''
     Process rule 015 checks for a blank line or a comment line above the "process" keyword.
     '''
 
     def __init__(self):
-        process_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'process'
         self.identifier = '015'
         self.solution = 'Add a space or a comment above the "process" keyword.'
         self.phase = 3
@@ -18,7 +19,7 @@ class rule_015(process_rule):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isProcessKeyword:
                 if not oFile.lines[iLineNumber - 1].isBlank and not oFile.lines[iLineNumber - 1].isComment:
-                      self.add_violation(iLineNumber)
+                    self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:

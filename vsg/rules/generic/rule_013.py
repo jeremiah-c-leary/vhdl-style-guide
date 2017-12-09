@@ -1,13 +1,15 @@
 
-from vsg.rules.generic import generic_rule
+from vsg import rule
 
 import copy
 
-class rule_013(generic_rule):
+
+class rule_013(rule.rule):
     '''Generic rule 013 checks for a generic keyword on the same line as a generic declaration.'''
 
     def __init__(self):
-        generic_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'generic'
         self.identifier = '013'
         self.solution = 'Move generic declaration to it\'s own line.'
         self.phase = 1

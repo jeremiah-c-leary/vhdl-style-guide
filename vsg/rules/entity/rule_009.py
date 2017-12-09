@@ -1,16 +1,17 @@
 
-from vsg.rules.entity import entity_rule
+from vsg import rule
 from vsg import check
 from vsg import fix
 
 
-class rule_009(entity_rule):
+class rule_009(rule.rule):
     '''
     Entity rule 009 checks for spaces before the "end" keyword.
     '''
 
     def __init__(self):
-        entity_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'entity'
         self.identifier = '009'
         self.solution = 'Ensure proper indentation.'
         self.phase = 4

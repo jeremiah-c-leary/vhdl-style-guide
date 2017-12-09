@@ -1,17 +1,18 @@
 
-from vsg.rules.variable import variable_rule
+from vsg import rule
 from vsg import fix
 
 import re
 
 
-class rule_003(variable_rule):
+class rule_003(rule.rule):
     '''
     Signal rule 003 checks there is a single space after the "variable" keyword.
     '''
 
     def __init__(self):
-        variable_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'variable'
         self.identifier = '003'
         self.solution = 'Remove all but one space after the "variable" keyword.'
         self.phase = 2

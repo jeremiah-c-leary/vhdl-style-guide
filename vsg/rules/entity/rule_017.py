@@ -1,17 +1,18 @@
 
-from vsg.rules.entity import entity_rule
+from vsg import rule
 from vsg import check
 from vsg import fix
 from vsg import line
 
 
-class rule_017(entity_rule):
+class rule_017(rule.rule):
     '''
     Entity rule 017 ensures the alignment of the : operator for every port in the entity.
     '''
 
     def __init__(self):
-        entity_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'entity'
         self.identifier = '017'
         self.solution = 'Inconsistent alignment of ":" in port declaration of entity.'
         self.phase = 5
@@ -32,9 +33,9 @@ class rule_017(entity_rule):
                 iStartGroupIndex = None
             if fGroupFound:
                 if oLine.isPortDeclaration:
-                  lGroup.append(oLine)
+                    lGroup.append(oLine)
                 else:
-                  lGroup.append(line.line('Removed line'))
+                    lGroup.append(line.line('Removed line'))
 
     def _fix_violations(self, oFile):
         fix.keyword_alignment(self, oFile)

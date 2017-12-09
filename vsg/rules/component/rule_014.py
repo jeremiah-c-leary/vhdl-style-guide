@@ -1,17 +1,18 @@
 
-from vsg.rules.component import component_rule
+from vsg import rule
 from vsg import fix
 from vsg import check
 
 
-class rule_014(component_rule):
+class rule_014(rule.rule):
     '''
     Component rule 014 checks the "component" keyword is lower case in the
     closing of the component.
     '''
 
     def __init__(self):
-        component_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'component'
         self.identifier = '014'
         self.solution = 'Change "component" keyword to lower case.'
         self.phase = 6

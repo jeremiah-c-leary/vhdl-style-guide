@@ -1,17 +1,18 @@
 
-from vsg.rules.generic import generic_rule
+from vsg import rule
 from vsg import utilities
 
 import re
 
 
-class rule_016(generic_rule):
+class rule_016(rule.rule):
     '''
     Generic rule 016 checks for multiple generic terms on a single line.
     '''
 
     def __init__(self):
-        generic_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'generic'
         self.identifier = '016'
         self.solution = 'Move multiple generics to their own lines.'
         self.phase = 1

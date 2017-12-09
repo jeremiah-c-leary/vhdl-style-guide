@@ -1,17 +1,18 @@
 
-from vsg.rules.instantiation import instantiation_rule
+from vsg import rule
 
 import re
 import copy
 
 
-class rule_021(instantiation_rule):
+class rule_021(rule.rule):
     '''
     Instantiation rule 021 checks multiple port assignments on the same line.
     '''
 
     def __init__(self):
-        instantiation_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'instantiation'
         self.identifier = '021'
         self.solution = 'Move multiple port assignments to their own lines.'
         self.phase = 1

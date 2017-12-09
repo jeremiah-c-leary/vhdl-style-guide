@@ -1,15 +1,16 @@
 
-from vsg.rules.case import case_rule
+from vsg import rule
 from vsg import fix
 from vsg import check
 import re
 
 
-class rule_002(case_rule):
+class rule_002(rule.rule):
     '''Case rule 002 checks for a single space after the "case" keyword.'''
 
     def __init__(self):
-        case_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'case'
         self.identifier = '002'
         self.solution = 'Ensure a single space exists after the "case" keyword.'
         self.phase = 2

@@ -1,17 +1,18 @@
 
-from vsg.rules.function import function_rule
+from vsg import rule
 from vsg import fix
 
 import re
 
 
-class rule_003(function_rule):
+class rule_003(rule.rule):
     '''
     Function rule 003 checks there is a single space between the function name and the (.
     '''
 
     def __init__(self):
-        function_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'function'
         self.identifier = '003'
         self.solution = 'Ensure a single space exists between the function name and the (.'
         self.phase = 2

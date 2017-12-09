@@ -1,15 +1,16 @@
 
-from vsg.rules.if_statement import if_rule
+from vsg import rule
 from vsg import utilities
 
 import re
 
 
-class rule_016(if_rule):
+class rule_016(rule.rule):
     '''If rule 016 checks for code after the "else" keyword.'''
 
     def __init__(self):
-        if_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'if'
         self.identifier = '016'
         self.solution = 'Move code after "else" keyword to the next line.'
         self.phase = 1

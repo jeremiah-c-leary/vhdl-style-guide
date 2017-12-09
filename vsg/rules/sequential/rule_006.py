@@ -1,14 +1,15 @@
 
-from vsg.rules.sequential import sequential_rule
+from vsg import rule
 
 
-class rule_006(sequential_rule):
+class rule_006(rule.rule):
     '''
     Sequential rule 006 checks for commented out lines within a multiline sequential statement.
     '''
 
     def __init__(self):
-        sequential_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'sequential'
         self.identifier = '006'
         self.solution = 'Remove comment.'
         self.phase = 1

@@ -1,15 +1,16 @@
 
-from vsg.rules.generic import generic_rule
+from vsg import rule
 from vsg import fix
 
 import re
 
 
-class rule_005(generic_rule):
+class rule_005(rule.rule):
     '''Generic rule 005 checks for a single space after the colon in a generic declaration.'''
 
     def __init__(self):
-        generic_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'generic'
         self.identifier = '005'
         self.solution = 'Reduce number of spaces after the colon to 1.'
         self.phase = 2

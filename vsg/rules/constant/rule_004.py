@@ -1,16 +1,17 @@
 
-from vsg.rules.constant import constant_rule
+from vsg import rule
 from vsg import fix
 from vsg import check
 
 
-class rule_004(constant_rule):
+class rule_004(rule.rule):
     '''
     Constant rule 004 checks the constant name is lowercase.
     '''
 
     def __init__(self):
-        constant_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'constant'
         self.identifier = '004'
         self.solution = 'Change constant name to lowercase.'
         self.phase = 6

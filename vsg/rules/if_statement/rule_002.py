@@ -1,14 +1,15 @@
 
-from vsg.rules.if_statement import if_rule
+from vsg import rule
 
 import re
 
 
-class rule_002(if_rule):
+class rule_002(rule.rule):
     '''If rule 002 checks the if boolean expression is enclosed in ()'s.'''
 
     def __init__(self):
-        if_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'if'
         self.identifier = '002'
         self.solution = 'Enclose boolean expression in ()\'s.'
         self.phase = 1

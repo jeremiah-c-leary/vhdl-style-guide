@@ -9,9 +9,10 @@ import json
 executablePath = os.path.dirname(os.path.realpath(__file__))
 
 # Import program modules
-sys.path.append(os.path.join(executablePath,'..'))
+sys.path.append(os.path.join(executablePath, '..'))
 from vsg import rule_list
 from vsg import vhdlFile
+
 
 def parse_command_line_arguments():
     '''Parses the command line arguments and returns them.'''
@@ -20,10 +21,10 @@ def parse_command_line_arguments():
                                      description='Analyzes VHDL files\
                                                   for style guide violations.')
 
-    parser.add_argument('-f', '--filename', required=True, help = 'File to analyze')
-    parser.add_argument('--local_rules', help = 'Path to local rules')
-    parser.add_argument('--configuration', help = 'JSON configuration file')
-    parser.add_argument('--fix', default=False, action='store_true', help = 'Fix issues found')
+    parser.add_argument('-f', '--filename', required=True, help='File to analyze')
+    parser.add_argument('--local_rules', help='Path to local rules')
+    parser.add_argument('--configuration', help='JSON configuration file')
+    parser.add_argument('--fix', default=False, action='store_true', help='Fix issues found')
 
     if len(sys.argv) == 1:
         parser.print_help()
@@ -37,11 +38,13 @@ def read_configuration_file(commandLineArguments):
         with open(commandLineArguments.configuration) as json_file:
             return json.load(json_file)
 
+
 def write_vhdl_file(oVhdlFile):
     with open(oVhdlFile.filename, 'w') as oFile:
         for oLine in oVhdlFile.lines[1:]:
             oFile.write(oLine.line + '\n')
     oFile.close()
+
 
 def main():
     '''Main routine of the VHDL Style Guide (VSG) program.'''
@@ -50,7 +53,7 @@ def main():
 
     configuration = read_configuration_file(commandLineArguments)
 
-    ### Add local rule path to system path so the rules can be loaded
+    # Add local rule path to system path so the rules can be loaded
     if commandLineArguments.local_rules:
         sys.path.append(os.path.abspath(commandLineArguments.local_rules))
     oVhdlFile = vhdlFile.vhdlFile(commandLineArguments.filename)
@@ -63,6 +66,7 @@ def main():
 
     oRules.check_rules()
     oRules.report_violations()
+
 
 if __name__ == '__main__':
     main()

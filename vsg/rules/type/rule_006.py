@@ -1,17 +1,18 @@
 
-from vsg.rules.type import type_rule
+from vsg import rule
 from vsg import fix
 
 import re
 
 
-class rule_006(type_rule):
+class rule_006(rule.rule):
     '''
     Type rule 006 checks for a single space before the "is" keyword.
     '''
 
     def __init__(self):
-        type_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'type'
         self.identifier = '006'
         self.solution = 'Ensure a single space before the "is" keyword.'
         self.phase = 2

@@ -91,6 +91,7 @@ def is_lowercase(self, sString, iLineNumber):
     if not sString == sString.lower():
         self.add_violation(iLineNumber)
 
+
 def is_word_lowercase(oLine, sString, iLineNumber):
     if not sString == sString.lower():
         self.add_violation(iLineNumber)
@@ -103,6 +104,7 @@ def is_single_space_after(self, sString, oLine, iLineNumber):
        not re.match('^\s*' + sString + '\s\S', oLine.lineLower) and \
        not re.match('^.*\S\s' + sString + '\'', oLine.lineLower):
         self.add_violation(iLineNumber)
+
 
 def is_single_space_before(self, sString, oLine, iLineNumber):
     if not sString.lower() in oLine.lineLower:

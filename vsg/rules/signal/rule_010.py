@@ -1,18 +1,19 @@
 
-from vsg.rules.signal import signal_rule
+from vsg import rule
 from vsg import fix
 from vsg import check
 
 import re
 
 
-class rule_010(signal_rule):
+class rule_010(rule.rule):
     '''
     Signal rule 010 checks the signal type is lowercase.
     '''
 
     def __init__(self):
-        signal_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'signal'
         self.identifier = '010'
         self.solution = 'Change signal type to lowercase.'
         self.phase = 6

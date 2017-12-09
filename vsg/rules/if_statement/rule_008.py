@@ -1,14 +1,15 @@
 
-from vsg.rules.if_statement import if_rule
+from vsg import rule
 from vsg import fix
 from vsg import check
 
 
-class rule_008(if_rule):
+class rule_008(rule.rule):
     '''If rule 008 checks for an empty line before the "end if" keyword.'''
 
     def __init__(self):
-        if_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'if'
         self.identifier = '008'
         self.solution = 'Remove blank line(s) before the "end if" keyword.'
         self.phase = 3

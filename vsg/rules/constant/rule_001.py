@@ -1,16 +1,17 @@
 
-from vsg.rules.constant import constant_rule
+from vsg import rule
 from vsg import check
 from vsg import fix
 
 
-class rule_001(constant_rule):
+class rule_001(rule.rule):
     '''
     Constant rule 001 checks for the proper indentation at the beginning of the line.
     '''
 
     def __init__(self):
-        constant_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'constant'
         self.identifier = '001'
         self.solution = 'Ensure proper indentation.'
         self.phase = 4

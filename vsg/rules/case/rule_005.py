@@ -1,14 +1,15 @@
 
-from vsg.rules.case import case_rule
+from vsg import rule
 from vsg import fix
 from vsg import check
 
 
-class rule_005(case_rule):
+class rule_005(rule.rule):
     '''Case rule 005 checks for a single space before the "=>" keyword.'''
 
     def __init__(self):
-        case_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'case'
         self.identifier = '005'
         self.solution = 'Ensure a single space exists before the "=>" keyword.'
         self.phase = 2

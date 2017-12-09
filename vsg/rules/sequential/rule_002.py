@@ -1,17 +1,18 @@
 
-from vsg.rules.sequential import sequential_rule
+from vsg import rule
 from vsg import fix
 
 import re
 
 
-class rule_002(sequential_rule):
+class rule_002(rule.rule):
     '''
     Sequential rule 002 checks for a single space after the "<=" keyword.
     '''
 
     def __init__(self):
-        sequential_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'sequential'
         self.identifier = '002'
         self.solution = 'Ensure a single space exists after the "<=" keyword.'
         self.phase = 2

@@ -1,17 +1,18 @@
 
-from vsg.rules.instantiation import instantiation_rule
+from vsg import rule
 from vsg import fix
 
 import re
 
 
-class rule_022(instantiation_rule):
+class rule_022(rule.rule):
     '''
     Instantiation rule 022 checks for a single space after the => operator.
     '''
 
     def __init__(self):
-        instantiation_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'instantiation'
         self.identifier = '022'
         self.solution = 'Only a single space after => operator.'
         self.phase = 2

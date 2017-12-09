@@ -1,17 +1,18 @@
 
-from vsg.rules.type import type_rule
+from vsg import rule
 
 import re
 import copy
 
 
-class rule_009(type_rule):
+class rule_009(rule.rule):
     '''
     Type rule 009 checks for enumerated types after the open parenthesis on a multi-line type declaration.
     '''
 
     def __init__(self):
-        type_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'type'
         self.identifier = '009'
         self.solution = 'Move enumerated type to it\'s own line.'
         self.phase = 1

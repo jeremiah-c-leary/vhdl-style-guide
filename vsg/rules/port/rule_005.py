@@ -1,16 +1,17 @@
 
-from vsg.rules.port import port_rule
+from vsg import rule
 
 import re
 
 
-class rule_005(port_rule):
+class rule_005(rule.rule):
     '''
     Port rule 005 checks for a single space after the colon in a port declaration for "in" and "inout" ports.
     '''
 
     def __init__(self):
-        port_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'port'
         self.identifier = '005'
         self.solution = 'Reduce number of spaces after the colon to 1.'
         self.phase = 2

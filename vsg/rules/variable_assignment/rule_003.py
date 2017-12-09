@@ -1,15 +1,16 @@
 
-from vsg.rules.variable_assignment import variable_assignment_rule
+from vsg import rule
 from vsg import fix
 
 import re
 
 
-class rule_003(variable_assignment_rule):
+class rule_003(rule.rule):
     '''Variable assignment rule 003 checks for a single space before the ":=" keyword.'''
 
     def __init__(self):
-        variable_assignment_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'variable_assignment'
         self.identifier = '003'
         self.solution = 'Ensure a single space exists before the ":=" keyword.'
         self.phase = 2

@@ -1,16 +1,17 @@
 
-from vsg.rules.signal import signal_rule
+from vsg import rule
 from vsg import check
 from vsg import fix
 
 
-class rule_001(signal_rule):
+class rule_001(rule.rule):
     '''
     Signal rule 001 checks for the proper indentation at the beginning of the line.
     '''
 
     def __init__(self):
-        signal_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'signal'
         self.identifier = '001'
         self.solution = 'Ensure proper indentation.'
         self.phase = 4

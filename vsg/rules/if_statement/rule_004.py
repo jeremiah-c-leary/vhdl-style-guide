@@ -1,15 +1,16 @@
 
-from vsg.rules.if_statement import if_rule
+from vsg import rule
 from vsg import fix
 
 import re
 
 
-class rule_004(if_rule):
+class rule_004(rule.rule):
     '''If rule 004 checks there is a single space between the ) and "then" keyword.'''
 
     def __init__(self):
-        if_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'if'
         self.identifier = '004'
         self.solution = 'Ensure only a single space exists between the ) and "then" keyword.'
         self.phase = 2

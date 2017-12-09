@@ -1,16 +1,17 @@
 
-from vsg.rules.process import process_rule
+from vsg import rule
 
 import re
 
 
-class rule_012(process_rule):
+class rule_012(rule.rule):
     '''
     Process rule 012 checks for the existance of the "is" keyword.
     '''
 
     def __init__(self):
-        process_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'process'
         self.identifier = '012'
         self.solution = 'Add "is" keyword after the closing parenthesis.'
         self.phase = 1

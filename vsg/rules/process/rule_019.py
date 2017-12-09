@@ -1,18 +1,19 @@
 
-from vsg.rules.process import process_rule
+from vsg import rule
 from vsg import fix
 from vsg import check
 
 import re
 
 
-class rule_019(process_rule):
+class rule_019(rule.rule):
     '''
     Process rule 019 checks the "end process" label is uppercase.
     '''
 
     def __init__(self):
-        process_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'process'
         self.identifier = '019'
         self.solution = 'Uppercase the label.'
         self.phase = 6

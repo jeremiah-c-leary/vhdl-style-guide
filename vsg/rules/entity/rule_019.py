@@ -1,16 +1,17 @@
 
-from vsg.rules.entity import entity_rule
+from vsg import rule
 
 import re
 
 
-class rule_019(entity_rule):
+class rule_019(rule.rule):
     '''
     Entity rule 019 checks for the entity name on the "end entity" statement.
     '''
 
     def __init__(self):
-        entity_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'entity'
         self.identifier = '019'
         self.solution = 'Add the entity name.'
         self.phase = 1

@@ -1,17 +1,18 @@
 
-from vsg.rules.signal import signal_rule
+from vsg import rule
 from vsg import check
 from vsg import fix
 from vsg import line
 
 
-class rule_009(signal_rule):
+class rule_009(rule.rule):
     '''
     Signal rule 009 checks the colons are in the same column for all signals.
     '''
 
     def __init__(self):
-        signal_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'signal'
         self.identifier = '009'
         self.solution = 'Align colon with right most colon.'
         self.phase = 5

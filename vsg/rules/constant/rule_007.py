@@ -1,14 +1,15 @@
 
-from vsg.rules.constant import constant_rule
+from vsg import rule
 
 
-class rule_007(constant_rule):
+class rule_007(rule.rule):
     '''
     Constant rule 007 checks for assignments in constant declarations.
     '''
 
     def __init__(self):
-        constant_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'constant'
         self.identifier = '007'
         self.solution = 'move assignment to same line as constant declaration.'
         self.phase = 1

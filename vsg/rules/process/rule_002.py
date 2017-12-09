@@ -1,18 +1,19 @@
 
-from vsg.rules.process import process_rule
+from vsg import rule
 from vsg import fix
 
 import re
 
 
-class rule_002(process_rule):
+class rule_002(rule.rule):
     '''
     Process rule 002 checks there is a single space between the process
     keyword and the (.
     '''
 
     def __init__(self):
-        process_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'process'
         self.identifier = '002'
         self.solution = 'Ensure a single space exists between the "process" \
                           keyword and the (.'

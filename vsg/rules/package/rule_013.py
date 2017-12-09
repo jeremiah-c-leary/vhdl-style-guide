@@ -1,17 +1,18 @@
 
-from vsg.rules.package import package_rule
+from vsg import rule
 from vsg import fix
 
 import re
 
 
-class rule_013(package_rule):
+class rule_013(rule.rule):
     '''
     Package rule 013 checks the "is" keyword is lower case.
     '''
 
     def __init__(self):
-        package_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'package'
         self.identifier = '013'
         self.solution = 'Change "is" keyword to lowercase.'
         self.phase = 6

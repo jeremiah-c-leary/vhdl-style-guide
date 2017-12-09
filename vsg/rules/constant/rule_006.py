@@ -1,17 +1,18 @@
 
-from vsg.rules.constant import constant_rule
+from vsg import rule
 from vsg import fix
 
 import re
 
 
-class rule_006(constant_rule):
+class rule_006(rule.rule):
     '''
     Constant rule 006 checks there is at least a single space before the colon.
     '''
 
     def __init__(self):
-        constant_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'constant'
         self.identifier = '006'
         self.solution = 'Add a single space before the colon.'
         self.phase = 2

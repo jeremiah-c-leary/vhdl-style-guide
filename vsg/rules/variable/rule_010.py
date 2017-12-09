@@ -1,18 +1,19 @@
 
-from vsg.rules.variable import variable_rule
+from vsg import rule
 from vsg import fix
 from vsg import check
 
 import re
 
 
-class rule_010(variable_rule):
+class rule_010(rule.rule):
     '''
     Signal rule 010 checks the variable type is lowercase.
     '''
 
     def __init__(self):
-        variable_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'variable'
         self.identifier = '010'
         self.solution = 'Change variable type to lowercase.'
         self.phase = 6

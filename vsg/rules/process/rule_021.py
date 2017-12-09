@@ -1,15 +1,16 @@
 
-from vsg.rules.process import process_rule
+from vsg import rule
 from vsg import fix
 
 
-class rule_021(process_rule):
+class rule_021(rule.rule):
     '''
     Process rule 021 checks for blank lines between the end of the sensitivity list and before the "begin" keyword.
     '''
 
     def __init__(self):
-        process_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'process'
         self.identifier = '021'
         self.solution = 'Remove blank lines between the end of the sensitivity list and before the "begin" keyword.'
         self.phase = 3
@@ -28,7 +29,7 @@ class rule_021(process_rule):
                 if fSkipProcess:
                     if oLine.isEndProcess:
                         fSkipProcess = False
-                    continue  #  pragma: no cover
+                    continue  # pragma: no cover
                 if oLine.isProcessBegin:
                     if fBlanksFound and not fNonBlanksFound:
                         self.add_violation(iLineNumber)

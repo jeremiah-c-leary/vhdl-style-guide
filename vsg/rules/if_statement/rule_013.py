@@ -1,15 +1,16 @@
 
-from vsg.rules.if_statement import if_rule
+from vsg import rule
 from vsg import utilities
 
 import re
 
 
-class rule_013(if_rule):
+class rule_013(rule.rule):
     '''If rule 013 checks the "else" keyword is on it's own line.'''
 
     def __init__(self):
-        if_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'if'
         self.identifier = '013'
         self.solution = 'Move "else" keyword to it\'s own line.'
         self.phase = 1

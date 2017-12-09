@@ -1,15 +1,17 @@
 
-from vsg.rules.whitespace import whitespace_rule
+from vsg import rule
 
 import re
 
 
-class rule_005(whitespace_rule):
+class rule_005(rule.rule):
     '''Whitespace rule 005 checks for spaces after an open parenthesis.'''
 
     def __init__(self):
-        whitespace_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'whitespace'
         self.identifier = '005'
+        self.phase = 2
         self.solution = 'Remove spaces after open (.'
 
     def analyze(self, oFile):

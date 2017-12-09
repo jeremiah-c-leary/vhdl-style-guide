@@ -1,16 +1,17 @@
 
-from vsg.rules.generic import generic_rule
+from vsg import rule
 from vsg import fix
 from vsg import check
 
 
-class rule_007(generic_rule):
+class rule_007(rule.rule):
     '''
     Generic rule 007 checks generic names are uppercase.
     '''
 
     def __init__(self):
-        generic_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'generic'
         self.identifier = '007'
         self.solution = 'Uppercase generic name.'
         self.phase = 6

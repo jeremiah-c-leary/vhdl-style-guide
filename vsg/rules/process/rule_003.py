@@ -1,16 +1,17 @@
 
-from vsg.rules.process import process_rule
+from vsg import rule
 from vsg import check
 from vsg import fix
 
 
-class rule_003(process_rule):
+class rule_003(rule.rule):
     '''
     Process rule 003 checks for the proper indentation at the beginning of the line.
     '''
 
     def __init__(self):
-        process_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'process'
         self.identifier = '003'
         self.solution = 'Ensure proper indentation.'
         self.phase = 4

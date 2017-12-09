@@ -1,16 +1,17 @@
 
-from vsg.rules.concurrent import concurrent_rule
+from vsg import rule
 
 import re
 
 
-class rule_005(concurrent_rule):
+class rule_005(rule.rule):
     '''
     Concurrent rule 005 checks for labels on concurrent assignments.
     '''
 
     def __init__(self):
-        concurrent_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'concurrent'
         self.identifier = '005'
         self.solution = 'Remove label on concurrent assignment.'
         self.phase = 1

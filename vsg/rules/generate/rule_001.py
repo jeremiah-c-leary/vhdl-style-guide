@@ -1,14 +1,15 @@
 
-from vsg.rules.generate import generate_rule
+from vsg import rule
 from vsg import check
 from vsg import fix
 
 
-class rule_001(generate_rule):
+class rule_001(rule.rule):
     '''Generate rule 001 checks for spaces at the beginning of the line.'''
 
     def __init__(self):
-        generate_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'generate'
         self.identifier = '001'
         self.solution = 'Ensure proper indentation.'
         self.phase = 4

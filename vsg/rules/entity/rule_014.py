@@ -1,16 +1,17 @@
 
-from vsg.rules.entity import entity_rule
+from vsg import rule
 from vsg import fix
 from vsg import check
 
 
-class rule_014(entity_rule):
+class rule_014(rule.rule):
     '''
     Entity rule 014 checks the "entity" keyword is lower case in the closing of the entity.
     '''
 
     def __init__(self):
-        entity_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'entity'
         self.identifier = '014'
         self.solution = 'Change "entity" keyword to lower case.'
         self.phase = 6

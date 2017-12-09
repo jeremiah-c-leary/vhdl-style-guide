@@ -1,17 +1,18 @@
 
-from vsg.rules.signal import signal_rule
+from vsg import rule
 from vsg import fix
 
 import re
 
 
-class rule_003(signal_rule):
+class rule_003(rule.rule):
     '''
     Signal rule 003 checks there is a single space after the "signal" keyword.
     '''
 
     def __init__(self):
-        signal_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'signal'
         self.identifier = '003'
         self.solution = 'Remove all but one space after the "signal" keyword.'
         self.phase = 2

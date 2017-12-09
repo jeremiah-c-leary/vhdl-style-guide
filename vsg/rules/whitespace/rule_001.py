@@ -1,14 +1,16 @@
 
-from vsg.rules.whitespace import whitespace_rule
+from vsg import rule
 
 import re
 
 
-class rule_001(whitespace_rule):
+class rule_001(rule.rule):
     '''Whitespace rule 001 checks spaces at the end of lines.'''
 
     def __init__(self):
-        whitespace_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'whitespace'
+        self.phase = 2
         self.identifier = '001'
         self.solution = 'Remove trailing whitespace.'
 

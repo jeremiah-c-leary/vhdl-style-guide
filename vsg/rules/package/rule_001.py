@@ -1,16 +1,17 @@
 
-from vsg.rules.package import package_rule
+from vsg import rule
 from vsg import check
 from vsg import fix
 
 
-class rule_001(package_rule):
+class rule_001(rule.rule):
     '''
     Package rule 001 checks for spaces at the beginning of the line.
     '''
 
     def __init__(self):
-        package_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'package'
         self.identifier = '001'
         self.solution = 'Ensure proper indentation.'
         self.phase = 4

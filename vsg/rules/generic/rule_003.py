@@ -1,15 +1,16 @@
 
-from vsg.rules.generic import generic_rule
+from vsg import rule
 from vsg import fix
 
 import re
 
 
-class rule_003(generic_rule):
+class rule_003(rule.rule):
     '''Generic rule 003 checks spacing between "generic" keyword and the open parenthesis.'''
 
     def __init__(self):
-        generic_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'generic'
         self.identifier = '003'
         self.solution = 'Change spacing between "generic" and "(" to one space.'
         self.phase = 2

@@ -1,16 +1,17 @@
 
-from vsg.rules.component import component_rule
+from vsg import rule
 from vsg import check
 from vsg import fix
 
 
-class rule_001(component_rule):
+class rule_001(rule.rule):
     '''
     Component rule 001 checks for spaces before the "component" keyword.
     '''
 
     def __init__(self):
-        component_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'component'
         self.identifier = '001'
         self.solution = 'Ensure proper indentation.'
         self.phase = 4

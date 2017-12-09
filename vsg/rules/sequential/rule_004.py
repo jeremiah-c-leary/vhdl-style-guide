@@ -1,17 +1,18 @@
 
-from vsg.rules.sequential import sequential_rule
+from vsg import rule
 from vsg import check
 from vsg import fix
 
 
-class rule_004(sequential_rule):
+class rule_004(rule.rule):
     '''
     Sequential rule 004 ensures the alignment of multiline sequential
     statements.
     '''
 
     def __init__(self):
-        sequential_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'sequential'
         self.identifier = '004'
         self.solution = 'Align with space after the "<=" keyword.'
         self.phase = 5

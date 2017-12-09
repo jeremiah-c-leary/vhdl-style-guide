@@ -1,14 +1,16 @@
 
-from vsg.rules.generic import generic_rule
+from vsg import rule
 from vsg import fix
 
 import re
 
-class rule_006(generic_rule):
+
+class rule_006(rule.rule):
     '''Generic rule 006 checks for a single space after the default assignment in a generic declaration.'''
 
     def __init__(self):
-        generic_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'generic'
         self.identifier = '006'
         self.solution = 'Reduce number of spaces after the default assignment to 1.'
         self.phase = 2

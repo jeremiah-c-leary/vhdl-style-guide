@@ -1,17 +1,18 @@
 
-from vsg.rules.process import process_rule
+from vsg import rule
 from vsg import fix
 
 import re
 
 
-class rule_024(process_rule):
+class rule_024(rule.rule):
     '''
     Process rule 024 checks for a single space after the process label and the :.
     '''
 
     def __init__(self):
-        process_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'process'
         self.identifier = '024'
         self.solution = 'Ensure a single space exists between process label and :.'
         self.phase = 2

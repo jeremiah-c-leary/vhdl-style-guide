@@ -1,16 +1,17 @@
 
-from vsg.rules.port import port_rule
+from vsg import rule
 from vsg import check
 from vsg import fix
 
 
-class rule_004(port_rule):
+class rule_004(rule.rule):
     '''
     Port rule 004 checks indentation of ports.
     '''
 
     def __init__(self):
-        port_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'port'
         self.identifier = '004'
         self.solution = 'Ensure proper indentation.'
         self.phase = 4

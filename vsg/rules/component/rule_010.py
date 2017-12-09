@@ -1,14 +1,15 @@
 
-from vsg.rules.component import component_rule
+from vsg import rule
 from vsg import fix
 from vsg import check
 
 
-class rule_010(component_rule):
+class rule_010(rule.rule):
     '''Component rule 010 checks the "end" keyword is lowercase.'''
 
     def __init__(self):
-        component_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'component'
         self.identifier = '010'
         self.solution = 'Change "end" keyword to lowercase.'
         self.phase = 6

@@ -1,16 +1,17 @@
 
-from vsg.rules.component import component_rule
+from vsg import rule
 
 import re
 
 
-class rule_019(component_rule):
+class rule_019(rule.rule):
     '''
     Component rule 019 checks for comments after port and generic assignments.
     '''
 
     def __init__(self):
-        component_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'component'
         self.identifier = '019'
         self.solution = 'Remove comment.'
         self.phase = 1

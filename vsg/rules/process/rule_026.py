@@ -1,15 +1,16 @@
 
-from vsg.rules.process import process_rule
+from vsg import rule
 from vsg import fix
 
 
-class rule_026(process_rule):
+class rule_026(rule.rule):
     '''
     Process rule 026 checks for blank lines between the end of the sensitivity list and process declarative lines.
     '''
 
     def __init__(self):
-        process_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'process'
         self.identifier = '026'
         self.solution = 'Ensure a single blank line between the end of the sensitivity list and the next non-blank line.'
         self.phase = 3
@@ -30,7 +31,7 @@ class rule_026(process_rule):
                 if fSkipProcess:
                     if oLine.isEndProcess:
                         fSkipProcess = False
-                    continue  #  pragma: no cover
+                    continue  # pragma: no cover
                 if fCheckForBlanks:
                     if oLine.isBlank:
                         iBlankCount += 1

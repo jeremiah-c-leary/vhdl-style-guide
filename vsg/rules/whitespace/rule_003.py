@@ -1,15 +1,17 @@
 
-from vsg.rules.whitespace import whitespace_rule
+from vsg import rule
 
 import re
 
 
-class rule_003(whitespace_rule):
+class rule_003(rule.rule):
     '''Whitespace rule 003 checks for spaces before semicolons'''
 
     def __init__(self):
-        whitespace_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'whitespace'
         self.identifier = '003'
+        self.phase = 2
         self.solution = 'Remove spaces before semicolons.'
 
     def analyze(self, oFile):

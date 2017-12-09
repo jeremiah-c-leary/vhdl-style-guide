@@ -1,15 +1,16 @@
 
-from vsg.rules.port import port_rule
+from vsg import rule
 from vsg import check
 
 
-class rule_001(port_rule):
+class rule_001(rule.rule):
     '''
     Port rule 001 checks for a blank line above the port keyword.
     '''
 
     def __init__(self):
-        port_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'port'
         self.identifier = '001'
         self.solution = 'Remove blank lines above "port" keyword.'
         self.phase = 3

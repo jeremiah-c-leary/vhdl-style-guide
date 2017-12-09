@@ -1,14 +1,15 @@
 
-from vsg.rules.signal import signal_rule
+from vsg import rule
 
 
-class rule_007(signal_rule):
+class rule_007(rule.rule):
     '''
     Signal rule 007 checks for default assignments in signal declarations.
     '''
 
     def __init__(self):
-        signal_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'signal'
         self.identifier = '007'
         self.solution = 'Remove default assignment.'
         self.phase = 1

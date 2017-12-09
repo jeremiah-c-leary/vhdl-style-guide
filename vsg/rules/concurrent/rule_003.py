@@ -1,16 +1,17 @@
 
-from vsg.rules.concurrent import concurrent_rule
+from vsg import rule
 from vsg import check
 from vsg import fix
 
 
-class rule_003(concurrent_rule):
+class rule_003(rule.rule):
     '''
     Concurrent rule 003 checks the alignment of multiline concurrent assignments.
     '''
 
     def __init__(self):
-        concurrent_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'concurrent'
         self.identifier = '003'
         self.solution = 'Align first character in row to the column of text one space after the <=.'
         self.phase = 5

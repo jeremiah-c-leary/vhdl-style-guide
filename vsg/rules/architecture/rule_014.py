@@ -1,16 +1,17 @@
 
-from vsg.rules.architecture import architecture_rule
+from vsg import rule
 from vsg import fix
 from vsg import check
 
 import re
 
 
-class rule_014(architecture_rule):
+class rule_014(rule.rule):
     '''Architecture rule 013 checks the entity name is upper case in the architecture declaration.'''
 
     def __init__(self):
-        architecture_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'architecture'
         self.identifier = '014'
         self.solution = 'Upper case entity name.'
         self.phase = 6

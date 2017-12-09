@@ -1,14 +1,15 @@
 
-from vsg.rules.architecture import architecture_rule
+from vsg import rule
 from vsg import check
 from vsg import fix
 
 
-class rule_007(architecture_rule):
+class rule_007(rule.rule):
     '''Architecture rule 007 checks for spaces at the beginning of the line for the "begin" keyword.'''
 
     def __init__(self):
-        architecture_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'architecture'
         self.identifier = '007'
         self.solution = 'Ensure proper indentation.'
         self.phase = 4

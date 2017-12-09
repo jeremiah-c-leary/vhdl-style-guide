@@ -1,17 +1,18 @@
 
-from vsg.rules.constant import constant_rule
+from vsg import rule
 from vsg import fix
 
 import re
 
 
-class rule_003(constant_rule):
+class rule_003(rule.rule):
     '''
     Constant rule 003 checks there is a single space after the "constant" keyword.
     '''
 
     def __init__(self):
-        constant_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'constant'
         self.identifier = '003'
         self.solution = 'Remove all but one space after the "constant" keyword.'
         self.phase = 2

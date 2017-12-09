@@ -1,17 +1,18 @@
 
-from vsg.rules.type import type_rule
+from vsg import rule
 from vsg import fix
 
 import re
 
 
-class rule_003(type_rule):
+class rule_003(rule.rule):
     '''
     Type rule 003 checks there is a single space after the "type" keyword.
     '''
 
     def __init__(self):
-        type_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'type'
         self.identifier = '003'
         self.solution = 'Remove all but one space after the "type" keyword.'
         self.phase = 2

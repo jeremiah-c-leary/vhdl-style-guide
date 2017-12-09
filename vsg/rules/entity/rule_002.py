@@ -1,16 +1,17 @@
 
-from vsg.rules.entity import entity_rule
+from vsg import rule
 
 import re
 
 
-class rule_002(entity_rule):
+class rule_002(rule.rule):
     '''
     Entity rule 002 checks for a single space after the entity keyword.
     '''
 
     def __init__(self):
-        entity_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'entity'
         self.identifier = '002'
         self.solution = 'Remove extra spaces after entity keyword.'
         self.phase = 2

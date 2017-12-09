@@ -1,13 +1,14 @@
 
-from vsg.rules.generate import generate_rule
+from vsg import rule
 from vsg import fix
 
 
-class rule_005(generate_rule):
+class rule_005(rule.rule):
     '''Generate rule 005 checks the generate label is uppercase.'''
 
     def __init__(self):
-        generate_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'generate'
         self.identifier = '005'
         self.solution = 'Uppercase generate label.'
         self.phase = 6

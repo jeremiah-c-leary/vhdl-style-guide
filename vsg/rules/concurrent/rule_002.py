@@ -1,17 +1,18 @@
 
-from vsg.rules.concurrent import concurrent_rule
+from vsg import rule
 from vsg import fix
 
 import re
 
 
-class rule_002(concurrent_rule):
+class rule_002(rule.rule):
     '''
     Concurrent rule 002 checks there is a single space after the assignment.
     '''
 
     def __init__(self):
-        concurrent_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'concurrent'
         self.identifier = '002'
         self.solution = 'Remove all but one space after the <=.'
         self.phase = 2

@@ -1,15 +1,16 @@
 
-from vsg.rules.process import process_rule
+from vsg import rule
 from vsg import fix
 
 
-class rule_027(process_rule):
+class rule_027(rule.rule):
     '''
     Process rule 027 checks for blank lines between the process declarative lines and the "begin" keyword.
     '''
 
     def __init__(self):
-        process_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'process'
         self.identifier = '027'
         self.solution = 'Ensure a single blank line between the last non-blank line and the "begin" keyword.'
         self.phase = 3
@@ -29,7 +30,7 @@ class rule_027(process_rule):
                 if fSkipProcess:
                     if oLine.isEndProcess:
                         fSkipProcess = False
-                    continue  #  pragma: no cover
+                    continue  # pragma: no cover
                 if fCheckForBlanks:
                     if oLine.isBlank:
                         iBlankCount += 1

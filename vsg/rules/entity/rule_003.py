@@ -1,15 +1,17 @@
 
-from vsg.rules.entity import entity_rule
+from vsg import rule
 from vsg import check
 from vsg import line
 
-class rule_003(entity_rule):
+
+class rule_003(rule.rule):
     '''
     Entity rule 003 checks for a blank line above the entity keyword.
     '''
 
     def __init__(self):
-        entity_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'entity'
         self.identifier = '003'
         self.solution = 'Add blank line above entity keyword.'
         self.phase = 3
@@ -22,4 +24,4 @@ class rule_003(entity_rule):
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:
-            oFile.lines.insert(iLineNumber, line.blank_line()) 
+            oFile.lines.insert(iLineNumber, line.blank_line())

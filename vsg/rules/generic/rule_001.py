@@ -1,13 +1,14 @@
 
-from vsg.rules.generic import generic_rule
+from vsg import rule
 from vsg import check
 
 
-class rule_001(generic_rule):
+class rule_001(rule.rule):
     '''Generic rule 001 checks for a blank line above the "generic" keyword.'''
 
     def __init__(self):
-        generic_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'generic'
         self.identifier = '001'
         self.solution = 'Remove blank lines above "generic" keyword.'
         self.phase = 3

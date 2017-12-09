@@ -1,17 +1,18 @@
 
-from vsg.rules.package import package_rule
+from vsg import rule
 from vsg import fix
 
 import re
 
 
-class rule_009(package_rule):
+class rule_009(rule.rule):
     '''
     Package rule 009 checks for a single space between the "end" and "package" keywords and component name.
     '''
 
     def __init__(self):
-        package_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'package'
         self.identifier = '009'
         self.solution = 'Single space between "end" and "package" keywords and component name.'
         self.phase = 2

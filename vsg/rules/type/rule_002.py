@@ -1,17 +1,18 @@
 
-from vsg.rules.type import type_rule
+from vsg import rule
 from vsg import utilities
 from vsg import fix
 from vsg import check
 
 
-class rule_002(type_rule):
+class rule_002(rule.rule):
     '''
     Type rule 002 checks the "type" keyword is lowercase.
     '''
 
     def __init__(self):
-        type_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'type'
         self.identifier = '002'
         self.solution = 'Lowercase "type" keyword.'
         self.phase = 6

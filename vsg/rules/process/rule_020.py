@@ -1,18 +1,19 @@
 
-from vsg.rules.process import process_rule
+from vsg import rule
 from vsg import check
 from vsg import fix
 
 import re
 
 
-class rule_020(process_rule):
+class rule_020(rule.rule):
     '''
     Process rule 020 checks the indentation on multiline sensitivity lists.
     '''
 
     def __init__(self):
-        process_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'process'
         self.identifier = '020'
         self.solution = 'Fix indentation of sensitivity list.'
         self.phase = 5

@@ -1,14 +1,15 @@
 
-from vsg.rules.component import component_rule
+from vsg import rule
 
 import re
 
 
-class rule_005(component_rule):
+class rule_005(rule.rule):
     '''Component rule 005 checks the "is" keyword is on the same line as the component keyword.'''
 
     def __init__(self):
-        component_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'component'
         self.identifier = '005'
         self.solution = 'Add "is" keyword to same line as "component" keyword.'
         self.phase = 1
@@ -24,7 +25,7 @@ class rule_005(component_rule):
             oLine = oFile.lines[iLineNumber]
             oLine.line = re.sub(r'^(\s*component\s+\w+)', r'\1 is', oLine.line, re.IGNORECASE)
             oLine.lineLower = oLine.line.lower()
-            ### Search for "is" on the next line
+            # Search for "is" on the next line
             iSearchIndex = iLineNumber
             while True:
                 iSearchIndex += 1

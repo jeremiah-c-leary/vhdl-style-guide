@@ -1,17 +1,18 @@
 
-from vsg.rules.process import process_rule
+from vsg import rule
 from vsg import utilities
 from vsg import fix
 from vsg import check
 
 
-class rule_008(process_rule):
+class rule_008(rule.rule):
     '''
     Process rule 008 checks the "end" keyword is lowercase.
     '''
 
     def __init__(self):
-        process_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'process'
         self.identifier = '008'
         self.solution = 'Lowercase the "end" keyword.'
         self.phase = 6

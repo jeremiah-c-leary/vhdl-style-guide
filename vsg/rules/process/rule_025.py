@@ -1,17 +1,18 @@
 
-from vsg.rules.process import process_rule
+from vsg import rule
 from vsg import fix
 
 import re
 
 
-class rule_025(process_rule):
+class rule_025(rule.rule):
     '''
     Process rule 025 checks for a single space after the : and before the "process" keyword.
     '''
 
     def __init__(self):
-        process_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'process'
         self.identifier = '025'
         self.solution = 'Ensure a single space exists between the : and the "process" keyword.'
         self.phase = 2

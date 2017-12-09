@@ -1,16 +1,17 @@
 
-from vsg.rules.port import port_rule
+from vsg import rule
 
 import re
 
 
-class rule_007(port_rule):
+class rule_007(rule.rule):
     '''
     Port rule 007 checks for four spaces after the "in" keyword in a port declaration for "in" ports.
     '''
 
     def __init__(self):
-        port_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'port'
         self.identifier = '007'
         self.solution = 'Change the number of spaces after the "in" keyword to four spaces.'
         self.phase = 2

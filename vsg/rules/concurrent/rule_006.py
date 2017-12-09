@@ -1,16 +1,17 @@
 
-from vsg.rules.concurrent import concurrent_rule
+from vsg import rule
 from vsg import check
 from vsg import fix
 
 
-class rule_006(concurrent_rule):
+class rule_006(rule.rule):
     '''
     Concurrent rule 006 ensures the alignment of the "<=" keyword over multiple lines.
     '''
 
     def __init__(self):
-        concurrent_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'concurrent'
         self.identifier = '006'
         self.solution = 'Inconsistent alignment of "<=" in group of lines.'
         self.phase = 5

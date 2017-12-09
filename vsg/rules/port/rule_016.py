@@ -1,17 +1,18 @@
 
-from vsg.rules.port import port_rule
+from vsg import rule
 
 import re
 import copy
 
 
-class rule_016(port_rule):
+class rule_016(rule.rule):
     '''
     Port rule 016 checks for a port definition on the same line as the port keyword.
     '''
 
     def __init__(self):
-        port_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'port'
         self.identifier = '016'
         self.solution = 'Move port definition to it\'s own line.'
         self.phase = 1

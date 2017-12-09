@@ -1,17 +1,18 @@
 
-from vsg.rules.component import component_rule
+from vsg import rule
 from vsg import fix
 from vsg import check
 
 
-class rule_013(component_rule):
+class rule_013(rule.rule):
     '''
     Component rule 013 checks for a single space after the "component"
     keyword in the closing of the component.
     '''
 
     def __init__(self):
-        component_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'component'
         self.identifier = '013'
         self.solution = 'Reduce spaces after "component" keyword to one.'
         self.phase = 2

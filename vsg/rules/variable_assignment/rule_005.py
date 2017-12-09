@@ -1,18 +1,19 @@
 
-from vsg.rules.variable_assignment import variable_assignment_rule
+from vsg import rule
 from vsg import check
 from vsg import fix
 from vsg import line
 
 
-class rule_005(variable_assignment_rule):
+class rule_005(rule.rule):
     '''
-    Variable assignment rule 005 ensures the alignment of the ":=" keyword 
+    Variable assignment rule 005 ensures the alignment of the ":=" keyword
     over multiple lines.
     '''
 
     def __init__(self):
-        variable_assignment_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'variable_assignment'
         self.identifier = '005'
         self.solution = 'Inconsistent alignment of ":=" in group of lines.'
         self.phase = 5

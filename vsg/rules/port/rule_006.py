@@ -1,18 +1,19 @@
 
-from vsg.rules.port import port_rule
+from vsg import rule
 from vsg import fix
 from vsg import check
 
 import re
 
 
-class rule_006(port_rule):
+class rule_006(rule.rule):
     '''
     Port rule 006 checks for one space after the colon in a port declaration for "out" ports.
     '''
 
     def __init__(self):
-        port_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'port'
         self.identifier = '006'
         self.solution = 'Change number of spaces before "out" to 3.'
         self.phase = 2

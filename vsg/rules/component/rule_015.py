@@ -1,15 +1,16 @@
 
-from vsg.rules.component import component_rule
+from vsg import rule
 
 
-class rule_015(component_rule):
+class rule_015(rule.rule):
     '''
-    Component rule 015 checks the "end" keyword, "component" keyword, 
+    Component rule 015 checks the "end" keyword, "component" keyword,
     and component name are on the same line.
     '''
 
     def __init__(self):
-        component_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'component'
         self.identifier = '015'
         self.solution = 'The "end" keyword, "component" keyword and component name need to be on the same line.'
         self.phase = 1

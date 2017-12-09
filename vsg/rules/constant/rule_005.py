@@ -1,17 +1,18 @@
 
-from vsg.rules.constant import constant_rule
+from vsg import rule
 from vsg import fix
 
 import re
 
 
-class rule_005(constant_rule):
+class rule_005(rule.rule):
     '''
     Constant rule 005 checks there is a single space after the colon.
     '''
 
     def __init__(self):
-        constant_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'constant'
         self.identifier = '005'
         self.solution = 'Ensure only a single space after the colon.'
         self.phase = 2

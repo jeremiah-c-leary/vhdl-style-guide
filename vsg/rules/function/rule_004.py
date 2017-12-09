@@ -1,17 +1,18 @@
 
-from vsg.rules.function import function_rule
+from vsg import rule
 from vsg import utilities
 from vsg import fix
 from vsg import check
 
 
-class rule_004(function_rule):
+class rule_004(rule.rule):
     '''
     Function rule 004 checks the "begin" keyword is lower case.
     '''
 
     def __init__(self):
-        function_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'function'
         self.identifier = '004'
         self.solution = 'Lowercase the "begin" keyword.'
         self.phase = 6

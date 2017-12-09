@@ -1,17 +1,18 @@
 
-from vsg.rules.instantiation import instantiation_rule
+from vsg import rule
 from vsg import line
 
 import re
 
 
-class rule_007(instantiation_rule):
+class rule_007(rule.rule):
     '''
     Instantiation rule 007 checks the closing ) for the port map is on it's own line.
     '''
 
     def __init__(self):
-        instantiation_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'instantiation'
         self.identifier = '007'
         self.solution = 'Place closing ); on it\'s own line.'
         self.phase = 1

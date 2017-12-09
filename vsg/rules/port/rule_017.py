@@ -1,17 +1,18 @@
 
-from vsg.rules.port import port_rule
+from vsg import rule
 from vsg import fix
 
 import re
 
 
-class rule_017(port_rule):
+class rule_017(rule.rule):
     '''
     Port rule 017 checks the "port" keyword is lowercase.
     '''
 
     def __init__(self):
-        port_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'port'
         self.identifier = '017'
         self.solution = 'Change "port" keyword to lowercase.'
         self.phase = 6

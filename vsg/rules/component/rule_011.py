@@ -1,15 +1,16 @@
 
-from vsg.rules.component import component_rule
+from vsg import rule
 from vsg import fix
 
 import re
 
 
-class rule_011(component_rule):
+class rule_011(rule.rule):
     '''Component rule 011 checks for a single space after the "end" keyword'''
 
     def __init__(self):
-        component_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'component'
         self.identifier = '011'
         self.solution = 'Reduce spaces after "end" keyword to one.'
         self.phase = 2

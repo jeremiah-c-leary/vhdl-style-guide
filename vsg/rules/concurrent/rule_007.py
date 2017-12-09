@@ -1,17 +1,18 @@
 
-from vsg.rules.concurrent import concurrent_rule
+from vsg import rule
 
 import re
 import copy
 
 
-class rule_007(concurrent_rule):
+class rule_007(rule.rule):
     '''
     Concurrent rule 007 checks for code after the "else" keyword.
     '''
 
     def __init__(self):
-        concurrent_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'concurrent'
         self.identifier = '007'
         self.solution = 'Move code after "else" to the next line.'
         self.phase = 1

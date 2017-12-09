@@ -1,17 +1,18 @@
 
-from vsg.rules.architecture import architecture_rule
+from vsg import rule
 from vsg import utilities
 
 import re
 
 
-class rule_010(architecture_rule):
+class rule_010(rule.rule):
     '''
     Architecture rule 010 checks for "architecture" in the "end architecture statement.
     '''
 
     def __init__(self):
-        architecture_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'architecture'
         self.identifier = '010'
         self.solution = 'Add "architecture" keyword after "end" keyword.'
         self.phase = 1

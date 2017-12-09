@@ -1,16 +1,17 @@
 
-from vsg.rules.generic import generic_rule
+from vsg import rule
 from vsg import check
 from vsg import fix
 
 
-class rule_008(generic_rule):
+class rule_008(rule.rule):
     '''
     Generic rule 008 checks the indentation of closing parenthesis for generic maps.
     '''
 
     def __init__(self):
-        generic_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'generic'
         self.identifier = '008'
         self.solution = 'Ensure proper indentation.'
         self.phase = 4

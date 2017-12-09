@@ -1,16 +1,17 @@
 
-from vsg.rules.entity import entity_rule
+from vsg import rule
 from vsg import fix
 from vsg import check
 
 
-class rule_008(entity_rule):
+class rule_008(rule.rule):
     '''
     Entity rule 008 checks the entity name is uppercase in the entity declaration line.
     '''
 
     def __init__(self):
-        entity_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'entity'
         self.identifier = '008'
         self.solution = 'Change entity name to all uppercase.'
         self.phase = 6

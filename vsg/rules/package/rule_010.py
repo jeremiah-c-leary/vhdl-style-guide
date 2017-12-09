@@ -1,18 +1,19 @@
 
-from vsg.rules.package import package_rule
+from vsg import rule
 from vsg import fix
 from vsg import check
 
 import re
 
 
-class rule_010(package_rule):
+class rule_010(rule.rule):
     '''
     Package rule 010 checks the package name is upper case in the package declaration.
     '''
 
     def __init__(self):
-        package_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'package'
         self.identifier = '010'
         self.solution = 'Upper case package name.'
         self.phase = 6

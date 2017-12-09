@@ -1,17 +1,18 @@
 
-from vsg.rules.port import port_rule
+from vsg import rule
 
 import re
 import copy
 
 
-class rule_013(port_rule):
+class rule_013(rule.rule):
     '''
     Port rule 013 checks for multiple ports declared on single line.
     '''
 
     def __init__(self):
-        port_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'port'
         self.identifier = '013'
         self.solution = 'Place multiple ports on their own lines.'
         self.phase = 1

@@ -1,17 +1,18 @@
 
-from vsg.rules.constant import constant_rule
+from vsg import rule
 from vsg import fix
 
 import re
 
 
-class rule_002(constant_rule):
+class rule_002(rule.rule):
     '''
     Constant rule 002 checks the "constant" keyword is lowercase.
     '''
 
     def __init__(self):
-        constant_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'constant'
         self.identifier = '002'
         self.solution = 'Lower case "constant" keyword.'
         self.phase = 6

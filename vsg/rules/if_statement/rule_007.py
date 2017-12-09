@@ -1,14 +1,15 @@
 
-from vsg.rules.if_statement import if_rule
+from vsg import rule
 from vsg import fix
 from vsg import check
 
 
-class rule_007(if_rule):
+class rule_007(rule.rule):
     '''If rule 007 checks for an empty line before the "elsif" keyword.'''
 
     def __init__(self):
-        if_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'if'
         self.identifier = '007'
         self.solution = 'Remove blank line(s) before the "elsif" keyword.'
         self.phase = 3

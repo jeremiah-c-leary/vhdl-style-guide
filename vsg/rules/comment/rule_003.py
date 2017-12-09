@@ -1,15 +1,16 @@
 
-from vsg.rules.comment import comment_rule
+from vsg import rule
 from vsg import check
 from vsg import fix
 from vsg import line
 
 
-class rule_003(comment_rule):
+class rule_003(rule.rule):
     '''Comment rule 003 ensures the alignment of "--" keywords between process "begin" and "end process" keywords.'''
 
     def __init__(self):
-        comment_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'comment'
         self.identifier = '003'
         self.solution = 'Inconsistent alignment of comments within process.'
         self.phase = 5

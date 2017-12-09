@@ -1,18 +1,19 @@
 
-from vsg.rules.process import process_rule
+from vsg import rule
 from vsg import line
 from vsg import utilities
 
 import re
 
 
-class rule_010(process_rule):
+class rule_010(rule.rule):
     '''
     Process rule 010 checks the "begin" keyword is on it's own line.
     '''
 
     def __init__(self):
-        process_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'process'
         self.identifier = '010'
         self.solution = 'Place "begin" keyword on seperate line.'
         self.phase = 1

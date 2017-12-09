@@ -1,15 +1,17 @@
 
-from vsg.rules.whitespace import whitespace_rule
+from vsg import rule
 
 import re
 
 
-class rule_004(whitespace_rule):
+class rule_004(rule.rule):
     '''Whitespace rule 004 checks for spaces before commas.'''
 
     def __init__(self):
-        whitespace_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'whitespace'
         self.identifier = '004'
+        self.phase = 2
         self.solution = 'Remove spaces before commas.'
 
     def analyze(self, oFile):

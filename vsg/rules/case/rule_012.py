@@ -1,14 +1,15 @@
 
-from vsg.rules.case import case_rule
+from vsg import rule
 from vsg import utilities
 import re
 
 
-class rule_012(case_rule):
+class rule_012(rule.rule):
     '''Case rule 012 ensures code does not exist after the => operator.'''
 
     def __init__(self):
-        case_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'case'
         self.identifier = '012'
         self.solution = 'Move code after the => operator to it\'s own line.'
         self.phase = 1

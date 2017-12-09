@@ -1,15 +1,16 @@
 
-from vsg.rules.generate import generate_rule
+from vsg import rule
 from vsg import fix
 
 import re
 
 
-class rule_002(generate_rule):
+class rule_002(rule.rule):
     '''Generate rule 002 checks for a single space between the label and :.'''
 
     def __init__(self):
-        generate_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'generate'
         self.identifier = '002'
         self.solution = 'Ensure a single space exists before the colon.'
         self.phase = 2

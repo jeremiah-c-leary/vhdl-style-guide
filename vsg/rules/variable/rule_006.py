@@ -1,17 +1,18 @@
 
-from vsg.rules.variable import variable_rule
+from vsg import rule
 from vsg import fix
 
 import re
 
 
-class rule_006(variable_rule):
+class rule_006(rule.rule):
     '''
     Signal rule 006 checks there is at least a single space before the colon.
     '''
 
     def __init__(self):
-        variable_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'variable'
         self.identifier = '006'
         self.solution = 'Add a single space before the colon.'
         self.phase = 2

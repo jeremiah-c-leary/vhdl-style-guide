@@ -1,18 +1,19 @@
 
-from vsg.rules.entity import entity_rule
+from vsg import rule
 from vsg import utilities
 
 import re
 
 
-class rule_005(entity_rule):
+class rule_005(rule.rule):
     '''
     Entity rule 005 checks the "is" keyword is on the same line as the
     entity keyword.
     '''
 
     def __init__(self):
-        entity_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'entity'
         self.identifier = '005'
         self.solution = 'Add "is" keyword to same line as "entity" keyword.'
         self.phase = 1

@@ -1,17 +1,18 @@
 
-from vsg.rules.port import port_rule
+from vsg import rule
 from vsg import check
 from vsg import fix
 from vsg import utilities
 
 
-class rule_018(port_rule):
+class rule_018(rule.rule):
     '''
     Port rule 018 checks the port type is lowercase.
     '''
 
     def __init__(self):
-        port_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'port'
         self.identifier = '018'
         self.solution = 'Change port type to lowercase.'
         self.phase = 6
@@ -23,7 +24,7 @@ class rule_018(port_rule):
                 if '(' in sLine:
                     sLine = sLine.split('(')[0]
                 if utilities.is_vhdl_keyword(sLine.split()[1]):
-                    check.is_lowercase(self, sLine.split()[1],iLineNumber)
+                    check.is_lowercase(self, sLine.split()[1], iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

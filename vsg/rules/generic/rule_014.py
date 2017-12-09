@@ -1,15 +1,16 @@
 
-from vsg.rules.generic import generic_rule
+from vsg import rule
 from vsg import fix
 
 import re
 
 
-class rule_014(generic_rule):
+class rule_014(rule.rule):
     '''Generic rule 014 checks for at least a single space before the :.'''
 
     def __init__(self):
-        generic_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'generic'
         self.identifier = '014'
         self.solution = 'Add a space before the :.'
         self.phase = 2

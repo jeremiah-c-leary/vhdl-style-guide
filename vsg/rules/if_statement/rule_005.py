@@ -1,15 +1,16 @@
 
-from vsg.rules.if_statement import if_rule
+from vsg import rule
 from vsg import fix
 
 import re
 
 
-class rule_005(if_rule):
+class rule_005(rule.rule):
     '''If rule 005 checks there is a single space between the "elsif" keyword and the (.'''
 
     def __init__(self):
-        if_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'if'
         self.identifier = '005'
         self.solution = 'Ensure only a single space exists between the "elsif" keyword and the (.'
         self.phase = 2

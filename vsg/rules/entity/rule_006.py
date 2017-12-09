@@ -1,17 +1,18 @@
 
-from vsg.rules.entity import entity_rule
+from vsg import rule
 from vsg import fix
 
 import re
 
 
-class rule_006(entity_rule):
+class rule_006(rule.rule):
     '''
     Entity rule 006 checks the "is" keyword is lower case.
     '''
 
     def __init__(self):
-        entity_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'entity'
         self.identifier = '006'
         self.solution = 'Change "is" keyword to lowercase.'
         self.phase = 6

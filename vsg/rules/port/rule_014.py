@@ -1,18 +1,19 @@
 
-from vsg.rules.port import port_rule
+from vsg import rule
 from vsg import line
 
 import re
 
 
-class rule_014(port_rule):
+class rule_014(rule.rule):
     '''
     Port rule 014 checks the closing parenthesis for ports are on a line by
     itself.
     '''
 
     def __init__(self):
-        port_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'port'
         self.identifier = '014'
         self.solution = 'Closing parenthesis must be on a line by itself and \
                          above the "end" keyword.'

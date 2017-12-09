@@ -1,17 +1,18 @@
 
-from vsg.rules.port import port_rule
+from vsg import rule
 from vsg import utilities
 from vsg import fix
 from vsg import check
 
 
-class rule_010(port_rule):
+class rule_010(rule.rule):
     '''
     Port rule 010 checks port names are uppercase.
     '''
 
     def __init__(self):
-        port_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'port'
         self.identifier = '010'
         self.solution = 'Uppercase port name.'
         self.phase = 6

@@ -1,16 +1,17 @@
 
-from vsg.rules.entity import entity_rule
+from vsg import rule
 
 import re
 
 
-class rule_007(entity_rule):
+class rule_007(rule.rule):
     '''
     Entity rule 007 checks for a single space before the "is" keyword.
     '''
 
     def __init__(self):
-        entity_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'entity'
         self.identifier = '007'
         self.solution = 'Remove extra spaces before "is" keyword.'
         self.phase = 2

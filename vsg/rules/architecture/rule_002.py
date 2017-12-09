@@ -1,16 +1,17 @@
 
-from vsg.rules.architecture import architecture_rule
+from vsg import rule
 from vsg import fix
 from vsg import check
 
 import re
 
 
-class rule_002(architecture_rule):
+class rule_002(rule.rule):
     '''Architecture rule 002 checks for a single space between "architecture", "of", and "is" keywords.'''
 
     def __init__(self):
-        architecture_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'architecture'
         self.identifier = '002'
         self.solution = 'Remove extra spaces after architecture keyword.'
         self.phase = 2

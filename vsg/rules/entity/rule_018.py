@@ -1,17 +1,18 @@
 
-from vsg.rules.entity import entity_rule
+from vsg import rule
 from vsg import check
 from vsg import fix
 from vsg import line
 
 
-class rule_018(entity_rule):
+class rule_018(rule.rule):
     '''
     Entity rule 018 ensures the alignment of comments in the entity.
     '''
 
     def __init__(self):
-        entity_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'entity'
         self.identifier = '018'
         self.solution = 'Inconsistent alignment of comments in entity.'
         self.phase = 5

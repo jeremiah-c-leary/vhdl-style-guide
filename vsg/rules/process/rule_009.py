@@ -1,17 +1,18 @@
 
-from vsg.rules.process import process_rule
+from vsg import rule
 from vsg import fix
 
 import re
 
 
-class rule_009(process_rule):
+class rule_009(rule.rule):
     '''
     Process rule 009 checks the "process" keyword is lowercase on the closing of a process.
     '''
 
     def __init__(self):
-        process_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'process'
         self.identifier = '009'
         self.solution = 'Lowercase the "process" keyword.'
         self.phase = 6

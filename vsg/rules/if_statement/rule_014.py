@@ -1,15 +1,16 @@
 
-from vsg.rules.if_statement import if_rule
+from vsg import rule
 from vsg import utilities
 
 import re
 
 
-class rule_014(if_rule):
+class rule_014(rule.rule):
     '''If rule 014 checks the "end if" keyword is on it's own line.'''
 
     def __init__(self):
-        if_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'if'
         self.identifier = '014'
         self.solution = 'Move "end if" keyword to it\'s own line.'
         self.phase = 1

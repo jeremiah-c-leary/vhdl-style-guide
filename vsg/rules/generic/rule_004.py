@@ -1,14 +1,15 @@
 
-from vsg.rules.generic import generic_rule
+from vsg import rule
 from vsg import check
 from vsg import fix
 
 
-class rule_004(generic_rule):
+class rule_004(rule.rule):
     '''Generic rule 004 checks indentation of generics.'''
 
     def __init__(self):
-        generic_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'generic'
         self.identifier = '004'
         self.solution = 'Ensure proper indentation.'
         self.phase = 4

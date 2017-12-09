@@ -1,16 +1,17 @@
 
-from vsg.rules.package import package_rule
+from vsg import rule
 
 import re
 
 
-class rule_007(package_rule):
+class rule_007(rule.rule):
     '''
     Package rule 007 checks for the "package" keyword on the end package declaration.
     '''
 
     def __init__(self):
-        package_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'package'
         self.identifier = '007'
         self.solution = 'End of package follows this format: end package <package name>.'
         self.phase = 1

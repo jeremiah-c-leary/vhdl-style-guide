@@ -1,17 +1,18 @@
 
-from vsg.rules.process import process_rule
+from vsg import rule
 from vsg import fix
 
 import re
 
 
-class rule_014(process_rule):
+class rule_014(rule.rule):
     '''
     Process rule 014 checks for a single space between the ) and "is" keyword.
     '''
 
     def __init__(self):
-        process_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'process'
         self.identifier = '014'
         self.solution = 'Ensure only a single space exists between the ) and "is" keyword.'
         self.phase = 2
@@ -21,7 +22,7 @@ class rule_014(process_rule):
             if oLine.isSensitivityListEnd:
                 if re.match('^.*\)\s*is', oLine.lineLower):
                     if not re.match('^.*\)\sis', oLine.lineLower):
-                      self.add_violation(iLineNumber)
+                        self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

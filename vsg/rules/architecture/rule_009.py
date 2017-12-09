@@ -1,15 +1,16 @@
 
-from vsg.rules.architecture import architecture_rule
+from vsg import rule
 from vsg import fix
 
 import re
 
 
-class rule_009(architecture_rule):
+class rule_009(rule.rule):
     '''Architecture rule 009 checks for the "end" and "architecture" keyword are lower case.'''
 
     def __init__(self):
-        architecture_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'architecture'
         self.identifier = '009'
         self.solution = 'Ensure "end" and "architecture" keywords are lower case.'
         self.phase = 6

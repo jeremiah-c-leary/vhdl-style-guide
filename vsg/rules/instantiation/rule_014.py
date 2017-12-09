@@ -1,17 +1,18 @@
 
-from vsg.rules.instantiation import instantiation_rule
+from vsg import rule
 from vsg import line
 
 import re
 
 
-class rule_014(instantiation_rule):
+class rule_014(rule.rule):
     '''
     Instantiation rule 014 checks the closing ) for the generic map is on it's own line.
     '''
 
     def __init__(self):
-        instantiation_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'instantiation'
         self.identifier = '014'
         self.solution = 'Place closing ) on it\'s own line.'
         self.phase = 1

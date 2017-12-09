@@ -1,14 +1,4 @@
 
-from vsg import rule
-
-
-class port_rule(rule.rule):
-
-    def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'port'
-
-
 from rule_001 import rule_001
 from rule_002 import rule_002
 from rule_003 import rule_003

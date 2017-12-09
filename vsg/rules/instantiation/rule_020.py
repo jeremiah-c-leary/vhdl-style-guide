@@ -1,17 +1,18 @@
 
-from vsg.rules.instantiation import instantiation_rule
+from vsg import rule
 from vsg import utilities
 
 import copy
 
 
-class rule_020(instantiation_rule):
+class rule_020(rule.rule):
     '''
     Instantiation rule 020 checks for a port assignment on the same line as the port map keywords.
     '''
 
     def __init__(self):
-        instantiation_rule.__init__(self)
+        rule.rule.__init__(self)
+        self.name = 'instantiation'
         self.identifier = '020'
         self.solution = 'Move port assignment to it\'s own line.'
         self.phase = 1
