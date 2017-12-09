@@ -144,7 +144,6 @@ class testFixRuleInstantiationMethods(unittest.TestCase):
         oRule = instantiation.rule_021()
         oRule.fix(oFile)
         oRule.analyze(oFile)
-        utils.debug_lines(oFile, 83, 10)
         self.assertEqual(oRule.violations, [])
         self.assertEqual(oFile.lines[85].line,'      PORT_1 => w_port_1,')
         self.assertEqual(oFile.lines[86].line,' PORT_2 => w_port_2,')
