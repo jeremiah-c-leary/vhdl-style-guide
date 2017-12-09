@@ -1,7 +1,7 @@
 import re
 
 
-def forLoop(dVars, oLine):
+def for_loop(dVars, oLine):
 
     if re.match('^\s*for\s.*\sin\s.*\sloop', oLine.lineLower):
         oLine.isForLoopKeyword = True

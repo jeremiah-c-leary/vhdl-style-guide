@@ -16,7 +16,7 @@ def get_python_modules_from_directory(sDirectoryName, lModules):
             if sFileName.endswith('.py') and not sFileName.startswith('__'):
                 lModules.append(sFileName.replace('.py', ''))
     except:
-        print ('ERROR: directory ' + sDirectoryName + ' could not be found.')
+        print('ERROR: directory ' + sDirectoryName + ' could not be found.')
         exit()
 
 
@@ -97,22 +97,22 @@ class list():
 
     def report_violations(self):
         sFileTitle = 'File:  ' + self.oVhdlFile.filename
-        print (sFileTitle)
-        print ('=' * len(sFileTitle))
+        print(sFileTitle)
+        print('=' * len(sFileTitle))
         iFailures = 0
         for phase in range(1, self.maximumPhase + 1):
             if phase <= self.lastPhaseRan:
-                print ('Phase ' + str(phase) + '... Reporting')
+                print('Phase ' + str(phase) + '... Reporting')
                 for iLineNumber in range(1, len(self.oVhdlFile.lines)):
                     for oRule in self.rules:
                         if oRule.phase == phase:
                             iFailures += oRule.report_violations(iLineNumber)
             else:
-                print ('Phase ' + str(phase) + '... Not executed')
+                print('Phase ' + str(phase) + '... Not executed')
 
-        print ('=' * len(sFileTitle))
-        print ('Total Rules Checked: ' + str(self.iNumberRulesRan))
-        print ('Total Failures:      ' + str(iFailures))
+        print('=' * len(sFileTitle))
+        print('Total Rules Checked: ' + str(self.iNumberRulesRan))
+        print('Total Failures:      ' + str(iFailures))
 
     def configure(self, configurationFile):
         '''Configures individual rules based on dictionary passed.'''

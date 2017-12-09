@@ -51,7 +51,7 @@ class vhdlFile():
                 if oLine.insideArchitecture and not oLine.insideProcess:
                     classify.concurrent(dVars, oLine)
 
-                classify.forLoop(dVars, oLine)
+                classify.for_loop(dVars, oLine)
                 classify.while_loop(dVars, oLine)
 
                 # Check if statements

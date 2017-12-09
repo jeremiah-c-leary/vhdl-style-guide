@@ -28,6 +28,7 @@ def update_assert_attributes(oPreviousLine, oCurrentLine):
     if oPreviousLine.insideAssert and not oPreviousLine.isAssertEnd:
         oCurrentLine.insideAssert = True
 
+
 def update_process_attributes(oPreviousLine, oCurrentLine):
 
     if oPreviousLine.insideProcess and not oPreviousLine.isEndProcess:
