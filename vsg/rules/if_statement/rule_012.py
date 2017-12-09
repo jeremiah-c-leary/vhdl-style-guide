@@ -6,7 +6,9 @@ import re
 
 
 class rule_012(rule.rule):
-    '''If rule 012 checks for code after the "then" keyword.'''
+    '''
+    If rule 012 checks for code after the "then" keyword.
+    '''
 
     def __init__(self):
         rule.rule.__init__(self)
