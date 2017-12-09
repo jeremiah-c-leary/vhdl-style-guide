@@ -20,10 +20,9 @@ class rule_012(rule.rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isEndEntityDeclaration:
-                if re.match('^\s*end\s+entity\s+\w+', oLine.line, re.IGNORECASE):
-                    lLine = oLine.line.split()
-                    check.is_uppercase(self, lLine[2], iLineNumber)
+            if oLine.isEndEntityDeclaration and re.match('^\s*end\s+entity\s+\w+', oLine.line, re.IGNORECASE):
+                lLine = oLine.line.split()
+                check.is_uppercase(self, lLine[2], iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

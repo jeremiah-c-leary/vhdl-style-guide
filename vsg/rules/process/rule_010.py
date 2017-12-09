@@ -20,9 +20,8 @@ class rule_010(rule.rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isProcessBegin:
-                if not re.match('^\s*begin', oLine.lineLower):
-                    self.add_violation(iLineNumber)
+            if oLine.isProcessBegin and not re.match('^\s*begin', oLine.line, re.IGNORECASE):
+                self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:

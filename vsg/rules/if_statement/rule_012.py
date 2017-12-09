@@ -17,9 +17,8 @@ class rule_012(rule.rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isThenKeyword:
-                if re.match('^.*\sthen\s+\w', oLine.lineLower):
-                    self.add_violation(iLineNumber)
+            if oLine.isThenKeyword and re.match('^.*\sthen\s+\w', oLine.line, re.IGNORECASE):
+                self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:
