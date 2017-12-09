@@ -27,7 +27,7 @@ class rule_021(rule.rule):
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:
             oLine = oFile.lines[iLineNumber]
-            iNumberOfPorts = oLine.line.count(',') + 1
+            iNumberOfPorts = oLine.line.count(',')
             # Replicate ports ###
             for iIndex in range(1, iNumberOfPorts):
                 oFile.lines.insert(iLineNumber, copy.deepcopy(oLine))

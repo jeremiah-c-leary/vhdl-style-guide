@@ -28,6 +28,32 @@ Having the parenthesis on it's own line makes the deliniation clearer between th
        GENERIC_3 => FALSE
      );
 
+instantiation_021
+#################
+
+This rule checks multiple port assignments on the same line.
+Placing each port assignment on it's own line enhanced clarity.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   port map (
+     WR_EN => w_wr_en, RD_EN => w_rd_en,
+     OVERFLOW => w_overflow
+   );
+
+**Fix**
+
+.. code-block:: vhdl
+
+   port map (
+     WR_EN => w_wr_en,
+     RD_EN => w_rd_en,
+     OVERFLOW => w_overflow
+   );
+
+
 instantiation_023
 #################
 

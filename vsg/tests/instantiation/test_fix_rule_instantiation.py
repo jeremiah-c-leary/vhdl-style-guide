@@ -7,7 +7,7 @@ from vsg.rules import instantiation
 from vsg import vhdlFile
 from vsg.tests import utils
 
-oFilePort = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','instantiation','instantiation_test_input.vhd'))
+oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','instantiation','instantiation_test_input.vhd'))
 oFileGeneric = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','instantiation','instantiation_generic_test_input.vhd'))
 oFileComment = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'instantiation_comment_test_input.vhd'))
 
@@ -15,68 +15,68 @@ class testFixRuleInstantiationMethods(unittest.TestCase):
 
     def test_fix_rule_001(self):
         oRule = instantiation.rule_001()
-        oRule.fix(oFilePort)
-        oRule.analyze(oFilePort)
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
         self.assertEqual(oRule.violations, [])
 
     def test_fix_rule_002(self):
         oRule = instantiation.rule_002()
-        oRule.fix(oFilePort)
-        oRule.analyze(oFilePort)
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
         self.assertEqual(oRule.violations, [])
 
     def test_fix_rule_003(self):
         oRule = instantiation.rule_003()
-        oRule.fix(oFilePort)
-        oRule.analyze(oFilePort)
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
         self.assertEqual(oRule.violations, [])
 
     def test_fix_rule_004(self):
         oRule = instantiation.rule_004()
-        oRule.fix(oFilePort)
-        oRule.analyze(oFilePort)
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
         self.assertEqual(oRule.violations, [])
 
     def test_fix_rule_005(self):
         oRule = instantiation.rule_005()
-        oRule.fix(oFilePort)
-        oRule.analyze(oFilePort)
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
         self.assertEqual(oRule.violations, [])
 
     def test_fix_rule_006(self):
         oRule = instantiation.rule_006()
-        oRule.fix(oFilePort)
-        oRule.analyze(oFilePort)
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
         self.assertEqual(oRule.violations, [])
 
     def test_fix_rule_007(self):
         oRule = instantiation.rule_007()
-        oRule.fix(oFilePort)
-        oRule.analyze(oFilePort)
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
         self.assertEqual(oRule.violations, [])
 
     def test_fix_rule_008(self):
         oRule = instantiation.rule_008()
-        oRule.fix(oFilePort)
-        oRule.analyze(oFilePort)
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
         self.assertEqual(oRule.violations, [])
 
     def test_fix_rule_009(self):
         oRule = instantiation.rule_009()
-        oRule.fix(oFilePort)
-        oRule.analyze(oFilePort)
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
         self.assertEqual(oRule.violations, [])
 
     def test_fix_rule_010(self):
         oRule = instantiation.rule_010()
-        oRule.fix(oFilePort)
-        oRule.analyze(oFilePort)
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
         self.assertEqual(oRule.violations, [])
 
     def test_fix_rule_011(self):
         oRule = instantiation.rule_011()
-        oRule.fix(oFilePort)
-        oRule.analyze(oFilePort)
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
         self.assertEqual(oRule.violations, [])
 
     def test_fix_rule_012(self):
@@ -129,27 +129,31 @@ class testFixRuleInstantiationMethods(unittest.TestCase):
 
     def test_fix_rule_019(self):
         oRule = instantiation.rule_019()
-        oRule.fix(oFilePort)
-        oRule.analyze(oFilePort)
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
         self.assertEqual(oRule.violations, [])
 
     def test_fix_rule_020(self):
         oRule = instantiation.rule_020()
-        oRule.fix(oFilePort)
-        oRule.analyze(oFilePort)
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
         self.assertEqual(oRule.violations, [])
-        self.assertEqual(oFilePort.lines[64].indentLevel, oFilePort.lines[63].indentLevel + 1)
+        self.assertEqual(oFile.lines[64].indentLevel, oFile.lines[63].indentLevel + 1)
 
     def test_fix_rule_021(self):
         oRule = instantiation.rule_021()
-        oRule.fix(oFilePort)
-        oRule.analyze(oFilePort)
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
+        utils.debug_lines(oFile, 83, 10)
         self.assertEqual(oRule.violations, [])
+        self.assertEqual(oFile.lines[85].line,'      PORT_1 => w_port_1,')
+        self.assertEqual(oFile.lines[86].line,' PORT_2 => w_port_2,')
+        self.assertEqual(oFile.lines[87].line,'      PORT_3 => w_port_3,')
 
     def test_fix_rule_022(self):
         oRule = instantiation.rule_022()
-        oRule.fix(oFilePort)
-        oRule.analyze(oFilePort)
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
         self.assertEqual(oRule.violations, [])
 
     def test_fix_rule_023(self):

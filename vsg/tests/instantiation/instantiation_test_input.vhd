@@ -72,5 +72,12 @@ begin
       port_2 (3 downto 0) => w_port_2
     );
 
+  U_INST1 : INST1
+    port map (
+      PORT_1 => w_port_1, PORT_2 => w_port_2,
+      PORT_3 => w_port_3,
+      PORT_4 => w_port_4
+    );
+
 end architecture ARCH;
 
