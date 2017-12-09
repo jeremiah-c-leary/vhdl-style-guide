@@ -7,8 +7,4 @@ class rule_002(indent_rule):
     '''
 
     def __init__(self):
-        indent_rule.__init__(self)
-        # These are filled out when creating a new rule
-        self.name = 'while_loop'
-        self.identifier = '002'
-        self.sTrigger = 'isWhileLoopEnd'
+        indent_rule.__init__(self, 'while_loop', '002', 'isWhileLoopEnd')

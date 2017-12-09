@@ -11,12 +11,10 @@ class indent_rule(rule.rule):
     Checks for and fixes indent problems.
     '''
 
-    def __init__(self):
-        rule.rule.__init__(self)
+    def __init__(self, name=None, identifier=None, sTrigger=None):
+        rule.rule.__init__(self, name, identifier)
         # These are filled out when creating a new rule
-        self.name = None
-        self.identifier = None
-        self.sTrigger = None
+        self.sTrigger = sTrigger
         # Leave everything below this alone
         self.solution = 'Invalid indentation.'
         self.phase = 4
