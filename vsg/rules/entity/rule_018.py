@@ -15,7 +15,7 @@ class rule_018(rule.rule):
         self.name = 'entity'
         self.identifier = '018'
         self.solution = 'Inconsistent alignment of comments in entity.'
-        self.phase = 6 
+        self.phase = 6
 
     def _search_for_group(self, fGroupFound, oLine, iStartGroupIndex, iLineNumber):
         if not fGroupFound and oLine.insideEntity:

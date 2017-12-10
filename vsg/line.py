@@ -1,6 +1,7 @@
 
 from vsg import utilities
 
+
 class line():
 
     def __init__(self, line):
