@@ -1,8 +1,6 @@
 
 from vsg import rule
 
-import re
-
 
 class rule_012(rule.rule):
     '''
@@ -19,6 +17,5 @@ class rule_012(rule.rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isPortDeclaration:
-                if re.match('^.*:=', oLine.line):
+            if oLine.isPortDeclaration and ':=' in oLine.line:
                     self.add_violation(iLineNumber)

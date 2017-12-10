@@ -21,13 +21,8 @@ class rule_009(rule.rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isInstantiationDeclaration:
-                if re.match('^\s*\w+\s+:\s+\w+', oLine.line):
-                    check.is_uppercase(self, oLine.line.split()[2], iLineNumber)
-                elif re.match('^\s*\w+:\w+', oLine.line):
-                    lLine = oLine.line.split(':')[1].split()
-                    check.is_uppercase(self, lLine[0], iLineNumber)
-                else:
-                    check.is_uppercase(self, oLine.line.split()[1], iLineNumber)
+                sName = oLine.line.split(':')[1].lstrip().split()[0]
+                check.is_uppercase(self, sName, iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

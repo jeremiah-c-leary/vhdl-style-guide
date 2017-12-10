@@ -3,6 +3,8 @@ from vsg import rule
 from vsg import fix
 from vsg import check
 
+import re
+
 
 class rule_014(rule.rule):
     '''
@@ -18,10 +20,9 @@ class rule_014(rule.rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isEndEntityDeclaration:
+            if oLine.isEndEntityDeclaration and re.match('^\s*end\s+entity', oLine.line, re.IGNORECASE):
                 lLine = oLine.line.split()
-                if len(lLine) >= 3:
-                    check.is_lowercase(self, lLine[1], iLineNumber)
+                check.is_lowercase(self, lLine[1], iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

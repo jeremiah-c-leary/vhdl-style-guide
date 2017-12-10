@@ -1,5 +1,6 @@
 
 from vsg import rule
+from vsg import check
 from vsg import fix
 
 import re
@@ -20,8 +21,7 @@ class rule_018(rule.rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isInstantiationGenericKeyword or oLine.isInstantiationPortKeyword:
-                if not re.match('^.*\smap\s\(', oLine.lineLower):
-                    self.add_violation(iLineNumber)
+                check.is_single_space_after(self, 'map', oLine, iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

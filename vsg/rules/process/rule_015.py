@@ -17,9 +17,10 @@ class rule_015(rule.rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isProcessKeyword:
-                if not oFile.lines[iLineNumber - 1].isBlank and not oFile.lines[iLineNumber - 1].isComment:
-                    self.add_violation(iLineNumber)
+            if oLine.isProcessKeyword and \
+               not oFile.lines[iLineNumber - 1].isBlank and \
+               not oFile.lines[iLineNumber - 1].isComment:
+                self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:

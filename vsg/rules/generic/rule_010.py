@@ -17,8 +17,7 @@ class rule_010(rule.rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isEndGenericMap:
-                if not re.match('^\s*\)', oLine.line):
+            if oLine.isEndGenericMap and not re.match('^\s*\)', oLine.line):
                     self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):

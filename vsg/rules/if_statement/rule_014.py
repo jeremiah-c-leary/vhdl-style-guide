@@ -17,8 +17,7 @@ class rule_014(rule.rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isEndIfKeyword:
-                if not re.match('^\s*end\s+if', oLine.lineLower):
+            if oLine.isEndIfKeyword and not re.match('^\s*end\s+if', oLine.lineLower):
                     self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
