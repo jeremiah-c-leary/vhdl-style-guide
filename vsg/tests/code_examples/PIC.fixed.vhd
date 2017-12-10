@@ -2,7 +2,7 @@
 ---- Create Date:    00:12:45 10/23/2010
 ---- Design Name: pic
 ---- Project Name: PIC
---Description:
+Description:
 ----  A Programmable Interrupt Controller which can handle upto 8   ----
 ---- level triggered interrupts.The operating modes available are    ----
 ---- polling fixed priority modes.              ----                                                           ----
@@ -63,19 +63,19 @@ architecture BEHAVIORAL of PIC is
     ack_txinfo_rxd, start_priority_check, tx_int_info_priority, ack_txinfo_rxd_priority, ack_ISR_done_pt
   );
 
-  signal next_s               : state_type;
-  signal int_type             : unsigned(1 downto 0);
-  signal int_index, count_cmd : integer;
+  signal next_s               : state_type :=reset_s;
+  signal int_type             : unsigned(1 downto 0):="01";
+  signal int_index, count_cmd : integer := 0;
 
   type prior_table is array (0 to 7) of unsigned(2 downto 0);
 
-  signal pt                   : prior_table;
-  signal int_pt               : unsigned(2 downto 0);
-  signal flag, flag1          : std_logic;  --These flags are used for timing purposes.
+  signal pt                   : prior_table := (others => (others => '0'));
+  signal int_pt               : unsigned(2 downto 0):="000";
+  signal flag, flag1          : std_logic := '0';  --These flags are used for timing purposes.
 
 begin
 
-  PROC_1 : process (CLK_I, RST_I) is
+  process (CLK_I, RST_I) is
   begin
 
     if (RST_I = '1') then
@@ -256,7 +256,7 @@ begin
 
     end if;
 
-  end process PROC_1;
+  end process;
 
 end architecture BEHAVIORAL;
 

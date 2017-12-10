@@ -25,8 +25,11 @@ class rule_010(rule.rule):
         for iLineNumber in self.violations[::-1]:
             oFile.lines[iLineNumber].line = re.sub(r'\)(\s*);', r' \1 ', oFile.lines[iLineNumber].line)
             oFile.lines[iLineNumber].isEndGenericMap = False
-            oFile.lines[iLineNumber].indentLevel += 1
             oFile.lines.insert(iLineNumber + 1, line.line('  );'))
             oFile.lines[iLineNumber + 1].isEndGenericMap = True
             oFile.lines[iLineNumber + 1].insideGenericMap = True
-            oFile.lines[iLineNumber + 1].indentLevel = oFile.lines[iLineNumber].indentLevel - 1
+            if oFile.lines[iLineNumber].isGenericKeyword:
+                oFile.lines[iLineNumber + 1].indentLevel = oFile.lines[iLineNumber].indentLevel
+            else:
+                oFile.lines[iLineNumber + 1].indentLevel = oFile.lines[iLineNumber].indentLevel
+                oFile.lines[iLineNumber].indentLevel = oFile.lines[iLineNumber].indentLevel + 1

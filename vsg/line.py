@@ -1,14 +1,12 @@
 
+from vsg import utilities
+
 class line():
 
     def __init__(self, line):
         self.line = line
         self.lineLower = line.lower()
-
-        if '--' in line:
-            self.lineNoComment = self.line[0:self.line.find('--') + len('--')]
-        else:
-            self.lineNoComment = line
+        self.lineNoComment = utilities.remove_comment(line)
 
         self.indentLevel = None
         # Misc attributes
@@ -143,6 +141,7 @@ class line():
     def update_line(self, sLine):
         self.line = sLine
         self.lineLower = sLine.lower()
+        self.lineNoComment = utilities.remove_comment(sLine)
 
 
 class blank_line(line):

@@ -119,5 +119,3 @@ class testFixRuleGenericMethods(unittest.TestCase):
         self.assertEqual(oFileMultiple.lines[8].line,'G_GENERIC4 : std_logic := \'1\';')
         self.assertEqual(oFileMultiple.lines[9].line,'G_GENERIC5 : std_logic := \'1\'')
         self.assertEqual(oFileMultiple.lines[10].line,'  );')
-
-

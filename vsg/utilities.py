@@ -80,3 +80,9 @@ def search_for_and_remove_is_keyword(oFile, iLineNumber):
             clear_is_from_line(oLine)
         if not oLine.isBlank:
             break
+
+def remove_comment(sLine):
+    if '--' in sLine:
+        return sLine[0:sLine.find('--') + len('--')]
+    else:
+        return sLine

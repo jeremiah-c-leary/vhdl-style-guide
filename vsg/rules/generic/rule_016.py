@@ -19,7 +19,7 @@ class rule_016(rule.rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isGenericDeclaration and oLine.line.count(';') > 1:
+            if oLine.isGenericDeclaration and re.match('^.*;.*:', oLine.lineNoComment):
                 self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
