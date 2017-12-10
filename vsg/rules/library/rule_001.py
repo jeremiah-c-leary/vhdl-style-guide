@@ -8,7 +8,4 @@ class rule_001(indent_rule):
     '''
 
     def __init__(self):
-        indent_rule.__init__(self)
-        self.name = 'library'
-        self.identifier = '001'
-        self.sTrigger = 'isLibrary'
+        indent_rule.__init__(self, 'library', '001', 'isLibrary')

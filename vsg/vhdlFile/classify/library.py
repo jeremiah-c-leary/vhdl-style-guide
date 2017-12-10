@@ -15,7 +15,6 @@ def check_library_keyword(oLine):
 
 
 def check_use_keyword(oLine):
-    # Check for library use lines
     if re.match('^\s*use', oLine.lineLower):
         oLine.isLibraryUse = True
         oLine.indentLevel = 1
