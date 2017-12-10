@@ -162,3 +162,19 @@ class testRuleWhitespaceMethods(unittest.TestCase):
         oFile.lines.append(line.line('   ) pass'))
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
+
+    def test_008(self):
+        oRule = whitespace.rule_008()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'whitespace')
+        self.assertEqual(oRule.identifier, '008')
+        self.assertEqual(oRule.phase, 2)
+
+        oFile = vhdlFile.vhdlFile(sFileName)
+
+        dExpected = [1,3]
+        oFile.lines.append(line.line('  std_logic_vector (7 downto 0)'))
+        oFile.lines.append(line.line('  std_logic_vector(7 downto 0)'))
+        oFile.lines.append(line.line('  std_logic_vector   (7 downto 0)'))
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)

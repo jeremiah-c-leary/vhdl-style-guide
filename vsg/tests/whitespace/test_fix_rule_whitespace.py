@@ -7,8 +7,10 @@ sys.path.append('vsg')
 from vsg.rules import whitespace
 from vsg import vhdlFile
 from vsg import line
+from vsg.tests import utils
 
 sFileName = os.path.join(os.path.dirname(__file__),'whitespace_test_input.txt')
+
 
 class testFixRuleWhitespaceMethods(unittest.TestCase):
 
@@ -104,3 +106,22 @@ class testFixRuleWhitespaceMethods(unittest.TestCase):
         oRule.fix(oFile)
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
+
+    def test_fix_008(self):
+        oRule = whitespace.rule_008()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'whitespace')
+        self.assertEqual(oRule.identifier, '008')
+
+        oFile = vhdlFile.vhdlFile(sFileName)
+
+        dExpected = []
+        oFile.lines.append(line.line('A  std_logic_vector (7 downto 0)'))
+        oFile.lines.append(line.line('  std_logic_vector(7 downto 0)'))
+        oFile.lines.append(line.line('  std_logic_vector   (7 downto 0)'))
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oFile.lines[1].line, 'A  std_logic_vector(7 downto 0)')
+        self.assertEqual(oFile.lines[2].line, '  std_logic_vector(7 downto 0)')
+        self.assertEqual(oFile.lines[3].line, '  std_logic_vector(7 downto 0)')

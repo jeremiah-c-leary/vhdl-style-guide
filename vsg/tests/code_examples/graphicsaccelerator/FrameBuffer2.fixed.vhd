@@ -8,11 +8,11 @@ library IEEE;
 entity FRAMEBUFFER is
   port (
     INX         : in    std_logic_vector
-    INY         : in    std_logic_vector (8 downto 0);
-    OUTX        : in    std_logic_vector (9 downto 0);
-    OUTY        : in    std_logic_vector (8 downto 0);
-    OUTCOLOR    : out   std_logic_vector (2 downto 0);
-    INCOLOR     : in    std_logic_vector (2 downto 0);
+    INY         : in    std_logic_vector(8 downto 0);
+    OUTX        : in    std_logic_vector(9 downto 0);
+    OUTY        : in    std_logic_vector(8 downto 0);
+    OUTCOLOR    : out   std_logic_vector(2 downto 0);
+    INCOLOR     : in    std_logic_vector(2 downto 0);
     BUFFERWRITE : in    std_logic;
     CLK         : in    std_logic
   );
@@ -20,7 +20,7 @@ end entity FRAMEBUFFER;
 
 architecture BEHAVIORAL of FRAMEBUFFER is
 
-  type fbuffer is array (0 to 524288/16-1) of std_logic_vector (2 downto 0);
+  type fbuffer is array (0 to 524288/16-1) of std_logic_vector(2 downto 0);
 
   impure function initFB return FBuffer is
     variable temp : fbuffer;
@@ -33,8 +33,8 @@ architecture BEHAVIORAL of FRAMEBUFFER is
   end initFB;
 
   signal mybuffer                  : fbuffer := initFB;
-  signal addresswrite, addressRead : STD_LOGIC_VECTOR (14 downto 0);
-  signal temp                      : std_logic_vector (2 downto 0);
+  signal addresswrite, addressRead : STD_LOGIC_VECTOR(14 downto 0);
+  signal temp                      : std_logic_vector(2 downto 0);
 
 begin
 

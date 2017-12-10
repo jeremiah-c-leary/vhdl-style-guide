@@ -24,22 +24,22 @@ entity TIMESTAMP is
     APUFCMDECODED       : in    std_logic;
     APUFCMINSTRVALID    : in    std_logic;
     APUFCMDECUDIVALID   : in    std_logic;
-    APUFCMDECUDI        : in    std_logic_vector (2 downto 0);
+    APUFCMDECUDI        : in    std_logic_vector(2 downto 0);
     APUFCMWRITEBACKOK   : in    std_logic;
-    APUFCMRADATA        : in    std_logic_vector (31 downto 0);
-    APUFCMRBDATA        : in    std_logic_vector (31 downto 0);
+    APUFCMRADATA        : in    std_logic_vector(31 downto 0);
+    APUFCMRBDATA        : in    std_logic_vector(31 downto 0);
     FCMAPUDONE          : out   std_logic;
     FCMAPUSLEEPNOTREADY : out   std_logic;
     -- BRAM slave i/f:
     BRAM_RST_B          : in    std_logic;
     BRAM_CLK_B          : in    std_logic;
     BRAM_EN_B           : in    std_logic;
-    BRAM_WEN_B          : in    std_logic_vector (7 downto 0);
-    BRAM_ADDR_B         : in    std_logic_vector (31 downto 0);
-    BRAM_DOUT_B         : in    std_logic_vector (63 downto 0);
-    BRAM_DIN_B          : out   std_logic_vector (63 downto 0);
+    BRAM_WEN_B          : in    std_logic_vector(7 downto 0);
+    BRAM_ADDR_B         : in    std_logic_vector(31 downto 0);
+    BRAM_DOUT_B         : in    std_logic_vector(63 downto 0);
+    BRAM_DIN_B          : out   std_logic_vector(63 downto 0);
     -- etc.
-    DEBUG               : out   std_logic_vector (3 downto 0)
+    DEBUG               : out   std_logic_vector(3 downto 0)
   );
 end entity TIMESTAMP;
 
@@ -51,14 +51,14 @@ architecture TIMESTAMP_FCM of TIMESTAMP is
   signal clock             : std_logic;
   -- FSM
   signal state, next_state : state_type;
-  signal counter           : std_logic_vector (31 downto 0);
-  signal addr_counter      : std_logic_vector (9 downto 0);
+  signal counter           : std_logic_vector(31 downto 0);
+  signal addr_counter      : std_logic_vector(9 downto 0);
   signal save_udi_code     : std_logic;
-  signal udi_code          : std_logic_vector (2 downto 0);
+  signal udi_code          : std_logic_vector(2 downto 0);
   -- BRAM
   signal wea               : std_logic;
-  signal dia0, dia1        : std_logic_vector (31 downto 0);
-  signal addra             : std_logic_vector (9 downto 0);
+  signal dia0, dia1        : std_logic_vector(31 downto 0);
+  signal addra             : std_logic_vector(9 downto 0);
 
 begin
 

@@ -190,23 +190,23 @@ entity SPI_MASTER is
     SPI_MISO_I    : in    std_logic := 'X';                                       -- spi bus spi_miso_i input
     ---- parallel interface ----
     DI_REQ_O      : out   std_logic;                                              -- preload lookahead data request line
-    DI_I          : in    std_logic_vector (N-1 downto 0) := (others => 'X');     -- parallel data in (clocked on rising spi_clk after last bit)
+    DI_I          : in    std_logic_vector(N-1 downto 0) := (others => 'X');      -- parallel data in (clocked on rising spi_clk after last bit)
     WREN_I        : in    std_logic := 'X';                                       -- user data write enable, starts transmission when interface is idle
     WR_ACK_O      : out   std_logic;                                              -- write acknowledge
     DO_VALID_O    : out   std_logic;                                              -- do_o data valid signal, valid during one spi_clk rising edge.
-    DO_O          : out   std_logic_vector (N-1 downto 0);                        -- parallel output (clocked on rising spi_clk after last bit)
+    DO_O          : out   std_logic_vector(N-1 downto 0);                         -- parallel output (clocked on rising spi_clk after last bit)
     --- debug ports: can be removed or left unconnected for the application circuit ---
     SCK_ENA_O     : out   std_logic;                                              -- debug: internal sck enable signal
     SCK_ENA_CE_O  : out   std_logic;                                              -- debug: internal sck clock enable signal
     DO_TRANSFER_O : out   std_logic;                                              -- debug: internal transfer driver
     WREN_O        : out   std_logic;                                              -- debug: internal state of the wren_i pulse stretcher
     RX_BIT_REG_O  : out   std_logic;                                              -- debug: internal rx bit
-    STATE_DBG_O   : out   std_logic_vector (3 downto 0);                          -- debug: internal state register
+    STATE_DBG_O   : out   std_logic_vector(3 downto 0);                           -- debug: internal state register
     CORE_CLK_O    : out   std_logic;
     CORE_N_CLK_O  : out   std_logic;
     CORE_CE_O     : out   std_logic;
     CORE_N_CE_O   : out   std_logic;
-    SH_REG_DBG_O  : out   std_logic_vector (N-1 downto 0)                         -- debug: internal shift register
+    SH_REG_DBG_O  : out   std_logic_vector(N-1 downto 0)                          -- debug: internal shift register
   );
 end entity SPI_MASTER;
 
@@ -244,12 +244,12 @@ architecture RTL of SPI_MASTER is
   signal state_next       : natural range N+1 downto 0 := 0;
   signal state_reg        : natural range N+1 downto 0 := 0;
   -- shifter signals for register and combinatorial stages
-  signal sh_next          : std_logic_vector (N-1 downto 0);
-  signal sh_reg           : std_logic_vector (N-1 downto 0);
+  signal sh_next          : std_logic_vector(N-1 downto 0);
+  signal sh_reg           : std_logic_vector(N-1 downto 0);
   -- input bit sampled buffer
   signal rx_bit_reg       : std_logic := '0';
   -- buffered di_i data signals for register and combinatorial stages
-  signal di_reg           : std_logic_vector (N-1 downto 0);
+  signal di_reg           : std_logic_vector(N-1 downto 0);
   -- internal wren_i stretcher for fsm combinatorial stage
   signal wren             : std_logic;
   signal wr_ack_next      : std_logic := '0';
@@ -261,8 +261,8 @@ architecture RTL of SPI_MASTER is
   signal sck_ena_next     : std_logic;
   signal sck_ena_reg      : std_logic;
   -- buffered do_o data signals for register and combinatorial stages
-  signal do_buffer_next   : std_logic_vector (N-1 downto 0);
-  signal do_buffer_reg    : std_logic_vector (N-1 downto 0);
+  signal do_buffer_next   : std_logic_vector(N-1 downto 0);
+  signal do_buffer_reg    : std_logic_vector(N-1 downto 0);
   -- internal signal to flag transfer to do_buffer_reg
   signal do_transfer_next : std_logic := '0';
   signal do_transfer_reg  : std_logic := '0';

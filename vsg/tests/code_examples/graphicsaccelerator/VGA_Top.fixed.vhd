@@ -15,7 +15,7 @@ entity VGA_TOP is
     LED       : out   std_logic;
     ENABLES   : out   std_logic_vector(3 downto 0);
     SEGMENTS  : out   std_logic_vector(6 downto 0);
-    INCOLOR   : in    std_logic_vector (2 downto 0);
+    INCOLOR   : in    std_logic_vector(2 downto 0);
     MOVEUP    : in    std_logic;
     MOVEDOWN  : in    std_logic;
     MOVELEFT  : in    std_logic;
@@ -44,7 +44,7 @@ architecture BEHAVIORAL of VGA_TOP is
       CLK         : in    std_logic;
       STARTDRAW   : in    std_logic;
       WRITEENABLE : out   std_logic;
-      SS          : out   std_logic_vector (3 downto 0);
+      SS          : out   std_logic_vector(3 downto 0);
       X           : out   std_logic_vector(9 downto 0);
       Y           : out   std_logic_vector(8 downto 0);
       RESET       : in    std_logic
@@ -59,20 +59,20 @@ architecture BEHAVIORAL of VGA_TOP is
       HS       : out   std_logic;
       VS       : out   std_logic;
       CLK      : in    std_logic;
-      DATAIN   : in    std_logic_vector (2 downto 0);
-      ADDRESSX : out   std_logic_vector (9 downto 0);
-      ADDRESSY : out   std_logic_vector (8 downto 0)
+      DATAIN   : in    std_logic_vector(2 downto 0);
+      ADDRESSX : out   std_logic_vector(9 downto 0);
+      ADDRESSY : out   std_logic_vector(8 downto 0)
     );
   end component;
 
   component FRAMEBUFFER is
     port (
       INX         : in    std_logic_vector
-      INY         : in    std_logic_vector (8 downto 0);
-      OUTX        : in    std_logic_vector (9 downto 0);
-      OUTY        : in    std_logic_vector (8 downto 0);
-      OUTCOLOR    : out   std_logic_vector (2 downto 0);
-      INCOLOR     : in    std_logic_vector (2 downto 0);
+      INY         : in    std_logic_vector(8 downto 0);
+      OUTX        : in    std_logic_vector(9 downto 0);
+      OUTY        : in    std_logic_vector(8 downto 0);
+      OUTCOLOR    : out   std_logic_vector(2 downto 0);
+      INCOLOR     : in    std_logic_vector(2 downto 0);
       BUFFERWRITE : in    std_logic;
       CLK         : in    std_logic
     );
@@ -90,7 +90,7 @@ architecture BEHAVIORAL of VGA_TOP is
   component POINTER is
     generic (
       INITX : STD_LOGIC_VECTOR
-      INITY : STD_LOGIC_VECTOR (8 downto 0)
+      INITY : STD_LOGIC_VECTOR(8 downto 0)
     );
     port (
       MOVEUP    : in    std_logic;
@@ -114,19 +114,19 @@ architecture BEHAVIORAL of VGA_TOP is
     );
   end component;
 
-  signal adx, GPU_X          : STD_LOGIC_VECTOR (9 downto 0);
-  signal ady, GPU_Y          : STD_LOGIC_VECTOR (8 downto 0);
-  signal data                : std_logic_vector (2 downto 0);
-  signal gim                 : std_logic_vector (22 downto 0);
-  signal gpu_color_to_buffer : std_logic_vector (2 downto 0);
+  signal adx, GPU_X          : STD_LOGIC_VECTOR(9 downto 0);
+  signal ady, GPU_Y          : STD_LOGIC_VECTOR(8 downto 0);
+  signal data                : std_logic_vector(2 downto 0);
+  signal gim                 : std_logic_vector(22 downto 0);
+  signal gpu_color_to_buffer : std_logic_vector(2 downto 0);
   signal bufferwrite         : std_logic;
   signal dout                : std_logic;
-  signal ss                  : std_logic_vector (3 downto 0);
+  signal ss                  : std_logic_vector(3 downto 0);
   signal clk2                : std_logic;
   signal p1region, p2Region  : STD_LOGIC;
   signal rt, Gt, Bt          : STD_LOGIC;
-  signal x1, X2              : STD_LOGIC_VECTOR (9 downto 0);
-  signal y1, Y2              : STD_LOGIC_VECTOR (8 downto 0);
+  signal x1, X2              : STD_LOGIC_VECTOR(9 downto 0);
+  signal y1, Y2              : STD_LOGIC_VECTOR(8 downto 0);
 
 begin
 

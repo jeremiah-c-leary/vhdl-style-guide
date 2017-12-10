@@ -7,7 +7,7 @@ library IEEE;
 entity POINTER is
   generic (
     INITX : STD_LOGIC_VECTOR
-    INITY : STD_LOGIC_VECTOR (8 downto 0)
+    INITY : STD_LOGIC_VECTOR(8 downto 0)
   );
   port (
     MOVEUP    : in    std_logic;
@@ -17,17 +17,17 @@ entity POINTER is
     MOVE      : in    std_logic;
     CLK       : in    std_logic;
     HERE      : out   std_logic;
-    X         : out   std_logic_vector (9 downto 0);
-    Y         : out   std_logic_vector (8 downto 0);
-    SYNCX     : in    std_logic_vector (9 downto 0);
-    SYNCY     : in    std_logic_vector (8 downto 0)
+    X         : out   std_logic_vector(9 downto 0);
+    Y         : out   std_logic_vector(8 downto 0);
+    SYNCX     : in    std_logic_vector(9 downto 0);
+    SYNCY     : in    std_logic_vector(8 downto 0)
   );
 end entity POINTER;
 
 architecture BEHAVIORAL of POINTER is
 
-  signal rx : std_logic_vector (9 downto 0) := initX;
-  signal ry : std_logic_vector (8 downto 0) := initY;
+  signal rx : std_logic_vector(9 downto 0) := initX;
+  signal ry : std_logic_vector(8 downto 0) := initY;
 
 begin
 

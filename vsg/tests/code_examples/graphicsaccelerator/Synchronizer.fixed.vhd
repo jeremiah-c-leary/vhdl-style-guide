@@ -12,24 +12,24 @@ entity SYNCHRONIZER is
     HS       : out   std_logic;
     VS       : out   std_logic;
     CLK      : in    std_logic;
-    DATAIN   : in    std_logic_vector (2 downto 0);
-    ADDRESSX : out   std_logic_vector (9 downto 0);
-    ADDRESSY : out   std_logic_vector (8 downto 0)
+    DATAIN   : in    std_logic_vector(2 downto 0);
+    ADDRESSX : out   std_logic_vector(9 downto 0);
+    ADDRESSY : out   std_logic_vector(8 downto 0)
   );
 end entity SYNCHRONIZER;
 
 architecture BEHAVIORAL of SYNCHRONIZER is
 
-  signal x, nX                   : STD_LOGIC_VECTOR (10 downto 0) := (others=>'0');
-  signal y, nY                   : STD_LOGIC_VECTOR (20 downto 0) := (others=>'0');
-  constant tpw : STD_LOGIC_VECTOR (1 downto 0) := "00";
-  constant tbp : STD_LOGIC_VECTOR (1 downto 0) := "01";
-  constant tdp : STD_LOGIC_VECTOR (1 downto 0) := "10";
-  constant tfp : STD_LOGIC_VECTOR (1 downto 0) := "11";
-  signal xstate                  : std_logic_vector (1 downto 0) := TPW;
-  signal ystate                  : std_logic_vector (1 downto 0) := TPW;
+  signal x, nX                   : STD_LOGIC_VECTOR(10 downto 0) := (others=>'0');
+  signal y, nY                   : STD_LOGIC_VECTOR(20 downto 0) := (others=>'0');
+  constant tpw : STD_LOGIC_VECTOR(1 downto 0) := "00";
+  constant tbp : STD_LOGIC_VECTOR(1 downto 0) := "01";
+  constant tdp : STD_LOGIC_VECTOR(1 downto 0) := "10";
+  constant tfp : STD_LOGIC_VECTOR(1 downto 0) := "11";
+  signal xstate                  : std_logic_vector(1 downto 0) := TPW;
+  signal ystate                  : std_logic_vector(1 downto 0) := TPW;
   signal enabledisplay           : std_logic;
-  signal addressofy, nAddressOfY : STD_LOGIC_VECTOR (8 downto 0);
+  signal addressofy, nAddressOfY : STD_LOGIC_VECTOR(8 downto 0);
 
 begin
 

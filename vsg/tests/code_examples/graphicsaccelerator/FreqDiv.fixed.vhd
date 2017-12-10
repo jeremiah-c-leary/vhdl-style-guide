@@ -13,7 +13,7 @@ end entity FREQDIV;
 
 architecture BEHAVIORAL of FREQDIV is
 
-  signal counter : std_logic_vector (19 downto 0);
+  signal counter : std_logic_vector(19 downto 0);
 
 begin
 
