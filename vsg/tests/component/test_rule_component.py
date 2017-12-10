@@ -151,15 +151,15 @@ class testRuleComponentMethods(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
-    def test_rule_015(self):
-        oRule = component.rule_015()
-        self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'component')
-        self.assertEqual(oRule.identifier, '015')
-
-        dExpected = [43]
-        oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
+#    def test_rule_015(self):
+#        oRule = component.rule_015()
+#        self.assertTrue(oRule)
+#        self.assertEqual(oRule.name, 'component')
+#        self.assertEqual(oRule.identifier, '015')
+#
+#        dExpected = [43]
+#        oRule.analyze(oFile)
+#        self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_016(self):
         oRule = component.rule_016()

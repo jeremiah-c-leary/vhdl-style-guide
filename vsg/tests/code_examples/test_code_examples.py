@@ -10,6 +10,8 @@ from vsg.tests import utils
 oTimestamp = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'timestamp.vhdl'))
 oSpiSlave = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'spi_slave.vhd'))
 oSpiMaster = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'spi_master.vhd'))
+oGrpDebouncer = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'grp_debouncer.vhd'))
+oPIC = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'PIC.vhd'))
 
 class testVhdlFileMethods(unittest.TestCase):
 
@@ -36,3 +38,19 @@ class testVhdlFileMethods(unittest.TestCase):
         utils.read_file(os.path.join(os.path.dirname(__file__),'spi_master.fixed.vhd'), lExpected)
         for iLineNumber, sLine in enumerate(lExpected):
             self.assertEqual(oSpiMaster.lines[iLineNumber].line, sLine)
+
+    def test_grp_debouncer(self):
+        oRuleList = rule_list.list(oGrpDebouncer)
+        oRuleList.fix()
+        lExpected = ['']
+        utils.read_file(os.path.join(os.path.dirname(__file__),'grp_debouncer.fixed.vhd'), lExpected)
+        for iLineNumber, sLine in enumerate(lExpected):
+            self.assertEqual(oGrpDebouncer.lines[iLineNumber].line, sLine)
+
+    def test_pic(self):
+        oRuleList = rule_list.list(oPIC)
+        oRuleList.fix()
+        lExpected = ['']
+        utils.read_file(os.path.join(os.path.dirname(__file__),'PIC.fixed.vhd'), lExpected)
+        for iLineNumber, sLine in enumerate(lExpected):
+            self.assertEqual(oPIC.lines[iLineNumber].line, sLine)

@@ -21,8 +21,7 @@ class rule_014(rule.rule):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isComponentEnd:
                 lLine = oLine.line.split()
-                if len(lLine) >= 3:
-                    check.is_lowercase(self, lLine[1], iLineNumber)
+                check.is_lowercase(self, lLine[1], iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

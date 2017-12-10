@@ -14,7 +14,7 @@ class rule_003(rule.rule):
         self.name = 'concurrent'
         self.identifier = '003'
         self.solution = 'Align first character in row to the column of text one space after the <=.'
-        self.phase = 5
+        self.phase = 6
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):

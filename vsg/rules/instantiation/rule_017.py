@@ -30,3 +30,4 @@ class rule_017(rule.rule):
             oLine = oFile.lines[iLineNumber + 1]
             oLine.update_line('  ' + oLine.line.split('(')[1])
             oLine.isInstantiationGenericKeyword = False
+            oLine.indentLevel += 1

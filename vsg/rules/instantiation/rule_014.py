@@ -24,8 +24,10 @@ class rule_014(rule.rule):
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:
-            oFile.lines[iLineNumber].line = re.sub(r'\)(\s*);', r' \1 ', oFile.lines[iLineNumber].line)
+            oFile.lines[iLineNumber].line = re.sub(r'\)(\s*)', r' \1 ', oFile.lines[iLineNumber].line)
             oFile.lines[iLineNumber].isInstantiationGenericEnd = False
-            oFile.lines.insert(iLineNumber + 1, line.line('  );'))
+            oFile.lines.insert(iLineNumber + 1, line.line('  )'))
             oFile.lines[iLineNumber + 1].isInstantiationGenericAssignement = False
+            oFile.lines[iLineNumber + 1].isInstantiationGenericEnd = True
+            oFile.lines[iLineNumber + 1].insideInstantiation = True
             oFile.lines[iLineNumber + 1].indentLevel = oFile.lines[iLineNumber].indentLevel - 1

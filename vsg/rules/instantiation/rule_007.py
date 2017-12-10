@@ -28,4 +28,6 @@ class rule_007(rule.rule):
             oFile.lines[iLineNumber].isInstantiationPortEnd = False
             oFile.lines.insert(iLineNumber + 1, line.line('  );'))
             oFile.lines[iLineNumber + 1].isInstantiationPortAssignement = False
+            oFile.lines[iLineNumber + 1].isInstantiationPortEnd = True
+            oFile.lines[iLineNumber + 1].insideInstantiation = True
             oFile.lines[iLineNumber + 1].indentLevel = oFile.lines[iLineNumber].indentLevel - 1

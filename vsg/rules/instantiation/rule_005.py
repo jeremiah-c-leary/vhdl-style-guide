@@ -32,3 +32,4 @@ class rule_005(rule.rule):
             oLine = oFile.lines[iLineNumber + 1]
             oLine.update_line(oLine.line[iIndex:])
             oLine.isInstantiationDeclaration = False
+            oLine.indentLevel += 1

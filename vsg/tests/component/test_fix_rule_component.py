@@ -95,11 +95,11 @@ class testFixRuleComponentMethods(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, [])
 
-    def test_fix_rule_015(self):
-        oRule = component.rule_015()
-        oRule.fix(oFile)
-        oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, [])
+#    def test_fix_rule_015(self):
+#        oRule = component.rule_015()
+#        oRule.fix(oFile)
+#        oRule.analyze(oFile)
+#        self.assertEqual(oRule.violations, [])
 
     def test_fix_rule_016(self):
         oRule = component.rule_016()
