@@ -108,6 +108,6 @@ class testRuleSignalMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'signal')
         self.assertEqual(oRule.identifier, '010')
-        dExpected = [12]
+        dExpected = [12,16,20]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)

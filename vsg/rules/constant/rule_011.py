@@ -6,22 +6,22 @@ from vsg import check
 import re
 
 
-class rule_010(rule.rule):
+class rule_011(rule.rule):
     '''
-    Signal rule 010 checks the signal type is lowercase.
+    Constant rule 010 checks the constant type is lowercase.
     '''
 
     def __init__(self):
         rule.rule.__init__(self)
-        self.name = 'signal'
-        self.identifier = '010'
-        self.solution = 'Change signal type to lowercase.'
+        self.name = 'constant'
+        self.identifier = '011'
+        self.solution = 'Change constant type to lowercase.'
         self.phase = 6
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isSignal:
-                if re.match('^\s*signal\s+.*:\s*\w', oLine.lineLower):
+            if oLine.isConstant:
+                if re.match('^\s*constant\s+.*:\s*\w', oLine.line, re.IGNORECASE):
                     sLine = oLine.line.split(':')[1].lstrip()
                     if '(' in sLine:
                         check.is_lowercase(self, sLine.split('(')[0].rstrip(), iLineNumber)

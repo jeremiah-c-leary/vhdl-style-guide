@@ -49,7 +49,7 @@ end entity ENTITY1
 entity ENTITY1
 is
    generic  (
-    G_GENERIC1 :   std_logic :=   '0';
+    G_GENERIC1 :   STD_LOGIC :=   '0';
   G_GENERIC2 : std_logic :=    '1'
   );
 
@@ -93,7 +93,7 @@ end   entity ENTITY1
 
 entity ENTITY1 is
   Generic (
-    A_GENERIC1 : std_logic := '0';
+    A_GENERIC1 : STD_LOGIC := '0';
     G_GENERIC2 : std_logic := '1');
   port (
     PORT1_I : in    std_logic;

@@ -20,16 +20,16 @@ end entity SYNCHRONIZER;
 
 architecture BEHAVIORAL of SYNCHRONIZER is
 
-  signal x, nX                   : STD_LOGIC_VECTOR(10 downto 0) := (others=>'0');
-  signal y, nY                   : STD_LOGIC_VECTOR(20 downto 0) := (others=>'0');
-  constant tpw : STD_LOGIC_VECTOR(1 downto 0) := "00";
-  constant tbp : STD_LOGIC_VECTOR(1 downto 0) := "01";
-  constant tdp : STD_LOGIC_VECTOR(1 downto 0) := "10";
-  constant tfp : STD_LOGIC_VECTOR(1 downto 0) := "11";
+  signal x, nX                   : std_logic_vector(10 downto 0) := (others=>'0');
+  signal y, nY                   : std_logic_vector(20 downto 0) := (others=>'0');
+  constant tpw : std_logic_vector(1 downto 0) := "00";
+  constant tbp : std_logic_vector(1 downto 0) := "01";
+  constant tdp : std_logic_vector(1 downto 0) := "10";
+  constant tfp : std_logic_vector(1 downto 0) := "11";
   signal xstate                  : std_logic_vector(1 downto 0) := TPW;
   signal ystate                  : std_logic_vector(1 downto 0) := TPW;
   signal enabledisplay           : std_logic;
-  signal addressofy, nAddressOfY : STD_LOGIC_VECTOR(8 downto 0);
+  signal addressofy, nAddressOfY : std_logic_vector(8 downto 0);
 
 begin
 

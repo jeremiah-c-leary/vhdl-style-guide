@@ -6,8 +6,8 @@ library IEEE;
 
 entity POINTER is
   generic (
-    INITX : STD_LOGIC_VECTOR
-    INITY : STD_LOGIC_VECTOR(8 downto 0)
+    INITX : std_logic_vector
+    INITY : std_logic_vector(8 downto 0)
   );
   port (
     MOVEUP    : in    std_logic;

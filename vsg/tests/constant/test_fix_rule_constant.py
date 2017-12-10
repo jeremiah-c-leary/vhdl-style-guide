@@ -69,3 +69,11 @@ class testFixRuleConstantMethods(unittest.TestCase):
         oRule.fix(oFile)
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
+
+    def test_fix_rule_011(self):
+        oRule = constant.rule_011()
+        dExpected = []
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oFile.lines[9].line, '  constant const   : std_logic :=\'0\';')

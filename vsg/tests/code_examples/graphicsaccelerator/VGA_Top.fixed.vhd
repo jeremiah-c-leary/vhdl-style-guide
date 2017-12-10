@@ -89,8 +89,8 @@ architecture BEHAVIORAL of VGA_TOP is
 
   component POINTER is
     generic (
-      INITX : STD_LOGIC_VECTOR
-      INITY : STD_LOGIC_VECTOR(8 downto 0)
+      INITX : std_logic_vector
+      INITY : std_logic_vector(8 downto 0)
     );
     port (
       MOVEUP    : in    std_logic;
@@ -114,8 +114,8 @@ architecture BEHAVIORAL of VGA_TOP is
     );
   end component;
 
-  signal adx, GPU_X          : STD_LOGIC_VECTOR(9 downto 0);
-  signal ady, GPU_Y          : STD_LOGIC_VECTOR(8 downto 0);
+  signal adx, GPU_X          : std_logic_vector(9 downto 0);
+  signal ady, GPU_Y          : std_logic_vector(8 downto 0);
   signal data                : std_logic_vector(2 downto 0);
   signal gim                 : std_logic_vector(22 downto 0);
   signal gpu_color_to_buffer : std_logic_vector(2 downto 0);
@@ -123,10 +123,10 @@ architecture BEHAVIORAL of VGA_TOP is
   signal dout                : std_logic;
   signal ss                  : std_logic_vector(3 downto 0);
   signal clk2                : std_logic;
-  signal p1region, p2Region  : STD_LOGIC;
-  signal rt, Gt, Bt          : STD_LOGIC;
-  signal x1, X2              : STD_LOGIC_VECTOR(9 downto 0);
-  signal y1, Y2              : STD_LOGIC_VECTOR(8 downto 0);
+  signal p1region, p2Region  : std_logic;
+  signal rt, Gt, Bt          : std_logic;
+  signal x1, X2              : std_logic_vector(9 downto 0);
+  signal y1, Y2              : std_logic_vector(8 downto 0);
 
 begin
 
