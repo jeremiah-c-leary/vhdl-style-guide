@@ -22,7 +22,7 @@ begin
   process (Clk) is
   begin
 
-    if (rising_edge(Clk)) then
+    if (Clk'event and Clk = '1') then
       counter <= counter + 1;
     end if;
 

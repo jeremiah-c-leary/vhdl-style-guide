@@ -54,7 +54,7 @@ begin
   process (Clk) is
   begin
 
-    if (rising_edge(Clk)) then
+    if (Clk'event and Clk = '1') then
       if (XState=TPW and X(7 downto 1)="1100000") then
         X      <= (others=>'0');
         XState <= TBP;

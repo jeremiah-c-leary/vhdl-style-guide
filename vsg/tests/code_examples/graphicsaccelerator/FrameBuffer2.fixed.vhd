@@ -45,7 +45,7 @@ begin
   process (clk) is
   begin
 
-    if (rising_edge(Clk)) then
+    if (Clk'event and Clk = '1') then
       if (BufferWrite = '1') then
         mybuffer(conv_integer(addressWrite)) <= inColor;
       end if;

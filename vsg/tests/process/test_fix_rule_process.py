@@ -8,6 +8,7 @@ from vsg import vhdlFile
 
 # Read in test file used for all tests
 oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'process_test_input.vhd'))
+oFileEvent = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'process_event_test_input.vhd'))
 
 
 class testFixRuleProcessMethods(unittest.TestCase):
@@ -201,3 +202,12 @@ class testFixRuleProcessMethods(unittest.TestCase):
         self.assertEqual(oFile.lines[35].line, '          ) is -- This is a comment')
         self.assertEqual(oFile.lines[41].line, '          ) is')
         self.assertEqual(oFile.lines[29].line, '          ) is')
+
+    def test_fix_rule_029(self):
+        oRule = process.rule_029()
+        dExpected = []
+        oRule.fix(oFileEvent)
+        oRule.analyze(oFileEvent)
+        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oFileEvent.lines[9].line, '    if (CLK\'event and CLK = \'1\') then')
+        self.assertEqual(oFileEvent.lines[13].line, '    if (CLK\'event and CLK = \'0\') then')

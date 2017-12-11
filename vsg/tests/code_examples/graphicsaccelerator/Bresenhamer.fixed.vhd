@@ -98,7 +98,7 @@ begin
   process (Clk) is
   begin
 
-    if (rising_edge(Clk)) then
+    if (Clk'event and Clk = '1') then
       if (State = IDLE) then
         if (Reset = '1') then
           State    <= CLEAR;

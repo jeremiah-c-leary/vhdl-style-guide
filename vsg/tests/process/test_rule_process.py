@@ -8,6 +8,7 @@ from vsg import vhdlFile
 
 # Read in test file used for all tests
 oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','process','process_test_input.vhd'))
+oFileEvent = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'process_event_test_input.vhd'))
 
 class testRuleProcessMethods(unittest.TestCase):
 
@@ -261,4 +262,13 @@ class testRuleProcessMethods(unittest.TestCase):
         self.assertEqual(oRule.identifier, '028')
         dExpected = [27,33]
         oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_029(self):
+        oRule = process.rule_029()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'process')
+        self.assertEqual(oRule.identifier, '029')
+        dExpected = [9,13]
+        oRule.analyze(oFileEvent)
         self.assertEqual(oRule.violations, dExpected)

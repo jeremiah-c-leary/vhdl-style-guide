@@ -40,7 +40,7 @@ begin
   process (Clk) is
   begin
 
-    if (rising_edge(Clk)) then
+    if (Clk'event and Clk = '1') then
       if (Move = '1') then
         if (MoveLeft = '1' and MoveRight = '0') then
           if (not (rX = "0000000000")) then
