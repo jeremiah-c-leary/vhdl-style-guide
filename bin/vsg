@@ -17,9 +17,11 @@ from vsg import vhdlFile
 def parse_command_line_arguments():
     '''Parses the command line arguments and returns them.'''
 
-    parser = argparse.ArgumentParser(prog='VHDL Style Guide (VSG)',
-                                     description='Analyzes VHDL files\
-                                                  for style guide violations.')
+    parser = argparse.ArgumentParser(
+      prog='VHDL Style Guide (VSG)',
+      description='''Analyzes VHDL files for style guide violations.
+                   Reference documentation is located at:
+                   http://vhdl-style-guide.readthedocs.io/en/latest/index.html''')
 
     parser.add_argument('-f', '--filename', required=True, help='File to analyze')
     parser.add_argument('--local_rules', help='Path to local rules')
