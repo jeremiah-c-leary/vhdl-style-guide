@@ -7,7 +7,9 @@ import re
 
 
 class rule_002(rule.rule):
-    '''Architecture rule 002 checks for a single space between "architecture", "of", and "is" keywords.'''
+    '''
+    Architecture rule 002 checks for a single space between "architecture", "of", and "is" keywords.
+    '''
 
     def __init__(self):
         rule.rule.__init__(self)
