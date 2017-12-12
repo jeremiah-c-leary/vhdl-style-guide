@@ -5,7 +5,9 @@ from vsg import check
 
 
 class rule_011(rule.rule):
-    '''Architecture rule 011 checks the entity name is upper case on the closing "end architecture" line.'''
+    '''
+    Architecture rule 011 checks the architecture name is upper case on the closing "end architecture" line.
+    '''
 
     def __init__(self):
         rule.rule.__init__(self)

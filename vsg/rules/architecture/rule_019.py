@@ -6,7 +6,9 @@ import re
 
 
 class rule_019(rule.rule):
-    '''Architecture rule 019 checks the "of" keyword is lower case.'''
+    '''
+    Architecture rule 019 checks the "of" keyword is lower case.
+    '''
 
     def __init__(self):
         rule.rule.__init__(self)

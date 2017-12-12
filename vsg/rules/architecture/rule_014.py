@@ -7,7 +7,9 @@ import re
 
 
 class rule_014(rule.rule):
-    '''Architecture rule 013 checks the entity name is upper case in the architecture declaration.'''
+    '''
+    Architecture rule 013 checks the entity name is upper case in the architecture declaration.
+    '''
 
     def __init__(self):
         rule.rule.__init__(self)

@@ -7,7 +7,9 @@ import re
 
 
 class rule_013(rule.rule):
-    '''Architecture rule 013 checks the architecture name is upper case in the architecture declaration.'''
+    '''
+    Architecture rule 013 checks the architecture name is upper case in the architecture declaration.
+    '''
 
     def __init__(self):
         rule.rule.__init__(self)

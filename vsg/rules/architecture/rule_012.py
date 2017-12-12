@@ -6,7 +6,9 @@ import re
 
 
 class rule_012(rule.rule):
-    '''Architecture rule 012 checks for a single space between the "end" and "architecture" keywords.'''
+    '''
+    Architecture rule 012 checks for a single space between the "end" and "architecture" keywords.
+    '''
 
     def __init__(self):
         rule.rule.__init__(self)
