@@ -24,3 +24,4 @@ class rule_012(rule.rule):
             utilities.split_line_after_word(oFile, iLineNumber, '=>')
             oFile.lines[iLineNumber + 1].isCaseWhenEnd = False
             oFile.lines[iLineNumber + 1].indentLevel += 1
+            utilities.reclassify_line(oFile, iLineNumber)

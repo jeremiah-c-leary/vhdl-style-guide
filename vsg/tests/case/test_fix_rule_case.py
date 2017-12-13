@@ -1,5 +1,6 @@
 import os
 import unittest
+import pprint
 
 from vsg.rules import case
 from vsg import vhdlFile
@@ -90,13 +91,18 @@ class testFixRuleCaseMethods(unittest.TestCase):
 
     def test_fix_rule_012(self):
         oRule = case.rule_012()
+        self.assertEqual(oFileSequential.lines[11].isSequential,False)
+        self.assertEqual(oFileSequential.lines[11].indentLevel,3)
         dExpected = []
         oRule.fix(oFileSequential)
         oRule.analyze(oFileSequential)
         self.assertEqual(oRule.violations, dExpected)
         self.assertEqual(oFileSequential.lines[11].line,'      when 0 =>')
+        self.assertEqual(oFileSequential.lines[11].indentLevel,3)
         self.assertEqual(oFileSequential.lines[12].line,' b <= \'0\';')
         self.assertEqual(oFileSequential.lines[12].indentLevel, oFileSequential.lines[11].indentLevel + 1)
+        self.assertEqual(oFileSequential.lines[12].isSequential, True)
+        self.assertEqual(oFileSequential.lines[13].line,'      when 1 =>')
 
     def test_fix_rule_013(self):
         oRule = case.rule_013()

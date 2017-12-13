@@ -31,14 +31,4 @@ class rule_024(rule.rule):
             oFile.lines[iLineNumber + 1].isIfKeyword = False
             oFile.lines[iLineNumber + 1].isElseIfKeyword = False
             oFile.lines[iLineNumber + 1].indentLevel += 1
-            if re.match('^\s*return', oFile.lines[iLineNumber + 1].line, re.IGNORECASE):
-                oFile.lines[iLineNumber].isFunctionReturn = False
-                oFile.lines[iLineNumber + 1].isFunctionReturn = True
-            elif re.match('^\s*\w+.*:=', oFile.lines[iLineNumber + 1].line, re.IGNORECASE):
-                oFile.lines[iLineNumber + 1].insideVariableAssignment = True
-                oFile.lines[iLineNumber + 1].isVariableAssignmentEnd = True
-                oFile.lines[iLineNumber + 1].isVariableAssignment = True
-            else: 
-                oFile.lines[iLineNumber + 1].insideSequential = True
-                oFile.lines[iLineNumber + 1].isSequentialEnd = True
-                oFile.lines[iLineNumber + 1].isSequential = True
+            utilities.reclassify_line(oFile, iLineNumber)
