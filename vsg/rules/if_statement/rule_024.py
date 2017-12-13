@@ -5,15 +5,15 @@ from vsg import utilities
 import re
 
 
-class rule_012(rule.rule):
+class rule_024(rule.rule):
     '''
-    If rule 012 checks for code after the "then" keyword.
+    If rule 024 checks for code after the "then" keyword.
     '''
 
     def __init__(self):
         rule.rule.__init__(self)
         self.name = 'if'
-        self.identifier = '012'
+        self.identifier = '024'
         self.solution = 'Move code after "then" keyword to the next line.'
         self.phase = 1
 
@@ -30,3 +30,6 @@ class rule_012(rule.rule):
             oFile.lines[iLineNumber + 1].isThenKeyword = False
             oFile.lines[iLineNumber + 1].isIfKeyword = False
             oFile.lines[iLineNumber + 1].indentLevel += 1
+            oFile.lines[iLineNumber + 1].insideSequential = True
+            oFile.lines[iLineNumber + 1].isSequentialEnd = True
+            oFile.lines[iLineNumber + 1].isSequential = True

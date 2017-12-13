@@ -146,29 +146,29 @@ class testRuleIfMethods(unittest.TestCase):
         oRule.analyze(oFileCase)
         self.assertEqual(oRule.violations, dExpected)
 
-    def test_rule_012(self):
-        oRule = if_statement.rule_012()
+    def test_rule_024(self):
+        oRule = if_statement.rule_024()
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'if')
-        self.assertEqual(oRule.identifier, '012')
+        self.assertEqual(oRule.identifier, '024')
         dExpected = [98,99,105,109]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
-    def test_rule_013(self):
-        oRule = if_statement.rule_013()
+    def test_rule_021(self):
+        oRule = if_statement.rule_021()
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'if')
-        self.assertEqual(oRule.identifier, '013')
+        self.assertEqual(oRule.identifier, '021')
         dExpected = [105,109]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
-    def test_rule_014(self):
-        oRule = if_statement.rule_014()
+    def test_rule_020(self):
+        oRule = if_statement.rule_020()
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'if')
-        self.assertEqual(oRule.identifier, '014')
+        self.assertEqual(oRule.identifier, '020')
         dExpected = [105,110]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
@@ -182,11 +182,20 @@ class testRuleIfMethods(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
-    def test_rule_016(self):
-        oRule = if_statement.rule_016()
+    def test_rule_022(self):
+        oRule = if_statement.rule_022()
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'if')
-        self.assertEqual(oRule.identifier, '016')
+        self.assertEqual(oRule.identifier, '022')
         dExpected = [102,105]
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_023(self):
+        oRule = if_statement.rule_023()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'if')
+        self.assertEqual(oRule.identifier, '023')
+        dExpected = [108]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)

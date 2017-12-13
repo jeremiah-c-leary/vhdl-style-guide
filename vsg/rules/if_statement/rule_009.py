@@ -7,7 +7,9 @@ import re
 
 
 class rule_009(rule.rule):
-    '''If rule 009 checks the alignment of multiline boolean expressions.'''
+    '''
+    If rule 009 checks the alignment of multiline boolean expressions.
+    '''
 
     def __init__(self):
         rule.rule.__init__(self)

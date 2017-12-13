@@ -4,6 +4,7 @@ import unittest
 from vsg import vhdlFile
 
 oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','if_statement','if_test_input.vhd'))
+oFileCompress = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','if_statement','if_compressed_line_test_input.vhd'))
 
 class testVhdlFileIfAssignments(unittest.TestCase):
 
@@ -81,3 +82,11 @@ class testVhdlFileIfAssignments(unittest.TestCase):
             lActual.append(oLine.indentLevel)
         # Compare
         self.assertEqual(lActual, lExpected)
+
+    def test_compressed_line_assignment(self):
+        self.assertTrue(oFileCompress.lines[10].insideIf)
+        self.assertTrue(oFileCompress.lines[10].isElseKeyword)
+        self.assertTrue(oFileCompress.lines[10].isElseIfKeyword)
+        self.assertTrue(oFileCompress.lines[10].isEndIfKeyword)
+        self.assertTrue(oFileCompress.lines[10].isIfKeyword)
+        self.assertTrue(oFileCompress.lines[10].isThenKeyword)

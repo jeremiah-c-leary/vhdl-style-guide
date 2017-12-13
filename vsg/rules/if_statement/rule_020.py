@@ -5,13 +5,13 @@ from vsg import utilities
 import re
 
 
-class rule_014(rule.rule):
-    '''If rule 014 checks the "end if" keyword is on it's own line.'''
+class rule_020(rule.rule):
+    '''If rule 020 checks the "end if" keyword is on it's own line.'''
 
     def __init__(self):
         rule.rule.__init__(self)
         self.name = 'if'
-        self.identifier = '014'
+        self.identifier = '020'
         self.solution = 'Move "end if" keyword to it\'s own line.'
         self.phase = 1
 
@@ -28,4 +28,5 @@ class rule_014(rule.rule):
             oFile.lines[iLineNumber + 1].isElseIfKeyword = False
             oFile.lines[iLineNumber + 1].isElseKeyword = False
             oFile.lines[iLineNumber + 1].isThenKeyword = False
-            oFile.lines[iLineNumber + 1].indentLevel -= 1
+#            if oFile.lines[iLineNumber].isIfKeyword:
+#                oFile.lines[iLineNumber + 1].indentLevel -= 1

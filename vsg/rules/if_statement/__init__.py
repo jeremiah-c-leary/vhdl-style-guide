@@ -10,8 +10,12 @@ from rule_008 import rule_008
 from rule_009 import rule_009
 from rule_010 import rule_010
 from rule_011 import rule_011
-from rule_012 import rule_012
-from rule_013 import rule_013
-from rule_014 import rule_014
 from rule_015 import rule_015
-from rule_016 import rule_016
+
+### ordering rules to handle compressed if statements
+from rule_020 import rule_020 # end if
+from rule_021 import rule_021 # else
+from rule_022 import rule_022 # code after else
+from rule_023 import rule_023 # elsif
+from rule_024 import rule_024 # then
+
