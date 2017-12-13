@@ -25,7 +25,7 @@ class rule_010(rule.rule):
             if oLine.isInstantiationPortKeyword and not fGroupFound:
                 fGroupFound = True
                 iStartGroupIndex = iLineNumber
-            if oLine.isInstantiationPortEnd:
+            if oLine.isInstantiationPortEnd and fGroupFound:
                 lGroup.append(oLine)
                 fGroupFound = False
                 check.keyword_alignment(self, iStartGroupIndex, '=>', lGroup)
