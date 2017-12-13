@@ -29,6 +29,7 @@ class rule_005(rule.rule):
             oFile.lines.insert(iLineNumber + 1, copy.deepcopy(oLine))
             oLine.update_line(oLine.line[:iIndex])
             oLine.isInstantiationPortKeyword = False
+            oLine.isInstantiationPortEnd = False
             oLine = oFile.lines[iLineNumber + 1]
             oLine.update_line(oLine.line[iIndex:])
             oLine.isInstantiationDeclaration = False

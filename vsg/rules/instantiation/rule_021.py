@@ -35,4 +35,7 @@ class rule_021(rule.rule):
             for iIndex in range(0, iNumberOfPorts):
                 oLine = oFile.lines[iLineNumber + iIndex]
                 lPorts = oLine.line.split(',')
-                oLine.update_line(lPorts[iIndex] + ',')
+                if iIndex == iNumberOfPorts - 1 and oFile.lines[iLineNumber + iIndex + 1].isInstantiationPortEnd:
+                    oLine.update_line(lPorts[iIndex])
+                else:
+                    oLine.update_line(lPorts[iIndex] + ',')

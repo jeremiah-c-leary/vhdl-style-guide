@@ -30,4 +30,7 @@ class rule_007(rule.rule):
             oFile.lines[iLineNumber + 1].isInstantiationPortAssignement = False
             oFile.lines[iLineNumber + 1].isInstantiationPortEnd = True
             oFile.lines[iLineNumber + 1].insideInstantiation = True
-            oFile.lines[iLineNumber + 1].indentLevel = oFile.lines[iLineNumber].indentLevel - 1
+            if oFile.lines[iLineNumber].isInstantiationPortKeyword:
+                oFile.lines[iLineNumber + 1].indentLevel = oFile.lines[iLineNumber].indentLevel
+            else:
+                oFile.lines[iLineNumber + 1].indentLevel = oFile.lines[iLineNumber].indentLevel - 1
