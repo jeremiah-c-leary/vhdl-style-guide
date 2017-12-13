@@ -19,7 +19,7 @@ class testVhdlFileTypeAssignments(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isTypeEnd(self):
-        lExpected = [4,9,11,19,24,26,32,39]
+        lExpected = [4,9,11,19,24,26,32,40]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
@@ -29,7 +29,7 @@ class testVhdlFileTypeAssignments(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_insideType(self):
-        lExpected = [4,6,7,8,9,11,19,21,22,23,24,26,28,29,30,31,32,35,36,37,38,39]
+        lExpected = [4,6,7,8,9,11,19,21,22,23,24,26,28,29,30,31,32,35,36,37,38,39,40]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
@@ -52,7 +52,7 @@ class testVhdlFileTypeAssignments(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isSubtypeKeyword(self):
-        lExpected = [42]
+        lExpected = [43]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
@@ -62,7 +62,7 @@ class testVhdlFileTypeAssignments(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isSubtypeEnd(self):
-        lExpected = [42]
+        lExpected = [43]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
@@ -72,7 +72,7 @@ class testVhdlFileTypeAssignments(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_insideSubtype(self):
-        lExpected = [42]
+        lExpected = [43]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):

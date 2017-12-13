@@ -34,6 +34,7 @@ package PACK is
   a <= b;
   type a is (
     A, B,
+
     -- comment
     C
   );
