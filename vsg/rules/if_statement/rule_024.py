@@ -29,6 +29,7 @@ class rule_024(rule.rule):
             oFile.lines[iLineNumber].isElseKeyword = False
             oFile.lines[iLineNumber + 1].isThenKeyword = False
             oFile.lines[iLineNumber + 1].isIfKeyword = False
+            oFile.lines[iLineNumber + 1].isElseIfKeyword = False
             oFile.lines[iLineNumber + 1].indentLevel += 1
             if re.match('^\s*return', oFile.lines[iLineNumber + 1].line, re.IGNORECASE):
                 oFile.lines[iLineNumber].isFunctionReturn = False
