@@ -41,7 +41,7 @@ class testVhdlFileCommentAssignments(unittest.TestCase):
 
     def test_comment_indent_assignment(self):
         #           [12,15,17,23,27]
-        lExpected = [ 4, 3, 3, 3, 4]
+        lExpected = [ 4, 4, 4, 4, 4, 4, 4]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFileCase.lines):

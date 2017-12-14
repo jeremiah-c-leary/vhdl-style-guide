@@ -9,6 +9,7 @@ from vsg.tests import utils
 # Read in test file used for all tests
 oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','case','case_test_input.vhd'))
 oFileSequential = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','case','case_sequential_test_input.vhd'))
+#oFileComment = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','case','case_comment_test_input.vhd'))
 
 class testFixRuleCaseMethods(unittest.TestCase):
 

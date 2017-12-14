@@ -20,7 +20,9 @@ begin
       when b => -- Comment
         x <= y;
         z <= a;
-     -- Comment
+    -- Comment 1
+            -- Comment 2
+          -- Comment 3
       when b => -- Comment
         x <= y;
         z <= a;

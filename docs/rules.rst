@@ -4,6 +4,7 @@ Rules
 The rules are divided into catagories depending on the part of the VHDL code being operated on.
 
 .. include:: architecture_rules.rst
+.. include:: comment_rules.rst
 .. include:: component_rules.rst
 .. include:: concurrent_rules.rst
 .. include:: constant_rules.rst

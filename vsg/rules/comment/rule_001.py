@@ -5,7 +5,9 @@ from vsg import fix
 
 
 class rule_001(rule.rule):
-    '''Case rule 001 checks for the proper alignment of comments.'''
+    '''
+    Case rule 001 checks for the proper alignment of comments.
+    '''
 
     def __init__(self):
         rule.rule.__init__(self)
