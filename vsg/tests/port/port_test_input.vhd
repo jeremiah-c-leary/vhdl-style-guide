@@ -138,7 +138,7 @@ end entity ENTITY1
 
 entity ENTITY1 is
   port (   I_PORT1 : in    std_logic;
-    O_PORT2: out   std_logic;
+    O_PORT_OUT: out   std_logic;
     IO_PORT3 : inout std_logic
     --- debug ports: can be removed or left unconnected for the application circuit ---
   );
