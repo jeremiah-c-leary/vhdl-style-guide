@@ -65,3 +65,9 @@ class testRuleCommentMethods(unittest.TestCase):
         dExpected = [15,19,25,24,23]
         oRule.analyze(oFileCase)
         self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_006(self):
+        oRule = comment.rule_006()
+        dExpected = ['36-39']
+        oRule.analyze(oFileProcess)
+        self.assertEqual(oRule.violations, dExpected)

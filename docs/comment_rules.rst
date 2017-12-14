@@ -113,3 +113,34 @@ This rule aligns consecutive comment only lines above a **when** keyword in a ca
    when wr_en =>
      rd_en <= '0';
 
+comment_006
+###########
+
+This rule aligns in line comments between the end of the process sensitivity list and the process **begin** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   PROC_1 : process () is
+
+      variable counter : integer range 0 to 31;     -- Counts the number of frames received
+      variable width   : natural range 0 to 255; -- Keeps track of the data word size
+
+      variable size    : natural range 0 to 7; -- Keeps track of the frame size
+
+   begin
+
+**Fix**
+
+.. code-block:: vhdl
+
+   PROC_1 : process () is
+
+      variable counter : integer range 0 to 31;     -- Counts the number of frames received
+      variable width   : natural range 0 to 255;    -- Keeps track of the data word size
+
+      variable size    : natural range 0 to 7;      -- Keeps track of the frame size
+
+   begin
+
