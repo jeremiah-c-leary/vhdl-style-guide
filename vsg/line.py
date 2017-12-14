@@ -138,6 +138,8 @@ class line():
         self.isAssertKeyword = False
         self.isAssertEnd = False
         self.insideAssert = False
+        # With attributes
+        self.isWithKeyword = False
 
     def update_line(self, sLine):
         self.line = sLine

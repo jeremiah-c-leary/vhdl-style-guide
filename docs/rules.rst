@@ -17,3 +17,4 @@ The rules are divided into catagories depending on the part of the VHDL code bei
 .. include:: subtype_rules.rst
 .. include:: while_loop_rules.rst
 .. include:: whitespace_rules.rst
+.. include:: with_rules.rst

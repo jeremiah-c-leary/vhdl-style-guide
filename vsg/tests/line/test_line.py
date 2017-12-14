@@ -631,3 +631,9 @@ class testLineMethods(unittest.TestCase):
         self.assertFalse(oLine.insideAssert)
         oLine.insideAssert = True
         self.assertTrue(oLine.insideAssert)
+
+    def test_isWithKeyword_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertFalse(oLine.isWithKeyword)
+        oLine.isWithKeyword = True
+        self.assertTrue(oLine.isWithKeyword)

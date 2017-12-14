@@ -25,3 +25,4 @@ from type import type
 from variable_assignment import variable_assignment
 from variable import variable
 from while_loop import while_loop
+from with_statement import with_statement
