@@ -1,4 +1,5 @@
 
+import pprint
 
 def debug_lines(oFile, iLineNumber, iNumberOfLines):
 
@@ -10,3 +11,8 @@ def read_file(sFilename, lLines):
     with open(sFilename) as oFile:
         for sLine in oFile:
             lLines.append(sLine.rstrip())
+
+
+def print_attributes(oLine):
+    pp = pprint.PrettyPrinter(indent = 4)
+    pp.pprint(oLine.__dict__)

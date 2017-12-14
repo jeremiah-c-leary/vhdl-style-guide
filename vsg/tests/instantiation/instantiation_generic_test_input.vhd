@@ -20,7 +20,7 @@ begin
 
   U_INST1 : INST1
   genEric  map (
-      GENERIC_1 => generic_1,
+      GENERIC_1 => generic_1(),
       GENERIC_2 => generic_2
     )
     port map  (

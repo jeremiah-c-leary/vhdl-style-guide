@@ -17,6 +17,8 @@ def instantiation(dVars, oLine):
             oLine.isInstantiationPortKeyword = True
             oLine.insideInstantiationPortMap = True
         if re.match('^.*\s*generic\s+map', oLine.lineLower):
+            dVars['iOpenParenthesis'] += oLine.lineNoComment.count('(')
+            dVars['iCloseParenthesis'] += oLine.lineNoComment.count(')')
             if not oLine.indentLevel:
                 oLine.indentLevel = dVars['iCurrentIndentLevel']
             oLine.insideInstantiationGenericMap = True
@@ -29,13 +31,22 @@ def instantiation(dVars, oLine):
                 oLine.isInstantiationPortAssignment = True
             else:
                 oLine.isInstantiationGenericAssignment = True
+                if not oLine.isInstantiationGenericKeyword:
+                    dVars['iOpenParenthesis'] += oLine.lineNoComment.count('(')
+                    dVars['iCloseParenthesis'] += oLine.lineNoComment.count(')')
         if ');' in oLine.line and oLine.insideInstantiationPortMap:
             oLine.isInstantiationPortEnd = True
             if not oLine.indentLevel:
                 oLine.indentLevel = dVars['iCurrentIndentLevel'] - 1
             dVars['iCurrentIndentLevel'] -= 2
         if ')' in oLine.lineNoComment and oLine.insideInstantiationGenericMap:
-            oLine.isInstantiationGenericEnd = True
-            if not oLine.indentLevel:
-                oLine.indentLevel = dVars['iCurrentIndentLevel'] - 1
-            dVars['iCurrentIndentLevel'] -= 1
+            if not oLine.isInstantiationGenericAssignment:
+                dVars['iOpenParenthesis'] += oLine.lineNoComment.count('(')
+                dVars['iCloseParenthesis'] += oLine.lineNoComment.count(')')
+            if dVars['iOpenParenthesis'] == dVars['iCloseParenthesis']:
+                oLine.isInstantiationGenericEnd = True
+                if not oLine.indentLevel:
+                    oLine.indentLevel = dVars['iCurrentIndentLevel'] - 1
+                dVars['iCurrentIndentLevel'] -= 1
+                dVars['iOpenParenthesis'] = 0
+                dVars['iCloseParenthesis'] = 0

@@ -20,11 +20,11 @@ class rule_002(rule.rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isConcurrentBegin:
-                if re.match('^\s*\w+\s*<=\s*[\w|(]', oLine.line):
-                    if not re.match('^\s*\w+\s*<=\s[\w|(]', oLine.line):
+                if re.match('^\s*\w+\s*<=\s*[\w|(|\']', oLine.line):
+                    if not re.match('^\s*\w+\s*<=\s[\w|(|\']', oLine.line):
                         self.add_violation(iLineNumber)
-                elif re.match('^\s*\w+\s*:\s*\w+\s*<=\s*[\w|(]', oLine.line):
-                    if not re.match('^\s*\w+\s*:\s*\w+\s*<=\s[\w|(]', oLine.line):
+                elif re.match('^\s*\w+\s*:\s*\w+\s*<=\s*[\w|(|\']', oLine.line):
+                    if not re.match('^\s*\w+\s*:\s*\w+\s*<=\s[\w|(|\']', oLine.line):
                         self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
