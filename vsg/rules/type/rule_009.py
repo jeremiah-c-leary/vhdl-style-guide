@@ -1,5 +1,6 @@
 
 from vsg import rule
+from vsg import utilities
 
 import re
 import copy
@@ -20,15 +21,12 @@ class rule_009(rule.rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isTypeKeyword and not oLine.isTypeEnd:
-                if re.match('^.*\sis\s*\(\w', oLine.lineLower):
+                if re.match('^.*\sis\s*\(\s*\w', oLine.lineLower):
                     self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:
-            oFile.lines.insert(iLineNumber + 1, copy.deepcopy(oFile.lines[iLineNumber]))
-            oLine = oFile.lines[iLineNumber]
-            oLine.update_line(oLine.line.split('(')[0] + ' (')
+            utilities.split_line_after_word(oFile, iLineNumber, '(')
             oLine = oFile.lines[iLineNumber + 1]
-            oLine.update_line('  ' + oLine.line.split('(')[1])
             oLine.isTypeKeyword = False
             oLine.indentLevel += 1

@@ -3,7 +3,7 @@ architecture ARCH of ENTITY1 is
 
   type a is (B, C, D, E ,F, G);
 
-   type a is (B, C,
+   type a is ( B, C,
     D, E,
     -- This is a comment
     F, G);
