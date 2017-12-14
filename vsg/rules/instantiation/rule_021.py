@@ -21,7 +21,7 @@ class rule_021(rule.rule):
         lFailureLines = []
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isInstantiationPortAssignment:
-                if re.match('^\s*\S+\s*=>\s*\S+,\s*\S+\s*=>', oLine.line):
+                if re.match('^\s*\S+\s*=>\s*.*\s*,\s*\S+\s*=>', oLine.line):
                     self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
