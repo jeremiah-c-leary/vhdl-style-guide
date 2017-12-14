@@ -18,6 +18,7 @@ def case(self, dVars, oLine):
         if self.lines[-1].isComment:
             self.lines[-1].indentLevel -= 1
     if oLine.insideCaseWhen:
+        oLine.indentLevel = dVars['iCurrentIndentLevel'] - 1
         if re.match('^\s*.*=>', oLine.line):
             oLine.isCaseWhenEnd = True
     if re.match('^\s*end\s+case', oLine.lineLower):

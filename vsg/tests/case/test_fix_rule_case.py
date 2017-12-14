@@ -102,6 +102,7 @@ class testFixRuleCaseMethods(unittest.TestCase):
         self.assertEqual(oFileSequential.lines[12].line,' b <= \'0\';')
         self.assertEqual(oFileSequential.lines[12].indentLevel, oFileSequential.lines[11].indentLevel + 1)
         self.assertEqual(oFileSequential.lines[12].isSequential, True)
+        self.assertEqual(oFileSequential.lines[12].insideCaseWhen, False)
         self.assertEqual(oFileSequential.lines[13].line,'      when 1 =>')
 
     def test_fix_rule_013(self):
