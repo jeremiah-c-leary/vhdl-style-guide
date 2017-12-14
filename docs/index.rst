@@ -10,13 +10,7 @@ Welcome to vhdl-style-guide's documentation!
    :maxdepth: 3
    :caption: Contents:
 
+   overview
    installing
    usage
    rules
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
