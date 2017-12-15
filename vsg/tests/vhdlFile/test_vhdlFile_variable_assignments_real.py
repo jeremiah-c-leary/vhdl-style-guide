@@ -40,7 +40,7 @@ class testVhdlFileVariableAssignmentAssignments(unittest.TestCase):
 
     def test_variableAssignmentAlignmentColumn_assignment(self):
         #lExpected = [13,14,15,20,21,22,26,27,28,33,34,38,39,40,53,56,57,63,65,66,71,73,75,80,81,83,88,89,90]
-        lExpected =  [ 6, 4, 6,11,10,10,12,10, 8,10,10, 9,10, 9, 8, 7, 8,10,12,13,10,15,14,10, 8,12,10, 8,11,10, 6]
+        lExpected =  [18, 4, 6,11,10,10,12,10, 8,10,10, 9,10, 9, 8, 7, 8,10,12,13,10,15,14,10, 8,12,10, 8,11,10, 6]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
