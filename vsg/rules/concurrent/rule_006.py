@@ -1,20 +1,16 @@
 
-from vsg import rule
-from vsg import check
-from vsg import fix
+from vsg.rules import keyword_alignment_rule
 
 
-class rule_006(rule.rule):
+class rule_006(keyword_alignment_rule):
     '''
     Concurrent rule 006 ensures the alignment of the "<=" keyword over multiple lines.
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'concurrent'
-        self.identifier = '006'
+        keyword_alignment_rule.__init__(self, 'concurrent', '006')
         self.solution = 'Inconsistent alignment of "<=" in group of lines.'
-        self.phase = 5
+        self.
 
     def analyze(self, oFile):
         lGroup = []
