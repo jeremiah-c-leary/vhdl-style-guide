@@ -29,6 +29,16 @@ class testVhdlFileCommentAssignments(unittest.TestCase):
         # Compare
         self.assertEqual(lActual, lExpected)
 
+    def test_hasInlineComment_assignment(self):
+        lExpected = [15,16,18,25,26,28,29,39,40,42,43,44,46,47,48,50,51,52,53,54,58,59,61,62,63,65,66,67,69,70,71,72,73]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFile.lines):
+            if oLine.hasInlineComment:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
     def test_commentColumn_assignment(self):
         lExpected = [0,1,0,2,0,2,4,18,18,18,19,18,4,5,4,3,23,22,23,23,23,19,35,38,4,37,36,37,5,37,37,37,35,37,38,37,37,38,4,32,33,4,32,31,32,6,32,32,32,30,32,33,32,32,33,4,0]
         # Generic actual list

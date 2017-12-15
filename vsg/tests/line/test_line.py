@@ -40,6 +40,12 @@ class testLineMethods(unittest.TestCase):
         oLine.hasComment = True
         self.assertTrue(oLine.hasComment)
 
+    def test_hasInlineComment_attribute(self):
+        oLine = line.line('contents of line')
+        self.assertFalse(oLine.hasInlineComment)
+        oLine.hasInlineComment = True
+        self.assertTrue(oLine.hasInlineComment)
+
     def test_commentColumn_attribute(self):
         oLine = line.line('contents of line')
         self.assertEqual(oLine.commentColumn, None)

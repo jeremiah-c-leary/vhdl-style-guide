@@ -10,8 +10,8 @@ class keyword_alignment_rule(rule.rule):
     Instantiation rule 015 ensures the alignment of the => operator for every generic in the instantiation.
     '''
 
-    def __init__(self):
-        rule.rule.__init__(self)
+    def __init__(self, name=None, identifier=None):
+        rule.rule.__init__(self, name, identifier)
         self.phase = 5
         # The following is filled out by the user
         self.sKeyword = None
@@ -27,7 +27,7 @@ class keyword_alignment_rule(rule.rule):
             if oLine.__dict__[self.sStartGroupTrigger] and not fGroupFound:
                 fGroupFound = True
                 iStartGroupIndex = iLineNumber
-            if oLine.__dict__[self.sEndGroupTrigger]:
+            if oLine.__dict__[self.sEndGroupTrigger] and fGroupFound:
                 lGroup.append(oLine)
                 fGroupFound = False
                 check.keyword_alignment(self, iStartGroupIndex, self.sKeyword, lGroup)
