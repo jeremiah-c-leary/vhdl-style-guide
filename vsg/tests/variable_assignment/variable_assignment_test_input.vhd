@@ -10,7 +10,7 @@ begin
   PROC_1 : process (a) is
   begin
 
-    a := b;
+    a(3 downto 0) := b;
   c := d;
     e := f;
 
