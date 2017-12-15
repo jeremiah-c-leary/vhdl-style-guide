@@ -122,12 +122,12 @@ begin
       Q           => tmp1
     );
 
-    zoutInt1(0)         <= tmp1(Z_WIDTH * 4 + SIG_WIDTH * 2 - 1 downto Z_WIDTH * 3 + SIG_WIDTH * 2);
-    zoutInt1(1)         <= tmp1(Z_WIDTH * 3 + SIG_WIDTH * 2 - 1 downto Z_WIDTH * 2 + SIG_WIDTH * 2);
-    zoutInt1(2)         <= tmp1(Z_WIDTH * 2 + SIG_WIDTH * 2 - 1 downto Z_WIDTH * 1 + SIG_WIDTH * 2);
-    zoutInt1(3)         <= tmp1(Z_WIDTH * 1 + SIG_WIDTH * 2 - 1 downto Z_WIDTH * 0 + SIG_WIDTH * 2);
-    abDel1PermInt(0)    <= tmp1(SIG_WIDTH * 2 - 1 downto SIG_WIDTH * 1);
-    abDel1PermInt(1)    <= tmp1(SIG_WIDTH * 1 - 1 downto SIG_WIDTH * 0);
+  zoutInt1(0)         <= tmp1(Z_WIDTH * 4 + SIG_WIDTH * 2 - 1 downto Z_WIDTH * 3 + SIG_WIDTH * 2);
+  zoutInt1(1)         <= tmp1(Z_WIDTH * 3 + SIG_WIDTH * 2 - 1 downto Z_WIDTH * 2 + SIG_WIDTH * 2);
+  zoutInt1(2)         <= tmp1(Z_WIDTH * 2 + SIG_WIDTH * 2 - 1 downto Z_WIDTH * 1 + SIG_WIDTH * 2);
+  zoutInt1(3)         <= tmp1(Z_WIDTH * 1 + SIG_WIDTH * 2 - 1 downto Z_WIDTH * 0 + SIG_WIDTH * 2);
+  abDel1PermInt(0)    <= tmp1(SIG_WIDTH * 2 - 1 downto SIG_WIDTH * 1);
+  abDel1PermInt(1)    <= tmp1(SIG_WIDTH * 1 - 1 downto SIG_WIDTH * 0);
 
   tmp2 <= a & b & y & w & yInt & wInt;
 
@@ -206,10 +206,10 @@ begin
       Q           => tmp7
     );
 
-    zout2Int(0) <= tmp7(Z_WIDTH * 4 - 1 downto Z_WIDTH * 3);
-    zout2Int(1) <= tmp7(Z_WIDTH * 3 - 1 downto Z_WIDTH * 2);
-    zout2Int(2) <= tmp7(Z_WIDTH * 2 - 1 downto Z_WIDTH * 1);
-    zout2Int(3) <= tmp7(Z_WIDTH * 1 - 1 downto Z_WIDTH * 0);
+  zout2Int(0) <= tmp7(Z_WIDTH * 4 - 1 downto Z_WIDTH * 3);
+  zout2Int(1) <= tmp7(Z_WIDTH * 3 - 1 downto Z_WIDTH * 2);
+  zout2Int(2) <= tmp7(Z_WIDTH * 2 - 1 downto Z_WIDTH * 1);
+  zout2Int(3) <= tmp7(Z_WIDTH * 1 - 1 downto Z_WIDTH * 0);
 
   ZPERMUT_I1 : ZPERMUT
     generic map (

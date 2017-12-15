@@ -3,7 +3,7 @@ architecture ARCH of ENTITY is
 
 begin
 
-  a <= b;      -- Comment
+  a(5 downto 0) <= b;      -- Comment
  a<=b;             -- Comment
   a<=    (b); -- Comment
   a <=                 -- Comment
