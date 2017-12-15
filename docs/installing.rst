@@ -1,15 +1,31 @@
 Installation
 ============
 
+There are two methods to install VSG.
+
+PIP
+---
+
+The most recent released version is hosted on PyPI.
+It can be installed using **pip**.
 You can get the latest released version of VSG via **pip**.
+
+.. code-block:: bash
 
   pip install vsg
 
-The latest development version can be cloned...
+Git Hub
+-------
+
+The latest development version can be cloned from the git hub repo.
+
+.. code-block:: bash
 
   git clone https://github.com/jeremiah-c-leary/vhdl-style-guide.git
 
-...and then installed locally...
+Then installed using the setup.py file.
+
+.. code-block:: bash
 
   python setup.py install
 

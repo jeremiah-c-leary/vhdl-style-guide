@@ -7,10 +7,11 @@ Welcome to vhdl-style-guide's documentation!
 ============================================
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 2
    :caption: Contents:
 
    overview
    installing
    usage
    rules
+   phases

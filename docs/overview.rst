@@ -14,7 +14,7 @@ Spending less time on style issues leaves more time to analyze the substance of 
 Ultimately, this will reduce the amount of time performing code reviews.
 Spending more time on substance than style will result in higher quality code that costs less.
 
-Key benefits
+Key Benefits
 ############
 
 * Define VHDL coding standards
@@ -51,3 +51,4 @@ Key Features
   * Create your own rules using python
   * Use existing rules as a template
   * Fully integrates into base rule set
+

@@ -3,20 +3,23 @@ Rules
 
 The rules are divided into catagories depending on the part of the VHDL code being operated on.
 
-.. include:: architecture_rules.rst
-.. include:: assert_rules.rst
-.. include:: case_rules.rst
-.. include:: comment_rules.rst
-.. include:: component_rules.rst
-.. include:: concurrent_rules.rst
-.. include:: constant_rules.rst
-.. include:: entity_rules.rst
-.. include:: generic_rules.rst
-.. include:: if_rules.rst
-.. include:: instantiation_rules.rst
-.. include:: library_rules.rst
-.. include:: process_rules.rst
-.. include:: subtype_rules.rst
-.. include:: while_loop_rules.rst
-.. include:: whitespace_rules.rst
-.. include:: with_rules.rst
+.. toctree::
+   :maxdepth: 2
+
+   architecture_rules.rst
+   assert_rules.rst
+   case_rules.rst
+   comment_rules.rst
+   component_rules.rst
+   concurrent_rules.rst
+   constant_rules.rst
+   entity_rules.rst
+   generic_rules.rst
+   if_rules.rst
+   instantiation_rules.rst
+   library_rules.rst
+   process_rules.rst
+   subtype_rules.rst
+   while_loop_rules.rst
+   whitespace_rules.rst
+   with_rules.rst
