@@ -113,3 +113,16 @@ def is_single_space_before(self, sString, oLine, iLineNumber):
 def is_single_space_after_character(self, sCharacter, oLine, iLineNumber):
     if not re.match('^.*' + sCharacter.lower() + '\s\S', oLine.lineLower):
         self.add_violation(iLineNumber)
+
+
+def indent_of_comments_above(self, oFile, iLineNumber):
+    iIndex = 0
+    while iLineNumber - iIndex > 1:
+        iIndex += 1
+        iPreviousIndex = iLineNumber - iIndex
+        if not oFile.lines[iPreviousIndex].isComment:
+            break
+        else:
+            if not oFile.lines[iPreviousIndex].indentLevel == oFile.lines[iLineNumber].indentLevel:
+                self.add_violation(iPreviousIndex)
+                self.dFix['violations'][iPreviousIndex] = oFile.lines[iLineNumber].indentLevel

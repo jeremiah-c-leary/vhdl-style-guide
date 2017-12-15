@@ -1,6 +1,7 @@
 
 from vsg import rule
 from vsg import fix
+from vsg import check
 
 import re
 
@@ -19,21 +20,10 @@ class rule_005(rule.rule):
         self.phase = 2
 
     def analyze(self, oFile):
-        lGroup = []
-        fGroupFound = False
-        iStartGroupIndex = None
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isCaseWhenKeyword:
-                iIndex = 0
-                while iLineNumber - iIndex > 1:
-                    iIndex += 1
-                    iPreviousIndex = iLineNumber - iIndex
-                    if not oFile.lines[iPreviousIndex].isComment:
-                        break
-                    else:
-                        if not oFile.lines[iPreviousIndex].indentLevel == oFile.lines[iLineNumber].indentLevel:
-                            self.add_violation(iPreviousIndex)
-                            self.dFix['violations'][iPreviousIndex] = oFile.lines[iLineNumber].indentLevel
+                check.indent_of_comments_above(self, oFile, iLineNumber)
+
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

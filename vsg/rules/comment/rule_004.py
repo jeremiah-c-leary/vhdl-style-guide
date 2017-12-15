@@ -16,13 +16,9 @@ class rule_004(rule.rule):
         self.phase = 2
 
     def analyze(self, oFile):
-        lGroup = []
-        fGroupFound = False
-        iStartGroupIndex = None
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.hasComment and not oLine.isComment:
-                if not re.match('^.*\s--', oLine.line):
-                    self.add_violation(iLineNumber)
+            if oLine.hasInlineComment and not re.match('^.*\s--', oLine.line):
+                self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
