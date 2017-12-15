@@ -97,7 +97,7 @@ def reclassify_line(oFile, iLineNumber):
         oFile.lines[iLineNumber + 1].insideVariableAssignment = True
         oFile.lines[iLineNumber + 1].isVariableAssignmentEnd = True
         oFile.lines[iLineNumber + 1].isVariableAssignment = True
-    else: 
+    else:
         oFile.lines[iLineNumber + 1].insideSequential = True
         oFile.lines[iLineNumber + 1].isSequentialEnd = True
         oFile.lines[iLineNumber + 1].isSequential = True

@@ -12,10 +12,9 @@ from rule_010 import rule_010
 from rule_011 import rule_011
 from rule_015 import rule_015
 
-### ordering rules to handle compressed if statements
-from rule_020 import rule_020 # end if
-from rule_021 import rule_021 # else
-from rule_022 import rule_022 # code after else
-from rule_023 import rule_023 # elsif
-from rule_024 import rule_024 # then
-
+#  ordering rules to handle compressed if statements
+from rule_020 import rule_020  # end if
+from rule_021 import rule_021  # else
+from rule_022 import rule_022  # code after else
+from rule_023 import rule_023  # elsif
+from rule_024 import rule_024  # code after then
