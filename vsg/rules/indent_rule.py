@@ -1,6 +1,4 @@
-# When copying this file to create another rule use the import from the line below...
-# from vsg.rules import indent_rule
-# ...and remove the next three imports.
+
 from vsg import rule
 from vsg import check
 from vsg import fix

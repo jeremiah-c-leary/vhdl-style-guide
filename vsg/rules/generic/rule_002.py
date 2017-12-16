@@ -1,24 +1,11 @@
 
-from vsg import rule
-from vsg import check
-from vsg import fix
+from vsg.rules import indent_rule
 
 
-class rule_002(rule.rule):
-    '''Generic rule 002 checks indentation of the "generic" keyword.'''
+class rule_002(indent_rule):
+    '''
+    Generic rule 002 checks indentation of the "generic" keyword.
+    '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'generic'
-        self.identifier = '002'
-        self.solution = 'Ensure proper indentation.'
-        self.phase = 4
-
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isGenericKeyword:
-                check.indent(self, oLine, iLineNumber)
-
-    def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
-            fix.indent(self, oFile.lines[iLineNumber])
+        indent_rule.__init__(self, 'generic', '002', 'isGenericKeyword')
