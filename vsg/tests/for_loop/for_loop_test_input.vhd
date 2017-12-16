@@ -28,4 +28,6 @@ begin
       end loop;
     end if;
 
+  end process PROC_2;
+
 end architecture ARCH;
