@@ -57,3 +57,20 @@ def insert_blank_line_above(self, oFile, iLineNumber):
 
 def insert_blank_line_below(self, oFile, iLineNumber):
     oFile.lines.insert(iLineNumber + 1, line.blank_line())
+
+
+def replace_is_keyword(oFile, iLineNumber):
+    iSearchIndex = iLineNumber
+    while True:
+        iSearchIndex += 1
+        oLine = oFile.lines[iSearchIndex]
+        if re.match('^\s*is', oLine.line, re.IGNORECASE):
+            oLine.line = re.sub(r'^(\s*)is', r'\1  ', oLine.line)
+            oLine.lineLower = oLine.line.lower()
+            if re.match('^\s*$', oLine.line):
+                oLine.line = ''
+                oLine.lineLower = ''
+                oLine.isBlank = True
+        if oFile.lines[iSearchIndex].isGenericKeyword or oFile.lines[iSearchIndex].isPortKeyword:
+            break
+

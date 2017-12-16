@@ -9,12 +9,11 @@ class single_space_after_rule(rule.rule):
     Single space after rule checks for a single space after a user specified keyword.
     '''
 
-    def __init__(self):
-        rule.rule.__init__(self)
+    def __init__(self, name=None, identifier=None, sTrigger=None, sWord=None):
+        rule.rule.__init__(self, name=name, identifier=identifier)
         self.phase = 2
-        self.sTrigger = None
-        self.sWord = None
-        self.identifier = None
+        self.sTrigger = sTrigger
+        self.sWord = sWord
         self.solution = None
 
     def analyze(self, oFile):

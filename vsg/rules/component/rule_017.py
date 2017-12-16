@@ -9,9 +9,7 @@ class rule_017(keyword_alignment_rule):
     '''
 
     def __init__(self):
-        keyword_alignment_rule.__init__(self)
-        self.name = 'component'
-        self.identifier = '017'
+        keyword_alignment_rule.__init__(self, 'component', '017')
         self.solution = 'Inconsistent alignment of ":" in port declaration of component.'
         self.sKeyword = ':'
         self.sStartGroupTrigger = 'isPortKeyword'
