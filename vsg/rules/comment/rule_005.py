@@ -24,7 +24,6 @@ class rule_005(rule.rule):
             if oLine.isCaseWhenKeyword:
                 check.indent_of_comments_above(self, oFile, iLineNumber)
 
-
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
             oFile.lines[iLineNumber].indentLevel = self.dFix['violations'][iLineNumber]

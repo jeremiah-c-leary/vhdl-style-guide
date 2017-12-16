@@ -73,4 +73,3 @@ def replace_is_keyword(oFile, iLineNumber):
                 oLine.isBlank = True
         if oFile.lines[iSearchIndex].isGenericKeyword or oFile.lines[iSearchIndex].isPortKeyword:
             break
-

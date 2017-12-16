@@ -1,6 +1,7 @@
 
 from vsg.rules import lower_case_rule
 
+
 class rule_010(lower_case_rule):
     '''
     Entity rule 010 checks the "end" keyword is lowercase.
