@@ -8,7 +8,4 @@ class rule_006(line_above_rule):
     '''
 
     def __init__(self):
-        line_above_rule.__init__(self)
-        self.name = 'function'
-        self.identifier = '006'
-        self.condition = 'isFunctionKeyword'
+        line_above_rule.__init__(self, 'function', '006', 'isFunctionKeyword')

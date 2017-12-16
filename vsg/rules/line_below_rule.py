@@ -6,10 +6,11 @@ from vsg import rule
 
 class line_below_rule(rule.rule):
 
-    def __init__(self):
-        rule.rule.__init__(self)
+    def __init__(self, name=None, identifier=None, sTrigger=None):
+        rule.rule.__init__(self, name, identifier)
         self.solution = 'Insert blank line below.'
         self.phase = 3
+        self.condition = sTrigger
 
     def analyze(self, oFile):
         lFailureLines = []

@@ -8,7 +8,4 @@ class rule_007(line_below_rule):
     '''
 
     def __init__(self):
-        line_below_rule.__init__(self)
-        self.name = 'function'
-        self.identifier = '007'
-        self.condition = 'isFunctionEnd'
+        line_below_rule.__init__(self, 'function', '007', 'isFunctionEnd')

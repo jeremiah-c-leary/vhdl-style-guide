@@ -15,6 +15,7 @@ The rules are divided into catagories depending on the part of the VHDL code bei
    constant_rules.rst
    entity_rules.rst
    for_loop_rules.rst
+   function_rules.rst
    generic_rules.rst
    if_rules.rst
    instantiation_rules.rst
