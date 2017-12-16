@@ -9,14 +9,12 @@ class single_space_before_rule(rule.rule):
     Single space before rule checks for a single space before a user specified keyword.
     '''
 
-    def __init__(self):
-        rule.rule.__init__(self)
+    def __init__(self, name=None, identifier=None, sTrigger=None, sWord=None):
+        rule.rule.__init__(self, name=None, identifier=None)
         self.phase = 2
-        self.name = None
-        self.identifier = None
+        self.sTrigger = sTrigger
+        self.sWord = sWord
         self.solution = None
-        self.sTrigger = None
-        self.sWord = None
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
