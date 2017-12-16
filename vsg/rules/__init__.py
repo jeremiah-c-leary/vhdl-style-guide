@@ -6,6 +6,7 @@ from indent_rule import indent_rule
 from single_space_after_rule import single_space_after_rule
 from single_space_before_rule import single_space_before_rule
 from remove_blank_lines_above_rule import remove_blank_lines_above_rule
+from lower_case_rule import lower_case_rule
 
 from vsg.rules import architecture
 from vsg.rules import assert_statement

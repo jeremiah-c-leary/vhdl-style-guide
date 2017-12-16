@@ -1,24 +1,12 @@
 
-from vsg import rule
-from vsg import fix
-from vsg import check
+from vsg.rules import lower_case_rule
 
 
-class rule_010(rule.rule):
-    '''Component rule 010 checks the "end" keyword is lowercase.'''
+class rule_010(lower_case_rule):
+    '''
+    Component rule 010 checks the "end" keyword is lowercase.
+    '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'component'
-        self.identifier = '010'
+        lower_case_rule.__init__(self, 'component', '010', 'isComponentEnd', 'end')
         self.solution = 'Change "end" keyword to lowercase.'
-        self.phase = 6
-
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isComponentEnd:
-                check.is_lowercase(self, oLine.line.split()[0], iLineNumber)
-
-    def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
-            fix.lower_case(self, oFile.lines[iLineNumber], 'end')
