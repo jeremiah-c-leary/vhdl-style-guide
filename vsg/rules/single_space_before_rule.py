@@ -10,7 +10,7 @@ class single_space_before_rule(rule.rule):
     '''
 
     def __init__(self, name=None, identifier=None, sTrigger=None, sWord=None):
-        rule.rule.__init__(self, name=None, identifier=None)
+        rule.rule.__init__(self, name=name, identifier=identifier)
         self.phase = 2
         self.sTrigger = sTrigger
         self.sWord = sWord

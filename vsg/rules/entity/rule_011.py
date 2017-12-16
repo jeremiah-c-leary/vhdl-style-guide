@@ -1,29 +1,12 @@
 
-from vsg import rule
-
-import re
+from vsg.rules import single_space_after_rule
 
 
-class rule_011(rule.rule):
+class rule_011(single_space_after_rule):
     '''
     Entity rule 011 checks for a single space after the "end" keyword
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'entity'
-        self.identifier = '011'
+        single_space_after_rule.__init__(self, 'entity', '011', 'isEndEntityDeclaration', 'end')
         self.solution = 'Reduce spaces after "end" keyword to one.'
-        self.phase = 2
-
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isEndEntityDeclaration:
-                if re.match('^\s*\S+\s\s+\S', oLine.line):
-                    self.add_violation(iLineNumber)
-
-    def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
-            oLine = oFile.lines[iLineNumber]
-            oLine.line = re.sub(r'^(\s*end)\s+', r'\1 ', oLine.line, flags=re.IGNORECASE)
-            oLine.lineLower = oLine.line.lower()

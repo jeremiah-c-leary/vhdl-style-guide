@@ -19,7 +19,6 @@ class rule_019(rule.rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isEndEntityDeclaration:
-                if re.match('^\s*end\s+entity', oLine.line, re.IGNORECASE):
-                    if not re.match('^\s*end\s+entity\s+\w+', oLine.line, re.IGNORECASE):
-                        self.add_violation(iLineNumber)
+            if oLine.isEndEntityDeclaration and re.match('^\s*end\s+entity', oLine.line, re.IGNORECASE):
+                if not re.match('^\s*end\s+entity\s+\w+', oLine.line, re.IGNORECASE):
+                    self.add_violation(iLineNumber)

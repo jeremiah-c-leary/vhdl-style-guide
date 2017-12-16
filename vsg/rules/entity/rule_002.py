@@ -1,29 +1,11 @@
 
-from vsg import rule
+from vsg.rules import single_space_after_rule
 
-import re
-
-
-class rule_002(rule.rule):
+class rule_002(single_space_after_rule):
     '''
     Entity rule 002 checks for a single space after the entity keyword.
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'entity'
-        self.identifier = '002'
+        single_space_after_rule.__init__(self, 'entity', '002', 'isEntityDeclaration', 'entity')
         self.solution = 'Remove extra spaces after entity keyword.'
-        self.phase = 2
-
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isEntityDeclaration:
-                if re.match('^\s*\S+\s\s+', oLine.line):
-                    self.add_violation(iLineNumber)
-
-    def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
-            oLine = oFile.lines[iLineNumber]
-            oLine.line = re.sub(r'^(\s*entity)\s+', r'\1 ', oLine.line, flags=re.IGNORECASE)
-            oLine.lineLower = oLine.line.lower()

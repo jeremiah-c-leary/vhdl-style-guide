@@ -1,29 +1,12 @@
 
-from vsg import rule
-
-import re
+from vsg.rules import single_space_before_rule
 
 
-class rule_007(rule.rule):
+class rule_007(single_space_before_rule):
     '''
     Entity rule 007 checks for a single space before the "is" keyword.
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'entity'
-        self.identifier = '007'
+        single_space_before_rule.__init__(self, 'entity', '007', 'isEntityDeclaration', 'is')
         self.solution = 'Remove extra spaces before "is" keyword.'
-        self.phase = 2
-
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isEntityDeclaration:
-                if re.match('^.*\s\s+is', oLine.lineLower):
-                    self.add_violation(iLineNumber)
-
-    def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
-            oLine = oFile.lines[iLineNumber]
-            oLine.line = re.sub(r'\s+(is)', r' \1', oLine.line, flags=re.IGNORECASE)
-            oLine.lineLower = oLine.line.lower()
