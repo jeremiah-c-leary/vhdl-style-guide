@@ -1,6 +1,7 @@
 
 from vsg.rules import single_space_after_rule
 
+
 class rule_002(single_space_after_rule):
     '''
     Entity rule 002 checks for a single space after the entity keyword.
