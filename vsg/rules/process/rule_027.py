@@ -9,9 +9,7 @@ class rule_027(rule.rule):
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'process'
-        self.identifier = '027'
+        rule.rule.__init__(self, 'process', '027')
         self.solution = 'Ensure a single blank line between the last non-blank line and the "begin" keyword.'
         self.phase = 3
 

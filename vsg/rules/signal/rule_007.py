@@ -8,15 +8,12 @@ class rule_007(rule.rule):
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'signal'
-        self.identifier = '007'
+        rule.rule.__init__(self, 'signal', '007')
         self.solution = 'Remove default assignment.'
         self.phase = 1
         self.fixable = False  # Allow the user to decide if these should be removed
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isSignal:
-                if ':=' in oLine.line:
-                    self.add_violation(iLineNumber)
+            if oLine.isSignal and ':=' in oLine.line:
+                self.add_violation(iLineNumber)
