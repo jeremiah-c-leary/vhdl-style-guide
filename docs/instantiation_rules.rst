@@ -76,3 +76,29 @@ Refer to the entity for port types, port directions and purpose.
    WR_EN => w_wr_en;
    RD_EN => w_rd_en;
 
+instantiation_024
+#################
+
+This rule checks for positional generics and ports.
+Positional ports and generics are subject to problems when the position of the underlying component changes.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   port map (
+     WR_EN, RD_EN, OVERFLOW
+   );
+
+**Fix**
+
+Use explicit port mapping.
+
+.. code-block:: vhdl
+
+   port map (
+     WR_EN    => WR_EN;
+     RD_EN    => RD_EN;
+     OVERFLOW => OVERFLOW
+   );
+

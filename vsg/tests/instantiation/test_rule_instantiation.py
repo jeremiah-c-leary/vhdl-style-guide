@@ -10,6 +10,7 @@ from vsg import vhdlFile
 oFilePort = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'instantiation_test_input.vhd'))
 oFileGeneric = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'instantiation_generic_test_input.vhd'))
 oFileComment = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'instantiation_comment_test_input.vhd'))
+oFilePositional = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'instantiation_positional_test_input.vhd'))
 
 class testRuleInstantiationMethods(unittest.TestCase):
 
@@ -251,4 +252,14 @@ class testRuleInstantiationMethods(unittest.TestCase):
 
         dExpected = [24,29,31]
         oRule.analyze(oFileComment)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_024(self):
+        oRule = instantiation.rule_024()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'instantiation')
+        self.assertEqual(oRule.identifier, '024')
+
+        dExpected = [7,9,10,13,14]
+        oRule.analyze(oFilePositional)
         self.assertEqual(oRule.violations, dExpected)
