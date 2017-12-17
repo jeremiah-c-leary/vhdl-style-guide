@@ -5,12 +5,12 @@ from vsg import fix
 
 
 class rule_004(rule.rule):
-    '''Generic rule 004 checks indentation of generics.'''
+    '''
+    Generic rule 004 checks indentation of generics.
+    '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'generic'
-        self.identifier = '004'
+        rule.rule.__init__(self, 'generic', '004')
         self.solution = 'Ensure proper indentation.'
         self.phase = 4
 

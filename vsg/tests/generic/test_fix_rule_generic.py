@@ -19,6 +19,7 @@ class testFixRuleGenericMethods(unittest.TestCase):
         oRule.fix(oFile)
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, [])
+        self.assertFalse(oFile.lines[81].isBlank)
 
     def test_fix_rule_002(self):
         oRule = generic.rule_002()
@@ -49,6 +50,9 @@ class testFixRuleGenericMethods(unittest.TestCase):
         oRule.fix(oFile)
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, [])
+        self.assertEqual(oFile.lines[37].line,'    G_GeneRIC2 : std_logic := \'1\'')
+        self.assertEqual(oFile.lines[52].line,'    G_GENERIC1 : STD_LOGIC := \'0\';')
+        self.assertEqual(oFile.lines[53].line,'    G_GENERIC2 : std_logic := \'1\'')
 
     def test_fix_rule_007(self):
         oRule = generic.rule_007()
