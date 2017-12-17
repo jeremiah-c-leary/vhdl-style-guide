@@ -27,4 +27,4 @@ class rule_005(rule.rule):
         for iLineNumber in self.violations:
             oLine = oFile.lines[iLineNumber]
             oLine.update_line(re.sub(r'^(\s*entity\s+\w+)', r'\1 is', oLine.line, re.IGNORECASE))
-            utilities.search_for_and_remove_is_keyword(oFile, iLineNumber)
+            utilities.search_for_and_remove_keyword(oFile, iLineNumber, 'is')

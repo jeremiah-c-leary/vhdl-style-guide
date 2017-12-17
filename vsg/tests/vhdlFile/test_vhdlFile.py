@@ -134,7 +134,7 @@ class testVhdlFileMethods(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_insidePortMap_assignment(self):
-        lExpected = [8,9,10,11,12,13,14,15,25,26,27,28,29,30,31,39,40,41,42,43,44,45,46,56,57,58,59,60,61,62,70,71,72,73,74,75,76,77,86,87,88,89,90,98,99,100,101,102,118,119,120,121,122,128,129,130,131,132,133,140,141,142,143,144]
+        lExpected = [8,9,10,11,12,13,14,15,25,26,27,28,29,30,31,39,40,41,42,43,44,45,46,56,57,58,59,60,61,62,70,71,72,73,74,75,76,77,86,87,88,89,90,98,99,100,101,102,118,119,120,121,122,128,129,130,131,132,133,140,141,142,143,144,150,151,152,153]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFilePort.lines):
@@ -144,7 +144,7 @@ class testVhdlFileMethods(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isPortKeyword_assignment(self):
-        lExpected = [8,25,39,56,70,86,98,118,128,140]
+        lExpected = [8,25,39,56,70,86,98,118,128,140,150]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFilePort.lines):
@@ -154,7 +154,7 @@ class testVhdlFileMethods(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isEndPortMap_assignment(self):
-        lExpected = [15,31,46,62,77,90,102,122,133,144]
+        lExpected = [15,31,46,62,77,90,102,122,133,144,153]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFilePort.lines):
@@ -164,7 +164,7 @@ class testVhdlFileMethods(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isPortDeclaration_assignment(self):
-        lExpected = [9,10,11,12,13,14,26,27,28,29,30,31,40,41,42,43,44,45,57,58,59,60,61,62,71,72,73,74,75,76,87,88,89,99,100,101,119,120,121,129,130,131,141,142]
+        lExpected = [9,10,11,12,13,14,26,27,28,29,30,31,40,41,42,43,44,45,57,58,59,60,61,62,71,72,73,74,75,76,87,88,89,99,100,101,119,120,121,129,130,131,141,142,152]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFilePort.lines):

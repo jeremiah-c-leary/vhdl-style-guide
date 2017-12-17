@@ -155,3 +155,12 @@ class testFixRulePortMethods(unittest.TestCase):
         oRule.fix(oFile)
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, [])
+
+    def test_fix_rule_021(self):
+        oRule = port.rule_021()
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, [])
+        self.assertEqual(oFile.lines[152].line, '  port (')
+        self.assertEqual(oFile.lines[153].line, '')
+        self.assertEqual(oFile.lines[153].isBlank, True)

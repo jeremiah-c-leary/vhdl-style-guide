@@ -11,6 +11,8 @@ def port(dVars, oLine):
         else:
             oLine.indentLevel = 2
             dVars['iCurrentIndentLevel'] = 3
+        if not '(' in oLine.line:
+            return
 
     if oLine.insidePortMap:
         if re.match('^\s*\w+.*:', oLine.line) and not oLine.isComment and not oLine.isPortKeyword:

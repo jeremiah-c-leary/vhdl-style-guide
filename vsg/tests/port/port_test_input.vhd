@@ -143,3 +143,12 @@ entity ENTITY1 is
     --- debug ports: can be removed or left unconnected for the application circuit ---
   );
 end entity ENTITY1
+
+-- Check if port opening parenthesis is on the same line
+
+entity ENTITY1 is
+  port
+    (
+    PORT1 : in    std_logic 
+  );
+end entity ENTITY1;
