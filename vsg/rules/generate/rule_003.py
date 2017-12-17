@@ -8,7 +8,4 @@ class rule_003(line_below_rule):
     '''
 
     def __init__(self):
-        line_below_rule.__init__(self)
-        self.name = 'generate'
-        self.identifier = '003'
-        self.condition = 'isGenerateEnd'
+        line_below_rule.__init__(self, 'generate', '003', 'isGenerateEnd')

@@ -15,7 +15,7 @@ class testRuleGenerateMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'generate')
         self.assertEqual(oRule.identifier, '001')
 
-        dExpected = [11,12,14,16,17,19]
+        dExpected = [11,16]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -58,3 +58,24 @@ class testRuleGenerateMethods(unittest.TestCase):
         dExpected = [11,16]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_006(self):
+        oRule = generate.rule_006()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'generate')
+        self.assertEqual(oRule.identifier, '006')
+
+        dExpected = [12,17]
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_007(self):
+        oRule = generate.rule_007()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'generate')
+        self.assertEqual(oRule.identifier, '007')
+
+        dExpected = [14,19]
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+
