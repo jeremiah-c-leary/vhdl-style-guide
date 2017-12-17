@@ -18,15 +18,13 @@ class rule_020(rule.rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isEndIfKeyword and not re.match('^\s*end\s+if', oLine.lineLower):
-                    self.add_violation(iLineNumber)
+                self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:
-            utilities.split_line_before_word(oFile, iLineNumber, ' end')
+            utilities.split_line_before_word(oFile, iLineNumber, 'end')
             oFile.lines[iLineNumber].isEndIfKeyword = False
             oFile.lines[iLineNumber + 1].isIfKeyword = False
             oFile.lines[iLineNumber + 1].isElseIfKeyword = False
             oFile.lines[iLineNumber + 1].isElseKeyword = False
             oFile.lines[iLineNumber + 1].isThenKeyword = False
-#            if oFile.lines[iLineNumber].isIfKeyword:
-#                oFile.lines[iLineNumber + 1].indentLevel -= 1

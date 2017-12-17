@@ -90,3 +90,10 @@ class testVhdlFileIfAssignments(unittest.TestCase):
         self.assertTrue(oFileCompress.lines[10].isEndIfKeyword)
         self.assertTrue(oFileCompress.lines[10].isIfKeyword)
         self.assertTrue(oFileCompress.lines[10].isThenKeyword)
+
+        self.assertTrue(oFileCompress.lines[12].insideIf)
+        self.assertTrue(oFileCompress.lines[12].isElseKeyword)
+        self.assertTrue(oFileCompress.lines[12].isElseIfKeyword)
+        self.assertTrue(oFileCompress.lines[12].isEndIfKeyword)
+        self.assertTrue(oFileCompress.lines[12].isIfKeyword)
+        self.assertTrue(oFileCompress.lines[12].isThenKeyword)

@@ -182,4 +182,11 @@ class testFixRuleIfMethods(unittest.TestCase):
         self.assertEqual(oFileCompress.lines[14].line, '    else')
         self.assertEqual(oFileCompress.lines[15].line, '      W <= \'0\';')
 
+        self.assertEqual(oFileCompress.lines[18].line, '    if (A = \'1\' and B = \'1\') then')
+        self.assertEqual(oFileCompress.lines[19].line, '      X <= \'1\';')
+        self.assertEqual(oFileCompress.lines[20].line, '    elsif (C = \'0\') then')
+        self.assertEqual(oFileCompress.lines[21].line, '      Y <= \'0\';')
+        self.assertEqual(oFileCompress.lines[22].line, '    else')
+        self.assertEqual(oFileCompress.lines[23].line, '      W <= \'0\';')
+
 
