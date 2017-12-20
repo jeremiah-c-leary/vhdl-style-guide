@@ -263,3 +263,23 @@ class testRuleInstantiationMethods(unittest.TestCase):
         dExpected = [7,9,10,13,14]
         oRule.analyze(oFilePositional)
         self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_025(self):
+        oRule = instantiation.rule_025()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'instantiation')
+        self.assertEqual(oRule.identifier, '025')
+
+        dExpected = [81]
+        oRule.analyze(oFileGeneric)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_026(self):
+        oRule = instantiation.rule_026()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'instantiation')
+        self.assertEqual(oRule.identifier, '026')
+
+        dExpected = [86]
+        oRule.analyze(oFileGeneric)
+        self.assertEqual(oRule.violations, dExpected)

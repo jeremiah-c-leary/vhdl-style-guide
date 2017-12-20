@@ -162,5 +162,4 @@ class testFixRulePortMethods(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, [])
         self.assertEqual(oFile.lines[152].line, '  port (')
-        self.assertEqual(oFile.lines[153].line, '')
-        self.assertEqual(oFile.lines[153].isBlank, True)
+        self.assertEqual(oFile.lines[153].line, '    PORT1 : in    std_logic')

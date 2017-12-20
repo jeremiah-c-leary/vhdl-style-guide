@@ -78,6 +78,8 @@ def search_for_and_remove_keyword(oFile, iLineNumber, sKeyword):
         oLine = oFile.lines[iSearchIndex]
         if re.match('^\s*' + sKeyword, oLine.line, re.IGNORECASE):
             clear_keyword_from_line(oLine, sKeyword)
+            if oLine.isBlank:
+                oFile.lines.pop(iSearchIndex)
         if not oLine.isBlank:
             break
 

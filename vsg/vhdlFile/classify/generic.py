@@ -7,6 +7,9 @@ def generic(dVars, oLine):
         oLine.insideGenericMap = True
         oLine.indentLevel = dVars['iCurrentIndentLevel']
         dVars['iCurrentIndentLevel'] += 1
+        if '(' not in oLine.lineNoComment:
+            return
+
     if oLine.insideGenericMap:
         if re.match('^\s*\S+.*:', oLine.line):
             oLine.isGenericDeclaration = True

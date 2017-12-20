@@ -326,4 +326,21 @@ This rule checks the generic type is lowercase.
     DEPTH : std_logic := '1'
   );
 
+generic_018
+###########
+
+This rule checks the **generic** keyword is on the same line as the (.
+
+**Violation**
+
+.. code-block:: vhdl
+
+  generic 
+   (
+
+**Fix**
+
+.. code-block:: vhdl
+
+  generic (
 

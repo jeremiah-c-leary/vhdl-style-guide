@@ -77,6 +77,18 @@ begin
       PORT_3 => w_port_3
     );
 
+  U_INST1 : INST1
+    generic map
+    (
+      GENERIC_1 => generic_1,
+      GENERIC_2 => generic_2
+    )
+    port map
+    (
+      PORT_1 => w_port_1,
+      PORT_2 => w_port_2,
+      PORT_3 => w_port_3
+    );
 
 end architecture ARCH;
 
