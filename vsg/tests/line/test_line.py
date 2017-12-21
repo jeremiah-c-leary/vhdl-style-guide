@@ -596,6 +596,24 @@ class testLineMethods(unittest.TestCase):
         oLine.insideSubtype= True
         self.assertEqual(oLine.insideSubtype, True)
 
+    def test_isTypeArrayEnd_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isTypeArrayEnd, False)
+        oLine.isTypeArrayEnd = True
+        self.assertEqual(oLine.isTypeArrayEnd, True)
+
+    def test_isTypeArrayKeyword_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isTypeArrayKeyword, False)
+        oLine.isTypeArrayKeyword = True
+        self.assertEqual(oLine.isTypeArrayKeyword, True)
+
+    def test_insideTypeArray_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.insideTypeArray, False)
+        oLine.insideTypeArray= True
+        self.assertEqual(oLine.insideTypeArray, True)
+
     def test_isVariable_attribute(self):
         oLine = line.line('contents of Line')
         self.assertEqual(oLine.isVariable, False)

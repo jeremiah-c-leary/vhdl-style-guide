@@ -80,3 +80,33 @@ class testVhdlFileTypeAssignments(unittest.TestCase):
                 lActual.append(iIndex)
         # Compare
         self.assertEqual(lActual, lExpected)
+
+    def test_isTypeArrayKeyword(self):
+        lExpected = [46]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFile.lines):
+            if oLine.isTypeArrayKeyword:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
+    def test_isTypeArrayEnd(self):
+        lExpected = [47]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFile.lines):
+            if oLine.isTypeArrayEnd:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
+    def test_insideTypeArray(self):
+        lExpected = [46,47]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFile.lines):
+            if oLine.insideTypeArray:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)

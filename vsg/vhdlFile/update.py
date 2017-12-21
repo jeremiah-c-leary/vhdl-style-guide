@@ -65,6 +65,12 @@ def update_subtype_attributes(oPreviousLine, oCurrentLine):
         oCurrentLine.insideSubtype = True
 
 
+def update_type_array_attributes(oPreviousLine, oCurrentLine):
+
+    if oPreviousLine.insideTypeArray and not oPreviousLine.isTypeArrayEnd:
+        oCurrentLine.insideTypeArray = True
+
+
 def update_case_attributes(oPreviousLine, oCurrentLine):
 
     if oPreviousLine.insideCase and not oPreviousLine.isCaseIsKeyword:
@@ -161,6 +167,7 @@ def inside_attributes(oPreviousLine, oCurrentLine):
     update_sensitivity_list_attributes(oPreviousLine, oCurrentLine)
     update_if_attributes(oPreviousLine, oCurrentLine)
     update_type_attributes(oPreviousLine, oCurrentLine)
+    update_type_array_attributes(oPreviousLine, oCurrentLine)
     update_subtype_attributes(oPreviousLine, oCurrentLine)
     update_case_attributes(oPreviousLine, oCurrentLine)
     update_case_when_attributes(oPreviousLine, oCurrentLine)

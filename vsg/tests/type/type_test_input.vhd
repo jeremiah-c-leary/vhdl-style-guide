@@ -42,6 +42,11 @@ package PACK is
 
     subtype a is range 0 to 9;
 
+
+  type memory is array (DEPTH - 1 downto 0) of
+       STD_LOGIC_VECTOR(WIDTH-1 downto 0);
+
+
 begin
 
 end package PACK;

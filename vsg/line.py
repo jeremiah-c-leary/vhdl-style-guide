@@ -127,10 +127,14 @@ class line():
         self.insideType = False
         self.isTypeKeyword = False
         self.isTypeEnd = False
-        # Type attributes
+        # Subtype attributes
         self.insideSubtype = False
         self.isSubtypeKeyword = False
         self.isSubtypeEnd = False
+        # Type Array attributes
+        self.insideTypeArray = False
+        self.isTypeArrayKeyword = False
+        self.isTypeArrayEnd = False
         # Variable Assignment attributes
         self.insideVariableAssignment = False
         self.isVariableAssignmentEnd = False
