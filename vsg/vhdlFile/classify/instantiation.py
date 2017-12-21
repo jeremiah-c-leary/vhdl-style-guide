@@ -4,7 +4,10 @@ import re
 def instantiation(dVars, oLine):
 
     if re.match('^\s*\w+\s*:\s*\w+', oLine.line):
-        oLine.isInstantiationDeclaration = True
+        if re.match('^\s*\w+\s*:\s*entity', oLine.line, re.IGNORECASE):
+            oLine.isDirectInstantiationDeclaration = True
+        else:
+            oLine.isInstantiationDeclaration = True
         oLine.insideInstantiation = True
         oLine.indentLevel = dVars['iCurrentIndentLevel']
         dVars['iCurrentIndentLevel'] += 1

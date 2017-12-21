@@ -11,6 +11,7 @@ oFilePort = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'instantiat
 oFileGeneric = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'instantiation_generic_test_input.vhd'))
 oFileComment = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'instantiation_comment_test_input.vhd'))
 oFilePositional = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'instantiation_positional_test_input.vhd'))
+oFileDirect = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'instantiation_direct_test_input.vhd'))
 
 class testRuleInstantiationMethods(unittest.TestCase):
 
@@ -282,4 +283,24 @@ class testRuleInstantiationMethods(unittest.TestCase):
 
         dExpected = [86]
         oRule.analyze(oFileGeneric)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_027(self):
+        oRule = instantiation.rule_027()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'instantiation')
+        self.assertEqual(oRule.identifier, '027')
+
+        dExpected = [13,20]
+        oRule.analyze(oFileDirect)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_028(self):
+        oRule = instantiation.rule_028()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'instantiation')
+        self.assertEqual(oRule.identifier, '028')
+
+        dExpected = [20]
+        oRule.analyze(oFileDirect)
         self.assertEqual(oRule.violations, dExpected)

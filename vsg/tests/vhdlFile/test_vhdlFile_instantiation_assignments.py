@@ -7,7 +7,7 @@ from vsg.tests import utils
 oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','instantiation','instantiation_test_input.vhd'))
 oFileGeneric = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','instantiation','instantiation_generic_test_input.vhd'))
 oFileGenerate = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','instantiation','instantiation_generate_test_input.vhd'))
-
+oFileDirect = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','instantiation','instantiation_direct_test_input.vhd'))
 
 class testVhdlFileInstantiationAssignments(unittest.TestCase):
 
@@ -110,6 +110,25 @@ class testVhdlFileInstantiationAssignments(unittest.TestCase):
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFileGenerate.lines):
+            if oLine.isInstantiationDeclaration:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
+    def test_isDirectInstantiation_assignment_inside_generate(self):
+        lExpected = [6,13,20]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFileDirect.lines):
+            if oLine.isDirectInstantiationDeclaration:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
+        lExpected = [27]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFileDirect.lines):
             if oLine.isInstantiationDeclaration:
                 lActual.append(iIndex)
         # Compare

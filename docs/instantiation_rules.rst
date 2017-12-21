@@ -102,3 +102,92 @@ Use explicit port mapping.
      OVERFLOW => OVERFLOW
    );
 
+instantiation_025
+#################
+
+This rule checks the ( is on the same line as the **port map** keywords.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   port map
+   (
+     WR_EN    => WR_EN,
+     RD_EN    => RD_EN,
+     OVERFLOW => OVERFLOW
+   );
+
+**Fix**
+
+Use explicit port mapping.
+
+.. code-block:: vhdl
+
+   port map (
+     WR_EN    => WR_EN,
+     RD_EN    => RD_EN,
+     OVERFLOW => OVERFLOW
+   );
+
+instantiation_026
+#################
+
+This rule checks the ( is on the same line as the **generic map** keywords.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   generic map
+   (
+     WIDTH => 32,
+     DEPTH => 512
+   )
+
+**Fix**
+
+Use explicit port mapping.
+
+.. code-block:: vhdl
+
+   generic map (
+     WIDTH => 32,
+     DEPTH => 512
+   )
+
+
+instantiation_027
+#################
+
+This rule checks for the **entity** keyword is lowercase in direct instantiations.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   INSTANCE_NAME : ENTITY library.ENTITY_NAME
+
+**Fix**
+
+.. code-block:: vhdl
+
+   INSTANCE_NAME : entity library.ENTITY_NAME
+
+instantiation_028
+#################
+
+This rule checks the entity name is uppercase in direct instantiations.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   INSTANCE_NAME : entity library.entity_name
+
+**Fix**
+
+.. code-block:: vhdl
+
+   INSTANCE_NAME : entity library.ENTITY_NAME
+

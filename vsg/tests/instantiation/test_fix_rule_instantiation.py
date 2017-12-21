@@ -10,6 +10,7 @@ from vsg.tests import utils
 oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','instantiation','instantiation_test_input.vhd'))
 oFileGeneric = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','instantiation','instantiation_generic_test_input.vhd'))
 oFileComment = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'instantiation_comment_test_input.vhd'))
+oFileDirect = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'instantiation_direct_test_input.vhd'))
 
 class testFixRuleInstantiationMethods(unittest.TestCase):
 
@@ -179,3 +180,19 @@ class testFixRuleInstantiationMethods(unittest.TestCase):
         self.assertEqual(oRule.violations, [])
         self.assertEqual(oFileGeneric.lines[85].line, '    port map (')
         self.assertEqual(oFileGeneric.lines[86].line, '      PORT_1 => w_port_1,')
+
+    def test_fix_fule_027(self):
+        oRule = instantiation.rule_027()
+        oRule.fix(oFileDirect)
+        oRule.analyze(oFileDirect)
+        self.assertEqual(oRule.violations, [])
+        self.assertEqual(oFileDirect.lines[13].line, '  U_INST1 : entity library.INST1')
+        self.assertEqual(oFileDirect.lines[13].line, '  U_INST1 : entity library.INST1')
+
+    def test_fix_fule_028(self):
+        oRule = instantiation.rule_028()
+        oRule.fix(oFileDirect)
+        oRule.analyze(oFileDirect)
+#        self.assertEqual(oRule.violations, [])
+        self.assertEqual(oFileDirect.lines[20].line, '  U_INST1 : entity library.INST1')
+

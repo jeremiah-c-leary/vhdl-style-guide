@@ -87,6 +87,7 @@ class line():
         # Instantiation attributes
         self.insideInstantiation = False
         self.isInstantiationDeclaration = False
+        self.isDirectInstantiationDeclaration = False
         self.insideInstantiationPortMap = False
         self.isInstantiationPortKeyword = False
         self.isInstantiationPortEnd = False

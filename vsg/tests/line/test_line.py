@@ -380,6 +380,12 @@ class testLineMethods(unittest.TestCase):
         oLine.isInstantiationDeclaration = True
         self.assertEqual(oLine.isInstantiationDeclaration, True)
 
+    def test_Directinstantiation_declaration_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isDirectInstantiationDeclaration, False)
+        oLine.isDirectInstantiationDeclaration = True
+        self.assertEqual(oLine.isDirectInstantiationDeclaration, True)
+
     def test_inside_instantiation_port_map_attribute(self):
         oLine = line.line('contents of Line')
         self.assertEqual(oLine.insideInstantiationPortMap, False)
