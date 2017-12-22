@@ -8,7 +8,4 @@ class rule_003(line_above_rule):
     '''
 
     def __init__(self):
-        line_above_rule.__init__(self)
-        self.name = 'library'
-        self.identifier = '003'
-        self.condition = 'isLibrary'
+        line_above_rule.__init__(self, 'library', '003', 'isLibrary')

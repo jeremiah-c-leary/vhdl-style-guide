@@ -8,9 +8,5 @@ class rule_002(single_space_after_rule):
     '''
 
     def __init__(self):
-        single_space_after_rule.__init__(self)
-        self.name = 'library'
-        self.identifier = '002'
+        single_space_after_rule.__init__(self, 'library', '002', 'isLibrary', 'library')
         self.solution = 'Remove extra spaces after "library" keyword.'
-        self.sTrigger = 'isLibrary'
-        self.sWord = 'library'
