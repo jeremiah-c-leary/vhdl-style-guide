@@ -8,20 +8,13 @@ class rule_005(rule.rule):
     '''Whitespace rule 005 checks for spaces after an open parenthesis.'''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'whitespace'
-        self.identifier = '005'
+        rule.rule.__init__(self, 'whitespace', '005')
         self.phase = 2
         self.solution = 'Remove spaces after open (.'
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isComment:
-                continue
-            if oLine.hasComment:
-                sLine = oLine.line[:oLine.line.find('--')]
-            else:
-                sLine = oLine.line
+            sLine = oLine.lineNoComment
             if re.match('^.*\(\s+', sLine):
                 if not re.match('^.*\(\s+[0-9]', sLine):
                     self.add_violation(iLineNumber)

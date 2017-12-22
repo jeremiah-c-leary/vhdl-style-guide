@@ -8,9 +8,7 @@ class rule_004(rule.rule):
     '''Whitespace rule 004 checks for spaces before commas.'''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'whitespace'
-        self.identifier = '004'
+        rule.rule.__init__(self, 'whitespace', '004')
         self.phase = 2
         self.solution = 'Remove spaces before commas.'
 

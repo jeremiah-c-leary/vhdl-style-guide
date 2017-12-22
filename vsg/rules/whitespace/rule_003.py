@@ -8,9 +8,7 @@ class rule_003(rule.rule):
     '''Whitespace rule 003 checks for spaces before semicolons'''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'whitespace'
-        self.identifier = '003'
+        rule.rule.__init__(self, 'whitespace', '003')
         self.phase = 2
         self.solution = 'Remove spaces before semicolons.'
 

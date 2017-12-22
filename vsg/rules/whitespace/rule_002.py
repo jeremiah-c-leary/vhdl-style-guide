@@ -6,9 +6,7 @@ class rule_002(rule.rule):
     '''Whitespace rule 002 checks for tabs in lines'''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'whitespace'
-        self.identifier = '002'
+        rule.rule.__init__(self, 'whitespace', '002')
         self.phase = 2
         self.solution = 'Replace tabs with spaces.'
         self.phase = 0

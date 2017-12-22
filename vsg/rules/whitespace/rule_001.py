@@ -8,10 +8,8 @@ class rule_001(rule.rule):
     '''Whitespace rule 001 checks spaces at the end of lines.'''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'whitespace'
+        rule.rule.__init__(self, 'whitespace', '001')
         self.phase = 2
-        self.identifier = '001'
         self.solution = 'Remove trailing whitespace.'
 
     def analyze(self, oFile):

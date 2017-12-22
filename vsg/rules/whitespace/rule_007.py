@@ -8,9 +8,7 @@ class rule_007(rule.rule):
     '''Whitespace rule 007 checks for spaces after a comma.'''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'whitespace'
-        self.identifier = '007'
+        rule.rule.__init__(self, 'whitespace', '007')
         self.phase = 2
         self.solution = 'Add a space after the comma.'
 

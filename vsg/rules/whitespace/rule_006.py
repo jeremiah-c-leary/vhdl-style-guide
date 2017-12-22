@@ -5,7 +5,7 @@ import re
 
 
 class rule_006(rule.rule):
-    '''Whitespace rule 006 checks for spaces after an open parenthesis.'''
+    '''Whitespace rule 006 checks for spaces before a close parenthesis.'''
 
     def __init__(self):
         rule.rule.__init__(self)
@@ -16,10 +16,7 @@ class rule_006(rule.rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.hasComment:
-                sLine = oLine.line[:oLine.line.find('--')]
-            else:
-                sLine = oLine.line
+            sLine = oLine.lineNoComment
             if re.match('^.*\s+\)', sLine) and not re.match('^\s+\)', sLine):
                 self.add_violation(iLineNumber)
 

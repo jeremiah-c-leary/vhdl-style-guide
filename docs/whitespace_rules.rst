@@ -1,6 +1,140 @@
 Whitespace Rules
 ----------------
 
+whitespace_001
+##############
+
+This rule checks for spaces at the end of lines.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   entity FIFO is    
+
+**Fix**
+
+.. code-block:: vhdl
+
+   entity FIFO is
+
+whitespace_002
+##############
+
+This rule checks for tabs.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   port (
+       WR_EN : in    std_logic;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   port (
+     WR_EN : in    std_logic;
+
+whitespace_003
+##############
+
+This rule checks for spaces before semicolons.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   WR_EN : in    std_logic      ;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   WR_EN : in    std_logic;
+
+whitespace_004
+##############
+
+This rule checks for spaces before commas.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   WR_EN => wr_en    ,
+   RD_EN => rd_en,
+
+**Fix**
+
+.. code-block:: vhdl
+
+   WR_EN => wr_en,
+   RD_EN => rd_en,
+
+whitespace_005
+##############
+
+This rule checks for spaces after an open parenthesis.
+
+.. NOTE::
+   Spaces before numbers are allowed.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   signal data        : std_logic_vector(31 downto 0);
+   signal byte_enable : std_logic_vector( 3 downto 0);
+   signal width       : std_logic_vector(  G_WIDTH - 1 downto 0);
+
+**Fix**
+
+.. code-block:: vhdl
+
+   signal data        : std_logic_vector(31 downto 0);
+   signal byte_enable : std_logic_vector( 3 downto 0);
+   signal width       : std_logic_vector(G_WIDTH - 1 downto 0);
+
+whitespace_006
+##############
+
+This rule checks for spaces before a close parenthesis.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   signal data        : std_logic_vector(31 downto 0    );
+   signal byte_enable : std_logic_vector( 3 downto 0 );
+   signal width       : std_logic_vector(G_WIDTH - 1 downto 0);
+
+**Fix**
+
+.. code-block:: vhdl
+
+   signal data        : std_logic_vector(31 downto 0);
+   signal byte_enable : std_logic_vector( 3 downto 0);
+   signal width       : std_logic_vector(G_WIDTH - 1 downto 0);
+
+whitespace_007
+##############
+
+This rule checks for spaces after a comma.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   PROC : process (wr_en,rd_en,overflow) is
+
+**Fix**
+
+.. code-block:: vhdl
+
+   PROC : process (wr_en, rd_en, overflow) is
+
 whitespace_008
 ##############
 

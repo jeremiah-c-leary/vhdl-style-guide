@@ -10,9 +10,7 @@ class rule_008(rule.rule):
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'whitespace'
-        self.identifier = '008'
+        rule.rule.__init__(self, 'whitespace', '008')
         self.phase = 2
         self.solution = 'Remove spaces after "std_logic_vector".'
 
