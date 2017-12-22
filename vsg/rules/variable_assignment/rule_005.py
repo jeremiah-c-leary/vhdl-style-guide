@@ -19,23 +19,35 @@ class rule_005(rule.rule):
         self.phase = 5
 
     def analyze(self, oFile):
-        lGroup = []
-        fGroupFound = False
-        iStartGroupIndex = None
+        dVars = create_dictionary()
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isVariableAssignment and not fGroupFound:
-                fGroupFound = True
-                iStartGroupIndex = iLineNumber
-            if not oLine.insideVariableAssignment and fGroupFound:
-                fGroupFound = False
-                check.keyword_alignment(self, iStartGroupIndex, ':=', lGroup)
-                lGroup = []
-                iStartGroupIndex = None
-            if fGroupFound:
-                if oLine.isComment:
-                    lGroup.append(line.line('Removed line'))
-                else:
-                    lGroup.append(oLine)
+            check_for_start_of_group(dVars, oLine, iLineNumber)
+            if not oLine.insideVariableAssignment and dVars['fGroupFound']:
+                check.keyword_alignment(self, dVars['iStartGroupIndex'], ':=', dVars['lGroup'])
+                dVars = create_dictionary()
+            store_line_in_group(dVars, oLine)
 
     def _fix_violations(self, oFile):
         fix.keyword_alignment(self, oFile)
+
+
+def create_dictionary():
+    dVars = {}
+    dVars['lGroup'] = []
+    dVars['fGroupFound'] = False
+    dVars['iStartGroupIndex'] = None
+    return dVars
+
+
+def check_for_start_of_group(dVars, oLine, iLineNumber):
+    if oLine.isVariableAssignment and not dVars['fGroupFound']:
+        dVars['fGroupFound'] = True
+        dVars['iStartGroupIndex'] = iLineNumber
+
+
+def store_line_in_group(dVars, oLine):
+    if dVars['fGroupFound']:
+        if oLine.isComment:
+            dVars['lGroup'].append(line.line('Removed line'))
+        else:
+            dVars['lGroup'].append(oLine)
