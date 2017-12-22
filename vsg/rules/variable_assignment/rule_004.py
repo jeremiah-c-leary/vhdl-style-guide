@@ -5,12 +5,12 @@ from vsg import fix
 
 
 class rule_004(rule.rule):
-    '''Variable assignment rule 004 ensures the alignment of multiline variable_assignment statements.'''
+    '''
+    Variable assignment rule 004 ensures the alignment of multiline variable_assignment statements.
+    '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'variable_assignment'
-        self.identifier = '004'
+        rule.rule.__init__(self, 'variable_assignment', '004')
         self.solution = 'Align with space after the ":=" keyword.'
         self.phase = 5
 
