@@ -1,38 +1,430 @@
 Instantiation Rules
 -------------------
 
+instantiation_001
+#################
+
+This rule checks
+
+**Violation**
+
+.. code-block:: vhdl
+
+**Fix**
+
+.. code-block:: vhdl
+
+instantiation_002
+#################
+
+This rule checks for a single space after the :.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   U_FIFO :FIFO
+
+**Fix**
+
+.. code-block:: vhdl
+
+   U_FIFO : FIFO
+
+instantiation_003
+#################
+
+This rule checks for a single space before the :.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   U_FIFO: FIFO
+
+**Fix**
+
+.. code-block:: vhdl
+
+   U_FIFO : FIFO
+
+instantiation_004
+#################
+
+This rule checks for a blank line above the instantiation.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   WR_EN <= '1';
+   U_FIFO : FIFO
+
+**Fix**
+
+.. code-block:: vhdl
+
+   WR_EN <= '1';
+
+   U_FIFO : FIFO
+
+instantiation_005
+#################
+
+This rule checks the instantiation declaration and the **port map** keywords are not on the same line.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   U_FIFO : FIFO port map (
+
+**Fix**
+
+.. code-block:: vhdl
+
+   U_FIFO : FIFO
+     port map (
+
+instantiation_006
+#################
+
+This rule checks the **port map** keywords are lowercase.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   PORT MAP (
+
+**Fix**
+
+.. code-block:: vhdl
+
+   port map (
+
+instantiation_007
+#################
+
+This rule checks the closing ) for the port map is on it's own line.
+
+**Violation**
+
+.. code-block:: vhdl
+
+    WR_EN => wr_en);
+
+**Fix**
+
+.. code-block:: vhdl
+
+      WR_EN => wr_en
+    );
+
+instantiation_008
+#################
+
+This rule checks the instance name is uppercase.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   u_fifo : FIFO
+
+**Fix**
+
+.. code-block:: vhdl
+
+   U_FIFO : FIFO
+
+instantiation_009
+#################
+
+This rule checks the entity name is uppercase.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   U_FIFO : fifo
+
+
+**Fix**
+
+.. code-block:: vhdl
+
+   U_FIFO : FIFO
+
+instantiation_010
+#################
+
+This rule checks the alignment of the **=>** operator for every port in instantiation.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   U_FIFO : FIFO
+     port map (
+       WR_EN => wr_en,
+       RD_EN => rd_en,
+       OVERFLOW => overflow
+     );
+
+**Fix**
+
+.. code-block:: vhdl
+
+   U_FIFO : FIFO
+     port map (
+       WR_EN    => wr_en,
+       RD_EN    => rd_en,
+       OVERFLOW => overflow
+     );
+
+instantiation_011
+#################
+
+This rule checks the port name is uppercase.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   U_FIFO : FIFO
+     port map (
+       wr_en    => wr_en,
+       rd_en    => rd_en,
+       OVERFLOW => overflow
+     );
+
+**Fix**
+
+.. code-block:: vhdl
+
+   U_FIFO : FIFO
+     port map (
+       WR_EN    => wr_en,
+       RD_EN    => rd_en,
+       OVERFLOW => overflow
+     );
+
+instantiation_012
+#################
+
+This rule checks the instantiation declaration and the **generic map** keywords are not on the same line.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   U_FIFO : FIFO generic map (
+
+**Fix**
+
+.. code-block:: vhdl
+
+   U_FIFO : FIFO
+     generic map (
+
+instantiation_013
+#################
+
+This rule checks the **generic map** keywords are lowercase.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   GENERIC MAP (
+
+**Fix**
+
+.. code-block:: vhdl
+
+   generic map (
+
 instantiation_014
 #################
 
-This rule checks for the closing parenthesis *);* on generic maps are on their own line.
-Having the parenthesis on it's own line makes the deliniation clearer between the generic map and the port map.
+This rule checks for the closing parenthesis *)* on generic maps are on their own line.
 
 **Violation**
 
 .. code-block:: vhdl
 
    INSTANCE_NAME : ENTITY_NAME
-     generic_map (
+     generic map (
        GENERIC_1 => 0,
        GENERIC_2 => TRUE,
-       GENERIC_3 => FALSE);
+       GENERIC_3 => FALSE)
 
 **Fix**
 
 .. code-block:: vhdl
 
    INSTANCE_NAME : ENTITY_NAME
-     generic_map (
+     generic map (
        GENERIC_1 => 0,
        GENERIC_2 => TRUE,
        GENERIC_3 => FALSE
+     )
+
+instantiation_015
+#################
+
+This rule checks the alignment of the **=>** operator for every generic.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   U_FIFO : FIFO
+     generic map (
+       DEPTH => 512,
+       WIDTH    => 32
+     )
+
+**Fix**
+
+.. code-block:: vhdl
+
+   U_FIFO : FIFO
+     generic map (
+       DEPTH    => 512,
+       WIDTH    => 32
+     )
+
+instantiation_016
+#################
+
+This rule checks generic names are uppercase.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   U_FIFO : FIFO
+     generic map (
+       depth => 512,
+       width => 32
+     )
+
+**Fix**
+
+.. code-block:: vhdl
+
+   U_FIFO : FIFO
+     generic map (
+       DEPTH => 512,
+       WIDTH => 32
+     )
+
+
+instantiation_017
+#################
+
+This rule checks if the **generic map** keywords and a generic assignment are on the same line.
+
+**Violation**
+
+.. code-block:: vhdl
+
+     generic map (DEPTH => 512,
+       WIDTH => 32
+     )
+
+**Fix**
+
+.. code-block:: vhdl
+
+     generic map (
+       DEPTH => 512,
+       WIDTH => 32
+     )
+
+instantiation_018
+#################
+
+This rule checks for a single space between the **map** keyword and the (.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   generic map(
+
+   generic map   (
+
+**Fix**
+
+.. code-block:: vhdl
+
+   generic map (
+
+   generic map (
+
+instantiation_019
+#################
+
+This rule checks for a blank line below the end of the instantiation declaration.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   U_FIFO : FIFO
+     port map (
+       WR_EN    => wr_en,
+       RD_EN    => rd_en,
+       OVERFLOW => overflow
+     );
+   U_RAM : RAM
+
+**Fix**
+
+.. code-block:: vhdl
+
+   U_FIFO : FIFO
+     port map (
+       WR_EN    => wr_en,
+       RD_EN    => rd_en,
+       OVERFLOW => overflow
+     );
+
+   U_RAM : RAM
+
+instantiation_020
+#################
+
+This rule checks for a port assignment on the same line as the **port map** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   U_FIFO : FIFO
+     port map (WR_EN    => wr_en,
+       RD_EN    => rd_en,
+       OVERFLOW => overflow
+     );
+
+**Fix**
+
+.. code-block:: vhdl
+
+   U_FIFO : FIFO
+     port map (
+       WR_EN    => wr_en,
+       RD_EN    => rd_en,
+       OVERFLOW => overflow
      );
 
 instantiation_021
 #################
 
 This rule checks multiple port assignments on the same line.
-Placing each port assignment on it's own line enhanced clarity.
 
 **Violation**
 
@@ -53,6 +445,32 @@ Placing each port assignment on it's own line enhanced clarity.
      OVERFLOW => w_overflow
    );
 
+instantiation_022
+#################
+
+This rule checks for a single space after the **=>** operator.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   U_FIFO : FIFO
+     port map (
+       WR_EN    =>   wr_en,
+       RD_EN    =>rd_en,
+       OVERFLOW =>     overflow
+     );
+
+**Fix**
+
+.. code-block:: vhdl
+
+   U_FIFO : FIFO
+     port map (
+       WR_EN    => wr_en,
+       RD_EN    => rd_en,
+       OVERFLOW => overflow
+     );
 
 instantiation_023
 #################
@@ -155,7 +573,6 @@ Use explicit port mapping.
      WIDTH => 32,
      DEPTH => 512
    )
-
 
 instantiation_027
 #################
