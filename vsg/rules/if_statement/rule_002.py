@@ -5,7 +5,9 @@ import re
 
 
 class rule_002(rule.rule):
-    '''If rule 002 checks the if boolean expression is enclosed in ()'s.'''
+    '''
+    If rule 002 checks the if boolean expression is enclosed in ()'s.
+    '''
 
     def __init__(self):
         rule.rule.__init__(self)
@@ -16,11 +18,9 @@ class rule_002(rule.rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isIfKeyword:
-                if not re.match('^\s*if\s*\(', oLine.lineLower):
+            if oLine.isIfKeyword and not re.match('^\s*if\s*\(', oLine.lineLower):
                     self.add_violation(iLineNumber)
-            if oLine.isElseIfKeyword:
-                if re.match('^\s*elsif\s+\w', oLine.lineLower):
+            if oLine.isElseIfKeyword and re.match('^\s*elsif\s+\w', oLine.lineLower):
                     self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):

@@ -1,44 +1,345 @@
 If Rules
 --------
 
-if_012
+if_001
 ######
 
-This rule checks for code after the **then** keyword.
-Moving sequential statements to their own line makes the code easier to comprehend.
+This rule checks the indent of the **if** keyword.
 
 **Violation**
 
 .. code-block:: vhdl
 
-   if (a = '1') then c <= '1';
+    if (a = '1') then
+    b <= '0'
+  elsif (c = '1') then
+    d <= '1';
+  else
+    e <= '0';
+  end if;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   if (a = '1') then
-     c <= '1';
+  if (a = '1') then
+    b <= '0'
+  elsif (c = '1') then
+    d <= '1';
+  else
+    e <= '0';
+  end if;
+
+if_002
+######
+
+This rule checks the bolean expression is enclosed in ().
+
+**Violation**
+
+.. code-block:: vhdl
+
+  if a = '1' then
+
+**Fix**
+
+.. code-block:: vhdl
+
+  if (a = '1') then
+
+if_003
+######
+
+This rule checks for a single space between the **if** keyword and the (.
+
+**Violation**
+
+.. code-block:: vhdl
+
+  if(a = '1') then
+  
+  if   (a = '1') then
+
+**Fix**
+
+.. code-block:: vhdl
+
+  if (a = '1') then
+
+  if (a = '1') then
+
+if_004
+######
+
+This rule checks for a single space between the ) and the **then** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+  if (a = '1')then
+
+  if (a = '1')    then
+
+**Fix**
+
+.. code-block:: vhdl
+
+  if (a = '1') then
+
+  if (a = '1') then
+
+if_005
+######
+
+This rule checks for a single space between the **elsif** keyword and the (.
+
+**Violation**
+
+.. code-block:: vhdl
+
+  elsif(c = '1') then
+
+  elsif   (c = '1') then
+
+**Fix**
+
+.. code-block:: vhdl
+
+  elsif (c = '1') then
+
+  elsif (c = '1') then
+
+if_006
+######
+
+This rule checks for empty lines after the **then** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+  if (a = '1') then
+
+
+    b <= '0'
+
+**Fix**
+
+.. code-block:: vhdl
+
+  if (a = '1') then
+    b <= '0'
+
+if_007
+######
+
+This rule checks for empty lines before the **elsif** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+    b <= '0'
+
+
+
+  elsif (c = '1') then
+
+**Fix**
+
+.. code-block:: vhdl
+
+    b <= '0'
+  elsif (c = '1') then
+
+if_008
+######
+
+This rule checks for empty lines before the **end if** keywords.
+
+**Violation**
+
+.. code-block:: vhdl
+
+    e <= '0';
+
+
+  end if;
+
+**Fix**
+
+.. code-block:: vhdl
+
+    e <= '0';
+  end if;
+
+if_009
+######
+
+This rule checks the alignment of multiline boolean expressions.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   if (a = '0' and b = '1' and
+         c = '0') then
+
+**Fix**
+
+.. code-block:: vhdl
+
+   if (a = '0' and b = '1' and
+       c = '0') then
+
+if_010
+######
+
+This rule checks for empty lines before the **else** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+    d <= '1';
+
+
+  else
+
+**Fix**
+
+.. code-block:: vhdl
+
+    d <= '1';
+  else
+
+if_011
+######
+
+This rule checks for empty lines after the **else** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+  else
+
+
+    e <= '0';
+
+**Fix**
+
+.. code-block:: vhdl
+
+  else
+    e <= '0';
+
+if_012
+######
+
+This rule checks the indent of the **elsif** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+  if (a = '1') then
+    b <= '0'
+    elsif (c = '1') then
+    d <= '1';
+  else
+    e <= '0';
+  end if;
+
+**Fix**
+
+.. code-block:: vhdl
+
+  if (a = '1') then
+    b <= '0'
+  elsif (c = '1') then
+    d <= '1';
+  else
+    e <= '0';
+  end if;
 
 if_013
 ######
 
-This rule checks the **else** keyword is on it's own line.
+This rule checks the indent of the **else** keyword.
 
 **Violation**
 
 .. code-block:: vhdl
 
-   if (a = '1') then c <= '1'; else c <= '0'; end if;
+  if (a = '1') then
+    b <= '0'
+  elsif (c = '1') then
+    d <= '1';
+    else
+    e <= '0';
+  end if;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   if (a = '1') then c <= '0';
-   else c <= '1'; end if;
+  if (a = '1') then
+    b <= '0'
+  elsif (c = '1') then
+    d <= '1';
+  else
+    e <= '0';
+  end if;
 
 if_014
+######
+
+This rule checks the indent of the **end if** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+  if (a = '1') then
+    b <= '0'
+  elsif (c = '1') then
+    d <= '1';
+  else
+    e <= '0';
+    end if;
+
+**Fix**
+
+.. code-block:: vhdl
+
+  if (a = '1') then
+    b <= '0'
+  elsif (c = '1') then
+    d <= '1';
+  else
+    e <= '0';
+  end if;
+
+if_015
+######
+
+This rule checks for a single space between the **end if** keywords.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   end    if;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   end if;
+
+if_020
 ######
 
 This rule checks the **end if** keyword is on it's own line.
@@ -56,7 +357,43 @@ This rule checks the **end if** keyword is on it's own line.
    if (a = '1') then c <= '1'; else c <= '0';
    end if;
 
-if_017
+if_021
+######
+
+This rule checks the **else** keyword is on it's own line.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   if (a = '1') then c <= '1'; else c <= '0'; end if;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   if (a = '1') then c <= '0';
+   else c <= '1'; end if;
+
+if_022
+######
+
+This rule checks for code after the **else** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   if (a = '1') then c <= '1'; else c <= '0'; end if;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   if (a = '1') then c <= '1'; else
+     c <= '0'; end if;
+
+if_023
 ######
 
 This rule checks the **elsif** keyword is on it's own line.
@@ -73,4 +410,23 @@ This rule checks the **elsif** keyword is on it's own line.
 
    if (a = '1') then c <= '1'; else c <= '0';
    elsif (b = '0') then d <= '0'; end if;
+
+
+if_024
+######
+
+This rule checks for code after the **then** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   if (a = '1') then c <= '1';
+
+**Fix**
+
+.. code-block:: vhdl
+
+   if (a = '1') then
+     c <= '1';
 
