@@ -11,7 +11,7 @@ def port(dVars, oLine):
         else:
             oLine.indentLevel = 2
             dVars['iCurrentIndentLevel'] = 3
-        if not '(' in oLine.line:
+        if '(' not in oLine.line:
             return
 
     if oLine.insidePortMap:

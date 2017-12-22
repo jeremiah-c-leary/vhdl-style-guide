@@ -40,7 +40,7 @@ def instantiation(dVars, oLine):
         if oLine.insideInstantiationGenericMap:
             dVars['iOpenParenthesis'] += oLine.lineNoComment.count('(')
             dVars['iCloseParenthesis'] += oLine.lineNoComment.count(')')
- 
+
         if ')' in oLine.lineNoComment and oLine.insideInstantiationGenericMap:
             if dVars['iOpenParenthesis'] == dVars['iCloseParenthesis']:
                 oLine.isInstantiationGenericEnd = True
