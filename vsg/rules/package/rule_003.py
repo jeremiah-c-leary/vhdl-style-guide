@@ -8,7 +8,4 @@ class rule_003(line_above_rule):
     '''
 
     def __init__(self):
-        line_above_rule.__init__(self)
-        self.name = 'package'
-        self.identifier = '003'
-        self.condition = 'isPackageKeyword'
+        line_above_rule.__init__(self, 'package', '003', 'isPackageKeyword')

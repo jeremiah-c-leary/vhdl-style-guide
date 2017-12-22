@@ -10,9 +10,7 @@ class rule_014(rule.rule):
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'package'
-        self.identifier = '014'
+        rule.rule.__init__(self, 'package', '014')
         self.solution = 'End of package follows this format: end package <package name>.'
         self.phase = 1
         self.fixable = False  # User must add package name

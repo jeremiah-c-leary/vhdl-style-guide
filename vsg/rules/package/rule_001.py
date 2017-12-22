@@ -1,26 +1,20 @@
 
-from vsg import rule
-from vsg import check
-from vsg import fix
+from vsg.rules import indent_rule
 
 
-class rule_001(rule.rule):
+class rule_001(indent_rule):
     '''
     Package rule 001 checks for spaces at the beginning of the line.
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'package'
-        self.identifier = '001'
-        self.solution = 'Ensure proper indentation.'
-        self.phase = 4
+        indent_rule.__init__(self, 'package', '001', 'isPackageKeyword')
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isPackageKeyword or oLine.isPackageEnd:
-                check.indent(self, oLine, iLineNumber)
-
-    def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
-            fix.indent(self, oFile.lines[iLineNumber])
+#    def analyze(self, oFile):
+#        for iLineNumber, oLine in enumerate(oFile.lines):
+#            if oLine.isPackageKeyword or oLine.isPackageEnd:
+#                check.indent(self, oLine, iLineNumber)
+#
+#    def _fix_violations(self, oFile):
+#        for iLineNumber in self.violations:
+#            fix.indent(self, oFile.lines[iLineNumber])

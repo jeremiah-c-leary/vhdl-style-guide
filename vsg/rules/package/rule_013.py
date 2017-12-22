@@ -19,10 +19,9 @@ class rule_013(rule.rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isPackageKeyword:
-                if re.match('^\s*package\s+\w+\s+is', oLine.lineLower):
-                    if not re.match('^\s*\w+\s+\w+\s+is', oLine.line):
-                        self.add_violation(iLineNumber)
+            if oLine.isPackageKeyword and re.match('^\s*package\s+\w+\s+is', oLine.lineLower):
+                if not re.match('^\s*\w+\s+\w+\s+is', oLine.line):
+                    self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

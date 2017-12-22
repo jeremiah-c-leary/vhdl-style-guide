@@ -12,18 +12,15 @@ class rule_010(rule.rule):
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'package'
-        self.identifier = '010'
+        rule.rule.__init__(self, 'package', '010')
         self.solution = 'Upper case package name.'
         self.phase = 6
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isPackageKeyword:
-                if re.match('^\s*package\s+\w+', oLine.lineLower):
-                    lLine = oLine.line.split()
-                    check.is_uppercase(self, lLine[1], iLineNumber)
+            if oLine.isPackageKeyword and re.match('^\s*package\s+\w+', oLine.lineLower):
+                lLine = oLine.line.split()
+                check.is_uppercase(self, lLine[1], iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

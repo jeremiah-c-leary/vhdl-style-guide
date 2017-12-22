@@ -11,9 +11,7 @@ class rule_009(rule.rule):
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'package'
-        self.identifier = '009'
+        rule.rule.__init__(self, 'package', '009')
         self.solution = 'Single space between "end" and "package" keywords and component name.'
         self.phase = 2
 
