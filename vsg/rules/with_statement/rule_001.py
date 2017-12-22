@@ -8,10 +8,9 @@ class rule_001(rule.rule):
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'with'
-        self.identifier = '001'
+        rule.rule.__init__(self, 'with', '001')
         self.fixable = False
+        self.phase = 1
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
