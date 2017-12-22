@@ -10,9 +10,7 @@ class rule_015(rule.rule):
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'port'
-        self.identifier = '015'
+        rule.rule.__init__(self, 'port', '015')
         self.solution = 'Ensure proper indentation.'
         self.phase = 4
 

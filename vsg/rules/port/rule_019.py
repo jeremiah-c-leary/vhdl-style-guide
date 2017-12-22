@@ -10,9 +10,7 @@ class rule_019(rule.rule):
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'port'
-        self.identifier = '019'
+        rule.rule.__init__(self, 'port', '019')
         self.solution = 'Change port direction to lowercase.'
         self.phase = 6
 

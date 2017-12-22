@@ -1,28 +1,12 @@
 
-from vsg import rule
-from vsg import fix
-
-import re
+from vsg.rules import lower_case_rule
 
 
-class rule_017(rule.rule):
+class rule_017(lower_case_rule):
     '''
     Port rule 017 checks the "port" keyword is lowercase.
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'port'
-        self.identifier = '017'
+        lower_case_rule.__init__(self, 'port', '017', 'isPortKeyword', 'port')
         self.solution = 'Change "port" keyword to lowercase.'
-        self.phase = 6
-
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isPortKeyword:
-                if not re.match('^\s*port', oLine.line):
-                    self.add_violation(iLineNumber)
-
-    def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
-            fix.lower_case(self, oFile.lines[iLineNumber], 'port')

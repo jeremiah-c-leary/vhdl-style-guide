@@ -12,9 +12,7 @@ class rule_014(rule.rule):
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'port'
-        self.identifier = '014'
+        rule.rule.__init__(self, 'port', '014')
         self.solution = 'Closing parenthesis must be on a line by itself and \
                          above the "end" keyword.'
         self.phase = 1

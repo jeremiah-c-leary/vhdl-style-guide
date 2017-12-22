@@ -11,9 +11,7 @@ class rule_018(rule.rule):
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'port'
-        self.identifier = '018'
+        rule.rule.__init__(self, 'port', '018')
         self.solution = 'Change port type to lowercase.'
         self.phase = 6
 

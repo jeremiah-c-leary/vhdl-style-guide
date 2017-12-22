@@ -10,18 +10,15 @@ class rule_007(rule.rule):
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'port'
-        self.identifier = '007'
+        rule.rule.__init__(self, 'port', '007')
         self.solution = 'Change the number of spaces after the "in" keyword to four spaces.'
         self.phase = 2
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isPortDeclaration:
-                if re.match('^\s*\S+\s*:\s*in\s', oLine.lineLower):
-                    if not re.match('^\s*\S+\s*:\s*in\s\s\s\s\S+', oLine.lineLower):
-                        self.add_violation(iLineNumber)
+            if oLine.isPortDeclaration and re.match('^\s*\S+\s*:\s*in\s', oLine.lineLower):
+                if not re.match('^\s*\S+\s*:\s*in\s\s\s\s\S+', oLine.lineLower):
+                    self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

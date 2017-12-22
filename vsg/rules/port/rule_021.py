@@ -11,9 +11,7 @@ class rule_021(rule.rule):
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'port'
-        self.identifier = '021'
+        rule.rule.__init__(self, 'port', '021')
         self.solution = 'Move the ( to the same line as the "port" keyword.'
         self.phase = 2
 

@@ -12,9 +12,7 @@ class rule_006(rule.rule):
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'port'
-        self.identifier = '006'
+        rule.rule.__init__(self, 'port', '006')
         self.solution = 'Change number of spaces after : to a single space.'
         self.phase = 2
 

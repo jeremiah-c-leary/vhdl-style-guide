@@ -11,9 +11,7 @@ class rule_013(rule.rule):
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'port'
-        self.identifier = '013'
+        rule.rule.__init__(self, 'port', '013')
         self.solution = 'Place multiple ports on their own lines.'
         self.phase = 1
 

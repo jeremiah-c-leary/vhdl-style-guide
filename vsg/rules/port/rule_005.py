@@ -1,5 +1,7 @@
 
 from vsg import rule
+from vsg import fix
+from vsg import check
 
 import re
 
@@ -18,12 +20,10 @@ class rule_005(rule.rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isPortDeclaration:
-                if re.match('^\s*\S+\s*:\s*in', oLine.lineLower):
-                    if not re.match('^\s*\S+\s*:\sin', oLine.lineLower):
-                        self.add_violation(iLineNumber)
+            if oLine.isPortDeclaration and re.match('^.*:\s*in', oLine.line, re.IGNORECASE):
+                check.is_single_space_after_character(self, ':', oLine, iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
             oLine = oFile.lines[iLineNumber]
-            oLine.update_line(re.sub(r'^(\s*\S+\s*:)(\s*)', r'\1 ', oLine.line, flags=re.IGNORECASE))
+            fix.enforce_one_space_after_word(self, oLine, ':')

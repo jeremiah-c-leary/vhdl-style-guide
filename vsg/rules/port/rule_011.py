@@ -13,9 +13,7 @@ class rule_011(rule.rule):
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'port'
-        self.identifier = '011'
+        rule.rule.__init__(self, 'port', '011')
         self.solution = 'Add proper prefix or suffix indicating port direction.'
         self.port_direction = None
         self.phase = 7

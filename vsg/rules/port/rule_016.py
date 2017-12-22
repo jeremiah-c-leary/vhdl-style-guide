@@ -11,17 +11,14 @@ class rule_016(rule.rule):
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'port'
-        self.identifier = '016'
+        rule.rule.__init__(self, 'port', '016')
         self.solution = 'Move port definition to it\'s own line.'
         self.phase = 1
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isPortKeyword:
-                if re.match('^\s*port\s*\(\s*\S+\s*:', oLine.lineLower):
-                    self.add_violation(iLineNumber)
+            if oLine.isPortKeyword and re.match('^\s*port\s*\(\s*\S+\s*:', oLine.lineLower):
+                self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:
