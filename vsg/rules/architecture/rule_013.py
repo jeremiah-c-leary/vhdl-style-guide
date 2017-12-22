@@ -20,10 +20,9 @@ class rule_013(rule.rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isArchitectureKeyword:
-                if re.match('^\s*\S+\s\s*\S+\s\s*of\s\s*\S+\s\s*is', oLine.lineLower):
-                    lLine = oLine.line.split()
-                    check.is_uppercase(self, lLine[1], iLineNumber)
+            if oLine.isArchitectureKeyword and re.match('^\s*\S+\s\s*\S+\s\s*of\s\s*\S+\s\s*is', oLine.lineLower):
+                lLine = oLine.line.split()
+                check.is_uppercase(self, lLine[1], iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
