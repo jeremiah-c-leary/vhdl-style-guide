@@ -135,6 +135,10 @@ class line():
         self.insideTypeArray = False
         self.isTypeArrayKeyword = False
         self.isTypeArrayEnd = False
+        # Type Record attributes
+        self.insideTypeRecord = False
+        self.isTypeRecordKeyword = False
+        self.isTypeRecordEnd = False
         # Variable Assignment attributes
         self.insideVariableAssignment = False
         self.isVariableAssignmentEnd = False

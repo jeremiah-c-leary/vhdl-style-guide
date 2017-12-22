@@ -614,6 +614,24 @@ class testLineMethods(unittest.TestCase):
         oLine.insideTypeArray= True
         self.assertEqual(oLine.insideTypeArray, True)
 
+    def test_isTypeRecordEnd_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isTypeRecordEnd, False)
+        oLine.isTypeRecordEnd = True
+        self.assertEqual(oLine.isTypeRecordEnd, True)
+
+    def test_isTypeRecordKeyword_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isTypeRecordKeyword, False)
+        oLine.isTypeRecordKeyword = True
+        self.assertEqual(oLine.isTypeRecordKeyword, True)
+
+    def test_insideTypeRecord_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.insideTypeRecord, False)
+        oLine.insideTypeRecord= True
+        self.assertEqual(oLine.insideTypeRecord, True)
+
     def test_isVariable_attribute(self):
         oLine = line.line('contents of Line')
         self.assertEqual(oLine.isVariable, False)

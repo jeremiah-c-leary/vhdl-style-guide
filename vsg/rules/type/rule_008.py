@@ -19,7 +19,7 @@ class rule_008(rule.rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isTypeEnd and not oLine.isTypeKeyword and not oLine.isTypeArrayEnd:
+            if oLine.isTypeEnd and not oLine.isTypeKeyword and not oLine.isTypeArrayEnd and not oLine.isTypeRecordEnd:
                 if not re.match('^\s*\)\s*;', oLine.lineLower):
                     self.add_violation(iLineNumber)
 

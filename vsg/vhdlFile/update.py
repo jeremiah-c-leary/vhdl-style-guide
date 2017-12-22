@@ -71,6 +71,12 @@ def update_type_array_attributes(oPreviousLine, oCurrentLine):
         oCurrentLine.insideTypeArray = True
 
 
+def update_type_record_attributes(oPreviousLine, oCurrentLine):
+
+    if oPreviousLine.insideTypeRecord and not oPreviousLine.isTypeRecordEnd:
+        oCurrentLine.insideTypeRecord = True
+
+
 def update_case_attributes(oPreviousLine, oCurrentLine):
 
     if oPreviousLine.insideCase and not oPreviousLine.isCaseIsKeyword:
@@ -168,6 +174,7 @@ def inside_attributes(oPreviousLine, oCurrentLine):
     update_if_attributes(oPreviousLine, oCurrentLine)
     update_type_attributes(oPreviousLine, oCurrentLine)
     update_type_array_attributes(oPreviousLine, oCurrentLine)
+    update_type_record_attributes(oPreviousLine, oCurrentLine)
     update_subtype_attributes(oPreviousLine, oCurrentLine)
     update_case_attributes(oPreviousLine, oCurrentLine)
     update_case_when_attributes(oPreviousLine, oCurrentLine)

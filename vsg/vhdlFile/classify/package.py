@@ -10,7 +10,7 @@ def package(dVars, oLine):
         oLine.indentLevel = 0
         dVars['iCurrentIndentLevel'] = 1
     if oLine.insidePackage:
-        if not oLine.insideProcess and not oLine.insideCase and not oLine.insideComponent:
+        if not oLine.insideProcess and not oLine.insideCase and not oLine.insideComponent and not oLine.insideTypeRecord:
             if re.match('^\s*end\s+', oLine.lineLower):
                 oLine.isPackageEnd = True
                 oLine.indentLevel = 0

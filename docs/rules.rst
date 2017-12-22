@@ -23,6 +23,7 @@ The rules are divided into catagories depending on the part of the VHDL code bei
    library_rules.rst
    process_rules.rst
    subtype_rules.rst
+   type_rules.rst
    while_loop_rules.rst
    whitespace_rules.rst
    with_rules.rst

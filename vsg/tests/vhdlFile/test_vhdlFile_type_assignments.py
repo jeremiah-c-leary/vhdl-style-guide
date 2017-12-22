@@ -9,7 +9,7 @@ class testVhdlFileTypeAssignments(unittest.TestCase):
 
 
     def test_isTypeKeyword(self):
-        lExpected = [4,6,11,19,21,26,28,35]
+        lExpected = [4,6,11,19,21,26,28,35,46,49]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
@@ -19,7 +19,7 @@ class testVhdlFileTypeAssignments(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isTypeEnd(self):
-        lExpected = [4,9,11,19,24,26,32,40]
+        lExpected = [4,9,11,19,24,26,32,40,47,54]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
@@ -107,6 +107,37 @@ class testVhdlFileTypeAssignments(unittest.TestCase):
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
             if oLine.insideTypeArray:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
+
+    def test_isTypeRecordKeyword(self):
+        lExpected = [49]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFile.lines):
+            if oLine.isTypeRecordKeyword:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
+    def test_isTypeRecordEnd(self):
+        lExpected = [54]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFile.lines):
+            if oLine.isTypeRecordEnd:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
+    def test_insideTypeRecord(self):
+        lExpected = [49,50,51,52,53,54]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFile.lines):
+            if oLine.insideTypeRecord:
                 lActual.append(iIndex)
         # Compare
         self.assertEqual(lActual, lExpected)
