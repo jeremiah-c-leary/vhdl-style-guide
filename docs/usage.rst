@@ -78,9 +78,10 @@ Here is an example output running against a test file:
 
 VSG will report the rule which is violated the line number or group of lines where the violation occured.
 It also gives a suggestion on how to fix the violation.
-
 The rules VSG uses are grouped together into :doc:`phases`.
-Each rule is described in the :doc:`rules` section.
+These phases follow the order in which the user would take to address the violations.
+Each rule is detailed in the :doc:`rules` section.
+The violation and the appropriate fix for each rule is shown.
 
 The violations can be fixed manually, or you can use the **--fix** option to have VSG update the file.
 
