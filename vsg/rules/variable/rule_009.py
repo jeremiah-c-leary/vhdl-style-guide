@@ -8,9 +8,7 @@ class rule_009(keyword_alignment_rule):
     '''
 
     def __init__(self):
-        keyword_alignment_rule.__init__(self)
-        self.name = 'variable'
-        self.identifier = '009'
+        keyword_alignment_rule.__init__(self, 'variable', '009')
         self.solution = 'Align colon with right most colon.'
         self.sKeyword = ':'
         self.sStartGroupTrigger = 'isArchitectureKeyword'

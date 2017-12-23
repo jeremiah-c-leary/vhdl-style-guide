@@ -12,9 +12,7 @@ class rule_010(rule.rule):
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'variable'
-        self.identifier = '010'
+        rule.rule.__init__(self, 'variable', '010')
         self.solution = 'Change variable type to lowercase.'
         self.phase = 6
 

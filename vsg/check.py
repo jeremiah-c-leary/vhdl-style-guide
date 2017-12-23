@@ -121,7 +121,8 @@ def is_single_space_after_character(self, sCharacter, oLine, iLineNumber):
 
 
 def is_single_space_before_character(self, sCharacter, oLine, iLineNumber):
-    if not re.match('^.*\s' + sCharacter.lower(), oLine.lineNoComment):
+    iIndex = oLine.line.find(sCharacter) + len(sCharacter)
+    if not re.match('^.*\s' + sCharacter.lower(), oLine.lineNoComment[:iIndex]):
         self.add_violation(iLineNumber)
 
 
