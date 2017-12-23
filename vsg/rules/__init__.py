@@ -9,6 +9,7 @@ from single_space_before_rule import single_space_before_rule
 from single_space_before_character_rule import single_space_before_character_rule
 from remove_blank_lines_above_rule import remove_blank_lines_above_rule
 from lower_case_rule import lower_case_rule
+from search_for_and_replace_keyword_rule import search_for_and_replace_keyword_rule
 
 from vsg.rules import architecture
 from vsg.rules import assert_statement
