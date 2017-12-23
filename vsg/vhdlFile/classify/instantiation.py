@@ -32,7 +32,7 @@ def instantiation(dVars, oLine):
                 oLine.isInstantiationPortAssignment = True
             else:
                 oLine.isInstantiationGenericAssignment = True
-        if ');' in oLine.lineNoComment and oLine.insideInstantiationPortMap:
+        if re.match('^.*\)\s*;', oLine.lineNoComment) and oLine.insideInstantiationPortMap:
             oLine.isInstantiationPortEnd = True
             if not oLine.indentLevel:
                 oLine.indentLevel = dVars['iCurrentIndentLevel'] - 1
