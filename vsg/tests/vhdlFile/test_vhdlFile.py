@@ -80,12 +80,16 @@ class testVhdlFileMethods(unittest.TestCase):
                 self.assertFalse(oLine.isLibraryUse)
 
     def test_library_use_assignment_in_port_map(self):
+        '''
+        This tests for an error condition in which port names that started with "use" were
+        classified as a library use statement.
+        '''
         lExpected = []
         # Compare
         for iIndex, oLine in enumerate(oFilePort.lines):
             if iIndex in lExpected:
-                self.assertTrue(oLine.isLibraryUse)
-                self.assertEqual(oLine.indentLevel, 1)
+                self.assertTrue(oLine.isLibraryUse)     # pragma: no cover
+                self.assertEqual(oLine.indentLevel, 1)  # pragma: no cover
             else:
                 self.assertFalse(oLine.isLibraryUse)
 
