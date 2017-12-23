@@ -19,10 +19,19 @@ def type(dVars, oLine):
         oLine.insideType = True
         oLine.indentLevel = dVars['iCurrentIndentLevel']
         dVars['iCurrentIndentLevel'] += 1
+    assign_array_attributes(oLine)
+    assign_record_attributes(dVars, oLine)
+    assign_enumerated_attributes(dVars, oLine)
+
+
+def assign_array_attributes(oLine):
     if oLine.insideTypeArray:
         if ';' in oLine.line:
             oLine.isTypeArrayEnd = True
             oLine.isTypeEnd = True
+
+
+def assign_record_attributes(dVars, oLine):
     if oLine.insideTypeRecord:
         if not oLine.isTypeRecordKeyword and not oLine.isBlank:
             oLine.indentLevel = dVars['iCurrentIndentLevel']
@@ -31,6 +40,9 @@ def type(dVars, oLine):
             oLine.isTypeEnd = True
             dVars['iCurrentIndentLevel'] -= 1
             oLine.indentLevel = dVars['iCurrentIndentLevel']
+
+
+def assign_enumerated_attributes(dVars, oLine):
     if oLine.insideType:
         if not oLine.isTypeKeyword and not oLine.isBlank:
             oLine.indentLevel = dVars['iCurrentIndentLevel']
