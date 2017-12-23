@@ -13,5 +13,6 @@ Welcome to vhdl-style-guide's documentation!
    overview
    installing
    usage
+   configuring
    rules
    phases
