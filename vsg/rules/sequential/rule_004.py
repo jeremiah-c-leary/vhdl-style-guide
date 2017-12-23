@@ -11,9 +11,7 @@ class rule_004(rule.rule):
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'sequential'
-        self.identifier = '004'
+        rule.rule.__init__(self, 'sequential', '004')
         self.solution = 'Align with space after the "<=" keyword.'
         self.phase = 5
 

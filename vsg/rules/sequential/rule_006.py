@@ -8,9 +8,7 @@ class rule_006(rule.rule):
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'sequential'
-        self.identifier = '006'
+        rule.rule.__init__(self, 'sequential', '006')
         self.solution = 'Remove comment.'
         self.phase = 1
 
