@@ -1,5 +1,6 @@
 
 from vsg import rule
+from vsg import utilities
 
 import copy
 
@@ -23,7 +24,7 @@ class rule_017(rule.rule):
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:
-            oFile.lines.insert(iLineNumber + 1, copy.deepcopy(oFile.lines[iLineNumber]))
+            utilities.copy_line(oFile, iLineNumber)
             oLine = oFile.lines[iLineNumber]
             oLine.update_line(oLine.line.split('(')[0] + ' (')
             oLine.isInstantiationGenericAssignment = False

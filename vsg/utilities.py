@@ -3,8 +3,12 @@ import copy
 import re
 
 
-def split_line_after_word(oFile, iLineNumber, sWord):
+def copy_line(oFile, iLineNumber):
     oFile.lines.insert(iLineNumber + 1, copy.deepcopy(oFile.lines[iLineNumber]))
+
+
+def split_line_after_word(oFile, iLineNumber, sWord):
+    copy_line(oFile, iLineNumber)
     oLine = oFile.lines[iLineNumber]
     iIndex = oLine.line.find(sWord) + len(sWord)
     oLine.update_line(oLine.line[:iIndex])
@@ -13,7 +17,7 @@ def split_line_after_word(oFile, iLineNumber, sWord):
 
 
 def split_line_before_word(oFile, iLineNumber, sWord):
-    oFile.lines.insert(iLineNumber + 1, copy.deepcopy(oFile.lines[iLineNumber]))
+    copy_line(oFile, iLineNumber)
     oLine = oFile.lines[iLineNumber]
     iIndex = oLine.line.find(sWord)
     oLine.update_line(oLine.line[:iIndex])
@@ -30,12 +34,10 @@ def get_first_word(oLine):
 
 
 def change_word(oLine, sWord, sNewWord):
-    oLine.line = re.sub(' ' + sWord + ' ', ' ' + sNewWord + ' ', oLine.line, 1, flags=re.IGNORECASE)
+    oLine.line = re.sub(r' ' + sWord + '([\s|;|\(])', r' ' + sNewWord + r'\1', oLine.line, 1, flags=re.IGNORECASE)
     oLine.line = re.sub(' ' + sWord + '$', ' ' + sNewWord, oLine.line, 1, flags=re.IGNORECASE)
     oLine.line = re.sub('^' + sWord + '$', sNewWord, oLine.line, 1, flags=re.IGNORECASE)
     oLine.line = re.sub('^' + sWord + ' ', sNewWord + ' ', oLine.line, 1, flags=re.IGNORECASE)
-    oLine.line = re.sub(' ' + sWord + ';', ' ' + sNewWord + ';', oLine.line, 1, flags=re.IGNORECASE)
-    oLine.line = re.sub(' ' + sWord + '\(', ' ' + sNewWord + '(', oLine.line, 1, flags=re.IGNORECASE)
     oLine.lineLower = oLine.line.lower()
 
 
@@ -78,8 +80,7 @@ def search_for_and_remove_keyword(oFile, iLineNumber, sKeyword):
         oLine = oFile.lines[iSearchIndex]
         if re.match('^\s*' + sKeyword, oLine.line, re.IGNORECASE):
             clear_keyword_from_line(oLine, sKeyword)
-            if oLine.isBlank:
-                oFile.lines.pop(iSearchIndex)
+            remove_blank_line(oFile, iSearchIndex)
         if not oLine.isBlank:
             break
 
@@ -89,6 +90,11 @@ def remove_comment(sLine):
         return sLine[0:sLine.find('--') + len('--')]
     else:
         return sLine
+
+
+def remove_blank_line(oFile, iLineNumber):
+    if oFile.lines[iLineNumber].isBlank:
+        oFile.lines.pop(iLineNumber)
 
 
 def reclassify_line(oFile, iLineNumber):
