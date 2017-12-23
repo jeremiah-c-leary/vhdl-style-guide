@@ -152,68 +152,6 @@ Total Failures:      523
 
 All documentation for VSG is hosted at [read-the-docs](http://vhdl-style-guide.readthedocs.io/en/latest/index.html)
 
-## Configuring
-
-Any attribute of any rule can be configured by using the --configuration option and a JSON file.
-This is the basic form of a configuration file: 
-
-```json
-{
-    "rule":{
-        "global":{
-            "attributeName":"AttributeValue" 
-        },
-        "ruleId_ruleNumber":{
-            "attributeName":"AttributeValue" 
-        }
-    }
-}
-```
-
-### Example Configuration: Disabling a rule
-
-Below is an example of a JSON file which disables the rule **entity_004**
-
-```json
-{
-    "rule":{
-        "entity_004":{
-            "disable":"True"
-        }
-    }
-}
-```
-
-### Example Configuration: Setting the indent increment size
-
-The indent increment size is the number of spaces an indent level takes.
-It can be configured on an per rule basis...
-
-```json
-{
-    "rule":{
-        "entity_004":{
-            "indentSize":4
-        }
-    }
-}
-```
-
-...or configured for every rule using **global**:
-
-
-```json
-{
-    "rule":{
-        "global":{
-            "indentSize":4
-        }
-    }
-}
-```
-
-The **global** value will be overridden if the same attribute is specified for an individual rule.
-
 ## Running Tests
 
 You can run all the tests at the top level by invoking the following command...
