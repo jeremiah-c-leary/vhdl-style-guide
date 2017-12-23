@@ -12,9 +12,7 @@ class rule_020(rule.rule):
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'process'
-        self.identifier = '020'
+        rule.rule.__init__(self, 'process', '020')
         self.solution = 'Fix indentation of sensitivity list.'
         self.phase = 5
 

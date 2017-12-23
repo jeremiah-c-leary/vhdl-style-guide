@@ -10,9 +10,7 @@ class rule_012(rule.rule):
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'process'
-        self.identifier = '012'
+        rule.rule.__init__(self, 'process', '012')
         self.solution = 'Add "is" keyword after the closing parenthesis.'
         self.phase = 1
 

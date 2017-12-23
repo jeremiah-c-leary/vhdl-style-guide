@@ -8,7 +8,4 @@ class rule_022(line_below_rule):
     '''
 
     def __init__(self):
-        line_below_rule.__init__(self)
-        self.name = 'process'
-        self.identifier = '022'
-        self.condition = 'isProcessBegin'
+        line_below_rule.__init__(self, 'process', '022', 'isProcessBegin')

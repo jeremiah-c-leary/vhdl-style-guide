@@ -12,17 +12,14 @@ class rule_019(rule.rule):
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'process'
-        self.identifier = '019'
+        rule.rule.__init__(self, 'process', '019')
         self.solution = 'Uppercase the label.'
         self.phase = 6
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isEndProcess:
-                if re.match('^\s*\w+\s+\w+\s+\w+', oLine.line):
-                    check.is_uppercase(self, oLine.line.split()[2], iLineNumber)
+            if oLine.isEndProcess and re.match('^\s*\w+\s+\w+\s+\w+', oLine.line):
+                check.is_uppercase(self, oLine.line.split()[2], iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

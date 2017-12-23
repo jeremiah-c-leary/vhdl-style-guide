@@ -12,9 +12,7 @@ class rule_010(rule.rule):
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'process'
-        self.identifier = '010'
+        rule.rule.__init__(self, 'process', '010')
         self.solution = 'Place "begin" keyword on seperate line.'
         self.phase = 1
 

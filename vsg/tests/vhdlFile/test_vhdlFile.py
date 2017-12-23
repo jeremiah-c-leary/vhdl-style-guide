@@ -334,6 +334,16 @@ class testVhdlFileMethods(unittest.TestCase):
         # Compare
         self.assertEqual(lActual, lExpected)
 
+    def test_isProcessLabel_assignment(self):
+        lExpected = [46,63,68,75,81,88,97]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFileProcess.lines):
+            if oLine.isProcessLabel:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
     def test_isEndProcess_assignment(self):
         lExpected = [9,15,22,30,36,42,48,53,60,65,72,79,86,94,103]
         # Generic actual list

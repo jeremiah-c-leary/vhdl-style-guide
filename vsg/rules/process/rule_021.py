@@ -9,9 +9,7 @@ class rule_021(rule.rule):
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'process'
-        self.identifier = '021'
+        rule.rule.__init__(self, 'process', '021')
         self.solution = 'Remove blank lines between the end of the sensitivity list and before the "begin" keyword.'
         self.phase = 3
 

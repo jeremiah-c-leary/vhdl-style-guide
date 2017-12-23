@@ -12,9 +12,7 @@ class rule_028(rule.rule):
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'process'
-        self.identifier = '028'
+        rule.rule.__init__(self, 'process', '028')
         self.solution = 'Align closing parenthesis with opening parenthesis.'
         self.phase = 5
 

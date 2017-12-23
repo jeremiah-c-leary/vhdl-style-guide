@@ -188,6 +188,12 @@ class testLineMethods(unittest.TestCase):
         oLine.isProcessKeyword = True
         self.assertEqual(oLine.isProcessKeyword, True)
 
+    def test_isProcessLabel_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isProcessLabel, False)
+        oLine.isProcessLabel = True
+        self.assertEqual(oLine.isProcessLabel, True)
+
     def test_isEndProcess_attribute(self):
         oLine = line.line('contents of Line')
         self.assertEqual(oLine.isEndProcess, False)

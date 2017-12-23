@@ -49,6 +49,7 @@ class line():
         self.insideProcess = False
         self.isProcessBegin = False
         self.isProcessKeyword = False
+        self.isProcessLabel = False
         self.isProcessDeclarative = False
         self.isEndProcess = False
         self.insideSensitivityList = False

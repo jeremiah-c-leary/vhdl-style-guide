@@ -2,10 +2,15 @@ import re
 
 
 def process(dVars, oLine):
-    if re.match('^\s*process', oLine.lineLower) or re.match('^\s*\S+\s*:\s*process', oLine.lineLower) and not oLine.isComment:
+    if re.match('^\s*process', oLine.lineLower):
         oLine.isProcessKeyword = True
         oLine.insideProcess = True
         oLine.indentLevel = dVars['iCurrentIndentLevel']
+    if re.match('^\s*\S+\s*:\s*process', oLine.lineLower):
+        oLine.isProcessKeyword = True
+        oLine.insideProcess = True
+        oLine.indentLevel = dVars['iCurrentIndentLevel']
+        oLine.isProcessLabel = True
     if oLine.insideProcess:
         # Check sensitivity list
         if '(' in oLine.line and not oLine.insideSensitivityList and not dVars['fFoundProcessBegin'] and not dVars['SensitivityListFound']:

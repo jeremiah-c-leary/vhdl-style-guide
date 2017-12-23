@@ -9,9 +9,7 @@ class rule_015(rule.rule):
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'process'
-        self.identifier = '015'
+        rule.rule.__init__(self, 'process', '015')
         self.solution = 'Add a space or a comment above the "process" keyword.'
         self.phase = 3
 

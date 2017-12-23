@@ -17,5 +17,5 @@ class rule_016(rule.rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isProcessKeyword and not re.match('^\s*\S+\s*:', oLine.line):
+            if oLine.isProcessKeyword and not oLine.isProcessLabel:
                 self.add_violation(iLineNumber)

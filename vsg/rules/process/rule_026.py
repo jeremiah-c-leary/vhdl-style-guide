@@ -9,9 +9,7 @@ class rule_026(rule.rule):
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'process'
-        self.identifier = '026'
+        rule.rule.__init__(self, 'process', '026')
         self.solution = 'Ensure a single blank line between the end of the sensitivity list and the next non-blank line.'
         self.phase = 3
 
