@@ -8,10 +8,8 @@ class rule_008(rule.rule):
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'signal'
-        self.identifier = '008'
-        self.solution = 'Remove default assignment.'
+        rule.rule.__init__(self, 'signal', '008')
+        self.solution = 'Invalid or missing prefix.'
         self.prefixes = None
         self.phase = 7
         self.fixable = False  # The user will have to fix any desired prefixes.

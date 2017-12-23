@@ -12,9 +12,7 @@ class rule_010(rule.rule):
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'signal'
-        self.identifier = '010'
+        rule.rule.__init__(self, 'signal', '010')
         self.solution = 'Change signal type to lowercase.'
         self.phase = 6
 
