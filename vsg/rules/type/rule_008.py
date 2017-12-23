@@ -11,9 +11,7 @@ class rule_008(rule.rule):
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'type'
-        self.identifier = '008'
+        rule.rule.__init__(self, 'type', '008')
         self.solution = 'Move the closing parenthesis to it\'s own line.'
         self.phase = 1
 

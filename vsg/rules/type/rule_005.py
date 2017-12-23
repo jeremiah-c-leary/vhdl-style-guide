@@ -10,9 +10,7 @@ class rule_005(rule.rule):
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'type'
-        self.identifier = '005'
+        rule.rule.__init__(self, 'type', '005')
         self.solution = 'Ensure proper indentation.'
         self.phase = 4
 

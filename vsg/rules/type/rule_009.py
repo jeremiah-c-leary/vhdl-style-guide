@@ -12,9 +12,7 @@ class rule_009(rule.rule):
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'type'
-        self.identifier = '009'
+        rule.rule.__init__(self, 'type', '009')
         self.solution = 'Move enumerated type to it\'s own line.'
         self.phase = 1
 
