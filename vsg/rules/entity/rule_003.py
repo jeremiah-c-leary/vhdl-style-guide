@@ -17,7 +17,6 @@ class rule_003(rule.rule):
         self.phase = 3
 
     def analyze(self, oFile):
-        lFailureLines = []
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isEntityDeclaration:
                 check.is_blank_line_before(self, oFile, iLineNumber)

@@ -15,8 +15,6 @@ class rule_026(rule.rule):
 
     def analyze(self, oFile):
         fCheckForBlanks = False
-        fBlanksFound = False
-        fNonBlanksFound = False
         fSkipProcess = False
         iBlankCount = 0
         iFailingLineNumber = 0

@@ -17,7 +17,6 @@ class rule_001(rule.rule):
         self.phase = 4
 
     def analyze(self, oFile):
-        lFailureLines = []
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isComponentDeclaration:
                 check.indent(self, oLine, iLineNumber)

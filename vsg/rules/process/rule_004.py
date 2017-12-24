@@ -18,7 +18,6 @@ class rule_004(rule.rule):
         self.phase = 6
 
     def analyze(self, oFile):
-        fInsideProcess = False
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isProcessBegin:
                 check.is_lowercase(self, utilities.get_first_word(oLine), iLineNumber)

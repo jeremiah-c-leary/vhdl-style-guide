@@ -20,7 +20,6 @@ class rule_002(rule.rule):
         self.phase = 2
 
     def analyze(self, oFile):
-        fInsideProcess = False
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isProcessKeyword and not re.match('^\s*.*process\s\(', oLine.lineLower):
                 self.add_violation(iLineNumber)
