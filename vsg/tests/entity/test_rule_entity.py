@@ -1,7 +1,6 @@
-import os
 
+import os
 import unittest
-import sys
 
 from vsg.rules import entity
 from vsg import vhdlFile

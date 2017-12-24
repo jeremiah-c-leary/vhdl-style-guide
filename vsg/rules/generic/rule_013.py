@@ -2,8 +2,6 @@
 from vsg import rule
 from vsg import utilities
 
-import copy
-
 
 class rule_013(rule.rule):
     '''Generic rule 013 checks for a generic keyword on the same line as a generic declaration.'''

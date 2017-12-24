@@ -18,7 +18,6 @@ class rule_002(rule.rule):
         self.phase = 2
 
     def analyze(self, oFile):
-        lFailureLines = []
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isComponentDeclaration:
                 if re.match('^\s*component\s\s+\w', oLine.lineLower):

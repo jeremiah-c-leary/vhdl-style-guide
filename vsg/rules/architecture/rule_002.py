@@ -1,7 +1,6 @@
 
 from vsg import rule
 from vsg import fix
-from vsg import check
 
 import re
 

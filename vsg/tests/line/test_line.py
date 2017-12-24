@@ -21,7 +21,7 @@ class testLineMethods(unittest.TestCase):
         self.assertFalse(oLine.isLibrary)
         oLine.isLibrary = True
         self.assertTrue(oLine.isLibrary)
-    
+
     def test_library_use_attribute(self):
         oLine = line.line('contents of line')
         self.assertFalse(oLine.isLibraryUse)

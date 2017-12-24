@@ -43,7 +43,7 @@ class testVhdlFileCommentAssignments(unittest.TestCase):
         lExpected = [0,1,0,2,0,2,4,18,18,18,19,18,4,5,4,3,23,22,23,23,23,19,35,38,4,37,36,37,5,37,37,37,35,37,38,37,37,38,4,32,33,4,32,31,32,6,32,32,32,30,32,33,32,32,33,4,0]
         # Generic actual list
         lActual = []
-        for iIndex, oLine in enumerate(oFile.lines):
+        for oLine in oFile.lines:
             if oLine.hasComment:
                 lActual.append(oLine.commentColumn)
         # Compare
@@ -54,7 +54,7 @@ class testVhdlFileCommentAssignments(unittest.TestCase):
         lExpected = [ 4, 4, 4, 4, 4, 4, 4]
         # Generic actual list
         lActual = []
-        for iIndex, oLine in enumerate(oFileCase.lines):
+        for oLine in oFileCase.lines:
             if oLine.isComment:
                 lActual.append(oLine.indentLevel)
         # Compare

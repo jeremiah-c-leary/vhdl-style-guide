@@ -1,6 +1,5 @@
 import os
 import unittest
-import sys
 
 from vsg.rules import variable_assignment
 from vsg import vhdlFile

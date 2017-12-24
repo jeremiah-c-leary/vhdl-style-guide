@@ -1,8 +1,6 @@
-import os
 
+import os
 import unittest
-import sys
-sys.path.append('vsg')
 
 from vsg.rules import whitespace
 from vsg import vhdlFile
@@ -116,7 +114,7 @@ class testRuleWhitespaceMethods(unittest.TestCase):
         self.assertEqual(oFile.lines[4].line, '  This is a test of parentehsis (  7 pass')
         self.assertEqual(oFile.lines[5].line, '  This is a test of parenthesis (pass) --  ( pass')
         self.assertEqual(oFile.lines[6].line, ' --  This is a test of parenthesis ( pass)')
-   
+
 
     def test_006(self):
         oRule = whitespace.rule_006()

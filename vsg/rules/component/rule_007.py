@@ -3,8 +3,6 @@ from vsg import rule
 from vsg import check
 from vsg import fix
 
-import re
-
 
 class rule_007(rule.rule):
     '''Component rule 007 checks for a single space before the "is" keyword.'''
