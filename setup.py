@@ -9,11 +9,11 @@ def readme():
 
 setup(
   name='vsg',
-  version='0.6',
+  version='0.7',
   description='VHDL Style Guide',
   long_description=readme(),
   classifiers=[
-      'Development Status :: 2 - Pre-Alpha',
+      'Development Status :: 3 - Alpha',
       'Environment :: Console',
       'Programming Language :: Python :: 2.7',
       'Intended Audience :: End Users/Desktop',
@@ -33,5 +33,5 @@ setup(
   test_suite='nose.collector',
   tests_require=['nose'],
   scripts=['bin/vsg'],
-  keywords=['vhdl', 'style']
+  keywords=['vhdl', 'style', 'beautify']
 )
