@@ -26,20 +26,20 @@ Each rule is addressable by using it's unique **ruleId** and **ruleNumber** comb
 
 Here are a list of attributes that can be altered:
 
-+-------------+--------------------------------------------------+
-| Attribute   | Description                                      |
-+=============+==================================================+
-| indentSize  | Sets the number of spaces for each indent level. |
-+-------------+--------------------------------------------------+
-| phase       | Sets the phase the rule will run in.             |
-+-------------+--------------------------------------------------+
-| disable     | If set to True, the rule will not run.           |
-+-------------+--------------------------------------------------+
-| fixable     | If set to False, the violation will not be fixed |
-+-------------+--------------------------------------------------+
++-------------+---------+--------------------------------------------------+
+| Attribute   | Values  | Description                                      |
++=============+=========+==================================================+
+| indentSize  | Integer | Sets the number of spaces for each indent level. |
++-------------+---------+--------------------------------------------------+
+| phase       | Integer | Sets the phase the rule will run in.             |
++-------------+---------+--------------------------------------------------+
+| disable     | Boolean | If set to True, the rule will not run.           |
++-------------+---------+--------------------------------------------------+
+| fixable     | Boolean | If set to False, the violation will not be fixed |
++-------------+---------+--------------------------------------------------+
 
-Example Configuration: Disabling a rule
----------------------------------------
+Example:  Disabling a rule
+--------------------------
 
 Below is an example of a JSON file which disables the rule **entity_004**
 
@@ -53,9 +53,14 @@ Below is an example of a JSON file which disables the rule **entity_004**
        }
    }
 
+We use the configuration using the **--configuration** command line argument:
 
-Example Configuration: Setting the indent increment size
---------------------------------------------------------
+.. code-block:: bash
+
+   $ vsg -f RAM.vhd --configuration entity_004_disable.json
+
+Example: Setting the indent increment size for a single rule
+------------------------------------------------------------
 
 The indent increment size is the number of spaces an indent level takes.
 It can be configured on an per rule basis...
@@ -70,8 +75,10 @@ It can be configured on an per rule basis...
        }
    }
 
-...or configured for every rule using **global**:
+Example: Setting the indent increment size for all rules
+--------------------------------------------------------
 
+Configure the indent size for all rules by setting the **global** attribute.
 
 .. code-block:: json
 
