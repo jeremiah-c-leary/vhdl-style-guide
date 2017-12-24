@@ -5,6 +5,21 @@ from vsg import rule
 
 
 class line_above_rule(rule.rule):
+    '''
+    Checks for blank lines above a line and will insert a blank line if one does not exist.
+
+    Parameters
+    ----------
+
+    name : string
+       The group the rule belongs to.
+
+    identifier : string
+       unique identifier.  Usually in the form of 00N.
+
+    sTrigger : string
+       The line attribute the rule applies to.
+    '''
 
     def __init__(self, name=None, identifier=None, sTrigger=None):
         rule.rule.__init__(self, name, identifier)

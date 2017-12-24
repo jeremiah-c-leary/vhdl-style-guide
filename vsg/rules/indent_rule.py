@@ -6,14 +6,24 @@ from vsg import fix
 
 class indent_rule(rule.rule):
     '''
-    Checks for and fixes indent problems.
+    Checks for and fixes indent violations.
+
+    Parameters
+    ----------
+
+    name : string
+       The group the rule belongs to.
+
+    identifier : string
+       unique identifier.  Usually in the form of 00N.
+
+    sTrigger : string
+       The line attribute the rule applies to.
     '''
 
     def __init__(self, name=None, identifier=None, sTrigger=None):
         rule.rule.__init__(self, name, identifier)
-        # These are filled out when creating a new rule
         self.sTrigger = sTrigger
-        # Leave everything below this alone
         self.solution = 'Invalid indentation.'
         self.phase = 4
 

@@ -3,6 +3,9 @@ from vsg import utilities
 
 
 class line():
+    '''
+    This class holds line contents and attributes associated with the content.
+    '''
 
     def __init__(self, line):
         self.line = line
@@ -153,13 +156,18 @@ class line():
         self.isWithKeyword = False
 
     def update_line(self, sLine):
+        '''
+        This method updates the line, lineLower and lineNoComment attributes.
+        '''
         self.line = sLine
         self.lineLower = sLine.lower()
         self.lineNoComment = utilities.remove_comment(sLine)
 
 
 class blank_line(line):
-
+    '''
+    This class provides a blank line version of the line class.
+    '''
     def __init__(self):
         line.__init__(self, '')
         self.isBlank = True
