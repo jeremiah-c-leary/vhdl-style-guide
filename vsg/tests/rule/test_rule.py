@@ -61,7 +61,7 @@ class testRuleMethods(unittest.TestCase):
         dConfiguration['rule']['xyz_002']['disable'] = False
 
         oRule.configure(dConfiguration)
-        
+
         self.assertEqual(oRule.disable,True)
 
         dConfiguration['rule']['xyz_001']['solution'] = 'This is the new solution'

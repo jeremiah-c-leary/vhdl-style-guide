@@ -48,7 +48,7 @@ class testVhdlFileSequentialAssignments(unittest.TestCase):
                 lActual.append(oLine.sequentialAlignmentColumn)
         # Compare
         self.assertEqual(lActual, lExpected)
- 
+
     def test_sequentialIndentLevel_assignment(self):
         #lExpected = [13,14,15,20,21,22,26,27,28,33,34,38,39,40,53,56,57,63,65,66,71,73,75,80,81,83,88,89,90]
         lExpected =  [ 2, 2, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 2, 2, 2, 4, 5, 5, 4, 5, 5, 4, 4, 5, 4, 4, 4, 4, 2]
