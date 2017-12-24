@@ -29,6 +29,11 @@ VHDL Style Guide (VSG)
     <img src="https://img.shields.io/readthedocs/vsg.svg?style=flat-square"
       alt="Read The Docs" />
   </a>
+  <!-- Codacy -->
+  <a class="badge-align" href="https://www.codacy.com/app/jeremiah-c-leary/vhdl-style-guide?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jeremiah-c-leary/vhdl-style-guide&amp;utm_campaign=Badge_Grade">
+    <img src="https://api.codacy.com/project/badge/Grade/42744dca97544824b93cfc99e8030063"
+      alt="Codacy" />
+  </a>
 </div>
 
 After recently performing code reviews, most of the issues found were related to style.
