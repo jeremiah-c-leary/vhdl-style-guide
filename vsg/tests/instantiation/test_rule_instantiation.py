@@ -50,7 +50,7 @@ class testRuleInstantiationMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'instantiation')
         self.assertEqual(oRule.identifier, '004')
- 
+
         dExpected = [23,29,36]
         oRule.analyze(oFilePort)
         self.assertEqual(oRule.violations, dExpected)

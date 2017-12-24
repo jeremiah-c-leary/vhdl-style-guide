@@ -143,7 +143,7 @@ class testFixRuleIfMethods(unittest.TestCase):
         self.assertEqual(oFile.lines[105].line, '    if (a = 2) then b <= \'1\'; ')
         self.assertEqual(oFile.lines[106].line, 'else b <= \'0\'; end if;')
         self.assertEqual(oFile.lines[106].indentLevel, oFile.lines[105].indentLevel)
-        
+
 
     def test_fix_rule_020(self):
         oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','if_statement','if_test_input.vhd'))

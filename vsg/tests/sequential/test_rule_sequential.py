@@ -1,7 +1,5 @@
 import os
 import unittest
-import sys
-#sys.path.append('vsg')
 
 from vsg.rules import sequential
 from vsg import vhdlFile

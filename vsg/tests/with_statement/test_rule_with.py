@@ -1,7 +1,6 @@
 import os
 
 import unittest
-import sys
 
 from vsg.rules import with_statement
 from vsg import vhdlFile

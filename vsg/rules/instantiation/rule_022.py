@@ -18,7 +18,6 @@ class rule_022(rule.rule):
         self.phase = 2
 
     def analyze(self, oFile):
-        lFailureLines = []
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isInstantiationPortAssignment and not oLine.isInstantiationPortKeyword:
                 if not re.match('^.*=>\s\S+', oLine.line):

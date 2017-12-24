@@ -13,7 +13,6 @@ class line_below_rule(rule.rule):
         self.condition = sTrigger
 
     def analyze(self, oFile):
-        lFailureLines = []
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.__dict__[self.condition]:
                 check.is_blank_line_after(self, oFile, iLineNumber)

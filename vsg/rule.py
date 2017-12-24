@@ -1,7 +1,5 @@
 
 from vsg import line
-import re
-import copy
 
 
 class rule():

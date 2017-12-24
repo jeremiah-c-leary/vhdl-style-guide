@@ -4,7 +4,6 @@ import unittest
 
 from vsg.rules import generic
 from vsg import vhdlFile
-from vsg.tests import utils
 
 
 oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'generic_test_input.vhd'))

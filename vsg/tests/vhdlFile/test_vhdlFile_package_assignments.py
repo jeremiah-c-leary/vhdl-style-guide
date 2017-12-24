@@ -43,7 +43,7 @@ class testVhdlFilePackageMethods(unittest.TestCase):
         lExpected =  [0,None,1,2,3,2,2,3, 3, 3, 2, 1,None, 0, 0,None, 1, 2, 3, 2, 2, 3, 3, 3, 2, 1,None, 0, 0,None, 1, 2, 3, 2, 2, 3, 3, 3, 2, 1,None, 0, 0, 1, 2, 3, 2, 2, 3, 3, 3, 2, 1, 0, 0,None, 1, 2, 3, 2, 2, 3, 3, 3, 2, 1,None, 0]
         # Generic actual list
         lActual = []
-        for iIndex, oLine in enumerate(oFile.lines):
+        for oLine in oFile.lines:
             if oLine.insidePackage:
                 lActual.append(oLine.indentLevel)
         # Compare

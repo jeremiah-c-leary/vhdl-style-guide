@@ -43,7 +43,7 @@ class testVhdlFileSequentialAssignments(unittest.TestCase):
         lExpected =  [ 6, 4, 6,11,10,10,10,10, 8,10,10, 9,10, 9, 8, 7, 8,10,12,13,10,15,14,10, 8,12,10, 8,11,10, 6]
         # Generic actual list
         lActual = []
-        for iIndex, oLine in enumerate(oFile.lines):
+        for oLine in oFile.lines:
             if oLine.isSequential:
                 lActual.append(oLine.sequentialAlignmentColumn)
         # Compare

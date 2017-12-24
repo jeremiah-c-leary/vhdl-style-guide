@@ -2,8 +2,6 @@
 from vsg import rule
 from vsg import utilities
 
-import copy
-
 
 class rule_020(rule.rule):
     '''
@@ -18,7 +16,6 @@ class rule_020(rule.rule):
         self.phase = 1
 
     def analyze(self, oFile):
-        lFailureLines = []
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isInstantiationPortAssignment and oLine.isInstantiationPortKeyword:
                 self.add_violation(iLineNumber)

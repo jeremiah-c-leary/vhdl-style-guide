@@ -2,7 +2,6 @@ import os
 
 import unittest
 from vsg import vhdlFile
-from vsg.tests import utils
 
 oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','instantiation','instantiation_test_input.vhd'))
 oFileGeneric = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','instantiation','instantiation_generic_test_input.vhd'))
@@ -99,7 +98,7 @@ class testVhdlFileInstantiationAssignments(unittest.TestCase):
         lExpected =  [ 1, 2, 3, 3, 2, 2, 3, 3, 3, 2, 1, 2, 3, 3, 2, 2, 3, 3, 3, 2, 1, 2, 3, 3, 2, 2, 3, 3, 3, 2, 1, 2, 3, 3, 2, 3, 3, 3, 2, 1, 2, 3, 2, 2, 3, 3, 3, 2, 1, 3, 3, 2, 3, 3, 3, 2, 1, 2, 2, 3, 3, 3, 2, 1, 2,None, 3, 3, 2, 2,None, 3, 3, 3, 2]
         # Generic actual list
         lActual = []
-        for iIndex, oLine in enumerate(oFileGeneric.lines):
+        for oLine in oFileGeneric.lines:
             if oLine.insideInstantiation:
                 lActual.append(oLine.indentLevel)
         # Compare

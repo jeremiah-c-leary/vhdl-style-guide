@@ -1,6 +1,4 @@
 
-import sys
-
 import unittest
 from vsg import rule
 
@@ -55,7 +53,7 @@ class testRuleMethods(unittest.TestCase):
         dConfiguration['rule']['xyz_001']['disable'] = True
 
         oRule.configure(dConfiguration)
-        
+
         self.assertEqual(oRule.disable,True)
 
 

@@ -3,7 +3,6 @@ from vsg import rule
 from vsg import utilities
 
 import re
-import copy
 
 
 class rule_009(rule.rule):
