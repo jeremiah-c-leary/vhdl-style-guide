@@ -14,5 +14,6 @@ Welcome to vhdl-style-guide's documentation!
    installing
    usage
    configuring
+   localizing
    rules
    phases
