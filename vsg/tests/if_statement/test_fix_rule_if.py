@@ -172,7 +172,7 @@ class testFixRuleIfMethods(unittest.TestCase):
         self.assertEqual(oFile.lines[103].indentLevel, oFile.lines[102].indentLevel + 1)
 
     def test_fix_compressed_line(self):
-        oRuleList = rule_list.list(oFileCompress)
+        oRuleList = rule_list.rule_list(oFileCompress)
         oRuleList.fix()
 #        utils.debug_lines(oFileCompress, 9, 10)
         self.assertEqual(oFileCompress.lines[10].line, '    if (A = \'1\' and B = \'1\') then')

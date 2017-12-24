@@ -14,7 +14,7 @@ oDataCore = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'data_core.
 class testCodeExample(unittest.TestCase):
 
     def test_baudgen(self):
-        oRuleList = rule_list.list(oBaudGen)
+        oRuleList = rule_list.rule_list(oBaudGen)
         oRuleList.fix()
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'BaudGen.fixed.vhd'), lExpected)
@@ -22,7 +22,7 @@ class testCodeExample(unittest.TestCase):
             self.assertEqual(oBaudGen.lines[iLineNumber].line, sLine)
 
     def test_board_cpu(self):
-        oRuleList = rule_list.list(oBoardCpu)
+        oRuleList = rule_list.rule_list(oBoardCpu)
         oRuleList.fix()
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'Board_cpu.fixed.vhd'), lExpected)
@@ -30,7 +30,7 @@ class testCodeExample(unittest.TestCase):
             self.assertEqual(oBoardCpu.lines[iLineNumber].line, sLine)
 
     def test_data_core(self):
-        oRuleList = rule_list.list(oDataCore)
+        oRuleList = rule_list.rule_list(oDataCore)
         oRuleList.fix()
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'data_core.fixed.vhd'), lExpected)

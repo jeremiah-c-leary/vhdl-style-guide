@@ -60,7 +60,7 @@ def maximum_phase(lRules):
     return maximumPhaseNumber
 
 
-class list():
+class rule_list():
     ''' Contains a list of all rules to be checked.  It also contains methods to check the rules.'''
 
     def __init__(self, oVhdlFile, sLocalRulesDirectory=None):

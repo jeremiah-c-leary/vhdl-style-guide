@@ -17,7 +17,7 @@ oFrameBuffer =  vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'FrameB
 class testCodeExample(unittest.TestCase):
 
     def test_bresenhamer(self):
-        oRuleList = rule_list.list(oBresenhamer)
+        oRuleList = rule_list.rule_list(oBresenhamer)
         oRuleList.fix()
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'Bresenhamer.fixed.vhd'), lExpected)
@@ -25,7 +25,7 @@ class testCodeExample(unittest.TestCase):
             self.assertEqual(oBresenhamer.lines[iLineNumber].line, sLine)
 
     def test_debouncer(self):
-        oRuleList = rule_list.list(oDebouncer)
+        oRuleList = rule_list.rule_list(oDebouncer)
         oRuleList.fix()
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'Debouncer.fixed.vhd'), lExpected)
@@ -33,7 +33,7 @@ class testCodeExample(unittest.TestCase):
             self.assertEqual(oDebouncer.lines[iLineNumber].line, sLine)
 
     def test_vga_top(self):
-        oRuleList = rule_list.list(oVgatop)
+        oRuleList = rule_list.rule_list(oVgatop)
         oRuleList.fix()
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'VGA_Top.fixed.vhd'), lExpected)
@@ -41,7 +41,7 @@ class testCodeExample(unittest.TestCase):
             self.assertEqual(oVgatop.lines[iLineNumber].line, sLine)
 
     def test_pointer(self):
-        oRuleList = rule_list.list(oPointer)
+        oRuleList = rule_list.rule_list(oPointer)
         oRuleList.fix()
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'Pointer.fixed.vhd'), lExpected)
@@ -49,7 +49,7 @@ class testCodeExample(unittest.TestCase):
             self.assertEqual(oPointer.lines[iLineNumber].line, sLine)
 
     def test_freqdiv(self):
-        oRuleList = rule_list.list(oFreqDiv)
+        oRuleList = rule_list.rule_list(oFreqDiv)
         oRuleList.fix()
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'FreqDiv.fixed.vhd'), lExpected)
@@ -57,7 +57,7 @@ class testCodeExample(unittest.TestCase):
             self.assertEqual(oFreqDiv.lines[iLineNumber].line, sLine)
 
     def test_synchronizer(self):
-        oRuleList = rule_list.list(oSynchronizer)
+        oRuleList = rule_list.rule_list(oSynchronizer)
         oRuleList.fix()
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'Synchronizer.fixed.vhd'), lExpected)
@@ -65,7 +65,7 @@ class testCodeExample(unittest.TestCase):
             self.assertEqual(oSynchronizer.lines[iLineNumber].line, sLine)
 
     def test_framebuffer(self):
-        oRuleList = rule_list.list(oFrameBuffer)
+        oRuleList = rule_list.rule_list(oFrameBuffer)
         oRuleList.fix()
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'FrameBuffer2.fixed.vhd'), lExpected)

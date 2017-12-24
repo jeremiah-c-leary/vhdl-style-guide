@@ -15,7 +15,7 @@ oPIC = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'PIC.vhd'))
 class testVhdlFileMethods(unittest.TestCase):
 
     def test_timestamp_vhdl(self):
-        oRuleList = rule_list.list(oTimestamp)
+        oRuleList = rule_list.rule_list(oTimestamp)
         oRuleList.fix()
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'timestamp.fixed.vhdl'), lExpected)
@@ -23,7 +23,7 @@ class testVhdlFileMethods(unittest.TestCase):
             self.assertEqual(oTimestamp.lines[iLineNumber].line, sLine)
 
     def test_spi_slave(self):
-        oRuleList = rule_list.list(oSpiSlave)
+        oRuleList = rule_list.rule_list(oSpiSlave)
         oRuleList.fix()
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'spi_slave.fixed.vhd'), lExpected)
@@ -31,7 +31,7 @@ class testVhdlFileMethods(unittest.TestCase):
             self.assertEqual(oSpiSlave.lines[iLineNumber].line, sLine)
 
     def test_spi_master(self):
-        oRuleList = rule_list.list(oSpiMaster)
+        oRuleList = rule_list.rule_list(oSpiMaster)
         oRuleList.fix()
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'spi_master.fixed.vhd'), lExpected)
@@ -39,7 +39,7 @@ class testVhdlFileMethods(unittest.TestCase):
             self.assertEqual(oSpiMaster.lines[iLineNumber].line, sLine)
 
     def test_grp_debouncer(self):
-        oRuleList = rule_list.list(oGrpDebouncer)
+        oRuleList = rule_list.rule_list(oGrpDebouncer)
         oRuleList.fix()
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'grp_debouncer.fixed.vhd'), lExpected)
@@ -47,7 +47,7 @@ class testVhdlFileMethods(unittest.TestCase):
             self.assertEqual(oGrpDebouncer.lines[iLineNumber].line, sLine)
 
     def test_pic(self):
-        oRuleList = rule_list.list(oPIC)
+        oRuleList = rule_list.rule_list(oPIC)
         oRuleList.fix()
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'PIC.fixed.vhd'), lExpected)

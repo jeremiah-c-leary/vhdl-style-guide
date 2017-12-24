@@ -12,7 +12,7 @@ oIteration = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'iteration
 class testCodeExample(unittest.TestCase):
 
     def test_iteration_synth(self):
-        oRuleList = rule_list.list(oIteration)
+        oRuleList = rule_list.rule_list(oIteration)
         oRuleList.fix()
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'iteration_synth.fixed.vhd'), lExpected)
