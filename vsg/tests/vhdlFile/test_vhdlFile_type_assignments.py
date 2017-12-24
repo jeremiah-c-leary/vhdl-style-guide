@@ -3,7 +3,7 @@ import os
 import unittest
 from vsg import vhdlFile
 
-oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','type','type_test_input.vhd'))
+oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','type_definition','type_test_input.vhd'))
 
 class testVhdlFileTypeAssignments(unittest.TestCase):
 

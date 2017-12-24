@@ -21,7 +21,7 @@ from process import process
 from sequential import sequential
 from signal import signal
 from subtype import subtype
-from type import type
+from type_definition import type_definition
 from variable_assignment import variable_assignment
 from variable import variable
 from while_loop import while_loop

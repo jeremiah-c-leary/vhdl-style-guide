@@ -32,7 +32,7 @@ from vsg.rules import process
 from vsg.rules import sequential
 from vsg.rules import signal
 from vsg.rules import subtype
-from vsg.rules import type
+from vsg.rules import type_definition
 from vsg.rules import variable_assignment
 from vsg.rules import variable
 from vsg.rules import while_loop

@@ -1,7 +1,7 @@
 import re
 
 
-def type(dVars, oLine):
+def type_definition(dVars, oLine):
 
     if re.match('^\s*type\s+\w+\s+is\s+array', oLine.line, re.IGNORECASE):
         oLine.isTypeKeyword = True

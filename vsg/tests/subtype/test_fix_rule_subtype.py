@@ -8,7 +8,7 @@ from vsg.rules import subtype
 from vsg import vhdlFile
 
 # Read in test file used for all tests
-oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','type','type_test_input.vhd'))
+oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','type_definition','type_test_input.vhd'))
 
 class testFixRuleSignalMethods(unittest.TestCase):
 
