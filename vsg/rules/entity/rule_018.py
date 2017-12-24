@@ -17,31 +17,33 @@ class rule_018(rule.rule):
         self.solution = 'Inconsistent alignment of comments in entity.'
         self.phase = 6
 
-    def _search_for_group(self, fGroupFound, oLine, iStartGroupIndex, iLineNumber):
-        if not fGroupFound and oLine.insideEntity:
-            return True, iLineNumber
-        return fGroupFound, iStartGroupIndex
-
-    def _store_lines_for_group(self, fGroupFound, oLine, lGroup):
-        if fGroupFound:
-            if oLine.hasComment and not oLine.isComment:
-                lGroup.append(oLine)
-            else:
-                lGroup.append(line.line('Removed line'))
-
     def analyze(self, oFile):
         lGroup = []
         fGroupFound = False
         iStartGroupIndex = None
         for iLineNumber, oLine in enumerate(oFile.lines):
-            fGroupFound, iStartGroupIndex = self._search_for_group(fGroupFound, oLine, iStartGroupIndex, iLineNumber)
+            fGroupFound, iStartGroupIndex = search_for_group(fGroupFound, oLine, iStartGroupIndex, iLineNumber)
             if oLine.isEndEntityDeclaration:
                 lGroup.append(oLine)
                 fGroupFound = False
                 check.keyword_alignment(self, iStartGroupIndex, '--', lGroup)
                 lGroup = []
                 iStartGroupIndex = None
-            self._store_lines_for_group(fGroupFound, oLine, lGroup)
+            store_lines_for_group(fGroupFound, oLine, lGroup)
 
     def _fix_violations(self, oFile):
         fix.keyword_alignment(self, oFile)
+
+
+def search_for_group(fGroupFound, oLine, iStartGroupIndex, iLineNumber):
+    if not fGroupFound and oLine.insideEntity:
+        return True, iLineNumber
+    return fGroupFound, iStartGroupIndex
+
+
+def store_lines_for_group(fGroupFound, oLine, lGroup):
+    if fGroupFound:
+        if oLine.hasComment and not oLine.isComment:
+            lGroup.append(oLine)
+        else:
+            lGroup.append(line.line('Removed line'))
