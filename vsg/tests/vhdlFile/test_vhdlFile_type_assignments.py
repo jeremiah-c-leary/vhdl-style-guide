@@ -28,12 +28,32 @@ class testVhdlFileTypeAssignments(unittest.TestCase):
         # Compare
         self.assertEqual(lActual, lExpected)
 
-    def test_insideType(self):
-        lExpected = [4,6,7,8,9,11,19,21,22,23,24,26,28,29,30,31,32,35,36,37,38,39,40]
+    def test_isTypeEnumeratedKeyword(self):
+        lExpected = [4,6,19,21,28,35]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
-            if oLine.insideType:
+            if oLine.isTypeEnumeratedKeyword:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
+    def test_isTypeEnumeratedEnd(self):
+        lExpected = [4,9,19,24,32,40]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFile.lines):
+            if oLine.isTypeEnumeratedEnd:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
+    def test_insideTypeEnumerated(self):
+        lExpected = [4,6,7,8,9,19,21,22,23,24,28,29,30,31,32,35,36,37,38,39,40]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFile.lines):
+            if oLine.insideTypeEnumerated:
                 lActual.append(iIndex)
         # Compare
         self.assertEqual(lActual, lExpected)

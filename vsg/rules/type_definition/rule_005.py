@@ -16,7 +16,7 @@ class rule_005(rule.rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.insideType and not oLine.isTypeKeyword and not oLine.isBlank:
+            if oLine.insideTypeEnumerated and not oLine.isTypeEnumeratedKeyword and not oLine.isBlank:
                 check.indent(self, oLine, iLineNumber)
 
     def _fix_violations(self, oFile):

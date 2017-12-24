@@ -5,7 +5,6 @@ import unittest
 from vsg.rules import type_definition
 from vsg import vhdlFile
 
-
 # Read in test file used for all tests
 oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'type_test_input.vhd'))
 
@@ -74,6 +73,8 @@ class testFixRuleSignalMethods(unittest.TestCase):
         oRule.fix(oFile)
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oFile.lines[6].line, '  type a is (')
+        self.assertEqual(oFile.lines[7].line, ' B, C,')
 
     def test_fix_rule_010(self):
         oRule = type_definition.rule_010()

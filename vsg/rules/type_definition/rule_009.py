@@ -17,7 +17,7 @@ class rule_009(rule.rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isTypeKeyword and not oLine.isTypeEnd:
+            if oLine.isTypeEnumeratedKeyword and not oLine.isTypeEnumeratedEnd:
                 if re.match('^.*\sis\s*\(\s*\w', oLine.lineLower):
                     self.add_violation(iLineNumber)
 
@@ -26,4 +26,5 @@ class rule_009(rule.rule):
             utilities.split_line_after_word(oFile, iLineNumber, '(')
             oLine = oFile.lines[iLineNumber + 1]
             oLine.isTypeKeyword = False
+            oLine.isTypeEnumeratedKeyword = False
             oLine.indentLevel += 1

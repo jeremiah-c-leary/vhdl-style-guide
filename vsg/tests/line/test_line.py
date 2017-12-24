@@ -578,11 +578,23 @@ class testLineMethods(unittest.TestCase):
         oLine.isTypeKeyword = True
         self.assertEqual(oLine.isTypeKeyword, True)
 
-    def test_insideType_attribute(self):
+    def test_isTypeEnumeratedEnd_attribute(self):
         oLine = line.line('contents of Line')
-        self.assertEqual(oLine.insideType, False)
-        oLine.insideType= True
-        self.assertEqual(oLine.insideType, True)
+        self.assertEqual(oLine.isTypeEnumeratedEnd, False)
+        oLine.isTypeEnumeratedEnd = True
+        self.assertEqual(oLine.isTypeEnumeratedEnd, True)
+
+    def test_isTypeEnumeratedKeyword_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isTypeEnumeratedKeyword, False)
+        oLine.isTypeEnumeratedKeyword = True
+        self.assertEqual(oLine.isTypeEnumeratedKeyword, True)
+
+    def test_insideTypeEnumerated_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.insideTypeEnumerated, False)
+        oLine.insideTypeEnumerated = True
+        self.assertEqual(oLine.insideTypeEnumerated, True)
 
     def test_isSubtypeEnd_attribute(self):
         oLine = line.line('contents of Line')

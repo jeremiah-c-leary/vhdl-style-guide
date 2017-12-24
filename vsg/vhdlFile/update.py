@@ -53,10 +53,10 @@ def update_if_attributes(oPreviousLine, oCurrentLine):
         oCurrentLine.insideIf = True
 
 
-def update_type_attributes(oPreviousLine, oCurrentLine):
+def update_type_enumerated_attributes(oPreviousLine, oCurrentLine):
 
-    if oPreviousLine.insideType and not oPreviousLine.isTypeEnd:
-        oCurrentLine.insideType = True
+    if oPreviousLine.insideTypeEnumerated and not oPreviousLine.isTypeEnumeratedEnd:
+        oCurrentLine.insideTypeEnumerated = True
 
 
 def update_subtype_attributes(oPreviousLine, oCurrentLine):
@@ -172,7 +172,7 @@ def inside_attributes(oPreviousLine, oCurrentLine):
     update_concurrent_attributes(oPreviousLine, oCurrentLine)
     update_sensitivity_list_attributes(oPreviousLine, oCurrentLine)
     update_if_attributes(oPreviousLine, oCurrentLine)
-    update_type_attributes(oPreviousLine, oCurrentLine)
+    update_type_enumerated_attributes(oPreviousLine, oCurrentLine)
     update_type_array_attributes(oPreviousLine, oCurrentLine)
     update_type_record_attributes(oPreviousLine, oCurrentLine)
     update_subtype_attributes(oPreviousLine, oCurrentLine)

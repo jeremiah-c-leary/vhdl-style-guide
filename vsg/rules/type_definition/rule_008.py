@@ -17,7 +17,7 @@ class rule_008(rule.rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isTypeEnd and not oLine.isTypeKeyword and not oLine.isTypeArrayEnd and not oLine.isTypeRecordEnd:
+            if oLine.isTypeEnumeratedEnd and not oLine.isTypeEnumeratedKeyword:
                 if not re.match('^\s*\)\s*;', oLine.lineLower):
                     self.add_violation(iLineNumber)
 
@@ -25,7 +25,9 @@ class rule_008(rule.rule):
         for iLineNumber in self.violations[::-1]:
             oFile.lines[iLineNumber].line = re.sub(r'\)(\s*);', r' \1 ', oFile.lines[iLineNumber].line)
             oFile.lines[iLineNumber].isTypeEnd = False
+            oFile.lines[iLineNumber].isTypeEnumeratedEnd = False
             oFile.lines.insert(iLineNumber + 1, line.line('  );'))
             oFile.lines[iLineNumber + 1].isTypeEnd = True
-            oFile.lines[iLineNumber + 1].insideType = True
+            oFile.lines[iLineNumber + 1].isTypeEnumeratedEnd = True
+            oFile.lines[iLineNumber + 1].insideTypeEnumerated = True
             oFile.lines[iLineNumber + 1].indentLevel = oFile.lines[iLineNumber].indentLevel - 1

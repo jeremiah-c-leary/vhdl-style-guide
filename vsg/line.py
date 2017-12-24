@@ -128,13 +128,16 @@ class line():
         self.isWhileLoopKeyword = False
         self.isWhileLoopEnd = False
         # Type attributes
-        self.insideType = False
         self.isTypeKeyword = False
         self.isTypeEnd = False
         # Subtype attributes
         self.insideSubtype = False
         self.isSubtypeKeyword = False
         self.isSubtypeEnd = False
+        # Enumerated Type attributes
+        self.insideTypeEnumerated = False
+        self.isTypeEnumeratedKeyword = False
+        self.isTypeEnumeratedEnd = False
         # Type Array attributes
         self.insideTypeArray = False
         self.isTypeArrayKeyword = False

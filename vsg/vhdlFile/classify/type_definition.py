@@ -14,9 +14,14 @@ def type_definition(dVars, oLine):
         oLine.insideTypeRecord = True
         oLine.indentLevel = dVars['iCurrentIndentLevel']
         dVars['iCurrentIndentLevel'] += 1
+    elif re.match('^\s*type\s.*range', oLine.line, re.IGNORECASE):
+        oLine.isTypeKeyword = True
+        oLine.isTypeEnd = True
+        oLine.indentLevel = dVars['iCurrentIndentLevel']
     elif re.match('^\s*type\s', oLine.line, re.IGNORECASE):
         oLine.isTypeKeyword = True
-        oLine.insideType = True
+        oLine.isTypeEnumeratedKeyword = True
+        oLine.insideTypeEnumerated = True
         oLine.indentLevel = dVars['iCurrentIndentLevel']
         dVars['iCurrentIndentLevel'] += 1
     assign_array_attributes(oLine)
@@ -43,11 +48,13 @@ def assign_record_attributes(dVars, oLine):
 
 
 def assign_enumerated_attributes(dVars, oLine):
-    if oLine.insideType:
-        if not oLine.isTypeKeyword and not oLine.isBlank:
+    if oLine.insideTypeEnumerated:
+        if not oLine.isTypeEnumeratedKeyword and not oLine.isBlank:
             oLine.indentLevel = dVars['iCurrentIndentLevel']
         if ';' in oLine.line:
+            oLine.isTypeEnumeratedEnd = True
             oLine.isTypeEnd = True
+      
             dVars['iCurrentIndentLevel'] -= 1
             if re.match('^\s*\)\s*;', oLine.line):
                 oLine.indentLevel = dVars['iCurrentIndentLevel']
