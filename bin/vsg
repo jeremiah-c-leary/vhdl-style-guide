@@ -59,7 +59,7 @@ def main():
     if commandLineArguments.local_rules:
         sys.path.append(os.path.abspath(commandLineArguments.local_rules))
     oVhdlFile = vhdlFile.vhdlFile(commandLineArguments.filename)
-    oRules = rule_list.list(oVhdlFile, commandLineArguments.local_rules)
+    oRules = rule_list.rule_list(oVhdlFile, commandLineArguments.local_rules)
     oRules.configure(configuration)
 
     if commandLineArguments.fix:
