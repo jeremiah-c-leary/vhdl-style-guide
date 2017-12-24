@@ -4,7 +4,6 @@ import unittest
 
 from vsg.rules import if_statement
 from vsg import vhdlFile
-from vsg.tests import utils
 from vsg import rule_list
 
 # Read in test file used for all tests

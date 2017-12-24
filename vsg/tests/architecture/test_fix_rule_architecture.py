@@ -3,7 +3,6 @@ import unittest
 
 from vsg.rules import architecture
 from vsg import vhdlFile
-from vsg.tests import utils
 
 # Read in test file used for all tests
 oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'architecture_test_input.vhd'))

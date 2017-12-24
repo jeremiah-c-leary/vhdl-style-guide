@@ -3,7 +3,6 @@ import unittest
 
 from vsg.rules import case
 from vsg import vhdlFile
-from vsg.tests import utils
 
 
 # Read in test file used for all tests

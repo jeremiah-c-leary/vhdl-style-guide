@@ -1,7 +1,6 @@
 
 from vsg import rule
 from vsg import line
-from vsg import utilities
 
 import re
 

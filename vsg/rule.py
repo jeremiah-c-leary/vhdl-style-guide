@@ -1,6 +1,4 @@
 
-from vsg import line
-
 
 class rule():
 

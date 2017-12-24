@@ -3,8 +3,6 @@ import os
 import importlib
 import inspect
 
-import vsg.rules
-
 
 def get_python_modules_from_directory(sDirectoryName, lModules):
 

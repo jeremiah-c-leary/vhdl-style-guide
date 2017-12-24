@@ -1,11 +1,9 @@
 import os
 
 import unittest
-import sys
 
 from vsg.rules import port
 from vsg import vhdlFile
-from vsg.tests import utils
 
 oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','port','port_test_input.vhd'))
 oFile_rule_016 = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','port','port_test_input.vhd'))

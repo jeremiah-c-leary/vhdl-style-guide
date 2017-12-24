@@ -3,8 +3,6 @@ from vsg import rule
 from vsg import check
 from vsg import fix
 
-import re
-
 
 class rule_003(rule.rule):
     '''Variable assignment rule 003 checks for a single space before the ":=" keyword.'''

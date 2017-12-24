@@ -1,4 +1,4 @@
-import re
+
 from vsg import line
 from vsg.vhdlFile import update
 from vsg.vhdlFile import classify

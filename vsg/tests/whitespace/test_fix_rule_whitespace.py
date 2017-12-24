@@ -7,7 +7,6 @@ sys.path.append('vsg')
 from vsg.rules import whitespace
 from vsg import vhdlFile
 from vsg import line
-from vsg.tests import utils
 
 sFileName = os.path.join(os.path.dirname(__file__),'whitespace_test_input.txt')
 

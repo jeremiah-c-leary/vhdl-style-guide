@@ -1,12 +1,9 @@
-import os
 
+import os
 import unittest
-import sys
-sys.path.append('vsg')
 
 from vsg.rules import type_definition
 from vsg import vhdlFile
-from vsg.tests import utils
 
 
 # Read in test file used for all tests
