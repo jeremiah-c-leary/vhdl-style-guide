@@ -5,7 +5,7 @@ VSG supports customization to your style standards by allowing localized rules.
 This is a directory with an __init__.py file and one or more python files.
 The files should follow the same structure and naming convention as the rules found in the vsg/rules directory.
 
-The localized rules will be used when the --local_rules command line argument is given.
+The localized rules will be used when the **--local_rules** command line argument is given.
 
 Example: Create rule to check for entity and architectures in the same file.
 ----------------------------------------------------------------------------
@@ -102,7 +102,7 @@ We must decide if we want to give VSG the ability to fix this rule on it's own.
 If so, then we will need to write the **_fix_violations** method.
 However, for this violation we want the user to split the file.
 There are too many variables to consider; including headers, footers, and copyright statements.
-So we will set tell VSG the rule is not fixable.
+So we will tell VSG the rule is not fixable.
 
 .. code-block:: python
 
