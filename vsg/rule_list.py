@@ -13,8 +13,8 @@ def get_python_modules_from_directory(sDirectoryName, lModules):
         for sFileName in lDirectoryContents:
             if sFileName.endswith('.py') and not sFileName.startswith('__'):
                 lModules.append(sFileName.replace('.py', ''))
-    except:
-        print('ERROR: directory ' + sDirectoryName + ' could not be found.')
+    except OSError:
+        print('ERROR: specified local rules directory ' + sDirectoryName + ' could not be found.')
         exit()
 
 
