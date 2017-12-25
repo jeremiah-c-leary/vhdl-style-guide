@@ -6,7 +6,31 @@ from vsg import check
 
 class lower_case_rule(rule.rule):
     '''
-    This class checks the first word in a line is lower case.
+    Checks for and fixes words that are not lowercase.
+
+    Parameters
+    ----------
+
+    name : string
+       The group the rule belongs to.
+
+    identifier : string
+       unique identifier.  Usually in the form of 00N.
+
+    sTrigger : string
+       The line attribute the rule applies to.
+
+    sWord : string
+       The word to lowercase.
+
+    Attributes
+    ----------
+
+    self.phase : integer = 6
+       Sets the phase the rule will run in.
+
+    self.solution : string = None
+       Instructions on how to fix the violation. 
     '''
 
     def __init__(self, name=None, identifier=None, sTrigger=None, sWord=None):

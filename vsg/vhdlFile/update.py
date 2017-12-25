@@ -161,6 +161,12 @@ def update_while_loop_attributes(oPreviousLine, oCurrentLine):
         oCurrentLine.insideWhileLoop = True
 
 
+def update_attribute_attributes(oPreviousLine, oCurrentLine):
+
+    if oPreviousLine.insideAttribute and not oPreviousLine.isAttributeEnd:
+        oCurrentLine.insideAttribute = True
+
+
 def inside_attributes(oPreviousLine, oCurrentLine):
 
     update_entity_attributes(oPreviousLine, oCurrentLine)
@@ -190,3 +196,4 @@ def inside_attributes(oPreviousLine, oCurrentLine):
     update_generate_attributes(oPreviousLine, oCurrentLine)
     update_for_loop_attributes(oPreviousLine, oCurrentLine)
     update_while_loop_attributes(oPreviousLine, oCurrentLine)
+    update_attribute_attributes(oPreviousLine, oCurrentLine)

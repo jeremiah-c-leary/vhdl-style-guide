@@ -157,6 +157,10 @@ class line():
         self.insideAssert = False
         # With attributes
         self.isWithKeyword = False
+        # Attribute attributes
+        self.isAttributeKeyword = False
+        self.isAttributeEnd = False
+        self.insideAttribute = False
 
     def update_line(self, sLine):
         '''

@@ -13,6 +13,7 @@ from search_for_and_replace_keyword_rule import search_for_and_replace_keyword_r
 
 from vsg.rules import architecture
 from vsg.rules import assert_statement
+from vsg.rules import attribute
 from vsg.rules import case
 from vsg.rules import comment
 from vsg.rules import component

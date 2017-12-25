@@ -1,5 +1,6 @@
 from architecture import architecture
 from assert_statement import assert_statement
+from attribute import attribute
 from blank import blank
 from case import case
 from comment import comment

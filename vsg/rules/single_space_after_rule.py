@@ -6,14 +6,38 @@ from vsg import fix
 
 class single_space_after_rule(rule.rule):
     '''
-    Single space after rule checks for a single space after a user specified keyword.
+    Checks for and fixes none or multiple spaces after a word.
+
+    Parameters
+    ----------
+
+    name : string
+       The group the rule belongs to.
+
+    identifier : string
+       unique identifier.  Usually in the form of 00N.
+
+    sTrigger : string
+       The line attribute the rule applies to.
+
+    sWord : string
+       The word to check for a single space after.
+
+    Attributes
+    ----------
+
+    self.phase : integer = 2
+       Sets the phase the rule will run in.
+
+    self.solution : string = None
+       Instructions on how to fix the violation. 
     '''
 
     def __init__(self, name=None, identifier=None, sTrigger=None, sWord=None):
         rule.rule.__init__(self, name=name, identifier=identifier)
-        self.phase = 2
         self.sTrigger = sTrigger
         self.sWord = sWord
+        self.phase = 2
         self.solution = None
 
     def analyze(self, oFile):
