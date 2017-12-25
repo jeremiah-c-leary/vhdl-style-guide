@@ -30,7 +30,6 @@ class testFixRuleIfMethods(unittest.TestCase):
         self.assertEqual(oFile.lines[14].line, '       g = 34 or x = 3000 ) then')
         self.assertEqual(oFile.lines[24].line, '   elsif ( z = 45 and f = 45 ) then')
         self.assertEqual(oRule.violations, dExpected)
-        
 
     def test_fix_rule_003(self):
         oRule = if_statement.rule_003()

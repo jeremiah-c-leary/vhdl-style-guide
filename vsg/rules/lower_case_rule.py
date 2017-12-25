@@ -30,7 +30,7 @@ class lower_case_rule(rule.rule):
        Sets the phase the rule will run in.
 
     self.solution : string = None
-       Instructions on how to fix the violation. 
+       Instructions on how to fix the violation.
     '''
 
     def __init__(self, name=None, identifier=None, sTrigger=None, sWord=None):

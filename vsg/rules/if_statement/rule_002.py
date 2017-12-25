@@ -27,7 +27,6 @@ class rule_002(rule.rule):
         for iLineNumber in self.violations:
             oLine = oFile.lines[iLineNumber]
             if oLine.isIfKeyword:
-                iIndex = oLine.lineNoComment.lower().find('if') + 2
                 oLine.update_line(re.sub(r'^(\s*)[i|I][f|F]', r'\1if (', oLine.line))
             if oLine.isElseIfKeyword:
                 oLine.update_line(re.sub('^(\s*)[e|E][l|L][s|S][i|I][f|F]', r'\1elsif (', oLine.line))

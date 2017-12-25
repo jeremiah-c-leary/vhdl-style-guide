@@ -54,7 +54,7 @@ def assign_enumerated_attributes(dVars, oLine):
         if ';' in oLine.line:
             oLine.isTypeEnumeratedEnd = True
             oLine.isTypeEnd = True
-      
+
             dVars['iCurrentIndentLevel'] -= 1
             if re.match('^\s*\)\s*;', oLine.line):
                 oLine.indentLevel = dVars['iCurrentIndentLevel']
