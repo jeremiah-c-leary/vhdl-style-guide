@@ -147,3 +147,65 @@ This rule checks for a blank line below the end of the function declaration.
    end;
 
    signal wr_en : std_logic;
+
+
+function_008
+############
+
+This rule checks the indent of function parameters on multiple lines.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   function func_1 (a : integer; b : integer;
+               c : unsigned(3 downto 0);
+       d : std_logic_vector(7 downto 0);
+          e : std_logic) return integer is
+   begin
+      
+   end;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   function func_1 (a : integer; b : integer;
+     c : unsigned(3 downto 0);
+     d : std_logic_vector(7 downto 0);
+     e : std_logic) return integer is
+   begin
+      
+   end;
+
+function_009
+############
+
+This rule checks for a function parameter on the same line as the function keyword when the parameters are on multiple lines.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   function func_1 (a : integer; b : integer;
+     c : unsigned(3 downto 0);
+     d : std_logic_vector(7 downto 0);
+     e : std_logic) return integer is
+   begin
+      
+   end;
+
+
+**Fix**
+
+.. code-block:: vhdl
+
+   function func_1 (
+     a : integer; b : integer;
+     c : unsigned(3 downto 0);
+     d : std_logic_vector(7 downto 0);
+     e : std_logic) return integer is
+   begin
+      
+   end;
+

@@ -6,7 +6,9 @@ from vsg.rules import function
 from vsg import vhdlFile
 
 # Read in test file used for all tests
-oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','function','function_test_input.vhd'))
+oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'function_test_input.vhd'))
+oFileMultiple = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'function_multiple_parameters_test_input.vhd'))
+
 
 class testRuleFunctionMethods(unittest.TestCase):
 
@@ -71,4 +73,22 @@ class testRuleFunctionMethods(unittest.TestCase):
         self.assertEqual(oRule.identifier, '007')
         dExpected = [19,24]
         oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_008(self):
+        oRule = function.rule_008()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'function')
+        self.assertEqual(oRule.identifier, '008')
+        dExpected = [5,6,7]
+        oRule.analyze(oFileMultiple)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_009(self):
+        oRule = function.rule_009()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'function')
+        self.assertEqual(oRule.identifier, '009')
+        dExpected = [4]
+        oRule.analyze(oFileMultiple)
         self.assertEqual(oRule.violations, dExpected)

@@ -4,6 +4,7 @@ import unittest
 from vsg import vhdlFile
 
 oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','function','function_test_input.vhd'))
+oFileMultiple = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','function','function_multiple_parameters_test_input.vhd'))
 
 class testVhdlFileFunctionAssignments(unittest.TestCase):
 
@@ -71,3 +72,14 @@ class testVhdlFileFunctionAssignments(unittest.TestCase):
             lActual.append(oLine.indentLevel)
         # Compare
         self.assertEqual(lActual, lExpected)
+
+    def test_isFunctionParameter(self):
+        lExpected = [4,5,6,7]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFileMultiple.lines):
+            if oLine.isFunctionParameter:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+

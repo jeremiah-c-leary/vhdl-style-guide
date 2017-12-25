@@ -20,3 +20,7 @@ def function(dVars, oLine):
             oLine.isFunctionEnd = True
             oLine.indentLevel = dVars['iCurrentIndentLevel'] - 1
             dVars['iCurrentIndentLevel'] -= 1
+        if re.match('^.*\w+\s*:\s*\w+', oLine.line):
+            oLine.isFunctionParameter = True
+            if not oLine.indentLevel:
+                oLine.indentLevel = dVars['iCurrentIndentLevel']

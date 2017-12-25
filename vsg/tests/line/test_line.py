@@ -506,6 +506,12 @@ class testLineMethods(unittest.TestCase):
         oLine.insideFunction = True
         self.assertEqual(oLine.insideFunction, True)
 
+    def test_isFunctionParameter_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isFunctionParameter, False)
+        oLine.isFunctionParameter = True
+        self.assertEqual(oLine.isFunctionParameter, True)
+
     def test_isFunctionBegin_attribute(self):
         oLine = line.line('contents of Line')
         self.assertEqual(oLine.isFunctionBegin, False)

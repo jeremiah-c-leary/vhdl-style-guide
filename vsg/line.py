@@ -115,6 +115,7 @@ class line():
         self.isGenerateEnd = False
         # Function attributes
         self.insideFunction = False
+        self.isFunctionParameter = False
         self.isFunctionBegin = False
         self.isFunctionKeyword = False
         self.isFunctionEnd = False

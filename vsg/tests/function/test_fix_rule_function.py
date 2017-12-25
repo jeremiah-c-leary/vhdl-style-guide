@@ -4,9 +4,12 @@ import unittest
 
 from vsg.rules import function
 from vsg import vhdlFile
+from vsg.tests import utils
 
 # Read in test file used for all tests
 oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','function','function_test_input.vhd'))
+oFileMultiple = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'function_multiple_parameters_test_input.vhd'))
+
 
 class testFixRuleFunctionMethods(unittest.TestCase):
 
@@ -58,3 +61,25 @@ class testFixRuleFunctionMethods(unittest.TestCase):
         oRule.fix(oFile)
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
+
+    def test_fix_rule_008(self):
+        oRule = function.rule_008()
+        self.assertTrue(oRule)
+        dExpected = []
+        oRule.fix(oFileMultiple)
+        oRule.analyze(oFileMultiple)
+        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oFileMultiple.lines[5].line, '    c : unsigned(3 downto 0);')
+        self.assertEqual(oFileMultiple.lines[6].line, '    d : std_logic_vector(7 downto 0);')
+        self.assertEqual(oFileMultiple.lines[7].line, '    e : std_logic) return integer is')
+
+    def test_fix_rule_009(self):
+        oRule = function.rule_009()
+        self.assertTrue(oRule)
+        dExpected = []
+        oRule.fix(oFileMultiple)
+        oRule.analyze(oFileMultiple)
+        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oFileMultiple.lines[4].line, '  function func_1 (')
+        self.assertEqual(oFileMultiple.lines[5].line, '  a : integer; b : integer;')
+        self.assertEqual(oFileMultiple.lines[6].line, '    c : unsigned(3 downto 0);')
