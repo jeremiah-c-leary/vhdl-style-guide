@@ -26,7 +26,11 @@ class testFixRuleIfMethods(unittest.TestCase):
         dExpected = []
         oRule.fix(oFile)
         oRule.analyze(oFile)
+        self.assertEqual(oFile.lines[13].line, '    if ( a = 1 or d = 20 or    -- this if should not be replaced')
+        self.assertEqual(oFile.lines[14].line, '       g = 34 or x = 3000 ) then')
+        self.assertEqual(oFile.lines[24].line, '   elsif ( z = 45 and f = 45 ) then')
         self.assertEqual(oRule.violations, dExpected)
+        
 
     def test_fix_rule_003(self):
         oRule = if_statement.rule_003()
@@ -119,6 +123,27 @@ class testFixRuleIfMethods(unittest.TestCase):
         oRule.analyze(oFileCase)
         self.assertEqual(oRule.violations, dExpected)
 
+    def test_fix_rule_012(self):
+        oRule = if_statement.rule_012()
+        dExpected = []
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_fix_rule_013(self):
+        oRule = if_statement.rule_013()
+        dExpected = []
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_fix_rule_014(self):
+        oRule = if_statement.rule_014()
+        dExpected = []
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+
     def test_fix_rule_024(self):
         oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','if_statement','if_test_input.vhd'))
         oRule = if_statement.rule_024()
@@ -188,4 +213,43 @@ class testFixRuleIfMethods(unittest.TestCase):
         self.assertEqual(oFileCompress.lines[22].line, '    else')
         self.assertEqual(oFileCompress.lines[23].line, '      W <= \'0\';')
 
+    def test_fix_rule_025(self):
+        oRule = if_statement.rule_025()
+        dExpected = []
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oFile.lines[13].line, '    if ( a = 1 or d = 20 or    -- this if should not be replaced')
 
+    def test_fix_rule_026(self):
+        oRule = if_statement.rule_026()
+        dExpected = []
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oFile.lines[24].line, '    elsif ( z = 45 and f = 45 ) then')
+
+    def test_fix_rule_027(self):
+        oRule = if_statement.rule_027()
+        dExpected = []
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oFile.lines[86].line, '    else')
+
+    def test_fix_rule_028(self):
+        oRule = if_statement.rule_028()
+        dExpected = []
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oFile.lines[17].line, '    end if;')
+        self.assertEqual(oFile.lines[27].line, '    end if;')
+
+    def test_fix_rule_029(self):
+        oRule = if_statement.rule_029()
+        dExpected = []
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oFile.lines[14].line, '        g = 34 or x = 3000 ) then')

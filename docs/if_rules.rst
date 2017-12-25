@@ -430,3 +430,96 @@ This rule checks for code after the **then** keyword.
    if (a = '1') then
      c <= '1';
 
+if_025
+######
+
+This rule checks the **if** keyword is lowercase.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   IF (a = '1') then
+
+**Fix**
+
+.. code-block:: vhdl
+
+   if (a = '1') then
+
+if_026
+######
+
+This rule checks the **elsif** keyword is lowercase.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   ELSIF (a = '1') then
+
+**Fix**
+
+.. code-block:: vhdl
+
+   elsif (a = '1') then
+
+if_027
+######
+
+This rule checks the **else** keyword is lowercase.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   ELSE
+
+**Fix**
+
+.. code-block:: vhdl
+
+   else
+
+if_028
+######
+
+This rule checks the **end if** keywords are lowercase.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   END if;
+
+   end IF;
+
+   END IF;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   end if;
+
+   end if;
+
+   end if;
+
+if_029
+######
+
+This rule checks the **then** keyword is lowercase.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   if (a = '1') THEN
+
+**Fix**
+
+.. code-block:: vhdl
+
+   if (a = '1') then
+

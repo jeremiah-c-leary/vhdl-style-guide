@@ -411,7 +411,7 @@ begin
         sh_next(0)  <= rx_bit_next;                                          -- shift in rx bit into LSb
         di_req_next <= '0';                                                  -- prefetch data request: deassert when shifting data
         state_next  <= N;                                                    -- next state is top bit of new data
-        if (wren = '1') then                                                 -- load tx register if ( valid data present at di_reg
+        if (wren = '1') then                                                 -- load tx register if valid data present at di_reg
           wr_ack_next           <= '1';                                      -- acknowledge data in transfer
           sh_next(N-1 downto 1) <= di_reg(N-2 downto 0);                     -- shift inner bits
           tx_bit_next           <= di_reg(N-1);                              -- first output bit comes from the MSb of parallel data

@@ -10,21 +10,21 @@ begin
 	c <= x;
      end if;
 
-     if a = 1 or d = 20 or
-       g = 34 or x = 3000 then
+     IF a = 1 or d = 20 or    -- this if should not be replaced
+       g = 34 or x = 3000 THEN
 	b <= e;
 	c <= y;
-    end if;
+    END if;
 
     if (a = 1 or d = 20 or
        g = 34 or x = 3000 or
        c = 34) then -- else <-- this should not be classified as an else keyword
 	b <= e;
 	c <= y;
-   elsif z = 45 and f = 45 then
+   ELSIF z = 45 and f = 45 then
 	b <= g;
 	c <= o;
-   end if;
+   end IF;
 
 
     if (a = 1 or d = 20 or
@@ -91,7 +91,7 @@ begin
     if (a = 1) then
 	b <= d;
 	c <= x;
-    else
+    ELSE
 	g <= z;
     end if;
 

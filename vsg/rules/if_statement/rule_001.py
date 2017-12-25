@@ -9,8 +9,3 @@ class rule_001(indent_rule):
 
     def __init__(self):
         indent_rule.__init__(self, 'if', '001', 'isIfKeyword')
-
-#    def analyze(self, oFile):
-#        for iLineNumber, oLine in enumerate(oFile.lines):
-#            if oLine.isIfKeyword or oLine.isElseIfKeyword or oLine.isEndIfKeyword or oLine.isElseKeyword:
-#                check.indent(self, oLine, iLineNumber)
