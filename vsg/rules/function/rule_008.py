@@ -22,4 +22,3 @@ class rule_008(rule.rule):
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
             fix.indent(self, oFile.lines[iLineNumber])
-            
