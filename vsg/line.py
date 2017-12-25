@@ -161,6 +161,10 @@ class line():
         self.isAttributeKeyword = False
         self.isAttributeEnd = False
         self.insideAttribute = False
+        # File attributes
+        self.isFileKeyword = False
+        self.isFileEnd = False
+        self.insideFile = False
 
     def update_line(self, sLine):
         '''

@@ -8,6 +8,7 @@ from component import component
 from concurrent import concurrent
 from constant import constant
 from entity import entity
+from file_statement import file_statement
 from for_loop import for_loop
 from function import function
 from generate import generate

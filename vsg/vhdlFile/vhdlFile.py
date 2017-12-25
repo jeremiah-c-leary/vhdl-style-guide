@@ -47,6 +47,7 @@ class vhdlFile():
                 classify.process(dVars, oLine)
                 classify.generate(dVars, oLine)
                 classify.attribute(dVars, oLine)
+                classify.file_statement(dVars, oLine)
 
                 # Check concurrent declarations
                 if oLine.insideArchitecture and not oLine.insideProcess:

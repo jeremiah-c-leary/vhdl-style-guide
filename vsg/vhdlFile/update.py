@@ -167,6 +167,12 @@ def update_attribute_attributes(oPreviousLine, oCurrentLine):
         oCurrentLine.insideAttribute = True
 
 
+def update_file_attributes(oPreviousLine, oCurrentLine):
+
+    if oPreviousLine.insideFile and not oPreviousLine.isFileEnd:
+        oCurrentLine.insideFile = True
+
+
 def inside_attributes(oPreviousLine, oCurrentLine):
 
     update_entity_attributes(oPreviousLine, oCurrentLine)
@@ -197,3 +203,4 @@ def inside_attributes(oPreviousLine, oCurrentLine):
     update_for_loop_attributes(oPreviousLine, oCurrentLine)
     update_while_loop_attributes(oPreviousLine, oCurrentLine)
     update_attribute_attributes(oPreviousLine, oCurrentLine)
+    update_file_attributes(oPreviousLine, oCurrentLine)

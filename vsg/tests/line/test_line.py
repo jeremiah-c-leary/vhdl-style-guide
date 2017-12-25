@@ -722,3 +722,21 @@ class testLineMethods(unittest.TestCase):
         oLine.insideAttribute = True
         self.assertTrue(oLine.insideAttribute)
 
+    def test_isFileKeyword_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertFalse(oLine.isFileKeyword)
+        oLine.isFileKeyword = True
+        self.assertTrue(oLine.isFileKeyword)
+
+    def test_isFileEnd_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertFalse(oLine.isFileEnd)
+        oLine.isFileEnd = True
+        self.assertTrue(oLine.isFileEnd)
+
+    def test_insideFile_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertFalse(oLine.insideFile)
+        oLine.insideFile = True
+        self.assertTrue(oLine.insideFile)
+
