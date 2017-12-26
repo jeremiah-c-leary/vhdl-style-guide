@@ -22,5 +22,3 @@ def assign_subtype_attributes(dVars, oLine):
         if ';' in oLine.line:
             oLine.isSubtypeEnd = True
             dVars['iCurrentIndentLevel'] -= 1
-            if re.match('^\s*\)\s*;', oLine.line):
-                oLine.indentLevel = dVars['iCurrentIndentLevel']
