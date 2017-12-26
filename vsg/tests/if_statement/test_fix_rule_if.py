@@ -62,7 +62,7 @@ class testFixRuleIfMethods(unittest.TestCase):
     def test_fix_rule_006_case(self):
         oRule = if_statement.rule_006()
         dExpected = []
-        oRule.fix(oFile)
+        oRule.fix(oFileCase)
         oRule.analyze(oFileCase)
         self.assertEqual(oRule.violations, dExpected)
 
