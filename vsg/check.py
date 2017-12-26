@@ -9,17 +9,26 @@ def indent(self, oLine, iLineNumber):
             self.add_violation(iLineNumber)
 
 
-def is_no_blank_line_after(self, oFile, iLineNumber):
+def is_no_blank_line_after(self, oFile, iLineNumber, sUnless=None):
     '''Adds a violation if the line after iLineNumber is blank.
        This is typically used to compress lines together.'''
-    if oFile.lines[iLineNumber + 1].isBlank:
+    if sUnless:
+        if oFile.lines[iLineNumber + 1].isBlank:
+            if not oFile.lines[iLineNumber + 2].__dict__[sUnless]:
+                self.add_violation(iLineNumber)
+
+    elif oFile.lines[iLineNumber + 1].isBlank:
         self.add_violation(iLineNumber)
 
 
-def is_no_blank_line_before(self, oFile, iLineNumber):
+def is_no_blank_line_before(self, oFile, iLineNumber, sUnless=None):
     '''Adds a violation if the line before iLineNumber is blank.
        This is typically used to compress lines together.'''
-    if oFile.lines[iLineNumber - 1].isBlank:
+    if sUnless:
+        if oFile.lines[iLineNumber - 1].isBlank:
+            if not oFile.lines[iLineNumber - 2].__dict__[sUnless]:
+                self.add_violation(iLineNumber)
+    elif oFile.lines[iLineNumber - 1].isBlank:
         self.add_violation(iLineNumber)
 
 

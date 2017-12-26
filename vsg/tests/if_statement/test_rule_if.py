@@ -4,10 +4,12 @@ import unittest
 
 from vsg.rules import if_statement
 from vsg import vhdlFile
+from vsg.tests import utils
 
 # Read in test file used for all tests
 oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','if_statement','if_test_input.vhd'))
 oFileCase = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','if_statement','if_case_test_input.vhd'))
+
 
 class testRuleIfMethods(unittest.TestCase):
 
@@ -67,10 +69,7 @@ class testRuleIfMethods(unittest.TestCase):
 
     def test_rule_006_case(self):
         oRule = if_statement.rule_006()
-        self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'if')
-        self.assertEqual(oRule.identifier, '006')
-        dExpected = []
+        dExpected = [9,20]
         oRule.analyze(oFileCase)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -81,6 +80,12 @@ class testRuleIfMethods(unittest.TestCase):
         self.assertEqual(oRule.identifier, '007')
         dExpected = [73]
         oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_007_case(self):
+        oRule = if_statement.rule_007()
+        dExpected = [20]
+        oRule.analyze(oFileCase)
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_008(self):
@@ -94,10 +99,7 @@ class testRuleIfMethods(unittest.TestCase):
 
     def test_rule_008_case(self):
         oRule = if_statement.rule_008()
-        self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'if')
-        self.assertEqual(oRule.identifier, '008')
-        dExpected = []
+        dExpected = [42]
         oRule.analyze(oFileCase)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -121,10 +123,7 @@ class testRuleIfMethods(unittest.TestCase):
 
     def test_rule_010_case(self):
         oRule = if_statement.rule_010()
-        self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'if')
-        self.assertEqual(oRule.identifier, '010')
-        dExpected = []
+        dExpected = [31]
         oRule.analyze(oFileCase)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -139,10 +138,7 @@ class testRuleIfMethods(unittest.TestCase):
 
     def test_rule_011_case(self):
         oRule = if_statement.rule_011()
-        self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'if')
-        self.assertEqual(oRule.identifier, '011')
-        dExpected = []
+        dExpected = [31]
         oRule.analyze(oFileCase)
         self.assertEqual(oRule.violations, dExpected)
 

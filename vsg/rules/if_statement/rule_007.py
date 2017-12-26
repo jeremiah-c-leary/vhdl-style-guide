@@ -8,5 +8,5 @@ class rule_007(remove_blank_lines_above_rule):
     '''
 
     def __init__(self):
-        remove_blank_lines_above_rule.__init__(self, 'if', '007', 'isElseIfKeyword')
+        remove_blank_lines_above_rule.__init__(self, 'if', '007', 'isElseIfKeyword', 'isEndCaseKeyword')
         self.solution = 'Remove blank line(s) before the "elsif" keyword.'

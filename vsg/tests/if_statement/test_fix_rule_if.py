@@ -60,11 +60,14 @@ class testFixRuleIfMethods(unittest.TestCase):
         self.assertEqual(oRule.violations, dExpected)
 
     def test_fix_rule_006_case(self):
+        oFileCase = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'if_case_test_input.vhd'))
         oRule = if_statement.rule_006()
         dExpected = []
         oRule.fix(oFileCase)
         oRule.analyze(oFileCase)
         self.assertEqual(oRule.violations, dExpected)
+        self.assertTrue(oFileCase.lines[10].isBlank)
+        self.assertTrue(oFileCase.lines[20].isBlank)
 
     def test_fix_rule_007(self):
         oRule = if_statement.rule_007()
@@ -72,6 +75,15 @@ class testFixRuleIfMethods(unittest.TestCase):
         oRule.fix(oFile)
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
+
+    def test_fix_rule_007_case(self):
+        oFileCase = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'if_case_test_input.vhd'))
+        oRule = if_statement.rule_007()
+        dExpected = []
+        oRule.fix(oFileCase)
+        oRule.analyze(oFileCase)
+        self.assertEqual(oRule.violations, dExpected)
+        self.assertTrue(oFileCase.lines[18].isBlank)
 
     def test_fix_rule_008(self):
         oRule = if_statement.rule_008()
@@ -81,11 +93,13 @@ class testFixRuleIfMethods(unittest.TestCase):
         self.assertEqual(oRule.violations, dExpected)
 
     def test_fix_rule_008_case(self):
+        oFileCase = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'if_case_test_input.vhd'))
         oRule = if_statement.rule_008()
         dExpected = []
-        oRule.fix(oFile)
+        oRule.fix(oFileCase)
         oRule.analyze(oFileCase)
         self.assertEqual(oRule.violations, dExpected)
+        self.assertTrue(oFileCase.lines[40].isBlank)
 
     def test_fix_rule_009(self):
         oRule = if_statement.rule_009()
@@ -102,11 +116,13 @@ class testFixRuleIfMethods(unittest.TestCase):
         self.assertEqual(oRule.violations, dExpected)
 
     def test_fix_rule_010_case(self):
+        oFileCase = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'if_case_test_input.vhd'))
         oRule = if_statement.rule_010()
         dExpected = []
-        oRule.fix(oFile)
+        oRule.fix(oFileCase)
         oRule.analyze(oFileCase)
         self.assertEqual(oRule.violations, dExpected)
+        self.assertTrue(oFileCase.lines[29].isBlank)
 
     def test_fix_rule_011(self):
         oRule = if_statement.rule_011()
@@ -116,11 +132,13 @@ class testFixRuleIfMethods(unittest.TestCase):
         self.assertEqual(oRule.violations, dExpected)
 
     def test_fix_rule_011_case(self):
+        oFileCase = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'if_case_test_input.vhd'))
         oRule = if_statement.rule_011()
         dExpected = []
-        oRule.fix(oFile)
+        oRule.fix(oFileCase)
         oRule.analyze(oFileCase)
         self.assertEqual(oRule.violations, dExpected)
+        self.assertTrue(oFileCase.lines[32].isBlank)
 
     def test_fix_rule_012(self):
         oRule = if_statement.rule_012()

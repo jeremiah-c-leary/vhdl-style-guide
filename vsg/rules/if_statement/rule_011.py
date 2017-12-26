@@ -17,8 +17,8 @@ class rule_011(rule.rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isElseKeyword and not oFile.lines[iLineNumber + 2].isCaseKeyword and not oLine.isEndIfKeyword:
-                check.is_no_blank_line_after(self, oFile, iLineNumber)
+                check.is_no_blank_line_after(self, oFile, iLineNumber, 'isCaseKeyword')
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:
-            fix.remove_blank_lines_below(self, oFile, iLineNumber)
+            fix.remove_blank_lines_below(self, oFile, iLineNumber, 'isCaseKeyword')

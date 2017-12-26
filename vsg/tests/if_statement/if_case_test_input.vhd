@@ -8,21 +8,36 @@ begin
 
     if (a = 1) then
 
+
       case b
         when 1 =>
           c <= d;
         when 2 =>
           d <= f;
       end case;
+
+
+    elsif (b = 1) then
+
+
+      case b
+        when 1 =>
+          c <= d;
+        when 2 =>
+          d <= f;
+      end case;
+
 
     else
 
+
       case b
         when 1 =>
           c <= d;
         when 2 =>
           d <= f;
       end case;
+
 
     end if;
 

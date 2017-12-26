@@ -40,14 +40,52 @@ def enforce_one_space_before_word(self, oLine, sWord):
     oLine.update_line(re.sub(r'(\S)\s*(' + sWord + ')', r'\1 \2', oLine.line, 1, flags=re.IGNORECASE))
 
 
-def remove_blank_lines_above(self, oFile, iLineNumber):
+def remove_blank_lines_above(self, oFile, iLineNumber, sUnless=None):
+    '''
+    This function removes blank lines above a linenumber.
+
+    Parameters
+    ----------
+
+    oFile : file object
+       The vhdlFile object to modify
+
+    iLineNumber : integer
+       The line number in the vhdlFile object to start removing blank lines.
+
+    sUnless: string
+       If specified, a single blank line will be left if a line with the sUnless attribute is encountered.
+    '''
+
     while oFile.lines[iLineNumber - 1].isBlank:
+        if sUnless:
+            if oFile.lines[iLineNumber - 2].__dict__[sUnless]:
+                break
         oFile.lines.pop(iLineNumber - 1)
         iLineNumber -= 1
 
 
-def remove_blank_lines_below(self, oFile, iLineNumber):
+def remove_blank_lines_below(self, oFile, iLineNumber, sUnless=None):
+    '''
+    This function removes blank lines below a linenumber.
+
+    Parameters
+    ----------
+
+    oFile : file object
+       The vhdlFile object to modify
+
+    iLineNumber : integer
+       The line number in the vhdlFile object to start removing blank lines.
+
+    sUnless: string
+       If specified, a single blank line will be left if a line with the sUnless attribute is encountered.
+    '''
+
     while oFile.lines[iLineNumber + 1].isBlank:
+        if sUnless:
+            if oFile.lines[iLineNumber + 2].__dict__[sUnless]:
+                break
         oFile.lines.pop(iLineNumber + 1)
 
 
