@@ -10,7 +10,8 @@ from vsg import vhdlFile
 # Read in test file used for all tests
 oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'type_test_input.vhd'))
 
-class testRuleSignalMethods(unittest.TestCase):
+
+class testRuleTypeMethods(unittest.TestCase):
 
     def test_rule_001(self):
         oRule = type_definition.rule_001()
@@ -26,7 +27,7 @@ class testRuleSignalMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'type')
         self.assertEqual(oRule.identifier, '002')
-        dExpected = [26]
+        dExpected = [34]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -35,7 +36,7 @@ class testRuleSignalMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'type')
         self.assertEqual(oRule.identifier, '003')
-        dExpected = [21]
+        dExpected = [29]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -44,7 +45,7 @@ class testRuleSignalMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'type')
         self.assertEqual(oRule.identifier, '004')
-        dExpected = [19]
+        dExpected = [27]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -53,7 +54,7 @@ class testRuleSignalMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'type')
         self.assertEqual(oRule.identifier, '005')
-        dExpected = [24]
+        dExpected = [32]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -62,7 +63,7 @@ class testRuleSignalMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'type')
         self.assertEqual(oRule.identifier, '006')
-        dExpected = [28]
+        dExpected = [36]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -71,7 +72,7 @@ class testRuleSignalMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'type')
         self.assertEqual(oRule.identifier, '007')
-        dExpected = [21]
+        dExpected = [29]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -80,7 +81,7 @@ class testRuleSignalMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'type')
         self.assertEqual(oRule.identifier, '008')
-        dExpected = [9,24]
+        dExpected = [9,32]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -89,7 +90,7 @@ class testRuleSignalMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'type')
         self.assertEqual(oRule.identifier, '009')
-        dExpected = [6,21]
+        dExpected = [6,29]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -98,7 +99,7 @@ class testRuleSignalMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'type')
         self.assertEqual(oRule.identifier, '010')
-        dExpected = [35]
+        dExpected = [43]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -107,7 +108,7 @@ class testRuleSignalMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'type')
         self.assertEqual(oRule.identifier, '011')
-        dExpected = [40]
+        dExpected = [48]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -116,7 +117,7 @@ class testRuleSignalMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'type')
         self.assertEqual(oRule.identifier, '012')
-        dExpected = [52,53]
+        dExpected = [60,61]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 

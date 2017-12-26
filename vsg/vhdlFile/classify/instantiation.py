@@ -3,7 +3,7 @@ import re
 
 def instantiation(dVars, oLine):
 
-    if re.match('^\s*\w+\s*:\s*\w+', oLine.line):
+    if re.match('^\s*\w+\s*:\s*\w+', oLine.line) and not oLine.insideTypeRecord:
         if re.match('^\s*\w+\s*:\s*entity', oLine.line, re.IGNORECASE):
             oLine.isDirectInstantiationDeclaration = True
         else:

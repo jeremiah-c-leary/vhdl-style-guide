@@ -18,7 +18,7 @@ def architecture(self, dVars, oLine):
         if not oLine.insideProcess and not oLine.insideCase and \
            not oLine.insideComponent and not oLine.insideGenerate and \
            not oLine.insideFunction and not oLine.insideForLoop and \
-           not oLine.insideWhileLoop:
+           not oLine.insideWhileLoop and not oLine.insideTypeRecord:
             if re.match('^\s*end', oLine.lineLower):
                 oLine.isEndArchitecture = True
                 oLine.indentLevel = 0
