@@ -8,22 +8,27 @@ def type_definition(dVars, oLine):
         oLine.isTypeArrayKeyword = True
         oLine.insideTypeArray = True
         oLine.indentLevel = dVars['iCurrentIndentLevel']
-    elif re.match('^\s*type\s+\w+\s+is\s+record', oLine.line, re.IGNORECASE):
-        oLine.isTypeKeyword = True
-        oLine.isTypeRecordKeyword = True
-        oLine.insideTypeRecord = True
-        oLine.indentLevel = dVars['iCurrentIndentLevel']
-        dVars['iCurrentIndentLevel'] += 1
     elif re.match('^\s*type\s.*range', oLine.line, re.IGNORECASE):
         oLine.isTypeKeyword = True
         oLine.isTypeEnd = True
         oLine.indentLevel = dVars['iCurrentIndentLevel']
-    elif re.match('^\s*type\s', oLine.line, re.IGNORECASE):
+    elif re.match('^\s*type\s+\w+\s+is\s+\(', oLine.lineNoComment, re.IGNORECASE):
         oLine.isTypeKeyword = True
         oLine.isTypeEnumeratedKeyword = True
         oLine.insideTypeEnumerated = True
         oLine.indentLevel = dVars['iCurrentIndentLevel']
         dVars['iCurrentIndentLevel'] += 1
+    elif re.match('^\s*type', oLine.line, re.IGNORECASE):
+        oLine.isTypeKeyword = True
+        oLine.indentLevel = dVars['iCurrentIndentLevel']
+
+    if re.match('^.*record', oLine.lineNoComment, re.IGNORECASE) and not \
+       re.match('^.*end\s+record', oLine.lineNoComment, re.IGNORECASE):
+        oLine.isTypeRecordKeyword = True
+        oLine.insideTypeRecord = True
+        oLine.indentLevel = dVars['iCurrentIndentLevel']
+        dVars['iCurrentIndentLevel'] += 1
+
     assign_array_attributes(oLine)
     assign_record_attributes(dVars, oLine)
     assign_enumerated_attributes(dVars, oLine)

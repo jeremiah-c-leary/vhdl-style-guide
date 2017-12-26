@@ -64,6 +64,15 @@ package PACK is
 
   subtype a is 
     range 0 to 9;
+
+
+  type interface is
+  record
+    data : std_logic_vector(31 downto 0);
+    chip_select : std_logic;
+    wr_en : std_logic;
+    rd_en : std_logic;
+  end record;
     
 end package PACK;
 
