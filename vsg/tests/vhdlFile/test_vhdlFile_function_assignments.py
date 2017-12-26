@@ -93,7 +93,7 @@ class testVhdlFileFunctionAssignments(unittest.TestCase):
         # Compare
         self.assertEqual(lActual, lExpected)
 
-    def test_is_not_constant(self):
+    def test_is_not_signal(self):
         lExpected = []
         # Generic actual list
         lActual = []
@@ -102,4 +102,3 @@ class testVhdlFileFunctionAssignments(unittest.TestCase):
                 lActual.append(iIndex)
         # Compare
         self.assertEqual(lActual, lExpected)
- 
