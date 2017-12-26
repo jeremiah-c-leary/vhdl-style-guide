@@ -21,11 +21,12 @@ class vhdlFile():
         dVars['iOpenParenthesis'] = 0
         dVars['iCloseParenthesis'] = 0
         dVars['iCurrentIndentLevel'] = 0
+        dVars['iGenerateLevel'] = 0
 
         with open(self.filename) as oFile:
             for sLine in oFile:
                 oLine = line.line(sLine.replace('\t', '  ').rstrip())
-                update.inside_attributes(self.lines[-1], oLine)
+                update.inside_attributes(dVars, self.lines[-1], oLine)
 
                 classify.blank(oLine)
                 classify.comment(dVars, oLine)

@@ -61,4 +61,24 @@ END GENERATE generate_1;
     a <= b;
   end generate GENERATE_1;
 
+
+  GENERATE_1 : for i in 0 to 7 generate
+    a <= b;
+
+    GENERATE_2 : for i in 0 to 7 generate
+      a <= b;
+
+      GENERATE_3 : for i in 0 to 7 generate
+        a <= b;
+      end generate GENERATE_3;
+
+    end generate GENERATE_2;
+
+    GENERATE_4 : for i in 0 to 7 generate
+      a <= b;
+    end generate GENERATE_4;
+
+  end generate GENERATE_1;
+
+
 end architecture ARCH;

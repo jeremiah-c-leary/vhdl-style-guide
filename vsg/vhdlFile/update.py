@@ -143,9 +143,12 @@ def update_function_attributes(oPreviousLine, oCurrentLine):
         oCurrentLine.insideFunction = True
 
 
-def update_generate_attributes(oPreviousLine, oCurrentLine):
+def update_generate_attributes(dVars, oPreviousLine, oCurrentLine):
 
-    if oPreviousLine.insideGenerate and not oPreviousLine.isGenerateEnd:
+    if oPreviousLine.insideGenerate and oPreviousLine.isGenerateEnd:
+        if dVars['iGenerateLevel'] > 0:
+            oCurrentLine.insideGenerate = True
+    elif oPreviousLine.insideGenerate and not oPreviousLine.isGenerateEnd:
         oCurrentLine.insideGenerate = True
 
 
@@ -173,7 +176,7 @@ def update_file_attributes(oPreviousLine, oCurrentLine):
         oCurrentLine.insideFile = True
 
 
-def inside_attributes(oPreviousLine, oCurrentLine):
+def inside_attributes(dVars, oPreviousLine, oCurrentLine):
 
     update_entity_attributes(oPreviousLine, oCurrentLine)
     update_port_map_attributes(oPreviousLine, oCurrentLine)
@@ -199,7 +202,7 @@ def inside_attributes(oPreviousLine, oCurrentLine):
     update_package_attributes(oPreviousLine, oCurrentLine)
     update_package_body_attributes(oPreviousLine, oCurrentLine)
     update_function_attributes(oPreviousLine, oCurrentLine)
-    update_generate_attributes(oPreviousLine, oCurrentLine)
+    update_generate_attributes(dVars, oPreviousLine, oCurrentLine)
     update_for_loop_attributes(oPreviousLine, oCurrentLine)
     update_while_loop_attributes(oPreviousLine, oCurrentLine)
     update_attribute_attributes(oPreviousLine, oCurrentLine)

@@ -9,7 +9,7 @@ class testVhdlFileGenerateAssignments(unittest.TestCase):
 
 
     def test_isGenerateKeyword(self):
-        lExpected = [6,11,16,21,26,31,36,41,46,51,56,60]
+        lExpected = [6,11,16,21,26,31,36,41,46,51,56,60,65,68,71,77]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
@@ -29,11 +29,21 @@ class testVhdlFileGenerateAssignments(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isGenerateEnd(self):
-        lExpected = [9,14,19,24,29,34,39,44,49,54,58,62]
+        lExpected = [9,14,19,24,29,34,39,44,49,54,58,62,73,75,79,81]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
             if oLine.isGenerateEnd:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
+    def test_isEndArchitecture(self):
+        lExpected = [84]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFile.lines):
+            if oLine.isEndArchitecture:
                 lActual.append(iIndex)
         # Compare
         self.assertEqual(lActual, lExpected)
@@ -50,3 +60,14 @@ class testVhdlFileGenerateAssignments(unittest.TestCase):
             lActual.append(oLine.indentLevel)
         # Compare
         self.assertEqual(lActual, lExpected)
+
+    def test_insideGenerate(self):
+        lExpected = [6,7,8,9,11,12,13,14,16,17,18,19,21,22,23,24,26,27,28,29,31,32,33,34,36,37,38,39,41,42,43,44,46,47,48,49,51,52,53,54,56,57,58,60,61,62,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFile.lines):
+            if oLine.insideGenerate:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
