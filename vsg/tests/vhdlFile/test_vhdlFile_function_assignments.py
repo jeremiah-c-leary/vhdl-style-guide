@@ -89,7 +89,7 @@ class testVhdlFileFunctionAssignments(unittest.TestCase):
         lActual = []
         for iIndex, oLine in enumerate(oFileMultiple.lines):
             if oLine.isConstant:
-                lActual.append(iIndex)
+                lActual.append(iIndex)  # pragma: no cover
         # Compare
         self.assertEqual(lActual, lExpected)
 
@@ -99,6 +99,6 @@ class testVhdlFileFunctionAssignments(unittest.TestCase):
         lActual = []
         for iIndex, oLine in enumerate(oFileMultiple.lines):
             if oLine.isSignal:
-                lActual.append(iIndex)
+                lActual.append(iIndex)  # pragma: no cover
         # Compare
         self.assertEqual(lActual, lExpected)

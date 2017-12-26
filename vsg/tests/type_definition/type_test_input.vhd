@@ -52,6 +52,10 @@ package PACK is
    wr_en : std_logic;
       rd_en : std_logic;
   end record;
+
+
+  subtype a is 
+    range 0 to 9;
     
 begin
 
