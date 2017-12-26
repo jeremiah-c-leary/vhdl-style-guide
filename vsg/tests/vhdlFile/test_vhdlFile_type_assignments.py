@@ -59,8 +59,8 @@ class testVhdlFileTypeAssignments(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_TypeIndent(self):
-        #           [   0,   1,2,   3,4,   5,6,7,8,9,  10,11,  12]
-        lExpected = [None,None,0,None,1,None,1,2,2,2,None, 1,None]
+        #           [   0,   1,2,   3,4,   5,6,7,8,9,  10,11,  12,13,14,15,16,17,  18,19,   20]
+        lExpected = [None,None,0,None,1,None,1,2,2,2,None, 1,None, 1, 2, 2, 2, 2,None, 1, None]
         # Generic actual list
         lActual = []
         iMaxCheck = len(lExpected)
@@ -169,18 +169,5 @@ class testVhdlFileTypeAssignments(unittest.TestCase):
         for iIndex, oLine in enumerate(oFile.lines):
             if oLine.isEndArchitecture:
                 lActual.append(iIndex)
-        # Compare
-        self.assertEqual(lActual, lExpected)
-
-    def test_TypeIndent(self):
-        #           [   0,   1,2,   3,4,   5,6,7,8,9,  10,11,  12,13,14,15,16,17,  18,19,   20]
-        lExpected = [None,None,0,None,1,None,1,2,2,2,None, 1,None, 1, 2, 2, 2, 2,None, 1, None]
-        # Generic actual list
-        lActual = []
-        iMaxCheck = len(lExpected)
-        for iIndex, oLine in enumerate(oFile.lines):
-            if iIndex == iMaxCheck:
-                break
-            lActual.append(oLine.indentLevel)
         # Compare
         self.assertEqual(lActual, lExpected)
