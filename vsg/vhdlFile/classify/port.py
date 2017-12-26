@@ -21,8 +21,8 @@ def port(dVars, oLine):
                 oLine.indentLevel = 2
             else:
                 oLine.indentLevel = 3
-        dVars['iOpenParenthesis'] += oLine.line.count('(')
-        dVars['iCloseParenthesis'] += oLine.line.count(')')
+        dVars['iOpenParenthesis'] += oLine.lineNoComment.count('(')
+        dVars['iCloseParenthesis'] += oLine.lineNoComment.count(')')
         if dVars['iOpenParenthesis'] == dVars['iCloseParenthesis']:
             dVars['iOpenParenthesis'] = 0
             dVars['iCloseParenthesis'] = 0
