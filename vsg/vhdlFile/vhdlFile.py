@@ -62,8 +62,8 @@ class vhdlFile():
                     classify.if_statement(dVars, oLine)
 
                 classify.case(self, dVars, oLine)
-                if not oLine.insidePackage:
-                    classify.function(dVars, oLine)
+#                if not oLine.insidePackage:
+                classify.function(dVars, oLine)
                 classify.type_definition(dVars, oLine)
                 classify.subtype(dVars, oLine)
                 # Check sequential statements

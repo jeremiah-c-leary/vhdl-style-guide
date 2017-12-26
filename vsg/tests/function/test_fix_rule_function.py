@@ -69,8 +69,10 @@ class testFixRuleFunctionMethods(unittest.TestCase):
         oRule.analyze(oFileMultiple)
         self.assertEqual(oRule.violations, dExpected)
         self.assertEqual(oFileMultiple.lines[5].line, '    c : unsigned(3 downto 0);')
-        self.assertEqual(oFileMultiple.lines[6].line, '    d : std_logic_vector(7 downto 0);')
-        self.assertEqual(oFileMultiple.lines[7].line, '    e : std_logic) return integer is')
+        self.assertFalse(oFileMultiple.lines[6].isSignal)
+        self.assertEqual(oFileMultiple.lines[6].line, '    signal d : std_logic_vector(7 downto 0);')
+        self.assertFalse(oFileMultiple.lines[7].isConstant)
+        self.assertEqual(oFileMultiple.lines[7].line, '    constant e : std_logic) return integer is')
 
     def test_fix_rule_009(self):
         oRule = function.rule_009()

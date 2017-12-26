@@ -74,7 +74,7 @@ class testVhdlFileFunctionAssignments(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isFunctionParameter(self):
-        lExpected = [4,5,6,7]
+        lExpected = [4,5,6,7,19,20,21,22,23]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFileMultiple.lines):
@@ -83,3 +83,23 @@ class testVhdlFileFunctionAssignments(unittest.TestCase):
         # Compare
         self.assertEqual(lActual, lExpected)
 
+    def test_is_not_constant(self):
+        lExpected = []
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFileMultiple.lines):
+            if oLine.isConstant:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
+    def test_is_not_constant(self):
+        lExpected = []
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFileMultiple.lines):
+            if oLine.isSignal:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+ 
