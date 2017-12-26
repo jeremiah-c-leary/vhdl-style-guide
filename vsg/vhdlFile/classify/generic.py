@@ -18,7 +18,6 @@ def generic(dVars, oLine):
         dVars['iOpenParenthesis'] += oLine.lineNoComment.count('(')
         dVars['iCloseParenthesis'] += oLine.lineNoComment.count(')')
         if dVars['iOpenParenthesis'] == dVars['iCloseParenthesis']:
-            print oLine.line
             oLine.indentLevel = dVars['iCurrentIndentLevel'] - 1
             dVars['iOpenParenthesis'] = 0
             dVars['iCloseParenthesis'] = 0
