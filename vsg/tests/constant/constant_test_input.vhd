@@ -18,4 +18,12 @@ package PACK is
 
   constant const : std_logic := '0';
 
+  constant rom : rom_type :=
+   (
+      0,
+    1,
+   2,
+    3
+    );
+
 end package PACK;

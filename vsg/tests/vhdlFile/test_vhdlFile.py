@@ -16,7 +16,6 @@ oFileConcurrent = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..',
 oFileArchitecture = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','architecture','architecture_test_input.vhd'))
 oFileArchitectureLoop = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','architecture','architecture_loop_test_input.vhd'))
 oFileArchitectureFunctionLoop = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','architecture','architecture_loop_in_function_test_input.vhd'))
-oFileConstant = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','constant','constant_test_input.vhd'))
 oFileFunction = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','function','function_test_input.vhd'))
 oFileWhitespace = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','whitespace','whitespace_test_input.txt'))
 
@@ -294,16 +293,6 @@ class testVhdlFileMethods(unittest.TestCase):
         lActual = []
         for iIndex, oLine in enumerate(oFileSignal.lines):
             if oLine.isSignal:
-                lActual.append(iIndex)
-        # Compare
-        self.assertEqual(lActual, lExpected)
-
-    def test_isConstant_assignment(self):
-        lExpected = [5,6,7,8,9,10,19]
-        # Generic actual list
-        lActual = []
-        for iIndex, oLine in enumerate(oFileConstant.lines):
-            if oLine.isConstant:
                 lActual.append(iIndex)
         # Compare
         self.assertEqual(lActual, lExpected)

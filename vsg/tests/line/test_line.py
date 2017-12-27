@@ -170,6 +170,18 @@ class testLineMethods(unittest.TestCase):
         oLine.isConstant = True
         self.assertEqual(oLine.isConstant, True)
 
+    def test_insideConstant_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.insideConstant, False)
+        oLine.insideConstant = True
+        self.assertEqual(oLine.insideConstant, True)
+
+    def test_isConstantEnd_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isConstantEnd, False)
+        oLine.isConstantEnd = True
+        self.assertEqual(oLine.isConstantEnd, True)
+
     def test_insideProcess_attribute(self):
         oLine = line.line('contents of Line')
         self.assertEqual(oLine.insideProcess, False)

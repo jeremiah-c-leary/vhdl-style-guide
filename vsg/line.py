@@ -45,7 +45,9 @@ class line():
         # Signal attributes
         self.isSignal = False
         # Constant attributes
+        self.insideConstant = False
         self.isConstant = False
+        self.isConstantEnd = False
         # Variable attributes
         self.isVariable = False
         # Process attributes

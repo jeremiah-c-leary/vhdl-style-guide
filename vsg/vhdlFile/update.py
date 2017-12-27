@@ -182,6 +182,12 @@ def update_file_attributes(oPreviousLine, oCurrentLine):
         oCurrentLine.insideFile = True
 
 
+def update_constant_attributes(oPreviousLine, oCurrentLine):
+
+    if oPreviousLine.insideConstant and not oPreviousLine.isConstantEnd:
+        oCurrentLine.insideConstant = True
+
+
 def inside_attributes(dVars, oPreviousLine, oCurrentLine):
 
     update_entity_attributes(oPreviousLine, oCurrentLine)
@@ -214,3 +220,4 @@ def inside_attributes(dVars, oPreviousLine, oCurrentLine):
     update_while_loop_attributes(oPreviousLine, oCurrentLine)
     update_attribute_attributes(oPreviousLine, oCurrentLine)
     update_file_attributes(oPreviousLine, oCurrentLine)
+    update_constant_attributes(oPreviousLine, oCurrentLine)

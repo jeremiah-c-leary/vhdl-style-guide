@@ -187,3 +187,30 @@ This rule checks the constant type is lowercase.
 
    constant size : integer := 1;
 
+constant_012
+############
+
+This rule checks the indent of multiline constants.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   constant rom : romq_type :=
+   (
+            0,
+        65535,
+        32768
+     );
+
+**Fix**
+
+.. code-block:: vhdl
+
+   constant rom : romq_type :=
+   (
+     0,
+     65535,
+     32768
+   );
+
