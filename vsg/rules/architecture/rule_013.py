@@ -1,29 +1,12 @@
 
-from vsg import rule
-from vsg import fix
-from vsg import check
-
-import re
+from vsg.rules.architecture import architecture_case_rule
 
 
-class rule_013(rule.rule):
+class rule_013(architecture_case_rule):
     '''
     Architecture rule 013 checks the architecture name is upper case in the architecture declaration.
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'architecture'
-        self.identifier = '013'
+        architecture_case_rule.__init__(self, 'architecture', '013', 1)
         self.solution = 'Upper case architecture name.'
-        self.phase = 6
-
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isArchitectureKeyword and re.match('^\s*\S+\s\s*\S+\s\s*of\s\s*\S+\s\s*is', oLine.lineLower):
-                lLine = oLine.line.split()
-                check.is_uppercase(self, lLine[1], iLineNumber)
-
-    def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
-            fix.upper_case(self, oFile.lines[iLineNumber], oFile.lines[iLineNumber].line.split()[1])
