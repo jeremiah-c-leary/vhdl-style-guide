@@ -143,6 +143,12 @@ def update_function_attributes(oPreviousLine, oCurrentLine):
         oCurrentLine.insideFunction = True
 
 
+def update_procedure_attributes(oPreviousLine, oCurrentLine):
+
+    if oPreviousLine.insideProcedure and not oPreviousLine.isProcedureEnd:
+        oCurrentLine.insideProcedure = True
+
+
 def update_generate_attributes(dVars, oPreviousLine, oCurrentLine):
 
     if oPreviousLine.insideGenerate and oPreviousLine.isGenerateEnd:
@@ -201,6 +207,7 @@ def inside_attributes(dVars, oPreviousLine, oCurrentLine):
     update_instantiation_generic_map_attributes(oPreviousLine, oCurrentLine)
     update_package_attributes(oPreviousLine, oCurrentLine)
     update_package_body_attributes(oPreviousLine, oCurrentLine)
+    update_procedure_attributes(oPreviousLine, oCurrentLine)
     update_function_attributes(oPreviousLine, oCurrentLine)
     update_generate_attributes(dVars, oPreviousLine, oCurrentLine)
     update_for_loop_attributes(oPreviousLine, oCurrentLine)

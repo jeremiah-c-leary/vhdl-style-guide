@@ -746,3 +746,38 @@ class testLineMethods(unittest.TestCase):
         oLine.insideFile = True
         self.assertTrue(oLine.insideFile)
 
+    def test_insideProcedure_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.insideProcedure, False)
+        oLine.insideProcedure = True
+        self.assertEqual(oLine.insideProcedure, True)
+
+    def test_isProcedureParameter_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isProcedureParameter, False)
+        oLine.isProcedureParameter = True
+        self.assertEqual(oLine.isProcedureParameter, True)
+
+    def test_isProcedureBegin_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isProcedureBegin, False)
+        oLine.isProcedureBegin = True
+        self.assertEqual(oLine.isProcedureBegin, True)
+
+    def test_isProcedureKeyword_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isProcedureKeyword, False)
+        oLine.isProcedureKeyword = True
+        self.assertEqual(oLine.isProcedureKeyword, True)
+
+    def test_isProcedureEnd_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isProcedureEnd, False)
+        oLine.isProcedureEnd = True
+        self.assertEqual(oLine.isProcedureEnd, True)
+
+    def test_isProcedureReturn_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isProcedureReturn, False)
+        oLine.isProcedureReturn = True
+        self.assertEqual(oLine.isProcedureReturn, True)

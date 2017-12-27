@@ -31,6 +31,7 @@ from vsg.rules import library
 from vsg.rules import package
 from vsg.rules import port
 from vsg.rules import process
+from vsg.rules import procedure
 from vsg.rules import sequential
 from vsg.rules import signal
 from vsg.rules import subtype

@@ -166,6 +166,13 @@ class line():
         self.isFileKeyword = False
         self.isFileEnd = False
         self.insideFile = False
+        # Procedure attributes
+        self.insideProcedure = False
+        self.isProcedureParameter = False
+        self.isProcedureBegin = False
+        self.isProcedureKeyword = False
+        self.isProcedureEnd = False
+        self.isProcedureReturn = False
 
     def update_line(self, sLine):
         '''

@@ -20,6 +20,7 @@ from package_body import package_body
 from package import package
 from port import port
 from process import process
+from procedure import procedure
 from sequential import sequential
 from signal import signal
 from subtype import subtype

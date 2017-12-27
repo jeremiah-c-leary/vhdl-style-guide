@@ -25,6 +25,7 @@ The rules are divided into catagories depending on the part of the VHDL code bei
    library_rules.rst
    package_rules.rst
    port_rules.rst
+   procedure_rules.rst
    process_rules.rst
    sequential_rules.rst
    signal_rules.rst

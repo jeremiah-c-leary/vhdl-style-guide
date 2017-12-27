@@ -63,21 +63,22 @@ class vhdlFile():
                     classify.if_statement(dVars, oLine)
 
                 classify.case(self, dVars, oLine)
-#                if not oLine.insidePackage:
                 classify.function(dVars, oLine)
+                classify.procedure(dVars, oLine)
                 classify.type_definition(dVars, oLine)
                 classify.subtype(dVars, oLine)
                 # Check sequential statements
-                if oLine.insideProcess:
+                if oLine.insideProcess or oLine.insideProcedure:
                     classify.sequential(dVars, oLine)
-                if oLine.insideProcess or oLine.insideFunction:
+                if oLine.insideProcess or oLine.insideFunction or oLine.insideProcedure:
                     classify.variable_assignment(dVars, oLine)
                 # Check instantiation statements
                 if oLine.insideArchitecture and not oLine.insideProcess and \
                    not oLine.isConcurrentBegin and \
                    not oLine.insideComponent and \
                    not oLine.isGenerateKeyword and \
-                   not oLine.insideFunction:
+                   not oLine.insideFunction and \
+                   not oLine.insideProcedure:
                     classify.instantiation(dVars, oLine)
 
                 # Add line to file
