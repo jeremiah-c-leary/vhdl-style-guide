@@ -15,7 +15,7 @@ class rule_009(rule.rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isFunctionParameter and oLine.isFunctionKeyword and not 'return' in oLine.line:
+            if oLine.isFunctionParameter and oLine.isFunctionKeyword and 'return' not in oLine.line:
                 self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
