@@ -1,25 +1,10 @@
 
-from vsg import rule
-from vsg import fix
-from vsg import check
+from vsg.rules import uppercase_word_rule
 
 
-class rule_008(rule.rule):
+class rule_008(uppercase_word_rule):
     '''Component rule 008 checks the component name is uppercase in the component declaration line.'''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'component'
-        self.identifier = '008'
+        uppercase_word_rule.__init__(self, 'component', '008', 'isComponentDeclaration', 1)
         self.solution = 'Change component name to all uppercase.'
-        self.phase = 6
-
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isComponentDeclaration:
-                check.is_uppercase(self, oLine.line.split()[1], iLineNumber)
-
-    def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
-            lLine = oFile.lines[iLineNumber].line.split()
-            fix.upper_case(self, oFile.lines[iLineNumber], lLine[1])

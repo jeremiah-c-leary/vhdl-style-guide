@@ -1,26 +1,12 @@
 
-from vsg import rule
-from vsg import fix
-from vsg import check
+from vsg.rules import uppercase_word_rule
 
 
-class rule_008(rule.rule):
+class rule_008(uppercase_word_rule):
     '''
     Instantiation rule 008 checks the instance name is uppercase in the instantiation declaration line.
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'instantiation'
-        self.identifier = '008'
+        uppercase_word_rule.__init__(self, 'instantiation', '008', 'isInstantiationDeclaration', 0)
         self.solution = 'Change instance name to all uppercase.'
-        self.phase = 6
-
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isInstantiationDeclaration:
-                check.is_uppercase(self, oLine.line.split()[0], iLineNumber)
-
-    def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
-            fix.upper_case(self, oFile.lines[iLineNumber], oFile.lines[iLineNumber].line.split()[0])
