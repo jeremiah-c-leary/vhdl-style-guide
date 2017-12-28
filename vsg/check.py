@@ -173,3 +173,25 @@ def has_package_name(oLine):
             if not lLine[iIndex + 1] == '--':
                 return True
     return False
+
+
+def get_package_name(oLine):
+    '''
+    Returns the package name in the line.
+    
+    Parameters
+    ----------
+
+    oLine : line object
+
+    Returns
+    -------
+
+    string = package name or empty string if package name not found.
+    '''
+
+    lLine = oLine.lineNoComment.split()
+    for iIndex, sWord in enumerate(lLine):
+        if sWord.lower() == 'package' and not lLine[iIndex + 1] == '--':
+            return lLine[iIndex + 1]
+    return ''

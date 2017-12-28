@@ -38,7 +38,7 @@ def change_word(oLine, sWord, sNewWord):
     oLine.line = re.sub(' ' + sWord + '$', ' ' + sNewWord, oLine.line, 1, flags=re.IGNORECASE)
     oLine.line = re.sub('^' + sWord + '$', sNewWord, oLine.line, 1, flags=re.IGNORECASE)
     oLine.line = re.sub('^' + sWord + ' ', sNewWord + ' ', oLine.line, 1, flags=re.IGNORECASE)
-    oLine.lineLower = oLine.line.lower()
+    oLine.update_line(oLine.line)
 
 
 def remove_text_after_word(sKeyword, sWord):

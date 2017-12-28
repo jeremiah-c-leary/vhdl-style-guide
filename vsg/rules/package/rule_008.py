@@ -1,29 +1,11 @@
 
-from vsg import rule
-from vsg import fix
-from vsg import check
-
-import re
+from vsg.rules.package import uppercase_package_name_rule
 
 
-class rule_008(rule.rule):
+class rule_008(uppercase_package_name_rule):
     '''
     Package rule 008 checks the package name is upper case on the closing "end package" line.
     '''
 
     def __init__(self):
-        rule.rule.__init__(self, 'package', '008')
-        self.solution = 'Uppercase package name.'
-        self.phase = 6
-
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isPackageEnd and check.has_package_name(oLine):
-                lLine = oLine.line.split()
-                check.is_uppercase(self, lLine[2], iLineNumber)
-
-    def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
-            fix.upper_case(self, oFile.lines[iLineNumber], oFile.lines[iLineNumber].line.split()[2])
-
-
+        uppercase_package_name_rule.__init__(self, 'package', '008', 'isPackageEnd')
