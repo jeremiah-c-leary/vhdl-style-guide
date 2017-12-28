@@ -79,6 +79,7 @@ class testRuleMethods(unittest.TestCase):
 
         # Check for attributes that do not exist
         dConfiguration['rule']['xyz_001']['invalidAttribute'] = False
+        oRule.configure(dConfiguration)
         self.assertEqual(oRule.disable,True)
         self.assertEqual(oRule.solution,'This is the new solution')
         self.assertEqual(oRule.indentSize,4)

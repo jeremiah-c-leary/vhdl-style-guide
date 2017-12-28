@@ -62,9 +62,6 @@ class rule():
             pass
 
     def _configure_rule_attributes(self, dConfiguration):
-        try:
-            for sAttributeName in dConfiguration['rule'][self.name + '_' + self.identifier]:
-                if sAttributeName in self.__dict__:
-                    self.__dict__[sAttributeName] = dConfiguration['rule'][self.name + '_' + self.identifier][sAttributeName]
-        except KeyError:
-            pass
+        for sAttributeName in dConfiguration['rule'][self.name + '_' + self.identifier]:
+            if sAttributeName in self.__dict__:
+                self.__dict__[sAttributeName] = dConfiguration['rule'][self.name + '_' + self.identifier][sAttributeName]
