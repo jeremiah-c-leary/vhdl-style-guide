@@ -18,7 +18,7 @@ class rule_010(rule.rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isPackageKeyword and re.match('^\s*package\s+\w+', oLine.lineLower):
+            if oLine.isPackageKeyword and check.has_package_name(oLine):
                 lLine = oLine.line.split()
                 check.is_uppercase(self, lLine[1], iLineNumber)
 
