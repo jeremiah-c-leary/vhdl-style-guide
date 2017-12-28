@@ -15,9 +15,8 @@ class rule_005(rule.rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             sLine = oLine.lineNoComment
-            if re.match('^.*\(\s+', sLine):
-                if not re.match('^.*\(\s+[0-9]', sLine):
-                    self.add_violation(iLineNumber)
+            if re.match('^.*\(\s+', sLine) and not re.match('^.*\(\s+[0-9]', sLine):
+                self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
