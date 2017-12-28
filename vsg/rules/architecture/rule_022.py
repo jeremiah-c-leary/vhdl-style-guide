@@ -1,5 +1,6 @@
 
 from vsg import rule
+from vsg import check
 from vsg import fix
 
 import re
@@ -11,18 +12,14 @@ class rule_022(rule.rule):
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'architecture'
-        self.identifier = '022'
+        rule.rule.__init__(self, 'architecture', '022')
         self.solution = 'Ensure a single space exists between "architecture" and the architecture name.'
         self.phase = 2
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isEndArchitecture:
-                if re.match('^\s*end\s+architecture\s+\w', oLine.lineLower):
-                    if not re.match('^\s*end\s+architecture\s\w', oLine.lineLower):
-                        self.add_violation(iLineNumber)
+            if oLine.isEndArchitecture and re.match('^\s*end\s+architecture\s+\w', oLine.lineLower):
+                check.is_single_space_after(self, 'architecture', oLine, iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

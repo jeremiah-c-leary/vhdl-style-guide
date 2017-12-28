@@ -6,12 +6,12 @@ import re
 
 
 class rule_020(rule.rule):
-    '''Architecture rule 020 checks the "is" keyword is lower case.'''
+    '''
+    Architecture rule 020 checks the "is" keyword is lower case.
+    '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'architecture'
-        self.identifier = '020'
+        rule.rule.__init__(self, 'architecture', '020')
         self.solution = 'Change "is" keyword to lowercase.'
         self.phase = 6
 

@@ -11,9 +11,7 @@ class rule_019(rule.rule):
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'architecture'
-        self.identifier = '019'
+        rule.rule.__init__(self, 'architecture', '019')
         self.solution = 'Change "of" keyword to lowercase.'
         self.phase = 6
 
