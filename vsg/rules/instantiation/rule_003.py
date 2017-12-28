@@ -1,9 +1,5 @@
 
 from vsg.rules import single_space_before_character_rule
-from vsg import rule
-from vsg import fix
-
-import re
 
 
 class rule_003(single_space_before_character_rule):
