@@ -3,8 +3,6 @@ from vsg import rule
 from vsg import fix
 from vsg import check
 
-import re
-
 
 class uppercase_package_name_rule(rule.rule):
     '''

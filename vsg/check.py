@@ -154,7 +154,7 @@ def indent_of_comments_above(self, oFile, iLineNumber):
 def has_package_name(oLine):
     '''
     Returns boolean if package name is found in line.
-    
+
     Parameters
     ----------
 
@@ -178,7 +178,7 @@ def has_package_name(oLine):
 def get_package_name(oLine):
     '''
     Returns the package name in the line.
-    
+
     Parameters
     ----------
 
