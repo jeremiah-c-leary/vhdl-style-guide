@@ -193,5 +193,5 @@ def get_package_name(oLine):
     lLine = oLine.lineNoComment.split()
     for iIndex, sWord in enumerate(lLine):
         if sWord.lower() == 'package' and not lLine[iIndex + 1] == '--':
-            return lLine[iIndex + 1]
+            return lLine[iIndex + 1].rstrip(';')
     return ''
