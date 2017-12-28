@@ -9,7 +9,4 @@ class rule_003(line_above_rule):
     '''
 
     def __init__(self):
-        line_above_rule.__init__(self)
-        self.name = 'architecture'
-        self.identifier = '003'
-        self.condition = 'isArchitectureKeyword'
+        line_above_rule.__init__(self, 'architecture', '003', 'isArchitectureKeyword')

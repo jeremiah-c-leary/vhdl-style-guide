@@ -8,7 +8,4 @@ class rule_015(line_below_rule):
     '''
 
     def __init__(self):
-        line_below_rule.__init__(self)
-        self.name = 'architecture'
-        self.identifier = '015'
-        self.condition = 'isArchitectureKeyword'
+        line_below_rule.__init__(self, 'architecture', '015', 'isArchitectureKeyword')

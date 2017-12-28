@@ -17,10 +17,10 @@ class rule_019(rule.rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isArchitectureKeyword:
-                if re.match('^\s*\w+\s+\w+\s+of', oLine.lineLower):
-                    if not re.match('^\s*\w+\s+\w+\s+of', oLine.line):
-                        self.add_violation(iLineNumber)
+            if oLine.isArchitectureKeyword and \
+               re.match('^\s*\w+\s+\w+\s+of', oLine.lineLower) and \
+               not re.match('^\s*\w+\s+\w+\s+of', oLine.line):
+                self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

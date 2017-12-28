@@ -8,7 +8,4 @@ class rule_016(line_above_rule):
     '''
 
     def __init__(self):
-        line_above_rule.__init__(self)
-        self.name = 'architecture'
-        self.identifier = '016'
-        self.condition = 'isArchitectureBegin'
+        line_above_rule.__init__(self, 'architecture', '016', 'isArchitectureBegin')

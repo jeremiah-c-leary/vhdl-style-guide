@@ -10,15 +10,12 @@ class rule_024(rule.rule):
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'architecture'
-        self.identifier = '024'
+        rule.rule.__init__(self, 'architecture', '024')
         self.solution = 'Add architecture name keyword.'
         self.phase = 1
         self.fixable = False
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isEndArchitecture:
-                if not re.match('^\s*end\s+architecture\s+\w+', oLine.line, re.IGNORECASE):
-                    self.add_violation(iLineNumber)
+            if oLine.isEndArchitecture and not re.match('^\s*end\s+architecture\s+\w+', oLine.line, re.IGNORECASE):
+                self.add_violation(iLineNumber)

@@ -10,9 +10,7 @@ class rule_011(rule.rule):
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'architecture'
-        self.identifier = '011'
+        rule.rule.__init__(self, 'architecture', '011')
         self.solution = 'Uppercase architecture name.'
         self.phase = 6
 
