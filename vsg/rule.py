@@ -37,7 +37,7 @@ class rule():
         for sViolation in self.violations:
             if str(sViolation).startswith(str(iLineNumber) + '-') or str(iLineNumber) == str(sViolation):
                 if not fQuiet:
-                    print('  ' + (self.name + '_' + self.identifier).ljust(25) + ' | ' + str(sViolation).rjust(10) + ' | ' + self.solution)
+                    print('  ' + (self.name + '_' + self.identifier).ljust(25) + ' | ' + str(sViolation).rjust(10) + ' | ' + self.solution)  # pragma: no coverage
                 return 1
         return 0
 
