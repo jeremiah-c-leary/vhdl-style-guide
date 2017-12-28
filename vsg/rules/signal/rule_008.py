@@ -20,13 +20,17 @@ class rule_008(rule.rule):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if not oLine.isSignal:
                 continue
-            for sSignalName in oLine.line.split(':')[0].split():
-                if sSignalName.lower() == 'signal':
-                    continue
-                fPrefixFound = False
-                for sPrefixName in self.prefixes:
-                    if sSignalName.startswith(sPrefixName):
-                        fPrefixFound = True
-                        break
-                if not fPrefixFound:
-                    self.add_violation(iLineNumber)
+            check_for_signal_prefixes(self, oLine, iLineNumber)
+
+
+def check_for_signal_prefixes(self, oLine, iLineNumber):
+    for sSignalName in oLine.line.split(':')[0].split():
+        if sSignalName.lower() == 'signal':
+            continue
+        fPrefixFound = False
+        for sPrefixName in self.prefixes:
+            if sSignalName.startswith(sPrefixName):
+                fPrefixFound = True
+                break
+        if not fPrefixFound:
+            self.add_violation(iLineNumber)

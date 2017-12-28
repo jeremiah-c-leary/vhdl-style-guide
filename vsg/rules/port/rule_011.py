@@ -20,20 +20,30 @@ class rule_011(rule.rule):
         self.fixable = False  # This requires the user to fix as this could cover multiple files.
 
     def analyze(self, oFile):
-        if not self.port_direction:
-            self.violations = []
-        if self.port_direction == 'Prefix':
-            self.solution = 'Add proper prefix indicating port direction.'
-        if self.port_direction == 'Suffix':
-            self.solution = 'Add proper suffix indicating port direction.'
+        select_solution(self)
 
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isPortDeclaration and oLine.insideEntity:
                 lLine = oLine.lineLower.split()
-                if self.port_direction == 'Prefix':
-                    if not(lLine[0].startswith('i_') or lLine[0].startswith('o_') or lLine[0].startswith('io_')):
-                        self.add_violation(iLineNumber)
-                if self.port_direction == 'Suffix':
-                    if not(lLine[0].endswith('_i') or lLine[0].endswith('_o') or lLine[0].endswith('_io') or
-                           lLine[0].endswith('_i,') or lLine[0].endswith('_o,') or lLine[0].endswith('_io,')):
-                        self.add_violation(iLineNumber)
+                check_for_prefix(self, lLine, iLineNumber)
+                check_for_suffix(self, lLine, iLineNumber)
+
+
+def select_solution(self):
+    if self.port_direction == 'Prefix':
+        self.solution = 'Add proper prefix indicating port direction.'
+    if self.port_direction == 'Suffix':
+        self.solution = 'Add proper suffix indicating port direction.'
+
+
+def check_for_prefix(self, lLine, iLineNumber):
+    if self.port_direction == 'Prefix':
+        if not(lLine[0].startswith('i_') or lLine[0].startswith('o_') or lLine[0].startswith('io_')):
+            self.add_violation(iLineNumber)
+
+
+def check_for_suffix(self, lLine, iLineNumber):
+    if self.port_direction == 'Suffix':
+        if not(lLine[0].endswith('_i') or lLine[0].endswith('_o') or lLine[0].endswith('_io') or
+               lLine[0].endswith('_i,') or lLine[0].endswith('_o,') or lLine[0].endswith('_io,')):
+            self.add_violation(iLineNumber)

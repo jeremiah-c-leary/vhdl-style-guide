@@ -2,6 +2,8 @@ import re
 
 
 def generic(dVars, oLine):
+    if not (oLine.insideEntity or oLine.insideComponent):
+        return
     if re.match('^\s*generic', oLine.lineLower) and not oLine.insideGenericMap:
         oLine.isGenericKeyword = True
         oLine.insideGenericMap = True

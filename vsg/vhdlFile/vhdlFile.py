@@ -34,9 +34,8 @@ class vhdlFile():
                 classify.entity(self, dVars, oLine)
                 classify.assert_statement(dVars, oLine)
 
-                if oLine.insideEntity or oLine.insideComponent:
-                    classify.port(dVars, oLine)
-                    classify.generic(dVars, oLine)
+                classify.port(dVars, oLine)
+                classify.generic(dVars, oLine)
 
                 classify.architecture(self, dVars, oLine)
                 classify.package_body(dVars, oLine)
@@ -50,28 +49,23 @@ class vhdlFile():
                 classify.attribute(dVars, oLine)
                 classify.file_statement(dVars, oLine)
 
-                # Check concurrent declarations
-                if oLine.insideArchitecture and not oLine.insideProcess:
-                    classify.concurrent(dVars, oLine)
-                    classify.with_statement(dVars, oLine)
+                classify.concurrent(dVars, oLine)
 
+                classify.with_statement(dVars, oLine)
                 classify.for_loop(dVars, oLine)
                 classify.while_loop(dVars, oLine)
 
-                # Check if statements
-                if oLine.insideProcess or oLine.insideFunction:
-                    classify.if_statement(dVars, oLine)
+                classify.if_statement(dVars, oLine)
 
                 classify.case(self, dVars, oLine)
                 classify.function(dVars, oLine)
                 classify.procedure(dVars, oLine)
                 classify.type_definition(dVars, oLine)
                 classify.subtype(dVars, oLine)
-                # Check sequential statements
-                if oLine.insideProcess or oLine.insideProcedure:
-                    classify.sequential(dVars, oLine)
-                if oLine.insideProcess or oLine.insideFunction or oLine.insideProcedure:
-                    classify.variable_assignment(dVars, oLine)
+
+                classify.sequential(dVars, oLine)
+                classify.variable_assignment(dVars, oLine)
+
                 # Check instantiation statements
                 if oLine.insideArchitecture and not oLine.insideProcess and \
                    not oLine.isConcurrentBegin and \

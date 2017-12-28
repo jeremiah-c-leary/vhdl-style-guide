@@ -14,34 +14,48 @@ class rule_027(rule.rule):
         self.phase = 3
 
     def analyze(self, oFile):
-        fCheckForBlanks = False
-        fSkipProcess = False
-        iBlankCount = 0
+        dVars = clear_variables()
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.insideProcess:
-                if oLine.isProcessBegin and oLine.isSensitivityListEnd:
-                    fSkipProcess = True
-                if oLine.isSensitivityListEnd and oFile.lines[iLineNumber + 1].isProcessBegin:
-                    fSkipProcess = True
-                if fSkipProcess:
+                skip_this_process(dVars, oFile, oLine, iLineNumber)
+                if dVars['fSkipProcess']:
                     if oLine.isEndProcess:
-                        fSkipProcess = False
+                        dVars['fSkipProcess'] = False
                     continue  # pragma: no cover
-                if fCheckForBlanks:
-                    if oLine.isBlank:
-                        iBlankCount += 1
-                    if not oLine.isBlank and not oLine.isProcessBegin:
-                        iBlankCount = 0
-                    if oLine.isProcessBegin:
-                        if not iBlankCount == 1:
-                            self.add_violation(iLineNumber)
-                        fSkipProcess = True
-                        fCheckForBlanks = False
-                        iBlankCount = 0
+                check_for_blanks(self, dVars, oLine, iLineNumber)
                 if oLine.isSensitivityListEnd:
-                    fCheckForBlanks = True
+                    dVars['fCheckForBlanks'] = True
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:
             fix.insert_blank_line_above(self, oFile, iLineNumber)
             oFile.lines[iLineNumber].insideProcess = True
+
+
+def clear_variables():
+    dVars = {}
+    dVars['fCheckForBlanks'] = False
+    dVars['fSkipProcess'] = False
+    dVars['iBlankCount'] = 0
+    return dVars
+
+
+def skip_this_process(dVars, oFile, oLine, iLineNumber):
+    if oLine.isProcessBegin and oLine.isSensitivityListEnd:
+        dVars['fSkipProcess'] = True
+    if oLine.isSensitivityListEnd and oFile.lines[iLineNumber + 1].isProcessBegin:
+        dVars['fSkipProcess'] = True
+
+
+def check_for_blanks(self, dVars, oLine, iLineNumber):
+    if dVars['fCheckForBlanks']:
+        if oLine.isBlank:
+            dVars['iBlankCount'] += 1
+        if not oLine.isBlank and not oLine.isProcessBegin:
+            dVars['iBlankCount'] = 0
+        if oLine.isProcessBegin:
+            if not dVars['iBlankCount'] == 1:
+                self.add_violation(iLineNumber)
+            dVars['fSkipProcess'] = True
+            dVars['fCheckForBlanks'] = False
+            dVars['iBlankCount'] = 0

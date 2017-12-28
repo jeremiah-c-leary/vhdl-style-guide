@@ -2,6 +2,8 @@ import re
 
 
 def if_statement(dVars, oLine):
+    if not (oLine.insideProcess or oLine.insideFunction):
+        return
 
     if re.match('^\s*if', oLine.lineLower):
         oLine.isIfKeyword = True

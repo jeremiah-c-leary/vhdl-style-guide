@@ -108,7 +108,7 @@ class rule_list():
 
         print('=' * len(sFileTitle))
         print('Total Rules Checked: ' + str(self.iNumberRulesRan))
-        print('Total Failures:      ' + str(iFailures))
+        print('Total Violations:    ' + str(iFailures))
 
     def configure(self, configurationFile):
         '''Configures individual rules based on dictionary passed.'''
