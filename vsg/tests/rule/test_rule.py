@@ -76,3 +76,24 @@ class testRuleMethods(unittest.TestCase):
         oRule.configure(dConfiguration)
 
         self.assertEqual(oRule.indentSize,4)
+
+        # Check for attributes that do not exist
+        dConfiguration['rule']['xyz_001']['invalidAttribute'] = False
+        self.assertEqual(oRule.disable,True)
+        self.assertEqual(oRule.solution,'This is the new solution')
+        self.assertEqual(oRule.indentSize,4)
+
+    def test_report_violations(self):
+        oRule = rule.rule()
+        oRule.name = 'xyz'
+        oRule.identifier = '001'
+        oRule.solution = 'This is my solution'
+        self.assertEqual(oRule.name,'xyz')
+        self.assertEqual(oRule.identifier,'001')
+        self.assertEqual(oRule.solution,'This is my solution')
+        self.assertEqual(oRule.disable,False)
+        self.assertEqual(oRule.indentSize,2)
+
+        self.assertEqual(oRule.report_violations(1, True), 0)
+        oRule.add_violation(1)
+        self.assertEqual(oRule.report_violations(1, True), 1)
