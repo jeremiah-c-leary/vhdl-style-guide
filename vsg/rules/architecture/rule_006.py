@@ -11,17 +11,16 @@ class rule_006(rule.rule):
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'architecture'
-        self.identifier = '006'
+        rule.rule.__init__(self, 'architecture', '006')
         self.solution = 'Ensure "is" keyword is on the same line as the "architecture" keyword.'
         self.phase = 1
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isArchitectureKeyword and re.match('^\s*architecture\s+\w+\s+of\s+\w+', oLine.line, re.IGNORECASE):
-                if not re.match('^\s*architecture\s+\w+\s+of\s+\w+\s+is', oLine.line, re.IGNORECASE):
-                    self.add_violation(iLineNumber)
+            if oLine.isArchitectureKeyword and \
+               re.match('^\s*architecture\s+\w+\s+of\s+\w+', oLine.line, re.IGNORECASE) and \
+               not re.match('^\s*architecture\s+\w+\s+of\s+\w+\s+is', oLine.line, re.IGNORECASE):
+                self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

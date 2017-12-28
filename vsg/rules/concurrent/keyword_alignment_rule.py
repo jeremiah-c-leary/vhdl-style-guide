@@ -2,7 +2,6 @@
 from vsg import rule
 from vsg import check
 from vsg import fix
-from vsg import line
 
 
 class keyword_alignment_rule(rule.rule):
@@ -29,19 +28,15 @@ class keyword_alignment_rule(rule.rule):
 
     sEndGroupTrigger: string
        The line attribute which ends the group to align.
-
-    sLineTrigger : string
-       Stores lines in a group which match this attribute.
+       NOTE:  This is inversed to allow for grouping of consecutive lines.
     '''
 
-    def __init__(self, name=None, identifier=None):
+    def __init__(self, name, identifier):
         rule.rule.__init__(self, name, identifier)
         self.phase = 5
-        # The following is filled out by the user
         self.sKeyword = None
         self.sStartGroupTrigger = None
         self.sEndGroupTrigger = None
-        self.sLineTrigger = None
 
     def analyze(self, oFile):
         lGroup = []
@@ -51,17 +46,13 @@ class keyword_alignment_rule(rule.rule):
             if oLine.__dict__[self.sStartGroupTrigger] and not fGroupFound:
                 fGroupFound = True
                 iStartGroupIndex = iLineNumber
-            if oLine.__dict__[self.sEndGroupTrigger] and fGroupFound:
-                lGroup.append(oLine)
+            if not oLine.__dict__[self.sEndGroupTrigger] and fGroupFound:
                 fGroupFound = False
                 check.keyword_alignment(self, iStartGroupIndex, self.sKeyword, lGroup)
                 lGroup = []
                 iStartGroupIndex = None
             if fGroupFound:
-                if oLine.__dict__[self.sLineTrigger]:
-                    lGroup.append(oLine)
-                else:
-                    lGroup.append(line.line('Removed line'))
+                lGroup.append(oLine)
 
     def _fix_violations(self, oFile):
         fix.keyword_alignment(self, oFile)
