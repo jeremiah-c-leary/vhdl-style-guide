@@ -18,17 +18,29 @@ class rule_009(rule.rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isPackageEnd:
-                if re.match('^\s*end\s+package\s+\w', oLine.lineLower):
-                    if not re.match('^\s*end\spackage\s\w', oLine.lineLower):
-                        self.add_violation(iLineNumber)
-                elif re.match('^\s*end\s+package', oLine.lineLower):
-                    if not re.match('^\s*end\spackage', oLine.lineLower):
-                        self.add_violation(iLineNumber)
-                elif re.match('^\s*end\s+\w', oLine.lineLower):
-                    if not re.match('^\s*end\s\w', oLine.lineLower):
-                        self.add_violation(iLineNumber)
+                check_spaces_between_end_and_package_and_name(self, oLine, iLineNumber)
+                check_spaces_between_end_and_package(self, oLine, iLineNumber)
+                check_spaces_between_end_and_name(self, oLine, iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
             fix.enforce_one_space_after_word(self, oFile.lines[iLineNumber], 'end')
             fix.enforce_one_space_after_word(self, oFile.lines[iLineNumber], 'package')
+
+
+def check_spaces_between_end_and_package_and_name(self, oLine, iLineNumber):
+    if re.match('^\s*end\s+package\s+\w', oLine.lineLower):
+        if not re.match('^\s*end\spackage\s\w', oLine.lineLower):
+            self.add_violation(iLineNumber)
+
+
+def check_spaces_between_end_and_package(self, oLine, iLineNumber):
+    if re.match('^\s*end\s+package', oLine.lineLower):
+        if not re.match('^\s*end\spackage', oLine.lineLower):
+            self.add_violation(iLineNumber)
+
+
+def check_spaces_between_end_and_name(self, oLine, iLineNumber):
+    if re.match('^\s*end\s+\w', oLine.lineLower):
+        if not re.match('^\s*end\s\w', oLine.lineLower):
+            self.add_violation(iLineNumber)

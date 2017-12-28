@@ -49,7 +49,8 @@ class rule():
             self.dFix['violations'] = {}
 
     def add_violation(self, lineNumber):
-        self.violations.append(lineNumber)
+        if lineNumber not in self.violations:
+            self.violations.append(lineNumber)
 
     def _configure_global_rule_attributes(self, dConfiguration):
         try:
