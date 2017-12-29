@@ -8,7 +8,7 @@ from vsg import line
 class keyword_alignment_rule(rule.rule):
     '''
     Checks for keyword alignment in consecutive concurrent statements.
- 
+
     Parameters
     ----------
 
