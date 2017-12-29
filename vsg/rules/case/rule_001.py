@@ -8,9 +8,7 @@ class rule_001(rule.rule):
     '''Case rule 001 checks for the proper indentation at the beginning of the line.'''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'case'
-        self.identifier = '001'
+        rule.rule.__init__(self, 'case', '001')
         self.solution = 'Ensure proper indentation.'
         self.phase = 4
 

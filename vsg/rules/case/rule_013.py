@@ -8,8 +8,4 @@ class rule_013(indent_rule):
     '''
 
     def __init__(self):
-        indent_rule.__init__(self)
-        # These are filled out when creating a new rule
-        self.name = 'case'
-        self.identifier = '013'
-        self.sTrigger = 'isCaseNull'
+        indent_rule.__init__(self, 'case', '013', 'isCaseNull')

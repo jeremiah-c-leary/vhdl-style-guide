@@ -1,24 +1,12 @@
 
-from vsg import rule
-from vsg import fix
-from vsg import check
+from vsg.rules import single_space_before_rule
 
 
-class rule_003(rule.rule):
-    '''Case rule 003 checks for a single space before the "is" keyword.'''
+class rule_003(single_space_before_rule):
+    '''
+    Case rule 003 checks for a single space before the "is" keyword.
+    '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'case'
-        self.identifier = '003'
+        single_space_before_rule.__init__(self, 'case', '003', 'isCaseIsKeyword', 'is')
         self.solution = 'Ensure a single space exists before the "is" keyword.'
-        self.phase = 2
-
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isCaseIsKeyword:
-                check.is_single_space_before(self, 'is', oLine, iLineNumber)
-
-    def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
-            fix.enforce_one_space_before_word(self, oFile.lines[iLineNumber], 'is')

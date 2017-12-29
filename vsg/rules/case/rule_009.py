@@ -8,7 +8,4 @@ class rule_009(line_above_rule):
     '''
 
     def __init__(self):
-        line_above_rule.__init__(self)
-        self.name = 'case'
-        self.identifier = '009'
-        self.condition = 'isEndCaseKeyword'
+        line_above_rule.__init__(self, 'case', '009', 'isEndCaseKeyword')

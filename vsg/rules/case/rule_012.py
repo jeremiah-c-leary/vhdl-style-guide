@@ -5,12 +5,12 @@ import re
 
 
 class rule_012(rule.rule):
-    '''Case rule 012 ensures code does not exist after the => operator.'''
+    '''
+    Case rule 012 ensures code does not exist after the => operator.
+    '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'case'
-        self.identifier = '012'
+        rule.rule.__init__(self, 'case', '012')
         self.solution = 'Move code after the => operator to it\'s own line.'
         self.phase = 1
 
