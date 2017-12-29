@@ -13,6 +13,7 @@ from lower_case_rule import lower_case_rule
 from lowercase_word_after_colon_rule import lowercase_word_after_colon_rule
 from search_for_and_replace_keyword_rule import search_for_and_replace_keyword_rule
 from uppercase_word_rule import uppercase_word_rule
+from lowercase_word_rule import lowercase_word_rule
 
 from vsg.rules import architecture
 from vsg.rules import assert_statement

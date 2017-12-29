@@ -8,14 +8,12 @@ class rule_007(rule.rule):
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'constant'
-        self.identifier = '007'
+        rule.rule.__init__(self, 'constant', '007')
         self.solution = 'move assignment to same line as constant declaration.'
         self.phase = 1
         self.fixable = False  # Too complicated at the moment to fix.
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isConstant and ':=' not in oLine.line:
+            if oLine.isConstant and ':=' not in oLine.lineNoComment:
                 self.add_violation(iLineNumber)
