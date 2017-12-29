@@ -4,7 +4,7 @@ import re
 def variable_assignment(dVars, oLine):
 
     if not (oLine.insideProcess or oLine.insideFunction or oLine.insideProcedure):
-       return
+        return
 
     if re.match('^\s*.*\s*:=', oLine.line) and \
        not oLine.isComment and not oLine.insideIf and \
