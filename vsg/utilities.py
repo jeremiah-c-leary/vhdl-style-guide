@@ -235,7 +235,7 @@ def reclassify_line(oFile, iLineNumber):
 
       oFile: (vhdlFile object)
 
-      iLineNumber: (integer) 
+      iLineNumber: (integer)
     '''
     if re.match('^\s*return', oFile.lines[iLineNumber + 1].line, re.IGNORECASE):
         oFile.lines[iLineNumber].isFunctionReturn = False
