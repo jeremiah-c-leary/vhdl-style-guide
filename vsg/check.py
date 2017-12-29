@@ -6,9 +6,12 @@ import re
 
 
 def indent(self, oLine, iLineNumber):
-    '''Adds a violation if the indent of the line does not match the desired level.
+    '''
+    Adds a violation if the indent of the line does not match the desired level.
 
     Parameters
+
+      self: (rule object)
 
       oLine: (line object)
 
@@ -28,6 +31,8 @@ def is_no_blank_line_after(self, oFile, iLineNumber, sUnless=None):
     If sUnless is given, then a violation will not occur if there is a blank line following the line with the attribute given for sUnless.
 
     Parameters
+
+      self: (rule object)
 
       oLine: (line object)
 
@@ -53,6 +58,8 @@ def is_no_blank_line_before(self, oFile, iLineNumber, sUnless=None):
 
     Parameters
 
+      self: (rule object)
+
       oLine: (line object)
 
       iLineNumber: (integer)
@@ -74,6 +81,8 @@ def is_blank_line_after(self, oFile, iLineNumber):
 
     Parameters
 
+      self: (rule object)
+
       oFile: (vhdlFile object)
 
       iLineNumber: (integer)
@@ -89,6 +98,8 @@ def is_blank_line_before(self, oFile, iLineNumber):
 
     Parameters
 
+      self: (rule object)
+
       oFile: (vhdlFile object)
 
       iLineNumber: (integer)
@@ -103,11 +114,13 @@ def keyword_alignment(self, iLineNumber, sKeyword, lGroup):
 
     Parameters:
 
-       iLineNumber: (integer)
+      self: (rule object)
 
-       sKeyword: (string)
+      iLineNumber: (integer)
 
-       lGroup: (list of line objects)
+      sKeyword: (string)
+
+      lGroup: (list of line objects)
     '''
     iKeywordAlignment = None
     iMaximumKeywordColumn = 0
@@ -136,11 +149,11 @@ def get_maximum_keyword_column(oLine, sKeyword, iMaximumKeywordColumn):
 
     Parameters:
 
-       oLine: (line object)
+      oLine: (line object)
 
-       sKeyword: (string)
+      sKeyword: (string)
 
-       iMaximumKeywordColumn: (integer)
+      iMaximumKeywordColumn: (integer)
 
     Returns: (integer)
     '''
@@ -155,11 +168,11 @@ def update_keyword_alignment(oLine, sKeyword, iKeywordAlignment):
 
     Parameters:
 
-       oLine: (line object)
+      oLine: (line object)
 
-       sKeyword: (string)
+      sKeyword: (string)
 
-       iKeywordAlignment: (integer)
+      iKeywordAlignment: (integer)
 
     Returns: (integer)
     '''
@@ -174,7 +187,9 @@ def add_range_violation(self, sViolationRange):
 
     Parameters:
 
-       sViolationRange: (string)
+      self: (rule object)
+
+      sViolationRange: (string)
     '''
     if sViolationRange not in self.violations:
         self.add_violation(sViolationRange)
@@ -186,11 +201,13 @@ def multiline_alignment(self, iColumn, oLine, iLineNumber):
 
     Parameters:
 
-       iColumn: (integer)
+      self: (rule object)
 
-       oLine: (line object)
+      iColumn: (integer)
 
-       iLineNumber: (integer)
+      oLine: (line object)
+
+      iLineNumber: (integer)
     '''
     if not re.match('\s{' + str(iColumn) + '}\S', oLine.line):
         self.add_violation(iLineNumber)
@@ -204,9 +221,11 @@ def is_uppercase(self, sString, iLineNumber):
 
     Parameters:
 
-       sString: (string)
+      self: (rule object)
 
-       iLineNumber: (integer)
+      sString: (string)
+
+      iLineNumber: (integer)
     '''
     if not sString == sString.upper():
         self.add_violation(iLineNumber)
@@ -218,9 +237,11 @@ def is_lowercase(self, sString, iLineNumber):
 
     Parameters:
 
-       sString: (string)
+      self: (rule object)
 
-       iLineNumber: (integer)
+      sString: (string)
+
+      iLineNumber: (integer)
     '''
     if not sString == sString.lower():
         self.add_violation(iLineNumber)
@@ -234,11 +255,13 @@ def is_single_space_after(self, sString, oLine, iLineNumber):
 
     Parameters:
 
-        sString: (string)
+      self: (rule object)
 
-        oLine: (line object)
+      sString: (string)
 
-        iLineNumber: (integer)
+      oLine: (line object)
+
+      iLineNumber: (integer)
     '''
     if not sString.lower() in oLine.lineLower:
         return
@@ -258,11 +281,14 @@ def is_single_space_before(self, sString, oLine, iLineNumber):
     The string is considered a whole word.
 
     Parameters:
-        sString: (string)
 
-        oLine: (line object)
+      self: (rule object)
 
-        iLineNumber: (integer)
+      sString: (string)
+
+      oLine: (line object)
+
+      iLineNumber: (integer)
     '''
     if not sString.lower() in oLine.lineLower:
         return
@@ -278,11 +304,14 @@ def is_single_space_after_character(self, sCharacter, oLine, iLineNumber):
     NOTE:  The characters will match partial words.
 
     Parameters:
-        sCharacter: (string)
 
-        oLine: (line object)
+      self: (rule object)
 
-        iLineNumber: (integer)
+      sCharacter: (string)
+
+      oLine: (line object)
+
+      iLineNumber: (integer)
     '''
     if not re.match('^.*' + sCharacter.lower() + '\s*--', oLine.lineNoComment):
         if re.match('^.*' + sCharacter.lower() + '$', oLine.lineNoComment):
@@ -297,11 +326,14 @@ def is_single_space_before_character(self, sCharacter, oLine, iLineNumber):
     NOTE:  The characters will match partial words.
 
     Parameters:
-        sCharacter: (string)
 
-        oLine: (line object)
+      self: (rule object)
 
-        iLineNumber: (integer)
+      sCharacter: (string)
+
+      oLine: (line object)
+
+      iLineNumber: (integer)
     '''
     iIndex = oLine.line.find(sCharacter) + len(sCharacter)
     if not re.match('^.*\s' + sCharacter.lower(), oLine.lineNoComment[:iIndex]):
@@ -314,9 +346,11 @@ def indent_of_comments_above(self, oFile, iLineNumber):
 
     Parameters:
 
-        oFile: (vhdlFile object)
+      self: (rule object)
 
-        iLineNumber: (integer)
+      oFile: (vhdlFile object)
+
+      iLineNumber: (integer)
     '''
     iIndex = 0
     while iLineNumber - iIndex > 1:

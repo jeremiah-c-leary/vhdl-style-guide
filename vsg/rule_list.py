@@ -25,7 +25,9 @@ def get_rules_from_module(lModules, lRules):
 
 
 def load_local_rules(sDirectoryName):
-    '''Loads rules from the directory passed to this routine.'''
+    '''
+    Loads rules from the directory passed to this routine.
+    '''
 
     lLocalModules = []
     get_python_modules_from_directory(sDirectoryName, lLocalModules)
@@ -59,8 +61,17 @@ def maximum_phase(lRules):
 
 
 class rule_list():
-    ''' Contains a list of all rules to be checked.  It also contains methods to check the rules.'''
+    '''
+    Contains a list of all rules to be checked.
+    It loads all base rules.
+    If localized rules are loaded if given.
 
+    Parameters:
+
+      oVhdlFile: (vhdlFile object)
+
+      sLocalRulesDirectory: (string) (optional)
+    '''
     def __init__(self, oVhdlFile, sLocalRulesDirectory=None):
         self.rules = (load_rules())
         if sLocalRulesDirectory:
@@ -71,12 +82,19 @@ class rule_list():
         self.maximumPhase = maximum_phase(self.rules)
 
     def fix(self):
+        '''
+        Applies fixes to all violations found.
+        '''
         for phase in range(1, 10):
             for oRule in self.rules:
                 if oRule.phase == phase and not oRule.disable:
                     oRule.fix(self.oVhdlFile)
 
     def check_rules(self):
+        '''
+        Analyzes all rules in increasing phase order.
+        If there is a violation in a phase, furthere analysis is stopped.
+        '''
         self.iNumberRulesRan = 0
         iFailures = 0
         for phase in range(1, 10):
@@ -92,6 +110,9 @@ class rule_list():
                 break
 
     def report_violations(self):
+        '''
+        Prints out violations to stdout.
+        '''
         sFileTitle = 'File:  ' + self.oVhdlFile.filename
         print(sFileTitle)
         print('=' * len(sFileTitle))
@@ -111,7 +132,13 @@ class rule_list():
         print('Total Violations:    ' + str(iFailures))
 
     def configure(self, configurationFile):
-        '''Configures individual rules based on dictionary passed.'''
+        '''
+        Configures individual rules based on dictionary passed.
+
+        Parameters:
+
+          configurationFile: (dictionary)
+        '''
         if configurationFile:
             for oRule in self.rules:
                 oRule.configure(configurationFile)

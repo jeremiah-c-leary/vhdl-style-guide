@@ -5,7 +5,16 @@ from vsg.vhdlFile import classify
 
 
 class vhdlFile():
+    '''
+    Holds contents of a VHDL file.
+    When a vhdlFile object is created, the filename passed to it is opened.
+    A line object is created for each line read in.
+    Then the line object attributes are updated.
 
+    Parameters:
+
+       filename: (string)
+    '''
     def __init__(self, filename):
         self.filename = filename
         self.lines = [line.line('')]
