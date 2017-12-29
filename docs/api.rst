@@ -7,5 +7,5 @@ It operates through an API.
 
 .. toctree::
 
-   vsg.fix
+   vsg.check
 

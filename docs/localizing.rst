@@ -75,7 +75,7 @@ Now we need to add the **analyze** method to perform the check.
      def analyze(self, oFile):
 
 The built in variables in the vsg.line class can be used to build rules.
-There are helper functions in vsg.utilities, vsg.check, and vsg.fix also.
+There are helper functions in vsg.utilities, :doc:`vsg.check`, and vsg.fix also.
 In this case, the vsg.vhdlFile class has two attributes(hasEntity and hasArchitecture) that are exactly what we need.
 We are ready to write the body of the **analyze** method:
 
