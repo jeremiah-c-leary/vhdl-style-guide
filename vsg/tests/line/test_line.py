@@ -764,11 +764,23 @@ class testLineMethods(unittest.TestCase):
         oLine.insideProcedure = True
         self.assertEqual(oLine.insideProcedure, True)
 
+    def test_insideProcedureDeclarative_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.insideProcedureDeclarative, False)
+        oLine.insideProcedureDeclarative = True
+        self.assertEqual(oLine.insideProcedureDeclarative, True)
+
     def test_isProcedureParameter_attribute(self):
         oLine = line.line('contents of Line')
         self.assertEqual(oLine.isProcedureParameter, False)
         oLine.isProcedureParameter = True
         self.assertEqual(oLine.isProcedureParameter, True)
+
+    def test_isProcedureParameterEnd_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isProcedureParameterEnd, False)
+        oLine.isProcedureParameterEnd = True
+        self.assertEqual(oLine.isProcedureParameterEnd, True)
 
     def test_isProcedureBegin_attribute(self):
         oLine = line.line('contents of Line')
@@ -793,3 +805,9 @@ class testLineMethods(unittest.TestCase):
         self.assertEqual(oLine.isProcedureReturn, False)
         oLine.isProcedureReturn = True
         self.assertEqual(oLine.isProcedureReturn, True)
+
+    def test_isProcedureIs_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isProcedureIs, False)
+        oLine.isProcedureIs = True
+        self.assertEqual(oLine.isProcedureIs, True)

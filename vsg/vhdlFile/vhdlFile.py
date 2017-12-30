@@ -27,6 +27,9 @@ class vhdlFile():
         dVars = {}
         dVars['fFoundProcessBegin'] = False
         dVars['SensitivityListFound'] = False
+        dVars['fProcedureParameterEndDetected'] = False
+        dVars['fProcedureIsDetected'] = False
+        dVars['fProcedureBeginDetected'] = False
         dVars['iOpenParenthesis'] = 0
         dVars['iCloseParenthesis'] = 0
         dVars['iCurrentIndentLevel'] = 0

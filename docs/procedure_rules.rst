@@ -151,3 +151,35 @@ This rule checks the indent of parameters.
    begin
    end procedure AVERAGE_SAMPLES;
 
+procedure_005
+#############
+
+This rule checks the indent of line between the **is** and **begin** keywords
+
+**Violation**
+
+.. code-block:: vhdl
+
+   procedure AVERAGE_SAMPLES (
+     constant a : in integer;
+     signal d : out std_logic ) is
+   variable var_1 : integer;
+       variable var_1 : integer;
+   begin
+   end procedure AVERAGE_SAMPLES;
+
+
+**Fix**
+
+.. code-block:: vhdl
+
+   procedure AVERAGE_SAMPLES (
+     constant a : in integer;
+     signal b : in std_logic;
+     variable c : in std_logic_vector(3 downto 0);
+     signal d : out std_logic ) is
+     variable var_1 : integer;
+     variable var_1 : integer;
+   begin
+   end procedure AVERAGE_SAMPLES;
+

@@ -47,3 +47,12 @@ class testRuleProcedureMethods(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
+    def test_rule_005(self):
+        oRule = procedure.rule_005()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'procedure')
+        self.assertEqual(oRule.identifier, '005')
+        dExpected = [89,90]
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+

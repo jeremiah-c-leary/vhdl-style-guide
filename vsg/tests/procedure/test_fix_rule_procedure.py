@@ -21,3 +21,12 @@ class testFixRuleProcedureMethods(unittest.TestCase):
         self.assertEqual(oFile.lines[16].line, '  procedure AVERAGE_SAMPLES (')
         self.assertEqual(oFile.lines[40].line, '  procedure AVERAGE_SAMPLES is')
 
+    def test_fix_rule_005(self):
+        oRule = procedure.rule_005()
+        dExpected = []
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oFile.lines[89].line, '    variable var_1 : integer;')
+        self.assertEqual(oFile.lines[90].line, '    variable var_2 : integer;')
+

@@ -170,11 +170,14 @@ class line():
         self.insideFile = False
         # Procedure attributes
         self.insideProcedure = False
+        self.insideProcedureDeclarative = False
         self.isProcedureParameter = False
+        self.isProcedureParameterEnd = False
         self.isProcedureBegin = False
         self.isProcedureKeyword = False
         self.isProcedureEnd = False
         self.isProcedureReturn = False
+        self.isProcedureIs = False
 
     def update_line(self, sLine):
         '''
