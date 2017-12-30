@@ -112,7 +112,7 @@ begin
 
 entity ENTITY1 is
   generic (
-    G_GENERIC1: std_logic := '0';
+--    G_GENERIC1: std_logic := '0';
     A_GENERIC2: std_logic := '1'
    );
   port (

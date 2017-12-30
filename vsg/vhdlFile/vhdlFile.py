@@ -86,5 +86,6 @@ class vhdlFile():
 
                 # Add line to file
                 self.lines.append(oLine)
+#                print('{0:5s} | {1:5s} | {2:5s} | {3:s}').format(str(oLine.indentLevel), str(oLine.isProcedureBegin), str(oLine.isProcedureParameter), oLine.line)
 
         oFile.close()

@@ -37,7 +37,7 @@ begin
    port mAp (
 
       port_1 => w_pORt_1,
-      port_2 => w_port_2,
+--      port_2 => w_port_2,
       port_3 => w_porT_3
       );
 

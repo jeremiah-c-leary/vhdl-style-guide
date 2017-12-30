@@ -208,7 +208,7 @@ class testVhdlFileMethods(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isGenericDeclaration_assignment(self):
-        lExpected = [5,6,21,22,36,37,52,53,67,68,83,84,96,97,115,116,139,140,155,156]
+        lExpected = [5,6,21,22,36,37,52,53,67,68,83,84,96,97,116,139,140,155,156]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFileGeneric.lines):

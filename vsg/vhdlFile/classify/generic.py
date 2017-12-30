@@ -4,7 +4,7 @@ import re
 def generic(dVars, oLine):
     if not (oLine.insideEntity or oLine.insideComponent):
         return
-    if re.match('^\s*generic', oLine.lineLower) and not oLine.insideGenericMap:
+    if re.match('^\s*generic', oLine.lineNoComment, re.IGNORECASE) and not oLine.insideGenericMap:
         oLine.isGenericKeyword = True
         oLine.insideGenericMap = True
         oLine.indentLevel = dVars['iCurrentIndentLevel']
@@ -13,7 +13,7 @@ def generic(dVars, oLine):
             return
 
     if oLine.insideGenericMap:
-        if re.match('^\s*\S+.*:', oLine.line):
+        if re.match('^\s*\S+.*:', oLine.lineNoComment):
             oLine.isGenericDeclaration = True
             if not oLine.isGenericKeyword:
                 oLine.indentLevel = dVars['iCurrentIndentLevel']

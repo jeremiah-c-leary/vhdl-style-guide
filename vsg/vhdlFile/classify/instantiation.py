@@ -45,7 +45,7 @@ def classify_generic_map(dVars, oLine):
 
 
 def classify_assignment(dVars, oLine):
-    if re.match('^.*=>', oLine.line):
+    if re.match('^.*=>', oLine.lineNoComment):
         if not oLine.indentLevel:
             oLine.indentLevel = dVars['iCurrentIndentLevel']
         if oLine.insideInstantiationPortMap:
