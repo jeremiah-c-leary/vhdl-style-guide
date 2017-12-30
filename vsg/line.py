@@ -117,11 +117,15 @@ class line():
         self.isGenerateEnd = False
         # Function attributes
         self.insideFunction = False
+        self.insideFunctionDeclarative = False
         self.isFunctionParameter = False
+        self.isFunctionParameterEnd = False
         self.isFunctionBegin = False
         self.isFunctionKeyword = False
         self.isFunctionEnd = False
         self.isFunctionReturn = False
+        self.isFunctionReturnKeyword = False
+        self.isFunctionIs = False
         # For Loop attributes
         self.insideForLoop = False
         self.isForLoopKeyword = False

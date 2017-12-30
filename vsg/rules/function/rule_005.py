@@ -21,7 +21,8 @@ class rule_005(rule.rule):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isFunctionKeyword and \
                not re.match('^\s*function', oLine.line) and \
-               not re.match('^\s*impure\s+function', oLine.line):
+               not re.match('^\s*impure\s+function', oLine.line) and \
+               not re.match('^\s*pure\s+function', oLine.line):
                 self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):

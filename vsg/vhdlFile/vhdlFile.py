@@ -30,6 +30,9 @@ class vhdlFile():
         dVars['fProcedureParameterEndDetected'] = False
         dVars['fProcedureIsDetected'] = False
         dVars['fProcedureBeginDetected'] = False
+        dVars['fFunctionParameterEndDetected'] = False
+        dVars['fFunctionIsDetected'] = False
+        dVars['fFunctionBeginDetected'] = False
         dVars['iOpenParenthesis'] = 0
         dVars['iCloseParenthesis'] = 0
         dVars['iCurrentIndentLevel'] = 0

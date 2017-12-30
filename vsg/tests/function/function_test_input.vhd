@@ -51,7 +51,82 @@ architecture ARCH of ENTITY_1 is
     return 0;
   end func_1;
 
+  pure function func_1 (a : integer) return integer is
+    variable var_a : std_logic;
+    variable var_b : integer;
+  begin
+    return 0;
+  end func_1;
+
+  -- Variations on ), return, and is
+
+  function func_2 (constant a : integer;
+    variable b : integer;
+    signal c : integer) return integer is
+  begin
+    return 0;
+  end function func_2;
+
+  function func_2 (constant a : integer;
+    variable b : integer;
+    signal c : integer
+  ) return integer is
+  begin
+    return 0;
+  end function func_2;
+
+  function func_2 (constant a : integer;
+    variable b : integer;
+    signal c : integer
+  )
+  return integer is
+  begin
+    return 0;
+  end function func_2;
+
+  function func_2 (constant a : integer;
+    variable b : integer;
+    signal c : integer
+  )
+  return
+  integer is
+  begin
+    return 0;
+  end function func_2;
+ 
+  function func_2 (constant a : integer;
+    variable b : integer;
+    signal c : integer
+  )
+  return
+  integer
+  is
+  begin
+    return 0;
+  end function func_2;
+
+  -- Declarative items 
+
+  function func_2 (constant a : integer;
+    variable b : integer;
+    signal c : integer) return integer is
+    variable var_1 : integer;
+    variable var_2 : integer;
+  begin
+    return 0;
+  end function func_2;
+
 begin
 
 
 end architecture ARCH;
+
+package FIFO_PKG is
+
+  function func_1 (a : integer) return integer;
+
+  function func_2 (constant a : integer;
+    variable b : integer;
+    signal c : integer) return integer;
+
+end package FIFO_PKG;

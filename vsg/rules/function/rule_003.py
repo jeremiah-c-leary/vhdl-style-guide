@@ -20,7 +20,9 @@ class rule_003(rule.rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isFunctionKeyword:
-                if not re.match('^\s*function\s+\w+\s\(', oLine.lineLower) and not re.match('^\s*impure\s+function\s+\w+\s\(', oLine.lineLower):
+                if not re.match('^\s*function\s+\w+\s\(', oLine.lineLower) and \
+                   not re.match('^\s*impure\s+function\s+\w+\s\(', oLine.lineLower) and \
+                   not re.match('^\s*pure\s+function\s+\w+\s\(', oLine.lineLower):
                     self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):

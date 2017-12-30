@@ -518,11 +518,23 @@ class testLineMethods(unittest.TestCase):
         oLine.insideFunction = True
         self.assertEqual(oLine.insideFunction, True)
 
+    def test_insideFunctionDeclarative_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.insideFunctionDeclarative, False)
+        oLine.insideFunctionDeclarative = True
+        self.assertEqual(oLine.insideFunctionDeclarative, True)
+
     def test_isFunctionParameter_attribute(self):
         oLine = line.line('contents of Line')
         self.assertEqual(oLine.isFunctionParameter, False)
         oLine.isFunctionParameter = True
         self.assertEqual(oLine.isFunctionParameter, True)
+
+    def test_isFunctionParameterEnd_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isFunctionParameterEnd, False)
+        oLine.isFunctionParameterEnd = True
+        self.assertEqual(oLine.isFunctionParameterEnd, True)
 
     def test_isFunctionBegin_attribute(self):
         oLine = line.line('contents of Line')
@@ -542,11 +554,23 @@ class testLineMethods(unittest.TestCase):
         oLine.isFunctionEnd = True
         self.assertEqual(oLine.isFunctionEnd, True)
 
+    def test_isFunctionReturnKeyword_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isFunctionReturnKeyword, False)
+        oLine.isFunctionReturnKeyword = True
+        self.assertEqual(oLine.isFunctionReturnKeyword, True)
+
     def test_isFunctionReturn_attribute(self):
         oLine = line.line('contents of Line')
         self.assertEqual(oLine.isFunctionReturn, False)
         oLine.isFunctionReturn = True
         self.assertEqual(oLine.isFunctionReturn, True)
+
+    def test_isFunctionIs_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isFunctionIs, False)
+        oLine.isFunctionIs= True
+        self.assertEqual(oLine.isFunctionIs, True)
 
     def test_insideForLoop_attribute(self):
         oLine = line.line('contents of Line')
