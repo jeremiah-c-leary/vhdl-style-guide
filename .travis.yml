@@ -22,7 +22,7 @@ addons:
     notification_email: jeremiah.c.leary@gmail.com
     build_command_prepend: ""
     build_command: ""
-    branch_patter: coverity_scan
+    branch_pattern: master
 
 language:
   - python
