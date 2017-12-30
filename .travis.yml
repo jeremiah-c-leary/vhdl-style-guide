@@ -2,26 +2,27 @@
 env:
   global:
     - CC_TEST_REPORTER_ID=05478298c5451cbc18f01aab36344f7f9327bcb1346d90db96df76321ae1e3f8
+    # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
+    #   via the "travis encrypt" command using the project repo's public key
+    - secure: "w2HhRcKd6AIS448sp426+oDK5A3iomSAw8hHU8RB8e4i4dlGdnwu+3Iadd/jGb6Veko9fkaTXjs2chTvc4AaUkq4NYEFqOHHxmwjUXOz2pg5jruIcQDSEFMn9VYwWzRThzyLarDhqiyI3pC/On9BrBK1oN9fi3d7q4FtHoGTvvj0fO6vX7bLrPamScpuQLent3yJ5fPmmR+I5sHSE27F7m2ZckBu2+39tVVkFaHy/hhrMRdeCibtyGpDVRhvl+jwgdOBqyiLeqYbl5pml8UybM3enEQWkxlrxZfkaQG9CFTUDSOgJkYypFKhf0ekBPMP+wt0eWHVLc4fvZY/Hz+CzFa4Whig/JAWYSWZY40JAV9guv8dsNjGLMAZYmMAx3eyWktf7fzPkD8u20TDX5/o/fbjsJ2jN8k2OQAhtZhzk1JmG8GCuvqfLDwlej5kfUIVuq8LLHiRWE1Q9akP3xo7CMnRPNjciW5dsmZXYaAyUJaEEXVHuiAr1330bM2h+I0ajnVv5TfHr5MEvkkGVmQpR2sQ8nGuvno537uw67PihfiW+gjUd4AEKG6QooR9/vvjqMmAVqtxM1ck+LwUpPSyp3+duG3mRmPTnfBM+qpk+vGN42JzudbK19dHHFEmXzDnojS1j4p5ZGAzg2EEXeEFXxxYBc7bENaKCIozJwe2QuA="
 
 # command to install
 install:
   - pip install codecov
   - python setup.py install
 
-# Sonarsource setup
-#dist: trusty
-#sudo: required
+before_install:
+  - echo -n | openssl s_client -connect scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
 
-#jdk:
-#  - oraclejdk8
-
-#addons:
-#  sonarcloud:
-#    organization: "Jeremiah Leary"
-
-#cache:
-#  directories:
-#    - '$HOME/.sonar/cache'
+addons:
+  coverity_scan:
+    project:
+      name: "jeremiah-c-leary/vhdl-style-guide"
+      description: "Build submitted via Travis CI"
+    notification_email: jeremiah.c.leary@gmail.com
+    build_command_prepend: ""
+    build_command: ""
+    branch_patter: coverity_scan
 
 language:
   - python
@@ -37,8 +38,6 @@ before_script:
 # command to run tests
 script:
   - coverage run setup.py test
-#  - bundle exec rspec
-#  - sonar-scanner
 
 after_success:
   - codecov
