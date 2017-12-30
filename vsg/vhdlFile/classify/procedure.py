@@ -4,7 +4,7 @@ import re
 def procedure(dVars, oLine):
     '''
     Classifies procedure statements.
- 
+
     procedure identifier [ (parameter_interface_list) ] is
       [ subprogram_declarative_part ]
     begin
