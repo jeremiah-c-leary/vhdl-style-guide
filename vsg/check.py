@@ -313,6 +313,8 @@ def is_single_space_after_character(self, sCharacter, oLine, iLineNumber):
 
       iLineNumber: (integer)
     '''
+    if not sCharacter.lower() in oLine.lineLower:
+        return
     if not re.match('^.*' + sCharacter.lower() + '\s*--', oLine.lineNoComment):
         if re.match('^.*' + sCharacter.lower() + '$', oLine.lineNoComment):
             return

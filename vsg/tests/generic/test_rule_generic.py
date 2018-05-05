@@ -8,6 +8,7 @@ from vsg import vhdlFile
 
 oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'generic_test_input.vhd'))
 oFileMultiple = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'generic_multiple_on_one_line_test_input.vhd'))
+oFileComponent = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'generic_component_test_input.vhd'))
 
 class testRuleGenericMethods(unittest.TestCase):
 
@@ -70,6 +71,13 @@ class testRuleGenericMethods(unittest.TestCase):
 
         dExpected = [37,52,53,68,83]
         oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_component_rule_006(self):
+        oRule = generic.rule_006()
+
+        dExpected = [36,37]
+        oRule.analyze(oFileComponent)
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_007(self):
