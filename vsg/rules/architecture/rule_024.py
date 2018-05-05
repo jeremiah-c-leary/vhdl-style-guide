@@ -18,4 +18,7 @@ class rule_024(rule.rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isEndArchitecture and not re.match('^\s*end\s+architecture\s+\w+', oLine.line, re.IGNORECASE):
-                self.add_violation(iLineNumber)
+                if re.match('^\s*end\s+architecture', oLine.line, re.IGNORECASE):
+                    self.add_violation(iLineNumber)
+                elif not re.match('^\s*end\s+\w+', oLine.line, re.IGNORECASE):
+                    self.add_violation(iLineNumber)

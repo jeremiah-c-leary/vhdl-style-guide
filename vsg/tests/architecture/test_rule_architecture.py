@@ -241,3 +241,12 @@ class testRuleArchitectureMethods(unittest.TestCase):
         dExpected = ['2-10']
         oRule.analyze(oFileComment)
         self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_024(self):
+        oRule = architecture.rule_024()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'architecture')
+        self.assertEqual(oRule.identifier, '024')
+        dExpected = [13,71]
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
