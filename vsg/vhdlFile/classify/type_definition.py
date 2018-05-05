@@ -23,7 +23,8 @@ def type_definition(dVars, oLine):
         oLine.indentLevel = dVars['iCurrentIndentLevel']
 
     if re.match('^.*record', oLine.lineNoComment, re.IGNORECASE) and not \
-       re.match('^.*end\s+record', oLine.lineNoComment, re.IGNORECASE):
+       re.match('^.*end\s+record', oLine.lineNoComment, re.IGNORECASE) and not \
+       oLine.isLibraryUse:
         oLine.isTypeRecordKeyword = True
         oLine.insideTypeRecord = True
         oLine.indentLevel = dVars['iCurrentIndentLevel']

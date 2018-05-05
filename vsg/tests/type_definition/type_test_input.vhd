@@ -76,3 +76,6 @@ package PACK is
     
 end package PACK;
 
+library LIB1;
+use blah.record.all;
+
