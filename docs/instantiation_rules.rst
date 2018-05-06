@@ -187,6 +187,7 @@ instantiation_011
 #################
 
 This rule checks the port name is uppercase.
+Indexes on ports will not be uppercased.
 
 **Violation**
 
@@ -194,9 +195,10 @@ This rule checks the port name is uppercase.
 
    U_FIFO : FIFO
      port map (
-       wr_en    => wr_en,
-       rd_en    => rd_en,
-       OVERFLOW => overflow
+       wr_en              => wr_en,
+       rd_en              => rd_en,
+       OVERFLOW           => overflow,
+       underflow(c_index) => underflow
      );
 
 **Fix**
@@ -205,9 +207,10 @@ This rule checks the port name is uppercase.
 
    U_FIFO : FIFO
      port map (
-       WR_EN    => wr_en,
-       RD_EN    => rd_en,
-       OVERFLOW => overflow
+       WR_EN              => wr_en,
+       RD_EN              => rd_en,
+       OVERFLOW           => overflow,
+       UNDERFLOW(c_index) => underflow
      );
 
 instantiation_012

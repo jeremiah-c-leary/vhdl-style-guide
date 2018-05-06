@@ -229,7 +229,7 @@ If an index exists on a port, the case of the index will not be checked.
      wr_en              : in    std_logic;
      rd_en              : in    std_logic;
      OVERFLOW           : out   std_logic;
-     UNDERFLOW(c_index) : out   std_logic
+     underflow(c_index) : out   std_logic
    );
 
 **Fix**
