@@ -81,7 +81,25 @@ def upper_case(self, oLine, sKeyword):
 
       sKeyword: (string)
     '''
-    utilities.change_word(oLine, sKeyword, sKeyword.upper())
+    if '(' in sKeyword:
+        sWord = utilities.remove_parenthesis_from_word(sKeyword)
+        utilities.change_word(oLine, sWord, sWord.upper())
+    else:
+        utilities.change_word(oLine, sKeyword, sKeyword.upper())
+
+
+def upper_case_with_parenthesis(self, oLine, sKeyword):
+    '''
+    Changes word to lowercase.
+
+    Parameters:
+
+      self: (rule object)
+
+      oLine: (line object)
+
+      sKeyword: (string)
+    '''
 
 
 def enforce_one_space_after_word(self, oLine, sWord):

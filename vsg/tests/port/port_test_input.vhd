@@ -25,8 +25,8 @@ end entity ENTITY1
   PORt   (
     i_port1 : in  SIGNED;
   o_port2 :  out   STD_LOGIC;
-    io_port3 : inout       NATURAL;
-      PORT4 :in INTEGER;
+    io_port3(c_index) : inout       NATURAL;
+      PORT4(c_index) :in INTEGER;
     USE_5 :  out STD_LOGIC_VECTOR(G_GENERIC1 downto 0);
     PORT6 : inout UNSIGNED  );
 

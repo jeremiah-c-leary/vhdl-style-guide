@@ -219,15 +219,17 @@ port_010
 ########
 
 This rule checks port names are uppercase.
+If an index exists on a port, the case of the index will not be checked.
 
 **Violation**
 
 .. code-block:: vhdl
 
    port (
-     wr_en    : in    std_logic;
-     rd_en    : in    std_logic;
-     OVERFLOW : out   std_logic
+     wr_en              : in    std_logic;
+     rd_en              : in    std_logic;
+     OVERFLOW           : out   std_logic;
+     UNDERFLOW(c_index) : out   std_logic
    );
 
 **Fix**
@@ -235,9 +237,10 @@ This rule checks port names are uppercase.
 .. code-block:: vhdl
 
    port (
-     WR_EN    : in    std_logic;
-     RD_EN    : in    std_logic;
-     OVERFLOW : out   std_logic
+     WR_EN              : in    std_logic;
+     RD_EN              : in    std_logic;
+     OVERFLOW           : out   std_logic;
+     UNDERFLOW(c_index) : out   std_logic
    );
 
 port_011

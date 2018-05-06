@@ -248,3 +248,22 @@ def reclassify_line(oFile, iLineNumber):
         oFile.lines[iLineNumber + 1].insideSequential = True
         oFile.lines[iLineNumber + 1].isSequentialEnd = True
         oFile.lines[iLineNumber + 1].isSequential = True
+
+
+def remove_parenthesis_from_word(sWord):
+    '''
+    Removes parenthesis from words:
+
+        Hello(there) => Hello
+        Hello        => Hello
+
+    Parameters:
+
+      sWord: (string)
+
+    Returns: (string)
+    '''
+    if '(' in sWord:
+        return sWord.split('(')[0]
+
+    return sWord
