@@ -160,8 +160,14 @@ class testFixRuleInstantiationMethods(unittest.TestCase):
         oRule.analyze(oFileComment)
         self.assertEqual(oRule.violations, [])
         self.assertEqual(oFileComment.lines[24].line,'      generic_1 => \'0\',')
+        self.assertFalse(oFileComment.lines[24].hasComment)
+        self.assertFalse(oFileComment.lines[24].hasInlineComment)
         self.assertEqual(oFileComment.lines[29].line,'      port_2 => \'1\',')
+        self.assertFalse(oFileComment.lines[29].hasComment)
+        self.assertFalse(oFileComment.lines[29].hasInlineComment)
         self.assertEqual(oFileComment.lines[31].line,'      port_4 => \'1\'')
+        self.assertFalse(oFileComment.lines[31].hasComment)
+        self.assertFalse(oFileComment.lines[31].hasInlineComment)
 
     def test_fix_fule_025(self):
         oRule = instantiation.rule_025()

@@ -27,3 +27,4 @@ class rule_023(rule.rule):
             oLine = oFile.lines[iLineNumber]
             oLine.update_line(re.sub('\s*--.*', '', oLine.line))
             oLine.hasComment = False
+            oLine.hasInlineComment = False
