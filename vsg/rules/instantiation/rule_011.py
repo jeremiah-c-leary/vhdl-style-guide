@@ -2,6 +2,7 @@
 from vsg import rule
 from vsg import fix
 from vsg import check
+from vsg import utilities
 
 
 class rule_011(rule.rule):
@@ -19,7 +20,8 @@ class rule_011(rule.rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isInstantiationPortAssignment and not oLine.isInstantiationPortKeyword:
-                check.is_uppercase(self, oLine.line.split()[0], iLineNumber)
+                sWord = utilities.remove_parenthesis_from_word(oLine.line.split()[0])
+                check.is_uppercase(self, sWord, iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

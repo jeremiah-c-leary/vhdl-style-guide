@@ -77,6 +77,8 @@ class testFixRuleInstantiationMethods(unittest.TestCase):
         oRule.fix(oFile)
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, [])
+        # Note: the line below can change if this test is ran individually
+        self.assertEqual(oFile.lines[76].line, '      PORT_1(c_index)     => w_port_1,')
 
     def test_fix_rule_012(self):
         oRule = instantiation.rule_012()
