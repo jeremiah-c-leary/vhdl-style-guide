@@ -12,7 +12,7 @@ begin
     )
     port map (PORT1, PORT2 => 3,
        PORT3, PORT4 => 5, PORT5 => 6,
-       PORT6 => 7,
+       PORT6 => 7, -- This is a comment with a comma,
        PORT7 => 4
     );
 

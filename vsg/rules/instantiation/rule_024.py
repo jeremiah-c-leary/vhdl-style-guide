@@ -18,8 +18,8 @@ class rule_024(rule.rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.insideInstantiation:
-                if ',' in oLine.line:
-                    lLine = oLine.line.split(',')
+                if ',' in oLine.lineNoComment:
+                    lLine = oLine.lineNoComment.split(',')
                     for sString in lLine[:-1]:
                         if '=>' not in sString:
                             self.add_violation(iLineNumber)
