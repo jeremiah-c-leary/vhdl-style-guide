@@ -23,7 +23,7 @@ def parse_command_line_arguments():
                    Reference documentation is located at:
                    http://vhdl-style-guide.readthedocs.io/en/latest/index.html''')
 
-    parser.add_argument('-f', '--filename', required=True, help='File to analyze')
+    parser.add_argument('-f', '--filename', nargs='+', help='File to analyze')
     parser.add_argument('--local_rules', help='Path to local rules')
     parser.add_argument('--configuration', help='JSON configuration file')
     parser.add_argument('--fix', default=False, action='store_true', help='Fix issues found')
@@ -58,16 +58,17 @@ def main():
     # Add local rule path to system path so the rules can be loaded
     if commandLineArguments.local_rules:
         sys.path.append(os.path.abspath(commandLineArguments.local_rules))
-    oVhdlFile = vhdlFile.vhdlFile(commandLineArguments.filename)
-    oRules = rule_list.rule_list(oVhdlFile, commandLineArguments.local_rules)
-    oRules.configure(configuration)
-
-    if commandLineArguments.fix:
-        oRules.fix()
-        write_vhdl_file(oVhdlFile)
-
-    oRules.check_rules()
-    oRules.report_violations()
+    for sFileName in commandLineArguments.filename:
+        oVhdlFile = vhdlFile.vhdlFile(sFileName)
+        oRules = rule_list.rule_list(oVhdlFile, commandLineArguments.local_rules)
+        oRules.configure(configuration)
+    
+        if commandLineArguments.fix:
+            oRules.fix()
+            write_vhdl_file(oVhdlFile)
+    
+        oRules.check_rules()
+        oRules.report_violations()
 
 
 if __name__ == '__main__':
