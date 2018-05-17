@@ -8,6 +8,7 @@ from vsg import vhdlFile
 oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','comment','comment_test_input.vhd'))
 oFileCase = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','comment','comment_case_test_input.vhd'))
 oFileProcess = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','comment','comment_process_test_input.vhd'))
+oFileLibrary = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'comment_library_test_input.vhd'))
 
 class testRuleCommentMethods(unittest.TestCase):
 
@@ -61,7 +62,7 @@ class testRuleCommentMethods(unittest.TestCase):
 
     def test_rule_005(self):
         oRule = comment.rule_005()
-        dExpected = [15,19,25,24,23]
+        dExpected = [19,25,24,23]
         oRule.analyze(oFileCase)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -69,4 +70,13 @@ class testRuleCommentMethods(unittest.TestCase):
         oRule = comment.rule_006()
         dExpected = ['36-39']
         oRule.analyze(oFileProcess)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_007(self):
+        oRule = comment.rule_007()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'comment')
+        self.assertEqual(oRule.identifier, '007')
+        dExpected = [4]
+        oRule.analyze(oFileLibrary)
         self.assertEqual(oRule.violations, dExpected)

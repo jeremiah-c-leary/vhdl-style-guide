@@ -361,9 +361,11 @@ def indent_of_comments_above(self, oFile, iLineNumber):
         if not oFile.lines[iPreviousIndex].isComment:
             break
         else:
-            if not oFile.lines[iPreviousIndex].indentLevel == oFile.lines[iLineNumber].indentLevel:
+            if not oFile.lines[iPreviousIndex].line.index('--') == oFile.lines[iLineNumber].indentLevel * self.indentSize:
                 self.add_violation(iPreviousIndex)
                 self.dFix['violations'][iPreviousIndex] = oFile.lines[iLineNumber].indentLevel
+            else:
+                oFile.lines[iPreviousIndex].indentLevel = oFile.lines[iLineNumber].indentLevel
 
 
 def has_package_name(oLine):

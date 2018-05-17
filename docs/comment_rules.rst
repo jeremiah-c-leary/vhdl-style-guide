@@ -144,3 +144,23 @@ This rule aligns in line comments between the end of the process sensitivity lis
 
    begin
 
+comment_007
+###########
+
+This rule aligns comments above library use statements with the use statement.
+
+**Violation**
+
+.. code-block:: vhdl
+
+    library ieee;
+    -- Use standard logic library
+      use ieee.std_logic_1164.all;
+
+**Fix**
+
+.. code-block:: vhdl
+
+    library ieee;
+      -- Use standard logic library
+      use ieee.std_logic_1164.all;
