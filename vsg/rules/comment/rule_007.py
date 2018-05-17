@@ -1,6 +1,7 @@
 
 from vsg import rule
 from vsg import check
+from vsg import fix
 
 
 class rule_007(rule.rule):
@@ -24,3 +25,4 @@ class rule_007(rule.rule):
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
             oFile.lines[iLineNumber].indentLevel = self.dFix['violations'][iLineNumber]
+            fix.indent(self, oFile.lines[iLineNumber])

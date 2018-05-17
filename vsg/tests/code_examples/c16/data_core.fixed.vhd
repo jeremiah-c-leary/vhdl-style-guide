@@ -4,10 +4,10 @@ library IEEE;
   use IEEE.STD_LOGIC_ARITH.ALL;
   use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
---  Uncomment the following lines to use the declarations that are
---  provided for instantiating Xilinx primitive components.
---library UNISIM;
---use UNISIM.VComponents.all;
+  --  Uncomment the following lines to use the declarations that are
+  --  provided for instantiating Xilinx primitive components.
+  --library UNISIM;
+  --use UNISIM.VComponents.all;
   use work.cpu_pack.ALL;
 
 entity DATA_CORE is

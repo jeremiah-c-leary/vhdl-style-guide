@@ -3,6 +3,7 @@ import unittest
 
 from vsg.rules import comment
 from vsg import vhdlFile
+from vsg import rule_list
 
 # Read in test file used for all tests
 oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'comment_test_input.vhd'))
@@ -59,15 +60,15 @@ class testFixRuleCommentMethods(unittest.TestCase):
         self.assertEqual(oFileProcess.lines[38].line, '      variable b : natural 0 to 256;       -- comment')
 
     def test_rule_007(self):
-        oRule = comment.rule_007()
+        oRuleList = rule_list.rule_list(oFileLibrary)
         dExpected = []
-        oRule.fix(oFileLibrary)
-        oRuleIndex = comment.rule_001()
-        oRuleIndex.fix(oFileLibrary)
-        oRule.analyze(oFileLibrary)
-        self.assertEqual(oRule.violations, dExpected)
+        oRuleList.fix()
+        oRuleList.check_rules()
+
         self.assertEqual(oFileLibrary.lines[4].indentLevel, 1)
         self.assertEqual(oFileLibrary.lines[8].indentLevel, 1)
 
         self.assertEqual(oFileLibrary.lines[4].line, '  -- Comment 1')
         self.assertEqual(oFileLibrary.lines[8].line, '  -- Comment 1')
+
+
