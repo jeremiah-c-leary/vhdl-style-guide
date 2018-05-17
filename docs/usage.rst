@@ -6,22 +6,23 @@ The command line tool can be invoked with:
 
 .. code-block:: bash
 
-   $ vsg
-   
-   usage: VHDL Style Guide (VSG) [-h] -f FILENAME [--local_rules LOCAL_RULES]
-                                 [--configuration CONFIGURATION] [--fix]
-   
-   Analyzes VHDL files for style guide violations.
-   
-   optional arguments:
-     -h, --help            show this help message and exit
-     -f FILENAME, --filename FILENAME
-                           File to analyze
-     --local_rules LOCAL_RULES
-                           Path to local rules
-     --configuration CONFIGURATION
-                           JSON configuration file
-     --fix                 Fix issues found
+    $ vsg
+    usage: VHDL Style Guide (VSG) [-h] [-f FILENAME [FILENAME ...]]
+                                  [--local_rules LOCAL_RULES]
+                                  [--configuration CONFIGURATION] [--fix]
+    
+    Analyzes VHDL files for style guide violations. Reference documentation is
+    located at: http://vhdl-style-guide.readthedocs.io/en/latest/index.html
+    
+    optional arguments:
+      -h, --help            show this help message and exit
+      -f FILENAME [FILENAME ...], --filename FILENAME [FILENAME ...]
+                            File to analyze
+      --local_rules LOCAL_RULES
+                            Path to local rules
+      --configuration CONFIGURATION
+                            JSON configuration file
+      --fix                 Fix issues found
 
 
 **Command Line Options**
@@ -30,11 +31,14 @@ The command line tool can be invoked with:
 | Option                        |  Description                                |
 +===============================+=============================================+
 | -f FILENAME                   | The VHDL file to be analyzed or fixed.      |
-|                               | This must be syntaxtically correct.         |
+|                               | Multiple files can be passed through this   |
+|                               | option.                                     |
 +-------------------------------+---------------------------------------------+
 | --local_rules LOCAL_RULES     | Additional rules not in the base set.       |
 +-------------------------------+---------------------------------------------+
 | --configuration CONFIGURATION | JSON file which alters the behavior of VSG. |
+|                               | Configuration can also include a list of    |
+|                               | files to analyze.                           |
 +-------------------------------+---------------------------------------------+
 | --fix                         | Update issues found.                        |
 |                               | Raplaces current file with updated one.     |

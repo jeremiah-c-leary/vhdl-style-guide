@@ -48,6 +48,21 @@ def write_vhdl_file(oVhdlFile):
     oFile.close()
 
 
+def update_command_line_arguments(commandLineArguments, configuration):
+    if configuration:
+        if 'file_list' in configuration:
+            for sFilename in configuration['file_list']:
+                try:
+                    commandLineArguments.filename.append(expand_filename(sFilename))
+                except:
+                    commandLineArguments.filename = [expand_filename(sFilename)]
+
+
+def expand_filename(sFileName):
+    '''Expands environment variables in filenames.'''
+    return os.path.expanduser(os.path.expandvars(sFileName))
+
+
 def main():
     '''Main routine of the VHDL Style Guide (VSG) program.'''
 
@@ -55,6 +70,9 @@ def main():
 
     configuration = read_configuration_file(commandLineArguments)
 
+    update_command_line_arguments(commandLineArguments, configuration)
+
+    print commandLineArguments.filename
     # Add local rule path to system path so the rules can be loaded
     if commandLineArguments.local_rules:
         sys.path.append(os.path.abspath(commandLineArguments.local_rules))
@@ -62,11 +80,11 @@ def main():
         oVhdlFile = vhdlFile.vhdlFile(sFileName)
         oRules = rule_list.rule_list(oVhdlFile, commandLineArguments.local_rules)
         oRules.configure(configuration)
-    
+
         if commandLineArguments.fix:
             oRules.fix()
             write_vhdl_file(oVhdlFile)
-    
+
         oRules.check_rules()
         oRules.report_violations()
 

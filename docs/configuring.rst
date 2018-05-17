@@ -1,12 +1,18 @@
 Configuring
 ===========
 
-Any attribute of any rule can be configured using the --configuration option and a JSON file.
+VSG can use a configuration file to alter it's behavior or include a list of files to analyze.
+This is accomplished by passing a JSON file through the --configuration command line argument.
 This is the basic form of a configuration file: 
 
 .. code-block:: json
 
    {
+       "file_list":[
+         "fifo.vhd",
+         "source/spi.vhd",
+         "$PATH_TO_FILE/spi_master.vhd"
+       ],
        "rule":{
            "global":{
                "attributeName":"AttributeValue" 
@@ -17,6 +23,20 @@ This is the basic form of a configuration file:
        }
    }
 
+It is not required to have both **file_list** and **rule** defined in the configuration file.
+Either or both can be defined.
+
+file_list
+---------
+
+The file_list is a list of files that will be analyzed.
+It will expand environment variables.
+This option can be useful when running VSG over multiple files.
+
+rule
+----
+
+Any attribute of any rule can be configured.
 Using **global** will set the attribute for every rule.
 Each rule is addressable by using it's unique **ruleId** and **ruleNumber** combination.
 
@@ -39,7 +59,7 @@ Here are a list of attributes that can be altered:
 +-------------+---------+--------------------------------------------------+
 
 Example:  Disabling a rule
---------------------------
+##########################
 
 Below is an example of a JSON file which disables the rule **entity_004**
 
@@ -60,7 +80,7 @@ We use the configuration using the **--configuration** command line argument:
    $ vsg -f RAM.vhd --configuration entity_004_disable.json
 
 Example: Setting the indent increment size for a single rule
-------------------------------------------------------------
+############################################################
 
 The indent increment size is the number of spaces an indent level takes.
 It can be configured on an per rule basis...
@@ -76,7 +96,7 @@ It can be configured on an per rule basis...
    }
 
 Example: Setting the indent increment size for all rules
---------------------------------------------------------
+########################################################
 
 Configure the indent size for all rules by setting the **global** attribute.
 
