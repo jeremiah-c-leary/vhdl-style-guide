@@ -72,7 +72,6 @@ def main():
 
     update_command_line_arguments(commandLineArguments, configuration)
 
-    print commandLineArguments.filename
     # Add local rule path to system path so the rules can be loaded
     if commandLineArguments.local_rules:
         sys.path.append(os.path.abspath(commandLineArguments.local_rules))
