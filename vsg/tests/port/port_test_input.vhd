@@ -117,7 +117,7 @@ entity ENTITY1 is
    );
   port (
     I_PORT1, I_PORT4 : in    std_logic;
-    O_PORT2 : out   std_logic;
+    O_PORT2 : out   std_logic;  -- This is a comment with a comma ,:
     IO_PORT3, IO_PORT5 : inout std_logic
   );
 end entity  ENTITY1

@@ -17,7 +17,7 @@ class rule_013(rule.rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isPortDeclaration and re.match('^.*,.*:', oLine.line):
+            if oLine.isPortDeclaration and re.match('^.*,.*:', oLine.lineNoComment):
                 self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
