@@ -4,39 +4,23 @@ Comment Rules
 comment_001
 ###########
 
-This rule checks the indent lines starting with comments.
+This rule aligns comments above library use statements with the use statement.
 
 **Violation**
 
 .. code-block:: vhdl
 
-       -- Libraries
-   libary ieee;
-
-    -- Define architecture
-   architecture RTL of FIFO is
-
-   -- Define signals
-     signal wr_en : std_logic;
-     signal rd_en : std_Logic;
-
-   begin
+    library ieee;
+    -- Use standard logic library
+      use ieee.std_logic_1164.all;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   -- Libraries
-   libary ieee;
-
-   -- Define architecture
-   architecture RTL of FIFO is
-
-     -- Define signals
-     signal wr_en : std_logic;
-     signal rd_en : std_Logic;
-
-   begin
+    library ieee;
+      -- Use standard logic library
+      use ieee.std_logic_1164.all;
 
 comment_003
 ###########
@@ -147,20 +131,36 @@ This rule aligns in line comments between the end of the process sensitivity lis
 comment_007
 ###########
 
-This rule aligns comments above library use statements with the use statement.
+This rule checks the indent lines starting with comments.
 
 **Violation**
 
 .. code-block:: vhdl
 
-    library ieee;
-    -- Use standard logic library
-      use ieee.std_logic_1164.all;
+       -- Libraries
+   libary ieee;
+
+    -- Define architecture
+   architecture RTL of FIFO is
+
+   -- Define signals
+     signal wr_en : std_logic;
+     signal rd_en : std_Logic;
+
+   begin
 
 **Fix**
 
 .. code-block:: vhdl
 
-    library ieee;
-      -- Use standard logic library
-      use ieee.std_logic_1164.all;
+   -- Libraries
+   libary ieee;
+
+   -- Define architecture
+   architecture RTL of FIFO is
+
+     -- Define signals
+     signal wr_en : std_logic;
+     signal rd_en : std_Logic;
+
+   begin

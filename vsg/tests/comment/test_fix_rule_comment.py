@@ -14,8 +14,8 @@ oFileLibrary = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'comment
 
 class testFixRuleCommentMethods(unittest.TestCase):
 
-    def test_rule_001(self):
-        oRule = comment.rule_001()
+    def test_rule_007(self):
+        oRule = comment.rule_007()
         oRule.fix(oFile)
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, [])
@@ -38,7 +38,7 @@ class testFixRuleCommentMethods(unittest.TestCase):
         oRule = comment.rule_005()
         dExpected = []
         oRule.fix(oFileCase)
-        oRuleIndex = comment.rule_001()
+        oRuleIndex = comment.rule_007()
         oRuleIndex.fix(oFileCase)
         oRule.analyze(oFileCase)
         self.assertEqual(oRule.violations, dExpected)
@@ -59,7 +59,7 @@ class testFixRuleCommentMethods(unittest.TestCase):
         self.assertEqual(oFileProcess.lines[37].line, '      variable a : integer 0 to 10;        -- comment')
         self.assertEqual(oFileProcess.lines[38].line, '      variable b : natural 0 to 256;       -- comment')
 
-    def test_rule_007(self):
+    def test_rule_001(self):
         oRuleList = rule_list.rule_list(oFileLibrary)
         dExpected = []
         oRuleList.fix()
@@ -71,4 +71,11 @@ class testFixRuleCommentMethods(unittest.TestCase):
         self.assertEqual(oFileLibrary.lines[4].line, '  -- Comment 1')
         self.assertEqual(oFileLibrary.lines[8].line, '  -- Comment 1')
 
+        oRuleList = rule_list.rule_list(oFileLibrary)
+        oRuleList.check_rules()
+        iExpectedFailures = 0
+        iFailures = 0
+        for oRule in oRuleList.rules:
+            iFailures += len(oRule.violations)
+        self.assertEqual(iFailures, iExpectedFailures) 
 
