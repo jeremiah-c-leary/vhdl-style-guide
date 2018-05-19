@@ -21,7 +21,6 @@ class failure():
         '''
         Returns a list of strings of a formatted failure.
         '''
-
         lJunit = ['    <failure type="' + self.type + '">']
         for sText in self.text:
             lJunit.append('      ' + sText)
@@ -53,8 +52,13 @@ class testcase():
         '''
 
         lJunit = ['  <testcase name="' + self.name + '" time="' + self.time + '" classname="' + self.classname + '">']
+
         for oFailure in self.failures:
-            lJunit.extend(oFailure.build_junit())
+            try:
+                lJunit.extend(oFailure.build_junit())
+            except TypeError:
+                pass
+
         lJunit.append('  </testcase>')
 
         return lJunit
@@ -112,7 +116,8 @@ class xmlfile():
     This class holds testsuites.
     '''
 
-    def __init__(self):
+    def __init__(self, sFileName):
+        self.filename = sFileName
         self.testsuites = None
 
     def add_testsuite(self, oTestsuite):

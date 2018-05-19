@@ -3,6 +3,7 @@ import os
 import importlib
 import inspect
 
+import junit
 
 def get_python_modules_from_directory(sDirectoryName, lModules):
 
@@ -142,3 +143,14 @@ class rule_list():
         if configurationFile:
             for oRule in self.rules:
                 oRule.configure(configurationFile)
+
+    def extract_junit_testcase(self, sVhdlFileName):
+        oTestcase = junit.testcase(sVhdlFileName, str(0), 'failure')
+        oFailure = junit.failure('Failure')
+        for oRule in self.rules:
+            if len(oRule.violations) > 0:
+                for iLinenumber in oRule.violations:
+                    oFailure.add_text(oRule.name + '_' + oRule.identifier + ': ' + str(iLinenumber) + ' : ' + oRule.solution)
+        oTestcase.add_failure(oFailure)
+
+        return oTestcase

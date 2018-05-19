@@ -180,12 +180,13 @@ class testJunitClasses(unittest.TestCase):
         self.assertEqual(dExpected, oTestsuite.build_junit())
 
     def test_xmlfile_class_attributes(self):
-        oXmlfile = junit.xmlfile()
+        oXmlfile = junit.xmlfile('FileName')
         self.assertTrue(oXmlfile)
+        self.assertEqual(oXmlfile.filename, 'FileName')
         self.assertEqual(oXmlfile.testsuites, None)
 
     def test_xmlfile_class_add_testsuite(self):
-        oXmlfile = junit.xmlfile()
+        oXmlfile = junit.xmlfile('FileName')
         oXmlfile.add_testsuite(junit.testsuite('TS_NAME0', 'TS_TIME0'))
         oXmlfile.add_testsuite(junit.testsuite('TS_NAME1', 'TS_TIME1'))
         oXmlfile.add_testsuite(junit.testsuite('TS_NAME2', 'TS_TIME2'))
@@ -194,7 +195,7 @@ class testJunitClasses(unittest.TestCase):
         self.assertEqual(oXmlfile.testsuites[2].name, 'TS_NAME2')
 
     def test_xmlfile_class_build_junit(self):
-        oXmlfile = junit.xmlfile()
+        oXmlfile = junit.xmlfile('FileName')
         for x in range(0,2):
             oTestsuite = junit.testsuite('TS_Name' + str(x), 'TS_Time' + str(x))
             for k in range(0, 3):

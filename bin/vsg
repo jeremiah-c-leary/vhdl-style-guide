@@ -12,6 +12,7 @@ executablePath = os.path.dirname(os.path.realpath(__file__))
 sys.path.append(os.path.join(executablePath, '..'))
 from vsg import rule_list
 from vsg import vhdlFile
+from vsg import junit
 
 
 def parse_command_line_arguments():
@@ -27,6 +28,7 @@ def parse_command_line_arguments():
     parser.add_argument('--local_rules', help='Path to local rules')
     parser.add_argument('--configuration', help='JSON configuration file')
     parser.add_argument('--fix', default=False, action='store_true', help='Fix issues found')
+    parser.add_argument('--junit', action='store', help='Extract Junit file')
 
     if len(sys.argv) == 1:
         parser.print_help()
@@ -45,6 +47,13 @@ def write_vhdl_file(oVhdlFile):
     with open(oVhdlFile.filename, 'w') as oFile:
         for oLine in oVhdlFile.lines[1:]:
             oFile.write(oLine.line + '\n')
+    oFile.close()
+
+
+def write_junit_xml_file(oJunitFile):
+    with open(oJunitFile.filename, 'w') as oFile:
+        for sLine in oJunitFile.build_junit():
+            oFile.write(sLine + '\n')
     oFile.close()
 
 
@@ -75,6 +84,9 @@ def main():
     # Add local rule path to system path so the rules can be loaded
     if commandLineArguments.local_rules:
         sys.path.append(os.path.abspath(commandLineArguments.local_rules))
+    if commandLineArguments.junit:
+        oJunitFile = junit.xmlfile(commandLineArguments.junit)
+        oJunitTestsuite = junit.testsuite('vhdl-style-guide', str(0))
     for sFileName in commandLineArguments.filename:
         oVhdlFile = vhdlFile.vhdlFile(sFileName)
         oRules = rule_list.rule_list(oVhdlFile, commandLineArguments.local_rules)
@@ -86,6 +98,13 @@ def main():
 
         oRules.check_rules()
         oRules.report_violations()
+
+        if commandLineArguments.junit:
+            oJunitTestsuite.add_testcase(oRules.extract_junit_testcase(sFileName))
+
+    if commandLineArguments.junit:
+         oJunitFile.add_testsuite(oJunitTestsuite)
+         write_junit_xml_file(oJunitFile)
 
 
 if __name__ == '__main__':
