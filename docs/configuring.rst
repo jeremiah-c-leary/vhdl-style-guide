@@ -13,6 +13,7 @@ This is the basic form of a configuration file:
          "source/spi.vhd",
          "$PATH_TO_FILE/spi_master.vhd"
        ],
+       "local_rules":"$DIRECTORY_PATH",
        "rule":{
            "global":{
                "attributeName":"AttributeValue" 
@@ -32,6 +33,12 @@ file_list
 The file_list is a list of files that will be analyzed.
 It will expand environment variables.
 This option can be useful when running VSG over multiple files.
+
+local_rules
+-----------
+
+Local rules can be defined on the command line or in a configuration file.
+If they are defined in both locations, the configuration will have precedence.
 
 rule
 ----
