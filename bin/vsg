@@ -65,6 +65,8 @@ def update_command_line_arguments(commandLineArguments, configuration):
                     commandLineArguments.filename.append(expand_filename(sFilename))
                 except:
                     commandLineArguments.filename = [expand_filename(sFilename)]
+        if 'local_rules' in configuration:
+            commandLineArguments.local_rules = expand_filename(configuration['local_rules'])
 
 
 def expand_filename(sFileName):
@@ -103,8 +105,8 @@ def main():
             oJunitTestsuite.add_testcase(oRules.extract_junit_testcase(sFileName))
 
     if commandLineArguments.junit:
-         oJunitFile.add_testsuite(oJunitTestsuite)
-         write_junit_xml_file(oJunitFile)
+        oJunitFile.add_testsuite(oJunitTestsuite)
+        write_junit_xml_file(oJunitFile)
 
 
 if __name__ == '__main__':
