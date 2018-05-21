@@ -22,22 +22,22 @@ Key Benefits
 * Improve code reviews
 * Quickly bring code up to current standards
 
-VSG allows the style of the code to be defined and enforced over part or the entire code base.
-Configurations allow for multiple coding standards.
+VSG allows the style of the code to be defined and enforced over the entire code base.
+Using configurations allows for coding standards over different parts of the code base.
 
 Key Features
 ############
 
 * Command line tool
 
-  * integrate into continuous integration flow
+  * Integrate into continuous integration flow
 
-* Fixes and/or reports issues found
+* Reports and fixes issues found
 
-  * horizontal whitespace
-  * vertical whitespace
-  * upper and lower case
-  * keyword alignments
+  * Horizontal whitespace
+  * Vertical whitespace
+  * Upper and lower case
+  * Keyword alignments
   * etc...
 
 * Fully configurable rules via JSON configuration file
@@ -51,4 +51,3 @@ Key Features
   * Create your own rules using python
   * Use existing rules as a template
   * Fully integrates into base rule set
-

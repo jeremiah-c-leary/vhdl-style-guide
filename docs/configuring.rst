@@ -2,7 +2,7 @@ Configuring
 ===========
 
 VSG can use a configuration file to alter it's behavior or include a list of files to analyze.
-This is accomplished by passing a JSON file through the --configuration command line argument.
+This is accomplished by passing a JSON file through the **--configuration** command line argument.
 This is the basic form of a configuration file: 
 
 .. code-block:: json
@@ -24,14 +24,14 @@ This is the basic form of a configuration file:
        }
    }
 
-It is not required to have both **file_list** and **rule** defined in the configuration file.
-Either or both can be defined.
+It is not required to have **file_list**, **local_rules**, and **rule** defined in the configuration file.
+Any combination of them can be defined.
 
 file_list
 ---------
 
 The file_list is a list of files that will be analyzed.
-It will expand environment variables.
+Environment variables will expanded.
 This option can be useful when running VSG over multiple files.
 
 local_rules
@@ -80,7 +80,7 @@ Below is an example of a JSON file which disables the rule **entity_004**
        }
    }
 
-We use the configuration using the **--configuration** command line argument:
+Use the configuration with the **--configuration** command line argument:
 
 .. code-block:: bash
 
@@ -116,4 +116,3 @@ Configure the indent size for all rules by setting the **global** attribute.
            }
        }
    }
-

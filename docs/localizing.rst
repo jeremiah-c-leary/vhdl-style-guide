@@ -1,11 +1,11 @@
 Localizing
 ==========
 
-VSG supports customization to your style standards by allowing localized rules.
-This is a directory with an __init__.py file and one or more python files.
+VSG supports customization to your coding style standards by allowing localized rules.
+These rules are stored in a directory with an __init__.py file and one or more python files.
 The files should follow the same structure and naming convention as the rules found in the vsg/rules directory.
 
-The localized rules will be used when the **--local_rules** command line argument is given.
+The localized rules will be used when the **--local_rules** command line argument is given or the **local_rules** option in a configuration file.
 
 Example: Create rule to check for entity and architectures in the same file.
 ----------------------------------------------------------------------------
@@ -75,7 +75,7 @@ Now we need to add the **analyze** method to perform the check.
      def analyze(self, oFile):
 
 The built in variables in the vsg.line class can be used to build rules.
-There are helper functions in vsg.utilities, :doc:`vsg.check`, and vsg.fix also.
+There are helper functions in :doc:`vsg.utilities`, :doc:`vsg.check`, and :doc:`vsg.fix` also.
 In this case, the vsg.vhdlFile class has two attributes(hasEntity and hasArchitecture) that are exactly what we need.
 We are ready to write the body of the **analyze** method:
 
@@ -94,15 +94,14 @@ We are ready to write the body of the **analyze** method:
          if oFile.hasEntity and oFile.hasArchitecture:
              self.add_violation(1)
 
-The base rule class has an **add_violation** method which takes a line number an as argument.
+The base rule class has an **add_violation** method which takes a line number as an argument.
 This method appends the line number to a violation list, which is processed later for reporting and fixing purposes.
 In this case, any line number will do so we picked 1.
 
 We must decide if we want to give VSG the ability to fix this rule on it's own.
 If so, then we will need to write the **_fix_violations** method.
 However, for this violation we want the user to split the file.
-There are too many variables to consider; including headers, footers, and copyright statements.
-So we will tell VSG the rule is not fixable.
+We will tell VSG the rule is not fixable.
 
 .. code-block:: python
 

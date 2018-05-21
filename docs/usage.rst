@@ -10,6 +10,7 @@ The command line tool can be invoked with:
     usage: VHDL Style Guide (VSG) [-h] [-f FILENAME [FILENAME ...]]
                                   [--local_rules LOCAL_RULES]
                                   [--configuration CONFIGURATION] [--fix]
+                                  [--junit JUNIT]
     
     Analyzes VHDL files for style guide violations. Reference documentation is
     located at: http://vhdl-style-guide.readthedocs.io/en/latest/index.html
@@ -23,6 +24,7 @@ The command line tool can be invoked with:
       --configuration CONFIGURATION
                             JSON configuration file
       --fix                 Fix issues found
+      --junit JUNIT         Extract Junit file
 
 
 **Command Line Options**
@@ -42,6 +44,8 @@ The command line tool can be invoked with:
 +-------------------------------+---------------------------------------------+
 | --fix                         | Update issues found.                        |
 |                               | Raplaces current file with updated one.     |
++-------------------------------+---------------------------------------------+
+| --junit                       | Filename of JUnit XML file to generate.     |
 +-------------------------------+---------------------------------------------+
 
 
