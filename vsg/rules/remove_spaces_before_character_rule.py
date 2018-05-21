@@ -29,7 +29,7 @@ class remove_spaces_before_character_rule(rule.rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if ' ' + self.sCharacter in oLine.line:
+            if ' ' + self.sCharacter in oLine.lineNoComment:
                 self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):

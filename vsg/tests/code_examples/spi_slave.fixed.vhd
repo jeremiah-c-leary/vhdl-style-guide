@@ -22,7 +22,7 @@
 --      PARALLEL WRITE INTERFACE
 --      The parallel interface has a input port 'di_i' and an output port 'do_o'.
 --      Parallel load is controlled using 3 signals: 'di_i', 'di_req_o' and 'wren_i'.
---      When the core needs input data, a look ahead data request strobe, 'di_req_o' is pulsed 'PREFETCH' 'spi_sck_i'
+--      When the core needs input data, a look ahead data request strobe , 'di_req_o' is pulsed 'PREFETCH' 'spi_sck_i'
 --      cycles in advance to synchronize a user pipelined memory or fifo to present the next input data at 'di_i'
 --      in time to have continuous clock at the spi bus, to allow back-to-back continuous load.
 --      The data request strobe on 'di_req_o' is 2 'clk_i' clock cycles long.

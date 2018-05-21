@@ -76,12 +76,13 @@ class testRuleWhitespaceMethods(unittest.TestCase):
         oFile = vhdlFile.vhdlFile(sFileName)
 
         dExpected = [2,4,6]
-        oFile.lines.append(line.line('  This is a test of tabs,'))
-        oFile.lines.append(line.line('  This is a test of tabs ,'))
-        oFile.lines.append(line.line('  This is a test of tabs,'))
-        oFile.lines.append(line.line('  This is a test of tabs    ,'))
-        oFile.lines.append(line.line('  This is a test, of tabs'))
-        oFile.lines.append(line.line('  This is a test , of tabs'))
+        oFile.lines.append(line.line('  This is a test of commas,'))
+        oFile.lines.append(line.line('  This is a test of commas ,'))
+        oFile.lines.append(line.line('  This is a test of commas,'))
+        oFile.lines.append(line.line('  This is a test of commas    ,'))
+        oFile.lines.append(line.line('  This is a test, of commas'))
+        oFile.lines.append(line.line('  This is a test , of commas'))
+        oFile.lines.append(line.line('  This is a test, of commas -- This is a comment ,'))
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
