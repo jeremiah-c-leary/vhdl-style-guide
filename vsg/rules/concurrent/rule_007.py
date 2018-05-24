@@ -19,7 +19,7 @@ class rule_007(rule.rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.insideConcurrent and re.match('^.*\selse\s+[\w|\']', oLine.lineLower):
+            if oLine.insideConcurrent and re.match('^.*\selse\s+[\w|\']', oLine.lineNoComment.lower()):
                 self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):

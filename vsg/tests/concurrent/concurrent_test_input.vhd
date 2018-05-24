@@ -31,7 +31,7 @@ begin
 
 label:a<=b;
  label :a<=b;
-  label : a <= b;
+  label : a <= b;  -- this else should not trigger
   label : a <= b or c
                d or e;
 

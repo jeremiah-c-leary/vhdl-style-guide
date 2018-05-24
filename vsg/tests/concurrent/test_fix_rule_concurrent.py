@@ -57,6 +57,7 @@ class testFixRuleConcurrentMethods(unittest.TestCase):
         oRule.fix(oFile)
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oFile.lines[34].line, ' a <= b;  -- this else should not trigger')
 
     def test_fix_rule_008(self):
         oRule = concurrent.rule_007()
