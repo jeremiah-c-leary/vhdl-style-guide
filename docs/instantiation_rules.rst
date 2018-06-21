@@ -4,15 +4,29 @@ Instantiation Rules
 instantiation_001
 #################
 
-This rule checks
+This rule checks for the proper indentation of instantiations.
 
 **Violation**
 
 .. code-block:: vhdl
 
+     U_FIFO : FIFO
+  port map (
+           WR_EN    => wr_en,
+   RD_EN    => rd_en,
+         OVERFLOW => overflow
+                );
+
 **Fix**
 
 .. code-block:: vhdl
+
+   U_FIFO : FIFO
+     port map (
+       WR_EN    => wr_en,
+       RD_EN    => rd_en,
+       OVERFLOW => overflow
+     );
 
 instantiation_002
 #################

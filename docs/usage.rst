@@ -24,29 +24,35 @@ The command line tool can be invoked with:
       --configuration CONFIGURATION
                             JSON configuration file
       --fix                 Fix issues found
+      --fix_phase FIX_PHASE
+                            Fix issues up to an including this phase
       --junit JUNIT         Extract Junit file
 
 
 **Command Line Options**
 
-+-------------------------------+---------------------------------------------+
-| Option                        |  Description                                |
-+===============================+=============================================+
-| -f FILENAME                   | The VHDL file to be analyzed or fixed.      |
-|                               | Multiple files can be passed through this   |
-|                               | option.                                     |
-+-------------------------------+---------------------------------------------+
-| --local_rules LOCAL_RULES     | Additional rules not in the base set.       |
-+-------------------------------+---------------------------------------------+
-| --configuration CONFIGURATION | JSON file which alters the behavior of VSG. |
-|                               | Configuration can also include a list of    |
-|                               | files to analyze.                           |
-+-------------------------------+---------------------------------------------+
-| --fix                         | Update issues found.                        |
-|                               | Raplaces current file with updated one.     |
-+-------------------------------+---------------------------------------------+
-| --junit                       | Filename of JUnit XML file to generate.     |
-+-------------------------------+---------------------------------------------+
++-------------------------------+----------------------------------------------+
+| Option                        |  Description                                 |
++===============================+==============================================+
+| -f FILENAME                   | The VHDL file to be analyzed or fixed.       |
+|                               | Multiple files can be passed through this    |
+|                               | option.                                      |
++-------------------------------+----------------------------------------------+
+| --local_rules LOCAL_RULES     | Additional rules not in the base set.        |
++-------------------------------+----------------------------------------------+
+| --configuration CONFIGURATION | JSON file which alters the behavior of VSG.  |
+|                               | Configuration can also include a list of     |
+|                               | files to analyze.                            |
++-------------------------------+----------------------------------------------+
+| --fix                         | Update issues found.                         |
+|                               | Replaces current file with updated one.      |
++-------------------------------+----------------------------------------------+
+| --fix_phase                   | Applies for all phases up to and including   |
+|                               | this phase.  Analysis will then be performed |
+|                               | on all phases.                               |
++-------------------------------+----------------------------------------------+
+| --junit                       | Filename of JUnit XML file to generate.      |
++-------------------------------+----------------------------------------------+
 
 
 Here is an example output running against a test file:
