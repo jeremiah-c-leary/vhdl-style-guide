@@ -61,7 +61,6 @@ class testFixRuleCommentMethods(unittest.TestCase):
 
     def test_rule_001(self):
         oRuleList = rule_list.rule_list(oFileLibrary)
-        dExpected = []
         oRuleList.fix(7)
         oRuleList.check_rules()
 
@@ -77,5 +76,5 @@ class testFixRuleCommentMethods(unittest.TestCase):
         iFailures = 0
         for oRule in oRuleList.rules:
             iFailures += len(oRule.violations)
-        self.assertEqual(iFailures, iExpectedFailures) 
+        self.assertEqual(iFailures, iExpectedFailures)
 

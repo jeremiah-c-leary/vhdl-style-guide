@@ -38,7 +38,7 @@ class testRuleCommentMethods(unittest.TestCase):
         iFailures = 0
         for oRule in oRuleList.rules:
             iFailures += len(oRule.violations)
-        self.assertEqual(iFailures, iExpectedFailures) 
+        self.assertEqual(iFailures, iExpectedFailures)
 
     def test_rule_003(self):
         oRule = comment.rule_003()

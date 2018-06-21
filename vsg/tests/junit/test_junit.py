@@ -59,7 +59,7 @@ class testJunitClasses(unittest.TestCase):
         self.assertEqual(oTestcase.failures[0].type, 'Type1')
         self.assertEqual(oTestcase.failures[1].type, 'Type2')
         self.assertEqual(oTestcase.failures[2].type, 'Type3')
-       
+
     def test_testcase_class_build_junit(self):
         oTestcase = junit.testcase('Name', 'Time', 'Classname')
         for i in range(0, 3):
@@ -115,7 +115,7 @@ class testJunitClasses(unittest.TestCase):
                 oTestcase.add_failure(oFailure)
             oTestsuite.add_testcase(oTestcase)
 
-        sHostname = platform.uname()[1] 
+        sHostname = platform.uname()[1]
 
         dExpected = []
         dExpected.append('<testsuite errors="0" hostname="' + sHostname + '" failures="9" timestamp="' + oTestsuite.timestamp + '" tests="3" time="TS_Time" name="TS_Name">')
