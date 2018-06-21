@@ -88,5 +88,12 @@ begin
       PORT_4 => w_port_4
     );
 
+  U_INST1 : INST1
+    port map
+     (
+      PORT_1 => (others => '0'),
+      PORT_2 => (others => (a => (others => '0'), b => (others => '1')))
+    );
+
 end architecture ARCH;
 

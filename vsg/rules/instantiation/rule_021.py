@@ -21,7 +21,9 @@ class rule_021(rule.rule):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isInstantiationPortAssignment:
                 if re.match('^\s*\S+\s*=>\s*.*\s*,\s*\S+\s*=>', oLine.line):
-                    self.add_violation(iLineNumber)
+                    sTemp = re.match('(^\s*\S+\s*=>\s*.*\s*),\s*\S+\s*=>', oLine.line).group(0)
+                    if sTemp.count('(') == sTemp.count(')'):
+                        self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:

@@ -12,7 +12,7 @@ class testVhdlFileInstantiationAssignments(unittest.TestCase):
 
 
     def test_isInstantiation_assignment(self):
-        lExpected = [6,17,23,29,36,44,52,57,63,69,75,82]
+        lExpected = [6,17,23,29,36,44,52,57,63,69,75,82,91]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
@@ -22,7 +22,7 @@ class testVhdlFileInstantiationAssignments(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_insideInstantiation_assignment(self):
-        lExpected = [6,7,8,9,10,11,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,44,45,46,47,48,49,50,52,53,54,55,57,58,59,60,61,63,64,65,66,69,70,71,72,73,75,76,77,78,79,80,82,83,84,85,86,87,88,89]
+        lExpected = [6,7,8,9,10,11,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,44,45,46,47,48,49,50,52,53,54,55,57,58,59,60,61,63,64,65,66,69,70,71,72,73,75,76,77,78,79,80,82,83,84,85,86,87,88,89,91,92,93,94,95,96]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
@@ -32,7 +32,7 @@ class testVhdlFileInstantiationAssignments(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isInstantiationPortKeyword_assignment(self):
-        lExpected = [7,18,24,31,37,45,52,58,64,70,76,83]
+        lExpected = [7,18,24,31,37,45,52,58,64,70,76,83,92]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
@@ -42,7 +42,7 @@ class testVhdlFileInstantiationAssignments(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isInstantiationPortEnd_assignment(self):
-        lExpected = [11,22,28,35,42,50,55,61,66,73,80,89]
+        lExpected = [11,22,28,35,42,50,55,61,66,73,80,89,96]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
@@ -52,7 +52,7 @@ class testVhdlFileInstantiationAssignments(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isInstantiationPortAssignment_assignment(self):
-        lExpected = [8,9,10,19,20,21,25,26,27,32,33,34,39,41,46,47,48,53,54,55,58,59,60,65,71,72,77,78,79,85,86,87,88]
+        lExpected = [8,9,10,19,20,21,25,26,27,32,33,34,39,41,46,47,48,53,54,55,58,59,60,65,71,72,77,78,79,85,86,87,88,94,95]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
