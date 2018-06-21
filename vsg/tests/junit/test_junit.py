@@ -208,7 +208,7 @@ class testJunitClasses(unittest.TestCase):
                 oTestsuite.add_testcase(oTestcase)
             oXmlfile.add_testsuite(oTestsuite)
 
-        sHostname = platform.uname()[1] 
+        sHostname = platform.uname()[1]
 
         dExpected = []
         dExpected.append('<?xml version="1.0" ?>')
