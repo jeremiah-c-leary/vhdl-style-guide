@@ -28,6 +28,7 @@ def parse_command_line_arguments():
     parser.add_argument('--local_rules', help='Path to local rules')
     parser.add_argument('--configuration', help='JSON configuration file')
     parser.add_argument('--fix', default=False, action='store_true', help='Fix issues found')
+    parser.add_argument('--fix_phase', default=10, action='store', help='Fix issues up to and including this phase')
     parser.add_argument('--junit', action='store', help='Extract Junit file')
 
     if len(sys.argv) == 1:
@@ -95,7 +96,7 @@ def main():
         oRules.configure(configuration)
 
         if commandLineArguments.fix:
-            oRules.fix()
+            oRules.fix(commandLineArguments.fix_phase)
             write_vhdl_file(oVhdlFile)
 
         oRules.check_rules()

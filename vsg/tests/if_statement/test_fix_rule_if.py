@@ -214,7 +214,7 @@ class testFixRuleIfMethods(unittest.TestCase):
 
     def test_fix_compressed_line(self):
         oRuleList = rule_list.rule_list(oFileCompress)
-        oRuleList.fix()
+        oRuleList.fix(7)
 #        utils.debug_lines(oFileCompress, 9, 10)
         self.assertEqual(oFileCompress.lines[10].line, '    if (A = \'1\' and B = \'1\') then')
         self.assertEqual(oFileCompress.lines[11].line, '      X <= \'1\';')
