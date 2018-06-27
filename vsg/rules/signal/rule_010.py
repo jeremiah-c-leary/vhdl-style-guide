@@ -8,5 +8,5 @@ class rule_010(lowercase_word_after_colon_rule):
     '''
 
     def __init__(self):
-        lowercase_word_after_colon_rule.__init__(self, 'signal', '010', 'isSignal')
+        lowercase_word_after_colon_rule.__init__(self, 'signal', '010', 'isSignal', True)
         self.solution = 'Change signal type to lowercase.'

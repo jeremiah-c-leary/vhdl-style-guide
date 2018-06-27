@@ -305,7 +305,7 @@ This rule checks for multiple generics defined on a single line.
 generic_017
 ###########
 
-This rule checks the generic type is lowercase.
+This rule checks the generic type is lowercase if it is a VHDL keyword.
 
 **Violation**
 

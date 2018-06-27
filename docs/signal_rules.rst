@@ -194,7 +194,7 @@ This rule checks the colons are aligned for all signals in the architecture decl
 signal_010
 ##########
 
-This rule checks the signal type is lowercase.
+This rule checks the signal type is lowercase if it is a VHDL keyword.
 
 **Violation**
 
@@ -202,6 +202,7 @@ This rule checks the signal type is lowercase.
 
    signal wr_en   : STD_LOGIC;
    signal rd_en   : Std_logic;
+   signal cs_f    : t_User_Defined_Type;
 
 **Fix**
 
@@ -209,3 +210,4 @@ This rule checks the signal type is lowercase.
 
    signal wr_en   : std_logic;
    signal rd_en   : std_logic;
+   signal cs_f    : t_User_Defined_Type;

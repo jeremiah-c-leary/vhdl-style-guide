@@ -288,7 +288,7 @@ class testVhdlFileMethods(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isSignal_assignment(self):
-        lExpected = [5,6,7,8,9,10,11,12,13,14,15,16,18,19,20,21]
+        lExpected = [5,6,7,8,9,10,11,12,13,14,15,16,18,19,20,21,23]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFileSignal.lines):

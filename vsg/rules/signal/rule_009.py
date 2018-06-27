@@ -12,5 +12,5 @@ class rule_009(keyword_alignment_rule):
         self.solution = 'Align colon with right most colon.'
         self.sKeyword = ':'
         self.sStartGroupTrigger = 'isArchitectureKeyword'
-        self.sEndGroupTrigger = 'isEndArchitecture'
+        self.sEndGroupTrigger = 'isArchitectureBegin'
         self.sLineTrigger = 'isSignal'
