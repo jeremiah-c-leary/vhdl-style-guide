@@ -95,6 +95,6 @@ class testRuleMethods(unittest.TestCase):
         self.assertEqual(oRule.disable,False)
         self.assertEqual(oRule.indentSize,2)
 
-        self.assertEqual(oRule.report_violations(1, True), 0)
+        self.assertEqual(oRule.report_violations(1, 'vsg', 'filename', True), 0)
         oRule.add_violation(1)
-        self.assertEqual(oRule.report_violations(1, True), 1)
+        self.assertEqual(oRule.report_violations(1, 'vsg', 'filename', True), 1)

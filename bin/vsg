@@ -30,6 +30,7 @@ def parse_command_line_arguments():
     parser.add_argument('--fix', default=False, action='store_true', help='Fix issues found')
     parser.add_argument('--fix_phase', default=10, action='store', help='Fix issues up to and including this phase')
     parser.add_argument('--junit', action='store', help='Extract Junit file')
+    parser.add_argument('--output_format', action='store', default='vsg', choices=['vsg', 'syntastic'], help='Sets the output format.')
 
     if len(sys.argv) == 1:
         parser.print_help()
@@ -100,7 +101,7 @@ def main():
             write_vhdl_file(oVhdlFile)
 
         oRules.check_rules()
-        oRules.report_violations()
+        oRules.report_violations(commandLineArguments.output_format)
 
         if commandLineArguments.junit:
             oJunitTestsuite.add_testcase(oRules.extract_junit_testcase(sFileName))

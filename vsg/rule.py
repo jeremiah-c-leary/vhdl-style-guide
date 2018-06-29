@@ -33,11 +33,27 @@ class rule():
         self._configure_global_rule_attributes(dConfiguration)
         self._configure_rule_attributes(dConfiguration)
 
-    def report_violations(self, iLineNumber, fQuiet=False):
+    def report_violations(self, iLineNumber, sOutputFormat, sFileName, fQuiet=False):
         for sViolation in self.violations:
             if str(sViolation).startswith(str(iLineNumber) + '-') or str(iLineNumber) == str(sViolation):
                 if not fQuiet:
-                    print('  ' + (self.name + '_' + self.identifier).ljust(25) + ' | ' + str(sViolation).rjust(10) + ' | ' + self.solution)  # pragma: no coverage
+                    if sOutputFormat == 'vsg':
+                        sOutputString = '  '
+                        sOutputString += (self.name + '_' + self.identifier).ljust(25)
+                        sOutputString += ' | '
+                        sOutputString += str(sViolation).rjust(10)
+                        sOutputString += ' | '
+                        sOutputString += self.solution
+                    else:
+                        sOutputString = 'ERROR: '
+                        sOutputString += sFileName
+                        sOutputString += '('
+                        sOutputString += str(iLineNumber)
+                        sOutputString += ')'
+                        sOutputString += self.name + '_' + self.identifier
+                        sOutputString += ' -- '
+                        sOutputString += self.solution
+                    print(sOutputString)
                 return 1
         return 0
 

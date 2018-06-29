@@ -5,6 +5,7 @@ import inspect
 
 import junit
 
+
 def get_python_modules_from_directory(sDirectoryName, lModules):
 
     try:
@@ -110,27 +111,31 @@ class rule_list():
             if iFailures > 0 or iPhaseRuleCount == 0:
                 break
 
-    def report_violations(self):
+    def report_violations(self, sOutputFormat):
         '''
         Prints out violations to stdout.
         '''
-        sFileTitle = 'File:  ' + self.oVhdlFile.filename
-        print(sFileTitle)
-        print('=' * len(sFileTitle))
+        if sOutputFormat == 'vsg':
+            sFileTitle = 'File:  ' + self.oVhdlFile.filename
+            print(sFileTitle)
+            print('=' * len(sFileTitle))
         iFailures = 0
         for phase in range(1, self.maximumPhase + 1):
             if phase <= self.lastPhaseRan:
-                print('Phase ' + str(phase) + '... Reporting')
+                if sOutputFormat == 'vsg':
+                    print('Phase ' + str(phase) + '... Reporting')
                 for iLineNumber in range(1, len(self.oVhdlFile.lines)):
                     for oRule in self.rules:
                         if oRule.phase == phase:
-                            iFailures += oRule.report_violations(iLineNumber)
+                            iFailures += oRule.report_violations(iLineNumber, sOutputFormat, self.oVhdlFile.filename)
             else:
-                print('Phase ' + str(phase) + '... Not executed')
+                if sOutputFormat == 'vsg':
+                    print('Phase ' + str(phase) + '... Not executed')
 
-        print('=' * len(sFileTitle))
-        print('Total Rules Checked: ' + str(self.iNumberRulesRan))
-        print('Total Violations:    ' + str(iFailures))
+        if sOutputFormat == 'vsg':
+            print('=' * len(sFileTitle))
+            print('Total Rules Checked: ' + str(self.iNumberRulesRan))
+            print('Total Violations:    ' + str(iFailures))
 
     def configure(self, configurationFile):
         '''

@@ -11,6 +11,7 @@ The command line tool can be invoked with:
                                   [--local_rules LOCAL_RULES]
                                   [--configuration CONFIGURATION] [--fix]
                                   [--junit JUNIT]
+                                  [--output_format {vsg,syntastic}]
     
     Analyzes VHDL files for style guide violations. Reference documentation is
     located at: http://vhdl-style-guide.readthedocs.io/en/latest/index.html
@@ -27,6 +28,8 @@ The command line tool can be invoked with:
       --fix_phase FIX_PHASE
                             Fix issues up to an including this phase
       --junit JUNIT         Extract Junit file
+      --output_format {vsg,syntastic}
+                             Sets the output format.
 
 
 **Command Line Options**
@@ -52,6 +55,11 @@ The command line tool can be invoked with:
 |                               | on all phases.                               |
 +-------------------------------+----------------------------------------------+
 | --junit                       | Filename of JUnit XML file to generate.      |
++-------------------------------+----------------------------------------------+
+| --output_format               | Configures the sdout output format.          |
+|                               |   vsg -- standard VSG output                 |
+|                               |   syntastic -- format compatible with the    |
+|                               |                syntastic VIM module          |
 +-------------------------------+----------------------------------------------+
 
 
