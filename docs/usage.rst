@@ -10,8 +10,8 @@ The command line tool can be invoked with:
     usage: VHDL Style Guide (VSG) [-h] [-f FILENAME [FILENAME ...]]
                                   [--local_rules LOCAL_RULES]
                                   [--configuration CONFIGURATION] [--fix]
-                                  [--junit JUNIT]
-                                  [--output_format {vsg,syntastic}]
+                                  [--fix_phase FIX_PHASE] [--junit JUNIT]
+                                  [--output_format {vsg,syntastic}] [--backup]
     
     Analyzes VHDL files for style guide violations. Reference documentation is
     located at: http://vhdl-style-guide.readthedocs.io/en/latest/index.html
@@ -26,10 +26,12 @@ The command line tool can be invoked with:
                             JSON configuration file
       --fix                 Fix issues found
       --fix_phase FIX_PHASE
-                            Fix issues up to an including this phase
+                            Fix issues up to and including this phase
       --junit JUNIT         Extract Junit file
       --output_format {vsg,syntastic}
-                             Sets the output format.
+                            Sets the output format.
+      --backup              Creates copy of input file for comparison with fixed
+                            version.
 
 
 **Command Line Options**
@@ -60,6 +62,10 @@ The command line tool can be invoked with:
 |                               |   vsg -- standard VSG output                 |
 |                               |   syntastic -- format compatible with the    |
 |                               |                syntastic VIM module          |
++-------------------------------+----------------------------------------------+
+| --backup                      | Creates a copy of the input file before      |
+|                               | applying any fixes.  This can be used to     |
+|                               | compare the fixed file against the original. |
 +-------------------------------+----------------------------------------------+
 
 

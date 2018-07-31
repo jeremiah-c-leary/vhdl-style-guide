@@ -4,6 +4,7 @@ import argparse
 import sys
 import os
 import json
+import shutil
 
 # Get the path to the executable
 executablePath = os.path.dirname(os.path.realpath(__file__))
@@ -31,6 +32,7 @@ def parse_command_line_arguments():
     parser.add_argument('--fix_phase', default=10, action='store', help='Fix issues up to and including this phase')
     parser.add_argument('--junit', action='store', help='Extract Junit file')
     parser.add_argument('--output_format', action='store', default='vsg', choices=['vsg', 'syntastic'], help='Sets the output format.')
+    parser.add_argument('--backup', default=False, action='store_true', help='Creates copy of input file for comparison with fixed version.')
 
     if len(sys.argv) == 1:
         parser.print_help()
@@ -76,6 +78,11 @@ def expand_filename(sFileName):
     return os.path.expanduser(os.path.expandvars(sFileName))
 
 
+def create_backup_file(sFileName):
+    '''Copies existing file and adds .bak to the end.'''
+    shutil.copy2(sFileName, sFileName + '.bak')
+
+
 def main():
     '''Main routine of the VHDL Style Guide (VSG) program.'''
 
@@ -96,7 +103,10 @@ def main():
         oRules = rule_list.rule_list(oVhdlFile, commandLineArguments.local_rules)
         oRules.configure(configuration)
 
+
         if commandLineArguments.fix:
+            if commandLineArguments.backup:
+                create_backup_file(sFileName)
             oRules.fix(commandLineArguments.fix_phase)
             write_vhdl_file(oVhdlFile)
 
