@@ -18,7 +18,7 @@ class rule_029(rule.rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.insideProcess and ('ing_edge' in oLine.lineLower):
+            if oLine.insideProcess and re.match('^.*ing_edge\s*\(', oLine.lineLower):
                 self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):

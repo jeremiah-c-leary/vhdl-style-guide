@@ -22,6 +22,14 @@ begin
        underflow <= '1';
     end if;
 
+    if (some_signal_rising_edge = '1') then
+       overflow <= '1';
+    end if;
+
+    if (some_signal_falling_edge = '0') then
+       overflow <= '1';
+    end if;
+
   end process PROC_1;
 
 end architecture RTL;
