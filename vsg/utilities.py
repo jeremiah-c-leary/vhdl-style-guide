@@ -230,6 +230,9 @@ def reclassify_line(oFile, iLineNumber):
        * insideSequential
        * isSequentialEnd
        * isSequential
+       * hasComment
+       * hasInlineComment
+       * commentColumn
 
     Parameters:
 
@@ -248,6 +251,16 @@ def reclassify_line(oFile, iLineNumber):
         oFile.lines[iLineNumber + 1].insideSequential = True
         oFile.lines[iLineNumber + 1].isSequentialEnd = True
         oFile.lines[iLineNumber + 1].isSequential = True
+
+    if not '--' in oFile.lines[iLineNumber].line:
+        oFile.lines[iLineNumber].hasComment = False
+        oFile.lines[iLineNumber].hasInlineComment = False
+        oFile.lines[iLineNumber].commentColumn = None
+
+    if '--' in oFile.lines[iLineNumber + 1].line:
+        oFile.lines[iLineNumber + 1].hasComment = True
+        oFile.lines[iLineNumber + 1].hasInlineComment = True
+        oFile.lines[iLineNumber + 1].commentColumn = oFile.lines[iLineNumber + 1].line.find('--')
 
 
 def remove_parenthesis_from_word(sWord):

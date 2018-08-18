@@ -104,6 +104,17 @@ class testFixRuleCaseMethods(unittest.TestCase):
         self.assertEqual(oFileSequential.lines[12].insideCaseWhen, False)
         self.assertEqual(oFileSequential.lines[13].line,'      when 1 =>')
 
+        self.assertEqual(oFileSequential.lines[25].line,'      when 0 =>')
+        self.assertEqual(oFileSequential.lines[25].hasComment, False)
+        self.assertEqual(oFileSequential.lines[25].hasInlineComment, False)
+        self.assertEqual(oFileSequential.lines[25].commentColumn, None)
+        self.assertEqual(oFileSequential.lines[26].line,' b <= \'1\'; -- Comment')
+        self.assertEqual(oFileSequential.lines[26].hasComment, True)
+        self.assertEqual(oFileSequential.lines[26].hasInlineComment, True)
+        self.assertEqual(oFileSequential.lines[26].commentColumn, 11)
+        self.assertEqual(oFileSequential.lines[27].line,'      when others =>')
+        self.assertEqual(oFileSequential.lines[28].line,' null;')
+
     def test_fix_rule_013(self):
         oRule = case.rule_013()
         dExpected = []

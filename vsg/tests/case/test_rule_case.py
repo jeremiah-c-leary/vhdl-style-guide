@@ -115,7 +115,7 @@ class testRuleCaseMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'case')
         self.assertEqual(oRule.identifier, '012')
-        dExpected = [11,12,16]
+        dExpected = [11,12,16,22,23]
         oRule.analyze(oFileSequential)
         self.assertEqual(oRule.violations, dExpected)
 

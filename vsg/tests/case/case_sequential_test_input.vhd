@@ -17,6 +17,13 @@ begin
 
     end case;
 
+    case B is
+
+      when 0 => b <= '1'; -- Comment
+      when others => null;
+
+    end case;
+
   end process PROC_1;
 
 end architecture ARCH;
