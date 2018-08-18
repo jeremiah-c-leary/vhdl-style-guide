@@ -4,6 +4,8 @@ Phases
 
 The rules are grouped together and ran in phases.
 If issues are found during a phase, then successive phases will not execute.
+The phases are constructed to model the proper order of fixing issues.
+Each phase prepares the code for the next phase.
 
 Phase 1 - Structural
 ####################

@@ -25,7 +25,8 @@ This is the basic form of a configuration file:
    }
 
 It is not required to have **file_list**, **local_rules**, and **rule** defined in the configuration file.
-Any combination of them can be defined.
+Any combination can be defined.
+The order does not matter either.
 
 file_list
 ---------

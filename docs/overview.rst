@@ -23,7 +23,7 @@ Key Benefits
 * Quickly bring code up to current standards
 
 VSG allows the style of the code to be defined and enforced over the entire code base.
-Using configurations allows for coding standards over different parts of the code base.
+When this is not desireable, configurations allow for coding standards over different parts of the code base.
 
 Key Features
 ############
