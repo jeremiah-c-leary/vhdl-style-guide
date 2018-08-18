@@ -247,6 +247,11 @@ def reclassify_line(oFile, iLineNumber):
         oFile.lines[iLineNumber + 1].insideVariableAssignment = True
         oFile.lines[iLineNumber + 1].isVariableAssignmentEnd = True
         oFile.lines[iLineNumber + 1].isVariableAssignment = True
+    elif re.match('^\s*null', oFile.lines[iLineNumber + 1].line, re.IGNORECASE):
+        oFile.lines[iLineNumber + 1].insideSequential = False
+        oFile.lines[iLineNumber + 1].isSequentialEnd = False
+        oFile.lines[iLineNumber + 1].isSequential = False
+        oFile.lines[iLineNumber + 1].sequentialAlignmentColumn = None
     else:
         oFile.lines[iLineNumber + 1].insideSequential = True
         oFile.lines[iLineNumber + 1].isSequentialEnd = True

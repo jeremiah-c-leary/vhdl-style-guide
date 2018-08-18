@@ -114,6 +114,10 @@ class testFixRuleCaseMethods(unittest.TestCase):
         self.assertEqual(oFileSequential.lines[26].commentColumn, 11)
         self.assertEqual(oFileSequential.lines[27].line,'      when others =>')
         self.assertEqual(oFileSequential.lines[28].line,' null;')
+        self.assertEqual(oFileSequential.lines[28].insideSequential, False)
+        self.assertEqual(oFileSequential.lines[28].isSequentialEnd, False)
+        self.assertEqual(oFileSequential.lines[28].isSequential, False)
+        self.assertEqual(oFileSequential.lines[28].sequentialAlignmentColumn, None)
 
     def test_fix_rule_013(self):
         oRule = case.rule_013()
