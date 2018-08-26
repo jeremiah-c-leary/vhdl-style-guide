@@ -1,18 +1,24 @@
 Overview
 --------
 
-After recently performing code reviews, most of the issues found were related to style.
-Time spent in code reviews addressing style issues is a waste.
+VHDL Style Guide (VSG) provides coding style guide enforcement for VHDL code.
+
+VSG was created after participating in a code review.
+A real issue in the code was masked by a coding style issue.
+A finding was created for the style issue, while the real issue was missed.
+When the code was re-reviewed, the real issue was discovered.
+
 Depending on your process, style issues can take a lot of time to resolve.
 
 1. Create finding/ticket/issue
-2. Disposition
+2. Disposition finding/ticket/issue
 3. Fix
 4. Verify fix
 
 Spending less time on style issues leaves more time to analyze the substance of the code.
-Ultimately, this will reduce the amount of time performing code reviews.
-Spending more time on substance than style will result in higher quality code that costs less.
+This ultimately reduces the amount of time performing code reviews.
+It also allows reviewers to focus on the substance of the code.
+This will result in a higher quality code base.
 
 Key Benefits
 ############
@@ -30,7 +36,7 @@ Key Features
 
 * Command line tool
 
-  * Integrate into continuous integration flow
+  * Integrates into continuous integration flow tools
 
 * Reports and fixes issues found
 
