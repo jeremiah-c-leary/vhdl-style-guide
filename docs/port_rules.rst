@@ -526,3 +526,32 @@ This rule checks the **port** keyword is on the same line as the (.
 .. code-block:: vhdl
 
    port (
+
+port_022
+########
+
+This rule checks for blank lines after the **port** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   port (
+
+
+     WR_EN    : in    std_logic;
+     RD_EN    : in    std_logic;
+     OVERFLOW: out   std_logic;
+     DATA     : inout std_logic
+   );
+
+**Fix**
+
+.. code-block:: vhdl
+
+   port (
+     WR_EN    : in    std_logic;
+     RD_EN    : in    std_logic;
+     OVERFLOW : out   std_logic;
+     DATA     : inout std_logic
+   );

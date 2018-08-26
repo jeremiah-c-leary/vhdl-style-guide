@@ -152,3 +152,12 @@ entity ENTITY1 is
     PORT1 : in    std_logic 
   );
 end entity ENTITY1;
+
+-- Check if there is a blank line after the port keyword
+
+entity ENTITY2 is
+  port (
+
+    PORT1 : in    std_logic 
+  );
+end entity ENTITY1;
