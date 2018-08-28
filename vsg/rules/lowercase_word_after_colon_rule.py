@@ -25,7 +25,7 @@ class lowercase_word_after_colon_rule(rule.rule):
 
     bVhdlKeyword : boolean
        Check whether word is a VHDL keyword
- 
+
     '''
 
     def __init__(self, name=None, identifier=None, sTrigger=None, bVhdlKeyword=False):
