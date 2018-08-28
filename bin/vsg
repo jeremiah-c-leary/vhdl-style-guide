@@ -26,13 +26,13 @@ def parse_command_line_arguments():
                    http://vhdl-style-guide.readthedocs.io/en/latest/index.html''')
 
     parser.add_argument('-f', '--filename', nargs='+', help='File to analyze')
-    parser.add_argument('--local_rules', help='Path to local rules')
-    parser.add_argument('--configuration', help='JSON configuration file')
+    parser.add_argument('-lr', '--local_rules', help='Path to local rules')
+    parser.add_argument('-c', '--configuration', help='JSON configuration file')
     parser.add_argument('--fix', default=False, action='store_true', help='Fix issues found')
-    parser.add_argument('--fix_phase', default=10, action='store', help='Fix issues up to and including this phase')
-    parser.add_argument('--junit', action='store', help='Extract Junit file')
-    parser.add_argument('--output_format', action='store', default='vsg', choices=['vsg', 'syntastic'], help='Sets the output format.')
-    parser.add_argument('--backup', default=False, action='store_true', help='Creates copy of input file for comparison with fixed version.')
+    parser.add_argument('-fp', '--fix_phase', default=10, action='store', help='Fix issues up to and including this phase')
+    parser.add_argument('-j', '--junit', action='store', help='Extract Junit file')
+    parser.add_argument('-of', '--output_format', action='store', default='vsg', choices=['vsg', 'syntastic'], help='Sets the output format.')
+    parser.add_argument('-b', '--backup', default=False, action='store_true', help='Creates copy of input file for comparison with fixed version.')
 
     if len(sys.argv) == 1:
         parser.print_help()
