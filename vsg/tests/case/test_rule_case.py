@@ -70,8 +70,13 @@ class testRuleCaseMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'case')
         self.assertEqual(oRule.identifier, '007')
-        dExpected = [9]
+        dExpected = [41]
         oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+
+        oRule = case.rule_007()
+        dExpected = []
+        oRule.analyze(oFileSequential)
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_008(self):

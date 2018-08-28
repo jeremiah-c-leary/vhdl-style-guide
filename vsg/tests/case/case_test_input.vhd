@@ -37,7 +37,7 @@ begin
 
   PROC_1 : process (a, b, c) is
   begin
-
+    a <= a;
     case boolean_1 or
          boolean_2 or
 	 boolean_3   is

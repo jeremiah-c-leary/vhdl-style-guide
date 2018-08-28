@@ -133,6 +133,7 @@ case_007
 ########
 
 This rule checks for a blank line before the **case** keyword.
+Comments are allowed before the **case** keyword.
 
 **Violation**
 
@@ -141,12 +142,20 @@ This rule checks for a blank line before the **case** keyword.
    a <= '1';
    case data is
 
+
+   -- This is a comment
+   case data is
+
 **Fix**
 
 .. code-block:: vhdl
 
    a <= '1';
 
+   case data is
+
+
+   -- This is a comment
    case data is
 
 case_008

@@ -8,4 +8,4 @@ class rule_007(line_above_rule):
     '''
 
     def __init__(self):
-        line_above_rule.__init__(self, 'case', '007', 'isCaseKeyword')
+        line_above_rule.__init__(self, 'case', '007', 'isCaseKeyword', 'isComment')

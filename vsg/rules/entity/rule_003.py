@@ -19,7 +19,7 @@ class rule_003(rule.rule):
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isEntityDeclaration:
-                check.is_blank_line_before(self, oFile, iLineNumber)
+                check.is_blank_line_before(self, oFile, iLineNumber, None)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:
