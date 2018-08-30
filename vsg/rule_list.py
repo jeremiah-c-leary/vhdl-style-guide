@@ -3,7 +3,7 @@ import os
 import importlib
 import inspect
 
-import junit
+from . import junit
 
 
 def get_python_modules_from_directory(sDirectoryName, lModules):
