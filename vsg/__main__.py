@@ -57,7 +57,7 @@ def write_junit_xml_file(oJunitFile):
 
 def update_command_line_arguments(commandLineArguments, configuration):
     if configuration:
-        if 'file_list' in configuration:
+        if 'file_list' in configuration and not commandLineArguments.filename:
             for sFilename in configuration['file_list']:
                 try:
                     commandLineArguments.filename.append(expand_filename(sFilename))
