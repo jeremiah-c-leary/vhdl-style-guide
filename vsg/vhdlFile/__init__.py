@@ -1,1 +1,1 @@
-from vhdlFile import vhdlFile
+from .vhdlFile import vhdlFile

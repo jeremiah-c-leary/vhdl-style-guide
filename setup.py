@@ -32,6 +32,10 @@ setup(
   zip_safe=False,
   test_suite='nose.collector',
   tests_require=['nose'],
-  scripts=['bin/vsg'],
-  keywords=['vhdl', 'style', 'beautify']
+  keywords=['vhdl', 'style', 'beautify'],
+  entry_points={
+    'console_scripts': [
+      'vsg = vsg.__main__:main'
+    ]
+  }
 )
