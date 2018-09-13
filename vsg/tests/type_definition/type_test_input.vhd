@@ -73,7 +73,10 @@ package PACK is
     wr_en : std_logic;
     rd_en : std_logic;
   end record;
-    
+
+  constant this_is_not_a_record : std_logic := "1";
+  constant record_this_is_not   : std_logic := "0";
+
 end package PACK;
 
 library LIB1;
