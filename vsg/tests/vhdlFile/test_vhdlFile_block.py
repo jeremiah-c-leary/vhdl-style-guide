@@ -8,55 +8,27 @@ oFileBlock = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','bloc
 class testVhdlFileMethods(unittest.TestCase):
 
     def test_insideBlock_assignment(self):
-        lExpected = [7,8,9,10]
-        # Generic actual list
-        lActual = []
-        for iIndex, oLine in enumerate(oFileBlock.lines):
-            if oLine.insideBlock:
-                lActual.append(iIndex)
-        # Compare
+        lExpected = range(10,21)
+        lActual = [i for i, l in enumerate(oFileBlock.lines) if l.insideBlock]
         self.assertEqual(lActual, lExpected)
 
     def test_isBlockBegin_assignment(self):
-        lExpected = [9]
-        # Generic actual list
-        lActual = []
-        for iIndex, oLine in enumerate(oFileBlock.lines):
-            if oLine.isBlockBegin:
-                lActual.append(iIndex)
-        # Compare
+        lExpected = [18]
+        lActual = [i for i, l in enumerate(oFileBlock.lines) if l.isBlockBegin]
         self.assertEqual(lActual, lExpected)
 
     def test_isBlockKeyword_assignment(self):
-        lExpected = [7]
-        # Generic actual list
-        lActual = []
-        for iIndex, oLine in enumerate(oFileBlock.lines):
-            if oLine.isBlockKeyword:
-                lActual.append(iIndex)
-        # Compare
+        lExpected = [10]
+        lActual = [i for i, l in enumerate(oFileBlock.lines) if l.isBlockKeyword]
         self.assertEqual(lActual, lExpected)
 
     def test_isEndBlock_assignment(self):
-        lExpected = [10]
-        # Generic actual list
-        lActual = []
-        for iIndex, oLine in enumerate(oFileBlock.lines):
-            if oLine.isEndBlock:
-                lActual.append(iIndex)
-        # Compare
+        lExpected = [20]
+        lActual = [i for i, l in enumerate(oFileBlock.lines) if l.isEndBlock]
         self.assertEqual(lActual, lExpected)
 
     def test_block_indent_assignment(self):
-        self.maxDiff = None
-#       lExpected = [   0,   1,2,   3,4,   5,6,7,8,9,10,  11,12,  13]
-        lExpected = [None,None,0,None,0,None,1,1,2,1, 1,None, 0,None]
-        # Generic actual list
-        lActual = []
-        iMaxCheck = len(lExpected)
-        for iIndex, oLine in enumerate(oFileBlock.lines):
-            if iIndex == iMaxCheck:
-                break
-            lActual.append(oLine.indentLevel)
-        # Compare
+#       lExpected = [   0,   1,2,3,   4,5,   6,7,   8,9,10,11,  12,13,  14,15,16,17,18,19,20,  21,22,  23]
+        lExpected = [None,None,0,0,None,0,None,0,None,1, 1, 2,None, 2,None, 2, 3, 2, 1, 2, 1,None, 0,None]
+        lActual = [oLine.indentLevel for oLine in oFileBlock.lines]
         self.assertEqual(lActual, lExpected)

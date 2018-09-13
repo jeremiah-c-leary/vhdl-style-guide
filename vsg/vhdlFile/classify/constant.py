@@ -6,7 +6,7 @@ def constant(dVars, oLine):
     if re.match('^\s*constant', oLine.lineLower) and \
        not oLine.insideFunction and not oLine.insideProcedure:
         oLine.isConstant = True
-        oLine.indentLevel = 1
+        oLine.indentLevel = dVars['iCurrentIndentLevel']
         oLine.insideConstant = True
         dVars['iCurrentIndentLevel'] += 1
     if oLine.insideConstant:
