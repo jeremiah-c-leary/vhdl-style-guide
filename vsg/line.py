@@ -182,6 +182,11 @@ class line():
         self.isProcedureEnd = False
         self.isProcedureReturn = False
         self.isProcedureIs = False
+        # Block attributes
+        self.insideBlock = False
+        self.isBlockBegin = False
+        self.isBlockKeyword = False
+        self.isEndBlock = False
 
     def update_line(self, sLine):
         '''

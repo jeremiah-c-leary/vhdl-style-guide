@@ -54,6 +54,7 @@ class vhdlFile():
 
                 classify.architecture(self, dVars, oLine)
                 classify.package_body(dVars, oLine)
+                classify.block(self, dVars, oLine)
                 classify.package(dVars, oLine)
                 classify.component(dVars, oLine)
                 classify.signal(dVars, oLine)

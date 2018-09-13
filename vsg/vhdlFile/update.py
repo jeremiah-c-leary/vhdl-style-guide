@@ -187,6 +187,11 @@ def update_constant_attributes(oPreviousLine, oCurrentLine):
     if oPreviousLine.insideConstant and not oPreviousLine.isConstantEnd:
         oCurrentLine.insideConstant = True
 
+def update_block_attributes(oPreviousLine, oCurrentLine):
+
+    if oPreviousLine.insideBlock and not oPreviousLine.isEndBlock:
+        oCurrentLine.insideBlock = True
+
 
 def inside_attributes(dVars, oPreviousLine, oCurrentLine):
 
@@ -221,3 +226,4 @@ def inside_attributes(dVars, oPreviousLine, oCurrentLine):
     update_attribute_attributes(oPreviousLine, oCurrentLine)
     update_file_attributes(oPreviousLine, oCurrentLine)
     update_constant_attributes(oPreviousLine, oCurrentLine)
+    update_block_attributes(oPreviousLine, oCurrentLine)
