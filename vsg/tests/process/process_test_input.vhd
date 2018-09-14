@@ -18,7 +18,7 @@ prOCess  (one,
           two,
                three)   is
 begIN
-
+ -- This begin should not be detected
  end proCEss;
 
     Process  (one,

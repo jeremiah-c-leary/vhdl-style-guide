@@ -197,9 +197,9 @@ class testFixRuleProcessMethods(unittest.TestCase):
         oRule.fix(oFile)
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
-        self.assertEqual(oFile.lines[35].line, '          ) is -- This is a comment')
-        self.assertEqual(oFile.lines[41].line, '          ) is')
-        self.assertEqual(oFile.lines[29].line, '          ) is')
+        self.assertEqual(oFile.lines[37].line, '          ) is -- This is a comment')
+        self.assertEqual(oFile.lines[43].line, '          ) is')
+        self.assertEqual(oFile.lines[31].line, '          ) is')
 
     def test_fix_rule_029(self):
         oRule = process.rule_029()

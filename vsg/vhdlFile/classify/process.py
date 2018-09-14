@@ -38,7 +38,7 @@ def classify_process_sensitivity_list(dVars, oLine):
 
 
 def classify_process_begin_keyword(dVars, oLine):
-    if re.match('^.*\s+begin', oLine.lineLower) or re.match('^\s*begin', oLine.lineLower):
+    if re.match('^.*\s+begin', oLine.lineNoComment, flags=re.IGNORECASE) or re.match('^\s*begin', oLine.lineLower):
         oLine.indentLevel = dVars['iCurrentIndentLevel'] - 1
         oLine.isProcessBegin = True
         dVars['fFoundProcessBegin'] = True
