@@ -16,7 +16,9 @@ def instantiation(dVars, oLine):
 
 
 def classify_instantiation_declaration(dVars, oLine):
-    if re.match('^\s*\w+\s*:\s*\w+', oLine.line) and not oLine.insideTypeRecord and not oLine.insideBlock:
+    if re.match('^\s*\w+\s*:\s*\w+', oLine.line) and \
+       not oLine.insideTypeRecord and \
+       not re.match('^\s*\w+\s*:\s*block', oLine.lineLower):
         if re.match('^\s*\w+\s*:\s*entity', oLine.line, re.IGNORECASE):
             oLine.isDirectInstantiationDeclaration = True
         else:
