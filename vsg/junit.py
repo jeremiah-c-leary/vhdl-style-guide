@@ -53,11 +53,12 @@ class testcase():
 
         lJunit = ['  <testcase name="' + self.name + '" time="' + self.time + '" classname="' + self.classname + '">']
 
-        for oFailure in self.failures:
-            try:
-                lJunit.extend(oFailure.build_junit())
-            except TypeError:
-                pass
+        if self.failures:
+            for oFailure in self.failures:
+                try:
+                    lJunit.extend(oFailure.build_junit())
+                except TypeError:
+                    pass
 
         lJunit.append('  </testcase>')
 
@@ -90,7 +91,8 @@ class testsuite():
         sHeader += ' hostname="' + platform.uname()[1] + '"'
         iFailures = 0
         for oTestcase in self.testcases:
-            iFailures += len(oTestcase.failures)
+            if oTestcase.failures:
+                iFailures += len(oTestcase.failures)
         sHeader += ' failures="' + str(iFailures) + '"'
         sHeader += ' timestamp="' + self.timestamp + '"'
         sHeader += ' tests="' + str(len(self.testcases)) + '"'

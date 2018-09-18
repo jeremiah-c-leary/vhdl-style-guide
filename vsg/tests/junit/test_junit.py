@@ -332,3 +332,46 @@ class testJunitClasses(unittest.TestCase):
         dExpected.append('</testsuite>')
         self.assertEqual(dExpected, oXmlfile.build_junit())
 
+    def test_xmlfile_class_no_failures_build_junit(self):
+        self.maxDiff = None
+        oXmlfile = junit.xmlfile('FileName')
+        for x in range(0,2):
+            oTestsuite = junit.testsuite('TS_Name' + str(x), 'TS_Time' + str(x))
+            for k in range(0, 3):
+                oTestcase = junit.testcase('Name' + str(k), 'Time' + str(k), 'Classname' + str(k))
+                oTestsuite.add_testcase(oTestcase)
+            oXmlfile.add_testsuite(oTestsuite)
+
+        sHostname = platform.uname()[1]
+
+        dExpected = []
+        dExpected.append('<?xml version="1.0" ?>')
+        dExpected.append('<testsuite errors="0" hostname="' + sHostname + '" failures="0" timestamp="' + oTestsuite.timestamp + '" tests="3" time="TS_Time0" name="TS_Name0">')
+        dExpected.append('  <properties>')
+        dExpected.append('  </properties>')
+        dExpected.append('  <testcase name="Name0" time="Time0" classname="Classname0">')
+        dExpected.append('  </testcase>')
+        dExpected.append('  <testcase name="Name1" time="Time1" classname="Classname1">')
+        dExpected.append('  </testcase>')
+        dExpected.append('  <testcase name="Name2" time="Time2" classname="Classname2">')
+        dExpected.append('  </testcase>')
+        dExpected.append('  <system-out>')
+        dExpected.append('  </system-out>')
+        dExpected.append('  <system-err>')
+        dExpected.append('  </system-err>')
+        dExpected.append('</testsuite>')
+        dExpected.append('<testsuite errors="0" hostname="' + sHostname + '" failures="0" timestamp="' + oTestsuite.timestamp + '" tests="3" time="TS_Time1" name="TS_Name1">')
+        dExpected.append('  <properties>')
+        dExpected.append('  </properties>')
+        dExpected.append('  <testcase name="Name0" time="Time0" classname="Classname0">')
+        dExpected.append('  </testcase>')
+        dExpected.append('  <testcase name="Name1" time="Time1" classname="Classname1">')
+        dExpected.append('  </testcase>')
+        dExpected.append('  <testcase name="Name2" time="Time2" classname="Classname2">')
+        dExpected.append('  </testcase>')
+        dExpected.append('  <system-out>')
+        dExpected.append('  </system-out>')
+        dExpected.append('  <system-err>')
+        dExpected.append('  </system-err>')
+        dExpected.append('</testsuite>')
+        self.assertEqual(dExpected, oXmlfile.build_junit())
