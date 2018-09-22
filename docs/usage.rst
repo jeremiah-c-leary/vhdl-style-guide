@@ -61,7 +61,7 @@ The command line tool can be invoked with:
 | --output_format               | Configures the sdout output format.          |
 |                               |   vsg -- standard VSG output                 |
 |                               |   syntastic -- format compatible with the    |
-|                               |                syntastic VIM module          |
+|                               |   syntastic VIM module                       |
 +-------------------------------+----------------------------------------------+
 | --backup                      | Creates a copy of the input file before      |
 |                               | applying any fixes.  This can be used to     |
