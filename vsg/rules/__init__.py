@@ -39,6 +39,7 @@ from vsg.rules import process
 from vsg.rules import procedure
 from vsg.rules import sequential
 from vsg.rules import signal
+from vsg.rules import source_file
 from vsg.rules import subtype
 from vsg.rules import type_definition
 from vsg.rules import variable_assignment

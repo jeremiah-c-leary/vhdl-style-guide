@@ -124,7 +124,7 @@ class rule_list():
             if phase <= self.lastPhaseRan:
                 if sOutputFormat == 'vsg':
                     print('Phase ' + str(phase) + '... Reporting')
-                for iLineNumber in range(1, len(self.oVhdlFile.lines)):
+                for iLineNumber in range(0, len(self.oVhdlFile.lines)):
                     for oRule in self.rules:
                         if oRule.phase == phase:
                             iFailures += oRule.report_violations(iLineNumber, sOutputFormat, self.oVhdlFile.filename)
