@@ -48,7 +48,7 @@ class keyword_alignment_rule(rule.rule):
                 iStartGroupIndex = iLineNumber
             if not oLine.__dict__[self.sEndGroupTrigger] and fGroupFound:
                 fGroupFound = False
-                check.keyword_alignment(self, iStartGroupIndex, self.sKeyword, lGroup)
+                concurrent_keyword_alignment(self, iStartGroupIndex, self.sKeyword, lGroup)
                 lGroup = []
                 iStartGroupIndex = None
             if fGroupFound:
@@ -56,3 +56,38 @@ class keyword_alignment_rule(rule.rule):
 
     def _fix_violations(self, oFile):
         fix.keyword_alignment(self, oFile)
+
+
+def concurrent_keyword_alignment(self, iLineNumber, sKeyword, lGroup):
+    '''
+    Checks keywords in a group of line objects are aligned in the same column.
+
+    Parameters:
+
+      self: (rule object)
+
+      iLineNumber: (integer)
+
+      sKeyword: (string)
+
+      lGroup: (list of line objects)
+    '''
+    iKeywordAlignment = None
+    iMaximumKeywordColumn = 0
+    sViolationRange = str(iLineNumber) + '-' + str(iLineNumber + len(lGroup) - 1)
+    self.dFix['violations'][sViolationRange] = {}
+    self.dFix['violations'][sViolationRange]['line'] = {}
+
+    for iIndex, oGroupLine in enumerate(lGroup):
+        if sKeyword in oGroupLine.line and oGroupLine.isConcurrentBegin:
+            self.dFix['violations'][sViolationRange]['line'][iLineNumber + iIndex] = {}
+            self.dFix['violations'][sViolationRange]['line'][iLineNumber + iIndex]['keywordColumn'] = oGroupLine.line.find(sKeyword)
+
+            iMaximumKeywordColumn = check.get_maximum_keyword_column(oGroupLine, sKeyword, iMaximumKeywordColumn)
+
+            iKeywordAlignment = check.update_keyword_alignment(oGroupLine, sKeyword, iKeywordAlignment)
+
+            if not iKeywordAlignment == oGroupLine.line.find(sKeyword):
+                check.add_range_violation(self, sViolationRange)
+
+    self.dFix['violations'][sViolationRange]['maximumKeywordColumn'] = iMaximumKeywordColumn

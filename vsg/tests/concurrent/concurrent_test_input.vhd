@@ -47,4 +47,11 @@ label:a<=b;
 
   a <= b when g = '1' else '1'; -- Not an error
 
+  a <= b when g = '1' else
+       c when g => 10 else
+       d when g <= 20 else
+       e when g < 5 else
+       f when g > 13 else
+       z;
+
 end architecture ARCH;
