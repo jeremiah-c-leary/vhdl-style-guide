@@ -177,3 +177,36 @@ class testRuleWhitespaceMethods(unittest.TestCase):
         oFile.lines.append(line.line('  std_logic_vector   (7 downto 0)'))
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
+
+    def test_009(self):
+        oRule = whitespace.rule_009()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'whitespace')
+        self.assertEqual(oRule.identifier, '009')
+        self.assertEqual(oRule.phase, 2)
+
+        oFile = vhdlFile.vhdlFile(sFileName)
+
+        dExpected = [1]
+        oFile.lines.append(line.line('  a <= b& c -- this is an& comment'))
+        oFile.lines.append(line.line('  a <= b & c &d &e -- this should not be caught& '))
+        oFile.lines.append(line.line('  a <= b &c'))
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_010(self):
+        oRule = whitespace.rule_010()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'whitespace')
+        self.assertEqual(oRule.identifier, '010')
+        self.assertEqual(oRule.phase, 2)
+
+        oFile = vhdlFile.vhdlFile(sFileName)
+
+        dExpected = [3]
+        oFile.lines.append(line.line('  a <= b& c'))
+        oFile.lines.append(line.line('  a <= b & c'))
+        oFile.lines.append(line.line('  a <= b &c'))
+        oFile.lines.append(line.line('  a <= b &'))
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)

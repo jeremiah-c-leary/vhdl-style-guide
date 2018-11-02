@@ -154,3 +154,36 @@ This rule checks for spaces after the **std_logic_vector** keyword.
    signal data    : std_logic_vector(7 downto 0);
    signal counter : std_logic_vector(7 downto 0);
 
+whitespace_009
+##############
+
+This rule checks for spaces before the concate (&) operator.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   a <= b& c;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   a <= b & c;
+
+whitespace_010
+##############
+
+This rule checks for spaces after the concate (&) operator.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   a <= b &c;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   a <= b & c;
