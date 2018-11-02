@@ -10,7 +10,7 @@ class testVhdlFileMethods(unittest.TestCase):
     def test_insideBlock_assignment(self):
         lExpected = range(10,29)
         lActual = [i for i, l in enumerate(oFileBlock.lines) if l.insideBlock]
-        self.assertEqual(lActual, lExpected)
+        self.assertSequenceEqual(lActual, lExpected)
 
     def test_isBlockBegin_assignment(self):
         lExpected = [18]
