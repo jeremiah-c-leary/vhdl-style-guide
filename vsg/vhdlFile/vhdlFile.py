@@ -43,7 +43,7 @@ class vhdlFile():
                 for sLine in oFile:
                     oLine = line.line(sLine.replace('\t', '  ').rstrip())
                     update.inside_attributes(dVars, self.lines[-1], oLine)
-    
+
                     classify.blank(oLine)
                     classify.comment(dVars, oLine)
                     classify.library(oLine)

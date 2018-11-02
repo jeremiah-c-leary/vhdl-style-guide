@@ -7,7 +7,18 @@ from . import junit
 
 
 def get_python_modules_from_directory(sDirectoryName, lModules):
+    '''
+    Returns a list of files with an extension of py from a directory.
+    It ignores files starting with a double underscore __.
 
+    Parameters:
+
+      sDirectoryName (string)
+
+    Modifies:
+
+      lModules (string list)
+    '''
     try:
         lDirectoryContents = os.listdir(sDirectoryName)
         for sFileName in lDirectoryContents:
@@ -19,7 +30,17 @@ def get_python_modules_from_directory(sDirectoryName, lModules):
 
 
 def get_rules_from_module(lModules, lRules):
+    '''
+    Returns a list of files that start with "rule_".
 
+    Parameters:
+
+      lModules (list)
+
+    Modifies:
+
+      lRules (object list)
+    '''
     for sModuleName in lModules:
         for name, obj in inspect.getmembers(importlib.import_module(sModuleName)):
             if name.startswith('rule_'):
@@ -29,8 +50,13 @@ def get_rules_from_module(lModules, lRules):
 def load_local_rules(sDirectoryName):
     '''
     Loads rules from the directory passed to this routine.
-    '''
 
+    Parameters:
+
+      sDirectoryName (string)
+
+    Returns: (string list)
+    '''
     lLocalModules = []
     get_python_modules_from_directory(sDirectoryName, lLocalModules)
 
@@ -42,8 +68,11 @@ def load_local_rules(sDirectoryName):
 def load_rules():
     '''
     Loads rules from the vsg/rules directory.
-    '''
 
+    Parameters:  None
+
+    Returns:  (rule object list)
+    '''
     lRules = []
     for name, oPackage in inspect.getmembers(importlib.import_module('vsg.rules')):
         if inspect.ismodule(oPackage):
@@ -55,6 +84,14 @@ def load_rules():
 
 
 def maximum_phase(lRules):
+    '''
+    Determines the maximum phase number from all the rules.
+
+    Parameters:
+      lRules (rule object list)
+
+    Returns: (integer)
+    '''
     maximumPhaseNumber = 0
     for oRule in lRules:
         if oRule.phase > maximumPhaseNumber:
@@ -66,7 +103,7 @@ class rule_list():
     '''
     Contains a list of all rules to be checked.
     It loads all base rules.
-    If localized rules are loaded if given.
+    Localized rules are loaded if specified.
 
     Parameters:
 
@@ -86,6 +123,10 @@ class rule_list():
     def fix(self, iPhase):
         '''
         Applies fixes to all violations found.
+
+        Parameters:
+
+          iPhase: (integer)
         '''
         for phase in range(1, int(iPhase) + 1):
             for oRule in self.rules:
@@ -95,7 +136,9 @@ class rule_list():
     def check_rules(self):
         '''
         Analyzes all rules in increasing phase order.
-        If there is a violation in a phase, furthere analysis is stopped.
+        If there is a violation in a phase, analysis is halted.
+
+        Parameters:  None
         '''
         self.iNumberRulesRan = 0
         iFailures = 0
@@ -114,6 +157,10 @@ class rule_list():
     def report_violations(self, sOutputFormat):
         '''
         Prints out violations to stdout.
+
+        Parameters:
+
+          sOutputFormat (string)
         '''
         if sOutputFormat == 'vsg':
             sFileTitle = 'File:  ' + self.oVhdlFile.filename
@@ -150,6 +197,15 @@ class rule_list():
                 oRule.configure(configurationFile)
 
     def extract_junit_testcase(self, sVhdlFileName):
+        '''
+        Creates JUnit XML file listing all violations found.
+
+        Parameters:
+
+          sVhdlFileName (string)
+
+        Returns: (junit testcase object)
+        '''
         oTestcase = junit.testcase(sVhdlFileName, str(0), 'failure')
         oFailure = junit.failure('Failure')
         for oRule in self.rules:

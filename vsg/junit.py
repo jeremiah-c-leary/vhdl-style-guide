@@ -19,7 +19,7 @@ class failure():
 
     def build_junit(self):
         '''
-        Returns a list of strings of a formatted failure.
+        Return a formatted failure as a list of strings.
         '''
         lJunit = ['    <failure type="' + self.type + '">']
         for sText in self.text:
@@ -48,7 +48,7 @@ class testcase():
 
     def build_junit(self):
         '''
-        Return a list of strings of a formatted testcase.
+        Return formatted testcase as a list of strings.
         '''
 
         lJunit = ['  <testcase name="' + self.name + '" time="' + self.time + '" classname="' + self.classname + '">']
@@ -84,7 +84,7 @@ class testsuite():
 
     def build_junit(self):
         '''
-        Return a list of strings of a formatted testsuite.
+        Return a formatted testsuite as a list of strings.
         '''
         sHeader = '<testsuite'
         sHeader += ' errors="0"'
@@ -130,7 +130,7 @@ class xmlfile():
 
     def build_junit(self):
         '''
-        Return a list of strings of a formatted junit XML file.
+        Return a JUnit XML file formatted as a list of strings.
         '''
         lJunit = ['<?xml version="1.0" ?>']
         for oTestsuite in self.testsuites:
