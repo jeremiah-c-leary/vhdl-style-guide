@@ -11,7 +11,7 @@ This rule checks alignment of multiline assert statements.
 .. code-block:: vhdl
 
    assert WIDTH > 16
-        report "FIFO witdth is limited to 16 bits."
+        report "FIFO width is limited to 16 bits."
     severity FAILURE;
 
 **Fix**
@@ -19,5 +19,5 @@ This rule checks alignment of multiline assert statements.
 .. code-block:: vhdl
 
    assert WIDTH > 16
-   report "FIFO witdth is limited to 16 bits."
+   report "FIFO width is limited to 16 bits."
    severity FAILURE;
