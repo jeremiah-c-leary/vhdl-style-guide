@@ -49,7 +49,7 @@ class vhdlFile():
                     classify.library(oLine)
                     classify.entity(self, dVars, oLine)
                     classify.assert_statement(dVars, oLine)
-    
+
                     classify.port(dVars, oLine)
                     classify.generic(dVars, oLine)
     
