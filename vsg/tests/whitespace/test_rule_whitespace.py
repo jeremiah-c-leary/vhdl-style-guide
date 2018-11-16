@@ -187,10 +187,11 @@ class testRuleWhitespaceMethods(unittest.TestCase):
 
         oFile = vhdlFile.vhdlFile(sFileName)
 
-        dExpected = [1]
+        dExpected = [1,4]
         oFile.lines.append(line.line('  a <= b& c -- this is an& comment'))
         oFile.lines.append(line.line('  a <= b & c &d &e -- this should not be caught& '))
         oFile.lines.append(line.line('  a <= b &c'))
+        oFile.lines.append(line.line('  a <= b&c'))
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
