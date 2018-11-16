@@ -106,5 +106,14 @@ architecture ARCH of ENTITY1 is
 
 begin
 
+  U_ENTITY : ENTITY1
+    generic map (
+      TYPE_GENERIC => '1'
+    )
+    port map (
+      TYPE_PORT_NAME => '1';
+      type_port_name_2 => '0'
+    );
+
 end architecture ARCH;
 

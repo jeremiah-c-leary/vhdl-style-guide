@@ -163,7 +163,7 @@ class testVhdlFileTypeAssignments(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isEndArchitecture(self):
-        lExpected = [23,109]
+        lExpected = [23,118]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
