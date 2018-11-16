@@ -49,7 +49,7 @@ class testVhdlFileFunctionAssignments(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isFunctionReturn(self):
-        lExpected = [8,10,18,23,51,58,67,75,84,94,105,116]
+        lExpected = [8,10,18,23,51,58,67,75,84,94,105,116,126,130]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
