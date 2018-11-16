@@ -270,9 +270,11 @@ class testFixRuleIfMethods(unittest.TestCase):
         self.assertEqual(oFile.lines[27].line, '    end if;')
 
     def test_fix_rule_029(self):
+        oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','if_statement','if_test_input.vhd'))
         oRule = if_statement.rule_029()
+        self.assertEqual(oFile.lines[14].line, '       g = 34 or x = 3000 THEN')
         dExpected = []
         oRule.fix(oFile)
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
-        self.assertEqual(oFile.lines[14].line, '        g = 34 or x = 3000 ) then')
+        self.assertEqual(oFile.lines[14].line, '       g = 34 or x = 3000 then')
