@@ -2,7 +2,24 @@ import re
 
 
 def type_definition(dVars, oLine):
+    '''
+    Classifies types and subtypes.
 
+    Sets the following line attributes:
+
+      * isTypeKeyword
+      * isTypeArrayKeyword
+      * insideTypeArray
+      * indentLevel
+      * isTypeEnd
+      * isTypeEnumeratedKeyword
+      * insideTypeEnumerated
+      * isTypeRecordKeyword
+      * insideTypeRecord
+      * isTypeArrayEnd
+      * isTypeRecordEnd
+      * isTypeEnumeratedEnd
+    '''
     if re.match('^\s*type\s+\w+\s+is\s+array', oLine.line, re.IGNORECASE):
         oLine.isTypeKeyword = True
         oLine.isTypeArrayKeyword = True
@@ -19,8 +36,9 @@ def type_definition(dVars, oLine):
         oLine.indentLevel = dVars['iCurrentIndentLevel']
         dVars['iCurrentIndentLevel'] += 1
     elif re.match('^\s*type', oLine.line, re.IGNORECASE):
-        oLine.isTypeKeyword = True
-        oLine.indentLevel = dVars['iCurrentIndentLevel']
+        if not oLine.insideEntity and not oLine.insideComponent:
+            oLine.isTypeKeyword = True
+            oLine.indentLevel = dVars['iCurrentIndentLevel']
 
     if re.match('^.*\srecord', oLine.lineNoComment, re.IGNORECASE) and not \
        re.match('^.*end\s+record', oLine.lineNoComment, re.IGNORECASE) and not \

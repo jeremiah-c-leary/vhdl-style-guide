@@ -82,3 +82,29 @@ end package PACK;
 library LIB1;
 use blah.record.all;
 
+entity ENTITY1 is
+  generic (
+    TYPE_GENERIC : std_logic := '0'
+  );
+  port (
+    TYPE_PORT_NAME : std_logic;
+    type_port_name_2 : std_logic
+  );
+end entity ENTITY1;
+
+architecture ARCH of ENTITY1 is
+
+  component ENTITY1 is
+    generic (
+      TYPE_GENERIC : std_logic := '0'
+    );
+    port (
+      TYPE_PORT_NAME : std_logic;
+      type_port_name_2 : std_logic
+    );
+  end component ENTITY1;
+
+begin
+
+end architecture ARCH;
+
