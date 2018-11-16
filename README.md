@@ -36,18 +36,24 @@ VHDL Style Guide (VSG)
   </a>
 </div>
 
-After recently performing code reviews, most of the issues found were related to style.
-Time spent in code reviews addressing style issues is a waste.
+VHDL Style Guide (VSG) provides coding style guide enforcement for VHDL code.
+
+VSG was created after participating in a code review.
+A real issue in the code was masked by a coding style issue.
+A finding was created for the style issue, while the real issue was missed.
+When the code was re-reviewed, the real issue was discovered.
+
 Depending on your process, style issues can take a lot of time to resolve.
 
 1. Create finding/ticket/issue
-2. Disposition
+2. Disposition finding/ticket/issue
 3. Fix
 4. Verify fix
 
-Spending less time on style issues, leaves more time to analyze the substance of the code.
-Ultimately, this will reduce the amount of time performing code reviews.
-Spending more time on substance than style will result in higher quality code that costs less.
+Spending less time on style issues leaves more time to analyze the substance of the code.
+This ultimately reduces the amount of time performing code reviews.
+It also allows reviewers to focus on the substance of the code.
+This will result in a higher quality code base.
 
 ## Key benefits
 
@@ -99,24 +105,35 @@ python setup.py install
 
 ## Usage
 
-VSG is a command line tool and is invoked with...
+VSG is a both a command line tool and a python package.
+The command line tool can be invoked with:
 ```
-$vsg
-
-usage: VHDL Style Guide (VSG) [-h] -f FILENAME [--local_rules LOCAL_RULES]
+$ vsg
+usage: VHDL Style Guide (VSG) [-h] [-f FILENAME [FILENAME ...]]
+                              [--local_rules LOCAL_RULES]
                               [--configuration CONFIGURATION] [--fix]
+                              [--fix_phase FIX_PHASE] [--junit JUNIT]
+                              [--output_format {vsg,syntastic}] [--backup]
 
-Analyzes VHDL files for style guide violations.
+Analyzes VHDL files for style guide violations. Reference documentation is
+located at: http://vhdl-style-guide.readthedocs.io/en/latest/index.html
 
 optional arguments:
   -h, --help            show this help message and exit
-  -f FILENAME, --filename FILENAME
+  -f FILENAME [FILENAME ...], --filename FILENAME [FILENAME ...]
                         File to analyze
   --local_rules LOCAL_RULES
                         Path to local rules
   --configuration CONFIGURATION
                         JSON configuration file
   --fix                 Fix issues found
+  --fix_phase FIX_PHASE
+                        Fix issues up to and including this phase
+  --junit JUNIT         Extract Junit file
+  --output_format {vsg,syntastic}
+                        Sets the output format.
+  --backup              Creates copy of input file for comparison with fixed
+                        version.
 ```
 
 Here is an example output running against a test file:
@@ -153,43 +170,16 @@ Total Rules Checked: 204
 Total Failures:      523
 ```
 
-## Documentation
-
-All documentation for VSG is hosted at [read-the-docs](http://vhdl-style-guide.readthedocs.io/en/latest/index.html)
-
-## Running Tests
-
-You can run all the tests at the top level by invoking the following command...
-
-```
-$ python setup.py test
-running test
-Searching for nose
-.
-.
-.
-
-----------------------------------------------------------------------
-Ran 578 tests in 0.364s
-
-OK
-```
-...or...
-```
-$ python -m unittest discover
-..................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................
-----------------------------------------------------------------------
-Ran 578 tests in 0.072s
-
-OK
-```
-
-
 ## Local rules
 
 VSG supports customization by allowing localized rules.
 This is simply a directory with an __init__.py file and one or more python files.
 The files should follow the same structure and naming convention as the rules found in the vsg/rules directory.
 
-The localized rules will be used when the -l command line argument is given.
+The localized rules will be used when the --local_rules command line argument is given.
+
+
+## Documentation
+
+All documentation for VSG is hosted at [read-the-docs](http://vhdl-style-guide.readthedocs.io/en/latest/index.html)
 
