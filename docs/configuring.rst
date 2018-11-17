@@ -76,7 +76,7 @@ Below is an example of a JSON file which disables the rule **entity_004**
    {
        "rule":{
            "entity_004":{
-               "disable":"True"
+               "disable":true
            }
        }
    }

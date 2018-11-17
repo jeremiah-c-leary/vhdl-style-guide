@@ -226,10 +226,10 @@ VSG will combine any number of configurations to provide a unique set of rules f
    {
        "rule":{
            "entity_004":{
-               "disable":"True"
+               "disable":true
            },
            "entity_005":{
-               "disable":"True"
+               "disable":true
            },
            "global":{
                "indentSize":2
@@ -244,7 +244,7 @@ VSG will combine any number of configurations to provide a unique set of rules f
    {
        "rule":{
            "entity_004":{
-               "disable":"False",
+               "disable":false,
                "indentSize":4
            }
        }
@@ -264,11 +264,11 @@ VSG will combine the two configurations into this equivalent configuration...
    {
        "rule":{
            "entity_004":{
-               "disable":"False",
+               "disable":false,
                "indentSize":4
            },
            "entity_005":{
-               "disable":"True"
+               "disable":true
            },
            "global":{
                "indentSize":2
