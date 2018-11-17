@@ -21,7 +21,7 @@ def parse_command_line_arguments():
 
     parser.add_argument('-f', '--filename', nargs='+', help='File to analyze')
     parser.add_argument('-lr', '--local_rules', help='Path to local rules')
-    parser.add_argument('-c', '--configuration', help='JSON configuration file')
+    parser.add_argument('-c', '--configuration', nargs = '+', help='JSON configuration file(s)')
     parser.add_argument('--fix', default=False, action='store_true', help='Fix issues found')
     parser.add_argument('-fp', '--fix_phase', default=10, action='store', help='Fix issues up to and including this phase')
     parser.add_argument('-j', '--junit', action='store', help='Extract Junit file')
@@ -35,10 +35,22 @@ def parse_command_line_arguments():
         return parser.parse_args()
 
 
-def read_configuration_file(commandLineArguments):
+def read_configuration_files(commandLineArguments):
     if commandLineArguments.configuration:
-        with open(commandLineArguments.configuration) as json_file:
-            return json.load(json_file)
+        dConfiguration = {}
+        for sFileName in commandLineArguments.configuration:
+            with open(sFileName) as json_file:
+                tempConfiguration = json.load(json_file)
+                for sKey in tempConfiguration.keys():
+                    if sKey == 'file_list':
+                        try:
+                            dConfiguration['file_list'].extend(tempConfiguration['file_list'])
+                        except:
+                            dConfiguration['file_list'] = tempConfiguration['file_list']
+                    else:
+                        dConfiguration[sKey] = tempConfiguration[sKey]                
+        print dConfiguration
+        return dConfiguration
 
 
 def write_vhdl_file(oVhdlFile):
@@ -82,7 +94,7 @@ def main():
 
     commandLineArguments = parse_command_line_arguments()
 
-    configuration = read_configuration_file(commandLineArguments)
+    configuration = read_configuration_files(commandLineArguments)
 
     update_command_line_arguments(commandLineArguments, configuration)
 
