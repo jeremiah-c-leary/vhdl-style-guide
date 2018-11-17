@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import ast
 import argparse
 import sys
 import os
@@ -47,9 +48,16 @@ def read_configuration_files(commandLineArguments):
                             dConfiguration['file_list'].extend(tempConfiguration['file_list'])
                         except:
                             dConfiguration['file_list'] = tempConfiguration['file_list']
+                    elif sKey == 'rule':
+                        for sRule in tempConfiguration[sKey]:
+                            try:
+                                dConfiguration[sKey][sRule] = tempConfiguration[sKey][sRule]
+                            except:
+                                dConfiguration[sKey] = {}
+                                dConfiguration[sKey][sRule] = tempConfiguration[sKey][sRule]
                     else:
                         dConfiguration[sKey] = tempConfiguration[sKey]                
-        print dConfiguration
+#        print dConfiguration
         return dConfiguration
 
 
@@ -126,6 +134,7 @@ def main():
         oJunitFile.add_testsuite(oJunitTestsuite)
         write_junit_xml_file(oJunitFile)
 
+    sys.exit(os.EX_OK)
 
 if __name__ == '__main__':
     main()
