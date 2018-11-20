@@ -115,5 +115,15 @@ begin
       type_port_name_2 => '0'
     );
 
+  TYPE_OUTPUT <= '1';
+
+  process PROC1 (sig1) is
+
+    type a is range 0 to 9;
+
+  begin
+    type_signal <= '0'
+  end process PROC1;
+
 end architecture ARCH;
 

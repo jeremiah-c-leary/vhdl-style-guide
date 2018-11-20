@@ -36,7 +36,9 @@ def type_definition(dVars, oLine):
         oLine.indentLevel = dVars['iCurrentIndentLevel']
         dVars['iCurrentIndentLevel'] += 1
     elif re.match('^\s*type', oLine.line, re.IGNORECASE):
-        if not oLine.insideEntity and not oLine.insideComponent and not oLine.insideInstantiation:
+        if not oLine.insideEntity and not oLine.insideComponent and \
+           not oLine.insideInstantiation and not oLine.insideConcurrent and \
+           not (oLine.insideProcess and not oLine.isProcessDeclarative):
             oLine.isTypeKeyword = True
             oLine.indentLevel = dVars['iCurrentIndentLevel']
 
