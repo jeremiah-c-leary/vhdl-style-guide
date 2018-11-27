@@ -202,3 +202,16 @@ class testFixRuleInstantiationMethods(unittest.TestCase):
 #        self.assertEqual(oRule.violations, [])
         self.assertEqual(oFileDirect.lines[20].line, '  U_INST1 : entity library.INST1')
 
+    def test_fix_rule_029(self):
+        oRule = instantiation.rule_029()
+        oFileComment = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'instantiation_comment_test_input.vhd'))
+        oRule.fix(oFileComment)
+        oRule.analyze(oFileComment)
+        self.assertEqual(oRule.violations, [])
+        self.assertEqual(oFileComment.lines[7].line,  '      generic_1 : std_logic := \'0\'; -- This should be removed')
+        self.assertEqual(oFileComment.lines[12].line, '      port_2 : in    std_logic;-- This should be removed')
+        self.assertEqual(oFileComment.lines[14].line, '      port_4 : out   std_logic; -- This should be removed')
+
+        self.assertEqual(oFileComment.lines[24].line, '      generic_1 => \'0\', -- This should be removed')
+        self.assertEqual(oFileComment.lines[29].line, '      port_2 => \'1\',    -- This should be removed')
+        self.assertEqual(oFileComment.lines[31].line, '      port_4 => \'1\'     -- This should be removed')

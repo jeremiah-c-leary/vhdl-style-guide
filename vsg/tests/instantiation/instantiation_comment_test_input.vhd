@@ -30,7 +30,6 @@ begin
       port_3 => '0',
       port_4 => '1'-- This should be removed
     );
-  end component COMP1;
 
 end architecture ARCH;
 

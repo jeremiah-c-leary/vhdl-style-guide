@@ -625,3 +625,23 @@ This rule checks the entity name is uppercase in direct instantiations.
 
    INSTANCE_NAME : entity library.ENTITY_NAME
 
+instantiation_029
+#################
+
+This rule checks for alignment of inline comments in an instantiation
+
+**Violation**
+
+.. code-block:: vhdl
+
+       WR_EN     => write_enable,        -- Wrte enable
+       RD_EN     => read_enable,    -- Read enable
+       OVERLFLOW => overflow,         -- FIFO has overflowed
+
+**Fix**
+
+.. code-block:: vhdl
+
+       WR_EN     => write_enable,        -- Wrte enable
+       RD_EN     => read_enable,         -- Read enable
+       OVERLFLOW => overflow,            -- FIFO has overflowed

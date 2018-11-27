@@ -303,3 +303,14 @@ class testRuleInstantiationMethods(unittest.TestCase):
         dExpected = [20]
         oRule.analyze(oFileDirect)
         self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_029(self):
+        oRule = instantiation.rule_029()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'instantiation')
+        self.assertEqual(oRule.identifier, '029')
+        oFileComment = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'instantiation_comment_test_input.vhd'))
+        dExpected = ['22-32']
+        oRule.analyze(oFileComment)
+        self.assertEqual(oRule.violations, dExpected)
+        
