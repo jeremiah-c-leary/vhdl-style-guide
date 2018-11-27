@@ -381,3 +381,23 @@ Refer to the entity for port types, port directions and purpose.
    WR_EN : in    std_logic;
    RD_EN : out   std_logic;
 
+component_020
+#############
+
+This rule checks the comments at the end of the port and generic assignments in component declarations are aligned.
+This rule is useful if component_019 is disabled.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   WR_EN : in    std_logic;  -- Enables write to RAM
+   RD_EN : out   std_logic; -- Enable reads from RAM
+
+**Fix**
+
+.. code-block:: vhdl
+
+   WR_EN : in    std_logic;  -- Enables write to RAM
+   RD_EN : out   std_logic;  -- Enable reads from RAM
+

@@ -200,3 +200,14 @@ class testRuleComponentMethods(unittest.TestCase):
         dExpected = [7,12,14]
         oRule.analyze(oFileComment)
         self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_020(self):
+        oRule = component.rule_020()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'component')
+        self.assertEqual(oRule.identifier, '020')
+
+        dExpected = ['5-16']
+        oFileComment = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'component_comment_test_input.vhd'))
+        oRule.analyze(oFileComment)
+        self.assertEqual(oRule.violations, dExpected)

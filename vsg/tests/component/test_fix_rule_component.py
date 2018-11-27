@@ -128,3 +128,13 @@ class testFixRuleComponentMethods(unittest.TestCase):
         self.assertEqual(oFileComment.lines[12].line, '      port_2 : in    std_logic;')
         self.assertEqual(oFileComment.lines[14].line, '      port_4 : out   std_logic;')
 
+    def test_fix_rule_020(self):
+        oRule = component.rule_020()
+
+        oFileComment = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'component_comment_test_input.vhd'))
+        oRule.fix(oFileComment)
+        oRule.analyze(oFileComment)
+        self.assertEqual(oRule.violations, [])
+        self.assertEqual(oFileComment.lines[7].line, '      generic_1 : std_logic := \'0\'; -- This should be removed')
+        self.assertEqual(oFileComment.lines[12].line, '      port_2 : in    std_logic;     -- This should be removed')
+        self.assertEqual(oFileComment.lines[14].line, '      port_4 : out   std_logic;     -- This should be removed')
