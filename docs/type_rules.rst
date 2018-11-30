@@ -253,3 +253,23 @@ This rule checks the indent of record elements in record types.
      wr_en : std_logic;
    end record;
 
+type_013
+########
+
+This rule checks the **is** keyword is lower case in type definitions.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   type interface IS record
+   type interface Is record
+   type interface is record
+
+**Fix**
+
+.. code-block:: vhdl
+
+   type interface is record
+   type interface is record
+   type interface is record

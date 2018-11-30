@@ -89,3 +89,11 @@ class testFixRuleSignalMethods(unittest.TestCase):
         oRule.fix(oFile)
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
+
+    def test_fix_rule_013(self):
+        oRule = type_definition.rule_013()
+        dExpected = []
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oFile.lines[15].line, '  type interface is record')
