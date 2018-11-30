@@ -360,15 +360,36 @@ This rule checks the **when** keyword is lowercase.
 case_017
 ########
 
-This rule checks the **end case** keywords are lowercase.
+This rule checks the **end** keyword is lowercase in the **end case**.
 
 **Violation**
 
 .. code-block:: vhdl
 
-      End Case;
+      End case;
       END case;
+      end case;
+
+**Fix**
+
+.. code-block:: vhdl
+
+      end case;
+      end case;
+      end case;
+
+case_018
+########
+
+This rule checks the **case** keyword is lowercase in the **end case**.
+
+**Violation**
+
+.. code-block:: vhdl
+
+      end CASE;
       end CAse;
+      end case;
 
 **Fix**
 

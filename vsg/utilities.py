@@ -285,3 +285,22 @@ def remove_parenthesis_from_word(sWord):
         return sWord.split('(')[0]
 
     return sWord
+
+
+def strip_semicolon_from_word(sWord):
+    '''
+    Removes trailing semicolon from a word:
+
+        case;   => case
+        entity; => entity
+
+    Parameters:
+
+      sWord: (string)
+
+    Returns: (string)
+    '''
+    if ';' == sWord[-1]:
+        return sWord[0:-1]
+
+    return sWord

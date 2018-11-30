@@ -2,6 +2,7 @@
 from vsg import rule
 from vsg import fix
 from vsg import check
+from vsg import utilities
 
 
 class lower_case_rule(rule.rule):
@@ -45,7 +46,7 @@ class lower_case_rule(rule.rule):
             if oLine.__dict__[self.sTrigger]:
                 lLine = oLine.lineNoComment.split()
                 for sCurrentWord in lLine:
-                    if self.sWord == sCurrentWord.lower():
+                    if self.sWord == utilities.strip_semicolon_from_word(sCurrentWord.lower()):
                         check.is_lowercase(self, sCurrentWord, iLineNumber)
 
     def _fix_violations(self, oFile):
