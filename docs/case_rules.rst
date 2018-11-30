@@ -285,3 +285,95 @@ This rule checks the indent of the **null** keyword.
 
    when others =>
      null;
+
+case_014
+########
+
+This rule checks the **case** keyword is lowercase.
+
+**Violation**
+
+.. code-block:: vhdl
+
+     CASE address is
+
+     Case address is
+
+     case address is
+
+**Fix**
+
+.. code-block:: vhdl
+
+     case address is
+
+     case address is
+
+     case address is
+
+case_015
+########
+
+This rule checks the **is** keyword is lowercase.
+
+**Violation**
+
+.. code-block:: vhdl
+
+     case address IS
+
+     case address Is
+
+     case address iS
+
+**Fix**
+
+.. code-block:: vhdl
+
+     case address is
+
+     case address is
+
+     case address is
+
+case_016
+########
+
+This rule checks the **when** keyword is lowercase.
+
+**Violation**
+
+.. code-block:: vhdl
+
+     WHEN a =>
+     When b =>
+     when c =>
+
+**Fix**
+
+.. code-block:: vhdl
+
+     when a =>
+     when b =>
+     when c =>
+
+case_017
+########
+
+This rule checks the **end case** keywords are lowercase.
+
+**Violation**
+
+.. code-block:: vhdl
+
+      End Case;
+      END case;
+      end CAse;
+
+**Fix**
+
+.. code-block:: vhdl
+
+      end case;
+      end case;
+      end case;

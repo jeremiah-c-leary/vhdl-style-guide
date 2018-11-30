@@ -38,24 +38,24 @@ begin
   PROC_1 : process (a, b, c) is
   begin
     a <= a;
-    case boolean_1 or
+    CASE boolean_1 or
          boolean_2 or
-	 boolean_3   is
+	 boolean_3   IS
      -- This comment will be an error
-     when STATE_1 or
+     WHEN STATE_1 or
             STATE_1 and STATE_3 =>
 
         a <= b;
 	b <= c;
 	c <= d;
 
-       when  STATE_2 =>
+       wHEn  STATE_2 =>
 
         a <= b;
 	b <= c;
 	c <= d;
 
-      when STATE_3 or
+      wheN STATE_3 or
          STATE_3 or
            STATE_4 =>
 
@@ -67,7 +67,7 @@ begin
 
         null;
    -- This will be an error
-   end case;
+   end CASE;
 
   end process PROC_1;
 
@@ -76,7 +76,7 @@ begin
 
     case(boolean)is
 
-    end case;
+    END case;
 
   end process PROC_1;
 

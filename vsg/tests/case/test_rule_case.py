@@ -132,3 +132,12 @@ class testRuleCaseMethods(unittest.TestCase):
         dExpected = [31]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_014(self):
+        oRule = case.rule_014()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'case')
+        self.assertEqual(oRule.identifier, '014')
+        dExpected = [41]
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)

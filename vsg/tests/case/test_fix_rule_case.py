@@ -126,3 +126,10 @@ class testFixRuleCaseMethods(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
+    def test_fix_rule_014(self):
+        oRule = case.rule_014()
+        dExpected = []
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oFile.lines[43].line, '    case boolean_1 or')
