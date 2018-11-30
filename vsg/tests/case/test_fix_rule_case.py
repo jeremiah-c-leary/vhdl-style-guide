@@ -152,3 +152,10 @@ class testFixRuleCaseMethods(unittest.TestCase):
         self.assertEqual(oFile.lines[55].line, '      when STATE_2 =>')
         self.assertEqual(oFile.lines[61].line, '      when STATE_3 or')
  
+    def test_fix_rule_017(self):
+        oRule = case.rule_017()
+        dExpected = []
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oFile.lines[83].line, '    end case;') 
