@@ -102,5 +102,14 @@ proc_name : process (one, two, three) is
   
   end process PROC_NAME;
 
+  U_ENTITY1 : ENTITY1
+    generic map (
+        process1 => '1'
+    )
+    port map (
+      process2 => '3';
+      process_2 => '4' 
+    );
+
 end architecture ARCH;
 

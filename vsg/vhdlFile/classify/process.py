@@ -10,7 +10,7 @@ def process(dVars, oLine):
 
 
 def classify_process_keyword(dVars, oLine):
-    if re.match('^\s*process', oLine.lineLower):
+    if re.match('^\s*process[:|\s|$|(]', oLine.lineLower):
         oLine.isProcessKeyword = True
         oLine.insideProcess = True
         oLine.indentLevel = dVars['iCurrentIndentLevel']
