@@ -40,7 +40,7 @@ begin
     a <= a;
     CASE boolean_1 or
          boolean_2 or
-	 boolean_3   IS
+	 boolean_3   IS 
      -- This comment will be an error
      WHEN STATE_1 or
             STATE_1 and STATE_3 =>
