@@ -187,6 +187,8 @@ class line():
         self.isBlockBegin = False
         self.isBlockKeyword = False
         self.isEndBlock = False
+        # Wait attributes
+        self.isWait = False
 
     def update_line(self, sLine):
         '''

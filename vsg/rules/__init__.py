@@ -44,5 +44,6 @@ from vsg.rules import subtype
 from vsg.rules import type_definition
 from vsg.rules import variable_assignment
 from vsg.rules import variable
+from vsg.rules import wait
 from vsg.rules import while_loop
 from vsg.rules import whitespace

@@ -30,3 +30,4 @@ from .variable import variable
 from .while_loop import while_loop
 from .with_statement import with_statement
 from .block import block
+from .wait import wait

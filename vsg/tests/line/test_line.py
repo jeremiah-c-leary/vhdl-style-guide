@@ -835,3 +835,9 @@ class testLineMethods(unittest.TestCase):
         self.assertEqual(oLine.isProcedureIs, False)
         oLine.isProcedureIs = True
         self.assertEqual(oLine.isProcedureIs, True)
+
+    def test_isWait_attribute(self):
+        oLine = line.line('contents of Line')
+        self.assertEqual(oLine.isWait, False)
+        oLine.isWait= True
+        self.assertEqual(oLine.isWait, True)
