@@ -111,5 +111,26 @@ proc_name : process (one, two, three) is
       process_2 => '4' 
     );
 
+  -- processes without sensitivity lists
+
+  MAIN : process
+
+    variable var_a : std_logic_vector(16 downto 0);
+    variable var_b;
+
+  begin
+
+  end process MAIN;
+
+  process
+
+    variable var_a : std_logic_vector(16 downto 0);
+    variable var_b;
+
+  begin
+
+  end process;
+  
+
 end architecture ARCH;
 

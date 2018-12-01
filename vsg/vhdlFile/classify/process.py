@@ -10,20 +10,31 @@ def process(dVars, oLine):
 
 
 def classify_process_keyword(dVars, oLine):
-    if re.match('^\s*process[:|\s|$|(]', oLine.lineLower):
+    if re.match('^\s*process[:|\s|(]', oLine.lineLower):
         oLine.isProcessKeyword = True
         oLine.insideProcess = True
         oLine.indentLevel = dVars['iCurrentIndentLevel']
+    if re.match('^\s*process\s*$', oLine.lineNoComment):
+        oLine.isProcessKeyword = True
+        oLine.insideProcess = True
+        oLine.indentLevel = dVars['iCurrentIndentLevel']
+        dVars['iCurrentIndentLevel'] += 1
     if re.match('^\s*\S+\s*:\s*process', oLine.lineLower):
         oLine.isProcessKeyword = True
         oLine.insideProcess = True
         oLine.indentLevel = dVars['iCurrentIndentLevel']
         oLine.isProcessLabel = True
+    if re.match('^\s*\S+\s*:\s*process\s*$', oLine.lineNoComment):
+        dVars['iCurrentIndentLevel'] += 1
 
 
 def classify_process_sensitivity_list(dVars, oLine):
     # Check sensitivity list
-    if '(' in oLine.line and not oLine.insideSensitivityList and not dVars['fFoundProcessBegin'] and not dVars['SensitivityListFound']:
+    if '(' in oLine.line and \
+       not oLine.insideSensitivityList and \
+       not dVars['fFoundProcessBegin'] and \
+       not dVars['SensitivityListFound'] and \
+       not oLine.isVariable:
         oLine.isSensitivityListBegin = True
         oLine.insideSensitivityList = True
         dVars['SensitivityListFound'] = True

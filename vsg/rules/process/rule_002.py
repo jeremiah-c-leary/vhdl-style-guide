@@ -21,7 +21,7 @@ class rule_002(rule.rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isProcessKeyword and not re.match('^\s*.*process\s\(', oLine.lineLower):
+            if oLine.isProcessKeyword and re.match('^\s*.*process\s*\(', oLine.lineLower) and not re.match('^\s*.*process\s\(', oLine.lineLower):
                 self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
