@@ -72,6 +72,7 @@ class line():
         self.isIfEnd = False
         self.isIfKeyword = False
         self.isThenKeyword = False
+        self.isLastEndIf = False
         # Case attributes
         self.insideCase = False
         self.insideCaseWhen = False

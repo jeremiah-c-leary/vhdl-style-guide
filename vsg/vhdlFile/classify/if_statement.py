@@ -10,6 +10,7 @@ def if_statement(dVars, oLine):
         oLine.insideIf = True
         oLine.indentLevel = dVars['iCurrentIndentLevel']
         dVars['iCurrentIndentLevel'] += 1
+        dVars['iIfLevel'] += 1
     if re.match('^\s*elsif', oLine.lineNoComment, re.IGNORECASE) or re.match('^.*[\s|;]elsif', oLine.lineNoComment, re.IGNORECASE):
         oLine.isElseIfKeyword = True
         oLine.insideIf = True
@@ -23,3 +24,6 @@ def if_statement(dVars, oLine):
         oLine.isEndIfKeyword = True
         dVars['iCurrentIndentLevel'] -= 1
         oLine.indentLevel = dVars['iCurrentIndentLevel']
+        dVars['iIfLevel'] -= 1
+        if dVars['iIfLevel'] == 0:
+            oLine.isLastEndIf = True

@@ -523,3 +523,27 @@ This rule checks the **then** keyword is lowercase.
 
    if (a = '1') then
 
+if_030
+######
+
+This rule checks for a single space after the **end if**.
+In the case of nested **if** statements, the rule will be enfoced on the last **end if**.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   if (A = '1') then
+     B <= '0';
+   end if;
+   C <= '1';
+
+**Fix**
+
+.. code-block:: vhdl
+
+   if (A = '1') then
+     B <= '0';
+   end if;
+
+   C <= '1';

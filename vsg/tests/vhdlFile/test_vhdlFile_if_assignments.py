@@ -5,6 +5,8 @@ from vsg import vhdlFile
 
 oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','if_statement','if_test_input.vhd'))
 oFileCompress = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','if_statement','if_compressed_line_test_input.vhd'))
+oFileNested = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','if_statement','if_nested_test_input.vhd'))
+
 
 class testVhdlFileIfAssignments(unittest.TestCase):
 
@@ -97,3 +99,14 @@ class testVhdlFileIfAssignments(unittest.TestCase):
         self.assertTrue(oFileCompress.lines[12].isEndIfKeyword)
         self.assertTrue(oFileCompress.lines[12].isIfKeyword)
         self.assertTrue(oFileCompress.lines[12].isThenKeyword)
+
+    def test_last_endif_assignment(self):
+        lExpected = [18,29]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFileNested.lines):
+            if oLine.isLastEndIf:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+

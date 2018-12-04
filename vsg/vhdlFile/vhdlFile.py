@@ -37,6 +37,7 @@ class vhdlFile():
         dVars['iCloseParenthesis'] = 0
         dVars['iCurrentIndentLevel'] = 0
         dVars['iGenerateLevel'] = 0
+        dVars['iIfLevel'] = 0
 
         try:
             with open(self.filename) as oFile:
