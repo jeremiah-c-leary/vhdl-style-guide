@@ -99,3 +99,14 @@ class testVhdlFileMethods(unittest.TestCase):
                 lActual.append(iIndex)
         # Compare
         self.assertEqual(lActual, lExpected)
+
+    def test_end_architecture_assignment(self):
+        lExpected = [135]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFileProcess.lines):
+            if oLine.isEndArchitecture:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+ 

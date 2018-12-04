@@ -60,9 +60,9 @@ proc_name : process (one, two, three) is
   end process;
 
   a<=b;
-  PROC_NAME: process (one) is
+  END_PROC_NAME: process (one) is
   begin
-  end process PROC_NAME;
+  end process END_PROC_NAME;
 
 
   PROC_NAME :process (one) is

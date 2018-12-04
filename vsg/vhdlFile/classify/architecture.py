@@ -33,7 +33,8 @@ def classify_end_keyword(dVars, oLine):
        not oLine.insideFunction and not oLine.insideForLoop and \
        not oLine.insideWhileLoop and not oLine.insideTypeRecord and \
        not oLine.insideProcedure and not oLine.insideBlock:
-        if re.match('^\s*end', oLine.lineLower):
+        if re.match('^\s*end', oLine.lineLower) and not \
+           re.match('^\s*end\S+\s*:', oLine.lineLower):
             oLine.isEndArchitecture = True
             oLine.indentLevel = 0
             dVars['iCurrentIndentLevel'] = 0
