@@ -648,3 +648,32 @@ This rule checks for **rising_edge** and **falling_edge** in processes.
 
    if (CLK'event and CLK = '0') then
 
+process_030
+###########
+
+This rule checks for a single signal per line in a sensitivity list that is not the last one.
+The sensitivity list is required by the compiler, but provides no useful information to the reader.
+Therefore, the vertical spacing of the sensitivity list should be minimized.
+This will help with code readability.
+
+NOTE:  This rule is left to the user to fix.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   PROC_A : process (rd_en,
+                     wr_en,
+                     data_in,
+                     data_out,
+                     rd_full,
+                     wr_full
+                    )
+
+**Fix**
+
+.. code-block:: vhdl
+
+   PROC_A : process (rd_en, wr_en, data_in, data_out,
+                     rd_full, wr_full
+                    )
