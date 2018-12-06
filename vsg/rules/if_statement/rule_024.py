@@ -31,4 +31,5 @@ class rule_024(rule.rule):
             oFile.lines[iLineNumber + 1].isIfKeyword = False
             oFile.lines[iLineNumber + 1].isElseIfKeyword = False
             oFile.lines[iLineNumber + 1].indentLevel += 1
+            oFile.lines[iLineNumber].isLastEndIf = False
             utilities.reclassify_line(oFile, iLineNumber)

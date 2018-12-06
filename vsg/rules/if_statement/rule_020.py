@@ -24,6 +24,7 @@ class rule_020(rule.rule):
         for iLineNumber in self.violations[::-1]:
             utilities.split_line_before_word(oFile, iLineNumber, 'end')
             oFile.lines[iLineNumber].isEndIfKeyword = False
+            oFile.lines[iLineNumber].isLastEndIf = False
             oFile.lines[iLineNumber + 1].isIfKeyword = False
             oFile.lines[iLineNumber + 1].isElseIfKeyword = False
             oFile.lines[iLineNumber + 1].isElseKeyword = False

@@ -5,11 +5,13 @@ import unittest
 from vsg.rules import if_statement
 from vsg import vhdlFile
 from vsg import rule_list
+#from vsg.tests import utils
 
 # Read in test file used for all tests
 oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','if_statement','if_test_input.vhd'))
 oFileCase = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','if_statement','if_case_test_input.vhd'))
 oFileCompress = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'if_compressed_line_test_input.vhd'))
+oFileNested = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'if_nested_test_input.vhd'))
 
 
 class testFixRuleIfMethods(unittest.TestCase):
@@ -215,7 +217,7 @@ class testFixRuleIfMethods(unittest.TestCase):
     def test_fix_compressed_line(self):
         oRuleList = rule_list.rule_list(oFileCompress)
         oRuleList.fix(7)
-#        utils.debug_lines(oFileCompress, 9, 10)
+#        utils.debug_lines(oFileCompress, 9, 23)
         self.assertEqual(oFileCompress.lines[10].line, '    if (A = \'1\' and B = \'1\') then')
         self.assertEqual(oFileCompress.lines[11].line, '      X <= \'1\';')
         self.assertFalse(oFileCompress.lines[11].isVariableAssignment)
@@ -228,6 +230,7 @@ class testFixRuleIfMethods(unittest.TestCase):
         self.assertEqual(oFileCompress.lines[15].line, '      W := \'0\';')
         self.assertTrue(oFileCompress.lines[15].isVariableAssignment)
         self.assertFalse(oFileCompress.lines[15].isSequential)
+        self.assertFalse(oFileCompress.lines[15].isLastEndIf)
 
         self.assertEqual(oFileCompress.lines[18].line, '    if (A = \'1\' and B = \'1\') then')
         self.assertEqual(oFileCompress.lines[19].line, '      X <= \'1\';')
@@ -278,3 +281,12 @@ class testFixRuleIfMethods(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
         self.assertEqual(oFile.lines[14].line, '       g = 34 or x = 3000 then')
+
+    def test_fix_rule_030(self):
+        oRule = if_statement.rule_030()
+        dExpected = []
+        oRule.fix(oFileNested)
+        oRule.analyze(oFileNested)
+        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oFileNested.lines[19].isBlank, True)
+        self.assertEqual(oFileNested.lines[20].line, '    X <= \'0\';  -- This should be an error') 

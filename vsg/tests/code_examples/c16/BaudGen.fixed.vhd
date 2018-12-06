@@ -35,6 +35,7 @@ architecture BEHAVIORAL of BAUDGEN is
     else
       return gcd(N, M mod N);
     end if;
+
   end;
 
   constant common_div : integer := gcd(bg_clock_freq, 16 * bg_baud_rate);

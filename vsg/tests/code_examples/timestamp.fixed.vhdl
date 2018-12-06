@@ -124,6 +124,7 @@ begin
             next_state    <= WAIT_OPERAND;
           end if;
         end if;
+
       when WAIT_OPERAND =>
         FCMAPUSLEEPNOTREADY <= '1';
         if (APUFCMFLUSH = '1') then
@@ -134,6 +135,7 @@ begin
             FCMAPUDONE <= '1';
           end if;
         end if;
+
         next_state <= IDLE;
 
     end case;

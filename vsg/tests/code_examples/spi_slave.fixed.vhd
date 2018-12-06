@@ -288,6 +288,7 @@ begin
       di_req_o_D   <= di_req_o_C;
       di_req_o_reg <= di_req_o_next;                          -- registered output pulse
     end if;
+
     -- generate a 2-clocks pulse at the 3rd clock cycle
     do_valid_next <= do_valid_A and do_valid_B and not do_valid_D;
     di_req_o_next <= di_req_o_A and di_req_o_B and not di_req_o_D;
@@ -304,6 +305,7 @@ begin
         di_reg <= di_i;                                     -- parallel data input buffer register
       end if;
     end if;
+
     -- stretch wren pulse to be detected by spi fsm (ffd with sync preset and sync reset)
     if (clk_i'event and clk_i = '1') then
       if (wren_i = '1') then                                -- wren_i is the sync preset for wren
@@ -329,6 +331,7 @@ begin
     elsif (spi_sck_i'event and spi_sck_i = SHIFT_EDGE) then        -- on SHIFT edge, update state register
       state_reg <= state_next;                                     -- core fsm changes state with spi SHIFT clock
     end if;
+
     -- FFD registers clocked on SHIFT edge
     -- rtl core registers (fd)
     if (spi_sck_i'event and spi_sck_i = SHIFT_EDGE) then           -- on fsm state change, update all core registers
@@ -338,6 +341,7 @@ begin
       di_req_reg      <= di_req_next;                              -- input data request
       wr_ack_reg      <= wr_ack_next;                              -- wren ack for data load synchronization
     end if;
+
     -- FFD registers clocked on CHANGE edge and cleared on idle (spi_ssel_i = 1)
     -- miso MUX preload control register (fdp)
     if (spi_ssel_i = '1') then                                     -- async preset
@@ -345,6 +349,7 @@ begin
     elsif (spi_sck_i'event and spi_sck_i = CHANGE_EDGE) then       -- on CHANGE edge, change to tx_reg output
       preload_miso <= spi_ssel_i;                                  -- miso MUX sees tx_bit_reg when it is driven by SCK
     end if;
+
     -- FFD registers clocked on CHANGE edge
     -- tx_bit register (fd)
     if (spi_sck_i'event and spi_sck_i = CHANGE_EDGE) then

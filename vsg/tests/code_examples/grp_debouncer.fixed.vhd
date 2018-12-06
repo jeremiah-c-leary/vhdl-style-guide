@@ -192,6 +192,7 @@ begin
       -- new data strobe pipeline delay
       strb_reg <= strb_next;
     end if;
+
     -- output data pipeline
     if (clk_i'event and clk_i = '1') then
       if (dat_strb = '1') then

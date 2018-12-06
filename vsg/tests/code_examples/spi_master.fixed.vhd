@@ -450,6 +450,7 @@ begin
       di_req_o_D   <= di_req_o_C;
       di_req_o_reg <= di_req_o_next;                      -- registered output pulse
     end if;
+
     -- generate a 2-clocks pulse at the 3rd clock cycle
     do_valid_next <= do_valid_A and do_valid_B and not do_valid_D;
     di_req_o_next <= di_req_o_A and di_req_o_B and not di_req_o_D;
@@ -466,6 +467,7 @@ begin
         di_reg <= di_i;                                 -- parallel data input buffer register
       end if;
     end if;
+
     -- stretch wren pulse to be detected by spi fsm (ffd with sync preset and sync reset)
     if (pclk_i'event and pclk_i = '1') then
       if (wren_i = '1') then                            -- wren_i is the sync preset for wren
@@ -492,6 +494,7 @@ begin
         state_reg <= state_next;                             -- state register
       end if;
     end if;
+
     -- FF registers clocked synchronous to the fsm state
     if (sclk_i'event and sclk_i = '1') then
       if (fsm_ce = '1') then
@@ -503,6 +506,7 @@ begin
         wr_ack_reg      <= wr_ack_next;                      -- write acknowledge for data load synchronization
       end if;
     end if;
+
     -- FF registers clocked one-half cycle earlier than the fsm state
     if (sclk_i'event and sclk_i = '1') then
       if (sck_ena_ce = '1') then
@@ -630,6 +634,7 @@ begin
         spi_clk_reg <= CPOL;                                        -- when clock disabled, set to idle polarity
       end if;
     end if;
+
     spi_sck_o <= spi_clk_reg;                                       -- connect register to output
 
   end process SPI_SCK_O_GEN_PROC;

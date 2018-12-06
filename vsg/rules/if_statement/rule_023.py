@@ -23,6 +23,7 @@ class rule_023(rule.rule):
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:
             utilities.split_line_before_word(oFile, iLineNumber, 'elsif')
+            oFile.lines[iLineNumber].isLastEndIf = False
             oFile.lines[iLineNumber].isElseIfKeyword = False
             oFile.lines[iLineNumber + 1].isIfKeyword = False
 #            oFile.lines[iLineNumber + 1 + iNumber].indentLevel -= 1
