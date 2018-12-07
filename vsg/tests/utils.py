@@ -1,5 +1,6 @@
 
 import pprint
+import os
 
 def debug_lines(oFile, iLineNumber, iNumberOfLines):
 
@@ -16,3 +17,10 @@ def read_file(sFilename, lLines):
 def print_attributes(oLine):
     pp = pprint.PrettyPrinter(indent = 4)
     pp.pprint(oLine.__dict__)
+
+
+def remove_file(sFileName):
+    try:
+        os.remove(sFileName)
+    except OSError:
+        pass

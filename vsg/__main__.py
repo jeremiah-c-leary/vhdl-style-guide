@@ -40,25 +40,43 @@ def read_configuration_files(commandLineArguments):
     if commandLineArguments.configuration:
         dConfiguration = {}
         for sFileName in commandLineArguments.configuration:
-            with open(sFileName) as json_file:
-                tempConfiguration = json.load(json_file)
-                for sKey in tempConfiguration.keys():
-                    if sKey == 'file_list':
-                        try:
-                            dConfiguration['file_list'].extend(tempConfiguration['file_list'])
-                        except:
-                            dConfiguration['file_list'] = tempConfiguration['file_list']
-                    elif sKey == 'rule':
-                        for sRule in tempConfiguration[sKey]:
+            try:
+                with open(sFileName) as json_file:
+                    tempConfiguration = json.load(json_file)
+                    for sKey in tempConfiguration.keys():
+                        if sKey == 'file_list':
                             try:
-                                dConfiguration[sKey][sRule] = tempConfiguration[sKey][sRule]
+                                dConfiguration['file_list'].extend(tempConfiguration['file_list'])
                             except:
-                                dConfiguration[sKey] = {}
-                                dConfiguration[sKey][sRule] = tempConfiguration[sKey][sRule]
-                    else:
-                        dConfiguration[sKey] = tempConfiguration[sKey]                
-#        print dConfiguration
+                                dConfiguration['file_list'] = tempConfiguration['file_list']
+                        elif sKey == 'rule':
+                            for sRule in tempConfiguration[sKey]:
+                                try:
+                                    dConfiguration[sKey][sRule] = tempConfiguration[sKey][sRule]
+                                except:
+                                    dConfiguration[sKey] = {}
+                                    dConfiguration[sKey][sRule] = tempConfiguration[sKey][sRule]
+                        else:
+                            dConfiguration[sKey] = tempConfiguration[sKey]
+            except:
+                print('Error in JSON file: ' + sFileName)
+                write_invalid_configuration_junit_file(sFileName, commandLineArguments)
+                exit()
+
         return dConfiguration
+
+
+def write_invalid_configuration_junit_file(sFileName, commandLineArguments):
+    if commandLineArguments.junit:
+        oJunitFile = junit.xmlfile(commandLineArguments.junit)
+        oJunitTestsuite = junit.testsuite('vhdl-style-guide', str(0))
+        oJunitTestcase = junit.testcase(sFileName, str(0), 'failure')
+        oFailure = junit.failure('Failure')
+        oFailure.add_text('Invalid JSON format.  Review configuration for errors.')
+        oJunitTestcase.add_failure(oFailure)
+        oJunitTestsuite.add_testcase(oJunitTestcase)
+        oJunitFile.add_testsuite(oJunitTestsuite)
+        write_junit_xml_file(oJunitFile)
 
 
 def write_vhdl_file(oVhdlFile):
