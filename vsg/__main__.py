@@ -11,6 +11,7 @@ from . import rule_list
 from . import vhdlFile
 from . import junit
 
+
 def parse_command_line_arguments():
     '''Parses the command line arguments and returns them.'''
 
@@ -22,7 +23,7 @@ def parse_command_line_arguments():
 
     parser.add_argument('-f', '--filename', nargs='+', help='File to analyze')
     parser.add_argument('-lr', '--local_rules', help='Path to local rules')
-    parser.add_argument('-c', '--configuration', nargs = '+', help='JSON configuration file(s)')
+    parser.add_argument('-c', '--configuration', nargs='+', help='JSON configuration file(s)')
     parser.add_argument('--fix', default=False, action='store_true', help='Fix issues found')
     parser.add_argument('-fp', '--fix_phase', default=10, action='store', help='Fix issues up to and including this phase')
     parser.add_argument('-j', '--junit', action='store', help='Extract Junit file')
@@ -135,7 +136,6 @@ def main():
         oRules = rule_list.rule_list(oVhdlFile, commandLineArguments.local_rules)
         oRules.configure(configuration)
 
-
         if commandLineArguments.fix:
             if commandLineArguments.backup:
                 create_backup_file(sFileName)
@@ -153,6 +153,7 @@ def main():
         write_junit_xml_file(oJunitFile)
 
     sys.exit(os.EX_OK)
+
 
 if __name__ == '__main__':
     main()
