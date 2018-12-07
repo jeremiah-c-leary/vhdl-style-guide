@@ -33,9 +33,9 @@ architecture BEHAVIORAL of SYNCHRONIZER is
 
 begin
 
-  nX            <= X+1;
-  nY            <= Y+1;
-  nAddressOfY   <= AddressOfY+1;
+  nX            <= X + 1;
+  nY            <= Y + 1;
+  nAddressOfY   <= AddressOfY + 1;
   HS            <= '0' when XState=TPW else
                    '1';
   VS            <= '0' when YState=TPW else
@@ -49,7 +49,7 @@ begin
   G             <= dataIn(2) when EnableDisplay='1' else
                    '0';
   AddressX      <= X(10 downto 1);
-  AddressY      <= AddressOfY-30;
+  AddressY      <= AddressOfY - 30;
 
   process (Clk) is
   begin

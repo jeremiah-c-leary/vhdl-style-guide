@@ -165,3 +165,64 @@ class testFixRuleWhitespaceMethods(unittest.TestCase):
         self.assertEqual(oFile.lines[4].line, '  a <= b &')
         self.assertEqual(oFile.lines[5].line, '  a <= b & ')
 
+    def test_fix_011(self):
+        oRule = whitespace.rule_011()
+
+        oFile = vhdlFile.vhdlFile(sFileName)
+
+        dExpected = []
+        oFile.lines.append(line.line('  a <= b+ c'))   #1
+        oFile.lines.append(line.line('  a <= b +c'))   #2
+        oFile.lines.append(line.line('  a <= b + c'))  #3
+        oFile.lines.append(line.line('  a <= b+c'))    #4
+        oFile.lines.append(line.line('  a <= b- c'))   #5
+        oFile.lines.append(line.line('  a <= b -c'))   #6
+        oFile.lines.append(line.line('  a <= b - c'))  #7
+        oFile.lines.append(line.line('  a <= b-c'))    #8
+        oFile.lines.append(line.line('  a <= b/ c'))   #9
+        oFile.lines.append(line.line('  a <= b /c'))   #10
+        oFile.lines.append(line.line('  a <= b / c'))  #11
+        oFile.lines.append(line.line('  a <= b/c'))    #12
+        oFile.lines.append(line.line('  a <= b* c'))   #13
+        oFile.lines.append(line.line('  a <= b *c'))   #14
+        oFile.lines.append(line.line('  a <= b * c'))  #15
+        oFile.lines.append(line.line('  a <= b*c'))    #16
+        oFile.lines.append(line.line('  a <= b** c'))   #17
+        oFile.lines.append(line.line('  a <= b **c'))   #18
+        oFile.lines.append(line.line('  a <= b ** c'))  #19
+        oFile.lines.append(line.line('  a <= b**c'))    #20
+        oFile.lines.append(line.line('  a <= b**c -- This**is fine'))    #21
+        oFile.lines.append(line.line('  a <= b ** c -- This**is fine'))    #22
+        oFile.lines.append(line.line('  a <= )+ ('))   #23
+        oFile.lines.append(line.line('  a <= ) +('))   #24
+        oFile.lines.append(line.line('  a <= ) + ('))  #25
+        oFile.lines.append(line.line('  a <= )+('))    #26
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oFile.lines[1].line, '  a <= b + c')
+        self.assertEqual(oFile.lines[2].line, '  a <= b + c')
+        self.assertEqual(oFile.lines[3].line, '  a <= b + c')
+        self.assertEqual(oFile.lines[4].line, '  a <= b + c')
+        self.assertEqual(oFile.lines[5].line, '  a <= b - c')
+        self.assertEqual(oFile.lines[6].line, '  a <= b - c')
+        self.assertEqual(oFile.lines[7].line, '  a <= b - c')
+        self.assertEqual(oFile.lines[8].line, '  a <= b - c')
+        self.assertEqual(oFile.lines[9].line, '  a <= b / c')
+        self.assertEqual(oFile.lines[10].line, '  a <= b / c')
+        self.assertEqual(oFile.lines[11].line, '  a <= b / c')
+        self.assertEqual(oFile.lines[12].line, '  a <= b / c')
+        self.assertEqual(oFile.lines[13].line, '  a <= b * c')
+        self.assertEqual(oFile.lines[14].line, '  a <= b * c')
+        self.assertEqual(oFile.lines[15].line, '  a <= b * c')
+        self.assertEqual(oFile.lines[16].line, '  a <= b * c')
+        self.assertEqual(oFile.lines[17].line, '  a <= b ** c')
+        self.assertEqual(oFile.lines[18].line, '  a <= b ** c')
+        self.assertEqual(oFile.lines[19].line, '  a <= b ** c')
+        self.assertEqual(oFile.lines[20].line, '  a <= b ** c')
+        self.assertEqual(oFile.lines[21].line, '  a <= b ** c -- This**is fine')
+        self.assertEqual(oFile.lines[22].line, '  a <= b ** c -- This**is fine')
+        self.assertEqual(oFile.lines[23].line, '  a <= ) + (')
+        self.assertEqual(oFile.lines[24].line, '  a <= ) + (')
+        self.assertEqual(oFile.lines[25].line, '  a <= ) + (')
+        self.assertEqual(oFile.lines[26].line, '  a <= ) + (')

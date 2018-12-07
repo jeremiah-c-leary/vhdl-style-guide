@@ -190,11 +190,11 @@ entity SPI_MASTER is
     SPI_MISO_I    : in    std_logic := 'X';                                       -- spi bus spi_miso_i input
     ---- parallel interface ----
     DI_REQ_O      : out   std_logic;                                              -- preload lookahead data request line
-    DI_I          : in    std_logic_vector(N-1 downto 0) := (others => 'X');      -- parallel data in (clocked on rising spi_clk after last bit)
+    DI_I          : in    std_logic_vector(N - 1 downto 0) := (others => 'X');    -- parallel data in (clocked on rising spi_clk after last bit)
     WREN_I        : in    std_logic := 'X';                                       -- user data write enable, starts transmission when interface is idle
     WR_ACK_O      : out   std_logic;                                              -- write acknowledge
     DO_VALID_O    : out   std_logic;                                              -- do_o data valid signal, valid during one spi_clk rising edge.
-    DO_O          : out   std_logic_vector(N-1 downto 0);                         -- parallel output (clocked on rising spi_clk after last bit)
+    DO_O          : out   std_logic_vector(N - 1 downto 0);                       -- parallel output (clocked on rising spi_clk after last bit)
     --- debug ports: can be removed or left unconnected for the application circuit ---
     SCK_ENA_O     : out   std_logic;                                              -- debug: internal sck enable signal
     SCK_ENA_CE_O  : out   std_logic;                                              -- debug: internal sck clock enable signal
@@ -206,7 +206,7 @@ entity SPI_MASTER is
     CORE_N_CLK_O  : out   std_logic;
     CORE_CE_O     : out   std_logic;
     CORE_N_CE_O   : out   std_logic;
-    SH_REG_DBG_O  : out   std_logic_vector(N-1 downto 0)                          -- debug: internal shift register
+    SH_REG_DBG_O  : out   std_logic_vector(N - 1 downto 0)                        -- debug: internal shift register
   );
 end entity SPI_MASTER;
 
@@ -241,15 +241,15 @@ architecture RTL of SPI_MASTER is
   --      essential, the model achieves better LUT/FF packing and CLB usability.
   --
   -- internal state signals for register and combinatorial stages
-  signal state_next       : natural range N+1 downto 0 := 0;
-  signal state_reg        : natural range N+1 downto 0 := 0;
+  signal state_next       : natural range N + 1 downto 0 := 0;
+  signal state_reg        : natural range N + 1 downto 0 := 0;
   -- shifter signals for register and combinatorial stages
-  signal sh_next          : std_logic_vector(N-1 downto 0);
-  signal sh_reg           : std_logic_vector(N-1 downto 0);
+  signal sh_next          : std_logic_vector(N - 1 downto 0);
+  signal sh_reg           : std_logic_vector(N - 1 downto 0);
   -- input bit sampled buffer
   signal rx_bit_reg       : std_logic := '0';
   -- buffered di_i data signals for register and combinatorial stages
-  signal di_reg           : std_logic_vector(N-1 downto 0);
+  signal di_reg           : std_logic_vector(N - 1 downto 0);
   -- internal wren_i stretcher for fsm combinatorial stage
   signal wren             : std_logic;
   signal wr_ack_next      : std_logic := '0';
@@ -261,8 +261,8 @@ architecture RTL of SPI_MASTER is
   signal sck_ena_next     : std_logic;
   signal sck_ena_reg      : std_logic;
   -- buffered do_o data signals for register and combinatorial stages
-  signal do_buffer_next   : std_logic_vector(N-1 downto 0);
-  signal do_buffer_reg    : std_logic_vector(N-1 downto 0);
+  signal do_buffer_next   : std_logic_vector(N - 1 downto 0);
+  signal do_buffer_reg    : std_logic_vector(N - 1 downto 0);
   -- internal signal to flag transfer to do_buffer_reg
   signal do_transfer_next : std_logic := '0';
   signal do_transfer_reg  : std_logic := '0';
@@ -298,8 +298,8 @@ begin
   report "Generic parameter 'PREFETCH' (lookahead count) needs to be 1 minimum"
   severity FAILURE;
   -- maximum prefetch lookahead check
-  assert PREFETCH <= N-5
-  report "Generic parameter 'PREFETCH' (lookahead count) out of range, needs to be N-5 maximum"
+  assert PREFETCH <= N - 5
+  report "Generic parameter 'PREFETCH' (lookahead count) out of range, needs to be N - 5 maximum"
   severity FAILURE;
   -- SPI_2X_CLK_DIV clock divider value must not be zero
   assert SPI_2X_CLK_DIV > 0
@@ -326,12 +326,12 @@ begin
   -- generate the 2x spi base clock enable from the serial high-speed input clock
   SPI_2X_CE_GEN_PROC : process (sclk_i) is
 
-    variable clk_cnt : integer range spi_2x_clk_div-1 downto 0 := 0;
+    variable clk_cnt : integer range spi_2x_clk_div - 1 downto 0 := 0;
 
   begin
 
     if (sclk_i'event and sclk_i = '1') then
-      if (clk_cnt = SPI_2X_CLK_DIV-1) then
+      if (clk_cnt = SPI_2X_CLK_DIV - 1) then
         spi_2x_ce <= '1';
         clk_cnt := 0;
       else
@@ -524,86 +524,86 @@ begin
                              do_transfer_reg, wr_ack_reg, di_req_reg, di_reg, wren) is
   begin
 
-    sh_next          <= sh_reg;                                                   -- all output signals are assigned to (avoid latches)
-    ssel_ena_next    <= ssel_ena_reg;                                             -- controls the slave select line
-    sck_ena_next     <= sck_ena_reg;                                              -- controls the clock enable of spi sck line
-    do_buffer_next   <= do_buffer_reg;                                            -- output data buffer
-    do_transfer_next <= do_transfer_reg;                                          -- output data flag
-    wr_ack_next      <= wr_ack_reg;                                               -- write acknowledge
-    di_req_next      <= di_req_reg;                                               -- prefetch data request
-    spi_mosi_o       <= sh_reg(N-1);                                              -- default to avoid latch inference
-    state_next       <= state_reg;                                                -- next state
+    sh_next          <= sh_reg;                                                       -- all output signals are assigned to (avoid latches)
+    ssel_ena_next    <= ssel_ena_reg;                                                 -- controls the slave select line
+    sck_ena_next     <= sck_ena_reg;                                                  -- controls the clock enable of spi sck line
+    do_buffer_next   <= do_buffer_reg;                                                -- output data buffer
+    do_transfer_next <= do_transfer_reg;                                              -- output data flag
+    wr_ack_next      <= wr_ack_reg;                                                   -- write acknowledge
+    di_req_next      <= di_req_reg;                                                   -- prefetch data request
+    spi_mosi_o       <= sh_reg(N - 1);                                                -- default to avoid latch inference
+    state_next       <= state_reg;                                                    -- next state
 
     case state_reg is
 
-      when (N+1) =>                                                               -- this state is to enable SSEL before SCK
-        spi_mosi_o    <= sh_reg(N-1);                                             -- shift out tx bit from the MSb
-        ssel_ena_next <= '1';                                                     -- tx in progress: will assert SSEL
-        sck_ena_next  <= '1';                                                     -- enable SCK on next cycle (stays off on first SSEL clock cycle)
-        di_req_next   <= '0';                                                     -- prefetch data request: deassert when shifting data
-        wr_ack_next   <= '0';                                                     -- remove write acknowledge for all but the load stages
-        state_next    <= state_reg - 1;                                           -- update next state at each sck pulse
+      when (N + 1) =>                                                                 -- this state is to enable SSEL before SCK
+        spi_mosi_o    <= sh_reg(N - 1);                                               -- shift out tx bit from the MSb
+        ssel_ena_next <= '1';                                                         -- tx in progress: will assert SSEL
+        sck_ena_next  <= '1';                                                         -- enable SCK on next cycle (stays off on first SSEL clock cycle)
+        di_req_next   <= '0';                                                         -- prefetch data request: deassert when shifting data
+        wr_ack_next   <= '0';                                                         -- remove write acknowledge for all but the load stages
+        state_next    <= state_reg - 1;                                               -- update next state at each sck pulse
 
-      when (N) =>                                                                 -- deassert 'di_rdy' and stretch do_valid
-        spi_mosi_o            <= sh_reg(N-1);                                     -- shift out tx bit from the MSb
-        di_req_next           <= '0';                                             -- prefetch data request: deassert when shifting data
-        sh_next(N-1 downto 1) <= sh_reg(N-2 downto 0);                            -- shift inner bits
-        sh_next(0)            <= rx_bit_reg;                                      -- shift in rx bit into LSb
-        wr_ack_next           <= '0';                                             -- remove write acknowledge for all but the load stages
-        state_next            <= state_reg - 1;                                   -- update next state at each sck pulse
+      when (N) =>                                                                     -- deassert 'di_rdy' and stretch do_valid
+        spi_mosi_o              <= sh_reg(N - 1);                                     -- shift out tx bit from the MSb
+        di_req_next             <= '0';                                               -- prefetch data request: deassert when shifting data
+        sh_next(N - 1 downto 1) <= sh_reg(N - 2 downto 0);                            -- shift inner bits
+        sh_next(0)              <= rx_bit_reg;                                        -- shift in rx bit into LSb
+        wr_ack_next             <= '0';                                               -- remove write acknowledge for all but the load stages
+        state_next              <= state_reg - 1;                                     -- update next state at each sck pulse
 
-      when (N-1) downto (PREFETCH+3) =>                                           -- remove 'do_transfer' and shift bits
-        spi_mosi_o            <= sh_reg(N-1);                                     -- shift out tx bit from the MSb
-        di_req_next           <= '0';                                             -- prefetch data request: deassert when shifting data
-        do_transfer_next      <= '0';                                             -- reset 'do_valid' transfer signal
-        sh_next(N-1 downto 1) <= sh_reg(N-2 downto 0);                            -- shift inner bits
-        sh_next(0)            <= rx_bit_reg;                                      -- shift in rx bit into LSb
-        wr_ack_next           <= '0';                                             -- remove write acknowledge for all but the load stages
-        state_next            <= state_reg - 1;                                   -- update next state at each sck pulse
+      when (N - 1) downto (PREFETCH + 3) =>                                           -- remove 'do_transfer' and shift bits
+        spi_mosi_o              <= sh_reg(N - 1);                                     -- shift out tx bit from the MSb
+        di_req_next             <= '0';                                               -- prefetch data request: deassert when shifting data
+        do_transfer_next        <= '0';                                               -- reset 'do_valid' transfer signal
+        sh_next(N - 1 downto 1) <= sh_reg(N - 2 downto 0);                            -- shift inner bits
+        sh_next(0)              <= rx_bit_reg;                                        -- shift in rx bit into LSb
+        wr_ack_next             <= '0';                                               -- remove write acknowledge for all but the load stages
+        state_next              <= state_reg - 1;                                     -- update next state at each sck pulse
 
-      when (PREFETCH+2) downto 2 =>                                               -- raise prefetch 'di_req_o' signal
-        spi_mosi_o            <= sh_reg(N-1);                                     -- shift out tx bit from the MSb
-        di_req_next           <= '1';                                             -- request data in advance to allow for pipeline delays
-        sh_next(N-1 downto 1) <= sh_reg(N-2 downto 0);                            -- shift inner bits
-        sh_next(0)            <= rx_bit_reg;                                      -- shift in rx bit into LSb
-        wr_ack_next           <= '0';                                             -- remove write acknowledge for all but the load stages
-        state_next            <= state_reg - 1;                                   -- update next state at each sck pulse
+      when (PREFETCH + 2) downto 2 =>                                                 -- raise prefetch 'di_req_o' signal
+        spi_mosi_o              <= sh_reg(N - 1);                                     -- shift out tx bit from the MSb
+        di_req_next             <= '1';                                               -- request data in advance to allow for pipeline delays
+        sh_next(N - 1 downto 1) <= sh_reg(N - 2 downto 0);                            -- shift inner bits
+        sh_next(0)              <= rx_bit_reg;                                        -- shift in rx bit into LSb
+        wr_ack_next             <= '0';                                               -- remove write acknowledge for all but the load stages
+        state_next              <= state_reg - 1;                                     -- update next state at each sck pulse
 
-      when 1 =>                                                                   -- transfer rx data to do_buffer and restart if new data is written
-        spi_mosi_o                   <= sh_reg(N-1);                              -- shift out tx bit from the MSb
-        di_req_next                  <= '1';                                      -- request data in advance to allow for pipeline delays
-        do_buffer_next(N-1 downto 1) <= sh_reg(N-2 downto 0);                     -- shift rx data directly into rx buffer
-        do_buffer_next(0)            <= rx_bit_reg;                               -- shift last rx bit into rx buffer
-        do_transfer_next             <= '1';                                      -- signal transfer to do_buffer
-        if (wren = '1') then                                                      -- load tx register if valid data present at di_i
-          state_next   <= N;                                                      -- next state is top bit of new data
-          sh_next      <= di_reg;                                                 -- load parallel data from di_reg into shifter
-          sck_ena_next <= '1';                                                    -- SCK enabled
-          wr_ack_next  <= '1';                                                    -- acknowledge data in transfer
+      when 1 =>                                                                       -- transfer rx data to do_buffer and restart if new data is written
+        spi_mosi_o                     <= sh_reg(N - 1);                              -- shift out tx bit from the MSb
+        di_req_next                    <= '1';                                        -- request data in advance to allow for pipeline delays
+        do_buffer_next(N - 1 downto 1) <= sh_reg(N - 2 downto 0);                     -- shift rx data directly into rx buffer
+        do_buffer_next(0)              <= rx_bit_reg;                                 -- shift last rx bit into rx buffer
+        do_transfer_next               <= '1';                                        -- signal transfer to do_buffer
+        if (wren = '1') then                                                          -- load tx register if valid data present at di_i
+          state_next   <= N;                                                          -- next state is top bit of new data
+          sh_next      <= di_reg;                                                     -- load parallel data from di_reg into shifter
+          sck_ena_next <= '1';                                                        -- SCK enabled
+          wr_ack_next  <= '1';                                                        -- acknowledge data in transfer
         else
-          sck_ena_next <= '0';                                                    -- SCK disabled: tx empty, no data to send
-          wr_ack_next  <= '0';                                                    -- remove write acknowledge for all but the load stages
-          state_next   <= state_reg - 1;                                          -- update next state at each sck pulse
+          sck_ena_next <= '0';                                                        -- SCK disabled: tx empty, no data to send
+          wr_ack_next  <= '0';                                                        -- remove write acknowledge for all but the load stages
+          state_next   <= state_reg - 1;                                              -- update next state at each sck pulse
         end if;
 
-      when 0 =>                                                                   -- idle state: start and end of transmission
-        di_req_next  <= '1';                                                      -- will request data if shifter empty
-        sck_ena_next <= '0';                                                      -- SCK disabled: tx empty, no data to send
-        if (wren = '1') then                                                      -- load tx register if valid data present at di_i
-          spi_mosi_o    <= di_reg(N-1);                                           -- special case: shift out first tx bit from the MSb (look ahead)
-          ssel_ena_next <= '1';                                                   -- enable interface SSEL
-          state_next    <= N+1;                                                   -- start from idle: let one cycle for SSEL settling
-          sh_next       <= di_reg;                                                -- load bits from di_reg into shifter
-          wr_ack_next   <= '1';                                                   -- acknowledge data in transfer
+      when 0 =>                                                                       -- idle state: start and end of transmission
+        di_req_next  <= '1';                                                          -- will request data if shifter empty
+        sck_ena_next <= '0';                                                          -- SCK disabled: tx empty, no data to send
+        if (wren = '1') then                                                          -- load tx register if valid data present at di_i
+          spi_mosi_o    <= di_reg(N - 1);                                             -- special case: shift out first tx bit from the MSb (look ahead)
+          ssel_ena_next <= '1';                                                       -- enable interface SSEL
+          state_next    <= N + 1;                                                     -- start from idle: let one cycle for SSEL settling
+          sh_next       <= di_reg;                                                    -- load bits from di_reg into shifter
+          wr_ack_next   <= '1';                                                       -- acknowledge data in transfer
         else
-          spi_mosi_o    <= sh_reg(N-1);                                           -- shift out tx bit from the MSb
-          ssel_ena_next <= '0';                                                   -- deassert SSEL: interface is idle
-          wr_ack_next   <= '0';                                                   -- remove write acknowledge for all but the load stages
-          state_next    <= 0;                                                     -- when idle, keep this state
+          spi_mosi_o    <= sh_reg(N - 1);                                             -- shift out tx bit from the MSb
+          ssel_ena_next <= '0';                                                       -- deassert SSEL: interface is idle
+          wr_ack_next   <= '0';                                                       -- remove write acknowledge for all but the load stages
+          state_next    <= 0;                                                         -- when idle, keep this state
         end if;
 
       when others =>
-        state_next <= 0;                                                          -- state 0 is safe state
+        state_next <= 0;                                                              -- state 0 is safe state
 
     end case;
 

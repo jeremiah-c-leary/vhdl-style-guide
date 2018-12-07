@@ -100,7 +100,7 @@ begin
             next_s <= reset_s;
           end if;
           DataBus <= (others => 'Z');
-        when get_commands =>                                     --Get commands and operating mode from the processor.
+        when get_commands =>                                       --Get commands and operating mode from the processor.
           if (DataBus(1 downto 0) = "01") then
             int_type <= "01";
             next_s   <= jump_int_method;
@@ -128,21 +128,21 @@ begin
           else
             next_s <= get_commands;
           end if;
-        when jump_int_method =>                                  --Check which method is used to determine the interrupts.
+        when jump_int_method =>                                    --Check which method is used to determine the interrupts.
           flag      <= '0';
           flag1     <= '0';
           int_index <= 0;
           count_cmd <= 0;
           int_pt    <= "000";
           if (int_type = "01") then
-            next_s <= start_polling;                             --Polling method for checking the interrupts.
+            next_s <= start_polling;                               --Polling method for checking the interrupts.
           elsif (int_type = "10") then
-            next_s <= start_priority_check;                      --Fixed priority scheme.
+            next_s <= start_priority_check;                        --Fixed priority scheme.
           else
-            next_s <= reset_s;                                   --Error if no method is specified.
+            next_s <= reset_s;                                     --Error if no method is specified.
           end if;
           DataBus <= (others => 'Z');
-        when start_polling =>                                    --Check for interrupts(one by one) using polling method.
+        when start_polling =>                                      --Check for interrupts(one by one) using polling method.
           if (IR(int_index) = '1') then
             INTR_O <= '1';
             next_s <= tx_int_info_polling;
@@ -152,15 +152,15 @@ begin
           if (int_index = 7) then
             int_index <= 0;
           else
-            int_index <= int_index+1;
+            int_index <= int_index + 1;
           end if;
           DataBus <= (others => 'Z');
-        when tx_int_info_polling =>                              --Transmit interrupt information if an interrupt is found.
+        when tx_int_info_polling =>                                --Transmit interrupt information if an interrupt is found.
           if (INTA_I = '0') then
             INTR_O <= '0';
           end if;
           if (flag = '0') then
-            DataBus <= "01011" & to_unsigned((int_index-1), 3);  --MSB "01011" is for matching purpose.
+            DataBus <= "01011" & to_unsigned((int_index - 1), 3);  --MSB "01011" is for matching purpose.
             flag1   <= '1';
           else
             flag1 <= '0';
@@ -171,18 +171,18 @@ begin
               DataBus <= (others => 'Z');
             end if;
           end if;
-        when ack_txinfo_rxd =>                                   --ACK send by processor to tell PIC that interrupt info is received correctly.
+        when ack_txinfo_rxd =>                                     --ACK send by processor to tell PIC that interrupt info is received correctly.
           if (INTA_I <= '0') then
             next_s  <= ack_ISR_done;
             DataBus <= (others => 'Z');
           end if;
-        when ack_ISR_done =>                                     --Wait for the ISR for the particular interrupt to get over.
-          if (INTA_I = '0' and DataBus(7 downto 3) = "10100" and DataBus(2 downto 0) = to_unsigned(int_index-1, 3)) then
+        when ack_ISR_done =>                                       --Wait for the ISR for the particular interrupt to get over.
+          if (INTA_I = '0' and DataBus(7 downto 3) = "10100" and DataBus(2 downto 0) = to_unsigned(int_index - 1, 3)) then
             next_s <= start_polling;
           else
             next_s <= ack_ISR_done;
           end if;
-        when start_priority_check =>                             --Fixed priority method for interrupt handling.
+        when start_priority_check =>                               --Fixed priority method for interrupt handling.
           --Interrupts are checked based on their priority.
           if (IR(to_integer(pt(0))) = '1') then
             int_pt <= pt(0);
@@ -220,12 +220,12 @@ begin
             next_s <= start_priority_check;
           end if;
           DataBus <= (others => 'Z');
-        when tx_int_info_priority =>                             --Transmit interrupt information if an interrupt is found.
+        when tx_int_info_priority =>                               --Transmit interrupt information if an interrupt is found.
           if (INTA_I = '0') then
             INTR_O <= '0';
           end if;
           if (flag = '0') then
-            DataBus <= "10011" & int_pt;                         --MSB "10011" is for matching purpose.
+            DataBus <= "10011" & int_pt;                           --MSB "10011" is for matching purpose.
             flag1   <= '1';
           else
             flag1 <= '0';
@@ -236,16 +236,16 @@ begin
               DataBus <= (others => 'Z');
             end if;
           end if;
-        when ack_txinfo_rxd_priority =>                          --ACK send by processor to tell PIC that interrupt info is received correctly.
+        when ack_txinfo_rxd_priority =>                            --ACK send by processor to tell PIC that interrupt info is received correctly.
           if (INTA_I <= '0') then
             next_s  <= ack_ISR_done_pt;
             DataBus <= (others => 'Z');
           end if;
-        when ack_ISR_done_pt =>                                  --Wait for the ISR for the particular interrupt to get over.
+        when ack_ISR_done_pt =>                                    --Wait for the ISR for the particular interrupt to get over.
           if (INTA_I = '0' and DataBus(7 downto 3) = "01100" and DataBus(2 downto 0) = int_pt) then
             next_s <= start_priority_check;
           elsif (DataBus(7 downto 3) /= "01100" or DataBus(2 downto 0) /= int_pt) then
-            next_s <= reset_s;                                   --Error.
+            next_s <= reset_s;                                     --Error.
           else
             next_s <= ack_ISR_done_pt;
           end if;

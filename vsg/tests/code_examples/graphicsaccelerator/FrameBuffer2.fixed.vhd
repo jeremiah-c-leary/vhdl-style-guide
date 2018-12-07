@@ -20,13 +20,13 @@ end entity FRAMEBUFFER;
 
 architecture BEHAVIORAL of FRAMEBUFFER is
 
-  type fbuffer is array (0 to 524288/16-1) of std_logic_vector(2 downto 0);
+  type fbuffer is array (0 to 524288 / 16 - 1) of std_logic_vector(2 downto 0);
 
   impure function initFB return FBuffer is
     variable temp : fbuffer;
     variable i    : integer;
   begin
-    for i in 0 to 524288/16-1 loop
+    for i in 0 to 524288 / 16 - 1 loop
       temp(i) := "000";
     end loop;
     return temp;

@@ -187,3 +187,30 @@ This rule checks for spaces after the concate (&) operator.
 .. code-block:: vhdl
 
    a <= b & c;
+
+whitespace_011
+##############
+
+This rule checks for spaces before and after math operators +, -, /, and *.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   a <= b+c;
+   a <= b-c;
+   a <= b/c;
+   a <= b*c;
+   a <= b**c;
+   a <= (b+c)-(d-e);
+
+**Fix**
+
+.. code-block:: vhdl
+
+   a <= b + c;
+   a <= b - c;
+   a <= b / c;
+   a <= b * c;
+   a <= b ** c;
+   a <= (b + c) - (d - e);

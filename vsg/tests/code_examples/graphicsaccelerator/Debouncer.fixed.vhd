@@ -22,8 +22,8 @@ begin
 
   nCounter       <= x"FFFFFF" when Counter=x"FFFFFF" and Button='1' else
                     x"000000" when Counter=x"000000" and Button='0' else
-                    Counter+1 when Button='1' else
-                    Counter-1;
+                    Counter + 1 when Button='1' else
+                    Counter - 1;
   nextHistory    <= '0' when Counter=x"000000" else
                     '1';
   nButtonHistory <= nextHistory & ButtonHistory(1);

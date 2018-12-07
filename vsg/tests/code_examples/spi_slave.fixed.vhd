@@ -143,29 +143,29 @@ library ieee;
 
 entity SPI_SLAVE is
   generic (
-    N        : positive  := 32;                                                -- 32bit serial word length is default
-    CPOL     : std_logic := '0';                                               -- SPI mode selection (mode 0 default)
-    CPHA     : std_logic := '0';                                               -- CPOL = clock polarity, CPHA = clock phase.
-    PREFETCH : positive  := 3                                                  -- prefetch lookahead cycles
+    N        : positive  := 32;                                                 -- 32bit serial word length is default
+    CPOL     : std_logic := '0';                                                -- SPI mode selection (mode 0 default)
+    CPHA     : std_logic := '0';                                                -- CPOL = clock polarity, CPHA = clock phase.
+    PREFETCH : positive  := 3                                                   -- prefetch lookahead cycles
   );
   port (
-    CLK_I         : in    std_logic := 'X';                                    -- internal interface clock (clocks di/do registers)
-    SPI_SSEL_I    : in    std_logic := 'X';                                    -- spi bus slave select line
-    SPI_SCK_I     : in    std_logic := 'X';                                    -- spi bus sck clock (clocks the shift register core)
-    SPI_MOSI_I    : in    std_logic := 'X';                                    -- spi bus mosi input
-    SPI_MISO_O    : out   std_logic := 'X';                                    -- spi bus spi_miso_o output
-    DI_REQ_O      : out   std_logic;                                           -- preload lookahead data request line
-    DI_I          : in    std_logic_vector(N-1 downto 0) := (others => 'X');   -- parallel load data in (clocked in on rising edge of clk_i)
-    WREN_I        : in    std_logic := 'X';                                    -- user data write enable
-    WR_ACK_O      : out   std_logic;                                           -- write acknowledge
-    DO_VALID_O    : out   std_logic;                                           -- do_o data valid strobe, valid during one clk_i rising edge.
-    DO_O          : out   std_logic_vector(N-1 downto 0);                      -- parallel output (clocked out on falling clk_i)
+    CLK_I         : in    std_logic := 'X';                                     -- internal interface clock (clocks di/do registers)
+    SPI_SSEL_I    : in    std_logic := 'X';                                     -- spi bus slave select line
+    SPI_SCK_I     : in    std_logic := 'X';                                     -- spi bus sck clock (clocks the shift register core)
+    SPI_MOSI_I    : in    std_logic := 'X';                                     -- spi bus mosi input
+    SPI_MISO_O    : out   std_logic := 'X';                                     -- spi bus spi_miso_o output
+    DI_REQ_O      : out   std_logic;                                            -- preload lookahead data request line
+    DI_I          : in    std_logic_vector(N - 1 downto 0) := (others => 'X');  -- parallel load data in (clocked in on rising edge of clk_i)
+    WREN_I        : in    std_logic := 'X';                                     -- user data write enable
+    WR_ACK_O      : out   std_logic;                                            -- write acknowledge
+    DO_VALID_O    : out   std_logic;                                            -- do_o data valid strobe, valid during one clk_i rising edge.
+    DO_O          : out   std_logic_vector(N - 1 downto 0);                     -- parallel output (clocked out on falling clk_i)
     --- debug ports: can be removed for the application circuit ---
-    DO_TRANSFER_O : out   std_logic;                                           -- debug: internal transfer driver
-    WREN_O        : out   std_logic;                                           -- debug: internal state of the wren_i pulse stretcher
-    RX_BIT_NEXT_O : out   std_logic;                                           -- debug: internal rx bit
-    STATE_DBG_O   : out   std_logic_vector(3 downto 0);                        -- debug: internal state register
-    SH_REG_DBG_O  : out   std_logic_vector(N-1 downto 0)                       -- debug: internal shift register
+    DO_TRANSFER_O : out   std_logic;                                            -- debug: internal transfer driver
+    WREN_O        : out   std_logic;                                            -- debug: internal state of the wren_i pulse stretcher
+    RX_BIT_NEXT_O : out   std_logic;                                            -- debug: internal rx bit
+    STATE_DBG_O   : out   std_logic_vector(3 downto 0);                         -- debug: internal state register
+    SH_REG_DBG_O  : out   std_logic_vector(N - 1 downto 0)                      -- debug: internal shift register
   );
 end entity SPI_SLAVE;
 
@@ -201,22 +201,22 @@ architecture RTL of SPI_SLAVE is
   signal state_next       : natural range N downto 0 := 0;       -- state 0 is idle state
   signal state_reg        : natural range N downto 0 := 0;       -- state 0 is idle state
   -- shifter signals for register and combinatorial stages
-  signal sh_next          : std_logic_vector(N-1 downto 0);
-  signal sh_reg           : std_logic_vector(N-1 downto 0);
+  signal sh_next          : std_logic_vector(N - 1 downto 0);
+  signal sh_reg           : std_logic_vector(N - 1 downto 0);
   -- mosi and miso connections
   signal rx_bit_next      : std_logic;                           -- sample of MOSI input
   signal tx_bit_next      : std_logic;
   signal tx_bit_reg       : std_logic;                           -- drives MISO during sequential logic
   signal preload_miso     : std_logic;                           -- controls the MISO MUX
   -- buffered di_i data signals for register and combinatorial stages
-  signal di_reg           : std_logic_vector(N-1 downto 0);
+  signal di_reg           : std_logic_vector(N - 1 downto 0);
   -- internal wren_i stretcher for fsm combinatorial stage
   signal wren             : std_logic;
   signal wr_ack_next      : std_logic := '0';
   signal wr_ack_reg       : std_logic := '0';
   -- buffered do_o data signals for register and combinatorial stages
-  signal do_buffer_next   : std_logic_vector(N-1 downto 0);
-  signal do_buffer_reg    : std_logic_vector(N-1 downto 0);
+  signal do_buffer_next   : std_logic_vector(N - 1 downto 0);
+  signal do_buffer_reg    : std_logic_vector(N - 1 downto 0);
   -- internal signal to flag transfer to do_buffer_reg
   signal do_transfer_next : std_logic := '0';
   signal do_transfer_reg  : std_logic := '0';
@@ -248,8 +248,8 @@ begin
   report "Generic parameter 'N' error: SPI shift register size needs to be 8 bits minimum"
   severity FAILURE;
   -- maximum prefetch lookahead check
-  assert PREFETCH <= N-5
-  report "Generic parameter 'PREFETCH' error: lookahead count out of range, needs to be N-5 maximum"
+  assert PREFETCH <= N - 5
+  report "Generic parameter 'PREFETCH' error: lookahead count out of range, needs to be N - 5 maximum"
   severity FAILURE;
 
   --=============================================================================================
@@ -367,76 +367,76 @@ begin
   begin
 
     -- all output signals are assigned to (avoid latches)
-    sh_next          <= sh_reg;                                              -- shift register
-    tx_bit_next      <= tx_bit_reg;                                          -- MISO driver
-    do_buffer_next   <= do_buffer_reg;                                       -- output data buffer
-    do_transfer_next <= do_transfer_reg;                                     -- output data flag
-    wr_ack_next      <= wr_ack_reg;                                          -- write enable acknowledge
-    di_req_next      <= di_req_reg;                                          -- data input request
-    state_next       <= state_reg;                                           -- fsm control state
+    sh_next          <= sh_reg;                                               -- shift register
+    tx_bit_next      <= tx_bit_reg;                                           -- MISO driver
+    do_buffer_next   <= do_buffer_reg;                                        -- output data buffer
+    do_transfer_next <= do_transfer_reg;                                      -- output data flag
+    wr_ack_next      <= wr_ack_reg;                                           -- write enable acknowledge
+    di_req_next      <= di_req_reg;                                           -- data input request
+    state_next       <= state_reg;                                            -- fsm control state
 
     case state_reg is
 
-      when (N) =>                                                            -- deassert 'di_rdy' and stretch do_valid
-        wr_ack_next           <= '0';                                        -- acknowledge data in transfer
-        di_req_next           <= '0';                                        -- prefetch data request: deassert when shifting data
-        tx_bit_next           <= sh_reg(N-1);                                -- output next MSbit
-        sh_next(N-1 downto 1) <= sh_reg(N-2 downto 0);                       -- shift inner bits
-        sh_next(0)            <= rx_bit_next;                                -- shift in rx bit into LSb
-        state_next            <= state_reg - 1;                              -- update next state at each sck pulse
+      when (N) =>                                                             -- deassert 'di_rdy' and stretch do_valid
+        wr_ack_next             <= '0';                                       -- acknowledge data in transfer
+        di_req_next             <= '0';                                       -- prefetch data request: deassert when shifting data
+        tx_bit_next             <= sh_reg(N - 1);                             -- output next MSbit
+        sh_next(N - 1 downto 1) <= sh_reg(N - 2 downto 0);                    -- shift inner bits
+        sh_next(0)              <= rx_bit_next;                               -- shift in rx bit into LSb
+        state_next              <= state_reg - 1;                             -- update next state at each sck pulse
 
-      when (N-1) downto (PREFETCH+3) =>                                      -- remove 'do_transfer' and shift bits
-        do_transfer_next      <= '0';                                        -- reset 'do_valid' transfer signal
-        di_req_next           <= '0';                                        -- prefetch data request: deassert when shifting data
-        wr_ack_next           <= '0';                                        -- remove data load ack for all but the load stages
-        tx_bit_next           <= sh_reg(N-1);                                -- output next MSbit
-        sh_next(N-1 downto 1) <= sh_reg(N-2 downto 0);                       -- shift inner bits
-        sh_next(0)            <= rx_bit_next;                                -- shift in rx bit into LSb
-        state_next            <= state_reg - 1;                              -- update next state at each sck pulse
+      when (N - 1) downto (PREFETCH + 3) =>                                   -- remove 'do_transfer' and shift bits
+        do_transfer_next        <= '0';                                       -- reset 'do_valid' transfer signal
+        di_req_next             <= '0';                                       -- prefetch data request: deassert when shifting data
+        wr_ack_next             <= '0';                                       -- remove data load ack for all but the load stages
+        tx_bit_next             <= sh_reg(N - 1);                             -- output next MSbit
+        sh_next(N - 1 downto 1) <= sh_reg(N - 2 downto 0);                    -- shift inner bits
+        sh_next(0)              <= rx_bit_next;                               -- shift in rx bit into LSb
+        state_next              <= state_reg - 1;                             -- update next state at each sck pulse
 
-      when (PREFETCH+2) downto 3 =>                                          -- raise prefetch 'di_req_o' signal
-        di_req_next           <= '1';                                        -- request data in advance to allow for pipeline delays
-        wr_ack_next           <= '0';                                        -- remove data load ack for all but the load stages
-        tx_bit_next           <= sh_reg(N-1);                                -- output next MSbit
-        sh_next(N-1 downto 1) <= sh_reg(N-2 downto 0);                       -- shift inner bits
-        sh_next(0)            <= rx_bit_next;                                -- shift in rx bit into LSb
-        state_next            <= state_reg - 1;                              -- update next state at each sck pulse
+      when (PREFETCH + 2) downto 3 =>                                         -- raise prefetch 'di_req_o' signal
+        di_req_next             <= '1';                                       -- request data in advance to allow for pipeline delays
+        wr_ack_next             <= '0';                                       -- remove data load ack for all but the load stages
+        tx_bit_next             <= sh_reg(N - 1);                             -- output next MSbit
+        sh_next(N - 1 downto 1) <= sh_reg(N - 2 downto 0);                    -- shift inner bits
+        sh_next(0)              <= rx_bit_next;                               -- shift in rx bit into LSb
+        state_next              <= state_reg - 1;                             -- update next state at each sck pulse
 
-      when 2 =>                                                              -- transfer received data to do_buffer_reg on next cycle
-        di_req_next           <= '1';                                        -- request data in advance to allow for pipeline delays
-        wr_ack_next           <= '0';                                        -- remove data load ack for all but the load stages
-        tx_bit_next           <= sh_reg(N-1);                                -- output next MSbit
-        sh_next(N-1 downto 1) <= sh_reg(N-2 downto 0);                       -- shift inner bits
-        sh_next(0)            <= rx_bit_next;                                -- shift in rx bit into LSb
-        do_transfer_next      <= '1';                                        -- signal transfer to do_buffer on next cycle
-        do_buffer_next        <= sh_next;                                    -- get next data directly into rx buffer
-        state_next            <= state_reg - 1;                              -- update next state at each sck pulse
+      when 2 =>                                                               -- transfer received data to do_buffer_reg on next cycle
+        di_req_next             <= '1';                                       -- request data in advance to allow for pipeline delays
+        wr_ack_next             <= '0';                                       -- remove data load ack for all but the load stages
+        tx_bit_next             <= sh_reg(N - 1);                             -- output next MSbit
+        sh_next(N - 1 downto 1) <= sh_reg(N - 2 downto 0);                    -- shift inner bits
+        sh_next(0)              <= rx_bit_next;                               -- shift in rx bit into LSb
+        do_transfer_next        <= '1';                                       -- signal transfer to do_buffer on next cycle
+        do_buffer_next          <= sh_next;                                   -- get next data directly into rx buffer
+        state_next              <= state_reg - 1;                             -- update next state at each sck pulse
 
-      when 1 =>                                                              -- transfer rx data to do_buffer and restart if new data is written
-        sh_next(0)  <= rx_bit_next;                                          -- shift in rx bit into LSb
-        di_req_next <= '0';                                                  -- prefetch data request: deassert when shifting data
-        state_next  <= N;                                                    -- next state is top bit of new data
-        if (wren = '1') then                                                 -- load tx register if valid data present at di_reg
-          wr_ack_next           <= '1';                                      -- acknowledge data in transfer
-          sh_next(N-1 downto 1) <= di_reg(N-2 downto 0);                     -- shift inner bits
-          tx_bit_next           <= di_reg(N-1);                              -- first output bit comes from the MSb of parallel data
+      when 1 =>                                                               -- transfer rx data to do_buffer and restart if new data is written
+        sh_next(0)  <= rx_bit_next;                                           -- shift in rx bit into LSb
+        di_req_next <= '0';                                                   -- prefetch data request: deassert when shifting data
+        state_next  <= N;                                                     -- next state is top bit of new data
+        if (wren = '1') then                                                  -- load tx register if valid data present at di_reg
+          wr_ack_next             <= '1';                                     -- acknowledge data in transfer
+          sh_next(N - 1 downto 1) <= di_reg(N - 2 downto 0);                  -- shift inner bits
+          tx_bit_next             <= di_reg(N - 1);                           -- first output bit comes from the MSb of parallel data
         else
-          wr_ack_next           <= '0';                                      -- no data reload for continuous transfer mode
-          sh_next(N-1 downto 1) <= (others => '0');                          -- clear transmit shift register
-          tx_bit_next           <= '0';                                      -- send ZERO
+          wr_ack_next             <= '0';                                     -- no data reload for continuous transfer mode
+          sh_next(N - 1 downto 1) <= (others => '0');                         -- clear transmit shift register
+          tx_bit_next             <= '0';                                     -- send ZERO
         end if;
 
-      when 0 =>                                                              -- idle state: start and end of transmission
-        sh_next(0)            <= rx_bit_next;                                -- shift in rx bit into LSb
-        sh_next(N-1 downto 1) <= di_reg(N-2 downto 0);                       -- shift inner bits
-        tx_bit_next           <= di_reg(N-1);                                -- first output bit comes from the MSb of parallel data
-        wr_ack_next           <= '1';                                        -- acknowledge data in transfer
-        di_req_next           <= '0';                                        -- prefetch data request: deassert when shifting data
-        do_transfer_next      <= '0';                                        -- clear signal transfer to do_buffer
-        state_next            <= N;                                          -- next state is top bit of new data
+      when 0 =>                                                               -- idle state: start and end of transmission
+        sh_next(0)              <= rx_bit_next;                               -- shift in rx bit into LSb
+        sh_next(N - 1 downto 1) <= di_reg(N - 2 downto 0);                    -- shift inner bits
+        tx_bit_next             <= di_reg(N - 1);                             -- first output bit comes from the MSb of parallel data
+        wr_ack_next             <= '1';                                       -- acknowledge data in transfer
+        di_req_next             <= '0';                                       -- prefetch data request: deassert when shifting data
+        do_transfer_next        <= '0';                                       -- clear signal transfer to do_buffer
+        state_next              <= N;                                         -- next state is top bit of new data
 
       when others =>
-        state_next <= 0;                                                     -- safe state
+        state_next <= 0;                                                      -- safe state
 
     end case;
 
@@ -460,9 +460,9 @@ begin
   begin
 
     if (preload_miso = '1') then
-      spi_miso_o <= di_reg(N-1);                                  -- copy top bit of parallel data at reset
+      spi_miso_o <= di_reg(N - 1);                                  -- copy top bit of parallel data at reset
     else
-      spi_miso_o <= tx_bit_reg;                                   -- copy top bit of shifter at sequential operation
+      spi_miso_o <= tx_bit_reg;                                     -- copy top bit of shifter at sequential operation
     end if;
 
   end process SPI_MISO_O_PROC;

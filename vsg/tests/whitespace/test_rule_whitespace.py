@@ -211,3 +211,42 @@ class testRuleWhitespaceMethods(unittest.TestCase):
         oFile.lines.append(line.line('  a <= b &'))
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
+
+    def test_011(self):
+        oRule = whitespace.rule_011()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'whitespace')
+        self.assertEqual(oRule.identifier, '011')
+        self.assertEqual(oRule.phase, 2)
+
+        oFile = vhdlFile.vhdlFile(sFileName)
+
+        dExpected = [1,2,4,5,6,8,9,10,12,13,14,16,17,18,20,21,23,24,26]
+        oFile.lines.append(line.line('  a <= b+ c'))   #1
+        oFile.lines.append(line.line('  a <= b +c'))   #2
+        oFile.lines.append(line.line('  a <= b + c'))  #3
+        oFile.lines.append(line.line('  a <= b+c'))    #4
+        oFile.lines.append(line.line('  a <= b- c'))   #5
+        oFile.lines.append(line.line('  a <= b -c'))   #6
+        oFile.lines.append(line.line('  a <= b - c'))  #7
+        oFile.lines.append(line.line('  a <= b-c'))    #8
+        oFile.lines.append(line.line('  a <= b/ c'))   #9
+        oFile.lines.append(line.line('  a <= b /c'))   #10
+        oFile.lines.append(line.line('  a <= b / c'))  #11
+        oFile.lines.append(line.line('  a <= b/c'))    #12
+        oFile.lines.append(line.line('  a <= b* c'))   #13
+        oFile.lines.append(line.line('  a <= b *c'))   #14
+        oFile.lines.append(line.line('  a <= b * c'))  #15
+        oFile.lines.append(line.line('  a <= b*c'))    #16
+        oFile.lines.append(line.line('  a <= b** c'))   #17
+        oFile.lines.append(line.line('  a <= b **c'))   #18
+        oFile.lines.append(line.line('  a <= b ** c'))  #19
+        oFile.lines.append(line.line('  a <= b**c'))    #20
+        oFile.lines.append(line.line('  a <= b**c -- This**is fine'))    #21
+        oFile.lines.append(line.line('  a <= b ** c -- This**is fine'))    #22
+        oFile.lines.append(line.line('  a <= )+ ('))   #23
+        oFile.lines.append(line.line('  a <= ) +('))   #24
+        oFile.lines.append(line.line('  a <= ) + ('))  #25
+        oFile.lines.append(line.line('  a <= )+('))    #26
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)

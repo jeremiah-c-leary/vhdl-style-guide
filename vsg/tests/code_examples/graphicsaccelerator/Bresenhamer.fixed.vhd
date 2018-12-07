@@ -50,43 +50,43 @@ architecture BEHAVIORAL of BRESENHAMER is
 
 begin
 
-  ndx               <= ("00" & X2)-("00" & X1);
-  ndy               <= ("000" & Y2)-("000" & Y1);
-  neg_dx            <= 0-dx;
-  neg_dy            <= 0-dy;
+  ndx               <= ("00" & X2) - ("00" & X1);
+  ndy               <= ("000" & Y2) - ("000" & Y1);
+  neg_dx            <= 0 - dx;
+  neg_dy            <= 0 - dy;
   dbg               <= p;
-  dx_minus_dy       <= dx+neg_dy;
-  minus_dx_minus_dy <= neg_dx+neg_dy;
-  minus_dx_plus_dy  <= neg_dx+dy;
-  dx_plus_dy        <= dx+dy;
+  dx_minus_dy       <= dx + neg_dy;
+  minus_dx_minus_dy <= neg_dx + neg_dy;
+  minus_dx_plus_dy  <= neg_dx + dy;
+  dx_plus_dy        <= dx + dy;
   t_2dy             <= dy(10 downto 0) & '0';
   t_2dx             <= dx(10 downto 0) & '0';
   t_2neg_dy         <= neg_dy(10 downto 0) & '0';
   t_2neg_dx         <= neg_dx(10 downto 0) & '0';
-  p0_1              <= t_2dy+neg_dx;
-  p0_2              <= t_2dx+neg_dy;
-  p0_3              <= t_2neg_dx+dy;
-  p0_4              <= t_2dy+neg_dx;
-  p0_5              <= t_2neg_dy+dx;
-  p0_6              <= t_2neg_dx+dy;
-  p0_7              <= t_2dx+neg_dy;
-  p0_8              <= t_2neg_dy+dx;
-  p_1               <= p+t_2dy when p(11)='1' else
-                       p+t_2dy+t_2neg_dx;
-  p_2               <= p+t_2dx when p(11)='1' else
-                       p+t_2dx+t_2neg_dy;
-  p_3               <= p+t_2neg_dx when p(11)='1' else
-                       p+t_2neg_dx+t_2neg_dy;
-  p_4               <= p+t_2dy when p(11)='1' else
-                       p+t_2dy+t_2dx;
-  p_5               <= p+t_2neg_dy when p(11)='1' else
-                       p+t_2neg_dy+t_2dx;
-  p_6               <= p+t_2neg_dx when p(11)='1' else
-                       p+t_2neg_dx+t_2dy;
-  p_7               <= p+t_2dx when p(11)='1' else
-                       p+t_2dx+t_2dy;
-  p_8               <= p+t_2neg_dy when p(11)='1' else
-                       p+t_2neg_dy+t_2neg_dx;
+  p0_1              <= t_2dy + neg_dx;
+  p0_2              <= t_2dx + neg_dy;
+  p0_3              <= t_2neg_dx + dy;
+  p0_4              <= t_2dy + neg_dx;
+  p0_5              <= t_2neg_dy + dx;
+  p0_6              <= t_2neg_dx + dy;
+  p0_7              <= t_2dx + neg_dy;
+  p0_8              <= t_2neg_dy + dx;
+  p_1               <= p + t_2dy when p(11)='1' else
+                       p + t_2dy + t_2neg_dx;
+  p_2               <= p + t_2dx when p(11)='1' else
+                       p + t_2dx + t_2neg_dy;
+  p_3               <= p + t_2neg_dx when p(11)='1' else
+                       p + t_2neg_dx + t_2neg_dy;
+  p_4               <= p + t_2dy when p(11)='1' else
+                       p + t_2dy + t_2dx;
+  p_5               <= p + t_2neg_dy when p(11)='1' else
+                       p + t_2neg_dy + t_2dx;
+  p_6               <= p + t_2neg_dx when p(11)='1' else
+                       p + t_2neg_dx + t_2dy;
+  p_7               <= p + t_2dx when p(11)='1' else
+                       p + t_2dx + t_2dy;
+  p_8               <= p + t_2neg_dy when p(11)='1' else
+                       p + t_2neg_dy + t_2neg_dx;
   X                 <= ccounter(9 downto 0) when State = CLEAR else
                        myX1(9 downto 0);
   Y                 <= ccounter(18 downto 10) when State = CLEAR else
