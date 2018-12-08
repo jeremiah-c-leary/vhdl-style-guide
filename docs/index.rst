@@ -18,3 +18,4 @@ Welcome to vhdl-style-guide's documentation!
    phases
    rules
    api
+   faq

@@ -90,3 +90,16 @@ class testFixRuleSignalMethods(unittest.TestCase):
         oRule.fix(oFile)
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oFile.lines[12].line, '  signal sig            : std_logic_vector(31 downto 0);')
+        self.assertEqual(oFile.lines[16].line, '  signal sig            : std_logic_vector (31 downto 0) := (others => \'0\');')
+        self.assertEqual(oFile.lines[23].line, '  signal w_sig1         : t_User_Defined_Type;')
+
+    def test_fix_rule_011(self):
+        oRule = signal.rule_011()
+        dExpected = []
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oFile.lines[12].line, '  signal sig            : std_logic_vector(31 downto 0);')
+        self.assertEqual(oFile.lines[16].line, '  signal sig            : std_logic_vector (31 downto 0) := (others => \'0\');')
+        self.assertEqual(oFile.lines[23].line, '  signal w_sig1         : t_user_defined_type;')

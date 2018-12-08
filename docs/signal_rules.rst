@@ -196,6 +196,8 @@ signal_010
 
 This rule checks the signal type is lowercase if it is a VHDL keyword.
 
+.. NOTE:: This rule is disabled by default.
+
 **Violation**
 
 .. code-block:: vhdl
@@ -211,3 +213,24 @@ This rule checks the signal type is lowercase if it is a VHDL keyword.
    signal wr_en   : std_logic;
    signal rd_en   : std_logic;
    signal cs_f    : t_User_Defined_Type;
+
+signal_011
+##########
+
+This rule checks the signal type is lowercase.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   signal wr_en   : STD_LOGIC;
+   signal rd_en   : Std_logic;
+   signal cs_f    : t_User_Defined_Type;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   signal wr_en   : std_logic;
+   signal rd_en   : std_logic;
+   signal cs_f    : t_user_defined_type;

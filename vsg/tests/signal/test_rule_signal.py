@@ -111,3 +111,12 @@ class testRuleSignalMethods(unittest.TestCase):
         dExpected = [12,16,20]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_011(self):
+        oRule = signal.rule_011()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'signal')
+        self.assertEqual(oRule.identifier, '011')
+        dExpected = [12,16,20,23]
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
