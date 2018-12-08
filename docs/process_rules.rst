@@ -656,7 +656,7 @@ The sensitivity list is required by the compiler, but provides no useful informa
 Therefore, the vertical spacing of the sensitivity list should be minimized.
 This will help with code readability.
 
-NOTE:  This rule is left to the user to fix.
+.. NOTE::  This rule is left to the user to fix.
 
 **Violation**
 
