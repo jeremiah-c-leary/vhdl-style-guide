@@ -30,5 +30,6 @@ class rule_021(rule.rule):
             oFile.lines[iLineNumber + 1].isElseIfKeyword = False
             oFile.lines[iLineNumber + 1].isThenKeyword = False
             oFile.lines[iLineNumber].isLastEndIf = False
+            oFile.lines[iLineNumber + 1].isFirstIf = False
             if not oFile.lines[iLineNumber].isIfKeyword:
                 oFile.lines[iLineNumber + 1].indentLevel -= 1

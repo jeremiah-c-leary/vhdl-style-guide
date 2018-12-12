@@ -282,11 +282,3 @@ class testFixRuleIfMethods(unittest.TestCase):
         self.assertEqual(oRule.violations, dExpected)
         self.assertEqual(oFile.lines[14].line, '       g = 34 or x = 3000 then')
 
-    def test_fix_rule_030(self):
-        oRule = if_statement.rule_030()
-        dExpected = []
-        oRule.fix(oFileNested)
-        oRule.analyze(oFileNested)
-        self.assertEqual(oRule.violations, dExpected)
-        self.assertEqual(oFileNested.lines[19].isBlank, True)
-        self.assertEqual(oFileNested.lines[20].line, '    X <= \'0\';  -- This should be an error') 

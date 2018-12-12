@@ -30,6 +30,7 @@ architecture BEHAVIORAL of BAUDGEN is
 
   function gcd (M, N: integer) return integer is
   begin
+
     if ((M mod N) = 0) then
       return N;
     else

@@ -526,7 +526,7 @@ This rule checks the **then** keyword is lowercase.
 if_030
 ######
 
-This rule checks for a single space after the **end if**.
+This rule checks for at least a single blank line after the **end if**.
 In the case of nested **if** statements, the rule will be enfoced on the last **end if**.
 
 **Violation**
@@ -547,3 +547,37 @@ In the case of nested **if** statements, the rule will be enfoced on the last **
    end if;
 
    C <= '1';
+
+if_031
+######
+
+This rule checks for at least a single blank line before the **if**, unless there is a comment.
+In the case of nested **if** statements, the rule will be enfoced on the first **if**.
+
+**Violation**
+
+.. code-block:: vhdl
+   C <= '1';
+   if (A = '1') then
+     B <= '0';
+   end if;
+
+   -- This is a comment
+   if (A = '1') then
+     B <= '0';
+   end if;
+   
+**Fix**
+
+.. code-block:: vhdl
+
+   C <= '1';
+
+   if (A = '1') then
+     B <= '0';
+   end if;
+
+   -- This is a comment
+   if (A = '1') then
+     B <= '0';
+   end if;

@@ -80,6 +80,7 @@ begin
   begin
 
     wait until clock'event and clock = '1';
+
     if (reset = '1') then
       state        <= IDLE;
       counter      <= X"00000000";
@@ -110,6 +111,7 @@ begin
     case state is
 
       when IDLE =>
+
         if (APUFCMFLUSH = '1') then
           next_state <= IDLE;
         elsif (APUFCMINSTRVALID and APUFCMDECODED and APUFCMDECUDIVALID) = '1' then
@@ -127,6 +129,7 @@ begin
 
       when WAIT_OPERAND =>
         FCMAPUSLEEPNOTREADY <= '1';
+
         if (APUFCMFLUSH = '1') then
           next_state <= IDLE;
         elsif (APUFCMWRITEBACKOK = '1') then

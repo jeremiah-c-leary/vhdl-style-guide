@@ -7,6 +7,7 @@ begin
   PROC_1 : process (A, B, C) is
   begin
 
+    -- This is not an error
     if (A = '1' and B = '1') then 
       X <= '1';
       if (C = '1') then
@@ -18,6 +19,7 @@ begin
     end if;
     X <= '0';  -- This should be an error 
 
+    X <= '1';  -- This should be an error
     if (A = '1' and B = '1') then 
       X <= '1';
       if (C = '1') then

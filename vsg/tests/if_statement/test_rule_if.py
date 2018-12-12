@@ -8,7 +8,6 @@ from vsg import vhdlFile
 # Read in test file used for all tests
 oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','if_statement','if_test_input.vhd'))
 oFileCase = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','if_statement','if_case_test_input.vhd'))
-oFileNested = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','if_statement','if_nested_test_input.vhd'))
 
 class testRuleIfMethods(unittest.TestCase):
 
@@ -267,11 +266,3 @@ class testRuleIfMethods(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
-    def test_rule_030(self):
-        oRule = if_statement.rule_030()
-        self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'if')
-        self.assertEqual(oRule.identifier, '030')
-        dExpected = [18]
-        oRule.analyze(oFileNested)
-        self.assertEqual(oRule.violations, dExpected)

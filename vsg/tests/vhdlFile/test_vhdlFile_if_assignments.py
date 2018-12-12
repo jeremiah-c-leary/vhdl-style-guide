@@ -101,7 +101,7 @@ class testVhdlFileIfAssignments(unittest.TestCase):
         self.assertTrue(oFileCompress.lines[12].isThenKeyword)
 
     def test_last_endif_assignment(self):
-        lExpected = [18,29]
+        lExpected = [19,31]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFileNested.lines):
@@ -110,3 +110,12 @@ class testVhdlFileIfAssignments(unittest.TestCase):
         # Compare
         self.assertEqual(lActual, lExpected)
 
+    def test_first_if_assignment(self):
+        lExpected = [11,23]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFileNested.lines):
+            if oLine.isFirstIf:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)

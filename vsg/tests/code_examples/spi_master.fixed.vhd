@@ -575,6 +575,7 @@ begin
         do_buffer_next(N - 1 downto 1) <= sh_reg(N - 2 downto 0);                     -- shift rx data directly into rx buffer
         do_buffer_next(0)              <= rx_bit_reg;                                 -- shift last rx bit into rx buffer
         do_transfer_next               <= '1';                                        -- signal transfer to do_buffer
+
         if (wren = '1') then                                                          -- load tx register if valid data present at di_i
           state_next   <= N;                                                          -- next state is top bit of new data
           sh_next      <= di_reg;                                                     -- load parallel data from di_reg into shifter
@@ -589,6 +590,7 @@ begin
       when 0 =>                                                                       -- idle state: start and end of transmission
         di_req_next  <= '1';                                                          -- will request data if shifter empty
         sck_ena_next <= '0';                                                          -- SCK disabled: tx empty, no data to send
+
         if (wren = '1') then                                                          -- load tx register if valid data present at di_i
           spi_mosi_o    <= di_reg(N - 1);                                             -- special case: shift out first tx bit from the MSb (look ahead)
           ssel_ena_next <= '1';                                                       -- enable interface SSEL

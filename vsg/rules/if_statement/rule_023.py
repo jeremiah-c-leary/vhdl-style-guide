@@ -26,4 +26,4 @@ class rule_023(rule.rule):
             oFile.lines[iLineNumber].isLastEndIf = False
             oFile.lines[iLineNumber].isElseIfKeyword = False
             oFile.lines[iLineNumber + 1].isIfKeyword = False
-#            oFile.lines[iLineNumber + 1 + iNumber].indentLevel -= 1
+            oFile.lines[iLineNumber + 1].isFirstIf = False
