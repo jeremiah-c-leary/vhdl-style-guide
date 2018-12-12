@@ -28,7 +28,7 @@ setup(
   author='Jeremiah C Leary',
   author_email='jeremiah.c.leary@gmail.com',
   license='GNU General Public License',
-  packages=find_packages(),
+  packages=find_packages(exclude=["*.tests", "*.tests.*", "tests.*", "tests"]),
   zip_safe=False,
   test_suite='nose.collector',
   tests_require=['nose'],
