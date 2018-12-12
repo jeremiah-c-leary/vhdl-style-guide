@@ -313,4 +313,4 @@ class testRuleInstantiationMethods(unittest.TestCase):
         dExpected = ['22-32']
         oRule.analyze(oFileComment)
         self.assertEqual(oRule.violations, dExpected)
-        
+

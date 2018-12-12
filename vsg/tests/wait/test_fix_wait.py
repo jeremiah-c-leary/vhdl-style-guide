@@ -1,7 +1,7 @@
 import os
 
 import unittest
-from vsg.rules import wait 
+from vsg.rules import wait
 from vsg import vhdlFile
 
 # Read in test file used for all tests

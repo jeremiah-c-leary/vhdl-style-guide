@@ -109,4 +109,4 @@ class testVhdlFileMethods(unittest.TestCase):
                 lActual.append(iIndex)
         # Compare
         self.assertEqual(lActual, lExpected)
- 
+

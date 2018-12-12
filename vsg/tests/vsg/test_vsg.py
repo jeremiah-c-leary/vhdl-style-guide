@@ -70,6 +70,6 @@ class testVsg(unittest.TestCase):
         # Compare the two files, but skip the line with the timestamp (as it will never match)
         for iLineNumber, sLine in enumerate(lExpected):
             if iLineNumber != 1:
-                self.assertEqual(lExpected[iLineNumber], lActual[iLineNumber])
+                self.assertEqual(sLine, lActual[iLineNumber])
         # Clean up
         utils.remove_file('vsg/tests/vsg/config_error.actual.xml')

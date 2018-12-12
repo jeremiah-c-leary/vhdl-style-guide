@@ -93,7 +93,7 @@ class vhdlFile():
                        not oLine.insideFunction and \
                        not oLine.insideProcedure:
                         classify.instantiation(dVars, oLine)
-    
+
                     # Add line to file
                     self.lines.append(oLine)
 
