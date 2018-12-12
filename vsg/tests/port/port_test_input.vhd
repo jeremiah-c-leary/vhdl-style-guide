@@ -161,3 +161,15 @@ entity ENTITY2 is
     PORT1 : in    std_logic 
   );
 end entity ENTITY1;
+
+-- Check for missing mode
+
+entity ENTITY3 is
+  port (
+    PORT1 : in    std_logic;
+    PORT2 : integer;
+    PORT3 : std_logic_vector(3 downto 0);
+    PORT4 : out   std_logic;
+    PORT5 : in    std_logic_vector(14 downto 0)
+  );
+end entity ENTITY3;

@@ -304,3 +304,28 @@ def strip_semicolon_from_word(sWord):
         return sWord[0:-1]
 
     return sWord
+
+
+def is_port_mode(sWord):
+    '''
+    Returns True if given word is a valid port mode.
+
+    Returns False if given word is not a valid port mode.
+
+    Parameters:
+
+      sWord: (string)
+
+    Returns: (boolean)
+    '''
+    lKeywords = []
+    lKeywords.append('in')
+    lKeywords.append('out')
+    lKeywords.append('inout')
+    lKeywords.append('buffer')
+    lKeywords.append('linkage')
+
+    if sWord.lower() in lKeywords:
+        return True
+    else:
+        return False
