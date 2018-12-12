@@ -137,21 +137,29 @@ This rule checks for default assignments in variable declarations.
 variable_009
 ############
 
-This rule checks the alignment of colons over multiple lines.
+This rule checks the alignment of colons over multiple lines in the architecture declarative region.
 
 **Violation**
 
 .. code-block:: vhdl
 
-   variable count : integer;
-   variable counter : integer;
+   architecture ARCH of ENTITY1 is
+
+     variable count : integer;
+     variable counter : integer;
+
+   begin
 
 **Fix**
 
 .. code-block:: vhdl
 
-   variable count   : integer;
-   variable counter : integer;
+   architecture ARCH of ENTITY1 is
+
+     variable count   : integer;
+     variable counter : integer;
+
+   begin
 
 variable_010
 ############
@@ -171,3 +179,52 @@ This rule checks the variable type is lowercase.
    variable count : integer;
 
 
+variable_011
+############
+
+This rule checks the alignment of colons over multiple lines in the process declarative region.
+Each process is aligned independently.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   PROC_1 : process (A) is
+
+     variable count : integer;
+     variable counter : integer;
+
+   begin
+
+   end process PROC_1:
+
+   PROC_2 : process (B) is
+
+     variable write_enable : integer;
+     variable read_enable : integer;
+
+   begin
+
+   end process PROC_2;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   PROC_1 : process (A) is
+
+     variable count   : integer;
+     variable counter : integer;
+
+   begin
+
+   end process PROC_1:
+
+   PROC_2 : process (B) is
+
+     variable write_enable : integer;
+     variable read_enable  : integer;
+
+   begin
+
+   end process PROC_2;

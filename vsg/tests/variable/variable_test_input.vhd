@@ -22,4 +22,34 @@ architecture ARCH of ENTITY is
 
 begin
 
+  PROC_1 : process (A) is
+
+    variable p1_variable_1 : std_logic;
+    variable p1_variable_10 : integer;
+    variable p1_variable_long_10 : real;
+
+  begin
+
+  end process PROC_1;
+
+  PROC_2 : process(B) is
+
+    variable p1_var_1       : std_logic;
+    variable p1_var_10      : integer;
+    variable p1_var_long_10 : real;
+
+  begin
+
+  end process PROC_2;
+
+  PROC_3 : process(C) is
+
+    variable process1_variable_1 : std_logic;
+    variable process1_variable_10 : integer;
+    variable process1_variable_long_10 : real;
+
+  begin
+
+  end process PROC_3;
+
 end architecture ARCH;
