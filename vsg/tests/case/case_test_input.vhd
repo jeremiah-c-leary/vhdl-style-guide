@@ -80,4 +80,23 @@ begin
 
   end process PROC_1;
 
+  -- Checking for labels in front of case keywords
+  PROC_1 : process (a, b, c) is
+  begin
+
+    LABEL:case (boolean) is
+
+      when STATE_1 =>
+        a <= b;
+      when STATE_2 =>
+        a <= b;
+      when STATE_3 =>
+        a <= b;
+      when others =>
+        null;
+
+    end case LABEL;
+
+  end process PROC_1;
+
 end architecture ARCH;

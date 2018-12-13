@@ -277,6 +277,8 @@ def is_single_space_after(self, sString, oLine, iLineNumber):
         return
     if re.match('^.*' + sString + '$', oLine.lineLower):
         return
+    if re.match('^.*' + sString + '\s\S', oLine.lineLower):
+        return
     if not re.match('^.*\s+' + sString + '\s\S', oLine.lineLower) and \
        not re.match('^\s*' + sString + '\s\S', oLine.lineLower) and \
        not re.match('^.*\S\s' + sString + '\'', oLine.lineLower):

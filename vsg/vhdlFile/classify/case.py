@@ -2,10 +2,22 @@ import re
 
 
 def case(self, dVars, oLine):
+    '''
+    [case_label :] case {expression} is
+      ( when {choices} => {sequential_statement} )
+      ( when {choices} => {sequential_statement} )
+    end case [case_label];
+    '''
 
     if re.match('^\s*case[\s|\(]', oLine.lineLower):
         oLine.isCaseKeyword = True
         oLine.insideCase = True
+        oLine.indentLevel = dVars['iCurrentIndentLevel']
+        dVars['iCurrentIndentLevel'] += 2
+    if re.match('^\s*\w+\s*:\s*case[\s|\(]', oLine.lineLower):
+        oLine.isCaseKeyword = True
+        oLine.insideCase = True
+        oLine.hasCaseLabel = True
         oLine.indentLevel = dVars['iCurrentIndentLevel']
         dVars['iCurrentIndentLevel'] += 2
     if oLine.insideCase:
@@ -23,6 +35,8 @@ def case(self, dVars, oLine):
         oLine.isEndCaseKeyword = True
         oLine.indentLevel = dVars['iCurrentIndentLevel'] - 2
         dVars['iCurrentIndentLevel'] -= 2
+    if re.match('^\s*end\s+case\s+\w+\s*;', oLine.lineLower):
+        oLine.hasEndCaseLabel = True
 
     # Check for null statements
     if re.match('^\s*null\s*;', oLine.lineLower):

@@ -9,7 +9,7 @@ oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','case','ca
 class testVhdlFileIfAssignments(unittest.TestCase):
 
     def test_isCaseKeyword_assignment(self):
-        lExpected = [9,41,77]
+        lExpected = [9,41,77,87]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
@@ -19,7 +19,7 @@ class testVhdlFileIfAssignments(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isCaseIsKeyword_assignment(self):
-        lExpected = [9,43,77]
+        lExpected = [9,43,77,87]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
@@ -29,7 +29,7 @@ class testVhdlFileIfAssignments(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isCaseWhenKeyword_assignment(self):
-        lExpected = [11,17,23,29,45,52,58,66]
+        lExpected = [11,17,23,29,45,52,58,66,89,91,93,95]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
@@ -39,7 +39,7 @@ class testVhdlFileIfAssignments(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isEndCaseKeyword_assignment(self):
-        lExpected = [33,70,79]
+        lExpected = [33,70,79,98]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
@@ -49,7 +49,7 @@ class testVhdlFileIfAssignments(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_insideCaseWhen_assignment(self):
-        lExpected = [11,17,23,29,45,46,52,58,59,60,66]
+        lExpected = [11,17,23,29,45,46,52,58,59,60,66,89,91,93,95]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
@@ -59,7 +59,7 @@ class testVhdlFileIfAssignments(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isCaseWhenEnd_assignment(self):
-        lExpected = [11,17,23,29,46,52,60,66]
+        lExpected = [11,17,23,29,46,52,60,66,89,91,93,95]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
@@ -83,11 +83,31 @@ class testVhdlFileIfAssignments(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isCaseNull_assignment(self):
-        lExpected = [31,68]
+        lExpected = [31,68,96]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
             if oLine.isCaseNull:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
+    def test_hasCaseLabel_assignment(self):
+        lExpected = [87]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFile.lines):
+            if oLine.hasCaseLabel:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
+    def test_hasEndCaseLabel_assignment(self):
+        lExpected = [98]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFile.lines):
+            if oLine.hasEndCaseLabel:
                 lActual.append(iIndex)
         # Compare
         self.assertEqual(lActual, lExpected)

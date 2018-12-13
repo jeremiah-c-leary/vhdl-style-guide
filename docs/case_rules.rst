@@ -398,3 +398,48 @@ This rule checks the **case** keyword is lowercase in the **end case**.
       end case;
       end case;
       end case;
+
+case_019
+########
+
+This rule checks for labels before the **case** keyword.
+The label should be removed.
+The preference is to have comments above the case statement.
+
+**Violation**
+
+.. code-block:: vhdl
+
+      CASE_LABEL : case address is
+      CASE_LABEL: case address is
+      case address is
+
+**Fix**
+
+.. code-block:: vhdl
+
+      case address is
+      case address is
+      case address is
+
+case_020
+########
+
+This rule checks for labels after the **end case** keywords.
+The label should be removed.
+The preference is to have comments above the case statement.
+
+**Violation**
+
+.. code-block:: vhdl
+
+      end case CASE_LABEL;
+      end case;
+
+**Fix**
+
+.. code-block:: vhdl
+
+      end case;
+      end case;
+
