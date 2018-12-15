@@ -250,3 +250,12 @@ class testRuleWhitespaceMethods(unittest.TestCase):
         oFile.lines.append(line.line('  a <= )+('))    #26
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
+
+
+    def test_012(self):
+        sFileIdentifier = os.path.join(os.path.dirname(__file__),'identifier_alignment_input.vhd')
+        oFileIdentifier = vhdlFile.vhdlFile(sFileIdentifier)
+        oRule = whitespace.rule_012()
+        oRule.analyze(oFileIdentifier)
+        lExpected = ['22-34']
+        self.assertEqual(oRule.violations, lExpected)
