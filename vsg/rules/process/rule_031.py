@@ -7,15 +7,15 @@ from vsg import line
 import re
 
 
-class rule_012(rule.rule):
-    '''Whitespace rule 012 checks for alignment of identifiers.'''
+class rule_031(rule.rule):
+    '''Process rule 031 checks for alignment of identifiers and colons in the process declarative region.'''
 
     def __init__(self):
         rule.rule.__init__(self)
-        self.name = 'whitespace'
-        self.identifier = '012'
-        self.phase = 2
-        self.solution = 'Align the first character of each identifier.'
+        self.name = 'process'
+        self.identifier = '031'
+        self.phase = 5
+        self.solution = 'Align the first character of each identifier and align colons.'
         self.fixable = False
 
     def analyze(self, oFile):
@@ -27,13 +27,14 @@ class rule_012(rule.rule):
                 fGroupFound = True
                 iStartGroupIndex = iLineNumber
             if fGroupFound:
-                if oLine.isSignal or oLine.isConstant or oLine.isVariable or oLine.isFileKeyword:
+                if oLine.isConstant or oLine.isVariable or oLine.isFileKeyword:
                     lGroup.append(oLine)
                 else:
                     lGroup.append(line.blank_line())
             if oLine.isProcessBegin and fGroupFound:
                 fGroupFound = False
                 check.identifier_alignment(self, iStartGroupIndex, lGroup)
+                check.keyword_alignment(self, iStartGroupIndex, ':', lGroup)
                 lGroup = []
                 iStartGroupIndex = None
 #

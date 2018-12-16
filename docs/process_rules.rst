@@ -677,3 +677,37 @@ This will help with code readability.
    PROC_A : process (rd_en, wr_en, data_in, data_out,
                      rd_full, wr_full
                     )
+
+process_031
+###########
+
+This rule checks for alignment of identifiers and colons of constant, variable, and file.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   PROC_1 : process(A) is
+
+    variable var1 : boolean;
+    constant cons1 : integer;
+    file file1 : load_file_file open read_mode is load_file_name;
+
+   begin
+
+   end process PROC_1;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   PROC_1 : process(A) is
+
+    variable var1  : boolean;
+    constant cons1 : integer;
+    file     file1 : load_file_file open read_mode is load_file_name;
+
+   begin
+
+   end process PROC_1;
+
