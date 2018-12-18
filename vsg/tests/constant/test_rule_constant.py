@@ -78,7 +78,7 @@ class testRuleConstantMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'constant')
         self.assertEqual(oRule.identifier, '009')
-        dExpected = ['3-15']
+        dExpected = ['3-13']
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -105,6 +105,6 @@ class testRuleConstantMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'constant')
         self.assertEqual(oRule.identifier, '012')
-        dExpected = [11,22,23,25,27]
+        dExpected = [11,31,32,34,36]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)

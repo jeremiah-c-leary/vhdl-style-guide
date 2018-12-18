@@ -11,6 +11,7 @@ oSpiSlave = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'spi_slave.
 oSpiMaster = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'spi_master.vhd'))
 oGrpDebouncer = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'grp_debouncer.vhd'))
 oPIC = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'PIC.vhd'))
+oIdentifier = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','process','identifier_alignment_input.vhd'))
 
 class testVhdlFileMethods(unittest.TestCase):
 
@@ -53,3 +54,13 @@ class testVhdlFileMethods(unittest.TestCase):
         utils.read_file(os.path.join(os.path.dirname(__file__),'PIC.fixed.vhd'), lExpected)
         for iLineNumber, sLine in enumerate(lExpected):
             self.assertEqual(oPIC.lines[iLineNumber].line, sLine)
+
+    def test_identifier(self):
+        oRuleList = rule_list.rule_list(oIdentifier)
+        oRuleList.fix(7)
+#        utils.debug_lines(oIdentifier, 1, 20)
+        lExpected = ['']
+        utils.read_file(os.path.join(os.path.dirname(__file__),'identifier_alignment_input.fixed.vhd'), lExpected)
+        for iLineNumber, sLine in enumerate(lExpected):
+            self.assertEqual(oIdentifier.lines[iLineNumber].line, sLine)
+

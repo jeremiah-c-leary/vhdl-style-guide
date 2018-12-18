@@ -98,7 +98,7 @@ def change_word(oLine, sWord, sNewWord):
 
       sNewWord: (string)
     '''
-    oLine.line = re.sub(r' ' + sWord + '([\s|;|\(])', r' ' + sNewWord + r'\1', oLine.line, 1, flags=re.IGNORECASE)
+    oLine.line = re.sub(r' ' + sWord + '([\s|;|:|\(])', r' ' + sNewWord + r'\1', oLine.line, 1, flags=re.IGNORECASE)
     oLine.line = re.sub(' ' + sWord + '$', ' ' + sNewWord, oLine.line, 1, flags=re.IGNORECASE)
     oLine.line = re.sub('^' + sWord + '$', sNewWord, oLine.line, 1, flags=re.IGNORECASE)
     oLine.line = re.sub('^' + sWord + ' ', sNewWord + ' ', oLine.line, 1, flags=re.IGNORECASE)

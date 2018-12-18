@@ -8,7 +8,7 @@ oFileConstant = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','c
 class testVhdlFileConstantMethods(unittest.TestCase):
 
     def test_isConstant_assignment(self):
-        lExpected = [5,6,7,8,9,10,19,21]
+        lExpected = [5,6,7,8,9,10,17,18,28,30]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFileConstant.lines):
@@ -18,7 +18,7 @@ class testVhdlFileConstantMethods(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isConstantEnd_assignment(self):
-        lExpected = [5,6,7,8,9,11,19,27]
+        lExpected = [5,6,7,8,9,11,17,18,28,36]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFileConstant.lines):
@@ -28,7 +28,7 @@ class testVhdlFileConstantMethods(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_insideConstant_assignment(self):
-        lExpected = [5,6,7,8,9,10,11,19,21,22,23,24,25,26,27]
+        lExpected = [5,6,7,8,9,10,11,17,18,28,30,31,32,33,34,35,36]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFileConstant.lines):

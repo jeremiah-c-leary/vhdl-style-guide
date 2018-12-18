@@ -11,6 +11,6 @@ class rule_009(keyword_alignment_rule):
         keyword_alignment_rule.__init__(self, 'constant', '009')
         self.sKeyword = ':'
         self.sStartGroupTrigger = 'isArchitectureKeyword'
-        self.sEndGroupTrigger = 'isEndArchitecture'
+        self.sEndGroupTrigger = 'isArchitectureBegin'
         self.sLineTrigger = 'isConstant'
         self.solution = 'Align colon with right most colon.'

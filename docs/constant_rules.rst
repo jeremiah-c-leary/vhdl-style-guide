@@ -135,7 +135,7 @@ This rule checks the **:=** is on the same line at the **constant** keyword.
 constant_009
 ############
 
-This rule checks the :'s are in the same column for all constants.
+This rule checks the :'s are in the same column for all constants in the architecture declarative region.
 
 **Violation**
 
