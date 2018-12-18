@@ -58,7 +58,7 @@ class keyword_alignment_rule(rule.rule):
                 lGroup = []
                 iStartGroupIndex = None
             if fGroupFound:
-                if type(self.sLineTrigger) == list:
+                if isinstance(self.sLineTrigger, list):
                     for sTrigger in self.sLineTrigger:
                         if oLine.__dict__[sTrigger]:
                             lGroup.append(oLine)

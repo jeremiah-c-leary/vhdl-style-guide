@@ -22,7 +22,7 @@ class rule_018(rule.rule):
                 if '(' in sLine:
                     sLine = sLine.split('(')[0]
                 if not utilities.is_port_mode(sLine.split()[0]):
-                    continue 
+                    continue
                 if utilities.is_vhdl_keyword(sLine.split()[1]):
                     check.is_lowercase(self, sLine.split()[1], iLineNumber)
 

@@ -1,7 +1,5 @@
 
 from vsg import rule
-from vsg import check
-from vsg import fix
 from vsg import utilities
 
 

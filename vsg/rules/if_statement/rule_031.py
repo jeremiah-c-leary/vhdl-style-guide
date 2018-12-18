@@ -3,8 +3,6 @@ from vsg import rule
 from vsg import check
 from vsg import fix
 
-import re
-
 
 class rule_031(rule.rule):
     '''

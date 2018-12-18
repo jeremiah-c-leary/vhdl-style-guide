@@ -4,8 +4,6 @@ from vsg import check
 from vsg import fix
 from vsg import line
 
-from vsg.rules.keyword_alignment_rule  import keyword_alignment_rule 
-
 
 class rule_031(rule.rule):
     '''Process rule 031 checks for alignment of identifiers and colons in the process declarative region.'''

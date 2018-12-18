@@ -30,7 +30,7 @@ class testRuleIfMethods(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
         self.assertEqual(self.oFile.lines[20].isBlank, True)
-        self.assertEqual(self.oFile.lines[21].line, '    X <= \'0\';  -- This should be an error') 
+        self.assertEqual(self.oFile.lines[21].line, '    X <= \'0\';  -- This should be an error')
 
 
     def test_rule_031(self):

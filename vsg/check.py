@@ -433,7 +433,6 @@ def identifier_alignment(self, iLineNumber, lGroup):
 
       lGroup: (list of line objects)
     '''
-    iIdentfierAlignment = None
     iMaximumIdentifierColumn = 0
     iMaximumIdentifierLength = 0
     iMaximumKeywordLength = 0
@@ -454,7 +453,7 @@ def identifier_alignment(self, iLineNumber, lGroup):
             iMaximumKeywordLength = max(iMaximumKeywordLength, len(sKeyword))
 
             iMaximumIdentifierColumn = max(iMaximumIdentifierColumn, iIdentifierAlignment)
-       
+
             if not iIdentifierAlignment == iMaximumIdentifierColumn:
                 add_range_violation(self, sViolationRange)
 

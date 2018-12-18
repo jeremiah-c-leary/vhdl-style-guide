@@ -4,7 +4,6 @@ import unittest
 
 from vsg.rules import process
 from vsg import vhdlFile
-from vsg import line
 
 #from vsg.tests import utils
 
