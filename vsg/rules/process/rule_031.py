@@ -4,7 +4,7 @@ from vsg import check
 from vsg import fix
 from vsg import line
 
-import re
+from vsg.rules.keyword_alignment_rule  import keyword_alignment_rule 
 
 
 class rule_031(rule.rule):
@@ -16,7 +16,6 @@ class rule_031(rule.rule):
         self.identifier = '031'
         self.phase = 5
         self.solution = 'Align the first character of each identifier and align colons.'
-        self.fixable = False
 
     def analyze(self, oFile):
         lGroup = []
@@ -37,21 +36,6 @@ class rule_031(rule.rule):
                 check.keyword_alignment(self, iStartGroupIndex, ':', lGroup)
                 lGroup = []
                 iStartGroupIndex = None
-#
-#    def _fix_violations(self, oFile):
-#        for iLineNumber in self.violations:
-#            oLine = oFile.lines[iLineNumber]
-#            iCommentIndex = oLine.line.find('--')
-#            if iCommentIndex == -1:
-#                oLine.update_line(re.sub(r'(\w+)([+|\-|/|*])', r'\1 \2', oLine.line))
-#                oLine.update_line(re.sub(r'\)([+|\-|/|*])', r') \1', oLine.line))
-#                oLine.update_line(re.sub(r'([+|\-|/|*])(\w+)', r'\1 \2', oLine.line))
-#                oLine.update_line(re.sub(r'([+|\-|/|*])\(', r'\1 (', oLine.line))
-#            else:
-#                sLine = oLine.line[:iCommentIndex]
-#                sLine = re.sub(r'(\w+)([+|\-|/|*])', r'\1 \2', sLine)
-#                sLine = re.sub(r'\)([+|\-|/|*])', r') \1', sLine)
-#                sLine = re.sub(r'([+|\-|/|*])(\w+)', r'\1 \2', sLine)
-#                sLine = re.sub(r'([+|\-|/|*])\(', r'\1 (', sLine)
-#                sLine = sLine + oLine.line[iCommentIndex:]
-#                oLine.update_line(sLine)
+
+    def _fix_violations(self, oFile):
+        fix.identifier_alignment(self, oFile)

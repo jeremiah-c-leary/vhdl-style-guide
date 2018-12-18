@@ -58,7 +58,11 @@ class keyword_alignment_rule(rule.rule):
                 lGroup = []
                 iStartGroupIndex = None
             if fGroupFound:
-                if oLine.__dict__[self.sLineTrigger]:
+                if type(self.sLineTrigger) == list:
+                    for sTrigger in self.sLineTrigger:
+                        if oLine.__dict__[sTrigger]:
+                            lGroup.append(oLine)
+                elif oLine.__dict__[self.sLineTrigger]:
                     lGroup.append(oLine)
                 else:
                     lGroup.append(line.line('Removed line'))

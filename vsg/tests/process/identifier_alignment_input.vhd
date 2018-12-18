@@ -21,13 +21,13 @@ begin
 
   PROC1 : process (A) is
 
-    variable var1 : boolean;
-    constant con1 : integer;
-    file file1 : load_file_file open read_mode is load_file_name;
+    variable   var1 : boolean;
+    constant     con1 : integer := 1;
+    file  file1 : load_file_file open read_mode is load_file_name;
 
     variable var12 : boolean;
-    constant con12 : integer;
-    file file12 : load_file_file open read_mode is load_file_name;
+    constant     con12 : integer;
+    file   file12 : load_file_file open read_mode is load_file_name;
 
   begin
 

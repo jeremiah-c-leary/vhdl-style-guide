@@ -133,8 +133,11 @@ def keyword_alignment(self, iLineNumber, sKeyword, lGroup):
     iKeywordAlignment = None
     iMaximumKeywordColumn = 0
     sViolationRange = str(iLineNumber) + '-' + str(iLineNumber + len(lGroup) - 1)
-    self.dFix['violations'][sViolationRange] = {}
-    self.dFix['violations'][sViolationRange]['line'] = {}
+    try:
+        self.dFix['violations'][sViolationRange]['line'] = {}
+    except:
+        self.dFix['violations'][sViolationRange] = {}
+        self.dFix['violations'][sViolationRange]['line'] = {}
 
     for iIndex, oGroupLine in enumerate(lGroup):
         if sKeyword in oGroupLine.line:
@@ -432,23 +435,32 @@ def identifier_alignment(self, iLineNumber, lGroup):
     '''
     iIdentfierAlignment = None
     iMaximumIdentifierColumn = 0
+    iMaximumIdentifierLength = 0
+    iMaximumKeywordLength = 0
     sViolationRange = str(iLineNumber) + '-' + str(iLineNumber + len(lGroup) - 1)
     self.dFix['violations'][sViolationRange] = {}
     self.dFix['violations'][sViolationRange]['line'] = {}
 
     for iIndex, oGroupLine in enumerate(lGroup):
-        if oGroupLine.isSignal or oGroupLine.isConstant or oGroupLine.isVariable or oGroupLine.isFileKeyword:
+        if oGroupLine.isConstant or oGroupLine.isVariable or oGroupLine.isFileKeyword:
             self.dFix['violations'][sViolationRange]['line'][iLineNumber + iIndex] = {}
             iIdentifierAlignment = find_identifier(oGroupLine.line)
             self.dFix['violations'][sViolationRange]['line'][iLineNumber + iIndex]['identifierColumn'] = iIdentifierAlignment
 
-            if iIdentifierAlignment > iMaximumIdentifierColumn:
-                iMaximumIdentifierColumn = iIdentifierAlignment
+            sKeyword, sIdentifier = parse_keyword_identifier(oGroupLine.line)
 
+            iMaximumIdentifierLength = max(iMaximumIdentifierLength, len(sIdentifier))
+
+            iMaximumKeywordLength = max(iMaximumKeywordLength, len(sKeyword))
+
+            iMaximumIdentifierColumn = max(iMaximumIdentifierColumn, iIdentifierAlignment)
+       
             if not iIdentifierAlignment == iMaximumIdentifierColumn:
                 add_range_violation(self, sViolationRange)
 
     self.dFix['violations'][sViolationRange]['maximumIdentifierColumn'] = iMaximumIdentifierColumn
+    self.dFix['violations'][sViolationRange]['maximumIdentifierLength'] = iMaximumIdentifierLength
+    self.dFix['violations'][sViolationRange]['maximumKeywordLength'] = iMaximumKeywordLength
 
 
 def find_identifier(sString):
@@ -462,6 +474,8 @@ def find_identifier(sString):
             fSpaceAfterKeywordFound = True
         if not sChar.isspace() and fSpaceAfterKeywordFound:
             return iIndex
-    
 
 
+def parse_keyword_identifier(sString):
+    lLine = sString.split()
+    return lLine[0], lLine[1]

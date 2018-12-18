@@ -689,9 +689,9 @@ This rule checks for alignment of identifiers and colons of constant, variable, 
 
    PROC_1 : process(A) is
 
-    variable var1 : boolean;
-    constant cons1 : integer;
-    file file1 : load_file_file open read_mode is load_file_name;
+    variable     var1 : boolean;
+    constant  cons1 : integer;
+    file            file1 : load_file_file open read_mode is load_file_name;
 
    begin
 

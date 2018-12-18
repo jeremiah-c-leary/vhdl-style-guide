@@ -231,3 +231,28 @@ def replace_is_keyword(oFile, iLineNumber):
                 oLine.isBlank = True
         if oFile.lines[iSearchIndex].isGenericKeyword or oFile.lines[iSearchIndex].isPortKeyword:
             break
+
+
+def identifier_alignment(self, oFile):
+    '''
+    Aligns identifiers and colons across multiple lines.
+
+    Parameters:
+
+      self: (rule object)
+
+      oFile: (vhdlFile object)
+    '''
+    for sKey in self.dFix['violations']:
+        for iLineNumber in self.dFix['violations'][sKey]['line']:
+            oLine = oFile.lines[iLineNumber]
+            lLine = oLine.line.split(':', 1)
+            sKeyword = lLine[0].split()[0]
+            sIdentifier = lLine[0].split()[1]
+            sLine = ' '*oLine.indentLevel*self.indentSize
+            sLine += sKeyword
+            sLine += ' '*(self.dFix['violations'][sKey]['maximumKeywordLength'] - len(sKeyword) + 1)
+            sLine += sIdentifier
+            sLine += ' '*(self.dFix['violations'][sKey]['maximumIdentifierLength'] - len(sIdentifier))
+            sLine += ' :' + lLine[1]
+            oLine.update_line(sLine)
