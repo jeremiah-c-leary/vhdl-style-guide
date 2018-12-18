@@ -73,3 +73,9 @@ class testVsg(unittest.TestCase):
                 self.assertEqual(sLine, lActual[iLineNumber])
         # Clean up
         utils.remove_file('vsg/tests/vsg/config_error.actual.xml')
+
+    def test_local_rules(self):
+        lExpected = ['ERROR: vsg/tests/vsg/entity_architecture.vhd(1)localized_001 -- Split entity and architecture into seperate files.']
+        lExpected.append('')
+        lActual = subprocess.check_output(['bin/vsg', '-f', 'vsg/tests/vsg/entity_architecture.vhd', '-of', 'syntastic', '-lr', 'vsg/tests/vsg/local_rules']).split('\n')
+        self.assertEqual(lActual, lExpected)
