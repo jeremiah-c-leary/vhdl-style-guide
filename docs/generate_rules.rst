@@ -142,3 +142,88 @@ This rule checks the indent of the **end generate** keyword.
    RAM_ARRAY: for i in 0 to 7 generate
    begin
    end generate RAM_ARRAY;
+
+generate_008
+############
+ 
+This rule checks for a single space after the **end** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   end   generate RAM_ARRAY;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   end generate RAM_ARRAY;
+
+generate_009
+############
+ 
+This rule checks the **end** keyword is lowercase.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   END generate RAM_ARRAY;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   end generate RAM_ARRAY;
+
+generate_010
+############
+ 
+This rule checks the **generate** keyword is lowercase in the **end generate** line.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   end GENERATE RAM_ARRAY;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   end generate RAM_ARRAY;
+
+generate_011
+############
+ 
+This rule checks the **end generate** line has a label.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   end generate;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   end generate RAM_ARRAY;
+
+generate_012
+############
+ 
+This rule checks the **end generate** label is uppercase.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   end generate ram_array;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   end generate RAM_ARRAY;
