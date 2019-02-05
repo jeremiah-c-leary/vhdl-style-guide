@@ -70,7 +70,7 @@ END GENERATE generate_1;
 
       GENERATE_3 : for i in 0 to 7 generate
         a <= b;
-      end generate GENERATE_3;
+      end generate generate_3;
 
     end generate GENERATE_2;
 
