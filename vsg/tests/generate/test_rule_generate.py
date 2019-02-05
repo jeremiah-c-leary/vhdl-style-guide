@@ -108,3 +108,13 @@ class testRuleGenerateMethods(unittest.TestCase):
         dExpected = [19, 62]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_011(self):
+        oRule = generate.rule_011()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'generate')
+        self.assertEqual(oRule.identifier, '011')
+
+        dExpected = [24]
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)

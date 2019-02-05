@@ -21,7 +21,7 @@ END GENERATE generate_1;
   GENERATE_1:if CONDITION = '1' generate
   begin
     a <= b;
-  end generate GENERATE_1;
+  end generate;
 
   GENERATE_1  :  if  CONDITION = '1'  generate
   begin
