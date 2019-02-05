@@ -179,7 +179,7 @@ class testFixRuleArchitectureMethods(unittest.TestCase):
 
     def test_fix_rule_024(self):
         oRule = architecture.rule_024()
-        dExpected = [13,71]
+        dExpected = [13,77]
         oRule.fix(oFile)
         oRule.analyze(oFileRule010)
         self.assertEqual(oRule.violations, dExpected)

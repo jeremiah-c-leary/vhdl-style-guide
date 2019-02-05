@@ -68,6 +68,12 @@ begin
 
   end generate;
 
+  END_PROC : process () is
+    begin
+    end process END_PROC;
+
+  end_signal <= '0';
+
 end;
 
 -- Comment
