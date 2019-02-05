@@ -227,3 +227,20 @@ This rule checks the **end generate** label is uppercase.
 .. code-block:: vhdl
 
    end generate RAM_ARRAY;
+
+generate_013
+############
+ 
+This rule checks for a single space after the **generate** keyword and the label in the **end generate** keywords.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   end generate    RAM_ARRAY;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   end generate RAM_ARRAY;

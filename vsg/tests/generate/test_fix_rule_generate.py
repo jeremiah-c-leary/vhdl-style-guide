@@ -70,3 +70,11 @@ class testFixRuleGenerateMethods(unittest.TestCase):
         self.assertEqual(self.oFile.lines[14].line, '   end generate GENERATE_1;')
         self.assertEqual(self.oFile.lines[19].line, 'END GENERATE GENERATE_1;')
         self.assertEqual(self.oFile.lines[73].line, '      end generate GENERATE_3;')
+
+    def test_fix_rule_013(self):
+        oRule = generate.rule_013()
+        oRule.fix(self.oFile)
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+        self.assertEqual(self.oFile.lines[34].line, '  end generate GENERATE_1;')
+
