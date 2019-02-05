@@ -53,3 +53,12 @@ class testFixRuleGenerateMethods(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
         self.assertEqual(self.oFile.lines[19].line, 'end GENERATE generate_1;')
+
+    def test_fix_rule_010(self):
+        oRule = generate.rule_010()
+        oRule.fix(self.oFile)
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+        self.assertEqual(self.oFile.lines[19].line, 'END generate generate_1;')
+        self.assertEqual(self.oFile.lines[62].line, '  end generate GENERATE_1;')
+

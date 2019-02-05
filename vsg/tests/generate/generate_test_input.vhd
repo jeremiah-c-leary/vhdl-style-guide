@@ -59,7 +59,7 @@ END GENERATE generate_1;
 
   GENERATE_1 : for i in 0 to 7 generate
     a <= b;
-  end generate GENERATE_1;
+  end Generate GENERATE_1;
 
 
   GENERATE_1 : for i in 0 to 7 generate
