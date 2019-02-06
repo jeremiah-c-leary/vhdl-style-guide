@@ -244,3 +244,22 @@ This rule checks for a single space after the **generate** keyword and the label
 .. code-block:: vhdl
 
    end generate RAM_ARRAY;
+
+generate_014
+############
+
+This rule checks for a single space between the : and the **for** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   RAM_ARRAY :for i in 0 to 7 generate
+   RAM_ARRAY :   for i in 0 to 7 generate
+
+**Fix**
+
+.. code-block:: vhdl
+
+   RAM_ARRAY : for i in 0 to 7 generate
+   RAM_ARRAY : for i in 0 to 7 generate
