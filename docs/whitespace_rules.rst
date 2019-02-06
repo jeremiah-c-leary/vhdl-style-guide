@@ -191,7 +191,7 @@ This rule checks for spaces after the concate (&) operator.
 whitespace_011
 ##############
 
-This rule checks for spaces before and after math operators +, -, /, and *.
+This rule checks for spaces before and after math operators +, -, /, and \*.
 
 **Violation**
 
@@ -214,3 +214,36 @@ This rule checks for spaces before and after math operators +, -, /, and *.
    a <= b * c;
    a <= b ** c;
    a <= (b + c) - (d - e);
+
+whitespace_012
+##############
+
+This rule enforces a maximum number of consecutive blank lines.
+
+**Violation**
+
+  a <= b;
+
+
+  c <= d;
+
+**Fix**
+
+  a <= b;
+
+  c <= d;
+
+.. NOTE::
+
+  The default is set to 1.
+  This can be changed by setting the *numBlankLines* attribute to another number.
+
+  .. code-block:: json
+  
+     {
+         "rule":{
+             "whitespace_012":{
+                 "numBlankLines":3
+             }
+         }
+     }

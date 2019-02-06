@@ -251,3 +251,27 @@ class testRuleWhitespaceMethods(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
+    def test_012(self):
+        oRule = whitespace.rule_012()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'whitespace')
+        self.assertEqual(oRule.identifier, '012')
+        self.assertEqual(oRule.phase, 3)
+
+        oFile = vhdlFile.vhdlFile(sFileName)
+
+        dExpected = [2,10]
+        oFile.lines.append(line.line('  a <= b;'))   #1
+        oFile.lines.append(line.blank_line())        #2
+        oFile.lines.append(line.blank_line())        #3
+        oFile.lines.append(line.blank_line())        #4
+        oFile.lines.append(line.blank_line())        #5
+        oFile.lines.append(line.line('  c <= d;'))   #6
+        oFile.lines.append(line.line('  a <= b;'))   #7
+        oFile.lines.append(line.blank_line())        #8
+        oFile.lines.append(line.line('  c <= d;'))   #9
+        oFile.lines.append(line.blank_line())        #10
+        oFile.lines.append(line.blank_line())        #11
+        oFile.lines.append(line.line('  a <= b;'))   #12
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)

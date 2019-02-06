@@ -38,8 +38,6 @@
 ----                                                              ----
 ----------------------------------------------------------------------
 
-
-
 architecture SYNTH of ITERATION is
 
   signal zout1         : array4c;

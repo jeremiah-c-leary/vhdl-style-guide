@@ -81,7 +81,6 @@ architecture BEHAVIORAL of BOARD_CPU is
   signal xm_ce    : std_logic;
   signal lclk     : std_logic;
 
-
 begin
 
   CP : CPU

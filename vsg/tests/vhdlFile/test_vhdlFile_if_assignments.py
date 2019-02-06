@@ -86,19 +86,19 @@ class testVhdlFileIfAssignments(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_compressed_line_assignment(self):
-        self.assertTrue(oFileCompress.lines[10].insideIf)
-        self.assertTrue(oFileCompress.lines[10].isElseKeyword)
-        self.assertTrue(oFileCompress.lines[10].isElseIfKeyword)
-        self.assertTrue(oFileCompress.lines[10].isEndIfKeyword)
-        self.assertTrue(oFileCompress.lines[10].isIfKeyword)
-        self.assertTrue(oFileCompress.lines[10].isThenKeyword)
+        self.assertTrue(oFileCompress.lines[9].insideIf)
+        self.assertTrue(oFileCompress.lines[9].isElseKeyword)
+        self.assertTrue(oFileCompress.lines[9].isElseIfKeyword)
+        self.assertTrue(oFileCompress.lines[9].isEndIfKeyword)
+        self.assertTrue(oFileCompress.lines[9].isIfKeyword)
+        self.assertTrue(oFileCompress.lines[9].isThenKeyword)
 
-        self.assertTrue(oFileCompress.lines[12].insideIf)
-        self.assertTrue(oFileCompress.lines[12].isElseKeyword)
-        self.assertTrue(oFileCompress.lines[12].isElseIfKeyword)
-        self.assertTrue(oFileCompress.lines[12].isEndIfKeyword)
-        self.assertTrue(oFileCompress.lines[12].isIfKeyword)
-        self.assertTrue(oFileCompress.lines[12].isThenKeyword)
+        self.assertTrue(oFileCompress.lines[11].insideIf)
+        self.assertTrue(oFileCompress.lines[11].isElseKeyword)
+        self.assertTrue(oFileCompress.lines[11].isElseIfKeyword)
+        self.assertTrue(oFileCompress.lines[11].isEndIfKeyword)
+        self.assertTrue(oFileCompress.lines[11].isIfKeyword)
+        self.assertTrue(oFileCompress.lines[11].isThenKeyword)
 
     def test_last_endif_assignment(self):
         lExpected = [19,31]

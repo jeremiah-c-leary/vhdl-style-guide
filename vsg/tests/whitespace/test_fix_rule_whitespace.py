@@ -226,3 +226,34 @@ class testFixRuleWhitespaceMethods(unittest.TestCase):
         self.assertEqual(oFile.lines[24].line, '  a <= ) + (')
         self.assertEqual(oFile.lines[25].line, '  a <= ) + (')
         self.assertEqual(oFile.lines[26].line, '  a <= ) + (')
+
+    def test_fix_012(self):
+        oRule = whitespace.rule_012()
+        self.assertTrue(oRule)
+
+        oFile = vhdlFile.vhdlFile(sFileName)
+
+        dExpected = []
+        oFile.lines.append(line.line('  a <= b;'))   #1
+        oFile.lines.append(line.blank_line())        #2
+        oFile.lines.append(line.blank_line())        #3
+        oFile.lines.append(line.blank_line())        #4
+        oFile.lines.append(line.blank_line())        #5
+        oFile.lines.append(line.line('  c <= d;'))   #6
+        oFile.lines.append(line.line('  a <= b;'))   #7
+        oFile.lines.append(line.blank_line())        #8
+        oFile.lines.append(line.line('  c <= d;'))   #9
+        oFile.lines.append(line.blank_line())        #10
+        oFile.lines.append(line.blank_line())        #11
+        oFile.lines.append(line.line('  a <= b;'))   #12
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oFile.lines[1].line,'  a <= b;')   #1
+        self.assertEqual(oFile.lines[2].isBlank,True)  #2
+        self.assertEqual(oFile.lines[3].line,'  c <= d;')   #3
+        self.assertEqual(oFile.lines[4].line,'  a <= b;')   #4
+        self.assertEqual(oFile.lines[5].isBlank,True)  #5
+        self.assertEqual(oFile.lines[6].line,'  c <= d;')   #6
+        self.assertEqual(oFile.lines[7].isBlank,True)  #7
+        self.assertEqual(oFile.lines[8].line,'  a <= b;')   #8
