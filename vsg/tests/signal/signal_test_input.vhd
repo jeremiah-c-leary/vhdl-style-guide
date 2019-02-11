@@ -16,9 +16,9 @@ architecture ARCH of ENTITY is
   signal sig :   STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
 
   signal e_sig1, d_sig2 : std_logic;
-  signal a_sig1, c_sig2: std_logic;
-  signal b_sig1, b_sig2 :STD_LOGIC_VECTOR (31 downto 0);
-  signal c_sig1, a_sig2:std_logic;
+  signal a_sig10, c_sig2: std_logic;
+  signal b_sig100, b_sig2 :std_logic_vector (31 downto 0);
+  signal c_sig1000, a_sig2:std_logic;
   
   signal w_sig1 : t_User_Defined_Type;
 
