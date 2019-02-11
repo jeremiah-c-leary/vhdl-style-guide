@@ -21,3 +21,14 @@ class testFixRuleSignalMethods(unittest.TestCase):
         dExpected = [5,6,7,8]
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
+
+    def test_fix_rule_012(self):
+        oRule = signal.rule_012()
+        dExpected = []
+        oRule.fix(self.oFile)
+        oRule.analyze(self.oFile)
+        self.assertEqual(self.oFile.lines[5].line,'  signal e_sig1,      d_sig2 : std_logic;')
+        self.assertEqual(self.oFile.lines[6].line,'  signal a_sig10,     c_sig2 : std_logic;')
+        self.assertEqual(self.oFile.lines[7].line,'  signal b_sig100,    b_sig2 : std_logic_vector (31 downto 0);')
+        self.assertEqual(self.oFile.lines[8].line,'  signal c_sig1000,   a_sig2 : std_logic;')
+        self.assertEqual(oRule.violations, dExpected)

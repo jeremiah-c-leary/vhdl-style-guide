@@ -13,11 +13,11 @@ class rule_012(rule.rule):
         rule.rule.__init__(self, 'signal', '012')
         self.phase = 5
         self.solution = 'Align second signal with others.'
-        self.fixable = False
 
     def analyze(self, oFile):
         iMaxSignalIndex = 0
         lIndexes = []
+        del self.dFix['violations']
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isSignal and re.match('^\s*signal\s+\S+,\s*\S+\s*:', oLine.line, flags=re.IGNORECASE):
                 self.dFix[iLineNumber] = {}
@@ -36,3 +36,10 @@ class rule_012(rule.rule):
                     if iMaxSignalIndex > self.dFix[iIndex]['signal']:
                         self.add_violation(iIndex) 
                 lIndexes = []
+
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            oLine = oFile.lines[iLineNumber]
+            iComma = self.dFix[iLineNumber]['comma']
+            iAddNumSpaces = self.dFix[iLineNumber]['max'] - self.dFix[iLineNumber]['signal']
+            oLine.update_line(oLine.line[:iComma] + iAddNumSpaces*' ' + oLine.line[iComma:])
