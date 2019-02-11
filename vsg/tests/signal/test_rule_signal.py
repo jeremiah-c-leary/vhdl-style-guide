@@ -120,3 +120,5 @@ class testRuleSignalMethods(unittest.TestCase):
         dExpected = [12,16,23]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
+
+
