@@ -127,3 +127,12 @@ begin
 
 end architecture ARCH;
 
+-- Checking for is in type name
+
+architecture ARCH is
+
+  type memory_type_is_name   is array (DEPTH - 1 downto 0) of STD_LOGIC_VECTOR(WIDTH-1 downto 0);
+
+begin
+
+end architecture ARCH;

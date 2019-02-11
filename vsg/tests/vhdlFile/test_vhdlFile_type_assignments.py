@@ -9,7 +9,7 @@ class testVhdlFileTypeAssignments(unittest.TestCase):
 
 
     def test_isTypeKeyword(self):
-        lExpected = [4,6,11,13,27,29,34,36,43,54,57,69,122]
+        lExpected = [4,6,11,13,27,29,34,36,43,54,57,69,122,134]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
@@ -19,7 +19,7 @@ class testVhdlFileTypeAssignments(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isTypeEnd(self):
-        lExpected = [4,9,11,19,27,32,34,40,48,55,62,75,122]
+        lExpected = [4,9,11,19,27,32,34,40,48,55,62,75,122,134]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
@@ -102,7 +102,7 @@ class testVhdlFileTypeAssignments(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isTypeArrayKeyword(self):
-        lExpected = [54]
+        lExpected = [54,134]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
@@ -112,7 +112,7 @@ class testVhdlFileTypeAssignments(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isTypeArrayEnd(self):
-        lExpected = [55]
+        lExpected = [55,134]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
@@ -122,7 +122,7 @@ class testVhdlFileTypeAssignments(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_insideTypeArray(self):
-        lExpected = [54,55]
+        lExpected = [54,55,134]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
@@ -163,7 +163,7 @@ class testVhdlFileTypeAssignments(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isEndArchitecture(self):
-        lExpected = [23,128]
+        lExpected = [23,128,138]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):

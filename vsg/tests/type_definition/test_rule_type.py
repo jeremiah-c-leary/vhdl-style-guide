@@ -63,7 +63,7 @@ class testRuleTypeMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'type')
         self.assertEqual(oRule.identifier, '006')
-        dExpected = [36]
+        dExpected = [36,134]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
