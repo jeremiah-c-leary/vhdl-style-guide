@@ -175,21 +175,7 @@ This rule checks for valid prefixes on signal names.
 signal_009
 ##########
 
-This rule checks the colons are aligned for all signals in the architecture declarative region.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   signal wr_en : std_logic;
-   signal rd_en   : std_logic;
-
-**Fix**
-
-.. code-block:: vhdl
-
-   signal wr_en   : std_logic;
-   signal rd_en   : std_logic;
+This rule has be renumbered signal_013.
 
 signal_010
 ##########
@@ -259,3 +245,23 @@ This rule will only cover two signals on a single line.
    signal wr_en,       wr_en_f       : std_logic;
    signal rd_en_f,     rd_en         : std_logic;
    signal chip_select, chip_select_f : t_user_defined_type;
+
+signal_013
+##########
+
+This rule checks the colons are aligned for all signals in the architecture declarative region.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   signal wr_en : std_logic;
+   signal rd_en   : std_logic;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   signal wr_en   : std_logic;
+   signal rd_en   : std_logic;
+

@@ -114,8 +114,8 @@ architecture BEHAVIORAL of VGA_TOP is
     );
   end component;
 
-  signal adx, GPU_X          : std_logic_vector(9 downto 0);
-  signal ady, GPU_Y          : std_logic_vector(8 downto 0);
+  signal adx,      GPU_X     : std_logic_vector(9 downto 0);
+  signal ady,      GPU_Y     : std_logic_vector(8 downto 0);
   signal data                : std_logic_vector(2 downto 0);
   signal gim                 : std_logic_vector(22 downto 0);
   signal gpu_color_to_buffer : std_logic_vector(2 downto 0);
@@ -125,8 +125,8 @@ architecture BEHAVIORAL of VGA_TOP is
   signal clk2                : std_logic;
   signal p1region, p2Region  : std_logic;
   signal rt, Gt, Bt          : std_logic;
-  signal x1, X2              : std_logic_vector(9 downto 0);
-  signal y1, Y2              : std_logic_vector(8 downto 0);
+  signal x1,       X2        : std_logic_vector(9 downto 0);
+  signal y1,       Y2        : std_logic_vector(8 downto 0);
 
 begin
 

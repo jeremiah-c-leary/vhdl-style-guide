@@ -77,8 +77,8 @@ class testFixRuleSignalMethods(unittest.TestCase):
 #        oRule.analyze(self.oFile)
 #        self.assertEqual(oRule.violations, dExpected)
 
-    def test_fix_rule_009(self):
-        oRule = signal.rule_009()
+    def test_fix_rule_013(self):
+        oRule = signal.rule_013()
         dExpected = []
         oRule.fix(self.oFile)
         oRule.analyze(self.oFile)

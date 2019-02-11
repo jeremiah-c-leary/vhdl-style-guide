@@ -57,7 +57,7 @@ architecture TIMESTAMP_FCM of TIMESTAMP is
   signal udi_code          : std_logic_vector(2 downto 0);
   -- BRAM
   signal wea               : std_logic;
-  signal dia0, dia1        : std_logic_vector(31 downto 0);
+  signal dia0,  dia1       : std_logic_vector(31 downto 0);
   signal addra             : std_logic_vector(9 downto 0);
 
 begin

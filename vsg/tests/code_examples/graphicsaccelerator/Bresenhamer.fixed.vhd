@@ -23,11 +23,11 @@ end entity BRESENHAMER;
 
 architecture BEHAVIORAL of BRESENHAMER is
 
-  signal myx1, myX2                                                 : std_logic_vector(11 downto 0);
-  signal myy1, myY2                                                 : std_logic_vector(11 downto 0);
+  signal myx1,     myX2                                             : std_logic_vector(11 downto 0);
+  signal myy1,     myY2                                             : std_logic_vector(11 downto 0);
   signal p, p0_1, p0_2, p0_3, p0_4, p0_5, p0_6, p0_7, p0_8          : std_logic_vector(11 downto 0);
   signal p_1, p_2, p_3, p_4, p_5, p_6, p_7, p_8                     : std_logic_vector(11 downto 0);
-  signal ndx, ndy                                                   : std_logic_vector(11 downto 0);
+  signal ndx,      ndy                                              : std_logic_vector(11 downto 0);
   signal dx, dy, t_2dx, t_2dy, neg_dx, neg_dy, t_2neg_dx, t_2neg_dy : std_logic_vector(11 downto 0);
   signal dx_minus_dy                                                : std_logic_vector(11 downto 0);
   signal minus_dx_minus_dy                                          : std_logic_vector(11 downto 0);

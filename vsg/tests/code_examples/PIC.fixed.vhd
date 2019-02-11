@@ -71,7 +71,7 @@ architecture BEHAVIORAL of PIC is
 
   signal pt                   : prior_table := (others => (others => '0'));
   signal int_pt               : unsigned(2 downto 0):="000";
-  signal flag, flag1          : std_logic := '0';  --These flags are used for timing purposes.
+  signal flag,      flag1     : std_logic := '0';  --These flags are used for timing purposes.
 
 begin
 
