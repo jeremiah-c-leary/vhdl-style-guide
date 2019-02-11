@@ -117,7 +117,7 @@ def enforce_one_space_after_word(self, oLine, sWord):
     oLine.update_line(re.sub(r'(' + sWord + ')\s*(\S)', r'\1 \2', oLine.line, 1, flags=re.IGNORECASE))
 
 
-def enforce_one_space_before_word(self, oLine, sWord):
+def enforce_one_space_before_word(self, oLine, sWord, fWholeWord=False):
     '''
     Adds a space before word.
 
@@ -129,7 +129,10 @@ def enforce_one_space_before_word(self, oLine, sWord):
 
       sWord: (string)
     '''
-    oLine.update_line(re.sub(r'(\S)\s*(' + sWord + ')', r'\1 \2', oLine.line, 1, flags=re.IGNORECASE))
+    if fWholeWord:
+        oLine.update_line(re.sub(r'(\S)\s+(' + sWord + ')', r'\1 \2', oLine.line, 1, flags=re.IGNORECASE))
+    else:
+        oLine.update_line(re.sub(r'(\S)\s*(' + sWord + ')', r'\1 \2', oLine.line, 1, flags=re.IGNORECASE))
 
 
 def remove_blank_lines_above(self, oFile, iLineNumber, sUnless=None):

@@ -51,7 +51,8 @@ class testFixRuleSignalMethods(unittest.TestCase):
         dExpected = []
         oRule.fix(self.oFile)
         oRule.analyze(self.oFile)
-        self.assertEqual(self.oFile.lines[134].line, '  type memory_type_is_name   is array (DEPTH - 1 downto 0) of STD_LOGIC_VECTOR(WIDTH-1 downto 0);')
+        self.assertEqual(self.oFile.lines[36].line, '  type a is (--This is a comment')
+        self.assertEqual(self.oFile.lines[134].line, '  type memory_type_is_name is array (DEPTH - 1 downto 0) of STD_LOGIC_VECTOR(WIDTH-1 downto 0);')
         self.assertEqual(oRule.violations, dExpected)
 
     def test_fix_rule_007(self):
