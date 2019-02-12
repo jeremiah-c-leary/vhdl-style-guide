@@ -11,7 +11,7 @@ oFileProcess = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','pr
 class testVhdlFileMethods(unittest.TestCase):
 
     def test_comment_assignment(self):
-        lExpected = [8,21,50,76,83,90,114]
+        lExpected = [8,21,50,76,83,90,114,134,135,136,137,138]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFileProcess.lines):
@@ -101,7 +101,7 @@ class testVhdlFileMethods(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_end_architecture_assignment(self):
-        lExpected = [135]
+        lExpected = [140]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFileProcess.lines):

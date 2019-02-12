@@ -19,12 +19,12 @@ def classify_process_keyword(dVars, oLine):
         oLine.insideProcess = True
         oLine.indentLevel = dVars['iCurrentIndentLevel']
         dVars['iCurrentIndentLevel'] += 1
-    if re.match('^\s*\S+\s*:\s*process', oLine.lineLower):
+    if re.match('^\s*\S+\s*:\s*process', oLine.lineLower) and not oLine.isComment:
         oLine.isProcessKeyword = True
         oLine.insideProcess = True
         oLine.indentLevel = dVars['iCurrentIndentLevel']
         oLine.isProcessLabel = True
-    if re.match('^\s*\S+\s*:\s*process\s*$', oLine.lineNoComment):
+    if re.match('^\s*\S+\s*:\s*process\s*$', oLine.lineNoComment) and not oLine.isComment:
         dVars['iCurrentIndentLevel'] += 1
 
 

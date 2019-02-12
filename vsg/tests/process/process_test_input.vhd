@@ -130,7 +130,12 @@ proc_name : process (one, two, three) is
   begin
 
   end process;
-  
+
+--PROC_NAME : process (one) is
+--
+--  begin
+--
+--  end process;
 
 end architecture ARCH;
 
