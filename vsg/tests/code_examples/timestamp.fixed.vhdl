@@ -96,7 +96,7 @@ begin
       end if;
     end if;
 
-  end process;
+  end process SEQ;
 
   COMB_APU : process (state, udi_code,
                       APUFCMFLUSH, APUFCMINSTRVALID, APUFCMDECUDIVALID,
@@ -143,7 +143,7 @@ begin
 
     end case;
 
-  end process;
+  end process COMB_APU;
 
   --   comb_action: process (action, action_udi_code)
   -- -- following block causes "gated clock" warning

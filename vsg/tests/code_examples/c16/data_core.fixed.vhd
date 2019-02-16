@@ -146,7 +146,7 @@ begin
 
     end case;
 
-  end process;
+  end process SEL_AX;
 
   SEL_AZ : process (SA(2 downto 1), LL, RR, SP) is
 
@@ -169,21 +169,21 @@ begin
 
     end case;
 
-  end process;
+  end process SEL_AZ;
 
   SEL_AYZ : process (SA(0), ADR_Z) is
   begin
 
     ADR_YZ <= ADR_Z + (X"000" & "000" & SA(0));
 
-  end process;
+  end process SEL_AYZ;
 
   SEL_AXYZ : process (ADR_X, ADR_YZ) is
   begin
 
     ADR_XYZ <= ADR_X + ADR_YZ;
 
-  end process;
+  end process SEL_AXYZ;
 
   SEL_XX : process (SX, LL, RR, SP, PC) is
   begin
@@ -201,7 +201,7 @@ begin
 
     end case;
 
-  end process;
+  end process SEL_XX;
 
   REGS : process (CLK_I) is
   begin
@@ -233,6 +233,6 @@ begin
       end if;
     end if;
 
-  end process;
+  end process REGS;
 
 end architecture BEHAVIORAL;
