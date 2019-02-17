@@ -152,7 +152,7 @@ def main():
         oJunitFile.add_testsuite(oJunitTestsuite)
         write_junit_xml_file(oJunitFile)
 
-    sys.exit(os.EX_OK)
+    sys.exit(0)
 
 
 if __name__ == '__main__':
