@@ -34,7 +34,7 @@ class rule_012(rule.rule):
                 for iIndex in lIndexes:
                     self.dFix[iIndex]['max'] = iMaxSignalIndex
                     if iMaxSignalIndex > self.dFix[iIndex]['signal']:
-                        self.add_violation(iIndex) 
+                        self.add_violation(iIndex)
                 lIndexes = []
 
     def _fix_violations(self, oFile):

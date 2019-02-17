@@ -1,8 +1,6 @@
 
 from vsg import rule
 
-import re
-
 
 class rule_012(rule.rule):
     '''Whitespace rule 012 checks the number of consecutive blank lines.'''

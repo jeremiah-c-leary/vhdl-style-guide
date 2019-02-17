@@ -135,7 +135,7 @@ def keyword_alignment(self, iLineNumber, sKeyword, lGroup):
     sViolationRange = str(iLineNumber) + '-' + str(iLineNumber + len(lGroup) - 1)
     try:
         self.dFix['violations'][sViolationRange]['line'] = {}
-    except:
+    except KeyError:
         self.dFix['violations'][sViolationRange] = {}
         self.dFix['violations'][sViolationRange]['line'] = {}
 

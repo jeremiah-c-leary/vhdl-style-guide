@@ -1,6 +1,4 @@
 import unittest
-import subprocess
-import os
 
 from vsg import vhdlFile
 from vsg import rule_list

@@ -83,7 +83,7 @@ class vhdlFile():
                     classify.procedure(dVars, oLine)
                     classify.type_definition(dVars, oLine)
                     classify.subtype(dVars, oLine)
-    
+
                     classify.sequential(dVars, oLine)
                     classify.variable_assignment(dVars, oLine)
                     classify.wait(dVars, oLine)
