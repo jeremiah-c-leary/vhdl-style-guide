@@ -192,6 +192,10 @@ def update_block_attributes(oPreviousLine, oCurrentLine):
     if oPreviousLine.insideBlock and not oPreviousLine.isEndBlock:
         oCurrentLine.insideBlock = True
 
+def update_when_attributes(oPreviousLine, oCurrentLine):
+
+    if oPreviousLine.insideWhen and not oPreviousLine.isWhenEnd:
+        oCurrentLine.insideWhen = True
 
 def inside_attributes(dVars, oPreviousLine, oCurrentLine):
 
@@ -222,6 +226,7 @@ def inside_attributes(dVars, oPreviousLine, oCurrentLine):
     update_function_attributes(oPreviousLine, oCurrentLine)
     update_generate_attributes(dVars, oPreviousLine, oCurrentLine)
     update_for_loop_attributes(oPreviousLine, oCurrentLine)
+    update_when_attributes(oPreviousLine, oCurrentLine)
     update_while_loop_attributes(oPreviousLine, oCurrentLine)
     update_attribute_attributes(oPreviousLine, oCurrentLine)
     update_file_attributes(oPreviousLine, oCurrentLine)

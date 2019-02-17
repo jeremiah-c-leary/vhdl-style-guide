@@ -39,6 +39,8 @@ class vhdlFile():
         dVars['iGenerateLevel'] = 0
         dVars['iIfLevel'] = 0
 
+        oLinePrevious = line.blank_line()
+
         try:
             with open(self.filename) as oFile:
                 for sLine in oFile:
@@ -68,6 +70,7 @@ class vhdlFile():
                     classify.file_statement(dVars, oLine)
     
                     classify.concurrent(dVars, oLine)
+                    classify.when(dVars, oLine, oLinePrevious)
     
                     classify.with_statement(dVars, oLine)
                     classify.for_loop(dVars, oLine)
@@ -96,6 +99,7 @@ class vhdlFile():
 
                     # Add line to file
                     self.lines.append(oLine)
+                    oLinePrevious = oLine
 
             oFile.close()
 
