@@ -11,7 +11,8 @@ This is the basic form of a configuration file:
        "file_list":[
          "fifo.vhd",
          "source/spi.vhd",
-         "$PATH_TO_FILE/spi_master.vhd"
+         "$PATH_TO_FILE/spi_master.vhd",
+         "$OTHER_PATH/src/*.vhd"
        ],
        "local_rules":"$DIRECTORY_PATH",
        "rule":{
