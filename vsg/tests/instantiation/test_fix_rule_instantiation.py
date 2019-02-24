@@ -6,7 +6,6 @@ from vsg.rules import instantiation
 from vsg import vhdlFile
 
 oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','instantiation','instantiation_test_input.vhd'))
-oFileGeneric = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','instantiation','instantiation_generic_test_input.vhd'))
 oFileComment = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'instantiation_comment_test_input.vhd'))
 oFileDirect = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'instantiation_direct_test_input.vhd'))
 
@@ -80,54 +79,6 @@ class testFixRuleInstantiationMethods(unittest.TestCase):
         # Note: the line below can change if this test is ran individually
         self.assertEqual(oFile.lines[76].line, '      PORT_1(c_index)     => w_port_1,')
 
-    def test_fix_rule_012(self):
-        oRule = instantiation.rule_012()
-        oRule.fix(oFileGeneric)
-        oRule.analyze(oFileGeneric)
-        self.assertEqual(oRule.violations, [])
-
-    def test_fix_rule_013(self):
-        oRule = instantiation.rule_013()
-        oRule.fix(oFileGeneric)
-        oRule.analyze(oFileGeneric)
-        self.assertEqual(oRule.violations, [])
-
-    def test_fix_rule_014(self):
-        oRule = instantiation.rule_014()
-        oRule.fix(oFileGeneric)
-        oRule.analyze(oFileGeneric)
-        self.assertEqual(oRule.violations, [])
-
-    def test_fix_rule_015(self):
-        oRule = instantiation.rule_015()
-        oRule.fix(oFileGeneric)
-        oRule.analyze(oFileGeneric)
-        self.assertEqual(oRule.violations, [])
-
-    def test_fix_rule_016(self):
-        oRule = instantiation.rule_016()
-        oRule.fix(oFileGeneric)
-        oRule.analyze(oFileGeneric)
-        self.assertEqual(oRule.violations, [])
-
-    def test_fix_rule_017(self):
-        oRule = instantiation.rule_017()
-        oRule.fix(oFileGeneric)
-        oRule.analyze(oFileGeneric)
-        self.assertEqual(oRule.violations, [])
-
-    def test_fix_rule_001_generics(self):
-        oRule = instantiation.rule_001()
-        oRule.fix(oFileGeneric)
-        oRule.analyze(oFileGeneric)
-        self.assertEqual(oRule.violations, [])
-
-    def test_fix_rule_018(self):
-        oRule = instantiation.rule_018()
-        oRule.fix(oFileGeneric)
-        oRule.analyze(oFileGeneric)
-        self.assertEqual(oRule.violations, [])
-
     def test_fix_rule_019(self):
         oRule = instantiation.rule_019()
         oRule.fix(oFile)
@@ -170,22 +121,6 @@ class testFixRuleInstantiationMethods(unittest.TestCase):
         self.assertEqual(oFileComment.lines[31].line,'      port_4 => \'1\'')
         self.assertFalse(oFileComment.lines[31].hasComment)
         self.assertFalse(oFileComment.lines[31].hasInlineComment)
-
-    def test_fix_fule_025(self):
-        oRule = instantiation.rule_025()
-        oRule.fix(oFileGeneric)
-        oRule.analyze(oFileGeneric)
-        self.assertEqual(oRule.violations, [])
-        self.assertEqual(oFileGeneric.lines[81].line, '    generic map (')
-        self.assertEqual(oFileGeneric.lines[82].line, '      GENERIC_1 => generic_1,')
-
-    def test_fix_fule_026(self):
-        oRule = instantiation.rule_026()
-        oRule.fix(oFileGeneric)
-        oRule.analyze(oFileGeneric)
-        self.assertEqual(oRule.violations, [])
-        self.assertEqual(oFileGeneric.lines[85].line, '    port map (')
-        self.assertEqual(oFileGeneric.lines[86].line, '      PORT_1 => w_port_1,')
 
     def test_fix_fule_027(self):
         oRule = instantiation.rule_027()
