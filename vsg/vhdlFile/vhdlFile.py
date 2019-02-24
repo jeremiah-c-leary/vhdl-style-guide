@@ -25,6 +25,7 @@ class vhdlFile():
         self.hasArchitecture = False
         self.hasEntity = False
         self._processFile()
+        self.filename = None
 
     def _processFile(self):
 

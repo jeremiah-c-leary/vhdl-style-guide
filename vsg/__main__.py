@@ -146,6 +146,7 @@ def main():
         oJunitTestsuite = junit.testsuite('vhdl-style-guide', str(0))
     for sFileName in commandLineArguments.filename:
         oVhdlFile = vhdlFile.vhdlFile(read_vhdlfile(sFileName))
+        oVhdlFile.filename = sFileName
         oRules = rule_list.rule_list(oVhdlFile, commandLineArguments.local_rules)
         oRules.configure(configuration)
 
