@@ -62,7 +62,7 @@ begin
 
   U_INST1 : INST1  generic map (
       GENERIC_1 => generic_1,
-      GENERIC_2 => generic_2)
+      GENERIC_2 =>   generic_2)
     port map(
       PORT_1 => w_port_1,
       PORT_2 => w_port_2,
@@ -80,7 +80,7 @@ begin
   U_INST1 : INST1
     generic map
     (
-      GENERIC_1 => generic_1,
+      GENERIC_1 =>   generic_1,
       GENERIC_2 => generic_2
     )
     port map

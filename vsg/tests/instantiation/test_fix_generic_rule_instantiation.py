@@ -69,7 +69,7 @@ class testFixRuleInstantiationMethods(unittest.TestCase):
         oRule.analyze(self.oFileGeneric)
         self.assertEqual(oRule.violations, [])
         self.assertEqual(self.oFileGeneric.lines[81].line, '    generic map (')
-        self.assertEqual(self.oFileGeneric.lines[82].line, '      GENERIC_1 => generic_1,')
+        self.assertEqual(self.oFileGeneric.lines[82].line, '      GENERIC_1 =>   generic_1,')
 
     def test_fix_fule_026(self):
         oRule = instantiation.rule_026()
@@ -78,3 +78,11 @@ class testFixRuleInstantiationMethods(unittest.TestCase):
         self.assertEqual(oRule.violations, [])
         self.assertEqual(self.oFileGeneric.lines[86].line, '    port map (')
         self.assertEqual(self.oFileGeneric.lines[87].line, '      PORT_1 => w_port_1,')
+
+    def test_fix_fule_030(self):
+        oRule = instantiation.rule_030()
+        oRule.fix(self.oFileGeneric)
+        oRule.analyze(self.oFileGeneric)
+        self.assertEqual(oRule.violations, [])
+        self.assertEqual(self.oFileGeneric.lines[65].line, '      GENERIC_2 => generic_2)')
+        self.assertEqual(self.oFileGeneric.lines[83].line, '      GENERIC_1 => generic_1,')

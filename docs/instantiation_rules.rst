@@ -465,7 +465,7 @@ This rule checks multiple port assignments on the same line.
 instantiation_022
 #################
 
-This rule checks for a single space after the **=>** operator.
+This rule checks for a single space after the **=>** operator in port maps.
 
 **Violation**
 
@@ -645,3 +645,28 @@ This rule checks for alignment of inline comments in an instantiation
        WR_EN     => write_enable,        -- Wrte enable
        RD_EN     => read_enable,         -- Read enable
        OVERLFLOW => overflow,            -- FIFO has overflowed
+
+instantiation_030
+#################
+
+This rule checks for a single space after the **=>** keyword in generic maps.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   generic map
+   (
+     WIDTH =>    32,
+     DEPTH => 512
+   )
+
+**Fix**
+
+.. code-block:: vhdl
+
+   generic map
+   (
+     WIDTH => 32,
+     DEPTH => 512
+   )
