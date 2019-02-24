@@ -34,6 +34,10 @@ class testFixRuleInstantiationMethods(unittest.TestCase):
         oRule.fix(self.oFileGeneric)
         oRule.analyze(self.oFileGeneric)
         self.assertEqual(oRule.violations, [])
+        self.assertEqual(self.oFileGeneric.lines[34].line, '      GENerIC_1   => generic_1,')
+        self.assertEqual(self.oFileGeneric.lines[35].line, '      GENERIC_2   => generic_2')
+        self.assertEqual(self.oFileGeneric.lines[45].line, '       GENERIC_1 => generic_1,')
+        self.assertEqual(self.oFileGeneric.lines[46].line, '     GENERic_2   => generic_2)')
 
     def test_fix_rule_016(self):
         oRule = instantiation.rule_016()

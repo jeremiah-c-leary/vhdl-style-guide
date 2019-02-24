@@ -31,7 +31,7 @@ begin
 
   U_INST1 : INST1
      generic mAP  (
-      GENerIC_1 => generic_1,
+      GENerIC_1   => generic_1,
       GENERIC_2 => generic_2
     )
     port map (
