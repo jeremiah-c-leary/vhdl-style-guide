@@ -4,13 +4,19 @@ import unittest
 
 from vsg.rules import instantiation
 from vsg import vhdlFile
+from vsg.tests import utils
 
 
-oFilePort = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'instantiation_test_input.vhd'))
-oFileGeneric = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'instantiation_generic_test_input.vhd'))
-oFileComment = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'instantiation_comment_test_input.vhd'))
-oFilePositional = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'instantiation_positional_test_input.vhd'))
-oFileDirect = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'instantiation_direct_test_input.vhd'))
+lFilePort = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'instantiation_test_input.vhd'))
+oFilePort = vhdlFile.vhdlFile(lFilePort) 
+lFileGeneric = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'instantiation_generic_test_input.vhd'))
+oFileGeneric = vhdlFile.vhdlFile(lFileGeneric) 
+lFileComment = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'instantiation_comment_test_input.vhd'))
+oFileComment = vhdlFile.vhdlFile(lFileComment) 
+lFilePositional = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'instantiation_positional_test_input.vhd'))
+oFilePositional = vhdlFile.vhdlFile(lFilePositional) 
+lFileDirect = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'instantiation_direct_test_input.vhd'))
+oFileDirect = vhdlFile.vhdlFile(lFileDirect) 
 
 class testRuleInstantiationMethods(unittest.TestCase):
 
@@ -309,7 +315,8 @@ class testRuleInstantiationMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'instantiation')
         self.assertEqual(oRule.identifier, '029')
-        oFileComment = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'instantiation_comment_test_input.vhd'))
+        lFileComment = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'instantiation_comment_test_input.vhd'))
+        oFileComment = vhdlFile.vhdlFile(lFileComment) 
         dExpected = ['22-32']
         oRule.analyze(oFileComment)
         self.assertEqual(oRule.violations, dExpected)

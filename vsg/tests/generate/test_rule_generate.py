@@ -3,9 +3,11 @@ import unittest
 
 from vsg.rules import generate
 from vsg import vhdlFile
+from vsg.tests import utils
 
 # Read in test file used for all tests
-oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','generate','generate_test_input.vhd'))
+lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','generate','generate_test_input.vhd'))
+oFile = vhdlFile.vhdlFile(lFile) 
 
 class testRuleGenerateMethods(unittest.TestCase):
 

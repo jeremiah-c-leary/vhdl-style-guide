@@ -2,28 +2,40 @@ import os
 
 import unittest
 from vsg import vhdlFile
+from vsg.tests import utils
 
 sFileLibraryName = os.path.join(os.path.dirname(__file__),'..','library','library_test_input.vhd')
-oFileLibrary = vhdlFile.vhdlFile(sFileLibraryName)
+lFileLibrary = utils.read_vhdlfile(sFileLibraryName)
+oFileLibrary = vhdlFile.vhdlFile(lFileLibrary) 
 
-oFileSignal = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','signal','signal_test_input.vhd'))
+lFileSignal = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','signal','signal_test_input.vhd'))
+oFileSignal = vhdlFile.vhdlFile(lFileSignal) 
 
-oFileProcess = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','process','process_test_input.vhd'))
-oFilePort = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','port','port_test_input.vhd'))
-oFileGeneric = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','generic','generic_test_input.vhd'))
-oFileEntity = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','entity','entity_test_input.vhd'))
-oFileConcurrent = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','concurrent','concurrent_test_input.vhd'))
-oFileArchitecture = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','architecture','architecture_test_input.vhd'))
-oFileArchitectureLoop = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','architecture','architecture_loop_test_input.vhd'))
-oFileArchitectureFunctionLoop = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','architecture','architecture_loop_in_function_test_input.vhd'))
-oFileFunction = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','function','function_test_input.vhd'))
-oFileWhitespace = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','whitespace','whitespace_test_input.txt'))
+lFileProcess = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','process','process_test_input.vhd'))
+oFileProcess = vhdlFile.vhdlFile(lFileProcess) 
+lFilePort = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','port','port_test_input.vhd'))
+oFilePort = vhdlFile.vhdlFile(lFilePort) 
+lFileGeneric = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','generic','generic_test_input.vhd'))
+oFileGeneric = vhdlFile.vhdlFile(lFileGeneric) 
+lFileEntity = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','entity','entity_test_input.vhd'))
+oFileEntity = vhdlFile.vhdlFile(lFileEntity) 
+lFileConcurrent = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','concurrent','concurrent_test_input.vhd'))
+oFileConcurrent = vhdlFile.vhdlFile(lFileConcurrent) 
+lFileArchitecture = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','architecture','architecture_test_input.vhd'))
+oFileArchitecture = vhdlFile.vhdlFile(lFileArchitecture) 
+lFileArchitectureLoop = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','architecture','architecture_loop_test_input.vhd'))
+oFileArchitectureLoop = vhdlFile.vhdlFile(lFileArchitectureLoop) 
+lFileArchitectureFunctionLoop = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','architecture','architecture_loop_in_function_test_input.vhd'))
+oFileArchitectureFunctionLoop = vhdlFile.vhdlFile(lFileArchitectureFunctionLoop) 
+lFileFunction = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','function','function_test_input.vhd'))
+oFileFunction = vhdlFile.vhdlFile(lFileFunction) 
+lFileWhitespace = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','whitespace','whitespace_test_input.txt'))
+oFileWhitespace = vhdlFile.vhdlFile(lFileWhitespace) 
 
 class testVhdlFileMethods(unittest.TestCase):
 
     def test_vhdlFile_class_exists(self):
         self.assertTrue(oFileLibrary)
-        self.assertEqual(oFileLibrary.filename, sFileLibraryName)
 
     def test_loading_of_file(self):
 

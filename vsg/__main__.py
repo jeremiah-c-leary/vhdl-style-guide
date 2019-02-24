@@ -10,6 +10,7 @@ import shutil
 from . import rule_list
 from . import vhdlFile
 from . import junit
+from . import line
 
 
 def parse_command_line_arguments():
@@ -116,6 +117,18 @@ def create_backup_file(sFileName):
     shutil.copy2(sFileName, sFileName + '.bak')
 
 
+def read_vhdlfile(sFileName):
+    try:
+        lLines = []
+        with open(sFileName) as oFile:
+            for sLine in oFile:
+                lLines.append(sLine)
+        oFile.close()
+        return lLines
+    except IOError:
+        return []
+
+
 def main():
     '''Main routine of the VHDL Style Guide (VSG) program.'''
 
@@ -132,7 +145,7 @@ def main():
         oJunitFile = junit.xmlfile(commandLineArguments.junit)
         oJunitTestsuite = junit.testsuite('vhdl-style-guide', str(0))
     for sFileName in commandLineArguments.filename:
-        oVhdlFile = vhdlFile.vhdlFile(sFileName)
+        oVhdlFile = vhdlFile.vhdlFile(read_vhdlfile(sFileName))
         oRules = rule_list.rule_list(oVhdlFile, commandLineArguments.local_rules)
         oRules.configure(configuration)
 

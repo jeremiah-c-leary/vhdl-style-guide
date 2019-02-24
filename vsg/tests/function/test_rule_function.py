@@ -4,10 +4,13 @@ import unittest
 
 from vsg.rules import function
 from vsg import vhdlFile
+from vsg.tests import utils
 
 # Read in test file used for all tests
-oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'function_test_input.vhd'))
-oFileMultiple = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'function_multiple_parameters_test_input.vhd'))
+lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'function_test_input.vhd'))
+oFile = vhdlFile.vhdlFile(lFile) 
+lFileMultiple = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'function_multiple_parameters_test_input.vhd'))
+oFileMultiple = vhdlFile.vhdlFile(lFileMultiple) 
 
 
 class testRuleFunctionMethods(unittest.TestCase):

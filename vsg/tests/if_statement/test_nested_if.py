@@ -4,13 +4,15 @@ import unittest
 
 from vsg.rules import if_statement
 from vsg import vhdlFile
+from vsg.tests import utils
 
 
 class testRuleIfMethods(unittest.TestCase):
 
     def setUp(self):
         # Read in test file used for all tests
-        self.oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','if_statement','if_nested_test_input.vhd'))
+        self.lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','if_statement','if_nested_test_input.vhd'))
+        self.oFile = vhdlFile.vhdlFile(self.lFile) 
 
 
     def test_rule_030(self):

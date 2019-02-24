@@ -3,7 +3,7 @@ import unittest
 
 from vsg.rules import constant
 from vsg import vhdlFile
-
+from vsg.tests import utils
 
 
 class testFixRuleConstantMethods(unittest.TestCase):
@@ -11,7 +11,8 @@ class testFixRuleConstantMethods(unittest.TestCase):
     def setUp(self):
 
         # Read in test file used for all tests
-        self.oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'constant_test_input.vhd'))
+        self.lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'constant_test_input.vhd'))
+        self.oFile = vhdlFile.vhdlFile(self.lFile) 
 
 
     def test_fix_rule_001(self):

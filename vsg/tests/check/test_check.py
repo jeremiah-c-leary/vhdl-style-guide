@@ -5,6 +5,7 @@ from vsg import rule
 from vsg import check
 from vsg import line
 from vsg import vhdlFile
+from vsg.tests import utils
 
 sFileName = os.path.join(os.path.dirname(__file__),'check_test_input.txt')
 
@@ -12,7 +13,8 @@ sFileName = os.path.join(os.path.dirname(__file__),'check_test_input.txt')
 class testCheckFunctions(unittest.TestCase):
 
     def test_is_no_blank_line_after(self):
-        oFile = vhdlFile.vhdlFile(sFileName)
+        lFile = utils.read_vhdlfile(sFileName)
+        oFile = vhdlFile.vhdlFile(lFile) 
         oFile.lines.append(line.line('Simple line'))
         oFile.lines.append(line.blank_line())
 

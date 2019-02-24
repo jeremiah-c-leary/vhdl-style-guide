@@ -2,8 +2,10 @@ import os
 
 import unittest
 from vsg import vhdlFile
+from vsg.tests import utils
 
-oFileVariable = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','variable','variable_test_input.vhd'))
+lFileVariable = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','variable','variable_test_input.vhd'))
+oFileVariable = vhdlFile.vhdlFile(lFileVariable) 
 
 class testVhdlFileMethods(unittest.TestCase):
 

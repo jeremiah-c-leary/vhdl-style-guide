@@ -4,9 +4,11 @@ import unittest
 
 from vsg.rules import entity
 from vsg import vhdlFile
+from vsg.tests import utils
 
 
-oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','entity','entity_test_input.vhd'))
+lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','entity','entity_test_input.vhd'))
+oFile = vhdlFile.vhdlFile(lFile) 
 
 
 class testRuleEntityMethods(unittest.TestCase):

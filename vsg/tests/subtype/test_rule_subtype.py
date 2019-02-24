@@ -6,9 +6,11 @@ sys.path.append('vsg')
 
 from vsg.rules import subtype
 from vsg import vhdlFile
+from vsg.tests import utils
 
 # Read in test file used for all tests
-oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','type_definition','type_test_input.vhd'))
+lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','type_definition','type_test_input.vhd'))
+oFile = vhdlFile.vhdlFile(lFile) 
 
 class testRuleSubtypeMethods(unittest.TestCase):
 

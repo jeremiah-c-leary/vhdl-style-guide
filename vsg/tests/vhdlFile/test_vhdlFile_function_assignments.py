@@ -2,9 +2,12 @@ import os
 
 import unittest
 from vsg import vhdlFile
+from vsg.tests import utils
 
-oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','function','function_test_input.vhd'))
-oFileMultiple = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','function','function_multiple_parameters_test_input.vhd'))
+lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','function','function_test_input.vhd'))
+oFile = vhdlFile.vhdlFile(lFile) 
+lFileMultiple = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','function','function_multiple_parameters_test_input.vhd'))
+oFileMultiple = vhdlFile.vhdlFile(lFileMultiple) 
 
 class testVhdlFileFunctionAssignments(unittest.TestCase):
 

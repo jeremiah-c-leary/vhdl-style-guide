@@ -4,13 +4,13 @@ import unittest
 
 from vsg.rules import process
 from vsg import vhdlFile
+from vsg.tests import utils
 
-#from vsg.tests import utils
 
 class test_process_rules(unittest.TestCase):
 
     def setUp(self):
-        self.sFile = os.path.join(os.path.dirname(__file__),'identifier_alignment_input.vhd')
+        self.sFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'identifier_alignment_input.vhd'))
         self.oFile = vhdlFile.vhdlFile(self.sFile)
 
     def test_031(self):

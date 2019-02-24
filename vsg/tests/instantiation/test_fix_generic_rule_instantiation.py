@@ -4,11 +4,13 @@ import unittest
 
 from vsg.rules import instantiation
 from vsg import vhdlFile
+from vsg.tests import utils
 
 class testFixRuleInstantiationMethods(unittest.TestCase):
 
     def setUp(self):
-        self.oFileGeneric = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'instantiation_generic_test_input.vhd'))
+        self.lFileGeneric = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'instantiation_generic_test_input.vhd'))
+        self.oFileGeneric = vhdlFile.vhdlFile(self.lFileGeneric) 
         
 
     def test_fix_rule_012(self):

@@ -3,11 +3,17 @@ import unittest
 
 from vsg.rules import architecture
 from vsg import vhdlFile
+from vsg.tests import utils
 
 # Read in test file used for all tests
-oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'architecture_test_input.vhd'))
-oFileRule010 = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'architecture_test_input.vhd'))
-oFileIs = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'architecture_is_test_input.vhd'))
+lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'architecture_test_input.vhd'))
+oFile = vhdlFile.vhdlFile(lFile)
+
+lFileRule010 = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'architecture_test_input.vhd'))
+oFileRule010 = vhdlFile.vhdlFile(lFileRule010)
+
+lFileIs = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'architecture_is_test_input.vhd'))
+oFileIs = vhdlFile.vhdlFile(lFileIs)
 
 
 class testFixRuleArchitectureMethods(unittest.TestCase):

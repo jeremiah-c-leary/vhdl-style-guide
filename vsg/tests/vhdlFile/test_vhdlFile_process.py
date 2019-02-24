@@ -2,11 +2,14 @@ import os
 
 import unittest
 from vsg import vhdlFile
+from vsg.tests import utils
 
 sFileLibraryName = os.path.join(os.path.dirname(__file__),'..','library','library_test_input.vhd')
-oFileLibrary = vhdlFile.vhdlFile(sFileLibraryName)
+lFileLibrary = utils.read_vhdlfile(sFileLibraryName)
+oFileLibrary = vhdlFile.vhdlFile(lFileLibrary) 
 
-oFileProcess = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','process','process_test_input.vhd'))
+lFileProcess = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','process','process_test_input.vhd'))
+oFileProcess = vhdlFile.vhdlFile(lFileProcess) 
 
 class testVhdlFileMethods(unittest.TestCase):
 

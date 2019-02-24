@@ -5,13 +5,17 @@ import unittest
 from vsg.rules import if_statement
 from vsg import vhdlFile
 from vsg import rule_list
-#from vsg.tests import utils
+from vsg.tests import utils
 
 # Read in test file used for all tests
-oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','if_statement','if_test_input.vhd'))
-oFileCase = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','if_statement','if_case_test_input.vhd'))
-oFileCompress = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'if_compressed_line_test_input.vhd'))
-oFileNested = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'if_nested_test_input.vhd'))
+lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','if_statement','if_test_input.vhd'))
+oFile = vhdlFile.vhdlFile(lFile) 
+lFileCase = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','if_statement','if_case_test_input.vhd'))
+oFileCase = vhdlFile.vhdlFile(lFileCase) 
+lFileCompress = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'if_compressed_line_test_input.vhd'))
+oFileCompress = vhdlFile.vhdlFile(lFileCompress) 
+lFileNested = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'if_nested_test_input.vhd'))
+oFileNested = vhdlFile.vhdlFile(lFileNested) 
 
 
 class testFixRuleIfMethods(unittest.TestCase):
@@ -62,7 +66,8 @@ class testFixRuleIfMethods(unittest.TestCase):
         self.assertEqual(oRule.violations, dExpected)
 
     def test_fix_rule_006_case(self):
-        oFileCase = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'if_case_test_input.vhd'))
+        lFileCase = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'if_case_test_input.vhd'))
+        oFileCase = vhdlFile.vhdlFile(lFileCase) 
         oRule = if_statement.rule_006()
         dExpected = []
         oRule.fix(oFileCase)
@@ -79,7 +84,8 @@ class testFixRuleIfMethods(unittest.TestCase):
         self.assertEqual(oRule.violations, dExpected)
 
     def test_fix_rule_007_case(self):
-        oFileCase = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'if_case_test_input.vhd'))
+        lFileCase = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'if_case_test_input.vhd'))
+        oFileCase = vhdlFile.vhdlFile(lFileCase) 
         oRule = if_statement.rule_007()
         dExpected = []
         oRule.fix(oFileCase)
@@ -95,7 +101,8 @@ class testFixRuleIfMethods(unittest.TestCase):
         self.assertEqual(oRule.violations, dExpected)
 
     def test_fix_rule_008_case(self):
-        oFileCase = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'if_case_test_input.vhd'))
+        lFileCase = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'if_case_test_input.vhd'))
+        oFileCase = vhdlFile.vhdlFile(lFileCase) 
         oRule = if_statement.rule_008()
         dExpected = []
         oRule.fix(oFileCase)
@@ -118,7 +125,8 @@ class testFixRuleIfMethods(unittest.TestCase):
         self.assertEqual(oRule.violations, dExpected)
 
     def test_fix_rule_010_case(self):
-        oFileCase = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'if_case_test_input.vhd'))
+        lFileCase = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'if_case_test_input.vhd'))
+        oFileCase = vhdlFile.vhdlFile(lFileCase) 
         oRule = if_statement.rule_010()
         dExpected = []
         oRule.fix(oFileCase)
@@ -134,7 +142,8 @@ class testFixRuleIfMethods(unittest.TestCase):
         self.assertEqual(oRule.violations, dExpected)
 
     def test_fix_rule_011_case(self):
-        oFileCase = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'if_case_test_input.vhd'))
+        lFileCase = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'if_case_test_input.vhd'))
+        oFileCase = vhdlFile.vhdlFile(lFileCase) 
         oRule = if_statement.rule_011()
         dExpected = []
         oRule.fix(oFileCase)
@@ -164,7 +173,8 @@ class testFixRuleIfMethods(unittest.TestCase):
         self.assertEqual(oRule.violations, dExpected)
 
     def test_fix_rule_024(self):
-        oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','if_statement','if_test_input.vhd'))
+        lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','if_statement','if_test_input.vhd'))
+        oFile = vhdlFile.vhdlFile(lFile) 
         oRule = if_statement.rule_024()
         dExpected = []
         oRule.fix(oFile)
@@ -177,7 +187,8 @@ class testFixRuleIfMethods(unittest.TestCase):
         self.assertFalse(oFile.lines[107].isElseKeyword)
 
     def test_fix_rule_021(self):
-        oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','if_statement','if_test_input.vhd'))
+        lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','if_statement','if_test_input.vhd'))
+        oFile = vhdlFile.vhdlFile(lFile) 
         oRule = if_statement.rule_021()
         dExpected = []
         oRule.fix(oFile)
@@ -189,7 +200,8 @@ class testFixRuleIfMethods(unittest.TestCase):
 
 
     def test_fix_rule_020(self):
-        oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','if_statement','if_test_input.vhd'))
+        lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','if_statement','if_test_input.vhd'))
+        oFile = vhdlFile.vhdlFile(lFile) 
         oRule = if_statement.rule_020()
         dExpected = []
         oRule.fix(oFile)
@@ -204,7 +216,8 @@ class testFixRuleIfMethods(unittest.TestCase):
         self.assertEqual(oRule.violations, dExpected)
 
     def test_fix_rule_022(self):
-        oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','if_statement','if_test_input.vhd'))
+        lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','if_statement','if_test_input.vhd'))
+        oFile = vhdlFile.vhdlFile(lFile) 
         oRule = if_statement.rule_022()
         dExpected = []
         oRule.fix(oFile)
@@ -273,7 +286,8 @@ class testFixRuleIfMethods(unittest.TestCase):
         self.assertEqual(oFile.lines[27].line, '    end if;')
 
     def test_fix_rule_029(self):
-        oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','if_statement','if_test_input.vhd'))
+        lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','if_statement','if_test_input.vhd'))
+        oFile = vhdlFile.vhdlFile(lFile) 
         oRule = if_statement.rule_029()
         self.assertEqual(oFile.lines[14].line, '       g = 34 or x = 3000 THEN')
         dExpected = []

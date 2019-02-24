@@ -4,12 +4,17 @@ import unittest
 from vsg.rules import comment
 from vsg import vhdlFile
 from vsg import rule_list
+from vsg.tests import utils
 
 # Read in test file used for all tests
-oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','comment','comment_test_input.vhd'))
-oFileCase = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','comment','comment_case_test_input.vhd'))
-oFileProcess = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','comment','comment_process_test_input.vhd'))
-oFileLibrary = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'comment_library_test_input.vhd'))
+lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','comment','comment_test_input.vhd'))
+oFile = vhdlFile.vhdlFile(lFile) 
+lFileCase = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','comment','comment_case_test_input.vhd'))
+oFileCase = vhdlFile.vhdlFile(lFileCase) 
+lFileProcess = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','comment','comment_process_test_input.vhd'))
+oFileProcess = vhdlFile.vhdlFile(lFileProcess) 
+lFileLibrary = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'comment_library_test_input.vhd'))
+oFileLibrary = vhdlFile.vhdlFile(lFileLibrary) 
 
 class testRuleCommentMethods(unittest.TestCase):
 

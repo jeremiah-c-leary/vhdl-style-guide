@@ -2,6 +2,7 @@
 import pprint
 import os
 
+
 def debug_lines(oFile, iLineNumber, iNumberOfLines):
 
     for iIndex in range(0, iNumberOfLines):
@@ -24,3 +25,15 @@ def remove_file(sFileName):
         os.remove(sFileName)
     except OSError:
         pass
+
+
+def read_vhdlfile(sFileName):
+    try:
+        lLines = []
+        with open(sFileName) as oFile:
+            for sLine in oFile:
+                lLines.append(sLine)
+        oFile.close()
+        return lLines
+    except IOError:
+        return []

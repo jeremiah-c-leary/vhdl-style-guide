@@ -4,10 +4,13 @@ import unittest
 
 from vsg.rules import generic
 from vsg import vhdlFile
+from vsg.tests import utils
 
 
-oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'generic_test_input.vhd'))
-oFileMultiple = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'generic_multiple_on_one_line_test_input.vhd'))
+lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'generic_test_input.vhd'))
+oFile = vhdlFile.vhdlFile(lFile) 
+lFileMultiple = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'generic_multiple_on_one_line_test_input.vhd'))
+oFileMultiple = vhdlFile.vhdlFile(lFileMultiple) 
 
 
 class testFixRuleGenericMethods(unittest.TestCase):

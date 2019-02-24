@@ -3,11 +3,14 @@ import unittest
 
 from vsg.rules import case
 from vsg import vhdlFile
+from vsg.tests import utils
 
 # Read in test file used for all tests
-oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','case','case_test_input.vhd'))
-oFileSequential = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','case','case_sequential_test_input.vhd'))
-#oFileComment = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','case','case_comment_test_input.vhd'))
+lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','case','case_test_input.vhd'))
+oFile = vhdlFile.vhdlFile(lFile) 
+
+lFileSequential = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','case','case_sequential_test_input.vhd'))
+oFileSequential = vhdlFile.vhdlFile(lFileSequential) 
 
 class testFixRuleCaseMethods(unittest.TestCase):
 

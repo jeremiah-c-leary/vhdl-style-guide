@@ -7,16 +7,20 @@ from vsg.vhdlFile import classify
 class vhdlFile():
     '''
     Holds contents of a VHDL file.
-    When a vhdlFile object is created, the filename passed to it is opened.
+    When a vhdlFile object is created, the contents of the file must be passed to it.
     A line object is created for each line read in.
     Then the line object attributes are updated.
 
     Parameters:
 
-       filename: (string)
+       filecontent: (list)
+
+    Returns:
+
+       fileobject
     '''
-    def __init__(self, filename):
-        self.filename = filename
+    def __init__(self, filecontent):
+        self.filecontent = filecontent
         self.lines = [line.line('')]
         self.hasArchitecture = False
         self.hasEntity = False
@@ -41,67 +45,60 @@ class vhdlFile():
 
         oLinePrevious = line.blank_line()
 
-        try:
-            with open(self.filename) as oFile:
-                for sLine in oFile:
-                    oLine = line.line(sLine.replace('\t', '  ').rstrip())
-                    update.inside_attributes(dVars, self.lines[-1], oLine)
+        for sLine in self.filecontent:
+            oLine = line.line(sLine.replace('\t', '  ').rstrip())
+            update.inside_attributes(dVars, self.lines[-1], oLine)
 
-                    classify.blank(oLine)
-                    classify.comment(dVars, oLine)
-                    classify.library(oLine)
-                    classify.entity(self, dVars, oLine)
-                    classify.assert_statement(dVars, oLine)
+            classify.blank(oLine)
+            classify.comment(dVars, oLine)
+            classify.library(oLine)
+            classify.entity(self, dVars, oLine)
+            classify.assert_statement(dVars, oLine)
 
-                    classify.port(dVars, oLine)
-                    classify.generic(dVars, oLine)
-    
-                    classify.architecture(self, dVars, oLine)
-                    classify.package_body(dVars, oLine)
-                    classify.block(self, dVars, oLine)
-                    classify.package(dVars, oLine)
-                    classify.component(dVars, oLine)
-                    classify.signal(dVars, oLine)
-                    classify.constant(dVars, oLine)
-                    classify.variable(dVars, oLine)
-                    classify.process(dVars, oLine)
-                    classify.generate(dVars, oLine)
-                    classify.attribute(dVars, oLine)
-                    classify.file_statement(dVars, oLine)
-    
-                    classify.concurrent(dVars, oLine)
-                    classify.when(dVars, oLine, oLinePrevious)
-    
-                    classify.with_statement(dVars, oLine)
-                    classify.for_loop(dVars, oLine)
-                    classify.while_loop(dVars, oLine)
-    
-                    classify.if_statement(dVars, oLine)
+            classify.port(dVars, oLine)
+            classify.generic(dVars, oLine)
 
-                    classify.case(self, dVars, oLine)
-                    classify.function(dVars, oLine)
-                    classify.procedure(dVars, oLine)
-                    classify.type_definition(dVars, oLine)
-                    classify.subtype(dVars, oLine)
+            classify.architecture(self, dVars, oLine)
+            classify.package_body(dVars, oLine)
+            classify.block(self, dVars, oLine)
+            classify.package(dVars, oLine)
+            classify.component(dVars, oLine)
+            classify.signal(dVars, oLine)
+            classify.constant(dVars, oLine)
+            classify.variable(dVars, oLine)
+            classify.process(dVars, oLine)
+            classify.generate(dVars, oLine)
+            classify.attribute(dVars, oLine)
+            classify.file_statement(dVars, oLine)
 
-                    classify.sequential(dVars, oLine)
-                    classify.variable_assignment(dVars, oLine)
-                    classify.wait(dVars, oLine)
+            classify.concurrent(dVars, oLine)
+            classify.when(dVars, oLine, oLinePrevious)
 
-                    # Check instantiation statements
-                    if oLine.insideArchitecture and not oLine.insideProcess and \
-                       not oLine.isConcurrentBegin and \
-                       not oLine.insideComponent and \
-                       not oLine.isGenerateKeyword and \
-                       not oLine.insideFunction and \
-                       not oLine.insideProcedure:
-                        classify.instantiation(dVars, oLine)
+            classify.with_statement(dVars, oLine)
+            classify.for_loop(dVars, oLine)
+            classify.while_loop(dVars, oLine)
 
-                    # Add line to file
-                    self.lines.append(oLine)
-                    oLinePrevious = oLine
+            classify.if_statement(dVars, oLine)
 
-            oFile.close()
+            classify.case(self, dVars, oLine)
+            classify.function(dVars, oLine)
+            classify.procedure(dVars, oLine)
+            classify.type_definition(dVars, oLine)
+            classify.subtype(dVars, oLine)
 
-        except IOError:
-            pass
+            classify.sequential(dVars, oLine)
+            classify.variable_assignment(dVars, oLine)
+            classify.wait(dVars, oLine)
+
+            # Check instantiation statements
+            if oLine.insideArchitecture and not oLine.insideProcess and \
+               not oLine.isConcurrentBegin and \
+               not oLine.insideComponent and \
+               not oLine.isGenerateKeyword and \
+               not oLine.insideFunction and \
+               not oLine.insideProcedure:
+                classify.instantiation(dVars, oLine)
+
+            # Add line to file
+            self.lines.append(oLine)
+            oLinePrevious = oLine

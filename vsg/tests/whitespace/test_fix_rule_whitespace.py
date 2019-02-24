@@ -7,6 +7,7 @@ sys.path.append('vsg')
 from vsg.rules import whitespace
 from vsg import vhdlFile
 from vsg import line
+from vsg.tests import utils
 
 sFileName = os.path.join(os.path.dirname(__file__),'whitespace_test_input.txt')
 
@@ -19,7 +20,8 @@ class testFixRuleWhitespaceMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'whitespace')
         self.assertEqual(oRule.identifier, '001')
 
-        oFile = vhdlFile.vhdlFile(sFileName)
+        lFile = utils.read_vhdlfile(sFileName)
+        oFile = vhdlFile.vhdlFile(lFile) 
 
         dExpected = []
         oFile.lines.append(line.line('  This is a test of ending whitespace'))
@@ -37,7 +39,8 @@ class testFixRuleWhitespaceMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'whitespace')
         self.assertEqual(oRule.identifier, '002')
 
-        oFile = vhdlFile.vhdlFile(sFileName)
+        lFile = utils.read_vhdlfile(sFileName)
+        oFile = vhdlFile.vhdlFile(lFile) 
 
         dExpected = []
         oFile.lines.append(line.line('  This is a test of tabs\t'))
@@ -56,7 +59,8 @@ class testFixRuleWhitespaceMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'whitespace')
         self.assertEqual(oRule.identifier, '003')
 
-        oFile = vhdlFile.vhdlFile(sFileName)
+        lFile = utils.read_vhdlfile(sFileName)
+        oFile = vhdlFile.vhdlFile(lFile) 
 
         dExpected = []
         oFile.lines.append(line.line('  This is a test of tabs;'))
@@ -75,7 +79,8 @@ class testFixRuleWhitespaceMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'whitespace')
         self.assertEqual(oRule.identifier, '004')
 
-        oFile = vhdlFile.vhdlFile(sFileName)
+        lFile = utils.read_vhdlfile(sFileName)
+        oFile = vhdlFile.vhdlFile(lFile) 
 
         dExpected = []
         oFile.lines.append(line.line('  This is a test of commas,'))
@@ -96,7 +101,8 @@ class testFixRuleWhitespaceMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'whitespace')
         self.assertEqual(oRule.identifier, '007')
 
-        oFile = vhdlFile.vhdlFile(sFileName)
+        lFile = utils.read_vhdlfile(sFileName)
+        oFile = vhdlFile.vhdlFile(lFile) 
 
         dExpected = []
         oFile.lines.append(line.line('  This is a test,of commas (failure )'))
@@ -114,7 +120,8 @@ class testFixRuleWhitespaceMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'whitespace')
         self.assertEqual(oRule.identifier, '008')
 
-        oFile = vhdlFile.vhdlFile(sFileName)
+        lFile = utils.read_vhdlfile(sFileName)
+        oFile = vhdlFile.vhdlFile(lFile) 
 
         dExpected = []
         oFile.lines.append(line.line('A  std_logic_vector (7 downto 0)'))
@@ -130,7 +137,8 @@ class testFixRuleWhitespaceMethods(unittest.TestCase):
     def test_fix_009(self):
         oRule = whitespace.rule_009()
 
-        oFile = vhdlFile.vhdlFile(sFileName)
+        lFile = utils.read_vhdlfile(sFileName)
+        oFile = vhdlFile.vhdlFile(lFile) 
 
         dExpected = []
         oFile.lines.append(line.line('  a <= b& c -- this is an& comment'))
@@ -148,7 +156,8 @@ class testFixRuleWhitespaceMethods(unittest.TestCase):
     def test_fix_010(self):
         oRule = whitespace.rule_010()
 
-        oFile = vhdlFile.vhdlFile(sFileName)
+        lFile = utils.read_vhdlfile(sFileName)
+        oFile = vhdlFile.vhdlFile(lFile) 
 
         dExpected = []
         oFile.lines.append(line.line('  a <= b &c -- this is an &comment'))
@@ -168,7 +177,8 @@ class testFixRuleWhitespaceMethods(unittest.TestCase):
     def test_fix_011(self):
         oRule = whitespace.rule_011()
 
-        oFile = vhdlFile.vhdlFile(sFileName)
+        lFile = utils.read_vhdlfile(sFileName)
+        oFile = vhdlFile.vhdlFile(lFile) 
 
         dExpected = []
         oFile.lines.append(line.line('  a <= b+ c'))   #1
@@ -231,7 +241,8 @@ class testFixRuleWhitespaceMethods(unittest.TestCase):
         oRule = whitespace.rule_012()
         self.assertTrue(oRule)
 
-        oFile = vhdlFile.vhdlFile(sFileName)
+        lFile = utils.read_vhdlfile(sFileName)
+        oFile = vhdlFile.vhdlFile(lFile) 
 
         dExpected = []
         oFile.lines.append(line.line('  a <= b;'))   #1

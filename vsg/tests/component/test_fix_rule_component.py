@@ -3,10 +3,13 @@ import unittest
 
 from vsg.rules import component
 from vsg import vhdlFile
+from vsg.tests import utils
 
 
-oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'component_test_input.vhd'))
-oFileComment = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'component_comment_test_input.vhd'))
+lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'component_test_input.vhd'))
+oFile = vhdlFile.vhdlFile(lFile) 
+lFileComment = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'component_comment_test_input.vhd'))
+oFileComment = vhdlFile.vhdlFile(lFileComment) 
 
 
 class testFixRuleComponentMethods(unittest.TestCase):
@@ -131,7 +134,8 @@ class testFixRuleComponentMethods(unittest.TestCase):
     def test_fix_rule_020(self):
         oRule = component.rule_020()
 
-        oFileComment = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'component_comment_test_input.vhd'))
+        lFileComment = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'component_comment_test_input.vhd'))
+        oFileComment = vhdlFile.vhdlFile(lFileComment)
         oRule.fix(oFileComment)
         oRule.analyze(oFileComment)
         self.assertEqual(oRule.violations, [])

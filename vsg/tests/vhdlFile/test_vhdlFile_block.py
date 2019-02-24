@@ -2,8 +2,10 @@ import os
 
 import unittest
 from vsg import vhdlFile
+from vsg.tests import utils
 
-oFileBlock = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','block','block_test_input.vhd'))
+lFileBlock = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','block','block_test_input.vhd'))
+oFileBlock = vhdlFile.vhdlFile(lFileBlock) 
 
 class testVhdlFileMethods(unittest.TestCase):
 

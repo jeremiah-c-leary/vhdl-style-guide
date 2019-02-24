@@ -2,8 +2,10 @@ import os
 
 import unittest
 from vsg import vhdlFile
+from vsg.tests import utils
 
-oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','wait','wait_test_input.vhd'))
+lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','wait','wait_test_input.vhd'))
+oFile = vhdlFile.vhdlFile(lFile) 
 
 class test_vhdlFile_wait_assignments(unittest.TestCase):
 

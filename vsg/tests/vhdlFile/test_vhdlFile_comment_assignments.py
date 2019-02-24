@@ -2,9 +2,12 @@ import os
 
 import unittest
 from vsg import vhdlFile
+from vsg.tests import utils
 
-oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','comment','comment_test_input.vhd'))
-oFileCase = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'..','comment','comment_case_test_input.vhd'))
+lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','comment','comment_test_input.vhd'))
+oFile = vhdlFile.vhdlFile(lFile) 
+lFileCase = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','comment','comment_case_test_input.vhd'))
+oFileCase = vhdlFile.vhdlFile(lFileCase) 
 
 class testVhdlFileCommentAssignments(unittest.TestCase):
 

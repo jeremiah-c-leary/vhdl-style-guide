@@ -6,9 +6,12 @@ from vsg import vhdlFile
 from vsg import rule_list
 from vsg.tests import utils
 
-oBaudGen = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'BaudGen.vhd'))
-oBoardCpu = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'Board_cpu.vhd'))
-oDataCore = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'data_core.vhd'))
+lBaudGen = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'BaudGen.vhd'))
+oBaudGen = vhdlFile.vhdlFile(lBaudGen) 
+lBoardCpu = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'Board_cpu.vhd'))
+oBoardCpu = vhdlFile.vhdlFile(lBoardCpu) 
+lDataCore = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'data_core.vhd'))
+oDataCore = vhdlFile.vhdlFile(lDataCore) 
 
 
 class testCodeExample(unittest.TestCase):

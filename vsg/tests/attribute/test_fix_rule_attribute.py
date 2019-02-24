@@ -4,10 +4,12 @@ import unittest
 
 from vsg.rules import attribute
 from vsg import vhdlFile
+from vsg.tests import utils
 
 
 # Read in test file used for all tests
-oFile = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'attribute_test_input.vhd'))
+lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'attribute_test_input.vhd'))
+oFile = vhdlFile.vhdlFile(lFile)
 
 
 class testFixRuleAttributeMethods(unittest.TestCase):
@@ -37,4 +39,3 @@ class testFixRuleAttributeMethods(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
         self.assertEqual(oFile.lines[11].line, '  attribute ram_init_file of ram_block :')
-

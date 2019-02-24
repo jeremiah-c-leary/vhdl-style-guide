@@ -6,13 +6,20 @@ from vsg import vhdlFile
 from vsg import rule_list
 from vsg.tests import utils
 
-oBresenhamer = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'Bresenhamer.vhd'))
-oDebouncer = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'Debouncer.vhd'))
-oVgatop = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'VGA_Top.vhd'))
-oPointer = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'Pointer.vhd'))
-oFreqDiv = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'FreqDiv.vhd'))
-oSynchronizer = vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'Synchronizer.vhd'))
-oFrameBuffer =  vhdlFile.vhdlFile(os.path.join(os.path.dirname(__file__),'FrameBuffer2.vhd'))
+lBresenhamer = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'Bresenhamer.vhd'))
+oBresenhamer = vhdlFile.vhdlFile(lBresenhamer) 
+lDebouncer = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'Debouncer.vhd'))
+oDebouncer = vhdlFile.vhdlFile(lDebouncer) 
+lVgatop = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'VGA_Top.vhd'))
+oVgatop = vhdlFile.vhdlFile(lVgatop) 
+lPointer = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'Pointer.vhd'))
+oPointer = vhdlFile.vhdlFile(lPointer) 
+lFreqDiv = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'FreqDiv.vhd'))
+oFreqDiv = vhdlFile.vhdlFile(lFreqDiv) 
+lSynchronizer = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'Synchronizer.vhd'))
+oSynchronizer = vhdlFile.vhdlFile(lSynchronizer) 
+lFrameBuffer =  utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'FrameBuffer2.vhd'))
+oFrameBuffer =  vhdlFile.vhdlFile(lFrameBuffer) 
 
 class testCodeExample(unittest.TestCase):
 

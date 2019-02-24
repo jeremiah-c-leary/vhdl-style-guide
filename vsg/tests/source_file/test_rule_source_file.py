@@ -4,9 +4,11 @@ sys.path.append('vsg')
 
 from vsg.rules import source_file
 from vsg import vhdlFile
+from vsg.tests import utils
 
 # Read in test file used for all tests
-oFile = vhdlFile.vhdlFile('no_file.vhd')
+lFile = utils.read_vhdlfile('no_file.vhd')
+oFile = vhdlFile.vhdlFile(lFile) 
 
 class testRuleSignalMethods(unittest.TestCase):
 
