@@ -77,7 +77,7 @@ class vhdlFile():
                     classify.while_loop(dVars, oLine)
     
                     classify.if_statement(dVars, oLine)
-    
+
                     classify.case(self, dVars, oLine)
                     classify.function(dVars, oLine)
                     classify.procedure(dVars, oLine)

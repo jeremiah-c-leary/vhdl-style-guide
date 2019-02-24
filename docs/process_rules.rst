@@ -376,6 +376,7 @@ process_018
 ###########
  
 This rule checks the **end process** line has a label.
+The closing label will be added if the opening process label exists.
 
 **Violation**
 

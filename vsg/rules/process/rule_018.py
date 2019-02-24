@@ -1,6 +1,5 @@
 
 from vsg import rule
-from vsg import fix
 
 import re
 
@@ -27,11 +26,11 @@ class rule_018(rule.rule):
         labelStack = ''
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isProcessKeyword:
-                iProcStartLine  = iLineNumber
-                oMatch          = re.match('^\s*(\S+)\s*:\s*process', oLine.lineLower)
+                iProcStartLine = iLineNumber
+                oMatch = re.match('^\s*(\S+)\s*:\s*process', oLine.lineLower)
                 if oMatch:
-                    iProcLabelLine  = iLineNumber 
-                    labelStack      = oMatch.group(1)
+                    iProcLabelLine = iLineNumber 
+                    labelStack = oMatch.group(1)
             if oLine.isEndProcess:
                 if not re.match('^\s*\S+\s+\S+\s+\S+', oLine.line):
                     self.add_violation(iLineNumber)
