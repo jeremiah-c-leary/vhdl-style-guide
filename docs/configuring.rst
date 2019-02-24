@@ -33,6 +33,8 @@ file_list
 
 The file_list is a list of files that will be analyzed.
 Environment variables will expanded.
+File globbing is also supported.
+The Environment variables will be exanded before globbing occurs.
 This option can be useful when running VSG over multiple files.
 
 local_rules

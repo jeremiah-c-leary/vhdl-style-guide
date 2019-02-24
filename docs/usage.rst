@@ -187,7 +187,8 @@ This reduces the amount of external scripting required.
        "file_list":[
          "fifo.vhd",
          "source/spi.vhd",
-         "$PATH_TO_FILE/spi_master.vhd"
+         "$PATH_TO_FILE/spi_master.vhd",
+         "$OTHER_PATH/src/*.vhd"
        ]
    }
 

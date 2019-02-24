@@ -6,6 +6,7 @@ import sys
 import os
 import json
 import shutil
+import glob
 
 from . import rule_list
 from . import vhdlFile
@@ -97,12 +98,12 @@ def write_junit_xml_file(oJunitFile):
 
 def update_command_line_arguments(commandLineArguments, configuration):
     if configuration:
-        if 'file_list' in configuration and not commandLineArguments.filename:
+        if 'file_list' in configuration:
             for sFilename in configuration['file_list']:
                 try:
-                    commandLineArguments.filename.append(expand_filename(sFilename))
+                    commandLineArguments.filename.extend(glob.glob(expand_filename(sFilename)))
                 except:
-                    commandLineArguments.filename = [expand_filename(sFilename)]
+                    commandLineArguments.filename = glob.glob(expand_filename(sFilename))
         if 'local_rules' in configuration:
             commandLineArguments.local_rules = expand_filename(configuration['local_rules'])
 
