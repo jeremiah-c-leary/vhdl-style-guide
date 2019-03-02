@@ -9,7 +9,7 @@ def readme():
 
 setup(
   name='vsg',
-  version='0.31',
+  version='0.32',
   description='VHDL Style Guide',
   long_description=readme(),
   classifiers=[
@@ -32,7 +32,7 @@ setup(
   zip_safe=False,
   test_suite='nose.collector',
   tests_require=['nose'],
-  keywords=['vhdl', 'style', 'beautify'],
+  keywords=['vhdl', 'style', 'beautify', 'guide'],
   entry_points={
     'console_scripts': [
       'vsg = vsg.__main__:main'
