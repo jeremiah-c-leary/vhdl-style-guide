@@ -15,7 +15,7 @@ class rule_005(rule.rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isGenerateKeyword:
+            if oLine.isGenerateLabel:
                 lLine = oLine.line.split(':')
                 if not lLine[0] == lLine[0].upper():
                     self.add_violation(iLineNumber)

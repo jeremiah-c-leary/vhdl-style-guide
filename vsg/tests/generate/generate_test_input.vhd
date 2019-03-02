@@ -99,4 +99,10 @@ END GENERATE generate_1;
 
   end generate generate_1;
 
+  --- This tests multiline generate
+
+  GENERATE_1 :
+    if (i = 0) generate
+    end generate GENERATE_1;
+
 end architecture ARCH;

@@ -8,4 +8,4 @@ class rule_004(line_above_rule):
     '''
 
     def __init__(self):
-        line_above_rule.__init__(self, 'generate', '004', 'isGenerateKeyword')
+        line_above_rule.__init__(self, 'generate', '004', 'isGenerateLabel')

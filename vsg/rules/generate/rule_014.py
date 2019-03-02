@@ -15,7 +15,7 @@ class rule_014(rule.rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isGenerateKeyword and not re.match('^\s*\w+\s*:\s\w+', oLine.line):
+            if oLine.isGenerateKeyword and oLine.isGenerateLabel and not re.match('^\s*\w+\s*:\s\w+', oLine.line):
                 self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):

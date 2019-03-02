@@ -124,6 +124,7 @@ class line():
         self.isGenerateBegin = False
         self.isGenerateKeyword = False
         self.isGenerateEnd = False
+        self.isGenerateLabel = False
         # Function attributes
         self.insideFunction = False
         self.insideFunctionDeclarative = False

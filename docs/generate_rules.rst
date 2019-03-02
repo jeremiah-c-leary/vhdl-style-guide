@@ -263,3 +263,22 @@ This rule checks for a single space between the : and the **for** keyword.
 
    RAM_ARRAY : for i in 0 to 7 generate
    RAM_ARRAY : for i in 0 to 7 generate
+
+generate_015
+############
+
+This rule checks the generate label and the **generate** keyword are on the same line.
+Keeping the label and generate on the same line reduces excessive indenting.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   RAM_ARRAY :
+     for i in 0 to 7 generate
+
+**Fix**
+
+.. code-block:: vhdl
+
+   RAM_ARRAY : for i in 0 to 7 generate
