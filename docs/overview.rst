@@ -3,10 +3,13 @@ Overview
 
 VHDL Style Guide (VSG) provides coding style guide enforcement for VHDL code.
 
+Why VSG?
+########
+
 VSG was created after participating in a code review.
-A real issue in the code was masked by a coding style issue.
 A finding was created for the style issue, while the real issue was missed.
 When the code was re-reviewed, the real issue was discovered.
+A real issue in the code was masked by a coding style issue.
 
 Depending on your process, style issues can take a lot of time to resolve.
 
@@ -15,21 +18,19 @@ Depending on your process, style issues can take a lot of time to resolve.
 3. Fix
 4. Verify fix
 
-Spending less time on style issues leaves more time to analyze the substance of the code.
-This ultimately reduces the amount of time performing code reviews.
-It also allows reviewers to focus on the substance of the code.
-This will result in a higher quality code base.
+Spending less time on style issues leaves more time to analyze code structure.
+Eliminating style issues reduces the amount of time performing code reviews.
+This results in a higher quality code base.
 
 Key Benefits
 ############
 
-* Define VHDL coding standards
+* Explicityly define VHDL coding standards
 * Makes coding standards visible to everyone
 * Improve code reviews
 * Quickly bring code up to current standards
 
-VSG allows the style of the code to be defined and enforced over the entire code base.
-When this is not desireable, configurations allow for coding standards over different parts of the code base.
+VSG allows the style of the code to be defined and enforced over portions or the entire code base.
 
 Key Features
 ############

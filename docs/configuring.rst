@@ -42,7 +42,7 @@ local_rules
 -----------
 
 Local rules can be defined on the command line or in a configuration file.
-If they are defined in both locations, the configuration will have precedence.
+If they are defined in both locations, the configuration will take precedence.
 
 rule
 ----
@@ -52,10 +52,10 @@ Using **global** will set the attribute for every rule.
 Each rule is addressable by using it's unique **ruleId** and **ruleNumber** combination.
 
 .. NOTE::
-   If **global** and unique attributes are set at the same time, the unique attribute will take precedent.
+   If **global** and unique attributes are set at the same time, the unique attribute will take precedence.
 
 
-Here are a list of attributes that can be altered:
+Here are a list of attributes that can be altered for each rule:
 
 +-------------+---------+--------------------------------------------------+
 | Attribute   | Values  | Description                                      |
@@ -68,6 +68,8 @@ Here are a list of attributes that can be altered:
 +-------------+---------+--------------------------------------------------+
 | fixable     | Boolean | If set to False, the violation will not be fixed |
 +-------------+---------+--------------------------------------------------+
+
+.. NOTE:: Some rules have additional attributes.  These will be noted in the rule description.
 
 Example:  Disabling a rule
 ##########################

@@ -8,10 +8,10 @@ The command line tool can be invoked with:
 
     $ vsg
     usage: VHDL Style Guide (VSG) [-h] [-f FILENAME [FILENAME ...]]
-                                  [--local_rules LOCAL_RULES]
-                                  [--configuration CONFIGURATION] [--fix]
-                                  [--fix_phase FIX_PHASE] [--junit JUNIT]
-                                  [--output_format {vsg,syntastic}] [--backup]
+                                  [-lr LOCAL_RULES]
+                                  [-c CONFIGURATION [CONFIGURATION ...]] [--fix]
+                                  [-fp FIX_PHASE] [-j JUNIT] [-of {vsg,syntastic}]
+                                  [-b]
     
     Analyzes VHDL files for style guide violations. Reference documentation is
     located at: http://vhdl-style-guide.readthedocs.io/en/latest/index.html
@@ -20,54 +20,55 @@ The command line tool can be invoked with:
       -h, --help            show this help message and exit
       -f FILENAME [FILENAME ...], --filename FILENAME [FILENAME ...]
                             File to analyze
-      --local_rules LOCAL_RULES
+      -lr LOCAL_RULES, --local_rules LOCAL_RULES
                             Path to local rules
-      --configuration CONFIGURATION
-                            JSON configuration file
+      -c CONFIGURATION [CONFIGURATION ...], --configuration CONFIGURATION [CONFIGURATION ...]
+                            JSON configuration file(s)
       --fix                 Fix issues found
-      --fix_phase FIX_PHASE
+      -fp FIX_PHASE, --fix_phase FIX_PHASE
                             Fix issues up to and including this phase
-      --junit JUNIT         Extract Junit file
-      --output_format {vsg,syntastic}
+      -j JUNIT, --junit JUNIT
+                            Extract Junit file
+      -of {vsg,syntastic}, --output_format {vsg,syntastic}
                             Sets the output format.
-      --backup              Creates copy of input file for comparison with fixed
+      -b, --backup          Creates copy of input file for comparison with fixed
                             version.
 
 
 **Command Line Options**
 
-+-------------------------------+----------------------------------------------+
-| Option                        |  Description                                 |
-+===============================+==============================================+
-| -f FILENAME                   | The VHDL file to be analyzed or fixed.       |
-|                               | Multiple files can be passed through this    |
-|                               | option.                                      |
-+-------------------------------+----------------------------------------------+
-| --local_rules LOCAL_RULES     | Additional rules not in the base set.        |
-+-------------------------------+----------------------------------------------+
-| --configuration CONFIGURATION | JSON file which alters the behavior of VSG.  |
-|                               | Configuration can also include a list of     |
-|                               | files to analyze.                            |
-|                               | Multiple configurations can be given.        |
-+-------------------------------+----------------------------------------------+
-| --fix                         | Update issues found.                         |
-|                               | Replaces current file with updated one.      |
-+-------------------------------+----------------------------------------------+
-| --fix_phase                   | Applies for all phases up to and including   |
-|                               | this phase.  Analysis will then be performed |
-|                               | on all phases.                               |
-+-------------------------------+----------------------------------------------+
-| --junit                       | Filename of JUnit XML file to generate.      |
-+-------------------------------+----------------------------------------------+
-| --output_format               | Configures the sdout output format.          |
-|                               |   vsg -- standard VSG output                 |
-|                               |   syntastic -- format compatible with the    |
-|                               |   syntastic VIM module                       |
-+-------------------------------+----------------------------------------------+
-| --backup                      | Creates a copy of the input file before      |
-|                               | applying any fixes.  This can be used to     |
-|                               | compare the fixed file against the original. |
-+-------------------------------+----------------------------------------------+
++-------------------------------+-------------------------------------------------+
+| Option                        |  Description                                    |
++===============================+=================================================+
+| -f FILENAME                   | The VHDL file to be analyzed or fixed.          |
+|                               | Multiple files can be passed through this       |
+|                               | option.                                         |
++-------------------------------+-------------------------------------------------+
+| --local_rules LOCAL_RULES     | Additional rules not in the base set.           |
++-------------------------------+-------------------------------------------------+
+| --configuration CONFIGURATION | JSON file(s) which alters the behavior of VSG.  |
+|                               | Configuration can also include a list of        |
+|                               | files to analyze.                               |
+|                               | Multiple configurations can be given.           |
++-------------------------------+-------------------------------------------------+
+| --fix                         | Update issues found.                            |
+|                               | Replaces current file with updated one.         |
++-------------------------------+-------------------------------------------------+
+| --fix_phase                   | Applies for all phases up to and including      |
+|                               | this phase.  Analysis will then be performed    |
+|                               | on all phases.                                  |
++-------------------------------+-------------------------------------------------+
+| --junit                       | Filename of JUnit XML file to generate.         |
++-------------------------------+-------------------------------------------------+
+| --output_format               | Configures the sdout output format.             |
+|                               |   vsg -- standard VSG output                    |
+|                               |   syntastic -- format compatible with the       |
+|                               |   syntastic VIM module                          |
++-------------------------------+-------------------------------------------------+
+| --backup                      | Creates a copy of the input file before         |
+|                               | applying any fixes.  This can be used to        |
+|                               | compare the fixed file against the original.    |
++-------------------------------+-------------------------------------------------+
 
 
 Here is an example output running against a test file:
@@ -105,14 +106,14 @@ Here is an example output running against a test file:
    Total Rules Checked: 204
    Total Failures:      523
 
-VSG will report the rule which is violated the line number or group of lines where the violation occured.
+VSG will report the rule which is violated and the line number or group of lines where the violation occured.
 It also gives a suggestion on how to fix the violation.
 The rules VSG uses are grouped together into :doc:`phases`.
 These phases follow the order in which the user would take to address the violations.
 Each rule is detailed in the :doc:`rules` section.
 The violation and the appropriate fix for each rule is shown.
 
-The violations can be fixed manually, or you can use the **--fix** option to have VSG update the file.
+The violations can be fixed manually, or use the **--fix** option to have VSG update the file.
 
 .. code-block:: bash
 
@@ -166,14 +167,14 @@ This can be useful in two situations:
   2)  Multilevel rule configurations
 
 The priority of the configurations is from right to left.
-So the last configuration in the option has the highest priority.
+The last configuration has the highest priority.
 This is true for all configuration parameters except **file_list**.
 
 Block level configurations
 ##########################
 
 Many code bases are large enough to be broken into multiple sub blocks.
-Typically, a single configuration is created and maintained for each subblock.
+A single configuration can be created and maintained for each subblock.
 This allows each subblock to be analyzed independently.
 
 When the entire code base needs be analyzed, all the subblock configurations can be passed to VSG.
@@ -215,7 +216,7 @@ Multilevel rule configurations
 ##############################
 
 Some code bases may require rule adjustments that apply to all the files along with rule adjustments against individual files.
-Multiple configurations can seperate the two concerns.
+Use multiple configurations to accomplish this.
 One configuration can handle code base wide adjustments.
 A second configuration can target individual files.
 VSG will combine any number of configurations to provide a unique set of rules for any file.

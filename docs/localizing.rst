@@ -5,12 +5,12 @@ VSG supports customization to your coding style standards by allowing localized 
 These rules are stored in a directory with an __init__.py file and one or more python files.
 The files should follow the same structure and naming convention as the rules found in the vsg/rules directory.
 
-The localized rules will be used when the **--local_rules** command line argument is given or the **local_rules** option in a configuration file.
+The localized rules will be used when the **--local_rules** command line argument is given or using the **local_rules** option in a configuration file.
 
 Example: Create rule to check for entity and architectures in the same file.
 ----------------------------------------------------------------------------
 
-Let's suppose in our orginization the entity and architecture should be split into seperate files.
+Let's suppose in our organization the entity and architecture should be split into separate files.
 This rule is not in the base rule set, but we can add it through localization.
 For this example, we will be setting up the localized rules in your home directory.
 
@@ -76,7 +76,7 @@ Now we need to add the **analyze** method to perform the check.
 
 The built in variables in the vsg.line class can be used to build rules.
 There are helper functions in :doc:`vsg.utilities`, :doc:`vsg.check`, and :doc:`vsg.fix` also.
-In this case, the vsg.vhdlFile class has two attributes(hasEntity and hasArchitecture) that are exactly what we need.
+In this case, the vsg.vhdlFile class has two attributes (**hasEntity** and **hasArchitecture**) that are exactly what we need.
 We are ready to write the body of the **analyze** method:
 
 .. code-block:: python
