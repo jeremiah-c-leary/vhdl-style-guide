@@ -188,8 +188,10 @@ class testFixRuleArchitectureMethods(unittest.TestCase):
 
     def test_fix_rule_024(self):
         oRule = architecture.rule_024()
-        dExpected = [13,77]
+        dExpected = []
         oRule.fix(self.oFile)
-        oRule.analyze(oFileRule010)
+        oRule.analyze(self.oFile)
+        self.assertEqual(self.oFile.lines[13].line, 'end Architecture ARCH;')
+        self.assertEqual(self.oFile.lines[77].line, 'end ARCH;')
         self.assertEqual(oRule.violations, dExpected)
 

@@ -261,4 +261,4 @@ begin
   yIntDel     <= tmp11(SIG_WIDTH * 2 - 1 downto SIG_WIDTH * 1);
   wIntDel     <= tmp11(SIG_WIDTH * 1 - 1 downto SIG_WIDTH * 0);
 
-end architecture;
+end architecture SYNTH;
