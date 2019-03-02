@@ -85,5 +85,18 @@ END GENERATE generate_1;
     a <= b;
   end generate GENERATE_1;
 
+  GENERATE_1 : if (i = 0) generate
+
+    GENERATE_2 : if (j = 10) generate
+
+      -- generate <- this should not be counted as a generate keyword
+
+      GENERATE_3 : if (k = 5) generate
+        a <= b;
+      end generate generate_3;
+
+    end generate generate_2;
+
+  end generate generate_1;
 
 end architecture ARCH;
