@@ -11,7 +11,6 @@ import glob
 from . import rule_list
 from . import vhdlFile
 from . import junit
-from . import line
 
 
 def parse_command_line_arguments():

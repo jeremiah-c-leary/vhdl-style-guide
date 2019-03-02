@@ -7,22 +7,22 @@ from vsg import rule_list
 from vsg.tests import utils
 
 lTimestamp = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'timestamp.vhdl'))
-oTimestamp = vhdlFile.vhdlFile(lTimestamp) 
+oTimestamp = vhdlFile.vhdlFile(lTimestamp)
 
 lSpiSlave = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'spi_slave.vhd'))
-oSpiSlave = vhdlFile.vhdlFile(lSpiSlave) 
+oSpiSlave = vhdlFile.vhdlFile(lSpiSlave)
 
 lSpiMaster = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'spi_master.vhd'))
-oSpiMaster = vhdlFile.vhdlFile(lSpiMaster) 
+oSpiMaster = vhdlFile.vhdlFile(lSpiMaster)
 
 lGrpDebouncer = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'grp_debouncer.vhd'))
-oGrpDebouncer = vhdlFile.vhdlFile(lGrpDebouncer) 
+oGrpDebouncer = vhdlFile.vhdlFile(lGrpDebouncer)
 
 lPIC = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'PIC.vhd'))
-oPIC = vhdlFile.vhdlFile(lPIC) 
+oPIC = vhdlFile.vhdlFile(lPIC)
 
 lIdentifier = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','process','identifier_alignment_input.vhd'))
-oIdentifier = vhdlFile.vhdlFile(lIdentifier) 
+oIdentifier = vhdlFile.vhdlFile(lIdentifier)
 
 class testVhdlFileMethods(unittest.TestCase):
 

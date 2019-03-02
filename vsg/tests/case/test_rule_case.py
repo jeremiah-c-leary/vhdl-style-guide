@@ -11,7 +11,7 @@ lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','case','
 oFile = vhdlFile.vhdlFile(lFile)
 
 lFileSequential = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','case','case_sequential_test_input.vhd'))
-oFileSequential = vhdlFile.vhdlFile(lFileSequential) 
+oFileSequential = vhdlFile.vhdlFile(lFileSequential)
 
 class testRuleCaseMethods(unittest.TestCase):
 

@@ -7,11 +7,11 @@ from vsg import rule_list
 from vsg.tests import utils
 
 lBaudGen = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'BaudGen.vhd'))
-oBaudGen = vhdlFile.vhdlFile(lBaudGen) 
+oBaudGen = vhdlFile.vhdlFile(lBaudGen)
 lBoardCpu = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'Board_cpu.vhd'))
-oBoardCpu = vhdlFile.vhdlFile(lBoardCpu) 
+oBoardCpu = vhdlFile.vhdlFile(lBoardCpu)
 lDataCore = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'data_core.vhd'))
-oDataCore = vhdlFile.vhdlFile(lDataCore) 
+oDataCore = vhdlFile.vhdlFile(lDataCore)
 
 
 class testCodeExample(unittest.TestCase):

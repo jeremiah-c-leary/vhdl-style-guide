@@ -1,8 +1,5 @@
 
 from vsg import rule
-from vsg import fix
-
-import re
 
 
 class rule_015(rule.rule):
