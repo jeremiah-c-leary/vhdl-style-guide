@@ -26,7 +26,7 @@ class rule_012(rule.rule):
                     if self.dFix[iLineNumber]['comma'] > 0 and not sChar == ' ':
                         iMaxSignalIndex = max(iMaxSignalIndex, iIndex + 1)
                         self.dFix[iLineNumber]['signal'] = iIndex + 1
-                        break;
+                        break
                     if sChar == ',':
                         self.dFix[iLineNumber]['comma'] = iIndex + 1
                         lIndexes.append(iLineNumber)

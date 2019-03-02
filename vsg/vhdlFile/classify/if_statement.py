@@ -20,7 +20,7 @@ def if_statement(dVars, oLine):
     if oLine.insideIf and 'then' in oLine.lineLower:
         oLine.isThenKeyword = True
     if (re.match('^\s*else', oLine.lineNoComment, re.IGNORECASE) or re.match('^.*[\s|;]else', oLine.lineNoComment, re.IGNORECASE)) and \
-        not oLine.insideWhen:
+       not oLine.insideWhen:
         oLine.isElseKeyword = True
         oLine.indentLevel = dVars['iCurrentIndentLevel'] - 1
     if re.match('^\s*end\s+if', oLine.lineNoComment, re.IGNORECASE) or re.match('^.*[\s|;]end\s+if', oLine.lineNoComment, re.IGNORECASE):

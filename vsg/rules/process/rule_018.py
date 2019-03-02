@@ -29,7 +29,7 @@ class rule_018(rule.rule):
                 iProcStartLine = iLineNumber
                 oMatch = re.match('^\s*(\S+)\s*:\s*process', oLine.lineLower)
                 if oMatch:
-                    iProcLabelLine = iLineNumber 
+                    iProcLabelLine = iLineNumber
                     labelStack = oMatch.group(1)
             if oLine.isEndProcess:
                 if not re.match('^\s*\S+\s+\S+\s+\S+', oLine.line):
@@ -37,4 +37,3 @@ class rule_018(rule.rule):
                 if labelStack and iProcStartLine == iProcLabelLine:
                     self.dFix['processLabel'][iLineNumber] = labelStack
                 labelStack = ''
-

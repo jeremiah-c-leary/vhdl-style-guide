@@ -187,15 +187,18 @@ def update_constant_attributes(oPreviousLine, oCurrentLine):
     if oPreviousLine.insideConstant and not oPreviousLine.isConstantEnd:
         oCurrentLine.insideConstant = True
 
+
 def update_block_attributes(oPreviousLine, oCurrentLine):
 
     if oPreviousLine.insideBlock and not oPreviousLine.isEndBlock:
         oCurrentLine.insideBlock = True
 
+
 def update_when_attributes(oPreviousLine, oCurrentLine):
 
     if oPreviousLine.insideWhen and not oPreviousLine.isWhenEnd:
         oCurrentLine.insideWhen = True
+
 
 def inside_attributes(dVars, oPreviousLine, oCurrentLine):
 

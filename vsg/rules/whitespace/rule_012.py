@@ -31,5 +31,5 @@ class rule_012(rule.rule):
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:
-            for iIndex in range (0, self.dFix['violations'][iLineNumber]):
+            for iIndex in range(0, self.dFix['violations'][iLineNumber]):
                 oFile.lines.pop(iLineNumber)

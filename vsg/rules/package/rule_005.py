@@ -20,9 +20,7 @@ class rule_005(rule.rule):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isPackageKeyword:
                 lLine = oLine.lineLower.split()
-                if len(lLine) < 3:
-                    self.add_violation(iLineNumber)
-                elif not lLine[2] == "is":
+                if len(lLine) < 3 or not lLine[2] == "is":
                     self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):

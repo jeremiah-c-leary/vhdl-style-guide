@@ -257,7 +257,7 @@ def reclassify_line(oFile, iLineNumber):
         oFile.lines[iLineNumber + 1].isSequentialEnd = True
         oFile.lines[iLineNumber + 1].isSequential = True
 
-    if not '--' in oFile.lines[iLineNumber].line:
+    if '--' not in oFile.lines[iLineNumber].line:
         oFile.lines[iLineNumber].hasComment = False
         oFile.lines[iLineNumber].hasInlineComment = False
         oFile.lines[iLineNumber].commentColumn = None
