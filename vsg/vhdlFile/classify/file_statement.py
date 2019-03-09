@@ -12,7 +12,7 @@ def file_statement(dVars, oLine):
 
 
 def classify_file_keyword(dVars, oLine):
-    if re.match('^\s*file', oLine.line, re.IGNORECASE):
+    if re.match('^\s*file\s', oLine.line, re.IGNORECASE):
         oLine.isFileKeyword = True
         oLine.insideFile = True
         oLine.indentLevel = dVars['iCurrentIndentLevel']
@@ -20,6 +20,6 @@ def classify_file_keyword(dVars, oLine):
 
 
 def classify_file_end(dVars, oLine):
-    if ';' in oLine.line:
+    if ';' in oLine.lineNoComment:
         oLine.isFileEnd = True
         dVars['iCurrentIndentLevel'] -= 1
