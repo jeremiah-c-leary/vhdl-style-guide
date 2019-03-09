@@ -16,10 +16,9 @@ class rule_004(rule.rule):
         self.solution = 'Change constant name to lowercase.'
         self.phase = 6
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isConstant:
-                check.is_lowercase(self, oLine.line.split()[1], iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isConstant:
+            check.is_lowercase(self, oLine.line.split()[1], iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

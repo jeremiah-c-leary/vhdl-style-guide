@@ -16,10 +16,9 @@ class rule_005(rule.rule):
         self.solution = 'Remove label on concurrent assignment.'
         self.phase = 1
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isConcurrentBegin and re.match('^\s*\w+\s*:\s*\w+\s*<=', oLine.line):
-                self.add_violation(iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isConcurrentBegin and re.match('^\s*\w+\s*:\s*\w+\s*<=', oLine.line):
+            self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

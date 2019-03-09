@@ -38,21 +38,21 @@ class keyword_alignment_rule(rule.rule):
         self.sStartGroupTrigger = None
         self.sEndGroupTrigger = None
 
-    def analyze(self, oFile):
-        lGroup = []
-        fGroupFound = False
-        iStartGroupIndex = None
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.__dict__[self.sStartGroupTrigger] and not fGroupFound:
-                fGroupFound = True
-                iStartGroupIndex = iLineNumber
-            if not oLine.__dict__[self.sEndGroupTrigger] and fGroupFound:
-                fGroupFound = False
-                concurrent_keyword_alignment(self, iStartGroupIndex, self.sKeyword, lGroup)
-                lGroup = []
-                iStartGroupIndex = None
-            if fGroupFound:
-                lGroup.append(oLine)
+        self.lGroup = []
+        self.fGroupFound = False
+        self.iStartGroupIndex = None
+
+    def _analyze(self, oFile, oLine, iLineNumber):
+            if oLine.__dict__[self.sStartGroupTrigger] and not self.fGroupFound:
+                self.fGroupFound = True
+                self.iStartGroupIndex = iLineNumber
+            if not oLine.__dict__[self.sEndGroupTrigger] and self.fGroupFound:
+                self.fGroupFound = False
+                concurrent_keyword_alignment(self, self.iStartGroupIndex, self.sKeyword, self.lGroup)
+                self.lGroup = []
+                self.iStartGroupIndex = None
+            if self.fGroupFound:
+                self.lGroup.append(oLine)
 
     def _fix_violations(self, oFile):
         fix.keyword_alignment(self, oFile)

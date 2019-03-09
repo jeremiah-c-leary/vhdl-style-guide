@@ -15,10 +15,9 @@ class rule_009(rule.rule):
         self.solution = 'Lowercase the "process" keyword.'
         self.phase = 6
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isEndProcess and not re.match('^\s*\w+\s+process', oLine.line):
-                self.add_violation(iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isEndProcess and not re.match('^\s*\w+\s+process', oLine.line):
+            self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

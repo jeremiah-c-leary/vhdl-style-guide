@@ -16,11 +16,10 @@ class architecture_case_rule(rule.rule):
         self.phase = 6
         self.iIndex = iIndex
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isArchitectureKeyword and re.match('^\s*\S+\s\s*\S+\s\s*of\s\s*\S+\s\s*is', oLine.lineLower):
-                lLine = oLine.line.split()
-                check.is_uppercase(self, lLine[self.iIndex], iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isArchitectureKeyword and re.match('^\s*\S+\s\s*\S+\s\s*of\s\s*\S+\s\s*is', oLine.lineLower):
+            lLine = oLine.line.split()
+            check.is_uppercase(self, lLine[self.iIndex], iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

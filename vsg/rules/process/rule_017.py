@@ -14,11 +14,10 @@ class rule_017(rule.rule):
         self.solution = 'Uppercase process label.'
         self.phase = 6
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isProcessLabel:
-                lLine = oLine.line.split(':')
-                check.is_uppercase(self, lLine[0], iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isProcessLabel:
+            lLine = oLine.line.split(':')
+            check.is_uppercase(self, lLine[0], iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

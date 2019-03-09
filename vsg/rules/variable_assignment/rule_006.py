@@ -11,7 +11,6 @@ class rule_006(rule.rule):
         self.phase = 1
         self.fixable = False  # User will have to decide how to handle the comments.
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.insideVariableAssignment and oLine.isComment:
-                self.add_violation(iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.insideVariableAssignment and oLine.isComment:
+            self.add_violation(iLineNumber)

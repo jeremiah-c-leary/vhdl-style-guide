@@ -13,7 +13,6 @@ class rule_007(rule.rule):
         self.phase = 1
         self.fixable = False  # Allow the user to decide if these should be removed
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isSignal and ':=' in oLine.line:
-                self.add_violation(iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isSignal and ':=' in oLine.line:
+            self.add_violation(iLineNumber)

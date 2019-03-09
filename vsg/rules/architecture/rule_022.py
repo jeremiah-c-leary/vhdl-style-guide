@@ -16,10 +16,9 @@ class rule_022(rule.rule):
         self.solution = 'Ensure a single space exists between "architecture" and the architecture name.'
         self.phase = 2
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isEndArchitecture and re.match('^\s*end\s+architecture\s+\w', oLine.lineLower):
-                check.is_single_space_after(self, 'architecture', oLine, iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isEndArchitecture and re.match('^\s*end\s+architecture\s+\w', oLine.lineLower):
+            check.is_single_space_after(self, 'architecture', oLine, iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

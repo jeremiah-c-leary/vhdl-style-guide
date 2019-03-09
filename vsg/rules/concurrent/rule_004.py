@@ -15,10 +15,9 @@ class rule_004(rule.rule):
         self.solution = 'Add a single space before the <=.'
         self.phase = 2
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isConcurrentBegin:
-                check.is_single_space_before_character(self, '<=', oLine, iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isConcurrentBegin:
+            check.is_single_space_before_character(self, '<=', oLine, iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

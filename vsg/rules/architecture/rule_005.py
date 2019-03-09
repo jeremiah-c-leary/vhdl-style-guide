@@ -15,7 +15,6 @@ class rule_005(rule.rule):
         self.phase = 1
         self.fixable = False  # There is an example of this for entity
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isArchitectureKeyword and not re.match('^\s*architecture\s+\w+\s+of', oLine.line, re.IGNORECASE):
-                self.add_violation(iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isArchitectureKeyword and not re.match('^\s*architecture\s+\w+\s+of', oLine.line, re.IGNORECASE):
+            self.add_violation(iLineNumber)

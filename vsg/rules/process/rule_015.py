@@ -13,12 +13,11 @@ class rule_015(rule.rule):
         self.solution = 'Add a space or a comment above the "process" keyword.'
         self.phase = 3
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isProcessKeyword and \
-               not oFile.lines[iLineNumber - 1].isBlank and \
-               not oFile.lines[iLineNumber - 1].isComment:
-                self.add_violation(iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isProcessKeyword and \
+           not oFile.lines[iLineNumber - 1].isBlank and \
+           not oFile.lines[iLineNumber - 1].isComment:
+            self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:

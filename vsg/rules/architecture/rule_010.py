@@ -16,11 +16,10 @@ class rule_010(rule.rule):
         self.solution = 'Add "architecture" keyword after "end" keyword.'
         self.phase = 1
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isEndArchitecture:
-                if not re.match('^\s*end\s+architecture', oLine.line, re.IGNORECASE):
-                    self.add_violation(iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isEndArchitecture:
+            if not re.match('^\s*end\s+architecture', oLine.line, re.IGNORECASE):
+                self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

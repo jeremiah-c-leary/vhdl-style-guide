@@ -17,12 +17,11 @@ class rule_002(rule.rule):
         self.solution = 'Remove extra spaces after architecture keyword.'
         self.phase = 2
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isArchitectureKeyword and \
-               len(oLine.line.split()) > 4 and \
-               not re.match('^\s*architecture\s\S+\sof\s\S+\sis', oLine.lineLower):
-                self.add_violation(iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isArchitectureKeyword and \
+           len(oLine.line.split()) > 4 and \
+           not re.match('^\s*architecture\s\S+\sof\s\S+\sis', oLine.lineLower):
+            self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

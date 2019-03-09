@@ -19,10 +19,9 @@ class rule_002(rule.rule):
                           keyword and the (.'
         self.phase = 2
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isProcessKeyword and re.match('^\s*.*process\s*\(', oLine.lineLower) and not re.match('^\s*.*process\s\(', oLine.lineLower):
-                self.add_violation(iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isProcessKeyword and re.match('^\s*.*process\s*\(', oLine.lineLower) and not re.match('^\s*.*process\s\(', oLine.lineLower):
+            self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

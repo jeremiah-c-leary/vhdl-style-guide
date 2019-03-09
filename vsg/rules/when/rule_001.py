@@ -14,11 +14,10 @@ class rule_001(rule.rule):
         rule.rule.__init__(self, 'when', '001')
         self.phase = 1
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.insideWhen:
-                if re.match('^\s*else', oLine.line, flags=re.IGNORECASE):
-                    self.add_violation(iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.insideWhen:
+            if re.match('^\s*else', oLine.line, flags=re.IGNORECASE):
+                self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

@@ -13,7 +13,6 @@ class rule_007(rule.rule):
         self.phase = 1
         self.fixable = False  # Too complicated at the moment to fix.
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isConstant and ':=' not in oLine.lineNoComment:
-                self.add_violation(iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isConstant and ':=' not in oLine.lineNoComment:
+            self.add_violation(iLineNumber)

@@ -14,7 +14,7 @@ class rule_008(rule.rule):
         self.phase = 7
         self.fixable = False  # The user will have to fix any desired prefixes.
 
-    def analyze(self, oFile):
+    def _analyze(self, oFile, oLine, iLineNumber):
         if not self.prefixes:
             return
         for iLineNumber, oLine in enumerate(oFile.lines):

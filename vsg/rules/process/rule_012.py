@@ -14,10 +14,9 @@ class rule_012(rule.rule):
         self.solution = 'Add "is" keyword after the closing parenthesis.'
         self.phase = 1
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isSensitivityListEnd and not re.match('^.*\)\s*is', oLine.lineLower):
-                self.add_violation(iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isSensitivityListEnd and not re.match('^.*\)\s*is', oLine.lineLower):
+            self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

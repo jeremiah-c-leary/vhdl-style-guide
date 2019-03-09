@@ -15,10 +15,9 @@ class rule_013(rule.rule):
         self.solution = 'Lowercase "is" keyword.'
         self.phase = 6
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isSensitivityListEnd and re.match('^.*\)\s*is', oLine.lineLower):
-                if not re.match('^.*\)\s*is', oLine.line):
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isSensitivityListEnd and re.match('^.*\)\s*is', oLine.lineLower):
+            if not re.match('^.*\)\s*is', oLine.line):
                     self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):

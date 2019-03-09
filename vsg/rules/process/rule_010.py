@@ -15,10 +15,9 @@ class rule_010(rule.rule):
         self.solution = 'Place "begin" keyword on seperate line.'
         self.phase = 1
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isProcessBegin and not re.match('^\s*begin', oLine.line, re.IGNORECASE):
-                self.add_violation(iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isProcessBegin and not re.match('^\s*begin', oLine.line, re.IGNORECASE):
+            self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:
