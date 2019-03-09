@@ -33,6 +33,9 @@ setup(
   test_suite='nose.collector',
   tests_require=['nose'],
   keywords=['vhdl', 'style', 'beautify', 'guide'],
+  install_requires[
+    'PyYAML'
+  ],
   entry_points={
     'console_scripts': [
       'vsg = vsg.__main__:main'
