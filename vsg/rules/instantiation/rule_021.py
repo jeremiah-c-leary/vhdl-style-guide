@@ -17,13 +17,12 @@ class rule_021(rule.rule):
         self.solution = 'Move multiple port assignments to their own lines.'
         self.phase = 1
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isInstantiationPortAssignment:
-                if re.match('^\s*\S+\s*=>\s*.*\s*,\s*\S+\s*=>', oLine.line):
-                    sTemp = re.match('(^\s*\S+\s*=>\s*.*\s*),\s*\S+\s*=>', oLine.line).group(0)
-                    if sTemp.count('(') == sTemp.count(')'):
-                        self.add_violation(iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isInstantiationPortAssignment:
+            if re.match('^\s*\S+\s*=>\s*.*\s*,\s*\S+\s*=>', oLine.line):
+                sTemp = re.match('(^\s*\S+\s*=>\s*.*\s*),\s*\S+\s*=>', oLine.line).group(0)
+                if sTemp.count('(') == sTemp.count(')'):
+                    self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:

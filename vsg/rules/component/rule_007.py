@@ -14,10 +14,9 @@ class rule_007(rule.rule):
         self.solution = 'Remove extra spaces before "is" keyword.'
         self.phase = 2
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isComponentDeclaration and len(oLine.line.split()) > 2:
-                check.is_single_space_before(self, 'is', oLine, iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isComponentDeclaration and len(oLine.line.split()) > 2:
+            check.is_single_space_before(self, 'is', oLine, iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

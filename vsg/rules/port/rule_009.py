@@ -18,10 +18,9 @@ class rule_009(rule.rule):
         self.solution = 'Change the number of spaces after the "inout" keyword to one space.'
         self.phase = 2
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isPortDeclaration and re.match('^\s*\S+\s*:\s*inout', oLine.lineLower):
-                check.is_single_space_after(self, 'inout', oLine, iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isPortDeclaration and re.match('^\s*\S+\s*:\s*inout', oLine.lineLower):
+            check.is_single_space_after(self, 'inout', oLine, iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

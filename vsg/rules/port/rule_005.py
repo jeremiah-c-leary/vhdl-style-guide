@@ -18,10 +18,9 @@ class rule_005(rule.rule):
         self.solution = 'Reduce number of spaces after the colon to 1.'
         self.phase = 2
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isPortDeclaration and re.match('^.*:\s*in', oLine.line, re.IGNORECASE):
-                check.is_single_space_after_character(self, ':', oLine, iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isPortDeclaration and re.match('^.*:\s*in', oLine.line, re.IGNORECASE):
+            check.is_single_space_after_character(self, ':', oLine, iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

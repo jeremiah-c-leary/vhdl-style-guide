@@ -16,10 +16,9 @@ class rule_029(rule.rule):
         self.solution = 'Use \'event for clocks.'
         self.phase = 1
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.insideProcess and re.match('^.*ing_edge\s*\(', oLine.lineLower):
-                self.add_violation(iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.insideProcess and re.match('^.*ing_edge\s*\(', oLine.lineLower):
+            self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

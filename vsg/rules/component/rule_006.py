@@ -15,11 +15,10 @@ class rule_006(rule.rule):
         self.solution = 'Change "is" keyword to lowercase.'
         self.phase = 6
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isComponentDeclaration and re.match('^\s*\S+\s+\S+\s\s*is', oLine.line, re.IGNORECASE):
-                if not re.match('^\s*\S+\s+\S+\s\s*is', oLine.line):
-                    self.add_violation(iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isComponentDeclaration and re.match('^\s*\S+\s+\S+\s\s*is', oLine.line, re.IGNORECASE):
+            if not re.match('^\s*\S+\s+\S+\s\s*is', oLine.line):
+                self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

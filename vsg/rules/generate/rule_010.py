@@ -15,10 +15,9 @@ class rule_010(rule.rule):
         self.solution = 'Lowercase the "generate" keyword.'
         self.phase = 6
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isGenerateEnd and not re.match('^\s*\w+\s+generate', oLine.line):
-                self.add_violation(iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isGenerateEnd and not re.match('^\s*\w+\s+generate', oLine.line):
+            self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

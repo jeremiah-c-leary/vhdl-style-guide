@@ -17,10 +17,9 @@ class rule_001(rule.rule):
         self.solution = 'Align comment with "use" keyword.'
         self.phase = 4
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isLibraryUse:
-                check.indent_of_comments_above(self, oFile, iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isLibraryUse:
+            check.indent_of_comments_above(self, oFile, iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

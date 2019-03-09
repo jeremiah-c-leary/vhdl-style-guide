@@ -17,10 +17,9 @@ class rule_014(rule.rule):
                          above the "end" keyword.'
         self.phase = 1
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isEndPortMap and not re.match('^\s*\)', oLine.line):
-                self.add_violation(iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isEndPortMap and not re.match('^\s*\)', oLine.line):
+            self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:

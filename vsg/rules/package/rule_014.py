@@ -13,9 +13,8 @@ class rule_014(rule.rule):
         self.phase = 1
         self.fixable = False  # User must add package name
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isPackageEnd:
-                lLine = oLine.lineLower.replace(';', '').split()
-                if len(lLine) < 3 and lLine[1] == 'package':
-                    self.add_violation(iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isPackageEnd:
+            lLine = oLine.lineLower.replace(';', '').split()
+            if len(lLine) < 3 and lLine[1] == 'package':
+                self.add_violation(iLineNumber)

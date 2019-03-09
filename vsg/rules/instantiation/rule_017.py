@@ -15,10 +15,9 @@ class rule_017(rule.rule):
         self.solution = 'Move generic assignment to it\'s own line.'
         self.phase = 1
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isInstantiationGenericAssignment and oLine.isInstantiationGenericKeyword:
-                self.add_violation(iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isInstantiationGenericAssignment and oLine.isInstantiationGenericKeyword:
+            self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:

@@ -17,8 +17,7 @@ class rule_030(rule.rule):
         self.phase = 1
         self.fixable = False
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.insideSensitivityList and not oLine.isSensitivityListEnd:
-                if oLine.lineNoComment.count(',') == 1 and not re.match('^.*,\s*\S+', oLine.lineNoComment):
-                    self.add_violation(iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.insideSensitivityList and not oLine.isSensitivityListEnd:
+            if oLine.lineNoComment.count(',') == 1 and not re.match('^.*,\s*\S+', oLine.lineNoComment):
+                self.add_violation(iLineNumber)

@@ -14,10 +14,9 @@ class rule_019(rule.rule):
         self.phase = 1
         self.solution = 'Remove label before "case" keyword'
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.hasCaseLabel:
-                self.add_violation(iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.hasCaseLabel:
+            self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

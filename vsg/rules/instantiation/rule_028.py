@@ -16,10 +16,9 @@ class rule_028(rule.rule):
         self.solution = 'Uppercase entity name.'
         self.phase = 6
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isDirectInstantiationDeclaration and not re.match('^\s*\w+\s*:\s*\w+\s+\w+\.[A-Z0-9_]+', oLine.line):
-                self.add_violation(iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isDirectInstantiationDeclaration and not re.match('^\s*\w+\s*:\s*\w+\s+\w+\.[A-Z0-9_]+', oLine.line):
+            self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:

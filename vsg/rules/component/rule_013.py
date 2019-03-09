@@ -17,10 +17,9 @@ class rule_013(rule.rule):
         self.solution = 'Reduce spaces after "component" keyword to one.'
         self.phase = 2
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isComponentEnd and len(oLine.line.split()) >= 3:
-                check.is_single_space_after(self, 'component', oLine, iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isComponentEnd and len(oLine.line.split()) >= 3:
+            check.is_single_space_after(self, 'component', oLine, iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

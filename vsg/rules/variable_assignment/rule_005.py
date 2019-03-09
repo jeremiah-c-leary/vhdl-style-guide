@@ -17,15 +17,14 @@ class rule_005(rule.rule):
         self.identifier = '005'
         self.solution = 'Inconsistent alignment of ":=" in group of lines.'
         self.phase = 5
+        self.dVars = create_dictionary()
 
-    def analyze(self, oFile):
-        dVars = create_dictionary()
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            check_for_start_of_group(dVars, oLine, iLineNumber)
-            if not oLine.insideVariableAssignment and dVars['fGroupFound']:
-                check.keyword_alignment(self, dVars['iStartGroupIndex'], ':=', dVars['lGroup'])
-                dVars = create_dictionary()
-            store_line_in_group(dVars, oLine)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        check_for_start_of_group(self.dVars, oLine, iLineNumber)
+        if not oLine.insideVariableAssignment and self.dVars['fGroupFound']:
+            check.keyword_alignment(self, self.dVars['iStartGroupIndex'], ':=', self.dVars['lGroup'])
+            self.dVars = create_dictionary()
+        store_line_in_group(self.dVars, oLine)
 
     def _fix_violations(self, oFile):
         fix.keyword_alignment(self, oFile)

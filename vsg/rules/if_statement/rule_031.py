@@ -14,10 +14,9 @@ class rule_031(rule.rule):
         self.phase = 3
         self.solution = 'Add a blank line before the "if"'
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isFirstIf:
-                check.is_blank_line_before(self, oFile, iLineNumber, 'isComment')
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isFirstIf:
+            check.is_blank_line_before(self, oFile, iLineNumber, 'isComment')
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:

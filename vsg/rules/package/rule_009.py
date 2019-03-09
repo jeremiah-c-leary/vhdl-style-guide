@@ -15,12 +15,11 @@ class rule_009(rule.rule):
         self.solution = 'Single space between "end" and "package" keywords and component name.'
         self.phase = 2
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isPackageEnd:
-                check_spaces_between_end_and_package_and_name(self, oLine, iLineNumber)
-                check_spaces_between_end_and_package(self, oLine, iLineNumber)
-                check_spaces_between_end_and_name(self, oLine, iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isPackageEnd:
+            check_spaces_between_end_and_package_and_name(self, oLine, iLineNumber)
+            check_spaces_between_end_and_package(self, oLine, iLineNumber)
+            check_spaces_between_end_and_name(self, oLine, iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

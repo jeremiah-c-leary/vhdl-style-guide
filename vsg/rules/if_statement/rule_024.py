@@ -17,10 +17,9 @@ class rule_024(rule.rule):
         self.solution = 'Move code after "then" keyword to the next line.'
         self.phase = 1
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isThenKeyword and re.match('^.*[\s|)]then\s+\w', oLine.line, re.IGNORECASE):
-                self.add_violation(iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isThenKeyword and re.match('^.*[\s|)]then\s+\w', oLine.line, re.IGNORECASE):
+            self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:

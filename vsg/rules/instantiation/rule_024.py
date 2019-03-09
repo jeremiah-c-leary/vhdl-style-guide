@@ -15,12 +15,11 @@ class rule_024(rule.rule):
         self.phase = 1
         self.fixable = False  # This requires the user to map the ports and generics
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.insideInstantiation:
-                if ',' in oLine.lineNoComment:
-                    lLine = oLine.lineNoComment.split(',')
-                    for sString in lLine[:-1]:
-                        if '=>' not in sString:
-                            self.add_violation(iLineNumber)
-                            break
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.insideInstantiation:
+            if ',' in oLine.lineNoComment:
+                lLine = oLine.lineNoComment.split(',')
+                for sString in lLine[:-1]:
+                    if '=>' not in sString:
+                        self.add_violation(iLineNumber)
+                        break

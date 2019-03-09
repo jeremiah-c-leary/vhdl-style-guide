@@ -16,15 +16,14 @@ class rule_010(rule.rule):
         self.solution = 'Change variable type to lowercase.'
         self.phase = 6
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isVariable:
-                if re.match('^\s*variable\s+.*:\s*\w', oLine.lineLower):
-                    sLine = oLine.line.split(':')[1].lstrip().rstrip().replace(';', '')
-                    if '(' in sLine:
-                        check.is_lowercase(self, sLine.split('(')[0], iLineNumber)
-                    else:
-                        check.is_lowercase(self, sLine, iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isVariable:
+            if re.match('^\s*variable\s+.*:\s*\w', oLine.lineLower):
+                sLine = oLine.line.split(':')[1].lstrip().rstrip().replace(';', '')
+                if '(' in sLine:
+                    check.is_lowercase(self, sLine.split('(')[0], iLineNumber)
+                else:
+                    check.is_lowercase(self, sLine, iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

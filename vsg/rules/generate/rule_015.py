@@ -11,7 +11,6 @@ class rule_015(rule.rule):
         self.phase = 1
         self.fixable = False
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isGenerateLabel and not oLine.isGenerateKeyword:
-                self.add_violation(iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isGenerateLabel and not oLine.isGenerateKeyword:
+            self.add_violation(iLineNumber)

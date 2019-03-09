@@ -16,10 +16,9 @@ class rule_007(rule.rule):
         self.solution = 'End of package follows this format: end package <package name>.'
         self.phase = 1
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isPackageEnd and not re.match('^\s*end\s+package', oLine.lineLower):
-                self.add_violation(iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isPackageEnd and not re.match('^\s*end\s+package', oLine.lineLower):
+            self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

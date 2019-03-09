@@ -12,7 +12,6 @@ class rule_001(rule.rule):
         self.fixable = False
         self.phase = 1
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isWithKeyword:
-                self.add_violation(iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isWithKeyword:
+            self.add_violation(iLineNumber)

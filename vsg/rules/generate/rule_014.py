@@ -13,10 +13,9 @@ class rule_014(rule.rule):
         self.solution = 'Ensure a single space exists before the colon.'
         self.phase = 2
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isGenerateKeyword and oLine.isGenerateLabel and not re.match('^\s*\w+\s*:\s\w+', oLine.line):
-                self.add_violation(iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isGenerateKeyword and oLine.isGenerateLabel and not re.match('^\s*\w+\s*:\s\w+', oLine.line):
+            self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

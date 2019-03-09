@@ -16,12 +16,11 @@ class rule_005(rule.rule):
         self.solution = 'Ensure "is" keyword is on the same line as the "package" keyword.'
         self.phase = 1
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isPackageKeyword:
-                lLine = oLine.lineLower.split()
-                if len(lLine) < 3 or not lLine[2] == "is":
-                    self.add_violation(iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isPackageKeyword:
+            lLine = oLine.lineLower.split()
+            if len(lLine) < 3 or not lLine[2] == "is":
+                self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

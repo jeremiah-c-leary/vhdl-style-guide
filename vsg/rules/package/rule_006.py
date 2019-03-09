@@ -17,11 +17,10 @@ class rule_006(rule.rule):
         self.solution = 'Ensure "end" and "package" keywords are lower case.'
         self.phase = 6
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isPackageEnd and re.match('^\s*end\s+package', oLine.lineLower):
-                if not re.match('^\s*end\s+package', oLine.line):
-                    self.add_violation(iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isPackageEnd and re.match('^\s*end\s+package', oLine.lineLower):
+            if not re.match('^\s*end\s+package', oLine.line):
+                self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

@@ -16,10 +16,9 @@ class rule_003(rule.rule):
         self.solution = 'Add blank line above entity keyword.'
         self.phase = 3
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isEntityDeclaration:
-                check.is_blank_line_before(self, oFile, iLineNumber, None)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isEntityDeclaration:
+            check.is_blank_line_before(self, oFile, iLineNumber, None)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:

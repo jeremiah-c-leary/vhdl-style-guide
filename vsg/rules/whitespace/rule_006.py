@@ -14,11 +14,10 @@ class rule_006(rule.rule):
         self.phase = 2
         self.solution = 'Remove spaces before close ).'
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            sLine = oLine.lineNoComment
-            if re.match('^.*\s+\)', sLine) and not re.match('^\s+\)', sLine):
-                self.add_violation(iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        sLine = oLine.lineNoComment
+        if re.match('^.*\s+\)', sLine) and not re.match('^\s+\)', sLine):
+            self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

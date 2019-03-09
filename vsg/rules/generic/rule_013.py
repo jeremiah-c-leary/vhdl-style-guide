@@ -13,10 +13,9 @@ class rule_013(rule.rule):
         self.solution = 'Move generic declaration to it\'s own line.'
         self.phase = 1
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isGenericDeclaration and oLine.isGenericKeyword:
-                self.add_violation(iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isGenericDeclaration and oLine.isGenericKeyword:
+            self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:

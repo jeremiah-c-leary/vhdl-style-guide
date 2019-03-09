@@ -15,10 +15,9 @@ class rule_021(rule.rule):
         self.solution = 'Move the ( to the same line as the "port" keyword.'
         self.phase = 2
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isPortKeyword and '(' not in oLine.lineNoComment:
-                self.add_violation(iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isPortKeyword and '(' not in oLine.lineNoComment:
+            self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:

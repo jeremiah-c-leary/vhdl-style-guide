@@ -17,11 +17,10 @@ class rule_022(rule.rule):
         self.solution = 'Only a single space after => operator.'
         self.phase = 2
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isInstantiationPortAssignment and not oLine.isInstantiationPortKeyword:
-                if not re.match('^.*=>\s\S+', oLine.line):
-                    self.add_violation(iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isInstantiationPortAssignment and not oLine.isInstantiationPortKeyword:
+            if not re.match('^.*=>\s\S+', oLine.line):
+                self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

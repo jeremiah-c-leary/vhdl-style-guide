@@ -14,11 +14,10 @@ class rule_023(rule.rule):
         self.phase = 1
         self.fixable = False
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isPortDeclaration:
-                sLine = oLine.line.split(':')[1]
-                if '(' in sLine:
-                    sLine = sLine.split('(')[0]
-                if not utilities.is_port_mode(sLine.split()[0]):
-                    self.add_violation(iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isPortDeclaration:
+            sLine = oLine.line.split(':')[1]
+            if '(' in sLine:
+                sLine = sLine.split('(')[0]
+            if not utilities.is_port_mode(sLine.split()[0]):
+                self.add_violation(iLineNumber)

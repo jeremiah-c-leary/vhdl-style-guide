@@ -17,13 +17,12 @@ class rule_002(rule.rule):
         self.solution = 'Remove extra spaces between keywords.'
         self.phase = 2
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isPackageKeyword:
-                if len(oLine.line.split()) > 2:
-                    if re.match('^\s*package\s+\S+\s+is', oLine.lineLower):
-                        if not re.match('^\s*package\s\S+\sis', oLine.lineLower):
-                            self.add_violation(iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isPackageKeyword:
+            if len(oLine.line.split()) > 2:
+                if re.match('^\s*package\s+\S+\s+is', oLine.lineLower):
+                    if not re.match('^\s*package\s\S+\sis', oLine.lineLower):
+                        self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

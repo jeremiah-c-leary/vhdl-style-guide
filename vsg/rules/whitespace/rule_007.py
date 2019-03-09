@@ -12,10 +12,9 @@ class rule_007(rule.rule):
         self.phase = 2
         self.solution = 'Add a space after the comma.'
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if re.match('^.*,\S', oLine.line) and not re.match('^.*--.*,\S', oLine.line):
-                self.add_violation(iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if re.match('^.*,\S', oLine.line) and not re.match('^.*--.*,\S', oLine.line):
+            self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

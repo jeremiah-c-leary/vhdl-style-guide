@@ -15,10 +15,9 @@ class rule_020(rule.rule):
         self.solution = 'Move "end if" keyword to it\'s own line.'
         self.phase = 1
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isEndIfKeyword and not re.match('^\s*end\s+if', oLine.lineLower):
-                self.add_violation(iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isEndIfKeyword and not re.match('^\s*end\s+if', oLine.lineLower):
+            self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:

@@ -14,12 +14,11 @@ class rule_012(rule.rule):
         self.solution = 'Uppercase component name.'
         self.phase = 6
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isComponentEnd:
-                lLine = oLine.line.split()
-                if len(lLine) > 2:
-                    check.is_uppercase(self, lLine[2], iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isComponentEnd:
+            lLine = oLine.line.split()
+            if len(lLine) > 2:
+                check.is_uppercase(self, lLine[2], iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

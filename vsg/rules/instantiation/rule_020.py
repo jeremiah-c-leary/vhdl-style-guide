@@ -15,10 +15,9 @@ class rule_020(rule.rule):
         self.solution = 'Move port assignment to it\'s own line.'
         self.phase = 1
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isInstantiationPortAssignment and oLine.isInstantiationPortKeyword:
-                self.add_violation(iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isInstantiationPortAssignment and oLine.isInstantiationPortKeyword:
+            self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:

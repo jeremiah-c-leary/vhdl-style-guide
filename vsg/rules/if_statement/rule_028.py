@@ -14,11 +14,10 @@ class rule_028(rule.rule):
         self.phase = 6
         self.solution = 'lowercase "end if" keywords.'
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isEndIfKeyword and re.match('^\s*end\s+if', oLine.line, re.IGNORECASE):
-                if not re.match('^\s*end\s+if', oLine.line):
-                    self.add_violation(iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isEndIfKeyword and re.match('^\s*end\s+if', oLine.line, re.IGNORECASE):
+            if not re.match('^\s*end\s+if', oLine.line):
+                self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

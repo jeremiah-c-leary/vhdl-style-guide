@@ -17,7 +17,6 @@ class rule_012(rule.rule):
     def analyze(self, oFile):
         iMaxSignalIndex = 0
         lIndexes = []
-        del self.dFix['violations']
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isSignal and re.match('^\s*signal\s+\S+,\s*\S+\s*:', oLine.line, flags=re.IGNORECASE):
                 self.dFix[iLineNumber] = {}

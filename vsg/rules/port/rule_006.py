@@ -16,10 +16,9 @@ class rule_006(rule.rule):
         self.solution = 'Change number of spaces after : to a single space.'
         self.phase = 2
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isPortDeclaration and re.match('^.*:\s*out', oLine.line, re.IGNORECASE):
-                check.is_single_space_after_character(self, ':', oLine, iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isPortDeclaration and re.match('^.*:\s*out', oLine.line, re.IGNORECASE):
+            check.is_single_space_after_character(self, ':', oLine, iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

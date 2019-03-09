@@ -16,11 +16,10 @@ class rule_009(rule.rule):
         self.solution = 'Change entity name to all uppercase.'
         self.phase = 6
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isInstantiationDeclaration:
-                sName = oLine.line.split(':')[1].lstrip().split()[0]
-                check.is_uppercase(self, sName, iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isInstantiationDeclaration:
+            sName = oLine.line.split(':')[1].lstrip().split()[0]
+            check.is_uppercase(self, sName, iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

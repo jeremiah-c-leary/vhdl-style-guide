@@ -15,11 +15,10 @@ class rule_009(rule.rule):
         self.solution = 'Move enumerated type to it\'s own line.'
         self.phase = 1
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isTypeEnumeratedKeyword and not oLine.isTypeEnumeratedEnd:
-                if re.match('^.*\sis\s*\(\s*\w', oLine.lineLower):
-                    self.add_violation(iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isTypeEnumeratedKeyword and not oLine.isTypeEnumeratedEnd:
+            if re.match('^.*\sis\s*\(\s*\w', oLine.lineLower):
+                self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:

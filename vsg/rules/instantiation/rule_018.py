@@ -16,10 +16,9 @@ class rule_018(rule.rule):
         self.solution = 'Ensure a single space exists between "map" and (.'
         self.phase = 2
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isInstantiationGenericKeyword or oLine.isInstantiationPortKeyword:
-                check.is_single_space_after(self, 'map', oLine, iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isInstantiationGenericKeyword or oLine.isInstantiationPortKeyword:
+            check.is_single_space_after(self, 'map', oLine, iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

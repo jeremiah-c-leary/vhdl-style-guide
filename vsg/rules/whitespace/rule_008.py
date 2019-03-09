@@ -14,10 +14,9 @@ class rule_008(rule.rule):
         self.phase = 2
         self.solution = 'Remove spaces after "std_logic_vector".'
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if re.match('^.*std_logic_vector\s+\(', oLine.line, re.IGNORECASE):
-                self.add_violation(iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if re.match('^.*std_logic_vector\s+\(', oLine.line, re.IGNORECASE):
+            self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

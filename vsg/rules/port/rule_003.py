@@ -16,10 +16,9 @@ class rule_003(rule.rule):
         self.solution = 'Change spacing between "port" and "(" to one space.'
         self.phase = 2
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isPortKeyword and '(' in oLine.line:
-                check.is_single_space_after(self, 'port', oLine, iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isPortKeyword and '(' in oLine.line:
+            check.is_single_space_after(self, 'port', oLine, iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

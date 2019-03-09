@@ -12,10 +12,9 @@ class rule_001(rule.rule):
         self.phase = 2
         self.solution = 'Remove trailing whitespace.'
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.line.endswith(' '):
-                self.add_violation(iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.line.endswith(' '):
+            self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

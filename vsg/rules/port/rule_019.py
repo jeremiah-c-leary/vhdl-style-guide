@@ -14,11 +14,10 @@ class rule_019(rule.rule):
         self.solution = 'Change port direction to lowercase.'
         self.phase = 6
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isPortDeclaration:
-                sLine = oLine.line.split(':')[1]
-                check.is_lowercase(self, sLine.split()[0], iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isPortDeclaration:
+            sLine = oLine.line.split(':')[1]
+            check.is_lowercase(self, sLine.split()[0], iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

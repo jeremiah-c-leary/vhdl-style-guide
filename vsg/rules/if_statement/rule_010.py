@@ -12,10 +12,9 @@ class rule_010(rule.rule):
         self.solution = 'Remove blank line(s) before the "else" keyword.'
         self.phase = 3
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isElseKeyword and not oLine.isIfKeyword:
-                check.is_no_blank_line_before(self, oFile, iLineNumber, 'isEndCaseKeyword')
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isElseKeyword and not oLine.isIfKeyword:
+            check.is_no_blank_line_before(self, oFile, iLineNumber, 'isEndCaseKeyword')
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:

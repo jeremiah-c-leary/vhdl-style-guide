@@ -16,10 +16,9 @@ class rule_015(rule.rule):
         self.solution = 'Add "component" keyword'
         self.phase = 1
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isComponentEnd and not re.match('^\s*end\s+component', oLine.line, re.IGNORECASE):
-                self.add_violation(iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isComponentEnd and not re.match('^\s*end\s+component', oLine.line, re.IGNORECASE):
+            self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

@@ -14,10 +14,9 @@ class rule_020(rule.rule):
         self.phase = 1
         self.solution = 'Remove label after the "end case" keywords'
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.hasEndCaseLabel:
-                self.add_violation(iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.hasEndCaseLabel:
+            self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

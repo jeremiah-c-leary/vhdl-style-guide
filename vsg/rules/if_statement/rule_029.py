@@ -14,10 +14,9 @@ class rule_029(rule.rule):
         self.phase = 6
         self.solution = 'lowercase "then" keyword.'
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isThenKeyword and not oLine.lineNoComment.find('then') > 0:
-                self.add_violation(iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isThenKeyword and not oLine.lineNoComment.find('then') > 0:
+            self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

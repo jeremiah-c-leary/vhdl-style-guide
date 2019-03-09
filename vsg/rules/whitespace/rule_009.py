@@ -14,11 +14,10 @@ class rule_009(rule.rule):
         self.phase = 2
         self.solution = 'Add space before concat operator.'
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            sLine = oLine.lineNoComment
-            if re.match('^.*\w+&', sLine):
-                self.add_violation(iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        sLine = oLine.lineNoComment
+        if re.match('^.*\w+&', sLine):
+            self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

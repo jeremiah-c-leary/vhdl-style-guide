@@ -13,7 +13,6 @@ class rule_012(rule.rule):
         self.phase = 1
         self.fixable = False  # Allow user to fix the default assignments
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.isPortDeclaration and ':=' in oLine.line:
-                self.add_violation(iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isPortDeclaration and ':=' in oLine.line:
+            self.add_violation(iLineNumber)
