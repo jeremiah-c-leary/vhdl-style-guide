@@ -41,13 +41,12 @@ class lower_case_rule(rule.rule):
         self.sTrigger = sTrigger
         self.sWord = sWord
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.__dict__[self.sTrigger]:
-                lLine = oLine.lineNoComment.split()
-                for sCurrentWord in lLine:
-                    if self.sWord == utilities.strip_semicolon_from_word(sCurrentWord.lower()):
-                        check.is_lowercase(self, sCurrentWord, iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.__dict__[self.sTrigger]:
+            lLine = oLine.lineNoComment.split()
+            for sCurrentWord in lLine:
+                if self.sWord == utilities.strip_semicolon_from_word(sCurrentWord.lower()):
+                    check.is_lowercase(self, sCurrentWord, iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

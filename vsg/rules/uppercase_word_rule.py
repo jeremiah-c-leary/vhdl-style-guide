@@ -32,11 +32,10 @@ class uppercase_word_rule(rule.rule):
         self.sTrigger = sTrigger
         self.iIndex = iIndex
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.__dict__[self.sTrigger]:
-                sWord = utilities.remove_parenthesis_from_word(oLine.line.split()[self.iIndex])
-                check.is_uppercase(self, sWord, iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.__dict__[self.sTrigger]:
+            sWord = utilities.remove_parenthesis_from_word(oLine.line.split()[self.iIndex])
+            check.is_uppercase(self, sWord, iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

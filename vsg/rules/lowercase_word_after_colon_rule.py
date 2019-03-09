@@ -36,17 +36,16 @@ class lowercase_word_after_colon_rule(rule.rule):
         self.dVars = {}
         self.bVhdlKeyword = bVhdlKeyword
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.__dict__[self.sTrigger] and re.match('^.*:\s*\w', oLine.lineLower):
-                sLine = oLine.line.split(':')[1].lstrip().split()[0].split('(')[0]
-                if self.bVhdlKeyword:
-                    if utilities.is_vhdl_keyword(sLine):
-                        self.dVars[iLineNumber] = sLine
-                        check.is_lowercase(self, sLine, iLineNumber)
-                else:
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.__dict__[self.sTrigger] and re.match('^.*:\s*\w', oLine.lineLower):
+            sLine = oLine.line.split(':')[1].lstrip().split()[0].split('(')[0]
+            if self.bVhdlKeyword:
+                if utilities.is_vhdl_keyword(sLine):
                     self.dVars[iLineNumber] = sLine
                     check.is_lowercase(self, sLine, iLineNumber)
+            else:
+                self.dVars[iLineNumber] = sLine
+                check.is_lowercase(self, sLine, iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

@@ -29,10 +29,9 @@ class line_above_rule(rule.rule):
         self.condition = sTrigger
         self.sUnless = sUnless
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.__dict__[self.condition]:
-                check.is_blank_line_before(self, oFile, iLineNumber, self.sUnless)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.__dict__[self.condition]:
+            check.is_blank_line_before(self, oFile, iLineNumber, self.sUnless)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:

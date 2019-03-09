@@ -17,10 +17,9 @@ class single_space_before_rule(rule.rule):
         self.solution = None
         self.fWholeWord = fWholeWord
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.__dict__[self.sTrigger]:
-                check.is_single_space_before(self, self.sWord, oLine, iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.__dict__[self.sTrigger]:
+            check.is_single_space_before(self, self.sWord, oLine, iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

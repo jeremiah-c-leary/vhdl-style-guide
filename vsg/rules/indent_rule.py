@@ -31,13 +31,12 @@ class indent_rule(rule.rule):
         self.sTrigger = sTrigger
         self.sUnless = sUnless
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if self.sUnless:
-                if oLine.__dict__[self.sTrigger] and not oLine.__dict__[self.sUnless]:
-                    check.indent(self, oLine, iLineNumber)
-            elif oLine.__dict__[self.sTrigger]:
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if self.sUnless:
+            if oLine.__dict__[self.sTrigger] and not oLine.__dict__[self.sUnless]:
                 check.indent(self, oLine, iLineNumber)
+        elif oLine.__dict__[self.sTrigger]:
+            check.indent(self, oLine, iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

@@ -69,6 +69,10 @@ class rule():
         if lineNumber not in self.violations:
             self.violations.append(lineNumber)
 
+    def analyze(self, oFile):
+        for iLineNumber, oLine in enumerate(oFile.lines):
+            self._analyze(oFile, oLine, iLineNumber)
+
     def _configure_global_rule_attributes(self, dConfiguration):
         try:
             for sAttributeName in dConfiguration['rule']['global']:

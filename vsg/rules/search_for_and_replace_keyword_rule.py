@@ -18,10 +18,9 @@ class search_for_and_replace_keyword_rule(rule.rule):
         self.sTrigger = None
         self.sKeyword2 = None
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.__dict__[self.sTrigger] and self.sKeyword not in oLine.lineNoComment:
-                self.add_violation(iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.__dict__[self.sTrigger] and self.sKeyword not in oLine.lineNoComment:
+            self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:

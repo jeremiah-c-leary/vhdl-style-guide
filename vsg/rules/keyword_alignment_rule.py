@@ -43,29 +43,29 @@ class keyword_alignment_rule(rule.rule):
         self.sEndGroupTrigger = None
         self.sLineTrigger = None
 
-    def analyze(self, oFile):
-        lGroup = []
-        fGroupFound = False
-        iStartGroupIndex = None
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.__dict__[self.sStartGroupTrigger] and not fGroupFound:
-                fGroupFound = True
-                iStartGroupIndex = iLineNumber
-            if oLine.__dict__[self.sEndGroupTrigger] and fGroupFound:
-                lGroup.append(oLine)
-                fGroupFound = False
-                check.keyword_alignment(self, iStartGroupIndex, self.sKeyword, lGroup)
-                lGroup = []
-                iStartGroupIndex = None
-            if fGroupFound:
-                if isinstance(self.sLineTrigger, list):
-                    for sTrigger in self.sLineTrigger:
-                        if oLine.__dict__[sTrigger]:
-                            lGroup.append(oLine)
-                elif oLine.__dict__[self.sLineTrigger]:
-                    lGroup.append(oLine)
-                else:
-                    lGroup.append(line.line('Removed line'))
+        self.lGroup = []
+        self.fGroupFound = False
+        self.iStartGroupIndex = None
+
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.__dict__[self.sStartGroupTrigger] and not self.fGroupFound:
+            self.fGroupFound = True
+            self.iStartGroupIndex = iLineNumber
+        if oLine.__dict__[self.sEndGroupTrigger] and self.fGroupFound:
+            self.lGroup.append(oLine)
+            self.fGroupFound = False
+            check.keyword_alignment(self, self.iStartGroupIndex, self.sKeyword, self.lGroup)
+            self.lGroup = []
+            self.iStartGroupIndex = None
+        if self.fGroupFound:
+            if isinstance(self.sLineTrigger, list):
+                for sTrigger in self.sLineTrigger:
+                    if oLine.__dict__[sTrigger]:
+                        lGroup.append(oLine)
+            elif oLine.__dict__[self.sLineTrigger]:
+                self.lGroup.append(oLine)
+            else:
+                self.lGroup.append(line.line('Removed line'))
 
     def _fix_violations(self, oFile):
         fix.keyword_alignment(self, oFile)

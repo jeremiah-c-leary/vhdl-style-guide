@@ -31,10 +31,9 @@ class lowercase_word_rule(rule.rule):
         self.sTrigger = sTrigger
         self.iIndex = iIndex
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if oLine.__dict__[self.sTrigger]:
-                check.is_lowercase(self, oLine.line.split()[self.iIndex], iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.__dict__[self.sTrigger]:
+            check.is_lowercase(self, oLine.line.split()[self.iIndex], iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
