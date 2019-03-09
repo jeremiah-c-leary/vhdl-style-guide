@@ -1,0 +1,5 @@
+---
+# Include a file to be processed
+file_list:
+    - vsg/tests/vsg/entity2.vhd
+...

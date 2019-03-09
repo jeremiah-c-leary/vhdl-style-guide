@@ -1,0 +1,4 @@
+---
+file_list:
+  - vsg/tests/vsg/*.vhd
+...
