@@ -37,4 +37,5 @@ The rules are divided into catagories depending on the part of the VHDL code bei
    while_loop_rules.rst
    whitespace_rules.rst
    wait_rules.rst
+   when_rules.rst
    with_rules.rst

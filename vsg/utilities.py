@@ -329,3 +329,22 @@ def is_port_mode(sWord):
         return True
     else:
         return False
+
+
+def end_of_line_index(oLine):
+    '''
+    Finds the end of the code on a line ignoring comments.
+    Returns the index of the last code character.
+
+    Parameters:
+
+      oLine: (line object)
+
+    Returns: (integer)
+    '''
+
+    sLine = remove_comment(oLine.line).replace('--', '')
+    for iIndex, sChar in enumerate(sLine[::-1]):
+        if not sChar == ' ':
+            return len(sLine) - iIndex
+         
