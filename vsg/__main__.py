@@ -25,7 +25,7 @@ def parse_command_line_arguments():
 
     parser.add_argument('-f', '--filename', nargs='+', help='File to analyze')
     parser.add_argument('-lr', '--local_rules', help='Path to local rules')
-    parser.add_argument('-c', '--configuration', nargs='+', help='JSON configuration file(s)')
+    parser.add_argument('-c', '--configuration', nargs='+', help='JSON or YAML configuration file(s)')
     parser.add_argument('--fix', default=False, action='store_true', help='Fix issues found')
     parser.add_argument('-fp', '--fix_phase', default=10, action='store', help='Fix issues up to and including this phase')
     parser.add_argument('-j', '--junit', action='store', help='Extract Junit file')

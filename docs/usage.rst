@@ -23,7 +23,7 @@ The command line tool can be invoked with:
       -lr LOCAL_RULES, --local_rules LOCAL_RULES
                             Path to local rules
       -c CONFIGURATION [CONFIGURATION ...], --configuration CONFIGURATION [CONFIGURATION ...]
-                            JSON configuration file(s)
+                            JSON or YAML configuration file(s)
       --fix                 Fix issues found
       -fp FIX_PHASE, --fix_phase FIX_PHASE
                             Fix issues up to and including this phase
@@ -46,10 +46,11 @@ The command line tool can be invoked with:
 +-------------------------------+-------------------------------------------------+
 | --local_rules LOCAL_RULES     | Additional rules not in the base set.           |
 +-------------------------------+-------------------------------------------------+
-| --configuration CONFIGURATION | JSON file(s) which alters the behavior of VSG.  |
-|                               | Configuration can also include a list of        |
-|                               | files to analyze.                               |
-|                               | Multiple configurations can be given.           |
+| --configuration CONFIGURATION | JSON or YAML file(s) which alters the behavior  |
+|                               | of VSG.  Configuration can also include a list  |
+|                               | files to analyze.  Any combination of JSON and  |
+|                               | YAML files can be passed.  Each will be         |
+|                               | processed in order from left to right.          |
 +-------------------------------+-------------------------------------------------+
 | --fix                         | Update issues found.                            |
 |                               | Replaces current file with updated one.         |

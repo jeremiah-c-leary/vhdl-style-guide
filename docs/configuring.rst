@@ -2,8 +2,8 @@ Configuring
 ===========
 
 VSG can use a configuration file to alter it's behavior or include a list of files to analyze.
-This is accomplished by passing a JSON file through the **--configuration** command line argument.
-This is the basic form of a configuration file: 
+This is accomplished by passing JSON and/or YAML file(s) through the **--configuration** command line argument.
+This is the basic form of a configuration file in JSON: 
 
 .. code-block:: json
 
@@ -25,9 +25,30 @@ This is the basic form of a configuration file:
        }
    }
 
+This is the basic form of a configuration file in YAML:
+
+.. code-block:: yaml
+
+   ---
+   file_list:[
+     - fifo.vhd
+     - source/spi.vhd
+     - $PATH_TO_FILE/spi_master.vhd
+     - $OTHER_PATH/src/*.vhd
+   local_rules: $DIRECTORY_PATH
+   rule:
+     global:
+       attributeName: AttributeValue
+       ruleId_ruleNumber:
+         attributeName: AttributeValue
+   ...
+
+
 It is not required to have **file_list**, **local_rules**, and **rule** defined in the configuration file.
 Any combination can be defined.
 The order does not matter either.
+
+.. NOTE:: All examples of configurations in this documentation use JSON.  However, YAML can be used instead.
 
 file_list
 ---------
