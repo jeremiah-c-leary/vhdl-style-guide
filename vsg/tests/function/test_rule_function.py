@@ -8,9 +8,9 @@ from vsg.tests import utils
 
 # Read in test file used for all tests
 lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'function_test_input.vhd'))
-oFile = vhdlFile.vhdlFile(lFile) 
+oFile = vhdlFile.vhdlFile(lFile)
 lFileMultiple = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'function_multiple_parameters_test_input.vhd'))
-oFileMultiple = vhdlFile.vhdlFile(lFileMultiple) 
+oFileMultiple = vhdlFile.vhdlFile(lFileMultiple)
 
 
 class testRuleFunctionMethods(unittest.TestCase):

@@ -7,9 +7,9 @@ from vsg.tests import utils
 
 # Read in test file used for all tests
 lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'process_test_input.vhd'))
-oFile = vhdlFile.vhdlFile(lFile) 
+oFile = vhdlFile.vhdlFile(lFile)
 lFileEvent = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'process_event_test_input.vhd'))
-oFileEvent = vhdlFile.vhdlFile(lFileEvent) 
+oFileEvent = vhdlFile.vhdlFile(lFileEvent)
 
 
 class testFixRuleProcessMethods(unittest.TestCase):

@@ -8,7 +8,7 @@ from vsg.tests import utils
 
 # Read in test file used for all tests
 lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','wait','wait_test_input.vhd'))
-oFile = vhdlFile.vhdlFile(lFile) 
+oFile = vhdlFile.vhdlFile(lFile)
 
 class testRuleProcessMethods(unittest.TestCase):
 

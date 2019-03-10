@@ -12,7 +12,7 @@ class testFixRuleConstantMethods(unittest.TestCase):
 
         # Read in test file used for all tests
         self.lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'constant_test_input.vhd'))
-        self.oFile = vhdlFile.vhdlFile(self.lFile) 
+        self.oFile = vhdlFile.vhdlFile(self.lFile)
 
 
     def test_fix_rule_001(self):

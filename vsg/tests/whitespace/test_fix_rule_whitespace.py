@@ -21,7 +21,7 @@ class testFixRuleWhitespaceMethods(unittest.TestCase):
         self.assertEqual(oRule.identifier, '001')
 
         lFile = utils.read_vhdlfile(sFileName)
-        oFile = vhdlFile.vhdlFile(lFile) 
+        oFile = vhdlFile.vhdlFile(lFile)
 
         dExpected = []
         oFile.lines.append(line.line('  This is a test of ending whitespace'))
@@ -40,7 +40,7 @@ class testFixRuleWhitespaceMethods(unittest.TestCase):
         self.assertEqual(oRule.identifier, '002')
 
         lFile = utils.read_vhdlfile(sFileName)
-        oFile = vhdlFile.vhdlFile(lFile) 
+        oFile = vhdlFile.vhdlFile(lFile)
 
         dExpected = []
         oFile.lines.append(line.line('  This is a test of tabs\t'))
@@ -60,7 +60,7 @@ class testFixRuleWhitespaceMethods(unittest.TestCase):
         self.assertEqual(oRule.identifier, '003')
 
         lFile = utils.read_vhdlfile(sFileName)
-        oFile = vhdlFile.vhdlFile(lFile) 
+        oFile = vhdlFile.vhdlFile(lFile)
 
         dExpected = []
         oFile.lines.append(line.line('  This is a test of tabs;'))
@@ -80,7 +80,7 @@ class testFixRuleWhitespaceMethods(unittest.TestCase):
         self.assertEqual(oRule.identifier, '004')
 
         lFile = utils.read_vhdlfile(sFileName)
-        oFile = vhdlFile.vhdlFile(lFile) 
+        oFile = vhdlFile.vhdlFile(lFile)
 
         dExpected = []
         oFile.lines.append(line.line('  This is a test of commas,'))
@@ -102,7 +102,7 @@ class testFixRuleWhitespaceMethods(unittest.TestCase):
         self.assertEqual(oRule.identifier, '007')
 
         lFile = utils.read_vhdlfile(sFileName)
-        oFile = vhdlFile.vhdlFile(lFile) 
+        oFile = vhdlFile.vhdlFile(lFile)
 
         dExpected = []
         oFile.lines.append(line.line('  This is a test,of commas (failure )'))
@@ -121,7 +121,7 @@ class testFixRuleWhitespaceMethods(unittest.TestCase):
         self.assertEqual(oRule.identifier, '008')
 
         lFile = utils.read_vhdlfile(sFileName)
-        oFile = vhdlFile.vhdlFile(lFile) 
+        oFile = vhdlFile.vhdlFile(lFile)
 
         dExpected = []
         oFile.lines.append(line.line('A  std_logic_vector (7 downto 0)'))
@@ -138,7 +138,7 @@ class testFixRuleWhitespaceMethods(unittest.TestCase):
         oRule = whitespace.rule_009()
 
         lFile = utils.read_vhdlfile(sFileName)
-        oFile = vhdlFile.vhdlFile(lFile) 
+        oFile = vhdlFile.vhdlFile(lFile)
 
         dExpected = []
         oFile.lines.append(line.line('  a <= b& c -- this is an& comment'))
@@ -157,7 +157,7 @@ class testFixRuleWhitespaceMethods(unittest.TestCase):
         oRule = whitespace.rule_010()
 
         lFile = utils.read_vhdlfile(sFileName)
-        oFile = vhdlFile.vhdlFile(lFile) 
+        oFile = vhdlFile.vhdlFile(lFile)
 
         dExpected = []
         oFile.lines.append(line.line('  a <= b &c -- this is an &comment'))
@@ -178,7 +178,7 @@ class testFixRuleWhitespaceMethods(unittest.TestCase):
         oRule = whitespace.rule_011()
 
         lFile = utils.read_vhdlfile(sFileName)
-        oFile = vhdlFile.vhdlFile(lFile) 
+        oFile = vhdlFile.vhdlFile(lFile)
 
         dExpected = []
         oFile.lines.append(line.line('  a <= b+ c'))   #1
@@ -242,7 +242,7 @@ class testFixRuleWhitespaceMethods(unittest.TestCase):
         self.assertTrue(oRule)
 
         lFile = utils.read_vhdlfile(sFileName)
-        oFile = vhdlFile.vhdlFile(lFile) 
+        oFile = vhdlFile.vhdlFile(lFile)
 
         dExpected = []
         oFile.lines.append(line.line('  a <= b;'))   #1

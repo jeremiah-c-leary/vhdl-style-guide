@@ -14,7 +14,7 @@ class testCheckFunctions(unittest.TestCase):
 
     def test_is_no_blank_line_after(self):
         lFile = utils.read_vhdlfile(sFileName)
-        oFile = vhdlFile.vhdlFile(lFile) 
+        oFile = vhdlFile.vhdlFile(lFile)
         oFile.lines.append(line.line('Simple line'))
         oFile.lines.append(line.blank_line())
 

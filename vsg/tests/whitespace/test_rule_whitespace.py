@@ -13,7 +13,7 @@ class testRuleWhitespaceMethods(unittest.TestCase):
 
     def setUp(self):
         self.lFile = utils.read_vhdlfile(sFileName)
-        self.oFile = vhdlFile.vhdlFile(self.lFile) 
+        self.oFile = vhdlFile.vhdlFile(self.lFile)
 
     def test_001(self):
         oRule = whitespace.rule_001()

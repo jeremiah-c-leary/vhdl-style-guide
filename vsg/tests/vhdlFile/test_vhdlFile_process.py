@@ -6,10 +6,10 @@ from vsg.tests import utils
 
 sFileLibraryName = os.path.join(os.path.dirname(__file__),'..','library','library_test_input.vhd')
 lFileLibrary = utils.read_vhdlfile(sFileLibraryName)
-oFileLibrary = vhdlFile.vhdlFile(lFileLibrary) 
+oFileLibrary = vhdlFile.vhdlFile(lFileLibrary)
 
 lFileProcess = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','process','process_test_input.vhd'))
-oFileProcess = vhdlFile.vhdlFile(lFileProcess) 
+oFileProcess = vhdlFile.vhdlFile(lFileProcess)
 
 class testVhdlFileMethods(unittest.TestCase):
 

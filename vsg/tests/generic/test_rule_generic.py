@@ -8,11 +8,11 @@ from vsg.tests import utils
 
 
 lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'generic_test_input.vhd'))
-oFile = vhdlFile.vhdlFile(lFile) 
+oFile = vhdlFile.vhdlFile(lFile)
 lFileMultiple = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'generic_multiple_on_one_line_test_input.vhd'))
-oFileMultiple = vhdlFile.vhdlFile(lFileMultiple) 
+oFileMultiple = vhdlFile.vhdlFile(lFileMultiple)
 lFileComponent = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'generic_component_test_input.vhd'))
-oFileComponent = vhdlFile.vhdlFile(lFileComponent) 
+oFileComponent = vhdlFile.vhdlFile(lFileComponent)
 
 class testRuleGenericMethods(unittest.TestCase):
 

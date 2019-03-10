@@ -5,13 +5,13 @@ from vsg import vhdlFile
 from vsg.tests import utils
 
 lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','instantiation','instantiation_test_input.vhd'))
-oFile = vhdlFile.vhdlFile(lFile) 
+oFile = vhdlFile.vhdlFile(lFile)
 lFileGeneric = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','instantiation','instantiation_generic_test_input.vhd'))
-oFileGeneric = vhdlFile.vhdlFile(lFileGeneric) 
+oFileGeneric = vhdlFile.vhdlFile(lFileGeneric)
 lFileGenerate = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','instantiation','instantiation_generate_test_input.vhd'))
-oFileGenerate = vhdlFile.vhdlFile(lFileGenerate) 
+oFileGenerate = vhdlFile.vhdlFile(lFileGenerate)
 lFileDirect = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','instantiation','instantiation_direct_test_input.vhd'))
-oFileDirect = vhdlFile.vhdlFile(lFileDirect) 
+oFileDirect = vhdlFile.vhdlFile(lFileDirect)
 
 class testVhdlFileInstantiationAssignments(unittest.TestCase):
 

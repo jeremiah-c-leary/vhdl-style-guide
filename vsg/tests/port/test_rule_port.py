@@ -8,7 +8,7 @@ from vsg.tests import utils
 
 
 lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','port','port_test_input.vhd'))
-oFile = vhdlFile.vhdlFile(lFile) 
+oFile = vhdlFile.vhdlFile(lFile)
 
 
 class testRulePortMethods(unittest.TestCase):

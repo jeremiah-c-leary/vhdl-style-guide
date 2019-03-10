@@ -7,10 +7,10 @@ from vsg.tests import utils
 
 # Read in test file used for all tests
 lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','case','case_test_input.vhd'))
-oFile = vhdlFile.vhdlFile(lFile) 
+oFile = vhdlFile.vhdlFile(lFile)
 
 lFileSequential = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','case','case_sequential_test_input.vhd'))
-oFileSequential = vhdlFile.vhdlFile(lFileSequential) 
+oFileSequential = vhdlFile.vhdlFile(lFileSequential)
 
 class testFixRuleCaseMethods(unittest.TestCase):
 

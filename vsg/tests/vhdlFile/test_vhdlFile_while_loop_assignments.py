@@ -5,7 +5,7 @@ from vsg import vhdlFile
 from vsg.tests import utils
 
 lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','while_loop','while_loop_test_input.vhd'))
-oFile = vhdlFile.vhdlFile(lFile) 
+oFile = vhdlFile.vhdlFile(lFile)
 
 class testVhdlFileWhileLoopAssignments(unittest.TestCase):
 

@@ -7,11 +7,11 @@ from vsg import vhdlFile
 from vsg.tests import utils
 
 lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','instantiation','instantiation_test_input.vhd'))
-oFile = vhdlFile.vhdlFile(lFile) 
+oFile = vhdlFile.vhdlFile(lFile)
 lFileComment = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'instantiation_comment_test_input.vhd'))
-oFileComment = vhdlFile.vhdlFile(lFileComment) 
+oFileComment = vhdlFile.vhdlFile(lFileComment)
 lFileDirect = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'instantiation_direct_test_input.vhd'))
-oFileDirect = vhdlFile.vhdlFile(lFileDirect) 
+oFileDirect = vhdlFile.vhdlFile(lFileDirect)
 
 class testFixRuleInstantiationMethods(unittest.TestCase):
 
@@ -144,7 +144,7 @@ class testFixRuleInstantiationMethods(unittest.TestCase):
     def test_fix_rule_029(self):
         oRule = instantiation.rule_029()
         lFileComment = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'instantiation_comment_test_input.vhd'))
-        oFileComment = vhdlFile.vhdlFile(lFileComment) 
+        oFileComment = vhdlFile.vhdlFile(lFileComment)
         oRule.fix(oFileComment)
         oRule.analyze(oFileComment)
         self.assertEqual(oRule.violations, [])

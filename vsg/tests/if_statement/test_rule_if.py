@@ -8,9 +8,9 @@ from vsg.tests import utils
 
 # Read in test file used for all tests
 lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','if_statement','if_test_input.vhd'))
-oFile = vhdlFile.vhdlFile(lFile) 
+oFile = vhdlFile.vhdlFile(lFile)
 lFileCase = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','if_statement','if_case_test_input.vhd'))
-oFileCase = vhdlFile.vhdlFile(lFileCase) 
+oFileCase = vhdlFile.vhdlFile(lFileCase)
 
 class testRuleIfMethods(unittest.TestCase):
 

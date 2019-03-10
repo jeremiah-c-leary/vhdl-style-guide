@@ -14,7 +14,7 @@ class testFixRuleVariableMethods(unittest.TestCase):
     def setUp(self):
         # Read in test file used for all tests
         self.lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','variable','variable_test_input.vhd'))
-        self.oFile = vhdlFile.vhdlFile(self.lFile) 
+        self.oFile = vhdlFile.vhdlFile(self.lFile)
 
     def test_fix_rule_001(self):
         oRule = variable.rule_001()

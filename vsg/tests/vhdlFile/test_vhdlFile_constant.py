@@ -5,7 +5,7 @@ from vsg import vhdlFile
 from vsg.tests import utils
 
 lFileConstant = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','constant','constant_test_input.vhd'))
-oFileConstant = vhdlFile.vhdlFile(lFileConstant) 
+oFileConstant = vhdlFile.vhdlFile(lFileConstant)
 
 class testVhdlFileConstantMethods(unittest.TestCase):
 

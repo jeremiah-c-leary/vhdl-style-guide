@@ -7,9 +7,9 @@ from vsg.tests import utils
 
 
 lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'component_test_input.vhd'))
-oFile = vhdlFile.vhdlFile(lFile) 
+oFile = vhdlFile.vhdlFile(lFile)
 lFileComment = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'component_comment_test_input.vhd'))
-oFileComment = vhdlFile.vhdlFile(lFileComment) 
+oFileComment = vhdlFile.vhdlFile(lFileComment)
 
 
 class testFixRuleComponentMethods(unittest.TestCase):

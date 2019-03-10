@@ -8,7 +8,7 @@ from vsg.tests import utils
 
 # Read in test file used for all tests
 lFile = utils.read_vhdlfile('no_file.vhd')
-oFile = vhdlFile.vhdlFile(lFile) 
+oFile = vhdlFile.vhdlFile(lFile)
 
 class testRuleSignalMethods(unittest.TestCase):
 

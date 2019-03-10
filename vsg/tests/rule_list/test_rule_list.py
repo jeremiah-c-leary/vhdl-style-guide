@@ -9,7 +9,7 @@ class testVsg(unittest.TestCase):
 
     def setUp(self):
         self.lFile = utils.read_vhdlfile('vsg/tests/rule_list/entity_architecture.vhd')
-        self.oFile = vhdlFile.vhdlFile(self.lFile) 
+        self.oFile = vhdlFile.vhdlFile(self.lFile)
         oRules = rule_list.rule_list(self.oFile, 'vsg/tests/rule_list/local_rules')
 
     def test_importing_local_rule(self):

@@ -5,11 +5,11 @@ from vsg import vhdlFile
 from vsg.tests import utils
 
 lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','if_statement','if_test_input.vhd'))
-oFile = vhdlFile.vhdlFile(lFile) 
+oFile = vhdlFile.vhdlFile(lFile)
 lFileCompress = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','if_statement','if_compressed_line_test_input.vhd'))
-oFileCompress = vhdlFile.vhdlFile(lFileCompress) 
+oFileCompress = vhdlFile.vhdlFile(lFileCompress)
 lFileNested = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','if_statement','if_nested_test_input.vhd'))
-oFileNested = vhdlFile.vhdlFile(lFileNested) 
+oFileNested = vhdlFile.vhdlFile(lFileNested)
 
 
 class testVhdlFileIfAssignments(unittest.TestCase):

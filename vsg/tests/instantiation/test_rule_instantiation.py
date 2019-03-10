@@ -8,15 +8,15 @@ from vsg.tests import utils
 
 
 lFilePort = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'instantiation_test_input.vhd'))
-oFilePort = vhdlFile.vhdlFile(lFilePort) 
+oFilePort = vhdlFile.vhdlFile(lFilePort)
 lFileGeneric = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'instantiation_generic_test_input.vhd'))
-oFileGeneric = vhdlFile.vhdlFile(lFileGeneric) 
+oFileGeneric = vhdlFile.vhdlFile(lFileGeneric)
 lFileComment = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'instantiation_comment_test_input.vhd'))
-oFileComment = vhdlFile.vhdlFile(lFileComment) 
+oFileComment = vhdlFile.vhdlFile(lFileComment)
 lFilePositional = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'instantiation_positional_test_input.vhd'))
-oFilePositional = vhdlFile.vhdlFile(lFilePositional) 
+oFilePositional = vhdlFile.vhdlFile(lFilePositional)
 lFileDirect = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'instantiation_direct_test_input.vhd'))
-oFileDirect = vhdlFile.vhdlFile(lFileDirect) 
+oFileDirect = vhdlFile.vhdlFile(lFileDirect)
 
 class testRuleInstantiationMethods(unittest.TestCase):
 
@@ -316,7 +316,7 @@ class testRuleInstantiationMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'instantiation')
         self.assertEqual(oRule.identifier, '029')
         lFileComment = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'instantiation_comment_test_input.vhd'))
-        oFileComment = vhdlFile.vhdlFile(lFileComment) 
+        oFileComment = vhdlFile.vhdlFile(lFileComment)
         dExpected = ['22-32']
         oRule.analyze(oFileComment)
         self.assertEqual(oRule.violations, dExpected)
