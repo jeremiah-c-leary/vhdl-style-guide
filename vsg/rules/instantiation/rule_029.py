@@ -16,20 +16,19 @@ class rule_029(rule.rule):
         self.identifier = '029'
         self.solution = 'Inconsistent alignment of comments in instantiation.'
         self.phase = 6
+        self.lGroup = []
+        self.fGroupFound = False
+        self.iStartGroupIndex = None
 
-    def analyze(self, oFile):
-        lGroup = []
-        fGroupFound = False
-        iStartGroupIndex = None
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            fGroupFound, iStartGroupIndex = search_for_group(fGroupFound, oLine, iStartGroupIndex, iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+            self.fGroupFound, self.iStartGroupIndex = search_for_group(self.fGroupFound, oLine, self.iStartGroupIndex, iLineNumber)
             if oLine.isInstantiationPortEnd:
-                lGroup.append(oLine)
-                fGroupFound = False
-                check.keyword_alignment(self, iStartGroupIndex, '--', lGroup)
-                lGroup = []
-                iStartGroupIndex = None
-            store_lines_for_group(fGroupFound, oLine, lGroup)
+                self.lGroup.append(oLine)
+                self.fGroupFound = False
+                check.keyword_alignment(self, self.iStartGroupIndex, '--', self.lGroup)
+                self.lGroup = []
+                self.iStartGroupIndex = None
+            store_lines_for_group(self.fGroupFound, oLine, self.lGroup)
 
     def _fix_violations(self, oFile):
         fix.keyword_alignment(self, oFile)
