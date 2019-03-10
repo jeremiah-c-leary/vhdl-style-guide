@@ -71,7 +71,8 @@ class rule():
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            self._analyze(oFile, oLine, iLineNumber)
+            if not self._is_vsg_off(oLine):
+                self._analyze(oFile, oLine, iLineNumber)
 
     def _configure_global_rule_attributes(self, dConfiguration):
         try:
@@ -88,3 +89,9 @@ class rule():
                     self.__dict__[sAttributeName] = dConfiguration['rule'][self.name + '_' + self.identifier][sAttributeName]
         except KeyError:
             pass
+
+    def _is_vsg_off(self, oLine):
+        if 'vsg_off' in oLine.codeTags:
+            if len(oLine.codeTags['vsg_off']) == 0 or self.name + '_' + self.identifier in oLine.codeTags['vsg_off']:
+                return True
+        return False
