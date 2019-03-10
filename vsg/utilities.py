@@ -347,4 +347,3 @@ def end_of_line_index(oLine):
     for iIndex, sChar in enumerate(sLine[::-1]):
         if not sChar == ' ':
             return len(sLine) - iIndex
-         

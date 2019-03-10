@@ -11,7 +11,6 @@ class testFixRuleInstantiationMethods(unittest.TestCase):
     def setUp(self):
         self.lFileGeneric = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'instantiation_generic_test_input.vhd'))
         self.oFileGeneric = vhdlFile.vhdlFile(self.lFileGeneric)
-       
 
     def test_fix_rule_012(self):
         oRule = instantiation.rule_012()

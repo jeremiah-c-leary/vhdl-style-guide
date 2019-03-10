@@ -26,4 +26,3 @@ class rule_001(rule.rule):
             iIndex = utilities.end_of_line_index(oPreviousLine)
             oPreviousLine.update_line(oPreviousLine.line[:iIndex] + ' else' + oPreviousLine.line[iIndex:])
             utilities.clear_keyword_from_line(oLine, 'else')
-      
