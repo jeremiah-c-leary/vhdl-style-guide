@@ -3,6 +3,7 @@ from .assert_statement import assert_statement
 from .attribute import attribute
 from .blank import blank
 from .case import case
+from .code_tags import code_tags
 from .comment import comment
 from .component import component
 from .concurrent import concurrent

@@ -5,6 +5,21 @@ from vsg import utilities
 class line():
     '''
     This class holds line contents and attributes associated with the content.
+
+    codeTags is an attribute represented by a dictionary.
+    The valid keys into the dictionary are:
+
+       vsg_off
+       vsg_on
+
+    If vsg_off and vsg_on are empty lists, then every rule is disabled.
+
+    codeTags['vsg_off'][]
+
+    otherwise individual rules are disabled:
+
+    codeTags['vsg_off']['library_008', 'process_002']
+
     '''
 
     def __init__(self, line):
@@ -199,6 +214,9 @@ class line():
         self.isEndBlock = False
         # Wait attributes
         self.isWait = False
+        # Code tags
+        self.hasCodeTag = False
+        self.codeTags = {}
 
     def update_line(self, sLine):
         '''

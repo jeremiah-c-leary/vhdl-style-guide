@@ -56,6 +56,8 @@ class vhdlFile():
             classify.entity(self, dVars, oLine)
             classify.assert_statement(dVars, oLine)
 
+            classify.code_tags(dVars, oLine, oLinePrevious)
+
             classify.port(dVars, oLine)
             classify.generic(dVars, oLine)
 
