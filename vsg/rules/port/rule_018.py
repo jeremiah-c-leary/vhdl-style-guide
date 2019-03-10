@@ -17,6 +17,8 @@ class rule_018(rule.rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
+            if self._is_vsg_off(oLine):
+                continue
             if oLine.isPortDeclaration:
                 sLine = oLine.line.split(':')[1]
                 if '(' in sLine:

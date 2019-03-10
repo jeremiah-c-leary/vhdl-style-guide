@@ -17,6 +17,8 @@ class rule_004(rule.rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
+            if self._is_vsg_off(oLine):
+                continue
             if oLine.isSequential and oLine.isSequentialEnd:
                 continue
             if oLine.isSequential:

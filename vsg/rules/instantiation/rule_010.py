@@ -22,6 +22,8 @@ class rule_010(rule.rule):
         fGroupFound = False
         iStartGroupIndex = None
         for iLineNumber, oLine in enumerate(oFile.lines):
+            if self._is_vsg_off(oLine):
+                continue
             if oLine.isInstantiationPortKeyword and not fGroupFound:
                 fGroupFound = True
                 iStartGroupIndex = iLineNumber

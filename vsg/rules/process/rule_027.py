@@ -16,6 +16,8 @@ class rule_027(rule.rule):
     def analyze(self, oFile):
         dVars = clear_variables()
         for iLineNumber, oLine in enumerate(oFile.lines):
+            if self._is_vsg_off(oLine):
+                continue
             if oLine.insideProcess:
                 skip_this_process(dVars, oFile, oLine, iLineNumber)
                 if dVars['fSkipProcess']:

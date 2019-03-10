@@ -18,6 +18,8 @@ class rule_012(rule.rule):
         iMaxSignalIndex = 0
         lIndexes = []
         for iLineNumber, oLine in enumerate(oFile.lines):
+            if self._is_vsg_off(oLine):
+                continue
             if oLine.isSignal and re.match('^\s*signal\s+\S+,\s*\S+\s*:', oLine.line, flags=re.IGNORECASE):
                 self.dFix[iLineNumber] = {}
                 self.dFix[iLineNumber]['comma'] = 0

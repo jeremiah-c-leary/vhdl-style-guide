@@ -17,6 +17,8 @@ class rule_024(rule.rule):
     def analyze(self, oFile):
         self.dFix['label'] = {}
         for iLineNumber, oLine in enumerate(oFile.lines):
+            if self._is_vsg_off(oLine):
+                continue
             if oLine.isArchitectureKeyword:
                 sLabel = oLine.line.split()[1]
             if oLine.isEndArchitecture and not re.match('^\s*end\s+architecture\s+\w+', oLine.line, re.IGNORECASE):

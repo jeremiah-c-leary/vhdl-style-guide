@@ -16,6 +16,8 @@ class rule_011(rule.rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
+            if self._is_vsg_off(oLine):
+                continue
             if oLine.isCaseWhenKeyword and oLine.isCaseWhenEnd:
                 continue
             if oLine.isCaseWhenKeyword:

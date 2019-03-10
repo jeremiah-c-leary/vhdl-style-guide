@@ -23,6 +23,8 @@ class rule_011(rule.rule):
         select_solution(self)
 
         for iLineNumber, oLine in enumerate(oFile.lines):
+            if self._is_vsg_off(oLine):
+                continue
             if oLine.isPortDeclaration and oLine.insideEntity:
                 lLine = oLine.lineLower.split()
                 check_for_prefix(self, lLine, iLineNumber)

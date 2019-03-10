@@ -22,6 +22,8 @@ class rule_018(rule.rule):
         fGroupFound = False
         iStartGroupIndex = None
         for iLineNumber, oLine in enumerate(oFile.lines):
+            if self._is_vsg_off(oLine):
+                continue
             fGroupFound, iStartGroupIndex = search_for_group(fGroupFound, oLine, iStartGroupIndex, iLineNumber)
             if oLine.isEndEntityDeclaration:
                 lGroup.append(oLine)

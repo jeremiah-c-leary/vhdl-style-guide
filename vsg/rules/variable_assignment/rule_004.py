@@ -16,6 +16,8 @@ class rule_004(rule.rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
+            if self._is_vsg_off(oLine):
+                continue
             if oLine.isVariableAssignment and oLine.isVariableAssignmentEnd:
                 continue
             if oLine.isVariableAssignment:

@@ -19,6 +19,8 @@ class rule_021(rule.rule):
         fNonBlanksFound = False
         fSkipProcess = False
         for iLineNumber, oLine in enumerate(oFile.lines):
+            if self._is_vsg_off(oLine):
+                continue
             if oLine.insideProcess:
                 if oLine.isProcessBegin and oLine.isSensitivityListEnd:
                     fSkipProcess = True

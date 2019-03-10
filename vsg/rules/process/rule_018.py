@@ -25,6 +25,8 @@ class rule_018(rule.rule):
         self.dFix['processLabel'] = {}
         labelStack = ''
         for iLineNumber, oLine in enumerate(oFile.lines):
+            if self._is_vsg_off(oLine):
+                continue
             if oLine.isProcessKeyword:
                 iProcStartLine = iLineNumber
                 oMatch = re.match('^\s*(\S+)\s*:\s*process', oLine.lineLower)

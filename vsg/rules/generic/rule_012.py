@@ -24,6 +24,8 @@ class rule_012(rule.rule):
         fGroupFound = False
         iStartGroupIndex = None
         for iLineNumber, oLine in enumerate(oFile.lines):
+            if self._is_vsg_off(oLine):
+                continue
             if oLine.isGenericKeyword and not fGroupFound and not oLine.isGenericDeclaration:
                 fGroupFound = True
                 iStartGroupIndex = iLineNumber

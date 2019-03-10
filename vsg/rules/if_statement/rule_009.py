@@ -21,6 +21,8 @@ class rule_009(rule.rule):
     def analyze(self, oFile):
         fCheckAlignment = False
         for iLineNumber, oLine in enumerate(oFile.lines):
+            if self._is_vsg_off(oLine):
+                continue
             if oLine.isIfKeyword and oLine.isThenKeyword:
                 continue
             if oLine.isElseIfKeyword and oLine.isThenKeyword:

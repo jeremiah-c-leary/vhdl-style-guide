@@ -18,6 +18,8 @@ class rule_028(rule.rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
+            if self._is_vsg_off(oLine):
+                continue
             if oLine.isSensitivityListBegin and oLine.isSensitivityListEnd:
                 continue
             if oLine.insideSensitivityList:
