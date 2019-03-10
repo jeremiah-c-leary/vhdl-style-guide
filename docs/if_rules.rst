@@ -557,6 +557,7 @@ In the case of nested **if** statements, the rule will be enfoced on the first *
 **Violation**
 
 .. code-block:: vhdl
+
    C <= '1';
    if (A = '1') then
      B <= '0';
