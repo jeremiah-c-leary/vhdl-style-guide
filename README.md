@@ -38,7 +38,7 @@ VHDL Style Guide (VSG)
 
 VHDL Style Guide (VSG) provides coding style guide enforcement for VHDL code.
 
-![vim macro](https://github.com/jeremiah-c-leary/vhdl-style-guide/docs/img/vim_macro.gif)
+![vim macro](https://github.com/jeremiah-c-leary/vhdl-style-guide/blob/master/docs/img/vim_macro.gif)
 
 VSG was created after participating in a code review.
 A real issue in the code was masked by a coding style issue.
@@ -141,7 +141,7 @@ optional arguments:
 
 Here is an example output running against a test file:
 
-![fixing](https://github.com/jeremiah-c-leary/vhdl-style-guide/docs/img/fixing_single_file.gif)
+![fixing](https://github.com/jeremiah-c-leary/vhdl-style-guide/blob/master/docs/img/fixing_single_file.gif)
 
 ## Documentation
 
