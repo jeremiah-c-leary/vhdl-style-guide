@@ -38,6 +38,8 @@ VHDL Style Guide (VSG)
 
 VHDL Style Guide (VSG) provides coding style guide enforcement for VHDL code.
 
+![vim macro](https://github.com/jeremiah-c-leary/vhdl-style-guide/docs/img/vim_macro.gif)
+
 VSG was created after participating in a code review.
 A real issue in the code was masked by a coding style issue.
 A finding was created for the style issue, while the real issue was missed.
@@ -69,14 +71,14 @@ Configurations allow for multiple coding standards.
 
 * Command line tool
   - integrate into continuous integration flow
-* Fixes and/or reports issues found
+* Reports and fixes issues found
   - whitespace
     - horizontal
     - vertical
   - upper and lower case
   - keyword alignments
   - etc...
-* Fully configurable rules via JSON configuration file
+* Fully configurable rules via JSON or YAML configuration file
   - Disable rules
   - Alter behavior of existing rules
   - Change phase of execution
@@ -110,10 +112,10 @@ The command line tool can be invoked with:
 ```
 $ vsg
 usage: VHDL Style Guide (VSG) [-h] [-f FILENAME [FILENAME ...]]
-                              [--local_rules LOCAL_RULES]
-                              [--configuration CONFIGURATION] [--fix]
-                              [--fix_phase FIX_PHASE] [--junit JUNIT]
-                              [--output_format {vsg,syntastic}] [--backup]
+                              [-lr LOCAL_RULES]
+                              [-c CONFIGURATION [CONFIGURATION ...]] [--fix]
+                              [-fp FIX_PHASE] [-j JUNIT] [-of {vsg,syntastic}]
+                              [-b]
 
 Analyzes VHDL files for style guide violations. Reference documentation is
 located at: http://vhdl-style-guide.readthedocs.io/en/latest/index.html
@@ -122,62 +124,24 @@ optional arguments:
   -h, --help            show this help message and exit
   -f FILENAME [FILENAME ...], --filename FILENAME [FILENAME ...]
                         File to analyze
-  --local_rules LOCAL_RULES
+  -lr LOCAL_RULES, --local_rules LOCAL_RULES
                         Path to local rules
-  --configuration CONFIGURATION
-                        JSON configuration file
+  -c CONFIGURATION [CONFIGURATION ...], --configuration CONFIGURATION [CONFIGURATION ...]
+                        JSON or YAML configuration file(s)
   --fix                 Fix issues found
-  --fix_phase FIX_PHASE
+  -fp FIX_PHASE, --fix_phase FIX_PHASE
                         Fix issues up to and including this phase
-  --junit JUNIT         Extract Junit file
-  --output_format {vsg,syntastic}
+  -j JUNIT, --junit JUNIT
+                        Extract Junit file
+  -of {vsg,syntastic}, --output_format {vsg,syntastic}
                         Sets the output format.
-  --backup              Creates copy of input file for comparison with fixed
+  -b, --backup          Creates copy of input file for comparison with fixed
                         version.
 ```
 
 Here is an example output running against a test file:
-```
-$ vsg -f PIC.vhd 
-File:  PIC.vhd
-==============
-Phase 1... Reporting
-Phase 2... Reporting
-Phase 3... Reporting
-Phase 4... Reporting
-Phase 5... Reporting
-  comment_002               |         51 | Ensure proper alignment of comment with previous line.
-  comment_002               |         52 | Ensure proper alignment of comment with previous line.
-  comment_002               |         54 | Ensure proper alignment of comment with previous line.
-  comment_002               |         55 | Ensure proper alignment of comment with previous line.
-  comment_003               |     76-256 | Inconsistent alignment of comments within process.
-  sequential_005            |      87-93 | Inconsistent alignment of "<=" in group of lines.
-  sequential_005            |    102-103 | Inconsistent alignment of "<=" in group of lines.
-  sequential_005            |    105-108 | Inconsistent alignment of "<=" in group of lines.
-  sequential_005            |    110-113 | Inconsistent alignment of "<=" in group of lines.
-  sequential_005            |    115-118 | Inconsistent alignment of "<=" in group of lines.
-  sequential_005            |    120-124 | Inconsistent alignment of "<=" in group of lines.
-  sequential_005            |    129-133 | Inconsistent alignment of "<=" in group of lines.
-  sequential_005            |    160-161 | Inconsistent alignment of "<=" in group of lines.
-  sequential_005            |    173-174 | Inconsistent alignment of "<=" in group of lines.
-  comment_002               |        183 | Ensure proper alignment of comment with previous line.
-  sequential_005            |    225-226 | Inconsistent alignment of "<=" in group of lines.
-  sequential_005            |    238-239 | Inconsistent alignment of "<=" in group of lines.
-Phase 6... Not executed
-Phase 7... Not executed
-==============
-Total Rules Checked: 204
-Total Failures:      523
-```
 
-## Local rules
-
-VSG supports customization by allowing localized rules.
-This is simply a directory with an __init__.py file and one or more python files.
-The files should follow the same structure and naming convention as the rules found in the vsg/rules directory.
-
-The localized rules will be used when the --local_rules command line argument is given.
-
+![fixing](https://github.com/jeremiah-c-leary/vhdl-style-guide/docs/img/fixing_single_file.gif)
 
 ## Documentation
 
