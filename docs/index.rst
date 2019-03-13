@@ -20,4 +20,5 @@ Welcome to vhdl-style-guide's documentation!
    phases
    rules
    api
+   contributing
    faq
