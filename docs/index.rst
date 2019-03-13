@@ -15,6 +15,7 @@ Welcome to vhdl-style-guide's documentation!
    usage
    configuring
    code_tags
+   editor_integration
    localizing
    phases
    rules
