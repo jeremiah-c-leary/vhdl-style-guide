@@ -16,6 +16,7 @@ setup(
       'Development Status :: 4 - Beta',
       'Environment :: Console',
       'Programming Language :: Python :: 2.7',
+      'Programming Language :: Python :: 3',
       'Intended Audience :: End Users/Desktop',
       'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
       'Natural Language :: English',
