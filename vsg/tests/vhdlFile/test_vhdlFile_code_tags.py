@@ -10,7 +10,8 @@ oFile = vhdlFile.vhdlFile(lFile)
 class testCodeTags(unittest.TestCase):
 
     def test_hasCodeTag(self):
-        lExpected = range(2, 6)
+        lExpected = []
+        lExpected.extend(range(2, 6))
         lExpected.extend(range(10, 18))
         lExpected.extend(range(20, 33))
 
@@ -23,7 +24,8 @@ class testCodeTags(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_library_008_tag(self):
-        lExpected = range(2, 6)
+        lExpected = []
+        lExpected.extend(range(2, 6))
 
         # Generic actual list
         lActual = []
@@ -35,7 +37,8 @@ class testCodeTags(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_empty_code_tags(self):
-        lExpected = range(10, 18)
+        lExpected = []
+        lExpected.extend(range(10, 18))
 
         # Generic actual list
         lActual = []
@@ -47,7 +50,8 @@ class testCodeTags(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_library_001_tag(self):
-        lExpected = range(20, 24)
+        lExpected = []
+        lExpected.extend(range(20, 24))
         lExpected.extend(range(30, 33))
 
         # Generic actual list
@@ -61,7 +65,8 @@ class testCodeTags(unittest.TestCase):
 
 
     def test_process_001_tag(self):
-        lExpected = range(20, 29)
+        lExpected = []
+        lExpected.extend(range(20, 29))
 
         # Generic actual list
         lActual = []
@@ -73,7 +78,8 @@ class testCodeTags(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_case_001_tag(self):
-        lExpected = range(26, 33)
+        lExpected = []
+        lExpected.extend(range(26, 33))
 
         # Generic actual list
         lActual = []

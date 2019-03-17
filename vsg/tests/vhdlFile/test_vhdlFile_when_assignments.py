@@ -12,7 +12,8 @@ class testVhdlFileWhenAssignments(unittest.TestCase):
 
 
     def test_insideWhen_assignment(self):
-        lExpected = range(13,17)
+        lExpected = []
+        lExpected.extend(range(13,17))
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
@@ -22,7 +23,8 @@ class testVhdlFileWhenAssignments(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isWhenKeyword_assignment(self):
-        lExpected = range(13,16)
+        lExpected = []
+        lExpected.extend(range(13,16))
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
@@ -32,7 +34,8 @@ class testVhdlFileWhenAssignments(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isWhenElseKeyword_assignment(self):
-        lExpected = range(14,17)
+        lExpected = []
+        lExpected.extend(range(14,17))
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
