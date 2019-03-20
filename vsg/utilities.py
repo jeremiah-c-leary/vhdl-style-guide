@@ -347,3 +347,14 @@ def end_of_line_index(oLine):
     for iIndex, sChar in enumerate(sLine[::-1]):
         if not sChar == ' ':
             return len(sLine) - iIndex
+
+
+def remove_closing_parenthesis_and_semicolon(oLine):
+    '''
+    Parameters:
+
+      oLine: (line object)
+
+    Returns: (line object)
+    '''
+    return re.sub(r'\)(\s*);', r' \1 ', oLine)

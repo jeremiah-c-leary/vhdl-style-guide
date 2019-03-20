@@ -1,6 +1,7 @@
 
 from vsg import rule
 from vsg import line
+from vsg import utilities
 
 import re
 
@@ -22,7 +23,7 @@ class rule_008(rule.rule):
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:
-            oFile.lines[iLineNumber].line = re.sub(r'\)(\s*);', r' \1 ', oFile.lines[iLineNumber].line)
+            oFile.lines[iLineNumber].line = utilities.remove_closing_parenthesis_and_semicolon(oFile.lines[iLineNumber].line)
             oFile.lines[iLineNumber].isTypeEnd = False
             oFile.lines[iLineNumber].isTypeEnumeratedEnd = False
             oFile.lines.insert(iLineNumber + 1, line.line('  );'))
