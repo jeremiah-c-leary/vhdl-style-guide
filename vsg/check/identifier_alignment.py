@@ -39,6 +39,7 @@ def identifier_alignment(self, iLineNumber, lGroup):
     self.dFix['violations'][sViolationRange]['maximumIdentifierLength'] = iMaximumIdentifierLength
     self.dFix['violations'][sViolationRange]['maximumKeywordLength'] = iMaximumKeywordLength
 
+
 def find_identifier(sString):
 
     fKeywordFound = False
@@ -50,6 +51,7 @@ def find_identifier(sString):
             fSpaceAfterKeywordFound = True
         if not sChar.isspace() and fSpaceAfterKeywordFound:
             return iIndex
+
 
 def add_range_violation(self, sViolationRange):
     '''
@@ -63,6 +65,7 @@ def add_range_violation(self, sViolationRange):
     '''
     if sViolationRange not in self.violations:
         self.add_violation(sViolationRange)
+
 
 def parse_keyword_identifier(sString):
     lLine = sString.split()

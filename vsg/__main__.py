@@ -60,23 +60,23 @@ def read_configuration_files(commandLineArguments):
         dConfiguration = {}
         for sFileName in commandLineArguments.configuration:
 
-           tempConfiguration = open_configuration_file(sFileName, commandLineArguments)
-
-           for sKey in tempConfiguration.keys():
-               if sKey == 'file_list':
-                   try:
-                       dConfiguration['file_list'].extend(tempConfiguration['file_list'])
-                   except:
-                       dConfiguration['file_list'] = tempConfiguration['file_list']
-               elif sKey == 'rule':
-                   for sRule in tempConfiguration[sKey]:
-                       try:
-                           dConfiguration[sKey][sRule] = tempConfiguration[sKey][sRule]
-                       except:
-                           dConfiguration[sKey] = {}
-                           dConfiguration[sKey][sRule] = tempConfiguration[sKey][sRule]
-               else:
-                   dConfiguration[sKey] = tempConfiguration[sKey]
+            tempConfiguration = open_configuration_file(sFileName, commandLineArguments)
+ 
+            for sKey in tempConfiguration.keys():
+                if sKey == 'file_list':
+                    try:
+                        dConfiguration['file_list'].extend(tempConfiguration['file_list'])
+                    except:
+                        dConfiguration['file_list'] = tempConfiguration['file_list']
+                elif sKey == 'rule':
+                    for sRule in tempConfiguration[sKey]:
+                        try:
+                            dConfiguration[sKey][sRule] = tempConfiguration[sKey][sRule]
+                        except:
+                            dConfiguration[sKey] = {}
+                            dConfiguration[sKey][sRule] = tempConfiguration[sKey][sRule]
+                else:
+                    dConfiguration[sKey] = tempConfiguration[sKey]
 
         return dConfiguration
 
