@@ -1,26 +1,11 @@
 
-from vsg import rule
-from vsg import fix
-from vsg import check
-
-import re
+from vsg.rules import uppercase_end_label
 
 
-class rule_012(rule.rule):
+class rule_012(uppercase_end_label):
     '''
     Generate rule 012 checks the "end generate" label is uppercase.
     '''
 
     def __init__(self):
-        rule.rule.__init__(self, 'generate', '012')
-        self.solution = 'Uppercase the label.'
-        self.phase = 6
-
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isGenerateEnd and re.match('^\s*\w+\s+\w+\s+\w+', oLine.line):
-            check.is_uppercase(self, oLine.line.split()[2], iLineNumber)
-
-    def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
-            lLine = oFile.lines[iLineNumber].line.split()
-            fix.upper_case(self, oFile.lines[iLineNumber], lLine[2])
+        uppercase_end_label.__init__(self, 'generate', '012', 'isGenerateEnd')
