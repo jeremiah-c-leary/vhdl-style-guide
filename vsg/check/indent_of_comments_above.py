@@ -1,9 +1,3 @@
-'''
-This module contains functions for rules to perform their checks.
-'''
-
-import re
-
 
 def indent_of_comments_above(self, oFile, iLineNumber):
     '''

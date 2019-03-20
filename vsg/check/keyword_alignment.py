@@ -1,9 +1,3 @@
-'''
-This module contains functions for rules to perform their checks.
-'''
-
-import re
-
 
 def keyword_alignment(self, iLineNumber, sKeyword, lGroup):
     '''

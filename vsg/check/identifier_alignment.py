@@ -1,9 +1,3 @@
-'''
-This module contains functions for rules to perform their checks.
-'''
-
-import re
-
 
 def identifier_alignment(self, iLineNumber, lGroup):
     '''

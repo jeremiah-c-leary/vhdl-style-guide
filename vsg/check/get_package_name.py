@@ -1,8 +1,3 @@
-'''
-This module contains functions for rules to perform their checks.
-'''
-
-import re
 
 def get_package_name(oLine):
     '''

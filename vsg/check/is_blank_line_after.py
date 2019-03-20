@@ -1,9 +1,3 @@
-'''
-This module contains functions for rules to perform their checks.
-'''
-
-import re
-
 
 def is_blank_line_after(self, oFile, iLineNumber):
     '''

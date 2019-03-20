@@ -1,9 +1,3 @@
-'''
-This module contains functions for rules to perform their checks.
-'''
-
-import re
-
 
 def is_uppercase(self, sString, iLineNumber):
     '''
