@@ -134,25 +134,6 @@ class testFixRuleWhitespaceMethods(unittest.TestCase):
         self.assertEqual(oFile.lines[2].line, '  std_logic_vector(7 downto 0)')
         self.assertEqual(oFile.lines[3].line, '  std_logic_vector(7 downto 0)')
 
-    def test_fix_009(self):
-        oRule = whitespace.rule_009()
-
-        lFile = utils.read_vhdlfile(sFileName)
-        oFile = vhdlFile.vhdlFile(lFile)
-
-        dExpected = []
-        oFile.lines.append(line.line('  a <= b& c -- this is an& comment'))
-        oFile.lines.append(line.line('  a <= b & c&d&e -- this should not be caught& '))
-        oFile.lines.append(line.line('  a <= b &c'))
-        oFile.lines.append(line.line('  a <= b&c'))
-        oRule.fix(oFile)
-        oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
-        self.assertEqual(oFile.lines[1].line, '  a <= b & c -- this is an& comment')
-        self.assertEqual(oFile.lines[2].line, '  a <= b & c &d &e -- this should not be caught& ')
-        self.assertEqual(oFile.lines[3].line, '  a <= b &c')
-        self.assertEqual(oFile.lines[4].line, '  a <= b &c')
-
     def test_fix_010(self):
         oRule = whitespace.rule_010()
 
@@ -169,7 +150,7 @@ class testFixRuleWhitespaceMethods(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
         self.assertEqual(oFile.lines[1].line, '  a <= b & c -- this is an &comment')
-        self.assertEqual(oFile.lines[2].line, '  a <= b & c& d& e -- this should not be &caught ')
+        self.assertEqual(oFile.lines[2].line, '  a <= b & c & d & e -- this should not be &caught ')
         self.assertEqual(oFile.lines[3].line, '  a <= b & c')
         self.assertEqual(oFile.lines[4].line, '  a <= b &')
         self.assertEqual(oFile.lines[5].line, '  a <= b & ')

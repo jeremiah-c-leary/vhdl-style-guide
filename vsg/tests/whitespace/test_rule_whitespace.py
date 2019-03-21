@@ -167,21 +167,6 @@ class testRuleWhitespaceMethods(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
 
-    def test_009(self):
-        oRule = whitespace.rule_009()
-        self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'whitespace')
-        self.assertEqual(oRule.identifier, '009')
-        self.assertEqual(oRule.phase, 2)
-
-        dExpected = [1,4]
-        self.oFile.lines.append(line.line('  a <= b& c -- this is an& comment'))
-        self.oFile.lines.append(line.line('  a <= b & c &d &e -- this should not be caught& '))
-        self.oFile.lines.append(line.line('  a <= b &c'))
-        self.oFile.lines.append(line.line('  a <= b&c'))
-        oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, dExpected)
-
     def test_010(self):
         oRule = whitespace.rule_010()
         self.assertTrue(oRule)
@@ -189,7 +174,7 @@ class testRuleWhitespaceMethods(unittest.TestCase):
         self.assertEqual(oRule.identifier, '010')
         self.assertEqual(oRule.phase, 2)
 
-        dExpected = [3]
+        dExpected = [1, 3]
         self.oFile.lines.append(line.line('  a <= b& c'))
         self.oFile.lines.append(line.line('  a <= b & c'))
         self.oFile.lines.append(line.line('  a <= b &c'))
