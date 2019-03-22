@@ -1,7 +1,7 @@
 import re
 
 
-def procedure(dVars, oLine):
+def procedure(dVars, oLine, oLinePrevious):
     '''
     Classifies procedure statements.
 
@@ -34,7 +34,7 @@ def procedure(dVars, oLine):
         dVars['iOpenParenthesis'] += oLine.lineNoComment.count('(')
         dVars['iCloseParenthesis'] += oLine.lineNoComment.count(')')
         _classify_procedure_parameters(dVars, oLine)
-        _classify_procedure_parameter_end(dVars, oLine)
+        _classify_procedure_parameter_end(dVars, oLine, oLinePrevious)
         if oLine.insidePackage:
             _classify_end_procedure_in_package(dVars, oLine)
         else:
@@ -76,11 +76,14 @@ def _classify_end_procedure_in_package(dVars, oLine):
         dVars['fProcedureBeginDetected'] = False
 
 
-def _classify_procedure_parameter_end(dVars, oLine):
+def _classify_procedure_parameter_end(dVars, oLine, oLinePrevious):
     if ')' in oLine.line and dVars['iOpenParenthesis'] == dVars['iCloseParenthesis']:
         dVars['iOpenParenthesis'] = 0
         dVars['iCloseParenthesis'] = 0
-        oLine.isProcedureParameterEnd = True
+        if re.match('^\s*\)\s*is', oLine.line, re.IGNORECASE):
+            oLinePrevious.isProcedureParameterEnd = True
+        else:
+            oLine.isProcedureParameterEnd = True
         dVars['fProcedureParameterEndDetected'] = True
 
 

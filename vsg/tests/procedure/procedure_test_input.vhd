@@ -91,5 +91,17 @@ package body FIFO_PKG is
   begin
   end procedure AVERAGE_SAMPLES;  
 
+  TEST_PROCESS : process
+
+    procedure test_procedure (
+      constant test1_c    : in boolean := true
+    ) is
+    begin
+    end procedure test_procedure;
+
+  begin
+
+  end process TEST_PROCESS;
+
 end package body FIFO_PKG;
 
