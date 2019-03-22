@@ -69,6 +69,7 @@ class vhdlFile():
             classify.signal(dVars, oLine)
             classify.constant(dVars, oLine)
             classify.variable(dVars, oLine)
+            classify.procedure(dVars, oLine)
             classify.process(dVars, oLine)
             classify.generate(dVars, oLine, oLinePrevious)
             classify.attribute(dVars, oLine)
@@ -85,7 +86,6 @@ class vhdlFile():
 
             classify.case(self, dVars, oLine)
             classify.function(dVars, oLine)
-            classify.procedure(dVars, oLine)
             classify.type_definition(dVars, oLine)
             classify.subtype(dVars, oLine)
 

@@ -31,6 +31,7 @@ def classify_process_keyword(dVars, oLine):
 def classify_process_sensitivity_list(dVars, oLine):
     # Check sensitivity list
     if '(' in oLine.line and \
+       not oLine.insideProcedure and \
        not oLine.insideSensitivityList and \
        not dVars['fFoundProcessBegin'] and \
        not dVars['SensitivityListFound'] and \
@@ -49,10 +50,11 @@ def classify_process_sensitivity_list(dVars, oLine):
 
 
 def classify_process_begin_keyword(dVars, oLine):
-    if re.match('^.*\s+begin', oLine.lineNoComment, flags=re.IGNORECASE) or re.match('^\s*begin', oLine.lineLower):
-        oLine.indentLevel = dVars['iCurrentIndentLevel'] - 1
-        oLine.isProcessBegin = True
-        dVars['fFoundProcessBegin'] = True
+    if not oLine.insideProcedure:
+        if re.match('^.*\s+begin', oLine.lineNoComment, flags=re.IGNORECASE) or re.match('^\s*begin', oLine.lineLower):
+            oLine.indentLevel = dVars['iCurrentIndentLevel'] - 1
+            oLine.isProcessBegin = True
+            dVars['fFoundProcessBegin'] = True
 
 
 def classify_process_end_keyword(dVars, oLine):
