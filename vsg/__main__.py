@@ -61,7 +61,7 @@ def read_configuration_files(commandLineArguments):
         for sFileName in commandLineArguments.configuration:
 
             tempConfiguration = open_configuration_file(sFileName, commandLineArguments)
- 
+
             for sKey in tempConfiguration.keys():
                 if sKey == 'file_list':
                     try:
