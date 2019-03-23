@@ -1,6 +1,6 @@
 
 from vsg import rule
-from vsg import utilities
+from vsg import utils
 
 
 class rule_017(rule.rule):
@@ -21,7 +21,7 @@ class rule_017(rule.rule):
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:
-            utilities.copy_line(oFile, iLineNumber)
+            utils.copy_line(oFile, iLineNumber)
             oLine = oFile.lines[iLineNumber]
             oLine.update_line(oLine.line.split('(')[0] + ' (')
             oLine.isInstantiationGenericAssignment = False

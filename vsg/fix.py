@@ -2,7 +2,7 @@
 This module contains functions for rules to fix issues.
 '''
 from vsg import line
-from vsg import utilities
+from vsg import utils
 
 import re
 
@@ -66,7 +66,7 @@ def lower_case(self, oLine, sKeyword):
 
       sKeyword: (string)
     '''
-    utilities.change_word(oLine, sKeyword, sKeyword.lower())
+    utils.change_word(oLine, sKeyword, sKeyword.lower())
 
 
 def upper_case(self, oLine, sKeyword):
@@ -82,10 +82,10 @@ def upper_case(self, oLine, sKeyword):
       sKeyword: (string)
     '''
     if '(' in sKeyword:
-        sWord = utilities.remove_parenthesis_from_word(sKeyword)
-        utilities.change_word(oLine, sWord, sWord.upper())
+        sWord = utils.remove_parenthesis_from_word(sKeyword)
+        utils.change_word(oLine, sWord, sWord.upper())
     else:
-        utilities.change_word(oLine, sKeyword, sKeyword.upper())
+        utils.change_word(oLine, sKeyword, sKeyword.upper())
 
 
 def upper_case_with_parenthesis(self, oLine, sKeyword):

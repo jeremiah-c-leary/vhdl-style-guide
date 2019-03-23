@@ -1,6 +1,6 @@
 
 from vsg import rule
-from vsg import utilities
+from vsg import utils
 
 
 class rule_020(rule.rule):
@@ -21,7 +21,7 @@ class rule_020(rule.rule):
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:
-            utilities.split_line_after_word(oFile, iLineNumber, '(')
+            utils.split_line_after_word(oFile, iLineNumber, '(')
             oFile.lines[iLineNumber].isInstantiationPortAssignment = False
             oFile.lines[iLineNumber + 1].isInstantiationPortKeyword = False
             oFile.lines[iLineNumber + 1].indentLevel += 1

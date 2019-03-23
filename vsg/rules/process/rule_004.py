@@ -1,6 +1,6 @@
 
 from vsg import rule
-from vsg import utilities
+from vsg import utils
 from vsg import fix
 from vsg import check
 
@@ -19,7 +19,7 @@ class rule_004(rule.rule):
 
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.isProcessBegin:
-            check.is_lowercase(self, utilities.get_first_word(oLine), iLineNumber)
+            check.is_lowercase(self, utils.get_first_word(oLine), iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

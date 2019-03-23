@@ -1,6 +1,6 @@
 
 from vsg import rule
-from vsg import utilities
+from vsg import utils
 
 import re
 
@@ -25,4 +25,4 @@ class rule_006(rule.rule):
         for iLineNumber in self.violations:
             oLine = oFile.lines[iLineNumber]
             oLine.update_line(re.sub(r'^(\s*architecture\s+\w+\s+of\s+\w+)', r'\1 is', oLine.line, re.IGNORECASE))
-            utilities.search_for_and_remove_keyword(oFile, iLineNumber, 'is')
+            utils.search_for_and_remove_keyword(oFile, iLineNumber, 'is')

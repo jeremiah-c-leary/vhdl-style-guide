@@ -2,7 +2,7 @@
 import re
 
 from vsg import rule
-from vsg import utilities
+from vsg import utils
 
 
 class rule_001(rule.rule):
@@ -23,6 +23,6 @@ class rule_001(rule.rule):
         for iLineNumber in self.violations:
             oPreviousLine = oFile.lines[iLineNumber - 1]
             oLine = oFile.lines[iLineNumber]
-            iIndex = utilities.end_of_line_index(oPreviousLine)
+            iIndex = utils.end_of_line_index(oPreviousLine)
             oPreviousLine.update_line(oPreviousLine.line[:iIndex] + ' else' + oPreviousLine.line[iIndex:])
-            utilities.clear_keyword_from_line(oLine, 'else')
+            utils.clear_keyword_from_line(oLine, 'else')

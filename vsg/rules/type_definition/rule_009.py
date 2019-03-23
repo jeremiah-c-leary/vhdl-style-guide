@@ -1,6 +1,6 @@
 
 from vsg import rule
-from vsg import utilities
+from vsg import utils
 
 import re
 
@@ -22,7 +22,7 @@ class rule_009(rule.rule):
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:
-            utilities.split_line_after_word(oFile, iLineNumber, '(')
+            utils.split_line_after_word(oFile, iLineNumber, '(')
             oLine = oFile.lines[iLineNumber + 1]
             oLine.isTypeKeyword = False
             oLine.isTypeEnumeratedKeyword = False

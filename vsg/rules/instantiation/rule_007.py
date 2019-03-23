@@ -1,7 +1,7 @@
 
 from vsg import rule
 from vsg import line
-from vsg import utilities
+from vsg import utils
 
 
 class rule_007(rule.rule):
@@ -22,7 +22,7 @@ class rule_007(rule.rule):
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:
-            oFile.lines[iLineNumber].line = utilities.remove_closing_parenthesis_and_semicolon(oFile.lines[iLineNumber].line)
+            oFile.lines[iLineNumber].line = utils.remove_closing_parenthesis_and_semicolon(oFile.lines[iLineNumber].line)
             oFile.lines[iLineNumber].isInstantiationPortEnd = False
             oFile.lines.insert(iLineNumber + 1, line.line('  );'))
             oFile.lines[iLineNumber + 1].isInstantiationPortAssignement = False

@@ -1,6 +1,6 @@
 
 from vsg import rule
-from vsg import utilities
+from vsg import utils
 
 import re
 
@@ -23,4 +23,4 @@ class rule_021(rule.rule):
         for iLineNumber in self.violations[::-1]:
             oLine = oFile.lines[iLineNumber]
             oLine.update_line(re.sub('port', 'port (', oLine.line, 1, re.IGNORECASE))
-            utilities.search_for_and_remove_keyword(oFile, iLineNumber, '\(')
+            utils.search_for_and_remove_keyword(oFile, iLineNumber, '\(')

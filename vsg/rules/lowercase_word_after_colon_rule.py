@@ -2,7 +2,7 @@
 from vsg import rule
 from vsg import fix
 from vsg import check
-from vsg import utilities
+from vsg import utils
 
 import re
 
@@ -40,7 +40,7 @@ class lowercase_word_after_colon_rule(rule.rule):
         if oLine.__dict__[self.sTrigger] and re.match('^.*:\s*\w', oLine.lineLower):
             sLine = oLine.line.split(':')[1].lstrip().split()[0].split('(')[0]
             if self.bVhdlKeyword:
-                if utilities.is_vhdl_keyword(sLine):
+                if utils.is_vhdl_keyword(sLine):
                     self.dVars[iLineNumber] = sLine
                     check.is_lowercase(self, sLine, iLineNumber)
             else:

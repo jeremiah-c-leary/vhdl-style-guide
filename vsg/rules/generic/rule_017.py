@@ -2,7 +2,7 @@
 from vsg import rule
 from vsg import check
 from vsg import fix
-from vsg import utilities
+from vsg import utils
 
 
 class rule_017(rule.rule):
@@ -22,7 +22,7 @@ class rule_017(rule.rule):
             sLine = oLine.line.split(':')[1].lstrip()
             if '(' in sLine:
                 sLine = sLine.split('(')[0].rstrip()
-            if utilities.is_vhdl_keyword(sLine.split()[0]):
+            if utils.is_vhdl_keyword(sLine.split()[0]):
                 check.is_lowercase(self, sLine.split()[0], iLineNumber)
 
     def _fix_violations(self, oFile):

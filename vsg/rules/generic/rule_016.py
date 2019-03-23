@@ -1,6 +1,6 @@
 
 from vsg import rule
-from vsg import utilities
+from vsg import utils
 
 import re
 
@@ -24,4 +24,4 @@ class rule_016(rule.rule):
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:
             for i in range(0, oFile.lines[iLineNumber].line.count(';')):
-                utilities.split_line_after_word(oFile, iLineNumber + i, ';')
+                utils.split_line_after_word(oFile, iLineNumber + i, ';')

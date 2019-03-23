@@ -1,6 +1,6 @@
 
 from vsg import rule
-from vsg import utilities
+from vsg import utils
 
 
 class rule_023(rule.rule):
@@ -19,5 +19,5 @@ class rule_023(rule.rule):
             sLine = oLine.line.split(':')[1]
             if '(' in sLine:
                 sLine = sLine.split('(')[0]
-            if not utilities.is_port_mode(sLine.split()[0]):
+            if not utils.is_port_mode(sLine.split()[0]):
                 self.add_violation(iLineNumber)

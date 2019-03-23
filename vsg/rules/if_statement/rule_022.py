@@ -1,6 +1,6 @@
 
 from vsg import rule
-from vsg import utilities
+from vsg import utils
 
 import re
 
@@ -21,12 +21,12 @@ class rule_022(rule.rule):
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:
-            utilities.split_line_after_word(oFile, iLineNumber, 'else')
+            utils.split_line_after_word(oFile, iLineNumber, 'else')
             oFile.lines[iLineNumber + 1].isElseKeyword = False
             oFile.lines[iLineNumber].isIfKeyword = False
             oFile.lines[iLineNumber].isElseIfKeyword = False
             oFile.lines[iLineNumber].isThenKeyword = False
             oFile.lines[iLineNumber + 1].indentLevel += 1
             oFile.lines[iLineNumber].isLastEndIf = False
-            utilities.reclassify_line(oFile, iLineNumber)
+            utils.reclassify_line(oFile, iLineNumber)
             oFile.lines[iLineNumber + 1].isFirstIf = False

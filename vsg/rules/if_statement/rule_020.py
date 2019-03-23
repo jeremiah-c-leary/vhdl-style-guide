@@ -1,6 +1,6 @@
 
 from vsg import rule
-from vsg import utilities
+from vsg import utils
 
 import re
 
@@ -21,7 +21,7 @@ class rule_020(rule.rule):
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:
-            utilities.split_line_before_word(oFile, iLineNumber, 'end')
+            utils.split_line_before_word(oFile, iLineNumber, 'end')
             oFile.lines[iLineNumber].isEndIfKeyword = False
             oFile.lines[iLineNumber].isLastEndIf = False
             oFile.lines[iLineNumber + 1].isIfKeyword = False

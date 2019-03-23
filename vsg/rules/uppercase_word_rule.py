@@ -2,7 +2,7 @@
 from vsg import rule
 from vsg import fix
 from vsg import check
-from vsg import utilities
+from vsg import utils
 
 
 class uppercase_word_rule(rule.rule):
@@ -34,7 +34,7 @@ class uppercase_word_rule(rule.rule):
 
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.__dict__[self.sTrigger]:
-            sWord = utilities.remove_parenthesis_from_word(oLine.line.split()[self.iIndex])
+            sWord = utils.remove_parenthesis_from_word(oLine.line.split()[self.iIndex])
             check.is_uppercase(self, sWord, iLineNumber)
 
     def _fix_violations(self, oFile):

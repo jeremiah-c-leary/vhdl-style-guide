@@ -1,5 +1,5 @@
 
-from vsg import utilities
+from vsg import utils
 
 
 class line():
@@ -25,7 +25,7 @@ class line():
     def __init__(self, line):
         self.line = line
         self.lineLower = line.lower()
-        self.lineNoComment = utilities.remove_comment(line)
+        self.lineNoComment = utils.remove_comment(line)
 
         self.indentLevel = None
         # Misc attributes
@@ -224,7 +224,7 @@ class line():
         '''
         self.line = sLine
         self.lineLower = sLine.lower()
-        self.lineNoComment = utilities.remove_comment(sLine)
+        self.lineNoComment = utils.remove_comment(sLine)
 
 
 class blank_line(line):
