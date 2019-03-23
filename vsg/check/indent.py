@@ -19,5 +19,8 @@ def indent(self, oLine, iLineNumber):
 
     '''
     if not oLine.isBlank:
-        if not re.match('^\s{' + str(self.indentSize * oLine.indentLevel) + '}\S', oLine.line):
-            self.add_violation(iLineNumber)
+        try:
+            if not re.match('^\s{' + str(self.indentSize * oLine.indentLevel) + '}\S', oLine.line):
+                self.add_violation(iLineNumber)
+        except TypeError:
+            pass

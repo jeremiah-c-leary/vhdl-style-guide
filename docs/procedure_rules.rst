@@ -183,3 +183,26 @@ This rule checks the indent of line between the **is** and **begin** keywords
    begin
    end procedure AVERAGE_SAMPLES;
 
+procedure_006
+#############
+
+This rule checks the indent of the closing parenthesis if it is on it's own line.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   procedure AVERAGE_SAMPLES (
+     constant a : in integer;
+     signal d : out std_logic
+     ) is
+
+
+**Fix**
+
+.. code-block:: vhdl
+
+   procedure AVERAGE_SAMPLES (
+     constant a : in integer;
+     signal d : out std_logic
+   ) is

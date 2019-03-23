@@ -82,6 +82,7 @@ def _classify_procedure_parameter_end(dVars, oLine, oLinePrevious):
         dVars['iCloseParenthesis'] = 0
         if re.match('^\s*\)\s*is', oLine.line, re.IGNORECASE):
             oLinePrevious.isProcedureParameterEnd = True
+            oLine.indentLevel = dVars['iCurrentIndentLevel'] - 1
         else:
             oLine.isProcedureParameterEnd = True
         dVars['fProcedureParameterEndDetected'] = True

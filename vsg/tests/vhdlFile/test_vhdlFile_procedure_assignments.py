@@ -123,3 +123,15 @@ class testVhdlFileProcedureAssignments(unittest.TestCase):
                 lActual.append(iIndex)  # pragma: no cover
         # Compare
         self.assertEqual(lActual, lExpected)
+
+    def test_ProcedureInsideProcessIndent(self):
+        #           [   0,   1,2,   3,4,   5,6,7,8,9,10,  11]
+        lIndex = []
+        lIndex.extend(range(94, 103))
+        lExpected = [1, None, 2, 3, 2, 2, 2, None, 1]
+        # Generic actual list
+        lActual = []
+        for iIndex in range(94, 103):
+            lActual.append(oFile.lines[iIndex].indentLevel)
+        # Compare
+        self.assertEqual(lActual, lExpected)

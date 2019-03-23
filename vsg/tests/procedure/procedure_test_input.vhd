@@ -95,7 +95,7 @@ package body FIFO_PKG is
 
     procedure test_procedure (
       constant test1_c    : in boolean := true
-    ) is
+     ) is
     begin
     end procedure test_procedure;
 
