@@ -14,11 +14,12 @@ There are several ways to contribute:
 Bug Reports
 ###########
 
-I used code from open cores to develop VSG against.
+I used code from open cores to develop VSG.
+It provided many different coding styles to process.
 There are bound to be some corner cases or incorrect assumptions in the code.
 If you run into anything that is not handled correctly, please submit an issue.
 When creating the issue, use the **bug** label to highlight it.
-I prioritize bugs over feature enhancements.
+Fixing bugs is prioritized over feature enhancements.
 
 Code Base Improvements
 ######################
@@ -28,7 +29,7 @@ The learning part is still on going, and I am sure the code base could be improv
 I run the code through *Codacy* and *Code Climate*, and they are very helpful.
 However, I would appreciate any suggestions to improve the code base.
 
-Create an issue and use the **refactor** label.
+Create an issue and use the **refactor** label for any code which could be improved.
 
 Feature Requests
 ################

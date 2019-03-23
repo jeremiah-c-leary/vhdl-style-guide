@@ -70,7 +70,7 @@ rule
 
 Any attribute of any rule can be configured.
 Using **global** will set the attribute for every rule.
-Each rule is addressable by using it's unique **ruleId** and **ruleNumber** combination.
+Each rule is addressable by using it's unique **ruleId** and **ruleNumber** combination.  For example, whitespace_006 or port_010.
 
 .. NOTE::
    If **global** and unique attributes are set at the same time, the unique attribute will take precedence.

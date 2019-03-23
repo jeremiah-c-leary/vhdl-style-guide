@@ -2,7 +2,7 @@
 Phases
 ------
 
-The rules are grouped together and executed in phases.
+Rules are grouped together and executed in phases.
 If issues are found during a phase, then successive phases will not run.
 The phases are constructed to model the proper order of fixing issues.
 Each phase prepares the code for the next phase.

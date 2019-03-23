@@ -254,7 +254,7 @@ VSG will combine any number of configurations to provide a unique set of rules f
    }
 
 
-Both configuration files can be processed by vsg with the following command:
+Both configuration files can be processed by VSG with the following command:
 
 .. code-block:: bash
 

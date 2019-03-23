@@ -3,9 +3,9 @@ API
 
 VSG was written to be included in other tools.
 The command line script provides one means of using VSG.
-It operates through an API.
+It also provides an example of how to use the API.
 
-Use the following module when incorporating VSG into another program:
+There are two main modules you will use when incorporating VSG into another program:
 
 .. toctree::
 

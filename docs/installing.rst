@@ -8,11 +8,12 @@ PIP
 
 The most recent released version is hosted on PyPI.
 It can be installed using **pip**.
-You can get the latest released version of VSG via **pip**.
 
 .. code-block:: bash
 
   pip install vsg
+
+This is the preferred method for installing VSG.
 
 Git Hub
 -------

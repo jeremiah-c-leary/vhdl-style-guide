@@ -20,5 +20,5 @@ This macro bound to the <F9> key performs the following steps:
 2. Execute vsg with the --fix option
 3. Reload the buffer
 
-Now, when you are editing a file, you can hit <F9> and VSG will run on the current buffer without leaving VIM.
+When you are editing a file, you can hit <F9> and VSG will run on the current buffer without leaving VIM.
 
