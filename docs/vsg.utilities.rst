@@ -1,5 +1,5 @@
 vsg.utilities
 =============
 
-.. automodule:: vsg.utilities
+.. automodule:: vsg.utils
    :members:
