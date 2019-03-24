@@ -130,3 +130,24 @@ package FIFO_PKG is
     signal c : integer) return integer;
 
 end package FIFO_PKG;
+
+architecture A of TEST is
+
+  function getconstdata return std_ulogic_vector is
+  begin
+    return x"4";
+  end function getconstdata;
+
+  pure function getconstdata return std_ulogic_vector is
+  begin
+    return x"4";
+  end function getconstdata;
+
+  impure function getconstdata return std_ulogic_vector is
+  begin
+    return x"4";
+  end function getconstdata;
+
+begin
+
+end architecture A;

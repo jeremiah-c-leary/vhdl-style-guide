@@ -18,7 +18,7 @@ class rule_003(rule.rule):
         self.phase = 2
 
     def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isFunctionKeyword:
+        if oLine.isFunctionKeyword and function_has_parameters(oLine.line):
             if not re.match('^\s*function\s+\w+\s\(', oLine.lineLower) and \
                not re.match('^\s*impure\s+function\s+\w+\s\(', oLine.lineLower) and \
                not re.match('^\s*pure\s+function\s+\w+\s\(', oLine.lineLower):
@@ -27,3 +27,12 @@ class rule_003(rule.rule):
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
             fix.enforce_one_space_before_word(self, oFile.lines[iLineNumber], '\(')
+
+
+def function_has_parameters(sString):
+    if re.match('^\s*function\s+\w+\s*\(', sString, re.IGNORECASE) or \
+       re.match('^\s*[impure|pure]\s+function\s+\w+\s*\(', sString, re.IGNORECASE):
+        return True
+    else:
+        return False
+
