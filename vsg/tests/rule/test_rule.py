@@ -98,3 +98,23 @@ class testRuleMethods(unittest.TestCase):
         self.assertEqual(oRule.report_violations(1, 'vsg', 'filename', True), 0)
         oRule.add_violation(1)
         self.assertEqual(oRule.report_violations(1, 'vsg', 'filename', True), 1)
+
+    def test_get_configuration(self):
+        oRule = rule.rule()
+        oRule.name = 'xyz'
+        oRule.identifier = '010'
+        oRule.disable = False
+        oRule.fixable = True
+        oRule.phase = 3
+        dExpected = {}
+        dExpected['xyz_010'] = {}
+        dExpected['xyz_010']['disable'] = False
+        dExpected['xyz_010']['fixable'] = True
+        dExpected['xyz_010']['indentSize'] = 2
+        dExpected['xyz_010']['phase'] = 3
+        dActual = oRule.get_configuration()
+        for sKey in dExpected['xyz_010'].keys():
+            self.assertEqual(dActual['xyz_010'][sKey], dExpected['xyz_010'][sKey])
+        for sKey in dActual['xyz_010'].keys():
+            self.assertEqual(dActual['xyz_010'][sKey], dExpected['xyz_010'][sKey])
+        

@@ -95,3 +95,13 @@ class rule():
             if len(oLine.codeTags['vsg_off']) == 0 or self.name + '_' + self.identifier in oLine.codeTags['vsg_off']:
                 return True
         return False
+
+    def get_configuration(self):
+        dConfig = {}
+        sId = self.name + '_' + self.identifier
+        dConfig[sId] = {}
+        dConfig[sId]['disable'] = self.disable
+        dConfig[sId]['fixable'] = self.fixable
+        dConfig[sId]['indentSize'] = self.indentSize
+        dConfig[sId]['phase'] = self.phase
+        return dConfig
