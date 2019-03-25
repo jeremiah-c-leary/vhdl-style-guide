@@ -21,14 +21,14 @@ Entities
 
   entity GRP_DEBOUNCER is
     generic (
-      N       : positive := 8;                                                      -- input bus width
-      CNT_VAL : positive := 10000                                                   -- clock counts for debounce period
+      N       : positive := 8;                      -- input bus width
+      CNT_VAL : positive := 10000                   -- clock counts for debounce period
     );
     port (
-      CLK_I  : in    std_logic := 'X';                                              -- system clock
-      DATA_I : in    std_logic_vector(N - 1 downto 0) := (others => 'X');           -- noisy input data
-      DATA_O : out   std_logic_vector(N - 1 downto 0);                              -- registered stable output data
-      STRB_O : out   std_logic                                                      -- strobe for new data available
+      CLK_I  : in    std_logic := 'X';              -- system clock
+      DATA_I : in    std_logic_vector(1 downto 0)   -- noisy input data
+      DATA_O : out   std_logic_vector(1 downto 0);  -- registered stable output data
+      STRB_O : out   std_logic                      -- strobe for new data available
     );
   end entity GRP_DEBOUNCER;
 
@@ -40,8 +40,8 @@ Architectures
   architecture BEHAVIORAL of PIC is
   
     type state_type is (
-      reset_s, get_commands, jump_int_method, start_polling, tx_int_info_polling, ack_ISR_done,
-      ack_txinfo_rxd, start_priority_check, tx_int_info_priority, ack_txinfo_rxd_priority, ack_ISR_done_pt
+      reset_s, get_commands, jump_int_method, start_polling,
+      ack_txinfo_rxd, start_priority_check, tx_int_info_priority
     );
   
     signal next_s               : state_type :=reset_s;
@@ -52,7 +52,7 @@ Architectures
   
     signal pt                   : prior_table := (others => (others => '0'));
     signal int_pt               : unsigned(2 downto 0):="000";
-    signal flag,      flag1     : std_logic := '0';  --These flags are used for timing purposes.
+    signal flag,      flag1     : std_logic := '0';
   
   begin
   

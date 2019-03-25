@@ -76,7 +76,7 @@ The command line tool can be invoked with:
 | --output_configuration        | Writes a JSON configuration file of the current |
 |                               | run.  It includes a file_list, local_rules (if  |
 |                               | used), and how every rule was configured.       |
-|                               | This configuration can be re-fed back into VSG. |
+|                               | This configuration can be fed back into VSG.    |
 +-------------------------------+-------------------------------------------------+
 
 
