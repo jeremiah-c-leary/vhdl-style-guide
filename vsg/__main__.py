@@ -182,9 +182,12 @@ def main():
 
     if commandLineArguments.output_configuration:
         dOutputConfiguration = {}
+        dOutputConfiguration['cwd'] = os.getcwd()
         dOutputConfiguration['file_list'] = []
         for sFileName in commandLineArguments.filename:
             dOutputConfiguration['file_list'].append(sFileName)
+        if commandLineArguments.local_rules:
+            dOutputConfiguration['local_rules'] = commandLineArguments.local_rules
         dOutputConfiguration['rule'] = oRules.get_configuration();
         with open(commandLineArguments.output_configuration, 'w') as json_file:
             json.dump(dOutputConfiguration, json_file, sort_keys=True, indent=2)
