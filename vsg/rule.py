@@ -13,6 +13,7 @@ class rule():
         self.fixable = True
         self.dFix = {}
         self.dFix['violations'] = {}
+        self.configuration = ['indentSize', 'phase', 'disable', 'fixable']
 
     def configure(self, dConfiguration):
         '''Configures attributes on rules using a dictionary of the following form:
@@ -98,8 +99,6 @@ class rule():
 
     def get_configuration(self):
         dConfig = {}
-        dConfig['disable'] = self.disable
-        dConfig['fixable'] = self.fixable
-        dConfig['indentSize'] = self.indentSize
-        dConfig['phase'] = self.phase
+        for sParameter in self.configuration:
+            dConfig[sParameter] = getattr(self, sParameter)
         return dConfig

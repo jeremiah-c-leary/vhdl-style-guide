@@ -18,6 +18,7 @@ class rule_011(rule.rule):
         self.port_direction = None
         self.phase = 7
         self.fixable = False  # This requires the user to fix as this could cover multiple files.
+        self.configuration.append('port_direction')
 
     def analyze(self, oFile):
         select_solution(self)

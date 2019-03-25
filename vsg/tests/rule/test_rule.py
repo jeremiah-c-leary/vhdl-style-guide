@@ -103,8 +103,6 @@ class testRuleMethods(unittest.TestCase):
         oRule = rule.rule()
         oRule.name = 'xyz'
         oRule.identifier = '010'
-        oRule.disable = False
-        oRule.fixable = True
         oRule.phase = 3
         dExpected = {}
         dExpected['disable'] = False
@@ -112,8 +110,8 @@ class testRuleMethods(unittest.TestCase):
         dExpected['indentSize'] = 2
         dExpected['phase'] = 3
         dActual = oRule.get_configuration()
-        for sKey in dExpected['xyz_010'].keys():
-            self.assertEqual(dActual['xyz_010'][sKey], dExpected['xyz_010'][sKey])
-        for sKey in dActual['xyz_010'].keys():
-            self.assertEqual(dActual['xyz_010'][sKey], dExpected['xyz_010'][sKey])
+        for sKey in dExpected.keys():
+            self.assertEqual(dActual[sKey], dExpected[sKey])
+        for sKey in dActual.keys():
+            self.assertEqual(dActual[sKey], dExpected[sKey])
         
