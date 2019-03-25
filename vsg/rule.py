@@ -98,10 +98,8 @@ class rule():
 
     def get_configuration(self):
         dConfig = {}
-        sId = self.name + '_' + self.identifier
-        dConfig[sId] = {}
-        dConfig[sId]['disable'] = self.disable
-        dConfig[sId]['fixable'] = self.fixable
-        dConfig[sId]['indentSize'] = self.indentSize
-        dConfig[sId]['phase'] = self.phase
+        dConfig['disable'] = self.disable
+        dConfig['fixable'] = self.fixable
+        dConfig['indentSize'] = self.indentSize
+        dConfig['phase'] = self.phase
         return dConfig

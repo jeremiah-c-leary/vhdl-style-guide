@@ -31,6 +31,7 @@ def parse_command_line_arguments():
     parser.add_argument('-j', '--junit', action='store', help='Extract Junit file')
     parser.add_argument('-of', '--output_format', action='store', default='vsg', choices=['vsg', 'syntastic'], help='Sets the output format.')
     parser.add_argument('-b', '--backup', default=False, action='store_true', help='Creates copy of input file for comparison with fixed version.')
+    parser.add_argument('-oc', '--output_configuration', default=None, action='store', help='Output configuration file name')
 
     if len(sys.argv) == 1:
         parser.print_help()
@@ -178,6 +179,16 @@ def main():
     if commandLineArguments.junit:
         oJunitFile.add_testsuite(oJunitTestsuite)
         write_junit_xml_file(oJunitFile)
+
+    if commandLineArguments.output_configuration:
+        dOutputConfiguration = {}
+        dOutputConfiguration['file_list'] = []
+        for sFileName in commandLineArguments.filename:
+            dOutputConfiguration['file_list'].append(sFileName)
+        dOutputConfiguration['rule'] = oRules.get_configuration();
+        with open(commandLineArguments.output_configuration, 'w') as json_file:
+            json.dump(dOutputConfiguration, json_file, sort_keys=True, indent=2)
+
 
     sys.exit(0)
 

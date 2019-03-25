@@ -215,3 +215,19 @@ class rule_list():
                 oTestcase.add_failure(oFailure)
 
         return oTestcase
+
+    def get_configuration(self):
+        '''
+        Returns a dictionary with every rule and how it is configured.
+
+        Parameters:
+
+          None
+
+        Returns: (dictionary)
+        '''
+        dConfiguration = {}
+        for oRule in self.rules:
+            sId = oRule.name + '_' + oRule.identifier
+            dConfiguration[sId] = oRule.get_configuration()
+        return dConfiguration
