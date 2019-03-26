@@ -140,6 +140,18 @@ def is_vhdl_keyword(sWord):
     lKeywords.append('unsigned')
     lKeywords.append('natural')
     lKeywords.append('std_ulogic')
+    lKeywords.append('event')
+    lKeywords.append('is')
+    lKeywords.append('end')
+    lKeywords.append('entity')
+    lKeywords.append('architecture')
+    lKeywords.append('begin')
+    lKeywords.append('process')
+    lKeywords.append('downto')
+    lKeywords.append('others')
+    lKeywords.append('signal')
+    lKeywords.append('else')
+    lKeywords.append('when')
 
     sWord = remove_text_after_word(')', sWord)
     sWord = remove_text_after_word(';', sWord)
@@ -358,3 +370,46 @@ def remove_closing_parenthesis_and_semicolon(oLine):
     Returns: (line object)
     '''
     return re.sub(r'\)(\s*);', r' \1 ', oLine)
+
+
+def extract_keywords(sString):
+    '''
+    Returns a keyword list with the following removed:
+       :'s
+       commas
+       semicolons
+       vhdl keywords
+       double quotes
+       numbers
+       ticks
+       comments
+
+    Parameters:
+
+       sString: (string)
+
+    Returns: (list of strings)
+    '''
+    lReturn = []
+    sMyString = remove_comment(sString).replace('--', ' ')
+    sMyString = sMyString.replace(':',' ')
+    sMyString = sMyString.replace(',',' ')
+    sMyString = sMyString.replace('\'', ' ')
+    sMyString = sMyString.replace('(', ' ')
+    sMyString = sMyString.replace(')', ' ')
+    sMyString = sMyString.replace(';', ' ')
+    sMyString = sMyString.replace('=', ' ')
+    sMyString = sMyString.replace('>', ' ')
+    sMyString = sMyString.replace('<', ' ')
+    sMyString = re.sub('x".*"', ' ', sMyString)
+    sMyString = re.sub('X".*"', ' ', sMyString)
+    
+
+    for sWord in sMyString.split():
+        if sWord.isnumeric():
+            continue
+        if not is_vhdl_keyword(sWord):
+            lReturn.append(sWord)
+
+    return lReturn
+      
