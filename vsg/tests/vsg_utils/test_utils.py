@@ -23,3 +23,95 @@ class testUtilsProcedures(unittest.TestCase):
         lExpected = ['Gr3th', 'signal1']
         self.assertEqual(lExpected, utils.extract_keywords(sString))
 
+        sString = '  sig1 x"000_000" sig2 when x"1100_0000"--Comment  '
+        lExpected = ['sig1', 'sig2']
+        self.assertEqual(lExpected, utils.extract_keywords(sString))
+
+        sString = '  port map sig1 generic sig2 map (); '
+        lExpected = ['sig1', 'sig2']
+        self.assertEqual(lExpected, utils.extract_keywords(sString))
+
+        sString = ' sig1 abs  downto  library  sig2 postponed   srl '
+        lExpected = ['sig1', 'sig2']
+        self.assertEqual(lExpected, utils.extract_keywords(sString))
+
+        sString = ' sig1 access   else  linkage sig2  procedure  subtype '
+        lExpected = ['sig1', 'sig2']
+        self.assertEqual(lExpected, utils.extract_keywords(sString))
+
+        sString = ' sig1 after   elsif  literal sig2  process  then '
+        lExpected = ['sig1', 'sig2']
+        self.assertEqual(lExpected, utils.extract_keywords(sString))
+
+        sString = ' sig1 alias   end  loop  pure  sig2  to '
+        lExpected = ['sig1', 'sig2']
+        self.assertEqual(lExpected, utils.extract_keywords(sString))
+
+        sString = ' sig1 all   entity  map  range sig2  transport '
+        lExpected = ['sig1', 'sig2']
+        self.assertEqual(lExpected, utils.extract_keywords(sString))
+
+        sString = ' sig1 and  exit  mod  record sig2  type '
+        lExpected = ['sig1', 'sig2']
+        self.assertEqual(lExpected, utils.extract_keywords(sString))
+
+        sString = ' sig1 architecture  file   nand sig2 register   unaffected '
+        lExpected = ['sig1', 'sig2']
+        self.assertEqual(lExpected, utils.extract_keywords(sString))
+
+        sString = ' sig1 array  for  new   reject sig2  units '
+        lExpected = ['sig1', 'sig2']
+        self.assertEqual(lExpected, utils.extract_keywords(sString))
+
+        sString = ' sig1 assert   function  next sig2 rem  until '
+        lExpected = ['sig1', 'sig2']
+        self.assertEqual(lExpected, utils.extract_keywords(sString))
+
+        sString = ' sig1 attribute  generate  nor sig2  report   use '
+        lExpected = ['sig1', 'sig2']
+        self.assertEqual(lExpected, utils.extract_keywords(sString))
+
+        sString = ' sig1 begin  generic  not  return sig2 variable '
+        lExpected = ['sig1', 'sig2']
+        self.assertEqual(lExpected, utils.extract_keywords(sString))
+
+        sString = ' sig1 block  group   null sig2  rol   wait '
+        lExpected = ['sig1', 'sig2']
+        self.assertEqual(lExpected, utils.extract_keywords(sString))
+
+        sString = ' sig1 body  guarded   of sig2  ror   when '
+        lExpected = ['sig1', 'sig2']
+        self.assertEqual(lExpected, utils.extract_keywords(sString))
+
+        sString = ' sig1 buffer  if  on   select sig2  while '
+        lExpected = ['sig1', 'sig2']
+        self.assertEqual(lExpected, utils.extract_keywords(sString))
+
+        sString = ' sig1 bus   impure sig2  open   severity   with '
+        lExpected = ['sig1', 'sig2']
+        self.assertEqual(lExpected, utils.extract_keywords(sString))
+
+        sString = ' sig1 case  in  or sig2 shared   xnor '
+        lExpected = ['sig1', 'sig2']
+        self.assertEqual(lExpected, utils.extract_keywords(sString))
+
+        sString = ' sig1 component  inertial sig2 others  signal  xor '
+        lExpected = ['sig1', 'sig2']
+        self.assertEqual(lExpected, utils.extract_keywords(sString))
+
+        sString = ' sig1 configuration  inout sig2 out  sla '
+        lExpected = ['sig1', 'sig2']
+        self.assertEqual(lExpected, utils.extract_keywords(sString))
+
+        sString = ' sig1 constant  is  package sig2 sll '
+        lExpected = ['sig1', 'sig2']
+        self.assertEqual(lExpected, utils.extract_keywords(sString))
+
+        sString = ' sig1 disconnect  label sig2  port  sra '
+        lExpected = ['sig1', 'sig2']
+        self.assertEqual(lExpected, utils.extract_keywords(sString))
+
+        sString = ' sig1 * & sig2 ** - + / '
+        lExpected = ['sig1', 'sig2']
+        self.assertEqual(lExpected, utils.extract_keywords(sString))
+
