@@ -10,7 +10,7 @@ oFileVariable = vhdlFile.vhdlFile(lFileVariable)
 class testVhdlFileMethods(unittest.TestCase):
 
     def test_isVariable_assignment(self):
-        lExpected = [5,6,7,8,9,10,11,12,13,14,15,16,18,19,20,21,27,28,29,37,38,39,47,48,49]
+        lExpected = [5,6,7,8,9,10,11,12,13,14,15,16,18,19,20,21,27,28,29,37,38,39,47,48,49,57]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFileVariable.lines):

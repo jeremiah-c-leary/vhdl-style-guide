@@ -326,7 +326,7 @@ begin
   -- generate the 2x spi base clock enable from the serial high-speed input clock
   SPI_2X_CE_GEN_PROC : process (sclk_i) is
 
-    variable clk_cnt : integer range spi_2x_clk_div - 1 downto 0 := 0;
+    variable clk_cnt : integer range SPI_2X_CLK_DIV - 1 downto 0 := 0;
 
   begin
 

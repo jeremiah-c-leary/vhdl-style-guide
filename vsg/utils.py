@@ -497,7 +497,8 @@ def extract_non_keywords(sString):
     
 
     for sWord in sMyString.split():
-        if sWord.isnumeric():
+        if re.match('[0-9]+', sWord):
+#        if sWord.isnumeric():
             continue
         if not is_vhdl_keyword(sWord):
             lReturn.append(sWord)

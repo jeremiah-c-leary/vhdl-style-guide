@@ -52,4 +52,12 @@ begin
 
   end process PROC_3;
 
+  PROC_4 : process(C) is
+ 
+    variable clk_cnt : integer range SPI_2X_CLK_DIV - 1 downto 0;
+
+  begin
+
+  end process PROC_4;
+
 end architecture ARCH;

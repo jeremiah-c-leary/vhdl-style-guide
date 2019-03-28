@@ -20,6 +20,7 @@ class rule_010(rule.rule):
         if oLine.isVariable:
             if re.match('^\s*variable\s+.*:\s*\w', oLine.lineLower):
                 sLine = oLine.line.split(':')[1].lstrip().rstrip().replace(';', '')
+                sLine = re.sub('range\s+.*$', ' ', sLine)
                 if '(' in sLine:
                     check.is_lowercase(self, sLine.split('(')[0], iLineNumber)
                 else:
