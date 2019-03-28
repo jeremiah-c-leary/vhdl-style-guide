@@ -1,5 +1,5 @@
-Example Formatting
-------------------
+Gallery
+-------
 
 The examples shown below illustrate the formatting enforced by VSG.
 They show a subset of the rules:

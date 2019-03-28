@@ -11,7 +11,7 @@ Welcome to vhdl-style-guide's documentation!
    :caption: Contents:
 
    overview
-   example_formatting
+   gallery
    installing
    usage
    configuring
