@@ -458,7 +458,7 @@ def remove_closing_parenthesis_and_semicolon(oLine):
     return re.sub(r'\)(\s*);', r' \1 ', oLine)
 
 
-def extract_keywords(sString):
+def extract_non_keywords(sString):
     '''
     Returns a keyword list with the following removed:
        :'s
