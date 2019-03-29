@@ -25,3 +25,15 @@ class rule_001(rule.rule):
             else:
                 if not sWord in self.lCaseWords:
                     self.add_violation(iLineNumber)
+                    try:
+                        self.dFix['violations'][iLineNumber].append(sWord)
+                    except KeyError:
+                        self.dFix['violations'][iLineNumber] = []
+                        self.dFix['violations'][iLineNumber].append(sWord)
+
+    def _get_solution(self, iLineNumber):
+        if len(self.dFix['violations'][iLineNumber]) > 1:
+            sSolution = self.solution + 's: ' + ', '.join(self.dFix['violations'][iLineNumber])
+        else:
+            sSolution = self.solution + ': ' + ', '.join(self.dFix['violations'][iLineNumber])
+        return sSolution
