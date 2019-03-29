@@ -44,7 +44,7 @@ class rule():
                         sOutputString += ' | '
                         sOutputString += str(sViolation).rjust(10)
                         sOutputString += ' | '
-                        sOutputString += self.solution
+                        sOutputString += self._get_solution(iLineNumber)
                     else:
                         sOutputString = 'ERROR: '
                         sOutputString += sFileName
@@ -53,7 +53,7 @@ class rule():
                         sOutputString += ')'
                         sOutputString += self.name + '_' + self.identifier
                         sOutputString += ' -- '
-                        sOutputString += self.solution
+                        sOutputString += self._get_solution(iLineNumber)
                     print(sOutputString)
                 return 1
         return 0
@@ -102,3 +102,6 @@ class rule():
         for sParameter in self.configuration:
             dConfig[sParameter] = getattr(self, sParameter)
         return dConfig
+
+    def _get_solution(self, iLineNumber):
+        return self.solution
