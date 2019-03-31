@@ -26,8 +26,8 @@ architecture BEHAVIORAL of SYNCHRONIZER is
   constant tbp : std_logic_vector(1 downto 0) := "01";
   constant tdp : std_logic_vector(1 downto 0) := "10";
   constant tfp : std_logic_vector(1 downto 0) := "11";
-  signal xstate                  : std_logic_vector(1 downto 0) := TPW;
-  signal ystate                  : std_logic_vector(1 downto 0) := TPW;
+  signal xstate                  : std_logic_vector(1 downto 0) := tpw;
+  signal ystate                  : std_logic_vector(1 downto 0) := tpw;
   signal enabledisplay           : std_logic;
   signal addressofy, naddressofy : std_logic_vector(8 downto 0);
 
@@ -36,11 +36,11 @@ begin
   nx            <= x + 1;
   ny            <= y + 1;
   naddressofy   <= addressofy + 1;
-  HS            <= '0' when xstate=TPW else
+  HS            <= '0' when xstate=tpw else
                    '1';
-  VS            <= '0' when ystate=TPW else
+  VS            <= '0' when ystate=tpw else
                    '1';
-  enabledisplay <= '1' when xstate=TDP and ystate=TDP else
+  enabledisplay <= '1' when xstate=tdp and ystate=tdp else
                    '0';
   R             <= dataIn(0) when enabledisplay='1' else
                    '0';
@@ -55,36 +55,36 @@ begin
   begin
 
     if (Clk'event and Clk = '1') then
-      if (xstate=TPW and x(7 downto 1)="1100000") then
+      if (xstate=tpw and x(7 downto 1)="1100000") then
         x      <= (others=>'0');
-        xstate <= TBP;
-      elsif (xstate=TBP and x(6 downto 1)="110000") then
+        xstate <= tbp;
+      elsif (xstate=tbp and x(6 downto 1)="110000") then
         x      <= (others=>'0');
-        xstate <= TDP;
-      elsif (xstate=TDP and x(10 downto 1)="1010000000") then
+        xstate <= tdp;
+      elsif (xstate=tdp and x(10 downto 1)="1010000000") then
         x      <= (others=>'0');
-        xstate <= TFP;
-      elsif (xstate=TFP and x(5 downto 1)="10000") then
+        xstate <= tfp;
+      elsif (xstate=tfp and x(5 downto 1)="10000") then
         x          <= (others=>'0');
-        xstate     <= TPW;
+        xstate     <= tpw;
         addressofy <= naddressofy;
       else
         x <= nx;
       end if;
-      if (ystate=TPW and y(12 downto 1)="11001000000") then
+      if (ystate=tpw and y(12 downto 1)="11001000000") then
         y      <= (others=>'0');
-        ystate <= TBP;
-      elsif (ystate=TBP and y(16 downto 1)="101101010100000") then
+        ystate <= tbp;
+      elsif (ystate=tbp and y(16 downto 1)="101101010100000") then
         y      <= (others=>'0');
-        ystate <= TDP;
-      elsif (ystate=TDP and y(20 downto 1)="1011101110000000000") then
+        ystate <= tdp;
+      elsif (ystate=tdp and y(20 downto 1)="1011101110000000000") then
         y      <= (others=>'0');
-        ystate <= TFP;
-      elsif (ystate=TFP and y(14 downto 1)="1111101000000") then
+        ystate <= tfp;
+      elsif (ystate=tfp and y(14 downto 1)="1111101000000") then
         y          <= (others=>'0');
         x          <= (others=>'0');
-        ystate     <= TPW;
-        xstate     <= TPW;
+        ystate     <= tpw;
+        xstate     <= tpw;
         addressofy <= (others=>'0');
       else
         y <= ny;

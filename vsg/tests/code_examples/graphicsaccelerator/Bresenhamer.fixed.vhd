@@ -87,21 +87,21 @@ begin
                        p + t_2dx + t_2dy;
   p_8               <= p + t_2neg_dy when p(11)='1' else
                        p + t_2neg_dy + t_2neg_dx;
-  X                 <= ccounter(9 downto 0) when state = CLEAR else
+  X                 <= ccounter(9 downto 0) when state = clear else
                        myx1(9 downto 0);
-  Y                 <= ccounter(18 downto 10) when state = CLEAR else
+  Y                 <= ccounter(18 downto 10) when state = clear else
                        myy1(8 downto 0);
   SS                <= state;
-  WriteEnable       <= '0' when state = IDLE or state = INIT else
+  WriteEnable       <= '0' when state = idle or state = init else
                        '1';
 
   process (Clk) is
   begin
 
     if (Clk'event and Clk = '1') then
-      if (state = IDLE) then
+      if (state = idle) then
         if (Reset = '1') then
-          state    <= CLEAR;
+          state    <= clear;
           ccounter <= (others=>'0');
         elsif (StartDraw = '1') then
           myx1(9 downto 0)   <= X1;
@@ -114,37 +114,37 @@ begin
           myy2(11 downto 9)  <= "000";
           dx                 <= ndx;
           dy                 <= ndy;
-          state              <= INIT;
+          state              <= init;
         end if;
-      elsif (state = INIT) then
+      elsif (state = init) then
         if (dx(11) = '0' and dy(11) = '0' and dx_minus_dy(11) = '0') then
-          state <= CASE1;
+          state <= case1;
           p     <= p0_1;
         elsif (dx(11) = '0' and dy(11) = '0' and dx_minus_dy(11) = '1') then
-          state <= CASE2;
+          state <= case2;
           p     <= p0_2;
         elsif (dx(11) = '1' and dy(11) = '0' and minus_dx_minus_dy(11) = '1') then
-          state <= CASE3;
+          state <= case3;
           p     <= p0_3;
         elsif (dx(11) = '1' and dy(11) = '0' and minus_dx_minus_dy(11) = '0') then
-          state <= CASE4;
+          state <= case4;
           p     <= p0_4;
         elsif (dx(11) = '1' and dy(11) = '1' and minus_dx_plus_dy(11) = '0') then
-          state <= CASE5;
+          state <= case5;
           p     <= p0_5;
         elsif (dx(11) = '1' and dy(11) = '1' and minus_dx_plus_dy(11) = '1') then
-          state <= CASE6;
+          state <= case6;
           p     <= p0_6;
         elsif (dx(11) = '0' and dy(11) = '1' and dx_plus_dy(11) = '1') then
-          state <= CASE7;
+          state <= case7;
           p     <= p0_7;
         else
-          state <= CASE8;
+          state <= case8;
           p     <= p0_8;
         end if;
-      elsif (state = CASE1) then
+      elsif (state = case1) then
         if (myx1 = myx2) then
-          state <= IDLE;
+          state <= idle;
         else
           myx1 <= myx1 + 1;
           p    <= p_1;
@@ -152,9 +152,9 @@ begin
             myy1 <= myy1 + 1;
           end if;
         end if;
-      elsif (state = CASE2) then
+      elsif (state = case2) then
         if (myy1 = myy2) then
-          state <= IDLE;
+          state <= idle;
         else
           myy1 <= myy1 + 1;
           p    <= p_2;
@@ -162,9 +162,9 @@ begin
             myx1 <= myx1 + 1;
           end if;
         end if;
-      elsif (state = CASE3) then
+      elsif (state = case3) then
         if (myy1 = myy2) then
-          state <= IDLE;
+          state <= idle;
         else
           myy1 <= myy1 + 1;
           p    <= p_3;
@@ -172,9 +172,9 @@ begin
             myx1 <= myx1 - 1;
           end if;
         end if;
-      elsif (state = CASE4) then
+      elsif (state = case4) then
         if (myx1 = myx2) then
-          state <= IDLE;
+          state <= idle;
         else
           myx1 <= myx1 - 1;
           p    <= p_4;
@@ -182,9 +182,9 @@ begin
             myy1 <= myy1 + 1;
           end if;
         end if;
-      elsif (state = CASE5) then
+      elsif (state = case5) then
         if (myx1 = myx2) then
-          state <= IDLE;
+          state <= idle;
         else
           myx1 <= myx1 - 1;
           p    <= p_5;
@@ -192,9 +192,9 @@ begin
             myy1 <= myy1 - 1;
           end if;
         end if;
-      elsif (state = CASE6) then
+      elsif (state = case6) then
         if (myy1 = myy2) then
-          state <= IDLE;
+          state <= idle;
         else
           myy1 <= myy1 - 1;
           p    <= p_6;
@@ -202,9 +202,9 @@ begin
             myx1 <= myx1 - 1;
           end if;
         end if;
-      elsif (state = CASE7) then
+      elsif (state = case7) then
         if (myy1 = myy2) then
-          state <= IDLE;
+          state <= idle;
         else
           myy1 <= myy1 - 1;
           p    <= p_7;
@@ -212,9 +212,9 @@ begin
             myx1 <= myx1 + 1;
           end if;
         end if;
-      elsif (state = CASE8) then
+      elsif (state = case8) then
         if (myx1 = myx2) then
-          state <= IDLE;
+          state <= idle;
         else
           myx1 <= myx1 + 1;
           p    <= p_8;
@@ -222,10 +222,10 @@ begin
             myy1 <= myy1 - 1;
           end if;
         end if;
-      elsif (state = CLEAR) then
+      elsif (state = clear) then
         ccounter <= ccounter + 1;
         if (ccounter = "1111111111111111111") then
-          state <= IDLE;
+          state <= idle;
         end if;
       end if;
     end if;

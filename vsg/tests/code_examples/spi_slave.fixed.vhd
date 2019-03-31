@@ -328,13 +328,13 @@ begin
     -- state fsm register (fdr)
     if (spi_ssel_i = '1') then                                     -- async clr
       state_reg <= 0;                                              -- state falls back to idle when slave not selected
-    elsif (spi_sck_i'event and spi_sck_i = SHIFT_EDGE) then        -- on SHIFT edge, update state register
+    elsif (spi_sck_i'event and spi_sck_i = shift_edge) then        -- on SHIFT edge, update state register
       state_reg <= state_next;                                     -- core fsm changes state with spi SHIFT clock
     end if;
 
     -- FFD registers clocked on SHIFT edge
     -- rtl core registers (fd)
-    if (spi_sck_i'event and spi_sck_i = SHIFT_EDGE) then           -- on fsm state change, update all core registers
+    if (spi_sck_i'event and spi_sck_i = shift_edge) then           -- on fsm state change, update all core registers
       sh_reg          <= sh_next;                                  -- core shift register
       do_buffer_reg   <= do_buffer_next;                           -- registered data output
       do_transfer_reg <= do_transfer_next;                         -- cross-clock transfer flag
@@ -346,13 +346,13 @@ begin
     -- miso MUX preload control register (fdp)
     if (spi_ssel_i = '1') then                                     -- async preset
       preload_miso <= '1';                                         -- miso MUX sees top bit of parallel input when slave not selected
-    elsif (spi_sck_i'event and spi_sck_i = CHANGE_EDGE) then       -- on CHANGE edge, change to tx_reg output
+    elsif (spi_sck_i'event and spi_sck_i = change_edge) then       -- on CHANGE edge, change to tx_reg output
       preload_miso <= spi_ssel_i;                                  -- miso MUX sees tx_bit_reg when it is driven by SCK
     end if;
 
     -- FFD registers clocked on CHANGE edge
     -- tx_bit register (fd)
-    if (spi_sck_i'event and spi_sck_i = CHANGE_EDGE) then
+    if (spi_sck_i'event and spi_sck_i = change_edge) then
       tx_bit_reg <= tx_bit_next;                                   -- update MISO driver from the MSb
     end if;
 

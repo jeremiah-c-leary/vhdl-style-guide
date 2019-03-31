@@ -541,3 +541,17 @@ def extract_signal_names(oLine):
     '''
     sLine = oLine.line.split(':')[0]
     return sLine.replace(',', ' ').split()[1:]
+
+
+def extract_constant_name(oLine):
+    '''
+    Returns the name of a constant in a constant declaration.
+
+    Parameters:
+
+       oLine: (line object)
+
+    Returns: (string)
+    '''
+    sLine = oLine.line.split(':')[0]
+    return sLine.split()[1]
