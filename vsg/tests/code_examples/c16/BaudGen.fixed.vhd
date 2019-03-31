@@ -55,12 +55,12 @@ begin
       CE_16 <= '0';    -- make CE_16 stay on for (at most) one cycle
 
       if (RST_I = '1') then
-        COUNTER <= 0;
-      elsif (COUNTER >= limit) then
+        counter <= 0;
+      elsif (counter >= limit) then
         CE_16   <= '1';
-        COUNTER <= COUNTER - limit;
+        counter <= counter - limit;
       else
-        COUNTER <= COUNTER + baud_freq;
+        counter <= counter + baud_freq;
       end if;
     end if;
 

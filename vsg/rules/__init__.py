@@ -29,7 +29,6 @@ from vsg.rules import entity
 from vsg.rules import file_statement
 from vsg.rules import for_loop
 from vsg.rules import function
-from vsg.rules import general
 from vsg.rules import generate
 from vsg.rules import generic
 from vsg.rules import if_statement

@@ -96,10 +96,10 @@ begin
 
       XM_ADR(14 downto 0)  => XM_ADR,
       XM_ADR(15)           => open,
-      XM_RDAT              => XM_RDAT,
-      XM_WDAT              => XM_WDAT,
-      XM_WE                => XM_WE,
-      XM_CE                => XM_CE,
+      XM_RDAT              => xm_rdat,
+      XM_WDAT              => xm_wdat,
+      XM_WE                => xm_we,
+      XM_CE                => xm_ce,
       TEMP_CE              => TEMP_CE,
       TEMP_SCLK            => TEMP_SCLK,
       SEG1                 => SEG1,
@@ -109,73 +109,73 @@ begin
 
   ENABLE_N     <= '0';
   DEACTIVATE_N <= '1';
-  CLK_OUT      <= LCLK;
+  CLK_OUT      <= lclk;
 
-  MEM_T   <= DEL_WE_N;    -- active low
-  WE_N    <= not XM_WE;
-  XM_OE_N <= XM_WE;
-  XM_CE_N <= not XM_CE;
+  mem_t   <= del_we_n;    -- active low
+  we_n    <= not xm_we;
+  XM_OE_N <= xm_we;
+  XM_CE_N <= not xm_ce;
 
   P147 : IOBUF
     port map (
-      I => XM_WDAT(7),
-      O => XM_RDAT(7),
-      T => MEM_T
+      I => xm_wdat(7),
+      O => xm_rdat(7),
+      T => mem_t
     );
 
   P144 : IOBUF
     port map (
-      I => XM_WDAT(0),
-      O => XM_RDAT(0),
-      T => MEM_T
+      I => xm_wdat(0),
+      O => xm_rdat(0),
+      T => mem_t
     );
 
   P142 : IOBUF
     port map (
-      I => XM_WDAT(6),
-      O => XM_RDAT(6),
-      T => MEM_T
+      I => xm_wdat(6),
+      O => xm_rdat(6),
+      T => mem_t
     );
 
   P141 : IOBUF
     port map (
-      I => XM_WDAT(1),
-      O => XM_RDAT(1),
-      T => MEM_T
+      I => xm_wdat(1),
+      O => xm_rdat(1),
+      T => mem_t
     );
 
   P140 : IOBUF
     port map (
-      I => XM_WDAT(5),
-      O => XM_RDAT(5),
-      T => MEM_T
+      I => xm_wdat(5),
+      O => xm_rdat(5),
+      T => mem_t
     );
 
   P139 : IOBUF
     port map (
-      I => XM_WDAT(2),
-      O => XM_RDAT(2),
-      T => MEM_T
+      I => xm_wdat(2),
+      O => xm_rdat(2),
+      T => mem_t
     );
 
   P133 : IOBUF
     port map (
-      I => XM_WDAT(4),
-      O => XM_RDAT(4),
-      T => MEM_T
+      I => xm_wdat(4),
+      O => xm_rdat(4),
+      T => mem_t
     );
 
   P131 : IOBUF
     port map (
-      I => XM_WDAT(3),
-      O => XM_RDAT(3),
-      T => MEM_T
+      I => xm_wdat(3),
+      O => xm_rdat(3),
+      T => mem_t
     );
 
   P63 : IOBUF
     port map (
-      I => WE_N,
-      O => DEL_WE_N,
+      I => we_n,
+      O => del_we_n,
       T => '0'
     );
 
@@ -183,7 +183,7 @@ begin
   begin
 
     if (CLK40'event and CLK40 = '1') then
-      LCLK <= not LCLK;
+      lclk <= not lclk;
     end if;
 
   end process;

@@ -103,10 +103,10 @@ begin
     port map (
       FLIPFLOP    => flipflop,
       Z           => zout1,
-      ZPERM       => zout1Perm
+      ZPERM       => zout1perm
     );
 
-  tmp0 <= zout1Perm(0) & zout1Perm(1) & zout1Perm(2) & zout1Perm(3) & abDel1Perm(0) & abDel1Perm(1);
+  tmp0 <= zout1perm(0) & zout1perm(1) & zout1perm(2) & zout1perm(3) & abdel1perm(0) & abdel1perm(1);
 
   INTERLEAVER_I0 : INTERLEAVER
     generic map (
@@ -120,12 +120,12 @@ begin
       Q           => tmp1
     );
 
-  zoutInt1(0)         <= tmp1(Z_WIDTH * 4 + SIG_WIDTH * 2 - 1 downto Z_WIDTH * 3 + SIG_WIDTH * 2);
-  zoutInt1(1)         <= tmp1(Z_WIDTH * 3 + SIG_WIDTH * 2 - 1 downto Z_WIDTH * 2 + SIG_WIDTH * 2);
-  zoutInt1(2)         <= tmp1(Z_WIDTH * 2 + SIG_WIDTH * 2 - 1 downto Z_WIDTH * 1 + SIG_WIDTH * 2);
-  zoutInt1(3)         <= tmp1(Z_WIDTH * 1 + SIG_WIDTH * 2 - 1 downto Z_WIDTH * 0 + SIG_WIDTH * 2);
-  abDel1PermInt(0)    <= tmp1(SIG_WIDTH * 2 - 1 downto SIG_WIDTH * 1);
-  abDel1PermInt(1)    <= tmp1(SIG_WIDTH * 1 - 1 downto SIG_WIDTH * 0);
+  zoutint1(0)         <= tmp1(Z_WIDTH * 4 + SIG_WIDTH * 2 - 1 downto Z_WIDTH * 3 + SIG_WIDTH * 2);
+  zoutint1(1)         <= tmp1(Z_WIDTH * 3 + SIG_WIDTH * 2 - 1 downto Z_WIDTH * 2 + SIG_WIDTH * 2);
+  zoutint1(2)         <= tmp1(Z_WIDTH * 2 + SIG_WIDTH * 2 - 1 downto Z_WIDTH * 1 + SIG_WIDTH * 2);
+  zoutint1(3)         <= tmp1(Z_WIDTH * 1 + SIG_WIDTH * 2 - 1 downto Z_WIDTH * 0 + SIG_WIDTH * 2);
+  abdel1permint(0)    <= tmp1(SIG_WIDTH * 2 - 1 downto SIG_WIDTH * 1);
+  abdel1permint(1)    <= tmp1(SIG_WIDTH * 1 - 1 downto SIG_WIDTH * 0);
 
   tmp2 <= a & b & y & w & yInt & wInt;
 
@@ -140,12 +140,12 @@ begin
       Q       => tmp3
     );
 
-  aDel1       <= tmp3(SIG_WIDTH * 6 - 1 downto SIG_WIDTH * 5);
-  bDel1       <= tmp3(SIG_WIDTH * 5 - 1 downto SIG_WIDTH * 4);
-  yDel1       <= tmp3(SIG_WIDTH * 4 - 1 downto SIG_WIDTH * 3);
-  wDel1       <= tmp3(SIG_WIDTH * 3 - 1 downto SIG_WIDTH * 2);
-  yIntDel1    <= tmp3(SIG_WIDTH * 2 - 1 downto SIG_WIDTH * 1);
-  wIntDel1    <= tmp3(SIG_WIDTH * 1 - 1 downto SIG_WIDTH * 0);
+  adel1       <= tmp3(SIG_WIDTH * 6 - 1 downto SIG_WIDTH * 5);
+  bdel1       <= tmp3(SIG_WIDTH * 5 - 1 downto SIG_WIDTH * 4);
+  ydel1       <= tmp3(SIG_WIDTH * 4 - 1 downto SIG_WIDTH * 3);
+  wdel1       <= tmp3(SIG_WIDTH * 3 - 1 downto SIG_WIDTH * 2);
+  yintdel1    <= tmp3(SIG_WIDTH * 2 - 1 downto SIG_WIDTH * 1);
+  wintdel1    <= tmp3(SIG_WIDTH * 1 - 1 downto SIG_WIDTH * 0);
 
   ABPERMUT_I0 : ABPERMUT
     generic map (
@@ -153,12 +153,12 @@ begin
     )
     port map (
       FLIPFLOP    => flipflop,
-      A           => aDel1,
-      B           => bDel1,
-      ABPERM      => abDel1Perm
+      A           => adel1,
+      B           => bdel1,
+      ABPERM      => abdel1perm
     );
 
-  tmp4 <= aDel1 & bDel1 & yDel1 & wDel1;
+  tmp4 <= adel1 & bdel1 & ydel1 & wdel1;
 
   DELAYER_I1 : DELAYER
     generic map (
@@ -171,23 +171,23 @@ begin
       Q       => tmp5
     );
 
-  aDel2   <= tmp5(SIG_WIDTH * 4 - 1 downto SIG_WIDTH * 3);
-  bDel2   <= tmp5(SIG_WIDTH * 3 - 1 downto SIG_WIDTH * 2);
-  yDel2   <= tmp5(SIG_WIDTH * 2 - 1 downto SIG_WIDTH * 1);
-  wDel2   <= tmp5(SIG_WIDTH * 1 - 1 downto SIG_WIDTH * 0);
+  adel2   <= tmp5(SIG_WIDTH * 4 - 1 downto SIG_WIDTH * 3);
+  bdel2   <= tmp5(SIG_WIDTH * 3 - 1 downto SIG_WIDTH * 2);
+  ydel2   <= tmp5(SIG_WIDTH * 2 - 1 downto SIG_WIDTH * 1);
+  wdel2   <= tmp5(SIG_WIDTH * 1 - 1 downto SIG_WIDTH * 0);
 
   SOVA_I1 : SOVA
     port map (
       CLK     => clk,
       RST     => rst,
-      ANOISY  => abDel1PermInt(1),
-      BNOISY  => abDel1PermInt(0),
-      YNOISY  => yIntDel1,
-      WNOISY  => wIntDel1,
-      ZIN     => zoutInt1,
+      ANOISY  => abdel1permint(1),
+      BNOISY  => abdel1permint(0),
+      YNOISY  => yintdel1,
+      WNOISY  => wintdel1,
+      ZIN     => zoutint1,
       ZOUT    => zout2,
-      ACLEAN  => aDecInt,
-      BCLEAN  => bDecInt
+      ACLEAN  => adecint,
+      BCLEAN  => bdecint
     );
 
   tmp6 <= zout2(0) & zout2(1) & zout2(2) & zout2(3);
@@ -204,10 +204,10 @@ begin
       Q           => tmp7
     );
 
-  zout2Int(0) <= tmp7(Z_WIDTH * 4 - 1 downto Z_WIDTH * 3);
-  zout2Int(1) <= tmp7(Z_WIDTH * 3 - 1 downto Z_WIDTH * 2);
-  zout2Int(2) <= tmp7(Z_WIDTH * 2 - 1 downto Z_WIDTH * 1);
-  zout2Int(3) <= tmp7(Z_WIDTH * 1 - 1 downto Z_WIDTH * 0);
+  zout2int(0) <= tmp7(Z_WIDTH * 4 - 1 downto Z_WIDTH * 3);
+  zout2int(1) <= tmp7(Z_WIDTH * 3 - 1 downto Z_WIDTH * 2);
+  zout2int(2) <= tmp7(Z_WIDTH * 2 - 1 downto Z_WIDTH * 1);
+  zout2int(3) <= tmp7(Z_WIDTH * 1 - 1 downto Z_WIDTH * 0);
 
   ZPERMUT_I1 : ZPERMUT
     generic map (
@@ -215,11 +215,11 @@ begin
     )
     port map (
       FLIPFLOP    => flipflop,
-      Z           => zout2Int,
+      Z           => zout2int,
       ZPERM       => zout
     );
 
-  tmp8 <= aDel2 & bDel2 & yDel2 & wDel2 & yIntDel1 & wIntDel1;
+  tmp8 <= adel2 & bdel2 & ydel2 & wdel2 & yintdel1 & wintdel1;
 
   DELAYER_I2 : DELAYER
     generic map (
@@ -232,14 +232,14 @@ begin
       Q       => tmp9
     );
 
-  aDel3       <= tmp9(SIG_WIDTH * 6 - 1 downto SIG_WIDTH * 5);
-  bDel3       <= tmp9(SIG_WIDTH * 5 - 1 downto SIG_WIDTH * 4);
-  yDel3       <= tmp9(SIG_WIDTH * 4 - 1 downto SIG_WIDTH * 3);
-  wDel3       <= tmp9(SIG_WIDTH * 3 - 1 downto SIG_WIDTH * 2);
-  yIntDel3    <= tmp9(SIG_WIDTH * 2 - 1 downto SIG_WIDTH * 1);
-  wIntDel3    <= tmp9(SIG_WIDTH * 1 - 1 downto SIG_WIDTH * 0);
+  adel3       <= tmp9(SIG_WIDTH * 6 - 1 downto SIG_WIDTH * 5);
+  bdel3       <= tmp9(SIG_WIDTH * 5 - 1 downto SIG_WIDTH * 4);
+  ydel3       <= tmp9(SIG_WIDTH * 4 - 1 downto SIG_WIDTH * 3);
+  wdel3       <= tmp9(SIG_WIDTH * 3 - 1 downto SIG_WIDTH * 2);
+  yintdel3    <= tmp9(SIG_WIDTH * 2 - 1 downto SIG_WIDTH * 1);
+  wintdel3    <= tmp9(SIG_WIDTH * 1 - 1 downto SIG_WIDTH * 0);
 
-  tmp10 <= aDel3 & bDel3 & yDel3 & wDel3 & yIntDel3 & wIntDel3 & yIntDel4 & wIntDel4;
+  tmp10 <= adel3 & bdel3 & ydel3 & wdel3 & yintdel3 & wintdel3 & yintdel4 & wintdel4;
 
   DELAYER_I3 : DELAYER
     generic map (
@@ -256,8 +256,8 @@ begin
   bDel        <= tmp11(SIG_WIDTH * 7 - 1 downto SIG_WIDTH * 6);
   yDel        <= tmp11(SIG_WIDTH * 6 - 1 downto SIG_WIDTH * 5);
   wDel        <= tmp11(SIG_WIDTH * 5 - 1 downto SIG_WIDTH * 4);
-  yIntDel4    <= tmp11(SIG_WIDTH * 4 - 1 downto SIG_WIDTH * 3);
-  wIntDel4    <= tmp11(SIG_WIDTH * 3 - 1 downto SIG_WIDTH * 2);
+  yintdel4    <= tmp11(SIG_WIDTH * 4 - 1 downto SIG_WIDTH * 3);
+  wintdel4    <= tmp11(SIG_WIDTH * 3 - 1 downto SIG_WIDTH * 2);
   yIntDel     <= tmp11(SIG_WIDTH * 2 - 1 downto SIG_WIDTH * 1);
   wIntDel     <= tmp11(SIG_WIDTH * 1 - 1 downto SIG_WIDTH * 0);
 

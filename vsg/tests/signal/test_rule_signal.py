@@ -9,7 +9,7 @@ from vsg import vhdlFile
 from vsg.tests import utils
 
 # Read in test file used for all tests
-lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','signal','signal_test_input.vhd'))
+lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'signal_test_input.vhd'))
 oFile = vhdlFile.vhdlFile(lFile)
 
 class testRuleSignalMethods(unittest.TestCase):
@@ -46,7 +46,7 @@ class testRuleSignalMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'signal')
         self.assertEqual(oRule.identifier, '004')
-        dExpected = [6,9,12,15]
+        dExpected = [6,9,12,15,20,21]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 

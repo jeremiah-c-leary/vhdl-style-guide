@@ -142,7 +142,7 @@ end entity GRP_DEBOUNCER;
 architecture RTL of GRP_DEBOUNCER is
 
   -- datapath pipeline
-  signal reg_a, reg_B : std_logic_vector(N - 1 downto 0) := (others => '0');        -- debounce edge detectors
+  signal reg_a, reg_b : std_logic_vector(N - 1 downto 0) := (others => '0');        -- debounce edge detectors
   signal reg_out      : std_logic_vector(N - 1 downto 0) := (others => '0');        -- registered output
   signal dat_strb     : std_logic := '0';                                           -- data transfer strobe
   signal strb_reg     : std_logic := '0';                                           -- registered strobe
@@ -187,8 +187,8 @@ begin
 
     if (clk_i'event and clk_i = '1') then
       -- edge detection pipeline
-      reg_A <= data_i;
-      reg_B <= reg_A;
+      reg_a <= data_i;
+      reg_b <= reg_a;
       -- new data strobe pipeline delay
       strb_reg <= strb_next;
     end if;
@@ -196,17 +196,17 @@ begin
     -- output data pipeline
     if (clk_i'event and clk_i = '1') then
       if (dat_strb = '1') then
-        reg_out <= reg_B;
+        reg_out <= reg_b;
       end if;
     end if;
 
   end process PIPELINE_PROC;
 
   -- edge detector
-  dat_diff <= '1' when reg_A /= reg_B else
+  dat_diff <= '1' when reg_a /= reg_b else
               '0';
   -- lookahead new data strobe
-  strb_next <= '1' when ((reg_out /= reg_B) and dat_strb = '1') else
+  strb_next <= '1' when ((reg_out /= reg_b) and dat_strb = '1') else
                '0';
 
   --=============================================================================================

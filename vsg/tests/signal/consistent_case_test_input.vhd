@@ -1,8 +1,8 @@
 
 architecture RTL of ENTITY1 is
 
-  signal sig1 : std_logic;
-  signal sig2 : std_logic;
+  signal sig1, sig2 : std_logic;
+  signal sig9 : std_logic;
   signal sig3 : std_logic;
   signal sig4 : std_logic;
   signal sig5 : std_logic;
@@ -61,6 +61,7 @@ begin
   sig1 <= sig2 and 
           Sig3;
   SIG1 <= SIG2 and SIG3;
+  SIG1 <= SIG1 or SIG1;
 
 
 end architecture RTL;

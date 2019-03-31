@@ -114,8 +114,8 @@ architecture BEHAVIORAL of VGA_TOP is
     );
   end component;
 
-  signal adx,      GPU_X     : std_logic_vector(9 downto 0);
-  signal ady,      GPU_Y     : std_logic_vector(8 downto 0);
+  signal adx,      gpu_x     : std_logic_vector(9 downto 0);
+  signal ady,      gpu_y     : std_logic_vector(8 downto 0);
   signal data                : std_logic_vector(2 downto 0);
   signal gim                 : std_logic_vector(22 downto 0);
   signal gpu_color_to_buffer : std_logic_vector(2 downto 0);
@@ -123,77 +123,77 @@ architecture BEHAVIORAL of VGA_TOP is
   signal dout                : std_logic;
   signal ss                  : std_logic_vector(3 downto 0);
   signal clk2                : std_logic;
-  signal p1region, p2Region  : std_logic;
-  signal rt, Gt, Bt          : std_logic;
-  signal x1,       X2        : std_logic_vector(9 downto 0);
-  signal y1,       Y2        : std_logic_vector(8 downto 0);
+  signal p1region, p2region  : std_logic;
+  signal rt, gt, bt          : std_logic;
+  signal x1,       x2        : std_logic_vector(9 downto 0);
+  signal y1,       y2        : std_logic_vector(8 downto 0);
 
 begin
 
   INS_FRAMEBUFFER : FRAMEBUFFER
     port map (
-      INX         => GPU_X,
-      INY         => GPU_Y,
-      OUTX        => Adx,
-      OUTY        => Ady,
+      INX         => gpu_x,
+      INY         => gpu_y,
+      OUTX        => adx,
+      OUTY        => ady,
       OUTCOLOR    => data,
       INCOLOR     => inColor,
-      BUFFERWRITE => BufferWrite,
-      CLK         => CLK
+      BUFFERWRITE => bufferwrite,
+      CLK         => Clk
     );
 
   INS_SYNCHRONIZER : SYNCHRONIZER
     port map (
-      R        => Rt,
-      G        => Gt,
-      B        => Bt,
+      R        => rt,
+      G        => gt,
+      B        => bt,
       HS       => HS,
       VS       => VS,
       CLK      => Clk,
       DATAIN   => data,
-      ADDRESSX => Adx,
-      ADDRESSY => Ady
+      ADDRESSX => adx,
+      ADDRESSY => ady
     );
 
   INST_DEBOUNCER : DEBOUNCER
     port map (
       CLK    => Clk,
       BUTTON => Button,
-      DOUT   => DOUT
+      DOUT   => dout
     );
 
   INST_BRESENHAMER : BRESENHAMER
     port map (
-      WRITEENABLE => BufferWrite,
-      X           => GPU_X,
-      Y           => GPU_Y,
-      X1          => X1,
-      Y1          => Y1,
-      X2          => X2,
-      Y2          => Y2,
+      WRITEENABLE => bufferwrite,
+      X           => gpu_x,
+      Y           => gpu_y,
+      X1          => x1,
+      Y1          => y1,
+      X2          => x2,
+      Y2          => y2,
       CLK         => Clk,
-      SS          => SS,
+      SS          => ss,
       RESET       => reset,
-      STARTDRAW   => Dout
+      STARTDRAW   => dout
     );
 
-  LED <= BufferWrite;
+  LED <= bufferwrite;
 
-  R <= Rt when (P1Region='0' and P2Region='0') else
-       not Rt;
+  R <= rt when (p1region='0' and p2region='0') else
+       not rt;
 
-  G <= Gt when (P1Region='0' and P2Region='0') else
-       not Gt;
+  G <= gt when (p1region='0' and p2region='0') else
+       not gt;
 
-  B <= Bt when (P1Region='0' and P2Region='0') else
-       not Bt;
+  B <= bt when (p1region='0' and p2region='0') else
+       not bt;
 
   INST_SEVENSEGMENT : SEVENSEGMENT
     port map (
       CLK               => Clk,
       ENABLES           => Enables,
       SEGMENTS          => Segments,
-      DATA(3 downto 0)  => SS,
+      DATA(3 downto 0)  => ss,
       DATA(15 downto 4) => "000000000000"
     );
 
@@ -208,18 +208,18 @@ begin
       MOVELEFT  => MoveLeft,
       MOVERIGHT => MoveRight,
       MOVE      => MoveP1,
-      CLK       => Clk2,
-      HERE      => P1Region,
-      X         => X1,
-      Y         => Y1,
-      SYNCX     => Adx,
-      SYNCY     => Ady
+      CLK       => clk2,
+      HERE      => p1region,
+      X         => x1,
+      Y         => y1,
+      SYNCX     => adx,
+      SYNCY     => ady
     );
 
   INST_FREQDIV : FREQDIV
     port map (
       CLK  => Clk,
-      CLK2 => CLK2
+      CLK2 => clk2
     );
 
   INST_POINTER2 : POINTER
@@ -233,12 +233,12 @@ begin
       MOVELEFT  => MoveLeft,
       MOVERIGHT => MoveRight,
       MOVE      => MoveP2,
-      CLK       => Clk2,
-      HERE      => P2Region,
-      X         => X2,
-      Y         => Y2,
-      SYNCX     => Adx,
-      SYNCY     => Ady
+      CLK       => clk2,
+      HERE      => p2region,
+      X         => x2,
+      Y         => y2,
+      SYNCX     => adx,
+      SYNCY     => ady
     );
 
 end architecture BEHAVIORAL;

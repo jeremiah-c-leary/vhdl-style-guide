@@ -431,29 +431,29 @@ begin
   -- this is a delayed pulse generator with a ripple-transfer FFD pipeline, that generates a
   -- fixed-length delayed pulse for the output flags, at the parallel clock domain
   OUT_TRANSFER_PROC : process (pclk_i, do_transfer_reg, di_req_reg,
-                               do_valid_A, do_valid_B, do_valid_D,
-                               di_req_o_A, di_req_o_B, di_req_o_D) is
+                               do_valid_a, do_valid_b, do_valid_d,
+                               di_req_o_a, di_req_o_b, di_req_o_d) is
   begin
 
     if (pclk_i'event and pclk_i = '1') then               -- clock at parallel port clock
       -- do_transfer_reg -> do_valid_o_reg
-      do_valid_A     <= do_transfer_reg;                  -- the input signal must be at least 2 clocks long
-      do_valid_B     <= do_valid_A;                       -- feed it to a ripple chain of FFDs
-      do_valid_C     <= do_valid_B;
-      do_valid_D     <= do_valid_C;
+      do_valid_a     <= do_transfer_reg;                  -- the input signal must be at least 2 clocks long
+      do_valid_b     <= do_valid_a;                       -- feed it to a ripple chain of FFDs
+      do_valid_c     <= do_valid_b;
+      do_valid_d     <= do_valid_c;
       do_valid_o_reg <= do_valid_next;                    -- registered output pulse
       --------------------------------
       -- di_req_reg -> di_req_o_reg
-      di_req_o_A   <= di_req_reg;                         -- the input signal must be at least 2 clocks long
-      di_req_o_B   <= di_req_o_A;                         -- feed it to a ripple chain of FFDs
-      di_req_o_C   <= di_req_o_B;
-      di_req_o_D   <= di_req_o_C;
+      di_req_o_a   <= di_req_reg;                         -- the input signal must be at least 2 clocks long
+      di_req_o_b   <= di_req_o_a;                         -- feed it to a ripple chain of FFDs
+      di_req_o_c   <= di_req_o_b;
+      di_req_o_d   <= di_req_o_c;
       di_req_o_reg <= di_req_o_next;                      -- registered output pulse
     end if;
 
     -- generate a 2-clocks pulse at the 3rd clock cycle
-    do_valid_next <= do_valid_A and do_valid_B and not do_valid_D;
-    di_req_o_next <= di_req_o_A and di_req_o_B and not di_req_o_D;
+    do_valid_next <= do_valid_a and do_valid_b and not do_valid_d;
+    di_req_o_next <= di_req_o_a and di_req_o_b and not di_req_o_d;
 
   end process OUT_TRANSFER_PROC;
 

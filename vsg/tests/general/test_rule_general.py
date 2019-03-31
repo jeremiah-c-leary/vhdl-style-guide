@@ -21,6 +21,15 @@ class testGeneralRule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'general')
         self.assertEqual(oRule.identifier, '001')
-        dExpected = [9, 12, 14, 15, 16, 17]
+        dExpected = [22, 25, 27,28,29,30,38,39,46,48,54,58,60,62,63]
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
+
+    def test_fix_rule_001(self):
+        oRule = general.rule_001()
+        oRule.fix(self.oFile)
+        oRule.analyze(self.oFile)
+        
+        self.assertEqual(self.oFile.lines[9].line, '  PROC_NAME : process (sig2) is')
+
+        self.assertEqual(oRule.violations, [])

@@ -14,28 +14,28 @@ end entity DEBOUNCER;
 
 architecture BEHAVIORAL of DEBOUNCER is
 
-  signal counter,       nCounter       : std_logic_vector(23 downto 0) := x"000000";
-  signal buttonhistory, nButtonHistory : std_logic_vector(1 downto 0) := "00";
+  signal counter,       ncounter       : std_logic_vector(23 downto 0) := x"000000";
+  signal buttonhistory, nbuttonhistory : std_logic_vector(1 downto 0) := "00";
   signal nexthistory                   : std_logic := '0';
 
 begin
 
-  nCounter       <= x"FFFFFF" when Counter=x"FFFFFF" and Button='1' else
-                    x"000000" when Counter=x"000000" and Button='0' else
-                    Counter + 1 when Button='1' else
-                    Counter - 1;
-  nextHistory    <= '0' when Counter=x"000000" else
+  ncounter       <= x"FFFFFF" when counter=x"FFFFFF" and Button='1' else
+                    x"000000" when counter=x"000000" and Button='0' else
+                    counter + 1 when Button='1' else
+                    counter - 1;
+  nexthistory    <= '0' when counter=x"000000" else
                     '1';
-  nButtonHistory <= nextHistory & ButtonHistory(1);
-  Dout           <= '1' when ButtonHistory="01" else
+  nbuttonhistory <= nexthistory & buttonhistory(1);
+  Dout           <= '1' when buttonhistory="01" else
                     '0';
 
   process (Clk) is
   begin
 
     if (Clk'event and Clk = '1') then
-      Counter       <= nCounter;
-      ButtonHistory <= nButtonHistory;
+      counter       <= ncounter;
+      buttonhistory <= nbuttonhistory;
     end if;
 
   end process;

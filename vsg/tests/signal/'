@@ -2,7 +2,6 @@
 from vsg import rule
 from vsg import fix
 from vsg import check
-from vsg import utils
 
 
 class rule_004(rule.rule):
@@ -16,12 +15,11 @@ class rule_004(rule.rule):
 
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.isSignal:
-            for sWord in utils.extract_signal_names(oLine):
-                check.is_lowercase(self, sWord, iLineNumber)
+            sLine = oLine.line.split(':')[0]
+            lWords = sLine.replace(',', ' ').split()
+           
+            check.is_lowercase(self, oLine.line.split()[self.iIndex], iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
-            oLine = oFile.lines[iLineNumber]
-            for sWord in utils.extract_signal_names(oLine):
-                fix.lower_case(self, oLine, sWord)
-
+            fix.lower_case(self, oFile.lines[iLineNumber], oFile.lines[iLineNumber].line.split()[self.iIndex])

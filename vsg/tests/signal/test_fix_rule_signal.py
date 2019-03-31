@@ -93,7 +93,7 @@ class testFixRuleSignalMethods(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(self.oFile.lines[12].line, '  signal   SIg : std_logic_vector(31 downto 0);')
         self.assertEqual(self.oFile.lines[16].line, '  signal sig :   std_logic_vector (31 downto 0) := (others => \'0\');')
-        self.assertEqual(self.oFile.lines[20].line, '  signal b_sig100, b_sig2 :std_logic_vector (31 downto 0);')
+        self.assertEqual(self.oFile.lines[20].line, '  signal b_siG100, b_Sig2 :std_logic_vector (31 downto 0);')
         self.assertEqual(self.oFile.lines[23].line, '  signal w_sig1 : t_User_Defined_Type;')
         self.assertEqual(oRule.violations, dExpected)
 
@@ -102,8 +102,8 @@ class testFixRuleSignalMethods(unittest.TestCase):
         dExpected = []
         oRule.fix(self.oFile)
         oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, dExpected)
         self.assertEqual(self.oFile.lines[12].line, '  signal   SIg : std_logic_vector(31 downto 0);')
         self.assertEqual(self.oFile.lines[16].line, '  signal sig :   std_logic_vector (31 downto 0) := (others => \'0\');')
-        self.assertEqual(self.oFile.lines[20].line, '  signal b_sig100, b_sig2 :std_logic_vector (31 downto 0);')
+        self.assertEqual(self.oFile.lines[20].line, '  signal b_siG100, b_Sig2 :std_logic_vector (31 downto 0);')
         self.assertEqual(self.oFile.lines[23].line, '  signal w_sig1 : t_user_defined_type;')
+        self.assertEqual(oRule.violations, dExpected)

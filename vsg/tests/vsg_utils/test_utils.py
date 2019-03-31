@@ -2,6 +2,7 @@
 import unittest
 
 from vsg import utils
+from vsg import line
 
 
 class testUtilsProcedures(unittest.TestCase):
@@ -115,3 +116,59 @@ class testUtilsProcedures(unittest.TestCase):
         lExpected = ['sig1', 'sig2']
         self.assertEqual(lExpected, utils.extract_non_keywords(sString))
 
+    def test_change_word(self):
+        oLine = line.blank_line()
+        oLine.update_line('red blue green yellow')
+        sExpected = 'blue blue green yellow'
+        utils.change_word(oLine, 'red', 'blue', 1)
+        sActual = oLine.line
+        self.assertEqual(sExpected, sActual)
+
+        oLine = line.blank_line()
+        oLine.update_line('red blue green greenyellow')
+        sExpected = 'red blue blue greenyellow'
+        utils.change_word(oLine, 'green', 'blue', 1)
+        sActual = oLine.line
+        self.assertEqual(sExpected, sActual)
+
+        oLine = line.blank_line()
+        oLine.update_line('red blue green green,')
+        sExpected = 'red blue blue green,'
+        utils.change_word(oLine, 'green', 'blue', 1)
+        sActual = oLine.line
+        self.assertEqual(sExpected, sActual)
+
+        oLine = line.blank_line()
+        oLine.update_line('red blue green yellow,')
+        sExpected = 'red blue green blue,'
+        utils.change_word(oLine, 'yellow', 'blue', 1)
+        sActual = oLine.line
+        self.assertEqual(sExpected, sActual)
+
+        oLine = line.blank_line()
+        oLine.update_line('red blue (green) yellow,')
+        sExpected = 'red blue (red) yellow,'
+        utils.change_word(oLine, 'green', 'red', 1)
+        sActual = oLine.line
+        self.assertEqual(sExpected, sActual)
+
+        oLine = line.blank_line()
+        oLine.update_line('red blue (green) green,')
+        sExpected = 'red blue (red) red,'
+        utils.change_word(oLine, 'green', 'red', 2)
+        sActual = oLine.line
+        self.assertEqual(sExpected, sActual)
+
+        oLine = line.blank_line()
+        oLine.update_line('red blue (green) yellow')
+        sExpected = 'red blue (green) red'
+        utils.change_word(oLine, 'yellow', 'red', 1)
+        sActual = oLine.line
+        self.assertEqual(sExpected, sActual)
+
+        oLine = line.blank_line()
+        oLine.update_line('red blue (green) green;')
+        sExpected = 'red blue (red) red;'
+        utils.change_word(oLine, 'green', 'red', 2)
+        sActual = oLine.line
+        self.assertEqual(sExpected, sActual)

@@ -33,13 +33,13 @@ architecture BEHAVIORAL of FRAMEBUFFER is
   end initFB;
 
   signal mybuffer                  : fbuffer := initFB;
-  signal addresswrite, addressRead : std_logic_vector(14 downto 0);
+  signal addresswrite, addressread : std_logic_vector(14 downto 0);
   signal temp                      : std_logic_vector(2 downto 0);
 
 begin
 
-  addressWrite <= inX(9 downto 2) & inY(8 downto 2);
-  addressRead  <= outX(9 downto 2) & outY(8 downto 2);
+  addresswrite <= inX(9 downto 2) & inY(8 downto 2);
+  addressread  <= outX(9 downto 2) & outY(8 downto 2);
   outColor     <= temp;
 
   process (clk) is
@@ -47,9 +47,9 @@ begin
 
     if (Clk'event and Clk = '1') then
       if (BufferWrite = '1') then
-        mybuffer(conv_integer(addressWrite)) <= inColor;
+        mybuffer(conv_integer(addresswrite)) <= inColor;
       end if;
-      temp <= mybuffer(conv_integer(addressRead));
+      temp <= mybuffer(conv_integer(addressread));
     end if;
 
   end process;

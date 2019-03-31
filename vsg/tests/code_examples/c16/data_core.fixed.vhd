@@ -102,9 +102,9 @@ begin
       CE     => CE,
       CLR    => CLR,
       ALU_OP => OP,
-      XX     => XX,
-      YY     => YY,
-      ZZ     => ZZ
+      XX     => xx,
+      YY     => yy,
+      ZZ     => zz
     );
 
   SELYY : SELECT_YY
@@ -113,17 +113,17 @@ begin
       IMM     => IMM,
       QUICK   => QU,
       RDAT    => RDAT,
-      RR      => RR,
-      YY      => YY
+      RR      => rr,
+      YY      => yy
     );
 
-  ADR     <= ADR_XYZ;
-  MQ      <= ZZ(15 downto 8) when SMQ = '1' else
-             ZZ(7 downto 0);
+  ADR     <= adr_xyz;
+  MQ      <= zz(15 downto 8) when SMQ = '1' else
+             zz(7 downto 0);
 
-  Q_RR <= RR;
-  Q_LL <= LL;
-  Q_SP <= SP;
+  Q_RR <= rr;
+  Q_LL <= ll;
+  Q_SP <= sp;
 
   -- memory address
   --
@@ -138,17 +138,17 @@ begin
     case SAX is
 
       when SA_43_I16 =>
-        ADR_X <= IMM;
+        adr_x <= IMM;
       when SA_43_I8S =>
-        ADR_X <= b8(IMM(7)) & IMM(7 downto 0);
+        adr_x <= b8(IMM(7)) & IMM(7 downto 0);
       when others =>
-        ADR_X <= b8(SA(3)) & b8(SA(3));
+        adr_x <= b8(SA(3)) & b8(SA(3));
 
     end case;
 
   end process SEL_AX;
 
-  SEL_AZ : process (SA(2 downto 1), LL, RR, SP) is
+  SEL_AZ : process (SA(2 downto 1), ll, rr, sp) is
 
     variable saz : std_logic_vector(2 downto 1);
 
@@ -159,45 +159,45 @@ begin
     case SAZ is
 
       when SA_21_0 =>
-        ADR_Z <= X"0000";
+        adr_z <= X"0000";
       when SA_21_LL =>
-        ADR_Z <= LL;
+        adr_z <= ll;
       when SA_21_RR =>
-        ADR_Z <= RR;
+        adr_z <= rr;
       when others =>
-        ADR_Z <= SP;
+        adr_z <= sp;
 
     end case;
 
   end process SEL_AZ;
 
-  SEL_AYZ : process (SA(0), ADR_Z) is
+  SEL_AYZ : process (SA(0), adr_z) is
   begin
 
-    ADR_YZ <= ADR_Z + (X"000" & "000" & SA(0));
+    adr_yz <= adr_z + (X"000" & "000" & SA(0));
 
   end process SEL_AYZ;
 
-  SEL_AXYZ : process (ADR_X, ADR_YZ) is
+  SEL_AXYZ : process (adr_x, adr_yz) is
   begin
 
-    ADR_XYZ <= ADR_X + ADR_YZ;
+    adr_xyz <= adr_x + adr_yz;
 
   end process SEL_AXYZ;
 
-  SEL_XX : process (SX, LL, RR, SP, PC) is
+  SEL_XX : process (SX, ll, rr, sp, PC) is
   begin
 
     case SX is
 
       when SX_LL =>
-        XX <= LL;
+        xx <= ll;
       when SX_RR =>
-        XX <= RR;
+        xx <= rr;
       when SX_SP =>
-        XX <= SP;
+        xx <= sp;
       when others =>
-        XX <= PC;
+        xx <= PC;
 
     end case;
 
@@ -208,23 +208,23 @@ begin
 
     if (CLK_I'event and CLK_I = '1') then
       if (CLR = '1') then
-        RR  <= X"0000";
-        LL  <= X"0000";
-        SP  <= X"0000";
+        rr  <= X"0000";
+        ll  <= X"0000";
+        sp  <= X"0000";
       elsif (CE  = '1' and T2 = '1') then
         if (WE_RR = '1') then
-          RR  <= ZZ;
+          rr  <= zz;
         end if;
         if (WE_LL = '1') then
-          LL  <= ZZ;
+          ll  <= zz;
         end if;
 
         case WE_SP is
 
           when SP_INC =>
-            SP <= ADR_YZ;
+            sp <= adr_yz;
           when SP_LOAD =>
-            SP <= ADR_XYZ;
+            sp <= adr_xyz;
           when SP_NOP =>
             null;
 

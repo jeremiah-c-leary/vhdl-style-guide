@@ -23,8 +23,8 @@ end entity BRESENHAMER;
 
 architecture BEHAVIORAL of BRESENHAMER is
 
-  signal myx1,     myX2                                             : std_logic_vector(11 downto 0);
-  signal myy1,     myY2                                             : std_logic_vector(11 downto 0);
+  signal myx1,     myx2                                             : std_logic_vector(11 downto 0);
+  signal myy1,     myy2                                             : std_logic_vector(11 downto 0);
   signal p, p0_1, p0_2, p0_3, p0_4, p0_5, p0_6, p0_7, p0_8          : std_logic_vector(11 downto 0);
   signal p_1, p_2, p_3, p_4, p_5, p_6, p_7, p_8                     : std_logic_vector(11 downto 0);
   signal ndx,      ndy                                              : std_logic_vector(11 downto 0);
@@ -34,7 +34,7 @@ architecture BEHAVIORAL of BRESENHAMER is
   signal minus_dx_plus_dy                                           : std_logic_vector(11 downto 0);
   signal dx_plus_dy                                                 : std_logic_vector(11 downto 0);
   signal state                                                      : std_logic_vector(3 downto 0) := "0000";
-  signal condx1x2, condY1Y2                                         : std_logic;
+  signal condx1x2, condy1y2                                         : std_logic;
   constant idle  : std_logic_vector(3 downto 0) := "0000";
   constant init  : std_logic_vector(3 downto 0) := "0001";
   constant case1 : std_logic_vector(3 downto 0) := "0010";
@@ -87,145 +87,145 @@ begin
                        p + t_2dx + t_2dy;
   p_8               <= p + t_2neg_dy when p(11)='1' else
                        p + t_2neg_dy + t_2neg_dx;
-  X                 <= ccounter(9 downto 0) when State = CLEAR else
-                       myX1(9 downto 0);
-  Y                 <= ccounter(18 downto 10) when State = CLEAR else
-                       myY1(8 downto 0);
-  SS                <= State;
-  WriteEnable       <= '0' when State = IDLE or State = INIT else
+  X                 <= ccounter(9 downto 0) when state = CLEAR else
+                       myx1(9 downto 0);
+  Y                 <= ccounter(18 downto 10) when state = CLEAR else
+                       myy1(8 downto 0);
+  SS                <= state;
+  WriteEnable       <= '0' when state = IDLE or state = INIT else
                        '1';
 
   process (Clk) is
   begin
 
     if (Clk'event and Clk = '1') then
-      if (State = IDLE) then
+      if (state = IDLE) then
         if (Reset = '1') then
-          State    <= CLEAR;
+          state    <= CLEAR;
           ccounter <= (others=>'0');
         elsif (StartDraw = '1') then
-          myX1(9 downto 0)   <= X1;
-          myX1(11 downto 10) <= "00";
-          myY1(8 downto 0)   <= Y1;
-          myY1(11 downto 9)  <= "000";
-          myX2(9 downto 0)   <= X2;
-          myX2(11 downto 10) <= "00";
-          myY2(8 downto 0)   <= Y2;
-          myY2(11 downto 9)  <= "000";
+          myx1(9 downto 0)   <= X1;
+          myx1(11 downto 10) <= "00";
+          myy1(8 downto 0)   <= Y1;
+          myy1(11 downto 9)  <= "000";
+          myx2(9 downto 0)   <= X2;
+          myx2(11 downto 10) <= "00";
+          myy2(8 downto 0)   <= Y2;
+          myy2(11 downto 9)  <= "000";
           dx                 <= ndx;
           dy                 <= ndy;
-          State              <= INIT;
+          state              <= INIT;
         end if;
-      elsif (State = INIT) then
+      elsif (state = INIT) then
         if (dx(11) = '0' and dy(11) = '0' and dx_minus_dy(11) = '0') then
-          State <= CASE1;
+          state <= CASE1;
           p     <= p0_1;
         elsif (dx(11) = '0' and dy(11) = '0' and dx_minus_dy(11) = '1') then
-          State <= CASE2;
+          state <= CASE2;
           p     <= p0_2;
         elsif (dx(11) = '1' and dy(11) = '0' and minus_dx_minus_dy(11) = '1') then
-          State <= CASE3;
+          state <= CASE3;
           p     <= p0_3;
         elsif (dx(11) = '1' and dy(11) = '0' and minus_dx_minus_dy(11) = '0') then
-          State <= CASE4;
+          state <= CASE4;
           p     <= p0_4;
         elsif (dx(11) = '1' and dy(11) = '1' and minus_dx_plus_dy(11) = '0') then
-          State <= CASE5;
+          state <= CASE5;
           p     <= p0_5;
         elsif (dx(11) = '1' and dy(11) = '1' and minus_dx_plus_dy(11) = '1') then
-          State <= CASE6;
+          state <= CASE6;
           p     <= p0_6;
         elsif (dx(11) = '0' and dy(11) = '1' and dx_plus_dy(11) = '1') then
-          State <= CASE7;
+          state <= CASE7;
           p     <= p0_7;
         else
-          State <= CASE8;
+          state <= CASE8;
           p     <= p0_8;
         end if;
-      elsif (State = CASE1) then
-        if (myX1 = myX2) then
-          State <= IDLE;
+      elsif (state = CASE1) then
+        if (myx1 = myx2) then
+          state <= IDLE;
         else
-          myX1 <= myX1 + 1;
+          myx1 <= myx1 + 1;
           p    <= p_1;
-          if (P(11) = '0') then
-            myY1 <= myY1 + 1;
+          if (p(11) = '0') then
+            myy1 <= myy1 + 1;
           end if;
         end if;
-      elsif (State = CASE2) then
-        if (myY1 = myY2) then
-          State <= IDLE;
+      elsif (state = CASE2) then
+        if (myy1 = myy2) then
+          state <= IDLE;
         else
-          myY1 <= myY1 + 1;
+          myy1 <= myy1 + 1;
           p    <= p_2;
-          if (P(11) = '0') then
-            myX1 <= myX1 + 1;
+          if (p(11) = '0') then
+            myx1 <= myx1 + 1;
           end if;
         end if;
-      elsif (State = CASE3) then
-        if (myY1 = myY2) then
-          State <= IDLE;
+      elsif (state = CASE3) then
+        if (myy1 = myy2) then
+          state <= IDLE;
         else
-          myY1 <= myY1 + 1;
+          myy1 <= myy1 + 1;
           p    <= p_3;
-          if (P(11) = '0') then
-            myX1 <= myX1 - 1;
+          if (p(11) = '0') then
+            myx1 <= myx1 - 1;
           end if;
         end if;
-      elsif (State = CASE4) then
-        if (myX1 = myX2) then
-          State <= IDLE;
+      elsif (state = CASE4) then
+        if (myx1 = myx2) then
+          state <= IDLE;
         else
-          myX1 <= myX1 - 1;
+          myx1 <= myx1 - 1;
           p    <= p_4;
-          if (P(11) = '0') then
-            myY1 <= myY1 + 1;
+          if (p(11) = '0') then
+            myy1 <= myy1 + 1;
           end if;
         end if;
-      elsif (State = CASE5) then
-        if (myX1 = myX2) then
-          State <= IDLE;
+      elsif (state = CASE5) then
+        if (myx1 = myx2) then
+          state <= IDLE;
         else
-          myX1 <= myX1 - 1;
+          myx1 <= myx1 - 1;
           p    <= p_5;
-          if (P(11) = '0') then
-            myY1 <= myY1 - 1;
+          if (p(11) = '0') then
+            myy1 <= myy1 - 1;
           end if;
         end if;
-      elsif (State = CASE6) then
-        if (myY1 = myY2) then
-          State <= IDLE;
+      elsif (state = CASE6) then
+        if (myy1 = myy2) then
+          state <= IDLE;
         else
-          myY1 <= myY1 - 1;
+          myy1 <= myy1 - 1;
           p    <= p_6;
-          if (P(11) = '0') then
-            myX1 <= myX1 - 1;
+          if (p(11) = '0') then
+            myx1 <= myx1 - 1;
           end if;
         end if;
-      elsif (State = CASE7) then
-        if (myY1 = myY2) then
-          State <= IDLE;
+      elsif (state = CASE7) then
+        if (myy1 = myy2) then
+          state <= IDLE;
         else
-          myY1 <= myY1 - 1;
+          myy1 <= myy1 - 1;
           p    <= p_7;
-          if (P(11) = '0') then
-            myX1 <= myX1 + 1;
+          if (p(11) = '0') then
+            myx1 <= myx1 + 1;
           end if;
         end if;
-      elsif (State = CASE8) then
-        if (myX1 = myX2) then
-          State <= IDLE;
+      elsif (state = CASE8) then
+        if (myx1 = myx2) then
+          state <= IDLE;
         else
-          myX1 <= myX1 + 1;
+          myx1 <= myx1 + 1;
           p    <= p_8;
-          if (P(11) = '0') then
-            myY1 <= myY1 - 1;
+          if (p(11) = '0') then
+            myy1 <= myy1 - 1;
           end if;
         end if;
-      elsif (State = CLEAR) then
+      elsif (state = CLEAR) then
         ccounter <= ccounter + 1;
         if (ccounter = "1111111111111111111") then
-          State <= IDLE;
+          state <= IDLE;
         end if;
       end if;
     end if;
