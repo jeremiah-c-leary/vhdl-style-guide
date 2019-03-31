@@ -29,7 +29,7 @@ class testConsistentCase(unittest.TestCase):
         oRule = procedure.rule_007()
         oRule.fix(self.oFile)
         oRule.analyze(self.oFile)
-        
+
         self.assertEqual(self.oFile.lines[14].line, '    AVERAGE_SAMPLES();')
 
         self.assertEqual(oRule.violations, [])

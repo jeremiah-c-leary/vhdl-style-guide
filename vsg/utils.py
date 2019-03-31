@@ -518,7 +518,6 @@ def extract_non_keywords(sString):
     sMyString = sMyString.replace('/', ' ')
     sMyString = re.sub('x"\S+"', ' ', sMyString)
     sMyString = re.sub('X"\S+"', ' ', sMyString)
-    
 
     for sWord in sMyString.split():
         if re.match('[0-9]+', sWord):

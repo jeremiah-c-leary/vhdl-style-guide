@@ -29,7 +29,7 @@ class testGeneralRule(unittest.TestCase):
         oRule = signal.rule_014()
         oRule.fix(self.oFile)
         oRule.analyze(self.oFile)
-        
+
         self.assertEqual(self.oFile.lines[22].line, '  PROC_NAME : process (sig2) is')
         self.assertEqual(self.oFile.lines[25].line, '    sig1 <= \'0\';')
         self.assertEqual(self.oFile.lines[27].line, '    if (sig2 = \'0\') then')

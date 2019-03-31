@@ -4,7 +4,7 @@ import unittest
 import sys
 sys.path.append('vsg')
 
-from vsg.rules import constant 
+from vsg.rules import constant
 from vsg import vhdlFile
 from vsg.tests import utils
 
@@ -29,7 +29,7 @@ class testConsistentConstantName(unittest.TestCase):
         oRule = constant.rule_013()
         oRule.fix(self.oFile)
         oRule.analyze(self.oFile)
-        
+
         self.assertEqual(self.oFile.lines[5].line, '  constant c_ones  : std_logic_vector(c_size - 1 downto 0) := (others => \'1\');')
         self.assertEqual(self.oFile.lines[12].line, '  data <= c_ones;')
         self.assertEqual(self.oFile.lines[17].line, '    data <= c_ones;')

@@ -29,7 +29,7 @@ class testConsistentCase(unittest.TestCase):
         oRule = subtype.rule_002()
         oRule.fix(self.oFile)
         oRule.analyze(self.oFile)
-        
+
         self.assertEqual(self.oFile.lines[7].line, '  signal read  : read_size;')
         self.assertEqual(self.oFile.lines[11].line, '  constant write_sz : write_size := 1;')
 

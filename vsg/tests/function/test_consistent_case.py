@@ -29,7 +29,7 @@ class testConsistentCase(unittest.TestCase):
         oRule = function.rule_010()
         oRule.fix(self.oFile)
         oRule.analyze(self.oFile)
-        
+
         self.assertEqual(self.oFile.lines[8].line, '  OUT1 <= func_1;')
         self.assertEqual(self.oFile.lines[13].line, '     sig1 <= func_1;')
 

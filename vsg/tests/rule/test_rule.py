@@ -114,4 +114,4 @@ class testRuleMethods(unittest.TestCase):
             self.assertEqual(dActual[sKey], dExpected[sKey])
         for sKey in dActual.keys():
             self.assertEqual(dActual[sKey], dExpected[sKey])
-        
+

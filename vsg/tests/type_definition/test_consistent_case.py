@@ -29,7 +29,7 @@ class testGeneralRule(unittest.TestCase):
         oRule = type_definition.rule_014()
         oRule.fix(self.oFile)
         oRule.analyze(self.oFile)
-        
+
         self.assertEqual(self.oFile.lines[7].line, '  signal sm1 : state_machine;')
         self.assertEqual(self.oFile.lines[9].line, '  constant some_const : state_machine;')
         self.assertEqual(self.oFile.lines[13].line, '      SIG1 : in    STATE_MACHINE;')

@@ -29,7 +29,7 @@ class testConsistentCase(unittest.TestCase):
         oRule = variable.rule_011()
         oRule.fix(self.oFile)
         oRule.analyze(self.oFile)
-        
+
         self.assertEqual(self.oFile.lines[16].line, '    var1 <= \'0\';')
         self.assertEqual(self.oFile.lines[18].line, '    if (var2 = \'0\') then')
         self.assertEqual(self.oFile.lines[19].line, '      var3 <= \'1\';')
