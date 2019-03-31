@@ -209,3 +209,50 @@ This rule checks for a function parameter on the same line as the function keywo
       
    end;
 
+function_010
+############
+
+This rule checks for consistent capitalization of function names.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   architecture RTL of FIFO is
+
+     function func_1 ()
+
+   begin
+
+     OUT1 <= Func_1;
+
+     PROC1 : process () is
+     begin
+
+        sig1 <= FUNC_1;
+
+     end process;
+
+   end architecture RTL;
+
+**Violation**
+
+.. code-block:: vhdl
+
+   architecture RTL of FIFO is
+
+     function func_1 ()
+
+   begin
+
+     OUT1 <= func_1;
+
+     PROC1 : process () is
+     begin
+
+        sig1 <= func_1;
+
+     end process;
+
+   end architecture RTL;
+   
