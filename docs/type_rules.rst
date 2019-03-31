@@ -273,3 +273,24 @@ This rule checks the **is** keyword is lower case in type definitions.
    type interface is record
    type interface is record
    type interface is record
+
+type_014
+########
+
+This rule checks for consistent capitalization of type names.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   type state_machine is (IDLE, WRITE, READ, DONE);
+
+   signal sm : State_Machine;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   type state_machine is (IDLE, WRITE, READ, DONE);
+
+   signal sm : state_machine;

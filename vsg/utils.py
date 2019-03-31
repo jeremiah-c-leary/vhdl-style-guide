@@ -555,3 +555,17 @@ def extract_constant_name(oLine):
     '''
     sLine = oLine.line.split(':')[0]
     return sLine.split()[1]
+
+
+def extract_type_name(oLine):
+    '''
+    Returns the name of a type in a type declaration.
+
+    Parameters:
+
+       oLine: (line object)
+
+    Returns: (string)
+    '''
+    sLine = oLine.line.split(':')[0]
+    return sLine.split()[1]
