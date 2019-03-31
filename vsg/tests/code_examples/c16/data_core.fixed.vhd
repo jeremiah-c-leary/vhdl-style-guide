@@ -133,9 +133,9 @@ begin
 
   begin
 
-    SAX := SA(4 downto 3);
+    sax := SA(4 downto 3);
 
-    case SAX is
+    case sax is
 
       when SA_43_I16 =>
         adr_x <= IMM;
@@ -154,9 +154,9 @@ begin
 
   begin
 
-    SAZ := SA(2 downto 1);
+    saz := SA(2 downto 1);
 
-    case SAZ is
+    case saz is
 
       when SA_21_0 =>
         adr_z <= X"0000";

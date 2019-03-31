@@ -569,3 +569,17 @@ def extract_type_name(oLine):
     '''
     sLine = oLine.line.split(':')[0]
     return sLine.split()[1]
+
+
+def extract_variable_name(oLine):
+    '''
+    Returns the name of a variable in a variable declaration.
+
+    Parameters:
+
+       oLine: (line object)
+
+    Returns: (string)
+    '''
+    sLine = oLine.line.split(':')[0]
+    return sLine.split()[1]
