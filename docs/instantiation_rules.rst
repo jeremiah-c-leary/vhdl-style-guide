@@ -727,6 +727,7 @@ This rule checks for a single space after the **component** keyword if it is use
 
 .. NOTE:: This rule is off by default.
    If this rule is desired, then enable this rule and disable instantiation_033. 
+
    .. code-block:: json
    
       {
@@ -743,7 +744,9 @@ This rule checks for a single space after the **component** keyword if it is use
 instantiation_033
 #################
 
-This rule checks for the **component** keyword.
+This rule checks for the **component** keyword and will remove it.
+
+The component keyword is optional and does not provide clarity.
 
 **Violation**
 
