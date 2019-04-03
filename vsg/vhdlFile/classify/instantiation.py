@@ -2,6 +2,11 @@ import re
 
 
 def instantiation(dVars, oLine):
+    '''
+    instantiation_label : [ component ] component_name
+      [ generic map ( generic_association_list ) ]
+      [ port map ( port_association_list ) ];
+    '''
 
     classify_instantiation_declaration(dVars, oLine)
     if oLine.insideInstantiation:

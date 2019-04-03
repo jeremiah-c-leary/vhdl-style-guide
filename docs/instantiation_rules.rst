@@ -670,3 +670,89 @@ This rule checks for a single space after the **=>** keyword in generic maps.
      WIDTH => 32,
      DEPTH => 512
    )
+
+instantiation_031
+#################
+
+This rule checks the component keyword is lowercase in component instantiations that use the **component** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   INSTANCE_NAME : COMPONENT ENTITY_NAME
+
+**Fix**
+
+.. code-block:: vhdl
+
+   INSTANCE_NAME : component ENTITY_NAME
+
+.. NOTE:: This rule is off by default.
+   If this rule is desired, then enable this rule and disable instantiation_033. 
+
+   .. code-block:: json
+   
+      {
+        "rule":{
+          "instantiation_031":{
+             "disable":False
+          },
+          "instantiation_033":{
+             "disable":True
+          }
+        }
+      }
+
+instantiation_032
+#################
+
+This rule checks for a single space after the **component** keyword if it is used.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   INSTANCE_NAME : component ENTITY_NAME
+   INSTANCE_NAME : component   ENTITY_NAME
+   INSTANCE_NAME : component  ENTITY_NAME
+
+**Fix**
+
+.. code-block:: vhdl
+
+   INSTANCE_NAME : component ENTITY_NAME
+   INSTANCE_NAME : component ENTITY_NAME
+   INSTANCE_NAME : component ENTITY_NAME
+
+.. NOTE:: This rule is off by default.
+   If this rule is desired, then enable this rule and disable instantiation_033. 
+   .. code-block:: json
+   
+      {
+        "rule":{
+          "instantiation_032":{
+             "disable":False
+          },
+          "instantiation_033":{
+             "disable":True
+          }
+        }
+      }
+
+instantiation_033
+#################
+
+This rule checks for the **component** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   INSTANCE_NAME : component ENTITY_NAME
+
+**Fix**
+
+.. code-block:: vhdl
+
+   INSTANCE_NAME : ENTITY_NAME
