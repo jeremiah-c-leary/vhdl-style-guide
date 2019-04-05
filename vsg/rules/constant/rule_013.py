@@ -41,16 +41,7 @@ class rule_013(rule.rule):
         for iLineNumber in self.violations:
             for sWord in self.dFix['violations'][iLineNumber]:
                 sReplacementWord = get_replacement_word(self, sWord)
-                if oFile.lines[iLineNumber].isInstantiationPortAssignment:
-                    oLine = oFile.lines[iLineNumber]
-                    sLine = oLine.line
-                    iIndex = sLine.index('>')
-                    oLine.update_line(sLine[iIndex:])
-                    utils.change_word(oLine, sWord, sReplacementWord, 20)
-                    sNewLine = sLine[0:iIndex] + oLine.line
-                    oFile.lines[iLineNumber].update_line(sNewLine)
-                else:
-                    utils.change_word(oFile.lines[iLineNumber], sWord, sReplacementWord, 20)
+                utils.change_word(oFile.lines[iLineNumber], sWord, sReplacementWord, 20)
 
     def _get_solution(self, iLineNumber):
         if len(self.dFix['violations'][iLineNumber]) > 1:

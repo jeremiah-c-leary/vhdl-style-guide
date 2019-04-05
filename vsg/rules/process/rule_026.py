@@ -19,29 +19,28 @@ class rule_026(rule.rule):
         iBlankCount = 0
         iFailingLineNumber = 0
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if self._is_vsg_off(oLine):
-                continue
-            if oLine.insideProcess:
-                if oLine.isProcessBegin and oLine.isSensitivityListEnd:
-                    fSkipProcess = True
-                if oLine.isSensitivityListEnd and oFile.lines[iLineNumber + 1].isProcessBegin:
-                    fSkipProcess = True
-                if fSkipProcess:
-                    if oLine.isEndProcess:
-                        fSkipProcess = False
-                    continue  # pragma: no cover
-                if fCheckForBlanks:
-                    if oLine.isBlank:
-                        iBlankCount += 1
-                    else:
-                        if not iBlankCount == 1 and not oLine.isProcessBegin:
-                            self.add_violation(iFailingLineNumber)
+            if not self._is_vsg_off(oLine):
+                if oLine.insideProcess:
+                    if oLine.isProcessBegin and oLine.isSensitivityListEnd:
                         fSkipProcess = True
-                        fCheckForBlanks = False
-                        iBlankCount = 0
-                if oLine.isSensitivityListEnd:
-                    fCheckForBlanks = True
-                    iFailingLineNumber = iLineNumber
+                    if oLine.isSensitivityListEnd and oFile.lines[iLineNumber + 1].isProcessBegin:
+                        fSkipProcess = True
+                    if fSkipProcess:
+                        if oLine.isEndProcess:
+                            fSkipProcess = False
+                        continue  # pragma: no cover
+                    if fCheckForBlanks:
+                        if oLine.isBlank:
+                            iBlankCount += 1
+                        else:
+                            if not iBlankCount == 1 and not oLine.isProcessBegin:
+                                self.add_violation(iFailingLineNumber)
+                            fSkipProcess = True
+                            fCheckForBlanks = False
+                            iBlankCount = 0
+                    if oLine.isSensitivityListEnd:
+                        fCheckForBlanks = True
+                        iFailingLineNumber = iLineNumber
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:

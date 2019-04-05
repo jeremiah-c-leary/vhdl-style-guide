@@ -18,17 +18,16 @@ class rule_020(rule.rule):
 
     def analyze(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if self._is_vsg_off(oLine):
-                continue
-            if oLine.isSensitivityListBegin and oLine.isSensitivityListEnd:
-                continue
-            if oLine.insideSensitivityList:
-                if oLine.isSensitivityListBegin:
-                    iAlignmentColumn = oLine.line.find('(')
-                elif oLine.isSensitivityListEnd and re.match('^\s*\)', oLine.line):
+            if not self._is_vsg_off(oLine):
+                if oLine.isSensitivityListBegin and oLine.isSensitivityListEnd:
                     continue
-                else:
-                    check.multiline_alignment(self, iAlignmentColumn + 1, oLine, iLineNumber)
+                if oLine.insideSensitivityList:
+                    if oLine.isSensitivityListBegin:
+                        iAlignmentColumn = oLine.line.find('(')
+                    elif oLine.isSensitivityListEnd and re.match('^\s*\)', oLine.line):
+                        continue
+                    else:
+                        check.multiline_alignment(self, iAlignmentColumn + 1, oLine, iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.dFix['violations']:

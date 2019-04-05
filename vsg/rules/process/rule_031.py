@@ -20,22 +20,21 @@ class rule_031(rule.rule):
         fGroupFound = False
         iStartGroupIndex = None
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if self._is_vsg_off(oLine):
-                continue
-            if oLine.isProcessKeyword and not fGroupFound:
-                fGroupFound = True
-                iStartGroupIndex = iLineNumber
-            if fGroupFound:
-                if oLine.isConstant or oLine.isVariable or oLine.isFileKeyword:
-                    lGroup.append(oLine)
-                else:
-                    lGroup.append(line.blank_line())
-            if oLine.isProcessBegin and fGroupFound:
-                fGroupFound = False
-                check.identifier_alignment(self, iStartGroupIndex, lGroup)
-                check.keyword_alignment(self, iStartGroupIndex, ':', lGroup)
-                lGroup = []
-                iStartGroupIndex = None
+            if not self._is_vsg_off(oLine):
+                if oLine.isProcessKeyword and not fGroupFound:
+                    fGroupFound = True
+                    iStartGroupIndex = iLineNumber
+                if fGroupFound:
+                    if oLine.isConstant or oLine.isVariable or oLine.isFileKeyword:
+                        lGroup.append(oLine)
+                    else:
+                        lGroup.append(line.blank_line())
+                if oLine.isProcessBegin and fGroupFound:
+                    fGroupFound = False
+                    check.identifier_alignment(self, iStartGroupIndex, lGroup)
+                    check.keyword_alignment(self, iStartGroupIndex, ':', lGroup)
+                    lGroup = []
+                    iStartGroupIndex = None
 
     def _fix_violations(self, oFile):
         fix.identifier_alignment(self, oFile)

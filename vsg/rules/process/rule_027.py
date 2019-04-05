@@ -16,17 +16,16 @@ class rule_027(rule.rule):
     def analyze(self, oFile):
         dVars = clear_variables()
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if self._is_vsg_off(oLine):
-                continue
-            if oLine.insideProcess:
-                skip_this_process(dVars, oFile, oLine, iLineNumber)
-                if dVars['fSkipProcess']:
-                    if oLine.isEndProcess:
-                        dVars['fSkipProcess'] = False
-                    continue  # pragma: no cover
-                check_for_blanks(self, dVars, oLine, iLineNumber)
-                if oLine.isSensitivityListEnd:
-                    dVars['fCheckForBlanks'] = True
+            if not self._is_vsg_off(oLine):
+                if oLine.insideProcess:
+                    skip_this_process(dVars, oFile, oLine, iLineNumber)
+                    if dVars['fSkipProcess']:
+                        if oLine.isEndProcess:
+                            dVars['fSkipProcess'] = False
+                        continue  # pragma: no cover
+                    check_for_blanks(self, dVars, oLine, iLineNumber)
+                    if oLine.isSensitivityListEnd:
+                        dVars['fCheckForBlanks'] = True
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations[::-1]:

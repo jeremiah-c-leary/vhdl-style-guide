@@ -25,17 +25,16 @@ class rule_018(rule.rule):
         self.dFix['processLabel'] = {}
         labelStack = ''
         for iLineNumber, oLine in enumerate(oFile.lines):
-            if self._is_vsg_off(oLine):
-                continue
-            if oLine.isProcessKeyword:
-                iProcStartLine = iLineNumber
-                oMatch = re.match('^\s*(\S+)\s*:\s*process', oLine.lineLower)
-                if oMatch:
-                    iProcLabelLine = iLineNumber
-                    labelStack = oMatch.group(1)
-            if oLine.isEndProcess:
-                if not re.match('^\s*\S+\s+\S+\s+\S+', oLine.line):
-                    self.add_violation(iLineNumber)
-                if labelStack and iProcStartLine == iProcLabelLine:
-                    self.dFix['processLabel'][iLineNumber] = labelStack
-                labelStack = ''
+            if not self._is_vsg_off(oLine):
+                if oLine.isProcessKeyword:
+                    iProcStartLine = iLineNumber
+                    oMatch = re.match('^\s*(\S+)\s*:\s*process', oLine.lineLower)
+                    if oMatch:
+                        iProcLabelLine = iLineNumber
+                        labelStack = oMatch.group(1)
+                if oLine.isEndProcess:
+                    if not re.match('^\s*\S+\s+\S+\s+\S+', oLine.line):
+                        self.add_violation(iLineNumber)
+                    if labelStack and iProcStartLine == iProcLabelLine:
+                        self.dFix['processLabel'][iLineNumber] = labelStack
+                    labelStack = ''
