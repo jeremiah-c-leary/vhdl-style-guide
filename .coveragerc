@@ -1,4 +1,4 @@
 
 [run]
-omit = vsg/tests/utils.py
+omit = vsg/tests/*
 
