@@ -12,6 +12,7 @@ class testVhdlFileForLoopAssignments(unittest.TestCase):
 
     def test_isForLoopKeyword(self):
         lExpected = [9,19,21,26]
+        lExpected.extend([36,40,44,48,52,56])
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
@@ -22,6 +23,7 @@ class testVhdlFileForLoopAssignments(unittest.TestCase):
 
     def test_isForLoopEnd(self):
         lExpected = [11,23,24,28]
+        lExpected.extend([38,42,46,50,54,58])
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
@@ -40,5 +42,15 @@ class testVhdlFileForLoopAssignments(unittest.TestCase):
             if iIndex == iMaxCheck:
                 break
             lActual.append(oLine.indentLevel)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
+    def test_isForLoopLabel(self):
+        lExpected = [36,40,44,48,52,56]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFile.lines):
+            if oLine.isForLoopLabel:
+                lActual.append(iIndex)
         # Compare
         self.assertEqual(lActual, lExpected)

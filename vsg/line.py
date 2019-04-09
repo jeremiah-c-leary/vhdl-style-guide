@@ -155,6 +155,7 @@ class line():
         self.insideForLoop = False
         self.isForLoopKeyword = False
         self.isForLoopEnd = False
+        self.isForLoopLabel = False
         # While Loop attributes
         self.insideWhileLoop = False
         self.isWhileLoopKeyword = False

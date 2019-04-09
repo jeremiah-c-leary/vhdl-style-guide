@@ -30,4 +30,33 @@ begin
 
   end process PROC_2;
 
+  PROC_3 : process (C) is
+  begin
+
+    LABEL : for index in 10 to 200 loop
+      sig1(index) <= '1';
+    end loop;
+
+    LABEL: for index in 10 to 200 loop
+      sig1(index) <= '1';
+    end loop;
+
+    LABEL :for index in 10 to 200 loop
+      sig1(index) <= '1';
+    end loop;
+
+    LABEL   : for index in 10 to 200 loop
+      sig1(index) <= '1';
+    end loop;
+
+    LABEL :    for index in 10 to 200 loop
+      sig1(index) <= '1';
+    end loop;
+
+    LABEL : for      index in 10 to 200 loop
+      sig1(index) <= '1';
+    end loop;
+
+  end process PROC_3;
+
 end architecture ARCH;
