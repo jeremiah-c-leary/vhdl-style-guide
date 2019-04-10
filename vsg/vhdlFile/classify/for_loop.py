@@ -2,6 +2,11 @@ import re
 
 
 def for_loop(dVars, oLine):
+    '''
+    [loop_label :] for {identifier} in {discrete_range} loop
+
+    end loop [loop label];
+    '''
 
     if re.match('^\s*for\s.*\sin\s.*\sloop', oLine.lineLower):
         oLine.isForLoopKeyword = True
