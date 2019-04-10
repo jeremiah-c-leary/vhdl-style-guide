@@ -15,18 +15,18 @@ class rule_003(rule.rule):
         self.identifier = '003'
         self.solution = 'Align first character in row to the column of text one space after the <=.'
         self.phase = 6
+        self.iAlignmentColumn = 0
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if self._is_vsg_off(oLine):
-                continue
-            if oLine.insideConcurrent:
-                if oLine.isConcurrentBegin and oLine.isEndConcurrent:
-                    continue
-                if oLine.isConcurrentBegin:
-                    iAlignmentColumn = oLine.line.find('<') + 3
-                else:
-                    check.multiline_alignment(self, iAlignmentColumn, oLine, iLineNumber)
+    def _pre_analyze(self):
+        self.iAlignmentColumn = 0
+
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.insideConcurrent:
+            if oLine.isConcurrentBegin:
+                if not oLine.isEndConcurrent:
+                    self.iAlignmentColumn = oLine.line.find('<') + 3
+            else:
+                check.multiline_alignment(self, self.iAlignmentColumn, oLine, iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.dFix['violations']:
