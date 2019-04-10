@@ -71,6 +71,7 @@ class rule():
             self.violations.append(lineNumber)
 
     def analyze(self, oFile):
+        self._pre_analyze()
         for iLineNumber, oLine in enumerate(oFile.lines):
             if not self._is_vsg_off(oLine):
                 self._analyze(oFile, oLine, iLineNumber)
@@ -105,3 +106,9 @@ class rule():
 
     def _get_solution(self, iLineNumber):
         return self.solution
+
+    def _pre_analyze(self):
+        '''
+        This method is called before analyze and allows each rule to setup any variables needed.
+        '''
+        return
