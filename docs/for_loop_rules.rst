@@ -85,14 +85,14 @@ This rule checks if a label on a for loop is uppercase.
 for_loop_004
 ############
 
-This rule checks if a label exists on a for loop that a single space exists before and after the :.
+This rule checks if a label exists on a for loop that a single space exists between the label and the :. 
 
 **Violation**
 
 .. code-block:: vhdl
 
-     LABEL : for index in 4 to 23 loop
-     LABEL : for index in 0 to 100 loop
+     LABEL: for index in 4 to 23 loop
+     LABEL    : for index in 0 to 100 loop
 
 **Fix**
 
@@ -104,18 +104,18 @@ This rule checks if a label exists on a for loop that a single space exists befo
 for_loop_005
 ############
 
-This rule checks for a single space after the **for** keyword.
+This rule checks if a label exists on a for loop that a single space exists after the :. 
 
 **Violation**
 
 .. code-block:: vhdl
 
-     for   index in 4 to 23 loop
-     for     index in 0 to 100 loop
+     LABEL :    for index in 4 to 23 loop
+     LABEL :  for index in 0 to 100 loop
 
 **Fix**
 
 .. code-block:: vhdl
 
-     for index in 4 to 23 loop
-     for index in 0 to 100 loop
+     LABEL : for index in 4 to 23 loop
+     LABEL : for index in 0 to 100 loop
