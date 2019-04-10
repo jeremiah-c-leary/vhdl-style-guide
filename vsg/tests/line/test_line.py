@@ -257,7 +257,7 @@ class testLineMethods(unittest.TestCase):
     def test_insideIf_attribute(self):
         oLine = line.line('contents of Line')
         self.assertEqual(oLine.insideIf, False)
-        oLine.insideIf= True
+        oLine.insideIf = True
         self.assertEqual(oLine.insideIf, True)
 
     def test_isIfKeyword_attribute(self):
@@ -419,13 +419,13 @@ class testLineMethods(unittest.TestCase):
     def test_instantiation_port_end_attribute(self):
         oLine = line.line('contents of Line')
         self.assertEqual(oLine.isInstantiationPortEnd, False)
-        oLine.isInstantiationPortEnd= True
+        oLine.isInstantiationPortEnd = True
         self.assertEqual(oLine.isInstantiationPortEnd, True)
 
     def test_instantiation_port_assignment_attribute(self):
         oLine = line.line('contents of Line')
         self.assertEqual(oLine.isInstantiationPortAssignment, False)
-        oLine.isInstantiationPortAssignment= True
+        oLine.isInstantiationPortAssignment = True
         self.assertEqual(oLine.isInstantiationPortAssignment, True)
 
     def test_inside_instantiation_generic_map_attribute(self):
@@ -443,13 +443,13 @@ class testLineMethods(unittest.TestCase):
     def test_instantiation_generic_end_attribute(self):
         oLine = line.line('contents of Line')
         self.assertEqual(oLine.isInstantiationGenericEnd, False)
-        oLine.isInstantiationGenericEnd= True
+        oLine.isInstantiationGenericEnd = True
         self.assertEqual(oLine.isInstantiationGenericEnd, True)
 
     def test_instantiation_generic_assignment_attribute(self):
         oLine = line.line('contents of Line')
         self.assertEqual(oLine.isInstantiationGenericAssignment, False)
-        oLine.isInstantiationGenericAssignment= True
+        oLine.isInstantiationGenericAssignment = True
         self.assertEqual(oLine.isInstantiationGenericAssignment, True)
 
     def test_inside_package_attribute(self):
@@ -569,7 +569,7 @@ class testLineMethods(unittest.TestCase):
     def test_isFunctionIs_attribute(self):
         oLine = line.line('contents of Line')
         self.assertEqual(oLine.isFunctionIs, False)
-        oLine.isFunctionIs= True
+        oLine.isFunctionIs = True
         self.assertEqual(oLine.isFunctionIs, True)
 
     def test_insideForLoop_attribute(self):
@@ -653,7 +653,7 @@ class testLineMethods(unittest.TestCase):
     def test_insideSubtype_attribute(self):
         oLine = line.line('contents of Line')
         self.assertEqual(oLine.insideSubtype, False)
-        oLine.insideSubtype= True
+        oLine.insideSubtype = True
         self.assertEqual(oLine.insideSubtype, True)
 
     def test_isTypeArrayEnd_attribute(self):
@@ -671,7 +671,7 @@ class testLineMethods(unittest.TestCase):
     def test_insideTypeArray_attribute(self):
         oLine = line.line('contents of Line')
         self.assertEqual(oLine.insideTypeArray, False)
-        oLine.insideTypeArray= True
+        oLine.insideTypeArray = True
         self.assertEqual(oLine.insideTypeArray, True)
 
     def test_isTypeRecordEnd_attribute(self):
@@ -689,7 +689,7 @@ class testLineMethods(unittest.TestCase):
     def test_insideTypeRecord_attribute(self):
         oLine = line.line('contents of Line')
         self.assertEqual(oLine.insideTypeRecord, False)
-        oLine.insideTypeRecord= True
+        oLine.insideTypeRecord = True
         self.assertEqual(oLine.insideTypeRecord, True)
 
     def test_isVariable_attribute(self):
@@ -839,5 +839,5 @@ class testLineMethods(unittest.TestCase):
     def test_isWait_attribute(self):
         oLine = line.line('contents of Line')
         self.assertEqual(oLine.isWait, False)
-        oLine.isWait= True
+        oLine.isWait = True
         self.assertEqual(oLine.isWait, True)

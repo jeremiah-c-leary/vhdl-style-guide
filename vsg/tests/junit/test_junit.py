@@ -96,7 +96,7 @@ class testJunitClasses(unittest.TestCase):
         self.assertEqual(oTestsuite.timestamp, oTestsuite.timestamp)
 
     def test_testsuite_class_add_testcase(self):
-        oTestsuite= junit.testsuite('Name', 'Time')
+        oTestsuite = junit.testsuite('Name', 'Time')
         oTestsuite.add_testcase(junit.testcase('TC_Name0', 'TC_Time0', 'TC_Classname0'))
         oTestsuite.add_testcase(junit.testcase('TC_Name1', 'TC_Time1', 'TC_Classname1'))
         oTestsuite.add_testcase(junit.testcase('TC_Name2', 'TC_Time2', 'TC_Classname2'))
