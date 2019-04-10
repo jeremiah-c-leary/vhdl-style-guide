@@ -19,27 +19,26 @@ class rule_012(rule.rule):
                          of entity.'
         self.phase = 5
 
-    def analyze(self, oFile):
-        lGroup = []
-        fGroupFound = False
-        iStartGroupIndex = None
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if self._is_vsg_off(oLine):
-                continue
-            if oLine.isGenericKeyword and not fGroupFound and not oLine.isGenericDeclaration:
-                fGroupFound = True
-                iStartGroupIndex = iLineNumber
-            if oLine.isEndGenericMap and fGroupFound:
-                lGroup.append(oLine)
-                fGroupFound = False
-                check.keyword_alignment(self, iStartGroupIndex, ':', lGroup)
-                lGroup = []
-                iStartGroupIndex = None
-            if fGroupFound:
-                if oLine.isGenericDeclaration:
-                    lGroup.append(oLine)
-                else:
-                    lGroup.append(line.line('Removed line'))
+    def _pre_analyze(self):
+        self.lGroup = []
+        self.fGroupFound = False
+        self.iStartGroupIndex = None
+
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isGenericKeyword and not self.fGroupFound and not oLine.isGenericDeclaration:
+            self.fGroupFound = True
+            self.iStartGroupIndex = iLineNumber
+        if oLine.isEndGenericMap and self.fGroupFound:
+            self.lGroup.append(oLine)
+            self.fGroupFound = False
+            check.keyword_alignment(self, self.iStartGroupIndex, ':', self.lGroup)
+            self.lGroup = []
+            self.iStartGroupIndex = None
+        if self.fGroupFound:
+            if oLine.isGenericDeclaration:
+                self.lGroup.append(oLine)
+            else:
+                self.lGroup.append(line.line('Removed line'))
 
     def _fix_violations(self, oFile):
         fix.keyword_alignment(self, oFile)
