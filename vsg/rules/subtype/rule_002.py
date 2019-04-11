@@ -21,12 +21,8 @@ class rule_002(rule.rule):
         if oLine.isSubtypeKeyword:
             self.dDatabase['subtype'].append(utils.extract_type_name(oLine))
         if oLine.insideArchitecture:
-            if oLine.insideConstant:
-                lWords = extract_word_list(oLine)
-                check_violations(self, lWords, iLineNumber)
-            if oLine.isSignal:
-                lWords = extract_word_list(oLine)
-                check_violations(self, lWords, iLineNumber)
+            check_in_constant(self, oLine, iLineNumber)
+            check_in_signal(self, oLine, iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
@@ -40,6 +36,18 @@ class rule_002(rule.rule):
         else:
             sSolution = self.solution + ': ' + ', '.join(self.dFix['violations'][iLineNumber])
         return sSolution
+
+
+def check_in_constant(self, oLine, iLineNumber):
+    if oLine.insideConstant:
+        lWords = extract_word_list(oLine)
+        check_violations(self, lWords, iLineNumber)
+
+
+def check_in_signal(self, oLine, iLineNumber):
+    if oLine.isSignal:
+        lWords = extract_word_list(oLine)
+        check_violations(self, lWords, iLineNumber)
 
 
 def create_database():

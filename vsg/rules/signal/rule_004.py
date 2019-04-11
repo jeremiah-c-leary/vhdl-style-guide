@@ -24,4 +24,3 @@ class rule_004(rule.rule):
             oLine = oFile.lines[iLineNumber]
             for sWord in utils.extract_signal_names(oLine):
                 fix.lower_case(self, oLine, sWord)
-
