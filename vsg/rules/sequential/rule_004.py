@@ -15,16 +15,15 @@ class rule_004(rule.rule):
         self.solution = 'Align with space after the "<=" keyword.'
         self.phase = 5
 
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if self._is_vsg_off(oLine):
-                continue
-            if oLine.isSequential and oLine.isSequentialEnd:
-                continue
-            if oLine.isSequential:
-                iAlignmentColumn = oLine.line.find('<=') + len('<= ')
-            if oLine.insideSequential and not oLine.isComment and not oLine.isSequential:
-                check.multiline_alignment(self, iAlignmentColumn, oLine, iLineNumber)
+    def _pre_analyze(self):
+        self.iAlignmentColumn = 0
+
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isSequential:
+            if not oLine.isSequentialEnd:
+                self.iAlignmentColumn = oLine.line.find('<=') + len('<= ')
+        if oLine.insideSequential and not oLine.isComment and not oLine.isSequential:
+            check.multiline_alignment(self, self.iAlignmentColumn, oLine, iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.dFix['violations']:

@@ -20,16 +20,14 @@ class rule_011(rule.rule):
         self.fixable = False  # This requires the user to fix as this could cover multiple files.
         self.configuration.append('port_direction')
 
-    def analyze(self, oFile):
+    def _pre_analyze(self):
         select_solution(self)
 
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if self._is_vsg_off(oLine):
-                continue
-            if oLine.isPortDeclaration and oLine.insideEntity:
-                lLine = oLine.lineLower.split()
-                check_for_prefix(self, lLine, iLineNumber)
-                check_for_suffix(self, lLine, iLineNumber)
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isPortDeclaration and oLine.insideEntity:
+            lLine = oLine.lineLower.split()
+            check_for_prefix(self, lLine, iLineNumber)
+            check_for_suffix(self, lLine, iLineNumber)
 
 
 def select_solution(self):

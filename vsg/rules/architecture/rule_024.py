@@ -14,20 +14,20 @@ class rule_024(rule.rule):
         self.solution = 'Add architecture name keyword.'
         self.phase = 1
 
-    def analyze(self, oFile):
+    def _pre_analyze(self):
         self.dFix['label'] = {}
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if self._is_vsg_off(oLine):
-                continue
-            if oLine.isArchitectureKeyword:
-                sLabel = oLine.line.split()[1]
-            if oLine.isEndArchitecture and not re.match('^\s*end\s+architecture\s+\w+', oLine.line, re.IGNORECASE):
-                if re.match('^\s*end\s+architecture', oLine.line, re.IGNORECASE):
-                    self.add_violation(iLineNumber)
-                    self.dFix['label'][iLineNumber] = sLabel
-                elif not re.match('^\s*end\s+\w+', oLine.line, re.IGNORECASE):
-                    self.add_violation(iLineNumber)
-                    self.dFix['label'][iLineNumber] = sLabel
+        self.sLabel = ""
+
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isArchitectureKeyword:
+            self.sLabel = oLine.line.split()[1]
+        if oLine.isEndArchitecture and not re.match('^\s*end\s+architecture\s+\w+', oLine.line, re.IGNORECASE):
+            if re.match('^\s*end\s+architecture', oLine.line, re.IGNORECASE):
+                self.add_violation(iLineNumber)
+                self.dFix['label'][iLineNumber] = self.sLabel
+            elif not re.match('^\s*end\s+\w+', oLine.line, re.IGNORECASE):
+                self.add_violation(iLineNumber)
+                self.dFix['label'][iLineNumber] = self.sLabel
 
     def _fix_violations(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):

@@ -14,27 +14,29 @@ class rule_018(rule.rule):
         self.solution = 'Add a label for the "end process".'
         self.phase = 1
 
+    def _pre_analyze(self):
+        self.dFix['processLabel'] = {}
+        self.labelStack = ''
+        self.iProcStartLine = 0
+        self.iProcLabelLine = 0
+
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isProcessKeyword:
+            self.iProcStartLine = iLineNumber
+            oMatch = re.match('^\s*(\S+)\s*:\s*process', oLine.lineLower)
+            if oMatch:
+                self.iProcLabelLine = iLineNumber
+                self.labelStack = oMatch.group(1)
+        if oLine.isEndProcess:
+            if not re.match('^\s*\S+\s+\S+\s+\S+', oLine.line):
+                self.add_violation(iLineNumber)
+            if self.labelStack and self.iProcStartLine == self.iProcLabelLine:
+                self.dFix['processLabel'][iLineNumber] = self.labelStack
+            self.labelStack = ''
+
     def _fix_violations(self, oFile):
         for iLineNumber, oLine in enumerate(oFile.lines):
             if oLine.isEndProcess and not re.match('^\s*\S+\s+\S+\s+\S+', oLine.line):
                 if iLineNumber in self.dFix['processLabel']:
                     oMatch = re.search(r'^(\s*)\S+\s+\S+', oLine.line)
                     oLine.line = oMatch.group(1) + 'end process ' + self.dFix['processLabel'][iLineNumber] + ';'
-
-    def analyze(self, oFile):
-        self.dFix['processLabel'] = {}
-        labelStack = ''
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if not self._is_vsg_off(oLine):
-                if oLine.isProcessKeyword:
-                    iProcStartLine = iLineNumber
-                    oMatch = re.match('^\s*(\S+)\s*:\s*process', oLine.lineLower)
-                    if oMatch:
-                        iProcLabelLine = iLineNumber
-                        labelStack = oMatch.group(1)
-                if oLine.isEndProcess:
-                    if not re.match('^\s*\S+\s+\S+\s+\S+', oLine.line):
-                        self.add_violation(iLineNumber)
-                    if labelStack and iProcStartLine == iProcLabelLine:
-                        self.dFix['processLabel'][iLineNumber] = labelStack
-                    labelStack = ''

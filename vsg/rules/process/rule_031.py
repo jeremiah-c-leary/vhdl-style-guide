@@ -15,26 +15,26 @@ class rule_031(rule.rule):
         self.phase = 5
         self.solution = 'Align the first character of each identifier and align colons.'
 
-    def analyze(self, oFile):
-        lGroup = []
-        fGroupFound = False
-        iStartGroupIndex = None
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if not self._is_vsg_off(oLine):
-                if oLine.isProcessKeyword and not fGroupFound:
-                    fGroupFound = True
-                    iStartGroupIndex = iLineNumber
-                if fGroupFound:
-                    if oLine.isConstant or oLine.isVariable or oLine.isFileKeyword:
-                        lGroup.append(oLine)
-                    else:
-                        lGroup.append(line.blank_line())
-                if oLine.isProcessBegin and fGroupFound:
-                    fGroupFound = False
-                    check.identifier_alignment(self, iStartGroupIndex, lGroup)
-                    check.keyword_alignment(self, iStartGroupIndex, ':', lGroup)
-                    lGroup = []
-                    iStartGroupIndex = None
+    def _pre_analyze(self):
+        self.lGroup = []
+        self.fGroupFound = False
+        self.iStartGroupIndex = None
+
+    def _analyze(self, oFile, oLine, iLineNumber):
+        if oLine.isProcessKeyword and not self.fGroupFound:
+            self.fGroupFound = True
+            self.iStartGroupIndex = iLineNumber
+        if self.fGroupFound:
+            if oLine.isConstant or oLine.isVariable or oLine.isFileKeyword:
+                self.lGroup.append(oLine)
+            else:
+                self.lGroup.append(line.blank_line())
+        if oLine.isProcessBegin and self.fGroupFound:
+            self.fGroupFound = False
+            check.identifier_alignment(self, self.iStartGroupIndex, self.lGroup)
+            check.keyword_alignment(self, self.iStartGroupIndex, ':', self.lGroup)
+            self.lGroup = []
+            self.iStartGroupIndex = None
 
     def _fix_violations(self, oFile):
         fix.identifier_alignment(self, oFile)
