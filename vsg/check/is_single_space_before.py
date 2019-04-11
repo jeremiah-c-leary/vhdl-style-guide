@@ -4,6 +4,7 @@ This module contains functions for rules to perform their checks.
 
 import re
 
+
 def is_single_space_before(self, sString, oLine, iLineNumber):
     '''
     Checks if a single space exists before the string given.

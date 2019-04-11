@@ -21,7 +21,6 @@ class rule_005(rule.rule):
         self.fGroupFound = False
         self.iStartGroupIndex = None
 
-
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.isSequential and not self.fGroupFound:
             self.fGroupFound = True
