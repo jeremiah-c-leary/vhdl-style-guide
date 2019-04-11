@@ -18,7 +18,7 @@ Entire portions of a file can be ignored using the **vsg_off** and **vsg_on** ta
       a <= write;
       b <= read;
     end process;
-    --vsg_on
+    -- vsg_on
 
 The **vsg_off** tag disables all rule checking.
 The **vsg_on** tag enables all rule checking, except those disabled by a configuration.
