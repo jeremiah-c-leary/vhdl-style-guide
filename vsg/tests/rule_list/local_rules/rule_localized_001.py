@@ -2,7 +2,7 @@
 from vsg import rule
 
 
-class rule_001(rule.rule):
+class rule_localized_001(rule.rule):
 
   def __init__(self):
       rule.rule.__init__(self, 'localized', '001')
