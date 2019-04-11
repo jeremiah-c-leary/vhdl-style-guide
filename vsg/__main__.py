@@ -188,10 +188,9 @@ def main():
             dOutputConfiguration['file_list'].append(sFileName)
         if commandLineArguments.local_rules:
             dOutputConfiguration['local_rules'] = commandLineArguments.local_rules
-        dOutputConfiguration['rule'] = oRules.get_configuration();
+        dOutputConfiguration['rule'] = oRules.get_configuration()
         with open(commandLineArguments.output_configuration, 'w') as json_file:
             json.dump(dOutputConfiguration, json_file, sort_keys=True, indent=2)
-
 
     sys.exit(0)
 

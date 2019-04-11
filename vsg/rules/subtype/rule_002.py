@@ -61,7 +61,7 @@ def extract_word_list(oLine):
 def check_violations(self, lWords, iLineNumber):
     for sWord in lWords:
         if sWord.lower() in map(str.lower, self.dDatabase['subtype']):
-            if not sWord in self.dDatabase['subtype']:
+            if sWord not in self.dDatabase['subtype']:
                 self.add_violation(iLineNumber)
                 try:
                     self.dFix['violations'][iLineNumber].append(sWord)

@@ -41,12 +41,14 @@ class rule_014(rule.rule):
             sSolution = self.solution + ': ' + ', '.join(self.dFix['violations'][iLineNumber])
         return sSolution
 
+
 def create_database():
 
     dDatabase = {}
     dDatabase['type'] = []
 
     return dDatabase
+
 
 def extract_word_list(oLine):
 
@@ -58,16 +60,18 @@ def extract_word_list(oLine):
     lWords = utils.extract_non_keywords(sLine)
     return lWords
 
+
 def check_violations(self, lWords, iLineNumber):
     for sWord in lWords:
         if sWord.lower() in map(str.lower, self.dDatabase['type']):
-            if not sWord in self.dDatabase['type']:
+            if sWord not in self.dDatabase['type']:
                 self.add_violation(iLineNumber)
                 try:
                     self.dFix['violations'][iLineNumber].append(sWord)
                 except KeyError:
                     self.dFix['violations'][iLineNumber] = []
                     self.dFix['violations'][iLineNumber].append(sWord)
+
 
 def get_replacement_word(self, sWord):
     for sNewWord in self.dDatabase['type']:

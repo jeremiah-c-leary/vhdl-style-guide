@@ -18,7 +18,7 @@ class rule_016(rule.rule):
         self.phase = 1
 
     def _analyze(self, oFile, oLine, iLineNumber):
-       if oLine.isGenericDeclaration and re.match('^.*;.*:', oLine.lineNoComment):
+        if oLine.isGenericDeclaration and re.match('^.*;.*:', oLine.lineNoComment):
             self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):

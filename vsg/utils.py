@@ -86,7 +86,7 @@ def get_first_word(oLine):
     return get_word(oLine, 0)
 
 
-def change_word(oLine, sWord, sNewWord, iMax = 1):
+def change_word(oLine, sWord, sNewWord, iMax=1):
     '''
     Changes one word in the line to another.
 
@@ -502,8 +502,8 @@ def extract_non_keywords(sString):
     '''
     lReturn = []
     sMyString = remove_comment(sString).replace('--', ' ')
-    sMyString = sMyString.replace(':',' ')
-    sMyString = sMyString.replace(',',' ')
+    sMyString = sMyString.replace(':', ' ')
+    sMyString = sMyString.replace(',', ' ')
     sMyString = sMyString.replace('\'', ' ')
     sMyString = sMyString.replace('(', ' ')
     sMyString = sMyString.replace(')', ' ')

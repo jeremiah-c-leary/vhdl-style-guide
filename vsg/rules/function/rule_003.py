@@ -35,4 +35,3 @@ def function_has_parameters(sString):
         return True
     else:
         return False
-
