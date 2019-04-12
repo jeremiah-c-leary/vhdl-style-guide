@@ -40,6 +40,19 @@ VHDL Style Guide (VSG) provides coding style guide enforcement for VHDL code.
 
 ![vim macro](https://github.com/jeremiah-c-leary/vhdl-style-guide/blob/master/docs/img/vim_macro.gif)
 
+## Table of Contents
+
+<!--ts-->
+  * [Overview](#Overview)
+  * [Key Benefits](#Key Benefits)
+  * [Key Features](#Key Features)
+  * [Installation](#Installation)
+  * [Usage](#Usage)
+  * [Documentation](#Documentation)
+<!--te-->
+
+## Overview
+
 VSG was created after participating in a code review.
 A real issue in the code was masked by a coding style issue.
 A finding was created for the style issue, while the real issue was missed.
@@ -57,7 +70,7 @@ This ultimately reduces the amount of time performing code reviews.
 It also allows reviewers to focus on the substance of the code.
 This will result in a higher quality code base.
 
-## Key benefits
+## Key Benefits
 
 * Define VHDL coding standards
 * Makes coding standards visible to everyone
