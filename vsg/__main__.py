@@ -47,7 +47,7 @@ def open_configuration_file(sFileName, commandLineArguments):
     except:
         try:
             with open(sFileName) as yaml_file:
-                tempConfiguration = yaml.load(yaml_file)
+                tempConfiguration = yaml.full_load(yaml_file)
         except:
             print('Error in configuration file: ' + sFileName)
             write_invalid_configuration_junit_file(sFileName, commandLineArguments)
