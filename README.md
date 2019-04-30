@@ -49,6 +49,7 @@ VHDL Style Guide (VSG) provides coding style guide enforcement for VHDL code.
   * [Installation](#Installation)
   * [Usage](#Usage)
   * [Documentation](#Documentation)
+  * [Contributing](#Contributing)
 <!--te-->
 
 ## Overview
@@ -160,3 +161,16 @@ Here is an example output running against a test file:
 
 All documentation for VSG is hosted at [read-the-docs](http://vhdl-style-guide.readthedocs.io/en/latest/index.html)
 
+## Contributing
+
+I welcome any contributions to this project.
+No matter how small or large.
+
+There are several ways to contribute:
+
+* Bug reports
+* Code base improvements
+* Feature requests
+* Pull requests
+
+Please refer to the documentation hosted at [read-the-docs](http://vhdl-style-guide.readthedocs.io/en/latest/index.html) for more details on contributing.
