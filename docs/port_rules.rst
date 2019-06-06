@@ -335,7 +335,7 @@ This rule checks for multiple ports declared on a single line.
 port_014
 ########
 
-This rule checks the closing parenthesis are port are on a line by itself.
+This rule checks the closing parenthesis of the port map are on a line by itself.
 
 **Violation**
 
@@ -572,6 +572,35 @@ This rule checks for missing modes in port declarations.
      RD_EN    : std_logic;
      OVERFLOW : std_logic;
      DATA     : inout std_logic
+   );
+
+**Fix**
+
+.. code-block:: vhdl
+
+   port (
+     WR_EN    : in    std_logic;
+     RD_EN    : in    std_logic;
+     OVERFLOW : out   std_logic;
+     DATA     : inout std_logic
+   );
+
+port_024
+########
+
+This rule checks for blank lines before the close parenthesis in port declarations.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   port (
+     WR_EN    : std_logic;
+     RD_EN    : std_logic;
+     OVERFLOW : std_logic;
+     DATA     : inout std_logic
+
+
    );
 
 **Fix**

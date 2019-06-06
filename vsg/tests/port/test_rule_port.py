@@ -121,6 +121,7 @@ class testRulePortMethods(unittest.TestCase):
         oRule.port_direction = 'Prefix'
 
         dExpected = [12,13,14,29,30,31,43,44,45,60,61,62,74,75,76,99,100,101,152,161,169,170,171,172,173]
+        dExpected.extend(range(181, 186))
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -137,6 +138,7 @@ class testRulePortMethods(unittest.TestCase):
         oRule.port_direction = 'Suffix'
 
         dExpected = [9,10,11,12,13,14,26,27,28,29,30,31,40,41,42,43,44,45,57,58,59,60,61,62,71,72,73,74,75,76,87,88,89,119,120,121,129,130,131,141,142,152,161,169,170,171,172,173]
+        dExpected.extend(range(181, 186))
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -259,3 +261,13 @@ class testRulePortMethods(unittest.TestCase):
         dExpected = [170,171]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_024(self):
+        oRule = port.rule_024()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'port')
+        self.assertEqual(oRule.identifier, '024')
+
+        lExpected = [188]
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, lExpected)

@@ -173,3 +173,18 @@ entity ENTITY3 is
     PORT5 : in    std_logic_vector(14 downto 0)
   );
 end entity ENTITY3;
+
+-- Check for blank lines before );
+
+entity ENTITY3 is
+  port (
+    PORT1 : in    std_logic;
+    PORT2 : in    integer;
+    PORT3 : out   std_logic_vector(3 downto 0);
+    PORT4 : out   std_logic;
+    PORT5 : in    std_logic_vector(14 downto 0)
+
+
+  );
+end entity ENTITY3;
+
