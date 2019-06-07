@@ -199,3 +199,13 @@ class testRuleGenericMethods(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
+    def test_rule_019(self):
+        oRule = generic.rule_019()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'generic')
+        self.assertEqual(oRule.identifier, '019')
+
+        dExpected = [174]
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+

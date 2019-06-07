@@ -316,7 +316,6 @@ This rule checks the generic type is lowercase if it is a VHDL keyword.
     DEPTH : Std_logic := '1'
   );
 
-
 **Fix**
 
 .. code-block:: vhdl
@@ -344,3 +343,27 @@ This rule checks the **generic** keyword is on the same line as the (.
 
   generic (
 
+generic_019
+###########
+
+This rule checks for blank lines before the ); of the generic declaration.
+
+**Violation**
+
+.. code-block:: vhdl
+
+  generic (
+    WIDTH : std_logic := '0';
+    DEPTH : Std_logic := '1'
+
+
+  );
+
+**Fix**
+
+.. code-block:: vhdl
+
+  generic (
+    WIDTH : std_logic := '0';
+    DEPTH : Std_logic := '1'
+  );

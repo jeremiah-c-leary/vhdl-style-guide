@@ -161,3 +161,18 @@ entity ENTITY1 is
     IO_PORT3, IO_PORT5 : inout std_logic
   );
 end entity  ENTITY1
+
+-- Check for blank lines above the );
+
+entity ENTITY1 is
+  generic 
+   (
+    G_GENERIC1 : std_logic := '0';
+    G_GENERIC2 : std_logic := '1'
+
+
+  );
+  port (
+    O_PORT2 : out   std_logic
+  );
+end entity  ENTITY1

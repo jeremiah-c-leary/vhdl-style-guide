@@ -183,6 +183,7 @@ class testVhdlFileMethods(unittest.TestCase):
 
     def test_insideGenericMap_assignment(self):
         lExpected = [4,5,6,7,20,21,22,23,35,36,37,38,51,52,53,54,66,67,68,69,82,83,84,85,95,96,97,114,115,116,117,139,140,141,153,154,155,156,157]
+        lExpected.extend(range(168, 175))
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFileGeneric.lines):
@@ -192,7 +193,7 @@ class testVhdlFileMethods(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isGenericKeyword_assignment(self):
-        lExpected = [4,20,35,51,66,82,95,114,139,153]
+        lExpected = [4,20,35,51,66,82,95,114,139,153,168]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFileGeneric.lines):
@@ -202,7 +203,7 @@ class testVhdlFileMethods(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isEndGenericMap_assignment(self):
-        lExpected = [7,23,38,54,69,85,97,117,141,157]
+        lExpected = [7,23,38,54,69,85,97,117,141,157,174]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFileGeneric.lines):
@@ -213,6 +214,7 @@ class testVhdlFileMethods(unittest.TestCase):
 
     def test_isGenericDeclaration_assignment(self):
         lExpected = [5,6,21,22,36,37,52,53,67,68,83,84,96,97,116,139,140,155,156]
+        lExpected.extend(range(170,172))
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFileGeneric.lines):
