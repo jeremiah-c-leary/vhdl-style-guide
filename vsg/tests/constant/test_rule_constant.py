@@ -89,7 +89,7 @@ class testRuleConstantMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'constant')
         self.assertEqual(oRule.identifier, '010')
-        dExpected = [9]
+        dExpected = [9,38]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 

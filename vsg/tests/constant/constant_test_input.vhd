@@ -35,4 +35,6 @@ package PACK is
     3
     );
 
+  constant const : std_logic   := '0';
+
 end package PACK;

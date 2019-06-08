@@ -155,7 +155,7 @@ This rule checks the :'s are in the same column for all constants in the archite
 constant_010
 ############
 
-This rule checks for at least a single space before the := keyword in constant declarations.
+This rule checks for a single space before the := keyword in constant declarations.
 Having a space makes it clearer where the assignment occurs on the line.
 
 **Violation**
@@ -163,12 +163,14 @@ Having a space makes it clearer where the assignment occurs on the line.
 .. code-block:: vhdl
 
    constant size : integer:= 1;
+   constant width : integer   := 10;
 
 **Fix**
 
 .. code-block:: vhdl
 
    constant size : integer := 1;
+   constant width : integer := 10;
 
 constant_011
 ############

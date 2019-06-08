@@ -128,6 +128,7 @@ class testFixRuleConstantMethods(unittest.TestCase):
         self.assertEqual(self.oFile.lines[8].line,  'Constant c_coNST :  std_logic := \'0\';')
         self.assertEqual(self.oFile.lines[9].line,  'constant const  :  STD_LOGIC :=\'0\';')
         self.assertEqual(self.oFile.lines[10].line, '   constant c_const: std_logic')
+        self.assertEqual(self.oFile.lines[38].line, '  constant const : std_logic := \'0\';')
 
     def test_fix_rule_011(self):
         oRule = constant.rule_011()

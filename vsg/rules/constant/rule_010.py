@@ -11,6 +11,6 @@ class rule_010(single_space_before_rule):
         single_space_before_rule.__init__(self)
         self.name = 'constant'
         self.identifier = '010'
-        self.solution = 'Add a space before the := assignment.'
+        self.solution = 'Ensure a space before the := assignment.'
         self.sTrigger = 'isConstant'
         self.sWord = ':='
