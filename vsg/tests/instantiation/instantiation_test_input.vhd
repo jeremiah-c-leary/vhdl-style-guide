@@ -95,5 +95,13 @@ begin
       PORT_2 => (others => (a => (others => '0'), b => (others => '1')))
     );
 
+  -- This is a comment above the instantiation.  This should be okay.
+  U_INST1 : INST1
+    port map (
+      PORT_1 => w_port_1,
+      PORT_2 => w_port_2,
+      PORT_3 => w_port_3
+    );
+
 end architecture ARCH;
 

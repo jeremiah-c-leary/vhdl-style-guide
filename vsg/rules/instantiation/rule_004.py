@@ -13,3 +13,4 @@ class rule_004(line_above_rule):
         self.name = 'instantiation'
         self.identifier = '004'
         self.condition = 'isInstantiationDeclaration'
+        self.sUnless = 'isComment'

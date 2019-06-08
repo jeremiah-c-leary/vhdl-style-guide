@@ -67,12 +67,17 @@ instantiation_004
 
 This rule checks for a blank line above the instantiation.
 
+.. NOTE:: Comments are allowed above the instantiation.
+
 **Violation**
 
 .. code-block:: vhdl
 
    WR_EN <= '1';
    U_FIFO : FIFO
+
+   -- Instantiate another FIFO
+   U_FIFO2 : FIFO
 
 **Fix**
 
@@ -81,6 +86,9 @@ This rule checks for a blank line above the instantiation.
    WR_EN <= '1';
 
    U_FIFO : FIFO
+
+   -- Instantiate another FIFO
+   U_FIFO2 : FIFO
 
 instantiation_005
 #################
