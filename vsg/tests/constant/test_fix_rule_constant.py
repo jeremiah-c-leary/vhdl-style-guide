@@ -5,15 +5,14 @@ from vsg.rules import constant
 from vsg import vhdlFile
 from vsg.tests import utils
 
+lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'constant_test_input.vhd'))
 
 class testFixRuleConstantMethods(unittest.TestCase):
 
     def setUp(self):
 
-        # Read in test file used for all tests
-        self.lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'constant_test_input.vhd'))
-        self.oFile = vhdlFile.vhdlFile(self.lFile)
-
+        # Process the test file used for all tests
+        self.oFile = vhdlFile.vhdlFile(lFile)
 
     def test_fix_rule_001(self):
         oRule = constant.rule_001()
@@ -155,3 +154,14 @@ class testFixRuleConstantMethods(unittest.TestCase):
         self.assertEqual(self.oFile.lines[34].line, '    2,')
         self.assertEqual(self.oFile.lines[35].line, '    3')
         self.assertEqual(self.oFile.lines[36].line, '  );')
+
+    def test_fix_rule_014(self):
+        oRule = constant.rule_014()
+        dExpected = []
+        oRule.fix(self.oFile)
+        oRule.analyze(self.oFile)
+        self.assertEqual(self.oFile.lines[40].line, '  constant c_length_constant : integer := I_FOO\'length     + I_BAR\'length +')
+        self.assertEqual(self.oFile.lines[41].line, '                                          I_MOREFOO\'length + I_MOREBAR\'length + 1;')
+        self.assertEqual(self.oFile.lines[43].line, '  constant c_length_constant : integer := I_FOO\'length     + I_BAR\'length +')
+        self.assertEqual(self.oFile.lines[44].line, '                                          I_MOREFOO\'length + I_MOREBAR\'length + 1;')
+        self.assertEqual(oRule.violations, dExpected)

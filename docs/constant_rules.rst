@@ -192,7 +192,7 @@ This rule checks the constant type is lowercase.
 constant_012
 ############
 
-This rule checks the indent of multiline constants.
+This rule checks the indent of multiline constants that contain arrays.
 
 **Violation**
 
@@ -278,4 +278,23 @@ This rule checks for consistent capitalization of constant names.
      end process PROC_NAME;
 
    end architecture RTL;
+
+constant_014
+############
+
+This rule checks the indent of multiline constants that do not contain arrays.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   constant width : integer := a + b +
+     c + d;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   constant width : integer := a + b +
+                               c + d;
 

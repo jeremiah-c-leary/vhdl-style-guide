@@ -43,6 +43,7 @@ class vhdlFile():
         dVars['iCurrentIndentLevel'] = 0
         dVars['iGenerateLevel'] = 0
         dVars['iIfLevel'] = 0
+        dVars['fConstantArray'] = False
 
         oLinePrevious = line.blank_line()
 
@@ -67,7 +68,7 @@ class vhdlFile():
             classify.package(dVars, oLine)
             classify.component(dVars, oLine)
             classify.signal(dVars, oLine)
-            classify.constant(dVars, oLine)
+            classify.constant(dVars, oLine, oLinePrevious)
             classify.variable(dVars, oLine)
             classify.procedure(dVars, oLine, oLinePrevious)
             classify.process(dVars, oLine)

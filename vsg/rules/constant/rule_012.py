@@ -8,4 +8,4 @@ class rule_012(indent_rule):
     '''
 
     def __init__(self):
-        indent_rule.__init__(self, 'constant', '012', 'insideConstant', 'isConstant')
+        indent_rule.__init__(self, 'constant', '012', 'isConstantArray', 'isConstant')

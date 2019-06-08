@@ -63,6 +63,7 @@ class line():
         self.insideConstant = False
         self.isConstant = False
         self.isConstantEnd = False
+        self.isConstantArray = False
         # Variable attributes
         self.isVariable = False
         # Process attributes

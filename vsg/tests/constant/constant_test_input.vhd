@@ -37,4 +37,10 @@ package PACK is
 
   constant const : std_logic   := '0';
 
+  constant c_length_constant : integer := I_FOO'length     + I_BAR'length +
+                                          I_MOREFOO'length + I_MOREBAR'length + 1;
+
+  constant c_length_constant : integer := I_FOO'length     + I_BAR'length +
+    I_MOREFOO'length + I_MOREBAR'length + 1;
+
 end package PACK;
