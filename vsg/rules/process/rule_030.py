@@ -13,7 +13,7 @@ class rule_030(rule.rule):
         rule.rule.__init__(self)
         self.name = 'process'
         self.identifier = '030'
-        self.solution = 'Compact sensivity list to reduce the number of lines is uses.'
+        self.solution = 'Compact sensitivity list to reduce the number of lines is uses.'
         self.phase = 1
         self.fixable = False
 
