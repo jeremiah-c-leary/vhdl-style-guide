@@ -164,3 +164,56 @@ This rule checks the indent lines starting with comments.
      signal rd_en : std_Logic;
 
    begin
+
+
+comment_008
+###########
+
+This rule aligns consecutive comment only lines above the **elsif** keyword in if statements.
+These comments are used to describe what the elsif code is going to do.
+
+**Violation**
+
+.. code-block:: vhdl
+
+       -- comment 1
+ -- comment 2
+    -- comment 3
+   elsif (a = '1')
+     rd_en <= '0';
+
+**Fix**
+
+.. code-block:: vhdl
+
+   -- comment 1
+   -- comment 2
+   -- comment 3
+   elsif (a = '1')
+     rd_en <= '0';
+
+comment_009
+###########
+
+This rule aligns consecutive comment only lines above the **else** keyword in if statements.
+These comments are used to describe what the elsif code is going to do.
+
+**Violation**
+
+.. code-block:: vhdl
+
+       -- comment 1
+ -- comment 2
+    -- comment 3
+   else
+     rd_en <= '0';
+
+**Fix**
+
+.. code-block:: vhdl
+
+   -- comment 1
+   -- comment 2
+   -- comment 3
+   else
+     rd_en <= '0';

@@ -15,6 +15,8 @@ lFileProcess = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'comme
 oFileProcess = vhdlFile.vhdlFile(lFileProcess)
 lFileLibrary = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'comment_library_test_input.vhd'))
 oFileLibrary = vhdlFile.vhdlFile(lFileLibrary)
+lFileIf = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'comment_if_input.vhd'))
+oFileIf = vhdlFile.vhdlFile(lFileIf)
 
 
 class testFixRuleCommentMethods(unittest.TestCase):
@@ -83,3 +85,36 @@ class testFixRuleCommentMethods(unittest.TestCase):
             iFailures += len(oRule.violations)
         self.assertEqual(iFailures, iExpectedFailures)
 
+    def test_rule_008(self):
+        oRule = comment.rule_008()
+        lExpected = []
+        oRule.fix(oFileIf)
+        oRule.analyze(oFileIf)
+        self.assertEqual(oFileIf.lines[15].indentLevel, 2)
+        self.assertEqual(oFileIf.lines[16].indentLevel, 2)
+        self.assertEqual(oFileIf.lines[17].indentLevel, 2)
+
+        self.assertEqual(oFileIf.lines[15].line, '    -- This is a comment')
+        self.assertEqual(oFileIf.lines[16].line, '    -- to describe the elsif')
+        self.assertEqual(oFileIf.lines[17].line, '    -- code')
+
+        self.assertEqual(oFileIf.lines[20].indentLevel, 2)
+        self.assertEqual(oFileIf.lines[21].indentLevel, 2)
+
+        self.assertEqual(oFileIf.lines[20].line, '    -- Yet more code comments')
+        self.assertEqual(oFileIf.lines[21].line, '    -- for the next elsif')
+
+        self.assertEqual(oRule.violations, lExpected)
+
+    def test_rule_009(self):
+        oRule = comment.rule_009()
+        lExpected = []
+        oRule.fix(oFileIf)
+        oRule.analyze(oFileIf)
+        self.assertEqual(oFileIf.lines[24].indentLevel, 2)
+        self.assertEqual(oFileIf.lines[25].indentLevel, 2)
+
+        self.assertEqual(oFileIf.lines[24].line, '    -- and finally comments for the')
+        self.assertEqual(oFileIf.lines[25].line, '    -- else code')
+
+        self.assertEqual(oRule.violations, lExpected)

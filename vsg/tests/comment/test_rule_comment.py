@@ -15,6 +15,8 @@ lFileProcess = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','
 oFileProcess = vhdlFile.vhdlFile(lFileProcess)
 lFileLibrary = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'comment_library_test_input.vhd'))
 oFileLibrary = vhdlFile.vhdlFile(lFileLibrary)
+lFileIf = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'comment_if_input.vhd'))
+oFileIf = vhdlFile.vhdlFile(lFileIf)
 
 class testRuleCommentMethods(unittest.TestCase):
 
@@ -81,4 +83,20 @@ class testRuleCommentMethods(unittest.TestCase):
         oRule.analyze(oFileLibrary)
         self.assertEqual(oRule.violations, dExpected)
 
+    def test_rule_008(self):
+        oRule = comment.rule_008()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'comment')
+        self.assertEqual(oRule.identifier, '008')
+        lExpected = [17,16,15,21,20]
+        oRule.analyze(oFileIf)
+        self.assertEqual(oRule.violations, lExpected)
 
+    def test_rule_009(self):
+        oRule = comment.rule_009()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'comment')
+        self.assertEqual(oRule.identifier, '009')
+        lExpected = [25,24]
+        oRule.analyze(oFileIf)
+        self.assertEqual(oRule.violations, lExpected)
