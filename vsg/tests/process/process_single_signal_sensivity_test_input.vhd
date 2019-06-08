@@ -13,7 +13,14 @@ begin
   begin
 
   end  process;
-  
+ 
+  process (one, two,
+           three
+          ) is
+  begin
+
+  end  process;
+ 
   process (one,
            two,
            three) is
