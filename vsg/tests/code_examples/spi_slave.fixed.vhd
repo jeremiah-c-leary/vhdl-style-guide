@@ -245,12 +245,12 @@ begin
   --=============================================================================================
   -- minimum word width is 8 bits
   assert N >= 8
-  report "Generic parameter 'N' error: SPI shift register size needs to be 8 bits minimum"
-  severity FAILURE;
+    report "Generic parameter 'N' error: SPI shift register size needs to be 8 bits minimum"
+    severity FAILURE;
   -- maximum prefetch lookahead check
   assert PREFETCH <= N - 5
-  report "Generic parameter 'PREFETCH' error: lookahead count out of range, needs to be N - 5 maximum"
-  severity FAILURE;
+    report "Generic parameter 'PREFETCH' error: lookahead count out of range, needs to be N - 5 maximum"
+    severity FAILURE;
 
   --=============================================================================================
   --  GENERATE BLOCKS

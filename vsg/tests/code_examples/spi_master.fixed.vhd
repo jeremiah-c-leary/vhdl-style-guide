@@ -291,20 +291,20 @@ begin
   --=============================================================================================
   -- minimum word width is 8 bits
   assert N >= 8
-  report "Generic parameter 'N' (shift register size) needs to be 8 bits minimum"
-  severity FAILURE;
+    report "Generic parameter 'N' (shift register size) needs to be 8 bits minimum"
+    severity FAILURE;
   -- minimum prefetch lookahead check
   assert PREFETCH >= 1
-  report "Generic parameter 'PREFETCH' (lookahead count) needs to be 1 minimum"
-  severity FAILURE;
+    report "Generic parameter 'PREFETCH' (lookahead count) needs to be 1 minimum"
+    severity FAILURE;
   -- maximum prefetch lookahead check
   assert PREFETCH <= N - 5
-  report "Generic parameter 'PREFETCH' (lookahead count) out of range, needs to be N - 5 maximum"
-  severity FAILURE;
+    report "Generic parameter 'PREFETCH' (lookahead count) out of range, needs to be N - 5 maximum"
+    severity FAILURE;
   -- SPI_2X_CLK_DIV clock divider value must not be zero
   assert SPI_2X_CLK_DIV > 0
-  report "Generic parameter 'SPI_2X_CLK_DIV' must not be zero"
-  severity FAILURE;
+    report "Generic parameter 'SPI_2X_CLK_DIV' must not be zero"
+    severity FAILURE;
 
   --=============================================================================================
   --  CLOCK GENERATION

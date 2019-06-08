@@ -4,12 +4,12 @@ architecture ARCH of ENTITY1 is
 begin
 
   assert boolean
-  report "Something"
-  severity FAILURE;
+    report "Something"
+    severity FAILURE;
 
    assert boolean
   report "Something"
-  severity FAILURE;
+    severity FAILURE;
 
 
   assert boolean
