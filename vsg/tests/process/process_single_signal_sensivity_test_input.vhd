@@ -73,5 +73,15 @@ begin
 
   end  process;
 
+  process (one,
+           two, three,
+           four,
+           five, six, seven,
+           eight) is
+  begin
+
+  end  process;
+
+
 end architecture ARCH;
 
