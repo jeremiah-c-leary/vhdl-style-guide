@@ -3,7 +3,7 @@ from setuptools import find_packages
 
 
 def readme():
-    with open('README.md') as f:
+    with open('README.rst') as f:
         return f.read()
 
 
