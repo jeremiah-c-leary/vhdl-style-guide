@@ -35,6 +35,9 @@ class rule():
         self._configure_rule_attributes(dConfiguration)
 
     def report_violations(self, iLineNumber, sOutputFormat, sFileName, fQuiet=False):
+        '''
+        Reports any rule violations to stdout.
+        '''
         for sViolation in self.violations:
             if str(sViolation).startswith(str(iLineNumber) + '-') or str(iLineNumber) == str(sViolation):
                 if not fQuiet:
@@ -59,6 +62,9 @@ class rule():
         return 0
 
     def fix(self, oFile):
+        '''
+        Applies fixes for any rule violations.
+        '''
         if self.fixable:
             self.analyze(oFile)
             self._fix_violations(oFile)
@@ -67,16 +73,25 @@ class rule():
             self.dFix['violations'] = {}
 
     def add_violation(self, lineNumber):
+        '''
+        Adds a linenumber to a violations list.
+        '''
         if lineNumber not in self.violations:
             self.violations.append(lineNumber)
 
     def analyze(self, oFile):
+        '''
+        Performs the analysis.
+        '''
         self._pre_analyze()
         for iLineNumber, oLine in enumerate(oFile.lines):
             if not self._is_vsg_off(oLine):
                 self._analyze(oFile, oLine, iLineNumber)
 
     def _configure_global_rule_attributes(self, dConfiguration):
+        '''
+        Updates rule attributes based on configuration input files
+        '''
         try:
             for sAttributeName in dConfiguration['rule']['global']:
                 if sAttributeName in self.__dict__:
@@ -85,6 +100,9 @@ class rule():
             pass
 
     def _configure_rule_attributes(self, dConfiguration):
+        '''
+        Updates rule attributes based on configuration input files
+        '''
         try:
             for sAttributeName in dConfiguration['rule'][self.name + '_' + self.identifier]:
                 if sAttributeName in self.__dict__:
@@ -93,22 +111,32 @@ class rule():
             pass
 
     def _is_vsg_off(self, oLine):
+        '''
+        Checks if the rule has been disabled for a given line.
+        '''
         if 'vsg_off' in oLine.codeTags:
             if len(oLine.codeTags['vsg_off']) == 0 or self.name + '_' + self.identifier in oLine.codeTags['vsg_off']:
                 return True
         return False
 
     def get_configuration(self):
+        '''
+        Returns a dictionary of every configurable attribute of the rule.
+        '''
         dConfig = {}
         for sParameter in self.configuration:
             dConfig[sParameter] = getattr(self, sParameter)
         return dConfig
 
     def _get_solution(self, iLineNumber):
+        '''
+        By default this method return self.solution.
+        This method can be overloaded by a rule if a more complex solution output is required.
+        '''
         return self.solution
 
     def _pre_analyze(self):
         '''
-        This method is called before analyze and allows each rule to setup any variables needed.
+        This method is called before the _analyze method and allows each rule to setup any variables needed.
         '''
         return
