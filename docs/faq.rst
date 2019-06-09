@@ -31,7 +31,7 @@ Use the following configuration and pass it to VSG when you analyze your code:
    }
 
 How do I align *signal_003*, *constant_003*, *file_003*, *type_003*, *subtype_003*, and *file_003*?
-#######################################################################################
+###################################################################################################
 
 The default behavior of VSG is to minimize horizontal spacing whenever possible.
 This would result in the following code formatting:
