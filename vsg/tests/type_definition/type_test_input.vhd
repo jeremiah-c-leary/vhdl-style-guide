@@ -62,7 +62,7 @@ package PACK is
   end record;
 
 
-  subtype a is 
+  subtype  a is 
     range 0 to 9;
 
 

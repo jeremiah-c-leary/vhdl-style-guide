@@ -42,3 +42,11 @@ class testRuleFileMethods(unittest.TestCase):
         dExpected = [9]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_003_w_5_spaces(self):
+        oRule = file_statement.rule_003()
+        oRule.spaces = 5
+
+        dExpected = [4,6,11,26]
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)

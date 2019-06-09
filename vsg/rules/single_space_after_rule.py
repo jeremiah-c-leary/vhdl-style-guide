@@ -39,12 +39,17 @@ class single_space_after_rule(rule.rule):
         self.sWord = sWord
         self.phase = 2
         self.solution = None
+        self.spaces = 1
+        self.configuration.append('spaces')
 
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.__dict__[self.sTrigger]:
-            check.is_single_space_after(self, self.sWord, oLine, iLineNumber)
+            check.is_single_space_after(self, self.sWord, oLine, iLineNumber, self.spaces)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
             oLine = oFile.lines[iLineNumber]
-            fix.enforce_one_space_after_word(self, oLine, self.sWord)
+            fix.enforce_one_space_after_word(self, oLine, self.sWord, self.spaces)
+
+    def _get_solution(self, iLineNumber):
+        return 'Ensure there are only ' + str(self.spaces) + ' space(s) after the "' + self.name + '" keyword.'

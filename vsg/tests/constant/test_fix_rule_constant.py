@@ -53,6 +53,20 @@ class testFixRuleConstantMethods(unittest.TestCase):
         self.assertEqual(self.oFile.lines[9].line,  'constant const  :  STD_LOGIC:=\'0\';')
         self.assertEqual(self.oFile.lines[10].line, '   constant c_const: std_logic')
 
+    def test_fix_rule_003_w_2_spaces(self):
+        oRule = constant.rule_003()
+        oRule.spaces = 2
+        dExpected = []
+        oRule.fix(self.oFile)
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(self.oFile.lines[5].line,  '  constant  c_const : std_logic := \'1\';')
+        self.assertEqual(self.oFile.lines[6].line,  '  constant  const : std_logic := \'0\';')
+        self.assertEqual(self.oFile.lines[7].line,  '  COnstant  c_const : std_logic := \'1\';')
+        self.assertEqual(self.oFile.lines[8].line,  'Constant  c_coNST :  std_logic := \'0\';')
+        self.assertEqual(self.oFile.lines[9].line,  'constant  const  :  STD_LOGIC:=\'0\';')
+        self.assertEqual(self.oFile.lines[10].line, '   constant  c_const: std_logic')
+
     def test_fix_rule_004(self):
         oRule = constant.rule_004()
         dExpected = []

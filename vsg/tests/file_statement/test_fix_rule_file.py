@@ -9,34 +9,47 @@ from vsg.tests import utils
 
 # Read in test file used for all tests
 lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'file_test_input.vhd'))
-oFile = vhdlFile.vhdlFile(lFile)
 
 
 class testFixRuleFileMethods(unittest.TestCase):
 
+    def setUp(self):
+        self.oFile = vhdlFile.vhdlFile(lFile)
+
     def test_fix_rule_001(self):
         oRule = file_statement.rule_001()
-        dExpected = []
-        oRule.fix(oFile)
-        oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
-        self.assertEqual(oFile.lines[9].line, '  FILE     defaultImage : load_file_type open read_mode is load_file_name;')
-        self.assertEqual(oFile.lines[11].line, '  file defaultImage : load_file_type open read_mode')
-        self.assertEqual(oFile.lines[12].line, '    is load_file_name;')
+        lExpected = []
+        oRule.fix(self.oFile)
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, lExpected)
+        self.assertEqual(self.oFile.lines[9].line, '  FILE     defaultImage : load_file_type open read_mode is load_file_name;')
+        self.assertEqual(self.oFile.lines[11].line, '  file defaultImage : load_file_type open read_mode')
+        self.assertEqual(self.oFile.lines[12].line, '    is load_file_name;')
 
     def test_fix_rule_002(self):
         oRule = file_statement.rule_002()
-        dExpected = []
-        oRule.fix(oFile)
-        oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
-        self.assertEqual(oFile.lines[9].line, '  file     defaultImage : load_file_type open read_mode is load_file_name;')
+        lExpected = []
+        oRule.fix(self.oFile)
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, lExpected)
+        self.assertEqual(self.oFile.lines[9].line, '   file     defaultImage : load_file_type open read_mode is load_file_name;')
 
     def test_fix_rule_003(self):
         oRule = file_statement.rule_003()
-        dExpected = []
-        oRule.fix(oFile)
-        oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
-        self.assertEqual(oFile.lines[9].line, '  file defaultImage : load_file_type open read_mode is load_file_name;')
+        lExpected = []
+        oRule.fix(self.oFile)
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, lExpected)
+        self.assertEqual(self.oFile.lines[9].line, '   FILE defaultImage : load_file_type open read_mode is load_file_name;')
+
+    def test_fix_rule_003_w_5_spaces(self):
+        oRule = file_statement.rule_003()
+        oRule.spaces = 5
+        lExpected = []
+        oRule.fix(self.oFile)
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, lExpected)
+        self.assertEqual(self.oFile.lines[4].line, '  file     defaultImage : load_file_type open read_mode is load_file_name;')
+        self.assertEqual(self.oFile.lines[9].line, '   FILE     defaultImage : load_file_type open read_mode is load_file_name;')
+        self.assertEqual(self.oFile.lines[26].line, '    file     defaultImage : load_file_type open read_mode is load_file_name;')
 

@@ -102,7 +102,7 @@ def upper_case_with_parenthesis(self, oLine, sKeyword):
     '''
 
 
-def enforce_one_space_after_word(self, oLine, sWord):
+def enforce_one_space_after_word(self, oLine, sWord, iSpaces=1):
     '''
     Adds a space after a word.
 
@@ -113,8 +113,10 @@ def enforce_one_space_after_word(self, oLine, sWord):
       oLine: (line object)
 
       sWord: (string)
+
+      iSpaces: (integer)
     '''
-    oLine.update_line(re.sub(r'(' + sWord + ')\s*(\S)', r'\1 \2', oLine.line, 1, flags=re.IGNORECASE))
+    oLine.update_line(re.sub(r'(' + sWord + ')(\s*)', r'\1' + ' ' * iSpaces, oLine.line, 1, flags=re.IGNORECASE))
 
 
 def enforce_one_space_before_word(self, oLine, sWord, fWholeWord=False):

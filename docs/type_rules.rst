@@ -46,7 +46,7 @@ This rule checks the **type** keyword is lowercase.
 type_003
 ########
 
-This rule checks for a single space after the **type** keyword.
+This rule checks for spaces after the **type** keyword.
 
 **Violation**
 
@@ -59,6 +59,15 @@ This rule checks for a single space after the **type** keyword.
 .. code-block:: vhdl
 
    type state_machine is (IDLE, WRITE, READ, DONE);
+
+.. NOTE:: The number of spaces after the **signal** keyword is configurable.
+   Use the following YAML file example to change the default number of spaces.
+
+   .. code-block:: yaml
+
+   rule:
+     type_003:
+         spaces: 3 
 
 type_004
 ########

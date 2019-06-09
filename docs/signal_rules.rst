@@ -48,7 +48,7 @@ This rule checks the **signal** keyword is lowercase.
 signal_003
 ##########
 
-This rule checks for a single space after the **signal** keyword.
+This rule checks for spaces after the **signal** keyword.
 
 **Violation**
 
@@ -61,6 +61,15 @@ This rule checks for a single space after the **signal** keyword.
 .. code-block:: vhdl
 
    signal wr_en : std_logic;
+
+.. NOTE:: The number of spaces after the **signal** keyword is configurable.
+   Use the following YAML file example to change the default number of spaces.
+
+   .. code-block:: yaml
+
+   rule:
+     signal_003:
+         spaces: 3 
 
 signal_004
 ##########

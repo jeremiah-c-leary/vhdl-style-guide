@@ -39,6 +39,18 @@ class testRuleConstantMethods(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, lExpected)
 
+    def test_rule_003_w_2_spaces(self):
+        oRule = constant.rule_003()
+        oRule.spaces = 2
+        lExpected = []
+        lExpected.extend(range(5,7))
+        lExpected.extend(range(8, 11))
+        lExpected.extend(range(17, 19))
+        lExpected.extend([28, 30, 38, 40, 43])
+ 
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, lExpected)
+
     def test_rule_004(self):
         oRule = constant.rule_004()
         self.assertTrue(oRule)

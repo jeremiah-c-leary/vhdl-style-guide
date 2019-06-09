@@ -39,7 +39,7 @@ This is the basic form of a configuration file in YAML:
    rule:
      global:
        attributeName: AttributeValue
-       ruleId_ruleNumber:
+     ruleId_ruleNumber:
          attributeName: AttributeValue
    ...
 

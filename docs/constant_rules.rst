@@ -45,7 +45,7 @@ This rule checks the **constant** keyword is lowercase.
 constant_003
 ############
 
-This rule checks for a single space after the **constant** keyword.
+This rule checks for spaces after the **constant** keyword.
 
 **Violation**
 
@@ -58,6 +58,15 @@ This rule checks for a single space after the **constant** keyword.
 .. code-block:: vhdl
 
    constant size : integer := 1;
+
+.. NOTE:: The number of spaces after the **constant** keyword is configurable.
+   Use the following YAML file example to change the default number of spaces.
+
+   .. code-block:: yaml
+
+   rule:
+     constant_003:
+         spaces: 3 
 
 constant_004
 ############

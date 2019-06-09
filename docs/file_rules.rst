@@ -60,7 +60,7 @@ This rule checks the **file** keyword is lowercase.
 file_003
 ########
 
-This rule checks for a single space after the **attribute** keyword.
+This rule checks for spaces after the **file** keyword.
 
 **Violation**
 
@@ -73,4 +73,13 @@ This rule checks for a single space after the **attribute** keyword.
 .. code-block:: vhdl
 
      file defaultImage : load_file_type open read_mode is load_file_name;
+
+.. NOTE:: The number of spaces after the **file** keyword is configurable.
+   Use the following YAML file example to change the default number of spaces.
+
+   .. code-block:: yaml
+
+   rule:
+     file_003:
+         spaces: 3 
 

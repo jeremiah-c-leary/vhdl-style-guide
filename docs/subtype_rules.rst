@@ -64,4 +64,30 @@ This rule checks for consistent capitalization of subtype names.
 
    constant read_sz  : read_size := 8;
    constant write_sz : write_size := 1;
-   
+
+subtype_003
+###########
+
+This rule checks for spaces after the **subtype** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   subtype   state_machine is (IDLE, WRITE, READ, DONE);
+
+**Fix**
+
+.. code-block:: vhdl
+
+   subtype state_machine is (IDLE, WRITE, READ, DONE);
+
+.. NOTE:: The number of spaces after the **subtype** keyword is configurable.
+   Use the following YAML file example to change the default number of spaces.
+
+   .. code-block:: yaml
+
+   rule:
+     subtype_003:
+         spaces: 3 
+
