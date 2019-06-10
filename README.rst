@@ -72,22 +72,31 @@ Key Features
 ------------
 
 * Command line tool
-  - integrate into continuous integration flow
+
+  * integrate into continuous integration flow
+
 * Reports and fixes issues found
-  - whitespace
-    - horizontal
-    - vertical
-  - upper and lower case
-  - keyword alignments
-  - etc...
+
+  * whitespace
+
+    * horizontal
+    * vertical
+
+  * upper and lower case
+  * keyword alignments
+  * etc...
+
 * Fully configurable rules via JSON or YAML configuration file
-  - Disable rules
-  - Alter behavior of existing rules
-  - Change phase of execution
+
+  * Disable rules
+  * Alter behavior of existing rules
+  * Change phase of execution
+
 * Localize rule sets
-  - Create your own rules using python
-  - Use existing rules as a template
-  - Fully integrates into base rule set
+
+  * Create your own rules using python
+  * Use existing rules as a template
+  * Fully integrates into base rule set
 
 Installation
 ------------
