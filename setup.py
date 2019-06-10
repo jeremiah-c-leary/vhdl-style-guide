@@ -9,7 +9,7 @@ def readme():
 
 setup(
   name='vsg',
-  version='0.37',
+  version='0.38',
   description='VHDL Style Guide',
   long_description=readme(),
   classifiers=[
@@ -33,7 +33,7 @@ setup(
   zip_safe=False,
   test_suite='nose.collector',
   tests_require=['nose'],
-  keywords=['vhdl', 'style', 'beautify', 'guide'],
+  keywords=['vhdl', 'style', 'beautify', 'guide', 'lint'],
   install_requires=[
     'PyYAML'
   ],
