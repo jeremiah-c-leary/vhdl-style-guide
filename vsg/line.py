@@ -76,6 +76,7 @@ class line():
         self.insideSensitivityList = False
         self.isSensitivityListBegin = False
         self.isSensitivityListEnd = False
+        self.insideClockProcess = False
         # Concurrent attributes
         self.insideConcurrent = False
         self.isConcurrentBegin = False
@@ -219,6 +220,8 @@ class line():
         # Code tags
         self.hasCodeTag = False
         self.codeTags = {}
+        # After attributes
+        self.hasAfterKeyword = False
 
     def update_line(self, sLine):
         '''

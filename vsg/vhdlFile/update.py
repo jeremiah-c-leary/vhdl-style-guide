@@ -33,6 +33,8 @@ def update_process_attributes(oPreviousLine, oCurrentLine):
 
     if oPreviousLine.insideProcess and not oPreviousLine.isEndProcess:
         oCurrentLine.insideProcess = True
+    if oPreviousLine.insideClockProcess and not oPreviousLine.isEndProcess:
+        oCurrentLine.insideClockProcess = True
 
 
 def update_concurrent_attributes(oPreviousLine, oCurrentLine):

@@ -93,6 +93,7 @@ class vhdlFile():
             classify.sequential(dVars, oLine)
             classify.variable_assignment(dVars, oLine)
             classify.wait(dVars, oLine)
+            classify.after(dVars, oLine)
 
             # Check instantiation statements
             if oLine.insideArchitecture and not oLine.insideProcess and \
