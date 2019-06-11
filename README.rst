@@ -21,6 +21,8 @@ VHDL Style Guide (VSG)
 .. image:: https://api.codacy.com/project/badge/Grade/42744dca97544824b93cfc99e8030063
    :target: https://www.codacy.com/app/jeremiah-c-leary/vhdl-style-guide?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jeremiah-c-leary/vhdl-style-guide&amp;utm_campaign=Badge_Grade
    :alt: Codacy
+.. image:: https://img.shields.io/twitter/follow/leary_jeremiah.svg?style=social
+   :alt: Twitter Follow
 
 VHDL Style Guide (VSG) provides coding style guide enforcement for VHDL code.
 
