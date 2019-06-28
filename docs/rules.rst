@@ -6,6 +6,7 @@ The rules are divided into catagories depending on the part of the VHDL code bei
 .. toctree::
    :maxdepth: 2
 
+   after_rules.rst
    architecture_rules.rst
    assert_rules.rst
    attribute_rules.rst

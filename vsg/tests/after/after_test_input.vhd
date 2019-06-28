@@ -100,5 +100,42 @@ ns -- another comment
   -- This checks detection of after outside clock processes
   a <= b after 10 ns;
 
+
+  -- This process checks for a clock process without a reset 
+  CLK_PROC : process (reset, clk) is
+  begin
+
+    if (falling_edge(clk)) then
+       a <= b after 1 ns;
+       b <= c after 1 ns;
+       c <= d after 1 ns;
+       d <= e after 1 ns;
+    end if;
+  end process CLK_PROC;
+
+  -- This process checks for a clock process without a reset 
+  CLK_PROC : process (reset, clk) is
+  begin
+
+    if (rising_edge(clk)) then
+       a <= b after 1 ns;
+       b <= c after 1 ns;
+       c <= d after 1 ns;
+       d <= e after 1 ns;
+    end if;
+  end process CLK_PROC;
+
+  -- This process checks for a clock process without a reset 
+  CLK_PROC : process (reset, clk) is
+  begin
+
+    if (clk'event and clk = '1') then
+       a <= b after 1 ns;
+       b <= c after 1 ns;
+       c <= d after 1 ns;
+       d <= e after 1 ns;
+    end if;
+  end process CLK_PROC;
+
 end architecture ARCH;
 

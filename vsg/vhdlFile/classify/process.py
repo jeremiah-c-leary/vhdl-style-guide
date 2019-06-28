@@ -67,9 +67,9 @@ def classify_process_end_keyword(dVars, oLine):
         dVars['SensitivityListFound'] = False
 
 def classify_clock_process(dVars, oLine):
-    if re.match('^\s*elsif\s*.*\'event\s+and\s+\w+\s*=\s*\'[0-1]\'', oLine.lineNoComment, flags=re.IGNORECASE):
+    if re.match('^\s*[elsif|if]\s*.*\'event\s+and\s+\w+\s*=\s*\'[0-1]\'', oLine.lineNoComment, flags=re.IGNORECASE):
         oLine.insideClockProcess = True
-    if re.match('^\s*elsif\s*.*rising_edge', oLine.lineNoComment, flags=re.IGNORECASE):
+    if re.match('^\s*[elsif|if]\s*.*rising_edge', oLine.lineNoComment, flags=re.IGNORECASE):
         oLine.insideClockProcess = True
-    if re.match('^\s*elsif\s*.*falling_edge', oLine.lineNoComment, flags=re.IGNORECASE):
+    if re.match('^\s*[elsif|if]\s*.*falling_edge', oLine.lineNoComment, flags=re.IGNORECASE):
         oLine.insideClockProcess = True

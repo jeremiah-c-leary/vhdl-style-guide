@@ -17,6 +17,7 @@ from .uppercase_end_label import uppercase_end_label
 from .uppercase_word_rule import uppercase_word_rule
 from .lowercase_word_rule import lowercase_word_rule
 
+from vsg.rules import after
 from vsg.rules import architecture
 from vsg.rules import assert_statement
 from vsg.rules import attribute

@@ -20,6 +20,9 @@ class testVhdlFileAfterMethods(unittest.TestCase):
         lExpected.extend(range(76, 80))
         lExpected.extend(range(93, 97))
         lExpected.append(101)
+        lExpected.extend(range(109, 113))
+        lExpected.extend(range(121, 125))
+        lExpected.extend(range(133, 137))
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
@@ -35,6 +38,10 @@ class testVhdlFileAfterMethods(unittest.TestCase):
         lExpected.extend(range(48, 64))
         lExpected.extend(range(75, 82))
         lExpected.extend(range(92, 99))
+        lExpected.extend(range(108, 115))
+        lExpected.extend(range(120, 127))
+        lExpected.extend(range(132, 139))
+
 
         # Generic actual list
         lActual = []

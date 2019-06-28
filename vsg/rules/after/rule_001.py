@@ -12,17 +12,21 @@ class rule_001(rule.rule):
 
     def __init__(self):
         rule.rule.__init__(self, 'after', '001')
-        self.fixable = False
         self.phase = 1
+        self.disable = True
+        self.magnitude = 1
+        self.units = 'ns'
+        self.configuration.extend(['magnitude', 'units'])
+        self.solution = 'Add after ' + str(self.magnitude) + ' ' + self.units + ' to signal in clock process'
 
     def _pre_analyze(self):
         self.sequentialStatement = ""
+        print('Got Here')
 
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.insideClockProcess:
             if oLine.isSequentialEnd:
                 self.sequentialStatement += oLine.lineNoComment.replace('--', '  ')
-                print(self.sequentialStatement)
                 if not re.match('^\s*.*\safter\s', self.sequentialStatement):
                     self.add_violation(iLineNumber) 
                 self.sequentialStatement = ""
@@ -30,3 +34,10 @@ class rule_001(rule.rule):
                 self.sequentialStatement += oLine.lineNoComment.replace('--', '  ')
             elif oLine.isSequential:
                 self.sequentialStatement = oLine.lineNoComment.replace('--', '  ')
+
+    def _fix_violations(self, oFile):
+        for iLineNumber in self.violations:
+            oLine = oFile.lines[iLineNumber]
+            sLine = oLine.line
+            sNewLine = sLine.replace(';', ' ' + ' '.join(['after', str(self.magnitude), self.units]) + ';')
+            oLine.update_line(sNewLine)

@@ -10,18 +10,18 @@ from vsg.tests import utils
 
 # Read in test file used for all tests
 lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'after_test_input.vhd'))
-oFile = vhdlFile.vhdlFile(lFile)
 
 class testRuleAfterMethods(unittest.TestCase):
 
-    def test_rule_001(self):
+    def setUp(self):
+       self.oFile = vhdlFile.vhdlFile(lFile)
+
+    def test_fix_rule_001(self):
         oRule = after.rule_001()
-        self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'after')
-        self.assertEqual(oRule.identifier, '001')
-        self.assertTrue(oRule.disable)
-        self.assertEqual(oRule.magnitude, 1)
-        self.assertEqual(oRule.units, 'ns')
-        lExpected = [33, 34]
-        oRule.analyze(oFile)
+        oRule.fix(self.oFile)
+        self.assertEqual(self.oFile.lines[33].line,'       b <= c after 1 ns;')
+        self.assertEqual(self.oFile.lines[34].line,'       c <= d after 1 ns;')
+
+        lExpected = []
+        oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, lExpected)

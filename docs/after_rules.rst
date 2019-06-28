@@ -37,3 +37,13 @@ This rule checks for **after x** in signal assignments in clock processes.
    end process CLK_PROC;
 
 .. NOTE::  This is disabled by default.
+
+.. NOTE::  This rule has two configurable items:
+
+   * magnitude
+   * units
+
+   The **magnitude** is the number of units.  Default is *1*.
+
+   The **units** is a valid time unit: ms, us, ns, ps etc...  Default is *ns*.
+
