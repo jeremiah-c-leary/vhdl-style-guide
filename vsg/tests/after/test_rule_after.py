@@ -15,10 +15,10 @@ oFile = vhdlFile.vhdlFile(lFile)
 class testRuleAfterMethods(unittest.TestCase):
 
     def test_rule_001(self):
-        oRule = signal.rule_001()
+        oRule = after.rule_001()
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'after')
         self.assertEqual(oRule.identifier, '001')
-        lExpected = [32, 33]
+        lExpected = [33, 34]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, lExpected)

@@ -50,7 +50,7 @@ begin
   PROC_2 : process (a) is
   begin
 
-    a   <= b or
+    a   <= b or -- c = '2';
             c or
           d = '1';
    c1  <= d;

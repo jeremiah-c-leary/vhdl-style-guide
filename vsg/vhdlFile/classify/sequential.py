@@ -11,5 +11,5 @@ def sequential(dVars, oLine):
         oLine.indentLevel = dVars['iCurrentIndentLevel']
         oLine.sequentialAlignmentColumn = oLine.line.find('<=')
     if oLine.insideSequential:
-        if ';' in oLine.line:
+        if ';' in oLine.lineNoComment:
             oLine.isSequentialEnd = True

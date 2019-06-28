@@ -36,6 +36,33 @@ begin
     end if;
   end process CLK_PROC;
 
+  -- This process checks for different alignments of the after statement
+  CLK_PROC : process (reset, clk) is
+  begin
+
+    if (reset = '1') then
+       a <= '0';
+       b <= '1';
+       c <= '0';
+       d <= '1';
+    elsif (clk'event and clk = '1') then
+       a <= b -- after 1 ns;
+            after 1 ns;
+       b <= c
+            after
+            1
+            ns;
+       c <= d
+            after
+-- some comment
+1 -- more comments
+ns -- another comment
+; -- yet more comments
+       d <= e after 1 ns;
+    end if;
+  end process CLK_PROC;
+
+  -- This process checks for incorrect times
   -- This process checks for incorrect times
   CLK_PROC : process (reset, clk) is
   begin
