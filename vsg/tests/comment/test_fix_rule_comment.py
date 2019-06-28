@@ -21,8 +21,8 @@ oFileIf = vhdlFile.vhdlFile(lFileIf)
 
 class testFixRuleCommentMethods(unittest.TestCase):
 
-    def test_rule_007(self):
-        oRule = comment.rule_007()
+    def test_rule_010(self):
+        oRule = comment.rule_010()
         oRule.fix(oFile)
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, [])
@@ -45,7 +45,7 @@ class testFixRuleCommentMethods(unittest.TestCase):
         oRule = comment.rule_005()
         dExpected = []
         oRule.fix(oFileCase)
-        oRuleIndex = comment.rule_007()
+        oRuleIndex = comment.rule_010()
         oRuleIndex.fix(oFileCase)
         oRule.analyze(oFileCase)
         self.assertEqual(oRule.violations, dExpected)

@@ -128,44 +128,6 @@ This rule aligns in line comments between the end of the process sensitivity lis
 
    begin
 
-comment_007
-###########
-
-This rule checks the indent lines starting with comments.
-
-**Violation**
-
-.. code-block:: vhdl
-
-       -- Libraries
-   libary ieee;
-
-    -- Define architecture
-   architecture RTL of FIFO is
-
-   -- Define signals
-     signal wr_en : std_logic;
-     signal rd_en : std_Logic;
-
-   begin
-
-**Fix**
-
-.. code-block:: vhdl
-
-   -- Libraries
-   libary ieee;
-
-   -- Define architecture
-   architecture RTL of FIFO is
-
-     -- Define signals
-     signal wr_en : std_logic;
-     signal rd_en : std_Logic;
-
-   begin
-
-
 comment_008
 ###########
 
@@ -217,3 +179,42 @@ These comments are used to describe what the elsif code is going to do.
    -- comment 3
    else
      rd_en <= '0';
+
+comment_010
+###########
+
+This rule checks the indent lines starting with comments.
+
+**Violation**
+
+.. code-block:: vhdl
+
+       -- Libraries
+   libary ieee;
+
+    -- Define architecture
+   architecture RTL of FIFO is
+
+   -- Define signals
+     signal wr_en : std_logic;
+     signal rd_en : std_Logic;
+
+   begin
+
+**Fix**
+
+.. code-block:: vhdl
+
+   -- Libraries
+   libary ieee;
+
+   -- Define architecture
+   architecture RTL of FIFO is
+
+     -- Define signals
+     signal wr_en : std_logic;
+     signal rd_en : std_Logic;
+
+   begin
+
+
