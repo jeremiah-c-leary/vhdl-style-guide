@@ -236,8 +236,8 @@ signal_012
 This rule checks multiple signal assignments on a single line are column aligned.
 
 .. NOTE::
-The :'s will be aligned with rule *signal_009*.
-This rule will only cover two signals on a single line.
+    The :'s will be aligned with rule *signal_009*.
+    This rule will only cover two signals on a single line.
 
 **Violation**
 
