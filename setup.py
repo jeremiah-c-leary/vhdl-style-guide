@@ -2,6 +2,8 @@ from setuptools import setup
 from setuptools import find_packages
 
 
+from vsg import version
+
 def readme():
     with open('README.rst') as f:
         return f.read()
@@ -9,7 +11,7 @@ def readme():
 
 setup(
   name='vsg',
-  version='0.38',
+  version=str(version.version),
   description='VHDL Style Guide',
   long_description=readme(),
   classifiers=[

@@ -11,6 +11,7 @@ import yaml
 from . import rule_list
 from . import vhdlFile
 from . import junit
+from . import version
 
 
 def parse_command_line_arguments():
@@ -31,6 +32,7 @@ def parse_command_line_arguments():
     parser.add_argument('-of', '--output_format', action='store', default='vsg', choices=['vsg', 'syntastic'], help='Sets the output format.')
     parser.add_argument('-b', '--backup', default=False, action='store_true', help='Creates copy of input file for comparison with fixed version.')
     parser.add_argument('-oc', '--output_configuration', default=None, action='store', help='Output configuration file name')
+    parser.add_argument('-v', '--version', default=False, action='store_true', help='Displays version information')
 
     if len(sys.argv) == 1:
         parser.print_help()
@@ -146,6 +148,8 @@ def main():
     '''Main routine of the VHDL Style Guide (VSG) program.'''
 
     commandLineArguments = parse_command_line_arguments()
+
+    version.print_version(commandLineArguments)
 
     configuration = read_configuration_files(commandLineArguments)
 
