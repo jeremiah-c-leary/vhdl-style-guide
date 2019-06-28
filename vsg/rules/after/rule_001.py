@@ -21,7 +21,6 @@ class rule_001(rule.rule):
 
     def _pre_analyze(self):
         self.sequentialStatement = ""
-        print('Got Here')
 
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.insideClockProcess:
