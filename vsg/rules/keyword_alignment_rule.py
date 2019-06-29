@@ -43,6 +43,7 @@ class keyword_alignment_rule(rule.rule):
         self.sEndGroupTrigger = None
         self.sLineTrigger = None
 
+    def _pre_analyze(self):
         self.lGroup = []
         self.fGroupFound = False
         self.iStartGroupIndex = None
