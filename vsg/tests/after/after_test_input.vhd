@@ -90,9 +90,9 @@ ns -- another comment
        c <= '0';
        d <= '1';
     elsif (falling_edge(clk)) then
-       a <= b after 1 ns;
-       b <= c after 1 ns;
-       c <= d after 1 ns;
+       a <= b   after 1 ns;
+       b <= c  after 1 ns;
+       c <= d    after 1 ns;
        d <= e after 1 ns;
     end if;
   end process CLK_PROC;

@@ -25,3 +25,13 @@ class testRuleAfterMethods(unittest.TestCase):
         lExpected = [33, 34]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, lExpected)
+
+    def test_rule_002(self):
+        oRule = after.rule_002()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'after')
+        self.assertEqual(oRule.identifier, '002')
+        self.assertTrue(oRule.disable)
+        lExpected = ['48-63', '92-98']
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, lExpected)
