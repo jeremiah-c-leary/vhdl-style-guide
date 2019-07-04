@@ -31,13 +31,13 @@ VHDL Style Guide (VSG) provides coding style guide enforcement for VHDL code.
 Table of Contents
 -----------------
 
-* `Overview`_
-* `Key Benefits`_
-* `Key Features`_
-* `Installation`_
-* `Usage`_
-* `Documentation`_
-* `Contributing`_
+*   `Overview`_
+*   `Key Benefits`_
+*   `Key Features`_
+*   `Installation`_
+*   `Usage`_
+*   `Documentation`_
+*   `Contributing`_
 
 Overview
 --------
