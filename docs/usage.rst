@@ -11,7 +11,7 @@ The command line tool can be invoked with:
                                   [-lr LOCAL_RULES]
                                   [-c CONFIGURATION [CONFIGURATION ...]] [--fix]
                                   [-fp FIX_PHASE] [-j JUNIT] [-of {vsg,syntastic}]
-                                  [-b] [-oc OUTPUT_CONFIGURATION]
+                                  [-b] [-oc OUTPUT_CONFIGURATION] [-v]
     
     Analyzes VHDL files for style guide violations. Reference documentation is
     located at: http://vhdl-style-guide.readthedocs.io/en/latest/index.html
@@ -35,8 +35,7 @@ The command line tool can be invoked with:
                             version.
       -oc OUTPUT_CONFIGURATION, --output_configuration OUTPUT_CONFIGURATION
                             Output configuration file name
-
-
+      -v, --version         Displays version information
 
 **Command Line Options**
 
@@ -77,6 +76,8 @@ The command line tool can be invoked with:
 |                               | run.  It includes a file_list, local_rules (if  |
 |                               | used), and how every rule was configured.       |
 |                               | This configuration can be fed back into VSG.    |
++-------------------------------+-------------------------------------------------+
+| --version                     | Displays the version of VSG.                    |
 +-------------------------------+-------------------------------------------------+
 
 

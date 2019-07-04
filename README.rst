@@ -134,7 +134,7 @@ The command line tool can be invoked with:
                                  [-lr LOCAL_RULES]
                                  [-c CONFIGURATION [CONFIGURATION ...]] [--fix]
                                  [-fp FIX_PHASE] [-j JUNIT] [-of {vsg,syntastic}]
-                                 [-b]
+                                 [-b] [-oc OUTPUT_CONFIGURATION] [-v]
    
    Analyzes VHDL files for style guide violations. Reference documentation is
    located at: http://vhdl-style-guide.readthedocs.io/en/latest/index.html
@@ -156,6 +156,9 @@ The command line tool can be invoked with:
                            Sets the output format.
      -b, --backup          Creates copy of input file for comparison with fixed
                            version.
+     -oc OUTPUT_CONFIGURATION, --output_configuration OUTPUT_CONFIGURATION
+                           Output configuration file name
+     -v, --version         Displays version information
 
 Here is an example output running against a test file:
 
