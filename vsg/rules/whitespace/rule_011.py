@@ -16,8 +16,9 @@ class rule_011(rule.rule):
 
     def _analyze(self, oFile, oLine, iLineNumber):
         sLine = oLine.lineNoComment
-        if re.match('^.*[\w+|\)][+|\-|/|*]', sLine) or re.match('^.*[+|\-|/|*][\w+|\(]', sLine):
-            self.add_violation(iLineNumber)
+        if not re.match('^.*".*/.*"', sLine):
+            if re.match('^.*[\w+|\)][+|\-|/|*]', sLine) or re.match('^.*[+|\-|/|*][\w+|\(]', sLine):
+                self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

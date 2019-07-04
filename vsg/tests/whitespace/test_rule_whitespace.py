@@ -216,6 +216,7 @@ class testRuleWhitespaceMethods(unittest.TestCase):
         self.oFile.lines.append(line.line('  a <= ) +('))   #24
         self.oFile.lines.append(line.line('  a <= ) + ('))  #25
         self.oFile.lines.append(line.line('  a <= )+('))    #26
+        self.oFile.lines.append(line.line('  G_FILE => "$DIR/somedir/somefile.txt",')) #27
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
 
