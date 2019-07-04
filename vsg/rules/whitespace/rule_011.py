@@ -12,7 +12,7 @@ class rule_011(rule.rule):
         self.name = 'whitespace'
         self.identifier = '011'
         self.phase = 2
-        self.solution = 'Add space before and/or after math operator.'
+        self.solution = 'Add a single space before and/or after math operator.'
 
     def _analyze(self, oFile, oLine, iLineNumber):
         sLine = oLine.lineNoComment
