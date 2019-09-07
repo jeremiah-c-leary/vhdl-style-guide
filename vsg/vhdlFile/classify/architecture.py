@@ -32,7 +32,8 @@ def classify_end_keyword(dVars, oLine):
        not oLine.insideComponent and not oLine.insideGenerate and \
        not oLine.insideFunction and not oLine.insideForLoop and \
        not oLine.insideWhileLoop and not oLine.insideTypeRecord and \
-       not oLine.insideProcedure and not oLine.insideBlock:
+       not oLine.insideProcedure and not oLine.insideBlock and \
+       not oLine.insideConcurrent and not oLine.insideInstantiation:
         if re.match('^\s*end', oLine.lineLower) and not \
            re.match('^\s*end\S+\s*:', oLine.lineLower) and not \
            re.match('^\s*end_', oLine.lineLower):

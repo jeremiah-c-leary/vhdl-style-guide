@@ -15,6 +15,9 @@ oFileComment = vhdlFile.vhdlFile(lFileComment)
 lFileIs = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'architecture_is_test_input.vhd'))
 oFileIs = vhdlFile.vhdlFile(lFileIs)
 
+lFileEnd = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'architecture_end_test_input.vhd'))
+oFileEnd = vhdlFile.vhdlFile(lFileEnd)
+
 class testRuleArchitectureMethods(unittest.TestCase):
 
     def test_rule_001_exists(self):
@@ -129,6 +132,12 @@ class testRuleArchitectureMethods(unittest.TestCase):
         self.assertEqual(oRule.identifier, '010')
         dExpected = [55,77]
         oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_architecture_end(self):
+        oRule = architecture.rule_010()
+        dExpected = []
+        oRule.analyze(oFileEnd)
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_011(self):

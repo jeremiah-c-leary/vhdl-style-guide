@@ -62,6 +62,7 @@ class vhdlFile():
             classify.port(dVars, oLine)
             classify.generic(dVars, oLine)
 
+            classify.concurrent(dVars, oLine)
             classify.architecture(self, dVars, oLine)
             classify.package_body(dVars, oLine)
             classify.block(self, dVars, oLine)
@@ -76,7 +77,6 @@ class vhdlFile():
             classify.attribute(dVars, oLine)
             classify.file_statement(dVars, oLine)
 
-            classify.concurrent(dVars, oLine)
             classify.when(dVars, oLine, oLinePrevious)
 
             classify.with_statement(dVars, oLine)
