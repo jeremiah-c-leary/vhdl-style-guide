@@ -102,7 +102,22 @@ def upper_case_with_parenthesis(self, oLine, sKeyword):
     '''
 
 
-def enforce_one_space_after_word(self, oLine, sWord, iSpaces=1):
+def enforce_one_space_after_word(self, oLine, sWord):
+    '''
+    Adds a space after a word.
+
+    Parameters:
+
+      self: (rule object)
+
+      oLine: (line object)
+
+      sWord: (string)
+    '''
+    enforce_spaces_after_word(self, oLine, sWord, 1)
+
+
+def enforce_spaces_after_word(self, oLine, sWord, iSpaces):
     '''
     Adds a space after a word.
 

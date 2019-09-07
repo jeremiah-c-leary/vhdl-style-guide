@@ -1,3 +1,4 @@
+from .are_there_spaces_after import *
 from .get_package_name import *
 from .has_package_name import *
 from .identifier_alignment import *
