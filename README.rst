@@ -182,4 +182,4 @@ There are several ways to contribute:
 * Feature requests
 * Pull requests
 
-Please refer to the documentation hosted at `read-the-docs <http://vhdl-style-guide.readthedocs.io/en/latest/index.html) for more details on contributing>`_.
+Please refer to the documentation hosted at `read-the-docs <http://vhdl-style-guide.readthedocs.io/en/latest/index.html>`_ for more details on contributing.
