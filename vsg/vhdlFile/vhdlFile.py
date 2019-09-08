@@ -72,7 +72,7 @@ class vhdlFile():
             classify.constant(dVars, oLine, oLinePrevious)
             classify.variable(dVars, oLine)
             classify.procedure(dVars, oLine, oLinePrevious)
-            classify.process(dVars, oLine)
+            classify.process(dVars, oLine, self.lines)
             classify.generate(dVars, oLine, oLinePrevious)
             classify.attribute(dVars, oLine)
             classify.file_statement(dVars, oLine)

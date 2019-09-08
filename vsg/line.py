@@ -77,6 +77,7 @@ class line():
         self.isSensitivityListBegin = False
         self.isSensitivityListEnd = False
         self.insideClockProcess = False
+        self.insideResetProcess = False
         # Concurrent attributes
         self.insideConcurrent = False
         self.isConcurrentBegin = False

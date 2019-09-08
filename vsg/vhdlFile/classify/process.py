@@ -1,13 +1,13 @@
 import re
 
 
-def process(dVars, oLine):
+def process(dVars, oLine, lLines):
     classify_process_keyword(dVars, oLine)
     if oLine.insideProcess:
         classify_process_sensitivity_list(dVars, oLine)
         classify_process_begin_keyword(dVars, oLine)
         classify_process_end_keyword(dVars, oLine)
-        classify_clock_process(dVars, oLine)
+        classify_clock_process(dVars, oLine, lLines)
 
 
 def classify_process_keyword(dVars, oLine):
@@ -66,10 +66,24 @@ def classify_process_end_keyword(dVars, oLine):
         dVars['iCurrentIndentLevel'] = dVars['iCurrentIndentLevel'] - 1
         dVars['SensitivityListFound'] = False
 
-def classify_clock_process(dVars, oLine):
+def classify_clock_process(dVars, oLine, lLines):
     if re.match('^\s*[elsif|if]\s*.*\'event\s+and\s+\w+\s*=\s*\'[0-1]\'', oLine.lineNoComment, flags=re.IGNORECASE):
         oLine.insideClockProcess = True
+        classify_reset_process(oLine, lLines)
     if re.match('^\s*[elsif|if]\s*.*rising_edge', oLine.lineNoComment, flags=re.IGNORECASE):
         oLine.insideClockProcess = True
+        classify_reset_process(oLine, lLines)
     if re.match('^\s*[elsif|if]\s*.*falling_edge', oLine.lineNoComment, flags=re.IGNORECASE):
         oLine.insideClockProcess = True
+        classify_reset_process(oLine, lLines)
+
+def classify_reset_process(oLine, lLines):
+    if re.match('^\s*if', oLine.lineNoComment, flags=re.IGNORECASE):
+        return
+
+    iIndex = len(lLines) - 1
+
+    while lLines[iIndex].isIfKeyword is False:
+        lLines[iIndex].insideResetProcess = True
+        iIndex = iIndex - 1
+    lLines[iIndex].insideResetProcess = True

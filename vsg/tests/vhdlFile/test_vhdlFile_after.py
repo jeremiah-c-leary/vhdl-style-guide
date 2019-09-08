@@ -54,3 +54,20 @@ class testVhdlFileAfterMethods(unittest.TestCase):
                 lActual.append(iIndex)
         # Compare
         self.assertEqual(lActual, lExpected)
+
+    def test_inside_reset_process(self):
+        lExpected = []
+        lExpected.extend(range(9, 14))
+        lExpected.extend(range(26, 31))
+        lExpected.extend(range(43, 48))
+        lExpected.extend(range(70, 75))
+        lExpected.extend(range(87, 92))
+        lExpected.extend(range(144, 149))
+
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFile.lines):
+            if oLine.insideResetProcess:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
