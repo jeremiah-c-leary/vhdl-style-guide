@@ -43,3 +43,13 @@ class testRuleAfterMethods(unittest.TestCase):
         lExpected = []
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, lExpected)
+
+    def test_fix_rule_003(self):
+        oRule = after.rule_003()
+        oRule.fix(self.oFile)
+        self.assertEqual(self.oFile.lines[145].line,'       a <= \'0\';')
+        self.assertEqual(self.oFile.lines[147].line,'       c <= \'0\';')
+
+        lExpected = []
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, lExpected)
