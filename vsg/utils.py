@@ -582,3 +582,17 @@ def extract_variable_name(oLine):
     '''
     sLine = oLine.line.split(':')[0]
     return sLine.split()[1]
+
+
+def remove_comment_attributes_from_line(oLine):
+    '''
+    Sets all comment attributes on a line to indicate no comment is present.
+
+    Parameters:
+    
+        oLine: (line object)
+    '''
+    oLine.isComment = False
+    oLine.hasComment = False
+    oLine.hasInlineComment = False
+    oLine.commentColumn = None

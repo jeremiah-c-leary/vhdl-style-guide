@@ -1,5 +1,6 @@
 
 from vsg import rule
+from vsg import utils
 
 import re
 import copy
@@ -26,8 +27,15 @@ class rule_007(rule.rule):
             oLine = oFile.lines[iLineNumber]
             iIndex = oLine.line.find(' else') + len(' else')
             oFile.lines.insert(iLineNumber + 1, copy.deepcopy(oLine))
+            utils.remove_comment_attributes_from_line(oLine)
             oLine.isEndConcurrent = False
             oLine.update_line(oLine.line[:iIndex])
             oLine = oFile.lines[iLineNumber + 1]
             oLine.isConcurrentBegin = False
-            oLine.update_line(oLine.line[iIndex:])
+            oLine.isEndConcurrent = True
+            sLine = oLine.line[iIndex:]
+            try:
+                oLine.commentColumn = sLine.index('--')
+            except ValueError:
+                oLine.commentColumn = None
+            oLine.update_line(sLine)
