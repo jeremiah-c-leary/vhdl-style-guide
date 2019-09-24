@@ -367,3 +367,26 @@ This rule checks for blank lines before the ); of the generic declaration.
     WIDTH : std_logic := '0';
     DEPTH : Std_logic := '1'
   );
+
+generic_020
+###########
+
+This rule checks the generic name starts with G_.
+
+.. NOTE::  This rule is disabled by default.
+
+**Violation**
+
+.. code-block:: vhdl
+
+  generic (
+    WIDTH : std_logic := '0';
+  );
+
+**Fix**
+
+.. code-block:: vhdl
+
+  generic (
+    G_WIDTH : std_logic := '0';
+  );
