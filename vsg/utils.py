@@ -528,51 +528,33 @@ def extract_non_keywords(sString):
     return lReturn
 
 
-def extract_signal_names(oLine):
+def extract_class_identifier_list(sClass, oLine):
     '''
     Returns a list of signals in a signal declaration.
 
     Parameters:
 
+       sClass: (class according to the VHDL standard)
+
        oLine: (line object)
 
     Returns: (list of strings)
     '''
-    sLine = oLine.line.split(':')[0]
-    return sLine.replace(',', ' ').split()[1:]
+    if sClass not in ['constant', 'variable', 'signal', 'file']:
+        raise Exception("sClass must be one of: constant, variable, signal, file")
 
+    sLine = oLine.line.replace(';', '')
+    sLine = sLine.split(':')[0]
+    sLine = sLine.replace(',', ' ').split()
+    if sLine[0].lower() == sClass:
+        sLine = sLine[1:]
 
-def extract_constant_name(oLine):
-    '''
-    Returns the name of a constant in a constant declaration.
-
-    Parameters:
-
-       oLine: (line object)
-
-    Returns: (string)
-    '''
-    sLine = oLine.line.split(':')[0]
-    return sLine.split()[1]
+    return sLine
 
 
 def extract_type_name(oLine):
     '''
     Returns the name of a type in a type declaration.
-
-    Parameters:
-
-       oLine: (line object)
-
-    Returns: (string)
-    '''
-    sLine = oLine.line.split(':')[0]
-    return sLine.split()[1]
-
-
-def extract_variable_name(oLine):
-    '''
-    Returns the name of a variable in a variable declaration.
 
     Parameters:
 

@@ -16,11 +16,11 @@ class rule_004(rule.rule):
 
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.isSignal:
-            for sWord in utils.extract_signal_names(oLine):
+            for sWord in utils.extract_class_identifier_list('signal', oLine):
                 check.is_lowercase(self, sWord, iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
             oLine = oFile.lines[iLineNumber]
-            for sWord in utils.extract_signal_names(oLine):
+            for sWord in utils.extract_class_identifier_list('signal', oLine):
                 fix.lower_case(self, oLine, sWord)

@@ -19,7 +19,7 @@ class rule_014(rule.rule):
 
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.isSignal:
-            self.dDatabase['signal'].extend(utils.extract_signal_names(oLine))
+            self.dDatabase['signal'].extend(utils.extract_class_identifier_list('signal', oLine))
         if oLine.insideArchitecture:
             if oLine.insideProcess and not oLine.isEndProcess and not oLine.isProcessDeclarative:
                 lWords = extract_word_list(oLine)
