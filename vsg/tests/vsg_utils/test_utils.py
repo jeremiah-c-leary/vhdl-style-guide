@@ -172,3 +172,48 @@ class testUtilsProcedures(unittest.TestCase):
         utils.change_word(oLine, 'green', 'red', 2)
         sActual = oLine.line
         self.assertEqual(sExpected, sActual)
+
+class testExtractFunctions(unittest.TestCase):
+
+    def test_extract_class_identifier_list(self):
+        oLine = line.blank_line()
+        oLine.update_line('signal s1, s2, s3 : std_logic := \'1\';')
+        sExpected = ['s1', 's2', 's3']
+        sActual = utils.extract_class_identifier_list(oLine)
+        self.assertEqual(sExpected, sActual)
+
+        oLine = line.blank_line()
+        oLine.update_line('signal s1, s2, s3')
+        sExpected = ['s1', 's2', 's3']
+        sActual = utils.extract_class_identifier_list(oLine)
+        self.assertEqual(sExpected, sActual)
+
+        oLine = line.blank_line()
+        oLine.update_line('signal s_x: std_logic;')
+        sExpected = ['s_x']
+        sActual = utils.extract_class_identifier_list(oLine)
+        self.assertEqual(sExpected, sActual)
+
+        oLine = line.blank_line()
+        oLine.update_line('s1, s2, s3;')
+        sExpected = ['s1', 's2', 's3']
+        sActual = utils.extract_class_identifier_list(oLine)
+        self.assertEqual(sExpected, sActual)
+
+        oLine = line.blank_line()
+        oLine.update_line('sig;')
+        sExpected = ['sig']
+        sActual = utils.extract_class_identifier_list(oLine)
+        self.assertEqual(sExpected, sActual)
+
+        oLine = line.blank_line()
+        oLine.update_line('constant C_VALUE : integer;')
+        sExpected = ['C_VALUE']
+        sActual = utils.extract_class_identifier_list(oLine)
+        self.assertEqual(sExpected, sActual)
+
+        oLine = line.blank_line()
+        oLine.update_line('variable var1, var2 : integer := -32;')
+        sExpected = ['var1', 'var2']
+        sActual = utils.extract_class_identifier_list(oLine)
+        self.assertEqual(sExpected, sActual)

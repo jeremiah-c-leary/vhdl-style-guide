@@ -19,7 +19,7 @@ class rule_011(rule.rule):
 
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.isVariable:
-            self.dDatabase['variable'].append(utils.extract_variable_name(oLine))
+            self.dDatabase['variable'].append(utils.extract_class_identifier_list(oLine)[0])
         if oLine.insideProcess:
             lWords = extract_word_list(oLine)
             check_violations(self, lWords, iLineNumber)
