@@ -527,6 +527,18 @@ def extract_non_keywords(sString):
 
     return lReturn
 
+def extract_class_name(oLine):
+    '''
+    Returns the name of a type in a type declaration.
+
+    Parameters:
+
+       oLine: (line object)
+
+    Returns: (one element list of strings)
+    '''
+    return [oLine.line.split()[0]]
+
 
 def extract_class_identifier_list(oLine):
     '''

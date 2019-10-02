@@ -175,6 +175,19 @@ class testUtilsProcedures(unittest.TestCase):
 
 class testExtractFunctions(unittest.TestCase):
 
+    def test_extract_class_name(self):
+        oLine = line.blank_line()
+        oLine.update_line('signal s1, s2, s3 : std_logic := \'1\';')
+        sExpected = ['signal']
+        sActual = utils.extract_class_name(oLine)
+        self.assertEqual(sExpected, sActual)
+
+        oLine = line.blank_line()
+        oLine.update_line('CONSTANT C_MY_CONST : integer := -24;')
+        sExpected = ['CONSTANT']
+        sActual = utils.extract_class_name(oLine)
+        self.assertEqual(sExpected, sActual)
+
     def test_extract_class_identifier_list(self):
         oLine = line.blank_line()
         oLine.update_line('signal s1, s2, s3 : std_logic := \'1\';')
