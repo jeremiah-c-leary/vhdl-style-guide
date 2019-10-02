@@ -17,6 +17,7 @@ from .search_for_and_replace_keyword_rule import search_for_and_replace_keyword_
 from .uppercase_end_label import uppercase_end_label
 from .uppercase_word_rule import uppercase_word_rule
 from .lowercase_word_rule import lowercase_word_rule
+from .case_rule import case_rule
 
 from vsg.rules import after
 from vsg.rules import architecture
