@@ -98,6 +98,7 @@ def change_word(oLine, sWord, sNewWord, iMax=1):
 
       sNewWord: (string)
     '''
+    print('### Changing word ' + sWord + ' to ' + sNewWord + ' ###')
     sLine = oLine.line
     tLine = re.subn(r'\b' + sWord + r'\b', sNewWord, sLine, iMax, flags=re.IGNORECASE)
     sLine = tLine[0]

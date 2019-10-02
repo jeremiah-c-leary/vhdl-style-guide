@@ -41,12 +41,11 @@ class case_rule(rule.rule):
         self.sTrigger = sTrigger
         self.extractFunction = extractFunction
         self.case = 'lower'
-        self.words = None
+        self.words = []
 
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.__dict__[self.sTrigger]:
-            self.words = self.extractFunction(oLine)
-
+            self.words = self.words + self.extractFunction(oLine)
             if self.case == 'lower':
                     check_function = check.is_lowercase
             else:
@@ -57,10 +56,15 @@ class case_rule(rule.rule):
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
+            print('***')
+            print(self.words)
+            print('***')
             for word in self.words:
+                print(word)
+
                 if self.case == 'lower':
-                    fixed_word = word.lower()
-                    fix.lower_case(self, oFile.lines[iLineNumber], fixed_word)
+                    fix_function = fix.lower_case
                 else:
-                    fixed_word = word.upper()
-                    fix.upper_case(self, oFile.lines[iLineNumber], fixed_word)
+                    fix_function = fix.upper_case
+
+                fix_function(self, oFile.lines[iLineNumber], word)
