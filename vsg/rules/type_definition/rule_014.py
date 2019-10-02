@@ -19,7 +19,7 @@ class rule_014(rule.rule):
 
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.isTypeKeyword:
-            self.dDatabase['type'].append(utils.extract_type_name(oLine))
+            self.dDatabase['type'].append(utils.extract_type_name(oLine)[0])
         if oLine.insideArchitecture:
             if oLine.insideConstant:
                 lWords = extract_word_list(oLine)

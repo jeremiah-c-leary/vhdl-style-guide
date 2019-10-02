@@ -557,10 +557,10 @@ def extract_type_name(oLine):
 
        oLine: (line object)
 
-    Returns: (string)
+    Returns: (one element list of strings)
     '''
     sLine = oLine.line.split(':')[0]
-    return sLine.split()[1]
+    return [sLine.split()[1]]
 
 
 def remove_comment_attributes_from_line(oLine):
