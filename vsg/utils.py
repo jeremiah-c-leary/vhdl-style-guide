@@ -622,6 +622,25 @@ def extract_label(oLine):
     return [oLine.line.replace(' ', '').split(':')[0]]
 
 
+def extract_end_label(oLine):
+    '''
+    Returns the end label.
+
+    Parameters:
+
+       oLine: (line object)
+
+    Returns: (one element or empty list of strings)
+    '''
+    word = oLine.line.replace(';', '').split()[-1]
+    lower = word.lower()
+
+    if lower == 'end' or lower == 'generate' or lower == 'process':
+        return []
+
+    return [word]
+
+
 def extract_entity_identifier(oLine):
     '''
     Returns the entity identifier.
