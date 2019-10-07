@@ -739,6 +739,20 @@ def extract_is_keyword(oLine):
     '''
     return _extract_keyword(oLine.line, 'is')
 
+
+def extract_begin_keyword(oLine):
+    '''
+    Returns begin keyword from line.
+
+    Parameters:
+
+       oLine: (line object)
+
+    Returns: (one element list of strings)
+    '''
+    return _extract_keyword(oLine.line, 'begin')
+
+
 def remove_comment_attributes_from_line(oLine):
     '''
     Sets all comment attributes on a line to indicate no comment is present.
