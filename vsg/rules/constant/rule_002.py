@@ -10,4 +10,4 @@ class rule_002(case_rule):
 
     def __init__(self):
         case_rule.__init__(self, 'constant', '002', 'isConstant', utils.extract_class_name)
-        self.solution = 'Change constant name to ' + self.case + 'case'
+        self.solution = 'Change constant keyword to ' + self.case + 'case'
