@@ -719,7 +719,8 @@ def _extract_keyword(sLine, keyword):
 
     Returns: (one element or empty list of strings)
     '''
-    line = sLine.replace('(', ' ')
+    line = sLine.replace(';', '')
+    line = line.replace('(', ' ')
     line = line.replace(')', ' ')
 
     for word in line.split():
@@ -766,6 +767,19 @@ def extract_when_keyword(oLine):
     Returns: (one element list of strings)
     '''
     return _extract_keyword(oLine.line, 'when')
+
+
+def extract_case_keyword(oLine):
+    '''
+    Returns begin keyword from line.
+
+    Parameters:
+
+       oLine: (line object)
+
+    Returns: (one element list of strings)
+    '''
+    return _extract_keyword(oLine.line, 'case')
 
 
 def remove_comment_attributes_from_line(oLine):
