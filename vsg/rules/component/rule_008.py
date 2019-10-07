@@ -1,10 +1,12 @@
 
-from vsg.rules import uppercase_word_rule
+from vsg.rules import case_rule
+from vsg import utils
 
 
-class rule_008(uppercase_word_rule):
-    '''Component rule 008 checks the component name is uppercase in the component declaration line.'''
+class rule_008(case_rule):
+    '''Component rule 008 checks the component name has proper case in the component declaration line.'''
 
     def __init__(self):
-        uppercase_word_rule.__init__(self, 'component', '008', 'isComponentDeclaration', 1)
-        self.solution = 'Change component name to all uppercase.'
+        case_rule.__init__(self, 'component', '008', 'isComponentDeclaration', utils.extract_component_identifier)
+        self.case = 'upper'
+        self.solution = 'Change component name to ' + self.case + 'case'

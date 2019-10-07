@@ -635,6 +635,9 @@ def extract_entity_identifier(oLine):
     return [oLine.line.split()[1]]
 
 
+extract_component_identifier = extract_entity_identifier;
+
+
 def remove_comment_attributes_from_line(oLine):
     '''
     Sets all comment attributes on a line to indicate no comment is present.
