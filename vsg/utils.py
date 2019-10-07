@@ -614,7 +614,6 @@ def extract_type_name_vhdl_only(oLine):
     return []
 
 
-
 def extract_type_identifier(oLine):
     '''
     Returns the type identifier from type declaration.
@@ -707,7 +706,7 @@ def extract_port_name(oLine):
     return [sLine.split()[0]]
 
 
-def _extract_keyword(sLine, keyword):
+def extract_word(sLine, keyword):
     '''
     Returns is keyword from line.
 
@@ -730,45 +729,6 @@ def _extract_keyword(sLine, keyword):
     return []
 
 
-def extract_is_keyword(oLine):
-    '''
-    Returns is keyword from line.
-
-    Parameters:
-
-       oLine: (line object)
-
-    Returns: (one element list of strings)
-    '''
-    return _extract_keyword(oLine.line, 'is')
-
-
-def extract_begin_keyword(oLine):
-    '''
-    Returns begin keyword from line.
-
-    Parameters:
-
-       oLine: (line object)
-
-    Returns: (one element list of strings)
-    '''
-    return _extract_keyword(oLine.line, 'begin')
-
-
-def extract_when_keyword(oLine):
-    '''
-    Returns begin keyword from line.
-
-    Parameters:
-
-       oLine: (line object)
-
-    Returns: (one element list of strings)
-    '''
-    return _extract_keyword(oLine.line, 'when')
-
-
 def extract_case_keyword(oLine):
     '''
     Returns begin keyword from line.
@@ -779,7 +739,7 @@ def extract_case_keyword(oLine):
 
     Returns: (one element list of strings)
     '''
-    return _extract_keyword(oLine.line, 'case')
+    return extract_word(oLine.line, 'case')
 
 
 def remove_comment_attributes_from_line(oLine):
