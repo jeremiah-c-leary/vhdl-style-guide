@@ -608,6 +608,21 @@ def extract_type_identifier(oLine):
     '''
     return [oLine.line.split()[1]]
 
+
+def extract_label(oLine):
+    '''
+    Returns the label.
+
+    Parameters:
+
+       oLine: (line object)
+
+    Returns: (one element list of strings)
+    '''
+    return [oLine.line.replace(' ', '').split(':')[0]]
+
+
+
 def remove_comment_attributes_from_line(oLine):
     '''
     Sets all comment attributes on a line to indicate no comment is present.

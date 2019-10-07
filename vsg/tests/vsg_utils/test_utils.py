@@ -249,3 +249,16 @@ class testExtractFunctions(unittest.TestCase):
         sExpected = ['std_logic_vector']
         sActual = utils.extract_type_name(oLine)
         self.assertEqual(sExpected, sActual)
+
+    def test_extract_label(self):
+        oLine = line.blank_line()
+        oLine.update_line('  cp: CPU')
+        sExpected = ['cp']
+        sActual = utils.extract_label(oLine)
+        self.assertEqual(sExpected, sActual)
+
+        oLine = line.blank_line()
+        oLine.update_line('  cp : CPU')
+        sExpected = ['cp']
+        sActual = utils.extract_label(oLine)
+        self.assertEqual(sExpected, sActual)
