@@ -2,6 +2,7 @@
 from vsg.rules import case_rule
 from vsg import utils
 
+
 class rule_002(case_rule):
     '''
     Type rule 002 checks the "type" keyword has proper case.

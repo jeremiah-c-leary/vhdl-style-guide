@@ -47,6 +47,7 @@ class case_rule(rule.rule):
         if oLine.__dict__[self.sTrigger]:
             words = self._extract(oLine)
 
+            # ToDo: Raise exception when case differs from lower and upper
             if self.case == 'lower':
                 check_function = check.is_lowercase
             else:

@@ -2,6 +2,7 @@
 from vsg.rules import case_rule
 from vsg import utils
 
+
 class rule_004(case_rule):
     '''
     Component rule 004 checks the component keyword has proper case.

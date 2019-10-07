@@ -3,7 +3,6 @@ from vsg.rules import case_rule
 from vsg import utils
 
 
-
 class rule_002(case_rule):
     '''
     Attribute rule 002 checks the **attribute** keyword has proper case.

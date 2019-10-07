@@ -527,6 +527,7 @@ def extract_non_keywords(sString):
 
     return lReturn
 
+
 def extract_class_name(oLine):
     '''
     Returns the name of a type in a type declaration.
@@ -672,7 +673,8 @@ def extract_entity_identifier(oLine):
     return [oLine.line.split()[1]]
 
 
-extract_component_identifier = extract_entity_identifier;
+extract_component_identifier = extract_entity_identifier
+
 
 def extract_first_keyword(oLine):
     '''
