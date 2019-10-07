@@ -1,12 +1,13 @@
 
-from vsg.rules import lowercase_word_rule
+from vsg.rules import case_rule
+from vsg import utils
 
 
-class rule_004(lowercase_word_rule):
+class rule_004(case_rule):
     '''
-    Signal rule 004 checks the variable name is lowercase.
+    Variable rule 004 checks the variable identifiers have proper case.
     '''
 
     def __init__(self):
-        lowercase_word_rule.__init__(self, 'variable', '004', 'isVariable', 1)
-        self.solution = 'Change variable name to lowercase.'
+        case_rule.__init__(self, 'variable', '004', 'isVariable', utils.extract_class_identifier_list)
+        self.solution = 'Change variable identifiers name to ' + self.case + 'case'
