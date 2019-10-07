@@ -230,3 +230,22 @@ class testExtractFunctions(unittest.TestCase):
         sExpected = ['var1', 'var2']
         sActual = utils.extract_class_identifier_list(oLine)
         self.assertEqual(sExpected, sActual)
+
+    def test_extract_type_name(self):
+        oLine = line.blank_line()
+        oLine.update_line('variable var1, var2 : integer := -32;')
+        sExpected = ['integer']
+        sActual = utils.extract_type_name(oLine)
+        self.assertEqual(sExpected, sActual)
+
+        oLine = line.blank_line()
+        oLine.update_line('constant con1 : integer;')
+        sExpected = ['integer']
+        sActual = utils.extract_type_name(oLine)
+        self.assertEqual(sExpected, sActual)
+
+        oLine = line.blank_line()
+        oLine.update_line('type fbuffer is array (0 to 524288 / 16 - 1) of std_logic_vector(2 downto 0);')
+        sExpected = ['std_logic_vector']
+        sActual = utils.extract_type_name(oLine)
+        self.assertEqual(sExpected, sActual)

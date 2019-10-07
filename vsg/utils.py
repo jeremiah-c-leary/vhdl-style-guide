@@ -561,9 +561,23 @@ def extract_class_identifier_list(oLine):
     return sLine
 
 
-def extract_type_name(oLine):
+def _extract_type_name_from_type_declaration(sLine):
     '''
     Returns the name of a type in a type declaration.
+
+    Parameters:
+
+       sLine: (line)
+
+    Returns: (one element list of strings)
+    '''
+    words = sLine.lower().split()
+    return [sLine.split()[words.index('of') + 1]]
+
+
+def extract_type_name(oLine):
+    '''
+    Returns the name of a type in various declarations.
 
     Parameters:
 
@@ -571,9 +585,28 @@ def extract_type_name(oLine):
 
     Returns: (one element list of strings)
     '''
-    sLine = oLine.line.split(':')[0]
-    return [sLine.split()[1]]
+    sLine = oLine.line.replace(';', '')
+    sLine = sLine.replace('(', ' ')
+    sLine = sLine.replace(')', ' ')
 
+    if get_first_word(oLine).lower() == 'type':
+        return _extract_type_name_from_type_declaration(sLine)
+    else:
+        sLine = sLine.split(':')[1]
+        return [sLine.split()[0]]
+
+
+def extract_type_identifier(oLine):
+    '''
+    Returns the type identifier from type declaration.
+
+    Parameters:
+
+       oLine: (line object)
+
+    Returns: (one element list of strings)
+    '''
+    return [oLine.line.split()[1]]
 
 def remove_comment_attributes_from_line(oLine):
     '''

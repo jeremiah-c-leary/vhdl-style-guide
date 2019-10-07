@@ -7,7 +7,7 @@ from vsg import utils
 
 class case_rule(rule.rule):
     '''
-    Checks for and fixes words that are not lowercase.
+    Checks for and fixes words case.
 
     Parameters
     ----------

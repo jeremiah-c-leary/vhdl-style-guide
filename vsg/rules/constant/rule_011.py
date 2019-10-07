@@ -1,12 +1,13 @@
 
-from vsg.rules import lowercase_word_after_colon_rule
+from vsg.rules import case_rule
+from vsg import utils
 
 
-class rule_011(lowercase_word_after_colon_rule):
+class rule_011(case_rule):
     '''
-    Constant rule 010 checks the constant type is lowercase.
+    Constant rule 011 checks the constant type has proper case.
     '''
 
     def __init__(self):
-        lowercase_word_after_colon_rule.__init__(self, 'constant', '011', 'isConstant')
-        self.solution = 'Change constant type to lowercase.'
+        case_rule.__init__(self, 'constant', '011', 'isConstant', utils.extract_type_name)
+        self.solution = 'Change type name to ' + self.case + 'case'
