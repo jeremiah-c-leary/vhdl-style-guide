@@ -622,6 +622,18 @@ def extract_label(oLine):
     return [oLine.line.replace(' ', '').split(':')[0]]
 
 
+def extract_entity_identifier(oLine):
+    '''
+    Returns the entity identifier.
+
+    Parameters:
+
+       oLine: (line object)
+
+    Returns: (one element list of strings)
+    '''
+    return [oLine.line.split()[1]]
+
 
 def remove_comment_attributes_from_line(oLine):
     '''
