@@ -193,13 +193,13 @@ entity SPI_MASTER is
     DI_I          : in    std_logic_vector(N - 1 downto 0) := (others => 'X');    -- parallel data in (clocked on rising spi_clk after last bit)
     WREN_I        : in    std_logic := 'X';                                       -- user data write enable, starts transmission when interface is idle
     WR_ACK_O      : out   std_logic;                                              -- write acknowledge
-    DO_VALID_O    : out   std_logic;                                              -- do_o data valid signal, valid during one spi_clk rising edge.
+    DO_VALID_O    : out   std_logic;                                              -- DO_O data valid signal, valid during one spi_clk rising edge.
     DO_O          : out   std_logic_vector(N - 1 downto 0);                       -- parallel output (clocked on rising spi_clk after last bit)
     --- debug ports: can be removed or left unconnected for the application circuit ---
     SCK_ENA_O     : out   std_logic;                                              -- debug: internal sck enable signal
     SCK_ENA_CE_O  : out   std_logic;                                              -- debug: internal sck clock enable signal
     DO_TRANSFER_O : out   std_logic;                                              -- debug: internal transfer driver
-    WREN_O        : out   std_logic;                                              -- debug: internal state of the wren_i pulse stretcher
+    WREN_O        : out   std_logic;                                              -- debug: internal state of the WREN_I pulse stretcher
     RX_BIT_REG_O  : out   std_logic;                                              -- debug: internal rx bit
     STATE_DBG_O   : out   std_logic_vector(3 downto 0);                           -- debug: internal state register
     CORE_CLK_O    : out   std_logic;

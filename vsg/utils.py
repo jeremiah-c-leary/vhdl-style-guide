@@ -638,6 +638,20 @@ def extract_entity_identifier(oLine):
 extract_component_identifier = extract_entity_identifier;
 
 
+def extract_port_name(oLine):
+    '''
+    Returns the port name.
+
+    Parameters:
+
+       oLine: (line object)
+
+    Returns: (one element list of strings)
+    '''
+    sLine = oLine.line.replace('(', ' ')
+    return [sLine.split()[0]]
+
+
 def remove_comment_attributes_from_line(oLine):
     '''
     Sets all comment attributes on a line to indicate no comment is present.
