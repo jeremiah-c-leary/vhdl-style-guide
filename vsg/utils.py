@@ -706,19 +706,19 @@ def extract_port_name(oLine):
     return [sLine.split()[0]]
 
 
-def extract_word(sLine, keyword):
+def extract_word(oLine, keyword):
     '''
     Returns is keyword from line.
 
     Parameters:
 
-       sLine: (line)
+       sLine: (line object)
 
        keyword: keyword to extract
 
     Returns: (one element or empty list of strings)
     '''
-    line = sLine.replace(';', '')
+    line = oLine.line.replace(';', '')
     line = line.replace('(', ' ')
     line = line.replace(')', ' ')
 
@@ -727,19 +727,6 @@ def extract_word(sLine, keyword):
             return [word]
 
     return []
-
-
-def extract_case_keyword(oLine):
-    '''
-    Returns begin keyword from line.
-
-    Parameters:
-
-       oLine: (line object)
-
-    Returns: (one element list of strings)
-    '''
-    return extract_word(oLine.line, 'case')
 
 
 def remove_comment_attributes_from_line(oLine):

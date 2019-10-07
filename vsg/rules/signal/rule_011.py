@@ -9,5 +9,8 @@ class rule_011(case_rule):
     '''
 
     def __init__(self):
-        case_rule.__init__(self, 'signal', '011', 'isSignal', utils.extract_type_name)
+        case_rule.__init__(self, 'signal', '011', 'isSignal')
         self.solution = 'Change signal type name to ' + self.case + 'case'
+
+    def _extract(self, oLine):
+        return utils.extract_type_name(oLine)

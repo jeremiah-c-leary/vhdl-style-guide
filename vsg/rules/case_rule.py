@@ -2,7 +2,7 @@
 from vsg import rule
 from vsg import fix
 from vsg import check
-from vsg import utils
+from abc import abstractmethod
 
 
 class case_rule(rule.rule):
@@ -21,9 +21,6 @@ class case_rule(rule.rule):
     sTrigger : string
        The line attribute the rule applies to.
 
-    extractFun : extract function
-        Function to be used to extract words.
-
     Attribute
     ----------
 
@@ -34,18 +31,21 @@ class case_rule(rule.rule):
        Instructions on how to fix the violation.
     '''
 
-    def __init__(self, name=None, identifier=None, sTrigger=None, extractFunction=None):
+    def __init__(self, name=None, identifier=None, sTrigger=None):
         rule.rule.__init__(self, name, identifier)
         self.phase = 6
         self.solution = None
         self.sTrigger = sTrigger
-        self.extractFunction = extractFunction
         self.case = 'lower'
         self.words_to_fix = set()
 
+    @abstractmethod
+    def _extract(self, oLine):
+        pass
+
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.__dict__[self.sTrigger]:
-            words = self.extractFunction(oLine)
+            words = self._extract(oLine)
 
             if self.case == 'lower':
                 check_function = check.is_lowercase

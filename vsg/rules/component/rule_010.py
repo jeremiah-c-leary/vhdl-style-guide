@@ -9,5 +9,8 @@ class rule_010(case_rule):
     '''
 
     def __init__(self):
-        case_rule.__init__(self, 'component', '010', 'isComponentEnd', utils.extract_first_keyword)
+        case_rule.__init__(self, 'component', '010', 'isComponentEnd')
         self.solution = 'Change end keyword to ' + self.case + 'case'
+
+    def _extract(self, oLine):
+        return utils.extract_first_keyword(oLine)

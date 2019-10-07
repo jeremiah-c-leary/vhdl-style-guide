@@ -9,5 +9,8 @@ class rule_011(case_rule):
     '''
 
     def __init__(self):
-        case_rule.__init__(self, 'constant', '011', 'isConstant', utils.extract_type_name)
+        case_rule.__init__(self, 'constant', '011', 'isConstant')
         self.solution = 'Change type name to ' + self.case + 'case'
+
+    def _extract(self, oLine):
+        return utils.extract_type_name(oLine)

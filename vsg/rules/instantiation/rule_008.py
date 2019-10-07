@@ -9,6 +9,9 @@ class rule_008(case_rule):
     '''
 
     def __init__(self):
-        case_rule.__init__(self, 'instantiation', '008', 'isInstantiationDeclaration', utils.extract_label)
+        case_rule.__init__(self, 'instantiation', '008', 'isInstantiationDeclaration')
         self.case = 'upper'
         self.solution = 'Change instance name to ' + self.case + 'case'
+
+    def _extract(self, oLine):
+        return utils.extract_label(oLine)

@@ -9,5 +9,8 @@ class rule_004(case_rule):
     '''
 
     def __init__(self):
-        case_rule.__init__(self, 'library', '004', 'isLibrary', utils.extract_first_keyword)
+        case_rule.__init__(self, 'library', '004', 'isLibrary')
         self.solution = 'Change library keyword to ' + self.case + 'case'
+
+    def _extract(self, oLine):
+        return utils.extract_first_keyword(oLine)

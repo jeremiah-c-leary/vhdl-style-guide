@@ -9,6 +9,9 @@ class rule_010(case_rule):
     '''
 
     def __init__(self):
-        case_rule.__init__(self, 'signal', '010', 'isSignal', utils.extract_type_name_vhdl_only)
+        case_rule.__init__(self, 'signal', '010', 'isSignal')
         self.solution = 'Change signal type name to ' + self.case + 'case'
         self.disabled = True
+
+    def _extract(self, oLine):
+        return utils.extract_type_name_vhdl_only(oLine)

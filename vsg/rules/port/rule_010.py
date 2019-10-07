@@ -9,6 +9,9 @@ class rule_010(case_rule):
     '''
 
     def __init__(self):
-        case_rule.__init__(self, 'port', '010', 'isPortDeclaration', utils.extract_port_name)
+        case_rule.__init__(self, 'port', '010', 'isPortDeclaration')
         self.case = 'upper'
         self.solution = 'Change port name to ' + self.case + 'case'
+
+    def _extract(self, oLine):
+        return utils.extract_port_name(oLine)

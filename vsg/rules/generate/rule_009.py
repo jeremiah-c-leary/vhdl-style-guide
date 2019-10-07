@@ -9,5 +9,8 @@ class rule_009(case_rule):
     '''
 
     def __init__(self):
-        case_rule.__init__(self, 'generate', '009', 'isGenerateEnd', utils.extract_first_keyword)
+        case_rule.__init__(self, 'generate', '009', 'isGenerateEnd')
         self.solution = 'Change end keyword to ' + self.case + 'case'
+
+    def _extract(self, oLine):
+        return utils.extract_first_keyword(oLine)
