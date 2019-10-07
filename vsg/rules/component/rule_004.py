@@ -1,12 +1,12 @@
 
-from vsg.rules import lower_case_rule
+from vsg.rules import case_rule
+from vsg import utils
 
-
-class rule_004(lower_case_rule):
+class rule_004(case_rule):
     '''
-    Component rule 004 checks the component keyword is lower case.
+    Component rule 004 checks the component keyword has proper case.
     '''
 
     def __init__(self):
-        lower_case_rule.__init__(self, 'component', '004', 'isComponentDeclaration', 'component')
-        self.solution = 'Change "component" keyword to lowercase.'
+        case_rule.__init__(self, 'component', '004', 'isComponentDeclaration', utils.extract_first_word)
+        self.solution = 'Change component keyword to ' + self.case + 'case'

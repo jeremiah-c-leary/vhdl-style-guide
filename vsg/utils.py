@@ -675,10 +675,9 @@ def extract_entity_identifier(oLine):
 
 extract_component_identifier = extract_entity_identifier;
 
-
-def extract_port_name(oLine):
+def extract_first_word(oLine):
     '''
-    Returns the port name.
+    Returns first word from line.
 
     Parameters:
 
@@ -688,6 +687,9 @@ def extract_port_name(oLine):
     '''
     sLine = oLine.line.replace('(', ' ')
     return [sLine.split()[0]]
+
+
+extract_port_name = extract_first_word
 
 
 def remove_comment_attributes_from_line(oLine):
