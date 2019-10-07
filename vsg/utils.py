@@ -706,6 +706,33 @@ def extract_port_name(oLine):
     sLine = oLine.line.replace('(', ' ')
     return [sLine.split()[0]]
 
+def _extract_keyword(sLine, keyword):
+    '''
+    Returns is keyword from line.
+
+    Parameters:
+
+       sLine: (line)
+
+       keyword: keyword to extract
+
+    Returns: (one element list of strings)
+    '''
+    for word in sLine.split():
+        if word.lower() == keyword:
+            return [word]
+
+def extract_is_keyword(oLine):
+    '''
+    Returns is keyword from line.
+
+    Parameters:
+
+       oLine: (line object)
+
+    Returns: (one element list of strings)
+    '''
+    return _extract_keyword(oLine.line, 'is')
 
 def remove_comment_attributes_from_line(oLine):
     '''
