@@ -1,11 +1,13 @@
 
-from vsg.rules import lower_case_rule
+from vsg.rules import case_rule
+from vsg import utils
 
 
-class rule_027(lower_case_rule):
+class rule_027(case_rule):
     '''
-    If rule 001 checks the **else** keyword is lowercase.
+    If rule 027 checks the **else** keyword has proper case.
     '''
 
     def __init__(self):
-        lower_case_rule.__init__(self, 'if', '027', 'isElseKeyword', 'else')
+        case_rule.__init__(self, 'if', '027', 'isElseKeyword', utils.extract_first_word)
+        self.solution = 'Change else keyword to ' + self.case + 'case'
