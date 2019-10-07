@@ -1,11 +1,13 @@
 
-from vsg.rules import lower_case_rule
+from vsg.rules import case_rule
+from vsg import utils
 
 
-class rule_002(lower_case_rule):
+class rule_002(case_rule):
     '''
-    Signal rule 002 checks the "signal" keyword is lowercase.
+    Signal rule 002 checks the "signal" keyword has proper case.
     '''
 
     def __init__(self):
-        lower_case_rule.__init__(self, 'signal', '002', 'isSignal', 'signal')
+        case_rule.__init__(self, 'signal', '002', 'isSignal', utils.extract_class_name)
+        self.solution = 'Change signal keyword to ' + self.case + 'case'
