@@ -596,6 +596,25 @@ def extract_type_name(oLine):
         return [sLine.split()[0]]
 
 
+def extract_type_name_vhdl_only(oLine):
+    '''
+    Returns the name of a VHDL only types in various declarations.
+
+    Parameters:
+
+       oLine: (line object)
+
+    Returns: (one element or empty list of strings)
+    '''
+    name = extract_type_name(oLine)
+
+    if is_vhdl_keyword(name[0]):
+        return name
+
+    return []
+
+
+
 def extract_type_identifier(oLine):
     '''
     Returns the type identifier from type declaration.

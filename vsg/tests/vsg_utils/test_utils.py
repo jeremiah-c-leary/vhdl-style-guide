@@ -250,6 +250,19 @@ class testExtractFunctions(unittest.TestCase):
         sActual = utils.extract_type_name(oLine)
         self.assertEqual(sExpected, sActual)
 
+    def test_extract_type_name_vhdl_only(self):
+        oLine = line.blank_line()
+        oLine.update_line('variable var1, var2 : integer := -32;')
+        sExpected = ['integer']
+        sActual = utils.extract_type_name_vhdl_only(oLine)
+        self.assertEqual(sExpected, sActual)
+
+        oLine = line.blank_line()
+        oLine.update_line('variable var1, var2 : my_type := -32;')
+        sExpected = []
+        sActual = utils.extract_type_name_vhdl_only(oLine)
+        self.assertEqual(sExpected, sActual)
+
     def test_extract_label(self):
         oLine = line.blank_line()
         oLine.update_line('  cp: CPU')
