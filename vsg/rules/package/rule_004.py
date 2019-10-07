@@ -9,5 +9,5 @@ class rule_004(case_rule):
     '''
 
     def __init__(self):
-        case_rule.__init__(self, 'package', '004', 'isPackageKeyword', utils.extract_first_word)
+        case_rule.__init__(self, 'package', '004', 'isPackageKeyword', utils.extract_first_keyword)
         self.solution = 'Change package keyword to ' + self.case + 'case'

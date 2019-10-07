@@ -9,5 +9,5 @@ class rule_005(case_rule):
     '''
 
     def __init__(self):
-        case_rule.__init__(self, 'library', '005', 'isLibraryUse', utils.extract_first_word)
+        case_rule.__init__(self, 'library', '005', 'isLibraryUse', utils.extract_first_keyword)
         self.solution = 'Change use keyword to ' + self.case + 'case'

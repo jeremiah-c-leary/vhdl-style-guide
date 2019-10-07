@@ -275,3 +275,16 @@ class testExtractFunctions(unittest.TestCase):
         sExpected = ['cp']
         sActual = utils.extract_label(oLine)
         self.assertEqual(sExpected, sActual)
+
+    def test_extract_first_keyword(self):
+        oLine = line.blank_line()
+        oLine.update_line('MY_LABEL: case (boolean) is')
+        sExpected = ['case']
+        sActual = utils.extract_first_keyword(oLine)
+        self.assertEqual(sExpected, sActual)
+
+        oLine = line.blank_line()
+        oLine.update_line('if rising_edge(clk) then')
+        sExpected = ['if']
+        sActual = utils.extract_first_keyword(oLine)
+        self.assertEqual(sExpected, sActual)

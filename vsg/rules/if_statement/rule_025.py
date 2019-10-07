@@ -9,5 +9,5 @@ class rule_025(case_rule):
     '''
 
     def __init__(self):
-        case_rule.__init__(self, 'if', '025', 'isIfKeyword', utils.extract_first_word)
+        case_rule.__init__(self, 'if', '025', 'isIfKeyword', utils.extract_first_keyword)
         self.solution = 'Change if keyword to ' + self.case + 'case'

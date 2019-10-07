@@ -9,5 +9,5 @@ class rule_009(case_rule):
     '''
 
     def __init__(self):
-        case_rule.__init__(self, 'generic', '009', 'isGenericKeyword', utils.extract_first_word)
+        case_rule.__init__(self, 'generic', '009', 'isGenericKeyword', utils.extract_first_keyword)
         self.solution = 'Change generic keyword to ' + self.case + 'case'

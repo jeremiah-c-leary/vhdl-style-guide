@@ -9,5 +9,5 @@ class rule_017(case_rule):
     '''
 
     def __init__(self):
-        case_rule.__init__(self, 'case', '017', 'isEndCaseKeyword', utils.extract_first_word)
+        case_rule.__init__(self, 'case', '017', 'isEndCaseKeyword', utils.extract_first_keyword)
         self.solution = 'Change end keyword to ' + self.case + 'case'

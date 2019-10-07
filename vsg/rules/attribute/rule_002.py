@@ -10,5 +10,5 @@ class rule_002(case_rule):
     '''
 
     def __init__(self):
-        case_rule.__init__(self, 'attribute', '002', 'isAttributeKeyword', utils.extract_first_word)
+        case_rule.__init__(self, 'attribute', '002', 'isAttributeKeyword', utils.extract_first_keyword)
         self.solution = 'Change attribute keyword to ' + self.case + 'case'

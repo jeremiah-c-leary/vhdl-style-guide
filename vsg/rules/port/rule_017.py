@@ -8,5 +8,5 @@ class rule_017(case_rule):
     '''
 
     def __init__(self):
-        case_rule.__init__(self, 'port', '017', 'isPortKeyword', utils.extract_first_word)
+        case_rule.__init__(self, 'port', '017', 'isPortKeyword', utils.extract_first_keyword)
         self.solution = 'Change port keyword to ' + self.case + 'case'

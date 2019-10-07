@@ -8,5 +8,5 @@ class rule_004(case_rule):
     '''
 
     def __init__(self):
-        case_rule.__init__(self, 'entity', '004', 'isEntityDeclaration', utils.extract_first_word)
+        case_rule.__init__(self, 'entity', '004', 'isEntityDeclaration', utils.extract_first_keyword)
         self.solution = 'Change entity keyword to ' + self.case + 'case'
