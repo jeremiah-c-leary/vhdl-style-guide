@@ -704,10 +704,10 @@ This rule checks the component keyword is lowercase in component instantiations 
       {
         "rule":{
           "instantiation_031":{
-             "disable":False
+             "disable":"False"
           },
           "instantiation_033":{
-             "disable":True
+             "disable":"True"
           }
         }
       }
@@ -741,10 +741,10 @@ This rule checks for a single space after the **component** keyword if it is use
       {
         "rule":{
           "instantiation_032":{
-             "disable":False
+             "disable":"False"
           },
           "instantiation_033":{
-             "disable":True
+             "disable":"True"
           }
         }
       }
