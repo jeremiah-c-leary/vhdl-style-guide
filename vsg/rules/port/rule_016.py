@@ -23,10 +23,17 @@ class rule_016(rule.rule):
         for iLineNumber in self.violations[::-1]:
             utils.copy_line(oFile, iLineNumber)
             oLine = oFile.lines[iLineNumber]
-            oLine.update_line(oLine.line.split('(')[0] + ' (')
+            oLine.update_line(extract_port_keyword(oLine.line))
             oLine = oFile.lines[iLineNumber + 1]
-            oLine.update_line('  ' + oLine.line.split('(')[1])
+            oLine.update_line('    ' + extract_signal_definition(oLine.line))
             oLine.isPortKeyword = False
             oLine.isPortDeclaration = True
             oLine.insidePortMap = True
             oLine.indentLevel = oFile.lines[iLineNumber].indentLevel + 1
+
+def extract_port_keyword(sString):
+    return sString.split('(')[0] + ' ('
+
+def extract_signal_definition(sString):
+    lString = sString.split('(')
+    return '('.join(lString[1:])

@@ -6,7 +6,7 @@ library IEEE;
 
 entity POINTER is
   generic (
-    INITX : std_logic_vector
+    INITX : std_logic_vector(9 downto 0);
     INITY : std_logic_vector(8 downto 0)
   );
   port (

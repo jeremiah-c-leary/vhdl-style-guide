@@ -67,7 +67,7 @@ architecture BEHAVIORAL of VGA_TOP is
 
   component FRAMEBUFFER is
     port (
-      INX         : in    std_logic_vector
+      INX         : in    std_logic_vector(9 downto 0);
       INY         : in    std_logic_vector(8 downto 0);
       OUTX        : in    std_logic_vector(9 downto 0);
       OUTY        : in    std_logic_vector(8 downto 0);
@@ -89,7 +89,7 @@ architecture BEHAVIORAL of VGA_TOP is
 
   component POINTER is
     generic (
-      INITX : std_logic_vector
+      INITX : std_logic_vector(9 downto 0);
       INITY : std_logic_vector(8 downto 0)
     );
     port (

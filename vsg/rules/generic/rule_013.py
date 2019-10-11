@@ -21,11 +21,18 @@ class rule_013(rule.rule):
         for iLineNumber in self.violations[::-1]:
             utils.copy_line(oFile, iLineNumber)
             oLine = oFile.lines[iLineNumber]
-            oLine.update_line(oLine.line.split('(')[0] + ' (')
+            oLine.update_line(extract_generic_keyword(oLine.line))
             oLine.isGenericDeclaration = False
             oLine = oFile.lines[iLineNumber + 1]
-            oLine.update_line('  ' + oLine.line.split('(')[1])
+            oLine.update_line('    ' + extract_generic_definition(oLine.line))
             oLine.isGenericKeyword = False
             oLine.isGenericDeclaration = True
             oLine.insideGenericMap = True
             oLine.indentLevel = oFile.lines[iLineNumber].indentLevel + 1
+
+def extract_generic_keyword(sString):
+    return sString.split('(')[0] + ' ('
+
+def extract_generic_definition(sString):
+    lString = sString.split('(')
+    return '('.join(lString[1:])

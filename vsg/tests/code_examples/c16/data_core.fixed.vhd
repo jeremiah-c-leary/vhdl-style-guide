@@ -68,7 +68,7 @@ architecture BEHAVIORAL of DATA_CORE is
 
   component SELECT_YY is
     port (
-      SY      : in    std_logic_vector
+      SY      : in    std_logic_vector( 3 downto 0);
       IMM     : in    std_logic_vector(15 downto 0);
       QUICK   : in    std_logic_vector( 3 downto 0);
       RDAT    : in    std_logic_vector( 7 downto 0);

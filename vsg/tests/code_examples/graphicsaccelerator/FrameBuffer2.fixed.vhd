@@ -7,7 +7,7 @@ library IEEE;
 
 entity FRAMEBUFFER is
   port (
-    INX         : in    std_logic_vector
+    INX         : in    std_logic_vector(9 downto 0);
     INY         : in    std_logic_vector(8 downto 0);
     OUTX        : in    std_logic_vector(9 downto 0);
     OUTY        : in    std_logic_vector(8 downto 0);
