@@ -172,3 +172,119 @@ class testUtilsProcedures(unittest.TestCase):
         utils.change_word(oLine, 'green', 'red', 2)
         sActual = oLine.line
         self.assertEqual(sExpected, sActual)
+
+class testExtractFunctions(unittest.TestCase):
+
+    def test_extract_class_name(self):
+        oLine = line.blank_line()
+        oLine.update_line('signal s1, s2, s3 : std_logic := \'1\';')
+        sExpected = ['signal']
+        sActual = utils.extract_class_name(oLine)
+        self.assertEqual(sExpected, sActual)
+
+        oLine = line.blank_line()
+        oLine.update_line('CONSTANT C_MY_CONST : integer := -24;')
+        sExpected = ['CONSTANT']
+        sActual = utils.extract_class_name(oLine)
+        self.assertEqual(sExpected, sActual)
+
+    def test_extract_class_identifier_list(self):
+        oLine = line.blank_line()
+        oLine.update_line('signal s1, s2, s3 : std_logic := \'1\';')
+        sExpected = ['s1', 's2', 's3']
+        sActual = utils.extract_class_identifier_list(oLine)
+        self.assertEqual(sExpected, sActual)
+
+        oLine = line.blank_line()
+        oLine.update_line('signal s1, s2, s3')
+        sExpected = ['s1', 's2', 's3']
+        sActual = utils.extract_class_identifier_list(oLine)
+        self.assertEqual(sExpected, sActual)
+
+        oLine = line.blank_line()
+        oLine.update_line('signal s_x: std_logic;')
+        sExpected = ['s_x']
+        sActual = utils.extract_class_identifier_list(oLine)
+        self.assertEqual(sExpected, sActual)
+
+        oLine = line.blank_line()
+        oLine.update_line('s1, s2, s3;')
+        sExpected = ['s1', 's2', 's3']
+        sActual = utils.extract_class_identifier_list(oLine)
+        self.assertEqual(sExpected, sActual)
+
+        oLine = line.blank_line()
+        oLine.update_line('sig;')
+        sExpected = ['sig']
+        sActual = utils.extract_class_identifier_list(oLine)
+        self.assertEqual(sExpected, sActual)
+
+        oLine = line.blank_line()
+        oLine.update_line('constant C_VALUE : integer;')
+        sExpected = ['C_VALUE']
+        sActual = utils.extract_class_identifier_list(oLine)
+        self.assertEqual(sExpected, sActual)
+
+        oLine = line.blank_line()
+        oLine.update_line('variable var1, var2 : integer := -32;')
+        sExpected = ['var1', 'var2']
+        sActual = utils.extract_class_identifier_list(oLine)
+        self.assertEqual(sExpected, sActual)
+
+    def test_extract_type_name(self):
+        oLine = line.blank_line()
+        oLine.update_line('variable var1, var2 : integer := -32;')
+        sExpected = ['integer']
+        sActual = utils.extract_type_name(oLine)
+        self.assertEqual(sExpected, sActual)
+
+        oLine = line.blank_line()
+        oLine.update_line('constant con1 : integer;')
+        sExpected = ['integer']
+        sActual = utils.extract_type_name(oLine)
+        self.assertEqual(sExpected, sActual)
+
+        oLine = line.blank_line()
+        oLine.update_line('type fbuffer is array (0 to 524288 / 16 - 1) of std_logic_vector(2 downto 0);')
+        sExpected = ['std_logic_vector']
+        sActual = utils.extract_type_name(oLine)
+        self.assertEqual(sExpected, sActual)
+
+    def test_extract_type_name_vhdl_only(self):
+        oLine = line.blank_line()
+        oLine.update_line('variable var1, var2 : integer := -32;')
+        sExpected = ['integer']
+        sActual = utils.extract_type_name_vhdl_only(oLine)
+        self.assertEqual(sExpected, sActual)
+
+        oLine = line.blank_line()
+        oLine.update_line('variable var1, var2 : my_type := -32;')
+        sExpected = []
+        sActual = utils.extract_type_name_vhdl_only(oLine)
+        self.assertEqual(sExpected, sActual)
+
+    def test_extract_label(self):
+        oLine = line.blank_line()
+        oLine.update_line('  cp: CPU')
+        sExpected = ['cp']
+        sActual = utils.extract_label(oLine)
+        self.assertEqual(sExpected, sActual)
+
+        oLine = line.blank_line()
+        oLine.update_line('  cp : CPU')
+        sExpected = ['cp']
+        sActual = utils.extract_label(oLine)
+        self.assertEqual(sExpected, sActual)
+
+    def test_extract_first_keyword(self):
+        oLine = line.blank_line()
+        oLine.update_line('MY_LABEL: case (boolean) is')
+        sExpected = ['case']
+        sActual = utils.extract_first_keyword(oLine)
+        self.assertEqual(sExpected, sActual)
+
+        oLine = line.blank_line()
+        oLine.update_line('if rising_edge(clk) then')
+        sExpected = ['if']
+        sActual = utils.extract_first_keyword(oLine)
+        self.assertEqual(sExpected, sActual)

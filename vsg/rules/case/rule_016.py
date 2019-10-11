@@ -1,12 +1,16 @@
 
-from vsg.rules import lower_case_rule
+from vsg.rules import case_rule
+from vsg import utils
 
 
-class rule_016(lower_case_rule):
+class rule_016(case_rule):
     '''
-    Entity rule 016 checks the when keyword is lower case.
+    Entity rule 016 checks the when keyword has proper case.
     '''
 
     def __init__(self):
-        lower_case_rule.__init__(self, 'case', '016', 'isCaseWhenKeyword', 'when')
-        self.solution = 'Change "when" keyword to lowercase.'
+        case_rule.__init__(self, 'case', '016', 'isCaseWhenKeyword')
+        self.solution = 'Change when keyword to ' + self.case + 'case'
+
+    def _extract(self, oLine):
+        return utils.extract_word(oLine, 'when')

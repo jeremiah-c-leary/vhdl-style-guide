@@ -1,12 +1,16 @@
 
-from vsg.rules import lowercase_word_after_colon_rule
+from vsg.rules import case_rule
+from vsg import utils
 
 
-class rule_011(lowercase_word_after_colon_rule):
+class rule_011(case_rule):
     '''
-    Signal rule 010 checks the signal type is lowercase.
+    Signal rule 011 checks the signal type has proper case.
     '''
 
     def __init__(self):
-        lowercase_word_after_colon_rule.__init__(self, 'signal', '011', 'isSignal', False)
-        self.solution = 'Change signal type to lowercase.'
+        case_rule.__init__(self, 'signal', '011', 'isSignal')
+        self.solution = 'Change signal type name to ' + self.case + 'case'
+
+    def _extract(self, oLine):
+        return utils.extract_type_name(oLine)

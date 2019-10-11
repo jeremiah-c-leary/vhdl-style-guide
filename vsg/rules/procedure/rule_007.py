@@ -19,7 +19,7 @@ class rule_007(rule.rule):
 
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.isProcedureKeyword:
-            self.dDatabase['procedure'].append(utils.extract_type_name(oLine))
+            self.dDatabase['procedure'].append(oLine.line.split()[1]) # ToDo: Does it need separate function?
         if oLine.insideArchitecture:
             if oLine.insideProcess:
                 lWords = extract_word_list(oLine)

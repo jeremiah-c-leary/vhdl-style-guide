@@ -1,12 +1,16 @@
 
-from vsg.rules import lower_case_rule
+from vsg.rules import case_rule
+from vsg import utils
 
 
-class rule_014(lower_case_rule):
+class rule_014(case_rule):
     '''
-    Entity rule 014 checks the case keyword is lower case.
+    Entity rule 014 checks the case keyword has proper case.
     '''
 
     def __init__(self):
-        lower_case_rule.__init__(self, 'case', '014', 'isCaseKeyword', 'case')
-        self.solution = 'Change "case" keyword to lowercase.'
+        case_rule.__init__(self, 'case', '014', 'isCaseKeyword')
+        self.solution = 'Change case keyword to ' + self.case + 'case'
+
+    def _extract(self, oLine):
+        return utils.extract_first_keyword(oLine)

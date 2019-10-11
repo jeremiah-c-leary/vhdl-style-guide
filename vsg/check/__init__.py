@@ -7,6 +7,7 @@ from .indent import *
 from .is_blank_line_after import *
 from .is_blank_line_before import *
 from .is_lowercase import *
+from .is_uppercase import *
 from .is_no_blank_line_after import *
 from .is_no_blank_line_before import *
 from .is_single_space_after_character import *

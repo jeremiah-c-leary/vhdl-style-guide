@@ -13,3 +13,6 @@ def is_lowercase(self, sString, iLineNumber):
     '''
     if not sString == sString.lower():
         self.add_violation(iLineNumber)
+        return False
+
+    return True

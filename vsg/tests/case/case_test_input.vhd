@@ -84,7 +84,7 @@ begin
   PROC_1 : process (a, b, c) is
   begin
 
-    LABEL:case (boolean) is
+    MY_LABEL:case (boolean) is
 
       when STATE_1 =>
         a <= b;

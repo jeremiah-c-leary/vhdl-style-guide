@@ -1,12 +1,16 @@
 
-from vsg.rules import lower_case_rule
+from vsg.rules import case_rule
+from vsg import utils
 
 
-class rule_004(lower_case_rule):
+class rule_004(case_rule):
     '''
-    Function rule 004 checks the "begin" keyword is lower case.
+    Function rule 004 checks the "begin" keyword has proper case.
     '''
 
     def __init__(self):
-        lower_case_rule.__init__(self, 'function', '004', 'isFunctionBegin', 'begin')
-        self.solution = 'Lowercase the "begin" keyword.'
+        case_rule.__init__(self, 'function', '004', 'isFunctionBegin')
+        self.solution = 'Change begin keyword to ' + self.case + 'case'
+
+    def _extract(self, oLine):
+        return utils.extract_word(oLine, 'begin')

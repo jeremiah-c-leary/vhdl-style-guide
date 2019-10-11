@@ -19,7 +19,7 @@ class rule_013(rule.rule):
 
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.isConstant:
-            self.dDatabase['constant'].append(utils.extract_constant_name(oLine))
+            self.dDatabase['constant'].append(utils.extract_class_identifier_list(oLine)[0])
         if oLine.insideArchitecture:
             if oLine.insideProcess:
                 lWords = extract_word_list(oLine)

@@ -10,13 +10,9 @@ from .single_space_before_character_rule import single_space_before_character_ru
 from .remove_blank_lines_above_rule import remove_blank_lines_above_rule
 from .remove_blank_lines_below_rule import remove_blank_lines_below_rule
 from .remove_spaces_before_character_rule import remove_spaces_before_character_rule
-from .lower_case_rule import lower_case_rule
-from .lowercase_word_after_colon_rule import lowercase_word_after_colon_rule
 from .multiple_spaces_after_rule import multiple_spaces_after_rule
 from .search_for_and_replace_keyword_rule import search_for_and_replace_keyword_rule
-from .uppercase_end_label import uppercase_end_label
-from .uppercase_word_rule import uppercase_word_rule
-from .lowercase_word_rule import lowercase_word_rule
+from .case_rule import case_rule
 
 from vsg.rules import after
 from vsg.rules import architecture

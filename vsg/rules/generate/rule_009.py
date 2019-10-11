@@ -1,12 +1,16 @@
 
-from vsg.rules import lower_case_rule
+from vsg.rules import case_rule
+from vsg import utils
 
 
-class rule_009(lower_case_rule):
+class rule_009(case_rule):
     '''
-    Process rule 009 checks the "end" keyword is lowercase.
+    Process rule 009 checks the "end" keyword has proper case.
     '''
 
     def __init__(self):
-        lower_case_rule.__init__(self, 'generate', '009', 'isGenerateEnd', 'end')
-        self.solution = 'Lowercase the "end" keyword.'
+        case_rule.__init__(self, 'generate', '009', 'isGenerateEnd')
+        self.solution = 'Change end keyword to ' + self.case + 'case'
+
+    def _extract(self, oLine):
+        return utils.extract_first_keyword(oLine)

@@ -13,3 +13,6 @@ def is_uppercase(self, sString, iLineNumber):
     '''
     if not sString == sString.upper():
         self.add_violation(iLineNumber)
+        return False
+
+    return True

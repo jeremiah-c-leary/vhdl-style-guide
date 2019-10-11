@@ -1,12 +1,16 @@
 
-from vsg.rules import lower_case_rule
+from vsg.rules import case_rule
+from vsg import utils
 
 
-class rule_002(lower_case_rule):
+class rule_002(case_rule):
     '''
-    Attribute rule 002 checks the **attribute** keyword is lowercase.
+    Attribute rule 002 checks the **attribute** keyword has proper case.
     '''
 
     def __init__(self):
-        lower_case_rule.__init__(self, 'attribute', '002', 'isAttributeKeyword', 'attribute')
-        self.solution = 'Change the "attribute" keyword to lowercase.'
+        case_rule.__init__(self, 'attribute', '002', 'isAttributeKeyword')
+        self.solution = 'Change attribute keyword to ' + self.case + 'case'
+
+    def _extract(self, oLine):
+        return utils.extract_first_keyword(oLine)

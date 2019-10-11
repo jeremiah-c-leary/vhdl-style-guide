@@ -1,11 +1,17 @@
 
-from vsg.rules import uppercase_end_label
+from vsg.rules import case_rule
+from vsg import utils
 
 
-class rule_012(uppercase_end_label):
+class rule_012(case_rule):
     '''
-    Generate rule 012 checks the "end generate" label is uppercase.
+    Generate rule 012 checks the "end generate" label has proper case.
     '''
 
     def __init__(self):
-        uppercase_end_label.__init__(self, 'generate', '012', 'isGenerateEnd')
+        case_rule.__init__(self, 'generate', '012', 'isGenerateEnd')
+        self.case = 'upper'
+        self.solution = 'Change generate end label to ' + self.case + 'case'
+
+    def _extract(self, oLine):
+        return utils.extract_end_label(oLine)

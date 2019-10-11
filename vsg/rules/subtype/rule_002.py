@@ -19,7 +19,7 @@ class rule_002(rule.rule):
 
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.isSubtypeKeyword:
-            self.dDatabase['subtype'].append(utils.extract_type_name(oLine))
+            self.dDatabase['subtype'].append(oLine.line.split()[1]) # ToDo: Does it need separate function?
         if oLine.insideArchitecture:
             check_in_constant(self, oLine, iLineNumber)
             check_in_signal(self, oLine, iLineNumber)

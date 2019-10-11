@@ -528,35 +528,7 @@ def extract_non_keywords(sString):
     return lReturn
 
 
-def extract_signal_names(oLine):
-    '''
-    Returns a list of signals in a signal declaration.
-
-    Parameters:
-
-       oLine: (line object)
-
-    Returns: (list of strings)
-    '''
-    sLine = oLine.line.split(':')[0]
-    return sLine.replace(',', ' ').split()[1:]
-
-
-def extract_constant_name(oLine):
-    '''
-    Returns the name of a constant in a constant declaration.
-
-    Parameters:
-
-       oLine: (line object)
-
-    Returns: (string)
-    '''
-    sLine = oLine.line.split(':')[0]
-    return sLine.split()[1]
-
-
-def extract_type_name(oLine):
+def extract_class_name(oLine):
     '''
     Returns the name of a type in a type declaration.
 
@@ -564,24 +536,199 @@ def extract_type_name(oLine):
 
        oLine: (line object)
 
-    Returns: (string)
+    Returns: (one element list of strings)
     '''
-    sLine = oLine.line.split(':')[0]
-    return sLine.split()[1]
+    return [oLine.line.split()[0]]
 
 
-def extract_variable_name(oLine):
+def extract_class_identifier_list(oLine):
     '''
-    Returns the name of a variable in a variable declaration.
+    Returns a list of signals in a signal declaration.
+
+    Parameters:
+
+       sClass: (class according to the VHDL standard)
+
+       oLine: (line object)
+
+    Returns: (list of strings)
+    '''
+    sLine = oLine.line.replace(';', '')
+    sLine = sLine.split(':')[0]
+    sLine = sLine.replace(',', ' ').split()
+    if sLine[0].lower() in ['constant', 'variable', 'signal', 'file']:
+        sLine = sLine[1:]
+
+    return sLine
+
+
+def _extract_type_name_from_type_declaration(sLine):
+    '''
+    Returns the name of a type in a type declaration.
+
+    Parameters:
+
+       sLine: (line)
+
+    Returns: (one element list of strings)
+    '''
+    words = sLine.lower().split()
+    return [sLine.split()[words.index('of') + 1]]
+
+
+def extract_type_name(oLine):
+    '''
+    Returns the name of a type in various declarations.
 
     Parameters:
 
        oLine: (line object)
 
-    Returns: (string)
+    Returns: (one element list of strings)
     '''
-    sLine = oLine.line.split(':')[0]
-    return sLine.split()[1]
+    sLine = oLine.line.replace(';', '')
+    sLine = sLine.replace('(', ' ')
+    sLine = sLine.replace(')', ' ')
+
+    if get_first_word(oLine).lower() == 'type':
+        return _extract_type_name_from_type_declaration(sLine)
+    else:
+        sLine = sLine.split(':')[1]
+        return [sLine.split()[0]]
+
+
+def extract_type_name_vhdl_only(oLine):
+    '''
+    Returns the name of a VHDL only types in various declarations.
+
+    Parameters:
+
+       oLine: (line object)
+
+    Returns: (one element or empty list of strings)
+    '''
+    name = extract_type_name(oLine)
+
+    if is_vhdl_keyword(name[0]):
+        return name
+
+    return []
+
+
+def extract_type_identifier(oLine):
+    '''
+    Returns the type identifier from type declaration.
+
+    Parameters:
+
+       oLine: (line object)
+
+    Returns: (one element list of strings)
+    '''
+    return [oLine.line.split()[1]]
+
+
+def extract_label(oLine):
+    '''
+    Returns the label.
+
+    Parameters:
+
+       oLine: (line object)
+
+    Returns: (one element list of strings)
+    '''
+    return [oLine.line.replace(' ', '').split(':')[0]]
+
+
+def extract_end_label(oLine):
+    '''
+    Returns the end label.
+
+    Parameters:
+
+       oLine: (line object)
+
+    Returns: (one element or empty list of strings)
+    '''
+    word = oLine.line.replace(';', '').split()[-1]
+    lower = word.lower()
+
+    if lower == 'end' or lower == 'generate' or lower == 'process':
+        return []
+
+    return [word]
+
+
+def extract_entity_identifier(oLine):
+    '''
+    Returns the entity identifier.
+
+    Parameters:
+
+       oLine: (line object)
+
+    Returns: (one element list of strings)
+    '''
+    return [oLine.line.split()[1]]
+
+
+extract_component_identifier = extract_entity_identifier
+
+
+def extract_first_keyword(oLine):
+    '''
+    Returns first keyword from line.
+
+    Parameters:
+
+       oLine: (line object)
+
+    Returns: (one element list of strings)
+    '''
+    sLine = oLine.line.replace('(', ' ')
+    sLine = sLine.replace(':', ' ')
+
+    for word in sLine.split():
+        if is_vhdl_keyword(word):
+            return [word]
+
+
+def extract_port_name(oLine):
+    '''
+    Returns port name from line.
+
+    Parameters:
+
+       oLine: (line object)
+
+    Returns: (one element list of strings)
+    '''
+    sLine = oLine.line.replace('(', ' ')
+    return [sLine.split()[0]]
+
+
+def extract_word(oLine, keyword):
+    '''
+    Returns is keyword from line.
+
+    Parameters:
+
+       sLine: (line object)
+
+       keyword: keyword to extract
+
+    Returns: (one element or empty list of strings)
+    '''
+    line = oLine.line.replace(';', '')
+    line = line.replace('(', ' ')
+    line = line.replace(')', ' ')
+
+    for word in line.split():
+        if word.lower() == keyword:
+            return [word]
+
+    return []
 
 
 def remove_comment_attributes_from_line(oLine):

@@ -1,11 +1,16 @@
 
-from vsg.rules import lower_case_rule
+from vsg.rules import case_rule
+from vsg import utils
 
 
-class rule_025(lower_case_rule):
+class rule_025(case_rule):
     '''
-    If rule 001 checks the **if** keyword is lowercase.
+    If rule 025 checks the **if** keyword has proper case.
     '''
 
     def __init__(self):
-        lower_case_rule.__init__(self, 'if', '025', 'isIfKeyword', 'if')
+        case_rule.__init__(self, 'if', '025', 'isIfKeyword')
+        self.solution = 'Change if keyword to ' + self.case + 'case'
+
+    def _extract(self, oLine):
+        return utils.extract_first_keyword(oLine)

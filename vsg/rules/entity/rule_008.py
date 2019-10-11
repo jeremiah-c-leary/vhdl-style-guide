@@ -1,12 +1,17 @@
 
-from vsg.rules import uppercase_word_rule
+from vsg.rules import case_rule
+from vsg import utils
 
 
-class rule_008(uppercase_word_rule):
+class rule_008(case_rule):
     '''
-    Entity rule 008 checks the entity name is uppercase in the entity declaration line.
+    Entity rule 008 checks the entity name has proper case in the entity declaration line.
     '''
 
     def __init__(self):
-        uppercase_word_rule.__init__(self, 'entity', '008', 'isEntityDeclaration', 1)
-        self.solution = 'Change entity name to all uppercase.'
+        case_rule.__init__(self, 'entity', '008', 'isEntityDeclaration')
+        self.case = 'upper'
+        self.solution = 'Change entity name to ' + self.case + 'case'
+
+    def _extract(self, oLine):
+        return utils.extract_entity_identifier(oLine)
