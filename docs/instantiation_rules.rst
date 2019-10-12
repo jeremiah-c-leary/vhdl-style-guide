@@ -150,6 +150,8 @@ This rule checks the instance name has proper case.
 
 .. NOTE::  The default is uppercase.
 
+   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+
 **Violation**
 
 .. code-block:: vhdl

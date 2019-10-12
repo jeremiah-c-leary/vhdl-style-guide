@@ -33,6 +33,8 @@ This rule checks the **type** keyword has proper case.
 
 .. NOTE::  The default is lowercase.
 
+   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+
 **Violation**
 
 .. code-block:: vhdl
@@ -77,6 +79,8 @@ type_004
 This rule checks the type name has proper case.
 
 .. NOTE::  The default is lowercase.
+
+   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
@@ -272,6 +276,8 @@ type_013
 This rule checks the **is** keyword in type definitions has proper case.
 
 .. NOTE::  The default is lowercase.
+
+   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 

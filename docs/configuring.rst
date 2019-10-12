@@ -143,3 +143,5 @@ Configure the indent size for all rules by setting the **global** attribute.
            }
        }
    }
+
+.. include:: configuring_case.rst

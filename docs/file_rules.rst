@@ -39,6 +39,8 @@ This rule checks the **file** keyword has proper case.
 
 .. NOTE::  The default is lowercase.
 
+   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+
 **Violation**
 
 .. code-block:: vhdl

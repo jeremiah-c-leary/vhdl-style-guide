@@ -293,6 +293,8 @@ This rule checks the **case** keyword has proper case.
 
 .. NOTE::  The default is lowercase.
 
+   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+
 **Violation**
 
 .. code-block:: vhdl
@@ -319,6 +321,8 @@ case_015
 This rule checks the **is** keyword has proper case.
 
 .. NOTE::  The default is lowercase.
+
+   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
@@ -347,6 +351,8 @@ This rule checks the **when** has proper case.
 
 .. NOTE::  The default is lowercase.
 
+   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+
 **Violation**
 
 .. code-block:: vhdl
@@ -370,6 +376,8 @@ This rule checks the **end** keyword in the **end case** has proper case.
 
 .. NOTE::  The default is lowercase.
 
+   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+
 **Violation**
 
 .. code-block:: vhdl
@@ -392,6 +400,8 @@ case_018
 This rule checks the **case** keyword has proper case in the **end case**.
 
 .. NOTE::  The default is lowercase.
+
+   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
