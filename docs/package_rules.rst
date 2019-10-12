@@ -62,7 +62,9 @@ This rule checks for a blank line above the **package** keyword.
 package_004
 ###########
 
-This rule checks the package keyword is lowercase.
+This rule checks the package keyword has proper case.
+
+.. NOTE::  The default is lowercase.
 
 **Violation**
 

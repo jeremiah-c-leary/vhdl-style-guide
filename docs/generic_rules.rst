@@ -167,7 +167,9 @@ This rule checks the indent of the closing parenthesis.
 generic_009
 ###########
 
-This rule checks the **generic** keyword is lowercase.
+This rule checks the **generic** keyword has proper case.
+ 
+.. NOTE::  The default is lowercase.
 
 **Violation**
 

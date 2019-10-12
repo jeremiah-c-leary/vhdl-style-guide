@@ -31,7 +31,9 @@ This rule checks the indent of variable declarations.
 variable_002
 ############
 
-This rule checks the **variable** keyword is lowercase.
+This rule checks the **variable** keyword has proper case.
+
+.. NOTE::  The default is lowercase.
 
 **Violation**
 
@@ -65,7 +67,9 @@ This rule checks for a single space after the **variable** keyword.
 variable_004
 ############
 
-This rule checks the variable name is lowercase.
+This rule checks the variable name has proper case.
+
+.. NOTE::  The default is lowercase.
 
 **Violation**
 

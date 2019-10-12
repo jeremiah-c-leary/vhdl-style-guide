@@ -28,7 +28,9 @@ This rule checks the indent of a constant declaration.
 constant_002
 ############
 
-This rule checks the **constant** keyword is lowercase.
+This rule checks the **constant** keyword is has proper case.
+
+.. NOTE::  The default is lowercase.
 
 **Violation**
 
@@ -184,7 +186,9 @@ Having a space makes it clearer where the assignment occurs on the line.
 constant_011
 ############
 
-This rule checks the constant type is lowercase.
+This rule checks the constant type has proper case.
+
+.. NOTE::  The default is lowercase.
 
 **Violation**
 

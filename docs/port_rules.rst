@@ -414,7 +414,9 @@ This rule checks for a port definition on the same line as the **port** keyword.
 port_017
 ########
 
-This rule checks the **port** keyword is lowercase.
+This rule checks the **port** keyword has proper case.
+
+.. NOTE::  The default is lowercase.
 
 **Violation**
 

@@ -163,7 +163,9 @@ This rule checks for a single space after the **end** keyword.
 generate_009
 ############
  
-This rule checks the **end** keyword is lowercase.
+This rule checks the **end** keyword has proper case.
+
+.. NOTE::  The default is lowercase.
 
 **Violation**
 

@@ -69,7 +69,9 @@ This rule checks for a blank line above the **component** declaration.
 component_004
 #############
 
-This rule checks the **component** keyword is lowercase.
+This rule checks the **component** keyword has proper case.
+
+.. NOTE::  The default is lowercase.
 
 **Violation**
 
@@ -151,7 +153,9 @@ This rule checks for a single space before the **is** keyword.
 component_008
 #############
 
-This rule checks the component name is uppercase in the component declaration.
+This rule checks the component name has proper case in the component declaration.
+
+.. NOTE::  The default is uppercase.
 
 **Violation**
 
@@ -190,7 +194,9 @@ This rule checks the indent of the **end component** keywords.
 component_010
 #############
 
-This rule checks the **end** keyword is lowercase.
+This rule checks the **end** keyword has proper case.
+
+.. NOTE::  The default is lowercase.
 
 **Violation**
 

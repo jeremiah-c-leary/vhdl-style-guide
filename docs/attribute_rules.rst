@@ -33,7 +33,9 @@ This rule checks the indent of **attribute** declarations.
 attribute_002
 #############
 
-This rule checks the **attribute** keyword is lowercase.
+This rule checks the **attribute** keyword has proper case.
+
+.. NOTE::  The default is lowercase.
 
 **Violation**
 

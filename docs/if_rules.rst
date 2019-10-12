@@ -433,7 +433,9 @@ This rule checks for code after the **then** keyword.
 if_025
 ######
 
-This rule checks the **if** keyword is lowercase.
+This rule checks the **if** keyword has proper case.
+
+.. NOTE::  The default is lowercase.
 
 **Violation**
 
@@ -450,7 +452,9 @@ This rule checks the **if** keyword is lowercase.
 if_026
 ######
 
-This rule checks the **elsif** keyword is lowercase.
+This rule checks the **elsif** keyword has proper case.
+
+.. NOTE::  The default is lowercase.
 
 **Violation**
 
@@ -467,7 +471,9 @@ This rule checks the **elsif** keyword is lowercase.
 if_027
 ######
 
-This rule checks the **else** keyword is lowercase.
+This rule checks the **else** keyword has proper case.
+
+.. NOTE::  The default is lowercase.
 
 **Violation**
 

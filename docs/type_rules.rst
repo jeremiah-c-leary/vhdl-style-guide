@@ -29,7 +29,9 @@ This rule checks the indent of the **type** declaration.
 type_002
 ########
 
-This rule checks the **type** keyword is lowercase.
+This rule checks the **type** keyword has proper case.
+
+.. NOTE::  The default is lowercase.
 
 **Violation**
 
@@ -72,7 +74,9 @@ This rule checks for spaces after the **type** keyword.
 type_004
 ########
 
-This rule checks the type name is lowercase.
+This rule checks the type name has proper case.
+
+.. NOTE::  The default is lowercase.
 
 **Violation**
 
@@ -265,7 +269,9 @@ This rule checks the indent of record elements in record types.
 type_013
 ########
 
-This rule checks the **is** keyword is lower case in type definitions.
+This rule checks the **is** keyword in type definitions has proper case.
+
+.. NOTE::  The default is lowercase.
 
 **Violation**
 
