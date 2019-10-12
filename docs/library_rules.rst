@@ -62,7 +62,9 @@ This rule checks for a blank line above the **library** keyword.
 library_004
 ###########
 
-This rule checks the **library** keyword is lower case.
+This rule checks the **library** keyword has proper case.
+
+.. NOTE::  The default is lowercase.
 
 **Violation**
 
@@ -83,7 +85,9 @@ This rule checks the **library** keyword is lower case.
 library_005
 ###########
 
-This rule checks the **use** keyword is lower case.
+This rule checks the **use** keyword has proper case.
+
+.. NOTE::  The default is lowercase.
 
 **Violation**
 

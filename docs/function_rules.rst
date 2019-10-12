@@ -72,7 +72,9 @@ This rule checks for a single space after the function name and the (.'
 function_004
 ############
 
-This rule checks the **begin** keyword is lowercase.
+This rule checks the **begin** keyword has proper case.
+ 
+.. NOTE::  The default is lowercase.
 
 **Violation**
 

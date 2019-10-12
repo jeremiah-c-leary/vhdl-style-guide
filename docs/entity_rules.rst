@@ -63,7 +63,9 @@ This rule checks for a blank line above the entity keyword.
 entity_004
 ##########
 
-This rule checks the **entity** keyword is lowercase.
+This rule checks the **entity** keyword has proper case.
+
+.. NOTE::  The default is lowercase.
 
 **Violation**
 
@@ -136,7 +138,9 @@ This rule checks for a single space before the **is** keyword.
 entity_008
 ##########
 
-This rule checks the entity name is uppercase in the entity declaration.
+This rule checks the entity name has proper case in the entity declaration.
+
+.. NOTE::  The default is uppercase.
 
 **Violation**
 
@@ -176,7 +180,9 @@ This rule checks the indent of the **end** keyword.
 entity_010
 ##########
 
-This rule checks the **end** keyword is lowercase.
+This rule checks the **end** keyword has proper case.
+
+.. NOTE::  The default is lowercase.
 
 **Violation**
 

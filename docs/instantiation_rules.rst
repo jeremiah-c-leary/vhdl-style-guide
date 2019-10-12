@@ -146,7 +146,9 @@ This rule checks the closing ) for the port map is on it's own line.
 instantiation_008
 #################
 
-This rule checks the instance name is uppercase.
+This rule checks the instance name has proper case.
+
+.. NOTE::  The default is uppercase.
 
 **Violation**
 

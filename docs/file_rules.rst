@@ -35,7 +35,9 @@ This rule checks the indent of **file** declarations.
 file_002
 ########
 
-This rule checks the **file** keyword is lowercase.
+This rule checks the **file** keyword has proper case.
+
+.. NOTE::  The default is lowercase.
 
 **Violation**
 

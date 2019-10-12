@@ -31,7 +31,9 @@ This rule checks the indent of signal declarations.
 signal_002
 ##########
 
-This rule checks the **signal** keyword is lowercase.
+This rule checks the **signal** keyword has proper case.
+
+.. NOTE::  The default is lowercase.
 
 **Violation**
 
@@ -189,9 +191,9 @@ This rule has be renumbered signal_013.
 signal_010
 ##########
 
-This rule checks the signal type is lowercase if it is a VHDL keyword.
+This rule checks the signal type has proper case if it is a VHDL keyword.
 
-.. NOTE:: This rule is disabled by default.
+.. NOTE:: This rule is disabled by default. The default is lowercase.
 
 **Violation**
 

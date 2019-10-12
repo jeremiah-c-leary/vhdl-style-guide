@@ -289,7 +289,9 @@ This rule checks the indent of the **null** keyword.
 case_014
 ########
 
-This rule checks the **case** keyword is lowercase.
+This rule checks the **case** keyword has proper case.
+
+.. NOTE::  The default is lowercase.
 
 **Violation**
 
@@ -314,7 +316,9 @@ This rule checks the **case** keyword is lowercase.
 case_015
 ########
 
-This rule checks the **is** keyword is lowercase.
+This rule checks the **is** keyword has proper case.
+
+.. NOTE::  The default is lowercase.
 
 **Violation**
 
@@ -339,7 +343,9 @@ This rule checks the **is** keyword is lowercase.
 case_016
 ########
 
-This rule checks the **when** keyword is lowercase.
+This rule checks the **when** has proper case.
+
+.. NOTE::  The default is lowercase.
 
 **Violation**
 
@@ -360,7 +366,9 @@ This rule checks the **when** keyword is lowercase.
 case_017
 ########
 
-This rule checks the **end** keyword is lowercase in the **end case**.
+This rule checks the **end** keyword in the **end case** has proper case.
+
+.. NOTE::  The default is lowercase.
 
 **Violation**
 
@@ -381,7 +389,9 @@ This rule checks the **end** keyword is lowercase in the **end case**.
 case_018
 ########
 
-This rule checks the **case** keyword is lowercase in the **end case**.
+This rule checks the **case** keyword has proper case in the **end case**.
+
+.. NOTE::  The default is lowercase.
 
 **Violation**
 
