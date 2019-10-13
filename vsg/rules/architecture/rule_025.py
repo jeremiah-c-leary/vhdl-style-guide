@@ -15,6 +15,7 @@ class rule_025(rule.rule):
         self.solution = 'Architecture name must be one of these: ' + ','.join(self.names)
         self.phase = 7
         self.fixable = False
+        self.disable = True
         self.configuration.append('names')
 
     def _pre_analyze(self):
