@@ -465,3 +465,34 @@ It is clearer to the reader to state which architecture the end statement is clo
 
    end architecture ARCHITECTURE_NAME;
 
+architecture_025
+################
+
+This rule checks for valid names for the architecture.
+Typical architecture names are:  RTL, EMPTY, and BEHAVE.
+This rule allows the user to restrict what can be used for an architecture name.
+
+.. NOTE:: This rule is disabled by default.
+   You can enable and configure the names using the following configuration.
+
+   .. code-block:: yaml
+
+      ---
+
+      rule :
+        architecture_025 :
+          disabled : False
+          names :
+            - rtl
+            - empty
+            - behave
+
+**Violation**
+
+.. code-block:: vhdl
+
+   architecture SOME_INVALID_ARCH_NAME of ENTITY1 is
+
+**Fix**
+
+The user is required to decide which is the correct architecture name.

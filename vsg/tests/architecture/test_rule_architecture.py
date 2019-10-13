@@ -18,6 +18,9 @@ oFileIs = vhdlFile.vhdlFile(lFileIs)
 lFileEnd = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'architecture_end_test_input.vhd'))
 oFileEnd = vhdlFile.vhdlFile(lFileEnd)
 
+lFileName = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'architecture_name_test_input.vhd'))
+oFileName = vhdlFile.vhdlFile(lFileName)
+
 class testRuleArchitectureMethods(unittest.TestCase):
 
     def test_rule_001_exists(self):
@@ -264,4 +267,58 @@ class testRuleArchitectureMethods(unittest.TestCase):
         self.assertEqual(oRule.identifier, '024')
         dExpected = [13,77]
         oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_025(self):
+        oRule = architecture.rule_025()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'architecture')
+        self.assertEqual(oRule.identifier, '025')
+        self.assertFalse(oRule.fixable)
+
+        dExpected = [3, 10, 17, 24]
+        oRule.analyze(oFileName)
+        self.assertEqual(oRule.violations, dExpected)
+
+        oRule.violations = []
+        oRule.names = []
+        oRule.names.append('rtl')
+        dExpected = [10, 17, 24]
+        oRule.analyze(oFileName)
+        self.assertEqual(oRule.violations, dExpected)
+
+        oRule.violations = []
+        oRule.names = ['ENTITY1']
+        dExpected = [3, 17, 24]
+        oRule.analyze(oFileName)
+        self.assertEqual(oRule.violations, dExpected)
+
+        oRule.violations = []
+        oRule.names = ['BLUE']
+        dExpected = [3, 10, 24]
+        oRule.analyze(oFileName)
+        self.assertEqual(oRule.violations, dExpected)
+
+        oRule.violations = []
+        oRule.names = ['CDC']
+        dExpected = [3, 10, 17]
+        oRule.analyze(oFileName)
+        self.assertEqual(oRule.violations, dExpected)
+
+        oRule.violations = []
+        oRule.names = ['rtl', 'CDC']
+        dExpected = [10, 17]
+        oRule.analyze(oFileName)
+        self.assertEqual(oRule.violations, dExpected)
+
+        oRule.violations = []
+        oRule.names = ['rtl', 'cdc', 'blue']
+        dExpected = [10]
+        oRule.analyze(oFileName)
+        self.assertEqual(oRule.violations, dExpected)
+
+        oRule.violations = []
+        oRule.names = ['rtl', 'cdc', 'blue', 'entity1']
+        dExpected = []
+        oRule.analyze(oFileName)
         self.assertEqual(oRule.violations, dExpected)
