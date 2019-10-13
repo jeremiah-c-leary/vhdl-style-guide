@@ -249,3 +249,66 @@ class testFixRuleWhitespaceMethods(unittest.TestCase):
         self.assertEqual(oFile.lines[6].line,'  c <= d;')   #6
         self.assertEqual(oFile.lines[7].isBlank,True)  #7
         self.assertEqual(oFile.lines[8].line,'  a <= b;')   #8
+
+
+    def test_fix_013(self):
+        oRule = whitespace.rule_013()
+
+        lFile = utils.read_vhdlfile(sFileName)
+        oFile = vhdlFile.vhdlFile(lFile)
+
+        dExpected = []
+        oFile.lines.append(line.line('  if (a = 1)and(b = 0)'))   #1
+        oFile.lines.append(line.line('  if (a = 1)nand(b = 0)'))   #2
+        oFile.lines.append(line.line('  if (a = 1)or(b = 0)'))   #3
+        oFile.lines.append(line.line('  if (a = 1)nor(b = 0)'))   #4
+        oFile.lines.append(line.line('  if (a = 1)xor(b = 0)'))   #5
+        oFile.lines.append(line.line('  if (a = 1)xnor(b = 0)'))   #6
+        oFile.lines.append(line.blank_line())        #7
+        oFile.lines.append(line.line('  if (a = 1) and(b = 0)'))   #8
+        oFile.lines.append(line.line('  if (a = 1) nand(b = 0)'))   #9
+        oFile.lines.append(line.line('  if (a = 1) or(b = 0)'))   #10
+        oFile.lines.append(line.line('  if (a = 1) nor(b = 0)'))   #11
+        oFile.lines.append(line.line('  if (a = 1) xor(b = 0)'))   #12
+        oFile.lines.append(line.line('  if (a = 1) xnor(b = 0)'))   #13
+        oFile.lines.append(line.blank_line())        #14
+        oFile.lines.append(line.line('  if (a = 1)and (b = 0)'))   #15
+        oFile.lines.append(line.line('  if (a = 1)nand (b = 0)'))   #16
+        oFile.lines.append(line.line('  if (a = 1)or (b = 0)'))   #17
+        oFile.lines.append(line.line('  if (a = 1)nor (b = 0)'))   #18
+        oFile.lines.append(line.line('  if (a = 1)xor (b = 0)'))   #19
+        oFile.lines.append(line.line('  if (a = 1)xnor (b = 0)'))   #20
+        oFile.lines.append(line.blank_line())        #21
+        oFile.lines.append(line.line('  if (a = 1) and (b = 0)'))   #22
+        oFile.lines.append(line.line('  if (a = 1) nand (b = 0)'))   #23
+        oFile.lines.append(line.line('  if (a = 1) or (b = 0)'))   #24
+        oFile.lines.append(line.line('  if (a = 1) nor (b = 0)'))   #25
+        oFile.lines.append(line.line('  if (a = 1) xor (b = 0)'))   #26
+        oFile.lines.append(line.line('  if (a = 1) xnor (b = 0)'))   #27
+        oRule.fix(oFile)
+        oRule.analyze(oFile)
+        self.assertEqual(oFile.lines[1].line,'  if (a = 1) and (b = 0)')   #1
+        self.assertEqual(oFile.lines[2].line,'  if (a = 1) nand (b = 0)')   #2
+        self.assertEqual(oFile.lines[3].line,'  if (a = 1) or (b = 0)')   #3
+        self.assertEqual(oFile.lines[4].line,'  if (a = 1) nor (b = 0)')   #4
+        self.assertEqual(oFile.lines[5].line,'  if (a = 1) xor (b = 0)')   #5
+        self.assertEqual(oFile.lines[6].line,'  if (a = 1) xnor (b = 0)')   #6
+        self.assertEqual(oFile.lines[8].line,'  if (a = 1) and (b = 0)')   #8
+        self.assertEqual(oFile.lines[9].line,'  if (a = 1) nand (b = 0)')   #9
+        self.assertEqual(oFile.lines[10].line,'  if (a = 1) or (b = 0)')   #10
+        self.assertEqual(oFile.lines[11].line,'  if (a = 1) nor (b = 0)')   #11
+        self.assertEqual(oFile.lines[12].line,'  if (a = 1) xor (b = 0)')   #12
+        self.assertEqual(oFile.lines[13].line,'  if (a = 1) xnor (b = 0)')   #13
+        self.assertEqual(oFile.lines[15].line,'  if (a = 1) and (b = 0)')   #15
+        self.assertEqual(oFile.lines[16].line,'  if (a = 1) nand (b = 0)')   #16
+        self.assertEqual(oFile.lines[17].line,'  if (a = 1) or (b = 0)')   #17
+        self.assertEqual(oFile.lines[18].line,'  if (a = 1) nor (b = 0)')   #18
+        self.assertEqual(oFile.lines[19].line,'  if (a = 1) xor (b = 0)')   #19
+        self.assertEqual(oFile.lines[20].line,'  if (a = 1) xnor (b = 0)')   #20
+        self.assertEqual(oFile.lines[22].line,'  if (a = 1) and (b = 0)')   #22
+        self.assertEqual(oFile.lines[23].line,'  if (a = 1) nand (b = 0)')   #23
+        self.assertEqual(oFile.lines[24].line,'  if (a = 1) or (b = 0)')   #24
+        self.assertEqual(oFile.lines[25].line,'  if (a = 1) nor (b = 0)')   #25
+        self.assertEqual(oFile.lines[26].line,'  if (a = 1) xor (b = 0)')   #26
+        self.assertEqual(oFile.lines[27].line,'  if (a = 1) xnor (b = 0)')   #27
+        self.assertEqual(oRule.violations, dExpected)

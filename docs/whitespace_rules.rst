@@ -230,3 +230,19 @@ This rule enforces a maximum number of consecutive blank lines.
              }
          }
      }
+
+whitespace_013
+##############
+
+This rule checks for spaces before and after logical operators.
+
+**Violation**
+
+  if (a = '1')and(b = '0')
+  if (a = '0')or (b = '1')
+
+**Fix**
+
+  if (a = '1') and (b = '0')
+  if (a = '0') or (b = '1')
+
