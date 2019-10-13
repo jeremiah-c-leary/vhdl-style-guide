@@ -119,6 +119,7 @@ class rule_list():
         self.lastPhaseRan = 0
         self.oVhdlFile = oVhdlFile
         self.maximumPhase = maximum_phase(self.rules)
+        self.violations = False
 
     def fix(self, iPhase):
         '''
@@ -142,6 +143,7 @@ class rule_list():
         '''
         self.iNumberRulesRan = 0
         iFailures = 0
+        self.violations = False
         for phase in range(1, 10):
             iPhaseRuleCount = 0
             for oRule in self.rules:
@@ -151,6 +153,8 @@ class rule_list():
                     self.iNumberRulesRan += 1
                     iPhaseRuleCount += 1
                     self.lastPhaseRan = phase
+            if iFailures > 0:
+                self.violations = True
             if iFailures > 0 or iPhaseRuleCount == 0:
                 break
 

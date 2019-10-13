@@ -161,6 +161,7 @@ def main():
     if commandLineArguments.junit:
         oJunitFile = junit.xmlfile(commandLineArguments.junit)
         oJunitTestsuite = junit.testsuite('vhdl-style-guide', str(0))
+    fExitStatus = 0
     for sFileName in commandLineArguments.filename:
         oVhdlFile = vhdlFile.vhdlFile(read_vhdlfile(sFileName))
         oVhdlFile.filename = sFileName
@@ -175,6 +176,7 @@ def main():
 
         oRules.check_rules()
         oRules.report_violations(commandLineArguments.output_format)
+        fExitStatus = update_exit_status(fExitStatus, oRules)
 
         if commandLineArguments.junit:
             oJunitTestsuite.add_testcase(oRules.extract_junit_testcase(sFileName))
@@ -195,8 +197,14 @@ def main():
         with open(commandLineArguments.output_configuration, 'w') as json_file:
             json.dump(dOutputConfiguration, json_file, sort_keys=True, indent=2)
 
-    sys.exit(0)
+    sys.exit(fExitStatus)
 
+
+def update_exit_status(fExitStatus, oRules):
+    if fExitStatus == 0 and oRules.violations:
+        return 1
+    else:
+        return 0
 
 if __name__ == '__main__':
     main()
