@@ -5,7 +5,7 @@ import re
 
 
 class rule_011(rule.rule):
-    '''Whitespace rule 009 checks for spaces before concat operators.'''
+    '''Whitespace rule 011 checks for spaces before and after math operators.'''
 
     def __init__(self):
         rule.rule.__init__(self)
