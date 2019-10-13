@@ -716,3 +716,21 @@ This rule checks for alignment of identifiers and colons of constant, variable, 
 
    end process PROC_1;
 
+process_032
+###########
+
+This rule checks the process label is on the same line as the process keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   PROC_1 :
+
+   process(A) is
+
+**Fix**
+
+.. code-block:: vhdl
+
+   PROC_1 : process(A) is

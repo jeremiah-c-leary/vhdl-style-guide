@@ -2,7 +2,7 @@
 ---- Create Date:    00:12:45 10/23/2010
 ---- Design Name: pic
 ---- Project Name: PIC
-Description:
+---- Description:
 ----  A Programmable Interrupt Controller which can handle upto 8   ----
 ---- level triggered interrupts.The operating modes available are    ----
 ---- polling fixed priority modes.              ----                                                           ----
