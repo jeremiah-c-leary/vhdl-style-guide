@@ -12,7 +12,7 @@ class rule_025(rule.rule):
     def __init__(self):
         rule.rule.__init__(self, 'architecture', '025')
         self.names = []
-        self.solution = 'Architecture name must be one of these: ' + ','.join(self.names)
+        self.solution = ''
         self.phase = 7
         self.fixable = False
         self.disable = True
@@ -22,6 +22,7 @@ class rule_025(rule.rule):
         self.lower_names = []
         for sName in self.names:
             self.lower_names.append(sName.lower())
+        self.solution = 'Architecture name must be from this list: ' + ','.join(self.lower_names)
 
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.isArchitectureKeyword:
