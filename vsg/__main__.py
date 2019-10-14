@@ -197,7 +197,7 @@ def main():
         with open(commandLineArguments.output_configuration, 'w') as json_file:
             json.dump(dOutputConfiguration, json_file, sort_keys=True, indent=2)
 
-    sys.exit(fExitStatus)
+    sys.exit(0)
 
 
 def update_exit_status(fExitStatus, oRules):
