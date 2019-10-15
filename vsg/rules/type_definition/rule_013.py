@@ -10,7 +10,7 @@ class rule_013(case_rule):
 
     def __init__(self):
         case_rule.__init__(self, 'type', '013', 'isTypeKeyword')
-        self.solution = 'Change is keyword to ' + self.case + 'case'
+        self.solution = 'Change "is" keyword to '
 
     def _extract(self, oLine):
         return utils.extract_word(oLine, 'is')

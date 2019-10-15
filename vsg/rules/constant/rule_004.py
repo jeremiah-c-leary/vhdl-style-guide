@@ -9,7 +9,7 @@ class rule_004(case_rule):
 
     def __init__(self):
         case_rule.__init__(self, 'constant', '004', 'isConstant')
-        self.solution = 'Change constant identifiers name to ' + self.case + 'case'
+        self.solution = 'Change constant identifiers name to '
 
     def _extract(self, oLine):
         return utils.extract_class_identifier_list(oLine)

@@ -10,7 +10,7 @@ class rule_025(case_rule):
 
     def __init__(self):
         case_rule.__init__(self, 'if', '025', 'isIfKeyword')
-        self.solution = 'Change if keyword to ' + self.case + 'case'
+        self.solution = 'Change "if" keyword to '
 
     def _extract(self, oLine):
         return utils.extract_first_keyword(oLine)

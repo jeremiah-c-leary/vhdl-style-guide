@@ -10,7 +10,7 @@ class rule_002(case_rule):
 
     def __init__(self):
         case_rule.__init__(self, 'signal', '002', 'isSignal')
-        self.solution = 'Change signal keyword to ' + self.case + 'case'
+        self.solution = 'Change "signal" keyword to '
 
     def _extract(self, oLine):
         return utils.extract_class_name(oLine)
