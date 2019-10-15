@@ -44,3 +44,12 @@ package PACK is
     I_MOREFOO'length + I_MOREBAR'length + 1;
 
 end package PACK;
+
+architecture RTL of ENTITY1 is
+
+begin
+
+  constant1 <= A;
+  constant_2 <= B;
+
+end architecture RTL;

@@ -4,7 +4,8 @@ import re
 def constant(dVars, oLine, oLinePrevious):
 
     if re.match('^\s*constant', oLine.lineLower) and \
-       not oLine.insideFunction and not oLine.insideProcedure:
+       not oLine.insideFunction and not oLine.insideProcedure and \
+       not oLine.insideConcurrent:
         oLine.isConstant = True
         oLine.indentLevel = dVars['iCurrentIndentLevel']
         oLine.insideConstant = True
