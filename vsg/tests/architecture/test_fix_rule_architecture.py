@@ -13,13 +13,12 @@ oFileRule010 = vhdlFile.vhdlFile(lFileRule010)
 lFileIs = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'architecture_is_test_input.vhd'))
 oFileIs = vhdlFile.vhdlFile(lFileIs)
 
+lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'architecture_test_input.vhd'))
 
 class testFixRuleArchitectureMethods(unittest.TestCase):
 
     def setUp(self):
-        lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'architecture_test_input.vhd'))
         self.oFile = vhdlFile.vhdlFile(lFile)
-
 
     def test_fix_rule_001(self):
         oRule = architecture.rule_001()
@@ -121,6 +120,7 @@ class testFixRuleArchitectureMethods(unittest.TestCase):
         dExpected = []
         oRule.fix(self.oFile)
         oRule.analyze(self.oFile)
+        self.assertEqual(self.oFile.lines[81].line, 'architecture ARCH of ARCH is')
         self.assertEqual(oRule.violations, dExpected)
 
     def test_fix_rule_015(self):

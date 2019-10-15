@@ -23,4 +23,9 @@ class architecture_case_rule(rule.rule):
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
-            fix.upper_case(self, oFile.lines[iLineNumber], oFile.lines[iLineNumber].line.split()[self.iIndex])
+            oLine = oFile.lines[iLineNumber]
+            sLine = oLine.lineNoComment
+            sWord = sLine.split()[self.iIndex]
+            iIndex = sLine.rfind(sLine.split()[self.iIndex])
+            sLine = sLine[:iIndex] + sWord.upper() + sLine[iIndex + len(sWord):]
+            oLine.update_line(sLine)

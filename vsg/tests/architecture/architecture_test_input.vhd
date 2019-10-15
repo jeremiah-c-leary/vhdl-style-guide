@@ -77,3 +77,9 @@ begin
 end;
 
 -- Comment
+
+architecture ARCH of arch is
+
+begin
+
+end architecture ARCH;

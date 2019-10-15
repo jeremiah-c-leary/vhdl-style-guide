@@ -175,7 +175,7 @@ class testRuleArchitectureMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'architecture')
         self.assertEqual(oRule.identifier, '014')
-        dExpected = [9,20]
+        dExpected = [9,20,81]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 

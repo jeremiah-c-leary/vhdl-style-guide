@@ -7,7 +7,7 @@ begin
 end architecture RTL;
 
 -- This is not valid
-architecture ENTITY1 of ENTITY1 is
+architecture ENTITY1 of entity1 is
 
 begin
 
