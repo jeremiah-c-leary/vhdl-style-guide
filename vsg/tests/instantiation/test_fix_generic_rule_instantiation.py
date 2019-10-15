@@ -6,11 +6,12 @@ from vsg.rules import instantiation
 from vsg import vhdlFile
 from vsg.tests import utils
 
+lFileGeneric = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'instantiation_generic_test_input.vhd'))
+
 class testFixRuleInstantiationMethods(unittest.TestCase):
 
     def setUp(self):
-        self.lFileGeneric = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'instantiation_generic_test_input.vhd'))
-        self.oFileGeneric = vhdlFile.vhdlFile(self.lFileGeneric)
+        self.oFileGeneric = vhdlFile.vhdlFile(lFileGeneric)
 
     def test_fix_rule_012(self):
         oRule = instantiation.rule_012()
@@ -29,6 +30,20 @@ class testFixRuleInstantiationMethods(unittest.TestCase):
         oRule.fix(self.oFileGeneric)
         oRule.analyze(self.oFileGeneric)
         self.assertEqual(oRule.violations, [])
+        self.assertEqual(self.oFileGeneric.lines[46].line, '     GENERic_2 => generic_2')
+        self.assertFalse(self.oFileGeneric.lines[46].isInstantiationGenericEnd)
+        self.assertEqual(self.oFileGeneric.lines[47].line, '  )')
+        self.assertTrue(self.oFileGeneric.lines[47].isInstantiationGenericEnd)
+        self.assertEqual(self.oFileGeneric.lines[66].line, '      GENERIC_2 =>   generic_2')
+        self.assertFalse(self.oFileGeneric.lines[66].isInstantiationGenericEnd)
+        self.assertEqual(self.oFileGeneric.lines[67].line, '  )')
+        self.assertTrue(self.oFileGeneric.lines[67].isInstantiationGenericEnd)
+        self.assertEqual(self.oFileGeneric.lines[101].line, '      GENERIC_4 => (2*generic_2)')
+        self.assertFalse(self.oFileGeneric.lines[101].isInstantiationGenericEnd)
+        self.assertEqual(self.oFileGeneric.lines[102].line, '  )')
+        self.assertTrue(self.oFileGeneric.lines[102].isInstantiationGenericEnd)
+
+ 
 
     def test_fix_rule_015(self):
         oRule = instantiation.rule_015()
