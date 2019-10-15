@@ -10,7 +10,7 @@ class rule_004(case_rule):
 
     def __init__(self):
         case_rule.__init__(self, 'package', '004', 'isPackageKeyword')
-        self.solution = 'Change package keyword to ' + self.case + 'case'
+        self.solution = 'Change "package" keyword to '
 
     def _extract(self, oLine):
         return utils.extract_first_keyword(oLine)

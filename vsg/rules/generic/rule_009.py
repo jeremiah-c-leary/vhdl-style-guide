@@ -10,7 +10,7 @@ class rule_009(case_rule):
 
     def __init__(self):
         case_rule.__init__(self, 'generic', '009', 'isGenericKeyword')
-        self.solution = 'Change generic keyword to ' + self.case + 'case'
+        self.solution = 'Change "generic" keyword to '
 
     def _extract(self, oLine):
         return utils.extract_first_keyword(oLine)

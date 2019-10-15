@@ -10,7 +10,7 @@ class rule_018(case_rule):
 
     def __init__(self):
         case_rule.__init__(self, 'case', '018', 'isEndCaseKeyword')
-        self.solution = 'Change case keyword to ' + self.case + 'case'
+        self.solution = 'Change "case" keyword to '
 
     def _extract(self, oLine):
         return utils.extract_word(oLine, 'case')

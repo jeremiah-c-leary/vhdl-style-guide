@@ -11,7 +11,7 @@ class rule_008(case_rule):
     def __init__(self):
         case_rule.__init__(self, 'entity', '008', 'isEntityDeclaration')
         self.case = 'upper'
-        self.solution = 'Change entity name to ' + self.case + 'case'
+        self.solution = 'Change entity name to '
 
     def _extract(self, oLine):
         return utils.extract_entity_identifier(oLine)

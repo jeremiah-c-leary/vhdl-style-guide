@@ -10,7 +10,7 @@ class rule_004(case_rule):
 
     def __init__(self):
         case_rule.__init__(self, 'type', '004', 'isTypeKeyword')
-        self.solution = 'Change type identifier name to ' + self.case + 'case'
+        self.solution = 'Change type identifier name to '
 
     def _extract(self, oLine):
         return utils.extract_type_identifier(oLine)

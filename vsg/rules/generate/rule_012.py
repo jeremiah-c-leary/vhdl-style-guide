@@ -11,7 +11,7 @@ class rule_012(case_rule):
     def __init__(self):
         case_rule.__init__(self, 'generate', '012', 'isGenerateEnd')
         self.case = 'upper'
-        self.solution = 'Change generate end label to ' + self.case + 'case'
+        self.solution = 'Change end generate label to '
 
     def _extract(self, oLine):
         return utils.extract_end_label(oLine)
