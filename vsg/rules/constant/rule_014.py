@@ -2,8 +2,6 @@
 import re
 
 from vsg import rule
-from vsg import fix
-from vsg import check
 
 
 class rule_014(rule.rule):

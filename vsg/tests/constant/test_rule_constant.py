@@ -47,7 +47,7 @@ class testRuleConstantMethods(unittest.TestCase):
         lExpected.extend(range(8, 11))
         lExpected.extend(range(17, 19))
         lExpected.extend([28, 30, 38, 40, 43])
- 
+
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, lExpected)
 

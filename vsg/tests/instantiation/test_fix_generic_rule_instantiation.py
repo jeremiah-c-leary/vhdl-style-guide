@@ -43,8 +43,6 @@ class testFixRuleInstantiationMethods(unittest.TestCase):
         self.assertEqual(self.oFileGeneric.lines[102].line, '  )')
         self.assertTrue(self.oFileGeneric.lines[102].isInstantiationGenericEnd)
 
- 
-
     def test_fix_rule_015(self):
         oRule = instantiation.rule_015()
         oRule.fix(self.oFileGeneric)

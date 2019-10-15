@@ -49,7 +49,7 @@ class testRuleSignalMethods(unittest.TestCase):
         lExpected.extend(range(13, 17))
         lExpected.extend(range(18, 22))
         lExpected.append(23)
-  
+
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, lExpected)
 

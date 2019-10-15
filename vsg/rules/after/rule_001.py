@@ -2,7 +2,6 @@
 import re
 
 from vsg import rule
-from vsg import utils
 
 
 class rule_001(rule.rule):
@@ -27,7 +26,7 @@ class rule_001(rule.rule):
             if oLine.isSequentialEnd:
                 self.sequentialStatement += oLine.lineNoComment.replace('--', '  ')
                 if not re.match('^\s*.*\safter\s', self.sequentialStatement):
-                    self.add_violation(iLineNumber) 
+                    self.add_violation(iLineNumber)
                 self.sequentialStatement = ""
             elif oLine.insideSequential:
                 self.sequentialStatement += oLine.lineNoComment.replace('--', '  ')

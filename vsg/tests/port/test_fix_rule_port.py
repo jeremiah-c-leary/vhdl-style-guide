@@ -12,7 +12,6 @@ class testFixRulePortMethods(unittest.TestCase):
     def setUp(self):
         lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','port','port_test_input.vhd'))
         self.oFile = vhdlFile.vhdlFile(lFile)
-        
 
     def test_fix_rule_001(self):
         oRule = port.rule_001()

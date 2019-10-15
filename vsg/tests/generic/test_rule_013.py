@@ -14,7 +14,7 @@ class testRulePortMethods(unittest.TestCase):
 
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
-    
+
     def test_rule_016(self):
         oRule = generic.rule_013()
         self.assertTrue(oRule)

@@ -736,7 +736,7 @@ def remove_comment_attributes_from_line(oLine):
     Sets all comment attributes on a line to indicate no comment is present.
 
     Parameters:
-    
+
         oLine: (line object)
     '''
     oLine.isComment = False

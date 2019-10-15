@@ -24,7 +24,6 @@ class rule_032(rule.rule):
     def _analyze(self, oFile, oLine, iLineNumber):
         if re.match('^\s*\S+\s*:', oLine.lineNoComment) and not oLine.isSignal and not oLine.insidePortMap and not oLine.insideGenericMap and not oLine.insideInstantiation and not oLine.isConstant and not oLine.isVariable:
             self.label_found = True
-            iIndex = oLine.line.find(':')
             self.label_name = utils.extract_label(oLine)[0]
             self.label_line_number = iLineNumber
         if oLine.isProcessKeyword and not oLine.isProcessLabel and self.label_found:
