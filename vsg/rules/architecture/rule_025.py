@@ -22,10 +22,12 @@ class rule_025(rule.rule):
         self.lower_names = []
         for sName in self.names:
             self.lower_names.append(sName.lower())
-        self.solution = 'Architecture name must be from this list: ' + ','.join(self.lower_names)
 
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.isArchitectureKeyword:
             lLine = oLine.line.split()
             if lLine[1].lower() not in self.lower_names:
                 self.add_violation(iLineNumber)
+
+    def _get_solution(self, iLineNumber):
+        return 'Architecture name must be from this list: ' + ','.join(self.lower_names)
