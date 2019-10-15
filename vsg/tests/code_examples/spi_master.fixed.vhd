@@ -371,12 +371,12 @@ begin
   SPI_SCK_CPOL_0_PROC : if CPOL = '0' generate
   begin
     spi_clk <= core_clk;            -- for CPOL=0, spi clk has idle LOW
-  end generate;
+  end generate SPI_SCK_CPOL_0_PROC;
 
   SPI_SCK_CPOL_1_PROC : if CPOL = '1' generate
   begin
     spi_clk <= core_n_clk;          -- for CPOL=1, spi clk has idle HIGH
-  end generate;
+  end generate SPI_SCK_CPOL_1_PROC;
 
   -----------------------------------------------------------------------------------------------
   -- Sampling clock enable generation: generate 'samp_ce' from 'core_ce' or 'core_n_ce' depending on CPHA
@@ -385,12 +385,12 @@ begin
   SAMP_CE_CPHA_0_PROC : if CPHA = '0' generate
   begin
     samp_ce <= core_ce;
-  end generate;
+  end generate SAMP_CE_CPHA_0_PROC;
 
   SAMP_CE_CPHA_1_PROC : if CPHA = '1' generate
   begin
     samp_ce <= core_n_ce;
-  end generate;
+  end generate SAMP_CE_CPHA_1_PROC;
 
   -----------------------------------------------------------------------------------------------
   -- FSM clock enable generation: generate 'fsm_ce' from core_ce or core_n_ce depending on CPHA
@@ -398,12 +398,12 @@ begin
   FSM_CE_CPHA_0_PROC : if CPHA = '0' generate
   begin
     fsm_ce <= core_n_ce;            -- for CPHA=0, latch registers at rising edge of negative core clock enable
-  end generate;
+  end generate FSM_CE_CPHA_0_PROC;
 
   FSM_CE_CPHA_1_PROC : if CPHA = '1' generate
   begin
     fsm_ce <= core_ce;              -- for CPHA=1, latch registers at rising edge of positive core clock enable
-  end generate;
+  end generate FSM_CE_CPHA_1_PROC;
 
   -----------------------------------------------------------------------------------------------
   -- sck enable control: control sck advance phase for CPHA='1' relative to fsm clock
