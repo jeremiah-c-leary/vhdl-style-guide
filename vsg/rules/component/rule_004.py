@@ -10,7 +10,7 @@ class rule_004(case_rule):
 
     def __init__(self):
         case_rule.__init__(self, 'component', '004', 'isComponentDeclaration')
-        self.solution = 'Change component keyword to ' + self.case + 'case'
+        self.solution = 'Change "component" keyword to '
 
     def _extract(self, oLine):
         return utils.extract_first_keyword(oLine)

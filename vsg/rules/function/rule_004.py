@@ -10,7 +10,7 @@ class rule_004(case_rule):
 
     def __init__(self):
         case_rule.__init__(self, 'function', '004', 'isFunctionBegin')
-        self.solution = 'Change begin keyword to ' + self.case + 'case'
+        self.solution = 'Change "begin" keyword to '
 
     def _extract(self, oLine):
         return utils.extract_word(oLine, 'begin')

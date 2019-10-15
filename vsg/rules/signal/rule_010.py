@@ -5,12 +5,12 @@ from vsg import utils
 
 class rule_010(case_rule):
     '''
-    Signal rule 010 checks the signal type has proper case.
+    Signal rule 010 checks the signal type has proper case if it is a VHDL keyword.
     '''
 
     def __init__(self):
         case_rule.__init__(self, 'signal', '010', 'isSignal')
-        self.solution = 'Change signal type name to ' + self.case + 'case'
+        self.solution = 'Change signal type name to '
         self.disabled = True
 
     def _extract(self, oLine):

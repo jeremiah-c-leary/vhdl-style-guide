@@ -10,7 +10,7 @@ class rule_002(case_rule):
 
     def __init__(self):
         case_rule.__init__(self, 'attribute', '002', 'isAttributeKeyword')
-        self.solution = 'Change attribute keyword to ' + self.case + 'case'
+        self.solution = 'Change "attribute" keyword to '
 
     def _extract(self, oLine):
         return utils.extract_first_keyword(oLine)

@@ -10,7 +10,7 @@ class rule_016(case_rule):
 
     def __init__(self):
         case_rule.__init__(self, 'case', '016', 'isCaseWhenKeyword')
-        self.solution = 'Change when keyword to ' + self.case + 'case'
+        self.solution = 'Change "when" keyword to '
 
     def _extract(self, oLine):
         return utils.extract_word(oLine, 'when')
