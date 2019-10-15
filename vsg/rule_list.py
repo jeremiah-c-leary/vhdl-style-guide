@@ -145,17 +145,14 @@ class rule_list():
         iFailures = 0
         self.violations = False
         for phase in range(1, 10):
-            iPhaseRuleCount = 0
             for oRule in self.rules:
                 if oRule.phase == phase and not oRule.disable:
                     oRule.analyze(self.oVhdlFile)
                     iFailures += len(oRule.violations)
                     self.iNumberRulesRan += 1
-                    iPhaseRuleCount += 1
                     self.lastPhaseRan = phase
             if iFailures > 0:
                 self.violations = True
-            if iFailures > 0 or iPhaseRuleCount == 0:
                 break
 
     def report_violations(self, sOutputFormat):
