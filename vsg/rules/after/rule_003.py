@@ -2,7 +2,6 @@
 import re
 
 from vsg import rule
-from vsg import utils
 
 
 class rule_003(rule.rule):
@@ -18,7 +17,7 @@ class rule_003(rule.rule):
 
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.insideResetProcess and oLine.hasAfterKeyword:
-            self.add_violation(iLineNumber) 
+            self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
