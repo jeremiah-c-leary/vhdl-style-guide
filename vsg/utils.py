@@ -543,11 +543,9 @@ def extract_class_name(oLine):
 
 def extract_class_identifier_list(oLine):
     '''
-    Returns a list of signals in a signal declaration.
+    Returns a class identifiers list.
 
     Parameters:
-
-       sClass: (class according to the VHDL standard)
 
        oLine: (line object)
 
@@ -729,6 +727,26 @@ def extract_word(oLine, keyword):
             return [word]
 
     return []
+
+
+def extract_generics(oLine):
+    '''
+    Returns a generics list.
+
+    Parameters:
+
+       oLine: (line object)
+
+    Returns: (list of strings)
+    '''
+    sLine = oLine.line.replace(';', '')
+    sLine = sLine.split(':')[0]
+    sLine = sLine.replace('(', ' ')
+    sLine = sLine.replace(',', ' ').split()
+    if sLine[0].lower() == 'generic':
+        sLine = sLine[1:]
+
+    return sLine
 
 
 def remove_comment_attributes_from_line(oLine):

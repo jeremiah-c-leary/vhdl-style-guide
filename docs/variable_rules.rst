@@ -244,3 +244,23 @@ This rule checks for consistent capitalization of variable names.
 
    end process PROC_NAME;
 
+variable_012
+##########
+
+This rule checks for valid prefixes on variable identifiers.
+
+.. NOTE:: The default variable prefix is "v_".
+
+   Refer to the section `Configuring Prefix and Suffix Rules <configuring_prefix_suffix.html>`_ for information on changing the allowed prefixes.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   variable my_var : natural;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   variable v_my_var : natural;

@@ -246,9 +246,11 @@ If an index exists on a port, the case of the index will not be checked.
 port_011
 ########
 
-This rule checks port names have a I\_, O\_, or IO\_ prefixes or _I, _O, or _IO suffixes.
-This rule can be configured to enforce prefixes, suffixes, or neither.
-The default is neither.
+This rule checks for valid prefixes on port identifiers.
+
+.. NOTE:: The default port prefixes are "I_", "O_", "IO_".
+
+   Refer to the section `Configuring Prefix and Suffix Rules <configuring_prefix_suffix.html>`_ for information on changing the allowed prefixes.
 
 **Violation**
 
@@ -271,13 +273,6 @@ The default is neither.
      I_RD_EN    : in    std_logic;
      O_OVERFLOW : out   std_logic;
      IO_DATA    : inout std_logic
-   );
-
-   port (
-     WR_EN_I    : in    std_logic;
-     RD_EN_I    : in    std_logic;
-     OVERFLOW_O : out   std_logic;
-     DATA_IO    : inout std_logic
    );
 
 port_012
@@ -616,4 +611,36 @@ This rule checks for blank lines before the close parenthesis in port declaratio
      RD_EN    : in    std_logic;
      OVERFLOW : out   std_logic;
      DATA     : inout std_logic
+   );
+
+port_025
+########
+
+This rule checks for valid suffixes on port identifiers.
+
+.. NOTE:: The default port suffixes are "_I", "_O", "_IO".
+
+   Refer to the section `Configuring Prefix and Suffix Rules <configuring_prefix_suffix.html>`_ for information on changing the allowed suffixes.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   port (
+     WR_EN    : in    std_logic;
+     RD_EN    : in    std_logic;
+     OVERFLOW : out   std_logic;
+     DATA     : inout std_logic
+   );
+
+
+**Fix**
+
+.. code-block:: vhdl
+
+   port (
+     WR_EN_I    : in    std_logic;
+     RD_EN_I    : in    std_logic;
+     OVERFLOW_O : out   std_logic;
+     DATA_IO    : inout std_logic
    );

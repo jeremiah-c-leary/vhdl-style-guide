@@ -231,6 +231,19 @@ class testExtractFunctions(unittest.TestCase):
         sActual = utils.extract_class_identifier_list(oLine)
         self.assertEqual(sExpected, sActual)
 
+    def test_extract_generics(self):
+        oLine = line.blank_line()
+        oLine.update_line('generic( MY_GENERIC: std_logic_vector )')
+        sExpected = ['MY_GENERIC']
+        sActual = utils.extract_generics(oLine)
+        self.assertEqual(sExpected, sActual)
+
+        oLine = line.blank_line()
+        oLine.update_line('generic(GEN1,GEN2: integer )')
+        sExpected = ['GEN1', 'GEN2']
+        sActual = utils.extract_generics(oLine)
+        self.assertEqual(sExpected, sActual)
+
     def test_extract_type_name(self):
         oLine = line.blank_line()
         oLine.update_line('variable var1, var2 : integer := -32;')

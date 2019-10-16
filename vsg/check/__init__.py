@@ -17,4 +17,5 @@ from .is_single_space_before import *
 from .is_uppercase import *
 from .keyword_alignment import *
 from .multiline_alignment import *
-from .starts_with import *
+from .has_prefix import *
+from .has_suffix import *

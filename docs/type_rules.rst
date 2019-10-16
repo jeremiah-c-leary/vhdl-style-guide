@@ -315,3 +315,24 @@ This rule checks for consistent capitalization of type names.
    type state_machine is (IDLE, WRITE, READ, DONE);
 
    signal sm : state_machine;
+
+type_015
+##########
+
+This rule checks for valid prefixes in user defined type identifiers.
+
+.. NOTE:: The default new type prefix is "t_".
+
+   Refer to the section `Configuring Prefix and Suffix Rules <configuring_prefix_suffix.html>`_ for information on changing the allowed prefixes.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   type my_type is range -5 to 5 ;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   type t_my_type is range -5 to 5 ;

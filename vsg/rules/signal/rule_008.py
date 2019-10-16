@@ -1,36 +1,17 @@
 
-from vsg import rule
+from vsg.rules import prefix_rule
+from vsg import utils
 
 
-class rule_008(rule.rule):
+class rule_008(prefix_rule):
     '''
-    Signal rule 008 checks for prefixes in signal names.
+    Signal rule 008 checks for prefixes in signal identifiers.
     '''
 
     def __init__(self):
-        rule.rule.__init__(self, 'signal', '008')
-        self.solution = 'Invalid or missing prefix.'
-        self.prefixes = None
-        self.phase = 7
-        self.fixable = False  # The user will have to fix any desired prefixes.
+        prefix_rule.__init__(self, 'signal', '008', 'isSignal')
+        self.prefixes = ['s_']
+        self.solution = 'Signal'
 
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if not self.prefixes:
-            return
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if not oLine.isSignal:
-                continue
-            check_for_signal_prefixes(self, oLine, iLineNumber)
-
-
-def check_for_signal_prefixes(self, oLine, iLineNumber):
-    for sSignalName in oLine.line.split(':')[0].split():
-        if sSignalName.lower() == 'signal':
-            continue
-        fPrefixFound = False
-        for sPrefixName in self.prefixes:
-            if sSignalName.startswith(sPrefixName):
-                fPrefixFound = True
-                break
-        if not fPrefixFound:
-            self.add_violation(iLineNumber)
+    def _extract(self, oLine):
+        return utils.extract_class_identifier_list(oLine)
