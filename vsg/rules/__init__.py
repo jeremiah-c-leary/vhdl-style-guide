@@ -13,6 +13,8 @@ from .remove_spaces_before_character_rule import remove_spaces_before_character_
 from .multiple_spaces_after_rule import multiple_spaces_after_rule
 from .search_for_and_replace_keyword_rule import search_for_and_replace_keyword_rule
 from .case_rule import case_rule
+from .prefix_rule import prefix_rule
+from .suffix_rule import suffix_rule
 
 from vsg.rules import after
 from vsg.rules import architecture

@@ -1,21 +1,17 @@
 
-from vsg import rule
-from vsg import check
+from vsg.rules import prefix_rule
+from vsg import utils
 
 
-class rule_020(rule.rule):
+class rule_020(prefix_rule):
     '''
-    Generic rule 020 checks generic names start with G_.
+    Generic rule 020 checks for prefixes in generic names.
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'generic'
-        self.identifier = '020'
-        self.solution = 'Prefix generic name with G_.'
-        self.phase = 7
-        self.disable = True
+        prefix_rule.__init__(self, 'generic', '020', 'isGenericDeclaration')
+        self.prefixes = ['G_']
+        self.solution = 'Generic'
 
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isGenericDeclaration and not oLine.isGenericKeyword:
-            check.starts_with(self, oLine.line.split()[0], iLineNumber, 'G_')
+    def _extract(self, oLine):
+        return utils.extract_generics(oLine)

@@ -315,3 +315,23 @@ This rule checks the indent of multiline constants that do not contain arrays.
    constant width : integer := a + b +
                                c + d;
 
+constant_015
+##########
+
+This rule checks for valid prefixes on constant identifiers.
+
+.. NOTE:: The default constant prefix is "c_".
+
+   Refer to the section `Configuring Prefix and Suffix Rules <configuring_prefix_suffix.html>`_ for information on changing the allowed prefixes.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   constant my_const : integer;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   constant c_my_const : integer;

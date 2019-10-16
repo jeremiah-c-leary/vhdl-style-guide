@@ -150,40 +150,25 @@ This rule checks for default assignments in signal declarations.
 signal_008
 ##########
 
-This rule checks for valid prefixes on signal names.
+This rule checks for valid prefixes on signal identifiers.
 
-.. NOTE::
+.. NOTE:: Default signal prefix is "s_".
 
-   Prefixes are disabled by default.
-   To enable prefixes, set the prefixes attribute on the rule.
-
-   Example JSON configuration:
-
-   .. code-block:: json
-   
-      {
-        "rule":{
-          "signal_008":{
-             "prefixes":[
-                "w_", "q_", "d_"
-             ]
-          }
-        }
-      }
+   Refer to the section `Configuring Prefix and Suffix Rules <configuring_prefix_suffix.html>`_ for information on changing the allowed prefixes.
 
 **Violation**
 
 .. code-block:: vhdl
 
-   signal wr_en   : std_logic;
+   signal wr_en : std_logic;
    signal rd_en : std_logic;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   signal q_wr_en : std_logic;
-   signal w_rd_en : std_logic;
+   signal s_wr_en : std_logic;
+   signal s_rd_en : std_logic;
 
 signal_009
 ##########

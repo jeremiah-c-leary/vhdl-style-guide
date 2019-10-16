@@ -375,22 +375,20 @@ This rule checks for blank lines before the ); of the generic declaration.
 generic_020
 ###########
 
-This rule checks the generic name starts with G_.
+This rule checks for valid prefixes on generic identifiers.
 
-.. NOTE::  This rule is disabled by default.
+.. NOTE:: The default generic prefix is "G_".
+
+   Refer to the section `Configuring Prefix and Suffix Rules <configuring_prefix_suffix.html>`_ for information on changing the allowed prefixes.
 
 **Violation**
 
 .. code-block:: vhdl
 
-  generic (
-    WIDTH : std_logic := '0';
-  );
+   generic(MY_GEN : integer);
 
 **Fix**
 
 .. code-block:: vhdl
 
-  generic (
-    G_WIDTH : std_logic := '0';
-  );
+   generic(G_MY_GEN : integer);
