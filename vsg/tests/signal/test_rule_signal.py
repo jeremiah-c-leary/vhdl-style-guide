@@ -89,20 +89,12 @@ class testRuleSignalMethods(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, lExpected)
 
-    def test_rule_008_with_no_prefixes(self):
+    def test_rule_008(self):
         oRule = signal.rule_008()
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'signal')
         self.assertEqual(oRule.identifier, '008')
-        lExpected = []
-        oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, lExpected)
-
-    def test_rule_008_with_prefixes(self):
-        oRule = signal.rule_008()
-        self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'signal')
-        self.assertEqual(oRule.identifier, '008')
+        self.assertTrue(oRule.disable)
         lExpected = [9,12,13,14,15,16,19,21,23]
         oRule.prefixes = ['a_','b_','d_','e_']
         oRule.analyze(oFile)

@@ -113,31 +113,14 @@ class testRulePortMethods(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
-    def test_rule_011_prefix(self):
+    def test_rule_011(self):
         oRule = port.rule_011()
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'port')
         self.assertEqual(oRule.identifier, '011')
-        oRule.port_direction = 'Prefix'
+        self.assertTrue(oRule.disable)
 
         dExpected = [12,13,14,29,30,31,43,44,45,60,61,62,74,75,76,99,100,101,152,161,169,170,171,172,173]
-        dExpected.extend(range(181, 186))
-        oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
-
-    def test_rule_011_none(self):
-        oRule = port.rule_011()
-        oRule.port_direction = None
-
-        dExpected = []
-        oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
-
-    def test_rule_011_suffix(self):
-        oRule = port.rule_011()
-        oRule.port_direction = 'Suffix'
-
-        dExpected = [9,10,11,12,13,14,26,27,28,29,30,31,40,41,42,43,44,45,57,58,59,60,61,62,71,72,73,74,75,76,87,88,89,119,120,121,129,130,131,141,142,152,161,169,170,171,172,173]
         dExpected.extend(range(181, 186))
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
@@ -271,3 +254,24 @@ class testRulePortMethods(unittest.TestCase):
         lExpected = [188]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, lExpected)
+
+    def test_rule_025_default(self):
+        oRule = port.rule_025()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'port')
+        self.assertEqual(oRule.identifier, '025')
+        self.assertTrue(oRule.disable)
+
+        dExpected = [9,10,11,12,13,14,26,27,28,29,30,31,40,41,42,43,44,45,57,58,59,60,61,62,71,72,73,74,75,76,87,88,89,119,120,121,129,130,131,141,142,152,161,169,170,171,172,173]
+        dExpected.extend(range(181, 186))
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_025_configured(self):
+        oRule = port.rule_025()
+        oRule.suffixes = ['_OUT']
+
+        dExpected = [9,10,11,12,13,14,26,27,28,29,30,31,40,41,42,43,44,45,57,58,59,60,61,62,71,72,73,74,75,76,87,88,89,99,100,101,119,120,121,129,130,131,141,142,161,169,170,171,172,173]
+        dExpected.extend(range(181, 186))
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)

@@ -37,6 +37,8 @@ class prefix_rule(rule.rule):
         self.sTrigger = sTrigger
         self.prefixes = None
         self.fixable = False  # The user will have to fix any desired prefixes.
+        self.disable = True
+        self.configuration.append('prefixes')
 
     @abstractmethod
     def _extract(self, oLine):

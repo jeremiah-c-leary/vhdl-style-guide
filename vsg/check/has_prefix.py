@@ -15,7 +15,7 @@ def has_prefix(self, prefixes, words, iLineNumber):
     '''
     for word in words:
         for prefix in prefixes:
-            if word.startswith(prefix):
+            if word.lower().startswith(prefix.lower()):
                 break
         else:
             self.add_violation(iLineNumber)

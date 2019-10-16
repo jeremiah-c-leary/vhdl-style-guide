@@ -149,7 +149,7 @@ end entity ENTITY1
 entity ENTITY1 is
   port
     (
-    PORT1 : in    std_logic 
+    PORT1_OUT : in    std_logic 
   );
 end entity ENTITY1;
 
