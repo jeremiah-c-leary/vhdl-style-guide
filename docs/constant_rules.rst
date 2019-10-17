@@ -316,11 +316,11 @@ This rule checks the indent of multiline constants that do not contain arrays.
                                c + d;
 
 constant_015
-##########
+############
 
 This rule checks for valid prefixes on constant identifiers.
 
-.. NOTE:: The default constant prefix is "c_".
+.. NOTE:: The default constant prefix is "c\_".
 
    Refer to the section `Configuring Prefix and Suffix Rules <configuring_prefix_suffix.html>`_ for information on changing the allowed prefixes.
 

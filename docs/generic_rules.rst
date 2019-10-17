@@ -377,7 +377,7 @@ generic_020
 
 This rule checks for valid prefixes on generic identifiers.
 
-.. NOTE:: The default generic prefix is "G_".
+.. NOTE:: The default generic prefix is "G\_".
 
    Refer to the section `Configuring Prefix and Suffix Rules <configuring_prefix_suffix.html>`_ for information on changing the allowed prefixes.
 

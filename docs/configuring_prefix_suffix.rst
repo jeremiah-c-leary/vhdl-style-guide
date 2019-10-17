@@ -24,7 +24,7 @@ We can use the following configuration to change allowed suffixes:
             disable: false
             suffixes: ['_i', '_o']
 
-The rule variable_012 defaults to following prefix: ['v_'].
+The rule variable_012 defaults to following prefix: ['v\_'].
 We can use the following configuration to change allowed prefix:
 
 .. code-block:: yaml

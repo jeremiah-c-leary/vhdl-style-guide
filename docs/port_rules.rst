@@ -248,7 +248,7 @@ port_011
 
 This rule checks for valid prefixes on port identifiers.
 
-.. NOTE:: The default port prefixes are "I_", "O_", "IO_".
+.. NOTE:: The default port prefixes are "I\_", "O\_", "IO\_".
 
    Refer to the section `Configuring Prefix and Suffix Rules <configuring_prefix_suffix.html>`_ for information on changing the allowed prefixes.
 

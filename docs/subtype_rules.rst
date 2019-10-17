@@ -92,11 +92,11 @@ This rule checks for spaces after the **subtype** keyword.
          spaces: 3 
 
 subtype_004
-##########
+###########
 
 This rule checks for valid prefixes in user defined subtype identifiers.
 
-.. NOTE:: The default new subtype prefix is "st_".
+.. NOTE:: The default new subtype prefix is "st\_".
 
    Refer to the section `Configuring Prefix and Suffix Rules <configuring_prefix_suffix.html>`_ for information on changing the allowed prefixes.
 
