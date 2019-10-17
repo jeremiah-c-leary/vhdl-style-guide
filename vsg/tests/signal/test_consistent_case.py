@@ -24,6 +24,22 @@ class testGeneralRule(unittest.TestCase):
         dExpected = [22, 25, 27,28,29,30,38,39,46,48,54,58,60,62,63,64]
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule._get_solution(22), 'Inconsistent capitalization of word: siG2')
+        self.assertEqual(oRule._get_solution(25), 'Inconsistent capitalization of word: siG1')
+        self.assertEqual(oRule._get_solution(27), 'Inconsistent capitalization of word: SIG2')
+        self.assertEqual(oRule._get_solution(28), 'Inconsistent capitalization of word: sIg1')
+        self.assertEqual(oRule._get_solution(29), 'Inconsistent capitalization of word: SiG2')
+        self.assertEqual(oRule._get_solution(30), 'Inconsistent capitalization of word: SIg1')
+        self.assertEqual(oRule._get_solution(38), 'Inconsistent capitalization of word: Sig1')
+        self.assertEqual(oRule._get_solution(39), 'Inconsistent capitalization of word: SIg2')
+        self.assertEqual(oRule._get_solution(46), 'Inconsistent capitalization of word: Sig3')
+        self.assertEqual(oRule._get_solution(48), 'Inconsistent capitalization of word: siG5')
+        self.assertEqual(oRule._get_solution(54), 'Inconsistent capitalization of word: siG6')
+        self.assertEqual(oRule._get_solution(58), 'Inconsistent capitalization of word: Sig1')
+        self.assertEqual(oRule._get_solution(60), 'Inconsistent capitalization of word: Sig2')
+        self.assertEqual(oRule._get_solution(62), 'Inconsistent capitalization of word: Sig3')
+        self.assertEqual(oRule._get_solution(63), 'Inconsistent capitalization of words: SIG1, SIG2, SIG3')
+        self.assertEqual(oRule._get_solution(64), 'Inconsistent capitalization of words: SIG1, SIG1, SIG1')
 
     def test_fix_rule_014(self):
         oRule = signal.rule_014()

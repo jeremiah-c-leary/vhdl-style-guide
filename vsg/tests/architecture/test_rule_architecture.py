@@ -286,39 +286,46 @@ class testRuleArchitectureMethods(unittest.TestCase):
         dExpected = [10, 17, 24]
         oRule.analyze(oFileName)
         self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule._get_solution(100), 'Architecture name must be from this list: rtl')
 
         oRule.violations = []
         oRule.names = ['ENTITY1']
         dExpected = [3, 17, 24]
         oRule.analyze(oFileName)
         self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule._get_solution(100), 'Architecture name must be from this list: entity1')
 
         oRule.violations = []
         oRule.names = ['BLUE']
         dExpected = [3, 10, 24]
         oRule.analyze(oFileName)
         self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule._get_solution(100), 'Architecture name must be from this list: blue')
 
         oRule.violations = []
         oRule.names = ['CDC']
         dExpected = [3, 10, 17]
         oRule.analyze(oFileName)
         self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule._get_solution(100), 'Architecture name must be from this list: cdc')
 
         oRule.violations = []
         oRule.names = ['rtl', 'CDC']
         dExpected = [10, 17]
         oRule.analyze(oFileName)
         self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule._get_solution(100), 'Architecture name must be from this list: rtl,cdc')
 
         oRule.violations = []
         oRule.names = ['rtl', 'cdc', 'blue']
         dExpected = [10]
         oRule.analyze(oFileName)
         self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule._get_solution(100), 'Architecture name must be from this list: rtl,cdc,blue')
 
         oRule.violations = []
         oRule.names = ['rtl', 'cdc', 'blue', 'entity1']
         dExpected = []
         oRule.analyze(oFileName)
         self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule._get_solution(100), 'Architecture name must be from this list: rtl,cdc,blue,entity1')
