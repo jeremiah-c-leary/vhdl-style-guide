@@ -65,7 +65,7 @@ class case_rule(rule.rule):
                 else:
                     fix_function = fix.upper_case
 
-                fix_function(self, oFile.lines[iLineNumber], word)
+                fix_function(oFile.lines[iLineNumber], word)
 
     def _get_solution(self, iLineNumber):
        return self.solution + self.case + 'case.'

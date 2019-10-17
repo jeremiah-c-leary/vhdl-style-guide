@@ -24,4 +24,4 @@ class rule_013(rule.rule):
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
-            fix.lower_case(self, oFile.lines[iLineNumber], 'is')
+            fix.lower_case(oFile.lines[iLineNumber], 'is')

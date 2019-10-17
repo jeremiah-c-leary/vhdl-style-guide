@@ -26,4 +26,4 @@ class rule_011(rule.rule):
         for iLineNumber in self.violations:
             oLine = oFile.lines[iLineNumber]
             sPortName = oLine.line.split('=>')[0].split('(')[0].lstrip().rstrip()
-            fix.upper_case(self, oLine, sPortName)
+            fix.upper_case(oLine, sPortName)

@@ -31,6 +31,6 @@ class rule_010(rule.rule):
             oLine = oFile.lines[iLineNumber]
             sLine = oLine.line.split(':')[1].lstrip().rstrip().replace(';', '')
             if '(' in sLine:
-                fix.lower_case(self, oFile.lines[iLineNumber], sLine.split('(')[0])
+                fix.lower_case(oFile.lines[iLineNumber], sLine.split('(')[0])
             else:
-                fix.lower_case(self, oFile.lines[iLineNumber], sLine)
+                fix.lower_case(oFile.lines[iLineNumber], sLine)

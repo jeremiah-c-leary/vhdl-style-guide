@@ -23,4 +23,4 @@ class rule_004(rule.rule):
         for iLineNumber in self.violations:
             oLine = oFile.lines[iLineNumber]
             for sWord in utils.extract_class_identifier_list(oLine):
-                fix.lower_case(self, oLine, sWord)
+                fix.lower_case(oLine, sWord)

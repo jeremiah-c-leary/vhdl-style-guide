@@ -32,4 +32,4 @@ class rule_017(rule.rule):
             if '(' in sLine:
                 sLine = sLine.split('(')[0].rstrip()
             sWord = sLine.split()[0]
-            fix.lower_case(self, oLine, sWord)
+            fix.lower_case(oLine, sWord)

@@ -21,4 +21,4 @@ class uppercase_package_name_rule(rule.rule):
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
-            fix.upper_case(self, oFile.lines[iLineNumber], check.get_package_name(oFile.lines[iLineNumber]))
+            fix.upper_case(oFile.lines[iLineNumber], check.get_package_name(oFile.lines[iLineNumber]))

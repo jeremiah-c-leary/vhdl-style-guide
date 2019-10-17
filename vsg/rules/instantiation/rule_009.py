@@ -25,4 +25,4 @@ class rule_009(rule.rule):
         for iLineNumber in self.violations:
             oLine = oFile.lines[iLineNumber]
             sLine = oLine.line.split(':')[1].split()[0]
-            fix.upper_case(self, oFile.lines[iLineNumber], sLine)
+            fix.upper_case(oFile.lines[iLineNumber], sLine)

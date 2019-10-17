@@ -54,7 +54,7 @@ def multiline_alignment(self, oFile, iLineNumber):
     oLine.update_line(' '*self.dFix['violations'][iLineNumber]['column'] + oLine.line.lstrip())
 
 
-def lower_case(self, oLine, sKeyword):
+def lower_case(oLine, sKeyword):
     '''
     Changes word to lowercase.
 
@@ -69,7 +69,7 @@ def lower_case(self, oLine, sKeyword):
     utils.change_word(oLine, sKeyword, sKeyword.lower())
 
 
-def upper_case(self, oLine, sKeyword):
+def upper_case(oLine, sKeyword):
     '''
     Changes word to lowercase.
 
