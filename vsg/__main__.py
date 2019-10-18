@@ -44,16 +44,22 @@ def parse_command_line_arguments():
 def open_configuration_file(sFileName, commandLineArguments):
     '''Attempts to open a configuration file and read it's contents.'''
     try:
-        with open(sFileName) as json_file:
-            tempConfiguration = json.load(json_file)
-    except:
-        try:
-            with open(sFileName) as yaml_file:
-                tempConfiguration = yaml.full_load(yaml_file)
-        except:
-            print('Error in configuration file: ' + sFileName)
-            write_invalid_configuration_junit_file(sFileName, commandLineArguments)
-            exit()
+        with open(sFileName) as yaml_file:
+            tempConfiguration = yaml.full_load(yaml_file)
+    except IOError:
+        print('ERROR: Could not find configuration file: sFileName')
+        write_invalid_configuration_junit_file(sFileName, commandLineArguments)
+        exit()
+    except yaml.scanner.ScannerError as e:
+        print('ERROR: Invalid configuration file: ' + sFileName)
+        print(e)
+        write_invalid_configuration_junit_file(sFileName, commandLineArguments)
+        exit()
+    except yaml.parser.ParserError as e:
+        print('ERROR: Invalid configuration file: ' + sFileName)
+        print(e)
+        write_invalid_configuration_junit_file(sFileName, commandLineArguments)
+        exit()
     return tempConfiguration
 
 

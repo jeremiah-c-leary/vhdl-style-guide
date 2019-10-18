@@ -62,7 +62,10 @@ class testVsg(unittest.TestCase):
     def test_invalid_configuration(self):
         utils.remove_file('vsg/tests/vsg/config_error.actual.xml')
         lExpected = []
-        lExpected.append('Error in configuration file: vsg/tests/vsg/config_error.json')
+        lExpected.append('ERROR: Invalid configuration file: vsg/tests/vsg/config_error.json')
+        lExpected.append('while parsing a flow node')
+        lExpected.append('expected the node content, but found \',\'')
+        lExpected.append('  in "vsg/tests/vsg/config_error.json", line 2, column 16')
         lExpected.append('')
 
         lActual = subprocess.check_output(['bin/vsg','--configuration','vsg/tests/vsg/config_error.json','--output_format','syntastic','-f','vsg/tests/vsg/entity1.vhd','--junit','vsg/tests/vsg/config_error.actual.xml'])
