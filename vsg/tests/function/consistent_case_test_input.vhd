@@ -2,6 +2,7 @@
 architecture RTL of FIFO is
 
   function func_1 ()
+  function func_2 ()
 
 begin
 
@@ -11,6 +12,8 @@ begin
   begin
 
      sig1 <= FUNC_1;
+     sig2 <= FUNC_1(a) or funC_2(b);
+     sig3 <= func_1 or func_2;
 
   end process;
 

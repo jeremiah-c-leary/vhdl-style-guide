@@ -21,18 +21,20 @@ class testConsistentCase(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'function')
         self.assertEqual(oRule.identifier, '010')
-        dExpected = [8, 13]
+        dExpected = [9, 14, 15]
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
-        self.assertEqual(oRule._get_solution(8), 'Inconsistent capitalization of word: Func_1')
-        self.assertEqual(oRule._get_solution(13), 'Inconsistent capitalization of word: FUNC_1')
+        self.assertEqual(oRule._get_solution(9), 'Inconsistent capitalization of word: Func_1')
+        self.assertEqual(oRule._get_solution(14), 'Inconsistent capitalization of word: FUNC_1')
+        self.assertEqual(oRule._get_solution(15), 'Inconsistent capitalization of words: FUNC_1, funC_2')
 
     def test_fix_rule_010(self):
         oRule = function.rule_010()
         oRule.fix(self.oFile)
         oRule.analyze(self.oFile)
 
-        self.assertEqual(self.oFile.lines[8].line, '  OUT1 <= func_1;')
-        self.assertEqual(self.oFile.lines[13].line, '     sig1 <= func_1;')
+        self.assertEqual(self.oFile.lines[9].line, '  OUT1 <= func_1;')
+        self.assertEqual(self.oFile.lines[14].line, '     sig1 <= func_1;')
+        self.assertEqual(self.oFile.lines[15].line, '     sig2 <= func_1(a) or func_2(b);')
 
         self.assertEqual(oRule.violations, [])

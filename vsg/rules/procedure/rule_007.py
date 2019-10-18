@@ -32,10 +32,7 @@ class rule_007(rule.rule):
                 utils.change_word(oFile.lines[iLineNumber], sWord, sReplacementWord, 20)
 
     def _get_solution(self, iLineNumber):
-        if len(self.dFix['violations'][iLineNumber]) > 1:
-            sSolution = self.solution + 's: ' + ', '.join(self.dFix['violations'][iLineNumber])
-        else:
-            sSolution = self.solution + ': ' + ', '.join(self.dFix['violations'][iLineNumber])
+        sSolution = self.solution + ': ' + ', '.join(self.dFix['violations'][iLineNumber])
         return sSolution
 
 
