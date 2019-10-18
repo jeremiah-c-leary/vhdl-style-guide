@@ -24,6 +24,8 @@ class testConsistentCase(unittest.TestCase):
         dExpected = [7,11]
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule._get_solution(7), 'Inconsistent capitalization of word: READ_SIZE')
+        self.assertEqual(oRule._get_solution(11), 'Inconsistent capitalization of word: WRITE_size')
 
     def test_fix_rule_002(self):
         oRule = subtype.rule_002()
@@ -32,5 +34,4 @@ class testConsistentCase(unittest.TestCase):
 
         self.assertEqual(self.oFile.lines[7].line, '  signal read  : read_size;')
         self.assertEqual(self.oFile.lines[11].line, '  constant write_sz : write_size := 1;')
-
         self.assertEqual(oRule.violations, [])

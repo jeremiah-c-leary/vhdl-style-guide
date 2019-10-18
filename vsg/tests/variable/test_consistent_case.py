@@ -21,9 +21,14 @@ class testConsistentCase(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'variable')
         self.assertEqual(oRule.identifier, '011')
-        dExpected = [16, 18, 19, 21]
+        dExpected = [16, 18, 19, 21, 24]
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule._get_solution(16), 'Inconsistent capitalization of word: Var1')
+        self.assertEqual(oRule._get_solution(18), 'Inconsistent capitalization of word: VAR2')
+        self.assertEqual(oRule._get_solution(19), 'Inconsistent capitalization of word: vaR3')
+        self.assertEqual(oRule._get_solution(21), 'Inconsistent capitalization of word: VAR4')
+        self.assertEqual(oRule._get_solution(24), 'Inconsistent capitalization of words: vaR1, VAR2, Var3, vAr4')
 
     def test_fix_rule_011(self):
         oRule = variable.rule_011()

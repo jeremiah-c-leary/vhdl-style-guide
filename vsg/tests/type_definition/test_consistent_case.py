@@ -24,6 +24,8 @@ class testGeneralRule(unittest.TestCase):
         dExpected = [7,9]
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule._get_solution(7), 'Inconsistent capitalization of word: STATE_MACHINE')
+        self.assertEqual(oRule._get_solution(9), 'Inconsistent capitalization of word: State_Machine')
 
     def test_fix_rule_014(self):
         oRule = type_definition.rule_014()

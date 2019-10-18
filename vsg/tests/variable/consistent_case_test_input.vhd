@@ -21,6 +21,8 @@ begin
       VAR4 <= '0';
     end if;
 
+    vaR1 <= VAR2 & Var3 & vAr4;
+
   end process PROC_NAME;
 
 end architecture RTL;
