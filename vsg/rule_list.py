@@ -193,9 +193,33 @@ class rule_list():
 
           configurationFile: (dictionary)
         '''
-        if configurationFile:
+        if configurationFile and 'rule' in configurationFile:
+            self._validate_configuration_rule_exists(configurationFile)
             for oRule in self.rules:
                 oRule.configure(configurationFile)
+
+    def _validate_configuration_rule_exists(self, configurationFile):
+        '''
+        Validates rules called out in the configuration files exist in the rule set.
+
+        If a rule does not exist then:
+
+          1) an error message will be printed
+          2) tool will exit with a status of 1
+
+        Parameters:
+
+          configurationFile: (dictionary)
+
+        Returns:  nothing
+        '''
+        lRuleNames = []
+        for oRule in self.rules:
+            lRuleNames.append(oRule.name + '_' + oRule.identifier)
+        for sRule in configurationFile['rule']:
+            if not sRule == 'global' and sRule not in lRuleNames:
+                print('ERROR: Rule ' + sRule + ' referenced in configuration could not be found')
+                exit(1)
 
     def extract_junit_testcase(self, sVhdlFileName):
         '''
