@@ -131,3 +131,19 @@ class testRuleConstantMethods(unittest.TestCase):
         lExpected = [44]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, lExpected)
+
+    def test_rule_015_with_default(self):
+        oRule = constant.rule_015()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'constant')
+        self.assertEqual(oRule.identifier, '015')
+        lExpected = [6,9,18,28,30,38]
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, lExpected)
+
+    def test_rule_015_with_override(self):
+        oRule = constant.rule_015()
+        oRule.prefixes = ['c_', 'ro']
+        lExpected = [6,9,18,28,38]
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, lExpected)

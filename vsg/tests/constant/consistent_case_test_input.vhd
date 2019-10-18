@@ -14,7 +14,7 @@ begin
   PROC_NAME : process () is
   begin
 
-    data <= C_ones;
+    data <= C_ones & c_Zeros;
 
     if (sig2 = '0') then
       data <= c_Zeros;

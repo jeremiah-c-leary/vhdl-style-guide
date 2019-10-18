@@ -26,7 +26,7 @@ class testConsistentConstantName(unittest.TestCase):
         self.assertEqual(oRule.violations, dExpected)
         self.assertEqual(oRule._get_solution(5), 'Inconsistent capitalization of word: C_SIZE')
         self.assertEqual(oRule._get_solution(12), 'Inconsistent capitalization of word: C_ONES')
-        self.assertEqual(oRule._get_solution(17), 'Inconsistent capitalization of word: C_ones')
+        self.assertEqual(oRule._get_solution(17), 'Inconsistent capitalization of words: C_ones, c_Zeros')
         self.assertEqual(oRule._get_solution(20), 'Inconsistent capitalization of word: c_Zeros')
 
     def test_fix_rule_013(self):
@@ -36,7 +36,7 @@ class testConsistentConstantName(unittest.TestCase):
 
         self.assertEqual(self.oFile.lines[5].line, '  constant c_ones  : std_logic_vector(c_size - 1 downto 0) := (others => \'1\');')
         self.assertEqual(self.oFile.lines[12].line, '  data <= c_ones;')
-        self.assertEqual(self.oFile.lines[17].line, '    data <= c_ones;')
+        self.assertEqual(self.oFile.lines[17].line, '    data <= c_ones & c_zeros;')
         self.assertEqual(self.oFile.lines[20].line, '      data <= c_zeros;')
         self.assertEqual(self.oFile.lines[28].line, '      data <= c_zeros;')
 
