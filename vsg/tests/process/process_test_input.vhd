@@ -149,5 +149,10 @@ proc_name : process (one, two, three) is
 
   end process TEST_PROCESS;
 
+  TEST : process is
+  begin
+
+  end process TEST;
+
 end architecture ARCH;
 

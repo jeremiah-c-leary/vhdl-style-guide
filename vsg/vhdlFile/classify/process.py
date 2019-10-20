@@ -14,18 +14,22 @@ def classify_process_keyword(dVars, oLine):
     if re.match('^\s*process[:|\s|(]', oLine.lineLower):
         oLine.isProcessKeyword = True
         oLine.insideProcess = True
+        dVars['iProcessIndentLevel'] = dVars['iCurrentIndentLevel']
         oLine.indentLevel = dVars['iCurrentIndentLevel']
     if re.match('^\s*process\s*$', oLine.lineNoComment):
         oLine.isProcessKeyword = True
         oLine.insideProcess = True
+        dVars['iProcessIndentLevel'] = dVars['iCurrentIndentLevel']
         oLine.indentLevel = dVars['iCurrentIndentLevel']
         dVars['iCurrentIndentLevel'] += 1
     if re.match('^\s*\S+\s*:\s*process', oLine.lineLower) and not oLine.isComment:
         oLine.isProcessKeyword = True
         oLine.insideProcess = True
+        dVars['iProcessIndentLevel'] = dVars['iCurrentIndentLevel']
         oLine.indentLevel = dVars['iCurrentIndentLevel']
         oLine.isProcessLabel = True
     if re.match('^\s*\S+\s*:\s*process\s*$', oLine.lineNoComment) and not oLine.isComment:
+        dVars['iProcessIndentLevel'] = dVars['iCurrentIndentLevel']
         dVars['iCurrentIndentLevel'] += 1
 
 
@@ -53,14 +57,14 @@ def classify_process_sensitivity_list(dVars, oLine):
 def classify_process_begin_keyword(dVars, oLine):
     if not oLine.insideProcedure:
         if re.match('^.*\s+begin', oLine.lineNoComment, flags=re.IGNORECASE) or re.match('^\s*begin', oLine.lineLower):
-            oLine.indentLevel = dVars['iCurrentIndentLevel'] - 1
+            oLine.indentLevel = dVars['iProcessIndentLevel']
             oLine.isProcessBegin = True
             dVars['fFoundProcessBegin'] = True
 
 
 def classify_process_end_keyword(dVars, oLine):
     if re.match('^\s*end\s+process', oLine.lineLower):
-        oLine.indentLevel = dVars['iCurrentIndentLevel'] - 1
+        oLine.indentLevel = dVars['iProcessIndentLevel']
         oLine.isEndProcess = True
         dVars['fFoundProcessBegin'] = False
         dVars['iCurrentIndentLevel'] = dVars['iCurrentIndentLevel'] - 1
