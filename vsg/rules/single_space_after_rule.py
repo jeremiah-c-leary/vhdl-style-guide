@@ -39,6 +39,7 @@ class single_space_after_rule(rule.rule):
         self.sWord = sWord
         self.phase = 2
         self.solution = None
+        self.spaces = 1
         self.configuration.append('spaces')
 
     def _analyze(self, oFile, oLine, iLineNumber):

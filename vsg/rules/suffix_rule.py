@@ -38,7 +38,7 @@ class suffix_rule(rule.rule):
         self.suffixes = None
         self.fixable = False  # The user will have to fix any desired suffixes.
         self.disable = True
-        self.configuration.extend('suffixes')
+        self.configuration.append('suffixes')
 
     @abstractmethod
     def _extract(self, oLine):
