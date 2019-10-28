@@ -761,3 +761,20 @@ def remove_comment_attributes_from_line(oLine):
     oLine.hasComment = False
     oLine.hasInlineComment = False
     oLine.commentColumn = None
+
+
+def is_number(sString):
+    '''
+    Returns boolean if the string passed is a number.
+
+    Parameters:
+
+        sLine: (string)
+
+    Returns:  boolean
+    '''
+    sMyString = sString
+    if sString.startswith('-'):
+        sMyString = sString[1:]
+    sMyString = sMyString.replace('.', '0')
+    return sMyString.isdigit()

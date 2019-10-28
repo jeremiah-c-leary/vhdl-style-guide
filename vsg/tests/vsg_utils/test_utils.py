@@ -301,3 +301,17 @@ class testExtractFunctions(unittest.TestCase):
         sExpected = ['if']
         sActual = utils.extract_first_keyword(oLine)
         self.assertEqual(sExpected, sActual)
+
+    def test_is_number(self):
+        self.assertTrue(utils.is_number('34'))
+        self.assertTrue(utils.is_number('-34'))
+        self.assertTrue(utils.is_number('3.4'))
+        self.assertTrue(utils.is_number('-3.4'))
+        self.assertTrue(utils.is_number('3400'))
+        self.assertTrue(utils.is_number('-4034'))
+        self.assertFalse(utils.is_number('3.4c'))
+        self.assertFalse(utils.is_number('abc'))
+        self.assertFalse(utils.is_number('a-b'))
+        self.assertFalse(utils.is_number('1-2'))
+        self.assertFalse(utils.is_number('c_constant_344'))
+        self.assertFalse(utils.is_number('34_c-great'))

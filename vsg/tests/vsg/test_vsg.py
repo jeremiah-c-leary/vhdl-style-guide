@@ -183,3 +183,13 @@ class testVsg(unittest.TestCase):
 #            lExpected.append('')
 #
 #        self.assertEqual(lActual, lExpected)
+
+    def test_oc_command_line_argument(self):
+        lExpected = []
+        lExpected.append('')
+
+        lActual = subprocess.check_output(['bin/vsg','--output_format','syntastic','-f','vsg/tests/vsg/entity_architecture.vhd','-oc','deleteme.json'])
+        lActual = str(lActual.decode('utf-8')).split('\n')
+        self.assertEqual(lActual, lExpected)
+
+

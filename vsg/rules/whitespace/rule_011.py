@@ -1,5 +1,6 @@
 
 from vsg import rule
+from vsg import utils
 
 import re
 
@@ -15,10 +16,21 @@ class rule_011(rule.rule):
         self.solution = 'Add a single space before and/or after math operator.'
 
     def _analyze(self, oFile, oLine, iLineNumber):
-        sLine = oLine.lineNoComment
-        if not re.match('^.*".*/.*"', sLine):
-            if re.match('^.*[\w+|\)][+|\-|/|*]', sLine) or re.match('^.*[+|\-|/|*][\w+|\(]', sLine):
-                self.add_violation(iLineNumber)
+        sLine = utils.remove_comment(oLine.line)
+        if sLine[-2:] == '--':
+            sLine = sLine[:-2]
+        if '-' in sLine:
+            lLine = sLine.split()
+            for sWord in lLine:
+                if '-' in sWord and not sWord == '-':
+                    if re.match('^.*\w-', sWord):
+                        self.add_violation(iLineNumber)
+                    elif not re.match('^.*-[0-9]+\)?$', sWord):
+                        self.add_violation(iLineNumber)
+        else:
+            if re.match('^.*[\w+|\)][+|/|*]', sLine) or re.match('^.*[+|/|*][\w+|\(]', sLine):
+                if not re.match('^.*".*/.*"', sLine): 
+                    self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:

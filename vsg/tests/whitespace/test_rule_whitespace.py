@@ -220,6 +220,21 @@ class testRuleWhitespaceMethods(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
 
+    def test_011_with_negative_numbers(self):
+        oRule = whitespace.rule_011()
+
+        dExpected = [7]
+        self.oFile.lines.append(line.line('  for i in -32768 to 32767 loop')) #1
+        self.oFile.lines.append(line.line('  a <= b -32768')) #2
+        self.oFile.lines.append(line.line('  a <= c + -32768')) #3
+        self.oFile.lines.append(line.line('  a <= to -32768')) #4
+        self.oFile.lines.append(line.line('  a <= (-32 downto -568)')) #5
+        self.oFile.lines.append(line.line('  a <= c_constant -144')) #6
+        self.oFile.lines.append(line.line('  a <= c_constant -144_stuff')) #7
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, dExpected)
+
     def test_012(self):
         oRule = whitespace.rule_012()
         self.assertTrue(oRule)
