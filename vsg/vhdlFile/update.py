@@ -202,6 +202,12 @@ def update_when_attributes(oPreviousLine, oCurrentLine):
         oCurrentLine.insideWhen = True
 
 
+def update_signal_attributes(oPreviousLine, oCurrentLine):
+
+    if oPreviousLine.insideSignal and not oPreviousLine.isEndSignal:
+        oCurrentLine.insideSignal = True
+
+
 def inside_attributes(dVars, oPreviousLine, oCurrentLine):
 
     update_entity_attributes(oPreviousLine, oCurrentLine)
@@ -237,3 +243,4 @@ def inside_attributes(dVars, oPreviousLine, oCurrentLine):
     update_file_attributes(oPreviousLine, oCurrentLine)
     update_constant_attributes(oPreviousLine, oCurrentLine)
     update_block_attributes(oPreviousLine, oCurrentLine)
+    update_signal_attributes(oPreviousLine, oCurrentLine)

@@ -7,3 +7,9 @@ def signal(dVars, oLine):
        not oLine.insideFunction and not oLine.insideProcedure:
         oLine.isSignal = True
         oLine.indentLevel = dVars['iCurrentIndentLevel']
+        oLine.insideSignal = True
+
+    if oLine.insideSignal:
+        if re.match('.*;', oLine.lineNoComment):
+            oLine.isEndSignal = True
+        

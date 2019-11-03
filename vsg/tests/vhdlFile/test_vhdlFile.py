@@ -8,9 +8,6 @@ sFileLibraryName = os.path.join(os.path.dirname(__file__),'..','library','librar
 lFileLibrary = utils.read_vhdlfile(sFileLibraryName)
 oFileLibrary = vhdlFile.vhdlFile(lFileLibrary)
 
-lFileSignal = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','signal','signal_test_input.vhd'))
-oFileSignal = vhdlFile.vhdlFile(lFileSignal)
-
 lFileProcess = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','process','process_test_input.vhd'))
 oFileProcess = vhdlFile.vhdlFile(lFileProcess)
 lFilePort = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','port','port_test_input.vhd'))
@@ -289,16 +286,6 @@ class testVhdlFileMethods(unittest.TestCase):
         lActual = []
         for iIndex, oLine in enumerate(oFileFunction.lines):
             if oLine.isEndArchitecture:
-                lActual.append(iIndex)
-        # Compare
-        self.assertEqual(lActual, lExpected)
-
-    def test_isSignal_assignment(self):
-        lExpected = [5,6,7,8,9,10,11,12,13,14,15,16,18,19,20,21,23]
-        # Generic actual list
-        lActual = []
-        for iIndex, oLine in enumerate(oFileSignal.lines):
-            if oLine.isSignal:
                 lActual.append(iIndex)
         # Compare
         self.assertEqual(lActual, lExpected)
