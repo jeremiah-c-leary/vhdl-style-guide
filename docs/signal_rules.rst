@@ -319,3 +319,39 @@ This rule checks for consistent capitalization of signal names.
      end process PROC_NAME;
 
    end architecture RTL;
+
+signal_015
+==========
+
+This rule checks for multiple signal names defined in a single signal declaration.
+
+.. NOTE::  By default, this rule will only flag more than two signal declarations.
+      If you want to enforce a different number of signals, use the following configuration:
+
+      .. code-block:: yaml
+      
+         ---
+      
+         rule :
+           signal_015 :
+              consecutive : 1
+
+**Violation**
+
+.. code-block:: vhdl
+
+   signal sig1, sig2
+     sig3, sig4,
+     sig5
+     : std_logic;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   signal sig1 : std_logic;
+   signal sig2 : std_logic;
+   signal sig3 : std_logic;
+   signal sig4 : std_logic;
+   signal sig5 : std_logic;
+   
