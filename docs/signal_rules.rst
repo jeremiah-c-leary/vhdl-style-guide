@@ -347,3 +347,25 @@ This rule checks for multiple signal names defined in a single signal declaratio
    signal sig4 : std_logic;
    signal sig5 : std_logic;
    
+signal_016
+==========
+
+This rule checks the signal declaration is on a single line.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   signal sig1
+     : std_logic;
+
+   signal sig2 :
+     std_logic;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   signal sig1 : std_logic;
+
+   signal sig2 : std_logic;

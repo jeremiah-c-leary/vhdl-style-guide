@@ -114,3 +114,45 @@ class testGeneralRule(unittest.TestCase):
         self.assertEqual(self.oFile.lines[63].line, '  signal sig2 : std_logic    ;')
 
         self.assertEqual(oRule.violations, [])
+
+    def test_rule_016(self):
+        oRule = signal.rule_016()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'signal')
+        self.assertEqual(oRule.identifier, '016')
+        dExpected = [5,8,20,23,27,32,42,45,49,54,60,67]
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_fix_rule_016(self):
+        oRule = signal.rule_016()
+        oRule.fix(self.oFile)
+        oRule.analyze(self.oFile)
+
+        self.assertEqual(self.oFile.lines[5].line, '  signal sig1, sig2, sig3,     sig4, sig5, sig6 : std_logic;')
+        self.assertTrue(self.oFile.lines[5].isSignal)
+        self.assertTrue(self.oFile.lines[5].insideSignal)
+        self.assertTrue(self.oFile.lines[5].isEndSignal)
+        self.assertEqual(self.oFile.lines[7].line, '  signal siga, sigb,     sigc,     sigd,     sige,     sigf     : std_logic; -- This is a comment')
+        self.assertTrue(self.oFile.lines[7].isSignal)
+        self.assertTrue(self.oFile.lines[7].insideSignal)
+        self.assertTrue(self.oFile.lines[7].isEndSignal)
+        self.assertFalse(self.oFile.lines[7].isComment)
+        self.assertTrue(self.oFile.lines[7].hasComment)
+        self.assertTrue(self.oFile.lines[7].hasInlineComment)
+        self.assertEqual(self.oFile.lines[7].commentColumn, 77)
+
+        self.assertEqual(self.oFile.lines[12].line, '  signal sig1 : std_logic;')
+        self.assertEqual(self.oFile.lines[14].line, '  signal sig1 : std_logic    ;')
+        self.assertEqual(self.oFile.lines[16].line, '  signal sig1 :    std_logic    ;')
+        self.assertEqual(self.oFile.lines[18].line, '  signal sig1    :    std_logic    ;')
+        self.assertEqual(self.oFile.lines[20].line, '  signal    sig1    :    std_logic    ;')
+        self.assertEqual(self.oFile.lines[24].line, '  signal sig1, sig2 : std_logic;')
+        self.assertEqual(self.oFile.lines[26].line, '  signal sig1, sig2 : std_logic    ;')
+        self.assertEqual(self.oFile.lines[28].line, '  signal sig1, sig2 :    std_logic    ;')
+        self.assertEqual(self.oFile.lines[30].line, '  signal sig1, sig2    :    std_logic    ;')
+        self.assertEqual(self.oFile.lines[32].line, '  signal sig1,    sig2    :    std_logic    ;')
+        self.assertEqual(self.oFile.lines[34].line, '  signal sig1    ,    sig2    :    std_logic    ;')
+        self.assertEqual(self.oFile.lines[36].line, '  signal    sig1    ,    sig2    :    std_logic    ;')
+
+        self.assertEqual(oRule.violations, [])
