@@ -326,15 +326,7 @@ signal_015
 This rule checks for multiple signal names defined in a single signal declaration.
 
 .. NOTE::  By default, this rule will only flag more than two signal declarations.
-      If you want to enforce a different number of signals, use the following configuration:
-
-      .. code-block:: yaml
-      
-         ---
-      
-         rule :
-           signal_015 :
-              consecutive : 1
+   Refer to the section `Configuring Number of Signals in Signal Declaration <configuring_number_of_signals.html>`_ for information on changing the default.
 
 **Violation**
 
