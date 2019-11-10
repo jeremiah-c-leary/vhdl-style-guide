@@ -4,6 +4,8 @@ This module provides functions for rules to use.
 import copy
 import re
 
+import line
+
 
 def copy_line(oFile, iLineNumber):
     '''
@@ -778,3 +780,82 @@ def is_number(sString):
         sMyString = sString[1:]
     sMyString = sMyString.replace('.', '0')
     return sMyString.isdigit()
+
+
+def remove_line(oFile, iLineNumber):
+    '''
+    Removes a line from the file line list.
+
+    Parameters:
+
+        oFile: (File Object)
+
+        iLineNumber : (integer)
+
+    Returns:  Nothing
+    '''
+    del oFile.lines[iLineNumber]
+
+
+def remove_lines(oFile, iStartLine, iEndLine):
+    '''
+    Removes a series of lines from the file line list.
+
+    Parameters:
+
+        oFile: (File Object)
+
+        iStartLine: (integer)
+
+        iEndLine: (integer)
+
+    Returns:  Nothing
+    '''
+    del oFile.lines[iStartLine:iEndLine + 1]
+
+
+def insert_line(oFile, iIndex):
+    '''
+    Inserts a blank line at iIndex into the file line list.
+
+    Parameters:
+
+        oFile: (File Object)
+
+        iIndex: (integer)
+
+    Returns:  Nothing
+    '''
+    oFile.lines.insert(iIndex, line.blank_line())
+
+def update_comment_line_attributes(oLine):
+    '''
+    Updates the following attributes on a line:
+
+      self.isComment
+      self.hasComment
+      self.hasInLineComment
+      self.commentColumn
+
+    Parameters:
+
+      oLine: (Line Object)
+
+    Returns:  Nothing
+    '''
+
+    if re.match('^\s*--', oLine.line):
+        oLine.isComment = True
+        oLine.hasComment = True
+        oLine.hasInlineComment = False
+        oLine.commentColumn = oLine.line.find('--')
+    elif '--' in oLine.line:
+        oLine.isComment = False
+        oLine.hasComment = True
+        oLine.hasInlineComment = True
+        oLine.commentColumn = oLine.line.find('--')
+    else:
+        oLine.isComment = False
+        oLine.hasComment = False
+        oLine.hasInlineComment = False
+        oLine.commentColumn = None

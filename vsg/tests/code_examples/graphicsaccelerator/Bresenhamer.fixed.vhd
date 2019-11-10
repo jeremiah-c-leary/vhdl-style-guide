@@ -23,18 +23,40 @@ end entity BRESENHAMER;
 
 architecture BEHAVIORAL of BRESENHAMER is
 
-  signal myx1,     myx2                                             : std_logic_vector(11 downto 0);
-  signal myy1,     myy2                                             : std_logic_vector(11 downto 0);
-  signal p, p0_1, p0_2, p0_3, p0_4, p0_5, p0_6, p0_7, p0_8          : std_logic_vector(11 downto 0);
-  signal p_1, p_2, p_3, p_4, p_5, p_6, p_7, p_8                     : std_logic_vector(11 downto 0);
-  signal ndx,      ndy                                              : std_logic_vector(11 downto 0);
-  signal dx, dy, t_2dx, t_2dy, neg_dx, neg_dy, t_2neg_dx, t_2neg_dy : std_logic_vector(11 downto 0);
-  signal dx_minus_dy                                                : std_logic_vector(11 downto 0);
-  signal minus_dx_minus_dy                                          : std_logic_vector(11 downto 0);
-  signal minus_dx_plus_dy                                           : std_logic_vector(11 downto 0);
-  signal dx_plus_dy                                                 : std_logic_vector(11 downto 0);
-  signal state                                                      : std_logic_vector(3 downto 0) := "0000";
-  signal condx1x2, condy1y2                                         : std_logic;
+  signal myx1,     myx2     : std_logic_vector(11 downto 0);
+  signal myy1,     myy2     : std_logic_vector(11 downto 0);
+  signal p                  : std_logic_vector(11 downto 0);
+  signal p0_1               : std_logic_vector(11 downto 0);
+  signal p0_2               : std_logic_vector(11 downto 0);
+  signal p0_3               : std_logic_vector(11 downto 0);
+  signal p0_4               : std_logic_vector(11 downto 0);
+  signal p0_5               : std_logic_vector(11 downto 0);
+  signal p0_6               : std_logic_vector(11 downto 0);
+  signal p0_7               : std_logic_vector(11 downto 0);
+  signal p0_8               : std_logic_vector(11 downto 0);
+  signal p_1                : std_logic_vector(11 downto 0);
+  signal p_2                : std_logic_vector(11 downto 0);
+  signal p_3                : std_logic_vector(11 downto 0);
+  signal p_4                : std_logic_vector(11 downto 0);
+  signal p_5                : std_logic_vector(11 downto 0);
+  signal p_6                : std_logic_vector(11 downto 0);
+  signal p_7                : std_logic_vector(11 downto 0);
+  signal p_8                : std_logic_vector(11 downto 0);
+  signal ndx,      ndy      : std_logic_vector(11 downto 0);
+  signal dx                 : std_logic_vector(11 downto 0);
+  signal dy                 : std_logic_vector(11 downto 0);
+  signal t_2dx              : std_logic_vector(11 downto 0);
+  signal t_2dy              : std_logic_vector(11 downto 0);
+  signal neg_dx             : std_logic_vector(11 downto 0);
+  signal neg_dy             : std_logic_vector(11 downto 0);
+  signal t_2neg_dx          : std_logic_vector(11 downto 0);
+  signal t_2neg_dy          : std_logic_vector(11 downto 0);
+  signal dx_minus_dy        : std_logic_vector(11 downto 0);
+  signal minus_dx_minus_dy  : std_logic_vector(11 downto 0);
+  signal minus_dx_plus_dy   : std_logic_vector(11 downto 0);
+  signal dx_plus_dy         : std_logic_vector(11 downto 0);
+  signal state              : std_logic_vector(3 downto 0) := "0000";
+  signal condx1x2, condy1y2 : std_logic;
   constant idle  : std_logic_vector(3 downto 0) := "0000";
   constant init  : std_logic_vector(3 downto 0) := "0001";
   constant case1 : std_logic_vector(3 downto 0) := "0010";
@@ -46,7 +68,7 @@ architecture BEHAVIORAL of BRESENHAMER is
   constant case7 : std_logic_vector(3 downto 0) := "1000";
   constant case8 : std_logic_vector(3 downto 0) := "1001";
   constant clear : std_logic_vector(3 downto 0) := "1010";
-  signal ccounter                                                   : std_logic_vector(18 downto 0) := "0000000000000000000";
+  signal ccounter           : std_logic_vector(18 downto 0) := "0000000000000000000";
 
 begin
 

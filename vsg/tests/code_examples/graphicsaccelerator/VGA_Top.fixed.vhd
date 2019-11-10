@@ -124,7 +124,9 @@ architecture BEHAVIORAL of VGA_TOP is
   signal ss                  : std_logic_vector(3 downto 0);
   signal clk2                : std_logic;
   signal p1region, p2region  : std_logic;
-  signal rt, gt, bt          : std_logic;
+  signal rt                  : std_logic;
+  signal gt                  : std_logic;
+  signal bt                  : std_logic;
   signal x1,       x2        : std_logic_vector(9 downto 0);
   signal y1,       y2        : std_logic_vector(8 downto 0);
 
