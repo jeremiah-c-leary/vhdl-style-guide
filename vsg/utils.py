@@ -4,7 +4,7 @@ This module provides functions for rules to use.
 import copy
 import re
 
-import line
+from vsg import line
 
 
 def copy_line(oFile, iLineNumber):
