@@ -584,7 +584,7 @@ def extract_type_name(oLine):
 
        oLine: (line object)
 
-    Returns: (one element list of strings)
+    Returns: (zero or one element list of strings)
     '''
     sLine = oLine.line.replace(';', '')
     sLine = sLine.replace('(', ' ')
@@ -593,8 +593,11 @@ def extract_type_name(oLine):
     if get_first_word(oLine).lower() == 'type':
         return _extract_type_name_from_type_declaration(sLine)
     else:
-        sLine = sLine.split(':')[1]
-        return [sLine.split()[0]]
+        try:
+            sLine = sLine.split(':')[1]
+            return [sLine.split()[0]]
+        except:
+            return []
 
 
 def extract_type_name_vhdl_only(oLine):
@@ -609,7 +612,7 @@ def extract_type_name_vhdl_only(oLine):
     '''
     name = extract_type_name(oLine)
 
-    if is_vhdl_keyword(name[0]):
+    if name and is_vhdl_keyword(name[0]):
         return name
 
     return []
