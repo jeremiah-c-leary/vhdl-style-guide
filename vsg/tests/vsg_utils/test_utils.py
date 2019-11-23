@@ -263,6 +263,12 @@ class testExtractFunctions(unittest.TestCase):
         sActual = utils.extract_type_name(oLine)
         self.assertEqual(sExpected, sActual)
 
+        oLine = line.blank_line()
+        oLine.update_line('signal a,')
+        sExpected = []
+        sActual = utils.extract_type_name(oLine)
+        self.assertEqual(sExpected, sActual)
+
     def test_extract_type_name_vhdl_only(self):
         oLine = line.blank_line()
         oLine.update_line('variable var1, var2 : integer := -32;')
