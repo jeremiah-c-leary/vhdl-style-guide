@@ -1,29 +1,17 @@
 
-from vsg import rule
-from vsg import fix
-from vsg import check
+from vsg.rules import case_rule
 from vsg import utils
 
 
-class rule_011(rule.rule):
+class rule_011(case_rule):
     '''
-    Instantiation rule 011 checks the port name is uppercase.
+    Instantiation rule 011 checks the port name has proper case.
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'instantiation'
-        self.identifier = '011'
-        self.solution = 'Uppercase port name.'
-        self.phase = 6
+        case_rule.__init__(self, 'instantiation', '011', 'isInstantiationPortAssignment')
+        self.case = 'upper'
+        self.solution = 'Change port name to '
 
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isInstantiationPortAssignment and not oLine.isInstantiationPortKeyword:
-            sWord = utils.remove_parenthesis_from_word(oLine.line.split()[0])
-            check.is_uppercase(self, sWord, iLineNumber)
-
-    def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
-            oLine = oFile.lines[iLineNumber]
-            sPortName = oLine.line.split('=>')[0].split('(')[0].lstrip().rstrip()
-            fix.upper_case(oLine, sPortName)
+    def _extract(self, oLine):
+        return utils.extract_port_names_from_port_map(oLine)

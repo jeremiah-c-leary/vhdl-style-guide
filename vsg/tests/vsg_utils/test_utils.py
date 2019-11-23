@@ -308,6 +308,53 @@ class testExtractFunctions(unittest.TestCase):
         sActual = utils.extract_first_keyword(oLine)
         self.assertEqual(sExpected, sActual)
 
+    def test_extract_port_names_from_port_map(self):
+        oLine = line.blank_line()
+        oLine.update_line('port map( some_port=>sig,')
+        sExpected = ['some_port']
+        sActual = utils.extract_port_names_from_port_map(oLine)
+        self.assertEqual(sExpected, sActual)
+
+        oLine = line.blank_line()
+        oLine.update_line('port map (p => s,')
+        sExpected = ['p']
+        sActual = utils.extract_port_names_from_port_map(oLine)
+        self.assertEqual(sExpected, sActual)
+
+        oLine = line.blank_line()
+        oLine.update_line('map(p100=>s100,')
+        sExpected = ['p100']
+        sActual = utils.extract_port_names_from_port_map(oLine)
+        self.assertEqual(sExpected, sActual)
+
+        oLine = line.blank_line()
+        oLine.update_line('P1 => S1,')
+        sExpected = ['P1']
+        sActual = utils.extract_port_names_from_port_map(oLine)
+        self.assertEqual(sExpected, sActual)
+
+        oLine = line.blank_line()
+        oLine.update_line('port1 => S1,')
+        sExpected = ['port1']
+        sActual = utils.extract_port_names_from_port_map(oLine)
+        self.assertEqual(sExpected, sActual)
+        oLine = line.blank_line()
+
+        oLine.update_line('p1 => s1, p2 => s2)')
+        sExpected = ['p1', 'p2']
+        sActual = utils.extract_port_names_from_port_map(oLine)
+        self.assertEqual(sExpected, sActual)
+
+        oLine.update_line(' port_2 (3 downto 0) => w_port_2')
+        sExpected = ['port_2']
+        sActual = utils.extract_port_names_from_port_map(oLine)
+        self.assertEqual(sExpected, sActual)
+        
+        oLine.update_line("PORT_2 => (others => (a => (others => '0'), b => (others => '1')))")
+        sExpected = ['PORT_2', 'b']
+        sActual = utils.extract_port_names_from_port_map(oLine)
+        self.assertEqual(sExpected, sActual)
+
     def test_is_number(self):
         self.assertTrue(utils.is_number('34'))
         self.assertTrue(utils.is_number('-34'))
