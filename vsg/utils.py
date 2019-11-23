@@ -714,45 +714,6 @@ def extract_port_name(oLine):
     return [sLine.split()[0]]
 
 
-def _extract_port_name_from_assignment(sLine):
-    sLine = sLine.split('=>')[0]
-    sLine = sLine.strip()
-
-    # Check also if line contains 'map' because some assignments may start with 'port', for example: port1 => sig1.
-    if sLine.lower().startswith('port') and 'map' in sLine.lower():
-        sLine = sLine[5:]
-        sLine = sLine.strip()
-
-    if sLine.lower().startswith('map'):
-        sLine = sLine[3:]
-        sLine = sLine.strip()
-
-    if sLine.lower().startswith('('):
-        sLine = sLine[1:]
-        sLine = sLine.strip()
-
-    return sLine.split('(')[0].strip()
-
-
-def extract_port_names_from_port_map(oLine):
-    '''
-    Returns port names from port assignment inside port map.
-
-    Parameters:
-
-       oLine: (line object)
-
-    Returns: (list of strings)
-    '''
-    names = []
-    for s in oLine.line.split(','):
-        name = _extract_port_name_from_assignment(s)
-        if name != '':
-            names.append(name)
-
-    return names
-
-
 def extract_word(oLine, keyword):
     '''
     Returns is keyword from line.
