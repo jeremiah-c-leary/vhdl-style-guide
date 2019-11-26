@@ -1,4 +1,4 @@
-version = '0.44'
+version = '1.0.0'
 
 
 def print_version(oCommandLineArguments):

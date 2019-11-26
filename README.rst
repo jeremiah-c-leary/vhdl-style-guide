@@ -24,6 +24,9 @@ VHDL Style Guide (VSG)
 .. image:: https://img.shields.io/twitter/follow/leary_jeremiah.svg?style=social
    :alt: Twitter Follow
 
+.. NOTE:: Version 1.0 of VSG supports python 3 only due to python 2.7 End of Life in 2019.
+          The python 2.7 version is being maintained on the python-2.7-maintence branch.
+
 VHDL Style Guide (VSG) provides coding style guide enforcement for VHDL code.
 
 .. image:: https://github.com/jeremiah-c-leary/vhdl-style-guide/blob/master/docs/img/vim_macro.gif
