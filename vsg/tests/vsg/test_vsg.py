@@ -15,8 +15,14 @@ class testVsg(unittest.TestCase):
         lExpected.append('ERROR: vsg/tests/vsg/entity2.vhd(8)port_008 -- Change the number of spaces after the "out" keyword to three spaces.')
         lExpected.append('')
 
-        lActual = subprocess.check_output(['bin/vsg','--configuration','vsg/tests/vsg/config_1.json','vsg/tests/vsg/config_2.json','--output_format','syntastic'])
-        lActual = str(lActual.decode('utf-8')).split('\n')
+        try:
+            subprocess.check_output(['bin/vsg','--configuration','vsg/tests/vsg/config_1.json','vsg/tests/vsg/config_2.json','--output_format','syntastic'])
+        except subprocess.CalledProcessError as e:
+            lActual = str(e.output.decode('utf-8')).split('\n')
+            iExitStatus = e.returncode
+
+        self.assertEqual(iExitStatus,1)
+
         self.assertEqual(lActual, lExpected)
 
     def test_single_configuration_w_filelist(self):
@@ -131,8 +137,6 @@ class testVsg(unittest.TestCase):
         lExpected.append('ERROR: vsg/tests/vsg/entity2.vhd(8)port_008 -- Change the number of spaces after the "out" keyword to three spaces.')
         lExpected.append('')
 
-        iExitStatus = -1
-
         try:
             subprocess.check_output(['bin/vsg','--configuration','vsg/tests/vsg/config_glob.json','--output_format','syntastic'])
         except subprocess.CalledProcessError as e:
@@ -184,8 +188,14 @@ class testVsg(unittest.TestCase):
         lExpected.append('ERROR: vsg/tests/vsg/entity2.vhd(8)port_008 -- Change the number of spaces after the "out" keyword to three spaces.')
         lExpected.append('')
 
-        lActual = subprocess.check_output(['bin/vsg','--configuration','vsg/tests/vsg/config_1.yaml','vsg/tests/vsg/config_2.yaml','--output_format','syntastic'])
-        lActual = str(lActual.decode('utf-8')).split('\n')
+        try:
+            subprocess.check_output(['bin/vsg','--configuration','vsg/tests/vsg/config_1.yaml','vsg/tests/vsg/config_2.yaml','--output_format','syntastic'])
+        except subprocess.CalledProcessError as e:
+            lActual = str(e.output.decode('utf-8')).split('\n')
+            iExitStatus = e.returncode
+
+        self.assertEqual(iExitStatus,1)
+
         self.assertEqual(lActual, lExpected)
 
     def test_single_yaml_configuration_w_rule_disable(self):

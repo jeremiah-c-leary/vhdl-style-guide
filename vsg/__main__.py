@@ -207,7 +207,7 @@ def main():
 
 
 def update_exit_status(fExitStatus, oRules):
-    if fExitStatus == 0 and oRules.violations:
+    if fExitStatus == 1 or oRules.violations:
         return 1
     else:
         return 0
