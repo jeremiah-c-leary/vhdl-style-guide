@@ -2,3 +2,4 @@
 *.swp
 _build
 /*.egg-info
+dist
