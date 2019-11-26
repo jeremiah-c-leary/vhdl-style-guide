@@ -131,6 +131,8 @@ class testVsg(unittest.TestCase):
         lExpected.append('ERROR: vsg/tests/vsg/entity2.vhd(8)port_008 -- Change the number of spaces after the "out" keyword to three spaces.')
         lExpected.append('')
 
+        iExitStatus = -1
+
         try:
             subprocess.check_output(['bin/vsg','--configuration','vsg/tests/vsg/config_glob.json','--output_format','syntastic'])
         except subprocess.CalledProcessError as e:
