@@ -9,6 +9,7 @@ class rule():
         self.violations = []
         self.indentSize = 2
         self.phase = None
+        self.subphase = 1
         self.disable = False
         self.fixable = True
         self.dFix = {}

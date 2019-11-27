@@ -13,6 +13,7 @@ class rule_018(rule.rule):
         rule.rule.__init__(self, 'process', '018')
         self.solution = 'Add a label for the "end process".'
         self.phase = 1
+        self.subphase = 2
 
     def _pre_analyze(self):
         self.dFix['processLabel'] = {}

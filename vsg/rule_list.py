@@ -130,9 +130,10 @@ class rule_list():
           iPhase: (integer)
         '''
         for phase in range(1, int(iPhase) + 1):
-            for oRule in self.rules:
-                if oRule.phase == phase and not oRule.disable:
-                    oRule.fix(self.oVhdlFile)
+            for subphase in range(1, 3):
+                for oRule in self.rules:
+                    if oRule.phase == phase and oRule.subphase == subphase and not oRule.disable:
+                        oRule.fix(self.oVhdlFile)
 
     def check_rules(self):
         '''
