@@ -1,4 +1,5 @@
 import unittest
+from unittest import mock
 import subprocess
 import os
 
@@ -6,6 +7,11 @@ from tempfile import TemporaryFile
 
 from vsg.tests import utils
 from vsg import version
+
+class command_line_args():
+    ''' This is used as an input into the version command.'''
+    def __init__(self, version=False):
+        self.version = version
 
 
 class testVsg(unittest.TestCase):
@@ -268,3 +274,16 @@ class testVsg(unittest.TestCase):
         lActual = subprocess.check_output(['bin/vsg','--version'])
         lActual = str(lActual.decode('utf-8')).split('\n')
         self.assertEqual(lActual, lExpected)
+
+    @mock.patch('sys.stdout')
+    def test_version(self, mockStdout):
+        oCommandLineArguments = command_line_args(True)
+        try:
+            version.print_version(oCommandLineArguments)
+        except SystemExit:
+            pass
+
+        mockStdout.write.assert_has_calls([
+            mock.call('VHDL Style Guide (VSG) version ' + version.version),
+            mock.call('\n')
+        ])
