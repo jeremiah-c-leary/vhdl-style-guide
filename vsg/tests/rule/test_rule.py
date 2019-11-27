@@ -120,3 +120,44 @@ class testRuleMethods(unittest.TestCase):
         self.assertEqual(oRule._get_solution(100), None)
         oRule.solution = 'Solution'
         self.assertEqual(oRule._get_solution(100), 'Solution')
+
+    def test_configure_rule_attributes_method(self):
+        oRule = rule.rule()
+        oRule.name = 'xyz'
+        oRule.identifier = '001'
+        dConfiguration = {}
+
+        oRule.configure(dConfiguration)
+
+        self.assertEqual(oRule.indentSize, 2)
+        self.assertEqual(oRule.phase, None)
+        self.assertEqual(oRule.disable, False)
+        self.assertEqual(oRule.fixable, True)
+        self.assertEqual(oRule.configuration, ['indentSize', 'phase', 'disable', 'fixable'])
+
+        dConfiguration['rule'] = {}
+        dConfiguration['rule']['xyz_001'] = {}
+        dConfiguration['rule']['xyz_001']['indentSize'] = 4
+        dConfiguration['rule']['xyz_001']['phase'] = 10
+        dConfiguration['rule']['xyz_001']['disable'] = True
+        dConfiguration['rule']['xyz_001']['fixable'] = False
+        dConfiguration['rule']['xyz_001']['unknown'] = 'New'
+
+        oRule.configure(dConfiguration)
+
+        self.assertEqual(oRule.indentSize, 4)
+        self.assertEqual(oRule.phase, 10)
+        self.assertEqual(oRule.disable, True)
+        self.assertEqual(oRule.fixable, False)
+        self.assertEqual(oRule.configuration, ['indentSize', 'phase', 'disable', 'fixable'])
+
+        oRule.configuration.append('unknown')
+        oRule.unknown = None
+        oRule.configure(dConfiguration)
+
+        self.assertEqual(oRule.indentSize, 4)
+        self.assertEqual(oRule.phase, 10)
+        self.assertEqual(oRule.disable, True)
+        self.assertEqual(oRule.fixable, False)
+        self.assertEqual(oRule.unknown, 'New')
+        self.assertEqual(oRule.configuration, ['indentSize', 'phase', 'disable', 'fixable', 'unknown'])
