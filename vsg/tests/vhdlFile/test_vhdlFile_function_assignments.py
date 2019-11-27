@@ -78,6 +78,21 @@ class testVhdlFileFunctionAssignments(unittest.TestCase):
         # Compare
         self.assertEqual(lActual, lExpected)
 
+    def test_FunctionParameterEndIndent(self):
+        #           [  17,18,19,20,21,22,23,24,  25,26,27,28,29,30,  31,32,33,34,35,  36,37]
+        lExpected = [None, 1, 2, 2, 2, 2, 2, 1,None, 1, 1, 2, 2, 1,None, 1, 2, 2, 1,None, 0]
+        # Generic actual list
+        lActual = []
+        iMinCheck = 17
+        iMaxCheck = iMinCheck + len(lExpected)
+        for iIndex, oLine in enumerate(oFileMultiple.lines):
+            if iIndex == iMaxCheck:
+                break
+            if iIndex >= iMinCheck:
+                lActual.append(oLine.indentLevel)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
     def test_isFunctionParameter(self):
         lExpected = [4,16,21,28,29,36,47,54,63,64,65,70,71,72,78,79,80,87,88,89,97,98,99,110,111,112,126,128,129,130]
         # Generic actual list
@@ -89,7 +104,7 @@ class testVhdlFileFunctionAssignments(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isFunctionParameterMultiple(self):
-        lExpected = [4,5,6,7,19,20,21,22,23]
+        lExpected = [4,5,6,7,19,20,21,22,23,28,29,33,34]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFileMultiple.lines):

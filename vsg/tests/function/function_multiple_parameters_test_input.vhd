@@ -21,6 +21,17 @@ package TEST_PKG is
     signal c : unsigned(3 downto 0);
     signal d : std_logic_vector(7 downto 0);
     constant e : std_logic)
-  return integer is
+  return integer;
+
+  -- Check alignment of closing parenthesis
+  function MAX (
+    A : natural := 0;
+    B : natural := 0
+  ) return natural;
+
+  function MAX (
+    A : natural := 0;
+    B : natural := 0
+     ) return natural;
 
 end package TEST_PKG;

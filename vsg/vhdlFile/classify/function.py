@@ -68,6 +68,10 @@ def _classify_end_keyword(dVars, oLine):
         if re.match('^.*return\s+\w+;', oLine.line, re.IGNORECASE):
             oLine.isFunctionEnd = True
             oLine.isFunctionReturn = True
+            if re.match('^\s*return', oLine.line, re.IGNORECASE):
+                oLine.indentLevel = dVars['iCurrentIndentLevel'] - 1
+            if re.match('^\s*\)\s*return', oLine.line, re.IGNORECASE):
+                oLine.indentLevel = dVars['iCurrentIndentLevel'] - 1
             dVars['iCurrentIndentLevel'] -= 1
             dVars['fFunctionBeginDetected'] = False
             dVars['fFunctionParameterEndDetected'] = False

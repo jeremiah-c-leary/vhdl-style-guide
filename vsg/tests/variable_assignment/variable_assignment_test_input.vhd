@@ -114,3 +114,12 @@ begin
   end process TEST_PROCESS;
 
 end architecture ARCH;
+
+package TEST_PKG is
+
+  function MAX (
+    A : natural := 0;
+    B : natural := 0
+  ) return natural;
+
+end package TEST_PKG;

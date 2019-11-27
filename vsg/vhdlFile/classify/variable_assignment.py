@@ -9,7 +9,7 @@ def variable_assignment(dVars, oLine):
     if re.match('^\s*.*\s*:=', oLine.lineNoComment) and \
        not oLine.isComment and not oLine.insideIf and \
        not oLine.isElseKeyword and not oLine.isVariable and not oLine.isSignal \
-       and not oLine.isProcedureParameter:
+       and not oLine.isProcedureParameter and not oLine.isFunctionParameter:
         oLine.isVariableAssignment = True
         oLine.insideVariableAssignment = True
         oLine.indentLevel = dVars['iCurrentIndentLevel']
