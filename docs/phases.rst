@@ -53,11 +53,11 @@ There are rules which are executed within the same phase, but one is dependent o
 Utilizing a subphase allows for the proper execution of the rules.
 
 Subphase 1
-----------
+##########
 
 Prepare code for rules in subphase 2.
 
 Subphase 2
-----------
+##########
 
 Execute on code prepared in subphase 1.
