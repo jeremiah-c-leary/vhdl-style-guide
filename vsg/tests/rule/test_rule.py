@@ -115,3 +115,8 @@ class testRuleMethods(unittest.TestCase):
         for sKey in dActual.keys():
             self.assertEqual(dActual[sKey], dExpected[sKey])
 
+    def test_get_solution(self):
+        oRule = rule.rule()
+        self.assertEqual(oRule._get_solution(100), None)
+        oRule.solution = 'Solution'
+        self.assertEqual(oRule._get_solution(100), 'Solution')
