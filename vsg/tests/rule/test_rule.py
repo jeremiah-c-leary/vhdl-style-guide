@@ -1,5 +1,7 @@
 
 import unittest
+from unittest import mock
+
 from vsg import rule
 
 
@@ -161,3 +163,31 @@ class testRuleMethods(unittest.TestCase):
         self.assertEqual(oRule.fixable, False)
         self.assertEqual(oRule.unknown, 'New')
         self.assertEqual(oRule.configuration, ['indentSize', 'phase', 'disable', 'fixable', 'unknown'])
+
+    @mock.patch('sys.stdout')
+    def test_report_violations_w_vsg_output_method(self, mockStdout):
+        oRule = rule.rule()
+        oRule.name = 'xyz'
+        oRule.identifier = '001'
+        oRule.solution = 'Solution'
+        oRule.violations = ['1', '2']
+
+        oRule.report_violations(1, 'vsg', 'File')
+        mockStdout.write.assert_has_calls([
+            mock.call('  xyz_001                   |          1 | Solution'),
+            mock.call('\n')
+        ])
+
+    @mock.patch('sys.stdout')
+    def test_report_violations_w_syntastic_output_method(self, mockStdout):
+        oRule = rule.rule()
+        oRule.name = 'xyz'
+        oRule.identifier = '001'
+        oRule.solution = 'Solution'
+        oRule.violations = ['1', '2']
+
+        oRule.report_violations(2, 'syntastic', 'File')
+        mockStdout.write.assert_has_calls([
+            mock.call('ERROR: File(2)xyz_001 -- Solution'),
+            mock.call('\n')
+        ])
