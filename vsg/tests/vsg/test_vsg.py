@@ -5,6 +5,7 @@ import os
 from tempfile import TemporaryFile
 
 from vsg.tests import utils
+from vsg import version
 
 
 class testVsg(unittest.TestCase):
@@ -259,3 +260,11 @@ class testVsg(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
 
+    def test_version_command_line_argument(self):
+        lExpected = []
+        lExpected.append('VHDL Style Guide (VSG) version ' + version.version)
+        lExpected.append('')
+
+        lActual = subprocess.check_output(['bin/vsg','--version'])
+        lActual = str(lActual.decode('utf-8')).split('\n')
+        self.assertEqual(lActual, lExpected)
