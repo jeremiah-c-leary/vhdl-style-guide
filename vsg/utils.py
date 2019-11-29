@@ -865,3 +865,22 @@ def update_comment_line_attributes(oLine):
         oLine.hasComment = False
         oLine.hasInlineComment = False
         oLine.commentColumn = None
+
+
+def replace_word_by_index(oLine, iIndex, sWord):
+    '''
+    Replaces text in a line at a given index with a given word.
+
+    Parameters:
+
+      oLine: (Line Object)
+
+      iIndex: (integer)
+
+      sWord: (string)
+
+    Returns:  Nothing
+    '''
+    sLine = oLine.line
+    iWordLength = len(sWord)
+    oLine.update_line(sLine[:iIndex] + sWord + sLine[iIndex + iWordLength:])
