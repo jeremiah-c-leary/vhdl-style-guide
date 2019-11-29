@@ -83,9 +83,36 @@ class testFixRuleEntityMethods(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
 
-    def test_fix_rule_012(self):
+    def test_fix_rule_012_uppercase(self):
         oRule = entity.rule_012()
         oRule.fix(self.oFile)
+        self.assertEqual(self.oFile.lines[16].line, 'end entity ENTITY1')
+        self.assertEqual(self.oFile.lines[33].line, ' end entity    ENTITY2')
+        self.assertEqual(self.oFile.lines[47].line, ' END ENTITY ENTITY3')
+        self.assertEqual(self.oFile.lines[63].line, 'End  entity  ENTITY1')
+        self.assertEqual(self.oFile.lines[78].line, 'end ENtity ENTITY1')
+        self.assertEqual(self.oFile.lines[91].line, 'end   entity ENTITY1')
+        self.assertEqual(self.oFile.lines[103].line, 'end ENT1;')
+        self.assertEqual(self.oFile.lines[123].line, 'end entity  ENTITY1')
+        self.assertEqual(self.oFile.lines[146].line, 'end entity ENTITY1')
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+
+    def test_fix_rule_012_lowercase(self):
+        oRule = entity.rule_012()
+        oRule.case = 'lower'
+        oRule.fix(self.oFile)
+        self.assertEqual(self.oFile.lines[16].line, 'end entity entity1')
+        self.assertEqual(self.oFile.lines[33].line, ' end entity    entity2')
+        self.assertEqual(self.oFile.lines[47].line, ' END ENTITY entity3')
+        self.assertEqual(self.oFile.lines[63].line, 'End  entity  entity1')
+        self.assertEqual(self.oFile.lines[78].line, 'end ENtity entity1')
+        self.assertEqual(self.oFile.lines[91].line, 'end   entity entity1')
+        self.assertEqual(self.oFile.lines[103].line, 'end ent1;')
+        self.assertEqual(self.oFile.lines[123].line, 'end entity  entity1')
+        self.assertEqual(self.oFile.lines[146].line, 'end entity entity1')
+
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
 

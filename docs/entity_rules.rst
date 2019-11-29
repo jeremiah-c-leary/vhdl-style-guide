@@ -222,8 +222,11 @@ This rule checks for a single space after the **end** keyword.
 entity_012
 ##########
 
-This rule checks the entity name in the **end entity** statement is uppercase.
-Uppercasing the entity name makes it stand out.
+This rule checks the case of the entity name in the **end entity** statement.
+
+.. NOTE::  The default is uppercase.
+
+   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 

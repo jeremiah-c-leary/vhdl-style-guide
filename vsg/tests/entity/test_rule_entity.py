@@ -123,13 +123,24 @@ class testRuleEntityMethods(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
-    def test_rule_012(self):
+    def test_rule_012_uppercase(self):
         oRule = entity.rule_012()
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'entity')
         self.assertEqual(oRule.identifier, '012')
 
         dExpected = [33,47]
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_012_lowercase(self):
+        oRule = entity.rule_012()
+        oRule.case = 'lower'
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'entity')
+        self.assertEqual(oRule.identifier, '012')
+
+        dExpected = [16,33,47,63,78,91,103,123,146]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
