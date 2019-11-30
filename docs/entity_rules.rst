@@ -106,7 +106,11 @@ This rule checks the **is** keyword is on the same line as the **entity** keywor
 entity_006
 ##########
 
-This rule checks the **is** keyword is lowercase.
+This rule checks the **is** keyword has proper case in the entity declaration.
+
+.. NOTE::  The default is uppercase.
+
+   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
@@ -260,7 +264,11 @@ This rule checks for a single space after the **entity** keyword in the closing 
 entity_014
 ##########
 
-This rule checks the **entity** keyword is lower case in the closing of the entity declaration.
+This rule checks the **entity** keyword has proper case in the closing of the entity declaration.
+
+.. NOTE::  The default is uppercase.
+
+   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 

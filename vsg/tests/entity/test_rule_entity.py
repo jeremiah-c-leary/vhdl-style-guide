@@ -63,13 +63,21 @@ class testRuleEntityMethods(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
-    def test_rule_006(self):
+    def test_rule_006_lowercase(self):
         oRule = entity.rule_006()
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'entity')
         self.assertEqual(oRule.identifier, '006')
 
         dExpected = [19]
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_006_uppercase(self):
+        oRule = entity.rule_006()
+        oRule.case = 'upper'
+
+        dExpected = [3,34,65,80,94,113,127,138]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -154,13 +162,21 @@ class testRuleEntityMethods(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
-    def test_rule_014(self):
+    def test_rule_014_lowercase(self):
         oRule = entity.rule_014()
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'entity')
         self.assertEqual(oRule.identifier, '014')
 
         dExpected = [47,78]
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_014_uppercase(self):
+        oRule = entity.rule_014()
+        oRule.case = 'upper'
+
+        dExpected = [16,33,63,78,91,123,133,146]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 

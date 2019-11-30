@@ -1,28 +1,16 @@
 
-from vsg import rule
-from vsg import fix
-from vsg import check
-
-import re
+from vsg.rules import case_rule
+from vsg import utils
 
 
-class rule_014(rule.rule):
+class rule_014(case_rule):
     '''
-    Entity rule 014 checks the "entity" keyword is lower case in the closing of the entity.
+    Entity rule 014 checks the entity keyword has proper case.
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'entity'
-        self.identifier = '014'
-        self.solution = 'Change "entity" keyword to lower case.'
-        self.phase = 6
+        case_rule.__init__(self, 'entity', '014', 'isEndEntityDeclaration')
+        self.solution = 'Change "entity" keyword to '
 
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isEndEntityDeclaration and re.match('^\s*end\s+entity', oLine.line, re.IGNORECASE):
-            lLine = oLine.line.split()
-            check.is_lowercase(self, lLine[1], iLineNumber)
-
-    def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
-            fix.lower_case(oFile.lines[iLineNumber], 'entity')
+    def _extract(self, oLine):
+        return utils.extract_word(oLine, 'entity')
