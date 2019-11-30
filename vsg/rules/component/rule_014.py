@@ -1,27 +1,16 @@
 
-from vsg import rule
-from vsg import fix
-from vsg import check
+from vsg.rules import case_rule
+from vsg import utils
 
 
-class rule_014(rule.rule):
+class rule_014(case_rule):
     '''
-    Component rule 014 checks the "component" keyword is lower case in the
-    closing of the component.
+    Component rule 014 checks the is keyword has proper case.
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'component'
-        self.identifier = '014'
-        self.solution = 'Change "component" keyword to lower case.'
-        self.phase = 6
+        case_rule.__init__(self, 'component', '014', 'isComponentEnd')
+        self.solution = 'Change "component" keyword to '
 
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isComponentEnd:
-            lLine = oLine.line.split()
-            check.is_lowercase(self, lLine[1], iLineNumber)
-
-    def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
-            fix.lower_case(oFile.lines[iLineNumber], 'component')
+    def _extract(self, oLine):
+        return utils.extract_word(oLine, 'component')

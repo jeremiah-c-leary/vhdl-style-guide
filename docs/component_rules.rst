@@ -117,7 +117,11 @@ This rule checks the **is** keyword is on the same line as the **component** key
 component_006
 #############
 
-This rule checks the **is** keyword is lowercase.
+This rule checks the **is** keyword has proper case.
+
+.. NOTE::  The default is lowercase.
+
+   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
@@ -236,7 +240,11 @@ This rule checks for single space after the **end** keyword.
 component_012
 #############
 
-This rule checks the component name is uppercase in the **end component** line.
+This rule checks the proper case of the component name in the **end component** line.
+
+.. NOTE::  The default is uppercase.
+
+   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
@@ -270,7 +278,11 @@ This rule checks for a single space after the **component** keyword in the **end
 component_014
 #############
 
-This rule checks the **component** keyword is lowercase in the **end component** line.
+This rule checks the **component** keyword in the **end component** line has proper case.
+
+.. NOTE::  The default is lowercase.
+
+   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 

@@ -124,13 +124,21 @@ class testRuleComponentMethods(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
-    def test_rule_012(self):
+    def test_rule_012_uppercase(self):
         oRule = component.rule_012()
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'component')
         self.assertEqual(oRule.identifier, '012')
 
         dExpected = [23]
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_012_lowercase(self):
+        oRule = component.rule_012()
+        oRule.case = 'lower'
+
+        dExpected = [12,23,34,52,65,75,87]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
