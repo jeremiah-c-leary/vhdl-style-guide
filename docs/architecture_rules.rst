@@ -194,7 +194,12 @@ It is clearer to the reader to state what is ending.
 architecture_011
 ################
 
-This rule checks the architecture name is upper case in the **end architecture** statement.
+This rule checks the architecture name case in the **end architecture** statement.
+
+.. NOTE::  The default is uppercase.
+
+   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+
 
 **Violation**
 

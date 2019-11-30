@@ -143,12 +143,19 @@ class testRuleArchitectureMethods(unittest.TestCase):
         oRule.analyze(oFileEnd)
         self.assertEqual(oRule.violations, dExpected)
 
-    def test_rule_011(self):
+    def test_rule_011_uppercase(self):
         oRule = architecture.rule_011()
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'architecture')
         self.assertEqual(oRule.identifier, '011')
         dExpected = [24]
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_011_lowercase(self):
+        oRule = architecture.rule_011()
+        oRule.case = 'lower'
+        dExpected = [7,18,24,31,35,45,55,85]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
