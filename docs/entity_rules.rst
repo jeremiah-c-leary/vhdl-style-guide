@@ -108,7 +108,7 @@ entity_006
 
 This rule checks the **is** keyword has proper case in the entity declaration.
 
-.. NOTE::  The default is uppercase.
+.. NOTE::  The default is lowercase.
 
    Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
@@ -266,7 +266,7 @@ entity_014
 
 This rule checks the **entity** keyword has proper case in the closing of the entity declaration.
 
-.. NOTE::  The default is uppercase.
+.. NOTE::  The default is lowercase.
 
    Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
