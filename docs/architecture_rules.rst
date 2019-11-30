@@ -60,7 +60,11 @@ This rule check for a blank line above the **architecture** declaration.
 architecture_004
 ################
 
-This rule checks the **architecture** keyword is lower case in the declaration.
+This rule checks the proper case of the **architecture** keyword in the architecture declaration.
+
+.. NOTE::  The default is lowercase.
+
+   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
@@ -261,7 +265,6 @@ This rule checks the case of the entity name in the architecture declaration.
 
    Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
-
 **Violation**
 
 .. code-block:: vhdl
@@ -365,7 +368,11 @@ This rule checks for a blank line above the **end architecture** declaration.
 architecture_019
 ################
 
-This rule checks the **of** keyword is lower case in the architecture declaration.
+This rule checks the proper case of the **of** keyword in the architecture declaration.
+
+.. NOTE::  The default is lowercase.
+
+   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
@@ -382,7 +389,11 @@ This rule checks the **of** keyword is lower case in the architecture declaratio
 architecture_020
 ################
 
-This rule checks the **is** keyword is lower case in the architecture declaration.
+This rule checks the proper case of the **is** keyword in the architecture declaration.
+
+.. NOTE::  The default is lowercase.
+
+   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
@@ -399,7 +410,11 @@ This rule checks the **is** keyword is lower case in the architecture declaratio
 architecture_021
 ################
 
-This rule checks the **begin** keyword is lower case.
+This rule checks the proper case of the **begin** keyword.
+
+.. NOTE::  The default is lowercase.
+
+   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 

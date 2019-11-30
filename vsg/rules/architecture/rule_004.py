@@ -1,24 +1,16 @@
 
-from vsg import rule
-from vsg import fix
-
-import re
+from vsg.rules import case_rule
+from vsg import utils
 
 
-class rule_004(rule.rule):
+class rule_004(case_rule):
     '''
-    Architecture rule 004 checks the architecture keyword is lower case.
+    Entity rule 004 checks the architecture keyword has proper case.
     '''
 
     def __init__(self):
-        rule.rule.__init__(self, 'architecture', '004')
-        self.solution = 'Change architecture keyword to lowercase.'
-        self.phase = 6
+        case_rule.__init__(self, 'architecture', '004', 'isArchitectureKeyword')
+        self.solution = 'Change "architecture" keyword to '
 
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isArchitectureKeyword and not re.match('^\s*architecture', oLine.line):
-            self.add_violation(iLineNumber)
-
-    def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
-            fix.lower_case(oFile.lines[iLineNumber], 'architecture')
+    def _extract(self, oLine):
+        return utils.extract_word(oLine, 'architecture')
