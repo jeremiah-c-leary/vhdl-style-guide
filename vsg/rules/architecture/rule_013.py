@@ -9,4 +9,4 @@ class rule_013(architecture_case_rule):
 
     def __init__(self):
         architecture_case_rule.__init__(self, 'architecture', '013', 1)
-        self.solution = 'Upper case architecture name.'
+        self.solution = 'architecture name.'

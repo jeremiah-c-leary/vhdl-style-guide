@@ -233,7 +233,11 @@ This rule checks for a single space between **end** and **architecture** keyword
 architecture_013
 ################
 
-This rule checks the architecture name is upper case in the architecture declaration.
+This rule checks the case of the architecture name in the architecture declaration.
+
+.. NOTE::  The default is uppercase.
+
+   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
@@ -251,7 +255,12 @@ This rule checks the architecture name is upper case in the architecture declara
 architecture_014
 ################
 
-This rule checks the entity name is upper case in the architecture declaration.
+This rule checks the case of the entity name in the architecture declaration.
+
+.. NOTE::  The default is uppercase.
+
+   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+
 
 **Violation**
 

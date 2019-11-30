@@ -9,4 +9,4 @@ class rule_014(architecture_case_rule):
 
     def __init__(self):
         architecture_case_rule.__init__(self, 'architecture', '014', 3)
-        self.solution = 'Upper case entity name.'
+        self.solution = 'entity name.'

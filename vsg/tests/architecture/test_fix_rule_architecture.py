@@ -122,19 +122,46 @@ class testFixRuleArchitectureMethods(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
 
-    def test_fix_rule_013(self):
+    def test_fix_rule_013_uppercase(self):
         oRule = architecture.rule_013()
         dExpected = []
         oRule.fix(self.oFile)
+
+        self.assertEqual(self.oFile.lines[3].line, 'architecture ARCH of ENTITY is')
+        self.assertEqual(self.oFile.lines[20].line, ' Architecture ARCH Of entity Is')
+
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
 
-    def test_fix_rule_014(self):
+    def test_fix_rule_013_lowercase(self):
+        oRule = architecture.rule_013()
+        oRule.case = 'lower'
+        dExpected = []
+        oRule.fix(self.oFile)
+
+        self.assertEqual(self.oFile.lines[3].line, 'architecture arch of ENTITY is')
+        self.assertEqual(self.oFile.lines[20].line, ' Architecture arch Of entity Is')
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_fix_rule_014_uppercase(self):
         oRule = architecture.rule_014()
         dExpected = []
         oRule.fix(self.oFile)
-        oRule.analyze(self.oFile)
         self.assertEqual(self.oFile.lines[81].line, 'architecture ARCH of ARCH is')
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_fix_rule_014_lowercase(self):
+        oRule = architecture.rule_014()
+        oRule.case = 'lower'
+        dExpected = []
+        oRule.fix(self.oFile)
+        self.assertEqual(self.oFile.lines[59].line, 'architecture ARCH of entity is')
+
+        oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
 
     def test_fix_rule_015(self):
