@@ -38,6 +38,7 @@ class case_rule(rule.rule):
         self.sTrigger = sTrigger
         self.case = 'lower'
         self.words_to_fix = set()
+        self.configuration.append('case')
 
     @abstractmethod
     def _extract(self, oLine):
