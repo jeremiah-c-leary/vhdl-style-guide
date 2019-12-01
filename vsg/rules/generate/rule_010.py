@@ -1,24 +1,16 @@
 
-from vsg import rule
-from vsg import fix
-
-import re
+from vsg.rules import case_rule
+from vsg import utils
 
 
-class rule_010(rule.rule):
+class rule_010(case_rule):
     '''
-    Process rule 010 checks the "generate" keyword is lowercase on the closing of a generate block.
+    Generate rule 010 checks the generate keyword in the "end generate" has the proper case.
     '''
 
     def __init__(self):
-        rule.rule.__init__(self, 'generate', '010')
-        self.solution = 'Lowercase the "generate" keyword.'
-        self.phase = 6
+        case_rule.__init__(self, 'generate', '010', 'isGenerateEnd')
+        self.solution = 'Change "generate" to '
 
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isGenerateEnd and not re.match('^\s*\w+\s+generate', oLine.line):
-            self.add_violation(iLineNumber)
-
-    def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
-            fix.lower_case(oFile.lines[iLineNumber], 'generate')
+    def _extract(self, oLine):
+        return utils.extract_word(oLine,'generate')

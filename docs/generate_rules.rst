@@ -88,7 +88,11 @@ This rule checks for a blank line before the **generate** keyword.
 generate_005
 ############
 
-This rule checks the generate label is uppercase.
+This rule checks the generate label has proper case.
+
+.. NOTE::  The default is uppercase.
+
+   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
@@ -184,7 +188,11 @@ This rule checks the **end** keyword has proper case.
 generate_010
 ############
  
-This rule checks the **generate** keyword is lowercase in the **end generate** line.
+This rule checks the **generate** keyword has the proper case in the **end generate** line.
+
+.. NOTE::  The default is lowercase.
+
+   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
@@ -218,7 +226,11 @@ This rule checks the **end generate** line has a label.
 generate_012
 ############
  
-This rule checks the **end generate** label is uppercase.
+This rule checks the **end generate** label has proper case.
+
+.. NOTE::  The default is uppercase.
+
+   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 

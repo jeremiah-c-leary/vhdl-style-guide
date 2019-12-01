@@ -5,7 +5,7 @@ from vsg import utils
 
 class rule_003(case_rule):
     '''
-    For Loop rule 003 checks the "end" keyword has proper case.
+    For Loop rule 003 checks the label has proper case.
     '''
 
     def __init__(self):
