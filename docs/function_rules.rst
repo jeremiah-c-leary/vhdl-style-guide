@@ -95,7 +95,11 @@ This rule checks the **begin** keyword has proper case.
 function_005
 ############
 
-This rule checks the **function** keyword is lowercase.
+This rule checks the **function** keyword has proper case.
+ 
+.. NOTE::  The default is lowercase.
+
+   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 

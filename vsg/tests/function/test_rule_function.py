@@ -51,12 +51,19 @@ class testRuleFunctionMethods(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
-    def test_rule_005(self):
+    def test_rule_005_lowercase(self):
         oRule = function.rule_005()
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'function')
         self.assertEqual(oRule.identifier, '005')
         dExpected = [36]
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_005_uppercase(self):
+        oRule = function.rule_005()
+        oRule.case = 'upper'
+        dExpected = [4,16,21,28,47,54,63,70,78,87,97,110,126,128,136,141,146]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 

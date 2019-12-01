@@ -1,29 +1,16 @@
 
-from vsg import rule
-from vsg import fix
-
-import re
+from vsg.rules import case_rule
+from vsg import utils
 
 
-class rule_005(rule.rule):
+class rule_005(case_rule):
     '''
-    Function rule 005 checks the "function" keyword is lower case.
+    Function rule 005 checks the function keyword has proper case.
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'function'
-        self.identifier = '005'
-        self.solution = 'Lowercase the "function" keyword.'
-        self.phase = 6
+        case_rule.__init__(self, 'function', '005', 'isFunctionKeyword')
+        self.solution = 'Change "function" keyword to '
 
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isFunctionKeyword and \
-           not re.match('^\s*function', oLine.line) and \
-           not re.match('^\s*impure\s+function', oLine.line) and \
-           not re.match('^\s*pure\s+function', oLine.line):
-            self.add_violation(iLineNumber)
-
-    def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
-            fix.lower_case(oFile.lines[iLineNumber], 'function')
+    def _extract(self, oLine):
+        return utils.extract_word(oLine, 'function')
