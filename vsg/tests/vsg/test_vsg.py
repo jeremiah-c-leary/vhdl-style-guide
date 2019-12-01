@@ -160,6 +160,8 @@ class testVsg(unittest.TestCase):
             iExitStatus = e.returncode
 
         self.assertEqual(iExitStatus,1)
+        print(lActual)
+        print(lExpected)
         if lActual[0] is lExpected[1]:
             lExpected = []
             lExpected.append('ERROR: vsg/tests/vsg/entity1.vhd(7)port_007 -- Change the number of spaces after the "in" keyword to four spaces.')
