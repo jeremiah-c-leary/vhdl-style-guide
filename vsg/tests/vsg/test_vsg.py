@@ -16,6 +16,15 @@ class command_line_args():
 
 class testVsg(unittest.TestCase):
 
+    def setUp(self):
+        if os.path.isfile('deleteme.json'):
+            os.remove('deleteme.json')
+
+    def tearDown(self):
+        if os.path.isfile('deleteme.json'):
+            os.remove('deleteme.json')
+        
+
     def test_multiple_configuration_w_multiple_filelists(self):
         lExpected = []
         lExpected.append('ERROR: vsg/tests/vsg/entity1.vhd(7)port_007 -- Change the number of spaces after the "in" keyword to four spaces.')
