@@ -155,14 +155,14 @@ entity SPI_SLAVE is
     SPI_MOSI_I    : in    std_logic := 'X';                                     -- spi bus mosi input
     SPI_MISO_O    : out   std_logic := 'X';                                     -- spi bus spi_miso_o output
     DI_REQ_O      : out   std_logic;                                            -- preload lookahead data request line
-    DI_I          : in    std_logic_vector(N - 1 downto 0) := (others => 'X');  -- parallel load data in (clocked in on rising edge of CLK_I)
+    DI_I          : in    std_logic_vector(N - 1 downto 0) := (others => 'X');  -- parallel load data in (clocked in on rising edge of clk_i)
     WREN_I        : in    std_logic := 'X';                                     -- user data write enable
     WR_ACK_O      : out   std_logic;                                            -- write acknowledge
-    DO_VALID_O    : out   std_logic;                                            -- DO_O data valid strobe, valid during one CLK_I rising edge.
-    DO_O          : out   std_logic_vector(N - 1 downto 0);                     -- parallel output (clocked out on falling CLK_I)
+    DO_VALID_O    : out   std_logic;                                            -- do_o data valid strobe, valid during one clk_i rising edge.
+    DO_O          : out   std_logic_vector(N - 1 downto 0);                     -- parallel output (clocked out on falling clk_i)
     --- debug ports: can be removed for the application circuit ---
     DO_TRANSFER_O : out   std_logic;                                            -- debug: internal transfer driver
-    WREN_O        : out   std_logic;                                            -- debug: internal state of the WREN_I pulse stretcher
+    WREN_O        : out   std_logic;                                            -- debug: internal state of the wren_i pulse stretcher
     RX_BIT_NEXT_O : out   std_logic;                                            -- debug: internal rx bit
     STATE_DBG_O   : out   std_logic_vector(3 downto 0);                         -- debug: internal state register
     SH_REG_DBG_O  : out   std_logic_vector(N - 1 downto 0)                      -- debug: internal shift register

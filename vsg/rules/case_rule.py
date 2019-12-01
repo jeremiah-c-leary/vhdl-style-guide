@@ -37,7 +37,8 @@ class case_rule(rule.rule):
         self.solution = None
         self.sTrigger = sTrigger
         self.case = 'lower'
-        self.words_to_fix = set()
+        # Dictionary with words to be fixed. Key is line number, value is a list of words to fix for given key.
+        self.words_to_fix = {}
         self.configuration.append('case')
 
     @abstractmethod
@@ -48,19 +49,25 @@ class case_rule(rule.rule):
         if oLine.__dict__[self.sTrigger]:
             words = self._extract(oLine)
 
-            # ToDo: Raise exception when case differs from lower and upper
             if self.case == 'lower':
                 check_function = check.is_lowercase
-            else:
+            elif self.case == 'upper':
                 check_function = check.is_uppercase
+            else:
+#                raise Exception(f"case option needs to be 'lower' or 'upper', detected: {self.case}")
+                raise Exception("case option needs to be 'lower' or 'upper', detected: {self.case}")
 
+            words_to_fix = set()
             for word in words:
-                if check_function(self, word, iLineNumber) == False:
-                    self.words_to_fix.add(word)
+                if not check_function(self, word, iLineNumber):
+                    words_to_fix.add(word)
+
+            if words_to_fix:
+                self.words_to_fix[iLineNumber] = words_to_fix
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
-            for word in self.words_to_fix:
+            for word in self.words_to_fix[iLineNumber]:
                 if self.case == 'lower':
                     fix_function = fix.lower_case
                 else:
