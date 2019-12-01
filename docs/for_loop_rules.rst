@@ -66,7 +66,11 @@ This rule checks the indentation of the **end loop** keywords.
 for_loop_003
 ############
 
-This rule checks if a label on a for loop is uppercase.
+This rule checks the proper case of the label on a foor loop.
+
+.. NOTE::  The default is uppercase.
+
+   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 

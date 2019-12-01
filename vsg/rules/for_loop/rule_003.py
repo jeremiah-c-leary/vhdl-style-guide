@@ -1,24 +1,17 @@
 
-from vsg import rule
-from vsg import fix
+from vsg.rules import case_rule
+from vsg import utils
 
 
-class rule_003(rule.rule):
-    '''Generate rule 003 checks the for loop label is uppercase.'''
+class rule_003(case_rule):
+    '''
+    For Loop rule 003 checks the "end" keyword has proper case.
+    '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'for_loop'
-        self.identifier = '003'
-        self.solution = 'Uppercase for loop label.'
-        self.phase = 6
+        case_rule.__init__(self, 'for_loop', '003', 'isForLoopLabel')
+        self.solution = 'Change label to ' + self.case + 'case'
+        self.case = 'upper'
 
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isForLoopLabel:
-            lLine = oLine.line.split(':')
-            if not lLine[0] == lLine[0].upper():
-                self.add_violation(iLineNumber)
-
-    def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
-            fix.upper_case(oFile.lines[iLineNumber], oFile.lines[iLineNumber].line.split(':')[0].lstrip().rstrip())
+    def _extract(self, oLine):
+        return utils.extract_first_keyword(oLine)
