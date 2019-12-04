@@ -15,7 +15,7 @@ class testRuleConcurrentWithParenthesis(unittest.TestCase):
 
     def test_rule_003(self):
         oRule = concurrent.rule_003()
-        dExpected = [32,35,39,42,45,46,49,50,51,52]
+        dExpected = [32,35,39,42,45,46,49,50,51,52,55,56]
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -34,6 +34,12 @@ class testRuleConcurrentWithParenthesis(unittest.TestCase):
         self.assertEqual(self.oFile.lines[50].line, '                                       and I_GRUB = 20) or')
         self.assertEqual(self.oFile.lines[51].line, '                                      I_STUB = 45)')
         self.assertEqual(self.oFile.lines[52].line, '                        and I_HUB = 23);')
+
+        self.assertEqual(self.oFile.lines[55].line, '                                       (I_CRUFT = 1 or')
+        self.assertEqual(self.oFile.lines[56].line, '                                        I_BLAH = 10)')
+        self.assertEqual(self.oFile.lines[57].line, '                                       and I_GRUB = 20) or')
+        self.assertEqual(self.oFile.lines[58].line, '                                      I_STUB = 45)')
+        self.assertEqual(self.oFile.lines[59].line, '                        and I_HUB = 23);')
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)

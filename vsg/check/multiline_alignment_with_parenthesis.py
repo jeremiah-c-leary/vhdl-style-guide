@@ -33,6 +33,9 @@ def multiline_alignment_with_parenthesis(self, iColumn, oLine, iLineNumber, dPar
                 self.add_violation(iLineNumber)
                 self.dFix['violations'][iLineNumber] = {}
                 self.dFix['violations'][iLineNumber]['column'] = iParenthesisColumn + 1
+                offset = iParenthesisColumn + 1 - dParenthesis[iLineNumber]['character']
+                for iIndex in range(len(dParenthesis[iLineNumber]['open'])):
+                    dParenthesis[iLineNumber]['open'][iIndex] += offset
             
 
 def _find_right_most_open_parenthesis(dParenthesis, iLineNumber):

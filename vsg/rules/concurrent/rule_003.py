@@ -27,6 +27,7 @@ class rule_003(rule.rule):
             self.dParenthesis[iLineNumber]['open'] = extract_open_parenthesis_locations(oLine.lineNoComment)
             self.dParenthesis[iLineNumber]['closed'] = extract_closed_parenthesis_locations(oLine.lineNoComment)
             self.dParenthesis[iLineNumber]['character'] = utils.begin_of_line_index(oLine)
+            self.dParenthesis[iLineNumber]['offset'] = 0
             if oLine.isConcurrentBegin:
                 self.dParenthesis[iLineNumber]['begin'] = iLineNumber
                 self.dParenthesis[iLineNumber]['align'] = oLine.line.find('<') + 3
