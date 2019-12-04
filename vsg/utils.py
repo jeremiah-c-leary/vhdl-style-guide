@@ -476,6 +476,22 @@ def end_of_line_index(oLine):
             return len(sLine) - iIndex
 
 
+def begin_of_line_index(oLine):
+    '''
+    Finds the left most non whitespace character.
+    Returns the index of the first non whitespace character.
+
+    Parameters:
+
+      oLine: (line object)
+
+    Returns: (integer)
+    '''
+    for iIndex, sChar in enumerate(oLine.line[0::]):
+        if not sChar == ' ':
+            return iIndex
+
+
 def remove_closing_parenthesis_and_semicolon(oLine):
     '''
     Parameters:

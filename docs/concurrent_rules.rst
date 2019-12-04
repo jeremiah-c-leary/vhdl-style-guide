@@ -50,6 +50,10 @@ concurrent_003
 ##############
 
 This rule checks alignment of multiline concurrent assignments.
+Succesive lines should align to the space after the assignment operator.
+However, there is a special case if there are parenthesis in the assignment.
+If the parenthesis are not closed on the same line, then the next line will be aligned to the parenthesis.
+Aligning to the parenthesis improves readability.
 
 **Violation**
 
@@ -58,12 +62,32 @@ This rule checks alignment of multiline concurrent assignments.
    wr_en <= '0' when q_wr_en = '1' else
         '1';
 
+   w_foo <= I_FOO when ((I_BAR = '1') and
+            (I_CRUFT = '1')) else
+            '0';
+
+   O_FOO <= (1 => q_foo(63 downto 32),
+            0 => q_foo(31 downto  0));
+
+   n_foo <= resize(unsigned(I_FOO) +
+            unsigned(I_BAR), q_foo'length);
+
 **Fix**
 
 .. code-block:: vhdl
 
    wr_en <= '0' when q_wr_en = '1' else
             '1';
+
+   w_foo <= I_FOO when ((I_BAR = '1') and
+                        (I_CRUFT = '1')) else
+            '0';
+
+   O_FOO <= (1 => q_foo(63 downto 32),
+             0 => q_foo(31 downto  0));
+
+   n_foo <= resize(unsigned(I_FOO) +
+                   unsigned(I_BAR), q_foo'length);
 
 concurrent_004
 ##############
