@@ -15,7 +15,7 @@ class testRuleConcurrentWithParenthesis(unittest.TestCase):
 
     def test_rule_003(self):
         oRule = concurrent.rule_003()
-        dExpected = [22,25,29,32]
+        dExpected = [32,35,39,42,45,46,49,50,51,52]
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -23,10 +23,17 @@ class testRuleConcurrentWithParenthesis(unittest.TestCase):
         oRule = concurrent.rule_003()
         dExpected = []
         oRule.fix(self.oFile)
-        self.assertEqual(self.oFile.lines[22].line, '            \'1\';')
-        self.assertEqual(self.oFile.lines[25].line, '                        (I_CRUFT = \'1\')) else')
-        self.assertEqual(self.oFile.lines[29].line, '             0 => q_foo(31 downto  0));')
-        self.assertEqual(self.oFile.lines[32].line, '                   unsigned(I_BAR), q_foo\'length);')
+        self.assertEqual(self.oFile.lines[32].line, '            \'1\';')
+        self.assertEqual(self.oFile.lines[35].line, '                        (I_CRUFT = \'1\')) else')
+        self.assertEqual(self.oFile.lines[39].line, '             0 => q_foo(31 downto  0));')
+        self.assertEqual(self.oFile.lines[42].line, '                   unsigned(I_BAR), q_foo\'length);')
+        self.assertEqual(self.oFile.lines[45].line, '                                       I_CRUFT = 1) or')
+        self.assertEqual(self.oFile.lines[46].line, '                         I_BLAH = 10));')
+
+        self.assertEqual(self.oFile.lines[49].line, '                                       (I_CRUFT = 1 or I_BLAH = 10)')
+        self.assertEqual(self.oFile.lines[50].line, '                                       and I_GRUB = 20) or')
+        self.assertEqual(self.oFile.lines[51].line, '                                      I_STUB = 45)')
+        self.assertEqual(self.oFile.lines[52].line, '                        and I_HUB = 23);')
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
