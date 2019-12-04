@@ -14,7 +14,7 @@ class rule_003(rule.rule):
         rule.rule.__init__(self)
         self.name = 'concurrent'
         self.identifier = '003'
-        self.solution = 'Align first character in row to the column of text one space after the <=.'
+        self.solution = 'Align first character in row to the column of text one space after the <= or to the open parenthesis in the line above.'
         self.phase = 6
 
     def _pre_analyze(self):
@@ -35,7 +35,7 @@ class rule_003(rule.rule):
             else:
                 self.dParenthesis[iLineNumber]['begin'] = self.dParenthesis[iLineNumber - 1]['begin']
                 self.dParenthesis[iLineNumber]['align'] = self.dParenthesis[iLineNumber - 1]['align']
-                check.multiline_alignment(self, self.iAlignmentColumn, oLine, iLineNumber, self.dParenthesis)
+                check.multiline_alignment_with_parenthesis(self, self.iAlignmentColumn, oLine, iLineNumber, self.dParenthesis)
 
             clear_parenthesis_dictionary(self, oLine)
 
