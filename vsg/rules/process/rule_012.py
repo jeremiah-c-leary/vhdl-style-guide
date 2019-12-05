@@ -1,5 +1,6 @@
 
 from vsg import rule
+from vsg import utils
 
 import re
 
@@ -15,7 +16,7 @@ class rule_012(rule.rule):
         self.phase = 1
 
     def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isSensitivityListEnd and not re.match('^.*\)\s*is', oLine.lineLower):
+        if oLine.isSensitivityListEnd and not oLine.isProcessIs:
             self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
@@ -23,3 +24,20 @@ class rule_012(rule.rule):
             oLine = oFile.lines[iLineNumber]
             iInsertIndex = oLine.line.rfind(')')
             oLine.update_line(oLine.line[:iInsertIndex + 1] + ' is ' + oLine.line[iInsertIndex + 1:])
+            oLine.isProcessIs = True
+            search_for_and_remove_extraneous_is(oFile, iLineNumber)
+
+
+def search_for_and_remove_extraneous_is(oFile, iLineNumber):
+    '''
+    Looks for an is keyword that is not on the same line as the closing parenthesis and removes it.
+    '''
+    iIndex = iLineNumber
+    while True:
+        iIndex += 1
+        oLine = oFile.lines[iIndex]
+        if oLine.isProcessIs:
+            utils.clear_keyword_from_line(oLine, 'is')
+            oLine.isProcessIs = False
+        if oLine.isProcessBegin:
+            break

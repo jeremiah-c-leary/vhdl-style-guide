@@ -80,6 +80,7 @@ class line():
         self.isSensitivityListEnd = False
         self.insideClockProcess = False
         self.insideResetProcess = False
+        self.isProcessIs = False
         # Concurrent attributes
         self.insideConcurrent = False
         self.isConcurrentBegin = False

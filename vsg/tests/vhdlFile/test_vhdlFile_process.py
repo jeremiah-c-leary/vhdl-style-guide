@@ -11,6 +11,10 @@ oFileLibrary = vhdlFile.vhdlFile(lFileLibrary)
 lFileProcess = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','process','process_test_input.vhd'))
 oFileProcess = vhdlFile.vhdlFile(lFileProcess)
 
+lFileProcessIs = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','process','process_is_test_input.vhd'))
+oFileProcessIs = vhdlFile.vhdlFile(lFileProcessIs)
+
+
 class testVhdlFileMethods(unittest.TestCase):
 
     def test_comment_assignment(self):
@@ -154,3 +158,14 @@ class testVhdlFileMethods(unittest.TestCase):
 
         self.assertEqual(1, oFileProcess.lines[152].indentLevel)
         self.assertEqual(1, oFileProcess.lines[153].indentLevel)
+
+    def test_isProcessIs_assignment(self):
+        lExpected = [6,11,16,19,22,26,30]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFileProcessIs.lines):
+            if oLine.isProcessIs:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+

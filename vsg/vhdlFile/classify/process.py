@@ -2,9 +2,44 @@ import re
 
 
 def process(dVars, oLine, lLines):
+    '''
+    Classifies process statements.
+
+    [process_label :] process [(signal_name {,...})] [is]
+        { process_declarative_item }
+    begin
+      { sequential_statement }
+    end process [process_label] ;
+
+    Sets the following line attributes:
+
+      * insideProcess
+      * isProcessKeyword
+      * indentLevel
+      * isProcessLabel
+      * isSensitivityListBegin
+      * insideSensitivityList
+      * isSensitivityListEnd
+      * isProcessBegin
+      * isEndProcess
+      * insideClockProcess
+      * insideResetProcess
+      * isProcessIs
+
+    Modifies the following variables:
+
+      * iProcessIndentLevel
+      * fFoundProcessBegin
+      * SensitivityListFound
+      * iOpenParenthesis
+      * iCloseParenthesis
+      * iCurrentIndentLevel
+
+    '''
     classify_process_keyword(dVars, oLine)
     if oLine.insideProcess:
         classify_process_sensitivity_list(dVars, oLine)
+        classify_is_keyword(dVars, oLine)
         classify_process_begin_keyword(dVars, oLine)
         classify_process_end_keyword(dVars, oLine)
         classify_clock_process(dVars, oLine, lLines)
@@ -91,3 +126,9 @@ def classify_reset_process(oLine, lLines):
         lLines[iIndex].insideResetProcess = True
         iIndex = iIndex - 1
     lLines[iIndex].insideResetProcess = True
+
+def classify_is_keyword(dVars, oLine):
+    if not dVars['fFoundProcessBegin']:
+        if re.match('^.*[\s|\)]is[\s|\-\-]', oLine.lineNoComment, flags=re.IGNORECASE) or \
+           re.match('^.*[\s|\)]is$', oLine.lineNoComment, flags=re.IGNORECASE):
+            oLine.isProcessIs = True
