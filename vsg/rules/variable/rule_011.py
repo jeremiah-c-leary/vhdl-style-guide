@@ -5,7 +5,7 @@ from vsg import utils
 
 class rule_011(rule.rule):
     '''
-    General rule 011 checks capitalization consistency of variable names.
+    Variable rule 011 checks capitalization consistency of variable names.
     '''
 
     def __init__(self):

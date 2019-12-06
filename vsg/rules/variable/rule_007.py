@@ -4,7 +4,7 @@ from vsg import rule
 
 class rule_007(rule.rule):
     '''
-    Signal rule 007 checks for default assignments in variable declarations.
+    Variable rule 007 checks for default assignments in variable declarations.
     '''
 
     def __init__(self):
