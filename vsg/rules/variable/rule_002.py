@@ -5,7 +5,7 @@ from vsg import utils
 
 class rule_002(case_rule):
     '''
-    Signal rule 002 checks the "variable" keyword has proper case.
+    Variable rule 002 checks the "variable" keyword has proper case.
     '''
 
     def __init__(self):

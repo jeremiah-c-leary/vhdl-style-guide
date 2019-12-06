@@ -4,7 +4,7 @@ from vsg.rules import keyword_alignment_rule
 
 class rule_009(keyword_alignment_rule):
     '''
-    Signal rule 009 checks the colons are in the same column for all variables.
+    Variable rule 009 checks the colons are in the same column for all variables.
     '''
 
     def __init__(self):

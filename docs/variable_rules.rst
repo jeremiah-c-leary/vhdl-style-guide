@@ -172,7 +172,9 @@ This rule checks the alignment of colons over multiple lines in the architecture
 variable_010
 ############
 
-This rule checks the variable type is lowercase.
+This rule checks the variable type has proper case.
+
+.. NOTE::  The default is lowercase.
 
 **Violation**
 
