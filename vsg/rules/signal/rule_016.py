@@ -6,7 +6,7 @@ from vsg import line
 
 class rule_016(rule.rule):
     '''
-    General rule 016 checks a signal declaration is on a single line.
+    Signal rule 016 checks a signal declaration is on a single line.
     '''
 
     def __init__(self):

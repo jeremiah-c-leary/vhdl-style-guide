@@ -78,7 +78,9 @@ This rule checks for spaces after the **signal** keyword.
 signal_004
 ##########
 
-This rule checks the signal name is lowercase.
+This rule checks the signal name has proper case.
+
+.. NOTE::  The default is lowercase.
 
 **Violation**
 

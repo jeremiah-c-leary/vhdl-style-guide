@@ -6,7 +6,7 @@ from vsg import line
 
 class rule_015(rule.rule):
     '''
-    General rule 014 checks capitalization consistency of signal names.
+    Signal rule 015 checks for multiple signal names defined in a single signal declaration.
     '''
 
     def __init__(self):

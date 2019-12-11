@@ -1,26 +1,15 @@
 
-from vsg import rule
-from vsg import fix
-from vsg import check
+from vsg.rules import case_rule
 from vsg import utils
 
 
-class rule_004(rule.rule):
+class rule_004(case_rule):
     '''
-    Signal rule 004 checks the signal name is lowercase.
+    Signal rule 004 checks the signal name has proper case.
     '''
     def __init__(self, name='signal', identifier='004'):
-        rule.rule.__init__(self, name, identifier)
-        self.phase = 6
-        self.solution = 'Change signal name to lowercase.'
+        case_rule.__init__(self, 'signal', '004', 'isSignal')
+        self.solution = 'Change signal identifiers name to '
 
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isSignal:
-            for sWord in utils.extract_class_identifier_list(oLine):
-                check.is_lowercase(self, sWord, iLineNumber)
-
-    def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
-            oLine = oFile.lines[iLineNumber]
-            for sWord in utils.extract_class_identifier_list(oLine):
-                fix.lower_case(oLine, sWord)
+    def _extract(self, oLine):
+        return utils.extract_class_identifier_list(oLine)
