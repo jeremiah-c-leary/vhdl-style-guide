@@ -282,6 +282,25 @@ class testExtractFunctions(unittest.TestCase):
         sActual = utils.extract_type_name_vhdl_only(oLine)
         self.assertEqual(sExpected, sActual)
 
+    def test_extract_type_name_from_port(self):
+        oLine = line.blank_line()
+        oLine.update_line('PORT(   CLK_I                   : in  STD_LOGIC;')
+        sExpected = ['STD_LOGIC']
+        sActual = utils.extract_type_name_from_port(oLine)
+        self.assertEqual(sExpected, sActual)
+
+        oLine = line.blank_line()
+        oLine.update_line('d : in std_logic_vector(WIDTH-1 downto 0),')
+        sExpected = ['std_logic_vector']
+        sActual = utils.extract_type_name_from_port(oLine)
+        self.assertEqual(sExpected, sActual)
+
+        oLine = line.blank_line()
+        oLine.update_line('d : in std_logic;')
+        sExpected = ['std_logic']
+        sActual = utils.extract_type_name_from_port(oLine)
+        self.assertEqual(sExpected, sActual)
+
     def test_extract_label(self):
         oLine = line.blank_line()
         oLine.update_line('  cp: CPU')

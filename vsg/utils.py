@@ -637,6 +637,45 @@ def extract_type_name_vhdl_only(oLine):
     return []
 
 
+def extract_type_name_from_port(oLine):
+    '''
+    Returns the name of a type in port declaration.
+
+    Parameters:
+
+       oLine: (line object)
+
+    Returns: (one element list of strings)
+    '''
+    sLine = oLine.line.split(':')[1]
+    sLine = sLine.replace('(', ' ')
+    sLine = sLine.replace(')', ' ')
+    sLine = sLine.replace(';', ' ')
+
+    try:
+        return [sLine.split()[1]]
+    except:
+        return []
+
+
+def extract_type_name_from_port_vhdl_only(oLine):
+    '''
+    Returns the name of a VHDL only types in port declaration.
+
+    Parameters:
+
+       oLine: (line object)
+
+    Returns: (one element list of strings)
+    '''
+    name = extract_type_name_from_port(oLine)
+
+    if name and is_vhdl_keyword(name[0]):
+        return name
+
+    return []
+
+
 def extract_type_identifier(oLine):
     '''
     Returns the type identifier from type declaration.
