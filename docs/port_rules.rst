@@ -430,7 +430,9 @@ This rule checks the **port** keyword has proper case.
 port_018
 ########
 
-This rule checks the port type is lowercase if it is a VHDL keyword.
+This rule checks the port type has proper case if it is a VHDL keyword.
+
+.. NOTE::  The default is lowercase.
 
 **Violation**
 
@@ -457,7 +459,9 @@ This rule checks the port type is lowercase if it is a VHDL keyword.
 port_019
 ########
 
-This rule checks the port direction is lowercase.
+This rule checks the port direction has proper case.
+
+.. NOTE::  The default is lowercase.
 
 **Violation**
 
