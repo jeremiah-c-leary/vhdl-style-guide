@@ -131,7 +131,9 @@ This rule checks for a single space after the default assignment.
 generic_007
 ###########
 
-This rule checks the generic name is uppercase.
+This rule checks the generic names have proper case.
+
+.. NOTE::  The default is uppercase.
 
 **Violation**
 
@@ -309,7 +311,9 @@ This rule checks for multiple generics defined on a single line.
 generic_017
 ###########
 
-This rule checks the generic type is lowercase if it is a VHDL keyword.
+This rule checks the generic type has proper case if it is a VHDL keyword.
+
+.. NOTE::  The default is lowercase.
 
 **Violation**
 
