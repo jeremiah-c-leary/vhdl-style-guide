@@ -1,24 +1,16 @@
 
-from vsg import rule
+from vsg.rules import case_rule
+from vsg import utils
 
-import re
 
-
-class rule_029(rule.rule):
+class rule_029(case_rule):
     '''
-    If rule 029 checks the **then** keyword is lowercase.
+    If rule 029 checks the **then** keyword has proper case.
     '''
 
     def __init__(self):
-        rule.rule.__init__(self, 'if', '029')
-        self.phase = 6
-        self.solution = 'lowercase "then" keyword.'
+        case_rule.__init__(self, 'if', '029', 'isThenKeyword')
+        self.solution = 'Change "then" keyword to '
 
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isThenKeyword and not oLine.lineNoComment.find('then') > 0:
-            self.add_violation(iLineNumber)
-
-    def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
-            oLine = oFile.lines[iLineNumber]
-            oLine.update_line(re.sub('then', 'then', oLine.line, 1, re.IGNORECASE))
+    def _extract(self, oLine):
+        return utils.extract_words(oLine, ['then'])

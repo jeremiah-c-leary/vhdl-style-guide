@@ -1,25 +1,16 @@
 
-from vsg import rule
+from vsg.rules import case_rule
+from vsg import utils
 
-import re
 
-
-class rule_028(rule.rule):
+class rule_028(case_rule):
     '''
-    If rule 028 checks the **end if** keywords are lowercase.
+    If rule 028 checks the **end if** keywords have proper case.
     '''
 
     def __init__(self):
-        rule.rule.__init__(self, 'if', '028')
-        self.phase = 6
-        self.solution = 'lowercase "end if" keywords.'
+        case_rule.__init__(self, 'if', '028', 'isEndIfKeyword')
+        self.solution = 'Change "end if" keywords to '
 
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isEndIfKeyword and re.match('^\s*end\s+if', oLine.line, re.IGNORECASE):
-            if not re.match('^\s*end\s+if', oLine.line):
-                self.add_violation(iLineNumber)
-
-    def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
-            oLine = oFile.lines[iLineNumber]
-            oLine.update_line(re.sub('end\s+if', 'end if', oLine.line, 1, re.IGNORECASE))
+    def _extract(self, oLine):
+        return utils.extract_words(oLine, ['end', 'if'])

@@ -496,7 +496,9 @@ This rule checks the **else** keyword has proper case.
 if_028
 ######
 
-This rule checks the **end if** keywords are lowercase.
+This rule checks the **end if** keywords have proper case.
+
+.. NOTE::  The default is lowercase.
 
 **Violation**
 
@@ -521,7 +523,9 @@ This rule checks the **end if** keywords are lowercase.
 if_029
 ######
 
-This rule checks the **then** keyword is lowercase.
+This rule checks the **then** keyword has proper case.
+
+.. NOTE::  The default is lowercase.
 
 **Violation**
 
