@@ -13,4 +13,4 @@ class rule_019(case_rule):
         self.solution = 'Change "of" keyword to '
 
     def _extract(self, oLine):
-        return utils.extract_word(oLine, 'of')
+        return utils.extract_words(oLine, ['of'])
