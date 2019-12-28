@@ -805,27 +805,30 @@ def extract_port_names_from_port_map(oLine):
     return names
 
 
-def extract_word(oLine, keyword):
+def extract_words(oLine, words):
     '''
-    Returns is keyword from line.
+    Returns words from line. Case insensitive, however returned words preserve their case.
 
     Parameters:
 
-       sLine: (line object)
+       oLine: (line object)
 
-       keyword: keyword to extract
+       words: (list of words to extract)
 
-    Returns: (one element or empty list of strings)
+    Returns: (list of strings)
     '''
     line = oLine.line.replace(';', '')
     line = line.replace('(', ' ')
     line = line.replace(')', ' ')
 
-    for word in line.split():
-        if word.lower() == keyword:
-            return [word]
+    words_lower = [w.lower() for w in words]
 
-    return []
+    ret = []
+    for word in line.split():
+        if word.lower() in words_lower:
+            ret.append(word)
+
+    return ret
 
 
 def extract_generics(oLine):
@@ -924,6 +927,7 @@ def insert_line(oFile, iIndex):
     Returns:  Nothing
     '''
     oFile.lines.insert(iIndex, line.blank_line())
+
 
 def update_comment_line_attributes(oLine):
     '''

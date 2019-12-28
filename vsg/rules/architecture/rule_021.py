@@ -13,4 +13,4 @@ class rule_021(case_rule):
         self.solution = 'Change "begin" keyword to '
 
     def _extract(self, oLine):
-        return utils.extract_word(oLine, 'begin')
+        return utils.extract_words(oLine, ['begin'])

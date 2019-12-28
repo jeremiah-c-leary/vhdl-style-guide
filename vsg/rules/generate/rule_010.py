@@ -13,4 +13,4 @@ class rule_010(case_rule):
         self.solution = 'Change "generate" to '
 
     def _extract(self, oLine):
-        return utils.extract_word(oLine,'generate')
+        return utils.extract_words(oLine, ['generate'])

@@ -13,4 +13,4 @@ class rule_016(case_rule):
         self.solution = 'Change "when" keyword to '
 
     def _extract(self, oLine):
-        return utils.extract_word(oLine, 'when')
+        return utils.extract_words(oLine, ['when'])
