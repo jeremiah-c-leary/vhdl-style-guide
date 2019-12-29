@@ -101,7 +101,9 @@ This rule checks the **is** keyword is on the same line as the **package** keywo
 package_006
 ###########
 
-This rule checks the **end package** keywords are lowercase.
+This rule checks the **end package** keywords have proper case.
+
+.. NOTE::  The default is lowercase.
 
 **Violation**
 
@@ -135,7 +137,9 @@ This rule checks for the **package** keyword on the end package declaration.
 package_008
 ###########
 
-This rule checks the package name is uppercase on the end package declaration.
+This rule checks the package name has proper case on the end package declaration.
+
+.. NOTE::  The default is uppercase.
 
 **Violation**
 
@@ -169,7 +173,9 @@ This rule checks for a single space between the **end** and **package** keywords
 package_010
 ###########
 
-This rule checks the package name is uppercase in the package declaration.
+This rule checks the package name has proper case in the package declaration.
+
+.. NOTE::  The default is uppercase.
 
 **Violation**
 
@@ -226,7 +232,9 @@ This rule checks for a blank line above the **end package** keyword.
 package_013
 ###########
 
-This rule checks the **is** keyword is lowercase.
+This rule checks the **is** keyword has proper case.
+
+.. NOTE::  The default is lowercase.
 
 **Violation**
 

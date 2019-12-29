@@ -1,27 +1,16 @@
 
-from vsg import rule
-from vsg import fix
-
-import re
+from vsg.rules import case_rule
+from vsg import utils
 
 
-class rule_013(rule.rule):
+class rule_013(case_rule):
     '''
-    Package rule 013 checks the "is" keyword is lower case.
+    Package rule 013 checks the "is" keyword has proper case.
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'package'
-        self.identifier = '013'
-        self.solution = 'Change "is" keyword to lowercase.'
-        self.phase = 6
+        case_rule.__init__(self, 'package', '013', 'isPackageKeyword')
+        self.solution = 'Change "is" keyword to '
 
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isPackageKeyword and re.match('^\s*package\s+\w+\s+is', oLine.lineLower):
-            if not re.match('^\s*\w+\s+\w+\s+is', oLine.line):
-                self.add_violation(iLineNumber)
-
-    def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
-            fix.lower_case(oFile.lines[iLineNumber], 'is')
+    def _extract(self, oLine):
+        return utils.extract_words(oLine, ['is'])

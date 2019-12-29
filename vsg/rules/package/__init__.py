@@ -1,6 +1,4 @@
 
-from .uppercase_package_name_rule import uppercase_package_name_rule
-
 from .rule_001 import rule_001
 from .rule_002 import rule_002
 from .rule_003 import rule_003
