@@ -74,7 +74,9 @@ This rule checks the indent of the **begin** keyword.
 process_004
 ###########
  
-This rule checks the begin keyword is lowercase.
+This rule checks the **begin** keyword has proper case.
+
+.. NOTE:: The default is lowercase.
 
 **Violation**
 
@@ -97,7 +99,9 @@ This rule checks the begin keyword is lowercase.
 process_005
 ###########
  
-This rule checks the process keyword is lowercase.
+This rule checks the **process** keyword has proper case.
+
+.. NOTE:: The default is lowercase.
 
 **Violation**
 
@@ -160,7 +164,7 @@ process_008
  
 This rule checks the **end** keyword has proper case.
 
-.. NOTE::  The default is lowercase.
+.. NOTE:: The default is lowercase.
 
    Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
@@ -179,7 +183,9 @@ This rule checks the **end** keyword has proper case.
 process_009
 ###########
  
-This rule checks the **process** keyword is lowercase in the **end process** line.
+This rule checks the **process** keyword has proper case in the **end process** line.
+
+.. NOTE:: The default is lowercase.
 
 **Violation**
 
@@ -271,7 +277,9 @@ This rule checks for the existence of the **is** keyword on the same line as the
 process_013
 ###########
  
-This rule checks the **is** keyword is lowercase.
+This rule checks the **is** keyword has proper case.
+
+.. NOTE:: The default is lowercase.
 
 **Violation**
 
@@ -366,7 +374,9 @@ This rule checks the process has a label.
 process_017
 ###########
  
-This rule checks the process label is uppercase.
+This rule checks the process label has proper case.
+
+.. NOTE:: The default is uppercase.
 
 **Violation**
 
