@@ -1,24 +1,16 @@
 
-from vsg import rule
-from vsg import fix
-
-import re
+from vsg.rules import case_rule
+from vsg import utils
 
 
-class rule_005(rule.rule):
+class rule_005(case_rule):
     '''
-    Process rule 004 checks the "process" keyword is lower case.
+    Process rule 004 checks the "process" keyword has proper case.
     '''
 
     def __init__(self):
-        rule.rule.__init__(self, 'process', '005')
-        self.solution = 'Lowercase the "process" keyword.'
-        self.phase = 6
+        case_rule.__init__(self, 'process', '005', 'isProcessKeyword')
+        self.solution = 'Change "process" keyword to '
 
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isProcessKeyword and not re.match('^\s*.*process', oLine.line):
-                self.add_violation(iLineNumber)
-
-    def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
-            fix.lower_case(oFile.lines[iLineNumber], 'process')
+    def _extract(self, oLine):
+        return utils.extract_words(oLine, ['process'])

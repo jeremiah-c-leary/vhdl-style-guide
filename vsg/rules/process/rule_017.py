@@ -1,25 +1,17 @@
 
-from vsg import rule
-from vsg import check
-from vsg import fix
+from vsg.rules import case_rule
+from vsg import utils
 
 
-class rule_017(rule.rule):
+class rule_017(case_rule):
     '''
-    Process rule 017 checks the process label is uppercase.
+    Process rule 017 checks the process label has proper case.
     '''
 
     def __init__(self):
-        rule.rule.__init__(self, 'process', '017')
-        self.solution = 'Uppercase process label.'
-        self.phase = 6
+        case_rule.__init__(self, 'process', '017', 'isProcessLabel')
+        self.case = 'upper'
+        self.solution = 'Change label name to '
 
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isProcessLabel:
-            lLine = oLine.line.split(':')
-            check.is_uppercase(self, lLine[0], iLineNumber)
-
-    def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
-            lLine = oFile.lines[iLineNumber].line.split(':')
-            fix.upper_case(oFile.lines[iLineNumber], lLine[0].rstrip().lstrip())
+    def _extract(self, oLine):
+        return utils.extract_label(oLine)
