@@ -20,10 +20,12 @@ class testRuleLengthMethods(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
+        self.assertEqual('Reduce line to less than 120 characters', oRule._get_solution(0))
+
     def test_rule_001_with_75_character_limit(self):
         oRule = length.rule_001()
         oRule.length = 75
         dExpected = [1,3,4,7,9]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
-
+        self.assertEqual('Reduce line to less than 75 characters', oRule._get_solution(0))
