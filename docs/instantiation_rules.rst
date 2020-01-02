@@ -111,7 +111,9 @@ This rule checks the instantiation declaration and the **port map** keywords are
 instantiation_006
 #################
 
-This rule checks the **port map** keywords are lowercase.
+This rule checks the **port map** keywords have proper case.
+
+.. NOTE:: The default is lowercase.
 
 **Violation**
 
@@ -148,7 +150,7 @@ instantiation_008
 
 This rule checks the instance name has proper case.
 
-.. NOTE::  The default is uppercase.
+.. NOTE:: The default is uppercase.
 
    Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
@@ -167,7 +169,9 @@ This rule checks the instance name has proper case.
 instantiation_009
 #################
 
-This rule checks the entity name is uppercase.
+This rule checks the entity name has proper case.
+
+.. NOTE:: The default is uppercase.
 
 **Violation**
 
@@ -260,7 +264,9 @@ This rule checks the instantiation declaration and the **generic map** keywords 
 instantiation_013
 #################
 
-This rule checks the **generic map** keywords are lowercase.
+This rule checks the **generic map** keywords have proper case.
+
+.. NOTE:: The default is lowercase.
 
 **Violation**
 
@@ -328,7 +334,9 @@ This rule checks the alignment of the **=>** operator for every generic.
 instantiation_016
 #################
 
-This rule checks generic names are uppercase.
+This rule checks generic names have proper case.
+
+.. NOTE:: The default is uppercase.
 
 **Violation**
 
@@ -606,7 +614,9 @@ Use explicit port mapping.
 instantiation_027
 #################
 
-This rule checks for the **entity** keyword is lowercase in direct instantiations.
+This rule checks the **entity** keyword has proper case in direct instantiations.
+ 
+.. NOTE:: The default is lowercase.
 
 **Violation**
 
@@ -623,7 +633,9 @@ This rule checks for the **entity** keyword is lowercase in direct instantiation
 instantiation_028
 #################
 
-This rule checks the entity name is uppercase in direct instantiations.
+This rule checks the entity name has proper case in direct instantiations.
+
+.. NOTE:: The default is uppercase.
 
 **Violation**
 
@@ -686,7 +698,9 @@ This rule checks for a single space after the **=>** keyword in generic maps.
 instantiation_031
 #################
 
-This rule checks the component keyword is lowercase in component instantiations that use the **component** keyword.
+This rule checks the component keyword has proper case in component instantiations that use the **component** keyword.
+
+.. NOTE:: The default is lowercase.
 
 **Violation**
 

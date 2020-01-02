@@ -5,7 +5,7 @@ from vsg import utils
 
 class rule_017(rule.rule):
     '''
-    Instantiation rule 016 checks for generic map keyword and generic assignment on the same line.
+    Instantiation rule 017 checks for generic map keyword and generic assignment on the same line.
     '''
 
     def __init__(self):

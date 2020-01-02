@@ -7,7 +7,7 @@ from vsg import line
 
 class rule_029(rule.rule):
     '''
-    Entity rule 029 ensures the alignment of comments in an instantiation.
+    Instantiation rule 029 ensures the alignment of comments in an instantiation.
     '''
 
     def __init__(self):

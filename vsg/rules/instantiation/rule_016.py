@@ -1,26 +1,20 @@
 
-from vsg import rule
-from vsg import fix
-from vsg import check
+from vsg.rules import case_rule
 
 
-class rule_016(rule.rule):
+class rule_016(case_rule):
     '''
-    Instantiation rule 016 checks the generic name is uppercase.
+    Instantiation rule 016 checks the generic name has proper case.
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'instantiation'
-        self.identifier = '016'
-        self.solution = 'Uppercase generic name.'
-        self.phase = 6
+        case_rule.__init__(self, 'instantiation', '016', 'isInstantiationGenericAssignment')
+        self.case = 'upper'
+        self.solution = 'Change generic name to '
 
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isInstantiationGenericAssignment and not oLine.isInstantiationGenericKeyword:
-            check.is_uppercase(self, oLine.line.split()[0], iLineNumber)
+    def _extract(self, oLine):
+        ret = []
+        if not oLine.isInstantiationGenericKeyword:
+            ret.append(oLine.line.split()[0])
 
-    def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
-            lLine = oFile.lines[iLineNumber].line.split('=>')
-            fix.upper_case(oFile.lines[iLineNumber], lLine[0].rstrip().lstrip())
+        return ret

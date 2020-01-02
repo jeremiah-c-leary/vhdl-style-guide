@@ -818,6 +818,7 @@ def extract_words(oLine, words):
     Returns: (list of strings)
     '''
     line = oLine.line.replace(';', '')
+    line = line.replace(':', ' ')
     line = line.replace('(', ' ')
     line = line.replace(')', ' ')
 

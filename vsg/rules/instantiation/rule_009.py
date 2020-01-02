@@ -1,28 +1,16 @@
 
-from vsg import rule
-from vsg import fix
-from vsg import check
+from vsg.rules import case_rule
 
 
-class rule_009(rule.rule):
+class rule_009(case_rule):
     '''
-    Instantiation rule 009 checks the entity name is uppercase in the instantiation declaration line.
+    Instantiation rule 009 checks the entity name has proper case in the instantiation declaration line.
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'instantiation'
-        self.identifier = '009'
-        self.solution = 'Change entity name to all uppercase.'
-        self.phase = 6
+        case_rule.__init__(self, 'instantiation', '009', 'isInstantiationDeclaration')
+        self.case = 'upper'
+        self.solution = 'Change entity name to '
 
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isInstantiationDeclaration:
-            sName = oLine.line.split(':')[1].lstrip().split()[0]
-            check.is_uppercase(self, sName, iLineNumber)
-
-    def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
-            oLine = oFile.lines[iLineNumber]
-            sLine = oLine.line.split(':')[1].split()[0]
-            fix.upper_case(oFile.lines[iLineNumber], sLine)
+    def _extract(self, oLine):
+        return [oLine.line.split(':')[1].lstrip().split()[0]]
