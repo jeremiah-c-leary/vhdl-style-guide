@@ -1,5 +1,6 @@
 
 from vsg import utils
+from vsg import tokens
 
 
 class line():
@@ -26,6 +27,7 @@ class line():
         self.line = line
         self.lineLower = line.lower()
         self.lineNoComment = utils.remove_comment(line)
+        self.tokens = tokens.create(self.line)
 
         self.indentLevel = None
         # Misc attributes
