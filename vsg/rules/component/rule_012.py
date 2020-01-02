@@ -28,15 +28,6 @@ class rule_012(rule.rule):
             else:
                 check.is_lowercase(self, lLine[2], iLineNumber)
             self.dFix[iLineNumber] = 2
-        elif oLine.isComponentEnd and re.match('^\s*end\s+\w+', oLine.line, re.IGNORECASE):
-            lLine = oLine.line.split()
-            self.dFix[iLineNumber] = 2
-            if not lLine[1].lower().startswith('component'):
-                self.dFix[iLineNumber] = 1
-                if self.case == 'upper':
-                    check.is_uppercase(self, lLine[1], iLineNumber)
-                else:
-                    check.is_lowercase(self, lLine[1], iLineNumber)
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
