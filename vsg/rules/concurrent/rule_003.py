@@ -68,7 +68,7 @@ def extract_closed_parenthesis_locations(sLine):
     while True:
         iIndex = sLine.find(')', iIndex)
         if iIndex == -1:
-            break;
+            break
         lReturn.append(iIndex)
         iIndex = iIndex + 1
     return lReturn
