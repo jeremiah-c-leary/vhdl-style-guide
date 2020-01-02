@@ -113,6 +113,8 @@ class testFixRuleArchitectureMethods(unittest.TestCase):
 
         self.assertEqual(self.oFile.lines[24].line, ' eND architecture ARCH')
 
+        self.assertEqual('Uppercase architecture name.', oRule._get_solution(24))
+
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -123,6 +125,8 @@ class testFixRuleArchitectureMethods(unittest.TestCase):
         oRule.fix(self.oFile)
 
         self.assertEqual(self.oFile.lines[7].line, 'End  architecture arch;')
+
+        self.assertEqual('Lowercase architecture name.', oRule._get_solution(24))
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
@@ -142,6 +146,8 @@ class testFixRuleArchitectureMethods(unittest.TestCase):
         self.assertEqual(self.oFile.lines[3].line, 'architecture ARCH of ENTITY is')
         self.assertEqual(self.oFile.lines[20].line, ' Architecture ARCH Of entity Is')
 
+        self.assertEqual('uppercase architecture name.', oRule._get_solution(3))
+
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -153,6 +159,8 @@ class testFixRuleArchitectureMethods(unittest.TestCase):
 
         self.assertEqual(self.oFile.lines[3].line, 'architecture arch of ENTITY is')
         self.assertEqual(self.oFile.lines[20].line, ' Architecture arch Of entity Is')
+
+        self.assertEqual('lowercase architecture name.', oRule._get_solution(3))
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
