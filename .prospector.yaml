@@ -1,0 +1,11 @@
+
+test-warnings: false
+
+pep8:
+  full: true
+  disable:
+    - N801
+    - N802
+    - N806
+    
+
