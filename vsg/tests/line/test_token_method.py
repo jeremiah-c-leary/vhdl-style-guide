@@ -5,7 +5,7 @@ from vsg import line
 
 class testTokenMethod(unittest.TestCase):
 
-    def test_token_create_method_with_single_spaces(self):
+    def test_single_spaces(self):
         oLine = line.line('contents of line')
         self.assertTrue(oLine)
         self.assertEqual('contents of line', oLine.line)
@@ -19,7 +19,7 @@ class testTokenMethod(unittest.TestCase):
 
         self.assertEqual(lTokens, oLine.tokens)
 
-    def test_token_create_method_with_multiple_spaces(self):
+    def test_multiple_spaces(self):
         oLine = line.line('   contents   of     line')
         self.assertTrue(oLine)
         self.assertEqual('   contents   of     line', oLine.line)
@@ -34,7 +34,7 @@ class testTokenMethod(unittest.TestCase):
 
         self.assertEqual(lTokens, oLine.tokens)
 
-    def test_token_create_method_with_comment_at_end_of_line_without_spaces_around_dashes(self):
+    def test_comment_at_end_of_line_without_spaces_around_dashes(self):
         oLine = line.line('contents of line--This is a comment')
         self.assertTrue(oLine)
         self.assertEqual('contents of line--This is a comment', oLine.line)
@@ -49,7 +49,7 @@ class testTokenMethod(unittest.TestCase):
 
         self.assertEqual(lTokens, oLine.tokens)
 
-    def test_token_create_method_with_comment_at_end_of_line_with_spaces_around_dashes(self):
+    def test_comment_at_end_of_line_with_spaces_around_dashes(self):
         oLine = line.line('contents of line --  This is a comment')
         self.assertTrue(oLine)
         self.assertEqual('contents of line --  This is a comment', oLine.line)
@@ -65,7 +65,7 @@ class testTokenMethod(unittest.TestCase):
 
         self.assertEqual(lTokens, oLine.tokens)
 
-    def test_token_create_method_with_comment_at_end_of_line_with_spaces_at_the_end_of_line(self):
+    def test_comment_at_end_of_line_with_spaces_at_the_end_of_line(self):
         oLine = line.line('contents of line --  This is a comment  ')
         self.assertTrue(oLine)
         self.assertEqual('contents of line --  This is a comment  ', oLine.line)
@@ -78,6 +78,27 @@ class testTokenMethod(unittest.TestCase):
         lTokens.append('line')
         lTokens.append(' ')
         lTokens.append('--  This is a comment  ')
+
+        self.assertEqual(lTokens, oLine.tokens)
+
+    def test_comment_only_line_with_spaces_before_the_comment(self):
+        oLine = line.line(' -- This is a comment  ')
+        self.assertTrue(oLine)
+        self.assertEqual(' -- This is a comment  ', oLine.line)
+
+        lTokens = []
+        lTokens.append(' ')
+        lTokens.append('-- This is a comment  ')
+
+        self.assertEqual(lTokens, oLine.tokens)
+
+    def test_comment_only_line_without_spaces_before_the_comment(self):
+        oLine = line.line('-- This is a comment  ')
+        self.assertTrue(oLine)
+        self.assertEqual('-- This is a comment  ', oLine.line)
+
+        lTokens = []
+        lTokens.append('-- This is a comment  ')
 
         self.assertEqual(lTokens, oLine.tokens)
 
