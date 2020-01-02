@@ -309,3 +309,41 @@ class testTokenMethod(unittest.TestCase):
         lTokens.append('  ')
 
         self.assertEqual(lTokens, oLine.tokens)
+
+    def test_single_quote_without_spaces_with_quote_at_beginning_of_line(self):
+        sString = '\'this\'will\'test\'colons\''
+        oLine = line.line(sString)
+        self.assertTrue(oLine)
+        self.assertEqual(sString, oLine.line)
+
+        lTokens = []
+        lTokens.append('\'')
+        lTokens.append('this')
+        lTokens.append('\'')
+        lTokens.append('will')
+        lTokens.append('\'')
+        lTokens.append('test')
+        lTokens.append('\'')
+        lTokens.append('colons')
+        lTokens.append('\'')
+
+        self.assertEqual(lTokens, oLine.tokens)
+
+    def test_double_quote_without_spaces_with_quote_at_beginning_of_line(self):
+        sString = '"this"will"test"colons"'
+        oLine = line.line(sString)
+        self.assertTrue(oLine)
+        self.assertEqual(sString, oLine.line)
+
+        lTokens = []
+        lTokens.append('"')
+        lTokens.append('this')
+        lTokens.append('"')
+        lTokens.append('will')
+        lTokens.append('"')
+        lTokens.append('test')
+        lTokens.append('"')
+        lTokens.append('colons')
+        lTokens.append('"')
+
+        self.assertEqual(lTokens, oLine.tokens)
