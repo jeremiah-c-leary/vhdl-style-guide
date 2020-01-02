@@ -4,6 +4,7 @@ from setuptools import find_packages
 
 from vsg import version
 
+
 def readme():
     with open('README.rst') as f:
         return f.read()

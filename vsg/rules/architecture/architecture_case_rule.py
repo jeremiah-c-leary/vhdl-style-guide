@@ -14,7 +14,7 @@ class architecture_case_rule(rule.rule):
         rule.rule.__init__(self, name, identifier)
         self.case = 'upper'
         self.phase = 6
-        self.configuration.append ('case')
+        self.configuration.append('case')
         self.iIndex = iIndex
 
     def _analyze(self, oFile, oLine, iLineNumber):

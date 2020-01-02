@@ -34,7 +34,7 @@ class rule_016(rule.rule):
         for iLineNumber in self.violations[::-1]:
             dViolation = self.dFix['violations'][iLineNumber]
             utils.remove_lines(oFile, iLineNumber, dViolation['endLine'])
-            utils.insert_line(oFile,iLineNumber)
+            utils.insert_line(oFile, iLineNumber)
             oLine = oFile.lines[iLineNumber]
             oLine.isSignal = True
             oLine.insideSignal = True

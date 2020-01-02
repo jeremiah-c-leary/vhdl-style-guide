@@ -30,4 +30,3 @@ def constant(dVars, oLine, oLinePrevious):
 
     if dVars['fConstantArray']:
         oLine.isConstantArray = True
-

@@ -12,4 +12,3 @@ def signal(dVars, oLine):
     if oLine.insideSignal:
         if re.match('.*;', oLine.lineNoComment):
             oLine.isEndSignal = True
-        

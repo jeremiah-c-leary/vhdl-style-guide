@@ -52,14 +52,15 @@ def clear_parenthesis_dictionary(self, oLine):
 
 def extract_open_parenthesis_locations(sLine):
     lReturn = []
-    iIndex = 0 
+    iIndex = 0
     while True:
         iIndex = sLine.find('(', iIndex)
         if iIndex == -1:
-            break;
+            break
         lReturn.append(iIndex)
         iIndex = iIndex + 1
     return lReturn
+
 
 def extract_closed_parenthesis_locations(sLine):
     lReturn = []

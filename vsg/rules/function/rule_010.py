@@ -19,7 +19,7 @@ class rule_010(rule.rule):
 
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.isFunctionKeyword:
-            self.dDatabase['function'].append(oLine.line.split()[1]) # TODO: Think if this can be solved in better way.
+            self.dDatabase['function'].append(oLine.line.split()[1])  # TODO: Think if this can be solved in better way.
         if oLine.insideArchitecture:
             if oLine.insideProcess or oLine.insideConcurrent:
                 lWords = extract_word_list(oLine)

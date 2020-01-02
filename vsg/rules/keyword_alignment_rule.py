@@ -62,7 +62,7 @@ class keyword_alignment_rule(rule.rule):
             if isinstance(self.sLineTrigger, list):
                 for sTrigger in self.sLineTrigger:
                     if oLine.__dict__[sTrigger]:
-                        lGroup.append(oLine)
+                        self.lGroup.append(oLine)
             elif oLine.__dict__[self.sLineTrigger]:
                 self.lGroup.append(oLine)
             else:

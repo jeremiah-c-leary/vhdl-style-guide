@@ -31,8 +31,10 @@ class rule_016(rule.rule):
             oLine.insidePortMap = True
             oLine.indentLevel = oFile.lines[iLineNumber].indentLevel + 1
 
+
 def extract_port_keyword(sString):
     return sString.split('(')[0] + ' ('
+
 
 def extract_signal_definition(sString):
     lString = sString.split('(')

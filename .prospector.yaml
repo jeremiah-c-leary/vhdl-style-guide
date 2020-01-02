@@ -1,6 +1,11 @@
 
 test-warnings: false
 
+disable:
+  - prospector_N801
+  - prospector_N802
+  - prospector_N806
+
 pep8:
   full: true
   disable:

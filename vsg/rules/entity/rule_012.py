@@ -50,4 +50,4 @@ class rule_012(rule.rule):
         if self.case == 'upper':
             return 'Uppercase entity name.'
         else:
-            return 'Lowercase entity name.'        
+            return 'Lowercase entity name.'

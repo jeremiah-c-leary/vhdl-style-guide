@@ -30,8 +30,10 @@ class rule_013(rule.rule):
             oLine.insideGenericMap = True
             oLine.indentLevel = oFile.lines[iLineNumber].indentLevel + 1
 
+
 def extract_generic_keyword(sString):
     return sString.split('(')[0] + ' ('
+
 
 def extract_generic_definition(sString):
     lString = sString.split('(')

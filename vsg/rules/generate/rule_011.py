@@ -19,7 +19,7 @@ class rule_011(rule.rule):
 
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.isGenerateLabel:
-           self.sGenerateName = oLine.line.lstrip().split(':')[0]
+            self.sGenerateName = oLine.line.lstrip().split(':')[0]
         if oLine.isGenerateEnd and not re.match('^\s*\S+\s+\S+\s+\S+', oLine.line):
             self.add_violation(iLineNumber)
             self.dFix['violations'][iLineNumber] = self.sGenerateName

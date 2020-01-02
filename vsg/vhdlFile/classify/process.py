@@ -105,6 +105,7 @@ def classify_process_end_keyword(dVars, oLine):
         dVars['iCurrentIndentLevel'] = dVars['iCurrentIndentLevel'] - 1
         dVars['SensitivityListFound'] = False
 
+
 def classify_clock_process(dVars, oLine, lLines):
     if re.match('^\s*[elsif|if]\s*.*\'event\s+and\s+\w+\s*=\s*\'[0-1]\'', oLine.lineNoComment, flags=re.IGNORECASE):
         oLine.insideClockProcess = True
@@ -116,6 +117,7 @@ def classify_clock_process(dVars, oLine, lLines):
         oLine.insideClockProcess = True
         classify_reset_process(oLine, lLines)
 
+
 def classify_reset_process(oLine, lLines):
     if re.match('^\s*if', oLine.lineNoComment, flags=re.IGNORECASE):
         return
@@ -126,6 +128,7 @@ def classify_reset_process(oLine, lLines):
         lLines[iIndex].insideResetProcess = True
         iIndex = iIndex - 1
     lLines[iIndex].insideResetProcess = True
+
 
 def classify_is_keyword(dVars, oLine):
     if not dVars['fFoundProcessBegin']:

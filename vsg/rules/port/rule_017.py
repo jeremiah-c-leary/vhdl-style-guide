@@ -14,3 +14,4 @@ class rule_017(case_rule):
 
     def _extract(self, oLine):
         return utils.extract_first_keyword(oLine)
+

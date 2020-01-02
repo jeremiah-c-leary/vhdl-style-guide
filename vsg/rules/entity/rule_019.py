@@ -22,7 +22,7 @@ class rule_019(rule.rule):
 
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.isEntityDeclaration:
-           self.sEntityName = utils.extract_entity_identifier(oLine)[0]
+            self.sEntityName = utils.extract_entity_identifier(oLine)[0]
         if oLine.isEndEntityDeclaration and re.match('^\s*end\s+entity', oLine.line, re.IGNORECASE):
             if not re.match('^\s*end\s+entity\s+\w+', oLine.line, re.IGNORECASE):
                 self.add_violation(iLineNumber)

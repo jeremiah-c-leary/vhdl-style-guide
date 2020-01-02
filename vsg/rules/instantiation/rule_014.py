@@ -41,4 +41,3 @@ def _add_closing_parenthesis_on_new_line(oFile, iLineNumber):
     oFile.lines[iLineNumber + 1].isInstantiationGenericEnd = True
     oFile.lines[iLineNumber + 1].insideInstantiation = True
     oFile.lines[iLineNumber + 1].indentLevel = oFile.lines[iLineNumber].indentLevel - 1
-

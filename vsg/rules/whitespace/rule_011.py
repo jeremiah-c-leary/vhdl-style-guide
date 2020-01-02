@@ -29,7 +29,7 @@ class rule_011(rule.rule):
                         self.add_violation(iLineNumber)
         else:
             if re.match('^.*[\w+|\)][+|/|*]', sLine) or re.match('^.*[+|/|*][\w+|\(]', sLine):
-                if not re.match('^.*".*/.*"', sLine): 
+                if not re.match('^.*".*/.*"', sLine):
                     self.add_violation(iLineNumber)
 
     def _fix_violations(self, oFile):
