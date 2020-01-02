@@ -63,7 +63,7 @@ def extract_open_parenthesis_locations(sLine):
 
 def extract_closed_parenthesis_locations(sLine):
     lReturn = []
-    iIndex = 0 
+    iIndex = 0
     while True:
         iIndex = sLine.find(')', iIndex)
         if iIndex == -1:

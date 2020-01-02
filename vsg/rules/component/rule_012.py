@@ -41,4 +41,4 @@ class rule_012(rule.rule):
         if self.case == 'upper':
             return 'Uppercase component name.'
         else:
-            return 'Lowercase component name.'        
+            return 'Lowercase component name.'

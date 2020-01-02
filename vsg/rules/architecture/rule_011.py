@@ -48,4 +48,4 @@ class rule_011(rule.rule):
         if self.case == 'upper':
             return 'Uppercase architecture name.'
         else:
-            return 'Lowercase architecture name.'        
+            return 'Lowercase architecture name.'

@@ -2,8 +2,6 @@
 from vsg import rule
 from vsg import utils
 
-import re
-
 
 class rule_012(rule.rule):
     '''
