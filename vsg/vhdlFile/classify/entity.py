@@ -2,7 +2,30 @@ import re
 
 
 def entity(self, dVars, oLine):
+    '''
+    Classifies entity declarations.
 
+    entity identifier is
+        [ port ( port_interface_list ) ;]
+        { entity_declarative_item }
+    [begin
+        { concurrent_assertion_statement
+        | passive_concurrent_procedure_call_statement
+        | passive_process_statement } ]
+    end [entity] [identifier] ;
+
+    Sets the following line attributes:
+
+      * hasEntity
+      * isEntityDeclaration
+      * identLevel
+      * insideEntity
+      * isEndEntityDeclaration
+
+    Modifies the following variables:
+
+      * iCurrentIndentLevel
+    '''
     # Check for entity
     if re.match('^\s*entity', oLine.lineLower):
         self.hasEntity = True
