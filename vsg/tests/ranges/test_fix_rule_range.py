@@ -22,6 +22,8 @@ class testFixRuleRange(unittest.TestCase):
         self.assertEqual(self.oFile.lines[28].line, '  constant c_const1 : std_logic_vector(3 downto 0);  -- downto')
         self.assertEqual(self.oFile.lines[33].line, '  signal w_sig1 : std_logic_vector(50 downto 45);')
 
+        self.assertEqual('Change downto keyword to lowercase.', oRule._get_solution(0))
+
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -38,6 +40,8 @@ class testFixRuleRange(unittest.TestCase):
         self.assertEqual(self.oFile.lines[33].line, '  signal w_sig1 : std_logic_vector(50 DOWNTO 45);')
         self.assertEqual(self.oFile.lines[34].line, '  signal w_sig2 : std_logic_vector(50 DOWNTO 45);')
 
+        self.assertEqual('Change downto keyword to uppercase.', oRule._get_solution(0))
+
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -50,6 +54,8 @@ class testFixRuleRange(unittest.TestCase):
         self.assertEqual(self.oFile.lines[22].line, '    P_PORT2 : std_logic_vector(56 to 132)')
         self.assertEqual(self.oFile.lines[30].line, '  constant c_const3 : std_logic_vector(345 to 670);')
         self.assertEqual(self.oFile.lines[35].line, '  signal w_sig3 : std_logic_vector(46 to 345);')
+
+        self.assertEqual('Change to keyword to lowercase.', oRule._get_solution(0))
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
@@ -66,6 +72,8 @@ class testFixRuleRange(unittest.TestCase):
         self.assertEqual(self.oFile.lines[30].line, '  constant c_const3 : std_logic_vector(345 TO 670);')
         self.assertEqual(self.oFile.lines[31].line, '  constant c_const4 : std_logic_vector(345 TO 670);')
         self.assertEqual(self.oFile.lines[36].line, '  signal w_sig4 : std_logic_vector(46 TO 345);')
+
+        self.assertEqual('Change to keyword to uppercase.', oRule._get_solution(0))
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
