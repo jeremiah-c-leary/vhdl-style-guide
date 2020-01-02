@@ -1,28 +1,16 @@
 
-from vsg import rule
-from vsg import fix
-
-import re
+from vsg.rules import case_rule
+from vsg import utils
 
 
-class rule_013(rule.rule):
+class rule_013(case_rule):
     '''
-    Instantiation rule 013 checks the "generic map" keywords are lower case.
+    Instantiation rule 013 checks the "generic map" keywords have proper case.
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'instantiation'
-        self.identifier = '013'
-        self.solution = 'Change "generic map" keywords to lowercase.'
-        self.phase = 6
+        case_rule.__init__(self, 'instantiation', '013', 'isInstantiationGenericKeyword')
+        self.solution = 'Change "generic map" keywords to '
 
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isInstantiationGenericKeyword:
-            if not re.match('^.*generic\s+map', oLine.line):
-                self.add_violation(iLineNumber)
-
-    def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
-            fix.lower_case(oFile.lines[iLineNumber], 'generic')
-            fix.lower_case(oFile.lines[iLineNumber], 'map')
+    def _extract(self, oLine):
+        return utils.extract_words(oLine, ['generic', 'map'])

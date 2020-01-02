@@ -1,29 +1,21 @@
 
-from vsg import rule
-from vsg import fix
-
-import re
+from vsg.rules import case_rule
+from vsg import utils
 
 
-class rule_031(rule.rule):
+class rule_031(case_rule):
     '''
-    Instantiation rule 031 checks the component keyword is lowercase if it is used.
+    Instantiation rule 031 checks the "component" keyword has proper case if it is used.
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'instantiation'
-        self.identifier = '031'
-        self.solution = 'Lowercase the component keyword'
-        self.phase = 6
+        case_rule.__init__(self, 'instantiation', '031', 'isInstantiationDeclaration')
+        self.solution = 'Change "component" keyword to '
         self.disable = True
 
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isInstantiationDeclaration and not oLine.isDirectInstantiationDeclaration:
-            if re.match('^\s*\w+\s*:\s*component', oLine.line, flags=re.IGNORECASE):
-                if not re.match('^\s*\w+\s*:\s*component', oLine.line):
-                    self.add_violation(iLineNumber)
+    def _extract(self, oLine):
+        if not oLine.isDirectInstantiationDeclaration:
+            return utils.extract_words(oLine, ['component'])
+        else:
+            return []
 
-    def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
-            fix.lower_case(oFile.lines[iLineNumber], 'component')

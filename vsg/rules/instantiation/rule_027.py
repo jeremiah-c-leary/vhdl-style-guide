@@ -1,26 +1,16 @@
 
-from vsg import rule
+from vsg.rules import case_rule
+from vsg import utils
 
-import re
 
-
-class rule_027(rule.rule):
+class rule_027(case_rule):
     '''
-    Instantiation rule 027 checks the **entity** keyword is lowercase in direct instantiations.
+    Instantiation rule 027 checks the **entity** keyword has proper case in direct instantiations.
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'instantiation'
-        self.identifier = '027'
-        self.solution = 'Uppercase "entity" keyword.'
-        self.phase = 6
+        case_rule.__init__(self, 'instantiation', '027', 'isDirectInstantiationDeclaration')
+        self.solution = 'Change "entity" keyword to '
 
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isDirectInstantiationDeclaration and not re.match('^\s*\w+\s*:\s*entity', oLine.line):
-            self.add_violation(iLineNumber)
-
-    def _fix_violations(self, oFile):
-        for iLineNumber in self.violations[::-1]:
-            oLine = oFile.lines[iLineNumber]
-            oLine.update_line(re.sub('entity', 'entity', oLine.line, 1, re.IGNORECASE))
+    def _extract(self, oLine):
+        return utils.extract_words(oLine, ['entity'])
