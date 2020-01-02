@@ -8,4 +8,3 @@ def after(dVars, oLine):
             oLine.hasAfterKeyword = True
         if re.match('^.*after$', oLine.lineNoComment, flags=re.IGNORECASE):
             oLine.hasAfterKeyword = True
-

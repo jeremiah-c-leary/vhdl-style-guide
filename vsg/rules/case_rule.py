@@ -54,7 +54,6 @@ class case_rule(rule.rule):
             elif self.case == 'upper':
                 check_function = check.is_uppercase
             else:
-#                raise Exception(f"case option needs to be 'lower' or 'upper', detected: {self.case}")
                 raise Exception("case option needs to be 'lower' or 'upper', detected: {self.case}")
 
             words_to_fix = set()
@@ -76,4 +75,4 @@ class case_rule(rule.rule):
                 fix_function(oFile.lines[iLineNumber], word)
 
     def _get_solution(self, iLineNumber):
-       return self.solution + self.case + 'case.'
+        return self.solution + self.case + 'case.'

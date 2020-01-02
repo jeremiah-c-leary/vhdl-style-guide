@@ -1,6 +1,5 @@
 
 from vsg import rule
-from vsg import check
 
 
 class rule_001(rule.rule):
@@ -20,7 +19,7 @@ class rule_001(rule.rule):
 
     def _analyze(self, oFile, oLine, iLineNumber):
         if len(oLine.line) > self.length:
-            self.add_violation(iLineNumber);
+            self.add_violation(iLineNumber)
 
     def _get_solution(self, iLineNumber):
         return 'Reduce line to less than ' + str(self.length) + ' characters'

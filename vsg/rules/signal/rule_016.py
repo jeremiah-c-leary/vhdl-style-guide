@@ -1,7 +1,6 @@
 
 from vsg import rule
 from vsg import utils
-from vsg import line
 
 
 class rule_016(rule.rule):

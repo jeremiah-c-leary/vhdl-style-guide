@@ -2,8 +2,6 @@
 This module contains functions for rules to perform their checks.
 '''
 
-import re
-
 
 def multiline_alignment_with_parenthesis(self, iColumn, oLine, iLineNumber, dParenthesis):
     '''
@@ -48,5 +46,4 @@ def _find_right_most_open_parenthesis(dParenthesis, iLineNumber):
 
     if not len(lOpenParenthesis) == 0:
         return lOpenParenthesis[0]
-    return None 
-    
+    return None

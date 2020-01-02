@@ -60,7 +60,7 @@ class rule_001(rule.rule):
                 utils.replace_word_by_index(oLine, iIndex, ' DOWNTO')
 
     def _get_solution(self, iLineNumber):
-       return self.solution + self.case + 'case.'
+        return self.solution + self.case + 'case.'
 
 
 def _save_string_index_of_downto(self, oLine, iLineNumber):

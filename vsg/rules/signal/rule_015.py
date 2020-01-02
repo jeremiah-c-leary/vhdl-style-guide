@@ -41,7 +41,7 @@ class rule_015(rule.rule):
             lSignals = _extract_signals(dViolation['line'])
             sAfterColon = _extract_after_colon(dViolation['line'])
             for i in range(0, iNumLines):
-                utils.insert_line(oFile,i + iLineNumber)
+                utils.insert_line(oFile, i + iLineNumber)
                 oLine = oFile.lines[i + iLineNumber]
                 oLine.isSignal = True
                 oLine.insideSignal = True

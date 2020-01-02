@@ -18,4 +18,3 @@ class rule_031(case_rule):
             return utils.extract_words(oLine, ['component'])
         else:
             return []
-

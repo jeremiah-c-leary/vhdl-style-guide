@@ -7,5 +7,10 @@ pep8:
     - N801
     - N802
     - N806
-    
+
+prospector:
+  disable:
+    - N801
+    - N802
+    - N806
 

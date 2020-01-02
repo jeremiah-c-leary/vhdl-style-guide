@@ -4,6 +4,7 @@ This module contains functions for rules to perform their checks.
 
 from vsg.check import are_there_spaces_after
 
+
 def is_single_space_after(self, sString, oLine, iLineNumber):
     '''
     Checks if a single space is after the string given.
