@@ -1,4 +1,6 @@
 
+lSingleCharacterSymbols = [',', ':', '(', ')', '\'', '"', '+']
+
 def create(sString):
     '''
     This function takes a string and returns a list of tokens.
@@ -11,22 +13,8 @@ def create(sString):
             sToken = sChar
             if sChar == '-' and sString[iIndex + 1] == '-':
                 fCommentFound = True
-            if sChar == ',':
-                lReturn.append(sToken)
-                sToken = ''
-            if sChar == ':':
-                lReturn.append(sToken)
-                sToken = ''
-            if sChar == '(':
-                lReturn.append(sToken)
-                sToken = ''
-            if sChar == ')':
-                lReturn.append(sToken)
-                sToken = ''
-            if sChar == '\'':
-                lReturn.append(sToken)
-                sToken = ''
-            if sChar == '"':
+                continue
+            if sChar in lSingleCharacterSymbols:
                 lReturn.append(sToken)
                 sToken = ''
         else:
@@ -38,41 +26,11 @@ def create(sString):
             if fCommentFound:
                 sToken += sChar
                 continue
-            # Handle commas
-            if sChar == ',':
-               lReturn.append(sToken)
-               lReturn.append(sChar)
-               sToken = ''
-               continue
-            # Handle colons
-            if sChar == ':':
-               lReturn.append(sToken)
-               lReturn.append(sChar)
-               sToken = ''
-               continue
-            # Handle open parenthesis
-            if sChar == '(':
-               lReturn.append(sToken)
-               lReturn.append(sChar)
-               sToken = ''
-               continue
-            # Handle close parenthesis
-            if sChar == ')':
-               lReturn.append(sToken)
-               lReturn.append(sChar)
-               sToken = ''
-               continue
-            # Handle single quote
-            if sChar == '\'':
-               lReturn.append(sToken)
-               lReturn.append(sChar)
-               sToken = ''
-               continue
-            if sChar == '"':
-               lReturn.append(sToken)
-               lReturn.append(sChar)
-               sToken = ''
-               continue
+            if sChar in lSingleCharacterSymbols:
+                lReturn.append(sToken)
+                lReturn.append(sChar)
+                sToken = ''
+                continue
             # Handle consecutive spaces
             if sChar == ' ' and sToken[-1] == ' ':
                 sToken += sChar
