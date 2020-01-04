@@ -729,12 +729,46 @@ def extract_entity_identifier(oLine):
 
        oLine: (line object)
 
-    Returns: (one element list of strings)
+    Returns: (one element or empty list of strings)
     '''
-    return [oLine.line.split()[1]]
+    line = oLine.line.replace(';', '').split()
+
+    if line[0].lower() == 'entity':
+        return [line[1]]
+    elif line[1].lower() == 'entity':
+        if len(line) > 2:
+            return [line[2]]
+        else:
+            return []
+    elif line[0].lower() == 'end' and len(line) > 1:
+        return [line[1]]
+
+    return []
 
 
-extract_component_identifier = extract_entity_identifier
+def extract_component_identifier(oLine):
+    '''
+    Returns the component identifier.
+
+    Parameters:
+
+       oLine: (line object)
+
+    Returns: (one element or empty list of strings)
+    '''
+    line = oLine.line.replace(';', '').split()
+
+    if line[0].lower() == 'component':
+        return [line[1]]
+    elif line[1].lower() == 'component':
+        if len(line) > 2:
+            return [line[2]]
+        else:
+            return []
+    elif line[0].lower() == 'end' and len(line) > 1:
+        return [line[1]]
+
+    return []
 
 
 def extract_first_keyword(oLine):

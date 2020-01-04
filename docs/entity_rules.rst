@@ -65,7 +65,7 @@ entity_004
 
 This rule checks the **entity** keyword has proper case.
 
-.. NOTE::  The default is lowercase.
+.. NOTE:: The default is lowercase.
 
    Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
@@ -108,7 +108,7 @@ entity_006
 
 This rule checks the **is** keyword has proper case in the entity declaration.
 
-.. NOTE::  The default is lowercase.
+.. NOTE:: The default is lowercase.
 
    Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
@@ -146,7 +146,7 @@ entity_008
 
 This rule checks the entity name has proper case in the entity declaration.
 
-.. NOTE::  The default is uppercase.
+.. NOTE:: The default is uppercase.
 
    Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
@@ -190,7 +190,7 @@ entity_010
 
 This rule checks the **end** keyword has proper case.
 
-.. NOTE::  The default is lowercase.
+.. NOTE:: The default is lowercase.
 
    Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
@@ -228,7 +228,7 @@ entity_012
 
 This rule checks the case of the entity name in the **end entity** statement.
 
-.. NOTE::  The default is uppercase.
+.. NOTE:: The default is uppercase.
 
    Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
@@ -266,7 +266,7 @@ entity_014
 
 This rule checks the **entity** keyword has proper case in the closing of the entity declaration.
 
-.. NOTE::  The default is lowercase.
+.. NOTE:: The default is lowercase.
 
    Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 

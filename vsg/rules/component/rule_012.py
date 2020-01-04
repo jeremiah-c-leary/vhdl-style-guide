@@ -1,44 +1,17 @@
 
-from vsg import rule
-from vsg import fix
-from vsg import check
-
-import re
+from vsg.rules import case_rule
+from vsg import utils
 
 
-class rule_012(rule.rule):
+class rule_012(case_rule):
     '''
-    Component rule 012 checks component name is uppercase in "end" keyword line.
+    Component rule 012 checks component name has proper case in "end" keyword line.
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'component'
-        self.identifier = '012'
-        self.solution = None
+        case_rule.__init__(self, 'component', '012', 'isComponentEnd')
         self.case = 'upper'
-        self.phase = 6
-        self.configuration.append('case')
+        self.solution = 'Change component name to '
 
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isComponentEnd and re.match('^\s*end\s+component\s+\w+', oLine.line, re.IGNORECASE):
-            lLine = oLine.line.split()
-            if self.case == 'upper':
-                check.is_uppercase(self, lLine[2], iLineNumber)
-            else:
-                check.is_lowercase(self, lLine[2], iLineNumber)
-            self.dFix[iLineNumber] = 2
-
-    def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
-            iIndex = self.dFix[iLineNumber]
-            if self.case == 'upper':
-                fix.upper_case(oFile.lines[iLineNumber], oFile.lines[iLineNumber].line.split()[iIndex])
-            else:
-                fix.lower_case(oFile.lines[iLineNumber], oFile.lines[iLineNumber].line.split()[iIndex])
-
-    def _get_solution(self, iLineNumber):
-        if self.case == 'upper':
-            return 'Uppercase component name.'
-        else:
-            return 'Lowercase component name.'
+    def _extract(self, oLine):
+        return utils.extract_component_identifier(oLine)

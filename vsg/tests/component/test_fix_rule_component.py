@@ -87,7 +87,7 @@ class testFixRuleComponentMethods(unittest.TestCase):
         oRule.fix(self.oFile)
         self.assertEqual(self.oFile.lines[23].line, '  eNd comPonent COMP1;')
 
-        self.assertEqual('Uppercase component name.', oRule._get_solution(23))
+        self.assertEqual('Change component name to uppercase.', oRule._get_solution(23))
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
@@ -97,7 +97,7 @@ class testFixRuleComponentMethods(unittest.TestCase):
         oRule.case = 'lower'
         oRule.fix(self.oFile)
         self.assertEqual(self.oFile.lines[23].line, '  eNd comPonent comp1;')
-        self.assertEqual('Lowercase component name.', oRule._get_solution(23))
+        self.assertEqual('Change component name to lowercase.', oRule._get_solution(23))
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
 
