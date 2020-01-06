@@ -27,8 +27,7 @@ class line():
         self.line = line
         self.lineLower = line.lower()
         self.lineNoComment = utils.remove_comment(line)
-        self.tokens, self.separators = tokens.create(self.line)
-#        self.separators = []
+        self.tokens = tokens.create(self.line)
 
         self.indentLevel = None
         # Misc attributes
