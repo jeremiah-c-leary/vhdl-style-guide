@@ -1,5 +1,5 @@
 
-lSingleCharacterSymbols = [',', ':', '(', ')', '\'', '"', '+', '&', '-', '*', '/', '<', '>', ';']
+lSingleCharacterSymbols = [',', ':', '(', ')', '\'', '"', '+', '&', '-', '*', '/', '<', '>']
 lMultipleCharacterSymbols = [':=', '\=', '<=', '=>', '>=', '**']
 
 def create(sString):

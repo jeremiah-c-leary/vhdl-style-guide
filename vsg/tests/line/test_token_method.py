@@ -480,36 +480,3 @@ class testTokenMethod(unittest.TestCase):
         lTokens.append('>=')
 
         self.assertEqual(lTokens, oLine.tokens)
-
-    def test_multiple_symbols_on_single_line_1(self):
-        sString = 'variable We1, We2, We3, Wy : BIT := \'1\';'
-        oLine = line.line(sString)
-        self.assertTrue(oLine)
-        self.assertEqual(sString, oLine.line)
-
-        lTokens = []
-        lTokens.append('variable')
-        lTokens.append(' ')
-        lTokens.append('We1')
-        lTokens.append(',')
-        lTokens.append(' ')
-        lTokens.append('We2')
-        lTokens.append(',')
-        lTokens.append(' ')
-        lTokens.append('We3')
-        lTokens.append(',')
-        lTokens.append(' ')
-        lTokens.append('Wy')
-        lTokens.append(' ')
-        lTokens.append(':')
-        lTokens.append(' ')
-        lTokens.append('BIT')
-        lTokens.append(' ')
-        lTokens.append(':=')
-        lTokens.append(' ')
-        lTokens.append('\'')
-        lTokens.append('1')
-        lTokens.append('\'')
-        lTokens.append(';')
-
-        self.assertEqual(lTokens, oLine.tokens)
