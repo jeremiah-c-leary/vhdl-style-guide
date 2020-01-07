@@ -655,7 +655,23 @@ Parenthesis on multiple lines should be in the same column.
 process_029
 ###########
 
-This rule checks for **rising_edge** and **falling_edge** in processes.
+This rule checks for the format of clock definitions in clock processes.
+The rule can be set to enforce **event** definition:
+
+.. code-block:: vhdl
+
+    if (CLK'event and CLK = '1') then
+
+..or **edge** definition:
+
+.. code-block:: vhdl
+
+    if (rising_edge(CLK)) then
+
+event configuration
+^^^^^^^^^^^^^^^^^^^
+
+.. NOTE:: This is the default configuration.
 
 **Violation**
 
@@ -672,6 +688,37 @@ This rule checks for **rising_edge** and **falling_edge** in processes.
    if (CLK'event and CLK = '1') then
 
    if (CLK'event and CLK = '0') then
+
+edge configuration
+^^^^^^^^^^^^^^^^^^
+
+.. NOTE::  Configuration this by setting the *'clock'* attribute to *'edge'*
+
+   .. code-block:: json
+
+      {
+        "rule":{
+          "process_029":{
+             "clock":"edge"
+          }
+        }
+      }
+
+**Violation**
+
+.. code-block:: vhdl
+
+   if (CLK'event and CLK = '1') then
+
+   if (CLK'event and CLK = '0') then
+
+**Fix**
+
+.. code-block:: vhdl
+
+   if (rising_edge(CLK)) then
+
+   if (falling_edge(CLK)) then
 
 process_030
 ###########

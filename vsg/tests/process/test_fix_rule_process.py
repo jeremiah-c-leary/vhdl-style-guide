@@ -213,7 +213,7 @@ class testFixRuleProcessMethods(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
 
-    def test_fix_rule_029(self):
+    def test_fix_rule_029_event(self):
         oRule = process.rule_029()
         dExpected = []
         oRule.fix(self.oFileEvent)
@@ -221,3 +221,14 @@ class testFixRuleProcessMethods(unittest.TestCase):
         self.assertEqual(oRule.violations, dExpected)
         self.assertEqual(self.oFileEvent.lines[9].line, '    if (CLK\'event and CLK = \'1\') then')
         self.assertEqual(self.oFileEvent.lines[13].line, '    if (CLK\'event and CLK = \'0\') then')
+
+    def test_fix_rule_029_edge(self):
+        oRule = process.rule_029()
+        oRule.clock = 'edge'
+        dExpected = []
+        oRule.fix(self.oFileEvent)
+        self.assertEqual(self.oFileEvent.lines[17].line, '    if (rising_edge(CLK)) then')
+        self.assertEqual(self.oFileEvent.lines[21].line, '    if (falling_edge(CLK)) then')
+
+        oRule.analyze(self.oFileEvent)
+        self.assertEqual(oRule.violations, dExpected)

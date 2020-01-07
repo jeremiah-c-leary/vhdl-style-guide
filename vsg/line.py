@@ -78,6 +78,7 @@ class line():
         self.insideSensitivityList = False
         self.isSensitivityListBegin = False
         self.isSensitivityListEnd = False
+        self.isClockStatement = False
         self.insideClockProcess = False
         self.insideResetProcess = False
         self.isProcessIs = False
