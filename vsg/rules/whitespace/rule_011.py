@@ -22,11 +22,25 @@ class rule_011(rule.rule):
         if '-' in sLine:
             lLine = sLine.split()
             for sWord in lLine:
-                if '-' in sWord and not sWord == '-':
+                if '-' in sWord:
+                    if sWord == '-':
+                        # already good.
+                        continue
+                    if re.match(".*?'-'", sWord) is not None:
+                        # found a std_logic don't care.
+                        continue
+                    if re.match('.*?[_01LHZXU\-]+"', sWord) is not None:
+                        # found a std_logic_vector constant with a don't care.
+                        continue
+                    #if re.match('^.*\W-[0-9]', sWord) is not None:
+                    #    # found a negative number
+                    #    continue
                     if re.match('^.*\w-', sWord):
                         self.add_violation(iLineNumber)
+                        print("whitespace_011:", iLineNumber, sLine, lLine, sWord)
                     elif not re.match('^.*-[0-9]+\)?$', sWord):
                         self.add_violation(iLineNumber)
+                        print("whitespace_011:", iLineNumber, sLine, lLine, sWord)
         else:
             if re.match('^.*[\w+|\)][+|/|*]', sLine) or re.match('^.*[+|/|*][\w+|\(]', sLine):
                 if not re.match('^.*".*/.*"', sLine):
