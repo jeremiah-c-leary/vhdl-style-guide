@@ -9,8 +9,6 @@ def create(sString):
     for iIndex, sChar in enumerate(sString):
         if len(sToken) == 0:
             sToken = sChar
-            if sChar == '-' and sString[iIndex + 1] == '-':
-                fCommentFound = True
         else:
             if sChar == '-' and sString[iIndex + 1] == '-':
                 fCommentFound = True
