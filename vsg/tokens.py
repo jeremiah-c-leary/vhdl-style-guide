@@ -23,12 +23,6 @@ def create(sString):
             if sChar == ')':
                 lReturn.append(sToken)
                 sToken = ''
-            if sChar == '\'':
-                lReturn.append(sToken)
-                sToken = ''
-            if sChar == '"':
-                lReturn.append(sToken)
-                sToken = ''
         else:
             # Handle comments
             if sChar == '-' and sString[iIndex + 1] == '-':
@@ -41,36 +35,25 @@ def create(sString):
             # Handle commas
             if sChar == ',':
                lReturn.append(sToken)
-               lReturn.append(sChar)
+               lReturn.append(',')
                sToken = ''
                continue
             # Handle colons
             if sChar == ':':
                lReturn.append(sToken)
-               lReturn.append(sChar)
+               lReturn.append(':')
                sToken = ''
                continue
             # Handle open parenthesis
             if sChar == '(':
                lReturn.append(sToken)
-               lReturn.append(sChar)
+               lReturn.append('(')
                sToken = ''
                continue
-            # Handle close parenthesis
+            # Handle open parenthesis
             if sChar == ')':
                lReturn.append(sToken)
-               lReturn.append(sChar)
-               sToken = ''
-               continue
-            # Handle single quote
-            if sChar == '\'':
-               lReturn.append(sToken)
-               lReturn.append(sChar)
-               sToken = ''
-               continue
-            if sChar == '"':
-               lReturn.append(sToken)
-               lReturn.append(sChar)
+               lReturn.append(')')
                sToken = ''
                continue
             # Handle consecutive spaces
