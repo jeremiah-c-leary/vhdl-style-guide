@@ -2,7 +2,7 @@ import re
 
 # Regex to find comments that ignores contents of double quoted strings,
 # for example, "--" : a two bit std_logic_vector literal of don't cares.
-has_comment_re = re.compile(r'.*?(?:".*?(?=").*?)*(?P<comment>--.*$)', re.IGNORECASE)
+has_comment_re = re.compile(r'^(?:".*"|[^"\n])*?(?P<comment>--.*)', re.IGNORECASE)
 
 comment_only_re = re.compile(r'^\s*--')
 
