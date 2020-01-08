@@ -103,17 +103,18 @@ def write_invalid_configuration_junit_file(sFileName, commandLineArguments):
 
 
 def write_vhdl_file(oVhdlFile):
-    with open(oVhdlFile.filename, 'w') as oFile:
-        for oLine in oVhdlFile.lines[1:]:
-            oFile.write(oLine.line + '\n')
-    oFile.close()
+    try:
+        with open(oVhdlFile.filename, 'w') as oFile:
+            for oLine in oVhdlFile.lines[1:]:
+                oFile.write(oLine.line + '\n')
+    except PermissionError as err:
+        print (err, "Could not write fixes back to file.")
 
 
 def write_junit_xml_file(oJunitFile):
     with open(oJunitFile.filename, 'w') as oFile:
         for sLine in oJunitFile.build_junit():
             oFile.write(sLine + '\n')
-    oFile.close()
 
 
 def update_command_line_arguments(commandLineArguments, configuration):
