@@ -38,6 +38,24 @@ def keyword_alignment(self, oFile):
             oLine.update_line(oLine.line[:iKeywordColumn] + ' '*(iMaximumKeywordColumn - iKeywordColumn) + oLine.line[iKeywordColumn:])
 
 
+def comment_alignment(self, oFile):
+    '''
+    Aligns comments across multiple lines.
+
+    Parameters:
+
+      self: (rule object)
+
+      oFile: (vhdlFile object)
+    '''
+    for sKey in self.dFix['violations']:
+        iMaximumCommentColumn = self.dFix['violations'][sKey]['maximumCommentColumn']
+        for iLineNumber in self.dFix['violations'][sKey]['line']:
+            iCommentColumn = self.dFix['violations'][sKey]['line'][iLineNumber]['commentColumn']
+            oLine = oFile.lines[iLineNumber]
+            oLine.update_line(oLine.line[:iCommentColumn] + ' '*(iMaximumCommentColumn - iCommentColumn) + oLine.line[iCommentColumn:])
+
+
 def multiline_alignment(self, oFile, iLineNumber):
     '''
     Indents successive lines of multiline statements.

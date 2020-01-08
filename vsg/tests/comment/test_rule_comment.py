@@ -25,7 +25,7 @@ class testRuleCommentMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'comment')
         self.assertEqual(oRule.identifier, '010')
-        dExpected = [3,7,12,13,17,19,21,23,27,30,45,49,64,68]
+        dExpected = [3,7,12,13,17,19,21,23,27,30,45,49,71,75]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -58,7 +58,7 @@ class testRuleCommentMethods(unittest.TestCase):
 
     def test_rule_004(self):
         oRule = comment.rule_004()
-        dExpected = [39]
+        dExpected = [39, 58, 61, 62]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 

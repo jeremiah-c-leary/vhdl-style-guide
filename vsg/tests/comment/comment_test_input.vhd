@@ -29,7 +29,7 @@ begin
       e <= f           -- Comment
                    -- Comment
     end if
-    
+
   end process PROC_1:
 
 end architecture
@@ -39,7 +39,7 @@ entity ENTITY is
     G_GENERIC_1 : std_logic := '1';-- Comment
     G_GENERIC_2 : std_logic := '0';   -- Comment
     -- Comment
-    G_GENERIC_3 : std_logic := '1';  -- Comment
+    G_GENERIC_3 : std_logic := '1';
     G_GENERIC_3 : std_logic := '1'; -- Comment
     G_GENERIC_3 : std_logic := '1';  -- Comment
      -- Comment
@@ -52,7 +52,14 @@ entity ENTITY is
     G_GENERIC_3 : std_logic := '1';  -- Comment
     G_GENERIC_3 : std_logic := '1';  -- Comment
     G_GENERIC_3 : std_logic := '1';   -- Comment
-    -- Comment
+    ----------------------------------------------------------
+    G_GENERIC_4 : std_logic_vector := "--";
+    G_GENERIC_4 : std_logic_vector := "--" & "---"; -- Comment
+    G_GENERIC_4 : std_logic_vector := "--";-- Comment --
+    G_GENERIC_4 : string := "-- not a comment --";
+    G_GENERIC_4 : string := "--not a comment--"; -- but this is.
+    G_GENERIC_4 : string := "-- not a comment --";--but--this--is--
+    G_GENERIC_4 : string := "-- not a comment --"--but this is.
   );
   port (
     I_PORT_1 : in   std_logic;  -- Comment
