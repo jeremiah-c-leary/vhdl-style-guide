@@ -109,12 +109,15 @@ def classify_process_end_keyword(dVars, oLine):
 def classify_clock_process(dVars, oLine, lLines):
     if re.match('^\s*[elsif|if]\s*.*\'event\s+and\s+\w+\s*=\s*\'[0-1]\'', oLine.lineNoComment, flags=re.IGNORECASE):
         oLine.insideClockProcess = True
+        oLine.isClockStatement = True
         classify_reset_process(oLine, lLines)
     if re.match('^\s*[elsif|if]\s*.*rising_edge', oLine.lineNoComment, flags=re.IGNORECASE):
         oLine.insideClockProcess = True
+        oLine.isClockStatement = True
         classify_reset_process(oLine, lLines)
     if re.match('^\s*[elsif|if]\s*.*falling_edge', oLine.lineNoComment, flags=re.IGNORECASE):
         oLine.insideClockProcess = True
+        oLine.isClockStatement = True
         classify_reset_process(oLine, lLines)
 
 

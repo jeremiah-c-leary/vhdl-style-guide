@@ -268,14 +268,27 @@ class testRuleProcessMethods(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
-    def test_rule_029(self):
+    def test_rule_029_default_event(self):
         oRule = process.rule_029()
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'process')
         self.assertEqual(oRule.identifier, '029')
+        self.assertEqual(oRule.clock, 'event')
         dExpected = [9,13]
         oRule.analyze(oFileEvent)
         self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule._get_solution(0), 'Use \'event for clocks.')
+
+    def test_rule_029_edge(self):
+        oRule = process.rule_029()
+        oRule.clock = 'edge'
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'process')
+        self.assertEqual(oRule.identifier, '029')
+        dExpected = [17, 21]
+        oRule.analyze(oFileEvent)
+        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule._get_solution(0), 'Use rising_edge or falling_edge for clocks.')
 
     def test_rule_030(self):
         oRule = process.rule_030()
