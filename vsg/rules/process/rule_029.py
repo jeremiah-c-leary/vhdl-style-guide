@@ -22,9 +22,11 @@ class rule_029(rule.rule):
         if self.clock == 'event':
             if oLine.isClockStatement and re.match('^.*ing_edge\s*\(', oLine.lineLower):
                 self.add_violation(iLineNumber)
-        else:
+        elif self.clock == 'edge':
             if oLine.isClockStatement and re.match('^.*\'event', oLine.lineLower):
                 self.add_violation(iLineNumber)
+        else:
+            raise Exception("clock option needs to be 'event' or 'edge', detected: {self.clock}")
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
