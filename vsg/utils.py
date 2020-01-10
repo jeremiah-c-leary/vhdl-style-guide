@@ -559,7 +559,7 @@ def extract_class_name(oLine):
 
     Returns: (one element list of strings)
     '''
-    return [oLine.line.split()[0]]
+    return [oLine.lineNoComment.split()[0]]
 
 
 def extract_class_identifier_list(oLine):
@@ -572,7 +572,7 @@ def extract_class_identifier_list(oLine):
 
     Returns: (list of strings)
     '''
-    sLine = oLine.line.replace(';', '')
+    sLine = oLine.lineNoComment.replace(';', '')
     sLine = sLine.split(':')[0]
     sLine = sLine.replace(',', ' ').split()
     if sLine[0].lower() in ['constant', 'variable', 'signal', 'file']:
@@ -605,7 +605,7 @@ def extract_type_name(oLine):
 
     Returns: (zero or one element list of strings)
     '''
-    sLine = oLine.line.replace(';', '')
+    sLine = oLine.lineNoComment.replace(';', '')
     sLine = sLine.replace('(', ' ')
     sLine = sLine.replace(')', ' ')
 
@@ -647,7 +647,7 @@ def extract_type_name_from_port(oLine):
 
     Returns: (one element list of strings)
     '''
-    sLine = oLine.line.split(':')[1]
+    sLine = oLine.lineNoComment.split(':')[1]
     sLine = sLine.replace('(', ' ')
     sLine = sLine.replace(')', ' ')
     sLine = sLine.replace(';', ' ')
@@ -686,7 +686,7 @@ def extract_type_identifier(oLine):
 
     Returns: (one element list of strings)
     '''
-    return [oLine.line.split()[1]]
+    return [oLine.lineNoComment.split()[1]]
 
 
 def extract_label(oLine):
@@ -699,7 +699,7 @@ def extract_label(oLine):
 
     Returns: (one element list of strings)
     '''
-    return [oLine.line.replace(' ', '').split(':')[0]]
+    return [oLine.lineNoComment.replace(' ', '').split(':')[0]]
 
 
 def extract_end_label(oLine):
@@ -731,7 +731,7 @@ def extract_entity_identifier(oLine):
 
     Returns: (one element or empty list of strings)
     '''
-    line = oLine.line.replace(';', '').split()
+    line = oLine.lineNoComment.replace(';', '').split()
 
     if line[0].lower() == 'entity':
         return [line[1]]
@@ -756,7 +756,7 @@ def extract_component_identifier(oLine):
 
     Returns: (one element or empty list of strings)
     '''
-    line = oLine.line.replace(';', '').split()
+    line = oLine.lineNoComment.replace(';', '').split()
 
     if line[0].lower() == 'component':
         return [line[1]]
@@ -781,7 +781,7 @@ def extract_first_keyword(oLine):
 
     Returns: (one element list of strings)
     '''
-    sLine = oLine.line.replace('(', ' ')
+    sLine = oLine.lineNoComment.replace('(', ' ')
     sLine = sLine.replace(':', ' ')
 
     for word in sLine.split():
@@ -799,7 +799,7 @@ def extract_port_name(oLine):
 
     Returns: (one element list of strings)
     '''
-    sLine = oLine.line.replace('(', ' ')
+    sLine = oLine.lineNoComment.replace('(', ' ')
     return [sLine.split()[0]]
 
 
@@ -851,7 +851,7 @@ def extract_words(oLine, words):
 
     Returns: (list of strings)
     '''
-    line = oLine.line.replace(';', '')
+    line = oLine.lineNoComment.replace(';', '')
     line = line.replace(':', ' ')
     line = line.replace('(', ' ')
     line = line.replace(')', ' ')
@@ -876,7 +876,7 @@ def extract_generics(oLine):
 
     Returns: (list of strings)
     '''
-    sLine = oLine.line.replace(';', '')
+    sLine = oLine.lineNoComment.replace(';', '')
     sLine = sLine.split(':')[0]
     sLine = sLine.replace('(', ' ')
     sLine = sLine.replace(',', ' ').split()
