@@ -46,7 +46,7 @@ class case_rule(rule.rule):
         pass
 
     def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.__dict__[self.sTrigger]:
+        if self.sTrigger is None or oLine.__dict__[self.sTrigger]:
             words = self._extract(oLine)
 
             if self.case == 'lower':
