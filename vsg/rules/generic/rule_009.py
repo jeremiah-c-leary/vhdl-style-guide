@@ -13,4 +13,4 @@ class rule_009(case_rule):
         self.solution = 'Change "generic" keyword to '
 
     def _extract(self, oLine):
-        return utils.extract_first_keyword(oLine)
+        return utils.extract_words(oLine, ['generic'])

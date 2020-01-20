@@ -5,7 +5,7 @@ from vsg import utils
 
 class rule_004(case_rule):
     '''
-    Entity rule 004 checks the entity keyword has proper case.
+    Entity rule 004 checks the "entity" keyword has proper case.
     '''
 
     def __init__(self):
@@ -13,4 +13,4 @@ class rule_004(case_rule):
         self.solution = 'Change "entity" keyword to '
 
     def _extract(self, oLine):
-        return utils.extract_first_keyword(oLine)
+        return utils.extract_words(oLine, ['entity'])

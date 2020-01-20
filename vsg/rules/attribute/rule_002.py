@@ -5,7 +5,7 @@ from vsg import utils
 
 class rule_002(case_rule):
     '''
-    Attribute rule 002 checks the **attribute** keyword has proper case.
+    Attribute rule 002 checks the "attribute" keyword has proper case.
     '''
 
     def __init__(self):
@@ -13,4 +13,4 @@ class rule_002(case_rule):
         self.solution = 'Change "attribute" keyword to '
 
     def _extract(self, oLine):
-        return utils.extract_first_keyword(oLine)
+        return utils.extract_words(oLine, ['attribute'])

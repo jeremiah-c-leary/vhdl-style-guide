@@ -5,7 +5,7 @@ from vsg import utils
 
 class rule_025(case_rule):
     '''
-    If rule 025 checks the **if** keyword has proper case.
+    If rule 025 checks the "if" keyword has proper case.
     '''
 
     def __init__(self):
@@ -13,4 +13,4 @@ class rule_025(case_rule):
         self.solution = 'Change "if" keyword to '
 
     def _extract(self, oLine):
-        return utils.extract_first_keyword(oLine)
+        return utils.extract_words(oLine, ['if'])
