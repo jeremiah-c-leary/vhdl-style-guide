@@ -78,7 +78,7 @@ end;
 
 -- Comment
 
-architecture ARCH of arch is
+architecture ARCH of ent is
 
 begin
 

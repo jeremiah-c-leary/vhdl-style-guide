@@ -886,6 +886,30 @@ def extract_generics(oLine):
     return sLine
 
 
+def extract_architecture_identifier(oLine):
+    '''
+    Returns architecture name from architecture declaration or end.
+
+    Parameters:
+
+       oLine: (line object)
+
+    Returns: (one element or empty list of strings)
+    '''
+    sLine = oLine.lineNoComment.replace(';', '').split()
+    if sLine[0].lower() == 'architecture':
+        if len(sLine) > 1:
+            return [sLine[1]]
+    elif len(sLine) > 1 and sLine[1].lower() == 'architecture':
+        if len(sLine) > 2:
+            return [sLine[2]]
+    elif sLine[0].lower() == 'end':
+        if len(sLine) > 1:
+            return [sLine[1]]
+
+    return []
+
+
 def remove_comment_attributes_from_line(oLine):
     '''
     Sets all comment attributes on a line to indicate no comment is present.

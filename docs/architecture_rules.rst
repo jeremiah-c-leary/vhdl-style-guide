@@ -62,7 +62,7 @@ architecture_004
 
 This rule checks the proper case of the **architecture** keyword in the architecture declaration.
 
-.. NOTE::  The default is lowercase.
+.. NOTE:: The default is lowercase.
 
    Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
@@ -159,7 +159,9 @@ This rule checks for spaces before the **end architecture** keywords.
 architecture_009
 ################
 
-This rule checks the **end** and **architecture** keywords are lower case.
+This rule checks the **end** and **architecture** keywords have proper case.
+
+.. NOTE:: The default is lowercase.
 
 **Violation**
 
@@ -200,7 +202,7 @@ architecture_011
 
 This rule checks the architecture name case in the **end architecture** statement.
 
-.. NOTE::  The default is uppercase.
+.. NOTE:: The default is uppercase.
 
    Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
@@ -239,7 +241,7 @@ architecture_013
 
 This rule checks the case of the architecture name in the architecture declaration.
 
-.. NOTE::  The default is uppercase.
+.. NOTE:: The default is uppercase.
 
    Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
@@ -261,7 +263,7 @@ architecture_014
 
 This rule checks the case of the entity name in the architecture declaration.
 
-.. NOTE::  The default is uppercase.
+.. NOTE:: The default is uppercase.
 
    Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
@@ -370,7 +372,7 @@ architecture_019
 
 This rule checks the proper case of the **of** keyword in the architecture declaration.
 
-.. NOTE::  The default is lowercase.
+.. NOTE:: The default is lowercase.
 
    Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
@@ -391,7 +393,7 @@ architecture_020
 
 This rule checks the proper case of the **is** keyword in the architecture declaration.
 
-.. NOTE::  The default is lowercase.
+.. NOTE:: The default is lowercase.
 
    Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
@@ -412,7 +414,7 @@ architecture_021
 
 This rule checks the proper case of the **begin** keyword.
 
-.. NOTE::  The default is lowercase.
+.. NOTE:: The default is lowercase.
 
    Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
