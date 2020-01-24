@@ -771,24 +771,6 @@ def extract_component_identifier(oLine):
     return []
 
 
-def extract_first_keyword(oLine):
-    '''
-    Returns first keyword from line.
-
-    Parameters:
-
-       oLine: (line object)
-
-    Returns: (one element list of strings)
-    '''
-    sLine = oLine.lineNoComment.replace('(', ' ')
-    sLine = sLine.replace(':', ' ')
-
-    for word in sLine.split():
-        if is_vhdl_keyword(word):
-            return [word]
-
-
 def extract_port_name(oLine):
     '''
     Returns port name from line.

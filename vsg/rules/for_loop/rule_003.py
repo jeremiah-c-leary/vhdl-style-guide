@@ -14,4 +14,4 @@ class rule_003(case_rule):
         self.case = 'upper'
 
     def _extract(self, oLine):
-        return utils.extract_first_keyword(oLine)
+        return [oLine.lineNoComment.replace(':', ' ').split()[0]]

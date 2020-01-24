@@ -5,7 +5,7 @@ from vsg import utils
 
 class rule_017(case_rule):
     '''
-    Entity rule 017 checks the end keyword has proper case.
+    Entity rule 017 checks the "end" keyword has proper case.
     '''
 
     def __init__(self):
@@ -13,4 +13,4 @@ class rule_017(case_rule):
         self.solution = 'Change "end" keyword to '
 
     def _extract(self, oLine):
-        return utils.extract_first_keyword(oLine)
+        return utils.extract_words(oLine, ['end'])

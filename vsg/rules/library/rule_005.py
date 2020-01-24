@@ -5,7 +5,7 @@ from vsg import utils
 
 class rule_005(case_rule):
     '''
-    Library rule 005 checks the use keyword has proper case.
+    Library rule 005 checks the "use" keyword has proper case.
     '''
 
     def __init__(self):
@@ -13,4 +13,4 @@ class rule_005(case_rule):
         self.solution = 'Change "use" keyword to '
 
     def _extract(self, oLine):
-        return utils.extract_first_keyword(oLine)
+        return utils.extract_words(oLine, ['use'])
