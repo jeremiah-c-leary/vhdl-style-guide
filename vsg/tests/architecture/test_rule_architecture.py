@@ -181,14 +181,14 @@ class testRuleArchitectureMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'architecture')
         self.assertEqual(oRule.identifier, '013')
-        dExpected = [3,20]
+        dExpected = [3,20,26]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_013_lowercase(self):
         oRule = architecture.rule_013()
         oRule.case = 'lower'
-        dExpected = [3,9,14,20,33,37,47,59,81]
+        dExpected = [3,9,14,20,26,33,37,47,59,81]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
