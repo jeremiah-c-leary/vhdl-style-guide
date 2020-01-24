@@ -104,7 +104,7 @@ def change_word(oLine, sWord, sNewWord, iMax=1):
       sNewWord: (string)
     '''
     sLine = oLine.line
-    tLine = re.subn(r'\b' + sWord + r'\b', sNewWord, sLine, iMax, flags=re.IGNORECASE)
+    tLine = re.subn(r'\b' + re.escape(sWord) + r'\b', sNewWord, sLine, iMax, flags=re.IGNORECASE)
     sLine = tLine[0]
     if tLine[1] == 0:
         tLine = re.subn(' ' + sWord + ';', sNewWord + ';', sLine, iMax, flags=re.IGNORECASE)
@@ -315,6 +315,9 @@ def search_for_and_remove_keyword(oFile, iLineNumber, sKeyword):
         if not oLine.isBlank:
             break
 
+# Regex to find comments that ignores contents of double quoted strings,
+# for example, "--" : a two bit std_logic_vector literal of don't cares.
+has_comment_re = re.compile(r'^(?:".*"|[^"\n])*?(?P<comment>--.*$)', re.IGNORECASE)
 
 def remove_comment(sString):
     '''
@@ -326,10 +329,11 @@ def remove_comment(sString):
 
     Returns: (string)
     '''
-    if '--' in sString:
-        return sString[0:sString.find('--') + len('--')]
-    else:
+    match = has_comment_re.match(sString)
+    if match is None:
         return sString
+
+    return sString[:match.start("comment")].rstrip()
 
 
 def remove_blank_line(oFile, iLineNumber):
@@ -470,7 +474,7 @@ def end_of_line_index(oLine):
     Returns: (integer)
     '''
 
-    sLine = remove_comment(oLine.line).replace('--', '')
+    sLine = remove_comment(oLine.line)
     for iIndex, sChar in enumerate(sLine[::-1]):
         if not sChar == ' ':
             return len(sLine) - iIndex
@@ -522,7 +526,7 @@ def extract_non_keywords(sString):
     Returns: (list of strings)
     '''
     lReturn = []
-    sMyString = remove_comment(sString).replace('--', ' ')
+    sMyString = remove_comment(sString)
     sMyString = sMyString.replace(':', ' ')
     sMyString = sMyString.replace(',', ' ')
     sMyString = sMyString.replace('\'', ' ')

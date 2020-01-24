@@ -16,11 +16,8 @@ def keyword_alignment(self, iLineNumber, sKeyword, lGroup):
     iKeywordAlignment = None
     iMaximumKeywordColumn = 0
     sViolationRange = str(iLineNumber) + '-' + str(iLineNumber + len(lGroup) - 1)
-    try:
-        self.dFix['violations'][sViolationRange]['line'] = {}
-    except KeyError:
-        self.dFix['violations'][sViolationRange] = {}
-        self.dFix['violations'][sViolationRange]['line'] = {}
+
+    self.dFix['violations'].setdefault(sViolationRange, {}).setdefault('line', {})
 
     for iIndex, oGroupLine in enumerate(lGroup):
         if sKeyword in oGroupLine.line:

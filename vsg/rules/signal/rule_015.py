@@ -1,6 +1,7 @@
 
 from vsg import rule
 from vsg import utils
+import re
 
 
 class rule_015(rule.rule):
@@ -26,7 +27,9 @@ class rule_015(rule.rule):
         if oLine.insideSignal:
             self.sFullLine += oLine.line
         if oLine.isEndSignal:
-            if self.sFullLine.count(',') > self.consecutive - 1:
+            match = re.match(r'.*?signal\s+(?P<signals>[^:\n]*):', self.sFullLine)
+            sSignalList = match.group("signals")
+            if sSignalList.count(',') > self.consecutive - 1:
                 self.add_violation(self.iFailureLine)
                 self.dFix['violations'][self.iFailureLine] = {}
                 self.dFix['violations'][self.iFailureLine]['endLine'] = iLineNumber

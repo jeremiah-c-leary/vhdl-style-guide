@@ -24,14 +24,14 @@ class rule_001(rule.rule):
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.insideClockProcess:
             if oLine.isSequentialEnd:
-                self.sequentialStatement += oLine.lineNoComment.replace('--', '  ')
+                self.sequentialStatement += oLine.lineNoComment + " "
                 if not re.match('^\s*.*\safter\s', self.sequentialStatement):
                     self.add_violation(iLineNumber)
                 self.sequentialStatement = ""
             elif oLine.insideSequential:
-                self.sequentialStatement += oLine.lineNoComment.replace('--', '  ')
+                self.sequentialStatement += oLine.lineNoComment + " "
             elif oLine.isSequential:
-                self.sequentialStatement = oLine.lineNoComment.replace('--', '  ')
+                self.sequentialStatement = oLine.lineNoComment + " "
 
     def _fix_violations(self, oFile):
         for iLineNumber in self.violations:
