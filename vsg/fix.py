@@ -30,7 +30,7 @@ def keyword_alignment(self, oFile):
 
       oFile: (vhdlFile object)
     '''
-    for sKey in self.dFix['violations']:
+    for sKey in self.violations:
         iMaximumKeywordColumn = self.dFix['violations'][sKey]['maximumKeywordColumn']
         for iLineNumber in self.dFix['violations'][sKey]['line']:
             iKeywordColumn = self.dFix['violations'][sKey]['line'][iLineNumber]['keywordColumn']
