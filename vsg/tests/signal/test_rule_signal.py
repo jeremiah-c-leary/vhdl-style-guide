@@ -28,7 +28,9 @@ class testRuleSignalMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'signal')
         self.assertEqual(oRule.identifier, '002')
-        lExpected = [7,11,13]
+        lExpected = [{'line_number': 7, 'words_to_fix': {'Signal'}},
+                     {'line_number': 11, 'words_to_fix': {'siGNal'}},
+                     {'line_number': 13, 'words_to_fix': {'signAL'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, lExpected)
 
@@ -58,7 +60,12 @@ class testRuleSignalMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'signal')
         self.assertEqual(oRule.identifier, '004')
-        lExpected = [6,9,12,15,20,21]
+        lExpected = [{'line_number': 6, 'words_to_fix': {'a_SIg'}},
+                     {'line_number': 9, 'words_to_fix': {'siG'}},
+                     {'line_number': 12, 'words_to_fix': {'SIg'}},
+                     {'line_number': 15, 'words_to_fix': {'sIg'}},
+                     {'line_number': 20, 'words_to_fix': {'b_Sig2', 'b_siG100'}},
+                     {'line_number': 21, 'words_to_fix': {'a_sIg2'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, lExpected)
 
@@ -114,7 +121,8 @@ class testRuleSignalMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'signal')
         self.assertEqual(oRule.identifier, '010')
-        lExpected = [12,16]
+        lExpected = [{'line_number': 12, 'words_to_fix': {'STD_LOGIC_VECTOR'}},
+                     {'line_number': 16, 'words_to_fix': {'STD_LOGIC_VECTOR'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, lExpected)
 
@@ -123,7 +131,9 @@ class testRuleSignalMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'signal')
         self.assertEqual(oRule.identifier, '011')
-        lExpected = [12,16,23]
+        lExpected = [{'line_number': 12, 'words_to_fix': {'STD_LOGIC_VECTOR'}},
+                     {'line_number': 16, 'words_to_fix': {'STD_LOGIC_VECTOR'}},
+                     {'line_number': 23, 'words_to_fix': {'t_User_Defined_Type'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, lExpected)
 

@@ -29,7 +29,7 @@ class testRuleTypeMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'type')
         self.assertEqual(oRule.identifier, '002')
-        dExpected = [34]
+        dExpected = [{'line_number': 34, 'words_to_fix': {'TYPE'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -54,7 +54,7 @@ class testRuleTypeMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'type')
         self.assertEqual(oRule.identifier, '004')
-        dExpected = [27]
+        dExpected = [{'line_number': 27, 'words_to_fix': {'A'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -135,7 +135,7 @@ class testRuleTypeMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'type')
         self.assertEqual(oRule.identifier, '013')
-        dExpected = [13]
+        dExpected = [{'line_number': 13, 'words_to_fix': {'IS'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 

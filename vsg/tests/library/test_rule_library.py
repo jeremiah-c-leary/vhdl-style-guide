@@ -49,7 +49,8 @@ class testRuleLibraryMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'library')
         self.assertEqual(oRule.identifier, '004')
 
-        dExpected = [9,20]
+        dExpected = [{'line_number': 9, 'words_to_fix': {'Library'}},
+                     {'line_number': 20, 'words_to_fix': {'LIBRARY'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -59,7 +60,9 @@ class testRuleLibraryMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'library')
         self.assertEqual(oRule.identifier, '005')
 
-        dExpected = [26,27,30]
+        dExpected = [{'line_number': 26, 'words_to_fix': {'USE'}},
+                     {'line_number': 27, 'words_to_fix': {'Use'}},
+                     {'line_number': 30, 'words_to_fix': {'uSe'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 

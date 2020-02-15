@@ -1,7 +1,6 @@
 
 from vsg import rule
 from vsg import fix
-from vsg import check
 from abc import abstractmethod
 
 
@@ -37,36 +36,47 @@ class case_rule(rule.rule):
         self.solution = None
         self.sTrigger = sTrigger
         self.case = 'lower'
-        # Dictionary with words to be fixed. Key is line number, value is a list of words to fix for given key.
-        self.words_to_fix = {}
         self.configuration.append('case')
 
     @abstractmethod
     def _extract(self, oLine):
         pass
 
+    def _is_uppercase(self, sString):
+        if not sString == sString.upper():
+            return False
+
+        return True
+
+    def _is_lowercase(self, sString):
+        if not sString == sString.lower():
+            return False
+
+        return True
+
     def _analyze(self, oFile, oLine, iLineNumber):
         if self.sTrigger is None or oLine.__dict__[self.sTrigger]:
             words = self._extract(oLine)
 
             if self.case == 'lower':
-                check_function = check.is_lowercase
+                check_function = self._is_lowercase
             elif self.case == 'upper':
-                check_function = check.is_uppercase
+                check_function = self._is_uppercase
             else:
                 raise Exception("case option needs to be 'lower' or 'upper', detected: {self.case}")
 
-            words_to_fix = set()
+            violation = {'line_number': iLineNumber, 'words_to_fix': set()}
             for word in words:
-                if not check_function(self, word, iLineNumber):
-                    words_to_fix.add(word)
+                if not check_function(word):
+                    violation['words_to_fix'].add(word)
 
-            if words_to_fix:
-                self.words_to_fix[iLineNumber] = words_to_fix
+            if violation['words_to_fix']:
+                self.add_violation(violation)
 
     def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
-            for word in self.words_to_fix[iLineNumber]:
+        for violation in self.violations:
+            iLineNumber = violation['line_number']
+            for word in violation['words_to_fix']:
                 if self.case == 'lower':
                     fix_function = fix.lower_case
                 else:

@@ -28,7 +28,7 @@ class testRuleAttributeMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'attribute')
         self.assertEqual(oRule.identifier, '002')
 
-        dExpected = [9]
+        dExpected = [{'line_number': 9, 'words_to_fix': {'ATTRIBUTE'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 

@@ -21,7 +21,8 @@ class testComponentKeyword(unittest.TestCase):
         self.assertEqual(oRule.identifier, '031')
         self.assertTrue(oRule.disable)
 
-        dExpected = [13, 20]
+        dExpected = [{'line_number': 13, 'words_to_fix': {'COMPONENT'}},
+                     {'line_number': 20, 'words_to_fix': {'Component'}}]
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
 

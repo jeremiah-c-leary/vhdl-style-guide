@@ -35,14 +35,19 @@ class testRuleForLoopMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'for_loop')
         self.assertEqual(oRule.identifier, '003')
-        dExpected = [36, 40]
+        dExpected = [{'line_number': 36, 'words_to_fix': {'label'}},
+                     {'line_number': 40, 'words_to_fix': {'Label'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_003_lowercase(self):
         oRule = for_loop.rule_003()
         oRule.case = 'lower'
-        dExpected = [40,44,48,52,56]
+        dExpected = [{'line_number': 40, 'words_to_fix': {'Label'}},
+                     {'line_number': 44, 'words_to_fix': {'LABEL'}},
+                     {'line_number': 48, 'words_to_fix': {'LABEL'}},
+                     {'line_number': 52, 'words_to_fix': {'LABEL'}},
+                     {'line_number': 56, 'words_to_fix': {'LABEL'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 

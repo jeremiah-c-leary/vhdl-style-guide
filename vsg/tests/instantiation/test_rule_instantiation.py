@@ -76,7 +76,9 @@ class testRuleInstantiationMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'instantiation')
         self.assertEqual(oRule.identifier, '006')
 
-        dExpected = [31,37,52]
+        dExpected = [{'line_number': 31, 'words_to_fix': {'pOrt'}},
+                     {'line_number': 37, 'words_to_fix': {'mAp'}},
+                     {'line_number': 52, 'words_to_fix': {'mAp'}}]
         oRule.analyze(oFilePort)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -96,7 +98,8 @@ class testRuleInstantiationMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'instantiation')
         self.assertEqual(oRule.identifier, '008')
 
-        dExpected = [17,52]
+        dExpected = [{'line_number': 17, 'words_to_fix': {'U_INsT1'}},
+                     {'line_number': 52, 'words_to_fix': {'U_InST1'}}]
         oRule.analyze(oFilePort)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -106,7 +109,8 @@ class testRuleInstantiationMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'instantiation')
         self.assertEqual(oRule.identifier, '009')
 
-        dExpected = [23,52]
+        dExpected = [{'line_number': 23, 'words_to_fix': {'InST1'}},
+                     {'line_number': 52, 'words_to_fix': {'INsT1'}}]
         oRule.analyze(oFilePort)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -126,7 +130,26 @@ class testRuleInstantiationMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'instantiation')
         self.assertEqual(oRule.identifier, '011')
 
-        dExpected = [19,20,21,25,26,27,32,33,34,39,41,46,47,48,53,54,55,71,72,95]
+        dExpected = [{'line_number': 19, 'words_to_fix': {'port_1'}},
+                     {'line_number': 20, 'words_to_fix': {'port_2'}},
+                     {'line_number': 21, 'words_to_fix': {'port_3'}},
+                     {'line_number': 25, 'words_to_fix': {'port_1'}},
+                     {'line_number': 26, 'words_to_fix': {'port_2'}},
+                     {'line_number': 27, 'words_to_fix': {'port_3'}},
+                     {'line_number': 32, 'words_to_fix': {'port_1'}},
+                     {'line_number': 33, 'words_to_fix': {'port_2'}},
+                     {'line_number': 34, 'words_to_fix': {'port_3'}},
+                     {'line_number': 39, 'words_to_fix': {'port_1'}},
+                     {'line_number': 41, 'words_to_fix': {'port_3'}},
+                     {'line_number': 46, 'words_to_fix': {'port_1'}},
+                     {'line_number': 47, 'words_to_fix': {'port_2'}},
+                     {'line_number': 48, 'words_to_fix': {'port_3'}},
+                     {'line_number': 53, 'words_to_fix': {'port_1'}},
+                     {'line_number': 54, 'words_to_fix': {'port_2'}},
+                     {'line_number': 55, 'words_to_fix': {'port_3'}},
+                     {'line_number': 71, 'words_to_fix': {'port_1'}},
+                     {'line_number': 72, 'words_to_fix': {'port_2'}},
+                     {'line_number': 95, 'words_to_fix': {'b'}}]
         oRule.analyze(oFilePort)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -146,7 +169,8 @@ class testRuleInstantiationMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'instantiation')
         self.assertEqual(oRule.identifier, '013')
 
-        dExpected = [22,33]
+        dExpected = [{'line_number': 22, 'words_to_fix': {'genEric'}},
+                     {'line_number': 33, 'words_to_fix': {'mAP'}}]
         oRule.analyze(oFileGeneric)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -176,7 +200,9 @@ class testRuleInstantiationMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'instantiation')
         self.assertEqual(oRule.identifier, '016')
 
-        dExpected = [34,46,55]
+        dExpected = [{'line_number': 34, 'words_to_fix': {'GENerIC_1'}},
+                     {'line_number': 46, 'words_to_fix': {'GENERic_2'}},
+                     {'line_number': 55, 'words_to_fix': {'generic_2'}}]
         oRule.analyze(oFileGeneric)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -296,7 +322,8 @@ class testRuleInstantiationMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'instantiation')
         self.assertEqual(oRule.identifier, '027')
 
-        dExpected = [13,20]
+        dExpected = [{'line_number': 13, 'words_to_fix': {'ENTITY'}},
+                     {'line_number': 20, 'words_to_fix': {'ENTITY'}}]
         oRule.analyze(oFileDirect)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -306,7 +333,7 @@ class testRuleInstantiationMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'instantiation')
         self.assertEqual(oRule.identifier, '028')
 
-        dExpected = [20]
+        dExpected = [{'line_number': 20, 'words_to_fix': {'inst1'}}]
         oRule.analyze(oFileDirect)
         self.assertEqual(oRule.violations, dExpected)
 

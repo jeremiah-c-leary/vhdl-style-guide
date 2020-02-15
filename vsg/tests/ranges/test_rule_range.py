@@ -16,14 +16,23 @@ class testRuleRange(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'range')
         self.assertEqual(oRule.identifier, '001')
-        dExpected = [17,21,28,33]
+        dExpected = [{'line_number': 17, 'words_to_fix': {'downTo'}},
+                     {'line_number': 21, 'words_to_fix': {'Downto'}},
+                     {'line_number': 28, 'words_to_fix': {'DOWNTO'}},
+                     {'line_number': 33, 'words_to_fix': {'dOWnto'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_001_with_uppercase(self):
         oRule = ranges.rule_001()
         oRule.case = 'upper'
-        dExpected = [5,9,17,21,29,33,34]
+        dExpected = [{'line_number': 5, 'words_to_fix': {'downto'}},
+                     {'line_number': 9, 'words_to_fix': {'downto'}},
+                     {'line_number': 17, 'words_to_fix': {'downTo'}},
+                     {'line_number': 21, 'words_to_fix': {'Downto'}},
+                     {'line_number': 29, 'words_to_fix': {'downto'}},
+                     {'line_number': 33, 'words_to_fix': {'dOWnto'}},
+                     {'line_number': 34, 'words_to_fix': {'downto'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -32,13 +41,21 @@ class testRuleRange(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'range')
         self.assertEqual(oRule.identifier, '002')
-        dExpected = [18,22,30,35]
+        dExpected = [{'line_number': 18, 'words_to_fix': {'TO'}},
+                     {'line_number': 22, 'words_to_fix': {'tO'}},
+                     {'line_number': 30, 'words_to_fix': {'To'}},
+                     {'line_number': 35, 'words_to_fix': {'TO'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_002_with_uppercase(self):
         oRule = ranges.rule_002()
         oRule.case = 'upper'
-        dExpected = [6,10,22,30,31,36]
+        dExpected = [{'line_number': 6, 'words_to_fix': {'to'}},
+                     {'line_number': 10, 'words_to_fix': {'to'}},
+                     {'line_number': 22, 'words_to_fix': {'tO'}},
+                     {'line_number': 30, 'words_to_fix': {'To'}},
+                     {'line_number': 31, 'words_to_fix': {'to'}},
+                     {'line_number': 36, 'words_to_fix': {'to'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
