@@ -37,3 +37,6 @@ def read_vhdlfile(sFileName):
         return lLines
     except IOError:
         return []
+
+def add_violation(iLineNumber):
+    return {'lineNumber': iLineNumber}

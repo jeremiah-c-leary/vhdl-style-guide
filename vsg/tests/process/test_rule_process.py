@@ -175,6 +175,16 @@ class testRuleProcessMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'process')
         self.assertEqual(oRule.identifier, '018')
         dExpected = [9,15,22,30,36,42,53,60,132]
+        dExpected = []
+        dExpected.append(utils.add_violation(9))
+        dExpected.append(utils.add_violation(15))
+        dExpected.append(utils.add_violation(22))
+        dExpected.append(utils.add_violation(30))
+        dExpected.append(utils.add_violation(36))
+        dExpected.append(utils.add_violation(42))
+        dExpected.append(utils.add_violation(53))
+        dExpected.append(utils.add_violation(60))
+        dExpected.append(utils.add_violation(132))
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
