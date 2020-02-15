@@ -13,4 +13,4 @@ def is_blank_line_after(self, oFile, iLineNumber):
       iLineNumber: (integer)
     '''
     if not oFile.lines[iLineNumber + 1].isBlank:
-        self.add_violation(iLineNumber)
+        self.add_violation({'lineNumber': iLineNumber})

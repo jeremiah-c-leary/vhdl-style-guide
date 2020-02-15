@@ -20,7 +20,7 @@ class testRuleIfMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'if')
         self.assertEqual(oRule.identifier, '030')
-        dExpected = [19]
+        dExpected = [utils.add_violation(19)]
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
 

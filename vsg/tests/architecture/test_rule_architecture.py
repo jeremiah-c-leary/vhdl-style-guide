@@ -251,7 +251,7 @@ class testRuleArchitectureMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'architecture')
         self.assertEqual(oRule.identifier, '015')
-        dExpected = [26,33]
+        dExpected = utils.add_violation_list([26,33])
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -269,7 +269,7 @@ class testRuleArchitectureMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'architecture')
         self.assertEqual(oRule.identifier, '017')
-        dExpected = [34]
+        dExpected = [utils.add_violation(34)]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
