@@ -38,6 +38,6 @@ class testRuleAttributeMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'attribute')
         self.assertEqual(oRule.identifier, '003')
 
-        dExpected = [11]
+        dExpected = [utils.add_violation(11)]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)

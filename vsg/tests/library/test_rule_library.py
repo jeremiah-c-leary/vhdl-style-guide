@@ -29,7 +29,7 @@ class testRuleLibraryMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'library')
         self.assertEqual(oRule.identifier, '002')
 
-        dExpected = [13,20,21]
+        dExpected = utils.add_violation_list([13,20,21])
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -72,7 +72,7 @@ class testRuleLibraryMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'library')
         self.assertEqual(oRule.identifier, '006')
 
-        dExpected = [27,30]
+        dExpected = utils.add_violation_list([27,30])
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 

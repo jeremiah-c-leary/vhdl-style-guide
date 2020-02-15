@@ -39,7 +39,7 @@ class testRuleVariableMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'variable')
         self.assertEqual(oRule.identifier, '003')
-        dExpected = [8,9,12]
+        dExpected = utils.add_violation_list([8,9,12])
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 

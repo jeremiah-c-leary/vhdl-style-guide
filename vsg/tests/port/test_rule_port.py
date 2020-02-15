@@ -39,7 +39,7 @@ class testRulePortMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'port')
         self.assertEqual(oRule.identifier, '003')
 
-        dExpected = [25,56]
+        dExpected = utils.add_violation_list([25,56])
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -99,7 +99,7 @@ class testRulePortMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'port')
         self.assertEqual(oRule.identifier, '009')
 
-        dExpected = [28,45,59,62]
+        dExpected = utils.add_violation_list([28,45,59,62])
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 

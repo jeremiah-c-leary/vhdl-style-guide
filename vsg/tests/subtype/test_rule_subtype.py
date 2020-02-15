@@ -31,14 +31,14 @@ class testRuleSubtypeMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'subtype')
         self.assertEqual(oRule.identifier, '003')
-        dExpected = [65]
+        dExpected = [utils.add_violation(65)]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_003_w_2_spaces(self):
         oRule = subtype.rule_003()
         oRule.spaces = 2
-        dExpected = [51]
+        dExpected = [utils.add_violation(51)]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 

@@ -22,6 +22,6 @@ class rule_013(rule.rule):
             check.is_single_space_after(self, 'component', oLine, iLineNumber)
 
     def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
-            oLine = oFile.lines[iLineNumber]
+        for dViolation in self.violations:
+            oLine = oFile.lines[dViolation['lineNumber']]
             fix.enforce_one_space_after_word(self, oLine, 'component')

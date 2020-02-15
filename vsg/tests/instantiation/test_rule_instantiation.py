@@ -232,7 +232,7 @@ class testRuleInstantiationMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'instantiation')
         self.assertEqual(oRule.identifier, '018')
 
-        dExpected = [26,33,54,66]
+        dExpected = utils.add_violation_list([26,33,54,66])
         oRule.analyze(oFileGeneric)
         self.assertEqual(oRule.violations, dExpected)
 

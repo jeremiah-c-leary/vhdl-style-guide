@@ -30,7 +30,7 @@ class testRuleComponentMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'component')
         self.assertEqual(oRule.identifier, '002')
 
-        dExpected = [27,45]
+        dExpected = utils.add_violation_list([27,45])
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -120,7 +120,7 @@ class testRuleComponentMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'component')
         self.assertEqual(oRule.identifier, '011')
 
-        dExpected = [52]
+        dExpected = [utils.add_violation(52)]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -154,7 +154,7 @@ class testRuleComponentMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'component')
         self.assertEqual(oRule.identifier, '013')
 
-        dExpected = [34]
+        dExpected = [utils.add_violation(34)]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 

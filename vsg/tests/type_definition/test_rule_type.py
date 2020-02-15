@@ -38,14 +38,14 @@ class testRuleTypeMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'type')
         self.assertEqual(oRule.identifier, '003')
-        dExpected = [29]
+        dExpected = [utils.add_violation(29)]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_003_w_2_spaces(self):
         oRule = type_definition.rule_003()
         oRule.spaces = 2
-        dExpected = [4,6,11,13,27,34,36,43,54,57,69,122,134]
+        dExpected = utils.add_violation_list([4,6,11,13,27,34,36,43,54,57,69,122,134])
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -81,7 +81,7 @@ class testRuleTypeMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'type')
         self.assertEqual(oRule.identifier, '007')
-        dExpected = [29]
+        dExpected = [utils.add_violation(29)]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 

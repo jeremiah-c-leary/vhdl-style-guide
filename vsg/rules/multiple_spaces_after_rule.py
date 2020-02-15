@@ -47,8 +47,8 @@ class multiple_spaces_after_rule(rule.rule):
             check.are_there_spaces_after(self, self.sWord, oLine, iLineNumber, self.spaces)
 
     def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
-            oLine = oFile.lines[iLineNumber]
+        for dViolation in self.violations:
+            oLine = oFile.lines[dViolation['lineNumber']]
             fix.enforce_spaces_after_word(self, oLine, self.sWord, self.spaces)
 
     def _get_solution(self, iLineNumber):

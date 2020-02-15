@@ -35,4 +35,4 @@ def are_there_spaces_after(self, sString, oLine, iLineNumber, iSpaces):
     if not re.match('^.*\s+' + sString + sSpaces + '\S', oLine.lineLower) and \
        not re.match('^\s*' + sString + sSpaces + '\S', oLine.lineLower) and \
        not re.match('^.*\S\s' + sString + '\'', oLine.lineLower):
-        self.add_violation(iLineNumber)
+        self.add_violation({'lineNumber': iLineNumber})

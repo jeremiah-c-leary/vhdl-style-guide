@@ -39,7 +39,7 @@ class testRuleFileMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'file')
         self.assertEqual(oRule.identifier, '003')
 
-        dExpected = [9]
+        dExpected = [utils.add_violation(9)]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -47,6 +47,6 @@ class testRuleFileMethods(unittest.TestCase):
         oRule = file_statement.rule_003()
         oRule.spaces = 5
 
-        dExpected = [4,6,11,26]
+        dExpected = utils.add_violation_list([4,6,11,26])
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
