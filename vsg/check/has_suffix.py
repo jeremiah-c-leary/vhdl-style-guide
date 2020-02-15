@@ -18,4 +18,4 @@ def has_suffix(self, suffixes, words, iLineNumber):
             if word.endswith(suffix):
                 break
         else:
-            self.add_violation(iLineNumber)
+            self.add_violation({'lineNumber': iLineNumber})
