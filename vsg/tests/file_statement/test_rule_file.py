@@ -29,7 +29,7 @@ class testRuleFileMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'file')
         self.assertEqual(oRule.identifier, '002')
 
-        dExpected = [9]
+        dExpected = [{'line_number': 9, 'words_to_fix': {'FILE'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 

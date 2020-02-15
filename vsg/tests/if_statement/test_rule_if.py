@@ -229,7 +229,7 @@ class testRuleIfMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'if')
         self.assertEqual(oRule.identifier, '025')
-        dExpected = [13]
+        dExpected = [{'line_number': 13, 'words_to_fix': {'IF'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -238,7 +238,7 @@ class testRuleIfMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'if')
         self.assertEqual(oRule.identifier, '026')
-        dExpected = [24]
+        dExpected = [{'line_number': 24, 'words_to_fix': {'ELSIF'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -247,7 +247,7 @@ class testRuleIfMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'if')
         self.assertEqual(oRule.identifier, '027')
-        dExpected = [94]
+        dExpected = [{'line_number': 94, 'words_to_fix': {'ELSE'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -256,7 +256,8 @@ class testRuleIfMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'if')
         self.assertEqual(oRule.identifier, '028')
-        dExpected = [17,27]
+        dExpected = [{'line_number': 17, 'words_to_fix': {'END'}},
+                     {'line_number': 27, 'words_to_fix': {'IF'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -265,7 +266,7 @@ class testRuleIfMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'if')
         self.assertEqual(oRule.identifier, '029')
-        dExpected = [14]
+        dExpected = [{'line_number': 14, 'words_to_fix': {'THEN'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 

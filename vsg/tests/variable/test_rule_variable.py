@@ -28,7 +28,9 @@ class testRuleVariableMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'variable')
         self.assertEqual(oRule.identifier, '002')
-        dExpected = [7,11,13]
+        dExpected = [{'line_number': 7, 'words_to_fix': {'Variable'}},
+                     {'line_number': 11, 'words_to_fix': {'varIAble'}},
+                     {'line_number': 13, 'words_to_fix': {'variabLE'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -46,7 +48,10 @@ class testRuleVariableMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'variable')
         self.assertEqual(oRule.identifier, '004')
-        dExpected = [6,9,12,15]
+        dExpected = [{'line_number': 6, 'words_to_fix': {'a_SIg'}},
+                     {'line_number': 9, 'words_to_fix': {'siG'}},
+                     {'line_number': 12, 'words_to_fix': {'SIg'}},
+                     {'line_number': 15, 'words_to_fix': {'sIg'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -91,7 +96,7 @@ class testRuleVariableMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'variable')
         self.assertEqual(oRule.identifier, '010')
-        dExpected = [12,18]
+        dExpected = [{'line_number': 12, 'words_to_fix': {'STD_LOGIC_VECTOR'}}, {'line_number': 18, 'words_to_fix': {'STD_LOGIC'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
