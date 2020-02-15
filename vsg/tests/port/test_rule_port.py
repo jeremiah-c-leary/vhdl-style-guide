@@ -109,7 +109,21 @@ class testRulePortMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'port')
         self.assertEqual(oRule.identifier, '010')
 
-        dExpected = [12,13,14,26,27,28,40,41,42,60,61,62,74,75,76]
+        dExpected = [{'line_number': 12, 'words_to_fix': {'use_4'}},
+                     {'line_number': 13, 'words_to_fix': {'port5'}},
+                     {'line_number': 14, 'words_to_fix': {'port6'}},
+                     {'line_number': 26, 'words_to_fix': {'i_port1'}},
+                     {'line_number': 27, 'words_to_fix': {'o_port2'}},
+                     {'line_number': 28, 'words_to_fix': {'io_port3'}},
+                     {'line_number': 40, 'words_to_fix': {'i_port1'}},
+                     {'line_number': 41, 'words_to_fix': {'o_port2'}},
+                     {'line_number': 42, 'words_to_fix': {'io_port3'}},
+                     {'line_number': 60, 'words_to_fix': {'port4'}},
+                     {'line_number': 61, 'words_to_fix': {'port5'}},
+                     {'line_number': 62, 'words_to_fix': {'port6'}},
+                     {'line_number': 74, 'words_to_fix': {'port4'}},
+                     {'line_number': 75, 'words_to_fix': {'port5'}},
+                     {'line_number': 76, 'words_to_fix': {'port6'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -181,7 +195,9 @@ class testRulePortMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'port')
         self.assertEqual(oRule.identifier, '017')
 
-        dExpected = [25,39,98]
+        dExpected = [{'line_number': 25, 'words_to_fix': {'PORt'}},
+                     {'line_number': 39, 'words_to_fix': {'PORt'}},
+                     {'line_number': 98, 'words_to_fix': {'Port'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -191,7 +207,13 @@ class testRulePortMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'port')
         self.assertEqual(oRule.identifier, '018')
 
-        dExpected = [26,27,28,29,30,31,44]
+        dExpected = [{'line_number': 26, 'words_to_fix': {'SIGNED'}},
+                     {'line_number': 27, 'words_to_fix': {'STD_LOGIC'}},
+                     {'line_number': 28, 'words_to_fix': {'NATURAL'}},
+                     {'line_number': 29, 'words_to_fix': {'INTEGER'}},
+                     {'line_number': 30, 'words_to_fix': {'STD_LOGIC_VECTOR'}},
+                     {'line_number': 31, 'words_to_fix': {'UNSIGNED'}},
+                     {'line_number': 44, 'words_to_fix': {'STD_LOGIC'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -201,7 +223,10 @@ class testRulePortMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'port')
         self.assertEqual(oRule.identifier, '019')
 
-        dExpected = [40,43,44,45]
+        dExpected = [{'line_number': 40, 'words_to_fix': {'IN'}},
+                     {'line_number': 43, 'words_to_fix': {'iN'}},
+                     {'line_number': 44, 'words_to_fix': {'oUt'}},
+                     {'line_number': 45, 'words_to_fix': {'inOut'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 

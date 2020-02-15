@@ -71,7 +71,7 @@ class testRuleArchitectureMethods(unittest.TestCase):
     def test_rule_004_lowercase(self):
         oRule = architecture.rule_004()
 
-        dExpected = [20]
+        dExpected = [{'line_number': 20, 'words_to_fix': {'Architecture'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -79,7 +79,16 @@ class testRuleArchitectureMethods(unittest.TestCase):
         oRule = architecture.rule_004()
         oRule.case = 'upper'
 
-        dExpected = [3,9,14,20,26,33,37,47,59,81]
+        dExpected = [{'line_number': 3, 'words_to_fix': {'architecture'}},
+                    {'line_number': 9, 'words_to_fix': {'architecture'}},
+                    {'line_number': 14, 'words_to_fix': {'architecture'}},
+                    {'line_number': 20, 'words_to_fix': {'Architecture'}},
+                    {'line_number': 26, 'words_to_fix': {'architecture'}},
+                    {'line_number': 33, 'words_to_fix': {'architecture'}},
+                    {'line_number': 37, 'words_to_fix': {'architecture'}},
+                    {'line_number': 47, 'words_to_fix': {'architecture'}},
+                    {'line_number': 59, 'words_to_fix': {'architecture'}},
+                    {'line_number': 81, 'words_to_fix': {'architecture'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -132,7 +141,10 @@ class testRuleArchitectureMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'architecture')
         self.assertEqual(oRule.identifier, '009')
-        dExpected = [7,13,24,31]
+        dExpected = [{'line_number': 7, 'words_to_fix': {'End'}},
+                     {'line_number': 13, 'words_to_fix': {'Architecture'}},
+                     {'line_number': 24, 'words_to_fix': {'eND'}},
+                     {'line_number': 31, 'words_to_fix': {'archITecture'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -156,14 +168,21 @@ class testRuleArchitectureMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'architecture')
         self.assertEqual(oRule.identifier, '011')
-        dExpected = [24]
+        dExpected = [{'line_number': 24, 'words_to_fix': {'ArCh'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_011_lowercase(self):
         oRule = architecture.rule_011()
         oRule.case = 'lower'
-        dExpected = [7,18,24,31,35,45,55,85]
+        dExpected = [{'line_number': 7, 'words_to_fix': {'ARCH'}},
+                     {'line_number': 18, 'words_to_fix': {'ARCH'}},
+                     {'line_number': 24, 'words_to_fix': {'ArCh'}},
+                     {'line_number': 31, 'words_to_fix': {'ARCH'}},
+                     {'line_number': 35, 'words_to_fix': {'ARCH'}},
+                     {'line_number': 45, 'words_to_fix': {'ARCH'}},
+                     {'line_number': 55, 'words_to_fix': {'ARCH'}},
+                     {'line_number': 85, 'words_to_fix': {'ARCH'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -181,14 +200,25 @@ class testRuleArchitectureMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'architecture')
         self.assertEqual(oRule.identifier, '013')
-        dExpected = [3,20,26]
+        dExpected = [{'line_number': 3, 'words_to_fix': {'Arch'}},
+                     {'line_number': 20, 'words_to_fix': {'ARch'}},
+                     {'line_number': 26, 'words_to_fix': {'ARch'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_013_lowercase(self):
         oRule = architecture.rule_013()
         oRule.case = 'lower'
-        dExpected = [3,9,14,20,26,33,37,47,59,81]
+        dExpected = [{'line_number': 3, 'words_to_fix': {'Arch'}},
+                     {'line_number': 9, 'words_to_fix': {'ARCH'}},
+                     {'line_number': 14, 'words_to_fix': {'ARCH'}},
+                     {'line_number': 20, 'words_to_fix': {'ARch'}},
+                     {'line_number': 26, 'words_to_fix': {'ARch'}},
+                     {'line_number': 33, 'words_to_fix': {'ARCH'}},
+                     {'line_number': 37, 'words_to_fix': {'ARCH'}},
+                     {'line_number': 47, 'words_to_fix': {'ARCH'}},
+                     {'line_number': 59, 'words_to_fix': {'ARCH'}},
+                     {'line_number': 81, 'words_to_fix': {'ARCH'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -197,14 +227,22 @@ class testRuleArchitectureMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'architecture')
         self.assertEqual(oRule.identifier, '014')
-        dExpected = [9,20,81]
+        dExpected = [{'line_number': 9, 'words_to_fix': {'EntITY'}},
+                     {'line_number': 20, 'words_to_fix': {'entity'}},
+                     {'line_number': 81, 'words_to_fix': {'ent'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_014_lowercase(self):
         oRule = architecture.rule_014()
         oRule.case = 'lower'
-        dExpected = [3,9,14,33,37,47,59]
+        dExpected = [{'line_number': 3, 'words_to_fix': {'ENTITY'}},
+                     {'line_number': 9, 'words_to_fix': {'EntITY'}},
+                     {'line_number': 14, 'words_to_fix': {'ENTITY'}},
+                     {'line_number': 33, 'words_to_fix': {'ENTITY'}},
+                     {'line_number': 37, 'words_to_fix': {'ENTITY'}},
+                     {'line_number': 47, 'words_to_fix': {'ENTITY'}},
+                     {'line_number': 59, 'words_to_fix': {'ENTITY'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -249,14 +287,22 @@ class testRuleArchitectureMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'architecture')
         self.assertEqual(oRule.identifier, '019')
-        dExpected = [20]
+        dExpected = [{'line_number': 20, 'words_to_fix': {'Of'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_019_uppercase(self):
         oRule = architecture.rule_019()
         oRule.case = 'upper'
-        dExpected = [3,9,14,20,33,37,47,59,81]
+        dExpected = [{'line_number': 3, 'words_to_fix': {'of'}},
+                     {'line_number': 9, 'words_to_fix': {'of'}},
+                     {'line_number': 14, 'words_to_fix': {'of'}},
+                     {'line_number': 20, 'words_to_fix': {'Of'}},
+                     {'line_number': 33, 'words_to_fix': {'of'}},
+                     {'line_number': 37, 'words_to_fix': {'of'}},
+                     {'line_number': 47, 'words_to_fix': {'of'}},
+                     {'line_number': 59, 'words_to_fix': {'of'}},
+                     {'line_number': 81, 'words_to_fix': {'of'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -265,14 +311,23 @@ class testRuleArchitectureMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'architecture')
         self.assertEqual(oRule.identifier, '020')
-        dExpected = [20,33]
+        dExpected = [{'line_number': 20, 'words_to_fix': {'Is'}},
+                     {'line_number': 33, 'words_to_fix': {'iS'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_020_uppercase(self):
         oRule = architecture.rule_020()
         oRule.case = 'upper'
-        dExpected = [3,9,14,20,33,37,47,59,81]
+        dExpected = [{'line_number': 3, 'words_to_fix': {'is'}},
+                     {'line_number': 9, 'words_to_fix': {'is'}},
+                     {'line_number': 14, 'words_to_fix': {'is'}},
+                     {'line_number': 20, 'words_to_fix': {'Is'}},
+                     {'line_number': 33, 'words_to_fix': {'iS'}},
+                     {'line_number': 37, 'words_to_fix': {'is'}},
+                     {'line_number': 47, 'words_to_fix': {'is'}},
+                     {'line_number': 59, 'words_to_fix': {'is'}},
+                     {'line_number': 81, 'words_to_fix': {'is'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -281,14 +336,22 @@ class testRuleArchitectureMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'architecture')
         self.assertEqual(oRule.identifier, '021')
-        dExpected = [29]
+        dExpected = [{'line_number': 29, 'words_to_fix': {'BEGIN'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_021_uppercase(self):
         oRule = architecture.rule_021()
         oRule.case = 'upper'
-        dExpected = [5,11,16,22,34,39,49,61,83]
+        dExpected = [{'line_number': 5, 'words_to_fix': {'begin'}},
+                     {'line_number': 11, 'words_to_fix': {'begin'}},
+                     {'line_number': 16, 'words_to_fix': {'begin'}},
+                     {'line_number': 22, 'words_to_fix': {'begin'}},
+                     {'line_number': 34, 'words_to_fix': {'begin'}},
+                     {'line_number': 39, 'words_to_fix': {'begin'}},
+                     {'line_number': 49, 'words_to_fix': {'begin'}},
+                     {'line_number': 61, 'words_to_fix': {'begin'}},
+                     {'line_number': 83, 'words_to_fix': {'begin'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 

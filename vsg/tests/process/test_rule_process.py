@@ -48,7 +48,8 @@ class testRuleProcessMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'process')
         self.assertEqual(oRule.identifier, '004')
-        dExpected = [20,28]
+        dExpected = [{'line_number': 20, 'words_to_fix': {'begIN'}},
+                     {'line_number': 28, 'words_to_fix': {'beGIn'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -57,7 +58,9 @@ class testRuleProcessMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'process')
         self.assertEqual(oRule.identifier, '005')
-        dExpected = [17,24,32]
+        dExpected = [{'line_number': 17, 'words_to_fix': {'prOCess'}},
+                     {'line_number': 24, 'words_to_fix': {'Process'}},
+                     {'line_number': 32, 'words_to_fix': {'proCEss'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -84,7 +87,8 @@ class testRuleProcessMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'process')
         self.assertEqual(oRule.identifier, '008')
-        dExpected = [15,36]
+        dExpected = [{'line_number': 15, 'words_to_fix': {'eNd'}},
+                     {'line_number': 36, 'words_to_fix': {'End'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -93,7 +97,8 @@ class testRuleProcessMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'process')
         self.assertEqual(oRule.identifier, '009')
-        dExpected = [22,42]
+        dExpected = [{'line_number': 22, 'words_to_fix': {'proCEss'}},
+                     {'line_number': 42, 'words_to_fix': {'Process'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -129,7 +134,9 @@ class testRuleProcessMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'process')
         self.assertEqual(oRule.identifier, '013')
-        dExpected = [6,27,33]
+        dExpected = [{'line_number': 6, 'words_to_fix': {'IS'}},
+                     {'line_number': 27, 'words_to_fix': {'iS'}},
+                     {'line_number': 33, 'words_to_fix': {'Is'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -165,7 +172,7 @@ class testRuleProcessMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'process')
         self.assertEqual(oRule.identifier, '017')
-        dExpected = [46]
+        dExpected = [{'line_number': 46, 'words_to_fix': {'proc_name'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -183,7 +190,7 @@ class testRuleProcessMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'process')
         self.assertEqual(oRule.identifier, '019')
-        dExpected = [48]
+        dExpected = [{'line_number': 48, 'words_to_fix': {'proc_name'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 

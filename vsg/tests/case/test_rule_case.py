@@ -142,7 +142,7 @@ class testRuleCaseMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'case')
         self.assertEqual(oRule.identifier, '014')
-        dExpected = [41]
+        dExpected = [{'line_number': 41, 'words_to_fix': {'CASE'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -151,7 +151,7 @@ class testRuleCaseMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'case')
         self.assertEqual(oRule.identifier, '015')
-        dExpected = [43]
+        dExpected = [{'line_number': 43, 'words_to_fix': {'IS'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -160,7 +160,9 @@ class testRuleCaseMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'case')
         self.assertEqual(oRule.identifier, '016')
-        dExpected = [45,52,58]
+        dExpected = [{'line_number': 45, 'words_to_fix': {'WHEN'}},
+                     {'line_number': 52, 'words_to_fix': {'wHEn'}},
+                     {'line_number': 58, 'words_to_fix': {'wheN'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -169,7 +171,7 @@ class testRuleCaseMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'case')
         self.assertEqual(oRule.identifier, '017')
-        dExpected = [79]
+        dExpected = [{'line_number': 79, 'words_to_fix': {'END'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -178,7 +180,7 @@ class testRuleCaseMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'case')
         self.assertEqual(oRule.identifier, '018')
-        dExpected = [70]
+        dExpected = [{'line_number': 70, 'words_to_fix': {'CASE'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
