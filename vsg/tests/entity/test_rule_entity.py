@@ -39,7 +39,7 @@ class testRuleEntityMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'entity')
         self.assertEqual(oRule.identifier, '003')
 
-        dExpected = [34]
+        dExpected = [utils.add_violation(34)]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 

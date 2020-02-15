@@ -19,6 +19,6 @@ def is_blank_line_before(self, oFile, iLineNumber, sUnless):
     if sUnless:
         if not oFile.lines[iLineNumber - 1].isBlank:
             if not oFile.lines[iLineNumber - 1].__dict__[sUnless]:
-                self.add_violation(iLineNumber)
+                self.add_violation({'lineNumber': iLineNumber})
     elif not oFile.lines[iLineNumber - 1].isBlank:
-        self.add_violation(iLineNumber)
+        self.add_violation({'lineNumber' : iLineNumber})

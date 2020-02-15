@@ -47,7 +47,7 @@ class testRuleGenerateMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'generate')
         self.assertEqual(oRule.identifier, '004')
 
-        dExpected = [56]
+        dExpected = [utils.add_violation(56)]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
