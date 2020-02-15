@@ -145,20 +145,20 @@ class testRuleTypeMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'type')
         self.assertEqual(oRule.identifier, '015')
         self.assertTrue(oRule.disable)
-        dExpected = [4,6,11,13,27,29,34,36,43,54,57,69,122,134]
+        dExpected = utils.add_violation_list([4,6,11,13,27,29,34,36,43,54,57,69,122,134])
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_015_with_single_override(self):
         oRule = type_definition.rule_015()
         oRule.prefixes = ['mem']
-        dExpected = [4,6,11,13,27,29,34,36,43,57,69,122]
+        dExpected = utils.add_violation_list([4,6,11,13,27,29,34,36,43,57,69,122])
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_015_with_multiple_override(self):
         oRule = type_definition.rule_015()
         oRule.prefixes = ['mem', 'a']
-        dExpected = [13,57,69]
+        dExpected = utils.add_violation_list([13,57,69])
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)

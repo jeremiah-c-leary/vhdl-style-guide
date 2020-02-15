@@ -18,4 +18,4 @@ def has_prefix(self, prefixes, words, iLineNumber):
             if word.lower().startswith(prefix.lower()):
                 break
         else:
-            self.add_violation(iLineNumber)
+            self.add_violation({'lineNumber' : iLineNumber})

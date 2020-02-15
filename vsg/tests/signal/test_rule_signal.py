@@ -102,7 +102,7 @@ class testRuleSignalMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'signal')
         self.assertEqual(oRule.identifier, '008')
         self.assertTrue(oRule.disable)
-        lExpected = [9,12,13,14,15,16,19,21,23]
+        lExpected = utils.add_violation_list([9,12,13,14,15,16,19,21,23])
         oRule.prefixes = ['a_','b_','d_','e_']
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, lExpected)

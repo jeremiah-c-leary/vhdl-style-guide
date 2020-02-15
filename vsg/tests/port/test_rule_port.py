@@ -134,8 +134,8 @@ class testRulePortMethods(unittest.TestCase):
         self.assertEqual(oRule.identifier, '011')
         self.assertTrue(oRule.disable)
 
-        dExpected = [12,13,14,29,30,31,43,44,45,60,61,62,74,75,76,99,100,101,152,161,169,170,171,172,173]
-        dExpected.extend(range(181, 186))
+        dExpected = utils.add_violation_list([12,13,14,29,30,31,43,44,45,60,61,62,74,75,76,99,100,101,152,161,169,170,171,172,173])
+        dExpected.extend(utils.add_violation_list(range(181, 186)))
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 

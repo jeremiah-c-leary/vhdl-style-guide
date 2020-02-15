@@ -221,11 +221,11 @@ class testRuleGenericMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'generic')
         self.assertEqual(oRule.identifier, '020')
 
-        dExpected = [67,96,116]
+        dExpected = utils.add_violation_list([67,96,116])
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
-    def test_rule_020_with_override(self):
+    def test_rule_020_with_2_overrides(self):
         oRule = generic.rule_020()
         oRule.prefixes = ['G_', 'A_']
 
@@ -237,6 +237,6 @@ class testRuleGenericMethods(unittest.TestCase):
         oRule = generic.rule_020()
         oRule.prefixes = ['A_']
 
-        dExpected = [5,6,21,22,36,37,52,53,68,83,84,97,139,140,155,156,170,171]
+        dExpected = utils.add_violation_list([5,6,21,22,36,37,52,53,68,83,84,97,139,140,155,156,170,171])
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)

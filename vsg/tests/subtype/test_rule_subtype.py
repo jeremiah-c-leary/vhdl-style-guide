@@ -47,20 +47,20 @@ class testRuleSubtypeMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'subtype')
         self.assertEqual(oRule.identifier, '004')
-        dExpected = [7,8,10,11]
+        dExpected = utils.add_violation_list([7,8,10,11])
         oRule.analyze(oFilePrefix)
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_004_with_multiple_override(self):
         oRule = subtype.rule_004()
         oRule.prefixes = ['st_', 'subt_']
-        dExpected = [10,11]
+        dExpected = utils.add_violation_list([10,11])
         oRule.analyze(oFilePrefix)
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_004_with_single_override(self):
         oRule = subtype.rule_004()
         oRule.prefixes = ['subt_']
-        dExpected = [4,5,10,11]
+        dExpected = utils.add_violation_list([4,5,10,11])
         oRule.analyze(oFilePrefix)
         self.assertEqual(oRule.violations, dExpected)
