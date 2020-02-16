@@ -1,5 +1,6 @@
 
 from vsg import rule
+from vsg import utils
 
 
 class rule_006(rule.rule):
@@ -13,4 +14,5 @@ class rule_006(rule.rule):
 
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.insideVariableAssignment and oLine.isComment:
-            self.add_violation(iLineNumber)
+            dViolation = utils.create_violation_dict(iLineNumber)
+            self.add_violation(dViolation)
