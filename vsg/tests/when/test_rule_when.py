@@ -19,6 +19,6 @@ class testRuleWhenMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'when')
         self.assertEqual(oRule.identifier, '001')
 
-        dExpected = [14,15,16]
+        dExpected = utils.add_violation_list([14,15,16])
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)

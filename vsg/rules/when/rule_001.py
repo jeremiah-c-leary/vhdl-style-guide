@@ -17,10 +17,12 @@ class rule_001(rule.rule):
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.insideWhen:
             if re.match('^\s*else', oLine.line, flags=re.IGNORECASE):
-                self.add_violation(iLineNumber)
+                dViolation = utils.create_violation_dict(iLineNumber)
+                self.add_violation(dViolation)
 
     def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
+        for dViolation in self.violations:
+            iLineNumber = dViolation['lineNumber']
             oPreviousLine = oFile.lines[iLineNumber - 1]
             oLine = oFile.lines[iLineNumber]
             iIndex = utils.end_of_line_index(oPreviousLine)
