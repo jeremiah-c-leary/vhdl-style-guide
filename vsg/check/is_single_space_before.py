@@ -20,4 +20,4 @@ def is_single_space_before(self, sString, oLine, iLineNumber):
     if not re.match('^.*\S\s' + sString + '\s', oLine.lineNoComment.lower()) and \
        not re.match('^.*\S\s' + sString + '$', oLine.lineNoComment.lower()) and \
        not re.match('^.*\S\s' + sString + '\'', oLine.lineNoComment.lower()):
-        self.add_violation(iLineNumber)
+        self.add_violation({'lineNumber': iLineNumber})

@@ -46,7 +46,7 @@ class testRuleIfMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'if')
         self.assertEqual(oRule.identifier, '004')
-        dExpected = [32,57,73]
+        dExpected = utils.add_violation_list([32,57,73])
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
