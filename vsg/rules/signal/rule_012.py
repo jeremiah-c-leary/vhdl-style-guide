@@ -1,5 +1,6 @@
 
 from vsg import rule
+from vsg import utils
 
 import re
 
@@ -17,30 +18,36 @@ class rule_012(rule.rule):
     def analyze(self, oFile):
         iMaxSignalIndex = 0
         lIndexes = []
+        dSignals = {}
         for iLineNumber, oLine in enumerate(oFile.lines):
             if self._is_vsg_off(oLine):
                 continue
             if oLine.isSignal and re.match('^\s*signal\s+\S+,\s*\S+\s*:', oLine.line, flags=re.IGNORECASE):
-                self.dFix[iLineNumber] = {}
-                self.dFix[iLineNumber]['comma'] = 0
+                dSignals[iLineNumber] = {}
+                dSignals[iLineNumber]['comma'] = 0
                 for iIndex, sChar in enumerate(oLine.line):
-                    if self.dFix[iLineNumber]['comma'] > 0 and not sChar == ' ':
+                    if dSignals[iLineNumber]['comma'] > 0 and not sChar == ' ':
                         iMaxSignalIndex = max(iMaxSignalIndex, iIndex + 1)
-                        self.dFix[iLineNumber]['signal'] = iIndex + 1
+                        dSignals[iLineNumber]['signal'] = iIndex + 1
                         break
                     if sChar == ',':
-                        self.dFix[iLineNumber]['comma'] = iIndex + 1
+                        dSignals[iLineNumber]['comma'] = iIndex + 1
                         lIndexes.append(iLineNumber)
             if oLine.isArchitectureBegin:
                 for iIndex in lIndexes:
-                    self.dFix[iIndex]['max'] = iMaxSignalIndex
-                    if iMaxSignalIndex > self.dFix[iIndex]['signal']:
-                        self.add_violation(iIndex)
+                    dSignals[iIndex]['max'] = iMaxSignalIndex
+                    if iMaxSignalIndex > dSignals[iIndex]['signal']:
+                        dViolation = utils.create_violation_dict(iIndex)
+                        dViolation['comma'] = dSignals[iIndex]['comma']
+                        dViolation['signal'] = dSignals[iIndex]['signal']
+                        dViolation['max'] = dSignals[iIndex]['max']
+                        self.add_violation(dViolation)
                 lIndexes = []
 
     def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
+        for dViolation in self.violations:
+            iLineNumber = dViolation['lineNumber']
             oLine = oFile.lines[iLineNumber]
-            iComma = self.dFix[iLineNumber]['comma']
-            iAddNumSpaces = self.dFix[iLineNumber]['max'] - self.dFix[iLineNumber]['signal']
+            iComma = dViolation['comma']
+            iAddNumSpaces = dViolation['max'] - dViolation['signal']
             oLine.update_line(oLine.line[:iComma] + iAddNumSpaces*' ' + oLine.line[iComma:])

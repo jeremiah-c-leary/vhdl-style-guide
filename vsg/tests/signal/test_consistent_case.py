@@ -18,28 +18,49 @@ class testGeneralRule(unittest.TestCase):
 
     def test_rule_014(self):
         oRule = signal.rule_014()
+        self.maxDiff = None
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'signal')
         self.assertEqual(oRule.identifier, '014')
-        dExpected = [22, 25, 27,28,29,30,38,39,46,48,54,58,60,62,63,64]
+        dExpected = [{'lineNumber': 22, 'signal': 'siG2'},
+                     {'lineNumber': 25, 'signal': 'siG1'},
+                     {'lineNumber': 27, 'signal': 'SIG2'},
+                     {'lineNumber': 28, 'signal': 'sIg1'},
+                     {'lineNumber': 29, 'signal': 'SiG2'},
+                     {'lineNumber': 30, 'signal': 'SIg1'},
+                     {'lineNumber': 38, 'signal': 'Sig1'},
+                     {'lineNumber': 39, 'signal': 'SIg2'},
+                     {'lineNumber': 46, 'signal': 'Sig3'},
+                     {'lineNumber': 48, 'signal': 'siG5'},
+                     {'lineNumber': 54, 'signal': 'siG6'},
+                     {'lineNumber': 58, 'signal': 'Sig1'},
+                     {'lineNumber': 60, 'signal': 'Sig2'},
+                     {'lineNumber': 62, 'signal': 'Sig3'},
+                     {'lineNumber': 63, 'signal': 'SIG1'},
+                     {'lineNumber': 63, 'signal': 'SIG2'},
+                     {'lineNumber': 63, 'signal': 'SIG3'},
+#                     {'lineNumber': 64, 'signal': 'SIG1'},
+#                     {'lineNumber': 64, 'signal': 'SIG1'},
+                     {'lineNumber': 64, 'signal': 'SIG1'}]
+
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
-        self.assertEqual(oRule._get_solution(22), 'Inconsistent capitalization of word: siG2')
-        self.assertEqual(oRule._get_solution(25), 'Inconsistent capitalization of word: siG1')
-        self.assertEqual(oRule._get_solution(27), 'Inconsistent capitalization of word: SIG2')
-        self.assertEqual(oRule._get_solution(28), 'Inconsistent capitalization of word: sIg1')
-        self.assertEqual(oRule._get_solution(29), 'Inconsistent capitalization of word: SiG2')
-        self.assertEqual(oRule._get_solution(30), 'Inconsistent capitalization of word: SIg1')
-        self.assertEqual(oRule._get_solution(38), 'Inconsistent capitalization of word: Sig1')
-        self.assertEqual(oRule._get_solution(39), 'Inconsistent capitalization of word: SIg2')
-        self.assertEqual(oRule._get_solution(46), 'Inconsistent capitalization of word: Sig3')
-        self.assertEqual(oRule._get_solution(48), 'Inconsistent capitalization of word: siG5')
-        self.assertEqual(oRule._get_solution(54), 'Inconsistent capitalization of word: siG6')
-        self.assertEqual(oRule._get_solution(58), 'Inconsistent capitalization of word: Sig1')
-        self.assertEqual(oRule._get_solution(60), 'Inconsistent capitalization of word: Sig2')
-        self.assertEqual(oRule._get_solution(62), 'Inconsistent capitalization of word: Sig3')
-        self.assertEqual(oRule._get_solution(63), 'Inconsistent capitalization of words: SIG1, SIG2, SIG3')
-        self.assertEqual(oRule._get_solution(64), 'Inconsistent capitalization of words: SIG1, SIG1, SIG1')
+        self.assertEqual(oRule._get_solution(22), 'Inconsistent capitalization of signal: siG2')
+        self.assertEqual(oRule._get_solution(25), 'Inconsistent capitalization of signal: siG1')
+        self.assertEqual(oRule._get_solution(27), 'Inconsistent capitalization of signal: SIG2')
+        self.assertEqual(oRule._get_solution(28), 'Inconsistent capitalization of signal: sIg1')
+        self.assertEqual(oRule._get_solution(29), 'Inconsistent capitalization of signal: SiG2')
+        self.assertEqual(oRule._get_solution(30), 'Inconsistent capitalization of signal: SIg1')
+        self.assertEqual(oRule._get_solution(38), 'Inconsistent capitalization of signal: Sig1')
+        self.assertEqual(oRule._get_solution(39), 'Inconsistent capitalization of signal: SIg2')
+        self.assertEqual(oRule._get_solution(46), 'Inconsistent capitalization of signal: Sig3')
+        self.assertEqual(oRule._get_solution(48), 'Inconsistent capitalization of signal: siG5')
+        self.assertEqual(oRule._get_solution(54), 'Inconsistent capitalization of signal: siG6')
+        self.assertEqual(oRule._get_solution(58), 'Inconsistent capitalization of signal: Sig1')
+        self.assertEqual(oRule._get_solution(60), 'Inconsistent capitalization of signal: Sig2')
+        self.assertEqual(oRule._get_solution(62), 'Inconsistent capitalization of signal: Sig3')
+        self.assertEqual(oRule._get_solution(63), 'Inconsistent capitalization of signals: SIG1, SIG2, SIG3')
+        self.assertEqual(oRule._get_solution(64), 'Inconsistent capitalization of signal: SIG1')
 
     def test_fix_rule_014(self):
         oRule = signal.rule_014()

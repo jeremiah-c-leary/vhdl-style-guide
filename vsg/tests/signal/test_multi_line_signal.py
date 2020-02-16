@@ -21,7 +21,14 @@ class testGeneralRule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'signal')
         self.assertEqual(oRule.identifier, '015')
-        dExpected = [5,8]
+
+        dExpected = [{'endLine': 6,
+                      'line': '  signal sig1, sig2, sig3,     sig4, sig5, sig6 : std_logic;',
+                      'lineNumber': 5},
+                     {'endLine': 13,
+                      'line': '  signal siga, sigb,     sigc,     sigd,     sige,     sigf     : std_logic; -- This is a comment',
+                      'lineNumber': 8}]
+
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -31,7 +38,35 @@ class testGeneralRule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'signal')
         self.assertEqual(oRule.identifier, '015')
-        dExpected = [5,8,40,42,45,49,54,60,67]
+
+        dExpected = [{'endLine': 6,
+                      'line': '  signal sig1, sig2, sig3,     sig4, sig5, sig6 : std_logic;',
+                      'lineNumber': 5},
+                     {'endLine': 13,
+                      'line': '  signal siga, sigb,     sigc,     sigd,     sige,     sigf     : std_logic; -- This is a comment',
+                      'lineNumber': 8},
+                     {'endLine': 40,
+                      'line': '  signal sig1, sig2 : std_logic;',
+                      'lineNumber': 40},
+                     {'endLine': 43,
+                      'line': '  signal sig1, sig2 : std_logic    ;',
+                      'lineNumber': 42},
+                     {'endLine': 47,
+                      'line': '  signal sig1, sig2 :    std_logic    ;',
+                      'lineNumber': 45},
+                     {'endLine': 52,
+                      'line': '  signal sig1, sig2    :    std_logic    ;',
+                      'lineNumber': 49},
+                     {'endLine': 58,
+                      'line': '  signal sig1,    sig2    :    std_logic    ;',
+                      'lineNumber': 54},
+                     {'endLine': 65,
+                      'line': '  signal sig1    ,    sig2    :    std_logic    ;',
+                      'lineNumber': 60},
+                     {'endLine': 73,
+                      'line': '  signal    sig1    ,    sig2    :    std_logic    ;',
+                      'lineNumber': 67}]
+
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -116,11 +151,48 @@ class testGeneralRule(unittest.TestCase):
         self.assertEqual(oRule.violations, [])
 
     def test_rule_016(self):
+        self.maxDiff = None
         oRule = signal.rule_016()
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'signal')
         self.assertEqual(oRule.identifier, '016')
         dExpected = [5,8,20,23,27,32,42,45,49,54,60,67]
+        dExpected = [{'endLine': 6,
+                      'line': '  signal sig1, sig2, sig3,     sig4, sig5, sig6 : std_logic;',
+                      'lineNumber': 5},
+                     {'endLine': 13,
+                      'line': '  signal siga, sigb,     sigc,     sigd,     sige,     sigf     : std_logic; -- This is a comment',
+                      'lineNumber': 8},
+                     {'endLine': 21,
+                      'line': '  signal sig1 : std_logic    ;',
+                      'lineNumber': 20},
+                     {'endLine': 25,
+                      'line': '  signal sig1 :    std_logic    ;',
+                      'lineNumber': 23},
+                     {'endLine': 30,
+                      'line': '  signal sig1    :    std_logic    ;',
+                      'lineNumber': 27},
+                     {'endLine': 36,
+                      'line': '  signal    sig1    :    std_logic    ;',
+                      'lineNumber': 32},
+                     {'endLine': 43,
+                      'line': '  signal sig1, sig2 : std_logic    ;',
+                      'lineNumber': 42},
+                     {'endLine': 47,
+                      'line': '  signal sig1, sig2 :    std_logic    ;',
+                      'lineNumber': 45},
+                     {'endLine': 52,
+                      'line': '  signal sig1, sig2    :    std_logic    ;',
+                      'lineNumber': 49},
+                     {'endLine': 58,
+                      'line': '  signal sig1,    sig2    :    std_logic    ;',
+                      'lineNumber': 54},
+                     {'endLine': 65,
+                      'line': '  signal sig1    ,    sig2    :    std_logic    ;',
+                      'lineNumber': 60},
+                     {'endLine': 73,
+                      'line': '  signal    sig1    ,    sig2    :    std_logic    ;',
+                      'lineNumber': 67}]
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
 

@@ -30,14 +30,14 @@ class rule_015(rule.rule):
             match = re.match(r'.*?signal\s+(?P<signals>[^:\n]*):', self.sFullLine)
             sSignalList = match.group("signals")
             if sSignalList.count(',') > self.consecutive - 1:
-                self.add_violation(self.iFailureLine)
-                self.dFix['violations'][self.iFailureLine] = {}
-                self.dFix['violations'][self.iFailureLine]['endLine'] = iLineNumber
-                self.dFix['violations'][self.iFailureLine]['line'] = self.sFullLine
+                dViolation = utils.create_violation_dict(self.iFailureLine)
+                dViolation['endLine'] = iLineNumber
+                dViolation['line'] = self.sFullLine
+                self.add_violation(dViolation)
 
     def _fix_violations(self, oFile):
-        for iLineNumber in self.violations[::-1]:
-            dViolation = self.dFix['violations'][iLineNumber]
+        for dViolation in self.violations[::-1]:
+            iLineNumber = dViolation['lineNumber']
             utils.remove_lines(oFile, iLineNumber, dViolation['endLine'])
             iNumLines = dViolation['line'].count(',') + 1
             lSignals = _extract_signals(dViolation['line'])

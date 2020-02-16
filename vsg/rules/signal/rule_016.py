@@ -25,14 +25,14 @@ class rule_016(rule.rule):
             self.sFullLine += oLine.line
         if oLine.isEndSignal:
             if not oLine.isSignal:
-                self.add_violation(self.iFailureLine)
-                self.dFix['violations'][self.iFailureLine] = {}
-                self.dFix['violations'][self.iFailureLine]['endLine'] = iLineNumber
-                self.dFix['violations'][self.iFailureLine]['line'] = self.sFullLine
+                dViolation = utils.create_violation_dict(self.iFailureLine)
+                dViolation['endLine'] = iLineNumber
+                dViolation['line'] = self.sFullLine
+                self.add_violation(dViolation)
 
     def _fix_violations(self, oFile):
-        for iLineNumber in self.violations[::-1]:
-            dViolation = self.dFix['violations'][iLineNumber]
+        for dViolation in self.violations[::-1]:
+            iLineNumber = dViolation['lineNumber']
             utils.remove_lines(oFile, iLineNumber, dViolation['endLine'])
             utils.insert_line(oFile, iLineNumber)
             oLine = oFile.lines[iLineNumber]

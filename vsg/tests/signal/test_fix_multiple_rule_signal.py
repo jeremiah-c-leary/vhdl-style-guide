@@ -20,7 +20,11 @@ class testFixRuleSignalMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'signal')
         self.assertEqual(oRule.identifier, '012')
-        dExpected = [5,6,7,8]
+        dExpected = utils.add_violation_list([5,6,7,8])
+        dExpected = [{'comma': 16, 'lineNumber': 5, 'max': 23, 'signal': 18},
+                     {'comma': 17, 'lineNumber': 6, 'max': 23, 'signal': 19},
+                     {'comma': 18, 'lineNumber': 7, 'max': 23, 'signal': 20},
+                     {'comma': 19, 'lineNumber': 8, 'max': 23, 'signal': 21}]
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
 

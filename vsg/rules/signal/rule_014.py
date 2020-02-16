@@ -11,10 +11,8 @@ class rule_014(rule.rule):
     def __init__(self):
         rule.rule.__init__(self, 'signal', '014')
         self.fixable = True
-        self.solution = 'Inconsistent capitalization of word'
+        self.solution = 'Inconsistent capitalization of signal'
         self.phase = 6
-        self.lLowerCaseWords = []
-        self.lCaseWords = []
         self.dDatabase = create_database()
 
     def _analyze(self, oFile, oLine, iLineNumber):
@@ -32,25 +30,30 @@ class rule_014(rule.rule):
                 check_violations(self, lWords, iLineNumber)
 
     def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
-            for sWord in self.dFix['violations'][iLineNumber]:
-                sReplacementWord = get_replacement_word(self, sWord)
-                if oFile.lines[iLineNumber].isInstantiationPortAssignment:
-                    oLine = oFile.lines[iLineNumber]
-                    sLine = oLine.line
-                    iIndex = sLine.index('>')
-                    oLine.update_line(sLine[iIndex:])
-                    utils.change_word(oLine, sWord, sReplacementWord, 20)
-                    sNewLine = sLine[0:iIndex] + oLine.line
-                    oFile.lines[iLineNumber].update_line(sNewLine)
-                else:
-                    utils.change_word(oFile.lines[iLineNumber], sWord, sReplacementWord, 20)
+        for dViolation in self.violations:
+            sWord = dViolation['signal']
+            iLineNumber = dViolation['lineNumber']
+            sReplacementWord = get_replacement_word(self, sWord)
+            if oFile.lines[iLineNumber].isInstantiationPortAssignment:
+                oLine = oFile.lines[iLineNumber]
+                sLine = oLine.line
+                iIndex = sLine.index('>')
+                oLine.update_line(sLine[iIndex:])
+                utils.change_word(oLine, sWord, sReplacementWord, 20)
+                sNewLine = sLine[0:iIndex] + oLine.line
+                oFile.lines[iLineNumber].update_line(sNewLine)
+            else:
+                utils.change_word(oFile.lines[iLineNumber], sWord, sReplacementWord, 20)
 
     def _get_solution(self, iLineNumber):
-        if len(self.dFix['violations'][iLineNumber]) > 1:
-            sSolution = self.solution + 's: ' + ', '.join(self.dFix['violations'][iLineNumber])
+        lSignals = []
+        for dViolation in self.violations:
+            if dViolation['lineNumber'] == iLineNumber:
+                lSignals.append(dViolation['signal'])
+        if len(lSignals) > 1:
+            sSolution = self.solution + 's: ' + ', '.join(lSignals)
         else:
-            sSolution = self.solution + ': ' + ', '.join(self.dFix['violations'][iLineNumber])
+            sSolution = self.solution + ': ' + lSignals[0]
         return sSolution
 
 
@@ -79,12 +82,14 @@ def check_violations(self, lWords, iLineNumber):
     for sWord in lWords:
         if sWord.lower() in map(str.lower, self.dDatabase['signal']):
             if sWord not in self.dDatabase['signal']:
-                self.add_violation(iLineNumber)
-                try:
-                    self.dFix['violations'][iLineNumber].append(sWord)
-                except KeyError:
-                    self.dFix['violations'][iLineNumber] = []
-                    self.dFix['violations'][iLineNumber].append(sWord)
+                dViolation = utils.create_violation_dict(iLineNumber)
+                dViolation['signal'] = sWord
+                self.add_violation(dViolation)
+#                try:
+#                    self.dFix['violations'][iLineNumber].append(sWord)
+#                except KeyError:
+#                    self.dFix['violations'][iLineNumber] = []
+#                    self.dFix['violations'][iLineNumber].append(sWord)
 
 
 def get_replacement_word(self, sWord):
