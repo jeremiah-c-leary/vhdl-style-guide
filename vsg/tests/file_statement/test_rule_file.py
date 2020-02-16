@@ -19,7 +19,7 @@ class testRuleFileMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'file')
         self.assertEqual(oRule.identifier, '001')
 
-        dExpected = [9,11,12]
+        dExpected = utils.add_violation_list([9,11,12])
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 

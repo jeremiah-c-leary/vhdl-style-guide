@@ -20,7 +20,7 @@ class testRuleAssertMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'assert')
         self.assertEqual(oRule.identifier, '001')
 
-        lExpected = [10,11,16,17,20,21]
+        lExpected = utils.add_violation_list([10,11,16,17,20,21])
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, lExpected)
 

@@ -22,7 +22,7 @@ class testRuleSubtypeMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'subtype')
         self.assertEqual(oRule.identifier, '001')
-        dExpected = [51]
+        dExpected = [utils.add_violation(51)]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 

@@ -33,7 +33,7 @@ class testRuleGenericMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'generic')
         self.assertEqual(oRule.identifier, '002')
 
-        dExpected = [51,66]
+        dExpected = utils.add_violation_list([51,66])
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -53,7 +53,7 @@ class testRuleGenericMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'generic')
         self.assertEqual(oRule.identifier, '004')
 
-        dExpected = [21,53,68,83]
+        dExpected = utils.add_violation_list([21,53,68,83])
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -103,7 +103,7 @@ class testRuleGenericMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'generic')
         self.assertEqual(oRule.identifier, '008')
 
-        dExpected = [85,117]
+        dExpected = utils.add_violation_list([85,117])
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 

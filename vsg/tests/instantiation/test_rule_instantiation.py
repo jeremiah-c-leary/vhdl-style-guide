@@ -26,7 +26,7 @@ class testRuleInstantiationMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'instantiation')
         self.assertEqual(oRule.identifier, '001')
 
-        dExpected = [19,21,25,26,27,31,32,33,34,35,37,42,44,52]
+        dExpected = utils.add_violation_list([19,21,25,26,27,31,32,33,34,35,37,42,44,52])
         oRule.analyze(oFilePort)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -222,7 +222,7 @@ class testRuleInstantiationMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'instantiation')
         self.assertEqual(oRule.identifier, '001')
 
-        dExpected = [22,33,45,46,73]
+        dExpected = utils.add_violation_list([22,33,45,46,73])
         oRule.analyze(oFileGeneric)
         self.assertEqual(oRule.violations, dExpected)
 

@@ -17,7 +17,7 @@ class testRuleForLoopMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'for_loop')
         self.assertEqual(oRule.identifier, '001')
-        dExpected = [19,21]
+        dExpected = utils.add_violation_list([19,21])
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -26,7 +26,7 @@ class testRuleForLoopMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'for_loop')
         self.assertEqual(oRule.identifier, '002')
-        dExpected = [23]
+        dExpected = [utils.add_violation(23)]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 

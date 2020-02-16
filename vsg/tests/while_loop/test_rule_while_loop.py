@@ -17,7 +17,7 @@ class testRuleWhileLoopMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'while_loop')
         self.assertEqual(oRule.identifier, '001')
-        dExpected = [13]
+        dExpected = [utils.add_violation(13)]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -26,6 +26,6 @@ class testRuleWhileLoopMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'while_loop')
         self.assertEqual(oRule.identifier, '002')
-        dExpected = [19]
+        dExpected = [utils.add_violation(19)]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
