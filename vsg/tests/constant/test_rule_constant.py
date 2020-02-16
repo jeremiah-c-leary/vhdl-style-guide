@@ -75,7 +75,7 @@ class testRuleConstantMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'constant')
         self.assertEqual(oRule.identifier, '006')
-        lExpected = [10]
+        lExpected = [utils.add_violation(10)]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, lExpected)
 

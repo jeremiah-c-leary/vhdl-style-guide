@@ -43,7 +43,7 @@ class testRuleConcurrentMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'concurrent')
         self.assertEqual(oRule.identifier, '004')
-        dExpected = [7,8,32,33]
+        dExpected = utils.add_violation_list([7,8,32,33])
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 

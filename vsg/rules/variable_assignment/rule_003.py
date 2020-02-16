@@ -17,5 +17,5 @@ class rule_003(rule.rule):
             check.is_single_space_before_character(self, ':=', oLine, iLineNumber)
 
     def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
-            fix.enforce_one_space_before_word(self, oFile.lines[iLineNumber], ':=')
+        for dViolation in self.violations:
+            fix.enforce_one_space_before_word(self, oFile.lines[dViolation['lineNumber']], ':=')

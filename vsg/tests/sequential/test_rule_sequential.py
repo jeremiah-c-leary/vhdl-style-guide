@@ -34,7 +34,7 @@ class testRuleSequentialMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'sequential')
         self.assertEqual(oRule.identifier, '003')
-        dExpected = [38,40,81,89]
+        dExpected = utils.add_violation_list([38,40,81,89])
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 

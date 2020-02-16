@@ -165,7 +165,7 @@ class testRuleGenericMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'generic')
         self.assertEqual(oRule.identifier, '014')
 
-        dExpected = [68,116]
+        dExpected = utils.add_violation_list([68,116])
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 

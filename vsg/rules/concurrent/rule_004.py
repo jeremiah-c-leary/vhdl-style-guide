@@ -1,25 +1,11 @@
 
-from vsg import rule
-from vsg import check
+from vsg.rules import single_space_before_character_rule
 
-
-class rule_004(rule.rule):
+class rule_004(single_space_before_character_rule):
     '''
     Concurrent rule 004 checks there is at least a single space before the assignment.
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'concurrent'
-        self.identifier = '004'
+        single_space_before_character_rule.__init__(self, 'concurrent', '004', 'isConcurrentBegin', '<=')
         self.solution = 'Add a single space before the <=.'
-        self.phase = 2
-
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isConcurrentBegin:
-            check.is_single_space_before_character(self, '<=', oLine, iLineNumber)
-
-    def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
-            oLine = oFile.lines[iLineNumber]
-            oLine.update_line(oLine.line.replace('<=', ' <='))
