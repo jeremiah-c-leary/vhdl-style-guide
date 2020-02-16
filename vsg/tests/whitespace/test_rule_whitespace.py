@@ -55,7 +55,7 @@ class testRuleWhitespaceMethods(unittest.TestCase):
         self.assertEqual(oRule.identifier, '003')
         self.assertEqual(oRule.phase, 2)
 
-        dExpected = [2,4,6]
+        dExpected = utils.add_violation_list([2,4,6])
         self.oFile.lines.append(line.line('  This is a test of tabs;'))
         self.oFile.lines.append(line.line('  This is a test of tabs ;'))
         self.oFile.lines.append(line.line('  This is a test of tabs;'))
@@ -72,7 +72,7 @@ class testRuleWhitespaceMethods(unittest.TestCase):
         self.assertEqual(oRule.identifier, '004')
         self.assertEqual(oRule.phase, 2)
 
-        dExpected = [2,4,6]
+        dExpected = utils.add_violation_list([2,4,6])
         self.oFile.lines.append(line.line('  This is a test of commas,'))
         self.oFile.lines.append(line.line('  This is a test of commas ,'))
         self.oFile.lines.append(line.line('  This is a test of commas,'))

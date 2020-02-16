@@ -29,9 +29,9 @@ class remove_spaces_before_character_rule(rule.rule):
 
     def _analyze(self, oFile, oLine, iLineNumber):
         if ' ' + self.sCharacter in oLine.lineNoComment:
-            self.add_violation(iLineNumber)
+            self.add_violation({'lineNumber': iLineNumber})
 
     def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
-            oLine = oFile.lines[iLineNumber]
+        for dViolation in self.violations:
+            oLine = oFile.lines[dViolation['lineNumber']]
             oLine.update_line(re.sub(r'(\s+' + self.sCharacter + ')', self.sCharacter, oLine.line))
