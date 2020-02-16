@@ -21,5 +21,5 @@ class remove_blank_lines_above_rule(rule.rule):
             check.is_no_blank_line_before(self, oFile, iLineNumber, self.sUnless)
 
     def _fix_violations(self, oFile):
-        for iLineNumber in self.violations[::-1]:
-            fix.remove_blank_lines_above(self, oFile, iLineNumber, self.sUnless)
+        for dViolation in self.violations[::-1]:
+            fix.remove_blank_lines_above(self, oFile, dViolation['lineNumber'], self.sUnless)

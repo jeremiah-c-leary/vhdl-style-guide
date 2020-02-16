@@ -184,7 +184,7 @@ class testRuleComponentMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'component')
         self.assertEqual(oRule.identifier, '016')
 
-        dExpected = [65]
+        dExpected = [utils.add_violation(65)]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 

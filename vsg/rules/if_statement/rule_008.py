@@ -17,5 +17,5 @@ class rule_008(rule.rule):
             check.is_no_blank_line_before(self, oFile, iLineNumber, 'isEndCaseKeyword')
 
     def _fix_violations(self, oFile):
-        for iLineNumber in self.violations[::-1]:
-            fix.remove_blank_lines_above(self, oFile, iLineNumber, 'isEndCaseKeyword')
+        for dViolation in self.violations[::-1]:
+            fix.remove_blank_lines_above(self, oFile, dViolation['lineNumber'], 'isEndCaseKeyword')
