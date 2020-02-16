@@ -18,10 +18,12 @@ class rule_010(rule.rule):
 
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.isEndGenericMap and not re.match('^\s*\)', oLine.line):
-                self.add_violation(iLineNumber)
+            dViolation = utils.create_violation_dict(iLineNumber)
+            self.add_violation(dViolation)
 
     def _fix_violations(self, oFile):
-        for iLineNumber in self.violations[::-1]:
+        for dViolation in self.violations[::-1]:
+            iLineNumber = dViolation['lineNumber']
             oFile.lines[iLineNumber].line = utils.remove_closing_parenthesis_and_semicolon(oFile.lines[iLineNumber].line)
             oFile.lines[iLineNumber].isEndGenericMap = False
             oFile.lines.insert(iLineNumber + 1, line.line('  );'))

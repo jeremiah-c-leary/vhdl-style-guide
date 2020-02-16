@@ -19,9 +19,11 @@ class rule_016(rule.rule):
 
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.isGenericDeclaration and re.match('^.*;.*:', oLine.lineNoComment):
-            self.add_violation(iLineNumber)
+            dViolation = utils.create_violation_dict(iLineNumber)
+            self.add_violation(dViolation)
 
     def _fix_violations(self, oFile):
-        for iLineNumber in self.violations[::-1]:
+        for dViolation in self.violations[::-1]:
+            iLineNumber = dViolation['lineNumber']
             for i in range(0, oFile.lines[iLineNumber].line.count(';')):
                 utils.split_line_after_word(oFile, iLineNumber + i, ';')
