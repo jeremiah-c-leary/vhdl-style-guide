@@ -26,4 +26,4 @@ def is_single_space_after_character(self, sCharacter, oLine, iLineNumber):
         if re.match('^.*' + sCharacter.lower() + '$', oLine.lineNoComment):
             return
         if not re.match('^.*' + sCharacter.lower() + '\s\S', oLine.lineLower):
-            self.add_violation(iLineNumber)
+            self.add_violation({'lineNumber': iLineNumber})
