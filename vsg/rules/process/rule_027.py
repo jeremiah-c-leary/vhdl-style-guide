@@ -1,6 +1,7 @@
 
 from vsg import rule
 from vsg import fix
+from vsg import utils
 
 
 class rule_027(rule.rule):
@@ -28,7 +29,8 @@ class rule_027(rule.rule):
                         dVars['fCheckForBlanks'] = True
 
     def _fix_violations(self, oFile):
-        for iLineNumber in self.violations[::-1]:
+        for dViolation in self.violations[::-1]:
+            iLineNumber = dViolation['lineNumber']
             fix.insert_blank_line_above(self, oFile, iLineNumber)
             oFile.lines[iLineNumber].insideProcess = True
 
@@ -56,7 +58,8 @@ def check_for_blanks(self, dVars, oLine, iLineNumber):
             dVars['iBlankCount'] = 0
         if oLine.isProcessBegin:
             if not dVars['iBlankCount'] == 1:
-                self.add_violation(iLineNumber)
+                dViolation = utils.create_violation_dict(iLineNumber)
+                self.add_violation(dViolation)
             dVars['fSkipProcess'] = True
             dVars['fCheckForBlanks'] = False
             dVars['iBlankCount'] = 0

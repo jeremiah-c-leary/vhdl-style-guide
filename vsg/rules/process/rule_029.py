@@ -1,5 +1,6 @@
 
 from vsg import rule
+from vsg import utils
 
 import re
 
@@ -21,16 +22,18 @@ class rule_029(rule.rule):
     def _analyze(self, oFile, oLine, iLineNumber):
         if self.clock == 'event':
             if oLine.isClockStatement and re.match('^.*ing_edge\s*\(', oLine.lineLower):
-                self.add_violation(iLineNumber)
+                dViolation = utils.create_violation_dict(iLineNumber)
+                self.add_violation(dViolation)
         elif self.clock == 'edge':
             if oLine.isClockStatement and re.match('^.*\'event', oLine.lineLower):
-                self.add_violation(iLineNumber)
+                dViolation = utils.create_violation_dict(iLineNumber)
+                self.add_violation(dViolation)
         else:
             raise Exception("clock option needs to be 'event' or 'edge', detected: {self.clock}")
 
     def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
-            oLine = oFile.lines[iLineNumber]
+        for dViolation in self.violations:
+            oLine = oFile.lines[dViolation['lineNumber']]
             if self.clock == 'event':
                 oLine.update_line(re.sub(r'rising_edge\s*\(\s*(\w+)\s*\)', r'\1"event and \1 = "1"', oLine.line, re.IGNORECASE).replace('"', '\''))
                 oLine.update_line(re.sub(r'falling_edge\s*\(\s*(\w+)\s*\)', r'\1"event and \1 = "0"', oLine.line, re.IGNORECASE).replace('"', '\''))

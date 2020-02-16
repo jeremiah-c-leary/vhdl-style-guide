@@ -19,7 +19,7 @@ class testRuleProcessIsKeyword(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'process')
         self.assertEqual(oRule.identifier, '012')
-        dExpected = [10,15,33]
+        dExpected = utils.add_violation_list([10,15,33])
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
 

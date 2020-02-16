@@ -15,15 +15,16 @@ class rule_012(rule.rule):
 
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.isSensitivityListEnd and not oLine.isProcessIs:
-            self.add_violation(iLineNumber)
+            dViolation = utils.create_violation_dict(iLineNumber)
+            self.add_violation(dViolation)
 
     def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
-            oLine = oFile.lines[iLineNumber]
+        for dViolation in self.violations:
+            oLine = oFile.lines[dViolation['lineNumber']]
             iInsertIndex = oLine.line.rfind(')')
             oLine.update_line(oLine.line[:iInsertIndex + 1] + ' is ' + oLine.line[iInsertIndex + 1:])
             oLine.isProcessIs = True
-            search_for_and_remove_extraneous_is(oFile, iLineNumber)
+            search_for_and_remove_extraneous_is(oFile, dViolation['lineNumber'])
 
 
 def search_for_and_remove_extraneous_is(oFile, iLineNumber):

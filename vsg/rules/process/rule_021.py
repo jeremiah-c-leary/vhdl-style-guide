@@ -1,6 +1,7 @@
 
 from vsg import rule
 from vsg import fix
+from vsg import utils
 
 
 class rule_021(rule.rule):
@@ -31,7 +32,8 @@ class rule_021(rule.rule):
                         continue  # pragma: no cover
                     if oLine.isProcessBegin:
                         if fBlanksFound and not fNonBlanksFound:
-                            self.add_violation(iLineNumber)
+                            dViolation = utils.create_violation_dict(iLineNumber)
+                            self.add_violation(dViolation)
                         fCheckForBlanks = False
                         fBlanksFound = False
                         fNonBlanksFound = False
@@ -45,5 +47,5 @@ class rule_021(rule.rule):
                         fCheckForBlanks = True
 
     def _fix_violations(self, oFile):
-        for iLineNumber in self.violations[::-1]:
-            fix.remove_blank_lines_above(self, oFile, iLineNumber)
+        for dViolation in self.violations[::-1]:
+            fix.remove_blank_lines_above(self, oFile, dViolation['lineNumber'])

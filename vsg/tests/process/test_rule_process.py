@@ -30,7 +30,7 @@ class testRuleProcessMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'process')
         self.assertEqual(oRule.identifier, '002')
-        dExpected = [17,24]
+        dExpected = utils.add_violation_list([17,24])
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -107,7 +107,7 @@ class testRuleProcessMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'process')
         self.assertEqual(oRule.identifier, '010')
-        dExpected = [6]
+        dExpected = [utils.add_violation(6)]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -125,7 +125,7 @@ class testRuleProcessMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'process')
         self.assertEqual(oRule.identifier, '012')
-        dExpected = [51,57]
+        dExpected = utils.add_violation_list([51,57])
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -154,7 +154,7 @@ class testRuleProcessMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'process')
         self.assertEqual(oRule.identifier, '015')
-        dExpected = [63]
+        dExpected = [utils.add_violation(63)]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -163,7 +163,7 @@ class testRuleProcessMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'process')
         self.assertEqual(oRule.identifier, '016')
-        dExpected = [6,11,17,24,32,38,51,55,125]
+        dExpected = utils.add_violation_list([6,11,17,24,32,38,51,55,125])
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -218,7 +218,7 @@ class testRuleProcessMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'process')
         self.assertEqual(oRule.identifier, '021')
-        dExpected = [59,70]
+        dExpected = utils.add_violation_list([59,70])
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -263,7 +263,7 @@ class testRuleProcessMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'process')
         self.assertEqual(oRule.identifier, '026')
-        dExpected = [75]
+        dExpected = [utils.add_violation(75)]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -272,7 +272,7 @@ class testRuleProcessMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'process')
         self.assertEqual(oRule.identifier, '027')
-        dExpected = [77,84]
+        dExpected = utils.add_violation_list([77,84])
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -291,7 +291,7 @@ class testRuleProcessMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'process')
         self.assertEqual(oRule.identifier, '029')
         self.assertEqual(oRule.clock, 'event')
-        dExpected = [9,13]
+        dExpected = utils.add_violation_list([9,13])
         oRule.analyze(oFileEvent)
         self.assertEqual(oRule.violations, dExpected)
         self.assertEqual(oRule._get_solution(0), 'Use \'event for clocks.')
@@ -302,7 +302,7 @@ class testRuleProcessMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'process')
         self.assertEqual(oRule.identifier, '029')
-        dExpected = [17, 21]
+        dExpected = utils.add_violation_list([17, 21])
         oRule.analyze(oFileEvent)
         self.assertEqual(oRule.violations, dExpected)
         self.assertEqual(oRule._get_solution(0), 'Use rising_edge or falling_edge for clocks.')
@@ -312,6 +312,6 @@ class testRuleProcessMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'process')
         self.assertEqual(oRule.identifier, '030')
-        dExpected = [26,34]
+        dExpected = utils.add_violation_list([26,34])
         oRule.analyze(oFileSensitivity)
         self.assertEqual(oRule.violations, dExpected)

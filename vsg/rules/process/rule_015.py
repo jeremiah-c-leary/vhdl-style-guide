@@ -1,6 +1,7 @@
 
 from vsg import rule
 from vsg import fix
+from vsg import utils
 
 
 class rule_015(rule.rule):
@@ -17,8 +18,9 @@ class rule_015(rule.rule):
         if oLine.isProcessKeyword and \
            not oFile.lines[iLineNumber - 1].isBlank and \
            not oFile.lines[iLineNumber - 1].isComment:
-            self.add_violation(iLineNumber)
+            dViolation = utils.create_violation_dict(iLineNumber)
+            self.add_violation(dViolation)
 
     def _fix_violations(self, oFile):
-        for iLineNumber in self.violations[::-1]:
-            fix.insert_blank_line_above(self, oFile, iLineNumber)
+        for dViolation in self.violations[::-1]:
+            fix.insert_blank_line_above(self, oFile, dViolation['lineNumber'])

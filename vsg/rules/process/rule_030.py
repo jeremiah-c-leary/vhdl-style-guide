@@ -1,5 +1,6 @@
 
 from vsg import rule
+from vsg import utils
 
 import re
 
@@ -13,7 +14,7 @@ class rule_030(rule.rule):
         rule.rule.__init__(self)
         self.name = 'process'
         self.identifier = '030'
-        self.solution = 'Compact sensitivity list to reduce the number of lines is uses.'
+        self.solution = 'Compact sensitivity list to reduce the number of lines it uses.'
         self.phase = 1
         self.fixable = False
 
@@ -29,6 +30,7 @@ class rule_030(rule.rule):
         if oLine.isSensitivityListEnd:
             if self.iCount == self.sSensitivityList.count(',') + 1:
                 if self.iCount > 1:
-                    self.add_violation(iLineNumber)
+                    dViolation = utils.create_violation_dict(iLineNumber)
+                    self.add_violation(dViolation)
             self.iCount = 0
             self.sSensitivityList = ''

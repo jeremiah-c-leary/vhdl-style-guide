@@ -7,7 +7,7 @@ from vsg import utils
 
 class rule_032(rule.rule):
     '''
-    Process rule 032 checks the lable for a process is on the same line as the process keyword.
+    Process rule 032 checks the label for a process is on the same line as the process keyword.
     '''
 
     def __init__(self):
@@ -27,23 +27,23 @@ class rule_032(rule.rule):
             self.label_name = utils.extract_label(oLine)[0]
             self.label_line_number = iLineNumber
         if oLine.isProcessKeyword and not oLine.isProcessLabel and self.label_found:
-            self.add_violation(iLineNumber)
-            self.dFix[iLineNumber] = {}
-            self.dFix[iLineNumber]['label_name'] = self.label_name
-            self.dFix[iLineNumber]['label_line_number'] = self.label_line_number
+            dViolation = utils.create_violation_dict(iLineNumber)
+            dViolation['label_name'] = self.label_name
+            dViolation['label_line_number'] = self.label_line_number
+            self.add_violation(dViolation)
         if oLine.isProcessKeyword:
             self.label_found = False
         if oLine.isConcurrentBegin:
             self.label_found = False
 
     def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
-            _remove_label(self, iLineNumber, oFile)
-            _add_label(self, iLineNumber, oFile)
+        for dViolation in self.violations:
+            _remove_label(self, dViolation, oFile)
+            _add_label(self, dViolation, oFile)
 
 
-def _remove_label(self, iLineNumber, oFile):
-    oLine = oFile.lines[self.dFix[iLineNumber]['label_line_number']]
+def _remove_label(self, dViolation, oFile):
+    oLine = oFile.lines[dViolation['label_line_number']]
     sLine = oLine.line
     iIndex = sLine.find(':')
     sBlank = ' '*(iIndex + 1)
@@ -53,8 +53,8 @@ def _remove_label(self, iLineNumber, oFile):
         oLine.isBlank = True
 
 
-def _add_label(self, iLineNumber, oFile):
-    oLine = oFile.lines[iLineNumber]
+def _add_label(self, dViolation, oFile):
+    oLine = oFile.lines[dViolation['lineNumber']]
     sLine = oLine.line
-    oLine.update_line(self.dFix[iLineNumber]['label_name'] + ' : ' + sLine)
+    oLine.update_line(dViolation['label_name'] + ' : ' + sLine)
     oLine.isProcessLabel = True

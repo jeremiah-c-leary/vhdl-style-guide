@@ -1,5 +1,6 @@
 
 from vsg import rule
+from vsg import utils
 
 
 class rule_016(rule.rule):
@@ -15,4 +16,5 @@ class rule_016(rule.rule):
 
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.isProcessKeyword and not oLine.isProcessLabel:
-            self.add_violation(iLineNumber)
+            dViolation = utils.create_violation_dict(iLineNumber)
+            self.add_violation(dViolation)
