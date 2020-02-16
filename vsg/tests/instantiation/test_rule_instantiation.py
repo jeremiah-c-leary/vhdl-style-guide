@@ -302,7 +302,7 @@ class testRuleInstantiationMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'instantiation')
         self.assertEqual(oRule.identifier, '025')
 
-        dExpected = [81]
+        dExpected = [utils.add_violation(81)]
         oRule.analyze(oFileGeneric)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -312,7 +312,7 @@ class testRuleInstantiationMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'instantiation')
         self.assertEqual(oRule.identifier, '026')
 
-        dExpected = [86]
+        dExpected = [utils.add_violation(86)]
         oRule.analyze(oFileGeneric)
         self.assertEqual(oRule.violations, dExpected)
 

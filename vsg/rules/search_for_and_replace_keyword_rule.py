@@ -7,7 +7,7 @@ import re
 
 class search_for_and_replace_keyword_rule(rule.rule):
     '''
-    Port rule 018 checks the **generic** keyword is on the same line as the (.
+    This rule will search for and replace words.
     '''
 
     def __init__(self, name=None, identifier=None):
@@ -20,10 +20,10 @@ class search_for_and_replace_keyword_rule(rule.rule):
 
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.__dict__[self.sTrigger] and self.sKeyword not in oLine.lineNoComment:
-            self.add_violation(iLineNumber)
+            self.add_violation({'lineNumber': iLineNumber})
 
     def _fix_violations(self, oFile):
-        for iLineNumber in self.violations[::-1]:
-            oLine = oFile.lines[iLineNumber]
+        for dViolation in self.violations[::-1]:
+            oLine = oFile.lines[dViolation['lineNumber']]
             oLine.update_line(re.sub('' + self.sKeyword2, '' + self.sKeyword2 + ' ' + self.sKeyword, oLine.line, 1, re.IGNORECASE))
-            utils.search_for_and_remove_keyword(oFile, iLineNumber, '\(')
+            utils.search_for_and_remove_keyword(oFile, dViolation['lineNumber'], '\(')
