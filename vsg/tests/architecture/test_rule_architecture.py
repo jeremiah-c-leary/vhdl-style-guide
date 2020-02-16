@@ -45,7 +45,7 @@ class testRuleArchitectureMethods(unittest.TestCase):
     def test_rule_002(self):
         oRule = architecture.rule_002()
 
-        dExpected = [14]
+        dExpected = [utils.add_violation(14)]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -101,7 +101,7 @@ class testRuleArchitectureMethods(unittest.TestCase):
     def test_rule_005(self):
         oRule = architecture.rule_005()
 
-        dExpected = [26]
+        dExpected = [utils.add_violation(26)]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -114,7 +114,7 @@ class testRuleArchitectureMethods(unittest.TestCase):
     def test_rule_006(self):
         oRule = architecture.rule_006()
 
-        dExpected = [2,9]
+        dExpected = utils.add_violation_list([2,9])
         oRule.analyze(oFileIs)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -153,7 +153,7 @@ class testRuleArchitectureMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'architecture')
         self.assertEqual(oRule.identifier, '010')
-        dExpected = [55,77]
+        dExpected = utils.add_violation_list([55,77])
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -378,7 +378,8 @@ class testRuleArchitectureMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'architecture')
         self.assertEqual(oRule.identifier, '024')
-        dExpected = [13,77]
+        dExpected = [{'label': 'ARCH', 'lineNumber': 13},
+                     {'label': 'ARCH', 'lineNumber': 77}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -389,49 +390,49 @@ class testRuleArchitectureMethods(unittest.TestCase):
         self.assertEqual(oRule.identifier, '025')
         self.assertFalse(oRule.fixable)
 
-        dExpected = [3, 10, 17, 24]
+        dExpected = utils.add_violation_list([3, 10, 17, 24])
         oRule.analyze(oFileName)
         self.assertEqual(oRule.violations, dExpected)
 
         oRule.violations = []
         oRule.names = []
         oRule.names.append('rtl')
-        dExpected = [10, 17, 24]
+        dExpected = utils.add_violation_list([10, 17, 24])
         oRule.analyze(oFileName)
         self.assertEqual(oRule.violations, dExpected)
         self.assertEqual(oRule._get_solution(100), 'Architecture name must be from this list: rtl')
 
         oRule.violations = []
         oRule.names = ['ENTITY1']
-        dExpected = [3, 17, 24]
+        dExpected = utils.add_violation_list([3, 17, 24])
         oRule.analyze(oFileName)
         self.assertEqual(oRule.violations, dExpected)
         self.assertEqual(oRule._get_solution(100), 'Architecture name must be from this list: entity1')
 
         oRule.violations = []
         oRule.names = ['BLUE']
-        dExpected = [3, 10, 24]
+        dExpected = utils.add_violation_list([3, 10, 24])
         oRule.analyze(oFileName)
         self.assertEqual(oRule.violations, dExpected)
         self.assertEqual(oRule._get_solution(100), 'Architecture name must be from this list: blue')
 
         oRule.violations = []
         oRule.names = ['CDC']
-        dExpected = [3, 10, 17]
+        dExpected = utils.add_violation_list([3, 10, 17])
         oRule.analyze(oFileName)
         self.assertEqual(oRule.violations, dExpected)
         self.assertEqual(oRule._get_solution(100), 'Architecture name must be from this list: cdc')
 
         oRule.violations = []
         oRule.names = ['rtl', 'CDC']
-        dExpected = [10, 17]
+        dExpected = utils.add_violation_list([10, 17])
         oRule.analyze(oFileName)
         self.assertEqual(oRule.violations, dExpected)
         self.assertEqual(oRule._get_solution(100), 'Architecture name must be from this list: rtl,cdc')
 
         oRule.violations = []
         oRule.names = ['rtl', 'cdc', 'blue']
-        dExpected = [10]
+        dExpected = [utils.add_violation(10)]
         oRule.analyze(oFileName)
         self.assertEqual(oRule.violations, dExpected)
         self.assertEqual(oRule._get_solution(100), 'Architecture name must be from this list: rtl,cdc,blue')

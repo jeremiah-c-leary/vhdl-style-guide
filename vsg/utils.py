@@ -1024,3 +1024,19 @@ def replace_word_by_index(oLine, iIndex, sWord):
     sLine = oLine.line
     iWordLength = len(sWord)
     oLine.update_line(sLine[:iIndex] + sWord + sLine[iIndex + iWordLength:])
+
+
+def create_violation_dict(iLineNumber):
+    '''
+    Builds a minimal violation dictionary.
+
+    Parameters:
+
+      iLineNumber: (integer)
+
+    Returns:  dictionary
+    '''
+    dReturn = {}
+    dReturn['lineNumber'] = iLineNumber
+    return dReturn
+

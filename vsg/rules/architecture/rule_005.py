@@ -17,4 +17,4 @@ class rule_005(rule.rule):
 
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.isArchitectureKeyword and not re.match('^\s*architecture\s+\w+\s+of', oLine.line, re.IGNORECASE):
-            self.add_violation(iLineNumber)
+            self.add_violation({'lineNumber': iLineNumber})

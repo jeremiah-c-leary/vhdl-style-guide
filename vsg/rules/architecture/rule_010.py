@@ -19,9 +19,9 @@ class rule_010(rule.rule):
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.isEndArchitecture:
             if not re.match('^\s*end\s+architecture', oLine.line, re.IGNORECASE):
-                self.add_violation(iLineNumber)
+                self.add_violation({'lineNumber': iLineNumber})
 
     def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
-            oLine = oFile.lines[iLineNumber]
+        for dViolation in self.violations:
+            oLine = oFile.lines[dViolation['lineNumber']]
             oLine.update_line(re.sub(r'^(\s*end)', r'\1 architecture', oLine.line, flags=re.IGNORECASE))

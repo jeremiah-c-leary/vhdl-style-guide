@@ -21,11 +21,11 @@ class rule_002(rule.rule):
         if oLine.isArchitectureKeyword and \
            len(oLine.line.split()) > 4 and \
            not re.match('^\s*architecture\s\S+\sof\s\S+\sis', oLine.lineLower):
-            self.add_violation(iLineNumber)
+            self.add_violation({'lineNumber': iLineNumber})
 
     def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
-            fix.enforce_one_space_after_word(self, oFile.lines[iLineNumber], 'architecture')
-            fix.enforce_one_space_before_word(self, oFile.lines[iLineNumber], 'of')
-            fix.enforce_one_space_after_word(self, oFile.lines[iLineNumber], 'of')
-            fix.enforce_one_space_before_word(self, oFile.lines[iLineNumber], 'is')
+        for dViolation in self.violations:
+            fix.enforce_one_space_after_word(self, oFile.lines[dViolation['lineNumber']], 'architecture')
+            fix.enforce_one_space_before_word(self, oFile.lines[dViolation['lineNumber']], 'of')
+            fix.enforce_one_space_after_word(self, oFile.lines[dViolation['lineNumber']], 'of')
+            fix.enforce_one_space_before_word(self, oFile.lines[dViolation['lineNumber']], 'is')

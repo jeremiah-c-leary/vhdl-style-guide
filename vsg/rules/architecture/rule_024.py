@@ -1,5 +1,6 @@
 
 from vsg import rule
+from vsg import utils
 
 import re
 
@@ -15,7 +16,6 @@ class rule_024(rule.rule):
         self.phase = 1
 
     def _pre_analyze(self):
-        self.dFix['label'] = {}
         self.sLabel = ""
 
     def _analyze(self, oFile, oLine, iLineNumber):
@@ -23,14 +23,17 @@ class rule_024(rule.rule):
             self.sLabel = oLine.line.split()[1]
         if oLine.isEndArchitecture and not re.match('^\s*end\s+architecture\s+\w+', oLine.line, re.IGNORECASE):
             if re.match('^\s*end\s+architecture', oLine.line, re.IGNORECASE):
-                self.add_violation(iLineNumber)
-                self.dFix['label'][iLineNumber] = self.sLabel
+                dViolation = utils.create_violation_dict(iLineNumber)
+                dViolation['label'] = self.sLabel
+                self.add_violation(dViolation)
             elif not re.match('^\s*end\s+\w+', oLine.line, re.IGNORECASE):
-                self.add_violation(iLineNumber)
-                self.dFix['label'][iLineNumber] = self.sLabel
+                dViolation = utils.create_violation_dict(iLineNumber)
+                dViolation['label'] = self.sLabel
+                self.add_violation(dViolation)
 
     def _fix_violations(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if iLineNumber in self.dFix['label']:
-                sLine = oLine.line
-                oLine.update_line(sLine.replace(';', ' ' + self.dFix['label'][iLineNumber].upper() + ';', 1))
+        for dViolation in self.violations:
+            oLine = oFile.lines[dViolation['lineNumber']]
+            sLine = oLine.line
+            sLabel = dViolation['label'] 
+            oLine.update_line(sLine.replace(';', ' ' + sLabel.upper() + ';', 1))
