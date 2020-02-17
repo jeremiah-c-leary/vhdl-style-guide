@@ -21,7 +21,10 @@ class testConsistentCase(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'function')
         self.assertEqual(oRule.identifier, '010')
-        dExpected = [9, 14, 15]
+        dExpected = [{'lineNumber': 9, 'name': 'Func_1'},
+                     {'lineNumber': 14, 'name': 'FUNC_1'},
+                     {'lineNumber': 15, 'name': 'FUNC_1'},
+                     {'lineNumber': 15, 'name': 'funC_2'}] 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
         self.assertEqual(oRule._get_solution(9), 'Inconsistent capitalization of word: Func_1')

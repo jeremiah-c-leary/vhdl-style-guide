@@ -1,6 +1,7 @@
 
 from vsg import rule
 from vsg import fix
+from vsg import utils
 
 import re
 
@@ -22,11 +23,12 @@ class rule_003(rule.rule):
             if not re.match('^\s*function\s+\w+\s\(', oLine.lineLower) and \
                not re.match('^\s*impure\s+function\s+\w+\s\(', oLine.lineLower) and \
                not re.match('^\s*pure\s+function\s+\w+\s\(', oLine.lineLower):
-                self.add_violation(iLineNumber)
+                dViolation = utils.create_violation_dict(iLineNumber)
+                self.add_violation(dViolation)
 
     def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
-            fix.enforce_one_space_before_word(self, oFile.lines[iLineNumber], '\(')
+        for dViolation in self.violations:
+            fix.enforce_one_space_before_word(self, oFile.lines[dViolation['lineNumber']], '\(')
 
 
 def function_has_parameters(sString):

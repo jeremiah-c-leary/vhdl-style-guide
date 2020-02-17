@@ -38,7 +38,7 @@ class testRuleFunctionMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'function')
         self.assertEqual(oRule.identifier, '003')
-        dExpected = [28]
+        dExpected = [utils.add_violation(28)]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -115,6 +115,6 @@ class testRuleFunctionMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'function')
         self.assertEqual(oRule.identifier, '009')
-        dExpected = [4]
+        dExpected = [utils.add_violation(4)]
         oRule.analyze(oFileMultiple)
         self.assertEqual(oRule.violations, dExpected)
