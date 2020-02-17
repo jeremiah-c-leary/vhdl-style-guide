@@ -21,8 +21,6 @@ VHDL Style Guide (VSG)
 .. image:: https://api.codacy.com/project/badge/Grade/42744dca97544824b93cfc99e8030063
    :target: https://www.codacy.com/app/jeremiah-c-leary/vhdl-style-guide?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jeremiah-c-leary/vhdl-style-guide&amp;utm_campaign=Badge_Grade
    :alt: Codacy
-.. image:: https://img.shields.io/twitter/follow/leary_jeremiah.svg?style=social
-   :alt: Twitter Follow
 
 .. NOTE:: Version 1.0 of VSG supports python 3 only due to python 2.7 End of Life in 2019.
           The python 2.7 version is being maintained on the python-2.7-maintence branch.
