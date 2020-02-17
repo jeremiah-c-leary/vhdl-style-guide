@@ -1,5 +1,6 @@
 
 from vsg import rule
+from vsg import utils
 
 
 class rule_001(rule.rule):
@@ -14,4 +15,5 @@ class rule_001(rule.rule):
 
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.isWithKeyword:
-            self.add_violation(iLineNumber)
+            dViolation = utils.create_violation_dict(iLineNumber)
+            self.add_violation(dViolation)

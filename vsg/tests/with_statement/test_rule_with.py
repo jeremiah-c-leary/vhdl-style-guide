@@ -19,6 +19,6 @@ class testRuleWithMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'with')
         self.assertEqual(oRule.identifier, '001')
 
-        dExpected = [6]
+        dExpected = [utils.add_violation(6)]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
