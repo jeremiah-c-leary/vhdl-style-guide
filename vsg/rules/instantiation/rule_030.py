@@ -1,6 +1,7 @@
 
 from vsg import rule
 from vsg import fix
+from vsg import utils
 
 import re
 
@@ -20,8 +21,9 @@ class rule_030(rule.rule):
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.isInstantiationGenericAssignment and not oLine.isInstantiationGenericKeyword:
             if not re.match('^.*=>\s\S+', oLine.line):
-                self.add_violation(iLineNumber)
+                dViolation = utils.create_violation_dict(iLineNumber)
+                self.add_violation(dViolation)
 
     def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
-            fix.enforce_one_space_after_word(self, oFile.lines[iLineNumber], '=>')
+        for dViolation in self.violations:
+            fix.enforce_one_space_after_word(self, oFile.lines[dViolation['lineNumber']], '=>')

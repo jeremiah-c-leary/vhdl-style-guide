@@ -66,7 +66,7 @@ class testRuleInstantiationMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'instantiation')
         self.assertEqual(oRule.identifier, '005')
 
-        dExpected = [52]
+        dExpected = [utils.add_violation(52)]
         oRule.analyze(oFilePort)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -88,7 +88,7 @@ class testRuleInstantiationMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'instantiation')
         self.assertEqual(oRule.identifier, '007')
 
-        dExpected = [55]
+        dExpected = [utils.add_violation(55)]
         oRule.analyze(oFilePort)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -159,7 +159,7 @@ class testRuleInstantiationMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'instantiation')
         self.assertEqual(oRule.identifier, '012')
 
-        dExpected = [63]
+        dExpected = [utils.add_violation(63)]
         oRule.analyze(oFileGeneric)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -180,7 +180,7 @@ class testRuleInstantiationMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'instantiation')
         self.assertEqual(oRule.identifier, '014')
 
-        dExpected = [46,65,73,98]
+        dExpected = utils.add_violation_list([46,65,73,98])
         oRule.analyze(oFileGeneric)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -212,7 +212,7 @@ class testRuleInstantiationMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'instantiation')
         self.assertEqual(oRule.identifier, '017')
 
-        dExpected = [54]
+        dExpected = [utils.add_violation(54)]
         oRule.analyze(oFileGeneric)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -252,7 +252,7 @@ class testRuleInstantiationMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'instantiation')
         self.assertEqual(oRule.identifier, '020')
 
-        dExpected = [58]
+        dExpected = [utils.add_violation(58)]
         oRule.analyze(oFilePort)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -262,7 +262,7 @@ class testRuleInstantiationMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'instantiation')
         self.assertEqual(oRule.identifier, '021')
 
-        dExpected = [65,77]
+        dExpected = utils.add_violation_list([65,77])
         oRule.analyze(oFilePort)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -272,7 +272,7 @@ class testRuleInstantiationMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'instantiation')
         self.assertEqual(oRule.identifier, '022')
 
-        dExpected = [26,27]
+        dExpected = utils.add_violation_list([26,27])
         oRule.analyze(oFilePort)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -282,7 +282,7 @@ class testRuleInstantiationMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'instantiation')
         self.assertEqual(oRule.identifier, '023')
 
-        dExpected = [24,29,31]
+        dExpected = utils.add_violation_list([24,29,31])
         oRule.analyze(oFileComment)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -292,7 +292,7 @@ class testRuleInstantiationMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'instantiation')
         self.assertEqual(oRule.identifier, '024')
 
-        dExpected = [7,9,10,13,14]
+        dExpected = utils.add_violation_list([7,9,10,13,14])
         oRule.analyze(oFilePositional)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -354,6 +354,6 @@ class testRuleInstantiationMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'instantiation')
         self.assertEqual(oRule.identifier, '030')
 
-        dExpected = [65,83]
+        dExpected = utils.add_violation_list([65,83])
         oRule.analyze(oFileGeneric)
         self.assertEqual(oRule.violations, dExpected)

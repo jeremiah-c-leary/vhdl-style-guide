@@ -1,5 +1,6 @@
 
 from vsg import rule
+from vsg import utils
 
 import re
 
@@ -19,10 +20,12 @@ class rule_033(rule.rule):
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.isInstantiationDeclaration and not oLine.isDirectInstantiationDeclaration:
             if re.match('^\s*\w+\s*:\s*component', oLine.line, flags=re.IGNORECASE):
-                self.add_violation(iLineNumber)
+                dViolation = utils.create_violation_dict(iLineNumber)
+                self.add_violation(dViolation)
 
     def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
+        for dViolation in self.violations:
+            iLineNumber = dViolation['lineNumber']
             sLine = oFile.lines[iLineNumber].line
             sLine = re.sub(r'(^\s*\w+\s*:)(\s*)component(\s+)', r'\1 ', sLine, flags=re.IGNORECASE)
             oFile.lines[iLineNumber].update_line(sLine)

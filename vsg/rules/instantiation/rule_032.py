@@ -1,6 +1,7 @@
 
 from vsg import rule
 from vsg import fix
+from vsg import utils
 
 import re
 
@@ -22,8 +23,9 @@ class rule_032(rule.rule):
         if oLine.isInstantiationDeclaration and not oLine.isDirectInstantiationDeclaration:
             if re.match('^\s*\w+\s*:\s*component', oLine.line, flags=re.IGNORECASE):
                 if not re.match('^\s*\w+\s*:\s*component\s\w', oLine.line, flags=re.IGNORECASE):
-                    self.add_violation(iLineNumber)
+                    dViolation = utils.create_violation_dict(iLineNumber)
+                    self.add_violation(dViolation)
 
     def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
-            fix.enforce_one_space_after_word(self, oFile.lines[iLineNumber], 'component')
+        for dViolation in self.violations:
+            fix.enforce_one_space_after_word(self, oFile.lines[dViolation['lineNumber']], 'component')

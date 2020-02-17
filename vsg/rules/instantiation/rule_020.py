@@ -17,10 +17,12 @@ class rule_020(rule.rule):
 
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.isInstantiationPortAssignment and oLine.isInstantiationPortKeyword:
-            self.add_violation(iLineNumber)
+            dViolation = utils.create_violation_dict(iLineNumber)
+            self.add_violation(dViolation)
 
     def _fix_violations(self, oFile):
-        for iLineNumber in self.violations[::-1]:
+        for dViolation in self.violations[::-1]:
+            iLineNumber = dViolation['lineNumber']
             utils.split_line_after_word(oFile, iLineNumber, '(')
             oFile.lines[iLineNumber].isInstantiationPortAssignment = False
             oFile.lines[iLineNumber + 1].isInstantiationPortKeyword = False

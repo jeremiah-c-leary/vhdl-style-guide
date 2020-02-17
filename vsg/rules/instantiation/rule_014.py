@@ -1,6 +1,7 @@
 
 from vsg import rule
 from vsg import line
+from vsg import utils
 
 
 class rule_014(rule.rule):
@@ -17,10 +18,12 @@ class rule_014(rule.rule):
 
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.isInstantiationGenericEnd and (oLine.isInstantiationGenericAssignment or oLine.isInstantiationGenericKeyword):
-            self.add_violation(iLineNumber)
+            dViolation = utils.create_violation_dict(iLineNumber)
+            self.add_violation(dViolation)
 
     def _fix_violations(self, oFile):
-        for iLineNumber in self.violations[::-1]:
+        for dViolation in self.violations[::-1]:
+            iLineNumber = dViolation['lineNumber']
             _remove_closing_parenthesis(oFile, iLineNumber)
             _add_closing_parenthesis_on_new_line(oFile, iLineNumber)
 

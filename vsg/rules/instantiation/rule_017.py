@@ -17,10 +17,12 @@ class rule_017(rule.rule):
 
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.isInstantiationGenericAssignment and oLine.isInstantiationGenericKeyword:
-            self.add_violation(iLineNumber)
+            dViolation = utils.create_violation_dict(iLineNumber)
+            self.add_violation(dViolation)
 
     def _fix_violations(self, oFile):
-        for iLineNumber in self.violations[::-1]:
+        for dViolation in self.violations[::-1]:
+            iLineNumber = dViolation['lineNumber']
             utils.copy_line(oFile, iLineNumber)
             oLine = oFile.lines[iLineNumber]
             oLine.update_line(oLine.line.split('(')[0] + ' (')

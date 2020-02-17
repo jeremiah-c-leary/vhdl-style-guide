@@ -1,5 +1,6 @@
 
 from vsg import rule
+from vsg import utils
 
 
 class rule_024(rule.rule):
@@ -21,5 +22,6 @@ class rule_024(rule.rule):
                 lLine = oLine.lineNoComment.split(',')
                 for sString in lLine[:-1]:
                     if '=>' not in sString:
-                        self.add_violation(iLineNumber)
+                        dViolation = utils.create_violation_dict(iLineNumber)
+                        self.add_violation(dViolation)
                         break

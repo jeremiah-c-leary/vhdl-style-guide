@@ -44,7 +44,7 @@ class testComponentKeyword(unittest.TestCase):
         self.assertEqual(oRule.identifier, '032')
         self.assertTrue(oRule.disable)
 
-        dExpected = [41, 48]
+        dExpected = utils.add_violation_list([41, 48])
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -65,7 +65,7 @@ class testComponentKeyword(unittest.TestCase):
         self.assertEqual(oRule.identifier, '033')
         self.assertFalse(oRule.disable)
 
-        dExpected = [6,13,20,34,41,48]
+        dExpected = utils.add_violation_list([6,13,20,34,41,48])
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
 
