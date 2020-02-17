@@ -60,7 +60,7 @@ class testRuleEntityMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'entity')
         self.assertEqual(oRule.identifier, '005')
 
-        dExpected = [49]
+        dExpected = [utils.add_violation(49)]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -213,7 +213,7 @@ class testRuleEntityMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'entity')
         self.assertEqual(oRule.identifier, '015')
 
-        dExpected = [103]
+        dExpected = [utils.add_violation(103)]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -253,6 +253,6 @@ class testRuleEntityMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'entity')
         self.assertEqual(oRule.identifier, '019')
 
-        dExpected = [133]
+        dExpected = [{'entity': 'ENTITY1', 'lineNumber': 133}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)

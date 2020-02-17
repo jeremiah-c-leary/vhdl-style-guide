@@ -25,12 +25,14 @@ class rule_019(rule.rule):
             self.sEntityName = utils.extract_entity_identifier(oLine)[0]
         if oLine.isEndEntityDeclaration and re.match('^\s*end\s+entity', oLine.line, re.IGNORECASE):
             if not re.match('^\s*end\s+entity\s+\w+', oLine.line, re.IGNORECASE):
-                self.add_violation(iLineNumber)
-                self.dFix['violations'][iLineNumber] = self.sEntityName
+                dViolation = utils.create_violation_dict(iLineNumber)
+                dViolation['entity'] = self.sEntityName
+                self.add_violation(dViolation)
 
     def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
+        for dViolation in self.violations:
+            iLineNumber = dViolation['lineNumber']
             oLine = oFile.lines[iLineNumber]
             sLine = oLine.line
             iIndex = oLine.lineLower.find('entity') + len('entity')
-            oLine.update_line(sLine[:iIndex] + ' ' + self.dFix['violations'][iLineNumber] + sLine[iIndex:])
+            oLine.update_line(sLine[:iIndex] + ' ' + dViolation['entity'] + sLine[iIndex:])

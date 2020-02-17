@@ -20,10 +20,12 @@ class rule_005(rule.rule):
 
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.isEntityDeclaration and not re.match('^.*\s\s*is', oLine.lineLower):
-                self.add_violation(iLineNumber)
+            dViolation = utils.create_violation_dict(iLineNumber)
+            self.add_violation(dViolation)
 
     def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
+        for dViolation in self.violations:
+            iLineNumber = dViolation['lineNumber']
             oLine = oFile.lines[iLineNumber]
             oLine.update_line(re.sub(r'^(\s*entity\s+\w+)', r'\1 is', oLine.line, re.IGNORECASE))
             utils.search_for_and_remove_keyword(oFile, iLineNumber, 'is')

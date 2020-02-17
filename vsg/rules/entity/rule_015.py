@@ -1,5 +1,6 @@
 
 from vsg import rule
+from vsg import utils
 
 import re
 
@@ -19,10 +20,11 @@ class rule_015(rule.rule):
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.isEndEntityDeclaration:
             if not re.match('^\s*end\s+entity', oLine.line, re.IGNORECASE):
-                self.add_violation(iLineNumber)
+                dViolation = utils.create_violation_dict(iLineNumber)
+                self.add_violation(dViolation)
 
     def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
-            oLine = oFile.lines[iLineNumber]
+        for dViolation in self.violations:
+            oLine = oFile.lines[dViolation['lineNumber']]
             oLine.line = re.sub(r'^(\s*end)', r'\1 entity', oLine.line, flags=re.IGNORECASE)
             oLine.lineLower = oLine.line.lower()
