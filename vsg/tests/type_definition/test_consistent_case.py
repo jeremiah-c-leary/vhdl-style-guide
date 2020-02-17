@@ -21,7 +21,8 @@ class testGeneralRule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'type')
         self.assertEqual(oRule.identifier, '014')
-        dExpected = [7,9]
+        dExpected = [{'lineNumber': 7, 'type': 'STATE_MACHINE'},
+                     {'lineNumber': 9, 'type': 'State_Machine'}]
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
         self.assertEqual(oRule._get_solution(7), 'Inconsistent capitalization of word: STATE_MACHINE')

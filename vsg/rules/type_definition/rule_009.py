@@ -18,10 +18,12 @@ class rule_009(rule.rule):
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.isTypeEnumeratedKeyword and not oLine.isTypeEnumeratedEnd:
             if re.match('^.*\sis\s*\(\s*\w', oLine.lineLower):
-                self.add_violation(iLineNumber)
+                dViolation = utils.create_violation_dict(iLineNumber)
+                self.add_violation(dViolation)
 
     def _fix_violations(self, oFile):
-        for iLineNumber in self.violations[::-1]:
+        for dViolation in self.violations[::-1]:
+            iLineNumber = dViolation['lineNumber']
             utils.split_line_after_word(oFile, iLineNumber, '(')
             oLine = oFile.lines[iLineNumber + 1]
             oLine.isTypeKeyword = False

@@ -19,10 +19,12 @@ class rule_008(rule.rule):
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.isTypeEnumeratedEnd and not oLine.isTypeEnumeratedKeyword:
             if not re.match('^\s*\)\s*;', oLine.lineLower):
-                self.add_violation(iLineNumber)
+                dViolation = utils.create_violation_dict(iLineNumber)
+                self.add_violation(dViolation)
 
     def _fix_violations(self, oFile):
-        for iLineNumber in self.violations[::-1]:
+        for dViolation in self.violations[::-1]:
+            iLineNumber = dViolation['lineNumber']
             oFile.lines[iLineNumber].line = utils.remove_closing_parenthesis_and_semicolon(oFile.lines[iLineNumber].line)
             oFile.lines[iLineNumber].isTypeEnd = False
             oFile.lines[iLineNumber].isTypeEnumeratedEnd = False
