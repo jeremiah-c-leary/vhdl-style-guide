@@ -1,6 +1,7 @@
 
 from vsg import rule
 from vsg import fix
+from vsg import utils
 
 import re
 
@@ -19,8 +20,9 @@ class rule_015(rule.rule):
         if oLine.isEndIfKeyword:
             if re.match('^\s*end\s+if', oLine.line, re.IGNORECASE):
                 if not re.match('^\s*end\sif', oLine.line, re.IGNORECASE):
-                    self.add_violation(iLineNumber)
+                    dViolation = utils.create_violation_dict(iLineNumber)
+                    self.add_violation(dViolation)
 
     def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
-            fix.enforce_one_space_after_word(self, oFile.lines[iLineNumber], 'end')
+        for dViolation in self.violations:
+            fix.enforce_one_space_after_word(self, oFile.lines[dViolation['lineNumber']], 'end')

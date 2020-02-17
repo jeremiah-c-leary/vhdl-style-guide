@@ -19,10 +19,12 @@ class rule_021(rule.rule):
 
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.isElseKeyword and not re.match('^\s*else', oLine.lineLower):
-                self.add_violation(iLineNumber)
+            dViolation = utils.create_violation_dict(iLineNumber)
+            self.add_violation(dViolation)
 
     def _fix_violations(self, oFile):
-        for iLineNumber in self.violations[::-1]:
+        for dViolation in self.violations[::-1]:
+            iLineNumber = dViolation['lineNumber']
             utils.split_line_before_word(oFile, iLineNumber, 'else')
             oFile.lines[iLineNumber].isElseKeyword = False
             oFile.lines[iLineNumber + 1].isIfKeyword = False

@@ -17,10 +17,12 @@ class rule_023(rule.rule):
 
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.isElseIfKeyword and not re.match('^\s*elsif', oLine.lineLower):
-            self.add_violation(iLineNumber)
+            dViolation = utils.create_violation_dict(iLineNumber)
+            self.add_violation(dViolation)
 
     def _fix_violations(self, oFile):
-        for iLineNumber in self.violations[::-1]:
+        for dViolation in self.violations[::-1]:
+            iLineNumber = dViolation['lineNumber']
             utils.split_line_before_word(oFile, iLineNumber, 'elsif')
             oFile.lines[iLineNumber].isLastEndIf = False
             oFile.lines[iLineNumber].isElseIfKeyword = False

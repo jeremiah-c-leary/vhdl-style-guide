@@ -1,5 +1,6 @@
 
 from vsg import rule
+from vsg import utils
 
 import re
 
@@ -18,12 +19,15 @@ class rule_002(rule.rule):
 
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.isIfKeyword and not re.match('^\s*if\s*\(', oLine.lineNoComment.lower()):
-                self.add_violation(iLineNumber)
+            dViolation = utils.create_violation_dict(iLineNumber)
+            self.add_violation(dViolation)
         if oLine.isElseIfKeyword and re.match('^\s*elsif\s+\w', oLine.lineNoComment.lower()):
-                self.add_violation(iLineNumber)
+            dViolation = utils.create_violation_dict(iLineNumber)
+            self.add_violation(dViolation)
 
     def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
+        for dViolation in self.violations:
+            iLineNumber = dViolation['lineNumber']
             oLine = oFile.lines[iLineNumber]
             if oLine.isIfKeyword:
                 oLine.update_line(re.sub(r'^(\s*)[i|I][f|F]', r'\1if (', oLine.line))
