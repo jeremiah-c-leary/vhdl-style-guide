@@ -1,5 +1,6 @@
 
 from vsg import rule
+from vsg import utils
 
 
 class rule_014(rule.rule):
@@ -17,4 +18,5 @@ class rule_014(rule.rule):
         if oLine.isPackageEnd:
             lLine = oLine.lineLower.replace(';', '').split()
             if len(lLine) < 3 and lLine[1] == 'package':
-                self.add_violation(iLineNumber)
+                dViolation = utils.create_violation_dict(iLineNumber)
+                self.add_violation(dViolation)

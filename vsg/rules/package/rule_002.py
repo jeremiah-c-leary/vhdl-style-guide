@@ -1,6 +1,7 @@
 
 from vsg import rule
 from vsg import fix
+from vsg import utils
 
 import re
 
@@ -22,9 +23,11 @@ class rule_002(rule.rule):
             if len(oLine.line.split()) > 2:
                 if re.match('^\s*package\s+\S+\s+is', oLine.lineLower):
                     if not re.match('^\s*package\s\S+\sis', oLine.lineLower):
-                        self.add_violation(iLineNumber)
+                        dViolation = utils.create_violation_dict(iLineNumber)
+                        self.add_violation(dViolation)
 
     def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
+        for dViolation in self.violations:
+            iLineNumber = dViolation['lineNumber']
             fix.enforce_one_space_after_word(self, oFile.lines[iLineNumber], 'package')
             fix.enforce_one_space_before_word(self, oFile.lines[iLineNumber], 'is')

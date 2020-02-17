@@ -1,6 +1,7 @@
 
 from vsg import rule
 from vsg import fix
+from vsg import utils
 
 import re
 
@@ -22,7 +23,8 @@ class rule_009(rule.rule):
             check_spaces_between_end_and_name(self, oLine, iLineNumber)
 
     def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
+        for dViolation in self.violations:
+            iLineNumber = dViolation['lineNumber']
             fix.enforce_one_space_after_word(self, oFile.lines[iLineNumber], 'end')
             fix.enforce_one_space_after_word(self, oFile.lines[iLineNumber], 'package')
 
@@ -30,16 +32,19 @@ class rule_009(rule.rule):
 def check_spaces_between_end_and_package_and_name(self, oLine, iLineNumber):
     if re.match('^\s*end\s+package\s+\w', oLine.lineLower):
         if not re.match('^\s*end\spackage\s\w', oLine.lineLower):
-            self.add_violation(iLineNumber)
+            dViolation = utils.create_violation_dict(iLineNumber)
+            self.add_violation(dViolation)
 
 
 def check_spaces_between_end_and_package(self, oLine, iLineNumber):
     if re.match('^\s*end\s+package', oLine.lineLower):
         if not re.match('^\s*end\spackage', oLine.lineLower):
-            self.add_violation(iLineNumber)
+            dViolation = utils.create_violation_dict(iLineNumber)
+            self.add_violation(dViolation)
 
 
 def check_spaces_between_end_and_name(self, oLine, iLineNumber):
     if re.match('^\s*end\s+\w', oLine.lineLower):
         if not re.match('^\s*end\s\w', oLine.lineLower):
-            self.add_violation(iLineNumber)
+            dViolation = utils.create_violation_dict(iLineNumber)
+            self.add_violation(dViolation)

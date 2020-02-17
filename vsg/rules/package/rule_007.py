@@ -1,5 +1,6 @@
 
 from vsg import rule
+from vsg import utils
 
 import re
 
@@ -18,10 +19,11 @@ class rule_007(rule.rule):
 
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.isPackageEnd and not re.match('^\s*end\s+package', oLine.lineLower):
-            self.add_violation(iLineNumber)
+            dViolation = utils.create_violation_dict(iLineNumber)
+            self.add_violation(dViolation)
 
     def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
-            oLine = oFile.lines[iLineNumber]
+        for dViolation in self.violations:
+            oLine = oFile.lines[dViolation['lineNumber']]
             iIndex = oLine.lineLower.find('end') + len('end')
             oLine.update_line(oLine.line[:iIndex] + ' package' + oLine.line[iIndex:])

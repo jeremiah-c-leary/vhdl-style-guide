@@ -28,7 +28,7 @@ class testRulePackageMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'package')
         self.assertEqual(oRule.identifier, '002')
 
-        dExpected = [32,47]
+        dExpected = utils.add_violation_list([32,47])
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -58,7 +58,7 @@ class testRulePackageMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'package')
         self.assertEqual(oRule.identifier, '005')
 
-        dExpected = [18,60]
+        dExpected = utils.add_violation_list([18,60])
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -78,7 +78,7 @@ class testRulePackageMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'package')
         self.assertEqual(oRule.identifier, '007')
-        dExpected = [58]
+        dExpected = [utils.add_violation(58)]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -96,7 +96,7 @@ class testRulePackageMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'package')
         self.assertEqual(oRule.identifier, '009')
-        dExpected = [15,31,58,73]
+        dExpected = utils.add_violation_list([15,31,58,73])
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -141,7 +141,7 @@ class testRulePackageMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'package')
         self.assertEqual(oRule.identifier, '014')
-        dExpected = [73]
+        dExpected = [utils.add_violation(73)]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 

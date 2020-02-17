@@ -1,5 +1,6 @@
 
 from vsg import rule
+from vsg import utils
 
 import re
 
@@ -20,10 +21,12 @@ class rule_005(rule.rule):
         if oLine.isPackageKeyword:
             lLine = oLine.lineLower.split()
             if len(lLine) < 3 or not lLine[2] == "is":
-                self.add_violation(iLineNumber)
+                dViolation = utils.create_violation_dict(iLineNumber)
+                self.add_violation(dViolation)
 
     def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
+        for dViolation in self.violations:
+            iLineNumber = dViolation['lineNumber']
             oLine = oFile.lines[iLineNumber]
             oLine.update_line(re.sub(r'^(\s*package\s+\w+)', r'\1 is', oLine.line, re.IGNORECASE))
             # Search for "is" on the next line
