@@ -13,8 +13,6 @@ class rule_007(rule.rule):
         self.fixable = True
         self.solution = 'Inconsistent capitalization of word'
         self.phase = 6
-        self.lLowerCaseWords = []
-        self.lCaseWords = []
         self.dDatabase = create_database()
 
     def _analyze(self, oFile, oLine, iLineNumber):
@@ -26,13 +24,21 @@ class rule_007(rule.rule):
                 check_violations(self, lWords, iLineNumber)
 
     def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
-            for sWord in self.dFix['violations'][iLineNumber]:
-                sReplacementWord = get_replacement_word(self, sWord)
-                utils.change_word(oFile.lines[iLineNumber], sWord, sReplacementWord, 20)
+        for dViolation in self.violations:
+            sWord = dViolation['procedure']
+            iLineNumber = dViolation['lineNumber']
+            sReplacementWord = get_replacement_word(self, sWord)
+            utils.change_word(oFile.lines[iLineNumber], sWord, sReplacementWord, 20)
 
     def _get_solution(self, iLineNumber):
-        sSolution = self.solution + ': ' + ', '.join(self.dFix['violations'][iLineNumber])
+        lTemp = []
+        for dViolation in self.violations:
+            if dViolation['lineNumber'] == iLineNumber:
+                lTemp.append(dViolation['procedure'])
+        if len(lTemp) > 1:
+            sSolution = self.solution + 's: ' + ', '.join(lTemp)
+        else:
+            sSolution = self.solution + ': ' + lTemp[0]
         return sSolution
 
 
@@ -56,12 +62,9 @@ def check_violations(self, lWords, iLineNumber):
     for sWord in lWords:
         if sWord.lower() in map(str.lower, self.dDatabase['procedure']):
             if sWord not in self.dDatabase['procedure']:
-                self.add_violation(iLineNumber)
-                try:
-                    self.dFix['violations'][iLineNumber].append(sWord)
-                except KeyError:
-                    self.dFix['violations'][iLineNumber] = []
-                    self.dFix['violations'][iLineNumber].append(sWord)
+                dViolation = utils.create_violation_dict(iLineNumber)
+                dViolation['procedure'] = sWord
+                self.add_violation(dViolation)
 
 
 def get_replacement_word(self, sWord):

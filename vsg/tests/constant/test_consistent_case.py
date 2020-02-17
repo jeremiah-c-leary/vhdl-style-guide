@@ -22,6 +22,11 @@ class testConsistentConstantName(unittest.TestCase):
         self.assertEqual(oRule.name, 'constant')
         self.assertEqual(oRule.identifier, '013')
         dExpected = [5, 12, 17, 20]
+        dExpected = [{'lineNumber': 5, 'constant': 'C_SIZE'},
+                     {'lineNumber': 12, 'constant': 'C_ONES'},
+                     {'lineNumber': 17, 'constant': 'C_ones'},
+                     {'lineNumber': 17, 'constant': 'c_Zeros'},
+                     {'lineNumber': 20, 'constant': 'c_Zeros'}]
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
         self.assertEqual(oRule._get_solution(5), 'Inconsistent capitalization of word: C_SIZE')

@@ -38,16 +38,21 @@ class rule_013(rule.rule):
                 check_violations(self, lWords, iLineNumber)
 
     def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
-            for sWord in self.dFix['violations'][iLineNumber]:
-                sReplacementWord = get_replacement_word(self, sWord)
-                utils.change_word(oFile.lines[iLineNumber], sWord, sReplacementWord, 20)
+        for dViolation in self.violations:
+            sWord = dViolation['constant']
+            iLineNumber = dViolation['lineNumber']
+            sReplacementWord = get_replacement_word(self, sWord)
+            utils.change_word(oFile.lines[iLineNumber], sWord, sReplacementWord, 20)
 
     def _get_solution(self, iLineNumber):
-        if len(self.dFix['violations'][iLineNumber]) > 1:
-            sSolution = self.solution + 's: ' + ', '.join(self.dFix['violations'][iLineNumber])
+        lTemp = []
+        for dViolation in self.violations:
+            if dViolation['lineNumber'] == iLineNumber:
+                lTemp.append(dViolation['constant'])
+        if len(lTemp) > 1:
+            sSolution = self.solution + 's: ' + ', '.join(lTemp)
         else:
-            sSolution = self.solution + ': ' + ', '.join(self.dFix['violations'][iLineNumber])
+            sSolution = self.solution + ': ' + lTemp[0]
         return sSolution
 
 
@@ -72,16 +77,12 @@ def extract_word_list(oLine):
 
 
 def check_violations(self, lWords, iLineNumber):
-
     for sWord in lWords:
         if sWord.lower() in map(str.lower, self.dDatabase['constant']):
             if sWord not in self.dDatabase['constant']:
-                self.add_violation(iLineNumber)
-                try:
-                    self.dFix['violations'][iLineNumber].append(sWord)
-                except KeyError:
-                    self.dFix['violations'][iLineNumber] = []
-                    self.dFix['violations'][iLineNumber].append(sWord)
+                dViolation = utils.create_violation_dict(iLineNumber)
+                dViolation['constant'] = sWord
+                self.add_violation(dViolation)
 
 
 def get_replacement_word(self, sWord):

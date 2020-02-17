@@ -78,18 +78,12 @@ def extract_word_list(oLine):
 
 
 def check_violations(self, lWords, iLineNumber):
-
     for sWord in lWords:
         if sWord.lower() in map(str.lower, self.dDatabase['signal']):
             if sWord not in self.dDatabase['signal']:
                 dViolation = utils.create_violation_dict(iLineNumber)
                 dViolation['signal'] = sWord
                 self.add_violation(dViolation)
-#                try:
-#                    self.dFix['violations'][iLineNumber].append(sWord)
-#                except KeyError:
-#                    self.dFix['violations'][iLineNumber] = []
-#                    self.dFix['violations'][iLineNumber].append(sWord)
 
 
 def get_replacement_word(self, sWord):
