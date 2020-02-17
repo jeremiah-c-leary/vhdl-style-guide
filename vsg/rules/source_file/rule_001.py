@@ -1,5 +1,6 @@
 
 from vsg import rule
+from vsg import utils
 
 
 class rule_001(rule.rule):
@@ -18,4 +19,5 @@ class rule_001(rule.rule):
 
     def analyze(self, oFile):
         if len(oFile.lines) == 1:
-            self.add_violation(0)
+            dViolation = utils.create_violation_dict(0)
+            self.add_violation(dViolation)
