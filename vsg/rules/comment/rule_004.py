@@ -1,5 +1,7 @@
 
 from vsg import rule
+from vsg import utils
+
 import re
 
 # Regex to find comments that ignores contents of double quoted strings,
@@ -23,13 +25,12 @@ class rule_004(rule.rule):
                 return
             idx = match.start("comment")
             if oLine.line[idx - 1] != ' ':
-                self.add_violation(iLineNumber)
+                dViolation = utils.create_violation_dict(iLineNumber)
+                self.add_violation(dViolation)
 
     def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
-            oLine = oFile.lines[iLineNumber]
+        for dViolation in self.violations:
+            oLine = oFile.lines[dViolation['lineNumber']]
             match = has_comment_re.match(oLine.line)
             idx = match.start("comment")
             oLine.update_line(" ".join((oLine.line[:idx], oLine.line[idx:])))
-
-

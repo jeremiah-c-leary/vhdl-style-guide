@@ -58,7 +58,7 @@ class testRuleCommentMethods(unittest.TestCase):
 
     def test_rule_004(self):
         oRule = comment.rule_004()
-        dExpected = [39, 58, 61, 62]
+        dExpected = utils.add_violation_list([39, 58, 61, 62])
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
