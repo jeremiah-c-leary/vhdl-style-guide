@@ -2,6 +2,7 @@
 import re
 
 from vsg import rule
+from vsg import utils
 
 
 class rule_003(rule.rule):
@@ -17,11 +18,12 @@ class rule_003(rule.rule):
 
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.insideResetProcess and oLine.hasAfterKeyword:
-            self.add_violation(iLineNumber)
+            dViolation = utils.create_violation_dict(iLineNumber)
+            self.add_violation(dViolation)
 
     def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
-            oLine = oFile.lines[iLineNumber]
+        for dViolation in self.violations:
+            oLine = oFile.lines[dViolation['lineNumber']]
             sNewLine = re.sub('\s*after.*;', ';', oLine.line, 1, flags=re.IGNORECASE)
             oLine.update_line(sNewLine)
             oLine.hasAfterKeyword = False

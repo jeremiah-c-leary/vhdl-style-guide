@@ -2,6 +2,7 @@
 import re
 
 from vsg import rule
+from vsg import utils
 
 
 class rule_001(rule.rule):
@@ -26,7 +27,8 @@ class rule_001(rule.rule):
             if oLine.isSequentialEnd:
                 self.sequentialStatement += oLine.lineNoComment + " "
                 if not re.match('^\s*.*\safter\s', self.sequentialStatement):
-                    self.add_violation(iLineNumber)
+                    dViolation = utils.create_violation_dict(iLineNumber)
+                    self.add_violation(dViolation)
                 self.sequentialStatement = ""
             elif oLine.insideSequential:
                 self.sequentialStatement += oLine.lineNoComment + " "
@@ -34,8 +36,8 @@ class rule_001(rule.rule):
                 self.sequentialStatement = oLine.lineNoComment + " "
 
     def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
-            oLine = oFile.lines[iLineNumber]
+        for dViolation in self.violations:
+            oLine = oFile.lines[dViolation['lineNumber']]
             sLine = oLine.line
             sNewLine = sLine.replace(';', ' ' + ' '.join(['after', str(self.magnitude), self.units]) + ';')
             oLine.update_line(sNewLine)

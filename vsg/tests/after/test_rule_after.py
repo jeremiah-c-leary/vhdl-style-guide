@@ -22,7 +22,7 @@ class testRuleAfterMethods(unittest.TestCase):
         self.assertTrue(oRule.disable)
         self.assertEqual(oRule.magnitude, 1)
         self.assertEqual(oRule.units, 'ns')
-        lExpected = [33, 34]
+        lExpected = utils.add_violation_list([33, 34])
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, lExpected)
 
@@ -42,6 +42,6 @@ class testRuleAfterMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'after')
         self.assertEqual(oRule.identifier, '003')
         self.assertTrue(oRule.disable)
-        lExpected = [145, 147]
+        lExpected = utils.add_violation_list([145, 147])
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, lExpected)
