@@ -205,27 +205,6 @@ This rule checks the closing parenthesis is on a line by itself.
      DEPTH : integer := 512
    );
 
-generic_012
-###########
-
-This rule checks the alignment of :'s for every generic.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   ADDRESS_WIDTH : integer := 10;
-   DATA_WIDTH : integer := 32;
-   DEPTH : integer := 512;
-
-**Fix**
-
-.. code-block:: vhdl
-
-   ADDRESS_WIDTH : integer := 10;
-   DATA_WIDTH    : integer := 32;
-   DEPTH         : integer := 512;
-
 generic_013
 ###########
 

@@ -52,7 +52,12 @@ class testRuleCommentMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'comment')
         self.assertEqual(oRule.identifier, '003')
-        dExpected = ['26-33','39-46']
+        dExpected = [{'lines': [{'number': 29, 'keyword_column': 24},
+                                {'number': 30, 'keyword_column': 23},
+                                {'number': 31, 'keyword_column': 24}], 'max_keyword_column': 24},
+                     {'lines': [{'number': 42, 'keyword_column': 25},
+                                {'number': 43, 'keyword_column': 24},
+                                {'number': 44, 'keyword_column': 24}], 'max_keyword_column': 25}]
         oRule.analyze(oFileProcess)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -70,7 +75,8 @@ class testRuleCommentMethods(unittest.TestCase):
 
     def test_rule_006(self):
         oRule = comment.rule_006()
-        dExpected = ['36-39']
+        dExpected = [{'lines': [{'number': 37, 'keyword_column': 39},
+                                {'number': 38, 'keyword_column': 43}], 'max_keyword_column': 43}]
         oRule.analyze(oFileProcess)
         self.assertEqual(oRule.violations, dExpected)
 

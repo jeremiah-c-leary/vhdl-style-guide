@@ -1,42 +1,21 @@
 
-from vsg import rule
-from vsg import check
-from vsg import fix
-from vsg import line
+from vsg.rules import keyword_alignment_rule
 
 
-class rule_017(rule.rule):
+class rule_017(keyword_alignment_rule):
     '''
-    Entity rule 017 ensures the alignment of the : operator for every port in the entity.
+    Entity rule 017 ensures the alignment of the : operator for each generic and port in the entity declaration.
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'entity'
-        self.identifier = '017'
-        self.solution = 'Inconsistent alignment of ":" in port declaration of entity.'
-        self.phase = 5
+        keyword_alignment_rule.__init__(self, 'entity', '017')
+        self.solution = 'Inconsistent alignment of ":" in generic or port declaration of entity.'
+        self.sKeyword = ':'
+        self.sStartGroupTrigger = 'isEntityDeclaration'
+        self.sEndGroupTrigger = 'isEndEntityDeclaration'
+        self.lLineTriggers = ['isGenericDeclaration', 'isPortDeclaration']
 
-    def _pre_analyze(self):
-        self.lGroup = []
-        self.fGroupFound = False
-        self.iStartGroupIndex = None
+        self.separate_generic_port_alignment = True
+        self.configuration.append('separate_generic_port_alignment')
 
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isPortKeyword and not self.fGroupFound and oLine.insideEntity:
-            self.fGroupFound = True
-            self.iStartGroupIndex = iLineNumber
-        if oLine.isEndPortMap and oLine.insideEntity:
-            self.lGroup.append(oLine)
-            self.fGroupFound = False
-            check.keyword_alignment(self, self.iStartGroupIndex, ':', self.lGroup)
-            self.lGroup = []
-            self.iStartGroupIndex = None
-        if self.fGroupFound:
-            if oLine.isPortDeclaration:
-                self.lGroup.append(oLine)
-            else:
-                self.lGroup.append(line.line('Removed line'))
-
-    def _fix_violations(self, oFile):
-        fix.keyword_alignment(self, oFile)
+        self.rule_specific_configuration = [{'name': 'separate_generic_port_alignment', 'triggers': ['isEndGenericMap']}]

@@ -528,3 +528,25 @@ This rule allows the user to restrict what can be used for an architecture name.
 **Fix**
 
 The user is required to decide which is the correct architecture name.
+
+architecture_026
+################
+
+This rule checks the colons are in the same column for all declarations in the architecture declarative part.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   signal wr_en : std_logic;
+   signal rd_en   : std_logic;
+   constant PERIOD : time;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   signal wr_en    : std_logic;
+   signal rd_en    : std_logic;
+   constant PERIOD : time;
+

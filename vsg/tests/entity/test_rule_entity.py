@@ -233,7 +233,57 @@ class testRuleEntityMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'entity')
         self.assertEqual(oRule.identifier, '017')
 
-        dExpected = ['8-15','25-31','39-46','56-62','70-77','86-90','98-102','118-122','128-132']
+        dExpected = [{'lines': [{'number': 9, 'keyword_column': 12},
+                                {'number': 10, 'keyword_column': 12},
+                                {'number': 11, 'keyword_column': 13},
+                                {'number': 12, 'keyword_column': 10},
+                                {'number': 13, 'keyword_column': 10},
+                                {'number': 14, 'keyword_column': 10}], 'max_keyword_column': 13},
+                     {'lines': [{'number': 21, 'keyword_column': 18},
+                                {'number': 22, 'keyword_column': 15}], 'max_keyword_column': 18},
+                     {'lines': [{'number': 26, 'keyword_column': 12},
+                                {'number': 27, 'keyword_column': 10},
+                                {'number': 28, 'keyword_column': 13},
+                                {'number': 29, 'keyword_column': 12},
+                                {'number': 30, 'keyword_column': 10},
+                                {'number': 31, 'keyword_column': 10}], 'max_keyword_column': 13},
+                     {'lines': [{'number': 40, 'keyword_column': 12},
+                                {'number': 41, 'keyword_column': 12},
+                                {'number': 42, 'keyword_column': 13},
+                                {'number': 43, 'keyword_column': 12},
+                                {'number': 44, 'keyword_column': 10},
+                                {'number': 45, 'keyword_column': 11}], 'max_keyword_column': 13},
+                     {'lines': [{'number': 52, 'keyword_column': 15},
+                                {'number': 53, 'keyword_column': 13}], 'max_keyword_column': 15},
+                     {'lines': [{'number': 57, 'keyword_column': 10},
+                                {'number': 58, 'keyword_column': 12},
+                                {'number': 59, 'keyword_column': 9},
+                                {'number': 60, 'keyword_column': 10},
+                                {'number': 61, 'keyword_column': 14},
+                                {'number': 62, 'keyword_column': 10}], 'max_keyword_column': 14},
+                     {'lines': [{'number': 67, 'keyword_column': 15},
+                                {'number': 68, 'keyword_column': 14}], 'max_keyword_column': 15},
+                     {'lines': [{'number': 71, 'keyword_column': 12},
+                                {'number': 72, 'keyword_column': 12},
+                                {'number': 73, 'keyword_column': 13},
+                                {'number': 74, 'keyword_column': 10},
+                                {'number': 75, 'keyword_column': 10},
+                                {'number': 76, 'keyword_column': 10}], 'max_keyword_column': 13},
+                     {'lines': [{'number': 83, 'keyword_column': 17},
+                                {'number': 84, 'keyword_column': 15}], 'max_keyword_column': 17},
+                     {'lines': [{'number': 87, 'keyword_column': 12},
+                                {'number': 88, 'keyword_column': 12},
+                                {'number': 89, 'keyword_column': 13}], 'max_keyword_column': 13},
+                     {'lines': [{'number': 97, 'keyword_column': 15},
+                                {'number': 99, 'keyword_column': 12},
+                                {'number': 100, 'keyword_column': 12},
+                                {'number': 101, 'keyword_column': 13}], 'max_keyword_column': 15},
+                     {'lines': [{'number': 119, 'keyword_column': 21},
+                                {'number': 120, 'keyword_column': 12},
+                                {'number': 121, 'keyword_column': 23}], 'max_keyword_column': 23},
+                     {'lines': [{'number': 129, 'keyword_column': 12},
+                                {'number': 130, 'keyword_column': 12},
+                                {'number': 131, 'keyword_column': 13}], 'max_keyword_column': 13}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -243,7 +293,14 @@ class testRuleEntityMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'entity')
         self.assertEqual(oRule.identifier, '018')
 
-        dExpected = ['19-33']
+        dExpected = [{'lines': [{'number': 21, 'keyword_column': 36},
+                                {'number': 22, 'keyword_column': 46}], 'max_keyword_column': 46},
+                     {'lines': [{'number': 26, 'keyword_column': 39},
+                                {'number': 27, 'keyword_column': 35},
+                                {'number': 28, 'keyword_column': 41},
+                                {'number': 29, 'keyword_column': 29},
+                                {'number': 30, 'keyword_column': 27},
+                                {'number': 31, 'keyword_column': 31}], 'max_keyword_column': 41}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 

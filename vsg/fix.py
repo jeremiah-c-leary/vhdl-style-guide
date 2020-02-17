@@ -20,24 +20,6 @@ def indent(self, oLine):
     oLine.update_line(' '*oLine.indentLevel*self.indentSize + oLine.line.lstrip())
 
 
-def keyword_alignment(self, oFile):
-    '''
-    Aligns keywords across multiple lines.
-
-    Parameters:
-
-      self: (rule object)
-
-      oFile: (vhdlFile object)
-    '''
-    for sKey in self.violations:
-        iMaximumKeywordColumn = self.dFix['violations'][sKey]['maximumKeywordColumn']
-        for iLineNumber in self.dFix['violations'][sKey]['line']:
-            iKeywordColumn = self.dFix['violations'][sKey]['line'][iLineNumber]['keywordColumn']
-            oLine = oFile.lines[iLineNumber]
-            oLine.update_line(oLine.line[:iKeywordColumn] + ' '*(iMaximumKeywordColumn - iKeywordColumn) + oLine.line[iKeywordColumn:])
-
-
 def comment_alignment(self, oFile):
     '''
     Aligns comments across multiple lines.
@@ -291,7 +273,6 @@ def identifier_alignment(self, oFile):
             sLine += sKeyword
             sLine += ' '*(self.dFix['violations'][sKey]['maximumKeywordLength'] - len(sKeyword) + 1)
             sLine += sIdentifier
-            sLine += ' '*(self.dFix['violations'][sKey]['maximumIdentifierLength'] - len(sIdentifier))
             sLine += ' :' + lLine[1]
             oLine.update_line(sLine)
 

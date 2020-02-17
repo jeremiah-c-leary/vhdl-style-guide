@@ -264,3 +264,23 @@ This rule checks for consistent capitalization of function names.
 
    end architecture RTL;
    
+function_012
+############
+
+This rule checks the colons are in the same column for all declarations in the function declarative part.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   variable var1 : natural;
+   variable var2  : natural;
+   constant PERIOD : time;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   variable var1   : natural;
+   variable var2   : natural;
+   constant PERIOD : time;

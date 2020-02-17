@@ -153,5 +153,5 @@ class testFixRuleInstantiationMethods(unittest.TestCase):
         self.assertEqual(oFileComment.lines[14].line, '      port_4 : out   std_logic; -- This should be removed')
 
         self.assertEqual(oFileComment.lines[24].line, '      generic_1 => \'0\', -- This should be removed')
-        self.assertEqual(oFileComment.lines[29].line, '      port_2 => \'1\',    -- This should be removed')
-        self.assertEqual(oFileComment.lines[31].line, '      port_4 => \'1\'     -- This should be removed')
+        self.assertEqual(oFileComment.lines[29].line, '      port_2 => \'1\', -- This should be removed')
+        self.assertEqual(oFileComment.lines[31].line, '      port_4 => \'1\'  -- This should be removed')

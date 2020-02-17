@@ -52,7 +52,34 @@ class testRuleVariableAssignmentMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'variable_assignment')
         self.assertEqual(oRule.identifier, '005')
-        dExpected = ['13-15','20-22', '26-28','38-40','53-58','65-66','73-75','80-81','88-90']
+        dExpected = [{'lines': [{'number': 13, 'keyword_column': 18},
+                                {'number': 14, 'keyword_column': 4},
+                                {'number': 15, 'keyword_column': 6}], 'max_keyword_column': 18},
+                     {'lines': [{'number': 20, 'keyword_column': 11},
+                                {'number': 21, 'keyword_column': 10},
+                                {'number': 22, 'keyword_column': 10}], 'max_keyword_column': 11},
+                     {'lines': [{'number': 26, 'keyword_column': 12},
+                                {'number': 27, 'keyword_column': 10},
+                                {'number': 28, 'keyword_column': 8}], 'max_keyword_column': 12},
+                     {'lines': [{'number': 38, 'keyword_column': 9},
+                                {'number': 39, 'keyword_column': 10},
+                                {'number': 40, 'keyword_column': 9}], 'max_keyword_column': 10},
+                     {'lines': [{'number': 53, 'keyword_column': 8},
+                                {'number': 56, 'keyword_column': 7},
+                                {'number': 57, 'keyword_column': 8}], 'max_keyword_column': 8},
+                     {'lines': [{'number': 63, 'keyword_column': 10},
+                                {'number': 64, 'keyword_column': 13}], 'max_keyword_column': 13},
+                     {'lines': [{'number': 65, 'keyword_column': 12},
+                                {'number': 66, 'keyword_column': 13}], 'max_keyword_column': 13},
+                     {'lines': [{'number': 73, 'keyword_column': 15},
+                                {'number': 75, 'keyword_column': 14}], 'max_keyword_column': 15},
+                     {'lines': [{'number': 80, 'keyword_column': 10},
+                                {'number': 81, 'keyword_column': 8}], 'max_keyword_column': 10},
+                     {'lines': [{'number': 88, 'keyword_column': 10},
+                                {'number': 89, 'keyword_column': 8},
+                                {'number': 90, 'keyword_column': 11}], 'max_keyword_column': 11},
+                     {'lines': [{'number': 92, 'keyword_column': 10},
+                                {'number': 93, 'keyword_column': 16}], 'max_keyword_column': 16}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 

@@ -142,33 +142,6 @@ This rule checks for default assignments in variable declarations.
 
    variable count : integer;
 
-variable_009
-############
-
-This rule checks the alignment of colons over multiple lines in the architecture declarative region.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   architecture ARCH of ENTITY1 is
-
-     variable count : integer;
-     variable counter : integer;
-
-   begin
-
-**Fix**
-
-.. code-block:: vhdl
-
-   architecture ARCH of ENTITY1 is
-
-     variable count   : integer;
-     variable counter : integer;
-
-   begin
-
 variable_010
 ############
 

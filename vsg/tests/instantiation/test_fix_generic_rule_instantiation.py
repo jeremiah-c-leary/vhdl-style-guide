@@ -43,16 +43,6 @@ class testFixRuleInstantiationMethods(unittest.TestCase):
         self.assertEqual(self.oFileGeneric.lines[102].line, '  )')
         self.assertTrue(self.oFileGeneric.lines[102].isInstantiationGenericEnd)
 
-    def test_fix_rule_015(self):
-        oRule = instantiation.rule_015()
-        oRule.fix(self.oFileGeneric)
-        oRule.analyze(self.oFileGeneric)
-        self.assertEqual(oRule.violations, [])
-        self.assertEqual(self.oFileGeneric.lines[34].line, '      GENerIC_1   => generic_1,')
-        self.assertEqual(self.oFileGeneric.lines[35].line, '      GENERIC_2   => generic_2')
-        self.assertEqual(self.oFileGeneric.lines[45].line, '       GENERIC_1 => generic_1,')
-        self.assertEqual(self.oFileGeneric.lines[46].line, '     GENERic_2   => generic_2)')
-
     def test_fix_rule_016(self):
         oRule = instantiation.rule_016()
         oRule.fix(self.oFileGeneric)

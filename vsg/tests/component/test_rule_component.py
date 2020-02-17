@@ -194,7 +194,10 @@ class testRuleComponentMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'component')
         self.assertEqual(oRule.identifier, '017')
 
-        dExpected = ['37-42']
+        dExpected = [{'lines': [{'number': 38, 'keyword_column': 12},
+                                {'number': 39, 'keyword_column': 13},
+                                {'number': 40, 'keyword_column': 14},
+                                {'number': 41, 'keyword_column': 13}], 'max_keyword_column': 14}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -224,7 +227,9 @@ class testRuleComponentMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'component')
         self.assertEqual(oRule.identifier, '020')
 
-        dExpected = ['5-16']
+        dExpected = [{'lines': [{'number': 7, 'keyword_column': 36},
+                                {'number': 12, 'keyword_column': 31},
+                                {'number': 14, 'keyword_column': 32}], 'max_keyword_column': 36}]
         lFileComment = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'component_comment_test_input.vhd'))
         oFileComment = vhdlFile.vhdlFile(lFileComment)
         oRule.analyze(oFileComment)

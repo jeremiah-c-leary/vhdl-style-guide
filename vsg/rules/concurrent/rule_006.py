@@ -1,5 +1,5 @@
 
-from vsg.rules.concurrent import keyword_alignment_rule
+from vsg.rules import keyword_alignment_rule
 
 
 class rule_006(keyword_alignment_rule):
@@ -11,5 +11,6 @@ class rule_006(keyword_alignment_rule):
         keyword_alignment_rule.__init__(self, 'concurrent', '006')
         self.solution = 'Inconsistent alignment of "<=" in group of lines.'
         self.sKeyword = '<='
-        self.sStartGroupTrigger = 'isConcurrentBegin'
-        self.sEndGroupTrigger = 'insideConcurrent'
+        self.sStartGroupTrigger = 'isArchitectureBegin'
+        self.sEndGroupTrigger = 'isEndArchitecture'
+        self.lLineTriggers = ['insideConcurrent']

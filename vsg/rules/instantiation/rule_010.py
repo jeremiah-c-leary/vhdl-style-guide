@@ -1,42 +1,21 @@
 
-from vsg import rule
-from vsg import check
-from vsg import fix
-from vsg import line
+from vsg.rules import keyword_alignment_rule
 
 
-class rule_010(rule.rule):
+class rule_010(keyword_alignment_rule):
     '''
-    Instantiation rule 010 ensures the alignment of the => operator for every port in the instantiation.
+    Instantiation rule 010 ensures the alignment of the => operator for each generic and port in the instantiation.
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'instantiation'
-        self.identifier = '010'
-        self.solution = 'Inconsistent alignment of "=>" in port assignments of instantiation.'
-        self.phase = 5
+        keyword_alignment_rule.__init__(self, 'instantiation', '010')
+        self.solution = 'Inconsistent alignment of "=>" in generic or port assignments of instantiation.'
+        self.sKeyword = '=>'
+        self.sStartGroupTrigger = 'isInstantiationDeclaration'
+        self.sEndGroupTrigger = 'isInstantiationPortEnd'
+        self.lLineTriggers = ['isInstantiationGenericAssignment', 'isInstantiationPortAssignment']
 
-    def _pre_analyze(self):
-        self.lGroup = []
-        self.fGroupFound = False
-        self.iStartGroupIndex = None
+        self.separate_generic_port_alignment = True
+        self.configuration.append('separate_generic_port_alignment')
 
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isInstantiationPortKeyword and not self.fGroupFound:
-            self.fGroupFound = True
-            self.iStartGroupIndex = iLineNumber
-        if oLine.isInstantiationPortEnd and self.fGroupFound:
-            self.lGroup.append(oLine)
-            self.fGroupFound = False
-            check.keyword_alignment(self, self.iStartGroupIndex, '=>', self.lGroup)
-            self.lGroup = []
-            self.iStartGroupIndex = None
-        if self.fGroupFound:
-            if oLine.isInstantiationPortAssignment and not oLine.isInstantiationPortKeyword:
-                self.lGroup.append(oLine)
-            else:
-                self.lGroup.append(line.line('Removed line'))
-
-    def _fix_violations(self, oFile):
-        fix.keyword_alignment(self, oFile)
+        self.rule_specific_configuration = [{'name': 'separate_generic_port_alignment', 'triggers': ['isInstantiationGenericEnd']}]

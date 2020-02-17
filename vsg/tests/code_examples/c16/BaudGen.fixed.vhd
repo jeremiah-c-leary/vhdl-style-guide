@@ -16,9 +16,9 @@ entity BAUDGEN is
     BG_BAUD_RATE  : integer
   );
   port (
-    CLK_I  : in    std_logic;
-    RST_I  : in    std_logic;
-    CE_16  : out   std_logic
+    CLK_I         : in    std_logic;
+    RST_I         : in    std_logic;
+    CE_16         : out   std_logic
   );
 end entity BAUDGEN;
 

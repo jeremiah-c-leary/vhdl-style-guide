@@ -120,7 +120,14 @@ class testRuleInstantiationMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'instantiation')
         self.assertEqual(oRule.identifier, '010')
 
-        dExpected = ['18-22']
+        dExpected = [{'lines': [{'number': 19, 'keyword_column': 12},
+                                {'number': 20, 'keyword_column': 13},
+                                {'number': 21, 'keyword_column': 14}], 'max_keyword_column': 14},
+                     {'lines': [{'number': 39, 'keyword_column': 13},
+                                {'number': 40, 'keyword_column': 15}], 'max_keyword_column': 15},
+                     {'lines': [{'number': 58, 'keyword_column': 21},
+                                {'number': 59, 'keyword_column': 13},
+                                {'number': 60, 'keyword_column': 13}], 'max_keyword_column': 21}]
         oRule.analyze(oFilePort)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -181,16 +188,6 @@ class testRuleInstantiationMethods(unittest.TestCase):
         self.assertEqual(oRule.identifier, '014')
 
         dExpected = utils.add_violation_list([46,65,73,98])
-        oRule.analyze(oFileGeneric)
-        self.assertEqual(oRule.violations, dExpected)
-
-    def test_rule_015(self):
-        oRule = instantiation.rule_015()
-        self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'instantiation')
-        self.assertEqual(oRule.identifier, '015')
-
-        dExpected = ['33-36','44-46','54-56']
         oRule.analyze(oFileGeneric)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -344,7 +341,8 @@ class testRuleInstantiationMethods(unittest.TestCase):
         self.assertEqual(oRule.identifier, '029')
         lFileComment = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'instantiation_comment_test_input.vhd'))
         oFileComment = vhdlFile.vhdlFile(lFileComment)
-        dExpected = ['22-32']
+        dExpected = [{'lines': [{'number': 29, 'keyword_column': 21},
+                                {'number': 31, 'keyword_column': 19}], 'max_keyword_column': 21}]
         oRule.analyze(oFileComment)
         self.assertEqual(oRule.violations, dExpected)
 

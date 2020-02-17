@@ -12,4 +12,8 @@ class rule_003(keyword_alignment_rule):
         self.sKeyword = '--'
         self.sStartGroupTrigger = 'isProcessBegin'
         self.sEndGroupTrigger = 'isEndProcess'
-        self.sLineTrigger = 'hasInlineComment'
+        self.lLineTriggers = ['hasInlineComment']
+
+        # The default settings for this rules make no sense.
+        self.blank_line_ends_group = False
+        self.comment_line_ends_group = False
