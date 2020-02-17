@@ -37,17 +37,20 @@ class rule_011(rule.rule):
                     #    # found a negative number
                     #    continue
                     if re.match('^.*\w-', sWord):
-                        self.add_violation(iLineNumber)
+                        dViolation = utils.create_violation_dict(iLineNumber)
+                        self.add_violation(dViolation)
                     elif not re.match('^.*-[0-9]+\)?$', sWord):
-                        self.add_violation(iLineNumber)
+                        dViolation = utils.create_violation_dict(iLineNumber)
+                        self.add_violation(dViolation)
         else:
             if re.match('^.*[\w+|\)][+|/|*]', sLine) or re.match('^.*[+|/|*][\w+|\(]', sLine):
                 if not re.match('^.*".*/.*"', sLine):
-                    self.add_violation(iLineNumber)
+                    dViolation = utils.create_violation_dict(iLineNumber)
+                    self.add_violation(dViolation)
 
     def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
-            oLine = oFile.lines[iLineNumber]
+        for dViolation in self.violations:
+            oLine = oFile.lines[dViolation['lineNumber']]
             iCommentIndex = oLine.line.find('--')
             if iCommentIndex == -1:
                 oLine.update_line(re.sub(r'(\w+)([+|\-|/|*])', r'\1 \2', oLine.line))

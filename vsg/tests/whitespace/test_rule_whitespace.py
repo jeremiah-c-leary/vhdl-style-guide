@@ -22,7 +22,7 @@ class testRuleWhitespaceMethods(unittest.TestCase):
         self.assertEqual(oRule.identifier, '001')
         self.assertEqual(oRule.phase, 2)
 
-        dExpected = [2,4]
+        dExpected = utils.add_violation_list([2,4])
         self.oFile.lines.append(line.line('  This is a test of ending whitespace'))
         self.oFile.lines.append(line.line('  This is a test of ending whitespace '))
         self.oFile.lines.append(line.line('  This is a test of ending whitespace'))
@@ -38,7 +38,7 @@ class testRuleWhitespaceMethods(unittest.TestCase):
         self.assertEqual(oRule.identifier, '002')
         self.assertEqual(oRule.phase, 0)
 
-        dExpected = [1,2,5]
+        dExpected = utils.add_violation_list([1,2,5])
         self.oFile.lines.append(line.line('  This is a test of tabs\t'))
         self.oFile.lines.append(line.line('\tThis is a test of tabs'))
         self.oFile.lines.append(line.line('  This is a test of tabs'))
@@ -90,7 +90,7 @@ class testRuleWhitespaceMethods(unittest.TestCase):
         self.assertEqual(oRule.identifier, '005')
         self.assertEqual(oRule.phase, 2)
 
-        dExpected = [1,3,5]
+        dExpected = utils.add_violation_list([1,3,5])
         self.oFile.lines.append(line.line('  This is a test of parenthesis ( failure'))
         self.oFile.lines.append(line.line('  This is a test of parenthesis (pass'))
         self.oFile.lines.append(line.line('  This is a test of parentehsis (  failure'))
@@ -119,7 +119,7 @@ class testRuleWhitespaceMethods(unittest.TestCase):
         self.assertEqual(oRule.identifier, '006')
         self.assertEqual(oRule.phase, 2)
 
-        dExpected = [1,3,5]
+        dExpected = utils.add_violation_list([1,3,5])
         self.oFile.lines.append(line.line('  This is a test of parenthesis (failure )'))
         self.oFile.lines.append(line.line('  This is a test of parenthesis (pass)'))
         self.oFile.lines.append(line.line('  This is a test of parentehsis (failure   )'))
@@ -144,7 +144,7 @@ class testRuleWhitespaceMethods(unittest.TestCase):
         self.assertEqual(oRule.identifier, '007')
         self.assertEqual(oRule.phase, 2)
 
-        dExpected = [1,3]
+        dExpected = utils.add_violation_list([1,3])
         self.oFile.lines.append(line.line('  This is a test,of commas (failure )'))
         self.oFile.lines.append(line.line('  This is a test, of commas (pass)'))
         self.oFile.lines.append(line.line('  This is a test of commas,(failure   )'))
@@ -160,7 +160,7 @@ class testRuleWhitespaceMethods(unittest.TestCase):
         self.assertEqual(oRule.identifier, '008')
         self.assertEqual(oRule.phase, 2)
 
-        dExpected = [1,3]
+        dExpected = utils.add_violation_list([1,3])
         self.oFile.lines.append(line.line('  std_logic_vector (7 downto 0)'))
         self.oFile.lines.append(line.line('  std_logic_vector(7 downto 0)'))
         self.oFile.lines.append(line.line('  std_logic_vector   (7 downto 0)'))
@@ -174,7 +174,7 @@ class testRuleWhitespaceMethods(unittest.TestCase):
         self.assertEqual(oRule.identifier, '010')
         self.assertEqual(oRule.phase, 2)
 
-        dExpected = [1, 3]
+        dExpected = utils.add_violation_list([1,3])
         self.oFile.lines.append(line.line('  a <= b& c'))
         self.oFile.lines.append(line.line('  a <= b & c'))
         self.oFile.lines.append(line.line('  a <= b &c'))
@@ -189,7 +189,7 @@ class testRuleWhitespaceMethods(unittest.TestCase):
         self.assertEqual(oRule.identifier, '011')
         self.assertEqual(oRule.phase, 2)
 
-        dExpected = [1,2,4,5,6,8,9,10,12,13,14,16,17,18,20,21,23,24,26]
+        dExpected = utils.add_violation_list([1,2,4,5,6,8,9,10,12,13,14,16,17,18,20,21,23,24,26])
         self.oFile.lines.append(line.line('  a <= b+ c'))   #1
         self.oFile.lines.append(line.line('  a <= b +c'))   #2
         self.oFile.lines.append(line.line('  a <= b + c'))  #3
@@ -223,7 +223,7 @@ class testRuleWhitespaceMethods(unittest.TestCase):
     def test_011_with_negative_numbers(self):
         oRule = whitespace.rule_011()
 
-        dExpected = [7]
+        dExpected = [utils.add_violation(7)]
         self.oFile.lines.append(line.line('  for i in -32768 to 32767 loop')) #1
         self.oFile.lines.append(line.line('  a <= b -32768')) #2
         self.oFile.lines.append(line.line('  a <= c + -32768')) #3
@@ -243,6 +243,8 @@ class testRuleWhitespaceMethods(unittest.TestCase):
         self.assertEqual(oRule.phase, 3)
 
         dExpected = [2,10]
+        dExpected = [{'lineNumber': 2, 'remove': 3},
+                     {'lineNumber': 10, 'remove': 1}]
         self.oFile.lines.append(line.line('  a <= b;'))   #1
         self.oFile.lines.append(line.blank_line())        #2
         self.oFile.lines.append(line.blank_line())        #3
@@ -265,7 +267,7 @@ class testRuleWhitespaceMethods(unittest.TestCase):
         self.assertEqual(oRule.identifier, '013')
         self.assertEqual(oRule.phase, 2)
 
-        dExpected = [1,2,3,4,5,6,8,9,10,11,12,13,15,16,17,18,19,20]
+        dExpected = utils.add_violation_list([1,2,3,4,5,6,8,9,10,11,12,13,15,16,17,18,19,20])
         self.oFile.lines.append(line.line('  if (a = 1)and(b = 0)'))   #1
         self.oFile.lines.append(line.line('  if (a = 1)nand(b = 0)'))   #2
         self.oFile.lines.append(line.line('  if (a = 1)or(b = 0)'))   #3

@@ -1,5 +1,6 @@
 
 from vsg import rule
+from vsg import utils
 
 import re
 
@@ -17,11 +18,12 @@ class rule_006(rule.rule):
     def _analyze(self, oFile, oLine, iLineNumber):
         sLine = oLine.lineNoComment
         if re.match('^.*\s+\)', sLine) and not re.match('^\s+\)', sLine):
-            self.add_violation(iLineNumber)
+            dViolation = utils.create_violation_dict(iLineNumber)
+            self.add_violation(dViolation)
 
     def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
-            oLine = oFile.lines[iLineNumber]
+        for dViolation in self.violations:
+            oLine = oFile.lines[dViolation['lineNumber']]
             iCommentIndex = oLine.line.find('--')
             if iCommentIndex == -1:
                 oLine.update_line(re.sub(r'\s+\)', r')', oLine.line))

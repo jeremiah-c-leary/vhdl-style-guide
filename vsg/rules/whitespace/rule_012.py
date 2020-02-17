@@ -1,5 +1,6 @@
 
 from vsg import rule
+from vsg import utils
 
 
 class rule_012(rule.rule):
@@ -21,14 +22,16 @@ class rule_012(rule.rule):
             self.iErrorLine = iLineNumber
         if oLine.isBlank:
             self.iNumBlankLines += 1
-        if self.iNumBlankLines > self.numBlankLines:
-            self.add_violation(self.iErrorLine)
-            self.dFix['violations'][self.iErrorLine] = self.iNumBlankLines - self.numBlankLines
         if not oLine.isBlank:
+            if self.iNumBlankLines > self.numBlankLines:
+                dViolation = utils.create_violation_dict(self.iErrorLine)
+                dViolation['remove'] = self.iNumBlankLines - self.numBlankLines
+                self.add_violation(dViolation)
             self.fFoundFirstBlank = False
             self.iErrorLine = 0
             self.iNumBlankLines = 0
 
     def _fix_violations(self, oFile):
-        for iLineNumber in self.violations[::-1]:
-            del oFile.lines[iLineNumber:iLineNumber + self.dFix['violations'][iLineNumber]]
+        for dViolation in self.violations[::-1]:
+            iLineNumber = dViolation['lineNumber']
+            del oFile.lines[iLineNumber:iLineNumber + dViolation['remove']]
