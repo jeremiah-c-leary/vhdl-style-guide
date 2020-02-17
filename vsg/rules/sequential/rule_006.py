@@ -1,5 +1,6 @@
 
 from vsg import rule
+from vsg import utils
 
 
 class rule_006(rule.rule):
@@ -14,8 +15,9 @@ class rule_006(rule.rule):
 
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.insideSequential and oLine.isComment:
-            self.add_violation(iLineNumber)
+            dViolation = utils.create_violation_dict(iLineNumber)
+            self.add_violation(dViolation)
 
     def _fix_violations(self, oFile):
-        for iLineNumber in self.violations[::-1]:
-            oFile.lines.pop(iLineNumber)
+        for dViolation in self.violations[::-1]:
+            oFile.lines.pop(dViolation['lineNumber'])
