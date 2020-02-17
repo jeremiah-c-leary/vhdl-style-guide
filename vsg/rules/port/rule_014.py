@@ -1,6 +1,7 @@
 
 from vsg import rule
 from vsg import line
+from vsg import utils
 
 import re
 
@@ -19,10 +20,12 @@ class rule_014(rule.rule):
 
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.isEndPortMap and not re.match('^\s*\)', oLine.line):
-            self.add_violation(iLineNumber)
+            dViolation = utils.create_violation_dict(iLineNumber)
+            self.add_violation(dViolation)
 
     def _fix_violations(self, oFile):
-        for iLineNumber in self.violations[::-1]:
+        for dViolation in self.violations[::-1]:
+            iLineNumber = dViolation['lineNumber']
             oFile.lines[iLineNumber].update_line(re.sub(r'\)(\s*);', r' \1 ', oFile.lines[iLineNumber].line))
             oFile.lines[iLineNumber].isEndPortMap = False
             oFile.lines[iLineNumber].indentLevel += 1

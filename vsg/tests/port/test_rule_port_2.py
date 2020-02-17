@@ -21,7 +21,7 @@ class testRulePortMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'port')
         self.assertEqual(oRule.identifier, '016')
 
-        dExpected = [3]
+        dExpected = [utils.add_violation(3)]
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
 

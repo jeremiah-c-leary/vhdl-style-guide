@@ -1,5 +1,6 @@
 
 from vsg import rule
+from vsg import utils
 
 
 class rule_012(rule.rule):
@@ -15,4 +16,5 @@ class rule_012(rule.rule):
 
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.isPortDeclaration and ':=' in oLine.line:
-            self.add_violation(iLineNumber)
+            dViolation = utils.create_violation_dict(iLineNumber)
+            self.add_violation(dViolation)

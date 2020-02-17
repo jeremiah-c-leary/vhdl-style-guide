@@ -79,7 +79,7 @@ class testRulePortMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'port')
         self.assertEqual(oRule.identifier, '007')
 
-        dExpected = [12,26,29,40,43,57,60,74]
+        dExpected = utils.add_violation_list([12,26,29,40,43,57,60,74])
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -89,7 +89,7 @@ class testRulePortMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'port')
         self.assertEqual(oRule.identifier, '008')
 
-        dExpected = [13,30,41,44,61,75]
+        dExpected = utils.add_violation_list([13,30,41,44,61,75])
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -145,7 +145,7 @@ class testRulePortMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'port')
         self.assertEqual(oRule.identifier, '012')
 
-        dExpected = [43,58,75]
+        dExpected = utils.add_violation_list([43,58,75])
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -155,7 +155,7 @@ class testRulePortMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'port')
         self.assertEqual(oRule.identifier, '013')
 
-        dExpected = [119,121]
+        dExpected = utils.add_violation_list([119,121])
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -165,7 +165,7 @@ class testRulePortMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'port')
         self.assertEqual(oRule.identifier, '014')
 
-        dExpected = [31,62]
+        dExpected = utils.add_violation_list([31,62])
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -185,7 +185,7 @@ class testRulePortMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'port')
         self.assertEqual(oRule.identifier, '016')
 
-        dExpected = [140]
+        dExpected = [utils.add_violation(140)]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -236,7 +236,7 @@ class testRulePortMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'port')
         self.assertEqual(oRule.identifier, '020')
 
-        dExpected = [141]
+        dExpected = [utils.add_violation(141)]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -246,7 +246,7 @@ class testRulePortMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'port')
         self.assertEqual(oRule.identifier, '021')
 
-        dExpected = [150]
+        dExpected = [utils.add_violation(150)]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -266,7 +266,7 @@ class testRulePortMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'port')
         self.assertEqual(oRule.identifier, '023')
 
-        dExpected = [170,171]
+        dExpected = utils.add_violation_list([170,171])
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 

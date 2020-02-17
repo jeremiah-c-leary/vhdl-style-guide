@@ -39,7 +39,12 @@ class rule():
         '''
         Reports any rule violations to stdout.
         '''
-        for sViolation in self.violations:
+        for violation in self.violations:
+            if isinstance(violation, dict):
+                sViolation = str(violation['lineNumber'])
+            else:
+                sViolation = violation
+
             if str(sViolation).startswith(str(iLineNumber) + '-') or str(iLineNumber) == str(sViolation):
                 if not fQuiet:
                     if sOutputFormat == 'vsg':

@@ -20,4 +20,5 @@ class rule_023(rule.rule):
             if '(' in sLine:
                 sLine = sLine.split('(')[0]
             if not utils.is_port_mode(sLine.split()[0]):
-                self.add_violation(iLineNumber)
+                dViolation = utils.create_violation_dict(iLineNumber)
+                self.add_violation(dViolation)

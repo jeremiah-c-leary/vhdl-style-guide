@@ -1,5 +1,6 @@
 
 from vsg import rule
+from vsg import utils
 
 import re
 import copy
@@ -17,10 +18,12 @@ class rule_013(rule.rule):
 
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.isPortDeclaration and re.match('^.*,.*:', oLine.lineNoComment):
-            self.add_violation(iLineNumber)
+            dViolation = utils.create_violation_dict(iLineNumber)
+            self.add_violation(dViolation)
 
     def _fix_violations(self, oFile):
-        for iLineNumber in self.violations[::-1]:
+        for dViolation in self.violations[::-1]:
+            iLineNumber = dViolation['lineNumber']
             oLine = oFile.lines[iLineNumber]
             iNumberOfPorts = oLine.line.split(':')[0].count(',') + 1
             # Replicate ports
