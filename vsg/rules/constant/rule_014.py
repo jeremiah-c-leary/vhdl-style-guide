@@ -2,6 +2,7 @@
 import re
 
 from vsg import rule
+from vsg import utils
 
 
 class rule_014(rule.rule):
@@ -28,13 +29,15 @@ class rule_014(rule.rule):
             elif not oLine.isConstant and self.fKeywordFound:
                 sMatch = ' ' * self.alignmentColumn
                 if not re.match('^' + sMatch + '\w', oLine.line):
-                    self.add_violation(iLineNumber)
-                    self.dFix['violations'][iLineNumber] = self.alignmentColumn
+                    dViolation = utils.create_violation_dict(iLineNumber)
+                    dViolation['column'] = self.alignmentColumn
+                    self.add_violation(dViolation)
             if oLine.isConstantEnd:
                 self.fKeywordFound = False
 
     def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
+        for dViolation in self.violations:
+            iLineNumber = dViolation['lineNumber']
             sLine = oFile.lines[iLineNumber].line
-            sNewLine = ' ' * self.dFix['violations'][iLineNumber] + sLine.strip()
+            sNewLine = ' ' * dViolation['column'] + sLine.strip()
             oFile.lines[iLineNumber].update_line(sNewLine)
