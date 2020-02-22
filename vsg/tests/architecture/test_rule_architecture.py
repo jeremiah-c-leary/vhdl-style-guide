@@ -92,19 +92,6 @@ class testRuleArchitectureMethods(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
-    def test_rule_005_exists(self):
-        oRule = architecture.rule_005()
-        self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'architecture')
-        self.assertEqual(oRule.identifier, '005')
-
-    def test_rule_005(self):
-        oRule = architecture.rule_005()
-
-        dExpected = [utils.add_violation(26)]
-        oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
-
     def test_rule_006_exists(self):
         oRule = architecture.rule_006()
         self.assertTrue(oRule)

@@ -92,7 +92,8 @@ This rule checks the **of** keyword is on the same line as the **architecture** 
 
 .. code-block:: vhdl
 
-   architecture RTL of FIFO is
+   architecture RTL of
+   FIFO is
 
 architecture_006
 ################
