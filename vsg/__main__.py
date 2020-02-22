@@ -151,8 +151,43 @@ def read_vhdlfile(sFileName):
         return []
 
 
+def generate_output_configuration(commandLineArguments, configuration):
+    '''
+    Creates a configuration based on parameters passed on the command line.
+    It will send the output to a file in JSON format.
+
+    Parameters:
+
+      commandLineArguments: (argparse object)
+
+      configuration: (configuration dictionary)
+
+    Returns:  Nothing
+    '''
+    if commandLineArguments.output_configuration:
+        fExitStatus = 0
+        # Create empty file so it can be used to create the rule list
+        oVhdlFile = vhdlFile.vhdlFile([''])
+        oRules = rule_list.rule_list(oVhdlFile, commandLineArguments.local_rules)
+        oRules.configure(configuration)
+        dOutputConfiguration = {}
+        dOutputConfiguration['cwd'] = os.getcwd()
+        if commandLineArguments.filename:
+            dOutputConfiguration['file_list'] = []
+            for sFileName in commandLineArguments.filename:
+                dOutputConfiguration['file_list'].append(sFileName)
+        if commandLineArguments.local_rules:
+            dOutputConfiguration['local_rules'] = commandLineArguments.local_rules
+        dOutputConfiguration['rule'] = oRules.get_configuration()
+        with open(commandLineArguments.output_configuration, 'w') as json_file:
+            json.dump(dOutputConfiguration, json_file, sort_keys=True, indent=2)
+        sys.exit(fExitStatus)
+
+
 def main():
     '''Main routine of the VHDL Style Guide (VSG) program.'''
+
+    fExitStatus = 0
 
     commandLineArguments = parse_command_line_arguments()
 
@@ -165,10 +200,13 @@ def main():
     # Add local rule path to system path so the rules can be loaded
     if commandLineArguments.local_rules:
         sys.path.append(os.path.abspath(commandLineArguments.local_rules))
+
     if commandLineArguments.junit:
         oJunitFile = junit.xmlfile(commandLineArguments.junit)
         oJunitTestsuite = junit.testsuite('vhdl-style-guide', str(0))
-    fExitStatus = 0
+
+    generate_output_configuration(commandLineArguments, configuration)
+
     for sFileName in commandLineArguments.filename:
         oVhdlFile = vhdlFile.vhdlFile(read_vhdlfile(sFileName))
         oVhdlFile.filename = sFileName
@@ -192,17 +230,6 @@ def main():
         oJunitFile.add_testsuite(oJunitTestsuite)
         write_junit_xml_file(oJunitFile)
 
-    if commandLineArguments.output_configuration:
-        dOutputConfiguration = {}
-        dOutputConfiguration['cwd'] = os.getcwd()
-        dOutputConfiguration['file_list'] = []
-        for sFileName in commandLineArguments.filename:
-            dOutputConfiguration['file_list'].append(sFileName)
-        if commandLineArguments.local_rules:
-            dOutputConfiguration['local_rules'] = commandLineArguments.local_rules
-        dOutputConfiguration['rule'] = oRules.get_configuration()
-        with open(commandLineArguments.output_configuration, 'w') as json_file:
-            json.dump(dOutputConfiguration, json_file, sort_keys=True, indent=2)
 
     sys.exit(fExitStatus)
 
