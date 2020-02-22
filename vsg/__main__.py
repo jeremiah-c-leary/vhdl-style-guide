@@ -30,8 +30,9 @@ def parse_command_line_arguments():
     parser.add_argument('-fp', '--fix_phase', default=10, action='store', help='Fix issues up to and including this phase')
     parser.add_argument('-j', '--junit', action='store', help='Extract Junit file')
     parser.add_argument('-of', '--output_format', action='store', default='vsg', choices=['vsg', 'syntastic'], help='Sets the output format.')
-    parser.add_argument('-b', '--backup', default=False, action='store_true', help='Creates copy of input file for comparison with fixed version.')
-    parser.add_argument('-oc', '--output_configuration', default=None, action='store', help='Output configuration file name')
+    parser.add_argument('-b', '--backup', default=False, action='store_true', help='Creates a copy of input file for comparison with fixed version.')
+    parser.add_argument('-oc', '--output_configuration', default=None, action='store', help='Write configuration to file name.')
+    parser.add_argument('-rc', '--rule_configuration', default=None, action='store', help='Display configuration of a rule')
     parser.add_argument('-v', '--version', default=False, action='store_true', help='Displays version information')
 
     if len(sys.argv) == 1:
@@ -184,6 +185,39 @@ def generate_output_configuration(commandLineArguments, configuration):
         sys.exit(fExitStatus)
 
 
+def display_rule_configuration(commandLineArguments, configuration):
+    '''
+    Displays the configuration of a rule passed on the command line.
+
+    Parameters:
+
+      commandLineArguments: (argparse object)
+
+      configuration: (configuration dictionary)
+
+    Returns:  Nothing
+    '''
+    if commandLineArguments.rule_configuration:
+        fExitStatus = 0
+        # Create empty file so it can be used to create the rule list
+        oVhdlFile = vhdlFile.vhdlFile([''])
+        oRules = rule_list.rule_list(oVhdlFile, commandLineArguments.local_rules)
+        oRules.configure(configuration)
+        dOutputConfiguration = {}
+        if commandLineArguments.local_rules:
+            dOutputConfiguration['local_rules'] = commandLineArguments.local_rules
+        dFullConfiguration = oRules.get_configuration()
+        if commandLineArguments.rule_configuration in dFullConfiguration:
+            dOutputConfiguration['rule'] = {}
+            dOutputConfiguration['rule'][commandLineArguments.rule_configuration] = dFullConfiguration[commandLineArguments.rule_configuration]
+            # Format the data for displaying
+            print(json.dumps(dOutputConfiguration, indent=2))
+        else:
+            print('ERROR: rule ' + commandLineArguments.rule_configuration + ' was not found.')
+            fExitStatus = 1
+        sys.exit(fExitStatus)
+
+
 def main():
     '''Main routine of the VHDL Style Guide (VSG) program.'''
 
@@ -206,6 +240,8 @@ def main():
         oJunitTestsuite = junit.testsuite('vhdl-style-guide', str(0))
 
     generate_output_configuration(commandLineArguments, configuration)
+
+    display_rule_configuration(commandLineArguments, configuration)
 
     for sFileName in commandLineArguments.filename:
         oVhdlFile = vhdlFile.vhdlFile(read_vhdlfile(sFileName))

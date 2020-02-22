@@ -92,6 +92,39 @@ Here are a list of attributes that can be altered for each rule:
 
 .. NOTE:: Some rules have additional attributes.  These will be noted in the rule description.
 
+Reporting Single Rule Configuration
+-----------------------------------
+
+The configuration for a single rule can be reported using the **-rc** option:
+
+.. code-block:: bash
+
+   $ vsg -rc entity_001
+   {
+     "rule": {
+       "entity_001": {
+         "indentSize": 2,
+         "phase": 4,
+         "disable": false,
+         "fixable": true
+       }
+     }
+   }
+
+VSG will print the configuration for the rule given in a JSON format.
+This configuration can be altered and added to a configuration file.
+
+Reporting Configuration for All Rules
+-------------------------------------
+
+Every rule configuration can be report and saved to a file using the **-oc** option:
+
+.. code-block:: bash
+
+   $ vsg -oc configuration.json
+
+The output file will be in JSON format and can be modified and passed back to VSG using the *-c* option.
+
 Example:  Disabling a rule
 ##########################
 

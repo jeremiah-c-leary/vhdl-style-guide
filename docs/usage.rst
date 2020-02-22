@@ -77,6 +77,8 @@ The command line tool can be invoked with:
 |                               | used), and how every rule was configured.       |
 |                               | This configuration can be fed back into VSG.    |
 +-------------------------------+-------------------------------------------------+
+| --rule_configuration          | Displays the configuration of a rule.           |
++-------------------------------+-------------------------------------------------+
 | --version                     | Displays the version of VSG.                    |
 +-------------------------------+-------------------------------------------------+
 
