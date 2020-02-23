@@ -703,6 +703,22 @@ def extract_label(oLine):
 
     Returns: (one element list of strings)
     '''
+    if re.match('^\s*\S+\s*:', oLine.line):
+      return extract_begin_label(oLine)
+    else:
+      return extract_end_label(oLine)
+
+
+def extract_begin_label(oLine):
+    '''
+    Returns the label.
+
+    Parameters:
+
+       oLine: (line object)
+
+    Returns: (one element list of strings)
+    '''
     return [oLine.lineNoComment.replace(' ', '').split(':')[0]]
 
 

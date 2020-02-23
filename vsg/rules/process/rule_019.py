@@ -14,4 +14,4 @@ class rule_019(case_rule):
         self.solution = 'Change end process label to '
 
     def _extract(self, oLine):
-        return utils.extract_end_label(oLine)
+        return utils.extract_label(oLine)

@@ -14,4 +14,4 @@ class rule_012(case_rule):
         self.solution = 'Change end generate label to '
 
     def _extract(self, oLine):
-        return utils.extract_end_label(oLine)
+        return utils.extract_label(oLine)

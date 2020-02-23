@@ -19,7 +19,7 @@ class rule_020(rule.rule):
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.hasEndCaseLabel:
             dViolation = utils.create_violation_dict(iLineNumber)
-            dViolation['label'] = utils.extract_end_label(oLine)[0]
+            dViolation['label'] = utils.extract_label(oLine)[0]
             self.add_violation(dViolation)
 
     def _fix_violations(self, oFile):
