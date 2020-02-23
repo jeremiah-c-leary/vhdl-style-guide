@@ -17,8 +17,11 @@ class rule_004(rule.rule):
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.isForLoopLabel and not re.match('^\s*\w+\s:', oLine.line):
             dViolation = utils.create_violation_dict(iLineNumber)
+            dViolation['label'] = utils.extract_label(oLine)[0]
             self.add_violation(dViolation)
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations:
-            fix.enforce_one_space_before_word(self, oFile.lines[dViolation['lineNumber']], ':')
+            iLineNumber = dViolation['lineNumber']
+            sWord = dViolation['label']
+            fix.enforce_one_space_after_word(self, oFile.lines[iLineNumber], sWord)

@@ -16,15 +16,17 @@ class rule_011(rule.rule):
         self.phase = 1
 
     def _pre_analyze(self):
-        self.sGenerateName = ''
+        self.lGenerateNames = []
 
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.isGenerateLabel:
-            self.sGenerateName = oLine.line.lstrip().split(':')[0]
-        if oLine.isGenerateEnd and not re.match('^\s*\S+\s+\S+\s+\S+', oLine.line):
+            self.lGenerateNames.append(utils.extract_label(oLine)[0])
+        if oLine.isGenerateEnd and not oLine.isGenerateEndLabel:
             dViolation = utils.create_violation_dict(iLineNumber)
-            dViolation['label'] = self.sGenerateName
+            dViolation['label'] = self.lGenerateNames.pop()
             self.add_violation(dViolation)
+        if oLine.isGenerateEnd and oLine.isGenerateEndLabel:
+            self.lGenerateNames.pop()
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations:
@@ -33,3 +35,4 @@ class rule_011(rule.rule):
             sLine = oLine.line
             iIndex = oLine.lineLower.find('generate') + len('generate')
             oLine.update_line(sLine[:iIndex] + ' ' + dViolation['label'] + sLine[iIndex:])
+            oLine.isGenerateEndLabel = True

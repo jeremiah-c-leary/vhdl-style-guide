@@ -30,3 +30,5 @@ def generate(dVars, oLine, oLinePrevious):
             dVars['iCurrentIndentLevel'] -= 1
             oLine.indentLevel = dVars['iCurrentIndentLevel']
             dVars['iGenerateLevel'] -= 1
+            if re.match('^\s*end\s+generate\s+\S+\s*;', oLine.lineLower):
+                oLine.isGenerateEndLabel = True

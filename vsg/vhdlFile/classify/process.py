@@ -104,6 +104,8 @@ def classify_process_end_keyword(dVars, oLine):
         dVars['fFoundProcessBegin'] = False
         dVars['iCurrentIndentLevel'] = dVars['iCurrentIndentLevel'] - 1
         dVars['SensitivityListFound'] = False
+    if re.match('^\s*end\s+process\s+\S+\s*;', oLine.lineLower):
+        oLine.isProcessEndLabel = True
 
 
 def classify_clock_process(dVars, oLine, lLines):

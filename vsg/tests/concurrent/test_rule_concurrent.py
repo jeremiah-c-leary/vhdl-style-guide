@@ -52,7 +52,10 @@ class testRuleConcurrentMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'concurrent')
         self.assertEqual(oRule.identifier, '005')
-        dExpected = utils.add_violation_list([32,33,34,35])
+        dExpected = [{'lineNumber': 32, 'label': 'label'},
+                     {'lineNumber': 33, 'label': 'label'},
+                     {'lineNumber': 34, 'label': 'label'},
+                     {'lineNumber': 35, 'label': 'label'}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 

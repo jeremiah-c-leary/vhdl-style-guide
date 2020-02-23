@@ -22,6 +22,10 @@ class testFixRuleGenerateMethods(unittest.TestCase):
     def test_fix_rule_002(self):
         oRule = generate.rule_002()
         oRule.fix(self.oFile)
+
+        self.assertEqual(self.oFile.lines[21].line, '  GENERATE_1 :if CONDITION = \'1\' generate')
+        self.assertEqual(self.oFile.lines[26].line, '  GENERATE_1 :  if  CONDITION = \'1\'  generate')
+
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
 
@@ -86,13 +90,6 @@ class testFixRuleGenerateMethods(unittest.TestCase):
         self.assertEqual(oRule.violations, [])
         self.assertEqual(self.oFile.lines[9].line, '  end GENERATE GENERATE_1;')
         self.assertEqual(self.oFile.lines[24].line, '  end GENERATE;')
-
-    def test_fix_rule_011(self):
-        oRule = generate.rule_011()
-        oRule.fix(self.oFile)
-        oRule.analyze(self.oFile)
-        self.assertEqual(self.oFile.lines[24].line, '  end generate GENERATE_1;')
-        self.assertEqual(oRule.violations, [])
 
     def test_fix_rule_012_uppercase(self):
         oRule = generate.rule_012()

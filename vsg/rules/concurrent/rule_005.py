@@ -1,6 +1,7 @@
 
 from vsg import rule
 from vsg import utils
+from vsg import fix
 
 import re
 
@@ -18,11 +19,13 @@ class rule_005(rule.rule):
         self.phase = 1
 
     def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isConcurrentBegin and re.match('^\s*\w+\s*:\s*\w+\s*<=', oLine.line):
+        if oLine.hasConcurrentLabel:
             dViolation = utils.create_violation_dict(iLineNumber)
+            dViolation['label'] = utils.extract_label(oLine)[0]
             self.add_violation(dViolation)
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations:
             oLine = oFile.lines[dViolation['lineNumber']]
-            oLine.update_line(oLine.line[oLine.line.find(':') + 1:])
+            fix.remove_begin_label(oLine, dViolation['label'])
+            oLine.hasConcurrentLabel = False

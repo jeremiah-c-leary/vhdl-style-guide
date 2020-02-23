@@ -294,3 +294,30 @@ def identifier_alignment(self, oFile):
             sLine += ' '*(self.dFix['violations'][sKey]['maximumIdentifierLength'] - len(sIdentifier))
             sLine += ' :' + lLine[1]
             oLine.update_line(sLine)
+
+
+def remove_begin_label(oLine, sLabelName):
+    '''
+    Removes a label from the beginning of a line.
+
+    Parameters:
+
+      oLine: (line object)
+
+      sLabelName: (string)
+    '''
+    oLine.update_line(re.sub('^(\s*)(' + sLabelName + '\s*:\s*)', r'\1', oLine.line, 1))
+
+
+def remove_end_label(oLine, sLabelName):
+    '''
+    Removes a label from the end of a line.
+
+    Parameters:
+
+      oLine: (line object)
+
+      sLabelName: (string)
+    '''
+#    oLine.update_line(re.sub('^(\s*end\s+case)(\s*\w+\s*)(;\s*$)', r'\1\3', oLine.line, 1, flags=re.IGNORECASE))
+    oLine.update_line(oLine.line.replace(sLabelName, '', 1))

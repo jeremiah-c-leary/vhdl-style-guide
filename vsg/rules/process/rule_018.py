@@ -17,22 +17,20 @@ class rule_018(rule.rule):
 
     def _pre_analyze(self):
         self.previousLabel = ''
-        self.iProcStartLine = 0
-        self.iProcLabelLine = 0
+        self.fProcessHadBeginLabel = False
 
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.isProcessKeyword:
-            self.iProcStartLine = iLineNumber
-            oMatch = re.match('^\s*\S+\s*:\s*process', oLine.lineLower)
-            if oMatch:
-                self.iProcLabelLine = iLineNumber
+            if oLine.isProcessLabel:
                 self.previousLabel = utils.extract_label(oLine)[0]
+                self.fProcessHadBeginLabel = True
         if oLine.isEndProcess:
-            dViolation = prepare_violation_dict(iLineNumber)
-            update_process_label(self, dViolation)
-            if not re.match('^\s*\S+\s+\S+\s+\S+', oLine.line):
+            if not oLine.isProcessEndLabel:
+                dViolation = utils.create_violation_dict(iLineNumber)
+                if self.fProcessHadBeginLabel:
+                    dViolation['processLabel'] = self.previousLabel
                 self.add_violation(dViolation)
-            self.previousLabel = ''
+            self.fProcessHadBeginLabel = False
 
     def _fix_violations(self, oFile):
          for dViolation in self.violations:
@@ -41,16 +39,6 @@ class rule_018(rule.rule):
                  sLine = oLine.line
                  iIndex = oLine.lineLower.find('process') + len('process')
                  oLine.update_line(sLine[:iIndex] + ' ' + dViolation['processLabel'] + sLine[iIndex:])
+                 oLine.isProcessEndLabel = True
              except KeyError:
                  pass
-
-
-def prepare_violation_dict(iLineNumber):
-    dReturn = {}
-    dReturn['lineNumber'] = iLineNumber
-    return dReturn
-
-
-def update_process_label(self, dViolation):
-    if self.previousLabel and self.iProcStartLine == self.iProcLabelLine:
-        dViolation['processLabel'] = self.previousLabel

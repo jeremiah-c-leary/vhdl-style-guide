@@ -21,7 +21,8 @@ class test_rule_018(unittest.TestCase):
     self.assertEqual(oRule.name, 'process')
     self.assertEqual(oRule.identifier, '018')
     oRule.analyze(self.oFile)
-    dExpected = [{'lineNumber': 14, 'processLabel': 'PROC_LABEL2'}, {'lineNumber': 19}]
+    dExpected = [{'lineNumber': 14, 'processLabel': 'PROC_LABEL2'},
+                 {'lineNumber': 19}]
     self.assertEqual(oRule.violations, dExpected)
 
   def test_fix_rule_018(self):

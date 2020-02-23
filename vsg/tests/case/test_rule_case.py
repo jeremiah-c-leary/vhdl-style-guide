@@ -189,7 +189,7 @@ class testRuleCaseMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'case')
         self.assertEqual(oRule.identifier, '019')
-        dExpected = [utils.add_violation(87)]
+        dExpected = [{'lineNumber': 87, 'label': 'MY_LABEL'}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -198,6 +198,6 @@ class testRuleCaseMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'case')
         self.assertEqual(oRule.identifier, '020')
-        dExpected = [utils.add_violation(98)]
+        dExpected = [{'lineNumber': 98, 'label': 'LABEL'}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)

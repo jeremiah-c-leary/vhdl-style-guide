@@ -170,6 +170,7 @@ class testFixRuleCaseMethods(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
         self.assertEqual(oFile.lines[91].line, '    case (boolean) is')
+        self.assertFalse(oFile.lines[91].hasCaseLabel)
 
     def test_fix_rule_020(self):
         oRule = case.rule_020()
@@ -177,4 +178,5 @@ class testFixRuleCaseMethods(unittest.TestCase):
         oRule.fix(oFile)
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
-        self.assertEqual(oFile.lines[102].line, '    end case;')
+        self.assertEqual(oFile.lines[102].line, '    end case ;')
+        self.assertFalse(oFile.lines[102].hasEndCaseLabel)

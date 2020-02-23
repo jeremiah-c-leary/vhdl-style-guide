@@ -27,7 +27,8 @@ class testRuleGenerateMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'generate')
         self.assertEqual(oRule.identifier, '002')
 
-        dExpected = utils.add_violation_list([21,26])
+        dExpected = [{'lineNumber': 21, 'label': 'GENERATE_1'},
+                     {'lineNumber': 26, 'label': 'GENERATE_1'}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -163,16 +164,6 @@ class testRuleGenerateMethods(unittest.TestCase):
                      {'line_number': 98, 'words_to_fix': {'generate'}},
                      {'line_number': 100, 'words_to_fix': {'generate'}},
                      {'line_number': 106, 'words_to_fix': {'generate'}}]
-        oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
-
-    def test_rule_011(self):
-        oRule = generate.rule_011()
-        self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'generate')
-        self.assertEqual(oRule.identifier, '011')
-
-        dExpected = [{'lineNumber': 24, 'label': 'GENERATE_1'}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 

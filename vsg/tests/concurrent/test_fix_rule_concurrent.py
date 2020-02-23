@@ -45,6 +45,19 @@ class testFixRuleConcurrentMethods(unittest.TestCase):
         oRule = concurrent.rule_005()
         dExpected = []
         oRule.fix(self.oFile)
+
+        self.assertEqual(self.oFile.lines[32].line, 'a<=b;')
+        self.assertFalse(self.oFile.lines[32].hasConcurrentLabel)
+
+        self.assertEqual(self.oFile.lines[33].line, ' a<=b;')
+        self.assertFalse(self.oFile.lines[33].hasConcurrentLabel)
+
+        self.assertEqual(self.oFile.lines[34].line, '  a <= b;  -- this else should not trigger')
+        self.assertFalse(self.oFile.lines[34].hasConcurrentLabel)
+
+        self.assertEqual(self.oFile.lines[35].line, '  a <= b or c')
+        self.assertFalse(self.oFile.lines[35].hasConcurrentLabel)
+
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
 

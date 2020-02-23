@@ -73,6 +73,7 @@ class line():
         self.isProcessBegin = False
         self.isProcessKeyword = False
         self.isProcessLabel = False
+        self.isProcessEndLabel = False
         self.isProcessDeclarative = False
         self.isEndProcess = False
         self.insideSensitivityList = False
@@ -86,6 +87,7 @@ class line():
         self.insideConcurrent = False
         self.isConcurrentBegin = False
         self.isEndConcurrent = False
+        self.hasConcurrentLabel = False
         # When attributes
         self.insideWhen = False
         self.isWhenKeyword = False
@@ -147,6 +149,7 @@ class line():
         self.isGenerateKeyword = False
         self.isGenerateEnd = False
         self.isGenerateLabel = False
+        self.isGenerateEndLabel = False
         # Function attributes
         self.insideFunction = False
         self.insideFunctionDeclarative = False
