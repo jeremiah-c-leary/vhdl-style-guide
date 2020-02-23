@@ -78,6 +78,8 @@ This rule checks the **begin** keyword has proper case.
 
 .. NOTE:: The default is lowercase.
 
+   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+
 **Violation**
 
 .. code-block:: vhdl
@@ -102,6 +104,8 @@ process_005
 This rule checks the **process** keyword has proper case.
 
 .. NOTE:: The default is lowercase.
+
+   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
@@ -186,6 +190,8 @@ process_009
 This rule checks the **process** keyword has proper case in the **end process** line.
 
 .. NOTE:: The default is lowercase.
+
+   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
@@ -280,6 +286,8 @@ process_013
 This rule checks the **is** keyword has proper case.
 
 .. NOTE:: The default is lowercase.
+
+   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
@@ -378,6 +386,8 @@ This rule checks the process label has proper case.
 
 .. NOTE:: The default is uppercase.
 
+   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+
 **Violation**
 
 .. code-block:: vhdl
@@ -418,6 +428,10 @@ process_019
 ###########
  
 This rule checks the **end process** label is uppercase.
+
+.. NOTE:: The default is uppercase.
+
+   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
