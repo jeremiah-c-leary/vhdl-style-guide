@@ -104,32 +104,15 @@ def change_word(oLine, sWord, sNewWord, iMax=1):
       sNewWord: (string)
     '''
     sLine = oLine.line
-    tLine = re.subn(r'\b' + re.escape(sWord) + r'\b', sNewWord, sLine, iMax, flags=re.IGNORECASE)
+    tLine = re.subn(r'\b' + re.escape(sWord) + r'\b', sNewWord, sLine, iMax)
     sLine = tLine[0]
     if tLine[1] == 0:
-        tLine = re.subn(' ' + sWord + ';', sNewWord + ';', sLine, iMax, flags=re.IGNORECASE)
+        tLine = re.subn(' ' + sWord + ';', sNewWord + ';', sLine, iMax)
         sLine = tLine[0]
     if tLine[1] == 0:
-        tLine = re.subn(sWord + '$', sNewWord, sLine, iMax, flags=re.IGNORECASE)
+        tLine = re.subn(sWord + '$', sNewWord, sLine, iMax)
         sLine = tLine[0]
 
-#    tLine = re.subn(r' ' + sWord + '([\s|;|:|\(])', r' ' + sNewWord + r'\1', sLine, iMax, flags=re.IGNORECASE)
-#    if tLine[1] == 0:
-#    if tLine[1] == 0:
-#        tLine = re.subn('^' + sWord + '$', sNewWord, sLine, iMax, flags=re.IGNORECASE)
-#        sLine = tLine[0]
-#    if tLine[1] == 0:
-#        tLine = re.subn('^' + sWord + ' ', sNewWord + ' ', sLine, iMax, flags=re.IGNORECASE)
-#        sLine = tLine[0]
-#    if tLine[1] == 0:
-#        tLine = re.subn('\(' + sWord + '\)', '(' + sNewWord + ')', sLine, iMax, flags=re.IGNORECASE)
-#        sLine = tLine[0]
-#    if tLine[1] == 0:
-#        tLine = re.subn('\(' + sWord + '\s', '(' + sNewWord + ' ', sLine, iMax, flags=re.IGNORECASE)
-#        sLine = tLine[0]
-#    if tLine[1] == 0:
-#        tLine = re.subn(sWord + ',', sNewWord + ',', sLine, iMax, flags=re.IGNORECASE)
-#        sLine = tLine[0]
     sLine = tLine[0]
     oLine.update_line(sLine)
 

@@ -173,6 +173,21 @@ class testUtilsProcedures(unittest.TestCase):
         sActual = oLine.line
         self.assertEqual(sExpected, sActual)
 
+    def test_change_word_w_case(self):
+        oLine = line.blank_line()
+        oLine.update_line('RED red green yellow')
+        sExpected = 'RED blue green yellow'
+        utils.change_word(oLine, 'red', 'blue', 1)
+        sActual = oLine.line
+        self.assertEqual(sExpected, sActual)
+
+        oLine = line.blank_line()
+        oLine.update_line('architecture ARCH of arch is')
+        sExpected = 'architecture ARCH of ARCH is'
+        utils.change_word(oLine, 'arch', 'ARCH', 1)
+        sActual = oLine.line
+        self.assertEqual(sExpected, sActual)
+
 class testExtractFunctions(unittest.TestCase):
 
     def test_extract_class_name(self):
