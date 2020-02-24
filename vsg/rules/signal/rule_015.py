@@ -28,12 +28,13 @@ class rule_015(rule.rule):
             self.sFullLine += oLine.line
         if oLine.isEndSignal:
             match = re.match(r'.*?signal\s+(?P<signals>[^:\n]*):', self.sFullLine)
-            sSignalList = match.group("signals")
-            if sSignalList.count(',') > self.consecutive - 1:
-                dViolation = utils.create_violation_dict(self.iFailureLine)
-                dViolation['endLine'] = iLineNumber
-                dViolation['line'] = self.sFullLine
-                self.add_violation(dViolation)
+            if match:
+                sSignalList = match.group("signals")
+                if sSignalList.count(',') > self.consecutive - 1:
+                    dViolation = utils.create_violation_dict(self.iFailureLine)
+                    dViolation['endLine'] = iLineNumber
+                    dViolation['line'] = self.sFullLine
+                    self.add_violation(dViolation)
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations[::-1]:
