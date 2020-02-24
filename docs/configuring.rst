@@ -126,7 +126,7 @@ Every rule configuration can be report and saved to a file using the **-oc** opt
 The output file will be in JSON format and can be modified and passed back to VSG using the *-c* option.
 
 Example:  Disabling a rule
-##########################
+--------------------------
 
 Below is an example of a JSON file which disables the rule **entity_004**
 
@@ -147,7 +147,7 @@ Use the configuration with the **--configuration** command line argument:
    $ vsg -f RAM.vhd --configuration entity_004_disable.json
 
 Example: Setting the indent increment size for a single rule
-############################################################
+------------------------------------------------------------
 
 The indent increment size is the number of spaces an indent level takes.
 It can be configured on an per rule basis...
@@ -163,7 +163,7 @@ It can be configured on an per rule basis...
    }
 
 Example: Setting the indent increment size for all rules
-########################################################
+--------------------------------------------------------
 
 Configure the indent size for all rules by setting the **global** attribute.
 

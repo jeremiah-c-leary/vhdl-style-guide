@@ -155,7 +155,7 @@ This rule checks for code after the **else** keyword.
 .. NOTE:: There is a configuration option **allow_single_line** which allows single line concurrent statements.
 
 allow_single_line set to False (Default)
-----------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Violation**
 
@@ -175,7 +175,7 @@ allow_single_line set to False (Default)
             sig_a;
 
 allow_single_line set to True
------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Violation**
 

@@ -1,5 +1,5 @@
 Configuring Prefix and Suffix Rules
------------------------------------------
+-----------------------------------
 
 There are several rules that enforce specific prefixes/suffixes in different name identifiers.
 It is noted, in the documentation, what are the default prefixes/suffixes for each such rule.
