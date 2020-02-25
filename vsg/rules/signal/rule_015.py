@@ -25,7 +25,7 @@ class rule_015(rule.rule):
             self.sFullLine = ''
             self.iFailureLine = iLineNumber
         if oLine.insideSignal:
-            self.sFullLine += oLine.line
+            self.sFullLine += oLine.lineLower
         if oLine.isEndSignal:
             match = re.match(r'.*?signal\s+(?P<signals>[^:\n]*):', self.sFullLine)
             if match:
