@@ -57,6 +57,8 @@ architecture BEHAVIORAL of BRESENHAMER is
   signal dx_plus_dy         : std_logic_vector(11 downto 0);
   signal state              : std_logic_vector(3 downto 0) := "0000";
   signal condx1x2, condy1y2 : std_logic;
+  signal ccounter           : std_logic_vector(18 downto 0) := "0000000000000000000";
+
   constant idle  : std_logic_vector(3 downto 0) := "0000";
   constant init  : std_logic_vector(3 downto 0) := "0001";
   constant case1 : std_logic_vector(3 downto 0) := "0010";
@@ -68,7 +70,6 @@ architecture BEHAVIORAL of BRESENHAMER is
   constant case7 : std_logic_vector(3 downto 0) := "1000";
   constant case8 : std_logic_vector(3 downto 0) := "1001";
   constant clear : std_logic_vector(3 downto 0) := "1010";
-  signal ccounter           : std_logic_vector(18 downto 0) := "0000000000000000000";
 
 begin
 

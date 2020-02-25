@@ -11,7 +11,12 @@ class rule_018(keyword_alignment_rule):
         keyword_alignment_rule.__init__(self, 'entity', '018')
         self.solution = 'Inconsistent alignment of comments.'
         self.sKeyword = '--'
-        self.sStartGroupTrigger = 'insideEntity'
+        self.sStartGroupTrigger = 'isEntityDeclaration'
         self.sEndGroupTrigger = 'isEndEntityDeclaration'
-        self.sLineTrigger = 'hasInlineComment'
+        self.lLineTriggers = ['hasInlineComment']
         self.phase = 6
+
+        self.separate_generic_port_alignment = True
+        self.configuration.append('separate_generic_port_alignment')
+
+        self.rule_specific_configuration = [{'name': 'separate_generic_port_alignment', 'triggers': ['isEndGenericMap']}]

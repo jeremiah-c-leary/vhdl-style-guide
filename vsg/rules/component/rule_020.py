@@ -13,5 +13,5 @@ class rule_020(keyword_alignment_rule):
         self.sKeyword = '--'
         self.sStartGroupTrigger = 'insideComponent'
         self.sEndGroupTrigger = 'isComponentEnd'
-        self.sLineTrigger = 'hasInlineComment'
+        self.lLineTriggers = ['hasInlineComment']
         self.phase = 6

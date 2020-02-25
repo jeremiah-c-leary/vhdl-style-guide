@@ -14,4 +14,4 @@ class rule_006(keyword_alignment_rule):
         self.sKeyword = '--'
         self.sStartGroupTrigger = 'isSensitivityListEnd'
         self.sEndGroupTrigger = 'isProcessBegin'
-        self.sLineTrigger = 'hasInlineComment'
+        self.lLineTriggers = ['hasInlineComment']

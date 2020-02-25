@@ -64,7 +64,19 @@ class testRuleConcurrentMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'concurrent')
         self.assertEqual(oRule.identifier, '006')
-        dExpected = ['6-11','23-24','32-36']
+        dExpected = [{'lines': [{'number': 6, 'keyword_column': 16},
+                                {'number': 7, 'keyword_column': 2},
+                                {'number': 8, 'keyword_column': 3},
+                                {'number': 9, 'keyword_column': 4},
+                                {'number': 11, 'keyword_column': 6}], 'max_keyword_column': 16},
+                     {'lines': [{'number': 23, 'keyword_column': 4},
+                                {'number': 24, 'keyword_column': 3}], 'max_keyword_column': 4},
+                     {'lines': [{'number': 32, 'keyword_column': 7},
+                                {'number': 33, 'keyword_column': 9},
+                                {'number': 34, 'keyword_column': 12},
+                                {'number': 35, 'keyword_column': 12}], 'max_keyword_column': 12},
+                     {'lines': [{'number': 50, 'keyword_column': 4},
+                                {'number': 52, 'keyword_column': 16}], 'max_keyword_column': 16}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -83,6 +95,10 @@ class testRuleConcurrentMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'concurrent')
         self.assertEqual(oRule.identifier, '008')
-        dExpected = ['6-11']
+        dExpected = [{'lines': [{'number': 6, 'keyword_column': 27},
+                                {'number': 7, 'keyword_column': 19},
+                                {'number': 8, 'keyword_column': 14},
+                                {'number': 9, 'keyword_column': 23},
+                                {'number': 11, 'keyword_column': 18}], 'max_keyword_column': 27}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)

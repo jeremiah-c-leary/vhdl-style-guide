@@ -142,10 +142,10 @@ use ieee.std_logic_unsigned.all;
 
 entity spi_slave is
     Generic (   
-        N : positive := 32;                                             -- 32bit serial word length is default
-        CPOL : std_logic := '0';                                        -- SPI mode selection (mode 0 default)
-        CPHA : std_logic := '0';                                        -- CPOL = clock polarity, CPHA = clock phase.
-        PREFETCH : positive := 3);                                      -- prefetch lookahead cycles
+        N : positive := 32;                                                 -- 32bit serial word length is default
+        CPOL : std_logic := '0';                                            -- SPI mode selection (mode 0 default)
+        CPHA : std_logic := '0';                                            -- CPOL = clock polarity, CPHA = clock phase.
+        PREFETCH : positive := 3);                                          -- prefetch lookahead cycles
     Port (  
         clk_i : in std_logic := 'X';                                    -- internal interface clock (clocks di/do registers)
         spi_ssel_i : in std_logic := 'X';                               -- spi bus slave select line
@@ -274,7 +274,7 @@ begin
             do_valid_C <= do_valid_B;
             do_valid_D <= do_valid_C;
             do_valid_o_reg <= do_valid_next;                    -- registered output pulse
-            --------------------------------
+
             -- di_req_reg -> di_req_o_reg
             di_req_o_A <= di_req_reg;                           -- the input signal must be at least 2 clocks long
             di_req_o_B <= di_req_o_A;                           -- feed it to a ripple chain of FFDs

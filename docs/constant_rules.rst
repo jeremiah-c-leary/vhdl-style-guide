@@ -145,18 +145,6 @@ This rule checks the **:=** is on the same line at the **constant** keyword.
 
    constant size : integer := 1;
 
-constant_009
-############
-
-This rule checks the :'s are in the same column for all constants in the architecture declarative region.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   constant size : integer := 1;
-   constant width   : integer := 32
-
 **Fix**
 
 .. code-block:: vhdl

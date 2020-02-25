@@ -29,6 +29,8 @@ signal minus_dx_plus_dy : STD_LOGIC_VECTOR (11 downto 0);
 signal dx_plus_dy : STD_LOGIC_VECTOR (11 downto 0);
 signal State : STD_LOGIC_VECTOR(3 downto 0) := "0000";
 signal condX1X2,condY1Y2 : STD_LOGIC;
+signal ccounter : STD_LOGIC_VECTOR (18 downto 0) := "0000000000000000000";
+
 constant IDLE : STD_LOGIC_VECTOR(3 downto 0) := "0000";
 constant INIT : STD_LOGIC_VECTOR(3 downto 0) := "0001";
 constant CASE1 : STD_LOGIC_VECTOR(3 downto 0) := "0010";
@@ -40,7 +42,6 @@ constant CASE6 : STD_LOGIC_VECTOR(3 downto 0) := "0111";
 constant CASE7 : STD_LOGIC_VECTOR(3 downto 0) := "1000";
 constant CASE8 : STD_LOGIC_VECTOR(3 downto 0) := "1001";
 constant CLEAR : STD_LOGIC_VECTOR(3 downto 0) := "1010";
-signal ccounter : STD_LOGIC_VECTOR (18 downto 0) := "0000000000000000000";
 begin
 ndx <= ("00" & X2)-("00" & X1);
 ndy <= ("000" & Y2)-("000" & Y1);

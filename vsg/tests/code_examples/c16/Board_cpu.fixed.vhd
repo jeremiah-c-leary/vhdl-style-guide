@@ -19,14 +19,14 @@ library UNISIM;
 
 entity BOARD_CPU is
   port (
-    CLK40         : in    std_logic;
-    SWITCH        : in    std_logic_vector(9 downto 0);
+    CLK40       : in    std_logic;
+    SWITCH      : in    std_logic_vector(9 downto 0);
 
-    SER_IN        : in    std_logic;
-    SER_OUT       : out   std_logic;
+    SER_IN       : in    std_logic;
+    SER_OUT      : out   std_logic;
 
-    TEMP_SPO      : in    std_logic;
-    TEMP_SPI      : out   std_logic;
+    TEMP_SPO    : in    std_logic;
+    TEMP_SPI    : out   std_logic;
 
     CLK_OUT       : out   std_logic;
     LED           : out   std_logic_vector(7 downto 0);
@@ -37,11 +37,11 @@ entity BOARD_CPU is
     SEG1          : out   std_logic_vector(7 downto 0);
     SEG2          : out   std_logic_vector(7 downto 0);
 
-    XM_ADR        : out   std_logic_vector(14 downto 0);
-    XM_CE_N       : out   std_logic;
-    XM_OE_N       : out   std_logic;
-    XM_WE_N       : inout std_logic;
-    XM_DIO        : inout std_logic_vector(7 downto 0)
+    XM_ADR       : out   std_logic_vector(14 downto 0);
+    XM_CE_N      : out   std_logic;
+    XM_OE_N      : out   std_logic;
+    XM_WE_N      : inout std_logic;
+    XM_DIO       : inout std_logic_vector(7 downto 0)
   );
 end entity BOARD_CPU;
 
@@ -49,8 +49,8 @@ architecture BEHAVIORAL of BOARD_CPU is
 
   component CPU is
     port (
-      CLK_I        : in    std_logic;
-      SWITCH       : in    std_logic_vector(9 downto 0);
+      CLK_I       : in    std_logic;
+      SWITCH      : in    std_logic_vector(9 downto 0);
 
       SER_IN       : in    std_logic;
       SER_OUT      : out   std_logic;
@@ -60,9 +60,9 @@ architecture BEHAVIORAL of BOARD_CPU is
       TEMP_CE      : out   std_logic;
       TEMP_SCLK    : out   std_logic;
 
-      SEG1         : out   std_logic_vector(7 downto 0);
-      SEG2         : out   std_logic_vector( 7 downto 0);
-      LED          : out   std_logic_vector( 7 downto 0);
+      SEG1       : out   std_logic_vector(7 downto 0);
+      SEG2       : out   std_logic_vector( 7 downto 0);
+      LED        : out   std_logic_vector( 7 downto 0);
 
       XM_ADR       : out   std_logic_vector(15 downto 0);
       XM_RDAT      : in    std_logic_vector( 7 downto 0);
@@ -85,14 +85,14 @@ begin
 
   CP : CPU
     port map (
-      CLK_I                => CLK40,
-      SWITCH               => SWITCH,
+      CLK_I        => CLK40,
+      SWITCH       => SWITCH,
 
-      SER_IN               => SER_IN,
-      SER_OUT              => SER_OUT,
+      SER_IN       => SER_IN,
+      SER_OUT      => SER_OUT,
 
-      TEMP_SPO             => TEMP_SPO,
-      TEMP_SPI             => TEMP_SPI,
+      TEMP_SPO     => TEMP_SPO,
+      TEMP_SPI     => TEMP_SPI,
 
       XM_ADR(14 downto 0)  => XM_ADR,
       XM_ADR(15)           => open,

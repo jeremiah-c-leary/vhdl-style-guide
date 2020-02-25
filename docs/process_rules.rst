@@ -815,3 +815,26 @@ This rule checks the process label is on the same line as the process keyword.
 .. code-block:: vhdl
 
    PROC_1 : process(A) is
+
+process_033
+###########
+
+This rule checks the colons are in the same column for all declarations in the function declarative part.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   variable var1 : natural;
+   variable var2  : natural;
+   constant PERIOD : time;
+   file my_test_input : my_file_type;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   variable var1      : natural;
+   variable var2      : natural;
+   constant PERIOD    : time;
+   file my_test_input : my_file_type;

@@ -15,4 +15,4 @@ class rule_015(keyword_alignment_rule):
         self.sKeyword = '=>'
         self.sStartGroupTrigger = 'isInstantiationGenericKeyword'
         self.sEndGroupTrigger = 'isInstantiationGenericEnd'
-        self.sLineTrigger = 'isInstantiationGenericAssignment'
+        self.lLineTriggers = ['isInstantiationGenericAssignment']

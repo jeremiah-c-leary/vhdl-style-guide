@@ -82,15 +82,6 @@ class testRuleVariableMethods(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
-    def test_rule_009(self):
-        oRule = variable.rule_009()
-        self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'variable')
-        self.assertEqual(oRule.identifier, '009')
-        dExpected = ['3-23']
-        oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
-
     def test_rule_010(self):
         oRule = variable.rule_010()
         self.assertTrue(oRule)

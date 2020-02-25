@@ -28,6 +28,11 @@ class testVhdlFileMethods(unittest.TestCase):
 
     def test_timestamp_vhdl(self):
         oRuleList = rule_list.rule_list(oTimestamp)
+        dConfiguration = {}
+        dConfiguration['rule'] = {}
+        dConfiguration['rule']['global'] = {}
+        dConfiguration['rule']['global']['comment_line_ends_group'] = False
+        oRuleList.configure(dConfiguration)
         oRuleList.fix(7)
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'timestamp.fixed.vhdl'), lExpected)
@@ -36,6 +41,12 @@ class testVhdlFileMethods(unittest.TestCase):
 
     def test_spi_slave(self):
         oRuleList = rule_list.rule_list(oSpiSlave)
+        dConfiguration = {}
+        dConfiguration['rule'] = {}
+        dConfiguration['rule']['global'] = {}
+        dConfiguration['rule']['global']['comment_line_ends_group'] = False
+        dConfiguration['rule']['global']['separate_generic_port_alignment'] = True
+        oRuleList.configure(dConfiguration)
         oRuleList.fix(7)
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'spi_slave.fixed.vhd'), lExpected)
@@ -44,6 +55,12 @@ class testVhdlFileMethods(unittest.TestCase):
 
     def test_spi_master(self):
         oRuleList = rule_list.rule_list(oSpiMaster)
+        dConfiguration = {}
+        dConfiguration['rule'] = {}
+        dConfiguration['rule']['global'] = {}
+        dConfiguration['rule']['global']['comment_line_ends_group'] = False
+        dConfiguration['rule']['global']['separate_generic_port_alignment'] = True
+        oRuleList.configure(dConfiguration)
         oRuleList.fix(7)
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'spi_master.fixed.vhd'), lExpected)
@@ -52,6 +69,11 @@ class testVhdlFileMethods(unittest.TestCase):
 
     def test_grp_debouncer(self):
         oRuleList = rule_list.rule_list(oGrpDebouncer)
+        dConfiguration = {}
+        dConfiguration['rule'] = {}
+        dConfiguration['rule']['global'] = {}
+        dConfiguration['rule']['global']['separate_generic_port_alignment'] = True
+        oRuleList.configure(dConfiguration)
         oRuleList.fix(7)
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'grp_debouncer.fixed.vhd'), lExpected)

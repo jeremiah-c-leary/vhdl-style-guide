@@ -18,6 +18,11 @@ class testCodeExample(unittest.TestCase):
 
     def test_baudgen(self):
         oRuleList = rule_list.rule_list(oBaudGen)
+        dConfiguration = {}
+        dConfiguration['rule'] = {}
+        dConfiguration['rule']['global'] = {}
+        dConfiguration['rule']['global']['separate_generic_port_alignment'] = False
+        oRuleList.configure(dConfiguration)
         oRuleList.fix(7)
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'BaudGen.fixed.vhd'), lExpected)

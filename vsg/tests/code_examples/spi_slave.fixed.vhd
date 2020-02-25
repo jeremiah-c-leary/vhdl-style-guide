@@ -280,7 +280,7 @@ begin
       do_valid_c     <= do_valid_b;
       do_valid_d     <= do_valid_c;
       do_valid_o_reg <= do_valid_next;                        -- registered output pulse
-      --------------------------------
+
       -- di_req_reg -> di_req_o_reg
       di_req_o_a   <= di_req_reg;                             -- the input signal must be at least 2 clocks long
       di_req_o_b   <= di_req_o_a;                             -- feed it to a ripple chain of FFDs
