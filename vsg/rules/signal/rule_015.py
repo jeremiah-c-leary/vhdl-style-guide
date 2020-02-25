@@ -25,9 +25,9 @@ class rule_015(rule.rule):
             self.sFullLine = ''
             self.iFailureLine = iLineNumber
         if oLine.insideSignal:
-            self.sFullLine += oLine.lineLower
+            self.sFullLine += oLine.line
         if oLine.isEndSignal:
-            match = re.match(r'.*?signal\s+(?P<signals>[^:\n]*):', self.sFullLine)
+            match = re.match(r'.*?signal\s+(?P<signals>[^:\n]*):', self.sFullLine, flags=re.IGNORECASE)
             if match:
                 sSignalList = match.group("signals")
                 if sSignalList.count(',') > self.consecutive - 1:
