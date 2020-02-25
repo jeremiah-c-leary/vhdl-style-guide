@@ -5,7 +5,9 @@ from vsg import fix
 
 
 class rule_003(rule.rule):
-    '''Variable assignment rule 003 checks for a single space before the ":=" keyword.'''
+    '''
+    Variable assignment rule 003 checks for a single space before the ":=" keyword.
+    '''
 
     def __init__(self):
         rule.rule.__init__(self, 'variable_assignment', '003')

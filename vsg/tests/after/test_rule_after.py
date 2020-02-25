@@ -32,10 +32,11 @@ class testRuleAfterMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'after')
         self.assertEqual(oRule.identifier, '002')
         self.assertTrue(oRule.disable)
-        lExpected = [{'lines': [{'number': 93, 'keyword_column': 16},
-                                {'number': 94, 'keyword_column': 15},
-                                {'number': 95, 'keyword_column': 17},
-                                {'number': 96, 'keyword_column': 14}], 'max_keyword_column': 17}]
+        lExpected = [{'lines': [{'number': 93, 'keyword_column': 16, 'before_keyword_column': 12},
+                                {'number': 94, 'keyword_column': 15, 'before_keyword_column': 12},
+                                {'number': 95, 'keyword_column': 17, 'before_keyword_column': 12},
+                                {'number': 96, 'keyword_column': 14, 'before_keyword_column': 12}],
+                      'max_keyword_column': 17, 'max_before_keyword_column': 12}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, lExpected)
 

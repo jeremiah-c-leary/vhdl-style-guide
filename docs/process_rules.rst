@@ -819,7 +819,8 @@ This rule checks the process label is on the same line as the process keyword.
 process_033
 ###########
 
-This rule checks the colons are in the same column for all declarations in the function declarative part.
+This rule checks the colons are in the same column for all declarations in the process declarative part.
+Refer to the section `Configuring Keyword Alignment Rules <configuring_keyword_alignment.html>`_ for information on changing the configurations.
 
 **Violation**
 
@@ -838,3 +839,68 @@ This rule checks the colons are in the same column for all declarations in the f
    variable var2      : natural;
    constant PERIOD    : time;
    file my_test_input : my_file_type;
+
+process_034
+###########
+
+This rule aligns in line comments between the end of the process sensitivity list and the process **begin** keyword.
+Refer to the section `Configuring Keyword Alignment Rules <configuring_keyword_alignment.html>`_ for information on changing the configurations.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   proc_1 : process () is
+
+      variable counter : integer range 0 to 31;     -- Counts the number of frames received
+      variable width   : natural range 0 to 255; -- Keeps track of the data word size
+
+      variable size    : natural range 0 to 7; -- Keeps track of the frame size
+
+   begin
+
+**Fix**
+
+.. code-block:: vhdl
+
+   proc_1 : process () is
+
+      variable counter : integer range 0 to 31;  -- Counts the number of frames received
+      variable width   : natural range 0 to 255; -- Keeps track of the data word size
+
+      variable size    : natural range 0 to 7;   -- Keeps track of the frame size
+
+   begin
+
+process_035
+###########
+
+This rule checks the alignment of in line comments between the process begin and end process lines.
+Refer to the section `Configuring Keyword Alignment Rules <configuring_keyword_alignment.html>`_ for information on changing the configurations.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   proc_1: process () is
+   begin
+
+     a <= '1';   -- Assert
+     b <= '0';       -- Deassert
+     c <= '1'; -- Enable
+
+   end process proc_1;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   proc_1: process () is
+   begin
+
+     a <= '1'; -- Assert
+     b <= '0'; -- Deassert
+     c <= '1'; -- Enable
+
+   end process proc_1;
+

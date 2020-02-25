@@ -244,27 +244,6 @@ This rule checks for at least a single space before the :.
    DATA_WIDTH : integer := 32;
    DEPTH : integer := 512;
 
-generic_015
-###########
-
-This rule checks the alignment of the **:=** operator in generic declarations.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   ADDRESS_WIDTH : integer    := 10;
-   DATA_WIDTH    : integer := 32;
-   DEPTH         : integer  := 512;
-
-**Fix**
-
-.. code-block:: vhdl
-
-   ADDRESS_WIDTH : integer    := 10;
-   DATA_WIDTH    : integer    := 32;
-   DEPTH         : integer    := 512;
-
 generic_016
 ###########
 

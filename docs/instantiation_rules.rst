@@ -189,17 +189,26 @@ This rule checks the entity name has proper case.
 instantiation_010
 #################
 
-This rule checks the alignment of the **=>** operator for every port in instantiation.
+This rule checks the alignment of the **=>** operator for each generic and port in the instantiation.
 
+Following extra configurations are supported:
+
+* :code:`separate_generic_port_alignment`.
+
+Refer to the section `Configuring Keyword Alignment Rules <configuring_keyword_alignment.html>`_ for information on changing the configurations.
 **Violation**
 
 .. code-block:: vhdl
 
    U_FIFO : FIFO
+     generic map (
+       g_width => 8
+       g_delay    => 2
+     )
      port map (
-       WR_EN => wr_en,
-       RD_EN => rd_en,
-       OVERFLOW => overflow
+       wr_en => wr_en,
+       rd_en => rd_en,
+       overflow => overflow
      );
 
 **Fix**
@@ -207,10 +216,14 @@ This rule checks the alignment of the **=>** operator for every port in instanti
 .. code-block:: vhdl
 
    U_FIFO : FIFO
+     generic map (
+       g_width => 8
+       g_delay => 2
+     )
      port map (
-       WR_EN    => wr_en,
-       RD_EN    => rd_en,
-       OVERFLOW => overflow
+       wr_en    => wr_en,
+       rd_en    => rd_en,
+       overflow => overflow
      );
 
 instantiation_011
@@ -304,31 +317,6 @@ This rule checks for the closing parenthesis *)* on generic maps are on their ow
        GENERIC_1 => 0,
        GENERIC_2 => TRUE,
        GENERIC_3 => FALSE
-     )
-
-instantiation_015
-#################
-
-This rule checks the alignment of the **=>** operator for every generic.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   U_FIFO : FIFO
-     generic map (
-       DEPTH => 512,
-       WIDTH    => 32
-     )
-
-**Fix**
-
-.. code-block:: vhdl
-
-   U_FIFO : FIFO
-     generic map (
-       DEPTH    => 512,
-       WIDTH    => 32
      )
 
 instantiation_016
@@ -652,23 +640,30 @@ This rule checks the entity name has proper case in direct instantiations.
 instantiation_029
 #################
 
-This rule checks for alignment of inline comments in an instantiation
+This rule checks for alignment of inline comments in an instantiation.
+
+Following extra configurations are supported:
+
+* :code:`separate_generic_port_alignment`.
+
+Refer to the section `Configuring Keyword Alignment Rules <configuring_keyword_alignment.html>`_ for information on changing the configurations.
+**Violation**
 
 **Violation**
 
 .. code-block:: vhdl
 
-       WR_EN     => write_enable,        -- Wrte enable
-       RD_EN     => read_enable,    -- Read enable
-       OVERLFLOW => overflow,         -- FIFO has overflowed
+       wr_en    => write_enable,        -- Wrte enable
+       rd_en    => read_enable,    -- Read enable
+       overflow => overflow,         -- FIFO has overflowed
 
 **Fix**
 
 .. code-block:: vhdl
 
-       WR_EN     => write_enable,        -- Wrte enable
-       RD_EN     => read_enable,         -- Read enable
-       OVERLFLOW => overflow,            -- FIFO has overflowed
+       wr_en    => write_enable, -- Wrte enable
+       rd_en    => read_enable,  -- Read enable
+       overflow => overflow,     -- FIFO has overflowed
 
 instantiation_030
 #################

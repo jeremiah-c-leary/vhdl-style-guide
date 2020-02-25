@@ -98,12 +98,6 @@ class testFixRuleGenericMethods(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
 
-    def test_fix_rule_015(self):
-        oRule = generic.rule_015()
-        oRule.fix(self.oFile)
-        oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, [])
-
     def test_fix_rule_016(self):
         oRule = generic.rule_016()
         oRule.fix(oFileMultiple)

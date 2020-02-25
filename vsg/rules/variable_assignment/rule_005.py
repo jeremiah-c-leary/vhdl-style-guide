@@ -3,8 +3,7 @@ from vsg.rules import keyword_alignment_rule
 
 class rule_005(keyword_alignment_rule):
     '''
-    Variable assignment rule 005 ensures the alignment of the ":=" keyword
-    over multiple lines.
+    Variable assignment rule 005 ensures the alignment of the ":=" keyword over multiple lines.
     '''
 
     def __init__(self):
@@ -18,7 +17,7 @@ class rule_005(keyword_alignment_rule):
         self.if_control_statements_end_group = True
         self.configuration.append('if_control_statements_end_group')
 
-        self.rule_specific_configuration = [{'name': 'if_control_statements_end_group', 'triggers': ['isIfKeyword',
-                                                                                                     'isElseIfKeyword',
-                                                                                                     'isElseKeyword',
-                                                                                                     'isEndIfKeyword']}]
+        self.configuration_triggers += [{'name': 'if_control_statements_end_group', 'triggers': ['isIfKeyword',
+                                                                                                 'isElseIfKeyword',
+                                                                                                 'isElseKeyword',
+                                                                                                 'isEndIfKeyword']}]

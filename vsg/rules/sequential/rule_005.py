@@ -20,10 +20,10 @@ class rule_005(keyword_alignment_rule):
         self.case_control_statements_end_group = True
         self.configuration.append('case_control_statements_end_group')
 
-        self.rule_specific_configuration = [{'name': 'if_control_statements_end_group', 'triggers': ['isIfKeyword',
-                                                                                                     'isElseIfKeyword',
-                                                                                                     'isElseKeyword',
-                                                                                                     'isEndIfKeyword']},
-                                            {'name': 'case_control_statements_end_group', 'triggers': ['isCaseKeyword',
-                                                                                                       'isCaseWhenKeyword',
-                                                                                                       'isEndCaseKeyword']}]
+        self.configuration_triggers += [{'name': 'if_control_statements_end_group', 'triggers': ['isIfKeyword',
+                                                                                                 'isElseIfKeyword',
+                                                                                                 'isElseKeyword',
+                                                                                                 'isEndIfKeyword']},
+                                        {'name': 'case_control_statements_end_group', 'triggers': ['isCaseKeyword',
+                                                                                                   'isCaseWhenKeyword',
+                                                                                                   'isEndCaseKeyword']}]

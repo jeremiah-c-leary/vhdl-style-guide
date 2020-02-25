@@ -12,6 +12,7 @@ oIteration = vhdlFile.vhdlFile(lIteration)
 
 class testCodeExample(unittest.TestCase):
 
+    @unittest.skip("This test should be done for example configurations only.")
     def test_iteration_synth(self):
         oRuleList = rule_list.rule_list(oIteration)
         oRuleList.fix(7)
