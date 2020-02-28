@@ -1,7 +1,7 @@
 Configuring
 ===========
 
-VSG can use a configuration file to alter it's behavior or include a list of files to analyze.
+VSG can use a configuration file to alter it's behavior and/or include a list of files to analyze.
 This is accomplished by passing JSON and/or YAML file(s) through the **--configuration** command line argument.
 This is the basic form of a configuration file in JSON: 
 
@@ -10,9 +10,12 @@ This is the basic form of a configuration file in JSON:
    {
        "file_list":[
          "fifo.vhd",
-         "source/spi.vhd",
          "$PATH_TO_FILE/spi_master.vhd",
-         "$OTHER_PATH/src/*.vhd"
+         "$OTHER_PATH/src/*.vhd",
+         "source/spi.vhd": {
+           "rule": {
+             "ruleId_ruleNumber":"blah"
+         }
        ],
        "local_rules":"$DIRECTORY_PATH",
        "rule":{
@@ -32,7 +35,10 @@ This is the basic form of a configuration file in YAML:
    ---
    file_list:[
      - fifo.vhd
-     - source/spi.vhd
+     - source/spi.vhd:
+         rule:
+           ruleId_ruleNumber:
+             attributeName: AttributeValue
      - $PATH_TO_FILE/spi_master.vhd
      - $OTHER_PATH/src/*.vhd
    local_rules: $DIRECTORY_PATH
@@ -40,13 +46,12 @@ This is the basic form of a configuration file in YAML:
      global:
        attributeName: AttributeValue
      ruleId_ruleNumber:
-         attributeName: AttributeValue
+       attributeName: AttributeValue
    ...
 
 
 It is not required to have **file_list**, **local_rules**, and **rule** defined in the configuration file.
-Any combination can be defined.
-The order does not matter either.
+Any combination can be defined, and the order does not matter.
 
 .. NOTE:: All examples of configurations in this documentation use JSON.  However, YAML can be used instead.
 
@@ -58,6 +63,8 @@ Environment variables will expanded.
 File globbing is also supported.
 The Environment variables will be expanded before globbing occurs.
 This option can be useful when running VSG over multiple files.
+
+Rule configurations can be specified for each file by following the format of the **rule** configuration.
 
 local_rules
 -----------
@@ -89,8 +96,6 @@ Here are a list of attributes that can be altered for each rule:
 +-------------+---------+--------------------------------------------------+
 | fixable     | Boolean | If set to False, the violation will not be fixed |
 +-------------+---------+--------------------------------------------------+
-
-.. NOTE:: Some rules have additional attributes.  These will be noted in the rule description.
 
 Reporting Single Rule Configuration
 -----------------------------------
@@ -124,6 +129,48 @@ Every rule configuration can be report and saved to a file using the **-oc** opt
    $ vsg -oc configuration.json
 
 The output file will be in JSON format and can be modified and passed back to VSG using the *-c* option.
+
+Rule Configuration Priorities
+-----------------------------
+
+There are three ways to configure a rule.
+From least to highest priority are: 
+
+* **[rule][global]**
+* **[rule][<identifier>]**
+* **[file_list][<filename>][rule][<identifier>]**.
+
+If the same rule is defined in all three locations as in the example below, then the final setting will be equal to the highest priority.
+
+.. code-block:: json
+
+   {
+     "file_list":[
+       "entity.vhd":{
+         "rule":{
+           "length_001":{
+             "disable": true
+           }
+         }
+      },
+      "architecture.vhd",
+      "package.vhd"
+     ],
+     "rule":{
+       "global":{
+         "disable": true
+       },
+       "rule": {
+         "length_001":{
+           "disable": false
+       }
+     }
+   }
+
+
+In this example configuration, all rules are disabled by the **global** configuration.
+Then rule **length_001** is enabled for the files **architecture.vhd**, **package.vhd** and **entity.vhd** by the **rule** configuration.
+Then rule **length_001** is disabled for the file **entity.vhd**.
 
 Example:  Disabling a rule
 --------------------------

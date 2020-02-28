@@ -122,6 +122,8 @@ def update_command_line_arguments(commandLineArguments, configuration):
     if configuration:
         if 'file_list' in configuration:
             for sFilename in configuration['file_list']:
+                if isinstance(sFilename, dict):
+                    sFilename = list(sFilename.keys())[0]
                 try:
                     commandLineArguments.filename.extend(glob.glob(expand_filename(sFilename)))
                 except:
@@ -243,11 +245,15 @@ def main():
 
     display_rule_configuration(commandLineArguments, configuration)
 
-    for sFileName in commandLineArguments.filename:
+    for iIndex, sFileName in enumerate(commandLineArguments.filename):
         oVhdlFile = vhdlFile.vhdlFile(read_vhdlfile(sFileName))
         oVhdlFile.filename = sFileName
         oRules = rule_list.rule_list(oVhdlFile, commandLineArguments.local_rules)
         oRules.configure(configuration)
+        try:
+            oRules.configure(configuration['file_list'][iIndex][sFileName])
+        except TypeError:
+            pass
 
         if commandLineArguments.fix:
             if commandLineArguments.backup:
