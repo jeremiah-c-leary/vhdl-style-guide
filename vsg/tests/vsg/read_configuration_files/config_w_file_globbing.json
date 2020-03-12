@@ -1,0 +1,5 @@
+{
+  "file_list" : [
+    "vsg/tests/vsg/read_configuration_files/*.vhd"
+  ]
+}

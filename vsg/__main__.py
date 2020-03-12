@@ -68,15 +68,24 @@ def read_configuration_files(commandLineArguments):
     if commandLineArguments.configuration:
         dConfiguration = {}
         for sFileName in commandLineArguments.configuration:
-
+#            print(sFileName)
             tempConfiguration = open_configuration_file(sFileName, commandLineArguments)
 
             for sKey in tempConfiguration.keys():
                 if sKey == 'file_list':
-                    try:
-                        dConfiguration['file_list'].extend(tempConfiguration['file_list'])
-                    except:
-                        dConfiguration['file_list'] = tempConfiguration['file_list']
+                    if not 'file_list' in dConfiguration:
+                        dConfiguration['file_list'] = []
+                    for iIndex, sFilename in enumerate(tempConfiguration['file_list']):
+#                      print(sFilename)
+#                      print(glob.glob(expand_filename(sFilename)))
+                      for sGlobbedFilename in glob.glob(expand_filename(sFilename)):
+#                        print(sGlobbedFilename)
+                        try:
+#                            print('Extending')
+                            dConfiguration['file_list'].append(sGlobbedFilename)
+                        except:
+                            dConfiguration['file_list'] = [sGlobbedFilename]
+#                        print(dConfiguration)
                 elif sKey == 'rule':
                     for sRule in tempConfiguration[sKey]:
                         try:
@@ -246,6 +255,7 @@ def main():
     display_rule_configuration(commandLineArguments, configuration)
 
     for iIndex, sFileName in enumerate(commandLineArguments.filename):
+#        print(sFileName)
         oVhdlFile = vhdlFile.vhdlFile(read_vhdlfile(sFileName))
         oVhdlFile.filename = sFileName
         oRules = rule_list.rule_list(oVhdlFile, commandLineArguments.local_rules)
@@ -253,6 +263,8 @@ def main():
         try:
             oRules.configure(configuration['file_list'][iIndex][sFileName])
         except TypeError:
+            pass
+        except KeyError:
             pass
 
         if commandLineArguments.fix:
