@@ -39,7 +39,6 @@ class test_read_configuration_function(unittest.TestCase):
 
 
     def test_globbing_files(self):
-        self.maxDiff = None
         oCommandLineArgs = command_line_args(['vsg/tests/vsg/read_configuration_files/config_w_file_globbing.json'])
 
         dExpected = {}
@@ -55,3 +54,51 @@ class test_read_configuration_function(unittest.TestCase):
 
         self.assertEqual(dActual, dExpected)
 
+    def test_file_list_with_individual_rule_config(self):
+        self.maxDiff = None
+        oCommandLineArgs = command_line_args(['vsg/tests/vsg/read_configuration_files/config_w_file_list_w_individual_rule_config.json'])
+
+        dExpected = {}
+        dExpected['file_list'] = []
+        dExpected['file_list'].append('vsg/tests/vsg/read_configuration_files/entity.vhd')
+        dFile = {}
+        dFile['vsg/tests/vsg/read_configuration_files/arch.vhd'] = {}
+        dFile['vsg/tests/vsg/read_configuration_files/arch.vhd']['rule'] = {}
+        dFile['vsg/tests/vsg/read_configuration_files/arch.vhd']['rule']['rule_001'] = {}
+        dFile['vsg/tests/vsg/read_configuration_files/arch.vhd']['rule']['rule_001']['disable'] = True
+        dExpected['file_list'].append(dFile)
+        dExpected['file_list'].append('vsg/tests/vsg/read_configuration_files/package.vhd')
+
+        dActual = read_configuration_files(oCommandLineArgs)
+
+        self.assertEqual(dActual, dExpected)
+
+    def test_file_list_globbing_with_individual_rule_config(self):
+        self.maxDiff = None
+        oCommandLineArgs = command_line_args(['vsg/tests/vsg/read_configuration_files/config_w_file_list_globbing_w_individual_rule_config.json'])
+
+        dExpected = {}
+        dExpected['file_list'] = []
+        dExpected['file_list'].append('vsg/tests/vsg/read_configuration_files/entity.vhd')
+        dFile = {}
+        dFile['vsg/tests/vsg/read_configuration_files/arch_2.vhd'] = {}
+        dFile['vsg/tests/vsg/read_configuration_files/arch_2.vhd']['rule'] = {}
+        dFile['vsg/tests/vsg/read_configuration_files/arch_2.vhd']['rule']['rule_001'] = {}
+        dFile['vsg/tests/vsg/read_configuration_files/arch_2.vhd']['rule']['rule_001']['disable'] = True
+        dExpected['file_list'].append(dFile)
+        dFile = {}
+        dFile['vsg/tests/vsg/read_configuration_files/arch.vhd'] = {}
+        dFile['vsg/tests/vsg/read_configuration_files/arch.vhd']['rule'] = {}
+        dFile['vsg/tests/vsg/read_configuration_files/arch.vhd']['rule']['rule_001'] = {}
+        dFile['vsg/tests/vsg/read_configuration_files/arch.vhd']['rule']['rule_001']['disable'] = True
+        dExpected['file_list'].append(dFile)
+        dFile = {}
+        dFile['vsg/tests/vsg/read_configuration_files/package.vhd'] = {}
+        dFile['vsg/tests/vsg/read_configuration_files/package.vhd']['rule'] = {}
+        dFile['vsg/tests/vsg/read_configuration_files/package.vhd']['rule']['rule_002'] = {}
+        dFile['vsg/tests/vsg/read_configuration_files/package.vhd']['rule']['rule_002']['disable'] = False
+        dExpected['file_list'].append(dFile)
+
+        dActual = read_configuration_files(oCommandLineArgs)
+
+        self.assertEqual(dActual, dExpected)

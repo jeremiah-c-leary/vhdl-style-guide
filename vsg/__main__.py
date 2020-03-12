@@ -68,7 +68,6 @@ def read_configuration_files(commandLineArguments):
     if commandLineArguments.configuration:
         dConfiguration = {}
         for sFileName in commandLineArguments.configuration:
-#            print(sFileName)
             tempConfiguration = open_configuration_file(sFileName, commandLineArguments)
 
             for sKey in tempConfiguration.keys():
@@ -76,16 +75,17 @@ def read_configuration_files(commandLineArguments):
                     if not 'file_list' in dConfiguration:
                         dConfiguration['file_list'] = []
                     for iIndex, sFilename in enumerate(tempConfiguration['file_list']):
-#                      print(sFilename)
-#                      print(glob.glob(expand_filename(sFilename)))
-                      for sGlobbedFilename in glob.glob(expand_filename(sFilename)):
-#                        print(sGlobbedFilename)
                         try:
-#                            print('Extending')
+                          for sGlobbedFilename in glob.glob(expand_filename(sFilename)):
                             dConfiguration['file_list'].append(sGlobbedFilename)
-                        except:
-                            dConfiguration['file_list'] = [sGlobbedFilename]
-#                        print(dConfiguration)
+                        except TypeError:
+                          sKey = list(sFilename.keys())[0]
+                          for sGlobbedFilename in glob.glob(expand_filename(sKey)):
+                            dTemp = {}
+                            dTemp[sGlobbedFilename] = {}
+                            dTemp[sGlobbedFilename].update(tempConfiguration['file_list'][iIndex][sKey])
+                            dConfiguration['file_list'].append(dTemp)
+
                 elif sKey == 'rule':
                     for sRule in tempConfiguration[sKey]:
                         try:
@@ -255,7 +255,6 @@ def main():
     display_rule_configuration(commandLineArguments, configuration)
 
     for iIndex, sFileName in enumerate(commandLineArguments.filename):
-#        print(sFileName)
         oVhdlFile = vhdlFile.vhdlFile(read_vhdlfile(sFileName))
         oVhdlFile.filename = sFileName
         oRules = rule_list.rule_list(oVhdlFile, commandLineArguments.local_rules)
