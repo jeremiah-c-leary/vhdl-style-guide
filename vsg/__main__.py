@@ -68,15 +68,24 @@ def read_configuration_files(commandLineArguments):
     if commandLineArguments.configuration:
         dConfiguration = {}
         for sFileName in commandLineArguments.configuration:
-
             tempConfiguration = open_configuration_file(sFileName, commandLineArguments)
 
             for sKey in tempConfiguration.keys():
                 if sKey == 'file_list':
-                    try:
-                        dConfiguration['file_list'].extend(tempConfiguration['file_list'])
-                    except:
-                        dConfiguration['file_list'] = tempConfiguration['file_list']
+                    if 'file_list' not in dConfiguration:
+                        dConfiguration['file_list'] = []
+                    for iIndex, sFilename in enumerate(tempConfiguration['file_list']):
+                        try:
+                            for sGlobbedFilename in glob.glob(expand_filename(sFilename)):
+                                dConfiguration['file_list'].append(sGlobbedFilename)
+                        except TypeError:
+                            sKey = list(sFilename.keys())[0]
+                            for sGlobbedFilename in glob.glob(expand_filename(sKey)):
+                                dTemp = {}
+                                dTemp[sGlobbedFilename] = {}
+                                dTemp[sGlobbedFilename].update(tempConfiguration['file_list'][iIndex][sKey])
+                                dConfiguration['file_list'].append(dTemp)
+
                 elif sKey == 'rule':
                     for sRule in tempConfiguration[sKey]:
                         try:
@@ -119,15 +128,19 @@ def write_junit_xml_file(oJunitFile):
 
 
 def update_command_line_arguments(commandLineArguments, configuration):
-    if configuration:
-        if 'file_list' in configuration:
-            for sFilename in configuration['file_list']:
-                try:
-                    commandLineArguments.filename.extend(glob.glob(expand_filename(sFilename)))
-                except:
-                    commandLineArguments.filename = glob.glob(expand_filename(sFilename))
-        if 'local_rules' in configuration:
-            commandLineArguments.local_rules = expand_filename(configuration['local_rules'])
+    if not configuration:
+        return
+
+    if 'file_list' in configuration:
+        for sFilename in configuration['file_list']:
+            if isinstance(sFilename, dict):
+                sFilename = list(sFilename.keys())[0]
+            try:
+                commandLineArguments.filename.extend(glob.glob(expand_filename(sFilename)))
+            except:
+                commandLineArguments.filename = glob.glob(expand_filename(sFilename))
+    if 'local_rules' in configuration:
+        commandLineArguments.local_rules = expand_filename(configuration['local_rules'])
 
 
 def expand_filename(sFileName):
@@ -243,11 +256,17 @@ def main():
 
     display_rule_configuration(commandLineArguments, configuration)
 
-    for sFileName in commandLineArguments.filename:
+    for iIndex, sFileName in enumerate(commandLineArguments.filename):
         oVhdlFile = vhdlFile.vhdlFile(read_vhdlfile(sFileName))
         oVhdlFile.filename = sFileName
         oRules = rule_list.rule_list(oVhdlFile, commandLineArguments.local_rules)
         oRules.configure(configuration)
+        try:
+            oRules.configure(configuration['file_list'][iIndex][sFileName])
+        except TypeError:
+            pass
+        except KeyError:
+            pass
 
         if commandLineArguments.fix:
             if commandLineArguments.backup:
