@@ -22,37 +22,6 @@ This rule aligns comments above library use statements with the use statement.
       -- Use standard logic library
       use ieee.std_logic_1164.all;
 
-comment_003
-###########
-
-This rule checks the alignment of in line comments between the process begin and end process lines.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   PROC_1: process () is
-   begin
-
-     a <= '1';   -- Assert
-     b <= '0';       -- Deassert
-     c <= '1'; -- Enable
-
-   end process PROC_1;
-
-**Fix**
-
-.. code-block:: vhdl
-
-   PROC_1: process () is
-   begin
-
-     a <= '1';       -- Assert
-     b <= '0';       -- Deassert
-     c <= '1';       -- Enable
-
-   end process PROC_1;
-
 comment_004
 ###########
 
@@ -96,37 +65,6 @@ This rule aligns consecutive comment only lines above a **when** keyword in a ca
    -- comment 3
    when wr_en =>
      rd_en <= '0';
-
-comment_006
-###########
-
-This rule aligns in line comments between the end of the process sensitivity list and the process **begin** keyword.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   PROC_1 : process () is
-
-      variable counter : integer range 0 to 31;     -- Counts the number of frames received
-      variable width   : natural range 0 to 255; -- Keeps track of the data word size
-
-      variable size    : natural range 0 to 7; -- Keeps track of the frame size
-
-   begin
-
-**Fix**
-
-.. code-block:: vhdl
-
-   PROC_1 : process () is
-
-      variable counter : integer range 0 to 31;     -- Counts the number of frames received
-      variable width   : natural range 0 to 255;    -- Keeps track of the data word size
-
-      variable size    : natural range 0 to 7;      -- Keeps track of the frame size
-
-   begin
 
 comment_008
 ###########

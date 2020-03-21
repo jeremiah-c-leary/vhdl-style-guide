@@ -332,44 +332,83 @@ This rule checks for blank lines above the **end entity** keywords.
 entity_017
 ##########
 
-This rule checks for alignment of the :'s in for every port in the entity.
+This rule checks the alignment of the **:** for each generic and port in the entity declaration.
+
+Following extra configurations are supported:
+
+* :code:`separate_generic_port_alignment`.
+
+Refer to the section `Configuring Keyword Alignment Rules <configuring_keyword_alignment.html>`_ for information on changing the configurations.
 
 **Violation**
 
 .. code-block:: vhdl
 
-       WR_EN : in    std_logic;
-       RD_EN : in    std_logic;
-       OVERLFLOW : out   std_logic;
+   generic (
+       g_width : positive;
+       g_output_delay : positive
+   );
+   port (
+       clk_i : in std_logic;
+       data_i : in std_logic;
+       data_o : in std_logic
+   );
 
 **Fix**
 
 .. code-block:: vhdl
 
-       WR_EN     : in    std_logic;
-       RD_EN     : in    std_logic;
-       OVERLFLOW : out   std_logic;
+   generic (
+       g_width        : positive;
+       g_output_delay : positive
+   );
+   port (
+       clk_i  : in std_logic;
+       data_i : in std_logic;
+       data_o : in std_logic
+   );
 
 entity_018
 ##########
 
-This rule checks for alignment of inline comments in the entity
+This rule checks the alignment of **:=** operator for each generic and port in the entity declaration.
+
+Following extra configurations are supported:
+
+* :code:`separate_generic_port_alignment`.
+
+Refer to the section `Configuring Keyword Alignment Rules <configuring_keyword_alignment.html>`_ for information on changing the configurations.
 
 **Violation**
 
 .. code-block:: vhdl
 
-       WR_EN     : in    std_logic;      -- Wrte enable
-       RD_EN     : in    std_logic; -- Read enable
-       OVERLFLOW : out   std_logic;   -- FIFO has overflowed
+   generic (
+       g_width        : positive := 8;
+       g_output_delay : positive      := 5
+   );
+   port (
+       clk_i   : in std_logic;
+       data1_i : in std_logic  := 'X';
+       data2_i : in std_logic      := 'X';
+       data_o  : in std_logic
+   );
 
 **Fix**
 
 .. code-block:: vhdl
 
-       WR_EN     : in    std_logic;      -- Wrte enable
-       RD_EN     : in    std_logic;      -- Read enable
-       OVERLFLOW : out   std_logic;      -- FIFO has overflowed
+   generic (
+       g_width        : positive := 8;
+       g_output_delay : positive := 5
+   );
+   port (
+       clk_i   : in std_logic;
+       data1_i : in std_logic := 'X';
+       data2_i : in std_logic := 'X';
+       data_o  : in std_logic
+   );
+
 
 entity_019
 ##########
@@ -387,4 +426,43 @@ This rule checks for the entity name in the **end entity** statement.
 .. code-block:: vhdl
 
    end entity ENTITY_NAME;
+
+entity_020
+##########
+
+This rule checks for alignment of inline comments in the entity declaration.
+
+Following extra configurations are supported:
+
+* :code:`separate_generic_port_alignment`.
+
+Refer to the section `Configuring Keyword Alignment Rules <configuring_keyword_alignment.html>`_ for information on changing the configurations.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   generic (
+       g_width        : positive;  -- Data width
+       g_output_delay : positive -- Delay at output
+   );
+   port (
+       clk_i  : in std_logic; -- Input clock
+       data_i : in std_logic;   -- Data input
+       data_o : in std_logic -- Data output
+   );
+
+**Fix**
+
+.. code-block:: vhdl
+
+   generic (
+       g_width        : positive; -- Data width
+       g_output_delay : positive  -- Delay at output
+   );
+   port (
+       clk_i  : in std_logic; -- Input clock
+       data_i : in std_logic; -- Data input
+       data_o : in std_logic  -- Data output
+   );
 

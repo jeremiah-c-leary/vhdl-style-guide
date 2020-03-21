@@ -120,14 +120,14 @@ class testRuleInstantiationMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'instantiation')
         self.assertEqual(oRule.identifier, '010')
 
-        dExpected = [{'lines': [{'number': 19, 'keyword_column': 12},
-                                {'number': 20, 'keyword_column': 13},
-                                {'number': 21, 'keyword_column': 14}], 'max_keyword_column': 14},
-                     {'lines': [{'number': 39, 'keyword_column': 13},
-                                {'number': 40, 'keyword_column': 15}], 'max_keyword_column': 15},
-                     {'lines': [{'number': 58, 'keyword_column': 21},
-                                {'number': 59, 'keyword_column': 13},
-                                {'number': 60, 'keyword_column': 13}], 'max_keyword_column': 21}]
+        dExpected = [{'lines': [{'number': 19, 'keyword_column': 12, 'before_keyword_column': 10},
+                                {'number': 20, 'keyword_column': 13, 'before_keyword_column': 11},
+                                {'number': 21, 'keyword_column': 14, 'before_keyword_column': 12}],
+                      'max_keyword_column': 14, 'max_before_keyword_column': 12},
+                     {'lines': [{'number': 58, 'keyword_column': 21, 'before_keyword_column': 19},
+                                {'number': 59, 'keyword_column': 13, 'before_keyword_column': 11},
+                                {'number': 60, 'keyword_column': 13, 'before_keyword_column': 11}],
+                      'max_keyword_column': 21, 'max_before_keyword_column': 19}]
         oRule.analyze(oFilePort)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -341,8 +341,9 @@ class testRuleInstantiationMethods(unittest.TestCase):
         self.assertEqual(oRule.identifier, '029')
         lFileComment = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'instantiation_comment_test_input.vhd'))
         oFileComment = vhdlFile.vhdlFile(lFileComment)
-        dExpected = [{'lines': [{'number': 29, 'keyword_column': 21},
-                                {'number': 31, 'keyword_column': 19}], 'max_keyword_column': 21}]
+        dExpected = [{'lines': [{'number': 29, 'keyword_column': 21, 'before_keyword_column': 19},
+                                {'number': 31, 'keyword_column': 19, 'before_keyword_column': 18}],
+                      'max_keyword_column': 21, 'max_before_keyword_column': 19}]
         oRule.analyze(oFileComment)
         self.assertEqual(oRule.violations, dExpected)
 

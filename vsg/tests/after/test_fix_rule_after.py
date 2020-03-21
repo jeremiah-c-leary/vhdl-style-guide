@@ -35,10 +35,10 @@ class testRuleAfterMethods(unittest.TestCase):
         self.assertEqual(self.oFile.lines[56].line,'            after')
         self.assertEqual(self.oFile.lines[61].line,'       d <= e after 1 ns;')
 
-        self.assertEqual(self.oFile.lines[93].line,'       a <= b    after 1 ns;')
-        self.assertEqual(self.oFile.lines[94].line,'       b <= c    after 1 ns;')
-        self.assertEqual(self.oFile.lines[95].line,'       c <= d    after 1 ns;')
-        self.assertEqual(self.oFile.lines[96].line,'       d <= e    after 1 ns;')
+        self.assertEqual(self.oFile.lines[93].line,'       a <= b after 1 ns;')
+        self.assertEqual(self.oFile.lines[94].line,'       b <= c after 1 ns;')
+        self.assertEqual(self.oFile.lines[95].line,'       c <= d after 1 ns;')
+        self.assertEqual(self.oFile.lines[96].line,'       d <= e after 1 ns;')
 
         lExpected = []
         oRule.analyze(self.oFile)

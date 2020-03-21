@@ -178,8 +178,8 @@ class testFixRuleEntityMethods(unittest.TestCase):
         oRule.fix(self.oFile)
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
-        self.assertEqual(self.oFile.lines[21].line, '       G_GENERIC1 : std_logic :=\'0\';          -- Comment')
-        self.assertEqual(self.oFile.lines[22].line, '    G_generic2 : std_logic := \'1\'             -- Comment')
+        self.assertEqual(self.oFile.lines[21].line, '       G_GENERIC1 : std_logic :=\'0\';-- Comment')
+        self.assertEqual(self.oFile.lines[22].line, '    G_generic2 : std_logic    := \'1\'             -- Comment')
 
     def test_fix_rule_019(self):
         oRule = entity.rule_019()

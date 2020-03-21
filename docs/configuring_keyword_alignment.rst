@@ -9,6 +9,31 @@ Common Keyword Alignment Configuration
 
 Following configuration options can be independently changed for each of the keyword alignment rules.
 
+#. :code:`compact_alignment` - if set to :code:`True` it enforces single space before alignment keyword in the line with the longest part before the keyword.
+   Otherwise the alignment occurs to the keyword maximum column.
+   By default set to :code:`True`.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+      signal sig_short   : std_logic;
+      signal sig_very_long      : std_logic;
+
+    **Fix (compact_alignment = True)**
+
+    .. code-block:: vhdl
+
+      signal sig_short     : std_logic;
+      signal sig_very_long : std_logic;
+
+    **Fix (compact_alignment = False)**
+
+    .. code-block:: vhdl
+
+      signal sig_short          : std_logic;
+      signal sig_very_long      : std_logic;
+
 #. :code:`blank_line_ends_group` - if set to :code:`True` any blank line encountered in the VHDL file ends the group of lines that should be aligned and starts new group.
    By default set to :code:`True`.
 
@@ -180,8 +205,59 @@ Rule Specific Keyword Alignment Configuration
           hold_transmission <= '1';
       end if;
 
-#. :code:`case_control_statements_end_group` - if set to :code:`True`
+#. :code:`case_control_statements_end_group` - if set to :code:`True` any line with case control statement ends the group of lines that should be aligned and starts new group.
    By default set to :code:`True`.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+      case A is
+          when A =>
+              X <= F;
+              XY <= G;
+              XYZ <= H;
+          when B =>
+              a <= I;
+              ab <= h;
+              c <= a;
+          when others =>
+            null;
+      end case
+
+    **Fix (case_control_statements_end_group = True)**
+
+    .. code-block:: vhdl
+
+      case A is
+          when A =>
+              X   <= F;
+              XY  <= G;
+              XYZ <= H;
+          when B =>
+              a  <= I;
+              ab <= h;
+              c  <= a;
+          when others =>
+              null;
+      end case
+
+    **Fix (case_control_statements_end_group = False)**
+
+    .. code-block:: vhdl
+
+      case A is
+          when A =>
+              X   <= F;
+              XY  <= G;
+              XYZ <= H;
+          when B =>
+              a   <= I;
+              ab  <= h;
+              c   <= a;
+          when others =>
+              null;
+      end case
 
 .. NOTE:: If given keyword alignment rule has any of the above keyword alignment specific configuration, then it is explicitly noted in the documentation of this rule.
 

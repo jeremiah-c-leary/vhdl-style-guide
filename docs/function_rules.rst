@@ -268,6 +268,7 @@ function_012
 ############
 
 This rule checks the colons are in the same column for all declarations in the function declarative part.
+Refer to the section `Configuring Keyword Alignment Rules <configuring_keyword_alignment.html>`_ for information on changing the configurations.
 
 **Violation**
 

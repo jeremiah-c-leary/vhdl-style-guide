@@ -533,6 +533,7 @@ architecture_026
 ################
 
 This rule checks the colons are in the same column for all declarations in the architecture declarative part.
+Refer to the section `Configuring Keyword Alignment Rules <configuring_keyword_alignment.html>`_ for information on changing the configurations.
 
 **Violation**
 
@@ -550,3 +551,24 @@ This rule checks the colons are in the same column for all declarations in the a
    signal rd_en    : std_logic;
    constant PERIOD : time;
 
+architecture_027
+################
+
+This rule checks the alignment of inline comments in the architecture declarative part.
+Refer to the section `Configuring Keyword Alignment Rules <configuring_keyword_alignment.html>`_ for information on changing the configurations.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   signal wr_en    : std_logic;  -- Comment 1
+   signal rd_en    : std_logic;     -- Comment 2
+   constant PERIOD : time; -- Comment 3
+
+**Fix**
+
+.. code-block:: vhdl
+
+   signal wr_en    : std_logic; -- Comment 1
+   signal rd_en    : std_logic; -- Comment 2
+   constant PERIOD : time;      -- Comment 3

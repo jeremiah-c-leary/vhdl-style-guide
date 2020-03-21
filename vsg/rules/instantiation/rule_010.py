@@ -18,4 +18,4 @@ class rule_010(keyword_alignment_rule):
         self.separate_generic_port_alignment = True
         self.configuration.append('separate_generic_port_alignment')
 
-        self.rule_specific_configuration = [{'name': 'separate_generic_port_alignment', 'triggers': ['isInstantiationGenericEnd']}]
+        self.configuration_triggers += [{'name': 'separate_generic_port_alignment', 'triggers': ['isInstantiationGenericEnd']}]

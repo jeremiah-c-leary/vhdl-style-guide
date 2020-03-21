@@ -344,23 +344,45 @@ This rule checks for blank lines above the **end component** line.
 component_017
 #############
 
-This rule checks the alignment of the : in port declarations.
+This rule checks the alignment of the **:** for each generic and port in the component declaration.
+
+Following extra configurations are supported:
+
+* :code:`separate_generic_port_alignment`.
+
+Refer to the section `Configuring Keyword Alignment Rules <configuring_keyword_alignment.html>`_ for information on changing the configurations.
 
 **Violation**
 
 .. code-block:: vhdl
 
-   RD_EN : in    std_logic;
-   WR_EN   : in    std_logic;
-   OVERFLOW : out   std_logic;
+   component my_component
+       generic (
+           g_width : positive;
+           g_output_delay : positive
+       );
+       port (
+           clk_i : in std_logic;
+           data_i : in std_logic;
+           data_o : in std_logic
+       );
+   end component;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   RD_EN    : in    std_logic;
-   WR_EN    : in    std_logic;
-   OVERFLOW : out   std_logic;
+   component my_component
+       generic (
+           g_width        : positive;
+           g_output_delay : positive
+       );
+       port (
+           clk_i  : in std_logic;
+           data_i : in std_logic;
+           data_o : in std_logic
+       );
+   end component;
 
 component_018
 #############
@@ -408,20 +430,43 @@ Refer to the entity for port types, port directions and purpose.
 component_020
 #############
 
-This rule checks the comments at the end of the port and generic assignments in component declarations are aligned.
-This rule is useful if component_019 is disabled.
+This rule checks for alignment of inline comments in the component declaration.
+
+Following extra configurations are supported:
+
+* :code:`separate_generic_port_alignment`.
+
+Refer to the section `Configuring Keyword Alignment Rules <configuring_keyword_alignment.html>`_ for information on changing the configurations.
 
 **Violation**
 
 .. code-block:: vhdl
 
-   WR_EN : in    std_logic;  -- Enables write to RAM
-   RD_EN : out   std_logic; -- Enable reads from RAM
+   component my_component
+       generic (
+           g_width        : positive;  -- Data width
+           g_output_delay : positive -- Delay at output
+       );
+       port (
+           clk_i  : in std_logic; -- Input clock
+           data_i : in std_logic;   -- Data input
+           data_o : in std_logic -- Data output
+       );
+   end my_component;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   WR_EN : in    std_logic;  -- Enables write to RAM
-   RD_EN : out   std_logic;  -- Enable reads from RAM
+   component my_component
+       generic (
+           g_width        : positive; -- Data width
+           g_output_delay : positive  -- Delay at output
+       );
+       port (
+           clk_i  : in std_logic; -- Input clock
+           data_i : in std_logic; -- Data input
+           data_o : in std_logic  -- Data output
+       );
+   end my_component;
 

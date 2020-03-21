@@ -130,6 +130,7 @@ concurrent_006
 ##############
 
 This rule checks the alignment of the **<=** operator over multiple consecutive lines.
+Refer to the section `Configuring Keyword Alignment Rules <configuring_keyword_alignment.html>`_ for information on changing the configurations.
 
 **Violation**
 
@@ -143,9 +144,9 @@ This rule checks the alignment of the **<=** operator over multiple consecutive 
 
 .. code-block:: vhdl
 
-   wr_en   <= '0';
-   rd_en   <= '1';
-   data    <= (others => '0');
+   wr_en <= '0';
+   rd_en <= '1';
+   data  <= (others => '0');
 
 concurrent_007
 ##############
@@ -197,21 +198,21 @@ concurrent_008
 ##############
 
 This rule checks the alignment of inline comments in sequential concurrent statements.
+Refer to the section `Configuring Keyword Alignment Rules <configuring_keyword_alignment.html>`_ for information on changing the configurations.
 
 **Violation**
 
 .. code-block:: vhdl
 
-   wr_en   <= '0';    -- Write enable
-   rd_en   <= '1';  -- Read enable
-   data    <= (others => '0');   -- Write data
-
+   wr_en <= '0';     -- Write enable
+   rd_en <= '1';   -- Read enable
+   data  <= (others => '0'); -- Write data
 
 **Fix**
 
 .. code-block:: vhdl
 
-   wr_en   <= '0';               -- Write enable
-   rd_en   <= '1';               -- Read enable
-   data    <= (others => '0');   -- Write data
+   wr_en <= '0';             -- Write enable
+   rd_en <= '1';             -- Read enable
+   data  <= (others => '0'); -- Write data
 

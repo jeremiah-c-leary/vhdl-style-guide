@@ -149,23 +149,6 @@ class testRuleGenericMethods(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
-    def test_rule_015(self):
-        oRule = generic.rule_015()
-        self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'generic')
-        self.assertEqual(oRule.identifier, '015')
-
-        dExpected = [{'lines': [{'number': 21, 'keyword_column': 30},
-                                {'number': 22, 'keyword_column': 27}], 'max_keyword_column': 30},
-                     {'lines': [{'number': 52, 'keyword_column': 29},
-                                {'number': 53, 'keyword_column': 25}], 'max_keyword_column': 29},
-                     {'lines': [{'number': 67, 'keyword_column': 26},
-                                {'number': 68, 'keyword_column': 25}], 'max_keyword_column': 26},
-                     {'lines': [{'number': 139, 'keyword_column': 34},
-                                {'number': 140, 'keyword_column': 27}], 'max_keyword_column': 34}]
-        oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
-
     def test_rule_016(self):
         oRule = generic.rule_016()
         self.assertTrue(oRule)

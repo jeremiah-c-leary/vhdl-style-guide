@@ -4,7 +4,7 @@ from vsg.rules import keyword_alignment_rule
 
 class rule_017(keyword_alignment_rule):
     '''
-    Entity rule 017 ensures the alignment of the : operator for each generic and port in the entity declaration.
+    Entity rule 017 ensures the alignment of the colon for each generic and port in the entity declaration.
     '''
 
     def __init__(self):
@@ -18,4 +18,4 @@ class rule_017(keyword_alignment_rule):
         self.separate_generic_port_alignment = True
         self.configuration.append('separate_generic_port_alignment')
 
-        self.rule_specific_configuration = [{'name': 'separate_generic_port_alignment', 'triggers': ['isEndGenericMap']}]
+        self.configuration_triggers += [{'name': 'separate_generic_port_alignment', 'triggers': ['isEndGenericMap']}]

@@ -269,13 +269,6 @@ class testFixRuleArchitectureMethods(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
 
-    def test_fix_rule_023(self):
-        oRule = architecture.rule_023()
-        dExpected = []
-        oRule.fix(self.oFile)
-        oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, dExpected)
-
     def test_fix_rule_024(self):
         oRule = architecture.rule_024()
         dExpected = []
@@ -283,5 +276,12 @@ class testFixRuleArchitectureMethods(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(self.oFile.lines[13].line, 'end Architecture ARCH;')
         self.assertEqual(self.oFile.lines[77].line, 'end ARCH;')
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_fix_rule_027(self):
+        oRule = architecture.rule_027()
+        dExpected = []
+        oRule.fix(self.oFile)
+        oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
 

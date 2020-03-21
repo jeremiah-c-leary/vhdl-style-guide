@@ -12,7 +12,6 @@ from .is_single_space_after_character import *
 from .is_single_space_after import *
 from .is_single_space_before_character import *
 from .is_single_space_before import *
-from .comment_alignment import *
 from .multiline_alignment import *
 from .multiline_alignment_with_parenthesis import *
 from .has_prefix import *
