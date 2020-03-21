@@ -29,11 +29,14 @@ class test_read_configuration_function(unittest.TestCase):
 
         dExpected = {}
         dExpected['file_list'] = []
-        dExpected['file_list'].append('vsg/tests/vsg/read_configuration_files/entity.vhd')
         dExpected['file_list'].append('vsg/tests/vsg/read_configuration_files/arch.vhd')
+        dExpected['file_list'].append('vsg/tests/vsg/read_configuration_files/entity.vhd')
         dExpected['file_list'].append('vsg/tests/vsg/read_configuration_files/package.vhd')
 
         dActual = read_configuration_files(oCommandLineArgs)
+
+        dExpected['file_list'].sort()
+        dActual['file_list'].sort()
 
         self.assertDictEqual(dActual, dExpected)
 
@@ -46,11 +49,14 @@ class test_read_configuration_function(unittest.TestCase):
         dExpected['file_list'].append('vsg/tests/vsg/read_configuration_files/package.vhd')
         dExpected['file_list'].append('vsg/tests/vsg/read_configuration_files/entity_2.vhd')
         dExpected['file_list'].append('vsg/tests/vsg/read_configuration_files/arch_2.vhd')
-        dExpected['file_list'].append('vsg/tests/vsg/read_configuration_files/package_2.vhd')
         dExpected['file_list'].append('vsg/tests/vsg/read_configuration_files/arch.vhd')
+        dExpected['file_list'].append('vsg/tests/vsg/read_configuration_files/package_2.vhd')
         dExpected['file_list'].append('vsg/tests/vsg/read_configuration_files/entity.vhd')
 
         dActual = read_configuration_files(oCommandLineArgs)
+
+        dExpected['file_list'].sort()
+        dActual['file_list'].sort()
 
         self.assertDictEqual(dActual, dExpected)
 
