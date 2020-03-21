@@ -72,19 +72,19 @@ def read_configuration_files(commandLineArguments):
 
             for sKey in tempConfiguration.keys():
                 if sKey == 'file_list':
-                    if not 'file_list' in dConfiguration:
+                    if 'file_list' not in dConfiguration:
                         dConfiguration['file_list'] = []
                     for iIndex, sFilename in enumerate(tempConfiguration['file_list']):
                         try:
-                          for sGlobbedFilename in glob.glob(expand_filename(sFilename)):
-                            dConfiguration['file_list'].append(sGlobbedFilename)
+                            for sGlobbedFilename in glob.glob(expand_filename(sFilename)):
+                                dConfiguration['file_list'].append(sGlobbedFilename)
                         except TypeError:
-                          sKey = list(sFilename.keys())[0]
-                          for sGlobbedFilename in glob.glob(expand_filename(sKey)):
-                            dTemp = {}
-                            dTemp[sGlobbedFilename] = {}
-                            dTemp[sGlobbedFilename].update(tempConfiguration['file_list'][iIndex][sKey])
-                            dConfiguration['file_list'].append(dTemp)
+                            sKey = list(sFilename.keys())[0]
+                            for sGlobbedFilename in glob.glob(expand_filename(sKey)):
+                                dTemp = {}
+                                dTemp[sGlobbedFilename] = {}
+                                dTemp[sGlobbedFilename].update(tempConfiguration['file_list'][iIndex][sKey])
+                                dConfiguration['file_list'].append(dTemp)
 
                 elif sKey == 'rule':
                     for sRule in tempConfiguration[sKey]:
