@@ -86,6 +86,13 @@ sequential_005
 
 This rule checks the alignment of the **<=** operators over consecutive sequential lines.
 
+Following extra configurations are supported:
+
+* :code:`if_control_statements_end_group`,
+* :code:`case_control_statements_end_group`.
+
+Refer to the section `Configuring Keyword Alignment Rules <configuring_keyword_alignment.html>`_ for information on changing the configurations.
+
 **Violation**
 
 .. code-block:: vhdl
@@ -97,8 +104,8 @@ This rule checks the alignment of the **<=** operators over consecutive sequenti
 
 .. code-block:: vhdl
 
-   wr_en   <= '1';
-   rd_en   <= '0';
+   wr_en <= '1';
+   rd_en <= '0';
 
 sequential_006
 ##############

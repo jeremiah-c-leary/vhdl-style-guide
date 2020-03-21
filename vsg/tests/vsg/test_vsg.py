@@ -300,7 +300,7 @@ class testVsg(unittest.TestCase):
 
     def test_missing_files_in_configuration_file(self):
         lExpected = []
-        lExpected.append('ERROR: Could not find file missing_file.vhd')
+        lExpected.append('ERROR: Could not find file missing_file.vhd in configuration file vsg/tests/vsg/missing_file_config.yaml')
         lExpected.append('')
 
         try:

@@ -194,10 +194,11 @@ class testRuleComponentMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'component')
         self.assertEqual(oRule.identifier, '017')
 
-        dExpected = [{'lines': [{'number': 38, 'keyword_column': 12},
-                                {'number': 39, 'keyword_column': 13},
-                                {'number': 40, 'keyword_column': 14},
-                                {'number': 41, 'keyword_column': 13}], 'max_keyword_column': 14}]
+        dExpected = [{'lines': [{'number': 38, 'keyword_column': 12, 'before_keyword_column': 10},
+                                {'number': 39, 'keyword_column': 13, 'before_keyword_column': 11},
+                                {'number': 40, 'keyword_column': 14, 'before_keyword_column': 12},
+                                {'number': 41, 'keyword_column': 13, 'before_keyword_column': 11}],
+                      'max_keyword_column': 14, 'max_before_keyword_column': 12}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -227,9 +228,9 @@ class testRuleComponentMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'component')
         self.assertEqual(oRule.identifier, '020')
 
-        dExpected = [{'lines': [{'number': 7, 'keyword_column': 36},
-                                {'number': 12, 'keyword_column': 31},
-                                {'number': 14, 'keyword_column': 32}], 'max_keyword_column': 36}]
+        dExpected = [{'lines': [{'number': 12, 'keyword_column': 31, 'before_keyword_column': 30},
+                                {'number': 14, 'keyword_column': 32, 'before_keyword_column': 30}],
+                      'max_keyword_column': 32, 'max_before_keyword_column': 30}]
         lFileComment = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'component_comment_test_input.vhd'))
         oFileComment = vhdlFile.vhdlFile(lFileComment)
         oRule.analyze(oFileComment)

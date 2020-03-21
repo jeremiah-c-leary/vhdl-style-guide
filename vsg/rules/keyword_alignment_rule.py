@@ -40,27 +40,60 @@ class keyword_alignment_rule(rule.rule):
         self.sEndGroupTrigger = None
         self.lLineTriggers = None
         self.subphase = 2
-        self.rule_specific_configuration = []
+        self.configuration_triggers = []
+
+        self.compact_alignment = True
+        self.configuration.append('compact_alignment')
 
         self.blank_line_ends_group = True
         self.configuration.append('blank_line_ends_group')
         self.comment_line_ends_group = True
         self.configuration.append('comment_line_ends_group')
 
+        self.configuration_triggers = [{'name': 'blank_line_ends_group', 'triggers': ['isBlank']},
+                                       {'name': 'comment_line_ends_group', 'triggers': ['isComment']}]
+
+    def _before_keyword_column(self, line, keyword_column):
+        before_keyword_column = keyword_column - 1
+        if before_keyword_column < 2:
+            return 0, False
+
+        while before_keyword_column > 0:
+            if line[before_keyword_column] != ' ':
+                break
+            else:
+                before_keyword_column -= 1
+
+        if before_keyword_column == 0 and line[0] == ' ':
+            before_keyword_column = keyword_column - 2
+
+        return before_keyword_column, True if keyword_column - before_keyword_column == 2 else False
+
     def _check_alignment(self):
         violation = {'lines': []}
 
         max_keyword_column = 0
+        max_before_keyword_column = 0  # Max column of non space character before keyword column.
         alignment = None
         violation_found = False
+
+        one_space_gaps = []
 
         for oLine in self.lGroup:
             if self.sKeyword in oLine['line'].line:
                 line = {'number': oLine['number'], 'keyword_column': oLine['line'].line.find(self.sKeyword)}
-                violation['lines'].append(line)
 
                 if line['keyword_column'] > max_keyword_column:
                     max_keyword_column = line['keyword_column']
+
+                before_keyword_column, one_space_gap = self._before_keyword_column(oLine['line'].line, line['keyword_column'])
+                line['before_keyword_column'] = before_keyword_column
+                one_space_gaps.append(one_space_gap)
+
+                violation['lines'].append(line)
+
+                if before_keyword_column > max_before_keyword_column:
+                    max_before_keyword_column = before_keyword_column
 
                 if alignment is None:
                     alignment = line['keyword_column']
@@ -68,8 +101,12 @@ class keyword_alignment_rule(rule.rule):
                 if not alignment == line['keyword_column']:
                     violation_found = True
 
+        if self.compact_alignment and one_space_gaps and not any(one_space_gaps):
+            violation_found = True
+
         if violation_found:
             violation['max_keyword_column'] = max_keyword_column
+            violation['max_before_keyword_column'] = max_before_keyword_column
             self.add_violation(violation)
 
     def _pre_analyze(self):
@@ -94,29 +131,39 @@ class keyword_alignment_rule(rule.rule):
                 self.fTriggerFound = False
                 self._check_alignment()
                 self.lGroup = []
-            elif (oLine.isBlank and self.blank_line_ends_group) or\
-                 (oLine.isComment and self.comment_line_ends_group):
-                self.lGroup.append(line)
-                self._check_alignment()
-                self.lGroup = []
             else:
-                if self.rule_specific_configuration:
-                    for configuration in self.rule_specific_configuration:
-                        if self.__dict__[configuration['name']]:
-                            for trigger in configuration['triggers']:
-                                if oLine.__dict__[trigger]:
-                                    self.lGroup.append(line)
-                                    self._check_alignment()
-                                    self.lGroup = []
-                                    break
+                for configuration in self.configuration_triggers:
+                    if self.__dict__[configuration['name']]:
+                        for trigger in configuration['triggers']:
+                            if oLine.__dict__[trigger]:
+#                                self.lGroup.append(line)
+                                self._check_alignment()
+                                self.lGroup = []
+                                break
                 for trigger in self.lLineTriggers:
                     if oLine.__dict__[trigger]:
                         self.lGroup.append(line)
                         break
 
-    def _fix_violations(self, oFile):
+    def _fix_compact_align(self, oFile):
+        for violation in self.violations:
+            for line in violation['lines']:
+                before_keyword_column = line['before_keyword_column']
+                keyword_column = line['keyword_column']
+                oLine = oFile.lines[line['number']]
+                oLine.update_line(oLine.line[:before_keyword_column + 1] +
+                                  ' ' * (1 + violation['max_before_keyword_column'] - before_keyword_column) +
+                                  oLine.line[keyword_column:])
+
+    def _fix_max_keyword_column(self, oFile):
         for violation in self.violations:
             for line in violation['lines']:
                 keyword_column = line['keyword_column']
                 oLine = oFile.lines[line['number']]
                 oLine.update_line(oLine.line[:keyword_column] + ' ' * (violation['max_keyword_column'] - keyword_column) + oLine.line[keyword_column:])
+
+    def _fix_violations(self, oFile):
+        if self.compact_alignment:
+            self._fix_compact_align(oFile)
+        else:
+            self._fix_max_keyword_column(oFile)

@@ -39,6 +39,11 @@ class testCodeExample(unittest.TestCase):
 
     def test_data_core(self):
         oRuleList = rule_list.rule_list(oDataCore)
+        dConfiguration = {}
+        dConfiguration['rule'] = {}
+        dConfiguration['rule']['global'] = {}
+        dConfiguration['rule']['global']['compact_alignment'] = False
+        oRuleList.configure(dConfiguration)
         oRuleList.fix(7)
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'data_core.fixed.vhd'), lExpected)

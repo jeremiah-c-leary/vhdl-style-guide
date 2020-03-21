@@ -64,19 +64,23 @@ class testRuleConcurrentMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'concurrent')
         self.assertEqual(oRule.identifier, '006')
-        dExpected = [{'lines': [{'number': 6, 'keyword_column': 16},
-                                {'number': 7, 'keyword_column': 2},
-                                {'number': 8, 'keyword_column': 3},
-                                {'number': 9, 'keyword_column': 4},
-                                {'number': 11, 'keyword_column': 6}], 'max_keyword_column': 16},
-                     {'lines': [{'number': 23, 'keyword_column': 4},
-                                {'number': 24, 'keyword_column': 3}], 'max_keyword_column': 4},
-                     {'lines': [{'number': 32, 'keyword_column': 7},
-                                {'number': 33, 'keyword_column': 9},
-                                {'number': 34, 'keyword_column': 12},
-                                {'number': 35, 'keyword_column': 12}], 'max_keyword_column': 12},
-                     {'lines': [{'number': 50, 'keyword_column': 4},
-                                {'number': 52, 'keyword_column': 16}], 'max_keyword_column': 16}]
+        dExpected = [{'lines': [{'number': 6, 'keyword_column': 16, 'before_keyword_column': 14},
+                                {'number': 7, 'keyword_column': 2, 'before_keyword_column': 0},
+                                {'number': 8, 'keyword_column': 3, 'before_keyword_column': 2},
+                                {'number': 9, 'keyword_column': 4, 'before_keyword_column': 2},
+                                {'number': 11, 'keyword_column': 6, 'before_keyword_column': 4}],
+                      'max_keyword_column': 16, 'max_before_keyword_column': 14},
+                     {'lines': [{'number': 23, 'keyword_column': 4, 'before_keyword_column': 2},
+                                {'number': 24, 'keyword_column': 3, 'before_keyword_column': 1}],
+                      'max_keyword_column': 4, 'max_before_keyword_column': 2},
+                     {'lines': [{'number': 32, 'keyword_column': 7, 'before_keyword_column': 6},
+                                {'number': 33, 'keyword_column': 9, 'before_keyword_column': 8},
+                                {'number': 34, 'keyword_column': 12, 'before_keyword_column': 10},
+                                {'number': 35, 'keyword_column': 12, 'before_keyword_column': 10}],
+                      'max_keyword_column': 12, 'max_before_keyword_column': 10},
+                     {'lines': [{'number': 50, 'keyword_column': 4, 'before_keyword_column': 2},
+                                {'number': 52, 'keyword_column': 16, 'before_keyword_column': 14}],
+                      'max_keyword_column': 16, 'max_before_keyword_column': 14}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -95,10 +99,13 @@ class testRuleConcurrentMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'concurrent')
         self.assertEqual(oRule.identifier, '008')
-        dExpected = [{'lines': [{'number': 6, 'keyword_column': 27},
-                                {'number': 7, 'keyword_column': 19},
-                                {'number': 8, 'keyword_column': 14},
-                                {'number': 9, 'keyword_column': 23},
-                                {'number': 11, 'keyword_column': 18}], 'max_keyword_column': 27}]
+        dExpected = [{'lines': [{'number': 6, 'keyword_column': 27, 'before_keyword_column': 20},
+                                {'number': 7, 'keyword_column': 19, 'before_keyword_column': 5},
+                                {'number': 8, 'keyword_column': 14, 'before_keyword_column': 12},
+                                {'number': 9, 'keyword_column': 23, 'before_keyword_column': 5},
+                                {'number': 11, 'keyword_column': 18, 'before_keyword_column': 10}],
+                      'max_keyword_column': 27, 'max_before_keyword_column': 20},
+                     {'lines': [{'number': 34, 'keyword_column': 19, 'before_keyword_column': 16}],
+                      'max_keyword_column': 19, 'max_before_keyword_column': 16}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)

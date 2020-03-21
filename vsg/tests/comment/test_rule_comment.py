@@ -47,20 +47,6 @@ class testRuleCommentMethods(unittest.TestCase):
             iFailures += len(oRule.violations)
         self.assertEqual(iFailures, iExpectedFailures)
 
-    def test_rule_003(self):
-        oRule = comment.rule_003()
-        self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'comment')
-        self.assertEqual(oRule.identifier, '003')
-        dExpected = [{'lines': [{'number': 29, 'keyword_column': 24},
-                                {'number': 30, 'keyword_column': 23},
-                                {'number': 31, 'keyword_column': 24}], 'max_keyword_column': 24},
-                     {'lines': [{'number': 42, 'keyword_column': 25},
-                                {'number': 43, 'keyword_column': 24},
-                                {'number': 44, 'keyword_column': 24}], 'max_keyword_column': 25}]
-        oRule.analyze(oFileProcess)
-        self.assertEqual(oRule.violations, dExpected)
-
     def test_rule_004(self):
         oRule = comment.rule_004()
         dExpected = utils.add_violation_list([39, 58, 61, 62])
@@ -71,13 +57,6 @@ class testRuleCommentMethods(unittest.TestCase):
         oRule = comment.rule_005()
         dExpected = [19,25,24,23]
         oRule.analyze(oFileCase)
-        self.assertEqual(oRule.violations, dExpected)
-
-    def test_rule_006(self):
-        oRule = comment.rule_006()
-        dExpected = [{'lines': [{'number': 37, 'keyword_column': 39},
-                                {'number': 38, 'keyword_column': 43}], 'max_keyword_column': 43}]
-        oRule.analyze(oFileProcess)
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_001(self):

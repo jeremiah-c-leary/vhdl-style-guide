@@ -4,8 +4,7 @@ from vsg.rules import keyword_alignment_rule
 
 class rule_033(keyword_alignment_rule):
     '''
-    Process rule 033 checks the colons are in the same column for all declarations
-    in the process declarative part.
+    Process rule 033 checks the colons are in the same column for all declarations in the process declarative part.
     '''
 
     def __init__(self):

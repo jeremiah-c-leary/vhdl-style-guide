@@ -9,10 +9,10 @@ from .rule_007 import rule_007
 from .rule_008 import rule_008
 from .rule_009 import rule_009
 from .rule_010 import rule_010
-# Rule 11 has been removed
+
 from .rule_013 import rule_013
 from .rule_014 import rule_014
-from .rule_015 import rule_015
+
 from .rule_016 import rule_016
 from .rule_017 import rule_017
 from .rule_018 import rule_018

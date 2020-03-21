@@ -4,7 +4,9 @@ from vsg import utils
 
 
 class rule_006(rule.rule):
-    '''Variable assignment rule 006 checks for commented out lines within a multiline variable_assignment statement.'''
+    '''
+    Variable assignment rule 006 checks for commented out lines within a multiline variable_assignment statement.
+    '''
 
     def __init__(self):
         rule.rule.__init__(self, 'variable_assignment', '006')

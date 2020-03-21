@@ -4,7 +4,7 @@ from vsg.rules import keyword_alignment_rule
 
 class rule_008(keyword_alignment_rule):
     '''
-    Concurrent rule 008 ensures the alignment of comments in sequential concurrent statements.
+    Concurrent rule 008 ensures the alignment of inline comments in sequential concurrent statements.
     '''
 
     def __init__(self):

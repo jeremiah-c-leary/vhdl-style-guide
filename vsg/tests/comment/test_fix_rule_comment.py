@@ -27,13 +27,6 @@ class testFixRuleCommentMethods(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, [])
 
-    def test_rule_003(self):
-        oRule = comment.rule_003()
-        dExpected = []
-        oRule.fix(oFileProcess)
-        oRule.analyze(oFileProcess)
-        self.assertEqual(oRule.violations, dExpected)
-
     def test_rule_004(self):
         oRule = comment.rule_004()
         dExpected = []
@@ -56,15 +49,6 @@ class testFixRuleCommentMethods(unittest.TestCase):
         self.assertEqual(oFileCase.lines[23].line, '      -- Comment 1')
         self.assertEqual(oFileCase.lines[24].line, '      -- Comment 2')
         self.assertEqual(oFileCase.lines[25].line, '      -- Comment 3')
-
-    def test_rule_006(self):
-        oRule = comment.rule_006()
-        dExpected = []
-        oRule.fix(oFileProcess)
-        oRule.analyze(oFileProcess)
-        self.assertEqual(oRule.violations, dExpected)
-        self.assertEqual(oFileProcess.lines[37].line, '      variable a : integer 0 to 10;        -- comment')
-        self.assertEqual(oFileProcess.lines[38].line, '      variable b : natural 0 to 256;       -- comment')
 
     def test_rule_001(self):
         oRuleList = rule_list.rule_list(oFileLibrary)

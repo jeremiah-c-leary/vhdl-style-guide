@@ -90,6 +90,14 @@ variable_assignment_005
 
 This rule checks the alignment of **:=** operators over multiple lines.
 
+Following extra configurations are supported:
+
+* :code:`if_control_statements_end_group`.
+* :code:`case_control_statements_end_group`,
+
+
+Refer to the section `Configuring Keyword Alignment Rules <configuring_keyword_alignment.html>`_ for information on changing the configurations.
+
 **Violation**
 
 .. code-block:: vhdl
