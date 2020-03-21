@@ -35,7 +35,7 @@ class test_read_configuration_function(unittest.TestCase):
 
         dActual = read_configuration_files(oCommandLineArgs)
 
-        self.assertEqual(dActual, dExpected)
+        self.assertDictEqual(dActual, dExpected)
 
 
     def test_globbing_files(self):
@@ -52,7 +52,7 @@ class test_read_configuration_function(unittest.TestCase):
 
         dActual = read_configuration_files(oCommandLineArgs)
 
-        self.assertEqual(dActual, dExpected)
+        self.assertDictEqual(dActual, dExpected)
 
     def test_file_list_with_individual_rule_config(self):
         self.maxDiff = None
@@ -71,7 +71,7 @@ class test_read_configuration_function(unittest.TestCase):
 
         dActual = read_configuration_files(oCommandLineArgs)
 
-        self.assertEqual(dActual, dExpected)
+        self.assertDictEqual(dActual, dExpected)
 
     def test_file_list_globbing_with_individual_rule_config(self):
         self.maxDiff = None
@@ -101,4 +101,4 @@ class test_read_configuration_function(unittest.TestCase):
 
         dActual = read_configuration_files(oCommandLineArgs)
 
-        self.assertEqual(dActual, dExpected)
+        self.assertDictEqual(dActual, dExpected)
