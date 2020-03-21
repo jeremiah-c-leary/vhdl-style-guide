@@ -1,0 +1,6 @@
+---
+# Include files to be processed
+file_list:
+    - missing_file.vhd
+    - vsg/tests/vsg/entity1.vhd
+...

@@ -274,7 +274,6 @@ class testVsg(unittest.TestCase):
         lActual = str(lActual.decode('utf-8')).split('\n')
         self.assertEqual(lActual, lExpected)
 
-
     def test_version_command_line_argument(self):
         lExpected = []
         lExpected.append('VHDL Style Guide (VSG) version ' + version.version)
@@ -283,6 +282,38 @@ class testVsg(unittest.TestCase):
         lActual = subprocess.check_output(['bin/vsg','--version'])
         lActual = str(lActual.decode('utf-8')).split('\n')
         self.assertEqual(lActual, lExpected)
+
+    def test_missing_configuration_file(self):
+        lExpected = []
+        lExpected.append('ERROR: Could not find configuration file: missing_configuration.yaml')
+        lExpected.append('')
+
+        try:
+            subprocess.check_output(['bin/vsg','-c', 'missing_configuration.yaml'])
+        except subprocess.CalledProcessError as e:
+            lActual = str(e.output.decode('utf-8')).split('\n')
+            iExitStatus = e.returncode
+
+        self.assertEqual(iExitStatus,1)
+
+        self.assertEqual(lActual, lExpected)
+
+    def test_missing_files_in_configuration_file(self):
+        lExpected = []
+        lExpected.append('ERROR: Could not find file missing_file.vhd')
+        lExpected.append('')
+
+        try:
+            subprocess.check_output(['bin/vsg','-c', 'vsg/tests/vsg/missing_file_config.yaml','--output_format','syntastic'])
+        except subprocess.CalledProcessError as e:
+            lActual = str(e.output.decode('utf-8')).split('\n')
+            iExitStatus = e.returncode
+
+        self.assertEqual(iExitStatus,1)
+
+        self.assertEqual(lActual, lExpected)
+
+
 
     @mock.patch('sys.stdout')
     def test_version(self, mockStdout):

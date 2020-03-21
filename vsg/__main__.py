@@ -48,9 +48,9 @@ def open_configuration_file(sFileName, commandLineArguments):
         with open(sFileName) as yaml_file:
             tempConfiguration = yaml.full_load(yaml_file)
     except IOError:
-        print('ERROR: Could not find configuration file: sFileName')
+        print('ERROR: Could not find configuration file: ' + sFileName)
         write_invalid_configuration_junit_file(sFileName, commandLineArguments)
-        exit()
+        sys.exit(1)
     except yaml.scanner.ScannerError as e:
         print('ERROR: Invalid configuration file: ' + sFileName)
         print(e)
@@ -122,6 +122,10 @@ def update_command_line_arguments(commandLineArguments, configuration):
     if configuration:
         if 'file_list' in configuration:
             for sFilename in configuration['file_list']:
+                lFileNames = glob.glob(expand_filename(sFilename))
+                if len(lFileNames) == 0:
+                    print('ERROR: Could not find file ' + sFilename)
+                    sys.exit(1)
                 try:
                     commandLineArguments.filename.extend(glob.glob(expand_filename(sFilename)))
                 except:
