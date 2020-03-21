@@ -128,17 +128,19 @@ def write_junit_xml_file(oJunitFile):
 
 
 def update_command_line_arguments(commandLineArguments, configuration):
-    if configuration:
-        if 'file_list' in configuration:
-            for sFilename in configuration['file_list']:
-                if isinstance(sFilename, dict):
-                    sFilename = list(sFilename.keys())[0]
-                try:
-                    commandLineArguments.filename.extend(glob.glob(expand_filename(sFilename)))
-                except:
-                    commandLineArguments.filename = glob.glob(expand_filename(sFilename))
-        if 'local_rules' in configuration:
-            commandLineArguments.local_rules = expand_filename(configuration['local_rules'])
+    if not configuration:
+        return
+
+    if 'file_list' in configuration:
+        for sFilename in configuration['file_list']:
+            if isinstance(sFilename, dict):
+                sFilename = list(sFilename.keys())[0]
+            try:
+                commandLineArguments.filename.extend(glob.glob(expand_filename(sFilename)))
+            except:
+                commandLineArguments.filename = glob.glob(expand_filename(sFilename))
+    if 'local_rules' in configuration:
+        commandLineArguments.local_rules = expand_filename(configuration['local_rules'])
 
 
 def expand_filename(sFileName):
