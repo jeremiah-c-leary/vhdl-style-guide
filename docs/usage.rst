@@ -101,6 +101,7 @@ Here is an example output running against a test file:
      signal_005                |          4 | Ensure only a signal space after the colon.
      signal_005                |          5 | Ensure only a signal space after the colon.
    ----------------------------+------------+--------------------------------------
+   NOTE: Refer to online documentation at https://vhdl-style-guide.readthedocs.io/en/latest/index.html for more information.
 
 VSG will report the rule which is violated and the line number or group of lines where the violation occured.
 It also gives a suggestion on how to fix the violation.
@@ -137,6 +138,7 @@ If rule violations can not be fixed, they will be reported after fixing everythi
    ----------------------------+------------+--------------------------------------
      signal_007                |          5 | Remove default assignment.
    ----------------------------+------------+--------------------------------------
+   NOTE: Refer to online documentation at https://vhdl-style-guide.readthedocs.io/en/latest/index.html for more information.
 
 Multiple configuration example
 ------------------------------

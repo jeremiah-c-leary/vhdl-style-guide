@@ -63,3 +63,4 @@ def print_output(dRunInfo):
             sOutputString += dViolation['solution']
             print(sOutputString)
         print_divider()
+        print('NOTE: Refer to online documentation at https://vhdl-style-guide.readthedocs.io/en/latest/index.html for more information.')
