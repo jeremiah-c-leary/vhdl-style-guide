@@ -4,6 +4,7 @@ import importlib
 import inspect
 
 from . import junit
+from . import report
 
 
 def get_python_modules_from_directory(sDirectoryName, lModules):
@@ -164,27 +165,24 @@ class rule_list():
 
           sOutputFormat (string)
         '''
-        if sOutputFormat == 'vsg':
-            sFileTitle = 'File:  ' + self.oVhdlFile.filename
-            print(sFileTitle)
-            print('=' * len(sFileTitle))
-        iFailures = 0
-        for phase in range(1, self.maximumPhase + 1):
-            if phase <= self.lastPhaseRan:
-                if sOutputFormat == 'vsg':
-                    print('Phase ' + str(phase) + '... Reporting')
-                for iLineNumber in range(0, len(self.oVhdlFile.lines)):
-                    for oRule in self.rules:
-                        if oRule.phase == phase:
-                            iFailures += oRule.report_violations(iLineNumber, sOutputFormat, self.oVhdlFile.filename)
-            else:
-                if sOutputFormat == 'vsg':
-                    print('Phase ' + str(phase) + '... Not executed')
+        dRunInfo = {}
+        dRunInfo['filename'] = self.oVhdlFile.filename
+        dRunInfo['violations'] = []
+        for phase in range(1, self.lastPhaseRan + 1):
+            for iLineNumber in range(0, len(self.oVhdlFile.lines)):
+                for oRule in self.rules:
+                    if oRule.phase == phase and oRule.has_violations():
+                        dRunInfo['stopPhase'] = phase
+                        lViolations = oRule.get_violations_at_linenumber(iLineNumber)
+                        dRunInfo['violations'].extend(lViolations)
+
+        dRunInfo['num_rules_checked'] = self.iNumberRulesRan
+        dRunInfo['total_violations'] = len(dRunInfo['violations'])
 
         if sOutputFormat == 'vsg':
-            print('=' * len(sFileTitle))
-            print('Total Rules Checked: ' + str(self.iNumberRulesRan))
-            print('Total Violations:    ' + str(iFailures))
+            report.vsg_stdout.print_output(dRunInfo)
+        else:
+            report.syntastic_stdout.print_output(dRunInfo)
 
     def configure(self, configurationFile):
         '''

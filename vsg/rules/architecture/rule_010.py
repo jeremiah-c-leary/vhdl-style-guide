@@ -1,5 +1,6 @@
 
 from vsg import rule
+from vsg import utils
 
 import re
 
@@ -19,7 +20,7 @@ class rule_010(rule.rule):
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.isEndArchitecture:
             if not re.match('^\s*end\s+architecture', oLine.line, re.IGNORECASE):
-                self.add_violation({'lineNumber': iLineNumber})
+                self.add_violation(utils.create_violation_dict(iLineNumber))
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations:

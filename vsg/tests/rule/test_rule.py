@@ -86,21 +86,6 @@ class testRuleMethods(unittest.TestCase):
         self.assertEqual(oRule.solution,'This is the new solution')
         self.assertEqual(oRule.indentSize,4)
 
-    def test_report_violations(self):
-        oRule = rule.rule()
-        oRule.name = 'xyz'
-        oRule.identifier = '001'
-        oRule.solution = 'This is my solution'
-        self.assertEqual(oRule.name,'xyz')
-        self.assertEqual(oRule.identifier,'001')
-        self.assertEqual(oRule.solution,'This is my solution')
-        self.assertEqual(oRule.disable,False)
-        self.assertEqual(oRule.indentSize,2)
-
-        self.assertEqual(oRule.report_violations(1, 'vsg', 'filename', True), 0)
-        oRule.add_violation(1)
-        self.assertEqual(oRule.report_violations(1, 'vsg', 'filename', True), 1)
-
     def test_get_configuration(self):
         oRule = rule.rule()
         oRule.name = 'xyz'
@@ -164,30 +149,56 @@ class testRuleMethods(unittest.TestCase):
         self.assertEqual(oRule.unknown, 'New')
         self.assertEqual(oRule.configuration, ['indentSize', 'phase', 'disable', 'fixable', 'unknown'])
 
-    @mock.patch('sys.stdout')
-    def test_report_violations_w_vsg_output_method(self, mockStdout):
+    def test_get_violations_w_vsg_output_method(self):
         oRule = rule.rule()
         oRule.name = 'xyz'
         oRule.identifier = '001'
         oRule.solution = 'Solution'
-        oRule.violations = ['1', '2']
+        dViolation = {}
+        dViolation['lineNumber'] = 1
+        oRule.add_violation(dViolation)
+        dViolation = {}
+        dViolation['lineNumber'] = 2
+        oRule.add_violation(dViolation)
+        dViolation = {}
+        dViolation['lines']= []
+        dLineViolation = {}
+        dLineViolation['number'] = 2
+        dViolation['lines'].append(dLineViolation)
+        dLineViolation = {}
+        dLineViolation['number'] = 3
+        dViolation['lines'].append(dLineViolation)
+        oRule.add_violation(dViolation)
 
-        oRule.report_violations(1, 'vsg', 'File')
-        mockStdout.write.assert_has_calls([
-            mock.call('  xyz_001                   |          1 | Solution'),
-            mock.call('\n')
-        ])
+        lExpected = []
+        dExpected = {}
+        dExpected['rule'] = 'xyz_001'
+        dExpected['lineNumber'] = '1'
+        dExpected['solution'] = 'Solution'
+        lExpected.append(dExpected)
 
-    @mock.patch('sys.stdout')
-    def test_report_violations_w_syntastic_output_method(self, mockStdout):
+        lActual = oRule.get_violations_at_linenumber(1)
+        self.assertEqual(lActual, lExpected)
+
+        lExpected = []
+        dExpected = {}
+        dExpected['rule'] = 'xyz_001'
+        dExpected['lineNumber'] = '2'
+        dExpected['solution'] = 'Solution'
+        lExpected.append(dExpected)
+        dExpected = {}
+        dExpected['rule'] = 'xyz_001'
+        dExpected['lineNumber'] = '2'
+        dExpected['solution'] = 'Solution'
+        lExpected.append(dExpected)
+
+        lActual = oRule.get_violations_at_linenumber(2)
+        self.assertEqual(lActual, lExpected)
+
+    def test_has_violations_method(self):
         oRule = rule.rule()
-        oRule.name = 'xyz'
-        oRule.identifier = '001'
-        oRule.solution = 'Solution'
-        oRule.violations = ['1', '2']
 
-        oRule.report_violations(2, 'syntastic', 'File')
-        mockStdout.write.assert_has_calls([
-            mock.call('ERROR: File(2)xyz_001 -- Solution'),
-            mock.call('\n')
-        ])
+        self.assertFalse(oRule.has_violations())
+
+        oRule.add_violation(1)
+        self.assertTrue(oRule.has_violations())

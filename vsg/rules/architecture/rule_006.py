@@ -19,7 +19,7 @@ class rule_006(rule.rule):
         if oLine.isArchitectureKeyword and \
            re.match('^\s*architecture\s+\w+\s+of\s+\w+', oLine.line, re.IGNORECASE) and \
            not re.match('^\s*architecture\s+\w+\s+of\s+\w+\s+is', oLine.line, re.IGNORECASE):
-            self.add_violation({'lineNumber': iLineNumber})
+            self.add_violation(utils.create_violation_dict(iLineNumber))
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations:
