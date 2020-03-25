@@ -56,7 +56,7 @@ class rule():
 
           iLineNumber (integer)
 
-        Returns: (list of strings)
+        Returns: (list of dictionaries)
         '''
         lReturn = []
 
