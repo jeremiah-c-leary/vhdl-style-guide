@@ -40,6 +40,14 @@ class rule():
             return False
         return True
 
+    def _build_violation_dict(self, lReturn, sViolation, iLineNumber):
+        if str(sViolation).startswith(str(iLineNumber) + '-') or str(iLineNumber) == str(sViolation):
+            dViolation = {}
+            dViolation['rule'] = self.name + '_' + self.identifier
+            dViolation['lineNumber'] = sViolation
+            dViolation['solution'] = self._get_solution(iLineNumber)
+            lReturn.append(dViolation)
+
     def get_violations_at_linenumber(self, iLineNumber):
         '''
         Returns a list of formatted violations.
@@ -53,31 +61,16 @@ class rule():
         lReturn = []
 
         for iIndex, violation in enumerate(self.violations):
-            # Remove this some time after 2.0.0 has been released
-            if isinstance(violation, int):
-                print('ERROR:  Violations have changed from an integer to a dictionary.  Skipping this violation')
-                print('        Use the function utils.create_violation_dict to update to current format.')
-                print('        Refer to documentation on local rules for more information.')
-                continue
+            check_for_old_violation_format(violation)
             lKeys = list(violation.keys())
             if 'lineNumber' in lKeys:
                 sViolation = str(violation['lineNumber'])
-                if str(sViolation).startswith(str(iLineNumber) + '-') or str(iLineNumber) == str(sViolation):
-                    dViolation = {}
-                    dViolation['rule'] = self.name + '_' + self.identifier
-                    dViolation['lineNumber'] = sViolation
-                    dViolation['solution'] = self._get_solution(iLineNumber)
-                    lReturn.append(dViolation)
+                self._build_violation_dict(lReturn, sViolation, iLineNumber)
 
             elif 'lines' in lKeys:
                 for dLineViolation in violation['lines']:
                     sViolation = str(dLineViolation['number'])
-                    if str(sViolation).startswith(str(iLineNumber) + '-') or str(iLineNumber) == str(sViolation):
-                        dViolation = {}
-                        dViolation['rule'] = self.name + '_' + self.identifier
-                        dViolation['lineNumber'] = sViolation
-                        dViolation['solution'] = self._get_solution(iLineNumber)
-                        lReturn.append(dViolation)
+                    self._build_violation_dict(lReturn, sViolation, iLineNumber)
         return lReturn
 
     def fix(self, oFile):
@@ -159,3 +152,12 @@ class rule():
         This method is called before the _analyze method and allows each rule to setup any variables needed.
         '''
         return
+
+
+def check_for_old_violation_format(violation):
+    # Remove this some time after 2.0.0 has been released
+    if isinstance(violation, int):
+        print('ERROR:  Violations have changed from an integer to a dictionary.  Skipping this violation')
+        print('        Use the function utils.create_violation_dict to update to current format.')
+        print('        Refer to documentation on local rules for more information.')
+        sys.exit(1)

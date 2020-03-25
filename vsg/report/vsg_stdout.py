@@ -29,6 +29,7 @@ def print_divider():
     '''
     print('-'*28 + '+' + '-'*12 + '+' + '-'*38)
 
+
 def print_violation_header():
     print_divider()
     sOutputString = '  '
