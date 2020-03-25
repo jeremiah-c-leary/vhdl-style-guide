@@ -167,6 +167,7 @@ class rule_list():
         '''
         dRunInfo = {}
         dRunInfo['filename'] = self.oVhdlFile.filename
+        dRunInfo['stopPhase'] = 7
         dRunInfo['violations'] = []
         for phase in range(1, self.lastPhaseRan + 1):
             for iLineNumber in range(0, len(self.oVhdlFile.lines)):
