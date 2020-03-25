@@ -60,7 +60,7 @@ class rule():
         '''
         lReturn = []
 
-        for iIndex, violation in enumerate(self.violations):
+        for violation in self.violations:
             check_for_old_violation_format(violation)
             lKeys = list(violation.keys())
             if 'lineNumber' in lKeys:
