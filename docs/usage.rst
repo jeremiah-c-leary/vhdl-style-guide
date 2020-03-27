@@ -95,7 +95,7 @@ Here is an example output running against a test file:
    Total Rules Checked: 151
    Total Violations:    3
    ----------------------------+------------+--------------------------------------
-     Violation                 |  line(s)   | Solution
+     Rule                      |  line(s)   | Solution
    ----------------------------+------------+--------------------------------------
      signal_003                |          4 | Ensure there are only 1 space(s) after the "signal" keyword.
      signal_005                |          4 | Ensure only a signal space after the colon.
@@ -134,7 +134,7 @@ If rule violations can not be fixed, they will be reported after fixing everythi
    Total Rules Checked: 61
    Total Violations:    1
    ----------------------------+------------+--------------------------------------
-     Violation                 |  line(s)   | Solution
+     Rule                      |  line(s)   | Solution
    ----------------------------+------------+--------------------------------------
      signal_007                |          5 | Remove default assignment.
    ----------------------------+------------+--------------------------------------

@@ -33,7 +33,7 @@ def print_divider():
 def print_violation_header():
     print_divider()
     sOutputString = '  '
-    sOutputString += 'Violation'.ljust(25)
+    sOutputString += 'Rule'.ljust(25)
     sOutputString += ' | '
     sOutputString += 'line(s)'.center(10)
     sOutputString += ' | '
