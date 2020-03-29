@@ -33,9 +33,7 @@ signal_002
 
 This rule checks the **signal** keyword has proper case.
 
-.. NOTE::  The default is lowercase.
-
-   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
@@ -80,7 +78,7 @@ signal_004
 
 This rule checks the signal name has proper case.
 
-.. NOTE::  The default is lowercase.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
@@ -177,9 +175,9 @@ signal_010
 
 This rule checks the signal type has proper case if it is a VHDL keyword.
 
-.. NOTE:: This rule is disabled by default. The default is lowercase.
+.. NOTE:: This rule is disabled by default.
 
-   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 

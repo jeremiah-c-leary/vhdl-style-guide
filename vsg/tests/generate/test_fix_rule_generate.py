@@ -43,6 +43,7 @@ class testFixRuleGenerateMethods(unittest.TestCase):
 
     def test_fix_rule_005_uppercase(self):
         oRule = generate.rule_005()
+        oRule.case = 'upper'
         oRule.fix(self.oFile)
         self.assertEqual(self.oFile.lines[11].line, '   GENERATE_1 : IF CONDITION = \'1\' generate')
         self.assertEqual(self.oFile.lines[16].line, ' GENERATE_1 : if CONDITION = \'1\' GENERATE')
@@ -52,7 +53,6 @@ class testFixRuleGenerateMethods(unittest.TestCase):
 
     def test_fix_rule_005_lowercase(self):
         oRule = generate.rule_005()
-        oRule.case = 'lower'
         oRule.fix(self.oFile)
         self.assertEqual(self.oFile.lines[6].line, '  generate_1 : if CONDITION = \'1\' generate')
         self.assertEqual(self.oFile.lines[94].line, '      generate_3 : if (k = 5) generate')
@@ -93,6 +93,7 @@ class testFixRuleGenerateMethods(unittest.TestCase):
 
     def test_fix_rule_012_uppercase(self):
         oRule = generate.rule_012()
+        oRule.case = 'upper'
         oRule.fix(self.oFile)
         self.assertEqual(self.oFile.lines[14].line, '   end generate GENERATE_1;')
         self.assertEqual(self.oFile.lines[19].line, 'END GENERATE GENERATE_1;')
@@ -103,7 +104,6 @@ class testFixRuleGenerateMethods(unittest.TestCase):
 
     def test_fix_rule_012_lowercase(self):
         oRule = generate.rule_012()
-        oRule.case = 'lower'
         oRule.fix(self.oFile)
         self.assertEqual(self.oFile.lines[9].line, '  end generate generate_1;')
         self.assertEqual(self.oFile.lines[79].line, '    end generate generate_4;')

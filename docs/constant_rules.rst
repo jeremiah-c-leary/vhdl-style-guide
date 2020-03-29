@@ -30,9 +30,7 @@ constant_002
 
 This rule checks the **constant** keyword is has proper case.
 
-.. NOTE::  The default is lowercase.
-
-   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
@@ -178,9 +176,7 @@ constant_011
 
 This rule checks the constant type has proper case.
 
-.. NOTE::  The default is lowercase.
-
-   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 

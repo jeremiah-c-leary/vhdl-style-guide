@@ -101,6 +101,7 @@ class testFixRuleArchitectureMethods(unittest.TestCase):
 
     def test_fix_rule_011_uppercase(self):
         oRule = architecture.rule_011()
+        oRule.case = 'upper'
         dExpected = []
         oRule.fix(self.oFile)
 
@@ -113,7 +114,6 @@ class testFixRuleArchitectureMethods(unittest.TestCase):
 
     def test_fix_rule_011_lowercase(self):
         oRule = architecture.rule_011()
-        oRule.case = 'lower'
         dExpected = []
         oRule.fix(self.oFile)
 
@@ -133,6 +133,7 @@ class testFixRuleArchitectureMethods(unittest.TestCase):
 
     def test_fix_rule_013_uppercase(self):
         oRule = architecture.rule_013()
+        oRule.case = 'upper'
         dExpected = []
         oRule.fix(self.oFile)
 
@@ -146,7 +147,6 @@ class testFixRuleArchitectureMethods(unittest.TestCase):
 
     def test_fix_rule_013_lowercase(self):
         oRule = architecture.rule_013()
-        oRule.case = 'lower'
         dExpected = []
         oRule.fix(self.oFile)
 
@@ -160,6 +160,7 @@ class testFixRuleArchitectureMethods(unittest.TestCase):
 
     def test_fix_rule_014_uppercase(self):
         oRule = architecture.rule_014()
+        oRule.case = 'upper'
         dExpected = []
         oRule.fix(self.oFile)
         self.assertEqual(self.oFile.lines[81].line, 'architecture ARCH of ENT is')
@@ -169,7 +170,6 @@ class testFixRuleArchitectureMethods(unittest.TestCase):
 
     def test_fix_rule_014_lowercase(self):
         oRule = architecture.rule_014()
-        oRule.case = 'lower'
         dExpected = []
         oRule.fix(self.oFile)
         self.assertEqual(self.oFile.lines[59].line, 'architecture ARCH of entity is')

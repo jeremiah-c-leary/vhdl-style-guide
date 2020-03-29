@@ -291,9 +291,7 @@ case_014
 
 This rule checks the **case** keyword has proper case.
 
-.. NOTE::  The default is lowercase.
-
-   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
@@ -320,9 +318,7 @@ case_015
 
 This rule checks the **is** keyword has proper case.
 
-.. NOTE::  The default is lowercase.
-
-   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
@@ -349,9 +345,7 @@ case_016
 
 This rule checks the **when** has proper case.
 
-.. NOTE::  The default is lowercase.
-
-   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
@@ -374,9 +368,7 @@ case_017
 
 This rule checks the **end** keyword in the **end case** has proper case.
 
-.. NOTE::  The default is lowercase.
-
-   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
@@ -399,9 +391,7 @@ case_018
 
 This rule checks the **case** keyword has proper case in the **end case**.
 
-.. NOTE::  The default is lowercase.
-
-   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 

@@ -11,7 +11,6 @@ class rule_011(case_rule):
 
     def __init__(self):
         case_rule.__init__(self, 'architecture', '011', 'isEndArchitecture')
-        self.case = 'upper'
         self.solution = 'Change architecture name to '
 
     def _extract(self, oLine):

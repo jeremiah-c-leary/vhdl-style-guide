@@ -32,6 +32,7 @@ class testRuleForLoopMethods(unittest.TestCase):
 
     def test_rule_003_uppercase(self):
         oRule = for_loop.rule_003()
+        oRule.case = 'upper'
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'for_loop')
         self.assertEqual(oRule.identifier, '003')
@@ -42,7 +43,6 @@ class testRuleForLoopMethods(unittest.TestCase):
 
     def test_rule_003_lowercase(self):
         oRule = for_loop.rule_003()
-        oRule.case = 'lower'
         dExpected = [{'line_number': 40, 'words_to_fix': {'Label'}},
                      {'line_number': 44, 'words_to_fix': {'LABEL'}},
                      {'line_number': 48, 'words_to_fix': {'LABEL'}},

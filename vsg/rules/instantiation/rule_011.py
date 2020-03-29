@@ -10,7 +10,6 @@ class rule_011(case_rule):
 
     def __init__(self):
         case_rule.__init__(self, 'instantiation', '011', 'isInstantiationPortAssignment')
-        self.case = 'upper'
         self.solution = 'Change port name to '
 
     def _extract(self, oLine):

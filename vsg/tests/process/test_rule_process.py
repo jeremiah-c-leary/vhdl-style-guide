@@ -172,7 +172,15 @@ class testRuleProcessMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'process')
         self.assertEqual(oRule.identifier, '017')
-        dExpected = [{'line_number': 46, 'words_to_fix': {'proc_name'}}]
+        dExpected = [{'line_number': 63, 'words_to_fix': {'END_PROC_NAME'}},
+                     {'line_number': 68, 'words_to_fix': {'PROC_NAME'}},
+                     {'line_number': 75, 'words_to_fix': {'PROC_NAME'}},
+                     {'line_number': 81, 'words_to_fix': {'PROC_NAME'}},
+                     {'line_number': 88, 'words_to_fix': {'PROC_NAME'}},
+                     {'line_number': 97, 'words_to_fix': {'PROC_NAME'}},
+                     {'line_number': 116, 'words_to_fix': {'MAIN'}},
+                     {'line_number': 140, 'words_to_fix': {'TEST_PROCESS'}},
+                     {'line_number': 152, 'words_to_fix': {'TEST'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -200,7 +208,15 @@ class testRuleProcessMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'process')
         self.assertEqual(oRule.identifier, '019')
-        dExpected = [{'line_number': 48, 'words_to_fix': {'proc_name'}}]
+        dExpected = [{'line_number': 65, 'words_to_fix': {'END_PROC_NAME'}},
+                     {'line_number': 72, 'words_to_fix': {'PROC_NAME'}},
+                     {'line_number': 79, 'words_to_fix': {'PROC_NAME'}},
+                     {'line_number': 86, 'words_to_fix': {'PROC_NAME'}},
+                     {'line_number': 94, 'words_to_fix': {'PROC_NAME'}},
+                     {'line_number': 103, 'words_to_fix': {'PROC_NAME'}},
+                     {'line_number': 123, 'words_to_fix': {'MAIN'}},
+                     {'line_number': 150, 'words_to_fix': {'TEST_PROCESS'}},
+                     {'line_number': 155, 'words_to_fix': {'TEST'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 

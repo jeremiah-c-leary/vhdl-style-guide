@@ -435,9 +435,7 @@ if_025
 
 This rule checks the **if** keyword has proper case.
 
-.. NOTE::  The default is lowercase.
-
-   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
@@ -456,9 +454,7 @@ if_026
 
 This rule checks the **elsif** keyword has proper case.
 
-.. NOTE::  The default is lowercase.
-
-   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
@@ -477,9 +473,7 @@ if_027
 
 This rule checks the **else** keyword has proper case.
 
-.. NOTE::  The default is lowercase.
-
-   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
@@ -498,7 +492,7 @@ if_028
 
 This rule checks the **end if** keywords have proper case.
 
-.. NOTE::  The default is lowercase.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
@@ -525,7 +519,7 @@ if_029
 
 This rule checks the **then** keyword has proper case.
 
-.. NOTE::  The default is lowercase.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 

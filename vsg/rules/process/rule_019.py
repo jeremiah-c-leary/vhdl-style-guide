@@ -10,7 +10,6 @@ class rule_019(case_rule):
 
     def __init__(self):
         case_rule.__init__(self, 'process', '019', 'isEndProcess')
-        self.case = 'upper'
         self.solution = 'Change end process label to '
 
     def _extract(self, oLine):

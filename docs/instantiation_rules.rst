@@ -113,7 +113,7 @@ instantiation_006
 
 This rule checks the **port map** keywords have proper case.
 
-.. NOTE:: The default is lowercase.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
@@ -150,28 +150,7 @@ instantiation_008
 
 This rule checks the instance name has proper case.
 
-.. NOTE:: The default is uppercase.
-
-   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   u_fifo : FIFO
-
-**Fix**
-
-.. code-block:: vhdl
-
-   U_FIFO : FIFO
-
-instantiation_009
-#################
-
-This rule checks the entity name has proper case.
-
-.. NOTE:: The default is uppercase.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
@@ -179,12 +158,31 @@ This rule checks the entity name has proper case.
 
    U_FIFO : fifo
 
+**Fix**
+
+.. code-block:: vhdl
+
+   u_fifo : fifo
+
+instantiation_009
+#################
+
+This rule checks the entity name has proper case.
+
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   u_fifo : FIFO
+
 
 **Fix**
 
 .. code-block:: vhdl
 
-   U_FIFO : FIFO
+   u_fifo : fifo
 
 instantiation_010
 #################
@@ -279,7 +277,7 @@ instantiation_013
 
 This rule checks the **generic map** keywords have proper case.
 
-.. NOTE:: The default is lowercase.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
@@ -324,26 +322,26 @@ instantiation_016
 
 This rule checks generic names have proper case.
 
-.. NOTE:: The default is uppercase.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
 .. code-block:: vhdl
 
-   U_FIFO : FIFO
+   u_fifo : fifo
      generic map (
-       depth => 512,
-       width => 32
+       DEPTH => 512,
+       WIDTH => 32
      )
 
 **Fix**
 
 .. code-block:: vhdl
 
-   U_FIFO : FIFO
+   u_fifo : fifo
      generic map (
-       DEPTH => 512,
-       WIDTH => 32
+       depth => 512,
+       width => 32
      )
 
 
@@ -604,7 +602,7 @@ instantiation_027
 
 This rule checks the **entity** keyword has proper case in direct instantiations.
  
-.. NOTE:: The default is lowercase.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
@@ -623,19 +621,19 @@ instantiation_028
 
 This rule checks the entity name has proper case in direct instantiations.
 
-.. NOTE:: The default is uppercase.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
 .. code-block:: vhdl
 
-   INSTANCE_NAME : entity library.entity_name
+   instance_name : entity library.ENTITY_NAME
 
 **Fix**
 
 .. code-block:: vhdl
 
-   INSTANCE_NAME : entity library.ENTITY_NAME
+   instance_name : entity library.entity_name
 
 instantiation_029
 #################
@@ -695,19 +693,19 @@ instantiation_031
 
 This rule checks the component keyword has proper case in component instantiations that use the **component** keyword.
 
-.. NOTE:: The default is lowercase.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
 .. code-block:: vhdl
 
-   INSTANCE_NAME : COMPONENT ENTITY_NAME
+   instance_name : COMPONENT entity_name
 
 **Fix**
 
 .. code-block:: vhdl
 
-   INSTANCE_NAME : component ENTITY_NAME
+   instance_name : component entity_name
 
 .. NOTE:: This rule is off by default.
    If this rule is desired, then enable this rule and disable instantiation_033. 

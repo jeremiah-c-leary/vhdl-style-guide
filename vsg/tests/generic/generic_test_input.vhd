@@ -2,8 +2,8 @@
 
 entity ENTITY1 is
   generic (
-    G_GENERIC1 : std_logic := '0';
-    G_GENERIC2 : std_logic := '1'
+    g_generic1 : std_logic := '0';
+    g_generic2 : std_logic := '1'
   );
   port (
     I_PORT1 : in    std_logic;
@@ -18,7 +18,7 @@ end entity ENTITY1
 
  entITy   entiTY2  IS
   generic (
-       G_GENERIC1 : std_logic :='0'; G_GENERIC_3 : std_logic := '1';
+       g_generic1 : std_logic :='0'; g_generic_3 : std_logic := '1';
     G_generic2 : std_logic := '1'
   );
 
@@ -49,8 +49,8 @@ end entity ENTITY1
 entity ENTITY1
 is
    generic  (
-    G_GENERIC1 :   STD_LOGIC :=   '0';
-  G_GENERIC2 : std_logic :=    '1'
+    g_generic1 :   STD_LOGIC :=   '0';
+  g_generic2 : std_logic :=    '1'
   );
 
 port  (
@@ -65,7 +65,7 @@ End  entity  ENTITY1
 entity ENTITY1 is
  geneRIC (
     A_generic1 :std_logic := '0';
-   G_GENERIC2: std_logic :='1'
+   g_generic2: std_logic :='1'
   );
   port (
     I_PORT1 : in    std_logic;
@@ -93,8 +93,8 @@ end   entity ENTITY1
 
 entity ENTITY1 is
   Generic (
-    A_GENERIC1 : STD_LOGIC := '0';
-    G_GENERIC2 : std_logic := '1');
+    a_generic1 : STD_LOGIC := '0';
+    g_generic2 : std_logic := '1');
   port (
     PORT1_I : in    std_logic;
     PORT2_O : out   std_logic;
@@ -137,7 +137,7 @@ end entity ENTITY1
 
 entity ENTITY1 is
   generic (G_GENERIC1 : std_logic := '0';
-    G_GENERIC2 : std_logic := '1'
+    g_generic2 : std_logic := '1'
   );
   port (
     I_PORT1, I_PORT4 : in    std_logic;
@@ -152,7 +152,7 @@ end entity  ENTITY1
 entity ENTITY1 is
   generic 
    (
-    G_GENERIC1 : std_logic := '0';
+    g_generic1 : std_logic := '0';
     G_GENERIC2 : std_logic := '1'
   );
   port (

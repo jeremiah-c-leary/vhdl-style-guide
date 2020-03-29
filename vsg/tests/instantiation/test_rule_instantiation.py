@@ -94,6 +94,7 @@ class testRuleInstantiationMethods(unittest.TestCase):
 
     def test_rule_008(self):
         oRule = instantiation.rule_008()
+        oRule.case = 'upper'
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'instantiation')
         self.assertEqual(oRule.identifier, '008')
@@ -105,6 +106,7 @@ class testRuleInstantiationMethods(unittest.TestCase):
 
     def test_rule_009(self):
         oRule = instantiation.rule_009()
+        oRule.case = 'upper'
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'instantiation')
         self.assertEqual(oRule.identifier, '009')
@@ -133,6 +135,7 @@ class testRuleInstantiationMethods(unittest.TestCase):
 
     def test_rule_011(self):
         oRule = instantiation.rule_011()
+        oRule.case = 'upper'
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'instantiation')
         self.assertEqual(oRule.identifier, '011')
@@ -193,6 +196,7 @@ class testRuleInstantiationMethods(unittest.TestCase):
 
     def test_rule_016(self):
         oRule = instantiation.rule_016()
+        oRule.case = 'upper'
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'instantiation')
         self.assertEqual(oRule.identifier, '016')
@@ -330,7 +334,8 @@ class testRuleInstantiationMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'instantiation')
         self.assertEqual(oRule.identifier, '028')
 
-        dExpected = [{'line_number': 20, 'words_to_fix': {'inst1'}}]
+        dExpected = [{'line_number': 6, 'words_to_fix': {'INST1'}},
+                     {'line_number': 13, 'words_to_fix': {'INST1'}}]
         oRule.analyze(oFileDirect)
         self.assertEqual(oRule.violations, dExpected)
 
