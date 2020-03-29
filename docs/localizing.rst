@@ -92,10 +92,12 @@ We are ready to write the body of the **analyze** method:
 
      def analyze(self, oFile):
          if oFile.hasEntity and oFile.hasArchitecture:
-             self.add_violation(1)
+             self.add_violation(utils.create_violation_dict(1))
 
-The base rule class has an **add_violation** method which takes a line number as an argument.
-This method appends the line number to a violation list, which is processed later for reporting and fixing purposes.
+The base rule class has an **add_violation** method which takes a dictionary as an argument.
+The *create_violation_dict* function will create the dictionary.
+This dictionary can be modified to include other information about the violation. 
+This method appends the dictionary to a violation list, which is processed later for reporting and fixing purposes.
 In this case, any line number will do so we picked 1.
 
 We must decide if we want to give VSG the ability to fix this rule on it's own.
@@ -117,7 +119,7 @@ We will tell VSG the rule is not fixable.
 
      def analyze(self, oFile):
          if oFile.hasEntity and oFile.hasArchitecture:
-             self.add_violation(1)
+             self.add_violation(utils.create_violation_dict(1))
 
 We also need to provide a solution to the user so they will know how to fix the violation:
 
@@ -138,7 +140,7 @@ We also need to provide a solution to the user so they will know how to fix the 
 
      def analyze(self, oFile):
          if oFile.hasEntity and oFile.hasArchitecture:
-             self.add_violation(1)
+             self.add_violation(utils.create_violation_dict(1))
 
 Finally, we need to add a code tag check so the rule can be disabled via comments in the code:
 
@@ -158,7 +160,7 @@ Finally, we need to add a code tag check so the rule can be disabled via comment
      def analyze(self, oFile):
          if not self.is_vsg_off(oLine):
              if oFile.hasEntity and oFile.hasArchitecture:
-                 self.add_violation(1)
+                 self.add_violation(utils.create_violation_dict(1))
 
 The rule is complete, so we save it as rule_localized_001.py.
 Performing an **ls** on our local_rules directory:
@@ -246,7 +248,7 @@ We will look at the rule **constant_014** to illustrate how VSG uses the methods
                 elif not oLine.isConstant and self.fKeywordFound:
                     sMatch = ' ' * self.alignmentColumn
                     if not re.match('^' + sMatch + '\w', oLine.line):
-                        self.add_violation(iLineNumber)
+                        self.add_violation(utils.create_violation_dict(LineNumber))
                         self.dFix['violations'][iLineNumber] = self.alignmentColumn
                 if oLine.isConstantEnd:
                     self.fKeywordFound = False
@@ -326,7 +328,7 @@ In the following code, notice *self.alignmentColumn* and *self.fKeywordFound*.
                 elif not oLine.isConstant and self.fKeywordFound:
                     sMatch = ' ' * self.alignmentColumn
                     if not re.match('^' + sMatch + '\w', oLine.line):
-                        self.add_violation(iLineNumber)
+                        self.add_violation(utils.create_violation_dict(LineNumber))
                         self.dFix['violations'][iLineNumber] = self.alignmentColumn
                 if oLine.isConstantEnd:
                     self.fKeywordFound = False
@@ -360,7 +362,7 @@ This will be used later when the **fix** method is called.
 
                     sMatch = ' ' * self.alignmentColumn
                     if not re.match('^' + sMatch + '\w', oLine.line):
-                        self.add_violation(iLineNumber)
+                        self.add_violation(utils.create_violation_dict(LineNumber))
                         self.dFix['violations'][iLineNumber] = self.alignmentColumn
 
 When we detect the end of the constant declaration, we clear a flag and prepare for the next constant declaration.
