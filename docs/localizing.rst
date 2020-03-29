@@ -403,6 +403,95 @@ Finally, we update the line with our modified line using the **update_line** met
 
                 oFile.lines[iLineNumber].update_line(sNewLine)
 
+Violation dictionary
+--------------------
+
+Violations are stored as a list of dictionaries in the **rule.violations** attribute.
+This is the generic format of the dictionary represented by json:
+
+.. code-block:: json
+
+   {
+     "lines" : [ 
+        {
+          "number" : "<integer>",
+          "<line_attribute>" : "<line_value>",
+          "<line_attribute>" : "<line_value>"
+        }
+       ],
+     "<violation_attribute>" : "<violation_value>",
+     "<violation_attribute>" : "<violation_value>"
+   }
+
+This format gives us the greatest flexibility in describing violations.
+The lines[0]['number'] is the only required element in a violation dictionary.
+The "<line_attribute>" and "<violation_attribute>" elements are optional.
+They are used by more complex rules to maintain information used to fix violations.
+
+Single line violations
+~~~~~~~~~~~~~~~~~~~~~~
+
+Most violations are against a single line and no other information is required to fix it.
+These dictionaries use the minimumal form.
+
+.. code-block:: json
+
+   {
+     "lines" : [ 
+        {
+          "number" : 40
+        }
+       ]
+   }
+
+Single line violations with additional information
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If additional information for single line violations is required, it will be stored at the **violation** level.
+
+.. code-block:: json
+
+   {
+     "lines" : [
+       {
+         "number" : 40
+       }
+     ],
+     "label" : "FIFO"
+   }
+
+This violation is indicating there is an issue at line 40 with the label "FIFO".
+The "label" element will be used to fix the violation.
+
+Multiple line violations
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+If a rule covers multiple lines, then information about individual lines can be stored:
+
+.. code-block:: json
+
+   {
+     "lines" : [
+       {
+         "number" : 40,
+         "column" : 20
+       },
+       {
+         "number" : 41,
+         "column" : 35
+       }
+     ],
+     "desired_column" : 15
+   }
+       
+In the above case, we are trying to align a keyword over multiple lines.
+Each line which is not aligned is reported in the **lines** list.
+The **column** attribute indicates which column the keyword was found.
+The **desired_column**, which applies to all lines in the **lines** list, indicates which column the keyword should be located.
+
+This violation would cover a group of multiple lines.
+If there were violations in multiple groups, then each group with get it's own violation dictionary.
+
 Rule creation guidelines
 ------------------------
 
