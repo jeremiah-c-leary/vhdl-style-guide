@@ -9,8 +9,6 @@ from vsg.tests import utils
 # Read in test file used for all tests
 lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'comment_test_input.vhd'))
 oFile = vhdlFile.vhdlFile(lFile)
-lFileCase = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'comment_case_test_input.vhd'))
-oFileCase = vhdlFile.vhdlFile(lFileCase)
 lFileProcess = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'comment_process_test_input.vhd'))
 oFileProcess = vhdlFile.vhdlFile(lFileProcess)
 lFileLibrary = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'comment_library_test_input.vhd'))
@@ -33,22 +31,6 @@ class testFixRuleCommentMethods(unittest.TestCase):
         oRule.fix(oFile)
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
-
-    def test_rule_005(self):
-        oRule = comment.rule_005()
-        dExpected = []
-        oRule.fix(oFileCase)
-        oRuleIndex = comment.rule_010()
-        oRuleIndex.fix(oFileCase)
-        oRule.analyze(oFileCase)
-        self.assertEqual(oRule.violations, dExpected)
-        self.assertEqual(oFileCase.lines[23].indentLevel, 3)
-        self.assertEqual(oFileCase.lines[24].indentLevel, 3)
-        self.assertEqual(oFileCase.lines[25].indentLevel, 3)
-
-        self.assertEqual(oFileCase.lines[23].line, '      -- Comment 1')
-        self.assertEqual(oFileCase.lines[24].line, '      -- Comment 2')
-        self.assertEqual(oFileCase.lines[25].line, '      -- Comment 3')
 
     def test_rule_001(self):
         oRuleList = rule_list.rule_list(oFileLibrary)

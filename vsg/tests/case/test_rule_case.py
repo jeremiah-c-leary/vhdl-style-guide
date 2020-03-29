@@ -9,6 +9,8 @@ from vsg.tests import utils
 # Read in test file used for all tests
 lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','case','case_test_input.vhd'))
 oFile = vhdlFile.vhdlFile(lFile)
+lFileCase = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'comment_case_test_input.vhd'))
+oFileCase = vhdlFile.vhdlFile(lFileCase)
 
 lFileSequential = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','case','case_sequential_test_input.vhd'))
 oFileSequential = vhdlFile.vhdlFile(lFileSequential)
@@ -201,3 +203,10 @@ class testRuleCaseMethods(unittest.TestCase):
         dExpected = [{'lineNumber': 98, 'label': 'LABEL'}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_021(self):
+        oRule = case.rule_021()
+        dExpected = [19,25,24,23]
+        oRule.analyze(oFileCase)
+        self.assertEqual(oRule.violations, dExpected)
+

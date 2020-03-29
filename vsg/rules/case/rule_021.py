@@ -3,16 +3,16 @@ from vsg import rule
 from vsg import check
 
 
-class rule_005(rule.rule):
+class rule_021(rule.rule):
     '''
-    Comment rule 005 checks consecutive comment lines above a "when" keyword
+    Case rule 021 checks consecutive comment lines above a "when" keyword
     in a case statement are aligned with the "when" keyword.
     '''
 
     def __init__(self):
         rule.rule.__init__(self)
-        self.name = 'comment'
-        self.identifier = '005'
+        self.name = 'case'
+        self.identifier = '021'
         self.solution = 'Align comment with "when" keyword.'
         self.phase = 4
 
