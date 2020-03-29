@@ -4,16 +4,16 @@ from vsg import check
 from vsg import fix
 
 
-class rule_001(rule.rule):
+class rule_009(rule.rule):
     '''
-    Comment rule 001 checks consecutive comment lines above a "use" keyword
+    Library rule 009 checks consecutive comment lines above a "use" keyword
     in a library declaration "use" keyword.
     '''
 
     def __init__(self):
         rule.rule.__init__(self)
-        self.name = 'comment'
-        self.identifier = '001'
+        self.name = 'library'
+        self.identifier = '009'
         self.solution = 'Align comment with "use" keyword.'
         self.phase = 4
 

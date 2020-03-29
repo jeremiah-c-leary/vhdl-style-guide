@@ -59,15 +59,6 @@ class testRuleCommentMethods(unittest.TestCase):
         oRule.analyze(oFileCase)
         self.assertEqual(oRule.violations, dExpected)
 
-    def test_rule_001(self):
-        oRule = comment.rule_001()
-        self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'comment')
-        self.assertEqual(oRule.identifier, '001')
-        dExpected = [4]
-        oRule.analyze(oFileLibrary)
-        self.assertEqual(oRule.violations, dExpected)
-
     def test_rule_008(self):
         oRule = comment.rule_008()
         self.assertTrue(oRule)

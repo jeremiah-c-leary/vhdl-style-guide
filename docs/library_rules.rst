@@ -173,3 +173,25 @@ This rule checks the indent of the **use** keyword.
    library ieee;
      use ieee.std_logic_1164.all;
      use ieee.std_logic_unsigned.all;
+
+library_009
+###########
+
+This rule checks alignment of comments above library use statements.
+
+**Violation**
+
+.. code-block:: vhdl
+
+    library ieee;
+    -- Use standard logic library
+      use ieee.std_logic_1164.all;
+
+**Fix**
+
+.. code-block:: vhdl
+
+    library ieee;
+      -- Use standard logic library
+      use ieee.std_logic_1164.all;
+

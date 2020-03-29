@@ -95,3 +95,14 @@ class testRuleLibraryMethods(unittest.TestCase):
         dExpected = utils.add_violation_list([14,16,26,30])
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
+
+
+    def test_rule_009(self):
+        oRule = library.rule_009()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'library')
+        self.assertEqual(oRule.identifier, '009')
+        dExpected = [33]
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+
