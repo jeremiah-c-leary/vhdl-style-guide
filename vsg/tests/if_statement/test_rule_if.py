@@ -11,6 +11,8 @@ lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','if_stat
 oFile = vhdlFile.vhdlFile(lFile)
 lFileCase = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','if_statement','if_case_test_input.vhd'))
 oFileCase = vhdlFile.vhdlFile(lFileCase)
+lFileIf = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'comment_if_input.vhd'))
+oFileIf = vhdlFile.vhdlFile(lFileIf)
 
 class testRuleIfMethods(unittest.TestCase):
 
@@ -270,3 +272,21 @@ class testRuleIfMethods(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
+
+    def test_rule_031(self):
+        oRule = if_statement.rule_032()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'if')
+        self.assertEqual(oRule.identifier, '032')
+        lExpected = [17,16,15,21,20]
+        oRule.analyze(oFileIf)
+        self.assertEqual(oRule.violations, lExpected)
+
+    def test_rule_032(self):
+        oRule = if_statement.rule_033()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'if')
+        self.assertEqual(oRule.identifier, '033')
+        lExpected = [25,24]
+        oRule.analyze(oFileIf)
+        self.assertEqual(oRule.violations, lExpected)

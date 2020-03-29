@@ -598,3 +598,55 @@ In the case of nested **if** statements, the rule will be enfoced on the first *
    if (A = '1') then
      B <= '0';
    end if;
+
+if_032
+######
+
+This rule aligns consecutive comment only lines above the **elsif** keyword in if statements.
+These comments are used to describe what the elsif code is going to do.
+
+**Violation**
+
+.. code-block:: vhdl
+
+       -- comment 1
+ -- comment 2
+    -- comment 3
+   elsif (a = '1')
+     rd_en <= '0';
+
+**Fix**
+
+.. code-block:: vhdl
+
+   -- comment 1
+   -- comment 2
+   -- comment 3
+   elsif (a = '1')
+     rd_en <= '0';
+
+if_033
+######
+
+This rule aligns consecutive comment only lines above the **else** keyword in if statements.
+These comments are used to describe what the elsif code is going to do.
+
+**Violation**
+
+.. code-block:: vhdl
+
+       -- comment 1
+ -- comment 2
+    -- comment 3
+   else
+     rd_en <= '0';
+
+**Fix**
+
+.. code-block:: vhdl
+
+   -- comment 1
+   -- comment 2
+   -- comment 3
+   else
+     rd_en <= '0';
