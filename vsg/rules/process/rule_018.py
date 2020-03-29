@@ -35,7 +35,7 @@ class rule_018(rule.rule):
     def _fix_violations(self, oFile):
          for dViolation in self.violations:
              try:
-                 oLine = oFile.lines[dViolation['lineNumber']]
+                 oLine = utils.get_violating_line(oFile, dViolation)
                  sLine = oLine.line
                  iIndex = oLine.lineLower.find('process') + len('process')
                  oLine.update_line(sLine[:iIndex] + ' ' + dViolation['processLabel'] + sLine[iIndex:])

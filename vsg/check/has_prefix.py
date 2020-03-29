@@ -1,3 +1,5 @@
+from vsg import utils
+
 
 def has_prefix(self, prefixes, words, iLineNumber):
     '''
@@ -18,4 +20,4 @@ def has_prefix(self, prefixes, words, iLineNumber):
             if word.lower().startswith(prefix.lower()):
                 break
         else:
-            self.add_violation({'lineNumber' : iLineNumber})
+            self.add_violation(utils.create_violation_dict(iLineNumber))

@@ -2,6 +2,7 @@
 from vsg import fix
 from vsg import check
 from vsg import rule
+from vsg import utils
 
 
 class line_below_rule(rule.rule):
@@ -33,4 +34,4 @@ class line_below_rule(rule.rule):
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations[::-1]:
-            fix.insert_blank_line_below(self, oFile, dViolation['lineNumber'])
+            fix.insert_blank_line_below(self, oFile, utils.get_violation_linenumber(dViolation))

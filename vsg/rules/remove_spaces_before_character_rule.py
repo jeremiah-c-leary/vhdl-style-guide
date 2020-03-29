@@ -1,5 +1,6 @@
 
 from vsg import rule
+from vsg import utils
 
 import re
 
@@ -29,9 +30,9 @@ class remove_spaces_before_character_rule(rule.rule):
 
     def _analyze(self, oFile, oLine, iLineNumber):
         if ' ' + self.sCharacter in oLine.lineNoComment:
-            self.add_violation({'lineNumber': iLineNumber})
+            self.add_violation(utils.create_violation_dict(iLineNumber))
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations:
-            oLine = oFile.lines[dViolation['lineNumber']]
+            oLine = utils.get_violating_line(oFile, dViolation)
             oLine.update_line(re.sub(r'(\s+' + self.sCharacter + ')', self.sCharacter, oLine.line))

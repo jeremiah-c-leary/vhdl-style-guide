@@ -2,6 +2,7 @@
 from vsg import rule
 from vsg import fix
 from vsg import check
+from vsg import utils
 
 
 class remove_blank_lines_above_rule(rule.rule):
@@ -22,4 +23,4 @@ class remove_blank_lines_above_rule(rule.rule):
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations[::-1]:
-            fix.remove_blank_lines_above(self, oFile, dViolation['lineNumber'], self.sUnless)
+            fix.remove_blank_lines_above(self, oFile, utils.get_violation_linenumber(dViolation), self.sUnless)

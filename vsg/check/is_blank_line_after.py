@@ -1,3 +1,5 @@
+from vsg import utils
+
 
 def is_blank_line_after(self, oFile, iLineNumber):
     '''
@@ -13,4 +15,4 @@ def is_blank_line_after(self, oFile, iLineNumber):
       iLineNumber: (integer)
     '''
     if not oFile.lines[iLineNumber + 1].isBlank:
-        self.add_violation({'lineNumber': iLineNumber})
+        self.add_violation(utils.create_violation_dict(iLineNumber))

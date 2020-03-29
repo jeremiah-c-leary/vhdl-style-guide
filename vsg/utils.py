@@ -1036,6 +1036,36 @@ def create_violation_dict(iLineNumber):
     Returns:  dictionary
     '''
     dReturn = {}
-    dReturn['lineNumber'] = iLineNumber
+    dReturn['lines'] = []
+    dLine = {}
+    dLine['number'] = iLineNumber
+    dReturn['lines'].append(dLine)
     return dReturn
 
+
+def get_violation_linenumber(dViolation):
+    '''
+    Returns a line number of a violation.
+
+    Parameters:
+
+      dViolation: Violation dictionary
+
+    Returns:  integer
+    '''
+    return dViolation['lines'][0]['number']
+
+
+def  get_violating_line(oFile, dViolation):
+     '''
+     Returns a line from the file where a violation has occured.
+
+     Parameters:
+
+       oFile : (File object)
+
+       dViolation : (Violation dictionary)
+
+     Return: Line Object
+     '''
+     return oFile.lines[get_violation_linenumber(dViolation)]

@@ -1,3 +1,5 @@
+from vsg import utils
+
 
 def indent_of_comments_above(self, oFile, iLineNumber):
     '''
@@ -19,7 +21,7 @@ def indent_of_comments_above(self, oFile, iLineNumber):
             break
         else:
             if not oFile.lines[iPreviousIndex].line.index('--') == oFile.lines[iLineNumber].indentLevel * self.indentSize:
-                self.add_violation(iPreviousIndex)
+                self.add_violation(utils.create_violation_dict(iLineNumber))
                 self.dFix['violations'][iPreviousIndex] = oFile.lines[iLineNumber].indentLevel
             else:
                 oFile.lines[iPreviousIndex].indentLevel = oFile.lines[iLineNumber].indentLevel

@@ -1,3 +1,5 @@
+from vsg import utils
+
 
 def has_suffix(self, suffixes, words, iLineNumber):
     '''
@@ -18,4 +20,4 @@ def has_suffix(self, suffixes, words, iLineNumber):
             if word.endswith(suffix):
                 break
         else:
-            self.add_violation({'lineNumber': iLineNumber})
+            self.add_violation(utils.create_violation_dict(iLineNumber))

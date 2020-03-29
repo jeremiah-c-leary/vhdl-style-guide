@@ -22,7 +22,7 @@ class rule_001(rule.rule):
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations:
-            iLineNumber = dViolation['lineNumber']
+            iLineNumber = utils.get_violation_linenumber(dViolation)
             oPreviousLine = oFile.lines[iLineNumber - 1]
             oLine = oFile.lines[iLineNumber]
             iIndex = utils.end_of_line_index(oPreviousLine)

@@ -25,7 +25,7 @@ class rule_014(rule.rule):
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations[::-1]:
-            iLineNumber = dViolation['lineNumber']
+            iLineNumber = utils.get_violation_linenumber(dViolation)
             oFile.lines[iLineNumber].update_line(re.sub(r'\)(\s*);', r' \1 ', oFile.lines[iLineNumber].line))
             oFile.lines[iLineNumber].isEndPortMap = False
             oFile.lines[iLineNumber].indentLevel += 1

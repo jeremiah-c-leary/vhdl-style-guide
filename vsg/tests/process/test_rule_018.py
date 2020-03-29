@@ -21,9 +21,15 @@ class test_rule_018(unittest.TestCase):
     self.assertEqual(oRule.name, 'process')
     self.assertEqual(oRule.identifier, '018')
     oRule.analyze(self.oFile)
-    dExpected = [{'lineNumber': 14, 'processLabel': 'PROC_LABEL2'},
-                 {'lineNumber': 19}]
-    self.assertEqual(oRule.violations, dExpected)
+    lExpected = []
+    dViolation = utils.add_violation(14)
+    dViolation['processLabel'] = 'PROC_LABEL2'
+    lExpected.append(dViolation)
+
+    dViolation = utils.add_violation(19)
+    lExpected.append(dViolation)
+
+    self.assertEqual(oRule.violations, lExpected)
 
   def test_fix_rule_018(self):
     oRule = process.rule_018()
@@ -34,5 +40,6 @@ class test_rule_018(unittest.TestCase):
     self.assertEqual(self.oFile.lines[19].line, '  end process;')
     self.assertEqual(self.oFile.lines[24].line, '  end process PROC_LABEL3;')
     oRule.analyze(self.oFile)
-    dExpected = [{'lineNumber': 19}]
-    self.assertEqual(oRule.violations, dExpected)
+    lExpected = []
+    lExpected.append(utils.add_violation(19))
+    self.assertEqual(oRule.violations, lExpected)

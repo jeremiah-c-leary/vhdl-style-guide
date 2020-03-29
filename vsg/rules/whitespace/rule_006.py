@@ -23,7 +23,7 @@ class rule_006(rule.rule):
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations:
-            oLine = oFile.lines[dViolation['lineNumber']]
+            oLine = utils.get_violating_line(oFile, dViolation)
             iCommentIndex = oLine.line.find('--')
             if iCommentIndex == -1:
                 oLine.update_line(re.sub(r'\s+\)', r')', oLine.line))

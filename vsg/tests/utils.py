@@ -40,11 +40,21 @@ def read_vhdlfile(sFileName):
 
 
 def add_violation(iLineNumber):
-    return {'lineNumber': iLineNumber}
+    dViolation = {}
+    dViolation['lines'] = []
+    dLine = {}
+    dLine['number'] = iLineNumber
+    dViolation['lines'].append(dLine)
+    return dViolation
 
 
 def add_violation_list(lLineNumbers):
     lReturn = []
     for iLineNumber in lLineNumbers:
-        lReturn.append({'lineNumber': iLineNumber})
+        dViolation = {}
+        dViolation['lines'] = []
+        dLine = {}
+        dLine['number'] = iLineNumber
+        dViolation['lines'].append(dLine)
+        lReturn.append(dViolation)
     return lReturn
