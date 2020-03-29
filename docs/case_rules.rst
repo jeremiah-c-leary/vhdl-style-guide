@@ -463,3 +463,27 @@ The preference is to have comments above the case statement.
       end case;
       end case;
 
+case_021
+########
+
+This rule aligns consecutive comment only lines above a **when** keyword in a case statement with the **when** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+       -- comment 1
+ -- comment 2
+    -- comment 3
+   when wr_en =>
+     rd_en <= '0';
+
+**Fix**
+
+.. code-block:: vhdl
+
+   -- comment 1
+   -- comment 2
+   -- comment 3
+   when wr_en =>
+     rd_en <= '0';

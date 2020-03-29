@@ -9,8 +9,6 @@ from vsg.tests import utils
 # Read in test file used for all tests
 lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','comment','comment_test_input.vhd'))
 oFile = vhdlFile.vhdlFile(lFile)
-lFileCase = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','comment','comment_case_test_input.vhd'))
-oFileCase = vhdlFile.vhdlFile(lFileCase)
 lFileProcess = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','comment','comment_process_test_input.vhd'))
 oFileProcess = vhdlFile.vhdlFile(lFileProcess)
 lFileLibrary = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'comment_library_test_input.vhd'))
@@ -29,15 +27,6 @@ class testRuleCommentMethods(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
-    def test_rule_010_case(self):
-        oRule = comment.rule_010()
-        self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'comment')
-        self.assertEqual(oRule.identifier, '010')
-        dExpected = utils.add_violation_list([23,24,25,29])
-        oRule.analyze(oFileCase)
-        self.assertEqual(oRule.violations, dExpected)
-
     def test_rule_010_library(self):
         oRuleList = rule_list.rule_list(oFileLibrary)
         oRuleList.check_rules()
@@ -51,12 +40,6 @@ class testRuleCommentMethods(unittest.TestCase):
         oRule = comment.rule_004()
         dExpected = utils.add_violation_list([39, 58, 61, 62])
         oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
-
-    def test_rule_005(self):
-        oRule = comment.rule_005()
-        dExpected = [19,25,24,23]
-        oRule.analyze(oFileCase)
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_008(self):

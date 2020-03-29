@@ -2,12 +2,15 @@ import os
 import unittest
 
 from vsg.rules import case
+from vsg.rules import comment
 from vsg import vhdlFile
 from vsg.tests import utils
 
 # Read in test file used for all tests
 lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','case','case_test_input.vhd'))
 oFile = vhdlFile.vhdlFile(lFile)
+lFileCase = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'comment_case_test_input.vhd'))
+oFileCase = vhdlFile.vhdlFile(lFileCase)
 
 lFileSequential = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','case','case_sequential_test_input.vhd'))
 oFileSequential = vhdlFile.vhdlFile(lFileSequential)
@@ -180,3 +183,19 @@ class testFixRuleCaseMethods(unittest.TestCase):
         self.assertEqual(oRule.violations, dExpected)
         self.assertEqual(oFile.lines[102].line, '    end case ;')
         self.assertFalse(oFile.lines[102].hasEndCaseLabel)
+
+    def test_fix_rule_021(self):
+        oRule = case.rule_021()
+        dExpected = []
+        oRule.fix(oFileCase)
+        oRuleIndex = comment.rule_010()
+        oRuleIndex.fix(oFileCase)
+        oRule.analyze(oFileCase)
+        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oFileCase.lines[23].indentLevel, 3)
+        self.assertEqual(oFileCase.lines[24].indentLevel, 3)
+        self.assertEqual(oFileCase.lines[25].indentLevel, 3)
+
+        self.assertEqual(oFileCase.lines[23].line, '      -- Comment 1')
+        self.assertEqual(oFileCase.lines[24].line, '      -- Comment 2')
+        self.assertEqual(oFileCase.lines[25].line, '      -- Comment 3')

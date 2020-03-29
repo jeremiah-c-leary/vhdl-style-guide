@@ -20,31 +20,6 @@ This rule checks for at least a single space before inline comments.
    wr_en <= '1'; --Write data
    rd_en <= '1';   -- Read data
 
-comment_005
-###########
-
-This rule aligns consecutive comment only lines above a **when** keyword in a case statement with the **when** keyword.
-
-**Violation**
-
-.. code-block:: vhdl
-
-       -- comment 1
- -- comment 2
-    -- comment 3
-   when wr_en =>
-     rd_en <= '0';
-
-**Fix**
-
-.. code-block:: vhdl
-
-   -- comment 1
-   -- comment 2
-   -- comment 3
-   when wr_en =>
-     rd_en <= '0';
-
 comment_008
 ###########
 
