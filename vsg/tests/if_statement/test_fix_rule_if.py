@@ -16,6 +16,8 @@ lFileCompress = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'if_c
 oFileCompress = vhdlFile.vhdlFile(lFileCompress)
 lFileNested = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'if_nested_test_input.vhd'))
 oFileNested = vhdlFile.vhdlFile(lFileNested)
+lFileIf = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'comment_if_input.vhd'))
+oFileIf = vhdlFile.vhdlFile(lFileIf)
 
 
 class testFixRuleIfMethods(unittest.TestCase):
@@ -296,3 +298,36 @@ class testFixRuleIfMethods(unittest.TestCase):
         self.assertEqual(oRule.violations, dExpected)
         self.assertEqual(oFile.lines[14].line, '       g = 34 or x = 3000 then')
 
+    def test_rule_032(self):
+        oRule = if_statement.rule_032()
+        lExpected = []
+        oRule.fix(oFileIf)
+        oRule.analyze(oFileIf)
+        self.assertEqual(oFileIf.lines[15].indentLevel, 2)
+        self.assertEqual(oFileIf.lines[16].indentLevel, 2)
+        self.assertEqual(oFileIf.lines[17].indentLevel, 2)
+
+        self.assertEqual(oFileIf.lines[15].line, '    -- This is a comment')
+        self.assertEqual(oFileIf.lines[16].line, '    -- to describe the elsif')
+        self.assertEqual(oFileIf.lines[17].line, '    -- code')
+
+        self.assertEqual(oFileIf.lines[20].indentLevel, 2)
+        self.assertEqual(oFileIf.lines[21].indentLevel, 2)
+
+        self.assertEqual(oFileIf.lines[20].line, '    -- Yet more code comments')
+        self.assertEqual(oFileIf.lines[21].line, '    -- for the next elsif')
+
+        self.assertEqual(oRule.violations, lExpected)
+
+    def test_rule_033(self):
+        oRule = if_statement.rule_033()
+        lExpected = []
+        oRule.fix(oFileIf)
+        oRule.analyze(oFileIf)
+        self.assertEqual(oFileIf.lines[24].indentLevel, 2)
+        self.assertEqual(oFileIf.lines[25].indentLevel, 2)
+
+        self.assertEqual(oFileIf.lines[24].line, '    -- and finally comments for the')
+        self.assertEqual(oFileIf.lines[25].line, '    -- else code')
+
+        self.assertEqual(oRule.violations, lExpected)
