@@ -1,5 +1,6 @@
 
 from vsg import rule
+from vsg import utils
 
 
 class rule_001(rule.rule):
@@ -12,4 +13,4 @@ class rule_001(rule.rule):
 
   def analyze(self, oFile):
       if oFile.hasEntity and oFile.hasArchitecture:
-          self.add_violation(1)
+          self.add_violation(utils.create_violation_dict(1))

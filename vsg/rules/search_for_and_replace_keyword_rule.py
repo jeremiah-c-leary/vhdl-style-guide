@@ -20,7 +20,7 @@ class search_for_and_replace_keyword_rule(rule.rule):
 
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.__dict__[self.sTrigger] and self.sKeyword not in oLine.lineNoComment:
-            self.add_violation({'lineNumber': iLineNumber})
+            self.add_violation(utils.create_violation_dict(iLineNumber))
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations[::-1]:

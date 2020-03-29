@@ -1,5 +1,6 @@
 
 from vsg import rule
+from vsg import utils
 
 
 class rule_025(rule.rule):
@@ -25,7 +26,7 @@ class rule_025(rule.rule):
         if oLine.isArchitectureKeyword:
             lLine = oLine.line.split()
             if lLine[1].lower() not in self.lower_names:
-                self.add_violation({'lineNumber': iLineNumber})
+                self.add_violation(utils.create_violation_dict(iLineNumber))
 
     def _get_solution(self, iLineNumber):
         return 'Architecture name must be from this list: ' + ','.join(self.lower_names)

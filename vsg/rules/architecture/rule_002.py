@@ -1,6 +1,7 @@
 
 from vsg import rule
 from vsg import fix
+from vsg import utils
 
 import re
 
@@ -21,7 +22,7 @@ class rule_002(rule.rule):
         if oLine.isArchitectureKeyword and \
            len(oLine.line.split()) > 4 and \
            not re.match('^\s*architecture\s\S+\sof\s\S+\sis', oLine.lineLower):
-            self.add_violation({'lineNumber': iLineNumber})
+            self.add_violation(utils.create_violation_dict(iLineNumber))
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations:
