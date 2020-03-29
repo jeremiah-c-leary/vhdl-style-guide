@@ -52,13 +52,13 @@ class testVhdlFileMethods(unittest.TestCase):
         for iIndex, oLine in enumerate(oFileLibrary.lines):
             if iIndex == 1 or iIndex == 2 or iIndex == 6 or iIndex == 8 or iIndex == 11 or \
                iIndex == 12 or iIndex == 15 or iIndex == 17 or iIndex == 18 or iIndex == 19 or \
-               iIndex == 22 or iIndex == 25 or iIndex == 28 or iIndex == 29 or iIndex == 31:
+               iIndex == 22 or iIndex == 25 or iIndex == 28 or iIndex == 29 or iIndex == 31 or iIndex == 35:
                 self.assertTrue(oLine.isBlank)
             else:
                 self.assertFalse(oLine.isBlank)
 
     def test_library_assignment(self):
-        lExpected = [3,7,9,13,20,21]
+        lExpected = [3,7,9,13,20,21,32,36]
         # Compare
         for iIndex, oLine in enumerate(oFileLibrary.lines):
             if iIndex in lExpected:
@@ -68,7 +68,7 @@ class testVhdlFileMethods(unittest.TestCase):
                 self.assertFalse(oLine.isLibrary)
 
     def test_library_use_assignment(self):
-        lExpected = [4,5,10,14,16,23,24,26,27,30]
+        lExpected = [4,5,10,14,16,23,24,26,27,30,34,38]
         # Compare
         for iIndex, oLine in enumerate(oFileLibrary.lines):
             if iIndex in lExpected:

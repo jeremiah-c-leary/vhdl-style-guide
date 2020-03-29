@@ -1,27 +1,6 @@
 Comment Rules
 -------------
 
-comment_001
-###########
-
-This rule aligns comments above library use statements with the use statement.
-
-**Violation**
-
-.. code-block:: vhdl
-
-    library ieee;
-    -- Use standard logic library
-      use ieee.std_logic_1164.all;
-
-**Fix**
-
-.. code-block:: vhdl
-
-    library ieee;
-      -- Use standard logic library
-      use ieee.std_logic_1164.all;
-
 comment_004
 ###########
 
