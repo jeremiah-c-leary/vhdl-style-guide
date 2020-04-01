@@ -93,7 +93,14 @@ class testRuleGenericMethods(unittest.TestCase):
         dExpected = [{'line_number': 22, 'words_to_fix': {'G_generic2'}},
                      {'line_number': 36, 'words_to_fix': {'g_generIC1'}},
                      {'line_number': 37, 'words_to_fix': {'G_GeneRIC2'}},
-                     {'line_number': 67, 'words_to_fix': {'A_generic1'}}]
+                     {'line_number': 67, 'words_to_fix': {'A_generic1'}},
+                     {'line_number': 83, 'words_to_fix': {'G_GENERIC1'}},
+                     {'line_number': 84, 'words_to_fix': {'G_GENERIC2'}},
+                     {'line_number': 116, 'words_to_fix': {'A_GENERIC2'}},
+                     {'line_number': 139, 'words_to_fix': {'G_GENERIC1'}},
+                     {'line_number': 156, 'words_to_fix': {'G_GENERIC2'}},
+                     {'line_number': 170, 'words_to_fix': {'G_GENERIC1'}},
+                     {'line_number': 171, 'words_to_fix': {'G_GENERIC2'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 

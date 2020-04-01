@@ -1,12 +1,12 @@
 
-entity ENTITY1 is
+entity entity1 is
   port (
-    PORT1 : in    std_logic;
-    PORT2 : out   std_logic;
-    PORT3 : inout std_logic;
-    PORT4 : in std_logic;
-    PORT5 : out   std_logic;
-    PORT6 : inout std_logic
+    port1 : in    std_logic;
+    port2 : out   std_logic;
+    port3 : inout std_logic;
+    port4 : in std_logic;
+    port5 : out   std_logic;
+    port6 : inout std_logic
   );
-end entity ENTITY1
+end entity entity1
 

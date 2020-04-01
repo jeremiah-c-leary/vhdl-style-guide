@@ -9,7 +9,6 @@ class rule_028(case_rule):
 
     def __init__(self):
         case_rule.__init__(self, 'instantiation', '028', 'isDirectInstantiationDeclaration')
-        self.case = 'upper'
         self.solution = 'Change entity name to '
 
     def _extract(self, oLine):

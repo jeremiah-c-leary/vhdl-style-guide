@@ -10,7 +10,6 @@ class rule_012(case_rule):
 
     def __init__(self):
         case_rule.__init__(self, 'component', '012', 'isComponentEnd')
-        self.case = 'upper'
         self.solution = 'Change component name to '
 
     def _extract(self, oLine):

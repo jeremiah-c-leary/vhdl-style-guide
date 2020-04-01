@@ -76,15 +76,13 @@ process_004
  
 This rule checks the **begin** keyword has proper case.
 
-.. NOTE:: The default is lowercase.
-
-   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
 .. code-block:: vhdl
 
-   PROC_A : process (rd_en, wr_en, data_in, data_out,
+   proc_a : process (rd_en, wr_en, data_in, data_out,
                      rd_full, wr_full
                     ) is
    BEGIN
@@ -93,7 +91,7 @@ This rule checks the **begin** keyword has proper case.
 
 .. code-block:: vhdl
 
-   PROC_A : process (rd_en, wr_en, data_in, data_out,
+   proc_a : process (rd_en, wr_en, data_in, data_out,
                      rd_full, wr_full
                     ) is
    begin
@@ -103,21 +101,19 @@ process_005
  
 This rule checks the **process** keyword has proper case.
 
-.. NOTE:: The default is lowercase.
-
-   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
 .. code-block:: vhdl
 
-   PROC_A : PROCESS (rd_en, wr_en, data_in, data_out,
+   proc_a : PROCESS (rd_en, wr_en, data_in, data_out,
 
 **Fix**
 
 .. code-block:: vhdl
 
-   PROC_A : process (rd_en, wr_en, data_in, data_out,
+   proc_a : process (rd_en, wr_en, data_in, data_out,
 
 process_006
 ###########
@@ -168,42 +164,38 @@ process_008
  
 This rule checks the **end** keyword has proper case.
 
-.. NOTE:: The default is lowercase.
-
-   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
 .. code-block:: vhdl
 
-   END process PROC_A;
+   END process proc_a;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   end process PROC_A;
+   end process proc_a;
 
 process_009
 ###########
  
 This rule checks the **process** keyword has proper case in the **end process** line.
 
-.. NOTE:: The default is lowercase.
-
-   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
 .. code-block:: vhdl
 
-   end PROCESS PROC_A;
+   end PROCESS proc_a;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   end process PROC_A;
+   end process proc_a;
 
 process_010
 ###########
@@ -285,15 +277,13 @@ process_013
  
 This rule checks the **is** keyword has proper case.
 
-.. NOTE:: The default is lowercase.
-
-   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
 .. code-block:: vhdl
 
-   PROC_A : process (rd_en, wr_en, data_in, data_out,
+   proc_a : process (rd_en, wr_en, data_in, data_out,
                      rd_full, wr_full
                     ) IS
    begin
@@ -302,7 +292,7 @@ This rule checks the **is** keyword has proper case.
 
 .. code-block:: vhdl
 
-   PROC_A : process (rd_en, wr_en, data_in, data_out,
+   proc_a : process (rd_en, wr_en, data_in, data_out,
                      rd_full, wr_full
                     ) is
    begin
@@ -384,15 +374,13 @@ process_017
  
 This rule checks the process label has proper case.
 
-.. NOTE:: The default is uppercase.
-
-   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
 .. code-block:: vhdl
 
-   proc_a : process (rd_en, wr_en, data_in, data_out,
+   PROC_A : process (rd_en, wr_en, data_in, data_out,
                      rd_full, wr_full
                     ) is
    begin
@@ -401,7 +389,7 @@ This rule checks the process label has proper case.
 
 .. code-block:: vhdl
 
-   PROC_A : process (rd_en, wr_en, data_in, data_out,
+   proc_a : process (rd_en, wr_en, data_in, data_out,
                      rd_full, wr_full
                     ) is
    begin
@@ -429,21 +417,19 @@ process_019
  
 This rule checks the **end process** label is uppercase.
 
-.. NOTE:: The default is uppercase.
-
-   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
 .. code-block:: vhdl
 
-   end process proc_a;
+   end process PROC_A;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   end process PROC_A;
+   end process proc_a;
 
 process_020
 ###########

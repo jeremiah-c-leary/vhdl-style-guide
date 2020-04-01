@@ -64,9 +64,7 @@ package_004
 
 This rule checks the package keyword has proper case.
 
-.. NOTE::  The default is lowercase.
-
-   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
@@ -103,7 +101,7 @@ package_006
 
 This rule checks the **end package** keywords have proper case.
 
-.. NOTE::  The default is lowercase.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
@@ -139,19 +137,19 @@ package_008
 
 This rule checks the package name has proper case on the end package declaration.
 
-.. NOTE::  The default is uppercase.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
 .. code-block:: vhdl
 
-   end package fifo_pkg;
+   end package FIFO_PKG;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   end package FIFO_PKG;
+   end package fifo_pkg;
 
 package_009
 ###########
@@ -175,19 +173,19 @@ package_010
 
 This rule checks the package name has proper case in the package declaration.
 
-.. NOTE::  The default is uppercase.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
 .. code-block:: vhdl
 
-   package fifo_pkg is
+   package FIFO_PKG is
 
 **Fix**
 
 .. code-block:: vhdl
 
-   package FIFO_PKG is
+   package fifo_pkg is
 
 package_011
 ###########
@@ -234,19 +232,19 @@ package_013
 
 This rule checks the **is** keyword has proper case.
 
-.. NOTE::  The default is lowercase.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
 .. code-block:: vhdl
 
-   package FIFO_PKG IS
+   package fifo_pkg IS
 
 **Fix**
 
 .. code-block:: vhdl
 
-   package FIFO_PKG is
+   package fifo_pkg is
 
 package_014
 ###########
@@ -257,13 +255,13 @@ This rule checks the package name exists on the same line as the **end package**
 
 .. code-block:: vhdl
 
-   end package; 
+   end package;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   end package FIFO_PKG;
+   end package fifo_pkg;
 
 package_015
 ###########
@@ -276,13 +274,13 @@ This rule checks the indent of the end package declaration.
 
    package FIFO_PKG is
  
-      end package FIFO_PKG;
+      end package fifo_pkg;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   package FIFO_PKG is
+   package fifo_pkg is
 
-   end package FIFO_PKG;
+   end package fifo_pkg;
 

@@ -37,15 +37,13 @@ file_002
 
 This rule checks the **file** keyword has proper case.
 
-.. NOTE::  The default is lowercase.
-
-   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
 .. code-block:: vhdl
 
-   architecture RTL of FIFO is
+   architecture rtl of fifo is
 
      FILE defaultImage : load_file_type open read_mode is load_file_name;
 
@@ -55,7 +53,7 @@ This rule checks the **file** keyword has proper case.
 
 .. code-block:: vhdl
 
-   architecture RTL of FIFO is
+   architecture rtl of fifo is
 
      file defaultImage : load_file_type open read_mode is load_file_name;
 

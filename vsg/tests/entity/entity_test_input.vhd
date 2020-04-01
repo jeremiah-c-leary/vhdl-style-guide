@@ -1,6 +1,6 @@
 
 
-entity ENTITY1 is
+entity entity1 is
   generic (
     G_GENERIC1 : std_logic := '0';
     G_GENERIC2 : std_logic := '1'
@@ -13,7 +13,7 @@ entity ENTITY1 is
     port5 : out std_logic;
     port6 : inout std_logic
   );
-end entity ENTITY1
+end entity entity1
 
 
  entITy   entiTY2  IS
@@ -46,7 +46,7 @@ end entity ENTITY1
  );
  END ENTITY entiTY3
 
-entity ENTITY1
+entity entity1
 is
    generic  (
     G_GENERIC1 :   std_logic :=   '0';
@@ -60,9 +60,9 @@ IO_PORT3 : inout   std_logic;
     port4 :   in  std_logic;
         port5 : out std_logic;
     port6 : inout  std_logic);
-End  entity  ENTITY1
+End  entity  entity1
 
-entity ENTITY1 is
+entity entity1 is
  geneRIC (
     A_generic1 :std_logic := '0';
    G_GENERIC2 : std_logic :='1'
@@ -75,9 +75,9 @@ entity ENTITY1 is
     port5 : out std_logic := '0';
     port6 : inout std_logic
    );
-end ENtity ENTITY1
+end ENtity entity1
 
-entity ENTITY1 is
+entity entity1 is
 
   gENEric  (
       G_GENERIC1 : std_logic :=  '0';
@@ -88,10 +88,10 @@ entity ENTITY1 is
     O_PORT2 : out   std_logic;
     IO_PORT3 : inout std_logic
   );
-end   entity ENTITY1
+end   entity entity1
 
 
-entity ENTITY1 is
+entity entity1 is
   Generic (
     A_GENERIC1 : std_logic := '0';
     G_GENERIC2 : std_logic := '1');
@@ -102,7 +102,7 @@ entity ENTITY1 is
   );
 end ENT1;
 
-architecture RTL of ENTITY1 is
+architecture RTL of entity1 is
 
 begin
    end architecture  rtl;
@@ -110,7 +110,7 @@ begin
 
 -- Check for more than one port assigned on a single line
 
-entity ENTITY1 is
+entity entity1 is
   generic (
     G_GENERIC1 : std_logic := '0';
     A_GENERIC2 : std_logic := '1'
@@ -120,11 +120,11 @@ entity ENTITY1 is
     O_PORT2 : out   std_logic;
     IO_PORT3, IO_PORT5 : inout std_logic
   );
-end entity  ENTITY1
+end entity  entity1
 
 -- Check if no generic is present
 
-entity ENTITY1 is
+entity entity1 is
   port (
     I_PORT1 : in    std_logic;
     O_PORT2 : out   std_logic;
@@ -135,7 +135,7 @@ end entity;
 
 -- Check proper alignment of :'s does not cause an error
 
-entity ENTITY1 is
+entity entity1 is
   port (
     I_PORT1  : in    std_logic;
     O_PORT2  : out   std_logic;
@@ -143,5 +143,5 @@ entity ENTITY1 is
   );
 
 
-end entity ENTITY1
+end entity entity1
 

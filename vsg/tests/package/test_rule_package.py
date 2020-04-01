@@ -87,7 +87,8 @@ class testRulePackageMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'package')
         self.assertEqual(oRule.identifier, '008')
-        dExpected = [{'line_number': 31, 'words_to_fix': {'pack'}}]
+        dExpected = [{'line_number': 15, 'words_to_fix': {'PACK'}},
+                     {'line_number': 45, 'words_to_fix': {'PACK'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -105,7 +106,10 @@ class testRulePackageMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'package')
         self.assertEqual(oRule.identifier, '010')
-        dExpected = [{'line_number': 47, 'words_to_fix': {'pack'}}]
+        dExpected = [{'line_number': 2, 'words_to_fix': {'PACK'}},
+                     {'line_number': 18, 'words_to_fix': {'PACK'}},
+                     {'line_number': 32, 'words_to_fix': {'PACK'}},
+                     {'line_number': 60, 'words_to_fix': {'PACK'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 

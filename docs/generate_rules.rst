@@ -90,21 +90,19 @@ generate_005
 
 This rule checks the generate label has proper case.
 
-.. NOTE::  The default is uppercase.
-
-   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
 .. code-block:: vhdl
 
-   ram_array: for i in 0 to 7 generate
+   RAM_ARRAY: for i in 0 to 7 generate
 
 **Fix**
 
 .. code-block:: vhdl
 
-   RAM_ARRAY: for i in 0 to 7 generate
+   ram_array: for i in 0 to 7 generate
 
 
 generate_006
@@ -169,42 +167,38 @@ generate_009
  
 This rule checks the **end** keyword has proper case.
 
-.. NOTE::  The default is lowercase.
-
-   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
 .. code-block:: vhdl
 
-   END generate RAM_ARRAY;
+   END generate ram_array;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   end generate RAM_ARRAY;
+   end generate ram_array;
 
 generate_010
 ############
  
 This rule checks the **generate** keyword has the proper case in the **end generate** line.
 
-.. NOTE::  The default is lowercase.
-
-   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
 .. code-block:: vhdl
 
-   end GENERATE RAM_ARRAY;
+   end GENERATE ram_array;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   end generate RAM_ARRAY;
+   end generate ram_array;
 
 generate_011
 ############
@@ -228,21 +222,19 @@ generate_012
  
 This rule checks the **end generate** label has proper case.
 
-.. NOTE::  The default is uppercase.
-
-   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
 .. code-block:: vhdl
 
-   end generate ram_array;
+   end generate RAM_ARRAY;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   end generate RAM_ARRAY;
+   end generate ram_array;
 
 generate_013
 ############

@@ -69,6 +69,7 @@ class testFixRulePortMethods(unittest.TestCase):
 
     def test_fix_rule_010(self):
         oRule = port.rule_010()
+        oRule.case = 'upper'
         oRule.fix(self.oFile)
         self.assertEqual(self.oFile.lines[28].line, '    IO_PORT3(c_index) : inout       NATURAL;')
         self.assertEqual(self.oFile.lines[29].line, '      PORT4(c_index) :in INTEGER;')

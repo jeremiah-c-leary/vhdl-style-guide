@@ -65,9 +65,7 @@ entity_004
 
 This rule checks the **entity** keyword has proper case.
 
-.. NOTE:: The default is lowercase.
-
-   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
@@ -108,9 +106,7 @@ entity_006
 
 This rule checks the **is** keyword has proper case in the entity declaration.
 
-.. NOTE:: The default is lowercase.
-
-   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
@@ -146,21 +142,19 @@ entity_008
 
 This rule checks the entity name has proper case in the entity declaration.
 
-.. NOTE:: The default is uppercase.
-
-   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
 .. code-block:: vhdl
 
-   entity fifo is
+   entity Fifo is
 
 **Fix**
 
 .. code-block:: vhdl
 
-   entity FIFO is
+   entity fifo is
 
 entity_009
 ##########
@@ -190,21 +184,19 @@ entity_010
 
 This rule checks the **end** keyword has proper case.
 
-.. NOTE:: The default is lowercase.
-
-   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
 .. code-block:: vhdl
 
-   END entity FIFO;
+   END entity fifo;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   end entity FIFO;
+   end entity fifo;
 
 entity_011
 ##########
@@ -228,21 +220,19 @@ entity_012
 
 This rule checks the case of the entity name in the **end entity** statement.
 
-.. NOTE:: The default is uppercase.
-
-   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
 .. code-block:: vhdl
 
-   end entity fifo;
+   end entity FIFO;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   end entity FIFO;
+   end entity fifo;
 
 entity_013
 ##########
@@ -266,9 +256,7 @@ entity_014
 
 This rule checks the **entity** keyword has proper case in the closing of the entity declaration.
 
-.. NOTE:: The default is lowercase.
-
-   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
@@ -425,7 +413,7 @@ This rule checks for the entity name in the **end entity** statement.
 
 .. code-block:: vhdl
 
-   end entity ENTITY_NAME;
+   end entity entity_name;
 
 entity_020
 ##########

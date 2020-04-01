@@ -133,19 +133,19 @@ generic_007
 
 This rule checks the generic names have proper case.
 
-.. NOTE::  The default is uppercase.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
 .. code-block:: vhdl
 
-   width : integer := 32;
+   WIDTH : integer := 32;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   WIDTH : integer := 32;
+   width : integer := 32;
 
 generic_008
 ###########
@@ -171,9 +171,7 @@ generic_009
 
 This rule checks the **generic** keyword has proper case.
  
-.. NOTE::  The default is lowercase.
-
-   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
@@ -271,15 +269,15 @@ generic_017
 
 This rule checks the generic type has proper case if it is a VHDL keyword.
 
-.. NOTE::  The default is lowercase.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
 .. code-block:: vhdl
 
   generic (
-    WIDTH : STD_LOGIC := '0';
-    DEPTH : Std_logic := '1'
+    width : STD_LOGIC := '0';
+    depth : Std_logic := '1'
   );
 
 **Fix**
@@ -287,8 +285,8 @@ This rule checks the generic type has proper case if it is a VHDL keyword.
 .. code-block:: vhdl
 
   generic (
-    WIDTH : std_logic := '0';
-    DEPTH : std_logic := '1'
+    width : std_logic := '0';
+    depth : std_logic := '1'
   );
 
 generic_018

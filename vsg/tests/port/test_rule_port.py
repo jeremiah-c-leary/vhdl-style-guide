@@ -105,6 +105,7 @@ class testRulePortMethods(unittest.TestCase):
 
     def test_rule_010(self):
         oRule = port.rule_010()
+        oRule.case = 'upper'
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'port')
         self.assertEqual(oRule.identifier, '010')

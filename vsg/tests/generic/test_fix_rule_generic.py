@@ -56,8 +56,8 @@ class testFixRuleGenericMethods(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
         self.assertEqual(self.oFile.lines[37].line,'    G_GeneRIC2 :std_logic := \'1\'')
-        self.assertEqual(self.oFile.lines[52].line,'    G_GENERIC1 :   STD_LOGIC := \'0\';')
-        self.assertEqual(self.oFile.lines[53].line,'  G_GENERIC2 : std_logic := \'1\'')
+        self.assertEqual(self.oFile.lines[52].line,'    g_generic1 :   STD_LOGIC := \'0\';')
+        self.assertEqual(self.oFile.lines[53].line,'  g_generic2 : std_logic := \'1\'')
 
     def test_fix_rule_007(self):
         oRule = generic.rule_007()

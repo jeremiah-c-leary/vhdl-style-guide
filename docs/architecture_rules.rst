@@ -62,19 +62,17 @@ architecture_004
 
 This rule checks the proper case of the **architecture** keyword in the architecture declaration.
 
-.. NOTE:: The default is lowercase.
-
-   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
 .. code-block:: vhdl
 
-   ARCHITECTURE RTL of FIFO is
+   ARCHITECTURE rtl of fifo is
 
 .. code-block:: vhdl
 
-   architecture RTL of FIFO is
+   architecture rtl of fifo is
 
 architecture_005
 ################
@@ -162,7 +160,7 @@ architecture_009
 
 This rule checks the **end** and **architecture** keywords have proper case.
 
-.. NOTE:: The default is lowercase.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
@@ -203,22 +201,20 @@ architecture_011
 
 This rule checks the architecture name case in the **end architecture** statement.
 
-.. NOTE:: The default is uppercase.
-
-   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 
 **Violation**
 
 .. code-block:: vhdl
 
-   end architecture architecture_name;
+   end architecture ARCHITECTURE_NAME;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   end architecture ARCHITECTURE_NAME;
+   end architecture architecture_name;
 
 architecture_012
 ################
@@ -242,31 +238,7 @@ architecture_013
 
 This rule checks the case of the architecture name in the architecture declaration.
 
-.. NOTE:: The default is uppercase.
-
-   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   architecture rtl of FIFO is
-
-**Fix**
-
-.. code-block:: vhdl
-
-   architecture RTL of FIFO is
-
-
-architecture_014
-################
-
-This rule checks the case of the entity name in the architecture declaration.
-
-.. NOTE:: The default is uppercase.
-
-   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
@@ -278,7 +250,26 @@ This rule checks the case of the entity name in the architecture declaration.
 
 .. code-block:: vhdl
 
-   architecture RTL of FIFO is
+   architecture rtl of fifo is
+
+architecture_014
+################
+
+This rule checks the case of the entity name in the architecture declaration.
+
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   architecture rtl of FIFO is
+
+**Fix**
+
+.. code-block:: vhdl
+
+   architecture rtl of fifo is
 
 architecture_015
 ################
@@ -373,64 +364,58 @@ architecture_019
 
 This rule checks the proper case of the **of** keyword in the architecture declaration.
 
-.. NOTE:: The default is lowercase.
-
-   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
 .. code-block:: vhdl
 
-   architecture RTL OF FIFO is
+   architecture rtl OF fifo is
 
 **Fix**
 
 .. code-block:: vhdl
 
-   architecture RTL of FIFO is
+   architecture rtl of fifo is
 
 architecture_020
 ################
 
 This rule checks the proper case of the **is** keyword in the architecture declaration.
 
-.. NOTE:: The default is lowercase.
-
-   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
 .. code-block:: vhdl
 
-   architecture RTL of FIFO IS
+   architecture rtl of fifo IS
 
 **Fix**
 
 .. code-block:: vhdl
 
-   architecture RTL of FIFO is
+   architecture rtl of fifo is
 
 architecture_021
 ################
 
 This rule checks the proper case of the **begin** keyword.
 
-.. NOTE:: The default is lowercase.
-
-   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
 .. code-block:: vhdl
 
-   architecture RTL of FIFO is
+   architecture rtl of fifo is
    BEGIN
 
 **Fix**
 
 .. code-block:: vhdl
 
-   architecture RTL of FIFO is
+   architecture rtl of fifo is
    begin
  
 architecture_022

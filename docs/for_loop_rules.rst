@@ -68,23 +68,21 @@ for_loop_003
 
 This rule checks the proper case of the label on a foor loop.
 
-.. NOTE::  The default is uppercase.
-
-   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
 .. code-block:: vhdl
 
-     label : for index in 4 to 23 loop
+     LABEL : for index in 4 to 23 loop
      Label : for index in 0 to 100 loop
 
 **Fix**
 
 .. code-block:: vhdl
 
-     LABEL : for index in 4 to 23 loop
-     LABEL : for index in 0 to 100 loop
+     label : for index in 4 to 23 loop
+     label : for index in 0 to 100 loop
 
 for_loop_004
 ############

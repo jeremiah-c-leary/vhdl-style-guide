@@ -71,9 +71,7 @@ component_004
 
 This rule checks the **component** keyword has proper case.
 
-.. NOTE:: The default is lowercase.
-
-   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
@@ -119,9 +117,7 @@ component_006
 
 This rule checks the **is** keyword has proper case.
 
-.. NOTE:: The default is lowercase.
-
-   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
@@ -161,21 +157,19 @@ component_008
 
 This rule checks the component name has proper case in the component declaration.
 
-.. NOTE:: The default is uppercase.
-
-   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
 .. code-block:: vhdl
 
-   component fifo is
+   component FIFO is
 
 **Fix**
 
 .. code-block:: vhdl
 
-   component FIFO is
+   component fifo is
 
 component_009
 #############
@@ -204,9 +198,7 @@ component_010
 
 This rule checks the **end** keyword has proper case.
 
-.. NOTE:: The default is lowercase.
-
-   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
@@ -242,21 +234,19 @@ component_012
 
 This rule checks the proper case of the component name in the **end component** line.
 
-.. NOTE:: The default is uppercase.
-
-   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
 .. code-block:: vhdl
 
-   end component fifo;
+   end component FIFO;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   end component FIFO;
+   end component fifo;
 
 component_013
 #############
@@ -279,10 +269,7 @@ component_014
 #############
 
 This rule checks the **component** keyword in the **end component** line has proper case.
-
-.. NOTE:: The default is lowercase.
-
-   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
