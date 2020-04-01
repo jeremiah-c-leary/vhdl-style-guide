@@ -21,7 +21,7 @@ class testCheckFunctions(unittest.TestCase):
         oRule = no_blank_check_rule()
         self.assertEqual(oRule.violations, [])
         oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, [1])
+        self.assertEqual(oRule.violations, [utils.add_violation(1)])
 
     def test_get_package_name(self):
         self.assertEqual(check.get_package_name(line.line('end package FIFO;')), 'FIFO')

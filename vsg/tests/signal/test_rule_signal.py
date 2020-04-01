@@ -28,9 +28,19 @@ class testRuleSignalMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'signal')
         self.assertEqual(oRule.identifier, '002')
-        lExpected = [{'line_number': 7, 'words_to_fix': {'Signal'}},
-                     {'line_number': 11, 'words_to_fix': {'siGNal'}},
-                     {'line_number': 13, 'words_to_fix': {'signAL'}}]
+        lExpected = []
+        dViolation = utils.add_violation(7)
+        dViolation['words_to_fix'] = {'Signal'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(11)
+        dViolation['words_to_fix'] = {'siGNal'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(13)
+        dViolation['words_to_fix'] = {'signAL'}
+        lExpected.append(dViolation)
+
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, lExpected)
 
@@ -60,12 +70,31 @@ class testRuleSignalMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'signal')
         self.assertEqual(oRule.identifier, '004')
-        lExpected = [{'line_number': 6, 'words_to_fix': {'a_SIg'}},
-                     {'line_number': 9, 'words_to_fix': {'siG'}},
-                     {'line_number': 12, 'words_to_fix': {'SIg'}},
-                     {'line_number': 15, 'words_to_fix': {'sIg'}},
-                     {'line_number': 20, 'words_to_fix': {'b_Sig2', 'b_siG100'}},
-                     {'line_number': 21, 'words_to_fix': {'a_sIg2'}}]
+        lExpected = []
+        dViolation = utils.add_violation(6,)
+        dViolation['words_to_fix'] = {'a_SIg'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(9,)
+        dViolation['words_to_fix'] = {'siG'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(12)
+        dViolation['words_to_fix'] = {'SIg'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(15)
+        dViolation['words_to_fix'] = {'sIg'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(20)
+        dViolation['words_to_fix'] = {'b_Sig2', 'b_siG100'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(21)
+        dViolation['words_to_fix'] = {'a_sIg2'}
+        lExpected.append(dViolation)
+
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, lExpected)
 
@@ -112,8 +141,15 @@ class testRuleSignalMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'signal')
         self.assertEqual(oRule.identifier, '010')
-        lExpected = [{'line_number': 12, 'words_to_fix': {'STD_LOGIC_VECTOR'}},
-                     {'line_number': 16, 'words_to_fix': {'STD_LOGIC_VECTOR'}}]
+        lExpected = []
+        dViolation = utils.add_violation(12)
+        dViolation['words_to_fix'] = {'STD_LOGIC_VECTOR'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(16)
+        dViolation['words_to_fix'] = {'STD_LOGIC_VECTOR'}
+        lExpected.append(dViolation)
+
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, lExpected)
 
@@ -122,10 +158,18 @@ class testRuleSignalMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'signal')
         self.assertEqual(oRule.identifier, '011')
-        lExpected = [{'line_number': 12, 'words_to_fix': {'STD_LOGIC_VECTOR'}},
-                     {'line_number': 16, 'words_to_fix': {'STD_LOGIC_VECTOR'}},
-                     {'line_number': 23, 'words_to_fix': {'t_User_Defined_Type'}}]
+        lExpected = []
+        dViolation = utils.add_violation(12)
+        dViolation['words_to_fix'] = {'STD_LOGIC_VECTOR'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(16)
+        dViolation['words_to_fix'] = {'STD_LOGIC_VECTOR'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(23)
+        dViolation['words_to_fix'] = {'t_User_Defined_Type'}
+        lExpected.append(dViolation)
+
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, lExpected)
-
-

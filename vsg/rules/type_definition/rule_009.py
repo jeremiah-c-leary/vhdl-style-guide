@@ -23,7 +23,7 @@ class rule_009(rule.rule):
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations[::-1]:
-            iLineNumber = dViolation['lineNumber']
+            iLineNumber = utils.get_violation_linenumber(dViolation)
             utils.split_line_after_word(oFile, iLineNumber, '(')
             oLine = oFile.lines[iLineNumber + 1]
             oLine.isTypeKeyword = False

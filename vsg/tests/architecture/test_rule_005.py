@@ -19,12 +19,26 @@ class testRuleArchitecture(unittest.TestCase):
         self.assertEqual(oRule.name, 'architecture')
         self.assertEqual(oRule.identifier, '005')
 
-        dExpected = [{'lineNumber': 9, 'of_line': 10},
-                     {'lineNumber': 16, 'of_line': 18},
-                     {'lineNumber': 25, 'of_line': 26},
-                     {'lineNumber': 34, 'of_line': 38}]
+        lExpected = []
+
+        dViolation = utils.add_violation(9,)
+        dViolation['of_line'] = 10
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(16)
+        dViolation['of_line'] = 18
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(25)
+        dViolation['of_line'] = 26
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(34)
+        dViolation['of_line'] = 38
+        lExpected.append(dViolation)
+
         oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule.violations, lExpected)
 
     def test_fix_rule_005(self):
         oRule = architecture.rule_005()

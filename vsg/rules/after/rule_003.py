@@ -23,7 +23,7 @@ class rule_003(rule.rule):
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations:
-            oLine = oFile.lines[dViolation['lineNumber']]
+            oLine = utils.get_violating_line(oFile, dViolation)
             sNewLine = re.sub('\s*after.*;', ';', oLine.line, 1, flags=re.IGNORECASE)
             oLine.update_line(sNewLine)
             oLine.hasAfterKeyword = False

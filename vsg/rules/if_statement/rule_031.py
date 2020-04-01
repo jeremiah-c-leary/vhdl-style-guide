@@ -2,11 +2,12 @@
 from vsg import rule
 from vsg import check
 from vsg import fix
+from vsg import utils
 
 
 class rule_031(rule.rule):
     '''
-    If rule 031 checks for a blank line before the "end if" keyword.
+    If rule 031 checks for a blank line before the "if" keyword.
     '''
 
     def __init__(self):
@@ -20,4 +21,4 @@ class rule_031(rule.rule):
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations[::-1]:
-            fix.insert_blank_line_above(self, oFile, dViolation['lineNumber'])
+            fix.insert_blank_line_above(self, oFile, utils.get_violation_linenumber(dViolation))

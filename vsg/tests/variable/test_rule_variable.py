@@ -28,11 +28,21 @@ class testRuleVariableMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'variable')
         self.assertEqual(oRule.identifier, '002')
-        dExpected = [{'line_number': 7, 'words_to_fix': {'Variable'}},
-                     {'line_number': 11, 'words_to_fix': {'varIAble'}},
-                     {'line_number': 13, 'words_to_fix': {'variabLE'}}]
+        lExpected = []
+        dViolation = utils.add_violation(7)
+        dViolation['words_to_fix'] = {'Variable'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(11)
+        dViolation['words_to_fix'] = {'varIAble'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(13)
+        dViolation['words_to_fix'] = {'variabLE'}
+        lExpected.append(dViolation)
+
         oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule.violations, lExpected)
 
     def test_rule_003(self):
         oRule = variable.rule_003()
@@ -48,12 +58,25 @@ class testRuleVariableMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'variable')
         self.assertEqual(oRule.identifier, '004')
-        dExpected = [{'line_number': 6, 'words_to_fix': {'a_SIg'}},
-                     {'line_number': 9, 'words_to_fix': {'siG'}},
-                     {'line_number': 12, 'words_to_fix': {'SIg'}},
-                     {'line_number': 15, 'words_to_fix': {'sIg'}}]
+        lExpected = []
+        dViolation = utils.add_violation(6)
+        dViolation['words_to_fix'] = {'a_SIg'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(9)
+        dViolation['words_to_fix'] = {'siG'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(12)
+        dViolation['words_to_fix'] = {'SIg'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(15)
+        dViolation['words_to_fix'] = {'sIg'}
+        lExpected.append(dViolation)
+
         oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule.violations, lExpected)
 
     def test_rule_005(self):
         oRule = variable.rule_005()
@@ -87,9 +110,17 @@ class testRuleVariableMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'variable')
         self.assertEqual(oRule.identifier, '010')
-        dExpected = [{'line_number': 12, 'words_to_fix': {'STD_LOGIC_VECTOR'}}, {'line_number': 18, 'words_to_fix': {'STD_LOGIC'}}]
+        lExpected = []
+        dViolation = utils.add_violation(12)
+        dViolation['words_to_fix'] = {'STD_LOGIC_VECTOR'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(18)
+        dViolation['words_to_fix'] = {'STD_LOGIC'}
+        lExpected.append(dViolation)
+
         oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule.violations, lExpected)
 
     def test_rule_012_with_default(self):
         oRule = variable.rule_012()

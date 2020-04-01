@@ -2,6 +2,7 @@
 from vsg import rule
 from vsg import fix
 from vsg import check
+from vsg import utils
 
 
 class rule_010(rule.rule):
@@ -18,4 +19,5 @@ class rule_010(rule.rule):
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations[::-1]:
-            fix.remove_blank_lines_above(self, oFile, dViolation['lineNumber'], 'isEndCaseKeyword')
+            iLineNumber = utils.get_violation_linenumber(dViolation)
+            fix.remove_blank_lines_above(self, oFile, iLineNumber, 'isEndCaseKeyword')

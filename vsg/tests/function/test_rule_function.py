@@ -47,7 +47,7 @@ class testRuleFunctionMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'function')
         self.assertEqual(oRule.identifier, '004')
-        dExpected = [{'line_number': 31, 'words_to_fix': {'BEGIN'}}]
+        dExpected = [{'lines':[{'number': 31}], 'words_to_fix': {'BEGIN'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -56,30 +56,30 @@ class testRuleFunctionMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'function')
         self.assertEqual(oRule.identifier, '005')
-        dExpected = [{'line_number': 36, 'words_to_fix': {'FUNCTION'}}]
+        dExpected = [{'lines':[{'number': 36}], 'words_to_fix': {'FUNCTION'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_005_uppercase(self):
         oRule = function.rule_005()
         oRule.case = 'upper'
-        dExpected = [{'line_number': 4, 'words_to_fix': {'function'}},
-                     {'line_number': 16, 'words_to_fix': {'function'}},
-                     {'line_number': 21, 'words_to_fix': {'function'}},
-                     {'line_number': 28, 'words_to_fix': {'function'}},
-                     {'line_number': 47, 'words_to_fix': {'function'}},
-                     {'line_number': 54, 'words_to_fix': {'function'}},
-                     {'line_number': 63, 'words_to_fix': {'function'}},
-                     {'line_number': 70, 'words_to_fix': {'function'}},
-                     {'line_number': 78, 'words_to_fix': {'function'}},
-                     {'line_number': 87, 'words_to_fix': {'function'}},
-                     {'line_number': 97, 'words_to_fix': {'function'}},
-                     {'line_number': 110, 'words_to_fix': {'function'}},
-                     {'line_number': 126, 'words_to_fix': {'function'}},
-                     {'line_number': 128, 'words_to_fix': {'function'}},
-                     {'line_number': 136, 'words_to_fix': {'function'}},
-                     {'line_number': 141, 'words_to_fix': {'function'}},
-                     {'line_number': 146, 'words_to_fix': {'function'}}]
+        dExpected = [{'lines':[{'number': 4}], 'words_to_fix': {'function'}},
+                     {'lines':[{'number': 16}], 'words_to_fix': {'function'}},
+                     {'lines':[{'number': 21}], 'words_to_fix': {'function'}},
+                     {'lines':[{'number': 28}], 'words_to_fix': {'function'}},
+                     {'lines':[{'number': 47}], 'words_to_fix': {'function'}},
+                     {'lines':[{'number': 54}], 'words_to_fix': {'function'}},
+                     {'lines':[{'number': 63}], 'words_to_fix': {'function'}},
+                     {'lines':[{'number': 70}], 'words_to_fix': {'function'}},
+                     {'lines':[{'number': 78}], 'words_to_fix': {'function'}},
+                     {'lines':[{'number': 87}], 'words_to_fix': {'function'}},
+                     {'lines':[{'number': 97}], 'words_to_fix': {'function'}},
+                     {'lines':[{'number': 110}], 'words_to_fix': {'function'}},
+                     {'lines':[{'number': 126}], 'words_to_fix': {'function'}},
+                     {'lines':[{'number': 128}], 'words_to_fix': {'function'}},
+                     {'lines':[{'number': 136}], 'words_to_fix': {'function'}},
+                     {'lines':[{'number': 141}], 'words_to_fix': {'function'}},
+                     {'lines':[{'number': 146}], 'words_to_fix': {'function'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 

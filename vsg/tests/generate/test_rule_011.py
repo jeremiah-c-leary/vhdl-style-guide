@@ -19,39 +19,113 @@ class testRuleGenerateMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'generate')
         self.assertEqual(oRule.identifier, '011')
 
-        dExpected = [{'lineNumber': 15, 'label': 'LABEL2'},
-                     {'lineNumber': 16, 'label': 'LABEL1'},
+        lExpected = []
 
-                     {'lineNumber': 22, 'label': 'LABEL2A1'},
-                     {'lineNumber': 25, 'label': 'LABEL2A2A'},
-                     {'lineNumber': 26, 'label': 'LABEL2A2'},
-                     {'lineNumber': 28, 'label': 'LABEL2A3'},
-                     {'lineNumber': 29, 'label': 'LABEL2A'},
+        dViolation = utils.add_violation(15)
+        dViolation['label'] = 'LABEL2'
+        lExpected.append(dViolation)
 
-                     {'lineNumber': 32, 'label': 'LABEL2B1'},
-                     {'lineNumber': 34, 'label': 'LABEL2B2'},
-                     {'lineNumber': 37, 'label': 'LABEL2B3A'},
-                     {'lineNumber': 38, 'label': 'LABEL2B3'},
-                     {'lineNumber': 39, 'label': 'LABEL2B'},
+        dViolation = utils.add_violation(16)
+        dViolation['label'] = 'LABEL1'
+        lExpected.append(dViolation)
 
-                     {'lineNumber': 43, 'label': 'LABEL2C1A'},
-                     {'lineNumber': 44, 'label': 'LABEL2C1'},
-                     {'lineNumber': 46, 'label': 'LABEL2C2'},
-                     {'lineNumber': 48, 'label': 'LABEL2C3'},
-                     {'lineNumber': 49, 'label': 'LABEL2C'},
 
-                     {'lineNumber': 52, 'label': 'LABEL2D1'},
-                     {'lineNumber': 54, 'label': 'LABEL2D2'},
-                     {'lineNumber': 56, 'label': 'LABEL2D3'},
-                     {'lineNumber': 57, 'label': 'LABEL2D'},
+        dViolation = utils.add_violation(22)
+        dViolation['label'] = 'LABEL2A1'
+        lExpected.append(dViolation)
 
-                     {'lineNumber': 58, 'label': 'LABEL1'},
+        dViolation = utils.add_violation(25)
+        dViolation['label'] = 'LABEL2A2A'
+        lExpected.append(dViolation)
 
-                     {'lineNumber': 65, 'label': 'LABEL2'},
-                     {'lineNumber': 66, 'label': 'LABEL1'}]
+        dViolation = utils.add_violation(26)
+        dViolation['label'] = 'LABEL2A2'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(28)
+        dViolation['label'] = 'LABEL2A3'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(29)
+        dViolation['label'] = 'LABEL2A'
+        lExpected.append(dViolation)
+
+
+        dViolation = utils.add_violation(32)
+        dViolation['label'] = 'LABEL2B1'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(34)
+        dViolation['label'] = 'LABEL2B2'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(37)
+        dViolation['label'] = 'LABEL2B3A'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(38)
+        dViolation['label'] = 'LABEL2B3'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(39)
+        dViolation['label'] = 'LABEL2B'
+        lExpected.append(dViolation)
+
+
+        dViolation = utils.add_violation(43)
+        dViolation['label'] = 'LABEL2C1A'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(44)
+        dViolation['label'] = 'LABEL2C1'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(46)
+        dViolation['label'] = 'LABEL2C2'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(48)
+        dViolation['label'] = 'LABEL2C3'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(49)
+        dViolation['label'] = 'LABEL2C'
+        lExpected.append(dViolation)
+
+
+        dViolation = utils.add_violation(52)
+        dViolation['label'] = 'LABEL2D1'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(54)
+        dViolation['label'] = 'LABEL2D2'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(56)
+        dViolation['label'] = 'LABEL2D3'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(57)
+        dViolation['label'] = 'LABEL2D'
+        lExpected.append(dViolation)
+
+
+        dViolation = utils.add_violation(58)
+        dViolation['label'] = 'LABEL1'
+        lExpected.append(dViolation)
+
+
+        dViolation = utils.add_violation(65)
+        dViolation['label'] = 'LABEL2'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(66)
+        dViolation['label'] = 'LABEL1'
+        lExpected.append(dViolation)
+
 
         oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule.violations, lExpected)
 
     def test_fix_rule_011(self):
         oRule = generate.rule_011()

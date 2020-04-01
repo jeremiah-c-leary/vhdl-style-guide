@@ -48,21 +48,38 @@ class testRuleProcessMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'process')
         self.assertEqual(oRule.identifier, '004')
-        dExpected = [{'line_number': 20, 'words_to_fix': {'begIN'}},
-                     {'line_number': 28, 'words_to_fix': {'beGIn'}}]
+        lExpected = []
+        dViolation = utils.add_violation(20)
+        dViolation['words_to_fix'] = {'begIN'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(28)
+        dViolation['words_to_fix'] = {'beGIn'}
+        lExpected.append(dViolation)
+
         oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule.violations, lExpected)
 
     def test_rule_005(self):
         oRule = process.rule_005()
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'process')
         self.assertEqual(oRule.identifier, '005')
-        dExpected = [{'line_number': 17, 'words_to_fix': {'prOCess'}},
-                     {'line_number': 24, 'words_to_fix': {'Process'}},
-                     {'line_number': 32, 'words_to_fix': {'proCEss'}}]
+        lExpected = []
+        dViolation = utils.add_violation(17)
+        dViolation['words_to_fix'] = {'prOCess'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(24)
+        dViolation['words_to_fix'] = {'Process'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(32)
+        dViolation['words_to_fix'] = {'proCEss'}
+        lExpected.append(dViolation)
+
         oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule.violations, lExpected)
 
     def test_rule_006(self):
         oRule = process.rule_006()
@@ -87,20 +104,34 @@ class testRuleProcessMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'process')
         self.assertEqual(oRule.identifier, '008')
-        dExpected = [{'line_number': 15, 'words_to_fix': {'eNd'}},
-                     {'line_number': 36, 'words_to_fix': {'End'}}]
+        lExpected = []
+        dViolation = utils.add_violation(15)
+        dViolation['words_to_fix'] = {'eNd'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(36)
+        dViolation['words_to_fix'] = {'End'}
+        lExpected.append(dViolation)
+
         oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule.violations, lExpected)
 
     def test_rule_009(self):
         oRule = process.rule_009()
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'process')
         self.assertEqual(oRule.identifier, '009')
-        dExpected = [{'line_number': 22, 'words_to_fix': {'proCEss'}},
-                     {'line_number': 42, 'words_to_fix': {'Process'}}]
+        lExpected = []
+        dViolation = utils.add_violation(22)
+        dViolation['words_to_fix'] = {'proCEss'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(42)
+        dViolation['words_to_fix'] = {'Process'}
+        lExpected.append(dViolation)
+
         oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule.violations, lExpected)
 
     def test_rule_010(self):
         oRule = process.rule_010()
@@ -134,11 +165,21 @@ class testRuleProcessMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'process')
         self.assertEqual(oRule.identifier, '013')
-        dExpected = [{'line_number': 6, 'words_to_fix': {'IS'}},
-                     {'line_number': 27, 'words_to_fix': {'iS'}},
-                     {'line_number': 33, 'words_to_fix': {'Is'}}]
+        lExpected = []
+        dViolation = utils.add_violation(6,)
+        dViolation['words_to_fix'] = {'IS'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(27)
+        dViolation['words_to_fix'] = {'iS'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(33)
+        dViolation['words_to_fix'] = {'Is'}
+        lExpected.append(dViolation)
+
         oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule.violations, lExpected)
 
     def test_rule_014(self):
         oRule = process.rule_014()
@@ -172,37 +213,44 @@ class testRuleProcessMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'process')
         self.assertEqual(oRule.identifier, '017')
-        dExpected = [{'line_number': 46, 'words_to_fix': {'proc_name'}}]
+        lExpected = []
+        dViolation = utils.add_violation(46)
+        dViolation['words_to_fix'] = {'proc_name'}
+        lExpected.append(dViolation)
+
         oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule.violations, lExpected)
 
     def test_rule_018(self):
         oRule = process.rule_018()
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'process')
         self.assertEqual(oRule.identifier, '018')
-        dExpected = [9,15,22,30,36,42,53,60,132]
-        dExpected = []
-        dExpected.append(utils.add_violation(9))
-        dExpected.append(utils.add_violation(15))
-        dExpected.append(utils.add_violation(22))
-        dExpected.append(utils.add_violation(30))
-        dExpected.append(utils.add_violation(36))
-        dExpected.append(utils.add_violation(42))
-        dExpected.append(utils.add_violation(53))
-        dExpected.append(utils.add_violation(60))
-        dExpected.append(utils.add_violation(132))
+        lExpected = []
+        lExpected.append(utils.add_violation(9))
+        lExpected.append(utils.add_violation(15))
+        lExpected.append(utils.add_violation(22))
+        lExpected.append(utils.add_violation(30))
+        lExpected.append(utils.add_violation(36))
+        lExpected.append(utils.add_violation(42))
+        lExpected.append(utils.add_violation(53))
+        lExpected.append(utils.add_violation(60))
+        lExpected.append(utils.add_violation(132))
         oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule.violations, lExpected)
 
     def test_rule_019(self):
         oRule = process.rule_019()
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'process')
         self.assertEqual(oRule.identifier, '019')
-        dExpected = [{'line_number': 48, 'words_to_fix': {'proc_name'}}]
+        lExpected = []
+        dViolation = utils.add_violation(48)
+        dViolation['words_to_fix'] = {'proc_name'}
+        lExpected.append(dViolation)
+
         oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule.violations, lExpected)
 
     def test_rule_020(self):
         oRule = process.rule_020()

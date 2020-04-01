@@ -15,7 +15,7 @@ class testRuleConcurrentWithParenthesis(unittest.TestCase):
 
     def test_rule_003(self):
         oRule = concurrent.rule_003()
-        dExpected = [32,35,39,42,45,46,49,50,51,52,55,56]
+        dExpected = utils.add_violation_list([32,35,39,42,45,46,49,50,51,52,55,56])
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
 

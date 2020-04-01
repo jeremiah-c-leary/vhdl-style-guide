@@ -38,7 +38,7 @@ class rule_015(rule.rule):
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations[::-1]:
-            iLineNumber = dViolation['lineNumber']
+            iLineNumber = utils.get_violation_linenumber(dViolation)
             utils.remove_lines(oFile, iLineNumber, dViolation['endLine'])
             iNumLines = dViolation['line'].count(',') + 1
             lSignals = _extract_signals(dViolation['line'])

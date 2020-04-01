@@ -49,10 +49,17 @@ class testRuleLibraryMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'library')
         self.assertEqual(oRule.identifier, '004')
 
-        dExpected = [{'line_number': 9, 'words_to_fix': {'Library'}},
-                     {'line_number': 20, 'words_to_fix': {'LIBRARY'}}]
+        lExpected = []
+        dViolation = utils.add_violation(9)
+        dViolation['words_to_fix'] = {'Library'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(20)
+        dViolation['words_to_fix'] = {'LIBRARY'}
+        lExpected.append(dViolation)
+
         oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule.violations, lExpected)
 
     def test_rule_005(self):
         oRule = library.rule_005()
@@ -60,11 +67,11 @@ class testRuleLibraryMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'library')
         self.assertEqual(oRule.identifier, '005')
 
-        dExpected = [{'line_number': 26, 'words_to_fix': {'USE'}},
-                     {'line_number': 27, 'words_to_fix': {'Use'}},
-                     {'line_number': 30, 'words_to_fix': {'uSe'}}]
+        lExpected = [{'lines':[{'number': 26}], 'words_to_fix': {'USE'}},
+                     {'lines':[{'number': 27}], 'words_to_fix': {'Use'}},
+                     {'lines':[{'number': 30}], 'words_to_fix': {'uSe'}}]
         oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule.violations, lExpected)
 
     def test_rule_006(self):
         oRule = library.rule_006()
@@ -102,7 +109,7 @@ class testRuleLibraryMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'library')
         self.assertEqual(oRule.identifier, '009')
-        dExpected = [33]
+        lExpected = [{'lines':[{'number': 33}], 'indent': 1}]
         oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule.violations, lExpected)
 

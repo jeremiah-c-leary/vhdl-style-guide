@@ -20,13 +20,34 @@ class testFixRuleSignalMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'signal')
         self.assertEqual(oRule.identifier, '012')
-        dExpected = utils.add_violation_list([5,6,7,8])
-        dExpected = [{'comma': 16, 'lineNumber': 5, 'max': 23, 'signal': 18},
-                     {'comma': 17, 'lineNumber': 6, 'max': 23, 'signal': 19},
-                     {'comma': 18, 'lineNumber': 7, 'max': 23, 'signal': 20},
-                     {'comma': 19, 'lineNumber': 8, 'max': 23, 'signal': 21}]
+        lExpected = []
+ 
+        dViolation = utils.add_violation(5)
+        dViolation['comma'] = 16
+        dViolation['max'] = 23
+        dViolation['signal'] = 18
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(6)
+        dViolation['comma'] = 17
+        dViolation['max'] = 23
+        dViolation['signal'] = 19
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(7)
+        dViolation['comma'] = 18
+        dViolation['max'] = 23
+        dViolation['signal'] = 20
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(8)
+        dViolation['comma'] = 19
+        dViolation['max'] = 23
+        dViolation['signal'] = 21
+        lExpected.append(dViolation)
+
         oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule.violations, lExpected)
 
     def test_fix_rule_012(self):
         oRule = signal.rule_012()

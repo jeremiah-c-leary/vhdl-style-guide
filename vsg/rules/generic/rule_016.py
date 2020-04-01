@@ -24,6 +24,6 @@ class rule_016(rule.rule):
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations[::-1]:
-            iLineNumber = dViolation['lineNumber']
+            iLineNumber = utils.get_violation_linenumber(dViolation)
             for i in range(0, oFile.lines[iLineNumber].line.count(';')):
                 utils.split_line_after_word(oFile, iLineNumber + i, ';')

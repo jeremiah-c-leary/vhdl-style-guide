@@ -28,7 +28,7 @@ class rule_003(rule.rule):
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations:
-            fix.enforce_one_space_before_word(self, oFile.lines[dViolation['lineNumber']], '\(')
+            fix.enforce_one_space_before_word(self, utils.get_violating_line(oFile, dViolation), '\(')
 
 
 def function_has_parameters(sString):

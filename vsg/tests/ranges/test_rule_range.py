@@ -16,46 +16,113 @@ class testRuleRange(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'range')
         self.assertEqual(oRule.identifier, '001')
-        dExpected = [{'line_number': 17, 'words_to_fix': {'downTo'}},
-                     {'line_number': 21, 'words_to_fix': {'Downto'}},
-                     {'line_number': 28, 'words_to_fix': {'DOWNTO'}},
-                     {'line_number': 33, 'words_to_fix': {'dOWnto'}}]
+        lExpected = []
+        dViolation = utils.add_violation(17)
+        dViolation['words_to_fix'] = {'downTo'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(21)
+        dViolation['words_to_fix'] = {'Downto'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(28)
+        dViolation['words_to_fix'] = {'DOWNTO'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(33)
+        dViolation['words_to_fix'] = {'dOWnto'}
+        lExpected.append(dViolation)
+
         oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule.violations, lExpected)
 
     def test_rule_001_with_uppercase(self):
         oRule = ranges.rule_001()
         oRule.case = 'upper'
-        dExpected = [{'line_number': 5, 'words_to_fix': {'downto'}},
-                     {'line_number': 9, 'words_to_fix': {'downto'}},
-                     {'line_number': 17, 'words_to_fix': {'downTo'}},
-                     {'line_number': 21, 'words_to_fix': {'Downto'}},
-                     {'line_number': 29, 'words_to_fix': {'downto'}},
-                     {'line_number': 33, 'words_to_fix': {'dOWnto'}},
-                     {'line_number': 34, 'words_to_fix': {'downto'}}]
+        lExpected = []
+        dViolation = utils.add_violation(5,)
+        dViolation['words_to_fix'] = {'downto'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(9,)
+        dViolation['words_to_fix'] = {'downto'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(17)
+        dViolation['words_to_fix'] = {'downTo'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(21)
+        dViolation['words_to_fix'] = {'Downto'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(29)
+        dViolation['words_to_fix'] = {'downto'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(33)
+        dViolation['words_to_fix'] = {'dOWnto'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(34)
+        dViolation['words_to_fix'] = {'downto'}
+        lExpected.append(dViolation)
+
         oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule.violations, lExpected)
 
     def test_rule_002_with_default(self):
         oRule = ranges.rule_002()
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'range')
         self.assertEqual(oRule.identifier, '002')
-        dExpected = [{'line_number': 18, 'words_to_fix': {'TO'}},
-                     {'line_number': 22, 'words_to_fix': {'tO'}},
-                     {'line_number': 30, 'words_to_fix': {'To'}},
-                     {'line_number': 35, 'words_to_fix': {'TO'}}]
+        lExpected = []
+        dViolation = utils.add_violation(18)
+        dViolation['words_to_fix'] = {'TO'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(22)
+        dViolation['words_to_fix'] = {'tO'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(30)
+        dViolation['words_to_fix'] = {'To'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(35)
+        dViolation['words_to_fix'] = {'TO'}
+        lExpected.append(dViolation)
+
         oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule.violations, lExpected)
 
     def test_rule_002_with_uppercase(self):
         oRule = ranges.rule_002()
         oRule.case = 'upper'
-        dExpected = [{'line_number': 6, 'words_to_fix': {'to'}},
-                     {'line_number': 10, 'words_to_fix': {'to'}},
-                     {'line_number': 22, 'words_to_fix': {'tO'}},
-                     {'line_number': 30, 'words_to_fix': {'To'}},
-                     {'line_number': 31, 'words_to_fix': {'to'}},
-                     {'line_number': 36, 'words_to_fix': {'to'}}]
+        lExpected = []
+        dViolation = utils.add_violation(6,)
+        dViolation['words_to_fix'] = {'to'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(10)
+        dViolation['words_to_fix'] = {'to'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(22)
+        dViolation['words_to_fix'] = {'tO'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(30)
+        dViolation['words_to_fix'] = {'To'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(31)
+        dViolation['words_to_fix'] = {'to'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(36)
+        dViolation['words_to_fix'] = {'to'}
+        lExpected.append(dViolation)
+
         oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule.violations, lExpected)

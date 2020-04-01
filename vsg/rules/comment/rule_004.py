@@ -30,7 +30,7 @@ class rule_004(rule.rule):
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations:
-            oLine = oFile.lines[dViolation['lineNumber']]
+            oLine = utils.get_violating_line(oFile, dViolation)
             match = has_comment_re.match(oLine.line)
             idx = match.start("comment")
             oLine.update_line(" ".join((oLine.line[:idx], oLine.line[idx:])))

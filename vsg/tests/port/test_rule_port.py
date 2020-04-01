@@ -109,23 +109,69 @@ class testRulePortMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'port')
         self.assertEqual(oRule.identifier, '010')
 
-        dExpected = [{'line_number': 12, 'words_to_fix': {'use_4'}},
-                     {'line_number': 13, 'words_to_fix': {'port5'}},
-                     {'line_number': 14, 'words_to_fix': {'port6'}},
-                     {'line_number': 26, 'words_to_fix': {'i_port1'}},
-                     {'line_number': 27, 'words_to_fix': {'o_port2'}},
-                     {'line_number': 28, 'words_to_fix': {'io_port3'}},
-                     {'line_number': 40, 'words_to_fix': {'i_port1'}},
-                     {'line_number': 41, 'words_to_fix': {'o_port2'}},
-                     {'line_number': 42, 'words_to_fix': {'io_port3'}},
-                     {'line_number': 60, 'words_to_fix': {'port4'}},
-                     {'line_number': 61, 'words_to_fix': {'port5'}},
-                     {'line_number': 62, 'words_to_fix': {'port6'}},
-                     {'line_number': 74, 'words_to_fix': {'port4'}},
-                     {'line_number': 75, 'words_to_fix': {'port5'}},
-                     {'line_number': 76, 'words_to_fix': {'port6'}}]
+        lExpected = []
+        dViolation = utils.add_violation(12)
+        dViolation['words_to_fix'] = {'use_4'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(13)
+        dViolation['words_to_fix'] = {'port5'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(14)
+        dViolation['words_to_fix'] = {'port6'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(26)
+        dViolation['words_to_fix'] = {'i_port1'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(27)
+        dViolation['words_to_fix'] = {'o_port2'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(28)
+        dViolation['words_to_fix'] = {'io_port3'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(40)
+        dViolation['words_to_fix'] = {'i_port1'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(41)
+        dViolation['words_to_fix'] = {'o_port2'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(42)
+        dViolation['words_to_fix'] = {'io_port3'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(60)
+        dViolation['words_to_fix'] = {'port4'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(61)
+        dViolation['words_to_fix'] = {'port5'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(62)
+        dViolation['words_to_fix'] = {'port6'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(74)
+        dViolation['words_to_fix'] = {'port4'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(75)
+        dViolation['words_to_fix'] = {'port5'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(76)
+        dViolation['words_to_fix'] = {'port6'}
+        lExpected.append(dViolation)
+
         oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule.violations, lExpected)
 
     def test_rule_011(self):
         oRule = port.rule_011()
@@ -195,11 +241,21 @@ class testRulePortMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'port')
         self.assertEqual(oRule.identifier, '017')
 
-        dExpected = [{'line_number': 25, 'words_to_fix': {'PORt'}},
-                     {'line_number': 39, 'words_to_fix': {'PORt'}},
-                     {'line_number': 98, 'words_to_fix': {'Port'}}]
+        lExpected = []
+        dViolation = utils.add_violation(25)
+        dViolation['words_to_fix'] = {'PORt'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(39)
+        dViolation['words_to_fix'] = {'PORt'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(98)
+        dViolation['words_to_fix'] = {'Port'}
+        lExpected.append(dViolation)
+
         oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule.violations, lExpected)
 
     def test_rule_018(self):
         oRule = port.rule_018()
@@ -207,15 +263,37 @@ class testRulePortMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'port')
         self.assertEqual(oRule.identifier, '018')
 
-        dExpected = [{'line_number': 26, 'words_to_fix': {'SIGNED'}},
-                     {'line_number': 27, 'words_to_fix': {'STD_LOGIC'}},
-                     {'line_number': 28, 'words_to_fix': {'NATURAL'}},
-                     {'line_number': 29, 'words_to_fix': {'INTEGER'}},
-                     {'line_number': 30, 'words_to_fix': {'STD_LOGIC_VECTOR'}},
-                     {'line_number': 31, 'words_to_fix': {'UNSIGNED'}},
-                     {'line_number': 44, 'words_to_fix': {'STD_LOGIC'}}]
+        lExpected = []
+        dViolation = utils.add_violation(26)
+        dViolation['words_to_fix'] = {'SIGNED'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(27)
+        dViolation['words_to_fix'] = {'STD_LOGIC'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(28)
+        dViolation['words_to_fix'] = {'NATURAL'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(29)
+        dViolation['words_to_fix'] = {'INTEGER'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(30)
+        dViolation['words_to_fix'] = {'STD_LOGIC_VECTOR'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(31)
+        dViolation['words_to_fix'] = {'UNSIGNED'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(44)
+        dViolation['words_to_fix'] = {'STD_LOGIC'}
+        lExpected.append(dViolation)
+
         oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule.violations, lExpected)
 
     def test_rule_019(self):
         oRule = port.rule_019()
@@ -223,12 +301,25 @@ class testRulePortMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'port')
         self.assertEqual(oRule.identifier, '019')
 
-        dExpected = [{'line_number': 40, 'words_to_fix': {'IN'}},
-                     {'line_number': 43, 'words_to_fix': {'iN'}},
-                     {'line_number': 44, 'words_to_fix': {'oUt'}},
-                     {'line_number': 45, 'words_to_fix': {'inOut'}}]
+        lExpected = []
+        dViolation = utils.add_violation(40)
+        dViolation['words_to_fix'] = {'IN'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(43)
+        dViolation['words_to_fix'] = {'iN'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(44)
+        dViolation['words_to_fix'] = {'oUt'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(45)
+        dViolation['words_to_fix'] = {'inOut'}
+        lExpected.append(dViolation)
+
         oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule.violations, lExpected)
 
     def test_rule_020(self):
         oRule = port.rule_020()

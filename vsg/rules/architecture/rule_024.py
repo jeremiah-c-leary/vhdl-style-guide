@@ -33,7 +33,7 @@ class rule_024(rule.rule):
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations:
-            oLine = oFile.lines[dViolation['lineNumber']]
+            oLine = utils.get_violating_line(oFile, dViolation)
             sLine = oLine.line
             sLabel = dViolation['label'] 
             oLine.update_line(sLine.replace(';', ' ' + sLabel.upper() + ';', 1))

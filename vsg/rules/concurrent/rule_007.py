@@ -32,7 +32,7 @@ class rule_007(rule.rule):
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations[::-1]:
-            iLineNumber = dViolation['lineNumber']
+            iLineNumber = utils.get_violation_linenumber(dViolation)
             for iSliceIndex in dViolation['slice_index'][::-1]:
                 oLine = oFile.lines[iLineNumber]
                 utils.copy_line(oFile, iLineNumber)

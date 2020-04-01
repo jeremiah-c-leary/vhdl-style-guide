@@ -22,7 +22,7 @@ class rule_017(rule.rule):
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations[::-1]:
-            iLineNumber = dViolation['lineNumber']
+            iLineNumber = utils.get_violation_linenumber(dViolation)
             utils.copy_line(oFile, iLineNumber)
             oLine = oFile.lines[iLineNumber]
             oLine.update_line(oLine.line.split('(')[0] + ' (')

@@ -25,7 +25,7 @@ class rule_033(rule.rule):
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations:
-            iLineNumber = dViolation['lineNumber']
+            iLineNumber = utils.get_violation_linenumber(dViolation)
             sLine = oFile.lines[iLineNumber].line
             sLine = re.sub(r'(^\s*\w+\s*:)(\s*)component(\s+)', r'\1 ', sLine, flags=re.IGNORECASE)
             oFile.lines[iLineNumber].update_line(sLine)

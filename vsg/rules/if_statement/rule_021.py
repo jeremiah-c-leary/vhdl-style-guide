@@ -24,7 +24,7 @@ class rule_021(rule.rule):
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations[::-1]:
-            iLineNumber = dViolation['lineNumber']
+            iLineNumber = utils.get_violation_linenumber(dViolation)
             utils.split_line_before_word(oFile, iLineNumber, 'else')
             oFile.lines[iLineNumber].isElseKeyword = False
             oFile.lines[iLineNumber + 1].isIfKeyword = False

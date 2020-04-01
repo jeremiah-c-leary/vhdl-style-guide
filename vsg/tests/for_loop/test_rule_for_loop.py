@@ -35,19 +35,19 @@ class testRuleForLoopMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'for_loop')
         self.assertEqual(oRule.identifier, '003')
-        dExpected = [{'line_number': 36, 'words_to_fix': {'label'}},
-                     {'line_number': 40, 'words_to_fix': {'Label'}}]
+        dExpected = [{'lines':[{'number': 36}], 'words_to_fix': {'label'}},
+                     {'lines':[{'number': 40}], 'words_to_fix': {'Label'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_003_lowercase(self):
         oRule = for_loop.rule_003()
         oRule.case = 'lower'
-        dExpected = [{'line_number': 40, 'words_to_fix': {'Label'}},
-                     {'line_number': 44, 'words_to_fix': {'LABEL'}},
-                     {'line_number': 48, 'words_to_fix': {'LABEL'}},
-                     {'line_number': 52, 'words_to_fix': {'LABEL'}},
-                     {'line_number': 56, 'words_to_fix': {'LABEL'}}]
+        dExpected = [{'lines':[{'number': 40}], 'words_to_fix': {'Label'}},
+                     {'lines':[{'number': 44}], 'words_to_fix': {'LABEL'}},
+                     {'lines':[{'number': 48}], 'words_to_fix': {'LABEL'}},
+                     {'lines':[{'number': 52}], 'words_to_fix': {'LABEL'}},
+                     {'lines':[{'number': 56}], 'words_to_fix': {'LABEL'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -56,10 +56,17 @@ class testRuleForLoopMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'for_loop')
         self.assertEqual(oRule.identifier, '004')
-        dExpected = [{'lineNumber': 40, 'label': 'Label'},
-                     {'lineNumber': 48, 'label': 'LABEL'}]
+        lExpected = []
+        dViolation = utils.add_violation(40)
+        dViolation['label'] = 'Label'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(48)
+        dViolation['label'] = 'LABEL'
+        lExpected.append(dViolation)
+
         oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule.violations, lExpected)
 
     def test_rule_005(self):
         oRule = for_loop.rule_005()

@@ -90,10 +90,10 @@ class testRuleGenericMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'generic')
         self.assertEqual(oRule.identifier, '007')
 
-        dExpected = [{'line_number': 22, 'words_to_fix': {'G_generic2'}},
-                     {'line_number': 36, 'words_to_fix': {'g_generIC1'}},
-                     {'line_number': 37, 'words_to_fix': {'G_GeneRIC2'}},
-                     {'line_number': 67, 'words_to_fix': {'A_generic1'}}]
+        dExpected = [{'lines':[{'number': 22}], 'words_to_fix': {'G_generic2'}},
+                     {'lines':[{'number': 36}], 'words_to_fix': {'g_generIC1'}},
+                     {'lines':[{'number': 37}], 'words_to_fix': {'G_GeneRIC2'}},
+                     {'lines':[{'number': 67}], 'words_to_fix': {'A_generic1'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -113,9 +113,9 @@ class testRuleGenericMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'generic')
         self.assertEqual(oRule.identifier, '009')
 
-        dExpected = [{'line_number': 66, 'words_to_fix': {'geneRIC'}},
-                     {'line_number': 82, 'words_to_fix': {'gENEric'}},
-                     {'line_number': 95, 'words_to_fix': {'Generic'}}]
+        dExpected = [{'lines':[{'number': 66}], 'words_to_fix': {'geneRIC'}},
+                     {'lines':[{'number': 82}], 'words_to_fix': {'gENEric'}},
+                     {'lines':[{'number': 95}], 'words_to_fix': {'Generic'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -170,8 +170,8 @@ class testRuleGenericMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'generic')
         self.assertEqual(oRule.identifier, '017')
 
-        dExpected = [{'line_number': 52, 'words_to_fix': {'STD_LOGIC'}},
-                     {'line_number': 96, 'words_to_fix': {'STD_LOGIC'}}]
+        dExpected = [{'lines':[{'number': 52}], 'words_to_fix': {'STD_LOGIC'}},
+                     {'lines':[{'number': 96}], 'words_to_fix': {'STD_LOGIC'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
