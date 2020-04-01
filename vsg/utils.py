@@ -1056,16 +1056,16 @@ def get_violation_linenumber(dViolation):
     return dViolation['lines'][0]['number']
 
 
-def  get_violating_line(oFile, dViolation):
-     '''
-     Returns a line from the file where a violation has occured.
+def get_violating_line(oFile, dViolation):
+    '''
+    Returns a line from the file where a violation has occured.
 
-     Parameters:
+    Parameters:
 
-       oFile : (File object)
+      oFile : (File object)
 
-       dViolation : (Violation dictionary)
+      dViolation : (Violation dictionary)
 
-     Return: Line Object
-     '''
-     return oFile.lines[get_violation_linenumber(dViolation)]
+    Return: Line Object
+    '''
+    return oFile.lines[get_violation_linenumber(dViolation)]
