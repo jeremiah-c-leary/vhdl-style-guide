@@ -36,6 +36,7 @@ class testFixRuleForLoopMethods(unittest.TestCase):
 
     def test_fix_rule_003_uppercase(self):
         oRule = for_loop.rule_003()
+        oRule.case = 'upper'
         dExpected = []
         oRule.fix(self.oFile)
         self.assertEqual(self.oFile.lines[36].line, '    LABEL : for index in 10 to 200 loop')
@@ -47,7 +48,6 @@ class testFixRuleForLoopMethods(unittest.TestCase):
 
     def test_fix_rule_003_lowercase(self):
         oRule = for_loop.rule_003()
-        oRule.case = 'lower'
         dExpected = []
         oRule.fix(self.oFile)
         self.assertEqual(self.oFile.lines[36].line, '    label : for index in 10 to 200 loop')

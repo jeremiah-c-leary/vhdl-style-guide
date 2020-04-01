@@ -77,6 +77,7 @@ class testFixRuleInstantiationMethods(unittest.TestCase):
 
     def test_fix_rule_011(self):
         oRule = instantiation.rule_011()
+        oRule.case = 'upper'
         oRule.fix(oFile)
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, [])
@@ -136,6 +137,7 @@ class testFixRuleInstantiationMethods(unittest.TestCase):
 
     def test_fix_fule_028(self):
         oRule = instantiation.rule_028()
+        oRule.case = 'upper'
         oRule.fix(oFileDirect)
         oRule.analyze(oFileDirect)
 #        self.assertEqual(oRule.violations, [])

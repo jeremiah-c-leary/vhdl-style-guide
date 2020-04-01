@@ -10,7 +10,6 @@ class rule_012(case_rule):
 
     def __init__(self):
         case_rule.__init__(self, 'generate', '012', 'isGenerateEnd')
-        self.case = 'upper'
         self.solution = 'Change end generate label to '
 
     def _extract(self, oLine):

@@ -35,15 +35,13 @@ attribute_002
 
 This rule checks the **attribute** keyword has proper case.
 
-.. NOTE::  The default is lowercase.
-
-   Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
 .. code-block:: vhdl
 
-   architecture RTL of FIFO is
+   architecture rtl of fifo is
 
      ATTRIBUTE ram_init_file : string;
      Attribute ram_init_file of ram_block :
@@ -55,7 +53,7 @@ This rule checks the **attribute** keyword has proper case.
 
 .. code-block:: vhdl
 
-   architecture RTL of FIFO is
+   architecture rtl of fifo is
 
      attribute ram_init_file : string;
      attribute ram_init_file of ram_block :

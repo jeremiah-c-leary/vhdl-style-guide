@@ -90,7 +90,8 @@ class testRuleComponentMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'component')
         self.assertEqual(oRule.identifier, '008')
 
-        dExpected = [{'lines':[{'number': 16}], 'words_to_fix': {'CORm1'}}]
+        dExpected = [{'lines':[{'number': 16}], 'words_to_fix': {'CORm1'}},
+                     {'lines':[{'number': 66}], 'words_to_fix': {'COMP1'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -126,25 +127,25 @@ class testRuleComponentMethods(unittest.TestCase):
 
     def test_rule_012_uppercase(self):
         oRule = component.rule_012()
+        oRule.case = 'upper'
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'component')
         self.assertEqual(oRule.identifier, '012')
 
-        dExpected = [{'lines':[{'number': 23}], 'words_to_fix': {'CoMP1'}}]
+        dExpected = [{'lines':[{'number': 12}], 'words_to_fix': {'comp1'}},
+                     {'lines':[{'number': 23}], 'words_to_fix': {'CoMP1'}},
+                     {'lines':[{'number': 34}], 'words_to_fix': {'comp1'}},
+                     {'lines':[{'number': 52}], 'words_to_fix': {'comp1'}},
+                     {'lines':[{'number': 65}], 'words_to_fix': {'comp1'}},
+                     {'lines':[{'number': 87}], 'words_to_fix': {'comp1'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_012_lowercase(self):
         oRule = component.rule_012()
-        oRule.case = 'lower'
 
-        dExpected = [{'lines':[{'number': 12}], 'words_to_fix':{'COMP1'}},
-                     {'lines':[{'number': 23}], 'words_to_fix': {'CoMP1'}},
-                     {'lines':[{'number': 34}], 'words_to_fix': {'COMP1'}},
-                     {'lines':[{'number': 52}], 'words_to_fix': {'COMP1'}},
-                     {'lines':[{'number': 65}], 'words_to_fix': {'COMP1'}},
-                     {'lines':[{'number': 75}], 'words_to_fix': {'COMP1'}},
-                     {'lines':[{'number': 87}], 'words_to_fix': {'COMP1'}}]
+        dExpected = [{'lines':[{'number': 23}], 'words_to_fix':{'CoMP1'}},
+                     {'lines':[{'number': 75}], 'words_to_fix': {'COMP1'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 

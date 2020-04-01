@@ -11,7 +11,6 @@ class rule_005(case_rule):
     def __init__(self):
         case_rule.__init__(self, 'generate', '005', 'isGenerateLabel')
         self.solution = 'Change label to ' + self.case + 'case'
-        self.case = 'upper'
 
     def _extract(self, oLine):
         return utils.extract_label(oLine)

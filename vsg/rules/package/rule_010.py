@@ -11,7 +11,6 @@ class rule_010(case_rule):
     def __init__(self):
         case_rule.__init__(self, 'package', '010', 'isPackageKeyword')
         self.solution = 'Change package name to '
-        self.case = 'upper'
 
     def _extract(self, oLine):
         if not check.has_package_name(oLine):

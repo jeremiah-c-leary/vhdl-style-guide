@@ -10,7 +10,6 @@ class rule_013(case_rule):
 
     def __init__(self):
         case_rule.__init__(self, 'architecture', '013', 'isArchitectureKeyword')
-        self.case = 'upper'
         self.solution = 'Change architecture name to '
 
     def _extract(self, oLine):

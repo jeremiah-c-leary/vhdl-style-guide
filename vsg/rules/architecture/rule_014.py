@@ -9,7 +9,6 @@ class rule_014(case_rule):
 
     def __init__(self):
         case_rule.__init__(self, 'architecture', '014', 'isArchitectureKeyword')
-        self.case = 'upper'
         self.solution = 'Change entity name to '
 
     def _extract(self, oLine):

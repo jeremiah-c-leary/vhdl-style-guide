@@ -47,7 +47,6 @@ class testFixRuleRange(unittest.TestCase):
 
     def test_rule_002_with_lowercase(self):
         oRule = ranges.rule_002()
-        oRule.case = 'lower'
         dExpected = []
         oRule.fix(self.oFile)
         self.assertEqual(self.oFile.lines[18].line, '    G_GENERIC2 : std_logic_vector(0 to 256)')

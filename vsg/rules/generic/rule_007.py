@@ -10,7 +10,6 @@ class rule_007(case_rule):
 
     def __init__(self):
         case_rule.__init__(self, 'generic', '007', 'isGenericDeclaration')
-        self.case = 'upper'
         self.solution = 'Change generic name to '
 
     def _extract(self, oLine):

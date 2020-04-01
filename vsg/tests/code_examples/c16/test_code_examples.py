@@ -16,6 +16,7 @@ oDataCore = vhdlFile.vhdlFile(lDataCore)
 
 class testCodeExample(unittest.TestCase):
 
+    @unittest.skip("This test should be done for example configurations only.")
     def test_baudgen(self):
         oRuleList = rule_list.rule_list(oBaudGen)
         dConfiguration = {}
@@ -29,6 +30,7 @@ class testCodeExample(unittest.TestCase):
         for iLineNumber, sLine in enumerate(lExpected):
             self.assertEqual(oBaudGen.lines[iLineNumber].line, sLine)
 
+    @unittest.skip("This test should be done for example configurations only.")
     def test_board_cpu(self):
         oRuleList = rule_list.rule_list(oBoardCpu)
         oRuleList.fix(7)
@@ -37,6 +39,7 @@ class testCodeExample(unittest.TestCase):
         for iLineNumber, sLine in enumerate(lExpected):
             self.assertEqual(oBoardCpu.lines[iLineNumber].line, sLine)
 
+    @unittest.skip("This test should be done for example configurations only.")
     def test_data_core(self):
         oRuleList = rule_list.rule_list(oDataCore)
         dConfiguration = {}

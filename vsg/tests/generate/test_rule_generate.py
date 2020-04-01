@@ -61,6 +61,7 @@ class testRuleGenerateMethods(unittest.TestCase):
 
     def test_rule_005_uppercase(self):
         oRule = generate.rule_005()
+        oRule.case = 'upper'
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'generate')
         self.assertEqual(oRule.identifier, '005')
@@ -72,7 +73,6 @@ class testRuleGenerateMethods(unittest.TestCase):
 
     def test_rule_005_lowercase(self):
         oRule = generate.rule_005()
-        oRule.case = 'lower'
 
         dExpected = [{'lines':[{'number': 6}], 'words_to_fix': {'GENERATE_1'}},
                      {'lines':[{'number': 21}], 'words_to_fix': {'GENERATE_1'}},
@@ -176,6 +176,7 @@ class testRuleGenerateMethods(unittest.TestCase):
 
     def test_rule_012_uppercase(self):
         oRule = generate.rule_012()
+        oRule.case = 'upper'
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'generate')
         self.assertEqual(oRule.identifier, '012')
@@ -191,7 +192,6 @@ class testRuleGenerateMethods(unittest.TestCase):
 
     def test_rule_012_lowercase(self):
         oRule = generate.rule_012()
-        oRule.case = 'lower'
 
         dExpected = [{'lines':[{'number': 9}], 'words_to_fix': {'GENERATE_1'}},
                      {'lines':[{'number': 29}], 'words_to_fix': {'GENERATE_1'}},

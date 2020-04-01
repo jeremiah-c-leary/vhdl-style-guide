@@ -152,6 +152,7 @@ class testRuleArchitectureMethods(unittest.TestCase):
 
     def test_rule_011_uppercase(self):
         oRule = architecture.rule_011()
+        oRule.case = 'upper'
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'architecture')
         self.assertEqual(oRule.identifier, '011')
@@ -161,7 +162,6 @@ class testRuleArchitectureMethods(unittest.TestCase):
 
     def test_rule_011_lowercase(self):
         oRule = architecture.rule_011()
-        oRule.case = 'lower'
         dExpected = [{'lines':[{'number': 7}], 'words_to_fix': {'ARCH'}},
                      {'lines':[{'number': 18}], 'words_to_fix': {'ARCH'}},
                      {'lines':[{'number': 24}], 'words_to_fix': {'ArCh'}},
@@ -184,6 +184,7 @@ class testRuleArchitectureMethods(unittest.TestCase):
 
     def test_rule_013_uppercase(self):
         oRule = architecture.rule_013()
+        oRule.case = 'upper'
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'architecture')
         self.assertEqual(oRule.identifier, '013')
@@ -195,7 +196,6 @@ class testRuleArchitectureMethods(unittest.TestCase):
 
     def test_rule_013_lowercase(self):
         oRule = architecture.rule_013()
-        oRule.case = 'lower'
         dExpected = [{'lines':[{'number': 3}], 'words_to_fix': {'Arch'}},
                      {'lines':[{'number': 9}], 'words_to_fix': {'ARCH'}},
                      {'lines':[{'number': 14}], 'words_to_fix': {'ARCH'}},
@@ -211,6 +211,7 @@ class testRuleArchitectureMethods(unittest.TestCase):
 
     def test_rule_014_uppercase(self):
         oRule = architecture.rule_014()
+        oRule.case = 'upper'
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'architecture')
         self.assertEqual(oRule.identifier, '014')
@@ -222,7 +223,6 @@ class testRuleArchitectureMethods(unittest.TestCase):
 
     def test_rule_014_lowercase(self):
         oRule = architecture.rule_014()
-        oRule.case = 'lower'
         dExpected = [{'lines':[{'number': 3}], 'words_to_fix': {'ENTITY'}},
                      {'lines':[{'number': 9}], 'words_to_fix': {'EntITY'}},
                      {'lines':[{'number': 14}], 'words_to_fix': {'ENTITY'}},

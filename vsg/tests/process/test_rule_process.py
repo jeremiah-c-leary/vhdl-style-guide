@@ -213,11 +213,15 @@ class testRuleProcessMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'process')
         self.assertEqual(oRule.identifier, '017')
-        lExpected = []
-        dViolation = utils.add_violation(46)
-        dViolation['words_to_fix'] = {'proc_name'}
-        lExpected.append(dViolation)
-
+        lExpected = [{'lines':[{'number': 63}], 'words_to_fix': {'END_PROC_NAME'}},
+                     {'lines':[{'number': 68}], 'words_to_fix': {'PROC_NAME'}},
+                     {'lines':[{'number': 75}], 'words_to_fix': {'PROC_NAME'}},
+                     {'lines':[{'number': 81}], 'words_to_fix': {'PROC_NAME'}},
+                     {'lines':[{'number': 88}], 'words_to_fix': {'PROC_NAME'}},
+                     {'lines':[{'number': 97}], 'words_to_fix': {'PROC_NAME'}},
+                     {'lines':[{'number': 116}], 'words_to_fix': {'MAIN'}},
+                     {'lines':[{'number': 140}], 'words_to_fix': {'TEST_PROCESS'}},
+                     {'lines':[{'number': 152}], 'words_to_fix': {'TEST'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, lExpected)
 
@@ -244,11 +248,15 @@ class testRuleProcessMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'process')
         self.assertEqual(oRule.identifier, '019')
-        lExpected = []
-        dViolation = utils.add_violation(48)
-        dViolation['words_to_fix'] = {'proc_name'}
-        lExpected.append(dViolation)
-
+        lExpected = [{'lines':[{'number': 65}], 'words_to_fix': {'END_PROC_NAME'}},
+                     {'lines':[{'number': 72}], 'words_to_fix': {'PROC_NAME'}},
+                     {'lines':[{'number': 79}], 'words_to_fix': {'PROC_NAME'}},
+                     {'lines':[{'number': 86}], 'words_to_fix': {'PROC_NAME'}},
+                     {'lines':[{'number': 94}], 'words_to_fix': {'PROC_NAME'}},
+                     {'lines':[{'number': 103}], 'words_to_fix': {'PROC_NAME'}},
+                     {'lines':[{'number': 123}], 'words_to_fix': {'MAIN'}},
+                     {'lines':[{'number': 150}], 'words_to_fix': {'TEST_PROCESS'}},
+                     {'lines':[{'number': 155}], 'words_to_fix': {'TEST'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, lExpected)
 
