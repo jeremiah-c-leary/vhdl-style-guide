@@ -24,7 +24,7 @@ class rule_012(rule.rule):
             iInsertIndex = oLine.line.rfind(')')
             oLine.update_line(oLine.line[:iInsertIndex + 1] + ' is ' + oLine.line[iInsertIndex + 1:])
             oLine.isProcessIs = True
-            search_for_and_remove_extraneous_is(oFile, utils.get_violation_linenumber(dViolation))
+            search_for_and_remove_extraneous_is(oFile, utils.get_violation_line_number(dViolation))
 
 
 def search_for_and_remove_extraneous_is(oFile, iLineNumber):

@@ -27,14 +27,14 @@ class rule_002(rule.rule):
     def _fix_violations(self, oFile):
         for dViolation in self.violations:
             sWord = dViolation['subtype']
-            iLineNumber = utils.get_violation_linenumber(dViolation)
+            iLineNumber = utils.get_violation_line_number(dViolation)
             sReplacementWord = get_replacement_word(self, sWord)
             utils.change_word(oFile.lines[iLineNumber], sWord, sReplacementWord, 20)
 
     def _get_solution(self, iLineNumber):
         lTemp = []
         for dViolation in self.violations:
-            if iLineNumber == utils.get_violation_linenumber(dViolation):
+            if iLineNumber == utils.get_violation_line_number(dViolation):
                 lTemp.append(dViolation['subtype'])
         if len(lTemp) > 1:
             sSolution = self.solution + 's: ' + ', '.join(lTemp)

@@ -36,4 +36,4 @@ class line_above_rule(rule.rule):
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations[::-1]:
-            fix.insert_blank_line_above(self, oFile, utils.get_violation_linenumber(dViolation))
+            fix.insert_blank_line_above(self, oFile, utils.get_violation_line_number(dViolation))

@@ -23,7 +23,7 @@ class rule_013(rule.rule):
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations[::-1]:
-            iLineNumber = utils.get_violation_linenumber(dViolation)
+            iLineNumber = utils.get_violation_line_number(dViolation)
             oLine = oFile.lines[iLineNumber]
             iNumberOfPorts = oLine.line.split(':')[0].count(',') + 1
             # Replicate ports

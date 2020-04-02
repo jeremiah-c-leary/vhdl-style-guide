@@ -24,6 +24,6 @@ class rule_009(rule.rule):
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations:
-            iLineNumber = utils.get_violation_linenumber(dViolation)
+            iLineNumber = utils.get_violation_line_number(dViolation)
             oFile.lines[iLineNumber].indentLevel = dViolation['indent']
             fix.indent(self, oFile.lines[iLineNumber])

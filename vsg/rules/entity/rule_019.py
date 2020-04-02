@@ -31,7 +31,7 @@ class rule_019(rule.rule):
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations:
-            iLineNumber = utils.get_violation_linenumber(dViolation)
+            iLineNumber = utils.get_violation_line_number(dViolation)
             oLine = oFile.lines[iLineNumber]
             sLine = oLine.line
             iIndex = oLine.lineLower.find('entity') + len('entity')

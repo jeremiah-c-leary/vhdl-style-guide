@@ -494,6 +494,19 @@ The **desired_column**, which applies to all lines in the **lines** list, indica
 This violation would cover a group of multiple lines.
 If there were violations in multiple groups, then each group with get it's own violation dictionary.
 
+utils functions
+~~~~~~~~~~~~~~~
+
+There are three functions in the utils module to help with managing the violation dictionary: **create_violation_dict**, **get_violation_line_number** and **get_violating_line**.
+The **create_violation_dict** will return a dictionary in the form of the single line violation described above.
+Use this to create the initial violation and add to it as necessary.
+
+The **get_violation_line_number** will return the lines['number'] attribute of the violation.
+Use this function to abstract away the line number from the underlying data structure.
+
+The **get_violating_line** will return a line object at the line the violation occured.
+This is easier than manually indexing into the oFile list to pull out a line.
+
 Rule creation guidelines
 ------------------------
 

@@ -32,7 +32,7 @@ class rule_010(rule.rule):
     def _get_solution(self, iLineNumber):
         lFunctions = []
         for dViolation in self.violations:
-            if iLineNumber == utils.get_violation_linenumber(dViolation):
+            if iLineNumber == utils.get_violation_line_number(dViolation):
                 lFunctions.append(dViolation['name'])
         if len(lFunctions) > 1:
             sSolution = self.solution + 's: ' + ', '.join(lFunctions)

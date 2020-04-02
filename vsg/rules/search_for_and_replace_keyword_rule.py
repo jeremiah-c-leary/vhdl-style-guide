@@ -26,4 +26,4 @@ class search_for_and_replace_keyword_rule(rule.rule):
         for dViolation in self.violations[::-1]:
             oLine = utils.get_violating_line(oFile, dViolation)
             oLine.update_line(re.sub('' + self.sKeyword2, '' + self.sKeyword2 + ' ' + self.sKeyword, oLine.line, 1, re.IGNORECASE))
-            utils.search_for_and_remove_keyword(oFile, utils.get_violation_linenumber(dViolation), '\(')
+            utils.search_for_and_remove_keyword(oFile, utils.get_violation_line_number(dViolation), '\(')

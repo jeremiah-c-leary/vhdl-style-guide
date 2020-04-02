@@ -45,6 +45,6 @@ class rule_026(rule.rule):
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations[::-1]:
-            iLineNumber = utils.get_violation_linenumber(dViolation)
+            iLineNumber = utils.get_violation_line_number(dViolation)
             fix.insert_blank_line_below(self, oFile, iLineNumber)
             oFile.lines[iLineNumber + 1].insideProcess = True

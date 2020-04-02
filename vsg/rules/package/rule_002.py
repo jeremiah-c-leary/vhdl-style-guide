@@ -28,6 +28,6 @@ class rule_002(rule.rule):
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations:
-            iLineNumber = utils.get_violation_linenumber(dViolation)
+            iLineNumber = utils.get_violation_line_number(dViolation)
             fix.enforce_one_space_after_word(self, oFile.lines[iLineNumber], 'package')
             fix.enforce_one_space_before_word(self, oFile.lines[iLineNumber], 'is')

@@ -77,7 +77,7 @@ class case_rule(rule.rule):
 
     def _fix_violations(self, oFile):
         for violation in self.violations:
-            iLineNumber = utils.get_violation_linenumber(violation)
+            iLineNumber = utils.get_violation_line_number(violation)
             for word in violation['words_to_fix']:
                 if self.case == 'lower':
                     fix_function = fix.lower_case

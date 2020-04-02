@@ -36,4 +36,4 @@ class rule_005(rule.rule):
         for dViolation in self.violations[::-1]:
             oLine = utils.get_violating_line(oFile, dViolation)
             oLine.update_line(re.sub(r'^(\s*architecture\s+\w+\s*)', r'\1 of', oLine.line, re.IGNORECASE))
-            utils.search_for_and_remove_keyword(oFile, utils.get_violation_linenumber(dViolation), 'of')
+            utils.search_for_and_remove_keyword(oFile, utils.get_violation_line_number(dViolation), 'of')

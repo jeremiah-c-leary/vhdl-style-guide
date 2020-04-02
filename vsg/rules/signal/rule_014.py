@@ -32,7 +32,7 @@ class rule_014(rule.rule):
     def _fix_violations(self, oFile):
         for dViolation in self.violations:
             sWord = dViolation['signal']
-            iLineNumber = utils.get_violation_linenumber(dViolation)
+            iLineNumber = utils.get_violation_line_number(dViolation)
             sReplacementWord = get_replacement_word(self, sWord)
             if oFile.lines[iLineNumber].isInstantiationPortAssignment:
                 oLine = oFile.lines[iLineNumber]
@@ -48,7 +48,7 @@ class rule_014(rule.rule):
     def _get_solution(self, iLineNumber):
         lSignals = []
         for dViolation in self.violations:
-            if iLineNumber == utils.get_violation_linenumber(dViolation):
+            if iLineNumber == utils.get_violation_line_number(dViolation):
                 lSignals.append(dViolation['signal'])
         if len(lSignals) > 1:
             sSolution = self.solution + 's: ' + ', '.join(lSignals)

@@ -23,5 +23,5 @@ class remove_blank_lines_below_rule(rule.rule):
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations[::-1]:
-            iLineNumber = utils.get_violation_linenumber(dViolation)
+            iLineNumber = utils.get_violation_line_number(dViolation)
             fix.remove_blank_lines_below(self, oFile, iLineNumber, self.sUnless)

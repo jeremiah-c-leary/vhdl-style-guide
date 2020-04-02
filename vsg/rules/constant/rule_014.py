@@ -37,7 +37,7 @@ class rule_014(rule.rule):
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations:
-            iLineNumber = utils.get_violation_linenumber(dViolation)
+            iLineNumber = utils.get_violation_line_number(dViolation)
             sLine = oFile.lines[iLineNumber].line
             sNewLine = ' ' * dViolation['column'] + sLine.strip()
             oFile.lines[iLineNumber].update_line(sNewLine)
