@@ -14,7 +14,8 @@ Welcome to vhdl-style-guide's documentation!
    gallery
    installing
    usage
-   configuring
+   program_configuration
+   rule_configuration
    code_tags
    editor_integration
    localizing
