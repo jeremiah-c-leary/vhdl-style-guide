@@ -15,7 +15,7 @@ class testRulePortMethods(unittest.TestCase):
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
 
-    def test_rule_016(self):
+    def test_rule_013(self):
         oRule = generic.rule_013()
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'generic')
@@ -26,7 +26,7 @@ class testRulePortMethods(unittest.TestCase):
         self.assertEqual(oRule.violations, dExpected)
 
 
-    def test_fix_rule_016(self):
+    def test_fix_rule_013(self):
         oRule = generic.rule_013()
         oRule.fix(self.oFile)
         oRule.analyze(self.oFile)

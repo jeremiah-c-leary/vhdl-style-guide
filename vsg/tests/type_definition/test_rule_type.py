@@ -29,9 +29,13 @@ class testRuleTypeMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'type')
         self.assertEqual(oRule.identifier, '002')
-        dExpected = [{'line_number': 34, 'words_to_fix': {'TYPE'}}]
+        lExpected = []
+        dViolation = utils.add_violation(34)
+        dViolation['words_to_fix'] = {'TYPE'}
+        lExpected.append(dViolation)
+
         oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule.violations, lExpected)
 
     def test_rule_003(self):
         oRule = type_definition.rule_003()
@@ -54,9 +58,13 @@ class testRuleTypeMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'type')
         self.assertEqual(oRule.identifier, '004')
-        dExpected = [{'line_number': 27, 'words_to_fix': {'A'}}]
+        lExpected = []
+        dViolation = utils.add_violation(27)
+        dViolation['words_to_fix'] = {'A'}
+        lExpected.append(dViolation)
+
         oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule.violations, lExpected)
 
     def test_rule_005(self):
         oRule = type_definition.rule_005()
@@ -135,9 +143,13 @@ class testRuleTypeMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'type')
         self.assertEqual(oRule.identifier, '013')
-        dExpected = [{'line_number': 13, 'words_to_fix': {'IS'}}]
+        lExpected = []
+        dViolation = utils.add_violation(13)
+        dViolation['words_to_fix'] = {'IS'}
+        lExpected.append(dViolation)
+
         oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule.violations, lExpected)
 
     def test_rule_015_with_default(self):
         oRule = type_definition.rule_015()

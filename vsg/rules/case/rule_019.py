@@ -24,6 +24,6 @@ class rule_019(rule.rule):
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations:
-            oLine = oFile.lines[dViolation['lineNumber']]
+            oLine = utils.get_violating_line(oFile, dViolation)
             fix.remove_begin_label(oLine, dViolation['label'])
             oLine.hasCaseLabel = False

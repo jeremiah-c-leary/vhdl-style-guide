@@ -50,7 +50,7 @@ class testRuleComponentMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'component')
         self.assertEqual(oRule.identifier, '004')
 
-        dExpected = [{'line_number': 16, 'words_to_fix': {'comPOnent'}}]
+        dExpected = [{'lines':[{'number': 16}], 'words_to_fix': {'comPOnent'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -70,7 +70,7 @@ class testRuleComponentMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'component')
         self.assertEqual(oRule.identifier, '006')
 
-        dExpected = [{'line_number': 16, 'words_to_fix': {'Is'}}]
+        dExpected = [{'lines':[{'number': 16}], 'words_to_fix': {'Is'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -90,8 +90,8 @@ class testRuleComponentMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'component')
         self.assertEqual(oRule.identifier, '008')
 
-        dExpected = [{'line_number': 16, 'words_to_fix': {'CORm1'}},
-                     {'line_number': 66, 'words_to_fix': {'COMP1'}}]
+        dExpected = [{'lines':[{'number': 16}], 'words_to_fix': {'CORm1'}},
+                     {'lines':[{'number': 66}], 'words_to_fix': {'COMP1'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -111,7 +111,7 @@ class testRuleComponentMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'component')
         self.assertEqual(oRule.identifier, '010')
 
-        dExpected = [{'line_number': 23, 'words_to_fix': {'eNd'}}]
+        dExpected = [{'lines':[{'number': 23}], 'words_to_fix': {'eNd'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -132,20 +132,20 @@ class testRuleComponentMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'component')
         self.assertEqual(oRule.identifier, '012')
 
-        dExpected = [{'line_number': 12, 'words_to_fix': {'comp1'}},
-                     {'line_number': 23, 'words_to_fix': {'CoMP1'}},
-                     {'line_number': 34, 'words_to_fix': {'comp1'}},
-                     {'line_number': 52, 'words_to_fix': {'comp1'}},
-                     {'line_number': 65, 'words_to_fix': {'comp1'}},
-                     {'line_number': 87, 'words_to_fix': {'comp1'}}]
+        dExpected = [{'lines':[{'number': 12}], 'words_to_fix': {'comp1'}},
+                     {'lines':[{'number': 23}], 'words_to_fix': {'CoMP1'}},
+                     {'lines':[{'number': 34}], 'words_to_fix': {'comp1'}},
+                     {'lines':[{'number': 52}], 'words_to_fix': {'comp1'}},
+                     {'lines':[{'number': 65}], 'words_to_fix': {'comp1'}},
+                     {'lines':[{'number': 87}], 'words_to_fix': {'comp1'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_012_lowercase(self):
         oRule = component.rule_012()
 
-        dExpected = [{'line_number': 23, 'words_to_fix':{'CoMP1'}},
-                     {'line_number': 75, 'words_to_fix': {'COMP1'}}]
+        dExpected = [{'lines':[{'number': 23}], 'words_to_fix':{'CoMP1'}},
+                     {'lines':[{'number': 75}], 'words_to_fix': {'COMP1'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -165,7 +165,7 @@ class testRuleComponentMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'component')
         self.assertEqual(oRule.identifier, '014')
 
-        dExpected = [{'line_number': 23, 'words_to_fix': {'comPonent'}}]
+        dExpected = [{'lines':[{'number': 23}], 'words_to_fix': {'comPonent'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 

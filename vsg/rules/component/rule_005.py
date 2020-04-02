@@ -23,7 +23,7 @@ class rule_005(rule.rule):
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations:
-            iLineNumber = dViolation['lineNumber']
+            iLineNumber = utils.get_violation_line_number(dViolation)
             oLine = oFile.lines[iLineNumber]
             oLine.update_line(re.sub(r'^(\s*component\s+\w+)', r'\1 is', oLine.lineLower, re.IGNORECASE))
             # Search for "is" on the next line

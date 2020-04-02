@@ -1,5 +1,25 @@
 {
   "file_list":[
     "vsg/tests/vsg/*.vhd"
-  ]
+  ],
+  "rule":{
+    "entity_008":{
+      "disable" : True
+    },
+    "entity_012":{
+      "disable" : True
+    },
+    "port_010":{
+      "disable" : True
+    },
+    "architecture_011":{
+      "disable" : True
+    },
+    "architecture_013":{
+      "disable" : True
+    },
+    "architecture_014":{
+      "disable" : True
+    }
+  }
 } 

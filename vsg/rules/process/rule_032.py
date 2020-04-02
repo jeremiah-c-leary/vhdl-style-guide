@@ -54,7 +54,7 @@ def _remove_label(self, dViolation, oFile):
 
 
 def _add_label(self, dViolation, oFile):
-    oLine = oFile.lines[dViolation['lineNumber']]
+    oLine = utils.get_violating_line(oFile, dViolation)
     sLine = oLine.line
     oLine.update_line(dViolation['label_name'] + ' : ' + sLine)
     oLine.isProcessLabel = True

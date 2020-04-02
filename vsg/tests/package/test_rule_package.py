@@ -48,9 +48,13 @@ class testRulePackageMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'package')
         self.assertEqual(oRule.identifier, '004')
 
-        dExpected = [{'line_number': 18, 'words_to_fix': {'PACKAGE'}}]
+        lExpected = []
+        dViolation = utils.add_violation(18)
+        dViolation['words_to_fix'] = {'PACKAGE'}
+        lExpected.append(dViolation)
+
         oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule.violations, lExpected)
 
     def test_rule_005(self):
         oRule = package.rule_005()
@@ -68,10 +72,17 @@ class testRulePackageMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'package')
         self.assertEqual(oRule.identifier, '006')
 
-        dExpected = [{'line_number': 31, 'words_to_fix': {'PACKAGE'}},
-                     {'line_number': 45, 'words_to_fix': {'END'}}]
+        lExpected = []
+        dViolation = utils.add_violation(31)
+        dViolation['words_to_fix'] = {'PACKAGE'}
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(45)
+        dViolation['words_to_fix'] = {'END'}
+        lExpected.append(dViolation)
+
         oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule.violations, lExpected)
 
     def test_rule_007(self):
         oRule = package.rule_007()
@@ -87,10 +98,10 @@ class testRulePackageMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'package')
         self.assertEqual(oRule.identifier, '008')
-        dExpected = [{'line_number': 15, 'words_to_fix': {'PACK'}},
-                     {'line_number': 45, 'words_to_fix': {'PACK'}}]
+        lExpected = [{'lines':[{'number': 15}], 'words_to_fix': {'PACK'}},
+                     {'lines':[{'number': 45}], 'words_to_fix': {'PACK'}}]
         oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule.violations, lExpected)
 
     def test_rule_009(self):
         oRule = package.rule_009()
@@ -106,12 +117,12 @@ class testRulePackageMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'package')
         self.assertEqual(oRule.identifier, '010')
-        dExpected = [{'line_number': 2, 'words_to_fix': {'PACK'}},
-                     {'line_number': 18, 'words_to_fix': {'PACK'}},
-                     {'line_number': 32, 'words_to_fix': {'PACK'}},
-                     {'line_number': 60, 'words_to_fix': {'PACK'}}]
+        lExpected = [{'lines':[{'number': 2}], 'words_to_fix': {'PACK'}},
+                     {'lines':[{'number': 18}], 'words_to_fix': {'PACK'}},
+                     {'lines':[{'number': 32}], 'words_to_fix': {'PACK'}},
+                     {'lines':[{'number': 60}], 'words_to_fix': {'PACK'}}]
         oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule.violations, lExpected)
 
     def test_rule_011(self):
         oRule = package.rule_011()
@@ -136,9 +147,13 @@ class testRulePackageMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'package')
         self.assertEqual(oRule.identifier, '013')
-        dExpected = [{'line_number': 32, 'words_to_fix': {'IS'}}]
+        lExpected = []
+        dViolation = utils.add_violation(32)
+        dViolation['words_to_fix'] = {'IS'}
+        lExpected.append(dViolation)
+
         oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule.violations, lExpected)
 
     def test_rule_014(self):
         oRule = package.rule_014()

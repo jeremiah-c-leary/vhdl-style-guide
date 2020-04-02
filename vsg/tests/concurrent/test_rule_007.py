@@ -18,20 +18,41 @@ class testRuleConcurrentMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'concurrent')
         self.assertEqual(oRule.identifier, '007')
-        dExpected = [{'lineNumber': 10, 'slice_index': [43]},
-                     {'lineNumber': 11, 'slice_index': [43]},
-                     {'lineNumber': 16, 'slice_index': [43, 76]},
-                     {'lineNumber': 17, 'slice_index': [43, 76]}]
+        lExpected = []
+        dViolation = utils.add_violation(10)
+        dViolation['slice_index'] = [43]
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(11)
+        dViolation['slice_index'] = [43]
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(16)
+        dViolation['slice_index'] = [43, 76]
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(17)
+        dViolation['slice_index'] = [43, 76]
+        lExpected.append(dViolation)
+
         oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule.violations, lExpected)
 
     def test_rule_007_w_allow_single_line_option_enabled(self):
         oRule = concurrent.rule_007()
         oRule.allow_single_line = True
-        dExpected = [{'lineNumber': 16, 'slice_index': [43, 76]},
-                     {'lineNumber': 17, 'slice_index': [43, 76]}]
+        lExpected = []
+
+        dViolation = utils.add_violation(16)
+        dViolation['slice_index'] = [43, 76]
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(17)
+        dViolation['slice_index'] = [43, 76]
+        lExpected.append(dViolation)
+
         oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule.violations, lExpected)
 
     def test_fix_rule_007_w_default_options(self):
         oRule = concurrent.rule_007()

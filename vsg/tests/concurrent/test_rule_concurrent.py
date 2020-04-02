@@ -34,7 +34,7 @@ class testRuleConcurrentMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'concurrent')
         self.assertEqual(oRule.identifier, '003')
-        dExpected = [28,29,30]
+        dExpected = utils.add_violation_list([28,29,30])
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -52,12 +52,26 @@ class testRuleConcurrentMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'concurrent')
         self.assertEqual(oRule.identifier, '005')
-        dExpected = [{'lineNumber': 32, 'label': 'label'},
-                     {'lineNumber': 33, 'label': 'label'},
-                     {'lineNumber': 34, 'label': 'label'},
-                     {'lineNumber': 35, 'label': 'label'}]
+        lExpected = []
+
+        dViolation = utils.add_violation(32)
+        dViolation['label'] = 'label'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(33)
+        dViolation['label'] = 'label'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(34)
+        dViolation['label'] = 'label'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(35)
+        dViolation['label'] = 'label'
+        lExpected.append(dViolation)
+
         oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule.violations, lExpected)
 
     def test_rule_006(self):
         oRule = concurrent.rule_006()
@@ -89,10 +103,17 @@ class testRuleConcurrentMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'concurrent')
         self.assertEqual(oRule.identifier, '007')
-        dExpected = [{'lineNumber': 44, 'slice_index': [26]},
-                     {'lineNumber': 48, 'slice_index': [26]}]
+        lExpected = []
+        dViolation = utils.add_violation(44)
+        dViolation['slice_index'] = [26]
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(48)
+        dViolation['slice_index'] = [26]
+        lExpected.append(dViolation)
+
         oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule.violations, lExpected)
 
     def test_rule_008(self):
         oRule = concurrent.rule_008()

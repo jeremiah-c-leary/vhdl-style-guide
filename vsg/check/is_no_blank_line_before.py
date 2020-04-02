@@ -1,3 +1,5 @@
+from vsg import utils
+
 
 def is_no_blank_line_before(self, oFile, iLineNumber, sUnless=None):
     '''
@@ -19,6 +21,6 @@ def is_no_blank_line_before(self, oFile, iLineNumber, sUnless=None):
     if sUnless:
         if oFile.lines[iLineNumber - 1].isBlank:
             if not oFile.lines[iLineNumber - 2].__dict__[sUnless]:
-                self.add_violation({'lineNumber': iLineNumber})
+                self.add_violation(utils.create_violation_dict(iLineNumber))
     elif oFile.lines[iLineNumber - 1].isBlank:
-        self.add_violation({'lineNumber': iLineNumber})
+        self.add_violation(utils.create_violation_dict(iLineNumber))

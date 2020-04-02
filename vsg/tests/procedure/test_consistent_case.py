@@ -21,9 +21,12 @@ class testConsistentCase(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'procedure')
         self.assertEqual(oRule.identifier, '007')
-        dExpected = [{'lineNumber': 14, 'procedure': 'Average_samples'}]
+        lExpected = []
+        dViolation = utils.add_violation(14)
+        dViolation['procedure'] = 'Average_samples'
+        lExpected.append(dViolation)
         oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule.violations, lExpected)
         self.assertEqual(oRule._get_solution(14), 'Inconsistent capitalization of word: Average_samples')
 
     def test_fix_rule_007(self):

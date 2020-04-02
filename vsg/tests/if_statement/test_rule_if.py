@@ -66,13 +66,13 @@ class testRuleIfMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'if')
         self.assertEqual(oRule.identifier, '006')
-        dExpected = [68,73,80]
+        dExpected = utils.add_violation_list([68,73,80])
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_006_case(self):
         oRule = if_statement.rule_006()
-        dExpected = [9,20]
+        dExpected = utils.add_violation_list([9,20])
         oRule.analyze(oFileCase)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -111,7 +111,7 @@ class testRuleIfMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'if')
         self.assertEqual(oRule.identifier, '009')
-        dExpected = [20,21,67,68,115]
+        dExpected = utils.add_violation_list([20,21,67,68,115])
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -135,13 +135,13 @@ class testRuleIfMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'if')
         self.assertEqual(oRule.identifier, '011')
-        dExpected = [85]
+        dExpected = [utils.add_violation(85)]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_011_case(self):
         oRule = if_statement.rule_011()
-        dExpected = [31]
+        dExpected = [utils.add_violation(31)]
         oRule.analyze(oFileCase)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -231,7 +231,7 @@ class testRuleIfMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'if')
         self.assertEqual(oRule.identifier, '025')
-        dExpected = [{'line_number': 13, 'words_to_fix': {'IF'}}]
+        dExpected = [{'lines':[{'number': 13}], 'words_to_fix': {'IF'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -240,7 +240,7 @@ class testRuleIfMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'if')
         self.assertEqual(oRule.identifier, '026')
-        dExpected = [{'line_number': 24, 'words_to_fix': {'ELSIF'}}]
+        dExpected = [{'lines':[{'number': 24}], 'words_to_fix': {'ELSIF'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -249,7 +249,7 @@ class testRuleIfMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'if')
         self.assertEqual(oRule.identifier, '027')
-        dExpected = [{'line_number': 94, 'words_to_fix': {'ELSE'}}]
+        dExpected = [{'lines':[{'number': 94}], 'words_to_fix': {'ELSE'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -258,8 +258,8 @@ class testRuleIfMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'if')
         self.assertEqual(oRule.identifier, '028')
-        dExpected = [{'line_number': 17, 'words_to_fix': {'END'}},
-                     {'line_number': 27, 'words_to_fix': {'IF'}}]
+        dExpected = [{'lines':[{'number': 17}], 'words_to_fix': {'END'}},
+                     {'lines':[{'number': 27}], 'words_to_fix': {'IF'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -268,25 +268,29 @@ class testRuleIfMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'if')
         self.assertEqual(oRule.identifier, '029')
-        dExpected = [{'line_number': 14, 'words_to_fix': {'THEN'}}]
+        dExpected = [{'lines':[{'number': 14}], 'words_to_fix': {'THEN'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
-
-    def test_rule_031(self):
+    def test_rule_032(self):
         oRule = if_statement.rule_032()
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'if')
         self.assertEqual(oRule.identifier, '032')
-        lExpected = [17,16,15,21,20]
+        lExpected = [{'lines':[{'number': 17}], 'indent': 2},
+                     {'lines':[{'number': 16}], 'indent': 2},
+                     {'lines':[{'number': 15}], 'indent': 2},
+                     {'lines':[{'number': 21}], 'indent': 2},
+                     {'lines':[{'number': 20}], 'indent': 2}]
         oRule.analyze(oFileIf)
         self.assertEqual(oRule.violations, lExpected)
 
-    def test_rule_032(self):
+    def test_rule_033(self):
         oRule = if_statement.rule_033()
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'if')
         self.assertEqual(oRule.identifier, '033')
-        lExpected = [25,24]
+        lExpected = [{'lines':[{'number': 25}], 'indent': 2},
+                     {'lines':[{'number': 24}], 'indent': 2}]
         oRule.analyze(oFileIf)
         self.assertEqual(oRule.violations, lExpected)

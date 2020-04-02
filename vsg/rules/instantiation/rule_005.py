@@ -25,7 +25,7 @@ class rule_005(rule.rule):
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations[::-1]:
-            iLineNumber = dViolation['lineNumber']
+            iLineNumber = utils.get_violation_line_number(dViolation)
             oLine = oFile.lines[iLineNumber]
             iIndex = oLine.lineLower.find(' port ')
             oFile.lines.insert(iLineNumber + 1, copy.deepcopy(oLine))

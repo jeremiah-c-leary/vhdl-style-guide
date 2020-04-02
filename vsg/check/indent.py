@@ -4,6 +4,8 @@ This module contains functions for rules to perform their checks.
 
 import re
 
+from vsg import utils
+
 
 def indent(self, oLine, iLineNumber):
     '''
@@ -21,6 +23,6 @@ def indent(self, oLine, iLineNumber):
     if not oLine.isBlank:
         try:
             if not re.match('^\s{' + str(self.indentSize * oLine.indentLevel) + '}\S', oLine.line):
-                self.add_violation({'lineNumber': iLineNumber})
+                self.add_violation(utils.create_violation_dict(iLineNumber))
         except TypeError:
             pass

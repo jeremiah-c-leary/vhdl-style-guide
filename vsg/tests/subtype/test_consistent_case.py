@@ -21,10 +21,17 @@ class testConsistentCase(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'subtype')
         self.assertEqual(oRule.identifier, '002')
-        dExpected = [{'lineNumber': 7, 'subtype': 'READ_SIZE'},
-                     {'lineNumber': 11, 'subtype': 'WRITE_size'}]
+        lExpected = []
+        dViolation = utils.add_violation(7)
+        dViolation['subtype'] = 'READ_SIZE'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(11)
+        dViolation['subtype'] = 'WRITE_size'
+        lExpected.append(dViolation)
+
         oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule.violations, lExpected)
         self.assertEqual(oRule._get_solution(7), 'Inconsistent capitalization of word: READ_SIZE')
         self.assertEqual(oRule._get_solution(11), 'Inconsistent capitalization of word: WRITE_size')
 

@@ -4,6 +4,8 @@ This module contains functions for rules to perform their checks.
 
 import re
 
+from vsg import utils
+
 
 def is_single_space_before(self, sString, oLine, iLineNumber):
     '''
@@ -20,4 +22,4 @@ def is_single_space_before(self, sString, oLine, iLineNumber):
     if not re.match('^.*\S\s' + sString + '\s', oLine.lineNoComment.lower()) and \
        not re.match('^.*\S\s' + sString + '$', oLine.lineNoComment.lower()) and \
        not re.match('^.*\S\s' + sString + '\'', oLine.lineNoComment.lower()):
-        self.add_violation({'lineNumber': iLineNumber})
+        self.add_violation(utils.create_violation_dict(iLineNumber))

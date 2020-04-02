@@ -20,5 +20,5 @@ class rule_007(rule.rule):
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations:
-            oLine = oFile.lines[dViolation['lineNumber']]
+            oLine = utils.get_violating_line(oFile, dViolation)
             oLine.update_line(re.sub(r',(\S)', r', \1', oLine.line))

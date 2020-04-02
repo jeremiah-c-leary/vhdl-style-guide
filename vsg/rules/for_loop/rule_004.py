@@ -22,6 +22,6 @@ class rule_004(rule.rule):
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations:
-            iLineNumber = dViolation['lineNumber']
+            iLineNumber = utils.get_violation_line_number(dViolation)
             sWord = dViolation['label']
             fix.enforce_one_space_after_word(self, oFile.lines[iLineNumber], sWord)

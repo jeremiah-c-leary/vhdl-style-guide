@@ -23,7 +23,7 @@ class rule_007(rule.rule):
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations[::-1]:
-            iLineNumber = dViolation['lineNumber']
+            iLineNumber = utils.get_violation_line_number(dViolation)
             oFile.lines[iLineNumber].line = utils.remove_closing_parenthesis_and_semicolon(oFile.lines[iLineNumber].line)
             oFile.lines[iLineNumber].isInstantiationPortEnd = False
             oFile.lines.insert(iLineNumber + 1, line.line('  );'))

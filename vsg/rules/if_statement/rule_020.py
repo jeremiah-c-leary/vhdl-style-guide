@@ -22,7 +22,7 @@ class rule_020(rule.rule):
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations[::-1]:
-            iLineNumber = dViolation['lineNumber']
+            iLineNumber = utils.get_violation_line_number(dViolation)
             utils.split_line_before_word(oFile, iLineNumber, 'end')
             oFile.lines[iLineNumber].isEndIfKeyword = False
             oFile.lines[iLineNumber].isLastEndIf = False

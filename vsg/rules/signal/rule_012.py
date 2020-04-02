@@ -46,8 +46,7 @@ class rule_012(rule.rule):
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations:
-            iLineNumber = dViolation['lineNumber']
-            oLine = oFile.lines[iLineNumber]
+            oLine = utils.get_violating_line(oFile, dViolation)
             iComma = dViolation['comma']
             iAddNumSpaces = dViolation['max'] - dViolation['signal']
             oLine.update_line(oLine.line[:iComma] + iAddNumSpaces*' ' + oLine.line[iComma:])

@@ -2,6 +2,7 @@
 from vsg import rule
 from vsg import check
 from vsg import fix
+from vsg import utils
 
 
 class indent_rule(rule.rule):
@@ -40,4 +41,4 @@ class indent_rule(rule.rule):
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations:
-            fix.indent(self, oFile.lines[dViolation['lineNumber']])
+            fix.indent(self, utils.get_violating_line(oFile, dViolation))

@@ -41,7 +41,7 @@ class rule_013(rule.rule):
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations:
-            oLine = oFile.lines[dViolation['lineNumber']]
+            oLine = utils.get_violating_line(oFile, dViolation)
             iCommentIndex = oLine.line.find('--')
             if iCommentIndex == -1:
                 oLine.update_line(re.sub(r'\)([and|nand|or|nor|xor|xnor])', r') \1', oLine.line, flags=re.IGNORECASE))

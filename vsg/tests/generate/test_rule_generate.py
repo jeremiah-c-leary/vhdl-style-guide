@@ -27,10 +27,17 @@ class testRuleGenerateMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'generate')
         self.assertEqual(oRule.identifier, '002')
 
-        dExpected = [{'lineNumber': 21, 'label': 'GENERATE_1'},
-                     {'lineNumber': 26, 'label': 'GENERATE_1'}]
+        lExpected = []
+        dViolation = utils.add_violation(21)
+        dViolation['label'] = 'GENERATE_1'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(26)
+        dViolation['label'] = 'GENERATE_1'
+        lExpected.append(dViolation)
+
         oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule.violations, lExpected)
 
     def test_rule_003(self):
         oRule = generate.rule_003()
@@ -59,33 +66,33 @@ class testRuleGenerateMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'generate')
         self.assertEqual(oRule.identifier, '005')
 
-        dExpected = [{'line_number': 11, 'words_to_fix': {'generate_1'}},
-                     {'line_number': 16, 'words_to_fix': {'generate_1'}}]
+        dExpected = [{'lines':[{'number': 11}], 'words_to_fix': {'generate_1'}},
+                     {'lines':[{'number': 16}], 'words_to_fix': {'generate_1'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_005_lowercase(self):
         oRule = generate.rule_005()
 
-        dExpected = [{'line_number': 6, 'words_to_fix': {'GENERATE_1'}},
-                     {'line_number': 21, 'words_to_fix': {'GENERATE_1'}},
-                     {'line_number': 26, 'words_to_fix': {'GENERATE_1'}},
-                     {'line_number': 31, 'words_to_fix': {'GENERATE_1'}},
-                     {'line_number': 36, 'words_to_fix': {'GENERATE_1'}},
-                     {'line_number': 41, 'words_to_fix': {'GENERATE_1'}},
-                     {'line_number': 46, 'words_to_fix': {'GENERATE_1'}},
-                     {'line_number': 51, 'words_to_fix': {'GENERATE_1'}},
-                     {'line_number': 56, 'words_to_fix': {'GENERATE_1'}},
-                     {'line_number': 60, 'words_to_fix': {'GENERATE_1'}},
-                     {'line_number': 65, 'words_to_fix': {'GENERATE_1'}},
-                     {'line_number': 68, 'words_to_fix': {'GENERATE_2'}},
-                     {'line_number': 71, 'words_to_fix': {'GENERATE_3'}},
-                     {'line_number': 77, 'words_to_fix': {'GENERATE_4'}},
-                     {'line_number': 83, 'words_to_fix': {'GENERATE_1'}},
-                     {'line_number': 88, 'words_to_fix': {'GENERATE_1'}},
-                     {'line_number': 90, 'words_to_fix': {'GENERATE_2'}},
-                     {'line_number': 94, 'words_to_fix': {'GENERATE_3'}},
-                     {'line_number': 104, 'words_to_fix': {'GENERATE_1'}}]
+        dExpected = [{'lines':[{'number': 6}], 'words_to_fix': {'GENERATE_1'}},
+                     {'lines':[{'number': 21}], 'words_to_fix': {'GENERATE_1'}},
+                     {'lines':[{'number': 26}], 'words_to_fix': {'GENERATE_1'}},
+                     {'lines':[{'number': 31}], 'words_to_fix': {'GENERATE_1'}},
+                     {'lines':[{'number': 36}], 'words_to_fix': {'GENERATE_1'}},
+                     {'lines':[{'number': 41}], 'words_to_fix': {'GENERATE_1'}},
+                     {'lines':[{'number': 46}], 'words_to_fix': {'GENERATE_1'}},
+                     {'lines':[{'number': 51}], 'words_to_fix': {'GENERATE_1'}},
+                     {'lines':[{'number': 56}], 'words_to_fix': {'GENERATE_1'}},
+                     {'lines':[{'number': 60}], 'words_to_fix': {'GENERATE_1'}},
+                     {'lines':[{'number': 65}], 'words_to_fix': {'GENERATE_1'}},
+                     {'lines':[{'number': 68}], 'words_to_fix': {'GENERATE_2'}},
+                     {'lines':[{'number': 71}], 'words_to_fix': {'GENERATE_3'}},
+                     {'lines':[{'number': 77}], 'words_to_fix': {'GENERATE_4'}},
+                     {'lines':[{'number': 83}], 'words_to_fix': {'GENERATE_1'}},
+                     {'lines':[{'number': 88}], 'words_to_fix': {'GENERATE_1'}},
+                     {'lines':[{'number': 90}], 'words_to_fix': {'GENERATE_2'}},
+                     {'lines':[{'number': 94}], 'words_to_fix': {'GENERATE_3'}},
+                     {'lines':[{'number': 104}], 'words_to_fix': {'GENERATE_1'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -125,7 +132,7 @@ class testRuleGenerateMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'generate')
         self.assertEqual(oRule.identifier, '009')
 
-        dExpected = [{'line_number': 19, 'words_to_fix': {'END'}}]
+        dExpected = [{'lines':[{'number': 19}], 'words_to_fix': {'END'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -135,8 +142,8 @@ class testRuleGenerateMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'generate')
         self.assertEqual(oRule.identifier, '010')
 
-        dExpected = [{'line_number': 19, 'words_to_fix': {'GENERATE'}},
-                     {'line_number': 62, 'words_to_fix': {'Generate'}}]
+        dExpected = [{'lines':[{'number': 19}], 'words_to_fix': {'GENERATE'}},
+                     {'lines':[{'number': 62}], 'words_to_fix': {'Generate'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -144,26 +151,26 @@ class testRuleGenerateMethods(unittest.TestCase):
         oRule = generate.rule_010()
         oRule.case = 'upper'
 
-        dExpected = [{'line_number': 9, 'words_to_fix': {'generate'}},
-                     {'line_number': 14, 'words_to_fix': {'generate'}},
-                     {'line_number': 24, 'words_to_fix': {'generate'}},
-                     {'line_number': 29, 'words_to_fix': {'generate'}},
-                     {'line_number': 34, 'words_to_fix': {'generate'}},
-                     {'line_number': 39, 'words_to_fix': {'generate'}},
-                     {'line_number': 44, 'words_to_fix': {'generate'}},
-                     {'line_number': 49, 'words_to_fix': {'generate'}},
-                     {'line_number': 54, 'words_to_fix': {'generate'}},
-                     {'line_number': 58, 'words_to_fix': {'generate'}},
-                     {'line_number': 62, 'words_to_fix': {'Generate'}},
-                     {'line_number': 73, 'words_to_fix': {'generate'}},
-                     {'line_number': 75, 'words_to_fix': {'generate'}},
-                     {'line_number': 79, 'words_to_fix': {'generate'}},
-                     {'line_number': 81, 'words_to_fix': {'generate'}},
-                     {'line_number': 86, 'words_to_fix': {'generate'}},
-                     {'line_number': 96, 'words_to_fix': {'generate'}},
-                     {'line_number': 98, 'words_to_fix': {'generate'}},
-                     {'line_number': 100, 'words_to_fix': {'generate'}},
-                     {'line_number': 106, 'words_to_fix': {'generate'}}]
+        dExpected = [{'lines':[{'number': 9}], 'words_to_fix': {'generate'}},
+                     {'lines':[{'number': 14}], 'words_to_fix': {'generate'}},
+                     {'lines':[{'number': 24}], 'words_to_fix': {'generate'}},
+                     {'lines':[{'number': 29}], 'words_to_fix': {'generate'}},
+                     {'lines':[{'number': 34}], 'words_to_fix': {'generate'}},
+                     {'lines':[{'number': 39}], 'words_to_fix': {'generate'}},
+                     {'lines':[{'number': 44}], 'words_to_fix': {'generate'}},
+                     {'lines':[{'number': 49}], 'words_to_fix': {'generate'}},
+                     {'lines':[{'number': 54}], 'words_to_fix': {'generate'}},
+                     {'lines':[{'number': 58}], 'words_to_fix': {'generate'}},
+                     {'lines':[{'number': 62}], 'words_to_fix': {'Generate'}},
+                     {'lines':[{'number': 73}], 'words_to_fix': {'generate'}},
+                     {'lines':[{'number': 75}], 'words_to_fix': {'generate'}},
+                     {'lines':[{'number': 79}], 'words_to_fix': {'generate'}},
+                     {'lines':[{'number': 81}], 'words_to_fix': {'generate'}},
+                     {'lines':[{'number': 86}], 'words_to_fix': {'generate'}},
+                     {'lines':[{'number': 96}], 'words_to_fix': {'generate'}},
+                     {'lines':[{'number': 98}], 'words_to_fix': {'generate'}},
+                     {'lines':[{'number': 100}], 'words_to_fix': {'generate'}},
+                     {'lines':[{'number': 106}], 'words_to_fix': {'generate'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -174,32 +181,32 @@ class testRuleGenerateMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'generate')
         self.assertEqual(oRule.identifier, '012')
 
-        dExpected = [{'line_number': 14, 'words_to_fix': {'generate_1'}},
-                     {'line_number': 19, 'words_to_fix': {'generate_1'}},
-                     {'line_number': 73, 'words_to_fix': {'generate_3'}},
-                     {'line_number': 96, 'words_to_fix': {'generate_3'}},
-                     {'line_number': 98, 'words_to_fix': {'generate_2'}},
-                     {'line_number': 100, 'words_to_fix': {'generate_1'}}]
+        dExpected = [{'lines':[{'number': 14}], 'words_to_fix': {'generate_1'}},
+                     {'lines':[{'number': 19}], 'words_to_fix': {'generate_1'}},
+                     {'lines':[{'number': 73}], 'words_to_fix': {'generate_3'}},
+                     {'lines':[{'number': 96}], 'words_to_fix': {'generate_3'}},
+                     {'lines':[{'number': 98}], 'words_to_fix': {'generate_2'}},
+                     {'lines':[{'number': 100}], 'words_to_fix': {'generate_1'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_012_lowercase(self):
         oRule = generate.rule_012()
 
-        dExpected = [{'line_number': 9, 'words_to_fix': {'GENERATE_1'}},
-                     {'line_number': 29, 'words_to_fix': {'GENERATE_1'}},
-                     {'line_number': 34, 'words_to_fix': {'GENERATE_1'}},
-                     {'line_number': 39, 'words_to_fix': {'GENERATE_1'}},
-                     {'line_number': 44, 'words_to_fix': {'GENERATE_1'}},
-                     {'line_number': 49, 'words_to_fix': {'GENERATE_1'}},
-                     {'line_number': 54, 'words_to_fix': {'GENERATE_1'}},
-                     {'line_number': 58, 'words_to_fix': {'GENERATE_1'}},
-                     {'line_number': 62, 'words_to_fix': {'GENERATE_1'}},
-                     {'line_number': 75, 'words_to_fix': {'GENERATE_2'}},
-                     {'line_number': 79, 'words_to_fix': {'GENERATE_4'}},
-                     {'line_number': 81, 'words_to_fix': {'GENERATE_1'}},
-                     {'line_number': 86, 'words_to_fix': {'GENERATE_1'}},
-                     {'line_number': 106, 'words_to_fix': {'GENERATE_1'}}]
+        dExpected = [{'lines':[{'number': 9}], 'words_to_fix': {'GENERATE_1'}},
+                     {'lines':[{'number': 29}], 'words_to_fix': {'GENERATE_1'}},
+                     {'lines':[{'number': 34}], 'words_to_fix': {'GENERATE_1'}},
+                     {'lines':[{'number': 39}], 'words_to_fix': {'GENERATE_1'}},
+                     {'lines':[{'number': 44}], 'words_to_fix': {'GENERATE_1'}},
+                     {'lines':[{'number': 49}], 'words_to_fix': {'GENERATE_1'}},
+                     {'lines':[{'number': 54}], 'words_to_fix': {'GENERATE_1'}},
+                     {'lines':[{'number': 58}], 'words_to_fix': {'GENERATE_1'}},
+                     {'lines':[{'number': 62}], 'words_to_fix': {'GENERATE_1'}},
+                     {'lines':[{'number': 75}], 'words_to_fix': {'GENERATE_2'}},
+                     {'lines':[{'number': 79}], 'words_to_fix': {'GENERATE_4'}},
+                     {'lines':[{'number': 81}], 'words_to_fix': {'GENERATE_1'}},
+                     {'lines':[{'number': 86}], 'words_to_fix': {'GENERATE_1'}},
+                     {'lines':[{'number': 106}], 'words_to_fix': {'GENERATE_1'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 

@@ -1,6 +1,7 @@
 
 from vsg import rule
 from vsg import fix
+from vsg import utils
 from abc import abstractmethod
 
 
@@ -65,7 +66,8 @@ class case_rule(rule.rule):
             else:
                 raise Exception("case option needs to be 'lower' or 'upper', detected: {self.case}")
 
-            violation = {'line_number': iLineNumber, 'words_to_fix': set()}
+            violation = utils.create_violation_dict(iLineNumber)
+            violation['words_to_fix'] = set()
             for word in words:
                 if not check_function(word):
                     violation['words_to_fix'].add(word)
@@ -75,7 +77,7 @@ class case_rule(rule.rule):
 
     def _fix_violations(self, oFile):
         for violation in self.violations:
-            iLineNumber = violation['line_number']
+            iLineNumber = utils.get_violation_line_number(violation)
             for word in violation['words_to_fix']:
                 if self.case == 'lower':
                     fix_function = fix.lower_case

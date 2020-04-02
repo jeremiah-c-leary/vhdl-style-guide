@@ -26,8 +26,8 @@ class testRuleConstantMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'constant')
         self.assertEqual(oRule.identifier, '002')
-        lExpected = [{'line_number': 7, 'words_to_fix': {'COnstant'}},
-                     {'line_number': 8, 'words_to_fix': {'Constant'}}]
+        lExpected = [{'lines':[{'number': 7}], 'words_to_fix': {'COnstant'}},
+                     {'lines':[{'number': 8}], 'words_to_fix': {'Constant'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, lExpected)
 
@@ -57,7 +57,7 @@ class testRuleConstantMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'constant')
         self.assertEqual(oRule.identifier, '004')
-        lExpected = [{'line_number': 8, 'words_to_fix': {'c_coNST'}}]
+        lExpected = [{'lines':[{'number': 8}], 'words_to_fix': {'c_coNST'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, lExpected)
 
@@ -102,7 +102,7 @@ class testRuleConstantMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'constant')
         self.assertEqual(oRule.identifier, '011')
-        lExpected = [{'line_number': 9, 'words_to_fix': {'STD_LOGIC'}}]
+        lExpected = [{'lines':[{'number': 9}], 'words_to_fix': {'STD_LOGIC'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, lExpected)
 
@@ -120,7 +120,12 @@ class testRuleConstantMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'constant')
         self.assertEqual(oRule.identifier, '014')
-        lExpected = [{'lineNumber': 44, 'column': 42}]
+
+        lExpected = []
+        dViolation = utils.add_violation(44)
+        dViolation['column'] = 42
+        lExpected.append(dViolation)
+
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, lExpected)
 

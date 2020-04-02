@@ -23,6 +23,6 @@ class rule_006(rule.rule):
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations:
-            oLine = oFile.lines[dViolation['lineNumber']]
+            oLine = utils.get_violating_line(oFile, dViolation)
             oLine.update_line(re.sub(r'^(\s*architecture\s+\w+\s+of\s+\w+)', r'\1 is', oLine.line, re.IGNORECASE))
-            utils.search_for_and_remove_keyword(oFile, dViolation['lineNumber'], 'is')
+            utils.search_for_and_remove_keyword(oFile, utils.get_violation_line_number(dViolation), 'is')

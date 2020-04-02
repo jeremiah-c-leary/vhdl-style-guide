@@ -22,29 +22,83 @@ class testGeneralRule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'signal')
         self.assertEqual(oRule.identifier, '014')
-        dExpected = [{'lineNumber': 22, 'signal': 'siG2'},
-                     {'lineNumber': 25, 'signal': 'siG1'},
-                     {'lineNumber': 27, 'signal': 'SIG2'},
-                     {'lineNumber': 28, 'signal': 'sIg1'},
-                     {'lineNumber': 29, 'signal': 'SiG2'},
-                     {'lineNumber': 30, 'signal': 'SIg1'},
-                     {'lineNumber': 38, 'signal': 'Sig1'},
-                     {'lineNumber': 39, 'signal': 'SIg2'},
-                     {'lineNumber': 46, 'signal': 'Sig3'},
-                     {'lineNumber': 48, 'signal': 'siG5'},
-                     {'lineNumber': 54, 'signal': 'siG6'},
-                     {'lineNumber': 58, 'signal': 'Sig1'},
-                     {'lineNumber': 60, 'signal': 'Sig2'},
-                     {'lineNumber': 62, 'signal': 'Sig3'},
-                     {'lineNumber': 63, 'signal': 'SIG1'},
-                     {'lineNumber': 63, 'signal': 'SIG2'},
-                     {'lineNumber': 63, 'signal': 'SIG3'},
-#                     {'lineNumber': 64, 'signal': 'SIG1'},
-#                     {'lineNumber': 64, 'signal': 'SIG1'},
-                     {'lineNumber': 64, 'signal': 'SIG1'}]
+        lExpected = []
+
+        dViolation = utils.add_violation(22)
+        dViolation['signal'] = 'siG2'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(25)
+        dViolation['signal'] = 'siG1'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(27)
+        dViolation['signal'] = 'SIG2'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(28)
+        dViolation['signal'] = 'sIg1'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(29)
+        dViolation['signal'] = 'SiG2'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(30)
+        dViolation['signal'] = 'SIg1'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(38)
+        dViolation['signal'] = 'Sig1'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(39)
+        dViolation['signal'] = 'SIg2'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(46)
+        dViolation['signal'] = 'Sig3'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(48)
+        dViolation['signal'] = 'siG5'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(54)
+        dViolation['signal'] = 'siG6'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(58)
+        dViolation['signal'] = 'Sig1'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(60)
+        dViolation['signal'] = 'Sig2'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(62)
+        dViolation['signal'] = 'Sig3'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(63)
+        dViolation['signal'] = 'SIG1'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(63)
+        dViolation['signal'] = 'SIG2'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(63)
+        dViolation['signal'] = 'SIG3'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(64)
+        dViolation['signal'] = 'SIG1'
+        lExpected.append(dViolation)
+
 
         oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule.violations, lExpected)
         self.assertEqual(oRule._get_solution(22), 'Inconsistent capitalization of signal: siG2')
         self.assertEqual(oRule._get_solution(25), 'Inconsistent capitalization of signal: siG1')
         self.assertEqual(oRule._get_solution(27), 'Inconsistent capitalization of signal: SIG2')

@@ -27,12 +27,12 @@ class rule_010(rule.rule):
         for dViolation in self.violations:
             sWord = dViolation['name']
             sReplacementWord = get_replacement_word(self, sWord)
-            utils.change_word(oFile.lines[dViolation['lineNumber']], sWord, sReplacementWord, 20)
+            utils.change_word(utils.get_violating_line(oFile, dViolation), sWord, sReplacementWord, 20)
 
     def _get_solution(self, iLineNumber):
         lFunctions = []
         for dViolation in self.violations:
-            if dViolation['lineNumber'] == iLineNumber:
+            if iLineNumber == utils.get_violation_line_number(dViolation):
                 lFunctions.append(dViolation['name'])
         if len(lFunctions) > 1:
             sSolution = self.solution + 's: ' + ', '.join(lFunctions)

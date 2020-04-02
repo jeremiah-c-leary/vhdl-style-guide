@@ -22,7 +22,7 @@ class rule_020(rule.rule):
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations[::-1]:
-            iLineNumber = dViolation['lineNumber']
+            iLineNumber = utils.get_violation_line_number(dViolation)
             utils.split_line_after_word(oFile, iLineNumber, '(')
             oFile.lines[iLineNumber].isInstantiationPortAssignment = False
             oFile.lines[iLineNumber + 1].isInstantiationPortKeyword = False

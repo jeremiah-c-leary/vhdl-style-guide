@@ -4,6 +4,8 @@ This module contains functions for rules to perform their checks.
 
 import re
 
+from vsg import utils
+
 
 def is_single_space_after_character(self, sCharacter, oLine, iLineNumber):
     '''
@@ -26,4 +28,4 @@ def is_single_space_after_character(self, sCharacter, oLine, iLineNumber):
         if re.match('^.*' + sCharacter.lower() + '$', oLine.lineNoComment):
             return
         if not re.match('^.*' + sCharacter.lower() + '\s\S', oLine.lineLower):
-            self.add_violation({'lineNumber': iLineNumber})
+            self.add_violation(utils.create_violation_dict(iLineNumber))

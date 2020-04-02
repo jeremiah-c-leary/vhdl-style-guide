@@ -4,6 +4,8 @@ This module contains functions for rules to perform their checks.
 
 import re
 
+from vsg import utils
+
 
 def multiline_alignment(self, iColumn, oLine, iLineNumber):
     '''
@@ -20,6 +22,6 @@ def multiline_alignment(self, iColumn, oLine, iLineNumber):
       iLineNumber: (integer)
     '''
     if not re.match('\s{' + str(iColumn) + '}\S', oLine.line):
-        self.add_violation(iLineNumber)
+        self.add_violation(utils.create_violation_dict(iLineNumber))
         self.dFix['violations'][iLineNumber] = {}
         self.dFix['violations'][iLineNumber]['column'] = iColumn

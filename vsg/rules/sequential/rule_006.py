@@ -20,4 +20,4 @@ class rule_006(rule.rule):
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations[::-1]:
-            oFile.lines.pop(dViolation['lineNumber'])
+            oFile.lines.pop(utils.get_violation_line_number(dViolation))

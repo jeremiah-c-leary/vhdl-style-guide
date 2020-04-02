@@ -2,6 +2,7 @@
 from vsg import rule
 from vsg import fix
 from vsg import check
+from vsg import utils
 
 
 class rule_013(rule.rule):
@@ -23,5 +24,5 @@ class rule_013(rule.rule):
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations:
-            oLine = oFile.lines[dViolation['lineNumber']]
+            oLine = utils.get_violating_line(oFile, dViolation)
             fix.enforce_one_space_after_word(self, oLine, 'component')

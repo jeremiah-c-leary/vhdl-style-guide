@@ -21,10 +21,19 @@ class testGeneralRule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'type')
         self.assertEqual(oRule.identifier, '014')
-        dExpected = [{'lineNumber': 7, 'type': 'STATE_MACHINE'},
-                     {'lineNumber': 9, 'type': 'State_Machine'}]
+        lExpected = []
+        dViolation = utils.add_violation(7)
+        dViolation['type'] = 'STATE_MACHINE'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(9)
+        dViolation['type'] = 'State_Machine'
+        lExpected.append(dViolation)
+        
+#        dExpected = [{'lineNumber': 7, 'type': 'STATE_MACHINE'},
+#                     {'lineNumber': 9, 'type': 'State_Machine'}]
         oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule.violations, lExpected)
         self.assertEqual(oRule._get_solution(7), 'Inconsistent capitalization of word: STATE_MACHINE')
         self.assertEqual(oRule._get_solution(9), 'Inconsistent capitalization of word: State_Machine')
 

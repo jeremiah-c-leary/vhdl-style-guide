@@ -2,6 +2,7 @@
 from vsg import rule
 from vsg import check
 from vsg import fix
+from vsg import utils
 
 
 class rule_009(rule.rule):
@@ -22,6 +23,7 @@ class rule_009(rule.rule):
             check.indent_of_comments_above(self, oFile, iLineNumber)
 
     def _fix_violations(self, oFile):
-        for iLineNumber in self.violations:
-            oFile.lines[iLineNumber].indentLevel = self.dFix['violations'][iLineNumber]
+        for dViolation in self.violations:
+            iLineNumber = utils.get_violation_line_number(dViolation)
+            oFile.lines[iLineNumber].indentLevel = dViolation['indent']
             fix.indent(self, oFile.lines[iLineNumber])

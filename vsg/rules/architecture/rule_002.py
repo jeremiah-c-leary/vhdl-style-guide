@@ -26,7 +26,8 @@ class rule_002(rule.rule):
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations:
-            fix.enforce_one_space_after_word(self, oFile.lines[dViolation['lineNumber']], 'architecture')
-            fix.enforce_one_space_before_word(self, oFile.lines[dViolation['lineNumber']], 'of')
-            fix.enforce_one_space_after_word(self, oFile.lines[dViolation['lineNumber']], 'of')
-            fix.enforce_one_space_before_word(self, oFile.lines[dViolation['lineNumber']], 'is')
+            oLine = utils.get_violating_line(oFile, dViolation)
+            fix.enforce_one_space_after_word(self, oLine, 'architecture')
+            fix.enforce_one_space_before_word(self, oLine, 'of')
+            fix.enforce_one_space_after_word(self, oLine, 'of')
+            fix.enforce_one_space_before_word(self, oLine, 'is')

@@ -23,7 +23,7 @@ class rule_014(rule.rule):
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations[::-1]:
-            iLineNumber = dViolation['lineNumber']
+            iLineNumber = utils.get_violation_line_number(dViolation)
             _remove_closing_parenthesis(oFile, iLineNumber)
             _add_closing_parenthesis_on_new_line(oFile, iLineNumber)
 

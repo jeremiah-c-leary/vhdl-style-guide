@@ -33,5 +33,5 @@ class rule_012(rule.rule):
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations[::-1]:
-            iLineNumber = dViolation['lineNumber']
+            iLineNumber = utils.get_violation_line_number(dViolation)
             del oFile.lines[iLineNumber:iLineNumber + dViolation['remove']]

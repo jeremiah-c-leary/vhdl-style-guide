@@ -21,16 +21,50 @@ class testConsistentCase(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'variable')
         self.assertEqual(oRule.identifier, '011')
-        dExpected = [{'lineNumber': 16, 'variable': 'Var1'},
-                     {'lineNumber': 18, 'variable': 'VAR2'},
-                     {'lineNumber': 19, 'variable': 'vaR3'},
-                     {'lineNumber': 21, 'variable': 'VAR4'},
-                     {'lineNumber': 24, 'variable': 'vaR1'},
-                     {'lineNumber': 24, 'variable': 'VAR2'},
-                     {'lineNumber': 24, 'variable': 'Var3'},
-                     {'lineNumber': 24, 'variable': 'vAr4'}]
+        lExpected = []
+        dViolation = utils.add_violation(16)
+        dViolation['variable'] = 'Var1'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(18)
+        dViolation['variable'] = 'VAR2'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(19)
+        dViolation['variable'] = 'vaR3'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(21)
+        dViolation['variable'] = 'VAR4'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(24)
+        dViolation['variable'] = 'vaR1'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(24)
+        dViolation['variable'] = 'VAR2'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(24)
+        dViolation['variable'] = 'Var3'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(24)
+        dViolation['variable'] = 'vAr4'
+        lExpected.append(dViolation)
+#
+#
+#        dExpected = [{'lineNumber': 16, 'variable': 'Var1'},
+#                     {'lineNumber': 18, 'variable': 'VAR2'},
+#                     {'lineNumber': 19, 'variable': 'vaR3'},
+#                     {'lineNumber': 21, 'variable': 'VAR4'},
+#                     {'lineNumber': 24, 'variable': 'vaR1'},
+#                     {'lineNumber': 24, 'variable': 'VAR2'},
+#                     {'lineNumber': 24, 'variable': 'Var3'},
+#                     {'lineNumber': 24, 'variable': 'vAr4'}]
         oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule.violations, lExpected)
         self.assertEqual(oRule._get_solution(16), 'Inconsistent capitalization of word: Var1')
         self.assertEqual(oRule._get_solution(18), 'Inconsistent capitalization of word: VAR2')
         self.assertEqual(oRule._get_solution(19), 'Inconsistent capitalization of word: vaR3')

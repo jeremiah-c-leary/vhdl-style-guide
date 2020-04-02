@@ -20,11 +20,11 @@ class rule_012(rule.rule):
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations:
-            oLine = oFile.lines[dViolation['lineNumber']]
+            oLine = utils.get_violating_line(oFile, dViolation)
             iInsertIndex = oLine.line.rfind(')')
             oLine.update_line(oLine.line[:iInsertIndex + 1] + ' is ' + oLine.line[iInsertIndex + 1:])
             oLine.isProcessIs = True
-            search_for_and_remove_extraneous_is(oFile, dViolation['lineNumber'])
+            search_for_and_remove_extraneous_is(oFile, utils.get_violation_line_number(dViolation))
 
 
 def search_for_and_remove_extraneous_is(oFile, iLineNumber):

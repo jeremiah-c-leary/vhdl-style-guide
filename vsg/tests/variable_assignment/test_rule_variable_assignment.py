@@ -43,7 +43,7 @@ class testRuleVariableAssignmentMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'variable_assignment')
         self.assertEqual(oRule.identifier, '004')
-        dExpected = [54,55,74]
+        dExpected = utils.add_violation_list([54,55,74])
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 

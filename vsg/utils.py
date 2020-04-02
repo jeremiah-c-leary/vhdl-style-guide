@@ -811,8 +811,10 @@ def _extract_port_name_from_assignment(sLine):
 def extract_port_names_from_port_map(oLine):
     '''
     Returns port names from port assignment inside port map.
+
     Parameters:
        oLine: (line object)
+
     Returns: (list of strings)
     '''
     names = []
@@ -1036,6 +1038,36 @@ def create_violation_dict(iLineNumber):
     Returns:  dictionary
     '''
     dReturn = {}
-    dReturn['lineNumber'] = iLineNumber
+    dReturn['lines'] = []
+    dLine = {}
+    dLine['number'] = iLineNumber
+    dReturn['lines'].append(dLine)
     return dReturn
 
+
+def get_violation_line_number(dViolation):
+    '''
+    Returns a line number of a violation.
+
+    Parameters:
+
+      dViolation: Violation dictionary
+
+    Returns:  integer
+    '''
+    return dViolation['lines'][0]['number']
+
+
+def get_violating_line(oFile, dViolation):
+    '''
+    Returns a line from the file where a violation has occured.
+
+    Parameters:
+
+      oFile : (File object)
+
+      dViolation : (Violation dictionary)
+
+    Return: Line Object
+    '''
+    return oFile.lines[get_violation_line_number(dViolation)]

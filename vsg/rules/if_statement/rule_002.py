@@ -27,7 +27,7 @@ class rule_002(rule.rule):
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations:
-            iLineNumber = dViolation['lineNumber']
+            iLineNumber = utils.get_violation_line_number(dViolation)
             oLine = oFile.lines[iLineNumber]
             if oLine.isIfKeyword:
                 oLine.update_line(re.sub(r'^(\s*)[i|I][f|F]', r'\1if (', oLine.line))
