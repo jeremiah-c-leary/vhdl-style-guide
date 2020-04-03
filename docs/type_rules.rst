@@ -314,10 +314,9 @@ type_015
 ##########
 
 This rule checks for valid prefixes in user defined type identifiers.
+The default new type prefix is *t\_*.
 
-.. NOTE:: The default new type prefix is "t\_".
-
-   Refer to the section `Configuring Prefix and Suffix Rules <configuring_prefix_suffix.html>`_ for information on changing the allowed prefixes.
+Refer to the section `Configuring Prefix and Suffix Rules <configuring_prefix_suffix.html>`_ for information on changing the allowed prefixes.
 
 **Violation**
 

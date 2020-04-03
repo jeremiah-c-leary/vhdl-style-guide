@@ -247,20 +247,19 @@ port_011
 ########
 
 This rule checks for valid prefixes on port identifiers.
+The default port prefixes are: *i\_*, *o\_*, *io\_*.
 
-.. NOTE:: The default port prefixes are "I\_", "O\_", "IO\_".
-
-   Refer to the section `Configuring Prefix and Suffix Rules <configuring_prefix_suffix.html>`_ for information on changing the allowed prefixes.
+Refer to the section `Configuring Prefix and Suffix Rules <configuring_prefix_suffix.html>`_ for information on changing the allowed prefixes.
 
 **Violation**
 
 .. code-block:: vhdl
 
    port (
-     WR_EN    : in    std_logic;
-     RD_EN    : in    std_logic;
-     OVERFLOW : out   std_logic;
-     DATA     : inout std_logic
+     wr_en    : in    std_logic;
+     rd_en    : in    std_logic;
+     overflow : out   std_logic;
+     data     : inout std_logic
    );
 
 
@@ -269,10 +268,10 @@ This rule checks for valid prefixes on port identifiers.
 .. code-block:: vhdl
 
    port (
-     I_WR_EN    : in    std_logic;
-     I_RD_EN    : in    std_logic;
-     O_OVERFLOW : out   std_logic;
-     IO_DATA    : inout std_logic
+     i_wr_en    : in    std_logic;
+     i_rd_en    : in    std_logic;
+     o_overflow : out   std_logic;
+     io_data    : inout std_logic
    );
 
 port_012
@@ -620,20 +619,19 @@ port_025
 ########
 
 This rule checks for valid suffixes on port identifiers.
+The default port suffixes are *_i*, *_o*, *_io*.
 
-.. NOTE:: The default port suffixes are "_I", "_O", "_IO".
-
-   Refer to the section `Configuring Prefix and Suffix Rules <configuring_prefix_suffix.html>`_ for information on changing the allowed suffixes.
+Refer to the section `Configuring Prefix and Suffix Rules <configuring_prefix_suffix.html>`_ for information on changing the allowed suffixes.
 
 **Violation**
 
 .. code-block:: vhdl
 
    port (
-     WR_EN    : in    std_logic;
-     RD_EN    : in    std_logic;
-     OVERFLOW : out   std_logic;
-     DATA     : inout std_logic
+     wr_en    : in    std_logic;
+     rd_en    : in    std_logic;
+     overflow : out   std_logic;
+     data     : inout std_logic
    );
 
 
@@ -642,8 +640,8 @@ This rule checks for valid suffixes on port identifiers.
 .. code-block:: vhdl
 
    port (
-     WR_EN_I    : in    std_logic;
-     RD_EN_I    : in    std_logic;
-     OVERFLOW_O : out   std_logic;
-     DATA_IO    : inout std_logic
+     wr_en_i    : in    std_logic;
+     rd_en_i    : in    std_logic;
+     overflow_o : out   std_logic;
+     data_io    : inout std_logic
    );
