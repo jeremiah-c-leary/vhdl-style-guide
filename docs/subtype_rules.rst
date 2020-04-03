@@ -95,8 +95,7 @@ subtype_004
 ###########
 
 This rule checks for valid prefixes in user defined subtype identifiers.
-
-.. NOTE:: The default new subtype prefix is "st\_".
+The default new subtype prefix is *st\_*.
 
    Refer to the section `Configuring Prefix and Suffix Rules <configuring_prefix_suffix.html>`_ for information on changing the allowed prefixes.
 

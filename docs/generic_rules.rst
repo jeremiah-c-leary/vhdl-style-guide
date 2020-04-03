@@ -336,19 +336,18 @@ generic_020
 ###########
 
 This rule checks for valid prefixes on generic identifiers.
+The default generic prefix is *g\_*.
 
-.. NOTE:: The default generic prefix is "G\_".
-
-   Refer to the section `Configuring Prefix and Suffix Rules <configuring_prefix_suffix.html>`_ for information on changing the allowed prefixes.
+Refer to the section `Configuring Prefix and Suffix Rules <configuring_prefix_suffix.html>`_ for information on changing the allowed prefixes.
 
 **Violation**
 
 .. code-block:: vhdl
 
-   generic(MY_GEN : integer);
+   generic(my_generic : integer);
 
 **Fix**
 
 .. code-block:: vhdl
 
-   generic(G_MY_GEN : integer);
+   generic(g_my_generic : integer);

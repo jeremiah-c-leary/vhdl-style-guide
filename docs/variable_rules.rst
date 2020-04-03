@@ -219,10 +219,9 @@ variable_012
 ############
 
 This rule checks for valid prefixes on variable identifiers.
+The default variable prefix is *v\_*.
 
-.. NOTE:: The default variable prefix is "v\_".
-
-   Refer to the section `Configuring Prefix and Suffix Rules <configuring_prefix_suffix.html>`_ for information on changing the allowed prefixes.
+Refer to the section `Configuring Prefix and Suffix Rules <configuring_prefix_suffix.html>`_ for information on changing the allowed prefixes.
 
 **Violation**
 
