@@ -11,23 +11,23 @@ This rule checks the indentation of the **component** keyword.
 
 .. code-block:: vhdl
 
-   architecture RTL of FIFO is 
+   architecture rtl of fifo is
    begin
 
-   component FIFO is
+   component fifo is
 
-        component RAM is  
+        component ram is
 
 **Fix**
 
 .. code-block:: vhdl
 
-   architecture RTL of FIFO is 
+   architecture rtl of fifo is
    begin
 
-     component FIFO is
+     component fifo is
 
-     component RAM is  
+     component ram is
 
 component_002
 #############
@@ -38,13 +38,13 @@ This rule checks for a single space after the **component** keyword.
 
 .. code-block:: vhdl
 
-   component    FIFO is
+   component    fifo is
 
 **Fix**
 
 .. code-block:: vhdl
 
-   component FIFO is
+   component fifo is
 
 component_003
 #############
@@ -55,16 +55,16 @@ This rule checks for a blank line above the **component** declaration.
 
 .. code-block:: vhdl
 
-   end component FIFO;
-   component RAM is
+   end component fifo;
+   component ram is
 
 **Fix**
 
 .. code-block:: vhdl
 
-   end component FIFO;
+   end component fifo;
 
-   component RAM is
+   component ram is
 
 component_004
 #############
@@ -77,17 +77,17 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
 
 .. code-block:: vhdl
 
-   COMPONENT FIFO is
+   COMPONENT fifo is
 
-   Component FIFO is
+   Component fifo is
 
 **Fix**
 
 .. code-block:: vhdl
 
-   component FIFO is
+   component fifo is
 
-   component FIFO is
+   component fifo is
 
 
 component_005
@@ -99,18 +99,18 @@ This rule checks the **is** keyword is on the same line as the **component** key
 
 .. code-block:: vhdl
 
-   component FIFO
+   component fifo
 
-   component FIFO
+   component fifo
    is
 
 **Fix**
 
 .. code-block:: vhdl
 
-   component FIFO is
+   component fifo is
 
-   component FIFO is
+   component fifo is
 
 component_006
 #############
@@ -123,17 +123,17 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
 
 .. code-block:: vhdl
 
-   componet FIFO IS
+   component fifo IS
 
-   componet FIFO Is
+   component fifo Is
 
 **Fix**
 
 .. code-block:: vhdl
 
-   component FIFO is
+   component fifo is
 
-   component FIFO is
+   component fifo is
 
 component_007
 #############
@@ -144,13 +144,13 @@ This rule checks for a single space before the **is** keyword.
 
 .. code-block:: vhdl
 
-   component FIFO    is
+   component fifo    is
 
 **Fix**
 
 .. code-block:: vhdl
 
-   component FIFO is
+   component fifo is
 
 component_008
 #############
@@ -180,7 +180,7 @@ This rule checks the indent of the **end component** keywords.
 
 .. code-block:: vhdl
 
-      OVERFLOW : std_logic
+      overflow : std_logic
     );
         end component FIFO;
 
@@ -188,7 +188,7 @@ This rule checks the indent of the **end component** keywords.
 
 .. code-block:: vhdl
 
-       OVERFLOW : std_logic
+       overflow : std_logic
      );
    end component FIFO;
 
@@ -204,13 +204,13 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
 
 .. code-block:: vhdl
 
-   END component FIFO;
+   END component fifo;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   end component FIFO;
+   end component fifo;
 
 component_011
 #############
@@ -221,13 +221,13 @@ This rule checks for single space after the **end** keyword.
 
 .. code-block:: vhdl
 
-   end   component FIFO;
+   end   component fifo;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   end component FIFO;
+   end component fifo;
 
 component_012
 #############
@@ -257,31 +257,32 @@ This rule checks for a single space after the **component** keyword in the **end
 
 .. code-block:: vhdl
 
-   end component    FIFO;
+   end component    fifo;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   end component FIFO;
+   end component fifo;
 
 component_014
 #############
 
 This rule checks the **component** keyword in the **end component** line has proper case.
+
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
 .. code-block:: vhdl
 
-   end COMPONENT FIFO;
+   end COMPONENT fifo;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   end component FIFO;
+   end component fifo;
 
 component_015
 #############
@@ -292,7 +293,7 @@ This rule checks for the **component** keyword in the **end component** line.
 
 .. code-block:: vhdl
 
-   end FIFO;
+   end fifo;
 
    end;
 
@@ -300,7 +301,7 @@ This rule checks for the **component** keyword in the **end component** line.
 
 .. code-block:: vhdl
 
-   end component FIFO;
+   end component fifo;
 
    end component;
 
@@ -313,20 +314,20 @@ This rule checks for blank lines above the **end component** line.
 
 .. code-block:: vhdl
 
-       OVERFLOW : std_logic
+       overflow : std_logic
      );
 
 
 
-   end component FIFO;
+   end component fifo;
 
 **Fix**
 
 .. code-block:: vhdl
 
-       OVERFLOW : std_logic
+       overflow : std_logic
      );
-   end component FIFO;
+   end component fifo;
 
 component_017
 #############
@@ -380,7 +381,7 @@ This rule checks for a blank line below the **end component** line.
 
 .. code-block:: vhdl
 
-   end component FIFO;
+   end component fifo;
    signal rd_en : std_logic;
 
 
@@ -388,14 +389,14 @@ This rule checks for a blank line below the **end component** line.
 
 .. code-block:: vhdl
 
-   end component FIFO;
+   end component fifo;
 
    signal rd_en : std_logic;
 
 component_019
 #############
 
-This rule checks for comments at the end of the port and generic assignments in component declarations.
+This rule checks for comments at the end of the port and generic clauses in component declarations.
 These comments represent additional maintainence.
 They will be out of sync with the entity at some point.
 Refer to the entity for port types, port directions and purpose.
@@ -404,15 +405,15 @@ Refer to the entity for port types, port directions and purpose.
 
 .. code-block:: vhdl
 
-   WR_EN : in    std_logic;  -- Enables write to RAM
-   RD_EN : out   std_logic; -- Enable reads from RAM
+   wr_en : in    std_logic;  -- Enables write to RAM
+   rd_en : out   std_logic; -- Enable reads from RAM
 
 **Fix**
 
 .. code-block:: vhdl
 
-   WR_EN : in    std_logic;
-   RD_EN : out   std_logic;
+   wr_en : in    std_logic;
+   rd_en : out   std_logic;
 
 component_020
 #############
