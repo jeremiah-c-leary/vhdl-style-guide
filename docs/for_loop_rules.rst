@@ -10,7 +10,7 @@ This rule checks the indentation of the **for** keyword.
 
 .. code-block:: vhdl
 
-   FIFO_PROC : process () is
+   fifo_proc : process () is
    begin
 
    for index in 4 to 23 loop
@@ -23,7 +23,7 @@ This rule checks the indentation of the **for** keyword.
 
 .. code-block:: vhdl
 
-   FIFO_PROC : process () is
+   fifo_proc : process () is
    begin
 
      for index in 4 to 23 loop
@@ -41,7 +41,7 @@ This rule checks the indentation of the **end loop** keywords.
 
 .. code-block:: vhdl
 
-   FIFO_PROC : process () is
+   fifo_proc : process () is
    begin
 
      for index in 4 to 23 loop
@@ -54,7 +54,7 @@ This rule checks the indentation of the **end loop** keywords.
 
 .. code-block:: vhdl
 
-   FIFO_PROC : process () is
+   fifo_proc : process () is
    begin
 
      for index in 4 to 23 loop
@@ -93,15 +93,15 @@ This rule checks if a label exists on a for loop that a single space exists betw
 
 .. code-block:: vhdl
 
-     LABEL: for index in 4 to 23 loop
-     LABEL    : for index in 0 to 100 loop
+     label: for index in 4 to 23 loop
+     label    : for index in 0 to 100 loop
 
 **Fix**
 
 .. code-block:: vhdl
 
-     LABEL : for index in 4 to 23 loop
-     LABEL : for index in 0 to 100 loop
+     label : for index in 4 to 23 loop
+     label : for index in 0 to 100 loop
 
 for_loop_005
 ############
@@ -112,12 +112,12 @@ This rule checks if a label exists on a for loop that a single space exists afte
 
 .. code-block:: vhdl
 
-     LABEL :    for index in 4 to 23 loop
-     LABEL :  for index in 0 to 100 loop
+     label :    for index in 4 to 23 loop
+     label :  for index in 0 to 100 loop
 
 **Fix**
 
 .. code-block:: vhdl
 
-     LABEL : for index in 4 to 23 loop
-     LABEL : for index in 0 to 100 loop
+     label : for index in 4 to 23 loop
+     label : for index in 0 to 100 loop
