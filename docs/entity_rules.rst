@@ -12,7 +12,7 @@ This rule checks the indent of the **entity** keyword.
 
    library ieee;
 
-     entity FIFO is
+     entity fifo is
 
 **Fix**
 
@@ -20,7 +20,7 @@ This rule checks the indent of the **entity** keyword.
 
    library ieee;
 
-   entity FIFO is
+   entity fifo is
 
 
 entity_002
@@ -32,13 +32,13 @@ This rule checks for a single space after the **entity** keyword.
 
 .. code-block:: vhdl
 
-   entity    FIFO is
+   entity    fifo is
 
 **Fix**
 
 .. code-block:: vhdl
 
-   entity FIFO is
+   entity fifo is
 
 entity_003
 ##########
@@ -50,7 +50,7 @@ This rule checks for a blank line above the entity keyword.
 .. code-block:: vhdl
 
    library ieee;
-   entity FIFO is
+   entity fifo is
 
 **Fix**
 
@@ -58,7 +58,7 @@ This rule checks for a blank line above the entity keyword.
 
    library ieee;
 
-   entity FIFO is
+   entity fifo is
 
 entity_004
 ##########
@@ -71,13 +71,13 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
 
 .. code-block:: vhdl
 
-   ENTITY FIFO is
+   ENTITY fifo is
 
 **Fix**
 
 .. code-block:: vhdl
 
-   entity FIFO is
+   entity fifo is
 
 entity_005
 ##########
@@ -88,18 +88,18 @@ This rule checks the **is** keyword is on the same line as the **entity** keywor
 
 .. code-block:: vhdl
 
-   entity FIFO
+   entity fifo
 
-   entity FIFO
+   entity fifo
      is
 
 **Fix**
 
 .. code-block:: vhdl
 
-   entity FIFO is
+   entity fifo is
 
-   entity FIFO is
+   entity fifo is
 
 entity_006
 ##########
@@ -112,13 +112,13 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
 
 .. code-block:: vhdl
 
-   entity FIFO IS
+   entity fifo IS
 
 **Fix**
 
 .. code-block:: vhdl
 
-   entity FIFO is
+   entity fifo is
 
 entity_007
 ##########
@@ -129,13 +129,13 @@ This rule checks for a single space before the **is** keyword.
 
 .. code-block:: vhdl
 
-   entity FIFO    is
+   entity fifo    is
 
 **Fix**
 
 .. code-block:: vhdl
 
-   entity FIFO is
+   entity fifo is
 
 entity_008
 ##########
@@ -165,19 +165,19 @@ This rule checks the indent of the **end** keyword.
 
 .. code-block:: vhdl
 
-     WR_EN : in    std_logic;
-     RD_EN : in    std_logic
+     wr_en : in    std_logic;
+     rd_en : in    std_logic
    );   
-     end entity FIFO;
+     end entity fifo;
 
 **Fix**
 
 .. code-block:: vhdl
 
-       WR_EN : in    std_logic;
-       RD_EN : in    std_logic
+       wr_en : in    std_logic;
+       rd_en : in    std_logic
      );   
-   end entity FIFO;
+   end entity fifo;
 
 entity_010
 ##########
@@ -207,13 +207,13 @@ This rule checks for a single space after the **end** keyword.
 
 .. code-block:: vhdl
 
-   end    entity FIFO;
+   end    entity fifo;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   end entity FIFO;
+   end entity fifo;
 
 entity_012
 ##########
@@ -243,13 +243,13 @@ This rule checks for a single space after the **entity** keyword in the closing 
 
 .. code-block:: vhdl
 
-   end entity    FIFO;
+   end entity    fifo;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   end entity FIFO;
+   end entity fifo;
 
 entity_014
 ##########
@@ -262,13 +262,13 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
 
 .. code-block:: vhdl
 
-   end ENTITY FIFO;
+   end ENTITY fifo;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   end entity FIFO;
+   end entity fifo;
 
 entity_015
 ##########
@@ -279,7 +279,7 @@ This rule checks for the keyword **entity** in the **end entity** statement.
 
 .. code-block:: vhdl
 
-   end FIFO;
+   end fifo;
 
    end;
 
@@ -287,7 +287,7 @@ This rule checks for the keyword **entity** in the **end entity** statement.
 
 .. code-block:: vhdl
 
-   end entity FIFO;
+   end entity fifo;
 
    end entity;
 
@@ -300,22 +300,22 @@ This rule checks for blank lines above the **end entity** keywords.
 
 .. code-block:: vhdl
 
-       WR_EN : in    std_logic;
-       RD_EN : in    std_logic
+       wr_en : in    std_logic;
+       rd_en : in    std_logic
      );
 
   
-   end entity FIFO;
+   end entity fifo;
 
 
 **Fix**
 
 .. code-block:: vhdl
 
-       WR_EN : in    std_logic;
-       RD_EN : in    std_logic
+       wr_en : in    std_logic;
+       rd_en : in    std_logic
      );   
-   end entity FIFO;
+   end entity fifo;
 
 entity_017
 ##########
