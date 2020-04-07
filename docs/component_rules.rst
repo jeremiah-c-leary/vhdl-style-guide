@@ -182,7 +182,7 @@ This rule checks the indent of the **end component** keywords.
 
       overflow : std_logic
     );
-        end component FIFO;
+        end component fifo;
 
 **Fix**
 
@@ -190,7 +190,7 @@ This rule checks the indent of the **end component** keywords.
 
        overflow : std_logic
      );
-   end component FIFO;
+   end component fifo;
 
 
 component_010
