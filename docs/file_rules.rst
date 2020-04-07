@@ -10,7 +10,7 @@ This rule checks the indent of **file** declarations.
 
 .. code-block:: vhdl
 
-   architecture RTL of FIFO is
+   architecture rtl of fifo is
 
    file defaultImage : load_file_type open read_mode is load_file_name;
 
@@ -23,7 +23,7 @@ This rule checks the indent of **file** declarations.
 
 .. code-block:: vhdl
 
-   architecture RTL of FIFO is
+   architecture rtl of fifo is
 
      file defaultImage : load_file_type open read_mode is load_file_name;
 
