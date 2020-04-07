@@ -33,7 +33,7 @@ This rule checks the indent lines starting with comments.
    libary ieee;
 
     -- Define architecture
-   architecture RTL of FIFO is
+   architecture rtl of fifo is
 
    -- Define signals
      signal wr_en : std_logic;
@@ -49,7 +49,7 @@ This rule checks the indent lines starting with comments.
    libary ieee;
 
    -- Define architecture
-   architecture RTL of FIFO is
+   architecture rtl of fifo is
 
      -- Define signals
      signal wr_en : std_logic;
