@@ -30,6 +30,28 @@ begin
        overflow <= '1';
     end if;
 
+    -- This will check for records
+    if (rising_edge(q_ff.some_flop)) then
+       wr_en <= '1';
+    end if;
+
+    if (q_ff.some_flop'event and q_ff.some_flop = '1') then
+       wr_en <= '1';
+    end if;
+
+    if (something) then
+       wr_en <= '1';
+    elsif (falling_edge(q_ff.some_flop)) then
+       wr_en <= '0';
+    end if;
+
+    if (something) then
+       wr_en <= '1';
+    elsif (q_ff.some_flop'event and q_ff.some_flop = '0') then
+       wr_en <= '0';
+    end if;
+
+
   end process PROC_1;
 
 end architecture RTL;

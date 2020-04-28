@@ -25,7 +25,7 @@ class rule_029(rule.rule):
                 dViolation = utils.create_violation_dict(iLineNumber)
                 self.add_violation(dViolation)
         elif self.clock == 'edge':
-            if oLine.isClockStatement and re.match('^.*\'event', oLine.lineLower):
+            if oLine.isClockStatement and '\'event' in oLine.lineLower:
                 dViolation = utils.create_violation_dict(iLineNumber)
                 self.add_violation(dViolation)
         else:
@@ -35,11 +35,11 @@ class rule_029(rule.rule):
         for dViolation in self.violations:
             oLine = utils.get_violating_line(oFile, dViolation)
             if self.clock == 'event':
-                oLine.update_line(re.sub(r'rising_edge\s*\(\s*(\w+)\s*\)', r'\1"event and \1 = "1"', oLine.line, re.IGNORECASE).replace('"', '\''))
-                oLine.update_line(re.sub(r'falling_edge\s*\(\s*(\w+)\s*\)', r'\1"event and \1 = "0"', oLine.line, re.IGNORECASE).replace('"', '\''))
+                oLine.update_line(re.sub(r'rising_edge\s*\(\s*([a-zA-Z0-9_.]+)\s*\)', r'\1"event and \1 = "1"', oLine.line, re.IGNORECASE).replace('"', '\''))
+                oLine.update_line(re.sub(r'falling_edge\s*\(\s*([a-zA-Z0-9_.]+)\s*\)', r'\1"event and \1 = "0"', oLine.line, re.IGNORECASE).replace('"', '\''))
             else:
-                oLine.update_line(re.sub(r'(\w+)\'event\s+and\s+\w+\s*=\s*\'\s*0\s*\'', r'falling_edge(\1)', oLine.line, re.IGNORECASE))
-                oLine.update_line(re.sub(r'(\w+)\'event\s+and\s+\w+\s*=\s*\'\s*1\s*\'', r'rising_edge(\1)', oLine.line, re.IGNORECASE))
+                oLine.update_line(re.sub(r'([a-zA-Z0-9_.]+)\'event\s+and\s+[a-zA-Z0-9_.]+\s*=\s*\'\s*0\s*\'', r'falling_edge(\1)', oLine.line, re.IGNORECASE))
+                oLine.update_line(re.sub(r'([a-zA-Z0-9_.]+)\'event\s+and\s+[a-zA-Z0-9_.]+\s*=\s*\'\s*1\s*\'', r'rising_edge(\1)', oLine.line, re.IGNORECASE))
 
     def _get_solution(self, iLineNumber):
         if self.clock == 'event':
