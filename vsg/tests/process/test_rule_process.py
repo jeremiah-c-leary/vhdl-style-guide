@@ -273,7 +273,7 @@ class testRuleProcessMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'process')
         self.assertEqual(oRule.identifier, '029')
-        dExpected = [9,13]
+        dExpected = [9,13,34,44]
         oRule.analyze(oFileEvent)
         self.assertEqual(oRule.violations, dExpected)
 

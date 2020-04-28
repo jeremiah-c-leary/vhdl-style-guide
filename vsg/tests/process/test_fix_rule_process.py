@@ -221,3 +221,5 @@ class testFixRuleProcessMethods(unittest.TestCase):
         self.assertEqual(oRule.violations, dExpected)
         self.assertEqual(self.oFileEvent.lines[9].line, '    if (CLK\'event and CLK = \'1\') then')
         self.assertEqual(self.oFileEvent.lines[13].line, '    if (CLK\'event and CLK = \'0\') then')
+        self.assertEqual(self.oFileEvent.lines[34].line, '    if (q_ff.some_flop\'event and q_ff.some_flop = \'1\') then')   
+        self.assertEqual(self.oFileEvent.lines[44].line, '    elsif (q_ff.some_flop\'event and q_ff.some_flop = \'0\') then')   
