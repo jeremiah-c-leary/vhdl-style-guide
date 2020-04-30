@@ -107,7 +107,8 @@ def _classify_is_keyword(dVars, oLine):
 
 def _classify_end_procedure_in_package_body(dVars, oLine):
     if re.match('^\s*end', oLine.lineLower) and not oLine.isEndIfKeyword and \
-       not oLine.isEndCaseKeyword and not oLine.isForLoopEnd and not oLine.isWhileLoopEnd:
+       not oLine.isEndCaseKeyword and not oLine.isForLoopEnd and not oLine.isWhileLoopEnd and \
+       not oLine.insideForLoop:
         oLine.isProcedureEnd = True
         oLine.indentLevel = dVars['iCurrentIndentLevel'] - 1
         dVars['iCurrentIndentLevel'] -= 1

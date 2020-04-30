@@ -54,7 +54,7 @@ class testRuleProcedureMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'procedure')
         self.assertEqual(oRule.identifier, '005')
-        dExpected = [89,90]
+        dExpected = [89,90,115,116]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 

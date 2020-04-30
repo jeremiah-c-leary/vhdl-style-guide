@@ -105,3 +105,23 @@ package body FIFO_PKG is
 
 end package body FIFO_PKG;
 
+architecture RTL of ENT is
+
+  procedure AVERAGE_SAMPLES (
+    constant a : in integer;
+    signal b : in std_logic;
+    variable c : in std_logic_vector(3 downto 0);
+    signal d : out std_logic) is
+  variable var_1 : integer;
+      variable var_2 : integer;
+  begin
+
+    for i in 0 to 7 loop
+       done_something <= 0;
+    end loop;
+
+  end procedure AVERAGE_SAMPLES;  
+
+begin
+
+end architecture RTL;
