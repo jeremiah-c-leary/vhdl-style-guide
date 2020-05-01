@@ -99,4 +99,9 @@ begin
 
   end process PROC_1;
 
+  a <= b
+       when c = '0'
+       else
+       d;
+
 end architecture ARCH;
