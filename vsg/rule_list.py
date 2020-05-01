@@ -237,7 +237,7 @@ class rule_list():
         for oRule in self.rules:
             if len(oRule.violations) > 0:
                 for iLinenumber in oRule.violations:
-                    oFailure.add_text(oRule.name + '_' + oRule.identifier + ': ' + str(iLinenumber) + ' : ' + oRule.solution)
+                    oFailure.add_text(oRule.name + '_' + oRule.identifier + ': ' + str(iLinenumber) + ' : ' + oRule._get_solution(iLinenumber))
                 oTestcase.add_failure(oFailure)
 
         return oTestcase
