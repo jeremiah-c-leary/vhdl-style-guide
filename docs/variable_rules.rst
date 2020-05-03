@@ -10,7 +10,7 @@ This rule checks the indent of variable declarations.
 
 .. code-block:: vhdl
 
-   PROC : process () is
+   proc : process () is
 
    variable count : integer;
          variable counter : integer;
@@ -21,7 +21,7 @@ This rule checks the indent of variable declarations.
 
 .. code-block:: vhdl
 
-   PROC : process () is
+   proc : process () is
 
      variable count : integer;
      variable counter : integer;
@@ -166,14 +166,14 @@ This rule checks for consistent capitalization of variable names.
 
 .. code-block:: vhdl
 
-   architecture RTL of ENTITY1 is
+   architecture rtl of entity1 is
 
      shared variable var1 : std_logic;
      shared variable var2 : std_logic;
 
    begin
 
-     PROC_NAME : process () is
+     proc_name : process () is
 
        variable var3 : std_logic;
        variable var4 : std_logic;
@@ -188,15 +188,15 @@ This rule checks for consistent capitalization of variable names.
          VAR4 <= '0';
        end if;
 
-     end process PROC_NAME;
+     end process proc_name;
 
-   end architecture RTL;
+   end architecture rtl;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   PROC_NAME : process () is
+   proc_name : process () is
 
      variable var1 : std_logic;
      variable var2 : std_logic;
@@ -213,7 +213,7 @@ This rule checks for consistent capitalization of variable names.
        var4 <= '0';
      end if;
 
-   end process PROC_NAME;
+   end process proc_name;
 
 variable_012
 ############
