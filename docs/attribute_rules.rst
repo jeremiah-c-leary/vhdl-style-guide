@@ -10,7 +10,7 @@ This rule checks the indent of **attribute** declarations.
 
 .. code-block:: vhdl
 
-   architecture RTL of FIFO is
+   architecture rtl of fifo is
 
    attribute ram_init_file : string;
    attribute ram_init_file of ram_block :
@@ -22,7 +22,7 @@ This rule checks the indent of **attribute** declarations.
 
 .. code-block:: vhdl
 
-   architecture RTL of FIFO is
+   architecture rtl of fifo is
 
      attribute ram_init_file : string;
      attribute ram_init_file of ram_block :
