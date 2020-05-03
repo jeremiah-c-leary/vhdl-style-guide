@@ -10,21 +10,21 @@ This rule checks the indent of the process declaration.
 
 .. code-block:: vhdl
 
-   architecture RTL of FIFO is
+   architecture rtl of fifo is
 
    begin
 
-   PROC_A : process (rd_en, wr_en, data_in, data_out,
+   proc_a : process (rd_en, wr_en, data_in, data_out,
 
 **Fix**
 
 .. code-block:: vhdl
 
-   architecture RTL of FIFO is
+   architecture rtl of fifo is
 
    begin
 
-     PROC_A : process (rd_en, wr_en, data_in, data_out,
+     proc_a : process (rd_en, wr_en, data_in, data_out,
 
 
 process_002
@@ -36,17 +36,17 @@ This rule checks for a single space after the **process** keyword.
 
 .. code-block:: vhdl
 
-   PROC_A : process(rd_en, wr_en, data_in, data_out,
+   proc_a : process(rd_en, wr_en, data_in, data_out,
 
-   PROC_A : process    (rd_en, wr_en, data_in, data_out,
+   proc_a : process    (rd_en, wr_en, data_in, data_out,
 
 **Fix**
 
 .. code-block:: vhdl
 
-   PROC_A : process (rd_en, wr_en, data_in, data_out,
+   proc_a : process (rd_en, wr_en, data_in, data_out,
 
-   PROC_A : process (rd_en, wr_en, data_in, data_out,
+   proc_a : process (rd_en, wr_en, data_in, data_out,
 
 process_003
 ###########
@@ -57,7 +57,7 @@ This rule checks the indent of the **begin** keyword.
 
 .. code-block:: vhdl
 
-   PROC_A : process (rd_en, wr_en, data_in, data_out,
+   proc_a : process (rd_en, wr_en, data_in, data_out,
                      rd_full, wr_full
                     ) is
      begin
@@ -66,7 +66,7 @@ This rule checks the indent of the **begin** keyword.
 
 .. code-block:: vhdl
 
-   PROC_A : process (rd_en, wr_en, data_in, data_out,
+   proc_a : process (rd_en, wr_en, data_in, data_out,
                      rd_full, wr_full
                     ) is
    begin
@@ -124,23 +124,23 @@ This rule checks the indent of the **end process** keywords.
 
 .. code-block:: vhdl
 
-   PROC_A : process (rd_en, wr_en, data_in, data_out,
+   proc_a : process (rd_en, wr_en, data_in, data_out,
                      rd_full, wr_full
                     ) is
    begin
 
-     end process PROC_A;
+     end process proc_a;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   PROC_A : process (rd_en, wr_en, data_in, data_out,
+   proc_a : process (rd_en, wr_en, data_in, data_out,
                      rd_full, wr_full
                     ) is
    begin
 
-   end process PROC_A;
+   end process proc_a;
 
 process_007
 ###########
@@ -151,13 +151,13 @@ This rule checks for a single space after the **end** keyword.
 
 .. code-block:: vhdl
 
-   end   process PROC_A;
+   end   process proc_a;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   end process PROC_A;
+   end process proc_a;
 
 process_008
 ###########
@@ -206,7 +206,7 @@ This rule checks the **begin** keyword is on it's own line.
 
 .. code-block:: vhdl
 
-   PROC_A : process (rd_en, wr_en, data_in, data_out,
+   proc_a : process (rd_en, wr_en, data_in, data_out,
                      rd_full, wr_full
                     ) is begin
 
@@ -214,7 +214,7 @@ This rule checks the **begin** keyword is on it's own line.
 
 .. code-block:: vhdl
 
-   PROC_A : process (rd_en, wr_en, data_in, data_out,
+   proc_a : process (rd_en, wr_en, data_in, data_out,
                      rd_full, wr_full
                     ) is
    begin
@@ -228,16 +228,16 @@ This rule checks for a blank line after the **end process** keyword.
 
 .. code-block:: vhdl
 
-   end process PROC_A;
-   WR_EN <= wr_en;
+   end process proc_a;
+   wr_en <= wr_en;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   end process PROC_A;
+   end process proc_a;
 
-   WR_EN <= wr_en;
+   wr_en <= wr_en;
 
 process_012
 ###########
@@ -248,12 +248,12 @@ This rule checks for the existence of the **is** keyword on the same line as the
 
 .. code-block:: vhdl
 
-   PROC_A : process (rd_en, wr_en, data_in, data_out,
+   proc_a : process (rd_en, wr_en, data_in, data_out,
                      rd_full, wr_full
                     )
    begin
 
-   PROC_A : process (rd_en, wr_en, data_in, data_out,
+   proc_a : process (rd_en, wr_en, data_in, data_out,
                      rd_full, wr_full
                     )
    is begin
@@ -262,12 +262,12 @@ This rule checks for the existence of the **is** keyword on the same line as the
 
 .. code-block:: vhdl
 
-   PROC_A : process (rd_en, wr_en, data_in, data_out,
+   proc_a : process (rd_en, wr_en, data_in, data_out,
                      rd_full, wr_full
                     ) is
    begin
 
-   PROC_A : process (rd_en, wr_en, data_in, data_out,
+   proc_a : process (rd_en, wr_en, data_in, data_out,
                      rd_full, wr_full
                     ) is
    begin
@@ -306,7 +306,7 @@ This rule checks for a single space before the **is** keyword.
 
 .. code-block:: vhdl
 
-   PROC_A : process (rd_en, wr_en, data_in, data_out,
+   proc_a : process (rd_en, wr_en, data_in, data_out,
                      rd_full, wr_full
                     )     is
    begin
@@ -315,7 +315,7 @@ This rule checks for a single space before the **is** keyword.
 
 .. code-block:: vhdl
 
-   PROC_A : process (rd_en, wr_en, data_in, data_out,
+   proc_a : process (rd_en, wr_en, data_in, data_out,
                      rd_full, wr_full
                     ) is
    begin
@@ -330,21 +330,21 @@ This rule checks for a blank line or comment above the **process** declaration.
 .. code-block:: vhdl
 
    -- This process performs FIFO operations.   
-   PROC_A : process (rd_en, wr_en, data_in, data_out,
+   proc_a : process (rd_en, wr_en, data_in, data_out,
 
-   WR_EN <= wr_en;
-   PROC_A : process (rd_en, wr_en, data_in, data_out,
+   wr_en <= wr_en;
+   proc_a : process (rd_en, wr_en, data_in, data_out,
 
 **Fix**
 
 .. code-block:: vhdl
 
    -- This process performs FIFO operations.   
-   PROC_A : process (rd_en, wr_en, data_in, data_out,
+   proc_a : process (rd_en, wr_en, data_in, data_out,
 
-   WR_EN <= wr_en;
+   wr_en <= wr_en;
 
-   PROC_A : process (rd_en, wr_en, data_in, data_out,
+   proc_a : process (rd_en, wr_en, data_in, data_out,
 
 process_016
 ###########
@@ -364,7 +364,7 @@ This rule checks the process has a label.
 
 .. code-block:: vhdl
 
-   PROC_A : process (rd_en, wr_en, data_in, data_out,
+   proc_a : process (rd_en, wr_en, data_in, data_out,
                      rd_full, wr_full
                     ) is
    begin
@@ -410,12 +410,12 @@ The closing label will be added if the opening process label exists.
 
 .. code-block:: vhdl
 
-   end process PROC_A;
+   end process proc_a;
 
 process_019
 ###########
  
-This rule checks the **end process** label is uppercase.
+This rule checks the **end process** label has proper case.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
@@ -440,7 +440,7 @@ This rule checks the indentation of multiline sensitivity lists.
 
 .. code-block:: vhdl
 
-   PROC_A : process (rd_en, wr_en, data_in, data_out,
+   proc_a : process (rd_en, wr_en, data_in, data_out,
                         rd_full, wr_full,
                overflow, underflow
                     ) is begin
@@ -449,7 +449,7 @@ This rule checks the indentation of multiline sensitivity lists.
 
 .. code-block:: vhdl
 
-   PROC_A : process (rd_en, wr_en, data_in, data_out,
+   proc_a : process (rd_en, wr_en, data_in, data_out,
                      rd_full, wr_full,
                      overflow, underflow
                     ) is
@@ -464,10 +464,10 @@ This rule checks for blank lines between the end of the sensitivity list and bef
 
 .. code-block:: vhdl
 
-   PROC_A : process (rd_en, wr_en, data_in, data_out,
+   proc_a : process (rd_en, wr_en, data_in, data_out,
                      rd_full, wr_full
                     ) is
- 
+
 
 
    begin
@@ -490,7 +490,7 @@ This rule checks for a blank line below the **begin** keyword.
 
 .. code-block:: vhdl
 
-   PROC_A : process (rd_en, wr_en, data_in, data_out,
+   proc_a : process (rd_en, wr_en, data_in, data_out,
                      rd_full, wr_full
                     ) is
    begin
@@ -500,7 +500,7 @@ This rule checks for a blank line below the **begin** keyword.
 
 .. code-block:: vhdl
 
-   PROC_A : process (rd_en, wr_en, data_in, data_out,
+   proc_a : process (rd_en, wr_en, data_in, data_out,
                      rd_full, wr_full
                     ) is
    begin
@@ -517,7 +517,7 @@ This rule checks for a blank line above the **end process** keyword.
 .. code-block:: vhdl
 
      wr_en <= '1';
-   end process PROC_A;
+   end process proc_a;
 
 **Fix**
 
@@ -525,7 +525,7 @@ This rule checks for a blank line above the **end process** keyword.
 
      wr_en <= '1';
 
-   end process PROC_A;
+   end process proc_a;
 
 process_024
 ###########
@@ -536,7 +536,7 @@ This rule checks for a single space after the process label.
 
 .. code-block:: vhdl
 
-   PROC_A: process (rd_en, wr_en, data_in, data_out,
+   proc_a: process (rd_en, wr_en, data_in, data_out,
                     rd_full, wr_full
                    ) is
    begin
@@ -545,7 +545,7 @@ This rule checks for a single space after the process label.
 
 .. code-block:: vhdl
 
-   PROC_A : process (rd_en, wr_en, data_in, data_out,
+   proc_a : process (rd_en, wr_en, data_in, data_out,
                      rd_full, wr_full
                     ) is
    begin
@@ -559,7 +559,7 @@ This rule checks for a single space after the : and before the **process** keywo
 
 .. code-block:: vhdl
 
-   PROC_A :process (rd_en, wr_en, data_in, data_out,
+   proc_a :process (rd_en, wr_en, data_in, data_out,
                     rd_full, wr_full
                    ) is begin
 
@@ -567,7 +567,7 @@ This rule checks for a single space after the : and before the **process** keywo
 
 .. code-block:: vhdl
 
-   PROC_A : process (rd_en, wr_en, data_in, data_out,
+   proc_a : process (rd_en, wr_en, data_in, data_out,
                      rd_full, wr_full
                     ) is
    begin
@@ -581,7 +581,7 @@ This rule checks for blank lines between the end of the sensitivity list and pro
 
 .. code-block:: vhdl
 
-   PROC_A : process (rd_en, wr_en, data_in, data_out,
+   proc_a : process (rd_en, wr_en, data_in, data_out,
                      rd_full, wr_full
                     ) is
      -- Keep track of the number of words in the FIFO
@@ -592,7 +592,7 @@ This rule checks for blank lines between the end of the sensitivity list and pro
 
 .. code-block:: vhdl
 
-   PROC_A : process (rd_en, wr_en, data_in, data_out,
+   proc_a : process (rd_en, wr_en, data_in, data_out,
                      rd_full, wr_full
                     ) is
 
@@ -609,7 +609,7 @@ This rule checks for blank lines between process declarative lines and the **beg
 
 .. code-block:: vhdl
 
-   PROC_A : process (rd_en, wr_en, data_in, data_out,
+   proc_a : process (rd_en, wr_en, data_in, data_out,
                      rd_full, wr_full
                     ) is
 
@@ -621,7 +621,7 @@ This rule checks for blank lines between process declarative lines and the **beg
 
 .. code-block:: vhdl
 
-   PROC_A : process (rd_en, wr_en, data_in, data_out,
+   proc_a : process (rd_en, wr_en, data_in, data_out,
                      rd_full, wr_full
                     ) is
 
@@ -640,7 +640,7 @@ Parenthesis on multiple lines should be in the same column.
 
 .. code-block:: vhdl
 
-   PROC_A : process (rd_en, wr_en, data_in, data_out,
+   proc_a : process (rd_en, wr_en, data_in, data_out,
                      rd_full, wr_full
                        )
 
@@ -648,7 +648,7 @@ Parenthesis on multiple lines should be in the same column.
 
 .. code-block:: vhdl
 
-   PROC_A : process (rd_en, wr_en, data_in, data_out,
+   proc_a : process (rd_en, wr_en, data_in, data_out,
                      rd_full, wr_full
                     )
 
@@ -660,13 +660,13 @@ The rule can be set to enforce **event** definition:
 
 .. code-block:: vhdl
 
-    if (CLK'event and CLK = '1') then
+    if (clk'event and clk = '1') then
 
 ..or **edge** definition:
 
 .. code-block:: vhdl
 
-    if (rising_edge(CLK)) then
+    if (rising_edge(clk)) then
 
 event configuration
 ^^^^^^^^^^^^^^^^^^^
@@ -677,17 +677,17 @@ event configuration
 
 .. code-block:: vhdl
 
-   if (rising_edge(CLK)) then
+   if (rising_edge(clk)) then
 
-   if (falling_edge(CLK)) then
+   if (falling_edge(clk)) then
 
 **Fix**
 
 .. code-block:: vhdl
 
-   if (CLK'event and CLK = '1') then
+   if (clk'event and clk = '1') then
 
-   if (CLK'event and CLK = '0') then
+   if (clk'event and clk = '0') then
 
 edge configuration
 ^^^^^^^^^^^^^^^^^^
@@ -708,17 +708,17 @@ edge configuration
 
 .. code-block:: vhdl
 
-   if (CLK'event and CLK = '1') then
+   if (clk'event and clk = '1') then
 
-   if (CLK'event and CLK = '0') then
+   if (clk'event and clk = '0') then
 
 **Fix**
 
 .. code-block:: vhdl
 
-   if (rising_edge(CLK)) then
+   if (rising_edge(clk)) then
 
-   if (falling_edge(CLK)) then
+   if (falling_edge(clk)) then
 
 process_030
 ###########
@@ -734,7 +734,7 @@ This will help with code readability.
 
 .. code-block:: vhdl
 
-   PROC_A : process (rd_en,
+   proc_a : process (rd_en,
                      wr_en,
                      data_in,
                      data_out,
@@ -746,42 +746,42 @@ This will help with code readability.
 
 .. code-block:: vhdl
 
-   PROC_A : process (rd_en, wr_en, data_in, data_out,
+   proc_a : process (rd_en, wr_en, data_in, data_out,
                      rd_full, wr_full
                     )
 
 process_031
 ###########
 
-This rule checks for alignment of identifiers and colons of constant, variable, and file.
+This rule checks for alignment of identifiers in the process declarative region.
 
 **Violation**
 
 .. code-block:: vhdl
 
-   PROC_1 : process(A) is
+   proc_1 : process(all) is
 
     variable     var1 : boolean;
     constant  cons1 : integer;
-    file            file1 : load_file_file open read_mode is load_file_name;
+    file            file1  : load_file_file open read_mode is load_file_name;
 
    begin
 
-   end process PROC_1;
+   end process proc_1;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   PROC_1 : process(A) is
+   proc_1 : process(all) is
 
-    variable var1  : boolean;
+    variable var1 : boolean;
     constant cons1 : integer;
-    file     file1 : load_file_file open read_mode is load_file_name;
+    file     file1  : load_file_file open read_mode is load_file_name;
 
    begin
 
-   end process PROC_1;
+   end process proc_1;
 
 process_032
 ###########
@@ -792,15 +792,15 @@ This rule checks the process label is on the same line as the process keyword.
 
 .. code-block:: vhdl
 
-   PROC_1 :
+   proc_1 :
 
-   process(A) is
+   process(all) is
 
 **Fix**
 
 .. code-block:: vhdl
 
-   PROC_1 : process(A) is
+   proc_1 : process(all) is
 
 process_033
 ###########
@@ -814,7 +814,7 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring_keyword_a
 
    variable var1 : natural;
    variable var2  : natural;
-   constant PERIOD : time;
+   constant c_period : time;
    file my_test_input : my_file_type;
 
 **Fix**
@@ -823,13 +823,13 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring_keyword_a
 
    variable var1      : natural;
    variable var2      : natural;
-   constant PERIOD    : time;
+   constant c_period  : time;
    file my_test_input : my_file_type;
 
 process_034
 ###########
 
-This rule aligns in line comments between the end of the process sensitivity list and the process **begin** keyword.
+This rule aligns inline comments between the end of the process sensitivity list and the process **begin** keyword.
 Refer to the section `Configuring Keyword Alignment Rules <configuring_keyword_alignment.html>`_ for information on changing the configurations.
 
 **Violation**
@@ -861,7 +861,7 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring_keyword_a
 process_035
 ###########
 
-This rule checks the alignment of in line comments between the process begin and end process lines.
+This rule checks the alignment of inline comments between the process begin and end process lines.
 Refer to the section `Configuring Keyword Alignment Rules <configuring_keyword_alignment.html>`_ for information on changing the configurations.
 
 **Violation**

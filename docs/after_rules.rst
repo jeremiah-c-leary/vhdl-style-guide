@@ -1,13 +1,13 @@
 After Rules
 -----------
 
+.. NOTE::  All rules in this group are disabled by default.
+           Use a configuration to enable them.
+
 after_001
 #########
 
 This rule checks for **after x** in signal assignments in clock processes.
-
-.. NOTE::  All rules in this group are disabled by default.
-           Use a configuration to enable them.
 
 **Violation**
 
@@ -54,9 +54,6 @@ after_002
 This rule checks the *after* keywords are aligned in a clock process.
 Refer to the section `Configuring Keyword Alignment Rules <configuring_keyword_alignment.html>`_ for information on changing the configurations.
 
-.. NOTE::  All rules in this group are disabled by default.
-           Use a configuration to enable them.
-
 **Violation**
 
 .. code-block:: vhdl
@@ -91,9 +88,6 @@ after_003
 #########
 
 This rule checks the *after* keywords do not exist in the reset portion of a clock process.
-
-.. NOTE::  All rules in this group are disabled by default.
-           Use a configuration to enable them.
 
 **Violation**
 

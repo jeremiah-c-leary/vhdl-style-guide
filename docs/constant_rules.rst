@@ -303,10 +303,9 @@ constant_015
 ############
 
 This rule checks for valid prefixes on constant identifiers.
+The default constant prefix is *c\_*.
 
-.. NOTE:: The default constant prefix is "c\_".
-
-   Refer to the section `Configuring Prefix and Suffix Rules <configuring_prefix_suffix.html>`_ for information on changing the allowed prefixes.
+Refer to the section `Configuring Prefix and Suffix Rules <configuring_prefix_suffix.html>`_ for information on changing the allowed prefixes.
 
 **Violation**
 

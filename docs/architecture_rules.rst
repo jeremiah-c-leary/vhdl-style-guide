@@ -10,14 +10,14 @@ This rule checks for blank spaces before the **architecture** keyword.
 
 .. code-block:: vhdl
 
-     architecture RTL of FIFO is
+     architecture rtl of fifo is
    begin
 
 **Fix**
 
 .. code-block:: vhdl
 
-   architecture RTL of FIFO is
+   architecture rtl of fifo is
    begin
 
 architecture_002
@@ -29,13 +29,13 @@ This rule checks for a single space between **architecture**, **of**, and **is**
 
 .. code-block:: vhdl
 
-   architecture  RTL  of    FIFO   is
+   architecture  rtl  of    fifo   is
 
 **Fix**
 
 .. code-block:: vhdl
 
-   architecture RTL of FIFO is
+   architecture rtl of fifo is
 
 architecture_003
 ################
@@ -47,7 +47,7 @@ This rule check for a blank line above the **architecture** declaration.
 .. code-block:: vhdl
 
    library ieee;
-   architecture RTL of FIFO is
+   architecture rtl of fifo is
 
 **Fix**
 
@@ -55,7 +55,7 @@ This rule check for a blank line above the **architecture** declaration.
 
    library ieee;
 
-   architecture RTL of FIFO is
+   architecture rtl of fifo is
 
 architecture_004
 ################
@@ -83,15 +83,15 @@ This rule checks the **of** keyword is on the same line as the **architecture** 
 
 .. code-block:: vhdl
 
-   architecture RTL
-     of FIFO is
+   architecture rtl
+     of fifo is
 
 **Fix**
 
 .. code-block:: vhdl
 
-   architecture RTL of
-   FIFO is
+   architecture rtl of
+   fifo is
 
 architecture_006
 ################
@@ -102,18 +102,18 @@ This rule checks the **is** keyword is on the same line as the **architecture** 
 
 .. code-block:: vhdl
 
-   architecture RTL of FIFO
+   architecture rtl of fifo
      is
 
-   architecture RTL of FIFO
+   architecture rtl of fifo
 
 **Fix**
 
 .. code-block:: vhdl
 
-   architecture RTL of FIFO is
+   architecture rtl of fifo is
 
-   architecture RTL of FIFO is
+   architecture rtl of fifo is
 
 architecture_007
 ################
@@ -124,14 +124,14 @@ This rule checks for spaces before the **begin** keyword.
 
 .. code-block:: vhdl
 
-   architecture RTL of FIFO is
+   architecture rtl of fifo is
      begin
 
 **Fix**
 
 .. code-block:: vhdl
 
-   architecture RTL of FIFO is
+   architecture rtl of fifo is
    begin
 
 architecture_008
@@ -143,7 +143,7 @@ This rule checks for spaces before the **end architecture** keywords.
 
 .. code-block:: vhdl
 
-   architecture RTL of FIFO is
+   architecture rtl of fifo is
    begin
      end architecture
 
@@ -151,7 +151,7 @@ This rule checks for spaces before the **end architecture** keywords.
 
 .. code-block:: vhdl
 
-   architecture RTL of FIFO is
+   architecture rtl of fifo is
    begin
    end architecture
 
@@ -188,13 +188,13 @@ It is clearer to the reader to state what is ending.
 
 .. code-block:: vhdl
 
-   end ARCHITECTURE_NAME;
+   end architecture_name;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   end architecture ARCHITECTURE_NAME;
+   end architecture architecture_name;
 
 architecture_011
 ################
@@ -225,13 +225,13 @@ This rule checks for a single space between **end** and **architecture** keyword
 
 .. code-block:: vhdl
 
-   end    architecture ARCHITECTURE_NAME;
+   end    architecture architecture_name;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   end architecture ARCHITECTURE_NAME;
+   end architecture architecture_name;
  
 architecture_013
 ################
@@ -280,7 +280,7 @@ This rule check for a blank line below the architecture declaration.
 
 .. code-block:: vhdl
 
-   architecture RTL of FIFO is
+   architecture rtl of fifo is
      signal wr_en : std_logic;
    begin
 
@@ -288,7 +288,7 @@ This rule check for a blank line below the architecture declaration.
 
 .. code-block:: vhdl
 
-   architecture RTL of FIFO is
+   architecture rtl of fifo is
 
      signal wr_en : std_logic;
    begin
@@ -303,7 +303,7 @@ This rule checks for a blank line above the **begin** keyword.
 
 .. code-block:: vhdl
 
-   architecture RTL of FIFO is
+   architecture rtl of fifo is
 
      signal wr_en : std_logic;
    begin
@@ -312,7 +312,7 @@ This rule checks for a blank line above the **begin** keyword.
 
 .. code-block:: vhdl
 
-   architecture RTL of FIFO is
+   architecture rtl of fifo is
 
      signal wr_en : std_logic;
 
@@ -427,43 +427,14 @@ This rule checks for a single space before the entity name in the end architectu
 
 .. code-block:: vhdl
 
-   end architecture    FIFO;
+   end architecture    fifo;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   end architecture FIFO;
- 
-architecture_023
-################
+   end architecture fifo;
 
-This rule ensures the inline comments are aligned between the architecture declaration and the **begin** keyword.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   architecture RTL of FIFO is
-
-     signal wr_en : std_logic;   -- Enables writes to FIFO
-     signal rd_en : std_logic;  -- Enables reads from FIFO
-     signal overflow : std_logic;    -- Indicates the FIFO has overflowed when asserted
-
-   begin
-
-**Fix**
-
-.. code-block:: vhdl
-
-   architecture RTL of FIFO is
-
-     signal wr_en : std_logic;       -- Enables writes to FIFO
-     signal rd_en : std_logic;       -- Enables reads from FIFO
-     signal overflow : std_logic;    -- Indicates the FIFO has overflowed when asserted
-
-   begin
- 
 architecture_024
 ################
 
@@ -480,7 +451,7 @@ It is clearer to the reader to state which architecture the end statement is clo
 
 .. code-block:: vhdl
 
-   end architecture ARCHITECTURE_NAME;
+   end architecture architecture_name;
 
 architecture_025
 ################
@@ -508,7 +479,7 @@ This rule allows the user to restrict what can be used for an architecture name.
 
 .. code-block:: vhdl
 
-   architecture SOME_INVALID_ARCH_NAME of ENTITY1 is
+   architecture some_invalid_arch_name of entity1 is
 
 **Fix**
 
@@ -518,42 +489,60 @@ architecture_026
 ################
 
 This rule checks the colons are in the same column for all declarations in the architecture declarative part.
+
 Refer to the section `Configuring Keyword Alignment Rules <configuring_keyword_alignment.html>`_ for information on changing the configurations.
 
 **Violation**
 
 .. code-block:: vhdl
 
-   signal wr_en : std_logic;
-   signal rd_en   : std_logic;
-   constant PERIOD : time;
+   architecture rtl of my_entity is
+
+     signal   wr_en : std_logic;
+     signal   rd_en   : std_logic;
+     constant c_period : time;
+
+   begin
 
 **Fix**
 
 .. code-block:: vhdl
 
-   signal wr_en    : std_logic;
-   signal rd_en    : std_logic;
-   constant PERIOD : time;
+   architecture rtl of my_entity is
+
+     signal   wr_en    : std_logic;
+     signal   rd_en    : std_logic;
+     constant c_period : time;
+
+   begin
 
 architecture_027
 ################
 
 This rule checks the alignment of inline comments in the architecture declarative part.
+
 Refer to the section `Configuring Keyword Alignment Rules <configuring_keyword_alignment.html>`_ for information on changing the configurations.
 
 **Violation**
 
 .. code-block:: vhdl
 
-   signal wr_en    : std_logic;  -- Comment 1
-   signal rd_en    : std_logic;     -- Comment 2
-   constant PERIOD : time; -- Comment 3
+   architecture rtl of my_entity is
+
+     signal   wr_en    : std_logic;  -- Comment 1
+     signal   rd_en    : std_logic;     -- Comment 2
+     constant c_period : time; -- Comment 3
+
+   begin
 
 **Fix**
 
 .. code-block:: vhdl
 
-   signal wr_en    : std_logic; -- Comment 1
-   signal rd_en    : std_logic; -- Comment 2
-   constant PERIOD : time;      -- Comment 3
+   architecture rtl of my_entity is
+
+     signal   wr_en    : std_logic; -- Comment 1
+     signal   rd_en    : std_logic; -- Comment 2
+     constant c_period : time;      -- Comment 3
+
+   begin

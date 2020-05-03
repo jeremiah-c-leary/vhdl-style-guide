@@ -14,15 +14,15 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
 
 .. code-block:: vhdl
 
-   signal SIG1 : std_logic_vector(3 DOWNTO 0);
-   signal SIG2 : std_logic_vector(16 downTO 1);
+   signal sig1 : std_logic_vector(3 DOWNTO 0);
+   signal sig2 : std_logic_vector(16 downTO 1);
 
 **Fix**
 
 .. code-block:: vhdl
 
-   signal SIG1 : std_logic_vector(3 downto 0);
-   signal SIG2 : std_logic_vector(16 downTO 1);
+   signal sig1 : std_logic_vector(3 downto 0);
+   signal sig2 : std_logic_vector(16 downTO 1);
 
 range_002
 #########
@@ -35,12 +35,12 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
 
 .. code-block:: vhdl
 
-   signal SIG1 : std_logic_vector(3 TO 0);
-   signal SIG2 : std_logic_vector(16 tO 1);
+   signal sig1 : std_logic_vector(3 TO 0);
+   signal sig2 : std_logic_vector(16 tO 1);
 
 **Fix**
 
 .. code-block:: vhdl
 
-   signal SIG1 : std_logic_vector(3 to 0);
-   signal SIG2 : std_logic_vector(16 to 1);
+   signal sig1 : std_logic_vector(3 to 0);
+   signal sig2 : std_logic_vector(16 to 1);

@@ -10,7 +10,7 @@ This rule checks for blank lines above the **generic** keyword.
 
 .. code-block:: vhdl
 
-   entity FIFO is
+   entity fifo is
 
 
 
@@ -20,7 +20,7 @@ This rule checks for blank lines above the **generic** keyword.
 
 .. code-block:: vhdl
 
-   entity FIFO is
+   entity fifo is
      generic (
 
 generic_002
@@ -32,20 +32,20 @@ This rule checks the indent of the **generic** keyword.
 
 .. code-block:: vhdl
 
-   entity FIFO is
+   entity fifo is
         generic (
 
-   entity FIFO is
+   entity fifo is
    generic (
 
 **Fix**
 
 .. code-block:: vhdl
 
-   entity FIFO is
+   entity fifo is
      generic (
 
-   entity FIFO is
+   entity fifo is
      generic (
 
 generic_003
@@ -79,8 +79,8 @@ This rule checks the indent of generic declarations.
 .. code-block:: vhdl
 
    generic (
-   WIDTH : integer := 32;
-          DEPTH : integer := 512
+   g_width : integer := 32;
+          g_depth : integer := 512
    )
 
 **Fix**
@@ -88,8 +88,8 @@ This rule checks the indent of generic declarations.
 .. code-block:: vhdl
 
    generic (
-     WIDTH : integer := 32;
-     DEPTH : integer := 512
+     g_width : integer := 32;
+     g_depth : integer := 512
    )
 
 generic_005
@@ -101,13 +101,13 @@ This rule checks for a single space after the colon in a generic declaration.
 
 .. code-block:: vhdl
 
-   WIDTH :integer := 32;
+   g_width :integer := 32;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   WIDTH : integer := 32;
+   g_width : integer := 32;
 
 generic_006
 ###########
@@ -118,15 +118,15 @@ This rule checks for a single space after the default assignment.
 
 .. code-block:: vhdl
 
-   WIDTH : integer :=32;
-   DEPTH : integer :=     512;
+   g_width : integer :=32;
+   g_depth : integer :=     512;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   WIDTH : integer := 32;
-   DEPTH : integer := 512;
+   g_width : integer := 32;
+   g_depth : integer := 512;
 
 generic_007
 ###########
@@ -139,13 +139,13 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
 
 .. code-block:: vhdl
 
-   WIDTH : integer := 32;
+   G_WIDTH : integer := 32;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   width : integer := 32;
+   g_width : integer := 32;
 
 generic_008
 ###########
@@ -156,14 +156,14 @@ This rule checks the indent of the closing parenthesis.
 
 .. code-block:: vhdl
 
-   DEPTH : integer := 512
+   g_depth : integer := 512
    );
 
 **Fix**
 
 .. code-block:: vhdl
 
-     DEPTH : integer := 512
+     g_depth : integer := 512
    );
 
 generic_009
@@ -194,13 +194,13 @@ This rule checks the closing parenthesis is on a line by itself.
 
 .. code-block:: vhdl
 
-   DEPTH : integer := 512);
+   g_depth : integer := 512);
 
 **Fix**
 
 .. code-block:: vhdl
 
-     DEPTH : integer := 512
+     g_depth : integer := 512
    );
 
 generic_013
@@ -212,14 +212,14 @@ This rule checks for the **generic** keyword on the same line as a generic decla
 
 .. code-block:: vhdl
 
-   generic (DEPTH : integer := 512;
+   generic (g_depth : integer := 512;
 
 **Fix**
 
 .. code-block:: vhdl
 
    generic (
-     DEPTH : integer := 512;
+     g_depth : integer := 512;
 
 generic_014
 ###########
@@ -230,17 +230,17 @@ This rule checks for at least a single space before the :.
 
 .. code-block:: vhdl
 
-   ADDRESS_WIDTH: integer := 10;
-   DATA_WIDTH : integer := 32;
-   DEPTH: integer := 512;
+   g_address_width: integer := 10;
+   g_data_width : integer := 32;
+   g_depth: integer := 512;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   ADDRESS_WIDTH : integer := 10;
-   DATA_WIDTH : integer := 32;
-   DEPTH : integer := 512;
+   g_address_width : integer := 10;
+   g_data_width : integer := 32;
+   g_depth : integer := 512;
 
 generic_016
 ###########
@@ -252,7 +252,7 @@ This rule checks for multiple generics defined on a single line.
 .. code-block:: vhdl
 
   generic (
-    WIDTH : std_logic := '0';DEPTH : std_logic := '1'
+    g_width : std_logic := '0';g_depth : std_logic := '1'
   );
 
 **Fix**
@@ -260,8 +260,8 @@ This rule checks for multiple generics defined on a single line.
 .. code-block:: vhdl
 
   generic (
-    WIDTH : std_logic := '0';
-    DEPTH : std_logic := '1'
+    g_width : std_logic := '0';
+    g_depth : std_logic := '1'
   );
 
 generic_017
@@ -276,8 +276,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
 .. code-block:: vhdl
 
   generic (
-    width : STD_LOGIC := '0';
-    depth : Std_logic := '1'
+    g_width : STD_LOGIC := '0';
+    g_depth : Std_logic := '1'
   );
 
 **Fix**
@@ -285,8 +285,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
 .. code-block:: vhdl
 
   generic (
-    width : std_logic := '0';
-    depth : std_logic := '1'
+    g_width : std_logic := '0';
+    g_depth : std_logic := '1'
   );
 
 generic_018
@@ -317,8 +317,8 @@ This rule checks for blank lines before the ); of the generic declaration.
 .. code-block:: vhdl
 
   generic (
-    WIDTH : std_logic := '0';
-    DEPTH : Std_logic := '1'
+    g_width : std_logic := '0';
+    g_depth : Std_logic := '1'
 
 
   );
@@ -328,27 +328,26 @@ This rule checks for blank lines before the ); of the generic declaration.
 .. code-block:: vhdl
 
   generic (
-    WIDTH : std_logic := '0';
-    DEPTH : Std_logic := '1'
+    g_width : std_logic := '0';
+    g_depth : Std_logic := '1'
   );
 
 generic_020
 ###########
 
 This rule checks for valid prefixes on generic identifiers.
+The default generic prefix is *g\_*.
 
-.. NOTE:: The default generic prefix is "G\_".
-
-   Refer to the section `Configuring Prefix and Suffix Rules <configuring_prefix_suffix.html>`_ for information on changing the allowed prefixes.
+Refer to the section `Configuring Prefix and Suffix Rules <configuring_prefix_suffix.html>`_ for information on changing the allowed prefixes.
 
 **Violation**
 
 .. code-block:: vhdl
 
-   generic(MY_GEN : integer);
+   generic(my_generic : integer);
 
 **Fix**
 
 .. code-block:: vhdl
 
-   generic(G_MY_GEN : integer);
+   generic(g_my_generic : integer);

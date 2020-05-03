@@ -7,29 +7,29 @@ There are three forms a procedure:  with parameters, without parameters, and a p
 
 .. code-block:: vhdl
 
-   procedure AVERAGE_SAMPLES (
+   procedure average_samples (
       constant a : in integer;
       signal b : in std_logic;
       variable c : in std_logic_vector(3 downto 0);
       signal d : out std_logic) is
    begin
-   end procedure AVERAGE_SAMPLES;
+   end procedure average_samples;
 
 **without parameters**
 
 .. code-block:: vhdl
 
-   procedure AVERAGE_SAMPLES is
+   procedure average_samples is
    begin
-   end procedure AVERAGE_SAMPLES;
+   end procedure average_samples;
 
 **package declaration**
 
 .. code-block:: vhdl
 
-   procedure AVERAGE_SAMPLES;
+   procedure average_samples;
 
-   procedure AVERAGE_SAMPLES (
+   procedure average_samples (
       constant a : in integer;
       signal b : in std_logic;
       variable c : in std_logic_vector(3 downto 0);
@@ -44,25 +44,25 @@ This rule checks the indent of the **procedure** keyword.
 
 .. code-block:: vhdl
 
-     procedure AVERAGE_SAMPLES (
+     procedure average_samples (
      constant a : in integer;
      signal b : in std_logic;
      variable c : in std_logic_vector(3 downto 0);
      signal d : out std_logic ) is
    begin
-   end procedure AVERAGE_SAMPLES;
+   end procedure average_samples;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   procedure AVERAGE_SAMPLES (
+   procedure average_samples (
      constant a : in integer;
      signal b : in std_logic;
      variable c : in std_logic_vector(3 downto 0);
      signal d : out std_logic ) is
    begin
-   end procedure AVERAGE_SAMPLES;
+   end procedure average_samples;
 
 procedure_002
 #############
@@ -73,25 +73,25 @@ This rule checks the indent of the **begin** keyword.
 
 .. code-block:: vhdl
 
-   procedure AVERAGE_SAMPLES (
+   procedure average_samples (
      constant a : in integer;
      signal b : in std_logic;
      variable c : in std_logic_vector(3 downto 0);
      signal d : out std_logic ) is
      begin
-   end procedure AVERAGE_SAMPLES;
+   end procedure average_samples;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   procedure AVERAGE_SAMPLES (
+   procedure average_samples (
      constant a : in integer;
      signal b : in std_logic;
      variable c : in std_logic_vector(3 downto 0);
      signal d : out std_logic ) is
    begin
-   end procedure AVERAGE_SAMPLES;
+   end procedure average_samples;
 
 procedure_003
 #############
@@ -102,25 +102,25 @@ This rule checks the indent of the **end** keyword.
 
 .. code-block:: vhdl
 
-   procedure AVERAGE_SAMPLES (
+   procedure average_samples (
      constant a : in integer;
      signal b : in std_logic;
      variable c : in std_logic_vector(3 downto 0);
      signal d : out std_logic ) is
    begin
-     end procedure AVERAGE_SAMPLES;
+     end procedure average_samples;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   procedure AVERAGE_SAMPLES (
+   procedure average_samples (
      constant a : in integer;
      signal b : in std_logic;
      variable c : in std_logic_vector(3 downto 0);
      signal d : out std_logic ) is
    begin
-   end procedure AVERAGE_SAMPLES;
+   end procedure average_samples;
 
 procedure_004
 #############
@@ -131,25 +131,25 @@ This rule checks the indent of parameters.
 
 .. code-block:: vhdl
 
-   procedure AVERAGE_SAMPLES (
+   procedure average_samples (
    constant a : in integer;
        signal b : in std_logic;
       variable c : in std_logic_vector(3 downto 0);
     signal d : out std_logic ) is
    begin
-   end procedure AVERAGE_SAMPLES;
+   end procedure average_samples;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   procedure AVERAGE_SAMPLES (
+   procedure average_samples (
      constant a : in integer;
      signal b : in std_logic;
      variable c : in std_logic_vector(3 downto 0);
      signal d : out std_logic ) is
    begin
-   end procedure AVERAGE_SAMPLES;
+   end procedure average_samples;
 
 procedure_005
 #############
@@ -160,20 +160,20 @@ This rule checks the indent of line between the **is** and **begin** keywords
 
 .. code-block:: vhdl
 
-   procedure AVERAGE_SAMPLES (
+   procedure average_samples (
      constant a : in integer;
      signal d : out std_logic ) is
    variable var_1 : integer;
        variable var_1 : integer;
    begin
-   end procedure AVERAGE_SAMPLES;
+   end procedure average_samples;
 
 
 **Fix**
 
 .. code-block:: vhdl
 
-   procedure AVERAGE_SAMPLES (
+   procedure average_samples (
      constant a : in integer;
      signal b : in std_logic;
      variable c : in std_logic_vector(3 downto 0);
@@ -181,7 +181,7 @@ This rule checks the indent of line between the **is** and **begin** keywords
      variable var_1 : integer;
      variable var_1 : integer;
    begin
-   end procedure AVERAGE_SAMPLES;
+   end procedure average_samples;
 
 procedure_006
 #############
@@ -192,7 +192,7 @@ This rule checks the indent of the closing parenthesis if it is on it's own line
 
 .. code-block:: vhdl
 
-   procedure AVERAGE_SAMPLES (
+   procedure average_samples (
      constant a : in integer;
      signal d : out std_logic
      ) is
@@ -202,7 +202,7 @@ This rule checks the indent of the closing parenthesis if it is on it's own line
 
 .. code-block:: vhdl
 
-   procedure AVERAGE_SAMPLES (
+   procedure average_samples (
      constant a : in integer;
      signal d : out std_logic
    ) is
@@ -216,42 +216,42 @@ This rule checks for consistent capitalization of procedure names.
 
 .. code-block:: vhdl
 
-   architecture RTL of ENTITY1 is
+   architecture rtl of entity1 is
 
-     procedure AVERAGE_SAMPLES (
+     procedure average_samples (
        constant a : in integer;
        signal d : out std_logic
      ) is
 
    begin
 
-     PROC1 : process () is
+     proc1 : process () is
      begin
 
        Average_samples();
 
-     end process PROC1;
+     end process proc1;
 
-   end architecture RTL; 
+   end architecture rtl; 
 
 **Fix**
 
 .. code-block:: vhdl
 
-   architecture RTL of ENTITY1 is
+   architecture rtl of entity1 is
 
-     procedure AVERAGE_SAMPLES (
+     procedure average_samples (
        constant a : in integer;
        signal d : out std_logic
      ) is
 
    begin
 
-     PROC1 : process () is
+     proc1 : process () is
      begin
 
-       AVERAGE_SAMPLES();
+       average_samples();
 
-     end process PROC1;
+     end process proc1;
 
    end architecture RTL; 

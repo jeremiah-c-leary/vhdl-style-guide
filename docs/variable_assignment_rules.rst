@@ -10,7 +10,7 @@ This rule checks the indent of a variable assignment.
 
 .. code-block:: vhdl
 
-   PROC : process () is
+   proc : process () is
    begin
 
        counter := 0;
@@ -21,7 +21,7 @@ This rule checks the indent of a variable assignment.
 
 .. code-block:: vhdl
 
-   PROC : process () is
+   proc : process () is
    begin
 
      counter := 0;

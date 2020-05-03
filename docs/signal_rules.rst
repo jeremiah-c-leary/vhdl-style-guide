@@ -10,7 +10,7 @@ This rule checks the indent of signal declarations.
 
 .. code-block:: vhdl
 
-   architecture RTL of FIFO is
+   architecture rtl of fifo is
 
    signal wr_en : std_logic;
         signal rd_en : std_logic;
@@ -21,7 +21,7 @@ This rule checks the indent of signal declarations.
 
 .. code-block:: vhdl
 
-   architecture RTL of FIFO is
+   architecture rtl of fifo is
 
      signal wr_en : std_logic;
      signal rd_en : std_logic;
@@ -151,10 +151,9 @@ signal_008
 ##########
 
 This rule checks for valid prefixes on signal identifiers.
+Default signal prefix is *s\_*.
 
-.. NOTE:: Default signal prefix is "s\_".
-
-   Refer to the section `Configuring Prefix and Suffix Rules <configuring_prefix_suffix.html>`_ for information on changing the allowed prefixes.
+Refer to the section `Configuring Prefix and Suffix Rules <configuring_prefix_suffix.html>`_ for information on changing the allowed prefixes.
 
 **Violation**
 
@@ -198,7 +197,9 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
 signal_011
 ##########
 
-This rule checks the signal type is lowercase.
+This rule checks the signal type has proper case.
+
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
@@ -250,14 +251,14 @@ This rule checks for consistent capitalization of signal names.
 
 .. code-block:: vhdl
 
-   architecture RTL of ENTITY1 is
+   architecture rtl of entity1 is
 
      signal sig1 : std_logic;
      signal sig2 : std_logic;
 
    begin
 
-     PROC_NAME : process (siG2) is
+     proc_name : process (siG2) is
      begin
 
        siG1 <= '0';
@@ -268,20 +269,20 @@ This rule checks for consistent capitalization of signal names.
          SIg1 <= '0';
        end if;
 
-     end process PROC_NAME;
+     end process proc_name;
 
-   end architecture RTL;
+   end architecture rtl;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   architecture RTL of ENTITY1 is
+   architecture rtl of entity1 is
 
      signal sig1 : std_logic;
      signal sig2 : std_logic;
 
-     PROC_NAME : process (sig2) is
+     proc_name : process (sig2) is
      begin
 
        sig1 <= '0';
@@ -292,17 +293,17 @@ This rule checks for consistent capitalization of signal names.
          sig1 <= '0';
        end if;
 
-     end process PROC_NAME;
+     end process proc_name;
 
-   end architecture RTL;
+   end architecture rtl;
 
 signal_015
 ==========
 
 This rule checks for multiple signal names defined in a single signal declaration.
+By default, this rule will only flag more than two signal declarations.
 
-.. NOTE::  By default, this rule will only flag more than two signal declarations.
-   Refer to the section `Configuring Number of Signals in Signal Declaration <configuring_number_of_signals.html>`_ for information on changing the default.
+Refer to the section `Configuring Number of Signals in Signal Declaration <configuring_number_of_signals.html>`_ for information on changing the default.
 
 **Violation**
 

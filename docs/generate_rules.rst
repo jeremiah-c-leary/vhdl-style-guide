@@ -10,23 +10,23 @@ This rule checks the indent of the generate declaration.
 
 .. code-block:: vhdl
 
-   architecture RTL of FIFO is
+   architecture rtl of fifo is
    begin
 
-   RAM_ARRAY: for i in 0 to 7 generate
+   ram_array : for i in 0 to 7 generate
 
-         RAM_ARRAY: for i in 0 to 7 generate
+         ram_array : for i in 0 to 7 generate
 
 **Fix**
 
 .. code-block:: vhdl
 
-   architecture RTL of FIFO is
+   architecture rtl of fifo is
    begin
 
-     RAM_ARRAY: for i in 0 to 7 generate
+     ram_array : for i in 0 to 7 generate
 
-     RAM_ARRAY: for i in 0 to 7 generate
+     ram_array : for i in 0 to 7 generate
 
 generate_002
 ############
@@ -37,13 +37,13 @@ This rule checks for a single space between the label and the :.
 
 .. code-block:: vhdl
 
-   RAM_ARRAY: for i in 0 to 7 generate
+   ram_array: for i in 0 to 7 generate
 
 **Fix**
 
 .. code-block:: vhdl
 
-   RAM_ARRAY : for i in 0 to 7 generate
+   ram_array : for i in 0 to 7 generate
 
 generate_003
 ############
@@ -54,14 +54,14 @@ This rule checks for a blank line after the **end generate** keywords.
 
 .. code-block:: vhdl
 
-   end generate RAM_ARRAY;
+   end generate ram_array;
    wr_en <= '1';
 
 **Fix**
 
 .. code-block:: vhdl
 
-   end generate RAM_ARRAY;
+   end generate ram_array;
 
    wr_en <= '1';
 
@@ -75,7 +75,7 @@ This rule checks for a blank line before the **generate** keyword.
 .. code-block:: vhdl
 
    wr_en <= '1';
-   RAM_ARRAY: for i in 0 to 7 generate
+   ram_array : for i in 0 to 7 generate
 
 **Fix**
 
@@ -83,7 +83,7 @@ This rule checks for a blank line before the **generate** keyword.
 
    wr_en <= '1';
 
-   RAM_ARRAY: for i in 0 to 7 generate
+   ram_array : for i in 0 to 7 generate
 
 generate_005
 ############
@@ -114,14 +114,14 @@ This rule checks the indent of the **begin** keyword.
 
 .. code-block:: vhdl
 
-   RAM_ARRAY: for i in 0 to 7 generate
+   ram_array : for i in 0 to 7 generate
       begin
 
 **Fix**
 
 .. code-block:: vhdl
 
-   RAM_ARRAY: for i in 0 to 7 generate
+   ram_array : for i in 0 to 7 generate
    begin
 
 generate_007
@@ -133,17 +133,17 @@ This rule checks the indent of the **end generate** keyword.
 
 .. code-block:: vhdl
 
-   RAM_ARRAY: for i in 0 to 7 generate
+   ram_array : for i in 0 to 7 generate
    begin
-     end generate RAM_ARRAY;
+     end generate ram_array;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   RAM_ARRAY: for i in 0 to 7 generate
+   ram_array : for i in 0 to 7 generate
    begin
-   end generate RAM_ARRAY;
+   end generate ram_array;
 
 generate_008
 ############
@@ -154,13 +154,13 @@ This rule checks for a single space after the **end** keyword.
 
 .. code-block:: vhdl
 
-   end   generate RAM_ARRAY;
+   end   generate ram_array;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   end generate RAM_ARRAY;
+   end generate ram_array;
 
 generate_009
 ############
@@ -215,7 +215,7 @@ This rule checks the **end generate** line has a label.
 
 .. code-block:: vhdl
 
-   end generate RAM_ARRAY;
+   end generate ram_array;
 
 generate_012
 ############
@@ -245,13 +245,13 @@ This rule checks for a single space after the **generate** keyword and the label
 
 .. code-block:: vhdl
 
-   end generate    RAM_ARRAY;
+   end generate    ram_array;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   end generate RAM_ARRAY;
+   end generate ram_array;
 
 generate_014
 ############
@@ -262,15 +262,15 @@ This rule checks for a single space between the : and the **for** keyword.
 
 .. code-block:: vhdl
 
-   RAM_ARRAY :for i in 0 to 7 generate
-   RAM_ARRAY :   for i in 0 to 7 generate
+   ram_array :for i in 0 to 7 generate
+   ram_array :   for i in 0 to 7 generate
 
 **Fix**
 
 .. code-block:: vhdl
 
-   RAM_ARRAY : for i in 0 to 7 generate
-   RAM_ARRAY : for i in 0 to 7 generate
+   ram_array : for i in 0 to 7 generate
+   ram_array : for i in 0 to 7 generate
 
 generate_015
 ############
@@ -282,11 +282,11 @@ Keeping the label and generate on the same line reduces excessive indenting.
 
 .. code-block:: vhdl
 
-   RAM_ARRAY :
+   ram_array :
      for i in 0 to 7 generate
 
 **Fix**
 
 .. code-block:: vhdl
 
-   RAM_ARRAY : for i in 0 to 7 generate
+   ram_array : for i in 0 to 7 generate

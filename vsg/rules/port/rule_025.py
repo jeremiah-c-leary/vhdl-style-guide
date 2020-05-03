@@ -10,7 +10,7 @@ class rule_025(suffix_rule):
 
     def __init__(self):
         suffix_rule.__init__(self, 'port', '025', 'isPortDeclaration')
-        self.suffixes = ['_I', '_O', '_IO']
+        self.suffixes = ['_i', '_o', '_io']
         self.solution = 'Port'
 
     def _extract(self, oLine):

@@ -222,7 +222,7 @@ This rule checks for consistent capitalization of function names.
 
 .. code-block:: vhdl
 
-   architecture RTL of FIFO is
+   architecture rtl of fifo is
 
      function func_1 ()
 
@@ -237,13 +237,13 @@ This rule checks for consistent capitalization of function names.
 
      end process;
 
-   end architecture RTL;
+   end architecture rtl;
 
 **Violation**
 
 .. code-block:: vhdl
 
-   architecture RTL of FIFO is
+   architecture rtl of fifo is
 
      function func_1 ()
 
@@ -258,12 +258,13 @@ This rule checks for consistent capitalization of function names.
 
      end process;
 
-   end architecture RTL;
+   end architecture rtl;
    
 function_012
 ############
 
 This rule checks the colons are in the same column for all declarations in the function declarative part.
+
 Refer to the section `Configuring Keyword Alignment Rules <configuring_keyword_alignment.html>`_ for information on changing the configurations.
 
 **Violation**
@@ -272,12 +273,12 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring_keyword_a
 
    variable var1 : natural;
    variable var2  : natural;
-   constant PERIOD : time;
+   constant c_period : time;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   variable var1   : natural;
-   variable var2   : natural;
-   constant PERIOD : time;
+   variable var1     : natural;
+   variable var2     : natural;
+   constant c_period : time;
