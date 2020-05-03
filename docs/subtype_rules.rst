@@ -4,7 +4,7 @@ Subtype Rules
 subtype_001
 ###########
 
-This rule checks for indentation of the subtype keyword.
+This rule checks for indentation of the **subtype** keyword.
 Proper indentation enhances comprehension.
 
 The indent amount can be controlled by the **indentSize** attribute on the rule.
@@ -14,7 +14,7 @@ The indent amount can be controlled by the **indentSize** attribute on the rule.
 
 .. code-block:: vhdl
 
-   architecture RTL of FIFO is
+   architecture rtl of fifo is
 
         subtype read_size is range 0 to 9;
    subtype write_size is range 0 to 9;
@@ -25,7 +25,7 @@ The indent amount can be controlled by the **indentSize** attribute on the rule.
 
 .. code-block:: vhdl
 
-   architecture RTL of FIFO is
+   architecture rtl of fifo is
 
      subtype read_size is range 0 to 9;
      subtype write_size is range 0 to 9;
@@ -74,13 +74,13 @@ This rule checks for spaces after the **subtype** keyword.
 
 .. code-block:: vhdl
 
-   subtype   state_machine is (IDLE, WRITE, READ, DONE);
+   subtype   state_machine is (idle, write, read, done);
 
 **Fix**
 
 .. code-block:: vhdl
 
-   subtype state_machine is (IDLE, WRITE, READ, DONE);
+   subtype state_machine is (idle, write, read, done);
 
 .. NOTE:: The number of spaces after the **subtype** keyword is configurable.
    Use the following YAML file example to change the default number of spaces.
@@ -97,7 +97,7 @@ subtype_004
 This rule checks for valid prefixes in user defined subtype identifiers.
 The default new subtype prefix is *st\_*.
 
-   Refer to the section `Configuring Prefix and Suffix Rules <configuring_prefix_suffix.html>`_ for information on changing the allowed prefixes.
+Refer to the section `Configuring Prefix and Suffix Rules <configuring_prefix_suffix.html>`_ for information on changing the allowed prefixes.
 
 **Violation**
 
