@@ -31,7 +31,7 @@ Proper indentation enhances comprehension.
 while_loop_002
 ##############
 
-This rule checks for indentation of the **end loop** keyword.
+This rule checks for indentation of the **end loop** keywords.
 The **end loop** must line up with the **while** keyword.
 Proper indentation enhances comprehension.
 
