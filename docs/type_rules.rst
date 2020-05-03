@@ -10,9 +10,9 @@ This rule checks the indent of the **type** declaration.
 
 .. code-block:: vhdl
 
-   architecture RTL of FIFO is
+   architecture rtl of fifo is
 
-       type state_machine is (IDLE, WRITE, READ, DONE);
+       type state_machine is (idle, write, read, done);
 
    begin
 
@@ -20,9 +20,9 @@ This rule checks the indent of the **type** declaration.
 
 .. code-block:: vhdl
 
-   architecture RTL of FIFO is
+   architecture rtl of fifo is
 
-     type state_machine is (IDLE, WRITE, READ, DONE);
+     type state_machine is (idle, write, read, done);
 
    begin
 
@@ -37,13 +37,13 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
 
 .. code-block:: vhdl
 
-   TYPE state_machine is (IDLE, WRITE, READ, DONE);
+   TYPE state_machine is (idle, write, read, done);
 
 **Fix**
 
 .. code-block:: vhdl
 
-   type state_machine is (IDLE, WRITE, READ, DONE);
+   type state_machine is (idle, write, read, done);
 
 type_003
 ########
@@ -54,15 +54,15 @@ This rule checks for spaces after the **type** keyword.
 
 .. code-block:: vhdl
 
-   type   state_machine is (IDLE, WRITE, READ, DONE);
+   type   state_machine is (idle, write, read, done);
 
 **Fix**
 
 .. code-block:: vhdl
 
-   type state_machine is (IDLE, WRITE, READ, DONE);
+   type state_machine is (idle, write, read, done);
 
-.. NOTE:: The number of spaces after the **signal** keyword is configurable.
+.. NOTE:: The number of spaces after the **type** keyword is configurable.
    Use the following YAML file example to change the default number of spaces.
 
    .. code-block:: yaml
@@ -82,13 +82,13 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
 
 .. code-block:: vhdl
 
-   type STATE_MACHINE is (IDLE, WRITE, READ, DONE);
+   type STATE_MACHINE is (idle, write, read, done);
 
 **Fix**
 
 .. code-block:: vhdl
 
-   type state_machine is (IDLE, WRITE, READ, DONE);
+   type state_machine is (idle, write, read, done);
 
 type_005
 ########
@@ -100,20 +100,20 @@ This rule checks the indent of multiline enumerated types.
 .. code-block:: vhdl
 
    type state_machine is (
-   IDLE,
-     WRITE,
-   READ,
-      DONE);
+   idle,
+     write,
+   read,
+      done);
 
 **Fix**
 
 .. code-block:: vhdl
 
    type state_machine is (
-     IDLE,
-     WRITE,
-     READ,
-     DONE);
+     idle,
+     write,
+     read,
+     done);
 
 type_006
 ########
@@ -124,13 +124,13 @@ This rule checks for a single space before the **is** keyword.
 
 .. code-block:: vhdl
 
-   type state_machine    is (IDLE, WRITE, READ, DONE);
+   type state_machine    is (idle, write, read, done);
 
 **Fix**
 
 .. code-block:: vhdl
 
-   type state_machine is (IDLE, WRITE, READ, DONE);
+   type state_machine is (idle, write, read, done);
 
 type_007
 ########
@@ -141,13 +141,13 @@ This rule checks for a single space after the **is** keyword.
 
 .. code-block:: vhdl
 
-   type state_machine is     (IDLE, WRITE, READ, DONE);
+   type state_machine is     (idle, write, read, done);
 
 **Fix**
 
 .. code-block:: vhdl
 
-   type state_machine is (IDLE, WRITE, READ, DONE);
+   type state_machine is (idle, write, read, done);
 
 type_008
 ########
@@ -159,20 +159,20 @@ This rule checks the closing parenthesis of multiline enumerated types is on it'
 .. code-block:: vhdl
 
    type state_machine is (
-     IDLE,
-     WRITE,
-     READ,
-     DONE);
+     idle,
+     write,
+     read,
+     done);
 
 **Fix**
 
 .. code-block:: vhdl
 
    type state_machine is (
-     IDLE,
-     WRITE,
-     READ,
-     DONE
+     idle,
+     write,
+     read,
+     done
    );
 
 type_009
@@ -184,10 +184,10 @@ This rule checks for an enumerate type after the open parenthesis on multiline e
 
 .. code-block:: vhdl
 
-   type state_machine is (IDLE,
-     WRITE,
-     READ,
-     DONE
+   type state_machine is (idle,
+     write,
+     read,
+     done
    );
 
 **Fix**
@@ -195,10 +195,10 @@ This rule checks for an enumerate type after the open parenthesis on multiline e
 .. code-block:: vhdl
 
    type state_machine is (
-     IDLE,
-     WRITE,
-     READ,
-     DONE
+     idle,
+     write,
+     read,
+     done
    );
 
 type_010
@@ -211,7 +211,7 @@ This rule checks for a blank line above the **type** declaration.
 .. code-block:: vhdl
 
    signal wr_en : std_logic;
-   type state_machine is (IDLE, WRITE, READ, DONE);
+   type state_machine is (idle, write, read, done);
 
 **Fix**
 
@@ -219,7 +219,7 @@ This rule checks for a blank line above the **type** declaration.
 
    signal wr_en : std_logic;
 
-   type state_machine is (IDLE, WRITE, READ, DONE);
+   type state_machine is (idle, write, read, done);
 
 type_011
 ########
@@ -230,21 +230,21 @@ This rule checks for a blank line below the **type** declaration.
 
 .. code-block:: vhdl
 
-   type state_machine is (IDLE, WRITE, READ, DONE);
+   type state_machine is (idle, write, read, done);
    signal sm : state_machine;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   type state_machine is (IDLE, WRITE, READ, DONE);
+   type state_machine is (idle, write, read, done);
 
    signal sm : state_machine;
 
 type_012
 ########
 
-This rule checks the indent of record elements in record types.
+This rule checks the indent of record elements in record type declarations.
 
 **Violation**
 
@@ -298,7 +298,7 @@ This rule checks for consistent capitalization of type names.
 
 .. code-block:: vhdl
 
-   type state_machine is (IDLE, WRITE, READ, DONE);
+   type state_machine is (idle, write, read, done);
 
    signal sm : State_Machine;
 
@@ -306,7 +306,7 @@ This rule checks for consistent capitalization of type names.
 
 .. code-block:: vhdl
 
-   type state_machine is (IDLE, WRITE, READ, DONE);
+   type state_machine is (idle, write, read, done);
 
    signal sm : state_machine;
 
