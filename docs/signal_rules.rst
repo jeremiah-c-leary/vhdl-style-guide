@@ -10,7 +10,7 @@ This rule checks the indent of signal declarations.
 
 .. code-block:: vhdl
 
-   architecture RTL of FIFO is
+   architecture rtl of fifo is
 
    signal wr_en : std_logic;
         signal rd_en : std_logic;
@@ -21,7 +21,7 @@ This rule checks the indent of signal declarations.
 
 .. code-block:: vhdl
 
-   architecture RTL of FIFO is
+   architecture rtl of fifo is
 
      signal wr_en : std_logic;
      signal rd_en : std_logic;
@@ -197,7 +197,9 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
 signal_011
 ##########
 
-This rule checks the signal type is lowercase.
+This rule checks the signal type has proper case.
+
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
@@ -249,14 +251,14 @@ This rule checks for consistent capitalization of signal names.
 
 .. code-block:: vhdl
 
-   architecture RTL of ENTITY1 is
+   architecture rtl of entity1 is
 
      signal sig1 : std_logic;
      signal sig2 : std_logic;
 
    begin
 
-     PROC_NAME : process (siG2) is
+     proc_name : process (siG2) is
      begin
 
        siG1 <= '0';
@@ -267,20 +269,20 @@ This rule checks for consistent capitalization of signal names.
          SIg1 <= '0';
        end if;
 
-     end process PROC_NAME;
+     end process proc_name;
 
-   end architecture RTL;
+   end architecture rtl;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   architecture RTL of ENTITY1 is
+   architecture rtl of entity1 is
 
      signal sig1 : std_logic;
      signal sig2 : std_logic;
 
-     PROC_NAME : process (sig2) is
+     proc_name : process (sig2) is
      begin
 
        sig1 <= '0';
@@ -291,9 +293,9 @@ This rule checks for consistent capitalization of signal names.
          sig1 <= '0';
        end if;
 
-     end process PROC_NAME;
+     end process proc_name;
 
-   end architecture RTL;
+   end architecture rtl;
 
 signal_015
 ==========
