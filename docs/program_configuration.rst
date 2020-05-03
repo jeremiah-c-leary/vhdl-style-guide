@@ -19,10 +19,22 @@ With a program configuration, the **--output_format** and **--junit** can be spe
 
      junit : vsg_results.xml
 
-Setting the VSG_CONFIG environment variable
--------------------------------------------
 
-VSG must be told where this configuration is located using the **VSG_CONFIG** environment variable.
+Using a configuration file in your home directory
+-------------------------------------------------
+
+VSG will first search for a program configuration, config.yaml, in your home directory at this location:
+
+.. code-block:: bash
+
+   ~/.config/vhdl-style-guide/config.yaml
+
+If the file is not found, then VSG will check if the $VSG_DEFUALT_CONFIG environment variable is set.
+
+Setting the VSG_DEFAULT_CONFIG environment variable
+---------------------------------------------------
+
+VSG must be told where this configuration is located using the **VSG_DEFAULT_CONFIG** environment variable.
 
 .. code-block:: bash
 
@@ -35,7 +47,9 @@ Now when executing VSG, only the -f option is required:
 
    $vsg -f fifo.vhd
 
-VSG will read the configuration set in the **VSG_CONFIG** environment variable and apply any command line options.
+VSG will read the configuration set in the **VSG_DEFAULT_CONFIG** environment variable and apply any command line options.
+
+NOTE:  A configuration file defined by the **VSG_DEFAULT_CONFIG** environment variable has precedence over a configuration file in your home directory.
 
 Overriding configuration settings
 ---------------------------------
