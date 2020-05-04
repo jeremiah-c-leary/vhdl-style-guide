@@ -107,3 +107,16 @@ class testProgramConfigModule(unittest.TestCase):
         self.assertEqual(len(lExpected), len(lActual))
         for iIndex, sEntry in enumerate(lExpected):
             self.assertEqual(sEntry, lActual[iIndex])
+
+    @mock.patch('vsg.program_config.sHomeDefaultFile', 'vsg/tests/program_config/configuration_w_lists.yaml')
+    def test_update_sys_args_w_user_sys_args_w_full_up_program_config(self):
+        sys.argv = ['vsg', '-f', 'filename', '--output_format', 'vsg']
+        lExpected = ['vsg', '--filename', 'filename', '--output_format', 'vsg', '--local_rules', '$COMPANY_LOCAL_RULES_DIR', '--configuration', 'config_1.yaml', 'config_2.yaml', '--fix', '--fix_phase', '7', '--junit', 'vsg_results.xml']
+
+        dProgramFile = program_config.read_home_program_file()
+
+        program_config.update_sys_args()
+
+        self.assertEqual(len(lExpected), len(sys.argv))
+        for iIndex, sEntry in enumerate(lExpected):
+            self.assertEqual(sEntry, sys.argv[iIndex])

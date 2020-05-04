@@ -12,6 +12,7 @@ from . import rule_list
 from . import vhdlFile
 from . import junit
 from . import version
+from . import program_config
 
 
 def parse_command_line_arguments():
@@ -248,6 +249,8 @@ def main():
     '''Main routine of the VHDL Style Guide (VSG) program.'''
 
     fExitStatus = 0
+
+    program_config.update_sys_args()
 
     commandLineArguments = parse_command_line_arguments()
 
