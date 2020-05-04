@@ -1,0 +1,7 @@
+
+command_line_arguments:
+
+  output_format : vsg
+
+  junit : some_other_vsg_results.xml
+
