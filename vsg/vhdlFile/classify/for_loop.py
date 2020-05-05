@@ -9,17 +9,20 @@ def for_loop(dVars, oLine):
     '''
 
     if re.match('^\s*for\s.*\sin\s.*\sloop', oLine.lineLower):
+        dVars['iForLoopLevel'] += 1
         oLine.isForLoopKeyword = True
         oLine.insideForLoop = True
         oLine.indentLevel = dVars['iCurrentIndentLevel']
         dVars['iCurrentIndentLevel'] += 1
     if re.match('^\s*\w+\s*:\s*for\s.*\sin\s.*\sloop', oLine.lineLower):
+        dVars['iForLoopLevel'] += 1
         oLine.isForLoopKeyword = True
         oLine.insideForLoop = True
         oLine.indentLevel = dVars['iCurrentIndentLevel']
         dVars['iCurrentIndentLevel'] += 1
         oLine.isForLoopLabel = True
     if re.match('^\s*end\s+loop', oLine.lineLower) and not oLine.insideWhileLoop:
+        dVars['iForLoopLevel'] -= 1
         oLine.isForLoopEnd = True
         dVars['iCurrentIndentLevel'] -= 1
         oLine.indentLevel = dVars['iCurrentIndentLevel']

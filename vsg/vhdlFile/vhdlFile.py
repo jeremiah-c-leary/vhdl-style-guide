@@ -44,6 +44,7 @@ class vhdlFile():
         dVars['iGenerateLevel'] = 0
         dVars['iIfLevel'] = 0
         dVars['fConstantArray'] = False
+        dVars['iForLoopLevel'] = 0
 
         oLinePrevious = line.blank_line()
 
