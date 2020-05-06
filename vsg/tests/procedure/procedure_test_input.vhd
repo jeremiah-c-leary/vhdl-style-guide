@@ -120,6 +120,10 @@ architecture RTL of ENT is
        done_something <= 0;
     end loop;
 
+    if a = '1' then
+      d <= 0;
+    end if;
+
   end procedure AVERAGE_SAMPLES;  
 
 begin

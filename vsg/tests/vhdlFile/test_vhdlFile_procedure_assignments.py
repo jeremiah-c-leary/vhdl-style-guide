@@ -31,7 +31,7 @@ class testVhdlFileProcedureAssignments(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isProcedureEnd(self):
-        lExpected = [4,10,14,20,28,36,42,50,61,70,80,92,100,123]
+        lExpected = [4,10,14,20,28,36,42,50,61,70,80,92,100,127]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
@@ -43,7 +43,7 @@ class testVhdlFileProcedureAssignments(unittest.TestCase):
     def test_insideProcedure(self):
         lExpected = [4,6,7,8,9,10,14,16,17,18,19,20,26,27,28,30,31,32,33,34,35,36,40,41,42,44,45,46,47,48,49,50,54,55,56,57,58,59,60,61,63,64,65,66,67,68,69,70,72,73,74,75,76,77,78,79,80,84,85,86,87,88,89,90,91,92]
         lExpected.extend(range(96, 101))
-        lExpected.extend(range(110, 124))
+        lExpected.extend(range(110, 128))
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
@@ -138,7 +138,7 @@ class testVhdlFileProcedureAssignments(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isArchitectureBegin(self):
-        lExpected = [125]
+        lExpected = [129]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
@@ -148,7 +148,7 @@ class testVhdlFileProcedureAssignments(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isArchitectureEnd(self):
-        lExpected = [127]
+        lExpected = [131]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFile.lines):
