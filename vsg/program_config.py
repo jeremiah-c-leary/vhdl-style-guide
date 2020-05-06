@@ -21,7 +21,6 @@ def update_sys_args():
     remove_unsupported_arguments(dSysArgs)
     convert_single_dash_argument_to_double_dash_argument()
     merge_program_config_w_user_sys_args(dSysArgs)
-    print(sys.argv)
 
 
 def read_home_program_file():
@@ -65,6 +64,8 @@ def remove_unsupported_arguments(dSysArgs):
 
     Returns : (dictionary)
     '''
+    if dSysArgs == {}:
+        return
     lRemovedKeys = ['output_configuration', 'help', 'version', 'rule_configuration']
     for sKey in list(dSysArgs['command_line_arguments'].keys()):
         if sKey in lRemovedKeys:
