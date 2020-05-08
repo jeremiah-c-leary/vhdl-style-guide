@@ -19,8 +19,8 @@ def is_no_blank_line_before(self, oFile, iLineNumber, sUnless=None):
       sUnless: (string) (line attribute)
     '''
     if sUnless:
-        if oFile.lines[iLineNumber - 1].isBlank:
-            if not oFile.lines[iLineNumber - 2].__dict__[sUnless]:
+        if iLineNumber > 0 and oFile.lines[iLineNumber - 1].isBlank:
+            if iLineNumber > 1 and not oFile.lines[iLineNumber - 2].__dict__[sUnless]:
                 self.add_violation(utils.create_violation_dict(iLineNumber))
-    elif oFile.lines[iLineNumber - 1].isBlank:
+    elif iLineNumber > 0 and oFile.lines[iLineNumber - 1].isBlank:
         self.add_violation(utils.create_violation_dict(iLineNumber))

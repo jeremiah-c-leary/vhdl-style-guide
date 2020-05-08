@@ -18,10 +18,11 @@ def is_no_blank_line_after(self, oFile, iLineNumber, sUnless=None):
 
       sUnless: (string) (line attribute)
     '''
+    headroom = len(oFile.lines) - iLineNumber - 1
     if sUnless:
-        if oFile.lines[iLineNumber + 1].isBlank:
-            if not oFile.lines[iLineNumber + 2].__dict__[sUnless]:
+        if headroom > 0 and oFile.lines[iLineNumber + 1].isBlank:
+            if headroom > 1 and not oFile.lines[iLineNumber + 2].__dict__[sUnless]:
                 self.add_violation(utils.create_violation_dict(iLineNumber))
 
-    elif oFile.lines[iLineNumber + 1].isBlank:
+    elif headroom > 0 and oFile.lines[iLineNumber + 1].isBlank:
         self.add_violation(utils.create_violation_dict(iLineNumber))
