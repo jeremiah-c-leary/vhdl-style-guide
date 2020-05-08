@@ -13,7 +13,7 @@ def found_comment(dVars, oLine, i):
     oLine.hasComment = True
     oLine.commentColumn = i
     if i == 0:
-        oLine.hasInlineComment = True
-    else:
         oLine.isComment = True
         oLine.indentLevel = dVars['iCurrentIndentLevel']
+    else:
+        oLine.hasInlineComment = True
