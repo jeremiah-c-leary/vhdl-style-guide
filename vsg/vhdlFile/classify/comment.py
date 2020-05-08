@@ -1,20 +1,17 @@
 import re
 
-# Regex to find comments that ignores contents of double quoted strings,
-# for example, "--" : a two bit std_logic_vector literal of don't cares.
-has_comment_re = re.compile(r'^(?:".*"|[^"\n])*?(?P<comment>--.*)', re.IGNORECASE)
-
-comment_only_re = re.compile(r'^\s*--')
-
 def comment(dVars, oLine):
-    # Check for comment lines
-    match = has_comment_re.match(oLine.line)
-    if match is None:
-        return
-    oLine.hasComment = True
-    oLine.commentColumn = match.start("comment")
-    if comment_only_re.match(oLine.line) is not None:
-        oLine.isComment = True
-        oLine.indentLevel = dVars['iCurrentIndentLevel']
-    else:
-        oLine.hasInlineComment = True
+    inQuote = False
+    for i,char in enumerate(oLine.line):
+        if char == '"':
+            inQuote = not inQuote
+        minusminus = (i != 0 and oLine.line[i] == "-" and oLine.line[i - 1] == "-")
+        if minusminus and not inQuote: #found comment
+            oLine.hasComment = True
+            oLine.commentColumn = i
+            if i == 0:
+                oLine.hasInlineComment = True
+            else:
+                oLine.isComment = True
+                oLine.indentLevel = dVars['iCurrentIndentLevel']
+    return

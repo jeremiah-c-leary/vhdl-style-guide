@@ -298,10 +298,8 @@ def search_for_and_remove_keyword(oFile, iLineNumber, sKeyword):
         if not oLine.isBlank:
             break
 
-# Regex to find comments that ignores contents of double quoted strings,
+# Find comments and ignores contents of double quoted strings,
 # for example, "--" : a two bit std_logic_vector literal of don't cares.
-has_comment_re = re.compile(r'^(?:".*"|[^"\n])*?(?P<comment>--.*$)', re.IGNORECASE)
-
 def remove_comment(sString):
     '''
     Returns a string without comments.
@@ -312,11 +310,14 @@ def remove_comment(sString):
 
     Returns: (string)
     '''
-    match = has_comment_re.match(sString)
-    if match is None:
-        return sString
-
-    return sString[:match.start("comment")].rstrip()
+    inQuote = False
+    for i,char in enumerate(sString):
+        if char == '"':
+            inQuote = not inQuote
+        minusminus = (i != 0 and sString[i] == "-" and sString[i - 1] == "-")
+        if minusminus and not inQuote: #found comment
+            return sString[:i - 1]
+    return sString
 
 
 def remove_blank_line(oFile, iLineNumber):
