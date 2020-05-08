@@ -7,9 +7,9 @@ def comment(dVars, oLine):
             inQuote = not inQuote
         minusminus = (i != 0 and oLine.line[i] == "-" and oLine.line[i - 1] == "-")
         if minusminus and not inQuote:
-            found_comment(dVars, oLine,i)
+            found_comment(dVars, oLine, i)
     return
-def found_comment(dVars, oLine,i):
+def found_comment(dVars, oLine, i):
     oLine.hasComment = True
     oLine.commentColumn = i
     if i == 0:
