@@ -298,6 +298,7 @@ def search_for_and_remove_keyword(oFile, iLineNumber, sKeyword):
         if not oLine.isBlank:
             break
 
+
 # Find comments and ignores contents of double quoted strings,
 # for example, "--" : a two bit std_logic_vector literal of don't cares.
 def remove_comment(sString):
@@ -311,11 +312,11 @@ def remove_comment(sString):
     Returns: (string)
     '''
     inQuote = False
-    for i,char in enumerate(sString):
+    for i, char in enumerate(sString):
         if char == '"':
             inQuote = not inQuote
         minusminus = (i != 0 and sString[i] == "-" and sString[i - 1] == "-")
-        if minusminus and not inQuote: #found comment
+        if minusminus and not inQuote:
             return sString[:i - 1]
     return sString
 
