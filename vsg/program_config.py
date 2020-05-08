@@ -171,3 +171,18 @@ def extract_parameter_value(dSysArgs, sKey):
     Returns : (string or list)
     '''
     return dSysArgs['command_line_arguments'][sKey]
+
+
+def expand_environment_vars(sFileName):
+    '''
+    Expands environment variables in filenames.
+
+    Parameters : 
+
+        sFileName : (string)
+
+    Returns : (string)
+
+    '''
+    return os.path.expanduser(os.path.expandvars(sFileName))
+

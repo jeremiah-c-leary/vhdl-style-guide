@@ -120,3 +120,17 @@ class testProgramConfigModule(unittest.TestCase):
         self.assertEqual(len(lExpected), len(sys.argv))
         for iIndex, sEntry in enumerate(lExpected):
             self.assertEqual(sEntry, sys.argv[iIndex])
+
+    @mock.patch('vsg.program_config.sHomeDefaultFile', 'vsg/tests/program_config/configuration_w_globbing.yaml')
+    @mock.patch.dict(os.environ,{'TEST_DIR':'vsg/tests/program_config/test_dir', 'CONFIG_DIR':'vsg/tests/program_config/config_dir','COMPANY_LOCAL_RULES_DIR':'vsg/tests/program_config/local_rules'})
+    def test_globbing_and_expansion_of_env_variables(self):
+        sys.argv = ['vsg', '--output_format', 'vsg']
+        lExpected = ['vsg', '--output_format', 'vsg', '--filename', 'vsg/tests/program_config/test_dir/a.vhd', 'vsg/tests/program_config/test_dir/b.vhd', 'vsg/tests/program_config/test_dir/c.vhd', '--local_rules', 'vsg/tests/program_config/local_rules', '--configuration', 'vsg/tests/program_config/config_dir/config1.yaml', 'vsg/tests/program_config/config_dir/config2.yaml', '--fix', '--fix_phase', '7', '--junit', 'vsg_results.xml']
+
+        dProgramFile = program_config.read_home_program_file()
+
+        program_config.update_sys_args()
+
+#        self.assertEqual(len(lExpected), len(sys.argv))
+        for iIndex, sEntry in enumerate(lExpected):
+            self.assertEqual(sEntry, sys.argv[iIndex])

@@ -1,0 +1,29 @@
+
+command_line_arguments:
+
+  filename : 
+    - $TEST_DIR/*.vhd'
+
+  local_rules : $COMPANY_LOCAL_RULES_DIR
+
+  configuration :
+    - $CONFIG_DIR/*.yaml
+
+  fix : True
+
+  fix_phase : 7
+
+  junit : vsg_results.xml
+
+  output_format : syntastic
+
+  backup : False
+
+  output_configuration : should_be_filtered_out
+
+  help : True
+
+  version : True
+
+  rule_configuration : should_also_be_filtered_out
+
