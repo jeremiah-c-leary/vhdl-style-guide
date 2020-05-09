@@ -101,20 +101,20 @@ class testRuleVariableMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'variable')
         self.assertEqual(oRule.identifier, '012')
         self.assertTrue(oRule.disable)
-        dExpected = [5,6,7,8,9,10,11,12,13,14,15,16,18,19,20,21,27,28,29,37,38,39,47,48,49,57]
+        dExpected = [5,6,7,8,9,10,11,12,13,14,15,16,18,19,20,21,27,28,29,37,38,39,47,48,49,57,66,71]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_012_with_single_override(self):
         oRule = variable.rule_012()
         oRule.prefixes = ['a_']
-        dExpected = [7,8,9,10,11,12,13,14,15,16,18,19,20,21,27,28,29,37,38,39,47,48,49,57]
+        dExpected = [7,8,9,10,11,12,13,14,15,16,18,19,20,21,27,28,29,37,38,39,47,48,49,57,66,71]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_012_with_multiple_override(self):
         oRule = variable.rule_012()
         oRule.prefixes = ['a_','c_','p1_']
-        dExpected = [7,8,9,10,11,12,13,14,15,16,18,20,47,48,49,57]
+        dExpected = [7,8,9,10,11,12,13,14,15,16,18,20,47,48,49,57,66,71]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)

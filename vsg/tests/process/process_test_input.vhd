@@ -154,5 +154,17 @@ proc_name : process (one, two, three) is
 
   end process TEST;
 
+  TEST_PROCESS_W_FUNCTION : process (A) is
+
+    function test_procedure (
+      constant test1_c    : in boolean := true
+    ) is
+    begin
+    end function test_procedure;
+
+  begin
+
+  end process TEST_PROCESS_W_FUNCTION;
+
 end architecture ARCH;
 

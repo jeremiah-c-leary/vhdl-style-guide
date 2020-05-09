@@ -50,6 +50,7 @@ class vhdlFile():
 
         for sLine in self.filecontent:
             oLine = line.line(sLine.replace('\t', '  ').rstrip())
+#            preIndent = str(dVars['iCurrentIndentLevel'])
             update.inside_attributes(dVars, self.lines[-1], oLine)
 
             classify.blank(oLine)
@@ -108,3 +109,4 @@ class vhdlFile():
             # Add line to file
             self.lines.append(oLine)
             oLinePrevious = oLine
+#            print('[' + preIndent + '][' + oLine.line + '][' + str(oLine.indentLevel) + ']')

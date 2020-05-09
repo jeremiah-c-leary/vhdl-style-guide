@@ -1,4 +1,5 @@
 import os
+from pprint import pprint
 
 import unittest
 from vsg import vhdlFile
@@ -8,11 +9,11 @@ sFileLibraryName = os.path.join(os.path.dirname(__file__),'..','library','librar
 lFileLibrary = utils.read_vhdlfile(sFileLibraryName)
 oFileLibrary = vhdlFile.vhdlFile(lFileLibrary)
 
-lFileProcess = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','process','process_test_input.vhd'))
-oFileProcess = vhdlFile.vhdlFile(lFileProcess)
-
 lFileProcessIs = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','process','process_is_test_input.vhd'))
 oFileProcessIs = vhdlFile.vhdlFile(lFileProcessIs)
+
+lFileProcess = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','process','process_test_input.vhd'))
+oFileProcess = vhdlFile.vhdlFile(lFileProcess)
 
 
 class testVhdlFileMethods(unittest.TestCase):
@@ -32,6 +33,7 @@ class testVhdlFileMethods(unittest.TestCase):
         # Generic actual list
         lExpected.extend(range(140, 151))
         lExpected.extend(range(152,156))
+        lExpected.extend(range(157,168))
         lActual = []
         for iIndex, oLine in enumerate(oFileProcess.lines):
             if oLine.insideProcess:
@@ -40,7 +42,7 @@ class testVhdlFileMethods(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isProcessBegin_assignment(self):
-        lExpected = [6,13,20,28,34,40,47,52,59,64,70,77,84,92,101,121,130,148,153]
+        lExpected = [6,13,20,28,34,40,47,52,59,64,70,77,84,92,101,121,130,148,153,165]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFileProcess.lines):
@@ -50,7 +52,7 @@ class testVhdlFileMethods(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isProcessKeyword_assignment(self):
-        lExpected = [6,11,17,24,32,38,46,51,55,63,68,75,81,88,97,116,125,140,152]
+        lExpected = [6,11,17,24,32,38,46,51,55,63,68,75,81,88,97,116,125,140,152,157]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFileProcess.lines):
@@ -60,7 +62,7 @@ class testVhdlFileMethods(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isProcessLabel_assignment(self):
-        lExpected = [46,63,68,75,81,88,97,116,140,152]
+        lExpected = [46,63,68,75,81,88,97,116,140,152,157]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFileProcess.lines):
@@ -70,7 +72,7 @@ class testVhdlFileMethods(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isEndProcess_assignment(self):
-        lExpected = [9,15,22,30,36,42,48,53,60,65,72,79,86,94,103,123,132,150,155]
+        lExpected = [9,15,22,30,36,42,48,53,60,65,72,79,86,94,103,123,132,150,155,167]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFileProcess.lines):
@@ -80,7 +82,7 @@ class testVhdlFileMethods(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_insideSensitivityList_assignment(self):
-        lExpected = [6,11,12,17,18,19,24,25,26,27,32,33,38,39,46,51,55,56,57,63,68,75,81,88,97]
+        lExpected = [6,11,12,17,18,19,24,25,26,27,32,33,38,39,46,51,55,56,57,63,68,75,81,88,97,157]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFileProcess.lines):
@@ -90,7 +92,7 @@ class testVhdlFileMethods(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isSensitivityListBegin_assignment(self):
-        lExpected = [6,11,17,24,32,38,46,51,55,63,68,75,81,88,97]
+        lExpected = [6,11,17,24,32,38,46,51,55,63,68,75,81,88,97,157]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFileProcess.lines):
@@ -100,7 +102,7 @@ class testVhdlFileMethods(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isSensitivityListEnd_assignment(self):
-        lExpected = [6,12,19,27,33,39,46,51,57,63,68,75,81,88,97]
+        lExpected = [6,12,19,27,33,39,46,51,57,63,68,75,81,88,97,157]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFileProcess.lines):
@@ -110,7 +112,7 @@ class testVhdlFileMethods(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_end_architecture_assignment(self):
-        lExpected = [157]
+        lExpected = [169]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFileProcess.lines):
@@ -156,8 +158,32 @@ class testVhdlFileMethods(unittest.TestCase):
         self.assertEqual(None, oFileProcess.lines[149].indentLevel)
         self.assertEqual(1, oFileProcess.lines[150].indentLevel)
 
+        self.assertEqual(None, oFileProcess.lines[151].indentLevel)
+
         self.assertEqual(1, oFileProcess.lines[152].indentLevel)
         self.assertEqual(1, oFileProcess.lines[153].indentLevel)
+        self.assertEqual(None, oFileProcess.lines[154].indentLevel)
+        self.assertEqual(1, oFileProcess.lines[155].indentLevel)
+
+        self.assertEqual(None, oFileProcess.lines[156].indentLevel)
+
+#        print(pprint(oFileProcess.lines[155].__dict__, indent=2))
+#        print(pprint(oFileProcess.lines[156].__dict__, indent=2))
+#        print(pprint(oFileProcess.lines[157].__dict__, indent=2))
+
+        self.assertEqual(1, oFileProcess.lines[157].indentLevel)
+        self.assertEqual(None, oFileProcess.lines[158].indentLevel)
+        self.assertEqual(2, oFileProcess.lines[159].indentLevel)
+        self.assertEqual(3, oFileProcess.lines[160].indentLevel)
+        self.assertEqual(2, oFileProcess.lines[161].indentLevel)
+        self.assertEqual(2, oFileProcess.lines[162].indentLevel)
+        self.assertEqual(2, oFileProcess.lines[163].indentLevel)
+        self.assertEqual(None, oFileProcess.lines[164].indentLevel)
+        self.assertEqual(1, oFileProcess.lines[165].indentLevel)
+        self.assertEqual(None, oFileProcess.lines[166].indentLevel)
+        self.assertEqual(1, oFileProcess.lines[167].indentLevel)
+        self.assertEqual(None, oFileProcess.lines[168].indentLevel)
+
 
     def test_isProcessIs_assignment(self):
         lExpected = [6,11,16,19,22,26,30]

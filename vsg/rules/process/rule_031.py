@@ -26,7 +26,10 @@ class rule_031(rule.rule):
             self.iStartGroupIndex = iLineNumber
         if self.fGroupFound:
             if oLine.isConstant or oLine.isVariable or oLine.isFileKeyword:
-                self.lGroup.append(oLine)
+                if oLine.insideProcedure or oLine.insideFunction:
+                    self.lGroup.append(line.blank_line())
+                else:
+                    self.lGroup.append(oLine)
             else:
                 self.lGroup.append(line.blank_line())
         if oLine.isProcessBegin and self.fGroupFound:

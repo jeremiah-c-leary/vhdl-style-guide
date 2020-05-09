@@ -97,4 +97,6 @@ def _classify_parameter_end(dVars, oLine):
         dVars['iOpenParenthesis'] = 0
         dVars['iCloseParenthesis'] = 0
         oLine.isFunctionParameterEnd = True
+        if re.match('^\s*\)\s*is', oLine.line, re.IGNORECASE):
+            oLine.indentLevel = dVars['iCurrentIndentLevel'] - 1
         dVars['fFunctionParameterEndDetected'] = True
