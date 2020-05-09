@@ -16,7 +16,7 @@ class test_process_rules(unittest.TestCase):
     def test_031(self):
         oRule = process.rule_031()
         oRule.analyze(self.oFile)
-        lExpected = ['19-28']
+        lExpected = ['19-28','60-84']
         self.assertEqual(oRule.violations, lExpected)
 
     def test_fix_rule_031(self):
@@ -42,5 +42,24 @@ class test_process_rules(unittest.TestCase):
         self.assertEqual(self.oFile.lines[38].line, '    variable var12 : boolean;')
         self.assertEqual(self.oFile.lines[39].line, '    constant con12 : integer;')
         self.assertEqual(self.oFile.lines[40].line, '    file     file12 : load_file_file open read_mode is load_file_name; -- 4')
+
+
+        self.assertEqual(self.oFile.lines[62].line, '    variable var1 : boolean;')
+        self.assertEqual(self.oFile.lines[63].line, '    constant con1 : integer := 1;')
+        self.assertEqual(self.oFile.lines[64].line, '    file     file1 : load_file_file open read_mode is load_file_name; -- 7')
+
+
+        self.assertEqual(self.oFile.lines[67].line, '      variable a, b : integer;')
+
+        self.assertEqual(self.oFile.lines[71].line, '    variable var1 : boolean;')
+        self.assertEqual(self.oFile.lines[72].line, '    constant con1 : integer := 1;')
+        self.assertEqual(self.oFile.lines[73].line, '    file     file1 : load_file_file open read_mode is load_file_name; -- 8')
+
+        self.assertEqual(self.oFile.lines[76].line, '      variable c, d : integer;')
+
+        self.assertEqual(self.oFile.lines[80].line, '    variable var1 : boolean;')
+        self.assertEqual(self.oFile.lines[81].line, '    constant con1 : integer := 1;')
+        self.assertEqual(self.oFile.lines[82].line, '    file     file1 : load_file_file open read_mode is load_file_name; -- 9')
+
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)

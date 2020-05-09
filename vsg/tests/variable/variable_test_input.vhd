@@ -60,4 +60,20 @@ begin
 
   end process PROC_4;
 
+  PROC_5 : process(C) is
+
+    procedure test_p (x: integer) is
+      variable a, b : integer;
+    begin
+    end procedure;
+
+    function test_f (x: integer) is
+      variable c, d : integer;
+    begin
+    end function;
+
+  begin
+
+  end process PROC_5;
+
 end architecture ARCH;

@@ -57,5 +57,34 @@ begin
 
   end process PROC1;
 
+  PROC1 : process(A) is
+
+    variable   var1 : boolean;
+    constant     con1 : integer := 1;
+    file  file1 : load_file_file open read_mode is load_file_name; -- 7
+
+    procedure test_p (x: integer) is
+      variable a, b : integer;
+    begin
+    end procedure
+
+    variable   var1 : boolean;
+    constant     con1 : integer := 1;
+    file  file1 : load_file_file open read_mode is load_file_name; -- 8
+
+    function test_f (x: integer) is
+      variable c, d : integer;
+    begin
+    end function;
+
+    variable   var1 : boolean;
+    constant     con1 : integer := 1;
+    file  file1 : load_file_file open read_mode is load_file_name; -- 9
+
+  begin
+
+  end process PROC1;
+
+
 end architecture ARCH;
 

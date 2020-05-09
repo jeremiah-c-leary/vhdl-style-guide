@@ -221,7 +221,8 @@ class testRuleProcessMethods(unittest.TestCase):
                      {'lines':[{'number': 97}], 'words_to_fix': {'PROC_NAME'}},
                      {'lines':[{'number': 116}], 'words_to_fix': {'MAIN'}},
                      {'lines':[{'number': 140}], 'words_to_fix': {'TEST_PROCESS'}},
-                     {'lines':[{'number': 152}], 'words_to_fix': {'TEST'}}]
+                     {'lines':[{'number': 152}], 'words_to_fix': {'TEST'}},
+                     {'lines':[{'number': 157}], 'words_to_fix': {'TEST_PROCESS_W_FUNCTION'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, lExpected)
 
@@ -256,7 +257,8 @@ class testRuleProcessMethods(unittest.TestCase):
                      {'lines':[{'number': 103}], 'words_to_fix': {'PROC_NAME'}},
                      {'lines':[{'number': 123}], 'words_to_fix': {'MAIN'}},
                      {'lines':[{'number': 150}], 'words_to_fix': {'TEST_PROCESS'}},
-                     {'lines':[{'number': 155}], 'words_to_fix': {'TEST'}}]
+                     {'lines':[{'number': 155}], 'words_to_fix': {'TEST'}},
+                     {'lines':[{'number': 167}], 'words_to_fix': {'TEST_PROCESS_W_FUNCTION'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, lExpected)
 
