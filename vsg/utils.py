@@ -797,7 +797,7 @@ def extract_port_names_from_port_map(oLine):
     Returns: (list of strings)
     '''
     names = []
-    for s in oLine.line.split(','):
+    for s in remove_comment(oLine.line).split(','):
         name = _extract_port_name_from_assignment(s)
         if name != '':
             names.append(name)

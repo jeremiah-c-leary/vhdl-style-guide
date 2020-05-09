@@ -99,7 +99,7 @@ begin
   U_INST1 : INST1
     port map (
       PORT_1 => w_port_1,
-      PORT_2 => w_port_2,
+      PORT_2 => w_port_2,  -- this comment should not FLAG instantiation_009
       PORT_3 => w_port_3
     );
 
