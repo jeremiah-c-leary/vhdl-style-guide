@@ -20,4 +20,13 @@ begin
   report "Something"
  severity FAILURE;
 
+  PROC : process (CLK) is
+  begin
+
+    assert 3 <= 7
+      report "something";
+
+  end process PROC;
+
+
 end architecture ARCH;
