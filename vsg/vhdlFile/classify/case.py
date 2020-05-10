@@ -14,7 +14,7 @@ def case(self, dVars, oLine):
         oLine.insideCase = True
         oLine.indentLevel = dVars['iCurrentIndentLevel']
         dVars['iCurrentIndentLevel'] += 2
-    if re.match('^\s*\w+\s*:\s*case[\s|\(]', oLine.lineLower):
+    if re.match('^\s*\w+\s*:\s*case[\s|\(]', oLine.lineLower) and not re.match('^\s*\w+\s*:\s*case\s.*\sgenerate', oLine.lineLower):
         oLine.isCaseKeyword = True
         oLine.insideCase = True
         oLine.hasCaseLabel = True

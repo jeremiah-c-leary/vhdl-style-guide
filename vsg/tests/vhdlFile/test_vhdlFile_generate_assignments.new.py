@@ -87,20 +87,3 @@ class testVhdlFileGenerateAssignments(unittest.TestCase):
                 lActual.append(iIndex)
         # Compare
         self.assertEqual(lActual, lExpected)
-
-    def test_isGenerateEndLabel(self):
-        lExpected = [9,14,19,29,34,39,44,49,54,58,62,73,75,79,81,86,96,98,100,106]
-        # Generic actual list
-        lActual = []
-        for iIndex, oLine in enumerate(oFile.lines):
-            if oLine.isGenerateEndLabel:
-                lActual.append(iIndex)
-        # Compare
-        self.assertEqual(lActual, lExpected)
-
-    def test_2008_case_generate(self):
-        self.assertTrue(o2008File.lines[7].insideGenerate)
-        self.assertTrue(o2008File.lines[7].isGenerateKeyword)
-        self.assertTrue(o2008File.lines[7].isGenerateLabel)
-        self.assertFalse(o2008File.lines[7].insideInstantiation)
-        self.assertFalse(o2008File.lines[7].insideCase)

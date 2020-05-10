@@ -3,22 +3,22 @@ import re
 
 def generate(dVars, oLine, oLinePrevious):
 
-    if re.match('^\s*\w+\s*:\s*if', oLine.lineLower) or re.match('^\s*\w+\s*:\s*for\s.*\sgenerate', oLine.lineLower):
-        oLine.insideGenerate = True
-        dVars['iGenerateLevel'] += 1
+    check_case_generate(dVars, oLine) 
+    check_for_generate(dVars, oLine) 
+    check_if_generate(dVars, oLine) 
     if re.match('^\s*\w+\s*:\s*--', oLinePrevious.line) or re.match('^\s*\w+\s*:\s*$', oLinePrevious.line):
-        if re.match('^\s*if\s+.*\sgenerate', oLine.lineLower) or re.match('^\s*for\s.*\sgenerate', oLine.lineLower):
+        if re.match('^\s*if\s+.*\sgenerate', oLine.lineLower) or re.match('^\s*for\s.*\sgenerate', oLine.lineLower) or re.match('^\s*case\s+.*\sgenerate', oLine.lineLower):
             oLinePrevious.insideGenerate = True
             oLinePrevious.isGenerateLabel = True
             oLine.insideGenerate = True
             dVars['iGenerateLevel'] += 1
     if oLine.insideGenerate:
-        if re.match('^\s*\w+\s*:\s*if[\s|(].*[\s|)]generate', oLine.lineLower) or re.match('^\s*\w+\s*:\s*for\s.*\sgenerate', oLine.lineLower):
+        if re.match('^\s*\w+\s*:\s*if[\s|(].*[\s|)]generate', oLine.lineLower) or re.match('^\s*\w+\s*:\s*for\s.*\sgenerate', oLine.lineLower) or re.match('^\s*\w+\s*:\s*case\s.*\sgenerate', oLine.lineLower):
             oLine.isGenerateKeyword = True
             oLine.isGenerateLabel = True
             oLine.indentLevel = dVars['iCurrentIndentLevel']
             dVars['iCurrentIndentLevel'] += 1
-        if re.match('^\s*if[\s|(].*[\s|)]generate', oLine.lineLower) or re.match('^\s*for\s.*\sgenerate', oLine.lineLower):
+        if re.match('^\s*if[\s|(].*[\s|)]generate', oLine.lineLower) or re.match('^\s*for\s.*\sgenerate', oLine.lineLower) or re.match('^\s*case\s.*\sgenerate', oLine.lineLower):
             oLine.isGenerateKeyword = True
             oLine.indentLevel = dVars['iCurrentIndentLevel']
             dVars['iCurrentIndentLevel'] += 1
@@ -30,3 +30,23 @@ def generate(dVars, oLine, oLinePrevious):
             dVars['iCurrentIndentLevel'] -= 1
             oLine.indentLevel = dVars['iCurrentIndentLevel']
             dVars['iGenerateLevel'] -= 1
+            if re.match('^\s*end\s+generate\s+\S+\s*;', oLine.lineLower):
+                oLine.isGenerateEndLabel = True
+
+
+def check_for_generate(dVars, oLine):
+    if re.match('^\s*\w+\s*:\s*for\s.*\sgenerate', oLine.lineLower):
+        oLine.insideGenerate = True
+        dVars['iGenerateLevel'] += 1
+
+
+def check_if_generate(dVars, oLine):
+    if re.match('^\s*\w+\s*:\s*if', oLine.lineLower):
+        oLine.insideGenerate = True
+        dVars['iGenerateLevel'] += 1
+
+
+def check_case_generate(dVars, oLine):
+    if re.match('^\s*\w+\s*:\s*case', oLine.lineLower):
+        oLine.insideGenerate = True
+        dVars['iGenerateLevel'] += 1
