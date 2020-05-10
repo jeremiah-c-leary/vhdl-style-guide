@@ -84,6 +84,8 @@ def update_case_attributes(oPreviousLine, oCurrentLine):
     if oPreviousLine.insideCase and not oPreviousLine.isCaseIsKeyword:
         oCurrentLine.insideCase = True
 
+    if oPreviousLine.insideCaseStatement and not oPreviousLine.isEndCaseKeyword:
+        oCurrentLine.insideCaseStatement = True
 
 def update_case_when_attributes(oPreviousLine, oCurrentLine):
 
@@ -158,6 +160,15 @@ def update_generate_attributes(dVars, oPreviousLine, oCurrentLine):
             oCurrentLine.insideGenerate = True
     elif oPreviousLine.insideGenerate and not oPreviousLine.isGenerateEnd:
         oCurrentLine.insideGenerate = True
+
+
+def update_generate_case_attributes(dVars, oPreviousLine, oCurrentLine):
+
+    if oPreviousLine.insideGenerateCase and oPreviousLine.isGenerateEnd:
+        if dVars['iGenerateLevel'] > 0:
+            oCurrentLine.insideGenerateCase = True
+    elif oPreviousLine.insideGenerateCase and not oPreviousLine.isGenerateEnd:
+        oCurrentLine.insideGenerateCase = True
 
 
 def update_for_loop_attributes(dVars, oPreviousLine, oCurrentLine):
@@ -239,6 +250,7 @@ def inside_attributes(dVars, oPreviousLine, oCurrentLine):
     update_procedure_attributes(oPreviousLine, oCurrentLine)
     update_function_attributes(oPreviousLine, oCurrentLine)
     update_generate_attributes(dVars, oPreviousLine, oCurrentLine)
+    update_generate_case_attributes(dVars, oPreviousLine, oCurrentLine)
     update_for_loop_attributes(dVars, oPreviousLine, oCurrentLine)
     update_when_attributes(oPreviousLine, oCurrentLine)
     update_while_loop_attributes(oPreviousLine, oCurrentLine)

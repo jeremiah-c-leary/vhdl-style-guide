@@ -113,3 +113,18 @@ class testVhdlFileIfAssignments(unittest.TestCase):
                 lActual.append(iIndex)
         # Compare
         self.assertEqual(lActual, lExpected)
+
+    def test_inside_case_statement(self):
+        lExpected = []
+        lExpected.extend(range(9,34))
+        lExpected.extend(range(41,71))
+        lExpected.extend(range(77,80)) 
+        lExpected.extend(range(87, 99))
+
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFile.lines):
+            if oLine.insideCaseStatement:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)

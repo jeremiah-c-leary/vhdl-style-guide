@@ -10,11 +10,13 @@ def case(self, dVars, oLine):
     '''
 
     if re.match('^\s*case[\s|\(]', oLine.lineLower):
+        oLine.insideCaseStatement = True
         oLine.isCaseKeyword = True
         oLine.insideCase = True
         oLine.indentLevel = dVars['iCurrentIndentLevel']
         dVars['iCurrentIndentLevel'] += 2
     if re.match('^\s*\w+\s*:\s*case[\s|\(]', oLine.lineLower) and not re.match('^\s*\w+\s*:\s*case\s.*\sgenerate', oLine.lineLower):
+        oLine.insideCaseStatement = True
         oLine.isCaseKeyword = True
         oLine.insideCase = True
         oLine.hasCaseLabel = True
@@ -23,7 +25,7 @@ def case(self, dVars, oLine):
     if oLine.insideCase:
         if re.match('^\s*.*[\s|\)]is\s', oLine.lineLower) or re.match('^\s*.*[\s|\)]is$', oLine.lineLower):
             oLine.isCaseIsKeyword = True
-    if re.match('^\s*when\s', oLine.lineLower) and not oLine.insideConcurrent and not oLine.insideSequential:
+    if re.match('^\s*when\s', oLine.lineLower) and not oLine.insideConcurrent and not oLine.insideSequential and oLine.insideCaseStatement:
         oLine.isCaseWhenKeyword = True
         oLine.insideCaseWhen = True
         oLine.indentLevel = dVars['iCurrentIndentLevel'] - 1

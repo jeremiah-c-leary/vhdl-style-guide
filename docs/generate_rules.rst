@@ -290,3 +290,25 @@ Keeping the label and generate on the same line reduces excessive indenting.
 .. code-block:: vhdl
 
    ram_array : for i in 0 to 7 generate
+
+generate_016
+############
+
+This rule checks the alignment of the **when** keyword in generic case statements.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   GEN_LABEL : case condition generate
+     when 0 =>
+       when 1 =>
+   when 2 =>
+
+**Fix**
+.. code-block:: vhdl
+
+   GEN_LABEL : case condition generate
+     when 0 =>
+     when 1 =>
+     when 2 =>

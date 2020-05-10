@@ -6,7 +6,7 @@ begin
 
   gen_delay : case d_depth generate
     --! No delay of #sig_i
-    when 0 => 
+   when 0 => 
       delay_reg(0) <= sig_i;
     when 1 =>
       --! Delay #sig_i by one clock cycle
@@ -16,7 +16,7 @@ begin
           delay_reg(0) <= sig_i;
         end if;
       end process;
-    when others =>
+     when others =>
       --! Delay #sig_i by multiple clock cycles
       proc_multipleDelay : process (clk)
       begin
