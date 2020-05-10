@@ -98,9 +98,72 @@ class testVhdlFileGenerateAssignments(unittest.TestCase):
         # Compare
         self.assertEqual(lActual, lExpected)
 
-    def test_2008_case_generate(self):
+    def test_insideGenerateCase(self):
+        lExpected = []
+        lExpected.extend(range(7, 29))
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(o2008File.lines):
+            if oLine.insideGenerateCase:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
+    def test_2008_insideGenerate(self):
+        lExpected = range(7, 29)
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(o2008File.lines):
+            if oLine.insideGenerate:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
+    def test_isGenerateCaseWhen(self):
+        lExpected = [9,11,19]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(o2008File.lines):
+            if oLine.isGenerateCaseWhen:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
+    def test_2008_insideGenerate(self):
         self.assertTrue(o2008File.lines[7].insideGenerate)
+        self.assertTrue(o2008File.lines[7].insideGenerateCase)
         self.assertTrue(o2008File.lines[7].isGenerateKeyword)
         self.assertTrue(o2008File.lines[7].isGenerateLabel)
         self.assertFalse(o2008File.lines[7].insideInstantiation)
         self.assertFalse(o2008File.lines[7].insideCase)
+
+        self.assertFalse(o2008File.lines[9].insideCase)
+        self.assertFalse(o2008File.lines[9].isCaseWhenKeyword)
+
+    def test_2008_case_generate_indent(self):
+        self.assertEqual(o2008File.lines[5].indentLevel, 0)
+        self.assertEqual(o2008File.lines[6].indentLevel, None)
+        self.assertEqual(o2008File.lines[7].indentLevel, 1)
+        self.assertEqual(o2008File.lines[8].indentLevel, 2)
+        self.assertEqual(o2008File.lines[9].indentLevel, 2)
+        self.assertEqual(o2008File.lines[10].indentLevel, 3)
+        self.assertEqual(o2008File.lines[11].indentLevel, 2)
+        self.assertEqual(o2008File.lines[12].indentLevel, 3)
+        self.assertEqual(o2008File.lines[13].indentLevel, 3)
+        self.assertEqual(o2008File.lines[14].indentLevel, 3)
+        self.assertEqual(o2008File.lines[15].indentLevel, 4)
+        self.assertEqual(o2008File.lines[16].indentLevel, 5)
+        self.assertEqual(o2008File.lines[17].indentLevel, 4)
+        self.assertEqual(o2008File.lines[18].indentLevel, 3)
+        self.assertEqual(o2008File.lines[19].indentLevel, 2)
+        self.assertEqual(o2008File.lines[20].indentLevel, 3)
+        self.assertEqual(o2008File.lines[21].indentLevel, 3)
+        self.assertEqual(o2008File.lines[22].indentLevel, 3)
+        self.assertEqual(o2008File.lines[23].indentLevel, 4)
+        self.assertEqual(o2008File.lines[24].indentLevel, 5)
+        self.assertEqual(o2008File.lines[25].indentLevel, 5)
+        self.assertEqual(o2008File.lines[26].indentLevel, 4)
+        self.assertEqual(o2008File.lines[27].indentLevel, 3)
+        self.assertEqual(o2008File.lines[28].indentLevel, 1)
+        self.assertEqual(o2008File.lines[29].indentLevel, None)
+        self.assertEqual(o2008File.lines[30].indentLevel, 0)

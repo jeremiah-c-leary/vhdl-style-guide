@@ -101,6 +101,7 @@ class line():
         self.isLastEndIf = False
         self.isFirstIf = False
         # Case attributes
+        self.insideCaseStatement = False
         self.insideCase = False
         self.insideCaseWhen = False
         self.isCaseIsKeyword = False
@@ -147,6 +148,9 @@ class line():
         self.isGenerateEnd = False
         self.isGenerateLabel = False
         self.isGenerateEndLabel = False
+        self.insideGenerateCase = False
+        self.insideGenerateCaseWhen = False
+        self.isGenerateCaseWhen = False 
         # Function attributes
         self.insideFunction = False
         self.insideFunctionDeclarative = False
