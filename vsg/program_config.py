@@ -19,6 +19,8 @@ def update_sys_args():
     dSysArgs = read_home_program_file()
     dSysArgs = read_environment_variable_program_file(dSysArgs)
     remove_unsupported_arguments(dSysArgs)
+    expand_environment_vars(dSysArgs)
+    glob_files(dSysArgs)
     convert_single_dash_argument_to_double_dash_argument()
     merge_program_config_w_user_sys_args(dSysArgs)
 
@@ -62,7 +64,7 @@ def remove_unsupported_arguments(dSysArgs):
 
         dSysArgs : (dictionary)
 
-    Returns : (dictionary)
+    Returns : nothing
     '''
     if dSysArgs == {}:
         return
@@ -122,7 +124,7 @@ def merge_program_config_w_user_sys_args(dSysArgs):
 
         dSysArgs : (dictionary)
 
-    Returns : None
+    Returns : (list of strings)
     '''
     if dSysArgs == {}:
         return sys.argv
@@ -173,16 +175,71 @@ def extract_parameter_value(dSysArgs, sKey):
     return dSysArgs['command_line_arguments'][sKey]
 
 
-def expand_environment_vars(sFileName):
+def expand_environment_vars(dSysArgs):
     '''
     Expands environment variables in filenames.
 
     Parameters : 
 
-        sFileName : (string)
+        dSysArgs: (dictionary)
 
-    Returns : (string)
+    Returns : (dictionary)
 
     '''
-    return os.path.expanduser(os.path.expandvars(sFileName))
 
+    try:
+        lUpdates = []
+        for sFilename in dSysArgs['command_line_arguments']['filename']:
+            lUpdates.append(os.path.expanduser(os.path.expandvars(sFilename)))
+        dSysArgs['command_line_arguments']['filename'] = lUpdates
+    except KeyError:
+      pass
+
+    try:
+        lUpdates = []
+        for sFilename in dSysArgs['command_line_arguments']['configuration']:
+            lUpdates.append(os.path.expanduser(os.path.expandvars(sFilename)))
+        dSysArgs['command_line_arguments']['configuration'] = lUpdates
+    except KeyError:
+      pass
+
+    try:
+        dSysArgs['command_line_arguments']['junit'] = os.path.expanduser(os.path.expandvars(dSysArgs['command_line_arguments']['junit']))
+    except KeyError:
+      pass
+
+    try:
+        dSysArgs['command_line_arguments']['local_rules'] = os.path.expanduser(os.path.expandvars(dSysArgs['command_line_arguments']['local_rules']))
+    except KeyError:
+      pass
+
+    return dSysArgs
+
+
+def glob_files(dSysArgs):
+    '''
+    Expands * in filenames.
+
+    Parameters :
+
+        dSysArgs : (dictionary)
+
+    Returns : (dictionary)
+    '''
+    try:
+        lUpdates = []
+        for sFilename in dSysArgs['command_line_arguments']['filename']:
+            lUpdates.extend(glob.glob(sFilename))
+        dSysArgs['command_line_arguments']['filename'] = lUpdates
+    except KeyError:
+      pass
+
+    try:
+        lUpdates = []
+        for sFilename in dSysArgs['command_line_arguments']['configuration']:
+            lUpdates.extend(glob.glob(sFilename))
+        dSysArgs['command_line_arguments']['configuration'] = lUpdates
+    except KeyError:
+      pass
+
+    return dSysArgs

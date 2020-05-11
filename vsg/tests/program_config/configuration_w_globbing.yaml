@@ -2,7 +2,7 @@
 command_line_arguments:
 
   filename : 
-    - $TEST_DIR/*.vhd'
+    - $TEST_DIR/*.vhd
 
   local_rules : $COMPANY_LOCAL_RULES_DIR
 

@@ -111,7 +111,7 @@ class testProgramConfigModule(unittest.TestCase):
     @mock.patch('vsg.program_config.sHomeDefaultFile', 'vsg/tests/program_config/configuration_w_lists.yaml')
     def test_update_sys_args_w_user_sys_args_w_full_up_program_config(self):
         sys.argv = ['vsg', '-f', 'filename', '--output_format', 'vsg']
-        lExpected = ['vsg', '--filename', 'filename', '--output_format', 'vsg', '--local_rules', '$COMPANY_LOCAL_RULES_DIR', '--configuration', 'config_1.yaml', 'config_2.yaml', '--fix', '--fix_phase', '7', '--junit', 'vsg_results.xml']
+        lExpected = ['vsg', '--filename', 'filename', '--output_format', 'vsg', '--local_rules', '$COMPANY_LOCAL_RULES_DIR', '--configuration', 'vsg/tests/program_config/config_dir/config1.yaml', 'vsg/tests/program_config/config_dir/config2.yaml', '--fix', '--fix_phase', '7', '--junit', 'vsg_results.xml']
 
         dProgramFile = program_config.read_home_program_file()
 
@@ -134,3 +134,86 @@ class testProgramConfigModule(unittest.TestCase):
 #        self.assertEqual(len(lExpected), len(sys.argv))
         for iIndex, sEntry in enumerate(lExpected):
             self.assertEqual(sEntry, sys.argv[iIndex])
+
+
+    @mock.patch.dict(os.environ,{'TEST_DIR':'test_dir_expanded', 'CONFIG_DIR':'config_dir_expanded','COMPANY_LOCAL_RULES_DIR':'company_local_dir_expanded'})
+    def test_expand_environment_vars(self):
+        dSysArgs = {}
+        dSysArgs['command_line_arguments'] = {}
+        dSysArgs['command_line_arguments']['fix'] = True
+
+        dExpected = {}
+        dExpected['command_line_arguments'] = {}
+        dExpected['command_line_arguments']['fix'] = True
+
+        self.assertEqual(program_config.expand_environment_vars(dSysArgs), dExpected)
+
+        dSysArgs['command_line_arguments']['filename'] = []
+        dSysArgs['command_line_arguments']['filename'].append('$TEST_DIR/*.vhd')
+        dSysArgs['command_line_arguments']['filename'].append('$CONFIG_DIR/my.vhd')
+        dSysArgs['command_line_arguments']['filename'].append('$COMPANY_LOCAL_RULES_DIR/other.vhd')
+
+        dExpected['command_line_arguments']['filename'] = []
+        dExpected['command_line_arguments']['filename'].append('test_dir_expanded/*.vhd')
+        dExpected['command_line_arguments']['filename'].append('config_dir_expanded/my.vhd')
+        dExpected['command_line_arguments']['filename'].append('company_local_dir_expanded/other.vhd')
+
+        self.assertEqual(program_config.expand_environment_vars(dSysArgs), dExpected)
+
+        
+        dSysArgs['command_line_arguments']['configuration'] = []
+        dSysArgs['command_line_arguments']['configuration'].append('$TEST_DIR/*.yaml')
+        dSysArgs['command_line_arguments']['configuration'].append('$CONFIG_DIR/*.json')
+
+        dExpected['command_line_arguments']['configuration'] = []
+        dExpected['command_line_arguments']['configuration'].append('test_dir_expanded/*.yaml')
+        dExpected['command_line_arguments']['configuration'].append('config_dir_expanded/*.json')
+        
+        self.assertEqual(program_config.expand_environment_vars(dSysArgs), dExpected)
+
+        dSysArgs['command_line_arguments']['junit'] = '$TEST_DIR/junit.xml'
+
+        dExpected['command_line_arguments']['junit'] = 'test_dir_expanded/junit.xml'
+
+
+        self.assertEqual(program_config.expand_environment_vars(dSysArgs), dExpected)
+
+
+        dSysArgs['command_line_arguments']['local_rules'] = '$TEST_DIR/local_rules_dir'
+
+        dExpected['command_line_arguments']['local_rules'] = 'test_dir_expanded/local_rules_dir'
+
+
+        self.assertEqual(program_config.expand_environment_vars(dSysArgs), dExpected)
+
+    def test_glob_files(self):
+        dSysArgs = {}
+        dSysArgs['command_line_arguments'] = {}
+        dSysArgs['command_line_arguments']['fix'] = True
+
+        dExpected = {}
+        dExpected['command_line_arguments'] = {}
+        dExpected['command_line_arguments']['fix'] = True
+
+        self.assertEqual(program_config.glob_files(dSysArgs), dExpected)
+
+        dSysArgs['command_line_arguments']['filename'] = []
+        dSysArgs['command_line_arguments']['filename'].append('vsg/tests/program_config/test_dir/*.vhd')
+
+        dExpected['command_line_arguments']['filename'] = []
+        dExpected['command_line_arguments']['filename'].append('vsg/tests/program_config/test_dir/a.vhd')
+        dExpected['command_line_arguments']['filename'].append('vsg/tests/program_config/test_dir/b.vhd')
+        dExpected['command_line_arguments']['filename'].append('vsg/tests/program_config/test_dir/c.vhd')
+
+        self.assertEqual(program_config.glob_files(dSysArgs), dExpected)
+
+        
+        dSysArgs['command_line_arguments']['configuration'] = []
+        dSysArgs['command_line_arguments']['configuration'].append('vsg/tests/program_config/config_dir/*.yaml')
+
+        dExpected['command_line_arguments']['configuration'] = []
+        dExpected['command_line_arguments']['configuration'].append('vsg/tests/program_config/config_dir/config1.yaml')
+        dExpected['command_line_arguments']['configuration'].append('vsg/tests/program_config/config_dir/config2.yaml')
+        
+        self.assertEqual(program_config.glob_files(dSysArgs), dExpected)
+

@@ -2,15 +2,15 @@
 command_line_arguments:
 
   filename : 
-    - A.vhd
-    - B.vhd
-    - C.vhd
+    - vsg/tests/program_config/test_dir/a.vhd
+    - vsg/tests/program_config/test_dir/b.vhd
+    - vsg/tests/program_config/test_dir/c.vhd
 
   local_rules : $COMPANY_LOCAL_RULES_DIR
 
   configuration :
-    - config_1.yaml
-    - config_2.yaml
+    - vsg/tests/program_config/config_dir/config1.yaml
+    - vsg/tests/program_config/config_dir/config2.yaml
 
   fix : True
 
