@@ -85,6 +85,14 @@ begin
 
   end process PROC1;
 
+  PROC1 : process(A) is
+
+    variable a, b : integer;
+    variable c  : integer;
+
+  begin
+
+  end process PROC1;
 
 end architecture ARCH;
 

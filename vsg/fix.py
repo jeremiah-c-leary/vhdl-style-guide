@@ -268,7 +268,7 @@ def identifier_alignment(self, oFile):
             oLine = oFile.lines[iLineNumber]
             lLine = oLine.line.split(':', 1)
             sKeyword = lLine[0].split()[0]
-            sIdentifier = lLine[0].split()[1]
+            sIdentifier = ' '.join(lLine[0].split()[1:])
             sLine = ' '*oLine.indentLevel*self.indentSize
             sLine += sKeyword
             sLine += ' '*(self.dFix['violations'][sKey]['maximumKeywordLength'] - len(sKeyword) + 1)
