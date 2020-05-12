@@ -91,5 +91,14 @@ begin
 
   end process PROC1;
 
+  PROC1 : process (X) is
+
+    variable a, b : integer;
+    variable c  : integer;
+
+  begin
+
+  end process PROC1;
+
 end architecture ARCH;
 

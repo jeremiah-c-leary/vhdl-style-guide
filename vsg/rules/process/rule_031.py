@@ -35,7 +35,7 @@ class rule_031(rule.rule):
         if oLine.isProcessBegin and self.fGroupFound:
             self.fGroupFound = False
             check.identifier_alignment(self, self.iStartGroupIndex, self.lGroup)
-            check.keyword_alignment(self, self.iStartGroupIndex, ':', self.lGroup)
+#            check.keyword_alignment(self, self.iStartGroupIndex, ':', self.lGroup)
             self.lGroup = []
             self.iStartGroupIndex = None
 
