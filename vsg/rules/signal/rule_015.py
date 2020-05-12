@@ -26,7 +26,7 @@ class rule_015(rule.rule):
         if oLine.insideSignal:
             self.sFullLine += oLine.line
         if oLine.isEndSignal:
-            if self.sFullLine.count(',') > self.consecutive - 1:
+            if utils.remove_comment(self.sFullLine).count(',') > self.consecutive - 1:
                 self.add_violation(self.iFailureLine)
                 self.dFix['violations'][self.iFailureLine] = {}
                 self.dFix['violations'][self.iFailureLine]['endLine'] = iLineNumber
@@ -36,7 +36,7 @@ class rule_015(rule.rule):
         for iLineNumber in self.violations[::-1]:
             dViolation = self.dFix['violations'][iLineNumber]
             utils.remove_lines(oFile, iLineNumber, dViolation['endLine'])
-            iNumLines = dViolation['line'].count(',') + 1
+            iNumLines = utils.remove_comment(dViolation['line']).count(',') + 1
             lSignals = _extract_signals(dViolation['line'])
             sAfterColon = _extract_after_colon(dViolation['line'])
             for i in range(0, iNumLines):

@@ -72,6 +72,7 @@ architecture ARCH of ENTITY is
     std_logic
     ;
 
+  signal sig1, sig2 : std_logic; -- Comma, should not induce a failure
 
 begin
 

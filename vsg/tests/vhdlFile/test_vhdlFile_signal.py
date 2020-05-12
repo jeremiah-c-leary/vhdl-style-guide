@@ -22,7 +22,7 @@ class testVhdlFileMethods(unittest.TestCase):
         # Compare
         self.assertEqual(lActual, lExpected)
 
-        lExpected = [5,8,18,20,23,27,32,40,42,45,49,54,60,67]
+        lExpected = [5,8,18,20,23,27,32,40,42,45,49,54,60,67,75]
         lActual = []
         for iIndex, oLine in enumerate(oFileMultiSignal.lines):
             if oLine.isSignal:
@@ -50,6 +50,7 @@ class testVhdlFileMethods(unittest.TestCase):
         lExpected.extend(range(54,59))
         lExpected.extend(range(60,66))
         lExpected.extend(range(67,74))
+        lExpected.append(75)
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFileMultiSignal.lines):
@@ -68,7 +69,7 @@ class testVhdlFileMethods(unittest.TestCase):
         # Compare
         self.assertEqual(lActual, lExpected)
 
-        lExpected = [6,13,18,21,25,30,36,40,43,47,52,58,65,73]
+        lExpected = [6,13,18,21,25,30,36,40,43,47,52,58,65,73,75]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFileMultiSignal.lines):

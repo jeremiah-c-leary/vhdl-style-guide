@@ -31,7 +31,7 @@ class testGeneralRule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'signal')
         self.assertEqual(oRule.identifier, '015')
-        dExpected = [5,8,40,42,45,49,54,60,67]
+        dExpected = [5,8,40,42,45,49,54,60,67,75]
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -112,6 +112,9 @@ class testGeneralRule(unittest.TestCase):
 
         self.assertEqual(self.oFile.lines[62].line, '  signal sig1 : std_logic    ;')
         self.assertEqual(self.oFile.lines[63].line, '  signal sig2 : std_logic    ;')
+
+        self.assertEqual(self.oFile.lines[65].line, '  signal sig1 : std_logic; -- Comma, should not induce a failure')
+        self.assertEqual(self.oFile.lines[66].line, '  signal sig2 : std_logic; -- Comma, should not induce a failure')
 
         self.assertEqual(oRule.violations, [])
 
