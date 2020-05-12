@@ -94,7 +94,7 @@ begin
   PROC1 : process (X) is
 
     variable a, b : integer;
-    variable c  : integer;
+    variable c    : integer;
 
   begin
 

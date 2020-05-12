@@ -16,7 +16,7 @@ class test_process_rules(unittest.TestCase):
     def test_031(self):
         oRule = process.rule_031()
         oRule.analyze(self.oFile)
-        lExpected = ['22-32','64-88']
+        lExpected = ['22-32','36-46','64-88','92-97']
         self.assertEqual(oRule.violations, lExpected)
 
     def test_fix_rule_031(self):
@@ -63,7 +63,7 @@ class test_process_rules(unittest.TestCase):
         self.assertEqual(self.oFile.lines[86].line, '    file     file1 : load_file_file open read_mode is load_file_name; -- 9')
 
         self.assertEqual(self.oFile.lines[94].line, '    variable a, b : integer;')
-        self.assertEqual(self.oFile.lines[95].line, '    variable c  : integer;')
+        self.assertEqual(self.oFile.lines[95].line, '    variable c    : integer;')
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)

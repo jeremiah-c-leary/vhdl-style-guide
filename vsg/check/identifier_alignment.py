@@ -68,5 +68,6 @@ def add_range_violation(self, sViolationRange):
 
 
 def parse_keyword_identifier(sString):
-    lLine = sString.split()
-    return lLine[0], lLine[1]
+    lLine = sString.split(':')
+    lLine = lLine[0].split() 
+    return lLine[0], ' '.join(lLine[1:])
