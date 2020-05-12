@@ -27,7 +27,7 @@ class rule_015(rule.rule):
         if oLine.insideSignal:
             self.sFullLine += oLine.line
         if oLine.isEndSignal:
-            match = re.match(r'.*?signal\s+(?P<signals>[^:\n]*):', self.sFullLine, flags=re.IGNORECASE)
+            match = re.match(r'.*?signal\s+(?P<signals>[^:\n]*):', utils.remove_comment(self.sFullLine), flags=re.IGNORECASE)
             if match:
                 sSignalList = match.group("signals")
                 if sSignalList.count(',') > self.consecutive - 1:
@@ -40,7 +40,7 @@ class rule_015(rule.rule):
         for dViolation in self.violations[::-1]:
             iLineNumber = utils.get_violation_line_number(dViolation)
             utils.remove_lines(oFile, iLineNumber, dViolation['endLine'])
-            iNumLines = dViolation['line'].count(',') + 1
+            iNumLines = utils.remove_comment(dViolation['line']).count(',') + 1
             lSignals = _extract_signals(dViolation['line'])
             sAfterColon = _extract_after_colon(dViolation['line'])
             for i in range(0, iNumLines):

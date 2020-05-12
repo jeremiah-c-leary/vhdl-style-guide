@@ -89,6 +89,11 @@ class testGeneralRule(unittest.TestCase):
         dViolation['line'] = '  signal    sig1    ,    sig2    :    std_logic    ;'
         lExpected.append(dViolation)
 
+        dViolation = utils.add_violation(75)
+        dViolation['endLine'] = 75
+        dViolation['line'] = '  signal sig1, sig2 : std_logic; -- Comma, should not induce a failure'
+        lExpected.append(dViolation)
+
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, lExpected)
 
@@ -169,6 +174,9 @@ class testGeneralRule(unittest.TestCase):
 
         self.assertEqual(self.oFile.lines[62].line, '  signal sig1 : std_logic    ;')
         self.assertEqual(self.oFile.lines[63].line, '  signal sig2 : std_logic    ;')
+
+        self.assertEqual(self.oFile.lines[65].line, '  signal sig1 : std_logic; -- Comma, should not induce a failure')
+        self.assertEqual(self.oFile.lines[66].line, '  signal sig2 : std_logic; -- Comma, should not induce a failure')
 
         self.assertEqual(oRule.violations, [])
 
