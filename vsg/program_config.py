@@ -4,7 +4,7 @@ import os
 import sys
 import yaml
 
-sHomeDefaultFile = '~/.config/vhdl-style-guide/config.yaml'
+sHomeDefaultFile = os.path.expanduser('~/.config/vhdl-style-guide/config.yaml')
 sEnvironmentVariable = 'VSG_DEFAULT_CONFIG'
 
 
@@ -31,7 +31,8 @@ def read_home_program_file():
 
     Returns : (dictionary)
     '''
-    return open_configuration_file(sHomeDefaultFile, {}, True)
+    dTemp = open_configuration_file(sHomeDefaultFile, {}, True)
+    return dTemp
 
 
 def read_environment_variable_program_file(dSysArgs):
@@ -45,7 +46,7 @@ def read_environment_variable_program_file(dSysArgs):
     Returns : (dictionary)
     '''
     try:
-        sEnvironmentVariable = os.environ['VSG_DEFAULT_CONFIG']
+        sEnvironmentVariable = os.path.expanduser(os.path.expandvars(os.environ['VSG_DEFAULT_CONFIG']))
         return open_configuration_file(sEnvironmentVariable, dSysArgs)
     except KeyError:
         return dSysArgs
@@ -100,7 +101,8 @@ def open_configuration_file(sFileName, commandLineArguments, fIgnoreIOerror=Fals
     '''Attempts to open a configuration file and read it's contents.'''
     try:
         with open(sFileName) as yaml_file:
-            return yaml.full_load(yaml_file)
+            oTemp = yaml.full_load(yaml_file)
+            return oTemp
     except IOError:
         if fIgnoreIOerror:
             return {}

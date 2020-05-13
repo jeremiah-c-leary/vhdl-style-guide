@@ -245,6 +245,13 @@ def display_rule_configuration(commandLineArguments, configuration):
         sys.exit(fExitStatus)
 
 
+def validate_files_exist_to_analyze(commandLineArguments):
+    if commandLineArguments.filename == None:
+        print('ERROR: No file defined by the -f command line option or filename in configuration file.')
+        sys.exit(1)
+
+
+
 def main():
     '''Main routine of the VHDL Style Guide (VSG) program.'''
 
@@ -271,6 +278,8 @@ def main():
     generate_output_configuration(commandLineArguments, configuration)
 
     display_rule_configuration(commandLineArguments, configuration)
+
+    validate_files_exist_to_analyze(commandLineArguments)
 
     for iIndex, sFileName in enumerate(commandLineArguments.filename):
         oVhdlFile = vhdlFile.vhdlFile(read_vhdlfile(sFileName))
