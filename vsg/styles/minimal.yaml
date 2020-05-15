@@ -1,0 +1,6 @@
+# The name must be a single word
+name : minimal
+# Define the rules for this style
+rule :
+  global : 
+    disable : True

@@ -1,0 +1,8 @@
+# The name must be a single word
+name : legacy
+# Define the rules for this style
+rule :
+  entity_008 :
+    case : upper
+  entity_012 :
+    case : upper

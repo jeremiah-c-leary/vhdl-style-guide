@@ -33,6 +33,7 @@ def parse_command_line_arguments():
     parser.add_argument('-b', '--backup', default=False, action='store_true', help='Creates a copy of input file for comparison with fixed version.')
     parser.add_argument('-oc', '--output_configuration', default=None, action='store', help='Write configuration to file name.')
     parser.add_argument('-rc', '--rule_configuration', default=None, action='store', help='Display configuration of a rule')
+    parser.add_argument('--style', action='store', choices=get_installed_styles(), help='Uses built in style')
     parser.add_argument('-v', '--version', default=False, action='store_true', help='Displays version information')
 
     if len(sys.argv) == 1:
@@ -41,6 +42,42 @@ def parse_command_line_arguments():
     else:
         return parser.parse_args()
 
+
+def get_installed_styles():
+    '''
+    Reads all built in styles and returns a list of names.
+
+    Parameters : None
+
+    Returns : (list of strings)
+    '''
+    lReturn = []
+    sStylePath = os.path.join(os.path.dirname(__file__), 'styles')
+    lStyles = os.listdir(sStylePath)
+    for sStyle in lStyles:
+        if sStyle.endswith('.yaml'):
+            with open(os.path.join(sStylePath, sStyle)) as yaml_file:
+                tempConfiguration = yaml.full_load(yaml_file)
+            lReturn.append(tempConfiguration['name'])
+    return lReturn
+
+
+def read_style(commandLineArguments):
+    '''
+    Reads an installed configuration file.
+
+    Parameters :
+
+      commandLineArguments : (argparse object)
+
+    Returns : (dictionary)
+    '''
+    dReturn = {}
+    if commandLineArguments.style:
+        sFileName = os.path.join(os.path.dirname(__file__), 'styles', commandLineArguments.style + '.yaml')
+        dReturn = open_configuration_file(sFileName, commandLineArguments)
+    return dReturn
+    
 
 def open_configuration_file(sFileName, commandLineArguments):
     '''Attempts to open a configuration file and read it's contents.'''
@@ -76,9 +113,9 @@ def validate_file_exists(sFilename, sConfigName):
         sys.exit(1)
 
 
-def read_configuration_files(commandLineArguments):
+def read_configuration_files(dStyle, commandLineArguments):
+    dConfiguration = dStyle
     if commandLineArguments.configuration:
-        dConfiguration = {}
         for sConfigFilename in commandLineArguments.configuration:
             tempConfiguration = open_configuration_file(sConfigFilename, commandLineArguments)
 
@@ -109,7 +146,7 @@ def read_configuration_files(commandLineArguments):
                 else:
                     dConfiguration[sKey] = tempConfiguration[sKey]
 
-        return dConfiguration
+    return dConfiguration
 
 
 def write_invalid_configuration_junit_file(sFileName, commandLineArguments):
@@ -244,6 +281,12 @@ def display_rule_configuration(commandLineArguments, configuration):
         sys.exit(fExitStatus)
 
 
+def validate_files_exist_to_analyze(commandLineArguments):
+    if commandLineArguments.filename == None:
+        print('ERROR: No file defined by the -f command line option or filename given in configuration file.')
+        sys.exit(1)
+
+
 def main():
     '''Main routine of the VHDL Style Guide (VSG) program.'''
 
@@ -253,7 +296,9 @@ def main():
 
     version.print_version(commandLineArguments)
 
-    configuration = read_configuration_files(commandLineArguments)
+    dStyle = read_style(commandLineArguments)
+
+    configuration = read_configuration_files(dStyle, commandLineArguments)
 
     update_command_line_arguments(commandLineArguments, configuration)
 
@@ -268,6 +313,8 @@ def main():
     generate_output_configuration(commandLineArguments, configuration)
 
     display_rule_configuration(commandLineArguments, configuration)
+
+    validate_files_exist_to_analyze(commandLineArguments)
 
     for iIndex, sFileName in enumerate(commandLineArguments.filename):
         oVhdlFile = vhdlFile.vhdlFile(read_vhdlfile(sFileName))
