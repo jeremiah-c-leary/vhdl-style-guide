@@ -33,7 +33,7 @@ def parse_command_line_arguments():
     parser.add_argument('-b', '--backup', default=False, action='store_true', help='Creates a copy of input file for comparison with fixed version.')
     parser.add_argument('-oc', '--output_configuration', default=None, action='store', help='Write configuration to file name.')
     parser.add_argument('-rc', '--rule_configuration', default=None, action='store', help='Display configuration of a rule')
-    parser.add_argument('--style', action='store', choices=get_installed_styles(), help='Uses built in style')
+    parser.add_argument('--style', action='store', choices=get_predefined_styles(), help='Use predefined style')
     parser.add_argument('-v', '--version', default=False, action='store_true', help='Displays version information')
 
     if len(sys.argv) == 1:
@@ -43,9 +43,9 @@ def parse_command_line_arguments():
         return parser.parse_args()
 
 
-def get_installed_styles():
+def get_predefined_styles():
     '''
-    Reads all built in styles and returns a list of names.
+    Reads all predefined styles and returns a list of names.
 
     Parameters : None
 
@@ -62,9 +62,9 @@ def get_installed_styles():
     return lReturn
 
 
-def read_style(commandLineArguments):
+def read_predefined_style(commandLineArguments):
     '''
-    Reads an installed configuration file.
+    Reads a predefined style file.
 
     Parameters :
 
@@ -296,7 +296,7 @@ def main():
 
     version.print_version(commandLineArguments)
 
-    dStyle = read_style(commandLineArguments)
+    dStyle = read_predefined_style(commandLineArguments)
 
     configuration = read_configuration_files(dStyle, commandLineArguments)
 
