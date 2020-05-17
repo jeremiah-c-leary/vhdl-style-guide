@@ -1,5 +1,5 @@
-Configuring
-===========
+Rule Configuration
+==================
 
 VSG can use a configuration file to alter it's behavior and/or include a list of files to analyze.
 This is accomplished by passing JSON and/or YAML file(s) through the **--configuration** command line argument.
