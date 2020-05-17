@@ -6,22 +6,24 @@ from vsg import vhdlFile
 from vsg import rule_list
 from vsg.tests import utils
 
-lBresenhamer = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'Bresenhamer.vhd'))
+sSourceDir = os.path.join(os.path.dirname(__file__),'..','..','code_examples','graphicsaccelerator')
+
+lBresenhamer = utils.read_vhdlfile(os.path.join(sSourceDir,'Bresenhamer.vhd'))
 oBresenhamer = vhdlFile.vhdlFile(lBresenhamer)
-lDebouncer = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'Debouncer.vhd'))
+lDebouncer = utils.read_vhdlfile(os.path.join(sSourceDir,'Debouncer.vhd'))
 oDebouncer = vhdlFile.vhdlFile(lDebouncer)
-lVgatop = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'VGA_Top.vhd'))
+lVgatop = utils.read_vhdlfile(os.path.join(sSourceDir,'VGA_Top.vhd'))
 oVgatop = vhdlFile.vhdlFile(lVgatop)
-lPointer = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'Pointer.vhd'))
+lPointer = utils.read_vhdlfile(os.path.join(sSourceDir,'Pointer.vhd'))
 oPointer = vhdlFile.vhdlFile(lPointer)
-lFreqDiv = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'FreqDiv.vhd'))
+lFreqDiv = utils.read_vhdlfile(os.path.join(sSourceDir,'FreqDiv.vhd'))
 oFreqDiv = vhdlFile.vhdlFile(lFreqDiv)
-lSynchronizer = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'Synchronizer.vhd'))
+lSynchronizer = utils.read_vhdlfile(os.path.join(sSourceDir,'Synchronizer.vhd'))
 oSynchronizer = vhdlFile.vhdlFile(lSynchronizer)
-lFrameBuffer =  utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'FrameBuffer2.vhd'))
+lFrameBuffer =  utils.read_vhdlfile(os.path.join(sSourceDir,'FrameBuffer2.vhd'))
 oFrameBuffer =  vhdlFile.vhdlFile(lFrameBuffer)
 
-dLegacyConfig = utils.read_configuration(os.path.join(os.path.dirname(__file__),'..','..','..','styles', 'legacy.yaml'))
+dLegacyConfig = utils.read_configuration(os.path.join(os.path.dirname(__file__),'..','..','..','..','styles', 'legacy.yaml'))
 
 class testCodeExample(unittest.TestCase):
 

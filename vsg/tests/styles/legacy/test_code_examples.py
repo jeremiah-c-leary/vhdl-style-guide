@@ -6,26 +6,28 @@ from vsg import vhdlFile
 from vsg import rule_list
 from vsg.tests import utils
 
-lTimestamp = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'timestamp.vhdl'))
+sSourceCodeDir = os.path.join(os.path.dirname(__file__),'..','code_examples')
+
+lTimestamp = utils.read_vhdlfile(os.path.join(sSourceCodeDir,'timestamp.vhdl'))
 oTimestamp = vhdlFile.vhdlFile(lTimestamp)
 
-lSpiSlave = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'spi_slave.vhd'))
+lSpiSlave = utils.read_vhdlfile(os.path.join(sSourceCodeDir,'spi_slave.vhd'))
 oSpiSlave = vhdlFile.vhdlFile(lSpiSlave)
 
-lSpiMaster = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'spi_master.vhd'))
+lSpiMaster = utils.read_vhdlfile(os.path.join(sSourceCodeDir,'spi_master.vhd'))
 oSpiMaster = vhdlFile.vhdlFile(lSpiMaster)
 
-lGrpDebouncer = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'grp_debouncer.vhd'))
+lGrpDebouncer = utils.read_vhdlfile(os.path.join(sSourceCodeDir,'grp_debouncer.vhd'))
 oGrpDebouncer = vhdlFile.vhdlFile(lGrpDebouncer)
 
-lPIC = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'PIC.vhd'))
+lPIC = utils.read_vhdlfile(os.path.join(sSourceCodeDir,'PIC.vhd'))
 oPIC = vhdlFile.vhdlFile(lPIC)
 
-lIdentifier = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','process','identifier_alignment_input.vhd'))
+lIdentifier = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','..','process','identifier_alignment_input.vhd'))
 oIdentifier = vhdlFile.vhdlFile(lIdentifier)
 
 
-dLegacyConfig = utils.read_configuration(os.path.join(os.path.dirname(__file__),'..','..','styles', 'legacy.yaml'))
+dLegacyConfig = utils.read_configuration(os.path.join(os.path.dirname(__file__),'..','..','..','styles', 'legacy.yaml'))
 
 class testVhdlFileMethods(unittest.TestCase):
 
@@ -83,4 +85,3 @@ class testVhdlFileMethods(unittest.TestCase):
         utils.read_file(os.path.join(os.path.dirname(__file__),'identifier_alignment_input.fixed.vhd'), lExpected)
         for iLineNumber, sLine in enumerate(lExpected):
             self.assertEqual(oIdentifier.lines[iLineNumber].line, sLine)
-

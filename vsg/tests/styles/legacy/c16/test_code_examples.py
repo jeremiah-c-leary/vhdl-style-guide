@@ -6,14 +6,16 @@ from vsg import vhdlFile
 from vsg import rule_list
 from vsg.tests import utils
 
-lBaudGen = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'BaudGen.vhd'))
+sSourceDir = os.path.join(os.path.dirname(__file__),'..','..','code_examples','c16')
+
+lBaudGen = utils.read_vhdlfile(os.path.join(sSourceDir,'BaudGen.vhd'))
 oBaudGen = vhdlFile.vhdlFile(lBaudGen)
-lBoardCpu = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'Board_cpu.vhd'))
+lBoardCpu = utils.read_vhdlfile(os.path.join(sSourceDir,'Board_cpu.vhd'))
 oBoardCpu = vhdlFile.vhdlFile(lBoardCpu)
-lDataCore = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'data_core.vhd'))
+lDataCore = utils.read_vhdlfile(os.path.join(sSourceDir,'data_core.vhd'))
 oDataCore = vhdlFile.vhdlFile(lDataCore)
 
-dLegacyConfig = utils.read_configuration(os.path.join(os.path.dirname(__file__),'..','..','..','styles', 'legacy.yaml'))
+dLegacyConfig = utils.read_configuration(os.path.join(os.path.dirname(__file__),'..','..','..','..','styles', 'legacy.yaml'))
 
 class testCodeExample(unittest.TestCase):
 
