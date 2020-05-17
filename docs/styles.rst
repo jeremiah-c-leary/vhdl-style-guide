@@ -9,8 +9,9 @@ The table below lists the built in styles available
 +---------------+--------------------------------------------+
 | Style         | Description                                |
 +---------------+--------------------------------------------+
+| base          | Current rule set                           |
+| disabled      | All rules are disabled                     |
 | legacy        | Rules based on the pre 2.0.0 release       |
-| lowercase     | All keywords and identifiers are lowercase |
 +---------------+--------------------------------------------+
 
 Style Descriptions
@@ -18,6 +19,9 @@ Style Descriptions
 
 legacy
 ~~~~~~
+
+This style was in affect before the 2.0.0 release.
+It maintains the same style as new rules are added.
 
 This style attempts to improve readability by:
 
@@ -53,8 +57,8 @@ This style attempts to improve readability by:
   * Removing comments from instantiation and component ports and generics
   * No more than two signals can be declared on a single line
 
-lowercase
-~~~~~~~~~
+base
+~~~~
 
 This style attemps to improve readability by:
 
@@ -84,6 +88,11 @@ This style attemps to improve readability by:
   * Removing comments from instantiation and component ports and generics
   * No more than two signals can be declared on a single line
 
+disabled
+~~~~~~~~
+
+This style disables all rules.
+It can be used when the user wants to generate their own style.
 
 Adjusting built in styles
 -------------------------
