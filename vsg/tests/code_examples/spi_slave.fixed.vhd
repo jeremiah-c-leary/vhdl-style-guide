@@ -149,23 +149,23 @@ entity SPI_SLAVE is
     PREFETCH : positive  := 3                                                   -- prefetch lookahead cycles
   );
   port (
-    CLK_I         : in    std_logic := 'X';                                     -- internal interface clock (clocks di/do registers)
-    SPI_SSEL_I    : in    std_logic := 'X';                                     -- spi bus slave select line
-    SPI_SCK_I     : in    std_logic := 'X';                                     -- spi bus sck clock (clocks the shift register core)
-    SPI_MOSI_I    : in    std_logic := 'X';                                     -- spi bus mosi input
-    SPI_MISO_O    : out   std_logic := 'X';                                     -- spi bus spi_miso_o output
-    DI_REQ_O      : out   std_logic;                                            -- preload lookahead data request line
-    DI_I          : in    std_logic_vector(N - 1 downto 0) := (others => 'X');  -- parallel load data in (clocked in on rising edge of clk_i)
-    WREN_I        : in    std_logic := 'X';                                     -- user data write enable
-    WR_ACK_O      : out   std_logic;                                            -- write acknowledge
-    DO_VALID_O    : out   std_logic;                                            -- do_o data valid strobe, valid during one clk_i rising edge.
-    DO_O          : out   std_logic_vector(N - 1 downto 0);                     -- parallel output (clocked out on falling clk_i)
+    CLK_I         : in    std_logic                        := 'X';                                    -- internal interface clock (clocks di/do registers)
+    SPI_SSEL_I    : in    std_logic                        := 'X';                                    -- spi bus slave select line
+    SPI_SCK_I     : in    std_logic                        := 'X';                                    -- spi bus sck clock (clocks the shift register core)
+    SPI_MOSI_I    : in    std_logic                        := 'X';                                    -- spi bus mosi input
+    SPI_MISO_O    : out   std_logic                        := 'X';                                    -- spi bus spi_miso_o output
+    DI_REQ_O      : out   std_logic;                                                                  -- preload lookahead data request line
+    DI_I          : in    std_logic_vector(N - 1 downto 0) := (others => 'X');                        -- parallel load data in (clocked in on rising edge of clk_i)
+    WREN_I        : in    std_logic                        := 'X';                                    -- user data write enable
+    WR_ACK_O      : out   std_logic;                                                                  -- write acknowledge
+    DO_VALID_O    : out   std_logic;                                                                  -- do_o data valid strobe, valid during one clk_i rising edge.
+    DO_O          : out   std_logic_vector(N - 1 downto 0);                                           -- parallel output (clocked out on falling clk_i)
     --- debug ports: can be removed for the application circuit ---
-    DO_TRANSFER_O : out   std_logic;                                            -- debug: internal transfer driver
-    WREN_O        : out   std_logic;                                            -- debug: internal state of the wren_i pulse stretcher
-    RX_BIT_NEXT_O : out   std_logic;                                            -- debug: internal rx bit
-    STATE_DBG_O   : out   std_logic_vector(3 downto 0);                         -- debug: internal state register
-    SH_REG_DBG_O  : out   std_logic_vector(N - 1 downto 0)                      -- debug: internal shift register
+    DO_TRANSFER_O : out   std_logic;                                                                  -- debug: internal transfer driver
+    WREN_O        : out   std_logic;                                                                  -- debug: internal state of the wren_i pulse stretcher
+    RX_BIT_NEXT_O : out   std_logic;                                                                  -- debug: internal rx bit
+    STATE_DBG_O   : out   std_logic_vector(3 downto 0);                                               -- debug: internal state register
+    SH_REG_DBG_O  : out   std_logic_vector(N - 1 downto 0)                                            -- debug: internal shift register
   );
 end entity SPI_SLAVE;
 
@@ -184,8 +184,8 @@ end entity SPI_SLAVE;
 architecture RTL of SPI_SLAVE is
 
   -- constants to control FlipFlop synthesis
-  constant shift_edge  : std_logic := (CPOL xnor CPHA);          -- MOSI data is captured and shifted at this SCK edge
-  constant change_edge : std_logic := (CPOL xor CPHA);           -- MISO data is updated at this SCK edge
+  constant shift_edge     : std_logic := (CPOL xnor CPHA);       -- MOSI data is captured and shifted at this SCK edge
+  constant change_edge    : std_logic := (CPOL xor CPHA);        -- MISO data is updated at this SCK edge
 
   ------------------------------------------------------------------------------------------
   -- GLOBAL RESET:

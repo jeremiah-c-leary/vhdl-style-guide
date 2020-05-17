@@ -128,29 +128,29 @@ library ieee;
 
 entity GRP_DEBOUNCER is
   generic (
-    N       : positive := 8;    -- input bus width
-    CNT_VAL : positive := 10000 -- clock counts for debounce period
+    N       : positive := 8;                                                      -- input bus width
+    CNT_VAL : positive := 10000                                                   -- clock counts for debounce period
   );
   port (
-    CLK_I  : in    std_logic                        := 'X';             -- system clock
-    DATA_I : in    std_logic_vector(N - 1 downto 0) := (others => 'X'); -- noisy input data
-    DATA_O : out   std_logic_vector(N - 1 downto 0);                    -- registered stable output data
-    STRB_O : out   std_logic                                            -- strobe for new data available
+    CLK_I  : in    std_logic                        := 'X';                                            -- system clock
+    DATA_I : in    std_logic_vector(N - 1 downto 0) := (others => 'X');                                -- noisy input data
+    DATA_O : out   std_logic_vector(N - 1 downto 0);                                                   -- registered stable output data
+    STRB_O : out   std_logic                                                                           -- strobe for new data available
   );
 end entity GRP_DEBOUNCER;
 
 architecture RTL of GRP_DEBOUNCER is
 
   -- datapath pipeline
-  signal reg_a, reg_b : std_logic_vector(N - 1 downto 0) := (others => '0'); -- debounce edge detectors
-  signal reg_out      : std_logic_vector(N - 1 downto 0) := (others => '0'); -- registered output
-  signal dat_strb     : std_logic := '0';                                    -- data transfer strobe
-  signal strb_reg     : std_logic := '0';                                    -- registered strobe
-  signal strb_next    : std_logic := '0';                                    -- lookahead strobe
-  signal dat_diff     : std_logic := '0';                                    -- edge detector
+  signal reg_a, reg_b : std_logic_vector(N - 1 downto 0) := (others => '0');        -- debounce edge detectors
+  signal reg_out      : std_logic_vector(N - 1 downto 0) := (others => '0');        -- registered output
+  signal dat_strb     : std_logic := '0';                                           -- data transfer strobe
+  signal strb_reg     : std_logic := '0';                                           -- registered strobe
+  signal strb_next    : std_logic := '0';                                           -- lookahead strobe
+  signal dat_diff     : std_logic := '0';                                           -- edge detector
   -- debounce counter
-  signal cnt_reg  : integer range CNT_VAL + 1 downto 0 := 0; -- debounce period counter
-  signal cnt_next : integer range CNT_VAL + 1 downto 0 := 0; -- combinatorial signal
+  signal cnt_reg      : integer range CNT_VAL + 1 downto 0 := 0;                    -- debounce period counter
+  signal cnt_next     : integer range CNT_VAL + 1 downto 0 := 0;                    -- combinatorial signal
 
 begin
 

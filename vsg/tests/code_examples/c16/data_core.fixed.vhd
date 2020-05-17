@@ -12,36 +12,36 @@ library IEEE;
 
 entity DATA_CORE is
   port (
-    CLK_I : in    std_logic;
-    T2    : in    std_logic;
-    CLR   : in    std_logic;
-    CE    : in    std_logic;
+    CLK_I   : in    std_logic;
+    T2      : in    std_logic;
+    CLR     : in    std_logic;
+    CE      : in    std_logic;
 
     -- select signals
-    SX    : in    std_logic_vector( 1 downto 0);
-    SY    : in    std_logic_vector( 3 downto 0);
-    OP    : in    std_logic_vector( 4 downto 0);      -- alu op
-    PC    : in    std_logic_vector(15 downto 0);      -- PC
-    QU    : in    std_logic_vector( 3 downto 0);      -- quick operand
-    SA    : in    std_logic_vector(4 downto 0);       -- select address
-    SMQ   : in    std_logic;                          -- select MQ (H/L)
+    SX      : in    std_logic_vector( 1 downto 0);
+    SY      : in    std_logic_vector( 3 downto 0);
+    OP      : in    std_logic_vector( 4 downto 0);      -- alu op
+    PC      : in    std_logic_vector(15 downto 0);      -- PC
+    QU      : in    std_logic_vector( 3 downto 0);      -- quick operand
+    SA      : in    std_logic_vector(4 downto 0);       -- select address
+    SMQ     : in    std_logic;                          -- select MQ (H/L)
 
     -- write enable/select signal
-    WE_RR : in    std_logic;
-    WE_LL : in    std_logic;
-    WE_SP : in    SP_OP;
+    WE_RR   : in    std_logic;
+    WE_LL   : in    std_logic;
+    WE_SP   : in    SP_OP;
 
     -- data in signals
-    IMM  : in    std_logic_vector(15 downto 0);    -- immediate data
-    RDAT : in    std_logic_vector( 7 downto 0);    -- memory/IO data
+    IMM     : in    std_logic_vector(15 downto 0);      -- immediate data
+    RDAT    : in    std_logic_vector( 7 downto 0);      -- memory/IO data
 
     -- memory control signals
     ADR     : out   std_logic_vector(15 downto 0);
     MQ      : out   std_logic_vector( 7 downto 0);
 
-    Q_RR   : out   std_logic_vector(15 downto 0);
-    Q_LL   : out   std_logic_vector(15 downto 0);
-    Q_SP   : out   std_logic_vector(15 downto 0)
+    Q_RR    : out   std_logic_vector(15 downto 0);
+    Q_LL    : out   std_logic_vector(15 downto 0);
+    Q_SP    : out   std_logic_vector(15 downto 0)
   );
 end entity DATA_CORE;
 
@@ -54,10 +54,10 @@ architecture BEHAVIORAL of DATA_CORE is
 
   component ALU8 is
     port (
-      CLK_I : in    std_logic;
-      T2    : in    std_logic;
-      CE    : in    std_logic;
-      CLR   : in    std_logic;
+      CLK_I  : in    std_logic;
+      T2     : in    std_logic;
+      CE     : in    std_logic;
+      CLR    : in    std_logic;
 
       ALU_OP : in    std_logic_vector( 4 downto 0);
       XX     : in    std_logic_vector(15 downto 0);
@@ -79,9 +79,9 @@ architecture BEHAVIORAL of DATA_CORE is
 
   -- cpu registers
   --
-  signal rr     : std_logic_vector(15 downto 0);
-  signal ll     : std_logic_vector(15 downto 0);
-  signal sp     : std_logic_vector(15 downto 0);
+  signal rr      : std_logic_vector(15 downto 0);
+  signal ll      : std_logic_vector(15 downto 0);
+  signal sp      : std_logic_vector(15 downto 0);
 
   -- internal buses
   --
@@ -109,17 +109,17 @@ begin
 
   SELYY : SELECT_YY
     port map (
-      SY      => SY,
-      IMM     => IMM,
-      QUICK   => QU,
-      RDAT    => RDAT,
-      RR      => rr,
-      YY      => yy
+      SY    => SY,
+      IMM   => IMM,
+      QUICK => QU,
+      RDAT  => RDAT,
+      RR    => rr,
+      YY    => yy
     );
 
-  ADR     <= adr_xyz;
-  MQ      <= zz(15 downto 8) when SMQ = '1' else
-             zz(7 downto 0);
+  ADR <= adr_xyz;
+  MQ  <= zz(15 downto 8) when SMQ = '1' else
+         zz(7 downto 0);
 
   Q_RR <= rr;
   Q_LL <= ll;
@@ -208,15 +208,15 @@ begin
 
     if (CLK_I'event and CLK_I = '1') then
       if (CLR = '1') then
-        rr  <= X"0000";
-        ll  <= X"0000";
-        sp  <= X"0000";
+        rr <= X"0000";
+        ll <= X"0000";
+        sp <= X"0000";
       elsif (CE  = '1' and T2 = '1') then
         if (WE_RR = '1') then
-          rr  <= zz;
+          rr <= zz;
         end if;
         if (WE_LL = '1') then
-          ll  <= zz;
+          ll <= zz;
         end if;
 
         case WE_SP is

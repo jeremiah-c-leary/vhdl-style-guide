@@ -16,9 +16,9 @@ entity BAUDGEN is
     BG_BAUD_RATE  : integer
   );
   port (
-    CLK_I         : in    std_logic;
-    RST_I         : in    std_logic;
-    CE_16         : out   std_logic
+    CLK_I  : in    std_logic;
+    RST_I  : in    std_logic;
+    CE_16  : out   std_logic
   );
 end entity BAUDGEN;
 
@@ -44,7 +44,7 @@ architecture BEHAVIORAL of BAUDGEN is
   constant baud_freq  : integer := 16 * bg_baud_rate / common_div;
   constant limit      : integer := clock_freq - baud_freq;
 
-  signal counter : integer range 0 to clock_freq - 1;
+  signal counter      : integer range 0 to clock_freq - 1;
 
 begin
 
@@ -52,7 +52,7 @@ begin
   begin
 
     if (CLK_I'event and CLK_I = '1') then
-      CE_16 <= '0'; -- make CE_16 stay on for (at most) one cycle
+      CE_16 <= '0';    -- make CE_16 stay on for (at most) one cycle
 
       if (RST_I = '1') then
         counter <= 0;

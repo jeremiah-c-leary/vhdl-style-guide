@@ -84,124 +84,124 @@ begin
 
   SOVA_I0 : SOVA
     port map (
-      CLK     => clk,
-      RST     => rst,
-      ANOISY  => a,
-      BNOISY  => b,
-      YNOISY  => y,
-      WNOISY  => w,
-      ZIN     => zin,
-      ZOUT    => zout1,
-      ACLEAN  => aDec,
-      BCLEAN  => bDec
+      CLK    => clk,
+      RST    => rst,
+      ANOISY => a,
+      BNOISY => b,
+      YNOISY => y,
+      WNOISY => w,
+      ZIN    => zin,
+      ZOUT   => zout1,
+      ACLEAN => aDec,
+      BCLEAN => bDec
     );
 
   ZPERMUT_I0 : ZPERMUT
     generic map (
-      FLIP        => (TREL1_LEN + TREL2_LEN + 2 + delay + 1) mod 2
+      FLIP => (TREL1_LEN + TREL2_LEN + 2 + delay + 1) mod 2
     )
     port map (
-      FLIPFLOP    => flipflop,
-      Z           => zout1,
-      ZPERM       => zout1perm
+      FLIPFLOP => flipflop,
+      Z        => zout1,
+      ZPERM    => zout1perm
     );
 
   tmp0 <= zout1perm(0) & zout1perm(1) & zout1perm(2) & zout1perm(3) & abdel1perm(0) & abdel1perm(1);
 
   INTERLEAVER_I0 : INTERLEAVER
     generic map (
-      DELAY       => TREL1_LEN + TREL2_LEN + 2 + delay,
-      WAY         => 0
+      DELAY => TREL1_LEN + TREL2_LEN + 2 + delay,
+      WAY   => 0
     )
     port map (
-      CLK         => clk,
-      RST         => rst,
-      D           => tmp0,
-      Q           => tmp1
+      CLK => clk,
+      RST => rst,
+      D   => tmp0,
+      Q   => tmp1
     );
 
-  zoutint1(0)         <= tmp1(Z_WIDTH * 4 + SIG_WIDTH * 2 - 1 downto Z_WIDTH * 3 + SIG_WIDTH * 2);
-  zoutint1(1)         <= tmp1(Z_WIDTH * 3 + SIG_WIDTH * 2 - 1 downto Z_WIDTH * 2 + SIG_WIDTH * 2);
-  zoutint1(2)         <= tmp1(Z_WIDTH * 2 + SIG_WIDTH * 2 - 1 downto Z_WIDTH * 1 + SIG_WIDTH * 2);
-  zoutint1(3)         <= tmp1(Z_WIDTH * 1 + SIG_WIDTH * 2 - 1 downto Z_WIDTH * 0 + SIG_WIDTH * 2);
-  abdel1permint(0)    <= tmp1(SIG_WIDTH * 2 - 1 downto SIG_WIDTH * 1);
-  abdel1permint(1)    <= tmp1(SIG_WIDTH * 1 - 1 downto SIG_WIDTH * 0);
+  zoutint1(0)      <= tmp1(Z_WIDTH * 4 + SIG_WIDTH * 2 - 1 downto Z_WIDTH * 3 + SIG_WIDTH * 2);
+  zoutint1(1)      <= tmp1(Z_WIDTH * 3 + SIG_WIDTH * 2 - 1 downto Z_WIDTH * 2 + SIG_WIDTH * 2);
+  zoutint1(2)      <= tmp1(Z_WIDTH * 2 + SIG_WIDTH * 2 - 1 downto Z_WIDTH * 1 + SIG_WIDTH * 2);
+  zoutint1(3)      <= tmp1(Z_WIDTH * 1 + SIG_WIDTH * 2 - 1 downto Z_WIDTH * 0 + SIG_WIDTH * 2);
+  abdel1permint(0) <= tmp1(SIG_WIDTH * 2 - 1 downto SIG_WIDTH * 1);
+  abdel1permint(1) <= tmp1(SIG_WIDTH * 1 - 1 downto SIG_WIDTH * 0);
 
   tmp2 <= a & b & y & w & yInt & wInt;
 
   DELAYER_I0 : DELAYER
     generic map (
-      DELAY   => TREL1_LEN + TREL2_LEN
+      DELAY => TREL1_LEN + TREL2_LEN
     )
     port map (
-      CLK     => clk,
-      RST     => rst,
-      D       => tmp2,
-      Q       => tmp3
+      CLK => clk,
+      RST => rst,
+      D   => tmp2,
+      Q   => tmp3
     );
 
-  adel1       <= tmp3(SIG_WIDTH * 6 - 1 downto SIG_WIDTH * 5);
-  bdel1       <= tmp3(SIG_WIDTH * 5 - 1 downto SIG_WIDTH * 4);
-  ydel1       <= tmp3(SIG_WIDTH * 4 - 1 downto SIG_WIDTH * 3);
-  wdel1       <= tmp3(SIG_WIDTH * 3 - 1 downto SIG_WIDTH * 2);
-  yintdel1    <= tmp3(SIG_WIDTH * 2 - 1 downto SIG_WIDTH * 1);
-  wintdel1    <= tmp3(SIG_WIDTH * 1 - 1 downto SIG_WIDTH * 0);
+  adel1    <= tmp3(SIG_WIDTH * 6 - 1 downto SIG_WIDTH * 5);
+  bdel1    <= tmp3(SIG_WIDTH * 5 - 1 downto SIG_WIDTH * 4);
+  ydel1    <= tmp3(SIG_WIDTH * 4 - 1 downto SIG_WIDTH * 3);
+  wdel1    <= tmp3(SIG_WIDTH * 3 - 1 downto SIG_WIDTH * 2);
+  yintdel1 <= tmp3(SIG_WIDTH * 2 - 1 downto SIG_WIDTH * 1);
+  wintdel1 <= tmp3(SIG_WIDTH * 1 - 1 downto SIG_WIDTH * 0);
 
   ABPERMUT_I0 : ABPERMUT
     generic map (
-      FLIP        => (TREL1_LEN + TREL2_LEN + 2 + delay + 1) mod 2
+      FLIP => (TREL1_LEN + TREL2_LEN + 2 + delay + 1) mod 2
     )
     port map (
-      FLIPFLOP    => flipflop,
-      A           => adel1,
-      B           => bdel1,
-      ABPERM      => abdel1perm
+      FLIPFLOP => flipflop,
+      A        => adel1,
+      B        => bdel1,
+      ABPERM   => abdel1perm
     );
 
   tmp4 <= adel1 & bdel1 & ydel1 & wdel1;
 
   DELAYER_I1 : DELAYER
     generic map (
-      DELAY   => FRSIZE
+      DELAY => FRSIZE
     )
     port map (
-      CLK     => clk,
-      RST     => rst,
-      D       => tmp4,
-      Q       => tmp5
+      CLK => clk,
+      RST => rst,
+      D   => tmp4,
+      Q   => tmp5
     );
 
-  adel2   <= tmp5(SIG_WIDTH * 4 - 1 downto SIG_WIDTH * 3);
-  bdel2   <= tmp5(SIG_WIDTH * 3 - 1 downto SIG_WIDTH * 2);
-  ydel2   <= tmp5(SIG_WIDTH * 2 - 1 downto SIG_WIDTH * 1);
-  wdel2   <= tmp5(SIG_WIDTH * 1 - 1 downto SIG_WIDTH * 0);
+  adel2 <= tmp5(SIG_WIDTH * 4 - 1 downto SIG_WIDTH * 3);
+  bdel2 <= tmp5(SIG_WIDTH * 3 - 1 downto SIG_WIDTH * 2);
+  ydel2 <= tmp5(SIG_WIDTH * 2 - 1 downto SIG_WIDTH * 1);
+  wdel2 <= tmp5(SIG_WIDTH * 1 - 1 downto SIG_WIDTH * 0);
 
   SOVA_I1 : SOVA
     port map (
-      CLK     => clk,
-      RST     => rst,
-      ANOISY  => abdel1permint(1),
-      BNOISY  => abdel1permint(0),
-      YNOISY  => yintdel1,
-      WNOISY  => wintdel1,
-      ZIN     => zoutint1,
-      ZOUT    => zout2,
-      ACLEAN  => adecint,
-      BCLEAN  => bdecint
+      CLK    => clk,
+      RST    => rst,
+      ANOISY => abdel1permint(1),
+      BNOISY => abdel1permint(0),
+      YNOISY => yintdel1,
+      WNOISY => wintdel1,
+      ZIN    => zoutint1,
+      ZOUT   => zout2,
+      ACLEAN => adecint,
+      BCLEAN => bdecint
     );
 
   tmp6 <= zout2(0) & zout2(1) & zout2(2) & zout2(3);
 
   DEINTERLEAVER_I0 : INTERLEAVER
     generic map (
-      DELAY       => 2 * (TREL1_LEN + TREL2_LEN + 2) + FRSIZE + delay,
-      WAY         => 1
+      DELAY => 2 * (TREL1_LEN + TREL2_LEN + 2) + FRSIZE + delay,
+      WAY   => 1
     )
     port map (
-      CLK         => clk,
-      RST         => rst,
-      D           => tmp6,
-      Q           => tmp7
+      CLK => clk,
+      RST => rst,
+      D   => tmp6,
+      Q   => tmp7
     );
 
   zout2int(0) <= tmp7(Z_WIDTH * 4 - 1 downto Z_WIDTH * 3);
@@ -211,54 +211,54 @@ begin
 
   ZPERMUT_I1 : ZPERMUT
     generic map (
-      FLIP        => (2 * (TREL1_LEN + TREL2_LEN + 2) + FRSIZE + delay) mod 2
+      FLIP => (2 * (TREL1_LEN + TREL2_LEN + 2) + FRSIZE + delay) mod 2
     )
     port map (
-      FLIPFLOP    => flipflop,
-      Z           => zout2int,
-      ZPERM       => zout
+      FLIPFLOP => flipflop,
+      Z        => zout2int,
+      ZPERM    => zout
     );
 
   tmp8 <= adel2 & bdel2 & ydel2 & wdel2 & yintdel1 & wintdel1;
 
   DELAYER_I2 : DELAYER
     generic map (
-      DELAY   => TREL1_LEN + TREL2_LEN
+      DELAY => TREL1_LEN + TREL2_LEN
     )
     port map (
-      CLK     => clk,
-      RST     => rst,
-      D       => tmp8,
-      Q       => tmp9
+      CLK => clk,
+      RST => rst,
+      D   => tmp8,
+      Q   => tmp9
     );
 
-  adel3       <= tmp9(SIG_WIDTH * 6 - 1 downto SIG_WIDTH * 5);
-  bdel3       <= tmp9(SIG_WIDTH * 5 - 1 downto SIG_WIDTH * 4);
-  ydel3       <= tmp9(SIG_WIDTH * 4 - 1 downto SIG_WIDTH * 3);
-  wdel3       <= tmp9(SIG_WIDTH * 3 - 1 downto SIG_WIDTH * 2);
-  yintdel3    <= tmp9(SIG_WIDTH * 2 - 1 downto SIG_WIDTH * 1);
-  wintdel3    <= tmp9(SIG_WIDTH * 1 - 1 downto SIG_WIDTH * 0);
+  adel3    <= tmp9(SIG_WIDTH * 6 - 1 downto SIG_WIDTH * 5);
+  bdel3    <= tmp9(SIG_WIDTH * 5 - 1 downto SIG_WIDTH * 4);
+  ydel3    <= tmp9(SIG_WIDTH * 4 - 1 downto SIG_WIDTH * 3);
+  wdel3    <= tmp9(SIG_WIDTH * 3 - 1 downto SIG_WIDTH * 2);
+  yintdel3 <= tmp9(SIG_WIDTH * 2 - 1 downto SIG_WIDTH * 1);
+  wintdel3 <= tmp9(SIG_WIDTH * 1 - 1 downto SIG_WIDTH * 0);
 
   tmp10 <= adel3 & bdel3 & ydel3 & wdel3 & yintdel3 & wintdel3 & yintdel4 & wintdel4;
 
   DELAYER_I3 : DELAYER
     generic map (
-      DELAY   => FRSIZE
+      DELAY => FRSIZE
     )
     port map (
-      CLK     => clk,
-      RST     => rst,
-      D       => tmp10,
-      Q       => tmp11
+      CLK => clk,
+      RST => rst,
+      D   => tmp10,
+      Q   => tmp11
     );
 
-  aDel        <= tmp11(SIG_WIDTH * 8 - 1 downto SIG_WIDTH * 7);
-  bDel        <= tmp11(SIG_WIDTH * 7 - 1 downto SIG_WIDTH * 6);
-  yDel        <= tmp11(SIG_WIDTH * 6 - 1 downto SIG_WIDTH * 5);
-  wDel        <= tmp11(SIG_WIDTH * 5 - 1 downto SIG_WIDTH * 4);
-  yintdel4    <= tmp11(SIG_WIDTH * 4 - 1 downto SIG_WIDTH * 3);
-  wintdel4    <= tmp11(SIG_WIDTH * 3 - 1 downto SIG_WIDTH * 2);
-  yIntDel     <= tmp11(SIG_WIDTH * 2 - 1 downto SIG_WIDTH * 1);
-  wIntDel     <= tmp11(SIG_WIDTH * 1 - 1 downto SIG_WIDTH * 0);
+  aDel     <= tmp11(SIG_WIDTH * 8 - 1 downto SIG_WIDTH * 7);
+  bDel     <= tmp11(SIG_WIDTH * 7 - 1 downto SIG_WIDTH * 6);
+  yDel     <= tmp11(SIG_WIDTH * 6 - 1 downto SIG_WIDTH * 5);
+  wDel     <= tmp11(SIG_WIDTH * 5 - 1 downto SIG_WIDTH * 4);
+  yintdel4 <= tmp11(SIG_WIDTH * 4 - 1 downto SIG_WIDTH * 3);
+  wintdel4 <= tmp11(SIG_WIDTH * 3 - 1 downto SIG_WIDTH * 2);
+  yIntDel  <= tmp11(SIG_WIDTH * 2 - 1 downto SIG_WIDTH * 1);
+  wIntDel  <= tmp11(SIG_WIDTH * 1 - 1 downto SIG_WIDTH * 0);
 
 end architecture SYNTH;

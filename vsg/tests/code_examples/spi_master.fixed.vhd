@@ -180,33 +180,33 @@ entity SPI_MASTER is
     SPI_2X_CLK_DIV : positive  := 5                                               -- for a 100MHz sclk_i, yields a 10MHz SCK
   );
   port (
-    SCLK_I        : in    std_logic := 'X';                                     -- high-speed serial interface system clock
-    PCLK_I        : in    std_logic := 'X';                                     -- high-speed parallel interface system clock
-    RST_I         : in    std_logic := 'X';                                     -- reset core
+    SCLK_I        : in    std_logic                        := 'X';                                    -- high-speed serial interface system clock
+    PCLK_I        : in    std_logic                        := 'X';                                    -- high-speed parallel interface system clock
+    RST_I         : in    std_logic                        := 'X';                                    -- reset core
     ---- serial interface ----
-    SPI_SSEL_O    : out   std_logic;                                            -- spi bus slave select line
-    SPI_SCK_O     : out   std_logic;                                            -- spi bus sck
-    SPI_MOSI_O    : out   std_logic;                                            -- spi bus mosi output
-    SPI_MISO_I    : in    std_logic := 'X';                                     -- spi bus spi_miso_i input
+    SPI_SSEL_O    : out   std_logic;                                                                  -- spi bus slave select line
+    SPI_SCK_O     : out   std_logic;                                                                  -- spi bus sck
+    SPI_MOSI_O    : out   std_logic;                                                                  -- spi bus mosi output
+    SPI_MISO_I    : in    std_logic                        := 'X';                                    -- spi bus spi_miso_i input
     ---- parallel interface ----
-    DI_REQ_O      : out   std_logic;                                            -- preload lookahead data request line
-    DI_I          : in    std_logic_vector(N - 1 downto 0) := (others => 'X');  -- parallel data in (clocked on rising spi_clk after last bit)
-    WREN_I        : in    std_logic := 'X';                                     -- user data write enable, starts transmission when interface is idle
-    WR_ACK_O      : out   std_logic;                                            -- write acknowledge
-    DO_VALID_O    : out   std_logic;                                            -- do_o data valid signal, valid during one spi_clk rising edge.
-    DO_O          : out   std_logic_vector(N - 1 downto 0);                     -- parallel output (clocked on rising spi_clk after last bit)
+    DI_REQ_O      : out   std_logic;                                                                  -- preload lookahead data request line
+    DI_I          : in    std_logic_vector(N - 1 downto 0) := (others => 'X');                        -- parallel data in (clocked on rising spi_clk after last bit)
+    WREN_I        : in    std_logic                        := 'X';                                    -- user data write enable, starts transmission when interface is idle
+    WR_ACK_O      : out   std_logic;                                                                  -- write acknowledge
+    DO_VALID_O    : out   std_logic;                                                                  -- do_o data valid signal, valid during one spi_clk rising edge.
+    DO_O          : out   std_logic_vector(N - 1 downto 0);                                           -- parallel output (clocked on rising spi_clk after last bit)
     --- debug ports: can be removed or left unconnected for the application circuit ---
-    SCK_ENA_O     : out   std_logic;                                            -- debug: internal sck enable signal
-    SCK_ENA_CE_O  : out   std_logic;                                            -- debug: internal sck clock enable signal
-    DO_TRANSFER_O : out   std_logic;                                            -- debug: internal transfer driver
-    WREN_O        : out   std_logic;                                            -- debug: internal state of the wren_i pulse stretcher
-    RX_BIT_REG_O  : out   std_logic;                                            -- debug: internal rx bit
-    STATE_DBG_O   : out   std_logic_vector(3 downto 0);                         -- debug: internal state register
+    SCK_ENA_O     : out   std_logic;                                                                  -- debug: internal sck enable signal
+    SCK_ENA_CE_O  : out   std_logic;                                                                  -- debug: internal sck clock enable signal
+    DO_TRANSFER_O : out   std_logic;                                                                  -- debug: internal transfer driver
+    WREN_O        : out   std_logic;                                                                  -- debug: internal state of the wren_i pulse stretcher
+    RX_BIT_REG_O  : out   std_logic;                                                                  -- debug: internal rx bit
+    STATE_DBG_O   : out   std_logic_vector(3 downto 0);                                               -- debug: internal state register
     CORE_CLK_O    : out   std_logic;
     CORE_N_CLK_O  : out   std_logic;
     CORE_CE_O     : out   std_logic;
     CORE_N_CE_O   : out   std_logic;
-    SH_REG_DBG_O  : out   std_logic_vector(N - 1 downto 0)                      -- debug: internal shift register
+    SH_REG_DBG_O  : out   std_logic_vector(N - 1 downto 0)                                            -- debug: internal shift register
   );
 end entity SPI_MASTER;
 
@@ -353,8 +353,8 @@ begin
         core_clk   <= core_n_clk;
         core_n_clk <= not core_n_clk;
         -- generate the 2 phase core clock enables
-        core_ce    <= core_n_clk;
-        core_n_ce  <= not core_n_clk;
+        core_ce   <= core_n_clk;
+        core_n_ce <= not core_n_clk;
       else
         core_ce   <= '0';
         core_n_ce <= '0';
@@ -444,11 +444,11 @@ begin
       do_valid_o_reg <= do_valid_next;                    -- registered output pulse
       --------------------------------
       -- di_req_reg -> di_req_o_reg
-      di_req_o_a     <= di_req_reg;                       -- the input signal must be at least 2 clocks long
-      di_req_o_b     <= di_req_o_a;                       -- feed it to a ripple chain of FFDs
-      di_req_o_c     <= di_req_o_b;
-      di_req_o_d     <= di_req_o_c;
-      di_req_o_reg   <= di_req_o_next;                    -- registered output pulse
+      di_req_o_a   <= di_req_reg;                         -- the input signal must be at least 2 clocks long
+      di_req_o_b   <= di_req_o_a;                         -- feed it to a ripple chain of FFDs
+      di_req_o_c   <= di_req_o_b;
+      di_req_o_d   <= di_req_o_c;
+      di_req_o_reg <= di_req_o_next;                      -- registered output pulse
     end if;
 
     -- generate a 2-clocks pulse at the 3rd clock cycle

@@ -19,29 +19,29 @@ library UNISIM;
 
 entity BOARD_CPU is
   port (
-    CLK40  : in    std_logic;
-    SWITCH : in    std_logic_vector(9 downto 0);
+    CLK40         : in    std_logic;
+    SWITCH        : in    std_logic_vector(9 downto 0);
 
-    SER_IN  : in    std_logic;
-    SER_OUT : out   std_logic;
+    SER_IN        : in    std_logic;
+    SER_OUT       : out   std_logic;
 
-    TEMP_SPO : in    std_logic;
-    TEMP_SPI : out   std_logic;
+    TEMP_SPO      : in    std_logic;
+    TEMP_SPI      : out   std_logic;
 
-    CLK_OUT      : out   std_logic;
-    LED          : out   std_logic_vector(7 downto 0);
-    ENABLE_N     : out   std_logic;
-    DEACTIVATE_N : out   std_logic;
-    TEMP_CE      : out   std_logic;
-    TEMP_SCLK    : out   std_logic;
-    SEG1         : out   std_logic_vector(7 downto 0);
-    SEG2         : out   std_logic_vector(7 downto 0);
+    CLK_OUT       : out   std_logic;
+    LED           : out   std_logic_vector(7 downto 0);
+    ENABLE_N      : out   std_logic;
+    DEACTIVATE_N  : out   std_logic;
+    TEMP_CE       : out   std_logic;
+    TEMP_SCLK     : out   std_logic;
+    SEG1          : out   std_logic_vector(7 downto 0);
+    SEG2          : out   std_logic_vector(7 downto 0);
 
-    XM_ADR  : out   std_logic_vector(14 downto 0);
-    XM_CE_N : out   std_logic;
-    XM_OE_N : out   std_logic;
-    XM_WE_N : inout std_logic;
-    XM_DIO  : inout std_logic_vector(7 downto 0)
+    XM_ADR        : out   std_logic_vector(14 downto 0);
+    XM_CE_N       : out   std_logic;
+    XM_OE_N       : out   std_logic;
+    XM_WE_N       : inout std_logic;
+    XM_DIO        : inout std_logic_vector(7 downto 0)
   );
 end entity BOARD_CPU;
 
@@ -49,26 +49,26 @@ architecture BEHAVIORAL of BOARD_CPU is
 
   component CPU is
     port (
-      CLK_I  : in    std_logic;
-      SWITCH : in    std_logic_vector(9 downto 0);
+      CLK_I        : in    std_logic;
+      SWITCH       : in    std_logic_vector(9 downto 0);
 
-      SER_IN  : in    std_logic;
-      SER_OUT : out   std_logic;
+      SER_IN       : in    std_logic;
+      SER_OUT      : out   std_logic;
 
-      TEMP_SPO  : in    std_logic;
-      TEMP_SPI  : out   std_logic;
-      TEMP_CE   : out   std_logic;
-      TEMP_SCLK : out   std_logic;
+      TEMP_SPO     : in    std_logic;
+      TEMP_SPI     : out   std_logic;
+      TEMP_CE      : out   std_logic;
+      TEMP_SCLK    : out   std_logic;
 
-      SEG1 : out   std_logic_vector(7 downto 0);
-      SEG2 : out   std_logic_vector( 7 downto 0);
-      LED  : out   std_logic_vector( 7 downto 0);
+      SEG1         : out   std_logic_vector(7 downto 0);
+      SEG2         : out   std_logic_vector( 7 downto 0);
+      LED          : out   std_logic_vector( 7 downto 0);
 
-      XM_ADR  : out   std_logic_vector(15 downto 0);
-      XM_RDAT : in    std_logic_vector( 7 downto 0);
-      XM_WDAT : out   std_logic_vector( 7 downto 0);
-      XM_WE   : out   std_logic;
-      XM_CE   : out   std_logic
+      XM_ADR       : out   std_logic_vector(15 downto 0);
+      XM_RDAT      : in    std_logic_vector( 7 downto 0);
+      XM_WDAT      : out   std_logic_vector( 7 downto 0);
+      XM_WE        : out   std_logic;
+      XM_CE        : out   std_logic
     );
   end component;
 
@@ -111,7 +111,7 @@ begin
   DEACTIVATE_N <= '1';
   CLK_OUT      <= lclk;
 
-  mem_t   <= del_we_n; -- active low
+  mem_t   <= del_we_n;    -- active low
   we_n    <= not xm_we;
   XM_OE_N <= xm_we;
   XM_CE_N <= not xm_ce;
