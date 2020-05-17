@@ -71,3 +71,15 @@ package PACK
   end component COMP;
 
 end  package;
+
+package my_pkg is
+
+  constant MY_CONST : integer := 5;
+
+end package my_pkg;
+
+package pkg_my is
+
+  constant MY_CONST : integer := 5;
+
+end package pkg_my;

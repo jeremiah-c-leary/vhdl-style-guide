@@ -174,3 +174,22 @@ class testRulePackageMethods(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
+    def test_rule_016(self):
+        oRule = package.rule_016()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'package')
+        self.assertEqual(oRule.identifier, '016')
+
+        dExpected = utils.add_violation_list([2, 18, 32, 47, 60, 81])
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_017(self):
+        oRule = package.rule_017()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'package')
+        self.assertEqual(oRule.identifier, '017')
+
+        dExpected = utils.add_violation_list([2, 18, 32, 47, 60, 75])
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)

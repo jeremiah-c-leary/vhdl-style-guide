@@ -284,3 +284,44 @@ This rule checks the indent of the end package declaration.
 
    end package fifo_pkg;
 
+package_016
+###########
+
+This rule checks for valid suffixes on package identifiers.
+The default package suffix is *_pkg*.
+
+Refer to the section `Configuring Prefix and Suffix Rules <configuring_prefix_suffix.html>`_ for information on changing the allowed suffixes.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   package foo is
+
+**Fix**
+
+.. code-block:: vhdl
+
+   package foo_pkg is
+
+
+package_017
+###########
+
+This rule checks for valid prefixes on package identifiers.
+The default package prefix is *pkg_*.
+
+Refer to the section `Configuring Prefix and Suffix Rules <configuring_prefix_suffix.html>`_ for information on changing the allowed prefixes.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   package foo is
+
+**Fix**
+
+.. code-block:: vhdl
+
+   package pkg_foo is
+
