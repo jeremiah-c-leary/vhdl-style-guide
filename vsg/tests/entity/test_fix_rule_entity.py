@@ -105,7 +105,7 @@ class testFixRuleEntityMethods(unittest.TestCase):
         self.assertEqual(self.oFile.lines[91].line, 'end   entity ENTITY1')
         self.assertEqual(self.oFile.lines[103].line, 'end ENT1;')
         self.assertEqual(self.oFile.lines[123].line, 'end entity  ENTITY1')
-        self.assertEqual(self.oFile.lines[146].line, 'end entity ENTITY1')
+        self.assertEqual(self.oFile.lines[146].line, 'end entity ENTITY1;')
 
         self.assertEqual('Uppercase entity name.', oRule._get_solution(0))
 
@@ -124,7 +124,7 @@ class testFixRuleEntityMethods(unittest.TestCase):
         self.assertEqual(self.oFile.lines[91].line, 'end   entity entity1')
         self.assertEqual(self.oFile.lines[103].line, 'end ent1;')
         self.assertEqual(self.oFile.lines[123].line, 'end entity  entity1')
-        self.assertEqual(self.oFile.lines[146].line, 'end entity entity1')
+        self.assertEqual(self.oFile.lines[146].line, 'end entity entity1;')
 
         self.assertEqual('Lowercase entity name.', oRule._get_solution(0))
 

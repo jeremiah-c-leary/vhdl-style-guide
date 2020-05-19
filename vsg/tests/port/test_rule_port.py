@@ -264,6 +264,7 @@ class testRulePortMethods(unittest.TestCase):
 
         dExpected = [9,10,11,12,13,14,26,27,28,29,30,31,40,41,42,43,44,45,57,58,59,60,61,62,71,72,73,74,75,76,87,88,89,119,120,121,129,130,131,141,142,152,161,169,170,171,172,173]
         dExpected.extend(range(181, 186))
+        dExpected.extend(range(199, 202))
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -273,5 +274,6 @@ class testRulePortMethods(unittest.TestCase):
 
         dExpected = [9,10,11,12,13,14,26,27,28,29,30,31,40,41,42,43,44,45,57,58,59,60,61,62,71,72,73,74,75,76,87,88,89,99,100,101,119,120,121,129,130,131,141,142,161,169,170,171,172,173]
         dExpected.extend(range(181, 186))
+        dExpected.extend(range(199, 202))
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)

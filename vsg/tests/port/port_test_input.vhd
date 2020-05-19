@@ -188,3 +188,17 @@ entity ENTITY3 is
   );
 end entity ENTITY3;
 
+-- Check for generic that starts with port
+
+entity ENTITY1 is
+  generic (
+    PORT_1 : std_logic := '0';
+    PORT_2 : std_logic := '1'
+   );
+  port (
+    I_PORT1  : in    std_logic;
+    O_PORT2  : out   std_logic;  -- This is a comment with a comma ,:
+    IO_PORT3 : inout std_logic
+  );
+end entity ENTITY1;
+

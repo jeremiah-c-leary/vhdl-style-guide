@@ -77,7 +77,7 @@ class testRuleEntityMethods(unittest.TestCase):
         oRule = entity.rule_006()
         oRule.case = 'upper'
 
-        dExpected = [3,34,65,80,94,113,127,138]
+        dExpected = [3,34,65,80,94,113,127,138, 150]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -148,7 +148,7 @@ class testRuleEntityMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'entity')
         self.assertEqual(oRule.identifier, '012')
 
-        dExpected = [16,33,47,63,78,91,103,123,146]
+        dExpected = [16,33,47,63,78,91,103,123,146,160]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -176,7 +176,7 @@ class testRuleEntityMethods(unittest.TestCase):
         oRule = entity.rule_014()
         oRule.case = 'upper'
 
-        dExpected = [16,33,63,78,91,123,133,146]
+        dExpected = [16,33,63,78,91,123,133,146,160]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 

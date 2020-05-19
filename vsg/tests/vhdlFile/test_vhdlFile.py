@@ -93,7 +93,7 @@ class testVhdlFileMethods(unittest.TestCase):
 
 
     def test_insideEntity_assignment(self):
-        lExpected = [0,1,2,17,18,48,64,79,92,93,104,105,106,107,108,109,110,111,112,124,125,126,134,135,136,137,147]
+        lExpected = [0,1,2,17,18,48,64,79,92,93,104,105,106,107,108,109,110,111,112,124,125,126,134,135,136,137,147, 148, 149, 161]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFileEntity.lines):
@@ -104,6 +104,7 @@ class testVhdlFileMethods(unittest.TestCase):
 
     def test_isEntityDeclaration_assignment(self):
         lExpected = [3,19,34,49,65,80,94,113,127,138]
+        lExpected.append(150)
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFileEntity.lines):
@@ -114,6 +115,7 @@ class testVhdlFileMethods(unittest.TestCase):
 
     def test_isEndEntityDeclaration_assignment(self):
         lExpected = [16,33,47,63,78,91,103,123,133,146]
+        lExpected.append(160)
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFileEntity.lines):
@@ -138,6 +140,7 @@ class testVhdlFileMethods(unittest.TestCase):
     def test_insidePortMap_assignment(self):
         lExpected = [8,9,10,11,12,13,14,15,25,26,27,28,29,30,31,39,40,41,42,43,44,45,46,56,57,58,59,60,61,62,70,71,72,73,74,75,76,77,86,87,88,89,90,98,99,100,101,102,118,119,120,121,122,128,129,130,131,132,133,140,141,142,143,144,150,151,152,153,159,160,161,162,168,169,170,171,172,173,174]
         lExpected.extend(range(180, 189))
+        lExpected.extend(range(198, 203))
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFilePort.lines):
@@ -147,7 +150,7 @@ class testVhdlFileMethods(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isPortKeyword_assignment(self):
-        lExpected = [8,25,39,56,70,86,98,118,128,140,150,159,168,180]
+        lExpected = [8,25,39,56,70,86,98,118,128,140,150,159,168,180,198]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFilePort.lines):
@@ -157,7 +160,7 @@ class testVhdlFileMethods(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isEndPortMap_assignment(self):
-        lExpected = [15,31,46,62,77,90,102,122,133,144,153,162,174,188]
+        lExpected = [15,31,46,62,77,90,102,122,133,144,153,162,174,188,202]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFilePort.lines):
@@ -169,6 +172,7 @@ class testVhdlFileMethods(unittest.TestCase):
     def test_isPortDeclaration_assignment(self):
         lExpected = [9,10,11,12,13,14,26,27,28,29,30,31,40,41,42,43,44,45,57,58,59,60,61,62,71,72,73,74,75,76,87,88,89,99,100,101,119,120,121,129,130,131,141,142,152,161,169,170,171,172,173]
         lExpected.extend(range(181, 186))
+        lExpected.extend(range(199, 202))
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFilePort.lines):
