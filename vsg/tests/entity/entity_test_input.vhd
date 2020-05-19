@@ -143,5 +143,19 @@ entity entity1 is
   );
 
 
-end entity entity1
+end entity entity1;
+
+-- Check for generics that start with port
+
+entity entity1 is
+  generic (
+    PORT_1 : std_logic := '0';
+    PORT_2 : std_logic := '1'
+   );
+  port (
+    I_PORT1  : in    std_logic;
+    O_PORT2  : out   std_logic;
+    IO_PORT3 : inout std_logic
+  );
+end entity entity1;
 

@@ -14,7 +14,7 @@ def port(dVars, oLine):
 
 
 def classify_port_keyword(dVars, oLine):
-    if re.match('^\s*port', oLine.lineLower) and not oLine.insidePortMap:
+    if re.match('^\s*port', oLine.lineLower) and not oLine.insidePortMap and not oLine.insideGenericMap:
         oLine.isPortKeyword = True
         oLine.insidePortMap = True
         if oLine.insideEntity:
