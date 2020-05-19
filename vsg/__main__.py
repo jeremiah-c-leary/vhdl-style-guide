@@ -34,6 +34,7 @@ def parse_command_line_arguments():
     parser.add_argument('-oc', '--output_configuration', default=None, action='store', help='Write configuration to file name.')
     parser.add_argument('-rc', '--rule_configuration', default=None, action='store', help='Display configuration of a rule')
     parser.add_argument('--style', action='store', default='base', choices=get_predefined_styles(), help='Use predefined style')
+#    parser.add_argument('--skip_phase', nargs='+', default=None, help='Skips entire phases of analysis')
     parser.add_argument('-v', '--version', default=False, action='store_true', help='Displays version information')
 
     if len(sys.argv) == 1:
@@ -191,6 +192,10 @@ def update_command_line_arguments(commandLineArguments, configuration):
                 commandLineArguments.filename = glob.glob(expand_filename(sFilename))
     if 'local_rules' in configuration:
         commandLineArguments.local_rules = expand_filename(configuration['local_rules'])
+    if 'skip_phase' in configuration:
+        commandLineArguments.skip_phase = configuration['skip_phase']
+    else:
+        commandLineArguments.skip_phase = []
 
 
 def expand_filename(sFileName):
@@ -331,10 +336,10 @@ def main():
         if commandLineArguments.fix:
             if commandLineArguments.backup:
                 create_backup_file(sFileName)
-            oRules.fix(commandLineArguments.fix_phase)
+            oRules.fix(commandLineArguments.skip_phase, commandLineArguments.fix_phase)
             write_vhdl_file(oVhdlFile)
 
-        oRules.check_rules()
+        oRules.check_rules(commandLineArguments.skip_phase)
         oRules.report_violations(commandLineArguments.output_format)
         fExitStatus = update_exit_status(fExitStatus, oRules)
 

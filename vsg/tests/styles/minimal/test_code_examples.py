@@ -23,65 +23,51 @@ oGrpDebouncer = vhdlFile.vhdlFile(lGrpDebouncer)
 lPIC = utils.read_vhdlfile(os.path.join(sSourceCodeDir,'PIC.vhd'))
 oPIC = vhdlFile.vhdlFile(lPIC)
 
-lIdentifier = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','..','process','identifier_alignment_input.vhd'))
-oIdentifier = vhdlFile.vhdlFile(lIdentifier)
-
-
-dLegacyConfig = utils.read_configuration(os.path.join(os.path.dirname(__file__),'..','..','..','styles', 'legacy.yaml'))
+dLegacyConfig = utils.read_configuration(os.path.join(os.path.dirname(__file__),'..','..','..','styles', 'minimal.yaml'))
 
 class testCodeExample(unittest.TestCase):
 
     def test_timestamp_vhdl(self):
         oRuleList = rule_list.rule_list(oTimestamp)
         oRuleList.configure(dLegacyConfig)
-        oRuleList.fix([], 7)
+        oRuleList.fix(dLegacyConfig['skip_phase'], 7)
         lExpected = ['']
-        utils.read_file(os.path.join(os.path.dirname(__file__),'timestamp.fixed.vhdl'), lExpected)
+        utils.read_file(os.path.join(os.path.dirname(__file__),'timestamp.vhdl'), lExpected)
         for iLineNumber, sLine in enumerate(lExpected):
             self.assertEqual(oTimestamp.lines[iLineNumber].line, sLine)
 
     def test_spi_slave(self):
         oRuleList = rule_list.rule_list(oSpiSlave)
         oRuleList.configure(dLegacyConfig)
-        oRuleList.fix([], 7)
+        oRuleList.fix(dLegacyConfig['skip_phase'], 7)
         lExpected = ['']
-        utils.read_file(os.path.join(os.path.dirname(__file__),'spi_slave.fixed.vhd'), lExpected)
+        utils.read_file(os.path.join(os.path.dirname(__file__),'spi_slave.vhd'), lExpected)
         for iLineNumber, sLine in enumerate(lExpected):
             self.assertEqual(oSpiSlave.lines[iLineNumber].line, sLine)
 
     def test_spi_master(self):
         oRuleList = rule_list.rule_list(oSpiMaster)
         oRuleList.configure(dLegacyConfig)
-        oRuleList.fix([], 7)
+        oRuleList.fix(dLegacyConfig['skip_phase'], 7)
         lExpected = ['']
-        utils.read_file(os.path.join(os.path.dirname(__file__),'spi_master.fixed.vhd'), lExpected)
+        utils.read_file(os.path.join(os.path.dirname(__file__),'spi_master.vhd'), lExpected)
         for iLineNumber, sLine in enumerate(lExpected):
             self.assertEqual(oSpiMaster.lines[iLineNumber].line, sLine)
 
     def test_grp_debouncer(self):
         oRuleList = rule_list.rule_list(oGrpDebouncer)
         oRuleList.configure(dLegacyConfig)
-        oRuleList.fix([], 7)
+        oRuleList.fix(dLegacyConfig['skip_phase'], 7)
         lExpected = ['']
-        utils.read_file(os.path.join(os.path.dirname(__file__),'grp_debouncer.fixed.vhd'), lExpected)
+        utils.read_file(os.path.join(os.path.dirname(__file__),'grp_debouncer.vhd'), lExpected)
         for iLineNumber, sLine in enumerate(lExpected):
             self.assertEqual(oGrpDebouncer.lines[iLineNumber].line, sLine)
 
     def test_pic(self):
         oRuleList = rule_list.rule_list(oPIC)
         oRuleList.configure(dLegacyConfig)
-        oRuleList.fix([], 7)
+        oRuleList.fix(dLegacyConfig['skip_phase'], 7)
         lExpected = ['']
-        utils.read_file(os.path.join(os.path.dirname(__file__),'PIC.fixed.vhd'), lExpected)
+        utils.read_file(os.path.join(os.path.dirname(__file__),'PIC.vhd'), lExpected)
         for iLineNumber, sLine in enumerate(lExpected):
             self.assertEqual(oPIC.lines[iLineNumber].line, sLine)
-
-    def test_identifier(self):
-        oRuleList = rule_list.rule_list(oIdentifier)
-        oRuleList.configure(dLegacyConfig)
-        oRuleList.fix([], 7)
-#        utils.debug_lines(oIdentifier, 1, 20)
-        lExpected = ['']
-        utils.read_file(os.path.join(os.path.dirname(__file__),'identifier_alignment_input.fixed.vhd'), lExpected)
-        for iLineNumber, sLine in enumerate(lExpected):
-            self.assertEqual(oIdentifier.lines[iLineNumber].line, sLine)

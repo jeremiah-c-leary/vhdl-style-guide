@@ -27,7 +27,7 @@ class testRuleCommentMethods(unittest.TestCase):
 
     def test_rule_010_library(self):
         oRuleList = rule_list.rule_list(oFileLibrary)
-        oRuleList.check_rules()
+        oRuleList.check_rules([])
         iExpectedFailures = 1
         iFailures = 0
         for oRule in oRuleList.rules:
