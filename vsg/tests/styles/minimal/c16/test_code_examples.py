@@ -22,7 +22,7 @@ class testCodeExample(unittest.TestCase):
     def test_baudgen(self):
         oRuleList = rule_list.rule_list(oBaudGen)
         oRuleList.configure(dLegacyConfig)
-        oRuleList.fix(dLegacyConfig['skip_phase'], 7)
+        oRuleList.fix(7, dLegacyConfig['skip_phase'])
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'BaudGen.vhd'), lExpected)
         for iLineNumber, sLine in enumerate(lExpected):
@@ -31,7 +31,7 @@ class testCodeExample(unittest.TestCase):
     def test_board_cpu(self):
         oRuleList = rule_list.rule_list(oBoardCpu)
         oRuleList.configure(dLegacyConfig)
-        oRuleList.fix(dLegacyConfig['skip_phase'], 7)
+        oRuleList.fix(7, dLegacyConfig['skip_phase'])
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'Board_cpu.vhd'), lExpected)
         for iLineNumber, sLine in enumerate(lExpected):
@@ -40,7 +40,7 @@ class testCodeExample(unittest.TestCase):
     def test_data_core(self):
         oRuleList = rule_list.rule_list(oDataCore)
         oRuleList.configure(dLegacyConfig)
-        oRuleList.fix(dLegacyConfig['skip_phase'], 7)
+        oRuleList.fix(7, dLegacyConfig['skip_phase'])
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'data_core.vhd'), lExpected)
         for iLineNumber, sLine in enumerate(lExpected):

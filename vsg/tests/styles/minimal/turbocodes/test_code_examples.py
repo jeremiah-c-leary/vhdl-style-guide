@@ -16,7 +16,7 @@ class testCodeExample(unittest.TestCase):
     def test_iteration_synth(self):
         oRuleList = rule_list.rule_list(oIteration)
         oRuleList.configure(dLegacyConfig)
-        oRuleList.fix(dLegacyConfig['skip_phase'], 7)
+        oRuleList.fix(7, dLegacyConfig['skip_phase'])
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'iteration_synth.vhd'), lExpected)
         for iLineNumber, sLine in enumerate(lExpected):

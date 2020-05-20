@@ -1,9 +1,4 @@
 # The name must be a single word
 name : minimal
-skip_phase:
-  - 1
-  - 2
-  - 3
-  - 5
-  - 6
-  - 7
+# We only want to fix the indent level
+skip_phase: [1, 2, 3, 5, 6, 7]

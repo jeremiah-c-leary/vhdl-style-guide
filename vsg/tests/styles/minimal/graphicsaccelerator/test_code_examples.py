@@ -30,7 +30,7 @@ class testCodeExample(unittest.TestCase):
     def test_bresenhamer(self):
         oRuleList = rule_list.rule_list(oBresenhamer)
         oRuleList.configure(dLegacyConfig)
-        oRuleList.fix(dLegacyConfig['skip_phase'], 7)
+        oRuleList.fix(7, dLegacyConfig['skip_phase'])
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'Bresenhamer.vhd'), lExpected)
         for iLineNumber, sLine in enumerate(lExpected):
@@ -39,7 +39,7 @@ class testCodeExample(unittest.TestCase):
     def test_debouncer(self):
         oRuleList = rule_list.rule_list(oDebouncer)
         oRuleList.configure(dLegacyConfig)
-        oRuleList.fix(dLegacyConfig['skip_phase'], 7)
+        oRuleList.fix(7, dLegacyConfig['skip_phase'])
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'Debouncer.vhd'), lExpected)
         for iLineNumber, sLine in enumerate(lExpected):
@@ -48,7 +48,7 @@ class testCodeExample(unittest.TestCase):
     def test_vga_top(self):
         oRuleList = rule_list.rule_list(oVgatop)
         oRuleList.configure(dLegacyConfig)
-        oRuleList.fix(dLegacyConfig['skip_phase'], 7)
+        oRuleList.fix(7, dLegacyConfig['skip_phase'])
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'VGA_Top.vhd'), lExpected)
         for iLineNumber, sLine in enumerate(lExpected):
@@ -57,7 +57,7 @@ class testCodeExample(unittest.TestCase):
     def test_pointer(self):
         oRuleList = rule_list.rule_list(oPointer)
         oRuleList.configure(dLegacyConfig)
-        oRuleList.fix(dLegacyConfig['skip_phase'], 7)
+        oRuleList.fix(7, dLegacyConfig['skip_phase'])
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'Pointer.vhd'), lExpected)
         for iLineNumber, sLine in enumerate(lExpected):
@@ -66,7 +66,7 @@ class testCodeExample(unittest.TestCase):
     def test_freqdiv(self):
         oRuleList = rule_list.rule_list(oFreqDiv)
         oRuleList.configure(dLegacyConfig)
-        oRuleList.fix(dLegacyConfig['skip_phase'], 7)
+        oRuleList.fix(7, dLegacyConfig['skip_phase'])
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'FreqDiv.vhd'), lExpected)
         for iLineNumber, sLine in enumerate(lExpected):
@@ -75,7 +75,7 @@ class testCodeExample(unittest.TestCase):
     def test_synchronizer(self):
         oRuleList = rule_list.rule_list(oSynchronizer)
         oRuleList.configure(dLegacyConfig)
-        oRuleList.fix(dLegacyConfig['skip_phase'], 7)
+        oRuleList.fix(7, dLegacyConfig['skip_phase'])
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'Synchronizer.vhd'), lExpected)
         for iLineNumber, sLine in enumerate(lExpected):
@@ -84,7 +84,7 @@ class testCodeExample(unittest.TestCase):
     def test_framebuffer(self):
         oRuleList = rule_list.rule_list(oFrameBuffer)
         oRuleList.configure(dLegacyConfig)
-        oRuleList.fix(dLegacyConfig['skip_phase'], 7)
+        oRuleList.fix(7, dLegacyConfig['skip_phase'])
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'FrameBuffer2.vhd'), lExpected)
         for iLineNumber, sLine in enumerate(lExpected):

@@ -336,7 +336,7 @@ def main():
         if commandLineArguments.fix:
             if commandLineArguments.backup:
                 create_backup_file(sFileName)
-            oRules.fix(commandLineArguments.skip_phase, commandLineArguments.fix_phase)
+            oRules.fix(commandLineArguments.fix_phase, commandLineArguments.skip_phase)
             write_vhdl_file(oVhdlFile)
 
         oRules.check_rules(commandLineArguments.skip_phase)

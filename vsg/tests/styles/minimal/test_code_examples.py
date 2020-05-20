@@ -30,7 +30,7 @@ class testCodeExample(unittest.TestCase):
     def test_timestamp_vhdl(self):
         oRuleList = rule_list.rule_list(oTimestamp)
         oRuleList.configure(dLegacyConfig)
-        oRuleList.fix(dLegacyConfig['skip_phase'], 7)
+        oRuleList.fix(7, dLegacyConfig['skip_phase'])
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'timestamp.vhdl'), lExpected)
         for iLineNumber, sLine in enumerate(lExpected):
@@ -39,7 +39,7 @@ class testCodeExample(unittest.TestCase):
     def test_spi_slave(self):
         oRuleList = rule_list.rule_list(oSpiSlave)
         oRuleList.configure(dLegacyConfig)
-        oRuleList.fix(dLegacyConfig['skip_phase'], 7)
+        oRuleList.fix(7, dLegacyConfig['skip_phase'])
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'spi_slave.vhd'), lExpected)
         for iLineNumber, sLine in enumerate(lExpected):
@@ -48,7 +48,7 @@ class testCodeExample(unittest.TestCase):
     def test_spi_master(self):
         oRuleList = rule_list.rule_list(oSpiMaster)
         oRuleList.configure(dLegacyConfig)
-        oRuleList.fix(dLegacyConfig['skip_phase'], 7)
+        oRuleList.fix(7, dLegacyConfig['skip_phase'])
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'spi_master.vhd'), lExpected)
         for iLineNumber, sLine in enumerate(lExpected):
@@ -57,7 +57,7 @@ class testCodeExample(unittest.TestCase):
     def test_grp_debouncer(self):
         oRuleList = rule_list.rule_list(oGrpDebouncer)
         oRuleList.configure(dLegacyConfig)
-        oRuleList.fix(dLegacyConfig['skip_phase'], 7)
+        oRuleList.fix(7, dLegacyConfig['skip_phase'])
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'grp_debouncer.vhd'), lExpected)
         for iLineNumber, sLine in enumerate(lExpected):
@@ -66,7 +66,7 @@ class testCodeExample(unittest.TestCase):
     def test_pic(self):
         oRuleList = rule_list.rule_list(oPIC)
         oRuleList.configure(dLegacyConfig)
-        oRuleList.fix(dLegacyConfig['skip_phase'], 7)
+        oRuleList.fix(7, dLegacyConfig['skip_phase'])
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'PIC.vhd'), lExpected)
         for iLineNumber, sLine in enumerate(lExpected):

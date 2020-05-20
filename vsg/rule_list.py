@@ -122,16 +122,18 @@ class rule_list():
         self.maximumPhase = maximum_phase(self.rules)
         self.violations = False
 
-    def fix(self, lSkipPhases, iFixPhase):
+    def fix(self, iFixPhase=7, lSkipPhase=[]):
         '''
         Applies fixes to all violations found.
 
         Parameters:
 
-          oCLA : (command line object)
+          iFixPhase : (integer)
+
+          lSkipPhases : (list of integers)
         '''
         for phase in range(1, int(iFixPhase) + 1):
-            if phase in lSkipPhases:
+            if phase in lSkipPhase:
                 continue
             
             for subphase in range(1, 3):
@@ -139,12 +141,14 @@ class rule_list():
                     if oRule.phase == phase and oRule.subphase == subphase and not oRule.disable:
                         oRule.fix(self.oVhdlFile)
 
-    def check_rules(self, lSkipPhase):
+    def check_rules(self, lSkipPhase=[]):
         '''
         Analyzes all rules in increasing phase order.
         If there is a violation in a phase, analysis is halted.
 
-        Parameters:  None
+        Parameters:
+
+          lSkipPhase : (list of integers)
         '''
         self.iNumberRulesRan = 0
         iFailures = 0
