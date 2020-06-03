@@ -73,7 +73,9 @@ This rule checks for spaces after the **constant** keyword.
 constant_004
 ############
 
-This rule checks the constant name is lower case.
+This rule checks the constant identifier has proper case.
+
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
