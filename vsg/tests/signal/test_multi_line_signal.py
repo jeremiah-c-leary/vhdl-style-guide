@@ -21,7 +21,7 @@ class testGeneralRule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'signal')
         self.assertEqual(oRule.identifier, '015')
-        dExpected = [5,8]
+        dExpected = [5,8,79]
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -31,7 +31,7 @@ class testGeneralRule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'signal')
         self.assertEqual(oRule.identifier, '015')
-        dExpected = [5,8,40,42,45,49,54,60,67,75]
+        dExpected = [5,8,40,42,45,49,54,60,67,75,79]
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -66,6 +66,9 @@ class testGeneralRule(unittest.TestCase):
         self.assertEqual(self.oFile.lines[16].line, '  signal sige : std_logic; -- This is a comment')
         self.assertEqual(self.oFile.lines[17].line, '  signal sigf : std_logic; -- This is a comment')
 
+        self.assertEqual(self.oFile.lines[83].line, '  signal foo : std_logic_vector(maximum(G_A, G_B) + maximum(C_A, C_B)-1 downto 0);')
+        self.assertEqual(self.oFile.lines[84].line, '  signal bar : std_logic_vector(maximum(G_A, G_B) + maximum(C_A, C_B)-1 downto 0);')
+        self.assertEqual(self.oFile.lines[85].line, '  signal mine : std_logic_vector(maximum(G_A, G_B) + maximum(C_A, C_B)-1 downto 0);')
         self.assertEqual(oRule.violations, [])
 
     def test_fix_rule_015_default_consecutive_1(self):
