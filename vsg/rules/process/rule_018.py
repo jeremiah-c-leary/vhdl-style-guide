@@ -24,7 +24,7 @@ class rule_018(rule.rule):
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.isProcessKeyword:
             self.iProcStartLine = iLineNumber
-            oMatch = re.match('^\s*(\S+)\s*:\s*process', oLine.lineLower)
+            oMatch = re.match('^\s*(\S+)\s*:\s*process', oLine.line, flags=re.IGNORECASE)
             if oMatch:
                 self.iProcLabelLine = iLineNumber
                 self.labelStack = oMatch.group(1)
