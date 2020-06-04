@@ -23,4 +23,9 @@ begin
   begin
   end process PROC_LABEL3;
 
+  -- Test case is preserved
+  LaBeL_CaSe_TeSt : process
+  begin
+  end process;
+
 end architecture test;
