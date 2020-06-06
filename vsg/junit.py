@@ -23,7 +23,7 @@ class failure():
         '''
         lJunit = ['    <failure type="' + self.type + '">']
         for sText in self.text:
-            lJunit.append('      ' + sText)
+            lJunit.append('      ' + escape_xml_characters(sText))
         lJunit.append('    </failure>')
 
         return lJunit
@@ -137,3 +137,27 @@ class xmlfile():
             lJunit.extend(oTestsuite.build_junit())
 
         return lJunit
+
+
+def escape_xml_characters(sString):
+    '''
+    Replaces the following characters in a string:
+
+      &  with &amp;
+      "  with &quot;
+      '  with &apos;
+      <  with &lt;
+      >  with &gt;
+
+    Parameters:
+
+        sString : (string)
+
+    Returns: (string)
+    '''
+    sReturn = sString.replace('&', '&amp;')
+    sReturn = sReturn.replace('"', '&quot;')
+    sReturn = sReturn.replace('\'', '&apos;')
+    sReturn = sReturn.replace('<', '&lt;')
+    sReturn = sReturn.replace('>', '&gt;')
+    return sReturn

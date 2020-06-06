@@ -4,6 +4,8 @@ import importlib
 import inspect
 
 from . import junit
+from . import report
+from . import utils
 
 
 def get_python_modules_from_directory(sDirectoryName, lModules):
@@ -236,8 +238,11 @@ class rule_list():
         oFailure = junit.failure('Failure')
         for oRule in self.rules:
             if len(oRule.violations) > 0:
-                for iLinenumber in oRule.violations:
-                    oFailure.add_text(oRule.name + '_' + oRule.identifier + ': ' + str(iLinenumber) + ' : ' + oRule._get_solution(iLinenumber))
+                for iLineNumber in oRule.violations:
+                    sLine = oRule.name + '_' + oRule.identifier + ': '
+                    sLine += str(iLineNumber) + ' : '
+                    sLine += oRule._get_solution(iLineNumber)
+                    oFailure.add_text(sLine)
                 oTestcase.add_failure(oFailure)
 
         return oTestcase
