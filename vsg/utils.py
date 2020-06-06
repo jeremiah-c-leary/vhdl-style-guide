@@ -797,11 +797,11 @@ def extract_port_names_from_port_map(oLine):
     Returns: (list of strings)
     '''
     names = []
-    for s in remove_comment(oLine.line).split(','):
+    sPorts = remove_comment(oLine.line).split(':')[0]
+    for s in sPorts.split(','):
         name = _extract_port_name_from_assignment(s)
         if name != '':
             names.append(name)
-
     return names
 
 
