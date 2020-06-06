@@ -12,6 +12,7 @@ class rule():
         self.subphase = 1
         self.disable = False
         self.fixable = True
+        self.debug = False
         self.dFix = {}
         self.dFix['violations'] = {}
         self.configuration = ['indentSize', 'phase', 'disable', 'fixable']
@@ -68,6 +69,7 @@ class rule():
         '''
         if self.fixable:
             self.analyze(oFile)
+            print_debug_message(self, 'Fixing rule: ' + self.name + '_' + self.identifier)
             self._fix_violations(oFile)
             self.violations = []
             self.dFix = {}
@@ -84,6 +86,7 @@ class rule():
         '''
         Performs the analysis.
         '''
+        print_debug_message(self, 'Analyzing rule: ' + self.name + '_' + self.identifier)
         self._pre_analyze()
         for iLineNumber, oLine in enumerate(oFile.lines):
             if not self._is_vsg_off(oLine):
@@ -141,3 +144,23 @@ class rule():
         This method is called before the _analyze method and allows each rule to setup any variables needed.
         '''
         return
+
+    def set_debug(self):
+        '''
+        This method sets the debug attribute to True.
+        '''
+        self.debug = True
+
+
+def print_debug_message(self, sString):
+    '''
+    Prints a debug message to stdio.
+
+    Parameters:
+
+      sString : (string)
+
+    Returns: Nothing
+    '''
+    if self.debug:
+        print('INFO: ' + sString)
