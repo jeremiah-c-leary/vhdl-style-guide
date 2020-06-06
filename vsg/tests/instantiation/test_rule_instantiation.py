@@ -266,7 +266,7 @@ class testRuleInstantiationMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'instantiation')
         self.assertEqual(oRule.identifier, '024')
 
-        dExpected = [7,9,10,13,14]
+        dExpected = [7,9,10,15,16]
         oRule.analyze(oFilePositional)
         self.assertEqual(oRule.violations, dExpected)
 

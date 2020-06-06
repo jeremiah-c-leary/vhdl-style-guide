@@ -387,3 +387,10 @@ class testExtractFunctions(unittest.TestCase):
         self.assertFalse(utils.is_number('1-2'))
         self.assertFalse(utils.is_number('c_constant_344'))
         self.assertFalse(utils.is_number('34_c-great'))
+
+    def test_remove_parenthesis(self):
+        self.assertEqual('No parenthesis', utils.remove_parenthesis('No parenthesis'))
+        self.assertEqual('name', utils.remove_parenthesis('name(stuff)'))
+        self.assertEqual('name2', utils.remove_parenthesis('name2(stuff, other stuff, more stuff)'))
+        self.assertEqual('name3', utils.remove_parenthesis('name3(stuff(substuff), other(minor)_stuff(other), more_stuff(removed))'))
+        self.assertEqual('name4(some, other_stuff, more_stuff', utils.remove_parenthesis('name4(some(substuff), other(minor)_stuff(other), more_stuff(removed)'))
