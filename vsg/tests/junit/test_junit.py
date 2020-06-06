@@ -375,3 +375,11 @@ class testJunitClasses(unittest.TestCase):
         dExpected.append('  </system-err>')
         dExpected.append('</testsuite>')
         self.assertEqual(dExpected, oXmlfile.build_junit())
+
+    def test_escape_xml_characters(self):
+        self.assertEqual('&lt;', junit.escape_xml_characters('<'))
+        self.assertEqual('&gt;', junit.escape_xml_characters('>'))
+        self.assertEqual('&quot;', junit.escape_xml_characters('"'))
+        self.assertEqual('&apos;', junit.escape_xml_characters('\''))
+        self.assertEqual('&amp;', junit.escape_xml_characters('&'))
+        self.assertEqual('&amp;&lt;&gt;&amp;&gt;&lt;&apos;&quot;&amp;&quot;&apos;&gt;&quot;&gt;&lt;&amp;&apos;&quot;', junit.escape_xml_characters('&<>&><\'"&"\'>"><&\'"'))
