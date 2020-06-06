@@ -1,5 +1,8 @@
 
-from vsg import utils
+try:
+    from vsg import utils
+except ImportError:
+    import utils
 
 
 class line():
