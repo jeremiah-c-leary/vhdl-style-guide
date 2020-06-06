@@ -33,6 +33,7 @@ def parse_command_line_arguments():
     parser.add_argument('-b', '--backup', default=False, action='store_true', help='Creates copy of input file for comparison with fixed version.')
     parser.add_argument('-oc', '--output_configuration', default=None, action='store', help='Output configuration file name')
     parser.add_argument('-v', '--version', default=False, action='store_true', help='Displays version information')
+    parser.add_argument('--debug', default=False, action='store_true', help='Displays verbose debug information')
 
     if len(sys.argv) == 1:
         parser.print_help()
@@ -150,6 +151,26 @@ def read_vhdlfile(sFileName):
         return []
 
 
+def add_debug_to_configuration(oCLA, dConfiguration):
+    '''
+    Adds debug values to the configuration dictionary for later use.
+
+    Parameters:
+
+      oCLA: (command line argument object)
+
+      dConfiguration: (dictionary)
+
+    Returns:  Nothing
+    '''
+    try:
+        dConfiguration['debug'] = oCLA.debug
+    except TypeError:
+        dConfiguration = {}
+        dConfiguration['debug'] = oCLA.debug
+    return dConfiguration
+
+
 def main():
     '''Main routine of the VHDL Style Guide (VSG) program.'''
 
@@ -160,6 +181,8 @@ def main():
     configuration = read_configuration_files(commandLineArguments)
 
     update_command_line_arguments(commandLineArguments, configuration)
+
+    configuration = add_debug_to_configuration(commandLineArguments, configuration)
 
     # Add local rule path to system path so the rules can be loaded
     if commandLineArguments.local_rules:
