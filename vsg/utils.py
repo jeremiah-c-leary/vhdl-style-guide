@@ -1071,3 +1071,24 @@ def get_violating_line(oFile, dViolation):
     Return: Line Object
     '''
     return oFile.lines[get_violation_line_number(dViolation)]
+
+
+def remove_parenthesis(sString, iOpenCount=0, iCloseCount=0):
+    '''
+    Removes pairs of parenthesis and their contents.
+
+    Parameters:
+
+        sString : (string)
+
+    Returns: (string)
+    '''
+    sReturn = ''
+
+    for char in sString:
+        sReturn += char
+        if char == ')':
+            iIndex = sReturn.rfind('(')
+            sReturn = sReturn[:iIndex]
+
+    return sReturn

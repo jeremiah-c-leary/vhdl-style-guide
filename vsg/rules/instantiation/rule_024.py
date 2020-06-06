@@ -19,7 +19,9 @@ class rule_024(rule.rule):
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.insideInstantiation:
             if ',' in oLine.lineNoComment:
-                lLine = oLine.lineNoComment.split(',')
+                sLine = oLine.lineNoComment
+                sLine = utils.remove_parenthesis(sLine)
+                lLine = sLine.split(',')
                 for sString in lLine[:-1]:
                     if '=>' not in sString:
                         dViolation = utils.create_violation_dict(iLineNumber)
