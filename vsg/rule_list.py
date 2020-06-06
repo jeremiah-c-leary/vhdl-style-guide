@@ -4,7 +4,6 @@ import importlib
 import inspect
 
 from . import junit
-from . import report
 from . import utils
 
 
