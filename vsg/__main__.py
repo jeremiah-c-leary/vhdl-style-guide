@@ -62,41 +62,40 @@ def get_predefined_styles():
     return lReturn
 
 
-def read_predefined_style(commandLineArguments):
+def read_predefined_style(sStyleName):
     '''
     Reads a predefined style file.
 
     Parameters :
 
-      commandLineArguments : (argparse object)
+      sStyleName : (string)
 
     Returns : (dictionary)
     '''
     dReturn = {}
-    if commandLineArguments.style:
-        sFileName = os.path.join(os.path.dirname(__file__), 'styles', commandLineArguments.style + '.yaml')
-        dReturn = open_configuration_file(sFileName, commandLineArguments)
+    sFileName = os.path.join(os.path.dirname(__file__), 'styles', sStyleName + '.yaml')
+    open_configuration_file(sFileName)
     return dReturn
     
 
-def open_configuration_file(sFileName, commandLineArguments):
+def open_configuration_file(sFileName, sJUnitFileName=None):
     '''Attempts to open a configuration file and read it's contents.'''
     try:
         with open(sFileName) as yaml_file:
             tempConfiguration = yaml.full_load(yaml_file)
     except IOError:
         print('ERROR: Could not find configuration file: ' + sFileName)
-        write_invalid_configuration_junit_file(sFileName, commandLineArguments)
+        write_invalid_configuration_junit_file(sFileName, sJUnitFileName)
         sys.exit(1)
     except yaml.scanner.ScannerError as e:
         print('ERROR: Invalid configuration file: ' + sFileName)
         print(e)
-        write_invalid_configuration_junit_file(sFileName, commandLineArguments)
+        write_invalid_configuration_junit_file(sFileName, sJUnitFileName)
         exit()
     except yaml.parser.ParserError as e:
         print('ERROR: Invalid configuration file: ' + sFileName)
         print(e)
-        write_invalid_configuration_junit_file(sFileName, commandLineArguments)
+        write_invalid_configuration_junit_file(sFileName, sJUnitFileName)
         exit()
     return tempConfiguration
 
@@ -117,7 +116,11 @@ def read_configuration_files(dStyle, commandLineArguments):
     dConfiguration = dStyle
     if commandLineArguments.configuration:
         for sConfigFilename in commandLineArguments.configuration:
-            tempConfiguration = open_configuration_file(sConfigFilename, commandLineArguments)
+            try:
+                tempConfiguration = open_configuration_file(sConfigFilename, commandLineArguments.junit)
+            except AttributeError:
+                tempConfiguration = open_configuration_file(sConfigFilename)
+
 
             for sKey in tempConfiguration.keys():
                 if sKey == 'file_list':
@@ -149,9 +152,9 @@ def read_configuration_files(dStyle, commandLineArguments):
     return dConfiguration
 
 
-def write_invalid_configuration_junit_file(sFileName, commandLineArguments):
-    if commandLineArguments.junit:
-        oJunitFile = junit.xmlfile(commandLineArguments.junit)
+def write_invalid_configuration_junit_file(sFileName, sJUnitFileName):
+    if sJUnitFileName:
+        oJunitFile = junit.xmlfile(sJUnitFileName)
         oJunitTestsuite = junit.testsuite('vhdl-style-guide', str(0))
         oJunitTestcase = junit.testcase(sFileName, str(0), 'failure')
         oFailure = junit.failure('Failure')
@@ -178,6 +181,12 @@ def write_junit_xml_file(oJunitFile):
 
 
 def update_command_line_arguments(commandLineArguments, configuration):
+
+    if 'skip_phase' in configuration:
+        commandLineArguments.skip_phase = configuration['skip_phase']
+    else:
+        commandLineArguments.skip_phase = []
+
     if not configuration:
         return
 
@@ -191,10 +200,6 @@ def update_command_line_arguments(commandLineArguments, configuration):
                 commandLineArguments.filename = glob.glob(expand_filename(sFilename))
     if 'local_rules' in configuration:
         commandLineArguments.local_rules = expand_filename(configuration['local_rules'])
-    if 'skip_phase' in configuration:
-        commandLineArguments.skip_phase = configuration['skip_phase']
-    else:
-        commandLineArguments.skip_phase = []
 
 
 def expand_filename(sFileName):
@@ -300,7 +305,7 @@ def main():
 
     version.print_version(commandLineArguments)
 
-    dStyle = read_predefined_style(commandLineArguments)
+    dStyle = read_predefined_style(commandLineArguments.style)
 
     configuration = read_configuration_files(dStyle, commandLineArguments)
 

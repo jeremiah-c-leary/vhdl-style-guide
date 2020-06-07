@@ -23,7 +23,7 @@ oSynchronizer = vhdlFile.vhdlFile(lSynchronizer)
 lFrameBuffer =  utils.read_vhdlfile(os.path.join(sSourceDir,'FrameBuffer2.vhd'))
 oFrameBuffer =  vhdlFile.vhdlFile(lFrameBuffer)
 
-dLegacyConfig = utils.read_configuration(os.path.join(os.path.dirname(__file__),'..','..','..','..','styles', 'minimal.yaml'))
+dLegacyConfig = utils.read_configuration(os.path.join(os.path.dirname(__file__),'..','..','..','..','styles', 'indent_only.yaml'))
 
 class testCodeExample(unittest.TestCase):
 

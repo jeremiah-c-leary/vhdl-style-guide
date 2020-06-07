@@ -9,7 +9,7 @@ from vsg.tests import utils
 lIteration = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','..','code_examples', 'turbocodes', 'iteration_synth.vhd'))
 oIteration = vhdlFile.vhdlFile(lIteration)
 
-dLegacyConfig = utils.read_configuration(os.path.join(os.path.dirname(__file__),'..','..','..','..','styles', 'minimal.yaml'))
+dLegacyConfig = utils.read_configuration(os.path.join(os.path.dirname(__file__),'..','..','..','..','styles', 'indent_only.yaml'))
 
 class testCodeExample(unittest.TestCase):
 

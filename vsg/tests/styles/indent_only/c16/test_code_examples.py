@@ -15,7 +15,7 @@ oBoardCpu = vhdlFile.vhdlFile(lBoardCpu)
 lDataCore = utils.read_vhdlfile(os.path.join(sSourceDir,'data_core.vhd'))
 oDataCore = vhdlFile.vhdlFile(lDataCore)
 
-dLegacyConfig = utils.read_configuration(os.path.join(os.path.dirname(__file__),'..','..','..','..','styles', 'minimal.yaml'))
+dLegacyConfig = utils.read_configuration(os.path.join(os.path.dirname(__file__),'..','..','..','..','styles', 'indent_only.yaml'))
 
 class testCodeExample(unittest.TestCase):
 

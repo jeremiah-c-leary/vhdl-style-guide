@@ -23,7 +23,7 @@ oGrpDebouncer = vhdlFile.vhdlFile(lGrpDebouncer)
 lPIC = utils.read_vhdlfile(os.path.join(sSourceCodeDir,'PIC.vhd'))
 oPIC = vhdlFile.vhdlFile(lPIC)
 
-dLegacyConfig = utils.read_configuration(os.path.join(os.path.dirname(__file__),'..','..','..','styles', 'minimal.yaml'))
+dLegacyConfig = utils.read_configuration(os.path.join(os.path.dirname(__file__),'..','..','..','styles', 'indent_only.yaml'))
 
 class testCodeExample(unittest.TestCase):
 
