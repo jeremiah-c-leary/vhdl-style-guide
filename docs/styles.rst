@@ -10,52 +10,12 @@ The table below lists the built in styles available
 | Style         | Description                                |
 +---------------+--------------------------------------------+
 | base          | Current rule set                           |
-| disabled      | All rules are disabled                     |
+| indent_only   | Only applies indent rules
 | legacy        | Rules based on the pre 2.0.0 release       |
 +---------------+--------------------------------------------+
 
 Style Descriptions
 ------------------
-
-legacy
-~~~~~~
-
-This style was in affect before the 2.0.0 release.
-It maintains the same style as new rules are added.
-
-This style attempts to improve readability by:
-
-* Emphasising on non vhdl identifiers by capitalizing them.
-
-  * entity names
-  * architecture names
-  * ports
-  * generics
-  * etc...
-
-* Blank lines added between major items
-
-  * processes
-  * if statements
-  * case statements
-
-* Alignments
-
-  * :'s over entire entities, components, instantiations, etc...
-  * <='s over groups of sequential statements
-  * inline comments within processes, architecture declarative regions, etc...
-
-* Indenting
-
-  * 2 spaces
-
-* Structure
-
-  * No single line sequential statements using the when keyword
-  * No code after the case when statements
-  * Split if/elsif/else/end if into separate lines
-  * Removing comments from instantiation and component ports and generics
-  * No more than two signals can be declared on a single line
 
 base
 ~~~~
@@ -88,11 +48,56 @@ This style attemps to improve readability by:
   * Removing comments from instantiation and component ports and generics
   * No more than two signals can be declared on a single line
 
-disabled
-~~~~~~~~
+indent_only
+~~~~~~~~~~~
 
-This style disables all rules.
-It can be used when the user wants to generate their own style.
+This style only applies indenting rules.
+
+This style attempts to improve readability by:
+
+* Indenting
+
+  * 2 spaces
+
+legacy
+~~~~~~
+
+This style was in affect before the 2.0.0 release.
+It maintains the same style as new rules are added.
+
+This style attempts to improve readability by:
+
+* Emphasising non vhdl identifiers by capitalizing them.
+
+  * entity names
+  * architecture names
+  * ports
+  * generics
+  * etc...
+
+* Blank lines added between major items
+
+  * processes
+  * if statements
+  * case statements
+
+* Alignments
+
+  * :'s over entire entities, components, instantiations, etc...
+  * <='s over groups of sequential statements
+  * inline comments within processes, architecture declarative regions, etc...
+
+* Indenting
+
+  * 2 spaces
+
+* Structure
+
+  * No single line sequential statements using the when keyword
+  * No code after the case when statements
+  * Split if/elsif/else/end if into separate lines
+  * Removing comments from instantiation and component ports and generics
+  * No more than two signals can be declared on a single line
 
 Adjusting built in styles
 -------------------------
@@ -110,10 +115,10 @@ Follow these steps to adjust the styles to the local flavor:
 Example
 ~~~~~~~
 
-Let us assume the lowercase style matches 95% of the desired style.
+Let us assume the legacy style matches 95% of the desired style.
 The only differences are:
 
-* The entity keyword is always capitalized
+* The entity keyword is always lower case
 * Indenting is three spaces instead of two
 
 Create a configuration with the following:
@@ -125,13 +130,11 @@ Create a configuration with the following:
      global:
        indentSize: 3
      entity_004:
-       case: upper
+       case: lower 
    ...
 
 Then use the style and configuration together:
 
 .. code-block:: mono
 
-   $ vsg --style lowercase --configuration my_config.yaml -f fifo.vhd
-
-
+   $ vsg --style legacy --configuration my_config.yaml -f fifo.vhd

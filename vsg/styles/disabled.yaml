@@ -1,7 +1,0 @@
-# The name must be a single word
-name : disabled
-# Define the rules for this style
-rule :
-  # Disable all rules
-  global : 
-    disable : True
