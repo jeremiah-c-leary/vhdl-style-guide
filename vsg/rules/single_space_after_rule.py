@@ -53,4 +53,4 @@ class single_space_after_rule(rule.rule):
             fix.enforce_one_space_after_word(self, oLine, self.sWord)
 
     def _get_solution(self, iLineNumber):
-        return 'Ensure there are only ' + str(self.spaces) + ' space(s) after the "' + self.name + '" keyword.'
+        return 'Ensure there are only ' + str(self.spaces) + ' space(s) after the "' + self.sWord + '" keyword.'
