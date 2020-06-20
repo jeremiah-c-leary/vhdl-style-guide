@@ -819,6 +819,9 @@ def extract_port_names_from_port_map(oLine):
     '''
     names = []
     sPorts = remove_comment(oLine.line).split(':')[0]
+#    print(sPorts)
+    sPorts = remove_parenthesis(sPorts)
+#    print(sPorts)
     for s in sPorts.split(','):
         name = _extract_port_name_from_assignment(s)
         if name != '':

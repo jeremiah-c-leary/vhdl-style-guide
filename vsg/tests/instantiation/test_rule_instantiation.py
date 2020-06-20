@@ -129,7 +129,10 @@ class testRuleInstantiationMethods(unittest.TestCase):
                      {'lines': [{'number': 58, 'keyword_column': 21, 'before_keyword_column': 19},
                                 {'number': 59, 'keyword_column': 13, 'before_keyword_column': 11},
                                 {'number': 60, 'keyword_column': 13, 'before_keyword_column': 11}],
-                      'max_keyword_column': 21, 'max_before_keyword_column': 19}]
+                      'max_keyword_column': 21, 'max_before_keyword_column': 19},
+                     {'lines': [{'number': 109, 'keyword_column': 23, 'before_keyword_column': 21},
+                                {'number': 110, 'keyword_column': 26, 'before_keyword_column': 24}],
+                      'max_keyword_column': 26, 'max_before_keyword_column': 24}]
         oRule.analyze(oFilePort)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -158,8 +161,7 @@ class testRuleInstantiationMethods(unittest.TestCase):
                      {'lines':[{'number': 54}], 'words_to_fix': {'port_2'}},
                      {'lines':[{'number': 55}], 'words_to_fix': {'port_3'}},
                      {'lines':[{'number': 71}], 'words_to_fix': {'port_1'}},
-                     {'lines':[{'number': 72}], 'words_to_fix': {'port_2'}},
-                     {'lines':[{'number': 95}], 'words_to_fix': {'b'}}]
+                     {'lines':[{'number': 72}], 'words_to_fix': {'port_2'}}]
         oRule.analyze(oFilePort)
         self.assertEqual(oRule.violations, dExpected)
 

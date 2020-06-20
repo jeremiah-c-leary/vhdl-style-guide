@@ -103,5 +103,12 @@ begin
       PORT_3 => w_port_3
     );
 
+  -- This is to test functions in port assignments.
+  U_INST1 : INST1
+    port map (
+      I_PORTMAP_FORMAL => I_ENTITY_INPUT(generate_loop_index)(function_call(G_GENERIC_A(generate_loop_index),8)-1 downto 0),
+      I_PORTMAP_FORMAL_OK => I_ENTITY_INPUT(generate_loop_index)(function_call2(G_GENERIC_A(generate_loop_index))-1 downto 0)
+    );
+
 end architecture ARCH;
 
