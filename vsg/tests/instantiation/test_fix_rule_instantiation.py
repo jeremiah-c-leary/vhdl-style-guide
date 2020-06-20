@@ -82,6 +82,7 @@ class testFixRuleInstantiationMethods(unittest.TestCase):
         self.assertEqual(oRule.violations, [])
         # Note: the line below can change if this test is ran individually
         self.assertEqual(oFile.lines[76].line, '      PORT_1(c_index)     => w_port_1,')
+        self.assertEqual(oFile.lines[114].line, '      I_PORTMAP_FORMAL    => I_ENTITY_INPUT(generate_loop_index)(function_call(G_GENERIC_A(generate_loop_index),8)-1 downto 0),')
 
     def test_fix_rule_019(self):
         oRule = instantiation.rule_019()

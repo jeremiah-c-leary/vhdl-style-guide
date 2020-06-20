@@ -370,7 +370,7 @@ class testExtractFunctions(unittest.TestCase):
         self.assertEqual(sExpected, sActual)
 
         oLine.update_line("PORT_2 => (others => (a => (others => '0'), b => (others => '1')))")
-        sExpected = ['PORT_2', 'b']
+        sExpected = ['PORT_2']
         sActual = utils.extract_port_names_from_port_map(oLine)
         self.assertEqual(sExpected, sActual)
 
