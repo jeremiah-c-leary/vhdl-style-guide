@@ -937,6 +937,7 @@ def extract_port_assignments(oLine):
         elif sTok == ')':
             if iIndex + 1 == iNumTokens:
                 sTemp += sSep + sTok
+                lPortAssignments.append(sTemp)
             elif oLine.tokens[iIndex + 1] == ';':
                 lPortAssignments.append(sTemp)  
                 break
