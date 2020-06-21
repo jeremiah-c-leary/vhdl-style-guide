@@ -98,15 +98,6 @@ class testFixRuleInstantiationMethods(unittest.TestCase):
         self.assertEqual(oRule.violations, [])
         self.assertEqual(oFile.lines[64].indentLevel, oFile.lines[63].indentLevel + 1)
 
-    def test_fix_rule_021(self):
-        oRule = instantiation.rule_021()
-        oRule.fix(oFile)
-        oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, [])
-        self.assertEqual(oFile.lines[85].line,'      PORT_1 => w_port_1,')
-        self.assertEqual(oFile.lines[86].line,' PORT_2 => w_port_2,')
-        self.assertEqual(oFile.lines[87].line,'      PORT_3 => w_port_3,')
-
     def test_fix_rule_022(self):
         oRule = instantiation.rule_022()
         oRule.fix(oFile)
