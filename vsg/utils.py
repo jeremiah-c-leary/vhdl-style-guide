@@ -855,6 +855,118 @@ def extract_generics(oLine):
     return sLine
 
 
+def extract_architecture_identifier(oLine):
+    '''
+    Returns architecture name from architecture declaration or end.
+
+    Parameters:
+
+       oLine: (line object)
+
+    Returns: (one element or empty list of strings)
+    '''
+    sLine = oLine.lineNoComment.replace(';', '').split()
+    if sLine[0].lower() == 'architecture':
+        if len(sLine) > 1:
+            return [sLine[1]]
+    elif len(sLine) > 1 and sLine[1].lower() == 'architecture':
+        if len(sLine) > 2:
+            return [sLine[2]]
+    elif sLine[0].lower() == 'end':
+        if len(sLine) > 1:
+            return [sLine[1]]
+
+    return []
+
+
+def extract_port_assignments(oLine):
+    '''
+    Extracts port assignments from an instantiation.
+
+    Parameters:
+
+      oLine : (line object)
+
+    Returns: (list of strings)
+    '''
+    sTemp = ''
+    lPortAssignments = []
+    iIndex = -1
+    iNumTokens = len(oLine.tokens)
+    iParenDepth = 0
+    for sSep, sTok in zip(oLine.separators, oLine.tokens):
+        iIndex += 1
+        if sTok == '(':
+            iParenDepth += 1
+        if sTok == ')':
+            iParenDepth -= 1
+
+        if sTok == ',' and iParenDepth == 0:
+            lPortAssignments.append(sTemp+sSep)  
+            sTemp = ''
+        elif sTok.startswith('--'):
+            break
+        elif sTok.lower() == 'port':
+            continue
+        elif sTok.lower() == 'map':
+            continue
+        elif sTok == '(' and sTemp == '':
+            iParenDepth = 0
+            continue
+        elif sTok == ')':
+            if iIndex + 1 == iNumTokens:
+                sTemp += sSep + sTok
+            elif oLine.tokens[iIndex + 1] == ';':
+                lPortAssignments.append(sTemp)  
+                break
+            else:
+                sTemp += sSep + sTok
+        elif iIndex == iNumTokens - 1:
+            sTemp += sSep + sTok
+            lPortAssignments.append(sTemp)
+        else:
+            sTemp += sSep + sTok
+    return lPortAssignments
+
+
+def extract_string_before_string(sLine, sString):
+    '''
+    Extracts a string from a string before the given string.
+
+    Parameters:
+
+      sLine : (string)
+
+      sString : (string)
+
+    Returns: (string)
+    '''
+    sReturn = ''
+    iIndex = sLine.find(sString)
+    if iIndex > 0:
+        sReturn = sLine[:iIndex]
+    return sReturn
+
+
+def extract_string_after_string(sLine, sString):
+    '''
+    Extracts a string from a string after the given string.
+
+    Parameters:
+
+      sLine : (string)
+
+      sString : (string)
+
+    Returns: (string)
+    '''
+    sReturn = ''
+    iIndex = sLine.find(sString)
+    if iIndex > 0:
+        sReturn = sLine[iIndex + len(sString):]
+    return sReturn
+
+
 def remove_comment_attributes_from_line(oLine):
     '''
     Sets all comment attributes on a line to indicate no comment is present.

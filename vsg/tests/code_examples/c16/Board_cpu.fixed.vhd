@@ -174,9 +174,10 @@ begin
 
   P63 : IOBUF
     port map (
-      I => we_n,
-      O => del_we_n,
-      T => '0'
+      I  => we_n,
+      O  => del_we_n,
+      T  => '0',
+      IO => XM_WE_N
     );
 
   process (CLK40) is
