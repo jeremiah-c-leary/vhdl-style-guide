@@ -19,7 +19,7 @@ class testRuleMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'instantiation')
         self.assertEqual(oRule.identifier, '021')
 
-        dExpected = [8,13,19]
+        dExpected = [8,13,19,29,32]
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -49,5 +49,19 @@ class testRuleMethods(unittest.TestCase):
         self.assertFalse(self.oFile.lines[23].isInstantiationPortEnd)
         self.assertEqual(self.oFile.lines[24].line,' PORT_3 => w_port3);')
         self.assertTrue(self.oFile.lines[24].isInstantiationPortEnd)
+
+        self.assertEqual(self.oFile.lines[34].line,'    port map (PORT_1 => w_port_1,')
+        self.assertFalse(self.oFile.lines[34].isInstantiationPortEnd)
+        self.assertEqual(self.oFile.lines[35].line,' PORT_2 => w_port_2,')
+        self.assertFalse(self.oFile.lines[35].isInstantiationPortEnd)
+        self.assertEqual(self.oFile.lines[36].line,' PORT_3 => w_port3(45));')
+        self.assertTrue(self.oFile.lines[36].isInstantiationPortEnd)
+
+        self.assertEqual(self.oFile.lines[39].line,'    port map (PORT_1 => w_port_1,')
+        self.assertFalse(self.oFile.lines[39].isInstantiationPortEnd)
+        self.assertEqual(self.oFile.lines[40].line,' PORT_2 => w_port_2,')
+        self.assertFalse(self.oFile.lines[40].isInstantiationPortEnd)
+        self.assertEqual(self.oFile.lines[41].line,' PORT_3 => w_port3(45)')
+        self.assertFalse(self.oFile.lines[41].isInstantiationPortEnd)
 
         self.assertEqual(oRule.violations, [])
