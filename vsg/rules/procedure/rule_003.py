@@ -4,7 +4,7 @@ from vsg.rules import indent_rule
 
 class rule_003(indent_rule):
     '''
-    Procedure rule 003 checks the indent of the **begin** keyword.
+    Procedure rule 003 checks the indent of the "end" keyword.
     '''
 
     def __init__(self):
