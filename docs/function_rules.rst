@@ -282,3 +282,50 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring_keyword_a
    variable var1     : natural;
    variable var2     : natural;
    constant c_period : time;
+
+function_013
+############
+
+This rule checks the **end** keyword has proper case.
+
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   END;
+
+   End function foo;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   end;
+
+   end function foo;
+
+function_014
+############
+
+This rule checks the **function** keyword in the **end function** has proper case.
+
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   end FUNCTION;
+
+   end Function foo;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   end function;
+
+   end function foo;
+

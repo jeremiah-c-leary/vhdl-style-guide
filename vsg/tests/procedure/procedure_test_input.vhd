@@ -25,7 +25,7 @@ package body FIFO_PKG is
 
   procedure AVERAGE_SAMPLES is
   begin
-  end procedure AVERAGE_SAMPLES;
+  End PROCEDURE AVERAGE_SAMPLES;
 
   procedure AVERAGE_SAMPLES (
     constant a : in integer;

@@ -44,3 +44,17 @@ class testFixRuleProcedureMethods(unittest.TestCase):
 #        print(self.oFile.lines[97].__dict__)
 #        print(self.oFile.lines[98].__dict__)
 
+
+    def test_fix_rule_008(self):
+        oRule = procedure.rule_008()
+        dExpected = []
+        oRule.fix(self.oFile)
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_fix_rule_009(self):
+        oRule = procedure.rule_009()
+        dExpected = []
+        oRule.fix(self.oFile)
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, dExpected)

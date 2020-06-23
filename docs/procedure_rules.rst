@@ -255,3 +255,50 @@ This rule checks for consistent capitalization of procedure names.
      end process proc1;
 
    end architecture RTL; 
+
+procedure_008
+#############
+
+This rule checks the **end** keyword has proper case.
+
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   END;
+
+   End procedure proc;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   end;
+
+   end procedure proc;
+
+procedure_009
+#############
+
+This rule checks the **procedure** keyword in the **end procedure** has proper case.
+
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   end PROCEDURE;
+
+   end Procedure proc;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   end procedure;
+
+   end procedure proc;
+

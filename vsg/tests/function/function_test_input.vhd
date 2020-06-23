@@ -10,7 +10,7 @@ architecture ARCH of ENTITY_1 is
       return 0;
     end if;
 
-  end;
+  END;
 
 
  function  func_1 (a : integer) return integer is
@@ -141,12 +141,12 @@ architecture A of TEST is
   pure function getconstdata return std_ulogic_vector is
   begin
     return x"4";
-  end function getconstdata;
+  end Function getconstdata;
 
   impure function getconstdata return std_ulogic_vector is
   begin
     return x"4";
-  end function getconstdata;
+  End FUNCTION getconstdata;
 
 begin
 

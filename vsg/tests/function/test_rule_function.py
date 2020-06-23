@@ -118,3 +118,23 @@ class testRuleFunctionMethods(unittest.TestCase):
         dExpected = [utils.add_violation(4)]
         oRule.analyze(oFileMultiple)
         self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_013(self):
+        oRule = function.rule_013()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'function')
+        self.assertEqual(oRule.identifier, '013')
+        dExpected = [{'lines':[{'number': 13}], 'words_to_fix': {'END'}},
+                     {'lines':[{'number': 149}], 'words_to_fix': {'End'}}]
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_014(self):
+        oRule = function.rule_014()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'function')
+        self.assertEqual(oRule.identifier, '014')
+        dExpected = [{'lines':[{'number': 144}], 'words_to_fix': {'Function'}},
+                     {'lines':[{'number': 149}], 'words_to_fix': {'FUNCTION'}}]
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, dExpected)

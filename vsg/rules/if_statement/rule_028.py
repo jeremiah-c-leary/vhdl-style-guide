@@ -5,12 +5,12 @@ from vsg import utils
 
 class rule_028(case_rule):
     '''
-    If rule 028 checks the **end if** keywords have proper case.
+    If rule 028 checks the "end" keyword has proper case.
     '''
 
     def __init__(self):
         case_rule.__init__(self, 'if', '028', 'isEndIfKeyword')
-        self.solution = 'Change "end if" keywords to '
+        self.solution = 'Change "end" keyword to '
 
     def _extract(self, oLine):
-        return utils.extract_words(oLine, ['end', 'if'])
+        return utils.extract_words(oLine, ['end'])
