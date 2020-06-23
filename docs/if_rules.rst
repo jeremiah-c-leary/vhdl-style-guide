@@ -490,7 +490,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
 if_028
 ######
 
-This rule checks the **end if** keywords have proper case.
+This rule checks the **end** keyword has proper case.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
@@ -500,15 +500,11 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
 
    END if;
 
-   end IF;
-
-   END IF;
+   End if;
 
 **Fix**
 
 .. code-block:: vhdl
-
-   end if;
 
    end if;
 
@@ -644,3 +640,26 @@ These comments are used to describe what the elsif code is going to do.
    -- comment 3
    else
      rd_en <= '0';
+
+if_034
+######
+
+This rule checks the **if** keyword in the **end if** has proper case.
+
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   end If;
+
+   end IF;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   end if;
+
+   end if;
