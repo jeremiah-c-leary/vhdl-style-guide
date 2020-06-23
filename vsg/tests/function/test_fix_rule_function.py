@@ -102,3 +102,17 @@ class testFixRuleFunctionMethods(unittest.TestCase):
         self.assertEqual(self.oFileMultiple.lines[4].line, '  function func_1 (')
         self.assertEqual(self.oFileMultiple.lines[5].line, '  a : integer; b : integer;')
         self.assertEqual(self.oFileMultiple.lines[6].line, '             c : unsigned(3 downto 0);')
+
+    def test_fix_rule_013(self):
+        oRule = function.rule_013()
+        dExpected = []
+        oRule.fix(self.oFile)
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, dExpected)
+
+    def test_fix_rule_014(self):
+        oRule = function.rule_014()
+        dExpected = []
+        oRule.fix(self.oFile)
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, dExpected)
