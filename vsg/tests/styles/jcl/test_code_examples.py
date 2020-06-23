@@ -27,13 +27,13 @@ lIdentifier = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','.
 oIdentifier = vhdlFile.vhdlFile(lIdentifier)
 
 
-dLegacyConfig = utils.read_configuration(os.path.join(os.path.dirname(__file__),'..','..','..','styles', 'legacy.yaml'))
+dConfig = utils.read_configuration(os.path.join(os.path.dirname(__file__),'..','..','..','styles', 'jcl.yaml'))
 
 class testCodeExample(unittest.TestCase):
 
     def test_timestamp_vhdl(self):
         oRuleList = rule_list.rule_list(oTimestamp)
-        oRuleList.configure(dLegacyConfig)
+        oRuleList.configure(dConfig)
         oRuleList.fix()
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'timestamp.fixed.vhdl'), lExpected)
@@ -42,7 +42,7 @@ class testCodeExample(unittest.TestCase):
 
     def test_spi_slave(self):
         oRuleList = rule_list.rule_list(oSpiSlave)
-        oRuleList.configure(dLegacyConfig)
+        oRuleList.configure(dConfig)
         oRuleList.fix()
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'spi_slave.fixed.vhd'), lExpected)
@@ -51,7 +51,7 @@ class testCodeExample(unittest.TestCase):
 
     def test_spi_master(self):
         oRuleList = rule_list.rule_list(oSpiMaster)
-        oRuleList.configure(dLegacyConfig)
+        oRuleList.configure(dConfig)
         oRuleList.fix()
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'spi_master.fixed.vhd'), lExpected)
@@ -60,7 +60,7 @@ class testCodeExample(unittest.TestCase):
 
     def test_grp_debouncer(self):
         oRuleList = rule_list.rule_list(oGrpDebouncer)
-        oRuleList.configure(dLegacyConfig)
+        oRuleList.configure(dConfig)
         oRuleList.fix()
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'grp_debouncer.fixed.vhd'), lExpected)
@@ -69,7 +69,7 @@ class testCodeExample(unittest.TestCase):
 
     def test_pic(self):
         oRuleList = rule_list.rule_list(oPIC)
-        oRuleList.configure(dLegacyConfig)
+        oRuleList.configure(dConfig)
         oRuleList.fix()
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'PIC.fixed.vhd'), lExpected)
@@ -78,7 +78,7 @@ class testCodeExample(unittest.TestCase):
 
     def test_identifier(self):
         oRuleList = rule_list.rule_list(oIdentifier)
-        oRuleList.configure(dLegacyConfig)
+        oRuleList.configure(dConfig)
         oRuleList.fix()
 #        utils.debug_lines(oIdentifier, 1, 20)
         lExpected = ['']

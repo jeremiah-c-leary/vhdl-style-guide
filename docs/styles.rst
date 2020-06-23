@@ -9,44 +9,12 @@ The table below lists the built in styles available
 +---------------+--------------------------------------------+
 | Style         | Description                                |
 +---------------+--------------------------------------------+
-| base          | Current rule set                           |
-| indent_only   | Only applies indent rules
-| legacy        | Rules based on the pre 2.0.0 release       |
+| indent_only   | Only applies indent rules                  |
+| jcl           | Coding style preferred by Jeremiah Leary   |
 +---------------+--------------------------------------------+
 
 Style Descriptions
 ------------------
-
-base
-~~~~
-
-This style attemps to improve readability by:
-
-* lowercasing all vhdl keywords and non vhdl identifiers
-
-* Blank lines added between major items
-
-  * processes
-  * if statements
-  * case statements
-
-* Alignments
-
-  * :'s over groups of ports within entities, components, instantiations, etc...
-  * <='s over groups of sequential statements
-  * inline comments within processes, architecture declarative regions, etc...
-
-* Indenting
-
-  * 2 spaces
-
-* Structure
-
-  * No single line sequential statements using the when keyword
-  * No code after the case when statements
-  * Split if/elsif/else/end if into separate lines
-  * Removing comments from instantiation and component ports and generics
-  * No more than two signals can be declared on a single line
 
 indent_only
 ~~~~~~~~~~~
@@ -59,8 +27,8 @@ This style attempts to improve readability by:
 
   * 2 spaces
 
-legacy
-~~~~~~
+jcl
+~~~
 
 This style was in affect before the 2.0.0 release.
 It maintains the same style as new rules are added.

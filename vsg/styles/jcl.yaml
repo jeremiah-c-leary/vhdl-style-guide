@@ -1,5 +1,5 @@
 # The name must be a single word
-name : legacy
+name : jcl
 # Define the rules for this style
 rule :
   # Set Uppercase rules

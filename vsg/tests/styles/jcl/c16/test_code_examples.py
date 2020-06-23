@@ -15,13 +15,13 @@ oBoardCpu = vhdlFile.vhdlFile(lBoardCpu)
 lDataCore = utils.read_vhdlfile(os.path.join(sSourceDir,'data_core.vhd'))
 oDataCore = vhdlFile.vhdlFile(lDataCore)
 
-dLegacyConfig = utils.read_configuration(os.path.join(os.path.dirname(__file__),'..','..','..','..','styles', 'legacy.yaml'))
+dConfig = utils.read_configuration(os.path.join(os.path.dirname(__file__),'..','..','..','..','styles', 'jcl.yaml'))
 
 class testCodeExample(unittest.TestCase):
 
     def test_baudgen(self):
         oRuleList = rule_list.rule_list(oBaudGen)
-        oRuleList.configure(dLegacyConfig)
+        oRuleList.configure(dConfig)
         oRuleList.fix()
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'BaudGen.fixed.vhd'), lExpected)
@@ -30,7 +30,7 @@ class testCodeExample(unittest.TestCase):
 
     def test_board_cpu(self):
         oRuleList = rule_list.rule_list(oBoardCpu)
-        oRuleList.configure(dLegacyConfig)
+        oRuleList.configure(dConfig)
         oRuleList.fix()
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'Board_cpu.fixed.vhd'), lExpected)
@@ -39,7 +39,7 @@ class testCodeExample(unittest.TestCase):
 
     def test_data_core(self):
         oRuleList = rule_list.rule_list(oDataCore)
-        oRuleList.configure(dLegacyConfig)
+        oRuleList.configure(dConfig)
         oRuleList.fix()
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'data_core.fixed.vhd'), lExpected)
