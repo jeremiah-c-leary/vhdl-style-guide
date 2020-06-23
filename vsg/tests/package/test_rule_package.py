@@ -73,10 +73,6 @@ class testRulePackageMethods(unittest.TestCase):
         self.assertEqual(oRule.identifier, '006')
 
         lExpected = []
-        dViolation = utils.add_violation(31)
-        dViolation['words_to_fix'] = {'PACKAGE'}
-        lExpected.append(dViolation)
-
         dViolation = utils.add_violation(45)
         dViolation['words_to_fix'] = {'END'}
         lExpected.append(dViolation)
@@ -193,3 +189,17 @@ class testRulePackageMethods(unittest.TestCase):
         dExpected = utils.add_violation_list([2, 18, 32, 47, 60, 75])
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_018(self):
+        oRule = package.rule_018()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'package')
+        self.assertEqual(oRule.identifier, '018')
+
+        lExpected = []
+        dViolation = utils.add_violation(31)
+        dViolation['words_to_fix'] = {'PACKAGE'}
+        lExpected.append(dViolation)
+
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, lExpected)

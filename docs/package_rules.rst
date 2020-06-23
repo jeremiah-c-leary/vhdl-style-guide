@@ -99,7 +99,7 @@ This rule checks the **is** keyword is on the same line as the **package** keywo
 package_006
 ###########
 
-This rule checks the **end package** keywords have proper case.
+This rule checks the **end** keyword has proper case.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
@@ -107,13 +107,13 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
 
 .. code-block:: vhdl
 
-   END PACKAGE FIFO_PKG;
+   END package fifo_pkg;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   end package FIFO_PKG;
+   end package fifo_pkg;
 
 package_007
 ###########
@@ -324,4 +324,23 @@ Refer to the section `Configuring Prefix and Suffix Rules <configuring_prefix_su
 .. code-block:: vhdl
 
    package pkg_foo is
+
+package_018
+###########
+
+This rule checks the **package** keyword in the **end package* has proper case.
+
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   end PACKAGE fifo_pkg;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   end package fifo_pkg;
 
