@@ -158,7 +158,7 @@ This rule checks for spaces before the **end architecture** keywords.
 architecture_009
 ################
 
-This rule checks the **end** and **architecture** keywords have proper case.
+This rule checks the **end** keyword has proper case.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
@@ -168,7 +168,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
 
    END architecture;
 
-   end Architecture;
+   End architecture;
 
 **Fix**
 
@@ -546,3 +546,27 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring_keyword_a
      constant c_period : time;      -- Comment 3
 
    begin
+
+architecture_028
+################
+
+This rule checks the **architecture** keyword in the **end architecture** has proper case.
+
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   end ARCHITECTURE;
+
+   end Architecture;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   end architecture;
+
+   end architecture;
+
