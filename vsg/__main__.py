@@ -33,6 +33,7 @@ def parse_command_line_arguments():
     parser.add_argument('-b', '--backup', default=False, action='store_true', help='Creates a copy of input file for comparison with fixed version.')
     parser.add_argument('-oc', '--output_configuration', default=None, action='store', help='Write configuration to file name.')
     parser.add_argument('-rc', '--rule_configuration', default=None, action='store', help='Display configuration of a rule')
+    parser.add_argument('--style', action='store', default=None, choices=get_predefined_styles(), help='Use predefined style')
     parser.add_argument('-v', '--version', default=False, action='store_true', help='Displays version information')
 
     if len(sys.argv) == 1:
@@ -42,24 +43,60 @@ def parse_command_line_arguments():
         return parser.parse_args()
 
 
-def open_configuration_file(sFileName, commandLineArguments):
+def get_predefined_styles():
+    '''
+    Reads all predefined styles and returns a list of names.
+
+    Parameters : None
+
+    Returns : (list of strings)
+    '''
+    lReturn = []
+    sStylePath = os.path.join(os.path.dirname(__file__), 'styles')
+    lStyles = os.listdir(sStylePath)
+    for sStyle in lStyles:
+        if sStyle.endswith('.yaml'):
+            with open(os.path.join(sStylePath, sStyle)) as yaml_file:
+                tempConfiguration = yaml.full_load(yaml_file)
+            lReturn.append(tempConfiguration['name'])
+    return lReturn
+
+
+def read_predefined_style(sStyleName):
+    '''
+    Reads a predefined style file.
+
+    Parameters :
+
+      sStyleName : (string)
+
+    Returns : (dictionary)
+    '''
+    dReturn = {}
+    if sStyleName is not None:
+        sFileName = os.path.join(os.path.dirname(__file__), 'styles', sStyleName + '.yaml')
+        open_configuration_file(sFileName)
+    return dReturn
+    
+
+def open_configuration_file(sFileName, sJUnitFileName=None):
     '''Attempts to open a configuration file and read it's contents.'''
     try:
         with open(sFileName) as yaml_file:
             tempConfiguration = yaml.full_load(yaml_file)
     except IOError:
         print('ERROR: Could not find configuration file: ' + sFileName)
-        write_invalid_configuration_junit_file(sFileName, commandLineArguments)
+        write_invalid_configuration_junit_file(sFileName, sJUnitFileName)
         sys.exit(1)
     except yaml.scanner.ScannerError as e:
         print('ERROR: Invalid configuration file: ' + sFileName)
         print(e)
-        write_invalid_configuration_junit_file(sFileName, commandLineArguments)
+        write_invalid_configuration_junit_file(sFileName, sJUnitFileName)
         exit()
     except yaml.parser.ParserError as e:
         print('ERROR: Invalid configuration file: ' + sFileName)
         print(e)
-        write_invalid_configuration_junit_file(sFileName, commandLineArguments)
+        write_invalid_configuration_junit_file(sFileName, sJUnitFileName)
         exit()
     return tempConfiguration
 
@@ -76,11 +113,15 @@ def validate_file_exists(sFilename, sConfigName):
         sys.exit(1)
 
 
-def read_configuration_files(commandLineArguments):
+def read_configuration_files(dStyle, commandLineArguments):
+    dConfiguration = dStyle
     if commandLineArguments.configuration:
-        dConfiguration = {}
         for sConfigFilename in commandLineArguments.configuration:
-            tempConfiguration = open_configuration_file(sConfigFilename, commandLineArguments)
+            try:
+                tempConfiguration = open_configuration_file(sConfigFilename, commandLineArguments.junit)
+            except AttributeError:
+                tempConfiguration = open_configuration_file(sConfigFilename)
+
 
             for sKey in tempConfiguration.keys():
                 if sKey == 'file_list':
@@ -109,12 +150,12 @@ def read_configuration_files(commandLineArguments):
                 else:
                     dConfiguration[sKey] = tempConfiguration[sKey]
 
-        return dConfiguration
+    return dConfiguration
 
 
-def write_invalid_configuration_junit_file(sFileName, commandLineArguments):
-    if commandLineArguments.junit:
-        oJunitFile = junit.xmlfile(commandLineArguments.junit)
+def write_invalid_configuration_junit_file(sFileName, sJUnitFileName):
+    if sJUnitFileName:
+        oJunitFile = junit.xmlfile(sJUnitFileName)
         oJunitTestsuite = junit.testsuite('vhdl-style-guide', str(0))
         oJunitTestcase = junit.testcase(sFileName, str(0), 'failure')
         oFailure = junit.failure('Failure')
@@ -141,6 +182,12 @@ def write_junit_xml_file(oJunitFile):
 
 
 def update_command_line_arguments(commandLineArguments, configuration):
+
+    if 'skip_phase' in configuration:
+        commandLineArguments.skip_phase = configuration['skip_phase']
+    else:
+        commandLineArguments.skip_phase = []
+
     if not configuration:
         return
 
@@ -244,6 +291,12 @@ def display_rule_configuration(commandLineArguments, configuration):
         sys.exit(fExitStatus)
 
 
+def validate_files_exist_to_analyze(sName):
+    if sName == None:
+        print('ERROR: No file defined by the -f command line option or filename given in configuration file.')
+        sys.exit(1)
+
+
 def main():
     '''Main routine of the VHDL Style Guide (VSG) program.'''
 
@@ -253,7 +306,9 @@ def main():
 
     version.print_version(commandLineArguments)
 
-    configuration = read_configuration_files(commandLineArguments)
+    dStyle = read_predefined_style(commandLineArguments.style)
+
+    configuration = read_configuration_files(dStyle, commandLineArguments)
 
     update_command_line_arguments(commandLineArguments, configuration)
 
@@ -268,6 +323,8 @@ def main():
     generate_output_configuration(commandLineArguments, configuration)
 
     display_rule_configuration(commandLineArguments, configuration)
+
+    validate_files_exist_to_analyze(commandLineArguments.filename)
 
     for iIndex, sFileName in enumerate(commandLineArguments.filename):
         oVhdlFile = vhdlFile.vhdlFile(read_vhdlfile(sFileName))
@@ -284,10 +341,10 @@ def main():
         if commandLineArguments.fix:
             if commandLineArguments.backup:
                 create_backup_file(sFileName)
-            oRules.fix(commandLineArguments.fix_phase)
+            oRules.fix(commandLineArguments.fix_phase, commandLineArguments.skip_phase)
             write_vhdl_file(oVhdlFile)
 
-        oRules.check_rules()
+        oRules.check_rules(commandLineArguments.skip_phase)
         oRules.report_violations(commandLineArguments.output_format)
         fExitStatus = update_exit_status(fExitStatus, oRules)
 

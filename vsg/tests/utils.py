@@ -1,6 +1,7 @@
 
-import pprint
 import os
+import pprint
+import yaml
 
 
 def debug_lines(oFile, iLineNumber, iNumberOfLines):
@@ -58,3 +59,9 @@ def add_violation_list(lLineNumbers):
         dViolation['lines'].append(dLine)
         lReturn.append(dViolation)
     return lReturn
+
+
+def read_configuration(sFileName):
+    with open(sFileName) as yaml_file:
+        return yaml.full_load(yaml_file)
+

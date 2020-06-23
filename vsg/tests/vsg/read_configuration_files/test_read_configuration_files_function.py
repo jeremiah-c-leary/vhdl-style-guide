@@ -40,7 +40,7 @@ class test_read_configuration_function(unittest.TestCase):
         dExpected['file_list'].append('vsg/tests/vsg/read_configuration_files/entity.vhd')
         dExpected['file_list'].append('vsg/tests/vsg/read_configuration_files/package.vhd')
 
-        dActual = read_configuration_files(oCommandLineArgs)
+        dActual = read_configuration_files({}, oCommandLineArgs)
 
         dExpected['file_list'].sort()
         dActual['file_list'].sort()
@@ -60,7 +60,7 @@ class test_read_configuration_function(unittest.TestCase):
         dExpected['file_list'].append('vsg/tests/vsg/read_configuration_files/package_2.vhd')
         dExpected['file_list'].append('vsg/tests/vsg/read_configuration_files/entity.vhd')
 
-        dActual = read_configuration_files(oCommandLineArgs)
+        dActual = read_configuration_files({}, oCommandLineArgs)
 
         dExpected['file_list'].sort()
         dActual['file_list'].sort()
@@ -82,7 +82,7 @@ class test_read_configuration_function(unittest.TestCase):
         dExpected['file_list'].append(dFile)
         dExpected['file_list'].append('vsg/tests/vsg/read_configuration_files/package.vhd')
 
-        dActual = read_configuration_files(oCommandLineArgs)
+        dActual = read_configuration_files({}, oCommandLineArgs)
 
         lExpected = []
         for item in dExpected['file_list']:
@@ -135,7 +135,7 @@ class test_read_configuration_function(unittest.TestCase):
 
         dExpected['file_list'].append('vsg/tests/vsg/read_configuration_files/entity.vhd')
 
-        dActual = read_configuration_files(oCommandLineArgs)
+        dActual = read_configuration_files({}, oCommandLineArgs)
 
         lExpected = []
         for item in dExpected['file_list']:

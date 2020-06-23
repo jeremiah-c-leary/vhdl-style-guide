@@ -1,0 +1,80 @@
+# The name must be a single word
+name : jcl
+# Define the rules for this style
+rule :
+  # Set Uppercase rules
+  architecture_011 :
+    case : upper
+  architecture_013 :
+    case : upper
+  architecture_014 :
+    case : upper
+  component_008 :
+    case : upper
+  entity_008 :
+    case : upper
+  entity_012 :
+    case : upper
+  generate_005 :
+    case : upper
+  generate_012 :
+    case : upper
+  generic_007 :
+    case : upper
+  instantiation_008 :
+    case : upper
+  instantiation_009 :
+    case : upper
+  instantiation_011 :
+    case : upper
+  instantiation_016 :
+    case : upper
+  port_010 : 
+    case : upper
+  process_017 :
+    case : upper
+  process_019 :
+    case : upper
+  # Set alignment rules
+  architecture_026 :
+    compact_alignment : false
+    blank_line_ends_group : false
+    comment_line_ends_group : false
+  architecture_027 :
+    compact_alignment : false
+    blank_line_ends_group : false
+    comment_line_ends_group : false
+  component_017 :
+    compact_alignment : false
+    blank_line_ends_group : false
+    comment_line_ends_group : false
+  concurrent_008 :
+    compact_alignment : false
+    blank_line_ends_group : true
+    comment_line_ends_group : true
+  entity_017 :
+    compact_alignment : false
+    blank_line_ends_group : false
+    comment_line_ends_group : false
+  entity_018 :
+    compact_alignment : false
+    blank_line_ends_group : false
+    comment_line_ends_group : false
+  entity_020 :
+    compact_alignment : false
+    blank_line_ends_group : false
+    comment_line_ends_group : false
+    seperate_generic_port_alignment : false
+  process_034 :
+    compact_alignment : false
+    blank_line_ends_group : false
+    comment_line_ends_group : false
+  process_035 :
+    compact_alignment : false
+    blank_line_ends_group : false
+    comment_line_ends_group : false
+  sequential_005 :
+    compact_alignment : true
+    blank_line_ends_group : true
+    comment_line_ends_group : true
+ 

@@ -32,7 +32,7 @@ class testFixRuleCommentMethods(unittest.TestCase):
 
     def test_rule_001(self):
         oRuleList = rule_list.rule_list(oFileLibrary)
-        oRuleList.fix(7)
+        oRuleList.fix()
         oRuleList.check_rules()
 
         self.assertEqual(oFileLibrary.lines[3].indentLevel, 1)

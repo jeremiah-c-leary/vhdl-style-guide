@@ -33,6 +33,7 @@ setup(
   license='GNU General Public License',
   packages=find_packages(),
   zip_safe=False,
+  include_package_data=True,
   test_suite='nose.collector',
   tests_require=['nose'],
   keywords=['vhdl', 'style', 'beautify', 'guide', 'lint'],
