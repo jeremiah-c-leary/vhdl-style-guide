@@ -51,7 +51,7 @@ This rule checks a single space exists after the **function** keyword.
 function_003
 ############
 
-This rule checks for a single space after the function name and the (.'
+This rule checks for a single space between the function name and the (.'
 
 **Violation**
 
