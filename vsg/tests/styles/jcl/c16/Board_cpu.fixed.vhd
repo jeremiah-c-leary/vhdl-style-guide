@@ -118,65 +118,74 @@ begin
 
   P147 : IOBUF
     port map (
-      I => xm_wdat(7),
-      O => xm_rdat(7),
-      T => mem_t
+      I  => xm_wdat(7),
+      O  => xm_rdat(7),
+      T  => mem_t,
+      IO => XM_DIO(7)
     );
 
   P144 : IOBUF
     port map (
-      I => xm_wdat(0),
-      O => xm_rdat(0),
-      T => mem_t
+      I  => xm_wdat(0),
+      O  => xm_rdat(0),
+      T  => mem_t,
+      IO => XM_DIO(0)
     );
 
   P142 : IOBUF
     port map (
-      I => xm_wdat(6),
-      O => xm_rdat(6),
-      T => mem_t
+      I  => xm_wdat(6),
+      O  => xm_rdat(6),
+      T  => mem_t,
+      IO => XM_DIO(6)
     );
 
   P141 : IOBUF
     port map (
-      I => xm_wdat(1),
-      O => xm_rdat(1),
-      T => mem_t
+      I  => xm_wdat(1),
+      O  => xm_rdat(1),
+      T  => mem_t,
+      IO => XM_DIO(1)
     );
 
   P140 : IOBUF
     port map (
-      I => xm_wdat(5),
-      O => xm_rdat(5),
-      T => mem_t
+      I  => xm_wdat(5),
+      O  => xm_rdat(5),
+      T  => mem_t,
+      IO => XM_DIO(5)
     );
 
   P139 : IOBUF
     port map (
-      I => xm_wdat(2),
-      O => xm_rdat(2),
-      T => mem_t
+      I  => xm_wdat(2),
+      O  => xm_rdat(2),
+      T  => mem_t,
+      IO => XM_DIO(2)
     );
 
   P133 : IOBUF
     port map (
-      I => xm_wdat(4),
-      O => xm_rdat(4),
-      T => mem_t
+      I  => xm_wdat(4),
+      O  => xm_rdat(4),
+      T  => mem_t,
+      IO => XM_DIO(4)
     );
 
   P131 : IOBUF
     port map (
-      I => xm_wdat(3),
-      O => xm_rdat(3),
-      T => mem_t
+      I  => xm_wdat(3),
+      O  => xm_rdat(3),
+      T  => mem_t,
+      IO => XM_DIO(3)
     );
 
   P63 : IOBUF
     port map (
-      I => we_n,
-      O => del_we_n,
-      T => '0'
+      I  => we_n,
+      O  => del_we_n,
+      T  => '0',
+      IO => XM_WE_N
     );
 
   process (CLK40) is
