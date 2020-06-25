@@ -33,3 +33,5 @@ class rule_008(rule.rule):
             oFile.lines[iLineNumber + 1].isTypeEnumeratedEnd = True
             oFile.lines[iLineNumber + 1].insideTypeEnumerated = True
             oFile.lines[iLineNumber + 1].indentLevel = oFile.lines[iLineNumber].indentLevel - 1
+            oFile.lines[iLineNumber + 1].insideArchitectureDeclarativeRegion = oFile.lines[iLineNumber].insideArchitectureDeclarativeRegion
+            oFile.lines[iLineNumber + 1].insideArchitecture = oFile.lines[iLineNumber].insideArchitecture

@@ -570,3 +570,26 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
 
    end architecture;
 
+architecture_029
+################
+
+This rule checks for alignment of identifiers in type, subtype, constant, signal, variable and file declarations in the architecture declarative region.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   signal    sig1 : std_logic;
+   file some_file : 
+   variable v_var1 : std_logic;
+   type t_myType : std_logic;
+   
+**Fix**
+
+.. code-block:: vhdl
+
+   signal   sig1 : std_logic;
+   file     some_file : 
+   variable v_var1 : std_logic;
+   type     t_myType : std_logic;
+

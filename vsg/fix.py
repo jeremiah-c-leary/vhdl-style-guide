@@ -210,6 +210,7 @@ def insert_blank_line_above(self, oFile, iLineNumber):
       iLineNumber: (integer)
     '''
     oFile.lines.insert(iLineNumber, line.blank_line())
+    oFile.lines[iLineNumber].insideArchitectureDeclarativeRegion = oFile.lines[iLineNumber + 1].insideArchitectureDeclarativeRegion
 
 
 def insert_blank_line_below(self, oFile, iLineNumber):
@@ -225,6 +226,7 @@ def insert_blank_line_below(self, oFile, iLineNumber):
       iLineNumber: (integer)
     '''
     oFile.lines.insert(iLineNumber + 1, line.blank_line())
+    oFile.lines[iLineNumber + 1].insideArchitectureDeclarativeRegion = oFile.lines[iLineNumber].insideArchitectureDeclarativeRegion
 
 
 def replace_is_keyword(oFile, iLineNumber):

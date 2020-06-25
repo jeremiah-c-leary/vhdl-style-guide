@@ -22,6 +22,8 @@ def update_architecture_attributes(oPreviousLine, oCurrentLine):
     if oPreviousLine.insideArchitecture and not oPreviousLine.isEndArchitecture:
         oCurrentLine.insideArchitecture = True
 
+    if oPreviousLine.insideArchitectureDeclarativeRegion and not oPreviousLine.isArchitectureBegin:
+        oCurrentLine.insideArchitectureDeclarativeRegion = True
 
 def update_assert_attributes(oPreviousLine, oCurrentLine):
 

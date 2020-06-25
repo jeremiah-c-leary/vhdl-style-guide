@@ -63,6 +63,7 @@ class line():
         self.isArchitectureBegin = False
         self.isArchitectureKeyword = False
         self.isEndArchitecture = False
+        self.insideArchitectureDeclarativeRegion = False
         # Signal attributes
         self.isSignal = False
         self.insideSignal = False
@@ -249,6 +250,17 @@ class line():
         self.lineLower = sLine.lower()
         self.lineNoComment = utils.remove_comment(sLine)
         self.tokens, self.separators = tokens.create(sLine)
+
+    def update_line_from_tokens(self):
+        '''
+        This method creates the line, lineLower and lineNoComment from the seperators and tokens list
+        '''
+        sLine = ''
+        for sSep, sTok in zip(self.separators, self.tokens):
+            sLine += sSep + sTok
+        self.line = sLine
+        self.lineLower = sLine.lower()
+        self.lineNoComment = utils.remove_comment(sLine)
 
 
 class blank_line(line):
