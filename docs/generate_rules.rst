@@ -312,3 +312,23 @@ This rule checks the alignment of the **when** keyword in generic case statement
      when 0 =>
      when 1 =>
      when 2 =>
+
+generate_017
+############
+
+This rule checks for valid prefixes on generic statement labels.
+The default prefix is *gen\_*.
+
+Refer to the section `Configuring Prefix and Suffix Rules <configuring_prefix_suffix.html>`_ for information on changing the allowed prefixes.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   label : case condition generate
+
+**Fix**
+
+.. code-block:: vhdl
+
+   gen_label : case condition generate
