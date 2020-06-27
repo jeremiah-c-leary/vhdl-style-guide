@@ -11,7 +11,7 @@ class rule_015(prefix_rule):
     def __init__(self):
         prefix_rule.__init__(self, 'constant', '015', 'isConstant')
         self.prefixes = ['c_']
-        self.solution = 'Constant'
+        self.solution = 'Constant identifiers'
 
     def _extract(self, oLine):
         return utils.extract_class_identifier_list(oLine)

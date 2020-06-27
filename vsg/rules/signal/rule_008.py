@@ -11,7 +11,7 @@ class rule_008(prefix_rule):
     def __init__(self):
         prefix_rule.__init__(self, 'signal', '008', 'isSignal')
         self.prefixes = ['s_']
-        self.solution = 'Signal'
+        self.solution = 'Signal identifiers'
 
     def _extract(self, oLine):
         return utils.extract_class_identifier_list(oLine)
