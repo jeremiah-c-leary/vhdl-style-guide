@@ -10,7 +10,7 @@ class rule_036(prefix_rule):
     def __init__(self):
         prefix_rule.__init__(self, 'process', '036', 'isProcessLabel')
         self.prefixes = ['proc_']
-        self.solution = 'Process'
+        self.solution = 'Process labels'
 
     def _extract(self, oLine):
-        return utils.extract_class_identifier_list(oLine)
+        return utils.extract_label(oLine)

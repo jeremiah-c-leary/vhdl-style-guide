@@ -11,7 +11,7 @@ class rule_020(prefix_rule):
     def __init__(self):
         prefix_rule.__init__(self, 'generic', '020', 'isGenericDeclaration')
         self.prefixes = ['g_']
-        self.solution = 'Generic'
+        self.solution = 'Generic names'
 
     def _extract(self, oLine):
         return utils.extract_generics(oLine)

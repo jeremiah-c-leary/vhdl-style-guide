@@ -51,4 +51,4 @@ class prefix_rule(rule.rule):
             check.has_prefix(self, self.prefixes, words, iLineNumber)
 
     def _get_solution(self, iLineNumber):
-        return self.solution + ' identifiers should start with one of ' + str(self.prefixes) + ' prefixes.'
+        return self.solution + ' should start with one of ' + str(self.prefixes) + ' prefixes.'

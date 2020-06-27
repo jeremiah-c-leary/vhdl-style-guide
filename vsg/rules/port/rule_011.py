@@ -11,7 +11,7 @@ class rule_011(prefix_rule):
     def __init__(self):
         prefix_rule.__init__(self, 'port', '011', 'isPortDeclaration')
         self.prefixes = ['i_', 'o_', 'io_']
-        self.solution = 'Port'
+        self.solution = 'Port names'
 
     def _extract(self, oLine):
         return utils.extract_port_name(oLine)
