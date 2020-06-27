@@ -890,3 +890,22 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring_keyword_a
 
    end process proc_1;
 
+process_036
+############
+
+This rule checks for valid prefixes on process labels.
+The default prefix is *proc\_*.
+
+Refer to the section `Configuring Prefix and Suffix Rules <configuring_prefix_suffix.html>`_ for information on changing the allowed prefixes.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   main: process () is
+
+**Fix**
+
+.. code-block:: vhdl
+
+   proc_main: process () is

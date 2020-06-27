@@ -34,3 +34,4 @@ from .rule_032 import rule_032
 from .rule_033 import rule_033
 from .rule_034 import rule_034
 from .rule_035 import rule_035
+from .rule_036 import rule_036

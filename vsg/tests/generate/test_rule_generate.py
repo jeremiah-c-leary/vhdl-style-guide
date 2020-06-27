@@ -239,3 +239,20 @@ class testRuleGenerateMethods(unittest.TestCase):
         dExpected = [utils.add_violation(104)]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_017_with_default(self):
+        oRule = generate.rule_017()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'generate')
+        self.assertEqual(oRule.identifier, '017')
+        lExpected = utils.add_violation_list([6,11,16,21,26,31,36,41,46,51,56,
+                                              60,65,68,71,77,83,88,90,94,104])
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, lExpected)
+
+    def test_rule_017_with_override(self):
+        oRule = generate.rule_017()
+        oRule.prefixes = ['generate_', 'g_']
+        lExpected = utils.add_violation_list([])
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, lExpected)

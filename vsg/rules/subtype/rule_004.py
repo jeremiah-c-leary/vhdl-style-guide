@@ -10,7 +10,7 @@ class rule_004(prefix_rule):
     def __init__(self):
         prefix_rule.__init__(self, 'subtype', '004', 'isSubtypeKeyword')
         self.prefixes = ['st_']
-        self.solution = 'Subtype'
+        self.solution = 'Subtype identifiers'
 
     def _extract(self, oLine):
         return utils.extract_type_identifier(oLine)

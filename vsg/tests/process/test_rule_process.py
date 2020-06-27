@@ -373,3 +373,19 @@ class testRuleProcessMethods(unittest.TestCase):
         dExpected = utils.add_violation_list([26,34])
         oRule.analyze(oFileSensitivity)
         self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_036_with_default(self):
+        oRule = process.rule_036()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'process')
+        self.assertEqual(oRule.identifier, '036')
+        lExpected = utils.add_violation_list([63, 116, 140, 152, 157])
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, lExpected)
+
+    def test_rule_036_with_override(self):
+        oRule = process.rule_036()
+        oRule.prefixes = ['test_', 'p']
+        lExpected = utils.add_violation_list([63, 116, 152])
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, lExpected)
