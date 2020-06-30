@@ -307,6 +307,8 @@ procedure_010
 
 This rule checks the identifiers for all declarations are aligned in the procedure declarative part.
 
+Refer to the section `Configuring Identifier Alignment Rules <configuring_declaration_identifier_alignment.html>`_ for information on changing the configurations.
+
 **Violation**
 
 .. code-block:: vhdl

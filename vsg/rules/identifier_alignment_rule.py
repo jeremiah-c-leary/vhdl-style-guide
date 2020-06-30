@@ -13,6 +13,11 @@ class identifier_alignment_rule(rule.rule):
         self.sEndTrigger = sEndTrigger
         self.lUnless = []
 
+        self.blank_line_ends_group = True
+        self.configuration.append('blank_line_ends_group')
+        self.comment_line_ends_group = True
+        self.configuration.append('comment_line_ends_group')
+
     def _pre_analyze(self):
         self.bRegionFound = False
         self.bGroupFound = False
@@ -27,7 +32,7 @@ class identifier_alignment_rule(rule.rule):
             if isDeclaration(oLine, self.lUnless):
                 self.bGroupFound = True
             if self.bGroupFound:
-                if oLine.isBlank or oLine.isComment or oLine.__dict__[self.sEndTrigger]:
+                if is_end_group(self, oLine):
                     analyzeGroup(self, self.lGroup)
                     self.bGroupFound = False
                     self.lGroup = []
@@ -73,10 +78,29 @@ def isDeclaration(oLine, lUnless):
         return True
     return False
 
-def isParameter(oLine):
-    if oLine.isFunctionParameter:
+
+def is_end_group(self, oLine):
+    '''
+    Determines boundary of a group of lines.
+
+    Parameters:
+
+      self : (self)
+
+      oLine : (line object)
+
+    Returns: (boolean)
+    '''
+    if self.blank_line_ends_group:
+        if oLine.isBlank:
+            return True
+    if self.comment_line_ends_group: 
+        if oLine.isComment:
+            return True
+    if oLine.__dict__[self.sEndTrigger]:
         return True
     return False
+
 
 def analyzeGroup(self, lLines):
     '''

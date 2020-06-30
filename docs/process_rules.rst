@@ -915,6 +915,8 @@ process_037
 
 This rule checks for alignment of identifiers in attribute, type, subtype, constant, signal, variable and file declarations in the process declarative region.
 
+Refer to the section `Configuring Identifier Alignment Rules <configuring_declaration_identifier_alignment.html>`_ for information on changing the configurations.
+
 **Violation**
 
 .. code-block:: vhdl

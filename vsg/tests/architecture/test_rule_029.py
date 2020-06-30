@@ -7,11 +7,13 @@ from vsg.tests import utils
 
 # Read in test file used for all tests
 lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'rule_029_test_input.vhd'))
+lFileConfig = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'rule_029_configurations_test_input.vhd'))
 
 class testRuleArchitecture(unittest.TestCase):
 
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
+        self.oFileConfig = vhdlFile.vhdlFile(lFileConfig)
 
     def test_rule(self):
         oRule = architecture.rule_029()
@@ -101,3 +103,102 @@ class testRuleArchitecture(unittest.TestCase):
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
+
+    def test_rule_029_w_comment_group_false(self):
+        oRule = architecture.rule_029()
+        oRule.comment_line_ends_group = False
+
+        lExpected = []
+
+        dViolation = utils.add_violation(5)
+        dViolation['columnAdjust'] = 2
+        dViolation['targetColumn'] = 11
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(6)
+        dViolation['columnAdjust'] = 4
+        dViolation['targetColumn'] = 11
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(8)
+        dViolation['columnAdjust'] = 4
+        dViolation['targetColumn'] = 11
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(9)
+        dViolation['columnAdjust'] = 1
+        dViolation['targetColumn'] = 11
+        lExpected.append(dViolation)
+
+        oRule.analyze(self.oFileConfig)
+        self.assertEqual(oRule.violations, lExpected)
+
+    def test_rule_029_w_blank_group_false_and_comment_group_false(self):
+        oRule = architecture.rule_029()
+        oRule.blank_line_ends_group = False
+        oRule.comment_line_ends_group = False
+
+        lExpected = []
+
+        dViolation = utils.add_violation(5)
+        dViolation['columnAdjust'] = 3
+        dViolation['targetColumn'] = 12
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(6)
+        dViolation['columnAdjust'] = 5
+        dViolation['targetColumn'] = 12
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(8)
+        dViolation['columnAdjust'] = 5
+        dViolation['targetColumn'] = 12
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(9)
+        dViolation['columnAdjust'] = 2
+        dViolation['targetColumn'] = 12
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(11)
+        dViolation['columnAdjust'] = 1
+        dViolation['targetColumn'] = 12
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(12)
+        dViolation['columnAdjust'] = 1
+        dViolation['targetColumn'] = 12
+        lExpected.append(dViolation)
+
+        oRule.analyze(self.oFileConfig)
+        self.assertEqual(oRule.violations, lExpected)
+
+    def test_rule_029_w_blank_group_false(self):
+        oRule = architecture.rule_029()
+        oRule.blank_line_ends_group = False
+
+        lExpected = []
+
+        dViolation = utils.add_violation(6)
+        dViolation['columnAdjust'] = 2
+        dViolation['targetColumn'] = 9
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(8)
+        dViolation['columnAdjust'] = 3
+        dViolation['targetColumn'] = 10
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(11)
+        dViolation['columnAdjust'] = 1
+        dViolation['targetColumn'] = 12
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(12)
+        dViolation['columnAdjust'] = 1
+        dViolation['targetColumn'] = 12
+        lExpected.append(dViolation)
+
+        oRule.analyze(self.oFileConfig)
+        self.assertEqual(oRule.violations, lExpected)
+
