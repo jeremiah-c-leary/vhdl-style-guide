@@ -22,13 +22,11 @@ class identifier_alignment_rule(rule.rule):
         self.bRegionFound = False
         self.bGroupFound = False
         self.lGroup = []
-        
 
     def _analyze(self, oFile, oLine, iLineNumber):
         if oLine.__dict__[self.sStartTrigger]:
             self.bRegionFound = True
         if self.bRegionFound:
-#            print(f'{iLineNumber} | {oLine.isSignal} | {oLine.isConstant} | {oLine.isFunctionParameter} | {oLine.line}')
             if isDeclaration(oLine, self.lUnless):
                 self.bGroupFound = True
             if self.bGroupFound:
@@ -38,10 +36,8 @@ class identifier_alignment_rule(rule.rule):
                     self.lGroup = []
                     if oLine.__dict__[self.sEndTrigger]:
                         self.bRegionFound = False
-#                        print('-' * 20)
                 else:
                     if isDeclaration(oLine, self.lUnless):
-#                        print('filter')
                         self.lGroup.append([oLine, iLineNumber])
         
     def _fix_violations(self, oFile):
