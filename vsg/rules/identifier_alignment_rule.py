@@ -6,27 +6,37 @@ class identifier_alignment_rule(rule.rule):
     '''
     Identifier alignment rule checks the alignment of declaration identifiers.
     '''
-    def __init__(self, name, identifier, sLineTrigger, sEndTrigger):
+    def __init__(self, name, identifier, sStartTrigger, sEndTrigger):
         rule.rule.__init__(self, name, identifier)
         self.phase = 5
-        self.sLineTrigger = sLineTrigger
+        self.sStartTrigger = sStartTrigger
         self.sEndTrigger = sEndTrigger
+        self.lUnless = []
 
     def _pre_analyze(self):
         self.bRegionFound = False
         self.bGroupFound = False
         self.lGroup = []
+        
 
     def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.__dict__[self.sLineTrigger]:
-            if isDeclaration(oLine):
+        if oLine.__dict__[self.sStartTrigger]:
+            self.bRegionFound = True
+        if self.bRegionFound:
+#            print(f'{iLineNumber} | {oLine.isSignal} | {oLine.isConstant} | {oLine.isFunctionParameter} | {oLine.line}')
+            if isDeclaration(oLine, self.lUnless):
                 self.bGroupFound = True
             if self.bGroupFound:
                 if oLine.isBlank or oLine.isComment or oLine.__dict__[self.sEndTrigger]:
                     analyzeGroup(self, self.lGroup)
-                    self._pre_analyze()
+                    self.bGroupFound = False
+                    self.lGroup = []
+                    if oLine.__dict__[self.sEndTrigger]:
+                        self.bRegionFound = False
+#                        print('-' * 20)
                 else:
-                    if isDeclaration(oLine):
+                    if isDeclaration(oLine, self.lUnless):
+#                        print('filter')
                         self.lGroup.append([oLine, iLineNumber])
         
     def _fix_violations(self, oFile):
@@ -44,13 +54,40 @@ class identifier_alignment_rule(rule.rule):
         return 'Unknown'
 
 
-def isDeclaration(oLine):
-    if oLine.isSignal or oLine.isConstant or oLine.isVariable or oLine.isSubtypeKeyword or oLine.isTypeKeyword or oLine.isFileKeyword:
+def isDeclaration(oLine, lUnless):
+    '''
+    Checks if line meets criteria for being included in an alignment check.
+    
+    Parameters:
+
+      oLine : (line object)
+
+    Return: (boolean)
+    '''
+    if oLine.isSignal or oLine.isConstant or oLine.isVariable or oLine.isSubtypeKeyword or oLine.isTypeKeyword or oLine.isFileKeyword or oLine.isAttributeKeyword:
+        if len(lUnless) == 0:
+            return True
+        for sUnless in lUnless:
+            if oLine.__dict__[sUnless]:
+                return False
         return True
     return False
 
+def isParameter(oLine):
+    if oLine.isFunctionParameter:
+        return True
+    return False
 
 def analyzeGroup(self, lLines):
+    '''
+    Checks alignment of identifiers in a group of lines.
+
+    Parameters:
+
+      lLines : (list of line objects)
+
+    Returns: (nothing)
+    '''
     iTargetColumn = length_of_longest_declaration_keyword(lLines) + 1
     for oLine, iLineNumber in lLines:
         iCurrentColumn = len(oLine.tokens[0]) + len(oLine.separators[1])
@@ -62,6 +99,15 @@ def analyzeGroup(self, lLines):
 
 
 def length_of_longest_declaration_keyword(lGroup):
+    '''
+    Finds the longest length of declaration keyword.
+
+    Parameters:
+
+      lGroup : (list of line objects)
+
+    Returns: (integer)
+    '''
     iReturn = 0
     for oLine, iLineNumber in lGroup:
         iReturn = max(iReturn, len(oLine.tokens[0]))

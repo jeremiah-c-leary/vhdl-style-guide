@@ -30,27 +30,6 @@ class testFixRuleSignalMethods(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, lExpected)
 
-    def test_fix_rule_003(self):
-        oRule = signal.rule_003()
-        lExpected = []
-        oRule.fix(self.oFile)
-        oRule.analyze(self.oFile)
-        self.assertEqual(self.oFile.lines[5].line, '  signal a_sig : std_logic_vector(31 downto 0);')
-        self.assertEqual(self.oFile.lines[8].line, ' signal b_sig : std_logic_vector(31 downto 0);')
-        self.assertEqual(self.oFile.lines[12].line, '  signal SIg : STD_LOGIC_VECTOR(31 downto 0);')
-        self.assertEqual(oRule.violations, lExpected)
-
-    def test_fix_rule_003_w_3_spaces(self):
-        oRule = signal.rule_003()
-        oRule.spaces = 3
-        lExpected = []
-        oRule.fix(self.oFile)
-        oRule.analyze(self.oFile)
-        self.assertEqual(self.oFile.lines[5].line, '  signal   a_sig : std_logic_vector(31 downto 0);')
-        self.assertEqual(self.oFile.lines[8].line, ' signal   b_sig : std_logic_vector(31 downto 0);')
-        self.assertEqual(self.oFile.lines[12].line, '  signal   SIg : STD_LOGIC_VECTOR(31 downto 0);')
-        self.assertEqual(oRule.violations, lExpected)
-
     def test_fix_rule_004(self):
         oRule = signal.rule_004()
         lExpected = []

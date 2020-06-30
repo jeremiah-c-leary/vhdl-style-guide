@@ -64,6 +64,16 @@ class testVhdlFileFunctionAssignments(unittest.TestCase):
         # Compare
         self.assertEqual(lActual, lExpected)
 
+    def test_hasFunctionReturnType(self):
+        lExpected = [4,16,21,30,36,47,54,65,73,82,91,101,112,126,130,136,141,146]
+        # Generic actual list
+        lActual = []
+        for iIndex, oLine in enumerate(oFile.lines):
+            if oLine.hasFunctionReturnType:
+                lActual.append(iIndex)
+        # Compare
+        self.assertEqual(lActual, lExpected)
+
 
     def test_FunctionIndent(self):
         #           [   0,   1,2,   3,4,5,   6,7,8,9,10,11,  12,13,  14]

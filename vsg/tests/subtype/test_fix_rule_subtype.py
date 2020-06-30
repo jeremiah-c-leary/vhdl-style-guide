@@ -23,22 +23,3 @@ class testFixRuleSignalMethods(unittest.TestCase):
         oRule.fix(self.oFile)
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, lExpected)
-
-    def test_fix_rule_003(self):
-        oRule = subtype.rule_003()
-        lExpected = []
-        oRule.fix(self.oFile)
-        oRule.analyze(self.oFile)
-        self.assertEqual(self.oFile.lines[51].line, '    subtype a is range 0 to 9;')
-        self.assertEqual(self.oFile.lines[65].line, '  subtype a is')
-        self.assertEqual(oRule.violations, lExpected)
-
-    def test_fix_rule_003_w_2_spaces(self):
-        oRule = subtype.rule_003()
-        oRule.spaces = 2
-        lExpected = []
-        oRule.fix(self.oFile)
-        oRule.analyze(self.oFile)
-        self.assertEqual(self.oFile.lines[51].line, '    subtype  a is range 0 to 9;')
-        self.assertEqual(self.oFile.lines[65].line, '  subtype  a is')
-        self.assertEqual(oRule.violations, lExpected)

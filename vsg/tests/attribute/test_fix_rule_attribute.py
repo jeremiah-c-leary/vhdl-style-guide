@@ -31,11 +31,3 @@ class testFixRuleAttributeMethods(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
         self.assertEqual(oFile.lines[9].line, '  attribute ram_init_file : string;')
-
-    def test_fix_rule_003(self):
-        oRule = attribute.rule_003()
-        dExpected = []
-        oRule.fix(oFile)
-        oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
-        self.assertEqual(oFile.lines[11].line, '  attribute ram_init_file of ram_block :')

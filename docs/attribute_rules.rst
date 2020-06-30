@@ -64,17 +64,4 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
 attribute_003
 #############
 
-This rule checks for a single space after the **attribute** keyword.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   attribute   ram_init_file : string;
-
-**Fix**
-
-.. code-block:: vhdl
-
-   attribute ram_init_file : string;
-
+This rule was depricated and replaced with rules:  function_015, package_019, procedure_010, architecture_029 and process_037.

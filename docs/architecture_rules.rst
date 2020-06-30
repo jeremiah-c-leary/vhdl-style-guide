@@ -573,7 +573,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
 architecture_029
 ################
 
-This rule checks for alignment of identifiers in type, subtype, constant, signal, variable and file declarations in the architecture declarative region.
+This rule checks for alignment of identifiers in attribute, type, subtype, constant, signal, variable and file declarations in the architecture declarative region.
 
 **Violation**
 

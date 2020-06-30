@@ -75,6 +75,7 @@ class testVhdlFileMethods(unittest.TestCase):
     def test_insideArchitectureDeclarativeRegion_2(self):
         lExpected = []
         lExpected.extend(range(2,59))
+        lExpected.extend(range(64,120))
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFileArch2.lines):

@@ -8,4 +8,5 @@ class rule_029(identifier_alignment_rule):
     '''
 
     def __init__(self):
-        identifier_alignment_rule.__init__(self, 'architecture', '029', 'insideArchitectureDeclarativeRegion', 'isArchitectureBegin')
+        identifier_alignment_rule.__init__(self, 'architecture', '029', 'isArchitectureKeyword', 'isArchitectureBegin')
+        self.lUnless = ['insideFunction', 'insideProcedure']

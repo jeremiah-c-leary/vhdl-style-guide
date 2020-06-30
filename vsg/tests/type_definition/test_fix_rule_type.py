@@ -28,25 +28,6 @@ class testFixRuleSignalMethods(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
 
-    def test_fix_rule_003(self):
-        oRule = type_definition.rule_003()
-        dExpected = []
-        oRule.fix(self.oFile)
-        oRule.analyze(self.oFile)
-        self.assertEqual(self.oFile.lines[29].line, '  type a is  (B, C,')
-        self.assertEqual(oRule.violations, dExpected)
-
-    def test_fix_rule_003_w_2_spaces(self):
-        oRule = type_definition.rule_003()
-        oRule.spaces = 2
-        dExpected = []
-        oRule.fix(self.oFile)
-        oRule.analyze(self.oFile)
-        self.assertEqual(self.oFile.lines[29].line, '  type  a is  (B, C,')
-        self.assertEqual(self.oFile.lines[43].line, '  type  a is (')
-        self.assertEqual(self.oFile.lines[134].line, '  type  memory_type_is_name   is array (DEPTH - 1 downto 0) of STD_LOGIC_VECTOR(WIDTH-1 downto 0);')
-        self.assertEqual(oRule.violations, dExpected)
-
     def test_fix_rule_004(self):
         oRule = type_definition.rule_004()
         dExpected = []

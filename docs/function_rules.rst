@@ -329,3 +329,23 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
 
    end function foo;
 
+function_015
+############
+
+This rule checks the identifiers for all declarations are aligned in the function declarative part.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   variable var1 : natural;
+   signal sig1 : natural;
+   constant c_period : time;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   variable var1     : natural;
+   signal   sig1     : natural;
+   constant c_period : time;

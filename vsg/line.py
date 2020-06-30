@@ -170,8 +170,9 @@ class line():
         self.isFunctionKeyword = False
         self.isFunctionEnd = False
         self.isFunctionReturn = False
+        self.hasFunctionReturnType = False
         self.isFunctionReturnKeyword = False
-        self.isFunctionIs = False
+        self.hasFunctionIs = False
         # For Loop attributes
         self.insideForLoop = False
         self.isForLoopKeyword = False
@@ -262,6 +263,14 @@ class line():
         self.lineLower = sLine.lower()
         self.lineNoComment = utils.remove_comment(sLine)
 
+    def has_token(self, sString):
+        '''
+        This method checks for sString in the token list.
+        '''
+        for sTok in self.tokens:
+            if sString.lower() == sTok.lower():
+                return True
+        return False
 
 class blank_line(line):
     '''

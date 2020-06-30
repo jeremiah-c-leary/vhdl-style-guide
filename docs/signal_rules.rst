@@ -50,28 +50,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
 signal_003
 ##########
 
-This rule checks for spaces after the **signal** keyword.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   signal     wr_en : std_logic;
-
-**Fix**
-
-.. code-block:: vhdl
-
-   signal wr_en : std_logic;
-
-.. NOTE:: The number of spaces after the **signal** keyword is configurable.
-   Use the following YAML file example to change the default number of spaces.
-
-   .. code-block:: yaml
-
-   rule:
-     signal_003:
-         spaces: 3 
+This rule was depricated and replaced with rules:  function_015, package_019, procedure_010, architecture_029 and process_037.
 
 signal_004
 ##########

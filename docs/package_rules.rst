@@ -344,3 +344,23 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
 
    end package fifo_pkg;
 
+package_019
+###########
+
+This rule checks the identifiers for all declarations are aligned in the package declarative region.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   variable var1 : natural;
+   signal sig1 : natural;
+   constant c_period : time;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   variable var1     : natural;
+   signal   sig1     : natural;
+   constant c_period : time;
