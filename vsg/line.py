@@ -250,6 +250,9 @@ class line():
         self.lineNoComment = utils.remove_comment(sLine)
         self.tokens, self.separators = tokens.create(sLine)
 
+    def get_tokens(self):
+        return self.tokens
+
 
 class blank_line(line):
     '''

@@ -346,3 +346,27 @@ This rule checks the signal declaration is on a single line.
    signal sig1 : std_logic;
 
    signal sig2 : std_logic;
+
+signal_017
+==========
+
+This rule handles formatting of signal declarations with more than one signal.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   signal sig1, sig2
+     sig3, sig4,
+     sig5
+     : std_logic;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   signal sig1,
+          sig2,
+          sig3,
+          sig4,
+          sig5 : std_logic;
