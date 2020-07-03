@@ -1202,15 +1202,15 @@ def remove_consecutive_characters(sString, sChar):
     fSemiColonFound = False
     sReturn = ''
     for sMyChar in sString:
-       if not sMyChar == sChar:
-           sReturn += sMyChar
-           fSemiColonFound = False
-       if fSemiColonFound:
-           continue
-       if not fSemiColonFound:
-           if sMyChar == ';':
-               sReturn += sMyChar
-               fSemiColonFound = True
+        if not sMyChar == sChar:
+            sReturn += sMyChar
+            fSemiColonFound = False
+        if fSemiColonFound:
+            continue
+        if not fSemiColonFound:
+            if sMyChar == ';':
+                sReturn += sMyChar
+                fSemiColonFound = True
     return sReturn
 
 
