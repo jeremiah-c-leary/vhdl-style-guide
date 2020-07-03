@@ -1185,3 +1185,80 @@ def remove_parenthesis(sString, iOpenCount=0, iCloseCount=0):
             sReturn = sReturn[:iIndex]
 
     return sReturn
+
+
+def remove_consecutive_characters(sString, sChar):
+    '''
+    Removes consecutive characters from a string.
+
+    Paramters:
+
+        sString : (string)
+
+        sChar : (single character string)
+
+    Returns: (string)
+    '''
+    fSemiColonFound = False
+    sReturn = ''
+    for sMyChar in sString:
+        if not sMyChar == sChar:
+            sReturn += sMyChar
+            fSemiColonFound = False
+        if fSemiColonFound:
+            continue
+        if not fSemiColonFound:
+            if sMyChar == ';':
+                sReturn += sMyChar
+                fSemiColonFound = True
+    return sReturn
+
+
+def find_comment_index_in_string(sString):
+    '''
+    Finds the index of a comment in a string.
+
+    Parameters:
+
+        sString: (string)
+
+    Returns: (None) or (Integer)
+    '''
+    iReturn = None
+    fDoubleQuoteFound = False
+    iLastCommentIndex = 0
+    sLastChar = ''
+    for iIndex, sChar in enumerate(sString):
+        if sChar == '"' and not fDoubleQuoteFound:
+            fDoubleQuoteFound = True
+            continue
+        if sChar == '"' and fDoubleQuoteFound:
+            fDoubleQuoteFound = False
+            continue
+        if not fDoubleQuoteFound:
+            if sLastChar == '-' and sChar == '-':
+                iReturn = iIndex
+                break
+            sLastChar = sChar
+    return iReturn
+
+
+def split_line_on_comment(sString):
+    '''
+    Split a string at the index a comment is found and returns a list with two strings.
+
+    Parameters:
+
+        sString : (string)
+
+    Returns: (list of strings)
+    '''
+    lReturn = []
+    iIndex = find_comment_index_in_string(sString)
+    if iIndex is None:
+        lReturn.append(sString)
+        lReturn.append('')
+    else:
+        lReturn.append(sString[:iIndex])
+        lReturn.append(sString[iIndex:])
+    return lReturn
