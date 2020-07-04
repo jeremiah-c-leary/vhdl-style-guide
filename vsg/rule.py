@@ -18,7 +18,7 @@ class rule():
         self.severity = severity.set_error_severity
         self.dFix = {}
         self.dFix['violations'] = {}
-        self.configuration = ['indentSize', 'phase', 'disable', 'fixable']
+        self.configuration = ['indentSize', 'phase', 'disable', 'fixable', 'severity']
 
     def configure(self, dConfiguration):
         '''Configures attributes on rules using a dictionary of the following form:
@@ -158,6 +158,7 @@ class rule():
         dConfig = {}
         for sParameter in self.configuration:
             dConfig[sParameter] = getattr(self, sParameter)
+        dConfig['severity'] = self.severity.name
         return dConfig
 
     def _get_solution(self, iLineNumber):
