@@ -50,7 +50,7 @@ class rule():
             dViolation['severity'] = {}
             dViolation['severity']['name'] = self.severity.name
             dViolation['severity']['type'] = self.severity.type
-            dViolation['rule'] = self.name + '_' + self.identifier
+            dViolation['rule'] = self.get_unique_id()
             dViolation['lineNumber'] = sViolation
             dViolation['solution'] = self._get_solution(iLineNumber)
             lReturn.append(dViolation)
@@ -128,17 +128,12 @@ class rule():
         '''
         Updates rule attributes based on configuration input files
         '''
-        if self.severity is None and self.get_unique_id() not in list(dConfiguration['rule'].keys()):
-            self.severity = dConfiguration['severity_list'].get_severity_named('Error')
-        elif self.severity is None and 'severity' not in list(dConfiguration['rule'][self.get_unique_id()].keys()):
-            self.severity = dConfiguration['severity_list'].get_severity_named('Error')
-
         try:
-            for sAttributeName in dConfiguration['rule'][self.name + '_' + self.identifier]:
+            for sAttributeName in dConfiguration['rule'][self.get_unique_id()]:
                 if sAttributeName == 'severity':
-                    self.severity = dConfiguration['severity_list'].get_severity_named(dConfiguration['rule'][self.name + '_' + self.identifier]['severity'])
+                    self.severity = dConfiguration['severity_list'].get_severity_named(dConfiguration['rule'][self.get_unique_id()]['severity'])
                 elif sAttributeName in self.__dict__:
-                    self.__dict__[sAttributeName] = dConfiguration['rule'][self.name + '_' + self.identifier][sAttributeName]
+                    self.__dict__[sAttributeName] = dConfiguration['rule'][self.get_unique_id()][sAttributeName]
         except KeyError:
             pass
 
@@ -147,7 +142,7 @@ class rule():
         Checks if the rule has been disabled for a given line.
         '''
         if 'vsg_off' in oLine.codeTags:
-            if len(oLine.codeTags['vsg_off']) == 0 or self.name + '_' + self.identifier in oLine.codeTags['vsg_off']:
+            if len(oLine.codeTags['vsg_off']) == 0 or self.get_unique_id() in oLine.codeTags['vsg_off']:
                 return True
         return False
 

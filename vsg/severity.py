@@ -1,10 +1,13 @@
 
+error_type = 'error'
+warning_type = 'warning'
+
 
 class error():
 
     def __init__(self, name):
         self.name = name
-        self.type = 'error'
+        self.type = error_type
         self.count = 0
 
 
@@ -12,8 +15,12 @@ class warning():
 
     def __init__(self, name):
         self.name = name
-        self.type = 'warning'
+        self.type = warning_type
         self.count = 0
+
+
+set_error_severity = error('Error')
+set_warning_severity = warning('Warning')
 
 
 class create_list():
@@ -69,9 +76,9 @@ def _extract_severities_from_configuration(dConfiguration):
     lReturn = []
     if 'severity' in dConfiguration:
         for sKey in list(dConfiguration['severity']):
-            if dConfiguration['severity'][sKey]['type'] == 'error':
+            if dConfiguration['severity'][sKey]['type'] == error_type:
                 lReturn.append(error(sKey))
-            elif dConfiguration['severity'][sKey]['type'] == 'warning':
+            elif dConfiguration['severity'][sKey]['type'] == warning_type:
                 lReturn.append(warning(sKey))
     return lReturn
 
@@ -91,6 +98,3 @@ def _update_severities_from_configuration(self, dConfiguration):
         self.add_severity(oSeverity)
         self.iMaxNameLength = max(self.iMaxNameLength, len(oSeverity.name))
 
-
-set_error_severity = error('Error')
-set_warning_severity = warning('Warning')

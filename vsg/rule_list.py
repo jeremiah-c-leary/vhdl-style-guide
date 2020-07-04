@@ -6,6 +6,7 @@ import inspect
 from . import junit
 from . import report
 from . import utils
+from . import severity
 
 
 def get_python_modules_from_directory(sDirectoryName, lModules):
@@ -111,10 +112,12 @@ class rule_list():
 
       oVhdlFile: (vhdlFile object)
 
+      oSeverityList: (severity list object)
+
       sLocalRulesDirectory: (string) (optional)
     '''
     def __init__(self, oVhdlFile, oSeverityList, sLocalRulesDirectory=None):
-        self.rules = (load_rules())
+        self.rules = load_rules()
         if sLocalRulesDirectory:
             self.rules.extend(load_local_rules(sLocalRulesDirectory))
         self.iNumberRulesRan = 0
@@ -123,7 +126,6 @@ class rule_list():
         self.maximumPhase = maximum_phase(self.rules)
         self.violations = False
         self.oSeverityList = oSeverityList
-
 
     def fix(self, iFixPhase=7, lSkipPhase=[]):
         '''
@@ -140,12 +142,48 @@ class rule_list():
                 continue
             
             for subphase in range(1, 3):
-                for oRule in self.rules:
-                    if oRule.phase == phase and oRule.subphase == subphase and not oRule.disable:
-                        if oRule.severity.type == 'error':
-                            oRule.fix(self.oVhdlFile)
-                        else:
-                            oRule.analyze(self.oVhdlFile)
+                lRules = self.get_rules_in_phase(phase)
+                lRules = self.get_rules_in_subphase(lRules, subphase)
+                lRules = filter_out_disabled_rules(lRules)
+                for oRule in lRules:
+                    if oRule.severity.type == severity.error_type:
+                        oRule.fix(self.oVhdlFile)
+                    else:
+                        oRule.analyze(self.oVhdlFile)
+
+    def get_rules_in_phase(self, iPhaseNumber):
+        '''
+        Returns a list of rules in a given phase.
+
+        Parameters:
+
+          iPhaseNumber : (integer)
+
+        Returns: (list of rule objects)
+        '''
+        lReturn = []
+        for oRule in self.rules:
+            if oRule.phase == iPhaseNumber:
+                lReturn.append(oRule)
+        return lReturn
+
+    def get_rules_in_subphase(self, lRules, iSubPhase):
+        '''
+        Returns a list of rules in a given subphase.
+
+        Parameters:
+
+          lRules : (list of rule objects)
+
+          iSubPhase : (integer)
+
+        Returns: (list of rule objects)
+        '''
+        lReturn = []
+        for oRule in lRules:
+            if oRule.subphase == iSubPhase:
+                lReturn.append(oRule)
+        return lReturn
 
     def check_rules(self, lSkipPhase=[]):
         '''
@@ -162,13 +200,16 @@ class rule_list():
         for phase in range(1, 10):
             if phase in lSkipPhase:
                 continue
-            for oRule in self.rules:
-                if oRule.phase == phase and not oRule.disable:
-                    oRule.analyze(self.oVhdlFile)
-                    if oRule.severity.type == 'error':
-                        iFailures += len(oRule.violations)
-                    self.iNumberRulesRan += 1
-                    self.lastPhaseRan = phase
+
+            lRules = self.get_rules_in_phase(phase)
+            lRules = filter_out_disabled_rules(lRules)
+            
+            for oRule in lRules:
+                oRule.analyze(self.oVhdlFile)
+                if oRule.severity.type == severity.error_type:
+                    iFailures += len(oRule.violations)
+                self.iNumberRulesRan += 1
+                self.lastPhaseRan = phase
             if iFailures > 0:
                 self.violations = True
                 break
@@ -194,7 +235,9 @@ class rule_list():
         dRunInfo['stopPhase'] = self.lastPhaseRan
         dRunInfo['num_rules_checked'] = self.iNumberRulesRan
         dRunInfo['total_violations'] = len(dRunInfo['violations'])
+        dRunInfo['maxSeverityNameLength'] = self.oSeverityList.iMaxNameLength
         dRunInfo['severities'] = {}
+
         for oSeverity in self.oSeverityList.get_severities():
             dRunInfo['severities'][oSeverity.name] = oSeverity.count
 
@@ -281,3 +324,20 @@ class rule_list():
     def clear_violations(self):
         for oRule in self.rules:
             oRule.clear_violations()
+
+
+def filter_out_disabled_rules(lRules):
+    '''
+    Removes rules which are disabled from a list of rule objects.
+
+    Parameters:
+
+      lRules : (list of rule objects)
+
+    Returns: (list of rule objects)
+    '''
+    lReturn = []
+    for oRule in lRules:
+        if not oRule.disable:
+            lReturn.append(oRule)
+    return lReturn

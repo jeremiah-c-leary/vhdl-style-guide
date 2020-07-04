@@ -4,9 +4,9 @@ File:  entity.vhd
 Phase 2 of 7... Reporting
 Total Rules Checked: 154
 Total Violations:    5
-  Error                :     4
-  Warning              :     0
-  Guideline            :     1
+  Error     :     4
+  Warning   :     0
+  Guideline :     1
 ----------------------------+------------+------------+--------------------------------------
   Rule                      |  severity  |  line(s)   | Solution
 ----------------------------+------------+------------+--------------------------------------

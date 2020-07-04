@@ -2,6 +2,18 @@
 iLineLength = 80
 
 
+def print_output(dRunInfo):
+    '''
+    Displays results to stdout in standard VSG format.
+
+    Parameters:
+      dRunInfo (dictionary)
+    '''
+    print_header(dRunInfo['filename'])
+    print_stats(dRunInfo)
+    print_violations(dRunInfo)
+
+
 def print_header(sFilename):
     '''
     Prints the header for displaying results.
@@ -44,19 +56,34 @@ def print_violation_header():
     print_divider()
 
 
-def print_output(dRunInfo):
+def print_stats(dRunInfo):
     '''
-    Displays results to stdout in standard VSG format.
+    Displays information about the run such as number failures.
 
     Parameters:
-      dRunInfo (dictionary)
+
+      dRunInfo : (dictionary)
+
+    Returns: Nothing
     '''
-    print_header(dRunInfo['filename'])
     print('Phase ' + str(dRunInfo['stopPhase']) + ' of 7... Reporting')
     print('Total Rules Checked: ' + str(dRunInfo['num_rules_checked']))
     print('Total Violations:    ' + str(dRunInfo['total_violations']))
     for sSeverity in list(dRunInfo['severities'].keys()):
-        print('  {0:<20s} : {1:5d}'.format(sSeverity, dRunInfo['severities'][sSeverity]))
+        sFormat = '  {0:<' + str(dRunInfo['maxSeverityNameLength']) + 's} : {1:5d}'
+        print(sFormat.format(sSeverity, dRunInfo['severities'][sSeverity]))
+
+
+def print_violations(dRunInfo):
+    '''
+    Displays information about each violations.
+
+    Parameters:
+
+      dRunInfo : (dictionary)
+
+    Returns: Nothing
+    '''
     if dRunInfo['total_violations'] > 0:
         print_violation_header()
         for dViolation in dRunInfo['violations']:
