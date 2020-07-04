@@ -4,6 +4,7 @@ import unittest
 
 from vsg import vhdlFile
 from vsg import rule_list
+from vsg import severity
 from vsg.tests import utils
 
 sSourceDir = os.path.join(os.path.dirname(__file__),'..','..','code_examples','graphicsaccelerator')
@@ -25,10 +26,12 @@ oFrameBuffer =  vhdlFile.vhdlFile(lFrameBuffer)
 
 dLegacyConfig = utils.read_configuration(os.path.join(os.path.dirname(__file__),'..','..','..','..','styles', 'indent_only.yaml'))
 
+oSeverityList = severity.create_list({})
+
 class testCodeExample(unittest.TestCase):
 
     def test_bresenhamer(self):
-        oRuleList = rule_list.rule_list(oBresenhamer)
+        oRuleList = rule_list.rule_list(oBresenhamer, oSeverityList)
         oRuleList.configure(dLegacyConfig)
         oRuleList.fix(7, dLegacyConfig['skip_phase'])
         lExpected = ['']
@@ -37,7 +40,7 @@ class testCodeExample(unittest.TestCase):
             self.assertEqual(oBresenhamer.lines[iLineNumber].line, sLine)
 
     def test_debouncer(self):
-        oRuleList = rule_list.rule_list(oDebouncer)
+        oRuleList = rule_list.rule_list(oDebouncer, oSeverityList)
         oRuleList.configure(dLegacyConfig)
         oRuleList.fix(7, dLegacyConfig['skip_phase'])
         lExpected = ['']
@@ -46,7 +49,7 @@ class testCodeExample(unittest.TestCase):
             self.assertEqual(oDebouncer.lines[iLineNumber].line, sLine)
 
     def test_vga_top(self):
-        oRuleList = rule_list.rule_list(oVgatop)
+        oRuleList = rule_list.rule_list(oVgatop, oSeverityList)
         oRuleList.configure(dLegacyConfig)
         oRuleList.fix(7, dLegacyConfig['skip_phase'])
         lExpected = ['']
@@ -55,7 +58,7 @@ class testCodeExample(unittest.TestCase):
             self.assertEqual(oVgatop.lines[iLineNumber].line, sLine)
 
     def test_pointer(self):
-        oRuleList = rule_list.rule_list(oPointer)
+        oRuleList = rule_list.rule_list(oPointer, oSeverityList)
         oRuleList.configure(dLegacyConfig)
         oRuleList.fix(7, dLegacyConfig['skip_phase'])
         lExpected = ['']
@@ -64,7 +67,7 @@ class testCodeExample(unittest.TestCase):
             self.assertEqual(oPointer.lines[iLineNumber].line, sLine)
 
     def test_freqdiv(self):
-        oRuleList = rule_list.rule_list(oFreqDiv)
+        oRuleList = rule_list.rule_list(oFreqDiv, oSeverityList)
         oRuleList.configure(dLegacyConfig)
         oRuleList.fix(7, dLegacyConfig['skip_phase'])
         lExpected = ['']
@@ -73,7 +76,7 @@ class testCodeExample(unittest.TestCase):
             self.assertEqual(oFreqDiv.lines[iLineNumber].line, sLine)
 
     def test_synchronizer(self):
-        oRuleList = rule_list.rule_list(oSynchronizer)
+        oRuleList = rule_list.rule_list(oSynchronizer, oSeverityList)
         oRuleList.configure(dLegacyConfig)
         oRuleList.fix(7, dLegacyConfig['skip_phase'])
         lExpected = ['']
@@ -82,7 +85,7 @@ class testCodeExample(unittest.TestCase):
             self.assertEqual(oSynchronizer.lines[iLineNumber].line, sLine)
 
     def test_framebuffer(self):
-        oRuleList = rule_list.rule_list(oFrameBuffer)
+        oRuleList = rule_list.rule_list(oFrameBuffer, oSeverityList)
         oRuleList.configure(dLegacyConfig)
         oRuleList.fix(7, dLegacyConfig['skip_phase'])
         lExpected = ['']

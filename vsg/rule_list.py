@@ -113,7 +113,7 @@ class rule_list():
 
       sLocalRulesDirectory: (string) (optional)
     '''
-    def __init__(self, oVhdlFile, sLocalRulesDirectory=None):
+    def __init__(self, oVhdlFile, oSeverityList, sLocalRulesDirectory=None):
         self.rules = (load_rules())
         if sLocalRulesDirectory:
             self.rules.extend(load_local_rules(sLocalRulesDirectory))
@@ -122,6 +122,8 @@ class rule_list():
         self.oVhdlFile = oVhdlFile
         self.maximumPhase = maximum_phase(self.rules)
         self.violations = False
+        self.oSeverityList = oSeverityList
+
 
     def fix(self, iFixPhase=7, lSkipPhase=[]):
         '''
@@ -140,7 +142,10 @@ class rule_list():
             for subphase in range(1, 3):
                 for oRule in self.rules:
                     if oRule.phase == phase and oRule.subphase == subphase and not oRule.disable:
-                        oRule.fix(self.oVhdlFile)
+                        if oRule.severity.type == 'error':
+                            oRule.fix(self.oVhdlFile)
+                        else:
+                            oRule.analyze(self.oVhdlFile)
 
     def check_rules(self, lSkipPhase=[]):
         '''
@@ -160,7 +165,8 @@ class rule_list():
             for oRule in self.rules:
                 if oRule.phase == phase and not oRule.disable:
                     oRule.analyze(self.oVhdlFile)
-                    iFailures += len(oRule.violations)
+                    if oRule.severity.type == 'error':
+                        iFailures += len(oRule.violations)
                     self.iNumberRulesRan += 1
                     self.lastPhaseRan = phase
             if iFailures > 0:
@@ -179,16 +185,18 @@ class rule_list():
         dRunInfo['filename'] = self.oVhdlFile.filename
         dRunInfo['stopPhase'] = 7
         dRunInfo['violations'] = []
-        for phase in range(1, self.lastPhaseRan + 1):
-            for iLineNumber in range(0, len(self.oVhdlFile.lines)):
-                for oRule in self.rules:
-                    if oRule.phase == phase and oRule.has_violations():
-                        dRunInfo['stopPhase'] = phase
-                        lViolations = oRule.get_violations_at_linenumber(iLineNumber)
-                        dRunInfo['violations'].extend(lViolations)
+        for iLineNumber in range(0, len(self.oVhdlFile.lines)):
+            for oRule in self.rules:
+                if oRule.has_violations():
+                    lViolations = oRule.get_violations_at_linenumber(iLineNumber)
+                    dRunInfo['violations'].extend(lViolations)
 
+        dRunInfo['stopPhase'] = self.lastPhaseRan
         dRunInfo['num_rules_checked'] = self.iNumberRulesRan
         dRunInfo['total_violations'] = len(dRunInfo['violations'])
+        dRunInfo['severities'] = {}
+        for oSeverity in self.oSeverityList.get_severities():
+            dRunInfo['severities'][oSeverity.name] = oSeverity.count
 
         if sOutputFormat == 'vsg':
             report.vsg_stdout.print_output(dRunInfo)
@@ -269,3 +277,7 @@ class rule_list():
             sId = oRule.name + '_' + oRule.identifier
             dConfiguration[sId] = oRule.get_configuration()
         return dConfiguration
+
+    def clear_violations(self):
+        for oRule in self.rules:
+            oRule.clear_violations()

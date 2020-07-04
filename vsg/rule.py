@@ -1,5 +1,8 @@
 
 
+from vsg import severity
+
+
 class rule():
 
     def __init__(self, name=None, identifier=None):
@@ -12,6 +15,7 @@ class rule():
         self.subphase = 1
         self.disable = False
         self.fixable = True
+        self.severity = severity.set_error_severity
         self.dFix = {}
         self.dFix['violations'] = {}
         self.configuration = ['indentSize', 'phase', 'disable', 'fixable']
@@ -43,10 +47,16 @@ class rule():
     def _build_violation_dict(self, lReturn, sViolation, iLineNumber):
         if str(sViolation).startswith(str(iLineNumber) + '-') or str(iLineNumber) == str(sViolation):
             dViolation = {}
+            dViolation['severity'] = {}
+            dViolation['severity']['name'] = self.severity.name
+            dViolation['severity']['type'] = self.severity.type
             dViolation['rule'] = self.name + '_' + self.identifier
             dViolation['lineNumber'] = sViolation
             dViolation['solution'] = self._get_solution(iLineNumber)
             lReturn.append(dViolation)
+
+    def get_unique_id(self):
+        return self.name + '_' + self.identifier
 
     def get_violations_at_linenumber(self, iLineNumber):
         '''
@@ -80,7 +90,7 @@ class rule():
         if self.fixable:
             self.analyze(oFile)
             self._fix_violations(oFile)
-            self.violations = []
+            self.clear_violations()
             self.dFix = {}
             self.dFix['violations'] = {}
 
@@ -90,6 +100,7 @@ class rule():
         '''
         if lineNumber not in self.violations:
             self.violations.append(lineNumber)
+            self.severity.count += 1
 
     def analyze(self, oFile):
         '''
@@ -106,7 +117,9 @@ class rule():
         '''
         try:
             for sAttributeName in dConfiguration['rule']['global']:
-                if sAttributeName in self.__dict__:
+                if sAttributeName == 'severity':
+                    self.severity = dConfiguration['severity_list'].get_severity_named(dConfiguration['rule']['global']['severity'])
+                elif sAttributeName in self.__dict__:
                     self.__dict__[sAttributeName] = dConfiguration['rule']['global'][sAttributeName]
         except KeyError:
             pass
@@ -115,9 +128,16 @@ class rule():
         '''
         Updates rule attributes based on configuration input files
         '''
+        if self.severity is None and self.get_unique_id() not in list(dConfiguration['rule'].keys()):
+            self.severity = dConfiguration['severity_list'].get_severity_named('Error')
+        elif self.severity is None and 'severity' not in list(dConfiguration['rule'][self.get_unique_id()].keys()):
+            self.severity = dConfiguration['severity_list'].get_severity_named('Error')
+
         try:
             for sAttributeName in dConfiguration['rule'][self.name + '_' + self.identifier]:
-                if sAttributeName in self.__dict__:
+                if sAttributeName == 'severity':
+                    self.severity = dConfiguration['severity_list'].get_severity_named(dConfiguration['rule'][self.name + '_' + self.identifier]['severity'])
+                elif sAttributeName in self.__dict__:
                     self.__dict__[sAttributeName] = dConfiguration['rule'][self.name + '_' + self.identifier][sAttributeName]
         except KeyError:
             pass
@@ -152,6 +172,9 @@ class rule():
         This method is called before the _analyze method and allows each rule to setup any variables needed.
         '''
         return
+
+    def clear_violations(self):
+        self.violations = []
 
 
 def check_for_old_violation_format(violation):

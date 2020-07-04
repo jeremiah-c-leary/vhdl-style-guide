@@ -4,6 +4,7 @@ import unittest
 from vsg.rules import comment
 from vsg import vhdlFile
 from vsg import rule_list
+from vsg import severity
 from vsg.tests import utils
 
 # Read in test file used for all tests
@@ -14,6 +15,8 @@ oFileProcess = vhdlFile.vhdlFile(lFileProcess)
 lFileLibrary = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'comment_library_test_input.vhd'))
 oFileLibrary = vhdlFile.vhdlFile(lFileLibrary)
 
+
+oSeverityList = severity.create_list({})
 
 class testFixRuleCommentMethods(unittest.TestCase):
 
@@ -31,7 +34,7 @@ class testFixRuleCommentMethods(unittest.TestCase):
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_001(self):
-        oRuleList = rule_list.rule_list(oFileLibrary)
+        oRuleList = rule_list.rule_list(oFileLibrary, oSeverityList)
         oRuleList.fix()
         oRuleList.check_rules()
 
@@ -41,7 +44,7 @@ class testFixRuleCommentMethods(unittest.TestCase):
         self.assertEqual(oFileLibrary.lines[3].line, '  -- Comment 1')
         self.assertEqual(oFileLibrary.lines[7].line, '  -- Comment 1')
 
-        oRuleList = rule_list.rule_list(oFileLibrary)
+        oRuleList = rule_list.rule_list(oFileLibrary, oSeverityList)
         oRuleList.check_rules()
         iExpectedFailures = 0
         iFailures = 0

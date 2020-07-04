@@ -175,6 +175,9 @@ class testRuleMethods(unittest.TestCase):
         dExpected['rule'] = 'xyz_001'
         dExpected['lineNumber'] = '1'
         dExpected['solution'] = 'Solution'
+        dExpected['severity'] = {}
+        dExpected['severity']['name'] = 'Error'
+        dExpected['severity']['type'] = 'error'
         lExpected.append(dExpected)
 
         lActual = oRule.get_violations_at_linenumber(1)
@@ -185,11 +188,17 @@ class testRuleMethods(unittest.TestCase):
         dExpected['rule'] = 'xyz_001'
         dExpected['lineNumber'] = '2'
         dExpected['solution'] = 'Solution'
+        dExpected['severity'] = {}
+        dExpected['severity']['name'] = 'Error'
+        dExpected['severity']['type'] = 'error'
         lExpected.append(dExpected)
         dExpected = {}
         dExpected['rule'] = 'xyz_001'
         dExpected['lineNumber'] = '2'
         dExpected['solution'] = 'Solution'
+        dExpected['severity'] = {}
+        dExpected['severity']['name'] = 'Error'
+        dExpected['severity']['type'] = 'error'
         lExpected.append(dExpected)
 
         lActual = oRule.get_violations_at_linenumber(2)

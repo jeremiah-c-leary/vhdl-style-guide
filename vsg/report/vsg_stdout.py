@@ -27,13 +27,15 @@ def print_divider():
     '''
     Prints a divider that matches the column divisions in the violations.
     '''
-    print('-'*28 + '+' + '-'*12 + '+' + '-'*38)
+    print('-'*28 + '+' + '-'*12 + '+' + '-'*12 + '+' + '-'*38)
 
 
 def print_violation_header():
     print_divider()
     sOutputString = '  '
     sOutputString += 'Rule'.ljust(25)
+    sOutputString += ' | '
+    sOutputString += 'severity'.center(10)
     sOutputString += ' | '
     sOutputString += 'line(s)'.center(10)
     sOutputString += ' | '
@@ -53,11 +55,15 @@ def print_output(dRunInfo):
     print('Phase ' + str(dRunInfo['stopPhase']) + ' of 7... Reporting')
     print('Total Rules Checked: ' + str(dRunInfo['num_rules_checked']))
     print('Total Violations:    ' + str(dRunInfo['total_violations']))
+    for sSeverity in list(dRunInfo['severities'].keys()):
+        print('  {0:<20s} : {1:5d}'.format(sSeverity, dRunInfo['severities'][sSeverity]))
     if dRunInfo['total_violations'] > 0:
         print_violation_header()
         for dViolation in dRunInfo['violations']:
             sOutputString = '  '
             sOutputString += dViolation['rule'].ljust(25)
+            sOutputString += ' | '
+            sOutputString += dViolation['severity']['name'].ljust(10)
             sOutputString += ' | '
             sOutputString += dViolation['lineNumber'].rjust(10)
             sOutputString += ' | '

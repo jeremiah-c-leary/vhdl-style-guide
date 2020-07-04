@@ -7,7 +7,10 @@ def print_output(dRunInfo):
       dRunInfo (dictionary)
     '''
     for dViolation in dRunInfo['violations']:
-        sOutputString = 'ERROR: '
+        if dViolation['severity']['type'] == 'error':
+            sOutputString = 'ERROR: '
+        else:
+            sOutputString = 'WARNING: '
         sOutputString += dRunInfo['filename']
         sOutputString += '('
         sOutputString += str(dViolation['lineNumber'])

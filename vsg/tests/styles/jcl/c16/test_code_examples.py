@@ -4,6 +4,7 @@ import unittest
 
 from vsg import vhdlFile
 from vsg import rule_list
+from vsg import severity
 from vsg.tests import utils
 
 sSourceDir = os.path.join(os.path.dirname(__file__),'..','..','code_examples','c16')
@@ -17,10 +18,12 @@ oDataCore = vhdlFile.vhdlFile(lDataCore)
 
 dConfig = utils.read_configuration(os.path.join(os.path.dirname(__file__),'..','..','..','..','styles', 'jcl.yaml'))
 
+oSeverityList = severity.create_list({})
+
 class testCodeExample(unittest.TestCase):
 
     def test_baudgen(self):
-        oRuleList = rule_list.rule_list(oBaudGen)
+        oRuleList = rule_list.rule_list(oBaudGen, oSeverityList)
         oRuleList.configure(dConfig)
         oRuleList.fix()
         lExpected = ['']
@@ -29,7 +32,7 @@ class testCodeExample(unittest.TestCase):
             self.assertEqual(oBaudGen.lines[iLineNumber].line, sLine)
 
     def test_board_cpu(self):
-        oRuleList = rule_list.rule_list(oBoardCpu)
+        oRuleList = rule_list.rule_list(oBoardCpu, oSeverityList)
         oRuleList.configure(dConfig)
         oRuleList.fix()
         lExpected = ['']
@@ -38,7 +41,7 @@ class testCodeExample(unittest.TestCase):
             self.assertEqual(oBoardCpu.lines[iLineNumber].line, sLine)
 
     def test_data_core(self):
-        oRuleList = rule_list.rule_list(oDataCore)
+        oRuleList = rule_list.rule_list(oDataCore, oSeverityList)
         oRuleList.configure(dConfig)
         oRuleList.fix()
         lExpected = ['']

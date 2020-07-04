@@ -1,0 +1,19 @@
+================================================================================
+File:  entity.vhd
+================================================================================
+Phase 2 of 7... Reporting
+Total Rules Checked: 154
+Total Violations:    5
+  Error                :     4
+  Warning              :     0
+  Guideline            :     1
+----------------------------+------------+------------+--------------------------------------
+  Rule                      |  severity  |  line(s)   | Solution
+----------------------------+------------+------------+--------------------------------------
+  port_007                  | Error      |          3 | Change the number of spaces after the "in" keyword to four spaces.
+  port_007                  | Error      |          4 | Change the number of spaces after the "in" keyword to four spaces.
+  port_008                  | Error      |          6 | Change the number of spaces after the "out" keyword to three spaces.
+  port_008                  | Error      |          7 | Change the number of spaces after the "out" keyword to three spaces.
+  entity_019                | Guideline  |          9 | Add the entity name.
+----------------------------+------------+------------+--------------------------------------
+NOTE: Refer to online documentation at https://vhdl-style-guide.readthedocs.io/en/latest/index.html for more information.
