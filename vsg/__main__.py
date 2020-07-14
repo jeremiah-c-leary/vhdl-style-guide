@@ -75,7 +75,7 @@ def read_predefined_style(sStyleName):
     dReturn = {}
     if sStyleName is not None:
         sFileName = os.path.join(os.path.dirname(__file__), 'styles', sStyleName + '.yaml')
-        open_configuration_file(sFileName)
+        dReturn = open_configuration_file(sFileName)
     return dReturn
     
 
