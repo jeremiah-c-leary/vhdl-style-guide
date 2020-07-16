@@ -33,7 +33,7 @@ This is the basic form of a configuration file in YAML:
 .. code-block:: yaml
 
    ---
-   file_list:[
+   file_list:
      - fifo.vhd
      - source/spi.vhd:
          rule:
