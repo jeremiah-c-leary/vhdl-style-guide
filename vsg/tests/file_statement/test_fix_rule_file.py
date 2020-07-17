@@ -33,23 +33,3 @@ class testFixRuleFileMethods(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, lExpected)
         self.assertEqual(self.oFile.lines[9].line, '   file     defaultImage : load_file_type open read_mode is load_file_name;')
-
-    def test_fix_rule_003(self):
-        oRule = file_statement.rule_003()
-        lExpected = []
-        oRule.fix(self.oFile)
-        oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, lExpected)
-        self.assertEqual(self.oFile.lines[9].line, '   FILE defaultImage : load_file_type open read_mode is load_file_name;')
-
-    def test_fix_rule_003_w_5_spaces(self):
-        oRule = file_statement.rule_003()
-        oRule.spaces = 5
-        lExpected = []
-        oRule.fix(self.oFile)
-        oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, lExpected)
-        self.assertEqual(self.oFile.lines[4].line, '  file     defaultImage : load_file_type open read_mode is load_file_name;')
-        self.assertEqual(self.oFile.lines[9].line, '   FILE     defaultImage : load_file_type open read_mode is load_file_name;')
-        self.assertEqual(self.oFile.lines[26].line, '    file     defaultImage : load_file_type open read_mode is load_file_name;')
-

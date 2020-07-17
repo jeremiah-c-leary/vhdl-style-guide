@@ -50,19 +50,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
 variable_003
 ############
 
-This rule checks for a single space after the **variable** keyword.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   variable     count : integer;
-
-**Fix**
-
-.. code-block:: vhdl
-
-   variable count : integer;
+This rule was depricated and replaced with rules:  function_015, package_019, procedure_010, architecture_029 and process_037.
 
 variable_004
 ############

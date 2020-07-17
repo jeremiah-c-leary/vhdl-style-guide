@@ -51,7 +51,7 @@ This rule checks a single space exists after the **function** keyword.
 function_003
 ############
 
-This rule checks for a single space after the function name and the (.'
+This rule checks for a single space between the function name and the (.'
 
 **Violation**
 
@@ -329,3 +329,25 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
 
    end function foo;
 
+function_015
+############
+
+This rule checks the identifiers for all declarations are aligned in the function declarative part.
+
+Refer to the section `Configuring Identifier Alignment Rules <configuring_declaration_identifier_alignment.html>`_ for information on changing the configurations.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   variable var1 : natural;
+   signal sig1 : natural;
+   constant c_period : time;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   variable var1     : natural;
+   signal   sig1     : natural;
+   constant c_period : time;

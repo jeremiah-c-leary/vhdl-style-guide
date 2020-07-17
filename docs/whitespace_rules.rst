@@ -205,12 +205,16 @@ This rule enforces a maximum number of consecutive blank lines.
 
 **Violation**
 
+.. code-block:: vhdl
+
   a <= b;
 
 
   c <= d;
 
 **Fix**
+
+.. code-block:: vhdl
 
   a <= b;
 
@@ -238,11 +242,14 @@ This rule checks for spaces before and after logical operators.
 
 **Violation**
 
+.. code-block:: vhdl
+
   if (a = '1')and(b = '0')
   if (a = '0')or (b = '1')
 
 **Fix**
 
+.. code-block:: vhdl
+
   if (a = '1') and (b = '0')
   if (a = '0') or (b = '1')
-

@@ -32,21 +32,3 @@ class testRuleFileMethods(unittest.TestCase):
         dExpected = [{'lines':[{'number': 9}], 'words_to_fix': {'FILE'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
-
-    def test_rule_003(self):
-        oRule = file_statement.rule_003()
-        self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'file')
-        self.assertEqual(oRule.identifier, '003')
-
-        dExpected = [utils.add_violation(9)]
-        oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
-
-    def test_rule_003_w_5_spaces(self):
-        oRule = file_statement.rule_003()
-        oRule.spaces = 5
-
-        dExpected = utils.add_violation_list([4,6,11,26])
-        oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)

@@ -31,13 +31,3 @@ class testRuleAttributeMethods(unittest.TestCase):
         dExpected = [{'lines':[{'number': 9}], 'words_to_fix': {'ATTRIBUTE'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
-
-    def test_rule_003(self):
-        oRule = attribute.rule_003()
-        self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'attribute')
-        self.assertEqual(oRule.identifier, '003')
-
-        dExpected = [utils.add_violation(11)]
-        oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)

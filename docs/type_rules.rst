@@ -48,28 +48,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
 type_003
 ########
 
-This rule checks for spaces after the **type** keyword.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   type   state_machine is (idle, write, read, done);
-
-**Fix**
-
-.. code-block:: vhdl
-
-   type state_machine is (idle, write, read, done);
-
-.. NOTE:: The number of spaces after the **type** keyword is configurable.
-   Use the following YAML file example to change the default number of spaces.
-
-   .. code-block:: yaml
-
-   rule:
-     type_003:
-         spaces: 3 
+This rule was depricated and replaced with rules:  function_015, package_019, procedure_010, architecture_029 and process_037.
 
 type_004
 ########
