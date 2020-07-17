@@ -12,9 +12,11 @@ from vsg.tests import utils
 
 sEntityFileName = 'entity.vhd'
 sArchitectureFileName = 'architecture.vhd'
+sJUnitFileName = 'junit_output.xml'
 
 sEntityFile = os.path.join(os.path.dirname(__file__), sEntityFileName)
 sArchitectureFile = os.path.join(os.path.dirname(__file__), sArchitectureFileName)
+sJUnitFile = os.path.join(os.path.dirname(__file__), sJUnitFileName)
 sConfigFile = os.path.join(os.path.dirname(__file__),'config.yaml')
 sOutputFileWoConfig = os.path.join(os.path.dirname(__file__),'output_wo_config.txt')
 sOutputFileWithConfig = os.path.join(os.path.dirname(__file__),'output_w_config.txt')
@@ -30,12 +32,16 @@ class test_severity_using_main(unittest.TestCase):
             os.remove(sEntityFileName)
         if os.path.isfile(sArchitectureFileName):
             os.remove(sArchitectureFileName)
+        if os.path.isfile(sJUnitFileName):
+            os.remove(sJUnitFileName)
         shutil.copyfile(sEntityFile, sEntityFileName)
         shutil.copyfile(sArchitectureFile, sArchitectureFileName)
+        shutil.copyfile(sJUnitFile, sJUnitFileName)
 
     def tearDown(self):
         os.remove(sEntityFileName)
         os.remove(sArchitectureFileName)
+        os.remove(sJUnitFileName)
 
     @mock.patch('sys.stdout')
     def test_entity_without_configuration(self, mock_stdout):
@@ -197,3 +203,23 @@ class test_severity_using_main(unittest.TestCase):
        
         mock_stdout.write.assert_has_calls(lExpected)
     
+    @mock.patch('sys.stdout')
+    def test_junit_output(self,mock_stdout):
+        try:
+            sys.argv =  ['vsg', '-f', sEntityFileName, '-c', sConfigFile, '-j', sJUnitFileName]
+            __main__.main()
+        except SystemExit as e:
+            self.assertEqual(e.code, 1)
+
+
+        lActual = []
+        utils.read_file(sJUnitFileName, lActual)
+
+        lExpected = []
+        utils.read_file(sJUnitFile, lExpected)
+
+        self.assertEqual(len(lActual), len(lExpected))
+
+        for iIndex, sLine in enumerate(lExpected):
+            if not iIndex == 1:
+                self.assertEqual(lActual[iIndex], sLine)

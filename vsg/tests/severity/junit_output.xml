@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<testsuite errors="0" hostname="DESKTOP-HV9NHA3" failures="3" timestamp="2020-07-17T07:30:31" tests="1" time="0" name="vhdl-style-guide">
+  <properties>
+  </properties>
+  <testcase name="entity.vhd" time="0" classname="failure">
+    <failure type="Failure">
+      port_007: 3 : Change the number of spaces after the &quot;in&quot; keyword to four spaces.
+      port_007: 4 : Change the number of spaces after the &quot;in&quot; keyword to four spaces.
+      port_008: 6 : Change the number of spaces after the &quot;out&quot; keyword to three spaces.
+      port_008: 7 : Change the number of spaces after the &quot;out&quot; keyword to three spaces.
+    </failure>
+  </testcase>
+  <system-out>
+  </system-out>
+  <system-err>
+  </system-err>
+</testsuite>

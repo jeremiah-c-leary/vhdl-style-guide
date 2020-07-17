@@ -295,13 +295,13 @@ class rule_list():
         oTestcase = junit.testcase(sVhdlFileName, str(0), 'failure')
         oFailure = junit.failure('Failure')
         for oRule in self.rules:
-            if len(oRule.violations) > 0:
+            if len(oRule.violations) > 0 and oRule.severity.type == severity.error_type:
                 for dViolation in oRule.violations:
                     sLine = oRule.name + '_' + oRule.identifier + ': '
                     sLine += str(utils.get_violation_line_number(dViolation)) + ' : '
                     sLine += oRule._get_solution(dViolation)
                     oFailure.add_text(sLine)
-                oTestcase.add_failure(oFailure)
+        oTestcase.add_failure(oFailure)
 
         return oTestcase
 

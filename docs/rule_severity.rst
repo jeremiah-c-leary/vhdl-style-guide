@@ -35,11 +35,11 @@ For example, if you want to change the line length rule, *length_001*, to a **Wa
 Defining Severity Levels
 ------------------------
 
-VSG supports defini
+VSG supports user defined severity level.
 Any new severity level will follow the same rules as a **Warning** severity.
 It will be reported to the screen, but will not be reported in JUnit XML files and will not force an exit status of 1.
 
-To set your own severity level, just set the severity on the rule:
+To create your own severity level, create a configuration which defines just the severity level following this format:
 
 .. code-block:: json
 
@@ -51,7 +51,18 @@ To set your own severity level, just set the severity on the rule:
            "Todo":{
                "type":"error"
            }
-       },
+       }
+   }
+
+This configuration defines two new severities:  **Guideline** and **Todo**.
+The **Guideline** severity is set to the **warning** type.
+The **Todo** severity is set to the **error** type.
+
+The newly defined severity levels can then be applied to a rule using a second configuration.
+
+.. code-block:: json
+
+   {
        "rule":{
            "length_001":{
                "severity": "Guideline"
@@ -59,10 +70,9 @@ To set your own severity level, just set the severity on the rule:
        }
    }
 
-Suppressing by Severity Level
------------------------------
+Apply the defined severity levels by calling both configurations:
 
-When running VSG, you can use the following options to suppress
+.. code-block:: mono
 
---suppress_severity_type 
---suppress_severity_name 
+   vsg -c severity.json rule_configuration.json -f fifo.vhd
+
