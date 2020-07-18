@@ -151,7 +151,7 @@ Usage
 VSG is a both a command line tool and a python package.
 The command line tool can be invoked with:
 
-.. code-block:: mono
+.. code-block:: bash
 
    $ vsg
    usage: VHDL Style Guide (VSG) [-h] [-f FILENAME [FILENAME ...]] [-lr LOCAL_RULES] [-c CONFIGURATION [CONFIGURATION ...]] [--fix]
