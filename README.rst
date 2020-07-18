@@ -25,10 +25,28 @@ VHDL Style Guide (VSG)
    :target: https://gitter.im/vhdl-style-guide/community
    :alt: Gitter
 
-.. NOTE:: Version 1.0 of VSG supports python 3 only due to python 2.7 End of Life in 2019.
-          The python 2.7 version is being maintained on the python-2.7-maintence branch.
+Announcements
+-------------
 
-VHDL Style Guide (VSG) provides coding style guide enforcement for VHDL code.
+Version 2 has been released.
+
+Please be aware that there are some rule incompatabilities with the 1.x releases:
+
+#. The default for all case rules is now lowercase
+#. Alignment rules have changed significantly
+#. Some rules have been moved to group them with the correct rule sets
+
+These changes will require another tunning of the rules against your code.
+Refer to the documentation on configuring case and alignment rules.
+There are many more options for the alignment rules than in the 1.x releases.
+
+There are additional features added from version 1:
+
+#. Alignment of identifiers has been added
+#. Built in styles
+#. Improved console output
+
+Refer to the release notes for a full listing of features and bug fixes.
 
 .. image:: https://github.com/jeremiah-c-leary/vhdl-style-guide/blob/master/docs/img/vim_macro.gif
 
@@ -46,8 +64,7 @@ Table of Contents
 Overview
 --------
 
-VSG was created after participating in a code review.
-A real issue in the code was masked by a coding style issue.
+VSG was created after participating in a code review where a real issue in the code was masked by a coding style issue.
 A finding was created for the style issue, while the real issue was missed.
 When the code was re-reviewed, the real issue was discovered.
 
@@ -79,7 +96,7 @@ Key Features
 
 * Command line tool
 
-  * integrate into continuous integration flow
+  * integrate into continuous integration flow with JUnit output
 
 * Reports and fixes issues found
 
@@ -96,13 +113,16 @@ Key Features
 
   * Disable rules
   * Alter behavior of existing rules
-  * Change phase of execution
 
 * Localize rule sets
 
   * Create your own rules using python
   * Use existing rules as a template
   * Fully integrates into base rule set
+
+* Built in styles
+
+  * Use existing style or create your own
 
 Installation
 ------------
