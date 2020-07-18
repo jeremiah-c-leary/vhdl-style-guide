@@ -33,6 +33,11 @@ class testGeneralRule(unittest.TestCase):
         dViolation['line'] = '  signal siga, sigb,     sigc,     sigd,     sige,     sigf     : std_logic; -- This is a comment'
         lExpected.append(dViolation)
 
+        dViolation = utils.add_violation(79)
+        dViolation['endLine'] = 79
+        dViolation['line'] = '  signal foo, bar, mine : std_logic_vector(maximum(G_A, G_B) + maximum(C_A, C_B)-1 downto 0);'
+        lExpected.append(dViolation)
+
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, lExpected)
 
@@ -94,6 +99,11 @@ class testGeneralRule(unittest.TestCase):
         dViolation['line'] = '  signal sig1, sig2 : std_logic; -- Comma, should not induce a failure'
         lExpected.append(dViolation)
 
+        dViolation = utils.add_violation(79)
+        dViolation['endLine'] = 79
+        dViolation['line'] = '  signal foo, bar, mine : std_logic_vector(maximum(G_A, G_B) + maximum(C_A, C_B)-1 downto 0);'
+        lExpected.append(dViolation)
+
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, lExpected)
 
@@ -128,6 +138,9 @@ class testGeneralRule(unittest.TestCase):
         self.assertEqual(self.oFile.lines[16].line, '  signal sige : std_logic; -- This is a comment')
         self.assertEqual(self.oFile.lines[17].line, '  signal sigf : std_logic; -- This is a comment')
 
+        self.assertEqual(self.oFile.lines[83].line, '  signal foo : std_logic_vector(maximum(G_A, G_B) + maximum(C_A, C_B)-1 downto 0);')
+        self.assertEqual(self.oFile.lines[84].line, '  signal bar : std_logic_vector(maximum(G_A, G_B) + maximum(C_A, C_B)-1 downto 0);')
+        self.assertEqual(self.oFile.lines[85].line, '  signal mine : std_logic_vector(maximum(G_A, G_B) + maximum(C_A, C_B)-1 downto 0);')
         self.assertEqual(oRule.violations, [])
 
     def test_fix_rule_015_default_consecutive_1(self):
@@ -177,6 +190,10 @@ class testGeneralRule(unittest.TestCase):
 
         self.assertEqual(self.oFile.lines[65].line, '  signal sig1 : std_logic; -- Comma, should not induce a failure')
         self.assertEqual(self.oFile.lines[66].line, '  signal sig2 : std_logic; -- Comma, should not induce a failure')
+
+        self.assertEqual(self.oFile.lines[70].line, '  signal foo : std_logic_vector(maximum(G_A, G_B) + maximum(C_A, C_B)-1 downto 0);')
+        self.assertEqual(self.oFile.lines[71].line, '  signal bar : std_logic_vector(maximum(G_A, G_B) + maximum(C_A, C_B)-1 downto 0);')
+        self.assertEqual(self.oFile.lines[72].line, '  signal mine : std_logic_vector(maximum(G_A, G_B) + maximum(C_A, C_B)-1 downto 0);')
 
         self.assertEqual(oRule.violations, [])
 
