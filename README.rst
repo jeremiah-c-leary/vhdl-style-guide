@@ -21,7 +21,7 @@ VHDL Style Guide (VSG)
 .. image:: https://api.codacy.com/project/badge/Grade/42744dca97544824b93cfc99e8030063
    :target: https://www.codacy.com/app/jeremiah-c-leary/vhdl-style-guide?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jeremiah-c-leary/vhdl-style-guide&amp;utm_campaign=Badge_Grade
    :alt: Codacy
-.. image:: https://gitter.im/vhdl-style-guide/community
+.. image:: https://gitter.im/vhdl-style-guide/repo.png
    :target: https://gitter.im/vhdl-style-guide/community
    :alt: Gitter
 
