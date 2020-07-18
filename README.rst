@@ -21,7 +21,7 @@ VHDL Style Guide (VSG)
 .. image:: https://api.codacy.com/project/badge/Grade/42744dca97544824b93cfc99e8030063
    :target: https://www.codacy.com/app/jeremiah-c-leary/vhdl-style-guide?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jeremiah-c-leary/vhdl-style-guide&amp;utm_campaign=Badge_Grade
    :alt: Codacy
-.. image:: https://gitter.im/vhdl-style-guide/repo.png
+.. image:: https://badges.gitter.im/vhdl-style-guide/repo.png
    :target: https://gitter.im/vhdl-style-guide/community
    :alt: Gitter
 
@@ -131,17 +131,15 @@ Usage
 VSG is a both a command line tool and a python package.
 The command line tool can be invoked with:
 
-.. code-block:: bash
+.. code-block:: mono
 
    $ vsg
-   usage: VHDL Style Guide (VSG) [-h] [-f FILENAME [FILENAME ...]]
-                                 [-lr LOCAL_RULES]
-                                 [-c CONFIGURATION [CONFIGURATION ...]] [--fix]
-                                 [-fp FIX_PHASE] [-j JUNIT] [-of {vsg,syntastic}]
-                                 [-b] [-oc OUTPUT_CONFIGURATION] [-v]
+   usage: VHDL Style Guide (VSG) [-h] [-f FILENAME [FILENAME ...]] [-lr LOCAL_RULES] [-c CONFIGURATION [CONFIGURATION ...]] [--fix]
+                                 [-fp FIX_PHASE] [-j JUNIT] [-of {vsg,syntastic}] [-b] [-oc OUTPUT_CONFIGURATION]
+                                 [-rc RULE_CONFIGURATION] [--style {indent_only,jcl}] [-v] [--debug]
    
-   Analyzes VHDL files for style guide violations. Reference documentation is
-   located at: http://vhdl-style-guide.readthedocs.io/en/latest/index.html
+   Analyzes VHDL files for style guide violations. Reference documentation is located at: http://vhdl-style-
+   guide.readthedocs.io/en/latest/index.html
    
    optional arguments:
      -h, --help            show this help message and exit
@@ -158,11 +156,15 @@ The command line tool can be invoked with:
                            Extract Junit file
      -of {vsg,syntastic}, --output_format {vsg,syntastic}
                            Sets the output format.
-     -b, --backup          Creates copy of input file for comparison with fixed
-                           version.
+     -b, --backup          Creates a copy of input file for comparison with fixed version.
      -oc OUTPUT_CONFIGURATION, --output_configuration OUTPUT_CONFIGURATION
-                           Output configuration file name
+                           Write configuration to file name.
+     -rc RULE_CONFIGURATION, --rule_configuration RULE_CONFIGURATION
+                           Display configuration of a rule
+     --style {indent_only,jcl}
+                           Use predefined style
      -v, --version         Displays version information
+     --debug               Displays verbose debug information
 
 Here is an example output running against a test file:
 
