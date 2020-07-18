@@ -10,6 +10,7 @@ lIteration = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','..
 oIteration = vhdlFile.vhdlFile(lIteration)
 
 dLegacyConfig = utils.read_configuration(os.path.join(os.path.dirname(__file__),'..','..','..','..','styles', 'indent_only.yaml'))
+dLegacyConfig['debug'] = False
 
 class testCodeExample(unittest.TestCase):
 

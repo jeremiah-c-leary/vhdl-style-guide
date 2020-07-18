@@ -16,6 +16,7 @@ lDataCore = utils.read_vhdlfile(os.path.join(sSourceDir,'data_core.vhd'))
 oDataCore = vhdlFile.vhdlFile(lDataCore)
 
 dConfig = utils.read_configuration(os.path.join(os.path.dirname(__file__),'..','..','..','..','styles', 'jcl.yaml'))
+dConfig['debug'] = False
 
 class testCodeExample(unittest.TestCase):
 

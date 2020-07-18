@@ -24,6 +24,7 @@ lFrameBuffer =  utils.read_vhdlfile(os.path.join(sSourceDir,'FrameBuffer2.vhd'))
 oFrameBuffer =  vhdlFile.vhdlFile(lFrameBuffer)
 
 dConfig = utils.read_configuration(os.path.join(os.path.dirname(__file__),'..','..','..','..','styles', 'jcl.yaml'))
+dConfig['debug'] = False
 
 class testCodeExample(unittest.TestCase):
 
