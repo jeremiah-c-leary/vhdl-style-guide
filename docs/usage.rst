@@ -4,17 +4,15 @@ Usage
 VSG is a both a command line tool and a python package.
 The command line tool can be invoked with:
 
-.. code-block:: bash
+.. code-block:: mono
 
     $ vsg
-    usage: VHDL Style Guide (VSG) [-h] [-f FILENAME [FILENAME ...]]
-                                  [-lr LOCAL_RULES]
-                                  [-c CONFIGURATION [CONFIGURATION ...]] [--fix]
-                                  [-fp FIX_PHASE] [-j JUNIT] [-of {vsg,syntastic}]
-                                  [-b] [-oc OUTPUT_CONFIGURATION] [-v]
+    usage: VHDL Style Guide (VSG) [-h] [-f FILENAME [FILENAME ...]] [-lr LOCAL_RULES] [-c CONFIGURATION [CONFIGURATION ...]] [--fix]
+                                  [-fp FIX_PHASE] [-j JUNIT] [-of {vsg,syntastic}] [-b] [-oc OUTPUT_CONFIGURATION]
+                                  [-rc RULE_CONFIGURATION] [--style {indent_only,jcl}] [-v] [--debug]
     
-    Analyzes VHDL files for style guide violations. Reference documentation is
-    located at: http://vhdl-style-guide.readthedocs.io/en/latest/index.html
+    Analyzes VHDL files for style guide violations. Reference documentation is located at: http://vhdl-style-
+    guide.readthedocs.io/en/latest/index.html
     
     optional arguments:
       -h, --help            show this help message and exit
@@ -31,16 +29,23 @@ The command line tool can be invoked with:
                             Extract Junit file
       -of {vsg,syntastic}, --output_format {vsg,syntastic}
                             Sets the output format.
-      -b, --backup          Creates copy of input file for comparison with fixed
-                            version.
+      -b, --backup          Creates a copy of input file for comparison with fixed version.
       -oc OUTPUT_CONFIGURATION, --output_configuration OUTPUT_CONFIGURATION
-                            Output configuration file name
+                            Write configuration to file name.
+      -rc RULE_CONFIGURATION, --rule_configuration RULE_CONFIGURATION
+                            Display configuration of a rule
+      --style {indent_only,jcl}
+                            Use predefined style
       -v, --version         Displays version information
+      --debug               Displays verbose debug information
 
 **Command Line Options**
 
 +-------------------------------+-------------------------------------------------+
 | Option                        |  Description                                    |
++-------------------------------+-------------------------------------------------+
+| --debug                       | Print verbose debug information to assist with  |
+|                               | debuging errors with VSG.                       |
 +===============================+=================================================+
 | -f FILENAME                   | The VHDL file to be analyzed or fixed.          |
 |                               | Multiple files can be passed through this       |
@@ -78,6 +83,8 @@ The command line tool can be invoked with:
 |                               | This configuration can be fed back into VSG.    |
 +-------------------------------+-------------------------------------------------+
 | --rule_configuration          | Displays the configuration of a rule.           |
++-------------------------------+-------------------------------------------------+
+| --style                       | Use a built in coding style.                    |
 +-------------------------------+-------------------------------------------------+
 | --version                     | Displays the version of VSG.                    |
 +-------------------------------+-------------------------------------------------+
