@@ -32,6 +32,7 @@ class line():
         self.lineLower = line.lower()
         self.lineNoComment = utils.remove_comment(line)
         self.tokens, self.separators = tokens.create(self.line)
+        self.objects = []
 
         self.indentLevel = None
         # Misc attributes
@@ -242,6 +243,15 @@ class line():
         self.codeTags = {}
         # After attributes
         self.hasAfterKeyword = False
+        # Context attributes
+        self.hasContextKeyword = False
+        self.hasContextIdentifier = False
+        self.hasContextIs = False
+        self.hasContextEnd = False
+        self.hasContextEndKeyword = False
+        self.hasContextEndIdentifier = False
+        self.hasContextColon = False
+        self.insideContext = False
 
     def update_line(self, sLine):
         '''
@@ -271,6 +281,38 @@ class line():
             if sString.lower() == sTok.lower():
                 return True
         return False
+
+    def get_zipped_tokens(self):
+        lReturn = []
+        if len(self.tokens) > 0:
+            for i in range(len(self.tokens)):
+                try:
+                    if not '' == self.separators[i]:
+                        lReturn.append(self.separators[i])
+                except IndexError:
+                    pass
+                lReturn.append(self.tokens[i])
+        return lReturn 
+
+    def get_objects(self):
+        return self.objects
+
+    def update_objects(self, lObjects):
+        '''
+        Takes a list of objects and updates the self.line, self.lineLower, self.lineNoComment, self.tokens and self.separators attributes.
+        '''
+        self.objects = lObjects
+        sLine = ''
+        for oObject in self.objects:
+            sLine += oObject.get_value()
+        self.update_line(sLine)
+
+    def is_blank(self):
+        return self.isBlank
+
+    def is_comment(self):
+        return self.isComment
+           
 
 class blank_line(line):
     '''

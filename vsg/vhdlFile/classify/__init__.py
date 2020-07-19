@@ -9,6 +9,7 @@ from .comment import comment
 from .component import component
 from .concurrent import concurrent
 from .constant import constant
+from .context import context
 from .entity import entity
 from .file_statement import file_statement
 from .for_loop import for_loop
@@ -31,6 +32,7 @@ from .variable_assignment import variable_assignment
 from .variable import variable
 from .when import when
 from .while_loop import while_loop
+from .whitespace import whitespace
 from .with_statement import with_statement
 from .block import block
 from .wait import wait

@@ -2,7 +2,9 @@
 from vsg import line
 from vsg.vhdlFile import update
 from vsg.vhdlFile import classify
+from vsg import parser
 
+oItem = parser.item('unclassified_item')
 
 class vhdlFile():
     '''
@@ -47,16 +49,26 @@ class vhdlFile():
         dVars['fConstantArray'] = False
         dVars['iForLoopLevel'] = 0
         dVars['bFirstWhenSeen'] = False
+        dVars['bInsideContext'] = False
+        dVars['bContextIsFound'] = False
+        dVars['bContextEndFound'] = False
 
         oLinePrevious = line.blank_line()
 
         for sLine in self.filecontent:
             oLine = line.line(sLine.replace('\t', '  ').rstrip())
+            lTokens = oLine.get_zipped_tokens()
+            lObjects = [] 
+            for i in range(len(lTokens)):
+                lObjects.append(oItem)
+            
 #            preIndent = str(dVars['iCurrentIndentLevel'])
             update.inside_attributes(dVars, self.lines[-1], oLine)
 
             classify.blank(oLine)
-            classify.comment(dVars, oLine)
+            classify.whitespace(lTokens, lObjects)
+            classify.comment(dVars, lTokens, lObjects, oLine)
+            classify.context(self, dVars, lTokens, lObjects, oLine)
             classify.library(oLine)
             classify.entity(self, dVars, oLine)
             classify.assert_statement(dVars, oLine)
@@ -111,4 +123,45 @@ class vhdlFile():
             # Add line to file
             self.lines.append(oLine)
             oLinePrevious = oLine
+            oLine.objects = lObjects
+#            print('-'*80)
+#            print(oLine.line)
+#            print(lObjects)
 #            print('[' + preIndent + '][' + oLine.line + '][' + str(oLine.indentLevel) + ']')
+
+    def get_lines(self):
+        return self.lines
+
+    def get_line(self, iLineNumber):
+        return self.lines[iLineNumber]
+
+    def get_context_declarations(self):
+        lReturn = []
+        dContext = {}
+        dContext['metadata'] = {}
+        dContext['metadata']['iStartLineNumber'] = 0
+        dContext['metadata']['iEndLineNumber'] = 0
+        dContext['lines'] = []
+        bContextKeywordFound = False
+        bContextColonFound = False
+        for iLine, oLine in enumerate(self.lines):
+            for oObject in oLine.objects:
+                if isinstance(oObject, parser.context_keyword):
+                    bContextKeywordFound = True
+                    dContext['metadata']['iStartLineNumber'] = iLine
+                if isinstance(oObject, parser.context_colon):   
+                    bContextColonFound = True
+                    dContext['metadata']['iEndLineNumber'] = iLine
+            if bContextKeywordFound:
+                dContext['lines'].append(oLine)
+            if bContextColonFound:
+                lReturn.append(dContext)
+                dContext = {}
+                dContext['metadata'] = {}
+                dContext['metadata']['iStartLineNumber'] = 0
+                dContext['metadata']['iEndLineNumber'] = 0
+                dContext['lines'] = []
+                bContextKeywordFound = False
+                bContextColonFound = False
+        return lReturn
+  
