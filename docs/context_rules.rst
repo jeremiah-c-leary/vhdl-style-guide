@@ -106,10 +106,10 @@ This rule checks the context identifier is on the same line as the **context** k
    context c1
      is
 
-context_005
+context_006
 ###########
 
-This rule checks the **is** keyword is on the same line as the **context** keyword.
+This rule checks the **is** keyword is on the same line as the context identifier.
 
 **Violation**
 
@@ -124,7 +124,139 @@ This rule checks the **is** keyword is on the same line as the **context** keywo
 
    context c1 is
 
-context_006
+context_007
+###########
+
+This rule checks for code after the **is** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   context c1 is -- Comments are allowed
+
+   context c1 is library ieee; -- This is not allowed
+
+**Fix**
+
+.. code-block:: vhdl
+
+   context c1 is -- Comments are allowed
+
+   context c1 is
+     library ieee; -- This is not allowed
+
+context_008
+###########
+
+This rule checks the **end** keyword is on it's own line.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   context c1 is library ieee; end context c1;
+
+   context c1 is library ieee; end;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   context c1 is library ieee;
+   end context c1;
+
+   context c1 is library ieee;
+   end;
+
+context_009
+###########
+
+This rule checks the **context** keyword is on the same line as the end context keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   end 
+   context c1;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   end context 
+     c1;
+
+context_010
+###########
+
+This rule checks the context identifier is on the same line as the end context keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   end context
+   c1;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   end context c1;
+
+context_011
+###########
+
+This rule checks the semicolon is on the same line as the **end** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   end
+   ;
+
+   end context
+   ;
+
+   end context c1
+   ;
+
+
+**Fix**
+
+.. code-block:: vhdl
+
+   end;
+
+   end context;
+
+   end context c1;
+
+
+context_012
+###########
+
+This rule checks the context identifier has proper case in the context declaration.
+
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   context C1 is
+
+**Fix**
+
+.. code-block:: vhdl
+
+   context c1 is
+
+
+context_013
 ###########
 
 This rule checks the **is** keyword has proper case in the context declaration.
@@ -143,62 +275,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
 
    context c1 is
 
-context_007
-###########
-
-This rule checks for a single space before the **is** keyword.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   context c1    is
-
-**Fix**
-
-.. code-block:: vhdl
-
-   context c1 is
-
-context_008
-###########
-
-This rule checks the context name has proper case in the context declaration.
-
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   context C1 is 
-
-**Fix**
-
-.. code-block:: vhdl
-
-   context c1 is 
-
-context_009
-###########
-
-This rule checks the indent of the **end** keyword.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   use ieee.numeric_std.all;
-   end context c1;
-
-**Fix**
-
-.. code-block:: vhdl
-
-     use ieee.numeric_std.all;
-   end context c1;
-
-context_010
+context_014
 ###########
 
 This rule checks the **end** keyword has proper case.
@@ -209,35 +286,41 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
 
 .. code-block:: vhdl
 
-   END context c1;
+   End;
+
+   END context;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   end context c1;
+   end;
 
-context_011
+   end context;
+
+context_015
 ###########
 
-This rule checks for a single space after the **end** keyword.
+This rule checks the context keyword has proper case in the end context declaration.
+
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
 
 .. code-block:: vhdl
 
-   end   context c1;
+   end CONTEXT;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   end context c1;
+   end context;
 
-context_012
+context_016
 ###########
 
-This rule checks the case of the context name in the **end context** statement.
+This rule checks the context identifier has proper case in the end context declaration.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
@@ -253,14 +336,54 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
 
    end context c1;
 
-context_013
+context_017
 ###########
 
-This rule checks for a single space after the **context** keyword in the closing of the context declaration.
+This rule checks for a single space after the context identifier.
 
 **Violation**
 
 .. code-block:: vhdl
+
+   context c1    is
+
+**Fix**
+
+.. code-block:: vhdl
+
+   context c1 is
+
+context_018
+###########
+
+This rule checks for a single space after the **end** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   end;
+
+   end   context;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   end;
+
+   end context;
+
+context_019
+###########
+
+This rule checks for a single space after the context keyword in end context declaration.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   end context;
 
    end context    c1;
 
@@ -268,28 +391,30 @@ This rule checks for a single space after the **context** keyword in the closing
 
 .. code-block:: vhdl
 
+   end context;
+
    end context c1;
 
-context_014
+context_020
 ###########
 
-This rule checks the **context** keyword has proper case in the closing of the context declaration.
-
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+This rule checks the indent of the **end** keyword.
 
 **Violation**
 
 .. code-block:: vhdl
 
-   end CONTEXT c1;
+   context c1 is
+      end context c1;
 
 **Fix**
 
 .. code-block:: vhdl
 
+   context c1 is
    end context c1;
 
-context_015
+context_021
 ###########
 
 This rule checks for the keyword **context** in the **end context** statement.
@@ -310,29 +435,7 @@ This rule checks for the keyword **context** in the **end context** statement.
 
    end context;
 
-context_016
-###########
-
-This rule checks for blank lines above the **end context** keywords.
-
-**Violation**
-
-.. code-block:: vhdl
-
-     use ieee.std_logic.all; 
-
-   end context c1;
-
-
-**Fix**
-
-.. code-block:: vhdl
-
-     use ieee.std_logic.all; 
-
-   end context c1;
-
-context_017
+context_022
 ###########
 
 This rule checks for the context name in the **end context** statement.
@@ -349,7 +452,50 @@ This rule checks for the context name in the **end context** statement.
 
    end context c1;
 
-context_018
+context_023
+###########
+
+This rule removes blank lines above the **end context** keywords.
+
+**Violation**
+
+.. code-block:: vhdl
+
+     use ieee.std_logic.all; 
+
+   end context c1;
+
+
+**Fix**
+
+.. code-block:: vhdl
+
+     use ieee.std_logic.all; 
+   end context c1;
+
+context_024
+###########
+
+This rule adds a blank line below the **end context** keywords.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   end context c1;
+   a <= b;
+
+
+**Fix**
+
+.. code-block:: vhdl
+
+   end context c1;
+
+   a <= b;
+
+
+context_025
 ###########
 
 This rule checks for alignment of inline comments in the context declaration.
