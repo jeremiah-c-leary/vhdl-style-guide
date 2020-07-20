@@ -27,7 +27,7 @@ This rule checks the indent of the **context** keyword.
 context_002
 ###########
 
-This rule checks for a single space after the **context** keyword.
+This rule checks for a single space between the **context** keyword and the context identifier.
 
 **Violation**
 
@@ -339,7 +339,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
 context_017
 ###########
 
-This rule checks for a single space after the context identifier.
+This rule checks for a single space between the context identifier and the **is** keyword.
 
 **Violation**
 
@@ -356,7 +356,7 @@ This rule checks for a single space after the context identifier.
 context_018
 ###########
 
-This rule checks for a single space after the **end** keyword.
+This rule checks for a single space between the **end** keyword and the **context** keyword.
 
 **Violation**
 
@@ -377,7 +377,7 @@ This rule checks for a single space after the **end** keyword.
 context_019
 ###########
 
-This rule checks for a single space after the context keyword in end context declaration.
+This rule checks for a single space between the **context** keyword and the context identifier.
 
 **Violation**
 
@@ -493,7 +493,6 @@ This rule adds a blank line below the **end context** keywords.
    end context c1;
 
    a <= b;
-
 
 context_025
 ###########

@@ -18,6 +18,8 @@ from .case_rule import case_rule
 from .prefix_rule import prefix_rule
 from .suffix_rule import suffix_rule
 from .identifier_alignment_rule import identifier_alignment_rule
+from .space_after_item_rule import space_after_item_rule
+from .space_between_items_rule import space_between_items_rule
 
 from vsg.rules import after
 from vsg.rules import architecture
