@@ -34,7 +34,7 @@ def context(self, dVars, lTokens, lObjects, oLine):
 
                classify_context_end_identifier(sToken, iToken, lObjects)
 
-               classify_colon(sToken, iToken, lObjects, dVars)
+               classify_semicolon(sToken, iToken, lObjects, dVars)
 
             classify_context_end_keyword(sToken, iToken, lObjects, dVars)
  
@@ -42,9 +42,9 @@ def context(self, dVars, lTokens, lObjects, oLine):
             classify_context_keyword(sToken, iToken, lObjects, dVars)
 
 
-def classify_colon(sToken, iToken, lObjects, dVars):
+def classify_semicolon(sToken, iToken, lObjects, dVars):
     if sToken == ';':
-        lObjects[iToken] = parser.context_colon(sToken)
+        lObjects[iToken] = parser.context_semicolon()
         dVars['bInsideContext'] = False
         dVars['bContextIsFound'] = False
         dVars['bContextEndFound'] = False

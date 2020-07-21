@@ -8,6 +8,7 @@ from vsg import parser
 lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','context','context_classification_test_input.vhd'))
 oFile = vhdlFile.vhdlFile(lFile)
 
+
 class test_context(unittest.TestCase):
 
     def test_context_keyword(self):
@@ -124,7 +125,7 @@ class test_context(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
-    def test_context_colon(self):
+    def test_context_semicolon(self):
         lExpected = []
         lExpected.append((4,5))
         lExpected.append((10,5))
@@ -139,7 +140,7 @@ class test_context(unittest.TestCase):
         lActual = []
         for iLine, lLine in enumerate(oFile.get_lines()):
             for iItem, oItem in enumerate(lLine.objects):
-                if isinstance(oItem, parser.context_colon):
+                if isinstance(oItem, parser.context_semicolon):
                     lActual.append((iLine, iItem))
 
         self.assertEqual(lExpected, lActual)

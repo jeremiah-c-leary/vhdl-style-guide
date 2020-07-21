@@ -49,9 +49,14 @@ class vhdlFile():
         dVars['fConstantArray'] = False
         dVars['iForLoopLevel'] = 0
         dVars['bFirstWhenSeen'] = False
+
         dVars['bInsideContext'] = False
         dVars['bContextIsFound'] = False
         dVars['bContextEndFound'] = False
+
+        dVars['bInsideLibrary'] = False
+
+        dVars['bInsideUse'] = False
 
         oLinePrevious = line.blank_line()
 
@@ -69,7 +74,8 @@ class vhdlFile():
             classify.whitespace(lTokens, lObjects)
             classify.comment(dVars, lTokens, lObjects, oLine)
             classify.context(self, dVars, lTokens, lObjects, oLine)
-            classify.library(oLine)
+            classify.library(dVars, lTokens, lObjects, oLine)
+            classify.use(dVars, lTokens, lObjects, oLine)
             classify.entity(self, dVars, oLine)
             classify.assert_statement(dVars, oLine)
 
@@ -149,7 +155,7 @@ class vhdlFile():
                 if isinstance(oObject, parser.context_keyword):
                     bContextKeywordFound = True
                     dContext['metadata']['iStartLineNumber'] = iLine
-                if isinstance(oObject, parser.context_colon):   
+                if isinstance(oObject, parser.context_semicolon):   
                     bContextColonFound = True
                     dContext['metadata']['iEndLineNumber'] = iLine
             if bContextKeywordFound:
@@ -165,3 +171,5 @@ class vhdlFile():
                 bContextColonFound = False
         return lReturn
   
+    def insert_line(self, iLineNumber, oLine):
+        self.lines.insert(iLineNumber, oLine)

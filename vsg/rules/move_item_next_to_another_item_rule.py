@@ -6,7 +6,7 @@ from vsg import utils
 from vsg import parser
 
 
-class move_item_rule(rule.rule):
+class move_item_next_to_another_item_rule(rule.rule):
     '''
     Moves an item next to another.
 

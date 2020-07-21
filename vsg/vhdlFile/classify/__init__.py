@@ -28,6 +28,7 @@ from .sequential import sequential
 from .signal import signal
 from .subtype import subtype
 from .type_definition import type_definition
+from .use import use
 from .variable_assignment import variable_assignment
 from .variable import variable
 from .when import when
