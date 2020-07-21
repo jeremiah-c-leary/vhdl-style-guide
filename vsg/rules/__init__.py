@@ -23,6 +23,7 @@ from .space_between_items_rule import space_between_items_rule
 from .insert_item_after_item_rule import insert_item_after_item_rule
 from .copy_item_value_and_insert_new_item_after_item_rule import copy_item_value_and_insert_new_item_after_item_rule
 from .move_items_after_item_to_next_line_rule import move_items_after_item_to_next_line_rule
+from .move_item_and_items_to_the_right_to_next_line_rule import move_item_and_items_to_the_right_to_next_line_rule 
 
 from vsg.rules import after
 from vsg.rules import architecture
