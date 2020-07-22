@@ -176,3 +176,32 @@ class vhdlFile():
 
     def remove_line(self, iLineNumber):
         self.lines.pop(iLineNumber)
+
+    def get_lines_starting_with_item_or_whitespace_and_then_item(self, parserType):
+        lReturn = []
+
+        for iLine, oLine in enumerate(self.lines):
+            if _does_line_start_with_item_or_whitespace_and_then_item(oLine, parserType):
+                dEntry = _create_empty_return_dictionary()
+                dEntry['metadata']['iStartLineNumber'] = iLine
+                dEntry['metadata']['iEndLineNumber'] = iLine
+                dEntry['lines'].append(oLine)
+                lReturn.append(dEntry)
+
+        return lReturn
+
+def _create_empty_return_dictionary():
+    dReturn = {}
+    dReturn['metadata'] = {}
+    dReturn['metadata']['iStartLineNumber'] = 0
+    dReturn['metadata']['iEndLineNumber'] = 0
+    dReturn['lines'] = []
+    return dReturn
+
+def _does_line_start_with_item_or_whitespace_and_then_item(oLine, parserType):
+    if isinstance(oLine.get_object(0), parserType):
+        return True
+    if isinstance(oLine.get_object(0), parser.whitespace) and isinstance(oLine.get_object(1), parserType):
+        return True
+    return False
+

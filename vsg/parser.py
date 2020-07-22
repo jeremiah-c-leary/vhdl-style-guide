@@ -23,6 +23,12 @@ class item():
 ###############################################################################
 
 
+class none(item):
+
+    def __init__(self):
+        item.__init__(self, None)
+
+
 class keyword(item):
 
     def __init__(self, sString):
@@ -62,6 +68,7 @@ class comment(item):
 ###############################################################################
 # Context objects
 ###############################################################################
+
 
 class context_keyword(keyword):
 

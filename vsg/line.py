@@ -2,9 +2,11 @@
 try:
     from vsg import utils
     from vsg import tokens
+    from vsg import parser
 except ImportError:
     import utils
     import tokens
+    import parser
 
 
 class line():
@@ -297,6 +299,12 @@ class line():
     def get_objects(self):
         return self.objects
 
+    def get_object(self, iObject):
+        try:
+            return self.objects[iObject]
+        except IndexError:
+            return parser.none
+
     def update_objects(self, lObjects):
         '''
         Takes a list of objects and updates the self.line, self.lineLower, self.lineNoComment, self.tokens and self.separators attributes.
@@ -313,6 +321,9 @@ class line():
     def is_comment(self):
         return self.isComment
            
+    def get_indent_level(self):
+        return self.indentLevel
+
 
 class blank_line(line):
     '''

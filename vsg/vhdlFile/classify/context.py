@@ -36,10 +36,10 @@ def context(self, dVars, lTokens, lObjects, oLine):
 
                classify_semicolon(sToken, iToken, lObjects, dVars)
 
-            classify_context_end_keyword(sToken, iToken, lObjects, dVars)
+            classify_context_end_keyword(sToken, iToken, lObjects, dVars, oLine)
  
         else:
-            classify_context_keyword(sToken, iToken, lObjects, dVars)
+            classify_context_keyword(sToken, iToken, lObjects, dVars, oLine)
 
 
 def classify_semicolon(sToken, iToken, lObjects, dVars):
@@ -60,10 +60,12 @@ def classify_context_end_context_keyword(sToken, iToken, lObjects):
         lObjects[iToken] = parser.context_end_context_keyword(sToken)
 
 
-def classify_context_end_keyword(sToken, iToken, lObjects, dVars):
+def classify_context_end_keyword(sToken, iToken, lObjects, dVars, oLine):
     if sToken.lower() == 'end':
         lObjects[iToken] = parser.context_end_keyword(sToken)
         dVars['bContextEndFound'] = True
+        if iToken < 2:
+            oLine.indentLevel = 0
 
 
 def classify_context_is_keyword(sToken, iToken, lObjects, dVars):
@@ -77,8 +79,9 @@ def classify_context_identifier(sToken, iToken, lObjects, dVars):
         lObjects[iToken] = parser.context_identifier(sToken)
 
 
-def classify_context_keyword(sToken, iToken, lObjects, dVars):
+def classify_context_keyword(sToken, iToken, lObjects, dVars, oLine):
     if sToken.lower() == 'context':
         lObjects[iToken] = parser.context_keyword(sToken)
         dVars['bInsideContext'] = True
-
+        if iToken < 2:
+            oLine.indentLevel = 0
