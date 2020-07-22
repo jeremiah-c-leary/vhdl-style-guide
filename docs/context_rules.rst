@@ -455,46 +455,110 @@ This rule checks for the context name in the **end context** statement.
 context_023
 ###########
 
-This rule removes blank lines above the **end context** keywords.
+This rule adds a blank line below the **is** keyword.
 
 **Violation**
 
 .. code-block:: vhdl
 
-     use ieee.std_logic.all; 
-
-   end context c1;
-
+   context c1 is
+     library IEEE;
 
 **Fix**
 
 .. code-block:: vhdl
 
-     use ieee.std_logic.all; 
-   end context c1;
+   context c1 is
+
+     library IEEE;
 
 context_024
 ###########
 
-This rule adds a blank line below the **end context** keywords.
+This rule adds a blank line above the **end** keyword.
 
 **Violation**
 
 .. code-block:: vhdl
 
-   end context c1;
-   a <= b;
-
+     use ieee.std_logic_1164.all;
+   end context;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   end context c1;
+     use ieee.std_logic_1164.all;
 
-   a <= b;
+   end context;
 
 context_025
+###########
+
+This rule adds a blank line below the context semicolon.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   end context;
+   entity fifo is
+
+**Fix**
+
+.. code-block:: vhdl
+
+   end context;
+
+   entity fifo is
+
+context_026
+###########
+
+This rule ensures a single blank line after the **context** keword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   context c1 is
+
+
+
+     library ieee;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   context c1 is
+
+     library ieee;
+
+context_027
+###########
+
+This rule ensures a single blank line before the **end** keword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+     use ieee.std_logic_1164.all;
+
+
+
+   end context;
+
+**Fix**
+
+.. code-block:: vhdl
+
+     use ieee.std_logic_1164.all;
+
+   end context;
+
+context_028
 ###########
 
 This rule checks for alignment of inline comments in the context declaration.

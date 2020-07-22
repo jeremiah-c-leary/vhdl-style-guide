@@ -173,3 +173,6 @@ class vhdlFile():
   
     def insert_line(self, iLineNumber, oLine):
         self.lines.insert(iLineNumber, oLine)
+
+    def remove_line(self, iLineNumber):
+        self.lines.pop(iLineNumber)
