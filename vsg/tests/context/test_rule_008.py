@@ -28,30 +28,37 @@ class test_context_rule(unittest.TestCase):
         lExpected = []
         dViolation = utils.add_violation(9)
         dViolation['iObject'] = 6
+        dViolation['solution'] = 'Move "end" and the code to the right to the next line.'
         lExpected.append(dViolation)
 
         dViolation = utils.add_violation(13)
         dViolation['iObject'] = 7
+        dViolation['solution'] = 'Move "end" and the code to the right to the next line.'
         lExpected.append(dViolation)
 
         dViolation = utils.add_violation(20)
         dViolation['iObject'] = 6
+        dViolation['solution'] = 'Move "end" and the code to the right to the next line.'
         lExpected.append(dViolation)
 
         dViolation = utils.add_violation(26)
         dViolation['iObject'] = 6
+        dViolation['solution'] = 'Move "end" and the code to the right to the next line.'
         lExpected.append(dViolation)
 
         dViolation = utils.add_violation(31)
         dViolation['iObject'] = 16
+        dViolation['solution'] = 'Move "end" and the code to the right to the next line.'
         lExpected.append(dViolation)
 
         dViolation = utils.add_violation(33)
         dViolation['iObject'] = 16
+        dViolation['solution'] = 'Move "end" and the code to the right to the next line.'
         lExpected.append(dViolation)
 
         dViolation = utils.add_violation(35)
         dViolation['iObject'] = 16
+        dViolation['solution'] = 'Move "end" and the code to the right to the next line.'
         lExpected.append(dViolation)
 
         oRule.analyze(self.oFile)

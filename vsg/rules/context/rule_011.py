@@ -11,5 +11,6 @@ class rule_011(move_item_next_to_another_item_rule):
 
     def __init__(self):
         move_item_next_to_another_item_rule.__init__(self, 'context', '011', [parser.context_end_identifier, parser.context_end_context_keyword, parser.context_end_keyword], parser.context_semicolon)
+        self.disabled = True
         self.solution = None
         self.subphase = 2

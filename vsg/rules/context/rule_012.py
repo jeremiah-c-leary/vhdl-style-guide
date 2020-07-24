@@ -1,13 +1,13 @@
 
 from vsg import parser
-from vsg.rules import new_case_rule
+from vsg.rules import case_item_rule
 
 
-class rule_012(new_case_rule):
+class rule_012(case_item_rule):
     '''
     Checks the context identifier has proper case.
 
     '''
 
     def __init__(self):
-        new_case_rule.__init__(self, 'context', '012', parser.context_identifier)
+        case_item_rule.__init__(self, 'context', '012', parser.context_identifier)

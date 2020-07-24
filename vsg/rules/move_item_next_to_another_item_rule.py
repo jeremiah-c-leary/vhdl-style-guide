@@ -1,6 +1,4 @@
 
-from vsg import fix
-from vsg import check
 from vsg import rule
 from vsg import utils
 from vsg import parser
@@ -20,11 +18,12 @@ class move_item_next_to_another_item_rule(rule.rule):
        unique identifier.  Usually in the form of 00N.
 
     left : parser object type
+       The anchor object the other object must be moved next to
 
     right : parser object type
+       The object that will be moved next to the anchor object
     '''
-
-    def __init__(self, name=None, identifier=None, left=None, right=None):
+    def __init__(self, name, identifier, left, right):
         rule.rule.__init__(self, name=name, identifier=identifier)
         self.solution = None
         self.phase = 1
@@ -33,18 +32,23 @@ class move_item_next_to_another_item_rule(rule.rule):
         self.right = right
 
     def analyze(self, oFile):
+        self._print_debug_message('Analyzing rule: ' + self.name + '_' + self.identifier)
         lContexts = oFile.get_context_declarations()
         for dContext in lContexts:
             iLeftLineNumber = None
             iRightLineNumber = None
+            sLeftValue = None
+            sRightValue = None
             bBreak = False
             for iLine, oLine in enumerate(dContext['lines']):
                 lObjects = oLine.get_objects()
                 for oObject in lObjects:
                     if isinstance(oObject, self.left):
                         iLeftLineNumber = iLine
+                        sLeftValue = oObject.get_value()
                     if isinstance(oObject, self.right):
                         iRightLineNumber = iLine
+                        sRightValue = oObject.get_value()
                         bBreak = True
                 if bBreak:
                     break
@@ -53,6 +57,7 @@ class move_item_next_to_another_item_rule(rule.rule):
             if iLeftLineNumber != iRightLineNumber:
                 dViolation = utils.create_violation_dict(dContext['metadata']['iStartLineNumber'] + iRightLineNumber)
                 dViolation['iLeftLineNumber'] = iLeftLineNumber + dContext['metadata']['iStartLineNumber']
+                dViolation['solution'] = f'Move "{sRightValue}" to the right of "{sLeftValue}" on line ' + str(dViolation['iLeftLineNumber'])
                 self.add_violation(dViolation)
 
     def _fix_violations(self, oFile):
@@ -82,3 +87,6 @@ class move_item_next_to_another_item_rule(rule.rule):
                     lObjects.insert(iObject + 1, parser.whitespace(' '))
                     oLine.update_objects(lObjects)
                     break
+
+    def _get_solution(self, iLineNumber):
+        return utils.get_violation_solution_at_line_number(self.violations, iLineNumber)

@@ -26,9 +26,19 @@ class test_context_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'context')
         self.assertEqual(oRule.identifier, '021')
 
-        dExpected = utils.add_violation_list([14, 18])
+        lExpected = []
+        dViolation = utils.add_violation(14)
+        dViolation['solution'] = 'Add "context" after "end"'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(18)
+        dViolation['solution'] = 'Add "context" after "end"'
+        lExpected.append(dViolation)
+
         oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule.violations, lExpected)
+
+        self.assertEqual('Add "context" after "end"', oRule._get_solution(14))
 
     def test_fix_rule_021(self):
         oRule = context.rule_021()

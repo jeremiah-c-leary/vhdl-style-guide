@@ -1,12 +1,10 @@
 
-from vsg import fix
-from vsg import check
 from vsg import rule
 from vsg import utils
 from vsg import parser
 
 
-class new_case_rule(rule.rule):
+class case_item_rule(rule.rule):
     '''
     Checks the case for words.
 
@@ -29,22 +27,27 @@ class new_case_rule(rule.rule):
         self.phase = 6
         self.case = 'lower'
         self.configuration.append('case')
-#        self.trigger = trigger
         self.trigger = trigger
 
     def analyze(self, oFile):
+        self._print_debug_message('Analyzing rule: ' + self.name + '_' + self.identifier)
         lContexts = oFile.get_context_declarations()
         for dContext in lContexts:
             for iLine, oLine in enumerate(dContext['lines']):
                 lObjects = oLine.get_objects()
                 for oObject in lObjects:
                     if isinstance(oObject, self.trigger):
+                        sObjectValue = oObject.get_value()
                         if self.case == 'lower':
-                            if oObject.get_value() != oObject.get_value().lower():
-                                self.add_violation(utils.create_violation_dict(dContext['metadata']['iStartLineNumber'] + iLine))
+                            if sObjectValue != sObjectValue.lower():
+                                dViolation = utils.create_violation_dict(dContext['metadata']['iStartLineNumber'] + iLine)
+                                dViolation['solution'] = 'Change "' + sObjectValue + '" to "' + sObjectValue.lower() + '"'
+                                self.add_violation(dViolation)
                         if self.case == 'upper':
-                            if oObject.get_value() != oObject.get_value().upper():
-                                self.add_violation(utils.create_violation_dict(dContext['metadata']['iStartLineNumber'] + iLine))
+                            if sObjectValue != sObjectValue.upper():
+                                dViolation = utils.create_violation_dict(dContext['metadata']['iStartLineNumber'] + iLine)
+                                dViolation['solution'] = 'Change "' + sObjectValue + '" to "' + sObjectValue.upper() + '"'
+                                self.add_violation(dViolation)
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations:
@@ -58,3 +61,6 @@ class new_case_rule(rule.rule):
                         oObject.set_value(oObject.get_value().upper())
                     oLine.update_objects(lObjects)
                     break
+
+    def _get_solution(self, iLineNumber):
+        return utils.get_violation_solution_at_line_number(self.violations, iLineNumber)

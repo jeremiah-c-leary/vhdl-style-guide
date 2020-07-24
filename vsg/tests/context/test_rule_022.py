@@ -30,14 +30,18 @@ class test_context_rule(unittest.TestCase):
 
         dViolation = utils.add_violation(9)
         dViolation['copy_value'] = 'con2'
+        dViolation['solution'] = 'Add "con2" after "context"'
         lExpected.append(dViolation)
 
         dViolation = utils.add_violation(27)
         dViolation['copy_value'] = 'con5'
+        dViolation['solution'] = 'Add "con5" after "context"'
         lExpected.append(dViolation)
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, lExpected)
+
+        self.assertEqual('Add "con2" after "context"', oRule._get_solution(9))
 
     def test_fix_rule_022(self):
         oRule = context.rule_022()

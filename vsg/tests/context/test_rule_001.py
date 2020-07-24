@@ -28,14 +28,19 @@ class test_context_rule(unittest.TestCase):
         lExpected = []
         dViolation = utils.add_violation(8)
         dViolation['action'] = 'remove'
+        dViolation['solution'] = 'Remove spaces before "context"'
         lExpected.append(dViolation)
 
         dViolation = utils.add_violation(17)
         dViolation['action'] = 'remove'
+        dViolation['solution'] = 'Remove spaces before "context"'
         lExpected.append(dViolation)
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, lExpected)
+
+        self.assertEqual(oRule._get_solution(8),'Remove spaces before "context"')
+        self.assertEqual(oRule._get_solution(17),'Remove spaces before "context"')
 
     def test_fix_rule_001(self):
         oRule = context.rule_001()

@@ -28,6 +28,7 @@ class remove_blank_lines_above_item_rule(rule.rule):
         self.trigger = trigger
 
     def analyze(self, oFile):
+        self._print_debug_message('Analyzing rule: ' + self.name + '_' + self.identifier)
         lContexts = oFile.get_context_declarations()
         for dContext in lContexts:
             bItemFound = False

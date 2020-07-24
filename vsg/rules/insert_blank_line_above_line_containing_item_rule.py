@@ -30,6 +30,7 @@ class insert_blank_line_above_line_containing_item_rule(rule.rule):
         self.configuration.append('allowComment')
 
     def analyze(self, oFile):
+        self._print_debug_message('Analyzing rule: ' + self.name + '_' + self.identifier)
         lContexts = oFile.get_context_declarations()
         for dContext in lContexts:
             oPreviousLine = oFile.lines[dContext['metadata']['iStartLineNumber'] - 1]

@@ -80,7 +80,7 @@ class rule():
         '''
         if self.fixable:
             self.analyze(oFile)
-            print_debug_message(self, 'Fixing rule: ' + self.name + '_' + self.identifier)
+            self._print_debug_message('Fixing rule: ' + self.name + '_' + self.identifier)
             self._fix_violations(oFile)
             self.violations = []
             self.dFix = {}
@@ -97,7 +97,7 @@ class rule():
         '''
         Performs the analysis.
         '''
-        print_debug_message(self, 'Analyzing rule: ' + self.name + '_' + self.identifier)
+        self._print_debug_message('Analyzing rule: ' + self.name + '_' + self.identifier)
         self._pre_analyze()
         for iLineNumber, oLine in enumerate(oFile.lines):
             if not self._is_vsg_off(oLine):
@@ -162,6 +162,18 @@ class rule():
         '''
         self.debug = True
 
+    def _print_debug_message(self, sString):
+        '''
+        Prints a debug message to stdio.
+    
+        Parameters:
+    
+          sString : (string)
+    
+        Returns: Nothing
+        '''
+        if self.debug:
+            print('INFO: ' + sString)
 
 def check_for_old_violation_format(violation):
     # Remove this some time after 2.0.0 has been released
@@ -171,15 +183,3 @@ def check_for_old_violation_format(violation):
         print('        Refer to documentation on local rules for more information.')
         sys.exit(1)
 
-def print_debug_message(self, sString):
-    '''
-    Prints a debug message to stdio.
-
-    Parameters:
-
-      sString : (string)
-
-    Returns: Nothing
-    '''
-    if self.debug:
-        print('INFO: ' + sString)

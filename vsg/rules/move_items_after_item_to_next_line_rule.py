@@ -40,26 +40,29 @@ class move_items_after_item_to_next_line_rule(rule.rule):
         self.trigger = trigger
 
     def analyze(self, oFile):
+        self._print_debug_message('Analyzing rule: ' + self.name + '_' + self.identifier)
         lContexts = oFile.get_context_declarations()
         for dContext in lContexts:
             bFound = False
             bBreak = False
+            sObjectValue = None
             for iLine, oLine in enumerate(dContext['lines']):
                 lObjects = oLine.get_objects()
                 for iObject, oObject in enumerate(lObjects):
                     if bFound == True:
                         if not isinstance(oObject, parser.whitespace) and not isinstance(oObject, parser.comment):
                             dViolation = utils.create_violation_dict(dContext['metadata']['iStartLineNumber'] + iLine)
+                            dViolation['solution'] = 'Move code after "' + sObjectValue + '" to the next line.'
                             self.add_violation(dViolation)
                             bBreak = True
                             break
                     if isinstance(oObject, self.trigger):
+                        sObjectValue = oObject.get_value()
                         bFound = True
                 if bBreak:
                     break
                 if bFound:
                     break
-
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations[::-1]:
@@ -75,3 +78,6 @@ class move_items_after_item_to_next_line_rule(rule.rule):
                     oNewLine.update_objects(lNewObjects)
                     oFile.insert_line(iLineNumber + 1, oNewLine)
                     break
+
+    def _get_solution(self, iLineNumber):
+        return utils.get_violation_solution_at_line_number(self.violations, iLineNumber)

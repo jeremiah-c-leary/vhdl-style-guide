@@ -43,6 +43,7 @@ class copy_item_value_and_insert_new_item_after_item_rule(rule.rule):
         self.insertItem = insertItem
 
     def analyze(self, oFile):
+        self._print_debug_message('Analyzing rule: ' + self.name + '_' + self.identifier)
         lContexts = oFile.get_context_declarations()
         for dContext in lContexts:
             bBeginFound = False
@@ -58,6 +59,7 @@ class copy_item_value_and_insert_new_item_after_item_rule(rule.rule):
                     if isinstance(oObject, self.begin):
                         bBeginFound = True
                         iBeginLine = iLine + dContext['metadata']['iStartLineNumber']
+                        sBeginValue = oObject.get_value()
                     if bBeginFound:
                         lAnalysis.append(oObject)
                     if bBeginFound and isinstance(oObject, self.end):
@@ -68,8 +70,8 @@ class copy_item_value_and_insert_new_item_after_item_rule(rule.rule):
                         if not bItemFound:
                             dViolation = utils.create_violation_dict(iBeginLine)
                             dViolation['copy_value'] = sCopyValue
+                            dViolation['solution'] = 'Add "' + sCopyValue + '" after "' + sBeginValue + '"'
                             self.add_violation(dViolation)
-
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations[::-1]:
@@ -84,3 +86,6 @@ class copy_item_value_and_insert_new_item_after_item_rule(rule.rule):
                     lObjects.insert(iObject + 1, parser.whitespace(' '))
                     oLine.update_objects(lObjects)
                     break
+
+    def _get_solution(self, iLineNumber):
+        return utils.get_violation_solution_at_line_number(self.violations, iLineNumber)

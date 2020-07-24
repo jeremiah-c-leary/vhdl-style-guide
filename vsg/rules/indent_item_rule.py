@@ -17,23 +17,25 @@ class indent_item_rule(rule.rule):
     identifier : string
        unique identifier.  Usually in the form of 00N.
 
-    sTrigger : string
-       The line attribute the rule applies to.
+    trigger : parser object
+       object to indent
     '''
 
     def __init__(self, name, identifier, trigger):
         rule.rule.__init__(self, name=name, identifier=identifier)
-        self.solution = 'Remove all but one blank line above this line.'
+        self.solution = 'Indent.'
         self.phase = 3
         self.trigger = trigger
 
     def analyze(self, oFile):
+        self._print_debug_message('Analyzing rule: ' + self.name + '_' + self.identifier)
         lContexts = oFile.get_lines_starting_with_item_or_whitespace_and_then_item(self.trigger)
         for dContext in lContexts:
             for oLine in dContext['lines'][::-1]:
                 if oLine.get_indent_level() == 0 and isinstance(oLine.get_object(0), parser.whitespace):
                     dViolation = utils.create_violation_dict(dContext['metadata']['iStartLineNumber'])
                     dViolation['action'] = 'remove'
+                    dViolation['solution'] = 'Remove spaces before "' + oLine.get_object(1).get_value() + '"'
                     self.add_violation(dViolation)
                     break
                 if oLine.get_indent_level() == 0:
@@ -42,12 +44,14 @@ class indent_item_rule(rule.rule):
                     dViolation = utils.create_violation_dict(dContext['metadata']['iStartLineNumber'])
                     dViolation['action'] = 'insert'
                     dViolation['insert_object'] = parser.whitespace(' ' * oLine.indentLevel)
+                    dViolation['solution'] = 'Indent ' + len(' ' * oLine.indentLevel) + 'before "' + oLine.get_object(1).get_value() + '"'
                     self.add_violation(dViolation)
                     break
                 if oLine.get_indent_level() * ' ' != oLine.get_object(0).get_value():
                     dViolation = utils.create_violation_dict(dContext['metadata']['iStartLineNumber'])
                     dViolation['action'] = 'change'
                     dViolation['iNewValue'] = ' ' * oLine.indentLevel
+                    dViolation['solution'] = 'Indent ' + len(' ' * oLine.indentLevel) + 'before "' + oLine.get_object(1).get_value() + '"'
                     self.add_violation(dViolation)
                     break
 
@@ -62,3 +66,6 @@ class indent_item_rule(rule.rule):
             else:
                 lObjects[0].set_value(dViolation['iNewValue'])
             oLine.update_objects(lObjects)
+
+    def _get_solution(self, iLineNumber):
+        return utils.get_violation_solution_at_line_number(self.violations, iLineNumber)

@@ -40,6 +40,7 @@ class move_item_and_items_to_the_right_to_next_line_rule(rule.rule):
         self.trigger = trigger
 
     def analyze(self, oFile):
+        self._print_debug_message('Analyzing rule: ' + self.name + '_' + self.identifier)
         lContexts = oFile.get_context_declarations()
         for dContext in lContexts:
             bFound = False
@@ -51,6 +52,7 @@ class move_item_and_items_to_the_right_to_next_line_rule(rule.rule):
                         if isinstance(oObject, self.trigger):
                             dViolation = utils.create_violation_dict(dContext['metadata']['iStartLineNumber'] + iLine)
                             dViolation['iObject'] = iObject
+                            dViolation['solution'] = 'Move "' + oObject.get_value() + '" and the code to the right to the next line.'
                             self.add_violation(dViolation)
 
 
@@ -67,5 +69,5 @@ class move_item_and_items_to_the_right_to_next_line_rule(rule.rule):
             oNewLine.update_objects(lNewObjects)
             oFile.insert_line(iLineNumber + 1, oNewLine)
 
-    def _get_solution(self):
-        return 'Move word ' + self.tigger.get_value() + ' and code to the right to the next line.'
+    def _get_solution(self, iLineNumber):
+        return utils.get_violation_solution_at_line_number(self.violations, iLineNumber)

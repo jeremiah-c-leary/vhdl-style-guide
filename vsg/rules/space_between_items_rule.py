@@ -17,8 +17,14 @@ class space_between_items_rule(rule.rule):
     identifier : string
        unique identifier.  Usually in the form of 00N.
 
-    sObjectType : string
-       The object to check the space after.
+    left : parser object
+       The object on the left of the spaces.
+
+    right : parser object
+       The object on the right of the spaces.
+
+    word : string
+       Outputed as part of the solution.
 
     Attributes
     ----------
@@ -39,8 +45,11 @@ class space_between_items_rule(rule.rule):
         self.sWord = word
         self.left = left
         self.right = right
+        self.regionBegin = None
+        self.regionEnd = None
 
     def analyze(self, oFile):
+        self._print_debug_message('Analyzing rule: ' + self.name + '_' + self.identifier)
         lContexts = oFile.get_context_declarations()
         for dContext in lContexts:
             for iLine, oLine in enumerate(dContext['lines']):
@@ -56,7 +65,9 @@ class space_between_items_rule(rule.rule):
                         if len(lAnalysis) == 3:
                             if isinstance(lAnalysis[1], parser.whitespace):
                                 if lAnalysis[1].get_value() != ' ' * self.spaces:
-                                    self.add_violation(utils.create_violation_dict(dContext['metadata']['iStartLineNumber'] + iLine))
+                                    dViolation = utils.create_violation_dict(dContext['metadata']['iStartLineNumber'] + iLine)
+                                    dViolation['solution'] = 'Ensure there are only ' + str(self.spaces) + ' space(s) between "' + lAnalysis[0].get_value() + '" and "' + lAnalysis[2].get_value() + '"'
+                                    self.add_violation(dViolation)
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations:
@@ -69,4 +80,4 @@ class space_between_items_rule(rule.rule):
                     break
 
     def _get_solution(self, iLineNumber):
-        return 'Ensure there are only ' + str(self.spaces) + ' space(s) after the ' + self.sWord
+        return  utils.get_violation_solution_at_line_number(self.violations, iLineNumber)

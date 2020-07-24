@@ -28,10 +28,12 @@ class test_context_rule(unittest.TestCase):
         lExpected = []
         dViolation = utils.add_violation(10)
         dViolation['action'] = 'remove'
+        dViolation['solution'] = 'Remove spaces before "end"'
         lExpected.append(dViolation)
 
         dViolation = utils.add_violation(19)
         dViolation['action'] = 'remove'
+        dViolation['solution'] = 'Remove spaces before "end"'
         lExpected.append(dViolation)
 
         oRule.analyze(self.oFile)

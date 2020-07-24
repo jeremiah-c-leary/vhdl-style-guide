@@ -29,9 +29,18 @@ class test_context_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'context')
         self.assertEqual(oRule.identifier, '016')
 
-        dExpected = utils.add_violation_list([5,13])
+        lExpected = []
+
+        dViolation = utils.add_violation(5)
+        dViolation['solution'] = 'Change "CON1" to "con1"'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(13)
+        dViolation['solution'] = 'Change "cON1" to "con1"'
+        lExpected.append(dViolation)
+
         oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule.violations, lExpected)
 
     def test_rule_016_upper(self):
         oRule = context.rule_016()
@@ -40,9 +49,18 @@ class test_context_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'context')
         self.assertEqual(oRule.identifier, '016')
 
-        dExpected = utils.add_violation_list([9,13])
+        lExpected = []
+
+        dViolation = utils.add_violation(9)
+        dViolation['solution'] = 'Change "con1" to "CON1"'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(13)
+        dViolation['solution'] = 'Change "cON1" to "CON1"'
+        lExpected.append(dViolation)
+
         oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule.violations, lExpected)
 
     def test_fix_rule_016_lower(self):
         oRule = context.rule_016()

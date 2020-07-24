@@ -41,6 +41,7 @@ class insert_item_after_item_rule(rule.rule):
         self.item = item
 
     def analyze(self, oFile):
+        self._print_debug_message('Analyzing rule: ' + self.name + '_' + self.identifier)
         lContexts = oFile.get_context_declarations()
         for dContext in lContexts:
             bBeginFound = False
@@ -51,6 +52,7 @@ class insert_item_after_item_rule(rule.rule):
                     if isinstance(oObject, self.begin):
                         bBeginFound = True
                         iBeginLine = iLine + dContext['metadata']['iStartLineNumber']
+                        sBeginValue = oObject.get_value()
                     if bBeginFound:
                         lAnalysis.append(oObject)
                     if isinstance(oObject, self.end):
@@ -59,7 +61,9 @@ class insert_item_after_item_rule(rule.rule):
                             if type(self.item) == type(oItem):
                                 bItemFound = True
                         if not bItemFound:
-                            self.add_violation(utils.create_violation_dict(iBeginLine))
+                            dViolation = utils.create_violation_dict(iBeginLine)
+                            dViolation['solution'] = 'Add "' + self.item.get_value() + '" after "' + sBeginValue + '"'
+                            self.add_violation(dViolation)
 
 
     def _fix_violations(self, oFile):
@@ -75,4 +79,4 @@ class insert_item_after_item_rule(rule.rule):
                     break
 
     def _get_solution(self, iLineNumber):
-        return 'Add ' + self.item.get_value() + ' after ' + self.begin.get_value()
+        return utils.get_violation_solution_at_line_number(self.violations, iLineNumber)

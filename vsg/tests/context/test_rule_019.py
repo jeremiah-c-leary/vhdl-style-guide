@@ -25,9 +25,22 @@ class test_context_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'context')
         self.assertEqual(oRule.identifier, '019')
 
-        dExpected = utils.add_violation_list([10, 14, 19])
+        lExpected = []
+
+        dViolation = utils.add_violation(10)
+        dViolation['solution'] = 'Ensure there are only 1 space(s) between "context" and "c1"'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(14)
+        dViolation['solution'] = 'Ensure there are only 1 space(s) between "context" and "c1"'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(19)
+        dViolation['solution'] = 'Ensure there are only 1 space(s) between "context" and "c1"'
+        lExpected.append(dViolation)
+
         oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule.violations, lExpected)
 
     def test_fix_rule_019(self):
         oRule = context.rule_019()

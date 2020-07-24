@@ -142,6 +142,11 @@ class rule_list():
                     if oRule.phase == phase and oRule.subphase == subphase and not oRule.disable:
                         oRule.fix(self.oVhdlFile)
 
+            if phase == 1:
+#                self.oVhdlFile.convert_whitespace_only_lines_to_blank_lines()
+                self.oVhdlFile.update_filecontent()
+                self.oVhdlFile._processFile()
+
     def check_rules(self, lSkipPhase=[]):
         '''
         Analyzes all rules in increasing phase order.

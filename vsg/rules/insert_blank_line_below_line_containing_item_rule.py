@@ -17,7 +17,7 @@ class insert_blank_line_below_line_containing_item_rule(rule.rule):
     identifier : string
        unique identifier.  Usually in the form of 00N.
 
-    sTrigger : string
+    trigger : parser object
        The line attribute the rule applies to.
     '''
 
@@ -28,6 +28,7 @@ class insert_blank_line_below_line_containing_item_rule(rule.rule):
         self.trigger = trigger
 
     def analyze(self, oFile):
+        self._print_debug_message('Analyzing rule: ' + self.name + '_' + self.identifier)
         lContexts = oFile.get_context_declarations()
         for dContext in lContexts:
             for iLine, oLine in enumerate(dContext['lines']):

@@ -25,9 +25,26 @@ class test_context_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'context')
         self.assertEqual(oRule.identifier, '007')
 
-        dExpected = utils.add_violation_list([14, 36, 38, 40])
+        lExpected = []
+
+        dViolation = utils.add_violation(14)
+        dViolation['solution'] = 'Move code after "is" to the next line.'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(36)
+        dViolation['solution'] = 'Move code after "is" to the next line.'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(38)
+        dViolation['solution'] = 'Move code after "is" to the next line.'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(40)
+        dViolation['solution'] = 'Move code after "is" to the next line.'
+        lExpected.append(dViolation)
+
         oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule.violations, lExpected)
 
     def test_fix_rule_007(self):
         self.maxDiff = None

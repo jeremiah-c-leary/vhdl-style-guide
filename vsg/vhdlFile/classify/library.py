@@ -33,7 +33,7 @@ def library(dVars, lTokens, lObjects, oLine):
             classify_semicolon(sToken, iToken, lObjects, dVars)
 
         else:
-            classify_library_keyword(sToken, iToken, lObjects, dVars)
+            classify_library_keyword(sToken, iToken, lObjects, dVars, oLine)
 
 
 def classify_semicolon(sToken, iToken, lObjects, dVars):
@@ -52,10 +52,12 @@ def classify_library_identifier(sToken, iToken, lObjects, dVars):
         lObjects[iToken] = parser.library_identifier(sToken)
 
 
-def classify_library_keyword(sToken, iToken, lObjects, dVars):
+def classify_library_keyword(sToken, iToken, lObjects, dVars, oLine):
     if sToken.lower() == 'library':
         lObjects[iToken] = parser.library_keyword(sToken)
         dVars['bInsideLibrary'] = True
+        if iToken < 2:
+            oLine.indentLevel = dVars['iCurrentIndentLevel']
 
 
 

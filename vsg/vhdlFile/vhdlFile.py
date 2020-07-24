@@ -1,4 +1,6 @@
 
+import re
+
 from vsg import line
 from vsg.vhdlFile import update
 from vsg.vhdlFile import classify
@@ -135,6 +137,12 @@ class vhdlFile():
 #            print(lObjects)
 #            print('[' + preIndent + '][' + oLine.line + '][' + str(oLine.indentLevel) + ']')
 
+    def update_filecontent(self):
+        self.filecontent = []
+        for oLine in self.lines[1:]:
+            self.filecontent.append(oLine.line)
+        self.lines = [line.line('')]
+
     def get_lines(self):
         return self.lines
 
@@ -190,6 +198,16 @@ class vhdlFile():
 
         return lReturn
 
+    def convert_whitespace_only_lines_to_blank_lines(self):
+        print('Entering convert_whitespace_only_lines_to_blank_lines')
+        for iLine, oLine in enumerate(self.lines):
+            print(f'[{oLine.line}]')
+            if oLine.line.isspace() or oLine.line == '':
+                print('Got Here')
+                self.lines.pop(iLine)
+                self.lines.insert(iLine, line.blank_line())
+            
+
 def _create_empty_return_dictionary():
     dReturn = {}
     dReturn['metadata'] = {}
@@ -204,4 +222,5 @@ def _does_line_start_with_item_or_whitespace_and_then_item(oLine, parserType):
     if isinstance(oLine.get_object(0), parser.whitespace) and isinstance(oLine.get_object(1), parserType):
         return True
     return False
+
 

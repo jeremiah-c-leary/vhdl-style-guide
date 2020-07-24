@@ -5,8 +5,7 @@ from vsg.rules import insert_blank_line_above_line_containing_item_rule
 
 class rule_003(insert_blank_line_above_line_containing_item_rule):
     '''
-    Checks for a single space between the context keyword and the context identifier
-
+    Checks for a blank line above the "context" keyword.
     '''
 
     def __init__(self):

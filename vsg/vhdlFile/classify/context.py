@@ -66,6 +66,7 @@ def classify_context_end_keyword(sToken, iToken, lObjects, dVars, oLine):
         dVars['bContextEndFound'] = True
         if iToken < 2:
             oLine.indentLevel = 0
+            dVars['iCurrentIndentLevel'] = 0
 
 
 def classify_context_is_keyword(sToken, iToken, lObjects, dVars):
@@ -83,5 +84,6 @@ def classify_context_keyword(sToken, iToken, lObjects, dVars, oLine):
     if sToken.lower() == 'context':
         lObjects[iToken] = parser.context_keyword(sToken)
         dVars['bInsideContext'] = True
+        dVars['iCurrentIndentLevel'] += 1
         if iToken < 2:
             oLine.indentLevel = 0

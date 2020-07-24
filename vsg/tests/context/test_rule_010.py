@@ -29,18 +29,22 @@ class test_context_rule(unittest.TestCase):
         
         dViolation = utils.add_violation(10)
         dViolation['iLeftLineNumber'] = 9
+        dViolation['solution'] = 'Move "c1" to the right of "context" on line 9'
         lExpected.append(dViolation)
 
         dViolation = utils.add_violation(19)
         dViolation['iLeftLineNumber'] = 18
+        dViolation['solution'] = 'Move "c1" to the right of "context" on line 18'
         lExpected.append(dViolation)
 
         dViolation = utils.add_violation(26)
         dViolation['iLeftLineNumber'] = 24
+        dViolation['solution'] = 'Move "c1" to the right of "context" on line 24'
         lExpected.append(dViolation)
 
         dViolation = utils.add_violation(36)
         dViolation['iLeftLineNumber'] = 35
+        dViolation['solution'] = 'Move "c1" to the right of "context" on line 35'
         lExpected.append(dViolation)
 
         oRule.analyze(self.oFile)
