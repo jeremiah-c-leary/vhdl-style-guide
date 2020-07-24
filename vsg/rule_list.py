@@ -137,13 +137,12 @@ class rule_list():
             if phase in lSkipPhase:
                 continue
             
-            for subphase in range(1, 3):
+            for subphase in range(1, 4):
                 for oRule in self.rules:
                     if oRule.phase == phase and oRule.subphase == subphase and not oRule.disable:
                         oRule.fix(self.oVhdlFile)
 
             if phase == 1:
-#                self.oVhdlFile.convert_whitespace_only_lines_to_blank_lines()
                 self.oVhdlFile.update_filecontent()
                 self.oVhdlFile._processFile()
 

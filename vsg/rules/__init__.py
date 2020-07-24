@@ -29,6 +29,7 @@ from .insert_blank_line_below_line_containing_item_rule import insert_blank_line
 from .remove_blank_lines_below_item_rule import remove_blank_lines_below_item_rule
 from .remove_blank_lines_above_item_rule import remove_blank_lines_above_item_rule
 from .indent_item_rule import indent_item_rule
+from .move_item_next_to_one_of_several_items_rule import move_item_next_to_one_of_several_items_rule
 
 from vsg.rules import after
 from vsg.rules import architecture
