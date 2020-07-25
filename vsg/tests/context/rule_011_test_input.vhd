@@ -20,7 +20,7 @@ c1
 -- Comment
 ;
 
-context
+context c1 is
 
 end -- Some comment
 context c1 -- Some other comment

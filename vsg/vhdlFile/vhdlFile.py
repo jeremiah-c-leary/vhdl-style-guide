@@ -56,6 +56,8 @@ class vhdlFile():
         dVars['bContextIsFound'] = False
         dVars['bContextEndFound'] = False
 
+        dVars['bInsideContextReference'] = False
+
         dVars['bInsideLibrary'] = False
 
         dVars['bInsideUse'] = False
@@ -75,9 +77,10 @@ class vhdlFile():
             classify.blank(oLine)
             classify.whitespace(lTokens, lObjects)
             classify.comment(dVars, lTokens, lObjects, oLine)
-            classify.context(self, dVars, lTokens, lObjects, oLine)
             classify.library(dVars, lTokens, lObjects, oLine)
             classify.use(dVars, lTokens, lObjects, oLine)
+            classify.context(self, dVars, lTokens, lObjects, oLine)
+#            classify.context_reference(self, dVars, lTokens, lObjects, oLine)
             classify.entity(self, dVars, oLine)
             classify.assert_statement(dVars, oLine)
 

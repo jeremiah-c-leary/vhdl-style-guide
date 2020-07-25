@@ -18,7 +18,7 @@ end
 context c1 -- Some comment
 ;
 
-context
+context c1 is
 
 end -- Some comment
 context c1 -- Some other comment

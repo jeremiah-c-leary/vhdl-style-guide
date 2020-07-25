@@ -111,6 +111,34 @@ class context_semicolon(semicolon):
     def __init__(self):
         semicolon.__init__(self)
 
+###############################################################################
+# Context reference objects
+###############################################################################
+
+
+class context_reference_keyword(keyword):
+
+    def __init__(self, sString):
+        keyword.__init__(self, sString)
+
+
+class context_reference_identifier(identifier):
+
+    def __init__(self, sString):
+        identifier.__init__(self, sString)
+
+
+class context_reference_comma(semicolon):
+
+    def __init__(self):
+        semicolon.__init__(self)
+
+
+class context_reference_semicolon(semicolon):
+
+    def __init__(self):
+        semicolon.__init__(self)
+
 
 ###############################################################################
 # Library objects
