@@ -25,8 +25,6 @@ def context(self, dVars, lTokens, lObjects, oLine):
       * bContextIsFound
       * iCurrentIndentLevel
     '''
-    bContextDeclarationFound = False
-#    print(oLine.line)
     for iToken, sToken in enumerate(lTokens):
         if dVars['bInsideContext']:
 
@@ -34,14 +32,14 @@ def context(self, dVars, lTokens, lObjects, oLine):
 
             if classify_context_is_keyword(sToken, iToken, lObjects, dVars):
 
-                reclassify_context_keyword_and_identifier(self, lObjects)
+                reclassify_context_keyword_and_identifier(self, lObjects, oLine)
            
             classify_context_reference_comma(sToken, iToken, lObjects, dVars)
 
             if classify_context_reference_semicolon(sToken, iToken, lObjects, dVars):
 
                 if not dVars['bContextIsFound']:
-                    reclassify_context_reference_keyword_and_identifier_outside_of_context_declaration(self, lObjects, dVars)
+                    reclassify_context_reference_keyword_and_identifier_outside_of_context_declaration(self, lObjects, dVars, oLine)
 
             if dVars['bContextEndFound']:
 
@@ -51,7 +49,7 @@ def context(self, dVars, lTokens, lObjects, oLine):
 
                if classify_semicolon(sToken, iToken, lObjects, dVars):
 
-                   reclassify_context_reference_keyword_and_identifier(self, lObjects)
+                   reclassify_context_reference_keyword_and_identifier(self, lObjects, oLine)
 
             classify_context_end_keyword(sToken, iToken, lObjects, dVars, oLine)
 
@@ -90,10 +88,6 @@ def classify_context_end_keyword(sToken, iToken, lObjects, dVars, oLine):
     if sToken.lower() == 'end':
         lObjects[iToken] = parser.context_end_keyword(sToken)
         dVars['bContextEndFound'] = True
-        if iToken < 2:
-            oLine.indentLevel = 0
-            dVars['iCurrentIndentLevel'] = 0
-
 
 def classify_context_is_keyword(sToken, iToken, lObjects, dVars):
     if sToken.lower() == 'is':
@@ -113,18 +107,16 @@ def classify_context_keyword(sToken, iToken, lObjects, dVars, oLine):
         lObjects[iToken] = parser.keyword(sToken)
         dVars['bInsideContext'] = True
         dVars['iCurrentIndentLevel'] += 1
-        if iToken < 2:
-            oLine.indentLevel = 0
+
 
 def classify_context_reference_keyword(sToken, iToken, lObjects, dVars, oLine):
     if sToken.lower() == 'context':
         print('Got Here')
         lObjects[iToken] = parser.context_reference_keyword(sToken)
         dVars['bInsideContextReference'] = True
-        oLine.indentLevel = dVars['iCurrentIndentLevel']
 
 
-def reclassify_context_keyword_and_identifier(self, lObjects):
+def reclassify_context_keyword_and_identifier(self, lObjects, oCurLine):
     lObjects.reverse()
     bKeywordFound = False
     for iObject, oObject in enumerate(lObjects):
@@ -167,7 +159,7 @@ def classify_context_reference_semicolon(sToken, iToken, lObjects, dVars):
     return False
 
 
-def reclassify_context_reference_keyword_and_identifier(self, lObjects):
+def reclassify_context_reference_keyword_and_identifier(self, lObjects, oCurLine):
     lObjects.reverse()
     bKeywordFound = False
     for iObject, oObject in enumerate(lObjects):
@@ -198,34 +190,25 @@ def reclassify_context_reference_keyword_and_identifier(self, lObjects):
                 break
 
 
-def reclassify_context_reference_keyword_and_identifier_outside_of_context_declaration(self, lObjects, dVars):
-#    print('Entering reclassify_context_reference...')
-#    print(lObjects)
+def reclassify_context_reference_keyword_and_identifier_outside_of_context_declaration(self, lObjects, dVars, oCurLine):
     lObjects.reverse()
     bKeywordFound = False
     for iObject, oObject in enumerate(lObjects):
-#        print(oObject)
-#        print(oObject.get_value())
         if type(oObject) == parser.identifier:
             lObjects[iObject] = parser.context_reference_identifier(oObject.get_value()) 
         if type(oObject) == parser.keyword:
             lObjects[iObject] = parser.context_reference_keyword(oObject.get_value()) 
-#            print('  Context keyword found')
         if type(oObject) == parser.context_keyword:
             bKeywordFound = True
             break
     lObjects.reverse()
 
     if not bKeywordFound:
-#        print('Reading previous lines')
         bBreak = False
         for oLine in self.lines[::-1]:
             myObjects = oLine.get_objects()
-#            print(oLine.line)
-#            print(myObjects)
             myObjects.reverse()
             for iObject, oObject in enumerate(myObjects):
-#                print(oObject)
                 if type(oObject) == parser.identifier:
                     myObjects[iObject] = parser.context_reference_identifier(oObject.get_value()) 
                 if type(oObject) == parser.keyword:
@@ -236,7 +219,6 @@ def reclassify_context_reference_keyword_and_identifier_outside_of_context_decla
             myObjects.reverse()
             if bBreak:
                 break
-#    print('-'*80)
     dVars['bInsideContext'] = False
     dVars['bContextIsFound'] = False
     dVars['bContextEndFound'] = False

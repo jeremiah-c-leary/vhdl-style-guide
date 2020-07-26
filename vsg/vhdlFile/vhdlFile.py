@@ -139,6 +139,8 @@ class vhdlFile():
 #            print(oLine.line)
 #            print(lObjects)
 #            print('[' + preIndent + '][' + oLine.line + '][' + str(oLine.indentLevel) + ']')
+        self.set_indent_levels()
+
 
     def update_filecontent(self):
         self.filecontent = []
@@ -210,6 +212,65 @@ class vhdlFile():
                 self.lines.pop(iLine)
                 self.lines.insert(iLine, line.blank_line())
             
+    def get_region_bounded_by_items(self, beginItem, endItem):
+        lReturn = []
+        dRegion = {}
+        dRegion['metadata'] = {}
+        dRegion['metadata']['iStartLineNumber'] = 0
+        dRegion['metadata']['iEndLineNumber'] = 0
+        dRegion['lines'] = []
+        bRegionBeginFound = False
+        bRegionEndFound = False
+        for iLine, oLine in enumerate(self.lines):
+            for oObject in oLine.objects:
+                if isinstance(oObject, beginItem):
+                    bRegionBeginFound = True
+                    dRegion['metadata']['iStartLineNumber'] = iLine
+                if isinstance(oObject, endItem):   
+                    bRegionEndFound = True
+                    dRegion['metadata']['iEndLineNumber'] = iLine
+            if bRegionBeginFound:
+                dRegion['lines'].append(oLine)
+            if bRegionEndFound:
+                lReturn.append(dRegion)
+                dRegion = {}
+                dRegion['metadata'] = {}
+                dRegion['metadata']['iStartLineNumber'] = 0
+                dRegion['metadata']['iEndLineNumber'] = 0
+                dRegion['lines'] = []
+                bRegionBeginFound = False
+                bRegionEndFound = False
+        return lReturn
+
+    def set_indent_levels(self):
+        '''
+        Set the appropriate indent level for lines using item objects.
+        '''
+        dIndent = {}
+        dIndent['insideContextDeclaration'] = False
+        for oLine in self.lines:
+            if _does_line_start_with_item_or_whitespace_and_then_item(oLine, parser.context_keyword):
+                oLine.indentLevel = 0
+                dIndent['insideContextDeclaration'] = True
+            if _does_line_start_with_item_or_whitespace_and_then_item(oLine, parser.context_end_keyword):
+                oLine.indentLevel = 0
+                dIndent['insideContextDeclaration'] = False
+            if _does_line_start_with_item_or_whitespace_and_then_item(oLine, parser.context_reference_keyword):
+                if dIndent['insideContextDeclaration']:
+                    oLine.indentLevel = 2
+                else:
+                    oLine.indentLevel = 1
+            if _does_line_start_with_item_or_whitespace_and_then_item(oLine, parser.library_keyword):
+                if dIndent['insideContextDeclaration']:
+                    oLine.indentLevel = 1
+                else:
+                    oLine.indentLevel = 0
+            if _does_line_start_with_item_or_whitespace_and_then_item(oLine, parser.use_keyword):
+                if dIndent['insideContextDeclaration']:
+                    oLine.indentLevel = 2
+                else:
+                    oLine.indentLevel = 1
+
 
 def _create_empty_return_dictionary():
     dReturn = {}
@@ -219,11 +280,10 @@ def _create_empty_return_dictionary():
     dReturn['lines'] = []
     return dReturn
 
+
 def _does_line_start_with_item_or_whitespace_and_then_item(oLine, parserType):
     if isinstance(oLine.get_object(0), parserType):
         return True
     if isinstance(oLine.get_object(0), parser.whitespace) and isinstance(oLine.get_object(1), parserType):
         return True
     return False
-
-

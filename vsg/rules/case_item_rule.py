@@ -28,24 +28,26 @@ class case_item_rule(rule.rule):
         self.case = 'lower'
         self.configuration.append('case')
         self.trigger = trigger
+        self.regionBegin = None
+        self.regionEnd = None
 
     def analyze(self, oFile):
         self._print_debug_message('Analyzing rule: ' + self.name + '_' + self.identifier)
-        lContexts = oFile.get_context_declarations()
-        for dContext in lContexts:
-            for iLine, oLine in enumerate(dContext['lines']):
+        lRegions = oFile.get_region_bounded_by_items(self.regionBegin, self.regionEnd)
+        for dRegion in lRegions:
+            for iLine, oLine in enumerate(dRegion['lines']):
                 lObjects = oLine.get_objects()
                 for oObject in lObjects:
                     if isinstance(oObject, self.trigger):
                         sObjectValue = oObject.get_value()
                         if self.case == 'lower':
                             if sObjectValue != sObjectValue.lower():
-                                dViolation = utils.create_violation_dict(dContext['metadata']['iStartLineNumber'] + iLine)
+                                dViolation = utils.create_violation_dict(dRegion['metadata']['iStartLineNumber'] + iLine)
                                 dViolation['solution'] = 'Change "' + sObjectValue + '" to "' + sObjectValue.lower() + '"'
                                 self.add_violation(dViolation)
                         if self.case == 'upper':
                             if sObjectValue != sObjectValue.upper():
-                                dViolation = utils.create_violation_dict(dContext['metadata']['iStartLineNumber'] + iLine)
+                                dViolation = utils.create_violation_dict(dRegion['metadata']['iStartLineNumber'] + iLine)
                                 dViolation['solution'] = 'Change "' + sObjectValue + '" to "' + sObjectValue.upper() + '"'
                                 self.add_violation(dViolation)
 
@@ -60,7 +62,6 @@ class case_item_rule(rule.rule):
                     if self.case == 'upper':
                         oObject.set_value(oObject.get_value().upper())
                     oLine.update_objects(lObjects)
-                    break
 
     def _get_solution(self, iLineNumber):
         return utils.get_violation_solution_at_line_number(self.violations, iLineNumber)

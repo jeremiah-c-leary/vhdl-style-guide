@@ -38,19 +38,21 @@ class move_item_and_items_to_the_right_to_next_line_rule(rule.rule):
         self.subphase = 1
         self.solution = None
         self.trigger = trigger
+        self.regionBegin = None
+        self.regionEnd = None
 
     def analyze(self, oFile):
         self._print_debug_message('Analyzing rule: ' + self.name + '_' + self.identifier)
-        lContexts = oFile.get_context_declarations()
-        for dContext in lContexts:
+        lRegions = oFile.get_region_bounded_by_items(self.regionBegin, self.regionEnd)
+        for dRegion in lRegions:
             bFound = False
             bBreak = False
-            for iLine, oLine in enumerate(dContext['lines']):
+            for iLine, oLine in enumerate(dRegion['lines']):
                 lObjects = oLine.get_objects()
                 for iObject, oObject in enumerate(lObjects):
                     if iObject > 1:
                         if isinstance(oObject, self.trigger):
-                            dViolation = utils.create_violation_dict(dContext['metadata']['iStartLineNumber'] + iLine)
+                            dViolation = utils.create_violation_dict(dRegion['metadata']['iStartLineNumber'] + iLine)
                             dViolation['iObject'] = iObject
                             dViolation['solution'] = 'Move "' + oObject.get_value() + '" and the code to the right to the next line.'
                             self.add_violation(dViolation)

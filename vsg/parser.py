@@ -128,10 +128,10 @@ class context_reference_identifier(identifier):
         identifier.__init__(self, sString)
 
 
-class context_reference_comma(semicolon):
+class context_reference_comma(comma):
 
     def __init__(self):
-        semicolon.__init__(self)
+        comma.__init__(self)
 
 
 class context_reference_semicolon(semicolon):

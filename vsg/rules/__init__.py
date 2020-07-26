@@ -41,6 +41,7 @@ from vsg.rules import component
 from vsg.rules import concurrent
 from vsg.rules import constant
 from vsg.rules import context
+from vsg.rules import context_ref
 from vsg.rules import entity
 from vsg.rules import file_statement
 from vsg.rules import for_loop

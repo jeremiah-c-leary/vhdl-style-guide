@@ -50,9 +50,9 @@ class space_between_items_rule(rule.rule):
 
     def analyze(self, oFile):
         self._print_debug_message('Analyzing rule: ' + self.name + '_' + self.identifier)
-        lContexts = oFile.get_context_declarations()
-        for dContext in lContexts:
-            for iLine, oLine in enumerate(dContext['lines']):
+        lRegions = oFile.get_region_bounded_by_items(self.regionBegin, self.regionEnd)
+        for dRegion in lRegions:
+            for iLine, oLine in enumerate(dRegion['lines']):
                 lObjects = oLine.get_objects()
                 lAnalysis = []
                 bLeftFound = False
@@ -65,7 +65,7 @@ class space_between_items_rule(rule.rule):
                         if len(lAnalysis) == 3:
                             if isinstance(lAnalysis[1], parser.whitespace):
                                 if lAnalysis[1].get_value() != ' ' * self.spaces:
-                                    dViolation = utils.create_violation_dict(dContext['metadata']['iStartLineNumber'] + iLine)
+                                    dViolation = utils.create_violation_dict(dRegion['metadata']['iStartLineNumber'] + iLine)
                                     dViolation['solution'] = 'Ensure there are only ' + str(self.spaces) + ' space(s) between "' + lAnalysis[0].get_value() + '" and "' + lAnalysis[2].get_value() + '"'
                                     self.add_violation(dViolation)
 

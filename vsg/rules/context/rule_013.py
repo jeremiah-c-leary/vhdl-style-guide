@@ -11,3 +11,5 @@ class rule_013(case_item_rule):
 
     def __init__(self):
         case_item_rule.__init__(self, 'context', '013', parser.context_is_keyword)
+        self.regionBegin = parser.context_keyword
+        self.regionEnd = parser.context_semicolon
