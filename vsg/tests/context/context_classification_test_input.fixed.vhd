@@ -33,19 +33,22 @@ end context c1;
 -- Try single line
 context c1 is
 
-  library ieee; use ieee.std_logic_1164;
+  library ieee;
+    use ieee.std_logic_1164;
 
 end context c1;
 
 context c1 is
 
-  library ieee; use ieee.std_logic_1164;
+  library ieee;
+    use ieee.std_logic_1164;
 
 end context c1;
 
 context c1 is
 
-  library ieee; use ieee.std_logic_1164;
+  library ieee;
+    use ieee.std_logic_1164;
 
 end context c1;
 

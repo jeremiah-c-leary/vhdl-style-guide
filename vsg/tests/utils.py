@@ -68,3 +68,8 @@ def read_configuration(sFileName):
     with open(sFileName) as yaml_file:
         return yaml.full_load(yaml_file)
 
+def extract_violation_lines(lViolations):
+    lReturn = []
+    for dViolation in lViolations:
+        lReturn.append(dViolation['lines'][0]['number'])
+    return lReturn
