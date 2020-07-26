@@ -45,6 +45,7 @@ context_003
 ###########
 
 This rule checks for a blank line above the **context** keyword.
+Comment are allowed.
 
 **Violation**
 

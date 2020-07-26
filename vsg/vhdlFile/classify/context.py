@@ -23,7 +23,6 @@ def context(self, dVars, lTokens, lObjects, oLine):
       * bInsideContext
       * bContextEndFound
       * bContextIsFound
-      * iCurrentIndentLevel
     '''
     for iToken, sToken in enumerate(lTokens):
         if dVars['bInsideContext']:
@@ -106,7 +105,6 @@ def classify_context_keyword(sToken, iToken, lObjects, dVars, oLine):
     if sToken.lower() == 'context':
         lObjects[iToken] = parser.keyword(sToken)
         dVars['bInsideContext'] = True
-        dVars['iCurrentIndentLevel'] += 1
 
 
 def classify_context_reference_keyword(sToken, iToken, lObjects, dVars, oLine):

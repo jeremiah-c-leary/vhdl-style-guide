@@ -11,3 +11,5 @@ class rule_027(remove_blank_lines_above_item_rule):
 
     def __init__(self):
         remove_blank_lines_above_item_rule.__init__(self, 'context', '027', parser.context_end_keyword)
+        self.regionBegin = parser.context_keyword
+        self.regionEnd = parser.context_semicolon

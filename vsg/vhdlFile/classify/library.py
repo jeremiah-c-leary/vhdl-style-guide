@@ -8,25 +8,17 @@ def library(dVars, lTokens, lObjects, oLine):
     '''
     Classifies library declarations.
 
-    library identifier [, identifier] ;
-
-    Sets the following line attributes:
-
-      * isLibrary
+    library logical_name [, logical_name] ;
 
     Modifies the following variables:
 
       * bInsideLibrary
     '''
 
-    ## This will be depricated when the object method is done for libraries
-    if not oLine.insideEntity and not oLine.insideArchitecture and not oLine.insidePackage and not oLine.insidePackageBody:
-        check_library_keyword(oLine)
-
     for iToken, sToken in enumerate(lTokens):
         if dVars['bInsideLibrary']:
 
-            classify_library_identifier(sToken, iToken, lObjects, dVars)
+            classify_library_logical_name(sToken, iToken, lObjects, dVars)
 
             classify_comma(sToken, iToken, lObjects, dVars)
 
@@ -47,21 +39,12 @@ def classify_comma(sToken, iToken, lObjects, dVars):
         lObjects[iToken] = parser.library_comma()
 
 
-def classify_library_identifier(sToken, iToken, lObjects, dVars):
+def classify_library_logical_name(sToken, iToken, lObjects, dVars):
     if not isinstance(lObjects[iToken], parser.whitespace) and not isinstance(lObjects[iToken], parser.comment):
-        lObjects[iToken] = parser.library_identifier(sToken)
+        lObjects[iToken] = parser.library_logical_name(sToken)
 
 
 def classify_library_keyword(sToken, iToken, lObjects, dVars, oLine):
     if sToken.lower() == 'library':
         lObjects[iToken] = parser.library_keyword(sToken)
         dVars['bInsideLibrary'] = True
-        if iToken < 2:
-            oLine.indentLevel = dVars['iCurrentIndentLevel']
-
-
-
-def check_library_keyword(oLine):
-    if re.match('^\s*library', oLine.lineLower):
-        oLine.isLibrary = True
-        oLine.indentLevel = 0

@@ -9,6 +9,6 @@ class rule_002(space_between_items_rule):
 
     '''
     def __init__(self):
-        space_between_items_rule.__init__(self, 'context', '002', parser.context_keyword, parser.context_identifier, 'context keyword')
+        space_between_items_rule.__init__(self, 'context', '002', parser.context_keyword, parser.context_identifier)
         self.regionBegin = parser.context_keyword
         self.regionEnd = parser.context_semicolon

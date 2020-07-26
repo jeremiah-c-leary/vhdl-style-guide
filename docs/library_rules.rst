@@ -129,7 +129,7 @@ This rule checks for excessive spaces after the **use** keyword.
 library_007
 ###########
 
-This rule checks for blank lines above the **use** keyword.
+This rule removes blank lines above the **use** keyword.
 
 **Violation**
 

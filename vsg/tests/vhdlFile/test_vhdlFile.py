@@ -55,16 +55,6 @@ class testVhdlFileMethods(unittest.TestCase):
             else:
                 self.assertFalse(oLine.isBlank)
 
-    def test_library_assignment(self):
-        lExpected = [3,7,9,13,20,21,32,36]
-        # Compare
-        for iIndex, oLine in enumerate(oFileLibrary.lines):
-            if iIndex in lExpected:
-                self.assertTrue(oLine.isLibrary)
-                self.assertEqual(oLine.indentLevel, 0)
-            else:
-                self.assertFalse(oLine.isLibrary)
-
     def test_library_use_assignment(self):
         lExpected = [4,5,10,14,16,23,24,26,27,30,34,38]
         # Compare

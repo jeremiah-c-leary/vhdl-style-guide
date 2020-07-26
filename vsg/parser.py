@@ -65,6 +65,18 @@ class comment(item):
         item.__init__(self, sString)
 
 
+class logical_name(item):
+
+    def __init__(self, sString):
+        item.__init__(self, sString)
+
+
+class selected_name(item):
+
+    def __init__(self, sString):
+        item.__init__(self, sString)
+
+
 ###############################################################################
 # Context objects
 ###############################################################################
@@ -150,10 +162,10 @@ class library_keyword(keyword):
     def __init__(self, sString):
         keyword.__init__(self, sString)
 
-class library_identifier(identifier):
+class library_logical_name(logical_name):
 
     def __init__(self, sString):
-        identifier.__init__(self, sString)
+        logical_name.__init__(self, sString)
 
 class library_comma(comma):
 
@@ -175,10 +187,10 @@ class use_keyword(keyword):
     def __init__(self, sString):
         keyword.__init__(self, sString)
 
-class use_identifier(identifier):
+class use_selected_name(selected_name):
 
     def __init__(self, sString):
-        identifier.__init__(self, sString)
+        selected_name.__init__(self, sString)
 
 class use_semicolon(semicolon):
 

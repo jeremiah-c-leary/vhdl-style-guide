@@ -36,7 +36,7 @@ class test_library(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
-    def test_library_identifier(self):
+    def test_library_logical_name(self):
         lExpected = []
         lExpected.append((3,2))
 
@@ -63,7 +63,7 @@ class test_library(unittest.TestCase):
         lActual = []
         for iLine, lLine in enumerate(oFile.get_lines()):
             for iItem, oItem in enumerate(lLine.objects):
-                if isinstance(oItem, parser.library_identifier):
+                if isinstance(oItem, parser.library_logical_name):
                     lActual.append((iLine, iItem))
 
         self.assertEqual(lExpected, lActual)

@@ -42,14 +42,13 @@ def classify_semicolon(sToken, iToken, lObjects, dVars):
 
 def classify_use_identifier(sToken, iToken, lObjects, dVars):
     if not isinstance(lObjects[iToken], parser.whitespace) and not isinstance(lObjects[iToken], parser.comment):
-        lObjects[iToken] = parser.use_identifier(sToken)
+        lObjects[iToken] = parser.use_selected_name(sToken)
 
 
 def classify_use_keyword(sToken, iToken, lObjects, dVars):
     if sToken.lower() == 'use':
         lObjects[iToken] = parser.use_keyword(sToken)
         dVars['bInsideUse'] = True
-
 
 
 def check_use_keyword(oLine):

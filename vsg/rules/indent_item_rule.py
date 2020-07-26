@@ -24,7 +24,7 @@ class indent_item_rule(rule.rule):
     def __init__(self, name, identifier, trigger):
         rule.rule.__init__(self, name=name, identifier=identifier)
         self.solution = 'Indent.'
-        self.phase = 3
+        self.phase = 4
         self.trigger = trigger
 
     def analyze(self, oFile):
@@ -32,6 +32,8 @@ class indent_item_rule(rule.rule):
         lRegions = oFile.get_lines_starting_with_item_or_whitespace_and_then_item(self.trigger)
         for dRegion in lRegions:
             for oLine in dRegion['lines'][::-1]:
+                if self._is_vsg_off(oLine):
+                    continue
                 if oLine.get_indent_level() is None:
                     continue
                 if oLine.get_indent_level() == 0 and isinstance(oLine.get_object(0), parser.whitespace):

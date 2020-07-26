@@ -36,13 +36,12 @@ class space_between_items_rule(rule.rule):
        Instructions on how to fix the violation.
     '''
 
-    def __init__(self, name, identifier, left, right, word):
+    def __init__(self, name, identifier, left, right):
         rule.rule.__init__(self, name=name, identifier=identifier)
         self.phase = 2
         self.solution = None
         self.spaces = 1
         self.configuration.append('spaces')
-        self.sWord = word
         self.left = left
         self.right = right
         self.regionBegin = None
