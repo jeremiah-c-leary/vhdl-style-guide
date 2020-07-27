@@ -25,9 +25,10 @@ class test_context_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'context')
         self.assertEqual(oRule.identifier, '003')
 
-        dExpected = utils.add_violation_list([9])
+        lExpected = [9]
+
         oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(lExpected, utils.extract_violation_lines(oRule.violations))
 
     def test_fix_rule_003(self):
         oRule = context.rule_003()
