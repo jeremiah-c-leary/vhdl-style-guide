@@ -28,8 +28,6 @@ class insert_blank_line_above_line_containing_item_rule(rule_item.Rule):
         self.trigger = trigger
         self.allowComment = allowComment
         self.configuration.append('allowComment')
-        self.regionBegin = None
-        self.regionEnd = None
 
     def _get_regions(self, oFile):
         return oFile.get_region_bounded_by_items(self.regionBegin, self.regionEnd)

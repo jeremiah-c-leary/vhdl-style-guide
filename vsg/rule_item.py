@@ -9,6 +9,8 @@ class Rule(rule.rule):
 
     def __init__(self, name, identifier):
         rule.rule.__init__(self, name, identifier)
+        self.regionBegin = None
+        self.regionEnd = None
 
     @abstractmethod
     def _get_regions(self, oFile):

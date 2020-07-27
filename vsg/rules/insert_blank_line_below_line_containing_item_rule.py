@@ -1,10 +1,10 @@
 
 from vsg import fix
-from vsg import rule
+from vsg import rule_item
 from vsg import utils
 
 
-class insert_blank_line_below_line_containing_item_rule(rule.rule):
+class insert_blank_line_below_line_containing_item_rule(rule_item.Rule):
     '''
     Checks for blank lines below a line and will insert a blank line if one does not exist.
 
@@ -22,25 +22,24 @@ class insert_blank_line_below_line_containing_item_rule(rule.rule):
     '''
 
     def __init__(self, name, identifier, trigger):
-        rule.rule.__init__(self, name=name, identifier=identifier)
-        self.solution = 'Insert blank line below.'
+        rule_item.Rule.__init__(self, name=name, identifier=identifier)
         self.phase = 3
         self.trigger = trigger
 
-    def analyze(self, oFile):
-        self._print_debug_message('Analyzing rule: ' + self.name + '_' + self.identifier)
-        lContexts = oFile.get_context_declarations()
-        for dContext in lContexts:
-            for iLine, oLine in enumerate(dContext['lines']):
-                try:
-                    oNextLine = oFile.lines[dContext['metadata']['iStartLineNumber'] + iLine + 1]
-                except IndexError:
-                    break
-                lObjects = oLine.get_objects()
-                for oObject in lObjects:
-                    if isinstance(oObject, self.trigger) and not oNextLine.is_blank():
-                        self.add_violation(utils.create_violation_dict(dContext['metadata']['iStartLineNumber'] + iLine))
+    def _get_regions(self, oFile):
+        return oFile.get_region_bounded_by_items(self.regionBegin, self.regionEnd)
+
+    def _analyze_region(self, oFile, iLine, oLine, dRegion):
+        try:
+            oNextLine = oFile.lines[dRegion['metadata']['iStartLineNumber'] + iLine + 1]
+        except IndexError:
+            return
+        lObjects = oLine.get_objects()
+        for oObject in lObjects:
+            if isinstance(oObject, self.trigger) and not oNextLine.is_blank():
+                dViolation = utils.create_violation_dict(dRegion['metadata']['iStartLineNumber'] + iLine)
+                dViolation['solution'] = 'Insert blank line below.'
+                self.add_violation(dViolation)
         
-    def _fix_violations(self, oFile):
-        for dViolation in self.violations[::-1]:
-            fix.insert_blank_line_below(self, oFile, utils.get_violation_line_number(dViolation))
+    def _fix_violation(self, oFile, dViolation):
+        fix.insert_blank_line_below(self, oFile, utils.get_violation_line_number(dViolation))

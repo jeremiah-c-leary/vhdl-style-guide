@@ -25,9 +25,10 @@ class test_context_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'context')
         self.assertEqual(oRule.identifier, '023')
 
-        dExpected = utils.add_violation_list([7])
+        lExpected = [7]
+
         oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(lExpected, utils.extract_violation_lines(oRule.violations))
 
         self.assertEqual('Insert blank line below.', oRule._get_solution(7))
 

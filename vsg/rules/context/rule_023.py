@@ -11,3 +11,5 @@ class rule_023(insert_blank_line_below_line_containing_item_rule):
 
     def __init__(self):
         insert_blank_line_below_line_containing_item_rule.__init__(self, 'context', '023', parser.context_is_keyword)
+        self.regionBegin = parser.context_keyword
+        self.regionEnd = parser.context_semicolon
