@@ -25,13 +25,10 @@ class test_context_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'context')
         self.assertEqual(oRule.identifier, '027')
 
-        lExpected = []
-        dViolation = utils.add_violation(19)
-        dViolation['iRemove'] = 1
-        lExpected.append(dViolation)
+        lExpected = [19]
  
         oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, lExpected)
+        self.assertEqual(lExpected, utils.extract_violation_lines(oRule.violations))
 
         self.assertEqual('Remove all but one blank line above this line.', oRule._get_solution(19))
 

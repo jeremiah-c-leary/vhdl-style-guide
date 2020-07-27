@@ -11,3 +11,5 @@ class rule_005(move_item_next_to_another_item_rule):
     def __init__(self):
         move_item_next_to_another_item_rule.__init__(self, 'context', '005', parser.context_keyword, parser.context_identifier)
         self.subphase = 1
+        self.regionBegin = parser.context_keyword
+        self.regionEnd = parser.context_semicolon

@@ -29,9 +29,6 @@ class insert_blank_line_above_line_containing_item_rule(rule_item.Rule):
         self.allowComment = allowComment
         self.configuration.append('allowComment')
 
-    def _get_regions(self, oFile):
-        return oFile.get_region_bounded_by_items(self.regionBegin, self.regionEnd)
-
     def _analyze_region(self, oFile, iLine, oLine, dRegion):
         oPreviousLine = oFile.lines[dRegion['metadata']['iStartLineNumber'] - 1 + iLine]
         lObjects = oLine.get_objects()

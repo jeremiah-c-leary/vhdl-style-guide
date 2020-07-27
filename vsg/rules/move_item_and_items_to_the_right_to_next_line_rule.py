@@ -1,12 +1,12 @@
 
 import copy
 
-from vsg import rule
+from vsg import rule_item
 from vsg import parser
 from vsg import utils
 
 
-class move_item_and_items_to_the_right_to_next_line_rule(rule.rule):
+class move_item_and_items_to_the_right_to_next_line_rule(rule_item.Rule):
     '''
     Splits the line at items and moves items after it to the next line.
 
@@ -33,7 +33,7 @@ class move_item_and_items_to_the_right_to_next_line_rule(rule.rule):
     '''
 
     def __init__(self, name, identifier, trigger):
-        rule.rule.__init__(self, name=name, identifier=identifier)
+        rule_item.Rule.__init__(self, name=name, identifier=identifier)
         self.phase = 1
         self.subphase = 1
         self.solution = None
@@ -58,18 +58,14 @@ class move_item_and_items_to_the_right_to_next_line_rule(rule.rule):
                             self.add_violation(dViolation)
 
 
-    def _fix_violations(self, oFile):
-        for dViolation in self.violations[::-1]:
-            oLine = utils.get_violating_line(oFile, dViolation)
-            oNewLine = copy.deepcopy(oLine)
-            lObjects = oLine.get_objects()
-            iLineNumber = utils.get_violation_line_number(dViolation)
+    def _fix_violation(self, oFile, dViolation):
+        oLine = utils.get_violating_line(oFile, dViolation)
+        oNewLine = copy.deepcopy(oLine)
+        lObjects = oLine.get_objects()
+        iLineNumber = utils.get_violation_line_number(dViolation)
 
-            lOldObjects = lObjects[:dViolation['iObject']]
-            lNewObjects = lObjects[dViolation['iObject']:]
-            oLine.update_objects(lOldObjects)
-            oNewLine.update_objects(lNewObjects)
-            oFile.insert_line(iLineNumber + 1, oNewLine)
-
-    def _get_solution(self, iLineNumber):
-        return utils.get_violation_solution_at_line_number(self.violations, iLineNumber)
+        lOldObjects = lObjects[:dViolation['iObject']]
+        lNewObjects = lObjects[dViolation['iObject']:]
+        oLine.update_objects(lOldObjects)
+        oNewLine.update_objects(lNewObjects)
+        oFile.insert_line(iLineNumber + 1, oNewLine)

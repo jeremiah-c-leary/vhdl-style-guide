@@ -13,3 +13,5 @@ class rule_010(move_item_next_to_another_item_rule):
         move_item_next_to_another_item_rule.__init__(self, 'context', '010', parser.context_end_context_keyword, parser.context_end_identifier)
         self.solution = None
         self.subphase = 2
+        self.regionBegin = parser.context_keyword
+        self.regionEnd = parser.context_semicolon

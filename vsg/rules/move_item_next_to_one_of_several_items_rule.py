@@ -1,12 +1,12 @@
 
 import copy
 
-from vsg import rule
+from vsg import rule_item
 from vsg import utils
 from vsg import parser
 
 
-class move_item_next_to_one_of_several_items_rule(rule.rule):
+class move_item_next_to_one_of_several_items_rule(rule_item.Rule):
     '''
     Moves an item next one of several possible items.
 
@@ -26,7 +26,7 @@ class move_item_next_to_one_of_several_items_rule(rule.rule):
        The object that will be moved next to the anchor object
     '''
     def __init__(self, name, identifier, lLeft, right):
-        rule.rule.__init__(self, name=name, identifier=identifier)
+        rule_item.Rule.__init__(self, name=name, identifier=identifier)
         self.solution = None
         self.phase = 1
         self.subphase = 4
@@ -38,7 +38,7 @@ class move_item_next_to_one_of_several_items_rule(rule.rule):
 
     def analyze(self, oFile):
         self._print_debug_message('Analyzing rule: ' + self.name + '_' + self.identifier)
-        lContexts = oFile.get_context_declarations()
+        lContexts = self._get_regions(oFile)
         for dContext in lContexts:
             iLeftLineNumber = None
             iRightLineNumber = None
@@ -70,8 +70,7 @@ class move_item_next_to_one_of_several_items_rule(rule.rule):
                 dViolation['left'] = copy.deepcopy(self.left)
                 self.add_violation(dViolation)
 
-    def _fix_violations(self, oFile):
-        for dViolation in self.violations[::-1]:
+    def _fix_violation(self, oFile, dViolation):
             # Remove object from right line
             oLine = utils.get_violating_line(oFile, dViolation)
             lObjects = oLine.get_objects()
@@ -98,6 +97,3 @@ class move_item_next_to_one_of_several_items_rule(rule.rule):
                         lObjects.insert(iObject + 1, parser.whitespace(' '))
                     oLine.update_objects(lObjects)
                     break
-
-    def _get_solution(self, iLineNumber):
-        return utils.get_violation_solution_at_line_number(self.violations, iLineNumber)

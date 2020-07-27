@@ -1,10 +1,10 @@
 
-from vsg import rule
+from vsg import rule_item
 from vsg import parser
 from vsg import utils
 
 
-class insert_item_after_item_rule(rule.rule):
+class insert_item_after_item_rule(rule_item.Rule):
     '''
     Checks for the existance of an item relative to another item and inserts the item if it does not exist.
 
@@ -31,7 +31,7 @@ class insert_item_after_item_rule(rule.rule):
     '''
 
     def __init__(self, name, identifier, begin, end, item):
-        rule.rule.__init__(self, name=name, identifier=identifier)
+        rule_item.Rule.__init__(self, name=name, identifier=identifier)
         self.phase = 1
         self.solution = None
         self.insert_space = False
@@ -42,7 +42,7 @@ class insert_item_after_item_rule(rule.rule):
 
     def analyze(self, oFile):
         self._print_debug_message('Analyzing rule: ' + self.name + '_' + self.identifier)
-        lContexts = oFile.get_context_declarations()
+        lContexts = self._get_regions(oFile)
         for dContext in lContexts:
             bBeginFound = False
             lAnalysis = []
@@ -66,17 +66,13 @@ class insert_item_after_item_rule(rule.rule):
                             self.add_violation(dViolation)
 
 
-    def _fix_violations(self, oFile):
-        for dViolation in self.violations[::-1]:
-            oLine = utils.get_violating_line(oFile, dViolation)
-            lObjects = oLine.get_objects()
-            for iObject, oObject in enumerate(lObjects):
-                if isinstance(oObject, self.begin):
-                    lObjects.insert(iObject + 1, self.item)
-                    if self.insert_space:
-                        lObjects.insert(iObject + 1, parser.whitespace(' '))
-                    oLine.update_objects(lObjects)
-                    break
-
-    def _get_solution(self, iLineNumber):
-        return utils.get_violation_solution_at_line_number(self.violations, iLineNumber)
+    def _fix_violation(self, oFile, dViolation):
+        oLine = utils.get_violating_line(oFile, dViolation)
+        lObjects = oLine.get_objects()
+        for iObject, oObject in enumerate(lObjects):
+            if isinstance(oObject, self.begin):
+                lObjects.insert(iObject + 1, self.item)
+                if self.insert_space:
+                    lObjects.insert(iObject + 1, parser.whitespace(' '))
+                oLine.update_objects(lObjects)
+                break

@@ -26,9 +26,6 @@ class insert_blank_line_below_line_containing_item_rule(rule_item.Rule):
         self.phase = 3
         self.trigger = trigger
 
-    def _get_regions(self, oFile):
-        return oFile.get_region_bounded_by_items(self.regionBegin, self.regionEnd)
-
     def _analyze_region(self, oFile, iLine, oLine, dRegion):
         try:
             oNextLine = oFile.lines[dRegion['metadata']['iStartLineNumber'] + iLine + 1]
