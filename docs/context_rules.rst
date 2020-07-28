@@ -207,8 +207,8 @@ This rule checks the context identifier is on the same line as the end context k
 
    end context c1;
 
-context_011
-###########
+context_011 (Proposed)
+######################
 
 This rule checks the semicolon is on the same line as the **end** keyword.
 
