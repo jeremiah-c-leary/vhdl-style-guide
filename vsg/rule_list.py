@@ -233,7 +233,7 @@ class rule_list():
                     dRunInfo['violations'].extend(lViolations)
 
         dRunInfo['stopPhase'] = self.lastPhaseRan
-        dRunInfo['num_rules_checked'] = self.iNumberRulesRan
+        dRunInfo['num_rules_checked'] = self.get_number_of_rules_ran()
         dRunInfo['total_violations'] = len(dRunInfo['violations'])
         dRunInfo['maxSeverityNameLength'] = self.oSeverityList.iMaxNameLength
         dRunInfo['severities'] = {}
@@ -327,6 +327,9 @@ class rule_list():
     def clear_violations(self):
         for oRule in self.rules:
             oRule.clear_violations()
+
+    def get_number_of_rules_ran(self):
+        return self.iNumberRulesRan
 
 
 def filter_out_disabled_rules(lRules):

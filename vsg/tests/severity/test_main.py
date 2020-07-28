@@ -44,7 +44,9 @@ class test_severity_using_main(unittest.TestCase):
         os.remove(sJUnitFileName)
 
     @mock.patch('sys.stdout')
-    def test_entity_without_configuration(self, mock_stdout):
+    @mock.patch('vsg.__main__.rule_list.rule_list.get_number_of_rules_ran')
+    def test_entity_without_configuration(self, mock_rule_ran, mock_stdout):
+        mock_rule_ran.return_value = 200
         try:
             sys.argv =  ['vsg', '-f', sEntityFileName]
             __main__.main()
@@ -62,7 +64,9 @@ class test_severity_using_main(unittest.TestCase):
         mock_stdout.write.assert_has_calls(lExpected)
     
     @mock.patch('sys.stdout')
-    def test_entity_with_configuration(self, mock_stdout):
+    @mock.patch('vsg.__main__.rule_list.rule_list.get_number_of_rules_ran')
+    def test_entity_with_configuration(self, mock_rule_ran, mock_stdout):
+        mock_rule_ran.return_value = 200
         try:
             sys.argv =  ['vsg', '-f', sEntityFileName, '-c', sConfigFile]
             __main__.main()
@@ -80,7 +84,9 @@ class test_severity_using_main(unittest.TestCase):
         mock_stdout.write.assert_has_calls(lExpected)
     
     @mock.patch('sys.stdout')
-    def test_entity_with_configuration_and_fixed(self, mock_stdout):
+    @mock.patch('vsg.__main__.rule_list.rule_list.get_number_of_rules_ran')
+    def test_entity_with_configuration_and_fixed(self, mock_rule_ran, mock_stdout):
+        mock_rule_ran.return_value = 200
         try:
             sys.argv =  ['vsg', '-f', sEntityFileName, '-c', sConfigFile, '--fix']
             __main__.main()
@@ -98,7 +104,9 @@ class test_severity_using_main(unittest.TestCase):
         mock_stdout.write.assert_has_calls(lExpected)
 
     @mock.patch('sys.stdout')
-    def test_architecture_without_configuration(self, mock_stdout):
+    @mock.patch('vsg.__main__.rule_list.rule_list.get_number_of_rules_ran')
+    def test_architecture_without_configuration(self, mock_rule_ran, mock_stdout):
+        mock_rule_ran.return_value = 200
         try:
             sys.argv =  ['vsg', '-f', sArchitectureFileName]
             __main__.main()
@@ -116,7 +124,9 @@ class test_severity_using_main(unittest.TestCase):
         mock_stdout.write.assert_has_calls(lExpected)
     
     @mock.patch('sys.stdout')
-    def test_architecture_with_configuration(self, mock_stdout):
+    @mock.patch('vsg.__main__.rule_list.rule_list.get_number_of_rules_ran')
+    def test_architecture_with_configuration(self, mock_rule_ran, mock_stdout):
+        mock_rule_ran.return_value = 200
         try:
             sys.argv =  ['vsg', '-f', sArchitectureFileName, '-c', sConfigFile]
             __main__.main()
@@ -134,7 +144,9 @@ class test_severity_using_main(unittest.TestCase):
         mock_stdout.write.assert_has_calls(lExpected)
     
     @mock.patch('sys.stdout')
-    def test_architecture_with_configuration_and_fixed(self, mock_stdout):
+    @mock.patch('vsg.__main__.rule_list.rule_list.get_number_of_rules_ran')
+    def test_architecture_with_configuration_and_fixed(self, mock_rule_ran, mock_stdout):
+        mock_rule_ran.return_value = 200
         try:
             sys.argv =  ['vsg', '-f', sArchitectureFileName, '-c', sConfigFile, '--fix']
             __main__.main()
@@ -152,7 +164,9 @@ class test_severity_using_main(unittest.TestCase):
         mock_stdout.write.assert_has_calls(lExpected)
 
     @mock.patch('sys.stdout')
-    def test_both_with_configuration(self, mock_stdout):
+    @mock.patch('vsg.__main__.rule_list.rule_list.get_number_of_rules_ran')
+    def test_both_with_configuration(self, mock_rule_ran, mock_stdout):
+        mock_rule_ran.return_value = 200
         try:
             sys.argv =  ['vsg', '-f', sEntityFileName, sArchitectureFileName, '-c', sConfigFile]
             __main__.main()
@@ -172,7 +186,9 @@ class test_severity_using_main(unittest.TestCase):
         mock_stdout.write.assert_has_calls(lExpected)
     
     @mock.patch('sys.stdout')
-    def test_both_with_configuration_and_fixed(self, mock_stdout):
+    @mock.patch('vsg.__main__.rule_list.rule_list.get_number_of_rules_ran')
+    def test_both_with_configuration_and_fixed(self, mock_rule_ran, mock_stdout):
+        mock_rule_ran.return_value = 200
         try:
             sys.argv =  ['vsg', '-f', sEntityFileName, sArchitectureFileName, '-c', sConfigFile, '--fix']
             __main__.main()

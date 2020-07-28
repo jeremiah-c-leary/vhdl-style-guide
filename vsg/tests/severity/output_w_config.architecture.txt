@@ -2,7 +2,7 @@
 File:  architecture.vhd
 ================================================================================
 Phase 3 of 7... Reporting
-Total Rules Checked: 201
+Total Rules Checked: 200
 Total Violations:    2
   Error     :     1
   Warning   :     1
