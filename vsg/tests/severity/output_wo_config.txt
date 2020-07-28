@@ -1,0 +1,14 @@
+================================================================================
+File:  entity.vhd
+================================================================================
+Phase 1 of 7... Reporting
+Total Rules Checked: 200
+Total Violations:    1
+  Error   :     1
+  Warning :     0
+----------------------------+------------+------------+--------------------------------------
+  Rule                      |  severity  |  line(s)   | Solution
+----------------------------+------------+------------+--------------------------------------
+  entity_019                | Error      |          9 | Add the entity name.
+----------------------------+------------+------------+--------------------------------------
+NOTE: Refer to online documentation at https://vhdl-style-guide.readthedocs.io/en/latest/index.html for more information.

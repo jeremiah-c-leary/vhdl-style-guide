@@ -1,5 +1,8 @@
 
 
+from vsg import severity
+
+
 class rule():
 
     def __init__(self, name=None, identifier=None):
@@ -12,10 +15,11 @@ class rule():
         self.subphase = 1
         self.disable = False
         self.fixable = True
+        self.severity = severity.set_error_severity
         self.debug = False
         self.dFix = {}
         self.dFix['violations'] = {}
-        self.configuration = ['indentSize', 'phase', 'disable', 'fixable']
+        self.configuration = ['indentSize', 'phase', 'disable', 'fixable', 'severity']
 
     def configure(self, dConfiguration):
         '''Configures attributes on rules using a dictionary of the following form:
@@ -44,10 +48,16 @@ class rule():
     def _build_violation_dict(self, lReturn, sViolation, iLineNumber):
         if str(sViolation).startswith(str(iLineNumber) + '-') or str(iLineNumber) == str(sViolation):
             dViolation = {}
-            dViolation['rule'] = self.name + '_' + self.identifier
+            dViolation['severity'] = {}
+            dViolation['severity']['name'] = self.severity.name
+            dViolation['severity']['type'] = self.severity.type
+            dViolation['rule'] = self.get_unique_id()
             dViolation['lineNumber'] = sViolation
             dViolation['solution'] = self._get_solution(iLineNumber)
             lReturn.append(dViolation)
+
+    def get_unique_id(self):
+        return self.name + '_' + self.identifier
 
     def get_violations_at_linenumber(self, iLineNumber):
         '''
@@ -82,7 +92,7 @@ class rule():
             self.analyze(oFile)
             print_debug_message(self, 'Fixing rule: ' + self.name + '_' + self.identifier)
             self._fix_violations(oFile)
-            self.violations = []
+            self.clear_violations()
             self.dFix = {}
             self.dFix['violations'] = {}
 
@@ -92,6 +102,7 @@ class rule():
         '''
         if lineNumber not in self.violations:
             self.violations.append(lineNumber)
+            self.severity.count += 1
 
     def analyze(self, oFile):
         '''
@@ -109,7 +120,9 @@ class rule():
         '''
         try:
             for sAttributeName in dConfiguration['rule']['global']:
-                if sAttributeName in self.__dict__:
+                if sAttributeName == 'severity':
+                    self.severity = dConfiguration['severity_list'].get_severity_named(dConfiguration['rule']['global']['severity'])
+                elif sAttributeName in self.__dict__:
                     self.__dict__[sAttributeName] = dConfiguration['rule']['global'][sAttributeName]
         except KeyError:
             pass
@@ -119,9 +132,11 @@ class rule():
         Updates rule attributes based on configuration input files
         '''
         try:
-            for sAttributeName in dConfiguration['rule'][self.name + '_' + self.identifier]:
-                if sAttributeName in self.__dict__:
-                    self.__dict__[sAttributeName] = dConfiguration['rule'][self.name + '_' + self.identifier][sAttributeName]
+            for sAttributeName in dConfiguration['rule'][self.get_unique_id()]:
+                if sAttributeName == 'severity':
+                    self.severity = dConfiguration['severity_list'].get_severity_named(dConfiguration['rule'][self.get_unique_id()]['severity'])
+                elif sAttributeName in self.__dict__:
+                    self.__dict__[sAttributeName] = dConfiguration['rule'][self.get_unique_id()][sAttributeName]
         except KeyError:
             pass
 
@@ -130,7 +145,7 @@ class rule():
         Checks if the rule has been disabled for a given line.
         '''
         if 'vsg_off' in oLine.codeTags:
-            if len(oLine.codeTags['vsg_off']) == 0 or self.name + '_' + self.identifier in oLine.codeTags['vsg_off']:
+            if len(oLine.codeTags['vsg_off']) == 0 or self.get_unique_id() in oLine.codeTags['vsg_off']:
                 return True
         return False
 
@@ -141,6 +156,7 @@ class rule():
         dConfig = {}
         for sParameter in self.configuration:
             dConfig[sParameter] = getattr(self, sParameter)
+        dConfig['severity'] = self.severity.name
         return dConfig
 
     def _get_solution(self, iLineNumber):
@@ -155,6 +171,9 @@ class rule():
         This method is called before the _analyze method and allows each rule to setup any variables needed.
         '''
         return
+
+    def clear_violations(self):
+        self.violations = []
 
     def set_debug(self):
         '''

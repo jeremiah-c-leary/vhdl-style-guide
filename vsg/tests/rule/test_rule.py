@@ -96,6 +96,7 @@ class testRuleMethods(unittest.TestCase):
         dExpected['fixable'] = True
         dExpected['indentSize'] = 2
         dExpected['phase'] = 3
+        dExpected['severity'] = 'Error'
         dActual = oRule.get_configuration()
         for sKey in dExpected.keys():
             self.assertEqual(dActual[sKey], dExpected[sKey])
@@ -120,7 +121,7 @@ class testRuleMethods(unittest.TestCase):
         self.assertEqual(oRule.phase, None)
         self.assertEqual(oRule.disable, False)
         self.assertEqual(oRule.fixable, True)
-        self.assertEqual(oRule.configuration, ['indentSize', 'phase', 'disable', 'fixable'])
+        self.assertEqual(oRule.configuration, ['indentSize', 'phase', 'disable', 'fixable', 'severity'])
 
         dConfiguration['rule'] = {}
         dConfiguration['rule']['xyz_001'] = {}
@@ -136,7 +137,7 @@ class testRuleMethods(unittest.TestCase):
         self.assertEqual(oRule.phase, 10)
         self.assertEqual(oRule.disable, True)
         self.assertEqual(oRule.fixable, False)
-        self.assertEqual(oRule.configuration, ['indentSize', 'phase', 'disable', 'fixable'])
+        self.assertEqual(oRule.configuration, ['indentSize', 'phase', 'disable', 'fixable', 'severity'])
 
         oRule.configuration.append('unknown')
         oRule.unknown = None
@@ -147,7 +148,7 @@ class testRuleMethods(unittest.TestCase):
         self.assertEqual(oRule.disable, True)
         self.assertEqual(oRule.fixable, False)
         self.assertEqual(oRule.unknown, 'New')
-        self.assertEqual(oRule.configuration, ['indentSize', 'phase', 'disable', 'fixable', 'unknown'])
+        self.assertEqual(oRule.configuration, ['indentSize', 'phase', 'disable', 'fixable', 'severity', 'unknown'])
 
     def test_get_violations_w_vsg_output_method(self):
         oRule = rule.rule()
@@ -175,6 +176,9 @@ class testRuleMethods(unittest.TestCase):
         dExpected['rule'] = 'xyz_001'
         dExpected['lineNumber'] = '1'
         dExpected['solution'] = 'Solution'
+        dExpected['severity'] = {}
+        dExpected['severity']['name'] = 'Error'
+        dExpected['severity']['type'] = 'error'
         lExpected.append(dExpected)
 
         lActual = oRule.get_violations_at_linenumber(1)
@@ -185,11 +189,17 @@ class testRuleMethods(unittest.TestCase):
         dExpected['rule'] = 'xyz_001'
         dExpected['lineNumber'] = '2'
         dExpected['solution'] = 'Solution'
+        dExpected['severity'] = {}
+        dExpected['severity']['name'] = 'Error'
+        dExpected['severity']['type'] = 'error'
         lExpected.append(dExpected)
         dExpected = {}
         dExpected['rule'] = 'xyz_001'
         dExpected['lineNumber'] = '2'
         dExpected['solution'] = 'Solution'
+        dExpected['severity'] = {}
+        dExpected['severity']['name'] = 'Error'
+        dExpected['severity']['type'] = 'error'
         lExpected.append(dExpected)
 
         lActual = oRule.get_violations_at_linenumber(2)

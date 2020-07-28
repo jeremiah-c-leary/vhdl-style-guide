@@ -1,0 +1,10 @@
+
+severity:
+  Guideline:
+    type: warning
+
+rule:
+  entity_019:
+    severity: Guideline
+  architecture_024:
+    severity: Warning
