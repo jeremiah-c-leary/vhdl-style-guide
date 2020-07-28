@@ -33,7 +33,7 @@ This is the basic form of a configuration file in YAML:
 .. code-block:: yaml
 
    ---
-   file_list:[
+   file_list:
      - fifo.vhd
      - source/spi.vhd:
          rule:
@@ -229,4 +229,5 @@ Configure the indent size for all rules by setting the **global** attribute.
 .. include:: configuring_number_of_signals.rst
 .. include:: configuring_line_length.rst
 .. include:: configuring_keyword_alignment.rst
+.. include:: configuring_declaration_identifier_alignment.rst
 .. include:: multiple_configurations.rst

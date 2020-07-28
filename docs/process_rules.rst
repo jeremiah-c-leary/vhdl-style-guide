@@ -909,3 +909,29 @@ Refer to the section `Configuring Prefix and Suffix Rules <configuring_prefix_su
 .. code-block:: vhdl
 
    proc_main: process () is
+
+process_037
+###########
+
+This rule checks for alignment of identifiers in attribute, type, subtype, constant, signal, variable and file declarations in the process declarative region.
+
+Refer to the section `Configuring Identifier Alignment Rules <configuring_declaration_identifier_alignment.html>`_ for information on changing the configurations.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   signal    sig1 : std_logic;
+   file some_file : 
+   variable v_var1 : std_logic;
+   type t_myType : std_logic;
+   
+**Fix**
+
+.. code-block:: vhdl
+
+   signal   sig1 : std_logic;
+   file     some_file : 
+   variable v_var1 : std_logic;
+   type     t_myType : std_logic;
+

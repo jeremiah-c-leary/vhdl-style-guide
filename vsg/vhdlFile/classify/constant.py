@@ -4,14 +4,23 @@ import re
 def constant(dVars, oLine, oLinePrevious):
 
     if re.match('^\s*constant', oLine.lineLower) and \
-       not oLine.insideFunction and not oLine.insideProcedure and \
+       not oLine.insideProcedure and \
        not oLine.insideConcurrent:
-        oLine.isConstant = True
-        oLine.indentLevel = dVars['iCurrentIndentLevel']
-        oLine.insideConstant = True
-        dVars['iCurrentIndentLevel'] += 1
-        if re.match('^.*:=\s*\(', oLine.lineNoComment):
-            dVars['fConstantArray'] = True
+        if oLine.insideFunction:
+            if not dVars['fFunctionBeginDetected'] and dVars['fFunctionReturnTypeDetected']:
+                oLine.isConstant = True
+                oLine.indentLevel = dVars['iCurrentIndentLevel']
+                oLine.insideConstant = True
+                dVars['iCurrentIndentLevel'] += 1
+                if re.match('^.*:=\s*\(', oLine.lineNoComment):
+                    dVars['fConstantArray'] = True
+        else: 
+            oLine.isConstant = True
+            oLine.indentLevel = dVars['iCurrentIndentLevel']
+            oLine.insideConstant = True
+            dVars['iCurrentIndentLevel'] += 1
+            if re.match('^.*:=\s*\(', oLine.lineNoComment):
+                dVars['fConstantArray'] = True
     if oLine.insideConstant:
         if ';' in oLine.line:
             dVars['iCurrentIndentLevel'] -= 1

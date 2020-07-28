@@ -62,26 +62,4 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
 file_003
 ########
 
-This rule checks for spaces after the **file** keyword.
-
-**Violation**
-
-.. code-block:: vhdl
-
-     file   defaultImage : load_file_type open read_mode is load_file_name;
-
-**Fix**
-
-.. code-block:: vhdl
-
-     file defaultImage : load_file_type open read_mode is load_file_name;
-
-.. NOTE:: The number of spaces after the **file** keyword is configurable.
-   Use the following YAML file example to change the default number of spaces.
-
-   .. code-block:: yaml
-
-   rule:
-     file_003:
-         spaces: 3 
-
+This rule was depricated and replaced with rules:  function_015, package_019, procedure_010, architecture_029 and process_037.

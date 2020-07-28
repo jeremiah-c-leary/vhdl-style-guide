@@ -2,16 +2,16 @@
 architecture ARCH of ENTITY1 is
 
   constant con1   : integer;
-  signal sig1     : std_logic; -- Sig
-  file file1      : load_file_file open read_mode is load_file_name;
+  signal   sig1   : std_logic; -- Sig
+  file     file1  : load_file_file open read_mode is load_file_name;
 
   constant con12  : integer;
-  signal sig12    : std_logic;
-  file file12     : load_file_file open read_mode is load_file_name;
+  signal   sig12  : std_logic;
+  file     file12 : load_file_file open read_mode is load_file_name;
 
   -- This should not fail
   constant con12  : integer;
-  signal sig12    : std_logic;
+  signal   sig12  : std_logic;
   file     file12 : load_file_file open read_mode is load_file_name;
   
 begin

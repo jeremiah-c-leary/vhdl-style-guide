@@ -16,6 +16,7 @@ class rule():
         self.disable = False
         self.fixable = True
         self.severity = severity.set_error_severity
+        self.debug = False
         self.dFix = {}
         self.dFix['violations'] = {}
         self.configuration = ['indentSize', 'phase', 'disable', 'fixable', 'severity']
@@ -89,6 +90,7 @@ class rule():
         '''
         if self.fixable:
             self.analyze(oFile)
+            print_debug_message(self, 'Fixing rule: ' + self.name + '_' + self.identifier)
             self._fix_violations(oFile)
             self.clear_violations()
             self.dFix = {}
@@ -106,6 +108,7 @@ class rule():
         '''
         Performs the analysis.
         '''
+        print_debug_message(self, 'Analyzing rule: ' + self.name + '_' + self.identifier)
         self._pre_analyze()
         for iLineNumber, oLine in enumerate(oFile.lines):
             if not self._is_vsg_off(oLine):
@@ -172,6 +175,12 @@ class rule():
     def clear_violations(self):
         self.violations = []
 
+    def set_debug(self):
+        '''
+        This method sets the debug attribute to True.
+        '''
+        self.debug = True
+
 
 def check_for_old_violation_format(violation):
     # Remove this some time after 2.0.0 has been released
@@ -180,3 +189,16 @@ def check_for_old_violation_format(violation):
         print('        Use the function utils.create_violation_dict to update to current format.')
         print('        Refer to documentation on local rules for more information.')
         sys.exit(1)
+
+def print_debug_message(self, sString):
+    '''
+    Prints a debug message to stdio.
+
+    Parameters:
+
+      sString : (string)
+
+    Returns: Nothing
+    '''
+    if self.debug:
+        print('INFO: ' + sString)

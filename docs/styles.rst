@@ -10,6 +10,7 @@ The table below lists the built in styles available
 | Style         | Description                                |
 +---------------+--------------------------------------------+
 | indent_only   | Only applies indent rules                  |
++---------------+--------------------------------------------+
 | jcl           | Coding style preferred by Jeremiah Leary   |
 +---------------+--------------------------------------------+
 

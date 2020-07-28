@@ -30,6 +30,7 @@ oIdentifier = vhdlFile.vhdlFile(lIdentifier)
 
 
 dConfig = utils.read_configuration(os.path.join(os.path.dirname(__file__),'..','..','..','styles', 'jcl.yaml'))
+dConfig['debug'] = False
 
 oSeverityList = severity.create_list({})
 

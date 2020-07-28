@@ -18,8 +18,6 @@ lFileEntity = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','e
 oFileEntity = vhdlFile.vhdlFile(lFileEntity)
 lFileConcurrent = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','concurrent','concurrent_test_input.vhd'))
 oFileConcurrent = vhdlFile.vhdlFile(lFileConcurrent)
-lFileArchitecture = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','architecture','architecture_test_input.vhd'))
-oFileArchitecture = vhdlFile.vhdlFile(lFileArchitecture)
 lFileArchitectureLoop = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','architecture','architecture_loop_test_input.vhd'))
 oFileArchitectureLoop = vhdlFile.vhdlFile(lFileArchitectureLoop)
 lFileArchitectureFunctionLoop = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','architecture','architecture_loop_in_function_test_input.vhd'))
@@ -220,46 +218,6 @@ class testVhdlFileMethods(unittest.TestCase):
         lActual = []
         for iIndex, oLine in enumerate(oFileGeneric.lines):
             if oLine.isGenericDeclaration:
-                lActual.append(iIndex)
-        # Compare
-        self.assertEqual(lActual, lExpected)
-
-    def test_insideArchitecture_assignment(self):
-        lExpected = [3,4,5,6,7,9,10,11,12,13,14,15,16,17,18,20,21,22,23,24,26,27,28,29,30,31,33,34,35,37,38,39,40,41,42,43,44,45,47,48,49,50,51,52,53,54,55,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,81,82,83,84,85]
-        # Generic actual list
-        lActual = []
-        for iIndex, oLine in enumerate(oFileArchitecture.lines):
-            if oLine.insideArchitecture:
-                lActual.append(iIndex)
-        # Compare
-        self.assertEqual(lActual, lExpected)
-
-    def test_isArchitectureBegin_assignment(self):
-        lExpected = [5,11,16,22,29,34,39,49,61,83]
-        # Generic actual list
-        lActual = []
-        for iIndex, oLine in enumerate(oFileArchitecture.lines):
-            if oLine.isArchitectureBegin:
-                lActual.append(iIndex)
-        # Compare
-        self.assertEqual(lActual, lExpected)
-
-    def test_isArchitectureKeyword_assignment(self):
-        lExpected = [3,9,14,20,26,33,37,47,59,81]
-        # Generic actual list
-        lActual = []
-        for iIndex, oLine in enumerate(oFileArchitecture.lines):
-            if oLine.isArchitectureKeyword:
-                lActual.append(iIndex)
-        # Compare
-        self.assertEqual(lActual, lExpected)
-
-    def test_isEndArchitecture_assignment(self):
-        lExpected = [7,13,18,24,31,35,45,55,77,85]
-        # Generic actual list
-        lActual = []
-        for iIndex, oLine in enumerate(oFileArchitecture.lines):
-            if oLine.isEndArchitecture:
                 lActual.append(iIndex)
         # Compare
         self.assertEqual(lActual, lExpected)

@@ -30,13 +30,6 @@ class testFixRuleVariableMethods(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
 
-    def test_fix_rule_003(self):
-        oRule = variable.rule_003()
-        dExpected = []
-        oRule.fix(self.oFile)
-        oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, dExpected)
-
     def test_fix_rule_004(self):
         oRule = variable.rule_004()
         dExpected = []

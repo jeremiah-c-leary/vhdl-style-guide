@@ -24,4 +24,3 @@ Welcome to vhdl-style-guide's documentation!
    rules
    api
    contributing
-   faq

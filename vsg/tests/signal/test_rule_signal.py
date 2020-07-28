@@ -44,27 +44,6 @@ class testRuleSignalMethods(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, lExpected)
 
-    def test_rule_003(self):
-        oRule = signal.rule_003()
-        self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'signal')
-        self.assertEqual(oRule.identifier, '003')
-        lExpected = utils.add_violation_list([8,9,12])
-        oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, lExpected)
-
-    def test_rule_003_w_3_spaces(self):
-        oRule = signal.rule_003()
-        oRule.spaces = 3
-        lExpected = []
-        lExpected.extend(utils.add_violation_list(range(5, 12)))
-        lExpected.extend(utils.add_violation_list(range(13, 17)))
-        lExpected.extend(utils.add_violation_list(range(18, 22)))
-        lExpected.append(utils.add_violation(23))
-
-        oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, lExpected)
-
     def test_rule_004(self):
         oRule = signal.rule_004()
         self.assertTrue(oRule)

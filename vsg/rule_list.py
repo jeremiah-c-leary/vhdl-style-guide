@@ -258,6 +258,9 @@ class rule_list():
             self._validate_configuration_rule_exists(configurationFile)
             for oRule in self.rules:
                 oRule.configure(configurationFile)
+        if configurationFile['debug']:
+            for oRule in self.rules:
+                oRule.set_debug()
 
     def _validate_configuration_rule_exists(self, configurationFile):
         '''

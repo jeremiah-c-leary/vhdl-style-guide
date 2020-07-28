@@ -21,14 +21,32 @@ VHDL Style Guide (VSG)
 .. image:: https://api.codacy.com/project/badge/Grade/42744dca97544824b93cfc99e8030063
    :target: https://www.codacy.com/app/jeremiah-c-leary/vhdl-style-guide?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jeremiah-c-leary/vhdl-style-guide&amp;utm_campaign=Badge_Grade
    :alt: Codacy
-.. image:: https://gitter.im/vhdl-style-guide/community
+.. image:: https://badges.gitter.im/vhdl-style-guide/repo.png
    :target: https://gitter.im/vhdl-style-guide/community
    :alt: Gitter
 
-.. NOTE:: Version 1.0 of VSG supports python 3 only due to python 2.7 End of Life in 2019.
-          The python 2.7 version is being maintained on the python-2.7-maintence branch.
+Announcements
+-------------
 
-VHDL Style Guide (VSG) provides coding style guide enforcement for VHDL code.
+Version 2 has been released.
+
+Please be aware that there are some rule incompatabilities with the 1.x releases:
+
+#. The default for all case rules is now lowercase
+#. Alignment rules have changed significantly
+#. Some rules have been moved to group them with the correct rule sets
+
+These changes will require another tunning of the rules against your code.
+Refer to the documentation on configuring case and alignment rules.
+There are many more options for the alignment rules than in the 1.x releases.
+
+There are additional features added from version 1:
+
+#. Alignment of identifiers has been added
+#. Built in styles
+#. Improved console output
+
+Refer to the release notes for a full listing of features and bug fixes.
 
 .. image:: https://github.com/jeremiah-c-leary/vhdl-style-guide/blob/master/docs/img/vim_macro.gif
 
@@ -46,8 +64,7 @@ Table of Contents
 Overview
 --------
 
-VSG was created after participating in a code review.
-A real issue in the code was masked by a coding style issue.
+VSG was created after participating in a code review where a real issue in the code was masked by a coding style issue.
 A finding was created for the style issue, while the real issue was missed.
 When the code was re-reviewed, the real issue was discovered.
 
@@ -79,7 +96,7 @@ Key Features
 
 * Command line tool
 
-  * integrate into continuous integration flow
+  * integrate into continuous integration flow with JUnit output
 
 * Reports and fixes issues found
 
@@ -96,13 +113,16 @@ Key Features
 
   * Disable rules
   * Alter behavior of existing rules
-  * Change phase of execution
 
 * Localize rule sets
 
   * Create your own rules using python
   * Use existing rules as a template
   * Fully integrates into base rule set
+
+* Built in styles
+
+  * Use existing style or create your own
 
 Installation
 ------------
@@ -134,14 +154,12 @@ The command line tool can be invoked with:
 .. code-block:: bash
 
    $ vsg
-   usage: VHDL Style Guide (VSG) [-h] [-f FILENAME [FILENAME ...]]
-                                 [-lr LOCAL_RULES]
-                                 [-c CONFIGURATION [CONFIGURATION ...]] [--fix]
-                                 [-fp FIX_PHASE] [-j JUNIT] [-of {vsg,syntastic}]
-                                 [-b] [-oc OUTPUT_CONFIGURATION] [-v]
+   usage: VHDL Style Guide (VSG) [-h] [-f FILENAME [FILENAME ...]] [-lr LOCAL_RULES] [-c CONFIGURATION [CONFIGURATION ...]] [--fix]
+                                 [-fp FIX_PHASE] [-j JUNIT] [-of {vsg,syntastic}] [-b] [-oc OUTPUT_CONFIGURATION]
+                                 [-rc RULE_CONFIGURATION] [--style {indent_only,jcl}] [-v] [--debug]
    
-   Analyzes VHDL files for style guide violations. Reference documentation is
-   located at: http://vhdl-style-guide.readthedocs.io/en/latest/index.html
+   Analyzes VHDL files for style guide violations. Reference documentation is located at: http://vhdl-style-
+   guide.readthedocs.io/en/latest/index.html
    
    optional arguments:
      -h, --help            show this help message and exit
@@ -158,11 +176,15 @@ The command line tool can be invoked with:
                            Extract Junit file
      -of {vsg,syntastic}, --output_format {vsg,syntastic}
                            Sets the output format.
-     -b, --backup          Creates copy of input file for comparison with fixed
-                           version.
+     -b, --backup          Creates a copy of input file for comparison with fixed version.
      -oc OUTPUT_CONFIGURATION, --output_configuration OUTPUT_CONFIGURATION
-                           Output configuration file name
+                           Write configuration to file name.
+     -rc RULE_CONFIGURATION, --rule_configuration RULE_CONFIGURATION
+                           Display configuration of a rule
+     --style {indent_only,jcl}
+                           Use predefined style
      -v, --version         Displays version information
+     --debug               Displays verbose debug information
 
 Here is an example output running against a test file:
 

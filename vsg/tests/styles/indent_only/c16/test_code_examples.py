@@ -17,6 +17,7 @@ lDataCore = utils.read_vhdlfile(os.path.join(sSourceDir,'data_core.vhd'))
 oDataCore = vhdlFile.vhdlFile(lDataCore)
 
 dLegacyConfig = utils.read_configuration(os.path.join(os.path.dirname(__file__),'..','..','..','..','styles', 'indent_only.yaml'))
+dLegacyConfig['debug'] = False
 
 oSeverityList = severity.create_list({})
 

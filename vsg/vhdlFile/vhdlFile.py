@@ -38,6 +38,7 @@ class vhdlFile():
         dVars['fFunctionParameterEndDetected'] = False
         dVars['fFunctionIsDetected'] = False
         dVars['fFunctionBeginDetected'] = False
+        dVars['fFunctionReturnTypeDetected'] = False
         dVars['iOpenParenthesis'] = 0
         dVars['iCloseParenthesis'] = 0
         dVars['iCurrentIndentLevel'] = 0

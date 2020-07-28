@@ -14,6 +14,7 @@ def classify_architecture_keyword(self, dVars, oLine):
         self.hasArchitecture = True
         oLine.isArchitectureKeyword = True
         oLine.insideArchitecture = True
+        oLine.insideArchitectureDeclarativeRegion = True
         oLine.indentLevel = 0
         dVars['iCurrentIndentLevel'] = 1
 

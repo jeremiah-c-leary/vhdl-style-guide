@@ -35,6 +35,8 @@ def function(dVars, oLine):
     if oLine.insideFunction:
         dVars['iOpenParenthesis'] += oLine.lineNoComment.count('(')
         dVars['iCloseParenthesis'] += oLine.lineNoComment.count(')')
+        _classify_return_type(dVars, oLine)
+        _classify_is(dVars, oLine)
         _classify_begin_keyword(dVars, oLine)
         _classify_return_keyword(dVars, oLine)
         _classify_parameter(dVars, oLine)
@@ -56,11 +58,20 @@ def _classify_begin_keyword(dVars, oLine):
         oLine.indentLevel = dVars['iCurrentIndentLevel'] - 1
         dVars['fFunctionBeginDetected'] = True
 
-
 def _classify_return_keyword(dVars, oLine):
     if re.match('^\s*return', oLine.lineLower) and dVars['fFunctionBeginDetected']:
         oLine.isFunctionReturn = True
         oLine.indentLevel = dVars['iCurrentIndentLevel']
+
+def _classify_is(dVars, oLine):
+    if not dVars['fFunctionBeginDetected']:
+        if oLine.has_token('is'):
+            oLine.hasFunctionIs = True
+
+def _classify_return_type(dVars, oLine):
+    if oLine.has_token('return') and not dVars['fFunctionBeginDetected']:
+        oLine.hasFunctionReturnType = True
+        dVars['fFunctionReturnTypeDetected'] = True
 
 
 def _classify_end_keyword(dVars, oLine):
@@ -73,17 +84,14 @@ def _classify_end_keyword(dVars, oLine):
             if re.match('^\s*\)\s*return', oLine.line, re.IGNORECASE):
                 oLine.indentLevel = dVars['iCurrentIndentLevel'] - 1
             dVars['iCurrentIndentLevel'] -= 1
-            dVars['fFunctionBeginDetected'] = False
-            dVars['fFunctionParameterEndDetected'] = False
+            _clear_function_variables(dVars)
     else:
         if re.match('^\s*end', oLine.lineLower) and not oLine.isEndIfKeyword and \
            not oLine.isEndCaseKeyword and not oLine.isForLoopEnd and not oLine.isWhileLoopEnd and dVars['fFunctionBeginDetected']:
             oLine.isFunctionEnd = True
             oLine.indentLevel = dVars['iCurrentIndentLevel'] - 1
             dVars['iCurrentIndentLevel'] -= 1
-            dVars['fFunctionBeginDetected'] = False
-            dVars['fFunctionParameterEndDetected'] = False
-
+            _clear_function_variables(dVars)
 
 def _classify_parameter(dVars, oLine):
     if re.match('^.*\w+\s*:\s*\w+', oLine.line) and not dVars['fFunctionParameterEndDetected']:
@@ -100,3 +108,10 @@ def _classify_parameter_end(dVars, oLine):
         if re.match('^\s*\)\s*is', oLine.line, re.IGNORECASE):
             oLine.indentLevel = dVars['iCurrentIndentLevel'] - 1
         dVars['fFunctionParameterEndDetected'] = True
+
+
+def _clear_function_variables(dVars):
+    dVars['fFunctionBeginDetected'] = False
+    dVars['fFunctionParameterEndDetected'] = False
+    dVars['fFunctionReturnTypeDetected'] = False
+

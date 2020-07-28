@@ -15,6 +15,7 @@ from .search_for_and_replace_keyword_rule import search_for_and_replace_keyword_
 from .case_rule import case_rule
 from .prefix_rule import prefix_rule
 from .suffix_rule import suffix_rule
+from .identifier_alignment_rule import identifier_alignment_rule
 
 from vsg.rules import after
 from vsg.rules import architecture

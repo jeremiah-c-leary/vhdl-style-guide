@@ -36,6 +36,7 @@ def parse_command_line_arguments():
     parser.add_argument('-rc', '--rule_configuration', default=None, action='store', help='Display configuration of a rule')
     parser.add_argument('--style', action='store', default=None, choices=get_predefined_styles(), help='Use predefined style')
     parser.add_argument('-v', '--version', default=False, action='store_true', help='Displays version information')
+    parser.add_argument('--debug', default=False, action='store_true', help='Displays verbose debug information')
 
     if len(sys.argv) == 1:
         parser.print_help()
@@ -76,7 +77,7 @@ def read_predefined_style(sStyleName):
     dReturn = {}
     if sStyleName is not None:
         sFileName = os.path.join(os.path.dirname(__file__), 'styles', sStyleName + '.yaml')
-        open_configuration_file(sFileName)
+        dReturn = open_configuration_file(sFileName)
     return dReturn
     
 
@@ -298,6 +299,26 @@ def validate_files_exist_to_analyze(sName):
         sys.exit(1)
 
 
+def add_debug_to_configuration(oCLA, dConfiguration):
+    '''
+    Adds debug values to the configuration dictionary for later use.
+
+    Parameters:
+
+      oCLA: (command line argument object)
+
+      dConfiguration: (dictionary)
+
+    Returns:  Nothing
+    '''
+    try:
+        dConfiguration['debug'] = oCLA.debug
+    except TypeError:
+        dConfiguration = {}
+        dConfiguration['debug'] = oCLA.debug
+    return dConfiguration
+
+
 def main():
     '''Main routine of the VHDL Style Guide (VSG) program.'''
 
@@ -312,6 +333,8 @@ def main():
     configuration = read_configuration_files(dStyle, commandLineArguments)
 
     update_command_line_arguments(commandLineArguments, configuration)
+
+    configuration = add_debug_to_configuration(commandLineArguments, configuration)
 
     # Add local rule path to system path so the rules can be loaded
     if commandLineArguments.local_rules:

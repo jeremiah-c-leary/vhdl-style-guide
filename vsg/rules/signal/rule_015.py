@@ -27,6 +27,7 @@ class rule_015(rule.rule):
         if oLine.insideSignal:
             self.sFullLine += oLine.line
         if oLine.isEndSignal:
+#<<<<<<< HEAD
             match = re.match(r'.*?signal\s+(?P<signals>[^:\n]*):', utils.remove_comment(self.sFullLine), flags=re.IGNORECASE)
             if match:
                 sSignalList = match.group("signals")
@@ -35,12 +36,24 @@ class rule_015(rule.rule):
                     dViolation['endLine'] = iLineNumber
                     dViolation['line'] = self.sFullLine
                     self.add_violation(dViolation)
+#=======
+#            sLine = utils.remove_comment(self.sFullLine)
+#            sLine = sLine.split(':')[0]
+#            if sLine.count(',') > self.consecutive - 1:
+#                self.add_violation(self.iFailureLine)
+#                self.dFix['violations'][self.iFailureLine] = {}
+#                self.dFix['violations'][self.iFailureLine]['endLine'] = iLineNumber
+#                self.dFix['violations'][self.iFailureLine]['line'] = self.sFullLine
+#>>>>>>> 305124a... Updates for issue #404:
 
     def _fix_violations(self, oFile):
         for dViolation in self.violations[::-1]:
             iLineNumber = utils.get_violation_line_number(dViolation)
             utils.remove_lines(oFile, iLineNumber, dViolation['endLine'])
-            iNumLines = utils.remove_comment(dViolation['line']).count(',') + 1
+            sLine = dViolation['line']
+            sLine = utils.remove_comment(sLine)
+            sLine = sLine.split(':')[0]
+            iNumLines = sLine.count(',') + 1
             lSignals = _extract_signals(dViolation['line'])
             sAfterColon = _extract_after_colon(dViolation['line'])
             for i in range(0, iNumLines):
