@@ -10,10 +10,13 @@ def debug_lines(oFile, iLineNumber, iNumberOfLines):
         print('{0:5d} | {1:s}'.format(iLineNumber + iIndex, oFile.lines[iLineNumber + iIndex].line))
 
 
-def read_file(sFilename, lLines):
+def read_file(sFilename, lLines, bStrip=True):
     with open(sFilename) as oFile:
         for sLine in oFile:
-            lLines.append(sLine.rstrip())
+            if bStrip:
+                lLines.append(sLine.rstrip())
+            else:
+                lLines.append(sLine.strip('\n'))
 
 
 def print_attributes(oLine):
@@ -65,3 +68,8 @@ def read_configuration(sFileName):
     with open(sFileName) as yaml_file:
         return yaml.full_load(yaml_file)
 
+def extract_violation_lines(lViolations):
+    lReturn = []
+    for dViolation in lViolations:
+        lReturn.append(dViolation['lines'][0]['number'])
+    return lReturn

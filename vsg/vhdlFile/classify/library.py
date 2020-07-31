@@ -1,20 +1,50 @@
 import re
 
-
-def library(oLine):
-
-    if not oLine.insideEntity and not oLine.insideArchitecture and not oLine.insidePackage and not oLine.insidePackageBody:
-        check_library_keyword(oLine)
-        check_use_keyword(oLine)
+from vsg import parser
 
 
-def check_library_keyword(oLine):
-    if re.match('^\s*library', oLine.lineLower):
-        oLine.isLibrary = True
-        oLine.indentLevel = 0
+def library(dVars, lTokens, lObjects, oLine):
+
+    '''
+    Classifies library declarations.
+
+    library logical_name [, logical_name] ;
+
+    Modifies the following variables:
+
+      * bInsideLibrary
+    '''
+
+    for iToken, sToken in enumerate(lTokens):
+        if dVars['bInsideLibrary']:
+
+            classify_library_logical_name(sToken, iToken, lObjects, dVars)
+
+            classify_comma(sToken, iToken, lObjects, dVars)
+
+            classify_semicolon(sToken, iToken, lObjects, dVars)
+
+        else:
+            classify_library_keyword(sToken, iToken, lObjects, dVars, oLine)
 
 
-def check_use_keyword(oLine):
-    if re.match('^\s*use', oLine.lineLower):
-        oLine.isLibraryUse = True
-        oLine.indentLevel = 1
+def classify_semicolon(sToken, iToken, lObjects, dVars):
+    if sToken == ';':
+        lObjects[iToken] = parser.library_semicolon()
+        dVars['bInsideLibrary'] = False
+
+
+def classify_comma(sToken, iToken, lObjects, dVars):
+    if sToken == ',':
+        lObjects[iToken] = parser.library_comma()
+
+
+def classify_library_logical_name(sToken, iToken, lObjects, dVars):
+    if not isinstance(lObjects[iToken], parser.whitespace) and not isinstance(lObjects[iToken], parser.comment):
+        lObjects[iToken] = parser.library_logical_name(sToken)
+
+
+def classify_library_keyword(sToken, iToken, lObjects, dVars, oLine):
+    if sToken.lower() == 'library':
+        lObjects[iToken] = parser.library_keyword(sToken)
+        dVars['bInsideLibrary'] = True

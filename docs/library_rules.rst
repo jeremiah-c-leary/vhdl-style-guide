@@ -129,7 +129,7 @@ This rule checks for excessive spaces after the **use** keyword.
 library_007
 ###########
 
-This rule checks for blank lines above the **use** keyword.
+This rule removes blank lines above the **use** keyword.
 
 **Violation**
 
@@ -191,3 +191,38 @@ This rule checks alignment of comments above library use statements.
       -- Use standard logic library
       use ieee.std_logic_1164.all;
 
+library_010
+###########
+
+This rule checks the **library** keyword is on it's own line.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   context c1 is library ieee; use ieee.std_logic_1164.all; end context c1;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   context c1 is
+     library ieee; use ieee.std_logic_1164.all; end context c1;
+
+library_011
+###########
+
+This rule checks the **use** keyword is on it's own line.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   context c1 is library ieee; use ieee.std_logic_1164.all; end context c1;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   context c1 is library ieee; 
+       use ieee.std_logic_1164.all; end context c1;

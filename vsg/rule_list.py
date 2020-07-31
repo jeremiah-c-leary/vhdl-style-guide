@@ -139,9 +139,11 @@ class rule_list():
         '''
         for phase in range(1, int(iFixPhase) + 1):
             if phase in lSkipPhase:
+                if phase == 1:
+                    self.oVhdlFile.set_indent_levels()
                 continue
             
-            for subphase in range(1, 3):
+            for subphase in range(1, 4):
                 lRules = self.get_rules_in_phase(phase)
                 lRules = self.get_rules_in_subphase(lRules, subphase)
                 lRules = filter_out_disabled_rules(lRules)
@@ -150,6 +152,11 @@ class rule_list():
                         oRule.fix(self.oVhdlFile)
                     else:
                         oRule.analyze(self.oVhdlFile)
+
+            if phase == 1:
+                self.oVhdlFile.update_filecontent()
+                self.oVhdlFile._processFile()
+            
 
     def get_rules_in_phase(self, iPhaseNumber):
         '''

@@ -1,11 +1,11 @@
 
-from vsg.rules import indent_rule
+from vsg import parser
+from vsg.rules import indent_item_rule
 
 
-class rule_001(indent_rule):
+class rule_001(indent_item_rule):
     '''
-    Library rule 001 checks for spaces at the beginning of the line.
+    Checks for indent off the library keyword.
     '''
-
     def __init__(self):
-        indent_rule.__init__(self, 'library', '001', 'isLibrary')
+        indent_item_rule.__init__(self, 'library', '001', parser.library_keyword)

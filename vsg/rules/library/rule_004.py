@@ -1,16 +1,13 @@
 
-from vsg.rules import case_rule
-from vsg import utils
+from vsg import parser
+from vsg.rules import case_item_rule
 
 
-class rule_004(case_rule):
+class rule_004(case_item_rule):
     '''
-    Library rule 004 checks the "library" keyword has proper case.
+    Checks the "library" keyword has proper case.
     '''
-
     def __init__(self):
-        case_rule.__init__(self, 'library', '004', 'isLibrary')
-        self.solution = 'Change "library" keyword to '
-
-    def _extract(self, oLine):
-        return utils.extract_words(oLine, ['library'])
+        case_item_rule.__init__(self, 'library', '004', parser.library_keyword)
+        self.regionBegin = parser.library_keyword
+        self.regionEnd = parser.library_semicolon

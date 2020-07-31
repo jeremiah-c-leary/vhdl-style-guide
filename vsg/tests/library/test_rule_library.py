@@ -19,9 +19,25 @@ class testRuleLibraryMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'library')
         self.assertEqual(oRule.identifier, '001')
 
-        dExpected = utils.add_violation_list([7,9,21])
+        lExpected = []
+
+        dViolation = utils.add_violation(7)
+        dViolation['action'] = 'remove'
+        dViolation['solution'] = 'Remove spaces before "library"'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(9)
+        dViolation['action'] = 'remove'
+        dViolation['solution'] = 'Remove spaces before "Library"'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(21)
+        dViolation['action'] = 'remove'
+        dViolation['solution'] = 'Remove spaces before "library"'
+        lExpected.append(dViolation)
+
         oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(lExpected, oRule.violations)
 
     def test_rule_002(self):
         oRule = library.rule_002()
@@ -29,9 +45,22 @@ class testRuleLibraryMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'library')
         self.assertEqual(oRule.identifier, '002')
 
-        dExpected = utils.add_violation_list([13,20,21])
+        lExpected = []
+
+        dViolation = utils.add_violation(13)
+        dViolation['solution'] = 'Ensure there are only 1 space(s) between "library" and "lib4"'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(20)
+        dViolation['solution'] = 'Ensure there are only 1 space(s) between "LIBRARY" and "lib5"'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(21)
+        dViolation['solution'] = 'Ensure there are only 1 space(s) between "library" and "lib6"'
+        lExpected.append(dViolation)
+
         oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(lExpected, oRule.violations)
 
     def test_rule_003(self):
         oRule = library.rule_003()
@@ -39,9 +68,11 @@ class testRuleLibraryMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'library')
         self.assertEqual(oRule.identifier, '003')
 
-        dExpected = [utils.add_violation(21)]
+        lExpected = [21]
+
         oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(lExpected, utils.extract_violation_lines(oRule.violations))
+
 
     def test_rule_004(self):
         oRule = library.rule_004()
@@ -51,15 +82,15 @@ class testRuleLibraryMethods(unittest.TestCase):
 
         lExpected = []
         dViolation = utils.add_violation(9)
-        dViolation['words_to_fix'] = {'Library'}
+        dViolation['solution'] = 'Change "Library" to "library"'
         lExpected.append(dViolation)
 
         dViolation = utils.add_violation(20)
-        dViolation['words_to_fix'] = {'LIBRARY'}
+        dViolation['solution'] = 'Change "LIBRARY" to "library"'
         lExpected.append(dViolation)
 
         oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, lExpected)
+        self.assertEqual(lExpected, oRule.violations)
 
     def test_rule_005(self):
         oRule = library.rule_005()
@@ -67,11 +98,21 @@ class testRuleLibraryMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'library')
         self.assertEqual(oRule.identifier, '005')
 
-        lExpected = [{'lines':[{'number': 26}], 'words_to_fix': {'USE'}},
-                     {'lines':[{'number': 27}], 'words_to_fix': {'Use'}},
-                     {'lines':[{'number': 30}], 'words_to_fix': {'uSe'}}]
+        lExpected = []
+        dViolation = utils.add_violation(26)
+        dViolation['solution'] = 'Change "USE" to "use"'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(27)
+        dViolation['solution'] = 'Change "Use" to "use"'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(30)
+        dViolation['solution'] = 'Change "uSe" to "use"'
+        lExpected.append(dViolation)
+
         oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, lExpected)
+        self.assertEqual(lExpected, oRule.violations)
 
     def test_rule_006(self):
         oRule = library.rule_006()
@@ -79,9 +120,18 @@ class testRuleLibraryMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'library')
         self.assertEqual(oRule.identifier, '006')
 
-        dExpected = utils.add_violation_list([27,30])
+        lExpected = []
+
+        dViolation = utils.add_violation(27)
+        dViolation['solution'] = 'Ensure there are only 1 space(s) between "Use" and "lib6.comp4.all"'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(30)
+        dViolation['solution'] = 'Ensure there are only 1 space(s) between "uSe" and "lib6.comp5.all"'
+        lExpected.append(dViolation)
+
         oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(lExpected, oRule.violations)
 
     def test_rule_007(self):
         oRule = library.rule_007()
@@ -94,14 +144,41 @@ class testRuleLibraryMethods(unittest.TestCase):
         self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_008(self):
+        self.maxDiff = None
         oRule = library.rule_008()
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'library')
         self.assertEqual(oRule.identifier, '008')
 
+        lExpected = []
+
+        dViolation = utils.add_violation(14)
+        dViolation['action'] = 'insert'
+        dViolation['iSpaces'] = '  '
+        dViolation['solution'] = 'Indent 2 spaces'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(16)
+        dViolation['action'] = 'insert'
+        dViolation['iSpaces'] = '  '
+        dViolation['solution'] = 'Indent 2 spaces'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(26)
+        dViolation['action'] = 'insert'
+        dViolation['iSpaces'] = '  '
+        dViolation['solution'] = 'Indent 2 spaces'
+        lExpected.append(dViolation)
+
+        dViolation = utils.add_violation(30)
+        dViolation['action'] = 'change'
+        dViolation['iSpaces'] = '  '
+        dViolation['solution'] = 'Indent 2 spaces'
+        lExpected.append(dViolation)
+
         dExpected = utils.add_violation_list([14,16,26,30])
         oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(lExpected, oRule.violations)
 
 
     def test_rule_009(self):
