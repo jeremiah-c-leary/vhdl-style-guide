@@ -76,6 +76,69 @@ class selected_name(item):
     def __init__(self, sString):
         item.__init__(self, sString)
 
+class name(item):
+
+    def __init__(self, sString):
+        item.__init__(self, sString)
+
+class simple_name(item):
+
+    def __init__(self, sString):
+        item.__init__(self, sString)
+
+###############################################################################
+# Architecture objects
+###############################################################################
+
+class architecture_keyword(keyword):
+
+    def __init__(self, sString):
+        keyword.__init__(self, sString)
+
+class architecture_identifier(identifier):
+
+    def __init__(self, sString):
+        identifier.__init__(self, sString)
+
+class architecture_of_keyword(keyword):
+
+    def __init__(self, sString):
+        keyword.__init__(self, sString)
+
+class architecture_entity_name(name):
+
+    def __init__(self, sString):
+        name.__init__(self, sString)
+
+class architecture_is_keyword(keyword):
+
+    def __init__(self, sString):
+        keyword.__init__(self, sString)
+
+class architecture_begin_keyword(keyword):
+
+    def __init__(self, sString):
+        keyword.__init__(self, sString)
+
+class architecture_end_keyword(keyword):
+
+    def __init__(self, sString):
+        keyword.__init__(self, sString)
+
+class architecture_end_architecture_keyword(keyword):
+
+    def __init__(self, sString):
+        keyword.__init__(self, sString)
+
+class architecture_simple_name(simple_name):
+
+    def __init__(self, sString):
+        simple_name.__init__(self, sString)
+
+class architecture_semicolon(semicolon):
+
+    def __init__(self, sString):
+        semicolon.__init__(self)
 
 ###############################################################################
 # Context objects

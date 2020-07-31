@@ -62,6 +62,13 @@ class vhdlFile():
 
         dVars['bInsideUse'] = False
 
+        dVars['bArchitectureKeywordFound'] = False
+        dVars['bArchitectureIdentifierFound'] = False
+        dVars['bArchitectureEntityNameFound'] = False
+        dVars['bArchitectureIsKeywordFound'] = False
+        dVars['bArchitectureBeginKeywordFound'] = False
+        dVars['bArchitectureEndKeywordFound'] = False
+
         oLinePrevious = line.blank_line()
 
         for sLine in self.filecontent:
@@ -90,7 +97,7 @@ class vhdlFile():
             classify.generic(dVars, oLine)
 
             classify.concurrent(dVars, oLine)
-            classify.architecture(self, dVars, oLine)
+            classify.architecture(self, dVars, lTokens, lObjects, oLine)
             classify.package_body(dVars, oLine)
             classify.block(self, dVars, oLine)
             classify.package(dVars, oLine)

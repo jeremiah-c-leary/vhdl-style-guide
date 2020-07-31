@@ -3,12 +3,17 @@ import os
 import unittest
 from vsg import vhdlFile
 from vsg.tests import utils
+from vsg import parser
+
 
 lFileArchitecture = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','architecture','architecture_test_input.vhd'))
 oFileArchitecture = vhdlFile.vhdlFile(lFileArchitecture)
 
 lFileArch2 = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','architecture','rule_029_test_input.vhd'))
 oFileArch2 = vhdlFile.vhdlFile(lFileArch2)
+
+lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','architecture','architecture_classification_test_input.vhd'))
+oFile = vhdlFile.vhdlFile(lFile)
 
 class testVhdlFileMethods(unittest.TestCase):
 
@@ -83,3 +88,150 @@ class testVhdlFileMethods(unittest.TestCase):
                 lActual.append(iIndex)
         # Compare
         self.assertEqual(lActual, lExpected)
+
+    def test_architecture_keyword(self):
+        lExpected = []
+        lExpected.append((3,0))
+        lExpected.append((11,0))
+        lExpected.append((18,0))
+        lExpected.append((25,0))
+
+        lActual = []
+        for iLine, lLine in enumerate(oFile.get_lines()):
+            for iItem, oItem in enumerate(lLine.objects):
+                if isinstance(oItem, parser.architecture_keyword):
+                    lActual.append((iLine, iItem))
+
+        self.assertEqual(lExpected, lActual)
+
+    def test_architecture_semicolon(self):
+        lExpected = []
+        lExpected.append((7,5))
+        lExpected.append((15,1))
+        lExpected.append((22,3))
+        lExpected.append((34,0))
+
+        lActual = []
+        for iLine, lLine in enumerate(oFile.get_lines()):
+            for iItem, oItem in enumerate(lLine.objects):
+                if isinstance(oItem, parser.architecture_semicolon):
+                    lActual.append((iLine, iItem))
+
+        self.assertEqual(lExpected, lActual)
+
+    def test_architecture_end_keyword(self):
+        lExpected = []
+        lExpected.append((7,0))
+        lExpected.append((15,0))
+        lExpected.append((22,0))
+        lExpected.append((31,0))
+
+        lActual = []
+        for iLine, lLine in enumerate(oFile.get_lines()):
+            for iItem, oItem in enumerate(lLine.objects):
+                if isinstance(oItem, parser.architecture_end_keyword):
+                    lActual.append((iLine, iItem))
+
+        self.assertEqual(lExpected, lActual)
+
+    def test_architecture_end_architecture_keyword(self):
+        lExpected = []
+        lExpected.append((7,2))
+        lExpected.append((22,2))
+        lExpected.append((32,0))
+
+        lActual = []
+        for iLine, lLine in enumerate(oFile.get_lines()):
+            for iItem, oItem in enumerate(lLine.objects):
+                if isinstance(oItem, parser.architecture_end_architecture_keyword):
+                    lActual.append((iLine, iItem))
+
+        self.assertEqual(lExpected, lActual)
+
+    def test_architecture_simple_name(self):
+        lExpected = []
+        lExpected.append((7,4))
+        lExpected.append((33,0))
+
+        lActual = []
+        for iLine, lLine in enumerate(oFile.get_lines()):
+            for iItem, oItem in enumerate(lLine.objects):
+                if isinstance(oItem, parser.architecture_simple_name):
+                    lActual.append((iLine, iItem))
+
+        self.assertEqual(lExpected, lActual)
+
+    def test_architecture_identifier(self):
+        lExpected = []
+        lExpected.append((3,2))
+        lExpected.append((11,2))
+        lExpected.append((18,2))
+        lExpected.append((26,0))
+
+        lActual = []
+        for iLine, lLine in enumerate(oFile.get_lines()):
+            for iItem, oItem in enumerate(lLine.objects):
+                if isinstance(oItem, parser.architecture_identifier):
+                    lActual.append((iLine, iItem))
+
+        self.assertEqual(lExpected, lActual)
+
+    def test_architecture_of_keyword(self):
+        lExpected = []
+        lExpected.append((3,4))
+        lExpected.append((11,4))
+        lExpected.append((18,4))
+        lExpected.append((27,0))
+
+        lActual = []
+        for iLine, lLine in enumerate(oFile.get_lines()):
+            for iItem, oItem in enumerate(lLine.objects):
+                if isinstance(oItem, parser.architecture_of_keyword):
+                    lActual.append((iLine, iItem))
+
+        self.assertEqual(lExpected, lActual)
+
+    def test_architecture_entity_name(self):
+        lExpected = []
+        lExpected.append((3,6))
+        lExpected.append((11,6))
+        lExpected.append((18,6))
+        lExpected.append((28,0))
+
+        lActual = []
+        for iLine, lLine in enumerate(oFile.get_lines()):
+            for iItem, oItem in enumerate(lLine.objects):
+                if isinstance(oItem, parser.architecture_entity_name):
+                    lActual.append((iLine, iItem))
+
+        self.assertEqual(lExpected, lActual)
+
+    def test_architecture_is_keyword(self):
+        lExpected = []
+        lExpected.append((3,8))
+        lExpected.append((11,8))
+        lExpected.append((18,8))
+        lExpected.append((29,0))
+
+        lActual = []
+        for iLine, lLine in enumerate(oFile.get_lines()):
+            for iItem, oItem in enumerate(lLine.objects):
+                if isinstance(oItem, parser.architecture_is_keyword):
+                    lActual.append((iLine, iItem))
+
+        self.assertEqual(lExpected, lActual)
+
+    def test_architecture_begin_keyword(self):
+        lExpected = []
+        lExpected.append((5,0))
+        lExpected.append((13,0))
+        lExpected.append((20,0))
+        lExpected.append((30,0))
+
+        lActual = []
+        for iLine, lLine in enumerate(oFile.get_lines()):
+            for iItem, oItem in enumerate(lLine.objects):
+                if isinstance(oItem, parser.architecture_begin_keyword):
+                    lActual.append((iLine, iItem))
+
+        self.assertEqual(lExpected, lActual)
