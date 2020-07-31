@@ -185,6 +185,100 @@ class entity_semicolon(semicolon):
         semicolon.__init__(self)
 
 ###############################################################################
+# Package objects
+###############################################################################
+
+class package_keyword(keyword):
+
+    def __init__(self, sString):
+        keyword.__init__(self, sString)
+
+class package_identifier(identifier):
+
+    def __init__(self, sString):
+        identifier.__init__(self, sString)
+
+class package_is_keyword(keyword):
+
+    def __init__(self, sString):
+        keyword.__init__(self, sString)
+
+class package_begin_keyword(keyword):
+
+    def __init__(self, sString):
+        keyword.__init__(self, sString)
+
+class package_end_keyword(keyword):
+
+    def __init__(self, sString):
+        keyword.__init__(self, sString)
+
+class package_end_package_keyword(keyword):
+
+    def __init__(self, sString):
+        keyword.__init__(self, sString)
+
+class package_simple_name(simple_name):
+
+    def __init__(self, sString):
+        simple_name.__init__(self, sString)
+
+class package_semicolon(semicolon):
+
+    def __init__(self, sString):
+        semicolon.__init__(self)
+
+###############################################################################
+# Package Body objects
+###############################################################################
+
+class package_body_package_keyword(keyword):
+
+    def __init__(self, sString):
+        keyword.__init__(self, sString)
+
+class package_body_body_keyword(keyword):
+
+    def __init__(self, sString):
+        keyword.__init__(self, sString)
+
+class package_body_simple_name(identifier):
+
+    def __init__(self, sString):
+        identifier.__init__(self, sString)
+
+class package_body_is_keyword(keyword):
+
+    def __init__(self, sString):
+        keyword.__init__(self, sString)
+
+class package_body_end_keyword(keyword):
+
+    def __init__(self, sString):
+        keyword.__init__(self, sString)
+
+class package_body_end_package_keyword(keyword):
+
+    def __init__(self, sString):
+        keyword.__init__(self, sString)
+
+class package_body_end_body_keyword(keyword):
+
+    def __init__(self, sString):
+        keyword.__init__(self, sString)
+
+class package_body_end_simple_name(simple_name):
+
+    def __init__(self, sString):
+        simple_name.__init__(self, sString)
+
+class package_body_semicolon(semicolon):
+
+    def __init__(self, sString):
+        semicolon.__init__(self)
+
+
+###############################################################################
 # Context objects
 ###############################################################################
 

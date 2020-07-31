@@ -75,6 +75,12 @@ class vhdlFile():
         dVars['bEntityBeginKeywordFound'] = False
         dVars['bEntityEndKeywordFound'] = False
 
+        dVars['bPackageKeywordFound'] = False
+        dVars['bPackageIdentifierFound'] = False
+        dVars['bPackageIsKeywordFound'] = False
+        dVars['bPackageEndKeywordFound'] = False
+        dVars['bPackageBodyKeywordFound'] = False
+
         oLinePrevious = line.blank_line()
 
         for sLine in self.filecontent:
@@ -93,7 +99,6 @@ class vhdlFile():
             classify.library(dVars, lTokens, lObjects, oLine)
             classify.use(dVars, lTokens, lObjects, oLine)
             classify.context(self, dVars, lTokens, lObjects, oLine)
-#            classify.context_reference(self, dVars, lTokens, lObjects, oLine)
             classify.entity(self, dVars, lTokens, lObjects, oLine)
             classify.assert_statement(dVars, oLine)
 
@@ -106,7 +111,7 @@ class vhdlFile():
             classify.architecture(self, dVars, lTokens, lObjects, oLine)
             classify.package_body(dVars, oLine)
             classify.block(self, dVars, oLine)
-            classify.package(dVars, oLine)
+            classify.package(self, dVars, lTokens, lObjects, oLine)
             classify.component(dVars, oLine)
             classify.signal(dVars, oLine)
             classify.constant(dVars, oLine, oLinePrevious)
