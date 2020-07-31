@@ -69,6 +69,12 @@ class vhdlFile():
         dVars['bArchitectureBeginKeywordFound'] = False
         dVars['bArchitectureEndKeywordFound'] = False
 
+        dVars['bEntityKeywordFound'] = False
+        dVars['bEntityIdentifierFound'] = False
+        dVars['bEntityIsKeywordFound'] = False
+        dVars['bEntityBeginKeywordFound'] = False
+        dVars['bEntityEndKeywordFound'] = False
+
         oLinePrevious = line.blank_line()
 
         for sLine in self.filecontent:
@@ -88,7 +94,7 @@ class vhdlFile():
             classify.use(dVars, lTokens, lObjects, oLine)
             classify.context(self, dVars, lTokens, lObjects, oLine)
 #            classify.context_reference(self, dVars, lTokens, lObjects, oLine)
-            classify.entity(self, dVars, oLine)
+            classify.entity(self, dVars, lTokens, lObjects, oLine)
             classify.assert_statement(dVars, oLine)
 
             classify.code_tags(dVars, oLine, oLinePrevious)

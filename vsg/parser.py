@@ -141,6 +141,50 @@ class architecture_semicolon(semicolon):
         semicolon.__init__(self)
 
 ###############################################################################
+# Entity objects
+###############################################################################
+
+class entity_keyword(keyword):
+
+    def __init__(self, sString):
+        keyword.__init__(self, sString)
+
+class entity_identifier(identifier):
+
+    def __init__(self, sString):
+        identifier.__init__(self, sString)
+
+class entity_is_keyword(keyword):
+
+    def __init__(self, sString):
+        keyword.__init__(self, sString)
+
+class entity_begin_keyword(keyword):
+
+    def __init__(self, sString):
+        keyword.__init__(self, sString)
+
+class entity_end_keyword(keyword):
+
+    def __init__(self, sString):
+        keyword.__init__(self, sString)
+
+class entity_end_entity_keyword(keyword):
+
+    def __init__(self, sString):
+        keyword.__init__(self, sString)
+
+class entity_simple_name(simple_name):
+
+    def __init__(self, sString):
+        simple_name.__init__(self, sString)
+
+class entity_semicolon(semicolon):
+
+    def __init__(self, sString):
+        semicolon.__init__(self)
+
+###############################################################################
 # Context objects
 ###############################################################################
 
