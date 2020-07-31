@@ -71,7 +71,7 @@ class testVhdlFileInstantiationAssignments(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isInstantiationGenericKeyword_assignment(self):
-        lExpected = [7,22,33,44,54,63,73,81,94,106]
+        lExpected = [7,22,33,44,54,63,73,81,94,106,120]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFileGeneric.lines):
@@ -81,7 +81,7 @@ class testVhdlFileInstantiationAssignments(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isInstantiationGenericEnd_assignment(self):
-        lExpected = [10,25,36,46,56,65,73,85,98,111]
+        lExpected = [10,25,36,46,56,65,73,85,98,111,125]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFileGeneric.lines):
@@ -92,7 +92,7 @@ class testVhdlFileInstantiationAssignments(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_isInstantiationGenericAssignment_assignment(self):
-        lExpected = [8,9,23,24,34,35,45,46,54,55,64,65,83,84,95,96,97,98,107,108,109,110]
+        lExpected = [8,9,23,24,34,35,45,46,54,55,64,65,83,84,95,96,97,98,107,108,109,110, 121, 122, 123, 124]
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFileGeneric.lines):
@@ -105,6 +105,7 @@ class testVhdlFileInstantiationAssignments(unittest.TestCase):
         self.maxDiff = None
         #lExpected = [ 6, 7, 8, 9,10,11,12,13,14,15,21,22,23,24,25,26,27,28,29,30,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49,50,51,53,54,55,56,57,58,59,60,61,63,64,65,66,67,68,69,70,72,73,74,75,76,77,78,80,81,  82,83,84,85,86,  87,88,89,90,91]
         lExpected =  [ 1, 2, 3, 3, 2, 2, 3, 3, 3, 2, 1, 2, 3, 3, 2, 2, 3, 3, 3, 2, 1, 2, 3, 3, 2, 2, 3, 3, 3, 2, 1, 2, 3, 3, 2, 3, 3, 3, 2, 1, 2, 3, 2, 2, 3, 3, 3, 2, 1, 3, 3, 2, 3, 3, 3, 2, 1, 2, 2, 3, 3, 3, 2, 1, 2,None, 3, 3, 2, 2,None, 3, 3, 3, 2, 1, 2, 3, 3, 3, 3, 2, 3, 3, 3, 2, 1, 2, 3, 3, 3, 3, 2, 2, 3, 3, 3, 2]
+        lExpected.extend([1, 2, 2, 3, 3, 3, 3, 2, 2, 3, 3, 3, 2])
         # Generic actual list
         lActual = []
         for oLine in oFileGeneric.lines:

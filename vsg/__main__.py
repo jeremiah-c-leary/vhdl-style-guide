@@ -8,10 +8,11 @@ import shutil
 import glob
 import yaml
 
-from . import rule_list
-from . import vhdlFile
 from . import junit
+from . import rule_list
+from . import severity
 from . import version
+from . import vhdlFile
 
 
 def parse_command_line_arguments():
@@ -243,7 +244,7 @@ def generate_output_configuration(commandLineArguments, configuration):
         fExitStatus = 0
         # Create empty file so it can be used to create the rule list
         oVhdlFile = vhdlFile.vhdlFile([''])
-        oRules = rule_list.rule_list(oVhdlFile, commandLineArguments.local_rules)
+        oRules = rule_list.rule_list(oVhdlFile, configuration['severity_list'], commandLineArguments.local_rules)
         oRules.configure(configuration)
         dOutputConfiguration = {}
         dOutputConfiguration['cwd'] = os.getcwd()
@@ -275,7 +276,7 @@ def display_rule_configuration(commandLineArguments, configuration):
         fExitStatus = 0
         # Create empty file so it can be used to create the rule list
         oVhdlFile = vhdlFile.vhdlFile([''])
-        oRules = rule_list.rule_list(oVhdlFile, commandLineArguments.local_rules)
+        oRules = rule_list.rule_list(oVhdlFile, configuration['severity_list'], commandLineArguments.local_rules)
         oRules.configure(configuration)
         dOutputConfiguration = {}
         if commandLineArguments.local_rules:
@@ -343,6 +344,9 @@ def main():
         oJunitFile = junit.xmlfile(commandLineArguments.junit)
         oJunitTestsuite = junit.testsuite('vhdl-style-guide', str(0))
 
+    oSeverityList = severity.create_list(configuration)
+    configuration['severity_list'] = oSeverityList
+
     generate_output_configuration(commandLineArguments, configuration)
 
     display_rule_configuration(commandLineArguments, configuration)
@@ -352,7 +356,7 @@ def main():
     for iIndex, sFileName in enumerate(commandLineArguments.filename):
         oVhdlFile = vhdlFile.vhdlFile(read_vhdlfile(sFileName))
         oVhdlFile.filename = sFileName
-        oRules = rule_list.rule_list(oVhdlFile, commandLineArguments.local_rules)
+        oRules = rule_list.rule_list(oVhdlFile, oSeverityList, commandLineArguments.local_rules)
         oRules.configure(configuration)
         try:
             oRules.configure(configuration['file_list'][iIndex][sFileName])
@@ -367,6 +371,8 @@ def main():
             oRules.fix(commandLineArguments.fix_phase, commandLineArguments.skip_phase)
             write_vhdl_file(oVhdlFile)
 
+        oRules.oSeverityList.clear_severity_counts()
+        oRules.clear_violations()
         oRules.check_rules(commandLineArguments.skip_phase)
         oRules.report_violations(commandLineArguments.output_format)
         fExitStatus = update_exit_status(fExitStatus, oRules)

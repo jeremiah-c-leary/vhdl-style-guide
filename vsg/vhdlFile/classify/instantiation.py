@@ -43,7 +43,7 @@ def classify_port_map(dVars, oLine):
 
 
 def classify_generic_map(dVars, oLine):
-    if re.match('^.*\s*generic\s+map', oLine.lineLower):
+    if re.match('^.*\s*generic\s+map', oLine.lineLower) and not re.match('^.*--\s*generic\s+map', oLine.lineLower):
         if not oLine.indentLevel:
             oLine.indentLevel = dVars['iCurrentIndentLevel']
         oLine.insideInstantiationGenericMap = True

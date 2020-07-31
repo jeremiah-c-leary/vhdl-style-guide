@@ -5,6 +5,7 @@ import unittest
 from vsg.rules import if_statement
 from vsg import vhdlFile
 from vsg import rule_list
+from vsg import severity
 from vsg.tests import utils
 
 # Read in test file used for all tests
@@ -19,6 +20,8 @@ oFileNested = vhdlFile.vhdlFile(lFileNested)
 lFileIf = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'comment_if_input.vhd'))
 oFileIf = vhdlFile.vhdlFile(lFileIf)
 
+
+oSeverityList = severity.create_list({})
 
 class testFixRuleIfMethods(unittest.TestCase):
 
@@ -230,7 +233,7 @@ class testFixRuleIfMethods(unittest.TestCase):
         self.assertEqual(oFile.lines[103].indentLevel, oFile.lines[102].indentLevel + 1)
 
     def test_fix_compressed_line(self):
-        oRuleList = rule_list.rule_list(oFileCompress)
+        oRuleList = rule_list.rule_list(oFileCompress, oSeverityList)
         oRuleList.fix()
 #        utils.debug_lines(oFileCompress, 8, 23)
         self.assertEqual(oFileCompress.lines[9].line, '    if (A = \'1\' and B = \'1\') then')

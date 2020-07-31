@@ -20,6 +20,7 @@ Welcome to vhdl-style-guide's documentation!
    editor_integration
    localizing
    phases
+   rule_severity
    rules
    api
    contributing
