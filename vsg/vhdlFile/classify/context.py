@@ -109,7 +109,6 @@ def classify_context_keyword(sToken, iToken, lObjects, dVars, oLine):
 
 def classify_context_reference_keyword(sToken, iToken, lObjects, dVars, oLine):
     if sToken.lower() == 'context':
-        print('Got Here')
         lObjects[iToken] = parser.context_reference_keyword(sToken)
         dVars['bInsideContextReference'] = True
 

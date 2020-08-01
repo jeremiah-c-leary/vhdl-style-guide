@@ -6,7 +6,6 @@ from vsg.vhdlFile import update
 from vsg.vhdlFile import classify
 from vsg import parser
 
-oItem = parser.item('unclassified_item')
 
 class vhdlFile():
     '''
@@ -89,14 +88,18 @@ class vhdlFile():
         dVars['bConstantColonFound'] = False
         dVars['bConstantAssignmentOperatorFound'] = False
 
+        dVars['bAssertKeywordFound'] = False
+        dVars['bAssertReportKeywordFound'] = False
+        dVars['bAssertSeverityKeywordFound'] = False
+
         oLinePrevious = line.blank_line()
 
         for sLine in self.filecontent:
             oLine = line.line(sLine.replace('\t', '  ').rstrip())
             lTokens = oLine.get_zipped_tokens()
             lObjects = [] 
-            for i in range(len(lTokens)):
-                lObjects.append(oItem)
+            for sToken in lTokens:
+                lObjects.append(parser.item(sToken))
             
 #            preIndent = str(dVars['iCurrentIndentLevel'])
             update.inside_attributes(dVars, self.lines[-1], oLine)
@@ -108,7 +111,7 @@ class vhdlFile():
             classify.use(dVars, lTokens, lObjects, oLine)
             classify.context(self, dVars, lTokens, lObjects, oLine)
             classify.entity(self, dVars, lTokens, lObjects, oLine)
-            classify.assert_statement(dVars, oLine)
+            classify.assert_statement(self, dVars, lTokens, lObjects, oLine)
 
             classify.code_tags(dVars, oLine, oLinePrevious)
 

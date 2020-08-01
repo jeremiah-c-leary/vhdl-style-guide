@@ -101,6 +101,30 @@ class subtype_indication(item):
         item.__init__(self, sString)
 
 
+class condition(item):
+
+    def __init__(self, sString):
+        item.__init__(self, sString)
+
+
+class expression(item):
+
+    def __init__(self, sString):
+        item.__init__(self, sString)
+
+
+class label(item):
+
+    def __init__(self, sString):
+        item.__init__(self, sString)
+
+
+class label_colon(colon):
+
+    def __init__(self):
+        colon.__init__(self)
+
+
 ###############################################################################
 # Architecture objects
 ###############################################################################
@@ -497,6 +521,63 @@ class constant_assignment_expression(item):
         item.__init__(self, sString)
 
 class constant_semicolon(semicolon):
+
+    def __init__(self):
+        semicolon.__init__(self)
+
+###############################################################################
+# Assert objects
+###############################################################################
+
+class assert_label(label):
+
+    def __init__(self, sString):
+        label.__init__(self, sString)
+
+
+class assert_label_colon(label_colon):
+
+    def __init__(self):
+        label_colon.__init__(self)
+
+
+class assert_keyword(keyword):
+
+    def __init__(self, sString):
+        keyword.__init__(self, sString)
+
+
+class assert_condition(condition):
+
+    def __init__(self, sString):
+        condition.__init__(self, sString)
+
+
+class assert_report_keyword(keyword):
+
+    def __init__(self, sString):
+        keyword.__init__(self, sString)
+
+
+class assert_report_expression(expression):
+
+    def __init__(self, sString):
+        expression.__init__(self, sString)
+
+
+class assert_severity_keyword(keyword):
+
+    def __init__(self, sString):
+        keyword.__init__(self, sString)
+
+
+class assert_severity_expression(expression):
+
+    def __init__(self, sString):
+        expression.__init__(self, sString)
+
+
+class assert_semicolon(semicolon):
 
     def __init__(self):
         semicolon.__init__(self)

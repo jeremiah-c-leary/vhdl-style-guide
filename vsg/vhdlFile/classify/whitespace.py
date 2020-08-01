@@ -11,4 +11,7 @@ def whitespace(lTokens, lObjects):
     # Check for entity
     for iToken, sToken in enumerate(lTokens):
         if ' ' in sToken:
-            lObjects[iToken] = parser.whitespace(sToken)
+            if sToken[0] == '"' and sToken[-1] == '"':
+                pass
+            else:
+                lObjects[iToken] = parser.whitespace(sToken)
