@@ -457,3 +457,47 @@ class signal_semicolon(semicolon):
     def __init__(self):
         semicolon.__init__(self)
 
+###############################################################################
+# Constant objects
+###############################################################################
+
+class constant_keyword(keyword):
+
+    def __init__(self, sString):
+        keyword.__init__(self, sString)
+
+class constant_identifier(identifier):
+
+    def __init__(self, sString):
+        identifier.__init__(self, sString)
+
+class constant_comma(comma):
+
+    def __init__(self):
+        comma.__init__(self)
+
+class constant_colon(colon):
+
+    def __init__(self):
+        colon.__init__(self)
+
+class constant_subtype_indication(subtype_indication):
+
+    def __init__(self, sString):
+        subtype_indication.__init__(self, sString)
+
+class constant_assignment_operator(item):
+
+    def __init__(self):
+        item.__init__(self, ':=')
+
+class constant_assignment_expression(item):
+
+    def __init__(self, sString):
+        item.__init__(self, sString)
+
+class constant_semicolon(semicolon):
+
+    def __init__(self):
+        semicolon.__init__(self)
+
