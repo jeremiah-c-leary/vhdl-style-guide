@@ -526,6 +526,55 @@ class constant_semicolon(semicolon):
         semicolon.__init__(self)
 
 ###############################################################################
+# Variable objects
+###############################################################################
+
+class variable_shared_keyword(keyword):
+
+    def __init__(self, sString):
+        keyword.__init__(self, sString)
+
+class variable_keyword(keyword):
+
+    def __init__(self, sString):
+        keyword.__init__(self, sString)
+
+class variable_identifier(identifier):
+
+    def __init__(self, sString):
+        identifier.__init__(self, sString)
+
+class variable_comma(comma):
+
+    def __init__(self):
+        comma.__init__(self)
+
+class variable_colon(colon):
+
+    def __init__(self):
+        colon.__init__(self)
+
+class variable_subtype_indication(subtype_indication):
+
+    def __init__(self, sString):
+        subtype_indication.__init__(self, sString)
+
+class variable_assignment_operator(item):
+
+    def __init__(self):
+        item.__init__(self, ':=')
+
+class variable_assignment_expression(item):
+
+    def __init__(self, sString):
+        item.__init__(self, sString)
+
+class variable_semicolon(semicolon):
+
+    def __init__(self):
+        semicolon.__init__(self)
+
+###############################################################################
 # Assert objects
 ###############################################################################
 

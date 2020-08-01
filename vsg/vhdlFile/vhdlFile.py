@@ -88,6 +88,10 @@ class vhdlFile():
         dVars['bConstantColonFound'] = False
         dVars['bConstantAssignmentOperatorFound'] = False
 
+        dVars['bVariableKeywordFound'] = False
+        dVars['bVariableColonFound'] = False
+        dVars['bVariableAssignmentOperatorFound'] = False
+
         dVars['bAssertKeywordFound'] = False
         dVars['bAssertReportKeywordFound'] = False
         dVars['bAssertSeverityKeywordFound'] = False
@@ -126,7 +130,7 @@ class vhdlFile():
             classify.component(dVars, oLine)
             classify.signal(self, dVars, lTokens, lObjects, oLine)
             classify.constant(self, dVars, lTokens, lObjects, oLine, oLinePrevious)
-            classify.variable(dVars, oLine)
+            classify.variable(self, dVars, lTokens, lObjects, oLine)
             classify.procedure(dVars, oLine, oLinePrevious)
             classify.process(dVars, oLine, self.lines)
             classify.generate(dVars, oLine, oLinePrevious)
