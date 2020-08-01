@@ -47,7 +47,7 @@ def assert_statement(self, dVars, lTokens, lObjects, oLine):
 
 
 def classify_assert_keyword(sToken, iToken, lObjects, dVars):
-    if sToken == 'assert':
+    if sToken.lower() == 'assert':
         lObjects[iToken] = parser.assert_keyword(sToken)
         dVars['bAssertKeywordFound'] = True 
         return True
@@ -60,7 +60,7 @@ def classify_assert_condition(sToken, iToken, lObjects, dVars):
 
 
 def classify_report_keyword(sToken, iToken, lObjects, dVars):
-    if sToken == 'report':
+    if sToken.lower() == 'report':
         lObjects[iToken] = parser.assert_report_keyword(sToken)
         dVars['bAssertReportKeywordFound'] = True
         dVars['bAssertSeverityKeywordFound'] = False
@@ -71,7 +71,7 @@ def classify_report_expression(sToken, iToken, lObjects, dVars):
 
 
 def classify_severity_keyword(sToken, iToken, lObjects, dVars):
-    if sToken == 'severity':
+    if sToken.lower() == 'severity':
         lObjects[iToken] = parser.assert_severity_keyword(sToken)
         dVars['bAssertReportKeywordFound'] = False
         dVars['bAssertSeverityKeywordFound'] = True

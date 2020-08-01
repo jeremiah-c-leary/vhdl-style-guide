@@ -34,12 +34,12 @@ def variable(self, dVars, lTokens, lObjects, oLine):
 
 
 def classify_shared(sToken, iToken, lObjects, dVars):
-    if sToken == 'shared':
+    if sToken.lower() == 'shared':
         lObjects[iToken] = parser.variable_shared_keyword(sToken)
 
 
 def classify_keyword(sToken, iToken, lObjects, dVars):
-    if sToken == 'variable':
+    if sToken.lower() == 'variable':
         lObjects[iToken] = parser.variable_keyword(sToken)
         dVars['bVariableKeywordFound'] = True 
 

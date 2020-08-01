@@ -67,7 +67,7 @@ def constant(self, dVars, lTokens, lObjects, oLine, oLinePrevious):
 
 
 def classify_constant_keyword(sToken, iToken, lObjects, dVars):
-    if sToken == 'constant':
+    if sToken.lower() == 'constant':
         lObjects[iToken] = parser.constant_keyword(sToken)
         dVars['bConstantKeywordFound'] = True 
 

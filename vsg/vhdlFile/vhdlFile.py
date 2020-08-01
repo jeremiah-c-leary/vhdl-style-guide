@@ -96,6 +96,11 @@ class vhdlFile():
         dVars['bAssertReportKeywordFound'] = False
         dVars['bAssertSeverityKeywordFound'] = False
 
+        dVars['bFileKeywordFound'] = False
+        dVars['bFileColonFound'] = False
+        dVars['bFileOpenKeywordFound'] = False
+        dVars['bFileIsKeywordFound'] = False
+
         oLinePrevious = line.blank_line()
 
         for sLine in self.filecontent:
@@ -124,7 +129,7 @@ class vhdlFile():
 
             classify.concurrent(dVars, oLine)
             classify.architecture(self, dVars, lTokens, lObjects, oLine)
-            classify.package_body(dVars, oLine)
+            classify.package_body(dVars, oLine) # lTokens
             classify.block(self, dVars, oLine)
             classify.package(self, dVars, lTokens, lObjects, oLine)
             classify.component(dVars, oLine)
@@ -135,7 +140,7 @@ class vhdlFile():
             classify.process(dVars, oLine, self.lines)
             classify.generate(dVars, oLine, oLinePrevious)
             classify.attribute(dVars, oLine)
-            classify.file_statement(dVars, oLine)
+            classify.file_statement(dVars, lTokens, lObjects, oLine)
 
             classify.when(dVars, oLine, oLinePrevious)
 

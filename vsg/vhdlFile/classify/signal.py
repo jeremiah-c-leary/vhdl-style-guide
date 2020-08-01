@@ -46,7 +46,7 @@ def signal(self, dVars, lTokens, lObjects, oLine):
 
 
 def classify_signal_keyword(sToken, iToken, lObjects, dVars):
-    if sToken == 'signal':
+    if sToken.lower() == 'signal':
         lObjects[iToken] = parser.signal_keyword(sToken)
         dVars['bSignalKeywordFound'] = True 
 
