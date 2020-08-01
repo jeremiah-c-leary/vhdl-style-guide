@@ -101,6 +101,9 @@ class vhdlFile():
         dVars['bFileOpenKeywordFound'] = False
         dVars['bFileIsKeywordFound'] = False
 
+        dVars['bAttributeKeywordFound'] = False
+        dVars['bAttributeColonFound'] = False
+
         oLinePrevious = line.blank_line()
 
         for sLine in self.filecontent:
@@ -139,7 +142,7 @@ class vhdlFile():
             classify.procedure(dVars, oLine, oLinePrevious)
             classify.process(dVars, oLine, self.lines)
             classify.generate(dVars, oLine, oLinePrevious)
-            classify.attribute(dVars, oLine)
+            classify.attribute(dVars, lTokens, lObjects, oLine)
             classify.file_statement(dVars, lTokens, lObjects, oLine)
 
             classify.when(dVars, oLine, oLinePrevious)

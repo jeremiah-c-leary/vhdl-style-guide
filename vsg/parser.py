@@ -686,3 +686,37 @@ class assert_semicolon(semicolon):
     def __init__(self):
         semicolon.__init__(self)
 
+
+###############################################################################
+# Attribute objects
+###############################################################################
+
+class attribute_keyword(keyword):
+
+    def __init__(self, sString):
+        keyword.__init__(self, sString)
+
+
+class attribute_identifier(identifier):
+
+    def __init__(self, sString):
+        identifier.__init__(self, sString)
+
+
+class attribute_colon(colon):
+
+    def __init__(self):
+        colon.__init__(self)
+
+
+class attribute_type_mark(item):
+
+    def __init__(self, sString):
+        item.__init__(self, sString)
+
+
+class attribute_semicolon(semicolon):
+
+    def __init__(self):
+        semicolon.__init__(self)
+
