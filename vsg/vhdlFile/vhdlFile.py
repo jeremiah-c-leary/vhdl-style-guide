@@ -81,6 +81,10 @@ class vhdlFile():
         dVars['bPackageEndKeywordFound'] = False
         dVars['bPackageBodyKeywordFound'] = False
 
+        dVars['bSignalKeywordFound'] = False
+        dVars['bSignalColonFound'] = False
+        dVars['bSignalAssignmentOperatorFound'] = False
+
         oLinePrevious = line.blank_line()
 
         for sLine in self.filecontent:
@@ -113,7 +117,7 @@ class vhdlFile():
             classify.block(self, dVars, oLine)
             classify.package(self, dVars, lTokens, lObjects, oLine)
             classify.component(dVars, oLine)
-            classify.signal(dVars, oLine)
+            classify.signal(self, dVars, lTokens, lObjects, oLine)
             classify.constant(dVars, oLine, oLinePrevious)
             classify.variable(dVars, oLine)
             classify.procedure(dVars, oLine, oLinePrevious)

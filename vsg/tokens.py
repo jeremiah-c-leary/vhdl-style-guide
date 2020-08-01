@@ -1,6 +1,6 @@
 
 lSingleCharacterSymbols = [',', ':', '(', ')', '\'', '"', '+', '&', '-', '*', '/', '<', '>', ';', '=']
-lMultipleCharacterSymbols = [':=', '/=', '<=', '=>', '>=', '**', '--']
+lMultipleCharacterSymbols = ['=>','**', ':=', '/=', '>=', '<=', '<>', '??', '?=', '?/=', '?<', '?<=', '?>', '?>=', '<<', '>>', '--']
 
 def create(sString):
     '''
@@ -81,4 +81,56 @@ def create(sString):
     if not sToken == '': 
         lTokens.append(sToken)
 
+    lTokens, lSeparators = condense_character_literals(lTokens, lSeparators)
+    lTokens, lSeparators = condense_string_literals(lTokens, lSeparators)
+
     return lTokens, lSeparators
+
+
+def condense_character_literals(lTokens, lSeparators):
+
+    lMyTokens = []
+    lMySeparators = []
+    iToken = 0
+    for iToken, sToken in enumerate(lTokens):
+        try:
+            if sToken == "'" and lTokens[iToken - 2] == "'" and len(lTokens[iToken - 1]) == 1:
+                lMyTokens = lMyTokens[:-2]
+                lMyTokens.append("'" + lTokens[iToken - 1] + "'")
+                lMySeparators = lMySeparators[:-1]
+    
+            else:
+                lMyTokens.append(sToken)
+                lMySeparators.append(lSeparators[iToken])
+        except IndexError:
+            pass
+
+    if iToken + 1 < len(lSeparators):
+        lMySeparators.append(lSeparators[-1])
+
+
+    return lMyTokens, lMySeparators
+
+def condense_string_literals(lTokens, lSeparators):
+
+    lMyTokens = []
+    lMySeparators = []
+    iToken = 0
+    for iToken, sToken in enumerate(lTokens):
+        try:
+            if sToken == '"' and lTokens[iToken - 2] == '"':
+                lMyTokens = lMyTokens[:-2]
+                lMyTokens.append('"' + lTokens[iToken - 1] +'"')
+                lMySeparators = lMySeparators[:-1]
+    
+            else:
+                lMyTokens.append(sToken)
+                lMySeparators.append(lSeparators[iToken])
+        except IndexError:
+            pass
+
+    if iToken + 1 < len(lSeparators):
+        lMySeparators.append(lSeparators[-1])
+
+
+    return lMyTokens, lMySeparators

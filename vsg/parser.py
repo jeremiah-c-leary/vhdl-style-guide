@@ -41,6 +41,12 @@ class identifier(item):
         item.__init__(self, sString)
 
 
+class colon(item):
+
+    def __init__(self):
+        item.__init__(self, ':')
+
+
 class comma(item):
 
     def __init__(self):
@@ -76,15 +82,24 @@ class selected_name(item):
     def __init__(self, sString):
         item.__init__(self, sString)
 
+
 class name(item):
 
     def __init__(self, sString):
         item.__init__(self, sString)
 
+
 class simple_name(item):
 
     def __init__(self, sString):
         item.__init__(self, sString)
+
+
+class subtype_indication(item):
+
+    def __init__(self, sString):
+        item.__init__(self, sString)
+
 
 ###############################################################################
 # Architecture objects
@@ -394,6 +409,50 @@ class use_selected_name(selected_name):
         selected_name.__init__(self, sString)
 
 class use_semicolon(semicolon):
+
+    def __init__(self):
+        semicolon.__init__(self)
+
+###############################################################################
+# Signal objects
+###############################################################################
+
+class signal_keyword(keyword):
+
+    def __init__(self, sString):
+        keyword.__init__(self, sString)
+
+class signal_identifier(identifier):
+
+    def __init__(self, sString):
+        identifier.__init__(self, sString)
+
+class signal_comma(comma):
+
+    def __init__(self):
+        comma.__init__(self)
+
+class signal_colon(colon):
+
+    def __init__(self):
+        colon.__init__(self)
+
+class signal_subtype_indication(subtype_indication):
+
+    def __init__(self, sString):
+        subtype_indication.__init__(self, sString)
+
+class signal_assignment_operator(item):
+
+    def __init__(self):
+        item.__init__(self, ':=')
+
+class signal_assignment_expression(item):
+
+    def __init__(self, sString):
+        item.__init__(self, sString)
+
+class signal_semicolon(semicolon):
 
     def __init__(self):
         semicolon.__init__(self)

@@ -439,8 +439,8 @@ class testTokenMethod(unittest.TestCase):
         self.assertEqual(lTokens, oLine.tokens)
         self.assertEqual(lSeparators, oLine.separators)
 
-    def test_double_quote_without_spaces_with_quote_at_beginning_of_line(self):
-        sString = '"this"will"test"colons"'
+    def test_string_literals(self):
+        sString = '"this" "will" "test" "colons"'
         oLine = line.line(sString)
         self.assertTrue(oLine)
         self.assertEqual(sString, oLine.line)
@@ -449,23 +449,13 @@ class testTokenMethod(unittest.TestCase):
         lSeparators = []
 
         lSeparators.append('')
-        lTokens.append('"')
-        lSeparators.append('')
-        lTokens.append('this')
-        lSeparators.append('')
-        lTokens.append('"')
-        lSeparators.append('')
-        lTokens.append('will')
-        lSeparators.append('')
-        lTokens.append('"')
-        lSeparators.append('')
-        lTokens.append('test')
-        lSeparators.append('')
-        lTokens.append('"')
-        lSeparators.append('')
-        lTokens.append('colons')
-        lSeparators.append('')
-        lTokens.append('"')
+        lTokens.append('"this"')
+        lSeparators.append(' ')
+        lTokens.append('"will"')
+        lSeparators.append(' ')
+        lTokens.append('"test"')
+        lSeparators.append(' ')
+        lTokens.append('"colons"')
 
         self.assertEqual(lTokens, oLine.tokens)
         self.assertEqual(lSeparators, oLine.separators)
@@ -688,7 +678,7 @@ class testTokenMethod(unittest.TestCase):
         self.assertEqual(lSeparators, oLine.separators)
 
     def test_multiple_symbols_on_single_line_1(self):
-        sString = 'variable We1, We2, We3, Wy : BIT := \'1\';'
+        sString = "variable We1, We2, We3, Wy : BIT := '1';"
         oLine = line.line(sString)
         self.assertTrue(oLine)
         self.assertEqual(sString, oLine.line)
@@ -719,11 +709,7 @@ class testTokenMethod(unittest.TestCase):
         lSeparators.append(' ')
         lTokens.append(':=')
         lSeparators.append(' ')
-        lTokens.append('\'')
-        lSeparators.append('')
-        lTokens.append('1')
-        lSeparators.append('')
-        lTokens.append('\'')
+        lTokens.append("'1'")
         lSeparators.append('')
         lTokens.append(';')
 
@@ -731,7 +717,7 @@ class testTokenMethod(unittest.TestCase):
         self.assertEqual(lSeparators, oLine.separators)
 
     def test_multiple_symbols_on_single_line_2(self):
-        sString = '    DI_I          : in    std_logic_vector(N - 1 downto 0) := (others => \'X\');    -- parallel data in'
+        sString = "    DI_I          : in    std_logic_vector(N - 1 downto 0) := (others => 'X');    -- parallel data in"
         oLine = line.line(sString)
         self.assertTrue(oLine)
         self.assertEqual(sString, oLine.line)
@@ -770,11 +756,7 @@ class testTokenMethod(unittest.TestCase):
         lSeparators.append(' ')
         lTokens.append('=>')
         lSeparators.append(' ')
-        lTokens.append('\'')
-        lSeparators.append('')
-        lTokens.append('X')
-        lSeparators.append('')
-        lTokens.append('\'')
+        lTokens.append("'X'")
         lSeparators.append('')
         lTokens.append(')')
         lSeparators.append('')
