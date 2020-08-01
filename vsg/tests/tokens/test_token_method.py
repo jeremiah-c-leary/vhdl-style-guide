@@ -440,7 +440,7 @@ class testTokenMethod(unittest.TestCase):
         self.assertEqual(lSeparators, oLine.separators)
 
     def test_string_literals(self):
-        sString = '"this" "will" "test" "colons"'
+        sString = '"this" "will" "test" "colons with multiple things in the quotes"'
         oLine = line.line(sString)
         self.assertTrue(oLine)
         self.assertEqual(sString, oLine.line)
@@ -455,7 +455,7 @@ class testTokenMethod(unittest.TestCase):
         lSeparators.append(' ')
         lTokens.append('"test"')
         lSeparators.append(' ')
-        lTokens.append('"colons"')
+        lTokens.append('"colons with multiple things in the quotes"')
 
         self.assertEqual(lTokens, oLine.tokens)
         self.assertEqual(lSeparators, oLine.separators)
@@ -766,3 +766,28 @@ class testTokenMethod(unittest.TestCase):
 
         self.assertEqual(lTokens, oLine.tokens)
         self.assertEqual(lSeparators, oLine.separators)
+
+    def test_multiple_character_tokens_near_end_of_line(self):
+        sString = '  a <= b **c'
+        oLine = line.line(sString)
+        self.assertTrue(oLine)
+        self.assertEqual(sString, oLine.line)
+
+        lTokens = []
+        lSeparators = []
+
+        lSeparators.append('  ')
+        lTokens.append('a')
+        lSeparators.append(' ')
+        lTokens.append('<=')
+        lSeparators.append(' ')
+        lTokens.append('b')
+        lSeparators.append(' ')
+        lTokens.append('**')
+        lSeparators.append('')
+        lTokens.append('c')
+
+        self.assertEqual(lTokens, oLine.tokens)
+        self.assertEqual(lSeparators, oLine.separators)
+
+

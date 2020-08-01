@@ -1,136 +1,196 @@
 
 lSingleCharacterSymbols = [',', ':', '(', ')', '\'', '"', '+', '&', '-', '*', '/', '<', '>', ';', '=']
-lMultipleCharacterSymbols = ['=>','**', ':=', '/=', '>=', '<=', '<>', '??', '?=', '?/=', '?<', '?<=', '?>', '?>=', '<<', '>>', '--']
+lTwoCharacterSymbols = ['=>','**', ':=', '/=', '>=', '<=', '<>', '??', '?=', '?<', '?>', '<<', '>>', '--']
+lThreeCharacterSymbols = ['?/=', '?<', '?<=', '?>=']
 
 def create(sString):
     '''
     This function takes a string and returns a list of tokens.
     '''
-    lTokens = []
-    lSeparators = []
-    sToken = ''
-    fCommentFound = False
-    fMultipleCharacterSymbolFound = False
-    fLastChar = False
+    lCharacters = []
+
     for iIndex, sChar in enumerate(sString):
+        lCharacters.append(sChar)
 
-        sToken += sChar
-        # Set the previous character
-        if iIndex > 0:
-            sPrevChar = sString[iIndex - 1]
-        else:
-            sPrevChar = ''
-
-        # Set the next character
-        if iIndex + 1 == len(sString):
-            fLastChar = True
-            sNextChar = ''
-        else:
-            sNextChar = sString[iIndex + 1]
-
-        # Check for comments
-        if sToken == '--':
-            fCommentFound = True
-            if iIndex == 1:
-                lSeparators.append('')
-        if fCommentFound:
-            continue
-
-        # Check for single character symbols
-        if sToken in lSingleCharacterSymbols:
-            if sToken + sNextChar not in lMultipleCharacterSymbols:
-                lTokens.append(sToken)
-                sToken = ''
-                if iIndex == 0:
-                    lSeparators.append('')
-                if not sNextChar == ' ' and iIndex + 1 < len(sString):
-                    lSeparators.append('')
-                continue
-
-        # Check for double character symbols
-        if sToken in lMultipleCharacterSymbols:
-            lTokens.append(sToken)
-            sToken = ''
-            if not sString[iIndex - 2] == ' ':
-                lSeparators.append('')
-            continue
-
-        # Handle consecutive spaces
-        if sChar == ' ' and not sNextChar == ' ':
-            lSeparators.append(sToken)
-            sToken = ''
-            continue
-
-        if not sChar == ' ' and sNextChar == ' ':
-            lTokens.append(sToken)
-            sToken = ''
-            continue
-
-        if not sChar == ' ' and sNextChar in lSingleCharacterSymbols:
-            if sToken + sNextChar not in lMultipleCharacterSymbols:
-                lTokens.append(sToken)
-                sToken = ''
-                lSeparators.append('')
-                continue
-
-        if not sChar == ' ' and iIndex == 0:
-            if sToken + sNextChar not in lMultipleCharacterSymbols and \
-               sNextChar not in lSingleCharacterSymbols:
-                lSeparators.append('')
-
-    if not sToken == '': 
-        lTokens.append(sToken)
-
-    lTokens, lSeparators = condense_character_literals(lTokens, lSeparators)
-    lTokens, lSeparators = condense_string_literals(lTokens, lSeparators)
-
+    lCharacters = combine_whitespace(lCharacters)
+    lCharacters = combine_two_character_symbols(lCharacters)
+    lCharacters = combine_characters_into_words(lCharacters)
+    lCharacters = combine_string_literals(lCharacters)
+    lCharacters = combine_character_literals(lCharacters)
+    lCharacters = combine_comments(lCharacters)
+    lCharacters = insert_empty_space(lCharacters)
+   
+    lTokens = extract_tokens(lCharacters)
+    lSeparators = extract_separators(lCharacters)
+ 
     return lTokens, lSeparators
 
 
-def condense_character_literals(lTokens, lSeparators):
+def combine_comments(lChars):
+    lReturn = []
+    sComment = ''
+    bComment = False
+    for sChar in lChars:
+        if sChar.startswith('--') and not bComment:
+            sComment += sChar
+            bComment = True
+            continue
+        if not bComment:
+            lReturn.append(sChar)
+        else:
+            sComment += sChar
 
-    lMyTokens = []
-    lMySeparators = []
-    iToken = 0
-    for iToken, sToken in enumerate(lTokens):
+    if bComment:
+        lReturn.append(sComment)
+
+    return lReturn
+
+
+def combine_string_literals(lChars):
+    lReturn = []
+    sLiteral = ''
+    bLiteral = False
+    for sChar in lChars:
+        if sChar == '"' and not bLiteral:
+            sLiteral += sChar
+            bLiteral = True
+            continue
+        if not bLiteral:
+            lReturn.append(sChar)
+        else:
+            sLiteral += sChar
+        if sChar == '"' and bLiteral:
+            bLiteral = False
+            lReturn.append(sLiteral)
+            sLiteral = ''
+
+    return lReturn
+
+
+def combine_character_literals(lChars):
+    lReturn = []
+    sLiteral = ''
+    bLiteral = False
+    for iChar, sChar in enumerate(lChars):
         try:
-            if sToken == "'" and lTokens[iToken - 2] == "'" and len(lTokens[iToken - 1]) == 1:
-                lMyTokens = lMyTokens[:-2]
-                lMyTokens.append("'" + lTokens[iToken - 1] + "'")
-                lMySeparators = lMySeparators[:-1]
-    
-            else:
-                lMyTokens.append(sToken)
-                lMySeparators.append(lSeparators[iToken])
+            if sChar == "'" and lChars[iChar + 2] == "'" and len(lChars[iChar + 1]) == 1 and not bLiteral:
+                sLiteral += sChar
+                bLiteral = True
+                continue
         except IndexError:
             pass
+        if not bLiteral:
+            lReturn.append(sChar)
+        else:
+            sLiteral += sChar
+        if sChar == "'" and bLiteral:
+            bLiteral = False
+            lReturn.append(sLiteral)
+            sLiteral = ''
 
-    if iToken + 1 < len(lSeparators):
-        lMySeparators.append(lSeparators[-1])
+    return lReturn
 
 
-    return lMyTokens, lMySeparators
+def insert_empty_space(lChars):
+    lReturn = []
+    sPrevChar = ' '
 
-def condense_string_literals(lTokens, lSeparators):
+    try:
+        if not lChars[0].startswith(' '):
+            lReturn.append('')
+    except IndexError:
+        return lReturn
 
-    lMyTokens = []
-    lMySeparators = []
-    iToken = 0
-    for iToken, sToken in enumerate(lTokens):
+    for sChar in lChars:
+        if sChar.startswith(' '):
+            lReturn.append(sChar)
+        elif not sPrevChar.startswith(' '):
+            lReturn.append('')
+            lReturn.append(sChar)
+        else:
+            lReturn.append(sChar)
+        sPrevChar = sChar
+
+    return lReturn
+
+
+def combine_characters_into_words(lChars):
+    lReturn = []
+    sTemp = ''
+    for sChar in lChars:
+        if len(sChar) > 1:
+            if sTemp != '':
+                lReturn.append(sTemp)
+            lReturn.append(sChar)
+            sTemp = ''
+        elif sChar == ' ':
+            if sTemp != '':
+                lReturn.append(sTemp)
+            lReturn.append(sChar)
+            sTemp = ''
+        elif sChar in lSingleCharacterSymbols:
+            if sTemp != '':
+                lReturn.append(sTemp)
+            lReturn.append(sChar)
+            sTemp = ''
+        else:
+            sTemp += sChar
+
+    if len(sTemp) != 0:
+        lReturn.append(sTemp)
+                
+    return lReturn
+
+
+def combine_whitespace(lChars):
+    lReturn = []
+    sSpace = ''
+    for sChar in lChars:
+        if sChar == ' ':
+            sSpace += sChar
+        else:
+            if sSpace != '':
+                lReturn.append(sSpace)
+                sSpace = ''
+            lReturn.append(sChar) 
+
+    if sSpace != '':
+        lReturn.append(sSpace)
+                
+    return lReturn
+
+
+def combine_two_character_symbols(lChars):
+    lReturn = []
+    sNextChar = ''
+    bSkip = False
+    for iChar, sChar in enumerate(lChars):
+        if bSkip:
+            bSkip = False
+            continue
         try:
-            if sToken == '"' and lTokens[iToken - 2] == '"':
-                lMyTokens = lMyTokens[:-2]
-                lMyTokens.append('"' + lTokens[iToken - 1] +'"')
-                lMySeparators = lMySeparators[:-1]
-    
-            else:
-                lMyTokens.append(sToken)
-                lMySeparators.append(lSeparators[iToken])
+            sNextChar = lChars[iChar + 1]
         except IndexError:
-            pass
+            sNextChar = ''
+        if sChar + sNextChar in lTwoCharacterSymbols:
+            bSkip = True
+            lReturn.append(sChar + sNextChar)
+        else:
+            lReturn.append(sChar)
+    return lReturn
 
-    if iToken + 1 < len(lSeparators):
-        lMySeparators.append(lSeparators[-1])
+
+def extract_tokens(lChars):
+    lReturn = []
+    for sChar in lChars:
+        if not sChar.startswith(' ') and sChar != '':
+            lReturn.append(sChar)
+    return lReturn
 
 
-    return lMyTokens, lMySeparators
+def extract_separators(lChars):
+    lReturn = []
+    for sChar in lChars:
+        if sChar.startswith(' ') or sChar == '':
+            lReturn.append(sChar)
+    return lReturn
