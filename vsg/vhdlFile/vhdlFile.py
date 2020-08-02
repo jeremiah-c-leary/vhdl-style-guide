@@ -4,6 +4,10 @@ import re
 from vsg import line
 from vsg.vhdlFile import update
 from vsg.vhdlFile import classify
+from vsg.vhdlFile.classify import entity
+from vsg.vhdlFile.classify import generic_clause
+#from vsg.vhdlFile.classify import port_clause
+
 from vsg import parser
 
 
@@ -133,7 +137,7 @@ class vhdlFile():
             classify.library(dVars, lTokens, lObjects, oLine)
             classify.use(dVars, lTokens, lObjects, oLine)
             classify.context(self, dVars, lTokens, lObjects, oLine)
-            classify.entity(self, dVars, lTokens, lObjects, oLine)
+            classify.entity.beginning(self, dVars, lObjects, oLine)
             classify.assert_statement(self, dVars, lTokens, lObjects, oLine)
 
             classify.code_tags(dVars, oLine, oLinePrevious)
@@ -141,8 +145,15 @@ class vhdlFile():
             classify.port(dVars, oLine)
             classify.generic(dVars, oLine) #lTokens
             if dVars['bEntityIsKeywordFound'] and not dVars['bEntityBeginKeywordFound']:
-                classify.generic_clause(dVars, lTokens, lObjects, oLine)
-                classify.port_clause(dVars, lTokens, lObjects, oLine)
+                if not dVars['bPortClauseKeywordFound']:
+                    classify.generic_clause(dVars, lTokens, lObjects, oLine)
+                if not dVars['bGenericClauseKeywordFound']:
+                    classify.port_clause(dVars, lTokens, lObjects, oLine)
+#                if dVars['bPortClauseOpenParenthesisFound'] or dVars['bGenericClauseOpenParenthesisFound']:
+#                    classify.interface_signal_declaration(dVars, lTokens, lObjects, oLine)
+            if dVars['bEntityKeywordFound']:
+                if not dVars['bPortClauseKeywordFound'] and not dVars['bGenericClauseKeywordFound']:
+                    classify.entity.ending(self, dVars, lTokens, lObjects, oLine)
 
             classify.concurrent(dVars, oLine)
             classify.architecture(self, dVars, lTokens, lObjects, oLine)

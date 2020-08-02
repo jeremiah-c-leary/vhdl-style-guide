@@ -1,9 +1,10 @@
 import re
 
+from vsg.token import entity as token
 from vsg import parser
 
 
-def entity(self, dVars, lTokens, lObjects, oLine):
+def beginning(self, dVars, lObjects, oLine):
     '''
     Classifies entity declarations.
 
@@ -41,70 +42,99 @@ def entity(self, dVars, lTokens, lObjects, oLine):
         oLine.indentLevel = 0
         dVars['iCurrentIndentLevel'] = 0
 
-    for iToken, sToken in enumerate(lTokens):
+    for iObject, oObject in enumerate(lObjects):
         if not dVars['bEntityKeywordFound']:
-            classify_entity_keyword(sToken, iToken, lObjects, dVars, oLine)
+            classify_keyword(oObject, iObject, lObjects, dVars)
         else:
             if not dVars['bEntityIdentifierFound']:
-                classify_entity_identifier(sToken, iToken, lObjects, dVars, oLine)
+                classify_identifier(oObject, iObject, lObjects, dVars)
             else:
                 if not dVars['bEntityIsKeywordFound']:
-                    classify_entity_is_keyword(sToken, iToken, lObjects, dVars, oLine)
-                else:
-                    if not dVars['bEntityBeginKeywordFound']:
-                        classify_entity_begin_keyword(sToken, iToken, lObjects, dVars, oLine)
-                    else:
-                        if not dVars['bEntityEndKeywordFound']:
-                            classify_entity_end_keyword(sToken, iToken, lObjects, dVars, oLine)
-                        else:
-                            classify_end_entity_keyword(sToken, iToken, lObjects, dVars, oLine)
-                            classify_entity_semicolon(sToken, iToken, lObjects, dVars, oLine)
-                            classify_entity_simple_name(sToken, iToken, lObjects, dVars, oLine)
+                    if classify_is_keyword(oObject, iObject, lObjects, dVars):
+                        break;
 
 
-def classify_entity_keyword(sToken, iToken, lObjects, dVars, oLine):
-    if sToken.lower() == 'entity':
-        lObjects[iToken] = parser.entity_keyword(sToken)
+def classify_keyword(oObject, iObject, lObjects, dVars):
+    sValue = oObject.get_value()
+    if sValue.lower() == 'entity':
+        lObjects[iObject] = token.keyword(sValue)
         dVars['bEntityKeywordFound'] = True 
 
 
-def classify_entity_identifier(sToken, iToken, lObjects, dVars, oLine):
-    if not isinstance(lObjects[iToken], parser.whitespace) and not isinstance(lObjects[iToken], parser.comment):
-        lObjects[iToken] = parser.entity_identifier(sToken)
+def classify_identifier(oObject, iObject, lObjects, dVars):
+    sValue = oObject.get_value()
+    if type(oObject) == parser.item:
+        lObjects[iObject] = token.identifier(sValue)
         dVars['bEntityIdentifierFound'] = True
 
 
-def classify_entity_is_keyword(sToken, iToken, lObjects, dVars, oLine):
-    if sToken.lower() == 'is':
-        lObjects[iToken] = parser.entity_is_keyword(sToken)
+def classify_is_keyword(oObject, iObject, lObjects, dVars):
+    sValue = oObject.get_value()
+    if sValue.lower() == 'is':
+        lObjects[iObject] = token.is_keyword(sValue)
         dVars['bEntityIsKeywordFound'] = True
 
 
-def classify_entity_begin_keyword(sToken, iToken, lObjects, dVars, oLine):
-    if sToken.lower() == 'begin':
-        lObjects[iToken] = parser.entity_begin_keyword(sToken)
+
+def ending(self, dVars, lTokens, lObjects, oLine):
+    '''
+    Classifies entity declarations.
+
+    entity identifier is
+        [ port ( port_interface_list ) ;]
+        { entity_declarative_item }
+    [begin
+        { concurrent_assertion_statement
+        | passive_concurrent_procedure_call_statement
+        | passive_process_statement } ]
+    end [entity] [identifier] ;
+
+    '''
+
+    for iObject, oObject in enumerate(lObjects):
+        if dVars['bEntityIsKeywordFound']:
+            if not dVars['bEntityBeginKeywordFound']:
+                classify_begin_keyword(oObject, iObject, lObjects, dVars)
+            else:
+                if not dVars['bEntityEndKeywordFound']:
+                    classify_end_keyword(oObject, iObject, lObjects, dVars)
+                else:
+                    if classify_end_entity_keyword(oObject, iObject, lObjects, dVars):
+                        continue
+                    classify_simple_name(oObject, iObject, lObjects, dVars)
+                    classify_semicolon(oObject, iObject, lObjects, dVars)
+
+
+def classify_begin_keyword(oObject, iObject, lObjects, dVars):
+    sValue = oObject.get_value()
+    if sValue.lower() == 'begin':
+        lObjects[iObject] = token.begin_keyword(sValue)
         dVars['bEntityBeginKeywordFound'] = True
 
 
-def classify_entity_end_keyword(sToken, iToken, lObjects, dVars, oLine):
-    if sToken.lower() == 'end':
-        lObjects[iToken] = parser.entity_end_keyword(sToken)
+def classify_end_keyword(oObject, iObject, lObjects, dVars):
+    sValue = oObject.get_value()
+    if sValue.lower() == 'end':
+        lObjects[iObject] = token.end_keyword(sValue)
         dVars['bEntityEndKeywordFound'] = True 
 
 
-def classify_end_entity_keyword(sToken, iToken, lObjects, dVars, oLine):
-    if sToken.lower() == 'entity':
-        lObjects[iToken] = parser.entity_end_entity_keyword(sToken)
+def classify_end_entity_keyword(oObject, iObject, lObjects, dVars):
+    sValue = oObject.get_value()
+    if sValue.lower() == 'entity':
+        lObjects[iObject] = token.end_entity_keyword(sValue)
+        return True
+    return False
 
 
-def classify_entity_simple_name(sToken, iToken, lObjects, dVars, oLine):
-    if sToken.lower() != 'entity' and sToken != ';' and not isinstance(lObjects[iToken], parser.whitespace) and not isinstance(lObjects[iToken], parser.comment):
-        lObjects[iToken] = parser.entity_simple_name(sToken)
+def classify_simple_name(oObject, iObject, lObjects, dVars):
+    if type(oObject) == parser.item:
+        lObjects[iObject] = token.simple_name(oObject.get_value())
 
 
-def classify_entity_semicolon(sToken, iToken, lObjects, dVars, oLine):
-    if sToken == ';':
-        lObjects[iToken] = parser.entity_semicolon(sToken)
+def classify_semicolon(oObject, iObject, lObjects, dVars):
+    if oObject.get_value() == ';':
+        lObjects[iObject] = token.semicolon()
         dVars['bEntityKeywordFound'] = False
         dVars['bEntityIdentifierFound'] = False
         dVars['bEntityIsKeywordFound'] = False

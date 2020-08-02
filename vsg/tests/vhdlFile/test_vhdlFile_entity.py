@@ -3,7 +3,7 @@ import os
 import unittest
 from vsg import vhdlFile
 from vsg.tests import utils
-from vsg import parser
+from vsg.token import entity as token
 
 
 lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','entity','classification_test_input.vhd'))
@@ -21,7 +21,7 @@ class test_entity_parsing(unittest.TestCase):
         lActual = []
         for iLine, lLine in enumerate(oFile.get_lines()):
             for iItem, oItem in enumerate(lLine.objects):
-                if isinstance(oItem, parser.entity_keyword):
+                if isinstance(oItem, token.keyword):
                     lActual.append((iLine, iItem))
 
         self.assertEqual(lExpected, lActual)
@@ -36,7 +36,7 @@ class test_entity_parsing(unittest.TestCase):
         lActual = []
         for iLine, lLine in enumerate(oFile.get_lines()):
             for iItem, oItem in enumerate(lLine.objects):
-                if isinstance(oItem, parser.entity_semicolon):
+                if isinstance(oItem, token.semicolon):
                     lActual.append((iLine, iItem))
 
         self.assertEqual(lExpected, lActual)
@@ -51,7 +51,7 @@ class test_entity_parsing(unittest.TestCase):
         lActual = []
         for iLine, lLine in enumerate(oFile.get_lines()):
             for iItem, oItem in enumerate(lLine.objects):
-                if isinstance(oItem, parser.entity_end_keyword):
+                if isinstance(oItem, token.end_keyword):
                     lActual.append((iLine, iItem))
 
         self.assertEqual(lExpected, lActual)
@@ -65,7 +65,7 @@ class test_entity_parsing(unittest.TestCase):
         lActual = []
         for iLine, lLine in enumerate(oFile.get_lines()):
             for iItem, oItem in enumerate(lLine.objects):
-                if isinstance(oItem, parser.entity_end_entity_keyword):
+                if isinstance(oItem, token.end_entity_keyword):
                     lActual.append((iLine, iItem))
 
         self.assertEqual(lExpected, lActual)
@@ -78,7 +78,7 @@ class test_entity_parsing(unittest.TestCase):
         lActual = []
         for iLine, lLine in enumerate(oFile.get_lines()):
             for iItem, oItem in enumerate(lLine.objects):
-                if isinstance(oItem, parser.entity_simple_name):
+                if isinstance(oItem, token.simple_name):
                     lActual.append((iLine, iItem))
 
         self.assertEqual(lExpected, lActual)
@@ -93,7 +93,7 @@ class test_entity_parsing(unittest.TestCase):
         lActual = []
         for iLine, lLine in enumerate(oFile.get_lines()):
             for iItem, oItem in enumerate(lLine.objects):
-                if isinstance(oItem, parser.entity_identifier):
+                if isinstance(oItem, token.identifier):
                     lActual.append((iLine, iItem))
 
         self.assertEqual(lExpected, lActual)
@@ -108,7 +108,7 @@ class test_entity_parsing(unittest.TestCase):
         lActual = []
         for iLine, lLine in enumerate(oFile.get_lines()):
             for iItem, oItem in enumerate(lLine.objects):
-                if isinstance(oItem, parser.entity_begin_keyword):
+                if isinstance(oItem, token.begin_keyword):
                     lActual.append((iLine, iItem))
 
         self.assertEqual(lExpected, lActual)
