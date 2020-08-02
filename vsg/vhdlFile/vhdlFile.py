@@ -6,7 +6,7 @@ from vsg.vhdlFile import update
 from vsg.vhdlFile import classify
 from vsg.vhdlFile.classify import entity
 from vsg.vhdlFile.classify import generic_clause
-#from vsg.vhdlFile.classify import port_clause
+from vsg.vhdlFile.classify import port_clause
 
 from vsg import parser
 
@@ -148,7 +148,9 @@ class vhdlFile():
                 if not dVars['bPortClauseKeywordFound']:
                     classify.generic_clause(dVars, lTokens, lObjects, oLine)
                 if not dVars['bGenericClauseKeywordFound']:
-                    classify.port_clause(dVars, lTokens, lObjects, oLine)
+                    classify.port_clause.beginning(dVars, lObjects)
+                    if dVars['bPortClauseOpenParenthesisFound']:
+                        classify.port_clause.ending(dVars, lObjects)
 #                if dVars['bPortClauseOpenParenthesisFound'] or dVars['bGenericClauseOpenParenthesisFound']:
 #                    classify.interface_signal_declaration(dVars, lTokens, lObjects, oLine)
             if dVars['bEntityKeywordFound']:

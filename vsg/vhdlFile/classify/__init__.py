@@ -23,7 +23,7 @@ from .library import library
 from .package_body import package_body
 from .package import package
 from .port import port
-from .port_clause import port_clause
+#from .port_clause import port_clause
 from .process import process
 from .procedure import procedure
 from .sequential import sequential
