@@ -104,6 +104,11 @@ class vhdlFile():
         dVars['bAttributeKeywordFound'] = False
         dVars['bAttributeColonFound'] = False
 
+        dVars['bComponentKeywordFound'] = False
+        dVars['bComponentIdentifierFound'] = False
+        dVars['bComponentIsKeywordFound'] = False
+        dVars['bComponentEndKeywordFound'] = False
+
         oLinePrevious = line.blank_line()
 
         for sLine in self.filecontent:
@@ -116,7 +121,7 @@ class vhdlFile():
 #            preIndent = str(dVars['iCurrentIndentLevel'])
             update.inside_attributes(dVars, self.lines[-1], oLine)
 
-            classify.blank(oLine)
+            classify.blank(oLine) # lTokens
             classify.whitespace(lTokens, lObjects)
             classify.comment(dVars, lTokens, lObjects, oLine)
             classify.library(dVars, lTokens, lObjects, oLine)
@@ -135,7 +140,7 @@ class vhdlFile():
             classify.package_body(dVars, oLine) # lTokens
             classify.block(self, dVars, oLine)
             classify.package(self, dVars, lTokens, lObjects, oLine)
-            classify.component(dVars, oLine)
+            classify.component(dVars, lTokens, lObjects, oLine)
             classify.signal(self, dVars, lTokens, lObjects, oLine)
             classify.constant(self, dVars, lTokens, lObjects, oLine, oLinePrevious)
             classify.variable(self, dVars, lTokens, lObjects, oLine)
