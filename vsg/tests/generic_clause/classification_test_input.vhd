@@ -1,0 +1,11 @@
+
+generic ( );
+
+generic (
+
+);
+
+generic
+(
+)
+;

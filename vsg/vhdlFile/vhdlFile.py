@@ -109,6 +109,9 @@ class vhdlFile():
         dVars['bComponentIsKeywordFound'] = False
         dVars['bComponentEndKeywordFound'] = False
 
+        dVars['bGenericKeywordFound'] = False
+        dVars['bGenericOpenParenthesisFound'] = False
+
         oLinePrevious = line.blank_line()
 
         for sLine in self.filecontent:
@@ -133,7 +136,8 @@ class vhdlFile():
             classify.code_tags(dVars, oLine, oLinePrevious)
 
             classify.port(dVars, oLine)
-            classify.generic(dVars, oLine)
+            classify.generic(dVars, oLine) #lTokens
+            classify.generic_clause(dVars, lTokens, lObjects, oLine)
 
             classify.concurrent(dVars, oLine)
             classify.architecture(self, dVars, lTokens, lObjects, oLine)

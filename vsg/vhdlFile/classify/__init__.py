@@ -16,6 +16,7 @@ from .for_loop import for_loop
 from .function import function
 from .generate import generate
 from .generic import generic
+from .generic_clause import generic_clause
 from .if_statement import if_statement
 from .instantiation import instantiation
 from .library import library

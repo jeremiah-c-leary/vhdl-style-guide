@@ -1,0 +1,46 @@
+import os
+
+import unittest
+from vsg import vhdlFile
+from vsg.tests import utils
+from vsg import parser
+from vsg.token import generic_clause
+
+
+lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','generic_clause','classification_test_input.vhd'))
+oFile = vhdlFile.vhdlFile(lFile)
+
+class tokens(unittest.TestCase):
+
+    def test_keyword(self):
+        lExpected = []
+        lExpected.append((2,0))
+        lExpected.append((4,0))
+        lExpected.append((8,0))
+
+        utils.validate_token(self, oFile, lExpected, generic_clause.keyword)
+
+    def test_open_parenthesis(self):
+        lExpected = []
+        lExpected.append((2,2))
+        lExpected.append((4,2))
+        lExpected.append((9,0))
+
+        utils.validate_token(self, oFile, lExpected, generic_clause.open_parenthesis)
+
+    def test_close_parenthesis(self):
+        lExpected = []
+        lExpected.append((2,4))
+        lExpected.append((6,0))
+        lExpected.append((10,0))
+
+        utils.validate_token(self, oFile, lExpected, generic_clause.close_parenthesis)
+
+    def test_semicolon(self):
+        lExpected = []
+        lExpected.append((2,5))
+        lExpected.append((6,1))
+        lExpected.append((11,0))
+
+        utils.validate_token(self, oFile, lExpected, generic_clause.semicolon)
+

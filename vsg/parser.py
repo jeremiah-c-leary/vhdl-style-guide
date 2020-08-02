@@ -125,6 +125,17 @@ class label_colon(colon):
         colon.__init__(self)
 
 
+class open_parenthesis(item):
+
+    def __init__(self):
+        item.__init__(self, '(')
+
+
+class close_parenthesis(item):
+
+    def __init__(self):
+        item.__init__(self, ')')
+
 ###############################################################################
 # Architecture objects
 ###############################################################################
