@@ -1,18 +1,18 @@
 
-from vsg.token import generic_clause as token
+from vsg.token import port_clause as token
 
 
-def generic_clause(dVars, lTokens, lObjects, oLine):
+def port_clause(dVars, lTokens, lObjects, oLine):
     '''
-    Classifies generic clauses:
+    Classifies port clauses:
 
-        generic ( generic_list ) ;
+        port ( port_list ) ;
     '''
     for iToken, sToken in enumerate(lTokens):
-        if not dVars['bGenericClauseKeywordFound']:
+        if not dVars['bPortClauseKeywordFound']:
             classify_keyword(sToken, iToken, lObjects, dVars)
         else:
-            if not dVars['bGenericClauseOpenParenthesisFound']:
+            if not dVars['bPortClauseOpenParenthesisFound']:
                 classify_open_parenthesis(sToken, iToken, lObjects, dVars)
             else:
                 classify_semicolon(sToken, iToken, lObjects, dVars)
@@ -20,15 +20,15 @@ def generic_clause(dVars, lTokens, lObjects, oLine):
 
 
 def classify_keyword(sToken, iToken, lObjects, dVars):
-    if sToken.lower() == 'generic':
+    if sToken.lower() == 'port':
         lObjects[iToken] = token.keyword(sToken)
-        dVars['bGenericClauseKeywordFound'] = True
+        dVars['bPortClauseKeywordFound'] = True
 
 
 def classify_open_parenthesis(sToken, iToken, lObjects, dVars):
     if sToken == '(':
         lObjects[iToken] = token.open_parenthesis()
-        dVars['bGenericClauseOpenParenthesisFound'] = True
+        dVars['bPortClauseOpenParenthesisFound'] = True
 
 
 def classify_close_parenthesis(sToken, iToken, lObjects, dVars):
@@ -39,5 +39,5 @@ def classify_close_parenthesis(sToken, iToken, lObjects, dVars):
 def classify_semicolon(sToken, iToken, lObjects, dVars):
     if sToken == ';':
         lObjects[iToken] = token.semicolon()
-        dVars['bGenericClauseKeywordFound'] = False
-        dVars['bGenericClauseOpenParenthesisFound'] = False
+        dVars['bPortClauseKeywordFound'] = False
+        dVars['bPortClauseOpenParenthesisFound'] = False

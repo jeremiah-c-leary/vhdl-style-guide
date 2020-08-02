@@ -109,8 +109,11 @@ class vhdlFile():
         dVars['bComponentIsKeywordFound'] = False
         dVars['bComponentEndKeywordFound'] = False
 
-        dVars['bGenericKeywordFound'] = False
-        dVars['bGenericOpenParenthesisFound'] = False
+        dVars['bGenericClauseKeywordFound'] = False
+        dVars['bGenericClauseOpenParenthesisFound'] = False
+
+        dVars['bPortClauseKeywordFound'] = False
+        dVars['bPortClauseOpenParenthesisFound'] = False
 
         oLinePrevious = line.blank_line()
 
@@ -138,6 +141,7 @@ class vhdlFile():
             classify.port(dVars, oLine)
             classify.generic(dVars, oLine) #lTokens
             classify.generic_clause(dVars, lTokens, lObjects, oLine)
+            classify.port_clause(dVars, lTokens, lObjects, oLine)
 
             classify.concurrent(dVars, oLine)
             classify.architecture(self, dVars, lTokens, lObjects, oLine)

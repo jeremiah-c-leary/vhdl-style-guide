@@ -2,7 +2,7 @@
 from vsg import parser
 
 ###############################################################################
-# Generic Clause objects
+# Port Clause objects
 ###############################################################################
 
 class keyword(parser.keyword):
