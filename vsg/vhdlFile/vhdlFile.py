@@ -146,7 +146,9 @@ class vhdlFile():
             classify.generic(dVars, oLine) #lTokens
             if dVars['bEntityIsKeywordFound'] and not dVars['bEntityBeginKeywordFound']:
                 if not dVars['bPortClauseKeywordFound']:
-                    classify.generic_clause(dVars, lTokens, lObjects, oLine)
+                    classify.generic_clause.beginning(dVars, lObjects)
+                    if dVars['bGenericClauseOpenParenthesisFound']:
+                        classify.generic_clause.ending(dVars, lObjects)
                 if not dVars['bGenericClauseKeywordFound']:
                     classify.port_clause.beginning(dVars, lObjects)
                     if dVars['bPortClauseOpenParenthesisFound']:
