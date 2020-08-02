@@ -140,8 +140,9 @@ class vhdlFile():
 
             classify.port(dVars, oLine)
             classify.generic(dVars, oLine) #lTokens
-            classify.generic_clause(dVars, lTokens, lObjects, oLine)
-            classify.port_clause(dVars, lTokens, lObjects, oLine)
+            if dVars['bEntityIsKeywordFound'] and not dVars['bEntityBeginKeywordFound']:
+                classify.generic_clause(dVars, lTokens, lObjects, oLine)
+                classify.port_clause(dVars, lTokens, lObjects, oLine)
 
             classify.concurrent(dVars, oLine)
             classify.architecture(self, dVars, lTokens, lObjects, oLine)
