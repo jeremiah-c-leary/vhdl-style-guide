@@ -8,14 +8,13 @@ from vsg.vhdlFile.classify import port_clause
 
 def tokenize(oObject, iObject, lObjects, dVars):
     '''
-    Classifies entity declarations.
-
-    entity identifier is
-        [ entity_header ]
-        [ entity_declarative_item ]
-    [ begin
-        entity_statement_part ]
-    end [entity] [identifier] ;
+    entity_declaration ::=
+        entity identifier is
+            [ entity_header ]
+            [ entity_declarative_part ]
+        [ begin
+            entity_statement_part ]
+        end [ entity ] [ entity_simple_name ] ;
 
     '''
 
@@ -64,7 +63,11 @@ def classify_is_keyword(oObject, iObject, lObjects, dVars):
 
 
 def entity_header(oObject, iObject, lObjects, dVars):
-
+    '''
+    entity_header ::=
+        [ formal_generic_clause ]
+        [ formal_port_clause ]
+    '''
         if not dVars['bPortClauseKeywordFound']:
             generic_clause.beginning(oObject, iObject, lObjects, dVars)
             if dVars['bGenericClauseOpenParenthesisFound']:
