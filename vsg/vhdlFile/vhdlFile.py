@@ -5,9 +5,7 @@ from vsg import line
 from vsg.vhdlFile import update
 from vsg.vhdlFile import classify
 from vsg.vhdlFile.classify import entity
-from vsg.vhdlFile.classify import generic_clause
-from vsg.vhdlFile.classify import port_clause
-from vsg.vhdlFile.classify import interface_list
+from vsg.vhdlFile.classify import entity_declaration
 
 from vsg import parser
 
@@ -149,23 +147,12 @@ class vhdlFile():
 
             classify.port(dVars, oLine)
             classify.generic(dVars, oLine) #lTokens
+
+
+
             for iObject, oObject in enumerate(lObjects):
-                classify.entity.beginning(oObject, iObject, lObjects, dVars)
+                entity_declaration.tokenize(oObject, iObject, lObjects, dVars)
 
-                if dVars['bEntityIsKeywordFound'] and not dVars['bEntityBeginKeywordFound']:
-                    if not dVars['bPortClauseKeywordFound']:
-                        classify.generic_clause.beginning(oObject, iObject, lObjects, dVars)
-                        if dVars['bGenericClauseOpenParenthesisFound']:
-                            classify.generic_clause.ending(oObject, iObject, lObjects, dVars)
-                    if not dVars['bGenericClauseKeywordFound']:
-                        classify.port_clause.beginning(oObject, iObject, lObjects, dVars)
-                        if dVars['bPortClauseOpenParenthesisFound']:
-                            classify.interface_list.interface_list(oObject, iObject, lObjects, dVars)
-                            classify.port_clause.ending(oObject, iObject, lObjects, dVars)
-
-                if dVars['bEntityKeywordFound']:
-                    if not dVars['bPortClauseKeywordFound'] and not dVars['bGenericClauseKeywordFound']:
-                        classify.entity.ending(oObject, iObject, lObjects, dVars)
 
 
             classify.concurrent(dVars, oLine)
