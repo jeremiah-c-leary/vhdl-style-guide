@@ -7,6 +7,7 @@ from vsg.vhdlFile import classify
 from vsg.vhdlFile.classify import entity
 from vsg.vhdlFile.classify import generic_clause
 from vsg.vhdlFile.classify import port_clause
+from vsg.vhdlFile.classify import interface_list
 
 from vsg import parser
 
@@ -118,6 +119,10 @@ class vhdlFile():
 
         dVars['bPortClauseKeywordFound'] = False
         dVars['bPortClauseOpenParenthesisFound'] = False
+        dVars['bPortClauseCloseParenthesisFound'] = False
+
+        dVars['bInterfaceSignalDeclarationAssignmentOperatorFound'] = False
+        dVars['bInterfaceSignalDeclarationColonFound'] = False
 
         oLinePrevious = line.blank_line()
 
@@ -137,27 +142,31 @@ class vhdlFile():
             classify.library(dVars, lTokens, lObjects, oLine)
             classify.use(dVars, lTokens, lObjects, oLine)
             classify.context(self, dVars, lTokens, lObjects, oLine)
-            classify.entity.beginning(self, dVars, lObjects, oLine)
+            classify.entity.legacy(self, dVars, oLine)
             classify.assert_statement(self, dVars, lTokens, lObjects, oLine)
 
             classify.code_tags(dVars, oLine, oLinePrevious)
 
             classify.port(dVars, oLine)
             classify.generic(dVars, oLine) #lTokens
-            if dVars['bEntityIsKeywordFound'] and not dVars['bEntityBeginKeywordFound']:
-                if not dVars['bPortClauseKeywordFound']:
-                    classify.generic_clause.beginning(dVars, lObjects)
-                    if dVars['bGenericClauseOpenParenthesisFound']:
-                        classify.generic_clause.ending(dVars, lObjects)
-                if not dVars['bGenericClauseKeywordFound']:
-                    classify.port_clause.beginning(dVars, lObjects)
-                    if dVars['bPortClauseOpenParenthesisFound']:
-                        classify.port_clause.ending(dVars, lObjects)
-#                if dVars['bPortClauseOpenParenthesisFound'] or dVars['bGenericClauseOpenParenthesisFound']:
-#                    classify.interface_signal_declaration(dVars, lTokens, lObjects, oLine)
-            if dVars['bEntityKeywordFound']:
-                if not dVars['bPortClauseKeywordFound'] and not dVars['bGenericClauseKeywordFound']:
-                    classify.entity.ending(self, dVars, lTokens, lObjects, oLine)
+            for iObject, oObject in enumerate(lObjects):
+                classify.entity.beginning(oObject, iObject, lObjects, dVars)
+
+                if dVars['bEntityIsKeywordFound'] and not dVars['bEntityBeginKeywordFound']:
+                    if not dVars['bPortClauseKeywordFound']:
+                        classify.generic_clause.beginning(oObject, iObject, lObjects, dVars)
+                        if dVars['bGenericClauseOpenParenthesisFound']:
+                            classify.generic_clause.ending(oObject, iObject, lObjects, dVars)
+                    if not dVars['bGenericClauseKeywordFound']:
+                        classify.port_clause.beginning(oObject, iObject, lObjects, dVars)
+                        if dVars['bPortClauseOpenParenthesisFound']:
+                            classify.interface_list.interface_list(oObject, iObject, lObjects, dVars)
+                            classify.port_clause.ending(oObject, iObject, lObjects, dVars)
+
+                if dVars['bEntityKeywordFound']:
+                    if not dVars['bPortClauseKeywordFound'] and not dVars['bGenericClauseKeywordFound']:
+                        classify.entity.ending(oObject, iObject, lObjects, dVars)
+
 
             classify.concurrent(dVars, oLine)
             classify.architecture(self, dVars, lTokens, lObjects, oLine)
@@ -165,7 +174,8 @@ class vhdlFile():
             classify.block(self, dVars, oLine)
             classify.package(self, dVars, lTokens, lObjects, oLine)
             classify.component(dVars, lTokens, lObjects, oLine)
-            classify.signal(self, dVars, lTokens, lObjects, oLine)
+            if not dVars['bPortClauseKeywordFound']:
+                classify.signal(self, dVars, lTokens, lObjects, oLine)
             classify.constant(self, dVars, lTokens, lObjects, oLine, oLinePrevious)
             classify.variable(self, dVars, lTokens, lObjects, oLine)
             classify.procedure(dVars, oLine, oLinePrevious)

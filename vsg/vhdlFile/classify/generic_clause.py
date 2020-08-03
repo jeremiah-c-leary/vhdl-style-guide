@@ -2,18 +2,18 @@
 from vsg.token import generic_clause as token
 
 
-def beginning(dVars, lObjects):
+def beginning(oObject, iObject, lObjects, dVars):
     '''
     Classifies generic clauses:
 
         generic ( generic_list ) ;
     '''
-    for iObject, oObject in enumerate(lObjects):
-        if not dVars['bGenericClauseKeywordFound']:
-            classify_keyword(oObject, iObject, lObjects, dVars)
-        else:
-            if not dVars['bGenericClauseOpenParenthesisFound']:
-                classify_open_parenthesis(oObject, iObject, lObjects, dVars)
+    if not dVars['bGenericClauseKeywordFound']:
+        classify_keyword(oObject, iObject, lObjects, dVars)
+    else:
+        if not dVars['bGenericClauseOpenParenthesisFound']:
+            classify_open_parenthesis(oObject, iObject, lObjects, dVars)
+
 
 def classify_keyword(oObject, iObject, lObjects, dVars):
     sValue = oObject.get_value()
@@ -28,15 +28,14 @@ def classify_open_parenthesis(oObject, iObject, lObjects, dVars):
         dVars['bGenericClauseOpenParenthesisFound'] = True
 
 
-def ending(dVars, lObjects):
+def ending(oObject, iObject, lObjects, dVars):
     '''
     Classifies generic clauses:
 
         generic ( generic_list ) ;
     '''
-    for iObject, oObject in enumerate(lObjects):
-        classify_close_parenthesis(oObject, iObject, lObjects, dVars)
-        classify_semicolon(oObject, iObject, lObjects, dVars)
+    classify_close_parenthesis(oObject, iObject, lObjects, dVars)
+    classify_semicolon(oObject, iObject, lObjects, dVars)
 
 
 def classify_close_parenthesis(oObject, iObject, lObjects, dVars):

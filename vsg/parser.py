@@ -101,12 +101,6 @@ class subtype_indication(item):
         item.__init__(self, sString)
 
 
-class static_expression(item):
-
-    def __init__(self, sString):
-        item.__init__(self, sString)
-
-
 class condition(item):
 
     def __init__(self, sString):
@@ -117,6 +111,12 @@ class expression(item):
 
     def __init__(self, sString):
         item.__init__(self, sString)
+
+
+class static_expression(expression):
+
+    def __init__(self, sString):
+        expression.__init__(self, sString)
 
 
 class label(item):

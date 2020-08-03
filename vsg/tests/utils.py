@@ -75,10 +75,15 @@ def extract_violation_lines(lViolations):
     return lReturn
 
 
-def validate_token(self, oFile, lExpected, oToken):
+def validate_token(self, oFile, lExpected, oToken, bDebug=False):
         lActual = []
         for iLine, lLine in enumerate(oFile.get_lines()):
+            if bDebug:
+                print('-'*80)
+                print(lLine.line)
             for iItem, oItem in enumerate(lLine.objects):
+                if bDebug:
+                    print(oItem)
                 if isinstance(oItem, oToken):
                     lActual.append((iLine, iItem))
 
