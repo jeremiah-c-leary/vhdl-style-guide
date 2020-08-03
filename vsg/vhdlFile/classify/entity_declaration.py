@@ -4,7 +4,6 @@ from vsg.token import entity as token
 
 from vsg.vhdlFile.classify import generic_clause
 from vsg.vhdlFile.classify import port_clause
-from vsg.vhdlFile.classify import interface_list
 
 
 def tokenize(oObject, iObject, lObjects, dVars):
@@ -43,19 +42,6 @@ def tokenize(oObject, iObject, lObjects, dVars):
                     classify_semicolon(oObject, iObject, lObjects, dVars)
 
 
-def entity_header(oObject, iObject, lObjects, dVars):
-
-        if not dVars['bPortClauseKeywordFound']:
-            generic_clause.beginning(oObject, iObject, lObjects, dVars)
-            if dVars['bGenericClauseOpenParenthesisFound']:
-                generic_clause.ending(oObject, iObject, lObjects, dVars)
-        if not dVars['bGenericClauseKeywordFound']:
-            port_clause.beginning(oObject, iObject, lObjects, dVars)
-            if dVars['bPortClauseOpenParenthesisFound']:
-                interface_list.interface_list(oObject, iObject, lObjects, dVars)
-                port_clause.ending(oObject, iObject, lObjects, dVars)
-
-
 def classify_keyword(oObject, iObject, lObjects, dVars):
     sValue = oObject.get_value()
     if sValue.lower() == 'entity':
@@ -75,6 +61,17 @@ def classify_is_keyword(oObject, iObject, lObjects, dVars):
     if sValue.lower() == 'is':
         lObjects[iObject] = token.is_keyword(sValue)
         dVars['bEntityIsKeywordFound'] = True
+
+
+def entity_header(oObject, iObject, lObjects, dVars):
+
+        if not dVars['bPortClauseKeywordFound']:
+            generic_clause.beginning(oObject, iObject, lObjects, dVars)
+            if dVars['bGenericClauseOpenParenthesisFound']:
+                generic_clause.ending(oObject, iObject, lObjects, dVars)
+        if not dVars['bGenericClauseKeywordFound']:
+            port_clause.tokenize(oObject, iObject, lObjects, dVars)
+
 
 def classify_begin_keyword(oObject, iObject, lObjects, dVars):
     sValue = oObject.get_value()

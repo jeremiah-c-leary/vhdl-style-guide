@@ -35,3 +35,6 @@ def classify_interface_object_declaration(oObject, iObject, lObjects, dVars):
 
     interface_signal_declaration.interface_signal_declaration(oObject, iObject, lObjects, dVars)
 
+def clear_flags(dVars):
+
+    interface_signal_declaration.clear_flags(dVars)

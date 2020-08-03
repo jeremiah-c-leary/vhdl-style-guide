@@ -6,6 +6,7 @@ from vsg.tests import utils
 from vsg import parser
 from vsg.token import interface_signal_declaration as token
 from vsg.token import interface_list
+from vsg.token import entity
 
 lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','interface_signal_declaration','classification_test_input.vhd'))
 oFile = vhdlFile.vhdlFile(lFile)
@@ -21,7 +22,7 @@ class tokens(unittest.TestCase):
         lExpected.append((20,1))
         lExpected.append((21,1))
 
-        utils.validate_token(self, oFile, lExpected, token.keyword)
+        utils.validate_token(self, oFile, lExpected, token.keyword, False)
 
 
     def test_identifier(self):
