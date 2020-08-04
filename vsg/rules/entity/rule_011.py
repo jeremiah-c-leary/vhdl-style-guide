@@ -1,12 +1,14 @@
 
-from vsg.rules import single_space_after_rule
+from vsg.token import entity
+from vsg.rules import space_between_items_rule
 
 
-class rule_011(single_space_after_rule):
+class rule_011(space_between_items_rule):
     '''
-    Entity rule 011 checks for a single space after the "end" keyword
+    Checks for a single space between the entity end keyword and the entityidentifier and is keyword.
     '''
 
     def __init__(self):
-        single_space_after_rule.__init__(self, 'entity', '011', 'isEndEntityDeclaration', 'end')
-        self.solution = 'Reduce spaces after "end" keyword to one.'
+        space_between_items_rule.__init__(self, 'entity', '011', entity.end_keyword, entity.end_entity_keyword)
+        self.regionBegin = entity.end_keyword
+        self.regionEnd = entity.end_entity_keyword

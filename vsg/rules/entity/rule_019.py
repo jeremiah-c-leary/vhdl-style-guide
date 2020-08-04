@@ -1,38 +1,16 @@
 
-from vsg import rule
-from vsg import utils
-
-import re
+from vsg.token import entity
+from vsg.rules import copy_item_value_and_insert_new_item_after_item_rule
 
 
-class rule_019(rule.rule):
+class rule_019(copy_item_value_and_insert_new_item_after_item_rule):
     '''
-    Entity rule 019 checks for the entity name on the "end entity" statement.
+    Checks for the context keyword after the end keyword.
+
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'entity'
-        self.identifier = '019'
-        self.solution = 'Add the entity name.'
-        self.phase = 1
-
-    def _pre_analyze(self):
-        self.sEntityName = ''
-
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isEntityDeclaration:
-            self.sEntityName = utils.extract_entity_identifier(oLine)[0]
-        if oLine.isEndEntityDeclaration and re.match('^\s*end\s+entity', oLine.line, re.IGNORECASE):
-            if not re.match('^\s*end\s+entity\s+\w+', oLine.line, re.IGNORECASE):
-                dViolation = utils.create_violation_dict(iLineNumber)
-                dViolation['entity'] = self.sEntityName
-                self.add_violation(dViolation)
-
-    def _fix_violations(self, oFile):
-        for dViolation in self.violations:
-            iLineNumber = utils.get_violation_line_number(dViolation)
-            oLine = oFile.lines[iLineNumber]
-            sLine = oLine.line
-            iIndex = oLine.lineLower.find('entity') + len('entity')
-            oLine.update_line(sLine[:iIndex] + ' ' + dViolation['entity'] + sLine[iIndex:])
+        copy_item_value_and_insert_new_item_after_item_rule.__init__(self, 'entity', '019', entity.end_entity_keyword, entity.semicolon, entity.identifier, entity.simple_name('unknown'))
+        self.subphase = 2
+        self.regionBegin = entity.identifier
+        self.regionEnd = entity.semicolon

@@ -1,11 +1,11 @@
 
-from vsg.rules import indent_rule
+from vsg.token import entity
+from vsg.rules import indent_item_rule
 
 
-class rule_001(indent_rule):
+class rule_001(indent_item_rule):
     '''
-    Entity rule 001 checks for spaces before the entity keyword.
+    Checks for indent of the entity keyword.
     '''
-
     def __init__(self):
-        indent_rule.__init__(self, 'entity', '001', 'isEntityDeclaration')
+        indent_item_rule.__init__(self, 'entity', '001', entity.keyword)

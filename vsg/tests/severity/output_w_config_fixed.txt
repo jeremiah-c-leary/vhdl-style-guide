@@ -10,6 +10,6 @@ Total Violations:    1
 ----------------------------+------------+------------+--------------------------------------
   Rule                      |  severity  |  line(s)   | Solution
 ----------------------------+------------+------------+--------------------------------------
-  entity_019                | Guideline  |         10 | Add the entity name.
+  entity_019                | Guideline  |         10 | Add "entity1" after "entity"
 ----------------------------+------------+------------+--------------------------------------
 NOTE: Refer to online documentation at https://vhdl-style-guide.readthedocs.io/en/latest/index.html for more information.

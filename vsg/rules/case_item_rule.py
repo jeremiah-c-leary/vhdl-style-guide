@@ -33,28 +33,28 @@ class case_item_rule(rule_item.Rule):
         self.regionEnd = None
 
     def _analyze_region(self, oFile, iLine, oLine, dRegion):
-                lObjects = oLine.get_objects()
-                for oObject in lObjects:
-                    if isinstance(oObject, self.trigger):
-                        sObjectValue = oObject.get_value()
-                        if self.case == 'lower':
-                            if sObjectValue != sObjectValue.lower():
-                                dViolation = utils.create_violation_dict(dRegion['metadata']['iStartLineNumber'] + iLine)
-                                dViolation['solution'] = 'Change "' + sObjectValue + '" to "' + sObjectValue.lower() + '"'
-                                self.add_violation(dViolation)
-                        if self.case == 'upper':
-                            if sObjectValue != sObjectValue.upper():
-                                dViolation = utils.create_violation_dict(dRegion['metadata']['iStartLineNumber'] + iLine)
-                                dViolation['solution'] = 'Change "' + sObjectValue + '" to "' + sObjectValue.upper() + '"'
-                                self.add_violation(dViolation)
+        lObjects = oLine.get_objects()
+        for oObject in lObjects:
+            if isinstance(oObject, self.trigger):
+                sObjectValue = oObject.get_value()
+                if self.case == 'lower':
+                    if sObjectValue != sObjectValue.lower():
+                        dViolation = utils.create_violation_dict(dRegion['metadata']['iStartLineNumber'] + iLine)
+                        dViolation['solution'] = 'Change "' + sObjectValue + '" to "' + sObjectValue.lower() + '"'
+                        self.add_violation(dViolation)
+                if self.case == 'upper':
+                    if sObjectValue != sObjectValue.upper():
+                        dViolation = utils.create_violation_dict(dRegion['metadata']['iStartLineNumber'] + iLine)
+                        dViolation['solution'] = 'Change "' + sObjectValue + '" to "' + sObjectValue.upper() + '"'
+                        self.add_violation(dViolation)
 
     def _fix_violation(self, oFile, dViolation):
-            oLine = utils.get_violating_line(oFile, dViolation)
-            lObjects = oLine.get_objects()
-            for iObject, oObject in enumerate(lObjects):
-                if isinstance(oObject, self.trigger):
-                    if self.case == 'lower':
-                        oObject.set_value(oObject.get_value().lower())
-                    if self.case == 'upper':
-                        oObject.set_value(oObject.get_value().upper())
-                    oLine.update_objects(lObjects)
+        oLine = utils.get_violating_line(oFile, dViolation)
+        lObjects = oLine.get_objects()
+        for iObject, oObject in enumerate(lObjects):
+            if isinstance(oObject, self.trigger):
+                if self.case == 'lower':
+                    oObject.set_value(oObject.get_value().lower())
+                if self.case == 'upper':
+                    oObject.set_value(oObject.get_value().upper())
+                oLine.update_objects(lObjects)

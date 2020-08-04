@@ -1,11 +1,14 @@
 
-from vsg.rules import line_above_rule
+from vsg.token import entity
+from vsg.rules import insert_blank_line_above_line_containing_item_rule
 
-class rule_003(line_above_rule):
+
+class rule_003(insert_blank_line_above_line_containing_item_rule):
     '''
-    Entity rule 003 checks for a blank line above the entity keyword.
+    Checks for a blank line above the "entity" keyword.
     '''
 
     def __init__(self):
-        line_above_rule.__init__(self, 'entity', '003', 'isEntityDeclaration')
-        self.solution = 'Add blank line above entity keyword.'
+        insert_blank_line_above_line_containing_item_rule.__init__(self, 'entity', '003', entity.keyword)
+        self.regionBegin = entity.keyword
+        self.regionEnd = entity.identifier

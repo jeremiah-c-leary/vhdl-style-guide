@@ -1,16 +1,14 @@
 
-from vsg.rules import case_rule
-from vsg import utils
+from vsg.rules import case_item_rule
+from vsg.token import entity
 
 
-class rule_014(case_rule):
+class rule_014(case_item_rule):
     '''
-    Entity rule 014 checks the entity keyword has proper case.
+    Checks the end entity keyword has proper case.
     '''
 
     def __init__(self):
-        case_rule.__init__(self, 'entity', '014', 'isEndEntityDeclaration')
-        self.solution = 'Change "entity" keyword to '
-
-    def _extract(self, oLine):
-        return utils.extract_words(oLine, ['entity'])
+        case_item_rule.__init__(self, 'entity', '014', entity.end_entity_keyword)
+        self.regionBegin = entity.end_entity_keyword
+        self.regionEnd = entity.end_entity_keyword

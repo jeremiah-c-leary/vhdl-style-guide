@@ -13,7 +13,7 @@ entity entity1 is
     port5 : out std_logic;
     port6 : inout std_logic
   );
-end entity entity1
+end entity entity1;
 
 
  entITy   entiTY2  IS
@@ -30,7 +30,7 @@ end entity entity1
     PORT5 :  out std_logic;--Comment
     PORT6 : inout std_logic  );--Comment
 
- end entity    entiTY2
+ end entity    entiTY2;
     eNTITY   entiTY3    is
   generic (
     g_generIC1 :std_logic := '0';
@@ -44,7 +44,7 @@ end entity entity1
     PORT5 :    out std_logic;
      PORT6 : inout     std_logic
  );
- END ENTITY entiTY3
+ END ENTITY entiTY3;
 
 entity entity1
 is
@@ -60,7 +60,7 @@ IO_PORT3 : inout   std_logic;
     port4 :   in  std_logic;
         port5 : out std_logic;
     port6 : inout  std_logic);
-End  entity  entity1
+End  entity  entity1;
 
 entity entity1 is
  geneRIC (
@@ -75,7 +75,7 @@ entity entity1 is
     port5 : out std_logic := '0';
     port6 : inout std_logic
    );
-end ENtity entity1
+end ENtity entity1;
 
 entity entity1 is
 
@@ -88,7 +88,7 @@ entity entity1 is
     O_PORT2 : out   std_logic;
     IO_PORT3 : inout std_logic
   );
-end   entity entity1
+end   entity entity1;
 
 
 entity entity1 is
@@ -120,7 +120,7 @@ entity entity1 is
     O_PORT2 : out   std_logic;
     IO_PORT3, IO_PORT5 : inout std_logic
   );
-end entity  entity1
+end entity  entity1;
 
 -- Check if no generic is present
 

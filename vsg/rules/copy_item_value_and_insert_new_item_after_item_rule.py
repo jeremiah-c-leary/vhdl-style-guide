@@ -51,27 +51,28 @@ class copy_item_value_and_insert_new_item_after_item_rule(rule_item.Rule):
             sCopyValue = None
             lAnalysis = []
             for iLine, oLine in enumerate(dContext['lines']):
-                lObjects = oLine.get_objects()
-                for iObject, oObject in enumerate(lObjects):
-                    if isinstance(oObject, self.copyItem):
-                        bCopyItemFound = True
-                        sCopyValue = oObject.get_value()
-                    if isinstance(oObject, self.begin):
-                        bBeginFound = True
-                        iBeginLine = iLine + dContext['metadata']['iStartLineNumber']
-                        sBeginValue = oObject.get_value()
-                    if bBeginFound:
-                        lAnalysis.append(oObject)
-                    if bBeginFound and isinstance(oObject, self.end):
-                        bItemFound = False
-                        for oItem in lAnalysis:
-                            if type(self.insertItem) == type(oItem):
-                                bItemFound = True
-                        if not bItemFound:
-                            dViolation = utils.create_violation_dict(iBeginLine)
-                            dViolation['copy_value'] = sCopyValue
-                            dViolation['solution'] = 'Add "' + sCopyValue + '" after "' + sBeginValue + '"'
-                            self.add_violation(dViolation)
+                if not self._is_vsg_off(oLine):
+                    lObjects = oLine.get_objects()
+                    for iObject, oObject in enumerate(lObjects):
+                        if isinstance(oObject, self.copyItem):
+                            bCopyItemFound = True
+                            sCopyValue = oObject.get_value()
+                        if isinstance(oObject, self.begin):
+                            bBeginFound = True
+                            iBeginLine = iLine + dContext['metadata']['iStartLineNumber']
+                            sBeginValue = oObject.get_value()
+                        if bBeginFound:
+                            lAnalysis.append(oObject)
+                        if bBeginFound and isinstance(oObject, self.end):
+                            bItemFound = False
+                            for oItem in lAnalysis:
+                                if type(self.insertItem) == type(oItem):
+                                    bItemFound = True
+                            if not bItemFound:
+                                dViolation = utils.create_violation_dict(iBeginLine)
+                                dViolation['copy_value'] = sCopyValue
+                                dViolation['solution'] = 'Add "' + sCopyValue + '" after "' + sBeginValue + '"'
+                                self.add_violation(dViolation)
 
     def _fix_violation(self, oFile, dViolation):
         oLine = utils.get_violating_line(oFile, dViolation)
