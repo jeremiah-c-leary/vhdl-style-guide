@@ -1,8 +1,10 @@
 
 from vsg.token import generic_clause as token
 
+from vsg.vhdlFile.classify import interface_list
 
-def beginning(oObject, iObject, lObjects, dVars):
+
+def tokenize(oObject, iObject, lObjects, dVars):
     '''
     Classifies generic clauses:
 
@@ -13,6 +15,15 @@ def beginning(oObject, iObject, lObjects, dVars):
     else:
         if not dVars['bGenericClauseOpenParenthesisFound']:
             classify_open_parenthesis(oObject, iObject, lObjects, dVars)
+        else:
+            if not dVars['bGenericClauseCloseParenthesisFound']:
+                if classify_close_parenthesis(oObject, iObject, lObjects, dVars):
+                    interface_list.clear_flags(dVars)
+                    return True
+                interface_list.interface_list(oObject, iObject, lObjects, dVars)
+            else:
+                classify_semicolon(oObject, iObject, lObjects, dVars)
+
 
 
 def classify_keyword(oObject, iObject, lObjects, dVars):
@@ -28,23 +39,21 @@ def classify_open_parenthesis(oObject, iObject, lObjects, dVars):
         dVars['bGenericClauseOpenParenthesisFound'] = True
 
 
-def ending(oObject, iObject, lObjects, dVars):
-    '''
-    Classifies generic clauses:
-
-        generic ( generic_list ) ;
-    '''
-    classify_close_parenthesis(oObject, iObject, lObjects, dVars)
-    classify_semicolon(oObject, iObject, lObjects, dVars)
-
-
 def classify_close_parenthesis(oObject, iObject, lObjects, dVars):
     if oObject.get_value() == ')':
         lObjects[iObject] = token.close_parenthesis()
+        dVars['bGenericClauseCloseParenthesisFound'] = True
+        return True
+    return False
 
 
 def classify_semicolon(oObject, iObject, lObjects, dVars):
     if oObject.get_value() == ';':
         lObjects[iObject] = token.semicolon()
-        dVars['bGenericClauseKeywordFound'] = False
-        dVars['bGenericClauseOpenParenthesisFound'] = False
+        clear_tags(dVars)
+
+def clear_tags(dVars):
+    dVars['bGenericClauseKeywordFound'] = False
+    dVars['bGenericClauseOpenParenthesisFound'] = False
+    dVars['bGenericClauseCloseParenthesisFound'] = False
+

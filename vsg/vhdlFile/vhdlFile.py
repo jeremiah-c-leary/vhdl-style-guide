@@ -114,6 +114,7 @@ class vhdlFile():
 
         dVars['bGenericClauseKeywordFound'] = False
         dVars['bGenericClauseOpenParenthesisFound'] = False
+        dVars['bGenericClauseCloseParenthesisFound'] = False
 
         dVars['bPortClauseKeywordFound'] = False
         dVars['bPortClauseOpenParenthesisFound'] = False

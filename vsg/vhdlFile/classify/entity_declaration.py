@@ -69,9 +69,7 @@ def entity_header(oObject, iObject, lObjects, dVars):
         [ formal_port_clause ]
     '''
     if not dVars['bPortClauseKeywordFound']:
-        generic_clause.beginning(oObject, iObject, lObjects, dVars)
-        if dVars['bGenericClauseOpenParenthesisFound']:
-            generic_clause.ending(oObject, iObject, lObjects, dVars)
+        generic_clause.tokenize(oObject, iObject, lObjects, dVars)
     if not dVars['bGenericClauseKeywordFound']:
         port_clause.tokenize(oObject, iObject, lObjects, dVars)
 
