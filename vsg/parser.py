@@ -356,60 +356,6 @@ class use_semicolon(semicolon):
     def __init__(self):
         semicolon.__init__(self)
 
-###############################################################################
-# File objects
-###############################################################################
-
-class file_keyword(keyword):
-
-    def __init__(self, sString):
-        keyword.__init__(self, sString)
-
-class file_identifier(identifier):
-
-    def __init__(self, sString):
-        identifier.__init__(self, sString)
-
-class file_comma(comma):
-
-    def __init__(self):
-        comma.__init__(self)
-
-class file_colon(colon):
-
-    def __init__(self):
-        colon.__init__(self)
-
-class file_subtype_indication(subtype_indication):
-
-    def __init__(self, sString):
-        subtype_indication.__init__(self, sString)
-
-class file_open_keyword(keyword):
-
-    def __init__(self, sString):
-        keyword.__init__(self, sString)
-
-class file_open_kind_expression(expression):
-
-    def __init__(self, sString):
-        expression.__init__(self, sString)
-
-class file_is_keyword(keyword):
-
-    def __init__(self, sString):
-        keyword.__init__(self, sString)
-
-class file_logical_name(logical_name):
-
-    def __init__(self, sString):
-        logical_name.__init__(self, sString)
-
-class file_semicolon(semicolon):
-
-    def __init__(self):
-        semicolon.__init__(self)
-
 
 ###############################################################################
 # Variable objects

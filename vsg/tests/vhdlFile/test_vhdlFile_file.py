@@ -3,7 +3,7 @@ import os
 import unittest
 from vsg import vhdlFile
 from vsg.tests import utils
-from vsg import parser
+from vsg.token import file_declaration
 
 lFileFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','file_statement','file_test_input.vhd'))
 oFileFile = vhdlFile.vhdlFile(lFileFile)
@@ -59,7 +59,7 @@ class testVhdlFileFileFileMethods(unittest.TestCase):
         lExpected.append((6,0))
         lExpected.append((8,0))
 
-        utils.validate_token(self, oFile, lExpected, parser.file_keyword)
+        utils.validate_token(self, oFile, lExpected, file_declaration.keyword)
 
     def test_file_identifier(self):
         lExpected = []
@@ -70,14 +70,14 @@ class testVhdlFileFileFileMethods(unittest.TestCase):
         lExpected.append((8,5))
         lExpected.append((8,8))
 
-        utils.validate_token(self, oFile, lExpected, parser.file_identifier)
+        utils.validate_token(self, oFile, lExpected, file_declaration.identifier)
 
     def test_file_comma(self):
         lExpected = []
         lExpected.append((8,3))
         lExpected.append((8,6))
 
-        utils.validate_token(self, oFile, lExpected, parser.file_comma)
+        utils.validate_token(self, oFile, lExpected, file_declaration.comma)
 
     def test_file_colon(self):
         lExpected = []
@@ -86,7 +86,7 @@ class testVhdlFileFileFileMethods(unittest.TestCase):
         lExpected.append((6,4))
         lExpected.append((8,10))
 
-        utils.validate_token(self, oFile, lExpected, parser.file_colon)
+        utils.validate_token(self, oFile, lExpected, file_declaration.colon)
 
     def test_file_subtype_indication(self):
         lExpected = []
@@ -95,21 +95,21 @@ class testVhdlFileFileFileMethods(unittest.TestCase):
         lExpected.append((6,6))
         lExpected.append((8,12))
 
-        utils.validate_token(self, oFile, lExpected, parser.file_subtype_indication)
+        utils.validate_token(self, oFile, lExpected, file_declaration.subtype_indication)
 
     def test_file_open_keyword(self):
         lExpected = []
         lExpected.append((6,8))
         lExpected.append((8,14))
 
-        utils.validate_token(self, oFile, lExpected, parser.file_open_keyword)
+        utils.validate_token(self, oFile, lExpected, file_declaration.open_keyword)
 
     def test_file_open_kind_expression(self):
         lExpected = []
         lExpected.append((6,10))
         lExpected.append((8,16))
 
-        utils.validate_token(self, oFile, lExpected, parser.file_open_kind_expression)
+        utils.validate_token(self, oFile, lExpected, file_declaration.open_kind_expression)
 
     def test_file_is_keyword(self):
         lExpected = []
@@ -117,7 +117,7 @@ class testVhdlFileFileFileMethods(unittest.TestCase):
         lExpected.append((6,12))
         lExpected.append((8,18))
 
-        utils.validate_token(self, oFile, lExpected, parser.file_is_keyword)
+        utils.validate_token(self, oFile, lExpected, file_declaration.is_keyword)
 
     def test_file_logical_name(self):
         lExpected = []
@@ -125,7 +125,7 @@ class testVhdlFileFileFileMethods(unittest.TestCase):
         lExpected.append((6,14))
         lExpected.append((8,20))
 
-        utils.validate_token(self, oFile, lExpected, parser.file_logical_name)
+        utils.validate_token(self, oFile, lExpected, file_declaration.logical_name)
 
     def test_semicolon(self):
         lExpected = []
@@ -134,5 +134,5 @@ class testVhdlFileFileFileMethods(unittest.TestCase):
         lExpected.append((6,15))
         lExpected.append((8,21))
 
-        utils.validate_token(self, oFile, lExpected, parser.file_semicolon)
+        utils.validate_token(self, oFile, lExpected, file_declaration.semicolon)
 
