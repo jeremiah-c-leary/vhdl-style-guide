@@ -24,6 +24,7 @@ class testVhdlFileMethods(unittest.TestCase):
         # Compare
         self.assertEqual(lActual, lExpected)
 
+    @unittest.skip('need to refactor into token')
     def test_shared_keyword(self):
         lExpected = []
         lExpected.append((9,0))
@@ -32,6 +33,7 @@ class testVhdlFileMethods(unittest.TestCase):
 
         utils.validate_token(self, oFile, lExpected, parser.variable_shared_keyword)
 
+    @unittest.skip('need to refactor into token')
     def test_variable_keyword(self):
         lExpected = []
         lExpected.append((3,0))
@@ -44,6 +46,7 @@ class testVhdlFileMethods(unittest.TestCase):
 
         utils.validate_token(self, oFile, lExpected, parser.variable_keyword)
 
+    @unittest.skip('need to refactor into token')
     def test_variable_identifier(self):
         lExpected = []
         lExpected.append((3,2))
@@ -60,6 +63,7 @@ class testVhdlFileMethods(unittest.TestCase):
 
         utils.validate_token(self, oFile, lExpected, parser.variable_identifier)
 
+    @unittest.skip('need to refactor into token')
     def test_variable_comma(self):
         lExpected = []
         lExpected.append((11,5))
@@ -69,6 +73,7 @@ class testVhdlFileMethods(unittest.TestCase):
 
         utils.validate_token(self, oFile, lExpected, parser.variable_comma)
 
+    @unittest.skip('need to refactor into token')
     def test_variable_colon(self):
         lExpected = []
         lExpected.append((3,3))
@@ -81,6 +86,7 @@ class testVhdlFileMethods(unittest.TestCase):
 
         utils.validate_token(self, oFile, lExpected, parser.variable_colon)
 
+    @unittest.skip('need to refactor into token')
     def test_variable_subtype_indication(self):
         lExpected = []
         lExpected.append((3,5))
@@ -106,6 +112,7 @@ class testVhdlFileMethods(unittest.TestCase):
 
         utils.validate_token(self, oFile, lExpected, parser.variable_subtype_indication)
 
+    @unittest.skip('need to refactor into token')
     def test_variable_assignment_operator(self):
         lExpected = []
         lExpected.append((3,15))
@@ -113,6 +120,7 @@ class testVhdlFileMethods(unittest.TestCase):
 
         utils.validate_token(self, oFile, lExpected, parser.variable_assignment_operator)
 
+    @unittest.skip('need to refactor into token')
     def test_variable_assignment_expression(self):
         lExpected = []
         lExpected.append((3,17))
@@ -120,6 +128,7 @@ class testVhdlFileMethods(unittest.TestCase):
 
         utils.validate_token(self, oFile, lExpected, parser.variable_assignment_expression)
 
+    @unittest.skip('need to refactor into token')
     def test_semicolon(self):
         lExpected = []
         lExpected.append((3,18))

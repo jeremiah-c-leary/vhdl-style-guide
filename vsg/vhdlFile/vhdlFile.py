@@ -96,6 +96,10 @@ class vhdlFile():
         dVars['bVariableColonFound'] = False
         dVars['bVariableAssignmentOperatorFound'] = False
 
+        dVars['bSharedVariableKeywordFound'] = False
+        dVars['bSharedVariableColonFound'] = False
+        dVars['bSharedVariableAssignmentOperatorFound'] = False
+
         dVars['bAssertKeywordFound'] = False
         dVars['bAssertReportKeywordFound'] = False
         dVars['bAssertSeverityKeywordFound'] = False

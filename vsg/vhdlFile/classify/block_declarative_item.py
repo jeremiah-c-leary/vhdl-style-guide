@@ -3,6 +3,7 @@ from vsg.vhdlFile.classify import attribute_declaration
 from vsg.vhdlFile.classify import constant_declaration
 from vsg.vhdlFile.classify import file_declaration
 from vsg.vhdlFile.classify import signal_declaration
+from vsg.vhdlFile.classify import shared_variable_declaration
 
 def tokenize(oObject, iObject, lObjects, dVars):
     '''
@@ -35,6 +36,8 @@ def tokenize(oObject, iObject, lObjects, dVars):
     if constant_declaration.tokenize(oObject, iObject, lObjects, dVars):
         return True
     if signal_declaration.tokenize(oObject, iObject, lObjects, dVars):
+        return True
+    if shared_variable_declaration.tokenize(oObject, iObject, lObjects, dVars):
         return True
     if file_declaration.tokenize(oObject, iObject, lObjects, dVars):
         return True
