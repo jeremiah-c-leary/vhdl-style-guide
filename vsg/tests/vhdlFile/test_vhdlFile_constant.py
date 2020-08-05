@@ -4,6 +4,8 @@ import unittest
 from vsg import vhdlFile
 from vsg.tests import utils
 from vsg import parser
+from vsg.token import constant_declaration
+
 
 lFileConstant = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','constant','constant_test_input.vhd'))
 oFileConstant = vhdlFile.vhdlFile(lFileConstant)
@@ -67,7 +69,7 @@ class testVhdlFileConstantMethods(unittest.TestCase):
         lActual = []
         for iLine, lLine in enumerate(oFile.get_lines()):
             for iItem, oItem in enumerate(lLine.objects):
-                if isinstance(oItem, parser.constant_keyword):
+                if isinstance(oItem, constant_declaration.keyword):
                     lActual.append((iLine, iItem))
 
         self.assertEqual(lExpected, lActual)
@@ -90,7 +92,7 @@ class testVhdlFileConstantMethods(unittest.TestCase):
         lActual = []
         for iLine, lLine in enumerate(oFile.get_lines()):
             for iItem, oItem in enumerate(lLine.objects):
-                if isinstance(oItem, parser.constant_identifier):
+                if isinstance(oItem, constant_declaration.identifier):
                     lActual.append((iLine, iItem))
 
         self.assertEqual(lExpected, lActual)
@@ -107,7 +109,7 @@ class testVhdlFileConstantMethods(unittest.TestCase):
         lActual = []
         for iLine, lLine in enumerate(oFile.get_lines()):
             for iItem, oItem in enumerate(lLine.objects):
-                if isinstance(oItem, parser.constant_comma):
+                if isinstance(oItem, constant_declaration.comma):
                     lActual.append((iLine, iItem))
 
         self.assertEqual(lExpected, lActual)
@@ -124,7 +126,7 @@ class testVhdlFileConstantMethods(unittest.TestCase):
         lActual = []
         for iLine, lLine in enumerate(oFile.get_lines()):
             for iItem, oItem in enumerate(lLine.objects):
-                if isinstance(oItem, parser.constant_colon):
+                if isinstance(oItem, constant_declaration.colon):
                     lActual.append((iLine, iItem))
 
         self.assertEqual(lExpected, lActual)
@@ -161,7 +163,7 @@ class testVhdlFileConstantMethods(unittest.TestCase):
         lActual = []
         for iLine, lLine in enumerate(oFile.get_lines()):
             for iItem, oItem in enumerate(lLine.objects):
-                if isinstance(oItem, parser.constant_subtype_indication):
+                if isinstance(oItem, constant_declaration.subtype_indication):
                     lActual.append((iLine, iItem))
 
         self.assertEqual(lExpected, lActual)
@@ -176,7 +178,7 @@ class testVhdlFileConstantMethods(unittest.TestCase):
         lActual = []
         for iLine, lLine in enumerate(oFile.get_lines()):
             for iItem, oItem in enumerate(lLine.objects):
-                if isinstance(oItem, parser.constant_assignment_operator):
+                if isinstance(oItem, constant_declaration.assignment_operator):
                     lActual.append((iLine, iItem))
 
         self.assertEqual(lExpected, lActual)
@@ -191,7 +193,7 @@ class testVhdlFileConstantMethods(unittest.TestCase):
         lActual = []
         for iLine, lLine in enumerate(oFile.get_lines()):
             for iItem, oItem in enumerate(lLine.objects):
-                if isinstance(oItem, parser.constant_assignment_expression):
+                if isinstance(oItem, constant_declaration.assignment_expression):
                     lActual.append((iLine, iItem))
 
         self.assertEqual(lExpected, lActual)
@@ -208,7 +210,7 @@ class testVhdlFileConstantMethods(unittest.TestCase):
         lActual = []
         for iLine, lLine in enumerate(oFile.get_lines()):
             for iItem, oItem in enumerate(lLine.objects):
-                if isinstance(oItem, parser.constant_semicolon):
+                if isinstance(oItem, constant_declaration.semicolon):
                     lActual.append((iLine, iItem))
 
         self.assertEqual(lExpected, lActual)

@@ -1,4 +1,5 @@
 
+from vsg.vhdlFile.classify import constant_declaration
 from vsg.vhdlFile.classify import signal_declaration
 
 def tokenize(oObject, iObject, lObjects, dVars):
@@ -29,5 +30,7 @@ def tokenize(oObject, iObject, lObjects, dVars):
        | PSL_Sequence_Declaration
        | PSL_Clock_Declaration
     '''
+    if constant_declaration.tokenize(oObject, iObject, lObjects, dVars):
+        return True
     if signal_declaration.tokenize(oObject, iObject, lObjects, dVars):
         return True

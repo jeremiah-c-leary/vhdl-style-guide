@@ -1,21 +1,21 @@
 
 from vsg import parser
-from vsg.token import signal_declaration
+from vsg.token import constant_declaration
 
 
 def tokenize(oObject, iObject, lObjects, dVars):
     '''
-    signal identifier { , identifier } : subtype_indication [ signal kind ] [ := expression ] ;
+    constant identifier { , identifier } : subtype_indication [ constant kind ] [ := expression ] ;
   
     '''
-    if not dVars['bSignalKeywordFound']:
+    if not dVars['bConstantKeywordFound']:
 
         if classify_keyword(oObject, iObject, lObjects, dVars):
             return True
 
     else:
 
-        if not dVars['bSignalColonFound']:
+        if not dVars['bConstantColonFound']:
 
             if classify_colon(oObject, iObject, lObjects, dVars):
                 return True
@@ -31,12 +31,12 @@ def tokenize(oObject, iObject, lObjects, dVars):
             if classify_semicolon(oObject, iObject, lObjects, dVars):
                 return True
 
-            if not dVars['bSignalAssignmentOperatorFound']:
+            if not dVars['bConstantAssignmentOperatorFound']:
 
                 if classify_assignment_operator(oObject, iObject, lObjects, dVars):
                     return True
 
-                if classify_signal_kind(oObject, iObject, lObjects):
+                if classify_constant_kind(oObject, iObject, lObjects):
                     return True
 
                 if classify_subtype_indication(oObject, iObject, lObjects):
@@ -52,75 +52,75 @@ def tokenize(oObject, iObject, lObjects, dVars):
 
 def classify_keyword(oObject, iObject, lObjects, dVars):
     sValue = oObject.get_value()
-    if sValue.lower() == 'signal':
-        lObjects[iObject] = signal_declaration.keyword(sValue)
-        dVars['bSignalKeywordFound'] = True 
+    if sValue.lower() == 'constant':
+        lObjects[iObject] = constant_declaration.keyword(sValue)
+        dVars['bConstantKeywordFound'] = True 
         return True
     return False
 
 
 def classify_identifier(oObject, iObject, lObjects):
     if type(oObject) == parser.item:
-        lObjects[iObject] = signal_declaration.identifier(oObject.get_value())
+        lObjects[iObject] = constant_declaration.identifier(oObject.get_value())
         return True
     return False
 
 
 def classify_comma(oObject, iObject, lObjects):
     if oObject.get_value() == ',':
-        lObjects[iObject] = signal_declaration.comma()
+        lObjects[iObject] = constant_declaration.comma()
         return True
     return False
 
 
 def classify_colon(oObject, iObject, lObjects, dVars):
     if oObject.get_value() == ':':
-        lObjects[iObject] = signal_declaration.colon()
-        dVars['bSignalColonFound'] = True
+        lObjects[iObject] = constant_declaration.colon()
+        dVars['bConstantColonFound'] = True
         return True
     return False
 
 
 def classify_subtype_indication(oObject, iObject, lObjects):
     if type(oObject) == parser.item:
-        lObjects[iObject] = signal_declaration.subtype_indication(oObject.get_value())
+        lObjects[iObject] = constant_declaration.subtype_indication(oObject.get_value())
         return True
     return False
 
 
-def classify_signal_kind(oObject, iObject, lObjects):
+def classify_constant_kind(oObject, iObject, lObjects):
     if type(oObject) == parser.item:
         sValue = oObject.get_value()
         if sValue.lower() == 'bus' or sValue.lower() == 'register':
-            lObjects[iObject] = signal_declaration.signal_kind(oObject.get_value())
+            lObjects[iObject] = constant_declaration.constant_kind(oObject.get_value())
             return True
     return False
 
 
 def classify_assignment_operator(oObject, iObject, lObjects, dVars):
     if oObject.get_value() == ':=':
-        lObjects[iObject] = signal_declaration.assignment_operator()
-        dVars['bSignalAssignmentOperatorFound'] = True
+        lObjects[iObject] = constant_declaration.assignment_operator()
+        dVars['bConstantAssignmentOperatorFound'] = True
         return True
     return False
 
 
 def classify_assignment_expression(oObject, iObject, lObjects):
     if type(oObject) == parser.item:
-        lObjects[iObject] = signal_declaration.assignment_expression(oObject.get_value)
+        lObjects[iObject] = constant_declaration.assignment_expression(oObject.get_value)
         return True
     return False
 
 
 def classify_semicolon(oObject, iObject, lObjects, dVars):
     if oObject.get_value() == ';':
-        lObjects[iObject] = signal_declaration.semicolon()
+        lObjects[iObject] = constant_declaration.semicolon()
         clear_flags(dVars)
         return True
     return False
 
 
 def clear_flags(dVars):
-        dVars['bSignalKeywordFound'] = False
-        dVars['bSignalColonFound'] = False
-        dVars['bSignalAssignmentOperatorFound'] = False
+        dVars['bConstantKeywordFound'] = False
+        dVars['bConstantColonFound'] = False
+        dVars['bConstantAssignmentOperatorFound'] = False
