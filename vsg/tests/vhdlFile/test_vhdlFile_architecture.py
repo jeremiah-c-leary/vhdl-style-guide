@@ -3,7 +3,7 @@ import os
 import unittest
 from vsg import vhdlFile
 from vsg.tests import utils
-from vsg import parser
+from vsg.token import architecture_body
 
 
 lFileArchitecture = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','architecture','architecture_test_input.vhd'))
@@ -99,7 +99,7 @@ class testVhdlFileMethods(unittest.TestCase):
         lActual = []
         for iLine, lLine in enumerate(oFile.get_lines()):
             for iItem, oItem in enumerate(lLine.objects):
-                if isinstance(oItem, parser.architecture_keyword):
+                if isinstance(oItem, architecture_body.keyword):
                     lActual.append((iLine, iItem))
 
         self.assertEqual(lExpected, lActual)
@@ -114,7 +114,7 @@ class testVhdlFileMethods(unittest.TestCase):
         lActual = []
         for iLine, lLine in enumerate(oFile.get_lines()):
             for iItem, oItem in enumerate(lLine.objects):
-                if isinstance(oItem, parser.architecture_semicolon):
+                if isinstance(oItem, architecture_body.semicolon):
                     lActual.append((iLine, iItem))
 
         self.assertEqual(lExpected, lActual)
@@ -129,7 +129,7 @@ class testVhdlFileMethods(unittest.TestCase):
         lActual = []
         for iLine, lLine in enumerate(oFile.get_lines()):
             for iItem, oItem in enumerate(lLine.objects):
-                if isinstance(oItem, parser.architecture_end_keyword):
+                if isinstance(oItem, architecture_body.end_keyword):
                     lActual.append((iLine, iItem))
 
         self.assertEqual(lExpected, lActual)
@@ -143,7 +143,7 @@ class testVhdlFileMethods(unittest.TestCase):
         lActual = []
         for iLine, lLine in enumerate(oFile.get_lines()):
             for iItem, oItem in enumerate(lLine.objects):
-                if isinstance(oItem, parser.architecture_end_architecture_keyword):
+                if isinstance(oItem, architecture_body.end_architecture_keyword):
                     lActual.append((iLine, iItem))
 
         self.assertEqual(lExpected, lActual)
@@ -156,7 +156,7 @@ class testVhdlFileMethods(unittest.TestCase):
         lActual = []
         for iLine, lLine in enumerate(oFile.get_lines()):
             for iItem, oItem in enumerate(lLine.objects):
-                if isinstance(oItem, parser.architecture_simple_name):
+                if isinstance(oItem, architecture_body.simple_name):
                     lActual.append((iLine, iItem))
 
         self.assertEqual(lExpected, lActual)
@@ -171,7 +171,7 @@ class testVhdlFileMethods(unittest.TestCase):
         lActual = []
         for iLine, lLine in enumerate(oFile.get_lines()):
             for iItem, oItem in enumerate(lLine.objects):
-                if isinstance(oItem, parser.architecture_identifier):
+                if isinstance(oItem, architecture_body.identifier):
                     lActual.append((iLine, iItem))
 
         self.assertEqual(lExpected, lActual)
@@ -186,7 +186,7 @@ class testVhdlFileMethods(unittest.TestCase):
         lActual = []
         for iLine, lLine in enumerate(oFile.get_lines()):
             for iItem, oItem in enumerate(lLine.objects):
-                if isinstance(oItem, parser.architecture_of_keyword):
+                if isinstance(oItem, architecture_body.of_keyword):
                     lActual.append((iLine, iItem))
 
         self.assertEqual(lExpected, lActual)
@@ -201,7 +201,7 @@ class testVhdlFileMethods(unittest.TestCase):
         lActual = []
         for iLine, lLine in enumerate(oFile.get_lines()):
             for iItem, oItem in enumerate(lLine.objects):
-                if isinstance(oItem, parser.architecture_entity_name):
+                if isinstance(oItem, architecture_body.entity_name):
                     lActual.append((iLine, iItem))
 
         self.assertEqual(lExpected, lActual)
@@ -216,7 +216,7 @@ class testVhdlFileMethods(unittest.TestCase):
         lActual = []
         for iLine, lLine in enumerate(oFile.get_lines()):
             for iItem, oItem in enumerate(lLine.objects):
-                if isinstance(oItem, parser.architecture_is_keyword):
+                if isinstance(oItem, architecture_body.is_keyword):
                     lActual.append((iLine, iItem))
 
         self.assertEqual(lExpected, lActual)
@@ -231,7 +231,7 @@ class testVhdlFileMethods(unittest.TestCase):
         lActual = []
         for iLine, lLine in enumerate(oFile.get_lines()):
             for iItem, oItem in enumerate(lLine.objects):
-                if isinstance(oItem, parser.architecture_begin_keyword):
+                if isinstance(oItem, architecture_body.begin_keyword):
                     lActual.append((iLine, iItem))
 
         self.assertEqual(lExpected, lActual)

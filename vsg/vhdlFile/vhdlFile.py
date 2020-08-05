@@ -6,6 +6,7 @@ from vsg.vhdlFile import update
 from vsg.vhdlFile import classify
 from vsg.vhdlFile.classify import entity
 from vsg.vhdlFile.classify import entity_declaration
+from vsg.vhdlFile.classify import architecture_body
 
 from vsg import parser
 
@@ -153,6 +154,7 @@ class vhdlFile():
 
             for iObject, oObject in enumerate(lObjects):
                 entity_declaration.tokenize(oObject, iObject, lObjects, dVars)
+                architecture_body.tokenize(oObject, iObject, lObjects, dVars)
 
 
 
