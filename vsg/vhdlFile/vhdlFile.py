@@ -164,8 +164,7 @@ class vhdlFile():
             classify.block(self, dVars, oLine)
             classify.package(self, dVars, lTokens, lObjects, oLine)
             classify.component(dVars, lTokens, lObjects, oLine)
-            if not dVars['bPortClauseKeywordFound']:
-                classify.signal(self, dVars, lTokens, lObjects, oLine)
+            classify.signal(self, dVars, oLine)
             classify.constant(self, dVars, lTokens, lObjects, oLine, oLinePrevious)
             classify.variable(self, dVars, lTokens, lObjects, oLine)
             classify.procedure(dVars, oLine, oLinePrevious)

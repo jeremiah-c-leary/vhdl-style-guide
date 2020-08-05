@@ -3,6 +3,8 @@ import os
 import pprint
 import yaml
 
+from vsg import parser
+
 
 def debug_lines(oFile, iLineNumber, iNumberOfLines):
 
@@ -89,3 +91,12 @@ def validate_token(self, oFile, lExpected, oToken, bDebug=False):
 
         self.assertEqual(lExpected, lActual)
 
+def print_objects(oFile, bIgnoreWhiteSpace=False):
+    for oLine in oFile.lines:
+        print('-'*80)
+        print(f'{oLine.line}')
+        for oObject in oLine.objects:
+            if bIgnoreWhiteSpace:
+                if type(oObject) == parser.whitespace:
+                    continue
+            print(oObject)
