@@ -32,6 +32,8 @@ def tokenize(oObject, iObject, lObjects, dVars):
             if classify_type_mark(oObject, iObject, lObjects):
                 return True 
 
+    return False
+
 
 def classify_keyword(oObject, iObject, lObjects, dVars):
     sValue = oObject.get_value()
