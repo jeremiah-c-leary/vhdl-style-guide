@@ -7,6 +7,9 @@ from vsg.vhdlFile import classify
 from vsg.vhdlFile.classify import entity
 from vsg.vhdlFile.classify import entity_declaration
 from vsg.vhdlFile.classify import architecture_body
+from vsg.vhdlFile.classify import use_clause
+
+from vsg.token import use_clause as use_clause_token
 
 from vsg import parser
 
@@ -64,6 +67,7 @@ class vhdlFile():
         dVars['bInsideLibrary'] = False
 
         dVars['bInsideUse'] = False
+        dVars['bUseClauseKeywordFound'] = False
 
         dVars['bArchitectureKeywordFound'] = False
         dVars['bArchitectureIdentifierFound'] = False
@@ -143,6 +147,13 @@ class vhdlFile():
             classify.blank(oLine) # lTokens
             classify.whitespace(lTokens, lObjects)
             classify.comment(dVars, lTokens, lObjects, oLine)
+
+            for iObject, oObject in enumerate(lObjects):
+                use_clause.tokenize(oObject, iObject, lObjects, dVars)
+                entity_declaration.tokenize(oObject, iObject, lObjects, dVars)
+                architecture_body.tokenize(oObject, iObject, lObjects, dVars)
+
+
             classify.library(dVars, lTokens, lObjects, oLine)
             classify.use(dVars, lTokens, lObjects, oLine)
             classify.context(self, dVars, lTokens, lObjects, oLine)
@@ -155,10 +166,6 @@ class vhdlFile():
             classify.generic(dVars, oLine) #lTokens
 
 
-
-            for iObject, oObject in enumerate(lObjects):
-                entity_declaration.tokenize(oObject, iObject, lObjects, dVars)
-                architecture_body.tokenize(oObject, iObject, lObjects, dVars)
 
 
 
@@ -338,7 +345,7 @@ class vhdlFile():
                     oLine.indentLevel = 1
                 else:
                     oLine.indentLevel = 0
-            if _does_line_start_with_item_or_whitespace_and_then_item(oLine, parser.use_keyword):
+            if _does_line_start_with_item_or_whitespace_and_then_item(oLine, use_clause_token.keyword):
                 if dIndent['insideContextDeclaration']:
                     oLine.indentLevel = 2
                 else:

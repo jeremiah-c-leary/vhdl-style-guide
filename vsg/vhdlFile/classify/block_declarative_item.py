@@ -4,6 +4,7 @@ from vsg.vhdlFile.classify import constant_declaration
 from vsg.vhdlFile.classify import file_declaration
 from vsg.vhdlFile.classify import signal_declaration
 from vsg.vhdlFile.classify import shared_variable_declaration
+from vsg.vhdlFile.classify import use_clause
 
 def tokenize(oObject, iObject, lObjects, dVars):
     '''
@@ -42,4 +43,6 @@ def tokenize(oObject, iObject, lObjects, dVars):
     if file_declaration.tokenize(oObject, iObject, lObjects, dVars):
         return True
     if attribute_declaration.tokenize(oObject, iObject, lObjects, dVars):
+        return True
+    if use_clause.tokenize(oObject, iObject, lObjects, dVars):
         return True

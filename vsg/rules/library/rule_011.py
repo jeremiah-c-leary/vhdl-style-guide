@@ -1,5 +1,5 @@
 
-from vsg import parser
+from vsg.token import use_clause
 from vsg.rules import move_item_and_items_to_the_right_to_next_line_rule
 
 
@@ -10,6 +10,6 @@ class rule_011(move_item_and_items_to_the_right_to_next_line_rule):
     '''
 
     def __init__(self):
-        move_item_and_items_to_the_right_to_next_line_rule.__init__(self, 'library', '011', parser.use_keyword)
-        self.regionBegin = parser.use_keyword
-        self.regionEnd = parser.use_semicolon
+        move_item_and_items_to_the_right_to_next_line_rule.__init__(self, 'library', '011', use_clause.keyword)
+        self.regionBegin = use_clause.keyword
+        self.regionEnd = use_clause.semicolon

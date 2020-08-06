@@ -337,27 +337,6 @@ class library_semicolon(semicolon):
         semicolon.__init__(self)
 
 ###############################################################################
-# Use objects
-###############################################################################
-
-
-class use_keyword(keyword):
-
-    def __init__(self, sString):
-        keyword.__init__(self, sString)
-
-class use_selected_name(selected_name):
-
-    def __init__(self, sString):
-        selected_name.__init__(self, sString)
-
-class use_semicolon(semicolon):
-
-    def __init__(self):
-        semicolon.__init__(self)
-
-
-###############################################################################
 # Variable objects
 ###############################################################################
 

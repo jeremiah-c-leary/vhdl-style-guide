@@ -1,5 +1,6 @@
 
 from vsg import parser
+from vsg.token import use_clause
 
 
 def context(self, dVars, lTokens, lObjects, oLine):
@@ -150,7 +151,7 @@ def classify_context_reference_comma(sToken, iToken, lObjects, dVars):
 
 
 def classify_context_reference_semicolon(sToken, iToken, lObjects, dVars):
-    if sToken == ';' and not isinstance(lObjects[iToken], parser.library_semicolon) and not isinstance(lObjects[iToken], parser.use_semicolon) and not dVars['bContextEndFound']:
+    if sToken == ';' and not isinstance(lObjects[iToken], parser.library_semicolon) and not isinstance(lObjects[iToken], use_clause.semicolon) and not dVars['bContextEndFound']:
         lObjects[iToken] = parser.context_reference_semicolon()
         return True
     return False
