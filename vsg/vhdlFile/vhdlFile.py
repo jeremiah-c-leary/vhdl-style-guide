@@ -4,10 +4,8 @@ import re
 from vsg import line
 from vsg.vhdlFile import update
 from vsg.vhdlFile import classify
+from vsg.vhdlFile.classify import design_file
 from vsg.vhdlFile.classify import entity
-from vsg.vhdlFile.classify import entity_declaration
-from vsg.vhdlFile.classify import architecture_body
-from vsg.vhdlFile.classify import use_clause
 
 from vsg.token import use_clause as use_clause_token
 
@@ -149,9 +147,10 @@ class vhdlFile():
             classify.comment(dVars, lTokens, lObjects, oLine)
 
             for iObject, oObject in enumerate(lObjects):
-                use_clause.tokenize(oObject, iObject, lObjects, dVars)
-                entity_declaration.tokenize(oObject, iObject, lObjects, dVars)
-                architecture_body.tokenize(oObject, iObject, lObjects, dVars)
+                design_file.tokenize(oObject, iObject, lObjects, dVars)
+#                use_clause.tokenize(oObject, iObject, lObjects, dVars)
+#                entity_declaration.tokenize(oObject, iObject, lObjects, dVars)
+#                architecture_body.tokenize(oObject, iObject, lObjects, dVars)
 
 
             classify.library(dVars, lTokens, lObjects, oLine)
