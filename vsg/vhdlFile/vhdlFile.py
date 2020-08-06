@@ -8,6 +8,8 @@ from vsg.vhdlFile.classify import design_file
 from vsg.vhdlFile.classify import entity
 
 from vsg.token import use_clause as use_clause_token
+from vsg.token import package_declaration
+from vsg.token import package_body
 
 from vsg import parser
 
@@ -86,6 +88,12 @@ class vhdlFile():
         dVars['bPackageEndKeywordFound'] = False
         dVars['bPackageBodyKeywordFound'] = False
 
+        dVars['bPackageBodyPackageKeywordFound'] = False
+        dVars['bPackageBodyIdentifierFound'] = False
+        dVars['bPackageBodyIsKeywordFound'] = False
+        dVars['bPackageBodyEndKeywordFound'] = False
+        dVars['bPackageBodyBodyKeywordFound'] = False
+
         dVars['bSignalKeywordFound'] = False
         dVars['bSignalColonFound'] = False
         dVars['bSignalAssignmentOperatorFound'] = False
@@ -130,6 +138,8 @@ class vhdlFile():
         dVars['bInterfaceSignalDeclarationAssignmentOperatorFound'] = False
         dVars['bInterfaceSignalDeclarationColonFound'] = False
 
+        dVars['objectQueue'] = []
+
         oLinePrevious = line.blank_line()
 
         for sLine in self.filecontent:
@@ -170,7 +180,7 @@ class vhdlFile():
 
             classify.concurrent(dVars, oLine)
             classify.architecture(self, dVars, lTokens, lObjects, oLine)
-            classify.package_body(dVars, oLine) # lTokens
+            classify.package_body_old(dVars, oLine) # lTokens
             classify.block(self, dVars, oLine)
             classify.package(self, dVars, lTokens, lObjects, oLine)
             classify.component(dVars, lTokens, lObjects, oLine)
@@ -219,6 +229,7 @@ class vhdlFile():
 #            print(lObjects)
 #            print('[' + preIndent + '][' + oLine.line + '][' + str(oLine.indentLevel) + ']')
         self.set_indent_levels()
+        self.classify_package_keywords()
 
 
     def update_filecontent(self):
@@ -349,6 +360,30 @@ class vhdlFile():
                     oLine.indentLevel = 2
                 else:
                     oLine.indentLevel = 1
+
+    def classify_package_keywords(self):
+        '''
+        Assigns the correct package object to the package keywords.
+        '''
+        bPackageIdentifierFound = False
+        bPackageBodyBodyKeywordFound = False
+        for iLine, oLine in enumerate(self.lines[::-1]):
+            for iObject, oObject in enumerate(oLine.objects[::-1]):
+                if type(oObject) == parser.item and bPackageIdentifierFound:
+                    iIndex = len(oLine.objects) - iObject - 1
+                    oLine.objects[iIndex] = package_declaration.keyword(oObject.get_value())
+                    bPackageIdentifierFound = False                
+
+                if type(oObject) == package_declaration.identifier and not bPackageIdentifierFound:
+                    bPackageIdentifierFound = True
+
+                if type(oObject) == parser.item and bPackageBodyBodyKeywordFound:
+                    iIndex = len(oLine.objects) - iObject - 1
+                    oLine.objects[iIndex] = package_body.package_keyword(oObject.get_value())
+                    bPackageBodyBodyKeywordFound = False                
+
+                if type(oObject) == package_body.body_keyword and not bPackageBodyBodyKeywordFound:
+                    bPackageBodyBodyKeywordFound = True
 
 
 def _create_empty_return_dictionary():

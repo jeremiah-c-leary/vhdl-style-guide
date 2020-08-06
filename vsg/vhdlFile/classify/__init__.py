@@ -20,7 +20,7 @@ from .generic import generic
 from .if_statement import if_statement
 from .instantiation import instantiation
 from .library import library
-from .package_body import package_body
+from .package_body_old import package_body_old
 from .package import package
 from .port import port
 #from .port_clause import port_clause

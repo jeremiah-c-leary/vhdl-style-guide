@@ -3,7 +3,7 @@ import os
 import unittest
 from vsg import vhdlFile
 from vsg.tests import utils
-from vsg import parser
+from vsg.token import package_declaration
 
 
 lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','package','classification_test_input.vhd'))
@@ -21,7 +21,7 @@ class test_package_parsing(unittest.TestCase):
         lActual = []
         for iLine, lLine in enumerate(oFile.get_lines()):
             for iItem, oItem in enumerate(lLine.objects):
-                if isinstance(oItem, parser.package_keyword):
+                if isinstance(oItem, package_declaration.keyword):
                     lActual.append((iLine, iItem))
 
         self.assertEqual(lExpected, lActual)
@@ -36,7 +36,7 @@ class test_package_parsing(unittest.TestCase):
         lActual = []
         for iLine, lLine in enumerate(oFile.get_lines()):
             for iItem, oItem in enumerate(lLine.objects):
-                if isinstance(oItem, parser.package_semicolon):
+                if isinstance(oItem, package_declaration.semicolon):
                     lActual.append((iLine, iItem))
 
         self.assertEqual(lExpected, lActual)
@@ -51,7 +51,7 @@ class test_package_parsing(unittest.TestCase):
         lActual = []
         for iLine, lLine in enumerate(oFile.get_lines()):
             for iItem, oItem in enumerate(lLine.objects):
-                if isinstance(oItem, parser.package_end_keyword):
+                if isinstance(oItem, package_declaration.end_keyword):
                     lActual.append((iLine, iItem))
 
         self.assertEqual(lExpected, lActual)
@@ -65,7 +65,7 @@ class test_package_parsing(unittest.TestCase):
         lActual = []
         for iLine, lLine in enumerate(oFile.get_lines()):
             for iItem, oItem in enumerate(lLine.objects):
-                if isinstance(oItem, parser.package_end_package_keyword):
+                if isinstance(oItem, package_declaration.end_package_keyword):
                     lActual.append((iLine, iItem))
 
         self.assertEqual(lExpected, lActual)
@@ -78,7 +78,7 @@ class test_package_parsing(unittest.TestCase):
         lActual = []
         for iLine, lLine in enumerate(oFile.get_lines()):
             for iItem, oItem in enumerate(lLine.objects):
-                if isinstance(oItem, parser.package_simple_name):
+                if isinstance(oItem, package_declaration.simple_name):
                     lActual.append((iLine, iItem))
 
         self.assertEqual(lExpected, lActual)
@@ -93,7 +93,7 @@ class test_package_parsing(unittest.TestCase):
         lActual = []
         for iLine, lLine in enumerate(oFile.get_lines()):
             for iItem, oItem in enumerate(lLine.objects):
-                if isinstance(oItem, parser.package_identifier):
+                if isinstance(oItem, package_declaration.identifier):
                     lActual.append((iLine, iItem))
 
         self.assertEqual(lExpected, lActual)
@@ -108,7 +108,7 @@ class test_package_parsing(unittest.TestCase):
         lActual = []
         for iLine, lLine in enumerate(oFile.get_lines()):
             for iItem, oItem in enumerate(lLine.objects):
-                if isinstance(oItem, parser.package_is_keyword):
+                if isinstance(oItem, package_declaration.is_keyword):
                     lActual.append((iLine, iItem))
 
         self.assertEqual(lExpected, lActual)
