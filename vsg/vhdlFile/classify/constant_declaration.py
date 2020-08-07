@@ -107,7 +107,7 @@ def classify_assignment_operator(oObject, iObject, lObjects, dVars):
 
 def classify_assignment_expression(oObject, iObject, lObjects):
     if type(oObject) == parser.item:
-        lObjects[iObject] = constant_declaration.assignment_expression(oObject.get_value)
+        lObjects[iObject] = constant_declaration.assignment_expression(oObject.get_value())
         return True
     return False
 

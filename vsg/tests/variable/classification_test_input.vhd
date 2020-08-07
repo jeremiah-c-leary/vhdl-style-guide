@@ -1,4 +1,4 @@
-
+package body fifo is
 
 variable INDEX: integer range 0 to 99 := 0;
 
@@ -22,3 +22,5 @@ result
 :
 ComplexNumber
 ;
+
+end package body fifo;

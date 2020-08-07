@@ -5,7 +5,7 @@ from vsg.vhdlFile.classify import variable_declaration
 
 def tokenize(oObject, iObject, lObjects, dVars):
     '''
-    package_body_declarative_item ::=
+    subprogram_declarative_item ::=
         subprogram_declaration
       | subprogram_body
       | subprogram_instantiation_declaration

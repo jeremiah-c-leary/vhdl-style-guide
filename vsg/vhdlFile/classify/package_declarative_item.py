@@ -1,5 +1,10 @@
 
+from vsg.vhdlFile.classify import component_declaration
+from vsg.vhdlFile.classify import constant_declaration
 from vsg.vhdlFile.classify import signal_declaration
+from vsg.vhdlFile.classify import use_clause
+from vsg.vhdlFile.classify import variable_declaration
+
 
 def tokenize(oObject, iObject, lObjects, dVars):
     '''
@@ -26,6 +31,19 @@ def tokenize(oObject, iObject, lObjects, dVars):
       | PSL_Sequence_Declaration
     '''
 
+    if constant_declaration.tokenize(oObject, iObject, lObjects, dVars):
+        return True
+
     if signal_declaration.tokenize(oObject, iObject, lObjects, dVars):
         return True
+
+    if variable_declaration.tokenize(oObject, iObject, lObjects, dVars):
+        return True
+
+    if use_clause.tokenize(oObject, iObject, lObjects, dVars):
+        return True
+
+    if component_declaration.tokenize(oObject, iObject, lObjects, dVars):
+        return True
+
     return False

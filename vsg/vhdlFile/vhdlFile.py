@@ -10,6 +10,8 @@ from vsg.vhdlFile.classify import entity
 from vsg.token import use_clause as use_clause_token
 from vsg.token import package_declaration
 from vsg.token import package_body
+from vsg.token import architecture_body
+from vsg.token import constant_declaration
 
 from vsg import parser
 
@@ -230,6 +232,7 @@ class vhdlFile():
 #            print('[' + preIndent + '][' + oLine.line + '][' + str(oLine.indentLevel) + ']')
         self.set_indent_levels()
         self.classify_package_keywords()
+#        self.print_debug()
 
 
     def update_filecontent(self):
@@ -338,6 +341,7 @@ class vhdlFile():
         '''
         dIndent = {}
         dIndent['insideContextDeclaration'] = False
+        dIndent['level'] = 0
         for oLine in self.lines:
             if _does_line_start_with_item_or_whitespace_and_then_item(oLine, parser.context_keyword):
                 oLine.indentLevel = 0
@@ -360,6 +364,35 @@ class vhdlFile():
                     oLine.indentLevel = 2
                 else:
                     oLine.indentLevel = 1
+
+            if _does_line_start_with_item_or_whitespace_and_then_item(oLine, architecture_body.keyword):
+                dIndent['level'] = 1
+                oLine.indentLevel = 0
+
+            if len(oLine.objects) == 0:
+                continue
+
+            if _does_line_start_with_item_or_whitespace_and_then_item(oLine, constant_declaration.assignment_expression):
+                if type(oLine.objects[0]) == constant_declaration.assignment_expression:
+                    if oLine.objects[0].get_value() == '(':
+                        oLine.indentLevel = dIndent['level']
+                        dIndent['level'] += 1
+                    elif oLine.objects[0].get_value() == ')':
+                        dIndent['level'] -= 1
+                        oLine.indentLevel = dIndent['level']
+                    else:
+                        oLine.indentLevel = dIndent['level']
+                else:
+                    oObject = oLine.objects[1]
+                    sValue = oObject.get_value()
+                    if oLine.objects[1].get_value() == '(':
+                        oLine.indentLevel = dIndent['level']
+                        dIndent['level'] += 1
+                    elif oLine.objects[1].get_value() == ')':
+                        dIndent['level'] -= 1
+                        oLine.indentLevel = dIndent['level']
+                    else:
+                        oLine.indentLevel = dIndent['level']
 
     def classify_package_keywords(self):
         '''
@@ -385,6 +418,13 @@ class vhdlFile():
                 if type(oObject) == package_body.body_keyword and not bPackageBodyBodyKeywordFound:
                     bPackageBodyBodyKeywordFound = True
 
+    def print_debug(self):
+        for oLine in self.lines:
+#            print('-'*80)
+            print(f'{oLine.indentLevel} | {oLine.line}')
+#            for oObject in oLine.objects:
+#                print(oObject)
+        
 
 def _create_empty_return_dictionary():
     dReturn = {}
