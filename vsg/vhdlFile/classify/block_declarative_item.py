@@ -1,4 +1,5 @@
 
+from vsg.vhdlFile.classify import alias_declaration
 from vsg.vhdlFile.classify import attribute_declaration
 from vsg.vhdlFile.classify import component_declaration
 from vsg.vhdlFile.classify import constant_declaration
@@ -46,6 +47,9 @@ def tokenize(oObject, iObject, lObjects, dVars):
         return True
 
     if file_declaration.tokenize(oObject, iObject, lObjects, dVars):
+        return True
+
+    if alias_declaration.tokenize(oObject, iObject, lObjects, dVars):
         return True
 
     if attribute_declaration.tokenize(oObject, iObject, lObjects, dVars):

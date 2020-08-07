@@ -143,6 +143,29 @@ class close_parenthesis(item):
         item.__init__(self, ')')
 
 
+class character_literal(item):
+
+    def __init__(self, sString):
+        item.__init__(self, sString)
+
+
+class string_literal(item):
+
+    def __init__(self, sString):
+        item.__init__(self, sString)
+
+
+class operator_symbol(string_literal):
+
+    def __init__(self, sString):
+        string_literal.__init__(self, sString)
+
+
+class signature(item):
+
+    def __init__(self, sString):
+        item.__init__(self, sString)
+
 ###############################################################################
 # Context objects
 ###############################################################################
@@ -299,3 +322,5 @@ class assert_semicolon(semicolon):
 
     def __init__(self):
         semicolon.__init__(self)
+
+

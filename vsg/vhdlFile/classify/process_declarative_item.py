@@ -1,4 +1,5 @@
 
+from vsg.vhdlFile.classify import alias_declaration
 from vsg.vhdlFile.classify import constant_declaration
 from vsg.vhdlFile.classify import use_clause
 from vsg.vhdlFile.classify import variable_declaration
@@ -32,6 +33,9 @@ def tokenize(oObject, iObject, lObjects, dVars):
         return True
 
     if use_clause.tokenize(oObject, iObject, lObjects, dVars):
+        return True
+
+    if alias_declaration.tokenize(oObject, iObject, lObjects, dVars):
         return True
 
     return False

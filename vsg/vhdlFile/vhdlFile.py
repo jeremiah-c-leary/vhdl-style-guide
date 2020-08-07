@@ -140,7 +140,12 @@ class vhdlFile():
         dVars['bInterfaceSignalDeclarationAssignmentOperatorFound'] = False
         dVars['bInterfaceSignalDeclarationColonFound'] = False
 
-        dVars['objectQueue'] = []
+        dVars['alias_declaration'] = {}
+        dVars['alias_declaration']['keyword'] = False
+        dVars['alias_declaration']['aliasDesignator'] = False
+        dVars['alias_declaration']['colon'] = False
+        dVars['alias_declaration']['isKeyword'] = False
+        dVars['alias_declaration']['name'] = False
 
         oLinePrevious = line.blank_line()
 
