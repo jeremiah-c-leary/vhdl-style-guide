@@ -1,0 +1,23 @@
+
+architecture RTL of FIFO is
+
+
+  subtype DIGITS is INTEGER range 0 to 9;
+
+  function RESOLVE_VALUE (anonymous: BIT_VECTOR) return BIT;
+  subtype BIT_NEW is RESOLVE_VALUE BIT;
+
+  -- EXAMPLE 1 : a resolved subtype
+  subtype MY_STD_LOGIC is Resolved Std_ulogic;
+
+  -- EXAMPLE 2: an integer subtype
+  subtype MyBit is STD_LOGIC range '0' to '1';
+
+  -- EXAMPLE 3 : an array subtype
+  subtype ShortVector is STD_LOGIC_VECTOR(1 downto 0);
+
+
+
+begin
+
+end architecture RTL;

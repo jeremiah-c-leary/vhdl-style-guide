@@ -147,6 +147,10 @@ class vhdlFile():
         dVars['alias_declaration']['isKeyword'] = False
         dVars['alias_declaration']['name'] = False
 
+        dVars['subtype_declaration'] = {}
+        dVars['subtype_declaration']['keyword'] = False
+        dVars['subtype_declaration']['isKeyword'] = False
+
         oLinePrevious = line.blank_line()
 
         for sLine in self.filecontent:

@@ -1,9 +1,12 @@
 
 from vsg.vhdlFile.classify import alias_declaration
+from vsg.vhdlFile.classify import attribute_declaration
 from vsg.vhdlFile.classify import component_declaration
 from vsg.vhdlFile.classify import constant_declaration
+from vsg.vhdlFile.classify import file_declaration
 from vsg.vhdlFile.classify import signal_declaration
 from vsg.vhdlFile.classify import use_clause
+from vsg.vhdlFile.classify import subtype_declaration
 from vsg.vhdlFile.classify import variable_declaration
 
 
@@ -31,6 +34,8 @@ def tokenize(oObject, iObject, lObjects, dVars):
       | PSL_Property_Declaration
       | PSL_Sequence_Declaration
     '''
+    if subtype_declaration.tokenize(oObject, iObject, lObjects, dVars):
+        return True
 
     if constant_declaration.tokenize(oObject, iObject, lObjects, dVars):
         return True
@@ -41,7 +46,13 @@ def tokenize(oObject, iObject, lObjects, dVars):
     if variable_declaration.tokenize(oObject, iObject, lObjects, dVars):
         return True
 
+    if file_declaration.tokenize(oObject, iObject, lObjects, dVars):
+        return True
+
     if alias_declaration.tokenize(oObject, iObject, lObjects, dVars):
+        return True
+
+    if attribute_declaration.tokenize(oObject, iObject, lObjects, dVars):
         return True
 
     if use_clause.tokenize(oObject, iObject, lObjects, dVars):
