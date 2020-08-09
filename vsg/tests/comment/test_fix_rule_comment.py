@@ -35,14 +35,21 @@ class testFixRuleCommentMethods(unittest.TestCase):
 
     def test_rule_001(self):
         oRuleList = rule_list.rule_list(oFileLibrary, oSeverityList)
+
         oRuleList.fix()
         oRuleList.check_rules()
 
+        self.assertEqual(oFileLibrary.lines[2].indentLevel, 0)
         self.assertEqual(oFileLibrary.lines[3].indentLevel, 1)
+        self.assertEqual(oFileLibrary.lines[4].indentLevel, 1)
+
+        self.assertEqual(oFileLibrary.lines[6].indentLevel, 0)
         self.assertEqual(oFileLibrary.lines[7].indentLevel, 1)
+        self.assertEqual(oFileLibrary.lines[8].indentLevel, 1)
+
 
         self.assertEqual(oFileLibrary.lines[3].line, '  -- Comment 1')
-        self.assertEqual(oFileLibrary.lines[7].line, '  -- Comment 1')
+        self.assertEqual(oFileLibrary.lines[7].line, '  -- Comment 2')
 
         oRuleList = rule_list.rule_list(oFileLibrary, oSeverityList)
         oRuleList.check_rules()

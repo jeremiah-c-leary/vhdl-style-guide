@@ -3,6 +3,7 @@ from .get_package_name import *
 from .has_package_name import *
 from .identifier_alignment import *
 from .indent_of_comments_above import *
+from .indent_of_comments_above_item import *
 from .indent import *
 from .is_blank_line_after import *
 from .is_blank_line_before import *

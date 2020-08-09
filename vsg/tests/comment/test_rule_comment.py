@@ -24,9 +24,9 @@ class testRuleCommentMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'comment')
         self.assertEqual(oRule.identifier, '010')
-        dExpected = utils.add_violation_list([3,7,12,13,17,19,21,23,27,30,45,49,71,75])
+        lExpected = [3,7,12,13,17,19,21,23,27,30,45,49,71,75]
         oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(lExpected, utils.extract_violation_lines(oRule.violations))
 
     def test_rule_010_library(self):
         oRuleList = rule_list.rule_list(oFileLibrary, oSeverityList)

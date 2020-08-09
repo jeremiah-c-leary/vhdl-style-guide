@@ -324,6 +324,24 @@ class line():
     def get_indent_level(self):
         return self.indentLevel
 
+    def get_indent_value(self):
+        if type(self.objects[0]) == parser.whitespace:
+            return(len(self.objects[0].get_value()))
+        return 0
+
+    def begins_with_token(self, oToken, bIgnoreWhiteSpace=False):
+        if len(self.objects) == 0:
+            return False
+        if bIgnoreWhiteSpace:
+            if type(self.objects[0]) == parser.whitespace and type(self.objects[1]) == oToken:
+                return True
+            elif type(self.objects[0]) == oToken:
+                return True
+        else:
+            if type(self.objects[0]) == oToken:
+                return True
+        return False
+       
 
 class blank_line(line):
     '''
