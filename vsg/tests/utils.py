@@ -92,9 +92,9 @@ def validate_token(self, oFile, lExpected, oToken, bDebug=False):
         self.assertEqual(lExpected, lActual)
 
 def print_objects(oFile, bIgnoreWhiteSpace=False):
-    for oLine in oFile.lines:
+    for iLine, oLine in enumerate(oFile.lines):
         print('-'*80)
-        print(f'{oLine.line}')
+        print(f'{iLine} | {oLine.line}')
         for oObject in oLine.objects:
             if bIgnoreWhiteSpace:
                 if type(oObject) == parser.whitespace:

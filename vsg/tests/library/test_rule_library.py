@@ -139,9 +139,9 @@ class testRuleLibraryMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'library')
         self.assertEqual(oRule.identifier, '007')
 
-        dExpected = utils.add_violation_list([16,23,26,30])
+        lExpected = [16,23,26,30]
         oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(lExpected, utils.extract_violation_lines(oRule.violations))
 
     def test_rule_008(self):
         self.maxDiff = None

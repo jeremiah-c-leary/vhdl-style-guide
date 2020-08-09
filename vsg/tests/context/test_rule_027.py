@@ -30,7 +30,7 @@ class test_context_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines(oRule.violations))
 
-        self.assertEqual('Remove all but one blank line above this line.', oRule._get_solution(19))
+        self.assertEqual('Remove 1 blank line(s) above this line.', oRule._get_solution(19))
 
     def test_fix_rule_027(self):
         oRule = context.rule_027()
