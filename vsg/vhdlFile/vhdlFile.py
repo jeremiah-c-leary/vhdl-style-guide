@@ -389,6 +389,10 @@ class vhdlFile():
         dIndent['insideContextDeclaration'] = False
         dIndent['level'] = 0
         for oLine in self.lines:
+
+            if len(oLine.objects) == 0:
+                continue
+
             if _does_line_start_with_item_or_whitespace_and_then_item(oLine, parser.context_keyword):
                 oLine.indentLevel = 0
                 dIndent['insideContextDeclaration'] = True
@@ -414,9 +418,6 @@ class vhdlFile():
             if _does_line_start_with_item_or_whitespace_and_then_item(oLine, architecture_body.keyword):
                 dIndent['level'] = 1
                 oLine.indentLevel = 0
-
-            if len(oLine.objects) == 0:
-                continue
 
             if _does_line_start_with_item_or_whitespace_and_then_item(oLine, constant_declaration.assignment_expression):
                 if type(oLine.objects[0]) == constant_declaration.assignment_expression:
