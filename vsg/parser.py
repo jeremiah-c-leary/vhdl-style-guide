@@ -166,6 +166,18 @@ class signature(item):
     def __init__(self, sString):
         item.__init__(self, sString)
 
+
+class type_mark(item):
+
+    def __init__(self, sString):
+        item.__init__(self, sString)
+
+
+class subtype_definition(item):
+
+    def __init__(self, sString):
+        item.__init__(self, sString)
+
 ###############################################################################
 # Context objects
 ###############################################################################

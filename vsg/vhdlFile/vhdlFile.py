@@ -12,6 +12,8 @@ from vsg.token import package_declaration
 from vsg.token import package_body
 from vsg.token import architecture_body
 from vsg.token import constant_declaration
+from vsg.token import constrained_array_definition
+from vsg.token import unbounded_array_definition
 
 from vsg import parser
 
@@ -151,10 +153,44 @@ class vhdlFile():
         dVars['subtype_declaration']['keyword'] = False
         dVars['subtype_declaration']['isKeyword'] = False
 
+        dVars['type_declaration'] = {}
+        dVars['type_declaration']['keyword'] = False
+        dVars['type_declaration']['isKeyword'] = False
+
+        dVars['type_declaration']['enumeration_type_declaration'] = {}
+        dVars['type_declaration']['enumeration_type_declaration']['open_parenthesis'] = False
+
+        dVars['range_constraint'] = {}
+        dVars['range_constraint']['keyword'] = False
+
+        dVars['type_declaration']['array'] = {}
+        dVars['type_declaration']['array']['keyword'] = False
+
+        dVars['type_declaration']['constrained_array_declaration'] = {}
+        dVars['type_declaration']['constrained_array_declaration']['of_keyword'] = False
+
+        dVars['type_declaration']['unbounded_array_declaration'] = {}
+        dVars['type_declaration']['unbounded_array_declaration']['open_parenthesis'] = False
+        dVars['type_declaration']['unbounded_array_declaration']['close_parenthesis'] = False
+
+        dVars['type_declaration']['record_type_definition'] = {}
+        dVars['type_declaration']['record_type_definition']['keyword'] = False
+        dVars['type_declaration']['record_type_definition']['end_keyword'] = False
+        dVars['type_declaration']['record_type_definition']['element_declaration'] = {}
+        dVars['type_declaration']['record_type_definition']['element_declaration']['colon'] = False
+
+        dVars['type_declaration']['access_definition'] = {}
+        dVars['type_declaration']['access_definition']['keyword'] = False
+
+        dVars['type_declaration']['file_type_definition'] = {}
+        dVars['type_declaration']['file_type_definition']['keyword'] = False
+
         oLinePrevious = line.blank_line()
 
         for sLine in self.filecontent:
             oLine = line.line(sLine.replace('\t', '  ').rstrip())
+#            print(oLine.line)
+#            print(dVars['type_declaration']['record_type_definition']['keyword'])
             lTokens = oLine.get_zipped_tokens()
             lObjects = [] 
             for sToken in lTokens:
@@ -214,7 +250,7 @@ class vhdlFile():
 
             classify.case(self, dVars, oLine)
             classify.function(dVars, oLine)
-            classify.type_definition(dVars, oLine)
+            classify.type_definition_old(dVars, oLine)
             classify.subtype(dVars, oLine)
 
             classify.sequential(dVars, oLine)
@@ -241,6 +277,7 @@ class vhdlFile():
 #            print('[' + preIndent + '][' + oLine.line + '][' + str(oLine.indentLevel) + ']')
         self.set_indent_levels()
         self.classify_package_keywords()
+        self.classify_array_keywords()
 #        self.print_debug()
 
 
@@ -426,6 +463,31 @@ class vhdlFile():
 
                 if type(oObject) == package_body.body_keyword and not bPackageBodyBodyKeywordFound:
                     bPackageBodyBodyKeywordFound = True
+
+
+    def classify_array_keywords(self):
+        '''
+        Assigns the correct array object to the array keywords.
+        '''
+        bUnboundedArrayFound = False
+        bConstrainedArrayFound = False
+        for iLine, oLine in enumerate(self.lines[::-1]):
+            for iObject, oObject in enumerate(oLine.objects[::-1]):
+                if type(oObject) == parser.item and bConstrainedArrayFound:
+                    iIndex = len(oLine.objects) - iObject - 1
+                    oLine.objects[iIndex] = constrained_array_definition.keyword(oObject.get_value())
+                    bConstrainedArrayFound = False                
+
+                if type(oObject) == constrained_array_definition.index_constraint and not bConstrainedArrayFound:
+                    bConstrainedArrayFound = True
+
+                if type(oObject) == parser.item and bUnboundedArrayFound:
+                    iIndex = len(oLine.objects) - iObject - 1
+                    oLine.objects[iIndex] = unbounded_array_definition.open_parenthesis(oObject.get_value())
+                    bUnboundedArrayFound = False                
+
+                if type(oObject) == unbounded_array_definition.open_parenthesis and not bUnboundedArrayFound:
+                    bUnboundedArrayFound = True
 
     def print_debug(self):
         for oLine in self.lines:

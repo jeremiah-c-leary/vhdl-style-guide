@@ -4,6 +4,7 @@ from vsg.vhdlFile.classify import attribute_declaration
 from vsg.vhdlFile.classify import constant_declaration
 from vsg.vhdlFile.classify import file_declaration
 from vsg.vhdlFile.classify import subtype_declaration
+from vsg.vhdlFile.classify import type_declaration
 from vsg.vhdlFile.classify import use_clause
 from vsg.vhdlFile.classify import variable_declaration
 
@@ -28,6 +29,9 @@ def tokenize(oObject, iObject, lObjects, dVars):
       | group_template_declaration
       | group_declaration
     '''
+
+    if type_declaration.tokenize(oObject, iObject, lObjects, dVars):
+        return True
 
     if subtype_declaration.tokenize(oObject, iObject, lObjects, dVars):
         return True

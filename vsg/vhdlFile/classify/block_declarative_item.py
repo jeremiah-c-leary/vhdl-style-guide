@@ -7,6 +7,7 @@ from vsg.vhdlFile.classify import file_declaration
 from vsg.vhdlFile.classify import shared_variable_declaration
 from vsg.vhdlFile.classify import signal_declaration
 from vsg.vhdlFile.classify import subtype_declaration
+from vsg.vhdlFile.classify import type_declaration
 from vsg.vhdlFile.classify import use_clause
 
 
@@ -38,6 +39,9 @@ def tokenize(oObject, iObject, lObjects, dVars):
        | PSL_Sequence_Declaration
        | PSL_Clock_Declaration
     '''
+    if type_declaration.tokenize(oObject, iObject, lObjects, dVars):
+        return True
+
     if subtype_declaration.tokenize(oObject, iObject, lObjects, dVars):
         return True
 

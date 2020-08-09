@@ -25,9 +25,11 @@ def tokenize(oObject, iObject, lObjects, dVars):
             if classify_identifier(oObject, iObject, lObjects, dVars):
                 return True
         else:
-            if classify_of_keyword(oObject, iObject, lObjects, dVars):
-                return True
             if not dVars['bArchitectureEntityNameFound']:
+
+                if classify_of_keyword(oObject, iObject, lObjects, dVars):
+                    return True
+
                 if classify_entity_name(oObject, iObject, lObjects, dVars):
                     return True
             else:

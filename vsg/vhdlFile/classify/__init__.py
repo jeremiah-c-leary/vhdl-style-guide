@@ -29,7 +29,7 @@ from .procedure import procedure
 from .sequential import sequential
 from .signal import signal
 from .subtype import subtype
-from .type_definition import type_definition
+from .type_definition_old import type_definition_old
 from .use import use
 from .variable_assignment import variable_assignment
 from .variable import variable
