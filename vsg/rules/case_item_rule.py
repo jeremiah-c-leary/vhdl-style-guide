@@ -29,8 +29,8 @@ class case_item_rule(rule_item.Rule):
         self.case = 'lower'
         self.configuration.append('case')
         self.trigger = trigger
-        self.regionBegin = None
-        self.regionEnd = None
+        self.regionBegin = trigger
+        self.regionEnd = trigger
 
     def _analyze_region(self, oFile, iLine, oLine, dRegion):
         lObjects = oLine.get_objects()

@@ -44,8 +44,8 @@ class space_between_items_rule(rule_item.Rule):
         self.configuration.append('spaces')
         self.left = left
         self.right = right
-        self.regionBegin = None
-        self.regionEnd = None
+        self.regionBegin = left
+        self.regionEnd = right
 
     def _analyze_region(self, oFile, iLine, oLine, dRegion):
         lObjects = oLine.get_objects()
