@@ -1296,3 +1296,24 @@ def split_line_on_comment(sString):
         lReturn.append(sString[:iIndex])
         lReturn.append(sString[iIndex:])
     return lReturn
+
+
+def number_of_blank_lines_above(oFile, iLine):
+    '''
+    Counts the number of blank lines above a given line number.
+
+    Parameters:
+
+        oFile : (vhdlFile object)
+
+        iLine : (integer)
+
+    Returns: (integer)
+    '''
+    iReturn = 0
+    for i in range(iLine - 1, 0, -1):
+        if oFile.lines[i].isBlank:
+            iReturn += 1
+        else:
+            break
+    return iReturn
