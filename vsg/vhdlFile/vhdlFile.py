@@ -14,6 +14,9 @@ from vsg.token import architecture_body
 from vsg.token import constant_declaration
 from vsg.token import constrained_array_definition
 from vsg.token import unbounded_array_definition
+from vsg.token import association_list
+from vsg.token import association_element
+from vsg.token import generic_map_aspect
 
 from vsg import parser
 
@@ -185,6 +188,29 @@ class vhdlFile():
         dVars['type_declaration']['file_type_definition'] = {}
         dVars['type_declaration']['file_type_definition']['keyword'] = False
 
+
+        dVars['procedure_specification'] = {}
+        dVars['procedure_specification']['keyword'] = False
+        dVars['procedure_specification']['designator'] = False
+        dVars['procedure_specification']['open_parenthesis'] = False
+        dVars['procedure_specification']['close_parenthesis'] = False
+
+        dVars['function_specification'] = {}
+        dVars['function_specification']['keyword'] = False
+        dVars['function_specification']['designator'] = False
+        dVars['function_specification']['open_parenthesis'] = False
+        dVars['function_specification']['return'] = False
+
+        dVars['subprogram_header'] = {}
+        dVars['subprogram_header']['keyword'] = False
+        dVars['subprogram_header']['open_parenthesis'] = False
+        dVars['subprogram_header']['close_parenthesis'] = False
+
+        dVars['generic_map_aspect'] = {}
+        dVars['generic_map_aspect']['keyword'] = False
+        dVars['generic_map_aspect']['open_parenthesis'] = False
+        dVars['generic_map_aspect']['close_parenthesis'] = False
+
         oLinePrevious = line.blank_line()
 
         for sLine in self.filecontent:
@@ -278,6 +304,7 @@ class vhdlFile():
         self.set_indent_levels()
         self.classify_package_keywords()
         self.classify_array_keywords()
+        self.classify_association_element_parts()
 #        self.print_debug()
 
 
@@ -490,12 +517,39 @@ class vhdlFile():
                 if type(oObject) == unbounded_array_definition.open_parenthesis and not bUnboundedArrayFound:
                     bUnboundedArrayFound = True
 
+    def classify_association_element_parts(self):
+        '''
+        Assigns the correct objects to formal_part and actual_part objects in association_elements.
+        '''
+        bCommaFound = False
+        bAssignmentFound = False
+        for iLine, oLine in enumerate(self.lines[::-1]):
+            for iObject, oObject in enumerate(oLine.objects[::-1]):
+                if type(oObject) == generic_map_aspect.open_parenthesis:
+                    bCommadFound = False
+
+                if type(oObject) == parser.item and bCommaFound:
+                    iIndex = len(oLine.objects) - iObject - 1
+                    oLine.objects[iIndex] = association_element.actual_part(oObject.get_value())
+
+                if type(oObject) == association_list.comma and not bCommaFound:
+                    bCommaFound = True
+
+                if type(oObject) == generic_map_aspect.close_parenthesis and not bCommaFound:
+                    bCommaFound = True
+
+                if type(oObject) == parser.item and bAssignmentFound:
+                    bCommaFound = False                
+                    iIndex = len(oLine.objects) - iObject - 1
+                    oLine.objects[iIndex] = association_element.formal_part(oObject.get_value())
+                    bAssignmentFound = False
+
+                if type(oObject) == association_element.assignment and not bAssignmentFound:
+                    bAssignmentFound = True
+
     def print_debug(self):
         for oLine in self.lines:
-#            print('-'*80)
             print(f'{oLine.indentLevel} | {oLine.line}')
-#            for oObject in oLine.objects:
-#                print(oObject)
         
 
 def _create_empty_return_dictionary():

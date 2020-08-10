@@ -74,9 +74,7 @@ def classify_close_parenthesis(oObject, iObject, lObjects, dVars):
 def classify_semicolon(oObject, iObject, lObjects, dVars):
     if oObject.get_value() == ';':
         lObjects[iObject] = token.semicolon()
-        dVars['bPortClauseKeywordFound'] = False
-        dVars['bPortClauseOpenParenthesisFound'] = False
-        dVars['bPortClauseCloseParenthesisFound'] = False
+        clear_flags(dVars)
         return True
     return False
 
@@ -86,3 +84,11 @@ def update_parenthesis_counts(oObject, dVars):
         dVars['iOpenParenthesisCount'] += 1
     if oObject.get_value() == ')':
         dVars['iCloseParenthesisCount'] += 1
+
+
+def clear_flags(dVars):
+    interface_list.clear_flags(dVars)
+    dVars['bPortClauseKeywordFound'] = False
+    dVars['bPortClauseOpenParenthesisFound'] = False
+    dVars['bPortClauseCloseParenthesisFound'] = False
+

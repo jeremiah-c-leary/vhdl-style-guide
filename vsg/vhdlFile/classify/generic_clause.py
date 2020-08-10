@@ -50,9 +50,10 @@ def classify_close_parenthesis(oObject, iObject, lObjects, dVars):
 def classify_semicolon(oObject, iObject, lObjects, dVars):
     if oObject.get_value() == ';':
         lObjects[iObject] = token.semicolon()
-        clear_tags(dVars)
+        clear_flags(dVars)
 
-def clear_tags(dVars):
+def clear_flags(dVars):
+    interface_list.clear_flags(dVars)
     dVars['bGenericClauseKeywordFound'] = False
     dVars['bGenericClauseOpenParenthesisFound'] = False
     dVars['bGenericClauseCloseParenthesisFound'] = False

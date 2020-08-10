@@ -41,6 +41,12 @@ class identifier(item):
         item.__init__(self, sString)
 
 
+class designator(item):
+
+    def __init__(self, sString):
+        item.__init__(self, sString)
+
+
 class colon(item):
 
     def __init__(self):

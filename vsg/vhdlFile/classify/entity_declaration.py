@@ -104,8 +104,14 @@ def classify_simple_name(oObject, iObject, lObjects, dVars):
 def classify_semicolon(oObject, iObject, lObjects, dVars):
     if oObject.get_value() == ';':
         lObjects[iObject] = token.semicolon()
-        dVars['bEntityKeywordFound'] = False
-        dVars['bEntityIdentifierFound'] = False
-        dVars['bEntityIsKeywordFound'] = False
-        dVars['bEntityBeginKeywordFound'] = False
-        dVars['bEntityEndKeywordFound'] = False
+        clear_flags(dVars)
+
+def clear_flags(dVars):
+    generic_clause.clear_flags(dVars)
+    port_clause.clear_flags(dVars)
+    dVars['bEntityKeywordFound'] = False
+    dVars['bEntityIdentifierFound'] = False
+    dVars['bEntityIsKeywordFound'] = False
+    dVars['bEntityBeginKeywordFound'] = False
+    dVars['bEntityEndKeywordFound'] = False
+

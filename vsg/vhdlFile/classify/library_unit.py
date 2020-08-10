@@ -17,3 +17,8 @@ def tokenize(oObject, iObject, lObjects, dVars):
         return True
 
     return False
+
+
+def clear_flags(dVars):
+    primary_unit.clear_flags(dVars)
+    secondary_unit.clear_flags(dVars)

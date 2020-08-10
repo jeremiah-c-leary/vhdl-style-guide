@@ -11,3 +11,7 @@ def tokenize(oObject, iObject, lObjects, dVars):
         return True
 
     return False
+
+
+def clear_flags(dVars):
+    context_item.clear_flags(dVars)

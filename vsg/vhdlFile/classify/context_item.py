@@ -13,3 +13,7 @@ def tokenize(oObject, iObject, lObjects, dVars):
         return True
 
     return False
+
+
+def clear_flags(dVars):
+    use_clause.clear_flags(dVars)
