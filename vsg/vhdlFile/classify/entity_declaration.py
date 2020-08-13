@@ -2,8 +2,7 @@
 from vsg import parser
 from vsg.token import entity as token
 
-from vsg.vhdlFile.classify import generic_clause
-from vsg.vhdlFile.classify import port_clause
+from vsg.vhdlFile.classify import entity_header
 
 
 def tokenize(oObject, iObject, lObjects, dVars):
@@ -19,26 +18,49 @@ def tokenize(oObject, iObject, lObjects, dVars):
     '''
 
     if not dVars['bEntityKeywordFound']:
-        classify_keyword(oObject, iObject, lObjects, dVars)
+
+        if classify_keyword(oObject, iObject, lObjects, dVars):
+            return True 
+
     else:
         if not dVars['bEntityIdentifierFound']:
-            classify_identifier(oObject, iObject, lObjects, dVars)
+
+            if classify_identifier(oObject, iObject, lObjects, dVars):
+                return True 
+
         else:
             if not dVars['bEntityIsKeywordFound']:
-                classify_is_keyword(oObject, iObject, lObjects, dVars)
+
+                if classify_is_keyword(oObject, iObject, lObjects, dVars):
+                    return True 
+
             else:
 
                 if not dVars['bEntityBeginKeywordFound']:
-                    entity_header(oObject, iObject, lObjects, dVars)
-                    classify_begin_keyword(oObject, iObject, lObjects, dVars)
+
+                    if entity_header.tokenize(oObject, iObject, lObjects, dVars):
+                        return True 
+
+                    if classify_begin_keyword(oObject, iObject, lObjects, dVars):
+                        return True 
+
 
                 if not dVars['bEntityEndKeywordFound']:
-                    classify_end_keyword(oObject, iObject, lObjects, dVars)
+
+                    if classify_end_keyword(oObject, iObject, lObjects, dVars):
+                        return True 
+
                 else:
                     if classify_end_entity_keyword(oObject, iObject, lObjects, dVars):
-                        return
-                    classify_simple_name(oObject, iObject, lObjects, dVars)
-                    classify_semicolon(oObject, iObject, lObjects, dVars)
+                        return True
+
+                    if classify_simple_name(oObject, iObject, lObjects, dVars):
+                        return True 
+
+                    if classify_semicolon(oObject, iObject, lObjects, dVars):
+                        return True 
+
+    return False
 
 
 def classify_keyword(oObject, iObject, lObjects, dVars):
@@ -60,18 +82,6 @@ def classify_is_keyword(oObject, iObject, lObjects, dVars):
     if sValue.lower() == 'is':
         lObjects[iObject] = token.is_keyword(sValue)
         dVars['bEntityIsKeywordFound'] = True
-
-
-def entity_header(oObject, iObject, lObjects, dVars):
-    '''
-    entity_header ::=
-        [ formal_generic_clause ]
-        [ formal_port_clause ]
-    '''
-    if not dVars['bPortClauseKeywordFound']:
-        generic_clause.tokenize(oObject, iObject, lObjects, dVars)
-    if not dVars['bGenericClauseKeywordFound']:
-        port_clause.tokenize(oObject, iObject, lObjects, dVars)
 
 
 def classify_begin_keyword(oObject, iObject, lObjects, dVars):
@@ -107,8 +117,7 @@ def classify_semicolon(oObject, iObject, lObjects, dVars):
         clear_flags(dVars)
 
 def clear_flags(dVars):
-    generic_clause.clear_flags(dVars)
-    port_clause.clear_flags(dVars)
+    entity_header.clear_flags(dVars)
     dVars['bEntityKeywordFound'] = False
     dVars['bEntityIdentifierFound'] = False
     dVars['bEntityIsKeywordFound'] = False

@@ -1,7 +1,7 @@
 
 from vsg import parser
 from vsg.token import architecture_body
-from vsg.vhdlFile.classify import block_declarative_item
+from vsg.vhdlFile.classify import architecture_declarative_part
 
 
 '''
@@ -40,7 +40,7 @@ def tokenize(oObject, iObject, lObjects, dVars):
                     if not dVars['bArchitectureBeginKeywordFound']:
                         if classify_begin_keyword(oObject, iObject, lObjects, dVars):
                             return True
-                        if architecture_declarative_part(oObject, iObject, lObjects, dVars):
+                        if architecture_declarative_part.tokenize(oObject, iObject, lObjects, dVars):
                             return True
                     else:
                         if not dVars['bArchitectureEndKeywordFound']:
@@ -98,21 +98,12 @@ def classify_is_keyword(oObject, iObject, lObjects, dVars):
     return False
 
 
-def architecture_declarative_part(oObject, iObject, lObjects, dVars):
-    if block_declarative_item.tokenize(oObject, iObject, lObjects, dVars):
-        return True
-
-
 def classify_begin_keyword(oObject, iObject, lObjects, dVars):
     sValue = oObject.get_value()
     if sValue.lower() == 'begin':
         lObjects[iObject] = architecture_body.begin_keyword(sValue)
         dVars['bArchitectureBeginKeywordFound'] = True
         return True
-    return False
-
-
-def architecture_statement_part():
     return False
 
 
