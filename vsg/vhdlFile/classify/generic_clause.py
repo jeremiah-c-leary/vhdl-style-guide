@@ -20,7 +20,7 @@ def tokenize(oObject, iObject, lObjects, dVars):
                 if classify_close_parenthesis(oObject, iObject, lObjects, dVars):
                     interface_list.clear_flags(dVars)
                     return True
-                interface_list.interface_list(oObject, iObject, lObjects, dVars)
+                interface_list.tokenize(oObject, iObject, lObjects, dVars)
             else:
                 classify_semicolon(oObject, iObject, lObjects, dVars)
 

@@ -7,7 +7,7 @@ def tokenize(oObject, iObject, lObjects, dVars):
     generic_list ::= *generic*_interface_list
     '''
 
-    if interface_list.interface_list(oObject, iObject, lObjects, dVars):
+    if interface_list.tokenize(oObject, iObject, lObjects, dVars):
         return True
 
     return False

@@ -1,8 +1,9 @@
 
 from vsg.token import interface_list as token
-from vsg.vhdlFile.classify import interface_signal_declaration
+from vsg.vhdlFile.classify import interface_element
 
-def interface_list(oObject, iObject, lObjects, dVars):
+
+def tokenize(oObject, iObject, lObjects, dVars):
     '''
     Classifies interface_lists
 
@@ -11,56 +12,20 @@ def interface_list(oObject, iObject, lObjects, dVars):
     '''
     if classify_semicolon(oObject, iObject, lObjects, dVars):
         return True
-    elif classify_interface_element(oObject, iObject, lObjects, dVars):
+
+    if interface_element.tokenize(oObject, iObject, lObjects, dVars):
         return True
+
     return False
             
 
 def classify_semicolon(oObject, iObject, lObjects, dVars):
     if oObject.get_value() == ';':
         lObjects[iObject] = token.semicolon()
-        interface_signal_declaration.clear_flags(dVars)
-        return True
-    return False
-
-
-def classify_interface_element(oObject, iObject, lObjects, dVars):
-    '''
-    interface_element ::= interface_declaration
-    '''
-
-    if classify_interface_declaration(oObject, iObject, lObjects, dVars):
-        return True
-    return False
-
-
-def classify_interface_declaration(oObject, iObject, lObjects, dVars):
-    '''
-    interface_declaration ::=
-        interface_object_declaration
-      | interface_type_declaration
-      | interface_subprogram_declaration
-      | interface_package_declaration
-    '''
-
-    if classify_interface_object_declaration(oObject, iObject, lObjects, dVars):
-         return True
-    return False
-
-
-def classify_interface_object_declaration(oObject, iObject, lObjects, dVars):
-    '''
-    interface_object_declaration ::=
-        interface_constant_declaration
-      | interface_signal_declaration
-      | interface_variable_declaration
-      | interface_file_declaration
-    '''
-    if interface_signal_declaration.interface_signal_declaration(oObject, iObject, lObjects, dVars):
+        clear_flags(dVars)
         return True
     return False
 
 
 def clear_flags(dVars):
-
-    interface_signal_declaration.clear_flags(dVars)
+    interface_element.clear_flags(dVars)

@@ -5,7 +5,7 @@ from vsg import parser
 lModes = ['in', 'out', 'inout', 'buffer', 'linkage']
 
 
-def interface_signal_declaration(oObject, iObject, lObjects, dVars):
+def tokenize(oObject, iObject, lObjects, dVars):
     '''
     Classifies signal interface declarations:
 

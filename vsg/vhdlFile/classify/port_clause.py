@@ -33,7 +33,7 @@ def tokenize(oObject, iObject, lObjects, dVars):
                     interface_list.clear_flags(dVars)
                     return True
 
-                if interface_list.interface_list(oObject, iObject, lObjects, dVars):
+                if interface_list.tokenize(oObject, iObject, lObjects, dVars):
                     return True 
 
             else:
