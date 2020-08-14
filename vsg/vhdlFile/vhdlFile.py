@@ -17,6 +17,7 @@ from vsg.token import unbounded_array_definition
 from vsg.token import association_list
 from vsg.token import association_element
 from vsg.token import generic_map_aspect
+from vsg.token import concurrent_simple_signal_assignment
 
 from vsg import parser
 
@@ -305,6 +306,7 @@ class vhdlFile():
         self.classify_package_keywords()
         self.classify_array_keywords()
         self.classify_association_element_parts()
+        self.classify_concurrent_simple_signal_assignment_parts()
 #        self.print_debug()
 
 
@@ -546,6 +548,39 @@ class vhdlFile():
 
                 if type(oObject) == association_element.assignment and not bAssignmentFound:
                     bAssignmentFound = True
+
+    def classify_concurrent_simple_signal_assignment_parts(self):
+        '''
+        Assigns the correct objects to target, assignment and guarded objects in concurrent_simple_signal_assignments.
+        '''
+        bSemiColonFound = False
+        bAssignmentFound = False
+        for iLine, oLine in enumerate(self.lines[::-1]):
+            for iObject, oObject in enumerate(oLine.objects[::-1]):
+
+                if bSemiColonFound:
+
+                    if type(oObject) == parser.item and oObject.get_value().lower() == 'guarded':
+                        iIndex = len(oLine.objects) - iObject - 1
+                        oLine.objects[iIndex] = concurrent_simple_signal_assignment.guarded_keyword(oObject.get_value())
+
+                    if bAssignmentFound:
+
+                        if type(oObject) == parser.item:
+                            iIndex = len(oLine.objects) - iObject - 1
+                            oLine.objects[iIndex] = concurrent_simple_signal_assignment.target(oObject.get_value())
+                        elif type(oObject) != parser.comment and type(oObject) != parser.whitespace:
+                            bSemiColonFound = False
+                            bAssignmentFound = False
+
+                    if type(oObject) == parser.item and oObject.get_value() == '<=':
+                        iIndex = len(oLine.objects) - iObject - 1
+                        oLine.objects[iIndex] = concurrent_simple_signal_assignment.assignment(oObject.get_value())
+                        bAssignmentFound = True
+
+                if type(oObject) == concurrent_simple_signal_assignment.semicolon:
+                    bSemiColonFound = True
+
 
     def print_debug(self):
         for oLine in self.lines:

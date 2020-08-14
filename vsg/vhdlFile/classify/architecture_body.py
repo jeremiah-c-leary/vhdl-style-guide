@@ -2,6 +2,7 @@
 from vsg import parser
 from vsg.token import architecture_body
 from vsg.vhdlFile.classify import architecture_declarative_part
+from vsg.vhdlFile.classify import architecture_statement_part
 
 
 '''
@@ -18,12 +19,16 @@ end [ architecture ] [ architecture_simple_name ]
 
 def tokenize(oObject, iObject, lObjects, dVars):
     if not dVars['bArchitectureKeywordFound']:
+
         if classify_keyword(oObject, iObject, lObjects, dVars):
             return True
+
     else:
         if not dVars['bArchitectureIdentifierFound']:
+
             if classify_identifier(oObject, iObject, lObjects, dVars):
                 return True
+
         else:
             if not dVars['bArchitectureEntityNameFound']:
 
@@ -32,27 +37,40 @@ def tokenize(oObject, iObject, lObjects, dVars):
 
                 if classify_entity_name(oObject, iObject, lObjects, dVars):
                     return True
+
             else:
                 if not dVars['bArchitectureIsKeywordFound']:
+
                     if classify_is_keyword(oObject, iObject, lObjects, dVars):
                         return True
                 else:
                     if not dVars['bArchitectureBeginKeywordFound']:
+
                         if classify_begin_keyword(oObject, iObject, lObjects, dVars):
                             return True
+
                         if architecture_declarative_part.tokenize(oObject, iObject, lObjects, dVars):
                             return True
                     else:
                         if not dVars['bArchitectureEndKeywordFound']:
+
+                            if architecture_statement_part.tokenize(oObject, iObject, lObjects, dVars):
+                                return True
+
                             if classify_end(oObject, iObject, lObjects, dVars):
                                 return True
+
                         else:
+
                             if classify_end_architecture_keyword(oObject, iObject, lObjects, dVars):
                                 return True
+
                             if classify_semicolon(oObject, iObject, lObjects, dVars):
                                 return True
+
                             if classify_simple_name(oObject, iObject, lObjects, dVars):
                                 return True
+
     return False
 
 

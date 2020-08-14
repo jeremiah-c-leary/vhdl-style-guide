@@ -184,6 +184,18 @@ class subtype_definition(item):
     def __init__(self, sString):
         item.__init__(self, sString)
 
+
+class target(item):
+
+    def __init__(self, sString):
+        item.__init__(self, sString)
+
+
+class assignment(item):
+
+    def __init__(self, sString):
+        item.__init__(self, sString)
+
 ###############################################################################
 # Context objects
 ###############################################################################
