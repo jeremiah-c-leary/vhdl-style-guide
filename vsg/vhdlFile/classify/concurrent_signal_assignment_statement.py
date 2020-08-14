@@ -3,6 +3,7 @@ from vsg.token import concurrent_signal_assignment_statement as token
 
 from vsg.vhdlFile.classify import concurrent_simple_signal_assignment
 from vsg.vhdlFile.classify import concurrent_conditional_signal_assignment
+from vsg.vhdlFile.classify import concurrent_selected_signal_assignment
 
 
 def tokenize(oObject, iObject, lObjects, dVars):
@@ -14,6 +15,9 @@ def tokenize(oObject, iObject, lObjects, dVars):
     '''
 
     if classify_postponed_keyword(oObject, iObject, lObjects, dVars):
+        return True
+
+    if concurrent_selected_signal_assignment.tokenize(oObject, iObject, lObjects, dVars):
         return True
 
     if concurrent_conditional_signal_assignment.tokenize(oObject, iObject, lObjects, dVars):

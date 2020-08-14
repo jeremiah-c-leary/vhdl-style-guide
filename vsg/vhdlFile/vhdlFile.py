@@ -216,6 +216,14 @@ class vhdlFile():
         dVars['conditional_waveforms'] = {}
         dVars['conditional_waveforms']['when'] = False
 
+        dVars['concurrent_selected_signal_assignment'] = {}
+        dVars['concurrent_selected_signal_assignment']['with'] = False
+        dVars['concurrent_selected_signal_assignment']['select'] = False
+        dVars['concurrent_selected_signal_assignment']['assignment'] = False
+
+        dVars['selected_waveforms'] = {}
+        dVars['selected_waveforms']['when'] = False
+
         oLinePrevious = line.blank_line()
 
         for sLine in self.filecontent:
