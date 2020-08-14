@@ -19,6 +19,8 @@ from vsg.token import association_element
 from vsg.token import generic_map_aspect
 from vsg.token import concurrent_simple_signal_assignment
 from vsg.token import concurrent_conditional_signal_assignment
+from vsg.token import concurrent_selected_signal_assignment
+from vsg.token import concurrent_signal_assignment_statement
 
 from vsg import parser
 
@@ -320,6 +322,7 @@ class vhdlFile():
         self.classify_association_element_parts()
         self.classify_concurrent_simple_signal_assignment_parts()
         self.classify_concurrent_conditional_signal_assignment_parts()
+        self.classify_labels()
 #        self.print_debug()
 
 
@@ -579,9 +582,12 @@ class vhdlFile():
 
                     if bAssignmentFound:
 
-                        if type(oObject) == parser.item:
+                        if type(oObject) == parser.item and oObject.get_value() != ':':
                             iIndex = len(oLine.objects) - iObject - 1
                             oLine.objects[iIndex] = concurrent_simple_signal_assignment.target(oObject.get_value())
+                        elif type(oObject) == ':':
+                            bSemiColonFound = False
+                            bAssignmentFound = False
                         elif type(oObject) != parser.comment and type(oObject) != parser.whitespace:
                             bSemiColonFound = False
                             bAssignmentFound = False
@@ -612,9 +618,12 @@ class vhdlFile():
 
                     if bAssignmentFound:
 
-                        if type(oObject) == parser.item:
+                        if type(oObject) == parser.item and oObject.get_value() != ':':
                             iIndex = len(oLine.objects) - iObject - 1
                             oLine.objects[iIndex] = concurrent_conditional_signal_assignment.target(oObject.get_value())
+                        elif type(oObject) == ':':
+                            bSemiColonFound = False
+                            bAssignmentFound = False
                         elif type(oObject) != parser.comment and type(oObject) != parser.whitespace:
                             bSemiColonFound = False
                             bAssignmentFound = False
@@ -626,6 +635,52 @@ class vhdlFile():
 
                 if type(oObject) == concurrent_conditional_signal_assignment.semicolon:
                     bSemiColonFound = True
+
+    def classify_labels(self):
+        '''
+        Assigns the correct objects to labels.
+        '''
+        bSearchForConcurrentSignalAssignmentStatementLabel = False
+        bColonFound = False
+        for iLine, oLine in enumerate(self.lines[::-1]):
+            for iObject, oObject in enumerate(oLine.objects[::-1]):
+
+                if bSearchForConcurrentSignalAssignmentStatementLabel:
+
+                    if bColonFound:
+                        if type(oObject) == parser.item:
+                            iIndex = len(oLine.objects) - iObject - 1
+                            oLine.objects[iIndex] = concurrent_signal_assignment_statement.label_name(oObject.get_value())
+                            bColonFound = False
+                            bSearchForConcurrentSignalAssignmentStatementLabel = False
+                            continue
+
+                    if type(oObject) == parser.item and oObject.get_value() == ':':
+                        iIndex = len(oLine.objects) - iObject - 1
+                        oLine.objects[iIndex] = concurrent_signal_assignment_statement.label_colon()
+                        bColonFound = True
+                        continue
+
+                    if type(oObject) != parser.comment and type(oObject) != parser.whitespace:
+                        if type(oObject) == concurrent_signal_assignment_statement.postponed_keyword:
+                            continue
+                        elif type(oObject) == concurrent_simple_signal_assignment.target:
+                            continue
+                        elif type(oObject) == concurrent_conditional_signal_assignment.target:
+                            continue
+                        else:
+                            bColonFound = False
+                            bSearchForConcurrentSignalAssignmentStatementLabel = False
+
+                if type(oObject) == concurrent_selected_signal_assignment.with_keyword:
+                    bSearchForConcurrentSignalAssignmentStatementLabel = True
+
+                if type(oObject) == concurrent_conditional_signal_assignment.assignment:
+                    bSearchForConcurrentSignalAssignmentStatementLabel = True
+
+                if type(oObject) == concurrent_simple_signal_assignment.assignment:
+                    bSearchForConcurrentSignalAssignmentStatementLabel = True
+
 
     def print_debug(self):
         for oLine in self.lines:

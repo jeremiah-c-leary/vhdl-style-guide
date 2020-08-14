@@ -32,7 +32,7 @@ def tokenize(oObject, iObject, lObjects, dVars):
 def classify_postponed_keyword(oObject, iObject, lObjects, dVars):
     sValue = oObject.get_value()
     if sValue.lower() == 'postponed':
-        lObjects[iObject] = token.postposed_keyword(sValue)
+        lObjects[iObject] = token.postponed_keyword(sValue)
 
 
 def clear_flags(dVars):
