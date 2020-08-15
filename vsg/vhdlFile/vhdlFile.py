@@ -25,6 +25,7 @@ from vsg.token import concurrent_assertion_statement
 from vsg.token import assertion
 from vsg.token import concurrent_procedure_call_statement
 from vsg.token import procedure_call
+from vsg.token import process_statement
 
 from vsg import parser
 
@@ -235,9 +236,18 @@ class vhdlFile():
 
         dVars['concurrent_procedure_call_statement'] = False
 
+        dVars['assertion_statement'] = False
+
         dVars['procedure_call'] = {}
         dVars['procedure_call']['procedure_name'] = False
         dVars['procedure_call']['open_parenthesis'] = False
+
+        dVars['process_statement'] = {}
+        dVars['process_statement']['keyword'] = False
+        dVars['process_statement']['open_parenthesis'] = False
+        dVars['process_statement']['close_parenthesis'] = False
+        dVars['process_statement']['begin'] = False
+        dVars['process_statement']['end'] = False
 
         oLinePrevious = line.blank_line()
 
@@ -338,6 +348,7 @@ class vhdlFile():
         self.classify_concurrent_signal_assignment_labels()
         self.classify_concurrent_assertion_statement_labels()
         self.classify_concurrent_procedure_call_statement_labels()
+        self.classify_process_statement_labels()
 #        self.print_debug()
 
 
@@ -812,6 +823,54 @@ class vhdlFile():
                         bTrigger = False
 
                 if type(oObject) == procedure_call.open_parenthesis:
+#                    print('---> trigger')
+                    bTrigger = True
+
+    def classify_process_statement_labels(self):
+        '''
+        Assigns the correct objects to labels.
+        '''
+
+        bTrigger = False
+        bColonFound = False
+        bProcedureName = False
+        for iLine, oLine in enumerate(self.lines[::-1]):
+#            print(oLine.line)
+            for iObject, oObject in enumerate(oLine.objects[::-1]):
+#                print(oObject)
+
+                if bTrigger:
+
+                    if bColonFound:
+                        if type(oObject) == parser.item:
+                            iIndex = len(oLine.objects) - iObject - 1
+                            oLine.objects[iIndex] = process_statement.label_name(oObject.get_value())
+                            bColonFound = False
+                            bTrigger = False
+                            bProcedureName = False
+                            continue
+
+                    else: 
+
+                        if type(oObject) == parser.item and oObject.get_value() == ':':
+                            iIndex = len(oLine.objects) - iObject - 1
+                            oLine.objects[iIndex] = process_statement.label_colon()
+                            bColonFound = True
+                            continue
+
+                        if type(oObject) == parser.item and oObject.get_value() == 'postponed':
+                            iIndex = len(oLine.objects) - iObject - 1
+                            oLine.objects[iIndex] = process_statement.postponed_keyword(oObject.get_value())
+                            continue
+
+
+                    if type(oObject) != parser.comment and type(oObject) != parser.whitespace:
+#                        print('---> end <' + '-'*80)
+                        bProcedureName = False
+                        bColonFound = False
+                        bTrigger = False
+
+                if type(oObject) == process_statement.keyword:
 #                    print('---> trigger')
                     bTrigger = True
 

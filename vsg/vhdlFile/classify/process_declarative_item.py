@@ -3,10 +3,12 @@ from vsg.vhdlFile.classify import alias_declaration
 from vsg.vhdlFile.classify import attribute_declaration
 from vsg.vhdlFile.classify import constant_declaration
 from vsg.vhdlFile.classify import file_declaration
+from vsg.vhdlFile.classify import subprogram_declaration
 from vsg.vhdlFile.classify import subtype_declaration
 from vsg.vhdlFile.classify import type_declaration
 from vsg.vhdlFile.classify import use_clause
 from vsg.vhdlFile.classify import variable_declaration
+
 
 def tokenize(oObject, iObject, lObjects, dVars):
     '''
@@ -29,6 +31,9 @@ def tokenize(oObject, iObject, lObjects, dVars):
       | group_template_declaration
       | group_declaration
     '''
+
+    if subprogram_declaration.tokenize(oObject, iObject, lObjects, dVars):
+        return True
 
     if type_declaration.tokenize(oObject, iObject, lObjects, dVars):
         return True
@@ -55,3 +60,15 @@ def tokenize(oObject, iObject, lObjects, dVars):
         return True
 
     return False
+
+
+def clear_flags(dVars):
+    type_declaration.clear_flags(dVars)
+    subprogram_declaration.clear_flags(dVars)
+    subtype_declaration.clear_flags(dVars)
+    constant_declaration.clear_flags(dVars)
+    variable_declaration.clear_flags(dVars)
+    file_declaration.clear_flags(dVars)
+    alias_declaration.clear_flags(dVars)
+    attribute_declaration.clear_flags(dVars)
+    use_clause.clear_flags(dVars)
