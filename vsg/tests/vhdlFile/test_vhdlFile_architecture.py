@@ -95,7 +95,7 @@ class testVhdlFileMethods(unittest.TestCase):
         lExpected.append((11,0))
         lExpected.append((18,0))
         lExpected.append((25,0))
-
+#        utils.print_objects(oFile, True)
         lActual = []
         for iLine, lLine in enumerate(oFile.get_lines()):
             for iItem, oItem in enumerate(lLine.objects):

@@ -23,6 +23,8 @@ from vsg.token import concurrent_selected_signal_assignment
 from vsg.token import concurrent_signal_assignment_statement
 from vsg.token import concurrent_assertion_statement
 from vsg.token import assertion
+from vsg.token import concurrent_procedure_call_statement
+from vsg.token import procedure_call
 
 from vsg import parser
 
@@ -231,6 +233,12 @@ class vhdlFile():
 
         dVars['concurrent_assertion_statement'] = False
 
+        dVars['concurrent_procedure_call_statement'] = False
+
+        dVars['procedure_call'] = {}
+        dVars['procedure_call']['procedure_name'] = False
+        dVars['procedure_call']['open_parenthesis'] = False
+
         oLinePrevious = line.blank_line()
 
         for sLine in self.filecontent:
@@ -329,6 +337,7 @@ class vhdlFile():
         self.classify_concurrent_conditional_signal_assignment_parts()
         self.classify_concurrent_signal_assignment_labels()
         self.classify_concurrent_assertion_statement_labels()
+        self.classify_concurrent_procedure_call_statement_labels()
 #        self.print_debug()
 
 
@@ -550,7 +559,10 @@ class vhdlFile():
         for iLine, oLine in enumerate(self.lines[::-1]):
             for iObject, oObject in enumerate(oLine.objects[::-1]):
                 if type(oObject) == generic_map_aspect.open_parenthesis:
-                    bCommadFound = False
+                    bCommaFound = False
+                
+                if type(oObject) == procedure_call.open_parenthesis:
+                    bCommaFound = False
 
                 if type(oObject) == parser.item and bCommaFound:
                     iIndex = len(oLine.objects) - iObject - 1
@@ -560,6 +572,9 @@ class vhdlFile():
                     bCommaFound = True
 
                 if type(oObject) == generic_map_aspect.close_parenthesis and not bCommaFound:
+                    bCommaFound = True
+
+                if type(oObject) == procedure_call.close_parenthesis and not bCommaFound:
                     bCommaFound = True
 
                 if type(oObject) == parser.item and bAssignmentFound:
@@ -742,6 +757,63 @@ class vhdlFile():
                 if type(oObject) == concurrent_assertion_statement.semicolon:
                     bLabel = True
 
+    def classify_concurrent_procedure_call_statement_labels(self):
+        '''
+        Assigns the correct objects to labels.
+        '''
+
+        bTrigger = False
+        bColonFound = False
+        bProcedureName = False
+        for iLine, oLine in enumerate(self.lines[::-1]):
+#            print(oLine.line)
+            for iObject, oObject in enumerate(oLine.objects[::-1]):
+#                print(oObject)
+
+                if bTrigger:
+
+                    if not bProcedureName:
+
+                        if type(oObject) == parser.item:
+#                            print('----> procedure_name')
+                            iIndex = len(oLine.objects) - iObject - 1
+                            oLine.objects[iIndex] = procedure_call.procedure_name(oObject.get_value())
+                            bProcedureName = True
+                            continue
+    
+
+                    if bColonFound:
+                        if type(oObject) == parser.item:
+                            iIndex = len(oLine.objects) - iObject - 1
+                            oLine.objects[iIndex] = concurrent_procedure_call_statement.label_name(oObject.get_value())
+                            bColonFound = False
+                            bTrigger = False
+                            bProcedureName = False
+                            continue
+
+                    else: 
+
+                        if type(oObject) == parser.item and oObject.get_value() == ':':
+                            iIndex = len(oLine.objects) - iObject - 1
+                            oLine.objects[iIndex] = concurrent_procedure_call_statement.label_colon()
+                            bColonFound = True
+                            continue
+
+                        if type(oObject) == parser.item and oObject.get_value() == 'postponed':
+                            iIndex = len(oLine.objects) - iObject - 1
+                            oLine.objects[iIndex] = concurrent_procedure_call_statement.postponed_keyword(oObject.get_value())
+                            continue
+
+
+                    if type(oObject) != parser.comment and type(oObject) != parser.whitespace:
+#                        print('---> end <' + '-'*80)
+                        bProcedureName = False
+                        bColonFound = False
+                        bTrigger = False
+
+                if type(oObject) == procedure_call.open_parenthesis:
+#                    print('---> trigger')
+                    bTrigger = True
 
     def print_debug(self):
         for oLine in self.lines:
