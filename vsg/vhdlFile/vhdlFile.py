@@ -21,6 +21,8 @@ from vsg.token import concurrent_simple_signal_assignment
 from vsg.token import concurrent_conditional_signal_assignment
 from vsg.token import concurrent_selected_signal_assignment
 from vsg.token import concurrent_signal_assignment_statement
+from vsg.token import concurrent_assertion_statement
+from vsg.token import assertion
 
 from vsg import parser
 
@@ -121,9 +123,10 @@ class vhdlFile():
         dVars['bSharedVariableColonFound'] = False
         dVars['bSharedVariableAssignmentOperatorFound'] = False
 
-        dVars['bAssertKeywordFound'] = False
-        dVars['bAssertReportKeywordFound'] = False
-        dVars['bAssertSeverityKeywordFound'] = False
+        dVars['assertion'] = {}
+        dVars['assertion']['keyword'] = False
+        dVars['assertion']['report'] = False
+        dVars['assertion']['severity'] = False
 
         dVars['bFileKeywordFound'] = False
         dVars['bFileColonFound'] = False
@@ -226,6 +229,8 @@ class vhdlFile():
         dVars['selected_waveforms'] = {}
         dVars['selected_waveforms']['when'] = False
 
+        dVars['concurrent_assertion_statement'] = False
+
         oLinePrevious = line.blank_line()
 
         for sLine in self.filecontent:
@@ -322,7 +327,8 @@ class vhdlFile():
         self.classify_association_element_parts()
         self.classify_concurrent_simple_signal_assignment_parts()
         self.classify_concurrent_conditional_signal_assignment_parts()
-        self.classify_labels()
+        self.classify_concurrent_signal_assignment_labels()
+        self.classify_concurrent_assertion_statement_labels()
 #        self.print_debug()
 
 
@@ -579,10 +585,11 @@ class vhdlFile():
                     if type(oObject) == parser.item and oObject.get_value().lower() == 'guarded':
                         iIndex = len(oLine.objects) - iObject - 1
                         oLine.objects[iIndex] = concurrent_simple_signal_assignment.guarded_keyword(oObject.get_value())
+                        continue
 
                     if bAssignmentFound:
 
-                        if type(oObject) == parser.item and oObject.get_value() != ':':
+                        if type(oObject) == parser.item and oObject.get_value() != ':' and oObject.get_value().lower() != 'postponed':
                             iIndex = len(oLine.objects) - iObject - 1
                             oLine.objects[iIndex] = concurrent_simple_signal_assignment.target(oObject.get_value())
                         elif type(oObject) == ':':
@@ -599,7 +606,6 @@ class vhdlFile():
 
                 if type(oObject) == concurrent_simple_signal_assignment.semicolon:
                     bSemiColonFound = True
-
 
     def classify_concurrent_conditional_signal_assignment_parts(self):
         '''
@@ -618,7 +624,7 @@ class vhdlFile():
 
                     if bAssignmentFound:
 
-                        if type(oObject) == parser.item and oObject.get_value() != ':':
+                        if type(oObject) == parser.item and oObject.get_value() != ':' and oObject.get_value().lower() != 'postponed':
                             iIndex = len(oLine.objects) - iObject - 1
                             oLine.objects[iIndex] = concurrent_conditional_signal_assignment.target(oObject.get_value())
                         elif type(oObject) == ':':
@@ -636,7 +642,7 @@ class vhdlFile():
                 if type(oObject) == concurrent_conditional_signal_assignment.semicolon:
                     bSemiColonFound = True
 
-    def classify_labels(self):
+    def classify_concurrent_signal_assignment_labels(self):
         '''
         Assigns the correct objects to labels.
         '''
@@ -644,7 +650,6 @@ class vhdlFile():
         bColonFound = False
         for iLine, oLine in enumerate(self.lines[::-1]):
             for iObject, oObject in enumerate(oLine.objects[::-1]):
-
                 if bSearchForConcurrentSignalAssignmentStatementLabel:
 
                     if bColonFound:
@@ -654,6 +659,11 @@ class vhdlFile():
                             bColonFound = False
                             bSearchForConcurrentSignalAssignmentStatementLabel = False
                             continue
+
+                    if type(oObject) == parser.item and oObject.get_value().lower() == 'postponed':
+                        iIndex = len(oLine.objects) - iObject - 1
+                        oLine.objects[iIndex] = concurrent_signal_assignment_statement.postponed_keyword(oObject.get_value())
+                        continue
 
                     if type(oObject) == parser.item and oObject.get_value() == ':':
                         iIndex = len(oLine.objects) - iObject - 1
@@ -680,6 +690,57 @@ class vhdlFile():
 
                 if type(oObject) == concurrent_simple_signal_assignment.assignment:
                     bSearchForConcurrentSignalAssignmentStatementLabel = True
+
+    def classify_concurrent_assertion_statement_labels(self):
+        '''
+        Assigns the correct objects to labels.
+        '''
+
+        bLabel = False
+        bColonFound = False
+        for iLine, oLine in enumerate(self.lines[::-1]):
+            for iObject, oObject in enumerate(oLine.objects[::-1]):
+
+                if bLabel:
+
+                    if bColonFound:
+                        if type(oObject) == parser.item:
+                            iIndex = len(oLine.objects) - iObject - 1
+                            oLine.objects[iIndex] = concurrent_assertion_statement.label_name(oObject.get_value())
+                            bColonFound = False
+                            bLabel = False
+                            continue
+
+                    if type(oObject) == parser.item and oObject.get_value() == 'postponed':
+                        iIndex = len(oLine.objects) - iObject - 1
+                        oLine.objects[iIndex] = concurrent_assertion_statement.postponed_keyword(oObject.get_value())
+                        continue
+
+                    if type(oObject) == parser.item and oObject.get_value() == ':':
+                        iIndex = len(oLine.objects) - iObject - 1
+                        oLine.objects[iIndex] = concurrent_assertion_statement.label_colon()
+                        bColonFound = True
+                        continue
+
+                    if type(oObject) != parser.comment and type(oObject) != parser.whitespace:
+                        if type(oObject) == assertion.report_expression:
+                            continue
+                        elif type(oObject) == assertion.severity_expression:
+                            continue
+                        elif type(oObject) == assertion.report_keyword:
+                            continue
+                        elif type(oObject) == assertion.severity_keyword:
+                            continue
+                        elif type(oObject) == assertion.keyword:
+                            continue
+                        elif type(oObject) == assertion.condition:
+                            continue
+                        else:
+                            bColonFound = False
+                            bLabel = False
+
+                if type(oObject) == concurrent_assertion_statement.semicolon:
+                    bLabel = True
 
 
     def print_debug(self):

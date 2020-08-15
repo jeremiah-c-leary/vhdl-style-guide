@@ -14,9 +14,6 @@ def tokenize(oObject, iObject, lObjects, dVars):
       | [ label : ] [ postponed ] concurrent_selected_signal_assignment
     '''
 
-    if classify_postponed_keyword(oObject, iObject, lObjects, dVars):
-        return True
-
     if concurrent_selected_signal_assignment.tokenize(oObject, iObject, lObjects, dVars):
         return True
 
@@ -27,12 +24,6 @@ def tokenize(oObject, iObject, lObjects, dVars):
         return True
 
     return False
-
-
-def classify_postponed_keyword(oObject, iObject, lObjects, dVars):
-    sValue = oObject.get_value()
-    if sValue.lower() == 'postponed':
-        lObjects[iObject] = token.postponed_keyword(sValue)
 
 
 def clear_flags(dVars):
