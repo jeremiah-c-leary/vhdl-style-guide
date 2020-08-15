@@ -85,12 +85,13 @@ class vhdlFile():
         dVars['bInsideUse'] = False
         dVars['bUseClauseKeywordFound'] = False
 
-        dVars['bArchitectureKeywordFound'] = False
-        dVars['bArchitectureIdentifierFound'] = False
-        dVars['bArchitectureEntityNameFound'] = False
-        dVars['bArchitectureIsKeywordFound'] = False
-        dVars['bArchitectureBeginKeywordFound'] = False
-        dVars['bArchitectureEndKeywordFound'] = False
+        dVars['architecture_body'] = {}
+        dVars['architecture_body']['keyword'] = False
+        dVars['architecture_body']['identifier'] = False
+        dVars['architecture_body']['entity_name'] = False
+        dVars['architecture_body']['is'] = False
+        dVars['architecture_body']['begin'] = False
+        dVars['architecture_body']['end'] = False
 
         dVars['bEntityKeywordFound'] = False
         dVars['bEntityIdentifierFound'] = False

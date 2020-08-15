@@ -1,36 +1,37 @@
 
 from vsg import parser
-from vsg.token import architecture_body
+
+from vsg.token import architecture_body as token
+
 from vsg.vhdlFile.classify import architecture_declarative_part
 from vsg.vhdlFile.classify import architecture_statement_part
 
 
-'''
-architecture identifier of entity_name is
-
-    architecture_declarative_part
-
-begin
-
-    architecture_statement_part
-
-end [ architecture ] [ architecture_simple_name ] 
-'''
-
 def tokenize(oObject, iObject, lObjects, dVars):
-    if not dVars['bArchitectureKeywordFound']:
+    '''
+    architecture identifier of *entity*_name is
+    
+        architecture_declarative_part
+    
+    begin
+    
+        architecture_statement_part
+    
+    end [ architecture ] [ architecture_simple_name ] 
+    '''
+    if not dVars['architecture_body']['keyword']:
 
         if classify_keyword(oObject, iObject, lObjects, dVars):
             return True
 
     else:
-        if not dVars['bArchitectureIdentifierFound']:
+        if not dVars['architecture_body']['identifier']:
 
             if classify_identifier(oObject, iObject, lObjects, dVars):
                 return True
 
         else:
-            if not dVars['bArchitectureEntityNameFound']:
+            if not dVars['architecture_body']['entity_name']:
 
                 if classify_of_keyword(oObject, iObject, lObjects, dVars):
                     return True
@@ -39,12 +40,12 @@ def tokenize(oObject, iObject, lObjects, dVars):
                     return True
 
             else:
-                if not dVars['bArchitectureIsKeywordFound']:
+                if not dVars['architecture_body']['is']:
 
                     if classify_is_keyword(oObject, iObject, lObjects, dVars):
                         return True
                 else:
-                    if not dVars['bArchitectureBeginKeywordFound']:
+                    if not dVars['architecture_body']['begin']:
 
                         if classify_begin_keyword(oObject, iObject, lObjects, dVars):
                             return True
@@ -52,7 +53,7 @@ def tokenize(oObject, iObject, lObjects, dVars):
                         if architecture_declarative_part.tokenize(oObject, iObject, lObjects, dVars):
                             return True
                     else:
-                        if not dVars['bArchitectureEndKeywordFound']:
+                        if not dVars['architecture_body']['end']:
 
                             if architecture_statement_part.tokenize(oObject, iObject, lObjects, dVars):
                                 return True
@@ -77,16 +78,16 @@ def tokenize(oObject, iObject, lObjects, dVars):
 def classify_keyword(oObject, iObject, lObjects, dVars):
     sValue = oObject.get_value()
     if sValue.lower() == 'architecture':
-        lObjects[iObject] = architecture_body.keyword(sValue)
-        dVars['bArchitectureKeywordFound'] = True 
+        lObjects[iObject] = token.keyword(sValue)
+        dVars['architecture_body']['keyword'] = True 
         return True
     return False
 
 
 def classify_identifier(oObject, iObject, lObjects, dVars):
     if type(oObject) == parser.item:
-        lObjects[iObject] = architecture_body.identifier(oObject.get_value())
-        dVars['bArchitectureIdentifierFound'] = True
+        lObjects[iObject] = token.identifier(oObject.get_value())
+        dVars['architecture_body']['identifier'] = True
         return True
     return False
 
@@ -94,15 +95,15 @@ def classify_identifier(oObject, iObject, lObjects, dVars):
 def classify_of_keyword(oObject, iObject, lObjects, dVars):
     sValue = oObject.get_value()
     if sValue.lower() == 'of':
-        lObjects[iObject] = architecture_body.of_keyword(sValue)
+        lObjects[iObject] = token.of_keyword(sValue)
         return True
     return False
 
 
 def classify_entity_name(oObject, iObject, lObjects, dVars):
     if type(oObject) == parser.item:
-        lObjects[iObject] = architecture_body.entity_name(oObject.get_value())
-        dVars['bArchitectureEntityNameFound'] = True
+        lObjects[iObject] = token.entity_name(oObject.get_value())
+        dVars['architecture_body']['entity_name'] = True
         return True
     return False
 
@@ -110,8 +111,8 @@ def classify_entity_name(oObject, iObject, lObjects, dVars):
 def classify_is_keyword(oObject, iObject, lObjects, dVars):
     sValue = oObject.get_value()
     if sValue.lower() == 'is':
-        lObjects[iObject] = architecture_body.is_keyword(sValue)
-        dVars['bArchitectureIsKeywordFound'] = True
+        lObjects[iObject] = token.is_keyword(sValue)
+        dVars['architecture_body']['is'] = True
         return True
     return False
 
@@ -119,8 +120,8 @@ def classify_is_keyword(oObject, iObject, lObjects, dVars):
 def classify_begin_keyword(oObject, iObject, lObjects, dVars):
     sValue = oObject.get_value()
     if sValue.lower() == 'begin':
-        lObjects[iObject] = architecture_body.begin_keyword(sValue)
-        dVars['bArchitectureBeginKeywordFound'] = True
+        lObjects[iObject] = token.begin_keyword(sValue)
+        dVars['architecture_body']['begin'] = True
         return True
     return False
 
@@ -128,8 +129,8 @@ def classify_begin_keyword(oObject, iObject, lObjects, dVars):
 def classify_end(oObject, iObject, lObjects, dVars):
     sValue = oObject.get_value()
     if sValue.lower() == 'end':
-        lObjects[iObject] = architecture_body.end_keyword(sValue)
-        dVars['bArchitectureEndKeywordFound'] = True 
+        lObjects[iObject] = token.end_keyword(sValue)
+        dVars['architecture_body']['end'] = True
         return True
     return False
 
@@ -137,31 +138,31 @@ def classify_end(oObject, iObject, lObjects, dVars):
 def classify_end_architecture_keyword(oObject, iObject, lObjects, dVars):
     sValue = oObject.get_value()
     if sValue.lower() == 'architecture':
-        lObjects[iObject] = architecture_body.end_architecture_keyword(oObject)
+        lObjects[iObject] = token.end_architecture_keyword(oObject)
         return True
     return False
 
 
 def classify_simple_name(oObject, iObject, lObjects, dVars):
     if type(oObject) == parser.item:
-        lObjects[iObject] = architecture_body.simple_name(oObject.get_value())
+        lObjects[iObject] = token.simple_name(oObject.get_value())
         return True
     return False
 
 
 def classify_semicolon(oObject, iObject, lObjects, dVars):
     if oObject.get_value() == ';':
-        lObjects[iObject] = architecture_body.semicolon()
+        lObjects[iObject] = token.semicolon()
         clear_flags(dVars)
         return True
     return False
 
 
 def clear_flags(dVars):
-        dVars['bArchitectureKeywordFound'] = False
-        dVars['bArchitectureIdentifierFound'] = False
-        dVars['bArchitectureEntityNameFound'] = False
-        dVars['bArchitectureIsKeywordFound'] = False
-        dVars['bArchitectureBeginKeywordFound'] = False
-        dVars['bArchitectureEndKeywordFound'] = False
+    dVars['architecture_body']['keyword'] = False
+    dVars['architecture_body']['identifier'] = False
+    dVars['architecture_body']['entity_name'] = False
+    dVars['architecture_body']['is'] = False
+    dVars['architecture_body']['begin'] = False
+    dVars['architecture_body']['end'] = False
 
