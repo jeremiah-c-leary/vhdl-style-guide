@@ -39,4 +39,3 @@ class testVhdlFileMethods(unittest.TestCase):
         lExpected = [21]
         lActual = [i for i, l in enumerate(oFileBlock.lines) if l.isInstantiationDeclaration]
         self.assertEqual(lActual, lExpected)
-

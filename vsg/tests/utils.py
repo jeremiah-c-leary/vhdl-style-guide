@@ -91,12 +91,19 @@ def validate_token(self, oFile, lExpected, oToken, bDebug=False):
 
         self.assertEqual(lExpected, lActual)
 
-def print_objects(oFile, bIgnoreWhiteSpace=False):
+def extract_objects(oFile, bIgnoreWhiteSpace=False):
+    lReturn = []
     for iLine, oLine in enumerate(oFile.lines):
-        print('-'*80)
-        print(f'{iLine} | {oLine.indentLevel} | {oLine.line}')
+        lReturn.append('-'*80)
+        lReturn.append(f'{iLine} | {oLine.indentLevel} | {oLine.line}')
         for oObject in oLine.objects:
             if bIgnoreWhiteSpace:
                 if type(oObject) == parser.whitespace:
                     continue
-            print(oObject)
+            lReturn.append(type(oObject))
+    return lReturn
+
+def print_objects(oFile, bIgnoreWhiteSpace=False):
+    for line in extract_objects(oFile, bIgnoreWhiteSpace):
+        print(line)
+

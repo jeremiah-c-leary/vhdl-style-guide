@@ -23,9 +23,11 @@ from vsg.token import concurrent_selected_signal_assignment
 from vsg.token import concurrent_signal_assignment_statement
 from vsg.token import concurrent_assertion_statement
 from vsg.token import assertion
+from vsg.token import assertion_statement
 from vsg.token import concurrent_procedure_call_statement
 from vsg.token import procedure_call
 from vsg.token import process_statement
+from vsg.token import block_statement
 
 from vsg import parser
 
@@ -199,7 +201,6 @@ class vhdlFile():
         dVars['type_declaration']['file_type_definition'] = {}
         dVars['type_declaration']['file_type_definition']['keyword'] = False
 
-
         dVars['procedure_specification'] = {}
         dVars['procedure_specification']['keyword'] = False
         dVars['procedure_specification']['designator'] = False
@@ -221,6 +222,11 @@ class vhdlFile():
         dVars['generic_map_aspect']['keyword'] = False
         dVars['generic_map_aspect']['open_parenthesis'] = False
         dVars['generic_map_aspect']['close_parenthesis'] = False
+
+        dVars['port_map_aspect'] = {}
+        dVars['port_map_aspect']['keyword'] = False
+        dVars['port_map_aspect']['open_parenthesis'] = False
+        dVars['port_map_aspect']['close_parenthesis'] = False
 
         dVars['conditional_waveforms'] = {}
         dVars['conditional_waveforms']['when'] = False
@@ -249,6 +255,15 @@ class vhdlFile():
         dVars['process_statement']['close_parenthesis'] = False
         dVars['process_statement']['begin'] = False
         dVars['process_statement']['end'] = False
+
+        dVars['block_statement'] = {}
+        dVars['block_statement']['keyword'] = False
+        dVars['block_statement']['is'] = False
+        dVars['block_statement']['begin'] = False
+        dVars['block_statement']['end'] = False
+
+        dVars['history'] = []
+        dVars['caller'] = ''
 
         oLinePrevious = line.blank_line()
 
@@ -348,8 +363,10 @@ class vhdlFile():
         self.classify_concurrent_conditional_signal_assignment_parts()
         self.classify_concurrent_signal_assignment_labels()
         self.classify_concurrent_assertion_statement_labels()
+        self.classify_assertion_statement_labels()
         self.classify_concurrent_procedure_call_statement_labels()
         self.classify_process_statement_labels()
+        self.classify_block_statement_labels()
 #        self.print_debug()
 
 
@@ -769,6 +786,53 @@ class vhdlFile():
                 if type(oObject) == concurrent_assertion_statement.semicolon:
                     bLabel = True
 
+    def classify_assertion_statement_labels(self):
+        '''
+        Assigns the correct objects to labels.
+        '''
+
+        bLabel = False
+        bColonFound = False
+        for iLine, oLine in enumerate(self.lines[::-1]):
+            for iObject, oObject in enumerate(oLine.objects[::-1]):
+
+                if bLabel:
+
+                    if bColonFound:
+                        if type(oObject) == parser.item:
+                            iIndex = len(oLine.objects) - iObject - 1
+                            oLine.objects[iIndex] = assertion_statement.label(oObject.get_value())
+                            bColonFound = False
+                            bLabel = False
+                            continue
+                        continue
+
+                    if type(oObject) == parser.item and oObject.get_value() == ':':
+                        iIndex = len(oLine.objects) - iObject - 1
+                        oLine.objects[iIndex] = assertion_statement.label_colon()
+                        bColonFound = True
+                        continue
+
+                    if type(oObject) != parser.comment and type(oObject) != parser.whitespace:
+                        if type(oObject) == assertion.report_expression:
+                            continue
+                        elif type(oObject) == assertion.severity_expression:
+                            continue
+                        elif type(oObject) == assertion.report_keyword:
+                            continue
+                        elif type(oObject) == assertion.severity_keyword:
+                            continue
+                        elif type(oObject) == assertion.keyword:
+                            continue
+                        elif type(oObject) == assertion.condition:
+                            continue
+                        else:
+                            bColonFound = False
+                            bLabel = False
+
+                if type(oObject) == assertion_statement.semicolon:
+                    bLabel = True
+
     def classify_concurrent_procedure_call_statement_labels(self):
         '''
         Assigns the correct objects to labels.
@@ -872,6 +936,46 @@ class vhdlFile():
                         bTrigger = False
 
                 if type(oObject) == process_statement.keyword:
+#                    print('---> trigger')
+                    bTrigger = True
+
+
+    def classify_block_statement_labels(self):
+        '''
+        Assigns the correct objects to labels.
+        '''
+
+        bTrigger = False
+        bColonFound = False
+        for iLine, oLine in enumerate(self.lines[::-1]):
+#            print(oLine.line)
+            for iObject, oObject in enumerate(oLine.objects[::-1]):
+#                print(oObject)
+
+                if bTrigger:
+
+                    if bColonFound:
+                        if type(oObject) == parser.item:
+                            iIndex = len(oLine.objects) - iObject - 1
+                            oLine.objects[iIndex] = block_statement.label_name(oObject.get_value())
+                            bColonFound = False
+                            bTrigger = False
+                            continue
+
+                    else: 
+
+                        if type(oObject) == parser.item and oObject.get_value() == ':':
+                            iIndex = len(oLine.objects) - iObject - 1
+                            oLine.objects[iIndex] = block_statement.label_colon()
+                            bColonFound = True
+                            continue
+
+                    if type(oObject) != parser.comment and type(oObject) != parser.whitespace:
+#                        print('---> end <' + '-'*80)
+                        bColonFound = False
+                        bTrigger = False
+
+                if type(oObject) == block_statement.keyword:
 #                    print('---> trigger')
                     bTrigger = True
 
