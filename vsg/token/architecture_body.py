@@ -51,5 +51,5 @@ class simple_name(parser.simple_name):
 
 class semicolon(parser.semicolon):
 
-    def __init__(self):
+    def __init__(self, sString=';'):
         parser.semicolon.__init__(self)

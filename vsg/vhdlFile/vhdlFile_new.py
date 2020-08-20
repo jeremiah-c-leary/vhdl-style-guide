@@ -4,10 +4,13 @@ from vsg import line
 from vsg.vhdlFile.classify_new import blank
 from vsg.vhdlFile.classify_new import whitespace
 from vsg.vhdlFile.classify_new import comment
+from vsg.vhdlFile.classify_new import architecture_body
 
 from vsg import parser
 
 from vsg import token
+
+from vsg.vhdlFile import utils
 
 
 class vhdlFile():
@@ -58,33 +61,21 @@ class vhdlFile():
 
         lNewObjects = []
         for iObject, oObject in enumerate(lAllObjects):
-            if type(oObject) == parser.carriage_return:
-                lNewObjects.append(oObject)
-                continue
-            if type(oObject) == parser.blank_line:
-                lNewObjects.append(oObject)
-                continue
-            if type(oObject) == parser.comment:
-                lNewObjects.append(oObject)
-                continue
-            if type(oObject) == parser.whitespace:
-                lNewObjects.append(oObject)
+            if is_whitespace(oObject, lNewObjects):
                 continue
 #            if iObject > 0:
 #                print('[' + ']['.join(dVars['history']) + ']')
 #                print(oObject.get_value())
-            if current_level(dVars) == 'design_unit':
-                if oObject.get_value().lower() == 'entity':
-                   lNewObjects.append(token.entity.keyword(oObject.get_value()))
-                   push_level(dVars, 'entity_declaration')
-                elif oObject.get_value().lower() == 'architecture':
-                   lNewObjects.append(token.architecture_body.keyword(oObject.get_value()))
-                   push_level(dVars, 'architecture_body')
+            if utils.is_current_level(dVars, 'design_unit'):
+                if utils.is_object('entity', token.entity.keyword, oObject, lNewObjects):
+                   utils.push_level(dVars, 'entity_declaration')
+                elif utils.is_object('architecture', token.architecture_body.keyword, oObject, lNewObjects):
+                   utils.push_level(dVars, 'architecture_body')
                 else:
                     lNewObjects.append(oObject)
                 continue
 
-            if current_level(dVars) == 'entity_declaration':
+            if utils.is_current_level(dVars, 'entity_declaration'):
                 if oObject.get_value().lower() == 'is':
                    lNewObjects.append(token.entity.is_keyword(oObject.get_value()))
                 elif oObject.get_value().lower() == 'end':
@@ -93,45 +84,35 @@ class vhdlFile():
                    lNewObjects.append(token.entity.end_entity_keyword(oObject.get_value()))
                 elif oObject.get_value().lower() == ';':
                    lNewObjects.append(token.entity.semicolon())
-                   pop_level(dVars)
+                   utils.pop_level(dVars)
                 else:
                     lNewObjects.append(oObject)
                 continue
                     
-            if current_level(dVars) == 'architecture_body':
-                if oObject.get_value().lower() == 'is':
-                   lNewObjects.append(token.architecture_body.is_keyword(oObject.get_value()))
-                   push_level(dVars, 'architecture_declarative_part')
-                elif oObject.get_value().lower() == 'of':
-                   lNewObjects.append(token.architecture_body.of_keyword(oObject.get_value()))
-                elif oObject.get_value().lower() == 'architecture':
-                   lNewObjects.append(token.architecture_body.end_architecture_keyword(oObject.get_value()))
-                elif oObject.get_value().lower() == ';':
-                   lNewObjects.append(token.architecture_body.semicolon())
-                   pop_level(dVars)
-                else:
+            if utils.is_current_level(dVars, 'architecture_body'):
+                if not architecture_body.classify(oObject, lNewObjects, dVars):
                     lNewObjects.append(oObject)
                 continue
 
-            if current_level(dVars) == 'architecture_declarative_part':
+            if utils.is_current_level(dVars, 'architecture_declarative_part'):
                 if oObject.get_value().lower() == 'begin':
                    lNewObjects.append(token.architecture_body.begin_keyword(oObject.get_value()))
-                   pop_level(dVars)
-                   push_level(dVars, 'architecture_statement_part')
+                   utils.pop_level(dVars)
+                   utils.push_level(dVars, 'architecture_statement_part')
                 continue
 
-            if current_level(dVars) == 'architecture_statement_part':
+            if utils.is_current_level(dVars, 'architecture_statement_part'):
                 if is_block_statement(iObject, lAllObjects):
                    lNewObjects.append(token.block_statement.label_name(oObject.get_value()))
-                   push_level(dVars, 'block_statement:begin_declaration')
+                   utils.push_level(dVars, 'block_statement:begin_declaration')
                 elif oObject.get_value().lower() == 'end':
                    lNewObjects.append(token.architecture_body.end_keyword(oObject.get_value()))
-                   pop_level(dVars)
+                   utils.pop_level(dVars)
                 else:
                     lNewObjects.append(oObject)
                 continue
 
-            if current_level(dVars) == 'block_statement:begin_declaration':
+            if utils.is_current_level(dVars, 'block_statement:begin_declaration'):
                 if oObject.get_value().lower() == ':':
                     lNewObjects.append(token.block_statement.label_colon())
                 elif oObject.get_value().lower() == 'block':
@@ -142,30 +123,30 @@ class vhdlFile():
                    lNewObjects.append(token.block_statement.is_keyword(oObject.get_value()))
                 elif oObject.get_value().lower() == 'begin':
                    lNewObjects.append(token.block_statement.begin_keyword(oObject.get_value()))
-                   pop_level(dVars)
-                   push_level(dVars, 'block_statement_part')
+                   utils.pop_level(dVars)
+                   utils.push_level(dVars, 'block_statement_part')
                 else:
                     lNewObjects.append(oObject)
                 continue
 
-            if current_level(dVars) == 'block_statement_part':
+            if utils.is_current_level(dVars, 'block_statement_part'):
                 if is_block_statement(iObject, lAllObjects):
                    lNewObjects.append(token.block_statement.label_name(oObject.get_value()))
-                   push_level(dVars, 'block_statement:begin_declaration')
+                   utils.push_level(dVars, 'block_statement:begin_declaration')
                 elif oObject.get_value().lower() == 'end':
                     lNewObjects.append(token.block_statement.end_keyword(oObject.get_value()))
-                    pop_level(dVars)
-                    push_level(dVars, 'block_statement:end_declaration')
+                    utils.pop_level(dVars)
+                    utils.push_level(dVars, 'block_statement:end_declaration')
                 else:
                     lNewObjects.append(oObject)
                 continue
 
-            if current_level(dVars) == 'block_statement:end_declaration':
+            if utils.is_current_level(dVars, 'block_statement:end_declaration'):
                 if oObject.get_value().lower() == 'block':
                     lNewObjects.append(token.block_statement.end_block_keyword(oObject.get_value()))
                 elif oObject.get_value().lower() == ';':
                     lNewObjects.append(token.block_statement.semicolon())
-                    pop_level(dVars)
+                    utils.pop_level(dVars)
                 else:
                     lNewObjects.append(token.block_statement.end_block_label(oObject.get_value()))
                 continue
@@ -181,15 +162,6 @@ class vhdlFile():
 
 #        oLine.objects = lNewObjects
 
-
-def pop_level(dVars):
-    dVars['history'].pop()
-
-def push_level(dVars, level):
-    dVars['history'].append(level)
-
-def current_level(dVars):
-    return dVars['history'][-1]
 
 
 def split_on_carriage_return(lObjects):
@@ -242,3 +214,23 @@ def have_is_keyword(iObject, lAllObjects):
                 return True
         iIndex += 1
     return False
+
+
+
+
+
+def is_whitespace(oObject, lNewObjects):
+    if type(oObject) == parser.carriage_return:
+        lNewObjects.append(oObject)
+        return True
+    if type(oObject) == parser.blank_line:
+        lNewObjects.append(oObject)
+        return True
+    if type(oObject) == parser.comment:
+        lNewObjects.append(oObject)
+        return True
+    if type(oObject) == parser.whitespace:
+        lNewObjects.append(oObject)
+        return True
+    return False
+

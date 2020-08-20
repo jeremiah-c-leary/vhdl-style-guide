@@ -72,8 +72,8 @@ class comma(item):
 
 class semicolon(item):
 
-    def __init__(self):
-        item.__init__(self, ';')
+    def __init__(self, sString=';'):
+        item.__init__(self, sString)
 
 
 class whitespace(item):
