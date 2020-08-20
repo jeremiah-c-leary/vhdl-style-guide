@@ -2,280 +2,164 @@
 0 | None | 
 --------------------------------------------------------------------------------
 1 | None | 
+<class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-2 | 0 | entity BLOCK_EXAMPLE is
-<class 'vsg.token.entity.keyword'>
-<class 'vsg.token.entity.identifier'>
-<class 'vsg.token.entity.is_keyword'>
---------------------------------------------------------------------------------
-3 | 0 | end entity BLOCK_EXAMPLE;
-<class 'vsg.token.entity.end_keyword'>
-<class 'vsg.token.entity.end_entity_keyword'>
-<class 'vsg.token.entity.simple_name'>
-<class 'vsg.token.entity.semicolon'>
---------------------------------------------------------------------------------
-4 | None | 
---------------------------------------------------------------------------------
-5 | 0 | architecture RTL of BLOCK_EXAMPLE is
+2 | None | architecture RTL of BLOCK_EXAMPLE is
 <class 'vsg.token.architecture_body.keyword'>
-<class 'vsg.token.architecture_body.identifier'>
+<class 'vsg.parser.item'>
 <class 'vsg.token.architecture_body.of_keyword'>
-<class 'vsg.token.architecture_body.entity_name'>
+<class 'vsg.parser.item'>
 <class 'vsg.token.architecture_body.is_keyword'>
 --------------------------------------------------------------------------------
-6 | None | 
+3 | None | 
+<class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-7 | 0 | begin
+4 | None | begin
 <class 'vsg.token.architecture_body.begin_keyword'>
 --------------------------------------------------------------------------------
-8 | None | 
+5 | None | 
+<class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-9 | 1 |   -- correct block format
+6 | None |   -- correct block format
 <class 'vsg.parser.comment'>
 --------------------------------------------------------------------------------
-10 | 1 |   BLK : block is
+7 | None |   BLK : block is
 <class 'vsg.token.block_statement.label_name'>
 <class 'vsg.token.block_statement.label_colon'>
 <class 'vsg.token.block_statement.keyword'>
 <class 'vsg.token.block_statement.is_keyword'>
 --------------------------------------------------------------------------------
-11 | None | 
+8 | None | 
+<class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-12 | None | 
---------------------------------------------------------------------------------
-13 | None | 
---------------------------------------------------------------------------------
-14 | None | 
---------------------------------------------------------------------------------
-15 | None | 
---------------------------------------------------------------------------------
-16 | None | 
---------------------------------------------------------------------------------
-17 | None | 
---------------------------------------------------------------------------------
-18 | 1 |   begin
+9 | None |   begin
 <class 'vsg.token.block_statement.begin_keyword'>
 --------------------------------------------------------------------------------
-19 | None | 
+10 | None | 
+<class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-20 | None | 
---------------------------------------------------------------------------------
-21 | 2 |     BLK2 : block is
+11 | None |     BLK2 : block is
 <class 'vsg.token.block_statement.label_name'>
 <class 'vsg.token.block_statement.label_colon'>
 <class 'vsg.token.block_statement.keyword'>
 <class 'vsg.token.block_statement.is_keyword'>
 --------------------------------------------------------------------------------
-22 | 2 |     begin
+12 | None |     begin
+<class 'vsg.token.block_statement.begin_keyword'>
+--------------------------------------------------------------------------------
+13 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+14 | None |         BLK3 : block is
+<class 'vsg.token.block_statement.label_name'>
+<class 'vsg.token.block_statement.label_colon'>
+<class 'vsg.token.block_statement.keyword'>
+<class 'vsg.token.block_statement.is_keyword'>
+--------------------------------------------------------------------------------
+15 | None |         begin
+<class 'vsg.token.block_statement.begin_keyword'>
+--------------------------------------------------------------------------------
+16 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+17 | None |         end block BLK3;
+<class 'vsg.token.block_statement.end_keyword'>
+<class 'vsg.token.block_statement.end_block_keyword'>
+<class 'vsg.token.block_statement.end_block_label'>
+<class 'vsg.token.block_statement.semicolon'>
+--------------------------------------------------------------------------------
+18 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+19 | None |     end block BLK2;
+<class 'vsg.token.block_statement.end_keyword'>
+<class 'vsg.token.block_statement.end_block_keyword'>
+<class 'vsg.token.block_statement.end_block_label'>
+<class 'vsg.token.block_statement.semicolon'>
+--------------------------------------------------------------------------------
+20 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+21 | None |     BLK4 : block is
+<class 'vsg.token.block_statement.label_name'>
+<class 'vsg.token.block_statement.label_colon'>
+<class 'vsg.token.block_statement.keyword'>
+<class 'vsg.token.block_statement.is_keyword'>
+--------------------------------------------------------------------------------
+22 | None |     begin
 <class 'vsg.token.block_statement.begin_keyword'>
 --------------------------------------------------------------------------------
 23 | None | 
+<class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-24 | None | 
---------------------------------------------------------------------------------
-25 | 3 |         BLK3 : block is
+24 | None |         BLK5 : block is
 <class 'vsg.token.block_statement.label_name'>
 <class 'vsg.token.block_statement.label_colon'>
 <class 'vsg.token.block_statement.keyword'>
 <class 'vsg.token.block_statement.is_keyword'>
 --------------------------------------------------------------------------------
-26 | 3 |         begin
+25 | None |         begin
 <class 'vsg.token.block_statement.begin_keyword'>
 --------------------------------------------------------------------------------
-27 | None | 
+26 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+27 | None |             BLK6 : block is
+<class 'vsg.token.block_statement.label_name'>
+<class 'vsg.token.block_statement.label_colon'>
+<class 'vsg.token.block_statement.keyword'>
+<class 'vsg.token.block_statement.is_keyword'>
 --------------------------------------------------------------------------------
 28 | None | 
+<class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-29 | 4 |         a <= b;
-<class 'vsg.token.concurrent_simple_signal_assignment.target'>
-<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
-<class 'vsg.parser.item'>
-<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+29 | None |             begin
+<class 'vsg.token.block_statement.begin_keyword'>
 --------------------------------------------------------------------------------
 30 | None | 
+<class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-31 | 3 |         end block BLK3;
+31 | None |             end block BLK6;
 <class 'vsg.token.block_statement.end_keyword'>
 <class 'vsg.token.block_statement.end_block_keyword'>
 <class 'vsg.token.block_statement.end_block_label'>
 <class 'vsg.token.block_statement.semicolon'>
 --------------------------------------------------------------------------------
 32 | None | 
+<class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-33 | None | 
---------------------------------------------------------------------------------
-34 | 0 |     end block BLK2;
+33 | None |         end block BLK5;
 <class 'vsg.token.block_statement.end_keyword'>
 <class 'vsg.token.block_statement.end_block_keyword'>
 <class 'vsg.token.block_statement.end_block_label'>
 <class 'vsg.token.block_statement.semicolon'>
 --------------------------------------------------------------------------------
-35 | None | 
+34 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+35 | None |     end block BLK4;
+<class 'vsg.token.block_statement.end_keyword'>
+<class 'vsg.token.block_statement.end_block_keyword'>
+<class 'vsg.token.block_statement.end_block_label'>
+<class 'vsg.token.block_statement.semicolon'>
 --------------------------------------------------------------------------------
 36 | None | 
+<class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-37 | 0 |     BLK4 : block is
-<class 'vsg.token.block_statement.label_name'>
-<class 'vsg.token.block_statement.label_colon'>
-<class 'vsg.token.block_statement.keyword'>
-<class 'vsg.token.block_statement.is_keyword'>
---------------------------------------------------------------------------------
-38 | 0 |     begin
-<class 'vsg.token.block_statement.begin_keyword'>
---------------------------------------------------------------------------------
-39 | None | 
---------------------------------------------------------------------------------
-40 | None | 
---------------------------------------------------------------------------------
-41 | 1 |         BLK5 : block is
-<class 'vsg.token.block_statement.label_name'>
-<class 'vsg.token.block_statement.label_colon'>
-<class 'vsg.token.block_statement.keyword'>
-<class 'vsg.token.block_statement.is_keyword'>
---------------------------------------------------------------------------------
-42 | 1 |         begin
-<class 'vsg.token.block_statement.begin_keyword'>
---------------------------------------------------------------------------------
-43 | None | 
---------------------------------------------------------------------------------
-44 | None |         a <= b when c = 1 else
-<class 'vsg.token.concurrent_conditional_signal_assignment.target'>
-<class 'vsg.token.concurrent_conditional_signal_assignment.assignment'>
-<class 'vsg.parser.item'>
-<class 'vsg.token.conditional_waveforms.when_keyword'>
-<class 'vsg.parser.item'>
-<class 'vsg.parser.item'>
-<class 'vsg.parser.item'>
-<class 'vsg.token.conditional_waveforms.else_keyword'>
---------------------------------------------------------------------------------
-45 | None |              d when e = 2 else
-<class 'vsg.parser.item'>
-<class 'vsg.token.conditional_waveforms.when_keyword'>
-<class 'vsg.parser.item'>
-<class 'vsg.parser.item'>
-<class 'vsg.parser.item'>
-<class 'vsg.token.conditional_waveforms.else_keyword'>
---------------------------------------------------------------------------------
-46 | None |              f;
-<class 'vsg.parser.item'>
-<class 'vsg.token.concurrent_conditional_signal_assignment.semicolon'>
---------------------------------------------------------------------------------
-47 | None | 
---------------------------------------------------------------------------------
-48 | 2 |             BLK6 : block is
-<class 'vsg.token.block_statement.label_name'>
-<class 'vsg.token.block_statement.label_colon'>
-<class 'vsg.token.block_statement.keyword'>
-<class 'vsg.token.block_statement.is_keyword'>
---------------------------------------------------------------------------------
-49 | None | 
---------------------------------------------------------------------------------
-50 | 2 |             begin
-<class 'vsg.token.block_statement.begin_keyword'>
---------------------------------------------------------------------------------
-51 | None | 
---------------------------------------------------------------------------------
-52 | 3 |                 PROC_LABEL : process (a, b, c) is
-<class 'vsg.token.process_statement.label_name'>
-<class 'vsg.token.process_statement.label_colon'>
-<class 'vsg.token.process_statement.keyword'>
-<class 'vsg.token.process_statement.open_parenthesis'>
-<class 'vsg.parser.item'>
-<class 'vsg.token.sensitivity_list.comma'>
-<class 'vsg.parser.item'>
-<class 'vsg.token.sensitivity_list.comma'>
-<class 'vsg.parser.item'>
-<class 'vsg.token.process_statement.close_parenthesis'>
-<class 'vsg.token.process_statement.is_keyword'>
---------------------------------------------------------------------------------
-53 | 3 |                 begin
-<class 'vsg.token.process_statement.begin_keyword'>
---------------------------------------------------------------------------------
-54 | 4 |                    ASSERT_LABEL : assert FALSE report "blah" severity WARNING;
-<class 'vsg.token.assertion_statement.label'>
-<class 'vsg.token.assertion_statement.label_colon'>
-<class 'vsg.token.assertion.keyword'>
-<class 'vsg.token.assertion.condition'>
-<class 'vsg.token.assertion.report_keyword'>
-<class 'vsg.token.assertion.report_expression'>
-<class 'vsg.token.assertion.severity_keyword'>
-<class 'vsg.token.assertion.severity_expression'>
-<class 'vsg.token.assertion_statement.semicolon'>
---------------------------------------------------------------------------------
-55 | 3 |                 end process PROC_LABEL;
-<class 'vsg.token.process_statement.end_keyword'>
-<class 'vsg.token.process_statement.end_process_keyword'>
-<class 'vsg.token.process_statement.end_process_label_name'>
-<class 'vsg.token.process_statement.semicolon'>
---------------------------------------------------------------------------------
-56 | None | 
---------------------------------------------------------------------------------
-57 | None | 
---------------------------------------------------------------------------------
-58 | 3 |                 assert TRUE report "blah" severity FATAL;
-<class 'vsg.token.assertion.keyword'>
-<class 'vsg.token.assertion.condition'>
-<class 'vsg.token.assertion.report_keyword'>
-<class 'vsg.token.assertion.report_expression'>
-<class 'vsg.token.assertion.severity_keyword'>
-<class 'vsg.token.assertion.severity_expression'>
-<class 'vsg.token.concurrent_assertion_statement.semicolon'>
---------------------------------------------------------------------------------
-59 | None | 
---------------------------------------------------------------------------------
-60 | 2 |             end block BLK6;
+37 | None |   end block BLK;
 <class 'vsg.token.block_statement.end_keyword'>
 <class 'vsg.token.block_statement.end_block_keyword'>
 <class 'vsg.token.block_statement.end_block_label'>
 <class 'vsg.token.block_statement.semicolon'>
 --------------------------------------------------------------------------------
-61 | None | 
+38 | None | 
+<class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-62 | None | 
---------------------------------------------------------------------------------
-63 | None | 
---------------------------------------------------------------------------------
-64 | None |         end block BLK5;
-<class 'vsg.token.block_statement.end_keyword'>
-<class 'vsg.token.block_statement.end_block_keyword'>
-<class 'vsg.token.block_statement.end_block_label'>
-<class 'vsg.token.block_statement.semicolon'>
---------------------------------------------------------------------------------
-65 | None | 
---------------------------------------------------------------------------------
-66 | None | 
---------------------------------------------------------------------------------
-67 | None |     end block BLK4;
-<class 'vsg.token.block_statement.end_keyword'>
-<class 'vsg.token.block_statement.end_block_keyword'>
-<class 'vsg.token.block_statement.end_block_label'>
-<class 'vsg.token.block_statement.semicolon'>
---------------------------------------------------------------------------------
-68 | None | 
---------------------------------------------------------------------------------
-69 | 2 |     assert TRUE report "blah" severity FATAL;
-<class 'vsg.token.assertion.keyword'>
-<class 'vsg.token.assertion.condition'>
-<class 'vsg.token.assertion.report_keyword'>
-<class 'vsg.token.assertion.report_expression'>
-<class 'vsg.token.assertion.severity_keyword'>
-<class 'vsg.token.assertion.severity_expression'>
-<class 'vsg.token.concurrent_assertion_statement.semicolon'>
---------------------------------------------------------------------------------
-70 | None | 
---------------------------------------------------------------------------------
-71 | None |   end block BLK;
-<class 'vsg.token.block_statement.end_keyword'>
-<class 'vsg.token.block_statement.end_block_keyword'>
-<class 'vsg.token.block_statement.end_block_label'>
-<class 'vsg.token.block_statement.semicolon'>
---------------------------------------------------------------------------------
-72 | None | 
---------------------------------------------------------------------------------
-73 | None | end architecture RTL;
+39 | None | end architecture RTL;
 <class 'vsg.token.architecture_body.end_keyword'>
 <class 'vsg.token.architecture_body.end_architecture_keyword'>
-<class 'vsg.token.architecture_body.simple_name'>
+<class 'vsg.parser.item'>
 <class 'vsg.token.architecture_body.semicolon'>
 --------------------------------------------------------------------------------
-74 | None | 
+40 | None | 
+<class 'vsg.parser.blank_line'>

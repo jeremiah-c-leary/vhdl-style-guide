@@ -95,5 +95,18 @@ class test_token(unittest.TestCase):
         utils.validate_token(self, oFile, lExpected, token.semicolon)
 
 
-#    def test_debug(self):
-#        utils.print_objects(oFile, True)
+    def test_classification(self):
+        sTestDir = os.path.join(os.path.dirname(__file__),'..','concurrent_procedure_call_statement')
+
+        lExpected = []
+        utils.read_file(os.path.join(sTestDir, 'classification_results.txt'), lExpected, False)
+
+        lActual = []
+
+        for oObject in utils.extract_objects(oFile, True):
+            lActual.append(str(oObject))
+        
+        self.assertEqual(lExpected, lActual)
+
+    def test_debug(self):
+        utils.print_objects(oFile, True)

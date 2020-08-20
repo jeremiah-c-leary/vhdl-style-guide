@@ -23,7 +23,6 @@ def tokenize(oObject, iObject, lObjects, dVars):
     if not dVars['block_statement']['end']:
         if not dVars['block_statement']['keyword']:
     
-    
             if classify_keyword(oObject, iObject, lObjects, dVars):
                 return True
     

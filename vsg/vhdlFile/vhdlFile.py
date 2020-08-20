@@ -262,6 +262,18 @@ class vhdlFile():
         dVars['block_statement']['begin'] = False
         dVars['block_statement']['end'] = False
 
+        dVars['for_generate_statement'] = {}
+        dVars['for_generate_statement']['for'] = False
+        dVars['for_generate_statement']['generate'] = False
+        dVars['for_generate_statement']['end'] = False
+    
+        dVars['parameter_specification'] = {}
+        dVars['parameter_specification']['in'] = False
+
+        dVars['generate_statement_body'] = {}
+        dVars['generate_statement_body']['begin'] = False
+        dVars['generate_statement_body']['no_begin'] = False
+
         dVars['history'] = []
         dVars['caller'] = ''
 
@@ -285,10 +297,6 @@ class vhdlFile():
 
             for iObject, oObject in enumerate(lObjects):
                 design_file.tokenize(oObject, iObject, lObjects, dVars)
-#                use_clause.tokenize(oObject, iObject, lObjects, dVars)
-#                entity_declaration.tokenize(oObject, iObject, lObjects, dVars)
-#                architecture_body.tokenize(oObject, iObject, lObjects, dVars)
-
 
             classify.library(dVars, lTokens, lObjects, oLine)
             classify.use(dVars, lTokens, lObjects, oLine)

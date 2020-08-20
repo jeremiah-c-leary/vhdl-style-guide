@@ -22,6 +22,17 @@ class item():
 # Base VHDL type classes
 ###############################################################################
 
+class carriage_return(item):
+
+    def __init__(self):
+        item.__init__(self, None)
+
+
+class blank_line(item):
+
+    def __init__(self):
+        item.__init__(self, None)
+
 
 class none(item):
 

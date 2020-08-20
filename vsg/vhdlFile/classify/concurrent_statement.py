@@ -2,6 +2,7 @@
 from vsg.vhdlFile.classify import block_statement
 from vsg.vhdlFile.classify import concurrent_procedure_call_statement
 from vsg.vhdlFile.classify import process_statement
+from vsg.vhdlFile.classify import generate_statement
 from vsg.vhdlFile.classify import concurrent_signal_assignment_statement
 from vsg.vhdlFile.classify import concurrent_assertion_statement
 
@@ -23,6 +24,9 @@ def tokenize(oObject, iObject, lObjects, dVars):
         if block_statement.tokenize(oObject, iObject, lObjects, dVars):
             return True
 
+        if generate_statement.tokenize(oObject, iObject, lObjects, dVars):
+            return True
+
     if not dVars['block_statement']['end']:
 
 
@@ -34,12 +38,13 @@ def tokenize(oObject, iObject, lObjects, dVars):
         if process_statement.tokenize(oObject, iObject, lObjects, dVars):
             return True
     
-        if not dVars['concurrent_procedure_call_statement']:
-            if concurrent_signal_assignment_statement.tokenize(oObject, iObject, lObjects, dVars):
-                return True
+        if not dVars['process_statement']['keyword']:
+            if not dVars['concurrent_procedure_call_statement']:
+                if concurrent_signal_assignment_statement.tokenize(oObject, iObject, lObjects, dVars):
+                    return True
     
-        if concurrent_procedure_call_statement.tokenize(oObject, iObject, lObjects, dVars):
-            return True
+            if concurrent_procedure_call_statement.tokenize(oObject, iObject, lObjects, dVars):
+                return True
 
     dVars['caller'] = ''
 

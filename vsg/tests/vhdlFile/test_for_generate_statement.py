@@ -5,8 +5,9 @@ import unittest
 from vsg import vhdlFile
 from vsg.tests import utils
 
+sLrmUnit = 'for_generate_statement'
 
-lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','block_statement','classification_test_input.vhd'))
+lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..',sLrmUnit,'classification_test_input.vhd'))
 oFile = vhdlFile.vhdlFile(lFile)
 
 
@@ -14,7 +15,7 @@ class test_token(unittest.TestCase):
 
 
     def test_classification(self):
-        sTestDir = os.path.join(os.path.dirname(__file__),'..','block_statement')
+        sTestDir = os.path.join(os.path.dirname(__file__),'..',sLrmUnit)
 
         lExpected = []
         utils.read_file(os.path.join(sTestDir, 'classification_results.txt'), lExpected, False)
@@ -26,5 +27,5 @@ class test_token(unittest.TestCase):
         
         self.assertEqual(lExpected, lActual)
 
-#    def test_debug(self):
-#        utils.print_objects(oFile,True)
+    def test_debug(self):
+        utils.print_objects(oFile,True)
