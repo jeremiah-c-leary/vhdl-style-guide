@@ -108,5 +108,5 @@ class test_token(unittest.TestCase):
         
         self.assertEqual(lExpected, lActual)
 
-    def test_debug(self):
-        utils.print_objects(oFile, True)
+#    def test_debug(self):
+#        utils.print_objects(oFile, True)
