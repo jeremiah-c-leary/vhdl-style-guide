@@ -5,10 +5,10 @@
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 2 | None | architecture RTL of BLOCK_EXAMPLE is
-<class 'vsg.token.architecture_body.keyword'>
-<class 'vsg.parser.item'>
+<class 'vsg.token.architecture_body.architecture_keyword'>
+<class 'vsg.token.architecture_body.identifier'>
 <class 'vsg.token.architecture_body.of_keyword'>
-<class 'vsg.parser.item'>
+<class 'vsg.token.architecture_body.entity_name'>
 <class 'vsg.token.architecture_body.is_keyword'>
 --------------------------------------------------------------------------------
 3 | None | 
@@ -158,7 +158,7 @@
 39 | None | end architecture RTL;
 <class 'vsg.token.architecture_body.end_keyword'>
 <class 'vsg.token.architecture_body.end_architecture_keyword'>
-<class 'vsg.parser.item'>
+<class 'vsg.token.architecture_body.architecture_simple_name'>
 <class 'vsg.token.architecture_body.semicolon'>
 --------------------------------------------------------------------------------
 40 | None | 

@@ -99,7 +99,7 @@ class testVhdlFileMethods(unittest.TestCase):
         lActual = []
         for iLine, lLine in enumerate(oFile.get_lines()):
             for iItem, oItem in enumerate(lLine.objects):
-                if isinstance(oItem, architecture_body.keyword):
+                if isinstance(oItem, architecture_body.architecture_keyword):
                     lActual.append((iLine, iItem))
 
         self.assertEqual(lExpected, lActual)
@@ -156,7 +156,7 @@ class testVhdlFileMethods(unittest.TestCase):
         lActual = []
         for iLine, lLine in enumerate(oFile.get_lines()):
             for iItem, oItem in enumerate(lLine.objects):
-                if isinstance(oItem, architecture_body.simple_name):
+                if isinstance(oItem, architecture_body.architecture_simple_name):
                     lActual.append((iLine, iItem))
 
         self.assertEqual(lExpected, lActual)

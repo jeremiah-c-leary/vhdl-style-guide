@@ -78,7 +78,7 @@ def tokenize(oObject, iObject, lObjects, dVars):
 def classify_keyword(oObject, iObject, lObjects, dVars):
     sValue = oObject.get_value()
     if sValue.lower() == 'architecture':
-        lObjects[iObject] = token.keyword(sValue)
+        lObjects[iObject] = token.architecture_keyword(sValue)
         dVars['architecture_body']['keyword'] = True 
         return True
     return False
@@ -145,7 +145,7 @@ def classify_end_architecture_keyword(oObject, iObject, lObjects, dVars):
 
 def classify_simple_name(oObject, iObject, lObjects, dVars):
     if type(oObject) == parser.item:
-        lObjects[iObject] = token.simple_name(oObject.get_value())
+        lObjects[iObject] = token.architecture_simple_name(oObject.get_value())
         return True
     return False
 

@@ -1,0 +1,122 @@
+--------------------------------------------------------------------------------
+0 | None | 
+--------------------------------------------------------------------------------
+1 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+2 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+3 | None | architecture RTL of ENTITY1 is
+<class 'vsg.token.architecture_body.architecture_keyword'>
+<class 'vsg.token.architecture_body.identifier'>
+<class 'vsg.token.architecture_body.of_keyword'>
+<class 'vsg.token.architecture_body.entity_name'>
+<class 'vsg.token.architecture_body.is_keyword'>
+--------------------------------------------------------------------------------
+4 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+5 | None | begin
+<class 'vsg.token.architecture_body.begin_keyword'>
+--------------------------------------------------------------------------------
+6 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+7 | None | end architecture RTL;
+<class 'vsg.token.architecture_body.end_keyword'>
+<class 'vsg.token.architecture_body.end_architecture_keyword'>
+<class 'vsg.token.architecture_body.architecture_simple_name'>
+<class 'vsg.token.architecture_body.semicolon'>
+--------------------------------------------------------------------------------
+8 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+9 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+10 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+11 | None | architecture RTL of ENTITY1 is
+<class 'vsg.token.architecture_body.architecture_keyword'>
+<class 'vsg.token.architecture_body.identifier'>
+<class 'vsg.token.architecture_body.of_keyword'>
+<class 'vsg.token.architecture_body.entity_name'>
+<class 'vsg.token.architecture_body.is_keyword'>
+--------------------------------------------------------------------------------
+12 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+13 | None | begin
+<class 'vsg.token.architecture_body.begin_keyword'>
+--------------------------------------------------------------------------------
+14 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+15 | None | end;
+<class 'vsg.token.architecture_body.end_keyword'>
+<class 'vsg.token.architecture_body.semicolon'>
+--------------------------------------------------------------------------------
+16 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+17 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+18 | None | architecture RTL of ENTITY1 is
+<class 'vsg.token.architecture_body.architecture_keyword'>
+<class 'vsg.token.architecture_body.identifier'>
+<class 'vsg.token.architecture_body.of_keyword'>
+<class 'vsg.token.architecture_body.entity_name'>
+<class 'vsg.token.architecture_body.is_keyword'>
+--------------------------------------------------------------------------------
+19 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+20 | None | begin
+<class 'vsg.token.architecture_body.begin_keyword'>
+--------------------------------------------------------------------------------
+21 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+22 | None | end architecture;
+<class 'vsg.token.architecture_body.end_keyword'>
+<class 'vsg.token.architecture_body.end_architecture_keyword'>
+<class 'vsg.token.architecture_body.semicolon'>
+--------------------------------------------------------------------------------
+23 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+24 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+25 | None | architecture
+<class 'vsg.token.architecture_body.architecture_keyword'>
+--------------------------------------------------------------------------------
+26 | None | RTL
+<class 'vsg.token.architecture_body.identifier'>
+--------------------------------------------------------------------------------
+27 | None | of
+<class 'vsg.token.architecture_body.of_keyword'>
+--------------------------------------------------------------------------------
+28 | None | ENTITY1
+<class 'vsg.token.architecture_body.entity_name'>
+--------------------------------------------------------------------------------
+29 | None | is
+<class 'vsg.token.architecture_body.is_keyword'>
+--------------------------------------------------------------------------------
+30 | None | begin
+<class 'vsg.token.architecture_body.begin_keyword'>
+--------------------------------------------------------------------------------
+31 | None | end
+<class 'vsg.token.architecture_body.end_keyword'>
+--------------------------------------------------------------------------------
+32 | None | architecture
+<class 'vsg.token.architecture_body.end_architecture_keyword'>
+--------------------------------------------------------------------------------
+33 | None | RTL
+<class 'vsg.token.architecture_body.architecture_simple_name'>
+--------------------------------------------------------------------------------
+34 | None | ;
+<class 'vsg.token.architecture_body.semicolon'>

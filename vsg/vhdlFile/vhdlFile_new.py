@@ -5,6 +5,7 @@ from vsg.vhdlFile.classify_new import blank
 from vsg.vhdlFile.classify_new import whitespace
 from vsg.vhdlFile.classify_new import comment
 from vsg.vhdlFile.classify_new import architecture_body
+from vsg.vhdlFile.classify_new import entity_declaration
 
 from vsg import parser
 
@@ -41,6 +42,7 @@ class vhdlFile():
         dVars = {}
         dVars['history'] = []
         dVars['history'].append('design_unit')
+        dVars['blue'] = False
 
         for sLine in self.filecontent:
             oLine = line.line(sLine.replace('\t', '  ').rstrip())
@@ -67,50 +69,72 @@ class vhdlFile():
 #                print('[' + ']['.join(dVars['history']) + ']')
 #                print(f'{oObject.get_value()}')
             if utils.is_current_level(dVars, 'design_unit'):
-                if utils.is_object('entity', token.entity.keyword, oObject, lNewObjects):
-                   utils.push_level(dVars, 'entity_declaration')
-                elif utils.is_object('architecture', token.architecture_body.keyword, oObject, lNewObjects):
-                   utils.push_level(dVars, 'architecture_body')
+                if entity_declaration.check_for(oObject, lNewObjects, dVars):
+                   utils.push_level(dVars, 'entity_declaration:begin_declaration')
+                elif architecture_body.check_for(oObject, lNewObjects, dVars):
+                   utils.push_level(dVars, 'architecture_body:begin_declaration')
                 else:
                     lNewObjects.append(oObject)
-                continue
+                    continue
 
-            if utils.is_current_level(dVars, 'entity_declaration'):
-                if oObject.get_value().lower() == 'is':
-                   lNewObjects.append(token.entity.is_keyword(oObject.get_value()))
-                elif oObject.get_value().lower() == 'end':
-                   lNewObjects.append(token.entity.end_keyword(oObject.get_value()))
-                elif oObject.get_value().lower() == 'entity':
-                   lNewObjects.append(token.entity.end_entity_keyword(oObject.get_value()))
-                elif oObject.get_value().lower() == ';':
-                   lNewObjects.append(token.entity.semicolon())
-                   utils.pop_level(dVars)
+            ###################################################################
+            # entity_declaration
+            ###################################################################
+            if utils.is_current_level(dVars, 'entity_declaration:begin_declaration'):
+                if entity_declaration.classify_begin_declaration(oObject, lNewObjects, dVars):
+                    continue
                 else:
                     lNewObjects.append(oObject)
-                continue
-                    
-            if utils.is_current_level(dVars, 'architecture_body'):
-                if not architecture_body.classify(oObject, lNewObjects, dVars):
-                    lNewObjects.append(oObject)
-                continue
+                    continue
+
+            if utils.is_current_level(dVars, 'entity_header'):
+                utils.pop_level(dVars)
+                utils.push_level(dVars, 'entity_declarative_part')
+
+            if utils.is_current_level(dVars, 'entity_declarative_part'):
+                utils.pop_level(dVars)
+                utils.push_level(dVars, 'entity_statement_part')
+
+            if utils.is_current_level(dVars, 'entity_statement_part'):
+                utils.pop_level(dVars)
+                utils.push_level(dVars, 'entity_declaration:end_declaration')
+
+            if utils.is_current_level(dVars, 'entity_declaration:end_declaration'):
+                if entity_declaration.classify_end_declaration(oObject, lNewObjects, dVars):
+                    continue            
+
+            ###################################################################
+            # architecture_body
+            ###################################################################
+            if utils.is_current_level(dVars, 'architecture_body:begin_declaration'):
+                if architecture_body.classify_begin_declaration(oObject, lNewObjects, dVars):
+                    continue
 
             if utils.is_current_level(dVars, 'architecture_declarative_part'):
                 if oObject.get_value().lower() == 'begin':
-                   lNewObjects.append(token.architecture_body.begin_keyword(oObject.get_value()))
-                   utils.pop_level(dVars)
-                   utils.push_level(dVars, 'architecture_statement_part')
+                    lNewObjects.append(token.architecture_body.begin_keyword(oObject.get_value()))
+                    utils.pop_level(dVars)
+                    utils.push_level(dVars, 'architecture_statement_part')
                 continue
 
             if utils.is_current_level(dVars, 'architecture_statement_part'):
                 if is_concurrent_statement(iObject, oObject, lAllObjects, lNewObjects, dVars):
-                    pass
+                    continue
                 elif oObject.get_value().lower() == 'end':
-                   lNewObjects.append(token.architecture_body.end_keyword(oObject.get_value()))
-                   utils.pop_level(dVars)
+                    utils.pop_level(dVars)
+                    utils.push_level(dVars, 'architecture_body:end_declaration')
                 else:
                     lNewObjects.append(oObject)
-                continue
+                    continue
 
+            if utils.is_current_level(dVars, 'architecture_body:end_declaration'):
+                if architecture_body.classify_end_declaration(oObject, lNewObjects, dVars):
+                    continue
+
+
+            ###################################################################
+            # block_statement
+            ###################################################################
             if utils.is_current_level(dVars, 'block_statement:begin_declaration'):
                 if oObject.get_value().lower() == ':':
                     lNewObjects.append(token.block_statement.label_colon())

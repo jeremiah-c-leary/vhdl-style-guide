@@ -512,7 +512,7 @@ class vhdlFile():
                 else:
                     oLine.indentLevel = 1
 
-            if _does_line_start_with_item_or_whitespace_and_then_item(oLine, architecture_body.keyword):
+            if _does_line_start_with_item_or_whitespace_and_then_item(oLine, architecture_body.architecture_keyword):
                 dIndent['level'] = 1
                 oLine.indentLevel = 0
 
