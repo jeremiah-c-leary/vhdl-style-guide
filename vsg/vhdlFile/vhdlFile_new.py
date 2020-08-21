@@ -65,7 +65,7 @@ class vhdlFile():
                 continue
 #            if iObject > 0:
 #                print('[' + ']['.join(dVars['history']) + ']')
-#                print(oObject.get_value())
+#                print(f'{oObject.get_value()}')
             if utils.is_current_level(dVars, 'design_unit'):
                 if utils.is_object('entity', token.entity.keyword, oObject, lNewObjects):
                    utils.push_level(dVars, 'entity_declaration')
@@ -102,9 +102,8 @@ class vhdlFile():
                 continue
 
             if utils.is_current_level(dVars, 'architecture_statement_part'):
-                if is_block_statement(iObject, lAllObjects):
-                   lNewObjects.append(token.block_statement.label_name(oObject.get_value()))
-                   utils.push_level(dVars, 'block_statement:begin_declaration')
+                if is_concurrent_statement(iObject, oObject, lAllObjects, lNewObjects, dVars):
+                    pass
                 elif oObject.get_value().lower() == 'end':
                    lNewObjects.append(token.architecture_body.end_keyword(oObject.get_value()))
                    utils.pop_level(dVars)
@@ -130,9 +129,11 @@ class vhdlFile():
                 continue
 
             if utils.is_current_level(dVars, 'block_statement_part'):
-                if is_block_statement(iObject, lAllObjects):
-                   lNewObjects.append(token.block_statement.label_name(oObject.get_value()))
-                   utils.push_level(dVars, 'block_statement:begin_declaration')
+                if is_concurrent_statement(iObject, oObject, lAllObjects, lNewObjects, dVars):
+                    pass
+#                if is_block_statement(iObject, lAllObjects):
+#                   lNewObjects.append(token.block_statement.label_name(oObject.get_value()))
+#                   utils.push_level(dVars, 'block_statement:begin_declaration')
                 elif oObject.get_value().lower() == 'end':
                     lNewObjects.append(token.block_statement.end_keyword(oObject.get_value()))
                     utils.pop_level(dVars)
@@ -149,6 +150,38 @@ class vhdlFile():
                     utils.pop_level(dVars)
                 else:
                     lNewObjects.append(token.block_statement.end_block_label(oObject.get_value()))
+                continue
+
+            if utils.is_current_level(dVars, 'for_generate_statement:begin_declaration'):
+                if oObject.get_value().lower() == ':':
+                    lNewObjects.append(token.for_generate_statement.label_colon())
+                elif oObject.get_value().lower() == 'for':
+                   lNewObjects.append(token.for_generate_statement.for_keyword(oObject.get_value()))
+                elif oObject.get_value().lower() == 'generate':
+                   lNewObjects.append(token.for_generate_statement.generate_keyword(oObject.get_value()))
+                   utils.pop_level(dVars)
+                   utils.push_level(dVars, 'for_generate_statement:end_declaration')
+                   utils.push_level(dVars, 'generate_statement_body')
+                else:
+                    lNewObjects.append(oObject)
+                continue
+
+            if utils.is_current_level(dVars, 'generate_statement_body'):
+                if is_concurrent_statement(iObject, oObject, lAllObjects, lNewObjects, dVars):
+                    pass
+                else:
+                    utils.pop_level(dVars)
+
+            if utils.is_current_level(dVars, 'for_generate_statement:end_declaration'):
+                if oObject.get_value().lower() == 'end':
+                    lNewObjects.append(token.for_generate_statement.end_keyword(oObject.get_value()))
+                elif oObject.get_value().lower() == 'generate':
+                    lNewObjects.append(token.for_generate_statement.end_generate_keyword(oObject.get_value()))
+                elif oObject.get_value().lower() == ';':
+                    lNewObjects.append(token.for_generate_statement.semicolon())
+                    utils.pop_level(dVars)
+                else:
+                    lNewObjects.append(token.for_generate_statement.end_generate_label(oObject.get_value()))
                 continue
 
 #        for oObject in lNewObjects:
@@ -184,13 +217,16 @@ def split_on_carriage_return(lObjects):
 def is_block_statement(iObject, lAllObjects):
     iItemCount = 0
     iIndex = iObject
-    while iItemCount < 3:
-        if type(lAllObjects[iIndex]) == parser.item:
-            iItemCount += 1
-        iIndex += 1
-    else:
-        if lAllObjects[iIndex-1].get_value().lower() == 'block':
-            return True
+    try:
+        while iItemCount < 3:
+            if type(lAllObjects[iIndex]) == parser.item:
+                iItemCount += 1
+            iIndex += 1
+        else:
+            if lAllObjects[iIndex-1].get_value().lower() == 'block':
+                return True
+    except IndexError:
+        return False
     return False
 
 def have_guard_condition(iObject, lAllObjects):
@@ -216,7 +252,16 @@ def have_is_keyword(iObject, lAllObjects):
     return False
 
 
-
+def is_concurrent_statement(iObject, oObject, lAllObjects, lNewObjects, dVars):
+    if is_block_statement(iObject, lAllObjects):
+        lNewObjects.append(token.block_statement.label_name(oObject.get_value()))
+        utils.push_level(dVars, 'block_statement:begin_declaration')
+        return True
+    if is_generate_statement(iObject, oObject, lAllObjects, lNewObjects, dVars):
+        lNewObjects.append(token.for_generate_statement.label_name(oObject.get_value()))
+        utils.push_level(dVars, 'for_generate_statement:begin_declaration')
+        return True
+    return False
 
 
 def is_whitespace(oObject, lNewObjects):
@@ -234,3 +279,22 @@ def is_whitespace(oObject, lNewObjects):
         return True
     return False
 
+def is_generate_statement(iObject, oObject, lAllObjects, lNewObjects, dVars):
+    if is_for_generate_statement(iObject, oObject, lAllObjects, lNewObjects, dVars):
+        return True
+    return False
+
+def is_for_generate_statement(iObject, oObject, lAllObjects, lNewObjects, dVars):
+    iItemCount = 0
+    iIndex = iObject
+    try:
+        while iItemCount < 3:
+            if type(lAllObjects[iIndex]) == parser.item:
+                iItemCount += 1
+            iIndex += 1
+        else:
+            if lAllObjects[iIndex-1].get_value().lower() == 'for':
+                return True
+    except IndexError:
+        return False
+    return False
