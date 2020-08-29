@@ -296,6 +296,8 @@ class vhdlFile():
             classify.comment(dVars, lTokens, lObjects, oLine)
 
             for iObject, oObject in enumerate(lObjects):
+                if is_whitespace(oObject):
+                    continue
                 design_file.tokenize(oObject, iObject, lObjects, dVars)
 
             classify.library(dVars, lTokens, lObjects, oLine)
@@ -1007,3 +1009,16 @@ def _does_line_start_with_item_or_whitespace_and_then_item(oLine, parserType):
     if isinstance(oLine.get_object(0), parser.whitespace) and isinstance(oLine.get_object(1), parserType):
         return True
     return False
+
+
+def is_whitespace(oObject):
+    if type(oObject) == parser.carriage_return:
+        return True
+    if type(oObject) == parser.blank_line:
+        return True
+    if type(oObject) == parser.comment:
+        return True
+    if type(oObject) == parser.whitespace:
+        return True
+    return False
+
