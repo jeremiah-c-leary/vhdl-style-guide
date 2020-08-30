@@ -44,6 +44,24 @@ begin
 
             BLK4 : block is
             begin
+
+              CASE_GEN_LABEL : case a & B & c generate
+
+                when "000" =>
+                    BLK4A : block is
+                    begin
+                    end block BLK4A;
+                when "001" =>
+
+                  IF_GEN_LABELA: if a = y generate
+
+                    BLK4B : block is
+                    begin
+                    end block BLK4B;
+
+                  end generate IF_GEN_LABELA;     
+
+               end generate CASE_GEN_LABEL;
       
             end block BLK4;
       

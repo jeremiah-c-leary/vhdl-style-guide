@@ -9,6 +9,7 @@ from vsg.vhdlFile.classify_new import entity_declaration
 from vsg.vhdlFile.classify_new import generate_statement
 from vsg.vhdlFile.classify_new import block_statement
 from vsg.vhdlFile.classify_new import concurrent_statement
+from vsg.vhdlFile.classify_new import case_generate_alternative
 
 from vsg import parser
 
@@ -212,6 +213,44 @@ class vhdlFile():
                     continue
 
             if utils.is_current_level(dVars, 'if_generate_statement:end_declaration'):
+                if generate_statement.tokenize(iObject, oObject, lAllObjects, lNewObjects, dVars):
+                    continue
+                else:
+                    lNewObjects.append(token.if_generate_statement.end_generate_label(oObject.get_value()))
+                continue
+
+            ###################################################################
+            # case generate
+            ###################################################################
+
+            if utils.is_current_level(dVars, 'case_generate_statement:begin_declaration'):
+                if generate_statement.tokenize(iObject, oObject, lAllObjects, lNewObjects, dVars):
+                    continue
+                else:
+                    lNewObjects.append(oObject)
+                continue
+
+            if utils.is_current_level(dVars, 'case_generate_alternative'):
+                if case_generate_alternative.is_it(iObject, oObject, lAllObjects, lNewObjects, dVars):
+                    continue
+                else:
+                    utils.pop_level(dVars)
+
+            if utils.is_current_level(dVars, 'case_generate_alternative:declaration'):
+                if case_generate_alternative.tokenize(iObject, oObject, lAllObjects, lNewObjects, dVars):
+                   continue
+                else:
+                    lNewObjects.append(oObject)
+                continue
+
+
+            if utils.is_current_level(dVars, 'generate_statement_body'):
+                if concurrent_statement.is_it(iObject, oObject, lAllObjects, lNewObjects, dVars):
+                    continue
+                else:
+                    utils.pop_level(dVars)
+
+            if utils.is_current_level(dVars, 'case_generate_statement:end_declaration'):
                 if generate_statement.tokenize(iObject, oObject, lAllObjects, lNewObjects, dVars):
                     continue
                 else:

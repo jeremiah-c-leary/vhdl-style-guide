@@ -217,83 +217,49 @@
 47 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-48 | None |             end block BLK4;
-<class 'vsg.token.block_statement.end_keyword'>
-<class 'vsg.token.block_statement.end_block_keyword'>
-<class 'vsg.token.block_statement.end_block_label'>
-<class 'vsg.token.block_statement.semicolon'>
+48 | None |               CASE_GEN_LABEL : case a & B & c generate
+<class 'vsg.token.case_generate_statement.LabelName'>
+<class 'vsg.token.case_generate_statement.LabelColon'>
+<class 'vsg.token.case_generate_statement.CaseKeyword'>
+<class 'vsg.parser.item'>
+<class 'vsg.parser.item'>
+<class 'vsg.parser.item'>
+<class 'vsg.parser.item'>
+<class 'vsg.parser.item'>
+<class 'vsg.token.case_generate_statement.GenerateKeyword'>
 --------------------------------------------------------------------------------
 49 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-50 | None |             BLK5 : block is
+50 | None |                 when "000" =>
+<class 'vsg.token.case_generate_alternative.WhenKeyword'>
+<class 'vsg.parser.item'>
+<class 'vsg.token.case_generate_alternative.Assignment'>
+--------------------------------------------------------------------------------
+51 | None |                     BLK4A : block is
 <class 'vsg.token.block_statement.label_name'>
 <class 'vsg.token.block_statement.label_colon'>
 <class 'vsg.token.block_statement.keyword'>
 <class 'vsg.token.block_statement.is_keyword'>
 --------------------------------------------------------------------------------
-51 | None |             begin
+52 | None |                     begin
 <class 'vsg.token.block_statement.begin_keyword'>
 --------------------------------------------------------------------------------
-52 | None | 
-<class 'vsg.parser.blank_line'>
---------------------------------------------------------------------------------
-53 | None |             end block BLK5;
+53 | None |                     end block BLK4A;
 <class 'vsg.token.block_statement.end_keyword'>
 <class 'vsg.token.block_statement.end_block_keyword'>
 <class 'vsg.token.block_statement.end_block_label'>
 <class 'vsg.token.block_statement.semicolon'>
 --------------------------------------------------------------------------------
-54 | None | 
+54 | None |                 when "001" =>
+<class 'vsg.token.case_generate_alternative.WhenKeyword'>
+<class 'vsg.parser.item'>
+<class 'vsg.token.case_generate_alternative.Assignment'>
+--------------------------------------------------------------------------------
+55 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-55 | None |         end block BLK2;
-<class 'vsg.token.block_statement.end_keyword'>
-<class 'vsg.token.block_statement.end_block_keyword'>
-<class 'vsg.token.block_statement.end_block_label'>
-<class 'vsg.token.block_statement.semicolon'>
---------------------------------------------------------------------------------
-56 | None | 
-<class 'vsg.parser.blank_line'>
---------------------------------------------------------------------------------
-57 | None |     end generate IF_GEN_LABEL;
-<class 'vsg.token.if_generate_statement.end_keyword'>
-<class 'vsg.token.if_generate_statement.end_generate_keyword'>
-<class 'vsg.token.if_generate_statement.end_generate_label'>
-<class 'vsg.token.if_generate_statement.semicolon'>
---------------------------------------------------------------------------------
-58 | None | 
-<class 'vsg.parser.blank_line'>
---------------------------------------------------------------------------------
-59 | None |     GEN : for ii in 0 to 7 generate
-<class 'vsg.token.for_generate_statement.label_name'>
-<class 'vsg.token.for_generate_statement.label_colon'>
-<class 'vsg.token.for_generate_statement.for_keyword'>
-<class 'vsg.parser.item'>
-<class 'vsg.parser.item'>
-<class 'vsg.parser.item'>
-<class 'vsg.parser.item'>
-<class 'vsg.parser.item'>
-<class 'vsg.token.for_generate_statement.generate_keyword'>
---------------------------------------------------------------------------------
-60 | None | 
-<class 'vsg.parser.blank_line'>
---------------------------------------------------------------------------------
-61 | None |         GEN2 : for jj in 0 to 7 generate
-<class 'vsg.token.for_generate_statement.label_name'>
-<class 'vsg.token.for_generate_statement.label_colon'>
-<class 'vsg.token.for_generate_statement.for_keyword'>
-<class 'vsg.parser.item'>
-<class 'vsg.parser.item'>
-<class 'vsg.parser.item'>
-<class 'vsg.parser.item'>
-<class 'vsg.parser.item'>
-<class 'vsg.token.for_generate_statement.generate_keyword'>
---------------------------------------------------------------------------------
-62 | None | 
-<class 'vsg.parser.blank_line'>
---------------------------------------------------------------------------------
-63 | None |           IF_GEN_LABEL2 : if b = y generate
+56 | None |                   IF_GEN_LABELA: if a = y generate
 <class 'vsg.token.if_generate_statement.label_name'>
 <class 'vsg.token.if_generate_statement.label_colon'>
 <class 'vsg.token.if_generate_statement.if_keyword'>
@@ -302,95 +268,219 @@
 <class 'vsg.token.if_generate_statement.condition'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-64 | None | 
+57 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-65 | None |             BLK2 : block is
+58 | None |                     BLK4B : block is
 <class 'vsg.token.block_statement.label_name'>
 <class 'vsg.token.block_statement.label_colon'>
 <class 'vsg.token.block_statement.keyword'>
 <class 'vsg.token.block_statement.is_keyword'>
 --------------------------------------------------------------------------------
-66 | None |             begin
+59 | None |                     begin
 <class 'vsg.token.block_statement.begin_keyword'>
 --------------------------------------------------------------------------------
-67 | None | 
-<class 'vsg.parser.blank_line'>
---------------------------------------------------------------------------------
-68 | None |             end block BLK2;
+60 | None |                     end block BLK4B;
 <class 'vsg.token.block_statement.end_keyword'>
 <class 'vsg.token.block_statement.end_block_keyword'>
 <class 'vsg.token.block_statement.end_block_label'>
 <class 'vsg.token.block_statement.semicolon'>
 --------------------------------------------------------------------------------
-69 | None | 
+61 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-70 | None |           elsif x = z generate
+62 | None |                   end generate IF_GEN_LABELA;
+<class 'vsg.token.if_generate_statement.end_keyword'>
+<class 'vsg.token.if_generate_statement.end_generate_keyword'>
+<class 'vsg.token.if_generate_statement.end_generate_label'>
+<class 'vsg.token.if_generate_statement.semicolon'>
+--------------------------------------------------------------------------------
+63 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+64 | None |                end generate CASE_GEN_LABEL;
+<class 'vsg.token.case_generate_statement.EndKeyword'>
+<class 'vsg.token.case_generate_statement.EndGenerateKeyword'>
+<class 'vsg.token.case_generate_statement.EndGenerateLabel'>
+<class 'vsg.token.case_generate_statement.Semicolon'>
+--------------------------------------------------------------------------------
+65 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+66 | None |             end block BLK4;
+<class 'vsg.token.block_statement.end_keyword'>
+<class 'vsg.token.block_statement.end_block_keyword'>
+<class 'vsg.token.block_statement.end_block_label'>
+<class 'vsg.token.block_statement.semicolon'>
+--------------------------------------------------------------------------------
+67 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+68 | None |             BLK5 : block is
+<class 'vsg.token.block_statement.label_name'>
+<class 'vsg.token.block_statement.label_colon'>
+<class 'vsg.token.block_statement.keyword'>
+<class 'vsg.token.block_statement.is_keyword'>
+--------------------------------------------------------------------------------
+69 | None |             begin
+<class 'vsg.token.block_statement.begin_keyword'>
+--------------------------------------------------------------------------------
+70 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+71 | None |             end block BLK5;
+<class 'vsg.token.block_statement.end_keyword'>
+<class 'vsg.token.block_statement.end_block_keyword'>
+<class 'vsg.token.block_statement.end_block_label'>
+<class 'vsg.token.block_statement.semicolon'>
+--------------------------------------------------------------------------------
+72 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+73 | None |         end block BLK2;
+<class 'vsg.token.block_statement.end_keyword'>
+<class 'vsg.token.block_statement.end_block_keyword'>
+<class 'vsg.token.block_statement.end_block_label'>
+<class 'vsg.token.block_statement.semicolon'>
+--------------------------------------------------------------------------------
+74 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+75 | None |     end generate IF_GEN_LABEL;
+<class 'vsg.token.if_generate_statement.end_keyword'>
+<class 'vsg.token.if_generate_statement.end_generate_keyword'>
+<class 'vsg.token.if_generate_statement.end_generate_label'>
+<class 'vsg.token.if_generate_statement.semicolon'>
+--------------------------------------------------------------------------------
+76 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+77 | None |     GEN : for ii in 0 to 7 generate
+<class 'vsg.token.for_generate_statement.label_name'>
+<class 'vsg.token.for_generate_statement.label_colon'>
+<class 'vsg.token.for_generate_statement.for_keyword'>
+<class 'vsg.parser.item'>
+<class 'vsg.parser.item'>
+<class 'vsg.parser.item'>
+<class 'vsg.parser.item'>
+<class 'vsg.parser.item'>
+<class 'vsg.token.for_generate_statement.generate_keyword'>
+--------------------------------------------------------------------------------
+78 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+79 | None |         GEN2 : for jj in 0 to 7 generate
+<class 'vsg.token.for_generate_statement.label_name'>
+<class 'vsg.token.for_generate_statement.label_colon'>
+<class 'vsg.token.for_generate_statement.for_keyword'>
+<class 'vsg.parser.item'>
+<class 'vsg.parser.item'>
+<class 'vsg.parser.item'>
+<class 'vsg.parser.item'>
+<class 'vsg.parser.item'>
+<class 'vsg.token.for_generate_statement.generate_keyword'>
+--------------------------------------------------------------------------------
+80 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+81 | None |           IF_GEN_LABEL2 : if b = y generate
+<class 'vsg.token.if_generate_statement.label_name'>
+<class 'vsg.token.if_generate_statement.label_colon'>
+<class 'vsg.token.if_generate_statement.if_keyword'>
+<class 'vsg.token.if_generate_statement.condition'>
+<class 'vsg.token.if_generate_statement.condition'>
+<class 'vsg.token.if_generate_statement.condition'>
+<class 'vsg.token.if_generate_statement.generate_keyword'>
+--------------------------------------------------------------------------------
+82 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+83 | None |             BLK2 : block is
+<class 'vsg.token.block_statement.label_name'>
+<class 'vsg.token.block_statement.label_colon'>
+<class 'vsg.token.block_statement.keyword'>
+<class 'vsg.token.block_statement.is_keyword'>
+--------------------------------------------------------------------------------
+84 | None |             begin
+<class 'vsg.token.block_statement.begin_keyword'>
+--------------------------------------------------------------------------------
+85 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+86 | None |             end block BLK2;
+<class 'vsg.token.block_statement.end_keyword'>
+<class 'vsg.token.block_statement.end_block_keyword'>
+<class 'vsg.token.block_statement.end_block_label'>
+<class 'vsg.token.block_statement.semicolon'>
+--------------------------------------------------------------------------------
+87 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+88 | None |           elsif x = z generate
 <class 'vsg.token.if_generate_statement.elsif_keyword'>
 <class 'vsg.token.if_generate_statement.condition'>
 <class 'vsg.token.if_generate_statement.condition'>
 <class 'vsg.token.if_generate_statement.condition'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-71 | None | 
+89 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-72 | None |             BLK2 : block is
+90 | None |             BLK2 : block is
 <class 'vsg.token.block_statement.label_name'>
 <class 'vsg.token.block_statement.label_colon'>
 <class 'vsg.token.block_statement.keyword'>
 <class 'vsg.token.block_statement.is_keyword'>
 --------------------------------------------------------------------------------
-73 | None |             begin
+91 | None |             begin
 <class 'vsg.token.block_statement.begin_keyword'>
 --------------------------------------------------------------------------------
-74 | None | 
+92 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-75 | None |           end block BLK2;
+93 | None |           end block BLK2;
 <class 'vsg.token.block_statement.end_keyword'>
 <class 'vsg.token.block_statement.end_block_keyword'>
 <class 'vsg.token.block_statement.end_block_label'>
 <class 'vsg.token.block_statement.semicolon'>
 --------------------------------------------------------------------------------
-76 | None | 
+94 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-77 | None |         end generate IF_GEN_LABEL2;
+95 | None |         end generate IF_GEN_LABEL2;
 <class 'vsg.token.if_generate_statement.end_keyword'>
 <class 'vsg.token.if_generate_statement.end_generate_keyword'>
 <class 'vsg.token.if_generate_statement.end_generate_label'>
 <class 'vsg.token.if_generate_statement.semicolon'>
 --------------------------------------------------------------------------------
-78 | None | 
+96 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-79 | None |         end generate GEN2;
+97 | None |         end generate GEN2;
 <class 'vsg.token.for_generate_statement.end_keyword'>
 <class 'vsg.token.for_generate_statement.end_generate_keyword'>
 <class 'vsg.token.for_generate_statement.end_generate_label'>
 <class 'vsg.token.for_generate_statement.semicolon'>
 --------------------------------------------------------------------------------
-80 | None |     end generate GEN;
+98 | None |     end generate GEN;
 <class 'vsg.token.for_generate_statement.end_keyword'>
 <class 'vsg.token.for_generate_statement.end_generate_keyword'>
 <class 'vsg.token.for_generate_statement.end_generate_label'>
 <class 'vsg.token.for_generate_statement.semicolon'>
 --------------------------------------------------------------------------------
-81 | None | 
+99 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-82 | None |   end block BLK;
+100 | None |   end block BLK;
 <class 'vsg.token.block_statement.end_keyword'>
 <class 'vsg.token.block_statement.end_block_keyword'>
 <class 'vsg.token.block_statement.end_block_label'>
 <class 'vsg.token.block_statement.semicolon'>
 --------------------------------------------------------------------------------
-83 | None | 
+101 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-84 | None | end architecture RTL;
+102 | None | end architecture RTL;
 <class 'vsg.token.architecture_body.end_keyword'>
 <class 'vsg.token.architecture_body.end_architecture_keyword'>
 <class 'vsg.token.architecture_body.architecture_simple_name'>

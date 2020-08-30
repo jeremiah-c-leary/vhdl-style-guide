@@ -208,6 +208,12 @@ class assignment(item):
     def __init__(self, sString):
         item.__init__(self, sString)
 
+
+class choices(item):
+
+    def __init__(self, sString):
+        item.__init__(self, sString)
+
 ###############################################################################
 # Context objects
 ###############################################################################
