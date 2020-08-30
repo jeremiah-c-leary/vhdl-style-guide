@@ -28,39 +28,53 @@ begin
   BLK : block is
   begin
 
-      BLK2 : block is
-      begin
+    IF_GEN_LABEL: if a = x generate
 
-        GEN2 : for jj in 0 to 7 generate
-
-          BLK2 : block is
-          begin
+        BLK2 : block is
+        begin
+  
+            GEN2 : for jj in 0 to 7 generate
     
-          end block BLK2;
-        end generate GEN2; 
-      BLK2 : block is
-      begin
+                BLK3: block is
+                begin
+          
+                end block BLK3;
+  
+            end generate GEN2; 
 
-      end block BLK2;
+            BLK4 : block is
+            begin
+      
+            end block BLK4;
+      
+            BLK5 : block is
+            begin
 
-      BLK2 : block is
-      begin
+            end block BLK5;
 
-      end block BLK2;
+        end block BLK2;
+
+    end generate IF_GEN_LABEL;
 
     GEN : for ii in 0 to 7 generate
 
         GEN2 : for jj in 0 to 7 generate
 
-          BLK2 : block is
-          begin
-    
+          IF_GEN_LABEL2 : if b = y generate
+
+            BLK2 : block is
+            begin
+      
+            end block BLK2;
+   
+          elsif x = z generate
+ 
+            BLK2 : block is
+            begin
+      
           end block BLK2;
-    
-          BLK2 : block is
-          begin
-    
-          end block BLK2;
+
+        end generate IF_GEN_LABEL2;
 
         end generate GEN2;
     end generate GEN;

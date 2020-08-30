@@ -19,6 +19,7 @@ def is_it(iObject, oObject, lAllObjects, lNewObjects, dVars):
       | generate_statement
       | *PSL*_PSL_Directive
     '''
+#    print('--> concurrent_statement.is_it')
     if block_statement.is_it(iObject, oObject, lAllObjects, lNewObjects, dVars):
         return True
     

@@ -70,6 +70,9 @@ class vhdlFile():
                 lNewObjects.append(oObject)
                 continue
 
+#            print('[' + ']['.join(dVars['history']) + ']')
+            #print(oObject.get_value())
+
             if utils.is_current_level(dVars, 'design_unit'):
                 if entity_declaration.check_for(oObject, lNewObjects, dVars):
                    utils.push_level(dVars, 'entity_declaration:begin_declaration')
@@ -146,11 +149,10 @@ class vhdlFile():
 
             if utils.is_current_level(dVars, 'block_statement_part'):
                 if concurrent_statement.is_it(iObject, oObject, lAllObjects, lNewObjects, dVars):
-                    pass
+                    continue
                 elif oObject.get_value().lower() == 'end':
                     lNewObjects.append(token.block_statement.end_keyword(oObject.get_value()))
                     utils.pop_level(dVars)
-                    utils.push_level(dVars, 'block_statement:end_declaration')
                 else:
                     lNewObjects.append(oObject)
                 continue
@@ -173,7 +175,7 @@ class vhdlFile():
 
             if utils.is_current_level(dVars, 'generate_statement_body'):
                 if concurrent_statement.is_it(iObject, oObject, lAllObjects, lNewObjects, dVars):
-                    pass
+                    continue
                 else:
                     utils.pop_level(dVars)
 
@@ -182,6 +184,38 @@ class vhdlFile():
                     continue
                 else:
                     lNewObjects.append(token.for_generate_statement.end_generate_label(oObject.get_value()))
+                continue
+
+            ###################################################################
+            # if generate
+            ###################################################################
+
+            if utils.is_current_level(dVars, 'if_generate_statement:begin_declaration'):
+                if generate_statement.tokenize(iObject, oObject, lAllObjects, lNewObjects, dVars):
+                    continue
+                else:
+                    lNewObjects.append(oObject)
+                continue
+
+            if utils.is_current_level(dVars, 'generate_statement_body'):
+                if concurrent_statement.is_it(iObject, oObject, lAllObjects, lNewObjects, dVars):
+                    continue
+                else:
+                    utils.pop_level(dVars)
+
+            if utils.is_current_level(dVars, 'if_generate_statement:elsif_declaration'):
+                if generate_statement.tokenize(iObject, oObject, lAllObjects, lNewObjects, dVars):
+                    continue
+
+            if utils.is_current_level(dVars, 'if_generate_statement:else_declaration'):
+                if generate_statement.tokenize(iObject, oObject, lAllObjects, lNewObjects, dVars):
+                    continue
+
+            if utils.is_current_level(dVars, 'if_generate_statement:end_declaration'):
+                if generate_statement.tokenize(iObject, oObject, lAllObjects, lNewObjects, dVars):
+                    continue
+                else:
+                    lNewObjects.append(token.if_generate_statement.end_generate_label(oObject.get_value()))
                 continue
 
 #        for oObject in lNewObjects:
