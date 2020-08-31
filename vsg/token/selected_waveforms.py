@@ -8,7 +8,7 @@ class when_keyword(parser.keyword):
         parser.keyword.__init__(self, sString)
 
 
-class comma(parser.keyword):
+class comma(parser.comma):
 
-    def __init__(self):
-        parser.comma.__init__(self)
+    def __init__(self, sString=','):
+        parser.comma.__init__(self, sString)

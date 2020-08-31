@@ -5,7 +5,7 @@ from vsg import parser
 
 #from vsg.vhdlFile.classify import concurrent_simple_signal_assignment
 from vsg.vhdlFile.classify_new import concurrent_conditional_signal_assignment
-#from vsg.vhdlFile.classify import concurrent_selected_signal_assignment
+from vsg.vhdlFile.classify_new import concurrent_selected_signal_assignment
 
 '''
     concurrent_signal_assignment_statement ::=
@@ -23,12 +23,20 @@ def detected(iObject, oObject, lAllObjects, lNewObjects, dVars):
       | [ label : ] [ postponed ] concurrent_selected_signal_assignment
     '''
 
-    if concurrent_conditional_signal_assignment.detected(iObject, oObject, lAllObjects, lNewObjects, dVars):
+    if concurrent_selected_signal_assignment.detected(iObject, oObject, lAllObjects, lNewObjects, dVars):
+        tokenize_label(iObject, oObject, lAllObjects, lNewObjects, dVars)
+        tokenize_postponed(iObject, oObject, lAllObjects, lNewObjects, dVars)
+        concurrent_selected_signal_assignment.tokenize(iObject, oObject, lAllObjects, lNewObjects, dVars)
+        lNewObjects.append(lAllObjects[iObject])
+        return True
+
+    elif concurrent_conditional_signal_assignment.detected(iObject, oObject, lAllObjects, lNewObjects, dVars):
         tokenize_label(iObject, oObject, lAllObjects, lNewObjects, dVars)
         tokenize_postponed(iObject, oObject, lAllObjects, lNewObjects, dVars)
         concurrent_conditional_signal_assignment.tokenize(iObject, oObject, lAllObjects, lNewObjects, dVars)
         lNewObjects.append(lAllObjects[iObject])
         return True
+
 
 
 def has_label(iObject, oObject, lAllObjects, lNewObjects, dVars):

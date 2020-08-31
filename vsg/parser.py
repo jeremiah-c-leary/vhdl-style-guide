@@ -72,8 +72,8 @@ class colon(item):
 
 class comma(item):
 
-    def __init__(self):
-        item.__init__(self, ',')
+    def __init__(self, sString=','):
+        item.__init__(self, sString)
 
 
 class semicolon(item):
