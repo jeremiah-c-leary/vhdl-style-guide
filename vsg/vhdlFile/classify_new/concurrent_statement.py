@@ -3,7 +3,7 @@ from vsg.vhdlFile.classify_new import block_statement
 #from vsg.vhdlFile.classify import concurrent_procedure_call_statement
 #from vsg.vhdlFile.classify import process_statement
 from vsg.vhdlFile.classify_new import generate_statement
-#from vsg.vhdlFile.classify import concurrent_signal_assignment_statement
+from vsg.vhdlFile.classify_new import concurrent_signal_assignment_statement
 #from vsg.vhdlFile.classify import concurrent_assertion_statement
 
 
@@ -24,6 +24,9 @@ def is_it(iObject, oObject, lAllObjects, lNewObjects, dVars):
         return True
     
     if generate_statement.is_it(iObject, oObject, lAllObjects, lNewObjects, dVars):
+        return True
+
+    if concurrent_signal_assignment_statement.detected(iObject, oObject, lAllObjects, lNewObjects, dVars):
         return True
 
     return False

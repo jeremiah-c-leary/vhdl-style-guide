@@ -72,7 +72,7 @@ class vhdlFile():
                 continue
 
 #            print('[' + ']['.join(dVars['history']) + ']')
-            #print(oObject.get_value())
+#            print(oObject.get_value())
 
             if utils.is_current_level(dVars, 'design_unit'):
                 if entity_declaration.check_for(oObject, lNewObjects, dVars):

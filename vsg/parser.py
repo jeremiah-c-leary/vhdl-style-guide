@@ -18,6 +18,11 @@ class item():
     def length(self):
         return len(self.value)
 
+class todo(item):
+
+    def __init__(self, sString):
+        item.__init__(self, sString)
+
 ###############################################################################
 # Base VHDL type classes
 ###############################################################################

@@ -69,3 +69,26 @@ def have_is_keyword(iObject, lAllObjects):
                 return True
         iIndex += 1
     return False
+
+def assign_token(lAllObjects, iToken, token):
+    lAllObjects[iToken] = token(lAllObjects[iToken].get_value())
+
+def object_value_is(lAllObjects, iToken, iString):
+    if lAllObjects[iToken].get_value().lower() == iString.lower():
+        return True
+    return False
+
+def is_item(lAllObjects, iToken):
+    if type(lAllObjects[iToken]) == parser.item:
+        return True
+    return False
+
+def get_bounds(lAllObjects, iStart, sEnd):
+    iIndex = iStart
+    while lAllObjects[iIndex].get_value() != ';':
+        iIndex += 1
+    else:
+        iEnd = iIndex
+        iStart = iStart
+        iCurrent = iStart
+    return iStart, iCurrent, iEnd
