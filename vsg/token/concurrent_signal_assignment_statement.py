@@ -14,5 +14,5 @@ class label_name(parser.label):
 
 class label_colon(parser.colon):
 
-    def __init__(self):
-        parser.colon.__init__(self)
+    def __init__(self, sString=';'):
+        parser.colon.__init__(self, sString)

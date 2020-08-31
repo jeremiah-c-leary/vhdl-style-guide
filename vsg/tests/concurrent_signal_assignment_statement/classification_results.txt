@@ -1,0 +1,373 @@
+--------------------------------------------------------------------------------
+0 | None | 
+--------------------------------------------------------------------------------
+1 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+2 | None | architecture RTL of FIFO is
+<class 'vsg.token.architecture_body.architecture_keyword'>
+<class 'vsg.token.architecture_body.identifier'>
+<class 'vsg.token.architecture_body.of_keyword'>
+<class 'vsg.token.architecture_body.entity_name'>
+<class 'vsg.token.architecture_body.is_keyword'>
+--------------------------------------------------------------------------------
+3 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+4 | None | begin
+<class 'vsg.token.architecture_body.begin_keyword'>
+--------------------------------------------------------------------------------
+5 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+6 | None |   -- Simple form
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+7 | None |   a <= b;
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+8 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+9 | None |   -- Simple form
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+10 | None |   a <= b when 'a' else
+<class 'vsg.token.concurrent_conditional_signal_assignment.target'>
+<class 'vsg.token.concurrent_conditional_signal_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.conditional_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.conditional_waveforms.else_keyword'>
+--------------------------------------------------------------------------------
+11 | None |        c when 'b' else
+<class 'vsg.parser.todo'>
+<class 'vsg.token.conditional_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.conditional_waveforms.else_keyword'>
+--------------------------------------------------------------------------------
+12 | None |        d;
+<class 'vsg.parser.todo'>
+<class 'vsg.token.concurrent_conditional_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+13 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+14 | None |   -- Basic version
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+15 | None |   with sel select
+<class 'vsg.token.concurrent_selected_signal_assignment.with_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.concurrent_selected_signal_assignment.select_keyword'>
+--------------------------------------------------------------------------------
+16 | None |     out1 <= a when "00",
+<class 'vsg.token.concurrent_selected_signal_assignment.target'>
+<class 'vsg.token.concurrent_selected_signal_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.comma'>
+--------------------------------------------------------------------------------
+17 | None |             b when "01",
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.comma'>
+--------------------------------------------------------------------------------
+18 | None |             c when "10",
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.comma'>
+--------------------------------------------------------------------------------
+19 | None |             d when others;
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.concurrent_selected_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+20 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+21 | None |   --+-------------------
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+22 | None |   --| Add labels:
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+23 | None |   --+-------------------
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+24 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+25 | None |   -- Simple form
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+26 | None |   simple_label : a <= b;
+<class 'vsg.token.concurrent_signal_assignment_statement.label_name'>
+<class 'vsg.token.concurrent_signal_assignment_statement.label_colon'>
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+27 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+28 | None |   -- Simple form
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+29 | None |   conditional_label : a <= b when 'a' else
+<class 'vsg.token.concurrent_signal_assignment_statement.label_name'>
+<class 'vsg.token.concurrent_signal_assignment_statement.label_colon'>
+<class 'vsg.token.concurrent_conditional_signal_assignment.target'>
+<class 'vsg.token.concurrent_conditional_signal_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.conditional_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.conditional_waveforms.else_keyword'>
+--------------------------------------------------------------------------------
+30 | None |        c when 'b' else
+<class 'vsg.parser.todo'>
+<class 'vsg.token.conditional_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.conditional_waveforms.else_keyword'>
+--------------------------------------------------------------------------------
+31 | None |        d;
+<class 'vsg.parser.todo'>
+<class 'vsg.token.concurrent_conditional_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+32 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+33 | None |   -- Basic version
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+34 | None |   select_label : with sel select
+<class 'vsg.token.concurrent_signal_assignment_statement.label_name'>
+<class 'vsg.token.concurrent_signal_assignment_statement.label_colon'>
+<class 'vsg.token.concurrent_selected_signal_assignment.with_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.concurrent_selected_signal_assignment.select_keyword'>
+--------------------------------------------------------------------------------
+35 | None |     out1 <= a when "00",
+<class 'vsg.token.concurrent_selected_signal_assignment.target'>
+<class 'vsg.token.concurrent_selected_signal_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.comma'>
+--------------------------------------------------------------------------------
+36 | None |             b when "01",
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.comma'>
+--------------------------------------------------------------------------------
+37 | None |             c when "10",
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.comma'>
+--------------------------------------------------------------------------------
+38 | None |             d when others;
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.concurrent_selected_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+39 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+40 | None |   --+-------------------
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+41 | None |   --| Add postponed keyword
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+42 | None |   --+-------------------
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+43 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+44 | None |   -- Simple form
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+45 | None |   simple_label : postponed a <= b;
+<class 'vsg.token.concurrent_signal_assignment_statement.label_name'>
+<class 'vsg.token.concurrent_signal_assignment_statement.label_colon'>
+<class 'vsg.token.concurrent_signal_assignment_statement.postponed_keyword'>
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+46 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+47 | None |   -- Simple form
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+48 | None |   conditional_label : postponed a <= b when 'a' else
+<class 'vsg.token.concurrent_signal_assignment_statement.label_name'>
+<class 'vsg.token.concurrent_signal_assignment_statement.label_colon'>
+<class 'vsg.token.concurrent_signal_assignment_statement.postponed_keyword'>
+<class 'vsg.token.concurrent_conditional_signal_assignment.target'>
+<class 'vsg.token.concurrent_conditional_signal_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.conditional_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.conditional_waveforms.else_keyword'>
+--------------------------------------------------------------------------------
+49 | None |        c when 'b' else
+<class 'vsg.parser.todo'>
+<class 'vsg.token.conditional_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.conditional_waveforms.else_keyword'>
+--------------------------------------------------------------------------------
+50 | None |        d;
+<class 'vsg.parser.todo'>
+<class 'vsg.token.concurrent_conditional_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+51 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+52 | None |   -- Basic version
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+53 | None |   select_label : postponed with sel select
+<class 'vsg.token.concurrent_signal_assignment_statement.label_name'>
+<class 'vsg.token.concurrent_signal_assignment_statement.label_colon'>
+<class 'vsg.token.concurrent_signal_assignment_statement.postponed_keyword'>
+<class 'vsg.token.concurrent_selected_signal_assignment.with_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.concurrent_selected_signal_assignment.select_keyword'>
+--------------------------------------------------------------------------------
+54 | None |     out1 <= a when "00",
+<class 'vsg.token.concurrent_selected_signal_assignment.target'>
+<class 'vsg.token.concurrent_selected_signal_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.comma'>
+--------------------------------------------------------------------------------
+55 | None |             b when "01",
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.comma'>
+--------------------------------------------------------------------------------
+56 | None |             c when "10",
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.comma'>
+--------------------------------------------------------------------------------
+57 | None |             d when others;
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.concurrent_selected_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+58 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+59 | None |   --+-------------------
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+60 | None |   --| With only postponed keyword
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+61 | None |   --+-------------------
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+62 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+63 | None |   -- Simple form
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+64 | None |   postponed a <= b;
+<class 'vsg.token.concurrent_signal_assignment_statement.postponed_keyword'>
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+65 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+66 | None |   -- Simple form
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+67 | None |   postponed a <= b when 'a' else
+<class 'vsg.token.concurrent_signal_assignment_statement.postponed_keyword'>
+<class 'vsg.token.concurrent_conditional_signal_assignment.target'>
+<class 'vsg.token.concurrent_conditional_signal_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.conditional_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.conditional_waveforms.else_keyword'>
+--------------------------------------------------------------------------------
+68 | None |        c when 'b' else
+<class 'vsg.parser.todo'>
+<class 'vsg.token.conditional_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.conditional_waveforms.else_keyword'>
+--------------------------------------------------------------------------------
+69 | None |        d;
+<class 'vsg.parser.todo'>
+<class 'vsg.token.concurrent_conditional_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+70 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+71 | None |   -- Basic version
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+72 | None |   postponed with sel select
+<class 'vsg.token.concurrent_signal_assignment_statement.postponed_keyword'>
+<class 'vsg.token.concurrent_selected_signal_assignment.with_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.concurrent_selected_signal_assignment.select_keyword'>
+--------------------------------------------------------------------------------
+73 | None |     out1 <= a when "00",
+<class 'vsg.token.concurrent_selected_signal_assignment.target'>
+<class 'vsg.token.concurrent_selected_signal_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.comma'>
+--------------------------------------------------------------------------------
+74 | None |             b when "01",
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.comma'>
+--------------------------------------------------------------------------------
+75 | None |             c when "10",
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.comma'>
+--------------------------------------------------------------------------------
+76 | None |             d when others;
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.concurrent_selected_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+77 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+78 | None | end architecture RTL;
+<class 'vsg.token.architecture_body.end_keyword'>
+<class 'vsg.token.architecture_body.end_architecture_keyword'>
+<class 'vsg.token.architecture_body.architecture_simple_name'>
+<class 'vsg.token.architecture_body.semicolon'>
