@@ -19,23 +19,23 @@ def detected(iObject, oObject, lAllObjects, lNewObjects, dVars):
     '''
 
     if concurrent_selected_signal_assignment.detected(iObject, oObject, lAllObjects, lNewObjects, dVars):
-        tokenize_label(iObject, oObject, lAllObjects, lNewObjects, dVars)
-        tokenize_postponed(iObject, oObject, lAllObjects, lNewObjects, dVars)
-        concurrent_selected_signal_assignment.tokenize(iObject, oObject, lAllObjects, lNewObjects, dVars)
+        iNewIndex = tokenize_label(iObject, oObject, lAllObjects, lNewObjects, dVars)
+        iNewIndex = tokenize_postponed(iNewIndex, oObject, lAllObjects, lNewObjects, dVars)
+        concurrent_selected_signal_assignment.tokenize(iNewIndex, oObject, lAllObjects, lNewObjects, dVars)
         lNewObjects.append(lAllObjects[iObject])
         return True
 
     elif concurrent_conditional_signal_assignment.detected(iObject, oObject, lAllObjects, lNewObjects, dVars):
-        tokenize_label(iObject, oObject, lAllObjects, lNewObjects, dVars)
-        tokenize_postponed(iObject, oObject, lAllObjects, lNewObjects, dVars)
-        concurrent_conditional_signal_assignment.tokenize(iObject, oObject, lAllObjects, lNewObjects, dVars)
+        iNewIndex = tokenize_label(iObject, oObject, lAllObjects, lNewObjects, dVars)
+        iNewIndex = tokenize_postponed(iNewIndex, oObject, lAllObjects, lNewObjects, dVars)
+        concurrent_conditional_signal_assignment.tokenize(iNewIndex, oObject, lAllObjects, lNewObjects, dVars)
         lNewObjects.append(lAllObjects[iObject])
         return True
 
     elif concurrent_simple_signal_assignment.detected(iObject, oObject, lAllObjects, lNewObjects, dVars):
-        tokenize_label(iObject, oObject, lAllObjects, lNewObjects, dVars)
-        tokenize_postponed(iObject, oObject, lAllObjects, lNewObjects, dVars)
-        concurrent_simple_signal_assignment.tokenize(iObject, oObject, lAllObjects, lNewObjects, dVars)
+        iNewIndex = tokenize_label(iObject, oObject, lAllObjects, lNewObjects, dVars)
+        iNewIndex = tokenize_postponed(iNewIndex, oObject, lAllObjects, lNewObjects, dVars)
+        concurrent_simple_signal_assignment.tokenize(iNewIndex, oObject, lAllObjects, lNewObjects, dVars)
         lNewObjects.append(lAllObjects[iObject])
         return True
 
@@ -80,5 +80,7 @@ def tokenize_postponed(iObject, oObject, lAllObjects, lNewObjects, dVars):
         if utils.is_item(lAllObjects, iIndex):
             if utils.object_value_is(lAllObjects, iIndex, 'postponed'):
                 utils.assign_token(lAllObjects, iIndex, token.postponed_keyword) 
+                return iIndex
             iItemCount += 1
         iIndex += 1
+    return iObject
