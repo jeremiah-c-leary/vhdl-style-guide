@@ -29,12 +29,16 @@ def detected(iObject, oObject, lAllObjects, lNewObjects, dVars):
     bAssignmentFound = False
 
     while lAllObjects[iToken].get_value() != ';':
-        if bAssignmentFound:
-            if lAllObjects[iToken].get_value().lower() == 'when':
-                return True
-
-        if lAllObjects[iToken].get_value() == '<=' and not bAssignmentFound:
-            bAssignmentFound = True
+        if utils.is_item(lAllObjects, iToken):
+            if bAssignmentFound:
+                if lAllObjects[iToken].get_value().lower() == 'when':
+                    return True
+            else:
+                if lAllObjects[iToken].get_value().lower() == 'when':
+                    return False
+    
+            if lAllObjects[iToken].get_value() == '<=' and not bAssignmentFound:
+                bAssignmentFound = True
         iToken += 1
     else:
         return False

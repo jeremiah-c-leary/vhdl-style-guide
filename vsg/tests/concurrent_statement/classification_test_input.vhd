@@ -9,12 +9,30 @@ begin
   BLK : block is
   begin
 
+    -- Simple form
+    a <= b;
+
     GEN : for ii in 0 to 7 generate
+
+      -- Simple form
+      a <= b when 'a' else
+           c when 'b' else
+           d;
 
       BLK2 : block is
       begin
 
+        -- Basic version
+        with sel select
+          out1 <= a when "00",
+                  b when "01",
+                  c when "10",
+                  d when others;
+
         GEN2 : for jj in 0 to 7 generate
+
+          -- Simple form
+          simple_label : a <= b;
 
         end generate GEN2; 
 
@@ -28,13 +46,33 @@ begin
   BLK : block is
   begin
 
+    -- Simple form
+    conditional_label : a <= b when 'a' else
+         c when 'b' else
+         d;
+
     IF_GEN_LABEL: if a = x generate
+
+        -- Basic version
+        select_label : with sel select
+          out1 <= a when "00",
+                  b when "01",
+                  c when "10",
+                  d when others;
 
         BLK2 : block is
         begin
   
+            -- Simple form
+            simple_label : postponed a <= b;
+
             GEN2 : for jj in 0 to 7 generate
     
+                -- Simple form
+                conditional_label : postponed a <= b when 'a' else
+                     c when 'b' else
+                     d;
+
                 BLK3: block is
                 begin
           
@@ -48,15 +86,41 @@ begin
               CASE_GEN_LABEL : case a & B & c generate
 
                 when "000" =>
+                    -- Basic version
+                    select_label : postponed with sel select
+                      out1 <= a when "00",
+                              b when "01",
+                              c when "10",
+                              d when others;
                     BLK4A : block is
                     begin
+
+                      -- Simple form
+                      postponed a <= b;
+
                     end block BLK4A;
                 when "001" =>
 
+                  -- Simple form
+                  postponed a <= b when 'a' else
+                       c when 'b' else
+                       d;
+
                   IF_GEN_LABELA: if a = y generate
+  
+                    -- Basic version
+                    postponed with sel select
+                      out1 <= a when "00",
+                              b when "01",
+                              c when "10",
+                              d when others;
 
                     BLK4B : block is
                     begin
+                      -- Simple form
+                      conditional_label : postponed a <= b when 'a' else
+                           c when 'b' else
+                           d;
                     end block BLK4B;
 
                   end generate IF_GEN_LABELA;     
@@ -67,7 +131,10 @@ begin
       
             BLK5 : block is
             begin
-
+                -- Simple form
+                conditional_label : postponed a <= b when 'a' else
+                     c when 'b' else
+                     d;
             end block BLK5;
 
         end block BLK2;
@@ -76,13 +143,29 @@ begin
 
     GEN : for ii in 0 to 7 generate
 
+                -- Simple form
+                conditional_label : postponed a <= b when 'a' else
+                     c when 'b' else
+                     d;
         GEN2 : for jj in 0 to 7 generate
 
+                -- Simple form
+                conditional_label : postponed a <= b when 'a' else
+                     c when 'b' else
+                     d;
           IF_GEN_LABEL2 : if b = y generate
 
+                -- Simple form
+                conditional_label : postponed a <= b when 'a' else
+                     c when 'b' else
+                     d;
             BLK2 : block is
             begin
       
+                -- Simple form
+                conditional_label : postponed a <= b when 'a' else
+                     c when 'b' else
+                     d;
             end block BLK2;
    
           elsif x = z generate
@@ -90,7 +173,11 @@ begin
             BLK2 : block is
             begin
       
-          end block BLK2;
+                -- Simple form
+                conditional_label : postponed a <= b when 'a' else
+                     c when 'b' else
+                     d;
+            end block BLK2;
 
         end generate IF_GEN_LABEL2;
 

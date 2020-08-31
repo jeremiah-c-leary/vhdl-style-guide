@@ -22,8 +22,11 @@ def detected(iObject, oObject, lAllObjects, lNewObjects, dVars):
     iToken = iObject
 
     while lAllObjects[iToken].get_value() != ';':
-        if lAllObjects[iToken].get_value() == '<=':
-            return True
+        if utils.is_item(lAllObjects, iToken):
+            if utils.object_value_is(lAllObjects, iToken, 'when'):
+                return False
+            if lAllObjects[iToken].get_value() == '<=':
+                return True
         iToken += 1
     else:
         return False
