@@ -38,9 +38,9 @@ class severity_expression(parser.expression):
         parser.expression.__init__(self, sString)
 
 
-class semicolon(parser.semicolon):
-
-    def __init__(self):
-        parser.semicolon.__init__(self)
+#class semicolon(parser.semicolon):
+#
+#    def __init__(self, sString=';'):
+#        parser.semicolon.__init__(self, sString)
 
 

@@ -46,19 +46,37 @@
 11 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-12 | None |     -- Simple form
+12 | None |     LABEL : assert TRUE
+<class 'vsg.token.concurrent_assertion_statement.label_name'>
+<class 'vsg.token.concurrent_assertion_statement.label_colon'>
+<class 'vsg.token.assertion.keyword'>
+<class 'vsg.parser.todo'>
+--------------------------------------------------------------------------------
+13 | None |       report "This is a string"
+<class 'vsg.token.assertion.report_keyword'>
+<class 'vsg.parser.todo'>
+--------------------------------------------------------------------------------
+14 | None |       severity WARNING;
+<class 'vsg.token.assertion.severity_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.concurrent_assertion_statement.semicolon'>
+--------------------------------------------------------------------------------
+15 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+16 | None |     -- Simple form
 <class 'vsg.parser.comment'>
 --------------------------------------------------------------------------------
-13 | None |     a <= b;
+17 | None |     a <= b;
 <class 'vsg.token.concurrent_simple_signal_assignment.target'>
 <class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
-14 | None | 
+18 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-15 | None |     GEN : for ii in 0 to 7 generate
+19 | None |     GEN : for ii in 0 to 7 generate
 <class 'vsg.token.for_generate_statement.label_name'>
 <class 'vsg.token.for_generate_statement.label_colon'>
 <class 'vsg.token.for_generate_statement.for_keyword'>
@@ -69,13 +87,13 @@
 <class 'vsg.parser.item'>
 <class 'vsg.token.for_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-16 | None | 
+20 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-17 | None |       -- Simple form
+21 | None |       -- Simple form
 <class 'vsg.parser.comment'>
 --------------------------------------------------------------------------------
-18 | None |       a <= b when 'a' else
+22 | None |       a <= b when 'a' else
 <class 'vsg.token.concurrent_conditional_signal_assignment.target'>
 <class 'vsg.token.concurrent_conditional_signal_assignment.assignment'>
 <class 'vsg.parser.todo'>
@@ -83,40 +101,74 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.else_keyword'>
 --------------------------------------------------------------------------------
-19 | None |            c when 'b' else
+23 | None |            c when 'b' else
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.when_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.else_keyword'>
 --------------------------------------------------------------------------------
-20 | None |            d;
+24 | None |            d;
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_conditional_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
-21 | None | 
+25 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-22 | None |       BLK2 : block is
+26 | None |       LABEL : assert TRUE
+<class 'vsg.token.concurrent_assertion_statement.label_name'>
+<class 'vsg.token.concurrent_assertion_statement.label_colon'>
+<class 'vsg.token.assertion.keyword'>
+<class 'vsg.parser.todo'>
+--------------------------------------------------------------------------------
+27 | None |         report "This is a string"
+<class 'vsg.token.assertion.report_keyword'>
+<class 'vsg.parser.todo'>
+--------------------------------------------------------------------------------
+28 | None |         severity WARNING;
+<class 'vsg.token.assertion.severity_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.concurrent_assertion_statement.semicolon'>
+--------------------------------------------------------------------------------
+29 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+30 | None |       BLK2 : block is
 <class 'vsg.token.block_statement.label_name'>
 <class 'vsg.token.block_statement.label_colon'>
 <class 'vsg.token.block_statement.keyword'>
 <class 'vsg.token.block_statement.is_keyword'>
 --------------------------------------------------------------------------------
-23 | None |       begin
+31 | None |       begin
 <class 'vsg.token.block_statement.begin_keyword'>
 --------------------------------------------------------------------------------
-24 | None | 
+32 | None |         assert TRUE
+<class 'vsg.token.assertion.keyword'>
+<class 'vsg.parser.todo'>
+--------------------------------------------------------------------------------
+33 | None |           report "This is a string"
+<class 'vsg.token.assertion.report_keyword'>
+<class 'vsg.parser.todo'>
+--------------------------------------------------------------------------------
+34 | None |           severity WARNING;
+<class 'vsg.token.assertion.severity_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.concurrent_assertion_statement.semicolon'>
+--------------------------------------------------------------------------------
+35 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-25 | None |         -- Basic version
+36 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+37 | None |         -- Basic version
 <class 'vsg.parser.comment'>
 --------------------------------------------------------------------------------
-26 | None |         with sel select
+38 | None |         with sel select
 <class 'vsg.token.concurrent_selected_signal_assignment.with_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_selected_signal_assignment.select_keyword'>
 --------------------------------------------------------------------------------
-27 | None |           out1 <= a when "00",
+39 | None |           out1 <= a when "00",
 <class 'vsg.token.concurrent_selected_signal_assignment.target'>
 <class 'vsg.token.concurrent_selected_signal_assignment.assignment'>
 <class 'vsg.parser.todo'>
@@ -124,28 +176,28 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.selected_waveforms.comma'>
 --------------------------------------------------------------------------------
-28 | None |                   b when "01",
+40 | None |                   b when "01",
 <class 'vsg.parser.todo'>
 <class 'vsg.token.selected_waveforms.when_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.selected_waveforms.comma'>
 --------------------------------------------------------------------------------
-29 | None |                   c when "10",
+41 | None |                   c when "10",
 <class 'vsg.parser.todo'>
 <class 'vsg.token.selected_waveforms.when_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.selected_waveforms.comma'>
 --------------------------------------------------------------------------------
-30 | None |                   d when others;
+42 | None |                   d when others;
 <class 'vsg.parser.todo'>
 <class 'vsg.token.selected_waveforms.when_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_selected_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
-31 | None | 
+43 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-32 | None |         GEN2 : for jj in 0 to 7 generate
+44 | None |         GEN2 : for jj in 0 to 7 generate
 <class 'vsg.token.for_generate_statement.label_name'>
 <class 'vsg.token.for_generate_statement.label_colon'>
 <class 'vsg.token.for_generate_statement.for_keyword'>
@@ -156,13 +208,13 @@
 <class 'vsg.parser.item'>
 <class 'vsg.token.for_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-33 | None | 
+45 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-34 | None |           -- Simple form
+46 | None |           -- Simple form
 <class 'vsg.parser.comment'>
 --------------------------------------------------------------------------------
-35 | None |           simple_label : a <= b;
+47 | None |           simple_label : a <= b;
 <class 'vsg.token.concurrent_signal_assignment_statement.label_name'>
 <class 'vsg.token.concurrent_signal_assignment_statement.label_colon'>
 <class 'vsg.token.concurrent_simple_signal_assignment.target'>
@@ -170,64 +222,83 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
-36 | None | 
+48 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-37 | None |         end generate GEN2;
+49 | None |           assert TRUE
+<class 'vsg.token.assertion.keyword'>
+<class 'vsg.parser.todo'>
+--------------------------------------------------------------------------------
+50 | None |             report "This is a string"
+<class 'vsg.token.assertion.report_keyword'>
+<class 'vsg.parser.todo'>
+--------------------------------------------------------------------------------
+51 | None |             severity WARNING;
+<class 'vsg.token.assertion.severity_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.concurrent_assertion_statement.semicolon'>
+--------------------------------------------------------------------------------
+52 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+53 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+54 | None |         end generate GEN2;
 <class 'vsg.token.for_generate_statement.end_keyword'>
 <class 'vsg.token.for_generate_statement.end_generate_keyword'>
 <class 'vsg.token.for_generate_statement.end_generate_label'>
 <class 'vsg.token.for_generate_statement.semicolon'>
 --------------------------------------------------------------------------------
-38 | None | 
+55 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-39 | None |       end block BLK2;
+56 | None |       end block BLK2;
 <class 'vsg.token.block_statement.end_keyword'>
 <class 'vsg.token.block_statement.end_block_keyword'>
 <class 'vsg.token.block_statement.end_block_label'>
 <class 'vsg.token.block_statement.semicolon'>
 --------------------------------------------------------------------------------
-40 | None | 
+57 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-41 | None |     end generate GEN;
+58 | None |     end generate GEN;
 <class 'vsg.token.for_generate_statement.end_keyword'>
 <class 'vsg.token.for_generate_statement.end_generate_keyword'>
 <class 'vsg.token.for_generate_statement.end_generate_label'>
 <class 'vsg.token.for_generate_statement.semicolon'>
 --------------------------------------------------------------------------------
-42 | None | 
+59 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-43 | None |   end block BLK;
+60 | None |   end block BLK;
 <class 'vsg.token.block_statement.end_keyword'>
 <class 'vsg.token.block_statement.end_block_keyword'>
 <class 'vsg.token.block_statement.end_block_label'>
 <class 'vsg.token.block_statement.semicolon'>
 --------------------------------------------------------------------------------
-44 | None | 
+61 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-45 | None | 
+62 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-46 | None |   BLK : block is
+63 | None |   BLK : block is
 <class 'vsg.token.block_statement.label_name'>
 <class 'vsg.token.block_statement.label_colon'>
 <class 'vsg.token.block_statement.keyword'>
 <class 'vsg.token.block_statement.is_keyword'>
 --------------------------------------------------------------------------------
-47 | None |   begin
+64 | None |   begin
 <class 'vsg.token.block_statement.begin_keyword'>
 --------------------------------------------------------------------------------
-48 | None | 
+65 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-49 | None |     -- Simple form
+66 | None |     -- Simple form
 <class 'vsg.parser.comment'>
 --------------------------------------------------------------------------------
-50 | None |     conditional_label : a <= b when 'a' else
+67 | None |     conditional_label : a <= b when 'a' else
 <class 'vsg.token.concurrent_signal_assignment_statement.label_name'>
 <class 'vsg.token.concurrent_signal_assignment_statement.label_colon'>
 <class 'vsg.token.concurrent_conditional_signal_assignment.target'>
@@ -237,20 +308,20 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.else_keyword'>
 --------------------------------------------------------------------------------
-51 | None |          c when 'b' else
+68 | None |          c when 'b' else
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.when_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.else_keyword'>
 --------------------------------------------------------------------------------
-52 | None |          d;
+69 | None |          d;
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_conditional_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
-53 | None | 
+70 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-54 | None |     IF_GEN_LABEL: if a = x generate
+71 | None |     IF_GEN_LABEL: if a = x generate
 <class 'vsg.token.if_generate_statement.label_name'>
 <class 'vsg.token.if_generate_statement.label_colon'>
 <class 'vsg.token.if_generate_statement.if_keyword'>
@@ -259,20 +330,20 @@
 <class 'vsg.token.if_generate_statement.condition'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-55 | None | 
+72 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-56 | None |         -- Basic version
+73 | None |         -- Basic version
 <class 'vsg.parser.comment'>
 --------------------------------------------------------------------------------
-57 | None |         select_label : with sel select
+74 | None |         select_label : with sel select
 <class 'vsg.token.concurrent_signal_assignment_statement.label_name'>
 <class 'vsg.token.concurrent_signal_assignment_statement.label_colon'>
 <class 'vsg.token.concurrent_selected_signal_assignment.with_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_selected_signal_assignment.select_keyword'>
 --------------------------------------------------------------------------------
-58 | None |           out1 <= a when "00",
+75 | None |           out1 <= a when "00",
 <class 'vsg.token.concurrent_selected_signal_assignment.target'>
 <class 'vsg.token.concurrent_selected_signal_assignment.assignment'>
 <class 'vsg.parser.todo'>
@@ -280,43 +351,54 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.selected_waveforms.comma'>
 --------------------------------------------------------------------------------
-59 | None |                   b when "01",
+76 | None |                   b when "01",
 <class 'vsg.parser.todo'>
 <class 'vsg.token.selected_waveforms.when_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.selected_waveforms.comma'>
 --------------------------------------------------------------------------------
-60 | None |                   c when "10",
+77 | None |                   c when "10",
 <class 'vsg.parser.todo'>
 <class 'vsg.token.selected_waveforms.when_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.selected_waveforms.comma'>
 --------------------------------------------------------------------------------
-61 | None |                   d when others;
+78 | None |                   d when others;
 <class 'vsg.parser.todo'>
 <class 'vsg.token.selected_waveforms.when_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_selected_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
-62 | None | 
+79 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-63 | None |         BLK2 : block is
+80 | None |         BLK2 : block is
 <class 'vsg.token.block_statement.label_name'>
 <class 'vsg.token.block_statement.label_colon'>
 <class 'vsg.token.block_statement.keyword'>
 <class 'vsg.token.block_statement.is_keyword'>
 --------------------------------------------------------------------------------
-64 | None |         begin
+81 | None |         begin
 <class 'vsg.token.block_statement.begin_keyword'>
 --------------------------------------------------------------------------------
-65 | None | 
+82 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-66 | None |             -- Simple form
+83 | None |             LABEL : assert TRUE
+<class 'vsg.token.concurrent_assertion_statement.label_name'>
+<class 'vsg.token.concurrent_assertion_statement.label_colon'>
+<class 'vsg.token.assertion.keyword'>
+<class 'vsg.parser.todo'>
+--------------------------------------------------------------------------------
+84 | None |               report "This is a string";
+<class 'vsg.token.assertion.report_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.concurrent_assertion_statement.semicolon'>
+--------------------------------------------------------------------------------
+85 | None |             -- Simple form
 <class 'vsg.parser.comment'>
 --------------------------------------------------------------------------------
-67 | None |             simple_label : postponed a <= b;
+86 | None |             simple_label : postponed a <= b;
 <class 'vsg.token.concurrent_signal_assignment_statement.label_name'>
 <class 'vsg.token.concurrent_signal_assignment_statement.label_colon'>
 <class 'vsg.token.concurrent_signal_assignment_statement.postponed_keyword'>
@@ -325,10 +407,10 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
-68 | None | 
+87 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-69 | None |             GEN2 : for jj in 0 to 7 generate
+88 | None |             GEN2 : for jj in 0 to 7 generate
 <class 'vsg.token.for_generate_statement.label_name'>
 <class 'vsg.token.for_generate_statement.label_colon'>
 <class 'vsg.token.for_generate_statement.for_keyword'>
@@ -339,13 +421,13 @@
 <class 'vsg.parser.item'>
 <class 'vsg.token.for_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-70 | None | 
+89 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-71 | None |                 -- Simple form
+90 | None |                 -- Simple form
 <class 'vsg.parser.comment'>
 --------------------------------------------------------------------------------
-72 | None |                 conditional_label : postponed a <= b when 'a' else
+91 | None |                 conditional_label : postponed a <= b when 'a' else
 <class 'vsg.token.concurrent_signal_assignment_statement.label_name'>
 <class 'vsg.token.concurrent_signal_assignment_statement.label_colon'>
 <class 'vsg.token.concurrent_signal_assignment_statement.postponed_keyword'>
@@ -356,62 +438,87 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.else_keyword'>
 --------------------------------------------------------------------------------
-73 | None |                      c when 'b' else
+92 | None |                      c when 'b' else
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.when_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.else_keyword'>
 --------------------------------------------------------------------------------
-74 | None |                      d;
+93 | None |                      d;
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_conditional_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
-75 | None | 
+94 | None |                 LABEL : assert TRUE
+<class 'vsg.token.concurrent_assertion_statement.label_name'>
+<class 'vsg.token.concurrent_assertion_statement.label_colon'>
+<class 'vsg.token.assertion.keyword'>
+<class 'vsg.parser.todo'>
+--------------------------------------------------------------------------------
+95 | None |                   report "This is a string";
+<class 'vsg.token.assertion.report_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.concurrent_assertion_statement.semicolon'>
+--------------------------------------------------------------------------------
+96 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-76 | None |                 BLK3: block is
+97 | None |                 BLK3: block is
 <class 'vsg.token.block_statement.label_name'>
 <class 'vsg.token.block_statement.label_colon'>
 <class 'vsg.token.block_statement.keyword'>
 <class 'vsg.token.block_statement.is_keyword'>
 --------------------------------------------------------------------------------
-77 | None |                 begin
+98 | None |                 begin
 <class 'vsg.token.block_statement.begin_keyword'>
 --------------------------------------------------------------------------------
-78 | None | 
+99 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-79 | None |                 end block BLK3;
+100 | None |                   LABEL : assert TRUE
+<class 'vsg.token.concurrent_assertion_statement.label_name'>
+<class 'vsg.token.concurrent_assertion_statement.label_colon'>
+<class 'vsg.token.assertion.keyword'>
+<class 'vsg.parser.todo'>
+--------------------------------------------------------------------------------
+101 | None |                     report "This is a string";
+<class 'vsg.token.assertion.report_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.concurrent_assertion_statement.semicolon'>
+--------------------------------------------------------------------------------
+102 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+103 | None |                 end block BLK3;
 <class 'vsg.token.block_statement.end_keyword'>
 <class 'vsg.token.block_statement.end_block_keyword'>
 <class 'vsg.token.block_statement.end_block_label'>
 <class 'vsg.token.block_statement.semicolon'>
 --------------------------------------------------------------------------------
-80 | None | 
+104 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-81 | None |             end generate GEN2;
+105 | None |             end generate GEN2;
 <class 'vsg.token.for_generate_statement.end_keyword'>
 <class 'vsg.token.for_generate_statement.end_generate_keyword'>
 <class 'vsg.token.for_generate_statement.end_generate_label'>
 <class 'vsg.token.for_generate_statement.semicolon'>
 --------------------------------------------------------------------------------
-82 | None | 
+106 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-83 | None |             BLK4 : block is
+107 | None |             BLK4 : block is
 <class 'vsg.token.block_statement.label_name'>
 <class 'vsg.token.block_statement.label_colon'>
 <class 'vsg.token.block_statement.keyword'>
 <class 'vsg.token.block_statement.is_keyword'>
 --------------------------------------------------------------------------------
-84 | None |             begin
+108 | None |             begin
 <class 'vsg.token.block_statement.begin_keyword'>
 --------------------------------------------------------------------------------
-85 | None | 
+109 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-86 | None |               CASE_GEN_LABEL : case a & B & c generate
+110 | None |               CASE_GEN_LABEL : case a & B & c generate
 <class 'vsg.token.case_generate_statement.LabelName'>
 <class 'vsg.token.case_generate_statement.LabelColon'>
 <class 'vsg.token.case_generate_statement.CaseKeyword'>
@@ -422,18 +529,35 @@
 <class 'vsg.parser.item'>
 <class 'vsg.token.case_generate_statement.GenerateKeyword'>
 --------------------------------------------------------------------------------
-87 | None | 
+111 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-88 | None |                 when "000" =>
+112 | None |                 when "000" =>
 <class 'vsg.token.case_generate_alternative.WhenKeyword'>
 <class 'vsg.parser.item'>
 <class 'vsg.token.case_generate_alternative.Assignment'>
 --------------------------------------------------------------------------------
-89 | None |                     -- Basic version
+113 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+114 | None |                   LABEL : assert TRUE
+<class 'vsg.token.concurrent_assertion_statement.label_name'>
+<class 'vsg.token.concurrent_assertion_statement.label_colon'>
+<class 'vsg.token.assertion.keyword'>
+<class 'vsg.parser.todo'>
+--------------------------------------------------------------------------------
+115 | None |                     report "This is a string";
+<class 'vsg.token.assertion.report_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.concurrent_assertion_statement.semicolon'>
+--------------------------------------------------------------------------------
+116 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+117 | None |                     -- Basic version
 <class 'vsg.parser.comment'>
 --------------------------------------------------------------------------------
-90 | None |                     select_label : postponed with sel select
+118 | None |                     select_label : postponed with sel select
 <class 'vsg.token.concurrent_signal_assignment_statement.label_name'>
 <class 'vsg.token.concurrent_signal_assignment_statement.label_colon'>
 <class 'vsg.token.concurrent_signal_assignment_statement.postponed_keyword'>
@@ -441,7 +565,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_selected_signal_assignment.select_keyword'>
 --------------------------------------------------------------------------------
-91 | None |                       out1 <= a when "00",
+119 | None |                       out1 <= a when "00",
 <class 'vsg.token.concurrent_selected_signal_assignment.target'>
 <class 'vsg.token.concurrent_selected_signal_assignment.assignment'>
 <class 'vsg.parser.todo'>
@@ -449,67 +573,78 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.selected_waveforms.comma'>
 --------------------------------------------------------------------------------
-92 | None |                               b when "01",
+120 | None |                               b when "01",
 <class 'vsg.parser.todo'>
 <class 'vsg.token.selected_waveforms.when_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.selected_waveforms.comma'>
 --------------------------------------------------------------------------------
-93 | None |                               c when "10",
+121 | None |                               c when "10",
 <class 'vsg.parser.todo'>
 <class 'vsg.token.selected_waveforms.when_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.selected_waveforms.comma'>
 --------------------------------------------------------------------------------
-94 | None |                               d when others;
+122 | None |                               d when others;
 <class 'vsg.parser.todo'>
 <class 'vsg.token.selected_waveforms.when_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_selected_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
-95 | None |                     BLK4A : block is
+123 | None |                     BLK4A : block is
 <class 'vsg.token.block_statement.label_name'>
 <class 'vsg.token.block_statement.label_colon'>
 <class 'vsg.token.block_statement.keyword'>
 <class 'vsg.token.block_statement.is_keyword'>
 --------------------------------------------------------------------------------
-96 | None |                     begin
+124 | None |                     begin
 <class 'vsg.token.block_statement.begin_keyword'>
 --------------------------------------------------------------------------------
-97 | None | 
+125 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-98 | None |                       -- Simple form
+126 | None |                       LABEL : assert TRUE
+<class 'vsg.token.concurrent_assertion_statement.label_name'>
+<class 'vsg.token.concurrent_assertion_statement.label_colon'>
+<class 'vsg.token.assertion.keyword'>
+<class 'vsg.parser.todo'>
+--------------------------------------------------------------------------------
+127 | None |                         report "This is a string";
+<class 'vsg.token.assertion.report_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.concurrent_assertion_statement.semicolon'>
+--------------------------------------------------------------------------------
+128 | None |                       -- Simple form
 <class 'vsg.parser.comment'>
 --------------------------------------------------------------------------------
-99 | None |                       postponed a <= b;
+129 | None |                       postponed a <= b;
 <class 'vsg.token.concurrent_signal_assignment_statement.postponed_keyword'>
 <class 'vsg.token.concurrent_simple_signal_assignment.target'>
 <class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
-100 | None | 
+130 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-101 | None |                     end block BLK4A;
+131 | None |                     end block BLK4A;
 <class 'vsg.token.block_statement.end_keyword'>
 <class 'vsg.token.block_statement.end_block_keyword'>
 <class 'vsg.token.block_statement.end_block_label'>
 <class 'vsg.token.block_statement.semicolon'>
 --------------------------------------------------------------------------------
-102 | None |                 when "001" =>
+132 | None |                 when "001" =>
 <class 'vsg.token.case_generate_alternative.WhenKeyword'>
 <class 'vsg.parser.item'>
 <class 'vsg.token.case_generate_alternative.Assignment'>
 --------------------------------------------------------------------------------
-103 | None | 
+133 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-104 | None |                   -- Simple form
+134 | None |                   -- Simple form
 <class 'vsg.parser.comment'>
 --------------------------------------------------------------------------------
-105 | None |                   postponed a <= b when 'a' else
+135 | None |                   postponed a <= b when 'a' else
 <class 'vsg.token.concurrent_signal_assignment_statement.postponed_keyword'>
 <class 'vsg.token.concurrent_conditional_signal_assignment.target'>
 <class 'vsg.token.concurrent_conditional_signal_assignment.assignment'>
@@ -518,20 +653,20 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.else_keyword'>
 --------------------------------------------------------------------------------
-106 | None |                        c when 'b' else
+136 | None |                        c when 'b' else
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.when_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.else_keyword'>
 --------------------------------------------------------------------------------
-107 | None |                        d;
+137 | None |                        d;
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_conditional_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
-108 | None | 
+138 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-109 | None |                   IF_GEN_LABELA: if a = y generate
+139 | None |                   IF_GEN_LABELA: if a = y generate
 <class 'vsg.token.if_generate_statement.label_name'>
 <class 'vsg.token.if_generate_statement.label_colon'>
 <class 'vsg.token.if_generate_statement.if_keyword'>
@@ -540,19 +675,33 @@
 <class 'vsg.token.if_generate_statement.condition'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-110 | None | 
+140 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-111 | None |                     -- Basic version
+141 | None |                     LABEL : assert TRUE
+<class 'vsg.token.concurrent_assertion_statement.label_name'>
+<class 'vsg.token.concurrent_assertion_statement.label_colon'>
+<class 'vsg.token.assertion.keyword'>
+<class 'vsg.parser.todo'>
+--------------------------------------------------------------------------------
+142 | None |                       severity WARNING;
+<class 'vsg.token.assertion.severity_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.concurrent_assertion_statement.semicolon'>
+--------------------------------------------------------------------------------
+143 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+144 | None |                     -- Basic version
 <class 'vsg.parser.comment'>
 --------------------------------------------------------------------------------
-112 | None |                     postponed with sel select
+145 | None |                     postponed with sel select
 <class 'vsg.token.concurrent_signal_assignment_statement.postponed_keyword'>
 <class 'vsg.token.concurrent_selected_signal_assignment.with_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_selected_signal_assignment.select_keyword'>
 --------------------------------------------------------------------------------
-113 | None |                       out1 <= a when "00",
+146 | None |                       out1 <= a when "00",
 <class 'vsg.token.concurrent_selected_signal_assignment.target'>
 <class 'vsg.token.concurrent_selected_signal_assignment.assignment'>
 <class 'vsg.parser.todo'>
@@ -560,40 +709,54 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.selected_waveforms.comma'>
 --------------------------------------------------------------------------------
-114 | None |                               b when "01",
+147 | None |                               b when "01",
 <class 'vsg.parser.todo'>
 <class 'vsg.token.selected_waveforms.when_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.selected_waveforms.comma'>
 --------------------------------------------------------------------------------
-115 | None |                               c when "10",
+148 | None |                               c when "10",
 <class 'vsg.parser.todo'>
 <class 'vsg.token.selected_waveforms.when_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.selected_waveforms.comma'>
 --------------------------------------------------------------------------------
-116 | None |                               d when others;
+149 | None |                               d when others;
 <class 'vsg.parser.todo'>
 <class 'vsg.token.selected_waveforms.when_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_selected_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
-117 | None | 
+150 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-118 | None |                     BLK4B : block is
+151 | None |                     BLK4B : block is
 <class 'vsg.token.block_statement.label_name'>
 <class 'vsg.token.block_statement.label_colon'>
 <class 'vsg.token.block_statement.keyword'>
 <class 'vsg.token.block_statement.is_keyword'>
 --------------------------------------------------------------------------------
-119 | None |                     begin
+152 | None |                     begin
 <class 'vsg.token.block_statement.begin_keyword'>
 --------------------------------------------------------------------------------
-120 | None |                       -- Simple form
+153 | None |                       LABEL : assert TRUE
+<class 'vsg.token.concurrent_assertion_statement.label_name'>
+<class 'vsg.token.concurrent_assertion_statement.label_colon'>
+<class 'vsg.token.assertion.keyword'>
+<class 'vsg.parser.todo'>
+--------------------------------------------------------------------------------
+154 | None |                         severity WARNING;
+<class 'vsg.token.assertion.severity_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.concurrent_assertion_statement.semicolon'>
+--------------------------------------------------------------------------------
+155 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+156 | None |                       -- Simple form
 <class 'vsg.parser.comment'>
 --------------------------------------------------------------------------------
-121 | None |                       conditional_label : postponed a <= b when 'a' else
+157 | None |                       conditional_label : postponed a <= b when 'a' else
 <class 'vsg.token.concurrent_signal_assignment_statement.label_name'>
 <class 'vsg.token.concurrent_signal_assignment_statement.label_colon'>
 <class 'vsg.token.concurrent_signal_assignment_statement.postponed_keyword'>
@@ -604,65 +767,78 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.else_keyword'>
 --------------------------------------------------------------------------------
-122 | None |                            c when 'b' else
+158 | None |                            c when 'b' else
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.when_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.else_keyword'>
 --------------------------------------------------------------------------------
-123 | None |                            d;
+159 | None |                            d;
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_conditional_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
-124 | None |                     end block BLK4B;
+160 | None |                     end block BLK4B;
 <class 'vsg.token.block_statement.end_keyword'>
 <class 'vsg.token.block_statement.end_block_keyword'>
 <class 'vsg.token.block_statement.end_block_label'>
 <class 'vsg.token.block_statement.semicolon'>
 --------------------------------------------------------------------------------
-125 | None | 
+161 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-126 | None |                   end generate IF_GEN_LABELA;
+162 | None |                   end generate IF_GEN_LABELA;
 <class 'vsg.token.if_generate_statement.end_keyword'>
 <class 'vsg.token.if_generate_statement.end_generate_keyword'>
 <class 'vsg.token.if_generate_statement.end_generate_label'>
 <class 'vsg.token.if_generate_statement.semicolon'>
 --------------------------------------------------------------------------------
-127 | None | 
+163 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-128 | None |                end generate CASE_GEN_LABEL;
+164 | None |                end generate CASE_GEN_LABEL;
 <class 'vsg.token.case_generate_statement.EndKeyword'>
 <class 'vsg.token.case_generate_statement.EndGenerateKeyword'>
 <class 'vsg.token.case_generate_statement.EndGenerateLabel'>
 <class 'vsg.token.case_generate_statement.Semicolon'>
 --------------------------------------------------------------------------------
-129 | None | 
+165 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-130 | None |             end block BLK4;
+166 | None |             end block BLK4;
 <class 'vsg.token.block_statement.end_keyword'>
 <class 'vsg.token.block_statement.end_block_keyword'>
 <class 'vsg.token.block_statement.end_block_label'>
 <class 'vsg.token.block_statement.semicolon'>
 --------------------------------------------------------------------------------
-131 | None | 
+167 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-132 | None |             BLK5 : block is
+168 | None |             BLK5 : block is
 <class 'vsg.token.block_statement.label_name'>
 <class 'vsg.token.block_statement.label_colon'>
 <class 'vsg.token.block_statement.keyword'>
 <class 'vsg.token.block_statement.is_keyword'>
 --------------------------------------------------------------------------------
-133 | None |             begin
+169 | None |             begin
 <class 'vsg.token.block_statement.begin_keyword'>
 --------------------------------------------------------------------------------
-134 | None |                 -- Simple form
+170 | None |                 postponed assert TRUE
+<class 'vsg.token.concurrent_assertion_statement.postponed_keyword'>
+<class 'vsg.token.assertion.keyword'>
+<class 'vsg.parser.todo'>
+--------------------------------------------------------------------------------
+171 | None |                   report "This is a string";
+<class 'vsg.token.assertion.report_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.concurrent_assertion_statement.semicolon'>
+--------------------------------------------------------------------------------
+172 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+173 | None |                 -- Simple form
 <class 'vsg.parser.comment'>
 --------------------------------------------------------------------------------
-135 | None |                 conditional_label : postponed a <= b when 'a' else
+174 | None |                 conditional_label : postponed a <= b when 'a' else
 <class 'vsg.token.concurrent_signal_assignment_statement.label_name'>
 <class 'vsg.token.concurrent_signal_assignment_statement.label_colon'>
 <class 'vsg.token.concurrent_signal_assignment_statement.postponed_keyword'>
@@ -673,44 +849,44 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.else_keyword'>
 --------------------------------------------------------------------------------
-136 | None |                      c when 'b' else
+175 | None |                      c when 'b' else
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.when_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.else_keyword'>
 --------------------------------------------------------------------------------
-137 | None |                      d;
+176 | None |                      d;
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_conditional_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
-138 | None |             end block BLK5;
+177 | None |             end block BLK5;
 <class 'vsg.token.block_statement.end_keyword'>
 <class 'vsg.token.block_statement.end_block_keyword'>
 <class 'vsg.token.block_statement.end_block_label'>
 <class 'vsg.token.block_statement.semicolon'>
 --------------------------------------------------------------------------------
-139 | None | 
+178 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-140 | None |         end block BLK2;
+179 | None |         end block BLK2;
 <class 'vsg.token.block_statement.end_keyword'>
 <class 'vsg.token.block_statement.end_block_keyword'>
 <class 'vsg.token.block_statement.end_block_label'>
 <class 'vsg.token.block_statement.semicolon'>
 --------------------------------------------------------------------------------
-141 | None | 
+180 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-142 | None |     end generate IF_GEN_LABEL;
+181 | None |     end generate IF_GEN_LABEL;
 <class 'vsg.token.if_generate_statement.end_keyword'>
 <class 'vsg.token.if_generate_statement.end_generate_keyword'>
 <class 'vsg.token.if_generate_statement.end_generate_label'>
 <class 'vsg.token.if_generate_statement.semicolon'>
 --------------------------------------------------------------------------------
-143 | None | 
+182 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-144 | None |     GEN : for ii in 0 to 7 generate
+183 | None |     GEN : for ii in 0 to 7 generate
 <class 'vsg.token.for_generate_statement.label_name'>
 <class 'vsg.token.for_generate_statement.label_colon'>
 <class 'vsg.token.for_generate_statement.for_keyword'>
@@ -721,13 +897,13 @@
 <class 'vsg.parser.item'>
 <class 'vsg.token.for_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-145 | None | 
+184 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-146 | None |                 -- Simple form
+185 | None |                 -- Simple form
 <class 'vsg.parser.comment'>
 --------------------------------------------------------------------------------
-147 | None |                 conditional_label : postponed a <= b when 'a' else
+186 | None |                 conditional_label : postponed a <= b when 'a' else
 <class 'vsg.token.concurrent_signal_assignment_statement.label_name'>
 <class 'vsg.token.concurrent_signal_assignment_statement.label_colon'>
 <class 'vsg.token.concurrent_signal_assignment_statement.postponed_keyword'>
@@ -738,17 +914,30 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.else_keyword'>
 --------------------------------------------------------------------------------
-148 | None |                      c when 'b' else
+187 | None |                      c when 'b' else
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.when_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.else_keyword'>
 --------------------------------------------------------------------------------
-149 | None |                      d;
+188 | None |                      d;
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_conditional_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
-150 | None |         GEN2 : for jj in 0 to 7 generate
+189 | None |                 postponed assert TRUE
+<class 'vsg.token.concurrent_assertion_statement.postponed_keyword'>
+<class 'vsg.token.assertion.keyword'>
+<class 'vsg.parser.todo'>
+--------------------------------------------------------------------------------
+190 | None |                   report "This is a string";
+<class 'vsg.token.assertion.report_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.concurrent_assertion_statement.semicolon'>
+--------------------------------------------------------------------------------
+191 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+192 | None |         GEN2 : for jj in 0 to 7 generate
 <class 'vsg.token.for_generate_statement.label_name'>
 <class 'vsg.token.for_generate_statement.label_colon'>
 <class 'vsg.token.for_generate_statement.for_keyword'>
@@ -759,13 +948,23 @@
 <class 'vsg.parser.item'>
 <class 'vsg.token.for_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-151 | None | 
+193 | None |                 postponed assert TRUE
+<class 'vsg.token.concurrent_assertion_statement.postponed_keyword'>
+<class 'vsg.token.assertion.keyword'>
+<class 'vsg.parser.todo'>
+--------------------------------------------------------------------------------
+194 | None |                   report "This is a string";
+<class 'vsg.token.assertion.report_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.concurrent_assertion_statement.semicolon'>
+--------------------------------------------------------------------------------
+195 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-152 | None |                 -- Simple form
+196 | None |                 -- Simple form
 <class 'vsg.parser.comment'>
 --------------------------------------------------------------------------------
-153 | None |                 conditional_label : postponed a <= b when 'a' else
+197 | None |                 conditional_label : postponed a <= b when 'a' else
 <class 'vsg.token.concurrent_signal_assignment_statement.label_name'>
 <class 'vsg.token.concurrent_signal_assignment_statement.label_colon'>
 <class 'vsg.token.concurrent_signal_assignment_statement.postponed_keyword'>
@@ -776,17 +975,17 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.else_keyword'>
 --------------------------------------------------------------------------------
-154 | None |                      c when 'b' else
+198 | None |                      c when 'b' else
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.when_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.else_keyword'>
 --------------------------------------------------------------------------------
-155 | None |                      d;
+199 | None |                      d;
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_conditional_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
-156 | None |           IF_GEN_LABEL2 : if b = y generate
+200 | None |           IF_GEN_LABEL2 : if b = y generate
 <class 'vsg.token.if_generate_statement.label_name'>
 <class 'vsg.token.if_generate_statement.label_colon'>
 <class 'vsg.token.if_generate_statement.if_keyword'>
@@ -795,13 +994,13 @@
 <class 'vsg.token.if_generate_statement.condition'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-157 | None | 
+201 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-158 | None |                 -- Simple form
+202 | None |                 -- Simple form
 <class 'vsg.parser.comment'>
 --------------------------------------------------------------------------------
-159 | None |                 conditional_label : postponed a <= b when 'a' else
+203 | None |                 conditional_label : postponed a <= b when 'a' else
 <class 'vsg.token.concurrent_signal_assignment_statement.label_name'>
 <class 'vsg.token.concurrent_signal_assignment_statement.label_colon'>
 <class 'vsg.token.concurrent_signal_assignment_statement.postponed_keyword'>
@@ -812,32 +1011,47 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.else_keyword'>
 --------------------------------------------------------------------------------
-160 | None |                      c when 'b' else
+204 | None |                      c when 'b' else
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.when_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.else_keyword'>
 --------------------------------------------------------------------------------
-161 | None |                      d;
+205 | None |                      d;
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_conditional_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
-162 | None |             BLK2 : block is
+206 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+207 | None |             BLK2 : block is
 <class 'vsg.token.block_statement.label_name'>
 <class 'vsg.token.block_statement.label_colon'>
 <class 'vsg.token.block_statement.keyword'>
 <class 'vsg.token.block_statement.is_keyword'>
 --------------------------------------------------------------------------------
-163 | None |             begin
+208 | None |             begin
 <class 'vsg.token.block_statement.begin_keyword'>
 --------------------------------------------------------------------------------
-164 | None | 
+209 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-165 | None |                 -- Simple form
+210 | None |                 LABEL : postponed assert TRUE
+<class 'vsg.token.concurrent_assertion_statement.label_name'>
+<class 'vsg.token.concurrent_assertion_statement.label_colon'>
+<class 'vsg.token.concurrent_assertion_statement.postponed_keyword'>
+<class 'vsg.token.assertion.keyword'>
+<class 'vsg.parser.todo'>
+--------------------------------------------------------------------------------
+211 | None |                   report "This is a string";
+<class 'vsg.token.assertion.report_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.concurrent_assertion_statement.semicolon'>
+--------------------------------------------------------------------------------
+212 | None |                 -- Simple form
 <class 'vsg.parser.comment'>
 --------------------------------------------------------------------------------
-166 | None |                 conditional_label : postponed a <= b when 'a' else
+213 | None |                 conditional_label : postponed a <= b when 'a' else
 <class 'vsg.token.concurrent_signal_assignment_statement.label_name'>
 <class 'vsg.token.concurrent_signal_assignment_statement.label_colon'>
 <class 'vsg.token.concurrent_signal_assignment_statement.postponed_keyword'>
@@ -848,51 +1062,51 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.else_keyword'>
 --------------------------------------------------------------------------------
-167 | None |                      c when 'b' else
+214 | None |                      c when 'b' else
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.when_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.else_keyword'>
 --------------------------------------------------------------------------------
-168 | None |                      d;
+215 | None |                      d;
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_conditional_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
-169 | None |             end block BLK2;
+216 | None |             end block BLK2;
 <class 'vsg.token.block_statement.end_keyword'>
 <class 'vsg.token.block_statement.end_block_keyword'>
 <class 'vsg.token.block_statement.end_block_label'>
 <class 'vsg.token.block_statement.semicolon'>
 --------------------------------------------------------------------------------
-170 | None | 
+217 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-171 | None |           elsif x = z generate
+218 | None |           elsif x = z generate
 <class 'vsg.token.if_generate_statement.elsif_keyword'>
 <class 'vsg.token.if_generate_statement.condition'>
 <class 'vsg.token.if_generate_statement.condition'>
 <class 'vsg.token.if_generate_statement.condition'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-172 | None | 
+219 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-173 | None |             BLK2 : block is
+220 | None |             BLK2 : block is
 <class 'vsg.token.block_statement.label_name'>
 <class 'vsg.token.block_statement.label_colon'>
 <class 'vsg.token.block_statement.keyword'>
 <class 'vsg.token.block_statement.is_keyword'>
 --------------------------------------------------------------------------------
-174 | None |             begin
+221 | None |             begin
 <class 'vsg.token.block_statement.begin_keyword'>
 --------------------------------------------------------------------------------
-175 | None | 
+222 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-176 | None |                 -- Simple form
+223 | None |                 -- Simple form
 <class 'vsg.parser.comment'>
 --------------------------------------------------------------------------------
-177 | None |                 conditional_label : postponed a <= b when 'a' else
+224 | None |                 conditional_label : postponed a <= b when 'a' else
 <class 'vsg.token.concurrent_signal_assignment_statement.label_name'>
 <class 'vsg.token.concurrent_signal_assignment_statement.label_colon'>
 <class 'vsg.token.concurrent_signal_assignment_statement.postponed_keyword'>
@@ -903,59 +1117,74 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.else_keyword'>
 --------------------------------------------------------------------------------
-178 | None |                      c when 'b' else
+225 | None |                      c when 'b' else
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.when_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.else_keyword'>
 --------------------------------------------------------------------------------
-179 | None |                      d;
+226 | None |                      d;
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_conditional_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
-180 | None |             end block BLK2;
+227 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+228 | None |                 LABEL : postponed assert TRUE
+<class 'vsg.token.concurrent_assertion_statement.label_name'>
+<class 'vsg.token.concurrent_assertion_statement.label_colon'>
+<class 'vsg.token.concurrent_assertion_statement.postponed_keyword'>
+<class 'vsg.token.assertion.keyword'>
+<class 'vsg.parser.todo'>
+--------------------------------------------------------------------------------
+229 | None |                   report "This is a string";
+<class 'vsg.token.assertion.report_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.concurrent_assertion_statement.semicolon'>
+--------------------------------------------------------------------------------
+230 | None |             end block BLK2;
 <class 'vsg.token.block_statement.end_keyword'>
 <class 'vsg.token.block_statement.end_block_keyword'>
 <class 'vsg.token.block_statement.end_block_label'>
 <class 'vsg.token.block_statement.semicolon'>
 --------------------------------------------------------------------------------
-181 | None | 
+231 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-182 | None |         end generate IF_GEN_LABEL2;
+232 | None |         end generate IF_GEN_LABEL2;
 <class 'vsg.token.if_generate_statement.end_keyword'>
 <class 'vsg.token.if_generate_statement.end_generate_keyword'>
 <class 'vsg.token.if_generate_statement.end_generate_label'>
 <class 'vsg.token.if_generate_statement.semicolon'>
 --------------------------------------------------------------------------------
-183 | None | 
+233 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-184 | None |         end generate GEN2;
+234 | None |         end generate GEN2;
 <class 'vsg.token.for_generate_statement.end_keyword'>
 <class 'vsg.token.for_generate_statement.end_generate_keyword'>
 <class 'vsg.token.for_generate_statement.end_generate_label'>
 <class 'vsg.token.for_generate_statement.semicolon'>
 --------------------------------------------------------------------------------
-185 | None |     end generate GEN;
+235 | None |     end generate GEN;
 <class 'vsg.token.for_generate_statement.end_keyword'>
 <class 'vsg.token.for_generate_statement.end_generate_keyword'>
 <class 'vsg.token.for_generate_statement.end_generate_label'>
 <class 'vsg.token.for_generate_statement.semicolon'>
 --------------------------------------------------------------------------------
-186 | None | 
+236 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-187 | None |   end block BLK;
+237 | None |   end block BLK;
 <class 'vsg.token.block_statement.end_keyword'>
 <class 'vsg.token.block_statement.end_block_keyword'>
 <class 'vsg.token.block_statement.end_block_label'>
 <class 'vsg.token.block_statement.semicolon'>
 --------------------------------------------------------------------------------
-188 | None | 
+238 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-189 | None | end architecture RTL;
+239 | None | end architecture RTL;
 <class 'vsg.token.architecture_body.end_keyword'>
 <class 'vsg.token.architecture_body.end_architecture_keyword'>
 <class 'vsg.token.architecture_body.architecture_simple_name'>

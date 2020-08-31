@@ -10,7 +10,7 @@ class label_name(parser.label):
 
 class label_colon(parser.label_colon):
 
-    def __init__(self):
+    def __init__(self, sString=':'):
         parser.label_colon.__init__(self)
 
 
@@ -22,5 +22,5 @@ class postponed_keyword(parser.keyword):
 
 class semicolon(parser.semicolon):
 
-    def __init__(self):
-        parser.semicolon.__init__(self)
+    def __init__(self, sString=';'):
+        parser.semicolon.__init__(self, sString)
