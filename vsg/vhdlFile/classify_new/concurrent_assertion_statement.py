@@ -7,75 +7,83 @@ from vsg.vhdlFile.classify_new import assertion
 
 from vsg.vhdlFile import utils
 
+'''
+    concurrent_assertion_statement ::=
+        [ label : ] [ postponed ] assertion ;
+'''
 
-def detected(iObject, oObject, lAllObjects, lNewObjects, dVars):
+
+def detect(iCurrent, lObjects):
     '''
     concurrent_assertion_statement ::=
         [ label : ] [ postponed ] assertion ;
     '''
 
-    if assertion.detected(iObject, oObject, lAllObjects, lNewObjects, dVars):
-        iNewIndex = tokenize_label(iObject, oObject, lAllObjects, lNewObjects, dVars)
-        iNewIndex = tokenize_postponed(iNewIndex, oObject, lAllObjects, lNewObjects, dVars)
-        iNewIndex = assertion.tokenize(iNewIndex, oObject, lAllObjects, lNewObjects, dVars)
-        iNewIndex = tokenize_semicolon(iNewIndex, oObject, lAllObjects, lNewObjects, dVars)
-        lNewObjects.append(lAllObjects[iObject])
-        return True
-
-    return False
+    if assertion.detect(iCurrent, lObjects):
+        return classify(iCurrent, lObjects)
+    return iCurrent
 
 
-def has_label(iObject, oObject, lAllObjects, lNewObjects, dVars):
+def classify(iCurrent, lObjects):
+    iReturn = iCurrent
+    iReturn = tokenize_label(iReturn, lObjects)
+    iReturn = tokenize_postponed(iReturn, lObjects)
+    iReturn = assertion.tokenize(iReturn, lObjects)
+    iReturn = tokenize_semicolon(iReturn, lObjects)
+    return iReturn
+
+
+def has_label(iObject, lObjects):
     iItemCount = 0
     iIndex = iObject
     try:
         while iItemCount < 2:
-            if type(lAllObjects[iIndex]) == parser.item:
+            if type(lObjects[iIndex]) == parser.item:
                 iItemCount += 1
             iIndex += 1
         else:
-            if lAllObjects[iIndex-1].get_value().lower() == ':':
+            if lObjects[iIndex-1].get_value().lower() == ':':
                 return True
     except IndexError:
         return False
     return False
     
 
-def tokenize_label(iObject, oObject, lAllObjects, lNewObjects, dVars):
-    iIndex = iObject
+def tokenize_label(iCurrent, lObjects):
+    iIndex = iCurrent
     iItemCount = 0
-    if has_label(iObject, oObject, lAllObjects, lNewObjects, dVars):
+    if has_label(iCurrent, lObjects):
         while iItemCount < 2:
-            if utils.is_item(lAllObjects, iIndex):
+            if utils.is_item(lObjects, iIndex):
                 if iItemCount == 0:
-                    utils.assign_token(lAllObjects, iIndex, token.label_name) 
+                    utils.assign_token(lObjects, iIndex, token.label_name) 
                 if iItemCount == 1:
-                    utils.assign_token(lAllObjects, iIndex, token.label_colon) 
+                    utils.assign_token(lObjects, iIndex, token.label_colon) 
                 iItemCount += 1
             iIndex += 1
     return iIndex
 
 
-def tokenize_postponed(iObject, oObject, lAllObjects, lNewObjects, dVars):
+def tokenize_postponed(iObject, lObjects):
     iIndex = iObject
     iItemCount = 0
     while iItemCount < 3:
-        if utils.is_item(lAllObjects, iIndex):
-            if utils.object_value_is(lAllObjects, iIndex, 'postponed'):
-                utils.assign_token(lAllObjects, iIndex, token.postponed_keyword) 
+        if utils.is_item(lObjects, iIndex):
+            if utils.object_value_is(lObjects, iIndex, 'postponed'):
+                utils.assign_token(lObjects, iIndex, token.postponed_keyword) 
                 return iIndex
             iItemCount += 1
         iIndex += 1
     return iObject
 
 
-def tokenize_semicolon(iObject, oObject, lAllObjects, lNewObjects, dVars):
+def tokenize_semicolon(iObject, lObjects):
     iIndex = iObject
     iItemCount = 0
     while iItemCount < 3:
-        if utils.is_item(lAllObjects, iIndex):
-            if utils.object_value_is(lAllObjects, iIndex, ';'):
-                utils.assign_token(lAllObjects, iIndex, token.semicolon) 
+        if utils.is_item(lObjects, iIndex):
+            if utils.object_value_is(lObjects, iIndex, ';'):
+                utils.assign_token(lObjects, iIndex, token.semicolon) 
                 return iIndex
             iItemCount += 1
         iIndex += 1
