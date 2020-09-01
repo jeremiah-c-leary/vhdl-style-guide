@@ -1,6 +1,9 @@
 
 from vsg.vhdlFile import utils
 
+from vsg.vhdlFile.classify_new import architecture_declarative_part
+from vsg.vhdlFile.classify_new import architecture_statement_part
+
 from vsg.token import architecture_body as token
 
 '''
@@ -8,77 +11,65 @@ architecture identifier of *entity*_name is
     architecture_declarative_part
 begin
     architecture_statement_part
-end [ architecture ] [ architecture_simple_name ] ;
+end [ architecture ] [ *architecture*_simple_name ] ;
 '''
 
-def check_for(oObject, lNewObjects, dVars):
-    if oObject.get_value().lower() == 'architecture':
-        return True
-    return False
+
+def detect(iCurrent, lObjects):
+    if utils.object_value_is(lObjects, iCurrent, 'architecture'):
+        return classify(iCurrent, lObjects)
+    return iCurrent
 
 
-def classify_begin_declaration(oObject, lNewObjects, dVars):
-    '''
-    architecture identifier of *entity*_name is
-    '''
-    if is_keyword(oObject, lNewObjects):
-        utils.push_level(dVars, 'architecture_declarative_part')
-        return True
-    elif of_keyword(oObject, lNewObjects):
-        dVars['blue'] = True
-        return True
-    elif architecture_keyword(oObject, lNewObjects):
-        return True
-    elif not dVars['blue']:
-        lNewObjects.append(token.identifier(oObject.get_value()))
-        return True
-    else:
-        lNewObjects.append(token.entity_name(oObject.get_value()))
-        dVars['blue'] = False
-        return True
+def classify(iCurrent, lObjects):
 
-    return False
+    bIdentifierFound = False
 
+    iStart, iEnd = utils.get_range(lObjects, iCurrent, 'is')
+    for iToken in range(iStart, iEnd + 1):
+        if not utils.is_item(lObjects, iToken):
+            continue
+        if utils.classify_token('architecture', token.architecture_keyword, iToken, lObjects):
+            continue
+        if utils.classify_token('of', token.of_keyword, iToken, lObjects):
+            continue
+        if utils.classify_token('is', token.is_keyword, iToken, lObjects):
+            continue
+        if not bIdentifierFound:
+           utils.assign_token(lObjects, iToken, token.identifier)
+           bIdentifierFound = True
+           continue
+        if bIdentifierFound:
+           utils.assign_token(lObjects, iToken, token.entity_name)
 
-def classify_end_declaration(oObject, lNewObjects, dVars):
-    '''
-    end [ architecture ] [ architecture_simple_name ] ;
-    '''
-    if end_keyword(oObject, lNewObjects):
-        return True
-    elif end_architecture_keyword(oObject, lNewObjects):
-        return True
-    elif semicolon(oObject, lNewObjects):
-        utils.pop_level(dVars)
-        return True
-    else:
-        lNewObjects.append(token.architecture_simple_name(oObject.get_value()))
-        return True
+    iLast = 0           
+    while iLast != iToken:
+        while not utils.is_item(lObjects, iToken):
+            iToken += 1
+        iLast = iToken
+        iToken = architecture_declarative_part.detect(iToken, lObjects)
+        
+    utils.classify_token('begin', token.begin_keyword, iToken, lObjects)
+    iToken += 1
 
-    return False
+    iLast = 0           
+    while iLast != iToken:
+        while not utils.is_item(lObjects, iToken):
+            iToken += 1
+        iLast = iToken
+        iToken = architecture_statement_part.detect(iToken, lObjects)
+        
 
+    iStart, iEnd = utils.get_range(lObjects, iCurrent, ';')
+    for iToken in range(iStart, iEnd + 1):
+        if not utils.is_item(lObjects, iToken):
+            continue
+        if utils.classify_token('architecture', token.end_architecture_keyword, iToken, lObjects):
+            continue
+        if utils.classify_token('end', token.end_keyword, iToken, lObjects):
+            continue
+        if utils.classify_token(';', token.semicolon, iToken, lObjects):
+            continue
+        utils.assign_token(lObjects, iToken, token.architecture_simple_name)
 
-def end_keyword(oObject, lNewObjects):
-    return utils.is_object('end', token.end_keyword, oObject, lNewObjects)
-
-
-def architecture_keyword(oObject, lNewObjects):
-    return utils.is_object('architecture', token.architecture_keyword, oObject, lNewObjects)
-
-
-def is_keyword(oObject, lNewObjects):
-    return utils.is_object('is', token.is_keyword, oObject, lNewObjects)
-
-
-def of_keyword(oObject, lNewObjects):
-    return utils.is_object('of', token.of_keyword, oObject, lNewObjects)
-
-
-def end_architecture_keyword(oObject, lNewObjects):
-    return utils.is_object('architecture', token.end_architecture_keyword, oObject, lNewObjects)
-
-
-def semicolon(oObject, lNewObjects):
-    return utils.is_object(';', token.semicolon, oObject, lNewObjects)
-
-
+    return iToken
