@@ -119,3 +119,33 @@ def find_in_range(sValue, iToken, sEnd, lObjects):
         if object_value_is(lObjects, iIndex, sValue):
             return True
     return False
+
+
+def find_next_token(iToken, lObjects):
+    iReturn = iToken
+    while not is_item(lObjects, iReturn):
+        iReturn += 1
+    return iReturn
+
+def detect_submodule(iToken, lObjects, module):
+    iLast = 0           
+    iReturn = iToken
+    while iLast != iReturn:
+        iReturn = find_next_token(iReturn, lObjects)
+        iLast = iReturn
+        iReturn = module.detect(iReturn, lObjects)
+    return iReturn
+
+def classify_begin_keyword(iToken, token, lObjects):
+    iReturn = iToken
+    if classify_token('begin', token, iToken, lObjects):
+        iReturn = iToken + 1
+    return iReturn
+    return iToken
+
+def classify_is_keyword(iToken, token, lObjects):
+    iReturn = iToken
+    if classify_token('is', token, iToken, lObjects):
+        iReturn = iToken + 1
+    return iReturn
+    return iToken
