@@ -8,7 +8,7 @@ from vsg.vhdlFile.classify import block_header
 from vsg.vhdlFile.classify import block_declarative_part
 from vsg.vhdlFile.classify import block_statement_part
 
-def is_it(iObject, oObject, lAllObjects, lNewObjects, dVars):
+def detect(iObject, oObject, lAllObjects, lNewObjects, dVars):
     iItemCount = 0
     iIndex = iObject
     try:
@@ -26,6 +26,31 @@ def is_it(iObject, oObject, lAllObjects, lNewObjects, dVars):
         return False
     return False
 
+
+def tokenize(iObject, oObject, lAllObjects, lNewObjects, dVars):
+
+    iToken = iObject
+
+    while not utils.object_value_is(lAllObjects iToken, 'block'):
+        if utils.is_item(lAllObjects, iToken):
+            if utils.object_value_is(lAllObjects, iToken, ':'):
+                utils.assign_token(lAllObjects, iToken, token.label_colon)
+            else:
+                utils.assign_token(lAllObjects, iToken, token.label_name)
+        iToken += 1
+    else:
+        utils.assign_token(lAllObjects, iToken, token.keyword)
+        iToken += 1
+
+    while not 
+
+    for iToken in range(iObject, len(lAllObjects):
+        kk
+        if utils.is_item(lAllObjects, iToken):
+            if utils.object_value_is(lAllObjects, iToken, ':'):
+                utils.assign_token(lAllObjects, iToken, token.label_colon)
+            elif utils.object_value_is(lAllObjects, iToken, 'block'):
+                utils.assign_token(lAllObjects, iToken, token.label_colon)
 
 def tokenize_begin_declaration(iObject, oObject, lAllObjects, lNewObjects, dVars):
 

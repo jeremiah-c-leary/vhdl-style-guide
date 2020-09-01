@@ -4,12 +4,13 @@ from vsg import line
 from vsg.vhdlFile.classify_new import blank
 from vsg.vhdlFile.classify_new import whitespace
 from vsg.vhdlFile.classify_new import comment
-from vsg.vhdlFile.classify_new import architecture_body
-from vsg.vhdlFile.classify_new import entity_declaration
-from vsg.vhdlFile.classify_new import generate_statement
-from vsg.vhdlFile.classify_new import block_statement
-from vsg.vhdlFile.classify_new import concurrent_statement
-from vsg.vhdlFile.classify_new import case_generate_alternative
+from vsg.vhdlFile.classify_new import design_file
+#from vsg.vhdlFile.classify_new import architecture_body
+#from vsg.vhdlFile.classify_new import entity_declaration
+#from vsg.vhdlFile.classify_new import generate_statement
+#from vsg.vhdlFile.classify_new import block_statement
+#from vsg.vhdlFile.classify_new import concurrent_statement
+#from vsg.vhdlFile.classify_new import case_generate_alternative
 
 from vsg import parser
 
@@ -64,6 +65,17 @@ class vhdlFile():
 
             lAllObjects.extend(lObjects)
             lAllObjects.append(parser.carriage_return())
+
+        iToken = 0
+
+        design_file.tokenize(lAllObjects)
+
+        for iLine, lLine in enumerate(split_on_carriage_return(lAllObjects)):
+            self.lines[iLine + 1].objects = lLine
+        
+
+
+def old_stuff():
 
         lNewObjects = []
         for iObject, oObject in enumerate(lAllObjects):

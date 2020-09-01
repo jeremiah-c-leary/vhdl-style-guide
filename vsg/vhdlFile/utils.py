@@ -70,11 +70,14 @@ def have_is_keyword(iObject, lAllObjects):
         iIndex += 1
     return False
 
-def assign_token(lAllObjects, iToken, token):
-    lAllObjects[iToken] = token(lAllObjects[iToken].get_value())
+def assign_token(lObjects, iToken, token):
+    try:
+        lObjects[iToken] = token(lObjects[iToken].get_value())
+    except TypeError:
+        lObjects[iToken] = token()
 
-def object_value_is(lAllObjects, iToken, iString):
-    if lAllObjects[iToken].get_value().lower() == iString.lower():
+def object_value_is(lAllObjects, iToken, sString):
+    if lAllObjects[iToken].get_value().lower() == sString.lower():
         return True
     return False
 
@@ -83,12 +86,28 @@ def is_item(lAllObjects, iToken):
         return True
     return False
 
-def get_bounds(lAllObjects, iStart, sEnd):
+def get_bounds(lObjects, iStart, sEnd):
     iIndex = iStart
-    while lAllObjects[iIndex].get_value() != ';':
+    while lObjects[iIndex].get_value() != sEnd:
         iIndex += 1
     else:
         iEnd = iIndex
         iStart = iStart
         iCurrent = iStart
     return iStart, iCurrent, iEnd
+
+def get_range(lObjects, iStart, sEnd):
+    iIndex = iStart
+    while lObjects[iIndex].get_value() != sEnd:
+        iIndex += 1
+    else:
+        iEnd = iIndex
+        iStart = iStart
+    return iStart, iEnd
+
+def classify_token(sToken, token, iToken, lObjects):
+    if object_value_is(lObjects, iToken, sToken):
+        assign_token(lObjects, iToken, token)
+        return True
+    return False
+
