@@ -24,7 +24,7 @@
 <class 'vsg.parser.comment'>
 --------------------------------------------------------------------------------
 7 | None |   BLK : block is
-<class 'vsg.token.block_statement.label_name'>
+<class 'vsg.token.block_statement.block_label'>
 <class 'vsg.token.block_statement.label_colon'>
 <class 'vsg.token.block_statement.keyword'>
 <class 'vsg.token.block_statement.is_keyword'>
@@ -39,7 +39,7 @@
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 11 | None |     BLK2 : block is
-<class 'vsg.token.block_statement.label_name'>
+<class 'vsg.token.block_statement.block_label'>
 <class 'vsg.token.block_statement.label_colon'>
 <class 'vsg.token.block_statement.keyword'>
 <class 'vsg.token.block_statement.is_keyword'>
@@ -51,7 +51,7 @@
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 14 | None |         BLK3 : block is
-<class 'vsg.token.block_statement.label_name'>
+<class 'vsg.token.block_statement.block_label'>
 <class 'vsg.token.block_statement.label_colon'>
 <class 'vsg.token.block_statement.keyword'>
 <class 'vsg.token.block_statement.is_keyword'>
@@ -81,7 +81,7 @@
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 21 | None |     BLK4 : block is
-<class 'vsg.token.block_statement.label_name'>
+<class 'vsg.token.block_statement.block_label'>
 <class 'vsg.token.block_statement.label_colon'>
 <class 'vsg.token.block_statement.keyword'>
 <class 'vsg.token.block_statement.is_keyword'>
@@ -93,7 +93,7 @@
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 24 | None |         BLK5 : block is
-<class 'vsg.token.block_statement.label_name'>
+<class 'vsg.token.block_statement.block_label'>
 <class 'vsg.token.block_statement.label_colon'>
 <class 'vsg.token.block_statement.keyword'>
 <class 'vsg.token.block_statement.is_keyword'>
@@ -105,7 +105,7 @@
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 27 | None |             BLK6 : block is
-<class 'vsg.token.block_statement.label_name'>
+<class 'vsg.token.block_statement.block_label'>
 <class 'vsg.token.block_statement.label_colon'>
 <class 'vsg.token.block_statement.keyword'>
 <class 'vsg.token.block_statement.is_keyword'>

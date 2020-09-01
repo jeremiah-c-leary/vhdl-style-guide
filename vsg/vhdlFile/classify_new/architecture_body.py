@@ -24,7 +24,8 @@ def detect(iCurrent, lObjects):
 def classify(iCurrent, lObjects):
 
     bIdentifierFound = False
-
+#    print('--> opening architecture')
+#    print(iCurrent)
     iStart, iEnd = utils.get_range(lObjects, iCurrent, 'is')
     for iToken in range(iStart, iEnd + 1):
         if not utils.is_item(lObjects, iToken):
@@ -41,7 +42,8 @@ def classify(iCurrent, lObjects):
            continue
         if bIdentifierFound:
            utils.assign_token(lObjects, iToken, token.entity_name)
-
+#    print(iToken)
+#    print('--> detecting architecture_declarative_part')
     iLast = 0           
     while iLast != iToken:
         while not utils.is_item(lObjects, iToken):
@@ -49,9 +51,11 @@ def classify(iCurrent, lObjects):
         iLast = iToken
         iToken = architecture_declarative_part.detect(iToken, lObjects)
         
+#    print('--> architecture begin keyword')
     utils.classify_token('begin', token.begin_keyword, iToken, lObjects)
     iToken += 1
 
+#    print('--> detecting architecture_statement_part')
     iLast = 0           
     while iLast != iToken:
         while not utils.is_item(lObjects, iToken):
@@ -60,7 +64,8 @@ def classify(iCurrent, lObjects):
         iToken = architecture_statement_part.detect(iToken, lObjects)
         
 
-    iStart, iEnd = utils.get_range(lObjects, iCurrent, ';')
+#    print('--> closing architecture')
+    iStart, iEnd = utils.get_range(lObjects, iToken, ';')
     for iToken in range(iStart, iEnd + 1):
         if not utils.is_item(lObjects, iToken):
             continue

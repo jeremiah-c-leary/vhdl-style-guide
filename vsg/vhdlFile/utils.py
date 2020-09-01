@@ -99,6 +99,7 @@ def get_bounds(lObjects, iStart, sEnd):
 def get_range(lObjects, iStart, sEnd):
     iIndex = iStart
     while lObjects[iIndex].get_value() != sEnd:
+#        print(lObjects[iIndex].get_value())
         iIndex += 1
     else:
         iEnd = iIndex
