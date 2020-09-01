@@ -111,3 +111,10 @@ def classify_token(sToken, token, iToken, lObjects):
         return True
     return False
 
+
+def find_in_range(sValue, iToken, sEnd, lObjects):
+    iStart, iEnd = get_range(lObjects, iToken, sEnd)
+    for iIndex in range(iStart, iEnd + 1):
+        if object_value_is(lObjects, iIndex, sValue):
+            return True
+    return False

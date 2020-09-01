@@ -1,4 +1,5 @@
 
+from vsg.vhdlFile.classify_new import context_reference
 from vsg.vhdlFile.classify_new import library_clause
 from vsg.vhdlFile.classify_new import use_clause
 
@@ -15,5 +16,11 @@ def detect(iCurrent, lObjects):
         return iReturn
 
     iReturn = use_clause.detect(iCurrent, lObjects)
+    if iReturn != iCurrent:
+        return iReturn
 
-    return iReturn
+    iReturn = context_reference.detect(iCurrent, lObjects)
+    if iReturn != iCurrent:
+        return iReturn
+
+    return iCurrent
