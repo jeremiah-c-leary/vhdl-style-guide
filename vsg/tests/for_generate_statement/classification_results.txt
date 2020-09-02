@@ -27,14 +27,14 @@
 <class 'vsg.parser.comment'>
 --------------------------------------------------------------------------------
 8 | None |   LABEL1: for i in 0 to 7 generate
-<class 'vsg.token.for_generate_statement.label_name'>
+<class 'vsg.token.for_generate_statement.generate_label'>
 <class 'vsg.token.for_generate_statement.label_colon'>
 <class 'vsg.token.for_generate_statement.for_keyword'>
-<class 'vsg.parser.item'>
-<class 'vsg.parser.item'>
-<class 'vsg.parser.item'>
-<class 'vsg.parser.item'>
-<class 'vsg.parser.item'>
+<class 'vsg.token.parameter_specification.identifier'>
+<class 'vsg.token.parameter_specification.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
 <class 'vsg.token.for_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
 9 | None | 
@@ -53,36 +53,36 @@
 <class 'vsg.parser.comment'>
 --------------------------------------------------------------------------------
 13 | None |   LABEL2A: for i in 0 to 7 generate
-<class 'vsg.token.for_generate_statement.label_name'>
+<class 'vsg.token.for_generate_statement.generate_label'>
 <class 'vsg.token.for_generate_statement.label_colon'>
 <class 'vsg.token.for_generate_statement.for_keyword'>
-<class 'vsg.parser.item'>
-<class 'vsg.parser.item'>
-<class 'vsg.parser.item'>
-<class 'vsg.parser.item'>
-<class 'vsg.parser.item'>
+<class 'vsg.token.parameter_specification.identifier'>
+<class 'vsg.token.parameter_specification.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
 <class 'vsg.token.for_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
 14 | None |       LABEL2B: for i in 0 to 7 generate
-<class 'vsg.token.for_generate_statement.label_name'>
+<class 'vsg.token.for_generate_statement.generate_label'>
 <class 'vsg.token.for_generate_statement.label_colon'>
 <class 'vsg.token.for_generate_statement.for_keyword'>
-<class 'vsg.parser.item'>
-<class 'vsg.parser.item'>
-<class 'vsg.parser.item'>
-<class 'vsg.parser.item'>
-<class 'vsg.parser.item'>
+<class 'vsg.token.parameter_specification.identifier'>
+<class 'vsg.token.parameter_specification.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
 <class 'vsg.token.for_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
 15 | None |           LABEL2C: for i in 0 to 7 generate
-<class 'vsg.token.for_generate_statement.label_name'>
+<class 'vsg.token.for_generate_statement.generate_label'>
 <class 'vsg.token.for_generate_statement.label_colon'>
 <class 'vsg.token.for_generate_statement.for_keyword'>
-<class 'vsg.parser.item'>
-<class 'vsg.parser.item'>
-<class 'vsg.parser.item'>
-<class 'vsg.parser.item'>
-<class 'vsg.parser.item'>
+<class 'vsg.token.parameter_specification.identifier'>
+<class 'vsg.token.parameter_specification.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
 <class 'vsg.token.for_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
 16 | None |           end generate LABEL2C;
@@ -110,36 +110,36 @@
 <class 'vsg.parser.comment'>
 --------------------------------------------------------------------------------
 21 | None |   LABEL2A: for i in 0 to 7 generate
-<class 'vsg.token.for_generate_statement.label_name'>
+<class 'vsg.token.for_generate_statement.generate_label'>
 <class 'vsg.token.for_generate_statement.label_colon'>
 <class 'vsg.token.for_generate_statement.for_keyword'>
-<class 'vsg.parser.item'>
-<class 'vsg.parser.item'>
-<class 'vsg.parser.item'>
-<class 'vsg.parser.item'>
-<class 'vsg.parser.item'>
+<class 'vsg.token.parameter_specification.identifier'>
+<class 'vsg.token.parameter_specification.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
 <class 'vsg.token.for_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
 22 | None |       LABEL2B: for i in 0 to 7 generate
-<class 'vsg.token.for_generate_statement.label_name'>
+<class 'vsg.token.for_generate_statement.generate_label'>
 <class 'vsg.token.for_generate_statement.label_colon'>
 <class 'vsg.token.for_generate_statement.for_keyword'>
-<class 'vsg.parser.item'>
-<class 'vsg.parser.item'>
-<class 'vsg.parser.item'>
-<class 'vsg.parser.item'>
-<class 'vsg.parser.item'>
+<class 'vsg.token.parameter_specification.identifier'>
+<class 'vsg.token.parameter_specification.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
 <class 'vsg.token.for_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
 23 | None |           LABEL2C: for i in 0 to 7 generate
-<class 'vsg.token.for_generate_statement.label_name'>
+<class 'vsg.token.for_generate_statement.generate_label'>
 <class 'vsg.token.for_generate_statement.label_colon'>
 <class 'vsg.token.for_generate_statement.for_keyword'>
-<class 'vsg.parser.item'>
-<class 'vsg.parser.item'>
-<class 'vsg.parser.item'>
-<class 'vsg.parser.item'>
-<class 'vsg.parser.item'>
+<class 'vsg.token.parameter_specification.identifier'>
+<class 'vsg.token.parameter_specification.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
 <class 'vsg.token.for_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
 24 | None |           end generate LABEL2C;
@@ -149,14 +149,14 @@
 <class 'vsg.token.for_generate_statement.semicolon'>
 --------------------------------------------------------------------------------
 25 | None |           LABEL2D: for i in 0 to 7 generate
-<class 'vsg.token.for_generate_statement.label_name'>
+<class 'vsg.token.for_generate_statement.generate_label'>
 <class 'vsg.token.for_generate_statement.label_colon'>
 <class 'vsg.token.for_generate_statement.for_keyword'>
-<class 'vsg.parser.item'>
-<class 'vsg.parser.item'>
-<class 'vsg.parser.item'>
-<class 'vsg.parser.item'>
-<class 'vsg.parser.item'>
+<class 'vsg.token.parameter_specification.identifier'>
+<class 'vsg.token.parameter_specification.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
 <class 'vsg.token.for_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
 26 | None |           end generate LABEL2D;
@@ -172,25 +172,25 @@
 <class 'vsg.token.for_generate_statement.semicolon'>
 --------------------------------------------------------------------------------
 28 | None |       LABEL2E: for i in 0 to 7 generate
-<class 'vsg.token.for_generate_statement.label_name'>
+<class 'vsg.token.for_generate_statement.generate_label'>
 <class 'vsg.token.for_generate_statement.label_colon'>
 <class 'vsg.token.for_generate_statement.for_keyword'>
-<class 'vsg.parser.item'>
-<class 'vsg.parser.item'>
-<class 'vsg.parser.item'>
-<class 'vsg.parser.item'>
-<class 'vsg.parser.item'>
+<class 'vsg.token.parameter_specification.identifier'>
+<class 'vsg.token.parameter_specification.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
 <class 'vsg.token.for_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
 29 | None |           LABEL2F: for i in 0 to 7 generate
-<class 'vsg.token.for_generate_statement.label_name'>
+<class 'vsg.token.for_generate_statement.generate_label'>
 <class 'vsg.token.for_generate_statement.label_colon'>
 <class 'vsg.token.for_generate_statement.for_keyword'>
-<class 'vsg.parser.item'>
-<class 'vsg.parser.item'>
-<class 'vsg.parser.item'>
-<class 'vsg.parser.item'>
-<class 'vsg.parser.item'>
+<class 'vsg.token.parameter_specification.identifier'>
+<class 'vsg.token.parameter_specification.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
 <class 'vsg.token.for_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
 30 | None |           end generate LABEL2C;
@@ -200,14 +200,14 @@
 <class 'vsg.token.for_generate_statement.semicolon'>
 --------------------------------------------------------------------------------
 31 | None |           LABEL2G: for i in 0 to 7 generate
-<class 'vsg.token.for_generate_statement.label_name'>
+<class 'vsg.token.for_generate_statement.generate_label'>
 <class 'vsg.token.for_generate_statement.label_colon'>
 <class 'vsg.token.for_generate_statement.for_keyword'>
-<class 'vsg.parser.item'>
-<class 'vsg.parser.item'>
-<class 'vsg.parser.item'>
-<class 'vsg.parser.item'>
-<class 'vsg.parser.item'>
+<class 'vsg.token.parameter_specification.identifier'>
+<class 'vsg.token.parameter_specification.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
 <class 'vsg.token.for_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
 32 | None |           end generate LABEL2E;

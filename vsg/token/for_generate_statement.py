@@ -2,7 +2,7 @@
 from vsg import parser
 
 
-class label_name(parser.label):
+class generate_label(parser.label):
 
     def __init__(self, sString):
         parser.label.__init__(self, sString)

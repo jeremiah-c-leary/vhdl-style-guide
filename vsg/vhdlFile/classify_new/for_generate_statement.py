@@ -4,161 +4,61 @@ from vsg.vhdlFile import utils
 
 from vsg.token import for_generate_statement as token
 
-from vsg.vhdlFile.classify import parameter_specification
-from vsg.vhdlFile.classify import generate_statement_body
+from vsg.vhdlFile.classify_new import parameter_specification
+from vsg.vhdlFile.classify_new import generate_statement_body
+
+'''
+    for_generate_statement ::=
+        *generate*_label :
+            for *generate*_parameter_specification generate
+                generate_statement_body
+            end generate [ *generate*_label ] ;
+'''
 
 
-def is_it(iObject, oObject, lAllObjects, lNewObjects, dVars):
+def detect(iObject, lObjects):
     iItemCount = 0
     iIndex = iObject
     try:
         while iItemCount < 3:
-            if type(lAllObjects[iIndex]) == parser.item:
+            if type(lObjects[iIndex]) == parser.item:
                 iItemCount += 1
             iIndex += 1
         else:
-            if lAllObjects[iIndex-1].get_value().lower() == 'for':
-                return True
+            if lObjects[iIndex-1].get_value().lower() == 'for':
+                return classify(iObject, lObjects)
     except IndexError:
-        return False
-    return False
+        return iObject
+    return iObject
 
 
-def tokenize_begin_declaration(iObject, oObject, lAllObjects, lNewObjects, dVars):
+def classify(iObject, lObjects):
 
-    if oObject.get_value().lower() == ':':
-        lNewObjects.append(token.label_colon())
-        return True
-    elif oObject.get_value().lower() == 'for':
-        lNewObjects.append(token.for_keyword(oObject.get_value()))
-        return True
-    elif oObject.get_value().lower() == 'generate':
-        lNewObjects.append(token.generate_keyword(oObject.get_value()))
-        utils.pop_level(dVars)
-        utils.push_level(dVars, 'for_generate_statement:end_declaration')
-        utils.push_level(dVars, 'generate_statement_body')
-        return True
+    iToken = utils.tokenize_label(iObject, lObjects, token.generate_label, token.label_colon)
 
-    return False
+    iToken = utils.find_next_token(iToken, lObjects)
+    utils.classify_token('for', token.for_keyword, iToken, lObjects)
+    iToken += 1
 
+    iStart, iEnd = utils.get_range(lObjects, iToken, 'generate')
+    iToken = parameter_specification.classify(iStart, iEnd, lObjects)
 
-def tokenize_end_declaration(iObject, oObject, lAllObjects, lNewObjects, dVars):
-    if oObject.get_value().lower() == 'end':
-        lNewObjects.append(token.end_keyword(oObject.get_value()))
-        return True
-    elif oObject.get_value().lower() == 'generate':
-        lNewObjects.append(token.end_generate_keyword(oObject.get_value()))
-        return True
-    elif oObject.get_value().lower() == ';':
-        lNewObjects.append(token.semicolon())
-        utils.pop_level(dVars)
-        return True
+    utils.classify_token('generate', token.generate_keyword, iToken, lObjects)
+    iToken += 1
 
-    return False
+    iToken = generate_statement_body.classify(iToken, lObjects)
 
+    ### Classify the closing keywords
+    iStart, iEnd = utils.get_range(lObjects, iToken, ';')
+    for iToken in range(iStart, iEnd + 1):
+        if not utils.is_item(lObjects, iToken):
+            continue
+        if utils.classify_token('generate', token.end_generate_keyword, iToken, lObjects):
+            continue
+        if utils.classify_token('end', token.end_keyword, iToken, lObjects):
+            continue
+        if utils.classify_token(';', token.semicolon, iToken, lObjects):
+            continue
+        utils.assign_token(lObjects, iToken, token.end_generate_label)
 
-def tokenize(oObject, iObject, lObjects, dVars):
-    '''
-    for_generate_statement ::=
-        generate_label :
-            for generate_parameter_specification generate
-                generate_statement_body
-            end generate [ generate_label ] ;
-    '''
-
-    if not dVars['for_generate_statement']['for']:
-
-        if classify_for_keyword(oObject, iObject, lObjects, dVars):
-            return True
-
-    else:
-
-        if not dVars['for_generate_statement']['generate']:
-
-            if classify_generate_keyword(oObject, iObject, lObjects, dVars):
-                return True
-
-            if parameter_specification.tokenize(oObject, iObject, lObjects, dVars):
-                return True
-
-        else:
-
-            if not dVars['for_generate_statement']['end']:
-
-                if generate_statement_body.tokenize(oObject, iObject, lObjects, dVars):
-                    return True
-
-                if classify_end_keyword(oObject, iObject, lObjects, dVars):
-                    return True
-
-            else:
-
-                if classify_semicolon(oObject, iObject, lObjects, dVars):
-                    return True
-
-                if classify_end_generate_keyword(oObject, iObject, lObjects, dVars):
-                    return True
-
-                if classify_end_label(oObject, iObject, lObjects, dVars):
-                    return True
-
-    return False
-
-
-def classify_for_keyword(oObject, iObject, lObjects, dVars):
-    sValue = oObject.get_value()
-    if sValue.lower() == 'for':
-        lObjects[iObject] = token.for_keyword(sValue)
-        dVars['for_generate_statement']['for'] = True
-        return True
-    return False
-
-
-def classify_generate_keyword(oObject, iObject, lObjects, dVars):
-    sValue = oObject.get_value()
-    if sValue.lower() == 'generate':
-        lObjects[iObject] = token.generate_keyword(sValue)
-        dVars['for_generate_statement']['generate'] = True
-        dVars['history'].append('for_generate')
-        return True
-    return False
-
-
-def classify_end_keyword(oObject, iObject, lObjects, dVars):
-    sValue = oObject.get_value()
-    if sValue.lower() == 'end':
-        lObjects[iObject] = token.end_keyword(sValue)
-        dVars['for_generate_statement']['end'] = True
-        return True
-    return False
-
-
-def classify_end_generate_keyword(oObject, iObject, lObjects, dVars):
-    sValue = oObject.get_value()
-    if sValue.lower() == 'generate':
-        lObjects[iObject] = token.end_generate_keyword(sValue)
-        return True
-    return False
-
-
-def classify_end_label(oObject, iObject, lObjects, dVars):
-    if type(oObject) == parser.item:
-        lObjects[iObject] = token.end_generate_label(oObject.get_value())
-        return True
-    return False
-
-
-def classify_semicolon(oObject, iObject, lObjects, dVars):
-    if oObject.get_value() == ';':
-        lObjects[iObject] = token.semicolon()
-        clear_flags(dVars)
-        dVars['history'].pop()
-        return True
-    return False
-
-
-def clear_flags(dVars):
-    dVars['for_generate_statement']['for'] = False
-    dVars['for_generate_statement']['generate'] = False
-    dVars['for_generate_statement']['end'] = False
-    
+    return iToken
