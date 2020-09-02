@@ -1,6 +1,6 @@
 
 from vsg.vhdlFile.classify_new import for_generate_statement
-#from vsg.vhdlFile.classify_new import if_generate_statement
+from vsg.vhdlFile.classify_new import if_generate_statement
 #from vsg.vhdlFile.classify_new import case_generate_statement
 
 
@@ -16,9 +16,10 @@ def detect(iObject, lObjects):
     if iReturn != iObject:
         return iReturn
 
-#    if if_generate_statement.is_it(iObject, oObject, lObjects, lNewObjects, dVars):
-#        return True
-#
+    iReturn = if_generate_statement.detect(iObject, lObjects)
+    if iReturn != iObject:
+        return iReturn
+
 #    if case_generate_statement.is_it(iObject, oObject, lObjects, lNewObjects, dVars):
 #        return True
 

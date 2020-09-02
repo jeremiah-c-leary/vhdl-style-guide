@@ -141,14 +141,12 @@ def classify_begin_keyword(iToken, token, lObjects):
     if classify_token('begin', token, iToken, lObjects):
         iReturn = iToken + 1
     return iReturn
-    return iToken
 
 def classify_is_keyword(iToken, token, lObjects):
     iReturn = iToken
     if classify_token('is', token, iToken, lObjects):
         iReturn = iToken + 1
     return iReturn
-    return iToken
 
 def has_label(iObject, lObjects):
     iItemCount = 0
