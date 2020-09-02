@@ -8,7 +8,7 @@ from vsg.vhdlFile.classify_new import selected_waveforms
 from vsg.vhdlFile import utils
 
 
-def detected(iObject, oObject, lAllObjects, lNewObjects, dVars):
+def detect(iCurrent, lObjects):
     '''
     concurrent_selected_signal_assignment ::=
         with expression select [ ? ]
@@ -17,61 +17,60 @@ def detected(iObject, oObject, lAllObjects, lNewObjects, dVars):
     The key to detecting this is looking for the **with** keyword before the **select** keyword.
     '''
 
-    iToken = iObject
+    iToken = iCurrent
     bWithFound = False
-    while lAllObjects[iToken].get_value() != ';':
-        if utils.is_item(lAllObjects, iToken):
+    while lObjects[iToken].get_value() != ';':
+        if utils.is_item(lObjects, iToken):
             if bWithFound:
-                if utils.object_value_is(lAllObjects, iToken, 'select'):
+                if utils.object_value_is(lObjects, iToken, 'select'):
                     return True
-            if utils.object_value_is(lAllObjects, iToken, 'with'):
+            if utils.object_value_is(lObjects, iToken, 'with'):
                 bWithFound = True
         iToken += 1
     else:
         return False
 
 
-
-def tokenize(iObject, oObject, lAllObjects, lNewObjects, dVars):
+def classify(iCurrent, lObjects):
     '''
     concurrent_selected_signal_assignment ::=
         with expression select [ ? ]
             target <= [ guarded ] [ delay_mechanism ] selected_waveforms ;
     '''
-    iStart, iCurrent, iEnd = utils.get_bounds(lAllObjects, iObject, ';')
+    iStart, iEnd = utils.get_range(lObjects, iCurrent, ';')
 
     # Classify target and assignment operator
-    for iToken, oObject in enumerate(lAllObjects[iStart:iEnd], start=iStart):
+    for iToken, oObject in enumerate(lObjects[iStart:iEnd], start=iStart):
         if type(oObject) == parser.item:
             if oObject.get_value() == 'select':
-                utils.assign_token(lAllObjects, iToken, token.select_keyword)
+                utils.assign_token(lObjects, iToken, token.select_keyword)
                 break
             elif oObject.get_value() == 'with':
-                utils.assign_token(lAllObjects, iToken, token.with_keyword)
+                utils.assign_token(lObjects, iToken, token.with_keyword)
             else:
-                utils.assign_token(lAllObjects, iToken, parser.todo)
+                utils.assign_token(lObjects, iToken, parser.todo)
 
     # Classify target and assignment operator
     iCurrent = iToken
-    for iToken, oObject in enumerate(lAllObjects[iCurrent:iEnd], start=iCurrent):
+    for iToken, oObject in enumerate(lObjects[iCurrent:iEnd], start=iCurrent):
         if type(oObject) == parser.item:
             if oObject.get_value() == '<=':
-                utils.assign_token(lAllObjects, iToken, token.assignment)
+                utils.assign_token(lObjects, iToken, token.assignment)
                 break
             else:
-                utils.assign_token(lAllObjects, iToken, token.target)
+                utils.assign_token(lObjects, iToken, token.target)
     
     # Classify guarded keyword
-    while type(lAllObjects[iToken]) != parser.item:
+    while type(lObjects[iToken]) != parser.item:
         iToken += 1
     else:
-        if lAllObjects[iToken].get_value().lower() == 'guarded':
-            lAllObjects[iToken] = token.guarded_keyword(lAllObjects[iToken].get_value())
+        if lObjects[iToken].get_value().lower() == 'guarded':
+            lObjects[iToken] = token.guarded_keyword(lObjects[iToken].get_value())
             iToken += 1
 
-    delay_mechanism.tokenize(iToken, iEnd, lAllObjects)
-    selected_waveforms.tokenize(iToken, iEnd, lAllObjects)
+    iToken = delay_mechanism.detect(iToken, iEnd, lObjects)
+    selected_waveforms.tokenize(iToken, iEnd, lObjects)
 
-    lAllObjects[iEnd] = token.semicolon()
+    lObjects[iEnd] = token.semicolon()
 
-
+    return iEnd

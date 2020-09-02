@@ -1,9 +1,21 @@
 
 from vsg.token import delay_mechanism as token
+from vsg import parser
 from vsg.vhdlFile import utils
 
 
-def tokenize(iStart, iEnd, lAllObjects):
+def detect(iStart, iEnd, lObjects):
+    for iToken in range(iStart, iEnd):
+        if not utils.is_item(lObjects, iToken):
+            continue
+        if utils.object_value_is(lObjects, iToken, 'transport'):
+            return classify(iStart, iEnd, lObjects)
+        if utils.object_value_is(lObjects, iToken, 'inertial'):
+            return classify(iStart, iEnd, lObjects)
+    return iStart
+
+
+def classify(iStart, iEnd, lObjects):
     '''
     delay_mechanism ::=
         transport
@@ -11,13 +23,16 @@ def tokenize(iStart, iEnd, lAllObjects):
     '''
 
     for iToken in range(iStart, iEnd):
-        if utils.is_item(lAllObjects, iToken):
-            if utils.object_value_is(lAllObjects, iToken, 'transport'):
-                utils.assign_token(lAllObjects, iToken, token.transport_keyword)
-                break
-            if utils.object_value_is(lAllObjects, iToken, 'inertial'):
-                utils.assign_token(lAllObjects, iToken, token.inertial_keyword)
-                break
-            if utils.object_value_is(lAllObjects, iToken, 'reject'):
-                utils.assign_token(lAllObjects, iToken, token.reject_keyword)
+        if utils.is_item(lObjects, iToken):
+            if utils.object_value_is(lObjects, iToken, 'transport'):
+                utils.assign_token(lObjects, iToken, token.transport_keyword)
+                return iToken
+            if utils.object_value_is(lObjects, iToken, 'inertial'):
+                utils.assign_token(lObjects, iToken, token.inertial_keyword)
+                return iToken
+            if utils.object_value_is(lObjects, iToken, 'reject'):
+                utils.assign_token(lObjects, iToken, token.reject_keyword)
+                continue
+            utils.assign_token(lObjects, iToken, parser.todo)
 
+    return iStart
