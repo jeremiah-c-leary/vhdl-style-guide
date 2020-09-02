@@ -26,65 +26,8 @@ def detect(iCurrent, lObjects):
 
 def classify(iCurrent, lObjects):
     iReturn = iCurrent
-    iReturn = tokenize_label(iReturn, lObjects)
-    iReturn = tokenize_postponed(iReturn, lObjects)
+    iReturn = utils.tokenize_label(iReturn, lObjects, token.label_name, token.label_colon)
+    iReturn = utils.tokenize_postponed(iReturn, lObjects, token.postponed_keyword)
     iReturn = assertion.tokenize(iReturn, lObjects)
-    iReturn = tokenize_semicolon(iReturn, lObjects)
+    iReturn = utils.tokenize_semicolon(iReturn, lObjects, token.semicolon)
     return iReturn
-
-
-def has_label(iObject, lObjects):
-    iItemCount = 0
-    iIndex = iObject
-    try:
-        while iItemCount < 2:
-            if type(lObjects[iIndex]) == parser.item:
-                iItemCount += 1
-            iIndex += 1
-        else:
-            if lObjects[iIndex-1].get_value().lower() == ':':
-                return True
-    except IndexError:
-        return False
-    return False
-    
-
-def tokenize_label(iCurrent, lObjects):
-    iIndex = iCurrent
-    iItemCount = 0
-    if has_label(iCurrent, lObjects):
-        while iItemCount < 2:
-            if utils.is_item(lObjects, iIndex):
-                if iItemCount == 0:
-                    utils.assign_token(lObjects, iIndex, token.label_name) 
-                if iItemCount == 1:
-                    utils.assign_token(lObjects, iIndex, token.label_colon) 
-                iItemCount += 1
-            iIndex += 1
-    return iIndex
-
-
-def tokenize_postponed(iObject, lObjects):
-    iIndex = iObject
-    iItemCount = 0
-    while iItemCount < 3:
-        if utils.is_item(lObjects, iIndex):
-            if utils.object_value_is(lObjects, iIndex, 'postponed'):
-                utils.assign_token(lObjects, iIndex, token.postponed_keyword) 
-                return iIndex
-            iItemCount += 1
-        iIndex += 1
-    return iObject
-
-
-def tokenize_semicolon(iObject, lObjects):
-    iIndex = iObject
-    iItemCount = 0
-    while iItemCount < 3:
-        if utils.is_item(lObjects, iIndex):
-            if utils.object_value_is(lObjects, iIndex, ';'):
-                utils.assign_token(lObjects, iIndex, token.semicolon) 
-                return iIndex
-            iItemCount += 1
-        iIndex += 1
-    return iObject

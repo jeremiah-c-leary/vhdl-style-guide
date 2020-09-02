@@ -149,3 +149,56 @@ def classify_is_keyword(iToken, token, lObjects):
         iReturn = iToken + 1
     return iReturn
     return iToken
+
+def has_label(iObject, lObjects):
+    iItemCount = 0
+    iIndex = iObject
+    try:
+        while iItemCount < 2:
+            if type(lObjects[iIndex]) == parser.item:
+                iItemCount += 1
+            iIndex += 1
+        else:
+            if lObjects[iIndex-1].get_value().lower() == ':':
+                return True
+    except IndexError:
+        return False
+    return False
+    
+def tokenize_postponed(iObject, lObjects, token):
+    iIndex = iObject
+    iItemCount = 0
+    while iItemCount < 3:
+        if is_item(lObjects, iIndex):
+            if object_value_is(lObjects, iIndex, 'postponed'):
+                assign_token(lObjects, iIndex, token) 
+                return iIndex
+            iItemCount += 1
+        iIndex += 1
+    return iObject
+
+def tokenize_label(iCurrent, lObjects, label_token, colon_token):
+    iIndex = iCurrent
+    iItemCount = 0
+    if has_label(iCurrent, lObjects):
+        while iItemCount < 2:
+            if is_item(lObjects, iIndex):
+                if iItemCount == 0:
+                    assign_token(lObjects, iIndex, label_token) 
+                if iItemCount == 1:
+                    assign_token(lObjects, iIndex, colon_token) 
+                iItemCount += 1
+            iIndex += 1
+    return iIndex
+
+def tokenize_semicolon(iObject, lObjects, token):
+    iIndex = iObject
+    iItemCount = 0
+    while iItemCount < 3:
+        if is_item(lObjects, iIndex):
+            if object_value_is(lObjects, iIndex, ';'):
+                assign_token(lObjects, iIndex, token) 
+                return iIndex
+            iItemCount += 1
+        iIndex += 1
+    return iObject
