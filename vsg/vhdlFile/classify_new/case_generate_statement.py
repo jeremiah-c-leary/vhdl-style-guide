@@ -4,65 +4,62 @@ from vsg.vhdlFile import utils
 
 from vsg.token import case_generate_statement as token
 
+from vsg.vhdlFile.classify_new import expression
+from vsg.vhdlFile.classify_new import case_statement_alternative
+
 '''
-case_generate_statement ::=
-    *generate*_label :
-        case expression generate
-            case_generate_alternative
-            { case_generate_alternative }
-        end generate [ *generate*_label ] ;
+    case_generate_statement ::=
+        *generate*_label :
+            case expression generate
+                case_generate_alternative
+                { case_generate_alternative }
+            end generate [ *generate*_label ] ;
 '''
 
 
-def is_it(iObject, oObject, lAllObjects, lNewObjects, dVars):
+def detect(iObject, lObjects):
     iItemCount = 0
     iIndex = iObject
     try:
         while iItemCount < 3:
-            if type(lAllObjects[iIndex]) == parser.item:
+            if type(lObjects[iIndex]) == parser.item:
                 iItemCount += 1
             iIndex += 1
         else:
-            if lAllObjects[iIndex-1].get_value().lower() == 'case':
-                lNewObjects.append(token.LabelName(oObject.get_value()))
-                utils.push_level(dVars, 'case_generate_statement:end_declaration')
-                utils.push_level(dVars, 'case_generate_alternative')
-                utils.push_level(dVars, 'case_generate_statement:begin_declaration')
-                return True
+            if lObjects[iIndex-1].get_value().lower() == 'case':
+                return classify(iObject, lObjects)
     except IndexError:
-        return False
-    return False
+        return iObject
+    return iObject
 
 
-def tokenize_begin_declaration(iObject, oObject, lAllObjects, lNewObjects, dVars):
+def classify(iObject, lObjects):
 
-    if oObject.get_value().lower() == ':':
-        lNewObjects.append(token.LabelColon())
-        return True
-    elif oObject.get_value().lower() == 'case':
-        lNewObjects.append(token.CaseKeyword(oObject.get_value()))
-        return True
-    elif oObject.get_value().lower() == 'generate':
-        lNewObjects.append(token.GenerateKeyword(oObject.get_value()))
-        utils.pop_level(dVars)
-        return True
+    iToken = utils.tokenize_label(iObject, lObjects, token.generate_label, token.label_colon)
 
-    return False
+    iToken = utils.find_next_token(iToken, lObjects)
+    utils.classify_token('case', token.case_keyword, iToken, lObjects)
+    iToken += 1
 
+    iStart, iEnd = utils.get_range(lObjects, iToken, 'generate')
+    iToken = expression.classify(iStart, iEnd, lObjects)
 
-def tokenize_end_declaration(iObject, oObject, lAllObjects, lNewObjects, dVars):
-    if oObject.get_value().lower() == 'end':
-        lNewObjects.append(token.EndKeyword(oObject.get_value()))
-        return True
-    elif oObject.get_value().lower() == 'generate':
-        lNewObjects.append(token.EndGenerateKeyword(oObject.get_value()))
-        return True
-    elif oObject.get_value().lower() == ';':
-        lNewObjects.append(token.Semicolon())
-        utils.pop_level(dVars)
-        return True
-    else:
-        lNewObjects.append(token.EndGenerateLabel(oObject.get_value()))
-        return True
+    utils.classify_token('generate', token.generate_keyword, iToken, lObjects)
+    iToken += 1
 
-    return False
+    iToken = utils.detect_submodule(iToken, lObjects, case_statement_alternative)
+
+    ### Classify the closing keywords
+    iStart, iEnd = utils.get_range(lObjects, iToken, ';')
+    for iToken in range(iStart, iEnd + 1):
+        if not utils.is_item(lObjects, iToken):
+            continue
+        if utils.classify_token('generate', token.end_generate_keyword, iToken, lObjects):
+            continue
+        if utils.classify_token('end', token.end_keyword, iToken, lObjects):
+            continue
+        if utils.classify_token(';', token.semicolon, iToken, lObjects):
+            continue
+        utils.assign_token(lObjects, iToken, token.end_generate_label)
+
+    return iToken
