@@ -200,3 +200,19 @@ def tokenize_semicolon(iObject, lObjects, token):
             iItemCount += 1
         iIndex += 1
     return iObject
+
+def print_debug(sTitle, iStart, iEnd, lObjects):
+    print('--> ' + sTitle)
+    sOutput = ''
+    for iIndex in range(iStart, iEnd + 1):
+        print(f'{iIndex} | {lObjects[iIndex]}')
+        sOutput += (lObjects[iIndex].get_value())
+    print(sOutput)
+
+def print_line(lObjects, iStart):
+    iIndex = iStart
+    sOutput = ''
+    while type(lObjects[iIndex]) != parser.carriage_return:
+        sOutput += lObjects[iIndex].get_value()
+        iIndex += 1
+    print(sOutput)

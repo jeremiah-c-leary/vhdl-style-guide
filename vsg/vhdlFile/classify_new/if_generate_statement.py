@@ -37,7 +37,6 @@ def detect(iObject, lObjects):
 
 
 def classify(iObject, lObjects):
-
     iToken = utils.tokenize_label(iObject, lObjects, token.generate_label, token.label_colon)
 
     iToken = utils.find_next_token(iToken, lObjects)
@@ -49,11 +48,11 @@ def classify(iObject, lObjects):
 
     utils.classify_token('generate', token.generate_keyword, iToken, lObjects)
     iToken = utils.find_next_token(iToken, lObjects)
-
     iToken = generate_statement_body.classify(iToken, lObjects)
 
     iLast = 0
     while iToken != iLast:
+        iToken = utils.find_next_token(iToken, lObjects)
         iLast = iToken
         if utils.classify_token('elsif', token.elsif_keyword, iToken, lObjects):
             iStart, iEnd = utils.get_range(lObjects, iToken, 'generate')
@@ -62,14 +61,15 @@ def classify(iObject, lObjects):
             utils.classify_token('generate', token.generate_keyword, iToken, lObjects)
 
             iToken = generate_statement_body.classify(iToken, lObjects)
+            
 
     iLast = 0
     while iToken != iLast:
+        iToken = utils.find_next_token(iToken, lObjects)
         iLast = iToken
         if utils.classify_token('else', token.else_keyword, iToken, lObjects):
             iStart, iEnd = utils.get_range(lObjects, iToken, 'generate')
-            iToken = condition.classify(iStart, iEnd, lObjects)
-
+            iToken = iEnd 
             utils.classify_token('generate', token.generate_keyword, iToken, lObjects)
 
             iToken = utils.find_next_token(iToken, lObjects)

@@ -37,7 +37,6 @@ def detect(iCurrent, lObjects):
 
 
 def classify(iCurrent, lObjects):
-
     ### Classify opening keywords
     iStart, iEnd = utils.get_range(lObjects, iCurrent, 'block')
     for iToken in range(iStart, iEnd + 1):

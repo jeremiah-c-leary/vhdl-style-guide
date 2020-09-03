@@ -25,7 +25,17 @@ def classify(iObject, lObjects):
         bBlockDeclarativePartFound = True
         iToken = utils.classify_begin_keyword(iToken, token.begin_keyword, lObjects)
 
-    iToken = utils.detect_submodule(iToken, lObjects, concurrent_statement)
+    iLast = 0
+    while iToken != iLast:
+        iToken = utils.find_next_token(iToken, lObjects)
+        iLast = iToken
+        if utils.object_value_is(lObjects, iToken,  'elsif'):
+            return iToken
+        if utils.object_value_is(lObjects, iToken,  'else'):
+            return iToken
+        if utils.object_value_is(lObjects, iToken,  'when'):
+            return iToken
+        iToken = concurrent_statement.detect(iToken, lObjects)
 
     if bBlockDeclarativePartFound:
         iStart, iEnd = utils.get_range(lObjects, iToken, ';')

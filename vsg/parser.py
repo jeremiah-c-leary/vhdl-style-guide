@@ -31,13 +31,13 @@ class todo(item):
 class carriage_return(item):
 
     def __init__(self):
-        item.__init__(self, None)
+        item.__init__(self, '\n')
 
 
 class blank_line(item):
 
     def __init__(self):
-        item.__init__(self, None)
+        item.__init__(self, '\n')
 
 
 class none(item):

@@ -6,6 +6,8 @@ from vsg.vhdlFile.classify_new import generate_statement
 from vsg.vhdlFile.classify_new import concurrent_signal_assignment_statement
 from vsg.vhdlFile.classify_new import concurrent_assertion_statement
 
+from vsg.vhdlFile import utils
+
 '''
     concurrent_statement ::=
         block_statement
