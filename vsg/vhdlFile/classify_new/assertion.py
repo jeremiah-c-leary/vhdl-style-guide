@@ -20,8 +20,6 @@ def detect(iCurrent, lObjects):
 
     while lObjects[iToken].get_value() != ';':
         if utils.is_item(lObjects, iToken):
-            if utils.object_value_is(lObjects, iToken, 'when'):
-                return False
             if utils.object_value_is(lObjects, iToken, 'assert'):
                 return True
         iToken += 1

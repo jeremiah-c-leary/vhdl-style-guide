@@ -29,7 +29,7 @@ def detect(iCurrent, lObjects):
                 iItemCount += 1
             iIndex += 1
         else:
-            if utils.object_value_is(lObjects, iIndex-1, 'block'):  # jcl - why is this iIndex - 1?
+            if utils.object_value_is(lObjects, iIndex-1, 'block'):
                 return classify(iCurrent, lObjects)
     except IndexError:
         return iCurrent

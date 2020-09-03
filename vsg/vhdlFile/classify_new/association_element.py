@@ -18,9 +18,9 @@ def detect(iCurrent, lObjects):
     iOpenParenthesis = 0
     iCloseParenthesis = 0
     iToken = iCurrent
-#    print('--> association_element.detect')
+
     while not utils.token_is_semicolon(iToken, lObjects):
-#        utils.print_token(iToken, lObjects)
+
         iToken = utils.find_next_token(iToken, lObjects)
         if utils.token_is_open_parenthesis(iToken, lObjects):
             iOpenParenthesis += 1
@@ -52,7 +52,7 @@ def classify(iStart, iEnd, lObjects, sEnd):
                     utils.assign_token(lObjects, iToken, token.formal_part)
 
     # Classify actual part
-    for iToken in range(iStart, iEnd):
+    for iToken in range(iToken, iEnd):
         if utils.is_item(lObjects, iToken):
             utils.assign_token(lObjects, iToken, token.actual_part)
 

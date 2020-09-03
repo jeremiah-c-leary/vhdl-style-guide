@@ -5,7 +5,7 @@ from vsg.vhdlFile import utils
 from vsg.token import case_generate_statement as token
 
 from vsg.vhdlFile.classify_new import expression
-from vsg.vhdlFile.classify_new import case_statement_alternative
+from vsg.vhdlFile.classify_new import case_generate_alternative
 
 '''
     case_generate_statement ::=
@@ -47,7 +47,7 @@ def classify(iObject, lObjects):
     utils.classify_token('generate', token.generate_keyword, iToken, lObjects)
     iToken += 1
 
-    iToken = utils.detect_submodule(iToken, lObjects, case_statement_alternative)
+    iToken = utils.detect_submodule(iToken, lObjects, case_generate_alternative)
 
     ### Classify the closing keywords
     iStart, iEnd = utils.get_range(lObjects, iToken, ';')

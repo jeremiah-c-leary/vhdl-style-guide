@@ -11,6 +11,6 @@ def classify(iStart, iEnd, lObjects):
     '''
     for iToken in range(iStart, iEnd):
         if utils.is_item(lObjects, iToken):
-                utils.assign_token(lObjects, iToken, parser.todo)
+            utils.assign_token(lObjects, iToken, parser.todo)
 
     return iEnd

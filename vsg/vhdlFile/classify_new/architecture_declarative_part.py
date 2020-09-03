@@ -1,5 +1,5 @@
 
-from vsg.vhdlFile import utils
+#from vsg.vhdlFile import utils
 
 #from vsg.vhdlFile.classify_new import block_delcarative_item
 
