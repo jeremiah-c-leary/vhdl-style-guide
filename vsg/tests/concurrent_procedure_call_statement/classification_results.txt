@@ -2,8 +2,9 @@
 0 | None | 
 --------------------------------------------------------------------------------
 1 | None | 
+<class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-2 | 0 | architecture RTL of FIFO is
+2 | None | architecture RTL of FIFO is
 <class 'vsg.token.architecture_body.architecture_keyword'>
 <class 'vsg.token.architecture_body.identifier'>
 <class 'vsg.token.architecture_body.of_keyword'>
@@ -11,11 +12,13 @@
 <class 'vsg.token.architecture_body.is_keyword'>
 --------------------------------------------------------------------------------
 3 | None | 
+<class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-4 | 0 | begin
+4 | None | begin
 <class 'vsg.token.architecture_body.begin_keyword'>
 --------------------------------------------------------------------------------
 5 | None | 
+<class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 6 | None |   Proc1 (Clock, A, Sig1, Sig2, Var1, Var2, Period);
 <class 'vsg.token.procedure_call.procedure_name'>
@@ -50,21 +53,25 @@
 <class 'vsg.token.concurrent_procedure_call_statement.semicolon'>
 --------------------------------------------------------------------------------
 8 | None | 
+<class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 9 | None | 
+<class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-10 | 1 |   LABEL1: Proc1 (Clock);
+10 | None |   LABEL1: Proc1 (Clock);
 <class 'vsg.token.concurrent_procedure_call_statement.label_name'>
 <class 'vsg.token.concurrent_procedure_call_statement.label_colon'>
+<class 'vsg.token.procedure_call.procedure_name'>
 <class 'vsg.token.procedure_call.procedure_name'>
 <class 'vsg.token.procedure_call.open_parenthesis'>
 <class 'vsg.token.association_element.actual_part'>
 <class 'vsg.token.procedure_call.close_parenthesis'>
 <class 'vsg.token.concurrent_procedure_call_statement.semicolon'>
 --------------------------------------------------------------------------------
-11 | 2 |   LABEL2 : READ (L     => BufLine,
+11 | None |   LABEL2 : READ (L     => BufLine,
 <class 'vsg.token.concurrent_procedure_call_statement.label_name'>
 <class 'vsg.token.concurrent_procedure_call_statement.label_colon'>
+<class 'vsg.token.procedure_call.procedure_name'>
 <class 'vsg.token.procedure_call.procedure_name'>
 <class 'vsg.token.procedure_call.open_parenthesis'>
 <class 'vsg.token.association_element.formal_part'>
@@ -72,7 +79,7 @@
 <class 'vsg.token.association_element.actual_part'>
 <class 'vsg.token.association_list.comma'>
 --------------------------------------------------------------------------------
-12 | 3 |                  VALUE => Q);
+12 | None |                  VALUE => Q);
 <class 'vsg.token.association_element.formal_part'>
 <class 'vsg.token.association_element.assignment'>
 <class 'vsg.token.association_element.actual_part'>
@@ -80,21 +87,24 @@
 <class 'vsg.token.concurrent_procedure_call_statement.semicolon'>
 --------------------------------------------------------------------------------
 13 | None | 
+<class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-14 | 3 |   LABEL1: postponed Proc1 (Clock);
+14 | None |   LABEL1: postponed Proc1 (Clock);
 <class 'vsg.token.concurrent_procedure_call_statement.label_name'>
 <class 'vsg.token.concurrent_procedure_call_statement.label_colon'>
 <class 'vsg.token.concurrent_procedure_call_statement.postponed_keyword'>
+<class 'vsg.token.procedure_call.procedure_name'>
 <class 'vsg.token.procedure_call.procedure_name'>
 <class 'vsg.token.procedure_call.open_parenthesis'>
 <class 'vsg.token.association_element.actual_part'>
 <class 'vsg.token.procedure_call.close_parenthesis'>
 <class 'vsg.token.concurrent_procedure_call_statement.semicolon'>
 --------------------------------------------------------------------------------
-15 | 4 |   LABEL2 : postponed READ (L     => BufLine,
+15 | None |   LABEL2 : postponed READ (L     => BufLine,
 <class 'vsg.token.concurrent_procedure_call_statement.label_name'>
 <class 'vsg.token.concurrent_procedure_call_statement.label_colon'>
 <class 'vsg.token.concurrent_procedure_call_statement.postponed_keyword'>
+<class 'vsg.token.procedure_call.procedure_name'>
 <class 'vsg.token.procedure_call.procedure_name'>
 <class 'vsg.token.procedure_call.open_parenthesis'>
 <class 'vsg.token.association_element.formal_part'>
@@ -102,7 +112,7 @@
 <class 'vsg.token.association_element.actual_part'>
 <class 'vsg.token.association_list.comma'>
 --------------------------------------------------------------------------------
-16 | 5 |                  VALUE => Q);
+16 | None |                  VALUE => Q);
 <class 'vsg.token.association_element.formal_part'>
 <class 'vsg.token.association_element.assignment'>
 <class 'vsg.token.association_element.actual_part'>
@@ -110,17 +120,20 @@
 <class 'vsg.token.concurrent_procedure_call_statement.semicolon'>
 --------------------------------------------------------------------------------
 17 | None | 
+<class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 18 | None |   postponed Proc1 (Clock);
 <class 'vsg.token.concurrent_procedure_call_statement.postponed_keyword'>
+<class 'vsg.token.procedure_call.procedure_name'>
 <class 'vsg.token.procedure_call.procedure_name'>
 <class 'vsg.token.procedure_call.open_parenthesis'>
 <class 'vsg.token.association_element.actual_part'>
 <class 'vsg.token.procedure_call.close_parenthesis'>
 <class 'vsg.token.concurrent_procedure_call_statement.semicolon'>
 --------------------------------------------------------------------------------
-19 | 5 |   postponed READ (L     => BufLine,
+19 | None |   postponed READ (L     => BufLine,
 <class 'vsg.token.concurrent_procedure_call_statement.postponed_keyword'>
+<class 'vsg.token.procedure_call.procedure_name'>
 <class 'vsg.token.procedure_call.procedure_name'>
 <class 'vsg.token.procedure_call.open_parenthesis'>
 <class 'vsg.token.association_element.formal_part'>
@@ -128,7 +141,7 @@
 <class 'vsg.token.association_element.actual_part'>
 <class 'vsg.token.association_list.comma'>
 --------------------------------------------------------------------------------
-20 | 5 |                  VALUE => Q);
+20 | None |                  VALUE => Q);
 <class 'vsg.token.association_element.formal_part'>
 <class 'vsg.token.association_element.assignment'>
 <class 'vsg.token.association_element.actual_part'>
@@ -136,8 +149,10 @@
 <class 'vsg.token.concurrent_procedure_call_statement.semicolon'>
 --------------------------------------------------------------------------------
 21 | None | 
+<class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 22 | None | 
+<class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 23 | None | end architecture RTL;
 <class 'vsg.token.architecture_body.end_keyword'>

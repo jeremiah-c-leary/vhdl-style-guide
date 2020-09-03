@@ -27,6 +27,11 @@ class todo(item):
 # Base VHDL type classes
 ###############################################################################
 
+class error(item):
+
+    def __init__(self, sString):
+        item.__init__(self, sString)
+
 
 class carriage_return(item):
 

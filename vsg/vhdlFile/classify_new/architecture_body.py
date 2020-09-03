@@ -58,12 +58,11 @@ def classify(iCurrent, lObjects):
 #    print('--> detecting architecture_statement_part')
     iLast = 0           
     while iLast != iToken:
-        while not utils.is_item(lObjects, iToken):
-            iToken += 1
         iLast = iToken
-        iToken = architecture_statement_part.detect(iToken, lObjects)
+        iToken = utils.find_next_token(iToken, lObjects)
+        if not utils.object_value_is(lObjects, iToken, 'end'):
+            iToken = architecture_statement_part.detect(iToken, lObjects)
         
-
 #    print('--> closing architecture')
     iStart, iEnd = utils.get_range(lObjects, iToken, ';')
     for iToken in range(iStart, iEnd + 1):

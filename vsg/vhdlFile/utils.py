@@ -99,7 +99,6 @@ def get_bounds(lObjects, iStart, sEnd):
 def get_range(lObjects, iStart, sEnd):
     iIndex = iStart
     while lObjects[iIndex].get_value() != sEnd:
-#        print(lObjects[iIndex].get_value())
         iIndex += 1
     else:
         iEnd = iIndex
@@ -163,16 +162,23 @@ def has_label(iObject, lObjects):
         return False
     return False
     
+#def tokenize_postponed(iObject, lObjects, token):
+#    iIndex = iObject
+#    iItemCount = 0
+#    while iItemCount < 3:
+#        if is_item(lObjects, iIndex):
+#            if object_value_is(lObjects, iIndex, 'postponed'):
+#                assign_token(lObjects, iIndex, token) 
+#                return iIndex
+#            iItemCount += 1
+#        iIndex += 1
+#    return iObject
+
 def tokenize_postponed(iObject, lObjects, token):
-    iIndex = iObject
-    iItemCount = 0
-    while iItemCount < 3:
-        if is_item(lObjects, iIndex):
-            if object_value_is(lObjects, iIndex, 'postponed'):
-                assign_token(lObjects, iIndex, token) 
-                return iIndex
-            iItemCount += 1
-        iIndex += 1
+    iIndex = find_next_token(iObject, lObjects)
+    if object_value_is(lObjects, iIndex, 'postponed'):
+        assign_token(lObjects, iIndex, token) 
+        return iIndex + 1
     return iObject
 
 def tokenize_label(iCurrent, lObjects, label_token, colon_token):
@@ -209,6 +215,9 @@ def print_debug(sTitle, iStart, iEnd, lObjects):
         sOutput += (lObjects[iIndex].get_value())
     print(sOutput)
 
+def print_token(iObject, lObjects):
+    print(f'{iObject} | {lObjects[iObject].get_value()}')
+
 def print_line(lObjects, iStart):
     iIndex = iStart
     sOutput = ''
@@ -216,3 +225,33 @@ def print_line(lObjects, iStart):
         sOutput += lObjects[iIndex].get_value()
         iIndex += 1
     print(sOutput)
+
+def token_is_semicolon(iObject, lObjects):
+    if object_value_is(lObjects, iObject, ';'):
+        return True
+    return False
+
+def token_is_comma(iObject, lObjects):
+    if object_value_is(lObjects, iObject, ','):
+        return True
+    return False
+
+def token_is_open_parenthesis(iObject, lObjects):
+    if object_value_is(lObjects, iObject, '('):
+        return True
+    return False
+
+def token_is_close_parenthesis(iObject, lObjects):
+    if object_value_is(lObjects, iObject, ')'):
+        return True
+    return False
+
+
+#def index_of_token(iObject, lObjects, sToken):
+#    iReturn = iObject
+#    while not utils.object_value_is(lObjects, iReturn, sToken):
+#        iReturn += 1
+#    else:
+#        return iReturn
+#    return -1
+
