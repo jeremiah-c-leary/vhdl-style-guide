@@ -2,7 +2,7 @@
 from vsg import parser
 
 
-class label_name(parser.label):
+class process_label(parser.label):
 
     def __init__(self, sString):
         parser.label.__init__(self, sString)
@@ -20,7 +20,7 @@ class postponed_keyword(parser.keyword):
         parser.keyword.__init__(self, sString)
 
 
-class keyword(parser.keyword):
+class process_keyword(parser.keyword):
 
     def __init__(self, sString):
         parser.keyword.__init__(self, sString)
@@ -68,7 +68,7 @@ class end_process_keyword(parser.keyword):
         parser.keyword.__init__(self, sString)
 
 
-class end_process_label_name(parser.label):
+class end_process_label(parser.label):
 
     def __init__(self, sString):
         parser.label.__init__(self, sString)

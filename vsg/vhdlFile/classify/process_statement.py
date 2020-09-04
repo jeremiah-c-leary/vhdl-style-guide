@@ -85,7 +85,7 @@ def tokenize(oObject, iObject, lObjects, dVars):
 def classify_keyword(oObject, iObject, lObjects, dVars):
     sValue = oObject.get_value()
     if sValue.lower() == 'process':
-        lObjects[iObject] = token.keyword(sValue)
+        lObjects[iObject] = token.process_keyword(sValue)
         dVars['process_statement']['keyword'] = True
         return True
     return False
@@ -154,7 +154,7 @@ def classify_end_process_keyword(oObject, iObject, lObjects, dVars):
 
 def classify_end_process_label_name(oObject, iObject, lObjects, dVars):
     if type(oObject) == parser.item:
-        lObjects[iObject] = token.end_process_label_name(oObject.get_value())
+        lObjects[iObject] = token.end_process_label(oObject.get_value())
         return True
     return False
 

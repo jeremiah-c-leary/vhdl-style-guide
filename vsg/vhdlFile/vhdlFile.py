@@ -919,7 +919,7 @@ class vhdlFile():
                     if bColonFound:
                         if type(oObject) == parser.item:
                             iIndex = len(oLine.objects) - iObject - 1
-                            oLine.objects[iIndex] = process_statement.label_name(oObject.get_value())
+                            oLine.objects[iIndex] = process_statement.process_label(oObject.get_value())
                             bColonFound = False
                             bTrigger = False
                             bProcedureName = False
@@ -945,7 +945,7 @@ class vhdlFile():
                         bColonFound = False
                         bTrigger = False
 
-                if type(oObject) == process_statement.keyword:
+                if type(oObject) == process_statement.process_keyword:
 #                    print('---> trigger')
                     bTrigger = True
 
