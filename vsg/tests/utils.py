@@ -107,3 +107,6 @@ def print_objects(oFile, bIgnoreWhiteSpace=False):
     for line in extract_objects(oFile, bIgnoreWhiteSpace):
         print(line)
 
+def extract_lrm_unit_name(sName):
+    return sName.split('.')[-1][5:]
+    

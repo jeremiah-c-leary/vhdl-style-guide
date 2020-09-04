@@ -62,7 +62,6 @@
 <class 'vsg.token.concurrent_procedure_call_statement.label_name'>
 <class 'vsg.token.concurrent_procedure_call_statement.label_colon'>
 <class 'vsg.token.procedure_call.procedure_name'>
-<class 'vsg.token.procedure_call.procedure_name'>
 <class 'vsg.token.procedure_call.open_parenthesis'>
 <class 'vsg.token.association_element.actual_part'>
 <class 'vsg.token.procedure_call.close_parenthesis'>
@@ -71,7 +70,6 @@
 11 | None |   LABEL2 : READ (L     => BufLine,
 <class 'vsg.token.concurrent_procedure_call_statement.label_name'>
 <class 'vsg.token.concurrent_procedure_call_statement.label_colon'>
-<class 'vsg.token.procedure_call.procedure_name'>
 <class 'vsg.token.procedure_call.procedure_name'>
 <class 'vsg.token.procedure_call.open_parenthesis'>
 <class 'vsg.token.association_element.formal_part'>
@@ -94,7 +92,6 @@
 <class 'vsg.token.concurrent_procedure_call_statement.label_colon'>
 <class 'vsg.token.concurrent_procedure_call_statement.postponed_keyword'>
 <class 'vsg.token.procedure_call.procedure_name'>
-<class 'vsg.token.procedure_call.procedure_name'>
 <class 'vsg.token.procedure_call.open_parenthesis'>
 <class 'vsg.token.association_element.actual_part'>
 <class 'vsg.token.procedure_call.close_parenthesis'>
@@ -104,7 +101,6 @@
 <class 'vsg.token.concurrent_procedure_call_statement.label_name'>
 <class 'vsg.token.concurrent_procedure_call_statement.label_colon'>
 <class 'vsg.token.concurrent_procedure_call_statement.postponed_keyword'>
-<class 'vsg.token.procedure_call.procedure_name'>
 <class 'vsg.token.procedure_call.procedure_name'>
 <class 'vsg.token.procedure_call.open_parenthesis'>
 <class 'vsg.token.association_element.formal_part'>
@@ -125,7 +121,6 @@
 18 | None |   postponed Proc1 (Clock);
 <class 'vsg.token.concurrent_procedure_call_statement.postponed_keyword'>
 <class 'vsg.token.procedure_call.procedure_name'>
-<class 'vsg.token.procedure_call.procedure_name'>
 <class 'vsg.token.procedure_call.open_parenthesis'>
 <class 'vsg.token.association_element.actual_part'>
 <class 'vsg.token.procedure_call.close_parenthesis'>
@@ -133,7 +128,6 @@
 --------------------------------------------------------------------------------
 19 | None |   postponed READ (L     => BufLine,
 <class 'vsg.token.concurrent_procedure_call_statement.postponed_keyword'>
-<class 'vsg.token.procedure_call.procedure_name'>
 <class 'vsg.token.procedure_call.procedure_name'>
 <class 'vsg.token.procedure_call.open_parenthesis'>
 <class 'vsg.token.association_element.formal_part'>

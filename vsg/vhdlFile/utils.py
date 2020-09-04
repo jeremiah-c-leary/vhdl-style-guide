@@ -71,10 +71,21 @@ def have_is_keyword(iObject, lAllObjects):
     return False
 
 def assign_token(lObjects, iToken, token):
+    iCurrent = find_next_token(iToken, lObjects)
     try:
-        lObjects[iToken] = token(lObjects[iToken].get_value())
+        lObjects[iCurrent] = token(lObjects[iCurrent].get_value())
+        iCurrent+= 1
+        return iCurrent
     except TypeError:
         lObjects[iToken] = token()
+    return iToken
+
+def assign_next_token_if(sToken, token, iToken, lObjects):
+    iCurrent = find_next_token(iToken, lObjects)
+    if object_value_is(lObjects, iCurrent, sToken):
+        lObjects[iCurrent] = token(lObjects[iCurrent].get_value())
+        return iCurrent + 1
+    return iToken
 
 def object_value_is(lAllObjects, iToken, sString):
     if lAllObjects[iToken].get_value().lower() == sString.lower():
@@ -106,8 +117,9 @@ def get_range(lObjects, iStart, sEnd):
     return iStart, iEnd
 
 def classify_token(sToken, token, iToken, lObjects):
+    iToken = find_next_token(iToken, lObjects)
     if object_value_is(lObjects, iToken, sToken):
-        assign_token(lObjects, iToken, token)
+        iToken = assign_token(lObjects, iToken, token)
         return True
     return False
 
@@ -121,10 +133,10 @@ def find_in_range(sValue, iToken, sEnd, lObjects):
 
 
 def find_next_token(iToken, lObjects):
-    iReturn = iToken
-    while not is_item(lObjects, iReturn):
-        iReturn += 1
-    return iReturn
+    while not is_item(lObjects, iToken):
+        iToken += 1
+    return iToken
+
 
 def detect_submodule(iToken, lObjects, module):
     iLast = 0           
@@ -147,21 +159,38 @@ def classify_is_keyword(iToken, token, lObjects):
         iReturn = iToken + 1
     return iReturn
 
-def has_label(iObject, lObjects):
-    iItemCount = 0
-    iIndex = iObject
-    try:
-        while iItemCount < 2:
-            if type(lObjects[iIndex]) == parser.item:
-                iItemCount += 1
-            iIndex += 1
-        else:
-            if lObjects[iIndex-1].get_value().lower() == ':':
-                return True
-    except IndexError:
-        return False
+def classify_semicolon(iToken, token, lObjects):
+    find_next_token(iToken, lObjects)
+    if classify_token(';', token, iToken, lObjects):
+        iToken += 1
+        return True
     return False
+
+
+#def has_label(iObject, lObjects):
+#    iItemCount = 0
+#    iIndex = iObject
+#    try:
+#        while iItemCount < 2:
+#            print(lObjects[iIndex].get_value())
+#            if type(lObjects[iIndex]) == parser.item:
+#                iItemCount += 1
+#            iIndex += 1
+#        else:
+#            if lObjects[iIndex-1].get_value().lower() == ':':
+#                return True
+#    except IndexError:
+#        return False
+#    return False
     
+def has_label(iObject, lObjects):
+    iCurrent = find_next_token(iObject, lObjects)
+    iCurrent = increment_token_count(iCurrent)
+    iCurrent = find_next_token(iCurrent, lObjects)
+    if object_value_is(lObjects, iCurrent, ':'):
+        return True
+    return False
+
 #def tokenize_postponed(iObject, lObjects, token):
 #    iIndex = iObject
 #    iItemCount = 0
@@ -181,19 +210,20 @@ def tokenize_postponed(iObject, lObjects, token):
         return iIndex + 1
     return iObject
 
-def tokenize_label(iCurrent, lObjects, label_token, colon_token):
-    iIndex = iCurrent
+def tokenize_label(iToken, lObjects, label_token, colon_token):
+    iCurrent = find_next_token(iToken, lObjects)
     iItemCount = 0
     if has_label(iCurrent, lObjects):
         while iItemCount < 2:
-            if is_item(lObjects, iIndex):
+            if is_item(lObjects, iCurrent):
                 if iItemCount == 0:
-                    assign_token(lObjects, iIndex, label_token) 
+                    assign_token(lObjects, iCurrent, label_token) 
                 if iItemCount == 1:
-                    assign_token(lObjects, iIndex, colon_token) 
+                    assign_token(lObjects, iCurrent, colon_token) 
                 iItemCount += 1
-            iIndex += 1
-    return iIndex
+            iCurrent += 1
+        return iCurrent
+    return iToken
 
 def tokenize_semicolon(iObject, lObjects, token):
     iIndex = iObject
@@ -246,6 +276,8 @@ def token_is_close_parenthesis(iObject, lObjects):
         return True
     return False
 
+def increment_token_count(iToken):
+    return iToken + 1
 
 #def index_of_token(iObject, lObjects, sToken):
 #    iReturn = iObject

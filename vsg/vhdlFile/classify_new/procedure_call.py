@@ -31,30 +31,34 @@ def detect(iCurrent, lObjects):
                 return False
             if lObjects[iToken].get_value() == 'end':
                 return False
+            # Check for component instantiations
+            if lObjects[iToken].get_value() == 'map':
+                return False
+            if lObjects[iToken].get_value() == 'component':
+                return False
+            if lObjects[iToken].get_value() == 'entity':
+                return False
+            if lObjects[iToken].get_value() == 'configuration':
+                return False
         iToken += 1
     else:
         return True
 
 
-def classify(iCurrent, lObjects):
+def classify(iToken, lObjects):
     '''
     procedure_call ::=
         *procedure*_name [ ( actual_parameter_part ) ]
     '''
-    iToken = iCurrent
-    utils.find_next_token(iCurrent, lObjects)
-    utils.assign_token(lObjects, iToken, token.procedure_name)
-    iToken += 1
+    iCurrent = utils.assign_token(lObjects, iToken, token.procedure_name)
 
-    iToken = utils.find_next_token(iToken, lObjects)
-    if utils.object_value_is(lObjects, iToken, '('):
-        utils.assign_token(lObjects, iToken, token.open_parenthesis)
-        iToken += 1
+    iCurrent = utils.find_next_token(iToken, lObjects)
+    if utils.object_value_is(lObjects, iCurrent, '('):
+        iCurrent = utils.assign_token(lObjects, iCurrent, token.open_parenthesis)
 
-        iToken = actual_parameter_part.classify(iToken, lObjects)
+        iCurrent = actual_parameter_part.classify(iCurrent, lObjects)
 
-        iToken = utils.find_next_token(iToken, lObjects)
-        utils.assign_token(lObjects, iToken, token.close_parenthesis)
-        iToken += 1
+        iCurrent = utils.find_next_token(iCurrent, lObjects)
+        iCurrent = utils.assign_token(lObjects, iCurrent, token.close_parenthesis)
 
-    return iToken
+    return iCurrent

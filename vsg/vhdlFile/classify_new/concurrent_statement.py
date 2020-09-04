@@ -1,5 +1,6 @@
 
 from vsg.vhdlFile.classify_new import block_statement
+from vsg.vhdlFile.classify_new import component_instantiation_statement
 from vsg.vhdlFile.classify_new import concurrent_assertion_statement
 from vsg.vhdlFile.classify_new import concurrent_procedure_call_statement
 from vsg.vhdlFile.classify_new import concurrent_signal_assignment_statement
@@ -45,5 +46,10 @@ def detect(iCurrent, lObjects):
     iReturn = concurrent_procedure_call_statement.detect(iCurrent, lObjects)
     if iReturn != iCurrent:
         return iReturn
+
+    iReturn = component_instantiation_statement.detect(iCurrent, lObjects)
+    if iReturn != iCurrent:
+        return iReturn
+
 
     return iCurrent
