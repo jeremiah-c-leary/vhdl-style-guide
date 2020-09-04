@@ -1,0 +1,53 @@
+--------------------------------------------------------------------------------
+0 | None | 
+--------------------------------------------------------------------------------
+1 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+2 | None | context c1 is
+<class 'vsg.token.context_declaration.context_keyword'>
+<class 'vsg.token.context_declaration.identifier'>
+<class 'vsg.token.context_declaration.is_keyword'>
+--------------------------------------------------------------------------------
+3 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+4 | None | end context c1;
+<class 'vsg.token.context_declaration.end_keyword'>
+<class 'vsg.token.context_declaration.end_context_keyword'>
+<class 'vsg.token.context_declaration.context_simple_name'>
+<class 'vsg.token.context_declaration.semicolon'>
+--------------------------------------------------------------------------------
+5 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+6 | None | context c1 is
+<class 'vsg.token.context_declaration.context_keyword'>
+<class 'vsg.token.context_declaration.identifier'>
+<class 'vsg.token.context_declaration.is_keyword'>
+--------------------------------------------------------------------------------
+7 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+8 | None | end context;
+<class 'vsg.token.context_declaration.end_keyword'>
+<class 'vsg.token.context_declaration.end_context_keyword'>
+<class 'vsg.token.context_declaration.semicolon'>
+--------------------------------------------------------------------------------
+9 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+10 | None | context c1 is
+<class 'vsg.token.context_declaration.context_keyword'>
+<class 'vsg.token.context_declaration.identifier'>
+<class 'vsg.token.context_declaration.is_keyword'>
+--------------------------------------------------------------------------------
+11 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+12 | None | end;
+<class 'vsg.token.context_declaration.end_keyword'>
+<class 'vsg.token.context_declaration.semicolon'>
+--------------------------------------------------------------------------------
+13 | None | 
+<class 'vsg.parser.blank_line'>
