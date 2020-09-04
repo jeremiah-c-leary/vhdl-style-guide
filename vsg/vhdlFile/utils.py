@@ -116,6 +116,20 @@ def get_range(lObjects, iStart, sEnd):
         iStart = iStart
     return iStart, iEnd
 
+
+def classify_next_token_if(sToken, token, iToken, lObjects):
+    iCurrent = find_next_token(iToken, lObjects)
+    if object_value_is(lObjects, iCurrent, sToken):
+        iCurrent = assign_token(lObjects, iCurrent, token)
+        return iCurrent
+    return iToken
+
+def classify_next_token(token, iToken, lObjects):
+    iCurrent = find_next_token(iToken, lObjects)
+    iCurrent = assign_token(lObjects, iCurrent, token)
+    return iCurrent
+
+
 def classify_token(sToken, token, iToken, lObjects):
     iToken = find_next_token(iToken, lObjects)
     if object_value_is(lObjects, iToken, sToken):

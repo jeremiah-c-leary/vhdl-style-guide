@@ -80,7 +80,7 @@ def classify_package_body_body_keyword(oObject, iObject, lObjects, dVars):
 
 def classify_package_identifier(oObject, iObject, lObjects, dVars):
     if type(oObject) == parser.item:
-        lObjects[iObject] = package_body.simple_name(oObject.get_value())
+        lObjects[iObject] = package_body.package_simple_name(oObject.get_value())
         dVars['bPackageBodyIdentifierFound'] = True
         return True
     return False
@@ -122,7 +122,7 @@ def classify_package_body_end_body_keyword(oObject, iObject, lObjects, dVars):
 
 def classify_package_simple_name(oObject, iObject, lObjects, dVars):
     if type(oObject) == parser.item:
-        lObjects[iObject] = package_body.end_simple_name(oObject.get_value())
+        lObjects[iObject] = package_body.end_package_simple_name(oObject.get_value())
         return True
     return False
 
