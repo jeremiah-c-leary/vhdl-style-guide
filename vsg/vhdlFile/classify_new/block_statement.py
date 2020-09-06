@@ -63,11 +63,11 @@ def classify(iCurrent, lObjects):
     iToken = utils.classify_is_keyword(iToken, token.is_keyword, lObjects)
         
     iToken = utils.detect_submodule(iToken, lObjects, block_header)
+
     iToken = utils.detect_submodule(iToken, lObjects, block_declarative_part)
 
     ### Classify Begin keyword        
     iToken = utils.classify_begin_keyword(iToken, token.begin_keyword, lObjects)
-
     iToken = utils.detect_submodule(iToken, lObjects, block_statement_part)
 
     ### Classify the closing keywords

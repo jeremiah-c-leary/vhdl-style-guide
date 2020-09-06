@@ -40,6 +40,8 @@ def detect(iCurrent, lObjects):
                 return False
             if lObjects[iToken].get_value() == 'configuration':
                 return False
+            if lObjects[iToken].get_value() == 'type':
+                return False
         iToken += 1
     else:
         return True

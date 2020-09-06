@@ -1,6 +1,11 @@
 
 
-#from vsg.vhdlFile.classify_new import process_declarative_item
+from vsg.vhdlFile.classify_new import package_declaration
+from vsg.vhdlFile.classify_new import package_body
+from vsg.vhdlFile.classify_new import package_instantiation_declaration
+
+from vsg.vhdlFile.classify_new import type_declaration
+from vsg.vhdlFile.classify_new import use_clause
 
 '''
     block_declarative_item ::=
@@ -32,4 +37,28 @@
 
 
 def detect(iToken, lObjects):
+
+    iReturn = package_declaration.detect(iToken, lObjects)
+    if iReturn != iToken:
+        return iReturn
+
+    iReturn = package_body.detect(iToken, lObjects)
+    if iReturn != iToken:
+        return iReturn
+
+    iReturn = package_instantiation_declaration.detect(iToken, lObjects)
+    if iReturn != iToken:
+        return iReturn
+
+    iReturn = type_declaration.detect(iToken, lObjects)
+    if iReturn != iToken:
+        return iReturn
+
+
+
+    iReturn = use_clause.detect(iToken, lObjects)
+    if iReturn != iToken:
+        return iReturn
+
+
     return iToken

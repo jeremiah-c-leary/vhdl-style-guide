@@ -1,5 +1,5 @@
 
-#from vsg.vhdlFile.classify_new import block_decarative_item
+from vsg.vhdlFile.classify_new import block_declarative_item
 
 '''
     block_declarative_part ::=
@@ -8,4 +8,4 @@
 
 
 def detect(iCurrent, lObjects):
-    return iCurrent
+    return block_declarative_item.detect(iCurrent, lObjects)
