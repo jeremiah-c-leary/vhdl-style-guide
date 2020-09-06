@@ -18,34 +18,32 @@ from vsg.token import package_declaration as token
 def detect(iToken, lObjects):
     iCurrent = utils.find_next_token(iToken, lObjects)
     if utils.object_value_is(lObjects, iCurrent, 'package'):
-        iCurrent += 1
-         
-        iCurrent = utils.find_next_token(iCurrent, lObjects)
-        if not utils.object_value_is(lObjects, iCurrent, 'body'):
+        if not utils.find_in_next_n_tokens('body', 5, iCurrent, lObjects):
             return classify(iToken, lObjects)
+        else:
+            return iToken 
 
     return iToken
 
 
 def classify(iToken, lObjects):
-
     iCurrent = classify_opening_declaration(iToken, lObjects)
 
     iLast = 0
     while iLast != iCurrent:
-        iCurrent = utils.find_next_token(iToken, lObjects)
+        iCurrent = utils.find_next_token(iCurrent, lObjects)
         iLast = iCurrent
         iCurrent = package_header.detect(iCurrent, lObjects)
 
     iLast = 0
     while iLast != iCurrent:
-        iCurrent = utils.find_next_token(iToken, lObjects)
+        iCurrent = utils.find_next_token(iCurrent, lObjects)
         iLast = iCurrent
-        if utils.object_value_is(lObjects, iToken, 'end'):
+        if utils.object_value_is(lObjects, iCurrent, 'end'):
              break 
         iCurrent = package_declarative_part.detect(iCurrent, lObjects)
 
-    iCurrent = classify_closing_declaration(iToken, lObjects)
+    iCurrent = classify_closing_declaration(iCurrent, lObjects)
 
     return iCurrent
 

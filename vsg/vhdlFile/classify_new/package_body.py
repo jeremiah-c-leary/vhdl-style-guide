@@ -16,10 +16,11 @@ from vsg.token import package_body as token
 def detect(iToken, lObjects):
     iCurrent = utils.find_next_token(iToken, lObjects)
     if utils.object_value_is(lObjects, iCurrent, 'package'):
-        iCurrent += 1
-        iCurrent = utils.find_next_token(iCurrent, lObjects)
-        if utils.object_value_is(lObjects, iCurrent, 'body'):
+
+        if utils.find_in_next_n_tokens('body', 5, iCurrent, lObjects):
             return classify(iToken, lObjects)
+        else:
+            return iToken
 
     return iToken
 

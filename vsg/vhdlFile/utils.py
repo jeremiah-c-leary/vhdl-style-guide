@@ -166,6 +166,19 @@ def find_in_range(sValue, iToken, sEnd, lObjects):
     return False
 
 
+def find_in_next_n_tokens(sValue, iMax, iToken, lObjects):
+    iTokenCount = 0
+    iCurrent = iToken
+    while iTokenCount < iMax:
+        iCurrent = find_next_token(iCurrent, lObjects)
+        iTokenCount += 1
+        if object_value_is(lObjects, iCurrent, sValue):
+            return True
+        iCurrent += 1
+    else:
+        return False
+
+
 def find_earliest_occurance(lEnd, iToken, lObjects):
     iEarliest = 9999999999999999999999999999
     for sEnd in lEnd:
