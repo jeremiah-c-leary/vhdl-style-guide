@@ -1,10 +1,14 @@
 
 from vsg import parser
 
-###############################################################################
-# Entity objects
-###############################################################################
 
+class access_keyword(parser.keyword):
+
+    def __init__(self, sString):
+        parser.keyword.__init__(self, sString)
+
+
+ # jcl - remove the objects below when new parser is done
 class keyword(parser.keyword):
 
     def __init__(self, sString):

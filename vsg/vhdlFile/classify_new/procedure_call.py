@@ -42,6 +42,8 @@ def detect(iCurrent, lObjects):
                 return False
             if lObjects[iToken].get_value() == 'type':
                 return False
+            if lObjects[iToken].get_value() == 'access':
+                return False
         iToken += 1
     else:
         return True
