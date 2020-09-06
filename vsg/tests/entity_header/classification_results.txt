@@ -1,0 +1,225 @@
+--------------------------------------------------------------------------------
+0 | None | 
+--------------------------------------------------------------------------------
+1 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+2 | None | entity FIFO is
+<class 'vsg.token.entity_declaration.entity_keyword'>
+<class 'vsg.token.entity_declaration.identifier'>
+<class 'vsg.token.entity_declaration.is_keyword'>
+--------------------------------------------------------------------------------
+3 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+4 | None |   generic (
+<class 'vsg.token.generic_clause.generic_keyword'>
+<class 'vsg.token.generic_clause.open_parenthesis'>
+--------------------------------------------------------------------------------
+5 | None |     A : std_logic := 0;
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_unknown_declaration.colon'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+6 | None |     B, C : std_logic := '0';
+<class 'vsg.parser.todo'>
+<class 'vsg.token.identifier_list.comma'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_unknown_declaration.colon'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+7 | None |     D : integer
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_unknown_declaration.colon'>
+<class 'vsg.parser.todo'>
+--------------------------------------------------------------------------------
+8 | None |   );
+<class 'vsg.token.generic_clause.close_parenthesis'>
+<class 'vsg.token.generic_clause.semicolon'>
+--------------------------------------------------------------------------------
+9 | None |   port (
+<class 'vsg.token.port_clause.port_keyword'>
+<class 'vsg.token.port_clause.open_parenthesis'>
+--------------------------------------------------------------------------------
+10 | None |     A : in std_logic;
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_unknown_declaration.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+11 | None |     B : out std_logic;
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_unknown_declaration.colon'>
+<class 'vsg.token.mode.out_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+12 | None |     C : inout std_logic;
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_unknown_declaration.colon'>
+<class 'vsg.token.mode.inout_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+13 | None |     X, Y, Z : buffer integer
+<class 'vsg.parser.todo'>
+<class 'vsg.token.identifier_list.comma'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.identifier_list.comma'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_unknown_declaration.colon'>
+<class 'vsg.token.mode.inout_keyword'>
+<class 'vsg.parser.todo'>
+--------------------------------------------------------------------------------
+14 | None |   );
+<class 'vsg.token.port_clause.close_parenthesis'>
+<class 'vsg.token.port_clause.semicolon'>
+--------------------------------------------------------------------------------
+15 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+16 | None | end entity FIFO;
+<class 'vsg.token.entity_declaration.end_keyword'>
+<class 'vsg.token.entity_declaration.end_entity_keyword'>
+<class 'vsg.token.entity_declaration.entity_simple_name'>
+<class 'vsg.token.entity_declaration.semicolon'>
+--------------------------------------------------------------------------------
+17 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+18 | None | entity FIFO is
+<class 'vsg.token.entity_declaration.entity_keyword'>
+<class 'vsg.token.entity_declaration.identifier'>
+<class 'vsg.token.entity_declaration.is_keyword'>
+--------------------------------------------------------------------------------
+19 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+20 | None |   generic (
+<class 'vsg.token.generic_clause.generic_keyword'>
+<class 'vsg.token.generic_clause.open_parenthesis'>
+--------------------------------------------------------------------------------
+21 | None |     A : std_logic := 0;
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_unknown_declaration.colon'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+22 | None |     B, C : std_logic := '0';
+<class 'vsg.parser.todo'>
+<class 'vsg.token.identifier_list.comma'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_unknown_declaration.colon'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+23 | None |     D : integer
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_unknown_declaration.colon'>
+<class 'vsg.parser.todo'>
+--------------------------------------------------------------------------------
+24 | None |   );
+<class 'vsg.token.generic_clause.close_parenthesis'>
+<class 'vsg.token.generic_clause.semicolon'>
+--------------------------------------------------------------------------------
+25 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+26 | None | end entity FIFO;
+<class 'vsg.token.entity_declaration.end_keyword'>
+<class 'vsg.token.entity_declaration.end_entity_keyword'>
+<class 'vsg.token.entity_declaration.entity_simple_name'>
+<class 'vsg.token.entity_declaration.semicolon'>
+--------------------------------------------------------------------------------
+27 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+28 | None | entity FIFO is
+<class 'vsg.token.entity_declaration.entity_keyword'>
+<class 'vsg.token.entity_declaration.identifier'>
+<class 'vsg.token.entity_declaration.is_keyword'>
+--------------------------------------------------------------------------------
+29 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+30 | None |   port (
+<class 'vsg.token.port_clause.port_keyword'>
+<class 'vsg.token.port_clause.open_parenthesis'>
+--------------------------------------------------------------------------------
+31 | None |     A : in std_logic;
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_unknown_declaration.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+32 | None |     B : out std_logic;
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_unknown_declaration.colon'>
+<class 'vsg.token.mode.out_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+33 | None |     C : inout std_logic;
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_unknown_declaration.colon'>
+<class 'vsg.token.mode.inout_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+34 | None |     X, Y, Z : buffer integer
+<class 'vsg.parser.todo'>
+<class 'vsg.token.identifier_list.comma'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.identifier_list.comma'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_unknown_declaration.colon'>
+<class 'vsg.token.mode.inout_keyword'>
+<class 'vsg.parser.todo'>
+--------------------------------------------------------------------------------
+35 | None |   );
+<class 'vsg.token.port_clause.close_parenthesis'>
+<class 'vsg.token.port_clause.semicolon'>
+--------------------------------------------------------------------------------
+36 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+37 | None | end entity FIFO;
+<class 'vsg.token.entity_declaration.end_keyword'>
+<class 'vsg.token.entity_declaration.end_entity_keyword'>
+<class 'vsg.token.entity_declaration.entity_simple_name'>
+<class 'vsg.token.entity_declaration.semicolon'>
+--------------------------------------------------------------------------------
+38 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+39 | None | entity FIFO is
+<class 'vsg.token.entity_declaration.entity_keyword'>
+<class 'vsg.token.entity_declaration.identifier'>
+<class 'vsg.token.entity_declaration.is_keyword'>
+--------------------------------------------------------------------------------
+40 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+41 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+42 | None | end entity FIFO;
+<class 'vsg.token.entity_declaration.end_keyword'>
+<class 'vsg.token.entity_declaration.end_entity_keyword'>
+<class 'vsg.token.entity_declaration.entity_simple_name'>
+<class 'vsg.token.entity_declaration.semicolon'>
+--------------------------------------------------------------------------------
+43 | None | 
+<class 'vsg.parser.blank_line'>

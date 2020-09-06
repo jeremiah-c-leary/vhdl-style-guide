@@ -1,5 +1,6 @@
 
 from vsg.vhdlFile.classify_new import context_declaration
+from vsg.vhdlFile.classify_new import entity_declaration
 from vsg.vhdlFile.classify_new import package_declaration
 from vsg.vhdlFile.classify_new import package_instantiation_declaration
 
@@ -15,6 +16,10 @@ def detect(iCurrent, lObjects):
       | PSL_Verification_Unit
     '''
     iReturned = context_declaration.detect(iCurrent, lObjects)
+    if iReturned != iCurrent:
+        return iReturned
+
+    iReturned = entity_declaration.detect(iCurrent, lObjects)
     if iReturned != iCurrent:
         return iReturned
 

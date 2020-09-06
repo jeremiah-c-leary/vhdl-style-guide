@@ -8,7 +8,7 @@ from vsg.vhdlFile.classify_new import process_sensitivity_list
 from vsg.vhdlFile import utils
 
 
-def detect(iCurrent, lObjects):
+def detect(iToken, lObjects):
     '''
     process_statement ::=
         [ *process*_label : ]
@@ -18,15 +18,9 @@ def detect(iCurrent, lObjects):
                 process_statement_part
             end [ postponed ] process [ *process*_label ] ;
     '''
-    iToken = iCurrent
-    iTokenCount = 0
-    while iTokenCount < 5:
-        iToken = utils.find_next_token(iToken, lObjects)
-        iTokenCount += 1
-        if utils.object_value_is(lObjects, iToken, 'process'):
-            return classify(iCurrent, lObjects)
-        iToken += 1
-    return iCurrent
+    if utils.find_in_next_n_tokens('process', 4, iToken, lObjects):
+        return classify(iToken, lObjects)
+    return iToken
 
 
 def classify(iCurrent, lObjects):

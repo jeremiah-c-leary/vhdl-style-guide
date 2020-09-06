@@ -4,8 +4,8 @@
 from vsg.vhdlFile.classify_new import interface_list
 
 '''
-    generic_list ::=
-        *generic*_interface_list
+    port_list ::=
+        *port*_interface_list
 '''
 
 

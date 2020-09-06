@@ -20,10 +20,11 @@ def detect(iToken, lObjects):
 
 
 def classify(iToken, lObjects):
-    iCurrent = utils.assign_next_token_if('generic', token.generic_keyword, iToken, lObjects)
-    iCurrent = utils.assign_next_token_if('(', token.open_parenthesis, iCurrent, lObjects)
+    iCurrent = utils.assign_next_token_required('generic', token.generic_keyword, iToken, lObjects)
+    iCurrent = utils.assign_next_token_required('(', token.open_parenthesis, iCurrent, lObjects)
     iCurrent = generic_list.classify(iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_if(')', token.close_parenthesis, iCurrent, lObjects)
+    iCurrent = utils.assign_next_token_required(')', token.close_parenthesis, iCurrent, lObjects)
+    iCurrent = utils.assign_next_token_required(';', token.semicolon, iCurrent, lObjects)
     return iCurrent
 
 

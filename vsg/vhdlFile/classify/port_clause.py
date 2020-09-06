@@ -46,7 +46,7 @@ def tokenize(oObject, iObject, lObjects, dVars):
 def classify_keyword(oObject, iObject, lObjects, dVars):
     sValue = oObject.get_value()
     if sValue.lower() == 'port':
-        lObjects[iObject] = token.keyword(sValue)
+        lObjects[iObject] = token.port_keyword(sValue)
         dVars['bPortClauseKeywordFound'] = True
         return True
     return False
