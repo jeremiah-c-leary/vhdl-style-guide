@@ -1,11 +1,8 @@
 
 from vsg import parser
 
-###############################################################################
-# Entity objects
-###############################################################################
 
-class keyword(parser.keyword):
+class file_keyword(parser.keyword):
 
     def __init__(self, sString):
         parser.keyword.__init__(self, sString)
@@ -16,8 +13,8 @@ class of_keyword(parser.keyword):
     def __init__(self, sString):
         parser.keyword.__init__(self, sString)
 
-
-class type_mark(parser.type_mark):
+# jcl - need to delete the object below when old parsing method can be retired.
+class type_mark(parser.keyword):
 
     def __init__(self, sString):
-        parser.type_mark.__init__(self, sString)
+        parser.keyword.__init__(self, sString)

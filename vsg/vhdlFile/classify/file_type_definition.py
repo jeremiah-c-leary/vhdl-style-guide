@@ -28,7 +28,7 @@ def tokenize(oObject, iObject, lObjects, dVars):
 def classify_keyword(oObject, iObject, lObjects, dVars):
     sValue = oObject.get_value()
     if sValue.lower() == 'file':
-        lObjects[iObject] = token.keyword(sValue)
+        lObjects[iObject] = token.file_keyword(sValue)
         dVars['type_declaration']['file_type_definition']['keyword'] = True 
         return True
     return False

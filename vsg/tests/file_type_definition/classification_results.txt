@@ -1,0 +1,63 @@
+--------------------------------------------------------------------------------
+0 | None | 
+--------------------------------------------------------------------------------
+1 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+2 | None | architecture arch of entity1 is
+<class 'vsg.token.architecture_body.architecture_keyword'>
+<class 'vsg.token.architecture_body.identifier'>
+<class 'vsg.token.architecture_body.of_keyword'>
+<class 'vsg.token.architecture_body.entity_name'>
+<class 'vsg.token.architecture_body.is_keyword'>
+--------------------------------------------------------------------------------
+3 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+4 | None | begin
+<class 'vsg.token.architecture_body.begin_keyword'>
+--------------------------------------------------------------------------------
+5 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+6 | None |   block_label : block is
+<class 'vsg.token.block_statement.block_label'>
+<class 'vsg.token.block_statement.label_colon'>
+<class 'vsg.token.block_statement.keyword'>
+<class 'vsg.token.block_statement.is_keyword'>
+--------------------------------------------------------------------------------
+7 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+8 | None |     type type1 is file of identifier;
+<class 'vsg.token.full_type_declaration.type_keyword'>
+<class 'vsg.token.identifier.identifier'>
+<class 'vsg.token.full_type_declaration.is_keyword'>
+<class 'vsg.token.file_type_definition.file_keyword'>
+<class 'vsg.token.file_type_definition.of_keyword'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.full_type_declaration.semicolon'>
+--------------------------------------------------------------------------------
+9 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+10 | None |   begin
+<class 'vsg.token.block_statement.begin_keyword'>
+--------------------------------------------------------------------------------
+11 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+12 | None |   end block block_label;
+<class 'vsg.token.block_statement.end_keyword'>
+<class 'vsg.token.block_statement.end_block_keyword'>
+<class 'vsg.token.block_statement.end_block_label'>
+<class 'vsg.token.block_statement.semicolon'>
+--------------------------------------------------------------------------------
+13 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+14 | None | end architecture arch;
+<class 'vsg.token.architecture_body.end_keyword'>
+<class 'vsg.token.architecture_body.end_architecture_keyword'>
+<class 'vsg.token.architecture_body.architecture_simple_name'>
+<class 'vsg.token.architecture_body.semicolon'>
