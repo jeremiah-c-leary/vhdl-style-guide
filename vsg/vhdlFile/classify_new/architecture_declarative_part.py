@@ -1,7 +1,6 @@
 
-#from vsg.vhdlFile import utils
 
-#from vsg.vhdlFile.classify_new import block_delcarative_item
+from vsg.vhdlFile.classify_new import block_declarative_item
 
 '''
     architecture_declarative_part ::=
@@ -9,5 +8,5 @@
 '''
 
 
-def detect(iCurrent, lObjects):
-    return iCurrent
+def detect(iToken, lObjects):
+    return block_declarative_item.detect(iToken, lObjects)

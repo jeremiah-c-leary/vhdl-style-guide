@@ -1,7 +1,6 @@
 
-#from vsg.vhdlFile import utils
 
-#from vsg.vhdlFile.classify_new import process_declarative_item
+from vsg.vhdlFile.classify_new import process_declarative_item
 
 '''
     process_declarative_part ::=
@@ -9,5 +8,5 @@
 '''
 
 
-def detect(iCurrent, lObjects):
-    return iCurrent
+def detect(iToken, lObjects):
+    return process_declarative_item.detect(iToken, lObjects)

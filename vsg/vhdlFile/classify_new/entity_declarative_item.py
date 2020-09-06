@@ -1,5 +1,4 @@
 
-#from vsg.vhdlFile import utils
 
 #from vsg.vhdlFile.classify_new import process_declarative_item
 

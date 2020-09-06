@@ -3,7 +3,7 @@
 #from vsg.vhdlFile.classify_new import process_declarative_item
 
 '''
-    package_body_declarative_item ::=
+    subprogram_declarative_item ::=
         subprogram_declaration
       | subprogram_body
       | subprogram_instantiation_declaration
