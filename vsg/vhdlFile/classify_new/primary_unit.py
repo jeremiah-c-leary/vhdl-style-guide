@@ -1,6 +1,7 @@
 
 from vsg.vhdlFile.classify_new import context_declaration
 from vsg.vhdlFile.classify_new import package_declaration
+from vsg.vhdlFile.classify_new import package_instantiation_declaration
 
 
 def detect(iCurrent, lObjects):
@@ -18,6 +19,10 @@ def detect(iCurrent, lObjects):
         return iReturned
 
     iReturned = package_declaration.detect(iCurrent, lObjects)
+    if iReturned != iCurrent:
+        return iReturned
+
+    iReturned = package_instantiation_declaration.detect(iCurrent, lObjects)
     if iReturned != iCurrent:
         return iReturned
 

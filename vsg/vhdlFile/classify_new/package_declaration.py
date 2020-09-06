@@ -19,7 +19,8 @@ def detect(iToken, lObjects):
     iCurrent = utils.find_next_token(iToken, lObjects)
     if utils.object_value_is(lObjects, iCurrent, 'package'):
         if not utils.find_in_next_n_tokens('body', 5, iCurrent, lObjects):
-            return classify(iToken, lObjects)
+            if not utils.find_in_next_n_tokens('new', 5, iCurrent, lObjects):
+                return classify(iToken, lObjects)
         else:
             return iToken 
 
