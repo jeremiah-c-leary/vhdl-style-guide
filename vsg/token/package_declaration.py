@@ -1,11 +1,8 @@
 
 from vsg import parser
 
-###############################################################################
-# Package objects
-###############################################################################
 
-class keyword(parser.keyword):
+class package_keyword(parser.keyword):
 
     def __init__(self, sString):
         parser.keyword.__init__(self, sString)
@@ -35,7 +32,7 @@ class end_package_keyword(parser.keyword):
     def __init__(self, sString):
         parser.keyword.__init__(self, sString)
 
-class simple_name(parser.simple_name):
+class end_package_simple_name(parser.simple_name):
 
     def __init__(self, sString):
         parser.simple_name.__init__(self, sString)

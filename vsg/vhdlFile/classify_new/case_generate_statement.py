@@ -41,8 +41,7 @@ def classify(iObject, lObjects):
     utils.classify_token('case', token.case_keyword, iToken, lObjects)
     iToken += 1
 
-    iStart, iEnd = utils.get_range(lObjects, iToken, 'generate')
-    iToken = expression.classify(iStart, iEnd, lObjects)
+    iToken = utils.classify_subelement_until('generate', expression, iToken, lObjects)
 
     utils.classify_token('generate', token.generate_keyword, iToken, lObjects)
     iToken += 1

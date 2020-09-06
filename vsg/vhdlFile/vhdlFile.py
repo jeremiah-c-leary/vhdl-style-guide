@@ -550,7 +550,7 @@ class vhdlFile():
             for iObject, oObject in enumerate(oLine.objects[::-1]):
                 if type(oObject) == parser.item and bPackageIdentifierFound:
                     iIndex = len(oLine.objects) - iObject - 1
-                    oLine.objects[iIndex] = package_declaration.keyword(oObject.get_value())
+                    oLine.objects[iIndex] = package_declaration.package_keyword(oObject.get_value())
                     bPackageIdentifierFound = False                
 
                 if type(oObject) == package_declaration.identifier and not bPackageIdentifierFound:

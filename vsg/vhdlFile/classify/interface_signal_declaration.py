@@ -50,7 +50,7 @@ def tokenize(oObject, iObject, lObjects, dVars):
 def classify_keyword(oObject, iObject, lObjects, dVars):
     sValue = oObject.get_value()
     if sValue.lower() == 'signal':
-        lObjects[iObject] = token.keyword(sValue)
+        lObjects[iObject] = token.signal_keyword(sValue)
         return True
     return False
 
@@ -104,7 +104,7 @@ def classify_bus_keyword(oObject, iObject, lObjects, dVars):
 
 def classify_assignment_operator(oObject, iObject, lObjects, dVars):
     if oObject.get_value() == ':=':
-        lObjects[iObject] = token.assignment_operator(':=')
+        lObjects[iObject] = token.assignment(':=')
         dVars['bInterfaceSignalDeclarationAssignmentOperatorFound'] = True
         return True
     return False

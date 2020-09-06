@@ -23,5 +23,3 @@ def classify(iToken, lObjects):
     iCurrent = association_list.classify(iCurrent, lObjects)
     iCurrent = utils.assign_next_token_if(')', token.close_parenthesis, iCurrent, lObjects)
     return iCurrent
-
-

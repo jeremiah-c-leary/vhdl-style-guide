@@ -70,6 +70,16 @@ def have_is_keyword(iObject, lAllObjects):
         iIndex += 1
     return False
 
+def assign_next_token(token, iToken, lObjects):
+    iCurrent = find_next_token(iToken, lObjects)
+    try:
+        lObjects[iCurrent] = token(lObjects[iCurrent].get_value())
+        iCurrent+= 1
+        return iCurrent
+    except TypeError:
+        lObjects[iToken] = token()
+    return iToken
+
 def assign_token(lObjects, iToken, token):
     iCurrent = find_next_token(iToken, lObjects)
     try:
@@ -84,8 +94,18 @@ def assign_next_token_if(sToken, token, iToken, lObjects):
     iCurrent = find_next_token(iToken, lObjects)
     if object_value_is(lObjects, iCurrent, sToken):
         lObjects[iCurrent] = token(lObjects[iCurrent].get_value())
+        iCurrent += 1
+        return iCurrent
+    return iToken
+
+
+def assign_next_token_required(sToken, token, iToken, lObjects):
+    iCurrent = find_next_token(iToken, lObjects)
+    if object_value_is(lObjects, iCurrent, sToken):
+        lObjects[iCurrent] = token(lObjects[iCurrent].get_value())
         return iCurrent + 1
     return iToken
+
 
 def object_value_is(lAllObjects, iToken, sString):
     if lAllObjects[iToken].get_value().lower() == sString.lower():
@@ -140,6 +160,25 @@ def classify_token(sToken, token, iToken, lObjects):
 
 def find_in_range(sValue, iToken, sEnd, lObjects):
     iStart, iEnd = get_range(lObjects, iToken, sEnd)
+    for iIndex in range(iStart, iEnd + 1):
+        if object_value_is(lObjects, iIndex, sValue):
+            return True
+    return False
+
+
+def find_earliest_occurance(lEnd, iToken, lObjects):
+    iEarliest = 9999999999999999999999999999
+    for sEnd in lEnd:
+        for iIndex in range(iToken, len(lObjects) - 1):
+            if lObjects[iIndex].get_value() == sEnd:
+                if iIndex < iEarliest:
+                    sEarliest = lObjects[iIndex].get_value()
+                    iEarliest = iIndex
+    return sEarliest
+
+
+def find_in_range_with_multiple_ends(sValue, iToken, lEnd, lObjects):
+    iStart, iEnd = get_range(lObjects, iToken, sEarliest)
     for iIndex in range(iStart, iEnd + 1):
         if object_value_is(lObjects, iIndex, sValue):
             return True
@@ -292,6 +331,20 @@ def token_is_close_parenthesis(iObject, lObjects):
 
 def increment_token_count(iToken):
     return iToken + 1
+
+
+def is_next_token(sToken, iToken, lObjects):
+    iCurrent = find_next_token(iToken, lObjects)
+    if object_value_is(lObjects, iCurrent, sToken):
+        return True
+    return False
+
+
+def classify_subelement_until(sToken, element, iToken, lObjects):
+    iCurrent = iToken
+    while not is_next_token(sToken, iCurrent, lObjects):
+        iCurrent = element.classify(iCurrent, lObjects)
+    return iCurrent
 
 #def index_of_token(iObject, lObjects, sToken):
 #    iReturn = iObject

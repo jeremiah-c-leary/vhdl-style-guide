@@ -17,4 +17,4 @@ class open_parenthesis(parser.open_parenthesis):
 class close_parenthesis(parser.close_parenthesis):
 
     def __init__(self):
-        parser.open_parenthesis.__init__(self)
+        parser.close_parenthesis.__init__(self)

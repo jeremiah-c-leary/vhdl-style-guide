@@ -1,11 +1,8 @@
 
 from vsg import parser
 
-###############################################################################
-# Component objects
-###############################################################################
 
-class keyword(parser.keyword):
+class signal_keyword(parser.keyword):
 
     def __init__(self, sString):
         parser.keyword.__init__(self, sString)
@@ -19,13 +16,13 @@ class identifier(parser.identifier):
 
 class comma(parser.comma):
 
-    def __init__(self):
+    def __init__(self, sString=','):
         parser.comma.__init__(self)
 
 
 class colon(parser.semicolon):
 
-    def __init__(self):
+    def __init__(self, sString=':'):
         parser.colon.__init__(self)
 
 
@@ -47,10 +44,10 @@ class bus_keyword(parser.keyword):
         parser.keyword.__init__(self, sString)
 
 
-class assignment_operator(parser.item):
+class assignment(parser.assignment):
 
     def __init__(self, sString):
-        parser.item.__init__(self, sString)
+        parser.assignment.__init__(self, sString)
 
 
 class static_expression(parser.static_expression):

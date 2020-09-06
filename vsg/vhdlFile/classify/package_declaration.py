@@ -119,7 +119,7 @@ def classify_end_package_keyword(oObject, iObject, lObjects, dVars):
 
 def classify_package_simple_name(oObject, iObject, lObjects, dVars):
     if type(oObject) == parser.item:
-        lObjects[iObject] = package_declaration.simple_name(oObject.get_value())
+        lObjects[iObject] = package_declaration.end_package_simple_name(oObject.get_value())
         return True
     return False
 

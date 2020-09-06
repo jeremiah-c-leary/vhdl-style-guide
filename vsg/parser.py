@@ -27,6 +27,13 @@ class todo(item):
 # Base VHDL type classes
 ###############################################################################
 
+
+class undefined_range(item):
+
+    def __init__(self):
+        item.__init__(self, '<>')
+
+
 class error(item):
 
     def __init__(self, sString):
