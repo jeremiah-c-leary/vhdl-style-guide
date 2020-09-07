@@ -5,6 +5,7 @@ from vsg.vhdlFile.classify_new import actual_parameter_part
 
 from vsg.vhdlFile import utils
 
+lExpections = ['<=', 'end', 'map', 'component', 'entity', 'configuration', 'type', 'access', 'array', 'subtype']
 
 def detect(iCurrent, lObjects):
     '''
@@ -27,24 +28,7 @@ def detect(iCurrent, lObjects):
 
     while lObjects[iToken].get_value() != ';':
         if utils.is_item(lObjects, iToken):
-            if lObjects[iToken].get_value() == '<=':
-                return False
-            if lObjects[iToken].get_value() == 'end':
-                return False
-            # Check for component instantiations
-            if lObjects[iToken].get_value() == 'map':
-                return False
-            if lObjects[iToken].get_value() == 'component':
-                return False
-            if lObjects[iToken].get_value() == 'entity':
-                return False
-            if lObjects[iToken].get_value() == 'configuration':
-                return False
-            if lObjects[iToken].get_value() == 'type':
-                return False
-            if lObjects[iToken].get_value() == 'access':
-                return False
-            if lObjects[iToken].get_value() == 'array':
+            if lObjects[iToken].get_value() in lExpections:
                 return False
         iToken += 1
     else:

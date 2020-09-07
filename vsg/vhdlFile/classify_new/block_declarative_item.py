@@ -5,6 +5,8 @@ from vsg.vhdlFile.classify_new import package_body
 from vsg.vhdlFile.classify_new import package_instantiation_declaration
 
 from vsg.vhdlFile.classify_new import type_declaration
+from vsg.vhdlFile.classify_new import subtype_declaration
+
 from vsg.vhdlFile.classify_new import use_clause
 
 '''
@@ -51,6 +53,10 @@ def detect(iToken, lObjects):
         return iReturn
 
     iReturn = type_declaration.detect(iToken, lObjects)
+    if iReturn != iToken:
+        return iReturn
+
+    iReturn = subtype_declaration.detect(iToken, lObjects)
     if iReturn != iToken:
         return iReturn
 

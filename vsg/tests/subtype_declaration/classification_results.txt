@@ -1,0 +1,110 @@
+--------------------------------------------------------------------------------
+0 | None | 
+--------------------------------------------------------------------------------
+1 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+2 | None | architecture RTL of FIFO is
+<class 'vsg.token.architecture_body.architecture_keyword'>
+<class 'vsg.token.architecture_body.identifier'>
+<class 'vsg.token.architecture_body.of_keyword'>
+<class 'vsg.token.architecture_body.entity_name'>
+<class 'vsg.token.architecture_body.is_keyword'>
+--------------------------------------------------------------------------------
+3 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+4 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+5 | None |   subtype DIGITS is INTEGER range 0 to 9;
+<class 'vsg.token.subtype_declaration.subtype_keyword'>
+<class 'vsg.token.identifier.identifier'>
+<class 'vsg.token.subtype_declaration.is_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.subtype_declaration.semicolon'>
+--------------------------------------------------------------------------------
+6 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+7 | None |   subtype BIT_NEW is RESOLVE_VALUE BIT;
+<class 'vsg.token.subtype_declaration.subtype_keyword'>
+<class 'vsg.token.identifier.identifier'>
+<class 'vsg.token.subtype_declaration.is_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.subtype_declaration.semicolon'>
+--------------------------------------------------------------------------------
+8 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+9 | None |   -- EXAMPLE 1 : a resolved subtype
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+10 | None |   subtype MY_STD_LOGIC is Resolved Std_ulogic;
+<class 'vsg.token.subtype_declaration.subtype_keyword'>
+<class 'vsg.token.identifier.identifier'>
+<class 'vsg.token.subtype_declaration.is_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.subtype_declaration.semicolon'>
+--------------------------------------------------------------------------------
+11 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+12 | None |   -- EXAMPLE 2: an integer subtype
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+13 | None |   subtype MyBit is STD_LOGIC range '0' to '1';
+<class 'vsg.token.subtype_declaration.subtype_keyword'>
+<class 'vsg.token.identifier.identifier'>
+<class 'vsg.token.subtype_declaration.is_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.subtype_declaration.semicolon'>
+--------------------------------------------------------------------------------
+14 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+15 | None |   -- EXAMPLE 3 : an array subtype
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+16 | None |   subtype ShortVector is STD_LOGIC_VECTOR(1 downto 0);
+<class 'vsg.token.subtype_declaration.subtype_keyword'>
+<class 'vsg.token.identifier.identifier'>
+<class 'vsg.token.subtype_declaration.is_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.subtype_declaration.semicolon'>
+--------------------------------------------------------------------------------
+17 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+18 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+19 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+20 | None | begin
+<class 'vsg.token.architecture_body.begin_keyword'>
+--------------------------------------------------------------------------------
+21 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+22 | None | end architecture RTL;
+<class 'vsg.token.architecture_body.end_keyword'>
+<class 'vsg.token.architecture_body.end_architecture_keyword'>
+<class 'vsg.token.architecture_body.architecture_simple_name'>
+<class 'vsg.token.architecture_body.semicolon'>

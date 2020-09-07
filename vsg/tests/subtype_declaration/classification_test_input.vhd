@@ -4,7 +4,6 @@ architecture RTL of FIFO is
 
   subtype DIGITS is INTEGER range 0 to 9;
 
-  function RESOLVE_VALUE (anonymous: BIT_VECTOR) return BIT;
   subtype BIT_NEW is RESOLVE_VALUE BIT;
 
   -- EXAMPLE 1 : a resolved subtype
