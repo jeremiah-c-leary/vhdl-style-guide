@@ -15,7 +15,7 @@ from vsg.vhdlFile.classify_new import subtype_indication
 
 def detect(iToken, lObjects):
     if utils.is_next_token('array', iToken, lObjects):
-        if utils.find_in_next_n_tokens('range', 4, iToken, lObjects):
+        if utils.find_in_next_n_tokens('<>', 5, iToken, lObjects):
             return classify(iToken, lObjects)
         else:
             return iToken
@@ -29,8 +29,8 @@ def classify(iToken, lObjects):
     iCurrent = index_subtype_definition.classify(iToken, lObjects)
 
     while utils.is_next_token(',', iCurrent, lObjects):
-        iCurrent = utils.assign_next_token_required(',', token.comma, iToken, lObjects)
-        iCurrent = index_subtype_definition.classify(iToken, lObjects)
+        iCurrent = utils.assign_next_token_required(',', token.comma, iCurrent, lObjects)
+        iCurrent = index_subtype_definition.classify(iCurrent, lObjects)
     
     iCurrent = utils.assign_next_token_required(')', token.close_parenthesis, iCurrent, lObjects)
     iCurrent = utils.assign_next_token_required('of', token.of_keyword, iCurrent, lObjects)
