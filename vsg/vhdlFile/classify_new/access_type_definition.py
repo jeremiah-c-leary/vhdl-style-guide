@@ -20,5 +20,5 @@ def detect(iToken, lObjects):
 
 def classify(iToken, lObjects):
     iCurrent = utils.assign_next_token_required('access', token.access_keyword, iToken, lObjects)
-    iCurrent = utils.classify_subelement_until(';', subtype_indication, iToken, lObjects)
+    iCurrent = utils.classify_subelement_until(';', subtype_indication, iCurrent, lObjects)
     return iCurrent
