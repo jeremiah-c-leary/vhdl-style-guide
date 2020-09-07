@@ -1,0 +1,98 @@
+--------------------------------------------------------------------------------
+0 | None | 
+--------------------------------------------------------------------------------
+1 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+2 | None | architecture RTL of FIFO is
+<class 'vsg.token.architecture_body.architecture_keyword'>
+<class 'vsg.token.architecture_body.identifier'>
+<class 'vsg.token.architecture_body.of_keyword'>
+<class 'vsg.token.architecture_body.entity_name'>
+<class 'vsg.token.architecture_body.is_keyword'>
+--------------------------------------------------------------------------------
+3 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+4 | None |   type NotGood is (X, '0', '1', X); -- illegal
+<class 'vsg.token.full_type_declaration.type_keyword'>
+<class 'vsg.token.identifier.identifier'>
+<class 'vsg.token.full_type_declaration.is_keyword'>
+<class 'vsg.token.enumeration_type_definition.open_parenthesis'>
+<class 'vsg.token.enumeration_type_definition.enumeration_literal'>
+<class 'vsg.token.enumeration_type_definition.comma'>
+<class 'vsg.token.enumeration_type_definition.enumeration_literal'>
+<class 'vsg.token.enumeration_type_definition.comma'>
+<class 'vsg.token.enumeration_type_definition.enumeration_literal'>
+<class 'vsg.token.enumeration_type_definition.comma'>
+<class 'vsg.token.enumeration_type_definition.enumeration_literal'>
+<class 'vsg.token.enumeration_type_definition.close_parenthesis'>
+<class 'vsg.token.full_type_declaration.semicolon'>
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+5 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+6 | None |   type MyBit is (L, H);
+<class 'vsg.token.full_type_declaration.type_keyword'>
+<class 'vsg.token.identifier.identifier'>
+<class 'vsg.token.full_type_declaration.is_keyword'>
+<class 'vsg.token.enumeration_type_definition.open_parenthesis'>
+<class 'vsg.token.enumeration_type_definition.enumeration_literal'>
+<class 'vsg.token.enumeration_type_definition.comma'>
+<class 'vsg.token.enumeration_type_definition.enumeration_literal'>
+<class 'vsg.token.enumeration_type_definition.close_parenthesis'>
+<class 'vsg.token.full_type_declaration.semicolon'>
+--------------------------------------------------------------------------------
+7 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+8 | None |   type Test is ('0', '1', L, H);
+<class 'vsg.token.full_type_declaration.type_keyword'>
+<class 'vsg.token.identifier.identifier'>
+<class 'vsg.token.full_type_declaration.is_keyword'>
+<class 'vsg.token.enumeration_type_definition.open_parenthesis'>
+<class 'vsg.token.enumeration_type_definition.enumeration_literal'>
+<class 'vsg.token.enumeration_type_definition.comma'>
+<class 'vsg.token.enumeration_type_definition.enumeration_literal'>
+<class 'vsg.token.enumeration_type_definition.comma'>
+<class 'vsg.token.enumeration_type_definition.enumeration_literal'>
+<class 'vsg.token.enumeration_type_definition.comma'>
+<class 'vsg.token.enumeration_type_definition.enumeration_literal'>
+<class 'vsg.token.enumeration_type_definition.close_parenthesis'>
+<class 'vsg.token.full_type_declaration.semicolon'>
+--------------------------------------------------------------------------------
+9 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+10 | None |   type FSM_States is (Init, Read, Decode, Execute, Write);
+<class 'vsg.token.full_type_declaration.type_keyword'>
+<class 'vsg.token.identifier.identifier'>
+<class 'vsg.token.full_type_declaration.is_keyword'>
+<class 'vsg.token.enumeration_type_definition.open_parenthesis'>
+<class 'vsg.token.enumeration_type_definition.enumeration_literal'>
+<class 'vsg.token.enumeration_type_definition.comma'>
+<class 'vsg.token.enumeration_type_definition.enumeration_literal'>
+<class 'vsg.token.enumeration_type_definition.comma'>
+<class 'vsg.token.enumeration_type_definition.enumeration_literal'>
+<class 'vsg.token.enumeration_type_definition.comma'>
+<class 'vsg.token.enumeration_type_definition.enumeration_literal'>
+<class 'vsg.token.enumeration_type_definition.comma'>
+<class 'vsg.token.enumeration_type_definition.enumeration_literal'>
+<class 'vsg.token.enumeration_type_definition.close_parenthesis'>
+<class 'vsg.token.full_type_declaration.semicolon'>
+--------------------------------------------------------------------------------
+11 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+12 | None | begin
+<class 'vsg.token.architecture_body.begin_keyword'>
+--------------------------------------------------------------------------------
+13 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+14 | None | end architecture RTL;
+<class 'vsg.token.architecture_body.end_keyword'>
+<class 'vsg.token.architecture_body.end_architecture_keyword'>
+<class 'vsg.token.architecture_body.architecture_simple_name'>
+<class 'vsg.token.architecture_body.semicolon'>

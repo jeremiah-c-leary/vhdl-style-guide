@@ -1,13 +1,10 @@
 
 from vsg import parser
 
-###############################################################################
-# Entity objects
-###############################################################################
 
 class open_parenthesis(parser.open_parenthesis):
 
-    def __init__(self):
+    def __init__(self, sString='('):
         parser.open_parenthesis.__init__(self)
 
 
@@ -19,12 +16,12 @@ class enumeration_literal(parser.item):
 
 class comma(parser.comma):
 
-    def __init__(self):
+    def __init__(self, sString=','):
         parser.comma.__init__(self)
 
 
 class close_parenthesis(parser.close_parenthesis):
 
-    def __init__(self):
+    def __init__(self, sString=')'):
         parser.close_parenthesis.__init__(self)
 
