@@ -51,5 +51,4 @@ def detect(iCurrent, lObjects):
     if iReturn != iCurrent:
         return iReturn
 
-
     return iCurrent

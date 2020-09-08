@@ -12,13 +12,14 @@ def detect(iCurrent, lObjects):
       | configuration configuration_name
     '''
     iToken = iCurrent
-
     utils.find_next_token(iToken, lObjects)
     if utils.object_value_is(lObjects, iToken, 'component'):
         return True
     if utils.object_value_is(lObjects, iToken, 'entity'):
         return True
     if utils.object_value_is(lObjects, iToken, 'configuration'):
+        return True
+    if utils.find_in_next_n_tokens(';', 2, iToken, lObjects):
         return True
     # Check if this is a signal assignment
     if utils.find_in_range('<=', iToken, ';', lObjects):

@@ -28,7 +28,7 @@ def detect(iCurrent, lObjects):
 
 
 
-def tokenize(iCurrent, lObjects):
+def classify(iCurrent, lObjects):
     '''
     assertion ::=
         assert condition

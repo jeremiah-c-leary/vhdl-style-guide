@@ -15,69 +15,39 @@ end [ architecture ] [ *architecture*_simple_name ] ;
 '''
 
 
-def detect(iCurrent, lObjects):
-    if utils.object_value_is(lObjects, iCurrent, 'architecture'):
-        return classify(iCurrent, lObjects)
-    return iCurrent
-
-
-def classify(iCurrent, lObjects):
-
-    classify_opening_declaration(iCurrent, lObjects)
-
-    iToken = iCurrent
-
-    iLast = 0           
-    while iLast != iToken:
-        iToken = utils.find_next_token(iToken, lObjects)
-        iLast = iToken
-        if utils.classify_token('begin', token.begin_keyword, iToken, lObjects):
-            iToken += 1
-        else:
-            iToken = architecture_declarative_part.detect(iToken, lObjects)
-        
-    iLast = 0           
-    while iLast != iToken:
-        iLast = iToken
-        iToken = utils.find_next_token(iToken, lObjects)
-        if not utils.object_value_is(lObjects, iToken, 'end'):
-            iToken = architecture_statement_part.detect(iToken, lObjects)
-
-    classify_closing_declaration(iToken, lObjects)
-
+def detect(iToken, lObjects):
+    if utils.object_value_is(lObjects, iToken, 'architecture'):
+        return classify(iToken, lObjects)
     return iToken
 
 
-def classify_opening_declaration(iToken, lObjects):
-    bIdentifierFound = False
+def classify(iToken, lObjects):
 
-    iStart, iEnd = utils.get_range(lObjects, iToken, 'is')
-    for iToken in range(iStart, iEnd + 1):
-        if not utils.is_item(lObjects, iToken):
-            continue
-        if utils.classify_token('architecture', token.architecture_keyword, iToken, lObjects):
-            continue
-        if utils.classify_token('of', token.of_keyword, iToken, lObjects):
-            continue
-        if utils.classify_token('is', token.is_keyword, iToken, lObjects):
-            continue
-        if not bIdentifierFound:
-           utils.assign_token(lObjects, iToken, token.identifier)
-           bIdentifierFound = True
-           continue
-        if bIdentifierFound:
-           utils.assign_token(lObjects, iToken, token.entity_name)
+    iCurrent = classify_opening_declaration(iToken, lObjects)
+
+    iCurrent = utils.detect_subelement_until('begin', architecture_declarative_part, iCurrent, lObjects)
+
+    iCurrent = utils.assign_next_token_required('begin', token.begin_keyword, iCurrent, lObjects)
+
+    iCurrent = utils.detect_subelement_until('end', architecture_statement_part, iCurrent, lObjects)
+
+    iCurrent = classify_closing_declaration(iToken, lObjects)
+
+    return iCurrent
+
+
+def classify_opening_declaration(iToken, lObjects):
+    iCurrent = utils.assign_next_token_required('architecture', token.architecture_keyword, iToken, lObjects)
+    iCurrent = utils.assign_next_token(token.identifier, iCurrent, lObjects)
+    iCurrent = utils.assign_next_token_required('of', token.of_keyword, iCurrent, lObjects)
+    iCurrent = utils.assign_next_token(token.entity_name, iCurrent, lObjects)
+    iCurrent = utils.assign_next_token_required('is', token.is_keyword, iCurrent, lObjects)
+    return iCurrent
 
 
 def classify_closing_declaration(iToken, lObjects):
-    iStart, iEnd = utils.get_range(lObjects, iToken, ';')
-    for iToken in range(iStart, iEnd + 1):
-        if not utils.is_item(lObjects, iToken):
-            continue
-        if utils.classify_token('architecture', token.end_architecture_keyword, iToken, lObjects):
-            continue
-        if utils.classify_token('end', token.end_keyword, iToken, lObjects):
-            continue
-        if utils.classify_token(';', token.semicolon, iToken, lObjects):
-            continue
-        utils.assign_token(lObjects, iToken, token.architecture_simple_name)
+    iCurrent = utils.assign_next_token_required('end', token.end_keyword, iToken, lObjects)
+    iCurrent = utils.assign_next_token_if('architecture', token.end_architecture_keyword, iCurrent, lObjects)
+    iCurrent = utils.assign_next_token_if_not(';', token.architecture_simple_name, iCurrent, lObjects)
+    iCurrent = utils.assign_next_token_required(';', token.semicolon, iCurrent, lObjects)
+    return iCurrent

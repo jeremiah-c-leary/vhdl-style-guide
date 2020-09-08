@@ -5,9 +5,9 @@ from vsg.vhdlFile.classify_new import actual_parameter_part
 
 from vsg.vhdlFile import utils
 
-lExpections = ['<=', 'end', 'map', 'component', 'entity', 'configuration', 'type', 'access', 'array', 'subtype']
+lExceptions = ['<=', 'end', 'map', 'component', 'entity', 'configuration']
 
-def detect(iCurrent, lObjects):
+def detect(iToken, lObjects):
     '''
     Calling functions:
 
@@ -24,13 +24,13 @@ def detect(iCurrent, lObjects):
 
     Differentiating a procedure call from anything else is essentially the absence of keywords.
     '''
-    iToken = iCurrent
+    iCurrent = iToken
 
-    while lObjects[iToken].get_value() != ';':
-        if utils.is_item(lObjects, iToken):
-            if lObjects[iToken].get_value() in lExpections:
+    while lObjects[iCurrent].get_value() != ';':
+        if utils.is_item(lObjects, iCurrent):
+            if lObjects[iCurrent].get_value() in lExceptions:
                 return False
-        iToken += 1
+        iCurrent += 1
     else:
         return True
 

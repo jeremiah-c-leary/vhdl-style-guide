@@ -28,6 +28,12 @@ class todo(item):
 ###############################################################################
 
 
+class question_mark(item):
+
+    def __init__(self):
+        item.__init__(self, '?')
+
+
 class undefined_range(item):
 
     def __init__(self):

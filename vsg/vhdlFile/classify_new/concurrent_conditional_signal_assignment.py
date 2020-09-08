@@ -36,6 +36,8 @@ def detect(iCurrent, lObjects):
             else:
                 if utils.object_value_is(lObjects, iToken, 'when'):
                     return False
+                if utils.object_value_is(lObjects, iToken, 'with'):
+                    return False
     
             if utils.object_value_is(lObjects, iToken, '<=') and not bAssignmentFound:
                 bAssignmentFound = True
@@ -44,32 +46,15 @@ def detect(iCurrent, lObjects):
         return False
 
 
-def classify(iObject, lObjects):
+def classify(iToken, lObjects):
     '''
     concurrent_conditional_signal_assignment ::=
         target <= [ guarded ] [ delay_mechanism ] conditional_waveforms ;
     '''
-    iStart, iCurrent, iEnd = utils.get_bounds(lObjects, iObject, ';')
-
-    # Classify target and assignment operator
-    for iToken, oObject in enumerate(lObjects[iStart:iEnd], start=iStart):
-        if type(oObject) == parser.item:
-            if oObject.get_value() == '<=':
-                utils.assign_token(lObjects, iToken, token.assignment)
-                break
-            else:
-                utils.assign_token(lObjects, iToken, token.target)
-
-    # Classify guarded keyword
-    while type(lObjects[iToken]) != parser.item:
-        iToken += 1
-    else:
-        if lObjects[iToken].get_value().lower() == 'guarded':
-            lObjects[iToken] = token.guarded_keyword(lObjects[iToken].get_value())
-            iToken += 1
-
-    iToken = delay_mechanism.detect(iToken, iEnd, lObjects)
-    conditional_waveforms.tokenize(iToken, iEnd, lObjects)
-
-    lObjects[iEnd] = token.semicolon()
-    return iEnd
+    iCurrent = utils.assign_tokens_until('<=', token.target, iToken, lObjects)
+    iCurrent = utils.assign_next_token_required('<=', token.assignment, iCurrent, lObjects)
+    iCurrent = utils.assign_next_token_if('guarded', token.guarded_keyword, iCurrent, lObjects)
+    iCurrent = delay_mechanism.detect(iCurrent, lObjects)
+    iCurrent = conditional_waveforms.classify(iCurrent, lObjects)
+    iCurrent = utils.assign_next_token_required(';', token.semicolon, iCurrent, lObjects)
+    return iCurrent

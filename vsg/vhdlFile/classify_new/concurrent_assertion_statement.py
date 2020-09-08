@@ -10,24 +10,29 @@ from vsg.vhdlFile import utils
 '''
     concurrent_assertion_statement ::=
         [ label : ] [ postponed ] assertion ;
+
+    assertion ::=
+        assert condition
+            [ report expression ]
+            [ severity expression ]
+
 '''
 
 
-def detect(iCurrent, lObjects):
+def detect(iToken, lObjects):
     '''
     concurrent_assertion_statement ::=
         [ label : ] [ postponed ] assertion ;
     '''
+    if utils.find_in_next_n_tokens('assert', 4, iToken, lObjects):
+        return classify(iToken, lObjects)
+    return iToken
 
-    if assertion.detect(iCurrent, lObjects):
-        return classify(iCurrent, lObjects)
-    return iCurrent
 
-
-def classify(iCurrent, lObjects):
-    iReturn = iCurrent
+def classify(iToken, lObjects):
+    iReturn = iToken
     iReturn = utils.tokenize_label(iReturn, lObjects, token.label_name, token.label_colon)
-    iReturn = utils.tokenize_postponed(iReturn, lObjects, token.postponed_keyword)
-    iReturn = assertion.tokenize(iReturn, lObjects)
-    iReturn = utils.tokenize_semicolon(iReturn, lObjects, token.semicolon)
+    iReturn = utils.assign_next_token_if('postponed', token.postponed_keyword, iReturn, lObjects)
+    iReturn = assertion.classify(iReturn, lObjects)
+    iReturn = utils.assign_next_token_required(';', token.semicolon, iReturn, lObjects)
     return iReturn

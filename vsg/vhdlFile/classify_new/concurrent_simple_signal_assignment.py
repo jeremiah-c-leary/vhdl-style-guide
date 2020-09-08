@@ -3,8 +3,9 @@ from vsg import parser
 
 from vsg.token import concurrent_simple_signal_assignment as token
 
-from vsg.vhdlFile.classify_new import delay_mechanism
 from vsg.vhdlFile import utils
+
+from vsg.vhdlFile.classify_new import delay_mechanism
 
 
 def detect(iCurrent, lObjects):
@@ -32,36 +33,15 @@ def detect(iCurrent, lObjects):
         return False
 
 
-def classify(iCurrent, lObjects):
+def classify(iToken, lObjects):
     '''
     concurrent_simple_signal_assignment ::=
         target <= [ guarded ] [ delay_mechanism ] waveform ;
     '''
-    iStart, iEnd = utils.get_range(lObjects, iCurrent, ';')
-
-    # Classify target and assignment operator
-    for iToken, oObject in enumerate(lObjects[iStart:iEnd], start=iStart):
-        if type(oObject) == parser.item:
-            if oObject.get_value() == '<=':
-                utils.assign_token(lObjects, iToken, token.assignment)
-                break
-            else:
-                utils.assign_token(lObjects, iToken, token.target)
-
-    # Classify guarded keyword
-    while type(lObjects[iToken]) != parser.item:
-        iToken += 1
-    else:
-        if lObjects[iToken].get_value().lower() == 'guarded':
-            lObjects[iToken] = token.guarded_keyword(lObjects[iToken].get_value())
-            iToken += 1
-
-    iToken = delay_mechanism.detect(iToken, iEnd, lObjects)
-    
-    for iIndex in range(iToken, iEnd):
-        if utils.is_item(lObjects, iIndex,):
-            utils.assign_token(lObjects, iIndex, parser.todo)
-
-    lObjects[iEnd] = token.semicolon()
-    return iEnd
-
+    iCurrent = utils.assign_tokens_until('<=', token.target, iToken, lObjects)
+    iCurrent = utils.assign_next_token_required('<=', token.assignment, iCurrent, lObjects)
+    iCurrent = utils.assign_next_token_if('guarded', token.guarded_keyword, iCurrent, lObjects)
+    iCurrent = delay_mechanism.detect(iCurrent, lObjects)
+    iCurrent = utils.assign_tokens_until(';', parser.todo, iCurrent, lObjects)
+    iCurrent = utils.assign_next_token_required(';', token.semicolon, iCurrent, lObjects)
+    return iCurrent

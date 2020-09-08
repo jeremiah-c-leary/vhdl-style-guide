@@ -33,5 +33,11 @@ class guarded_keyword(parser.keyword):
 
 class semicolon(parser.semicolon):
 
-    def __init__(self):
+    def __init__(self, sString=';'):
         parser.semicolon.__init__(self)
+
+
+class question_mark(parser.question_mark):
+
+    def __init__(self, sString='?'):
+        parser.question_mark.__init__(self)

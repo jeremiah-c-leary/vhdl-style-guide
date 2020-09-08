@@ -70,6 +70,14 @@ def have_is_keyword(iObject, lAllObjects):
         iIndex += 1
     return False
 
+
+def assign_tokens_until(sToken, token, iToken, lObjects):
+    iCurrent = iToken
+    while not is_next_token(sToken, iCurrent, lObjects):
+        iCurrent = assign_next_token(token, iCurrent, lObjects)
+    return iCurrent
+
+
 def assign_next_token(token, iToken, lObjects):
     iCurrent = find_next_token(iToken, lObjects)
     try:
@@ -320,6 +328,10 @@ def print_debug(sTitle, iStart, iEnd, lObjects):
         sOutput += (lObjects[iIndex].get_value())
     print(sOutput)
 
+def print_next_token(iObject, lObjects):
+    iCurrent = find_next_token(iObject, lObjects)
+    print(f'{iCurrent} | {lObjects[iCurrent].get_value()}')
+
 def print_token(iObject, lObjects):
     print(f'{iObject} | {lObjects[iObject].get_value()}')
 
@@ -360,6 +372,16 @@ def is_next_token(sToken, iToken, lObjects):
     if object_value_is(lObjects, iCurrent, sToken):
         return True
     return False
+
+
+def detect_subelement_until(sToken, element, iToken, lObjects):
+    iCurrent = iToken
+    while not is_next_token(sToken, iCurrent, lObjects):
+        iLast = iCurrent
+        iCurrent = element.detect(iCurrent, lObjects)
+        if iLast == iCurrent:
+            iCurrent += 1
+    return iCurrent
 
 
 def classify_subelement_until(sToken, element, iToken, lObjects):

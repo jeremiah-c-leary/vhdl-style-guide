@@ -18,6 +18,6 @@ def detect(iCurrent, lObjects):
         iReturn = utils.tokenize_label(iReturn, lObjects, token.label_name, token.label_colon)
         iReturn = utils.tokenize_postponed(iReturn, lObjects, token.postponed_keyword)
         iReturn = procedure_call.classify(iReturn, lObjects)
-        iReturn = utils.tokenize_semicolon(iReturn, lObjects, token.semicolon)
+        iReturn = utils.assign_next_token_required(';', token.semicolon, iReturn, lObjects)
 
     return iReturn

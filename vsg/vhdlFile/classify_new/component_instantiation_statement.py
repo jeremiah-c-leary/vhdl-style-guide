@@ -36,6 +36,6 @@ def classify(iToken, lObjects):
 
     iCurrent = port_map_aspect.detect(iCurrent, lObjects)
 
-    iCurrent = utils.assign_next_token_if(';', token.semicolon, iCurrent, lObjects)
-
+    iCurrent = utils.assign_next_token_required(';', token.semicolon, iCurrent, lObjects)
+        
     return iCurrent

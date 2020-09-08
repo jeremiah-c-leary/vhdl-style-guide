@@ -10,27 +10,27 @@ from vsg.vhdlFile.classify_new import concurrent_selected_signal_assignment
 from vsg.vhdlFile import utils
 
 
-def detect(iCurrent, lObjects):
+def detect(iToken, lObjects):
     '''
     concurrent_signal_assignment_statement ::=
         [ label : ] [ postponed ] concurrent_simple_signal_assignment
       | [ label : ] [ postponed ] concurrent_conditional_signal_assignment
       | [ label : ] [ postponed ] concurrent_selected_signal_assignment
     '''
-    iReturn = iCurrent
-    if concurrent_selected_signal_assignment.detect(iCurrent, lObjects):
-        iReturn = utils.tokenize_label(iReturn, lObjects, token.label_name, token.label_colon)
-        iReturn = utils.tokenize_postponed(iReturn, lObjects, token.postponed_keyword)
-        iReturn = concurrent_selected_signal_assignment.classify(iReturn, lObjects)
+    iCurrent = iToken
+    if concurrent_selected_signal_assignment.detect(iToken, lObjects):
+        iCurrent = utils.tokenize_label(iCurrent, lObjects, token.label_name, token.label_colon)
+        iCurrent = utils.tokenize_postponed(iCurrent, lObjects, token.postponed_keyword)
+        iCurrent = concurrent_selected_signal_assignment.classify(iCurrent, lObjects)
 
-    elif concurrent_conditional_signal_assignment.detect(iCurrent, lObjects):
-        iReturn = utils.tokenize_label(iReturn, lObjects, token.label_name, token.label_colon)
-        iReturn = utils.tokenize_postponed(iReturn, lObjects, token.postponed_keyword)
-        iReturn = concurrent_conditional_signal_assignment.classify(iReturn, lObjects)
+    elif concurrent_conditional_signal_assignment.detect(iToken, lObjects):
+        iCurrent = utils.tokenize_label(iCurrent, lObjects, token.label_name, token.label_colon)
+        iCurrent = utils.tokenize_postponed(iCurrent, lObjects, token.postponed_keyword)
+        iCurrent = concurrent_conditional_signal_assignment.classify(iCurrent, lObjects)
 
-    elif concurrent_simple_signal_assignment.detect(iCurrent, lObjects):
-        iReturn = utils.tokenize_label(iReturn, lObjects, token.label_name, token.label_colon)
-        iReturn = utils.tokenize_postponed(iReturn, lObjects, token.postponed_keyword)
-        iReturn = concurrent_simple_signal_assignment.classify(iReturn, lObjects)
+    elif concurrent_simple_signal_assignment.detect(iToken, lObjects):
+        iCurrent = utils.tokenize_label(iCurrent, lObjects, token.label_name, token.label_colon)
+        iCurrent = utils.tokenize_postponed(iCurrent, lObjects, token.postponed_keyword)
+        iCurrent = concurrent_simple_signal_assignment.classify(iCurrent, lObjects)
 
-    return iReturn
+    return iCurrent
