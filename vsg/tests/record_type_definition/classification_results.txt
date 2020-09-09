@@ -21,7 +21,7 @@
 <class 'vsg.token.record_type_definition.record_keyword'>
 --------------------------------------------------------------------------------
 5 | None |       Mnemonic : String (1 to 10);
-<class 'vsg.parser.todo'>
+<class 'vsg.token.identifier_list.identifier'>
 <class 'vsg.token.element_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.todo'>
@@ -32,7 +32,7 @@
 <class 'vsg.token.element_declaration.semicolon'>
 --------------------------------------------------------------------------------
 6 | None |       OpCode : Bit_Vector(3 downto 0);
-<class 'vsg.parser.todo'>
+<class 'vsg.token.identifier_list.identifier'>
 <class 'vsg.token.element_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.todo'>
@@ -43,11 +43,11 @@
 <class 'vsg.token.element_declaration.semicolon'>
 --------------------------------------------------------------------------------
 7 | None |       Op1, Op2, Res : RegName;
-<class 'vsg.parser.todo'>
+<class 'vsg.token.identifier_list.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.identifier_list.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.identifier_list.identifier'>
 <class 'vsg.token.element_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.element_declaration.semicolon'>
@@ -67,7 +67,7 @@
 <class 'vsg.token.record_type_definition.record_keyword'>
 --------------------------------------------------------------------------------
 11 | None |       Mnemonic : String (1 to 10);
-<class 'vsg.parser.todo'>
+<class 'vsg.token.identifier_list.identifier'>
 <class 'vsg.token.element_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.todo'>
@@ -78,7 +78,7 @@
 <class 'vsg.token.element_declaration.semicolon'>
 --------------------------------------------------------------------------------
 12 | None |       OpCode : Bit_Vector(3 downto 0);
-<class 'vsg.parser.todo'>
+<class 'vsg.token.identifier_list.identifier'>
 <class 'vsg.token.element_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.todo'>
@@ -89,11 +89,11 @@
 <class 'vsg.token.element_declaration.semicolon'>
 --------------------------------------------------------------------------------
 13 | None |       Op1, Op2, Res : RegName;
-<class 'vsg.parser.todo'>
+<class 'vsg.token.identifier_list.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.identifier_list.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.identifier_list.identifier'>
 <class 'vsg.token.element_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.element_declaration.semicolon'>

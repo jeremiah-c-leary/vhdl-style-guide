@@ -1,6 +1,4 @@
 
-from vsg import parser
-
 from vsg.token import identifier_list as token
 
 from vsg.vhdlFile import utils
@@ -23,6 +21,6 @@ def classify(iToken, lObjects):
         elif utils.is_next_token(',', iCurrent, lObjects):
             utils.classify_next_token(token.comma, iCurrent, lObjects)
         else:
-            utils.classify_next_token(parser.todo, iCurrent, lObjects)
+            utils.classify_next_token(token.identifier, iCurrent, lObjects)
         iCurrent += 1
     return iCurrent
