@@ -792,8 +792,9 @@
 99 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-100 | None |     )
+100 | None |     );
 <class 'vsg.token.generic_clause.close_parenthesis'>
+<class 'vsg.token.generic_clause.semicolon'>
 --------------------------------------------------------------------------------
 101 | None | 
 <class 'vsg.parser.blank_line'>

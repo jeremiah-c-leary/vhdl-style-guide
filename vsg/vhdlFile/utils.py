@@ -88,6 +88,7 @@ def assign_next_token(token, iToken, lObjects):
         lObjects[iToken] = token()
     return iToken
 
+
 def assign_token(lObjects, iToken, token):
     iCurrent = find_next_token(iToken, lObjects)
     try:
@@ -97,6 +98,7 @@ def assign_token(lObjects, iToken, token):
     except TypeError:
         lObjects[iToken] = token()
     return iToken
+
 
 def assign_next_token_if(sToken, token, iToken, lObjects):
     iCurrent = find_next_token(iToken, lObjects)
@@ -121,6 +123,8 @@ def assign_next_token_required(sToken, token, iToken, lObjects):
     if object_value_is(lObjects, iCurrent, sToken):
         lObjects[iCurrent] = token(lObjects[iCurrent].get_value())
         return iCurrent + 1
+    else:
+        print_error_message(sToken, token, iCurrent, lObjects)
     return iToken
 
 
@@ -380,7 +384,8 @@ def detect_subelement_until(sToken, element, iToken, lObjects):
         iLast = iCurrent
         iCurrent = element.detect(iCurrent, lObjects)
         if iLast == iCurrent:
-            iCurrent += 1
+            return iCurrent
+#            iCurrent += 1
     return iCurrent
 
 
@@ -390,11 +395,33 @@ def classify_subelement_until(sToken, element, iToken, lObjects):
         iCurrent = element.classify(iCurrent, lObjects)
     return iCurrent
 
-#def index_of_token(iObject, lObjects, sToken):
-#    iReturn = iObject
-#    while not utils.object_value_is(lObjects, iReturn, sToken):
-#        iReturn += 1
-#    else:
-#        return iReturn
-#    return -1
 
+def calculate_line_number(iToken, lObjects):
+    iReturn = 1
+    for iIndex in range(0, iToken):
+        if type(lObjects[iIndex]) == parser.carriage_return:
+            iReturn += 1
+    return iReturn
+
+def calculate_column(iToken, lObjects):
+    iColumn = 0
+    for iCarriageReturn in range(iToken, 0, -1):
+        if type(lObjects[iCarriageReturn]) == parser.carriage_return:
+            break;
+    for iIndex in range(iCarriageReturn + 1, iToken):
+        iColumn += len(lObjects[iIndex].get_value())
+    return iColumn
+
+def print_error_message(sToken, token, iToken, lObjects):
+    sFoundToken = lObjects[iToken].get_value()
+    iLine = calculate_line_number(iToken, lObjects)
+    iColumn = calculate_column(iToken, lObjects)
+    sModuleName = extract_module_name(token)
+    print(f'Error: Unknown token in {sModuleName}({iLine}:{iColumn})')
+#    print(f'       Line number {iLine} Column {iColumn}')
+    print(f'       Expecting {sToken}, found {sFoundToken}')
+    exit()
+
+
+def extract_module_name(token):
+    return token.__module__.split('.')[-1]

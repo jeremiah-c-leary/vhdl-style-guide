@@ -97,7 +97,7 @@ package PACK1 is
 
     function funct1 return boolean
 
-    )
+    );
 
     
 end package PACK1;

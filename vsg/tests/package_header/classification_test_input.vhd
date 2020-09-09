@@ -227,7 +227,7 @@ package PACK1 is
 
     impure function funct1 return boolean
 
-    )
+    );
 
     generic map (
        A => B,

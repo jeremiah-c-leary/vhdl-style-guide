@@ -1958,8 +1958,9 @@
 229 | None | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-230 | None |     )
+230 | None |     );
 <class 'vsg.token.generic_clause.close_parenthesis'>
+<class 'vsg.token.generic_clause.semicolon'>
 --------------------------------------------------------------------------------
 231 | None | 
 <class 'vsg.parser.blank_line'>
