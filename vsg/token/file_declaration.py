@@ -1,9 +1,24 @@
 
 from vsg import parser
 
-###############################################################################
-# File objects
-###############################################################################
+
+class file_keyword(parser.keyword):
+
+    def __init__(self, sString):
+        parser.keyword.__init__(self, sString)
+
+
+class colon(parser.colon):
+
+    def __init__(self, sString=':'):
+        parser.colon.__init__(self)
+
+
+class semicolon(parser.semicolon):
+
+    def __init__(self, sString=';'):
+        parser.semicolon.__init__(self)
+
 
 class keyword(parser.keyword):
 
@@ -19,11 +34,6 @@ class comma(parser.comma):
 
     def __init__(self):
         parser.comma.__init__(self)
-
-class colon(parser.colon):
-
-    def __init__(self):
-        parser.colon.__init__(self)
 
 class subtype_indication(parser.subtype_indication):
 
@@ -52,5 +62,5 @@ class logical_name(parser.logical_name):
 
 class semicolon(parser.semicolon):
 
-    def __init__(self):
+    def __init__(self, sString=';'):
         parser.semicolon.__init__(self)

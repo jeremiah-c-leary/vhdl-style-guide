@@ -9,6 +9,7 @@ from vsg.vhdlFile.classify_new import subtype_declaration
 from vsg.vhdlFile.classify_new import constant_declaration
 from vsg.vhdlFile.classify_new import signal_declaration
 from vsg.vhdlFile.classify_new import variable_declaration
+from vsg.vhdlFile.classify_new import file_declaration
 
 from vsg.vhdlFile.classify_new import use_clause
 
@@ -24,7 +25,7 @@ from vsg.vhdlFile.classify_new import use_clause
       | subtype_declaration
       | constant_declaration
       | signal_declaration
-      | shared_variable_declaration
+      | *shared*_variable_declaration
       | file_declaration
       | alias_declaration
       | component_declaration
@@ -72,6 +73,10 @@ def detect(iToken, lObjects):
         return iReturn
 
     iReturn = variable_declaration.detect(iToken, lObjects)
+    if iReturn != iToken:
+        return iReturn
+
+    iReturn = file_declaration.detect(iToken, lObjects)
     if iReturn != iToken:
         return iReturn
 
