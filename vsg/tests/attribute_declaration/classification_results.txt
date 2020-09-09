@@ -1,0 +1,44 @@
+--------------------------------------------------------------------------------
+0 | None | 
+--------------------------------------------------------------------------------
+1 | None | architecture RTL of FIFO is
+<class 'vsg.token.architecture_body.architecture_keyword'>
+<class 'vsg.token.architecture_body.identifier'>
+<class 'vsg.token.architecture_body.of_keyword'>
+<class 'vsg.token.architecture_body.entity_name'>
+<class 'vsg.token.architecture_body.is_keyword'>
+--------------------------------------------------------------------------------
+2 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+3 | None |   attribute LOCATION: COORDINATE;
+<class 'vsg.token.attribute_declaration.attribute_keyword'>
+<class 'vsg.token.attribute_declaration.identifier'>
+<class 'vsg.token.attribute_declaration.colon'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.attribute_declaration.semicolon'>
+--------------------------------------------------------------------------------
+4 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+5 | None |   attribute PIN_NO: POSITIVE;
+<class 'vsg.token.attribute_declaration.attribute_keyword'>
+<class 'vsg.token.attribute_declaration.identifier'>
+<class 'vsg.token.attribute_declaration.colon'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.attribute_declaration.semicolon'>
+--------------------------------------------------------------------------------
+6 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+7 | None | begin
+<class 'vsg.token.architecture_body.begin_keyword'>
+--------------------------------------------------------------------------------
+8 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+9 | None | end architecture RTL;
+<class 'vsg.token.architecture_body.end_keyword'>
+<class 'vsg.token.architecture_body.end_architecture_keyword'>
+<class 'vsg.token.architecture_body.architecture_simple_name'>
+<class 'vsg.token.architecture_body.semicolon'>

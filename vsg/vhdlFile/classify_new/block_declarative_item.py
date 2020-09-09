@@ -12,6 +12,8 @@ from vsg.vhdlFile.classify_new import variable_declaration
 from vsg.vhdlFile.classify_new import file_declaration
 from vsg.vhdlFile.classify_new import alias_declaration
 
+from vsg.vhdlFile.classify_new import attribute_declaration
+
 from vsg.vhdlFile.classify_new import use_clause
 
 '''
@@ -82,6 +84,12 @@ def detect(iToken, lObjects):
         return iReturn
 
     iReturn = alias_declaration.detect(iToken, lObjects)
+    if iReturn != iToken:
+        return iReturn
+
+
+
+    iReturn = attribute_declaration.detect(iToken, lObjects)
     if iReturn != iToken:
         return iReturn
 

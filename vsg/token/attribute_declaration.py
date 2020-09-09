@@ -1,9 +1,25 @@
 
 from vsg import parser
 
-###############################################################################
-# Attribute objects
-###############################################################################
+
+class attribute_keyword(parser.keyword):
+
+    def __init__(self, sString):
+        parser.keyword.__init__(self, sString)
+
+
+class colon(parser.colon):
+
+    def __init__(self, sString=':'):
+        parser.colon.__init__(self)
+
+
+class semicolon(parser.semicolon):
+
+    def __init__(self, sString=';'):
+        parser.semicolon.__init__(self)
+
+# jcl - remove the following objects after the new parser is done
 
 class keyword(parser.keyword):
 
@@ -17,11 +33,6 @@ class identifier(parser.identifier):
         parser.identifier.__init__(self, sString)
 
 
-class colon(parser.colon):
-
-    def __init__(self):
-        parser.colon.__init__(self)
-
 
 class type_mark(parser.item):
 
@@ -29,7 +40,3 @@ class type_mark(parser.item):
         parser.item.__init__(self, sString)
 
 
-class semicolon(parser.semicolon):
-
-    def __init__(self):
-        parser.semicolon.__init__(self)
