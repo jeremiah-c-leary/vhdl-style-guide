@@ -8,6 +8,7 @@ from vsg.vhdlFile.classify_new import type_declaration
 from vsg.vhdlFile.classify_new import subtype_declaration
 from vsg.vhdlFile.classify_new import constant_declaration
 from vsg.vhdlFile.classify_new import signal_declaration
+from vsg.vhdlFile.classify_new import variable_declaration
 
 from vsg.vhdlFile.classify_new import use_clause
 
@@ -67,6 +68,10 @@ def detect(iToken, lObjects):
         return iReturn
 
     iReturn = signal_declaration.detect(iToken, lObjects)
+    if iReturn != iToken:
+        return iReturn
+
+    iReturn = variable_declaration.detect(iToken, lObjects)
     if iReturn != iToken:
         return iReturn
 
