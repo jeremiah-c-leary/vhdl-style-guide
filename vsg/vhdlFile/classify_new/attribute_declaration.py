@@ -14,7 +14,10 @@ from vsg.vhdlFile.classify_new import type_mark
 def detect(iToken, lObjects):
 
     if utils.is_next_token('attribute', iToken, lObjects):
-        return classify(iToken, lObjects)    
+        if utils.find_in_next_n_tokens(':', 3, iToken, lObjects):
+            return classify(iToken, lObjects)    
+        else:
+            return iToken
 
     return iToken
 
