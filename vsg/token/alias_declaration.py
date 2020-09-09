@@ -1,9 +1,38 @@
 
 from vsg import parser
 
-###############################################################################
-# Entity objects
-###############################################################################
+
+class alias_keyword(parser.keyword):
+
+    def __init__(self, sString):
+        parser.keyword.__init__(self, sString)
+
+
+class alias_designator(parser.designator):
+
+    def __init__(self, sString):
+        parser.keyword.__init__(self, sString)
+
+
+class colon(parser.colon):
+
+    def __init__(self, sString=':'):
+        parser.colon.__init__(self)
+
+
+class is_keyword(parser.keyword):
+
+    def __init__(self, sString):
+        parser.keyword.__init__(self, sString)
+
+
+class semicolon(parser.semicolon):
+
+    def __init__(self, sString=';'):
+        parser.semicolon.__init__(self)
+
+
+# jcl - remove the following objects when the new parser is completed
 
 class keyword(parser.keyword):
 
@@ -29,22 +58,10 @@ class operator_symbol(parser.operator_symbol):
         parser.character_literal.__init__(self, sString)
 
 
-class colon(parser.colon):
-
-    def __init__(self):
-        parser.colon.__init__(self)
-
-
 class subtype_indication(parser.subtype_indication):
 
     def __init__(self, sString):
         parser.subtype_indication.__init__(self, sString)
-
-
-class is_keyword(parser.keyword):
-
-    def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
 
 
 class name(parser.name):
@@ -59,7 +76,3 @@ class signature(parser.signature):
         parser.signature.__init__(self, sString)
 
 
-class semicolon(parser.semicolon):
-
-    def __init__(self):
-        parser.semicolon.__init__(self)

@@ -28,6 +28,18 @@ class todo(item):
 ###############################################################################
 
 
+class open_bracket(item):
+
+    def __init__(self, sString='['):
+        item.__init__(self, '[')
+
+
+class close_bracket(item):
+
+    def __init__(self, sString=']'):
+        item.__init__(self, ']')
+
+
 class question_mark(item):
 
     def __init__(self):
