@@ -199,6 +199,31 @@ def find_in_next_n_tokens(sValue, iMax, iToken, lObjects):
     else:
         return False
 
+def find_earliest_occurance_ignoring_matched_parenthesis(lEnd, iToken, lObjects):
+    print('--> find_earliest_occurance_ignoring_matched_parenthesis')
+    iEarliest = 9999999999999999999999999999
+    print(lEnd)
+    for sEnd in lEnd:
+        print(f'----> Searching for {sEnd}')
+        iOpenParenthesis = 0
+        iCloseParenthesis = 0
+        for iIndex in range(iToken, len(lObjects) - 1):
+            if token_is_open_parenthesis(iIndex, lObjects):
+                iOpenParenthesis +=1
+            print(f'{iIndex} | {lObjects[iIndex].get_value()} | {iOpenParenthesis} | {iCloseParenthesis}')
+            if lObjects[iIndex].get_value() == sEnd:
+                if iOpenParenthesis == iCloseParenthesis:
+                    if iIndex < iEarliest:
+                        sEarliest = lObjects[iIndex].get_value()
+                        iEarliest = iIndex
+                    break
+            if iIndex == iEarliest:
+                break
+            if token_is_close_parenthesis(iIndex, lObjects):
+                iCloseParenthesis += 1
+    print(f'<-- find_earliest_occurance_ignoring_matched_parenthesis :: {sEarliest}')
+    return sEarliest
+
 
 def find_earliest_occurance(lEnd, iToken, lObjects):
     iEarliest = 9999999999999999999999999999

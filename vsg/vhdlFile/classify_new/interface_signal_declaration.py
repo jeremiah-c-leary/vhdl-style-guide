@@ -24,19 +24,11 @@ def classify(iToken, lObjects):
     iCurrent = identifier_list.classify(iCurrent, lObjects)
     iCurrent = utils.assign_next_token_required(':', token.colon, iCurrent, lObjects)
     iCurrent = mode.classify(iCurrent, lObjects)
-    sEnd = utils.find_earliest_occurance([')', ';', 'bus'], iCurrent, lObjects)
-    if sEnd == 'bus':
-        iCurrent = utils.classify_subelement_until(sEnd, subtype_indication, iCurrent, lObjects)
-        iCurrent = utils.assign_next_token_required('bus', token.bus_keyword, iCurrent, lObjects)
-        if utils.is_next_token(':=', iCurrent, lObjects):
-            iCurrent = utils.assign_next_token_required(':=', token.assignment, iCurrent, lObjects)
-            sEnd = utils.find_earliest_occurance([')', ';'], iCurrent, lObjects)
-            iCurrent = utils.classify_subelement_until(sEnd, subtype_indication, iCurrent, lObjects)
-    elif utils.find_in_range(':=', iCurrent, sEnd, lObjects):
-        iCurrent = utils.classify_subelement_until(':=', subtype_indication, iCurrent, lObjects)
+    iCurrent = subtype_indication.classify_until([';', 'bus', ':='], iCurrent, lObjects)
+    iCurrent = utils.assign_next_token_if('bus', token.bus_keyword, iCurrent, lObjects)
+    if utils.is_next_token(':=', iCurrent, lObjects):
         iCurrent = utils.assign_next_token_required(':=', token.assignment, iCurrent, lObjects)
+        sEnd = utils.find_earliest_occurance([')', ';'], iCurrent, lObjects)
+        ### jcl - turn this into an expression.classify_until
         iCurrent = utils.classify_subelement_until(sEnd, expression, iCurrent, lObjects)
-    else:
-        iCurrent = utils.classify_subelement_until(sEnd, subtype_indication, iCurrent, lObjects)
-
     return iCurrent

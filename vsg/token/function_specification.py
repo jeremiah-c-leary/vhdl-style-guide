@@ -2,7 +2,7 @@
 from vsg import parser
 
 
-class keyword(parser.keyword):
+class function_keyword(parser.keyword):
 
     def __init__(self, sString):
         parser.keyword.__init__(self, sString)
@@ -29,15 +29,22 @@ class parameter_keyword(parser.keyword):
 
 class open_parenthesis(parser.open_parenthesis):
 
-    def __init__(self):
+    def __init__(self, sString='('):
         parser.open_parenthesis.__init__(self)
 
 class close_parenthesis(parser.close_parenthesis):
 
-    def __init__(self):
-        parser.open_parenthesis.__init__(self)
+    def __init__(self, sString=')'):
+        parser.close_parenthesis.__init__(self)
 
 class return_keyword(parser.keyword):
+
+    def __init__(self, sString):
+        parser.keyword.__init__(self, sString)
+
+# jcl - remove the following objects when the new parser is done
+
+class keyword(parser.keyword):
 
     def __init__(self, sString):
         parser.keyword.__init__(self, sString)

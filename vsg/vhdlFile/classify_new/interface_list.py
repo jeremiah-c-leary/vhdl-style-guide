@@ -11,14 +11,29 @@ def classify(iToken, lObjects):
     interface_list ::=
         interface_element { ; interface_element }
     '''
-    iLast = 0
     iCurrent = iToken
-    while iLast != iCurrent:
-        iLast = iCurrent
-        iCurrent = interface_element.classify(iCurrent, lObjects)
-        iCurrent = utils.classify_next_token_if(';', token.semicolon, iCurrent, lObjects)
-        # All interface lists end in a close paranthesis, so we can use it to break out of this while loop
+    iOpenParenthesis = 0
+    iCloseParenthesis = 0
+    # All interface lists end in a close paranthesis, so we can use it to break out of this while loop
+    #while not(iOpenParenthesis == iCloseParenthesis and utils.is_next_token(')', iCurrent,lObjects)):
+    while True:
+        if utils.is_next_token(';', iCurrent, lObjects):            
+            iCurrent = utils.assign_next_token_required(';', token.semicolon, iCurrent, lObjects)
+            iOpenparenthesis = 0
+            iCloseparenthesis = 0
+            continue
+        if iOpenParenthesis == iCloseParenthesis:
+            if utils.is_next_token(')', iCurrent, lObjects):
+                return iCurrent       
+        if utils.is_next_token('(', iCurrent, lObjects):
+            iOpenParenthesis += 1
         if utils.is_next_token(')', iCurrent, lObjects):
-            return iCurrent
+            iCloseParenthesis += 1
+        iCurrent = interface_element.classify(iCurrent, lObjects)
+
+   
+    #    if utils.is_next_token(')', iCurrent, lObjects):
+    #        if iOpenParenthesis == iCloseParenthesis:
+    #            return iCurrent
 
     return iCurrent

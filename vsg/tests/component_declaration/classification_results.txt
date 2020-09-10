@@ -1,0 +1,222 @@
+--------------------------------------------------------------------------------
+0 | None | 
+--------------------------------------------------------------------------------
+1 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+2 | None | architecture RTL of FIFO is
+<class 'vsg.token.architecture_body.architecture_keyword'>
+<class 'vsg.token.architecture_body.identifier'>
+<class 'vsg.token.architecture_body.of_keyword'>
+<class 'vsg.token.architecture_body.entity_name'>
+<class 'vsg.token.architecture_body.is_keyword'>
+--------------------------------------------------------------------------------
+3 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+4 | None |   component COMP is
+<class 'vsg.token.component_declaration.component_keyword'>
+<class 'vsg.token.component_declaration.identifier'>
+<class 'vsg.token.component_declaration.is_keyword'>
+--------------------------------------------------------------------------------
+5 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+6 | None |   end component COMP;
+<class 'vsg.token.component_declaration.end_keyword'>
+<class 'vsg.token.component_declaration.end_component_keyword'>
+<class 'vsg.token.component_declaration.component_simple_name'>
+<class 'vsg.token.component_declaration.semicolon'>
+--------------------------------------------------------------------------------
+7 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+8 | None |   component COMP
+<class 'vsg.token.component_declaration.component_keyword'>
+<class 'vsg.token.component_declaration.identifier'>
+--------------------------------------------------------------------------------
+9 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+10 | None |   end component COMP;
+<class 'vsg.token.component_declaration.end_keyword'>
+<class 'vsg.token.component_declaration.end_component_keyword'>
+<class 'vsg.token.component_declaration.component_simple_name'>
+<class 'vsg.token.component_declaration.semicolon'>
+--------------------------------------------------------------------------------
+11 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+12 | None |   component COMP
+<class 'vsg.token.component_declaration.component_keyword'>
+<class 'vsg.token.component_declaration.identifier'>
+--------------------------------------------------------------------------------
+13 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+14 | None |   end component;
+<class 'vsg.token.component_declaration.end_keyword'>
+<class 'vsg.token.component_declaration.end_component_keyword'>
+<class 'vsg.token.component_declaration.semicolon'>
+--------------------------------------------------------------------------------
+15 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+16 | None |   -- test with generics
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+17 | None |   component COMP is
+<class 'vsg.token.component_declaration.component_keyword'>
+<class 'vsg.token.component_declaration.identifier'>
+<class 'vsg.token.component_declaration.is_keyword'>
+--------------------------------------------------------------------------------
+18 | None |     generic (
+<class 'vsg.token.generic_clause.generic_keyword'>
+<class 'vsg.token.generic_clause.open_parenthesis'>
+--------------------------------------------------------------------------------
+19 | None |       G_GEN1 : integer := 1;
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.colon'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+20 | None |       G_GEN2 : integer := 0
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.colon'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.parser.todo'>
+--------------------------------------------------------------------------------
+21 | None |     );
+<class 'vsg.token.generic_clause.close_parenthesis'>
+<class 'vsg.token.generic_clause.semicolon'>
+--------------------------------------------------------------------------------
+22 | None |   end component COMP;
+<class 'vsg.token.component_declaration.end_keyword'>
+<class 'vsg.token.component_declaration.end_component_keyword'>
+<class 'vsg.token.component_declaration.component_simple_name'>
+<class 'vsg.token.component_declaration.semicolon'>
+--------------------------------------------------------------------------------
+23 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+24 | None |   -- test with ports
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+25 | None |   component COMP is
+<class 'vsg.token.component_declaration.component_keyword'>
+<class 'vsg.token.component_declaration.identifier'>
+<class 'vsg.token.component_declaration.is_keyword'>
+--------------------------------------------------------------------------------
+26 | None |     port (
+<class 'vsg.token.port_clause.port_keyword'>
+<class 'vsg.token.port_clause.open_parenthesis'>
+--------------------------------------------------------------------------------
+27 | None |       I_PORT : in integer := 1;
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+28 | None |       O_PORT : out integer := 0
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.colon'>
+<class 'vsg.token.mode.out_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.parser.todo'>
+--------------------------------------------------------------------------------
+29 | None |     );
+<class 'vsg.token.port_clause.close_parenthesis'>
+<class 'vsg.token.port_clause.semicolon'>
+--------------------------------------------------------------------------------
+30 | None |   end component COMP;
+<class 'vsg.token.component_declaration.end_keyword'>
+<class 'vsg.token.component_declaration.end_component_keyword'>
+<class 'vsg.token.component_declaration.component_simple_name'>
+<class 'vsg.token.component_declaration.semicolon'>
+--------------------------------------------------------------------------------
+31 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+32 | None |   -- test with both
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+33 | None |   component COMP is
+<class 'vsg.token.component_declaration.component_keyword'>
+<class 'vsg.token.component_declaration.identifier'>
+<class 'vsg.token.component_declaration.is_keyword'>
+--------------------------------------------------------------------------------
+34 | None |     generic (
+<class 'vsg.token.generic_clause.generic_keyword'>
+<class 'vsg.token.generic_clause.open_parenthesis'>
+--------------------------------------------------------------------------------
+35 | None |       G_GEN1 : integer := 1;
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.colon'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+36 | None |       G_GEN2 : integer := 0
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.colon'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.parser.todo'>
+--------------------------------------------------------------------------------
+37 | None |     );
+<class 'vsg.token.generic_clause.close_parenthesis'>
+<class 'vsg.token.generic_clause.semicolon'>
+--------------------------------------------------------------------------------
+38 | None |     port (
+<class 'vsg.token.port_clause.port_keyword'>
+<class 'vsg.token.port_clause.open_parenthesis'>
+--------------------------------------------------------------------------------
+39 | None |       I_PORT : in integer := 1;
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+40 | None |       O_PORT : out integer := 0
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.colon'>
+<class 'vsg.token.mode.out_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.parser.todo'>
+--------------------------------------------------------------------------------
+41 | None |     );
+<class 'vsg.token.port_clause.close_parenthesis'>
+<class 'vsg.token.port_clause.semicolon'>
+--------------------------------------------------------------------------------
+42 | None |   end component COMP;
+<class 'vsg.token.component_declaration.end_keyword'>
+<class 'vsg.token.component_declaration.end_component_keyword'>
+<class 'vsg.token.component_declaration.component_simple_name'>
+<class 'vsg.token.component_declaration.semicolon'>
+--------------------------------------------------------------------------------
+43 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+44 | None | begin
+<class 'vsg.token.architecture_body.begin_keyword'>
+--------------------------------------------------------------------------------
+45 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+46 | None | end architecture RTL;
+<class 'vsg.token.architecture_body.end_keyword'>
+<class 'vsg.token.architecture_body.end_architecture_keyword'>
+<class 'vsg.token.architecture_body.architecture_simple_name'>
+<class 'vsg.token.architecture_body.semicolon'>

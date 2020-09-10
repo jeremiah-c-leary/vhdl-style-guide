@@ -1,0 +1,272 @@
+--------------------------------------------------------------------------------
+0 | None | 
+--------------------------------------------------------------------------------
+1 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+2 | None | architecture RTL of FIFO is
+<class 'vsg.token.architecture_body.architecture_keyword'>
+<class 'vsg.token.architecture_body.identifier'>
+<class 'vsg.token.architecture_body.of_keyword'>
+<class 'vsg.token.architecture_body.entity_name'>
+<class 'vsg.token.architecture_body.is_keyword'>
+--------------------------------------------------------------------------------
+3 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+4 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+5 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+6 | None |   procedure PARITY
+<class 'vsg.token.procedure_specification.procedure_keyword'>
+<class 'vsg.token.procedure_specification.designator'>
+--------------------------------------------------------------------------------
+7 | None |    (signal X : in std_logic_vector;
+<class 'vsg.token.procedure_specification.open_parenthesis'>
+<class 'vsg.token.interface_signal_declaration.signal_keyword'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+8 | None |     signal Y : out std_logic);
+<class 'vsg.token.interface_signal_declaration.signal_keyword'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.colon'>
+<class 'vsg.token.mode.out_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.procedure_specification.close_parenthesis'>
+<class 'vsg.token.subprogram_declaration.semicolon'>
+--------------------------------------------------------------------------------
+9 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+10 | None |   procedure Proc_1 (constant In1: in Integer; variable O1: out Integer);
+<class 'vsg.token.procedure_specification.procedure_keyword'>
+<class 'vsg.token.procedure_specification.designator'>
+<class 'vsg.token.procedure_specification.open_parenthesis'>
+<class 'vsg.token.interface_constant_declaration.constant_keyword'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_constant_declaration.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+<class 'vsg.token.interface_variable_declaration.variable_keyword'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.colon'>
+<class 'vsg.token.mode.out_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.procedure_specification.close_parenthesis'>
+<class 'vsg.token.subprogram_declaration.semicolon'>
+--------------------------------------------------------------------------------
+11 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+12 | None |   procedure Proc_2 (signal Sig: inout Bit);
+<class 'vsg.token.procedure_specification.procedure_keyword'>
+<class 'vsg.token.procedure_specification.designator'>
+<class 'vsg.token.procedure_specification.open_parenthesis'>
+<class 'vsg.token.interface_signal_declaration.signal_keyword'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.colon'>
+<class 'vsg.token.mode.inout_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.procedure_specification.close_parenthesis'>
+<class 'vsg.token.subprogram_declaration.semicolon'>
+--------------------------------------------------------------------------------
+13 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+14 | None |   procedure sum2num(signal a: in signed(3 downto 0);
+<class 'vsg.token.procedure_specification.procedure_keyword'>
+<class 'vsg.token.procedure_specification.designator'>
+<class 'vsg.token.procedure_specification.open_parenthesis'>
+<class 'vsg.token.interface_signal_declaration.signal_keyword'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+15 | None |                     signal b: in signed(3 downto 0);
+<class 'vsg.token.interface_signal_declaration.signal_keyword'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+16 | None |                     signal sum : out signed (3 downto 0));
+<class 'vsg.token.interface_signal_declaration.signal_keyword'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.colon'>
+<class 'vsg.token.mode.out_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.procedure_specification.close_parenthesis'>
+<class 'vsg.token.subprogram_declaration.semicolon'>
+--------------------------------------------------------------------------------
+17 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+18 | None |   -- Test parameter keyword
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+19 | None |   procedure Proc_2 parameter (signal Sig: inout Bit);
+<class 'vsg.token.procedure_specification.procedure_keyword'>
+<class 'vsg.token.procedure_specification.designator'>
+<class 'vsg.token.procedure_specification.parameter_keyword'>
+<class 'vsg.token.procedure_specification.open_parenthesis'>
+<class 'vsg.token.interface_signal_declaration.signal_keyword'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.colon'>
+<class 'vsg.token.mode.inout_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.procedure_specification.close_parenthesis'>
+<class 'vsg.token.subprogram_declaration.semicolon'>
+--------------------------------------------------------------------------------
+20 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+21 | None |   -- Test subprogram header
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+22 | None |   procedure Proc_2
+<class 'vsg.token.procedure_specification.procedure_keyword'>
+<class 'vsg.token.procedure_specification.designator'>
+--------------------------------------------------------------------------------
+23 | None |     generic (G1: INTEGER; G2: INTEGER := G1; G3, G4, G5, G6: INTEGER)
+<class 'vsg.token.subprogram_header.generic_keyword'>
+<class 'vsg.token.subprogram_header.open_parenthesis'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.colon'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.colon'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.identifier_list.comma'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.identifier_list.comma'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.identifier_list.comma'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.colon'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.subprogram_header.close_parenthesis'>
+--------------------------------------------------------------------------------
+24 | None |     parameter (signal Sig: inout Bit);
+<class 'vsg.token.procedure_specification.parameter_keyword'>
+<class 'vsg.token.procedure_specification.open_parenthesis'>
+<class 'vsg.token.interface_signal_declaration.signal_keyword'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.colon'>
+<class 'vsg.token.mode.inout_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.procedure_specification.close_parenthesis'>
+<class 'vsg.token.subprogram_declaration.semicolon'>
+--------------------------------------------------------------------------------
+25 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+26 | None |   -- Test subprogram header with generic_map_aspect
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+27 | None |   procedure Proc_2
+<class 'vsg.token.procedure_specification.procedure_keyword'>
+<class 'vsg.token.procedure_specification.designator'>
+--------------------------------------------------------------------------------
+28 | None |     generic (G1: INTEGER; G2: INTEGER := G1; G3, G4, G5, G6: INTEGER)
+<class 'vsg.token.subprogram_header.generic_keyword'>
+<class 'vsg.token.subprogram_header.open_parenthesis'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.colon'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.colon'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.identifier_list.comma'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.identifier_list.comma'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.identifier_list.comma'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.colon'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.subprogram_header.close_parenthesis'>
+--------------------------------------------------------------------------------
+29 | None |     generic map (complex_fixed_left => 3, complex_fixed_right => -12,
+<class 'vsg.token.generic_map_aspect.generic_keyword'>
+<class 'vsg.token.generic_map_aspect.map_keyword'>
+<class 'vsg.token.generic_map_aspect.open_parenthesis'>
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+--------------------------------------------------------------------------------
+30 | None |                  complex_fixed_formal_pkg => fixed_dsp_pkg)
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.generic_map_aspect.close_parenthesis'>
+--------------------------------------------------------------------------------
+31 | None |     parameter (signal Sig: inout Bit);
+<class 'vsg.token.procedure_specification.parameter_keyword'>
+<class 'vsg.token.procedure_specification.open_parenthesis'>
+<class 'vsg.token.interface_signal_declaration.signal_keyword'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.colon'>
+<class 'vsg.token.mode.inout_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.procedure_specification.close_parenthesis'>
+<class 'vsg.token.subprogram_declaration.semicolon'>
+--------------------------------------------------------------------------------
+32 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+33 | None | begin
+<class 'vsg.token.architecture_body.begin_keyword'>
+--------------------------------------------------------------------------------
+34 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+35 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+36 | None | end architecture RTL;
+<class 'vsg.token.architecture_body.end_keyword'>
+<class 'vsg.token.architecture_body.end_architecture_keyword'>
+<class 'vsg.token.architecture_body.architecture_simple_name'>
+<class 'vsg.token.architecture_body.semicolon'>
