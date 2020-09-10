@@ -15,7 +15,8 @@ from vsg.vhdlFile.classify_new import subprogram_header
 
 def detect(iToken, lObjects):
     if utils.is_next_token('procedure', iToken, lObjects):
-        return classify(iToken, lObjects)
+        if not utils.find_in_next_n_tokens('is', 3, iToken, lObjects):
+            return classify(iToken, lObjects)
     return iToken
 
 

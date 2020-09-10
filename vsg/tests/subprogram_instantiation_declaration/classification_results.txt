@@ -1,0 +1,249 @@
+--------------------------------------------------------------------------------
+0 | None | 
+--------------------------------------------------------------------------------
+1 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+2 | None | architecture RTL of FIFO is
+<class 'vsg.token.architecture_body.architecture_keyword'>
+<class 'vsg.token.architecture_body.identifier'>
+<class 'vsg.token.architecture_body.of_keyword'>
+<class 'vsg.token.architecture_body.entity_name'>
+<class 'vsg.token.architecture_body.is_keyword'>
+--------------------------------------------------------------------------------
+3 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+4 | None |   function PARITY is new uninstantiated_subprogram_name [name1, name2 return integer]
+<class 'vsg.token.subprogram_kind.function_keyword'>
+<class 'vsg.token.subprogram_instantiation_declaration.identifier'>
+<class 'vsg.token.subprogram_instantiation_declaration.is_keyword'>
+<class 'vsg.token.subprogram_instantiation_declaration.new_keyword'>
+<class 'vsg.token.subprogram_instantiation_declaration.uninstantiated_subprogram_name'>
+<class 'vsg.token.signature.open_bracket'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.signature.comma'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.signature.return_keyword'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.signature.close_bracket'>
+--------------------------------------------------------------------------------
+5 | None |     generic map (
+<class 'vsg.token.generic_map_aspect.generic_keyword'>
+<class 'vsg.token.generic_map_aspect.map_keyword'>
+<class 'vsg.token.generic_map_aspect.open_parenthesis'>
+--------------------------------------------------------------------------------
+6 | None |       GEN1 => 3,
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+--------------------------------------------------------------------------------
+7 | None |       GEN2 => 4,
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+--------------------------------------------------------------------------------
+8 | None |       GEN5 => 6
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+--------------------------------------------------------------------------------
+9 | None |     );
+<class 'vsg.token.generic_map_aspect.close_parenthesis'>
+<class 'vsg.token.subprogram_instantiation_declaration.semicolon'>
+--------------------------------------------------------------------------------
+10 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+11 | None |   function PARITY is new uninstantiated_subprogram_name
+<class 'vsg.token.subprogram_kind.function_keyword'>
+<class 'vsg.token.subprogram_instantiation_declaration.identifier'>
+<class 'vsg.token.subprogram_instantiation_declaration.is_keyword'>
+<class 'vsg.token.subprogram_instantiation_declaration.new_keyword'>
+<class 'vsg.token.subprogram_instantiation_declaration.uninstantiated_subprogram_name'>
+--------------------------------------------------------------------------------
+12 | None |     generic map (
+<class 'vsg.token.generic_map_aspect.generic_keyword'>
+<class 'vsg.token.generic_map_aspect.map_keyword'>
+<class 'vsg.token.generic_map_aspect.open_parenthesis'>
+--------------------------------------------------------------------------------
+13 | None |       GEN1 => 3,
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+--------------------------------------------------------------------------------
+14 | None |       GEN2 => 4,
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+--------------------------------------------------------------------------------
+15 | None |       GEN5 => 6
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+--------------------------------------------------------------------------------
+16 | None |     );
+<class 'vsg.token.generic_map_aspect.close_parenthesis'>
+<class 'vsg.token.subprogram_instantiation_declaration.semicolon'>
+--------------------------------------------------------------------------------
+17 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+18 | None |   function PARITY is new uninstantiated_subprogram_name [name1, name2 return integer];
+<class 'vsg.token.subprogram_kind.function_keyword'>
+<class 'vsg.token.subprogram_instantiation_declaration.identifier'>
+<class 'vsg.token.subprogram_instantiation_declaration.is_keyword'>
+<class 'vsg.token.subprogram_instantiation_declaration.new_keyword'>
+<class 'vsg.token.subprogram_instantiation_declaration.uninstantiated_subprogram_name'>
+<class 'vsg.token.signature.open_bracket'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.signature.comma'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.signature.return_keyword'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.signature.close_bracket'>
+<class 'vsg.token.subprogram_instantiation_declaration.semicolon'>
+--------------------------------------------------------------------------------
+19 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+20 | None |   function PARITY is new uninstantiated_subprogram_name;
+<class 'vsg.token.subprogram_kind.function_keyword'>
+<class 'vsg.token.subprogram_instantiation_declaration.identifier'>
+<class 'vsg.token.subprogram_instantiation_declaration.is_keyword'>
+<class 'vsg.token.subprogram_instantiation_declaration.new_keyword'>
+<class 'vsg.token.subprogram_instantiation_declaration.uninstantiated_subprogram_name'>
+<class 'vsg.token.subprogram_instantiation_declaration.semicolon'>
+--------------------------------------------------------------------------------
+21 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+22 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+23 | None |   procedure PARITY is new uninstantiated_subprogram_name [name1, name2 return integer]
+<class 'vsg.token.subprogram_kind.procedure_keyword'>
+<class 'vsg.token.subprogram_instantiation_declaration.identifier'>
+<class 'vsg.token.subprogram_instantiation_declaration.is_keyword'>
+<class 'vsg.token.subprogram_instantiation_declaration.new_keyword'>
+<class 'vsg.token.subprogram_instantiation_declaration.uninstantiated_subprogram_name'>
+<class 'vsg.token.signature.open_bracket'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.signature.comma'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.signature.return_keyword'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.signature.close_bracket'>
+--------------------------------------------------------------------------------
+24 | None |     generic map (
+<class 'vsg.token.generic_map_aspect.generic_keyword'>
+<class 'vsg.token.generic_map_aspect.map_keyword'>
+<class 'vsg.token.generic_map_aspect.open_parenthesis'>
+--------------------------------------------------------------------------------
+25 | None |       GEN1 => 3,
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+--------------------------------------------------------------------------------
+26 | None |       GEN2 => 4,
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+--------------------------------------------------------------------------------
+27 | None |       GEN5 => 6
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+--------------------------------------------------------------------------------
+28 | None |     );
+<class 'vsg.token.generic_map_aspect.close_parenthesis'>
+<class 'vsg.token.subprogram_instantiation_declaration.semicolon'>
+--------------------------------------------------------------------------------
+29 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+30 | None |   procedure PARITY is new uninstantiated_subprogram_name
+<class 'vsg.token.subprogram_kind.procedure_keyword'>
+<class 'vsg.token.subprogram_instantiation_declaration.identifier'>
+<class 'vsg.token.subprogram_instantiation_declaration.is_keyword'>
+<class 'vsg.token.subprogram_instantiation_declaration.new_keyword'>
+<class 'vsg.token.subprogram_instantiation_declaration.uninstantiated_subprogram_name'>
+--------------------------------------------------------------------------------
+31 | None |     generic map (
+<class 'vsg.token.generic_map_aspect.generic_keyword'>
+<class 'vsg.token.generic_map_aspect.map_keyword'>
+<class 'vsg.token.generic_map_aspect.open_parenthesis'>
+--------------------------------------------------------------------------------
+32 | None |       GEN1 => 3,
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+--------------------------------------------------------------------------------
+33 | None |       GEN2 => 4,
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+--------------------------------------------------------------------------------
+34 | None |       GEN5 => 6
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+--------------------------------------------------------------------------------
+35 | None |     );
+<class 'vsg.token.generic_map_aspect.close_parenthesis'>
+<class 'vsg.token.subprogram_instantiation_declaration.semicolon'>
+--------------------------------------------------------------------------------
+36 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+37 | None |   procedure PARITY is new uninstantiated_subprogram_name [name1, name2 return integer];
+<class 'vsg.token.subprogram_kind.procedure_keyword'>
+<class 'vsg.token.subprogram_instantiation_declaration.identifier'>
+<class 'vsg.token.subprogram_instantiation_declaration.is_keyword'>
+<class 'vsg.token.subprogram_instantiation_declaration.new_keyword'>
+<class 'vsg.token.subprogram_instantiation_declaration.uninstantiated_subprogram_name'>
+<class 'vsg.token.signature.open_bracket'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.signature.comma'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.signature.return_keyword'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.signature.close_bracket'>
+<class 'vsg.token.subprogram_instantiation_declaration.semicolon'>
+--------------------------------------------------------------------------------
+38 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+39 | None |   procedure PARITY is new uninstantiated_subprogram_name;
+<class 'vsg.token.subprogram_kind.procedure_keyword'>
+<class 'vsg.token.subprogram_instantiation_declaration.identifier'>
+<class 'vsg.token.subprogram_instantiation_declaration.is_keyword'>
+<class 'vsg.token.subprogram_instantiation_declaration.new_keyword'>
+<class 'vsg.token.subprogram_instantiation_declaration.uninstantiated_subprogram_name'>
+<class 'vsg.token.subprogram_instantiation_declaration.semicolon'>
+--------------------------------------------------------------------------------
+40 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+41 | None | begin
+<class 'vsg.token.architecture_body.begin_keyword'>
+--------------------------------------------------------------------------------
+42 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+43 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+44 | None | end architecture RTL;
+<class 'vsg.token.architecture_body.end_keyword'>
+<class 'vsg.token.architecture_body.end_architecture_keyword'>
+<class 'vsg.token.architecture_body.architecture_simple_name'>
+<class 'vsg.token.architecture_body.semicolon'>

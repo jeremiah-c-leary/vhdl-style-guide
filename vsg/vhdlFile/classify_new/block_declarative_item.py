@@ -1,5 +1,6 @@
 
 from vsg.vhdlFile.classify_new import subprogram_declaration
+from vsg.vhdlFile.classify_new import subprogram_instantiation_declaration
 
 from vsg.vhdlFile.classify_new import package_declaration
 from vsg.vhdlFile.classify_new import package_body
@@ -49,6 +50,10 @@ from vsg.vhdlFile.classify_new import use_clause
 def detect(iToken, lObjects):
 
     iReturn = subprogram_declaration.detect(iToken, lObjects)
+    if iReturn != iToken:
+        return iReturn
+
+    iReturn = subprogram_instantiation_declaration.detect(iToken, lObjects)
     if iReturn != iToken:
         return iReturn
 
