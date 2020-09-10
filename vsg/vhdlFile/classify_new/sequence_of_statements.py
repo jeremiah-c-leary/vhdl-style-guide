@@ -4,7 +4,7 @@ from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify_new import sequential_statement
 
 '''
-    process_statement_part ::=
+    sequence_of_statements ::=
         { sequential_statement }
 '''
 
