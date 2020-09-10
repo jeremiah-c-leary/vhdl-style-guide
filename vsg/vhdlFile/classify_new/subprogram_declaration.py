@@ -15,5 +15,6 @@ from vsg.vhdlFile.classify_new import subprogram_specification
 def detect(iToken, lObjects):
     iCurrent = subprogram_specification.detect(iToken, lObjects)
     if iCurrent != iToken:
-        utils.assign_next_token_required(';', token.semicolon, iCurrent, lObjects)
+        if utils.is_next_token(';', iCurrent, lObjects):
+            return utils.assign_next_token_required(';', token.semicolon, iCurrent, lObjects)
     return iCurrent
