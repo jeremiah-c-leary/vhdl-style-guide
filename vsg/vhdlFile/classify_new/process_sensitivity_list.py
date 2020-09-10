@@ -11,9 +11,7 @@ def classify(iToken, lObjects):
     process_sensitivity_list ::=
         all | sensitivity_list
     '''
-    iToken = utils.find_next_token(iToken, lObjects)
-    if utils.object_value_is(lObjects, iToken, 'all'):
-        utils.assign_token(lObjects, iToken, token.all_keyword)
-        iToken += 1
+    if utils.is_next_token('all', iToken, lObjects):
+        return utils.assign_next_token_required('all', token.all_keyword, iToken, lObjects)
     else:
-        sensitivity_list.classify(iToken, lObjects)
+        return sensitivity_list.classify(iToken, lObjects)

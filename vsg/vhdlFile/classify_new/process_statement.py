@@ -56,27 +56,18 @@ def classify(iCurrent, lObjects):
 
 
 def classify_opening_declaration(iToken, lObjects):
-    iToken = utils.find_next_token(iToken, lObjects)
-    iToken = utils.tokenize_label(iToken, lObjects, token.process_label, token.label_colon)
-    iToken = utils.find_next_token(iToken, lObjects)
-    iToken = utils.tokenize_postponed(iToken, lObjects, token.postponed_keyword)
+    iCurrent = utils.find_next_token(iToken, lObjects)
+    iCurrent = utils.tokenize_label(iCurrent, lObjects, token.process_label, token.label_colon)
+    iCurrent = utils.assign_next_token_if('postponed', token.postponed_keyword, iCurrent, lObjects) 
+    iCurrent = utils.assign_next_token_required('process', token.process_keyword, iCurrent, lObjects)
 
-    iToken = utils.find_next_token(iToken, lObjects)
-    utils.assign_token(lObjects, iToken, token.process_keyword)
-    iToken += 1
+    if utils.is_next_token('(', iCurrent, lObjects):
+        iCurrent = utils.assign_next_token_required('(', token.open_parenthesis, iCurrent, lObjects)
+        iCurrent = process_sensitivity_list.classify(iCurrent, lObjects)
+        iCurrent = utils.assign_next_token_required(')', token.close_parenthesis, iCurrent, lObjects)
 
-    iToken = utils.find_next_token(iToken, lObjects)
-    if utils.object_value_is(lObjects, iToken, '('):
-        utils.assign_token(lObjects, iToken, token.open_parenthesis)
-        iToken = utils.find_next_token(iToken, lObjects)
-        process_sensitivity_list.classify(iToken, lObjects)
-        iToken = utils.find_next_token(iToken, lObjects)
-        utils.assign_token(lObjects, iToken, token.close_parenthesis)
-
-    iToken = utils.find_next_token(iToken, lObjects)
-    if utils.object_value_is(lObjects, iToken, 'is'):
-        utils.assign_token(lObjects, iToken, token.is_keyword)
-        iToken += 1
+    iCurrent = utils.assign_next_token_if('is', token.is_keyword, iCurrent, lObjects) 
+    return iCurrent
 
         
 def classify_closing_declaration(iToken, lObjects):
