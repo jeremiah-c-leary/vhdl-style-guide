@@ -5,6 +5,7 @@ from vsg.vhdlFile.classify_new import exit_statement
 from vsg.vhdlFile.classify_new import loop_statement
 from vsg.vhdlFile.classify_new import next_statement
 from vsg.vhdlFile.classify_new import null_statement
+from vsg.vhdlFile.classify_new import report_statement
 from vsg.vhdlFile.classify_new import return_statement
 
 '''
@@ -44,6 +45,10 @@ def detect(iToken, lObjects):
         return iReturn
 
     iReturn = exit_statement.detect(iToken, lObjects)
+    if iReturn != iToken:
+        return iReturn
+
+    iReturn = report_statement.detect(iToken, lObjects)
     if iReturn != iToken:
         return iReturn
 
