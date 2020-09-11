@@ -11,7 +11,12 @@ def detect(iToken, lObjects):
     next_statement ::=
         [ label : ] next [ loop_label ] [ when condition ] ;
     '''
-    if utils.find_in_next_n_tokens('next', 3, iToken, lObjects):
+    if utils.find_in_next_n_tokens(':', 2, iToken, lObjects):
+        if utils.find_in_next_n_tokens('next', 3, iToken, lObjects):
+            return classify(iToken, lObjects)
+        else:
+            return iToken
+    if utils.is_next_token('next', iToken, lObjects):
         return classify(iToken, lObjects)
     return iToken
 

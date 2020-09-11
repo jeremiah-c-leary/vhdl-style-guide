@@ -11,7 +11,12 @@ def detect(iToken, lObjects):
     exit_statement ::=
         [ label : ] exit [ loop_label ] [ when condition ] ;
     '''
-    if utils.find_in_next_n_tokens('exit', 3, iToken, lObjects):
+    if utils.find_in_next_n_tokens(':', 2, iToken, lObjects):
+        if utils.find_in_next_n_tokens('exit', 3, iToken, lObjects):
+            return classify(iToken, lObjects)
+        else:
+            return iToken
+    if utils.is_next_token('exit', iToken, lObjects):
         return classify(iToken, lObjects)
     return iToken
 

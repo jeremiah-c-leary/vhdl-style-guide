@@ -435,6 +435,7 @@ def calculate_column(iToken, lObjects):
             break;
     for iIndex in range(iCarriageReturn + 1, iToken):
         iColumn += len(lObjects[iIndex].get_value())
+    iColumn += 1
     return iColumn
 
 def print_error_message(sToken, token, iToken, lObjects):
