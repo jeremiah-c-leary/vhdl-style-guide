@@ -16,5 +16,5 @@ class label_colon(parser.label_colon):
 
 class semicolon(parser.semicolon):
 
-    def __init__(self):
+    def __init__(self, sString=';'):
         parser.semicolon.__init__(self)
