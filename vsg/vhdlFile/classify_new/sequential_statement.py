@@ -1,5 +1,6 @@
 
 from vsg.vhdlFile.classify_new import null_statement
+from vsg.vhdlFile.classify_new import return_statement
 
 '''
     sequential_statement ::=
@@ -20,6 +21,10 @@ from vsg.vhdlFile.classify_new import null_statement
 
 
 def detect(iToken, lObjects):
+
+    iReturn = return_statement.detect(iToken, lObjects)
+    if iReturn != iToken:
+        return iReturn
 
     iReturn = null_statement.detect(iToken, lObjects)
     if iReturn != iToken:
