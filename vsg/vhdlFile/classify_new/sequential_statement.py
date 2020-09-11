@@ -1,4 +1,5 @@
 
+#from vsg.vhdlFile.classify_new import case_statement
 from vsg.vhdlFile.classify_new import exit_statement
 from vsg.vhdlFile.classify_new import loop_statement
 from vsg.vhdlFile.classify_new import next_statement
@@ -24,6 +25,10 @@ from vsg.vhdlFile.classify_new import return_statement
 
 
 def detect(iToken, lObjects):
+
+#    iReturn = case_statement.detect(iToken, lObjects)
+#    if iReturn != iToken:
+#        return iReturn
 
     iReturn = loop_statement.detect(iToken, lObjects)
     if iReturn != iToken:

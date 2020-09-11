@@ -451,3 +451,15 @@ def print_error_message(sToken, token, iToken, lObjects):
 
 def extract_module_name(token):
     return token.__module__.split('.')[-1]
+
+
+def keyword_found(sKeyword, iToken, lObjects):
+    if utils.find_in_next_n_tokens(':', 2, iToken, lObjects):
+        if utils.find_in_next_n_tokens(sKeyword, 3, iToken, lObjects):
+            return True
+        else:
+            return False
+    if utils.is_next_token(sKeyword, iToken, lObjects):
+        return True
+    return False
+

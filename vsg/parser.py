@@ -28,6 +28,12 @@ class todo(item):
 ###############################################################################
 
 
+class bar(item):
+
+    def __init__(self, sString='|'):
+        item.__init__(self, '|' )
+
+
 class open_bracket(item):
 
     def __init__(self, sString='['):
