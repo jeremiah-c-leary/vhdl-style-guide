@@ -20,7 +20,7 @@ def detect(iToken, lObjects):
 
 def classify(iToken, lObjects):
 
-    iCurrent = utils.assign_tokens_until('<=', token.target, iCurrent, lObjects)
+    iCurrent = utils.assign_tokens_until('<=', token.target, iToken, lObjects)
     iCurrent = utils.assign_next_token_required('<=', token.assignment, iCurrent, lObjects)
 
     iCurrent = delay_mechanism.detect(iCurrent, lObjects)
