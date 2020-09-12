@@ -11,14 +11,12 @@ from vsg.vhdlFile.classify_new import selected_force_assignment
 '''
 
 def detect(iToken, lObjects):
-
     if utils.find_in_next_n_tokens('with', 3, iToken, lObjects):
         return True
     return False
 
 
 def classify(iToken, lObjects):
-
     iCurrent = selected_waveform_assignment.detect(iToken, lObjects)
     if iCurrent != iToken:
         return iCurrent    

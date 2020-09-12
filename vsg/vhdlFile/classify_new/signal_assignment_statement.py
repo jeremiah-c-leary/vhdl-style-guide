@@ -3,9 +3,9 @@ from vsg.token import signal_assignment_statement as token
 
 from vsg import parser
 
-#from vsg.vhdlFile.classify_new import simple_signal_assignment
-#from vsg.vhdlFile.classify_new import conditional_signal_assignment
+from vsg.vhdlFile.classify_new import conditional_signal_assignment
 from vsg.vhdlFile.classify_new import selected_signal_assignment
+#from vsg.vhdlFile.classify_new import simple_signal_assignment
 
 from vsg.vhdlFile import utils
 
@@ -22,10 +22,10 @@ def detect(iToken, lObjects):
         iCurrent = utils.tokenize_label(iCurrent, lObjects, token.label, token.label_colon)
         iCurrent = selected_signal_assignment.classify(iCurrent, lObjects)
 
-#    elif conditional_signal_assignment.detect(iToken, lObjects):
-#        iCurrent = utils.tokenize_label(iCurrent, lObjects, token.label_name, token.label_colon)
-#        iCurrent = conditional_signal_assignment.classify(iCurrent, lObjects)
-#
+    elif conditional_signal_assignment.detect(iToken, lObjects):
+        iCurrent = utils.tokenize_label(iCurrent, lObjects, token.label, token.label_colon)
+        iCurrent = conditional_signal_assignment.classify(iCurrent, lObjects)
+
 #    elif simple_signal_assignment.detect(iToken, lObjects):
 #        iCurrent = utils.tokenize_label(iCurrent, lObjects, token.label_name, token.label_colon)
 #        iCurrent = simple_signal_assignment.classify(iCurrent, lObjects)
