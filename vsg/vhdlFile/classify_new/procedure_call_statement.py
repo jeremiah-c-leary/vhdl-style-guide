@@ -5,7 +5,7 @@ from vsg.vhdlFile.classify_new import procedure_call
 
 from vsg.vhdlFile import utils
 
-lKeywords = ['null', 'return', 'exit', 'next', 'while', 'for', 'loop', 'case', 'if', 'report', 'assert', 'wait', 'end']
+lKeywords = ['null', 'return', 'exit', 'next', 'while', 'for', 'loop', 'case', 'if', 'report', 'assert', 'wait', 'end', 'with']
 
 '''
     procedure_call_statement ::=

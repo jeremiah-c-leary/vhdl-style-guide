@@ -1,0 +1,38 @@
+
+architecture RTL of ENTITY_NAME is
+
+begin
+
+  process
+  begin
+
+    SEL_LABEL : with some expression select ?
+        some target <= force in some expression when some choice | some other choice | some other other choice,
+                                some expression when some choice,
+                                some expression when some choice | some other choice;
+
+
+    SEL_LABEL : with some expression select ?
+        some target <= force out some expression when some choice | some other choice | some other other choice,
+                                 some expression when some choice,
+                                 some expression when some choice | some other choice;
+
+
+    SEL_LABEL : with some expression select
+        some target <= force in some expression when some choice | some other choice | some other other choice,
+                                some expression when some choice,
+                                some expression when some choice | some other choice;
+
+
+    SEL_LABEL : with some expression select ?
+        some target <= force in some expression when some choice;
+
+
+    with some expression select ?
+        some target <= force in some expression when some choice | some other choice | some other other choice,
+                                some expression when some choice,
+                                some expression when some choice | some other choice;
+
+  end process;
+
+end architecture RTL;

@@ -5,6 +5,8 @@ from vsg.token import choices as token
 
 from vsg.vhdlFile import utils
 
+from vsg.vhdlFile.classify_new import choice
+
 
 def classify(iStart, iEnd, lObjects):
     '''
@@ -21,7 +23,8 @@ def classify(iStart, iEnd, lObjects):
 def classify_until(lUntils, iToken, lObjects):
     iCurrent = iToken
     iLast = 0
-    lMyUntils = lUntils.append('|')
+    lMyUntils = lUntils
+    lMyUntils.append('|')
 
     while iLast != iCurrent:
         iLast = iCurrent
