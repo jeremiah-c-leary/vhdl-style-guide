@@ -31,9 +31,9 @@ def classify(iToken, lObjects):
     iCurrent = utils.assign_tokens_until('<=', token.target, iCurrent, lObjects)
     iCurrent = utils.assign_next_token_required('<=', token.assignment, iCurrent, lObjects)
 
-    iCurrent = delay_machanism.detect(iCurrent, lObjects)
+    iCurrent = delay_mechanism.detect(iCurrent, lObjects)
 
-    iCurrent = selected_waveforms.classify(iToken, lObjects)
+    iCurrent = selected_waveforms.classify_until([';'], iToken, lObjects)
 
     iCurrent = utils.assign_next_token_required(';', token.semicolon, iCurrent, lObjects)
 
