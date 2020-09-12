@@ -3,7 +3,7 @@ from vsg.vhdlFile import utils
 
 from vsg.vhdlFile.classify_new import simple_force_assignment
 from vsg.vhdlFile.classify_new import simple_release_assignment
-#from vsg.vhdlFile.classify_new import simple_waveform_assignment
+from vsg.vhdlFile.classify_new import simple_waveform_assignment
 
 '''
     simple_signal_assignment ::=
@@ -24,7 +24,7 @@ def detect(iToken, lObjects):
 
 
 def classify(iToken, lObjects):
-
+    iCurrent = iToken
     iCurrent = simple_force_assignment.detect(iToken, lObjects)
     if iCurrent != iToken:
         return iCurrent    
@@ -33,6 +33,6 @@ def classify(iToken, lObjects):
     if iCurrent != iToken:
         return iCurrent    
 
-#    iCurrent = simple_waveform_assignment.detect(iToken, lObjects)
+    iCurrent = simple_waveform_assignment.detect(iToken, lObjects)
 
     return iCurrent
