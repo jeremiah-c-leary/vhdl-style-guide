@@ -32,7 +32,7 @@ begin
     C3: case Code_Variable is
       when ADD | SUB => Operation := 0;
       when MULT | DIV => Operation := 1;
-    end case C3
+    end case C3;
 
   end process;
 

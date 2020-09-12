@@ -20,7 +20,7 @@ def detect(iToken, lObjects):
 
 def classify(iToken, lObjects):
 
-    iCurrent = utils.assign_next_token_required('when', token.when_keyword, iCurrent, lObjects)
+    iCurrent = utils.assign_next_token_required('when', token.when_keyword, iToken, lObjects)
 
     iCurrent = choices.classify_until(['=>'], iCurrent, lObjects)
 

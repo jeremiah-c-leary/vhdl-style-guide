@@ -12,6 +12,8 @@ from vsg.vhdlFile.classify_new import conditional_force_assignment
 
 def detect(iToken, lObjects):
 
+    if utils.is_next_token('when', iToken, lObjects):
+        return False
     if utils.find_in_range('<=', iToken, ';', lObjects):
         if utils.find_in_range('when', iToken, ';', lObjects):
             return True
