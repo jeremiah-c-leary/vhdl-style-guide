@@ -9,6 +9,7 @@ from vsg.vhdlFile.classify_new import procedure_call_statement
 from vsg.vhdlFile.classify_new import report_statement
 from vsg.vhdlFile.classify_new import return_statement
 from vsg.vhdlFile.classify_new import signal_assignment_statement
+from vsg.vhdlFile.classify_new import variable_assignment_statement
 from vsg.vhdlFile.classify_new import wait_statement
 
 '''
@@ -47,9 +48,9 @@ def detect(iToken, lObjects):
     if iReturn != iToken:
         return iReturn
 
-#    iReturn = variable_assignment_statement.detect(iToken, lObjects)
-#    if iReturn != iToken:
-#        return iReturn
+    iReturn = variable_assignment_statement.detect(iToken, lObjects)
+    if iReturn != iToken:
+        return iReturn
 
     iReturn = procedure_call_statement.detect(iToken, lObjects)
     if iReturn != iToken:

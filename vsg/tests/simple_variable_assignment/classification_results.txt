@@ -1,0 +1,173 @@
+--------------------------------------------------------------------------------
+0 | None | 
+--------------------------------------------------------------------------------
+1 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+2 | None | architecture RTL of ENTITY_NAME is
+<class 'vsg.token.architecture_body.architecture_keyword'>
+<class 'vsg.token.architecture_body.identifier'>
+<class 'vsg.token.architecture_body.of_keyword'>
+<class 'vsg.token.architecture_body.entity_name'>
+<class 'vsg.token.architecture_body.is_keyword'>
+--------------------------------------------------------------------------------
+3 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+4 | None | begin
+<class 'vsg.token.architecture_body.begin_keyword'>
+--------------------------------------------------------------------------------
+5 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+6 | None |   process
+<class 'vsg.token.process_statement.process_keyword'>
+--------------------------------------------------------------------------------
+7 | None |   begin
+<class 'vsg.token.process_statement.begin_keyword'>
+--------------------------------------------------------------------------------
+8 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+9 | None |     FORCE_LABEL : sig1 := a + b - c after 10 ns, d + e after 25 ns;
+<class 'vsg.token.variable_assignment_statement.label'>
+<class 'vsg.token.variable_assignment_statement.label_colon'>
+<class 'vsg.token.simple_variable_assignment.target'>
+<class 'vsg.token.simple_variable_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.simple_variable_assignment.semicolon'>
+--------------------------------------------------------------------------------
+10 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+11 | None |     FORCE_LABEL : sig1 := a + b - c after 10 ns, d + e after 25 ns;
+<class 'vsg.token.variable_assignment_statement.label'>
+<class 'vsg.token.variable_assignment_statement.label_colon'>
+<class 'vsg.token.simple_variable_assignment.target'>
+<class 'vsg.token.simple_variable_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.simple_variable_assignment.semicolon'>
+--------------------------------------------------------------------------------
+12 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+13 | None |     FORCE_LABEL : sig1 := a + b - c after 10 ns, d + e after 25 ns;
+<class 'vsg.token.variable_assignment_statement.label'>
+<class 'vsg.token.variable_assignment_statement.label_colon'>
+<class 'vsg.token.simple_variable_assignment.target'>
+<class 'vsg.token.simple_variable_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.simple_variable_assignment.semicolon'>
+--------------------------------------------------------------------------------
+14 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+15 | None |     FORCE_LABEL : sig1 := a + b - c, d + e;
+<class 'vsg.token.variable_assignment_statement.label'>
+<class 'vsg.token.variable_assignment_statement.label_colon'>
+<class 'vsg.token.simple_variable_assignment.target'>
+<class 'vsg.token.simple_variable_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.simple_variable_assignment.semicolon'>
+--------------------------------------------------------------------------------
+16 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+17 | None |     FORCE_LABEL : sig1 := a + b - c;
+<class 'vsg.token.variable_assignment_statement.label'>
+<class 'vsg.token.variable_assignment_statement.label_colon'>
+<class 'vsg.token.simple_variable_assignment.target'>
+<class 'vsg.token.simple_variable_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.simple_variable_assignment.semicolon'>
+--------------------------------------------------------------------------------
+18 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+19 | None |     FORCE_LABEL : sig2 := a;
+<class 'vsg.token.variable_assignment_statement.label'>
+<class 'vsg.token.variable_assignment_statement.label_colon'>
+<class 'vsg.token.simple_variable_assignment.target'>
+<class 'vsg.token.simple_variable_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.simple_variable_assignment.semicolon'>
+--------------------------------------------------------------------------------
+20 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+21 | None |     sig2 := a;
+<class 'vsg.token.simple_variable_assignment.target'>
+<class 'vsg.token.simple_variable_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.simple_variable_assignment.semicolon'>
+--------------------------------------------------------------------------------
+22 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+23 | None |   end process;
+<class 'vsg.token.process_statement.end_keyword'>
+<class 'vsg.token.process_statement.end_process_keyword'>
+<class 'vsg.token.process_statement.semicolon'>
+--------------------------------------------------------------------------------
+24 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+25 | None | end architecture RTL;
+<class 'vsg.token.architecture_body.end_keyword'>
+<class 'vsg.token.architecture_body.end_architecture_keyword'>
+<class 'vsg.token.architecture_body.architecture_simple_name'>
+<class 'vsg.token.architecture_body.semicolon'>

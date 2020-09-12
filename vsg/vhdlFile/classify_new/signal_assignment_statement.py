@@ -18,6 +18,7 @@ def detect(iToken, lObjects):
       | [ label : ] selected_signal_assignment
     '''
     iCurrent = iToken
+
     if selected_signal_assignment.detect(iToken, lObjects):
         iCurrent = utils.tokenize_label(iCurrent, lObjects, token.label, token.label_colon)
         iCurrent = selected_signal_assignment.classify(iCurrent, lObjects)
@@ -29,4 +30,5 @@ def detect(iToken, lObjects):
     elif simple_signal_assignment.detect(iToken, lObjects):
         iCurrent = utils.tokenize_label(iCurrent, lObjects, token.label, token.label_colon)
         iCurrent = simple_signal_assignment.classify(iCurrent, lObjects)
+
     return iCurrent

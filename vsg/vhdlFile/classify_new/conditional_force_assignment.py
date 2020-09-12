@@ -15,8 +15,9 @@ from vsg.vhdlFile.classify_new import conditional_expressions
 
 def detect(iToken, lObjects):
 
-    if utils.find_in_range('force', iToken, ';', lObjects):
-        return classify(iToken, lObjects)
+    if utils.find_in_range('<=', iToken, ';', lObjects):#
+        if utils.find_in_range('force', iToken, ';', lObjects):
+            return classify(iToken, lObjects)
     return iToken
 
 

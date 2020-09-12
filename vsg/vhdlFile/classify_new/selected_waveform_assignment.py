@@ -17,8 +17,9 @@ from vsg.vhdlFile.classify_new import selected_waveforms
 
 def detect(iToken, lObjects):
 
-    if not utils.find_in_range('force', iToken, ';', lObjects):
-        return classify(iToken, lObjects)
+    if utils.find_in_range('<=', iToken, ';', lObjects):
+        if not utils.find_in_range('force', iToken, ';', lObjects):
+            return classify(iToken, lObjects)
     return iToken
 
 

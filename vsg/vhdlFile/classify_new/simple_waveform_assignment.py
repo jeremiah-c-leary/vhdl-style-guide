@@ -13,10 +13,11 @@ from vsg.vhdlFile.classify_new import waveform
 
 def detect(iToken, lObjects):
 
-    if utils.find_in_range('force', iToken, ';', lObjects):
-        return iToken
-    if utils.find_in_range('release', iToken, ';', lObjects):
-        return iToken
+    if utils.find_in_range('<=', iToken, ';', lObjects):
+        if utils.find_in_range('force', iToken, ';', lObjects):
+            return iToken
+        if utils.find_in_range('release', iToken, ';', lObjects):
+            return iToken
     return classify(iToken, lObjects)
 
 
