@@ -2,6 +2,7 @@
 from vsg.vhdlFile.classify_new import assertion_statement
 from vsg.vhdlFile.classify_new import case_statement
 from vsg.vhdlFile.classify_new import exit_statement
+from vsg.vhdlFile.classify_new import if_statement
 from vsg.vhdlFile.classify_new import loop_statement
 from vsg.vhdlFile.classify_new import next_statement
 from vsg.vhdlFile.classify_new import null_statement
@@ -48,6 +49,10 @@ def detect(iToken, lObjects):
     if iReturn != iToken:
         return iReturn
 
+    iReturn = if_statement.detect(iToken, lObjects)
+    if iReturn != iToken:
+        return iReturn
+
     iReturn = signal_assignment_statement.detect(iToken, lObjects)
     if iReturn != iToken:
         return iReturn
@@ -59,10 +64,6 @@ def detect(iToken, lObjects):
     iReturn = procedure_call_statement.detect(iToken, lObjects)
     if iReturn != iToken:
         return iReturn
-
-#    iReturn = if_statement.detect(iToken, lObjects)
-#    if iReturn != iToken:
-#        return iReturn
 
     iReturn = loop_statement.detect(iToken, lObjects)
     if iReturn != iToken:

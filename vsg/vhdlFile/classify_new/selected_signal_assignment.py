@@ -14,6 +14,8 @@ def detect(iToken, lObjects):
     if utils.find_in_range('<=', iToken, ';', lObjects):
         if utils.find_in_next_n_tokens('with', 3, iToken, lObjects):
             return True
+        if utils.find_in_next_n_tokens('if', 3, iToken, lObjects):
+            return True
     return False
 
 

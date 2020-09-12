@@ -12,6 +12,8 @@ from vsg.vhdlFile.classify_new import expression
 
 def detect(iToken, lObjects):
 
+    if utils.is_next_token_one_of(['when', 'if', 'elsif', 'else'], iToken, lObjects):
+        return False
     if utils.find_in_range(':=', iToken, ';', lObjects):
         if utils.find_in_range('with', iToken, ';', lObjects):
             return False

@@ -403,6 +403,13 @@ def is_next_token(sToken, iToken, lObjects):
     return False
 
 
+def is_next_token_one_of(lTokens, iToken, lObjects):
+    iCurrent = find_next_token(iToken, lObjects)
+    if lObjects[iCurrent].get_value() in lTokens:
+        return True
+    return False
+
+
 def detect_subelement_until(sToken, element, iToken, lObjects):
     iCurrent = iToken
     while not is_next_token(sToken, iCurrent, lObjects):

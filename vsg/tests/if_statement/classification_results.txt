@@ -1,0 +1,214 @@
+--------------------------------------------------------------------------------
+0 | None | 
+--------------------------------------------------------------------------------
+1 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+2 | None | architecture RTL of ENTITY_NAME is
+<class 'vsg.token.architecture_body.architecture_keyword'>
+<class 'vsg.token.architecture_body.identifier'>
+<class 'vsg.token.architecture_body.of_keyword'>
+<class 'vsg.token.architecture_body.entity_name'>
+<class 'vsg.token.architecture_body.is_keyword'>
+--------------------------------------------------------------------------------
+3 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+4 | None | begin
+<class 'vsg.token.architecture_body.begin_keyword'>
+--------------------------------------------------------------------------------
+5 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+6 | None |   process
+<class 'vsg.token.process_statement.process_keyword'>
+--------------------------------------------------------------------------------
+7 | None |   begin
+<class 'vsg.token.process_statement.begin_keyword'>
+--------------------------------------------------------------------------------
+8 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+9 | None |     I1: if Status_Signal = hold
+<class 'vsg.token.if_statement.if_label'>
+<class 'vsg.token.if_statement.label_colon'>
+<class 'vsg.token.if_statement.if_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+--------------------------------------------------------------------------------
+10 | None |           then A1: Outputs <= 'X';
+<class 'vsg.token.if_statement.then_keyword'>
+<class 'vsg.token.signal_assignment_statement.label'>
+<class 'vsg.token.signal_assignment_statement.label_colon'>
+<class 'vsg.token.simple_waveform_assignment.target'>
+<class 'vsg.token.simple_waveform_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.simple_waveform_assignment.semicolon'>
+--------------------------------------------------------------------------------
+11 | None |         end if I1;
+<class 'vsg.token.if_statement.end_keyword'>
+<class 'vsg.token.if_statement.end_if_keyword'>
+<class 'vsg.token.if_statement.end_if_label'>
+<class 'vsg.token.if_statement.semicolon'>
+--------------------------------------------------------------------------------
+12 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+13 | None |     I2: if x = '1' and y = '1'
+<class 'vsg.token.if_statement.if_label'>
+<class 'vsg.token.if_statement.label_colon'>
+<class 'vsg.token.if_statement.if_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+--------------------------------------------------------------------------------
+14 | None |             then return '1';
+<class 'vsg.token.if_statement.then_keyword'>
+<class 'vsg.token.return_statement.return_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.return_statement.semicolon'>
+--------------------------------------------------------------------------------
+15 | None |           else return '0';
+<class 'vsg.token.if_statement.else_keyword'>
+<class 'vsg.token.return_statement.return_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.return_statement.semicolon'>
+--------------------------------------------------------------------------------
+16 | None |           end if I2;
+<class 'vsg.token.if_statement.end_keyword'>
+<class 'vsg.token.if_statement.end_if_keyword'>
+<class 'vsg.token.if_statement.end_if_label'>
+<class 'vsg.token.if_statement.semicolon'>
+--------------------------------------------------------------------------------
+17 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+18 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+19 | None |     I3: if Code_of_Operation(1) = '1'
+<class 'vsg.token.if_statement.if_label'>
+<class 'vsg.token.if_statement.label_colon'>
+<class 'vsg.token.if_statement.if_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+--------------------------------------------------------------------------------
+20 | None |           then F := Operand_1 + Operand_2;
+<class 'vsg.token.if_statement.then_keyword'>
+<class 'vsg.token.simple_variable_assignment.target'>
+<class 'vsg.token.simple_variable_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.simple_variable_assignment.semicolon'>
+--------------------------------------------------------------------------------
+21 | None |         elsif Code_of_Operation(0) = '1'
+<class 'vsg.token.if_statement.elsif_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+--------------------------------------------------------------------------------
+22 | None |           then F := Operand_1 - Operand_2;
+<class 'vsg.token.if_statement.then_keyword'>
+<class 'vsg.token.simple_variable_assignment.target'>
+<class 'vsg.token.simple_variable_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.simple_variable_assignment.semicolon'>
+--------------------------------------------------------------------------------
+23 | None |           else F := "00000000";
+<class 'vsg.token.if_statement.else_keyword'>
+<class 'vsg.token.simple_variable_assignment.target'>
+<class 'vsg.token.simple_variable_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.simple_variable_assignment.semicolon'>
+--------------------------------------------------------------------------------
+24 | None |         end if I3;
+<class 'vsg.token.if_statement.end_keyword'>
+<class 'vsg.token.if_statement.end_if_keyword'>
+<class 'vsg.token.if_statement.end_if_label'>
+<class 'vsg.token.if_statement.semicolon'>
+--------------------------------------------------------------------------------
+25 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+26 | None |     if Status = RUN
+<class 'vsg.token.if_statement.if_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+--------------------------------------------------------------------------------
+27 | None |       then
+<class 'vsg.token.if_statement.then_keyword'>
+--------------------------------------------------------------------------------
+28 | None |         if Code_of_Operation = CONC
+<class 'vsg.token.if_statement.if_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+--------------------------------------------------------------------------------
+29 | None |           then
+<class 'vsg.token.if_statement.then_keyword'>
+--------------------------------------------------------------------------------
+30 | None |             F := Operand_1 & Operand_2 ;
+<class 'vsg.token.simple_variable_assignment.target'>
+<class 'vsg.token.simple_variable_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.simple_variable_assignment.semicolon'>
+--------------------------------------------------------------------------------
+31 | None |           else
+<class 'vsg.token.if_statement.else_keyword'>
+--------------------------------------------------------------------------------
+32 | None |             F := "00000000";
+<class 'vsg.token.simple_variable_assignment.target'>
+<class 'vsg.token.simple_variable_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.simple_variable_assignment.semicolon'>
+--------------------------------------------------------------------------------
+33 | None |         end if;
+<class 'vsg.token.if_statement.end_keyword'>
+<class 'vsg.token.if_statement.end_if_keyword'>
+<class 'vsg.token.if_statement.semicolon'>
+--------------------------------------------------------------------------------
+34 | None |       Output_1 <= F;
+<class 'vsg.token.simple_waveform_assignment.target'>
+<class 'vsg.token.simple_waveform_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.simple_waveform_assignment.semicolon'>
+--------------------------------------------------------------------------------
+35 | None |     end if;
+<class 'vsg.token.if_statement.end_keyword'>
+<class 'vsg.token.if_statement.end_if_keyword'>
+<class 'vsg.token.if_statement.semicolon'>
+--------------------------------------------------------------------------------
+36 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+37 | None |   end process;
+<class 'vsg.token.process_statement.end_keyword'>
+<class 'vsg.token.process_statement.end_process_keyword'>
+<class 'vsg.token.process_statement.semicolon'>
+--------------------------------------------------------------------------------
+38 | None | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+39 | None | end architecture RTL;
+<class 'vsg.token.architecture_body.end_keyword'>
+<class 'vsg.token.architecture_body.end_architecture_keyword'>
+<class 'vsg.token.architecture_body.architecture_simple_name'>
+<class 'vsg.token.architecture_body.semicolon'>

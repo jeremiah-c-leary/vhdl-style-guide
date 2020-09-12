@@ -14,6 +14,8 @@ from vsg.vhdlFile.classify_new import simple_waveform_assignment
 
 def detect(iToken, lObjects):
 
+    if utils.find_in_next_n_tokens('if', 3, iToken, lObjects):
+        return False
     if utils.find_in_range('<=', iToken, ';', lObjects):
         if utils.find_in_range('when', iToken, ';', lObjects):
             return False
