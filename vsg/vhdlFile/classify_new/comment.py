@@ -1,7 +1,7 @@
 
 from vsg import parser
 
-def classify(dVars, lTokens, lObjects, oLine):
+def classify(lTokens, lObjects):
     
     for iToken, sToken in enumerate(lTokens):
         if sToken.startswith('--'):

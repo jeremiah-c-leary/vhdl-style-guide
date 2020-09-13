@@ -1,18 +1,20 @@
 
 from vsg.token import procedure_call_statement as token
 
+from vsg.vhdlFile import utils
+
 from vsg.vhdlFile.classify_new import procedure_call
 
-from vsg.vhdlFile import utils
 
 lKeywords = ['null', 'return', 'exit', 'next', 'while', 'for', 'loop', 'case', 'if', 'report', 'assert', 'wait', 'end', 'with', 'else', 'elsif']
 
-'''
-    procedure_call_statement ::=
-        [ label : ] procedure_call ;
-'''
 
 def detect(iToken, lObjects):
+    '''
+    procedure_call_statement ::=
+        [ label : ] procedure_call ;
+    '''
+
     iCurrent = iToken
     # Move past label if it exists
     if utils.find_in_next_n_tokens(':', 2, iCurrent, lObjects):

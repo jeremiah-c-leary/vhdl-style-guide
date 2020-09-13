@@ -6,13 +6,13 @@ from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify_new import expression
 from vsg.vhdlFile.classify_new import selected_expressions
 
-'''
+
+def detect(iToken, lObjects):
+    '''
     selected_variable_assignment ::=
         with expression select [ ? ]
            target := selected_expressions ;
-'''
-
-def detect(iToken, lObjects):
+    '''
 
     if utils.is_next_token_one_of(['when', 'if', 'elsif', 'else'], iToken, lObjects):
         return False
@@ -26,7 +26,9 @@ def detect(iToken, lObjects):
 def classify(iToken, lObjects):
 
     iCurrent = utils.assign_next_token_required('with', token.with_keyword, iToken, lObjects)
+
     iCurrent = expression.classify_until('select', iToken, lObjects)
+
     iCurrent = utils.assign_next_token_required('select', token.select_keyword, iToken, lObjects)
     iCurrent = utils.assign_next_token_if('?', token.question_mark, iCurrent, lObjects)
     iCurrent = utils.assign_tokens_until(':=', token.target, iCurrent, lObjects)

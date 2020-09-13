@@ -3,19 +3,22 @@ from vsg import parser
 
 from vsg.vhdlFile import utils
 
-'''
-    subtype_indication ::=
-        [ resolution_indication ] type_mark [ constraint ]
-'''
-
 
 def classify(iToken, lObjects):
-    iOpenParenthesis = 0
-    iCloseParenthesis = 0
-    
+    '''
+    subtype_indication ::=
+        [ resolution_indication ] type_mark [ constraint ]
+    '''
+
     return utils.assign_token(lObjects, iToken, parser.todo)
 
+
 def classify_until(lUntils, iToken, lObjects):
+    '''
+    subtype_indication ::=
+        [ resolution_indication ] type_mark [ constraint ]
+    '''
+
     iCurrent = iToken
     iStop = len(lObjects) - 1
     iOpenParenthesis = 0
@@ -33,6 +36,3 @@ def classify_until(lUntils, iToken, lObjects):
         else:
             utils.assign_token(lObjects, iCurrent, parser.todo)
     return iCurrent
-
-        
-    

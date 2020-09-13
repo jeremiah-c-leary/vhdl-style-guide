@@ -6,12 +6,12 @@ from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify_new import expression
 from vsg.vhdlFile.classify_new import force_mode
 
-'''
-    simple_force_assignment ::=
-        target <= force [ force_mode ] expression ;
-'''
 
 def detect(iToken, lObjects):
+    '''
+    simple_force_assignment ::=
+        target <= force [ force_mode ] expression ;
+    '''
 
     if utils.is_next_token_one_of(['when', 'if', 'elsif', 'else'], iToken, lObjects):
         return False

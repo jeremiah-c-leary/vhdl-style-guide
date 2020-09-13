@@ -1,8 +1,6 @@
 
 from vsg.vhdlFile.classify_new import subprogram_declaration
-from vsg.vhdlFile.classify_new import subprogram_body
 from vsg.vhdlFile.classify_new import subprogram_instantiation_declaration
-from vsg.vhdlFile.classify_new import package_declaration
 from vsg.vhdlFile.classify_new import package_body
 from vsg.vhdlFile.classify_new import package_instantiation_declaration
 from vsg.vhdlFile.classify_new import type_declaration
@@ -16,9 +14,9 @@ from vsg.vhdlFile.classify_new import component_declaration
 from vsg.vhdlFile.classify_new import attribute_declaration
 from vsg.vhdlFile.classify_new import attribute_specification
 
-from vsg.vhdlFile.classify_new import process_declarative_item
 
-'''
+def detect(iToken, lObjects):
+    '''
     package_declarative_item ::=
         subprogram_declaration
       | subprogram_instantiation_declaration
@@ -40,10 +38,7 @@ from vsg.vhdlFile.classify_new import process_declarative_item
       | group_declaration
       | PSL_Property_Declaration
       | PSL_Sequence_Declaration
-'''
-
-
-def detect(iToken, lObjects):
+    '''
 
     iReturn = subprogram_declaration.detect(iToken, lObjects)
     if iReturn != iToken:
@@ -101,11 +96,8 @@ def detect(iToken, lObjects):
     if iReturn != iToken:
         return iReturn
 
-
-
     iReturn = use_clause.detect(iToken, lObjects)
     if iReturn != iToken:
         return iReturn
-
 
     return iToken

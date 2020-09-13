@@ -6,12 +6,12 @@ from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify_new import delay_mechanism
 from vsg.vhdlFile.classify_new import waveform
 
-'''
-    simple_waveform_assignment ::=
-        target <= [ delay_mechanism ] waveform ;
-'''
 
 def detect(iToken, lObjects):
+    '''
+    simple_waveform_assignment ::=
+        target <= [ delay_mechanism ] waveform ;
+    '''
 
     if utils.is_next_token_one_of(['when', 'if', 'elsif', 'else'], iToken, lObjects):
         return False

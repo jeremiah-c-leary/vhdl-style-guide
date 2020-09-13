@@ -15,60 +15,25 @@ def is_current_level(dVars, sLevel):
         return True
     return False
 
+
 def pop_level(dVars):
     dVars['history'].pop()
 
+
 def push_level(dVars, level):
     dVars['history'].append(level)
+
 
 def current_level(dVars):
     return dVars['history'][-1]
 
 
-def is_comment(oObject, lNewObjects):
-    if type(oObject) == token.Comment:
-        return True
-    return False
+def have_guard_condition(iToken, lObjects):
+    return is_next_token('(', iToken, lObjects)
 
 
-def is_carriage_return(oObject, lNewObjects):
-    if type(oObject) == token.CarriageReturn:
-        return True
-    return False
-
-
-def is_blank_line(oObject, lNewObjects):
-    if type(oObject) == token.BlankLine:
-        return True
-    return False
-
-
-def is_whitespace(oObject, lNewObjects):
-    if type(oObject) == token.Whitespace:
-        return True
-    return False
-
-def have_guard_condition(iObject, lAllObjects):
-    iItemCount = 0
-    iIndex = iObject
-    while iItemCount < 1:
-        if type(lAllObjects[iIndex]) == parser.item:
-            iItemCount += 1
-            if lAllObjects[iIndex].get_value().lower() == '(':
-                return True
-        iIndex += 1
-    return False
-
-def have_is_keyword(iObject, lAllObjects):
-    iItemCount = 0
-    iIndex = iObject
-    while iItemCount < 1:
-        if type(lAllObjects[iIndex]) == parser.item:
-            iItemCount += 1
-            if lAllObjects[iIndex].get_value().lower() == 'is':
-                return True
-        iIndex += 1
-    return False
+def have_is_keyword(iToken, lObjects):
+    return is_next_token('is', iToken, lObjects)
 
 
 def assign_tokens_until(sToken, token, iToken, lObjects):
@@ -133,20 +98,12 @@ def object_value_is(lAllObjects, iToken, sString):
         return True
     return False
 
+
 def is_item(lAllObjects, iToken):
     if type(lAllObjects[iToken]) == parser.item:
         return True
     return False
 
-def get_bounds(lObjects, iStart, sEnd):
-    iIndex = iStart
-    while lObjects[iIndex].get_value() != sEnd:
-        iIndex += 1
-    else:
-        iEnd = iIndex
-        iStart = iStart
-        iCurrent = iStart
-    return iStart, iCurrent, iEnd
 
 def get_range(lObjects, iStart, sEnd):
     iIndex = iStart
@@ -164,6 +121,7 @@ def classify_next_token_if(sToken, token, iToken, lObjects):
         iCurrent = assign_token(lObjects, iCurrent, token)
         return iCurrent
     return iToken
+
 
 def classify_next_token(token, iToken, lObjects):
     iCurrent = find_next_token(iToken, lObjects)
@@ -187,6 +145,20 @@ def find_in_range(sValue, iToken, sEnd, lObjects):
     return False
 
 
+def are_next_consecutive_tokens(lTokens, iToken, lObjects):
+    iMaxTokenCount = len(lTokens)
+    iTokenCount = 0
+    iCurrent = iToken
+    while iTokenCount < iMaxTokenCount:
+        iCurrent = find_next_token(iCurrent, lObjects)
+        if not is_next_token(lTokens[iTokenCount], iCurrent, lObjects):
+            return False
+        iCurrent += 1
+        iTokenCount += 1
+    else:
+        return True
+
+
 def find_in_next_n_tokens(sValue, iMax, iToken, lObjects):
     iTokenCount = 0
     iCurrent = iToken
@@ -198,6 +170,7 @@ def find_in_next_n_tokens(sValue, iMax, iToken, lObjects):
         iCurrent += 1
     else:
         return False
+
 
 def find_earliest_occurance_ignoring_matched_parenthesis(lEnd, iToken, lObjects):
     print('--> find_earliest_occurance_ignoring_matched_parenthesis')
@@ -251,7 +224,7 @@ def find_next_token(iToken, lObjects):
 
 
 def detect_submodule(iToken, lObjects, module):
-    iLast = 0           
+    iLast = 0
     iReturn = iToken
     while iLast != iReturn:
         iReturn = find_next_token(iReturn, lObjects)
@@ -259,17 +232,20 @@ def detect_submodule(iToken, lObjects, module):
         iReturn = module.detect(iReturn, lObjects)
     return iReturn
 
+
 def classify_begin_keyword(iToken, token, lObjects):
     iReturn = iToken
     if classify_token('begin', token, iToken, lObjects):
         iReturn = iToken + 1
     return iReturn
 
+
 def classify_is_keyword(iToken, token, lObjects):
     iReturn = iToken
     if classify_token('is', token, iToken, lObjects):
         iReturn = iToken + 1
     return iReturn
+
 
 def classify_semicolon(iToken, token, lObjects):
     find_next_token(iToken, lObjects)
@@ -279,22 +255,6 @@ def classify_semicolon(iToken, token, lObjects):
     return False
 
 
-#def has_label(iObject, lObjects):
-#    iItemCount = 0
-#    iIndex = iObject
-#    try:
-#        while iItemCount < 2:
-#            print(lObjects[iIndex].get_value())
-#            if type(lObjects[iIndex]) == parser.item:
-#                iItemCount += 1
-#            iIndex += 1
-#        else:
-#            if lObjects[iIndex-1].get_value().lower() == ':':
-#                return True
-#    except IndexError:
-#        return False
-#    return False
-    
 def has_label(iObject, lObjects):
     iCurrent = find_next_token(iObject, lObjects)
     iCurrent = increment_token_count(iCurrent)
@@ -303,24 +263,14 @@ def has_label(iObject, lObjects):
         return True
     return False
 
-#def tokenize_postponed(iObject, lObjects, token):
-#    iIndex = iObject
-#    iItemCount = 0
-#    while iItemCount < 3:
-#        if is_item(lObjects, iIndex):
-#            if object_value_is(lObjects, iIndex, 'postponed'):
-#                assign_token(lObjects, iIndex, token) 
-#                return iIndex
-#            iItemCount += 1
-#        iIndex += 1
-#    return iObject
 
 def tokenize_postponed(iObject, lObjects, token):
     iIndex = find_next_token(iObject, lObjects)
     if object_value_is(lObjects, iIndex, 'postponed'):
-        assign_token(lObjects, iIndex, token) 
+        assign_token(lObjects, iIndex, token)
         return iIndex + 1
     return iObject
+
 
 def tokenize_label(iToken, lObjects, label_token, colon_token):
     iCurrent = find_next_token(iToken, lObjects)
@@ -329,13 +279,14 @@ def tokenize_label(iToken, lObjects, label_token, colon_token):
         while iItemCount < 2:
             if is_item(lObjects, iCurrent):
                 if iItemCount == 0:
-                    assign_token(lObjects, iCurrent, label_token) 
+                    assign_token(lObjects, iCurrent, label_token)
                 if iItemCount == 1:
-                    assign_token(lObjects, iCurrent, colon_token) 
+                    assign_token(lObjects, iCurrent, colon_token)
                 iItemCount += 1
             iCurrent += 1
         return iCurrent
     return iToken
+
 
 def tokenize_semicolon(iObject, lObjects, token):
     iIndex = iObject
@@ -349,6 +300,7 @@ def tokenize_semicolon(iObject, lObjects, token):
         iIndex += 1
     return iObject
 
+
 def print_debug(sTitle, iStart, iEnd, lObjects):
     print('--> ' + sTitle)
     sOutput = ''
@@ -357,12 +309,15 @@ def print_debug(sTitle, iStart, iEnd, lObjects):
         sOutput += (lObjects[iIndex].get_value())
     print(sOutput)
 
+
 def print_next_token(iObject, lObjects):
     iCurrent = find_next_token(iObject, lObjects)
     print(f'{iCurrent} | {lObjects[iCurrent].get_value()}')
 
+
 def print_token(iObject, lObjects):
     print(f'{iObject} | {lObjects[iObject].get_value()}')
+
 
 def print_line(lObjects, iStart):
     iIndex = iStart
@@ -372,25 +327,30 @@ def print_line(lObjects, iStart):
         iIndex += 1
     print(sOutput)
 
+
 def token_is_semicolon(iObject, lObjects):
     if object_value_is(lObjects, iObject, ';'):
         return True
     return False
+
 
 def token_is_comma(iObject, lObjects):
     if object_value_is(lObjects, iObject, ','):
         return True
     return False
 
+
 def token_is_open_parenthesis(iObject, lObjects):
     if object_value_is(lObjects, iObject, '('):
         return True
     return False
 
+
 def token_is_close_parenthesis(iObject, lObjects):
     if object_value_is(lObjects, iObject, ')'):
         return True
     return False
+
 
 def increment_token_count(iToken):
     return iToken + 1
@@ -417,7 +377,6 @@ def detect_subelement_until(sToken, element, iToken, lObjects):
         iCurrent = element.detect(iCurrent, lObjects)
         if iLast == iCurrent:
             return iCurrent
-#            iCurrent += 1
     return iCurrent
 
 
@@ -435,6 +394,7 @@ def calculate_line_number(iToken, lObjects):
             iReturn += 1
     return iReturn
 
+
 def calculate_column(iToken, lObjects):
     iColumn = 0
     for iCarriageReturn in range(iToken, 0, -1):
@@ -445,13 +405,13 @@ def calculate_column(iToken, lObjects):
     iColumn += 1
     return iColumn
 
+
 def print_error_message(sToken, token, iToken, lObjects):
     sFoundToken = lObjects[iToken].get_value()
     iLine = calculate_line_number(iToken, lObjects)
     iColumn = calculate_column(iToken, lObjects)
     sModuleName = extract_module_name(token)
     print(f'Error: Unknown token in {sModuleName}({iLine}:{iColumn})')
-#    print(f'       Line number {iLine} Column {iColumn}')
     print(f'       Expecting {sToken}, found {sFoundToken}')
     exit()
 
@@ -469,4 +429,3 @@ def keyword_found(sKeyword, iToken, lObjects):
     if is_next_token(sKeyword, iToken, lObjects):
         return True
     return False
-

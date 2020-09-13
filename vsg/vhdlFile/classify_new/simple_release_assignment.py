@@ -5,12 +5,12 @@ from vsg.vhdlFile import utils
 
 from vsg.vhdlFile.classify_new import force_mode
 
-'''
-    simple_release_assignment ::=
-        target <= release [ force_mode ] ;
-'''
 
 def detect(iToken, lObjects):
+    '''
+    simple_release_assignment ::=
+        target <= release [ force_mode ] ;
+    '''
 
     if utils.find_in_range('release', iToken, ';', lObjects):
         return classify(iToken, lObjects)

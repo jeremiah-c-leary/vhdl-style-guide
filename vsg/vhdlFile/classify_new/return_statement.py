@@ -11,11 +11,10 @@ def detect(iToken, lObjects):
     return_statement ::=
         [ label : ] return [ expression ] ;
     '''
+
     if utils.find_in_next_n_tokens(':', 2, iToken, lObjects):
         if utils.find_in_next_n_tokens('return', 3, iToken, lObjects):
             return classify(iToken, lObjects)
-        else:
-            return iToken
     if utils.is_next_token('return', iToken, lObjects):
         return classify(iToken, lObjects)
     return iToken

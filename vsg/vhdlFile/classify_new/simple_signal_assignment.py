@@ -5,14 +5,14 @@ from vsg.vhdlFile.classify_new import simple_force_assignment
 from vsg.vhdlFile.classify_new import simple_release_assignment
 from vsg.vhdlFile.classify_new import simple_waveform_assignment
 
-'''
+
+def detect(iToken, lObjects):
+    '''
     simple_signal_assignment ::=
         simple_waveform_assignment
       | simple_force_assignment
       | simple_release_assignment
-'''
-
-def detect(iToken, lObjects):
+    '''
 
     if utils.find_in_next_n_tokens('if', 3, iToken, lObjects):
         return False
@@ -26,14 +26,15 @@ def detect(iToken, lObjects):
 
 
 def classify(iToken, lObjects):
+
     iCurrent = iToken
     iCurrent = simple_force_assignment.detect(iToken, lObjects)
     if iCurrent != iToken:
-        return iCurrent    
+        return iCurrent
 
     iCurrent = simple_release_assignment.detect(iToken, lObjects)
     if iCurrent != iToken:
-        return iCurrent    
+        return iCurrent
 
     iCurrent = simple_waveform_assignment.detect(iToken, lObjects)
 

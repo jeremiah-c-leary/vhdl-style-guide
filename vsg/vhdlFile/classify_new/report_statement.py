@@ -5,14 +5,15 @@ from vsg.vhdlFile.classify_new import expression
 
 from vsg.vhdlFile import utils
 
-'''
+
+def detect(iToken, lObjects):
+    '''
     report_statement ::=
         [ label : ]
             report expression
                 [ severity expression ] ;
-'''
+    '''
 
-def detect(iToken, lObjects):
     if utils.keyword_found('report', iToken, lObjects):
         return classify(iToken, lObjects)
     return iToken

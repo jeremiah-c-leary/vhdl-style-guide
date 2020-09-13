@@ -5,14 +5,13 @@ from vsg.vhdlFile import utils
 
 from vsg.vhdlFile.classify_new import waveform_element
 
-'''
+
+def classify_until(lUntils, iToken, lObjects):
+    '''
     waveform ::=
         waveform_element { , waveform_element }
       | unaffected
-'''
-
-
-def classify_until(lUntils, iToken, lObjects):
+    '''
 
     if utils.is_next_token('unaffected', iToken, lObjects):
         return utils.assign_next_token_required('unaffected', token.unaffected_keyword, iToken, lObjects)

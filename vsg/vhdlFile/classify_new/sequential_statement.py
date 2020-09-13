@@ -13,7 +13,9 @@ from vsg.vhdlFile.classify_new import signal_assignment_statement
 from vsg.vhdlFile.classify_new import variable_assignment_statement
 from vsg.vhdlFile.classify_new import wait_statement
 
-'''
+
+def detect(iToken, lObjects):
+    '''
     sequential_statement ::=
         wait_statement
       | assertion_statement
@@ -28,10 +30,7 @@ from vsg.vhdlFile.classify_new import wait_statement
       | exit_statement
       | return_statement
       | null_statement
-'''
-
-
-def detect(iToken, lObjects):
+    '''
 
     iReturn = wait_statement.detect(iToken, lObjects)
     if iReturn != iToken:

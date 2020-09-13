@@ -1,31 +1,28 @@
 
-from vsg import parser
 from vsg.token import use_clause as token
 
 from vsg.vhdlFile import utils
 
 
-def detect(iCurrent, lObjects):
+def detect(iToken, lObjects):
     '''
     use_clause ::=
         use selected_name { , selected_name } ;
     '''
-    if utils.object_value_is(lObjects, iCurrent, 'use'):
-        return classify(iCurrent, lObjects)
+    if utils.is_next_token('use', iToken, lObjects):
+        return classify(iToken, lObjects)
+    return iToken
+
+
+def classify(iToken, lObjects):
+
+    iCurrent = utils.assign_next_token_required('use', token.keyword, iToken, lObjects)
+
+    iCurrent = utils.assign_next_token(token.selected_name, iCurrent, lObjects)
+
+    while utils.is_next_token(',', iCurrent, lObjects):
+        iCurrent = utils.assign_next_token_required(',', token.comma, iCurrent, lObjects)
+        iCurrent = utils.assign_next_token(token.selected_name, iCurrent, lObjects)
+ 
+    iCurrent = utils.assign_next_token_required(';', token.semicolon, iCurrent, lObjects)
     return iCurrent
-
-
-def classify(iCurrent, lObjects):
-
-    iStart, iEnd = utils.get_range(lObjects, iCurrent, ';')
-    
-    for iToken in range(iStart, iEnd):
-        if utils.is_item(lObjects, iToken):
-            if utils.classify_token('use', token.keyword, iToken, lObjects):
-                continue
-            if utils.classify_token(',', token.comma, iToken, lObjects):
-                continue
-            utils.assign_token(lObjects, iToken, token.selected_name)
-
-    utils.classify_token(';', token.semicolon, iEnd, lObjects)
-    return iEnd

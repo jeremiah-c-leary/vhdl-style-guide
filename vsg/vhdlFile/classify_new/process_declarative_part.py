@@ -2,13 +2,13 @@
 
 from vsg.vhdlFile.classify_new import process_declarative_item
 
-'''
-    process_declarative_part ::=
-        { process_declarative_item }
-'''
-
 
 def detect(iToken, lObjects):
+    '''
+    process_declarative_part ::=
+        { process_declarative_item }
+    '''
+
     iLast = 0
     iCurrent = iToken
     while iLast != iCurrent:

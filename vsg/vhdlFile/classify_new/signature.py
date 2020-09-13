@@ -5,22 +5,22 @@ from vsg.vhdlFile import utils
 
 from vsg.vhdlFile.classify_new import type_mark
 
-'''
+
+def detect(iToken, lObjects):
+    '''
     signature ::= **[** [ type_mark { , type_mark } ] [ return type_mark ] **]**
 
     NOTE:  The [ and ] enclosed by ** are required if the signature is provided.
-'''
-
-
-def detect(iToken, lObjects):
+    '''
 
     if utils.is_next_token('[', iToken, lObjects):
-        return classify(iToken, lObjects)    
+        return classify(iToken, lObjects)
 
     return iToken
 
 
 def classify(iToken, lObjects):
+
     iCurrent = utils.assign_next_token_required('[', token.open_bracket, iToken, lObjects)
 
     detect_type_mark(iCurrent, lObjects)
@@ -29,10 +29,11 @@ def classify(iToken, lObjects):
 
     iCurrent = utils.assign_next_token_required(']', token.close_bracket, iCurrent, lObjects)
 
-    return iCurrent 
+    return iCurrent
 
 
 def detect_return(iToken, lObjects):
+
     iCurrent = iToken
     if utils.is_next_token('return', iCurrent, lObjects):
         iCurrent = utils.assign_next_token_required('return', token.return_keyword, iCurrent, lObjects)
@@ -41,6 +42,7 @@ def detect_return(iToken, lObjects):
 
 
 def detect_type_mark(iToken, lObjects):
+
     iCurrent = iToken
     if not utils.is_next_token('return', iCurrent, lObjects):
         iCurrent = type_mark.classify(iCurrent, lObjects)

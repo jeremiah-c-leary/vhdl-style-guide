@@ -1,6 +1,4 @@
 
-from vsg import parser
-
 from vsg.token import selected_force_assignment as token
 
 from vsg.vhdlFile import utils
@@ -9,13 +7,13 @@ from vsg.vhdlFile.classify_new import force_mode
 from vsg.vhdlFile.classify_new import expression
 from vsg.vhdlFile.classify_new import selected_expressions
 
-'''
+
+def detect(iToken, lObjects):
+    '''
     selected_force_assignment ::= [§ 10.5.4]
         with expression select [ ? ]
             target <= force [ force_mode ] selected_expressions ;
-'''
-
-def detect(iToken, lObjects):
+    '''
 
     if utils.is_next_token_one_of(['when', 'if', 'elsif', 'else'], iToken, lObjects):
         return False

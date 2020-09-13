@@ -1,13 +1,11 @@
 
-#from vsg.vhdlFile import utils
-
 from vsg.vhdlFile.classify_new import interface_list
-
-'''
-    port_list ::=
-        *port*_interface_list
-'''
 
 
 def classify(iToken, lObjects):
+    '''
+    port_list ::=
+        *port*_interface_list
+    '''
+
     return interface_list.classify(iToken, lObjects)

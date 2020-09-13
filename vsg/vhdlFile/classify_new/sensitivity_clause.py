@@ -1,16 +1,17 @@
 
 from vsg.token import sensitivity_clause as token
 
-from vsg.vhdlFile.classify_new import sensitivity_list
-
 from vsg.vhdlFile import utils
 
-'''
-    sensitivity_clause ::=
-        on sensitivity_list
-'''
+from vsg.vhdlFile.classify_new import sensitivity_list
+
 
 def detect(iToken, lObjects):
+    '''
+    sensitivity_clause ::=
+        on sensitivity_list
+    '''
+
     if utils.is_next_token('on', iToken, lObjects):
         return True
     return False

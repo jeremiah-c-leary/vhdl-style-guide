@@ -5,12 +5,12 @@ from vsg.vhdlFile import utils
 
 from vsg.vhdlFile.classify_new import expression
 
-'''
-    simple_variable_assignment ::=
-        target := expression ;
-'''
 
 def detect(iToken, lObjects):
+    '''
+    simple_variable_assignment ::=
+        target := expression ;
+    '''
 
     if utils.is_next_token_one_of(['when', 'if', 'elsif', 'else'], iToken, lObjects):
         return False

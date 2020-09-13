@@ -11,6 +11,7 @@ def classify(iToken, lObjects):
     sensitivity_list ::=
         *signal*_name { , *signal*_name}
     '''
+
     iCurrent = iToken
     iLast = 0
     while iLast != iCurrent:
@@ -27,6 +28,7 @@ def classify_until(lUntils, iToken, lObjects):
     sensitivity_list ::=
         *signal*_name { , *signal*_name}
     '''
+
     iCurrent = iToken
     iLast = 0
     while iLast != iCurrent:

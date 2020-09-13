@@ -13,10 +13,11 @@ from vsg.vhdlFile.classify_new import file_declaration
 from vsg.vhdlFile.classify_new import alias_declaration
 from vsg.vhdlFile.classify_new import attribute_declaration
 from vsg.vhdlFile.classify_new import attribute_specification
-
 from vsg.vhdlFile.classify_new import use_clause
 
-'''
+
+def detect(iToken, lObjects):
+    '''
     process_declarative_item ::=
         subprogram_declaration
       | subprogram_body
@@ -35,10 +36,7 @@ from vsg.vhdlFile.classify_new import use_clause
       | use_clause
       | group_template_declaration
       | group_declaration
-'''
-
-
-def detect(iToken, lObjects):
+    '''
 
     iReturn = subprogram_declaration.detect(iToken, lObjects)
     if iReturn != iToken:
@@ -92,8 +90,6 @@ def detect(iToken, lObjects):
     iReturn = attribute_specification.detect(iToken, lObjects)
     if iReturn != iToken:
         return iReturn
-
-
 
     iReturn = use_clause.detect(iToken, lObjects)
     if iReturn != iToken:

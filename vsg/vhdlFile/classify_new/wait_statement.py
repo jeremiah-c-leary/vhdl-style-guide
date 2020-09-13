@@ -7,12 +7,12 @@ from vsg.vhdlFile.classify_new import timeout_clause
 
 from vsg.vhdlFile import utils
 
-'''
-    wait_statement ::=
-        [ label : ] wait [ sensitivity_clause ] [ condition_clause ] [ timeout_clause ] ;
-'''
 
 def detect(iToken, lObjects):
+    '''
+    wait_statement ::=
+        [ label : ] wait [ sensitivity_clause ] [ condition_clause ] [ timeout_clause ] ;
+    '''
     if utils.keyword_found('wait', iToken, lObjects):
         return classify(iToken, lObjects)
     return iToken

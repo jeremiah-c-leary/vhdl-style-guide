@@ -3,18 +3,18 @@ from vsg.vhdlFile.classify_new import architecture_body
 from vsg.vhdlFile.classify_new import package_body
 
 
-def detect(iCurrent, lObjects):
+def detect(iToken, lObjects):
     '''
-    secondary_unit ::= 
+    secondary_unit ::=
         architecture_body
       | package_body
     '''
-    iReturned = architecture_body.detect(iCurrent, lObjects)
-    if iReturned != iCurrent:
+    iReturned = architecture_body.detect(iToken, lObjects)
+    if iReturned != iToken:
         return iReturned
 
-    iReturned = package_body.detect(iCurrent, lObjects)
-    if iReturned != iCurrent:
+    iReturned = package_body.detect(iToken, lObjects)
+    if iReturned != iToken:
         return iReturned
 
-    return iCurrent
+    return iToken

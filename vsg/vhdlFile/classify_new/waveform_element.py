@@ -5,14 +5,13 @@ from vsg.vhdlFile import utils
 
 from vsg.vhdlFile.classify_new import expression
 
-'''
+
+def classify_until(lUntils, iToken, lObjects):
+    '''
     waveform_element ::=
         *value*_expression [ after *time*_expression ]
       | null [ after *time*_expression ]
-'''
-
-
-def classify_until(lUntils, iToken, lObjects):
+    '''
 
     if utils.is_next_token('null', iToken, lObjects):
         iCurrent = utils.assign_next_token_required('null', token.null_keyword, iToken, lObjects)

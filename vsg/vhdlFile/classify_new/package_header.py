@@ -6,15 +6,14 @@ from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify_new import generic_clause
 from vsg.vhdlFile.classify_new import generic_map_aspect
 
-'''
+
+def detect(iToken, lObjects):
+    '''
     package_header ::=
         [ generic_clause
         [ generic_map_aspect ; ] ]
-'''
+    '''
 
-
-def detect(iToken, lObjects):
-    
     iReturn = generic_clause.detect(iToken, lObjects)
 
     iLast = iReturn

@@ -5,13 +5,13 @@ from vsg.token import range_constraint as token
 
 from vsg.vhdlFile import utils
 
-'''
-    range_constraint ::=
-        **range** range
-'''
-
 
 def detect(iToken, lObjects):
+    '''
+    range_constraint ::=
+        **range** range
+    '''
+
     if utils.is_next_token('range', iToken, lObjects):
         return classify(iToken, lObjects)
 
@@ -23,5 +23,5 @@ def classify(iToken, lObjects):
 
     while not utils.is_next_token(';', iCurrent, lObjects):
         iCurrent = utils.assign_next_token(parser.todo, iCurrent, lObjects)
-    
+
     return iCurrent

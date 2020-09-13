@@ -6,13 +6,12 @@ from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify_new import subprogram_specification
 
 
-'''
+def detect(iToken, lObjects):
+    '''
     subprogram_declaration ::=
         subprogram_specification ;
-'''
+    '''
 
-
-def detect(iToken, lObjects):
     iCurrent = subprogram_specification.detect(iToken, lObjects)
     if iCurrent != iToken:
         if utils.is_next_token(';', iCurrent, lObjects):

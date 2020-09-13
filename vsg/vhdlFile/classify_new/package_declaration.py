@@ -1,21 +1,22 @@
 
+from vsg.token import package_declaration as token
+
 from vsg.vhdlFile import utils
 
 from vsg.vhdlFile.classify_new import package_declarative_part
 from vsg.vhdlFile.classify_new import package_header
 
-from vsg.token import package_declaration as token
 
-'''
+
+def detect(iToken, lObjects):
+    '''
     package_declaration ::=
         package identifier is
             package_header
             package_declarative_part
         end [ package ] [ package_simple_name ] ;
-'''
+    '''
 
-
-def detect(iToken, lObjects):
     iCurrent = utils.find_next_token(iToken, lObjects)
     if utils.object_value_is(lObjects, iCurrent, 'package'):
         if not utils.find_in_next_n_tokens('body', 5, iCurrent, lObjects):

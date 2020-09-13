@@ -1,6 +1,4 @@
 
-from vsg import parser
-
 from vsg.token import selected_waveform_assignment as token
 
 from vsg.vhdlFile import utils
@@ -9,13 +7,13 @@ from vsg.vhdlFile.classify_new import delay_mechanism
 from vsg.vhdlFile.classify_new import expression
 from vsg.vhdlFile.classify_new import selected_waveforms
 
-'''
+
+def detect(iToken, lObjects):
+    '''
     selected_waveform_assignment ::=
         with expression select [ ? ]
             target <= [delay_machanism] selected_waveforms ;
-'''
-
-def detect(iToken, lObjects):
+    '''
 
     if utils.is_next_token_one_of(['when', 'if', 'elsif', 'else'], iToken, lObjects):
         return False

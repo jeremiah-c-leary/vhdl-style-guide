@@ -15,6 +15,7 @@ def detect(iCurrent, lObjects):
       | context_declaration
       | PSL_Verification_Unit
     '''
+
     iReturned = context_declaration.detect(iCurrent, lObjects)
     if iReturned != iCurrent:
         return iReturned

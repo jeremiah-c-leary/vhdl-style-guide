@@ -1,15 +1,13 @@
 
-from vsg.vhdlFile import utils
-
 from vsg.vhdlFile.classify_new import subprogram_declarative_item
-
-'''
-    subprogram_declarative_part ::=
-        { subprogram_declarative_item }
-'''
 
 
 def detect(iToken, lObjects):
+    '''
+    subprogram_declarative_part ::=
+        { subprogram_declarative_item }
+    '''
+
     iLast = 0
     iCurrent = iToken
     while iLast != iCurrent:

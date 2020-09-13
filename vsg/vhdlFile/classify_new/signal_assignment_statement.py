@@ -1,13 +1,11 @@
 
 from vsg.token import signal_assignment_statement as token
 
-from vsg import parser
+from vsg.vhdlFile import utils
 
 from vsg.vhdlFile.classify_new import conditional_signal_assignment
 from vsg.vhdlFile.classify_new import selected_signal_assignment
 from vsg.vhdlFile.classify_new import simple_signal_assignment
-
-from vsg.vhdlFile import utils
 
 
 def detect(iToken, lObjects):
@@ -17,6 +15,7 @@ def detect(iToken, lObjects):
       | [ label : ] conditional_signal_assignment
       | [ label : ] selected_signal_assignment
     '''
+
     iCurrent = iToken
 
     if selected_signal_assignment.detect(iToken, lObjects):

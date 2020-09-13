@@ -1,15 +1,13 @@
 
-from vsg.vhdlFile import utils
-
 from vsg.vhdlFile.classify_new import sequential_statement
-
-'''
-    sequence_of_statements ::=
-        { sequential_statement }
-'''
 
 
 def detect(iToken, lObjects):
+    '''
+    sequence_of_statements ::=
+        { sequential_statement }
+    '''
+
     iLast = 0
     iCurrent = iToken
     while iLast != iCurrent:
