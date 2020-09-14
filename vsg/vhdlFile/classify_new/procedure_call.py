@@ -26,6 +26,7 @@ def detect(iToken, lObjects):
 
     Differentiating a procedure call from anything else is essentially the absence of keywords.
     '''
+
     iCurrent = iToken
 
     while lObjects[iCurrent].get_value() != ';':
@@ -42,15 +43,14 @@ def classify(iToken, lObjects):
     procedure_call ::=
         *procedure*_name [ ( actual_parameter_part ) ]
     '''
-    iCurrent = utils.assign_token(lObjects, iToken, token.procedure_name)
 
-    iCurrent = utils.find_next_token(iToken, lObjects)
-    if utils.object_value_is(lObjects, iCurrent, '('):
-        iCurrent = utils.assign_token(lObjects, iCurrent, token.open_parenthesis)
+    iCurrent = utils.assign_next_token(token.procedure_name, iToken, lObjects)
+
+    if utils.is_next_token('(', iToken, lObjects):
+        iCurrent = utils.assign_next_token_required('(', token.open_parenthesis, iCurrent, lObjects)
 
         iCurrent = actual_parameter_part.classify(iCurrent, lObjects)
 
-        iCurrent = utils.find_next_token(iCurrent, lObjects)
-        iCurrent = utils.assign_token(lObjects, iCurrent, token.close_parenthesis)
+        iCurrent = utils.assign_next_token_required(')', token.close_parenthesis, iCurrent, lObjects)
 
     return iCurrent

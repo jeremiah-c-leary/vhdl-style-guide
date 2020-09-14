@@ -3,8 +3,8 @@ from vsg.token import package_instantiation_declaration as token
 
 from vsg.vhdlFile import utils
 
-from vsg.vhdlFile.classify_new import identifier
 from vsg.vhdlFile.classify_new import generic_map_aspect
+from vsg.vhdlFile.classify_new import identifier
 
 
 def detect(iToken, lObjects):
@@ -14,12 +14,8 @@ def detect(iToken, lObjects):
             [ generic_map_aspect ] ;
     '''
 
-    iCurrent = utils.find_next_token(iToken, lObjects)
-    if utils.object_value_is(lObjects, iCurrent, 'package'):
-        if utils.find_in_next_n_tokens('new', 5, iCurrent, lObjects):
-            return classify(iToken, lObjects)
-        else:
-            return iToken
+    if utils.are_next_consecutive_tokens(['package', None, 'is', 'new'], iToken, lObjects):
+        return classify(iToken, lObjects)
     return iToken
 
 

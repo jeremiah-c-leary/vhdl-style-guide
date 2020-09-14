@@ -9,11 +9,8 @@ def detect(iToken, lObjects):
     null_statement ::=
         [ label : ] null ;
     '''
-    if utils.find_in_next_n_tokens(':', 2, iToken, lObjects):
-        if utils.find_in_next_n_tokens('null', 3, iToken, lObjects):
-            return classify(iToken, lObjects)
-        else:
-            return iToken
+    if utils.are_next_consecutive_tokens([None, ':', 'null'], iToken, lObjects):
+        return classify(iToken, lObjects)
     if utils.is_next_token('null', iToken, lObjects):
         return classify(iToken, lObjects)
     return iToken

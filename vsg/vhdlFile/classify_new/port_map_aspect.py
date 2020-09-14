@@ -12,18 +12,19 @@ def detect(iToken, lObjects):
         port map ( *port*_association_list )
     '''
 
-    iCurrent = utils.find_next_token(iToken, lObjects)
-    if utils.object_value_is(lObjects, iCurrent, 'port'):
-        return classify(iCurrent, lObjects)
+    if utils.are_next_consecutive_tokens(['port', 'map', '('], iToken, lObjects):
+        return classify(iToken, lObjects)
     return iToken
 
 
 def classify(iToken, lObjects):
 
-    iCurrent = utils.assign_next_token_if('port', token.port_keyword, iToken, lObjects)
-    iCurrent = utils.assign_next_token_if('map', token.map_keyword, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_if('(', token.open_parenthesis, iCurrent, lObjects)
+    iCurrent = utils.assign_next_token_required('port', token.port_keyword, iToken, lObjects)
+    iCurrent = utils.assign_next_token_required('map', token.map_keyword, iCurrent, lObjects)
+    iCurrent = utils.assign_next_token_required('(', token.open_parenthesis, iCurrent, lObjects)
+
     iCurrent = association_list.classify(iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_if(')', token.close_parenthesis, iCurrent, lObjects)
+
+    iCurrent = utils.assign_next_token_required(')', token.close_parenthesis, iCurrent, lObjects)
 
     return iCurrent

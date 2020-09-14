@@ -8,4 +8,9 @@ def detect(iToken, lObjects):
         { package_declarative_item }
     '''
 
-    return package_declarative_item.detect(iToken, lObjects)
+    iLast = 0
+    iCurrent = iToken
+    while iLast != iCurrent:
+        iLast = iCurrent
+        iCurrent = package_declarative_item.detect(iCurrent, lObjects)
+    return iCurrent

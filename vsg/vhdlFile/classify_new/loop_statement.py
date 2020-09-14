@@ -1,21 +1,21 @@
 
 from vsg.token import loop_statement as token
 
+from vsg.vhdlFile import utils
+
 from vsg.vhdlFile.classify_new import iteration_scheme
 from vsg.vhdlFile.classify_new import sequence_of_statements
 
-from vsg.vhdlFile import utils
 
-'''
+def detect(iToken, lObjects):
+    '''
     loop_statement ::=
         [ loop_label : ]
             [ iteration_scheme ] loop
                 sequence_of_statements
             end loop [ loop_label ] ;
-'''
+    '''
 
-
-def detect(iToken, lObjects):
     if utils.find_in_next_n_tokens(':', 2, iToken, lObjects):
         iCurrent = utils.find_next_token(iToken, lObjects)
         iCurrent += 1

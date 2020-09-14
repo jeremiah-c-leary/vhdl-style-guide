@@ -5,7 +5,7 @@ from vsg.vhdlFile.classify_new import package_declaration
 from vsg.vhdlFile.classify_new import package_instantiation_declaration
 
 
-def detect(iCurrent, lObjects):
+def detect(iToken, lObjects):
     '''
     primary_unit ::=
         entity_declaration
@@ -16,20 +16,20 @@ def detect(iCurrent, lObjects):
       | PSL_Verification_Unit
     '''
 
-    iReturned = context_declaration.detect(iCurrent, lObjects)
-    if iReturned != iCurrent:
+    iReturned = context_declaration.detect(iToken, lObjects)
+    if iReturned != iToken:
         return iReturned
 
-    iReturned = entity_declaration.detect(iCurrent, lObjects)
-    if iReturned != iCurrent:
+    iReturned = entity_declaration.detect(iToken, lObjects)
+    if iReturned != iToken:
         return iReturned
 
-    iReturned = package_declaration.detect(iCurrent, lObjects)
-    if iReturned != iCurrent:
+    iReturned = package_declaration.detect(iToken, lObjects)
+    if iReturned != iToken:
         return iReturned
 
-    iReturned = package_instantiation_declaration.detect(iCurrent, lObjects)
-    if iReturned != iCurrent:
+    iReturned = package_instantiation_declaration.detect(iToken, lObjects)
+    if iReturned != iToken:
         return iReturned
 
-    return iCurrent
+    return iToken

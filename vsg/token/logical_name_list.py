@@ -9,5 +9,5 @@ class logical_name(parser.logical_name):
 
 class comma(parser.comma):
 
-    def __init__(self):
+    def __init__(self, sString=','):
         parser.comma.__init__(self)

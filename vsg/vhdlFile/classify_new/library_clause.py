@@ -1,29 +1,27 @@
 
-from vsg import parser
 from vsg.token import library_clause as token
-
-from vsg.vhdlFile.classify_new import logical_name_list
 
 from vsg.vhdlFile import utils
 
+from vsg.vhdlFile.classify_new import logical_name_list
 
-def detect(iCurrent, lObjects):
+
+def detect(iToken, lObjects):
     '''
     library_clause ::=
         library logic_name_list ;
     '''
-    if utils.object_value_is(lObjects, iCurrent, 'library'):
-        return classify(iCurrent, lObjects)
+    if utils.is_next_token('library', iToken, lObjects):
+        return classify(iToken, lObjects)
+    return iToken
+
+
+def classify(iToken, lObjects):
+
+    iCurrent = utils.assign_next_token_required('library', token.keyword, iToken, lObjects)
+
+    iCurrent = logical_name_list.classify_until([';'], iCurrent, lObjects)
+
+    iCurrent = utils.assign_next_token_required(';', token.semicolon, iCurrent, lObjects)
+
     return iCurrent
-
-
-def classify(iCurrent, lObjects):
-
-    iStart, iEnd = utils.get_range(lObjects, iCurrent, ';')
-
-    utils.assign_token(lObjects, iStart, token.keyword)
-
-    logical_name_list.classify(iStart + 1, iEnd, lObjects)
-#
-    utils.classify_token(';', token.semicolon, iEnd, lObjects)
-    return iEnd

@@ -1,7 +1,7 @@
 
 from vsg.vhdlFile.classify_new import subprogram_declaration
 from vsg.vhdlFile.classify_new import subprogram_instantiation_declaration
-from vsg.vhdlFile.classify_new import package_body
+from vsg.vhdlFile.classify_new import package_declaration
 from vsg.vhdlFile.classify_new import package_instantiation_declaration
 from vsg.vhdlFile.classify_new import type_declaration
 from vsg.vhdlFile.classify_new import subtype_declaration
@@ -13,6 +13,8 @@ from vsg.vhdlFile.classify_new import alias_declaration
 from vsg.vhdlFile.classify_new import component_declaration
 from vsg.vhdlFile.classify_new import attribute_declaration
 from vsg.vhdlFile.classify_new import attribute_specification
+
+from vsg.vhdlFile.classify_new import use_clause
 
 
 def detect(iToken, lObjects):

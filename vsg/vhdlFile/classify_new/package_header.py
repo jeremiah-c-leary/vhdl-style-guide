@@ -14,11 +14,11 @@ def detect(iToken, lObjects):
         [ generic_map_aspect ; ] ]
     '''
 
-    iReturn = generic_clause.detect(iToken, lObjects)
+    iCurrent = generic_clause.detect(iToken, lObjects)
 
-    iLast = iReturn
-    iReturn = generic_map_aspect.detect(iReturn, lObjects)
-    if iReturn != iLast:
-        return utils.assign_next_token_required(';', token.semicolon, iReturn, lObjects)
+    iLast = iCurrent
+    iCurrent = generic_map_aspect.detect(iCurrent, lObjects)
+    if iCurrent != iLast:
+        return utils.assign_next_token_required(';', token.semicolon, iCurrent, lObjects)
 
     return iToken

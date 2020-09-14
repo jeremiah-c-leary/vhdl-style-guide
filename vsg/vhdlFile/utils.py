@@ -151,8 +151,9 @@ def are_next_consecutive_tokens(lTokens, iToken, lObjects):
     iCurrent = iToken
     while iTokenCount < iMaxTokenCount:
         iCurrent = find_next_token(iCurrent, lObjects)
-        if not is_next_token(lTokens[iTokenCount], iCurrent, lObjects):
-            return False
+        if not lTokens[iTokenCount] is None:
+            if not is_next_token(lTokens[iTokenCount], iCurrent, lObjects):
+                return False
         iCurrent += 1
         iTokenCount += 1
     else:
