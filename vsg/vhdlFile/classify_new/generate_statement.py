@@ -1,10 +1,10 @@
 
+from vsg.vhdlFile.classify_new import case_generate_statement
 from vsg.vhdlFile.classify_new import for_generate_statement
 from vsg.vhdlFile.classify_new import if_generate_statement
-from vsg.vhdlFile.classify_new import case_generate_statement
 
 
-def detect(iObject, lObjects):
+def detect(iToken, lObjects):
     '''
     generate_statement ::=
         for_generate_statement
@@ -12,16 +12,16 @@ def detect(iObject, lObjects):
       | case_generate_statement
     '''
 
-    iReturn = for_generate_statement.detect(iObject, lObjects)
-    if iReturn != iObject:
-        return iReturn
+    iCurrent = for_generate_statement.detect(iToken, lObjects)
+    if iCurrent != iToken:
+        return iCurrent
 
-    iReturn = if_generate_statement.detect(iObject, lObjects)
-    if iReturn != iObject:
-        return iReturn
+    iCurrent = if_generate_statement.detect(iToken, lObjects)
+    if iCurrent != iToken:
+        return iCurrent
 
-    iReturn = case_generate_statement.detect(iObject, lObjects)
-    if iReturn != iObject:
-        return iReturn
+    iCurrent = case_generate_statement.detect(iToken, lObjects)
+    if iCurrent != iToken:
+        return iCurrent
 
-    return iReturn
+    return iCurrent
