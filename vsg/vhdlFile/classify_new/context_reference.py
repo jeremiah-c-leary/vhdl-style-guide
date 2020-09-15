@@ -1,5 +1,4 @@
 
-from vsg import parser
 from vsg.token import context_reference as token
 
 from vsg.vhdlFile import utils
@@ -16,20 +15,31 @@ def detect(iCurrent, lObjects):
     return iCurrent
 
 
-def classify(iCurrent, lObjects):
-    '''
-    context_reference ::=
-        context selected_name { , selected_name } ;
-    '''
-    iStart, iEnd = utils.get_range(lObjects, iCurrent, ';')
-    
-    for iToken in range(iStart, iEnd):
-        if utils.is_item(lObjects, iToken):
-            if utils.classify_token('context', token.keyword, iToken, lObjects):
-                continue
-            if utils.classify_token(',', token.comma, iToken, lObjects):
-                continue
-            utils.assign_token(lObjects, iToken, token.selected_name)
+#def classify(iCurrent, lObjects):
+#
+#    iStart, iEnd = utils.get_range(lObjects, iCurrent, ';')
+#
+#    for iToken in range(iStart, iEnd):
+#        if utils.is_item(lObjects, iToken):
+#            if utils.classify_token('context', token.keyword, iToken, lObjects):
+#                continue
+#            if utils.classify_token(',', token.comma, iToken, lObjects):
+#                continue
+#            utils.assign_token(lObjects, iToken, token.selected_name)
+#
+#    utils.classify_token(';', token.semicolon, iEnd, lObjects)
+#    return iEnd
 
-    utils.classify_token(';', token.semicolon, iEnd, lObjects)
-    return iEnd
+
+def classify(iToken, lObjects):
+
+    iCurrent = utils.assign_next_token_required('context', token.keyword, iToken, lObjects)
+    iCurrent = utils.assign_next_token(token.selected_name, iCurrent, lObjects)
+
+    while utils.is_next_token(',', iCurrent, lObjects):
+        iCurrent = utils.assign_next_token_required(',', token.comma, iCurrent, lObjects)
+        iCurrent = utils.assign_next_token(token.selected_name, iCurrent, lObjects)
+
+    iCurrent = utils.assign_next_token_required(';', token.semicolon, iCurrent, lObjects)
+
+    return iCurrent

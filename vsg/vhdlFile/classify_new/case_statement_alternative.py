@@ -1,10 +1,10 @@
 
 from vsg.token import case_statement_alternative as token
 
+from vsg.vhdlFile import utils
+
 from vsg.vhdlFile.classify_new import choices
 from vsg.vhdlFile.classify_new import sequence_of_statements
-
-from vsg.vhdlFile import utils
 
 
 def detect(iToken, lObjects):

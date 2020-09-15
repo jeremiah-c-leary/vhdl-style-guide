@@ -16,11 +16,11 @@ class selected_name(parser.selected_name):
 
 class comma(parser.comma):
 
-    def __init__(self):
+    def __init__(self, sString=','):
         parser.comma.__init__(self)
 
 
 class semicolon(parser.semicolon):
 
-    def __init__(self):
+    def __init__(self, sString=';'):
         parser.semicolon.__init__(self)

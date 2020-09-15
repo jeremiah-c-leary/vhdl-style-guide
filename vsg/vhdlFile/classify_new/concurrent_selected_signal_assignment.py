@@ -1,6 +1,4 @@
 
-from vsg import parser
-
 from vsg.token import concurrent_selected_signal_assignment as token
 
 from vsg.vhdlFile import utils
@@ -25,21 +23,23 @@ def detect(iToken, lObjects):
 
 
 def classify(iToken, lObjects):
-    '''
-    concurrent_selected_signal_assignment ::=
-        with expression select [ ? ]
-            target <= [ guarded ] [ delay_mechanism ] selected_waveforms ;
-    '''
+
     iCurrent = utils.assign_next_token_required('with', token.with_keyword, iToken, lObjects)
-    iCurrent = utils.classify_subelement_until('select', expression, iCurrent, lObjects)
+
+    iCurrent = expression.classify_until(['select'], iCurrent, lObjects)
+
     iCurrent = utils.assign_next_token_required('select', token.select_keyword, iCurrent, lObjects)
     iCurrent = utils.assign_next_token_if('?', token.question_mark, iCurrent, lObjects)
+
     iCurrent = utils.assign_tokens_until('<=', token.target, iCurrent, lObjects)
+
     iCurrent = utils.assign_next_token_required('<=', token.assignment, iCurrent, lObjects)
     iCurrent = utils.assign_next_token_if('guarded', token.guarded_keyword, iCurrent, lObjects)
+
     iCurrent = delay_mechanism.detect(iCurrent, lObjects)
-    
+
     selected_waveforms.classify(iToken, lObjects)
 
     iCurrent = utils.assign_next_token_required(';', token.semicolon, iCurrent, lObjects)
+
     return iCurrent

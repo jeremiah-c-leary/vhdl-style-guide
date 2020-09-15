@@ -5,12 +5,12 @@ from vsg.vhdlFile import utils
 
 from vsg.vhdlFile.classify_new import conditional_expressions
 
-'''
-    conditional_variable_assignment ::=
-        target := conditional_expressions ;
-'''
 
 def detect(iToken, lObjects):
+    '''
+    conditional_variable_assignment ::=
+        target := conditional_expressions ;
+    '''
 
     if utils.is_next_token_one_of(['when', 'if', 'elsif', 'else'], iToken, lObjects):
         return False
@@ -18,8 +18,6 @@ def detect(iToken, lObjects):
         if not utils.find_in_range('with', iToken, ';', lObjects):
             if utils.find_in_range('when', iToken, ';', lObjects):
                 return True
-            return False
-        return False
     return False
 
 

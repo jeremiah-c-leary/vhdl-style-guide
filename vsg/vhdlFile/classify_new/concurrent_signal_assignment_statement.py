@@ -1,13 +1,11 @@
 
 from vsg.token import concurrent_signal_assignment_statement as token
 
-from vsg import parser
+from vsg.vhdlFile import utils
 
-from vsg.vhdlFile.classify_new import concurrent_simple_signal_assignment
 from vsg.vhdlFile.classify_new import concurrent_conditional_signal_assignment
 from vsg.vhdlFile.classify_new import concurrent_selected_signal_assignment
-
-from vsg.vhdlFile import utils
+from vsg.vhdlFile.classify_new import concurrent_simple_signal_assignment
 
 
 def detect(iToken, lObjects):
@@ -17,6 +15,7 @@ def detect(iToken, lObjects):
       | [ label : ] [ postponed ] concurrent_conditional_signal_assignment
       | [ label : ] [ postponed ] concurrent_selected_signal_assignment
     '''
+
     iCurrent = iToken
     if concurrent_selected_signal_assignment.detect(iToken, lObjects):
         iCurrent = utils.tokenize_label(iCurrent, lObjects, token.label_name, token.label_colon)
