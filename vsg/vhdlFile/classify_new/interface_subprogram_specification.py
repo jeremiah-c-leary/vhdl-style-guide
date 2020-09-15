@@ -1,8 +1,8 @@
 
-from vsg.vhdlFile.classify_new import interface_procedure_specification
-from vsg.vhdlFile.classify_new import interface_function_specification
-
 from vsg.vhdlFile import utils
+
+from vsg.vhdlFile.classify_new import interface_function_specification
+from vsg.vhdlFile.classify_new import interface_procedure_specification
 
 '''
     interface_subprogram_specification ::=
@@ -10,14 +10,14 @@ from vsg.vhdlFile import utils
       | interface_function_specification
 '''
 
-def detect(iCurrent, lObjects):
+def detect(iToken, lObjects):
 
-    iReturn = interface_procedure_specification.detect(iCurrent, lObjects)
-    if iReturn != iCurrent:
-        return iReturn
+    iCurrent = interface_procedure_specification.detect(iToken, lObjects)
+    if iCurrent != iToken:
+        return iCurrent
 
-    iReturn = interface_function_specification.detect(iCurrent, lObjects)
-    if iReturn != iCurrent:
-        return iReturn
+    iCurrent = interface_function_specification.detect(iToken, lObjects)
+    if iCurrent != iToken:
+        return iCurrent
 
-    return iCurrent
+    return iToken

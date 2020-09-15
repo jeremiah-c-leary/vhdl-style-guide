@@ -1,10 +1,10 @@
 
 from vsg.token import interface_subprogram_declaration as token
 
+from vsg.vhdlFile import utils
+
 from vsg.vhdlFile.classify_new import interface_subprogram_specification
 from vsg.vhdlFile.classify_new import interface_subprogram_default
-
-from vsg.vhdlFile import utils
 
 
 def detect(iToken, lObjects):
@@ -23,6 +23,8 @@ def detect(iToken, lObjects):
 
 
 def classify(iToken, lObjects):
+
     iCurrent = utils.assign_next_token_if('is', token.is_keyword, iToken, lObjects)
     iCurrent = interface_subprogram_default.classify(iCurrent, lObjects)
+
     return iCurrent
