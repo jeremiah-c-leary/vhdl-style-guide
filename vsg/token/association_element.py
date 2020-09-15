@@ -18,4 +18,3 @@ class actual_part(parser.item):
 
     def __init__(self, sString):
         parser.item.__init__(self, sString)
-

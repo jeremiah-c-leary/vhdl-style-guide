@@ -24,4 +24,3 @@ class close_bracket(parser.close_bracket):
 
     def __init__(self, sString=']'):
         parser.close_bracket.__init__(self, ']')
-

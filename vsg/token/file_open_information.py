@@ -24,4 +24,3 @@ class file_logical_name(parser.expression):
 
     def __init__(self, sString):
         parser.expression.__init__(self, sString)
-

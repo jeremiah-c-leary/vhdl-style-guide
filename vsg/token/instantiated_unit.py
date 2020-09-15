@@ -28,7 +28,7 @@ class entity_name(parser.name):
 
 class open_parenthesis(parser.open_parenthesis):
 
-    def __init__(self):
+    def __init__(self, sString='('):
         parser.open_parenthesis.__init__(self)
 
 
@@ -40,7 +40,7 @@ class architecture_identifier(parser.identifier):
 
 class close_parenthesis(parser.close_parenthesis):
 
-    def __init__(self):
+    def __init__(self, sString=')'):
         parser.close_parenthesis.__init__(self)
 
 

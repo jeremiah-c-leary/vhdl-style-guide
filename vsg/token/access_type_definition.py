@@ -8,7 +8,9 @@ class access_keyword(parser.keyword):
         parser.keyword.__init__(self, sString)
 
 
- # jcl - remove the objects below when new parser is done
+# jcl - remove the objects below when new parser is done
+
+
 class keyword(parser.keyword):
 
     def __init__(self, sString):

@@ -1,12 +1,14 @@
 
 from vsg.token import if_statement as token
 
+from vsg.vhdlFile import utils
+
 from vsg.vhdlFile.classify_new import condition
 from vsg.vhdlFile.classify_new import sequence_of_statements
 
-from vsg.vhdlFile import utils
 
-'''
+def detect(iToken, lObjects):
+    '''
     if_statement ::=
         [ if_label : ]
             if condition then
@@ -16,15 +18,15 @@ from vsg.vhdlFile import utils
             [ else
                 sequence_of_statements ]
             end if [ if_label ] ;
-'''
+    '''
 
-def detect(iToken, lObjects):
     if utils.keyword_found('if', iToken, lObjects):
         return classify(iToken, lObjects)
     return iToken
 
 
 def classify(iToken, lObjects):
+
     iCurrent = utils.tokenize_label(iToken, lObjects, token.if_label, token.label_colon)
     iCurrent = utils.assign_next_token_required('if', token.if_keyword, iCurrent, lObjects)
     iCurrent = condition.classify_until('then', iCurrent, lObjects)

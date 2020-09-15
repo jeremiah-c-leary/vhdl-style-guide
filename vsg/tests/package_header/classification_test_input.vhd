@@ -102,7 +102,7 @@ package PACK1 is
 
     -- Test Types
     type typ1;
-    type typ1
+    type typ1;
 
     -- Test Procedures
     procedure proc1 parameter (

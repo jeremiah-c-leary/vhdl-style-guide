@@ -895,9 +895,10 @@
 <class 'vsg.token.identifier.identifier'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
-105 | None |     type typ1
+105 | None |     type typ1;
 <class 'vsg.token.interface_incomplete_type_declaration.type_keyword'>
 <class 'vsg.token.identifier.identifier'>
+<class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 106 | None | 
 <class 'vsg.parser.blank_line'>

@@ -430,3 +430,10 @@ def keyword_found(sKeyword, iToken, lObjects):
     if is_next_token(sKeyword, iToken, lObjects):
         return True
     return False
+
+
+def is_next_token_in_list(lUntils, iToken, lObjects):
+    iCurrent = find_next_token(iToken, lObjects)
+    if lObjects[iCurrent].get_value() in lUntils:
+        return True
+    return False

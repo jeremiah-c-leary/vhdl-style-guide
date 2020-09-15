@@ -6,14 +6,13 @@ from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify_new import discrete_range
 from vsg.vhdlFile.classify_new import subtype_indication
 
-'''
-    index_constraint ::=
-        ( discrete_range { , discrete_range } )
-'''
-
-
 
 def classify(iToken, lObjects):
+    '''
+    index_constraint ::=
+        ( discrete_range { , discrete_range } )
+    '''
+
     iCurrent = utils.assign_next_token_required('(', token.open_parenthesis, iToken, lObjects)
 
     while not utils.is_next_token(')', iCurrent, lObjects):

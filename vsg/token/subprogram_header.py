@@ -21,8 +21,8 @@ class close_parenthesis(parser.close_parenthesis):
 
 # jcl - remove object below after new parser is done
 
+
 class keyword(parser.keyword):
 
     def __init__(self, sString):
         parser.keyword.__init__(self, sString)
-
