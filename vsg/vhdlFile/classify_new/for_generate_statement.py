@@ -1,5 +1,4 @@
 
-from vsg import parser
 from vsg.vhdlFile import utils
 
 from vsg.token import for_generate_statement as token
@@ -7,16 +6,16 @@ from vsg.token import for_generate_statement as token
 from vsg.vhdlFile.classify_new import parameter_specification
 from vsg.vhdlFile.classify_new import generate_statement_body
 
-'''
+
+def detect(iToken, lObjects):
+    '''
     for_generate_statement ::=
         *generate*_label :
             for *generate*_parameter_specification generate
                 generate_statement_body
             end generate [ *generate*_label ] ;
-'''
+    '''
 
-
-def detect(iToken, lObjects):
     if utils.are_next_consecutive_tokens([None, ':', 'for'], iToken, lObjects):
         return classify(iToken, lObjects)
     return iToken
