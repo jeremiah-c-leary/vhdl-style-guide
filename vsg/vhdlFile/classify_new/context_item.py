@@ -4,23 +4,24 @@ from vsg.vhdlFile.classify_new import library_clause
 from vsg.vhdlFile.classify_new import use_clause
 
 
-def detect(iCurrent, lObjects):
+def detect(iToken, lObjects):
     '''
     context_item ::=
         library_clause
       | use_clause
       | context_reference
     '''
-    iReturn = library_clause.detect(iCurrent, lObjects)
-    if iReturn != iCurrent:
-        return iReturn
 
-    iReturn = use_clause.detect(iCurrent, lObjects)
-    if iReturn != iCurrent:
-        return iReturn
+    iCurrent = library_clause.detect(iToken, lObjects)
+    if iCurrent != iToken:
+        return iCurrent
 
-    iReturn = context_reference.detect(iCurrent, lObjects)
-    if iReturn != iCurrent:
-        return iReturn
+    iCurrent = use_clause.detect(iToken, lObjects)
+    if iCurrent != iToken:
+        return iCurrent
 
-    return iCurrent
+    iCurrent = context_reference.detect(iToken, lObjects)
+    if iCurrent != iToken:
+        return iCurrent
+
+    return iToken

@@ -3,17 +3,17 @@ from vsg.vhdlFile.classify_new import context_clause
 from vsg.vhdlFile.classify_new import library_unit
 
 
-def detect(iCurrent, lObjects):
+def detect(iToken, lObjects):
     '''
     design_unit ::=
         context_clause library_unit
     '''
-    iReturned = context_clause.detect(iCurrent, lObjects)
-    if iReturned != iCurrent:
-        return iReturned
+    iCurrent = context_clause.detect(iToken, lObjects)
+    if iCurrent != iToken:
+        return iCurrent
 
-    iReturned = library_unit.detect(iCurrent, lObjects)
-    if iReturned != iCurrent:
-        return iReturned
+    iCurrent = library_unit.detect(iToken, lObjects)
+    if iCurrent != iToken:
+        return iCurrent
 
-    return iCurrent
+    return iToken
