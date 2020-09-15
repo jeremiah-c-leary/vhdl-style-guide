@@ -1,30 +1,30 @@
 
+from vsg.vhdlFile import utils
+
 from vsg.vhdlFile.classify_new import concurrent_assertion_statement
 from vsg.vhdlFile.classify_new import concurrent_procedure_call_statement
 from vsg.vhdlFile.classify_new import process_statement
 
-from vsg.vhdlFile import utils
 
-'''
+def detect(iToken, lObjects):
+    '''
     entity_statement ::=
         concurrent_assertion_statement
       | *passive*_concurrent_procedure_call_statement
       | *passive*_process_statement
       | *PSL*_PSL_Directive
-'''
+    '''
 
-def detect(iToken, lObjects):
+    iCurrent = process_statement.detect(iToken, lObjects)
+    if iCurrent != iToken:
+        return iCurrent
 
-    iReturn = process_statement.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    iCurrent = concurrent_assertion_statement.detect(iToken, lObjects)
+    if iCurrent != iToken:
+        return iCurrent
 
-    iReturn = concurrent_assertion_statement.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
-
-    iReturn = concurrent_procedure_call_statement.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    iCurrent = concurrent_procedure_call_statement.detect(iToken, lObjects)
+    if iCurrent != iToken:
+        return iCurrent
 
     return iToken

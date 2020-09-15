@@ -1,11 +1,13 @@
 
+from vsg.vhdlFile import utils
+
 from vsg.vhdlFile.classify_new import entity_statement
 
-'''
+
+def detect(iToken, lObjects):
+    '''
     entity_statement_part ::=
         { entity_statement }
-'''
+    '''
 
-
-def detect(iCurrent, lObjects):
-    return entity_statement.detect(iCurrent, lObjects)
+    return utils.detect_submodule(iToken, lObjects, entity_statement)

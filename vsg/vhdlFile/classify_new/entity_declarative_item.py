@@ -1,24 +1,25 @@
 
-from vsg.vhdlFile.classify_new import subprogram_declaration
-from vsg.vhdlFile.classify_new import subprogram_body
-from vsg.vhdlFile.classify_new import subprogram_instantiation_declaration
-from vsg.vhdlFile.classify_new import package_declaration
-from vsg.vhdlFile.classify_new import package_body
-from vsg.vhdlFile.classify_new import package_instantiation_declaration
-from vsg.vhdlFile.classify_new import type_declaration
-from vsg.vhdlFile.classify_new import subtype_declaration
-from vsg.vhdlFile.classify_new import constant_declaration
-from vsg.vhdlFile.classify_new import signal_declaration
-from vsg.vhdlFile.classify_new import variable_declaration
-from vsg.vhdlFile.classify_new import file_declaration
 from vsg.vhdlFile.classify_new import alias_declaration
-from vsg.vhdlFile.classify_new import component_declaration
 from vsg.vhdlFile.classify_new import attribute_declaration
 from vsg.vhdlFile.classify_new import attribute_specification
-
+from vsg.vhdlFile.classify_new import component_declaration
+from vsg.vhdlFile.classify_new import constant_declaration
+from vsg.vhdlFile.classify_new import file_declaration
+from vsg.vhdlFile.classify_new import package_body
+from vsg.vhdlFile.classify_new import package_declaration
+from vsg.vhdlFile.classify_new import package_instantiation_declaration
+from vsg.vhdlFile.classify_new import signal_declaration
+from vsg.vhdlFile.classify_new import subprogram_body
+from vsg.vhdlFile.classify_new import subprogram_declaration
+from vsg.vhdlFile.classify_new import subprogram_instantiation_declaration
+from vsg.vhdlFile.classify_new import subtype_declaration
+from vsg.vhdlFile.classify_new import type_declaration
 from vsg.vhdlFile.classify_new import use_clause
+from vsg.vhdlFile.classify_new import variable_declaration
 
-'''
+
+def detect(iToken, lObjects):
+    '''
     entity_declarative_item ::=
         subprogram_declaration
       | subprogram_body
@@ -42,77 +43,74 @@ from vsg.vhdlFile.classify_new import use_clause
       | PSL_Property_Declaration
       | PSL_Sequence_Declaration
       | PSL_Clock_Declaration
-'''
+    '''
 
+    iCurrent = subprogram_declaration.detect(iToken, lObjects)
+    if iCurrent != iToken:
+        iCurrent = subprogram_body.detect(iCurrent, lObjects)
+        return iCurrent
 
-def detect(iToken, lObjects):
+    iCurrent = subprogram_instantiation_declaration.detect(iToken, lObjects)
+    if iCurrent != iToken:
+        return iCurrent
 
-    iReturn = subprogram_declaration.detect(iToken, lObjects)
-    if iReturn != iToken:
-        iReturn = subprogram_body.detect(iReturn, lObjects)
-        return iReturn
+    iCurrent = package_declaration.detect(iToken, lObjects)
+    if iCurrent != iToken:
+        return iCurrent
 
-    iReturn = subprogram_instantiation_declaration.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    iCurrent = package_body.detect(iToken, lObjects)
+    if iCurrent != iToken:
+        return iCurrent
 
-    iReturn = package_declaration.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    iCurrent = package_instantiation_declaration.detect(iToken, lObjects)
+    if iCurrent != iToken:
+        return iCurrent
 
-    iReturn = package_body.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    iCurrent = type_declaration.detect(iToken, lObjects)
+    if iCurrent != iToken:
+        return iCurrent
 
-    iReturn = package_instantiation_declaration.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    iCurrent = subtype_declaration.detect(iToken, lObjects)
+    if iCurrent != iToken:
+        return iCurrent
 
-    iReturn = type_declaration.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    iCurrent = constant_declaration.detect(iToken, lObjects)
+    if iCurrent != iToken:
+        return iCurrent
 
-    iReturn = subtype_declaration.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    iCurrent = signal_declaration.detect(iToken, lObjects)
+    if iCurrent != iToken:
+        return iCurrent
 
-    iReturn = constant_declaration.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    iCurrent = variable_declaration.detect(iToken, lObjects)
+    if iCurrent != iToken:
+        return iCurrent
 
-    iReturn = signal_declaration.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    iCurrent = file_declaration.detect(iToken, lObjects)
+    if iCurrent != iToken:
+        return iCurrent
 
-    iReturn = variable_declaration.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    iCurrent = alias_declaration.detect(iToken, lObjects)
+    if iCurrent != iToken:
+        return iCurrent
 
-    iReturn = file_declaration.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    iCurrent = component_declaration.detect(iToken, lObjects)
+    if iCurrent != iToken:
+        return iCurrent
 
-    iReturn = alias_declaration.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    iCurrent = attribute_declaration.detect(iToken, lObjects)
+    if iCurrent != iToken:
+        return iCurrent
 
-    iReturn = component_declaration.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
-
-    iReturn = attribute_declaration.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
-
-    iReturn = attribute_specification.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    iCurrent = attribute_specification.detect(iToken, lObjects)
+    if iCurrent != iToken:
+        return iCurrent
 
 
 
-    iReturn = use_clause.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    iCurrent = use_clause.detect(iToken, lObjects)
+    if iCurrent != iToken:
+        return iCurrent
 
 
     return iToken

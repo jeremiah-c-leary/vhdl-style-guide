@@ -83,6 +83,15 @@ def assign_next_token_if_not(sToken, token, iToken, lObjects):
     return iToken
 
 
+def assign_next_token_if_not_one_of(lTokens, token, iToken, lObjects):
+    iCurrent = find_next_token(iToken, lObjects)
+    if lObjects[iCurrent].get_value() not in lTokens:
+        lObjects[iCurrent] = token(lObjects[iCurrent].get_value())
+        iCurrent += 1
+        return iCurrent
+    return iToken
+
+
 def assign_next_token_required(sToken, token, iToken, lObjects):
     iCurrent = find_next_token(iToken, lObjects)
     if object_value_is(lObjects, iCurrent, sToken):
