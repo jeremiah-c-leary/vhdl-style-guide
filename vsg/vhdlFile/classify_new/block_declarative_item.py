@@ -1,24 +1,25 @@
 
-from vsg.vhdlFile.classify_new import subprogram_declaration
-from vsg.vhdlFile.classify_new import subprogram_body
-from vsg.vhdlFile.classify_new import subprogram_instantiation_declaration
-from vsg.vhdlFile.classify_new import package_declaration
-from vsg.vhdlFile.classify_new import package_body
-from vsg.vhdlFile.classify_new import package_instantiation_declaration
-from vsg.vhdlFile.classify_new import type_declaration
-from vsg.vhdlFile.classify_new import subtype_declaration
-from vsg.vhdlFile.classify_new import constant_declaration
-from vsg.vhdlFile.classify_new import signal_declaration
-from vsg.vhdlFile.classify_new import variable_declaration
-from vsg.vhdlFile.classify_new import file_declaration
 from vsg.vhdlFile.classify_new import alias_declaration
-from vsg.vhdlFile.classify_new import component_declaration
 from vsg.vhdlFile.classify_new import attribute_declaration
 from vsg.vhdlFile.classify_new import attribute_specification
-
+from vsg.vhdlFile.classify_new import component_declaration
+from vsg.vhdlFile.classify_new import constant_declaration
+from vsg.vhdlFile.classify_new import file_declaration
+from vsg.vhdlFile.classify_new import package_body
+from vsg.vhdlFile.classify_new import package_declaration
+from vsg.vhdlFile.classify_new import package_instantiation_declaration
+from vsg.vhdlFile.classify_new import subprogram_body
+from vsg.vhdlFile.classify_new import subprogram_declaration
+from vsg.vhdlFile.classify_new import subprogram_instantiation_declaration
+from vsg.vhdlFile.classify_new import subtype_declaration
+from vsg.vhdlFile.classify_new import signal_declaration
+from vsg.vhdlFile.classify_new import type_declaration
 from vsg.vhdlFile.classify_new import use_clause
+from vsg.vhdlFile.classify_new import variable_declaration
 
-'''
+
+def detect(iToken, lObjects):
+    '''
     block_declarative_item ::=
         subprogram_declaration
       | subprogram_body
@@ -44,10 +45,7 @@ from vsg.vhdlFile.classify_new import use_clause
       | PSL_Property_Declaration
       | PSL_Sequence_Declaration
       | PSL_Clock_Declaration
-'''
-
-
-def detect(iToken, lObjects):
+    '''
 
     iReturn = subprogram_declaration.detect(iToken, lObjects)
     if iReturn != iToken:
