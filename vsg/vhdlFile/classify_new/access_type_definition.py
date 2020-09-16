@@ -5,13 +5,13 @@ from vsg.vhdlFile import utils
 
 from vsg.vhdlFile.classify_new import subtype_indication
 
-'''
-    access_type_definition ::=
-        access subtype_indication
-'''
-
 
 def detect(iToken, lObjects):
+    '''
+    access_type_definition ::=
+        access subtype_indication
+    '''
+
     if utils.is_next_token('access', iToken, lObjects):
         return classify(iToken, lObjects)
 
@@ -19,6 +19,9 @@ def detect(iToken, lObjects):
 
 
 def classify(iToken, lObjects):
+
     iCurrent = utils.assign_next_token_required('access', token.access_keyword, iToken, lObjects)
-    iCurrent = utils.classify_subelement_until(';', subtype_indication, iCurrent, lObjects)
+
+    iCurrent = subtype_indication.classify_until([';'], iCurrent, lObjects)
+
     return iCurrent

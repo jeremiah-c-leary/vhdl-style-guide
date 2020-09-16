@@ -1,12 +1,13 @@
 
-from vsg import parser
-
 from vsg.token import assertion as token
 
 from vsg.vhdlFile import utils
 
+from vsg.vhdlFile.classify_new import condition
+from vsg.vhdlFile.classify_new import expression
 
-def detect(iCurrent, lObjects):
+
+def classify(iToken, lObjects):
     '''
     assertion ::=
         assert condition
@@ -16,36 +17,16 @@ def detect(iCurrent, lObjects):
     The key to detecting this is looking for the keyword **assert** before a semicolon.
     '''
 
-    iToken = iCurrent
+    iCurrent = utils.assign_next_token_required('assert', token.keyword, iToken, lObjects)
 
-    while lObjects[iToken].get_value() != ';':
-        if utils.is_item(lObjects, iToken):
-            if utils.object_value_is(lObjects, iToken, 'assert'):
-                return True
-        iToken += 1
-    else:
-        return False
+    iCurrent = condition.classify_until(['report', 'severity', ';'], iCurrent, lObjects)
 
+    if utils.is_next_token('report', iCurrent, lObjects):
+        iCurrent = utils.assign_next_token_required('report', token.report_keyword, iCurrent, lObjects)
+        iCurrent = expression.classify_until(['severity', ';'], iCurrent, lObjects)
 
+    if utils.is_next_token('severity', iCurrent, lObjects):
+        iCurrent = utils.assign_next_token_required('severity', token.severity_keyword, iCurrent, lObjects)
+        iCurrent = expression.classify_until([';'], iCurrent, lObjects)
 
-def classify(iCurrent, lObjects):
-    '''
-    assertion ::=
-        assert condition
-            [ report expression ]
-            [ severity expression ]
-    '''
-    iStart, iEnd = utils.get_range(lObjects, iCurrent, ';')
-
-    # Classify target and assignment operator
-    for iToken, oObject in enumerate(lObjects[iStart:iEnd], start=iStart):
-        if type(oObject) == parser.item:
-            if utils.object_value_is(lObjects, iToken, 'assert'):
-                utils.assign_token(lObjects, iToken, token.keyword)
-            elif utils.object_value_is(lObjects, iToken, 'report'):
-                utils.assign_token(lObjects, iToken, token.report_keyword)
-            elif utils.object_value_is(lObjects, iToken, 'severity'):
-                utils.assign_token(lObjects, iToken, token.severity_keyword)
-            else:
-                utils.assign_token(lObjects, iToken, parser.todo)
-    return iToken
+    return iCurrent

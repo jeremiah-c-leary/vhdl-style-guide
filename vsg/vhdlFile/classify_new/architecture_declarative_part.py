@@ -1,12 +1,13 @@
 
+from vsg.vhdlFile import utils
 
 from vsg.vhdlFile.classify_new import block_declarative_item
 
-'''
-    architecture_declarative_part ::=
-        { block_declarative_item }
-'''
-
 
 def detect(iToken, lObjects):
-    return block_declarative_item.detect(iToken, lObjects)
+    '''
+    architecture_declarative_part ::=
+        { block_declarative_item }
+    '''
+
+    return utils.detect_submodule(iToken, lObjects, block_declarative_item)

@@ -6,13 +6,12 @@ from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify_new import signature
 from vsg.vhdlFile.classify_new import subtype_indication
 
-'''
-    alias_declaration ::=
-        alias alias_designator [ : subtype_indication ] is name [ signature ] ;
-'''
-
 
 def detect(iToken, lObjects):
+    '''
+    alias_declaration ::=
+        alias alias_designator [ : subtype_indication ] is name [ signature ] ;
+    '''
 
     if utils.is_next_token('alias', iToken, lObjects):
         return classify(iToken, lObjects)    
@@ -21,13 +20,20 @@ def detect(iToken, lObjects):
 
 
 def classify(iToken, lObjects):
+
     iCurrent = utils.assign_next_token_required('alias', token.alias_keyword, iToken, lObjects)
+
     iCurrent = utils.assign_next_token(token.alias_designator, iCurrent, lObjects)
+
     if utils.is_next_token(':', iCurrent, lObjects):
         iCurrent = utils.assign_next_token_required(':', token.colon, iCurrent, lObjects)
-        iCurrent = utils.classify_subelement_until('is', subtype_indication, iCurrent, lObjects) 
+        iCurrent = subtype_indication.classify_until(['is'], iCurrent, lObjects)
+
     iCurrent = utils.assign_next_token_required('is', token.is_keyword, iCurrent, lObjects)
     iCurrent = utils.assign_next_token(token.name, iCurrent, lObjects)
+
     iCurrent = signature.detect(iCurrent, lObjects)
+
     iCurrent = utils.assign_next_token_required(';', token.semicolon, iCurrent, lObjects)
+
     return iCurrent 

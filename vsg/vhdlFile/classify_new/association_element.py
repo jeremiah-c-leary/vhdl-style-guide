@@ -3,13 +3,12 @@ from vsg.token import association_element as token
 
 from vsg.vhdlFile import utils
 
-'''
-    association_element ::=
-        [ formal_part => ] actual_part
-'''
 
 def detect(iCurrent, lObjects):
     '''
+    association_element ::=
+        [ formal_part => ] actual_part
+
     An association element will either end in a close parenthesis or a comma that is not within paranthesis.
 
     accociation_element [)|,]
@@ -39,21 +38,16 @@ def detect(iCurrent, lObjects):
 
 def classify(iStart, iEnd, lObjects, sEnd):
 
-    iToken = iStart
+    iCurrent = iStart
 
     # Classify formal part if it exists
     if utils.find_in_range('=>', iStart, sEnd, lObjects):
-        iFormalStart, iFormalEnd = utils.get_range(lObjects, iStart, '=>')
-        for iToken in range(iFormalStart, iFormalEnd + 1):
-            if utils.is_item(lObjects, iToken):
-                if utils.classify_token('=>', token.assignment, iToken, lObjects):
-                    continue
-                else:
-                    utils.assign_token(lObjects, iToken, token.formal_part)
+        iCurrent = utils.assign_tokens_until('=>', token.formal_part, iCurrent, lObjects)
+        iCurrent = utils.assign_next_token_required('=>', token.assignment, iCurrent, lObjects)
 
     # Classify actual part
-    for iToken in range(iToken, iEnd):
-        if utils.is_item(lObjects, iToken):
-            utils.assign_token(lObjects, iToken, token.actual_part)
+    for iCurrent in range(iCurrent, iEnd):
+        if utils.is_item(lObjects, iCurrent):
+            utils.assign_token(lObjects, iCurrent, token.actual_part)
 
-    return iToken
+    return iCurrent
