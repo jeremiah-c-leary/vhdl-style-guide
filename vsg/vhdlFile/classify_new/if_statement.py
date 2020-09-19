@@ -29,14 +29,15 @@ def classify(iToken, lObjects):
 
     iCurrent = utils.tokenize_label(iToken, lObjects, token.if_label, token.label_colon)
     iCurrent = utils.assign_next_token_required('if', token.if_keyword, iCurrent, lObjects)
-    iCurrent = condition.classify_until('then', iCurrent, lObjects)
+    iCurrent = condition.classify_until(['then'], iCurrent, lObjects)
     iCurrent = utils.assign_next_token_required('then', token.then_keyword, iCurrent, lObjects)
+
     iCurrent = sequence_of_statements.detect(iCurrent, lObjects)
 
     while utils.is_next_token_one_of(['else', 'elsif'], iCurrent, lObjects):
         if utils.is_next_token('elsif', iCurrent, lObjects):
             iCurrent = utils.assign_next_token_required('elsif', token.elsif_keyword, iCurrent, lObjects)
-            iCurrent = condition.classify_until('then', iCurrent, lObjects)
+            iCurrent = condition.classify_until(['then'], iCurrent, lObjects)
             iCurrent = utils.assign_next_token_required('then', token.then_keyword, iCurrent, lObjects)
             iCurrent = sequence_of_statements.detect(iCurrent, lObjects)
         else:

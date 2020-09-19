@@ -4,9 +4,9 @@
 -------------------------------------------------------------------------------
 
 -- Line below is a failure because the **is** is to far to the right
-architecture RTL of ENT                                                                                                  is                                                                                                                is
+architecture RTL of ENT                                                                                                  is
 
-  signal a, b, c, d, e, f, g, asf,   asfd  ,   a  , f  ,   a  f,  ,e  ,e  ,f  ,a ,e  ,f , e, k, l,      f456h, a,  34pll, drt : std_logic;
+  signal a, b, c, d, e, f, g, asf,   asfd  ,   a  , f  ,   a,  f,  e  ,e  ,f  ,a ,e  ,f , e, k, l,      f456h, a,  34pll, drt : std_logic;
 
 signal a : std_logic_vector(15 downto 0);
 

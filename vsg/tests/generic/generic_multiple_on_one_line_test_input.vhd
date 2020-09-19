@@ -12,7 +12,7 @@ entity ENTITY1 is
     port5 : out std_logic;
     port6 : inout std_logic
   );
-end entity ENTITY1
+end entity ENTITY1;
 
 entity ENTITY1 is
   generic (
@@ -27,4 +27,4 @@ entity ENTITY1 is
     port5 : out std_logic;
     port6 : inout std_logic
   );
-end entity ENTITY1
+end entity ENTITY1;

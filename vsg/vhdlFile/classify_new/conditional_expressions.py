@@ -27,7 +27,7 @@ def classify_until(lUntils, iToken, lObjects):
     while utils.is_next_token('else', iCurrent, lObjects):
         iCurrent = utils.assign_next_token_required('else', token.else_keyword, iCurrent, lObjects)
         iCurrent = expression.classify_until(lMyWhenUntils, iCurrent, lObjects)
-        if lObjects[iCurrent].get_value() in lUntils:
+        if utils.is_next_token_in_list(lUntils, iCurrent, lObjects):
             break
         iCurrent = utils.assign_next_token_required('when', token.when_keyword, iCurrent, lObjects)
         iCurrent = condition.classify_until(lMyElseUntils, iCurrent, lObjects)

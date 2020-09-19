@@ -85,7 +85,7 @@ def assign_next_token_if_not(sToken, token, iToken, lObjects):
 
 def assign_next_token_if_not_one_of(lTokens, token, iToken, lObjects):
     iCurrent = find_next_token(iToken, lObjects)
-    if lObjects[iCurrent].get_value() not in lTokens:
+    if lObjects[iCurrent].get_value().lower() not in lTokens:
         lObjects[iCurrent] = token(lObjects[iCurrent].get_value())
         iCurrent += 1
         return iCurrent
@@ -116,7 +116,7 @@ def is_item(lAllObjects, iToken):
 
 def get_range(lObjects, iStart, sEnd):
     iIndex = iStart
-    while lObjects[iIndex].get_value() != sEnd:
+    while lObjects[iIndex].get_value().lower() != sEnd:
         iIndex += 1
     else:
         iEnd = iIndex
@@ -170,6 +170,7 @@ def are_next_consecutive_tokens(lTokens, iToken, lObjects):
 
 
 def find_in_next_n_tokens(sValue, iMax, iToken, lObjects):
+    iEnd = len(lObjects)
     iTokenCount = 0
     iCurrent = iToken
     while iTokenCount < iMax:
@@ -178,6 +179,8 @@ def find_in_next_n_tokens(sValue, iMax, iToken, lObjects):
         if object_value_is(lObjects, iCurrent, sValue):
             return True
         iCurrent += 1
+        if iCurrent == iEnd:
+            return False
     else:
         return False
 
@@ -194,7 +197,7 @@ def find_earliest_occurance_ignoring_matched_parenthesis(lEnd, iToken, lObjects)
             if token_is_open_parenthesis(iIndex, lObjects):
                 iOpenParenthesis +=1
             print(f'{iIndex} | {lObjects[iIndex].get_value()} | {iOpenParenthesis} | {iCloseParenthesis}')
-            if lObjects[iIndex].get_value() == sEnd:
+            if lObjects[iIndex].get_value().lower() == sEnd:
                 if iOpenParenthesis == iCloseParenthesis:
                     if iIndex < iEarliest:
                         sEarliest = lObjects[iIndex].get_value()
@@ -212,7 +215,7 @@ def find_earliest_occurance(lEnd, iToken, lObjects):
     iEarliest = 9999999999999999999999999999
     for sEnd in lEnd:
         for iIndex in range(iToken, len(lObjects) - 1):
-            if lObjects[iIndex].get_value() == sEnd:
+            if lObjects[iIndex].get_value().lower() == sEnd:
                 if iIndex < iEarliest:
                     sEarliest = lObjects[iIndex].get_value()
                     iEarliest = iIndex
@@ -228,18 +231,26 @@ def find_in_range_with_multiple_ends(sValue, iToken, lEnd, lObjects):
 
 
 def find_next_token(iToken, lObjects):
-    while not is_item(lObjects, iToken):
-        iToken += 1
-    return iToken
+    iCurrent = iToken
+    iEnd = len(lObjects)
+    while not is_item(lObjects, iCurrent):
+        iCurrent += 1
+        if iCurrent == iEnd:
+            return iToken
+    return iCurrent
 
 
 def detect_submodule(iToken, lObjects, module):
-    iLast = 0
+    iEnd = len(lObjects) - 1  
+    iLast = -1
     iReturn = iToken
     while iLast != iReturn:
+        if iReturn == iEnd:
+            return iReturn
         iReturn = find_next_token(iReturn, lObjects)
         iLast = iReturn
         iReturn = module.detect(iReturn, lObjects)
+
     return iReturn
 
 
@@ -322,11 +333,13 @@ def print_debug(sTitle, iStart, iEnd, lObjects):
 
 def print_next_token(iObject, lObjects):
     iCurrent = find_next_token(iObject, lObjects)
-    print(f'{iCurrent} | {lObjects[iCurrent].get_value()}')
+    iLine = calculate_line_number(iObject, lObjects)
+    print(f'{iLine} | {iCurrent} | {lObjects[iCurrent].get_value()}')
 
 
 def print_token(iObject, lObjects):
-    print(f'{iObject} | {lObjects[iObject].get_value()}')
+    iLine = calculate_line_number(iObject, lObjects)
+    print(f'{iLine} | {iObject} | {lObjects[iObject].get_value()} | {lObjects[iObject]}')
 
 
 def print_line(lObjects, iStart):
@@ -375,7 +388,7 @@ def is_next_token(sToken, iToken, lObjects):
 
 def is_next_token_one_of(lTokens, iToken, lObjects):
     iCurrent = find_next_token(iToken, lObjects)
-    if lObjects[iCurrent].get_value() in lTokens:
+    if lObjects[iCurrent].get_value().lower() in lTokens:
         return True
     return False
 
@@ -443,6 +456,6 @@ def keyword_found(sKeyword, iToken, lObjects):
 
 def is_next_token_in_list(lUntils, iToken, lObjects):
     iCurrent = find_next_token(iToken, lObjects)
-    if lObjects[iCurrent].get_value() in lUntils:
+    if lObjects[iCurrent].get_value().lower() in lUntils:
         return True
     return False

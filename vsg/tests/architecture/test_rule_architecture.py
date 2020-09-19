@@ -101,7 +101,7 @@ class testRuleArchitectureMethods(unittest.TestCase):
     def test_rule_006(self):
         oRule = architecture.rule_006()
 
-        dExpected = utils.add_violation_list([2,9])
+        dExpected = [utils.add_violation(9)]
         oRule.analyze(oFileIs)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -428,16 +428,17 @@ class testRuleArchitectureMethods(unittest.TestCase):
         self.assertEqual(oRule._get_solution(100), 'Architecture name must be from this list: rtl,cdc,blue,entity1')
 
     def test_rule_027(self):
+        self.maxDiff = None
         oRule = architecture.rule_027()
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'architecture')
         self.assertEqual(oRule.identifier, '027')
-        dExpected = [{'lines': [{'number': 4, 'keyword_column': 14, 'before_keyword_column': 5},
-                                {'number': 5, 'keyword_column': 11, 'before_keyword_column': 5},
-                                {'number': 6, 'keyword_column': 9, 'before_keyword_column': 5},
-                                {'number': 7, 'keyword_column': 16, 'before_keyword_column': 5},
-                                {'number': 8, 'keyword_column': 8, 'before_keyword_column': 5}],
-                      'max_keyword_column': 16, 'max_before_keyword_column': 5}]
+        dExpected = [{'lines': [{'number': 4, 'keyword_column': 34, 'before_keyword_column': 25},
+                                {'number': 5, 'keyword_column': 30, 'before_keyword_column': 25},
+                                {'number': 6, 'keyword_column': 28, 'before_keyword_column': 25},
+                                {'number': 7, 'keyword_column': 35, 'before_keyword_column': 25},
+                                {'number': 8, 'keyword_column': 27, 'before_keyword_column': 25}],
+                      'max_keyword_column': 35, 'max_before_keyword_column': 25}]
         oRule.analyze(oFileComment)
         self.assertEqual(oRule.violations, dExpected)
 

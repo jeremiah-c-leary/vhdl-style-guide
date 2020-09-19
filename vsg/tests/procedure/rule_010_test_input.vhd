@@ -28,7 +28,7 @@ package body FIFO_PKG is
     signal b : in std_logic;
     variable c : in std_logic_vector(3 downto 0);
     signal d : out std_logic) is
-    signal sig1 : std_logic;
+    variable  sig1 : std_logic;
     file file1 : something;
     variable var1 : integer;
   begin
@@ -39,7 +39,7 @@ package body FIFO_PKG is
     signal b : in std_logic;
     variable c : in std_logic_vector(3 downto 0);
     signal d : out std_logic) is
-    signal   sig1 : std_logic;
+    variable sig1 : std_logic;
     file     file1 : something;
     variable var1 : integer;
   begin
@@ -53,7 +53,7 @@ package body FIFO_PKG is
     variable c : in std_logic_vector(3 downto 0);
     signal d : out std_logic)
     is
-    signal   sig1 : std_logic;
+    variable sig1 : std_logic;
     file     file1 : something;
     variable var1 : integer;
   begin
@@ -65,7 +65,7 @@ package body FIFO_PKG is
     variable c : in std_logic_vector(3 downto 0);
     signal d : out std_logic
   ) is
-    signal   sig1 : std_logic;
+    variable sig1 : std_logic;
     file     file1 : something;
     variable var1 : integer;
   begin
@@ -78,7 +78,7 @@ package body FIFO_PKG is
     signal d : out std_logic
   )
   is
-    signal   sig1 : std_logic;
+    variable sig1 : std_logic;
     file     file1 : something;
     variable var1 : integer;
   begin
@@ -94,7 +94,7 @@ architecture RTL of ENT is
     signal b : in std_logic;
     variable c : in std_logic_vector(3 downto 0);
     signal d : out std_logic) is
-    signal sig1 : std_logic;
+    variable  sig1 : std_logic;
     file file1 : something;
     variable var1 : integer;
   begin
@@ -105,7 +105,7 @@ architecture RTL of ENT is
     signal b : in std_logic;
     variable c : in std_logic_vector(3 downto 0);
     signal d : out std_logic) is
-    signal   sig1 : std_logic;
+    variable sig1 : std_logic;
     file     file1 : something;
     variable var1 : integer;
   begin
@@ -120,7 +120,7 @@ begin
       signal b : in std_logic;
       variable c : in std_logic_vector(3 downto 0);
       signal d : out std_logic) is
-      signal sig1 : std_logic;
+      variable  sig1 : std_logic;
       file file1 : something;
       variable var1 : integer;
     begin
@@ -137,7 +137,7 @@ begin
       signal b : in std_logic;
       variable c : in std_logic_vector(3 downto 0);
       signal d : out std_logic) is
-        signal     sig1 : std_logic;
+        variable   sig1 : std_logic;
         file     file1 : something;
         variable var1 : integer;
     begin

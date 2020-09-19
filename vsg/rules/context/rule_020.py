@@ -1,6 +1,7 @@
 
-from vsg import parser
 from vsg.rules import indent_item_rule
+
+from vsg.token import context_declaration as token
 
 
 class rule_020(indent_item_rule):
@@ -9,4 +10,4 @@ class rule_020(indent_item_rule):
     '''
 
     def __init__(self):
-        indent_item_rule.__init__(self, 'context', '020', parser.context_end_keyword)
+        indent_item_rule.__init__(self, 'context', '020', token.end_keyword)

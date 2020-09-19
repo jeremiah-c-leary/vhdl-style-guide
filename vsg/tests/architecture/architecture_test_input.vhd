@@ -15,20 +15,20 @@ architecture  ARCH  of  ENTITY  is
 
 begin
 
-end  architecture ARCH
+end  architecture ARCH;
 
  Architecture ARch Of entity Is
 
  begin
 
- eND architecture ArCh
+ eND architecture ArCh;
 
 architecture ARch
  of ENTITY is
 
 BEGIN
 
- end archITecture   ARCH
+ end archITecture   ARCH;
 
 architecture ARCH of ENTITY iS
 begin

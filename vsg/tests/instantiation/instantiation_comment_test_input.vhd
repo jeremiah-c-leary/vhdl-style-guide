@@ -11,7 +11,7 @@ architecture ARCH of ENTITY is
       port_1 : in    std_logic;
       port_2 : in    std_logic;-- This should be removed
       port_3 : inout std_logic;
-      port_4 : out   std_logic; -- This should be removed
+      port_4 : out   std_logic  -- This should be removed
     );
   end component COMP1;
 

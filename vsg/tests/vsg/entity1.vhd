@@ -8,5 +8,5 @@ entity entity1 is
     port5 : out   std_logic;
     port6 : inout std_logic
   );
-end entity entity1
+end entity entity1;
 

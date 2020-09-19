@@ -1,6 +1,7 @@
 
 from vsg.rules import case_item_rule
-from vsg.token import entity
+
+from vsg.token import entity_declaration as token
 
 
 class rule_008(case_item_rule):
@@ -9,6 +10,6 @@ class rule_008(case_item_rule):
     '''
 
     def __init__(self):
-        case_item_rule.__init__(self, 'entity', '008', entity.identifier)
-        self.regionBegin = entity.identifier
-        self.regionEnd = entity.identifier
+        case_item_rule.__init__(self, 'entity', '008', token.identifier)
+        self.regionBegin = token.identifier
+        self.regionEnd = token.identifier

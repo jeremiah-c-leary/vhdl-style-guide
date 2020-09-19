@@ -1,5 +1,5 @@
 
-architecture RTL of FIFO 
+architecture RTL of FIFO is
 
 begin
 

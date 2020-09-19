@@ -24,7 +24,7 @@ def classify(iToken, lObjects):
 
     iCurrent = utils.assign_next_token_required('variable', token.variable_keyword, iToken, lObjects)
 
-    iCurrent = identifier_list.classify(iCurrent, lObjects)
+    iCurrent = identifier_list.classify_until([':'], iCurrent, lObjects)
 
     iCurrent = utils.assign_next_token_required(':', token.colon, iCurrent, lObjects)
 

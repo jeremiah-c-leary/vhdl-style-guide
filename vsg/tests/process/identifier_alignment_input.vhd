@@ -66,13 +66,13 @@ begin
     procedure test_p (x: integer) is
       variable a, b : integer;
     begin
-    end procedure
+    end procedure;
 
     variable   var1 : boolean;
     constant     con1 : integer := 1;
     file  file1 : load_file_file open read_mode is load_file_name; -- 8
 
-    function test_f (x: integer) is
+    function test_f (x: integer) return integer is
       variable c, d : integer;
     begin
     end function;

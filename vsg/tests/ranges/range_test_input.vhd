@@ -23,7 +23,7 @@ entity ENT1 is
   );
 end entity ENT1;
 
-architecture ARCH of entity ENT1 is
+architecture ARCH of ENT1 is
 
   constant c_const1 : std_logic_vector(3 DOWNTO 0);  -- downto
   constant c_const2 : std_logic_vector(3 downto 0);

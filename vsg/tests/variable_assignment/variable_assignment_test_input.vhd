@@ -3,9 +3,9 @@ architecture ARCH of ENTITY is
 
 begin
 
-  a := b;
-   c := d;
-  e := f;
+  a <= b;
+   c <= d;
+  e <= f;
 
   PROC_1 : process (a) is
   begin
@@ -43,9 +43,9 @@ begin
 
   end process PROC_1;
 
-  a := b;
-  c1 := d;
-   e12 := f;
+  a <= b;
+  c1 <= d;
+   e12 <= f;
 
   PROC_2 : process (a) is
   begin
@@ -96,7 +96,7 @@ begin
 
     end case;
 
-    a :=
+    a <=
          b;
 
   end process PROC_2;

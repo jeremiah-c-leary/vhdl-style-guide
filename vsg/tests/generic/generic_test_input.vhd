@@ -13,7 +13,7 @@ entity ENTITY1 is
     port5 : out std_logic;
     port6 : inout std_logic
   );
-end entity ENTITY1
+end entity ENTITY1;
 
 
  entITy   entiTY2  IS
@@ -30,7 +30,7 @@ end entity ENTITY1
     PORT5 :  out std_logic;
     PORT6 : inout std_logic  );
 
- end entity    entiTY2
+ end entity    entiTY2;
     eNTITY   entiTY3    is
   generic (
     g_generIC1 :std_logic := '0';
@@ -44,7 +44,7 @@ end entity ENTITY1
     PORT5 :    out std_logic;
      PORT6 : inout     std_logic
  );
- END ENTITY entiTY3
+ END ENTITY entiTY3;
 
 entity ENTITY1
 is
@@ -60,7 +60,7 @@ IO_PORT3 : inout   std_logic;
     port4 :   in  std_logic;
         port5 : out std_logic;
     port6 : inout  std_logic);
-End  entity  ENTITY1
+End  entity  ENTITY1;
 
 entity ENTITY1 is
  geneRIC (
@@ -75,7 +75,7 @@ entity ENTITY1 is
     port5 : out std_logic := '0';
     port6 : inout std_logic
    );
-end ENtity ENTITY1
+end ENtity ENTITY1;
 
 entity ENTITY1 is
 
@@ -88,7 +88,7 @@ entity ENTITY1 is
     O_PORT2 : out   std_logic;
     IO_PORT3 : inout std_logic
   );
-end   entity ENTITY1
+end   entity ENTITY1;
 
 
 entity ENTITY1 is
@@ -100,7 +100,7 @@ entity ENTITY1 is
     PORT2_O : out   std_logic;
     PORT3_IO : inout std_logic
   );
-end ENTITY1
+end ENTITY1;
 
 architecture RTL of ENTITY1 is
 
@@ -120,7 +120,7 @@ entity ENTITY1 is
     O_PORT2 : out   std_logic;
     IO_PORT3, IO_PORT5 : inout std_logic
   );
-end entity  ENTITY1
+end entity  ENTITY1;
 
 -- Check if no generic is present
 
@@ -130,7 +130,7 @@ entity ENTITY1 is
     O_PORT2  : out   std_logic;
     IO_PORT3 : inout std_logic
   );
-end entity ENTITY1
+end entity ENTITY1;
 
 
 -- Check for generic assignment on same line as generic keyword
@@ -144,7 +144,7 @@ entity ENTITY1 is
     O_PORT2 : out   std_logic;
     IO_PORT3, IO_PORT5 : inout std_logic
   );
-end entity  ENTITY1
+end entity  ENTITY1;
 
 
 -- Check for generic assignment on same line as generic keyword
@@ -160,7 +160,7 @@ entity ENTITY1 is
     O_PORT2 : out   std_logic;
     IO_PORT3, IO_PORT5 : inout std_logic
   );
-end entity  ENTITY1
+end entity  ENTITY1;
 
 -- Check for blank lines above the );
 
@@ -175,4 +175,4 @@ entity ENTITY1 is
   port (
     O_PORT2 : out   std_logic
   );
-end entity  ENTITY1
+end entity  ENTITY1;

@@ -23,23 +23,23 @@ end package FIFO_PKG;
 
 package body FIFO_PKG is
 
-  procedure AVERAGE_SAMPLES is
-  begin
-  End PROCEDURE AVERAGE_SAMPLES;
+--  procedure AVERAGE_SAMPLES;
+--  begin
+--  End PROCEDURE AVERAGE_SAMPLES;
 
   procedure AVERAGE_SAMPLES (
     constant a : in integer;
     signal b : in std_logic;
     variable c : in std_logic_vector(3 downto 0);
     signal d : out std_logic) is
-  begin
+   begin
   end procedure AVERAGE_SAMPLES;  
 
   -- Violations below this line
 
-   procedure AVERAGE_SAMPLES is
- begin
-     end procedure AVERAGE_SAMPLES;
+--   procedure AVERAGE_SAMPLES;
+-- begin
+--     end procedure AVERAGE_SAMPLES;
 
   procedure AVERAGE_SAMPLES (constant x : in integer;
    constant a : in integer;
@@ -47,7 +47,7 @@ package body FIFO_PKG is
        variable c : in std_logic_vector(3 downto 0);
      signal d : out std_logic) is
   begin
-  end procedure AVERAGE_SAMPLES;  
+  END PROCEDURE AVERAGE_SAMPLES;  
 
   -- Variations on end of procedure parameter and is keyword
 
@@ -91,18 +91,6 @@ package body FIFO_PKG is
   begin
   end procedure AVERAGE_SAMPLES;  
 
-  TEST_PROCESS : process
-
-    procedure test_procedure (
-      constant test1_c    : in boolean := true
-     ) is
-    begin
-    end procedure test_procedure;
-
-  begin
-
-  end process TEST_PROCESS;
-
 end package body FIFO_PKG;
 
 architecture RTL of ENT is
@@ -127,5 +115,17 @@ architecture RTL of ENT is
   end procedure AVERAGE_SAMPLES;  
 
 begin
+
+  TEST_PROCESS : process
+
+    procedure test_procedure (
+      constant test1_c    : in boolean := true
+     ) is
+    begin
+    end procedure test_procedure;
+
+  begin
+
+  end process TEST_PROCESS;
 
 end architecture RTL;

@@ -12,7 +12,7 @@ architecture ARCH of ENTITY_1 is
     constant e : std_logic) return integer is
     file file1 : load_file_type open read_mode is load_file_name;
     constant con1 : integer := 0;
-    signal sig1 : std_logic_vector;
+    variable sig1 : std_logic_vector;
   begin
 
   end;
@@ -25,7 +25,7 @@ architecture ARCH of ENTITY_1 is
      constant e : std_logic) return integer is
      file     file1 : load_file_type open read_mode is load_file_name;
      constant con1 : integer := 0;
-     signal   sig1 : std_logic_vector;
+     variable sig1 : std_logic_vector;
   begin
 
   end;
@@ -45,7 +45,7 @@ begin
        constant e : std_logic) return integer is
        file file1 : load_file_type open read_mode is load_file_name;
        constant con1 : integer := 0;
-       signal sig1 : std_logic_vector;
+       variable sig1 : std_logic_vector;
     begin
 
   end;
@@ -103,10 +103,10 @@ end package TEST_PKG;
 package body TEST_PKG_BODY is
 
   constant con2 : integer := 100;
-  signal sig2 : integer := 20;
+  variable sig2 : integer := 20;
 
   constant con2 : integer := 100;
-  signal sig2 : integer := 20;
+  variable sig2 : integer := 20;
 
   function func_1 (
      constant a : integer;
@@ -116,7 +116,7 @@ package body TEST_PKG_BODY is
      constant e : std_logic) return integer is
      file file1 : load_file_type open read_mode is load_file_name;
      constant con1 : integer := 0;
-     signal sig1 : std_logic_vector;
+     variable sig1 : std_logic_vector;
   begin
 
   end;
@@ -130,7 +130,7 @@ package body TEST_PKG_BODY is
      constant e : std_logic) return integer is
      file     file1 : load_file_type open read_mode is load_file_name;
      constant con1 : integer := 0;
-     signal   sig1 : std_logic_vector;
+     variable sig1 : std_logic_vector;
   begin
 
   end;

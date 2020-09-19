@@ -13,7 +13,7 @@ entity ENTITY1 is
     port5 : out std_logic;
     port6 : inout std_logic
   );
-end entity ENTITY1
+end entity ENTITY1;
 
 
  entITy   entiTY2  IS
@@ -30,7 +30,7 @@ end entity ENTITY1
     USE_5 :  out STD_LOGIC_VECTOR(G_GENERIC1 downto 0);
     PORT6 : inout UNSIGNED  );
 
- end entity    entiTY2
+ end entity    entiTY2;
     eNTITY   entiTY3    is
   generic (
     g_generIC1 :std_logic := '0';
@@ -44,7 +44,7 @@ end entity ENTITY1
     PORT5 :    oUt STD_LOGIC;
      PORT6 : inOut     std_logic
  );
- END ENTITY entiTY3
+ END ENTITY entiTY3;
 
 entity ENTITY1
 is
@@ -60,7 +60,7 @@ IO_PORT3 : inout   std_logic;
     port4 :   in  std_logic;
         port5 : out std_logic;
     port6 : inout  std_logic);
-End  entity  ENTITY1
+End  entity  ENTITY1;
 
 entity ENTITY1 is
  geneRIC (
@@ -75,7 +75,7 @@ entity ENTITY1 is
     port5 : out std_logic := '0';
     port6 : inout std_logic
    );
-end ENtity ENTITY1
+end ENtity ENTITY1;
 
 entity ENTITY1 is
 
@@ -88,7 +88,7 @@ entity ENTITY1 is
     O_PORT2 : out   std_logic;
     IO_PORT3 : inout std_logic
   );
-end   entity ENTITY1
+end   entity ENTITY1;
 
 
 entity ENTITY1 is
@@ -100,7 +100,7 @@ entity ENTITY1 is
     PORT2_O : out   std_logic;
     PORT3_IO : inout std_logic
   );
-end ENTITY1
+end ENTITY1;
 
 architecture RTL of ENTITY1 is
 
@@ -120,7 +120,7 @@ entity ENTITY1 is
     O_PORT2 : out   std_logic;  -- This is a comment with a comma ,:
     IO_PORT3, IO_PORT5 : inout std_logic
   );
-end entity  ENTITY1
+end entity  ENTITY1;
 
 -- Check if no generic is present
 
@@ -131,7 +131,7 @@ entity ENTITY1 is
     IO_PORT3 : inout std_logic
     --- debug ports: can be removed or left unconnected for the application circuit ---
   );
-end entity ENTITY1
+end entity ENTITY1;
 
 
 -- Check if port exists on port keyword line
@@ -142,7 +142,7 @@ entity ENTITY1 is
     IO_PORT3 : inout std_logic
     --- debug ports: can be removed or left unconnected for the application circuit ---
   );
-end entity ENTITY1
+end entity ENTITY1;
 
 -- Check if port opening parenthesis is on the same line
 

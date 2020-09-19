@@ -6,10 +6,10 @@ begin
   PROC_1 : process (a,b,c,d) is
   begin
 
-    if (a = 1) then
+    if a = 1 then
 
 
-      case b
+      case b is
         when 1 =>
           c <= d;
         when 2 =>
@@ -20,7 +20,7 @@ begin
     elsif (b = 1) then
 
 
-      case b
+      case b is
         when 1 =>
           c <= d;
         when 2 =>
@@ -31,7 +31,7 @@ begin
     else
 
 
-      case b
+      case b is
         when 1 =>
           c <= d;
         when 2 =>

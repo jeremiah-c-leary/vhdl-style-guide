@@ -2,7 +2,7 @@
 entity ENTITY1 is
   generic (
     wait_generic : std_logic := '0'
-  )
+  );
   port (
     wait_port : std_logic := '1'
   );
@@ -15,7 +15,7 @@ architecture ARCH of ENTITY1 is
   component ENTITY2 is
     generic (
       wait_generic : std_logic := '0'
-    )
+    );
     port (
       wait_port : std_logic := '1'
     );

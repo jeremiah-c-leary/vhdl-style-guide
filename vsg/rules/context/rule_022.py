@@ -1,6 +1,7 @@
 
-from vsg import parser
 from vsg.rules import copy_item_value_and_insert_new_item_after_item_rule
+
+from vsg.token import context_declaration as token
 
 
 class rule_022(copy_item_value_and_insert_new_item_after_item_rule):
@@ -10,8 +11,8 @@ class rule_022(copy_item_value_and_insert_new_item_after_item_rule):
     '''
 
     def __init__(self):
-        copy_item_value_and_insert_new_item_after_item_rule.__init__(self, 'context', '022', parser.context_end_context_keyword, parser.context_semicolon, parser.context_identifier, parser.context_end_identifier('unknown'))
+        copy_item_value_and_insert_new_item_after_item_rule.__init__(self, 'context', '022', token.end_context_keyword, token.semicolon, token.identifier, token.context_simple_name('unknown'))
         self.solution = 'missing context identifier'
         self.subphase = 2
-        self.regionBegin = parser.context_keyword
-        self.regionEnd = parser.context_semicolon
+        self.regionBegin = token.context_keyword
+        self.regionEnd = token.semicolon

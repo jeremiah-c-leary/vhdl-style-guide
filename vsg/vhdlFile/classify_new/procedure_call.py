@@ -31,7 +31,7 @@ def detect(iToken, lObjects):
 
     while lObjects[iCurrent].get_value() != ';':
         if utils.is_item(lObjects, iCurrent):
-            if lObjects[iCurrent].get_value() in lExceptions:
+            if lObjects[iCurrent].get_value().lower() in lExceptions:
                 return False
         iCurrent += 1
     else:

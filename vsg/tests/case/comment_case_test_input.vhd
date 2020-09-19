@@ -1,5 +1,5 @@
 
-architecture ARCH of ENTITY
+architecture ARCH of ENTITY is
 
 begin
 
@@ -28,5 +28,7 @@ begin
         z <= a;
          -- Comment
     end case;
+
+  end process PROC_1;
 
 end architecture ARCH;

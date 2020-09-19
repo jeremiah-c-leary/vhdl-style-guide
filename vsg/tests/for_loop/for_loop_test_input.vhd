@@ -7,7 +7,7 @@ begin
   begin
 
     for index in 4 to 23 loop
-       sig1(index) <= '0';
+       sig1(1) <= '0';
     end loop;
 
   end process PROC_1;
@@ -93,7 +93,7 @@ begin
   -- Deeply nested for loop
   PROC_5 : process (C) is
 
-    procedure nested_loop_p is         -- 2
+    procedure nested_loop_p (a : in integer )is -- 2
     begin                              -- 2
       for j in 0 to 1 loop             -- 3
         for i in 0 to 3 loop           -- 4

@@ -39,14 +39,14 @@ package PACK is
     C
   );
 
-  a <= b;
+  variable a : std_logic;
   type a is (
     A, B,
 
     -- comment
     C
   );
-  a <= b;
+  variable b : std_logic;
 
     subtype a is range 0 to 9;
 
@@ -111,25 +111,25 @@ begin
       TYPE_GENERIC => '1'
     )
     port map (
-      TYPE_PORT_NAME => '1';
+      TYPE_PORT_NAME => '1',
       type_port_name_2 => '0'
     );
 
   TYPE_OUTPUT <= '1';
 
-  process PROC1 (sig1) is
+  process (sig1) is
 
     type a is range 0 to 9;
 
   begin
-    type_signal <= '0'
+    type_signal <= '0';
   end process PROC1;
 
 end architecture ARCH;
 
 -- Checking for is in type name
 
-architecture ARCH is
+architecture ARCH of ENT1 is
 
   type memory_type_is_name   is array (DEPTH - 1 downto 0) of STD_LOGIC_VECTOR(WIDTH-1 downto 0);
 

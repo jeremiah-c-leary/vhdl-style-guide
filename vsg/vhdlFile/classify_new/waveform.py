@@ -1,4 +1,6 @@
 
+from vsg import parser
+
 from vsg.token import waveform as token
 
 from vsg.vhdlFile import utils
@@ -25,5 +27,7 @@ def classify_until(lUntils, iToken, lObjects):
     while utils.is_next_token(',', iCurrent, lObjects):
         iCurrent = utils.assign_next_token_required(',', token.comma, iCurrent, lObjects)
         iCurrent = waveform_element.classify_until(lMyUntils, iCurrent, lObjects)
+
+    iCurrent = utils.assign_next_token_if(')', parser.todo, iCurrent, lObjects)
 
     return iCurrent

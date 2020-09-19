@@ -1,5 +1,5 @@
 
-architecture ARCH of ENTITY
+architecture ARCH of ENTITY is
 begin
 
   PROC_1 : process (a) is
@@ -25,9 +25,9 @@ begin
 -- else code
     else
       a <= w;
-    end if
+    end if;
     
-  end process PROC_1:
+  end process PROC_1;
 
   -- Nothing should be detected in the following process
   PROC_1 : process (a) is
@@ -53,10 +53,10 @@ begin
     -- else code
     else
       a <= w;
-    end if
+    end if;
     
-  end process PROC_1:
+  end process PROC_1;
 
 
-end architecture
+end architecture;
 

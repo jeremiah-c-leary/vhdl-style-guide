@@ -58,7 +58,6 @@ from vsg.rules import process
 from vsg.rules import procedure
 from vsg.rules import ranges
 from vsg.rules import sequential
-from vsg.rules import semicolon
 from vsg.rules import signal
 from vsg.rules import source_file
 from vsg.rules import subtype

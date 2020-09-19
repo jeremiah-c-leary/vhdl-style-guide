@@ -1,6 +1,7 @@
 
-from vsg.token import entity
 from vsg.rules import move_item_next_to_another_item_rule
+
+from vsg.token import entity_declaration as token
 
 
 class rule_005(move_item_next_to_another_item_rule):
@@ -10,7 +11,7 @@ class rule_005(move_item_next_to_another_item_rule):
     '''
 
     def __init__(self):
-        move_item_next_to_another_item_rule.__init__(self, 'entity', '005', entity.identifier, entity.is_keyword)
+        move_item_next_to_another_item_rule.__init__(self, 'entity', '005', token.identifier, token.is_keyword)
         self.subphase = 2
-        self.regionBegin = entity.identifier
-        self.regionEnd = entity.is_keyword
+        self.regionBegin = token.identifier
+        self.regionEnd = token.is_keyword

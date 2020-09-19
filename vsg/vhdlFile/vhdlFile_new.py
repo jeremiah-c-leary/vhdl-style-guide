@@ -13,6 +13,7 @@ class vhdlFile():
     Holds contents of a VHDL file.
     When a vhdlFile object is created, the contents of the file must be passed to it.
     A line object is created for each line read in.
+    Then the line object attributes are updated.
 
     Parameters:
 
@@ -25,6 +26,8 @@ class vhdlFile():
     def __init__(self, filecontent):
         self.filecontent = filecontent
         self.lines = [line.line('')]
+        self.hasArchitecture = False
+        self.hasEntity = False
         self._processFile()
         self.filename = None
 

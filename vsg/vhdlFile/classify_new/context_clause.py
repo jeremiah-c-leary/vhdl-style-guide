@@ -9,5 +9,5 @@ def detect(iToken, lObjects):
     context_clause ::=
         { context_item }
     '''
-
-    return context_item.detect(iToken, lObjects)
+    iCurrent = utils.detect_submodule(iToken, lObjects, context_item)
+    return iCurrent

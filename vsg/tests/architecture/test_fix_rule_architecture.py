@@ -105,7 +105,7 @@ class testFixRuleArchitectureMethods(unittest.TestCase):
         dExpected = []
         oRule.fix(self.oFile)
 
-        self.assertEqual(self.oFile.lines[24].line, ' eND architecture ARCH')
+        self.assertEqual(self.oFile.lines[24].line, ' eND architecture ARCH;')
 
         self.assertEqual('Change architecture name to uppercase.', oRule._get_solution(24))
 

@@ -14,20 +14,25 @@ def classify(iToken, lObjects):
 
 
 def classify_until(lUntils, iToken, lObjects):
+    iEnd = len(lObjects) - 1
     iCurrent = iToken
     iStop = len(lObjects) - 1
     iOpenParenthesis = 0
     iCloseParenthesis = 0
-    while iCurrent < iStop:
-        iCurrent = utils.find_next_token(iCurrent, lObjects)
-        if utils.token_is_open_parenthesis(iCurrent, lObjects):
+    for iIndex in range(iToken, len(lObjects)):
+        if not utils.is_item(lObjects, iIndex):
+            continue
+        if utils.token_is_open_parenthesis(iIndex, lObjects):
            iOpenParenthesis += 1
-        if utils.token_is_close_parenthesis(iCurrent, lObjects):
+        if utils.token_is_close_parenthesis(iIndex, lObjects):
            iCloseParenthesis += 1
         if iOpenParenthesis < iCloseParenthesis:
             break
-        elif lObjects[iCurrent].get_value() in lUntils:
-            break
+        elif lObjects[iIndex].get_value().lower() in lUntils:
+            if iOpenParenthesis == iCloseParenthesis:
+                break
         else:
-            utils.assign_token(lObjects, iCurrent, parser.todo)
+            utils.assign_token(lObjects, iIndex, parser.todo)
+        if iCurrent == iEnd:
+            return iToken
     return iCurrent

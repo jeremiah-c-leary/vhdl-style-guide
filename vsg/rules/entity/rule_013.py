@@ -1,6 +1,7 @@
 
-from vsg.token import entity
 from vsg.rules import space_between_items_rule
+
+from vsg.token import entity_declaration as token
 
 
 class rule_013(space_between_items_rule):
@@ -9,6 +10,6 @@ class rule_013(space_between_items_rule):
     '''
 
     def __init__(self):
-        space_between_items_rule.__init__(self, 'entity', '013', entity.end_entity_keyword, entity.simple_name)
-        self.regionBegin = entity.end_entity_keyword
-        self.regionEnd = entity.simple_name
+        space_between_items_rule.__init__(self, 'entity', '013', token.end_entity_keyword, token.entity_simple_name)
+        self.regionBegin = token.end_entity_keyword
+        self.regionEnd = token.entity_simple_name

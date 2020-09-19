@@ -13,7 +13,7 @@ def classify(iToken, lObjects):
         identifier_list : element_subtype_definition ;
     '''
 
-    iCurrent = identifier_list.classify(iToken, lObjects)
+    iCurrent = identifier_list.classify_until([':'], iToken, lObjects)
 
     iCurrent = utils.assign_next_token_required(':', token.colon, iCurrent, lObjects)
 

@@ -21,10 +21,10 @@ class testRuleArchitecture(unittest.TestCase):
 
         lExpected = []
 
-        dViolation = utils.add_violation(9)
-        dViolation['columnAdjust'] = 2
-        dViolation['targetColumn'] = 13
-        lExpected.append(dViolation)
+#        dViolation = utils.add_violation(9)
+#        dViolation['columnAdjust'] = 2
+#        dViolation['targetColumn'] = 13
+#        lExpected.append(dViolation)
 
         dViolation = utils.add_violation(11)
         dViolation['columnAdjust'] = 4
@@ -62,15 +62,15 @@ class testRuleArchitecture(unittest.TestCase):
         lExpected.append(dViolation)
 
         dViolation = utils.add_violation(62)
-        dViolation['columnAdjust'] = 2
-        dViolation['targetColumn'] = 11
-        lExpected.append(dViolation)
-
-
-        dViolation = utils.add_violation(82)
-        dViolation['columnAdjust'] = 2
+        dViolation['columnAdjust'] = 4
         dViolation['targetColumn'] = 13
         lExpected.append(dViolation)
+
+
+#        dViolation = utils.add_violation(82)
+#        dViolation['columnAdjust'] = 2
+#        dViolation['targetColumn'] = 13
+#        lExpected.append(dViolation)
 
         dViolation = utils.add_violation(85)
         dViolation['columnAdjust'] = 4
@@ -79,25 +79,25 @@ class testRuleArchitecture(unittest.TestCase):
 
 
         dViolation = utils.add_violation(100)
-        dViolation['columnAdjust'] = -4
-        dViolation['targetColumn'] = 13
+        dViolation['columnAdjust'] = -2
+        dViolation['targetColumn'] = 15
         lExpected.append(dViolation)
 
         dViolation = utils.add_violation(101)
-        dViolation['columnAdjust'] = 2
-        dViolation['targetColumn'] = 13
+        dViolation['columnAdjust'] = 4
+        dViolation['targetColumn'] = 15
         lExpected.append(dViolation)
 
 
         dViolation = utils.add_violation(115)
-        dViolation['columnAdjust'] = 2
-        dViolation['targetColumn'] = 12
+        dViolation['columnAdjust'] = 4
+        dViolation['targetColumn'] = 14
         lExpected.append(dViolation)
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, lExpected)
 
-        self.assertEqual('Move identifier to column 14', oRule._get_solution(9))
+#        self.assertEqual('Move identifier to column 14', oRule._get_solution(9))
         self.assertEqual('Move identifier to column 14', oRule._get_solution(11))
         self.assertEqual('Move identifier to column 14', oRule._get_solution(12))
         self.assertEqual('Move identifier to column 14', oRule._get_solution(13))

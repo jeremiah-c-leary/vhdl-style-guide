@@ -1,7 +1,7 @@
 
 from vsg.rules import remove_blank_lines_above_item_rule
 
-from vsg.token import entity as token
+from vsg.token import entity_declaration as token
 
 
 class rule_016(remove_blank_lines_above_item_rule):

@@ -18,7 +18,7 @@ class testRuleProcedureMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'procedure')
         self.assertEqual(oRule.identifier, '001')
-        dExpected = utils.add_violation_list([14,16,40])
+        dExpected = utils.add_violation_list([14,16])
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -27,7 +27,7 @@ class testRuleProcedureMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'procedure')
         self.assertEqual(oRule.identifier, '002')
-        dExpected = [utils.add_violation(41)]
+        dExpected = [utils.add_violation(35)]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -36,7 +36,7 @@ class testRuleProcedureMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'procedure')
         self.assertEqual(oRule.identifier, '003')
-        dExpected = utils.add_violation_list([14,42])
+        dExpected = utils.add_violation_list([14])
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -54,7 +54,7 @@ class testRuleProcedureMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'procedure')
         self.assertEqual(oRule.identifier, '005')
-        dExpected = utils.add_violation_list([89,90,115,116])
+        dExpected = utils.add_violation_list([89,90,103,104])
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -63,7 +63,7 @@ class testRuleProcedureMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'procedure')
         self.assertEqual(oRule.identifier, '006')
-        dExpected = utils.add_violation_list([40, 98])
+        dExpected = utils.add_violation_list([123])
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -72,7 +72,7 @@ class testRuleProcedureMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'procedure')
         self.assertEqual(oRule.identifier, '008')
-        dExpected = [{'lines': [{'number': 28}], 'words_to_fix': {'End'}}]
+        dExpected = [{'lines': [{'number': 50}], 'words_to_fix': {'END'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -81,6 +81,6 @@ class testRuleProcedureMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'procedure')
         self.assertEqual(oRule.identifier, '009')
-        dExpected = [{'lines': [{'number': 28}], 'words_to_fix': {'PROCEDURE'}}]
+        dExpected = [{'lines': [{'number': 50}], 'words_to_fix': {'PROCEDURE'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)

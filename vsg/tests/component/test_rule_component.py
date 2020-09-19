@@ -230,7 +230,7 @@ class testRuleComponentMethods(unittest.TestCase):
         self.assertEqual(oRule.identifier, '020')
 
         dExpected = [{'lines': [{'number': 12, 'keyword_column': 31, 'before_keyword_column': 30},
-                                {'number': 14, 'keyword_column': 32, 'before_keyword_column': 30}],
+                                {'number': 14, 'keyword_column': 32, 'before_keyword_column': 29}],
                       'max_keyword_column': 32, 'max_before_keyword_column': 30}]
         lFileComment = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'component_comment_test_input.vhd'))
         oFileComment = vhdlFile.vhdlFile(lFileComment)

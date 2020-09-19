@@ -107,7 +107,7 @@ proc_name : process (one, two, three) is
         process1 => '1'
     )
     port map (
-      process2 => '3';
+      process2 => '3',
       process_2 => '4' 
     );
 
@@ -125,7 +125,7 @@ proc_name : process (one, two, three) is
   process
 
     variable var_a : std_logic_vector(16 downto 0);
-    variable var_b;
+    variable var_b : std_logic;
 
   begin
 
@@ -158,7 +158,7 @@ proc_name : process (one, two, three) is
 
     function test_procedure (
       constant test1_c    : in boolean := true
-    ) is
+    ) return integer is
     begin
     end function test_procedure;
 

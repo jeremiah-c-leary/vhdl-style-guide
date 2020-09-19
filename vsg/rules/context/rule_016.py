@@ -1,6 +1,7 @@
 
-from vsg import parser
 from vsg.rules import case_item_rule
+
+from vsg.token import context_declaration as token
 
 
 class rule_016(case_item_rule):
@@ -10,6 +11,6 @@ class rule_016(case_item_rule):
     '''
 
     def __init__(self):
-        case_item_rule.__init__(self, 'context', '016', parser.context_end_identifier)
-        self.regionBegin = parser.context_keyword
-        self.regionEnd = parser.context_semicolon
+        case_item_rule.__init__(self, 'context', '016', token.context_simple_name)
+        self.regionBegin = token.context_keyword
+        self.regionEnd = token.semicolon

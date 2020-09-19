@@ -12,7 +12,8 @@ def detect(iToken, lObjects):
         library logic_name_list ;
     '''
     if utils.is_next_token('library', iToken, lObjects):
-        return classify(iToken, lObjects)
+        iCurrent = classify(iToken, lObjects)
+        return iCurrent
     return iToken
 
 

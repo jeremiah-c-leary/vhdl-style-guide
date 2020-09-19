@@ -1,5 +1,5 @@
 
-architecture ARCH of ENTITY
+architecture ARCH of ENTITY is
 
 begin
 
@@ -17,7 +17,7 @@ begin
     b <= c;             -- comment
     d <= e;             -- comment
 
-  end process PROC_1:
+  end process PROC_1;
 
 
   PROC_1 : process (a) is
@@ -30,7 +30,7 @@ begin
     b <= c;            -- comment
     d <= e;             -- comment
 
-  end process PROC_1:
+  end process PROC_1;
 
 
   PROC_1 : process (a) is
@@ -43,6 +43,6 @@ begin
     b <= c;             -- comment
     d <= e;             -- comment
 
-  end process PROC_1:
+  end process PROC_1;
 
 end architecture ARCH;

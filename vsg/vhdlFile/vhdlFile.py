@@ -1,35 +1,16 @@
 
-import re
-
 from vsg import line
 from vsg.vhdlFile import update
 from vsg.vhdlFile import classify
-from vsg.vhdlFile.classify import design_file
 from vsg.vhdlFile.classify import entity
 
-from vsg.token import use_clause as use_clause_token
-from vsg.token import package_declaration
-from vsg.token import package_body
-from vsg.token import architecture_body
-from vsg.token import constant_declaration
-from vsg.token import constrained_array_definition
-from vsg.token import unbounded_array_definition
-from vsg.token import association_list
-from vsg.token import association_element
-from vsg.token import generic_map_aspect
-from vsg.token import concurrent_simple_signal_assignment
-from vsg.token import concurrent_conditional_signal_assignment
-from vsg.token import concurrent_selected_signal_assignment
-from vsg.token import concurrent_signal_assignment_statement
-from vsg.token import concurrent_assertion_statement
-from vsg.token import assertion
-from vsg.token import assertion_statement
-from vsg.token import concurrent_procedure_call_statement
-from vsg.token import procedure_call
-from vsg.token import process_statement
-from vsg.token import block_statement
-
 from vsg import parser
+from vsg import token
+
+from vsg.vhdlFile.classify_new import blank
+from vsg.vhdlFile.classify_new import comment
+from vsg.vhdlFile.classify_new import design_file
+from vsg.vhdlFile.classify_new import whitespace
 
 
 class vhdlFile():
@@ -56,6 +37,8 @@ class vhdlFile():
         self.filename = None
 
     def _processFile(self):
+
+        lAllObjects = []
 
         dVars = {}
         dVars['fFoundProcessBegin'] = False
@@ -281,28 +264,24 @@ class vhdlFile():
 
         for sLine in self.filecontent:
             oLine = line.line(sLine.replace('\t', '  ').rstrip())
-#            print(oLine.line)
-#            print(dVars['type_declaration']['record_type_definition']['keyword'])
             lTokens = oLine.get_zipped_tokens()
-            lObjects = [] 
+            lObjects = []
             for sToken in lTokens:
                 lObjects.append(parser.item(sToken))
+
+            blank.classify(lObjects, oLine)
+            whitespace.classify(lTokens, lObjects)
+            comment.classify(lTokens, lObjects)
             
-#            preIndent = str(dVars['iCurrentIndentLevel'])
             update.inside_attributes(dVars, self.lines[-1], oLine)
 
             classify.blank(oLine) # lTokens
             classify.whitespace(lTokens, lObjects)
             classify.comment(dVars, lTokens, lObjects, oLine)
 
-            for iObject, oObject in enumerate(lObjects):
-                if is_whitespace(oObject):
-                    continue
-                design_file.tokenize(oObject, iObject, lObjects, dVars)
 
-            classify.library(dVars, lTokens, lObjects, oLine)
             classify.use(dVars, lTokens, lObjects, oLine)
-            classify.context(self, dVars, lTokens, lObjects, oLine)
+
             classify.entity.legacy(self, dVars, oLine)
             classify.assert_statement(self, dVars, lTokens, lObjects, oLine)
 
@@ -359,25 +338,18 @@ class vhdlFile():
 
             # Add line to file
             self.lines.append(oLine)
+
+            lAllObjects.extend(lObjects)
+            lAllObjects.append(parser.carriage_return())
+
             oLinePrevious = oLine
             oLine.objects = lObjects
-#            print('-'*80)
-#            print(oLine.line)
-#            print(lObjects)
-#            print('[' + preIndent + '][' + oLine.line + '][' + str(oLine.indentLevel) + ']')
+
+        design_file.tokenize(lAllObjects)
+
+        for iLine, lLine in enumerate(split_on_carriage_return(lAllObjects)):
+            self.lines[iLine + 1].objects = lLine
         self.set_indent_levels()
-        self.classify_package_keywords()
-        self.classify_array_keywords()
-        self.classify_association_element_parts()
-        self.classify_concurrent_simple_signal_assignment_parts()
-        self.classify_concurrent_conditional_signal_assignment_parts()
-        self.classify_concurrent_signal_assignment_labels()
-        self.classify_concurrent_assertion_statement_labels()
-        self.classify_assertion_statement_labels()
-        self.classify_concurrent_procedure_call_statement_labels()
-        self.classify_process_statement_labels()
-        self.classify_block_statement_labels()
-#        self.print_debug()
 
 
     def update_filecontent(self):
@@ -492,34 +464,34 @@ class vhdlFile():
             if len(oLine.objects) == 0:
                 continue
 
-            if _does_line_start_with_item_or_whitespace_and_then_item(oLine, parser.context_keyword):
+            if _does_line_start_with_item_or_whitespace_and_then_item(oLine, token.context_declaration.context_keyword):
                 oLine.indentLevel = 0
                 dIndent['insideContextDeclaration'] = True
-            if _does_line_start_with_item_or_whitespace_and_then_item(oLine, parser.context_end_keyword):
+            if _does_line_start_with_item_or_whitespace_and_then_item(oLine, token.context_declaration.end_keyword):
                 oLine.indentLevel = 0
                 dIndent['insideContextDeclaration'] = False
-            if _does_line_start_with_item_or_whitespace_and_then_item(oLine, parser.context_reference_keyword):
+            if _does_line_start_with_item_or_whitespace_and_then_item(oLine, token.context_reference.keyword):
                 if dIndent['insideContextDeclaration']:
                     oLine.indentLevel = 2
                 else:
                     oLine.indentLevel = 1
-            if _does_line_start_with_item_or_whitespace_and_then_item(oLine, parser.library_keyword):
+            if _does_line_start_with_item_or_whitespace_and_then_item(oLine, token.library_clause.keyword):
                 if dIndent['insideContextDeclaration']:
                     oLine.indentLevel = 1
                 else:
                     oLine.indentLevel = 0
-            if _does_line_start_with_item_or_whitespace_and_then_item(oLine, use_clause_token.keyword):
+            if _does_line_start_with_item_or_whitespace_and_then_item(oLine, token.use_clause.keyword):
                 if dIndent['insideContextDeclaration']:
                     oLine.indentLevel = 2
                 else:
                     oLine.indentLevel = 1
 
-            if _does_line_start_with_item_or_whitespace_and_then_item(oLine, architecture_body.architecture_keyword):
+            if _does_line_start_with_item_or_whitespace_and_then_item(oLine, token.architecture_body.architecture_keyword):
                 dIndent['level'] = 1
                 oLine.indentLevel = 0
 
-            if _does_line_start_with_item_or_whitespace_and_then_item(oLine, constant_declaration.assignment_expression):
-                if type(oLine.objects[0]) == constant_declaration.assignment_expression:
+            if _does_line_start_with_item_or_whitespace_and_then_item(oLine, token.constant_declaration.assignment_operator):
+                if type(oLine.objects[0]) == token.constant_declaration.assignment_operator:
                     if oLine.objects[0].get_value() == '(':
                         oLine.indentLevel = dIndent['level']
                         dIndent['level'] += 1
@@ -539,455 +511,6 @@ class vhdlFile():
                         oLine.indentLevel = dIndent['level']
                     else:
                         oLine.indentLevel = dIndent['level']
-
-    def classify_package_keywords(self):
-        '''
-        Assigns the correct package object to the package keywords.
-        '''
-        bPackageIdentifierFound = False
-        bPackageBodyBodyKeywordFound = False
-        for iLine, oLine in enumerate(self.lines[::-1]):
-            for iObject, oObject in enumerate(oLine.objects[::-1]):
-                if type(oObject) == parser.item and bPackageIdentifierFound:
-                    iIndex = len(oLine.objects) - iObject - 1
-                    oLine.objects[iIndex] = package_declaration.package_keyword(oObject.get_value())
-                    bPackageIdentifierFound = False                
-
-                if type(oObject) == package_declaration.identifier and not bPackageIdentifierFound:
-                    bPackageIdentifierFound = True
-
-                if type(oObject) == parser.item and bPackageBodyBodyKeywordFound:
-                    iIndex = len(oLine.objects) - iObject - 1
-                    oLine.objects[iIndex] = package_body.package_keyword(oObject.get_value())
-                    bPackageBodyBodyKeywordFound = False                
-
-                if type(oObject) == package_body.body_keyword and not bPackageBodyBodyKeywordFound:
-                    bPackageBodyBodyKeywordFound = True
-
-
-    def classify_array_keywords(self):
-        '''
-        Assigns the correct array object to the array keywords.
-        '''
-        bUnboundedArrayFound = False
-        bConstrainedArrayFound = False
-        for iLine, oLine in enumerate(self.lines[::-1]):
-            for iObject, oObject in enumerate(oLine.objects[::-1]):
-                if type(oObject) == parser.item and bConstrainedArrayFound:
-                    iIndex = len(oLine.objects) - iObject - 1
-                    oLine.objects[iIndex] = constrained_array_definition.keyword(oObject.get_value())
-                    bConstrainedArrayFound = False                
-
-                if type(oObject) == constrained_array_definition.index_constraint and not bConstrainedArrayFound:
-                    bConstrainedArrayFound = True
-
-                if type(oObject) == parser.item and bUnboundedArrayFound:
-                    iIndex = len(oLine.objects) - iObject - 1
-                    oLine.objects[iIndex] = unbounded_array_definition.open_parenthesis(oObject.get_value())
-                    bUnboundedArrayFound = False                
-
-                if type(oObject) == unbounded_array_definition.open_parenthesis and not bUnboundedArrayFound:
-                    bUnboundedArrayFound = True
-
-    def classify_association_element_parts(self):
-        '''
-        Assigns the correct objects to formal_part and actual_part objects in association_elements.
-        '''
-        bCommaFound = False
-        bAssignmentFound = False
-        for iLine, oLine in enumerate(self.lines[::-1]):
-            for iObject, oObject in enumerate(oLine.objects[::-1]):
-                if type(oObject) == generic_map_aspect.open_parenthesis:
-                    bCommaFound = False
-                
-                if type(oObject) == procedure_call.open_parenthesis:
-                    bCommaFound = False
-
-                if type(oObject) == parser.item and bCommaFound:
-                    iIndex = len(oLine.objects) - iObject - 1
-                    oLine.objects[iIndex] = association_element.actual_part(oObject.get_value())
-
-                if type(oObject) == association_list.comma and not bCommaFound:
-                    bCommaFound = True
-
-                if type(oObject) == generic_map_aspect.close_parenthesis and not bCommaFound:
-                    bCommaFound = True
-
-                if type(oObject) == procedure_call.close_parenthesis and not bCommaFound:
-                    bCommaFound = True
-
-                if type(oObject) == parser.item and bAssignmentFound:
-                    bCommaFound = False                
-                    iIndex = len(oLine.objects) - iObject - 1
-                    oLine.objects[iIndex] = association_element.formal_part(oObject.get_value())
-                    bAssignmentFound = False
-
-                if type(oObject) == association_element.assignment and not bAssignmentFound:
-                    bAssignmentFound = True
-
-    def classify_concurrent_simple_signal_assignment_parts(self):
-        '''
-        Assigns the correct objects to target, assignment and guarded objects in concurrent_simple_signal_assignments.
-        '''
-        bSemiColonFound = False
-        bAssignmentFound = False
-        for iLine, oLine in enumerate(self.lines[::-1]):
-            for iObject, oObject in enumerate(oLine.objects[::-1]):
-
-                if bSemiColonFound:
-
-                    if type(oObject) == parser.item and oObject.get_value().lower() == 'guarded':
-                        iIndex = len(oLine.objects) - iObject - 1
-                        oLine.objects[iIndex] = concurrent_simple_signal_assignment.guarded_keyword(oObject.get_value())
-                        continue
-
-                    if bAssignmentFound:
-
-                        if type(oObject) == parser.item and oObject.get_value() != ':' and oObject.get_value().lower() != 'postponed':
-                            iIndex = len(oLine.objects) - iObject - 1
-                            oLine.objects[iIndex] = concurrent_simple_signal_assignment.target(oObject.get_value())
-                        elif type(oObject) == ':':
-                            bSemiColonFound = False
-                            bAssignmentFound = False
-                        elif type(oObject) != parser.comment and type(oObject) != parser.whitespace:
-                            bSemiColonFound = False
-                            bAssignmentFound = False
-
-                    if type(oObject) == parser.item and oObject.get_value() == '<=':
-                        iIndex = len(oLine.objects) - iObject - 1
-                        oLine.objects[iIndex] = concurrent_simple_signal_assignment.assignment(oObject.get_value())
-                        bAssignmentFound = True
-
-                if type(oObject) == concurrent_simple_signal_assignment.semicolon:
-                    bSemiColonFound = True
-
-    def classify_concurrent_conditional_signal_assignment_parts(self):
-        '''
-        Assigns the correct objects to target, assignment and guarded objects in concurrent_conditional_signal_assignments.
-        '''
-        bSemiColonFound = False
-        bAssignmentFound = False
-        for iLine, oLine in enumerate(self.lines[::-1]):
-            for iObject, oObject in enumerate(oLine.objects[::-1]):
-
-                if bSemiColonFound:
-
-                    if type(oObject) == parser.item and oObject.get_value().lower() == 'guarded':
-                        iIndex = len(oLine.objects) - iObject - 1
-                        oLine.objects[iIndex] = concurrent_conditional_signal_assignment.guarded_keyword(oObject.get_value())
-
-                    if bAssignmentFound:
-
-                        if type(oObject) == parser.item and oObject.get_value() != ':' and oObject.get_value().lower() != 'postponed':
-                            iIndex = len(oLine.objects) - iObject - 1
-                            oLine.objects[iIndex] = concurrent_conditional_signal_assignment.target(oObject.get_value())
-                        elif type(oObject) == ':':
-                            bSemiColonFound = False
-                            bAssignmentFound = False
-                        elif type(oObject) != parser.comment and type(oObject) != parser.whitespace:
-                            bSemiColonFound = False
-                            bAssignmentFound = False
-
-                    if type(oObject) == parser.item and oObject.get_value() == '<=':
-                        iIndex = len(oLine.objects) - iObject - 1
-                        oLine.objects[iIndex] = concurrent_conditional_signal_assignment.assignment(oObject.get_value())
-                        bAssignmentFound = True
-
-                if type(oObject) == concurrent_conditional_signal_assignment.semicolon:
-                    bSemiColonFound = True
-
-    def classify_concurrent_signal_assignment_labels(self):
-        '''
-        Assigns the correct objects to labels.
-        '''
-        bSearchForConcurrentSignalAssignmentStatementLabel = False
-        bColonFound = False
-        for iLine, oLine in enumerate(self.lines[::-1]):
-            for iObject, oObject in enumerate(oLine.objects[::-1]):
-                if bSearchForConcurrentSignalAssignmentStatementLabel:
-
-                    if bColonFound:
-                        if type(oObject) == parser.item:
-                            iIndex = len(oLine.objects) - iObject - 1
-                            oLine.objects[iIndex] = concurrent_signal_assignment_statement.label_name(oObject.get_value())
-                            bColonFound = False
-                            bSearchForConcurrentSignalAssignmentStatementLabel = False
-                            continue
-
-                    if type(oObject) == parser.item and oObject.get_value().lower() == 'postponed':
-                        iIndex = len(oLine.objects) - iObject - 1
-                        oLine.objects[iIndex] = concurrent_signal_assignment_statement.postponed_keyword(oObject.get_value())
-                        continue
-
-                    if type(oObject) == parser.item and oObject.get_value() == ':':
-                        iIndex = len(oLine.objects) - iObject - 1
-                        oLine.objects[iIndex] = concurrent_signal_assignment_statement.label_colon()
-                        bColonFound = True
-                        continue
-
-                    if type(oObject) != parser.comment and type(oObject) != parser.whitespace:
-                        if type(oObject) == concurrent_signal_assignment_statement.postponed_keyword:
-                            continue
-                        elif type(oObject) == concurrent_simple_signal_assignment.target:
-                            continue
-                        elif type(oObject) == concurrent_conditional_signal_assignment.target:
-                            continue
-                        else:
-                            bColonFound = False
-                            bSearchForConcurrentSignalAssignmentStatementLabel = False
-
-                if type(oObject) == concurrent_selected_signal_assignment.with_keyword:
-                    bSearchForConcurrentSignalAssignmentStatementLabel = True
-
-                if type(oObject) == concurrent_conditional_signal_assignment.assignment:
-                    bSearchForConcurrentSignalAssignmentStatementLabel = True
-
-                if type(oObject) == concurrent_simple_signal_assignment.assignment:
-                    bSearchForConcurrentSignalAssignmentStatementLabel = True
-
-    def classify_concurrent_assertion_statement_labels(self):
-        '''
-        Assigns the correct objects to labels.
-        '''
-
-        bLabel = False
-        bColonFound = False
-        for iLine, oLine in enumerate(self.lines[::-1]):
-            for iObject, oObject in enumerate(oLine.objects[::-1]):
-
-                if bLabel:
-
-                    if bColonFound:
-                        if type(oObject) == parser.item:
-                            iIndex = len(oLine.objects) - iObject - 1
-                            oLine.objects[iIndex] = concurrent_assertion_statement.label_name(oObject.get_value())
-                            bColonFound = False
-                            bLabel = False
-                            continue
-
-                    if type(oObject) == parser.item and oObject.get_value() == 'postponed':
-                        iIndex = len(oLine.objects) - iObject - 1
-                        oLine.objects[iIndex] = concurrent_assertion_statement.postponed_keyword(oObject.get_value())
-                        continue
-
-                    if type(oObject) == parser.item and oObject.get_value() == ':':
-                        iIndex = len(oLine.objects) - iObject - 1
-                        oLine.objects[iIndex] = concurrent_assertion_statement.label_colon()
-                        bColonFound = True
-                        continue
-
-                    if type(oObject) != parser.comment and type(oObject) != parser.whitespace:
-                        if type(oObject) == assertion.report_expression:
-                            continue
-                        elif type(oObject) == assertion.severity_expression:
-                            continue
-                        elif type(oObject) == assertion.report_keyword:
-                            continue
-                        elif type(oObject) == assertion.severity_keyword:
-                            continue
-                        elif type(oObject) == assertion.keyword:
-                            continue
-                        elif type(oObject) == assertion.condition:
-                            continue
-                        else:
-                            bColonFound = False
-                            bLabel = False
-
-                if type(oObject) == concurrent_assertion_statement.semicolon:
-                    bLabel = True
-
-    def classify_assertion_statement_labels(self):
-        '''
-        Assigns the correct objects to labels.
-        '''
-
-        bLabel = False
-        bColonFound = False
-        for iLine, oLine in enumerate(self.lines[::-1]):
-            for iObject, oObject in enumerate(oLine.objects[::-1]):
-
-                if bLabel:
-
-                    if bColonFound:
-                        if type(oObject) == parser.item:
-                            iIndex = len(oLine.objects) - iObject - 1
-                            oLine.objects[iIndex] = assertion_statement.label(oObject.get_value())
-                            bColonFound = False
-                            bLabel = False
-                            continue
-                        continue
-
-                    if type(oObject) == parser.item and oObject.get_value() == ':':
-                        iIndex = len(oLine.objects) - iObject - 1
-                        oLine.objects[iIndex] = assertion_statement.label_colon()
-                        bColonFound = True
-                        continue
-
-                    if type(oObject) != parser.comment and type(oObject) != parser.whitespace:
-                        if type(oObject) == assertion.report_expression:
-                            continue
-                        elif type(oObject) == assertion.severity_expression:
-                            continue
-                        elif type(oObject) == assertion.report_keyword:
-                            continue
-                        elif type(oObject) == assertion.severity_keyword:
-                            continue
-                        elif type(oObject) == assertion.keyword:
-                            continue
-                        elif type(oObject) == assertion.condition:
-                            continue
-                        else:
-                            bColonFound = False
-                            bLabel = False
-
-                if type(oObject) == assertion_statement.semicolon:
-                    bLabel = True
-
-    def classify_concurrent_procedure_call_statement_labels(self):
-        '''
-        Assigns the correct objects to labels.
-        '''
-
-        bTrigger = False
-        bColonFound = False
-        bProcedureName = False
-        for iLine, oLine in enumerate(self.lines[::-1]):
-#            print(oLine.line)
-            for iObject, oObject in enumerate(oLine.objects[::-1]):
-#                print(oObject)
-
-                if bTrigger:
-
-                    if not bProcedureName:
-
-                        if type(oObject) == parser.item:
-#                            print('----> procedure_name')
-                            iIndex = len(oLine.objects) - iObject - 1
-                            oLine.objects[iIndex] = procedure_call.procedure_name(oObject.get_value())
-                            bProcedureName = True
-                            continue
-    
-
-                    if bColonFound:
-                        if type(oObject) == parser.item:
-                            iIndex = len(oLine.objects) - iObject - 1
-                            oLine.objects[iIndex] = concurrent_procedure_call_statement.label_name(oObject.get_value())
-                            bColonFound = False
-                            bTrigger = False
-                            bProcedureName = False
-                            continue
-
-                    else: 
-
-                        if type(oObject) == parser.item and oObject.get_value() == ':':
-                            iIndex = len(oLine.objects) - iObject - 1
-                            oLine.objects[iIndex] = concurrent_procedure_call_statement.label_colon()
-                            bColonFound = True
-                            continue
-
-                        if type(oObject) == parser.item and oObject.get_value() == 'postponed':
-                            iIndex = len(oLine.objects) - iObject - 1
-                            oLine.objects[iIndex] = concurrent_procedure_call_statement.postponed_keyword(oObject.get_value())
-                            continue
-
-
-                    if type(oObject) != parser.comment and type(oObject) != parser.whitespace:
-#                        print('---> end <' + '-'*80)
-                        bProcedureName = False
-                        bColonFound = False
-                        bTrigger = False
-
-                if type(oObject) == procedure_call.open_parenthesis:
-#                    print('---> trigger')
-                    bTrigger = True
-
-    def classify_process_statement_labels(self):
-        '''
-        Assigns the correct objects to labels.
-        '''
-
-        bTrigger = False
-        bColonFound = False
-        bProcedureName = False
-        for iLine, oLine in enumerate(self.lines[::-1]):
-#            print(oLine.line)
-            for iObject, oObject in enumerate(oLine.objects[::-1]):
-#                print(oObject)
-
-                if bTrigger:
-
-                    if bColonFound:
-                        if type(oObject) == parser.item:
-                            iIndex = len(oLine.objects) - iObject - 1
-                            oLine.objects[iIndex] = process_statement.process_label(oObject.get_value())
-                            bColonFound = False
-                            bTrigger = False
-                            bProcedureName = False
-                            continue
-
-                    else: 
-
-                        if type(oObject) == parser.item and oObject.get_value() == ':':
-                            iIndex = len(oLine.objects) - iObject - 1
-                            oLine.objects[iIndex] = process_statement.label_colon()
-                            bColonFound = True
-                            continue
-
-                        if type(oObject) == parser.item and oObject.get_value() == 'postponed':
-                            iIndex = len(oLine.objects) - iObject - 1
-                            oLine.objects[iIndex] = process_statement.postponed_keyword(oObject.get_value())
-                            continue
-
-
-                    if type(oObject) != parser.comment and type(oObject) != parser.whitespace:
-#                        print('---> end <' + '-'*80)
-                        bProcedureName = False
-                        bColonFound = False
-                        bTrigger = False
-
-                if type(oObject) == process_statement.process_keyword:
-#                    print('---> trigger')
-                    bTrigger = True
-
-
-    def classify_block_statement_labels(self):
-        '''
-        Assigns the correct objects to labels.
-        '''
-
-        bTrigger = False
-        bColonFound = False
-        for iLine, oLine in enumerate(self.lines[::-1]):
-#            print(oLine.line)
-            for iObject, oObject in enumerate(oLine.objects[::-1]):
-#                print(oObject)
-
-                if bTrigger:
-
-                    if bColonFound:
-                        if type(oObject) == parser.item:
-                            iIndex = len(oLine.objects) - iObject - 1
-                            oLine.objects[iIndex] = block_statement.label_name(oObject.get_value())
-                            bColonFound = False
-                            bTrigger = False
-                            continue
-
-                    else: 
-
-                        if type(oObject) == parser.item and oObject.get_value() == ':':
-                            iIndex = len(oLine.objects) - iObject - 1
-                            oLine.objects[iIndex] = block_statement.label_colon()
-                            bColonFound = True
-                            continue
-
-                    if type(oObject) != parser.comment and type(oObject) != parser.whitespace:
-#                        print('---> end <' + '-'*80)
-                        bColonFound = False
-                        bTrigger = False
-
-                if type(oObject) == block_statement.keyword:
-#                    print('---> trigger')
-                    bTrigger = True
 
     def print_debug(self):
         for oLine in self.lines:
@@ -1022,3 +545,17 @@ def is_whitespace(oObject):
         return True
     return False
 
+def split_on_carriage_return(lObjects):
+    lReturn = []
+    lMyObjects = []
+    iLine = 1
+    for oObject in lObjects:
+        if type(oObject) == parser.carriage_return:
+            lReturn.append(lMyObjects)
+            iLine += 1
+            lMyObjects = []
+        else:
+            lMyObjects.append(oObject)
+    if len(lMyObjects) > 0:
+        lReturn.append(lMyObjects)
+    return lReturn

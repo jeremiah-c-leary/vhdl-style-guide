@@ -6,7 +6,7 @@ from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify_new import procedure_call
 
 
-lKeywords = ['null', 'return', 'exit', 'next', 'while', 'for', 'loop', 'case', 'if', 'report', 'assert', 'wait', 'end', 'with', 'else', 'elsif']
+lKeywords = ['null', 'return', 'exit', 'next', 'while', 'for', 'loop', 'case', 'if', 'report', 'assert', 'wait', 'end', 'with', 'else', 'elsif', 'when']
 
 
 def detect(iToken, lObjects):
@@ -24,7 +24,7 @@ def detect(iToken, lObjects):
         iCurrent +=1
     # Check if next token is keyword
     iCurrent = utils.find_next_token(iCurrent, lObjects)
-    if lObjects[iCurrent].get_value() in lKeywords:
+    if lObjects[iCurrent].get_value().lower() in lKeywords:
         return iToken
     # Check if signal assignment operator exists
     if utils.find_in_range('<=', iCurrent, ';', lObjects):

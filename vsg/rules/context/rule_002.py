@@ -1,6 +1,7 @@
 
-from vsg import parser
 from vsg.rules import space_between_items_rule
+
+from vsg.token import context_declaration as token
 
 
 class rule_002(space_between_items_rule):
@@ -9,6 +10,6 @@ class rule_002(space_between_items_rule):
 
     '''
     def __init__(self):
-        space_between_items_rule.__init__(self, 'context', '002', parser.context_keyword, parser.context_identifier)
-        self.regionBegin = parser.context_keyword
-        self.regionEnd = parser.context_semicolon
+        space_between_items_rule.__init__(self, 'context', '002', token.context_keyword, token.identifier)
+        self.regionBegin = token.context_keyword
+        self.regionEnd = token.semicolon

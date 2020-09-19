@@ -86,7 +86,7 @@ architecture RTL of ENTITY1 is
     signal b : in std_logic;
     variable c : in std_logic_vector(3 downto 0);
     signal d : out std_logic) is
-    signal sig1 : std_logic;
+    variable sig1 : std_logic;
     file file1 : something;
     variable var1 : integer;
   begin
@@ -97,7 +97,7 @@ architecture RTL of ENTITY1 is
     signal b : in std_logic;
     variable c : in std_logic_vector(3 downto 0);
     signal d : out std_logic) is
-    signal   sig1 : std_logic;
+    variable sig1 : std_logic;
     file     file1 : something;
     variable var1 : integer;
   begin
@@ -110,8 +110,8 @@ architecture RTL of ENTITY1 is
     signal d : std_logic_vector(7 downto 0);
     constant e : std_logic) return integer is
     file file1 : load_file_type open read_mode is load_file_name;
-    constant con1 : integer := 0;
-    signal sig1 : std_logic_vector;
+    variable con1 : integer := 0;
+    variable sig1 : std_logic_vector;
   begin
 
   end;

@@ -22,7 +22,7 @@ class testRuleArchitecture(unittest.TestCase):
         lExpected = []
 
         dViolation = utils.add_violation(31)
-        dViolation['columnAdjust'] = 2
+        dViolation['columnAdjust'] = -1
         dViolation['targetColumn'] = 13
         lExpected.append(dViolation)
 
@@ -33,7 +33,7 @@ class testRuleArchitecture(unittest.TestCase):
 
 
         dViolation = utils.add_violation(97)
-        dViolation['columnAdjust'] = 2
+        dViolation['columnAdjust'] = -1 
         dViolation['targetColumn'] = 13
         lExpected.append(dViolation)
 
@@ -44,7 +44,7 @@ class testRuleArchitecture(unittest.TestCase):
 
 
         dViolation = utils.add_violation(123)
-        dViolation['columnAdjust'] = 2
+        dViolation['columnAdjust'] = -1
         dViolation['targetColumn'] = 15
         lExpected.append(dViolation)
 

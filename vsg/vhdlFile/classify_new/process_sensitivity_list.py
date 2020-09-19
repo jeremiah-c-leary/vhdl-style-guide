@@ -15,4 +15,4 @@ def classify(iToken, lObjects):
     if utils.is_next_token('all', iToken, lObjects):
         return utils.assign_next_token_required('all', token.all_keyword, iToken, lObjects)
     else:
-        return sensitivity_list.classify(iToken, lObjects)
+        return sensitivity_list.classify_new(iToken, lObjects)

@@ -62,7 +62,7 @@ class testRulePackageMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'package')
         self.assertEqual(oRule.identifier, '005')
 
-        dExpected = utils.add_violation_list([18,60])
+        dExpected = [utils.add_violation(60)]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 

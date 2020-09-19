@@ -7,7 +7,7 @@ architecture ARCH of ENTITY is
       port_1 : in    std_logic;
       port_2 : in    std_logic;
       port_3 : inout std_logic;
-      port_4 : out   std_logic;
+      port_4 : out   std_logic
     );
   end component comp1;
 
@@ -18,7 +18,7 @@ architecture ARCH of ENTITY is
       port_1 : iN    std_logic;
       port_2 : in    std_LOgic;
       port_3 : inOut std_logic;
-      port_4 : ouT   std_logic;
+      port_4 : ouT   std_logic
     );
   eNd comPonent CoMP1;
 
@@ -29,7 +29,7 @@ architecture ARCH of ENTITY is
       port_1 : in    std_logic;
       port_2 : in    std_logic;
       port_3 : inout std_logic;
-      port_4 : out   std_logic;
+      port_4 : out   std_logic
     );
    end component  comp1;
  
@@ -38,7 +38,7 @@ architecture ARCH of ENTITY is
      port_1 : in    std_logic;
       port_2 : in    std_logic;
        port_3 : inout std_logic;
-      port_4 : out   std_logic;
+      port_4 : out   std_logic
    );
   end component;
 
@@ -47,7 +47,7 @@ architecture ARCH of ENTITY is
       port_1 : in    std_logic;
       port_2 : in    std_logic;
       port_3 : inout std_logic;
-      port_4 : out   std_logic;
+      port_4 : out   std_logic
       );
  end  component comp1;
 
@@ -59,7 +59,7 @@ architecture ARCH of ENTITY is
       port_1 : in    std_logic;
       port_2 : in    std_logic;
       port_3 : inout std_logic;
-      port_4 : out   std_logic;
+      port_4 : out   std_logic
     );
 
   end component comp1;
@@ -69,7 +69,7 @@ architecture ARCH of ENTITY is
       port_1 : in    std_logic;
       port_2 : in    std_logic;
       port_3 : inout std_logic;
-      port_4 : out   std_logic;
+      port_4 : out   std_logic
 
     );
   end component COMP1;
@@ -81,7 +81,7 @@ architecture ARCH of ENTITY is
       port_1 : in    std_logic;
       port_2 : in    std_logic;
       port_3 : inout std_logic;
-      port_4 : out   std_logic;
+      port_4 : out   std_logic
 
     );
   end component comp1;

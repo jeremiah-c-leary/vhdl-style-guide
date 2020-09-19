@@ -23,7 +23,6 @@ class testFixRuleProcedureMethods(unittest.TestCase):
         self.assertEqual(oRule.violations, dExpected)
         self.assertEqual(self.oFile.lines[14].line, '  procedure AVERAGE_SAMPLES;')
         self.assertEqual(self.oFile.lines[16].line, '  procedure AVERAGE_SAMPLES (')
-        self.assertEqual(self.oFile.lines[40].line, '  procedure AVERAGE_SAMPLES is')
 
     def test_fix_rule_005(self):
         oRule = procedure.rule_005()
@@ -40,9 +39,7 @@ class testFixRuleProcedureMethods(unittest.TestCase):
         oRule.fix(self.oFile)
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
-        self.assertEqual(self.oFile.lines[98].line, '    ) is')
-#        print(self.oFile.lines[97].__dict__)
-#        print(self.oFile.lines[98].__dict__)
+        self.assertEqual(self.oFile.lines[123].line, '    ) is')
 
 
     def test_fix_rule_008(self):

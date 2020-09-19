@@ -7,6 +7,8 @@ from vsg import vhdlFile
 from vsg.tests import utils
 from vsg import parser
 
+from vsg import token
+
 sTestDir = os.path.dirname(__file__)
 
 lFile = utils.read_vhdlfile(os.path.join(sTestDir,'rule_011_test_input.vhd'))
@@ -32,43 +34,43 @@ class test_context_rule(unittest.TestCase):
         dViolation = utils.add_violation(10)
         dViolation['iLeftLineNumber'] = 9
         dViolation['solution'] = 'Move ";" to the right of "c1" on line 9'
-        dViolation['left'] = parser.context_end_identifier
+        dViolation['left'] = token.context_declaration.context_simple_name
         lExpected.append(dViolation)
 
         dViolation = utils.add_violation(21)
         dViolation['iLeftLineNumber'] = 19
         dViolation['solution'] = 'Move ";" to the right of "c1" on line 19'
-        dViolation['left'] = parser.context_end_identifier
+        dViolation['left'] = token.context_declaration.context_simple_name
         lExpected.append(dViolation)
 
         dViolation = utils.add_violation(28)
         dViolation['iLeftLineNumber'] = 26
         dViolation['solution'] = 'Move ";" to the right of "c1" on line 26'
-        dViolation['left'] = parser.context_end_identifier
+        dViolation['left'] = token.context_declaration.context_simple_name
         lExpected.append(dViolation)
 
         dViolation = utils.add_violation(40)
         dViolation['iLeftLineNumber'] = 38
         dViolation['solution'] = 'Move ";" to the right of "c1" on line 38'
-        dViolation['left'] = parser.context_end_identifier
+        dViolation['left'] = token.context_declaration.context_simple_name
         lExpected.append(dViolation)
 
         dViolation = utils.add_violation(47)
         dViolation['iLeftLineNumber'] = 46
         dViolation['solution'] = 'Move ";" to the right of "end" on line 46'
-        dViolation['left'] = parser.context_end_keyword
+        dViolation['left'] = token.context_declaration.end_keyword
         lExpected.append(dViolation)
 
         dViolation = utils.add_violation(52)
         dViolation['iLeftLineNumber'] = 51
         dViolation['solution'] = 'Move ";" to the right of "context" on line 51'
-        dViolation['left'] = parser.context_end_context_keyword
+        dViolation['left'] = token.context_declaration.end_context_keyword
         lExpected.append(dViolation)
 
         dViolation = utils.add_violation(57)
         dViolation['iLeftLineNumber'] = 56
         dViolation['solution'] = 'Move ";" to the right of "c1" on line 56'
-        dViolation['left'] = parser.context_end_identifier
+        dViolation['left'] = token.context_declaration.context_simple_name
         lExpected.append(dViolation)
 
         oRule.analyze(self.oFile)

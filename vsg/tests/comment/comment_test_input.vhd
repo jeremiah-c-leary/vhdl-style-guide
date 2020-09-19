@@ -2,7 +2,7 @@
 -- Comment
  -- Comment
 
-architecture ARCh of ENTITY
+architecture ARCh of ENTITY is
 begin
 -- Comment
   --Comment
@@ -28,11 +28,11 @@ begin
       c <= d           -- Comment
       e <= f           -- Comment
                    -- Comment
-    end if
+    end if;
 
-  end process PROC_1:
+  end process PROC_1;
 
-end architecture
+end architecture;
 
 entity ENTITY is
   generic (
@@ -77,7 +77,7 @@ entity ENTITY is
     I_PORT_1 : in   std_logic;   -- Comment
     I_PORT_1 : in   std_logic;  -- Comment
     I_PORT_1 : in   std_logic;  -- Comment
-    I_PORT_1 : in   std_logic;   -- Comment
+    I_PORT_1 : in   std_logic   -- Comment
     -- Comment
   );
 end entity ENTITY;

@@ -17,7 +17,8 @@ def detect(iToken, lObjects):
 
     if subprogram_kind.detect(iToken, lObjects):
         if utils.find_in_next_n_tokens('is', 3, iToken, lObjects):
-            return classify(iToken, lObjects)
+            if utils.find_in_next_n_tokens('new', 4, iToken, lObjects):
+                return classify(iToken, lObjects)
         else:
             return iToken
     return iToken

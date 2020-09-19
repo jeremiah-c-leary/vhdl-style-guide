@@ -1,6 +1,7 @@
 
-from vsg import parser
 from vsg.rules import move_item_next_to_another_item_rule
+
+from vsg.token import context_declaration as token
 
 
 class rule_005(move_item_next_to_another_item_rule):
@@ -9,7 +10,7 @@ class rule_005(move_item_next_to_another_item_rule):
     '''
 
     def __init__(self):
-        move_item_next_to_another_item_rule.__init__(self, 'context', '005', parser.context_keyword, parser.context_identifier)
+        move_item_next_to_another_item_rule.__init__(self, 'context', '005', token.context_keyword, token.identifier)
         self.subphase = 1
-        self.regionBegin = parser.context_keyword
-        self.regionEnd = parser.context_semicolon
+        self.regionBegin = token.context_keyword
+        self.regionEnd = token.semicolon

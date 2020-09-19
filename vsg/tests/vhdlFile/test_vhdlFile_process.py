@@ -185,7 +185,7 @@ class testVhdlFileMethods(unittest.TestCase):
         self.assertEqual(None, oFileProcess.lines[158].indentLevel)
         self.assertEqual(2, oFileProcess.lines[159].indentLevel)
         self.assertEqual(3, oFileProcess.lines[160].indentLevel)
-        self.assertEqual(2, oFileProcess.lines[161].indentLevel)
+        self.assertEqual(None, oFileProcess.lines[161].indentLevel)
         self.assertEqual(2, oFileProcess.lines[162].indentLevel)
         self.assertEqual(2, oFileProcess.lines[163].indentLevel)
         self.assertEqual(None, oFileProcess.lines[164].indentLevel)

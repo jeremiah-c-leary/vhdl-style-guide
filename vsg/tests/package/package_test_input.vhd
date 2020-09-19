@@ -8,14 +8,14 @@ package PACK is
     port (
       PORT_1 : in    std_logic;
       PORT_2 : inout std_logic;
-      PORT_3 : out   std_logic;
+      PORT_3 : out   std_logic
     );
   end component COMP;
 
 end  package PACK;
 
 
-PACKAGE PACK -- This is a comment
+PACKAGE PACK is -- This is a comment
 
   component COMP is
     generic (
@@ -24,7 +24,7 @@ PACKAGE PACK -- This is a comment
     port (
       PORT_1 : in    std_logic;
       PORT_2 : inout std_logic;
-      PORT_3 : out   std_logic;
+      PORT_3 : out   std_logic
     );
   end component COMP;
 
@@ -38,7 +38,7 @@ end PACKAGE  pack;
     port (
       PORT_1 : in    std_logic;
       PORT_2 : inout std_logic;
-      PORT_3 : out   std_logic;
+      PORT_3 : out   std_logic
     );
   end component COMP;
 
@@ -52,7 +52,7 @@ package  pack is
     port (
       PORT_1 : in    std_logic;
       PORT_2 : inout std_logic;
-      PORT_3 : out   std_logic;
+      PORT_3 : out   std_logic
     );
   end component COMP;
 end  PACK;
@@ -66,7 +66,7 @@ package PACK
     port (
       PORT_1 : in    std_logic;
       PORT_2 : inout std_logic;
-      PORT_3 : out   std_logic;
+      PORT_3 : out   std_logic
     );
   end component COMP;
 

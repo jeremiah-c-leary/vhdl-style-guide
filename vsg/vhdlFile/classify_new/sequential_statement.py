@@ -1,4 +1,6 @@
 
+#from vsg.vhdlFile import utils
+
 from vsg.vhdlFile.classify_new import assertion_statement
 from vsg.vhdlFile.classify_new import case_statement
 from vsg.vhdlFile.classify_new import exit_statement
@@ -32,56 +34,69 @@ def detect(iToken, lObjects):
       | null_statement
     '''
 
+#    print('--> checking wait_statement')
     iReturn = wait_statement.detect(iToken, lObjects)
     if iReturn != iToken:
         return iReturn
 
+#    print('--> checking assertion_statement')
     iReturn = assertion_statement.detect(iToken, lObjects)
     if iReturn != iToken:
         return iReturn
 
+#    print('--> checking report_statement')
     iReturn = report_statement.detect(iToken, lObjects)
     if iReturn != iToken:
         return iReturn
 
+#    print('--> checking case_statement')
     iReturn = case_statement.detect(iToken, lObjects)
     if iReturn != iToken:
         return iReturn
 
+#    print('--> checking if_statement')
     iReturn = if_statement.detect(iToken, lObjects)
     if iReturn != iToken:
         return iReturn
 
+#    print('--> checking loop_statement')
+    iReturn = loop_statement.detect(iToken, lObjects)
+    if iReturn != iToken:
+        return iReturn
+#    print('--> checking signal_assignment')
     iReturn = signal_assignment_statement.detect(iToken, lObjects)
     if iReturn != iToken:
         return iReturn
 
+#    print('--> checking variable_assignment')
     iReturn = variable_assignment_statement.detect(iToken, lObjects)
     if iReturn != iToken:
         return iReturn
 
+#    print('--> checking procedure_call_statement')
     iReturn = procedure_call_statement.detect(iToken, lObjects)
     if iReturn != iToken:
         return iReturn
 
-    iReturn = loop_statement.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
-
+#    print('--> checking next_statement')
     iReturn = next_statement.detect(iToken, lObjects)
     if iReturn != iToken:
         return iReturn
 
+#    print('--> checking exit_statement')
     iReturn = exit_statement.detect(iToken, lObjects)
     if iReturn != iToken:
         return iReturn
 
+#    print('--> checking return_statement')
     iReturn = return_statement.detect(iToken, lObjects)
     if iReturn != iToken:
         return iReturn
 
+#    print('--> checking null_statement')
     iReturn = null_statement.detect(iToken, lObjects)
     if iReturn != iToken:
         return iReturn
-
+#    print('<-- Returning')
+#    utils.print_next_token(iToken, lObjects)
     return iToken

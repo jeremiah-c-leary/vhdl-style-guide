@@ -1,8 +1,8 @@
 
 architecture RTL of FIFO is
 
-  function func_1 ()
-  function func_2 ()
+  function func_1 (a : integer) return integer;
+  function func_2 (b : integer) return integer;
 
 begin
 

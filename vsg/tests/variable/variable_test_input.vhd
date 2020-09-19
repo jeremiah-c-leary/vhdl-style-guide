@@ -67,7 +67,7 @@ begin
     begin
     end procedure;
 
-    function test_f (x: integer) is
+    function test_f (x: integer) return integer is
       variable c, d : integer;
     begin
     end function;
