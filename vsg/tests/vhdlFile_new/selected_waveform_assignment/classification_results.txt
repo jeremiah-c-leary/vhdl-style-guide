@@ -1,0 +1,375 @@
+--------------------------------------------------------------------------------
+0 | 
+--------------------------------------------------------------------------------
+1 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+2 | architecture RTL of ENTITY_NAME is
+<class 'vsg.token.architecture_body.architecture_keyword'>
+<class 'vsg.token.architecture_body.identifier'>
+<class 'vsg.token.architecture_body.of_keyword'>
+<class 'vsg.token.architecture_body.entity_name'>
+<class 'vsg.token.architecture_body.is_keyword'>
+--------------------------------------------------------------------------------
+3 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+4 | begin
+<class 'vsg.token.architecture_body.begin_keyword'>
+--------------------------------------------------------------------------------
+5 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+6 |   process
+<class 'vsg.token.process_statement.process_keyword'>
+--------------------------------------------------------------------------------
+7 |   begin
+<class 'vsg.token.process_statement.begin_keyword'>
+--------------------------------------------------------------------------------
+8 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+9 |     SEL_LABEL : with some expression select ?
+<class 'vsg.token.signal_assignment_statement.label'>
+<class 'vsg.token.signal_assignment_statement.label_colon'>
+<class 'vsg.token.selected_waveform_assignment.with_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveform_assignment.select_keyword'>
+<class 'vsg.token.selected_waveform_assignment.question_mark'>
+--------------------------------------------------------------------------------
+10 |         some target <= transport some expression when some choice | some other choice | some other other choice,
+<class 'vsg.token.selected_waveform_assignment.target'>
+<class 'vsg.token.selected_waveform_assignment.target'>
+<class 'vsg.token.selected_waveform_assignment.assignment'>
+<class 'vsg.token.delay_mechanism.transport_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.choices.bar'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.choices.bar'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.comma'>
+--------------------------------------------------------------------------------
+11 |                                  some expression when some choice,
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.comma'>
+--------------------------------------------------------------------------------
+12 |                                  some expression when some choice | some other choice;
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.choices.bar'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveform_assignment.semicolon'>
+--------------------------------------------------------------------------------
+13 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+14 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+15 |     SEL_LABEL : with some expression select ?
+<class 'vsg.token.signal_assignment_statement.label'>
+<class 'vsg.token.signal_assignment_statement.label_colon'>
+<class 'vsg.token.selected_waveform_assignment.with_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveform_assignment.select_keyword'>
+<class 'vsg.token.selected_waveform_assignment.question_mark'>
+--------------------------------------------------------------------------------
+16 |         some target <= some expression when some choice | some other choice | some other other choice,
+<class 'vsg.token.selected_waveform_assignment.target'>
+<class 'vsg.token.selected_waveform_assignment.target'>
+<class 'vsg.token.selected_waveform_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.choices.bar'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.choices.bar'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.comma'>
+--------------------------------------------------------------------------------
+17 |                        some expression when some choice,
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.comma'>
+--------------------------------------------------------------------------------
+18 |                        some expression when some choice | some other choice;
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.choices.bar'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveform_assignment.semicolon'>
+--------------------------------------------------------------------------------
+19 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+20 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+21 |     SEL_LABEL : with some expression select
+<class 'vsg.token.signal_assignment_statement.label'>
+<class 'vsg.token.signal_assignment_statement.label_colon'>
+<class 'vsg.token.selected_waveform_assignment.with_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveform_assignment.select_keyword'>
+--------------------------------------------------------------------------------
+22 |         some target <= transport some expression when some choice | some other choice | some other other choice,
+<class 'vsg.token.selected_waveform_assignment.target'>
+<class 'vsg.token.selected_waveform_assignment.target'>
+<class 'vsg.token.selected_waveform_assignment.assignment'>
+<class 'vsg.token.delay_mechanism.transport_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.choices.bar'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.choices.bar'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.comma'>
+--------------------------------------------------------------------------------
+23 |                                  some expression when some choice,
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.comma'>
+--------------------------------------------------------------------------------
+24 |                                  some expression when some choice | some other choice;
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.choices.bar'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveform_assignment.semicolon'>
+--------------------------------------------------------------------------------
+25 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+26 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+27 |     SEL_LABEL : with some expression select ?
+<class 'vsg.token.signal_assignment_statement.label'>
+<class 'vsg.token.signal_assignment_statement.label_colon'>
+<class 'vsg.token.selected_waveform_assignment.with_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveform_assignment.select_keyword'>
+<class 'vsg.token.selected_waveform_assignment.question_mark'>
+--------------------------------------------------------------------------------
+28 |         some target <= transport some expression when some choice;
+<class 'vsg.token.selected_waveform_assignment.target'>
+<class 'vsg.token.selected_waveform_assignment.target'>
+<class 'vsg.token.selected_waveform_assignment.assignment'>
+<class 'vsg.token.delay_mechanism.transport_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveform_assignment.semicolon'>
+--------------------------------------------------------------------------------
+29 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+30 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+31 |     with some expression select ?
+<class 'vsg.token.selected_waveform_assignment.with_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveform_assignment.select_keyword'>
+<class 'vsg.token.selected_waveform_assignment.question_mark'>
+--------------------------------------------------------------------------------
+32 |         some target <= some expression when some choice | some other choice | some other other choice,
+<class 'vsg.token.selected_waveform_assignment.target'>
+<class 'vsg.token.selected_waveform_assignment.target'>
+<class 'vsg.token.selected_waveform_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.choices.bar'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.choices.bar'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.comma'>
+--------------------------------------------------------------------------------
+33 |                        some expression when some choice,
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.comma'>
+--------------------------------------------------------------------------------
+34 |                        some expression when some choice | some other choice;
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.choices.bar'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveform_assignment.semicolon'>
+--------------------------------------------------------------------------------
+35 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+36 |     with some expression select ?
+<class 'vsg.token.selected_waveform_assignment.with_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveform_assignment.select_keyword'>
+<class 'vsg.token.selected_waveform_assignment.question_mark'>
+--------------------------------------------------------------------------------
+37 |         some target <= some expression after 10 ns when some choice | some other choice | some other other choice,
+<class 'vsg.token.selected_waveform_assignment.target'>
+<class 'vsg.token.selected_waveform_assignment.target'>
+<class 'vsg.token.selected_waveform_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.waveform_element.after_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.choices.bar'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.choices.bar'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.comma'>
+--------------------------------------------------------------------------------
+38 |                        null when some choice,
+<class 'vsg.token.waveform_element.null_keyword'>
+<class 'vsg.token.selected_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.comma'>
+--------------------------------------------------------------------------------
+39 |                        null after 20 ns when some choice | some other choice,
+<class 'vsg.token.waveform_element.null_keyword'>
+<class 'vsg.token.waveform_element.after_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.choices.bar'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.comma'>
+--------------------------------------------------------------------------------
+40 |                        some expression after 10 ns, some other expression after 20 ns, some last expression when some choice | some other choice,
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.waveform_element.after_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.waveform.comma'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.waveform_element.after_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.waveform.comma'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.choices.bar'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.comma'>
+--------------------------------------------------------------------------------
+41 |                        unaffected when some last choice;
+<class 'vsg.token.waveform.unaffected_keyword'>
+<class 'vsg.token.selected_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveform_assignment.semicolon'>
+--------------------------------------------------------------------------------
+42 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+43 |   end process;
+<class 'vsg.token.process_statement.end_keyword'>
+<class 'vsg.token.process_statement.end_process_keyword'>
+<class 'vsg.token.process_statement.semicolon'>
+--------------------------------------------------------------------------------
+44 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+45 | end architecture RTL;
+<class 'vsg.token.architecture_body.end_keyword'>
+<class 'vsg.token.architecture_body.end_architecture_keyword'>
+<class 'vsg.token.architecture_body.architecture_simple_name'>
+<class 'vsg.token.architecture_body.semicolon'>

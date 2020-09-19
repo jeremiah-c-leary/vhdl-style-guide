@@ -1,0 +1,238 @@
+--------------------------------------------------------------------------------
+0 | 
+--------------------------------------------------------------------------------
+1 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+2 | architecture RTL of FIFO is
+<class 'vsg.token.architecture_body.architecture_keyword'>
+<class 'vsg.token.architecture_body.identifier'>
+<class 'vsg.token.architecture_body.of_keyword'>
+<class 'vsg.token.architecture_body.entity_name'>
+<class 'vsg.token.architecture_body.is_keyword'>
+--------------------------------------------------------------------------------
+3 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+4 | begin
+<class 'vsg.token.architecture_body.begin_keyword'>
+--------------------------------------------------------------------------------
+5 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+6 |   -- Demonstrates Use Case #1: Replicating Logic
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+7 |   -- Stores just the most significant byte in a new signal
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+8 |   LABEL1: for i in 0 to 7 generate
+<class 'vsg.token.for_generate_statement.generate_label'>
+<class 'vsg.token.for_generate_statement.label_colon'>
+<class 'vsg.token.for_generate_statement.for_keyword'>
+<class 'vsg.token.parameter_specification.identifier'>
+<class 'vsg.token.parameter_specification.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.for_generate_statement.generate_keyword'>
+--------------------------------------------------------------------------------
+9 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+10 |   end generate LABEL1;
+<class 'vsg.token.for_generate_statement.end_keyword'>
+<class 'vsg.token.for_generate_statement.end_generate_keyword'>
+<class 'vsg.token.for_generate_statement.end_generate_label'>
+<class 'vsg.token.for_generate_statement.semicolon'>
+--------------------------------------------------------------------------------
+11 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+12 |   -- Test nesting
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+13 |   LABEL2A: for i in 0 to 7 generate
+<class 'vsg.token.for_generate_statement.generate_label'>
+<class 'vsg.token.for_generate_statement.label_colon'>
+<class 'vsg.token.for_generate_statement.for_keyword'>
+<class 'vsg.token.parameter_specification.identifier'>
+<class 'vsg.token.parameter_specification.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.for_generate_statement.generate_keyword'>
+--------------------------------------------------------------------------------
+14 |       LABEL2B: for i in 0 to 7 generate
+<class 'vsg.token.for_generate_statement.generate_label'>
+<class 'vsg.token.for_generate_statement.label_colon'>
+<class 'vsg.token.for_generate_statement.for_keyword'>
+<class 'vsg.token.parameter_specification.identifier'>
+<class 'vsg.token.parameter_specification.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.for_generate_statement.generate_keyword'>
+--------------------------------------------------------------------------------
+15 |           LABEL2C: for i in 0 to 7 generate
+<class 'vsg.token.for_generate_statement.generate_label'>
+<class 'vsg.token.for_generate_statement.label_colon'>
+<class 'vsg.token.for_generate_statement.for_keyword'>
+<class 'vsg.token.parameter_specification.identifier'>
+<class 'vsg.token.parameter_specification.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.for_generate_statement.generate_keyword'>
+--------------------------------------------------------------------------------
+16 |           end generate LABEL2C;
+<class 'vsg.token.for_generate_statement.end_keyword'>
+<class 'vsg.token.for_generate_statement.end_generate_keyword'>
+<class 'vsg.token.for_generate_statement.end_generate_label'>
+<class 'vsg.token.for_generate_statement.semicolon'>
+--------------------------------------------------------------------------------
+17 |       end generate LABEL2B;
+<class 'vsg.token.for_generate_statement.end_keyword'>
+<class 'vsg.token.for_generate_statement.end_generate_keyword'>
+<class 'vsg.token.for_generate_statement.end_generate_label'>
+<class 'vsg.token.for_generate_statement.semicolon'>
+--------------------------------------------------------------------------------
+18 |   end generate LABEL2A;
+<class 'vsg.token.for_generate_statement.end_keyword'>
+<class 'vsg.token.for_generate_statement.end_generate_keyword'>
+<class 'vsg.token.for_generate_statement.end_generate_label'>
+<class 'vsg.token.for_generate_statement.semicolon'>
+--------------------------------------------------------------------------------
+19 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+20 |   -- Test multiple layers of nesting
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+21 |   LABEL2A: for i in 0 to 7 generate
+<class 'vsg.token.for_generate_statement.generate_label'>
+<class 'vsg.token.for_generate_statement.label_colon'>
+<class 'vsg.token.for_generate_statement.for_keyword'>
+<class 'vsg.token.parameter_specification.identifier'>
+<class 'vsg.token.parameter_specification.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.for_generate_statement.generate_keyword'>
+--------------------------------------------------------------------------------
+22 |       LABEL2B: for i in 0 to 7 generate
+<class 'vsg.token.for_generate_statement.generate_label'>
+<class 'vsg.token.for_generate_statement.label_colon'>
+<class 'vsg.token.for_generate_statement.for_keyword'>
+<class 'vsg.token.parameter_specification.identifier'>
+<class 'vsg.token.parameter_specification.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.for_generate_statement.generate_keyword'>
+--------------------------------------------------------------------------------
+23 |           LABEL2C: for i in 0 to 7 generate
+<class 'vsg.token.for_generate_statement.generate_label'>
+<class 'vsg.token.for_generate_statement.label_colon'>
+<class 'vsg.token.for_generate_statement.for_keyword'>
+<class 'vsg.token.parameter_specification.identifier'>
+<class 'vsg.token.parameter_specification.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.for_generate_statement.generate_keyword'>
+--------------------------------------------------------------------------------
+24 |           end generate LABEL2C;
+<class 'vsg.token.for_generate_statement.end_keyword'>
+<class 'vsg.token.for_generate_statement.end_generate_keyword'>
+<class 'vsg.token.for_generate_statement.end_generate_label'>
+<class 'vsg.token.for_generate_statement.semicolon'>
+--------------------------------------------------------------------------------
+25 |           LABEL2D: for i in 0 to 7 generate
+<class 'vsg.token.for_generate_statement.generate_label'>
+<class 'vsg.token.for_generate_statement.label_colon'>
+<class 'vsg.token.for_generate_statement.for_keyword'>
+<class 'vsg.token.parameter_specification.identifier'>
+<class 'vsg.token.parameter_specification.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.for_generate_statement.generate_keyword'>
+--------------------------------------------------------------------------------
+26 |           end generate LABEL2D;
+<class 'vsg.token.for_generate_statement.end_keyword'>
+<class 'vsg.token.for_generate_statement.end_generate_keyword'>
+<class 'vsg.token.for_generate_statement.end_generate_label'>
+<class 'vsg.token.for_generate_statement.semicolon'>
+--------------------------------------------------------------------------------
+27 |       end generate LABEL2B;
+<class 'vsg.token.for_generate_statement.end_keyword'>
+<class 'vsg.token.for_generate_statement.end_generate_keyword'>
+<class 'vsg.token.for_generate_statement.end_generate_label'>
+<class 'vsg.token.for_generate_statement.semicolon'>
+--------------------------------------------------------------------------------
+28 |       LABEL2E: for i in 0 to 7 generate
+<class 'vsg.token.for_generate_statement.generate_label'>
+<class 'vsg.token.for_generate_statement.label_colon'>
+<class 'vsg.token.for_generate_statement.for_keyword'>
+<class 'vsg.token.parameter_specification.identifier'>
+<class 'vsg.token.parameter_specification.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.for_generate_statement.generate_keyword'>
+--------------------------------------------------------------------------------
+29 |           LABEL2F: for i in 0 to 7 generate
+<class 'vsg.token.for_generate_statement.generate_label'>
+<class 'vsg.token.for_generate_statement.label_colon'>
+<class 'vsg.token.for_generate_statement.for_keyword'>
+<class 'vsg.token.parameter_specification.identifier'>
+<class 'vsg.token.parameter_specification.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.for_generate_statement.generate_keyword'>
+--------------------------------------------------------------------------------
+30 |           end generate LABEL2C;
+<class 'vsg.token.for_generate_statement.end_keyword'>
+<class 'vsg.token.for_generate_statement.end_generate_keyword'>
+<class 'vsg.token.for_generate_statement.end_generate_label'>
+<class 'vsg.token.for_generate_statement.semicolon'>
+--------------------------------------------------------------------------------
+31 |           LABEL2G: for i in 0 to 7 generate
+<class 'vsg.token.for_generate_statement.generate_label'>
+<class 'vsg.token.for_generate_statement.label_colon'>
+<class 'vsg.token.for_generate_statement.for_keyword'>
+<class 'vsg.token.parameter_specification.identifier'>
+<class 'vsg.token.parameter_specification.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.for_generate_statement.generate_keyword'>
+--------------------------------------------------------------------------------
+32 |           end generate LABEL2E;
+<class 'vsg.token.for_generate_statement.end_keyword'>
+<class 'vsg.token.for_generate_statement.end_generate_keyword'>
+<class 'vsg.token.for_generate_statement.end_generate_label'>
+<class 'vsg.token.for_generate_statement.semicolon'>
+--------------------------------------------------------------------------------
+33 |       end generate LABEL2F;
+<class 'vsg.token.for_generate_statement.end_keyword'>
+<class 'vsg.token.for_generate_statement.end_generate_keyword'>
+<class 'vsg.token.for_generate_statement.end_generate_label'>
+<class 'vsg.token.for_generate_statement.semicolon'>
+--------------------------------------------------------------------------------
+34 |   end generate LABEL2G;
+<class 'vsg.token.for_generate_statement.end_keyword'>
+<class 'vsg.token.for_generate_statement.end_generate_keyword'>
+<class 'vsg.token.for_generate_statement.end_generate_label'>
+<class 'vsg.token.for_generate_statement.semicolon'>
+--------------------------------------------------------------------------------
+35 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+36 | end architecture RTL;
+<class 'vsg.token.architecture_body.end_keyword'>
+<class 'vsg.token.architecture_body.end_architecture_keyword'>
+<class 'vsg.token.architecture_body.architecture_simple_name'>
+<class 'vsg.token.architecture_body.semicolon'>

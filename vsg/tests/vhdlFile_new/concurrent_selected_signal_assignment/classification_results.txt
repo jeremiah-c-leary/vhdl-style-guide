@@ -1,0 +1,225 @@
+--------------------------------------------------------------------------------
+0 | 
+--------------------------------------------------------------------------------
+1 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+2 | architecture RTL of FIFO is
+<class 'vsg.token.architecture_body.architecture_keyword'>
+<class 'vsg.token.architecture_body.identifier'>
+<class 'vsg.token.architecture_body.of_keyword'>
+<class 'vsg.token.architecture_body.entity_name'>
+<class 'vsg.token.architecture_body.is_keyword'>
+--------------------------------------------------------------------------------
+3 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+4 | begin
+<class 'vsg.token.architecture_body.begin_keyword'>
+--------------------------------------------------------------------------------
+5 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+6 |   -- Basic version
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+7 |   with sel select
+<class 'vsg.token.concurrent_selected_signal_assignment.with_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.concurrent_selected_signal_assignment.select_keyword'>
+--------------------------------------------------------------------------------
+8 |     out1 <= a when "00",
+<class 'vsg.token.concurrent_selected_signal_assignment.target'>
+<class 'vsg.token.concurrent_selected_signal_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.comma'>
+--------------------------------------------------------------------------------
+9 |             b when "01",
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.comma'>
+--------------------------------------------------------------------------------
+10 |             c when "10",
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.comma'>
+--------------------------------------------------------------------------------
+11 |             d when others;
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.concurrent_selected_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+12 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+13 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+14 |   --with guarded keyword
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+15 |   with sel select
+<class 'vsg.token.concurrent_selected_signal_assignment.with_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.concurrent_selected_signal_assignment.select_keyword'>
+--------------------------------------------------------------------------------
+16 |     out1 <= guarded a when "00",
+<class 'vsg.token.concurrent_selected_signal_assignment.target'>
+<class 'vsg.token.concurrent_selected_signal_assignment.assignment'>
+<class 'vsg.token.concurrent_selected_signal_assignment.guarded_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.comma'>
+--------------------------------------------------------------------------------
+17 |                     b when "01",
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.comma'>
+--------------------------------------------------------------------------------
+18 |                     c when "10",
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.comma'>
+--------------------------------------------------------------------------------
+19 |                     d when others;
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.concurrent_selected_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+20 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+21 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+22 |   --with transport delay mechanism
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+23 |   with sel select
+<class 'vsg.token.concurrent_selected_signal_assignment.with_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.concurrent_selected_signal_assignment.select_keyword'>
+--------------------------------------------------------------------------------
+24 |     out1 <= transport a when "00",
+<class 'vsg.token.concurrent_selected_signal_assignment.target'>
+<class 'vsg.token.concurrent_selected_signal_assignment.assignment'>
+<class 'vsg.token.delay_mechanism.transport_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.comma'>
+--------------------------------------------------------------------------------
+25 |                       b when "01",
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.comma'>
+--------------------------------------------------------------------------------
+26 |                       c when "10",
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.comma'>
+--------------------------------------------------------------------------------
+27 |                       d when others;
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.concurrent_selected_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+28 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+29 |   --with inertial delay mechanism
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+30 |   with sel select
+<class 'vsg.token.concurrent_selected_signal_assignment.with_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.concurrent_selected_signal_assignment.select_keyword'>
+--------------------------------------------------------------------------------
+31 |     out1 <= inertial a when "00",
+<class 'vsg.token.concurrent_selected_signal_assignment.target'>
+<class 'vsg.token.concurrent_selected_signal_assignment.assignment'>
+<class 'vsg.token.delay_mechanism.inertial_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.comma'>
+--------------------------------------------------------------------------------
+32 |                      b when "01",
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.comma'>
+--------------------------------------------------------------------------------
+33 |                      c when "10",
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.comma'>
+--------------------------------------------------------------------------------
+34 |                      d when others;
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.concurrent_selected_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+35 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+36 |   --with reject inertial delay mechanism
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+37 |   with sel select
+<class 'vsg.token.concurrent_selected_signal_assignment.with_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.concurrent_selected_signal_assignment.select_keyword'>
+--------------------------------------------------------------------------------
+38 |     out1 <= reject 10 ns inertial a when "00",
+<class 'vsg.token.concurrent_selected_signal_assignment.target'>
+<class 'vsg.token.concurrent_selected_signal_assignment.assignment'>
+<class 'vsg.token.delay_mechanism.reject_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.delay_mechanism.inertial_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.comma'>
+--------------------------------------------------------------------------------
+39 |                                   b when "01",
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.comma'>
+--------------------------------------------------------------------------------
+40 |                                   c when "10",
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.comma'>
+--------------------------------------------------------------------------------
+41 |                                   d when others;
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.concurrent_selected_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+42 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+43 | end architecture RTL;
+<class 'vsg.token.architecture_body.end_keyword'>
+<class 'vsg.token.architecture_body.end_architecture_keyword'>
+<class 'vsg.token.architecture_body.architecture_simple_name'>
+<class 'vsg.token.architecture_body.semicolon'>

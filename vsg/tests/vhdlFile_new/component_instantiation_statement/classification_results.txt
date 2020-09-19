@@ -1,0 +1,774 @@
+--------------------------------------------------------------------------------
+0 | 
+--------------------------------------------------------------------------------
+1 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+2 | architecture ARCH of ENTITY is
+<class 'vsg.token.architecture_body.architecture_keyword'>
+<class 'vsg.token.architecture_body.identifier'>
+<class 'vsg.token.architecture_body.of_keyword'>
+<class 'vsg.token.architecture_body.entity_name'>
+<class 'vsg.token.architecture_body.is_keyword'>
+--------------------------------------------------------------------------------
+3 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+4 | begin
+<class 'vsg.token.architecture_body.begin_keyword'>
+--------------------------------------------------------------------------------
+5 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+6 |   -- Component instantiation without component keyword.
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+7 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+8 |   U_INST1 : INST1
+<class 'vsg.token.component_instantiation_statement.instantiation_label'>
+<class 'vsg.token.component_instantiation_statement.label_colon'>
+<class 'vsg.token.instantiated_unit.component_name'>
+--------------------------------------------------------------------------------
+9 |     generic map (
+<class 'vsg.token.generic_map_aspect.generic_keyword'>
+<class 'vsg.token.generic_map_aspect.map_keyword'>
+<class 'vsg.token.generic_map_aspect.open_parenthesis'>
+--------------------------------------------------------------------------------
+10 |       GEN_1 => c_gen_1,
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+--------------------------------------------------------------------------------
+11 |       GEN_2 => c_gen_2,
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+--------------------------------------------------------------------------------
+12 |       GEN_3 => c_gen_3
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+--------------------------------------------------------------------------------
+13 |     )
+<class 'vsg.token.generic_map_aspect.close_parenthesis'>
+--------------------------------------------------------------------------------
+14 |     port map (
+<class 'vsg.token.port_map_aspect.port_keyword'>
+<class 'vsg.token.port_map_aspect.map_keyword'>
+<class 'vsg.token.port_map_aspect.open_parenthesis'>
+--------------------------------------------------------------------------------
+15 |       PORT_1 => w_port_1,
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+--------------------------------------------------------------------------------
+16 |       PORT_2 => w_port_2,
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+--------------------------------------------------------------------------------
+17 |       PORT_3 => w_port_3
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+--------------------------------------------------------------------------------
+18 |     );
+<class 'vsg.token.port_map_aspect.close_parenthesis'>
+<class 'vsg.token.component_instantiation_statement.semicolon'>
+--------------------------------------------------------------------------------
+19 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+20 |   U_INST1 : INST1
+<class 'vsg.token.component_instantiation_statement.instantiation_label'>
+<class 'vsg.token.component_instantiation_statement.label_colon'>
+<class 'vsg.token.instantiated_unit.component_name'>
+--------------------------------------------------------------------------------
+21 |     port map (
+<class 'vsg.token.port_map_aspect.port_keyword'>
+<class 'vsg.token.port_map_aspect.map_keyword'>
+<class 'vsg.token.port_map_aspect.open_parenthesis'>
+--------------------------------------------------------------------------------
+22 |       PORT_1 => w_port_1,
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+--------------------------------------------------------------------------------
+23 |       PORT_2 => w_port_2,
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+--------------------------------------------------------------------------------
+24 |       PORT_3 => w_port_3
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+--------------------------------------------------------------------------------
+25 |     );
+<class 'vsg.token.port_map_aspect.close_parenthesis'>
+<class 'vsg.token.component_instantiation_statement.semicolon'>
+--------------------------------------------------------------------------------
+26 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+27 |   U_INST1 : INST1
+<class 'vsg.token.component_instantiation_statement.instantiation_label'>
+<class 'vsg.token.component_instantiation_statement.label_colon'>
+<class 'vsg.token.instantiated_unit.component_name'>
+--------------------------------------------------------------------------------
+28 |     generic map (
+<class 'vsg.token.generic_map_aspect.generic_keyword'>
+<class 'vsg.token.generic_map_aspect.map_keyword'>
+<class 'vsg.token.generic_map_aspect.open_parenthesis'>
+--------------------------------------------------------------------------------
+29 |       GEN_1 => c_gen_1,
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+--------------------------------------------------------------------------------
+30 |       GEN_2 => c_gen_2,
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+--------------------------------------------------------------------------------
+31 |       GEN_3 => c_gen_3
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+--------------------------------------------------------------------------------
+32 |     );
+<class 'vsg.token.generic_map_aspect.close_parenthesis'>
+<class 'vsg.token.component_instantiation_statement.semicolon'>
+--------------------------------------------------------------------------------
+33 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+34 |   U_INST1 : INST1;
+<class 'vsg.token.concurrent_procedure_call_statement.label_name'>
+<class 'vsg.token.concurrent_procedure_call_statement.label_colon'>
+<class 'vsg.token.procedure_call.procedure_name'>
+<class 'vsg.token.concurrent_procedure_call_statement.semicolon'>
+--------------------------------------------------------------------------------
+35 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+36 |   -- Component instantiation with component keyword.
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+37 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+38 |   U_INST1 : component INST1
+<class 'vsg.token.component_instantiation_statement.instantiation_label'>
+<class 'vsg.token.component_instantiation_statement.label_colon'>
+<class 'vsg.token.instantiated_unit.component_keyword'>
+<class 'vsg.token.instantiated_unit.component_name'>
+--------------------------------------------------------------------------------
+39 |     generic map (
+<class 'vsg.token.generic_map_aspect.generic_keyword'>
+<class 'vsg.token.generic_map_aspect.map_keyword'>
+<class 'vsg.token.generic_map_aspect.open_parenthesis'>
+--------------------------------------------------------------------------------
+40 |       GEN_1 => c_gen_1,
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+--------------------------------------------------------------------------------
+41 |       GEN_2 => c_gen_2,
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+--------------------------------------------------------------------------------
+42 |       GEN_3 => c_gen_3
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+--------------------------------------------------------------------------------
+43 |     )
+<class 'vsg.token.generic_map_aspect.close_parenthesis'>
+--------------------------------------------------------------------------------
+44 |     port map (
+<class 'vsg.token.port_map_aspect.port_keyword'>
+<class 'vsg.token.port_map_aspect.map_keyword'>
+<class 'vsg.token.port_map_aspect.open_parenthesis'>
+--------------------------------------------------------------------------------
+45 |       PORT_1 => w_port_1,
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+--------------------------------------------------------------------------------
+46 |       PORT_2 => w_port_2,
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+--------------------------------------------------------------------------------
+47 |       PORT_3 => w_port_3
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+--------------------------------------------------------------------------------
+48 |     );
+<class 'vsg.token.port_map_aspect.close_parenthesis'>
+<class 'vsg.token.component_instantiation_statement.semicolon'>
+--------------------------------------------------------------------------------
+49 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+50 |   U_INST1 : component INST1
+<class 'vsg.token.component_instantiation_statement.instantiation_label'>
+<class 'vsg.token.component_instantiation_statement.label_colon'>
+<class 'vsg.token.instantiated_unit.component_keyword'>
+<class 'vsg.token.instantiated_unit.component_name'>
+--------------------------------------------------------------------------------
+51 |     port map (
+<class 'vsg.token.port_map_aspect.port_keyword'>
+<class 'vsg.token.port_map_aspect.map_keyword'>
+<class 'vsg.token.port_map_aspect.open_parenthesis'>
+--------------------------------------------------------------------------------
+52 |       PORT_1 => w_port_1,
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+--------------------------------------------------------------------------------
+53 |       PORT_2 => w_port_2,
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+--------------------------------------------------------------------------------
+54 |       PORT_3 => w_port_3
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+--------------------------------------------------------------------------------
+55 |     );
+<class 'vsg.token.port_map_aspect.close_parenthesis'>
+<class 'vsg.token.component_instantiation_statement.semicolon'>
+--------------------------------------------------------------------------------
+56 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+57 |   U_INST1 : component INST1
+<class 'vsg.token.component_instantiation_statement.instantiation_label'>
+<class 'vsg.token.component_instantiation_statement.label_colon'>
+<class 'vsg.token.instantiated_unit.component_keyword'>
+<class 'vsg.token.instantiated_unit.component_name'>
+--------------------------------------------------------------------------------
+58 |     generic map (
+<class 'vsg.token.generic_map_aspect.generic_keyword'>
+<class 'vsg.token.generic_map_aspect.map_keyword'>
+<class 'vsg.token.generic_map_aspect.open_parenthesis'>
+--------------------------------------------------------------------------------
+59 |       GEN_1 => c_gen_1,
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+--------------------------------------------------------------------------------
+60 |       GEN_2 => c_gen_2,
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+--------------------------------------------------------------------------------
+61 |       GEN_3 => c_gen_3
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+--------------------------------------------------------------------------------
+62 |     );
+<class 'vsg.token.generic_map_aspect.close_parenthesis'>
+<class 'vsg.token.component_instantiation_statement.semicolon'>
+--------------------------------------------------------------------------------
+63 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+64 |   U_INST1 : component INST1;
+<class 'vsg.token.component_instantiation_statement.instantiation_label'>
+<class 'vsg.token.component_instantiation_statement.label_colon'>
+<class 'vsg.token.instantiated_unit.component_keyword'>
+<class 'vsg.token.instantiated_unit.component_name'>
+<class 'vsg.token.component_instantiation_statement.semicolon'>
+--------------------------------------------------------------------------------
+65 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+66 |   -- entity without architecture identifier
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+67 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+68 |   U_INST1 : entity INST1
+<class 'vsg.token.component_instantiation_statement.instantiation_label'>
+<class 'vsg.token.component_instantiation_statement.label_colon'>
+<class 'vsg.token.instantiated_unit.entity_keyword'>
+<class 'vsg.token.instantiated_unit.entity_name'>
+--------------------------------------------------------------------------------
+69 |     generic map (
+<class 'vsg.token.generic_map_aspect.generic_keyword'>
+<class 'vsg.token.generic_map_aspect.map_keyword'>
+<class 'vsg.token.generic_map_aspect.open_parenthesis'>
+--------------------------------------------------------------------------------
+70 |       GEN_1 => c_gen_1,
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+--------------------------------------------------------------------------------
+71 |       GEN_2 => c_gen_2,
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+--------------------------------------------------------------------------------
+72 |       GEN_3 => c_gen_3
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+--------------------------------------------------------------------------------
+73 |     )
+<class 'vsg.token.generic_map_aspect.close_parenthesis'>
+--------------------------------------------------------------------------------
+74 |     port map (
+<class 'vsg.token.port_map_aspect.port_keyword'>
+<class 'vsg.token.port_map_aspect.map_keyword'>
+<class 'vsg.token.port_map_aspect.open_parenthesis'>
+--------------------------------------------------------------------------------
+75 |       PORT_1 => w_port_1,
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+--------------------------------------------------------------------------------
+76 |       PORT_2 => w_port_2,
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+--------------------------------------------------------------------------------
+77 |       PORT_3 => w_port_3
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+--------------------------------------------------------------------------------
+78 |     );
+<class 'vsg.token.port_map_aspect.close_parenthesis'>
+<class 'vsg.token.component_instantiation_statement.semicolon'>
+--------------------------------------------------------------------------------
+79 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+80 |   U_INST1 : entity INST1
+<class 'vsg.token.component_instantiation_statement.instantiation_label'>
+<class 'vsg.token.component_instantiation_statement.label_colon'>
+<class 'vsg.token.instantiated_unit.entity_keyword'>
+<class 'vsg.token.instantiated_unit.entity_name'>
+--------------------------------------------------------------------------------
+81 |     port map (
+<class 'vsg.token.port_map_aspect.port_keyword'>
+<class 'vsg.token.port_map_aspect.map_keyword'>
+<class 'vsg.token.port_map_aspect.open_parenthesis'>
+--------------------------------------------------------------------------------
+82 |       PORT_1 => w_port_1,
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+--------------------------------------------------------------------------------
+83 |       PORT_2 => w_port_2,
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+--------------------------------------------------------------------------------
+84 |       PORT_3 => w_port_3
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+--------------------------------------------------------------------------------
+85 |     );
+<class 'vsg.token.port_map_aspect.close_parenthesis'>
+<class 'vsg.token.component_instantiation_statement.semicolon'>
+--------------------------------------------------------------------------------
+86 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+87 |   U_INST1 : entity INST1
+<class 'vsg.token.component_instantiation_statement.instantiation_label'>
+<class 'vsg.token.component_instantiation_statement.label_colon'>
+<class 'vsg.token.instantiated_unit.entity_keyword'>
+<class 'vsg.token.instantiated_unit.entity_name'>
+--------------------------------------------------------------------------------
+88 |     generic map (
+<class 'vsg.token.generic_map_aspect.generic_keyword'>
+<class 'vsg.token.generic_map_aspect.map_keyword'>
+<class 'vsg.token.generic_map_aspect.open_parenthesis'>
+--------------------------------------------------------------------------------
+89 |       GEN_1 => c_gen_1,
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+--------------------------------------------------------------------------------
+90 |       GEN_2 => c_gen_2,
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+--------------------------------------------------------------------------------
+91 |       GEN_3 => c_gen_3
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+--------------------------------------------------------------------------------
+92 |     );
+<class 'vsg.token.generic_map_aspect.close_parenthesis'>
+<class 'vsg.token.component_instantiation_statement.semicolon'>
+--------------------------------------------------------------------------------
+93 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+94 |   U_INST1 : entity INST1;
+<class 'vsg.token.component_instantiation_statement.instantiation_label'>
+<class 'vsg.token.component_instantiation_statement.label_colon'>
+<class 'vsg.token.instantiated_unit.entity_keyword'>
+<class 'vsg.token.instantiated_unit.entity_name'>
+<class 'vsg.token.component_instantiation_statement.semicolon'>
+--------------------------------------------------------------------------------
+95 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+96 |   -- entity with architecture identifier
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+97 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+98 |   U_INST1 : entity INST1 (rtl)
+<class 'vsg.token.component_instantiation_statement.instantiation_label'>
+<class 'vsg.token.component_instantiation_statement.label_colon'>
+<class 'vsg.token.instantiated_unit.entity_keyword'>
+<class 'vsg.token.instantiated_unit.entity_name'>
+<class 'vsg.token.instantiated_unit.open_parenthesis'>
+<class 'vsg.token.instantiated_unit.architecture_identifier'>
+<class 'vsg.token.instantiated_unit.close_parenthesis'>
+--------------------------------------------------------------------------------
+99 |     generic map (
+<class 'vsg.token.generic_map_aspect.generic_keyword'>
+<class 'vsg.token.generic_map_aspect.map_keyword'>
+<class 'vsg.token.generic_map_aspect.open_parenthesis'>
+--------------------------------------------------------------------------------
+100 |       GEN_1 => c_gen_1,
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+--------------------------------------------------------------------------------
+101 |       GEN_2 => c_gen_2,
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+--------------------------------------------------------------------------------
+102 |       GEN_3 => c_gen_3
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+--------------------------------------------------------------------------------
+103 |     )
+<class 'vsg.token.generic_map_aspect.close_parenthesis'>
+--------------------------------------------------------------------------------
+104 |     port map (
+<class 'vsg.token.port_map_aspect.port_keyword'>
+<class 'vsg.token.port_map_aspect.map_keyword'>
+<class 'vsg.token.port_map_aspect.open_parenthesis'>
+--------------------------------------------------------------------------------
+105 |       PORT_1 => w_port_1,
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+--------------------------------------------------------------------------------
+106 |       PORT_2 => w_port_2,
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+--------------------------------------------------------------------------------
+107 |       PORT_3 => w_port_3
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+--------------------------------------------------------------------------------
+108 |     );
+<class 'vsg.token.port_map_aspect.close_parenthesis'>
+<class 'vsg.token.component_instantiation_statement.semicolon'>
+--------------------------------------------------------------------------------
+109 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+110 |   U_INST1 : entity INST1 (rtl)
+<class 'vsg.token.component_instantiation_statement.instantiation_label'>
+<class 'vsg.token.component_instantiation_statement.label_colon'>
+<class 'vsg.token.instantiated_unit.entity_keyword'>
+<class 'vsg.token.instantiated_unit.entity_name'>
+<class 'vsg.token.instantiated_unit.open_parenthesis'>
+<class 'vsg.token.instantiated_unit.architecture_identifier'>
+<class 'vsg.token.instantiated_unit.close_parenthesis'>
+--------------------------------------------------------------------------------
+111 |     port map (
+<class 'vsg.token.port_map_aspect.port_keyword'>
+<class 'vsg.token.port_map_aspect.map_keyword'>
+<class 'vsg.token.port_map_aspect.open_parenthesis'>
+--------------------------------------------------------------------------------
+112 |       PORT_1 => w_port_1,
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+--------------------------------------------------------------------------------
+113 |       PORT_2 => w_port_2,
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+--------------------------------------------------------------------------------
+114 |       PORT_3 => w_port_3
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+--------------------------------------------------------------------------------
+115 |     );
+<class 'vsg.token.port_map_aspect.close_parenthesis'>
+<class 'vsg.token.component_instantiation_statement.semicolon'>
+--------------------------------------------------------------------------------
+116 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+117 |   U_INST1 : entity INST1 (rtl)
+<class 'vsg.token.component_instantiation_statement.instantiation_label'>
+<class 'vsg.token.component_instantiation_statement.label_colon'>
+<class 'vsg.token.instantiated_unit.entity_keyword'>
+<class 'vsg.token.instantiated_unit.entity_name'>
+<class 'vsg.token.instantiated_unit.open_parenthesis'>
+<class 'vsg.token.instantiated_unit.architecture_identifier'>
+<class 'vsg.token.instantiated_unit.close_parenthesis'>
+--------------------------------------------------------------------------------
+118 |     generic map (
+<class 'vsg.token.generic_map_aspect.generic_keyword'>
+<class 'vsg.token.generic_map_aspect.map_keyword'>
+<class 'vsg.token.generic_map_aspect.open_parenthesis'>
+--------------------------------------------------------------------------------
+119 |       GEN_1 => c_gen_1,
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+--------------------------------------------------------------------------------
+120 |       GEN_2 => c_gen_2,
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+--------------------------------------------------------------------------------
+121 |       GEN_3 => c_gen_3
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+--------------------------------------------------------------------------------
+122 |     );
+<class 'vsg.token.generic_map_aspect.close_parenthesis'>
+<class 'vsg.token.component_instantiation_statement.semicolon'>
+--------------------------------------------------------------------------------
+123 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+124 |   U_INST1 : entity INST1 (rtl);
+<class 'vsg.token.component_instantiation_statement.instantiation_label'>
+<class 'vsg.token.component_instantiation_statement.label_colon'>
+<class 'vsg.token.instantiated_unit.entity_keyword'>
+<class 'vsg.token.instantiated_unit.entity_name'>
+<class 'vsg.token.instantiated_unit.open_parenthesis'>
+<class 'vsg.token.instantiated_unit.architecture_identifier'>
+<class 'vsg.token.instantiated_unit.close_parenthesis'>
+<class 'vsg.token.component_instantiation_statement.semicolon'>
+--------------------------------------------------------------------------------
+125 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+126 |   -- configuration
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+127 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+128 |   U_INST1 : configuration INST1
+<class 'vsg.token.component_instantiation_statement.instantiation_label'>
+<class 'vsg.token.component_instantiation_statement.label_colon'>
+<class 'vsg.token.instantiated_unit.configuration_keyword'>
+<class 'vsg.token.instantiated_unit.configuration_name'>
+--------------------------------------------------------------------------------
+129 |     generic map (
+<class 'vsg.token.generic_map_aspect.generic_keyword'>
+<class 'vsg.token.generic_map_aspect.map_keyword'>
+<class 'vsg.token.generic_map_aspect.open_parenthesis'>
+--------------------------------------------------------------------------------
+130 |       GEN_1 => c_gen_1,
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+--------------------------------------------------------------------------------
+131 |       GEN_2 => c_gen_2,
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+--------------------------------------------------------------------------------
+132 |       GEN_3 => c_gen_3
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+--------------------------------------------------------------------------------
+133 |     )
+<class 'vsg.token.generic_map_aspect.close_parenthesis'>
+--------------------------------------------------------------------------------
+134 |     port map (
+<class 'vsg.token.port_map_aspect.port_keyword'>
+<class 'vsg.token.port_map_aspect.map_keyword'>
+<class 'vsg.token.port_map_aspect.open_parenthesis'>
+--------------------------------------------------------------------------------
+135 |       PORT_1 => w_port_1,
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+--------------------------------------------------------------------------------
+136 |       PORT_2 => w_port_2,
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+--------------------------------------------------------------------------------
+137 |       PORT_3 => w_port_3
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+--------------------------------------------------------------------------------
+138 |     );
+<class 'vsg.token.port_map_aspect.close_parenthesis'>
+<class 'vsg.token.component_instantiation_statement.semicolon'>
+--------------------------------------------------------------------------------
+139 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+140 |   U_INST1 : configuration INST1
+<class 'vsg.token.component_instantiation_statement.instantiation_label'>
+<class 'vsg.token.component_instantiation_statement.label_colon'>
+<class 'vsg.token.instantiated_unit.configuration_keyword'>
+<class 'vsg.token.instantiated_unit.configuration_name'>
+--------------------------------------------------------------------------------
+141 |     port map (
+<class 'vsg.token.port_map_aspect.port_keyword'>
+<class 'vsg.token.port_map_aspect.map_keyword'>
+<class 'vsg.token.port_map_aspect.open_parenthesis'>
+--------------------------------------------------------------------------------
+142 |       PORT_1 => w_port_1,
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+--------------------------------------------------------------------------------
+143 |       PORT_2 => w_port_2,
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+--------------------------------------------------------------------------------
+144 |       PORT_3 => w_port_3
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+--------------------------------------------------------------------------------
+145 |     );
+<class 'vsg.token.port_map_aspect.close_parenthesis'>
+<class 'vsg.token.component_instantiation_statement.semicolon'>
+--------------------------------------------------------------------------------
+146 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+147 |   U_INST1 : configuration INST1
+<class 'vsg.token.component_instantiation_statement.instantiation_label'>
+<class 'vsg.token.component_instantiation_statement.label_colon'>
+<class 'vsg.token.instantiated_unit.configuration_keyword'>
+<class 'vsg.token.instantiated_unit.configuration_name'>
+--------------------------------------------------------------------------------
+148 |     generic map (
+<class 'vsg.token.generic_map_aspect.generic_keyword'>
+<class 'vsg.token.generic_map_aspect.map_keyword'>
+<class 'vsg.token.generic_map_aspect.open_parenthesis'>
+--------------------------------------------------------------------------------
+149 |       GEN_1 => c_gen_1,
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+--------------------------------------------------------------------------------
+150 |       GEN_2 => c_gen_2,
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+--------------------------------------------------------------------------------
+151 |       GEN_3 => c_gen_3
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+--------------------------------------------------------------------------------
+152 |     );
+<class 'vsg.token.generic_map_aspect.close_parenthesis'>
+<class 'vsg.token.component_instantiation_statement.semicolon'>
+--------------------------------------------------------------------------------
+153 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+154 |   U_INST1 : configuration INST1;
+<class 'vsg.token.component_instantiation_statement.instantiation_label'>
+<class 'vsg.token.component_instantiation_statement.label_colon'>
+<class 'vsg.token.instantiated_unit.configuration_keyword'>
+<class 'vsg.token.instantiated_unit.configuration_name'>
+<class 'vsg.token.component_instantiation_statement.semicolon'>
+--------------------------------------------------------------------------------
+155 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+156 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+157 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+158 | end architecture ARCH;
+<class 'vsg.token.architecture_body.end_keyword'>
+<class 'vsg.token.architecture_body.end_architecture_keyword'>
+<class 'vsg.token.architecture_body.architecture_simple_name'>
+<class 'vsg.token.architecture_body.semicolon'>
+--------------------------------------------------------------------------------
+159 | 
+<class 'vsg.parser.blank_line'>

@@ -1,0 +1,809 @@
+--------------------------------------------------------------------------------
+0 | 
+--------------------------------------------------------------------------------
+1 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+2 | -- Test generic clause
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+3 | package PACK1 is
+<class 'vsg.token.package_declaration.package_keyword'>
+<class 'vsg.token.package_declaration.identifier'>
+<class 'vsg.token.package_declaration.is_keyword'>
+--------------------------------------------------------------------------------
+4 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+5 |   generic (
+<class 'vsg.token.generic_clause.generic_keyword'>
+<class 'vsg.token.generic_clause.open_parenthesis'>
+--------------------------------------------------------------------------------
+6 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+7 |     -- Test function
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+8 |     pure function funct1 parameter (
+<class 'vsg.token.interface_function_specification.pure_keyword'>
+<class 'vsg.token.interface_function_specification.function_keyword'>
+<class 'vsg.token.interface_function_specification.designator'>
+<class 'vsg.token.interface_function_specification.parameter_keyword'>
+<class 'vsg.token.interface_function_specification.open_parenthesis'>
+--------------------------------------------------------------------------------
+9 |       signal sig1, sig2 : in      std_logic bus := 0;
+<class 'vsg.token.interface_signal_declaration.signal_keyword'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.identifier_list.comma'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_signal_declaration.bus_keyword'>
+<class 'vsg.token.interface_signal_declaration.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+10 |       constant con1, con2 : in std_logic := 0;
+<class 'vsg.token.interface_constant_declaration.constant_keyword'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.identifier_list.comma'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_constant_declaration.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_constant_declaration.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+11 |       variable sig1, sig2 : in      std_logic := 0;
+<class 'vsg.token.interface_variable_declaration.variable_keyword'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.identifier_list.comma'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_variable_declaration.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+12 |       sig1, sig2 : in      std_logic bus := 0;
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.identifier_list.comma'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_unknown_declaration.bus_keyword'>
+<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+13 |       file fil1, fil2 : std_logic;
+<class 'vsg.token.interface_file_declaration.file_keyword'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.identifier_list.comma'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_file_declaration.colon'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+14 |       type typ1) return boolean is <>;
+<class 'vsg.token.interface_incomplete_type_declaration.type_keyword'>
+<class 'vsg.token.identifier.identifier'>
+<class 'vsg.token.interface_function_specification.open_parenthesis'>
+<class 'vsg.token.interface_function_specification.return_keyword'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.interface_subprogram_declaration.is_keyword'>
+<class 'vsg.token.interface_subprogram_default.undefined_range'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+15 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+16 |     pure function funct1 parameter (
+<class 'vsg.token.interface_function_specification.pure_keyword'>
+<class 'vsg.token.interface_function_specification.function_keyword'>
+<class 'vsg.token.interface_function_specification.designator'>
+<class 'vsg.token.interface_function_specification.parameter_keyword'>
+<class 'vsg.token.interface_function_specification.open_parenthesis'>
+--------------------------------------------------------------------------------
+17 |       signal sig1, sig2 : in      std_logic bus := 0;
+<class 'vsg.token.interface_signal_declaration.signal_keyword'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.identifier_list.comma'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_signal_declaration.bus_keyword'>
+<class 'vsg.token.interface_signal_declaration.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+18 |       constant con1, con2 : in std_logic := 0;
+<class 'vsg.token.interface_constant_declaration.constant_keyword'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.identifier_list.comma'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_constant_declaration.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_constant_declaration.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+19 |       variable sig1, sig2 : in      std_logic := 0;
+<class 'vsg.token.interface_variable_declaration.variable_keyword'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.identifier_list.comma'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_variable_declaration.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+20 |       sig1, sig2 : in      std_logic bus := 0;
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.identifier_list.comma'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_unknown_declaration.bus_keyword'>
+<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+21 |       file fil1, fil2 : std_logic;
+<class 'vsg.token.interface_file_declaration.file_keyword'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.identifier_list.comma'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_file_declaration.colon'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+22 |       type typ1) return boolean is func1;
+<class 'vsg.token.interface_incomplete_type_declaration.type_keyword'>
+<class 'vsg.token.identifier.identifier'>
+<class 'vsg.token.interface_function_specification.open_parenthesis'>
+<class 'vsg.token.interface_function_specification.return_keyword'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.interface_subprogram_declaration.is_keyword'>
+<class 'vsg.token.interface_subprogram_default.subprogram_name'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+23 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+24 |     impure function funct1 parameter (
+<class 'vsg.token.interface_function_specification.impure_keyword'>
+<class 'vsg.token.interface_function_specification.function_keyword'>
+<class 'vsg.token.interface_function_specification.designator'>
+<class 'vsg.token.interface_function_specification.parameter_keyword'>
+<class 'vsg.token.interface_function_specification.open_parenthesis'>
+--------------------------------------------------------------------------------
+25 |       signal sig1, sig2 : in      std_logic bus := 0;
+<class 'vsg.token.interface_signal_declaration.signal_keyword'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.identifier_list.comma'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_signal_declaration.bus_keyword'>
+<class 'vsg.token.interface_signal_declaration.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+26 |       constant con1, con2 : in std_logic := 0;
+<class 'vsg.token.interface_constant_declaration.constant_keyword'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.identifier_list.comma'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_constant_declaration.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_constant_declaration.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+27 |       variable sig1, sig2 : in      std_logic := 0;
+<class 'vsg.token.interface_variable_declaration.variable_keyword'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.identifier_list.comma'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_variable_declaration.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+28 |       sig1, sig2 : in      std_logic bus := 0;
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.identifier_list.comma'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_unknown_declaration.bus_keyword'>
+<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+29 |       file fil1, fil2 : std_logic;
+<class 'vsg.token.interface_file_declaration.file_keyword'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.identifier_list.comma'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_file_declaration.colon'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+30 |       type typ1) return boolean is <>;
+<class 'vsg.token.interface_incomplete_type_declaration.type_keyword'>
+<class 'vsg.token.identifier.identifier'>
+<class 'vsg.token.interface_function_specification.open_parenthesis'>
+<class 'vsg.token.interface_function_specification.return_keyword'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.interface_subprogram_declaration.is_keyword'>
+<class 'vsg.token.interface_subprogram_default.undefined_range'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+31 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+32 |     impure function funct1 parameter (
+<class 'vsg.token.interface_function_specification.impure_keyword'>
+<class 'vsg.token.interface_function_specification.function_keyword'>
+<class 'vsg.token.interface_function_specification.designator'>
+<class 'vsg.token.interface_function_specification.parameter_keyword'>
+<class 'vsg.token.interface_function_specification.open_parenthesis'>
+--------------------------------------------------------------------------------
+33 |       signal sig1, sig2 : in      std_logic bus := 0;
+<class 'vsg.token.interface_signal_declaration.signal_keyword'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.identifier_list.comma'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_signal_declaration.bus_keyword'>
+<class 'vsg.token.interface_signal_declaration.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+34 |       constant con1, con2 : in std_logic := 0;
+<class 'vsg.token.interface_constant_declaration.constant_keyword'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.identifier_list.comma'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_constant_declaration.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_constant_declaration.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+35 |       variable sig1, sig2 : in      std_logic := 0;
+<class 'vsg.token.interface_variable_declaration.variable_keyword'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.identifier_list.comma'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_variable_declaration.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+36 |       sig1, sig2 : in      std_logic bus := 0;
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.identifier_list.comma'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_unknown_declaration.bus_keyword'>
+<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+37 |       file fil1, fil2 : std_logic;
+<class 'vsg.token.interface_file_declaration.file_keyword'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.identifier_list.comma'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_file_declaration.colon'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+38 |       type typ1) return boolean is func1;
+<class 'vsg.token.interface_incomplete_type_declaration.type_keyword'>
+<class 'vsg.token.identifier.identifier'>
+<class 'vsg.token.interface_function_specification.open_parenthesis'>
+<class 'vsg.token.interface_function_specification.return_keyword'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.interface_subprogram_declaration.is_keyword'>
+<class 'vsg.token.interface_subprogram_default.subprogram_name'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+39 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+40 |     -- Remove Parameter
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+41 |     pure function funct1 (
+<class 'vsg.token.interface_function_specification.pure_keyword'>
+<class 'vsg.token.interface_function_specification.function_keyword'>
+<class 'vsg.token.interface_function_specification.designator'>
+<class 'vsg.token.interface_function_specification.open_parenthesis'>
+--------------------------------------------------------------------------------
+42 |       signal sig1, sig2 : in      std_logic bus := 0;
+<class 'vsg.token.interface_signal_declaration.signal_keyword'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.identifier_list.comma'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_signal_declaration.bus_keyword'>
+<class 'vsg.token.interface_signal_declaration.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+43 |       constant con1, con2 : in std_logic := 0;
+<class 'vsg.token.interface_constant_declaration.constant_keyword'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.identifier_list.comma'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_constant_declaration.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_constant_declaration.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+44 |       variable sig1, sig2 : in      std_logic := 0;
+<class 'vsg.token.interface_variable_declaration.variable_keyword'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.identifier_list.comma'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_variable_declaration.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+45 |       sig1, sig2 : in      std_logic bus := 0;
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.identifier_list.comma'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_unknown_declaration.bus_keyword'>
+<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+46 |       file fil1, fil2 : std_logic;
+<class 'vsg.token.interface_file_declaration.file_keyword'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.identifier_list.comma'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_file_declaration.colon'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+47 |       type typ1) return boolean is <>;
+<class 'vsg.token.interface_incomplete_type_declaration.type_keyword'>
+<class 'vsg.token.identifier.identifier'>
+<class 'vsg.token.interface_function_specification.open_parenthesis'>
+<class 'vsg.token.interface_function_specification.return_keyword'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.interface_subprogram_declaration.is_keyword'>
+<class 'vsg.token.interface_subprogram_default.undefined_range'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+48 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+49 |     pure function funct1 (
+<class 'vsg.token.interface_function_specification.pure_keyword'>
+<class 'vsg.token.interface_function_specification.function_keyword'>
+<class 'vsg.token.interface_function_specification.designator'>
+<class 'vsg.token.interface_function_specification.open_parenthesis'>
+--------------------------------------------------------------------------------
+50 |       signal sig1, sig2 : in      std_logic bus := 0;
+<class 'vsg.token.interface_signal_declaration.signal_keyword'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.identifier_list.comma'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_signal_declaration.bus_keyword'>
+<class 'vsg.token.interface_signal_declaration.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+51 |       constant con1, con2 : in std_logic := 0;
+<class 'vsg.token.interface_constant_declaration.constant_keyword'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.identifier_list.comma'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_constant_declaration.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_constant_declaration.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+52 |       variable sig1, sig2 : in      std_logic := 0;
+<class 'vsg.token.interface_variable_declaration.variable_keyword'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.identifier_list.comma'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_variable_declaration.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+53 |       sig1, sig2 : in      std_logic bus := 0;
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.identifier_list.comma'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_unknown_declaration.bus_keyword'>
+<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+54 |       file fil1, fil2 : std_logic;
+<class 'vsg.token.interface_file_declaration.file_keyword'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.identifier_list.comma'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_file_declaration.colon'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+55 |       type typ1) return boolean is func1;
+<class 'vsg.token.interface_incomplete_type_declaration.type_keyword'>
+<class 'vsg.token.identifier.identifier'>
+<class 'vsg.token.interface_function_specification.open_parenthesis'>
+<class 'vsg.token.interface_function_specification.return_keyword'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.interface_subprogram_declaration.is_keyword'>
+<class 'vsg.token.interface_subprogram_default.subprogram_name'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+56 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+57 |     impure function funct1 (
+<class 'vsg.token.interface_function_specification.impure_keyword'>
+<class 'vsg.token.interface_function_specification.function_keyword'>
+<class 'vsg.token.interface_function_specification.designator'>
+<class 'vsg.token.interface_function_specification.open_parenthesis'>
+--------------------------------------------------------------------------------
+58 |       signal sig1, sig2 : in      std_logic bus := 0;
+<class 'vsg.token.interface_signal_declaration.signal_keyword'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.identifier_list.comma'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_signal_declaration.bus_keyword'>
+<class 'vsg.token.interface_signal_declaration.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+59 |       constant con1, con2 : in std_logic := 0;
+<class 'vsg.token.interface_constant_declaration.constant_keyword'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.identifier_list.comma'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_constant_declaration.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_constant_declaration.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+60 |       variable sig1, sig2 : in      std_logic := 0;
+<class 'vsg.token.interface_variable_declaration.variable_keyword'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.identifier_list.comma'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_variable_declaration.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+61 |       sig1, sig2 : in      std_logic bus := 0;
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.identifier_list.comma'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_unknown_declaration.bus_keyword'>
+<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+62 |       file fil1, fil2 : std_logic;
+<class 'vsg.token.interface_file_declaration.file_keyword'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.identifier_list.comma'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_file_declaration.colon'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+63 |       type typ1) return boolean is <>;
+<class 'vsg.token.interface_incomplete_type_declaration.type_keyword'>
+<class 'vsg.token.identifier.identifier'>
+<class 'vsg.token.interface_function_specification.open_parenthesis'>
+<class 'vsg.token.interface_function_specification.return_keyword'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.interface_subprogram_declaration.is_keyword'>
+<class 'vsg.token.interface_subprogram_default.undefined_range'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+64 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+65 |     impure function funct1 (
+<class 'vsg.token.interface_function_specification.impure_keyword'>
+<class 'vsg.token.interface_function_specification.function_keyword'>
+<class 'vsg.token.interface_function_specification.designator'>
+<class 'vsg.token.interface_function_specification.open_parenthesis'>
+--------------------------------------------------------------------------------
+66 |       signal sig1, sig2 : in      std_logic bus := 0;
+<class 'vsg.token.interface_signal_declaration.signal_keyword'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.identifier_list.comma'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_signal_declaration.bus_keyword'>
+<class 'vsg.token.interface_signal_declaration.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+67 |       constant con1, con2 : in std_logic := 0;
+<class 'vsg.token.interface_constant_declaration.constant_keyword'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.identifier_list.comma'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_constant_declaration.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_constant_declaration.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+68 |       variable sig1, sig2 : in      std_logic := 0;
+<class 'vsg.token.interface_variable_declaration.variable_keyword'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.identifier_list.comma'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_variable_declaration.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+69 |       sig1, sig2 : in      std_logic bus := 0;
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.identifier_list.comma'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_unknown_declaration.bus_keyword'>
+<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+70 |       file fil1, fil2 : std_logic;
+<class 'vsg.token.interface_file_declaration.file_keyword'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.identifier_list.comma'>
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_file_declaration.colon'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+71 |       type typ1) return boolean is func1;
+<class 'vsg.token.interface_incomplete_type_declaration.type_keyword'>
+<class 'vsg.token.identifier.identifier'>
+<class 'vsg.token.interface_function_specification.open_parenthesis'>
+<class 'vsg.token.interface_function_specification.return_keyword'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.interface_subprogram_declaration.is_keyword'>
+<class 'vsg.token.interface_subprogram_default.subprogram_name'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+72 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+73 |     -- Remove formal_parameter_list
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+74 |     pure function funct1 return boolean is <>;
+<class 'vsg.token.interface_function_specification.pure_keyword'>
+<class 'vsg.token.interface_function_specification.function_keyword'>
+<class 'vsg.token.interface_function_specification.designator'>
+<class 'vsg.token.interface_function_specification.return_keyword'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.interface_subprogram_declaration.is_keyword'>
+<class 'vsg.token.interface_subprogram_default.undefined_range'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+75 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+76 |     pure function funct1 return boolean is func1;
+<class 'vsg.token.interface_function_specification.pure_keyword'>
+<class 'vsg.token.interface_function_specification.function_keyword'>
+<class 'vsg.token.interface_function_specification.designator'>
+<class 'vsg.token.interface_function_specification.return_keyword'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.interface_subprogram_declaration.is_keyword'>
+<class 'vsg.token.interface_subprogram_default.subprogram_name'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+77 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+78 |     impure function funct1 return boolean is <>;
+<class 'vsg.token.interface_function_specification.impure_keyword'>
+<class 'vsg.token.interface_function_specification.function_keyword'>
+<class 'vsg.token.interface_function_specification.designator'>
+<class 'vsg.token.interface_function_specification.return_keyword'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.interface_subprogram_declaration.is_keyword'>
+<class 'vsg.token.interface_subprogram_default.undefined_range'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+79 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+80 |     impure function funct1 return boolean is func1;
+<class 'vsg.token.interface_function_specification.impure_keyword'>
+<class 'vsg.token.interface_function_specification.function_keyword'>
+<class 'vsg.token.interface_function_specification.designator'>
+<class 'vsg.token.interface_function_specification.return_keyword'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.interface_subprogram_declaration.is_keyword'>
+<class 'vsg.token.interface_subprogram_default.subprogram_name'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+81 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+82 |     -- Remove interface_subprogram_default
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+83 |     pure function funct1 return boolean;
+<class 'vsg.token.interface_function_specification.pure_keyword'>
+<class 'vsg.token.interface_function_specification.function_keyword'>
+<class 'vsg.token.interface_function_specification.designator'>
+<class 'vsg.token.interface_function_specification.return_keyword'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+84 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+85 |     pure function funct1 return boolean;
+<class 'vsg.token.interface_function_specification.pure_keyword'>
+<class 'vsg.token.interface_function_specification.function_keyword'>
+<class 'vsg.token.interface_function_specification.designator'>
+<class 'vsg.token.interface_function_specification.return_keyword'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+86 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+87 |     impure function funct1 return boolean;
+<class 'vsg.token.interface_function_specification.impure_keyword'>
+<class 'vsg.token.interface_function_specification.function_keyword'>
+<class 'vsg.token.interface_function_specification.designator'>
+<class 'vsg.token.interface_function_specification.return_keyword'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+88 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+89 |     impure function funct1 return boolean;
+<class 'vsg.token.interface_function_specification.impure_keyword'>
+<class 'vsg.token.interface_function_specification.function_keyword'>
+<class 'vsg.token.interface_function_specification.designator'>
+<class 'vsg.token.interface_function_specification.return_keyword'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+90 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+91 |     -- Remove pure/impure
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+92 |     function funct1 return boolean;
+<class 'vsg.token.interface_function_specification.function_keyword'>
+<class 'vsg.token.interface_function_specification.designator'>
+<class 'vsg.token.interface_function_specification.return_keyword'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+93 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+94 |     function funct1 return boolean;
+<class 'vsg.token.interface_function_specification.function_keyword'>
+<class 'vsg.token.interface_function_specification.designator'>
+<class 'vsg.token.interface_function_specification.return_keyword'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+95 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+96 |     function funct1 return boolean;
+<class 'vsg.token.interface_function_specification.function_keyword'>
+<class 'vsg.token.interface_function_specification.designator'>
+<class 'vsg.token.interface_function_specification.return_keyword'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+97 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+98 |     function funct1 return boolean
+<class 'vsg.token.interface_function_specification.function_keyword'>
+<class 'vsg.token.interface_function_specification.designator'>
+<class 'vsg.token.interface_function_specification.return_keyword'>
+<class 'vsg.token.type_mark.name'>
+--------------------------------------------------------------------------------
+99 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+100 |     );
+<class 'vsg.token.generic_clause.close_parenthesis'>
+<class 'vsg.token.generic_clause.semicolon'>
+--------------------------------------------------------------------------------
+101 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+102 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+103 | end package PACK1;
+<class 'vsg.token.package_declaration.end_keyword'>
+<class 'vsg.token.package_declaration.end_package_keyword'>
+<class 'vsg.token.package_declaration.end_package_simple_name'>
+<class 'vsg.token.package_declaration.semicolon'>

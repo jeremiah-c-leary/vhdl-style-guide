@@ -41,16 +41,3 @@ class return_keyword(parser.keyword):
 
     def __init__(self, sString):
         parser.keyword.__init__(self, sString)
-
-# jcl - remove the following objects when the new parser is done
-
-class keyword(parser.keyword):
-
-    def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
-
-class type_mark(parser.type_mark):
-
-    def __init__(self, sString):
-        parser.type_mark.__init__(self, sString)
-

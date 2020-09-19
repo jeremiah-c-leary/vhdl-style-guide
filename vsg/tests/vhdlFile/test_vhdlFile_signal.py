@@ -3,7 +3,6 @@ import os
 import unittest
 from vsg import vhdlFile
 from vsg.tests import utils
-from vsg import parser
 from vsg.token import signal_declaration
 
 

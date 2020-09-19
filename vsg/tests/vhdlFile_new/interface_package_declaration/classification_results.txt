@@ -1,0 +1,95 @@
+--------------------------------------------------------------------------------
+0 | 
+--------------------------------------------------------------------------------
+1 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+2 | -- Test generic clause
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+3 | package PACK1 is
+<class 'vsg.token.package_declaration.package_keyword'>
+<class 'vsg.token.package_declaration.identifier'>
+<class 'vsg.token.package_declaration.is_keyword'>
+--------------------------------------------------------------------------------
+4 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+5 |   generic (
+<class 'vsg.token.generic_clause.generic_keyword'>
+<class 'vsg.token.generic_clause.open_parenthesis'>
+--------------------------------------------------------------------------------
+6 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+7 |     package pack1 is new fifostuff generic map (<>);
+<class 'vsg.token.interface_package_declaration.package_keyword'>
+<class 'vsg.token.identifier.identifier'>
+<class 'vsg.token.interface_package_declaration.is_keyword'>
+<class 'vsg.token.interface_package_declaration.new_keyword'>
+<class 'vsg.token.interface_package_declaration.uninstantiated_package_name'>
+<class 'vsg.token.interface_package_generic_map_aspect.generic_keyword'>
+<class 'vsg.token.interface_package_generic_map_aspect.map_keyword'>
+<class 'vsg.token.interface_package_generic_map_aspect.open_parenthesis'>
+<class 'vsg.token.interface_package_generic_map_aspect.undefined_range'>
+<class 'vsg.token.interface_package_generic_map_aspect.close_parenthesis'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+8 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+9 |     package pack1 is new fifostuff generic map (default);
+<class 'vsg.token.interface_package_declaration.package_keyword'>
+<class 'vsg.token.identifier.identifier'>
+<class 'vsg.token.interface_package_declaration.is_keyword'>
+<class 'vsg.token.interface_package_declaration.new_keyword'>
+<class 'vsg.token.interface_package_declaration.uninstantiated_package_name'>
+<class 'vsg.token.interface_package_generic_map_aspect.generic_keyword'>
+<class 'vsg.token.interface_package_generic_map_aspect.map_keyword'>
+<class 'vsg.token.interface_package_generic_map_aspect.open_parenthesis'>
+<class 'vsg.token.interface_package_generic_map_aspect.default_keyword'>
+<class 'vsg.token.interface_package_generic_map_aspect.close_parenthesis'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+10 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+11 |     package pack1 is new fifostuff generic map ( A => B, C => D)
+<class 'vsg.token.interface_package_declaration.package_keyword'>
+<class 'vsg.token.identifier.identifier'>
+<class 'vsg.token.interface_package_declaration.is_keyword'>
+<class 'vsg.token.interface_package_declaration.new_keyword'>
+<class 'vsg.token.interface_package_declaration.uninstantiated_package_name'>
+<class 'vsg.token.generic_map_aspect.generic_keyword'>
+<class 'vsg.token.generic_map_aspect.map_keyword'>
+<class 'vsg.token.generic_map_aspect.open_parenthesis'>
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.generic_map_aspect.close_parenthesis'>
+--------------------------------------------------------------------------------
+12 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+13 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+14 |     );
+<class 'vsg.token.generic_clause.close_parenthesis'>
+<class 'vsg.token.generic_clause.semicolon'>
+--------------------------------------------------------------------------------
+15 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+16 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+17 | end package PACK1;
+<class 'vsg.token.package_declaration.end_keyword'>
+<class 'vsg.token.package_declaration.end_package_keyword'>
+<class 'vsg.token.package_declaration.end_package_simple_name'>
+<class 'vsg.token.package_declaration.semicolon'>

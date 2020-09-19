@@ -1,0 +1,35 @@
+--------------------------------------------------------------------------------
+0 | 
+--------------------------------------------------------------------------------
+1 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+2 | context name1;
+<class 'vsg.token.context_reference.keyword'>
+<class 'vsg.token.context_reference.selected_name'>
+<class 'vsg.token.context_reference.semicolon'>
+--------------------------------------------------------------------------------
+3 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+4 | context name2, name3;
+<class 'vsg.token.context_reference.keyword'>
+<class 'vsg.token.context_reference.selected_name'>
+<class 'vsg.token.context_reference.comma'>
+<class 'vsg.token.context_reference.selected_name'>
+<class 'vsg.token.context_reference.semicolon'>
+--------------------------------------------------------------------------------
+5 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+6 | context name4, name5, name6;
+<class 'vsg.token.context_reference.keyword'>
+<class 'vsg.token.context_reference.selected_name'>
+<class 'vsg.token.context_reference.comma'>
+<class 'vsg.token.context_reference.selected_name'>
+<class 'vsg.token.context_reference.comma'>
+<class 'vsg.token.context_reference.selected_name'>
+<class 'vsg.token.context_reference.semicolon'>
+--------------------------------------------------------------------------------
+7 | 
+<class 'vsg.parser.blank_line'>

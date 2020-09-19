@@ -1,0 +1,66 @@
+--------------------------------------------------------------------------------
+0 | 
+--------------------------------------------------------------------------------
+1 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+2 | entity FIFO is
+<class 'vsg.token.entity_declaration.entity_keyword'>
+<class 'vsg.token.entity_declaration.identifier'>
+<class 'vsg.token.entity_declaration.is_keyword'>
+--------------------------------------------------------------------------------
+3 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+4 | end entity FIFO;
+<class 'vsg.token.entity_declaration.end_keyword'>
+<class 'vsg.token.entity_declaration.end_entity_keyword'>
+<class 'vsg.token.entity_declaration.entity_simple_name'>
+<class 'vsg.token.entity_declaration.semicolon'>
+--------------------------------------------------------------------------------
+5 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+6 | entity FIFO is
+<class 'vsg.token.entity_declaration.entity_keyword'>
+<class 'vsg.token.entity_declaration.identifier'>
+<class 'vsg.token.entity_declaration.is_keyword'>
+--------------------------------------------------------------------------------
+7 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+8 | end entity;
+<class 'vsg.token.entity_declaration.end_keyword'>
+<class 'vsg.token.entity_declaration.end_entity_keyword'>
+<class 'vsg.token.entity_declaration.semicolon'>
+--------------------------------------------------------------------------------
+9 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+10 | entity FIFO is
+<class 'vsg.token.entity_declaration.entity_keyword'>
+<class 'vsg.token.entity_declaration.identifier'>
+<class 'vsg.token.entity_declaration.is_keyword'>
+--------------------------------------------------------------------------------
+11 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+12 | end;
+<class 'vsg.token.entity_declaration.end_keyword'>
+<class 'vsg.token.entity_declaration.semicolon'>
+--------------------------------------------------------------------------------
+13 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+14 | entity FIFO is
+<class 'vsg.token.entity_declaration.entity_keyword'>
+<class 'vsg.token.entity_declaration.identifier'>
+<class 'vsg.token.entity_declaration.is_keyword'>
+--------------------------------------------------------------------------------
+15 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+16 | end FIFO;
+<class 'vsg.token.entity_declaration.end_keyword'>
+<class 'vsg.token.entity_declaration.entity_simple_name'>
+<class 'vsg.token.entity_declaration.semicolon'>

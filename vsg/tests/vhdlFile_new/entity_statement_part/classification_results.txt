@@ -1,0 +1,112 @@
+--------------------------------------------------------------------------------
+0 | 
+--------------------------------------------------------------------------------
+1 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+2 | entity FIFO is
+<class 'vsg.token.entity_declaration.entity_keyword'>
+<class 'vsg.token.entity_declaration.identifier'>
+<class 'vsg.token.entity_declaration.is_keyword'>
+--------------------------------------------------------------------------------
+3 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+4 |   begin
+<class 'vsg.token.entity_declaration.begin_keyword'>
+--------------------------------------------------------------------------------
+5 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+6 |     LABEL : assert TRUE
+<class 'vsg.token.concurrent_assertion_statement.label_name'>
+<class 'vsg.token.concurrent_assertion_statement.label_colon'>
+<class 'vsg.token.assertion.keyword'>
+<class 'vsg.parser.todo'>
+--------------------------------------------------------------------------------
+7 |       report "This is a string"
+<class 'vsg.token.assertion.report_keyword'>
+<class 'vsg.parser.todo'>
+--------------------------------------------------------------------------------
+8 |       severity WARNING;
+<class 'vsg.token.assertion.severity_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.concurrent_assertion_statement.semicolon'>
+--------------------------------------------------------------------------------
+9 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+10 |     LABEL1: postponed Proc1 (Clock);
+<class 'vsg.token.concurrent_procedure_call_statement.label_name'>
+<class 'vsg.token.concurrent_procedure_call_statement.label_colon'>
+<class 'vsg.token.concurrent_procedure_call_statement.postponed_keyword'>
+<class 'vsg.token.procedure_call.procedure_name'>
+<class 'vsg.token.procedure_call.open_parenthesis'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.procedure_call.close_parenthesis'>
+<class 'vsg.token.concurrent_procedure_call_statement.semicolon'>
+--------------------------------------------------------------------------------
+11 |     LABEL2 : postponed READ (L     => BufLine,
+<class 'vsg.token.concurrent_procedure_call_statement.label_name'>
+<class 'vsg.token.concurrent_procedure_call_statement.label_colon'>
+<class 'vsg.token.concurrent_procedure_call_statement.postponed_keyword'>
+<class 'vsg.token.procedure_call.procedure_name'>
+<class 'vsg.token.procedure_call.open_parenthesis'>
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+--------------------------------------------------------------------------------
+12 |                    VALUE => Q);
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.procedure_call.close_parenthesis'>
+<class 'vsg.token.concurrent_procedure_call_statement.semicolon'>
+--------------------------------------------------------------------------------
+13 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+14 |     process_and_or : postponed process(a,b,d,e) is
+<class 'vsg.token.process_statement.process_label'>
+<class 'vsg.token.process_statement.label_colon'>
+<class 'vsg.token.process_statement.postponed_keyword'>
+<class 'vsg.token.process_statement.process_keyword'>
+<class 'vsg.token.process_statement.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.sensitivity_list.comma'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.sensitivity_list.comma'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.sensitivity_list.comma'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.process_statement.close_parenthesis'>
+<class 'vsg.token.process_statement.is_keyword'>
+--------------------------------------------------------------------------------
+15 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+16 |     begin
+<class 'vsg.token.process_statement.begin_keyword'>
+--------------------------------------------------------------------------------
+17 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+18 |     end postponed process process_and_or;
+<class 'vsg.token.process_statement.end_keyword'>
+<class 'vsg.token.process_statement.end_postponed_keyword'>
+<class 'vsg.token.process_statement.end_process_keyword'>
+<class 'vsg.token.process_statement.end_process_label'>
+<class 'vsg.token.process_statement.semicolon'>
+--------------------------------------------------------------------------------
+19 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+20 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+21 | end entity FIFO;
+<class 'vsg.token.entity_declaration.end_keyword'>
+<class 'vsg.token.entity_declaration.end_entity_keyword'>
+<class 'vsg.token.entity_declaration.entity_simple_name'>
+<class 'vsg.token.entity_declaration.semicolon'>

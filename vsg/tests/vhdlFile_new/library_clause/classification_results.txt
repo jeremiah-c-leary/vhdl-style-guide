@@ -1,0 +1,31 @@
+--------------------------------------------------------------------------------
+0 | 
+--------------------------------------------------------------------------------
+1 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+2 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+3 | library ieee;
+<class 'vsg.token.library_clause.keyword'>
+<class 'vsg.token.logical_name_list.logical_name'>
+<class 'vsg.token.library_clause.semicolon'>
+--------------------------------------------------------------------------------
+4 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+5 | library ieee, lib2, lib3;
+<class 'vsg.token.library_clause.keyword'>
+<class 'vsg.token.logical_name_list.logical_name'>
+<class 'vsg.token.logical_name_list.comma'>
+<class 'vsg.token.logical_name_list.logical_name'>
+<class 'vsg.token.logical_name_list.comma'>
+<class 'vsg.token.logical_name_list.logical_name'>
+<class 'vsg.token.library_clause.semicolon'>
+--------------------------------------------------------------------------------
+6 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+7 | 
+<class 'vsg.parser.blank_line'>

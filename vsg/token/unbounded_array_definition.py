@@ -30,23 +30,3 @@ class of_keyword(parser.keyword):
 
     def __init__(self, sString):
         parser.keyword.__init__(self, sString)
-
-# jcl - remove objects below after new parser is done
-
-
-class keyword(parser.keyword):
-
-    def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
-
-
-class index_subtype_definition(parser.item):
-
-    def __init__(self, sString):
-        parser.item.__init__(self, sString)
-
-
-class subtype_indication(parser.subtype_indication):
-
-    def __init__(self):
-        parser.subtype_indication.__init__(self)

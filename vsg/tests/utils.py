@@ -95,7 +95,7 @@ def extract_objects(oFile, bIgnoreWhiteSpace=False):
     lReturn = []
     for iLine, oLine in enumerate(oFile.lines):
         lReturn.append('-'*80)
-        lReturn.append(f'{iLine} | {oLine.indentLevel} | {oLine.line}')
+        lReturn.append(f'{iLine} | {oLine.line}')
         for oObject in oLine.objects:
             if bIgnoreWhiteSpace:
                 if type(oObject) == parser.whitespace:

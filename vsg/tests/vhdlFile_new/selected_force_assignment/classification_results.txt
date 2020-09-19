@@ -1,0 +1,294 @@
+--------------------------------------------------------------------------------
+0 | 
+--------------------------------------------------------------------------------
+1 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+2 | architecture RTL of ENTITY_NAME is
+<class 'vsg.token.architecture_body.architecture_keyword'>
+<class 'vsg.token.architecture_body.identifier'>
+<class 'vsg.token.architecture_body.of_keyword'>
+<class 'vsg.token.architecture_body.entity_name'>
+<class 'vsg.token.architecture_body.is_keyword'>
+--------------------------------------------------------------------------------
+3 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+4 | begin
+<class 'vsg.token.architecture_body.begin_keyword'>
+--------------------------------------------------------------------------------
+5 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+6 |   process
+<class 'vsg.token.process_statement.process_keyword'>
+--------------------------------------------------------------------------------
+7 |   begin
+<class 'vsg.token.process_statement.begin_keyword'>
+--------------------------------------------------------------------------------
+8 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+9 |     SEL_LABEL : with some expression select ?
+<class 'vsg.token.signal_assignment_statement.label'>
+<class 'vsg.token.signal_assignment_statement.label_colon'>
+<class 'vsg.token.selected_force_assignment.with_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_force_assignment.select_keyword'>
+<class 'vsg.token.selected_force_assignment.question_mark'>
+--------------------------------------------------------------------------------
+10 |         some target <= force in some expression when some choice | some other choice | some other other choice,
+<class 'vsg.token.selected_force_assignment.target'>
+<class 'vsg.token.selected_force_assignment.target'>
+<class 'vsg.token.selected_force_assignment.assignment'>
+<class 'vsg.token.selected_force_assignment.force_keyword'>
+<class 'vsg.token.force_mode.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_expressions.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.choices.bar'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.choices.bar'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_expressions.comma'>
+--------------------------------------------------------------------------------
+11 |                                 some expression when some choice,
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_expressions.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_expressions.comma'>
+--------------------------------------------------------------------------------
+12 |                                 some expression when some choice | some other choice;
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_expressions.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.choices.bar'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_force_assignment.semicolon'>
+--------------------------------------------------------------------------------
+13 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+14 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+15 |     SEL_LABEL : with some expression select ?
+<class 'vsg.token.signal_assignment_statement.label'>
+<class 'vsg.token.signal_assignment_statement.label_colon'>
+<class 'vsg.token.selected_force_assignment.with_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_force_assignment.select_keyword'>
+<class 'vsg.token.selected_force_assignment.question_mark'>
+--------------------------------------------------------------------------------
+16 |         some target <= force out some expression when some choice | some other choice | some other other choice,
+<class 'vsg.token.selected_force_assignment.target'>
+<class 'vsg.token.selected_force_assignment.target'>
+<class 'vsg.token.selected_force_assignment.assignment'>
+<class 'vsg.token.selected_force_assignment.force_keyword'>
+<class 'vsg.token.force_mode.out_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_expressions.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.choices.bar'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.choices.bar'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_expressions.comma'>
+--------------------------------------------------------------------------------
+17 |                                  some expression when some choice,
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_expressions.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_expressions.comma'>
+--------------------------------------------------------------------------------
+18 |                                  some expression when some choice | some other choice;
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_expressions.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.choices.bar'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_force_assignment.semicolon'>
+--------------------------------------------------------------------------------
+19 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+20 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+21 |     SEL_LABEL : with some expression select
+<class 'vsg.token.signal_assignment_statement.label'>
+<class 'vsg.token.signal_assignment_statement.label_colon'>
+<class 'vsg.token.selected_force_assignment.with_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_force_assignment.select_keyword'>
+--------------------------------------------------------------------------------
+22 |         some target <= force in some expression when some choice | some other choice | some other other choice,
+<class 'vsg.token.selected_force_assignment.target'>
+<class 'vsg.token.selected_force_assignment.target'>
+<class 'vsg.token.selected_force_assignment.assignment'>
+<class 'vsg.token.selected_force_assignment.force_keyword'>
+<class 'vsg.token.force_mode.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_expressions.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.choices.bar'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.choices.bar'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_expressions.comma'>
+--------------------------------------------------------------------------------
+23 |                                 some expression when some choice,
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_expressions.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_expressions.comma'>
+--------------------------------------------------------------------------------
+24 |                                 some expression when some choice | some other choice;
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_expressions.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.choices.bar'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_force_assignment.semicolon'>
+--------------------------------------------------------------------------------
+25 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+26 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+27 |     SEL_LABEL : with some expression select ?
+<class 'vsg.token.signal_assignment_statement.label'>
+<class 'vsg.token.signal_assignment_statement.label_colon'>
+<class 'vsg.token.selected_force_assignment.with_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_force_assignment.select_keyword'>
+<class 'vsg.token.selected_force_assignment.question_mark'>
+--------------------------------------------------------------------------------
+28 |         some target <= force in some expression when some choice;
+<class 'vsg.token.selected_force_assignment.target'>
+<class 'vsg.token.selected_force_assignment.target'>
+<class 'vsg.token.selected_force_assignment.assignment'>
+<class 'vsg.token.selected_force_assignment.force_keyword'>
+<class 'vsg.token.force_mode.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_expressions.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_force_assignment.semicolon'>
+--------------------------------------------------------------------------------
+29 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+30 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+31 |     with some expression select ?
+<class 'vsg.token.selected_force_assignment.with_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_force_assignment.select_keyword'>
+<class 'vsg.token.selected_force_assignment.question_mark'>
+--------------------------------------------------------------------------------
+32 |         some target <= force in some expression when some choice | some other choice | some other other choice,
+<class 'vsg.token.selected_force_assignment.target'>
+<class 'vsg.token.selected_force_assignment.target'>
+<class 'vsg.token.selected_force_assignment.assignment'>
+<class 'vsg.token.selected_force_assignment.force_keyword'>
+<class 'vsg.token.force_mode.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_expressions.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.choices.bar'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.choices.bar'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_expressions.comma'>
+--------------------------------------------------------------------------------
+33 |                                 some expression when some choice,
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_expressions.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_expressions.comma'>
+--------------------------------------------------------------------------------
+34 |                                 some expression when some choice | some other choice;
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_expressions.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.choices.bar'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.selected_force_assignment.semicolon'>
+--------------------------------------------------------------------------------
+35 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+36 |   end process;
+<class 'vsg.token.process_statement.end_keyword'>
+<class 'vsg.token.process_statement.end_process_keyword'>
+<class 'vsg.token.process_statement.semicolon'>
+--------------------------------------------------------------------------------
+37 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+38 | end architecture RTL;
+<class 'vsg.token.architecture_body.end_keyword'>
+<class 'vsg.token.architecture_body.end_architecture_keyword'>
+<class 'vsg.token.architecture_body.architecture_simple_name'>
+<class 'vsg.token.architecture_body.semicolon'>

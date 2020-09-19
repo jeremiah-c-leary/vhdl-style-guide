@@ -3,7 +3,6 @@ import os
 import unittest
 from vsg import vhdlFile
 from vsg.tests import utils
-from vsg import parser
 
 lFileAssert = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','assert_statement','assert_test_input.vhd'))
 oFileAssert = vhdlFile.vhdlFile(lFileAssert)
