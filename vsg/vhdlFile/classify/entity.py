@@ -1,7 +1,7 @@
+
 import re
 
 from vsg.token import entity as token
-from vsg import parser
 
 
 def legacy(self, dVars, oLine):

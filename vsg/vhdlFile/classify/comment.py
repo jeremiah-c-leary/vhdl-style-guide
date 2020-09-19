@@ -1,13 +1,12 @@
+
 import re
-
-from vsg import parser
-
 
 # Regex to find comments that ignores contents of double quoted strings,
 # for example, "--" : a two bit std_logic_vector literal of don't cares.
 has_comment_re = re.compile(r'^(?:".*"|[^"\n])*?(?P<comment>--.*)', re.IGNORECASE)
 
 comment_only_re = re.compile(r'^\s*--')
+
 
 def comment(dVars, lTokens, lObjects, oLine):
     # Check for comment lines
@@ -21,8 +20,3 @@ def comment(dVars, lTokens, lObjects, oLine):
         oLine.indentLevel = dVars['iCurrentIndentLevel']
     else:
         oLine.hasInlineComment = True
-
-    
-    for iToken, sToken in enumerate(lTokens):
-        if sToken.startswith('--'):
-            lObjects[iToken] = parser.comment(sToken)

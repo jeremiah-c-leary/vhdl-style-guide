@@ -2,13 +2,13 @@ import os
 
 import unittest
 
-from vsg.vhdlFile import vhdlFile_new
+from vsg import vhdlFile
 from vsg.tests import utils
 
 sLrmUnit = 'concurrent_selected_signal_assignment'
 
 lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__), sLrmUnit,'classification_test_input.vhd'))
-oFile = vhdlFile_new.vhdlFile(lFile)
+oFile = vhdlFile.vhdlFile(lFile)
 
 
 class test_token(unittest.TestCase):
@@ -27,5 +27,3 @@ class test_token(unittest.TestCase):
         
         self.assertEqual(lExpected, lActual)
 
-#    def test_debug(self):
-#        utils.print_objects(oFile,True)

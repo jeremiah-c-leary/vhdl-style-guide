@@ -22,7 +22,6 @@ def architecture(self, dVars, lTokens, lObjects, oLine):
 
 def classify_architecture_semicolon(sToken, iToken, lObjects, dVars, oLine):
     if sToken == ';':
-        lObjects[iToken] = parser.architecture_semicolon(sToken)
         dVars['bArchitectureKeywordFound'] = False
         dVars['bArchitectureIdentifierFound'] = False
         dVars['bArchitectureEntityNameFound'] = False

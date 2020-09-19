@@ -16,13 +16,11 @@ from .for_loop import for_loop
 from .function import function
 from .generate import generate
 from .generic import generic
-#from .generic_clause import generic_clause
 from .if_statement import if_statement
 from .instantiation import instantiation
 from .package_body_old import package_body_old
 from .package import package
 from .port import port
-#from .port_clause import port_clause
 from .process import process
 from .procedure import procedure
 from .sequential import sequential
@@ -34,7 +32,6 @@ from .variable_assignment import variable_assignment
 from .variable import variable
 from .when import when
 from .while_loop import while_loop
-from .whitespace import whitespace
 from .with_statement import with_statement
 from .block import block
 from .wait import wait

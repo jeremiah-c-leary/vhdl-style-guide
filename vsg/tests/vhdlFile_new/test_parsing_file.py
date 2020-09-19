@@ -2,14 +2,14 @@ import os
 
 import unittest
 
-from vsg.vhdlFile import vhdlFile_new
+from vsg import vhdlFile
 from vsg.tests import utils
 
 try:
     sLrmUnit = os.environ['vsg_file_to_parse']
     
     lFile = utils.read_vhdlfile(sLrmUnit)
-    oFile = vhdlFile_new.vhdlFile(lFile)
+    oFile = vhdlFile.vhdlFile(lFile)
     
     
     class test_token(unittest.TestCase):

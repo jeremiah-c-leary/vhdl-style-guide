@@ -1,6 +1,5 @@
-import re
 
-from vsg import parser
+import re
 
 
 def assert_statement(self, dVars, lTokens, lObjects, oLine):

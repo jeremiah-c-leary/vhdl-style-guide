@@ -59,207 +59,6 @@ class vhdlFile():
         dVars['iForLoopLevel'] = 0
         dVars['bFirstWhenSeen'] = False
 
-        dVars['bInsideContext'] = False
-        dVars['bContextIsFound'] = False
-        dVars['bContextEndFound'] = False
-
-        dVars['bInsideContextReference'] = False
-
-        dVars['bInsideLibrary'] = False
-
-        dVars['bInsideUse'] = False
-        dVars['bUseClauseKeywordFound'] = False
-
-        dVars['architecture_body'] = {}
-        dVars['architecture_body']['keyword'] = False
-        dVars['architecture_body']['identifier'] = False
-        dVars['architecture_body']['entity_name'] = False
-        dVars['architecture_body']['is'] = False
-        dVars['architecture_body']['begin'] = False
-        dVars['architecture_body']['end'] = False
-
-        dVars['bEntityKeywordFound'] = False
-        dVars['bEntityIdentifierFound'] = False
-        dVars['bEntityIsKeywordFound'] = False
-        dVars['bEntityBeginKeywordFound'] = False
-        dVars['bEntityEndKeywordFound'] = False
-
-        dVars['bPackageKeywordFound'] = False
-        dVars['bPackageIdentifierFound'] = False
-        dVars['bPackageIsKeywordFound'] = False
-        dVars['bPackageEndKeywordFound'] = False
-        dVars['bPackageBodyKeywordFound'] = False
-
-        dVars['bPackageBodyPackageKeywordFound'] = False
-        dVars['bPackageBodyIdentifierFound'] = False
-        dVars['bPackageBodyIsKeywordFound'] = False
-        dVars['bPackageBodyEndKeywordFound'] = False
-        dVars['bPackageBodyBodyKeywordFound'] = False
-
-        dVars['bSignalKeywordFound'] = False
-        dVars['bSignalColonFound'] = False
-        dVars['bSignalAssignmentOperatorFound'] = False
-
-        dVars['bConstantKeywordFound'] = False
-        dVars['bConstantColonFound'] = False
-        dVars['bConstantAssignmentOperatorFound'] = False
-
-        dVars['bVariableKeywordFound'] = False
-        dVars['bVariableColonFound'] = False
-        dVars['bVariableAssignmentOperatorFound'] = False
-
-        dVars['bSharedVariableKeywordFound'] = False
-        dVars['bSharedVariableColonFound'] = False
-        dVars['bSharedVariableAssignmentOperatorFound'] = False
-
-        dVars['assertion'] = {}
-        dVars['assertion']['keyword'] = False
-        dVars['assertion']['report'] = False
-        dVars['assertion']['severity'] = False
-
-        dVars['bFileKeywordFound'] = False
-        dVars['bFileColonFound'] = False
-        dVars['bFileOpenKeywordFound'] = False
-        dVars['bFileIsKeywordFound'] = False
-
-        dVars['bAttributeKeywordFound'] = False
-        dVars['bAttributeColonFound'] = False
-
-        dVars['bComponentKeywordFound'] = False
-        dVars['bComponentIdentifierFound'] = False
-        dVars['bComponentIsKeywordFound'] = False
-        dVars['bComponentEndKeywordFound'] = False
-
-        dVars['bGenericClauseKeywordFound'] = False
-        dVars['bGenericClauseOpenParenthesisFound'] = False
-        dVars['bGenericClauseCloseParenthesisFound'] = False
-
-        dVars['bPortClauseKeywordFound'] = False
-        dVars['bPortClauseOpenParenthesisFound'] = False
-        dVars['bPortClauseCloseParenthesisFound'] = False
-
-        dVars['bInterfaceSignalDeclarationAssignmentOperatorFound'] = False
-        dVars['bInterfaceSignalDeclarationColonFound'] = False
-
-        dVars['alias_declaration'] = {}
-        dVars['alias_declaration']['keyword'] = False
-        dVars['alias_declaration']['aliasDesignator'] = False
-        dVars['alias_declaration']['colon'] = False
-        dVars['alias_declaration']['isKeyword'] = False
-        dVars['alias_declaration']['name'] = False
-
-        dVars['subtype_declaration'] = {}
-        dVars['subtype_declaration']['keyword'] = False
-        dVars['subtype_declaration']['isKeyword'] = False
-
-        dVars['type_declaration'] = {}
-        dVars['type_declaration']['keyword'] = False
-        dVars['type_declaration']['isKeyword'] = False
-
-        dVars['type_declaration']['enumeration_type_declaration'] = {}
-        dVars['type_declaration']['enumeration_type_declaration']['open_parenthesis'] = False
-
-        dVars['range_constraint'] = {}
-        dVars['range_constraint']['keyword'] = False
-
-        dVars['type_declaration']['array'] = {}
-        dVars['type_declaration']['array']['keyword'] = False
-
-        dVars['type_declaration']['constrained_array_declaration'] = {}
-        dVars['type_declaration']['constrained_array_declaration']['of_keyword'] = False
-
-        dVars['type_declaration']['unbounded_array_declaration'] = {}
-        dVars['type_declaration']['unbounded_array_declaration']['open_parenthesis'] = False
-        dVars['type_declaration']['unbounded_array_declaration']['close_parenthesis'] = False
-
-        dVars['type_declaration']['record_type_definition'] = {}
-        dVars['type_declaration']['record_type_definition']['keyword'] = False
-        dVars['type_declaration']['record_type_definition']['end_keyword'] = False
-        dVars['type_declaration']['record_type_definition']['element_declaration'] = {}
-        dVars['type_declaration']['record_type_definition']['element_declaration']['colon'] = False
-
-        dVars['type_declaration']['access_definition'] = {}
-        dVars['type_declaration']['access_definition']['keyword'] = False
-
-        dVars['type_declaration']['file_type_definition'] = {}
-        dVars['type_declaration']['file_type_definition']['keyword'] = False
-
-        dVars['procedure_specification'] = {}
-        dVars['procedure_specification']['keyword'] = False
-        dVars['procedure_specification']['designator'] = False
-        dVars['procedure_specification']['open_parenthesis'] = False
-        dVars['procedure_specification']['close_parenthesis'] = False
-
-        dVars['function_specification'] = {}
-        dVars['function_specification']['keyword'] = False
-        dVars['function_specification']['designator'] = False
-        dVars['function_specification']['open_parenthesis'] = False
-        dVars['function_specification']['return'] = False
-
-        dVars['subprogram_header'] = {}
-        dVars['subprogram_header']['keyword'] = False
-        dVars['subprogram_header']['open_parenthesis'] = False
-        dVars['subprogram_header']['close_parenthesis'] = False
-
-        dVars['generic_map_aspect'] = {}
-        dVars['generic_map_aspect']['keyword'] = False
-        dVars['generic_map_aspect']['open_parenthesis'] = False
-        dVars['generic_map_aspect']['close_parenthesis'] = False
-
-        dVars['port_map_aspect'] = {}
-        dVars['port_map_aspect']['keyword'] = False
-        dVars['port_map_aspect']['open_parenthesis'] = False
-        dVars['port_map_aspect']['close_parenthesis'] = False
-
-        dVars['conditional_waveforms'] = {}
-        dVars['conditional_waveforms']['when'] = False
-
-        dVars['concurrent_selected_signal_assignment'] = {}
-        dVars['concurrent_selected_signal_assignment']['with'] = False
-        dVars['concurrent_selected_signal_assignment']['select'] = False
-        dVars['concurrent_selected_signal_assignment']['assignment'] = False
-
-        dVars['selected_waveforms'] = {}
-        dVars['selected_waveforms']['when'] = False
-
-        dVars['concurrent_assertion_statement'] = False
-
-        dVars['concurrent_procedure_call_statement'] = False
-
-        dVars['assertion_statement'] = False
-
-        dVars['procedure_call'] = {}
-        dVars['procedure_call']['procedure_name'] = False
-        dVars['procedure_call']['open_parenthesis'] = False
-
-        dVars['process_statement'] = {}
-        dVars['process_statement']['keyword'] = False
-        dVars['process_statement']['open_parenthesis'] = False
-        dVars['process_statement']['close_parenthesis'] = False
-        dVars['process_statement']['begin'] = False
-        dVars['process_statement']['end'] = False
-
-        dVars['block_statement'] = {}
-        dVars['block_statement']['keyword'] = False
-        dVars['block_statement']['is'] = False
-        dVars['block_statement']['begin'] = False
-        dVars['block_statement']['end'] = False
-
-        dVars['for_generate_statement'] = {}
-        dVars['for_generate_statement']['for'] = False
-        dVars['for_generate_statement']['generate'] = False
-        dVars['for_generate_statement']['end'] = False
-    
-        dVars['parameter_specification'] = {}
-        dVars['parameter_specification']['in'] = False
-
-        dVars['generate_statement_body'] = {}
-        dVars['generate_statement_body']['begin'] = False
-        dVars['generate_statement_body']['no_begin'] = False
-
-        dVars['history'] = []
-        dVars['caller'] = ''
-
         oLinePrevious = line.blank_line()
 
         for sLine in self.filecontent:
@@ -276,7 +75,7 @@ class vhdlFile():
             update.inside_attributes(dVars, self.lines[-1], oLine)
 
             classify.blank(oLine) # lTokens
-            classify.whitespace(lTokens, lObjects)
+#            classify.whitespace(lTokens, lObjects)
             classify.comment(dVars, lTokens, lObjects, oLine)
 
 
@@ -289,10 +88,6 @@ class vhdlFile():
 
             classify.port(dVars, oLine)
             classify.generic(dVars, oLine) #lTokens
-
-
-
-
 
             classify.concurrent(dVars, oLine)
             classify.architecture(self, dVars, lTokens, lObjects, oLine)
@@ -364,36 +159,6 @@ class vhdlFile():
     def get_line(self, iLineNumber):
         return self.lines[iLineNumber]
 
-    def get_context_declarations(self):
-        lReturn = []
-        dContext = {}
-        dContext['metadata'] = {}
-        dContext['metadata']['iStartLineNumber'] = 0
-        dContext['metadata']['iEndLineNumber'] = 0
-        dContext['lines'] = []
-        bContextKeywordFound = False
-        bContextColonFound = False
-        for iLine, oLine in enumerate(self.lines):
-            for oObject in oLine.objects:
-                if isinstance(oObject, parser.context_keyword):
-                    bContextKeywordFound = True
-                    dContext['metadata']['iStartLineNumber'] = iLine
-                if isinstance(oObject, parser.context_semicolon):   
-                    bContextColonFound = True
-                    dContext['metadata']['iEndLineNumber'] = iLine
-            if bContextKeywordFound:
-                dContext['lines'].append(oLine)
-            if bContextColonFound:
-                lReturn.append(dContext)
-                dContext = {}
-                dContext['metadata'] = {}
-                dContext['metadata']['iStartLineNumber'] = 0
-                dContext['metadata']['iEndLineNumber'] = 0
-                dContext['lines'] = []
-                bContextKeywordFound = False
-                bContextColonFound = False
-        return lReturn
-  
     def insert_line(self, iLineNumber, oLine):
         self.lines.insert(iLineNumber, oLine)
 
