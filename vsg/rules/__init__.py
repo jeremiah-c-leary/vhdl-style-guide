@@ -12,6 +12,7 @@ from .remove_blank_lines_below_rule import remove_blank_lines_below_rule
 from .remove_spaces_before_character_rule import remove_spaces_before_character_rule
 from .remove_spaces_before_token_rule import remove_spaces_before_token_rule
 from .move_item_next_to_another_item_rule import move_item_next_to_another_item_rule
+from .move_token_next_to_another_token import move_token_next_to_another_token
 from .multiple_spaces_after_rule import multiple_spaces_after_rule
 from .case_item_rule import case_item_rule
 from .token_case import token_case

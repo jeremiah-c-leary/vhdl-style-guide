@@ -337,6 +337,28 @@ class vhdlFile():
 
         return lReturn
 
+    def get_tokens_bounded_by(self, oLeft, oRight):
+        iLine = 1
+        lTemp = []
+        lReturn = []
+        bStore = False
+        for iIndex in range(0, len(self.lAllObjects)):
+            if isinstance(self.lAllObjects[iIndex], oLeft):
+                bStore = True
+                iStart = iIndex
+                iStartLine = iLine
+            if bStore:
+                lTemp.append(self.lAllObjects[iIndex])
+            if isinstance(self.lAllObjects[iIndex], oRight):
+                lReturn.append(Tokens(iStart, iStartLine, lTemp))
+                lTemp = []
+                bStore = False
+
+            if isinstance(self.lAllObjects[iIndex], parser.carriage_return):
+                iLine +=1
+
+        return lReturn
+                    
 
 def _create_empty_return_dictionary():
     dReturn = {}
