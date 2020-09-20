@@ -60,17 +60,6 @@ class testFixRuleArchitectureMethods(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
 
-    def test_fix_rule_006(self):
-        oRule = architecture.rule_006()
-        dExpected = []
-        oRule.fix(oFileIs)
-        oRule.analyze(oFileIs)
-        self.assertEqual(oRule.violations, dExpected)
-        self.assertEqual(oFileIs.lines[2].line, 'architecture RTL of FIFO is')
-        self.assertEqual(oFileIs.lines[3].line, '')
-        self.assertEqual(oFileIs.lines[3].isBlank, True)
-        self.assertEqual(oFileIs.lines[9].line, 'architecture RTL of FIFO is')
-
     def test_fix_rule_007(self):
         oRule = architecture.rule_007()
         dExpected = []

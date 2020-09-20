@@ -1,28 +1,14 @@
 
-from vsg import rule
-from vsg import utils
+from vsg.rules import move_token_next_to_another_token
 
-import re
+from vsg.token import architecture_body as token
 
 
-class rule_006(rule.rule):
+class rule_006(move_token_next_to_another_token):
     '''
-    Architecture rule 006 checks if the "is" keyword is on the same line as the "architecture" keyword.
+    Architecture rule 006 checks the "is" keyword is on the same line as the entity name.
     '''
 
     def __init__(self):
-        rule.rule.__init__(self, 'architecture', '006')
-        self.solution = 'Ensure "is" keyword is on the same line as the "architecture" keyword.'
-        self.phase = 1
-
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isArchitectureKeyword and \
-           re.match('^\s*architecture\s+\w+\s+of\s+\w+', oLine.line, re.IGNORECASE) and \
-           not re.match('^\s*architecture\s+\w+\s+of\s+\w+\s+is', oLine.line, re.IGNORECASE):
-            self.add_violation(utils.create_violation_dict(iLineNumber))
-
-    def _fix_violations(self, oFile):
-        for dViolation in self.violations:
-            oLine = utils.get_violating_line(oFile, dViolation)
-            oLine.update_line(re.sub(r'^(\s*architecture\s+\w+\s+of\s+\w+)', r'\1 is', oLine.line, re.IGNORECASE))
-            utils.search_for_and_remove_keyword(oFile, utils.get_violation_line_number(dViolation), 'is')
+        move_token_next_to_another_token.__init__(self, 'architecture', '006', token.entity_name, token.is_keyword)
+        self.solution = 'Ensure "is" keyword is on the same line as the entity name.'
