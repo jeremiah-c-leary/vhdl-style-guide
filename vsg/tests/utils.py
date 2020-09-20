@@ -77,6 +77,13 @@ def extract_violation_lines(lViolations):
     return lReturn
 
 
+def extract_violation_lines_from_violation_object(lViolations):
+    lReturn = []
+    for oViolation in lViolations:
+        lReturn.append(oViolation.get_line_number())
+    return lReturn
+
+
 def validate_token(self, oFile, lExpected, oToken, bDebug=False):
         lActual = []
         for iLine, lLine in enumerate(oFile.get_lines()):

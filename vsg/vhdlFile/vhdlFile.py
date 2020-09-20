@@ -33,12 +33,13 @@ class vhdlFile():
         self.lines = [line.line('')]
         self.hasArchitecture = False
         self.hasEntity = False
+        self.lAllObjects = []
         self._processFile()
         self.filename = None
 
     def _processFile(self):
 
-        lAllObjects = []
+        self.lAllObjects = []
 
         dVars = {}
         dVars['fFoundProcessBegin'] = False
@@ -134,18 +135,33 @@ class vhdlFile():
             # Add line to file
             self.lines.append(oLine)
 
-            lAllObjects.extend(lObjects)
-            lAllObjects.append(parser.carriage_return())
+            self.lAllObjects.extend(lObjects)
+            self.lAllObjects.append(parser.carriage_return())
 
             oLinePrevious = oLine
             oLine.objects = lObjects
 
-        design_file.tokenize(lAllObjects)
+        design_file.tokenize(self.lAllObjects)
 
-        for iLine, lLine in enumerate(split_on_carriage_return(lAllObjects)):
+        for iLine, lLine in enumerate(split_on_carriage_return(self.lAllObjects)):
             self.lines[iLine + 1].objects = lLine
         self.set_indent_levels()
 
+    def update(self, lUpdates):
+        if len(lUpdates) == 0:
+            return
+        for oUpdate in lUpdates[::-1]:
+#            print(oUpdate)
+            iStart = oUpdate.oTokens.iStartIndex
+            lTokens = oUpdate.get_tokens()
+            iEnd = oUpdate.oTokens.iEndIndex
+            self.lAllObjects[iStart:iEnd] = lTokens
+#        print(self.lAllObjects)
+        for iLine, lLine in enumerate(split_on_carriage_return(self.lAllObjects)):
+#            print(lLine)
+            self.lines[iLine + 1].update_objects(lLine)
+             
+            
 
     def update_filecontent(self):
         self.filecontent = []
@@ -282,6 +298,35 @@ class vhdlFile():
             print(f'{oLine.indentLevel} | {oLine.line}')
         
 
+    def get_sequence_of_tokens_matching(self, lTokens):
+        iLine = 1
+        lTemp = []
+        lReturn = []
+        iMatchCount = 0
+        iMatchLength = len(lTokens)
+        iStart = 0
+        for iIndex in range(0, len(self.lAllObjects)):
+            if isinstance(self.lAllObjects[iIndex], lTokens[iMatchCount]):
+                if iMatchCount == 0:
+                    iStart = iIndex
+                lTemp.append(self.lAllObjects[iIndex])
+                iMatchCount +=1
+                if iMatchCount == iMatchLength:
+                    lReturn.append(Tokens(iStart, iLine, lTemp))
+                    lTemp = []
+                    iMatchCount = 0
+            elif iMatchCount > 0:
+                lTemp = []
+                iMatchCount = 0
+
+            if isinstance(self.lAllObjects[iIndex], parser.carriage_return):
+                iLine +=1
+
+        return lReturn
+            
+
+       
+
 def _create_empty_return_dictionary():
     dReturn = {}
     dReturn['metadata'] = {}
@@ -324,3 +369,22 @@ def split_on_carriage_return(lObjects):
     if len(lMyObjects) > 0:
         lReturn.append(lMyObjects)
     return lReturn
+
+
+class Tokens():
+
+    def __init__(self, iStartIndex, iLine, lTokens):
+
+        self.iStartIndex = iStartIndex
+        self.lTokens = lTokens
+        self.iLine = iLine
+        self.iEndIndex = iStartIndex + len(lTokens)
+
+    def get_tokens(self):
+        return self.lTokens
+
+    def set_tokens(self, lTokens):
+        self.lTokens = lTokens
+
+    def get_line_number(self):
+        return self.iLine

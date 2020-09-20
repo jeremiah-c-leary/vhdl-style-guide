@@ -73,15 +73,20 @@ class rule():
 
         for violation in self.violations:
             check_for_old_violation_format(violation)
-            lKeys = list(violation.keys())
-            if 'lineNumber' in lKeys:
-                sViolation = str(violation['lineNumber'])
+            try:
+                lKeys = list(violation.keys())
+                if 'lineNumber' in lKeys:
+                    sViolation = str(violation['lineNumber'])
+                    self._build_violation_dict(lReturn, sViolation, iLineNumber)
+    
+                elif 'lines' in lKeys:
+                    for dLineViolation in violation['lines']:
+                        sViolation = str(dLineViolation['number'])
+                        self._build_violation_dict(lReturn, sViolation, iLineNumber)
+            except AttributeError:
+                sViolation = str(violation.get_line_number())
                 self._build_violation_dict(lReturn, sViolation, iLineNumber)
 
-            elif 'lines' in lKeys:
-                for dLineViolation in violation['lines']:
-                    sViolation = str(dLineViolation['number'])
-                    self._build_violation_dict(lReturn, sViolation, iLineNumber)
         return lReturn
 
     def fix(self, oFile):

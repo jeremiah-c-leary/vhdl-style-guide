@@ -73,7 +73,7 @@ class carriage_return(item):
 class blank_line(item):
 
     def __init__(self):
-        item.__init__(self, '\n')
+        item.__init__(self, '')
 
 
 class none(item):

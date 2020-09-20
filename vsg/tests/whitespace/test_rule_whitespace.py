@@ -48,23 +48,6 @@ class testRuleWhitespaceMethods(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
 
-    def test_003(self):
-        oRule = whitespace.rule_003()
-        self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'whitespace')
-        self.assertEqual(oRule.identifier, '003')
-        self.assertEqual(oRule.phase, 2)
-
-        dExpected = utils.add_violation_list([2,4,6])
-        self.oFile.lines.append(line.line('  This is a test of tabs;'))
-        self.oFile.lines.append(line.line('  This is a test of tabs ;'))
-        self.oFile.lines.append(line.line('  This is a test of tabs;'))
-        self.oFile.lines.append(line.line('  This is a test of tabs    ;'))
-        self.oFile.lines.append(line.line('  This is a test; of tabs'))
-        self.oFile.lines.append(line.line('  This is a test ; of tabs'))
-        oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, dExpected)
-
     def test_004(self):
         oRule = whitespace.rule_004()
         self.assertTrue(oRule)
