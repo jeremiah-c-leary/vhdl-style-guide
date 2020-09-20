@@ -1,16 +1,12 @@
 
-from vsg.rules import case_rule
-from vsg import utils
+from vsg.rules import token_case
 
+from vsg.token import architecture_body as token
 
-class rule_004(case_rule):
+class rule_004(token_case):
     '''
     Entity rule 004 checks the architecture keyword has proper case.
     '''
 
     def __init__(self):
-        case_rule.__init__(self, 'architecture', '004', 'isArchitectureKeyword')
-        self.solution = 'Change "architecture" keyword to '
-
-    def _extract(self, oLine):
-        return utils.extract_words(oLine, ['architecture'])
+        token_case.__init__(self, 'architecture', '004', token.architecture_keyword)

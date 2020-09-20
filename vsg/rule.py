@@ -56,6 +56,16 @@ class rule():
             dViolation['solution'] = self._get_solution(iLineNumber)
             lReturn.append(dViolation)
 
+    def _build_violation_dict_from_violation_object(self, violation):
+        dViolation = {}
+        dViolation['severity'] = {}
+        dViolation['severity']['name'] = self.severity.name
+        dViolation['severity']['type'] = self.severity.type
+        dViolation['rule'] = self.get_unique_id()
+        dViolation['lineNumber'] = str(violation.get_line_number())
+        dViolation['solution'] = violation.get_solution()
+        return dViolation
+
     def get_unique_id(self):
         return self.name + '_' + self.identifier
 
@@ -84,8 +94,8 @@ class rule():
                         sViolation = str(dLineViolation['number'])
                         self._build_violation_dict(lReturn, sViolation, iLineNumber)
             except AttributeError:
-                sViolation = str(violation.get_line_number())
-                self._build_violation_dict(lReturn, sViolation, iLineNumber)
+                if violation.get_line_number() == iLineNumber:
+                    lReturn.append(self._build_violation_dict_from_violation_object(violation))
 
         return lReturn
 

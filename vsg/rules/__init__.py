@@ -14,6 +14,7 @@ from .remove_spaces_before_token_rule import remove_spaces_before_token_rule
 from .move_item_next_to_another_item_rule import move_item_next_to_another_item_rule
 from .multiple_spaces_after_rule import multiple_spaces_after_rule
 from .case_item_rule import case_item_rule
+from .token_case import token_case
 from .search_for_and_replace_keyword_rule import search_for_and_replace_keyword_rule
 from .case_rule import case_rule
 from .prefix_rule import prefix_rule
