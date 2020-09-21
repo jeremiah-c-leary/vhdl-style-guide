@@ -23,19 +23,6 @@ oFileName = vhdlFile.vhdlFile(lFileName)
 
 class testRuleArchitectureMethods(unittest.TestCase):
 
-    def test_rule_001_exists(self):
-        oRule = architecture.rule_001()
-        self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'architecture')
-        self.assertEqual(oRule.identifier, '001')
-
-    def test_rule_001(self):
-        oRule = architecture.rule_001()
-
-        dExpected = utils.add_violation_list([9,20])
-        oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
-
     def test_rule_002_exists(self):
         oRule = architecture.rule_002()
         self.assertTrue(oRule)

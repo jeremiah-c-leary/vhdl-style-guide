@@ -6,6 +6,7 @@ class New():
       self.iLine = iLine
       self.oTokens = oTokens
       self.sSolution = sSolution
+      self.action = None
 
   def get_tokens(self):
       return self.oTokens.get_tokens()
@@ -21,3 +22,9 @@ class New():
 
   def get_solution(self):
       return self.sSolution
+
+  def set_action(self, sAction):
+      self.action = sAction
+
+  def get_action(self):
+      return self.action

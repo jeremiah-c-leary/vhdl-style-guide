@@ -146,6 +146,7 @@ class vhdlFile():
         for iLine, lLine in enumerate(split_on_carriage_return(self.lAllObjects)):
             self.lines[iLine + 1].objects = lLine
         self.set_indent_levels()
+        self.set_token_indent()
 
     def update(self, lUpdates):
         if len(lUpdates) == 0:
@@ -271,6 +272,14 @@ class vhdlFile():
                 dIndent['level'] = 1
                 oLine.indentLevel = 0
 
+            if _does_line_start_with_item_or_whitespace_and_then_item(oLine, token.architecture_body.begin_keyword):
+                dIndent['level'] = 1
+                oLine.indentLevel = 0
+
+            if _does_line_start_with_item_or_whitespace_and_then_item(oLine, token.architecture_body.end_keyword):
+                dIndent['level'] = 0
+                oLine.indentLevel = 0
+
             if _does_line_start_with_item_or_whitespace_and_then_item(oLine, token.constant_declaration.assignment_operator):
                 if type(oLine.objects[0]) == token.constant_declaration.assignment_operator:
                     if oLine.objects[0].get_value() == '(':
@@ -293,6 +302,64 @@ class vhdlFile():
                     else:
                         oLine.indentLevel = dIndent['level']
 
+    def set_token_indent(self):
+        '''
+        Set the indent level of tokens.
+        '''
+        iIndent = 0
+        bCarriageReturnFound = False
+        iTokenCount = 0
+        for oToken in self.lAllObjects:
+
+
+            if isinstance(oToken, token.context_declaration.context_keyword):
+                oToken.set_indent(0)
+                iIndent += 1 
+
+            if isinstance(oToken, token.context_declaration.end_keyword):
+                oToken.set_indent(0)
+                iIndent -= 1
+
+
+            if isinstance(oToken, token.library_clause.keyword):
+                 oToken.set_indent(iIndent)
+            
+
+            if isinstance(oToken, token.use_clause.keyword):
+                 oToken.set_indent(iIndent + 1)
+            
+
+            if isinstance(oToken, token.context_reference.keyword):
+                 oToken.set_indent(iIndent)
+            
+
+            if isinstance(oToken, token.architecture_body.architecture_keyword):
+                oToken.set_indent(0)
+                iIndent = 1 
+
+            if isinstance(oToken, token.architecture_body.begin_keyword):
+                oToken.set_indent(0)
+                iIndent = 1
+
+            if isinstance(oToken, token.architecture_body.end_keyword):
+                oToken.set_indent(0)
+                iIndent = 0 
+
+#            if bCarriageReturnFound:
+#                iTokenCount += 1
+#                if not isinstance(oToken, parser.whitespace):
+#                    bCarriageReturnFound = False
+#                    iTokenCount = 0
+#                    oToken.set_indent(iIndent)
+#                if iTokenCount == 2:
+#                    iTokenCount = 0
+#                    bCarraigeReturnFound = False
+#            
+#            if isinstance(oToken, parser.carriage_return):
+#                bCarriageReturnFound = True
+
+
+            
     def print_debug(self):
         for oLine in self.lines:
             print(f'{oLine.indentLevel} | {oLine.line}')
@@ -358,7 +425,38 @@ class vhdlFile():
                 iLine +=1
 
         return lReturn
-                    
+
+
+    def get_tokens_at_beginning_of_line_matching(self, lTokens):
+        iLine = 1
+        lTemp = []
+        lReturn = []
+        bStore = False
+        for iIndex in range(0, len(self.lAllObjects)):
+            if bStore:
+                lTemp.append(self.lAllObjects[iIndex])
+                if isinstance(lTemp[0], parser.blank_line):
+                    bStore = False
+                    lTemp = []
+                    continue
+                if not isinstance(self.lAllObjects[iIndex], parser.whitespace):
+                    for oToken in lTokens:
+                        if isinstance(self.lAllObjects[iIndex], oToken):
+                            lReturn.append(Tokens(iStart, iLine, lTemp))
+                            bStore = False
+                            lTemp = []
+                            break
+                    else:
+                        bStore = False
+                        lTemp = []
+
+            if isinstance(self.lAllObjects[iIndex], parser.carriage_return):
+                iLine +=1
+                bStore = True
+                iStart = iIndex + 1
+                
+
+        return lReturn                    
 
 def _create_empty_return_dictionary():
     dReturn = {}

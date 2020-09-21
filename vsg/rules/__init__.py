@@ -3,6 +3,7 @@ from .line_above_rule import line_above_rule
 from .line_below_rule import line_below_rule
 from .keyword_alignment_rule import keyword_alignment_rule
 from .indent_rule import indent_rule
+from .token_indent import token_indent
 from .single_space_after_rule import single_space_after_rule
 from .single_space_after_character_rule import single_space_after_character_rule
 from .single_space_before_rule import single_space_before_rule

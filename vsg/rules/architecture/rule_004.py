@@ -3,6 +3,7 @@ from vsg.rules import token_case
 
 from vsg.token import architecture_body as token
 
+
 class rule_004(token_case):
     '''
     Entity rule 004 checks the architecture keyword has proper case.

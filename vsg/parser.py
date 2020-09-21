@@ -8,6 +8,7 @@ class item():
 
     def __init__(self, sString):
         self.value = sString
+        self.indent = None
 
     def get_value(self):
         return self.value
@@ -17,6 +18,13 @@ class item():
 
     def length(self):
         return len(self.value)
+
+    def set_indent(self, iIndent):
+        self.indent = iIndent
+
+    def get_indent(self):
+        return self.indent
+
 
 class todo(item):
 
