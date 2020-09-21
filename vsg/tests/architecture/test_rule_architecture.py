@@ -49,16 +49,6 @@ class testRuleArchitectureMethods(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
-    def test_rule_009(self):
-        oRule = architecture.rule_009()
-        self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'architecture')
-        self.assertEqual(oRule.identifier, '009')
-        dExpected = [{'lines':[{'number': 7}], 'words_to_fix': {'End'}},
-                     {'lines':[{'number': 24}], 'words_to_fix': {'eND'}}]
-        oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
-
     def test_rule_010(self):
         oRule = architecture.rule_010()
         self.assertTrue(oRule)

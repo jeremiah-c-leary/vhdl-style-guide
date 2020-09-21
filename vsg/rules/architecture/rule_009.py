@@ -1,16 +1,13 @@
 
-from vsg.rules import case_rule
-from vsg import utils
+from vsg.rules import token_case
+
+from vsg.token import architecture_body as token
 
 
-class rule_009(case_rule):
+class rule_009(token_case):
     '''
-    Architecture rule 009 checks the "end" keyword has proper case.
+    Entity rule 009 checks the *end* keyword has proper case.
     '''
 
     def __init__(self):
-        case_rule.__init__(self, 'architecture', '009', 'isEndArchitecture')
-        self.solution = 'Change "end" keyword to '
-
-    def _extract(self, oLine):
-        return utils.extract_words(oLine, ['end'])
+        token_case.__init__(self, 'architecture', '009', token.end_keyword)
