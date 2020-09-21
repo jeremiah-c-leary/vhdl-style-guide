@@ -1,11 +1,13 @@
 
-from vsg.rules import indent_rule
+from vsg.rules import token_indent
+
+from vsg.token import architecture_body as token
 
 
-class rule_007(indent_rule):
+class rule_007(token_indent):
     '''
-    Architecture rule 007 checks for spaces at the beginning of the line for the "begin" keyword.
+    Architecture rule 007 checks the indent of the *begin* keyword.
     '''
 
     def __init__(self):
-        indent_rule.__init__(self, 'architecture', '007', 'isArchitectureBegin')
+        token_indent.__init__(self, 'architecture', '007', [token.begin_keyword])
