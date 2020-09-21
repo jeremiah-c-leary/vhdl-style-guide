@@ -1,11 +1,13 @@
 
-from vsg.rules import indent_rule
+from vsg.rules import token_indent
+
+from vsg.token import architecture_body as token
 
 
-class rule_008(indent_rule):
+class rule_008(token_indent):
     '''
-    Architecture rule 008 checks for spaces at the beginning of the line for the "end architecture" keywords.
+    Architecture rule 008 checks the indent of the *begin* keyword.
     '''
 
     def __init__(self):
-        indent_rule.__init__(self, 'architecture', '008', 'isEndArchitecture')
+        token_indent.__init__(self, 'architecture', '008', [token.end_keyword])
