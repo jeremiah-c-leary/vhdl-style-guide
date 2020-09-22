@@ -203,13 +203,3 @@ class testRuleArchitectureMethods(unittest.TestCase):
                       'max_keyword_column': 35, 'max_before_keyword_column': 25}]
         oRule.analyze(oFileComment)
         self.assertEqual(oRule.violations, dExpected)
-
-    def test_rule_028(self):
-        oRule = architecture.rule_028()
-        self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'architecture')
-        self.assertEqual(oRule.identifier, '028')
-        dExpected = [{'lines':[{'number': 13}], 'words_to_fix': {'Architecture'}},
-                     {'lines':[{'number': 31}], 'words_to_fix': {'archITecture'}}]
-        oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
