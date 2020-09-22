@@ -1,16 +1,19 @@
 
 from vsg import line
-from vsg.vhdlFile import update
-from vsg.vhdlFile import classify
-from vsg.vhdlFile.classify import entity
-
 from vsg import parser
 from vsg import token
+
+from vsg.vhdlFile import classify
+from vsg.vhdlFile import update
+from vsg.vhdlFile import utils
+
+from vsg.vhdlFile.classify import entity
 
 from vsg.vhdlFile.classify_new import blank
 from vsg.vhdlFile.classify_new import comment
 from vsg.vhdlFile.classify_new import design_file
 from vsg.vhdlFile.classify_new import whitespace
+
 
 
 class vhdlFile():
@@ -149,6 +152,7 @@ class vhdlFile():
         self.set_token_indent()
 
     def update(self, lUpdates):
+#        print('--> Update' + 80*'-')
         if len(lUpdates) == 0:
             return
         for oUpdate in lUpdates[::-1]:
@@ -160,7 +164,12 @@ class vhdlFile():
 #        print(self.lAllObjects)
         for iLine, lLine in enumerate(split_on_carriage_return(self.lAllObjects)):
 #            print(lLine)
-            self.lines[iLine + 1].update_objects(lLine)
+            try:
+                self.lines[iLine + 1].update_objects(lLine)
+            except IndexError:
+                oLine = line.line(' ')
+                oLine.update_objects(lLine)
+                self.lines.append(oLine)
              
             
 
@@ -457,6 +466,34 @@ class vhdlFile():
                 
 
         return lReturn                    
+
+    def get_line_above_line_starting_with_token(self, lTokens):
+        lReturn = []
+        iLine = 1
+        lPreviousLine = []
+        iPrevious = 0
+        lCurrentLine = []
+        iCurrent = 0
+        for iIndex in range(0, len(self.lAllObjects)):
+
+            if isinstance(self.lAllObjects[iIndex], parser.carriage_return):
+                iLine +=1
+                lPreviousLine = lCurrentLine.copy()
+                iPrevious = iCurrent
+                lCurrentLine = []
+                iCurrent = iIndex + 1
+                for oToken in lTokens:
+                    if utils.are_next_consecutive_token_types([parser.whitespace, oToken], iCurrent, self.lAllObjects):
+                        lReturn.append(Tokens(iPrevious, iLine, lPreviousLine))
+                        break
+                    if utils.are_next_consecutive_token_types([oToken], iCurrent, self.lAllObjects):
+                        lReturn.append(Tokens(iPrevious, iLine, lPreviousLine))
+                        break
+            else:
+                lCurrentLine.append(self.lAllObjects[iIndex])
+
+        return lReturn                    
+
 
 def _create_empty_return_dictionary():
     dReturn = {}

@@ -214,7 +214,6 @@ end entity SPI_MASTER;
 -- this architecture is a pipelined register-transfer description.
 -- all signals are clocked at the rising edge of the system clock 'sclk_i'.
 --================================================================================================================
-
 architecture RTL of SPI_MASTER is
 
   -- core clocks, generated from 'sclk_i': initialized at GSR to differential values

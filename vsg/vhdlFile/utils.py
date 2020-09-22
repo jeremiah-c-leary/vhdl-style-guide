@@ -173,15 +173,18 @@ def are_next_consecutive_token_types(lTypes, iToken, lObjects):
     iMaxTokenCount = len(lTypes)
     iTokenCount = 0
     iCurrent = iToken
-    while iTokenCount < iMaxTokenCount:
-        iCurrent = find_next_token(iCurrent, lObjects)
-        if not lTypes[iTokenCount] is None:
-            if not isinstance(lObjects[iCurrent], lTypes[iTokenCount]):
-                return False
-        iCurrent += 1
-        iTokenCount += 1
-    else:
-        return True
+    try:
+        while iTokenCount < iMaxTokenCount:
+            iCurrent = find_next_token(iCurrent, lObjects)
+            if not lTypes[iTokenCount] is None:
+                if not isinstance(lObjects[iCurrent], lTypes[iTokenCount]):
+                    return False
+            iCurrent += 1
+            iTokenCount += 1
+        else:
+            return True
+    except IndexError:
+        return False
 
 
 def find_in_next_n_tokens(sValue, iMax, iToken, lObjects):

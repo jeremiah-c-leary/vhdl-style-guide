@@ -1,12 +1,13 @@
 
-from vsg.rules import line_above_rule
+from vsg.rules import blank_line_above_line_starting_with_token
+
+from vsg.token import architecture_body as token
 
 
-class rule_003(line_above_rule):
+class rule_003(blank_line_above_line_starting_with_token):
     '''
-    Architecture rule 003 checks for a blank line above the architecture
-    keyword.
+    Architecture rule 003 checks for a blank line above the architecture keyword.
     '''
 
     def __init__(self):
-        line_above_rule.__init__(self, 'architecture', '003', 'isArchitectureKeyword')
+        blank_line_above_line_starting_with_token.__init__(self, 'architecture', '003', [token.architecture_keyword])
