@@ -1,17 +1,13 @@
 
+from vsg.rules import token_case
 
-from vsg.rules import case_rule
-from vsg import utils
+from vsg.token import architecture_body as token
 
 
-class rule_011(case_rule):
+class rule_011(token_case):
     '''
-    Architecture rule 011 checks the architecture name case on the closing "end architecture" line.
+    Entity rule 011 checks the architecture simple name has proper case.
     '''
 
     def __init__(self):
-        case_rule.__init__(self, 'architecture', '011', 'isEndArchitecture')
-        self.solution = 'Change architecture name to '
-
-    def _extract(self, oLine):
-        return utils.extract_architecture_identifier(oLine)
+        token_case.__init__(self, 'architecture', '011', token.architecture_simple_name)
