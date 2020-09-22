@@ -66,33 +66,6 @@ class testRuleArchitectureMethods(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
-    def test_rule_013_uppercase(self):
-        oRule = architecture.rule_013()
-        oRule.case = 'upper'
-        self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'architecture')
-        self.assertEqual(oRule.identifier, '013')
-        dExpected = [{'lines':[{'number': 3}], 'words_to_fix': {'Arch'}},
-                     {'lines':[{'number': 20}], 'words_to_fix': {'ARch'}},
-                     {'lines':[{'number': 26}], 'words_to_fix': {'ARch'}}]
-        oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
-
-    def test_rule_013_lowercase(self):
-        oRule = architecture.rule_013()
-        dExpected = [{'lines':[{'number': 3}], 'words_to_fix': {'Arch'}},
-                     {'lines':[{'number': 9}], 'words_to_fix': {'ARCH'}},
-                     {'lines':[{'number': 14}], 'words_to_fix': {'ARCH'}},
-                     {'lines':[{'number': 20}], 'words_to_fix': {'ARch'}},
-                     {'lines':[{'number': 26}], 'words_to_fix': {'ARch'}},
-                     {'lines':[{'number': 33}], 'words_to_fix': {'ARCH'}},
-                     {'lines':[{'number': 37}], 'words_to_fix': {'ARCH'}},
-                     {'lines':[{'number': 47}], 'words_to_fix': {'ARCH'}},
-                     {'lines':[{'number': 59}], 'words_to_fix': {'ARCH'}},
-                     {'lines':[{'number': 81}], 'words_to_fix': {'ARCH'}}]
-        oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
-
     def test_rule_014_uppercase(self):
         oRule = architecture.rule_014()
         oRule.case = 'upper'

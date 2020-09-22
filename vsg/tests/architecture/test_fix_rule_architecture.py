@@ -95,33 +95,6 @@ class testFixRuleArchitectureMethods(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
 
-    def test_fix_rule_013_uppercase(self):
-        oRule = architecture.rule_013()
-        oRule.case = 'upper'
-        dExpected = []
-        oRule.fix(self.oFile)
-
-        self.assertEqual(self.oFile.lines[3].line, 'architecture ARCH of ENTITY is')
-        self.assertEqual(self.oFile.lines[20].line, ' Architecture ARCH Of entity Is')
-
-        self.assertEqual('Change architecture name to uppercase.', oRule._get_solution(3))
-
-        oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, dExpected)
-
-    def test_fix_rule_013_lowercase(self):
-        oRule = architecture.rule_013()
-        dExpected = []
-        oRule.fix(self.oFile)
-
-        self.assertEqual(self.oFile.lines[3].line, 'architecture arch of ENTITY is')
-        self.assertEqual(self.oFile.lines[20].line, ' Architecture arch Of entity Is')
-
-        self.assertEqual('Change architecture name to lowercase.', oRule._get_solution(3))
-
-        oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, dExpected)
-
     def test_fix_rule_014_uppercase(self):
         oRule = architecture.rule_014()
         oRule.case = 'upper'
