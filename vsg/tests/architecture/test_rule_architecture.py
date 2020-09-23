@@ -36,15 +36,6 @@ class testRuleArchitectureMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'architecture')
         self.assertEqual(oRule.identifier, '003')
 
-    def test_rule_016(self):
-        oRule = architecture.rule_016()
-        self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'architecture')
-        self.assertEqual(oRule.identifier, '016')
-        dExpected = [utils.add_violation(34)]
-        oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
-
     def test_rule_017(self):
         oRule = architecture.rule_017()
         self.assertTrue(oRule)
