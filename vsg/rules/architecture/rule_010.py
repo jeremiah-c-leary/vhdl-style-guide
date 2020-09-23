@@ -1,28 +1,12 @@
 
-from vsg import rule
-from vsg import utils
+from vsg.rules import insert_token_right_of_token_if_it_does_not_exist
 
-import re
+from vsg.token import architecture_body as token
 
-
-class rule_010(rule.rule):
+class rule_010(insert_token_right_of_token_if_it_does_not_exist):
     '''
     Architecture rule 010 checks for "architecture" in the "end architecture statement.
     '''
-
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'architecture'
-        self.identifier = '010'
-        self.solution = 'Add "architecture" keyword after "end" keyword.'
-        self.phase = 1
-
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isEndArchitecture:
-            if not re.match('^\s*end\s+architecture', oLine.line, re.IGNORECASE):
-                self.add_violation(utils.create_violation_dict(iLineNumber))
-
-    def _fix_violations(self, oFile):
-        for dViolation in self.violations:
-            oLine = utils.get_violating_line(oFile, dViolation)
-            oLine.update_line(re.sub(r'^(\s*end)', r'\1 architecture', oLine.line, flags=re.IGNORECASE))
+        insert_token_right_of_token_if_it_does_not_exist.__init__(self, 'architecture', '010', token.end_architecture_keyword('architecture'), token.end_keyword)
+        self.solution = 'Add *architecture* keyword.'

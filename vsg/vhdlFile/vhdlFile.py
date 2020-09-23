@@ -494,6 +494,36 @@ class vhdlFile():
 
         return lReturn                    
 
+    def get_sequence_of_tokens_not_matching(self, lTokens):
+        iLine = 1
+        lTemp = []
+        lReturn = []
+        iMatchCount = 0
+        iMatchLength = len(lTokens)
+        iStart = 0
+        iEnd = len(lTokens)
+        for iIndex in range(0, len(self.lAllObjects)):
+            if iMatchCount != 0:
+                if type(self.lAllObjects[iIndex]) == lTokens[iMatchCount]:
+                    iMatchCount += 1
+                else:
+                    lReturn.append(Tokens(iStart, iLine, lTemp))
+                    lTemp = []
+                    iMatchCount = 0
+                if iMatchCount == iEnd:
+                    lTemp = []
+                    iMatchCount = 0
+            if iMatchCount == 0:
+                if isinstance(self.lAllObjects[iIndex], lTokens[0]):
+                    iStart = iIndex
+                    lTemp.append(self.lAllObjects[iIndex])
+                    iMatchCount += 1
+
+            if isinstance(self.lAllObjects[iIndex], parser.carriage_return):
+                iLine +=1
+
+        return lReturn
+
 
 def _create_empty_return_dictionary():
     dReturn = {}

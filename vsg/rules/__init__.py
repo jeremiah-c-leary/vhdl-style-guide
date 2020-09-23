@@ -35,6 +35,7 @@ from .remove_blank_lines_above_item_rule import remove_blank_lines_above_item_ru
 from .indent_item_rule import indent_item_rule
 from .move_item_next_to_one_of_several_items_rule import move_item_next_to_one_of_several_items_rule
 from .blank_line_above_line_starting_with_token import blank_line_above_line_starting_with_token
+from .insert_token_right_of_token_if_it_does_not_exist import insert_token_right_of_token_if_it_does_not_exist 
 
 from vsg.rules import after
 from vsg.rules import architecture

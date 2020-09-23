@@ -7,12 +7,6 @@ from vsg.tests import utils
 
 # Read in test file used for all tests
 
-lFileRule010 = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'architecture_test_input.vhd'))
-oFileRule010 = vhdlFile.vhdlFile(lFileRule010)
-
-lFileIs = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'architecture_is_test_input.vhd'))
-oFileIs = vhdlFile.vhdlFile(lFileIs)
-
 lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'architecture_test_input.vhd'))
 
 class testFixRuleArchitectureMethods(unittest.TestCase):
@@ -79,13 +73,6 @@ class testFixRuleArchitectureMethods(unittest.TestCase):
         dExpected = []
         oRule.fix(self.oFile)
         oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, dExpected)
-
-    def test_fix_rule_010(self):
-        oRule = architecture.rule_010()
-        dExpected = []
-        oRule.fix(oFileRule010)
-        oRule.analyze(oFileRule010)
         self.assertEqual(oRule.violations, dExpected)
 
     def test_fix_rule_012(self):
