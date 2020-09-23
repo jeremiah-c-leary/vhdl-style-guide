@@ -101,13 +101,6 @@ class testFixRuleArchitectureMethods(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
 
-    def test_fix_rule_015(self):
-        oRule = architecture.rule_015()
-        dExpected = []
-        oRule.fix(self.oFile)
-        oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, dExpected)
-
     def test_fix_rule_016(self):
         oRule = architecture.rule_016()
         dExpected = []

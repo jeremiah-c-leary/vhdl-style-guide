@@ -38,6 +38,8 @@ from .blank_line_above_line_starting_with_token import blank_line_above_line_sta
 from .insert_token_right_of_token_if_it_does_not_exist import insert_token_right_of_token_if_it_does_not_exist 
 from .single_space_between_tokens import single_space_between_tokens
 
+from .blank_line_below_line_ending_with_token import blank_line_below_line_ending_with_token
+
 from vsg.rules import after
 from vsg.rules import architecture
 from vsg.rules import assert_statement
