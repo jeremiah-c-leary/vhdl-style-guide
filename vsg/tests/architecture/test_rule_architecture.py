@@ -12,12 +12,6 @@ oFile = vhdlFile.vhdlFile(lFile)
 lFileComment = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','architecture','architecture_comment_test_input.vhd'))
 oFileComment = vhdlFile.vhdlFile(lFileComment)
 
-lFileIs = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'architecture_is_test_input.vhd'))
-oFileIs = vhdlFile.vhdlFile(lFileIs)
-
-lFileEnd = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'architecture_end_test_input.vhd'))
-oFileEnd = vhdlFile.vhdlFile(lFileEnd)
-
 lFileName = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'architecture_name_test_input.vhd'))
 oFileName = vhdlFile.vhdlFile(lFileName)
 
@@ -41,15 +35,6 @@ class testRuleArchitectureMethods(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'architecture')
         self.assertEqual(oRule.identifier, '003')
-
-    def test_rule_012(self):
-        oRule = architecture.rule_012()
-        self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'architecture')
-        self.assertEqual(oRule.identifier, '012')
-        dExpected = utils.add_violation_list([7,18])
-        oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
 
     def test_rule_015(self):
         oRule = architecture.rule_015()
