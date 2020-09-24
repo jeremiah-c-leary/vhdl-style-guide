@@ -1,39 +1,14 @@
 
-from vsg import rule
-from vsg import utils
+from vsg.rules import insert_token_left_of_token_if_it_does_not_exist_between_tokens_using_value_from_token
 
-import re
+from vsg.token import architecture_body as token
 
 
-class rule_024(rule.rule):
+class rule_024(insert_token_left_of_token_if_it_does_not_exist_between_tokens_using_value_from_token):
     '''
-    Architecture rule 024 checks for the architecture name in the "end architecture" statement.
+    Architecture rule 024 checks for the architecture simple name in the "end architecture" statement.
     '''
 
     def __init__(self):
-        rule.rule.__init__(self, 'architecture', '024')
-        self.solution = 'Add architecture name keyword.'
-        self.phase = 1
-
-    def _pre_analyze(self):
-        self.sLabel = ""
-
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isArchitectureKeyword:
-            self.sLabel = oLine.line.split()[1]
-        if oLine.isEndArchitecture and not re.match('^\s*end\s+architecture\s+\w+', oLine.line, re.IGNORECASE):
-            if re.match('^\s*end\s+architecture', oLine.line, re.IGNORECASE):
-                dViolation = utils.create_violation_dict(iLineNumber)
-                dViolation['label'] = self.sLabel
-                self.add_violation(dViolation)
-            elif not re.match('^\s*end\s+\w+', oLine.line, re.IGNORECASE):
-                dViolation = utils.create_violation_dict(iLineNumber)
-                dViolation['label'] = self.sLabel
-                self.add_violation(dViolation)
-
-    def _fix_violations(self, oFile):
-        for dViolation in self.violations:
-            oLine = utils.get_violating_line(oFile, dViolation)
-            sLine = oLine.line
-            sLabel = dViolation['label'] 
-            oLine.update_line(sLine.replace(';', ' ' + sLabel.upper() + ';', 1))
+        insert_token_left_of_token_if_it_does_not_exist_between_tokens_using_value_from_token.__init__(self, 'architecture', '024', token.architecture_simple_name, token.semicolon, token.end_keyword, token.semicolon, token.identifier)
+        self.solution = 'Add architecture_simple_name'

@@ -28,3 +28,6 @@ class New():
 
   def get_action(self):
       return self.action
+
+  def get_token_value(self):
+      return self.oTokens.get_token_value()
