@@ -4,6 +4,8 @@ from vsg import parser
 from vsg import rule_item
 from vsg import violation
 
+from vsg.vhdlFile import utils
+
 
 class align_tokens_in_region_between_tokens(rule_item.Rule):
     '''
@@ -94,6 +96,33 @@ class align_tokens_in_region_between_tokens(rule_item.Rule):
                    iColumn = 0
                    bTokenFound = False
                    iToken = -1
+                   if self.comment_line_ends_group:
+                       if utils.are_next_consecutive_token_types([parser.whitespace, parser.comment], iIndex + 1, lTokens) or \
+                          utils.are_next_consecutive_token_types([parser.comment], iIndex + 1, lTokens):
+                           add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
+
+                           for iKey in list(dAnalysis.keys()):
+                               if dAnalysis[iKey]['adjust'] != 0:
+                                   oLineTokens = oFile.get_tokens_from_line(iKey)
+                                   oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, self.solution)
+                                   oViolation.set_action(dAnalysis[iKey])
+                                   self.violations.append(oViolation)
+
+                           dAnalysis = {}
+                   if self.blank_line_ends_group:
+                       if utils.are_next_consecutive_token_types([parser.blank_line], iIndex + 1, lTokens):
+                           add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
+
+                           for iKey in list(dAnalysis.keys()):
+                               if dAnalysis[iKey]['adjust'] != 0:
+                                   oLineTokens = oFile.get_tokens_from_line(iKey)
+                                   oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, self.solution)
+                                   oViolation.set_action(dAnalysis[iKey])
+                                   self.violations.append(oViolation)
+
+                           dAnalysis = {}
+                       
+                       
 
             add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
 
