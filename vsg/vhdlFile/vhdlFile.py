@@ -601,6 +601,25 @@ class vhdlFile():
 
         return lReturn
 
+    def get_tokens_from_line(self, iLineNumber):
+        iLine = 1
+        lTemp = []
+        iStart = 0
+        bStore = False
+        for iIndex in range(0, len(self.lAllObjects)):
+
+            if bStore:
+                lTemp.append(self.lAllObjects[iIndex])
+
+            if isinstance(self.lAllObjects[iIndex], parser.carriage_return):
+                iLine +=1
+                if iLine == iLineNumber:
+                    bStore = True
+                    iStart = iIndex + 1
+                if iLine == iLineNumber + 1:
+                    return(Tokens(iStart, iLineNumber, lTemp))
+
+
 def _create_empty_return_dictionary():
     dReturn = {}
     dReturn['metadata'] = {}

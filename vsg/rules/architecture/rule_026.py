@@ -1,17 +1,14 @@
 
-from vsg.rules import keyword_alignment_rule
+from vsg.rules import align_tokens_in_region_between_tokens
+
+from vsg import token
 
 
-class rule_026(keyword_alignment_rule):
+class rule_026(align_tokens_in_region_between_tokens):
     '''
-    Architecture rule 026 checks the colons are in the same column for all declarations
-    in the architecture declarative part.
+    Architecture rule 025 checks for valid architecture names.
     '''
 
     def __init__(self):
-        keyword_alignment_rule.__init__(self, 'architecture', '026')
-        self.sKeyword = ':'
-        self.sStartGroupTrigger = 'isArchitectureKeyword'
-        self.sEndGroupTrigger = 'isArchitectureBegin'
-        self.lLineTriggers = ['isConstant', 'isSignal', 'insideFile']
+        align_tokens_in_region_between_tokens.__init__(self, 'architecture', '026', [token.file_declaration.colon, token.signal_declaration.colon, token.constant_declaration.colon, token.variable_declaration.colon], token.architecture_body.is_keyword, token.architecture_body.begin_keyword)
         self.solution = 'Align colon with right most colon.'
