@@ -44,3 +44,31 @@ class test_architecture_rule(unittest.TestCase):
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
+
+    def test_rule_026_allowing_comments_and_blank_lines_without_condensed(self):
+        oRule = architecture.rule_026()
+        oRule.compact_alignment = False
+
+        lExpected = [4, 5, 6, 7, 9, 10, 11, 12, 14, 16, 17, 19, 20, 21, 22]
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+
+    def test_fix_rule_026_allowing_comments_and_blank_lines_without_condensed(self):
+        oRule = architecture.rule_026()
+        oRule.compact_alignment = False
+
+        oRule.fix(self.oFile)
+
+        lActual = []
+        for oLine in self.oFile.lines:
+            lActual.append(oLine.line)
+
+        lExpected = []
+        lExpected.append('')
+        utils.read_file(os.path.join(sTestDir, 'rule_026_test_input.fixed_allowing_comments_and_blank_lines_without_condensed.vhd'), lExpected)
+
+        self.assertEqual(lExpected, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])

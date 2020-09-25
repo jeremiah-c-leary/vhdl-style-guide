@@ -95,7 +95,7 @@ class align_tokens_in_region_between_tokens(rule_item.Rule):
                    bTokenFound = False
                    iToken = -1
 
-            add_adjustments_to_dAnalysis(dAnalysis)
+            add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
 
 
             for iKey in list(dAnalysis.keys()):
@@ -131,7 +131,7 @@ class align_tokens_in_region_between_tokens(rule_item.Rule):
         oFile.update(self.violations)
 
 
-def add_adjustments_to_dAnalysis(dAnalysis):
+def add_adjustments_to_dAnalysis(dAnalysis, compact_alignment):
     iMaxLeftColumn = 0
     iMinLeftColumn = 9999999999999999
     iMaxTokenColumn = 0
@@ -143,5 +143,9 @@ def add_adjustments_to_dAnalysis(dAnalysis):
         iMaxTokenColumn = max(iMaxTokenColumn, dAnalysis[iKey]['token_column'])
         iMinTokenColumn = min(iMinTokenColumn, dAnalysis[iKey]['token_column'])
 
-    for iKey in list(dAnalysis.keys()):
-        dAnalysis[iKey]['adjust'] = iMaxLeftColumn - dAnalysis[iKey]['token_column'] + 1
+    if compact_alignment:
+        for iKey in list(dAnalysis.keys()):
+            dAnalysis[iKey]['adjust'] = iMaxLeftColumn - dAnalysis[iKey]['token_column'] + 1
+    else:
+        for iKey in list(dAnalysis.keys()):
+            dAnalysis[iKey]['adjust'] = iMaxTokenColumn - dAnalysis[iKey]['token_column']
