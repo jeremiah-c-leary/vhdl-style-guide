@@ -75,7 +75,7 @@
 <class 'vsg.token.generic_clause.open_parenthesis'>
 --------------------------------------------------------------------------------
 19 |       G_GEN1 : integer := 1;
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_unknown_declaration.assignment'>
@@ -83,7 +83,7 @@
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 20 |       G_GEN2 : integer := 0
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_unknown_declaration.assignment'>
@@ -115,7 +115,7 @@
 <class 'vsg.token.port_clause.open_parenthesis'>
 --------------------------------------------------------------------------------
 27 |       I_PORT : in integer := 1;
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -124,7 +124,7 @@
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 28 |       O_PORT : out integer := 0
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.mode.out_keyword'>
 <class 'vsg.parser.todo'>
@@ -157,7 +157,7 @@
 <class 'vsg.token.generic_clause.open_parenthesis'>
 --------------------------------------------------------------------------------
 35 |       G_GEN1 : integer := 1;
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_unknown_declaration.assignment'>
@@ -165,7 +165,7 @@
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 36 |       G_GEN2 : integer := 0
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_unknown_declaration.assignment'>
@@ -180,7 +180,7 @@
 <class 'vsg.token.port_clause.open_parenthesis'>
 --------------------------------------------------------------------------------
 39 |       I_PORT : in integer := 1;
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -189,7 +189,7 @@
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 40 |       O_PORT : out integer := 0
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.mode.out_keyword'>
 <class 'vsg.parser.todo'>

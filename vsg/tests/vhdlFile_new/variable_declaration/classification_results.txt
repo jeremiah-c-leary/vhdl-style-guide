@@ -13,7 +13,7 @@
 --------------------------------------------------------------------------------
 3 |   variable INDEX: integer range 0 to 99 := 0;
 <class 'vsg.token.variable_declaration.variable_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.variable_declaration.identifier'>
 <class 'vsg.token.variable_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.todo'>
@@ -29,7 +29,7 @@
 --------------------------------------------------------------------------------
 5 |   variable COUNT: POSITIVE;
 <class 'vsg.token.variable_declaration.variable_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.variable_declaration.identifier'>
 <class 'vsg.token.variable_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.variable_declaration.semicolon'>
@@ -39,7 +39,7 @@
 --------------------------------------------------------------------------------
 7 |   variable MEMORY: BIT_MATRIX (0 to 7, 0 to 1023);
 <class 'vsg.token.variable_declaration.variable_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.variable_declaration.identifier'>
 <class 'vsg.token.variable_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.todo'>
@@ -59,7 +59,7 @@
 9 |   shared variable Counter: SharedCounter;
 <class 'vsg.token.variable_declaration.shared_keyword'>
 <class 'vsg.token.variable_declaration.variable_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.variable_declaration.identifier'>
 <class 'vsg.token.variable_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.variable_declaration.semicolon'>
@@ -70,11 +70,11 @@
 11 |   shared variable addend, augend, result: ComplexNumber;
 <class 'vsg.token.variable_declaration.shared_keyword'>
 <class 'vsg.token.variable_declaration.variable_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.variable_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.variable_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.variable_declaration.identifier'>
 <class 'vsg.token.variable_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.variable_declaration.semicolon'>
@@ -84,7 +84,7 @@
 --------------------------------------------------------------------------------
 13 |   variable bit_stack: VariableSizeBitArray := "0000";
 <class 'vsg.token.variable_declaration.variable_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.variable_declaration.identifier'>
 <class 'vsg.token.variable_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.variable_declaration.assignment_operator'>

@@ -26,7 +26,7 @@ def detect(iToken, lObjects):
 
 def classify(iToken, lObjects):
 
-    iCurrent = identifier_list.classify_until([':'], iToken, lObjects)
+    iCurrent = identifier_list.classify_until([':'], iToken, lObjects, token.identifier)
 
     iCurrent = utils.assign_next_token_required(':', token.colon, iCurrent, lObjects)
 

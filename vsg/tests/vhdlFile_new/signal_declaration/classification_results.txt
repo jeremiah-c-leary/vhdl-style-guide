@@ -16,7 +16,7 @@
 --------------------------------------------------------------------------------
 4 |   signal fifo_wr : std_logic;
 <class 'vsg.token.signal_declaration.signal_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.signal_declaration.identifier'>
 <class 'vsg.token.signal_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.signal_declaration.semicolon'>
@@ -26,7 +26,7 @@
 --------------------------------------------------------------------------------
 6 |   signal fifo_wr : std_logic_vector(3 downto 0);
 <class 'vsg.token.signal_declaration.signal_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.signal_declaration.identifier'>
 <class 'vsg.token.signal_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.todo'>
@@ -41,7 +41,7 @@
 --------------------------------------------------------------------------------
 8 |   signal fifo_wr : std_logic_vector(3 downto 0) := "000";
 <class 'vsg.token.signal_declaration.signal_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.signal_declaration.identifier'>
 <class 'vsg.token.signal_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.todo'>
@@ -58,11 +58,11 @@
 --------------------------------------------------------------------------------
 10 |   signal fifo_wr, fifo_rd, fifo_empty : std_logic := '1';
 <class 'vsg.token.signal_declaration.signal_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.signal_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.signal_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.signal_declaration.identifier'>
 <class 'vsg.token.signal_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.signal_declaration.assignment_operator'>

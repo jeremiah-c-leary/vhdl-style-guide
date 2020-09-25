@@ -13,7 +13,7 @@
 --------------------------------------------------------------------------------
 3 |   file F1 : IntegerFile;
 <class 'vsg.token.file_declaration.file_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.file_declaration.identifier'>
 <class 'vsg.token.file_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.file_declaration.semicolon'>
@@ -23,7 +23,7 @@
 --------------------------------------------------------------------------------
 5 |   file F2 : IntegerFile is "test.dat";
 <class 'vsg.token.file_declaration.file_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.file_declaration.identifier'>
 <class 'vsg.token.file_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.file_open_information.is_keyword'>
@@ -35,7 +35,7 @@
 --------------------------------------------------------------------------------
 7 |   file F3 : IntegerFile open WRITE_MODEW is "test.dat";
 <class 'vsg.token.file_declaration.file_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.file_declaration.identifier'>
 <class 'vsg.token.file_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.file_open_information.open_keyword'>
@@ -49,11 +49,11 @@
 --------------------------------------------------------------------------------
 9 |   file F1, F2, F3 : IntegerFile open WRITE_MODEW is "test.dat";
 <class 'vsg.token.file_declaration.file_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.file_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.file_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.file_declaration.identifier'>
 <class 'vsg.token.file_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.file_open_information.open_keyword'>

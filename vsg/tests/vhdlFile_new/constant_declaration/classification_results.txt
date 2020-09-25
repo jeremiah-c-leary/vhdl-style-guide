@@ -16,7 +16,7 @@
 --------------------------------------------------------------------------------
 4 |   constant StartDay : WeekDay := Sat;
 <class 'vsg.token.constant_declaration.constant_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.constant_declaration.identifier'>
 <class 'vsg.token.constant_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.constant_declaration.assignment_operator'>
@@ -28,7 +28,7 @@
 --------------------------------------------------------------------------------
 6 |   constant LogicalGND : Bit := '0';
 <class 'vsg.token.constant_declaration.constant_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.constant_declaration.identifier'>
 <class 'vsg.token.constant_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.constant_declaration.assignment_operator'>
@@ -40,9 +40,9 @@
 --------------------------------------------------------------------------------
 8 |   constant BusWidth, QueueLength : Integer := 16;
 <class 'vsg.token.constant_declaration.constant_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.constant_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.constant_declaration.identifier'>
 <class 'vsg.token.constant_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.constant_declaration.assignment_operator'>
@@ -54,7 +54,7 @@
 --------------------------------------------------------------------------------
 10 |   constant CLKPeriod : Time := 15 ns;
 <class 'vsg.token.constant_declaration.constant_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.constant_declaration.identifier'>
 <class 'vsg.token.constant_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.constant_declaration.assignment_operator'>
@@ -67,7 +67,7 @@
 --------------------------------------------------------------------------------
 12 |   constant MaxSimTime : Time := 200 * CLKPeriod;
 <class 'vsg.token.constant_declaration.constant_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.constant_declaration.identifier'>
 <class 'vsg.token.constant_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.constant_declaration.assignment_operator'>
@@ -81,7 +81,7 @@
 --------------------------------------------------------------------------------
 14 |   constant EntryCode : NumericCodeType := (2,6,4,8,0,0,1,3);
 <class 'vsg.token.constant_declaration.constant_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.constant_declaration.identifier'>
 <class 'vsg.token.constant_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.constant_declaration.assignment_operator'>
@@ -109,7 +109,7 @@
 --------------------------------------------------------------------------------
 16 |   constant DataBusReset: Std_Logic_Vector(7 downto 0) := "00000000";
 <class 'vsg.token.constant_declaration.constant_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.constant_declaration.identifier'>
 <class 'vsg.token.constant_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.todo'>

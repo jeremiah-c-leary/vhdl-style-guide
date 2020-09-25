@@ -27,7 +27,7 @@ def classify(iToken, lObjects):
     iCurrent = utils.assign_next_token_if('shared', token.shared_keyword, iToken, lObjects)
     iCurrent = utils.assign_next_token_required('variable', token.variable_keyword, iCurrent, lObjects)
 
-    iCurrent = identifier_list.classify_until([':'], iCurrent, lObjects)
+    iCurrent = identifier_list.classify_until([':'], iCurrent, lObjects, token.identifier)
 
     iCurrent = utils.assign_next_token_required(':', token.colon, iCurrent, lObjects)
 

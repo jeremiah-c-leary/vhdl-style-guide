@@ -24,9 +24,9 @@
 --------------------------------------------------------------------------------
 7 |     constant con1, con2 : in std_logic := 0;
 <class 'vsg.token.interface_constant_declaration.constant_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_constant_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_constant_declaration.identifier'>
 <class 'vsg.token.interface_constant_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -36,9 +36,9 @@
 --------------------------------------------------------------------------------
 8 |     constant con1, con2 : std_logic := 0;
 <class 'vsg.token.interface_constant_declaration.constant_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_constant_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_constant_declaration.identifier'>
 <class 'vsg.token.interface_constant_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_constant_declaration.assignment'>
@@ -47,9 +47,9 @@
 --------------------------------------------------------------------------------
 9 |     constant con1, con2 : in std_logic;
 <class 'vsg.token.interface_constant_declaration.constant_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_constant_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_constant_declaration.identifier'>
 <class 'vsg.token.interface_constant_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -57,9 +57,9 @@
 --------------------------------------------------------------------------------
 10 |     constant con1, con2 : std_logic;
 <class 'vsg.token.interface_constant_declaration.constant_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_constant_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_constant_declaration.identifier'>
 <class 'vsg.token.interface_constant_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
@@ -72,9 +72,9 @@
 --------------------------------------------------------------------------------
 13 |     signal sig1, sig2 : in      std_logic bus := 0;
 <class 'vsg.token.interface_signal_declaration.signal_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -85,9 +85,9 @@
 --------------------------------------------------------------------------------
 14 |     signal sig1, sig2 : out     std_logic bus := 0;
 <class 'vsg.token.interface_signal_declaration.signal_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.out_keyword'>
 <class 'vsg.parser.todo'>
@@ -98,9 +98,9 @@
 --------------------------------------------------------------------------------
 15 |     signal sig1, sig2 : inout   std_logic bus := 0;
 <class 'vsg.token.interface_signal_declaration.signal_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.inout_keyword'>
 <class 'vsg.parser.todo'>
@@ -111,9 +111,9 @@
 --------------------------------------------------------------------------------
 16 |     signal sig1, sig2 : buffer  std_logic bus := 0;
 <class 'vsg.token.interface_signal_declaration.signal_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.inout_keyword'>
 <class 'vsg.parser.todo'>
@@ -124,9 +124,9 @@
 --------------------------------------------------------------------------------
 17 |     signal sig1, sig2 : linkage std_logic bus := 0;
 <class 'vsg.token.interface_signal_declaration.signal_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.inout_keyword'>
 <class 'vsg.parser.todo'>
@@ -140,9 +140,9 @@
 --------------------------------------------------------------------------------
 19 |     signal sig1, sig2 : in      std_logic bus;
 <class 'vsg.token.interface_signal_declaration.signal_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -151,9 +151,9 @@
 --------------------------------------------------------------------------------
 20 |     signal sig1, sig2 : out     std_logic bus;
 <class 'vsg.token.interface_signal_declaration.signal_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.out_keyword'>
 <class 'vsg.parser.todo'>
@@ -162,9 +162,9 @@
 --------------------------------------------------------------------------------
 21 |     signal sig1, sig2 : inout   std_logic bus;
 <class 'vsg.token.interface_signal_declaration.signal_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.inout_keyword'>
 <class 'vsg.parser.todo'>
@@ -173,9 +173,9 @@
 --------------------------------------------------------------------------------
 22 |     signal sig1, sig2 : buffer  std_logic bus;
 <class 'vsg.token.interface_signal_declaration.signal_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.inout_keyword'>
 <class 'vsg.parser.todo'>
@@ -184,9 +184,9 @@
 --------------------------------------------------------------------------------
 23 |     signal sig1, sig2 : linkage std_logic bus;
 <class 'vsg.token.interface_signal_declaration.signal_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.inout_keyword'>
 <class 'vsg.parser.todo'>
@@ -198,9 +198,9 @@
 --------------------------------------------------------------------------------
 25 |     signal sig1, sig2 : std_logic bus := 0;
 <class 'vsg.token.interface_signal_declaration.signal_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_signal_declaration.bus_keyword'>
@@ -210,9 +210,9 @@
 --------------------------------------------------------------------------------
 26 |     signal sig1, sig2 : std_logic bus := 0;
 <class 'vsg.token.interface_signal_declaration.signal_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_signal_declaration.bus_keyword'>
@@ -222,9 +222,9 @@
 --------------------------------------------------------------------------------
 27 |     signal sig1, sig2 : std_logic bus := 0;
 <class 'vsg.token.interface_signal_declaration.signal_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_signal_declaration.bus_keyword'>
@@ -234,9 +234,9 @@
 --------------------------------------------------------------------------------
 28 |     signal sig1, sig2 : std_logic bus := 0;
 <class 'vsg.token.interface_signal_declaration.signal_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_signal_declaration.bus_keyword'>
@@ -246,9 +246,9 @@
 --------------------------------------------------------------------------------
 29 |     signal sig1, sig2 : std_logic bus := 0;
 <class 'vsg.token.interface_signal_declaration.signal_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_signal_declaration.bus_keyword'>
@@ -261,9 +261,9 @@
 --------------------------------------------------------------------------------
 31 |     signal sig1, sig2 : std_logic := 0;
 <class 'vsg.token.interface_signal_declaration.signal_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_signal_declaration.assignment'>
@@ -272,9 +272,9 @@
 --------------------------------------------------------------------------------
 32 |     signal sig1, sig2 : std_logic := 0;
 <class 'vsg.token.interface_signal_declaration.signal_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_signal_declaration.assignment'>
@@ -283,9 +283,9 @@
 --------------------------------------------------------------------------------
 33 |     signal sig1, sig2 : std_logic := 0;
 <class 'vsg.token.interface_signal_declaration.signal_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_signal_declaration.assignment'>
@@ -294,9 +294,9 @@
 --------------------------------------------------------------------------------
 34 |     signal sig1, sig2 : std_logic := 0;
 <class 'vsg.token.interface_signal_declaration.signal_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_signal_declaration.assignment'>
@@ -305,9 +305,9 @@
 --------------------------------------------------------------------------------
 35 |     signal sig1, sig2 : std_logic := 0;
 <class 'vsg.token.interface_signal_declaration.signal_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_signal_declaration.assignment'>
@@ -319,45 +319,45 @@
 --------------------------------------------------------------------------------
 37 |     signal sig1, sig2 : std_logic;
 <class 'vsg.token.interface_signal_declaration.signal_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 38 |     signal sig1, sig2 : std_logic;
 <class 'vsg.token.interface_signal_declaration.signal_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 39 |     signal sig1, sig2 : std_logic;
 <class 'vsg.token.interface_signal_declaration.signal_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 40 |     signal sig1, sig2 : std_logic;
 <class 'vsg.token.interface_signal_declaration.signal_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 41 |     signal sig1, sig2 : std_logic;
 <class 'vsg.token.interface_signal_declaration.signal_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
@@ -370,9 +370,9 @@
 --------------------------------------------------------------------------------
 44 |     variable sig1, sig2 : in      std_logic := 0;
 <class 'vsg.token.interface_variable_declaration.variable_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.interface_variable_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -382,9 +382,9 @@
 --------------------------------------------------------------------------------
 45 |     variable sig1, sig2 : out     std_logic := 0;
 <class 'vsg.token.interface_variable_declaration.variable_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.interface_variable_declaration.colon'>
 <class 'vsg.token.mode.out_keyword'>
 <class 'vsg.parser.todo'>
@@ -394,9 +394,9 @@
 --------------------------------------------------------------------------------
 46 |     variable sig1, sig2 : inout   std_logic := 0;
 <class 'vsg.token.interface_variable_declaration.variable_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.interface_variable_declaration.colon'>
 <class 'vsg.token.mode.inout_keyword'>
 <class 'vsg.parser.todo'>
@@ -406,9 +406,9 @@
 --------------------------------------------------------------------------------
 47 |     variable sig1, sig2 : buffer  std_logic := 0;
 <class 'vsg.token.interface_variable_declaration.variable_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.interface_variable_declaration.colon'>
 <class 'vsg.token.mode.inout_keyword'>
 <class 'vsg.parser.todo'>
@@ -418,9 +418,9 @@
 --------------------------------------------------------------------------------
 48 |     variable sig1, sig2 : linkage std_logic := 0;
 <class 'vsg.token.interface_variable_declaration.variable_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.interface_variable_declaration.colon'>
 <class 'vsg.token.mode.inout_keyword'>
 <class 'vsg.parser.todo'>
@@ -433,9 +433,9 @@
 --------------------------------------------------------------------------------
 50 |     variable sig1, sig2 : in      std_logic ;
 <class 'vsg.token.interface_variable_declaration.variable_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.interface_variable_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -443,9 +443,9 @@
 --------------------------------------------------------------------------------
 51 |     variable sig1, sig2 : out     std_logic ;
 <class 'vsg.token.interface_variable_declaration.variable_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.interface_variable_declaration.colon'>
 <class 'vsg.token.mode.out_keyword'>
 <class 'vsg.parser.todo'>
@@ -453,9 +453,9 @@
 --------------------------------------------------------------------------------
 52 |     variable sig1, sig2 : inout   std_logic ;
 <class 'vsg.token.interface_variable_declaration.variable_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.interface_variable_declaration.colon'>
 <class 'vsg.token.mode.inout_keyword'>
 <class 'vsg.parser.todo'>
@@ -463,9 +463,9 @@
 --------------------------------------------------------------------------------
 53 |     variable sig1, sig2 : buffer  std_logic ;
 <class 'vsg.token.interface_variable_declaration.variable_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.interface_variable_declaration.colon'>
 <class 'vsg.token.mode.inout_keyword'>
 <class 'vsg.parser.todo'>
@@ -473,9 +473,9 @@
 --------------------------------------------------------------------------------
 54 |     variable sig1, sig2 : linkage std_logic ;
 <class 'vsg.token.interface_variable_declaration.variable_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.interface_variable_declaration.colon'>
 <class 'vsg.token.mode.inout_keyword'>
 <class 'vsg.parser.todo'>
@@ -486,9 +486,9 @@
 --------------------------------------------------------------------------------
 56 |     variable sig1, sig2 : std_logic := 0;
 <class 'vsg.token.interface_variable_declaration.variable_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.interface_variable_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_variable_declaration.assignment'>
@@ -497,9 +497,9 @@
 --------------------------------------------------------------------------------
 57 |     variable sig1, sig2 : std_logic := 0;
 <class 'vsg.token.interface_variable_declaration.variable_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.interface_variable_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_variable_declaration.assignment'>
@@ -508,9 +508,9 @@
 --------------------------------------------------------------------------------
 58 |     variable sig1, sig2 : std_logic := 0;
 <class 'vsg.token.interface_variable_declaration.variable_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.interface_variable_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_variable_declaration.assignment'>
@@ -519,9 +519,9 @@
 --------------------------------------------------------------------------------
 59 |     variable sig1, sig2 : std_logic := 0;
 <class 'vsg.token.interface_variable_declaration.variable_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.interface_variable_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_variable_declaration.assignment'>
@@ -530,9 +530,9 @@
 --------------------------------------------------------------------------------
 60 |     variable sig1, sig2 : std_logic := 0;
 <class 'vsg.token.interface_variable_declaration.variable_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.interface_variable_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_variable_declaration.assignment'>
@@ -544,45 +544,45 @@
 --------------------------------------------------------------------------------
 62 |     variable sig1, sig2 : std_logic;
 <class 'vsg.token.interface_variable_declaration.variable_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.interface_variable_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 63 |     variable sig1, sig2 : std_logic;
 <class 'vsg.token.interface_variable_declaration.variable_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.interface_variable_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 64 |     variable sig1, sig2 : std_logic;
 <class 'vsg.token.interface_variable_declaration.variable_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.interface_variable_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 65 |     variable sig1, sig2 : std_logic;
 <class 'vsg.token.interface_variable_declaration.variable_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.interface_variable_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 66 |     variable sig1, sig2 : std_logic;
 <class 'vsg.token.interface_variable_declaration.variable_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.interface_variable_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
@@ -594,9 +594,9 @@
 <class 'vsg.parser.comment'>
 --------------------------------------------------------------------------------
 69 |     sig1, sig2 : in      std_logic bus := 0;
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -606,9 +606,9 @@
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 70 |     sig1, sig2 : out     std_logic bus := 0;
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.mode.out_keyword'>
 <class 'vsg.parser.todo'>
@@ -618,9 +618,9 @@
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 71 |     sig1, sig2 : inout   std_logic bus := 0;
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.mode.inout_keyword'>
 <class 'vsg.parser.todo'>
@@ -630,9 +630,9 @@
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 72 |     sig1, sig2 : buffer  std_logic bus := 0;
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.mode.inout_keyword'>
 <class 'vsg.parser.todo'>
@@ -642,9 +642,9 @@
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 73 |     sig1, sig2 : linkage std_logic bus := 0;
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.mode.inout_keyword'>
 <class 'vsg.parser.todo'>
@@ -657,9 +657,9 @@
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 75 |     sig1, sig2 : in      std_logic bus;
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -667,9 +667,9 @@
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 76 |     sig1, sig2 : out     std_logic bus;
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.mode.out_keyword'>
 <class 'vsg.parser.todo'>
@@ -677,9 +677,9 @@
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 77 |     sig1, sig2 : inout   std_logic bus;
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.mode.inout_keyword'>
 <class 'vsg.parser.todo'>
@@ -687,9 +687,9 @@
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 78 |     sig1, sig2 : buffer  std_logic bus;
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.mode.inout_keyword'>
 <class 'vsg.parser.todo'>
@@ -697,9 +697,9 @@
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 79 |     sig1, sig2 : linkage std_logic bus;
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.mode.inout_keyword'>
 <class 'vsg.parser.todo'>
@@ -710,9 +710,9 @@
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 81 |     sig1, sig2 : std_logic bus := 0;
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_unknown_declaration.bus_keyword'>
@@ -721,9 +721,9 @@
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 82 |     sig1, sig2 : std_logic bus := 0;
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_unknown_declaration.bus_keyword'>
@@ -732,9 +732,9 @@
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 83 |     sig1, sig2 : std_logic bus := 0;
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_unknown_declaration.bus_keyword'>
@@ -743,9 +743,9 @@
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 84 |     sig1, sig2 : std_logic bus := 0;
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_unknown_declaration.bus_keyword'>
@@ -754,9 +754,9 @@
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 85 |     sig1, sig2 : std_logic bus := 0;
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_unknown_declaration.bus_keyword'>
@@ -768,9 +768,9 @@
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 87 |     sig1, sig2 : std_logic := 0;
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_unknown_declaration.assignment'>
@@ -778,9 +778,9 @@
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 88 |     sig1, sig2 : std_logic := 0;
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_unknown_declaration.assignment'>
@@ -788,9 +788,9 @@
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 89 |     sig1, sig2 : std_logic := 0;
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_unknown_declaration.assignment'>
@@ -798,9 +798,9 @@
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 90 |     sig1, sig2 : std_logic := 0;
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_unknown_declaration.assignment'>
@@ -808,9 +808,9 @@
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 91 |     sig1, sig2 : std_logic := 0;
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_unknown_declaration.assignment'>
@@ -821,41 +821,41 @@
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 93 |     sig1, sig2 : std_logic;
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 94 |     sig1, sig2 : std_logic;
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 95 |     sig1, sig2 : std_logic;
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 96 |     sig1, sig2 : std_logic;
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 97 |     sig1, sig2 : std_logic;
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
@@ -868,18 +868,18 @@
 --------------------------------------------------------------------------------
 100 |     file fil1, fil2 : std_logic;
 <class 'vsg.token.interface_file_declaration.file_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_file_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_file_declaration.identifier'>
 <class 'vsg.token.interface_file_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 101 |     file fil1, fil2 : std_logic;
 <class 'vsg.token.interface_file_declaration.file_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_file_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_file_declaration.identifier'>
 <class 'vsg.token.interface_file_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
@@ -914,9 +914,9 @@
 --------------------------------------------------------------------------------
 109 |       signal sig1, sig2 : in      std_logic bus := 0;
 <class 'vsg.token.interface_signal_declaration.signal_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -927,9 +927,9 @@
 --------------------------------------------------------------------------------
 110 |       constant con1, con2 : in std_logic := 0;
 <class 'vsg.token.interface_constant_declaration.constant_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_constant_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_constant_declaration.identifier'>
 <class 'vsg.token.interface_constant_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -939,9 +939,9 @@
 --------------------------------------------------------------------------------
 111 |       variable sig1, sig2 : in      std_logic := 0;
 <class 'vsg.token.interface_variable_declaration.variable_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.interface_variable_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -950,9 +950,9 @@
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 112 |       sig1, sig2 : in      std_logic bus := 0;
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -963,9 +963,9 @@
 --------------------------------------------------------------------------------
 113 |       file fil1, fil2 : std_logic;
 <class 'vsg.token.interface_file_declaration.file_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_file_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_file_declaration.identifier'>
 <class 'vsg.token.interface_file_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
@@ -989,9 +989,9 @@
 --------------------------------------------------------------------------------
 117 |       signal sig1, sig2 : in      std_logic bus := 0;
 <class 'vsg.token.interface_signal_declaration.signal_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -1002,9 +1002,9 @@
 --------------------------------------------------------------------------------
 118 |       constant con1, con2 : in std_logic := 0;
 <class 'vsg.token.interface_constant_declaration.constant_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_constant_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_constant_declaration.identifier'>
 <class 'vsg.token.interface_constant_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -1014,9 +1014,9 @@
 --------------------------------------------------------------------------------
 119 |       variable sig1, sig2 : in      std_logic := 0;
 <class 'vsg.token.interface_variable_declaration.variable_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.interface_variable_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -1025,9 +1025,9 @@
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 120 |       sig1, sig2 : in      std_logic bus := 0;
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -1038,9 +1038,9 @@
 --------------------------------------------------------------------------------
 121 |       file fil1, fil2 : std_logic;
 <class 'vsg.token.interface_file_declaration.file_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_file_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_file_declaration.identifier'>
 <class 'vsg.token.interface_file_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
@@ -1063,9 +1063,9 @@
 --------------------------------------------------------------------------------
 125 |       signal sig1, sig2 : in      std_logic bus := 0;
 <class 'vsg.token.interface_signal_declaration.signal_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -1076,9 +1076,9 @@
 --------------------------------------------------------------------------------
 126 |       constant con1, con2 : in std_logic := 0;
 <class 'vsg.token.interface_constant_declaration.constant_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_constant_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_constant_declaration.identifier'>
 <class 'vsg.token.interface_constant_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -1088,9 +1088,9 @@
 --------------------------------------------------------------------------------
 127 |       variable sig1, sig2 : in      std_logic := 0;
 <class 'vsg.token.interface_variable_declaration.variable_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.interface_variable_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -1099,9 +1099,9 @@
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 128 |       sig1, sig2 : in      std_logic bus := 0;
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -1112,9 +1112,9 @@
 --------------------------------------------------------------------------------
 129 |       file fil1, fil2 : std_logic;
 <class 'vsg.token.interface_file_declaration.file_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_file_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_file_declaration.identifier'>
 <class 'vsg.token.interface_file_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
@@ -1137,9 +1137,9 @@
 --------------------------------------------------------------------------------
 133 |       signal sig1, sig2 : in      std_logic bus := 0;
 <class 'vsg.token.interface_signal_declaration.signal_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -1150,9 +1150,9 @@
 --------------------------------------------------------------------------------
 134 |       constant con1, con2 : in std_logic := 0;
 <class 'vsg.token.interface_constant_declaration.constant_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_constant_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_constant_declaration.identifier'>
 <class 'vsg.token.interface_constant_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -1162,9 +1162,9 @@
 --------------------------------------------------------------------------------
 135 |       variable sig1, sig2 : in      std_logic := 0;
 <class 'vsg.token.interface_variable_declaration.variable_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.interface_variable_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -1173,9 +1173,9 @@
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 136 |       sig1, sig2 : in      std_logic bus := 0;
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -1186,9 +1186,9 @@
 --------------------------------------------------------------------------------
 137 |       file fil1, fil2 : std_logic;
 <class 'vsg.token.interface_file_declaration.file_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_file_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_file_declaration.identifier'>
 <class 'vsg.token.interface_file_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
@@ -1244,9 +1244,9 @@
 --------------------------------------------------------------------------------
 148 |       signal sig1, sig2 : in      std_logic bus := 0;
 <class 'vsg.token.interface_signal_declaration.signal_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -1257,9 +1257,9 @@
 --------------------------------------------------------------------------------
 149 |       constant con1, con2 : in std_logic := 0;
 <class 'vsg.token.interface_constant_declaration.constant_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_constant_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_constant_declaration.identifier'>
 <class 'vsg.token.interface_constant_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -1269,9 +1269,9 @@
 --------------------------------------------------------------------------------
 150 |       variable sig1, sig2 : in      std_logic := 0;
 <class 'vsg.token.interface_variable_declaration.variable_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.interface_variable_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -1280,9 +1280,9 @@
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 151 |       sig1, sig2 : in      std_logic bus := 0;
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -1293,9 +1293,9 @@
 --------------------------------------------------------------------------------
 152 |       file fil1, fil2 : std_logic;
 <class 'vsg.token.interface_file_declaration.file_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_file_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_file_declaration.identifier'>
 <class 'vsg.token.interface_file_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
@@ -1322,9 +1322,9 @@
 --------------------------------------------------------------------------------
 156 |       signal sig1, sig2 : in      std_logic bus := 0;
 <class 'vsg.token.interface_signal_declaration.signal_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -1335,9 +1335,9 @@
 --------------------------------------------------------------------------------
 157 |       constant con1, con2 : in std_logic := 0;
 <class 'vsg.token.interface_constant_declaration.constant_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_constant_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_constant_declaration.identifier'>
 <class 'vsg.token.interface_constant_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -1347,9 +1347,9 @@
 --------------------------------------------------------------------------------
 158 |       variable sig1, sig2 : in      std_logic := 0;
 <class 'vsg.token.interface_variable_declaration.variable_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.interface_variable_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -1358,9 +1358,9 @@
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 159 |       sig1, sig2 : in      std_logic bus := 0;
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -1371,9 +1371,9 @@
 --------------------------------------------------------------------------------
 160 |       file fil1, fil2 : std_logic;
 <class 'vsg.token.interface_file_declaration.file_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_file_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_file_declaration.identifier'>
 <class 'vsg.token.interface_file_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
@@ -1400,9 +1400,9 @@
 --------------------------------------------------------------------------------
 164 |       signal sig1, sig2 : in      std_logic bus := 0;
 <class 'vsg.token.interface_signal_declaration.signal_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -1413,9 +1413,9 @@
 --------------------------------------------------------------------------------
 165 |       constant con1, con2 : in std_logic := 0;
 <class 'vsg.token.interface_constant_declaration.constant_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_constant_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_constant_declaration.identifier'>
 <class 'vsg.token.interface_constant_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -1425,9 +1425,9 @@
 --------------------------------------------------------------------------------
 166 |       variable sig1, sig2 : in      std_logic := 0;
 <class 'vsg.token.interface_variable_declaration.variable_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.interface_variable_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -1436,9 +1436,9 @@
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 167 |       sig1, sig2 : in      std_logic bus := 0;
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -1449,9 +1449,9 @@
 --------------------------------------------------------------------------------
 168 |       file fil1, fil2 : std_logic;
 <class 'vsg.token.interface_file_declaration.file_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_file_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_file_declaration.identifier'>
 <class 'vsg.token.interface_file_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
@@ -1478,9 +1478,9 @@
 --------------------------------------------------------------------------------
 172 |       signal sig1, sig2 : in      std_logic bus := 0;
 <class 'vsg.token.interface_signal_declaration.signal_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -1491,9 +1491,9 @@
 --------------------------------------------------------------------------------
 173 |       constant con1, con2 : in std_logic := 0;
 <class 'vsg.token.interface_constant_declaration.constant_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_constant_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_constant_declaration.identifier'>
 <class 'vsg.token.interface_constant_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -1503,9 +1503,9 @@
 --------------------------------------------------------------------------------
 174 |       variable sig1, sig2 : in      std_logic := 0;
 <class 'vsg.token.interface_variable_declaration.variable_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.interface_variable_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -1514,9 +1514,9 @@
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 175 |       sig1, sig2 : in      std_logic bus := 0;
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -1527,9 +1527,9 @@
 --------------------------------------------------------------------------------
 176 |       file fil1, fil2 : std_logic;
 <class 'vsg.token.interface_file_declaration.file_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_file_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_file_declaration.identifier'>
 <class 'vsg.token.interface_file_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
@@ -1558,9 +1558,9 @@
 --------------------------------------------------------------------------------
 181 |       signal sig1, sig2 : in      std_logic bus := 0;
 <class 'vsg.token.interface_signal_declaration.signal_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -1571,9 +1571,9 @@
 --------------------------------------------------------------------------------
 182 |       constant con1, con2 : in std_logic := 0;
 <class 'vsg.token.interface_constant_declaration.constant_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_constant_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_constant_declaration.identifier'>
 <class 'vsg.token.interface_constant_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -1583,9 +1583,9 @@
 --------------------------------------------------------------------------------
 183 |       variable sig1, sig2 : in      std_logic := 0;
 <class 'vsg.token.interface_variable_declaration.variable_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.interface_variable_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -1594,9 +1594,9 @@
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 184 |       sig1, sig2 : in      std_logic bus := 0;
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -1607,9 +1607,9 @@
 --------------------------------------------------------------------------------
 185 |       file fil1, fil2 : std_logic;
 <class 'vsg.token.interface_file_declaration.file_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_file_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_file_declaration.identifier'>
 <class 'vsg.token.interface_file_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
@@ -1635,9 +1635,9 @@
 --------------------------------------------------------------------------------
 189 |       signal sig1, sig2 : in      std_logic bus := 0;
 <class 'vsg.token.interface_signal_declaration.signal_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -1648,9 +1648,9 @@
 --------------------------------------------------------------------------------
 190 |       constant con1, con2 : in std_logic := 0;
 <class 'vsg.token.interface_constant_declaration.constant_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_constant_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_constant_declaration.identifier'>
 <class 'vsg.token.interface_constant_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -1660,9 +1660,9 @@
 --------------------------------------------------------------------------------
 191 |       variable sig1, sig2 : in      std_logic := 0;
 <class 'vsg.token.interface_variable_declaration.variable_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.interface_variable_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -1671,9 +1671,9 @@
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 192 |       sig1, sig2 : in      std_logic bus := 0;
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -1684,9 +1684,9 @@
 --------------------------------------------------------------------------------
 193 |       file fil1, fil2 : std_logic;
 <class 'vsg.token.interface_file_declaration.file_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_file_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_file_declaration.identifier'>
 <class 'vsg.token.interface_file_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
@@ -1712,9 +1712,9 @@
 --------------------------------------------------------------------------------
 197 |       signal sig1, sig2 : in      std_logic bus := 0;
 <class 'vsg.token.interface_signal_declaration.signal_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -1725,9 +1725,9 @@
 --------------------------------------------------------------------------------
 198 |       constant con1, con2 : in std_logic := 0;
 <class 'vsg.token.interface_constant_declaration.constant_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_constant_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_constant_declaration.identifier'>
 <class 'vsg.token.interface_constant_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -1737,9 +1737,9 @@
 --------------------------------------------------------------------------------
 199 |       variable sig1, sig2 : in      std_logic := 0;
 <class 'vsg.token.interface_variable_declaration.variable_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.interface_variable_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -1748,9 +1748,9 @@
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 200 |       sig1, sig2 : in      std_logic bus := 0;
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -1761,9 +1761,9 @@
 --------------------------------------------------------------------------------
 201 |       file fil1, fil2 : std_logic;
 <class 'vsg.token.interface_file_declaration.file_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_file_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_file_declaration.identifier'>
 <class 'vsg.token.interface_file_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
@@ -1789,9 +1789,9 @@
 --------------------------------------------------------------------------------
 205 |       signal sig1, sig2 : in      std_logic bus := 0;
 <class 'vsg.token.interface_signal_declaration.signal_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -1802,9 +1802,9 @@
 --------------------------------------------------------------------------------
 206 |       constant con1, con2 : in std_logic := 0;
 <class 'vsg.token.interface_constant_declaration.constant_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_constant_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_constant_declaration.identifier'>
 <class 'vsg.token.interface_constant_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -1814,9 +1814,9 @@
 --------------------------------------------------------------------------------
 207 |       variable sig1, sig2 : in      std_logic := 0;
 <class 'vsg.token.interface_variable_declaration.variable_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.interface_variable_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -1825,9 +1825,9 @@
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 208 |       sig1, sig2 : in      std_logic bus := 0;
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
@@ -1838,9 +1838,9 @@
 --------------------------------------------------------------------------------
 209 |       file fil1, fil2 : std_logic;
 <class 'vsg.token.interface_file_declaration.file_keyword'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_file_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_file_declaration.identifier'>
 <class 'vsg.token.interface_file_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>

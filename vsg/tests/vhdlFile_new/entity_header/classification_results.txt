@@ -17,7 +17,7 @@
 <class 'vsg.token.generic_clause.open_parenthesis'>
 --------------------------------------------------------------------------------
 5 |     A : std_logic := 0;
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_unknown_declaration.assignment'>
@@ -25,9 +25,9 @@
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 6 |     B, C : std_logic := '0';
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_unknown_declaration.assignment'>
@@ -35,7 +35,7 @@
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 7 |     D : integer
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.parser.todo'>
 --------------------------------------------------------------------------------
@@ -48,32 +48,32 @@
 <class 'vsg.token.port_clause.open_parenthesis'>
 --------------------------------------------------------------------------------
 10 |     A : in std_logic;
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 11 |     B : out std_logic;
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.mode.out_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 12 |     C : inout std_logic;
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.mode.inout_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 13 |     X, Y, Z : buffer integer
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.mode.inout_keyword'>
 <class 'vsg.parser.todo'>
@@ -107,7 +107,7 @@
 <class 'vsg.token.generic_clause.open_parenthesis'>
 --------------------------------------------------------------------------------
 21 |     A : std_logic := 0;
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_unknown_declaration.assignment'>
@@ -115,9 +115,9 @@
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 22 |     B, C : std_logic := '0';
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_unknown_declaration.assignment'>
@@ -125,7 +125,7 @@
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 23 |     D : integer
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.parser.todo'>
 --------------------------------------------------------------------------------
@@ -158,32 +158,32 @@
 <class 'vsg.token.port_clause.open_parenthesis'>
 --------------------------------------------------------------------------------
 31 |     A : in std_logic;
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 32 |     B : out std_logic;
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.mode.out_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 33 |     C : inout std_logic;
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.mode.inout_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 34 |     X, Y, Z : buffer integer
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.identifier_list.comma'>
-<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.mode.inout_keyword'>
 <class 'vsg.parser.todo'>
