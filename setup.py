@@ -38,7 +38,7 @@ setup(
   tests_require=['nose'],
   keywords=['vhdl', 'style', 'beautify', 'guide', 'lint'],
   install_requires=[
-    'PyYAML'
+    'PyYAML>=5.1'
   ],
   entry_points={
     'console_scripts': [
