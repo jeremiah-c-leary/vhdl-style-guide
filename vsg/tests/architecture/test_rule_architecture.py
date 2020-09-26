@@ -34,17 +34,3 @@ class testRuleArchitectureMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'architecture')
         self.assertEqual(oRule.identifier, '003')
 
-    def test_rule_027(self):
-        self.maxDiff = None
-        oRule = architecture.rule_027()
-        self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'architecture')
-        self.assertEqual(oRule.identifier, '027')
-        dExpected = [{'lines': [{'number': 4, 'keyword_column': 34, 'before_keyword_column': 25},
-                                {'number': 5, 'keyword_column': 30, 'before_keyword_column': 25},
-                                {'number': 6, 'keyword_column': 28, 'before_keyword_column': 25},
-                                {'number': 7, 'keyword_column': 35, 'before_keyword_column': 25},
-                                {'number': 8, 'keyword_column': 27, 'before_keyword_column': 25}],
-                      'max_keyword_column': 35, 'max_before_keyword_column': 25}]
-        oRule.analyze(oFileComment)
-        self.assertEqual(oRule.violations, dExpected)
