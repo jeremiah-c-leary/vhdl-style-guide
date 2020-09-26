@@ -24,7 +24,7 @@ def classify(iToken, lObjects):
 
     iCurrent = utils.assign_next_token_required('subtype', token.subtype_keyword, iToken, lObjects)
 
-    iCurrent = identifier.classify(iCurrent, lObjects)
+    iCurrent = identifier.classify(iCurrent, lObjects, token.identifier)
 
     iCurrent = utils.assign_next_token_required('is', token.is_keyword, iCurrent,lObjects)
 

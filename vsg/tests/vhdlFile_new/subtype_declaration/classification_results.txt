@@ -19,7 +19,7 @@
 --------------------------------------------------------------------------------
 5 |   subtype DIGITS is INTEGER range 0 to 9;
 <class 'vsg.token.subtype_declaration.subtype_keyword'>
-<class 'vsg.token.identifier.identifier'>
+<class 'vsg.token.subtype_declaration.identifier'>
 <class 'vsg.token.subtype_declaration.is_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.todo'>
@@ -33,7 +33,7 @@
 --------------------------------------------------------------------------------
 7 |   subtype BIT_NEW is RESOLVE_VALUE BIT;
 <class 'vsg.token.subtype_declaration.subtype_keyword'>
-<class 'vsg.token.identifier.identifier'>
+<class 'vsg.token.subtype_declaration.identifier'>
 <class 'vsg.token.subtype_declaration.is_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.todo'>
@@ -47,7 +47,7 @@
 --------------------------------------------------------------------------------
 10 |   subtype MY_STD_LOGIC is Resolved Std_ulogic;
 <class 'vsg.token.subtype_declaration.subtype_keyword'>
-<class 'vsg.token.identifier.identifier'>
+<class 'vsg.token.subtype_declaration.identifier'>
 <class 'vsg.token.subtype_declaration.is_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.todo'>
@@ -61,7 +61,7 @@
 --------------------------------------------------------------------------------
 13 |   subtype MyBit is STD_LOGIC range '0' to '1';
 <class 'vsg.token.subtype_declaration.subtype_keyword'>
-<class 'vsg.token.identifier.identifier'>
+<class 'vsg.token.subtype_declaration.identifier'>
 <class 'vsg.token.subtype_declaration.is_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.todo'>
@@ -78,7 +78,7 @@
 --------------------------------------------------------------------------------
 16 |   subtype ShortVector is STD_LOGIC_VECTOR(1 downto 0);
 <class 'vsg.token.subtype_declaration.subtype_keyword'>
-<class 'vsg.token.identifier.identifier'>
+<class 'vsg.token.subtype_declaration.identifier'>
 <class 'vsg.token.subtype_declaration.is_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.todo'>
