@@ -318,6 +318,8 @@ class vhdlFile():
         iIndent = 0
         bCarriageReturnFound = False
         iTokenCount = 0
+        vLabelFound = False
+        bLabelFound = False
         for oToken in self.lAllObjects:
 
 
@@ -354,19 +356,35 @@ class vhdlFile():
                 oToken.set_indent(0)
                 iIndent = 0 
 
-#            if bCarriageReturnFound:
-#                iTokenCount += 1
-#                if not isinstance(oToken, parser.whitespace):
-#                    bCarriageReturnFound = False
-#                    iTokenCount = 0
-#                    oToken.set_indent(iIndent)
-#                if iTokenCount == 2:
-#                    iTokenCount = 0
-#                    bCarraigeReturnFound = False
-#            
-#            if isinstance(oToken, parser.carriage_return):
-#                bCarriageReturnFound = True
+            ###  Assertion statements
 
+            if isinstance(oToken, token.concurrent_assertion_statement.label_name):
+                oToken.set_indent(iIndent)
+                bLabelFound = True
+                iIndent += 1
+
+            if isinstance(oToken, token.assertion_statement.label):
+                oToken.set_indent(iIndent)
+                bLabelFound = True
+                iIndent += 1
+
+            if isinstance(oToken, token.assertion.keyword):
+                if not bLabelFound:
+                  oToken.set_indent(iIndent)
+                  iIndent += 1
+                bLabelFound = False
+                    
+            if isinstance(oToken, token.assertion.report_keyword):
+               oToken.set_indent(iIndent)
+                    
+            if isinstance(oToken, token.assertion.severity_keyword):
+               oToken.set_indent(iIndent)
+
+            if isinstance(oToken, token.assertion_statement.semicolon):
+                iIndent -= 1
+
+            if isinstance(oToken, token.concurrent_assertion_statement.semicolon):
+                iIndent -= 1
 
             
     def print_debug(self):
