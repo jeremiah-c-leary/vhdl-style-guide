@@ -1,3 +1,4 @@
+
 import os
 import unittest
 
@@ -5,200 +6,159 @@ from vsg.rules import architecture
 from vsg import vhdlFile
 from vsg.tests import utils
 
-# Read in test file used for all tests
-lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'rule_029_test_input.vhd'))
-lFileConfig = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'rule_029_configurations_test_input.vhd'))
+sTestDir = os.path.dirname(__file__)
 
-class testRuleArchitecture(unittest.TestCase):
+lFile = utils.read_vhdlfile(os.path.join(sTestDir,'rule_029_test_input.vhd'))
+
+#lExpected = []
+#lExpected.append('')
+#utils.read_file(os.path.join(sTestDir, 'rule_029_test_input.fixed_allowing_comments_and_blank_lines.vhd'), lExpected)
+
+
+class test_architecture_rule(unittest.TestCase):
 
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
-        self.oFileConfig = vhdlFile.vhdlFile(lFileConfig)
 
-    def test_rule(self):
+#    def test_rule_029_allowing_comments_and_blank_lines(self):
+#        oRule = architecture.rule_029()
+#        oRule.blank_line_ends_group = False
+#        oRule.comment_line_ends_group = False
+#        self.assertTrue(oRule)
+#        self.assertEqual(oRule.name, 'architecture')
+#        self.assertEqual(oRule.identifier, '029')
+#
+#        lExpected = [5, 6, 7, 9, 10, 11, 12, 14, 15, 16, 17, 19, 20, 22]
+#
+#        oRule.analyze(self.oFile)
+#        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+#
+#    def test_fix_rule_029_allowing_comments_and_blank_lines(self):
+#        oRule = architecture.rule_029()
+#        oRule.blank_line_ends_group = False
+#        oRule.comment_line_ends_group = False
+#
+#        oRule.fix(self.oFile)
+#
+#        lActual = []
+#        for oLine in self.oFile.lines:
+#            lActual.append(oLine.line)
+#
+#        self.assertEqual(lExpected, lActual)
+#
+#        oRule.analyze(self.oFile)
+#        self.assertEqual(oRule.violations, [])
+#
+#    def test_rule_029_allowing_comments_and_blank_lines_without_condensed(self):
+#        oRule = architecture.rule_029()
+#        oRule.compact_alignment = False
+#        oRule.blank_line_ends_group = False
+#        oRule.comment_line_ends_group = False
+#
+#        lExpected = [4, 5, 6, 7, 9, 10, 11, 12, 14, 16, 17, 19, 20, 21, 22]
+#
+#        oRule.analyze(self.oFile)
+#        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+#
+#    def test_fix_rule_029_allowing_comments_and_blank_lines_without_condensed(self):
+#        oRule = architecture.rule_029()
+#        oRule.compact_alignment = False
+#        oRule.blank_line_ends_group = False
+#        oRule.comment_line_ends_group = False
+#
+#        oRule.fix(self.oFile)
+#
+#        lActual = []
+#        for oLine in self.oFile.lines:
+#            lActual.append(oLine.line)
+#
+#        lExpected = []
+#        lExpected.append('')
+#        utils.read_file(os.path.join(sTestDir, 'rule_029_test_input.fixed_allowing_comments_and_blank_lines_without_condensed.vhd'), lExpected)
+#
+#        self.assertEqual(lExpected, lActual)
+#
+#        oRule.analyze(self.oFile)
+#        self.assertEqual(oRule.violations, [])
+#
+#    def test_rule_029_allowing_blank_lines(self):
+#        oRule = architecture.rule_029()
+#        oRule.blank_line_ends_group = False
+#
+#        lExpected = [4, 5, 7, 9, 10, 11, 12, 14, 15, 17, 19, 20, 22]
+#
+#        oRule.analyze(self.oFile)
+#        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+#
+#    def test_fix_rule_029_allowing_blank_lines(self):
+#        oRule = architecture.rule_029()
+#        oRule.blank_line_ends_group = False
+#
+#        oRule.fix(self.oFile)
+#
+#        lActual = []
+#        for oLine in self.oFile.lines:
+#            lActual.append(oLine.line)
+#
+#        lExpected = []
+#        lExpected.append('')
+#        utils.read_file(os.path.join(sTestDir, 'rule_029_test_input.fixed_allowing_blank_lines.vhd'), lExpected)
+#
+#        self.assertEqual(lExpected, lActual)
+#
+#        oRule.analyze(self.oFile)
+#        self.assertEqual(oRule.violations, [])
+#
+#    def test_rule_029_allowing_comments(self):
+#        oRule = architecture.rule_029()
+#        oRule.comment_line_ends_group = False
+#
+#        lExpected = [4, 5, 6, 7, 9, 10, 12, 14, 15, 16, 17, 19, 20, 22]
+#
+#        oRule.analyze(self.oFile)
+#        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+#
+#    def test_fix_rule_029_allowing_comments(self):
+#        oRule = architecture.rule_029()
+#        oRule.comment_line_ends_group = False
+#
+#        oRule.fix(self.oFile)
+#
+#        lActual = []
+#        for oLine in self.oFile.lines:
+#            lActual.append(oLine.line)
+#
+#        lExpected = []
+#        lExpected.append('')
+#        utils.read_file(os.path.join(sTestDir, 'rule_029_test_input.fixed_allowing_comments.vhd'), lExpected)
+#
+#        self.assertEqual(lExpected, lActual)
+#
+#        oRule.analyze(self.oFile)
+#        self.assertEqual(oRule.violations, [])
+#
+    def test_rule_029(self):
         oRule = architecture.rule_029()
-        self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'architecture')
-        self.assertEqual(oRule.identifier, '029')
 
-        lExpected = []
-
-        dViolation = utils.add_violation(6)
-        dViolation['columnAdjust'] = 2
-        dViolation['targetColumn'] = 11
-        lExpected.append(dViolation)
-
-        dViolation = utils.add_violation(8)
-        dViolation['columnAdjust'] = 4
-        dViolation['targetColumn'] = 11
-        lExpected.append(dViolation)
-
-        dViolation = utils.add_violation(9)
-        dViolation['columnAdjust'] = 4
-        dViolation['targetColumn'] = 11
-        lExpected.append(dViolation)
-
-        dViolation = utils.add_violation(10)
-        dViolation['columnAdjust'] = 1
-        dViolation['targetColumn'] = 11
-        lExpected.append(dViolation)
-
-        dViolation = utils.add_violation(21)
-        dViolation['columnAdjust'] = -1
-        dViolation['targetColumn'] = 11
-        lExpected.append(dViolation)
-
-        dViolation = utils.add_violation(23)
-        dViolation['columnAdjust'] = -3
-        dViolation['targetColumn'] = 11
-        lExpected.append(dViolation)
-
-        dViolation = utils.add_violation(24)
-        dViolation['columnAdjust'] = 1
-        dViolation['targetColumn'] = 11
-        lExpected.append(dViolation)
-
-        dViolation = utils.add_violation(26)
-        dViolation['columnAdjust'] = -1
-        dViolation['targetColumn'] = 11
-        lExpected.append(dViolation)
-
-        dViolation = utils.add_violation(44)
-        dViolation['columnAdjust'] = 2
-        dViolation['targetColumn'] = 9
-        lExpected.append(dViolation)
+        lExpected = [6, 8, 9, 10, 21, 23, 24, 26, 44]
 
         oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, lExpected)
-
-        self.assertEqual('Move identifier to column 12', oRule._get_solution(6))
-        self.assertEqual('Move identifier to column 12', oRule._get_solution(8))
-        self.assertEqual('Move identifier to column 12', oRule._get_solution(9))
-        self.assertEqual('Move identifier to column 12', oRule._get_solution(10))
-        self.assertEqual('Move identifier to column 12', oRule._get_solution(26))
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
     def test_fix_rule_029(self):
         oRule = architecture.rule_029()
-        dExpected = []
+
         oRule.fix(self.oFile)
 
-        self.assertEqual(self.oFile.lines[5].line,  '  variable v_var1 : std_logic;')
-        self.assertEqual(self.oFile.lines[6].line,  '  signal   s_sig1 : std_logic;')
-        self.assertEqual(self.oFile.lines[7].line,  '  constant c_cons1 : std_logic;')
-        self.assertEqual(self.oFile.lines[8].line,  '  file     f_fil1 : load_file_type open read_mode is load_file_name;')
-        self.assertEqual(self.oFile.lines[9].line,  '  type     t_typ1 is (idle, write, read);')
-        self.assertEqual(self.oFile.lines[10].line, '  subtype  s_sub1 is range 0 to 9;')
+        lActual = []
+        for oLine in self.oFile.lines:
+            lActual.append(oLine.line)
 
-        self.assertEqual(self.oFile.lines[21].line,  '  variable v_var1 : std_logic;')
-        self.assertEqual(self.oFile.lines[22].line,  '  signal   s_sig1 : std_logic;')
-        self.assertEqual(self.oFile.lines[23].line,  '  constant c_cons1 : std_logic;')
-        self.assertEqual(self.oFile.lines[24].line,  '  file     f_fil1 : load_file_type open read_mode is load_file_name;')
-        self.assertEqual(self.oFile.lines[25].line,  '  type     t_typ1 is (idle, write, read);')
-        self.assertEqual(self.oFile.lines[26].line,  '  subtype  s_sub1 is range 0 to 9;')
+        lExpected = []
+        lExpected.append('')
+        utils.read_file(os.path.join(sTestDir, 'rule_029_test_input.fixed.vhd'), lExpected)
 
-        self.assertEqual(self.oFile.lines[44].line,  '  type   state_type is (')
-        self.assertEqual(self.oFile.lines[45].line,  '    state1, state2,')
-        self.assertEqual(self.oFile.lines[46].line,  '    state3, state4')
-        self.assertEqual(self.oFile.lines[48].line,  '  signal sig1 : std_logic;')
+        self.assertEqual(lExpected, lActual)
 
         oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, dExpected)
-
-    def test_rule_029_w_comment_group_false(self):
-        oRule = architecture.rule_029()
-        oRule.comment_line_ends_group = False
-
-        lExpected = []
-
-        dViolation = utils.add_violation(5)
-        dViolation['columnAdjust'] = 2
-        dViolation['targetColumn'] = 11
-        lExpected.append(dViolation)
-
-        dViolation = utils.add_violation(6)
-        dViolation['columnAdjust'] = 4
-        dViolation['targetColumn'] = 11
-        lExpected.append(dViolation)
-
-        dViolation = utils.add_violation(8)
-        dViolation['columnAdjust'] = 4
-        dViolation['targetColumn'] = 11
-        lExpected.append(dViolation)
-
-        dViolation = utils.add_violation(9)
-        dViolation['columnAdjust'] = 1
-        dViolation['targetColumn'] = 11
-        lExpected.append(dViolation)
-
-        oRule.analyze(self.oFileConfig)
-        self.assertEqual(oRule.violations, lExpected)
-
-    def test_rule_029_w_blank_group_false_and_comment_group_false(self):
-        oRule = architecture.rule_029()
-        oRule.blank_line_ends_group = False
-        oRule.comment_line_ends_group = False
-
-        lExpected = []
-
-        dViolation = utils.add_violation(5)
-        dViolation['columnAdjust'] = 3
-        dViolation['targetColumn'] = 12
-        lExpected.append(dViolation)
-
-        dViolation = utils.add_violation(6)
-        dViolation['columnAdjust'] = 5
-        dViolation['targetColumn'] = 12
-        lExpected.append(dViolation)
-
-        dViolation = utils.add_violation(8)
-        dViolation['columnAdjust'] = 5
-        dViolation['targetColumn'] = 12
-        lExpected.append(dViolation)
-
-        dViolation = utils.add_violation(9)
-        dViolation['columnAdjust'] = 2
-        dViolation['targetColumn'] = 12
-        lExpected.append(dViolation)
-
-        dViolation = utils.add_violation(11)
-        dViolation['columnAdjust'] = 1
-        dViolation['targetColumn'] = 12
-        lExpected.append(dViolation)
-
-        dViolation = utils.add_violation(12)
-        dViolation['columnAdjust'] = 1
-        dViolation['targetColumn'] = 12
-        lExpected.append(dViolation)
-
-        oRule.analyze(self.oFileConfig)
-        self.assertEqual(oRule.violations, lExpected)
-
-    def test_rule_029_w_blank_group_false(self):
-        oRule = architecture.rule_029()
-        oRule.blank_line_ends_group = False
-
-        lExpected = []
-
-        dViolation = utils.add_violation(6)
-        dViolation['columnAdjust'] = 2
-        dViolation['targetColumn'] = 9
-        lExpected.append(dViolation)
-
-        dViolation = utils.add_violation(8)
-        dViolation['columnAdjust'] = 3
-        dViolation['targetColumn'] = 10
-        lExpected.append(dViolation)
-
-        dViolation = utils.add_violation(11)
-        dViolation['columnAdjust'] = 1
-        dViolation['targetColumn'] = 12
-        lExpected.append(dViolation)
-
-        dViolation = utils.add_violation(12)
-        dViolation['columnAdjust'] = 1
-        dViolation['targetColumn'] = 12
-        lExpected.append(dViolation)
-
-        oRule.analyze(self.oFileConfig)
-        self.assertEqual(oRule.violations, lExpected)
-
+        self.assertEqual(oRule.violations, [])
