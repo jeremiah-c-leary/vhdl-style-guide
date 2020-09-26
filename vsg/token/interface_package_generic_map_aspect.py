@@ -16,7 +16,7 @@ class map_keyword(parser.keyword):
 
 class open_parenthesis(parser.open_parenthesis):
 
-    def __init__(self, sString=')'):
+    def __init__(self, sString='('):
         parser.open_parenthesis.__init__(self)
 
 
@@ -34,5 +34,5 @@ class undefined_range(parser.undefined_range):
 
 class close_parenthesis(parser.close_parenthesis):
 
-    def __init__(self, sString='('):
-        parser.open_parenthesis.__init__(self)
+    def __init__(self, sString=')'):
+        parser.close_parenthesis.__init__(self)
