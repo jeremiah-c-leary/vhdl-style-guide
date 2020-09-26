@@ -16,7 +16,7 @@
 --------------------------------------------------------------------------------
 4 |   type Operation is record
 <class 'vsg.token.full_type_declaration.type_keyword'>
-<class 'vsg.token.identifier.identifier'>
+<class 'vsg.token.full_type_declaration.identifier'>
 <class 'vsg.token.full_type_declaration.is_keyword'>
 <class 'vsg.token.record_type_definition.record_keyword'>
 --------------------------------------------------------------------------------
@@ -62,7 +62,7 @@
 --------------------------------------------------------------------------------
 10 |   type Operation is record
 <class 'vsg.token.full_type_declaration.type_keyword'>
-<class 'vsg.token.identifier.identifier'>
+<class 'vsg.token.full_type_declaration.identifier'>
 <class 'vsg.token.full_type_declaration.is_keyword'>
 <class 'vsg.token.record_type_definition.record_keyword'>
 --------------------------------------------------------------------------------

@@ -31,7 +31,7 @@
 --------------------------------------------------------------------------------
 8 |     type type1;
 <class 'vsg.token.incomplete_type_declaration.type_keyword'>
-<class 'vsg.token.identifier.identifier'>
+<class 'vsg.token.incomplete_type_declaration.identifier'>
 <class 'vsg.token.incomplete_type_declaration.semicolon'>
 --------------------------------------------------------------------------------
 9 | 

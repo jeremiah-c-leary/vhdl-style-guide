@@ -16,7 +16,7 @@
 --------------------------------------------------------------------------------
 4 |   type Real_Matrix is array (1 to 10) of REAL;
 <class 'vsg.token.full_type_declaration.type_keyword'>
-<class 'vsg.token.identifier.identifier'>
+<class 'vsg.token.full_type_declaration.identifier'>
 <class 'vsg.token.full_type_declaration.is_keyword'>
 <class 'vsg.token.constrained_array_definition.array_keyword'>
 <class 'vsg.token.index_constraint.open_parenthesis'>
@@ -33,7 +33,7 @@
 --------------------------------------------------------------------------------
 6 |   type BYTE is array (0 to 7) of BIT;
 <class 'vsg.token.full_type_declaration.type_keyword'>
-<class 'vsg.token.identifier.identifier'>
+<class 'vsg.token.full_type_declaration.identifier'>
 <class 'vsg.token.full_type_declaration.is_keyword'>
 <class 'vsg.token.constrained_array_definition.array_keyword'>
 <class 'vsg.token.index_constraint.open_parenthesis'>
@@ -50,7 +50,7 @@
 --------------------------------------------------------------------------------
 8 |   type Log_4_Vector is array (POSITIVE range 1 to 8, POSITIVE range 1 to 2) of Log_4;
 <class 'vsg.token.full_type_declaration.type_keyword'>
-<class 'vsg.token.identifier.identifier'>
+<class 'vsg.token.full_type_declaration.identifier'>
 <class 'vsg.token.full_type_declaration.is_keyword'>
 <class 'vsg.token.constrained_array_definition.array_keyword'>
 <class 'vsg.token.index_constraint.open_parenthesis'>
@@ -81,7 +81,7 @@
 --------------------------------------------------------------------------------
 12 |   type DATA_BUS is array (0 to 7, X) of BIT;
 <class 'vsg.token.full_type_declaration.type_keyword'>
-<class 'vsg.token.identifier.identifier'>
+<class 'vsg.token.full_type_declaration.identifier'>
 <class 'vsg.token.full_type_declaration.is_keyword'>
 <class 'vsg.token.constrained_array_definition.array_keyword'>
 <class 'vsg.token.index_constraint.open_parenthesis'>

@@ -16,7 +16,7 @@
 --------------------------------------------------------------------------------
 4 |   type Voltage_Level is range 0 to 5;
 <class 'vsg.token.full_type_declaration.type_keyword'>
-<class 'vsg.token.identifier.identifier'>
+<class 'vsg.token.full_type_declaration.identifier'>
 <class 'vsg.token.full_type_declaration.is_keyword'>
 <class 'vsg.token.range_constraint.range_keyword'>
 <class 'vsg.parser.todo'>
@@ -29,7 +29,7 @@
 --------------------------------------------------------------------------------
 6 |   type Int_64K is range -65536 to 65535;
 <class 'vsg.token.full_type_declaration.type_keyword'>
-<class 'vsg.token.identifier.identifier'>
+<class 'vsg.token.full_type_declaration.identifier'>
 <class 'vsg.token.full_type_declaration.is_keyword'>
 <class 'vsg.token.range_constraint.range_keyword'>
 <class 'vsg.parser.todo'>
@@ -43,7 +43,7 @@
 --------------------------------------------------------------------------------
 8 |   type WORD is range 31 downto 0;
 <class 'vsg.token.full_type_declaration.type_keyword'>
-<class 'vsg.token.identifier.identifier'>
+<class 'vsg.token.full_type_declaration.identifier'>
 <class 'vsg.token.full_type_declaration.is_keyword'>
 <class 'vsg.token.range_constraint.range_keyword'>
 <class 'vsg.parser.todo'>

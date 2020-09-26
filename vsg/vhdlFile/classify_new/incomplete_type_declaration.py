@@ -20,7 +20,7 @@ def classify(iToken, lObjects):
 
     iCurrent = utils.assign_next_token_required('type', token.type_keyword, iToken, lObjects)
 
-    iCurrent = identifier.classify(iCurrent, lObjects)
+    iCurrent = identifier.classify(iCurrent, lObjects, token.identifier)
 
     iCurrent = utils.assign_next_token_required(';', token.semicolon, iCurrent, lObjects)
 

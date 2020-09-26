@@ -8,12 +8,6 @@ class keyword(parser.keyword):
         parser.keyword.__init__(self, sString)
 
 
-class identifier(parser.identifier):
-
-    def __init__(self, sString):
-        parser.identifier.__init__(self, sString)
-
-
 class is_keyword(parser.keyword):
 
     def __init__(self, sString):

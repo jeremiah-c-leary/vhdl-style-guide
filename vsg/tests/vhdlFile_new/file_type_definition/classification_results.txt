@@ -31,7 +31,7 @@
 --------------------------------------------------------------------------------
 8 |     type type1 is file of identifier;
 <class 'vsg.token.full_type_declaration.type_keyword'>
-<class 'vsg.token.identifier.identifier'>
+<class 'vsg.token.full_type_declaration.identifier'>
 <class 'vsg.token.full_type_declaration.is_keyword'>
 <class 'vsg.token.file_type_definition.file_keyword'>
 <class 'vsg.token.file_type_definition.of_keyword'>

@@ -16,7 +16,7 @@
 --------------------------------------------------------------------------------
 4 |   type memory is array (natural range<>) of std_logic_vector(3 downto 0);
 <class 'vsg.token.full_type_declaration.type_keyword'>
-<class 'vsg.token.identifier.identifier'>
+<class 'vsg.token.full_type_declaration.identifier'>
 <class 'vsg.token.full_type_declaration.is_keyword'>
 <class 'vsg.token.unbounded_array_definition.array_keyword'>
 <class 'vsg.token.unbounded_array_definition.open_parenthesis'>
@@ -38,7 +38,7 @@
 --------------------------------------------------------------------------------
 6 |   type memory is array (natural range<>, natural range <>) of std_logic_vector(3 downto 0);
 <class 'vsg.token.full_type_declaration.type_keyword'>
-<class 'vsg.token.identifier.identifier'>
+<class 'vsg.token.full_type_declaration.identifier'>
 <class 'vsg.token.full_type_declaration.is_keyword'>
 <class 'vsg.token.unbounded_array_definition.array_keyword'>
 <class 'vsg.token.unbounded_array_definition.open_parenthesis'>
