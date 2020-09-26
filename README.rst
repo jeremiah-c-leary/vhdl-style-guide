@@ -28,25 +28,20 @@ VHDL Style Guide (VSG)
 Announcements
 -------------
 
-Version 2 has been released.
+**09/26/2020**
 
-Please be aware that there are some rule incompatabilities with the 1.x releases:
+In order to address some outstanding issues, I decided to implement a new parser.
+An initial parser has been complete.
+I am now in the process of convertering existing rules to use the new parser.
+Unfortunetely, at some point the master branch broke.
 
-#. The default for all case rules is now lowercase
-#. Alignment rules have changed significantly
-#. Some rules have been moved to group them with the correct rule sets
+I have decided to keep moving forward instead of keeping backwards compatibility.
 
-These changes will require another tunning of the rules against your code.
-Refer to the documentation on configuring case and alignment rules.
-There are many more options for the alignment rules than in the 1.x releases.
+Below is a roadmap showing when I expect master to be working again.
 
-There are additional features added from version 1:
+.. image:: https://github.com/jeremiah-c-leary/vhdl-style-guide/blob/master/docs/img/roadmap.png
 
-#. Alignment of identifiers has been added
-#. Built in styles
-#. Improved console output
 
-Refer to the release notes for a full listing of features and bug fixes.
 
 .. image:: https://github.com/jeremiah-c-leary/vhdl-style-guide/blob/master/docs/img/vim_macro.gif
 
