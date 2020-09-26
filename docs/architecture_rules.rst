@@ -23,19 +23,12 @@ This rule checks for blank spaces before the **architecture** keyword.
 architecture_002
 ################
 
-This rule checks for a single space between **architecture**, **of**, and **is** keywords.
+This rule has been split into the following rules:
 
-**Violation**
-
-.. code-block:: vhdl
-
-   architecture  rtl  of    fifo   is
-
-**Fix**
-
-.. code-block:: vhdl
-
-   architecture rtl of fifo is
+* architecture_030
+* architecture_031
+* architecture_032
+* architecture_033
 
 architecture_003
 ################
@@ -594,4 +587,72 @@ Refer to the section `Configuring Identifier Alignment Rules <configuring_declar
    file     some_file : 
    variable v_var1 : std_logic;
    type     t_myType : std_logic;
+
+architecture_030
+################
+
+This rule checks for a single space between **architecture** and the identifier.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   architecture    rtl of fifo is
+
+**Fix**
+
+.. code-block:: vhdl
+
+   architecture rtl of fifo is
+
+architecture_031
+################
+
+This rule checks for a single space between the identifier and the **of** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   architecture rtl    of fifo is
+
+**Fix**
+
+.. code-block:: vhdl
+
+   architecture rtl of fifo is
+
+architecture_032
+################
+
+This rule checks for a single space between the **of** keyword and the entity_name.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   architecture rtl of    fifo is
+
+**Fix**
+
+.. code-block:: vhdl
+
+   architecture rtl of fifo is
+
+architecture_033
+################
+
+This rule checks for a single space between the entity_name and the **is** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   architecture rtl of fifo    is
+
+**Fix**
+
+.. code-block:: vhdl
+
+   architecture rtl of fifo is
 

@@ -1,5 +1,5 @@
 from .rule_001 import rule_001
-from .rule_002 import rule_002
+#from .rule_002 import rule_002  # This was split into rules 30 through 33
 from .rule_003 import rule_003
 from .rule_004 import rule_004
 from .rule_005 import rule_005
@@ -26,3 +26,7 @@ from .rule_026 import rule_026
 from .rule_027 import rule_027
 from .rule_028 import rule_028
 from .rule_029 import rule_029
+from .rule_030 import rule_030
+from .rule_031 import rule_031
+from .rule_032 import rule_032
+from .rule_033 import rule_033
