@@ -1,11 +1,16 @@
 
-from vsg.rules import indent_rule
+from vsg.rules import token_indent
 
+from vsg import token
 
-class rule_001(indent_rule):
+lTokens = []
+lTokens.append(token.attribute_declaration.attribute_keyword)
+lTokens.append(token.attribute_specification.attribute_keyword)
+
+class rule_001(token_indent):
     '''
-    Attribute rule 001 checks the indent of attribute statements.
+    Attribute rule 001 checks for spaces at the beginning of the line.
     '''
 
     def __init__(self):
-        indent_rule.__init__(self, 'attribute', '001', 'insideAttribute')
+        token_indent.__init__(self, 'attribute', '001', lTokens)

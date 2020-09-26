@@ -386,6 +386,13 @@ class vhdlFile():
             if isinstance(oToken, token.concurrent_assertion_statement.semicolon):
                 iIndent -= 1
 
+            ### Attribute statements
+            if isinstance(oToken, token.attribute_declaration.attribute_keyword):
+               oToken.set_indent(iIndent)
+          
+            if isinstance(oToken, token.attribute_specification.attribute_keyword):
+               oToken.set_indent(iIndent)
+          
             
     def print_debug(self):
         for oLine in self.lines:

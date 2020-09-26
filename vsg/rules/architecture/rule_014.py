@@ -10,4 +10,4 @@ class rule_014(token_case):
     '''
 
     def __init__(self):
-        token_case.__init__(self, 'architecture', '014', token.entity_name)
+        token_case.__init__(self, 'architecture', '014', [token.entity_name])

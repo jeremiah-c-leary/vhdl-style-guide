@@ -1,16 +1,16 @@
 
-from vsg.rules import case_rule
-from vsg import utils
+from vsg.rules import token_case
 
+from vsg import token
 
-class rule_002(case_rule):
+lTokens = []
+lTokens.append(token.attribute_specification.attribute_keyword)
+lTokens.append(token.attribute_declaration.attribute_keyword)
+
+class rule_002(token_case):
     '''
-    Attribute rule 002 checks the "attribute" keyword has proper case.
+    Attribute rule 002 checks the attribute keyword has proper case.
     '''
 
     def __init__(self):
-        case_rule.__init__(self, 'attribute', '002', 'isAttributeKeyword')
-        self.solution = 'Change "attribute" keyword to '
-
-    def _extract(self, oLine):
-        return utils.extract_words(oLine, ['attribute'])
+        token_case.__init__(self, 'attribute', '002', lTokens)

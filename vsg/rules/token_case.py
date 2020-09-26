@@ -24,16 +24,16 @@ class token_case(rule_item.Rule):
        object type to apply the case check against
     '''
 
-    def __init__(self, name, identifier, token):
+    def __init__(self, name, identifier, lTokens):
         rule_item.Rule.__init__(self, name=name, identifier=identifier)
         self.solution = None
         self.phase = 6
         self.case = 'lower'
         self.configuration.append('case')
-        self.oToken = token
+        self.lTokens = lTokens
 
     def analyze(self, oFile):
-        lTokens = oFile.get_tokens_matching([self.oToken])
+        lTokens = oFile.get_tokens_matching(self.lTokens)
         for oToken in lTokens:
             sObjectValue = oToken.get_tokens()[0].get_value()
             if self.case == 'lower':
