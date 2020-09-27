@@ -449,7 +449,10 @@ class vhdlFile():
             if isinstance(oToken, token.null_statement.null_keyword):
                 oToken.set_indent(iIndent)
                     
- 
+            ### Comments 
+            if isinstance(oToken, parser.comment):
+                oToken.set_indent(iIndent)
+                    
             
     def print_debug(self):
         for oLine in self.lines:
@@ -782,6 +785,21 @@ class vhdlFile():
                            bStore = True
                            iLineNumber = iLine
                        
+        return lReturn
+
+
+    def get_token_and_n_tokens_before_it(self, oToken, iTokens):
+        iLine = 1
+        lReturn = []
+        iStart = 0
+        for iIndex in range(0, len(self.lAllObjects)):
+            if isinstance(self.lAllObjects[iIndex], oToken):
+                iStart = iIndex - iTokens
+                lReturn.append(Tokens(iStart, iLine, self.lAllObjects[iIndex - iTokens:iIndex + 1]))
+
+            if isinstance(self.lAllObjects[iIndex], parser.carriage_return):
+                iLine +=1
+
         return lReturn
 
 
