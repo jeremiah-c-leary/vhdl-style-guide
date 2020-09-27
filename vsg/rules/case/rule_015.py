@@ -1,16 +1,16 @@
 
-from vsg.rules import case_rule
-from vsg import utils
+from vsg.rules import token_case
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.case_statement.is_keyword)
 
 
-class rule_015(case_rule):
+class rule_015(token_case):
     '''
-    Entity rule 015 checks the is keyword has proper case.
+    Case rule 015 checks the *case* keyword has proper case.
     '''
 
     def __init__(self):
-        case_rule.__init__(self, 'case', '015', 'isCaseIsKeyword')
-        self.solution = 'Change "is" keyword to '
-
-    def _extract(self, oLine):
-        return utils.extract_words(oLine, ['is'])
+        token_case.__init__(self, 'case', '015', lTokens)

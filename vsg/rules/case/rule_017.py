@@ -1,16 +1,16 @@
 
-from vsg.rules import case_rule
-from vsg import utils
+from vsg.rules import token_case
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.case_statement.end_keyword)
 
 
-class rule_017(case_rule):
+class rule_017(token_case):
     '''
-    Entity rule 017 checks the "end" keyword has proper case.
+    Case rule 017 checks the *end* keyword has proper case.
     '''
 
     def __init__(self):
-        case_rule.__init__(self, 'case', '017', 'isEndCaseKeyword')
-        self.solution = 'Change "end" keyword to '
-
-    def _extract(self, oLine):
-        return utils.extract_words(oLine, ['end'])
+        token_case.__init__(self, 'case', '017', lTokens)

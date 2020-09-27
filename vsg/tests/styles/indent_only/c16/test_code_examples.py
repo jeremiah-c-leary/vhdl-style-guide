@@ -41,6 +41,7 @@ class testCodeExample(unittest.TestCase):
         for iLineNumber, sLine in enumerate(lExpected):
             self.assertEqual(oBoardCpu.lines[iLineNumber].line, sLine)
 
+    @unittest.skip('Waiting until all rules have been refactored to new parser.')
     def test_data_core(self):
         oRuleList = rule_list.rule_list(oDataCore, oSeverityList)
         oRuleList.configure(dLegacyConfig)

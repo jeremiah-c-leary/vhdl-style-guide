@@ -1,33 +1,14 @@
 
-from vsg import rule
-from vsg import check
-from vsg import fix
+from vsg.rules import align_consecutive_lines_after_line_starting_with_token_and_stopping_with_token
+
+from vsg.token import case_statement_alternative as token
 
 
-class rule_011(rule.rule):
+class rule_011(align_consecutive_lines_after_line_starting_with_token_and_stopping_with_token):
     '''
-    Case rule 011 ensures the alignment of multiline "when" statements.
+    Case rule 011 checks for labels after the "end case" keywords.
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'case'
-        self.identifier = '011'
-        self.solution = 'Align with space after the "when" keyword.'
-        self.phase = 5
-        # Variables required for analysis
-        self.iAlignmentColumn = 0
-
-    def _pre_analyze(self):
-        self.iAlignmentColumn = 0
-
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isCaseWhenKeyword:
-            if not oLine.isCaseWhenEnd:
-                self.iAlignmentColumn = (oLine.indentLevel * self.indentSize) + len('when ')
-        elif oLine.insideCaseWhen:
-            check.multiline_alignment(self, self.iAlignmentColumn, oLine, iLineNumber)
-
-    def _fix_violations(self, oFile):
-        for iLineNumber in self.dFix['violations']:
-            fix.multiline_alignment(self, oFile, iLineNumber)
+        align_consecutive_lines_after_line_starting_with_token_and_stopping_with_token.__init__(self, 'case', '011', token.when_keyword, token.assignment)
+        self.solution = 'Align one space after *when* keyword'

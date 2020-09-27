@@ -1,29 +1,14 @@
 
-from vsg import rule
-from vsg import check
-from vsg import utils
-from vsg import fix
+from vsg.rules import align_consecutive_lines_starting_with_a_comment_above_line_starting_with_token
+
+from vsg.token import case_statement_alternative as token
 
 
-class rule_021(rule.rule):
+class rule_021(align_consecutive_lines_starting_with_a_comment_above_line_starting_with_token):
     '''
-    Case rule 021 checks consecutive comment lines above a "when" keyword
-    in a case statement are aligned with the "when" keyword.
+    Case rule 021 checks for labels after the "end case" keywords.
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'case'
-        self.identifier = '021'
-        self.solution = 'Align comment with "when" keyword.'
-        self.phase = 4
-
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isCaseWhenKeyword:
-            check.indent_of_comments_above(self, oFile, iLineNumber)
-
-    def _fix_violations(self, oFile):
-        for dViolation in self.violations:
-            iLineNumber = utils.get_violation_line_number(dViolation)
-            oFile.lines[iLineNumber].indentLevel = dViolation['indent']
-            fix.indent(self, oFile.lines[iLineNumber])
+        align_consecutive_lines_starting_with_a_comment_above_line_starting_with_token.__init__(self, 'case', '021', token.when_keyword)
+        self.solution = 'Remove Label'

@@ -1,0 +1,76 @@
+
+import os
+import unittest
+
+from vsg.rules import case
+from vsg import vhdlFile
+from vsg.tests import utils
+
+sTestDir = os.path.dirname(__file__)
+
+lFile = utils.read_vhdlfile(os.path.join(sTestDir,'rule_014_test_input.vhd'))
+
+lExpected_lower = []
+lExpected_lower.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_014_test_input.fixed_lower.vhd'), lExpected_lower)
+
+lExpected_upper = []
+lExpected_upper.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_014_test_input.fixed_upper.vhd'), lExpected_upper)
+
+class test_case_rule(unittest.TestCase):
+
+    def setUp(self):
+        self.oFile = vhdlFile.vhdlFile(lFile)
+
+    def test_rule_014_lower(self):
+        oRule = case.rule_014()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'case')
+        self.assertEqual(oRule.identifier, '014')
+
+        lExpected = [24, 39]
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
+
+    def test_rule_014_upper(self):
+        oRule = case.rule_014()
+        oRule.case = 'upper'
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'case')
+        self.assertEqual(oRule.identifier, '014')
+
+        lExpected = [9, 39]
+        oRule.analyze(self.oFile)
+        self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
+
+    def test_fix_rule_014_lower(self):
+        oRule = case.rule_014()
+
+        oRule.fix(self.oFile)
+
+        lActual = []
+        for oLine in self.oFile.lines:
+            lActual.append(oLine.line)
+
+        self.assertEqual(lExpected_lower, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+
+    def test_fix_rule_014_upper(self):
+        oRule = case.rule_014()
+        oRule.case = 'upper'
+
+        oRule.fix(self.oFile)
+
+        lActual = []
+        for oLine in self.oFile.lines:
+            lActual.append(oLine.line)
+
+        self.assertEqual(lExpected_upper, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+

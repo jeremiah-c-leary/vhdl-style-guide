@@ -164,6 +164,7 @@ class vhdlFile():
 #        print(self.lAllObjects)
         for iLine, lLine in enumerate(split_on_carriage_return(self.lAllObjects)):
 #            print(lLine)
+#            print(lLine)
             try:
                 self.lines[iLine + 1].update_objects(lLine)
             except IndexError:
@@ -392,7 +393,63 @@ class vhdlFile():
           
             if isinstance(oToken, token.attribute_specification.attribute_keyword):
                oToken.set_indent(iIndent)
-          
+
+            ### case statements
+            if isinstance(oToken, token.case_statement.case_label):
+                oToken.set_indent(iIndent)
+                bLabelFound = True
+                iIndent += 1
+
+            if isinstance(oToken, token.case_statement.case_keyword):
+                if not bLabelFound:
+                  oToken.set_indent(iIndent)
+                  iIndent += 2
+                bLabelFound = False
+                    
+            if isinstance(oToken, token.case_statement_alternative.when_keyword):
+                oToken.set_indent(iIndent - 1)
+
+            if isinstance(oToken, token.case_statement.end_keyword):
+                oToken.set_indent(iIndent - 2)
+                iIndent -= 2
+
+            ### process statements
+            if isinstance(oToken, token.process_statement.process_label):
+                oToken.set_indent(iIndent)
+                bLabelFound = True
+                iIndent += 1
+
+            if isinstance(oToken, token.process_statement.postponed_keyword):
+                if not bLabelFound:
+                  oToken.set_indent(iIndent)
+                  iIndent += 1
+                  bLabelFound = True
+                else:
+                  oToken.set_indent(iIndent - 1)
+
+            if isinstance(oToken, token.process_statement.process_keyword):
+                if not bLabelFound:
+                  oToken.set_indent(iIndent)
+                  iIndent += 1
+                else:
+                  oToken.set_indent(iIndent - 1)
+                bLabelFound = False
+                    
+            if isinstance(oToken, token.process_statement.begin_keyword):
+                oToken.set_indent(iIndent - 1)
+
+            if isinstance(oToken, token.process_statement.end_keyword):
+                oToken.set_indent(iIndent - 1)
+                iIndent -= 1
+           
+            ### Null statements
+            if isinstance(oToken, token.null_statement.label):
+                oToken.set_indent(iIndent)
+
+            if isinstance(oToken, token.null_statement.null_keyword):
+                oToken.set_indent(iIndent)
+                    
+ 
             
     def print_debug(self):
         for oLine in self.lines:
@@ -438,11 +495,12 @@ class vhdlFile():
 
         return lReturn
 
-    def get_tokens_bounded_by(self, oLeft, oRight):
+    def get_tokens_bounded_by(self, oLeft, oRight, include_trailing_whitespace=False):
         iLine = 1
         lTemp = []
         lReturn = []
         bStore = False
+        bRightFound = False
         for iIndex in range(0, len(self.lAllObjects)):
             if isinstance(self.lAllObjects[iIndex], oLeft):
                 bStore = True
@@ -450,10 +508,21 @@ class vhdlFile():
                 iStartLine = iLine
             if bStore:
                 lTemp.append(self.lAllObjects[iIndex])
-            if isinstance(self.lAllObjects[iIndex], oRight):
-                lReturn.append(Tokens(iStart, iStartLine, lTemp))
+            if bRightFound:
+                if isinstance(self.lAllObjects[iIndex], parser.whitespace):
+                    lReturn.append(Tokens(iStart, iStartLine, lTemp))
+                else:
+                    lReturn.append(Tokens(iStart, iStartLine, lTemp[:-1]))
+                bRightFound = False
                 lTemp = []
                 bStore = False
+            if isinstance(self.lAllObjects[iIndex], oRight) and bStore:
+                if not include_trailing_whitespace:
+                    lReturn.append(Tokens(iStart, iStartLine, lTemp))
+                    lTemp = []
+                    bStore = False
+                else:
+                    bRightFound = True
 
             if isinstance(self.lAllObjects[iIndex], parser.carriage_return):
                 iLine +=1
@@ -643,6 +712,77 @@ class vhdlFile():
                     iStart = iIndex + 1
                 if iLine == iLineNumber + 1:
                     return(Tokens(iStart, iLineNumber, lTemp))
+
+
+    def get_consecutive_lines_starting_with_token_and_stopping_when_token_starting_line_is_found(self, search_token, stop_token):
+        iLine = 1
+        lTemp = []
+        lReturn = []
+        iStart = 0
+        bStore = False
+        bStop = False
+        iLineNumber = None
+        for iIndex in range(0, len(self.lAllObjects)):
+
+            if bStore:
+                lTemp.append(self.lAllObjects[iIndex])
+
+            if bStop and isinstance(self.lAllObjects[iIndex], stop_token):
+                oTokens = Tokens(iStart, iLineNumber, lTemp)
+                lReturn.append(oTokens)
+                bStore = False
+                lTemp = []
+                bStop = False
+
+            if isinstance(self.lAllObjects[iIndex], parser.carriage_return):
+                iLine +=1
+                if not bStore:
+                    if utils.are_next_consecutive_token_types([parser.whitespace, search_token], iIndex + 1, self.lAllObjects) or \
+                       utils.are_next_consecutive_token_types([search_token], iIndex + 1, self.lAllObjects):
+                           iStart = iIndex + 1
+                           bStore = True
+                           iLineNumber = iLine
+                else:
+                    if not utils.are_next_consecutive_token_types([parser.whitespace, search_token], iIndex + 1, self.lAllObjects) and \
+                       not utils.are_next_consecutive_token_types([search_token], iIndex + 1, self.lAllObjects) and \
+                       not utils.are_next_consecutive_token_types([parser.whitespace, stop_token], iIndex + 1, self.lAllObjects) and \
+                       not utils.are_next_consecutive_token_types([stop_token], iIndex + 1, self.lAllObjects):
+                           bStore = False
+                           lTemp = []
+                    if utils.are_next_consecutive_token_types([parser.whitespace, stop_token], iIndex + 1, self.lAllObjects) or \
+                       utils.are_next_consecutive_token_types([stop_token], iIndex + 1, self.lAllObjects):
+                        bStop = True
+                       
+        return lReturn
+
+    def get_tokens_where_line_starts_with_token_until_ending_token_is_found(self, start_token, stop_token):
+        iLine = 1
+        lTemp = []
+        lReturn = []
+        iStart = 0
+        bStore = False
+        iLineNumber = None
+        for iIndex in range(0, len(self.lAllObjects)):
+
+            if bStore:
+                lTemp.append(self.lAllObjects[iIndex])
+
+            if isinstance(self.lAllObjects[iIndex], stop_token):
+                oTokens = Tokens(iStart, iLineNumber, lTemp)
+                lReturn.append(oTokens)
+                bStore = False
+                lTemp = []
+
+            if isinstance(self.lAllObjects[iIndex], parser.carriage_return):
+                iLine +=1
+                if not bStore:
+                    if utils.are_next_consecutive_token_types([parser.whitespace, start_token], iIndex + 1, self.lAllObjects) or \
+                       utils.are_next_consecutive_token_types([start_token], iIndex + 1, self.lAllObjects):
+                           iStart = iIndex + 1
+                           bStore = True
+                           iLineNumber = iLine
+                       
+        return lReturn
 
 
 def _create_empty_return_dictionary():

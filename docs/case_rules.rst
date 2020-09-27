@@ -161,7 +161,7 @@ Comments are allowed before the **case** keyword.
 case_008
 ########
 
-This rule checks for a blank line below the **case** keyword.
+This rule checks for a blank line below the **is** keyword.
 
 **Violation**
 
@@ -181,7 +181,7 @@ This rule checks for a blank line below the **case** keyword.
 case_009
 ########
 
-This rule checks for a blank line above the **end case** keywords.
+This rule checks for a blank line above the **end** keyword.
 
 **Violation**
 

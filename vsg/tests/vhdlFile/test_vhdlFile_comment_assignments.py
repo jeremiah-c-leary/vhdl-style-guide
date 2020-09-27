@@ -6,8 +6,6 @@ from vsg.tests import utils
 
 lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','comment','comment_test_input.vhd'))
 oFile = vhdlFile.vhdlFile(lFile)
-lFileCase = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','case','comment_case_test_input.vhd'))
-oFileCase = vhdlFile.vhdlFile(lFileCase)
 
 class testVhdlFileCommentAssignments(unittest.TestCase):
 
@@ -51,15 +49,3 @@ class testVhdlFileCommentAssignments(unittest.TestCase):
                 lActual.append(oLine.commentColumn)
         # Compare
         self.assertEqual(lActual, lExpected)
-
-    def test_comment_indent_assignment(self):
-        #           [12,15,17,23,27]
-        lExpected = [4, 4, 4, 4, 4, 4, 4]
-        # Generic actual list
-        lActual = []
-        for oLine in oFileCase.lines:
-            if oLine.isComment:
-                lActual.append(oLine.indentLevel)
-        # Compare
-        self.assertEqual(lActual, lExpected)
-

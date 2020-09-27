@@ -1,11 +1,17 @@
 
-from vsg.rules import indent_rule
+from vsg.rules import token_indent
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.null_statement.label)
+lTokens.append(token.null_statement.null_keyword)
 
 
-class rule_013(indent_rule):
+class rule_013(token_indent):
     '''
     Case rule 013 verifies the indent of the "Null" keyword.
     '''
 
     def __init__(self):
-        indent_rule.__init__(self, 'case', '013', 'isCaseNull')
+        token_indent.__init__(self, 'case', '013', lTokens)

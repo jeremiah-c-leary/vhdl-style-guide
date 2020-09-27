@@ -1,29 +1,14 @@
 
-from vsg import rule
-from vsg import utils
-from vsg import fix
+from vsg.rules import remove_tokens_bounded_by_tokens_and_remove_trailing_whitespace
 
-import re
+from vsg.token import case_statement as token
 
 
-class rule_020(rule.rule):
+class rule_020(remove_tokens_bounded_by_tokens_and_remove_trailing_whitespace):
     '''
     Case rule 020 checks for labels after the "end case" keywords.
     '''
 
     def __init__(self):
-        rule.rule.__init__(self, 'case', '020')
-        self.phase = 1
-        self.solution = 'Remove label after the "end case" keywords'
-
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.hasEndCaseLabel:
-            dViolation = utils.create_violation_dict(iLineNumber)
-            dViolation['label'] = utils.extract_label(oLine)[0]
-            self.add_violation(dViolation)
-
-    def _fix_violations(self, oFile):
-        for dViolation in self.violations:
-            oLine = utils.get_violating_line(oFile, dViolation)
-            fix.remove_end_label(oLine, dViolation['label'])
-            oLine.hasEndCaseLabel = False
+        remove_tokens_bounded_by_tokens_and_remove_trailing_whitespace.__init__(self, 'case', '020', token.end_case_label, token.end_case_label)
+        self.solution = 'Remove Label'

@@ -4,6 +4,8 @@ from vsg import parser
 from vsg import rule_item
 from vsg import violation
 
+from vsg.vhdlFile import utils
+
 
 class single_space_between_tokens(rule_item.Rule):
     '''
@@ -33,11 +35,18 @@ class single_space_between_tokens(rule_item.Rule):
         self.right_token = right_token
 
     def analyze(self, oFile):
-        lToi = oFile.get_sequence_of_tokens_matching([self.left_token, parser.whitespace, self.right_token])
+        lToi_a = oFile.get_sequence_of_tokens_matching([self.left_token, parser.whitespace, self.right_token])
+        lToi_b = oFile.get_sequence_of_tokens_matching([self.left_token, self.right_token])
+
+        lToi = utils.combine_two_token_class_lists(lToi_a, lToi_b)
+
         for oToi in lToi:
             lTokens = oToi.get_tokens()
-            if len(lTokens[1].get_value()) != 1:
+            if len(lTokens) == 2:
                 self.add_violation(violation.New(oToi.get_line_number(), oToi, self.solution))
+            elif len(lTokens[1].get_value()) != 1:
+                self.add_violation(violation.New(oToi.get_line_number(), oToi, self.solution))
+
 
     def fix(self, oFile):
         '''
@@ -52,6 +61,11 @@ class single_space_between_tokens(rule_item.Rule):
     def _fix_violation(self, oFile):
         for oViolation in self.violations:
             lTokens = oViolation.get_tokens()
-            lTokens[1].set_value(' ')
+            if isinstance(lTokens[1], parser.whitespace):
+                lTokens[1].set_value(' ')
+            else:
+                lTokens.insert(1, parser.whitespace(' '))
             oViolation.set_tokens(lTokens)
         oFile.update(self.violations)
+
+

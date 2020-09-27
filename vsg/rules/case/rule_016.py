@@ -1,16 +1,16 @@
 
-from vsg.rules import case_rule
-from vsg import utils
+from vsg.rules import token_case
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.case_statement_alternative.when_keyword)
 
 
-class rule_016(case_rule):
+class rule_016(token_case):
     '''
-    Entity rule 016 checks the when keyword has proper case.
+    Case rule 016 checks the *when* keyword has proper case.
     '''
 
     def __init__(self):
-        case_rule.__init__(self, 'case', '016', 'isCaseWhenKeyword')
-        self.solution = 'Change "when" keyword to '
-
-    def _extract(self, oLine):
-        return utils.extract_words(oLine, ['when'])
+        token_case.__init__(self, 'case', '016', lTokens)
