@@ -11,4 +11,4 @@ class rule_021(align_consecutive_lines_starting_with_a_comment_above_line_starti
 
     def __init__(self):
         align_consecutive_lines_starting_with_a_comment_above_line_starting_with_token.__init__(self, 'case', '021', token.when_keyword)
-        self.solution = 'Remove Label'
+        self.solution = 'Align comment with *when* keyword.'
