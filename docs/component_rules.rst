@@ -287,23 +287,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
 component_015
 #############
 
-This rule checks for the **component** keyword in the **end component** line.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   end fifo;
-
-   end;
-
-**Fix**
-
-.. code-block:: vhdl
-
-   end component fifo;
-
-   end component;
+This rule has been depricated.
+The **component** keyword is required per the LRM.
 
 component_016
 #############
@@ -456,5 +441,26 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring_keyword_a
            data_i : in std_logic; -- Data input
            data_o : in std_logic  -- Data output
        );
+   end my_component;
+
+component_021
+#############
+
+This rule inserts the optional **is** keyword if it does not exist.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   component my_component
+
+   end my_component;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   component my_component is
+
    end my_component;
 

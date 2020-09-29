@@ -2,6 +2,7 @@
 
 from vsg import parser
 from vsg import rule_item
+from vsg import token
 from vsg import violation
 
 from vsg.vhdlFile import utils
@@ -38,7 +39,6 @@ class align_tokens_in_region_between_tokens(rule_item.Rule):
         self.left_token = left_token
         self.right_token = right_token
         ## Stuff below is from original keyword_alignment_rule
-        self.configuration_triggers = []
 
         self.compact_alignment = True
         self.configuration.append('compact_alignment')
@@ -47,9 +47,8 @@ class align_tokens_in_region_between_tokens(rule_item.Rule):
         self.configuration.append('blank_line_ends_group')
         self.comment_line_ends_group = True
         self.configuration.append('comment_line_ends_group')
-
-        self.configuration_triggers = [{'name': 'blank_line_ends_group', 'triggers': ['isBlank']},
-                                       {'name': 'comment_line_ends_group', 'triggers': ['isComment']}]
+        self.separate_generic_port_alignment = True
+        self.configuration.append('separate_generic_port_alignment')
 
 
     def analyze(self, oFile):
@@ -62,7 +61,6 @@ class align_tokens_in_region_between_tokens(rule_item.Rule):
 
         dAnalysis = {}
 
-#        lToi = oFile.get_groups_of_lines_between_tokens_inclusive_that_contain_tokens_and_lines_starting_with_tokens(self.left_token, self.right_token, self.lTokens, lIncludeLines)
         lToi = oFile.get_tokens_bounded_by(self.left_token, self.right_token)
         for oToi in lToi:
             lTokens = oToi.get_tokens()
@@ -90,6 +88,18 @@ class align_tokens_in_region_between_tokens(rule_item.Rule):
                            break
 
                    iColumn += len(oToken.get_value())
+
+               if isinstance(oToken, token.generic_clause.semicolon) and self.separate_generic_port_alignment:
+                   add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
+                   for iKey in list(dAnalysis.keys()):
+                       if dAnalysis[iKey]['adjust'] != 0:
+                           oLineTokens = oFile.get_tokens_from_line(iKey)
+                           oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, self.solution)
+                           oViolation.set_action(dAnalysis[iKey])
+                           self.violations.append(oViolation)
+
+                   dAnalysis = {}
+
                
                if isinstance(oToken, parser.carriage_return):
                    iLine += 1
@@ -100,7 +110,6 @@ class align_tokens_in_region_between_tokens(rule_item.Rule):
                        if utils.are_next_consecutive_token_types([parser.whitespace, parser.comment], iIndex + 1, lTokens) or \
                           utils.are_next_consecutive_token_types([parser.comment], iIndex + 1, lTokens):
                            add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
-
                            for iKey in list(dAnalysis.keys()):
                                if dAnalysis[iKey]['adjust'] != 0:
                                    oLineTokens = oFile.get_tokens_from_line(iKey)
@@ -109,6 +118,7 @@ class align_tokens_in_region_between_tokens(rule_item.Rule):
                                    self.violations.append(oViolation)
 
                            dAnalysis = {}
+
                    if self.blank_line_ends_group:
                        if utils.are_next_consecutive_token_types([parser.blank_line], iIndex + 1, lTokens):
                            add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
@@ -121,11 +131,8 @@ class align_tokens_in_region_between_tokens(rule_item.Rule):
                                    self.violations.append(oViolation)
 
                            dAnalysis = {}
-                       
-                       
 
             add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
-
 
             for iKey in list(dAnalysis.keys()):
                 if dAnalysis[iKey]['adjust'] != 0:
@@ -134,6 +141,7 @@ class align_tokens_in_region_between_tokens(rule_item.Rule):
                     oViolation.set_action(dAnalysis[iKey])
                     self.violations.append(oViolation)
 
+            dAnalysis = {}
 
     def fix(self, oFile):
         '''

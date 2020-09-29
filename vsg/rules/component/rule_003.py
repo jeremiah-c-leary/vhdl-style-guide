@@ -1,14 +1,13 @@
 
-from vsg.rules import line_above_rule
+from vsg.rules import blank_line_above_line_starting_with_token
+
+from vsg.token import component_declaration as token
 
 
-class rule_003(line_above_rule):
+class rule_003(blank_line_above_line_starting_with_token):
     '''
     Component rule 003 checks for a blank line above the component keyword.
     '''
 
     def __init__(self):
-        line_above_rule.__init__(self)
-        self.name = 'component'
-        self.identifier = '003'
-        self.condition = 'isComponentDeclaration'
+        blank_line_above_line_starting_with_token.__init__(self, 'component', '003', [token.component_keyword])

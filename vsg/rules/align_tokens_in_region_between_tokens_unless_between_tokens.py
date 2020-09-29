@@ -141,6 +141,7 @@ class align_tokens_in_region_between_tokens_unless_between_tokens(rule_item.Rule
                     oViolation.set_action(dAnalysis[iKey])
                     self.violations.append(oViolation)
 
+            dAnalysis = {}
 
     def fix(self, oFile):
         '''

@@ -1,14 +1,16 @@
 
-from vsg.rules import case_rule
-from vsg import utils
+from vsg.rules import token_case
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.component_declaration.identifier)
 
 
-class rule_008(case_rule):
-    '''Component rule 008 checks the component name has proper case in the component declaration line.'''
+class rule_008(token_case):
+    '''
+    Component rule 008 checks the component name has proper case in the component declaration line.
+    '''
 
     def __init__(self):
-        case_rule.__init__(self, 'component', '008', 'isComponentDeclaration')
-        self.solution = 'Change component name to ' + self.case + 'case'
-
-    def _extract(self, oLine):
-        return utils.extract_component_identifier(oLine)
+        token_case.__init__(self, 'component', '008', lTokens)

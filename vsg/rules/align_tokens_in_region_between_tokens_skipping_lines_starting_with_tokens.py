@@ -2,6 +2,7 @@
 
 from vsg import parser
 from vsg import rule_item
+from vsg import token
 from vsg import violation
 
 from vsg.vhdlFile import utils
@@ -42,8 +43,6 @@ class align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens(
         self.right_token = right_token
         self.lSkip = lSkip
         ## Stuff below is from original keyword_alignment_rule
-        self.configuration_triggers = []
-
         self.compact_alignment = True
         self.configuration.append('compact_alignment')
 
@@ -51,9 +50,9 @@ class align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens(
         self.configuration.append('blank_line_ends_group')
         self.comment_line_ends_group = True
         self.configuration.append('comment_line_ends_group')
+        self.separate_generic_port_alignment = True
+        self.configuration.append('separate_generic_port_alignment')
 
-        self.configuration_triggers = [{'name': 'blank_line_ends_group', 'triggers': ['isBlank']},
-                                       {'name': 'comment_line_ends_group', 'triggers': ['isComment']}]
 
 
     def analyze(self, oFile):
@@ -96,6 +95,17 @@ class align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens(
 
                    iColumn += len(oToken.get_value())
                
+               if isinstance(oToken, token.generic_clause.semicolon) and self.separate_generic_port_alignment:
+                   add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
+                   for iKey in list(dAnalysis.keys()):
+                       if dAnalysis[iKey]['adjust'] != 0:
+                           oLineTokens = oFile.get_tokens_from_line(iKey)
+                           oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, self.solution)
+                           oViolation.set_action(dAnalysis[iKey])
+                           self.violations.append(oViolation)
+
+                   dAnalysis = {}
+
                if isinstance(oToken, parser.carriage_return):
                    iLine += 1
                    iColumn = 0
@@ -148,6 +158,7 @@ class align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens(
                     oViolation.set_action(dAnalysis[iKey])
                     self.violations.append(oViolation)
 
+            dAnalysis = {}
 
     def fix(self, oFile):
         '''

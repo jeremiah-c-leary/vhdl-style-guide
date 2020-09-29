@@ -1,10 +1,16 @@
 
-from vsg.rules import indent_rule
+from vsg.rules import token_indent
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.component_declaration.end_keyword)
 
 
-class rule_009(indent_rule):
-    '''Component rule 009 checks for spaces before the "end" keyword.'''
+class rule_009(token_indent):
+    '''
+    Component rule 009 checks for spaces before the "end" keyword.
+    '''
 
     def __init__(self):
-        indent_rule.__init__(self, 'component', '009', 'isComponentEnd')
-        self.solution = 'Ensure proper indentation.'
+        token_indent.__init__(self, 'component', '009', lTokens)

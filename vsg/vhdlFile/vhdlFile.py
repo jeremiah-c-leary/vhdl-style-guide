@@ -156,11 +156,13 @@ class vhdlFile():
         if len(lUpdates) == 0:
             return
         for oUpdate in lUpdates[::-1]:
-#            print(oUpdate)
+#            print(self.lAllObjects)
             iStart = oUpdate.oTokens.iStartIndex
             lTokens = oUpdate.get_tokens()
             iEnd = oUpdate.oTokens.iEndIndex
+#            print(f'{iStart} | {iEnd}') 
             self.lAllObjects[iStart:iEnd] = lTokens
+#            print(self.lAllObjects)
 #        print(self.lAllObjects)
         for iLine, lLine in enumerate(split_on_carriage_return(self.lAllObjects)):
 #            print(lLine)
@@ -171,7 +173,8 @@ class vhdlFile():
                 oLine = line.line(' ')
                 oLine.update_objects(lLine)
                 self.lines.append(oLine)
-             
+        if iLine < len(self.lines):
+            self.lines = self.lines[:iLine + 2]             
             
 
     def update_filecontent(self):
@@ -453,7 +456,16 @@ class vhdlFile():
             if isinstance(oToken, parser.comment):
                 oToken.set_indent(iIndent)
                     
-            
+            ### Components
+            if isinstance(oToken, token.component_declaration.component_keyword):
+                oToken.set_indent(iIndent)
+                iIndent += 1
+            if isinstance(oToken, token.component_declaration.end_keyword):
+                iIndent -= 1
+                oToken.set_indent(iIndent)
+                    
+                    
+  
     def print_debug(self):
         for oLine in self.lines:
             print(f'{oLine.indentLevel} | {oLine.line}')

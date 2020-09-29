@@ -1,16 +1,16 @@
 
-from vsg.rules import case_rule
-from vsg import utils
+from vsg.rules import token_case
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.component_declaration.is_keyword)
 
 
-class rule_006(case_rule):
+class rule_006(token_case):
     '''
     Component rule 006 checks the is keyword has proper case.
     '''
 
     def __init__(self):
-        case_rule.__init__(self, 'component', '006', 'isComponentDeclaration')
-        self.solution = 'Change "is" keyword to '
-
-    def _extract(self, oLine):
-        return utils.extract_words(oLine, ['is'])
+        token_case.__init__(self, 'component', '006', lTokens)
