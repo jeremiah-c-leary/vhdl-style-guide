@@ -484,11 +484,19 @@ def combine_two_token_class_lists(lToi_a, lToi_b):
     Takes two lists that contain Token classes and merges them into a single list.
     The final list is ordered by the iStartIndex attribute on the Token classes.
     '''
+    if len(lToi_a) == 0:
+        return lToi_b
+    if len(lToi_b) == 0:
+        return lToi_a
     lReturn = lToi_a.copy()
     for oToi in lToi_b:
+        bInserted = False
         for iIndex, oReturn in enumerate(lReturn):
             if oToi.iStartIndex < oReturn.iStartIndex:
                 lReturn.insert(iIndex, oToi)
+                bInserted = True
                 break
+        if not bInserted:
+            lReturn.append(oToi)
     return lReturn
     

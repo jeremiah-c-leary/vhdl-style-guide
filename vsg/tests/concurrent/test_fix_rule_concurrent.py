@@ -13,56 +13,8 @@ class testFixRuleConcurrentMethods(unittest.TestCase):
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
 
-    def test_fix_rule_001(self):
-        oRule = concurrent.rule_001()
-        dExpected = []
-        oRule.fix(self.oFile)
-        oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, dExpected)
-
-    def test_fix_rule_002(self):
-        oRule = concurrent.rule_002()
-        dExpected = []
-        oRule.fix(self.oFile)
-        oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, dExpected)
-
     def test_fix_rule_003(self):
         oRule = concurrent.rule_003()
-        dExpected = []
-        oRule.fix(self.oFile)
-        oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, dExpected)
-
-    def test_fix_rule_004(self):
-        oRule = concurrent.rule_004()
-        dExpected = []
-        oRule.fix(self.oFile)
-        oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, dExpected)
-
-    def test_fix_rule_005(self):
-        oRule = concurrent.rule_005()
-        dExpected = []
-        oRule.fix(self.oFile)
-
-        self.assertEqual(self.oFile.lines[32].line, 'a<=b;')
-        self.assertFalse(self.oFile.lines[32].hasConcurrentLabel)
-
-        self.assertEqual(self.oFile.lines[33].line, ' a<=b;')
-        self.assertFalse(self.oFile.lines[33].hasConcurrentLabel)
-
-        self.assertEqual(self.oFile.lines[34].line, '  a <= b;  -- this else should not trigger')
-        self.assertFalse(self.oFile.lines[34].hasConcurrentLabel)
-
-        self.assertEqual(self.oFile.lines[35].line, '  a <= b or c')
-        self.assertFalse(self.oFile.lines[35].hasConcurrentLabel)
-
-        oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, dExpected)
-
-    def test_fix_rule_006(self):
-        oRule = concurrent.rule_006()
         dExpected = []
         oRule.fix(self.oFile)
         oRule.analyze(self.oFile)
@@ -87,10 +39,3 @@ class testFixRuleConcurrentMethods(unittest.TestCase):
         self.assertEqual(self.oFile.lines[50].commentColumn, 6)
         self.assertTrue(self.oFile.lines[50].isEndConcurrent)
         self.assertFalse(self.oFile.lines[50].isConcurrentBegin)
-
-    def test_fix_rule_008(self):
-        oRule = concurrent.rule_007()
-        dExpected = []
-        oRule.fix(self.oFile)
-        oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, dExpected)

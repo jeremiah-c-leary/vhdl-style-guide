@@ -1,31 +1,14 @@
 
-from vsg import rule
-from vsg import utils
-from vsg import fix
+from vsg.rules import remove_tokens_bounded_by_tokens_and_remove_trailing_whitespace
 
-import re
+from vsg.token import concurrent_signal_assignment_statement as token
 
 
-class rule_005(rule.rule):
+class rule_005(remove_tokens_bounded_by_tokens_and_remove_trailing_whitespace):
     '''
     Concurrent rule 005 checks for labels on concurrent assignments.
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'concurrent'
-        self.identifier = '005'
-        self.solution = 'Remove label on concurrent assignment.'
-        self.phase = 1
-
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.hasConcurrentLabel:
-            dViolation = utils.create_violation_dict(iLineNumber)
-            dViolation['label'] = utils.extract_label(oLine)[0]
-            self.add_violation(dViolation)
-
-    def _fix_violations(self, oFile):
-        for dViolation in self.violations:
-            oLine = utils.get_violating_line(oFile, dViolation)
-            fix.remove_begin_label(oLine, dViolation['label'])
-            oLine.hasConcurrentLabel = False
+        remove_tokens_bounded_by_tokens_and_remove_trailing_whitespace.__init__(self, 'concurrent', '005', token.label_name, token.label_colon)
+        self.solution = 'Remove Label'

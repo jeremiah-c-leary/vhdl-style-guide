@@ -463,7 +463,23 @@ class vhdlFile():
             if isinstance(oToken, token.component_declaration.end_keyword):
                 iIndent -= 1
                 oToken.set_indent(iIndent)
-                    
+
+            ### Concurrent signal assignment
+            if isinstance(oToken, token.concurrent_signal_assignment_statement.label_name):
+                oToken.set_indent(iIndent)
+
+            if isinstance(oToken, token.concurrent_signal_assignment_statement.postponed_keyword):
+                oToken.set_indent(iIndent)
+
+            if isinstance(oToken, token.concurrent_simple_signal_assignment.target):
+                oToken.set_indent(iIndent)
+           
+            if isinstance(oToken, token.concurrent_conditional_signal_assignment.target):
+                oToken.set_indent(iIndent)
+           
+            if isinstance(oToken, token.concurrent_selected_signal_assignment.with_keyword):
+                oToken.set_indent(iIndent)
+           
                     
   
     def print_debug(self):
@@ -808,6 +824,19 @@ class vhdlFile():
             if isinstance(self.lAllObjects[iIndex], oToken):
                 iStart = iIndex - iTokens
                 lReturn.append(Tokens(iStart, iLine, self.lAllObjects[iIndex - iTokens:iIndex + 1]))
+
+            if isinstance(self.lAllObjects[iIndex], parser.carriage_return):
+                iLine +=1
+
+        return lReturn
+
+    def get_token_and_n_tokens_after_it(self, lTokens, iTokens):
+        iLine = 1
+        lReturn = []
+        for iIndex in range(0, len(self.lAllObjects)):
+            for oToken in lTokens:
+                if isinstance(self.lAllObjects[iIndex], oToken):
+                    lReturn.append(Tokens(iIndex, iLine, self.lAllObjects[iIndex:iTokens + iIndex + 1]))
 
             if isinstance(self.lAllObjects[iIndex], parser.carriage_return):
                 iLine +=1

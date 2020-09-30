@@ -1,16 +1,21 @@
 
-from vsg.rules import keyword_alignment_rule
+from vsg.rules import align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens
 
+from vsg import parser
+from vsg import token
 
-class rule_008(keyword_alignment_rule):
+lAlign = []
+lAlign.append(parser.comment)
+
+lSkip = []
+lSkip.append(parser.comment)
+
+class rule_008(align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens):
     '''
     Concurrent rule 008 ensures the alignment of inline comments in sequential concurrent statements.
     '''
 
     def __init__(self):
-        keyword_alignment_rule.__init__(self, 'concurrent', '008')
-        self.solution = 'Inconsistent alignment of comments in group of lines.'
-        self.sKeyword = '--'
-        self.sStartGroupTrigger = 'isArchitectureBegin'
-        self.sEndGroupTrigger = 'isEndArchitecture'
-        self.lLineTriggers = ['insideConcurrent']
+        align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens.__init__(self, 'concurrent', '008', lAlign, token.architecture_body.begin_keyword, token.architecture_body.end_keyword, lSkip)
+        self.solution = 'Align identifer.'
+        self.subphase = 2
