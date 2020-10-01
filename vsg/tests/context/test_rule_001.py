@@ -9,6 +9,7 @@ from vsg.tests import utils
 sTestDir = os.path.dirname(__file__)
 
 lFile = utils.read_vhdlfile(os.path.join(sTestDir,'rule_001_test_input.vhd'))
+
 lExpected = []
 lExpected.append('')
 utils.read_file(os.path.join(sTestDir, 'rule_001_test_input.fixed.vhd'), lExpected)
@@ -25,22 +26,10 @@ class test_context_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'context')
         self.assertEqual(oRule.identifier, '001')
 
-        lExpected = []
-        dViolation = utils.add_violation(8)
-        dViolation['action'] = 'remove'
-        dViolation['solution'] = 'Remove spaces before "context"'
-        lExpected.append(dViolation)
-
-        dViolation = utils.add_violation(17)
-        dViolation['action'] = 'remove'
-        dViolation['solution'] = 'Remove spaces before "context"'
-        lExpected.append(dViolation)
+        lExpected = [8, 17]
 
         oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, lExpected)
-
-        self.assertEqual(oRule._get_solution(8),'Remove spaces before "context"')
-        self.assertEqual(oRule._get_solution(17),'Remove spaces before "context"')
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
     def test_fix_rule_001(self):
         oRule = context.rule_001()
@@ -55,4 +44,3 @@ class test_context_rule(unittest.TestCase):
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
-

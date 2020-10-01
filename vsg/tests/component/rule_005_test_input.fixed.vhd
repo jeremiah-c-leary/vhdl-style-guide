@@ -7,7 +7,7 @@ architecture RTl of FIFO is
 
   -- Failures below
 
-  COMPONENT fifo is--Some Comemnt
+  COMPONENT fifo is --Some Comemnt
    -- Some COmment
 
   end component fifo;

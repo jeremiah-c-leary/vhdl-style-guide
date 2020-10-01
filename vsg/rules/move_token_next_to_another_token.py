@@ -56,9 +56,8 @@ class move_token_next_to_another_token(rule_item.Rule):
     def _fix_violation(self, oFile):
         for oViolation in self.violations:
             lTokens = oViolation.get_tokens()
-            if not isinstance(lTokens[1], parser.whitespace):
-                lTokens.insert(1, parser.whitespace(' '))
-            lTokens.insert(2, lTokens.pop())
+            lTokens.insert(1, lTokens.pop())
+            lTokens.insert(1, parser.whitespace(' '))
             oViolation.set_tokens(lTokens)
         oFile.update(self.violations)
 

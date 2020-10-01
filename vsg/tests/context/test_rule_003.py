@@ -9,6 +9,7 @@ from vsg.tests import utils
 sTestDir = os.path.dirname(__file__)
 
 lFile = utils.read_vhdlfile(os.path.join(sTestDir,'rule_003_test_input.vhd'))
+
 lExpected = []
 lExpected.append('')
 utils.read_file(os.path.join(sTestDir, 'rule_003_test_input.fixed.vhd'), lExpected)
@@ -28,7 +29,7 @@ class test_context_rule(unittest.TestCase):
         lExpected = [9]
 
         oRule.analyze(self.oFile)
-        self.assertEqual(lExpected, utils.extract_violation_lines(oRule.violations))
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
     def test_fix_rule_003(self):
         oRule = context.rule_003()
@@ -43,4 +44,3 @@ class test_context_rule(unittest.TestCase):
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
-
