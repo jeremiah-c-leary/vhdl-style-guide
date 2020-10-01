@@ -25,19 +25,10 @@ class test_context_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'context')
         self.assertEqual(oRule.identifier, '020')
 
-        lExpected = []
-        dViolation = utils.add_violation(10)
-        dViolation['action'] = 'remove'
-        dViolation['solution'] = 'Remove spaces before "end"'
-        lExpected.append(dViolation)
-
-        dViolation = utils.add_violation(19)
-        dViolation['action'] = 'remove'
-        dViolation['solution'] = 'Remove spaces before "end"'
-        lExpected.append(dViolation)
+        lExpected = [10, 19]
 
         oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, lExpected)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
     def test_fix_rule_020(self):
         oRule = context.rule_020()

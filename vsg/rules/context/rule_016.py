@@ -1,16 +1,16 @@
 
-from vsg.rules import case_item_rule
+from vsg.rules import token_case
 
-from vsg.token import context_declaration as token
+from vsg import token
+
+lTokens = []
+lTokens.append(token.context_declaration.context_simple_name)
 
 
-class rule_016(case_item_rule):
+class rule_016(token_case):
     '''
-    Checks the context identifier has proper case.
-
+    Checks the context_simple_name has proper case.
     '''
 
     def __init__(self):
-        case_item_rule.__init__(self, 'context', '016', token.context_simple_name)
-        self.regionBegin = token.context_keyword
-        self.regionEnd = token.semicolon
+        token_case.__init__(self, 'context', '016', lTokens)

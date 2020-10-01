@@ -1,16 +1,17 @@
 
-from vsg.rules import move_item_and_items_to_the_right_to_next_line_rule
+from vsg.rules import split_line_at_token
 
-from vsg.token import context_declaration as token
+from vsg import token
+
+lTokens = []
+lTokens.append(token.context_declaration.end_keyword)
 
 
-class rule_008(move_item_and_items_to_the_right_to_next_line_rule):
+class rule_008(split_line_at_token):
     '''
-    Moves code after the is keyword to the next line.
-
+    Moves context end keyword and code following it to the next line
     '''
 
     def __init__(self):
-        move_item_and_items_to_the_right_to_next_line_rule.__init__(self, 'context', '008', token.end_keyword)
-        self.regionBegin = token.context_keyword
-        self.regionEnd = token.semicolon
+        split_line_at_token.__init__(self, 'context', '008', lTokens)
+        self.solution = 'Move end keyword and code after end to the next line'

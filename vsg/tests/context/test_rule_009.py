@@ -9,9 +9,10 @@ from vsg.tests import utils
 sTestDir = os.path.dirname(__file__)
 
 lFile = utils.read_vhdlfile(os.path.join(sTestDir,'rule_009_test_input.vhd'))
+
 lExpected = []
 lExpected.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_009_test_input.fixed.vhd'), lExpected)
+utils.read_file(os.path.join(sTestDir, 'rule_009_test_input.fixed.vhd'), lExpected, False)
 
 
 class test_context_rule(unittest.TestCase):
@@ -25,33 +26,12 @@ class test_context_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'context')
         self.assertEqual(oRule.identifier, '009')
 
-        lExpected = []
-        
-        dViolation = utils.add_violation(10)
-        dViolation['iLeftLineNumber'] = 9
-        dViolation['solution'] = 'Move "context" to the right of "end" on line 9'
-        lExpected.append(dViolation)
-
-        dViolation = utils.add_violation(18)
-        dViolation['iLeftLineNumber'] = 16
-        dViolation['solution'] = 'Move "context" to the right of "end" on line 16'
-        lExpected.append(dViolation)
-
-        dViolation = utils.add_violation(24)
-        dViolation['iLeftLineNumber'] = 23
-        dViolation['solution'] = 'Move "context" to the right of "end" on line 23'
-        lExpected.append(dViolation)
-
-        dViolation = utils.add_violation(34)
-        dViolation['iLeftLineNumber'] = 31
-        dViolation['solution'] = 'Move "context" to the right of "end" on line 31'
-        lExpected.append(dViolation)
+        lExpected = [9, 16, 23, 31]
 
         oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, lExpected)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
     def test_fix_rule_009(self):
-        self.maxDiff = None
         oRule = context.rule_009()
 
         oRule.fix(self.oFile)
@@ -64,4 +44,3 @@ class test_context_rule(unittest.TestCase):
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
-

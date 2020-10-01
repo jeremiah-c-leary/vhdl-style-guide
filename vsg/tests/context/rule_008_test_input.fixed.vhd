@@ -6,40 +6,40 @@ end context c1;
 -- try multiline
 context c1
 is
-  library ieee; 
-end context c1;
+  library ieee;
+ end context c1;
 
 context
 c1
-is library ieee; 
-end context
+is library ieee;
+ end context
 c1
 ;
 
 context
 c1
 is
-  library ieee; 
-end
+  library ieee;
+ end
 ;
 
 context
 c1
 is
-  library ieee; 
-end --comment
+  library ieee;
+ end --comment
 context
 ;
 
 -- Try single line
-context c1 is library ieee; use ieee.std_logic_1164; 
-end;
+context c1 is library ieee; use ieee.std_logic_1164;
+ end;
 
-context c1 is library ieee; use ieee.std_logic_1164; 
-end context;
+context c1 is library ieee; use ieee.std_logic_1164;
+ end context;
 
-context c1 is library ieee; use ieee.std_logic_1164; 
-end context c1;
+context c1 is library ieee; use ieee.std_logic_1164;
+ end context c1;
 
 -- Check comments
 

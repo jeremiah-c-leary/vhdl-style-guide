@@ -1,13 +1,16 @@
 
-from vsg.rules import indent_item_rule
+from vsg.rules import token_indent
 
-from vsg.token import context_declaration as token
+from vsg import token
+
+lTokens = []
+lTokens.append(token.context_declaration.end_keyword)
 
 
-class rule_020(indent_item_rule):
+class rule_020(token_indent):
     '''
-    Checks for indent on the context keyword.
+    Checks for indent on the end keyword.
     '''
 
     def __init__(self):
-        indent_item_rule.__init__(self, 'context', '020', token.end_keyword)
+        token_indent.__init__(self, 'context', '020', lTokens)

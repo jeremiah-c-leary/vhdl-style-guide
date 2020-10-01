@@ -9,6 +9,7 @@ from vsg.tests import utils
 sTestDir = os.path.dirname(__file__)
 
 lFile = utils.read_vhdlfile(os.path.join(sTestDir,'rule_008_test_input.vhd'))
+
 lExpected = []
 lExpected.append('')
 utils.read_file(os.path.join(sTestDir, 'rule_008_test_input.fixed.vhd'), lExpected, False)
@@ -25,47 +26,12 @@ class test_context_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'context')
         self.assertEqual(oRule.identifier, '008')
 
-        lExpected = []
-        dViolation = utils.add_violation(9)
-        dViolation['iObject'] = 6
-        dViolation['solution'] = 'Move "end" and the code to the right to the next line.'
-        lExpected.append(dViolation)
-
-        dViolation = utils.add_violation(13)
-        dViolation['iObject'] = 7
-        dViolation['solution'] = 'Move "end" and the code to the right to the next line.'
-        lExpected.append(dViolation)
-
-        dViolation = utils.add_violation(20)
-        dViolation['iObject'] = 6
-        dViolation['solution'] = 'Move "end" and the code to the right to the next line.'
-        lExpected.append(dViolation)
-
-        dViolation = utils.add_violation(26)
-        dViolation['iObject'] = 6
-        dViolation['solution'] = 'Move "end" and the code to the right to the next line.'
-        lExpected.append(dViolation)
-
-        dViolation = utils.add_violation(31)
-        dViolation['iObject'] = 16
-        dViolation['solution'] = 'Move "end" and the code to the right to the next line.'
-        lExpected.append(dViolation)
-
-        dViolation = utils.add_violation(33)
-        dViolation['iObject'] = 16
-        dViolation['solution'] = 'Move "end" and the code to the right to the next line.'
-        lExpected.append(dViolation)
-
-        dViolation = utils.add_violation(35)
-        dViolation['iObject'] = 16
-        dViolation['solution'] = 'Move "end" and the code to the right to the next line.'
-        lExpected.append(dViolation)
+        lExpected = [9, 13, 20, 26, 31, 33, 35]
 
         oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, lExpected)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
     def test_fix_rule_008(self):
-        self.maxDiff = None
         oRule = context.rule_008()
 
         oRule.fix(self.oFile)
@@ -78,4 +44,3 @@ class test_context_rule(unittest.TestCase):
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
-

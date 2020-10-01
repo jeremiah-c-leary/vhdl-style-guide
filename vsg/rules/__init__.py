@@ -55,6 +55,7 @@ from .single_space_after_token import single_space_after_token
 from .single_space_between_token_pairs import single_space_between_token_pairs
 from .consistent_token_case import consistent_token_case
 from .token_prefix import token_prefix
+from .split_line_at_token import split_line_at_token
 
 from vsg.rules import after
 from vsg.rules import architecture

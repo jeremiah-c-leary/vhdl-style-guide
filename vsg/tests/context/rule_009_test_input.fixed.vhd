@@ -10,7 +10,7 @@ end context
  c1;
 
 context
-c1 
+c1
 is
 
 end context

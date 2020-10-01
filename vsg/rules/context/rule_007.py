@@ -1,17 +1,17 @@
 
-from vsg.rules import move_items_after_item_to_next_line_rule
+from vsg.rules import split_line_at_token
 
-from vsg.token import context_declaration as token
+from vsg import token
+
+lTokens = []
+lTokens.append(token.library_clause.keyword)
 
 
-class rule_007(move_items_after_item_to_next_line_rule):
+class rule_007(split_line_at_token):
     '''
     Moves code after the is keyword to the next line.
-
     '''
 
     def __init__(self):
-        move_items_after_item_to_next_line_rule.__init__(self, 'context', '007', token.is_keyword)
-        self.solution = 'Move code after the is keyword to the next line'
-        self.regionBegin = token.context_keyword
-        self.regionEnd = token.semicolon
+        split_line_at_token.__init__(self, 'context', '007', lTokens)
+        self.solution = 'Move library and code after library to the next line'
