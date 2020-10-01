@@ -1,16 +1,16 @@
 
-from vsg.rules import case_rule
-from vsg import utils
+from vsg.rules import token_case
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.constant_declaration.subtype_indication)
 
 
-class rule_011(case_rule):
+class rule_011(token_case):
     '''
     Constant rule 011 checks the constant type has proper case.
     '''
 
     def __init__(self):
-        case_rule.__init__(self, 'constant', '011', 'isConstant')
-        self.solution = 'Change type name to '
-
-    def _extract(self, oLine):
-        return utils.extract_type_name(oLine)
+        token_case.__init__(self, 'constant', '011', lTokens)

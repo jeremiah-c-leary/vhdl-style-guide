@@ -1,16 +1,15 @@
 
-from vsg.rules import single_space_before_character_rule
+from vsg import parser
+
+from vsg.rules import whitespace_before_token
+
+from vsg import token
 
 
-class rule_010(single_space_before_character_rule):
+class rule_010(whitespace_before_token):
     '''
     Constant rule 010 checks for at least a single space before the := keyword.
     '''
-
     def __init__(self):
-        single_space_before_character_rule.__init__(self)
-        self.name = 'constant'
-        self.identifier = '010'
-        self.solution = 'Add a space before the := assignment.'
-        self.sTrigger = 'isConstant'
-        self.sWord = ':='
+        whitespace_before_token.__init__(self, 'constant', '010', token.constant_declaration.assignment_operator)
+        self.solution = 'Ensure at least one space before :=.'

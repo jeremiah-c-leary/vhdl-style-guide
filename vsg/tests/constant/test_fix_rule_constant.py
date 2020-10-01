@@ -14,97 +14,6 @@ class testFixRuleConstantMethods(unittest.TestCase):
         # Process the test file used for all tests
         self.oFile = vhdlFile.vhdlFile(lFile)
 
-    def test_fix_rule_001(self):
-        oRule = constant.rule_001()
-        dExpected = []
-        oRule.fix(self.oFile)
-        oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, dExpected)
-        self.assertEqual(self.oFile.lines[5].line,  '  constant c_const : std_logic := \'1\';')
-        self.assertEqual(self.oFile.lines[6].line,  '  constant const : std_logic := \'0\';')
-        self.assertEqual(self.oFile.lines[7].line,  '  COnstant  c_const : std_logic := \'1\';')
-        self.assertEqual(self.oFile.lines[8].line,  '  Constant c_coNST :  std_logic := \'0\';')
-        self.assertEqual(self.oFile.lines[9].line,  '  constant const  :  STD_LOGIC:=\'0\';')
-        self.assertEqual(self.oFile.lines[10].line, '  constant c_const: std_logic')
-
-    def test_fix_rule_002(self):
-        oRule = constant.rule_002()
-        dExpected = []
-        oRule.fix(self.oFile)
-        oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, dExpected)
-        self.assertEqual(self.oFile.lines[5].line,  '  constant c_const : std_logic := \'1\';')
-        self.assertEqual(self.oFile.lines[6].line,  '  constant const : std_logic := \'0\';')
-        self.assertEqual(self.oFile.lines[7].line,  '  constant  c_const : std_logic := \'1\';')
-        self.assertEqual(self.oFile.lines[8].line,  'constant c_coNST :  std_logic := \'0\';')
-        self.assertEqual(self.oFile.lines[9].line,  'constant const  :  STD_LOGIC:=\'0\';')
-        self.assertEqual(self.oFile.lines[10].line, '   constant c_const: std_logic')
-
-        oRule = constant.rule_002()
-        oRule.case = 'upper'
-        dExpected = []
-        oRule.fix(self.oFile)
-        oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, dExpected)
-        self.assertEqual(self.oFile.lines[5].line,  '  CONSTANT c_const : std_logic := \'1\';')
-        self.assertEqual(self.oFile.lines[6].line,  '  CONSTANT const : std_logic := \'0\';')
-        self.assertEqual(self.oFile.lines[7].line,  '  CONSTANT  c_const : std_logic := \'1\';')
-        self.assertEqual(self.oFile.lines[8].line,  'CONSTANT c_coNST :  std_logic := \'0\';')
-        self.assertEqual(self.oFile.lines[9].line,  'CONSTANT const  :  STD_LOGIC:=\'0\';')
-        self.assertEqual(self.oFile.lines[10].line, '   CONSTANT c_const: std_logic')
-
-    def test_fix_rule_004(self):
-        oRule = constant.rule_004()
-        dExpected = []
-        oRule.fix(self.oFile)
-        oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, dExpected)
-        self.assertEqual(self.oFile.lines[5].line,  '  constant c_const : std_logic := \'1\';')
-        self.assertEqual(self.oFile.lines[6].line,  '  constant const : std_logic := \'0\';')
-        self.assertEqual(self.oFile.lines[7].line,  '  COnstant  c_const : std_logic := \'1\';')
-        self.assertEqual(self.oFile.lines[8].line,  'Constant c_const :  std_logic := \'0\';')
-        self.assertEqual(self.oFile.lines[9].line,  'constant const  :  STD_LOGIC:=\'0\';')
-        self.assertEqual(self.oFile.lines[10].line, '   constant c_const: std_logic')
-
-        oRule = constant.rule_004()
-        oRule.case = 'upper'
-        dExpected = []
-        oRule.fix(self.oFile)
-        oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, dExpected)
-        self.assertEqual(self.oFile.lines[5].line,  '  constant C_CONST : std_logic := \'1\';')
-        self.assertEqual(self.oFile.lines[6].line,  '  constant CONST : std_logic := \'0\';')
-        self.assertEqual(self.oFile.lines[7].line,  '  COnstant  C_CONST : std_logic := \'1\';')
-        self.assertEqual(self.oFile.lines[8].line,  'Constant C_CONST :  std_logic := \'0\';')
-        self.assertEqual(self.oFile.lines[9].line,  'constant CONST  :  STD_LOGIC:=\'0\';')
-        self.assertEqual(self.oFile.lines[10].line, '   constant C_CONST: std_logic')
-
-    def test_fix_rule_005(self):
-        oRule = constant.rule_005()
-        dExpected = []
-        oRule.fix(self.oFile)
-        oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, dExpected)
-        self.assertEqual(self.oFile.lines[5].line,  '  constant c_const : std_logic := \'1\';')
-        self.assertEqual(self.oFile.lines[6].line,  '  constant const : std_logic := \'0\';')
-        self.assertEqual(self.oFile.lines[7].line,  '  COnstant  c_const : std_logic := \'1\';')
-        self.assertEqual(self.oFile.lines[8].line,  'Constant c_coNST : std_logic := \'0\';')
-        self.assertEqual(self.oFile.lines[9].line,  'constant const  : STD_LOGIC:=\'0\';')
-        self.assertEqual(self.oFile.lines[10].line, '   constant c_const: std_logic')
-
-    def test_fix_rule_006(self):
-        oRule = constant.rule_006()
-        dExpected = []
-        oRule.fix(self.oFile)
-        oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, dExpected)
-        self.assertEqual(self.oFile.lines[5].line,  '  constant c_const : std_logic := \'1\';')
-        self.assertEqual(self.oFile.lines[6].line,  '  constant const : std_logic := \'0\';')
-        self.assertEqual(self.oFile.lines[7].line,  '  COnstant  c_const : std_logic := \'1\';')
-        self.assertEqual(self.oFile.lines[8].line,  'Constant c_coNST :  std_logic := \'0\';')
-        self.assertEqual(self.oFile.lines[9].line,  'constant const  :  STD_LOGIC:=\'0\';')
-        self.assertEqual(self.oFile.lines[10].line, '   constant c_const : std_logic')
-
     def test_fix_rule_007(self):
         oRule = constant.rule_007()
         self.assertFalse(oRule.fixable)
@@ -114,33 +23,6 @@ class testFixRuleConstantMethods(unittest.TestCase):
         self.assertEqual(self.oFile.lines[8].line,  'Constant c_coNST :  std_logic := \'0\';')
         self.assertEqual(self.oFile.lines[9].line,  'constant const  :  STD_LOGIC:=\'0\';')
         self.assertEqual(self.oFile.lines[10].line, '   constant c_const: std_logic')
-
-    def test_fix_rule_010(self):
-        oRule = constant.rule_010()
-        dExpected = []
-        oRule.fix(self.oFile)
-        oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, dExpected)
-        self.assertEqual(self.oFile.lines[5].line,  '  constant c_const : std_logic := \'1\';')
-        self.assertEqual(self.oFile.lines[6].line,  '  constant const : std_logic := \'0\';')
-        self.assertEqual(self.oFile.lines[7].line,  '  COnstant  c_const : std_logic := \'1\';')
-        self.assertEqual(self.oFile.lines[8].line,  'Constant c_coNST :  std_logic := \'0\';')
-        self.assertEqual(self.oFile.lines[9].line,  'constant const  :  STD_LOGIC :=\'0\';')
-        self.assertEqual(self.oFile.lines[10].line, '   constant c_const: std_logic')
-        self.assertEqual(self.oFile.lines[38].line, '  constant const : std_logic   := \'0\';')
-
-    def test_fix_rule_011(self):
-        oRule = constant.rule_011()
-        dExpected = []
-        oRule.fix(self.oFile)
-        oRule.analyze(self.oFile)
-        self.assertEqual(self.oFile.lines[5].line,  '  constant c_const : std_logic := \'1\';')
-        self.assertEqual(self.oFile.lines[6].line,  '  constant const : std_logic := \'0\';')
-        self.assertEqual(self.oFile.lines[7].line,  '  COnstant  c_const : std_logic := \'1\';')
-        self.assertEqual(self.oFile.lines[8].line,  'Constant c_coNST :  std_logic := \'0\';')
-        self.assertEqual(self.oFile.lines[9].line,  'constant const  :  std_logic:=\'0\';')
-        self.assertEqual(self.oFile.lines[10].line, '   constant c_const: std_logic')
-        self.assertEqual(oRule.violations, dExpected)
 
     def test_fix_rule_012(self):
         oRule = constant.rule_012()

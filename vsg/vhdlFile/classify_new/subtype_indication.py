@@ -13,7 +13,7 @@ def classify(iToken, lObjects):
     return utils.assign_token(lObjects, iToken, parser.todo)
 
 
-def classify_until(lUntils, iToken, lObjects):
+def classify_until(lUntils, iToken, lObjects, oType=parser.todo):
     '''
     subtype_indication ::=
         [ resolution_indication ] type_mark [ constraint ]
@@ -34,5 +34,5 @@ def classify_until(lUntils, iToken, lObjects):
         elif lObjects[iCurrent].get_value().lower() in lUntils:
             break
         else:
-            utils.assign_token(lObjects, iCurrent, parser.todo)
+            utils.assign_token(lObjects, iCurrent, oType)
     return iCurrent

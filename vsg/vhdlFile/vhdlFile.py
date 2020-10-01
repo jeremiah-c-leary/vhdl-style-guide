@@ -480,6 +480,10 @@ class vhdlFile():
             if isinstance(oToken, token.concurrent_selected_signal_assignment.with_keyword):
                 oToken.set_indent(iIndent)
            
+            ### Constant declaration 
+            if isinstance(oToken, token.constant_declaration.constant_keyword):
+                oToken.set_indent(iIndent)
+
                     
   
     def print_debug(self):

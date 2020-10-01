@@ -1,17 +1,17 @@
 
-from vsg.rules import prefix_rule
-from vsg import utils
+from vsg.rules import token_prefix
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.constant_declaration.identifier)
 
 
-class rule_015(prefix_rule):
+class rule_015(token_prefix):
     '''
     Constant rule 015 checks for prefixes in constant identifiers.
     '''
 
     def __init__(self):
-        prefix_rule.__init__(self, 'constant', '015', 'isConstant')
+        token_prefix.__init__(self, 'constant', '015', lTokens)
         self.prefixes = ['c_']
-        self.solution = 'Constant identifiers'
-
-    def _extract(self, oLine):
-        return utils.extract_class_identifier_list(oLine)
