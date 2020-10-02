@@ -1,12 +1,16 @@
 
-from vsg.rules import indent_item_rule
+from vsg.rules import token_indent
 
-from vsg.token import context_reference as token
+from vsg import token
+
+lTokens = []
+lTokens.append(token.context_reference.keyword)
 
 
-class rule_001(indent_item_rule):
+class rule_001(token_indent):
     '''
     Checks for indent on the context reference keyword.
     '''
+
     def __init__(self):
-        indent_item_rule.__init__(self, 'context_ref', '001', token.keyword)
+        token_indent.__init__(self, 'context_ref', '001', lTokens)

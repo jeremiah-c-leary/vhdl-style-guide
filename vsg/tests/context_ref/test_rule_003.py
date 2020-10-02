@@ -29,25 +29,10 @@ class test_context_ref_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'context_ref')
         self.assertEqual(oRule.identifier, '003')
 
-        lExpected = []
-        dViolation = utils.add_violation(16)
-        dViolation['solution'] = 'Change "CONTEXT" to "context"'
-        lExpected.append(dViolation)
-
-        dViolation = utils.add_violation(20)
-        dViolation['solution'] = 'Change "CONTEXT" to "context"'
-        lExpected.append(dViolation)
-
-        dViolation = utils.add_violation(24)
-        dViolation['solution'] = 'Change "conTEXT" to "context"'
-        lExpected.append(dViolation)
-
-        dViolation = utils.add_violation(28)
-        dViolation['solution'] = 'Change "CoNtExT" to "context"'
-        lExpected.append(dViolation)
+        lExpected = [4, 6]
 
         oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, lExpected)
+        self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
 
     def test_rule_003_upper(self):
         oRule = context_ref.rule_003()
@@ -56,27 +41,9 @@ class test_context_ref_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'context_ref')
         self.assertEqual(oRule.identifier, '003')
 
-        lExpected = []
-
-        dViolation = utils.add_violation(6)
-        dViolation['solution'] = 'Change "context" to "CONTEXT"'
-        lExpected.append(dViolation)
-
-        dViolation = utils.add_violation(10)
-        dViolation['solution'] = 'Change "context" to "CONTEXT"'
-        lExpected.append(dViolation)
-
-        dViolation = utils.add_violation(24)
-        dViolation['solution'] = 'Change "conTEXT" to "CONTEXT"'
-        lExpected.append(dViolation)
-
-        dViolation = utils.add_violation(28)
-        dViolation['solution'] = 'Change "CoNtExT" to "CONTEXT"'
-        lExpected.append(dViolation)
-
-
+        lExpected = [2, 6]
         oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, lExpected)
+        self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
 
     def test_fix_rule_003_lower(self):
         oRule = context_ref.rule_003()

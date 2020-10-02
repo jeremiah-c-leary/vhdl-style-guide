@@ -324,8 +324,18 @@ class vhdlFile():
         iTokenCount = 0
         vLabelFound = False
         bLabelFound = False
+        bLibraryFound = False 
         for oToken in self.lAllObjects:
 
+            if isinstance(oToken, parser.whitespace):
+                continue
+
+            if isinstance(oToken, parser.blank_line):
+                bLibraryFound = False 
+                continue
+
+            if isinstance(oToken, parser.carriage_return):
+                continue
 
             if isinstance(oToken, token.context_declaration.context_keyword):
                 oToken.set_indent(0)
@@ -335,18 +345,23 @@ class vhdlFile():
                 oToken.set_indent(0)
                 iIndent -= 1
 
-
             if isinstance(oToken, token.library_clause.keyword):
                  oToken.set_indent(iIndent)
-            
+                 bLibraryFound = True
+                 continue
 
             if isinstance(oToken, token.use_clause.keyword):
                  oToken.set_indent(iIndent + 1)
+                 continue
             
 
             if isinstance(oToken, token.context_reference.keyword):
-                 oToken.set_indent(iIndent)
-            
+                 if bLibraryFound:
+                     oToken.set_indent(iIndent + 1)
+                 else:
+                     oToken.set_indent(iIndent)
+                 continue 
+
 
             if isinstance(oToken, token.architecture_body.architecture_keyword):
                 oToken.set_indent(0)

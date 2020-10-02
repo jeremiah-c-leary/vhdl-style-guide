@@ -18,7 +18,7 @@ This rule checks the indent of the **context** keyword.
 .. code-block:: vhdl
 
    library ieee;
-     context c1 is
+     context c1;
 
 
 context_ref_002
@@ -70,7 +70,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
 
 .. code-block:: vhdl
 
-   context C1 is
+   context C1;
 
    context CON1, Con2;
 
@@ -78,7 +78,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
 
 .. code-block:: vhdl
 
-   context c1 is
+   context c1;
 
    context con1, con2;
 

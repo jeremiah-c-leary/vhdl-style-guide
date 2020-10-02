@@ -9,12 +9,13 @@ from vsg.tests import utils
 sTestDir = os.path.dirname(__file__)
 
 lFile = utils.read_vhdlfile(os.path.join(sTestDir,'rule_002_test_input.vhd'))
+
 lExpected = []
 lExpected.append('')
 utils.read_file(os.path.join(sTestDir, 'rule_002_test_input.fixed.vhd'), lExpected)
 
 
-class test_context_rule(unittest.TestCase):
+class test_context_ref_rule(unittest.TestCase):
 
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
@@ -25,26 +26,10 @@ class test_context_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'context_ref')
         self.assertEqual(oRule.identifier, '002')
 
-        lExpected = []
-
-        dViolation = utils.add_violation(9)
-        dViolation['solution'] = 'Ensure there are only 1 space(s) between "context" and "con1"'
-        lExpected.append(dViolation)
-
-        dViolation = utils.add_violation(13)
-        dViolation['solution'] = 'Ensure there are only 1 space(s) between "context" and "con1"'
-        lExpected.append(dViolation)
-
-        dViolation = utils.add_violation(18)
-        dViolation['solution'] = 'Ensure there are only 1 space(s) between "context" and "con1"'
-        lExpected.append(dViolation)
-
-        dViolation = utils.add_violation(48)
-        dViolation['solution'] = 'Ensure there are only 1 space(s) between "context" and "con1"'
-        lExpected.append(dViolation)
+        lExpected = [4]
 
         oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, lExpected)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
     def test_fix_rule_002(self):
         oRule = context_ref.rule_002()
@@ -59,4 +44,3 @@ class test_context_rule(unittest.TestCase):
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
-
