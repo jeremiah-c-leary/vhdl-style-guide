@@ -1,16 +1,13 @@
 
-from vsg.rules import insert_blank_line_below_line_containing_item_rule
+from vsg.rules import blank_line_below_line_ending_with_token
 
 from vsg.token import context_declaration as token
 
 
-class rule_023(insert_blank_line_below_line_containing_item_rule):
+class rule_023(blank_line_below_line_ending_with_token):
     '''
-    Checks for a single space between the context keyword and the context identifier
-
+    Case rule 023 ensures a blank line exists below the "is" keyword.
     '''
 
     def __init__(self):
-        insert_blank_line_below_line_containing_item_rule.__init__(self, 'context', '023', token.is_keyword)
-        self.regionBegin = token.context_keyword
-        self.regionEnd = token.semicolon
+        blank_line_below_line_ending_with_token.__init__(self, 'context', '023', [token.is_keyword])

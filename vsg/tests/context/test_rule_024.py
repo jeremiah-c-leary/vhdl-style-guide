@@ -25,13 +25,10 @@ class test_context_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'context')
         self.assertEqual(oRule.identifier, '024')
 
-      
-        lExpected = [8, 11]
+        lExpected = [8]
 
         oRule.analyze(self.oFile)
-        self.assertEqual(lExpected, utils.extract_violation_lines(oRule.violations))
-
-        self.assertEqual('Insert blank line above.', oRule._get_solution(8))
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
     def test_fix_rule_024(self):
         oRule = context.rule_024()

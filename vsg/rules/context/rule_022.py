@@ -1,18 +1,14 @@
 
-from vsg.rules import copy_item_value_and_insert_new_item_after_item_rule
+from vsg.rules import insert_token_left_of_token_if_it_does_not_exist_between_tokens_using_value_from_token
 
 from vsg.token import context_declaration as token
 
 
-class rule_022(copy_item_value_and_insert_new_item_after_item_rule):
+class rule_022(insert_token_left_of_token_if_it_does_not_exist_between_tokens_using_value_from_token):
     '''
-    Checks for the context keyword after the end keyword.
-
+    Checks for indent on the end keyword.
     '''
 
     def __init__(self):
-        copy_item_value_and_insert_new_item_after_item_rule.__init__(self, 'context', '022', token.end_context_keyword, token.semicolon, token.identifier, token.context_simple_name('unknown'))
-        self.solution = 'missing context identifier'
-        self.subphase = 2
-        self.regionBegin = token.context_keyword
-        self.regionEnd = token.semicolon
+        insert_token_left_of_token_if_it_does_not_exist_between_tokens_using_value_from_token.__init__(self, 'context', '022', token.context_simple_name, token.semicolon, token.end_keyword, token.semicolon, token.identifier)
+        self.solution = 'Add context simple same'

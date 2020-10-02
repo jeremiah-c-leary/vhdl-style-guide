@@ -847,6 +847,89 @@ class vhdlFile():
 
         return lReturn
 
+    def get_blank_lines_below_line_ending_with_token(self, lTokens):
+        lReturn = []
+        iLine = 1
+        lCurrentLine = []
+        lTemp = []
+        bTokenFound = False
+        bCrFound = False
+        for iIndex in range(0, len(self.lAllObjects)):
+
+            if not bTokenFound:
+                for oToken in lTokens:
+                    if isinstance(self.lAllObjects[iIndex], oToken):
+                        if utils.are_next_consecutive_token_types([parser.carriage_return], iIndex + 1, self.lAllObjects):
+                            bTokenFound = True
+                            iLineNumber = iLine
+                            break
+                        if utils.are_next_consecutive_token_types([parser.whitespace, parser.carriage_return], iIndex + 1, self.lAllObjects):
+                            bTokenFound = True
+                            iLineNumber = iLine
+                            break
+                        if utils.are_next_consecutive_token_types([parser.whitespace, parser.comment, parser.carriage_return], iIndex + 1, self.lAllObjects):
+                            bTokenFound = True
+                            iLineNumber = iLine
+                            break
+                        if utils.are_next_consecutive_token_types([parser.comment, parser.carriage_return], iIndex + 1, self.lAllObjects):
+                            bTokenFound = True
+                            iLineNumber = iLine
+                            break
+
+
+            if bCrFound:
+                lTemp.append(self.lAllObjects[iIndex])
+
+            if isinstance(self.lAllObjects[iIndex], parser.carriage_return):
+                if not utils.are_next_consecutive_token_types([parser.blank_line, parser.carriage_return], iIndex + 1, self.lAllObjects):
+                    if len(lTemp) > 2:
+                        lTemp.pop()
+                        lReturn.append(Tokens(iStart, iLineNumber, lTemp))
+                    lTemp = []
+                    bCrFound = False
+                    bTokenFound = False
+
+                elif bTokenFound and not bCrFound:
+                    bCrFound = True
+                    iStart = iIndex + 1
+
+                iLine +=1
+
+        return lReturn                    
+
+
+    def get_blank_lines_above_line_starting_with_token(self, lTokens):
+        lReturn = []
+        iLine = 1
+        bStore = False
+        lTemp = []
+        for iIndex in range(0, len(self.lAllObjects)):
+
+            if isinstance(self.lAllObjects[iIndex], parser.blank_line):
+                if not bStore:
+                    iStart = iIndex
+                bStore = True
+
+            if bStore:
+                lTemp.append(self.lAllObjects[iIndex])
+
+            if isinstance(self.lAllObjects[iIndex], parser.carriage_return):
+                iLine +=1
+                iCurrent = iIndex + 1
+                for oToken in lTokens:
+                    if utils.are_next_consecutive_token_types([parser.whitespace, oToken], iCurrent, self.lAllObjects):
+                        lReturn.append(Tokens(iStart, iLine, lTemp))
+                        break
+                    if utils.are_next_consecutive_token_types([oToken], iCurrent, self.lAllObjects):
+                        lReturn.append(Tokens(iStart, iLine, lTemp))
+                        break
+             
+                if not utils.are_next_consecutive_token_types([parser.blank_line, parser.carriage_return], iCurrent, self.lAllObjects):
+                    bStore = False
+                    lTemp = []
+
+        return lReturn                    
+
 
 def _create_empty_return_dictionary():
     dReturn = {}

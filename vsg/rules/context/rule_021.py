@@ -1,16 +1,14 @@
 
-from vsg.rules import insert_item_after_item_rule
+from vsg.rules import insert_token_right_of_token_if_it_does_not_exist_before_token
 
 from vsg.token import context_declaration as token
 
 
-class rule_021(insert_item_after_item_rule):
+class rule_021(insert_token_right_of_token_if_it_does_not_exist_before_token):
     '''
-    Checks for the context keyword after the end keyword.
+    Checks for indent on the end keyword.
+    '''
 
-    '''
     def __init__(self):
-        insert_item_after_item_rule.__init__(self, 'context', '021', token.end_keyword, token.semicolon, token.end_context_keyword('context'))
-        self.insert_space = True
-        self.regionBegin = token.context_keyword
-        self.regionEnd = token.semicolon
+        insert_token_right_of_token_if_it_does_not_exist_before_token.__init__(self, 'context', '021', token.end_context_keyword('context'), token.end_keyword, token.semicolon)
+        self.solution = 'Add context keyword'
