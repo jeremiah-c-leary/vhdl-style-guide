@@ -4,6 +4,7 @@ from vsg import parser
 from vsg import token
 
 from vsg.vhdlFile import classify
+from vsg.vhdlFile.indent import loop_statement
 from vsg.vhdlFile import update
 from vsg.vhdlFile import utils
 
@@ -516,6 +517,7 @@ class vhdlFile():
             if isinstance(oToken, token.file_open_information.is_keyword):
                 oToken.set_indent(iIndent + 1)
 
+            iIndent, bLabelFound = loop_statement.set_indent(iIndent, bLabelFound, oToken)
   
     def print_debug(self):
         for oLine in self.lines:

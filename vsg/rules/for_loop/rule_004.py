@@ -1,27 +1,13 @@
 
-from vsg import rule
-from vsg import fix
-from vsg import utils
+from vsg.rules import single_space_between_tokens
 
-import re
+from vsg.token import loop_statement as token
 
 
-class rule_004(rule.rule):
-    '''Generate rule 004 checks for a single space between the label and :.'''
-
+class rule_004(single_space_between_tokens):
+    '''
+    Checks for a single space between the label and :.
+    '''
     def __init__(self):
-        rule.rule.__init__(self, 'for_loop', '004')
-        self.solution = 'Ensure a single space exists before the colon.'
-        self.phase = 2
-
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isForLoopLabel and not re.match('^\s*\w+\s:', oLine.line):
-            dViolation = utils.create_violation_dict(iLineNumber)
-            dViolation['label'] = utils.extract_label(oLine)[0]
-            self.add_violation(dViolation)
-
-    def _fix_violations(self, oFile):
-        for dViolation in self.violations:
-            iLineNumber = utils.get_violation_line_number(dViolation)
-            sWord = dViolation['label']
-            fix.enforce_one_space_after_word(self, oFile.lines[iLineNumber], sWord)
+        single_space_between_tokens.__init__(self, 'for_loop', '004', token.loop_label, token.label_colon)
+        self.solution = 'Ensure a single space between label and :.' 
