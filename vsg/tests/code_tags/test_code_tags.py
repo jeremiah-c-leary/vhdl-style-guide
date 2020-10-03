@@ -22,6 +22,7 @@ class testCodeTags(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
+    @unittest.skip('Waiting until all rules have been moved to new parser.')
     def test_rule_entity_019(self):
         oRule = entity.rule_019()
 

@@ -1,16 +1,14 @@
 
-from vsg.rules import insert_item_after_item_rule
+from vsg.rules import insert_token_right_of_token_if_it_does_not_exist_before_token
 
 from vsg.token import entity_declaration as token
 
 
-class rule_015(insert_item_after_item_rule):
+class rule_015(insert_token_right_of_token_if_it_does_not_exist_before_token):
     '''
-    Checks for the context keyword after the end keyword.
+    Checks for *entitY* keyword in end entity statement.
+    '''
 
-    '''
     def __init__(self):
-        insert_item_after_item_rule.__init__(self, 'entity', '015', token.end_keyword, token.semicolon, token.end_entity_keyword('entity'))
-        self.insert_space = True
-        self.regionBegin = token.end_keyword
-        self.regionEnd = token.semicolon
+        insert_token_right_of_token_if_it_does_not_exist_before_token.__init__(self, 'entity', '015', token.end_entity_keyword('entity'), token.end_keyword, token.semicolon)
+        self.solution = 'Add entity keyword'

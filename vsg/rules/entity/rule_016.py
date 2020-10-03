@@ -1,15 +1,16 @@
 
-from vsg.rules import remove_blank_lines_above_item_rule
+from vsg.rules import remove_blank_lines_above_line_starting_with_token
 
-from vsg.token import entity_declaration as token
+from vsg import token
+
+lTokens = []
+lTokens.append(token.entity_declaration.end_keyword)
 
 
-class rule_016(remove_blank_lines_above_item_rule):
+class rule_016(remove_blank_lines_above_line_starting_with_token):
     '''
-    Entity rule 016 checks for a blank line above the "end entity" keywords.
+    Component rule 016 checks for a blank line above the "end entity" keywords.
     '''
 
     def __init__(self):
-        remove_blank_lines_above_item_rule.__init__(self, 'entity', '016', token.end_keyword, 0)
-        self.regionBegin = token.end_keyword 
-        self.regionEnd = token.end_keyword 
+        remove_blank_lines_above_line_starting_with_token.__init__(self, 'entity', '016', lTokens)
