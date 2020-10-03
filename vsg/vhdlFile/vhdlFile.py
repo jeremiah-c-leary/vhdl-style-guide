@@ -362,6 +362,13 @@ class vhdlFile():
                      oToken.set_indent(iIndent)
                  continue 
 
+            if isinstance(oToken, token.entity_declaration.entity_keyword):
+                oToken.set_indent(iIndent)
+                iIndent += 1
+
+            if isinstance(oToken, token.entity_declaration.end_keyword):
+                iIndent -= 1
+                oToken.set_indent(iIndent)
 
             if isinstance(oToken, token.architecture_body.architecture_keyword):
                 oToken.set_indent(0)

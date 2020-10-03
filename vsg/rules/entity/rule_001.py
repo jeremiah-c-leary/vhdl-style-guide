@@ -1,11 +1,16 @@
 
-from vsg.rules import indent_item_rule
+from vsg.rules import token_indent
 
-from vsg.token import entity_declaration as token
+from vsg import token
 
-class rule_001(indent_item_rule):
+lTokens = []
+lTokens.append(token.entity_declaration.entity_keyword)
+
+
+class rule_001(token_indent):
     '''
-    Checks for indent of the entity keyword.
+    Constant rule 001 checks for the proper indentation at the beginning of the line.
     '''
+
     def __init__(self):
-        indent_item_rule.__init__(self, 'entity', '001', token.entity_keyword)
+        token_indent.__init__(self, 'entity', '001', lTokens)

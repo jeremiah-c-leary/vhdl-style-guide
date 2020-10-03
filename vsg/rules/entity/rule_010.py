@@ -1,15 +1,16 @@
 
-from vsg.rules import case_item_rule
+from vsg.rules import token_case
 
-from vsg.token import entity_declaration as token
+from vsg import token
+
+lTokens = []
+lTokens.append(token.entity_declaration.end_keyword)
 
 
-class rule_010(case_item_rule):
+class rule_010(token_case):
     '''
     Checks the end keyword has proper case.
     '''
 
     def __init__(self):
-        case_item_rule.__init__(self, 'entity', '010', token.end_keyword)
-        self.regionBegin = token.end_keyword
-        self.regionEnd = token.end_keyword
+        token_case.__init__(self, 'entity', '010', lTokens)

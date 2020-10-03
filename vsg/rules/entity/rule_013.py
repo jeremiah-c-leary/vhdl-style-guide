@@ -1,15 +1,13 @@
 
-from vsg.rules import space_between_items_rule
+from vsg.rules import single_space_between_tokens
 
 from vsg.token import entity_declaration as token
 
 
-class rule_013(space_between_items_rule):
+class rule_013(single_space_between_tokens):
     '''
-    Checks for a single space between the end entity keyword and the entity simple_name.
+    Checks for a single space between the entity end keyword and the entityidentifier and is keyword.
     '''
-
     def __init__(self):
-        space_between_items_rule.__init__(self, 'entity', '013', token.end_entity_keyword, token.entity_simple_name)
-        self.regionBegin = token.end_entity_keyword
-        self.regionEnd = token.entity_simple_name
+        single_space_between_tokens.__init__(self, 'entity', '013', token.end_entity_keyword, token.entity_simple_name)
+        self.solution = 'Reduce spaces between *entity* keyword and the entity simple name to a single space.'
