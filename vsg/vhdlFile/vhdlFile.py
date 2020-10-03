@@ -506,7 +506,16 @@ class vhdlFile():
             if isinstance(oToken, token.constant_declaration.constant_keyword):
                 oToken.set_indent(iIndent)
 
-                    
+            ### File declaration 
+            if isinstance(oToken, token.file_declaration.file_keyword):
+                oToken.set_indent(iIndent)
+
+            if isinstance(oToken, token.file_open_information.open_keyword):
+                oToken.set_indent(iIndent + 1)
+
+            if isinstance(oToken, token.file_open_information.is_keyword):
+                oToken.set_indent(iIndent + 1)
+
   
     def print_debug(self):
         for oLine in self.lines:
@@ -589,32 +598,16 @@ class vhdlFile():
 
     def get_tokens_at_beginning_of_line_matching(self, lTokens):
         iLine = 1
-        lTemp = []
         lReturn = []
-        bStore = False
         for iIndex in range(0, len(self.lAllObjects)):
-            if bStore:
-                lTemp.append(self.lAllObjects[iIndex])
-                if isinstance(lTemp[0], parser.blank_line):
-                    bStore = False
-                    lTemp = []
-                    continue
-                if not isinstance(self.lAllObjects[iIndex], parser.whitespace):
-                    for oToken in lTokens:
-                        if isinstance(self.lAllObjects[iIndex], oToken):
-                            lReturn.append(Tokens(iStart, iLine, lTemp))
-                            bStore = False
-                            lTemp = []
-                            break
-                    else:
-                        bStore = False
-                        lTemp = []
-
             if isinstance(self.lAllObjects[iIndex], parser.carriage_return):
                 iLine +=1
-                bStore = True
                 iStart = iIndex + 1
-                
+                for oToken in lTokens:
+                    if utils.are_next_consecutive_token_types([parser.whitespace, oToken], iStart, self.lAllObjects):
+                        lReturn.append(Tokens(iStart, iLine, self.lAllObjects[iStart:iStart + 2]))
+                    elif utils.are_next_consecutive_token_types([oToken], iStart, self.lAllObjects):
+                        lReturn.append(Tokens(iStart, iLine, [self.lAllObjects[iStart]]))
 
         return lReturn                    
 
