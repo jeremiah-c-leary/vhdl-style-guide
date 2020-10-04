@@ -18,6 +18,7 @@ from vsg.vhdlFile.classify_new import whitespace
 from vsg.vhdlFile.indent import loop_statement
 from vsg.vhdlFile.indent import function_specification
 from vsg.vhdlFile.indent import interface_element
+from vsg.vhdlFile.indent import generate_statement
 
 
 class vhdlFile():
@@ -523,6 +524,7 @@ class vhdlFile():
             iIndent, bLabelFound = loop_statement.set_indent(iIndent, bLabelFound, oToken)
             iIndent, bLabelFound = function_specification.set_indent(iIndent, bLabelFound, oToken)
             iIndent, bLabelFound = interface_element.set_indent(iIndent, bLabelFound, oToken)
+            iIndent, bLabelFound = generate_statement.set_indent(iIndent, bLabelFound, oToken)
   
     def print_debug(self):
         for oLine in self.lines:

@@ -1,24 +1,18 @@
 
-from vsg import rule
-from vsg import fix
-from vsg import utils
+from vsg import token
 
-import re
+from vsg.rules import single_space_between_token_pairs
+
+lTokens = []
+lTokens.append([token.case_generate_statement.label_colon, token.case_generate_statement.case_keyword])
+lTokens.append([token.for_generate_statement.label_colon, token.for_generate_statement.for_keyword])
+lTokens.append([token.if_generate_statement.label_colon, token.if_generate_statement.if_keyword])
 
 
-class rule_014(rule.rule):
-    '''Generate rule 014 checks for a single space between the label and :.'''
-
+class rule_014(single_space_between_token_pairs):
+    '''
+    Checks for a single space between the *end* keyword and the *generate* keyword.
+    '''
     def __init__(self):
-        rule.rule.__init__(self, 'generate', '014')
-        self.solution = 'Ensure a single space exists before the colon.'
-        self.phase = 2
-
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isGenerateKeyword and oLine.isGenerateLabel and not re.match('^\s*\w+\s*:\s\w+', oLine.line):
-            dViolation = utils.create_violation_dict(iLineNumber)
-            self.add_violation(dViolation)
-
-    def _fix_violations(self, oFile):
-        for dViolation in self.violations:
-            fix.enforce_one_space_after_word(self, utils.get_violating_line(oFile, dViolation), ':')
+        single_space_between_token_pairs.__init__(self, 'generate', '014', lTokens)
+        self.solution = 'Ensure a single space exists after the label colon.'

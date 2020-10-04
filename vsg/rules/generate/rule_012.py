@@ -1,16 +1,18 @@
 
-from vsg.rules import case_rule
-from vsg import utils
+from vsg import token
+
+from vsg.rules import token_case
+
+lTokens = []
+lTokens.append(token.case_generate_statement.end_generate_label)
+lTokens.append(token.for_generate_statement.end_generate_label)
+lTokens.append(token.if_generate_statement.end_generate_label)
 
 
-class rule_012(case_rule):
+class rule_012(token_case):
     '''
-    Generate rule 012 checks the "end generate" label has proper case.
+    Checks the *generate* keyword has proper case.
     '''
 
     def __init__(self):
-        case_rule.__init__(self, 'generate', '012', 'isGenerateEnd')
-        self.solution = 'Change end generate label to '
-
-    def _extract(self, oLine):
-        return utils.extract_label(oLine)
+        token_case.__init__(self, 'generate', '012', lTokens)

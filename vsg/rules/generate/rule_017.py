@@ -1,17 +1,19 @@
 
-from vsg.rules import prefix_rule
-from vsg import utils
+from vsg.rules import token_prefix
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.case_generate_statement.generate_label)
+lTokens.append(token.for_generate_statement.generate_label)
+lTokens.append(token.if_generate_statement.generate_label)
 
 
-class rule_017(prefix_rule):
+class rule_017(token_prefix):
     '''
-    Generate rule 017 checks for prefixes in generate statement labels.
+    Constant rule 017 checks for prefixes in generate identifiers.
     '''
 
     def __init__(self):
-        prefix_rule.__init__(self, 'generate', '017', 'isGenerateLabel')
+        token_prefix.__init__(self, 'generate', '017', lTokens)
         self.prefixes = ['gen_']
-        self.solution = 'Generate label'
-
-    def _extract(self, oLine):
-        return utils.extract_label(oLine)

@@ -203,17 +203,21 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
 generate_011
 ############
  
-This rule checks the **end generate** line has a label.
+This rule checks the **end generate** line has a label on for generate statements.
 
 **Violation**
 
 .. code-block:: vhdl
+
+   ram_array : for i in 0 to 127 generate
 
    end generate;
 
 **Fix**
 
 .. code-block:: vhdl
+
+   ram_array : for i in 0 to 127 generate
 
    end generate ram_array;
 
@@ -294,7 +298,7 @@ Keeping the label and generate on the same line reduces excessive indenting.
 generate_016
 ############
 
-This rule checks the alignment of the **when** keyword in generic case statements.
+This rule checks the indent of the **when** keyword in generic case statements.
 
 **Violation**
 
@@ -306,6 +310,7 @@ This rule checks the alignment of the **when** keyword in generic case statement
    when 2 =>
 
 **Fix**
+
 .. code-block:: vhdl
 
    GEN_LABEL : case condition generate
