@@ -1,17 +1,20 @@
 
-from vsg.rules import keyword_alignment_rule
+from vsg.rules import align_tokens_in_region_between_tokens
+
+from vsg import token
+
+lAlign = []
+lAlign.append(token.file_declaration.colon)
+lAlign.append(token.variable_declaration.colon)
+lAlign.append(token.constant_declaration.colon)
 
 
-class rule_012(keyword_alignment_rule):
+class rule_012(align_tokens_in_region_between_tokens):
     '''
     Function rule 012 checks the colons are in the same column for all declarations
     in the function declarative part.
     '''
 
     def __init__(self):
-        keyword_alignment_rule.__init__(self, 'function', '012')
-        self.sKeyword = ':'
-        self.sStartGroupTrigger = 'isFunctionKeyword'
-        self.sEndGroupTrigger = 'isFunctionBegin'
-        self.lLineTriggers = ['isConstant', 'isVariable', 'insideFile']
-        self.solution = 'Align colon with right most colon.'
+        align_tokens_in_region_between_tokens.__init__(self, 'function', '012', lAlign, token.subprogram_body.is_keyword, token.subprogram_body.begin_keyword)
+        self.solution = 'Align :.'

@@ -1,16 +1,16 @@
 
-from vsg.rules import case_rule
-from vsg import utils
+from vsg.rules import token_case
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.subprogram_body.begin_keyword)
 
 
-class rule_004(case_rule):
+class rule_004(token_case):
     '''
-    Function rule 004 checks the "begin" keyword has proper case.
+    Checks the "entity" keyword has proper case.
     '''
 
     def __init__(self):
-        case_rule.__init__(self, 'function', '004', 'isFunctionBegin')
-        self.solution = 'Change "begin" keyword to '
-
-    def _extract(self, oLine):
-        return utils.extract_words(oLine, ['begin'])
+        token_case.__init__(self, 'function', '004', lTokens)

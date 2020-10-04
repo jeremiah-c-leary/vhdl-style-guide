@@ -1,16 +1,16 @@
 
-from vsg.rules import case_rule
-from vsg import utils
+from vsg.rules import token_case
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.function_specification.function_keyword)
 
 
-class rule_005(case_rule):
+class rule_005(token_case):
     '''
-    Function rule 005 checks the function keyword has proper case.
+    Checks the "function" keyword has proper case.
     '''
 
     def __init__(self):
-        case_rule.__init__(self, 'function', '005', 'isFunctionKeyword')
-        self.solution = 'Change "function" keyword to '
-
-    def _extract(self, oLine):
-        return utils.extract_words(oLine, ['function'])
+        token_case.__init__(self, 'function', '005', lTokens)

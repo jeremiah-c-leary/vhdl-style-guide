@@ -18,8 +18,6 @@ lFileConcurrent = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..
 oFileConcurrent = vhdlFile.vhdlFile(lFileConcurrent)
 lFileArchitectureFunctionLoop = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','architecture','architecture_loop_in_function_test_input.vhd'))
 oFileArchitectureFunctionLoop = vhdlFile.vhdlFile(lFileArchitectureFunctionLoop)
-lFileFunction = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','function','function_test_input.vhd'))
-oFileFunction = vhdlFile.vhdlFile(lFileFunction)
 lFileWhitespace = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','whitespace','whitespace_test_input.txt'))
 oFileWhitespace = vhdlFile.vhdlFile(lFileWhitespace)
 
@@ -172,16 +170,6 @@ class testVhdlFileMethods(unittest.TestCase):
         lActual = []
         for iIndex, oLine in enumerate(oFileGeneric.lines):
             if oLine.isGenericDeclaration:
-                lActual.append(iIndex)
-        # Compare
-        self.assertEqual(lActual, lExpected)
-
-    def test_isEndArchitecture_function_assignment(self):
-        lExpected = [122, 153]
-        # Generic actual list
-        lActual = []
-        for iIndex, oLine in enumerate(oFileFunction.lines):
-            if oLine.isEndArchitecture:
                 lActual.append(iIndex)
         # Compare
         self.assertEqual(lActual, lExpected)
