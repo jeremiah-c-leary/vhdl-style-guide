@@ -33,4 +33,15 @@ begin
       end generate LABEL2F;
   end generate LABEL2G;
 
+  -- Test generate_statement_body
+  LABEL_3 : for i in 0 to 7 generate
+
+      signal blah : std_logic;
+
+    begin
+        a <= blah;
+    end;
+
+  end generate LABEL3;
+
 end architecture RTL;

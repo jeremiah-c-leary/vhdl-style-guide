@@ -15,7 +15,6 @@ def classify(iToken, lObjects):
             { concurrent_statement }
         [ end [ alternative_label ] ; ]
     '''
-
     bBlockDeclarativePartFound = False
     iCurrent = utils.find_next_token(iToken, lObjects)
     iLast = iCurrent
@@ -28,8 +27,10 @@ def classify(iToken, lObjects):
     iLast = 0
     while iCurrent != iLast:
         iLast = iCurrent
-        if utils.is_next_token_one_of(['elsif', 'else', 'when', 'end'], iCurrent, lObjects):
+        if utils.is_next_token_one_of(['elsif', 'else', 'when'], iCurrent, lObjects):
             return iCurrent
+        if utils.is_next_token_one_of(['end'], iCurrent, lObjects):
+            break
         iCurrent = concurrent_statement.detect(iCurrent, lObjects)
 
     if bBlockDeclarativePartFound:
