@@ -1,12 +1,16 @@
 
-from vsg.rules import single_space_after_rule
+from vsg import parser
+from vsg import token
 
+from vsg.rules import single_space_between_token_pairs
 
-class rule_003(single_space_after_rule):
+lTokens = []
+lTokens.append([token.generic_clause.generic_keyword, token.generic_clause.open_parenthesis])
+
+class rule_003(single_space_between_token_pairs):
     '''
-    Generic rule 003 checks spacing between "generic" keyword and the open parenthesis.
+    Checks for a single space between the label and :.
     '''
-
     def __init__(self):
-        single_space_after_rule.__init__(self, 'generic', '003', 'isGenericKeyword', 'generic')
+        single_space_between_token_pairs.__init__(self, 'generic', '003', lTokens)
         self.solution = 'Change spacing between "generic" and "(" to one space.'

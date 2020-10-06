@@ -1,29 +1,14 @@
 
-from vsg import rule
-from vsg import utils
+from vsg.rules import insert_carriage_return_after_token_if_it_is_not_followed_by_a_comment_when_between_tokens
 
-import re
+from vsg import token
 
 
-class rule_016(rule.rule):
+class rule_016(insert_carriage_return_after_token_if_it_is_not_followed_by_a_comment_when_between_tokens):
     '''
     Generic rule 016 checks for multiple generic terms on a single line.
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'generic'
-        self.identifier = '016'
+        insert_carriage_return_after_token_if_it_is_not_followed_by_a_comment_when_between_tokens.__init__(self, 'generic', '016', [token.interface_list.semicolon], token.generic_clause.open_parenthesis, token.generic_clause.close_parenthesis)
         self.solution = 'Move multiple generics to their own lines.'
-        self.phase = 1
-
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isGenericDeclaration and re.match('^.*;.*:', oLine.lineNoComment):
-            dViolation = utils.create_violation_dict(iLineNumber)
-            self.add_violation(dViolation)
-
-    def _fix_violations(self, oFile):
-        for dViolation in self.violations[::-1]:
-            iLineNumber = utils.get_violation_line_number(dViolation)
-            for i in range(0, oFile.lines[iLineNumber].line.count(';')):
-                utils.split_line_after_word(oFile, iLineNumber + i, ';')

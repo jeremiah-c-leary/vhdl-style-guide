@@ -1,16 +1,16 @@
 
-from vsg.rules import case_rule
-from vsg import utils
+from vsg.rules import token_case
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.generic_clause.generic_keyword)
 
 
-class rule_009(case_rule):
+class rule_009(token_case):
     '''
-    Generic rule 009 checks the "generic" keyword has proper case.
+    Checks the "generic" keyword has proper case.
     '''
 
     def __init__(self):
-        case_rule.__init__(self, 'generic', '009', 'isGenericKeyword')
-        self.solution = 'Change "generic" keyword to '
-
-    def _extract(self, oLine):
-        return utils.extract_words(oLine, ['generic'])
+        token_case.__init__(self, 'generic', '009', lTokens)

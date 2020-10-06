@@ -26,6 +26,6 @@ def classify(iToken, lObjects):
 
     iCurrent = utils.assign_next_token_required(':', token.colon, iCurrent, lObjects)
 
-    iCurrent = subtype_indication.classify_until([')', ';'], iCurrent, lObjects)
+    iCurrent = subtype_indication.classify_until([')', ';'], iCurrent, lObjects, token.subtype_indication)
 
     return iCurrent

@@ -18,3 +18,8 @@ class colon(parser.colon):
 
     def __init__(self, sString=':'):
         parser.colon.__init__(self)
+
+
+class subtype_indication(parser.subtype_indication):
+    def __init__(self, sString):
+        parser.subtype_indication.__init__(self, sString)

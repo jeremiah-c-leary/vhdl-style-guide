@@ -1,42 +1,14 @@
 
-from vsg import rule
-from vsg import utils
+from vsg.rules import insert_carriage_return_after_token_if_it_is_not_followed_by_a_comment
+
+from vsg.token import generic_clause as token
 
 
-class rule_013(rule.rule):
-    '''Generic rule 013 checks for a generic keyword on the same line as a generic declaration.'''
+class rule_013(insert_carriage_return_after_token_if_it_is_not_followed_by_a_comment):
+    '''
+    Moves generic parameters to their own line.
+    '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'generic'
-        self.identifier = '013'
-        self.solution = 'Move generic declaration to it\'s own line.'
-        self.phase = 1
-
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isGenericDeclaration and oLine.isGenericKeyword:
-            dViolation = utils.create_violation_dict(iLineNumber)
-            self.add_violation(dViolation)
-
-    def _fix_violations(self, oFile):
-        for dViolation in self.violations[::-1]:
-            iLineNumber = utils.get_violation_line_number(dViolation)
-            utils.copy_line(oFile, iLineNumber)
-            oLine = oFile.lines[iLineNumber]
-            oLine.update_line(extract_generic_keyword(oLine.line))
-            oLine.isGenericDeclaration = False
-            oLine = oFile.lines[iLineNumber + 1]
-            oLine.update_line('    ' + extract_generic_definition(oLine.line))
-            oLine.isGenericKeyword = False
-            oLine.isGenericDeclaration = True
-            oLine.insideGenericMap = True
-            oLine.indentLevel = oFile.lines[iLineNumber].indentLevel + 1
-
-
-def extract_generic_keyword(sString):
-    return sString.split('(')[0] + ' ('
-
-
-def extract_generic_definition(sString):
-    lString = sString.split('(')
-    return '('.join(lString[1:])
+        insert_carriage_return_after_token_if_it_is_not_followed_by_a_comment.__init__(self, 'generic', '013', token.open_parenthesis)
+        self.solution = 'Move generic parameter to the next line.'

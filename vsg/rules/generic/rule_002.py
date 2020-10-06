@@ -1,11 +1,16 @@
 
-from vsg.rules import indent_rule
+from vsg.rules import token_indent
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.generic_clause.generic_keyword)
 
 
-class rule_002(indent_rule):
+class rule_002(token_indent):
     '''
-    Generic rule 002 checks indentation of the "generic" keyword.
+    Checks indentation of the "generic" keyword.
     '''
 
     def __init__(self):
-        indent_rule.__init__(self, 'generic', '002', 'isGenericKeyword')
+        token_indent.__init__(self, 'generic', '002', lTokens)

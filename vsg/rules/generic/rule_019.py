@@ -1,12 +1,14 @@
 
-from vsg.rules import remove_blank_lines_above_rule
+from vsg.rules import remove_excessive_blank_lines_above_line_starting_with_token
 
+from vsg.token import generic_clause as token
 
-class rule_019(remove_blank_lines_above_rule):
+lTokens = []
+lTokens.append(token.close_parenthesis)
+
+class rule_019(remove_excessive_blank_lines_above_line_starting_with_token):
     '''
-    Generic rule 019 checks for blank lines above the closing parenthesis.
+    Checks for blank lines above the closing parenthesis.
     '''
-
     def __init__(self):
-        remove_blank_lines_above_rule.__init__(self, 'generic', '019', 'isEndGenericMap')
-        self.solution = 'Remove blank lines above ); keyword.'
+        remove_excessive_blank_lines_above_line_starting_with_token.__init__(self, 'generic', '019', lTokens, iAllow=0)

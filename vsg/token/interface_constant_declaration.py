@@ -14,6 +14,11 @@ class identifier(parser.identifier):
         parser.identifier.__init__(self, sString)
 
 
+class subtype_indication(parser.subtype_indication):
+    def __init__(self, sString):
+        parser.subtype_indication.__init__(self, sString)
+
+
 class colon(parser.colon):
 
     def __init__(self, sString=':'):

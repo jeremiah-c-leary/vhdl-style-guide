@@ -1,12 +1,15 @@
 
-from vsg.rules import remove_blank_lines_above_rule
+from vsg.rules import remove_excessive_blank_lines_above_line_starting_with_token
 
+from vsg.token import generic_clause as token
 
-class rule_001(remove_blank_lines_above_rule):
+lTokens = []
+lTokens.append(token.generic_keyword)
+
+class rule_001(remove_excessive_blank_lines_above_line_starting_with_token):
     '''
-    Generic rule 001 checks for a blank line above the "generic" keyword.
-    '''
+    Checks for more than one blank line above the *generic* keyword.
 
+    '''
     def __init__(self):
-        remove_blank_lines_above_rule.__init__(self, 'generic', '001', 'isGenericKeyword')
-        self.solution = 'Remove blank lines above "generic" keyword.'
+        remove_excessive_blank_lines_above_line_starting_with_token.__init__(self, 'generic', '001', lTokens, iAllow=0)

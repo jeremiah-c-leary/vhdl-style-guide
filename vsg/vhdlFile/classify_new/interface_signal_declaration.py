@@ -31,7 +31,7 @@ def classify(iToken, lObjects):
 
     iCurrent = mode.classify(iCurrent, lObjects)
 
-    iCurrent = subtype_indication.classify_until([';', 'bus', ':='], iCurrent, lObjects)
+    iCurrent = subtype_indication.classify_until([';', 'bus', ':='], iCurrent, lObjects, token.subtype_indication)
 
     iCurrent = utils.assign_next_token_if('bus', token.bus_keyword, iCurrent, lObjects)
 

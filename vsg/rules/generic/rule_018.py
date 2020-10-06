@@ -1,15 +1,14 @@
 
-from vsg.rules import search_for_and_replace_keyword_rule
+from vsg.rules import move_token_next_to_another_token
+
+from vsg.token import generic_clause as token
 
 
-class rule_018(search_for_and_replace_keyword_rule):
+class rule_018(move_token_next_to_another_token):
     '''
-    Generic rule 018 checks the **generic** keyword is on the same line as the (.
+    Checks the **generic** keyword is on the same line as the (.
     '''
 
     def __init__(self):
-        search_for_and_replace_keyword_rule.__init__(self, 'generic', '018')
+        move_token_next_to_another_token.__init__(self, 'generic', '018', token.generic_keyword, token.open_parenthesis)
         self.solution = 'Move the ( to the same line as the "generic" keyword.'
-        self.sKeyword = '('
-        self.sTrigger = 'isGenericKeyword'
-        self.sKeyword2 = 'generic'

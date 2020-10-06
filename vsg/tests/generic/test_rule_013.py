@@ -1,16 +1,21 @@
-import os
 
+import os
 import unittest
 
 from vsg.rules import generic
 from vsg import vhdlFile
 from vsg.tests import utils
 
+sTestDir = os.path.dirname(__file__)
 
-lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','generic','generic_test_input_rule_013.vhd'))
+lFile = utils.read_vhdlfile(os.path.join(sTestDir,'rule_013_test_input.vhd'))
+
+lExpected = []
+lExpected.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_013_test_input.fixed.vhd'), lExpected)
 
 
-class testRulePortMethods(unittest.TestCase):
+class test_generic_rule(unittest.TestCase):
 
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
@@ -21,18 +26,21 @@ class testRulePortMethods(unittest.TestCase):
         self.assertEqual(oRule.name, 'generic')
         self.assertEqual(oRule.identifier, '013')
 
-        dExpected = [utils.add_violation(3)]
-        oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        lExpected = [13]
 
+        oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
     def test_fix_rule_013(self):
         oRule = generic.rule_013()
+
         oRule.fix(self.oFile)
+
+        lActual = []
+        for oLine in self.oFile.lines:
+            lActual.append(oLine.line)
+
+        self.assertEqual(lExpected, lActual)
+
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
-        self.assertEqual(self.oFile.lines[3].line, '  generic  (')
-        self.assertEqual(self.oFile.lines[4].line, '    G_GEN_1 : std_logic_vector(6 downto 0);')
-        self.assertEqual(self.oFile.lines[5].line, '    G_GEN_2 : std_logic_vector(8 downto 1)')
-        self.assertEqual(self.oFile.lines[3].indentLevel + 1, self.oFile.lines[4].indentLevel)
-

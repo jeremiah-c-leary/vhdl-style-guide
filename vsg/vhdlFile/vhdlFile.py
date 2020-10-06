@@ -19,6 +19,7 @@ from vsg.vhdlFile.indent import loop_statement
 from vsg.vhdlFile.indent import function_specification
 from vsg.vhdlFile.indent import interface_element
 from vsg.vhdlFile.indent import generate_statement
+from vsg.vhdlFile.indent import generic_clause
 
 
 class vhdlFile():
@@ -525,6 +526,7 @@ class vhdlFile():
             iIndent, bLabelFound = function_specification.set_indent(iIndent, bLabelFound, oToken)
             iIndent, bLabelFound = interface_element.set_indent(iIndent, bLabelFound, oToken)
             iIndent, bLabelFound = generate_statement.set_indent(iIndent, bLabelFound, oToken)
+            iIndent, bLabelFound = generic_clause.set_indent(iIndent, bLabelFound, oToken)
   
     def print_debug(self):
         for oLine in self.lines:
@@ -557,6 +559,44 @@ class vhdlFile():
 
         return lReturn
 
+    def get_sequence_of_tokens_matching_bounded_by_tokens(self, lTokens, oStart, oEnd):
+        iLine = 1
+        lTemp = []
+        lReturn = []
+        iMatchCount = 0
+        iMatchLength = len(lTokens)
+        iStart = 0
+        bCheck = False
+        for iIndex in range(0, len(self.lAllObjects)):
+
+            if isinstance(self.lAllObjects[iIndex], oStart):
+                bCheck = True
+                lTemp = []
+                iMatchCount = 0
+            if isinstance(self.lAllObjects[iIndex], oEnd):
+                bCheck = False
+                lTemp = []
+                iMatchCount = 0
+
+            if bCheck:
+                if isinstance(self.lAllObjects[iIndex], lTokens[iMatchCount]):
+                    if iMatchCount == 0:
+                        iStart = iIndex
+                    lTemp.append(self.lAllObjects[iIndex])
+                    iMatchCount +=1
+                    if iMatchCount == iMatchLength:
+                        lReturn.append(Tokens(iStart, iLine, lTemp))
+                        lTemp = []
+                        iMatchCount = 0
+                elif iMatchCount > 0:
+                    lTemp = []
+                    iMatchCount = 0
+
+            if isinstance(self.lAllObjects[iIndex], parser.carriage_return):
+                iLine +=1
+
+        return lReturn
+
     def get_tokens_matching(self, lTokens):
         iLine = 1
         lReturn = []
@@ -564,6 +604,25 @@ class vhdlFile():
             for oToken in lTokens:
                 if isinstance(self.lAllObjects[iIndex], oToken):
                     lReturn.append(Tokens(iIndex, iLine, [self.lAllObjects[iIndex]]))
+
+            if isinstance(self.lAllObjects[iIndex], parser.carriage_return):
+                iLine +=1
+
+        return lReturn
+
+    def get_tokens_matching_in_range_bounded_by_tokens(self, lTokens, oStart, oEnd):
+        iLine = 1
+        lReturn = []
+        bSearch = False
+        for iIndex in range(0, len(self.lAllObjects)):
+            if isinstance(self.lAllObjects[iIndex], oStart):
+                bSearch = True
+            if isinstance(self.lAllObjects[iIndex], oEnd):
+                bSearch = False 
+            if bSearch:
+                for oToken in lTokens:
+                    if isinstance(self.lAllObjects[iIndex], oToken):
+                        lReturn.append(Tokens(iIndex, iLine, [self.lAllObjects[iIndex]]))
 
             if isinstance(self.lAllObjects[iIndex], parser.carriage_return):
                 iLine +=1
@@ -598,6 +657,48 @@ class vhdlFile():
                     bStore = False
                 else:
                     bRightFound = True
+
+            if isinstance(self.lAllObjects[iIndex], parser.carriage_return):
+                iLine +=1
+
+        return lReturn
+
+    def get_tokens_bounded_by_token_when_between_tokens(self, oLeft, oRight, oStart, oEnd, include_trailing_whitespace=False):
+        iLine = 1
+        lTemp = []
+        lReturn = []
+        bStore = False
+        bRightFound = False
+        bSearch = False
+        for iIndex in range(0, len(self.lAllObjects)):
+
+            if isinstance(self.lAllObjects[iIndex], oStart):
+                bSearch = True
+            if isinstance(self.lAllObjects[iIndex], oEnd):
+                bSearch = False
+
+            if bSearch:
+                if isinstance(self.lAllObjects[iIndex], oLeft):
+                    bStore = True
+                    iStart = iIndex
+                    iStartLine = iLine
+                if bStore:
+                    lTemp.append(self.lAllObjects[iIndex])
+                if bRightFound:
+                    if isinstance(self.lAllObjects[iIndex], parser.whitespace):
+                        lReturn.append(Tokens(iStart, iStartLine, lTemp))
+                    else:
+                        lReturn.append(Tokens(iStart, iStartLine, lTemp[:-1]))
+                    bRightFound = False
+                    lTemp = []
+                    bStore = False
+                if isinstance(self.lAllObjects[iIndex], oRight) and bStore:
+                    if not include_trailing_whitespace:
+                        lReturn.append(Tokens(iStart, iStartLine, lTemp))
+                        lTemp = []
+                        bStore = False
+                    else:
+                        bRightFound = True
 
             if isinstance(self.lAllObjects[iIndex], parser.carriage_return):
                 iLine +=1
@@ -858,6 +959,30 @@ class vhdlFile():
 
         return lReturn
 
+    def get_token_and_n_tokens_before_it_in_between_tokens(self, lTokens, iTokens, oStart, oEnd):
+        iLine = 1
+        lReturn = []
+        iStart = 0
+        bSearch = False
+        for iIndex in range(0, len(self.lAllObjects)):
+
+            if isinstance(self.lAllObjects[iIndex], oStart):
+                bSearch = True
+            if isinstance(self.lAllObjects[iIndex], oEnd):
+                bSearch = False
+
+            if bSearch:
+                for oToken in lTokens:
+                    if isinstance(self.lAllObjects[iIndex], oToken):
+                        iStart = iIndex - iTokens
+                        lReturn.append(Tokens(iStart, iLine, self.lAllObjects[iIndex - iTokens:iIndex + 1]))
+                        break
+
+            if isinstance(self.lAllObjects[iIndex], parser.carriage_return):
+                iLine +=1
+
+        return lReturn
+
     def get_token_and_n_tokens_after_it(self, lTokens, iTokens):
         iLine = 1
         lReturn = []
@@ -865,6 +990,27 @@ class vhdlFile():
             for oToken in lTokens:
                 if isinstance(self.lAllObjects[iIndex], oToken):
                     lReturn.append(Tokens(iIndex, iLine, self.lAllObjects[iIndex:iTokens + iIndex + 1]))
+
+            if isinstance(self.lAllObjects[iIndex], parser.carriage_return):
+                iLine +=1
+
+        return lReturn
+
+    def get_token_and_n_tokens_after_it_when_between_tokens(self, lTokens, iTokens, oStart, oEnd):
+        iLine = 1
+        lReturn = []
+        bSearch = False
+        for iIndex in range(0, len(self.lAllObjects)):
+
+            if isinstance(self.lAllObjects[iIndex], oStart):
+                bSearch = True
+            if isinstance(self.lAllObjects[iIndex], oEnd):
+                bSearch = False
+
+            if bSearch:
+                for oToken in lTokens:
+                    if isinstance(self.lAllObjects[iIndex], oToken):
+                        lReturn.append(Tokens(iIndex, iLine, self.lAllObjects[iIndex:iTokens + iIndex + 1]))
 
             if isinstance(self.lAllObjects[iIndex], parser.carriage_return):
                 iLine +=1

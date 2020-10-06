@@ -24,7 +24,7 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_signal_declaration.subtype_indication'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 6 |     signal Y : out std_logic) is
@@ -32,7 +32,7 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.out_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_signal_declaration.subtype_indication'>
 <class 'vsg.token.procedure_specification.close_parenthesis'>
 <class 'vsg.token.subprogram_body.is_keyword'>
 --------------------------------------------------------------------------------
@@ -58,7 +58,7 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_signal_declaration.subtype_indication'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 12 |     signal Y : out std_logic) is
@@ -66,7 +66,7 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.out_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_signal_declaration.subtype_indication'>
 <class 'vsg.token.procedure_specification.close_parenthesis'>
 <class 'vsg.token.subprogram_body.is_keyword'>
 --------------------------------------------------------------------------------
@@ -91,7 +91,7 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_signal_declaration.subtype_indication'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 18 |     signal Y : out std_logic) is
@@ -99,7 +99,7 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.out_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_signal_declaration.subtype_indication'>
 <class 'vsg.token.procedure_specification.close_parenthesis'>
 <class 'vsg.token.subprogram_body.is_keyword'>
 --------------------------------------------------------------------------------
@@ -124,7 +124,7 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_signal_declaration.subtype_indication'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 24 |     signal Y : out std_logic) is
@@ -132,7 +132,7 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.out_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_signal_declaration.subtype_indication'>
 <class 'vsg.token.procedure_specification.close_parenthesis'>
 <class 'vsg.token.subprogram_body.is_keyword'>
 --------------------------------------------------------------------------------
@@ -156,7 +156,7 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_signal_declaration.subtype_indication'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 30 |     signal Y : out std_logic) return integer is
@@ -164,7 +164,7 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.out_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_signal_declaration.subtype_indication'>
 <class 'vsg.token.function_specification.close_parenthesis'>
 <class 'vsg.token.function_specification.return_keyword'>
 <class 'vsg.token.type_mark.name'>
@@ -192,7 +192,7 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_signal_declaration.subtype_indication'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 36 |     signal Y : out std_logic) return string is
@@ -200,7 +200,7 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.out_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_signal_declaration.subtype_indication'>
 <class 'vsg.token.function_specification.close_parenthesis'>
 <class 'vsg.token.function_specification.return_keyword'>
 <class 'vsg.token.type_mark.name'>
@@ -227,7 +227,7 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_signal_declaration.subtype_indication'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 42 |     signal Y : out std_logic) return natural is
@@ -235,7 +235,7 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.out_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_signal_declaration.subtype_indication'>
 <class 'vsg.token.function_specification.close_parenthesis'>
 <class 'vsg.token.function_specification.return_keyword'>
 <class 'vsg.token.type_mark.name'>
@@ -262,7 +262,7 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_signal_declaration.subtype_indication'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 48 |     signal Y : out std_logic) return positive is
@@ -270,7 +270,7 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.out_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_signal_declaration.subtype_indication'>
 <class 'vsg.token.function_specification.close_parenthesis'>
 <class 'vsg.token.function_specification.return_keyword'>
 <class 'vsg.token.type_mark.name'>

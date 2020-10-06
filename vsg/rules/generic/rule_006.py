@@ -1,12 +1,23 @@
 
-from vsg.rules import single_space_after_character_rule
+from vsg import parser
+from vsg import token
+
+from vsg.rules import single_space_between_token_pairs_bounded_by_tokens
+
+lTokens = []
+lTokens.append([token.interface_constant_declaration.assignment, parser.todo])
+lTokens.append([token.interface_signal_declaration.assignment, parser.todo])
+lTokens.append([token.interface_variable_declaration.assignment, parser.todo])
+lTokens.append([token.interface_unknown_declaration.assignment, parser.todo])
+
+oStart = token.generic_clause.open_parenthesis
+oEnd = token.generic_clause.close_parenthesis
 
 
-class rule_006(single_space_after_character_rule):
+class rule_006(single_space_between_token_pairs_bounded_by_tokens):
     '''
-    Generic rule 006 checks for a single space after the default assignment in a generic declaration.
+    Checks for a single space between the := and expression.
     '''
-
     def __init__(self):
-        single_space_after_character_rule.__init__(self, 'generic', '006', 'isGenericDeclaration', ':=')
-        self.solution = 'Reduce number of spaces after the default assignment to 1.'
+        single_space_between_token_pairs_bounded_by_tokens.__init__(self, 'generic', '006', lTokens, oStart, oEnd)
+        self.solution = 'Reduce number of spaces after the colon to 1.'

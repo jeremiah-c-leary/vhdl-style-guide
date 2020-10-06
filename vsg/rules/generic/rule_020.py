@@ -1,17 +1,20 @@
 
-from vsg.rules import prefix_rule
-from vsg import utils
+from vsg.rules import token_prefix_between_tokens
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.interface_constant_declaration.identifier)
+lTokens.append(token.interface_signal_declaration.identifier)
+lTokens.append(token.interface_variable_declaration.identifier)
+lTokens.append(token.interface_unknown_declaration.identifier)
 
 
-class rule_020(prefix_rule):
+class rule_020(token_prefix_between_tokens):
     '''
-    Generic rule 020 checks for prefixes in generic names.
+    Checks for prefixes in generic names.
     '''
 
     def __init__(self):
-        prefix_rule.__init__(self, 'generic', '020', 'isGenericDeclaration')
+        token_prefix_between_tokens.__init__(self, 'generic', '020', lTokens, token.generic_clause.open_parenthesis, token.generic_clause.close_parenthesis)
         self.prefixes = ['g_']
-        self.solution = 'Generic names'
-
-    def _extract(self, oLine):
-        return utils.extract_generics(oLine)
