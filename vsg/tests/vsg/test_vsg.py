@@ -277,11 +277,10 @@ class testVsg(unittest.TestCase):
     def test_version_command_line_argument(self):
         lExpected = []
         lExpected.append('VHDL Style Guide (VSG) version ' + version.version)
-        lExpected.append('')
 
         lActual = subprocess.check_output(['bin/vsg','--version'])
         lActual = str(lActual.decode('utf-8')).split('\n')
-        self.assertEqual(lActual, lExpected)
+        self.assertEqual(lExpected[0], lActual[0])
 
     def test_missing_configuration_file(self):
         lExpected = []
