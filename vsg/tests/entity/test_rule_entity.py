@@ -86,7 +86,8 @@ class testRuleEntityMethods(unittest.TestCase):
                      {'lines':[{'number': 113}], 'words_to_fix': {'is'}},
                      {'lines':[{'number': 127}], 'words_to_fix': {'is'}},
                      {'lines':[{'number': 138}], 'words_to_fix': {'is'}},
-                     {'lines':[{'number': 150}], 'words_to_fix': {'is'}}]
+                     {'lines':[{'number': 150}], 'words_to_fix': {'is'}},
+                     {'lines':[{'number': 164}], 'words_to_fix': {'is'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -169,7 +170,8 @@ class testRuleEntityMethods(unittest.TestCase):
                      {'lines':[{'number': 91}], 'words_to_fix': {'entity1'}},
                      {'lines':[{'number': 123}], 'words_to_fix': {'entity1'}},
                      {'lines':[{'number': 146}], 'words_to_fix': {'entity1'}},
-                     {'lines':[{'number': 160}], 'words_to_fix': {'entity1'}}]
+                     {'lines':[{'number': 160}], 'words_to_fix': {'entity1'}},
+                     {'lines':[{'number': 168}], 'words_to_fix': {'entity1'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
@@ -206,7 +208,8 @@ class testRuleEntityMethods(unittest.TestCase):
                      {'lines':[{'number': 123}], 'words_to_fix': {'entity'}},
                      {'lines':[{'number': 133}], 'words_to_fix': {'entity'}},
                      {'lines':[{'number': 146}], 'words_to_fix': {'entity'}},
-                     {'lines':[{'number': 160}], 'words_to_fix': {'entity'}}]
+                     {'lines':[{'number': 160}], 'words_to_fix': {'entity'}},
+                     {'lines':[{'number': 168}], 'words_to_fix': {'entity'}}]
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 

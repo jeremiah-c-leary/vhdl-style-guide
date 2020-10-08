@@ -159,3 +159,10 @@ entity entity1 is
   );
 end entity entity1;
 
+-- Test for ports with block in the name
+
+entity entity1 is
+  port (
+    block : in std_logic;
+  );
+end entity entity1;

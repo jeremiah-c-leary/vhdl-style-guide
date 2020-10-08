@@ -81,7 +81,8 @@ class testVhdlFileMethods(unittest.TestCase):
 
 
     def test_insideEntity_assignment(self):
-        lExpected = [0,1,2,17,18,48,64,79,92,93,104,105,106,107,108,109,110,111,112,124,125,126,134,135,136,137,147, 148, 149, 161]
+        lExpected = [0,1,2,17,18,48,64,79,92,93,104,105,106,107,108,109,110,111,112,124,125,126,134,135,136,137,147, 148, 149, 161, 162, 163]
+#        lExpected.extend(range(164,169))
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFileEntity.lines):
@@ -93,6 +94,7 @@ class testVhdlFileMethods(unittest.TestCase):
     def test_isEntityDeclaration_assignment(self):
         lExpected = [3,19,34,49,65,80,94,113,127,138]
         lExpected.append(150)
+        lExpected.append(164)
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFileEntity.lines):
@@ -104,6 +106,7 @@ class testVhdlFileMethods(unittest.TestCase):
     def test_isEndEntityDeclaration_assignment(self):
         lExpected = [16,33,47,63,78,91,103,123,133,146]
         lExpected.append(160)
+        lExpected.append(168)
         # Generic actual list
         lActual = []
         for iIndex, oLine in enumerate(oFileEntity.lines):
