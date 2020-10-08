@@ -87,19 +87,20 @@ def open_configuration_file(sFileName, sJUnitFileName=None):
         with open(sFileName) as yaml_file:
             tempConfiguration = yaml.full_load(yaml_file)
     except IOError:
-        print('ERROR: Could not find configuration file: ' + sFileName)
+        sys.stderr.write('ERROR: Could not find configuration file: ' + sFileName + '\n')
         write_invalid_configuration_junit_file(sFileName, sJUnitFileName)
         sys.exit(1)
     except yaml.scanner.ScannerError as e:
-        print('ERROR: Invalid configuration file: ' + sFileName)
-        print(e)
+        sys.stderr.write('ERROR: Invalid configuration file: ' + sFileName + '\n')
+        sys.stderr.write('\n')
+        sys.stderr.write(str(e) + '\n')
         write_invalid_configuration_junit_file(sFileName, sJUnitFileName)
-        exit()
+        exit(1)
     except yaml.parser.ParserError as e:
-        print('ERROR: Invalid configuration file: ' + sFileName)
-        print(e)
+        sys.stderr.write('ERROR: Invalid configuration file: ' + sFileName + '\n')
+        sys.stderr.write(str(e) + '\n')
         write_invalid_configuration_junit_file(sFileName, sJUnitFileName)
-        exit()
+        exit(1)
     return tempConfiguration
 
 

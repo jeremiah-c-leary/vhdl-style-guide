@@ -101,7 +101,8 @@ class testVsg(unittest.TestCase):
         lActual = str(lActual.decode('utf-8')).split('\n')
         self.assertEqual(lActual, lExpected)
 
-    def test_invalid_configuration(self):
+    @mock.patch('sys.stderr')
+    def test_invalid_configuration(self, mockStderr):
         utils.remove_file('vsg/tests/vsg/config_error.actual.xml')
         lExpected = []
         lExpected.append('ERROR: Invalid configuration file: vsg/tests/vsg/config_error.json')
@@ -110,8 +111,12 @@ class testVsg(unittest.TestCase):
         lExpected.append('  in "vsg/tests/vsg/config_error.json", line 2, column 16')
         lExpected.append('')
 
-        lActual = subprocess.check_output(['bin/vsg','--configuration','vsg/tests/vsg/config_error.json','--output_format','syntastic','-f','vsg/tests/vsg/entity1.vhd','--junit','vsg/tests/vsg/config_error.actual.xml'])
-        lActual = str(lActual.decode('utf-8')).split('\n')
+        try:
+            lActual = subprocess.check_output(['bin/vsg','--configuration','vsg/tests/vsg/config_error.json','--output_format','syntastic','-f','vsg/tests/vsg/entity1.vhd','--junit','vsg/tests/vsg/config_error.actual.xml'], stderr=subprocess.STDOUT)
+        except subprocess.CalledProcessError as e:
+            lActual = str(e.output.decode('utf-8')).split('\n')
+            iExitStatus = e.returncode
+
         self.assertEqual(lActual, lExpected)
         # Read in the expected JUnit XML file for comparison
         lExpected = []
@@ -123,6 +128,9 @@ class testVsg(unittest.TestCase):
         for iLineNumber, sLine in enumerate(lExpected):
             if iLineNumber != 1:
                 self.assertEqual(sLine, lActual[iLineNumber])
+
+        self.assertEqual(iExitStatus,1)
+
         # Clean up
         utils.remove_file('vsg/tests/vsg/config_error.actual.xml')
 
@@ -282,13 +290,14 @@ class testVsg(unittest.TestCase):
         lActual = str(lActual.decode('utf-8')).split('\n')
         self.assertEqual(lExpected[0], lActual[0])
 
-    def test_missing_configuration_file(self):
+    @mock.patch('sys.stderr')
+    def test_missing_configuration_file(self, mockStderr):
         lExpected = []
         lExpected.append('ERROR: Could not find configuration file: missing_configuration.yaml')
         lExpected.append('')
 
         try:
-            subprocess.check_output(['bin/vsg','-c', 'missing_configuration.yaml'])
+            subprocess.check_output(['bin/vsg','-c', 'missing_configuration.yaml'], stderr=subprocess.STDOUT)
         except subprocess.CalledProcessError as e:
             lActual = str(e.output.decode('utf-8')).split('\n')
             iExitStatus = e.returncode
