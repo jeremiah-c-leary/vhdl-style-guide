@@ -95,12 +95,12 @@ def open_configuration_file(sFileName, sJUnitFileName=None):
         sys.stderr.write('\n')
         sys.stderr.write(str(e) + '\n')
         write_invalid_configuration_junit_file(sFileName, sJUnitFileName)
-        exit(1)
+        exit(2)
     except yaml.parser.ParserError as e:
         sys.stderr.write('ERROR: Invalid configuration file: ' + sFileName + '\n')
         sys.stderr.write(str(e) + '\n')
         write_invalid_configuration_junit_file(sFileName, sJUnitFileName)
-        exit(1)
+        exit(2)
     return tempConfiguration
 
 

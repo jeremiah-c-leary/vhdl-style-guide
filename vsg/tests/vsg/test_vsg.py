@@ -129,7 +129,7 @@ class testVsg(unittest.TestCase):
             if iLineNumber != 1:
                 self.assertEqual(sLine, lActual[iLineNumber])
 
-        self.assertEqual(iExitStatus,1)
+        self.assertEqual(iExitStatus,2)
 
         # Clean up
         utils.remove_file('vsg/tests/vsg/config_error.actual.xml')
