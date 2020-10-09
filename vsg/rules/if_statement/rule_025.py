@@ -1,16 +1,16 @@
 
-from vsg.rules import case_rule
-from vsg import utils
+from vsg.rules import token_case
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.if_statement.if_keyword)
 
 
-class rule_025(case_rule):
+class rule_025(token_case):
     '''
-    If rule 025 checks the "if" keyword has proper case.
+    Checks the "if" keyword has proper case.
     '''
 
     def __init__(self):
-        case_rule.__init__(self, 'if', '025', 'isIfKeyword')
-        self.solution = 'Change "if" keyword to '
-
-    def _extract(self, oLine):
-        return utils.extract_words(oLine, ['if'])
+        token_case.__init__(self, 'if', '025', lTokens)

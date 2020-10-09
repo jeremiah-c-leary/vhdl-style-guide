@@ -1,16 +1,16 @@
 
-from vsg.rules import case_rule
-from vsg import utils
+from vsg.rules import token_case
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.if_statement.elsif_keyword)
 
 
-class rule_026(case_rule):
+class rule_026(token_case):
     '''
-    If rule 026 checks the "elsif" keyword has proper case.
+    Checks the "elsif" keyword has proper case.
     '''
 
     def __init__(self):
-        case_rule.__init__(self, 'if', '026', 'isElseIfKeyword')
-        self.solution = 'Change "elsif" keyword to '
-
-    def _extract(self, oLine):
-        return utils.extract_words(oLine, ['elsif'])
+        token_case.__init__(self, 'if', '026', lTokens)

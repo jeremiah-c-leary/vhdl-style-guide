@@ -1,12 +1,16 @@
 
-from vsg.rules import remove_blank_lines_above_rule
+from vsg.rules import remove_excessive_blank_lines_above_line_starting_with_token
 
+from vsg.token import if_statement as token
 
-class rule_007(remove_blank_lines_above_rule):
+lTokens = []
+lTokens.append(token.elsif_keyword)
+
+class rule_007(remove_excessive_blank_lines_above_line_starting_with_token):
     '''
-    If rule 007 checks for an empty line before the "elsif" keyword.
-    '''
+    Checks for an empty line before the "elsif" keyword.
 
+    '''
     def __init__(self):
-        remove_blank_lines_above_rule.__init__(self, 'if', '007', 'isElseIfKeyword', 'isEndCaseKeyword')
+        remove_excessive_blank_lines_above_line_starting_with_token.__init__(self, 'if', '007', lTokens, iAllow=0)
         self.solution = 'Remove blank line(s) before the "elsif" keyword.'

@@ -1,28 +1,17 @@
 
-from vsg import rule
-from vsg import fix
-from vsg import utils
+from vsg import parser
+from vsg import token
 
-import re
+from vsg.rules import single_space_between_token_pairs
+
+lTokens = []
+lTokens.append([token.if_statement.end_keyword, token.if_statement.end_if_keyword])
 
 
-class rule_015(rule.rule):
-    '''If rule 015 checks there is a single space between the "end" and "if" keywords.'''
-
+class rule_015(single_space_between_token_pairs):
+    '''
+    Checks there is a single space between the if keyword and the (.
+    '''
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'if'
-        self.identifier = '015'
+        single_space_between_token_pairs.__init__(self, 'if', '015', lTokens)
         self.solution = 'Ensure only a single space exists between the "end" and "if" keywords.'
-        self.phase = 2
-
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isEndIfKeyword:
-            if re.match('^\s*end\s+if', oLine.line, re.IGNORECASE):
-                if not re.match('^\s*end\sif', oLine.line, re.IGNORECASE):
-                    dViolation = utils.create_violation_dict(iLineNumber)
-                    self.add_violation(dViolation)
-
-    def _fix_violations(self, oFile):
-        for dViolation in self.violations:
-            fix.enforce_one_space_after_word(self, utils.get_violating_line(oFile, dViolation), 'end')

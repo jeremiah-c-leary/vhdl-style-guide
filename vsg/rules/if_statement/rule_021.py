@@ -1,36 +1,17 @@
 
-from vsg import rule
-from vsg import utils
+from vsg.rules import split_line_at_token
 
-import re
+from vsg import token
+
+lTokens = []
+lTokens.append(token.if_statement.else_keyword)
 
 
-class rule_021(rule.rule):
+class rule_021(split_line_at_token):
     '''
-    If rule 021 checks the "else" keyword is on it's own line.
+    Moves code after the *else* keyword to the next line.
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'if'
-        self.identifier = '021'
+        split_line_at_token.__init__(self, 'if', '021', lTokens)
         self.solution = 'Move "else" keyword to it\'s own line.'
-        self.phase = 1
-
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isElseKeyword and not re.match('^\s*else', oLine.lineLower):
-            dViolation = utils.create_violation_dict(iLineNumber)
-            self.add_violation(dViolation)
-
-    def _fix_violations(self, oFile):
-        for dViolation in self.violations[::-1]:
-            iLineNumber = utils.get_violation_line_number(dViolation)
-            utils.split_line_before_word(oFile, iLineNumber, 'else')
-            oFile.lines[iLineNumber].isElseKeyword = False
-            oFile.lines[iLineNumber + 1].isIfKeyword = False
-            oFile.lines[iLineNumber + 1].isElseIfKeyword = False
-            oFile.lines[iLineNumber + 1].isThenKeyword = False
-            oFile.lines[iLineNumber].isLastEndIf = False
-            oFile.lines[iLineNumber + 1].isFirstIf = False
-            if not oFile.lines[iLineNumber].isIfKeyword:
-                oFile.lines[iLineNumber + 1].indentLevel -= 1

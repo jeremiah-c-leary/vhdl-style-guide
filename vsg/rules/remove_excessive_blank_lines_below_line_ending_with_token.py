@@ -24,11 +24,12 @@ class remove_excessive_blank_lines_below_line_ending_with_token(rule_item.Rule):
        token object that a blank line below should appear
     '''
 
-    def __init__(self, name, identifier, lTokens):
+    def __init__(self, name, identifier, lTokens, iAllow=1):
         rule_item.Rule.__init__(self, name=name, identifier=identifier)
-        self.solution = 'Insert blank line below'
+        self.solution = 'Remove blank lines below'
         self.phase = 3
         self.lTokens = lTokens
+        self.iAllow = iAllow
 
     def analyze(self, oFile):
         lToi = oFile.get_blank_lines_below_line_ending_with_token(self.lTokens)
@@ -38,7 +39,7 @@ class remove_excessive_blank_lines_below_line_ending_with_token(rule_item.Rule):
             for oToken in lTokens:
                 if isinstance(oToken, parser.blank_line):
                     iCount += 1
-            if iCount > 1:
+            if iCount > self.iAllow:
                 oViolation = violation.New(oToi.get_line_number(), oToi, self.solution)
                 self.add_violation(oViolation)
 
@@ -55,6 +56,6 @@ class remove_excessive_blank_lines_below_line_ending_with_token(rule_item.Rule):
     def _fix_violation(self, oFile):
         for oViolation in self.violations:
             lTokens = oViolation.get_tokens()
-            lNewTokens = [lTokens[0]]
+            lNewTokens = lTokens[0:2*self.iAllow]
             oViolation.set_tokens(lNewTokens)
         oFile.update(self.violations)

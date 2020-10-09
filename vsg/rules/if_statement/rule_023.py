@@ -1,30 +1,17 @@
 
-from vsg import rule
-from vsg import utils
+from vsg.rules import split_line_at_token
 
-import re
+from vsg import token
+
+lTokens = []
+lTokens.append(token.if_statement.elsif_keyword)
 
 
-class rule_023(rule.rule):
-    '''If rule 023 checks the "elsif" keyword is on it's own line.'''
+class rule_023(split_line_at_token):
+    '''
+    Moves code after the *else* keyword to the next line.
+    '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'if'
-        self.identifier = '023'
+        split_line_at_token.__init__(self, 'if', '023', lTokens)
         self.solution = 'Move "elsif" keyword to it\'s own line.'
-        self.phase = 1
-
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isElseIfKeyword and not re.match('^\s*elsif', oLine.lineLower):
-            dViolation = utils.create_violation_dict(iLineNumber)
-            self.add_violation(dViolation)
-
-    def _fix_violations(self, oFile):
-        for dViolation in self.violations[::-1]:
-            iLineNumber = utils.get_violation_line_number(dViolation)
-            utils.split_line_before_word(oFile, iLineNumber, 'elsif')
-            oFile.lines[iLineNumber].isLastEndIf = False
-            oFile.lines[iLineNumber].isElseIfKeyword = False
-            oFile.lines[iLineNumber + 1].isIfKeyword = False
-            oFile.lines[iLineNumber + 1].isFirstIf = False

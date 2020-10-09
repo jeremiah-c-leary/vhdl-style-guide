@@ -1,16 +1,16 @@
 
-from vsg.rules import case_rule
-from vsg import utils
+from vsg.rules import token_case
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.if_statement.end_keyword)
 
 
-class rule_028(case_rule):
+class rule_028(token_case):
     '''
-    If rule 028 checks the "end" keyword has proper case.
+    Checks the "end" keyword has proper case.
     '''
 
     def __init__(self):
-        case_rule.__init__(self, 'if', '028', 'isEndIfKeyword')
-        self.solution = 'Change "end" keyword to '
-
-    def _extract(self, oLine):
-        return utils.extract_words(oLine, ['end'])
+        token_case.__init__(self, 'if', '028', lTokens)

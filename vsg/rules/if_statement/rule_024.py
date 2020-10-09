@@ -1,37 +1,14 @@
 
-from vsg import rule
-from vsg import utils
+from vsg.rules import insert_carriage_return_after_token_if_it_is_not_followed_by_a_comment
 
-import re
+from vsg.token import if_statement as token
 
 
-class rule_024(rule.rule):
+class rule_024(insert_carriage_return_after_token_if_it_is_not_followed_by_a_comment):
     '''
-    If rule 024 checks for code after the "then" keyword.
+    Moves code after the *then* keyword to the next line.
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'if'
-        self.identifier = '024'
+        insert_carriage_return_after_token_if_it_is_not_followed_by_a_comment.__init__(self, 'if', '024', token.then_keyword)
         self.solution = 'Move code after "then" keyword to the next line.'
-        self.phase = 1
-
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isThenKeyword and re.match('^.*[\s|)]then\s+\w', oLine.line, re.IGNORECASE):
-            dViolation = utils.create_violation_dict(iLineNumber)
-            self.add_violation(dViolation)
-
-    def _fix_violations(self, oFile):
-        for dViolation in self.violations[::-1]:
-            iLineNumber = utils.get_violation_line_number(dViolation)
-            utils.split_line_after_word(oFile, iLineNumber, 'then')
-            oFile.lines[iLineNumber].isEndIfKeyword = False
-            oFile.lines[iLineNumber].isElseKeyword = False
-            oFile.lines[iLineNumber + 1].isThenKeyword = False
-            oFile.lines[iLineNumber + 1].isIfKeyword = False
-            oFile.lines[iLineNumber + 1].isElseIfKeyword = False
-            oFile.lines[iLineNumber + 1].indentLevel += 1
-            oFile.lines[iLineNumber].isLastEndIf = False
-            utils.reclassify_line(oFile, iLineNumber)
-            oFile.lines[iLineNumber + 1].isFirstIf = False

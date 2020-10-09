@@ -1,11 +1,16 @@
 
-from vsg.rules import indent_rule
+from vsg.rules import token_indent
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.if_statement.end_keyword)
 
 
-class rule_014(indent_rule):
+class rule_014(token_indent):
     '''
-    If rule 014 checks the indent of the "end if" keyword.
+    Checks the indent of the "end" keyword.
     '''
 
     def __init__(self):
-        indent_rule.__init__(self, 'if', '014', 'isEndIfKeyword')
+        token_indent.__init__(self, 'if', '014', lTokens)

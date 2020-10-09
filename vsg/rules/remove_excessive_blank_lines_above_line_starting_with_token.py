@@ -26,7 +26,7 @@ class remove_excessive_blank_lines_above_line_starting_with_token(rule_item.Rule
 
     def __init__(self, name, identifier, lTokens, iAllow=1):
         rule_item.Rule.__init__(self, name=name, identifier=identifier)
-        self.solution = 'Insert blank line below'
+        self.solution = 'Remove blank lines above'
         self.phase = 3
         self.lTokens = lTokens
         self.iAllow = iAllow
@@ -56,9 +56,6 @@ class remove_excessive_blank_lines_above_line_starting_with_token(rule_item.Rule
     def _fix_violation(self, oFile):
         for oViolation in self.violations:
             lTokens = oViolation.get_tokens()
-            if self.iAllow == 0:
-                lNewTokens = []
-            else:
-                lNewTokens = lTokens[0:2*self.iAllow]
+            lNewTokens = lTokens[0:2*self.iAllow]
             oViolation.set_tokens(lNewTokens)
         oFile.update(self.violations)

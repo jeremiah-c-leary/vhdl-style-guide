@@ -20,6 +20,7 @@ from vsg.vhdlFile.indent import function_specification
 from vsg.vhdlFile.indent import interface_element
 from vsg.vhdlFile.indent import generate_statement
 from vsg.vhdlFile.indent import generic_clause
+from vsg.vhdlFile.indent import if_statement
 
 
 class vhdlFile():
@@ -527,6 +528,7 @@ class vhdlFile():
             iIndent, bLabelFound = interface_element.set_indent(iIndent, bLabelFound, oToken)
             iIndent, bLabelFound = generate_statement.set_indent(iIndent, bLabelFound, oToken)
             iIndent, bLabelFound = generic_clause.set_indent(iIndent, bLabelFound, oToken)
+            iIndent, bLabelFound = if_statement.set_indent(iIndent, bLabelFound, oToken)
   
     def print_debug(self):
         for oLine in self.lines:
@@ -541,6 +543,7 @@ class vhdlFile():
         iMatchLength = len(lTokens)
         iStart = 0
         for iIndex in range(0, len(self.lAllObjects)):
+
             if isinstance(self.lAllObjects[iIndex], lTokens[iMatchCount]):
                 if iMatchCount == 0:
                     iStart = iIndex
@@ -1053,8 +1056,11 @@ class vhdlFile():
             if isinstance(self.lAllObjects[iIndex], parser.carriage_return):
                 if not utils.are_next_consecutive_token_types([parser.blank_line, parser.carriage_return], iIndex + 1, self.lAllObjects):
                     if len(lTemp) > 2:
-                        lTemp.pop()
                         lReturn.append(Tokens(iStart, iLineNumber, lTemp))
+                    elif len(lTemp) == 2:
+                        lReturn.append(Tokens(iStart, iLineNumber, lTemp))
+
+
                     lTemp = []
                     bCrFound = False
                     bTokenFound = False

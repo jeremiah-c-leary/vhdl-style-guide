@@ -1,16 +1,16 @@
 
-from vsg.rules import case_rule
-from vsg import utils
+from vsg.rules import token_case
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.if_statement.then_keyword)
 
 
-class rule_029(case_rule):
+class rule_029(token_case):
     '''
-    If rule 029 checks the **then** keyword has proper case.
+    Checks the *then* keyword has proper case.
     '''
 
     def __init__(self):
-        case_rule.__init__(self, 'if', '029', 'isThenKeyword')
-        self.solution = 'Change "then" keyword to '
-
-    def _extract(self, oLine):
-        return utils.extract_words(oLine, ['then'])
+        token_case.__init__(self, 'if', '029', lTokens)
