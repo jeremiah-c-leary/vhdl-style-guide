@@ -1,16 +1,20 @@
 
-from vsg.rules import case_rule
-from vsg import utils
+from vsg.rules import token_case_in_range_bounded_by_tokens
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.port_map_aspect.port_keyword)
+lTokens.append(token.port_map_aspect.map_keyword)
+
+oStart = token.component_instantiation_statement.label_colon
+oEnd = token.component_instantiation_statement.semicolon
 
 
-class rule_006(case_rule):
+class rule_006(token_case_in_range_bounded_by_tokens):
     '''
-    Instantiation rule 006 checks the "port map" keywords have proper case.
+    Checks the "port map" keywords have proper case.
     '''
 
     def __init__(self):
-        case_rule.__init__(self, 'instantiation', '006', 'isInstantiationPortKeyword')
-        self.solution = 'Change "port map" keywords to '
-
-    def _extract(self, oLine):
-        return utils.extract_words(oLine, ['port', 'map'])
+        token_case_in_range_bounded_by_tokens.__init__(self, 'instantiation', '006', lTokens, oStart, oEnd)

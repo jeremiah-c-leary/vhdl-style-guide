@@ -1,15 +1,16 @@
 
-from vsg.rules import line_below_rule
+from vsg.rules import blank_line_below_line_ending_with_token
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.component_instantiation_statement.semicolon)
 
 
-class rule_019(line_below_rule):
+class rule_019(blank_line_below_line_ending_with_token):
     '''
-    Instantiation rule 019 checks for a blank line below the end of the port
-    declaration.
+    Checks for a blank line below the end of the port map aspect.
     '''
 
     def __init__(self):
-        line_below_rule.__init__(self)
-        self.name = 'instantiation'
-        self.identifier = '019'
-        self.condition = 'isInstantiationPortEnd'
+        blank_line_below_line_ending_with_token.__init__(self, 'instantiation', '019', lTokens)

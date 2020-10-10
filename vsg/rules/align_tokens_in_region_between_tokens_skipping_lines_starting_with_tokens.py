@@ -106,6 +106,17 @@ class align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens(
 
                    dAnalysis = {}
 
+               if isinstance(oToken, token.generic_map_aspect.close_parenthesis) and self.separate_generic_port_alignment:
+                   add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
+                   for iKey in list(dAnalysis.keys()):
+                       if dAnalysis[iKey]['adjust'] != 0:
+                           oLineTokens = oFile.get_tokens_from_line(iKey)
+                           oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, self.solution)
+                           oViolation.set_action(dAnalysis[iKey])
+                           self.violations.append(oViolation)
+
+                   dAnalysis = {}
+
                if isinstance(oToken, parser.carriage_return):
                    iLine += 1
                    iColumn = 0

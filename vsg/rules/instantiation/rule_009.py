@@ -1,15 +1,16 @@
 
-from vsg.rules import case_rule
+from vsg.rules import token_case
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.instantiated_unit.component_name)
 
 
-class rule_009(case_rule):
+class rule_009(token_case):
     '''
-    Instantiation rule 009 checks the entity name has proper case in the instantiation declaration line.
+    Checks the component name has proper case.
     '''
 
     def __init__(self):
-        case_rule.__init__(self, 'instantiation', '009', 'isInstantiationDeclaration')
-        self.solution = 'Change entity name to '
-
-    def _extract(self, oLine):
-        return [oLine.line.split(':')[1].lstrip().split()[0]]
+        token_case.__init__(self, 'instantiation', '009', lTokens)

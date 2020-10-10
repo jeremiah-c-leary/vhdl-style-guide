@@ -1,31 +1,17 @@
 
-from vsg import rule
-from vsg import fix
-from vsg import utils
+from vsg import parser
+from vsg import token
 
-import re
+from vsg.rules import single_space_between_token_pairs
+
+lTokens = []
+lTokens.append([token.instantiated_unit.component_keyword, token.instantiated_unit.component_name])
 
 
-class rule_032(rule.rule):
+class rule_032(single_space_between_token_pairs):
     '''
-    Instantiation rule 032 checks for a single space after the component keyword if used.
+   Checks for a single space between the *component* keyword and the entity_name.
     '''
-
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'instantiation'
-        self.identifier = '032'
-        self.solution = 'Lowercase the component keyword'
-        self.phase = 2
-        self.disable = True
-
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isInstantiationDeclaration and not oLine.isDirectInstantiationDeclaration:
-            if re.match('^\s*\w+\s*:\s*component', oLine.line, flags=re.IGNORECASE):
-                if not re.match('^\s*\w+\s*:\s*component\s\w', oLine.line, flags=re.IGNORECASE):
-                    dViolation = utils.create_violation_dict(iLineNumber)
-                    self.add_violation(dViolation)
-
-    def _fix_violations(self, oFile):
-        for dViolation in self.violations:
-            fix.enforce_one_space_after_word(self, utils.get_violating_line(oFile, dViolation), 'component')
+        single_space_between_token_pairs.__init__(self, 'instantiation', '032', lTokens)
+        self.solution = 'Ensure a single space exists between *component* and the component_name.'

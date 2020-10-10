@@ -1,26 +1,17 @@
 
-from vsg import rule
-from vsg import check
-from vsg import fix
-from vsg import utils
+from vsg import parser
+from vsg import token
+
+from vsg.rules import single_space_between_token_pairs
+
+lTokens = []
+lTokens.append([token.generic_map_aspect.map_keyword, token.generic_map_aspect.open_parenthesis])
 
 
-class rule_018(rule.rule):
+class rule_018(single_space_between_token_pairs):
     '''
-    Instantiation rule 018 checks for a single space between map and (
+   Checks for a single space before the (
     '''
-
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'instantiation'
-        self.identifier = '018'
+        single_space_between_token_pairs.__init__(self, 'instantiation', '018', lTokens)
         self.solution = 'Ensure a single space exists between "map" and (.'
-        self.phase = 2
-
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isInstantiationGenericKeyword or oLine.isInstantiationPortKeyword:
-            check.is_single_space_after(self, 'map', oLine, iLineNumber)
-
-    def _fix_violations(self, oFile):
-        for dViolation in self.violations:
-            fix.enforce_one_space_after_word(self, utils.get_violating_line(oFile, dViolation), 'map')

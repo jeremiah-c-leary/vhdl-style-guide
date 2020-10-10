@@ -1,16 +1,20 @@
 
-from vsg.rules import case_rule
-from vsg import utils
+from vsg.rules import token_case_in_range_bounded_by_tokens
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.generic_map_aspect.generic_keyword)
+lTokens.append(token.generic_map_aspect.map_keyword)
+
+oStart = token.component_instantiation_statement.label_colon
+oEnd = token.component_instantiation_statement.semicolon
 
 
-class rule_013(case_rule):
+class rule_013(token_case_in_range_bounded_by_tokens):
     '''
-    Instantiation rule 013 checks the "generic map" keywords have proper case.
+    Checks the "generic map" keywords have proper case.
     '''
 
     def __init__(self):
-        case_rule.__init__(self, 'instantiation', '013', 'isInstantiationGenericKeyword')
-        self.solution = 'Change "generic map" keywords to '
-
-    def _extract(self, oLine):
-        return utils.extract_words(oLine, ['generic', 'map'])
+        token_case_in_range_bounded_by_tokens.__init__(self, 'instantiation', '013', lTokens, oStart, oEnd)

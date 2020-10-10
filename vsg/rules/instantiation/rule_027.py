@@ -1,16 +1,16 @@
 
-from vsg.rules import case_rule
-from vsg import utils
+from vsg.rules import token_case
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.instantiated_unit.entity_keyword)
 
 
-class rule_027(case_rule):
+class rule_027(token_case):
     '''
-    Instantiation rule 027 checks the **entity** keyword has proper case in direct instantiations.
+    Checks the **entity** keyword has proper case in direct instantiations.
     '''
 
     def __init__(self):
-        case_rule.__init__(self, 'instantiation', '027', 'isDirectInstantiationDeclaration')
-        self.solution = 'Change "entity" keyword to '
-
-    def _extract(self, oLine):
-        return utils.extract_words(oLine, ['entity'])
+        token_case.__init__(self, 'instantiation', '027', lTokens)

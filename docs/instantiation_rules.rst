@@ -93,7 +93,7 @@ This rule checks for a blank line above the instantiation.
 instantiation_005
 #################
 
-This rule checks the instantiation declaration and the **port map** keywords are not on the same line.
+This rule checks the **port map** keywords are on their own line.
 
 **Violation**
 
@@ -148,7 +148,7 @@ This rule checks the closing ) for the port map is on it's own line.
 instantiation_008
 #################
 
-This rule checks the instance name has proper case.
+This rule checks the instance label has proper case.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
@@ -167,7 +167,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
 instantiation_009
 #################
 
-This rule checks the entity name has proper case.
+This rule checks the component name has proper case.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
@@ -538,8 +538,8 @@ Use explicit port mapping.
 .. code-block:: vhdl
 
    port map (
-     WR_EN    => WR_EN;
-     RD_EN    => RD_EN;
+     WR_EN    => WR_EN,
+     RD_EN    => RD_EN,
      OVERFLOW => OVERFLOW
    );
 
@@ -743,22 +743,6 @@ This rule checks for a single space after the **component** keyword if it is use
    INSTANCE_NAME : component ENTITY_NAME
    INSTANCE_NAME : component ENTITY_NAME
    INSTANCE_NAME : component ENTITY_NAME
-
-.. NOTE:: This rule is off by default.
-   If this rule is desired, then enable this rule and disable instantiation_033. 
-
-   .. code-block:: json
-   
-      {
-        "rule":{
-          "instantiation_032":{
-             "disable":"False"
-          },
-          "instantiation_033":{
-             "disable":"True"
-          }
-        }
-      }
 
 instantiation_033
 #################

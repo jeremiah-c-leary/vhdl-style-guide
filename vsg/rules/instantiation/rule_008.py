@@ -1,16 +1,16 @@
 
-from vsg.rules import case_rule
-from vsg import utils
+from vsg.rules import token_case
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.component_instantiation_statement.instantiation_label)
 
 
-class rule_008(case_rule):
+class rule_008(token_case):
     '''
-    Instantiation rule 008 checks the instance name has proper case in the instantiation declaration line.
+    Checks the instance label has proper case.
     '''
 
     def __init__(self):
-        case_rule.__init__(self, 'instantiation', '008', 'isInstantiationDeclaration')
-        self.solution = 'Change instance name to '
-
-    def _extract(self, oLine):
-        return utils.extract_label(oLine)
+        token_case.__init__(self, 'instantiation', '008', lTokens)

@@ -1,20 +1,16 @@
 
-from vsg.rules import case_rule
-from vsg import utils
+from vsg.rules import token_case
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.instantiated_unit.component_keyword)
 
 
-class rule_031(case_rule):
+class rule_031(token_case):
     '''
-    Instantiation rule 031 checks the "component" keyword has proper case if it is used.
+    Checks the **component** keyword has proper case.
     '''
 
     def __init__(self):
-        case_rule.__init__(self, 'instantiation', '031', 'isInstantiationDeclaration')
-        self.solution = 'Change "component" keyword to '
-        self.disable = True
-
-    def _extract(self, oLine):
-        if not oLine.isDirectInstantiationDeclaration:
-            return utils.extract_words(oLine, ['component'])
-        else:
-            return []
+        token_case.__init__(self, 'instantiation', '031', lTokens)
