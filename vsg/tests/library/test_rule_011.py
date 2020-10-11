@@ -28,7 +28,7 @@ class test_library_rule(unittest.TestCase):
         lExpected = [7, 7, 7, 9, 9, 10]
 
         oRule.analyze(self.oFile)
-        self.assertEqual(lExpected, utils.extract_violation_lines(oRule.violations))
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
     def test_fix_rule_011(self):
         self.maxDiff = None

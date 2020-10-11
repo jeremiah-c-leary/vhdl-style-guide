@@ -1,14 +1,15 @@
 
-from vsg.rules import remove_blank_lines_above_item_rule
-from vsg.token import use_clause
+from vsg.rules import remove_excessive_blank_lines_above_line_starting_with_token
 
+from vsg.token import use_clause as token
 
-class rule_007(remove_blank_lines_above_item_rule):
+lTokens = []
+lTokens.append(token.keyword)
+
+class rule_007(remove_excessive_blank_lines_above_line_starting_with_token):
     '''
-    Library rule 007 checks for a blank line above the "use" keyword.
+    Removes blank lines above the "use" keyword.
     '''
-
     def __init__(self):
-        remove_blank_lines_above_item_rule.__init__(self, 'library', '007', use_clause.keyword, 0)
-        self.regionBegin = use_clause.keyword
-        self.regionEnd = use_clause.semicolon
+        remove_excessive_blank_lines_above_line_starting_with_token.__init__(self, 'library', '007', lTokens, iAllow=0)
+        self.solution = 'Remove blank line(s) above the *use* keyword.'

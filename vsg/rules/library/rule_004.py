@@ -1,14 +1,16 @@
 
-from vsg.rules import case_item_rule
+from vsg.rules import token_case
 
-from vsg.token import library_clause as token
+from vsg import token
+
+lTokens = []
+lTokens.append(token.library_clause.keyword)
 
 
-class rule_004(case_item_rule):
+class rule_004(token_case):
     '''
     Checks the "library" keyword has proper case.
     '''
+
     def __init__(self):
-        case_item_rule.__init__(self, 'library', '004', token.keyword)
-        self.regionBegin = token.keyword
-        self.regionEnd = token.semicolon
+        token_case.__init__(self, 'library', '004', lTokens)

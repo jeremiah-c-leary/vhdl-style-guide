@@ -1,7 +1,7 @@
 
 
-from vsg import parser
 from vsg import rule_item
+from vsg import severity
 from vsg import violation
 
 from vsg.vhdlFile import utils
@@ -27,7 +27,7 @@ class line_length(rule_item.Rule):
         self.phase = 7
         self.fixable = False  # The user will have to fix line length violations
         self.disable = False
-        self.severity = 'Warning'
+        self.severity = severity.set_warning_severity
         self.length = 120
         self.configuration.append('length')
         self.solution = 'Reduce line to less than ' + str(self.length) + ' characters'

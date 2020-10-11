@@ -1,15 +1,16 @@
 
-from vsg.rules import insert_blank_line_above_line_containing_item_rule
+from vsg.rules import blank_line_above_line_starting_with_token
 
-from vsg.token import library_clause as token
+from vsg import token
+
+lTokens = []
+lTokens.append(token.library_clause.keyword)
 
 
-class rule_003(insert_blank_line_above_line_containing_item_rule):
+class rule_003(blank_line_above_line_starting_with_token):
     '''
     Checks for a blank line above the "library" keyword.
     '''
 
     def __init__(self):
-        insert_blank_line_above_line_containing_item_rule.__init__(self, 'library', '003', token.keyword)
-        self.regionBegin = token.keyword
-        self.regionEnd = token.semicolon
+        blank_line_above_line_starting_with_token.__init__(self, 'library', '003', lTokens)

@@ -26,17 +26,6 @@ class testVhdlFileMethods(unittest.TestCase):
     def test_vhdlFile_class_exists(self):
         self.assertTrue(oFileLibrary)
 
-    def test_loading_of_file(self):
-
-        # Read in test file used for all tests
-        lExpected = ['']
-        with open(sFileLibraryName) as oExpectedFile:
-            for sLine in oExpectedFile:
-                lExpected.append(sLine.rstrip())
-        oExpectedFile.close()
-        # Compare
-        for iIndex, oLine in enumerate(oFileLibrary.lines):
-            self.assertEqual(oLine.line, lExpected[iIndex])
 
     def test_blank_line_assignment(self):
 

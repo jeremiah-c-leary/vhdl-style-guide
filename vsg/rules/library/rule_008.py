@@ -1,11 +1,16 @@
 
-from vsg.token import use_clause
-from vsg.rules import indent_item_rule
+from vsg.rules import token_indent
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.use_clause.keyword)
 
 
-class rule_008(indent_item_rule):
+class rule_008(token_indent):
     '''
-    Checks for indent of the use keyword.
+    Checks for indent of the *use* keyword.
     '''
+
     def __init__(self):
-        indent_item_rule.__init__(self, 'library', '008', use_clause.keyword)
+        token_indent.__init__(self, 'library', '008', lTokens)
