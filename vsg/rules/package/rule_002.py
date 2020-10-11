@@ -1,33 +1,18 @@
 
-from vsg import rule
-from vsg import fix
-from vsg import utils
+from vsg import parser
+from vsg import token
 
-import re
+from vsg.rules import single_space_between_token_pairs
+
+lTokens = []
+lTokens.append([token.package_declaration.package_keyword, token.package_declaration.identifier])
+lTokens.append([token.package_declaration.identifier, token.package_declaration.is_keyword])
 
 
-class rule_002(rule.rule):
+class rule_002(single_space_between_token_pairs):
     '''
-    Package rule 002 checks for a single space between "package" and "is" keywords.
+    Checks for a single space between the package keyword and the package logical name
     '''
-
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'package'
-        self.identifier = '002'
-        self.solution = 'Remove extra spaces between keywords.'
-        self.phase = 2
-
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isPackageKeyword:
-            if len(oLine.line.split()) > 2:
-                if re.match('^\s*package\s+\S+\s+is', oLine.lineLower):
-                    if not re.match('^\s*package\s\S+\sis', oLine.lineLower):
-                        dViolation = utils.create_violation_dict(iLineNumber)
-                        self.add_violation(dViolation)
-
-    def _fix_violations(self, oFile):
-        for dViolation in self.violations:
-            iLineNumber = utils.get_violation_line_number(dViolation)
-            fix.enforce_one_space_after_word(self, oFile.lines[iLineNumber], 'package')
-            fix.enforce_one_space_before_word(self, oFile.lines[iLineNumber], 'is')
+        single_space_between_token_pairs.__init__(self, 'package', '002', lTokens)
+        self.solution = 'Ensure a single space between the package keyword and identifier and is keyword.'

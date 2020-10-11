@@ -1,16 +1,16 @@
 
-from vsg.rules import case_rule
-from vsg import utils
+from vsg.rules import token_case
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.package_declaration.end_package_keyword)
 
 
-class rule_018(case_rule):
+class rule_018(token_case):
     '''
-    Package rule 018 checks the "package" keyword in the "end package" has proper case.
+    Checks the "package" keyword in the "end package" has proper case.
     '''
 
     def __init__(self):
-        case_rule.__init__(self, 'package', '018', 'isPackageEnd')
-        self.solution = 'Change "package" keyword to '
-
-    def _extract(self, oLine):
-        return utils.extract_words(oLine, ['package'])
+        token_case.__init__(self, 'package', '018', lTokens)

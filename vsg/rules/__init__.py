@@ -48,6 +48,7 @@ from .single_space_between_token_pairs import single_space_between_token_pairs
 from .single_space_between_token_pairs_bounded_by_tokens import single_space_between_token_pairs_bounded_by_tokens
 from .consistent_token_case import consistent_token_case
 from .token_prefix import token_prefix
+from .token_suffix import token_suffix
 from .token_prefix_between_tokens import token_prefix_between_tokens
 from .split_line_at_token import split_line_at_token
 from .split_line_at_token_when_between_tokens import split_line_at_token_when_between_tokens

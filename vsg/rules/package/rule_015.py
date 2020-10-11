@@ -1,11 +1,16 @@
 
-from vsg.rules import indent_rule
+from vsg.rules import token_indent
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.package_declaration.end_keyword)
 
 
-class rule_015(indent_rule):
+class rule_015(token_indent):
     '''
-    Package rule 015 checks for spaces at the beginning of the line.
+    Checks for indent of the *end* keyword.
     '''
 
     def __init__(self):
-        indent_rule.__init__(self, 'package', '015', 'isPackageEnd')
+        token_indent.__init__(self, 'package', '015', lTokens)

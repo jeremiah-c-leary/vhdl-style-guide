@@ -1,19 +1,16 @@
 
-from vsg.rules import case_rule
-from vsg import check
+from vsg.rules import token_case
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.package_declaration.end_package_simple_name)
 
 
-class rule_008(case_rule):
+class rule_008(token_case):
     '''
-    Package rule 008 checks the package name has proper case on the closing "end package" line.
+    Checks the package name has proper case on the closing "end package" line.
     '''
 
     def __init__(self):
-        case_rule.__init__(self, 'package', '008', 'isPackageEnd')
-        self.solution = 'Change package name to '
-
-    def _extract(self, oLine):
-        if not check.has_package_name(oLine):
-            return []
-
-        return [oLine.line.replace(';', '').split()[-1]]
+        token_case.__init__(self, 'package', '008', lTokens)

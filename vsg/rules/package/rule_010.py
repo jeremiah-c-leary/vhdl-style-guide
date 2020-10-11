@@ -1,19 +1,16 @@
 
-from vsg.rules import case_rule
-from vsg import check
+from vsg.rules import token_case
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.package_declaration.identifier)
 
 
-class rule_010(case_rule):
+class rule_010(token_case):
     '''
-    Package rule 010 checks the package name has proper case in the package declaration.
+    Checks the package name has proper case in the package declaration.
     '''
 
     def __init__(self):
-        case_rule.__init__(self, 'package', '010', 'isPackageKeyword')
-        self.solution = 'Change package name to '
-
-    def _extract(self, oLine):
-        if not check.has_package_name(oLine):
-            return []
-
-        return [oLine.line.replace(';', '').split()[1]]
+        token_case.__init__(self, 'package', '010', lTokens)

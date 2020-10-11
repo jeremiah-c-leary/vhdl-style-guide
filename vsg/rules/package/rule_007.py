@@ -1,29 +1,14 @@
 
-from vsg import rule
-from vsg import utils
+from vsg.rules import insert_token_right_of_token_if_it_does_not_exist_before_token
 
-import re
+from vsg.token import package_declaration as token
 
 
-class rule_007(rule.rule):
+class rule_007(insert_token_right_of_token_if_it_does_not_exist_before_token):
     '''
-    Package rule 007 checks for the "package" keyword on the end package declaration.
+    Checks for *package* keyword in end package statement.
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'package'
-        self.identifier = '007'
-        self.solution = 'End of package follows this format: end package <package name>.'
-        self.phase = 1
-
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isPackageEnd and not re.match('^\s*end\s+package', oLine.lineLower):
-            dViolation = utils.create_violation_dict(iLineNumber)
-            self.add_violation(dViolation)
-
-    def _fix_violations(self, oFile):
-        for dViolation in self.violations:
-            oLine = utils.get_violating_line(oFile, dViolation)
-            iIndex = oLine.lineLower.find('end') + len('end')
-            oLine.update_line(oLine.line[:iIndex] + ' package' + oLine.line[iIndex:])
+        insert_token_right_of_token_if_it_does_not_exist_before_token.__init__(self, 'package', '007', token.end_package_keyword('package'), token.end_keyword, token.semicolon)
+        self.solution = 'Add package keyword'

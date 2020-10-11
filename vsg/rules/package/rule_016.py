@@ -1,15 +1,17 @@
-from vsg.rules import suffix_rule
+
+from vsg import token
+
+from vsg.rules import token_suffix
+
+lTokens = []
+lTokens.append(token.package_declaration.identifier)
 
 
-class rule_016(suffix_rule):
+class rule_016(token_suffix):
     '''
-    Package rule 016 checks for suffixes in package identifier.
+    Constant rule 016 checks for suffixes in package identifiers.
     '''
 
     def __init__(self):
-        suffix_rule.__init__(self, 'package', '016', 'isPackageKeyword')
+        token_suffix.__init__(self, 'package', '016', lTokens)
         self.suffixes = ['_pkg']
-        self.solution = 'Package'
-
-    def _extract(self, oLine):
-        return [oLine.line.split()[1]]

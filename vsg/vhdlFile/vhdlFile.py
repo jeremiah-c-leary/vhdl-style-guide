@@ -21,6 +21,7 @@ from vsg.vhdlFile.indent import interface_element
 from vsg.vhdlFile.indent import generate_statement
 from vsg.vhdlFile.indent import generic_clause
 from vsg.vhdlFile.indent import if_statement
+from vsg.vhdlFile.indent import package_declaration
 
 
 class vhdlFile():
@@ -529,6 +530,7 @@ class vhdlFile():
             iIndent, bLabelFound = generate_statement.set_indent(iIndent, bLabelFound, oToken)
             iIndent, bLabelFound = generic_clause.set_indent(iIndent, bLabelFound, oToken)
             iIndent, bLabelFound = if_statement.set_indent(iIndent, bLabelFound, oToken)
+            iIndent, bLabelFound = package_declaration.set_indent(iIndent, bLabelFound, oToken)
   
     def print_debug(self):
         for oLine in self.lines:

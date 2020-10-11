@@ -1,11 +1,16 @@
 
-from vsg.rules import line_above_rule
+from vsg.rules import blank_line_above_line_starting_with_token
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.package_declaration.end_keyword)
 
 
-class rule_012(line_above_rule):
+class rule_012(blank_line_above_line_starting_with_token):
     '''
-    Package rule 012 checks for a blank line above the "end package" keywords.
+    Checks for a blank line above the "end package" keywords.
     '''
 
     def __init__(self):
-        line_above_rule.__init__(self, 'package', '012', 'isPackageEnd')
+        blank_line_above_line_starting_with_token.__init__(self, 'package', '012', lTokens)

@@ -35,6 +35,7 @@ class token_prefix(rule_item.Rule):
         self.prefixes = None
         self.configuration.append('prefixes')
         self.fixable = False
+        self.disable = True
 
     def analyze(self, oFile):
         lToi = oFile.get_tokens_matching(self.lTokens)
