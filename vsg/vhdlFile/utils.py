@@ -499,4 +499,13 @@ def combine_two_token_class_lists(lToi_a, lToi_b):
         if not bInserted:
             lReturn.append(oToi)
     return lReturn
-    
+
+
+def does_length_of_tokens_exceed(lObjects, iLength):
+
+    iTotalLength = 0
+    for oObject in lObjects:
+        iTotalLength += len(oObject.get_value())
+    if iTotalLength > iLength:
+        return True
+    return False

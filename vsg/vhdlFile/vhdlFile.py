@@ -1147,6 +1147,28 @@ class vhdlFile():
 
         return lReturn
 
+    def get_lines_with_length_that_exceed_column(self, iColumn):
+        iLine = 1
+        lReturn = []
+        lTemp = []
+        bFirstTokenInLine = True
+        for iIndex in range(0, len(self.lAllObjects)):
+
+            if isinstance(self.lAllObjects[iIndex], parser.carriage_return):
+                if utils.does_length_of_tokens_exceed(lTemp, iColumn):
+                    lReturn.append(Tokens(iStart, iLine, lTemp))
+                iLine +=1
+                lTemp = []
+                bFirstTokenInLine = True
+                continue
+
+            lTemp.append(self.lAllObjects[iIndex])
+            if bFirstTokenInLine:
+                iStart = iIndex
+                bFirstTokenInLine
+
+        return lReturn
+
 
 def _create_empty_return_dictionary():
     dReturn = {}
