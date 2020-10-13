@@ -1,32 +1,37 @@
 
 from vsg import parser
 
-
-class in_keyword(parser.keyword):
-
-    def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
-
-
-class out_keyword(parser.keyword):
+class mode(parser.keyword):
 
     def __init__(self, sString):
         parser.keyword.__init__(self, sString)
 
 
-class inout_keyword(parser.keyword):
+class in_keyword(mode):
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        mode.__init__(self, sString)
 
 
-class buffer_keyword(parser.keyword):
-
-    def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
-
-
-class linkage_keyword(parser.keyword):
+class out_keyword(mode):
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        mode.__init__(self, sString)
+
+
+class inout_keyword(mode):
+
+    def __init__(self, sString):
+        mode.__init__(self, sString)
+
+
+class buffer_keyword(mode):
+
+    def __init__(self, sString):
+        mode.__init__(self, sString)
+
+
+class linkage_keyword(mode):
+
+    def __init__(self, sString):
+        mode.__init__(self, sString)

@@ -1,43 +1,14 @@
 
-from vsg import rule
-from vsg import utils
+from vsg.rules import insert_carriage_return_after_token_if_it_is_not_followed_by_a_comment
 
-import re
+from vsg.token import port_clause as token
 
 
-class rule_016(rule.rule):
+class rule_016(insert_carriage_return_after_token_if_it_is_not_followed_by_a_comment):
     '''
-    Port rule 016 checks for a port definition on the same line as the port keyword.
+    Moves port parameters to their own line.
     '''
 
     def __init__(self):
-        rule.rule.__init__(self, 'port', '016')
-        self.solution = 'Move port definition to it\'s own line.'
-        self.phase = 1
-
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isPortKeyword and re.match('^\s*port\s*\(\s*\S+\s*:', oLine.lineLower):
-            dViolation = utils.create_violation_dict(iLineNumber)
-            self.add_violation(dViolation)
-
-    def _fix_violations(self, oFile):
-        for dViolation in self.violations[::-1]:
-            iLineNumber = utils.get_violation_line_number(dViolation)
-            utils.copy_line(oFile, iLineNumber)
-            oLine = oFile.lines[iLineNumber]
-            oLine.update_line(extract_port_keyword(oLine.line))
-            oLine = oFile.lines[iLineNumber + 1]
-            oLine.update_line('    ' + extract_signal_definition(oLine.line))
-            oLine.isPortKeyword = False
-            oLine.isPortDeclaration = True
-            oLine.insidePortMap = True
-            oLine.indentLevel = oFile.lines[iLineNumber].indentLevel + 1
-
-
-def extract_port_keyword(sString):
-    return sString.split('(')[0] + ' ('
-
-
-def extract_signal_definition(sString):
-    lString = sString.split('(')
-    return '('.join(lString[1:])
+        insert_carriage_return_after_token_if_it_is_not_followed_by_a_comment.__init__(self, 'port', '016', token.open_parenthesis)
+        self.solution = 'Move port parameter to the next line.'

@@ -1,5 +1,5 @@
 
-from vsg.rules import token_indent
+from vsg.rules import token_indent_between_tokens
 
 from vsg import token
 
@@ -14,11 +14,14 @@ lTokens.append(token.interface_procedure_specification.procedure_keyword)
 lTokens.append(token.interface_function_specification.function_keyword)
 lTokens.append(token.interface_package_declaration.package_keyword)
 
+oStart = token.generic_clause.open_parenthesis
+oEnd = token.generic_clause.close_parenthesis
 
-class rule_004(token_indent):
+
+class rule_004(token_indent_between_tokens):
     '''
     Generic rule 004 checks indentation of generics.
     '''
 
     def __init__(self):
-        token_indent.__init__(self, 'generic', '004', lTokens)
+        token_indent_between_tokens.__init__(self, 'generic', '004', lTokens, oStart, oEnd)

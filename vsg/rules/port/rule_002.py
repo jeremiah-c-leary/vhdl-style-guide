@@ -1,11 +1,16 @@
 
-from vsg.rules import indent_rule
+from vsg.rules import token_indent
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.port_clause.port_keyword)
 
 
-class rule_002(indent_rule):
+class rule_002(token_indent):
     '''
-    Port rule 002 checks indentation of the "port" keyword.
+    Checks indentation of the "port" keyword.
     '''
 
     def __init__(self):
-        indent_rule.__init__(self, 'port', '002', 'isPortKeyword')
+        token_indent.__init__(self, 'port', '002', lTokens)

@@ -1,29 +1,22 @@
 
-from vsg import rule
-from vsg import fix
-from vsg import check
-from vsg import utils
+from vsg import token
 
-import re
+from vsg.rules import n_spaces_between_token_pairs_when_bounded_by_tokens
+
+lTokens = []
+lTokens.append([token.mode.inout_keyword, token.interface_unknown_declaration.subtype_indication])
+lTokens.append([token.mode.inout_keyword, token.interface_signal_declaration.subtype_indication])
+lTokens.append([token.mode.inout_keyword, token.interface_constant_declaration.subtype_indication])
+lTokens.append([token.mode.inout_keyword, token.interface_variable_declaration.subtype_indication])
+
+oStart = token.port_clause.open_parenthesis
+oEnd = token.port_clause.close_parenthesis
 
 
-class rule_009(rule.rule):
+class rule_009(n_spaces_between_token_pairs_when_bounded_by_tokens):
     '''
-    Port rule 009 checks for a single space after "inout" keyword in a port declaration for "inout" ports.
+    Port rule 009 checks for one space after the "inout" keyword in a port declaration for "in" ports.
     '''
-
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'port'
-        self.identifier = '009'
+        n_spaces_between_token_pairs_when_bounded_by_tokens.__init__(self, 'port', '009', 1, lTokens, oStart, oEnd)
         self.solution = 'Change the number of spaces after the "inout" keyword to one space.'
-        self.phase = 2
-
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isPortDeclaration and re.match('^\s*\S+\s*:\s*inout', oLine.lineLower):
-            check.is_single_space_after(self, 'inout', oLine, iLineNumber)
-
-    def _fix_violations(self, oFile):
-        for dViolation in self.violations:
-            oLine = utils.get_violating_line(oFile, dViolation)
-            fix.enforce_one_space_after_word(self, oLine, 'inout')

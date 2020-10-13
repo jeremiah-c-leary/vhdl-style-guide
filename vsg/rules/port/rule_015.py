@@ -1,12 +1,16 @@
 
-from vsg.rules import indent_rule
+from vsg import token
+
+from vsg.rules import token_indent
+
+lTokens = []
+lTokens.append(token.port_clause.close_parenthesis)
 
 
-class rule_015(indent_rule):
+class rule_015(token_indent):
     '''
-    Port rule 015 checks the indentation of closing parenthesis for port maps.
+    Checks the indentation of closing parenthesis for port maps.
     '''
 
     def __init__(self):
-        indent_rule.__init__(self, 'port', '015', 'isEndPortMap', 'isPortDeclaration')
-        self.solution = 'Ensure proper indentation.'
+        token_indent.__init__(self, 'port', '015', lTokens)

@@ -1,29 +1,28 @@
 
-from vsg import rule
-from vsg import fix
-from vsg import check
-from vsg import utils
+from vsg import parser
+from vsg import token
 
-import re
+from vsg.rules import single_space_between_token_pairs_bounded_by_tokens
+
+lTokens = []
+lTokens.append([token.interface_constant_declaration.colon, parser.keyword])
+lTokens.append([token.interface_constant_declaration.colon, token.interface_constant_declaration.subtype_indication])
+lTokens.append([token.interface_signal_declaration.colon, parser.keyword])
+lTokens.append([token.interface_signal_declaration.colon, token.interface_signal_declaration.subtype_indication])
+lTokens.append([token.interface_variable_declaration.colon, parser.keyword])
+lTokens.append([token.interface_variable_declaration.colon, token.interface_variable_declaration.subtype_indication])
+lTokens.append([token.interface_file_declaration.colon, token.interface_file_declaration.subtype_indication])
+lTokens.append([token.interface_unknown_declaration.colon, parser.keyword])
+lTokens.append([token.interface_unknown_declaration.colon, token.interface_unknown_declaration.subtype_indication])
+
+lStart = token.port_clause.open_parenthesis
+lEnd = token.port_clause.close_parenthesis
 
 
-class rule_005(rule.rule):
+class rule_005(single_space_between_token_pairs_bounded_by_tokens):
     '''
-    Port rule 005 checks for a single space after the colon in a port declaration for "in" and "inout" ports.
+    Checks for a single space after the colon
     '''
-
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'port'
-        self.identifier = '005'
+        single_space_between_token_pairs_bounded_by_tokens.__init__(self, 'port', '005', lTokens, lStart, lEnd)
         self.solution = 'Reduce number of spaces after the colon to 1.'
-        self.phase = 2
-
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isPortDeclaration and re.match('^.*:\s*in', oLine.line, re.IGNORECASE):
-            check.is_single_space_after_character(self, ':', oLine, iLineNumber)
-
-    def _fix_violations(self, oFile):
-        for dViolation in self.violations:
-            oLine = utils.get_violating_line(oFile, dViolation)
-            fix.enforce_one_space_after_word(self, oLine, ':')

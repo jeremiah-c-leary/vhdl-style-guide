@@ -1,15 +1,23 @@
 
-from vsg.rules import case_rule
+from vsg.rules import token_case_in_range_bounded_by_tokens
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.mode.in_keyword)
+lTokens.append(token.mode.out_keyword)
+lTokens.append(token.mode.inout_keyword)
+lTokens.append(token.mode.buffer_keyword)
+lTokens.append(token.mode.linkage_keyword)
+
+oStart = token.port_clause.open_parenthesis
+oEnd = token.port_clause.close_parenthesis
 
 
-class rule_019(case_rule):
+class rule_019(token_case_in_range_bounded_by_tokens):
     '''
-    Port rule 019 checks the port direction has proper case.
+    Checks the "port" keyword has proper case.
     '''
 
     def __init__(self):
-        case_rule.__init__(self, 'port', '019', 'isPortDeclaration')
-        self.solution = 'Change port direction to .'
-
-    def _extract(self, oLine):
-        return [oLine.line.split(':')[1].split()[0]]
+        token_case_in_range_bounded_by_tokens.__init__(self, 'port', '019', lTokens, oStart, oEnd)

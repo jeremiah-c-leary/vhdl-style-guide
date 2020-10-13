@@ -89,7 +89,7 @@ This rule checks the indent of port declarations.
 port_005
 ########
 
-This rule checks for a single space after the : in **in** and **inout** ports.
+This rule checks for a single space after the :.
 
 **Violation**
 
@@ -98,7 +98,7 @@ This rule checks for a single space after the : in **in** and **inout** ports.
    port (
      WR_EN    : in    std_logic;
      RD_EN    :   in    std_logic;
-     OVERFLOW : out   std_logic;
+     OVERFLOW :out   std_logic;
      DATA     :inout std_logic
    );
 
@@ -116,27 +116,8 @@ This rule checks for a single space after the : in **in** and **inout** ports.
 port_006
 ########
 
-This rule checks for a single space after the : in the **out** ports.
+This rule has been depricated and it's function was include in rule **port_005**.
 
-**Violation**
-
-.. code-block:: vhdl
-
-   port (
-     WR_EN    : in    std_logic;
-     RD_EN    : in    std_logic;
-     OVERFLOW :out   std_logic
-   );
-
-**Fix**
-
-.. code-block:: vhdl
-
-   port (
-     WR_EN    : in    std_logic;
-     RD_EN    : in    std_logic;
-     OVERFLOW : out   std_logic
-   );
 
 port_007
 ########
@@ -219,17 +200,16 @@ port_010
 ########
 
 This rule checks port names are uppercase.
-If an index exists on a port, the case of the index will not be checked.
 
 **Violation**
 
 .. code-block:: vhdl
 
    port (
-     wr_en              : in    std_logic;
-     rd_en              : in    std_logic;
-     OVERFLOW           : out   std_logic;
-     underflow(c_index) : out   std_logic
+     wr_en     : in    std_logic;
+     rd_en     : in    std_logic;
+     OVERFLOW  : out   std_logic;
+     underflow : out   std_logic
    );
 
 **Fix**
@@ -237,10 +217,10 @@ If an index exists on a port, the case of the index will not be checked.
 .. code-block:: vhdl
 
    port (
-     WR_EN              : in    std_logic;
-     RD_EN              : in    std_logic;
-     OVERFLOW           : out   std_logic;
-     UNDERFLOW(c_index) : out   std_logic
+     WR_EN     : in    std_logic;
+     RD_EN     : in    std_logic;
+     OVERFLOW  : out   std_logic;
+     UNDERFLOW : out   std_logic
    );
 
 port_011
@@ -295,10 +275,10 @@ This rule checks for default assignments on port declarations.
 .. code-block:: vhdl
 
    port (
-     WR_EN_I    : in    std_logic;
-     RD_EN_I    : in    std_logic;
-     OVERFLOW_O : out   std_logic;
-     DATA_IO    : inout std_logic
+     I_WR_EN    : in    std_logic;
+     I_RD_EN    : in    std_logic;
+     O_OVERFLOW : out   std_logic;
+     IO_DATA    : inout std_logic
    );
 
 port_013

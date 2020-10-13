@@ -1,17 +1,20 @@
 
-from vsg.rules import prefix_rule
-from vsg import utils
+from vsg.rules import token_prefix_between_tokens
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.interface_constant_declaration.identifier)
+lTokens.append(token.interface_signal_declaration.identifier)
+lTokens.append(token.interface_variable_declaration.identifier)
+lTokens.append(token.interface_unknown_declaration.identifier)
 
 
-class rule_011(prefix_rule):
+class rule_011(token_prefix_between_tokens):
     '''
-    Port rule 011 checks for prefixes in port names.
+    Checks for prefixes in port names.
     '''
 
     def __init__(self):
-        prefix_rule.__init__(self, 'port', '011', 'isPortDeclaration')
+        token_prefix_between_tokens.__init__(self, 'port', '011', lTokens, token.port_clause.open_parenthesis, token.port_clause.close_parenthesis)
         self.prefixes = ['i_', 'o_', 'io_']
-        self.solution = 'Port names'
-
-    def _extract(self, oLine):
-        return utils.extract_port_name(oLine)

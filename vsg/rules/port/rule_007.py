@@ -1,27 +1,22 @@
 
-from vsg import rule
-from vsg import utils
+from vsg import token
 
-import re
+from vsg.rules import n_spaces_between_token_pairs_when_bounded_by_tokens
+
+lTokens = []
+lTokens.append([token.mode.in_keyword, token.interface_unknown_declaration.subtype_indication])
+lTokens.append([token.mode.in_keyword, token.interface_signal_declaration.subtype_indication])
+lTokens.append([token.mode.in_keyword, token.interface_constant_declaration.subtype_indication])
+lTokens.append([token.mode.in_keyword, token.interface_variable_declaration.subtype_indication])
+
+oStart = token.port_clause.open_parenthesis
+oEnd = token.port_clause.close_parenthesis
 
 
-class rule_007(rule.rule):
+class rule_007(n_spaces_between_token_pairs_when_bounded_by_tokens):
     '''
     Port rule 007 checks for four spaces after the "in" keyword in a port declaration for "in" ports.
     '''
-
     def __init__(self):
-        rule.rule.__init__(self, 'port', '007')
+        n_spaces_between_token_pairs_when_bounded_by_tokens.__init__(self, 'port', '007', 4, lTokens, oStart, oEnd)
         self.solution = 'Change the number of spaces after the "in" keyword to four spaces.'
-        self.phase = 2
-
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isPortDeclaration and re.match('^\s*\S+\s*:\s*in\s', oLine.lineLower):
-            if not re.match('^\s*\S+\s*:\s*in\s\s\s\s\S+', oLine.lineLower):
-                dViolation = utils.create_violation_dict(iLineNumber)
-                self.add_violation(dViolation)
-
-    def _fix_violations(self, oFile):
-        for dViolation in self.violations:
-            oLine = utils.get_violating_line(oFile, dViolation)
-            oLine.update_line(re.sub(r'^(\s*\S+\s*:\s*in)(\s*)', r'\1    ', oLine.line, flags=re.IGNORECASE))

@@ -20,6 +20,7 @@ from vsg.vhdlFile.indent import function_specification
 from vsg.vhdlFile.indent import interface_element
 from vsg.vhdlFile.indent import generate_statement
 from vsg.vhdlFile.indent import generic_clause
+from vsg.vhdlFile.indent import port_clause
 from vsg.vhdlFile.indent import if_statement
 from vsg.vhdlFile.indent import package_declaration
 
@@ -529,6 +530,7 @@ class vhdlFile():
             iIndent, bLabelFound = interface_element.set_indent(iIndent, bLabelFound, oToken)
             iIndent, bLabelFound = generate_statement.set_indent(iIndent, bLabelFound, oToken)
             iIndent, bLabelFound = generic_clause.set_indent(iIndent, bLabelFound, oToken)
+            iIndent, bLabelFound = port_clause.set_indent(iIndent, bLabelFound, oToken)
             iIndent, bLabelFound = if_statement.set_indent(iIndent, bLabelFound, oToken)
             iIndent, bLabelFound = package_declaration.set_indent(iIndent, bLabelFound, oToken)
   
@@ -723,6 +725,30 @@ class vhdlFile():
                         lReturn.append(Tokens(iStart, iLine, self.lAllObjects[iStart:iStart + 2]))
                     elif utils.are_next_consecutive_token_types([oToken], iStart, self.lAllObjects):
                         lReturn.append(Tokens(iStart, iLine, [self.lAllObjects[iStart]]))
+
+        return lReturn                    
+
+    def get_tokens_at_beginning_of_line_matching_between_tokens(self, lTokens, oStart, oEnd):
+        iLine = 1
+        lReturn = []
+        bSearch = False
+        for iIndex in range(0, len(self.lAllObjects)):
+
+            if isinstance(self.lAllObjects[iIndex], oStart):
+                bSearch = True
+            if isinstance(self.lAllObjects[iIndex], oEnd):
+                bSearch = False
+
+            
+            if isinstance(self.lAllObjects[iIndex], parser.carriage_return):
+                iLine +=1
+                iStart = iIndex + 1
+                if bSearch :
+                    for oToken in lTokens:
+                        if utils.are_next_consecutive_token_types([parser.whitespace, oToken], iStart, self.lAllObjects):
+                            lReturn.append(Tokens(iStart, iLine, self.lAllObjects[iStart:iStart + 2]))
+                        elif utils.are_next_consecutive_token_types([oToken], iStart, self.lAllObjects):
+                            lReturn.append(Tokens(iStart, iLine, [self.lAllObjects[iStart]]))
 
         return lReturn                    
 
@@ -1145,6 +1171,53 @@ class vhdlFile():
                    lTemp.append(self.lAllObjects[iIndex])
 
             if isinstance(self.lAllObjects[iIndex], parser.carriage_return):
+                iLine +=1
+
+        return lReturn
+
+    def get_interface_elements_between_tokens(self, oStart, oEnd):
+        iLine = 1
+        lReturn = []
+        bSearch = False
+        bStore = False
+        lTemp = []
+        iLineNumber = None
+        for iIndex in range(0, len(self.lAllObjects)):
+            oToken = self.lAllObjects[iIndex]
+            if isinstance(oToken, oStart):
+                bSearch = True
+                continue
+            if isinstance(oToken, oEnd):
+                bSearch = False 
+                bStore = False
+                if len(lTemp) > 0:
+                    for i in range(1, 3):
+                        if isinstance(lTemp[-1], parser.whitespace):
+                            lTemp.pop()
+                            continue
+                        if isinstance(lTemp[-1], parser.carriage_return):
+                            lTemp.pop()
+                            continue
+                        break 
+                    lReturn.append(Tokens(iStart, iLineNumber, lTemp))
+                lTemp = []
+                continue
+
+            if bSearch:
+                if not isinstance(oToken, parser.whitespace) and not isinstance(oToken, parser.carriage_return) and not isinstance(oToken, parser.comment) and not bStore:
+                    bStore = True
+                    iStart = iIndex
+                    iLineNumber = iLine
+                
+                if isinstance(oToken, token.interface_list.semicolon):
+                    lReturn.append(Tokens(iStart, iLineNumber, lTemp))
+                    lTemp = []
+                    bStore = False
+
+                if bStore:
+                   lTemp.append(oToken)
+
+            if isinstance(oToken, parser.carriage_return):
                 iLine +=1
 
         return lReturn

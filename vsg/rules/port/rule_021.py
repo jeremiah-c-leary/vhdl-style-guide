@@ -1,28 +1,14 @@
 
-from vsg import rule
-from vsg import utils
+from vsg.rules import move_token_next_to_another_token
 
-import re
+from vsg.token import port_clause as token
 
 
-class rule_021(rule.rule):
+class rule_021(move_token_next_to_another_token):
     '''
-    Port rule 021 checks the **port** keyword is on the same line as the (.
+    Checks the **port** keyword is on the same line as the (.
     '''
 
     def __init__(self):
-        rule.rule.__init__(self, 'port', '021')
+        move_token_next_to_another_token.__init__(self, 'port', '021', token.port_keyword, token.open_parenthesis)
         self.solution = 'Move the ( to the same line as the "port" keyword.'
-        self.phase = 2
-
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isPortKeyword and '(' not in oLine.lineNoComment:
-            dViolation = utils.create_violation_dict(iLineNumber)
-            self.add_violation(dViolation)
-
-    def _fix_violations(self, oFile):
-        for dViolation in self.violations[::-1]:
-            iLineNumber = utils.get_violation_line_number(dViolation)
-            oLine = oFile.lines[iLineNumber]
-            oLine.update_line(re.sub('port', 'port (', oLine.line, 1, re.IGNORECASE))
-            utils.search_for_and_remove_keyword(oFile, iLineNumber, '\(')

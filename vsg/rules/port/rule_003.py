@@ -1,27 +1,16 @@
 
-from vsg import rule
-from vsg import check
-from vsg import fix
-from vsg import utils
+from vsg import parser
+from vsg import token
 
+from vsg.rules import single_space_between_token_pairs
 
-class rule_003(rule.rule):
+lTokens = []
+lTokens.append([token.port_clause.port_keyword, token.port_clause.open_parenthesis])
+
+class rule_003(single_space_between_token_pairs):
     '''
-    Port rule 003 checks spacing between "port" and the open parenthesis.
+    Checks for a single space between the label and :.
     '''
-
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'port'
-        self.identifier = '003'
+        single_space_between_token_pairs.__init__(self, 'port', '003', lTokens)
         self.solution = 'Change spacing between "port" and "(" to one space.'
-        self.phase = 2
-
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isPortKeyword and '(' in oLine.line:
-            check.is_single_space_after(self, 'port', oLine, iLineNumber)
-
-    def _fix_violations(self, oFile):
-        for dViolation in self.violations:
-            oLine = utils.get_violating_line(oFile, dViolation)
-            fix.enforce_one_space_after_word(self, oLine, 'port')
