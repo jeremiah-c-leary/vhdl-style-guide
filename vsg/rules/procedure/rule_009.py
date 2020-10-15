@@ -1,16 +1,16 @@
 
-from vsg.rules import case_rule
-from vsg import utils
+from vsg.rules import token_case
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.subprogram_kind.procedure_keyword)
 
 
-class rule_009(case_rule):
+class rule_009(token_case):
     '''
-    Procedure rule 009 checks the "procedure" keyword in the "end procedure" has proper case.
+    Checks the *procedure* keyword has proper case.
     '''
 
     def __init__(self):
-        case_rule.__init__(self, 'procedure', '009', 'isProcedureEnd')
-        self.solution = 'Change "procedure" keyword to '
-
-    def _extract(self, oLine):
-        return utils.extract_words(oLine, ['procedure'])
+        token_case.__init__(self, 'procedure', '009', lTokens)

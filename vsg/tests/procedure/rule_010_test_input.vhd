@@ -30,7 +30,7 @@ package body FIFO_PKG is
     signal d : out std_logic) is
     variable  sig1 : std_logic;
     file file1 : something;
-    variable var1 : integer;
+    constant var1 : integer;
   begin
   end procedure AVERAGE_SAMPLES;  
 
@@ -41,7 +41,7 @@ package body FIFO_PKG is
     signal d : out std_logic) is
     variable sig1 : std_logic;
     file     file1 : something;
-    variable var1 : integer;
+    constant var1 : integer;
   begin
   end procedure AVERAGE_SAMPLES;  
 
@@ -55,7 +55,7 @@ package body FIFO_PKG is
     is
     variable sig1 : std_logic;
     file     file1 : something;
-    variable var1 : integer;
+    constant var1 : integer;
   begin
   end procedure AVERAGE_SAMPLES;  
 
@@ -67,7 +67,7 @@ package body FIFO_PKG is
   ) is
     variable sig1 : std_logic;
     file     file1 : something;
-    variable var1 : integer;
+    constant var1 : integer;
   begin
   end procedure AVERAGE_SAMPLES;  
 
@@ -80,7 +80,7 @@ package body FIFO_PKG is
   is
     variable sig1 : std_logic;
     file     file1 : something;
-    variable var1 : integer;
+    constant var1 : integer;
   begin
   end procedure AVERAGE_SAMPLES;  
 
@@ -96,7 +96,7 @@ architecture RTL of ENT is
     signal d : out std_logic) is
     variable  sig1 : std_logic;
     file file1 : something;
-    variable var1 : integer;
+    constant var1 : integer;
   begin
   end procedure AVERAGE_SAMPLES;  
 
@@ -107,7 +107,7 @@ architecture RTL of ENT is
     signal d : out std_logic) is
     variable sig1 : std_logic;
     file     file1 : something;
-    variable var1 : integer;
+    constant var1 : integer;
   begin
   end procedure AVERAGE_SAMPLES;  
 
@@ -122,7 +122,7 @@ begin
       signal d : out std_logic) is
       variable  sig1 : std_logic;
       file file1 : something;
-      variable var1 : integer;
+      constant var1 : integer;
     begin
     end procedure AVERAGE_SAMPLES;  
 
@@ -139,7 +139,7 @@ begin
       signal d : out std_logic) is
         variable   sig1 : std_logic;
         file     file1 : something;
-        variable var1 : integer;
+        constant var1 : integer;
     begin
     end procedure AVERAGE_SAMPLES;  
 

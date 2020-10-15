@@ -17,6 +17,7 @@ from vsg.vhdlFile.classify_new import whitespace
 
 from vsg.vhdlFile.indent import loop_statement
 from vsg.vhdlFile.indent import function_specification
+from vsg.vhdlFile.indent import procedure_specification
 from vsg.vhdlFile.indent import interface_element
 from vsg.vhdlFile.indent import generate_statement
 from vsg.vhdlFile.indent import generic_clause
@@ -360,7 +361,10 @@ class vhdlFile():
                  continue
 
             if isinstance(oToken, token.use_clause.keyword):
-                 oToken.set_indent(iIndent + 1)
+                 if bLibraryFound:
+                     oToken.set_indent(iIndent + 1)
+                 else:
+                     oToken.set_indent(iIndent)
                  continue
             
 
@@ -515,6 +519,10 @@ class vhdlFile():
             if isinstance(oToken, token.constant_declaration.constant_keyword):
                 oToken.set_indent(iIndent)
 
+            ### Variable declaration 
+            if isinstance(oToken, token.variable_declaration.variable_keyword):
+                oToken.set_indent(iIndent)
+
             ### File declaration 
             if isinstance(oToken, token.file_declaration.file_keyword):
                 oToken.set_indent(iIndent)
@@ -526,6 +534,7 @@ class vhdlFile():
                 oToken.set_indent(iIndent + 1)
 
             iIndent, bLabelFound = loop_statement.set_indent(iIndent, bLabelFound, oToken)
+            iIndent, bLabelFound = procedure_specification.set_indent(iIndent, bLabelFound, oToken)
             iIndent, bLabelFound = function_specification.set_indent(iIndent, bLabelFound, oToken)
             iIndent, bLabelFound = interface_element.set_indent(iIndent, bLabelFound, oToken)
             iIndent, bLabelFound = generate_statement.set_indent(iIndent, bLabelFound, oToken)

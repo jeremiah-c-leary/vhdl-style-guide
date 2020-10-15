@@ -23,31 +23,27 @@ end package FIFO_PKG;
 
 package body FIFO_PKG is
 
---  procedure AVERAGE_SAMPLES;
---  begin
---  End PROCEDURE AVERAGE_SAMPLES;
-
   procedure AVERAGE_SAMPLES (
     constant a : in integer;
     signal b : in std_logic;
     variable c : in std_logic_vector(3 downto 0);
     signal d : out std_logic) is
-   begin
+    variable sig1 : std_logic;
+    file     file1 : something;
+    constant var1 : integer;
+  begin
   end procedure AVERAGE_SAMPLES;  
 
-  -- Violations below this line
-
---   procedure AVERAGE_SAMPLES;
--- begin
---     end procedure AVERAGE_SAMPLES;
-
   procedure AVERAGE_SAMPLES (constant x : in integer;
-   constant a : in integer;
-     signal b : in std_logic;
-       variable c : in std_logic_vector(3 downto 0);
-     signal d : out std_logic) is
+    constant a : in integer;
+    signal b : in std_logic;
+    variable c : in std_logic_vector(3 downto 0);
+    signal d : out std_logic) is
+    variable sig1 : std_logic;
+    file     file1 : something;
+    constant var1 : integer;
   begin
-  END PROCEDURE AVERAGE_SAMPLES;  
+  end procedure AVERAGE_SAMPLES;  
 
   -- Variations on end of procedure parameter and is keyword
 
@@ -57,6 +53,9 @@ package body FIFO_PKG is
     variable c : in std_logic_vector(3 downto 0);
     signal d : out std_logic)
     is
+    variable sig1 : std_logic;
+    file     file1 : something;
+    constant var1 : integer;
   begin
   end procedure AVERAGE_SAMPLES;  
 
@@ -66,6 +65,9 @@ package body FIFO_PKG is
     variable c : in std_logic_vector(3 downto 0);
     signal d : out std_logic
   ) is
+    variable sig1 : std_logic;
+    file     file1 : something;
+    constant var1 : integer;
   begin
   end procedure AVERAGE_SAMPLES;  
 
@@ -76,20 +78,12 @@ package body FIFO_PKG is
     signal d : out std_logic
   )
   is
+    variable sig1 : std_logic;
+    file     file1 : something;
+    constant var1 : integer;
   begin
   end procedure AVERAGE_SAMPLES;  
 
-  -- Procedure declarative region
-
-  procedure AVERAGE_SAMPLES (
-    constant a : in integer;
-    signal b : in std_logic;
-    variable c : in std_logic_vector(3 downto 0);
-    signal d : out std_logic) is
-  variable var_1 : integer;
-      variable var_2 : integer;
-  begin
-  end procedure AVERAGE_SAMPLES;  
 
 end package body FIFO_PKG;
 
@@ -100,32 +94,58 @@ architecture RTL of ENT is
     signal b : in std_logic;
     variable c : in std_logic_vector(3 downto 0);
     signal d : out std_logic) is
-  variable var_1 : integer;
-      variable var_2 : integer;
+    variable sig1 : std_logic;
+    file     file1 : something;
+    constant var1 : integer;
   begin
+  end procedure AVERAGE_SAMPLES;  
 
-    for i in 0 to 7 loop
-       done_something <= 0;
-    end loop;
-
-    if a = '1' then
-      d <= 0;
-    end if;
-
+  procedure AVERAGE_SAMPLES (constant x : in integer;
+    constant a : in integer;
+    signal b : in std_logic;
+    variable c : in std_logic_vector(3 downto 0);
+    signal d : out std_logic) is
+    variable sig1 : std_logic;
+    file     file1 : something;
+    constant var1 : integer;
+  begin
   end procedure AVERAGE_SAMPLES;  
 
 begin
 
   TEST_PROCESS : process
 
-    procedure test_procedure (
-      constant test1_c    : in boolean := true
-     ) is
+    procedure AVERAGE_SAMPLES (
+      constant a : in integer;
+      signal b : in std_logic;
+      variable c : in std_logic_vector(3 downto 0);
+      signal d : out std_logic) is
+      variable sig1 : std_logic;
+      file     file1 : something;
+      constant var1 : integer;
     begin
-    end procedure test_procedure;
+    end procedure AVERAGE_SAMPLES;  
 
   begin
 
   end process TEST_PROCESS;
+
+  TEST_PROCESS : process
+
+    procedure AVERAGE_SAMPLES (constant x : in integer;
+      constant a : in integer;
+      signal b : in std_logic;
+      variable c : in std_logic_vector(3 downto 0);
+      signal d : out std_logic) is
+        variable sig1 : std_logic;
+        file     file1 : something;
+        constant var1 : integer;
+    begin
+    end procedure AVERAGE_SAMPLES;  
+
+  begin
+
+  end process TEST_PROCESS;
+
 
 end architecture RTL;

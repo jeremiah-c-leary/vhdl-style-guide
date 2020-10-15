@@ -1,11 +1,16 @@
 
-from vsg.rules import indent_rule
+from vsg.rules import token_indent
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.subprogram_body.begin_keyword)
 
 
-class rule_002(indent_rule):
+class rule_002(token_indent):
     '''
-    Procedure rule 002 checks the indent of the **begin** keyword.
+    Checks for the proper indentation at the beginning of the procedure specification.
     '''
 
     def __init__(self):
-        indent_rule.__init__(self, 'procedure', '002', 'isProcedureBegin')
+        token_indent.__init__(self, 'procedure', '002', lTokens)

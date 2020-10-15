@@ -1,5 +1,5 @@
 
-from vsg.rules import token_indent
+from vsg.rules import token_indent_between_tokens
 
 from vsg import token
 
@@ -14,11 +14,14 @@ lTokens.append(token.interface_procedure_specification.procedure_keyword)
 lTokens.append(token.interface_function_specification.function_keyword)
 lTokens.append(token.interface_package_declaration.package_keyword)
 
+oStart = token.function_specification.open_parenthesis
+oEnd = token.function_specification.close_parenthesis
 
-class rule_008(token_indent):
+
+class rule_008(token_indent_between_tokens):
     '''
     Checks the indent of function parameters when they are on multiple lines.
     '''
 
     def __init__(self):
-        token_indent.__init__(self, 'function', '008', lTokens)
+        token_indent_between_tokens.__init__(self, 'function', '008', lTokens, oStart, oEnd)
