@@ -1,16 +1,16 @@
 
-from vsg.rules import case_rule
-from vsg import utils
+from vsg.rules import token_case
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.process_statement.end_process_label)
 
 
-class rule_019(case_rule):
+class rule_019(token_case):
     '''
-    Process rule 019 checks the "end process" label has proper case.
+    Checks the label has proper case.
     '''
 
     def __init__(self):
-        case_rule.__init__(self, 'process', '019', 'isEndProcess')
-        self.solution = 'Change end process label to '
-
-    def _extract(self, oLine):
-        return utils.extract_label(oLine)
+        token_case.__init__(self, 'process', '019', lTokens)

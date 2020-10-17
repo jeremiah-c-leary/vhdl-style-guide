@@ -1,50 +1,46 @@
-import os
 
+import os
 import unittest
 
 from vsg.rules import process
 from vsg import vhdlFile
 from vsg.tests import utils
 
-# Read in test file used for all tests
-lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','process','process_rule_018_test_input.vhd'))
+sTestDir = os.path.dirname(__file__)
 
-class test_rule_018(unittest.TestCase):
+lFile = utils.read_vhdlfile(os.path.join(sTestDir,'rule_018_test_input.vhd'))
 
-  def setUp(self):
-    self.oFile = vhdlFile.vhdlFile(lFile)
+lExpected = []
+lExpected.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_018_test_input.fixed.vhd'), lExpected)
 
 
-  def test_rule_018(self):
-    oRule = process.rule_018()
-    self.assertTrue(oRule)
-    self.assertEqual(oRule.name, 'process')
-    self.assertEqual(oRule.identifier, '018')
-    oRule.analyze(self.oFile)
-    lExpected = []
-    dViolation = utils.add_violation(14)
-    dViolation['processLabel'] = 'PROC_LABEL2'
-    lExpected.append(dViolation)
+class test_process_rule(unittest.TestCase):
 
-    dViolation = utils.add_violation(19)
-    lExpected.append(dViolation)
+    def setUp(self):
+        self.oFile = vhdlFile.vhdlFile(lFile)
 
-    dViolation = utils.add_violation(29)
-    dViolation['processLabel'] = 'LaBeL_CaSe_TeSt'
-    lExpected.append(dViolation)
+    def test_rule_018(self):
+        oRule = process.rule_018()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'process')
+        self.assertEqual(oRule.identifier, '018')
 
-    self.assertEqual(oRule.violations, lExpected)
+        lExpected = [15]
 
-  def test_fix_rule_018(self):
-    oRule = process.rule_018()
-    oRule.fix(self.oFile)
+        oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
-    self.assertEqual(self.oFile.lines[9].line, '  end process PROC_LABEL1;')
-    self.assertEqual(self.oFile.lines[14].line, '  end process PROC_LABEL2;')
-    self.assertEqual(self.oFile.lines[19].line, '  end process;')
-    self.assertEqual(self.oFile.lines[24].line, '  end process PROC_LABEL3;')
-    self.assertEqual(self.oFile.lines[29].line, '  end process LaBeL_CaSe_TeSt;')
-    oRule.analyze(self.oFile)
-    lExpected = []
-    lExpected.append(utils.add_violation(19))
-    self.assertEqual(oRule.violations, lExpected)
+    def test_fix_rule_018(self):
+        oRule = process.rule_018()
+
+        oRule.fix(self.oFile)
+
+        lActual = []
+        for oLine in self.oFile.lines:
+            lActual.append(oLine.line)
+
+        self.assertEqual(lExpected, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])

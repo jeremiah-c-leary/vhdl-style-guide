@@ -1,16 +1,16 @@
 
-from vsg.rules import case_rule
-from vsg import utils
+from vsg.rules import token_case
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.process_statement.end_process_keyword)
 
 
-class rule_009(case_rule):
+class rule_009(token_case):
     '''
-    Process rule 009 checks the "process" keyword has proper case on the closing of a process.
+    Checks the *process* keyword has proper case.
     '''
 
     def __init__(self):
-        case_rule.__init__(self, 'process', '009', 'isEndProcess')
-        self.solution = 'Change "process" keyword to '
-
-    def _extract(self, oLine):
-        return utils.extract_words(oLine, ['process'])
+        token_case.__init__(self, 'process', '009', lTokens)

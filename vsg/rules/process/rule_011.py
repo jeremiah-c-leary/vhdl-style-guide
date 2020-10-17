@@ -1,11 +1,16 @@
 
-from vsg.rules import line_below_rule
+from vsg.rules import blank_line_below_line_ending_with_token
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.process_statement.semicolon)
 
 
-class rule_011(line_below_rule):
+class rule_011(blank_line_below_line_ending_with_token):
     '''
-    Process rule 010 checks for a blank line after the "end process" keywords.
+    Checks for a blank line below the end process statment.
     '''
 
     def __init__(self):
-        line_below_rule.__init__(self, 'process', '011', 'isEndProcess')
+        blank_line_below_line_ending_with_token.__init__(self, 'process', '011', lTokens)

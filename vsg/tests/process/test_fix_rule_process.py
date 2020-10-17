@@ -79,18 +79,6 @@ class testFixRuleProcessMethods(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
 
-    def test_fix_rule_010(self):
-        oRule = process.rule_010()
-        dExpected = []
-        oRule.fix(self.oFile)
-        oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, dExpected)
-        self.assertFalse(self.oFile.lines[6].isProcessBegin)
-        self.assertTrue(self.oFile.lines[6].isProcessKeyword)
-        self.assertTrue(self.oFile.lines[7].isProcessBegin)
-        self.assertFalse(self.oFile.lines[7].isProcessKeyword)
-        self.assertEqual(self.oFile.lines[7].indentLevel, self.oFile.lines[6].indentLevel)
-
     def test_fix_rule_011(self):
         oRule = process.rule_011()
         dExpected = []

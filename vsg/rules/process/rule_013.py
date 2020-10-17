@@ -1,16 +1,16 @@
 
-from vsg.rules import case_rule
-from vsg import utils
+from vsg.rules import token_case
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.process_statement.is_keyword)
 
 
-class rule_013(case_rule):
+class rule_013(token_case):
     '''
-    Process rule 013 checks the "is" keyword has proper case.
+    Checks the *is* keyword has proper case.
     '''
 
     def __init__(self):
-        case_rule.__init__(self, 'process', '013', 'isSensitivityListEnd')
-        self.solution = 'Change "is" keyword to '
-
-    def _extract(self, oLine):
-        return utils.extract_words(oLine, ['is'])
+        token_case.__init__(self, 'process', '013', lTokens)

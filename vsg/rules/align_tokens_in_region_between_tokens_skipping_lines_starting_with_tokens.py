@@ -52,6 +52,8 @@ class align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens(
         self.configuration.append('comment_line_ends_group')
         self.separate_generic_port_alignment = True
         self.configuration.append('separate_generic_port_alignment')
+        self.include_lines_without_comments = False
+        self.configuration.append('include_lines_without_comments')
 
 
 
@@ -74,10 +76,13 @@ class align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens(
             bTokenFound = False
             iToken = -1
             bSkip = False
+            iMaxColumn = 0
+            iLeftColumn = 0
 
             for iIndex in range(0, len(lTokens)):
                iToken += 1
                oToken = lTokens[iIndex]
+               iLeftColumn += oToken.length()
 
                if not bTokenFound and not bSkip:
                    for oSearch in self.lTokens:
@@ -117,7 +122,16 @@ class align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens(
 
                    dAnalysis = {}
 
+               if isinstance(oToken, parser.comment):
+                   iLeftColumn -= lTokens[iIndex].length()
+                   if isinstance(lTokens[iIndex - 1], parser.whitespace):
+                       iLeftColumn -= lTokens[iIndex - 1].length()
+
                if isinstance(oToken, parser.carriage_return):
+
+                   iMaxColumn = max(iMaxColumn, iLeftColumn)
+                   iLeftColumn = 0
+
                    iLine += 1
                    iColumn = 0
                    bTokenFound = False
@@ -159,7 +173,7 @@ class align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens(
                        
                        
 
-            add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
+            add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment, self.include_lines_without_comments, iMaxColumn)
 
 
             for iKey in list(dAnalysis.keys()):
@@ -196,17 +210,16 @@ class align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens(
         oFile.update(self.violations)
 
 
-def add_adjustments_to_dAnalysis(dAnalysis, compact_alignment):
+def add_adjustments_to_dAnalysis(dAnalysis, compact_alignment, include_lines_without_comments=False, iMaxColumn=0):
     iMaxLeftColumn = 0
-    iMinLeftColumn = 9999999999999999
     iMaxTokenColumn = 0
-    iMinTokenColumn = 9999999999999999
 
     for iKey in list(dAnalysis.keys()):
         iMaxLeftColumn = max(iMaxLeftColumn, dAnalysis[iKey]['left_column'])
-        iMinLeftColumn = min(iMinLeftColumn, dAnalysis[iKey]['left_column'])
         iMaxTokenColumn = max(iMaxTokenColumn, dAnalysis[iKey]['token_column'])
-        iMinTokenColumn = min(iMinTokenColumn, dAnalysis[iKey]['token_column'])
+
+    if include_lines_without_comments:
+        iMaxTokenColumn = max(iMaxTokenColumn, iMaxColumn)
 
     if compact_alignment:
         for iKey in list(dAnalysis.keys()):

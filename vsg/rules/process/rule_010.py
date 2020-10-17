@@ -1,32 +1,17 @@
 
-from vsg import rule
-from vsg import line
-from vsg import utils
+from vsg.rules import split_line_at_token
 
-import re
+from vsg import token
+
+lTokens = []
+lTokens.append(token.process_statement.begin_keyword)
 
 
-class rule_010(rule.rule):
+class rule_010(split_line_at_token):
     '''
-    Process rule 010 checks the "begin" keyword is on it's own line.
+    Moves the *begin* keyword to it's own line.
     '''
 
     def __init__(self):
-        rule.rule.__init__(self, 'process', '010')
-        self.solution = 'Place "begin" keyword on seperate line.'
-        self.phase = 1
-
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isProcessBegin and not re.match('^\s*begin', oLine.line, re.IGNORECASE):
-            dViolation = utils.create_violation_dict(iLineNumber)
-            self.add_violation(dViolation)
-
-    def _fix_violations(self, oFile):
-        for dViolation in self.violations[::-1]:
-            iLineNumber = utils.get_violation_line_number(dViolation)
-            oLine = oFile.lines[iLineNumber]
-            oLine.update_line(re.sub('begin', ' '*len('begin'), oLine.line, 1, flags=re.IGNORECASE))
-            oLine.isProcessBegin = False
-            oFile.lines.insert(iLineNumber + 1, line.line('  begin'))
-            oFile.lines[iLineNumber + 1].isProcessBegin = True
-            oFile.lines[iLineNumber + 1].indentLevel = oLine.indentLevel
+        split_line_at_token.__init__(self, 'process', '010', lTokens)
+        self.solution = 'Closing parenthesis must be on a line by itself.'

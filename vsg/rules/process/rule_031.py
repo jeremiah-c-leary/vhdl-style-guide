@@ -1,42 +1,25 @@
 
-from vsg import rule
-from vsg import check
-from vsg import fix
-from vsg import line
+from vsg.rules import align_tokens_in_region_between_tokens_unless_between_tokens
+
+from vsg import token
+
+lAlign = []
+lAlign.append(token.full_type_declaration.identifier)
+lAlign.append(token.incomplete_type_declaration.identifier)
+lAlign.append(token.file_declaration.identifier)
+lAlign.append(token.signal_declaration.identifier)
+lAlign.append(token.constant_declaration.identifier)
+lAlign.append(token.subtype_declaration.identifier)
+lAlign.append(token.variable_declaration.identifier)
+
+lUnless = []
 
 
-class rule_031(rule.rule):
-    '''Process rule 031 checks for alignment of identifiers in the process declarative region.'''
+class rule_031(align_tokens_in_region_between_tokens_unless_between_tokens):
+    '''
+    Checks the alignment of declaration identifiers in the process declarative region.
+    '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'process'
-        self.identifier = '031'
-        self.phase = 5
+        align_tokens_in_region_between_tokens_unless_between_tokens.__init__(self, 'process', '031', lAlign, token.process_statement.process_keyword, token.process_statement.begin_keyword, lUnless)
         self.solution = 'Align the first character of each identifier.'
-
-    def _pre_analyze(self):
-        self.lGroup = []
-        self.fGroupFound = False
-        self.iStartGroupIndex = None
-
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isProcessKeyword and not self.fGroupFound:
-            self.fGroupFound = True
-            self.iStartGroupIndex = iLineNumber
-        if self.fGroupFound:
-            if oLine.isConstant or oLine.isVariable or oLine.isFileKeyword:
-                if oLine.insideProcedure or oLine.insideFunction:
-                    self.lGroup.append(line.blank_line())
-                else:
-                    self.lGroup.append(oLine)
-            else:
-                self.lGroup.append(line.blank_line())
-        if oLine.isProcessBegin and self.fGroupFound:
-            self.fGroupFound = False
-            check.identifier_alignment(self, self.iStartGroupIndex, self.lGroup)
-            self.lGroup = []
-            self.iStartGroupIndex = None
-
-    def _fix_violations(self, oFile):
-        fix.identifier_alignment(self, oFile)

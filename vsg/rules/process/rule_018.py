@@ -1,44 +1,15 @@
-from vsg import rule
-from vsg import utils
 
-import re
+from vsg.rules import insert_token_left_of_token_if_it_does_not_exist_between_tokens_using_value_from_token
+
+from vsg.token import process_statement as token
 
 
-class rule_018(rule.rule):
+class rule_018(insert_token_left_of_token_if_it_does_not_exist_between_tokens_using_value_from_token):
     '''
-    Process rule 018 checks the "end process" has a label.
+    Checks the process name exists on the same line as the "end" and "process" keywords.
     '''
 
     def __init__(self):
-        rule.rule.__init__(self, 'process', '018')
+        insert_token_left_of_token_if_it_does_not_exist_between_tokens_using_value_from_token.__init__(self, 'process', '018', token.end_process_label, token.semicolon, token.end_keyword, token.semicolon, token.process_label)
         self.solution = 'Add a label for the "end process".'
-        self.phase = 1
         self.subphase = 2
-
-    def _pre_analyze(self):
-        self.previousLabel = ''
-        self.fProcessHadBeginLabel = False
-
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isProcessKeyword:
-            if oLine.isProcessLabel:
-                self.previousLabel = utils.extract_label(oLine)[0]
-                self.fProcessHadBeginLabel = True
-        if oLine.isEndProcess:
-            if not oLine.isProcessEndLabel:
-                dViolation = utils.create_violation_dict(iLineNumber)
-                if self.fProcessHadBeginLabel:
-                    dViolation['processLabel'] = self.previousLabel
-                self.add_violation(dViolation)
-            self.fProcessHadBeginLabel = False
-
-    def _fix_violations(self, oFile):
-         for dViolation in self.violations:
-             try:
-                 oLine = utils.get_violating_line(oFile, dViolation)
-                 sLine = oLine.line
-                 iIndex = oLine.lineLower.find('process') + len('process')
-                 oLine.update_line(sLine[:iIndex] + ' ' + dViolation['processLabel'] + sLine[iIndex:])
-                 oLine.isProcessEndLabel = True
-             except KeyError:
-                 pass

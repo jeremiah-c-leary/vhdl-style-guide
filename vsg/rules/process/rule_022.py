@@ -1,11 +1,16 @@
 
-from vsg.rules import line_below_rule
+from vsg.rules import blank_line_below_line_ending_with_token
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.process_statement.begin_keyword)
 
 
-class rule_022(line_below_rule):
+class rule_022(blank_line_below_line_ending_with_token):
     '''
-    Process rule 022 checks for a blank line below the "begin" keyword.
+    Checks for a blank line below the begin keyword.
     '''
 
     def __init__(self):
-        line_below_rule.__init__(self, 'process', '022', 'isProcessBegin')
+        blank_line_below_line_ending_with_token.__init__(self, 'process', '022', lTokens)

@@ -1,30 +1,19 @@
 
-from vsg import rule
-from vsg import fix
-from vsg import utils
+from vsg import parser
+from vsg import token
 
-import re
+from vsg.rules import single_space_between_token_pairs
+
+lTokens = []
+lTokens.append([token.process_statement.process_keyword, token.process_statement.open_parenthesis])
+lTokens.append([token.process_statement.process_keyword, token.process_statement.is_keyword])
+lTokens.append([token.process_statement.process_keyword, token.process_statement.begin_keyword])
 
 
-class rule_002(rule.rule):
+class rule_002(single_space_between_token_pairs):
     '''
-    Process rule 002 checks there is a single space between the process
-    keyword and the (.
+    Checks for a single space between the process keyword and the process logical name
     '''
-
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'process'
-        self.identifier = '002'
-        self.solution = 'Ensure a single space exists between the "process" \
-                          keyword and the (.'
-        self.phase = 2
-
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isProcessKeyword and re.match('^\s*.*process\s*\(', oLine.lineLower) and not re.match('^\s*.*process\s\(', oLine.lineLower):
-            dViolation = utils.create_violation_dict(iLineNumber)
-            self.add_violation(dViolation)
-
-    def _fix_violations(self, oFile):
-        for dViolation in self.violations:
-            fix.enforce_one_space_after_word(self, utils.get_violating_line(oFile, dViolation), 'process')
+        single_space_between_token_pairs.__init__(self, 'process', '002', lTokens)
+        self.solution = 'Ensure a single space after the process keyword.'

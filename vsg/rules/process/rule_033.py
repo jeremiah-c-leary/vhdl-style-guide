@@ -1,16 +1,23 @@
 
-from vsg.rules import keyword_alignment_rule
+from vsg.rules import align_tokens_in_region_between_tokens_unless_between_tokens
+
+from vsg import token
+
+lAlign = []
+lAlign.append(token.file_declaration.colon)
+lAlign.append(token.signal_declaration.colon)
+lAlign.append(token.constant_declaration.colon)
+lAlign.append(token.variable_declaration.colon)
+
+lUnless = []
 
 
-class rule_033(keyword_alignment_rule):
+class rule_033(align_tokens_in_region_between_tokens_unless_between_tokens):
     '''
-    Process rule 033 checks the colons are in the same column for all declarations in the process declarative part.
+    Checks the alignment of : in declarations in the process declarative region.
     '''
 
     def __init__(self):
-        keyword_alignment_rule.__init__(self, 'process', '033')
-        self.sKeyword = ':'
-        self.sStartGroupTrigger = 'isProcessKeyword'
-        self.sEndGroupTrigger = 'isProcessBegin'
-        self.lLineTriggers = ['isConstant', 'isVariable', 'insideFile']
-        self.solution = 'Align colon with right most colon.'
+        align_tokens_in_region_between_tokens_unless_between_tokens.__init__(self, 'process', '033', lAlign, token.process_statement.process_keyword, token.process_statement.begin_keyword, lUnless)
+        self.solution = 'Align :\'s.'
+        self.subphase = 2

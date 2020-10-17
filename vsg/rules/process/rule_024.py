@@ -1,12 +1,16 @@
 
-from vsg.rules import single_space_before_character_rule
+from vsg import token
+
+from vsg.rules import single_space_between_token_pairs
+
+lTokens = []
+lTokens.append([token.process_statement.process_label, token.process_statement.label_colon])
 
 
-class rule_024(single_space_before_character_rule):
+class rule_024(single_space_between_token_pairs):
     '''
-    Process rule 024 checks for a single space after the process label and the :.
+    Checks for a single space before the *is* keyword.
     '''
-
     def __init__(self):
-        single_space_before_character_rule.__init__(self, 'process', '024', 'isProcessLabel', ':')
+        single_space_between_token_pairs.__init__(self, 'process', '024', lTokens)
         self.solution = 'Ensure a single space exists between process label and :.'

@@ -1,12 +1,18 @@
 
-from vsg.rules import single_space_before_rule
+from vsg import parser
+from vsg import token
+
+from vsg.rules import single_space_between_token_pairs
+
+lTokens = []
+lTokens.append([token.process_statement.process_keyword, token.process_statement.is_keyword])
+lTokens.append([token.process_statement.close_parenthesis, token.process_statement.is_keyword])
 
 
-class rule_014(single_space_before_rule):
+class rule_014(single_space_between_token_pairs):
     '''
-    Process rule 014 checks for a single space between the ) and "is" keyword.
+    Checks for a single space before the *is* keyword.
     '''
-
     def __init__(self):
-        single_space_before_rule.__init__(self, 'process', '014', 'isSensitivityListEnd', 'is')
-        self.solution = 'Ensure only a single space exists between the ) and "is" keyword.'
+        single_space_between_token_pairs.__init__(self, 'process', '014', lTokens)
+        self.solution = 'Ensure a single space before the is keyword.'

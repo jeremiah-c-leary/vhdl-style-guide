@@ -1,17 +1,27 @@
 
-from vsg.rules import keyword_alignment_rule
+from vsg.rules import align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens
+
+from vsg import parser
+from vsg import token
+
+lAlign = []
+lAlign.append(parser.comment)
+
+oStart = token.process_statement.process_keyword
+oEnd = token.process_statement.begin_keyword
+
+lSkip = []
+lSkip.append(parser.comment)
 
 
-class rule_034(keyword_alignment_rule):
+class rule_034(align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens):
     '''
-    Process rule 034 ensures the alignment of "--" keywords between the process sensitivity list and the process "begin" keywords.
+    Ensures the alignment of inline comments in an process.
     '''
 
     def __init__(self):
-        keyword_alignment_rule.__init__(self, 'process', '034')
-        self.solution = 'Inconsistent alignment of comments process declaration region.'
-        self.phase = 6
-        self.sKeyword = '--'
-        self.sStartGroupTrigger = 'isSensitivityListEnd'
-        self.sEndGroupTrigger = 'isProcessBegin'
-        self.lLineTriggers = ['hasInlineComment']
+        align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens.__init__(self, 'process', '034', lAlign, oStart, oEnd, lSkip)
+        self.solution = 'Align comment.'
+        self.subphase = 3
+        self.blank_line_ends_group = False
+        self.comment_line_ends_group = False

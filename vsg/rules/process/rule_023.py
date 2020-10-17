@@ -1,11 +1,16 @@
 
-from vsg.rules import line_above_rule
+from vsg.rules import blank_line_above_line_starting_with_token
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.process_statement.end_keyword)
 
 
-class rule_023(line_above_rule):
+class rule_023(blank_line_above_line_starting_with_token):
     '''
-    Process rule 023 checks for a blank line above the "end process" keywords.
+    Checks for a blank line above the "end process" keywords.
     '''
 
     def __init__(self):
-        line_above_rule.__init__(self, 'process', '023', 'isEndProcess')
+        blank_line_above_line_starting_with_token.__init__(self, 'process', '023', lTokens)

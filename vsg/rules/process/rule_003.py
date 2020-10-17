@@ -1,11 +1,16 @@
 
-from vsg.rules import indent_rule
+from vsg.rules import token_indent
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.process_statement.begin_keyword)
 
 
-class rule_003(indent_rule):
+class rule_003(token_indent):
     '''
-    Process rule 003 checks for the proper indentation at the beginning of the line.
+    Checks for the proper indentation of the *begin* keyword.
     '''
 
     def __init__(self):
-        indent_rule.__init__(self, 'process', '003', 'isProcessBegin')
+        token_indent.__init__(self, 'process', '003', lTokens)
