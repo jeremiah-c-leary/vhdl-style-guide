@@ -2,6 +2,7 @@
 
 from vsg import parser
 from vsg import rule_item
+from vsg import token
 from vsg import violation
 
 from vsg.vhdlFile import utils
@@ -50,6 +51,11 @@ class align_tokens_in_region_between_tokens_unless_between_tokens(rule_item.Rule
         self.configuration.append('blank_line_ends_group')
         self.comment_line_ends_group = True
         self.configuration.append('comment_line_ends_group')
+
+        self.if_control_statements_ends_group = False
+        self.configuration.append('if_control_statements_ends_group')
+        self.case_control_statements_ends_group = False
+        self.configuration.append('case_control_statements_ends_group')
 
 
     def analyze(self, oFile):
@@ -116,6 +122,34 @@ class align_tokens_in_region_between_tokens_unless_between_tokens(rule_item.Rule
                            dAnalysis = {}
                    if self.blank_line_ends_group:
                        if utils.are_next_consecutive_token_types([parser.blank_line], iIndex + 1, lTokens):
+                           add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
+
+                           for iKey in list(dAnalysis.keys()):
+                               if dAnalysis[iKey]['adjust'] != 0:
+                                   oLineTokens = oFile.get_tokens_from_line(iKey)
+                                   sSolution = 'Move ' + dAnalysis[iKey]['token_value'] + ' ' + str(dAnalysis[iKey]['adjust']) + ' columns' 
+                                   oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, sSolution)
+                                   oViolation.set_action(dAnalysis[iKey])
+                                   self.violations.append(oViolation)
+
+                           dAnalysis = {}
+
+                   if self.if_control_statements_ends_group:
+                       if check_for_if_keywords(iIndex + 1, lTokens):
+                           add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
+
+                           for iKey in list(dAnalysis.keys()):
+                               if dAnalysis[iKey]['adjust'] != 0:
+                                   oLineTokens = oFile.get_tokens_from_line(iKey)
+                                   sSolution = 'Move ' + dAnalysis[iKey]['token_value'] + ' ' + str(dAnalysis[iKey]['adjust']) + ' columns' 
+                                   oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, sSolution)
+                                   oViolation.set_action(dAnalysis[iKey])
+                                   self.violations.append(oViolation)
+
+                           dAnalysis = {}
+
+                   if self.case_control_statements_ends_group:
+                       if check_for_case_keywords(iIndex + 1, lTokens):
                            add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
 
                            for iKey in list(dAnalysis.keys()):
@@ -198,4 +232,46 @@ def check_for_exclusions(oToken, bSkip, oEndSkipToken, lUnless):
                 return True, lTokenPairs[1]
                 
     return bSkip, oEndSkipToken
+   
+ 
+def check_for_if_keywords(iToken, lTokens):
+    iMyToken = iToken
+    if isinstance(lTokens[iToken], parser.whitespace):
+        iMyToken += 1
+
+    if isinstance(lTokens[iMyToken], token.if_statement.if_label):
+        return True
     
+    if isinstance(lTokens[iMyToken], token.if_statement.if_keyword):
+        return True
+    
+    if isinstance(lTokens[iMyToken], token.if_statement.elsif_keyword):
+        return True
+    
+    if isinstance(lTokens[iMyToken], token.if_statement.else_keyword):
+        return True
+    
+    if isinstance(lTokens[iMyToken], token.if_statement.end_keyword):
+        return True
+
+    return False
+
+
+def check_for_case_keywords(iToken, lTokens):
+    iMyToken = iToken
+    if isinstance(lTokens[iToken], parser.whitespace):
+        iMyToken += 1
+
+    if isinstance(lTokens[iMyToken], token.case_statement.case_label):
+        return True
+    
+    if isinstance(lTokens[iMyToken], token.case_statement.case_keyword):
+        return True
+    
+    if isinstance(lTokens[iMyToken], token.case_statement_alternative.when_keyword):
+        return True
+    
+    if isinstance(lTokens[iMyToken], token.case_statement.end_keyword):
+        return True
+
+    return False

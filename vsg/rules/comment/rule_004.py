@@ -1,7 +1,11 @@
 
+from vsg import parser
+
 from vsg.rules import whitespace_before_token
 
-from vsg import parser
+lTokens = []
+lTokens.append(parser.comment)
+
 
 class rule_004(whitespace_before_token):
     '''
@@ -9,4 +13,4 @@ class rule_004(whitespace_before_token):
     '''
 
     def __init__(self):
-        whitespace_before_token.__init__(self, 'comment', '004', parser.comment)
+        whitespace_before_token.__init__(self, 'comment', '004', lTokens)

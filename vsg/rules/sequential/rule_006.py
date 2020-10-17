@@ -1,23 +1,22 @@
 
-from vsg import rule
-from vsg import utils
+from vsg import parser
+from vsg import token
+
+from vsg.rules import remove_lines_starting_with_token_between_token_pairs
+
+lTokens = []
+lTokens.append([token.simple_release_assignment.assignment, token.simple_release_assignment.semicolon])
+lTokens.append([token.simple_force_assignment.assignment, token.simple_force_assignment.semicolon])
+lTokens.append([token.simple_waveform_assignment.assignment, token.simple_waveform_assignment.semicolon])
+
+oRemoveToken = parser.comment
 
 
-class rule_006(rule.rule):
+class rule_006(remove_lines_starting_with_token_between_token_pairs):
     '''
-    Sequential rule 006 checks for commented out lines within a multiline sequential statement.
+    Checks for the proper indentation at the beginning of the sequential statement.
     '''
 
     def __init__(self):
-        rule.rule.__init__(self, 'sequential', '006')
-        self.solution = 'Remove comment.'
-        self.phase = 1
-
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.insideSequential and oLine.isComment:
-            dViolation = utils.create_violation_dict(iLineNumber)
-            self.add_violation(dViolation)
-
-    def _fix_violations(self, oFile):
-        for dViolation in self.violations[::-1]:
-            oFile.lines.pop(utils.get_violation_line_number(dViolation))
+        remove_lines_starting_with_token_between_token_pairs.__init__(self, 'sequential', '006', oRemoveToken, lTokens)
+        self.solution = 'Remove comment'

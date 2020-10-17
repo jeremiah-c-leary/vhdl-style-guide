@@ -24,17 +24,20 @@ class whitespace_before_token(rule_item.Rule):
        reference token check for a whitespace before
     '''
 
-    def __init__(self, name, identifier, token):
+    def __init__(self, name, identifier, lTokens):
         rule_item.Rule.__init__(self, name=name, identifier=identifier)
         self.solution = None
         self.phase = 2
-        self.token = token
+        self.lTokens = lTokens
 
     def analyze(self, oFile):
 
         dAnalysis = {}
+        lToi = []
+        for oToken in self.lTokens:
+            lToi_a = oFile.get_token_and_n_tokens_before_it(oToken, 1)
+            lToi = utils.combine_two_token_class_lists(lToi, lToi_a)
 
-        lToi = oFile.get_token_and_n_tokens_before_it(self.token, 1)
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             iLine = oToi.get_line_number()

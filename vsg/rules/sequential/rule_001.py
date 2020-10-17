@@ -1,11 +1,18 @@
 
-from vsg.rules import indent_rule
+from vsg.rules import token_indent
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.signal_assignment_statement.label)
+lTokens.append(token.simple_force_assignment.target)
+lTokens.append(token.simple_waveform_assignment.target)
 
 
-class rule_001(indent_rule):
+class rule_001(token_indent):
     '''
-    Sequential rule 001 checks for the proper indentation at the beginning of the line.
+    Checks for the proper indentation at the beginning of the sequential statement.
     '''
 
     def __init__(self):
-        indent_rule.__init__(self, 'sequential', '001', 'isSequential')
+        token_indent.__init__(self, 'sequential', '001', lTokens)

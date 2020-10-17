@@ -24,6 +24,7 @@ from vsg.vhdlFile.indent import generic_clause
 from vsg.vhdlFile.indent import port_clause
 from vsg.vhdlFile.indent import if_statement
 from vsg.vhdlFile.indent import package_declaration
+from vsg.vhdlFile.indent import simple_signal_assignment
 
 
 class vhdlFile():
@@ -542,6 +543,7 @@ class vhdlFile():
             iIndent, bLabelFound = port_clause.set_indent(iIndent, bLabelFound, oToken)
             iIndent, bLabelFound = if_statement.set_indent(iIndent, bLabelFound, oToken)
             iIndent, bLabelFound = package_declaration.set_indent(iIndent, bLabelFound, oToken)
+            iIndent, bLabelFound = simple_signal_assignment.set_indent(iIndent, bLabelFound, oToken)
   
     def print_debug(self):
         for oLine in self.lines:
@@ -1323,3 +1325,11 @@ class Tokens():
     def get_token_value(self):
         return self.sTokenValue
 
+    def extract_tokens(self, iStart, iEnd):
+        lTokens = self.lTokens[iStart:iEnd + 1]
+        iStartIndex = iStart + self.iStartIndex
+        iLine = self.iLine
+        for iIndex in range(0, iStart + 1):
+            if isinstance(self.lTokens[iIndex], parser.carriage_return):
+                iLine += 1
+        return Tokens(iStartIndex, iLine, lTokens)
