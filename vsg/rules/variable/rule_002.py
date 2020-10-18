@@ -1,16 +1,16 @@
 
-from vsg.rules import case_rule
-from vsg import utils
+from vsg.rules import token_case
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.variable_declaration.variable_keyword)
 
 
-class rule_002(case_rule):
+class rule_002(token_case):
     '''
-    Variable rule 002 checks the "variable" keyword has proper case.
+    Checks the "variable" keyword has proper case.
     '''
 
     def __init__(self):
-        case_rule.__init__(self, 'variable', '002', 'isVariable')
-        self.solution = 'Change "variable" keyword to '
-
-    def _extract(self, oLine):
-        return utils.extract_class_name(oLine)
+        token_case.__init__(self, 'variable', '002', lTokens)

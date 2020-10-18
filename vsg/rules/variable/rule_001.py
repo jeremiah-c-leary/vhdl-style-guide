@@ -1,11 +1,17 @@
 
-from vsg.rules import indent_rule
+from vsg.rules import token_indent
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.variable_declaration.shared_keyword)
+lTokens.append(token.variable_declaration.variable_keyword)
 
 
-class rule_001(indent_rule):
+class rule_001(token_indent):
     '''
-    Variable rule 001 checks for the proper indentation at the beginning of the line.
+    Checks for the proper indentation at the beginning of a variable declaration.
     '''
 
     def __init__(self):
-        indent_rule.__init__(self, 'variable', '001', 'isVariable')
+        token_indent.__init__(self, 'variable', '001', lTokens)

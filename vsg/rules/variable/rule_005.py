@@ -1,12 +1,17 @@
 
-from vsg.rules import single_space_after_character_rule
+from vsg import parser
+from vsg import token
+
+from vsg.rules import single_space_between_token_pairs
+
+lTokens = []
+lTokens.append([token.variable_declaration.colon, parser.todo])
 
 
-class rule_005(single_space_after_character_rule):
+class rule_005(single_space_between_token_pairs):
     '''
-    Variable rule 005 checks there is a single space after the colon.
+    Checks for a single space after the :.
     '''
-
     def __init__(self):
-        single_space_after_character_rule.__init__(self, 'variable', '005', 'isVariable', ':')
-        self.solution = 'Ensure only a variable space after the colon.'
+        single_space_between_token_pairs.__init__(self, 'variable', '005', lTokens)
+        self.solution = 'Ensure only a single space after the colon.'
