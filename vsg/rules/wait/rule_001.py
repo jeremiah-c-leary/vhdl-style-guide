@@ -1,11 +1,17 @@
 
-from vsg.rules import indent_rule
+from vsg.rules import token_indent
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.wait_statement.wait_keyword)
+lTokens.append(token.wait_statement.label)
 
 
-class rule_001(indent_rule):
+class rule_001(token_indent):
     '''
-    Wait rule 001 checks for the proper indentation of the "wait" keyword.
+    Checks for the proper indentation at the beginning of the line.
     '''
 
     def __init__(self):
-        indent_rule.__init__(self, 'wait', '001', 'isWait')
+        token_indent.__init__(self, 'wait', '001', lTokens)
