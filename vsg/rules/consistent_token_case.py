@@ -24,12 +24,13 @@ class consistent_token_case(rule_item.Rule):
        token type to apply the case check against
     '''
 
-    def __init__(self, name, identifier, lTokens):
+    def __init__(self, name, identifier, lTokens, lIgnore=[]):
         rule_item.Rule.__init__(self, name=name, identifier=identifier)
         self.solution = None
         self.phase = 6
         self.subphase = 2
         self.lTokens = lTokens
+        self.lIgnoreTokens = lIgnore
 
     def analyze(self, oFile):
         lTargetTypes = oFile.get_tokens_matching(self.lTokens)
@@ -37,6 +38,10 @@ class consistent_token_case(rule_item.Rule):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             for oToken in lTokens:
+
+                if is_token_in_ignore_token_list(oToken, self.lIgnoreTokens):
+                    continue
+
                 for oTargetType in lTargetTypes:
                     sTokenValue = oToken.get_value()
                     sTargetType = oTargetType.get_tokens()[0].get_value()
@@ -67,3 +72,10 @@ class consistent_token_case(rule_item.Rule):
             lTokens[0].set_value(dActions['constant'])
             oViolation.set_tokens(lTokens)
         oFile.update(self.violations)
+
+
+def is_token_in_ignore_token_list(oToken, lIgnoreTokens):
+    for oIgnoreToken in lIgnoreTokens:
+        if isinstance(oToken, oIgnoreToken):
+            return True
+    return False

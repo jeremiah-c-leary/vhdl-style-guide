@@ -25,6 +25,7 @@ from vsg.vhdlFile.indent import port_clause
 from vsg.vhdlFile.indent import if_statement
 from vsg.vhdlFile.indent import package_declaration
 from vsg.vhdlFile.indent import simple_signal_assignment
+from vsg.vhdlFile.indent import signal_declaration
 
 
 class vhdlFile():
@@ -544,6 +545,7 @@ class vhdlFile():
             iIndent, bLabelFound = if_statement.set_indent(iIndent, bLabelFound, oToken)
             iIndent, bLabelFound = package_declaration.set_indent(iIndent, bLabelFound, oToken)
             iIndent, bLabelFound = simple_signal_assignment.set_indent(iIndent, bLabelFound, oToken)
+            iIndent, bLabelFound = signal_declaration.set_indent(iIndent, bLabelFound, oToken)
   
     def print_debug(self):
         for oLine in self.lines:
@@ -1252,6 +1254,40 @@ class vhdlFile():
             if bFirstTokenInLine:
                 iStart = iIndex
                 bFirstTokenInLine
+
+        return lReturn
+
+    def get_tokens_starting_with_token_and_ending_with_one_of_possible_tokens(self, lStartTokens, lEndTokens):
+        iLine = 1
+        lReturn = []
+        lTemp = []
+        bStore = False
+
+        for iIndex in range(0, len(self.lAllObjects)):
+            oToken = self.lAllObjects[iIndex]
+
+            if bStore:
+                for oEndToken in lEndTokens:
+                    if isinstance(oToken, oEndToken):
+                        lReturn.append(Tokens(iStart, iStartLine, lTemp))
+                        bStore = False
+                        lTemp = []
+
+            if bStore:
+                if len(lTemp) == 0:
+                    if not is_whitespace(oToken):
+                        iStartLine = iLine
+                        iStart = iIndex
+                        lTemp.append(oToken)
+                else:
+                    lTemp.append(oToken)
+
+            for oStartToken in lStartTokens:
+                if isinstance(oToken, oStartToken):
+                    bStore = True
+
+            if isinstance(self.lAllObjects[iIndex], parser.carriage_return):
+                iLine +=1
 
         return lReturn
 

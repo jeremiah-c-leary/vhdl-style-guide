@@ -202,7 +202,6 @@ signal_012
 This rule checks multiple signal assignments on a single line are column aligned.
 
 .. NOTE::
-    The :'s will be aligned with rule *signal_009*.
     This rule will only cover two signals on a single line.
 
 **Violation**
@@ -277,7 +276,7 @@ This rule checks for consistent capitalization of signal names.
    end architecture rtl;
 
 signal_015
-==========
+##########
 
 This rule checks for multiple signal names defined in a single signal declaration.
 By default, this rule will only flag more than two signal declarations.
@@ -304,7 +303,7 @@ Refer to the section `Configuring Number of Signals in Signal Declaration <confi
    signal sig5 : std_logic;
    
 signal_016
-==========
+##########
 
 This rule checks the signal declaration is on a single line.
 

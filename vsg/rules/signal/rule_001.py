@@ -1,11 +1,16 @@
 
-from vsg.rules import indent_rule
+from vsg.rules import token_indent
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.signal_declaration.signal_keyword)
 
 
-class rule_001(indent_rule):
+class rule_001(token_indent):
     '''
-    Signal rule 001 checks for the proper indentation at the beginning of the line.
+    Checks for the proper indentation at the beginning of the signal statement.
     '''
 
     def __init__(self):
-        indent_rule.__init__(self, 'signal', '001', 'isSignal')
+        token_indent.__init__(self, 'signal', '001', lTokens)

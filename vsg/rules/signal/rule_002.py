@@ -1,16 +1,16 @@
 
-from vsg.rules import case_rule
-from vsg import utils
+from vsg.rules import token_case
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.signal_declaration.signal_keyword)
 
 
-class rule_002(case_rule):
+class rule_002(token_case):
     '''
-    Signal rule 002 checks the "signal" keyword has proper case.
+    Checks the "signal" keyword has proper case.
     '''
 
     def __init__(self):
-        case_rule.__init__(self, 'signal', '002', 'isSignal')
-        self.solution = 'Change "signal" keyword to '
-
-    def _extract(self, oLine):
-        return utils.extract_class_name(oLine)
+        token_case.__init__(self, 'signal', '002', lTokens)

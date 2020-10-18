@@ -1,17 +1,18 @@
 
-from vsg.rules import prefix_rule
-from vsg import utils
+from vsg.rules import token_prefix
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.signal_declaration.identifier)
 
 
-class rule_008(prefix_rule):
+class rule_008(token_prefix):
     '''
-    Signal rule 008 checks for prefixes in signal identifiers.
+    Constant rule 008 checks for prefixes in signal identifiers.
     '''
 
     def __init__(self):
-        prefix_rule.__init__(self, 'signal', '008', 'isSignal')
+        token_prefix.__init__(self, 'signal', '008', lTokens)
         self.prefixes = ['s_']
         self.solution = 'Signal identifiers'
-
-    def _extract(self, oLine):
-        return utils.extract_class_identifier_list(oLine)

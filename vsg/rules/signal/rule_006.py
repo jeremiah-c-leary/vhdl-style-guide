@@ -1,12 +1,17 @@
 
-from vsg.rules import single_space_before_character_rule
+from vsg import parser
+from vsg import token
+
+from vsg.rules import whitespace_before_token
+
+lTokens = []
+lTokens.append(token.signal_declaration.colon)
 
 
-class rule_006(single_space_before_character_rule):
+class rule_006(whitespace_before_token):
     '''
-    Signal rule 006 checks there is at least a single space before the colon.
+    Checks there is at least a single space before the colon.
     '''
-
     def __init__(self):
-        single_space_before_character_rule.__init__(self, 'signal', '006', 'isSignal', ':')
-        self.solution = 'Add a single space before the colon.'
+        whitespace_before_token.__init__(self, 'signal', '006', lTokens)
+        self.solution = 'Ensure at least a single space exists before the :'

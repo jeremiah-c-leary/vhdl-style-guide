@@ -509,3 +509,25 @@ def does_length_of_tokens_exceed(lObjects, iLength):
     if iTotalLength > iLength:
         return True
     return False
+
+
+def remove_carriage_returns_from_token_list(lTokens):
+    lMyTokens = []
+    for oToken in lTokens:
+        if isinstance(oToken, parser.carriage_return):
+            continue
+        lMyTokens.append(oToken)
+    return lMyTokens 
+
+
+def remove_consecutive_whitespace_tokens(lTokens):
+    lMyTokens = []
+    for iToken, oToken in enumerate(lTokens):
+        if iToken == 0:
+            lMyTokens.append(oToken)
+        else:
+            if isinstance(oToken, parser.whitespace) and isinstance(lTokens[iToken - 1], parser.whitespace):
+                continue
+            else:
+                lMyTokens.append(oToken)
+    return lMyTokens
