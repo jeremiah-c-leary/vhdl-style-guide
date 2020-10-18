@@ -53,7 +53,7 @@ This rule was depricated and replaced with rules:  function_015, package_019, pr
 type_004
 ########
 
-This rule checks the type name has proper case.
+This rule checks the type identifier has proper case.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 

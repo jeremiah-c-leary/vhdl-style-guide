@@ -1,12 +1,17 @@
 
-from vsg.rules import single_space_before_rule
+from vsg import parser
+from vsg import token
+
+from vsg.rules import single_space_between_token_pairs
+
+lTokens = []
+lTokens.append([token.full_type_declaration.identifier, token.full_type_declaration.is_keyword])
 
 
-class rule_006(single_space_before_rule):
+class rule_006(single_space_between_token_pairs):
     '''
-    Type rule 006 checks for a single space before the "is" keyword.
+    Checks for a single space before the *is* keyword.
     '''
-
     def __init__(self):
-        single_space_before_rule.__init__(self, 'type', '006', 'isTypeKeyword', 'is', True)
-        self.solution = 'Ensure a single space before the "is" keyword.'
+        single_space_between_token_pairs.__init__(self, 'type', '006', lTokens)
+        self.solution = 'Ensure only a single space before the is keyword.'

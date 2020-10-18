@@ -1,16 +1,16 @@
 
-from vsg.rules import case_rule
-from vsg import utils
+from vsg.rules import token_case
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.full_type_declaration.is_keyword)
 
 
-class rule_013(case_rule):
+class rule_013(token_case):
     '''
-    Entity rule 013 checks the "is" keyword has proper case in type definitions.
+    Checks the *is* keyword has proper case.
     '''
 
     def __init__(self):
-        case_rule.__init__(self, 'type', '013', 'isTypeKeyword')
-        self.solution = 'Change "is" keyword to '
-
-    def _extract(self, oLine):
-        return utils.extract_words(oLine, ['is'])
+        token_case.__init__(self, 'type', '013', lTokens)

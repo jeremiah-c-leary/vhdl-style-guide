@@ -1,16 +1,17 @@
 
-from vsg.rules import case_rule
-from vsg import utils
+from vsg.rules import token_case
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.incomplete_type_declaration.identifier)
+lTokens.append(token.full_type_declaration.identifier)
 
 
-class rule_004(case_rule):
+class rule_004(token_case):
     '''
-    Type rule 004 checks the type name has proper case.
+    Checks the identifier has proper case.
     '''
 
     def __init__(self):
-        case_rule.__init__(self, 'type', '004', 'isTypeKeyword')
-        self.solution = 'Change type identifier name to '
-
-    def _extract(self, oLine):
-        return utils.extract_type_identifier(oLine)
+        token_case.__init__(self, 'type', '004', lTokens)

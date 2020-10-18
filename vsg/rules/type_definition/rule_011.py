@@ -1,11 +1,17 @@
 
-from vsg.rules import line_below_rule
+from vsg import token
+
+from vsg.rules import blank_line_below_line_ending_with_token
+
+lTokens = []
+lTokens.append(token.incomplete_type_declaration.semicolon)
+lTokens.append(token.full_type_declaration.semicolon)
 
 
-class rule_011(line_below_rule):
+class rule_011(blank_line_below_line_ending_with_token):
     '''
-    Type 011 checks for a blank line below the "type" declaration.
+    Checks for a blank line below the "type" declaration.
     '''
 
     def __init__(self):
-        line_below_rule.__init__(self, 'type', '011', 'isTypeEnd')
+        blank_line_below_line_ending_with_token.__init__(self, 'type', '011', lTokens)

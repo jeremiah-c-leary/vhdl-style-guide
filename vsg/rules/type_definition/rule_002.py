@@ -1,16 +1,17 @@
 
-from vsg.rules import case_rule
-from vsg import utils
+from vsg.rules import token_case
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.incomplete_type_declaration.type_keyword)
+lTokens.append(token.full_type_declaration.type_keyword)
 
 
-class rule_002(case_rule):
+class rule_002(token_case):
     '''
-    Type rule 002 checks the "type" keyword has proper case.
+    Checks the "type" keyword has proper case.
     '''
 
     def __init__(self):
-        case_rule.__init__(self, 'type', '002', 'isTypeKeyword')
-        self.solution = 'Change "type" keyword to '
-
-    def _extract(self, oLine):
-        return utils.extract_words(oLine, ['type'])
+        token_case.__init__(self, 'type', '002', lTokens)

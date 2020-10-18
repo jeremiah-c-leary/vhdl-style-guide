@@ -1,11 +1,17 @@
 
-from vsg.rules import indent_rule
+from vsg.rules import token_indent
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.incomplete_type_declaration.type_keyword)
+lTokens.append(token.full_type_declaration.type_keyword)
 
 
-class rule_001(indent_rule):
+class rule_001(token_indent):
     '''
-    Type rule 001 checks for the proper indentation at the beginning of the line.
+    Checks for the proper indentation at the beginning of the type statement.
     '''
 
     def __init__(self):
-        indent_rule.__init__(self, 'type', '001', 'isTypeKeyword')
+        token_indent.__init__(self, 'type', '001', lTokens)

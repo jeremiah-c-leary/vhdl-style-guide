@@ -1,17 +1,19 @@
 
-from vsg.rules import prefix_rule
-from vsg import utils
+from vsg.rules import token_prefix
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.incomplete_type_declaration.identifier)
+lTokens.append(token.full_type_declaration.identifier)
 
 
-class rule_015(prefix_rule):
+class rule_015(token_prefix):
     '''
-    Type rule 015 checks for prefixes in user defined type identifiers.
+    Checks for prefixes in type identifiers.
     '''
 
     def __init__(self):
-        prefix_rule.__init__(self, 'type', '015', 'isTypeKeyword')
+        token_prefix.__init__(self, 'type', '015', lTokens)
         self.prefixes = ['t_']
         self.solution = 'Type identifiers'
-
-    def _extract(self, oLine):
-        return utils.extract_type_identifier(oLine)
