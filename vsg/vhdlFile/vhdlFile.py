@@ -29,6 +29,7 @@ from vsg.vhdlFile.indent import signal_declaration
 from vsg.vhdlFile.indent import subtype_declaration
 from vsg.vhdlFile.indent import type_declaration
 from vsg.vhdlFile.indent import variable_declaration
+from vsg.vhdlFile.indent import variable_assignment_statement
 
 
 class vhdlFile():
@@ -552,6 +553,7 @@ class vhdlFile():
             iIndent, bLabelFound = subtype_declaration.set_indent(iIndent, bLabelFound, oToken)
             iIndent, bLabelFound = type_declaration.set_indent(iIndent, bLabelFound, oToken)
             iIndent, bLabelFound = variable_declaration.set_indent(iIndent, bLabelFound, oToken)
+            iIndent, bLabelFound = variable_assignment_statement.set_indent(iIndent, bLabelFound, oToken)
   
     def print_debug(self):
         for oLine in self.lines:

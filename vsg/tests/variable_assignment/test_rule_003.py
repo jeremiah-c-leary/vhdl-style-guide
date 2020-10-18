@@ -2,38 +2,37 @@
 import os
 import unittest
 
-from vsg.rules import sequential
+from vsg.rules import variable_assignment
 from vsg import vhdlFile
 from vsg.tests import utils
 
 sTestDir = os.path.dirname(__file__)
 
-lFile = utils.read_vhdlfile(os.path.join(sTestDir,'rule_006_test_input.vhd'))
+lFile = utils.read_vhdlfile(os.path.join(sTestDir,'rule_003_test_input.vhd'))
 
 lExpected = []
 lExpected.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_006_test_input.fixed.vhd'), lExpected)
+utils.read_file(os.path.join(sTestDir, 'rule_003_test_input.fixed.vhd'), lExpected)
 
 
-class test_sequential_rule(unittest.TestCase):
+class test_variable_assignment_rule(unittest.TestCase):
 
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
 
-    def test_rule_006(self):
-        oRule = sequential.rule_006()
+    def test_rule_003(self):
+        oRule = variable_assignment.rule_003()
         self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'sequential')
-        self.assertEqual(oRule.identifier, '006')
+        self.assertEqual(oRule.name, 'variable_assignment')
+        self.assertEqual(oRule.identifier, '003')
 
-        lExpected = [19, 21]
+        lExpected = [31, 34, 37]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
-    def test_fix_rule_006(self):
-        oRule = sequential.rule_006()
-        oRule.fixable = True
+    def test_fix_rule_003(self):
+        oRule = variable_assignment.rule_003()
 
         oRule.fix(self.oFile)
 

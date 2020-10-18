@@ -48,6 +48,7 @@ class testFixRuleSequentialMethods(unittest.TestCase):
 
     def test_fix_rule_006(self):
         oRule = sequential.rule_006()
+        oRule.fixable = True
         dExpected = []
         oRule.fix(oFile)
         oRule.analyze(oFile)

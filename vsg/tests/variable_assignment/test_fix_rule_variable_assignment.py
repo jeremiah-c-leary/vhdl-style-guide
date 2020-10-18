@@ -45,7 +45,3 @@ class testFixRuleVariableAssignmentMethods(unittest.TestCase):
         oRule.fix(oFile)
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
-
-    def test_fix_rule_006(self):
-        oRule = variable_assignment.rule_006()
-        self.assertFalse(oRule.fixable)
