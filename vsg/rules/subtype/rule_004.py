@@ -1,16 +1,17 @@
-from vsg.rules import prefix_rule
-from vsg import utils
+
+from vsg import token
+
+from vsg.rules import token_prefix
+
+lTokens = []
+lTokens.append(token.subtype_declaration.identifier)
 
 
-class rule_004(prefix_rule):
+class rule_004(token_prefix):
     '''
     Subtype rule 004 checks for prefixes in user defined subtype identifiers.
     '''
 
     def __init__(self):
-        prefix_rule.__init__(self, 'subtype', '004', 'isSubtypeKeyword')
+        token_prefix.__init__(self, 'subtype', '004', lTokens)
         self.prefixes = ['st_']
-        self.solution = 'Subtype identifiers'
-
-    def _extract(self, oLine):
-        return utils.extract_type_identifier(oLine)

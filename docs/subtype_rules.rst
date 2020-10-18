@@ -73,7 +73,7 @@ This rule was depricated and replaced with rules:  function_015, package_019, pr
 subtype_004
 ###########
 
-This rule checks for valid prefixes in user defined subtype identifiers.
+This rule checks for valid prefixes in subtype identifiers.
 The default new subtype prefix is *st\_*.
 
 Refer to the section `Configuring Prefix and Suffix Rules <configuring_prefix_suffix.html>`_ for information on changing the allowed prefixes.

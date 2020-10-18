@@ -1,14 +1,16 @@
-from vsg.rules import indent_rule
+
+from vsg.rules import token_indent
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.subtype_declaration.subtype_keyword)
 
 
-class rule_001(indent_rule):
+class rule_001(token_indent):
     '''
-    Checks the indent level of the "subtype" keyword.
+    Checks for the proper indentation at the beginning of the subtype statement.
     '''
 
     def __init__(self):
-        indent_rule.__init__(self)
-        # These are filled out when creating a new rule
-        self.name = 'subtype'
-        self.identifier = '001'
-        self.sTrigger = 'isSubtypeKeyword'
+        token_indent.__init__(self, 'subtype', '001', lTokens)
