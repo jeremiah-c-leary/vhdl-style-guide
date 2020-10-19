@@ -14,9 +14,9 @@ architecture RTL of ENTITY1 is
       temp := temp + 1;
     end loop;
 
-    while (temp /= 30) loop
+      while (temp /= 30) loop
       temp := temp + 1;
-      end loop;
+    end loop;
 
     return temp;
   end function FUNC1;
