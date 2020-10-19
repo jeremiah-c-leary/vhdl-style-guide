@@ -1,19 +1,40 @@
 
-from vsg import rule
-from vsg import utils
+from vsg import rule_item
+from vsg import token
+from vsg import violation
 
 
-class rule_001(rule.rule):
+class rule_001(rule_item.Rule):
     '''
-    With rule 001 checks for "with" statements.
+    Checks the case for words.
+
+    Parameters
+    ----------
+
+    name : string
+       The group the rule belongs to.
+
+    identifier : string
+       unique identifier.  Usually in the form of 00N.
+
+    trigger : parser object type
+       object type to apply the case check against
     '''
 
     def __init__(self):
-        rule.rule.__init__(self, 'with', '001')
-        self.fixable = False
+        rule_item.Rule.__init__(self, name='with', identifier='001')
+        self.solution = "Rewrite with as a process"
         self.phase = 1
+        self.fixable = False
 
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isWithKeyword:
-            dViolation = utils.create_violation_dict(iLineNumber)
-            self.add_violation(dViolation)
+    def analyze(self, oFile):
+        lToi = oFile.get_tokens_matching([token.concurrent_selected_signal_assignment.with_keyword])
+        for oToi in lToi:
+            self.add_violation(violation.New(oToi.get_line_number(), oToi, self.solution))
+
+
+    def fix(self, oFile):
+        '''
+        Applies fixes for any rule violations.
+        '''
+        return
