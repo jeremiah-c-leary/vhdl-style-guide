@@ -4,7 +4,7 @@ from vsg import parser
 from vsg import token
 
 from vsg.vhdlFile import classify
-
+from vsg.vhdlFile import extract
 from vsg.vhdlFile import update
 from vsg.vhdlFile import utils
 
@@ -31,6 +31,7 @@ from vsg.vhdlFile.indent import type_declaration
 from vsg.vhdlFile.indent import variable_declaration
 from vsg.vhdlFile.indent import variable_assignment_statement
 from vsg.vhdlFile.indent import wait_statement
+
 
 
 class vhdlFile():
@@ -469,82 +470,13 @@ class vhdlFile():
         
 
     def get_sequence_of_tokens_matching(self, lTokens):
-        iLine = 1
-        lTemp = []
-        lReturn = []
-        iMatchCount = 0
-        iMatchLength = len(lTokens)
-        iStart = 0
-        for iIndex in range(0, len(self.lAllObjects)):
-
-            if isinstance(self.lAllObjects[iIndex], lTokens[iMatchCount]):
-                if iMatchCount == 0:
-                    iStart = iIndex
-                lTemp.append(self.lAllObjects[iIndex])
-                iMatchCount +=1
-                if iMatchCount == iMatchLength:
-                    lReturn.append(Tokens(iStart, iLine, lTemp))
-                    lTemp = []
-                    iMatchCount = 0
-            elif iMatchCount > 0:
-                lTemp = []
-                iMatchCount = 0
-
-            if isinstance(self.lAllObjects[iIndex], parser.carriage_return):
-                iLine +=1
-
-        return lReturn
+        return extract.get_sequence_of_tokens_matching(lTokens, self.lAllObjects)
 
     def get_sequence_of_tokens_matching_bounded_by_tokens(self, lTokens, oStart, oEnd):
-        iLine = 1
-        lTemp = []
-        lReturn = []
-        iMatchCount = 0
-        iMatchLength = len(lTokens)
-        iStart = 0
-        bCheck = False
-        for iIndex in range(0, len(self.lAllObjects)):
-
-            if isinstance(self.lAllObjects[iIndex], oStart):
-                bCheck = True
-                lTemp = []
-                iMatchCount = 0
-            if isinstance(self.lAllObjects[iIndex], oEnd):
-                bCheck = False
-                lTemp = []
-                iMatchCount = 0
-
-            if bCheck:
-                if isinstance(self.lAllObjects[iIndex], lTokens[iMatchCount]):
-                    if iMatchCount == 0:
-                        iStart = iIndex
-                    lTemp.append(self.lAllObjects[iIndex])
-                    iMatchCount +=1
-                    if iMatchCount == iMatchLength:
-                        lReturn.append(Tokens(iStart, iLine, lTemp))
-                        lTemp = []
-                        iMatchCount = 0
-                elif iMatchCount > 0:
-                    lTemp = []
-                    iMatchCount = 0
-
-            if isinstance(self.lAllObjects[iIndex], parser.carriage_return):
-                iLine +=1
-
-        return lReturn
+        return extract.get_sequence_of_tokens_matching_bounded_by_tokens(lTokens, oStart, oEnd, self.lAllObjects)
 
     def get_tokens_matching(self, lTokens):
-        iLine = 1
-        lReturn = []
-        for iIndex in range(0, len(self.lAllObjects)):
-            for oToken in lTokens:
-                if isinstance(self.lAllObjects[iIndex], oToken):
-                    lReturn.append(Tokens(iIndex, iLine, [self.lAllObjects[iIndex]]))
-
-            if isinstance(self.lAllObjects[iIndex], parser.carriage_return):
-                iLine +=1
-
-        return lReturn
+        return extract.get_tokens_matching(lTokens, self.lAllObjects)
 
     def get_tokens_matching_in_range_bounded_by_tokens(self, lTokens, oStart, oEnd):
         iLine = 1
