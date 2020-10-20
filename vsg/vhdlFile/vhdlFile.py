@@ -165,7 +165,7 @@ class vhdlFile():
 
         for iLine, lLine in enumerate(split_on_carriage_return(self.lAllObjects)):
             self.lines[iLine + 1].objects = lLine
-        self.set_indent_levels()
+
         self.set_token_indent()
 
     def update(self, lUpdates):
@@ -206,33 +206,6 @@ class vhdlFile():
     def get_line(self, iLineNumber):
         return self.lines[iLineNumber]
 
-    def insert_line(self, iLineNumber, oLine):
-        self.lines.insert(iLineNumber, oLine)
-
-    def remove_line(self, iLineNumber):
-        self.lines.pop(iLineNumber)
-
-    def get_lines_starting_with_item_or_whitespace_and_then_item(self, parserType):
-        lReturn = []
-
-        for iLine, oLine in enumerate(self.lines):
-            if _does_line_start_with_item_or_whitespace_and_then_item(oLine, parserType):
-                dEntry = _create_empty_return_dictionary()
-                dEntry['metadata']['iStartLineNumber'] = iLine
-                dEntry['metadata']['iEndLineNumber'] = iLine
-                dEntry['lines'].append(oLine)
-                lReturn.append(dEntry)
-
-        return lReturn
-
-    def convert_whitespace_only_lines_to_blank_lines(self):
-        print('Entering convert_whitespace_only_lines_to_blank_lines')
-        for iLine, oLine in enumerate(self.lines):
-            print(f'[{oLine.line}]')
-            if oLine.line.isspace() or oLine.line == '':
-                print('Got Here')
-                self.lines.pop(iLine)
-                self.lines.insert(iLine, line.blank_line())
             
     def get_region_bounded_by_items(self, beginItem, endItem):
         lReturn = []
@@ -264,73 +237,6 @@ class vhdlFile():
                 bRegionEndFound = False
         return lReturn
 
-    def set_indent_levels(self):
-        '''
-        Set the appropriate indent level for lines using item objects.
-        '''
-        dIndent = {}
-        dIndent['insideContextDeclaration'] = False
-        dIndent['level'] = 0
-        for oLine in self.lines:
-
-            if len(oLine.objects) == 0:
-                continue
-
-            if _does_line_start_with_item_or_whitespace_and_then_item(oLine, token.context_declaration.context_keyword):
-                oLine.indentLevel = 0
-                dIndent['insideContextDeclaration'] = True
-            if _does_line_start_with_item_or_whitespace_and_then_item(oLine, token.context_declaration.end_keyword):
-                oLine.indentLevel = 0
-                dIndent['insideContextDeclaration'] = False
-            if _does_line_start_with_item_or_whitespace_and_then_item(oLine, token.context_reference.keyword):
-                if dIndent['insideContextDeclaration']:
-                    oLine.indentLevel = 2
-                else:
-                    oLine.indentLevel = 1
-            if _does_line_start_with_item_or_whitespace_and_then_item(oLine, token.library_clause.keyword):
-                if dIndent['insideContextDeclaration']:
-                    oLine.indentLevel = 1
-                else:
-                    oLine.indentLevel = 0
-            if _does_line_start_with_item_or_whitespace_and_then_item(oLine, token.use_clause.keyword):
-                if dIndent['insideContextDeclaration']:
-                    oLine.indentLevel = 2
-                else:
-                    oLine.indentLevel = 1
-
-            if _does_line_start_with_item_or_whitespace_and_then_item(oLine, token.architecture_body.architecture_keyword):
-                dIndent['level'] = 1
-                oLine.indentLevel = 0
-
-            if _does_line_start_with_item_or_whitespace_and_then_item(oLine, token.architecture_body.begin_keyword):
-                dIndent['level'] = 1
-                oLine.indentLevel = 0
-
-            if _does_line_start_with_item_or_whitespace_and_then_item(oLine, token.architecture_body.end_keyword):
-                dIndent['level'] = 0
-                oLine.indentLevel = 0
-
-            if _does_line_start_with_item_or_whitespace_and_then_item(oLine, token.constant_declaration.assignment_operator):
-                if type(oLine.objects[0]) == token.constant_declaration.assignment_operator:
-                    if oLine.objects[0].get_value() == '(':
-                        oLine.indentLevel = dIndent['level']
-                        dIndent['level'] += 1
-                    elif oLine.objects[0].get_value() == ')':
-                        dIndent['level'] -= 1
-                        oLine.indentLevel = dIndent['level']
-                    else:
-                        oLine.indentLevel = dIndent['level']
-                else:
-                    oObject = oLine.objects[1]
-                    sValue = oObject.get_value()
-                    if oLine.objects[1].get_value() == '(':
-                        oLine.indentLevel = dIndent['level']
-                        dIndent['level'] += 1
-                    elif oLine.objects[1].get_value() == ')':
-                        dIndent['level'] -= 1
-                        oLine.indentLevel = dIndent['level']
-                    else:
-                        oLine.indentLevel = dIndent['level']
 
     def set_token_indent(self):
         '''
@@ -1302,23 +1208,6 @@ class vhdlFile():
         return lReturn
 
 
-def _create_empty_return_dictionary():
-    dReturn = {}
-    dReturn['metadata'] = {}
-    dReturn['metadata']['iStartLineNumber'] = 0
-    dReturn['metadata']['iEndLineNumber'] = 0
-    dReturn['lines'] = []
-    return dReturn
-
-
-def _does_line_start_with_item_or_whitespace_and_then_item(oLine, parserType):
-    if isinstance(oLine.get_object(0), parserType):
-        return True
-    if isinstance(oLine.get_object(0), parser.whitespace) and isinstance(oLine.get_object(1), parserType):
-        return True
-    return False
-
-
 def is_whitespace(oObject):
     if type(oObject) == parser.carriage_return:
         return True
@@ -1379,3 +1268,11 @@ class Tokens():
             if isinstance(self.lTokens[iIndex], parser.carriage_return):
                 iLine += 1
         return Tokens(iStartIndex, iLine, lTokens)
+
+
+def post_token_assignments(lTokens):
+    for iToken, oToken in enumerate(lTokens):
+        if isinstance(oToken, parser.todo):
+            if oToken.get_value() == '&':
+                lTokens[iToken] = token.adding_operator.concate_operator()
+                continue
