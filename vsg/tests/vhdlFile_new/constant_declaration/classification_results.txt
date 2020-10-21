@@ -112,11 +112,11 @@
 <class 'vsg.token.constant_declaration.identifier'>
 <class 'vsg.token.constant_declaration.colon'>
 <class 'vsg.token.constant_declaration.subtype_indication'>
+<class 'vsg.parser.open_parenthesis'>
 <class 'vsg.token.constant_declaration.subtype_indication'>
+<class 'vsg.token.direction.downto'>
 <class 'vsg.token.constant_declaration.subtype_indication'>
-<class 'vsg.token.constant_declaration.subtype_indication'>
-<class 'vsg.token.constant_declaration.subtype_indication'>
-<class 'vsg.token.constant_declaration.subtype_indication'>
+<class 'vsg.parser.close_parenthesis'>
 <class 'vsg.token.constant_declaration.assignment_operator'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.constant_declaration.semicolon'>

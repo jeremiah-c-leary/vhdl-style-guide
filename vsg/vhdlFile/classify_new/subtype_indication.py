@@ -3,6 +3,8 @@ from vsg import parser
 
 from vsg.vhdlFile import utils
 
+from vsg.token import direction
+
 
 def classify(iToken, lObjects):
     '''
@@ -34,5 +36,15 @@ def classify_until(lUntils, iToken, lObjects, oType=parser.todo):
         elif lObjects[iCurrent].get_value().lower() in lUntils:
             break
         else:
-            utils.assign_token(lObjects, iCurrent, oType)
+            sValue = lObjects[iCurrent].get_value()
+            if sValue == ')':
+                utils.assign_token(lObjects, iCurrent, parser.close_parenthesis)
+            elif sValue == '(':
+                utils.assign_token(lObjects, iCurrent, parser.open_parenthesis)
+            elif sValue.lower() == 'downto':
+                utils.assign_token(lObjects, iCurrent, direction.downto)
+            elif sValue.lower() == 'to':
+                utils.assign_token(lObjects, iCurrent, direction.to)
+            else:
+                utils.assign_token(lObjects, iCurrent, oType)
     return iCurrent

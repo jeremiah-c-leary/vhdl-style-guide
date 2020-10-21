@@ -90,11 +90,11 @@
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.token.interface_signal_declaration.subtype_indication'>
+<class 'vsg.parser.open_parenthesis'>
 <class 'vsg.token.interface_signal_declaration.subtype_indication'>
+<class 'vsg.token.direction.downto'>
 <class 'vsg.token.interface_signal_declaration.subtype_indication'>
-<class 'vsg.token.interface_signal_declaration.subtype_indication'>
-<class 'vsg.token.interface_signal_declaration.subtype_indication'>
-<class 'vsg.token.interface_signal_declaration.subtype_indication'>
+<class 'vsg.parser.close_parenthesis'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 15 |                     signal b: in signed(3 downto 0);
@@ -103,11 +103,11 @@
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.token.interface_signal_declaration.subtype_indication'>
+<class 'vsg.parser.open_parenthesis'>
 <class 'vsg.token.interface_signal_declaration.subtype_indication'>
+<class 'vsg.token.direction.downto'>
 <class 'vsg.token.interface_signal_declaration.subtype_indication'>
-<class 'vsg.token.interface_signal_declaration.subtype_indication'>
-<class 'vsg.token.interface_signal_declaration.subtype_indication'>
-<class 'vsg.token.interface_signal_declaration.subtype_indication'>
+<class 'vsg.parser.close_parenthesis'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 16 |                     signal sum : out signed (3 downto 0));
@@ -116,11 +116,11 @@
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.out_keyword'>
 <class 'vsg.token.interface_signal_declaration.subtype_indication'>
+<class 'vsg.parser.open_parenthesis'>
 <class 'vsg.token.interface_signal_declaration.subtype_indication'>
+<class 'vsg.token.direction.downto'>
 <class 'vsg.token.interface_signal_declaration.subtype_indication'>
-<class 'vsg.token.interface_signal_declaration.subtype_indication'>
-<class 'vsg.token.interface_signal_declaration.subtype_indication'>
-<class 'vsg.token.interface_signal_declaration.subtype_indication'>
+<class 'vsg.parser.close_parenthesis'>
 <class 'vsg.token.procedure_specification.close_parenthesis'>
 <class 'vsg.token.subprogram_declaration.semicolon'>
 --------------------------------------------------------------------------------

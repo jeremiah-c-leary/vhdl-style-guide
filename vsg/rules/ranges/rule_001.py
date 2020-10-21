@@ -1,16 +1,16 @@
 
-from vsg.rules import case_rule
-from vsg import utils
+from vsg.rules import token_case
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.direction.downto)
 
 
-class rule_001(case_rule):
+class rule_001(token_case):
     '''
-    Ranges rule 001 checks the "downto" keyword has proper case.
+    Checks the "downto" keyword has proper case.
     '''
 
     def __init__(self):
-        case_rule.__init__(self, 'range', '001')
-        self.solution = 'Change "downto" keyword to '
-
-    def _extract(self, oLine):
-        return utils.extract_words(oLine, ['downto'])
+        token_case.__init__(self, 'range', '001', lTokens)
