@@ -26,11 +26,11 @@
 <class 'vsg.token.unbounded_array_definition.close_parenthesis'>
 <class 'vsg.token.unbounded_array_definition.of_keyword'>
 <class 'vsg.parser.todo'>
+<class 'vsg.parser.open_parenthesis'>
 <class 'vsg.parser.todo'>
+<class 'vsg.token.direction.downto'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
 <class 'vsg.token.full_type_declaration.semicolon'>
 --------------------------------------------------------------------------------
 5 | 
@@ -52,11 +52,11 @@
 <class 'vsg.token.unbounded_array_definition.close_parenthesis'>
 <class 'vsg.token.unbounded_array_definition.of_keyword'>
 <class 'vsg.parser.todo'>
+<class 'vsg.parser.open_parenthesis'>
 <class 'vsg.parser.todo'>
+<class 'vsg.token.direction.downto'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
 <class 'vsg.token.full_type_declaration.semicolon'>
 --------------------------------------------------------------------------------
 7 | 

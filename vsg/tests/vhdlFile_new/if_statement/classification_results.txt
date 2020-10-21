@@ -96,9 +96,9 @@
 <class 'vsg.token.if_statement.label_colon'>
 <class 'vsg.token.if_statement.if_keyword'>
 <class 'vsg.parser.todo'>
+<class 'vsg.parser.open_parenthesis'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.todo'>
 --------------------------------------------------------------------------------
@@ -107,16 +107,16 @@
 <class 'vsg.token.simple_variable_assignment.target'>
 <class 'vsg.token.simple_variable_assignment.assignment'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.adding_operator.plus'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.simple_variable_assignment.semicolon'>
 --------------------------------------------------------------------------------
 21 |         elsif Code_of_Operation(0) = '1'
 <class 'vsg.token.if_statement.elsif_keyword'>
 <class 'vsg.parser.todo'>
+<class 'vsg.parser.open_parenthesis'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.todo'>
 --------------------------------------------------------------------------------
@@ -167,7 +167,7 @@
 <class 'vsg.token.simple_variable_assignment.target'>
 <class 'vsg.token.simple_variable_assignment.assignment'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.adding_operator.concat'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.simple_variable_assignment.semicolon'>
 --------------------------------------------------------------------------------

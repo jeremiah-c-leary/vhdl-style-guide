@@ -24,22 +24,22 @@
 <class 'vsg.token.identifier_list.identifier'>
 <class 'vsg.token.element_declaration.colon'>
 <class 'vsg.parser.todo'>
+<class 'vsg.parser.open_parenthesis'>
 <class 'vsg.parser.todo'>
+<class 'vsg.token.direction.to'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
 <class 'vsg.token.element_declaration.semicolon'>
 --------------------------------------------------------------------------------
 6 |       OpCode : Bit_Vector(3 downto 0);
 <class 'vsg.token.identifier_list.identifier'>
 <class 'vsg.token.element_declaration.colon'>
 <class 'vsg.parser.todo'>
+<class 'vsg.parser.open_parenthesis'>
 <class 'vsg.parser.todo'>
+<class 'vsg.token.direction.downto'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
 <class 'vsg.token.element_declaration.semicolon'>
 --------------------------------------------------------------------------------
 7 |       Op1, Op2, Res : RegName;
@@ -70,22 +70,22 @@
 <class 'vsg.token.identifier_list.identifier'>
 <class 'vsg.token.element_declaration.colon'>
 <class 'vsg.parser.todo'>
+<class 'vsg.parser.open_parenthesis'>
 <class 'vsg.parser.todo'>
+<class 'vsg.token.direction.to'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
 <class 'vsg.token.element_declaration.semicolon'>
 --------------------------------------------------------------------------------
 12 |       OpCode : Bit_Vector(3 downto 0);
 <class 'vsg.token.identifier_list.identifier'>
 <class 'vsg.token.element_declaration.colon'>
 <class 'vsg.parser.todo'>
+<class 'vsg.parser.open_parenthesis'>
 <class 'vsg.parser.todo'>
+<class 'vsg.token.direction.downto'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
 <class 'vsg.token.element_declaration.semicolon'>
 --------------------------------------------------------------------------------
 13 |       Op1, Op2, Res : RegName;

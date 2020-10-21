@@ -18,7 +18,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.to'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.variable_declaration.assignment_operator'>
 <class 'vsg.parser.todo'>
@@ -42,15 +42,15 @@
 <class 'vsg.token.variable_declaration.identifier'>
 <class 'vsg.token.variable_declaration.colon'>
 <class 'vsg.parser.todo'>
+<class 'vsg.parser.open_parenthesis'>
 <class 'vsg.parser.todo'>
+<class 'vsg.token.direction.to'>
 <class 'vsg.parser.todo'>
+<class 'vsg.parser.comma'>
 <class 'vsg.parser.todo'>
+<class 'vsg.token.direction.to'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
 <class 'vsg.token.variable_declaration.semicolon'>
 --------------------------------------------------------------------------------
 8 | 

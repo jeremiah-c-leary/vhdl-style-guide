@@ -33,7 +33,7 @@
 <class 'vsg.token.parameter_specification.identifier'>
 <class 'vsg.token.parameter_specification.in_keyword'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.to'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.for_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
@@ -59,7 +59,7 @@
 <class 'vsg.token.parameter_specification.identifier'>
 <class 'vsg.token.parameter_specification.in_keyword'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.to'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.for_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
@@ -70,7 +70,7 @@
 <class 'vsg.token.parameter_specification.identifier'>
 <class 'vsg.token.parameter_specification.in_keyword'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.to'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.for_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
@@ -81,7 +81,7 @@
 <class 'vsg.token.parameter_specification.identifier'>
 <class 'vsg.token.parameter_specification.in_keyword'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.to'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.for_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
@@ -116,7 +116,7 @@
 <class 'vsg.token.parameter_specification.identifier'>
 <class 'vsg.token.parameter_specification.in_keyword'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.to'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.for_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
@@ -127,7 +127,7 @@
 <class 'vsg.token.parameter_specification.identifier'>
 <class 'vsg.token.parameter_specification.in_keyword'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.to'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.for_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
@@ -138,7 +138,7 @@
 <class 'vsg.token.parameter_specification.identifier'>
 <class 'vsg.token.parameter_specification.in_keyword'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.to'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.for_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
@@ -155,7 +155,7 @@
 <class 'vsg.token.parameter_specification.identifier'>
 <class 'vsg.token.parameter_specification.in_keyword'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.to'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.for_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
@@ -178,7 +178,7 @@
 <class 'vsg.token.parameter_specification.identifier'>
 <class 'vsg.token.parameter_specification.in_keyword'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.to'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.for_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
@@ -189,7 +189,7 @@
 <class 'vsg.token.parameter_specification.identifier'>
 <class 'vsg.token.parameter_specification.in_keyword'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.to'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.for_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
@@ -206,7 +206,7 @@
 <class 'vsg.token.parameter_specification.identifier'>
 <class 'vsg.token.parameter_specification.in_keyword'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.to'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.for_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
@@ -241,7 +241,7 @@
 <class 'vsg.token.parameter_specification.identifier'>
 <class 'vsg.token.parameter_specification.in_keyword'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.to'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.for_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------

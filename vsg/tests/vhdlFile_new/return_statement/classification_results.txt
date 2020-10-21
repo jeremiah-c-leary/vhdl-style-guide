@@ -32,11 +32,11 @@
 9 |     return std_logic_vector(3 downto 0);
 <class 'vsg.token.return_statement.return_keyword'>
 <class 'vsg.parser.todo'>
+<class 'vsg.parser.open_parenthesis'>
 <class 'vsg.parser.todo'>
+<class 'vsg.token.direction.downto'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
 <class 'vsg.token.return_statement.semicolon'>
 --------------------------------------------------------------------------------
 10 | 
@@ -47,11 +47,11 @@
 <class 'vsg.token.return_statement.label_colon'>
 <class 'vsg.token.return_statement.return_keyword'>
 <class 'vsg.parser.todo'>
+<class 'vsg.parser.open_parenthesis'>
 <class 'vsg.parser.todo'>
+<class 'vsg.token.direction.downto'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
 <class 'vsg.token.return_statement.semicolon'>
 --------------------------------------------------------------------------------
 12 | 
