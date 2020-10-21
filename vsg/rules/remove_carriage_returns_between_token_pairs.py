@@ -29,7 +29,7 @@ class remove_carriage_returns_between_token_pairs(rule_item.Rule):
 
     def __init__(self, name, identifier, lTokens):
         rule_item.Rule.__init__(self, name=name, identifier=identifier)
-        self.solution = 'Split signal declaration into individual declarations'
+        self.solution = None
         self.phase = 1
         self.lTokens = lTokens
 
