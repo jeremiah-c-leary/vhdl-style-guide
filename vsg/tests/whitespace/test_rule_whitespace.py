@@ -15,57 +15,6 @@ class testRuleWhitespaceMethods(unittest.TestCase):
         self.lFile = utils.read_vhdlfile(sFileName)
         self.oFile = vhdlFile.vhdlFile(self.lFile)
 
-    def test_001(self):
-        oRule = whitespace.rule_001()
-        self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'whitespace')
-        self.assertEqual(oRule.identifier, '001')
-        self.assertEqual(oRule.phase, 2)
-
-        dExpected = utils.add_violation_list([2,4])
-        self.oFile.lines.append(line.line('  This is a test of ending whitespace'))
-        self.oFile.lines.append(line.line('  This is a test of ending whitespace '))
-        self.oFile.lines.append(line.line('  This is a test of ending whitespace'))
-        self.oFile.lines.append(line.line('  This is a test of ending whitespace  '))
-        self.oFile.lines.append(line.line('  This is a test of ending whitespace'))
-        oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, dExpected)
-
-    def test_002(self):
-        oRule = whitespace.rule_002()
-        self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'whitespace')
-        self.assertEqual(oRule.identifier, '002')
-        self.assertEqual(oRule.phase, 0)
-
-        dExpected = utils.add_violation_list([1,2,5])
-        self.oFile.lines.append(line.line('  This is a test of tabs\t'))
-        self.oFile.lines.append(line.line('\tThis is a test of tabs'))
-        self.oFile.lines.append(line.line('  This is a test of tabs'))
-        self.oFile.lines.append(line.line('  This is a test of tabs'))
-        self.oFile.lines.append(line.line('  This is a \t test of tabs'))
-        self.oFile.lines.append(line.line('  This is a test of tabs'))
-        oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, dExpected)
-
-    def test_004(self):
-        oRule = whitespace.rule_004()
-        self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'whitespace')
-        self.assertEqual(oRule.identifier, '004')
-        self.assertEqual(oRule.phase, 2)
-
-        dExpected = utils.add_violation_list([2,4,6])
-        self.oFile.lines.append(line.line('  This is a test of commas,'))
-        self.oFile.lines.append(line.line('  This is a test of commas ,'))
-        self.oFile.lines.append(line.line('  This is a test of commas,'))
-        self.oFile.lines.append(line.line('  This is a test of commas    ,'))
-        self.oFile.lines.append(line.line('  This is a test, of commas'))
-        self.oFile.lines.append(line.line('  This is a test , of commas'))
-        self.oFile.lines.append(line.line('  This is a test, of commas -- This is a comment ,'))
-        oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, dExpected)
-
     def test_005(self):
         oRule = whitespace.rule_005()
         self.assertTrue(oRule)

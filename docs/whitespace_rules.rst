@@ -4,38 +4,16 @@ Whitespace Rules
 whitespace_001
 ##############
 
-This rule checks for spaces at the end of lines.
+This rule has been depricated.
 
-**Violation**
-
-.. code-block:: vhdl
-
-   entity fifo is    
-
-**Fix**
-
-.. code-block:: vhdl
-
-   entity fifo is
+VSG strips trailing spaces when a file is read in.
 
 whitespace_002
 ##############
 
-This rule checks for tabs.
+This rule has been depricated.
 
-**Violation**
-
-.. code-block:: vhdl
-
-   port (
-       wr_en : in    std_logic;
-
-**Fix**
-
-.. code-block:: vhdl
-
-   port (
-     wr_en : in    std_logic;
+VSG changes tabs to spaces when a file is read in.
 
 whitespace_003
 ##############

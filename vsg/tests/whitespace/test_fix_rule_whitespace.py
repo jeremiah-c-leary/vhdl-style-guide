@@ -14,45 +14,6 @@ sFileName = os.path.join(os.path.dirname(__file__),'whitespace_test_input.txt')
 
 class testFixRuleWhitespaceMethods(unittest.TestCase):
 
-    def test_fix_001(self):
-        oRule = whitespace.rule_001()
-        self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'whitespace')
-        self.assertEqual(oRule.identifier, '001')
-
-        lFile = utils.read_vhdlfile(sFileName)
-        oFile = vhdlFile.vhdlFile(lFile)
-
-        dExpected = []
-        oFile.lines.append(line.line('  This is a test of ending whitespace'))
-        oFile.lines.append(line.line('  This is a test of ending whitespace '))
-        oFile.lines.append(line.line('  This is a test of ending whitespace'))
-        oFile.lines.append(line.line('  This is a test of ending whitespace  '))
-        oFile.lines.append(line.line('  This is a test of ending whitespace'))
-        oRule.fix(oFile)
-        oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
-
-    def test_fix_002(self):
-        oRule = whitespace.rule_002()
-        self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'whitespace')
-        self.assertEqual(oRule.identifier, '002')
-
-        lFile = utils.read_vhdlfile(sFileName)
-        oFile = vhdlFile.vhdlFile(lFile)
-
-        dExpected = []
-        oFile.lines.append(line.line('  This is a test of tabs\t'))
-        oFile.lines.append(line.line('\tThis is a test of tabs'))
-        oFile.lines.append(line.line('  This is a test of tabs'))
-        oFile.lines.append(line.line('  This is a test of tabs'))
-        oFile.lines.append(line.line('  This is a \t test of tabs'))
-        oFile.lines.append(line.line('  This is a test of tabs'))
-        oRule.fix(oFile)
-        oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
-
     def test_fix_003(self):
         oRule = whitespace.rule_003()
         self.assertTrue(oRule)
