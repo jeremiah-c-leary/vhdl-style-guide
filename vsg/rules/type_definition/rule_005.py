@@ -1,12 +1,17 @@
 
-from vsg.rules import indent_rule
+from vsg.rules import token_indent
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.enumeration_type_definition.enumeration_literal)
 
 
-class rule_005(indent_rule):
+class rule_005(token_indent):
     '''
-    Type rule 005 checks for the proper indentation of multiline types.
+    Checks for the proper indentation of multiline enumerated types.
     '''
 
     def __init__(self):
-        indent_rule.__init__(self, 'type', '005', 'insideTypeEnumerated', 'isTypeEnumeratedKeyword')
+        token_indent.__init__(self, 'type', '005', lTokens)
         self.solution = 'Ensure proper indentation.'

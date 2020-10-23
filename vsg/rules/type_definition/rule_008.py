@@ -1,37 +1,20 @@
 
-from vsg import rule
-from vsg import line
-from vsg import utils
+from vsg.rules import split_line_at_token_if_on_same_line_as_token_if_token_pair_are_not_on_the_same_line
 
-import re
+from vsg import token
+
+oToken = token.enumeration_type_definition.close_parenthesis
+
+oSameLineToken = token.enumeration_type_definition.enumeration_literal
+
+lTokenPair = [token.full_type_declaration.type_keyword, token.full_type_declaration.semicolon]
 
 
-class rule_008(rule.rule):
+class rule_008(split_line_at_token_if_on_same_line_as_token_if_token_pair_are_not_on_the_same_line):
     '''
-    Type rule 008 checks the closing parenthesis of a multi-line type declaration is on it's own line.
+    Type rule 008 checks for enumerated types after the open parenthesis on a multi-line type declaration.
     '''
 
     def __init__(self):
-        rule.rule.__init__(self, 'type', '008')
-        self.solution = 'Move the closing parenthesis to it\'s own line.'
-        self.phase = 1
-
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isTypeEnumeratedEnd and not oLine.isTypeEnumeratedKeyword:
-            if not re.match('^\s*\)\s*;', oLine.lineLower):
-                dViolation = utils.create_violation_dict(iLineNumber)
-                self.add_violation(dViolation)
-
-    def _fix_violations(self, oFile):
-        for dViolation in self.violations[::-1]:
-            iLineNumber = utils.get_violation_line_number(dViolation)
-            oFile.lines[iLineNumber].line = utils.remove_closing_parenthesis_and_semicolon(oFile.lines[iLineNumber].line)
-            oFile.lines[iLineNumber].isTypeEnd = False
-            oFile.lines[iLineNumber].isTypeEnumeratedEnd = False
-            oFile.lines.insert(iLineNumber + 1, line.line('  );'))
-            oFile.lines[iLineNumber + 1].isTypeEnd = True
-            oFile.lines[iLineNumber + 1].isTypeEnumeratedEnd = True
-            oFile.lines[iLineNumber + 1].insideTypeEnumerated = True
-            oFile.lines[iLineNumber + 1].indentLevel = oFile.lines[iLineNumber].indentLevel - 1
-            oFile.lines[iLineNumber + 1].insideArchitectureDeclarativeRegion = oFile.lines[iLineNumber].insideArchitectureDeclarativeRegion
-            oFile.lines[iLineNumber + 1].insideArchitecture = oFile.lines[iLineNumber].insideArchitecture
+        split_line_at_token_if_on_same_line_as_token_if_token_pair_are_not_on_the_same_line.__init__(self, 'type', '008', oToken, oSameLineToken, lTokenPair)
+        self.solution = "Move enumerated type to the next line."
