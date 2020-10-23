@@ -25,15 +25,6 @@ class testRuleProcessMethods(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
-    def test_rule_016(self):
-        oRule = process.rule_016()
-        self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'process')
-        self.assertEqual(oRule.identifier, '016')
-        dExpected = utils.add_violation_list([6,11,17,24,32,38,51,55,125])
-        oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
-
     def test_rule_020(self):
         oRule = process.rule_020()
         self.assertTrue(oRule)
@@ -100,13 +91,3 @@ class testRuleProcessMethods(unittest.TestCase):
         oRule.analyze(oFileEvent)
         self.assertEqual(oRule.violations, dExpected)
         self.assertEqual(oRule._get_solution(0), 'Use rising_edge or falling_edge for clocks.')
-
-    def test_rule_030(self):
-        oRule = process.rule_030()
-        self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'process')
-        self.assertEqual(oRule.identifier, '030')
-        dExpected = utils.add_violation_list([26,34])
-        oRule.analyze(oFileSensitivity)
-        self.assertEqual(oRule.violations, dExpected)
-

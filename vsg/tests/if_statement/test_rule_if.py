@@ -25,33 +25,6 @@ class testRuleIfMethods(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
-    def test_rule_003(self):
-        oRule = if_statement.rule_003()
-        self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'if')
-        self.assertEqual(oRule.identifier, '003')
-        dExpected = [utils.add_violation(57)]
-        oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
-
-    def test_rule_004(self):
-        oRule = if_statement.rule_004()
-        self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'if')
-        self.assertEqual(oRule.identifier, '004')
-        dExpected = utils.add_violation_list([32,57,73])
-        oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
-
-    def test_rule_005(self):
-        oRule = if_statement.rule_005()
-        self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'if')
-        self.assertEqual(oRule.identifier, '005')
-        dExpected = [utils.add_violation(73)]
-        oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
-
     def test_rule_009(self):
         oRule = if_statement.rule_009()
         self.assertTrue(oRule)

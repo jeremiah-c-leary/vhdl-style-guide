@@ -531,3 +531,12 @@ def remove_consecutive_whitespace_tokens(lTokens):
             else:
                 lMyTokens.append(oToken)
     return lMyTokens
+
+
+def remove_whitespace_from_token_list(lTokens):
+    lMyTokens = []
+    for oToken in lTokens:
+        if isinstance(oToken, parser.whitespace):
+            continue
+        lMyTokens.append(oToken)
+    return lMyTokens 

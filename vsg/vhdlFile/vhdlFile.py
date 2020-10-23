@@ -1207,6 +1207,9 @@ class Tokens():
                 iLine += 1
         return Tokens(iStartIndex, iLine, lTokens)
 
+    def get_start_index(self):
+        return self.iStartIndex
+
 
 def post_token_assignments(lTokens):
     for iToken, oToken in enumerate(lTokens):

@@ -1,20 +1,57 @@
 
-from vsg import rule
-from vsg import utils
+from vsg import parser
+from vsg import rule_item
+from vsg import token
+from vsg import violation
+
+from vsg.vhdlFile import utils
 
 
-class rule_016(rule.rule):
+class rule_016(rule_item.Rule):
     '''
-    Process rule 016 checks a process has a label.
+    Checks a process has a label.
+
+    Parameters
+    ----------
+
+    name : string
+       The group the rule belongs to.
+
+    identifier : string
+       unique identifier.  Usually in the form of 00N.
+
+    lTokens : list of parser object types
+       object types to check the prefix
+
+    lSuffixes: string list
+       acceptable suffixes
     '''
 
     def __init__(self):
-        rule.rule.__init__(self, 'process', '016')
-        self.solution = 'Add a label for the process.'
+        rule_item.Rule.__init__(self, 'process', '016')
+        self.solution = 'Add label for process'
         self.phase = 1
-        self.fixable = False   # The user must add the label
+        self.fixable = False
 
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isProcessKeyword and not oLine.isProcessLabel:
-            dViolation = utils.create_violation_dict(iLineNumber)
-            self.add_violation(dViolation)
+    def analyze(self, oFile):
+        lKeywords = oFile.get_tokens_matching([token.process_statement.process_keyword])
+        lLabels = oFile.get_tokens_matching([token.process_statement.process_label])
+
+        iPreviousIndex = 0
+        for oKeyword in lKeywords:
+            iCurrentIndex = oKeyword.get_start_index()
+            for oLabel in lLabels:
+                iLabelIndex = oLabel.get_start_index()
+                if iPreviousIndex < iLabelIndex and iLabelIndex < iCurrentIndex:
+                    break
+            else:
+                oViolation = violation.New(oKeyword.get_line_number(), oKeyword, self.solution)
+                self.add_violation(oViolation)
+            iPreviousIndex = iCurrentIndex
+
+
+    def fix(self, oFile):
+        '''
+        Applies fixes for any rule violations.
+        '''
+        return
