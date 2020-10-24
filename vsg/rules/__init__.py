@@ -4,11 +4,8 @@ from .keyword_alignment_rule import keyword_alignment_rule
 from .indent_rule import indent_rule
 from .token_indent import token_indent
 from .token_indent_between_tokens import token_indent_between_tokens
-from .single_space_after_rule import single_space_after_rule
-from .single_space_before_rule import single_space_before_rule
 from .remove_spaces_before_token_rule import remove_spaces_before_token_rule
 from .move_token_next_to_another_token import move_token_next_to_another_token
-from .multiple_spaces_after_rule import multiple_spaces_after_rule
 from .case_rule import case_rule
 from .move_item_next_to_one_of_several_items_rule import move_item_next_to_one_of_several_items_rule
 from .blank_line_above_line_starting_with_token import blank_line_above_line_starting_with_token
