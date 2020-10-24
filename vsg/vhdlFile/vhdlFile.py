@@ -484,6 +484,9 @@ class vhdlFile():
     def get_tokens_matching(self, lTokens):
         return extract.get_tokens_matching(lTokens, self.lAllObjects)
 
+    def get_first_token_after_tokens(self, lTokens):
+        return extract.get_first_token_after_tokens(lTokens, self.lAllObjects)
+
     def get_tokens_matching_in_range_bounded_by_tokens(self, lTokens, oStart, oEnd):
         iLine = 1
         lReturn = []

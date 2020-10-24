@@ -23,21 +23,3 @@ class testRuleVariableMethods(unittest.TestCase):
         dExpected = utils.add_violation_list([11,16])
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
-
-    def test_rule_010(self):
-        oRule = variable.rule_010()
-        self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'variable')
-        self.assertEqual(oRule.identifier, '010')
-        lExpected = []
-        dViolation = utils.add_violation(12)
-        dViolation['words_to_fix'] = {'STD_LOGIC_VECTOR'}
-        lExpected.append(dViolation)
-
-        dViolation = utils.add_violation(18)
-        dViolation['words_to_fix'] = {'STD_LOGIC'}
-        lExpected.append(dViolation)
-
-        oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, lExpected)
-
