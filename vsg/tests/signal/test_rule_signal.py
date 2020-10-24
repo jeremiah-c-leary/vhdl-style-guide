@@ -14,14 +14,6 @@ oFile = vhdlFile.vhdlFile(lFile)
 
 class testRuleSignalMethods(unittest.TestCase):
 
-    def test_rule_007(self):
-        oRule = signal.rule_007()
-        self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'signal')
-        self.assertEqual(oRule.identifier, '007')
-        lExpected = utils.add_violation_list([11,16])
-        oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, lExpected)
 
     def test_rule_010(self):
         oRule = signal.rule_010()
