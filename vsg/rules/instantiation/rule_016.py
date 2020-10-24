@@ -1,19 +1,18 @@
 
-from vsg.rules import case_rule
+from vsg import parser
+from vsg import token
+
+from vsg.rules import token_case_formal_part_of_association_element_in_map_between_tokens
+
+oStart = token.component_instantiation_statement.instantiation_label
+oEnd = token.component_instantiation_statement.semicolon
+
+sMapType = 'generic'
 
 
-class rule_016(case_rule):
+class rule_016(token_case_formal_part_of_association_element_in_map_between_tokens):
     '''
-    Instantiation rule 016 checks the generic name has proper case.
+    Checks the generic name has proper case.
     '''
-
     def __init__(self):
-        case_rule.__init__(self, 'instantiation', '016', 'isInstantiationGenericAssignment')
-        self.solution = 'Change generic name to '
-
-    def _extract(self, oLine):
-        ret = []
-        if not oLine.isInstantiationGenericKeyword:
-            ret.append(oLine.line.split()[0])
-
-        return ret
+        token_case_formal_part_of_association_element_in_map_between_tokens.__init__(self, 'instantiation', '016', sMapType, oStart, oEnd)

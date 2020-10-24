@@ -17,9 +17,7 @@ def detect(iCurrent, lObjects):
     iOpenParenthesis = 0
     iCloseParenthesis = 0
     iToken = iCurrent
-
     while not utils.token_is_semicolon(iToken, lObjects):
-
         iToken = utils.find_next_token(iToken, lObjects)
         if utils.token_is_open_parenthesis(iToken, lObjects):
             iOpenParenthesis += 1
@@ -37,11 +35,12 @@ def detect(iCurrent, lObjects):
 
 
 def classify(iStart, iEnd, lObjects, sEnd):
-
     iCurrent = iStart
-
+    sPrint = ''
+    for oObject in lObjects[iStart:iEnd + 1]:
+        sPrint += oObject.get_value()
     # Classify formal part if it exists
-    if utils.find_in_range('=>', iStart, sEnd, lObjects):
+    if utils.find_in_index_range('=>', iStart, iEnd, lObjects):
         iCurrent = utils.assign_tokens_until('=>', token.formal_part, iCurrent, lObjects)
         iCurrent = utils.assign_next_token_required('=>', token.assignment, iCurrent, lObjects)
 

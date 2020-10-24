@@ -1042,7 +1042,7 @@ class vhdlFile():
 
         return lReturn
 
-    def get_interface_elements_between_tokens(self, oStart, oEnd):
+    def get_interface_elements_between_tokens(self, oStart, oEnd, include_end_of_line_comments=False):
         iLine = 1
         lReturn = []
         bSearch = False

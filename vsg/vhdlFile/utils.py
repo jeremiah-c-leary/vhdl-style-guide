@@ -154,6 +154,13 @@ def find_in_range(sValue, iToken, sEnd, lObjects):
     return False
 
 
+def find_in_index_range(sValue, iStart, iEnd, lObjects):
+    for iIndex in range(iStart, iEnd + 1):
+        if object_value_is(lObjects, iIndex, sValue):
+            return True
+    return False
+
+
 def are_next_consecutive_tokens(lTokens, iToken, lObjects):
     iMaxTokenCount = len(lTokens)
     iTokenCount = 0
@@ -540,3 +547,9 @@ def remove_whitespace_from_token_list(lTokens):
             continue
         lMyTokens.append(oToken)
     return lMyTokens 
+
+
+def remove_comment_at_end_of_token_list(lTokens):
+    if isinstance(lTokens[-1], parser.comment):
+        return lTokens[:-1]
+    return lTokens

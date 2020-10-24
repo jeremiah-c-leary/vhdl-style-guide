@@ -2,37 +2,37 @@
 import os
 import unittest
 
-from vsg.rules import component
+from vsg.rules import instantiation
 from vsg import vhdlFile
 from vsg.tests import utils
 
 sTestDir = os.path.dirname(__file__)
 
-lFile = utils.read_vhdlfile(os.path.join(sTestDir,'rule_019_test_input.vhd'))
+lFile = utils.read_vhdlfile(os.path.join(sTestDir,'rule_023_test_input.vhd'))
 
 lExpected = []
 lExpected.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_019_test_input.fixed.vhd'), lExpected)
+utils.read_file(os.path.join(sTestDir, 'rule_023_test_input.fixed.vhd'), lExpected)
 
 
-class test_component_rule(unittest.TestCase):
+class test_instantiation_rule(unittest.TestCase):
 
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
 
-    def test_rule_019(self):
-        oRule = component.rule_019()
+    def test_rule_023(self):
+        oRule = instantiation.rule_023()
         self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'component')
-        self.assertEqual(oRule.identifier, '019')
+        self.assertEqual(oRule.name, 'instantiation')
+        self.assertEqual(oRule.identifier, '023')
 
-        lExpected = [6, 8, 9, 12, 14, 15, 23, 26, 31, 33, 35]
+        lExpected = [9, 11, 13, 18, 20, 22]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
-    def test_fix_rule_019(self):
-        oRule = component.rule_019()
+    def test_fix_rule_023(self):
+        oRule = instantiation.rule_023()
 
         oRule.fix(self.oFile)
 

@@ -1,16 +1,18 @@
 
-from vsg.rules import case_rule
-from vsg import utils
+from vsg import parser
+from vsg import token
+
+from vsg.rules import token_case_formal_part_of_association_element_in_map_between_tokens
+
+oStart = token.component_instantiation_statement.instantiation_label
+oEnd = token.component_instantiation_statement.semicolon
+
+sMapType = 'port'
 
 
-class rule_011(case_rule):
+class rule_011(token_case_formal_part_of_association_element_in_map_between_tokens):
     '''
-    Instantiation rule 011 checks the port name has proper case.
+    Checks the port name has proper case.
     '''
-
     def __init__(self):
-        case_rule.__init__(self, 'instantiation', '011', 'isInstantiationPortAssignment')
-        self.solution = 'Change port name to '
-
-    def _extract(self, oLine):
-        return utils.extract_port_names_from_port_map(oLine)
+        token_case_formal_part_of_association_element_in_map_between_tokens.__init__(self, 'instantiation', '011', sMapType, oStart, oEnd)
