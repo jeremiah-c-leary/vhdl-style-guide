@@ -553,3 +553,9 @@ def remove_comment_at_end_of_token_list(lTokens):
     if isinstance(lTokens[-1], parser.comment):
         return lTokens[:-1]
     return lTokens
+
+
+def does_token_type_match(oToken, oType):
+    if isinstance(oToken, oType):
+        return True
+    return False

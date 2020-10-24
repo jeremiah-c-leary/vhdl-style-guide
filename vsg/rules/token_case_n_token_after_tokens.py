@@ -7,7 +7,17 @@ from vsg import parser
 from vsg import violation
 
 
-class token_case_first_token_after_token(rule_item.Rule):
+lKeywords = []
+lKeywords.append('std_logic')
+lKeywords.append('std_logic_vector')
+lKeywords.append('integer')
+lKeywords.append('signed')
+lKeywords.append('unsigned')
+lKeywords.append('natural')
+lKeywords.append('std_ulogic')
+
+
+class token_case_n_token_after_tokens(rule_item.Rule):
     '''
     Checks the case for words.
 
@@ -24,19 +34,25 @@ class token_case_first_token_after_token(rule_item.Rule):
        object type to apply the case check against
     '''
 
-    def __init__(self, name, identifier, lTokens):
+    def __init__(self, name, identifier, iToken, lTokens, bLimitToVhdlKeywords=False):
         rule_item.Rule.__init__(self, name=name, identifier=identifier)
         self.solution = None
         self.phase = 6
         self.case = 'lower'
         self.configuration.append('case')
+        self.iToken = iToken
         self.lTokens = lTokens
+        self.disabled = False
+        self.bLimitToVhdlKeywords = bLimitToVhdlKeywords
 
     def analyze(self, oFile):
-        lToi = oFile.get_first_token_after_tokens(self.lTokens)
+        lToi = oFile.get_n_token_after_tokens(self.iToken, self.lTokens)
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             sObjectValue = lTokens[0].get_value()
+            if self.bLimitToVhdlKeywords:
+                if sObjectValue.lower() not in lKeywords:
+                    continue
             if self.case == 'lower':
                 if not sObjectValue.islower():
                     sSolution = 'Change "' + sObjectValue + '" to "' + sObjectValue.lower() + '"'

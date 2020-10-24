@@ -1,16 +1,23 @@
 
-from vsg.rules import case_rule
-from vsg import utils
+from vsg.rules import token_case_n_token_after_tokens_between_tokens
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.interface_constant_declaration.colon)
+lTokens.append(token.interface_variable_declaration.colon)
+lTokens.append(token.interface_signal_declaration.colon)
+lTokens.append(token.interface_unknown_declaration.colon)
+
+oStart = token.generic_clause.open_parenthesis
+oEnd = token.generic_clause.close_parenthesis
 
 
-class rule_017(case_rule):
+class rule_017(token_case_n_token_after_tokens_between_tokens):
     '''
-    Generic rule 017 checks the generic type has proper case if it is a VHDL keyword.
+    Checks the generic type has proper case if it is a VHDL keyword.
     '''
 
     def __init__(self):
-        case_rule.__init__(self, 'generic', '017', 'isGenericDeclaration')
-        self.solution = 'Change generic name to '
-
-    def _extract(self, oLine):
-        return utils.extract_type_name_vhdl_only(oLine)
+        token_case_n_token_after_tokens_between_tokens.__init__(self, 'generic', '017', 1, lTokens, oStart, oEnd, True)
+        self.disabled = True
