@@ -29,9 +29,14 @@ class blank_line_below_line_ending_with_token(rule_item.Rule):
         self.solution = 'Insert blank line below'
         self.phase = 3
         self.lTokens = lTokens
+        self.lHierarchyLimits = None
 
     def analyze(self, oFile):
-        lToi = oFile.get_line_below_line_ending_with_token(self.lTokens)
+        if self.lHierarchyLimits is None:
+            lToi = oFile.get_line_below_line_ending_with_token(self.lTokens)
+        else:
+            lToi = oFile.get_line_below_line_ending_with_token_with_hierarchy(self.lTokens, self.lHierarchyLimits)
+
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             if len(lTokens) == 1:

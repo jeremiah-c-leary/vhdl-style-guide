@@ -9,6 +9,7 @@ class item():
     def __init__(self, sString):
         self.value = sString
         self.indent = None
+        self.hierarchy = None
 
     def get_value(self):
         return self.value
@@ -24,6 +25,12 @@ class item():
 
     def get_indent(self):
         return self.indent
+
+    def set_hierarchy(self, iHierarchy):
+        self.hierarchy = iHierarchy
+
+    def get_hierarchy(self):
+        return self.hierarchy
 
 
 class todo(item):

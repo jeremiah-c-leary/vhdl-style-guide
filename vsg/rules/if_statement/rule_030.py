@@ -1,15 +1,17 @@
 
-from vsg import rule
-from vsg import check
-from vsg import fix
+from vsg.rules import blank_line_below_line_ending_with_token
 
-from vsg.rules import line_below_rule
+from vsg import token
 
-class rule_030(line_below_rule):
+lTokens = []
+lTokens.append(token.if_statement.semicolon)
+
+
+class rule_030(blank_line_below_line_ending_with_token):
     '''
-    If rule 030 checks for a blank line after the "end if" keyword.
+    Checks for a blank line after the "end if" keyword.
     '''
 
     def __init__(self):
-        line_below_rule.__init__(self, 'if', '030', 'isLastEndIf')
-        self.solution = 'Add a blank line after the "end if"'
+        blank_line_below_line_ending_with_token.__init__(self, 'if', '030', lTokens)
+        self.lHierarchyLimits = [0]

@@ -174,6 +174,7 @@ class vhdlFile():
             self.lines[iLine + 1].objects = lLine
 
         self.set_token_indent()
+        set_token_hierarchy_value(self.lAllObjects)
 
     def update(self, lUpdates):
 #        print('--> Update' + 80*'-')
@@ -626,75 +627,16 @@ class vhdlFile():
         return lReturn                    
 
     def get_line_above_line_starting_with_token(self, lTokens):
-        lReturn = []
-        iLine = 1
-        lPreviousLine = []
-        iPrevious = 0
-        lCurrentLine = []
-        iCurrent = 0
-        for iIndex in range(0, len(self.lAllObjects)):
+        return extract.get_line_above_line_starting_with_token(lTokens, self.lAllObjects)
 
-            if isinstance(self.lAllObjects[iIndex], parser.carriage_return):
-                iLine +=1
-                lPreviousLine = lCurrentLine.copy()
-                iPrevious = iCurrent
-                lCurrentLine = []
-                iCurrent = iIndex + 1
-                for oToken in lTokens:
-                    if utils.are_next_consecutive_token_types([parser.whitespace, oToken], iCurrent, self.lAllObjects):
-                        lReturn.append(Tokens(iPrevious, iLine, lPreviousLine))
-                        break
-                    if utils.are_next_consecutive_token_types([oToken], iCurrent, self.lAllObjects):
-                        lReturn.append(Tokens(iPrevious, iLine, lPreviousLine))
-                        break
-            else:
-                lCurrentLine.append(self.lAllObjects[iIndex])
-
-        return lReturn                    
+    def get_line_above_line_starting_with_token_with_hierarchy(self, lTokens, lHierarchy):
+        return extract.get_line_above_line_starting_with_token_with_hierarchy(lTokens, self.lAllObjects, lHierarchy)
 
     def get_line_below_line_ending_with_token(self, lTokens):
-        lReturn = []
-        iLine = 1
-        lCurrentLine = []
-        lTemp = []
-        bTokenFound = False
-        bCrFound = False
-        for iIndex in range(0, len(self.lAllObjects)):
+        return extract.get_line_below_line_ending_with_token(lTokens, self.lAllObjects)
 
-            if not bTokenFound:
-                for oToken in lTokens:
-                    if isinstance(self.lAllObjects[iIndex], oToken):
-                        if utils.are_next_consecutive_token_types([parser.carriage_return], iIndex + 1, self.lAllObjects):
-                            bTokenFound = True
-                            break
-                        if utils.are_next_consecutive_token_types([parser.whitespace, parser.carriage_return], iIndex + 1, self.lAllObjects):
-                            bTokenFound = True
-                            break
-                        if utils.are_next_consecutive_token_types([parser.whitespace, parser.comment, parser.carriage_return], iIndex + 1, self.lAllObjects):
-                            bTokenFound = True
-                            break
-                        if utils.are_next_consecutive_token_types([parser.comment, parser.carriage_return], iIndex + 1, self.lAllObjects):
-                            bTokenFound = True
-                            break
-
-
-            if bCrFound:
-                lTemp.append(self.lAllObjects[iIndex])
-
-            if isinstance(self.lAllObjects[iIndex], parser.carriage_return):
-                if bCrFound:
-                    lTemp.pop()
-                    lReturn.append(Tokens(iStart, iLine, lTemp))
-                    lTemp = []
-                    bCrFound = False
-                    bTokenFound = False
-                elif bTokenFound:
-                    bCrFound = True
-                    iStart = iIndex + 1
-
-                iLine +=1
-
-        return lReturn                    
+    def get_line_below_line_ending_with_token_with_hierarchy(self, lTokens, lHierarchy):
+        return extract.get_line_below_line_ending_with_token_with_hierarchy(lTokens, self.lAllObjects, lHierarchy)
 
     def get_sequence_of_tokens_not_matching(self, lTokens):
         iLine = 1
@@ -1282,3 +1224,13 @@ def post_token_assignments(lTokens):
             if sValue.lower() == 'rem':
                 lTokens[iToken] == token.multiplying_operator.rem_operator(sValue)
                 continue
+
+def set_token_hierarchy_value(lTokens):
+    iIfHierarchy = 0
+    for iToken, oToken in enumerate(lTokens):
+        if isinstance(oToken, token.if_statement.if_keyword):
+            oToken.set_hierarchy(iIfHierarchy)
+            iIfHierarchy += 1
+        if isinstance(oToken, token.if_statement.semicolon):
+            iIfHierarchy -= 1
+            oToken.set_hierarchy(iIfHierarchy)
