@@ -34,7 +34,7 @@
 <class 'vsg.token.if_statement.label_colon'>
 <class 'vsg.token.if_statement.if_keyword'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.relational_operator.equal'>
 <class 'vsg.parser.todo'>
 --------------------------------------------------------------------------------
 10 |           then A1: Outputs <= 'X';
@@ -43,7 +43,7 @@
 <class 'vsg.token.signal_assignment_statement.label_colon'>
 <class 'vsg.token.simple_waveform_assignment.target'>
 <class 'vsg.token.simple_waveform_assignment.assignment'>
-<class 'vsg.parser.todo'>
+<class 'vsg.parser.character_literal'>
 <class 'vsg.token.simple_waveform_assignment.semicolon'>
 --------------------------------------------------------------------------------
 11 |         end if I1;
@@ -60,23 +60,23 @@
 <class 'vsg.token.if_statement.label_colon'>
 <class 'vsg.token.if_statement.if_keyword'>
 <class 'vsg.parser.todo'>
+<class 'vsg.token.relational_operator.equal'>
+<class 'vsg.parser.character_literal'>
+<class 'vsg.token.logical_operator.and_operator'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.relational_operator.equal'>
+<class 'vsg.parser.character_literal'>
 --------------------------------------------------------------------------------
 14 |             then return '1';
 <class 'vsg.token.if_statement.then_keyword'>
 <class 'vsg.token.return_statement.return_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.parser.character_literal'>
 <class 'vsg.token.return_statement.semicolon'>
 --------------------------------------------------------------------------------
 15 |           else return '0';
 <class 'vsg.token.if_statement.else_keyword'>
 <class 'vsg.token.return_statement.return_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.parser.character_literal'>
 <class 'vsg.token.return_statement.semicolon'>
 --------------------------------------------------------------------------------
 16 |           end if I2;
@@ -99,8 +99,8 @@
 <class 'vsg.parser.open_parenthesis'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.close_parenthesis'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.relational_operator.equal'>
+<class 'vsg.parser.character_literal'>
 --------------------------------------------------------------------------------
 20 |           then F := Operand_1 + Operand_2;
 <class 'vsg.token.if_statement.then_keyword'>
@@ -117,8 +117,8 @@
 <class 'vsg.parser.open_parenthesis'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.close_parenthesis'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.relational_operator.equal'>
+<class 'vsg.parser.character_literal'>
 --------------------------------------------------------------------------------
 22 |           then F := Operand_1 - Operand_2;
 <class 'vsg.token.if_statement.then_keyword'>
@@ -148,7 +148,7 @@
 26 |     if Status = RUN
 <class 'vsg.token.if_statement.if_keyword'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.relational_operator.equal'>
 <class 'vsg.parser.todo'>
 --------------------------------------------------------------------------------
 27 |       then
@@ -157,7 +157,7 @@
 28 |         if Code_of_Operation = CONC
 <class 'vsg.token.if_statement.if_keyword'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.relational_operator.equal'>
 <class 'vsg.parser.todo'>
 --------------------------------------------------------------------------------
 29 |           then

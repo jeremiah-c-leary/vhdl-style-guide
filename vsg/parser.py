@@ -43,6 +43,24 @@ class todo(item):
 ###############################################################################
 
 
+class function(item):
+
+    def __init__(self, sString):
+        item.__init__(self, sString)
+
+
+class tic(item):
+
+    def __init__(self, sString):
+        item.__init__(self, sString)
+
+
+class event_keyword(item):
+
+    def __init__(self, sString):
+        item.__init__(self, sString)
+
+
 class bar(item):
 
     def __init__(self, sString='|'):

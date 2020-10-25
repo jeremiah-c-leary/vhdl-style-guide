@@ -201,26 +201,3 @@ class testFixRuleProcessMethods(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
 
-    def test_fix_rule_029_event(self):
-        oRule = process.rule_029()
-        dExpected = []
-        oRule.fix(self.oFileEvent)
-        oRule.analyze(self.oFileEvent)
-        self.assertEqual(oRule.violations, dExpected)
-        self.assertEqual(self.oFileEvent.lines[9].line, '    if (CLK\'event and CLK = \'1\') then')
-        self.assertEqual(self.oFileEvent.lines[13].line, '    if (CLK\'event and CLK = \'0\') then')
-        self.assertEqual(self.oFileEvent.lines[34].line, '    if (q_ff.some_flop\'event and q_ff.some_flop = \'1\') then')
-        self.assertEqual(self.oFileEvent.lines[44].line, '    elsif (q_ff.some_flop\'event and q_ff.some_flop = \'0\') then')
-
-    def test_fix_rule_029_edge(self):
-        oRule = process.rule_029()
-        oRule.clock = 'edge'
-        dExpected = []
-        oRule.fix(self.oFileEvent)
-        self.assertEqual(self.oFileEvent.lines[17].line, '    if (rising_edge(CLK)) then')
-        self.assertEqual(self.oFileEvent.lines[21].line, '    if (falling_edge(CLK)) then')
-        self.assertEqual(self.oFileEvent.lines[38].line, '    if (rising_edge(q_ff.some_flop)) then')
-        self.assertEqual(self.oFileEvent.lines[50].line, '    elsif (falling_edge(q_ff.some_flop)) then')
-
-        oRule.analyze(self.oFileEvent)
-        self.assertEqual(oRule.violations, dExpected)

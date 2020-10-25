@@ -25,7 +25,7 @@
 <class 'vsg.token.if_generate_statement.label_colon'>
 <class 'vsg.token.if_generate_statement.if_keyword'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.relational_operator.equal'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
@@ -49,7 +49,7 @@
 <class 'vsg.token.if_generate_statement.label_colon'>
 <class 'vsg.token.if_generate_statement.if_keyword'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.relational_operator.equal'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
@@ -59,7 +59,7 @@
 13 |   elsif a = 0 generate
 <class 'vsg.token.if_generate_statement.elsif_keyword'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.relational_operator.equal'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
@@ -69,7 +69,7 @@
 15 |   elsif a = 1 generate
 <class 'vsg.token.if_generate_statement.elsif_keyword'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.relational_operator.equal'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
@@ -100,7 +100,7 @@
 <class 'vsg.token.if_generate_statement.label_colon'>
 <class 'vsg.token.if_generate_statement.if_keyword'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.relational_operator.equal'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
@@ -112,7 +112,7 @@
 <class 'vsg.token.if_generate_statement.label_colon'>
 <class 'vsg.token.if_generate_statement.if_keyword'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.relational_operator.equal'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
@@ -122,7 +122,7 @@
 26 |     elsif y = 1 generate
 <class 'vsg.token.if_generate_statement.elsif_keyword'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.relational_operator.equal'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
@@ -148,7 +148,7 @@
 32 |   elsif b = 0 generate
 <class 'vsg.token.if_generate_statement.elsif_keyword'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.relational_operator.equal'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
@@ -158,7 +158,7 @@
 34 |   elsif c = 1 generate
 <class 'vsg.token.if_generate_statement.elsif_keyword'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.relational_operator.equal'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
@@ -189,7 +189,7 @@
 <class 'vsg.token.if_generate_statement.label_colon'>
 <class 'vsg.token.if_generate_statement.if_keyword'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.relational_operator.equal'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
@@ -201,7 +201,7 @@
 <class 'vsg.token.if_generate_statement.label_colon'>
 <class 'vsg.token.if_generate_statement.if_keyword'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.relational_operator.equal'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
@@ -213,7 +213,7 @@
 <class 'vsg.token.if_generate_statement.label_colon'>
 <class 'vsg.token.if_generate_statement.if_keyword'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.relational_operator.equal'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
@@ -223,7 +223,7 @@
 47 |           elsif y = 1 generate
 <class 'vsg.token.if_generate_statement.elsif_keyword'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.relational_operator.equal'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
@@ -249,7 +249,7 @@
 53 |       elsif y = 1 generate
 <class 'vsg.token.if_generate_statement.elsif_keyword'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.relational_operator.equal'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
@@ -275,7 +275,7 @@
 59 |   elsif b = 0 generate
 <class 'vsg.token.if_generate_statement.elsif_keyword'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.relational_operator.equal'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
@@ -287,7 +287,7 @@
 <class 'vsg.token.if_generate_statement.label_colon'>
 <class 'vsg.token.if_generate_statement.if_keyword'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.relational_operator.equal'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
@@ -299,7 +299,7 @@
 <class 'vsg.token.if_generate_statement.label_colon'>
 <class 'vsg.token.if_generate_statement.if_keyword'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.relational_operator.equal'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
@@ -309,7 +309,7 @@
 65 |           elsif y = 1 generate
 <class 'vsg.token.if_generate_statement.elsif_keyword'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.relational_operator.equal'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
@@ -335,7 +335,7 @@
 71 |       elsif y = 1 generate
 <class 'vsg.token.if_generate_statement.elsif_keyword'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.relational_operator.equal'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
@@ -361,7 +361,7 @@
 77 |   elsif c = 1 generate
 <class 'vsg.token.if_generate_statement.elsif_keyword'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.relational_operator.equal'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
@@ -373,7 +373,7 @@
 <class 'vsg.token.if_generate_statement.label_colon'>
 <class 'vsg.token.if_generate_statement.if_keyword'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.relational_operator.equal'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
@@ -385,7 +385,7 @@
 <class 'vsg.token.if_generate_statement.label_colon'>
 <class 'vsg.token.if_generate_statement.if_keyword'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.relational_operator.equal'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
@@ -395,7 +395,7 @@
 83 |           elsif y = 1 generate
 <class 'vsg.token.if_generate_statement.elsif_keyword'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.relational_operator.equal'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
@@ -421,7 +421,7 @@
 89 |       elsif y = 1 generate
 <class 'vsg.token.if_generate_statement.elsif_keyword'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.relational_operator.equal'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
@@ -456,7 +456,7 @@
 <class 'vsg.token.if_generate_statement.label_colon'>
 <class 'vsg.token.if_generate_statement.if_keyword'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.relational_operator.equal'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
@@ -468,7 +468,7 @@
 <class 'vsg.token.if_generate_statement.label_colon'>
 <class 'vsg.token.if_generate_statement.if_keyword'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.relational_operator.equal'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
@@ -478,7 +478,7 @@
 101 |           elsif y = 1 generate
 <class 'vsg.token.if_generate_statement.elsif_keyword'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.relational_operator.equal'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
@@ -504,7 +504,7 @@
 107 |       elsif y = 1 generate
 <class 'vsg.token.if_generate_statement.elsif_keyword'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.relational_operator.equal'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------

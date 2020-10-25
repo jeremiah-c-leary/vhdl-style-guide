@@ -28,13 +28,13 @@
 <class 'vsg.token.concurrent_conditional_signal_assignment.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.when_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.parser.character_literal'>
 <class 'vsg.token.conditional_waveforms.else_keyword'>
 --------------------------------------------------------------------------------
 8 |        c when 'b' else
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.when_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.parser.character_literal'>
 <class 'vsg.token.conditional_waveforms.else_keyword'>
 --------------------------------------------------------------------------------
 9 |        d;
@@ -53,13 +53,13 @@
 <class 'vsg.token.concurrent_conditional_signal_assignment.guarded_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.when_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.parser.character_literal'>
 <class 'vsg.token.conditional_waveforms.else_keyword'>
 --------------------------------------------------------------------------------
 13 |        c when 'b' else
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.when_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.parser.character_literal'>
 <class 'vsg.token.conditional_waveforms.else_keyword'>
 --------------------------------------------------------------------------------
 14 |        d;
@@ -78,13 +78,13 @@
 <class 'vsg.token.delay_mechanism.transport_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.when_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.parser.character_literal'>
 <class 'vsg.token.conditional_waveforms.else_keyword'>
 --------------------------------------------------------------------------------
 18 |        c when 'b' else
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.when_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.parser.character_literal'>
 <class 'vsg.token.conditional_waveforms.else_keyword'>
 --------------------------------------------------------------------------------
 19 |        d;
@@ -103,13 +103,13 @@
 <class 'vsg.token.delay_mechanism.inertial_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.when_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.parser.character_literal'>
 <class 'vsg.token.conditional_waveforms.else_keyword'>
 --------------------------------------------------------------------------------
 23 |        c when 'b' else
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.when_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.parser.character_literal'>
 <class 'vsg.token.conditional_waveforms.else_keyword'>
 --------------------------------------------------------------------------------
 24 |        d;
@@ -131,13 +131,13 @@
 <class 'vsg.token.delay_mechanism.inertial_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.when_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.parser.character_literal'>
 <class 'vsg.token.conditional_waveforms.else_keyword'>
 --------------------------------------------------------------------------------
 28 |        c when 'b' else
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.when_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.parser.character_literal'>
 <class 'vsg.token.conditional_waveforms.else_keyword'>
 --------------------------------------------------------------------------------
 29 |        d;
@@ -157,13 +157,13 @@
 <class 'vsg.token.delay_mechanism.transport_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.when_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.parser.character_literal'>
 <class 'vsg.token.conditional_waveforms.else_keyword'>
 --------------------------------------------------------------------------------
 33 |        c when 'b' else
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.when_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.parser.character_literal'>
 <class 'vsg.token.conditional_waveforms.else_keyword'>
 --------------------------------------------------------------------------------
 34 |        d;
@@ -183,13 +183,13 @@
 <class 'vsg.token.delay_mechanism.inertial_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.when_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.parser.character_literal'>
 <class 'vsg.token.conditional_waveforms.else_keyword'>
 --------------------------------------------------------------------------------
 38 |        c when 'b' else
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.when_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.parser.character_literal'>
 <class 'vsg.token.conditional_waveforms.else_keyword'>
 --------------------------------------------------------------------------------
 39 |        d;
@@ -212,13 +212,13 @@
 <class 'vsg.token.delay_mechanism.inertial_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.when_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.parser.character_literal'>
 <class 'vsg.token.conditional_waveforms.else_keyword'>
 --------------------------------------------------------------------------------
 43 |        c when 'b' else
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.when_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.parser.character_literal'>
 <class 'vsg.token.conditional_waveforms.else_keyword'>
 --------------------------------------------------------------------------------
 44 |        d;
@@ -236,7 +236,7 @@
 <class 'vsg.token.concurrent_conditional_signal_assignment.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.when_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.parser.character_literal'>
 <class 'vsg.token.conditional_waveforms.else_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_conditional_signal_assignment.semicolon'>
@@ -249,11 +249,11 @@
 <class 'vsg.token.concurrent_conditional_signal_assignment.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.when_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.parser.character_literal'>
 <class 'vsg.token.conditional_waveforms.else_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.when_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.parser.character_literal'>
 <class 'vsg.token.conditional_waveforms.else_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_conditional_signal_assignment.semicolon'>

@@ -65,9 +65,9 @@
 <class 'vsg.token.subtype_declaration.is_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.parser.character_literal'>
 <class 'vsg.token.direction.to'>
-<class 'vsg.parser.todo'>
+<class 'vsg.parser.character_literal'>
 <class 'vsg.token.subtype_declaration.semicolon'>
 --------------------------------------------------------------------------------
 14 | 

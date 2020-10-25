@@ -31,7 +31,7 @@
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.interface_unknown_declaration.subtype_indication'>
 <class 'vsg.token.interface_unknown_declaration.assignment'>
-<class 'vsg.parser.todo'>
+<class 'vsg.parser.character_literal'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 7 |     D : integer
@@ -121,7 +121,7 @@
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.interface_unknown_declaration.subtype_indication'>
 <class 'vsg.token.interface_unknown_declaration.assignment'>
-<class 'vsg.parser.todo'>
+<class 'vsg.parser.character_literal'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 23 |     D : integer

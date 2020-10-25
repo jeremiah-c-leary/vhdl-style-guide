@@ -1,48 +1,144 @@
 
-from vsg import rule
-from vsg import utils
+import sys
 
-import re
+from vsg import rule_item
+from vsg import parser
+from vsg import token
+from vsg import vhdlFile
+from vsg import violation
+
+from vsg.token.ieee.std_logic_1164 import function
+
+from vsg.vhdlFile import utils
+
+lIfBoundingTokens = [token.if_statement.if_keyword, token.if_statement.then_keyword]
+
+lElsifBoundingTokens = [token.if_statement.elsif_keyword, token.if_statement.then_keyword]
+
+oStart = token.process_statement.begin_keyword
+oEnd = token.process_statement.end_keyword
 
 
-class rule_029(rule.rule):
+class rule_029(rule_item.Rule):
     '''
-    Process rule 029 checks for "rising_edge" and "falling_edge" in processes.
+    Checks the case for words.
+
+    Parameters
+    ----------
+
+    name : string
+       The group the rule belongs to.
+
+    identifier : string
+       unique identifier.  Usually in the form of 00N.
+
+    trigger : parser object type
+       object type to apply the case check against
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'process'
-        self.identifier = '029'
-        self.solution = 'Use \'event for clocks.'
+        rule_item.Rule.__init__(self, 'process', '029')
+        self.solution = None
         self.phase = 1
         self.clock = 'event'
         self.configuration.append('clock')
+        self.oStart = oStart
+        self.oEnd = oEnd
 
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if self.clock == 'event':
-            if oLine.isClockStatement and re.match('^.*ing_edge\s*\(', oLine.lineLower):
-                dViolation = utils.create_violation_dict(iLineNumber)
-                self.add_violation(dViolation)
-        elif self.clock == 'edge':
-            if oLine.isClockStatement and '\'event' in oLine.lineLower:
-                dViolation = utils.create_violation_dict(iLineNumber)
-                self.add_violation(dViolation)
-        else:
-            raise Exception("clock option needs to be 'event' or 'edge', detected: {self.clock}")
+    def analyze(self, oFile):
+        lToi = oFile.get_tokens_bounded_by_token_when_between_tokens(lElsifBoundingTokens[0], lElsifBoundingTokens[1], oStart, oEnd)
+        for oToi in lToi:
+            lTokens = oToi.get_tokens()
+            bEventFound = False
+            iStartIndex = 0
+            for iToken, oToken in enumerate(lTokens):
+                if self.clock == 'edge':
+                    if utils.are_next_consecutive_token_types_ignoring_whitespace([parser.tic, parser.event_keyword, token.logical_operator.and_operator, None, token.relational_operator.equal], iToken + 1, lTokens):
+                        bEventFound = True
+                        iStartIndex = iToken
+                        sSolution = 'Change event to rising_edge/falling_edge.'
+                        dAction = {}
+                        dAction['convert_to'] = 'edge'
+                        dAction['clock'] = oToken.get_value()
+                    if bEventFound and isinstance(oToken, parser.character_literal):
+                        if oToken.get_value() == "'1'":
+                            dAction['edge'] = 'rising_edge'
+                        else:
+                            dAction['edge'] = 'falling_edge'
+                        oMyToi = oToi.extract_tokens(iStartIndex, iToken)
+                        oViolation = violation.New(oToi.get_line_number(), oMyToi, sSolution)
+                        oViolation.set_action(dAction)
+                        self.add_violation(oViolation)
+                        bEventFound = False
+      
+                elif self.clock == 'event':
 
-    def _fix_violations(self, oFile):
-        for dViolation in self.violations:
-            oLine = utils.get_violating_line(oFile, dViolation)
-            if self.clock == 'event':
-                oLine.update_line(re.sub(r'rising_edge\s*\(\s*([a-zA-Z0-9_.]+)\s*\)', r'\1"event and \1 = "1"', oLine.line, re.IGNORECASE).replace('"', '\''))
-                oLine.update_line(re.sub(r'falling_edge\s*\(\s*([a-zA-Z0-9_.]+)\s*\)', r'\1"event and \1 = "0"', oLine.line, re.IGNORECASE).replace('"', '\''))
+                    if isinstance(oToken, token.ieee.std_logic_1164.function.rising_edge):
+                        sSolution = 'Change rising_edge to event format.'
+                        iStartIndex = iToken
+                        dAction = {}
+                        dAction['convert_to'] = 'event'
+                        dAction['edge'] = "'1'"
+                        bEventFound = True
+    
+                    elif isinstance(oToken, token.ieee.std_logic_1164.function.falling_edge):
+                        sSolution = 'Change falling_edge to event format.'
+                        iStartIndex = iToken
+                        dAction = {}
+                        dAction['convert_to'] = 'event'
+                        dAction['edge'] = "'0'"
+                        bEventFound = True
+
+                    if bEventFound and isinstance(oToken, parser.todo):
+                        dAction['clock'] = oToken.get_value()
+
+                    if bEventFound and isinstance(oToken, parser.close_parenthesis):
+                        oMyToi = oToi.extract_tokens(iStartIndex, iToken)
+                        oViolation = violation.New(oToi.get_line_number(), oMyToi, sSolution)
+                        oViolation.set_action(dAction)
+                        self.add_violation(oViolation)
+                        bEventFound = False
+                else:
+                    sys.stderr.write('Invalid configuration option ' + self.clock)
+                    exit(1)
+
+
+    def fix(self, oFile):
+        '''
+        Applies fixes for any rule violations.
+        '''
+        if self.fixable:
+            self.analyze(oFile)
+            self._print_debug_message('Fixing rule: ' + self.name + '_' + self.identifier)
+            self._fix_violation(oFile)
+            self.violations = []
+
+    def _fix_violation(self, oFile):
+        for oViolation in self.violations:
+            dAction = oViolation.get_action()
+            if dAction['convert_to'] == 'edge':
+                lTokens = []
+                if dAction['edge'] == 'rising_edge':
+                    lTokens.append(token.ieee.std_logic_1164.function.rising_edge('rising_edge'))
+                else:
+                    lTokens.append(token.ieee.std_logic_1164.function.falling_edge('falling_edge'))
+
+                lTokens.append(parser.open_parenthesis())
+                lTokens.append(parser.todo(dAction['clock']))
+                lTokens.append(parser.close_parenthesis())
             else:
-                oLine.update_line(re.sub(r'([a-zA-Z0-9_.]+)\'event\s+and\s+[a-zA-Z0-9_.]+\s*=\s*\'\s*0\s*\'', r'falling_edge(\1)', oLine.line, re.IGNORECASE))
-                oLine.update_line(re.sub(r'([a-zA-Z0-9_.]+)\'event\s+and\s+[a-zA-Z0-9_.]+\s*=\s*\'\s*1\s*\'', r'rising_edge(\1)', oLine.line, re.IGNORECASE))
+                lTokens = []
+                lTokens.append(parser.todo(dAction['clock']))
+                lTokens.append(parser.tic("'"))
+                lTokens.append(parser.event_keyword('event'))
+                lTokens.append(parser.whitespace(' '))
+                lTokens.append(token.logical_operator.and_operator('and'))
+                lTokens.append(parser.whitespace(' '))
+                lTokens.append(parser.todo(dAction['clock']))
+                lTokens.append(parser.whitespace(' '))
+                lTokens.append(token.relational_operator.equal('='))
+                lTokens.append(parser.whitespace(' '))
+                lTokens.append(parser.character_literal(dAction['edge']))
 
-    def _get_solution(self, iLineNumber):
-        if self.clock == 'event':
-            return 'Use \'event for clocks.'
-        else:
-            return 'Use rising_edge or falling_edge for clocks.'
+            oViolation.set_tokens(lTokens)
+        oFile.update(self.violations)

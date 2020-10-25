@@ -40,13 +40,13 @@
 <class 'vsg.token.concurrent_conditional_signal_assignment.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.when_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.parser.character_literal'>
 <class 'vsg.token.conditional_waveforms.else_keyword'>
 --------------------------------------------------------------------------------
 11 |        c when 'b' else
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.when_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.parser.character_literal'>
 <class 'vsg.token.conditional_waveforms.else_keyword'>
 --------------------------------------------------------------------------------
 12 |        d;
@@ -129,13 +129,13 @@
 <class 'vsg.token.concurrent_conditional_signal_assignment.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.when_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.parser.character_literal'>
 <class 'vsg.token.conditional_waveforms.else_keyword'>
 --------------------------------------------------------------------------------
 30 |        c when 'b' else
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.when_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.parser.character_literal'>
 <class 'vsg.token.conditional_waveforms.else_keyword'>
 --------------------------------------------------------------------------------
 31 |        d;
@@ -222,13 +222,13 @@
 <class 'vsg.token.concurrent_conditional_signal_assignment.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.when_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.parser.character_literal'>
 <class 'vsg.token.conditional_waveforms.else_keyword'>
 --------------------------------------------------------------------------------
 49 |        c when 'b' else
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.when_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.parser.character_literal'>
 <class 'vsg.token.conditional_waveforms.else_keyword'>
 --------------------------------------------------------------------------------
 50 |        d;
@@ -312,13 +312,13 @@
 <class 'vsg.token.concurrent_conditional_signal_assignment.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.when_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.parser.character_literal'>
 <class 'vsg.token.conditional_waveforms.else_keyword'>
 --------------------------------------------------------------------------------
 68 |        c when 'b' else
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.when_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.parser.character_literal'>
 <class 'vsg.token.conditional_waveforms.else_keyword'>
 --------------------------------------------------------------------------------
 69 |        d;

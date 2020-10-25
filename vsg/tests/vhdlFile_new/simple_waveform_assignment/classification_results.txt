@@ -36,7 +36,7 @@
 <class 'vsg.token.simple_waveform_assignment.assignment'>
 <class 'vsg.token.delay_mechanism.transport_keyword'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.logical_operator.and_operator'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.simple_waveform_assignment.semicolon'>
 --------------------------------------------------------------------------------
@@ -49,7 +49,7 @@
 <class 'vsg.token.simple_waveform_assignment.target'>
 <class 'vsg.token.simple_waveform_assignment.assignment'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.logical_operator.and_operator'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.simple_waveform_assignment.semicolon'>
 --------------------------------------------------------------------------------
@@ -60,7 +60,7 @@
 <class 'vsg.token.simple_waveform_assignment.target'>
 <class 'vsg.token.simple_waveform_assignment.assignment'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.logical_operator.and_operator'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.simple_waveform_assignment.semicolon'>
 --------------------------------------------------------------------------------

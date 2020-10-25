@@ -41,7 +41,7 @@
 <class 'vsg.token.direction.downto'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.close_parenthesis'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.relational_operator.equal'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.exit_statement.semicolon'>
 --------------------------------------------------------------------------------
@@ -58,7 +58,7 @@
 <class 'vsg.token.direction.downto'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.close_parenthesis'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.relational_operator.equal'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.exit_statement.semicolon'>
 --------------------------------------------------------------------------------
@@ -76,7 +76,7 @@
 <class 'vsg.token.direction.downto'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.close_parenthesis'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.relational_operator.equal'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.exit_statement.semicolon'>
 --------------------------------------------------------------------------------
@@ -92,7 +92,7 @@
 <class 'vsg.token.direction.downto'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.close_parenthesis'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.relational_operator.equal'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.exit_statement.semicolon'>
 --------------------------------------------------------------------------------
