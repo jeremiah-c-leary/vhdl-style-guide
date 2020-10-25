@@ -639,6 +639,9 @@ class vhdlFile():
     def get_line_below_line_ending_with_token_with_hierarchy(self, lTokens, lHierarchy):
         return extract.get_line_below_line_ending_with_token_with_hierarchy(lTokens, self.lAllObjects, lHierarchy)
 
+    def get_if_statement_conditions(self):
+        return extract.get_if_statement_conditions(self.lAllObjects)
+
     def get_sequence_of_tokens_not_matching(self, lTokens):
         iLine = 1
         lTemp = []

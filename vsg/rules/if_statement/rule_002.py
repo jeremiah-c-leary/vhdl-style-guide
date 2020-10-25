@@ -1,40 +1,65 @@
 
-from vsg import rule
-from vsg import utils
+import sys
 
-import re
+from vsg import rule_item
+from vsg import parser
+from vsg import token
+from vsg import vhdlFile
+from vsg import violation
+
+from vsg.token.ieee.std_logic_1164 import function
+
+from vsg.vhdlFile import utils
 
 
-class rule_002(rule.rule):
+class rule_002(rule_item.Rule):
     '''
-    If rule 002 checks the if boolean expression is enclosed in ()'s.
+    Checks the expressions in if statements are enclosed in ()'s.
+
+    Parameters
+    ----------
+
+    name : string
+       The group the rule belongs to.
+
+    identifier : string
+       unique identifier.  Usually in the form of 00N.
+
+    trigger : parser object type
+       object type to apply the case check against
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'if'
-        self.identifier = '002'
-        self.solution = 'Enclose boolean expression in ()\'s.'
+        rule_item.Rule.__init__(self, 'if', '002')
+        self.solution = None
         self.phase = 1
+        self.solution = 'Enclose condition in ()\'s.'
 
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isIfKeyword and not re.match('^\s*if\s*\(', oLine.lineNoComment.lower()):
-            dViolation = utils.create_violation_dict(iLineNumber)
-            self.add_violation(dViolation)
-        if oLine.isElseIfKeyword and re.match('^\s*elsif\s+\w', oLine.lineNoComment.lower()):
-            dViolation = utils.create_violation_dict(iLineNumber)
-            self.add_violation(dViolation)
+    def analyze(self, oFile):
+        lToi = oFile.get_if_statement_conditions()
 
-    def _fix_violations(self, oFile):
-        for dViolation in self.violations:
-            iLineNumber = utils.get_violation_line_number(dViolation)
-            oLine = oFile.lines[iLineNumber]
-            if oLine.isIfKeyword:
-                oLine.update_line(re.sub(r'^(\s*)[i|I][f|F]', r'\1if (', oLine.line))
-            if oLine.isElseIfKeyword:
-                oLine.update_line(re.sub('^(\s*)[e|E][l|L][s|S][i|I][f|F]', r'\1elsif (', oLine.line))
-            iThenLineIndex = iLineNumber
-            while not oLine.isThenKeyword:
-                iThenLineIndex += 1
-                oLine = oFile.lines[iThenLineIndex]
-            oLine.update_line(re.sub('[t|T][h|H][e|E][n|N]', ') then', oLine.line))
+        for oToi in lToi:
+            lTokens = oToi.get_tokens()
+            if not isinstance(lTokens[0], parser.open_parenthesis):
+                oViolation = violation.New(oToi.get_line_number(), oToi, self.solution)
+                self.add_violation(oViolation)
+            
+
+    def fix(self, oFile):
+        '''
+        Applies fixes for any rule violations.
+        '''
+        if self.fixable:
+            self.analyze(oFile)
+            self._print_debug_message('Fixing rule: ' + self.name + '_' + self.identifier)
+            self._fix_violation(oFile)
+            self.violations = []
+
+    def _fix_violation(self, oFile):
+        for oViolation in self.violations:
+            lTokens = oViolation.get_tokens()
+            lTokens.insert(0, parser.open_parenthesis())
+            lTokens.append(parser.close_parenthesis())
+
+            oViolation.set_tokens(lTokens)
+        oFile.update(self.violations)

@@ -16,15 +16,6 @@ oFileIf = vhdlFile.vhdlFile(lFileIf)
 
 class testRuleIfMethods(unittest.TestCase):
 
-    def test_rule_002(self):
-        oRule = if_statement.rule_002()
-        self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'if')
-        self.assertEqual(oRule.identifier, '002')
-        dExpected = utils.add_violation_list([8,13,24,33,41,46,52])
-        oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
-
     def test_rule_009(self):
         oRule = if_statement.rule_009()
         self.assertTrue(oRule)
