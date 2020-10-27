@@ -458,11 +458,21 @@ This rule checks the indentation of multiline sensitivity lists.
 process_021
 ###########
  
-This rule checks for blank lines between the end of the sensitivity list and before the **begin** keyword.
+This rule checks for blank lines before the **begin** keyword if there are no process declarative items.
 
 **Violation**
 
 .. code-block:: vhdl
+
+   proc_a : process
+
+   begin
+
+
+   proc_a : process (rd_en, wr_en)
+
+   begin
+
 
    proc_a : process (rd_en, wr_en, data_in, data_out,
                      rd_full, wr_full
@@ -476,7 +486,15 @@ This rule checks for blank lines between the end of the sensitivity list and bef
 
 .. code-block:: vhdl
 
-   PROC_A : process (rd_en, wr_en, data_in, data_out,
+   proc_a : process
+   begin
+
+
+   proc_a : process (rd_en, wr_en)
+   begin
+
+
+   proc_a : process (rd_en, wr_en, data_in, data_out,
                      rd_full, wr_full
                     ) is
    begin

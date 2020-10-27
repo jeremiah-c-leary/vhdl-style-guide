@@ -288,11 +288,7 @@ def find_next_non_whitespace_token(iToken, lObjects):
     iEnd = len(lObjects)
     for iIndex in range(iToken, len(lObjects)):
         oToken = lObjects[iIndex]
-        if isinstance(oToken, parser.whitespace):
-            continue
-        if isinstance(oToken, parser.carriage_return):
-            continue
-        if isinstance(oToken, parser.comment):
+        if token_is_whitespace_or_comment(oToken):
             continue
         return iIndex
     return iCurrent
@@ -621,7 +617,20 @@ def remove_leading_whitespace_and_comments(iToken, lTokens):
 def token_is_whitespace_or_comment(oToken):
     if isinstance(oToken, parser.whitespace) or \
        isinstance(oToken, parser.carriage_return) or \
-       isinstance(oToken, parser.comment):
+       isinstance(oToken, parser.comment) or \
+       isinstance(oToken, parser.blank_line):
         return True
     else:
         return False
+
+def increment_line_number(iLine, oToken):
+    if isinstance(oToken, parser.carriage_return):
+        return iLine + 1
+    return iLine
+
+
+def count_carriage_returns(lTokens):
+    iReturn = 0
+    for oToken in lTokens:
+        iReturn = increment_line_number(iReturn, oToken)
+    return iReturn

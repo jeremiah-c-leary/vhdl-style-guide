@@ -34,15 +34,6 @@ class testRuleProcessMethods(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
-    def test_rule_021(self):
-        oRule = process.rule_021()
-        self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'process')
-        self.assertEqual(oRule.identifier, '021')
-        dExpected = utils.add_violation_list([59,70])
-        oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
-
     def test_rule_026(self):
         oRule = process.rule_026()
         self.assertTrue(oRule)
