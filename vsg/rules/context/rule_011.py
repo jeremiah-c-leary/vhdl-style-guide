@@ -1,17 +1,20 @@
 
-from vsg.rules import move_item_next_to_one_of_several_items_rule
+from vsg.rules import move_token_to_the_right_of_several_possible_tokens
 
-from vsg.token import context_declaration as token
+from vsg import token
+
+lTokens = []
+lTokens.append(token.context_declaration.end_keyword)
+lTokens.append(token.context_declaration.end_context_keyword)
+lTokens.append(token.context_declaration.context_simple_name)
+
+oToken = token.context_declaration.semicolon
 
 
-class rule_011(move_item_next_to_one_of_several_items_rule):
+class rule_011(move_token_to_the_right_of_several_possible_tokens):
     '''
-    Checks the context keyword is on the same line as the end context keyword.
-
+    Checks the context semicolon is on the same line as the end context keyword.
     '''
+
     def __init__(self):
-        move_item_next_to_one_of_several_items_rule.__init__(self, 'context', '011', [token.context_simple_name, token.end_context_keyword, token.end_keyword], token.semicolon)
-        self.solution = None
-        self.subphase = 3
-        self.regionBegin = token.context_keyword
-        self.regionEnd = token.semicolon
+        move_token_to_the_right_of_several_possible_tokens.__init__(self, 'context', '011', oToken, lTokens)

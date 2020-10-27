@@ -12,15 +12,6 @@ oFile = vhdlFile.vhdlFile(lFile)
 
 class testRuleConstantMethods(unittest.TestCase):
 
-    def test_rule_007(self):
-        oRule = constant.rule_007()
-        self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'constant')
-        self.assertEqual(oRule.identifier, '007')
-        lExpected = [utils.add_violation(10)]
-        oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, lExpected)
-
     def test_rule_012(self):
         oRule = constant.rule_012()
         self.assertTrue(oRule)

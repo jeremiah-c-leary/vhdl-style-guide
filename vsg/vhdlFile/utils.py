@@ -634,3 +634,10 @@ def count_carriage_returns(lTokens):
     for oToken in lTokens:
         iReturn = increment_line_number(iReturn, oToken)
     return iReturn
+
+
+def find_carriage_return(iToken, lTokens):
+    for iIndex in range(iToken, len(lTokens)):
+        if isinstance(lTokens[iIndex], parser.carriage_return):
+            return iIndex
+    return None
