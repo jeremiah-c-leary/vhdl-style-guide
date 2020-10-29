@@ -1,30 +1,81 @@
 
-import re
+from vsg import rule_item
+from vsg import parser
+from vsg import token
+from vsg import violation
 
-from vsg import rule
-from vsg import utils
+from vsg.vhdlFile import utils
 
 
-class rule_001(rule.rule):
+lMoveTokens = []
+lMoveTokens.append(token.conditional_expressions.else_keyword)
+lMoveTokens.append(token.conditional_waveforms.else_keyword)
+
+lTokenPairs = []
+lTokenPairs.append([token.conditional_force_assignment.assignment, token.conditional_force_assignment.semicolon])
+lTokenPairs.append([token.conditional_variable_assignment.assignment, token.conditional_variable_assignment.semicolon])
+lTokenPairs.append([token.concurrent_conditional_signal_assignment.assignment, token.concurrent_conditional_signal_assignment.semicolon])
+lTokenPairs.append([token.conditional_waveform_assignment.assignment, token.conditional_waveform_assignment.semicolon])
+
+
+class rule_001(rule_item.Rule):
     '''
-    With rule 001 checks the when and else keywords are on the same line
+    Checks the when and else keywords are on the same line
     '''
 
     def __init__(self):
-        rule.rule.__init__(self, 'when', '001')
+        rule_item.Rule.__init__(self, 'when', '001')
+        self.solution = None
         self.phase = 1
+        self.lMoveTokens = lMoveTokens
+        self.lTokenPairs = lTokenPairs
 
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.insideWhen:
-            if re.match('^\s*else', oLine.line, flags=re.IGNORECASE):
-                dViolation = utils.create_violation_dict(iLineNumber)
-                self.add_violation(dViolation)
+    def analyze(self, oFile):
+        lToi = []
+        for lTokenPair in self.lTokenPairs:
+            aToi = oFile.get_tokens_bounded_by(lTokenPair[0], lTokenPair[1])
+            lToi = utils.combine_two_token_class_lists(lToi, aToi)
 
-    def _fix_violations(self, oFile):
-        for dViolation in self.violations:
-            iLineNumber = utils.get_violation_line_number(dViolation)
-            oPreviousLine = oFile.lines[iLineNumber - 1]
-            oLine = oFile.lines[iLineNumber]
-            iIndex = utils.end_of_line_index(oPreviousLine)
-            oPreviousLine.update_line(oPreviousLine.line[:iIndex] + ' else' + oPreviousLine.line[iIndex:])
-            utils.clear_keyword_from_line(oLine, 'else')
+        for oToi in lToi:
+            lTokens = oToi.get_tokens()
+            iLine = oToi.get_line_number()
+            for iToken, oToken in enumerate(lTokens):
+                iLine = utils.increment_line_number(iLine, oToken)
+                for oMoveToken in self.lMoveTokens:
+                    if isinstance(oToken, oMoveToken):
+                        if lTokens[iToken - 2] is not oAnchorToken or \
+                           lTokens[iToken - 2] is oAnchorToken and isinstance(lTokens[iToken - 1], parser.carriage_return):
+                            self.solution = 'Move "' + oToken.get_value() + '" to the right of "' + oAnchorToken.get_value() + '" on line ' + str(iMoveToLine)
+                            if isinstance(lTokens[iToken + 1], parser.whitespace):
+                                iRight = iToken + 1
+                            else:
+                                iRight = iToken
+                            oViolation = violation.New(iLine, oToi.extract_tokens(iLeft, iRight), self.solution)
+                            self.add_violation(oViolation)
+                            break
+                if not utils.token_is_whitespace_or_comment(oToken):
+                    iLeft = iToken + 1
+                    iMoveToLine = iLine
+                    oAnchorToken = oToken
+
+
+    def fix(self, oFile):
+        '''
+        Applies fixes for any rule violations.
+        '''
+        if self.fixable:
+            self.analyze(oFile)
+            self._print_debug_message('Fixing rule: ' + self.name + '_' + self.identifier)
+            self._fix_violation(oFile)
+            self.violations = []
+
+    def _fix_violation(self, oFile):
+        for oViolation in self.violations:
+            lTokens = oViolation.get_tokens()
+            if isinstance(lTokens[-1], parser.whitespace):
+                lTokens.pop()
+            oToken = lTokens.pop()
+            lTokens.insert(0, oToken)
+            lTokens.insert(0, parser.whitespace(' '))
+            oViolation.set_tokens(lTokens)
+        oFile.update(self.violations)
