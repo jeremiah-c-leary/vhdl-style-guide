@@ -19,23 +19,3 @@ class testFixRuleConcurrentMethods(unittest.TestCase):
         oRule.fix(self.oFile)
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
-
-    def test_fix_rule_007(self):
-        oRule = concurrent.rule_007()
-        dExpected = []
-        oRule.fix(self.oFile)
-        oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, dExpected)
-        self.assertEqual(self.oFile.lines[34].line, '  label : a <= b;  -- this else should not trigger')
-        self.assertEqual(self.oFile.lines[49].line, '  a <= b when g = \'1\' else')
-        self.assertFalse(self.oFile.lines[49].hasComment)
-        self.assertFalse(self.oFile.lines[49].hasInlineComment)
-        self.assertEqual(self.oFile.lines[49].commentColumn, None)
-        self.assertFalse(self.oFile.lines[49].isEndConcurrent)
-        self.assertTrue(self.oFile.lines[49].isConcurrentBegin)
-        self.assertEqual(self.oFile.lines[50].line, ' \'1\'; -- Not an error')
-        self.assertTrue(self.oFile.lines[50].hasComment)
-        self.assertTrue(self.oFile.lines[50].hasInlineComment)
-        self.assertEqual(self.oFile.lines[50].commentColumn, 6)
-        self.assertTrue(self.oFile.lines[50].isEndConcurrent)
-        self.assertFalse(self.oFile.lines[50].isConcurrentBegin)

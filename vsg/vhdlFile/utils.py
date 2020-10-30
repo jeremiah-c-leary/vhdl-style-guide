@@ -636,8 +636,16 @@ def count_carriage_returns(lTokens):
     return iReturn
 
 
-def find_carriage_return(iToken, lTokens):
+def find_carriage_return(lTokens, iToken=0):
     for iIndex in range(iToken, len(lTokens)):
         if isinstance(lTokens[iIndex], parser.carriage_return):
             return iIndex
     return None
+
+
+def count_token_types_in_list_of_tokens(oType, lTokens):
+    iReturn = 0
+    for oToken in lTokens:
+        if isinstance(oToken, oType):
+            iReturn += 1
+    return iReturn

@@ -1,3 +1,4 @@
+
 import os
 import unittest
 
@@ -5,97 +6,72 @@ from vsg.rules import concurrent
 from vsg import vhdlFile
 from vsg.tests import utils
 
-# Read in test file used for all tests
-lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'concurrent_007_test_input.vhd'))
+sTestDir = os.path.dirname(__file__)
 
-class testRuleConcurrentMethods(unittest.TestCase):
+lFile = utils.read_vhdlfile(os.path.join(sTestDir,'rule_007_test_input.vhd'))
+
+lExpected_true = []
+lExpected_true.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_007_test_input.fixed_true.vhd'), lExpected_true)
+
+lExpected_false = []
+lExpected_false.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_007_test_input.fixed_false.vhd'), lExpected_false)
+
+
+class test_concurrent_rule(unittest.TestCase):
 
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
 
-    def test_rule_007_w_default_options(self):
+    def test_rule_007_w_allow_single_line_false(self):
         oRule = concurrent.rule_007()
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'concurrent')
         self.assertEqual(oRule.identifier, '007')
-        lExpected = []
-        dViolation = utils.add_violation(10)
-        dViolation['slice_index'] = [43]
-        lExpected.append(dViolation)
 
-        dViolation = utils.add_violation(11)
-        dViolation['slice_index'] = [43]
-        lExpected.append(dViolation)
-
-        dViolation = utils.add_violation(16)
-        dViolation['slice_index'] = [43, 76]
-        lExpected.append(dViolation)
-
-        dViolation = utils.add_violation(17)
-        dViolation['slice_index'] = [43, 76]
-        lExpected.append(dViolation)
+        lExpected = [8, 18, 18, 18, 20, 20, 21, 23, 24, 24]
 
         oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, lExpected)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
-    def test_rule_007_w_allow_single_line_option_enabled(self):
+    def test_fix_rule_007_w_allow_single_line_false(self):
         oRule = concurrent.rule_007()
-        oRule.allow_single_line = True
-        lExpected = []
 
-        dViolation = utils.add_violation(16)
-        dViolation['slice_index'] = [43, 76]
-        lExpected.append(dViolation)
-
-        dViolation = utils.add_violation(17)
-        dViolation['slice_index'] = [43, 76]
-        lExpected.append(dViolation)
-
-        oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, lExpected)
-
-    def test_fix_rule_007_w_default_options(self):
-        oRule = concurrent.rule_007()
-        dExpected = []
-        oRule.fix(self.oFile)
-        self.assertEqual(self.oFile.lines[10].line, '  O_FOO <= w_foo when (w_foo_en = \'1\') else')
-        self.assertFalse(self.oFile.lines[10].isEndConcurrent)
-        self.assertEqual(self.oFile.lines[11].line, ' \'Z\';')
-        self.assertTrue(self.oFile.lines[11].insideConcurrent)
-        self.assertTrue(self.oFile.lines[11].isEndConcurrent)
-
-        self.assertEqual(self.oFile.lines[12].line, '  O_BAR <= w_bar when (w_bar_en = \'0\') else')
-        self.assertFalse(self.oFile.lines[12].isEndConcurrent)
-        self.assertEqual(self.oFile.lines[13].line, ' \'1\';')
-        self.assertTrue(self.oFile.lines[13].insideConcurrent)
-        self.assertTrue(self.oFile.lines[13].isEndConcurrent)
-
-        self.assertEqual(self.oFile.lines[18].line, '  O_FOO <= w_foo when (w_foo_en = \'1\') else')
-        self.assertFalse(self.oFile.lines[18].isEndConcurrent)
-        self.assertEqual(self.oFile.lines[19].line, ' w_bar when (w_bar_en = \'1\') else')
-        self.assertTrue(self.oFile.lines[19].insideConcurrent)
-        self.assertFalse(self.oFile.lines[19].isEndConcurrent)
-        self.assertEqual(self.oFile.lines[20].line, ' \'Z\';')
-        self.assertTrue(self.oFile.lines[20].insideConcurrent)
-        self.assertTrue(self.oFile.lines[20].isEndConcurrent)
-
-        oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, dExpected)
-
-    def test_fix_rule_007_w_single_line_option_enabled(self):
-        oRule = concurrent.rule_007()
-        oRule.allow_single_line = True
-        dExpected = []
         oRule.fix(self.oFile)
 
-        self.assertEqual(self.oFile.lines[16].line, '  O_FOO <= w_foo when (w_foo_en = \'1\') else')
-        self.assertFalse(self.oFile.lines[16].isEndConcurrent)
-        self.assertEqual(self.oFile.lines[17].line, ' w_bar when (w_bar_en = \'1\') else')
-        self.assertTrue(self.oFile.lines[17].insideConcurrent)
-        self.assertFalse(self.oFile.lines[17].isEndConcurrent)
-        self.assertEqual(self.oFile.lines[18].line, ' \'Z\';')
-        self.assertTrue(self.oFile.lines[18].insideConcurrent)
-        self.assertTrue(self.oFile.lines[18].isEndConcurrent)
+        lActual = []
+        for oLine in self.oFile.lines:
+            lActual.append(oLine.line)
+
+        self.assertEqual(lExpected_false, lActual)
 
         oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, dExpected)
+        self.assertEqual(oRule.violations, [])
+
+    def test_rule_007_w_allow_single_line_true(self):
+        oRule = concurrent.rule_007()
+        oRule.allow_single_line = True
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'concurrent')
+        self.assertEqual(oRule.identifier, '007')
+
+        lExpected = [18, 18, 18, 20, 20, 21, 23, 24, 24]
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+
+    def test_fix_rule_007_w_allow_single_line_true(self):
+        oRule = concurrent.rule_007()
+        oRule.allow_single_line = True
+
+        oRule.fix(self.oFile)
+
+        lActual = []
+        for oLine in self.oFile.lines:
+            lActual.append(oLine.line)
+
+        self.assertEqual(lExpected_true, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])

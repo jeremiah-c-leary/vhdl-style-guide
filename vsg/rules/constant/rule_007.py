@@ -23,7 +23,7 @@ class rule_007(rule_item.Rule):
         lToi = oFile.get_tokens_bounded_by(token.constant_keyword, token.assignment_operator)
         for oToi in lToi:
             lTokens = oToi.get_tokens()
-            if utils.find_carriage_return(0, lTokens) is not None:
+            if utils.find_carriage_return(lTokens) is not None:
                 oViolation = violation.New(oToi.get_line_number(), oToi, self.solution)
                 self.add_violation(oViolation)
 

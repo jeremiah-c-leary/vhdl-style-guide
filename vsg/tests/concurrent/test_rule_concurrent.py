@@ -19,20 +19,3 @@ class testRuleConcurrentMethods(unittest.TestCase):
         dExpected = utils.add_violation_list([28,29,30])
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
-
-    def test_rule_007(self):
-        oRule = concurrent.rule_007()
-        self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'concurrent')
-        self.assertEqual(oRule.identifier, '007')
-        lExpected = []
-        dViolation = utils.add_violation(44)
-        dViolation['slice_index'] = [26]
-        lExpected.append(dViolation)
-
-        dViolation = utils.add_violation(48)
-        dViolation['slice_index'] = [26]
-        lExpected.append(dViolation)
-
-        oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, lExpected)
