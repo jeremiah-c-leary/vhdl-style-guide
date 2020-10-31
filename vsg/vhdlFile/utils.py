@@ -651,5 +651,11 @@ def count_token_types_in_list_of_tokens(oType, lTokens):
     return iReturn
 
 
+def does_token_type_exist_in_list_of_tokens(oType, lTokens):
+    if count_token_types_in_list_of_tokens(oType, lTokens) == 0:
+        return False
+    return True
+
+
 def get_toi_parameters(oToi):
     return oToi.get_line_number(), oToi.get_tokens()

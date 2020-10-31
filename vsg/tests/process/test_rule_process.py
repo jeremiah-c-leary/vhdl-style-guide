@@ -16,15 +16,6 @@ oFileSensitivity = vhdlFile.vhdlFile(lFileSensitivity)
 
 class testRuleProcessMethods(unittest.TestCase):
 
-    def test_rule_012(self):
-        oRule = process.rule_012()
-        self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'process')
-        self.assertEqual(oRule.identifier, '012')
-        dExpected = utils.add_violation_list([51,57])
-        oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
-
     def test_rule_020(self):
         oRule = process.rule_020()
         self.assertTrue(oRule)

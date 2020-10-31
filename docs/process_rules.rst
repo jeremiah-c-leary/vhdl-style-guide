@@ -242,35 +242,37 @@ This rule checks for a blank line after the **end process** keyword.
 process_012
 ###########
  
-This rule checks for the existence of the **is** keyword on the same line as the closing parenthesis of the sensitivity list.
+This rule checks for the existence of the **is** keyword.
 
 **Violation**
 
 .. code-block:: vhdl
 
-   proc_a : process (rd_en, wr_en, data_in, data_out,
-                     rd_full, wr_full
-                    )
+   proc_a : process
    begin
+   end process;
 
    proc_a : process (rd_en, wr_en, data_in, data_out,
                      rd_full, wr_full
                     )
-   is begin
+   begin
+   end process;
+
 
 **Fix**
 
 .. code-block:: vhdl
 
-   proc_a : process (rd_en, wr_en, data_in, data_out,
-                     rd_full, wr_full
-                    ) is
+   proc_a : process is
    begin
+   end process;
+
 
    proc_a : process (rd_en, wr_en, data_in, data_out,
                      rd_full, wr_full
                     ) is
    begin
+   end process;
 
 process_013
 ###########

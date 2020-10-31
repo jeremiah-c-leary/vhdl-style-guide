@@ -86,20 +86,6 @@ class testFixRuleProcessMethods(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
 
-    def test_fix_rule_012(self):
-        oRule = process.rule_012()
-        dExpected = []
-        self.assertFalse(self.oFile.lines[51].isProcessIs)
-        self.assertFalse(self.oFile.lines[57].isProcessIs)
-        oRule.fix(self.oFile)
-        self.assertEqual(self.oFile.lines[51].line, '  process (one, two, three) is ')
-        self.assertEqual(self.oFile.lines[57].line, '           three) is ')
-        self.assertTrue(self.oFile.lines[51].isProcessIs)
-        self.assertTrue(self.oFile.lines[57].isProcessIs)
-
-        oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, dExpected)
-
     def test_fix_rule_013(self):
         oRule = process.rule_013()
         dExpected = []
