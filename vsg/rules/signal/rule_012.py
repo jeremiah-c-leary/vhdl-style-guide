@@ -1,52 +1,182 @@
 
-from vsg import rule
-from vsg import utils
+from vsg import parser
+from vsg import rule_item
+from vsg import token
+from vsg import violation
 
-import re
+from vsg.vhdlFile import utils
 
 
-class rule_012(rule.rule):
+class rule_012(rule_item.Rule):
     '''
-    Signal rule 012 checks the second signal in a signal declaration are aligned within the architecture declarative region.
+    Checks for a single space between two tokens.
+
+    Parameters
+    ----------
+
+    name : string
+       The group the rule belongs to.
+
+    identifier : string
+       unique identifier.  Usually in the form of 00N.
+
+    lTokens : token object list
+       List of tokens to align
+
+    left_token : token object
+       The first token that defines the region
+
+    right_token : token object
+       The second token that defines the region
+
+    lUnless : token object pairs list
+       A list of pairs of tokens to in which to exclude alignment
     '''
 
     def __init__(self):
-        rule.rule.__init__(self, 'signal', '012')
+        rule_item.Rule.__init__(self, 'signal', '012')
+        self.solution = None
         self.phase = 5
-        self.solution = 'Align second signal with others.'
+        self.left_token = token.architecture_body.is_keyword
+        self.right_token = token.architecture_body.begin_keyword
+        self.lUnless = []
+        self.lUnless.append([token.subprogram_body.is_keyword,token.subprogram_body.begin_keyword])
+        ## attributes below are configurable by the user
+
+        self.compact_alignment = True
+        self.configuration.append('compact_alignment')
+
+#        self.blank_line_ends_group = False
+#        self.configuration.append('blank_line_ends_group')
+#        self.comment_line_ends_group = False
+#        self.configuration.append('comment_line_ends_group')
+
 
     def analyze(self, oFile):
-        iMaxSignalIndex = 0
-        lIndexes = []
-        dSignals = {}
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if self._is_vsg_off(oLine):
-                continue
-            if oLine.isSignal and re.match('^\s*signal\s+\S+,\s*\S+\s*:', oLine.line, flags=re.IGNORECASE):
-                dSignals[iLineNumber] = {}
-                dSignals[iLineNumber]['comma'] = 0
-                for iIndex, sChar in enumerate(oLine.line):
-                    if dSignals[iLineNumber]['comma'] > 0 and not sChar == ' ':
-                        iMaxSignalIndex = max(iMaxSignalIndex, iIndex + 1)
-                        dSignals[iLineNumber]['signal'] = iIndex + 1
-                        break
-                    if sChar == ',':
-                        dSignals[iLineNumber]['comma'] = iIndex + 1
-                        lIndexes.append(iLineNumber)
-            if oLine.isArchitectureBegin:
-                for iIndex in lIndexes:
-                    dSignals[iIndex]['max'] = iMaxSignalIndex
-                    if iMaxSignalIndex > dSignals[iIndex]['signal']:
-                        dViolation = utils.create_violation_dict(iIndex)
-                        dViolation['comma'] = dSignals[iIndex]['comma']
-                        dViolation['signal'] = dSignals[iIndex]['signal']
-                        dViolation['max'] = dSignals[iIndex]['max']
-                        self.add_violation(dViolation)
-                lIndexes = []
 
-    def _fix_violations(self, oFile):
-        for dViolation in self.violations:
-            oLine = utils.get_violating_line(oFile, dViolation)
-            iComma = dViolation['comma']
-            iAddNumSpaces = dViolation['max'] - dViolation['signal']
-            oLine.update_line(oLine.line[:iComma] + iAddNumSpaces*' ' + oLine.line[iComma:])
+        lToi = oFile.get_tokens_bounded_by(self.left_token, self.right_token)
+        for oToi in lToi:
+            iLine, lTokens = utils.get_toi_parameters(oToi)
+            iColumn = 0
+            bSignalFound = False
+            bSkip = False
+            dAnalysis = {}
+            dTemp = {}
+            for iToken, oToken in enumerate(lTokens):
+
+               iLine = utils.increment_line_number(iLine, oToken)
+
+               if isinstance(oToken, parser.carriage_return):
+                   iColumn = 0
+               else:
+                   iColumn += len(oToken.get_value())
+
+               bSkip = check_for_exclusions(bSkip, oToken, self.lUnless)
+               if bSkip:
+                   continue
+
+               bSignalFound = check_for_signal_declaration(bSignalFound, oToken)
+               if not bSignalFound:
+                   iComma = 0
+                   continue
+
+               if isinstance(oToken, token.signal_declaration.colon):
+                   bSignalFound = False
+                   if iComma == 1:
+                       dAnalysis[dTemp['line_number']] = dTemp
+                   continue
+
+               if isinstance(oToken, parser.comma):
+                   iComma += 1
+                   if iComma == 2:
+                       bSignalFound = False
+                       continue
+
+                   dTemp = {}
+                   dTemp['comma_column'] = iColumn
+                   dTemp['comma_index'] = iToken
+                   dTemp['line_number'] = iLine
+                   if utils.are_next_consecutive_token_types([parser.whitespace, token.signal_declaration.identifier], iToken + 1, lTokens):
+                       dTemp['identifier_column'] = iColumn + len(lTokens[iToken + 1].get_value())
+                       dTemp['token_index'] = iToken + 2
+                       dTemp['token_value'] = lTokens[iToken + 2].get_value()
+                   elif utils.are_next_consecutive_token_types([token.signal_declaration.identifier], iToken + 1, lTokens):
+                       dTemp['identifier_column'] = iColumn + 1
+                       dTemp['token_index'] = iToken + 1
+                       dTemp['token_value'] = lTokens[iToken + 1].get_value()
+                   else:
+                       bSignalFound = False
+
+
+            add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
+
+            for iKey in list(dAnalysis.keys()):
+                if dAnalysis[iKey]['adjust'] != 0:
+                    oLineTokens = oToi.extract_tokens(dAnalysis[iKey]['comma_index'], dAnalysis[iKey]['token_index'])
+                    sSolution = 'Move ' + dAnalysis[iKey]['token_value'] + ' ' + str(dAnalysis[iKey]['adjust']) + ' columns' 
+                    oViolation = violation.New(dAnalysis[iKey]['line_number'], oLineTokens, sSolution)
+                    oViolation.set_action(dAnalysis[iKey])
+                    self.violations.append(oViolation)
+
+            dAnalysis = {}
+
+    def fix(self, oFile):
+        '''
+        Applies fixes for any rule violations.
+        '''
+        if self.fixable:
+            self.analyze(oFile)
+            self._print_debug_message('Fixing rule: ' + self.name + '_' + self.identifier)
+            self._fix_violation(oFile)
+            self.violations = []
+
+    def _fix_violation(self, oFile):
+        for oViolation in self.violations:
+            lTokens = oViolation.get_tokens()
+            dAction = oViolation.get_action()
+            
+            if len(lTokens) == 2:
+                lTokens.insert(1, parser.whitespace(' '*dAction['adjust']))
+            else:
+                iLen = len(lTokens[1].get_value()) + dAction['adjust']
+                lTokens[1].set_value(' '*iLen)
+
+            oViolation.set_tokens(lTokens)
+        oFile.update(self.violations)
+
+
+def add_adjustments_to_dAnalysis(dAnalysis, compact_alignment):
+    iMaxLeftColumn = 0
+    iMinLeftColumn = 9999999999999999
+    iMaxTokenColumn = 0
+    iMinTokenColumn = 9999999999999999
+
+    for iKey in list(dAnalysis.keys()):
+        iMaxLeftColumn = max(iMaxLeftColumn, dAnalysis[iKey]['comma_column'])
+        iMinLeftColumn = min(iMinLeftColumn, dAnalysis[iKey]['comma_column'])
+        iMaxTokenColumn = max(iMaxTokenColumn, dAnalysis[iKey]['identifier_column'])
+        iMinTokenColumn = min(iMinTokenColumn, dAnalysis[iKey]['identifier_column'])
+
+    if compact_alignment:
+        for iKey in list(dAnalysis.keys()):
+            dAnalysis[iKey]['adjust'] = iMaxLeftColumn - dAnalysis[iKey]['identifier_column'] + 1
+    else:
+        for iKey in list(dAnalysis.keys()):
+            dAnalysis[iKey]['adjust'] = iMaxTokenColumn - dAnalysis[iKey]['identifier_column'] + 1
+
+
+def check_for_exclusions(bSkip, oToken, lUnless):
+    for lTokenPairs in lUnless:
+        if isinstance(oToken, lTokenPairs[0]):
+            return True
+        if isinstance(oToken, lTokenPairs[1]):
+            return False
+    return bSkip
+
+
+def check_for_signal_declaration(bSignalFound, oToken): 
+    if isinstance(oToken, token.signal_declaration.signal_keyword):
+        return True
+    if isinstance(oToken, token.signal_declaration.semicolon):
+        return False
+    return bSignalFound

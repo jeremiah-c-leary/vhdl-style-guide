@@ -10,6 +10,7 @@ class item():
         self.value = sString
         self.indent = None
         self.hierarchy = None
+        self.context = []
 
     def get_value(self):
         return self.value
@@ -31,6 +32,15 @@ class item():
 
     def get_hierarchy(self):
         return self.hierarchy
+
+    def add_context(self, sContext):
+        self.context.extend(sContext)
+
+    def pop_context(self):
+        return self.context.pop()
+
+    def get_context(self):
+        return self.context()
 
 
 class todo(item):

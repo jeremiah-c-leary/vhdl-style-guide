@@ -649,3 +649,7 @@ def count_token_types_in_list_of_tokens(oType, lTokens):
         if isinstance(oToken, oType):
             iReturn += 1
     return iReturn
+
+
+def get_toi_parameters(oToi):
+    return oToi.get_line_number(), oToi.get_tokens()
