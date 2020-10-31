@@ -38,6 +38,10 @@ from vsg.vhdlFile.indent import type_declaration
 from vsg.vhdlFile.indent import variable_declaration
 from vsg.vhdlFile.indent import variable_assignment_statement
 from vsg.vhdlFile.indent import wait_statement
+from vsg.vhdlFile.indent import component_instantiation_statement
+from vsg.vhdlFile.indent import generic_map_aspect
+from vsg.vhdlFile.indent import port_map_aspect
+from vsg.vhdlFile.indent import association_element
 
 
 class vhdlFile():
@@ -471,6 +475,10 @@ class vhdlFile():
             iIndent, bLabelFound = variable_declaration.set_indent(iIndent, bLabelFound, oToken)
             iIndent, bLabelFound = variable_assignment_statement.set_indent(iIndent, bLabelFound, oToken)
             iIndent, bLabelFound = wait_statement.set_indent(iIndent, bLabelFound, oToken)
+            iIndent, bLabelFound = component_instantiation_statement.set_indent(iIndent, bLabelFound, oToken)
+            iIndent, bLabelFound = generic_map_aspect.set_indent(iIndent, bLabelFound, oToken)
+            iIndent, bLabelFound = port_map_aspect.set_indent(iIndent, bLabelFound, oToken)
+            iIndent, bLabelFound = association_element.set_indent(iIndent, bLabelFound, oToken)
   
     def print_debug(self):
         for oLine in self.lines:
@@ -603,14 +611,21 @@ class vhdlFile():
 
         return lReturn                    
 
-    def get_tokens_at_beginning_of_line_matching_between_tokens(self, lTokens, oStart, oEnd):
+    def get_tokens_at_beginning_of_line_matching_between_tokens(self, lTokens, oStart, oEnd, bIncludePreCarriageReturn=False):
         iLine = 1
         lReturn = []
         bSearch = False
         for iIndex in range(0, len(self.lAllObjects)):
 
-            if isinstance(self.lAllObjects[iIndex], oStart):
-                bSearch = True
+            if bIncludePreCarriageReturn:
+                for oToken in lTokens:
+                    if utils.are_next_consecutive_token_types([parser.carriage_return, oToken], iIndex, self.lAllObjects):
+                        bSearch = True
+                    if utils.are_next_consecutive_token_types([parser.carriage_return, parser.whitespace, oToken], iIndex, self.lAllObjects):
+                        bSearch = True
+            else:
+                if isinstance(self.lAllObjects[iIndex], oStart):
+                    bSearch = True
             if isinstance(self.lAllObjects[iIndex], oEnd):
                 bSearch = False
 

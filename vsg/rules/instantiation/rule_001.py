@@ -1,29 +1,28 @@
 
-from vsg import rule
-from vsg import check
-from vsg import fix
-from vsg import utils
+from vsg.rules import token_indent_between_tokens
+
+from vsg import token
+
+lTokens = []
+lTokens.append(token.component_instantiation_statement.instantiation_label)
+lTokens.append(token.component_instantiation_statement.semicolon)
+
+lTokens.append(token.generic_map_aspect.generic_keyword)
+lTokens.append(token.generic_map_aspect.close_parenthesis)
+
+lTokens.append(token.port_map_aspect.port_keyword)
+lTokens.append(token.port_map_aspect.close_parenthesis)
+
+lTokens.append(token.association_element.formal_part)
+
+oStart = token.component_instantiation_statement.instantiation_label
+oEnd = token.component_instantiation_statement.semicolon
 
 
-class rule_001(rule.rule):
+class rule_001(token_indent_between_tokens):
     '''
-    Instantiation rule 001 checks for proper indent of instantiations.
+    Checks the indent of instantiation elements.
     '''
 
     def __init__(self):
-        rule.rule.__init__(self)
-        self.name = 'instantiation'
-        self.identifier = '001'
-        self.solution = 'Ensure proper indentation.'
-        self.phase = 4
-
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isInstantiationDeclaration or oLine.isInstantiationPortAssignment or \
-           oLine.isInstantiationPortEnd or oLine.isInstantiationPortKeyword or \
-           oLine.isInstantiationGenericAssignment or oLine.isInstantiationGenericEnd or \
-           oLine.isInstantiationGenericKeyword:
-            check.indent(self, oLine, iLineNumber)
-
-    def _fix_violations(self, oFile):
-        for dViolation in self.violations:
-            fix.indent(self, utils.get_violating_line(oFile, dViolation))
+        token_indent_between_tokens.__init__(self, 'instantiation', '001', lTokens, oStart, oEnd, True)
