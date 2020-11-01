@@ -28,6 +28,12 @@ VHDL Style Guide (VSG)
 Announcements
 -------------
 
+**11/01/2020**
+
+Significant progress has been made.
+I have converter 430 out of 445 rules for the new parser.
+Rule and parser hardening will being shortly after converting the last 15 rules.
+
 **09/26/2020**
 
 In order to address some outstanding issues, I decided to implement a new parser.
