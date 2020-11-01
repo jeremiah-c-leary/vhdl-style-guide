@@ -1,31 +1,17 @@
 
-from vsg import rule
-from vsg import check
-from vsg import fix
+from vsg.rules import multiline_alignment_between_tokens
+
+from vsg import token
+
+lTokenPairs = []
+lTokenPairs.append([token.simple_variable_assignment.assignment, token.simple_variable_assignment.semicolon])
+lTokenPairs.append([token.conditional_variable_assignment.assignment, token.conditional_variable_assignment.semicolon])
 
 
-class rule_004(rule.rule):
+class rule_004(multiline_alignment_between_tokens):
     '''
-    Variable assignment rule 004 ensures the alignment of multiline variable_assignment statements.
+    Checks the alignment of multiline variable assignments.
     '''
 
     def __init__(self):
-        rule.rule.__init__(self, 'variable_assignment', '004')
-        self.solution = 'Align with space after the ":=" keyword.'
-        self.phase = 5
-
-    def analyze(self, oFile):
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if self._is_vsg_off(oLine):
-                continue
-            if oLine.isVariableAssignment and oLine.isVariableAssignmentEnd:
-                continue
-            if oLine.isVariableAssignment:
-                iAlignmentColumn = oLine.line.find(':=') + len(':= ')
-                continue
-            if oLine.insideVariableAssignment and not oLine.isComment:
-                check.multiline_alignment(self, iAlignmentColumn, oLine, iLineNumber)
-
-    def _fix_violations(self, oFile):
-        for iLineNumber in self.dFix['violations']:
-            fix.multiline_alignment(self, oFile, iLineNumber)
+        multiline_alignment_between_tokens.__init__(self, 'variable_assignment', '004', lTokenPairs)
