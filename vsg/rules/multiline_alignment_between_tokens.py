@@ -25,21 +25,23 @@ class multiline_alignment_between_tokens(rule_item.Rule):
        object type to apply the case check against
     '''
 
-    def __init__(self, name, identifier, lTokenPairs):
+    def __init__(self, name, identifier, lTokenPairs, bExcludeLastToken=False):
         rule_item.Rule.__init__(self, name=name, identifier=identifier)
         self.solution = 'Align with open parenthesis on previous line.'
         self.phase = 4
         self.lTokenPairs = lTokenPairs
+        self.bExcludeLastToken = bExcludeLastToken
 
     def analyze(self, oFile):
         lToi = []
         for lTokenPair in self.lTokenPairs:
-            aToi = oFile.get_tokens_bounded_by(lTokenPair[0], lTokenPair[1])
+            aToi = oFile.get_tokens_bounded_by(lTokenPair[0], lTokenPair[1], bExcludeLastToken=self.bExcludeLastToken)
             lToi = utils.combine_two_token_class_lists(lToi, aToi)
 
         for oToi in lToi:
 
             iLine, lTokens = utils.get_toi_parameters(oToi)
+
             iStartColumn = calculate_start_column(oFile, oToi)
             lColumn = []
             lColumn.append(iStartColumn)

@@ -519,7 +519,7 @@ class vhdlFile():
 
         return lReturn
 
-    def get_tokens_bounded_by(self, oLeft, oRight, include_trailing_whitespace=False):
+    def get_tokens_bounded_by(self, oLeft, oRight, include_trailing_whitespace=False, bExcludeLastToken=False):
         iLine = 1
         lTemp = []
         lReturn = []
@@ -542,6 +542,12 @@ class vhdlFile():
                 bStore = False
             if isinstance(self.lAllObjects[iIndex], oRight) and bStore:
                 if not include_trailing_whitespace:
+                    if bExcludeLastToken:
+                        lTemp.pop()
+                        if isinstance(lTemp[-1], parser.whitespace):
+                            lTemp.pop()
+                        if isinstance(lTemp[-1], parser.carriage_return):
+                            lTemp.pop()
                     lReturn.append(Tokens(iStart, iStartLine, lTemp))
                     lTemp = []
                     bStore = False
