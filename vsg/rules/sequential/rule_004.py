@@ -1,30 +1,19 @@
 
-from vsg import rule
-from vsg import check
-from vsg import fix
+from vsg.rules import multiline_alignment_between_tokens
+
+from vsg import token
+
+lTokenPairs = []
+lTokenPairs.append([token.simple_waveform_assignment.assignment, token.simple_waveform_assignment.semicolon])
+lTokenPairs.append([token.simple_force_assignment.assignment, token.simple_force_assignment.semicolon])
+lTokenPairs.append([token.conditional_waveform_assignment.assignment, token.conditional_waveform_assignment.semicolon])
+lTokenPairs.append([token.conditional_force_assignment.assignment, token.conditional_force_assignment.semicolon])
 
 
-class rule_004(rule.rule):
+class rule_004(multiline_alignment_between_tokens):
     '''
-    Sequential rule 004 ensures the alignment of multiline sequential
-    statements.
+    Checks the alignment of multiline sequential signal assignments.
     '''
 
     def __init__(self):
-        rule.rule.__init__(self, 'sequential', '004')
-        self.solution = 'Align with space after the "<=" keyword.'
-        self.phase = 5
-
-    def _pre_analyze(self):
-        self.iAlignmentColumn = 0
-
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isSequential:
-            if not oLine.isSequentialEnd:
-                self.iAlignmentColumn = oLine.line.find('<=') + len('<= ')
-        if oLine.insideSequential and not oLine.isComment and not oLine.isSequential:
-            check.multiline_alignment(self, self.iAlignmentColumn, oLine, iLineNumber)
-
-    def _fix_violations(self, oFile):
-        for iLineNumber in self.dFix['violations']:
-            fix.multiline_alignment(self, oFile, iLineNumber)
+        multiline_alignment_between_tokens.__init__(self, 'sequential', '004', lTokenPairs)
