@@ -58,6 +58,7 @@ from .token_case_formal_part_of_association_element_in_map_between_tokens import
 from .token_case_n_token_after_tokens import token_case_n_token_after_tokens
 from .token_case_n_token_after_tokens_between_tokens import token_case_n_token_after_tokens_between_tokens
 from .existence_of_tokens_which_should_not_occur import existence_of_tokens_which_should_not_occur
+from .multiline_alignment_between_tokens import multiline_alignment_between_tokens
 
 from vsg.rules import after
 from vsg.rules import architecture

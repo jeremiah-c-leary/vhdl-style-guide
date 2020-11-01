@@ -642,6 +642,9 @@ class vhdlFile():
 
         return lReturn                    
 
+    def get_column_of_token_index(self, iToken):
+        return extract.get_column_of_token_index(iToken, self.lAllObjects)
+
     def get_line_above_line_starting_with_token(self, lTokens):
         return extract.get_line_above_line_starting_with_token(lTokens, self.lAllObjects)
 
