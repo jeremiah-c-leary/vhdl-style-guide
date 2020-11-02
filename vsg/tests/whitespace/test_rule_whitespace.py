@@ -99,21 +99,6 @@ class testRuleWhitespaceMethods(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
 
-    def test_010(self):
-        oRule = whitespace.rule_010()
-        self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'whitespace')
-        self.assertEqual(oRule.identifier, '010')
-        self.assertEqual(oRule.phase, 2)
-
-        dExpected = utils.add_violation_list([1,3])
-        self.oFile.lines.append(line.line('  a <= b& c'))
-        self.oFile.lines.append(line.line('  a <= b & c'))
-        self.oFile.lines.append(line.line('  a <= b &c'))
-        self.oFile.lines.append(line.line('  a <= b &'))
-        oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, dExpected)
-
     def test_011(self):
         oRule = whitespace.rule_011()
         self.assertTrue(oRule)

@@ -666,6 +666,9 @@ class vhdlFile():
     def get_if_statement_conditions(self):
         return extract.get_if_statement_conditions(self.lAllObjects)
 
+    def get_n_tokens_before_and_after_tokens(self, iToken, lTokens):
+        return extract.get_n_tokens_before_and_after_tokens(iToken, lTokens, self.lAllObjects)
+
     def get_sequence_of_tokens_not_matching(self, lTokens):
         iLine = 1
         lTemp = []
