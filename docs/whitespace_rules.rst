@@ -216,7 +216,7 @@ This rule enforces a maximum number of consecutive blank lines.
 whitespace_013
 ##############
 
-This rule checks for spaces before and after logical operators.
+This rule checks for at least a single space before and after logical operators.
 
 **Violation**
 
