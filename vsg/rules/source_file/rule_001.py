@@ -1,23 +1,26 @@
 
-from vsg import rule
-from vsg import utils
+from vsg import rule_item
+from vsg import violation
+
+from vsg.vhdlFile import utils
 
 
-class rule_001(rule.rule):
+class rule_001(rule_item.Rule):
     '''
     Checks the length of the file and determines if the file is empty.
     '''
 
     def __init__(self):
-        rule.rule.__init__(self, 'source_file', '001')
+        rule_item.Rule.__init__(self, 'source_file', '001')
         self.phase = 1
         # These are filled out when creating a new rule
-        self.name = 'source_file'
-        self.identifier = '001'
         self.fixable = False
         self.solution = 'File not found.'
 
     def analyze(self, oFile):
-        if len(oFile.lines) == 1:
-            dViolation = utils.create_violation_dict(0)
-            self.add_violation(dViolation)
+        oToi = oFile.get_all_tokens()
+        iStartIndex = oToi.get_start_index()
+        iEndIndex = oToi.get_end_index()
+        if iStartIndex == iEndIndex:
+            oViolation = violation.New(0, oToi, self.solution)
+            self.add_violation(oViolation)
