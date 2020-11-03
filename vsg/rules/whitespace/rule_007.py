@@ -1,24 +1,17 @@
 
-from vsg import rule
-from vsg import utils
+from vsg import parser
 
-import re
+from vsg.rules import n_spaces_after_tokens
+
+lTokens = []
+lTokens.append(parser.comma)
 
 
-class rule_007(rule.rule):
-    '''Whitespace rule 007 checks for spaces after a comma.'''
+class rule_007(n_spaces_after_tokens):
+    '''
+    Checks for spaces after a comma.
+    '''
 
     def __init__(self):
-        rule.rule.__init__(self, 'whitespace', '007')
-        self.phase = 2
-        self.solution = 'Add a space after the comma.'
-
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if re.match('^.*,\S', oLine.line) and not re.match('^.*--.*,\S', oLine.line):
-            dViolation = utils.create_violation_dict(iLineNumber)
-            self.add_violation(dViolation)
-
-    def _fix_violations(self, oFile):
-        for dViolation in self.violations:
-            oLine = utils.get_violating_line(oFile, dViolation)
-            oLine.update_line(re.sub(r',(\S)', r', \1', oLine.line))
+        n_spaces_after_tokens.__init__(self, 'whitespace', '007', 1, lTokens, bNIsMinimum=True)
+        self.solution = 'Add a space after comma.'

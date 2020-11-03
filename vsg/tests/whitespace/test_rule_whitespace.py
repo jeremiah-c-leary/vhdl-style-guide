@@ -69,22 +69,6 @@ class testRuleWhitespaceMethods(unittest.TestCase):
         self.assertEqual(self.oFile.lines[4].line, '   ) pass')
         self.assertEqual(self.oFile.lines[5].line, '  This is a test of parentehsis (pass) --  ) pass')
 
-    def test_007(self):
-        oRule = whitespace.rule_007()
-        self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'whitespace')
-        self.assertEqual(oRule.identifier, '007')
-        self.assertEqual(oRule.phase, 2)
-
-        dExpected = utils.add_violation_list([1,3])
-        self.oFile.lines.append(line.line('  This is a test,of commas (failure )'))
-        self.oFile.lines.append(line.line('  This is a test, of commas (pass)'))
-        self.oFile.lines.append(line.line('  This is a test of commas,(failure   )'))
-        self.oFile.lines.append(line.line('  This is a test of commas -- 1,2,3,4 (PASS)'))
-        self.oFile.lines.append(line.line('   ) pass'))
-        oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, dExpected)
-
     def test_008(self):
         oRule = whitespace.rule_008()
         self.assertTrue(oRule)

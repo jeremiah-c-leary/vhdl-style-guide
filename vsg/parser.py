@@ -53,6 +53,12 @@ class todo(item):
 ###############################################################################
 
 
+class type(item):
+
+    def __init__(self, sString):
+        item.__init__(self, sString)
+
+
 class function(item):
 
     def __init__(self, sString):
