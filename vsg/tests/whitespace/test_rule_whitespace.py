@@ -151,37 +151,3 @@ class testRuleWhitespaceMethods(unittest.TestCase):
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, dExpected)
-
-    def test_012(self):
-        oRule = whitespace.rule_012()
-        self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'whitespace')
-        self.assertEqual(oRule.identifier, '012')
-        self.assertEqual(oRule.phase, 3)
-
-        lExpected = []
-        dViolation = utils.add_violation(2)
-        dViolation['remove'] = 3
-        lExpected.append(dViolation)
-
-        dViolation = utils.add_violation(10)
-        dViolation['remove'] = 1
-        lExpected.append(dViolation)
- 
-#        dExpected = [2,10]
-#        dExpected = [{'lineNumber': 2, 'remove': 3},
-#                     {'lineNumber': 10, 'remove': 1}]
-        self.oFile.lines.append(line.line('  a <= b;'))   #1
-        self.oFile.lines.append(line.blank_line())        #2
-        self.oFile.lines.append(line.blank_line())        #3
-        self.oFile.lines.append(line.blank_line())        #4
-        self.oFile.lines.append(line.blank_line())        #5
-        self.oFile.lines.append(line.line('  c <= d;'))   #6
-        self.oFile.lines.append(line.line('  a <= b;'))   #7
-        self.oFile.lines.append(line.blank_line())        #8
-        self.oFile.lines.append(line.line('  c <= d;'))   #9
-        self.oFile.lines.append(line.blank_line())        #10
-        self.oFile.lines.append(line.blank_line())        #11
-        self.oFile.lines.append(line.line('  a <= b;'))   #12
-        oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, lExpected)

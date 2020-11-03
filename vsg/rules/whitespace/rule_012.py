@@ -1,37 +1,78 @@
 
-from vsg import rule
-from vsg import utils
+from vsg import parser
+from vsg import rule_item
+from vsg import violation
+
+from vsg.vhdlFile import utils
 
 
-class rule_012(rule.rule):
-    '''Whitespace rule 012 checks the number of consecutive blank lines.'''
+class rule_012(rule_item.Rule):
+    '''
+    Checks the case for words.
+
+    Parameters
+    ----------
+
+    name : string
+       The group the rule belongs to.
+
+    identifier : string
+       unique identifier.  Usually in the form of 00N.
+
+    trigger : parser object type
+       object type to apply the case check against
+    '''
 
     def __init__(self):
-        rule.rule.__init__(self, 'whitespace', '012')
-        self.phase = 3
+        rule_item.Rule.__init__(self, 'whitespace', '012')
+        self.solution = None
+        self.phase = 4
         self.numBlankLines = 1
-        self.solution = 'Remove all but ' + str(self.numBlankLines) + ' blank lines below.'
+        self.configuration.append('numBlankLines')
 
-        self.iNumBlankLines = 0
-        self.fFoundFirstBlank = False
-        self.iErrorLine = 0
+    def analyze(self, oFile):
+        oToi = oFile.get_all_tokens()
+        iLine, lTokens = utils.get_toi_parameters(oToi)
+        iCount = 0
+        for iToken, oToken in enumerate(lTokens[:len(lTokens) - 1]):
 
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if oLine.isBlank and not self.fFoundFirstBlank:
-            self.fFoundFirstBlank = True
-            self.iErrorLine = iLineNumber
-        if oLine.isBlank:
-            self.iNumBlankLines += 1
-        if not oLine.isBlank:
-            if self.iNumBlankLines > self.numBlankLines:
-                dViolation = utils.create_violation_dict(self.iErrorLine)
-                dViolation['remove'] = self.iNumBlankLines - self.numBlankLines
-                self.add_violation(dViolation)
-            self.fFoundFirstBlank = False
-            self.iErrorLine = 0
-            self.iNumBlankLines = 0
+            iLine = utils.increment_line_number(iLine, oToken)
 
-    def _fix_violations(self, oFile):
-        for dViolation in self.violations[::-1]:
-            iLineNumber = utils.get_violation_line_number(dViolation)
-            del oFile.lines[iLineNumber:iLineNumber + dViolation['remove']]
+            if isinstance(oToken, parser.blank_line):
+                if iCount == 0:
+                    iLineNumber = iLine
+                    iStartToken = iToken
+                iCount += 1
+
+            if isinstance(oToken, parser.carriage_return):
+                if not isinstance(lTokens[iToken + 1], parser.blank_line):
+                    if iCount > self.numBlankLines:
+                        sSolution = 'Remove ' + str(iCount - self.numBlankLines) + ' blank lines'
+                        lExtractedTokens = oToi.extract_tokens(iStartToken, iToken)
+                        oViolation = violation.New(iLineNumber, lExtractedTokens, sSolution)
+                        dAction = {}
+                        dAction['remove'] = iCount - self.numBlankLines
+                        oViolation.set_action(dAction)
+                        self.add_violation(oViolation)
+     
+                    iCount = 0
+
+    def fix(self, oFile):
+        '''
+        Applies fixes for any rule violations.
+        '''
+        if self.fixable:
+            self.analyze(oFile)
+            self._print_debug_message('Fixing rule: ' + self.name + '_' + self.identifier)
+            self._fix_violation(oFile)
+            self.violations = []
+
+    def _fix_violation(self, oFile):
+        for oViolation in self.violations:
+            lTokens = oViolation.get_tokens()
+            dAction = oViolation.get_action()
+            lTokens = lTokens[2*dAction['remove']:]
+            oViolation.set_tokens(lTokens)
+               
+        oFile.update(self.violations)
+

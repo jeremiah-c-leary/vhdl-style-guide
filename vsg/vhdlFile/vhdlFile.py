@@ -485,6 +485,9 @@ class vhdlFile():
             print(f'{oLine.indentLevel} | {oLine.line}')
         
 
+    def get_all_tokens(self):
+        return extract.get_all_tokens(self.lAllObjects)
+
     def get_sequence_of_tokens_matching(self, lTokens):
         return extract.get_sequence_of_tokens_matching(lTokens, self.lAllObjects)
 
