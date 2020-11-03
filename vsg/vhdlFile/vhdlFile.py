@@ -488,8 +488,8 @@ class vhdlFile():
     def get_all_tokens(self):
         return extract.get_all_tokens(self.lAllObjects)
 
-    def get_sequence_of_tokens_matching(self, lTokens):
-        return extract.get_sequence_of_tokens_matching(lTokens, self.lAllObjects)
+    def get_sequence_of_tokens_matching(self, lTokens, bIgnoreIfLineStart=False):
+        return extract.get_sequence_of_tokens_matching(lTokens, self.lAllObjects, bIgnoreIfLineStart)
 
     def get_sequence_of_tokens_matching_bounded_by_tokens(self, lTokens, oStart, oEnd):
         return extract.get_sequence_of_tokens_matching_bounded_by_tokens(lTokens, oStart, oEnd, self.lAllObjects)
