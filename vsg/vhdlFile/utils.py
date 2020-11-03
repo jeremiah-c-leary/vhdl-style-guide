@@ -659,3 +659,12 @@ def does_token_type_exist_in_list_of_tokens(oType, lTokens):
 
 def get_toi_parameters(oToi):
     return oToi.get_line_number(), oToi.get_tokens()
+
+
+def does_token_start_line(iToken, lTokens):
+    if isinstance(lTokens[iToken - 1], parser.whitespace) and isinstance(lTokens[iToken - 2], parser.carriage_return):
+        return True
+    if isinstance(lTokens[iToken - 1], parser.carriage_return):
+        return True
+    return False
+

@@ -1192,6 +1192,9 @@ class Tokens():
     def get_start_index(self):
         return self.iStartIndex
 
+    def get_end_index(self):
+        return self.iEndIndex
+
 
 def post_token_assignments(lTokens):
     for iToken, oToken in enumerate(lTokens):
