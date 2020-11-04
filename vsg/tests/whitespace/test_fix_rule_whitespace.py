@@ -75,26 +75,6 @@ class testFixRuleWhitespaceMethods(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(oRule.violations, dExpected)
 
-    def test_fix_008(self):
-        oRule = whitespace.rule_008()
-        self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'whitespace')
-        self.assertEqual(oRule.identifier, '008')
-
-        lFile = utils.read_vhdlfile(sFileName)
-        oFile = vhdlFile.vhdlFile(lFile)
-
-        dExpected = []
-        oFile.lines.append(line.line('A  std_logic_vector (7 downto 0)'))
-        oFile.lines.append(line.line('  std_logic_vector(7 downto 0)'))
-        oFile.lines.append(line.line('  std_logic_vector   (7 downto 0)'))
-        oRule.fix(oFile)
-        oRule.analyze(oFile)
-        self.assertEqual(oRule.violations, dExpected)
-        self.assertEqual(oFile.lines[1].line, 'A  std_logic_vector(7 downto 0)')
-        self.assertEqual(oFile.lines[2].line, '  std_logic_vector(7 downto 0)')
-        self.assertEqual(oFile.lines[3].line, '  std_logic_vector(7 downto 0)')
-
     def test_fix_011(self):
         oRule = whitespace.rule_011()
 

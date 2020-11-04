@@ -1,26 +1,50 @@
 
-from vsg import rule
-from vsg import utils
+from vsg import parser
+from vsg import rule_item
+from vsg import violation
 
-import re
+from vsg.vhdlFile import utils
 
 
-class rule_008(rule.rule):
+class rule_008(rule_item.Rule):
     '''
-    Whitespace rule 008 checks for spaces after "std_logic_vector"
+    Checks for spaces after "std_logic_vector"
+
     '''
 
     def __init__(self):
-        rule.rule.__init__(self, 'whitespace', '008')
+        rule_item.Rule.__init__(self, 'whitespace', '008')
+        self.solution = 'Remove spaces after std_logic_vector'
         self.phase = 2
-        self.solution = 'Remove spaces after "std_logic_vector".'
 
-    def _analyze(self, oFile, oLine, iLineNumber):
-        if re.match('^.*std_logic_vector\s+\(', oLine.line, re.IGNORECASE):
-            dViolation = utils.create_violation_dict(iLineNumber)
-            self.add_violation(dViolation)
+    def analyze(self, oFile):
+        oToi = oFile.get_all_tokens()
+        iLine, lTokens = utils.get_toi_parameters(oToi)
+        for iToken, oToken in enumerate(lTokens[:len(lTokens) - 2]):
 
-    def _fix_violations(self, oFile):
-        for dViolation in self.violations:
-            oLine = utils.get_violating_line(oFile, dViolation)
-            oLine.update_line(re.sub(r'([r|R])\s+\(', r'\1(', oLine.line, 1, re.IGNORECASE))
+            iLine = utils.increment_line_number(iLine, oToken)
+
+            if oToken.get_value().lower() == 'std_logic_vector':
+                if utils.are_next_consecutive_token_types([parser.whitespace, parser.open_parenthesis], iToken + 1, lTokens):
+                    lExtractedTokens = oToi.extract_tokens(iToken, iToken + 1)
+                    oViolation = violation.New(iLine, lExtractedTokens, self.solution)
+                    self.add_violation(oViolation)
+
+    def fix(self, oFile):
+        '''
+        Applies fixes for any rule violations.
+        '''
+        if self.fixable:
+            self.analyze(oFile)
+            self._print_debug_message('Fixing rule: ' + self.name + '_' + self.identifier)
+            self._fix_violation(oFile)
+            self.violations = []
+
+    def _fix_violation(self, oFile):
+        for oViolation in self.violations:
+            lTokens = oViolation.get_tokens()
+            lTokens.pop()
+            oViolation.set_tokens(lTokens)
+               
+        oFile.update(self.violations)
+

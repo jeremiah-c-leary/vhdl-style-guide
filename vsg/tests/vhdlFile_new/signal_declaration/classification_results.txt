@@ -28,7 +28,7 @@
 <class 'vsg.token.signal_declaration.signal_keyword'>
 <class 'vsg.token.signal_declaration.identifier'>
 <class 'vsg.token.signal_declaration.colon'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic_vector'>
 <class 'vsg.parser.open_parenthesis'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.direction.downto'>
@@ -43,7 +43,7 @@
 <class 'vsg.token.signal_declaration.signal_keyword'>
 <class 'vsg.token.signal_declaration.identifier'>
 <class 'vsg.token.signal_declaration.colon'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic_vector'>
 <class 'vsg.parser.open_parenthesis'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.direction.downto'>

@@ -30,7 +30,7 @@
 <class 'vsg.token.alias_declaration.alias_keyword'>
 <class 'vsg.token.alias_declaration.alias_designator'>
 <class 'vsg.token.alias_declaration.colon'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic_vector'>
 <class 'vsg.parser.open_parenthesis'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.direction.downto'>
@@ -54,7 +54,7 @@
 <class 'vsg.token.alias_declaration.alias_keyword'>
 <class 'vsg.token.alias_declaration.alias_designator'>
 <class 'vsg.token.alias_declaration.colon'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic_vector'>
 <class 'vsg.parser.open_parenthesis'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.direction.downto'>
@@ -76,7 +76,7 @@
 <class 'vsg.token.alias_declaration.alias_keyword'>
 <class 'vsg.token.alias_declaration.alias_designator'>
 <class 'vsg.token.alias_declaration.colon'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic_vector'>
 <class 'vsg.parser.open_parenthesis'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.direction.downto'>
@@ -97,7 +97,7 @@
 <class 'vsg.token.alias_declaration.alias_keyword'>
 <class 'vsg.token.alias_declaration.alias_designator'>
 <class 'vsg.token.alias_declaration.colon'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic_vector'>
 <class 'vsg.parser.open_parenthesis'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.direction.downto'>

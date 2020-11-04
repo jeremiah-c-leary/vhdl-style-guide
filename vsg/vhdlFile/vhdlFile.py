@@ -9,6 +9,7 @@ from vsg.token import logical_operator
 from vsg.token import miscellaneous_operator
 from vsg.token import multiplying_operator
 from vsg.token import relational_operator
+from vsg.token.ieee.std_logic_1164 import types
 
 from vsg.vhdlFile import classify
 from vsg.vhdlFile import extract
@@ -1283,11 +1284,19 @@ def post_token_assignments(lTokens):
                 lTokens[iToken] = token.ieee.std_logic_1164.function.falling_edge(sValue)
                 continue
 
+            if sValue.lower() == 'std_logic_vector':
+                lTokens[iToken] = token.ieee.std_logic_1164.types.std_logic_vector(sValue)
+
+            if sValue.lower() == 'std_ulogic_vector':
+                lTokens[iToken] = token.ieee.std_logic_1164.types.std_ulogic_vector(sValue)
+
+            if sValue.lower() == 'std_ulogic':
+                lTokens[iToken] = token.ieee.std_logic_1164.types.std_ulogic(sValue)
+
             if len(sValue) == 3 and sValue.startswith("'") and sValue.endswith("'"):
                 lTokens[iToken] = parser.character_literal(sValue)
                 continue
  
-
 
 def set_token_hierarchy_value(lTokens):
     iIfHierarchy = 0

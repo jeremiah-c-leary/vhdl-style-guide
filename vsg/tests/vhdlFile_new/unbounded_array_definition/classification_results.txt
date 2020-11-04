@@ -25,7 +25,7 @@
 <class 'vsg.token.index_subtype_definition.undefined_range'>
 <class 'vsg.token.unbounded_array_definition.close_parenthesis'>
 <class 'vsg.token.unbounded_array_definition.of_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic_vector'>
 <class 'vsg.parser.open_parenthesis'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.direction.downto'>
@@ -51,7 +51,7 @@
 <class 'vsg.token.index_subtype_definition.undefined_range'>
 <class 'vsg.token.unbounded_array_definition.close_parenthesis'>
 <class 'vsg.token.unbounded_array_definition.of_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic_vector'>
 <class 'vsg.parser.open_parenthesis'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.direction.downto'>

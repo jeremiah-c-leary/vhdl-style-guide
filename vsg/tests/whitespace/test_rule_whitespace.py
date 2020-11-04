@@ -45,20 +45,6 @@ class testRuleWhitespaceMethods(unittest.TestCase):
 
 
 
-    def test_008(self):
-        oRule = whitespace.rule_008()
-        self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'whitespace')
-        self.assertEqual(oRule.identifier, '008')
-        self.assertEqual(oRule.phase, 2)
-
-        dExpected = utils.add_violation_list([1,3])
-        self.oFile.lines.append(line.line('  std_logic_vector (7 downto 0)'))
-        self.oFile.lines.append(line.line('  std_logic_vector(7 downto 0)'))
-        self.oFile.lines.append(line.line('  std_logic_vector   (7 downto 0)'))
-        oRule.analyze(self.oFile)
-        self.assertEqual(oRule.violations, dExpected)
-
     def test_011(self):
         oRule = whitespace.rule_011()
         self.assertTrue(oRule)
