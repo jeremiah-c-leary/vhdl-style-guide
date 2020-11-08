@@ -2,19 +2,19 @@
 from vsg import parser
 
 
-class sign(parser.item):
+class sign(parser.keyword):
 
     def __init__(self, sString):
-        parser.sign.__init__(self, sString)
+        parser.keyword.__init__(self, sString)
 
 
-class plus_sign(sign):
+class plus(sign):
 
-    def __init__(self, sString):
+    def __init__(self, sString='+'):
         sign.__init__(self, '+')
 
 
-class minus_sign(sign):
+class minus(sign):
 
-    def __init__(self, sString):
+    def __init__(self, sString='-'):
         sign.__init__(self, '-')

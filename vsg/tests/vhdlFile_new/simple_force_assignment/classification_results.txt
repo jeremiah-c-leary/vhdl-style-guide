@@ -39,7 +39,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.adding_operator.plus'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.adding_operator.minus'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.todo'>
@@ -66,7 +66,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.adding_operator.plus'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.adding_operator.minus'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.todo'>
@@ -92,7 +92,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.adding_operator.plus'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.adding_operator.minus'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.todo'>
@@ -118,7 +118,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.adding_operator.plus'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.adding_operator.minus'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.comma'>
 <class 'vsg.parser.todo'>
@@ -138,7 +138,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.adding_operator.plus'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.adding_operator.minus'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.simple_force_assignment.semicolon'>
 --------------------------------------------------------------------------------

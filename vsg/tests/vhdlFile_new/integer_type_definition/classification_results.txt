@@ -32,7 +32,7 @@
 <class 'vsg.token.full_type_declaration.identifier'>
 <class 'vsg.token.full_type_declaration.is_keyword'>
 <class 'vsg.token.range_constraint.range_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.sign.minus'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.direction.to'>
 <class 'vsg.parser.todo'>

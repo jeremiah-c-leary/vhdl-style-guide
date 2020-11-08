@@ -41,6 +41,16 @@ def classify_until(lUntils, iToken, lObjects, oType=parser.todo):
                 utils.assign_token(lObjects, iCurrent, parser.close_parenthesis)
             elif sValue == '(':
                 utils.assign_token(lObjects, iCurrent, parser.open_parenthesis)
+            elif sValue == '-':
+                utils.assign_token(lObjects, iCurrent, parser.todo)
+            elif sValue == '+':
+                utils.assign_token(lObjects, iCurrent, parser.todo)
+            elif sValue == '*':
+                utils.assign_token(lObjects, iCurrent, parser.todo)
+            elif sValue == '**':
+                utils.assign_token(lObjects, iCurrent, parser.todo)
+            elif sValue == '/':
+                utils.assign_token(lObjects, iCurrent, parser.todo)
             elif sValue.lower() == 'downto':
                 utils.assign_token(lObjects, iCurrent, direction.downto)
             elif sValue.lower() == 'to':

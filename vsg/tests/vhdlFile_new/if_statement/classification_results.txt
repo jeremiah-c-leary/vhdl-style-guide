@@ -125,7 +125,7 @@
 <class 'vsg.token.simple_variable_assignment.target'>
 <class 'vsg.token.simple_variable_assignment.assignment'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.adding_operator.minus'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.simple_variable_assignment.semicolon'>
 --------------------------------------------------------------------------------

@@ -9,6 +9,7 @@ from vsg.token import logical_operator
 from vsg.token import miscellaneous_operator
 from vsg.token import multiplying_operator
 from vsg.token import relational_operator
+from vsg.token import sign
 from vsg.token.ieee.std_logic_1164 import types
 
 from vsg.vhdlFile import classify
@@ -1205,7 +1206,21 @@ def post_token_assignments(lTokens):
                 lTokens[iToken] = adding_operator.concat()
                 continue
             if sValue  == '+':
-                lTokens[iToken] = adding_operator.plus()
+                if utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken - 1, lTokens):
+                    lTokens[iToken] = sign.plus()
+                    print('Got Here')
+                elif utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.keyword], iToken - 1, lTokens):
+                    lTokens[iToken] = sign.plus()
+                else:
+                    lTokens[iToken] = adding_operator.plus()
+                continue
+            if sValue  == '-':
+                if utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken - 1, lTokens):
+                    lTokens[iToken] = sign.minus()
+                elif utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.keyword], iToken - 1, lTokens):
+                    lTokens[iToken] = sign.minus()
+                else:
+                    lTokens[iToken] = adding_operator.minus()
                 continue
             if sValue == '(':
                 lTokens[iToken] = parser.open_parenthesis()

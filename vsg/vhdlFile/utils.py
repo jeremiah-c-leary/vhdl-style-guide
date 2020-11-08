@@ -211,6 +211,24 @@ def are_next_consecutive_token_types_ignoring_whitespace(lTypes, iToken, lObject
     except IndexError:
         return False
 
+def are_previous_consecutive_token_types_ignoring_whitespace(lTypes, iToken, lObjects):
+    iMinTokenCount = 0
+    iTokenCount = len(lTypes)
+    iCurrent = iToken
+    try:
+        while iTokenCount != iMinTokenCount:
+            iCurrent = find_previous_non_whitespace_token(iCurrent, lObjects)
+#            print(f'{lObjects[iCurrent].get_value()} | {lObjects[iCurrent]} | {lTypes[iTokenCount - 1]}')
+            if not lTypes[iTokenCount - 1] is None:
+                if not isinstance(lObjects[iCurrent], lTypes[iTokenCount - 1]):
+                    return False
+            iCurrent -= 1
+            iTokenCount -= 1
+        else:
+            return True
+    except IndexError:
+        return False
+
 
 def find_in_next_n_tokens(sValue, iMax, iToken, lObjects):
     iEnd = len(lObjects)
@@ -287,6 +305,16 @@ def find_next_non_whitespace_token(iToken, lObjects):
     iCurrent = iToken
     iEnd = len(lObjects)
     for iIndex in range(iToken, len(lObjects)):
+        oToken = lObjects[iIndex]
+        if token_is_whitespace_or_comment(oToken):
+            continue
+        return iIndex
+    return iCurrent
+
+
+def find_previous_non_whitespace_token(iToken, lObjects):
+    iCurrent = iToken
+    for iIndex in range(iToken, 0, -1):
         oToken = lObjects[iIndex]
         if token_is_whitespace_or_comment(oToken):
             continue

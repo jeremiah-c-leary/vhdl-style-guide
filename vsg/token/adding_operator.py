@@ -2,10 +2,10 @@
 from vsg import parser
 
 
-class operator(parser.item):
+class operator(parser.keyword):
 
     def __init__(self, sString):
-        parser.item.__init__(self, sString)
+        parser.keyword.__init__(self, sString)
 
 
 class plus(operator):
