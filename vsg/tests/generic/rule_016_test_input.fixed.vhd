@@ -1,8 +1,8 @@
 
 entity FIFO is
   generic (
-    G_WIDTH : integer := 256;
-    G_DEPTH : integer := 32
+    G_WIDTH : integer := 256;  -- Comment
+    G_DEPTH : integer := 32    -- Comment
   );
 end entity FIFO;
 
