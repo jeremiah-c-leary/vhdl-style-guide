@@ -114,6 +114,8 @@ signal_007
 
 This rule checks for default assignments in signal declarations.
 
+.. NOTE:: This rule is requires the user to remove the default assignments.
+
 **Violation**
 
 .. code-block:: vhdl
