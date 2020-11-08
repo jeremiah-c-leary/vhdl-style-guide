@@ -32,7 +32,7 @@ class remove_spaces_before_token_rule(rule.rule):
     def analyze(self, oFile):
         lTokens = oFile.get_sequence_of_tokens_matching([parser.whitespace, self.oToken], self.bIgnoreIfLineStart)
         for oToken in lTokens:
-            self.add_violation(violation.New(oToken.get_line_number(), oToken))
+            self.add_violation(violation.New(oToken.get_line_number(), oToken, self.solution))
 
     def _fix_violations(self, oFile):
         for oViolation in self.violations:

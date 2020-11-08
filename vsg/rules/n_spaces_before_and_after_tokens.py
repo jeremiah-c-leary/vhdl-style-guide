@@ -119,3 +119,4 @@ def create_solution_text(dAction, iNumSpaces, lTokens):
                 sReturn += 'Remove all but one space after ' + lTokens[1].get_value()
             else:
                 sReturn += 'Add ' + str(iNumSpaces) + ' space(s) after ' + lTokens[1].get_value()
+    return sReturn
