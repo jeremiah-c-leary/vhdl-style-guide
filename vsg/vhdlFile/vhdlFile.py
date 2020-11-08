@@ -828,18 +828,7 @@ class vhdlFile():
 
 
     def get_token_and_n_tokens_before_it(self, oToken, iTokens):
-        iLine = 1
-        lReturn = []
-        iStart = 0
-        for iIndex in range(0, len(self.lAllObjects)):
-            if isinstance(self.lAllObjects[iIndex], oToken):
-                iStart = iIndex - iTokens
-                lReturn.append(Tokens(iStart, iLine, self.lAllObjects[iIndex - iTokens:iIndex + 1]))
-
-            if isinstance(self.lAllObjects[iIndex], parser.carriage_return):
-                iLine +=1
-
-        return lReturn
+        return extract.get_token_and_n_tokens_before_it(oToken, iTokens, self.lAllObjects)
 
     def get_token_and_n_tokens_before_it_in_between_tokens(self, lTokens, iTokens, oStart, oEnd):
         iLine = 1

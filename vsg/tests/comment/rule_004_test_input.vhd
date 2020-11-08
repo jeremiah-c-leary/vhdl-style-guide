@@ -1,4 +1,4 @@
-
+--Ignored comment
 --Ignored comment
 
 architecture RTL of FIFO is

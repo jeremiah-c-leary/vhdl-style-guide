@@ -12,3 +12,4 @@ from .get_line_below_line_ending_with_token_with_hierarchy import get_line_below
 from .get_if_statement_conditions import get_if_statement_conditions
 from .get_column_of_token_index import get_column_of_token_index
 from .get_all_tokens import get_all_tokens
+from .get_token_and_n_tokens_before_it import get_token_and_n_tokens_before_it 
