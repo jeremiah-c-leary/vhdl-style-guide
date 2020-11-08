@@ -152,7 +152,7 @@ This rule checks for spaces before and after the concate (&) operator.
 whitespace_011
 ##############
 
-This rule checks for spaces before and after math operators +, -, /, and \*.
+This rule checks for at least a single space before and after math operators +, -, /, \* and \*\*.
 
 **Violation**
 
