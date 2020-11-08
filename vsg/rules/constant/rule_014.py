@@ -103,7 +103,10 @@ class rule_014(rule_item.Rule):
                     else:
                         if lColumn != 0:
                             dAction = {}
-                            dAction['column'] = lColumn[-1]
+                            if isinstance(oToken, parser.open_parenthesis):
+                                dAction['column'] = lColumn[-2]
+                            else:
+                                dAction['column'] = lColumn[-1]
                             dAction['action'] = 'insert'
                             oViolation = violation.New(iLine, oToi.extract_tokens(iToken, iToken), self.solution)
                             oViolation.set_action(dAction)
