@@ -943,36 +943,7 @@ class vhdlFile():
 
 
     def get_blank_lines_above_line_starting_with_token(self, lTokens):
-        lReturn = []
-        iLine = 1
-        bStore = False
-        lTemp = []
-        for iIndex in range(0, len(self.lAllObjects)):
-
-            if isinstance(self.lAllObjects[iIndex], parser.blank_line):
-                if not bStore:
-                    iStart = iIndex
-                bStore = True
-
-            if bStore:
-                lTemp.append(self.lAllObjects[iIndex])
-
-            if isinstance(self.lAllObjects[iIndex], parser.carriage_return):
-                iLine +=1
-                iCurrent = iIndex + 1
-                for oToken in lTokens:
-                    if utils.are_next_consecutive_token_types([parser.whitespace, oToken], iCurrent, self.lAllObjects):
-                        lReturn.append(Tokens(iStart, iLine, lTemp))
-                        break
-                    if utils.are_next_consecutive_token_types([oToken], iCurrent, self.lAllObjects):
-                        lReturn.append(Tokens(iStart, iLine, lTemp))
-                        break
-             
-                if not utils.are_next_consecutive_token_types([parser.blank_line, parser.carriage_return], iCurrent, self.lAllObjects):
-                    bStore = False
-                    lTemp = []
-
-        return lReturn                    
+        return extract.get_blank_lines_above_line_starting_with_token(lTokens, self.lAllObjects)
 
     def get_association_elements_between_tokens(self, oStart, oEnd):
         iLine = 1

@@ -111,9 +111,9 @@ def create_solution_text(dAction, iNumSpaces, lTokens):
     for sKey in list(dAction.keys()):
         if sKey == 'left':
             if dAction[sKey]['action'] == 'adjust':
-                sReturn += 'Remove all but one space before ' + lTokens[1].get_value()
+                sReturn += 'Remove all but one space before ' + lTokens[1].get_value() + '. '
             else:
-                sReturn += 'Add ' + str(iNumSpaces) + ' space(s) before ' + lTokens[1].get_value()
+                sReturn += 'Add ' + str(iNumSpaces) + ' space(s) before ' + lTokens[1].get_value() + '. '
         if sKey == 'right':
             if dAction[sKey]['action'] == 'adjust':
                 sReturn += 'Remove all but one space after ' + lTokens[1].get_value()
