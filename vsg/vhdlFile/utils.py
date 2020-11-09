@@ -182,7 +182,6 @@ def are_next_consecutive_token_types(lTypes, iToken, lObjects):
     iCurrent = iToken
     try:
         while iTokenCount < iMaxTokenCount:
-            iCurrent = find_next_token(iCurrent, lObjects)
             if not lTypes[iTokenCount] is None:
                 if not isinstance(lObjects[iCurrent], lTypes[iTokenCount]):
                     return False
@@ -292,13 +291,10 @@ def find_in_range_with_multiple_ends(sValue, iToken, lEnd, lObjects):
 
 
 def find_next_token(iToken, lObjects):
-    iCurrent = iToken
-    iEnd = len(lObjects)
-    while not is_item(lObjects, iCurrent):
-        iCurrent += 1
-        if iCurrent == iEnd:
-            return iToken
-    return iCurrent
+    for iCurrent in range(iToken, len(lObjects)):
+        if is_item(lObjects, iCurrent):
+            return iCurrent
+    return iToken
 
 
 def find_next_non_whitespace_token(iToken, lObjects):
