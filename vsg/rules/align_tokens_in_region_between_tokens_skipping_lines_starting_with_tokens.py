@@ -139,11 +139,15 @@ class align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens(
 
                    if bSkip:
                        bSkip = False
-                   else:
-                       for oSkip in self.lSkip:
-                           if utils.are_next_consecutive_token_types([parser.whitespace, oSkip], iIndex + 1, lTokens) or \
-                              utils.are_next_consecutive_token_types([oSkip], iIndex + 1, lTokens):
-                               bSkip = True
+
+                   for oSkip in self.lSkip:
+                       if utils.are_next_consecutive_token_types([parser.whitespace, oSkip], iIndex + 1, lTokens) or \
+                          utils.are_next_consecutive_token_types([oSkip], iIndex + 1, lTokens):
+                           bSkip = True
+                           break
+
+                   if bSkip:
+                       continue
 
                    if self.comment_line_ends_group:
                        if utils.are_next_consecutive_token_types([parser.whitespace, parser.comment], iIndex + 1, lTokens) or \

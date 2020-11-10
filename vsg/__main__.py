@@ -171,8 +171,8 @@ def write_invalid_configuration_junit_file(sFileName, sJUnitFileName):
 def write_vhdl_file(oVhdlFile):
     try:
         with open(oVhdlFile.filename, 'w') as oFile:
-            for oLine in oVhdlFile.lines[1:]:
-                oFile.write(oLine.line + '\n')
+            for sLine in oVhdlFile.get_lines()[1:]:
+                oFile.write(sLine + '\n')
     except PermissionError as err:
         print (err, "Could not write fixes back to file.")
 
