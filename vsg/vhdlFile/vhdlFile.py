@@ -71,7 +71,7 @@ class vhdlFile():
         self.lAllObjects = []
 
         for sLine in self.filecontent:
-            lTokens = get_zipped_tokens(sLine.replace('\t', '  ').rstrip())
+            lTokens = tokens.create(sLine.replace('\t', '  ').rstrip())
             lObjects = []
             for sToken in lTokens:
                 lObjects.append(parser.item(sToken))
@@ -1181,18 +1181,3 @@ def set_token_hierarchy_value(lTokens):
         if isinstance(oToken, token.if_statement.semicolon):
             iIfHierarchy -= 1
             oToken.set_hierarchy(iIfHierarchy)
-
-
-def get_zipped_tokens(sLine):
-    lReturn = []
-    lTokens, lSeparators = tokens.create(sLine.replace('\t', '  ').rstrip())
-    if len(lTokens) > 0:
-        for i in range(len(lTokens)):
-            try:
-                if not '' == lSeparators[i]:
-                    lReturn.append(lSeparators[i])
-            except IndexError:
-                pass
-            lReturn.append(lTokens[i])
-    return lReturn 
-

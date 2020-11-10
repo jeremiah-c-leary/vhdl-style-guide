@@ -18,6 +18,9 @@ def create(sString):
     lCharacters = combine_string_literals(lCharacters)
     lCharacters = combine_character_literals(lCharacters)
     lCharacters = combine_comments(lCharacters)
+
+    return lCharacters
+
     lCharacters = insert_empty_space(lCharacters)
 
     lTokens = extract_tokens(lCharacters)
