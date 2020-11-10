@@ -4,11 +4,6 @@ This module provides functions for rules to use.
 import copy
 import re
 
-try:
-    from vsg import line
-except ImportError:
-    import line
-
 
 def copy_line(oFile, iLineNumber):
     '''

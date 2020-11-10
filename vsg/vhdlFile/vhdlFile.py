@@ -1,7 +1,8 @@
 
-from vsg import line
 from vsg import parser
 from vsg import token
+
+from vsg import tokens
 
 from vsg.token import adding_operator
 from vsg.token import direction
@@ -70,21 +71,18 @@ class vhdlFile():
         self.lAllObjects = []
 
         for sLine in self.filecontent:
-            oLine = line.line(sLine.replace('\t', '  ').rstrip())
-            lTokens = oLine.get_zipped_tokens()
+            lTokens = get_zipped_tokens(sLine.replace('\t', '  ').rstrip())
             lObjects = []
             for sToken in lTokens:
                 lObjects.append(parser.item(sToken))
 
-            blank.classify(lObjects, oLine)
+            blank.classify(lObjects)
             whitespace.classify(lTokens, lObjects)
             comment.classify(lTokens, lObjects)
 
 
             self.lAllObjects.extend(lObjects)
             self.lAllObjects.append(parser.carriage_return())
-
-            oLine.objects = lObjects
 
         design_file.tokenize(self.lAllObjects)
         post_token_assignments(self.lAllObjects)
@@ -1183,3 +1181,18 @@ def set_token_hierarchy_value(lTokens):
         if isinstance(oToken, token.if_statement.semicolon):
             iIfHierarchy -= 1
             oToken.set_hierarchy(iIfHierarchy)
+
+
+def get_zipped_tokens(sLine):
+    lReturn = []
+    lTokens, lSeparators = tokens.create(sLine.replace('\t', '  ').rstrip())
+    if len(lTokens) > 0:
+        for i in range(len(lTokens)):
+            try:
+                if not '' == lSeparators[i]:
+                    lReturn.append(lSeparators[i])
+            except IndexError:
+                pass
+            lReturn.append(lTokens[i])
+    return lReturn 
+

@@ -2,8 +2,7 @@
 from vsg import parser
 
 
-def classify(lObjects, oLine):
+def classify(lObjects):
 
     if len(lObjects) == 0:
         lObjects.append(parser.blank_line())
-        oLine.isBlank = True
