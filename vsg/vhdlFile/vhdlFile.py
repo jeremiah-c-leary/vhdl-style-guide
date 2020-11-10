@@ -13,7 +13,6 @@ from vsg.token import sign
 from vsg.token.ieee.std_logic_1164 import types
 
 from vsg.vhdlFile import extract
-from vsg.vhdlFile import update
 from vsg.vhdlFile import utils
 
 from vsg.vhdlFile.classify_new import blank
