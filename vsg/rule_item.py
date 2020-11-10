@@ -12,12 +12,6 @@ class Rule(rule.rule):
         self.regionBegin = None
         self.regionEnd = None
 
-    @abstractmethod
-    def _get_regions(self, oFile):
-        return oFile.get_region_bounded_by_items(self.regionBegin, self.regionEnd)
-
-#    def _get_regions(self, oFile):
-#        pass
 
     def fix(self, oFile):
         '''

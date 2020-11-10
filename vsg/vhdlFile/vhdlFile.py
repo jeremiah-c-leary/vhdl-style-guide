@@ -59,7 +59,6 @@ class vhdlFile():
     '''
     def __init__(self, filecontent):
         self.filecontent = filecontent
-        self.lines = [line.line('')]
         self.hasArchitecture = False
         self.hasEntity = False
         self.lAllObjects = []
@@ -116,44 +115,10 @@ class vhdlFile():
             lReturn.append(utils.convert_token_list_to_string(lLine))
         return lReturn
 
-    def get_line(self, iLineNumber):
-        return self.lines[iLineNumber]
-
     def get_line_count(self):
         return utils.count_carriage_returns(self.lAllObjects)
 
             
-    def get_region_bounded_by_items(self, beginItem, endItem):
-        lReturn = []
-        dRegion = {}
-        dRegion['metadata'] = {}
-        dRegion['metadata']['iStartLineNumber'] = 0
-        dRegion['metadata']['iEndLineNumber'] = 0
-        dRegion['lines'] = []
-        bRegionBeginFound = False
-        bRegionEndFound = False
-        for iLine, oLine in enumerate(self.lines):
-            for oObject in oLine.objects:
-                if isinstance(oObject, beginItem):
-                    bRegionBeginFound = True
-                    dRegion['metadata']['iStartLineNumber'] = iLine
-                if isinstance(oObject, endItem):   
-                    bRegionEndFound = True
-                    dRegion['metadata']['iEndLineNumber'] = iLine
-            if bRegionBeginFound:
-                dRegion['lines'].append(oLine)
-            if bRegionEndFound:
-                lReturn.append(dRegion)
-                dRegion = {}
-                dRegion['metadata'] = {}
-                dRegion['metadata']['iStartLineNumber'] = 0
-                dRegion['metadata']['iEndLineNumber'] = 0
-                dRegion['lines'] = []
-                bRegionBeginFound = False
-                bRegionEndFound = False
-        return lReturn
-
-
     def set_token_indent(self):
         '''
         Set the indent level of tokens.
@@ -422,10 +387,6 @@ class vhdlFile():
             iIndent, bLabelFound = port_map_aspect.set_indent(iIndent, bLabelFound, oToken)
             iIndent, bLabelFound = association_element.set_indent(iIndent, bLabelFound, oToken)
   
-    def print_debug(self):
-        for oLine in self.lines:
-            print(f'{oLine.indentLevel} | {oLine.line}')
-        
 
     def get_all_tokens(self):
         return extract.get_all_tokens(self.lAllObjects)
