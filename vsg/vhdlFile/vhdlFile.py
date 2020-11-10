@@ -85,8 +85,6 @@ class vhdlFile():
             whitespace.classify(lTokens, lObjects)
             comment.classify(lTokens, lObjects)
 
-            # Add line to file
-#            self.lines.append(oLine)
 
             self.lAllObjects.extend(lObjects)
             self.lAllObjects.append(parser.carriage_return())
@@ -95,9 +93,6 @@ class vhdlFile():
 
         design_file.tokenize(self.lAllObjects)
         post_token_assignments(self.lAllObjects)
-
-#        for iLine, lLine in enumerate(split_on_carriage_return(self.lAllObjects)):
-#            self.lines[iLine + 1].objects = lLine
 
         self.set_token_indent()
         set_token_hierarchy_value(self.lAllObjects)
@@ -110,23 +105,6 @@ class vhdlFile():
             lTokens = oUpdate.get_tokens()
             iEnd = oUpdate.oTokens.iEndIndex
             self.lAllObjects[iStart:iEnd] = lTokens
-
-#        for iLine, lLine in enumerate(split_on_carriage_return(self.lAllObjects)):
-#            try:
-#                self.lines[iLine + 1].update_objects(lLine)
-#            except IndexError:
-#                oLine = line.line(' ')
-#                oLine.update_objects(lLine)
-#                self.lines.append(oLine)
-#        if iLine < len(self.lines):
-#            self.lines = self.lines[:iLine + 2]             
-            
-
-#    def update_filecontent(self):
-#        self.filecontent = []
-#        for oLine in self.lines[1:]:
-#            self.filecontent.append(oLine.line)
-#        self.lines = [line.line('')]
 
     def get_object_lines(self):
         lReturn = []
