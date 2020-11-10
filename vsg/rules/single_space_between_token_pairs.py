@@ -24,11 +24,12 @@ class single_space_between_token_pairs(rule_item.Rule):
        The tokens to check for a single space between
     '''
 
-    def __init__(self, name, identifier, lTokens):
+    def __init__(self, name, identifier, lTokens, bMinimum=False):
         rule_item.Rule.__init__(self, name=name, identifier=identifier)
         self.solution = None
         self.phase = 2
         self.lTokens = lTokens
+        self.bMinimum = bMinimum
 
     def analyze(self, oFile):
         lToi = []
@@ -42,6 +43,8 @@ class single_space_between_token_pairs(rule_item.Rule):
             lTokens = oToi.get_tokens()
             if len(lTokens) == 2:
                 self.add_violation(violation.New(oToi.get_line_number(), oToi, self.solution))
+            elif self.bMinimum:
+                continue
             elif len(lTokens[1].get_value()) != 1:
                 self.add_violation(violation.New(oToi.get_line_number(), oToi, self.solution))
 

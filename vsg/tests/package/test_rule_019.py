@@ -40,9 +40,7 @@ class test_package_rule(unittest.TestCase):
 
         oRule.fix(self.oFile)
 
-        lActual = []
-        for oLine in self.oFile.lines:
-            lActual.append(oLine.line)
+        lActual = self.oFile.get_lines()
 
         self.assertEqual(lExpected, lActual)
 

@@ -40,9 +40,7 @@ class test_architecture_rule(unittest.TestCase):
 #
 #        oRule.fix(self.oFile)
 #
-#        lActual = []
-#        for oLine in self.oFile.lines:
-#            lActual.append(oLine.line)
+#        lActual = self.oFile.get_lines()
 #
 #        self.assertEqual(lExpected, lActual)
 #
@@ -68,9 +66,7 @@ class test_architecture_rule(unittest.TestCase):
 #
 #        oRule.fix(self.oFile)
 #
-#        lActual = []
-#        for oLine in self.oFile.lines:
-#            lActual.append(oLine.line)
+#        lActual = self.oFile.get_lines()
 #
 #        lExpected = []
 #        lExpected.append('')
@@ -96,9 +92,7 @@ class test_architecture_rule(unittest.TestCase):
 #
 #        oRule.fix(self.oFile)
 #
-#        lActual = []
-#        for oLine in self.oFile.lines:
-#            lActual.append(oLine.line)
+#        lActual = self.oFile.get_lines()
 #
 #        lExpected = []
 #        lExpected.append('')
@@ -124,9 +118,7 @@ class test_architecture_rule(unittest.TestCase):
 #
 #        oRule.fix(self.oFile)
 #
-#        lActual = []
-#        for oLine in self.oFile.lines:
-#            lActual.append(oLine.line)
+#        lActual = self.oFile.get_lines()
 #
 #        lExpected = []
 #        lExpected.append('')
@@ -157,9 +149,7 @@ class test_architecture_rule(unittest.TestCase):
 
         oRule.fix(self.oFile)
 
-        lActual = []
-        for oLine in self.oFile.lines:
-            lActual.append(oLine.line)
+        lActual = self.oFile.get_lines()
 
         lExpected = []
         lExpected.append('')

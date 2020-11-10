@@ -45,3 +45,21 @@ class Rule(rule.rule):
 
     def _analyze_region(self, oFile, iLine, oLine, dRegion):
         return None
+
+    def get_violations_at_linenumber(self, iLineNumber):
+        '''
+        Returns a list of formatted violations.
+
+        Parameters:
+
+          iLineNumber (integer)
+
+        Returns: (list of dictionaries)
+        '''
+        lReturn = []
+
+        for violation in self.violations:
+            if violation.get_line_number() == iLineNumber:
+                lReturn.append(self._build_violation_dict_from_violation_object(violation))
+
+        return lReturn

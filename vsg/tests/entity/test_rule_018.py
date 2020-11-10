@@ -38,9 +38,7 @@ class test_entity_rule(unittest.TestCase):
         lExpected.append('')
         utils.read_file(os.path.join(sTestDir, 'rule_018_test_input.fixed_combined_generic.vhd'), lExpected)
 
-        lActual = []
-        for oLine in self.oFile.lines:
-            lActual.append(oLine.line)
+        lActual = self.oFile.get_lines()
 
         self.assertEqual(lExpected, lActual)
 
@@ -67,9 +65,7 @@ class test_entity_rule(unittest.TestCase):
         lExpected.append('')
         utils.read_file(os.path.join(sTestDir, 'rule_018_test_input.fixed_seperate_generic.vhd'), lExpected)
 
-        lActual = []
-        for oLine in self.oFile.lines:
-            lActual.append(oLine.line)
+        lActual = self.oFile.get_lines()
 
         self.assertEqual(lExpected, lActual)
 

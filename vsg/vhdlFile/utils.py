@@ -692,3 +692,9 @@ def does_token_start_line(iToken, lTokens):
         return True
     return False
 
+
+def convert_token_list_to_string(lTokens):
+    sReturn = ''
+    for oToken in lTokens:
+        sReturn += oToken.get_value()
+    return sReturn

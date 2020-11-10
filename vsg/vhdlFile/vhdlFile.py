@@ -74,27 +74,6 @@ class vhdlFile():
 
         self.lAllObjects = []
 
-        dVars = {}
-        dVars['fFoundProcessBegin'] = False
-        dVars['SensitivityListFound'] = False
-        dVars['fProcedureParameterEndDetected'] = False
-        dVars['fProcedureIsDetected'] = False
-        dVars['fProcedureBeginDetected'] = False
-        dVars['fFunctionParameterEndDetected'] = False
-        dVars['fFunctionIsDetected'] = False
-        dVars['fFunctionBeginDetected'] = False
-        dVars['fFunctionReturnTypeDetected'] = False
-        dVars['iOpenParenthesis'] = 0
-        dVars['iCloseParenthesis'] = 0
-        dVars['iCurrentIndentLevel'] = 0
-        dVars['iGenerateLevel'] = 0
-        dVars['iIfLevel'] = 0
-        dVars['fConstantArray'] = False
-        dVars['iForLoopLevel'] = 0
-        dVars['bFirstWhenSeen'] = False
-
-        oLinePrevious = line.blank_line()
-
         for sLine in self.filecontent:
             oLine = line.line(sLine.replace('\t', '  ').rstrip())
             lTokens = oLine.get_zipped_tokens()
@@ -105,121 +84,69 @@ class vhdlFile():
             blank.classify(lObjects, oLine)
             whitespace.classify(lTokens, lObjects)
             comment.classify(lTokens, lObjects)
-            
-            update.inside_attributes(dVars, self.lines[-1], oLine)
-
-            classify.blank(oLine) # lTokens
-#            classify.whitespace(lTokens, lObjects)
-            classify.comment(dVars, lTokens, lObjects, oLine)
-
-
-            classify.use(dVars, lTokens, lObjects, oLine)
-
-            classify.entity.legacy(self, dVars, oLine)
-            classify.assert_statement(self, dVars, lTokens, lObjects, oLine)
-
-            classify.code_tags(dVars, oLine, oLinePrevious)
-
-            classify.port(dVars, oLine)
-            classify.generic(dVars, oLine) #lTokens
-
-            classify.concurrent(dVars, oLine)
-            classify.architecture(self, dVars, lTokens, lObjects, oLine)
-            classify.package_body_old(dVars, oLine) # lTokens
-            classify.block(self, dVars, oLine)
-            classify.package(self, dVars, lTokens, lObjects, oLine)
-            classify.component(dVars, lTokens, lObjects, oLine)
-            classify.signal(self, dVars, oLine)
-            classify.constant(self, dVars, lTokens, lObjects, oLine, oLinePrevious)
-            classify.variable(self, dVars, lTokens, lObjects, oLine)
-            classify.procedure(dVars, oLine, oLinePrevious)
-            classify.process(dVars, oLine, self.lines)
-            classify.generate(dVars, oLine, oLinePrevious)
-            classify.attribute(dVars, lTokens, lObjects, oLine)
-            classify.file_statement(dVars, lTokens, lObjects, oLine)
-
-            classify.when(dVars, oLine, oLinePrevious)
-
-            classify.with_statement(dVars, oLine)
-            classify.for_loop(dVars, oLine)
-            classify.while_loop(dVars, oLine)
-
-            classify.if_statement(dVars, oLine)
-
-            classify.case(self, dVars, oLine)
-            classify.function(dVars, oLine)
-            classify.type_definition_old(dVars, oLine)
-            classify.subtype(dVars, oLine)
-
-            classify.sequential(dVars, oLine)
-            classify.variable_assignment(dVars, oLine)
-            classify.wait(dVars, oLine)
-            classify.after(dVars, oLine)
-
-            # Check instantiation statements
-            if oLine.insideArchitecture and not oLine.insideProcess and \
-               not oLine.isConcurrentBegin and \
-               not oLine.insideComponent and \
-               not oLine.isGenerateKeyword and \
-               not oLine.insideFunction and \
-               not oLine.insideProcedure:
-                classify.instantiation(dVars, oLine)
 
             # Add line to file
-            self.lines.append(oLine)
+#            self.lines.append(oLine)
 
             self.lAllObjects.extend(lObjects)
             self.lAllObjects.append(parser.carriage_return())
 
-            oLinePrevious = oLine
             oLine.objects = lObjects
 
         design_file.tokenize(self.lAllObjects)
         post_token_assignments(self.lAllObjects)
 
-        for iLine, lLine in enumerate(split_on_carriage_return(self.lAllObjects)):
-            self.lines[iLine + 1].objects = lLine
+#        for iLine, lLine in enumerate(split_on_carriage_return(self.lAllObjects)):
+#            self.lines[iLine + 1].objects = lLine
 
         self.set_token_indent()
         set_token_hierarchy_value(self.lAllObjects)
 
     def update(self, lUpdates):
-#        print('--> Update' + 80*'-')
         if len(lUpdates) == 0:
             return
         for oUpdate in lUpdates[::-1]:
-#            print(self.lAllObjects)
             iStart = oUpdate.oTokens.iStartIndex
             lTokens = oUpdate.get_tokens()
             iEnd = oUpdate.oTokens.iEndIndex
-#            print(f'{iStart} | {iEnd}') 
             self.lAllObjects[iStart:iEnd] = lTokens
-#            print(self.lAllObjects)
-#        print(self.lAllObjects)
-        for iLine, lLine in enumerate(split_on_carriage_return(self.lAllObjects)):
-#            print(lLine)
-#            print(lLine)
-            try:
-                self.lines[iLine + 1].update_objects(lLine)
-            except IndexError:
-                oLine = line.line(' ')
-                oLine.update_objects(lLine)
-                self.lines.append(oLine)
-        if iLine < len(self.lines):
-            self.lines = self.lines[:iLine + 2]             
+
+#        for iLine, lLine in enumerate(split_on_carriage_return(self.lAllObjects)):
+#            try:
+#                self.lines[iLine + 1].update_objects(lLine)
+#            except IndexError:
+#                oLine = line.line(' ')
+#                oLine.update_objects(lLine)
+#                self.lines.append(oLine)
+#        if iLine < len(self.lines):
+#            self.lines = self.lines[:iLine + 2]             
             
 
-    def update_filecontent(self):
-        self.filecontent = []
-        for oLine in self.lines[1:]:
-            self.filecontent.append(oLine.line)
-        self.lines = [line.line('')]
+#    def update_filecontent(self):
+#        self.filecontent = []
+#        for oLine in self.lines[1:]:
+#            self.filecontent.append(oLine.line)
+#        self.lines = [line.line('')]
+
+    def get_object_lines(self):
+        lReturn = []
+        lReturn.append('')
+        for lLine in split_on_carriage_return(self.lAllObjects):
+            lReturn.append(lLine)
+        return lReturn
 
     def get_lines(self):
-        return self.lines
+        lReturn = []
+        lReturn.append('')
+        for lLine in split_on_carriage_return(self.lAllObjects):
+            lReturn.append(utils.convert_token_list_to_string(lLine))
+        return lReturn
 
     def get_line(self, iLineNumber):
         return self.lines[iLineNumber]
+
+    def get_line_count(self):
+        return utils.count_carriage_returns(self.lAllObjects)
 
             
     def get_region_bounded_by_items(self, beginItem, endItem):
@@ -306,22 +233,27 @@ class vhdlFile():
             if isinstance(oToken, token.entity_declaration.entity_keyword):
                 oToken.set_indent(iIndent)
                 iIndent += 1
+                continue
 
             if isinstance(oToken, token.entity_declaration.end_keyword):
                 iIndent -= 1
                 oToken.set_indent(iIndent)
+                continue
 
             if isinstance(oToken, token.architecture_body.architecture_keyword):
                 oToken.set_indent(0)
                 iIndent = 1 
+                continue
 
             if isinstance(oToken, token.architecture_body.begin_keyword):
                 oToken.set_indent(0)
                 iIndent = 1
+                continue
 
             if isinstance(oToken, token.architecture_body.end_keyword):
                 oToken.set_indent(0)
                 iIndent = 0 
+                continue
 
             ###  Assertion statements
 
@@ -329,61 +261,75 @@ class vhdlFile():
                 oToken.set_indent(iIndent)
                 bLabelFound = True
                 iIndent += 1
+                continue
 
             if isinstance(oToken, token.assertion_statement.label):
                 oToken.set_indent(iIndent)
                 bLabelFound = True
                 iIndent += 1
+                continue
 
             if isinstance(oToken, token.assertion.keyword):
                 if not bLabelFound:
                   oToken.set_indent(iIndent)
                   iIndent += 1
                 bLabelFound = False
+                continue
                     
             if isinstance(oToken, token.assertion.report_keyword):
-               oToken.set_indent(iIndent)
+                oToken.set_indent(iIndent)
+                continue
                     
             if isinstance(oToken, token.assertion.severity_keyword):
-               oToken.set_indent(iIndent)
+                oToken.set_indent(iIndent)
+                continue
 
             if isinstance(oToken, token.assertion_statement.semicolon):
                 iIndent -= 1
+                continue
 
             if isinstance(oToken, token.concurrent_assertion_statement.semicolon):
                 iIndent -= 1
+                continue
 
             ### Attribute statements
             if isinstance(oToken, token.attribute_declaration.attribute_keyword):
-               oToken.set_indent(iIndent)
+                oToken.set_indent(iIndent)
+                continue
           
             if isinstance(oToken, token.attribute_specification.attribute_keyword):
-               oToken.set_indent(iIndent)
+                oToken.set_indent(iIndent)
+                continue
 
             ### case statements
             if isinstance(oToken, token.case_statement.case_label):
                 oToken.set_indent(iIndent)
                 bLabelFound = True
                 iIndent += 1
+                continue
 
             if isinstance(oToken, token.case_statement.case_keyword):
                 if not bLabelFound:
                   oToken.set_indent(iIndent)
                   iIndent += 2
                 bLabelFound = False
+                continue
                     
             if isinstance(oToken, token.case_statement_alternative.when_keyword):
                 oToken.set_indent(iIndent - 1)
+                continue
 
             if isinstance(oToken, token.case_statement.end_keyword):
                 oToken.set_indent(iIndent - 2)
                 iIndent -= 2
+                continue
 
             ### process statements
             if isinstance(oToken, token.process_statement.process_label):
                 oToken.set_indent(iIndent)
                 bLabelFound = True
                 iIndent += 1
+                continue
 
             if isinstance(oToken, token.process_statement.postponed_keyword):
                 if not bLabelFound:
@@ -392,6 +338,7 @@ class vhdlFile():
                   bLabelFound = True
                 else:
                   oToken.set_indent(iIndent - 1)
+                continue
 
             if isinstance(oToken, token.process_statement.process_keyword):
                 if not bLabelFound:
@@ -400,66 +347,85 @@ class vhdlFile():
                 else:
                   oToken.set_indent(iIndent - 1)
                 bLabelFound = False
+                continue
                     
             if isinstance(oToken, token.process_statement.begin_keyword):
                 oToken.set_indent(iIndent - 1)
+                continue
 
             if isinstance(oToken, token.process_statement.end_keyword):
                 oToken.set_indent(iIndent - 1)
                 iIndent -= 1
+                continue
            
             ### Null statements
             if isinstance(oToken, token.null_statement.label):
                 oToken.set_indent(iIndent)
+                continue
 
             if isinstance(oToken, token.null_statement.null_keyword):
                 oToken.set_indent(iIndent)
+                continue
                     
             ### Comments 
             if isinstance(oToken, parser.comment):
                 oToken.set_indent(iIndent)
+                continue
                     
             ### Components
             if isinstance(oToken, token.component_declaration.component_keyword):
                 oToken.set_indent(iIndent)
                 iIndent += 1
+                continue
+
             if isinstance(oToken, token.component_declaration.end_keyword):
                 iIndent -= 1
                 oToken.set_indent(iIndent)
+                continue
 
             ### Concurrent signal assignment
             if isinstance(oToken, token.concurrent_signal_assignment_statement.label_name):
                 oToken.set_indent(iIndent)
+                continue
 
             if isinstance(oToken, token.concurrent_signal_assignment_statement.postponed_keyword):
                 oToken.set_indent(iIndent)
+                continue
 
             if isinstance(oToken, token.concurrent_simple_signal_assignment.target):
                 oToken.set_indent(iIndent)
+                continue
            
             if isinstance(oToken, token.concurrent_conditional_signal_assignment.target):
                 oToken.set_indent(iIndent)
+                continue
            
             if isinstance(oToken, token.concurrent_selected_signal_assignment.with_keyword):
                 oToken.set_indent(iIndent)
+                continue
            
             ### Constant declaration 
             if isinstance(oToken, token.constant_declaration.constant_keyword):
                 oToken.set_indent(iIndent)
+                continue
 
             ### Variable declaration 
             if isinstance(oToken, token.variable_declaration.variable_keyword):
                 oToken.set_indent(iIndent)
+                continue
 
             ### File declaration 
             if isinstance(oToken, token.file_declaration.file_keyword):
                 oToken.set_indent(iIndent)
+                continue
 
             if isinstance(oToken, token.file_open_information.open_keyword):
                 oToken.set_indent(iIndent + 1)
+                continue
 
             if isinstance(oToken, token.file_open_information.is_keyword):
                 oToken.set_indent(iIndent + 1)
+                continue
 
             iIndent, bLabelFound = loop_statement.set_indent(iIndent, bLabelFound, oToken)
             iIndent, bLabelFound = procedure_specification.set_indent(iIndent, bLabelFound, oToken)

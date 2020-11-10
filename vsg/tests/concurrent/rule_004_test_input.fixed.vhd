@@ -17,7 +17,7 @@ begin
 
   a <= b;
 
-  a <= when c = '0' else '1';
+  a   <= when c = '0' else '1';
 
   with z select
      a <= b when z = "000",

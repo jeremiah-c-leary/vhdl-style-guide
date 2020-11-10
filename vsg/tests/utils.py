@@ -4,6 +4,7 @@ import pprint
 import yaml
 
 from vsg import parser
+from vsg.vhdlFile import utils as vutils
 
 
 def debug_lines(oFile, iLineNumber, iNumberOfLines):
@@ -100,10 +101,11 @@ def validate_token(self, oFile, lExpected, oToken, bDebug=False):
 
 def extract_objects(oFile, bIgnoreWhiteSpace=False):
     lReturn = []
-    for iLine, oLine in enumerate(oFile.lines):
+    for iLine, oLine in enumerate(oFile.get_object_lines()):
         lReturn.append('-'*80)
-        lReturn.append(f'{iLine} | {oLine.line}')
-        for oObject in oLine.objects:
+        sLine = vutils.convert_token_list_to_string(oLine)
+        lReturn.append(f'{iLine} | {sLine}')
+        for oObject in oLine:
             if bIgnoreWhiteSpace:
                 if type(oObject) == parser.whitespace:
                     continue

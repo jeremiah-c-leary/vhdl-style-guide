@@ -153,9 +153,9 @@ class rule_list():
                     else:
                         oRule.analyze(self.oVhdlFile)
 
-            if phase == 1:
-                self.oVhdlFile.update_filecontent()
-                self.oVhdlFile._processFile()
+#            if phase == 1:
+#                self.oVhdlFile.update_filecontent()
+#                self.oVhdlFile._processFile()
             
 
     def get_rules_in_phase(self, iPhaseNumber):
@@ -233,7 +233,8 @@ class rule_list():
         dRunInfo['filename'] = self.oVhdlFile.filename
         dRunInfo['stopPhase'] = 7
         dRunInfo['violations'] = []
-        for iLineNumber in range(0, len(self.oVhdlFile.lines)):
+#        for iLineNumber in range(0, len(self.oVhdlFile.lines)):
+        for iLineNumber in range(0, self.oVhdlFile.get_line_count()):
             for oRule in self.rules:
                 if oRule.has_violations():
                     lViolations = oRule.get_violations_at_linenumber(iLineNumber)

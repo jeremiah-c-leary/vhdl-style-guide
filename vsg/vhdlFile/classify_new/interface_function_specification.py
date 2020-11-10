@@ -36,7 +36,7 @@ def classify(iToken, lObjects):
 
         iCurrent = formal_parameter_list.classify(iCurrent, lObjects)
 
-        iCurrent = utils.assign_next_token_required(')', token.open_parenthesis, iCurrent, lObjects)
+        iCurrent = utils.assign_next_token_required(')', token.close_parenthesis, iCurrent, lObjects)
 
     iCurrent = utils.assign_next_token_required('return', token.return_keyword, iToken, lObjects)
     iCurrent = type_mark.classify(iToken, lObjects)
