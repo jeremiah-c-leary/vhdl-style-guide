@@ -35,6 +35,7 @@ class token_prefix_between_tokens(rule_item.Rule):
         self.prefixes = None
         self.configuration.append('prefixes')
         self.fixable = False
+        self.disable = True
         self.oStart = oStart
         self.oEnd = oEnd
 

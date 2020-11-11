@@ -143,7 +143,7 @@ class rule_list():
                     self.oVhdlFile.set_indent_levels()
                 continue
             
-            for subphase in range(1, 4):
+            for subphase in range(1, 5):
                 lRules = self.get_rules_in_phase(phase)
                 lRules = self.get_rules_in_subphase(lRules, subphase)
                 lRules = filter_out_disabled_rules(lRules)
@@ -152,10 +152,6 @@ class rule_list():
                         oRule.fix(self.oVhdlFile)
                     else:
                         oRule.analyze(self.oVhdlFile)
-
-#            if phase == 1:
-#                self.oVhdlFile.update_filecontent()
-#                self.oVhdlFile._processFile()
             
 
     def get_rules_in_phase(self, iPhaseNumber):
@@ -204,19 +200,19 @@ class rule_list():
         self.iNumberRulesRan = 0
         iFailures = 0
         self.violations = False
-        for phase in range(1, 10):
+        for phase in range(1, 8):
             if phase in lSkipPhase:
                 continue
 
             lRules = self.get_rules_in_phase(phase)
             lRules = filter_out_disabled_rules(lRules)
-            
+
             for oRule in lRules:
                 oRule.analyze(self.oVhdlFile)
                 if oRule.severity.type == severity.error_type:
                     iFailures += len(oRule.violations)
                 self.iNumberRulesRan += 1
-                self.lastPhaseRan = phase
+            self.lastPhaseRan = phase
             if iFailures > 0:
                 self.violations = True
                 break
@@ -233,7 +229,7 @@ class rule_list():
         dRunInfo['filename'] = self.oVhdlFile.filename
         dRunInfo['stopPhase'] = 7
         dRunInfo['violations'] = []
-#        for iLineNumber in range(0, len(self.oVhdlFile.lines)):
+
         for iLineNumber in range(0, self.oVhdlFile.get_line_count()):
             for oRule in self.rules:
                 if oRule.has_violations():
