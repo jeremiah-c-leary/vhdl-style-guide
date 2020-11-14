@@ -35,6 +35,7 @@ class rule_012(rule_item.Rule):
         self.lTokens = lTokens
         self.oStart = token.port_clause.open_parenthesis
         self.oEnd = token.port_clause.close_parenthesis
+        self.fixable = False
 
     def analyze(self, oFile):
         lToi = oFile.get_interface_elements_between_tokens(self.oStart, self.oEnd)

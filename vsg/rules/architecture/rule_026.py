@@ -21,3 +21,4 @@ class rule_026(align_tokens_in_region_between_tokens_unless_between_tokens):
     def __init__(self):
         align_tokens_in_region_between_tokens_unless_between_tokens.__init__(self, 'architecture', '026', lAlign, token.architecture_body.is_keyword, token.architecture_body.begin_keyword, lUnless)
         self.solution = 'Align identifer.'
+        self.subphase = 3

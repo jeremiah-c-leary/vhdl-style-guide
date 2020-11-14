@@ -4,6 +4,8 @@ from vsg import parser
 from vsg import rule_item
 from vsg import violation
 
+from vsg.vhdlFile import utils
+
 
 class insert_token_left_of_token_if_it_does_not_exist_between_tokens_using_value_from_token(rule_item.Rule):
     '''
@@ -41,12 +43,10 @@ class insert_token_left_of_token_if_it_does_not_exist_between_tokens_using_value
     def analyze(self, oFile):
         lToi = oFile.get_tokens_between_tokens_inclusive_while_storing_value_from_token(self.left_token, self.right_token, self.value_token)
         for oToi in lToi:
-            lTokens = oToi.get_tokens()
+            iLine, lTokens = utils.get_toi_parameters(oToi)
             bFound = False
-            iLine = oToi.get_line_number()
             for oToken in lTokens:
-               if isinstance(oToken, parser.carriage_return):
-                   iLine += 1
+               iLine = utils.increment_line_number(iLine, oToken)
                if isinstance(oToken, self.insert_token):
                    bFound = True
                    break
@@ -65,6 +65,8 @@ class insert_token_left_of_token_if_it_does_not_exist_between_tokens_using_value
 
     def _fix_violation(self, oFile):
         for oViolation in self.violations:
+            if oViolation.get_token_value() is None:
+                continue
             lTokens = oViolation.get_tokens()
             for iIndex in range(0, len(lTokens)):
                 if isinstance(lTokens[iIndex], self.anchor_token):

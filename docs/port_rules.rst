@@ -259,6 +259,8 @@ port_012
 
 This rule checks for default assignments on port declarations.
 
+This rule is defaulted to not fixable and can be overridden with a configuration to removed the default assignments.
+
 **Violation**
 
 .. code-block:: vhdl

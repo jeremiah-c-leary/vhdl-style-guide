@@ -308,3 +308,33 @@ Refer to the section `Configuring Prefix and Suffix Rules <configuring_prefix_su
 .. code-block:: vhdl
 
    type t_my_type is range -5 to 5 ;
+
+type_016
+########
+
+This rule checks the indent of the closing parenthesis on multiline types.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   architecture rtl of fifo is
+
+     type state_machine is (
+       idle, write, read, done
+       );
+
+   begin
+
+**Fix**
+
+.. code-block:: vhdl
+
+   architecture rtl of fifo is
+
+     type state_machine is (
+       idle, write, read, done
+     );
+
+   begin
+

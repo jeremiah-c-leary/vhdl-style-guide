@@ -2,37 +2,37 @@
 import os
 import unittest
 
-from vsg.rules import if_statement
+from vsg.rules import type_definition
 from vsg import vhdlFile
 from vsg.tests import utils
 
 sTestDir = os.path.dirname(__file__)
 
-lFile = utils.read_vhdlfile(os.path.join(sTestDir,'rule_008_test_input.vhd'))
+lFile = utils.read_vhdlfile(os.path.join(sTestDir,'rule_016_test_input.vhd'))
 
 lExpected = []
 lExpected.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_008_test_input.fixed.vhd'), lExpected)
+utils.read_file(os.path.join(sTestDir, 'rule_016_test_input.fixed.vhd'), lExpected)
 
 
-class test_if_statement_rule(unittest.TestCase):
+class test_type_definition_rule(unittest.TestCase):
 
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
 
-    def test_rule_008(self):
-        oRule = if_statement.rule_008()
+    def test_rule_016(self):
+        oRule = type_definition.rule_016()
         self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'if')
-        self.assertEqual(oRule.identifier, '008')
+        self.assertEqual(oRule.name, 'type')
+        self.assertEqual(oRule.identifier, '016')
 
-        lExpected = [45, 49, 60]
+        lExpected = [14, 18]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
-    def test_fix_rule_008(self):
-        oRule = if_statement.rule_008()
+    def test_fix_rule_016(self):
+        oRule = type_definition.rule_016()
 
         oRule.fix(self.oFile)
 

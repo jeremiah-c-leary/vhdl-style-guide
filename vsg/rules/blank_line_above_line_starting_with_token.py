@@ -30,6 +30,8 @@ class blank_line_above_line_starting_with_token(rule_item.Rule):
         self.phase = 3
         self.lTokens = lTokens
         self.lHierarchyLimits = None
+        self.allow_comments = True
+        self.configuration.append('allow_comments')
 
     def analyze(self, oFile):
         if self.lHierarchyLimits is None:
@@ -42,14 +44,13 @@ class blank_line_above_line_starting_with_token(rule_item.Rule):
             if len(lTokens) == 1:
                 if isinstance(lTokens[0], parser.blank_line):
                     continue
-                if isinstance(lTokens[0], parser.comment):
+                if isinstance(lTokens[0], parser.comment) and self.allow_comments:
                     continue
             elif len(lTokens) == 2:
-                if isinstance(lTokens[0], parser.whitespace) and isinstance(lTokens[1], parser.comment):
+                if isinstance(lTokens[0], parser.whitespace) and isinstance(lTokens[1], parser.comment) and self.allow_comments:
                     continue
-            else:
-                oViolation = violation.New(oToi.get_line_number(), oToi, self.solution)
-                self.add_violation(oViolation)
+            oViolation = violation.New(oToi.get_line_number(), oToi, self.solution)
+            self.add_violation(oViolation)
 
 
     def fix(self, oFile):

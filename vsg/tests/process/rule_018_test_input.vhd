@@ -14,4 +14,8 @@ begin
   begin
   end process;
 
+  process is
+  begin
+  end process;
+
 end architecture RTL;

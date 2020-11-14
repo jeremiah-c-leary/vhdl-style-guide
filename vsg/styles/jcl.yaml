@@ -64,7 +64,7 @@ rule :
     compact_alignment : false
     blank_line_ends_group : false
     comment_line_ends_group : false
-    seperate_generic_port_alignment : false
+    seperate_generic_port_alignment : true
   process_034 :
     compact_alignment : false
     blank_line_ends_group : false
@@ -73,8 +73,19 @@ rule :
     compact_alignment : false
     blank_line_ends_group : false
     comment_line_ends_group : false
+    include_lines_without_comments : false
   sequential_005 :
     compact_alignment : true
     blank_line_ends_group : true
     comment_line_ends_group : true
- 
+  # Set blank line rules
+  type_011 :
+    allow_comments : false 
+  process_011 :
+    allow_comments : false 
+  if_030 :
+    allow_comments : false 
+  architecture_015 :
+    allow_comments : false 
+  library_003 :
+    allow_comments : false

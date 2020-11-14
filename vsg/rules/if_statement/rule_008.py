@@ -1,10 +1,14 @@
 
 from vsg.rules import remove_excessive_blank_lines_above_line_starting_with_token
 
-from vsg.token import if_statement as token
+from vsg import token
 
 lTokens = []
-lTokens.append(token.end_keyword)
+lTokens.append(token.if_statement.end_keyword)
+
+lOverrides = []
+lOverrides.append(token.case_statement.end_keyword)
+
 
 class rule_008(remove_excessive_blank_lines_above_line_starting_with_token):
     '''
@@ -12,5 +16,5 @@ class rule_008(remove_excessive_blank_lines_above_line_starting_with_token):
 
     '''
     def __init__(self):
-        remove_excessive_blank_lines_above_line_starting_with_token.__init__(self, 'if', '008', lTokens, iAllow=0)
+        remove_excessive_blank_lines_above_line_starting_with_token.__init__(self, 'if', '008', lTokens, iAllow=0, lOverrides=lOverrides)
         self.solution = 'Remove blank line(s) before the "end if" keyword.'

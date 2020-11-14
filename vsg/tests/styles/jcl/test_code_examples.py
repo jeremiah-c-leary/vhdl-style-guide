@@ -36,15 +36,15 @@ oSeverityList = severity.create_list({})
 
 class testCodeExample(unittest.TestCase):
 
-    @unittest.skip('Need to wait until all rules have been refactored.')
     def test_timestamp_vhdl(self):
         oRuleList = rule_list.rule_list(oTimestamp, oSeverityList)
         oRuleList.configure(dConfig)
         oRuleList.fix()
+
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'timestamp.fixed.vhdl'), lExpected)
-        for iLineNumber, sLine in enumerate(lExpected):
-            self.assertEqual(oTimestamp.lines[iLineNumber].line, sLine)
+
+        self.assertEqual(lExpected, oTimestamp.get_lines()) 
 
     @unittest.skip('Need to wait until all rules have been refactored.')
     def test_spi_slave(self):
@@ -66,25 +66,26 @@ class testCodeExample(unittest.TestCase):
         for iLineNumber, sLine in enumerate(lExpected):
             self.assertEqual(oSpiMaster.lines[iLineNumber].line, sLine)
 
-    @unittest.skip('Need to wait until all rules have been refactored.')
     def test_grp_debouncer(self):
         oRuleList = rule_list.rule_list(oGrpDebouncer, oSeverityList)
         oRuleList.configure(dConfig)
         oRuleList.fix()
+
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'grp_debouncer.fixed.vhd'), lExpected)
-        for iLineNumber, sLine in enumerate(lExpected):
-            self.assertEqual(oGrpDebouncer.lines[iLineNumber].line, sLine)
 
-    @unittest.skip('Need to wait until all rules have been refactored.')
+        self.assertEqual(lExpected, oGrpDebouncer.get_lines()) 
+
     def test_pic(self):
+        self.maxDiff = None
         oRuleList = rule_list.rule_list(oPIC, oSeverityList)
         oRuleList.configure(dConfig)
         oRuleList.fix()
+
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'PIC.fixed.vhd'), lExpected)
-        for iLineNumber, sLine in enumerate(lExpected):
-            self.assertEqual(oPIC.lines[iLineNumber].line, sLine)
+
+        self.assertEqual(lExpected, oPIC.get_lines()) 
 
     @unittest.skip('Need to wait until all rules have been refactored.')
     def test_identifier(self):

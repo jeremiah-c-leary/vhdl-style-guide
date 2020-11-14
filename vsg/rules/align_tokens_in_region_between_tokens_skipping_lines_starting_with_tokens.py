@@ -105,7 +105,8 @@ class align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens(
                    for iKey in list(dAnalysis.keys()):
                        if dAnalysis[iKey]['adjust'] != 0:
                            oLineTokens = oFile.get_tokens_from_line(iKey)
-                           oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, self.solution)
+                           sSolution = 'Move ' + str(dAnalysis[iKey]['adjust']) + ' columns'
+                           oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, sSolution)
                            oViolation.set_action(dAnalysis[iKey])
                            self.violations.append(oViolation)
 
@@ -116,7 +117,8 @@ class align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens(
                    for iKey in list(dAnalysis.keys()):
                        if dAnalysis[iKey]['adjust'] != 0:
                            oLineTokens = oFile.get_tokens_from_line(iKey)
-                           oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, self.solution)
+                           sSolution = 'Move ' + str(dAnalysis[iKey]['adjust']) + ' columns'
+                           oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, sSolution)
                            oViolation.set_action(dAnalysis[iKey])
                            self.violations.append(oViolation)
 
@@ -157,7 +159,8 @@ class align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens(
                            for iKey in list(dAnalysis.keys()):
                                if dAnalysis[iKey]['adjust'] != 0:
                                    oLineTokens = oFile.get_tokens_from_line(iKey)
-                                   oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, self.solution)
+                                   sSolution = 'Move ' + str(dAnalysis[iKey]['adjust']) + ' columns'
+                                   oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, sSolution)
                                    oViolation.set_action(dAnalysis[iKey])
                                    self.violations.append(oViolation)
 
@@ -169,7 +172,8 @@ class align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens(
                            for iKey in list(dAnalysis.keys()):
                                if dAnalysis[iKey]['adjust'] != 0:
                                    oLineTokens = oFile.get_tokens_from_line(iKey)
-                                   oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, self.solution)
+                                   sSolution = 'Move ' + str(dAnalysis[iKey]['adjust']) + ' columns'
+                                   oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, sSolution)
                                    oViolation.set_action(dAnalysis[iKey])
                                    self.violations.append(oViolation)
 
@@ -183,7 +187,8 @@ class align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens(
             for iKey in list(dAnalysis.keys()):
                 if dAnalysis[iKey]['adjust'] != 0:
                     oLineTokens = oFile.get_tokens_from_line(iKey)
-                    oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, self.solution)
+                    sSolution = 'Move ' + str(dAnalysis[iKey]['adjust']) + ' columns'
+                    oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, sSolution)
                     oViolation.set_action(dAnalysis[iKey])
                     self.violations.append(oViolation)
 
@@ -217,7 +222,6 @@ class align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens(
 def add_adjustments_to_dAnalysis(dAnalysis, compact_alignment, include_lines_without_comments=False, iMaxColumn=0):
     iMaxLeftColumn = 0
     iMaxTokenColumn = 0
-
     for iKey in list(dAnalysis.keys()):
         iMaxLeftColumn = max(iMaxLeftColumn, dAnalysis[iKey]['left_column'])
         iMaxTokenColumn = max(iMaxTokenColumn, dAnalysis[iKey]['token_column'])

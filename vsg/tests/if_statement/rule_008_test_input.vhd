@@ -21,6 +21,14 @@ begin
       end if;
     end if;
 
+    if a = '0' then
+
+      case blah is
+
+      end case;
+
+    end if;
+
     -- Violations below
     if a = '1' then
       b <= '0';
@@ -35,6 +43,17 @@ begin
         z <= 'Z';
 
       end if;
+
+
+
+    end if;
+
+    if a = '0' then
+
+      case blah is
+
+      end case;
+
 
 
 

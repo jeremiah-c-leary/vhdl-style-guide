@@ -17,5 +17,12 @@ begin
   a <= b;                     -- Comment 3
   a <= when c = '0' else '1'; -- Comment 4
 
+  process
+  begin
+
+    a <= b; -- Comment
+    b <= c;         -- Comment
+    c <= d;      -- Comment
+  end process;
 
 end architecture RTL;

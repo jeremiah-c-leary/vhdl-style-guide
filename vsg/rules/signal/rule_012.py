@@ -37,6 +37,7 @@ class rule_012(rule_item.Rule):
         rule_item.Rule.__init__(self, 'signal', '012')
         self.solution = None
         self.phase = 5
+        self.subphase = 2
         self.left_token = token.architecture_body.is_keyword
         self.right_token = token.architecture_body.begin_keyword
         self.lUnless = []

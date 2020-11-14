@@ -16,7 +16,7 @@ end entity FIFO;
 entity FIFO is
   GENERIC(g_size : integer := 10;
    g_width : integer := 256;
-   g_depth : integer := 32
+   g_depth : integer := 32 -- Comment should stay
 );
   PORT (
     i_port1 : in std_logic := '0';

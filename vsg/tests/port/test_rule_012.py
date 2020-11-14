@@ -33,6 +33,7 @@ class test_port_rule(unittest.TestCase):
 
     def test_fix_rule_012(self):
         oRule = port.rule_012()
+        oRule.fixable = True
 
         oRule.fix(self.oFile)
 

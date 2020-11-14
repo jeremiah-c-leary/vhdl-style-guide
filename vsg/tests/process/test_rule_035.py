@@ -14,6 +14,10 @@ lExpected = []
 lExpected.append('')
 utils.read_file(os.path.join(sTestDir, 'rule_035_test_input.fixed.vhd'), lExpected)
 
+lExpectedCompactAlignmentFalse = []
+lExpectedCompactAlignmentFalse.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_035_test_input.fixed_compact_alignment_false.vhd'), lExpectedCompactAlignmentFalse)
+
 
 class test_process_rule(unittest.TestCase):
 
@@ -39,6 +43,30 @@ class test_process_rule(unittest.TestCase):
         lActual = self.oFile.get_lines()
 
         self.assertEqual(lExpected, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+
+    def test_rule_035_compact_alignment_false(self):
+        oRule = process.rule_035()
+        oRule.compact_alignment = False
+        oRule.include_lines_without_comments = False
+
+        lExpected = [30, 31, 38]
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+
+    def test_fix_rule_035_compact_alignment_false(self):
+        oRule = process.rule_035()
+        oRule.compact_alignment = False
+        oRule.include_lines_without_comments = False
+
+        oRule.fix(self.oFile)
+
+        lActual = self.oFile.get_lines()
+
+        self.assertEqual(lExpectedCompactAlignmentFalse, lActual)
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])

@@ -115,9 +115,8 @@ class rule():
         '''
         Adds a linenumber to a violations list.
         '''
-        if lineNumber not in self.violations:
-            self.violations.append(lineNumber)
-            self.severity.count += 1
+        self.violations.append(lineNumber)
+        self.severity.count += 1
 
     def analyze(self, oFile):
         '''

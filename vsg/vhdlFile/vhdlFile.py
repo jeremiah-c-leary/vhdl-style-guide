@@ -12,6 +12,7 @@ from vsg.token import multiplying_operator
 from vsg.token import relational_operator
 from vsg.token import sign
 from vsg.token.ieee.std_logic_1164 import types
+from vsg.token.ieee.std_logic_1164 import function
 
 from vsg.vhdlFile import extract
 from vsg.vhdlFile import utils
@@ -385,6 +386,8 @@ class vhdlFile():
             iIndent, bLabelFound = port_map_aspect.set_indent(iIndent, bLabelFound, oToken)
             iIndent, bLabelFound = association_element.set_indent(iIndent, bLabelFound, oToken)
   
+    def get_line_preceeding_line(self, iLine):
+        return extract.get_line_preceeding_line(iLine, self.lAllObjects)
 
     def get_all_tokens(self):
         return extract.get_all_tokens(self.lAllObjects)
