@@ -32,6 +32,7 @@ class move_token_next_to_another_token(rule_item.Rule):
         rule_item.Rule.__init__(self, name, identifier)
         self.solution = None
         self.phase = 1
+        self.subphase = 2
         self.anchor_token = anchor_token
         self.token_to_move = token_to_move
 

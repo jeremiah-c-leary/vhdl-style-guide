@@ -72,7 +72,6 @@ class separate_multiple_signal_identifiers_into_individual_statements(rule_item.
         for oViolation in self.violations:
             lTokens = oViolation.get_tokens()
             dAction = oViolation.get_action()
-
             lPreTokens = lTokens[:dAction['start']]
             lPostTokens = []
             lTemp = lTokens[dAction['end'] + 1:]
@@ -85,10 +84,7 @@ class separate_multiple_signal_identifiers_into_individual_statements(rule_item.
             for iToken, oToken in enumerate(lTemp):
                 if iToken == 0:
                     if isinstance(oToken, parser.whitespace):
-                        oToken.set_value(' ')
-                        lPostTokens.append(oToken)
-                    else:
-                        lPostTokens.append(parser.whitespace(' '))
+                        continue
                 else:
                     if isinstance(oToken, parser.whitespace) and isinstance(lTemp[iToken - 1], parser.whitespace):
                         continue
@@ -104,10 +100,9 @@ class separate_multiple_signal_identifiers_into_individual_statements(rule_item.
                 if isinstance(oToken, token.signal_declaration.identifier):
                     iIdentifiers += 1
                     if iIdentifiers == dAction['number']:
-                        lNewTokens.extend(lPreTokens + [oToken] + lPostTokens)
+                        lNewTokens.extend(lPreTokens + [oToken, parser.whitespace(' ')] + lPostTokens)
                     else:
-                        lNewTokens.extend(lPreTokens + [oToken] + lPostTokens + [parser.carriage_return()])
-
+                        lNewTokens.extend(lPreTokens + [oToken, parser.whitespace(' ')] + lPostTokens + [parser.carriage_return()])
             oViolation.set_tokens(lNewTokens)
                
         oFile.update(self.violations)

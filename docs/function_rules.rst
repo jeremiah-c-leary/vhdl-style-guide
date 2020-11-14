@@ -351,3 +351,28 @@ Refer to the section `Configuring Identifier Alignment Rules <configuring_declar
    variable var1     : natural;
    signal   sig1     : natural;
    constant c_period : time;
+
+function_016
+############
+
+This rule checks the indent of return statements in function bodies.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   function func1 return integer is
+   begin
+        return 99;
+   return 99;
+   end func1;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   function func1 return integer is
+   begin
+     return 99;
+     return 99;
+   end func1;

@@ -31,72 +31,79 @@ oSeverityList = severity.create_list({})
 
 class testCodeExample(unittest.TestCase):
 
-    @unittest.skip('Need to wait until all rules have been refactored.')
     def test_bresenhamer(self):
         oRuleList = rule_list.rule_list(oBresenhamer, oSeverityList)
         oRuleList.configure(dConfig)
         oRuleList.fix()
-        lExpected = ['']
-        utils.read_file(os.path.join(os.path.dirname(__file__),'Bresenhamer.fixed.vhd'), lExpected)
-        for iLineNumber, sLine in enumerate(lExpected):
-            self.assertEqual(oBresenhamer.lines[iLineNumber].line, sLine)
 
-    @unittest.skip('Need to wait until all rules have been refactored.')
+        lExpected = ['']
+
+        utils.read_file(os.path.join(os.path.dirname(__file__),'Bresenhamer.fixed.vhd'), lExpected)
+
+        self.assertEqual(lExpected, oBresenhamer.get_lines())
+
     def test_debouncer(self):
         oRuleList = rule_list.rule_list(oDebouncer, oSeverityList)
         oRuleList.configure(dConfig)
         oRuleList.fix()
-        lExpected = ['']
-        utils.read_file(os.path.join(os.path.dirname(__file__),'Debouncer.fixed.vhd'), lExpected)
-        for iLineNumber, sLine in enumerate(lExpected):
-            self.assertEqual(oDebouncer.lines[iLineNumber].line, sLine)
 
-    @unittest.skip('Need to wait until all rules have been refactored.')
+        lExpected = ['']
+
+        utils.read_file(os.path.join(os.path.dirname(__file__),'Debouncer.fixed.vhd'), lExpected)
+
+        self.assertEqual(lExpected, oDebouncer.get_lines())
+
     def test_vga_top(self):
         oRuleList = rule_list.rule_list(oVgatop, oSeverityList)
         oRuleList.configure(dConfig)
         oRuleList.fix()
-        lExpected = ['']
-        utils.read_file(os.path.join(os.path.dirname(__file__),'VGA_Top.fixed.vhd'), lExpected)
-        for iLineNumber, sLine in enumerate(lExpected):
-            self.assertEqual(oVgatop.lines[iLineNumber].line, sLine)
 
-    @unittest.skip('Need to wait until all rules have been refactored.')
+        lExpected = ['']
+
+        utils.read_file(os.path.join(os.path.dirname(__file__),'VGA_Top.fixed.vhd'), lExpected)
+
+        self.assertEqual(lExpected, oVgatop.get_lines())
+
     def test_pointer(self):
         oRuleList = rule_list.rule_list(oPointer, oSeverityList)
         oRuleList.configure(dConfig)
         oRuleList.fix()
-        lExpected = ['']
-        utils.read_file(os.path.join(os.path.dirname(__file__),'Pointer.fixed.vhd'), lExpected)
-        for iLineNumber, sLine in enumerate(lExpected):
-            self.assertEqual(oPointer.lines[iLineNumber].line, sLine)
 
-    @unittest.skip('Need to wait until all rules have been refactored.')
+        lExpected = ['']
+
+        utils.read_file(os.path.join(os.path.dirname(__file__),'Pointer.fixed.vhd'), lExpected)
+
+        self.assertEqual(lExpected, oPointer.get_lines())
+
     def test_freqdiv(self):
         oRuleList = rule_list.rule_list(oFreqDiv, oSeverityList)
         oRuleList.configure(dConfig)
         oRuleList.fix()
-        lExpected = ['']
-        utils.read_file(os.path.join(os.path.dirname(__file__),'FreqDiv.fixed.vhd'), lExpected)
-        for iLineNumber, sLine in enumerate(lExpected):
-            self.assertEqual(oFreqDiv.lines[iLineNumber].line, sLine)
 
-    @unittest.skip('Need to wait until all rules have been refactored.')
+        lExpected = ['']
+
+        utils.read_file(os.path.join(os.path.dirname(__file__),'FreqDiv.fixed.vhd'), lExpected)
+
+        self.assertEqual(lExpected, oFreqDiv.get_lines())
+
     def test_synchronizer(self):
         oRuleList = rule_list.rule_list(oSynchronizer, oSeverityList)
         oRuleList.configure(dConfig)
         oRuleList.fix()
-        lExpected = ['']
-        utils.read_file(os.path.join(os.path.dirname(__file__),'Synchronizer.fixed.vhd'), lExpected)
-        for iLineNumber, sLine in enumerate(lExpected):
-            self.assertEqual(oSynchronizer.lines[iLineNumber].line, sLine)
 
-    @unittest.skip('Need to wait until all rules have been refactored.')
+        lExpected = ['']
+
+        utils.read_file(os.path.join(os.path.dirname(__file__),'Synchronizer.fixed.vhd'), lExpected)
+
+        self.assertEqual(lExpected, oSynchronizer.get_lines())
+
     def test_framebuffer(self):
         oRuleList = rule_list.rule_list(oFrameBuffer, oSeverityList)
         oRuleList.configure(dConfig)
         oRuleList.fix()
+
         lExpected = ['']
+
         utils.read_file(os.path.join(os.path.dirname(__file__),'FrameBuffer2.fixed.vhd'), lExpected)
-        for iLineNumber, sLine in enumerate(lExpected):
-            self.assertEqual(oFrameBuffer.lines[iLineNumber].line, sLine)
+
+        self.assertEqual(lExpected, oFrameBuffer.get_lines())

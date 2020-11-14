@@ -1,4 +1,3 @@
-
 library IEEE;
   use IEEE.STD_LOGIC_1164.ALL;
   use IEEE.NUMERIC_STD.ALL;
@@ -22,7 +21,7 @@ architecture BEHAVIORAL of FRAMEBUFFER is
 
   type fbuffer is array (0 to 524288 / 16 - 1) of std_logic_vector(2 downto 0);
 
-  impure function initFB return FBuffer is
+  impure function initFB return fbuffer is
     variable temp : fbuffer;
     variable i    : integer;
   begin

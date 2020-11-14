@@ -46,7 +46,12 @@ class rule_029(rule_item.Rule):
         self.oEnd = oEnd
 
     def analyze(self, oFile):
-        lToi = oFile.get_tokens_bounded_by_token_when_between_tokens(lElsifBoundingTokens[0], lElsifBoundingTokens[1], oStart, oEnd)
+        lToi = []
+        aToi = oFile.get_tokens_bounded_by_token_when_between_tokens(lElsifBoundingTokens[0], lElsifBoundingTokens[1], oStart, oEnd)
+        lToi = utils.combine_two_token_class_lists(lToi, aToi)
+        aToi = oFile.get_tokens_bounded_by_token_when_between_tokens(lIfBoundingTokens[0], lIfBoundingTokens[1], oStart, oEnd)
+        lToi = utils.combine_two_token_class_lists(lToi, aToi)
+
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             bEventFound = False
