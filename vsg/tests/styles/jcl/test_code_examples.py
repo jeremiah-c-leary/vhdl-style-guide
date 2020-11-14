@@ -25,10 +25,6 @@ oGrpDebouncer = vhdlFile.vhdlFile(lGrpDebouncer)
 lPIC = utils.read_vhdlfile(os.path.join(sSourceCodeDir,'PIC.vhd'))
 oPIC = vhdlFile.vhdlFile(lPIC)
 
-lIdentifier = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','..','process','identifier_alignment_input.vhd'))
-oIdentifier = vhdlFile.vhdlFile(lIdentifier)
-
-
 dConfig = utils.read_configuration(os.path.join(os.path.dirname(__file__),'..','..','..','styles', 'jcl.yaml'))
 dConfig['debug'] = False
 
@@ -77,7 +73,6 @@ class testCodeExample(unittest.TestCase):
         self.assertEqual(lExpected, oGrpDebouncer.get_lines()) 
 
     def test_pic(self):
-        self.maxDiff = None
         oRuleList = rule_list.rule_list(oPIC, oSeverityList)
         oRuleList.configure(dConfig)
         oRuleList.fix()
@@ -86,14 +81,3 @@ class testCodeExample(unittest.TestCase):
         utils.read_file(os.path.join(os.path.dirname(__file__),'PIC.fixed.vhd'), lExpected)
 
         self.assertEqual(lExpected, oPIC.get_lines()) 
-
-    @unittest.skip('Need to wait until all rules have been refactored.')
-    def test_identifier(self):
-        oRuleList = rule_list.rule_list(oIdentifier, oSeverityList)
-        oRuleList.configure(dConfig)
-        oRuleList.fix()
-#        utils.debug_lines(oIdentifier, 1, 20)
-        lExpected = ['']
-        utils.read_file(os.path.join(os.path.dirname(__file__),'identifier_alignment_input.fixed.vhd'), lExpected)
-        for iLineNumber, sLine in enumerate(lExpected):
-            self.assertEqual(oIdentifier.lines[iLineNumber].line, sLine)
