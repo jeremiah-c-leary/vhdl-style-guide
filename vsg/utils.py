@@ -31,7 +31,7 @@ def get_violation_line_number(dViolation):
 
     Returns:  integer
     '''
-    return dViolation['lines'][0]['number']
+    return dViolation.get_line_number()
 
 
 def get_violating_line(oFile, dViolation):
@@ -61,10 +61,15 @@ def get_violation_at_line_number(lViolations, iLineNumber):
 
     Return: Violation Dictionary
     '''
-    for dViolation in lViolations:
-        for dLine in dViolation['lines']:
-            if dLine['number'] == iLineNumber:
-                return dViolation
+    try:
+        for dViolation in lViolations:
+            for dLine in dViolation['lines']:
+                if dLine['number'] == iLineNumber:
+                    return dViolation
+    except TypeError:
+        for oViolation in lViolations:
+            if oViolation.get_line_number() == iLineNumber:
+                return oViolation
 
 
 def get_violation_solution_at_line_number(lViolations, iLineNumber):
@@ -79,5 +84,9 @@ def get_violation_solution_at_line_number(lViolations, iLineNumber):
 
     Return: string
     '''
-    dViolation = get_violation_at_line_number(lViolations, iLineNumber)
-    return dViolation['solution']
+    try:
+        dViolation = get_violation_at_line_number(lViolations, iLineNumber)
+        return dViolation['solution']
+    except TypeError:
+        oViolation = get_violation_at_line_number(lViolations, iLineNumber)
+        return oViolation.get_solution()

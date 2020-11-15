@@ -41,6 +41,7 @@ class insert_token_left_of_token_if_it_does_not_exist_between_tokens_using_value
         self.value_token = value_token
 
     def analyze(self, oFile):
+#        print(f'{self.name}_{self.identifier}')
         lToi = oFile.get_tokens_between_tokens_inclusive_while_storing_value_from_token(self.left_token, self.right_token, self.value_token)
         for oToi in lToi:
             iLine, lTokens = utils.get_toi_parameters(oToi)

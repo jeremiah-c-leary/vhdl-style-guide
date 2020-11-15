@@ -225,15 +225,17 @@ class rule_list():
 
           sOutputFormat (string)
         '''
+#        print('--> report_violations')
         dRunInfo = {}
         dRunInfo['filename'] = self.oVhdlFile.filename
         dRunInfo['stopPhase'] = 7
         dRunInfo['violations'] = []
 
-        for iLineNumber in range(0, self.oVhdlFile.get_line_count()):
+        for iLineNumber in range(0, self.oVhdlFile.get_line_count() + 1):
             for oRule in self.rules:
                 if oRule.has_violations():
                     lViolations = oRule.get_violations_at_linenumber(iLineNumber)
+#                    print(f'{oRule.name}_{oRule.identifier} | {iLineNumber} | {len(lViolations)}')
                     dRunInfo['violations'].extend(lViolations)
 
         dRunInfo['stopPhase'] = self.lastPhaseRan
@@ -244,7 +246,7 @@ class rule_list():
 
         for oSeverity in self.oSeverityList.get_severities():
             dRunInfo['severities'][oSeverity.name] = oSeverity.count
-
+#        print(dRunInfo)
         if sOutputFormat == 'vsg':
             report.vsg_stdout.print_output(dRunInfo)
         else:
@@ -306,7 +308,7 @@ class rule_list():
                 for dViolation in oRule.violations:
                     sLine = oRule.name + '_' + oRule.identifier + ': '
                     sLine += str(utils.get_violation_line_number(dViolation)) + ' : '
-                    sLine += oRule._get_solution(dViolation)
+                    sLine += dViolation.get_solution()
                     oFailure.add_text(sLine)
         oTestcase.add_failure(oFailure)
 

@@ -14,6 +14,6 @@ Total Violations:    5
   port_007                  | Error      |          4 | Change the number of spaces after the "in" keyword to four spaces.
   port_008                  | Error      |          6 | Change the number of spaces after the "out" keyword to three spaces.
   port_008                  | Error      |          7 | Change the number of spaces after the "out" keyword to three spaces.
-  entity_019                | Guideline  |          9 | Add "ENTITY1" after "entity"
+  entity_019                | Guideline  |          9 | Add entity simple name
 ----------------------------+------------+------------+--------------------------------------
 NOTE: Refer to online documentation at https://vhdl-style-guide.readthedocs.io/en/latest/index.html for more information.

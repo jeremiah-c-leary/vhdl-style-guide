@@ -47,7 +47,7 @@ class rule_012(rule_item.Rule):
             if isinstance(oToken, parser.carriage_return):
                 if not isinstance(lTokens[iToken + 1], parser.blank_line):
                     if iCount > self.numBlankLines:
-                        sSolution = 'Remove ' + str(iCount - self.numBlankLines) + ' blank lines'
+                        sSolution = 'Remove ' + str(iCount - self.numBlankLines) + ' blank line(s) below'
                         lExtractedTokens = oToi.extract_tokens(iStartToken, iToken)
                         oViolation = violation.New(iLineNumber, lExtractedTokens, sSolution)
                         dAction = {}
