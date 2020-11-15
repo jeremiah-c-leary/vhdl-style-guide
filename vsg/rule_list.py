@@ -46,7 +46,7 @@ def get_rules_from_module(lModules, lRules):
     '''
     for sModuleName in lModules:
         for name, obj in inspect.getmembers(importlib.import_module(sModuleName)):
-            if name.startswith('rule_'):
+            if name.startswith('rule_') and name != 'rule_item':
                 lRules.append(obj())
 
 
@@ -62,7 +62,6 @@ def load_local_rules(sDirectoryName):
     '''
     lLocalModules = []
     get_python_modules_from_directory(sDirectoryName, lLocalModules)
-
     lRules = []
     get_rules_from_module(lLocalModules, lRules)
     return lRules

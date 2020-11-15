@@ -25,7 +25,6 @@ class testVsg(unittest.TestCase):
             os.remove('deleteme.json')
         
 
-    @unittest.skip('Waiting until all rules have been refactored for new parser')
     def test_multiple_configuration_w_multiple_filelists(self):
         lExpected = []
         lExpected.append('ERROR: vsg/tests/vsg/entity1.vhd(7)port_007 -- Change the number of spaces after the "in" keyword to four spaces.')
@@ -42,7 +41,6 @@ class testVsg(unittest.TestCase):
 
         self.assertEqual(lActual, lExpected)
 
-    @unittest.skip('Waiting until all rules have been refactored for new parser')
     def test_single_configuration_w_filelist(self):
         lExpected = []
         lExpected.append('ERROR: vsg/tests/vsg/entity1.vhd(7)port_007 -- Change the number of spaces after the "in" keyword to four spaces.')
@@ -72,7 +70,6 @@ class testVsg(unittest.TestCase):
 
         self.assertEqual(lActual, lExpected)
 
-    @unittest.skip('Waiting until all rules have been refactored for new parser')
     def test_single_configuration_w_rule_disable(self):
         lExpected = []
         lExpected.append('')
@@ -81,7 +78,6 @@ class testVsg(unittest.TestCase):
         lActual = str(lActual.decode('utf-8')).split('\n')
         self.assertEqual(lActual, lExpected)
 
-    @unittest.skip('Waiting until all rules have been refactored for new parser')
     def test_multiple_configuration_w_rule_disable(self):
         lExpected = []
         lExpected.append('ERROR: vsg/tests/vsg/entity1.vhd(7)port_007 -- Change the number of spaces after the "in" keyword to four spaces.')
@@ -97,7 +93,6 @@ class testVsg(unittest.TestCase):
 
         self.assertEqual(lActual, lExpected)
 
-    @unittest.skip('Waiting until all rules have been refactored for new parser')
     def test_reverse_multiple_configuration_w_rule_disable(self):
         lExpected = []
         lExpected.append('')
@@ -106,7 +101,6 @@ class testVsg(unittest.TestCase):
         lActual = str(lActual.decode('utf-8')).split('\n')
         self.assertEqual(lActual, lExpected)
 
-    @unittest.skip('Waiting until all rules have been refactored for new parser')
     def test_invalid_configuration(self):
         utils.remove_file('vsg/tests/vsg/config_error.actual.xml')
         lExpected = []
@@ -132,13 +126,13 @@ class testVsg(unittest.TestCase):
         # Clean up
         utils.remove_file('vsg/tests/vsg/config_error.actual.xml')
 
-    @unittest.skip('Waiting until all rules have been refactored for new parser')
     def test_local_rules(self):
         lExpected = ['ERROR: vsg/tests/vsg/entity_architecture.vhd(1)localized_001 -- Split entity and architecture into seperate files.']
         lExpected.append('')
 
         try:
-            subprocess.check_output(['bin/vsg', '-f', 'vsg/tests/vsg/entity_architecture.vhd', '-of', 'syntastic', '-lr', 'vsg/tests/vsg/local_rules'])
+            subprocess.check_output(['bin/vsg', '--style', 'jcl', '-f', 'vsg/tests/vsg/entity_architecture.vhd', '-of', 'syntastic', '-lr', 'vsg/tests/vsg/local_rules'])
+            iExitStatus = 0
         except subprocess.CalledProcessError as e:
             lActual = str(e.output.decode('utf-8')).split('\n')
             iExitStatus = e.returncode
@@ -147,7 +141,6 @@ class testVsg(unittest.TestCase):
 
         self.assertEqual(lActual, lExpected)
 
-    @unittest.skip('Waiting until all rules have been refactored for new parser')
     def test_invalid_local_rule_directory(self):
         lExpected = ['ERROR: specified local rules directory vsg/tests/vsg/invalid_local_rule_directory could not be found.']
         lExpected.append('')
@@ -155,7 +148,6 @@ class testVsg(unittest.TestCase):
         lActual = str(lActual.decode('utf-8')).split('\n')
         self.assertEqual(lActual, lExpected)
 
-    @unittest.skip('Waiting until all rules have been refactored for new parser')
     def test_globbing_filenames_in_configuration(self):
         lExpected = []
         lExpected.append('ERROR: vsg/tests/vsg/entity2.vhd(8)port_008 -- Change the number of spaces after the "out" keyword to three spaces.')
@@ -177,7 +169,6 @@ class testVsg(unittest.TestCase):
 
         self.assertEqual(lActual, lExpected)
 
-    @unittest.skip('Waiting until all rules have been refactored for new parser')
     def test_single_yaml_configuration_w_filelist(self):
         lExpected = []
         lExpected.append('ERROR: vsg/tests/vsg/entity1.vhd(7)port_007 -- Change the number of spaces after the "in" keyword to four spaces.')
@@ -207,7 +198,6 @@ class testVsg(unittest.TestCase):
 
         self.assertEqual(lActual, lExpected)
 
-    @unittest.skip('Waiting until all rules have been refactored for new parser')
     def test_multiple_yaml_configuration_w_multiple_filelists(self):
         lExpected = []
         lExpected.append('ERROR: vsg/tests/vsg/entity1.vhd(7)port_007 -- Change the number of spaces after the "in" keyword to four spaces.')
@@ -224,7 +214,6 @@ class testVsg(unittest.TestCase):
 
         self.assertEqual(lActual, lExpected)
 
-    @unittest.skip('Waiting until all rules have been refactored for new parser')
     def test_single_yaml_configuration_w_rule_disable(self):
         lExpected = []
         lExpected.append('')
@@ -233,7 +222,6 @@ class testVsg(unittest.TestCase):
         lActual = str(lActual.decode('utf-8')).split('\n')
         self.assertEqual(lActual, lExpected)
 
-    @unittest.skip('Waiting until all rules have been refactored for new parser')
     def test_multiple_yaml_configuration_w_rule_disable(self):
         lExpected = []
         lExpected.append('ERROR: vsg/tests/vsg/entity1.vhd(7)port_007 -- Change the number of spaces after the "in" keyword to four spaces.')
@@ -249,7 +237,6 @@ class testVsg(unittest.TestCase):
 
         self.assertEqual(lActual, lExpected)
 
-    @unittest.skip('Waiting until all rules have been refactored for new parser')
     def test_reverse_yaml_multiple_configuration_w_rule_disable(self):
         lExpected = []
         lExpected.append('')
@@ -258,7 +245,6 @@ class testVsg(unittest.TestCase):
         lActual = str(lActual.decode('utf-8')).split('\n')
         self.assertEqual(lActual, lExpected)
 
-    @unittest.skip('Waiting until all rules have been refactored for new parser')
     def test_globbing_filenames_in_yaml_configuration(self):
         lExpected = []
         lExpected.append('ERROR: vsg/tests/vsg/entity2.vhd(8)port_008 -- Change the number of spaces after the "out" keyword to three spaces.')
@@ -281,7 +267,6 @@ class testVsg(unittest.TestCase):
 
         self.assertEqual(lActual, lExpected)
 
-    @unittest.skip('Waiting until all rules have been refactored for new parser')
     def test_oc_command_line_argument(self):
         lExpected = []
         lExpected.append('')
@@ -290,7 +275,6 @@ class testVsg(unittest.TestCase):
         lActual = str(lActual.decode('utf-8')).split('\n')
         self.assertEqual(lActual, lExpected)
 
-    @unittest.skip('Waiting until all rules have been refactored for new parser')
     def test_version_command_line_argument(self):
         lExpected = []
         lExpected.append('VHDL Style Guide (VSG) version ' + version.version)
@@ -299,7 +283,6 @@ class testVsg(unittest.TestCase):
         lActual = str(lActual.decode('utf-8')).split('\n')
         self.assertEqual(lExpected[0], lActual[0])
 
-    @unittest.skip('Waiting until all rules have been refactored for new parser')
     def test_missing_configuration_file(self):
         lExpected = []
         lExpected.append('ERROR: Could not find configuration file: missing_configuration.yaml')
@@ -315,7 +298,6 @@ class testVsg(unittest.TestCase):
 
         self.assertEqual(lActual, lExpected)
 
-    @unittest.skip('Waiting until all rules have been refactored for new parser')
     def test_missing_files_in_configuration_file(self):
         lExpected = []
         lExpected.append('ERROR: Could not find file missing_file.vhd in configuration file vsg/tests/vsg/missing_file_config.yaml')
