@@ -26,7 +26,7 @@ class rule_012(rule_item.Rule):
     def __init__(self):
         rule_item.Rule.__init__(self, 'whitespace', '012')
         self.solution = None
-        self.phase = 4
+        self.phase = 3
         self.numBlankLines = 1
         self.configuration.append('numBlankLines')
 

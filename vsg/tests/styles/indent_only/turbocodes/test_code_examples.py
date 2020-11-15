@@ -17,12 +17,10 @@ oSeverityList = severity.create_list({})
 
 class testCodeExample(unittest.TestCase):
 
-    @unittest.skip('Waiting until all rules have been refactored for new parser')
     def test_iteration_synth(self):
         oRuleList = rule_list.rule_list(oIteration, oSeverityList)
         oRuleList.configure(dLegacyConfig)
         oRuleList.fix(7, dLegacyConfig['skip_phase'])
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'iteration_synth.vhd'), lExpected)
-        for iLineNumber, sLine in enumerate(lExpected):
-            self.assertEqual(oIteration.lines[iLineNumber].line, sLine)
+        self.assertEqual(lExpected, oIteration.get_lines())

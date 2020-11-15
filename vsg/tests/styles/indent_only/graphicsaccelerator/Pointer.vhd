@@ -4,7 +4,7 @@ library IEEE;
   use IEEE.std_logic_unsigned.all;
 entity Pointer is
   Generic (initX : STD_LOGIC_VECTOR (9 downto 0);
-         initY : STD_LOGIC_VECTOR (8 downto 0));
+    initY : STD_LOGIC_VECTOR (8 downto 0));
   Port ( MoveUp : in  STD_LOGIC;
     MoveDown : in  STD_LOGIC;
     MoveLeft : in  STD_LOGIC;
@@ -15,7 +15,7 @@ entity Pointer is
     X : out  STD_LOGIC_VECTOR (9 downto 0);
     Y : out  STD_LOGIC_VECTOR (8 downto 0);
     syncX : in  STD_LOGIC_VECTOR (9 downto 0);
-           syncY : in  STD_LOGIC_VECTOR (8 downto 0));
+    syncY : in  STD_LOGIC_VECTOR (8 downto 0));
 end Pointer;
 architecture Behavioral of Pointer is
   signal rX : STD_LOGIC_VECTOR (9 downto 0) := initX;

@@ -14,7 +14,7 @@ entity Bresenhamer is
     Clk : in STD_LOGIC;
     StartDraw : in  STD_LOGIC;
     dbg : out  STD_LOGIC_VECTOR (11 downto 0);
-        Reset : in  STD_LOGIC);
+    Reset : in  STD_LOGIC);
 end Bresenhamer;
 architecture Behavioral of Bresenhamer is
   signal myX1,myX2 : STD_LOGIC_VECTOR (11 downto 0);

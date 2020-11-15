@@ -11,7 +11,7 @@ entity FrameBuffer is
     outColor : out  STD_LOGIC_VECTOR (2 downto 0);
     inColor : in  STD_LOGIC_VECTOR (2 downto 0);
     BufferWrite : in  STD_LOGIC;
-           Clk : in  STD_LOGIC);
+    Clk : in  STD_LOGIC);
 end FrameBuffer;
 architecture Behavioral of FrameBuffer is
   type FBuffer is array (0 to 524288/16-1) of std_logic_vector (2 downto 0);

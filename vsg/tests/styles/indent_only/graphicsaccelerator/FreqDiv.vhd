@@ -4,7 +4,7 @@ library IEEE;
   use IEEE.std_logic_unsigned.all;
 entity FreqDiv is
   Port ( Clk : in  STD_LOGIC;
-           Clk2 : out  STD_LOGIC);
+    Clk2 : out  STD_LOGIC);
 end FreqDiv;
 architecture Behavioral of FreqDiv is
   signal counter : STD_LOGIC_VECTOR (19 downto 0);

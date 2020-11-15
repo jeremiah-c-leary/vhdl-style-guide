@@ -128,7 +128,7 @@ library ieee;
 entity grp_debouncer is
   Generic (
     N : positive := 8;                                                      -- input bus width
-        CNT_VAL : positive := 10000);                                           -- clock counts for debounce period
+    CNT_VAL : positive := 10000);                                           -- clock counts for debounce period
   Port (
     clk_i : in std_logic := 'X';                                            -- system clock
     data_i : in std_logic_vector (N-1 downto 0) := (others => 'X');         -- noisy input data

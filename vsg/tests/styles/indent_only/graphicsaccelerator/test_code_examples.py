@@ -31,72 +31,58 @@ oSeverityList = severity.create_list({})
 
 class testCodeExample(unittest.TestCase):
 
-    @unittest.skip('Waiting until all rules have been refactored for new parser')
     def test_bresenhamer(self):
         oRuleList = rule_list.rule_list(oBresenhamer, oSeverityList)
         oRuleList.configure(dLegacyConfig)
         oRuleList.fix(7, dLegacyConfig['skip_phase'])
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'Bresenhamer.vhd'), lExpected)
-        for iLineNumber, sLine in enumerate(lExpected):
-            self.assertEqual(oBresenhamer.lines[iLineNumber].line, sLine)
+        self.assertEqual(lExpected, oBresenhamer.get_lines())
 
-    @unittest.skip('Waiting until all rules have been refactored for new parser')
     def test_debouncer(self):
         oRuleList = rule_list.rule_list(oDebouncer, oSeverityList)
         oRuleList.configure(dLegacyConfig)
         oRuleList.fix(7, dLegacyConfig['skip_phase'])
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'Debouncer.vhd'), lExpected)
-        for iLineNumber, sLine in enumerate(lExpected):
-            self.assertEqual(oDebouncer.lines[iLineNumber].line, sLine)
+        self.assertEqual(lExpected, oDebouncer.get_lines())
 
-    @unittest.skip('Waiting until all rules have been refactored for new parser')
     def test_vga_top(self):
         oRuleList = rule_list.rule_list(oVgatop, oSeverityList)
         oRuleList.configure(dLegacyConfig)
         oRuleList.fix(7, dLegacyConfig['skip_phase'])
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'VGA_Top.vhd'), lExpected)
-        for iLineNumber, sLine in enumerate(lExpected):
-            self.assertEqual(oVgatop.lines[iLineNumber].line, sLine)
+        self.assertEqual(lExpected, oVgatop.get_lines())
 
-    @unittest.skip('Waiting until all rules have been refactored for new parser')
     def test_pointer(self):
         oRuleList = rule_list.rule_list(oPointer, oSeverityList)
         oRuleList.configure(dLegacyConfig)
         oRuleList.fix(7, dLegacyConfig['skip_phase'])
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'Pointer.vhd'), lExpected)
-        for iLineNumber, sLine in enumerate(lExpected):
-            self.assertEqual(oPointer.lines[iLineNumber].line, sLine)
+        self.assertEqual(lExpected, oPointer.get_lines())
 
-    @unittest.skip('Waiting until all rules have been refactored for new parser')
     def test_freqdiv(self):
         oRuleList = rule_list.rule_list(oFreqDiv, oSeverityList)
         oRuleList.configure(dLegacyConfig)
         oRuleList.fix(7, dLegacyConfig['skip_phase'])
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'FreqDiv.vhd'), lExpected)
-        for iLineNumber, sLine in enumerate(lExpected):
-            self.assertEqual(oFreqDiv.lines[iLineNumber].line, sLine)
+        self.assertEqual(lExpected, oFreqDiv.get_lines())
 
-    @unittest.skip('Waiting until all rules have been refactored for new parser')
     def test_synchronizer(self):
         oRuleList = rule_list.rule_list(oSynchronizer, oSeverityList)
         oRuleList.configure(dLegacyConfig)
         oRuleList.fix(7, dLegacyConfig['skip_phase'])
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'Synchronizer.vhd'), lExpected)
-        for iLineNumber, sLine in enumerate(lExpected):
-            self.assertEqual(oSynchronizer.lines[iLineNumber].line, sLine)
+        self.assertEqual(lExpected, oSynchronizer.get_lines())
 
-    @unittest.skip('Waiting until all rules have been refactored for new parser.')
     def test_framebuffer(self):
         oRuleList = rule_list.rule_list(oFrameBuffer, oSeverityList)
         oRuleList.configure(dLegacyConfig)
         oRuleList.fix(7, dLegacyConfig['skip_phase'])
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'FrameBuffer2.vhd'), lExpected)
-        for iLineNumber, sLine in enumerate(lExpected):
-            self.assertEqual(oFrameBuffer.lines[iLineNumber].line, sLine)
+        self.assertEqual(lExpected, oFrameBuffer.get_lines())

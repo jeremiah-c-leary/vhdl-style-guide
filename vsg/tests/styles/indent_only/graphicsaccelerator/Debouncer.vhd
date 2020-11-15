@@ -5,7 +5,7 @@ library IEEE;
 entity Debouncer is
   Port ( Clk : in  STD_LOGIC;
     Button : in  STD_LOGIC;
-        Dout : out  STD_LOGIC);
+    Dout : out  STD_LOGIC);
 end Debouncer;
 architecture Behavioral of Debouncer is
   signal Counter,nCounter : STD_LOGIC_VECTOR (23 downto 0) := x"000000";

@@ -130,7 +130,7 @@ begin
 
     case SAX is
 
-      when SA_43_I16 =>  ADR_X <= IMM;
+      when SA_43_I16    =>  ADR_X <= IMM;
       when SA_43_I8S =>  ADR_X <= b8(IMM(7)) & IMM(7 downto 0);
       when others     =>  ADR_X <= b8(SA(3)) & b8(SA(3));
     end case;

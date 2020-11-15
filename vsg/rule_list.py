@@ -140,7 +140,7 @@ class rule_list():
         for phase in range(1, int(iFixPhase) + 1):
             if phase in lSkipPhase:
                 if phase == 1:
-                    self.oVhdlFile.set_indent_levels()
+                    self.oVhdlFile.set_token_indent()
                 continue
             
             for subphase in range(1, 5):

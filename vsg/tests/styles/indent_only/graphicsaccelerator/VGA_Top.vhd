@@ -18,14 +18,14 @@ entity VGA_Top is
     MoveLeft : in  STD_LOGIC;
     MoveRight : in  STD_LOGIC;
     MoveP1 : in  STD_LOGIC;
-        MoveP2 : in  STD_LOGIC);
+    MoveP2 : in  STD_LOGIC);
 end VGA_Top;
 architecture Behavioral of VGA_Top is
   COMPONENT Debouncer
     PORT(
       Clk : IN std_logic;
       Button : IN std_logic;
-    Dout : OUT std_logic);
+      Dout : OUT std_logic);
   END COMPONENT;
   COMPONENT Bresenhamer
     PORT(
@@ -39,7 +39,7 @@ architecture Behavioral of VGA_Top is
       SS : OUT STD_LOGIC_VECTOR (3 downto 0);
       X : OUT std_logic_vector(9 downto 0);
       Y : OUT std_logic_vector(8 downto 0);
-    Reset : in  STD_LOGIC);
+      Reset : in  STD_LOGIC);
   END COMPONENT;
   Component Synchronizer is
     Port ( R : out  STD_LOGIC;
@@ -50,7 +50,7 @@ architecture Behavioral of VGA_Top is
       Clk : in  STD_LOGIC;
       dataIn : in  STD_LOGIC_VECTOR (2 downto 0);
       AddressX : out  STD_LOGIC_VECTOR (9 downto 0);
-        AddressY : out  STD_LOGIC_VECTOR (8 downto 0));
+      AddressY : out  STD_LOGIC_VECTOR (8 downto 0));
   end Component;
   Component FrameBuffer is
     Port ( inX : in  STD_LOGIC_VECTOR (9 downto 0);
@@ -60,7 +60,7 @@ architecture Behavioral of VGA_Top is
       outColor : out  STD_LOGIC_VECTOR (2 downto 0);
       inColor : in  STD_LOGIC_VECTOR (2 downto 0);
       BufferWrite : in  STD_LOGIC;
-           Clk : in  STD_LOGIC);
+      Clk : in  STD_LOGIC);
   end Component;
   COMPONENT SevenSegment
     PORT(  Clk : IN std_logic;
@@ -70,7 +70,7 @@ architecture Behavioral of VGA_Top is
   END COMPONENT;
   COMPONENT Pointer
     Generic (initX : STD_LOGIC_VECTOR (9 downto 0);
-        initY : STD_LOGIC_VECTOR (8 downto 0));
+      initY : STD_LOGIC_VECTOR (8 downto 0));
     PORT(  MoveUp : IN std_logic;
       MoveDown : IN std_logic;
       MoveLeft : IN std_logic;

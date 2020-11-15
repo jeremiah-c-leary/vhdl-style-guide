@@ -176,7 +176,7 @@ entity spi_master is
     CPOL : std_logic := '0';                                        -- SPI mode selection (mode 0 default)
     CPHA : std_logic := '0';                                        -- CPOL = clock polarity, CPHA = clock phase.
     PREFETCH : positive := 2;                                       -- prefetch lookahead cycles
-        SPI_2X_CLK_DIV : positive := 5);                                -- for a 100MHz sclk_i, yields a 10MHz SCK
+    SPI_2X_CLK_DIV : positive := 5);                                -- for a 100MHz sclk_i, yields a 10MHz SCK
   Port (
     sclk_i : in std_logic := 'X';                                   -- high-speed serial interface system clock
     pclk_i : in std_logic := 'X';                                   -- high-speed parallel interface system clock
