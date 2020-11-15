@@ -128,6 +128,7 @@ class vhdlFile():
         vLabelFound = False
         bLabelFound = False
         bLibraryFound = False 
+        bArchitectureFound = False
         for oToken in self.lAllObjects:
 
             if isinstance(oToken, parser.whitespace):
@@ -143,10 +144,12 @@ class vhdlFile():
             if isinstance(oToken, token.context_declaration.context_keyword):
                 oToken.set_indent(0)
                 iIndent += 1 
+                continue
 
             if isinstance(oToken, token.context_declaration.end_keyword):
                 oToken.set_indent(0)
                 iIndent -= 1
+                continue
 
             if isinstance(oToken, token.library_clause.keyword):
                  oToken.set_indent(iIndent)
@@ -154,12 +157,11 @@ class vhdlFile():
                  continue
 
             if isinstance(oToken, token.use_clause.keyword):
-                 if bLibraryFound:
+                 if not bArchitectureFound:
                      oToken.set_indent(iIndent + 1)
                  else:
                      oToken.set_indent(iIndent)
                  continue
-            
 
             if isinstance(oToken, token.context_reference.keyword):
                  if bLibraryFound:
@@ -181,6 +183,7 @@ class vhdlFile():
             if isinstance(oToken, token.architecture_body.architecture_keyword):
                 oToken.set_indent(0)
                 iIndent = 1 
+                bArchitectureFound = True
                 continue
 
             if isinstance(oToken, token.architecture_body.begin_keyword):
@@ -191,6 +194,10 @@ class vhdlFile():
             if isinstance(oToken, token.architecture_body.end_keyword):
                 oToken.set_indent(0)
                 iIndent = 0 
+                continue
+
+            if isinstance(oToken, token.architecture_body.semicolon):
+                bArchitectureFound = False
                 continue
 
             ###  Assertion statements

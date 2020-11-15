@@ -89,3 +89,5 @@ rule :
     allow_comments : false 
   library_003 :
     allow_comments : false
+  function_006 :
+    allow_comments : false

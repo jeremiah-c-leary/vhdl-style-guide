@@ -220,10 +220,44 @@
 38 | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-39 | 
+39 |   -- Check others
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+40 | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-40 | end architecture RTL;
+41 |   process begin
+<class 'vsg.token.process_statement.process_keyword'>
+<class 'vsg.token.process_statement.begin_keyword'>
+--------------------------------------------------------------------------------
+42 |     case x is
+<class 'vsg.token.case_statement.case_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.case_statement.is_keyword'>
+--------------------------------------------------------------------------------
+43 |       when others => Out_1 <= 0;
+<class 'vsg.token.case_statement_alternative.when_keyword'>
+<class 'vsg.token.choice.others_keyword'>
+<class 'vsg.token.case_statement_alternative.assignment'>
+<class 'vsg.token.simple_waveform_assignment.target'>
+<class 'vsg.token.simple_waveform_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.simple_waveform_assignment.semicolon'>
+--------------------------------------------------------------------------------
+44 |     end case;
+<class 'vsg.token.case_statement.end_keyword'>
+<class 'vsg.token.case_statement.end_case_keyword'>
+<class 'vsg.token.case_statement.semicolon'>
+--------------------------------------------------------------------------------
+45 |   end process;
+<class 'vsg.token.process_statement.end_keyword'>
+<class 'vsg.token.process_statement.end_process_keyword'>
+<class 'vsg.token.process_statement.semicolon'>
+--------------------------------------------------------------------------------
+46 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+47 | end architecture RTL;
 <class 'vsg.token.architecture_body.end_keyword'>
 <class 'vsg.token.architecture_body.end_architecture_keyword'>
 <class 'vsg.token.architecture_body.architecture_simple_name'>

@@ -14,6 +14,10 @@ begin
         b <= c;
         c <= d;
 
+      when others =>
+
+        z <= a;
+
      end case;
 
   end process PROC_1;
@@ -34,6 +38,14 @@ begin
         a <= b;
         b <= c;
         c <= d;
+
+      when others=>
+
+        z <= a;
+
+      when others       =>
+
+        z <= a;
 
      end case;
 

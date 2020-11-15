@@ -23,32 +23,35 @@ oSeverityList = severity.create_list({})
 
 class testCodeExample(unittest.TestCase):
 
-    @unittest.skip('Need to wait until all rules have been refactored.')
     def test_baudgen(self):
         oRuleList = rule_list.rule_list(oBaudGen, oSeverityList)
         oRuleList.configure(dConfig)
         oRuleList.fix()
-        lExpected = ['']
-        utils.read_file(os.path.join(os.path.dirname(__file__),'BaudGen.fixed.vhd'), lExpected)
-        for iLineNumber, sLine in enumerate(lExpected):
-            self.assertEqual(oBaudGen.lines[iLineNumber].line, sLine)
 
-    @unittest.skip('Need to wait until all rules have been refactored.')
+        lExpected = ['']
+
+        utils.read_file(os.path.join(os.path.dirname(__file__),'BaudGen.fixed.vhd'), lExpected)
+
+        self.assertEqual(lExpected, oBaudGen.get_lines())
+
     def test_board_cpu(self):
         oRuleList = rule_list.rule_list(oBoardCpu, oSeverityList)
         oRuleList.configure(dConfig)
         oRuleList.fix()
-        lExpected = ['']
-        utils.read_file(os.path.join(os.path.dirname(__file__),'Board_cpu.fixed.vhd'), lExpected)
-        for iLineNumber, sLine in enumerate(lExpected):
-            self.assertEqual(oBoardCpu.lines[iLineNumber].line, sLine)
 
-    @unittest.skip('Need to wait until all rules have been refactored.')
+        lExpected = ['']
+
+        utils.read_file(os.path.join(os.path.dirname(__file__),'Board_cpu.fixed.vhd'), lExpected)
+
+        self.assertEqual(lExpected, oBoardCpu.get_lines())
+
     def test_data_core(self):
         oRuleList = rule_list.rule_list(oDataCore, oSeverityList)
         oRuleList.configure(dConfig)
         oRuleList.fix()
+
         lExpected = ['']
+
         utils.read_file(os.path.join(os.path.dirname(__file__),'data_core.fixed.vhd'), lExpected)
-        for iLineNumber, sLine in enumerate(lExpected):
-            self.assertEqual(oDataCore.lines[iLineNumber].line, sLine)
+
+        self.assertEqual(lExpected, oDataCore.get_lines())

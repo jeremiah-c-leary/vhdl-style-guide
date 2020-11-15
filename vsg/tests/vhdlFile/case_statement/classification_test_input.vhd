@@ -36,5 +36,12 @@ begin
 
   end process;
 
+  -- Check others
+
+  process begin
+    case x is
+      when others => Out_1 <= 0;
+    end case;
+  end process;
 
 end architecture RTL;
