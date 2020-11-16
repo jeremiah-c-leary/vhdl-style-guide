@@ -15,14 +15,14 @@ def classify(iToken, lObjects):
             { concurrent_statement }
         [ end [ alternative_label ] ; ]
     '''
-    bBlockDeclarativePartFound = False
     iCurrent = utils.find_next_token(iToken, lObjects)
     iLast = iCurrent
     iCurrent = block_declarative_part.detect(iCurrent, lObjects)
 
     if iCurrent != iLast:
-        bBlockDeclarativePartFound = True
         iCurrent = utils.assign_next_token_required('begin', token.begin_keyword, iCurrent, lObjects)
+
+    iCurrent = utils.assign_next_token_if('begin', token.begin_keyword, iCurrent, lObjects)
 
     iLast = 0
     while iCurrent != iLast:
@@ -33,7 +33,7 @@ def classify(iToken, lObjects):
             break
         iCurrent = concurrent_statement.detect(iCurrent, lObjects)
 
-    if bBlockDeclarativePartFound:
+    if not utils.are_next_consecutive_tokens(['end', 'generate'], iCurrent, lObjects):
         iCurrent = utils.assign_next_token_required('end', token.end_keyword, iCurrent, lObjects)
         iCurrent = utils.assign_next_token_if_not(';', token.alternative_label, iCurrent, lObjects)
         iCurrent = utils.assign_next_token_required(';', token.semicolon, iCurrent, lObjects)

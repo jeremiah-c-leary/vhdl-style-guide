@@ -1,0 +1,159 @@
+--------------------------------------------------------------------------------
+0 | 
+--------------------------------------------------------------------------------
+1 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+2 | architecture RTL of FIFO is
+<class 'vsg.token.architecture_body.architecture_keyword'>
+<class 'vsg.token.architecture_body.identifier'>
+<class 'vsg.token.architecture_body.of_keyword'>
+<class 'vsg.token.architecture_body.entity_name'>
+<class 'vsg.token.architecture_body.is_keyword'>
+--------------------------------------------------------------------------------
+3 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+4 | begin
+<class 'vsg.token.architecture_body.begin_keyword'>
+--------------------------------------------------------------------------------
+5 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+6 |   -- Test generate_statement_body
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+7 |   LABEL_1 : for i in 0 to 7 generate
+<class 'vsg.token.for_generate_statement.generate_label'>
+<class 'vsg.token.for_generate_statement.label_colon'>
+<class 'vsg.token.for_generate_statement.for_keyword'>
+<class 'vsg.token.parameter_specification.identifier'>
+<class 'vsg.token.parameter_specification.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.to'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.for_generate_statement.generate_keyword'>
+--------------------------------------------------------------------------------
+8 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+9 |       signal blah : std_logic;
+<class 'vsg.token.signal_declaration.signal_keyword'>
+<class 'vsg.token.signal_declaration.identifier'>
+<class 'vsg.token.signal_declaration.colon'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.signal_declaration.semicolon'>
+--------------------------------------------------------------------------------
+10 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+11 |     begin
+<class 'vsg.token.generate_statement_body.begin_keyword'>
+--------------------------------------------------------------------------------
+12 |         a <= blah;
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+13 |     end;
+<class 'vsg.token.generate_statement_body.end_keyword'>
+<class 'vsg.token.generate_statement_body.semicolon'>
+--------------------------------------------------------------------------------
+14 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+15 |   end generate LABEL3;
+<class 'vsg.token.for_generate_statement.end_keyword'>
+<class 'vsg.token.for_generate_statement.end_generate_keyword'>
+<class 'vsg.token.for_generate_statement.end_generate_label'>
+<class 'vsg.token.for_generate_statement.semicolon'>
+--------------------------------------------------------------------------------
+16 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+17 |   -- Test generate_statement_body
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+18 |   LABEL_2 : for i in 0 to 7 generate
+<class 'vsg.token.for_generate_statement.generate_label'>
+<class 'vsg.token.for_generate_statement.label_colon'>
+<class 'vsg.token.for_generate_statement.for_keyword'>
+<class 'vsg.token.parameter_specification.identifier'>
+<class 'vsg.token.parameter_specification.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.to'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.for_generate_statement.generate_keyword'>
+--------------------------------------------------------------------------------
+19 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+20 |     begin
+<class 'vsg.token.generate_statement_body.begin_keyword'>
+--------------------------------------------------------------------------------
+21 |         a <= blah;
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+22 |     end;
+<class 'vsg.token.generate_statement_body.end_keyword'>
+<class 'vsg.token.generate_statement_body.semicolon'>
+--------------------------------------------------------------------------------
+23 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+24 |   end generate LABEL3;
+<class 'vsg.token.for_generate_statement.end_keyword'>
+<class 'vsg.token.for_generate_statement.end_generate_keyword'>
+<class 'vsg.token.for_generate_statement.end_generate_label'>
+<class 'vsg.token.for_generate_statement.semicolon'>
+--------------------------------------------------------------------------------
+25 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+26 |   -- Test generate_statement_body
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+27 |   LABEL_3 : for i in 0 to 7 generate
+<class 'vsg.token.for_generate_statement.generate_label'>
+<class 'vsg.token.for_generate_statement.label_colon'>
+<class 'vsg.token.for_generate_statement.for_keyword'>
+<class 'vsg.token.parameter_specification.identifier'>
+<class 'vsg.token.parameter_specification.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.to'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.for_generate_statement.generate_keyword'>
+--------------------------------------------------------------------------------
+28 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+29 |     begin
+<class 'vsg.token.generate_statement_body.begin_keyword'>
+--------------------------------------------------------------------------------
+30 |         a <= blah;
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+31 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+32 |   end generate LABEL3;
+<class 'vsg.token.for_generate_statement.end_keyword'>
+<class 'vsg.token.for_generate_statement.end_generate_keyword'>
+<class 'vsg.token.for_generate_statement.end_generate_label'>
+<class 'vsg.token.for_generate_statement.semicolon'>
+--------------------------------------------------------------------------------
+33 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+34 | end architecture RTL;
+<class 'vsg.token.architecture_body.end_keyword'>
+<class 'vsg.token.architecture_body.end_architecture_keyword'>
+<class 'vsg.token.architecture_body.architecture_simple_name'>
+<class 'vsg.token.architecture_body.semicolon'>
