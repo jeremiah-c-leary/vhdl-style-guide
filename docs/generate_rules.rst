@@ -337,3 +337,26 @@ Refer to the section `Configuring Prefix and Suffix Rules <configuring_prefix_su
 .. code-block:: vhdl
 
    gen_label : case condition generate
+
+generate_018
+############
+
+This rule checks the indent of the **end** keyword in the generate statement body.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   ram_array : for i in 0 to 7 generate
+   begin
+     end;
+   end generate;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   ram_array : for i in 0 to 7 generate
+   begin
+   end;
+   end generate;

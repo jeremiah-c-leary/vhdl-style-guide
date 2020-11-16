@@ -47,7 +47,6 @@ class testCodeExample(unittest.TestCase):
         utils.read_file(os.path.join(os.path.dirname(__file__),'spi_slave.vhd'), lExpected)
         self.assertEqual(lExpected, oSpiSlave.get_lines())
 
-    @unittest.skip('Need to figure out issue with generate begin keyword')
     def test_spi_master(self):
         oRuleList = rule_list.rule_list(oSpiMaster, oSeverityList)
         oRuleList.configure(dLegacyConfig)

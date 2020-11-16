@@ -7,9 +7,9 @@ begin
 
     signal a : std_logic;
 
-    begin
+  begin
 
-    end;
+  end;
 
   end generate;
 
@@ -17,8 +17,8 @@ begin
 
     signal a : std_logic;
 
-    begin
-    end;
+  begin
+  end;
 
   end generate;
 
@@ -28,8 +28,8 @@ begin
 
       signal a : std_logic;
 
-      begin
-      end;
+    begin
+    end;
 
   end generate;
 
@@ -40,7 +40,7 @@ begin
     signal a : std_logic;
 
      begin
-    end;
+  end;
 
   end generate;
 
@@ -49,7 +49,7 @@ begin
     signal a : std_logic;
 
    begin
-    end;
+  end;
 
   end generate;
 
@@ -60,7 +60,7 @@ begin
       signal a : std_logic;
 
          begin
-      end;
+    end;
 
   end generate;
 

@@ -8,11 +8,9 @@ def set_indent(iCurrentIndent, bLabelFound, oToken):
     bMyLabelFound = bLabelFound
 
     if isinstance(oToken, token.begin_keyword):
-        oToken.set_indent(iIndent)
-        iIndent += 1
+        oToken.set_indent(iIndent - 1)
 
     if isinstance(oToken, token.end_keyword):
-        iIndent -= 1
-        oToken.set_indent(iIndent)
+        oToken.set_indent(iIndent - 1)
 
     return iIndent, bMyLabelFound
