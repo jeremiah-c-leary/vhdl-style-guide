@@ -39,3 +39,7 @@ context c1 is
 
 end;
 
+context c2 is
+
+end context c2;
+

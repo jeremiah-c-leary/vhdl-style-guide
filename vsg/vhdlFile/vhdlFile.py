@@ -117,7 +117,9 @@ class vhdlFile():
     def get_line_count(self):
         return utils.count_carriage_returns(self.lAllObjects)
 
-            
+    def fix_blank_lines(self):
+        self.lAllObjects = utils.fix_blank_lines(self.lAllObjects)
+
     def set_token_indent(self):
         '''
         Set the indent level of tokens.
@@ -825,6 +827,8 @@ class vhdlFile():
                             bTokenFound = True
                             iLineNumber = iLine
                             break
+#            else:
+#                print(self.lAllObjects[iIndex])
 
 
             if bCrFound:
@@ -1191,3 +1195,4 @@ def set_token_hierarchy_value(lTokens):
         if isinstance(oToken, token.if_statement.semicolon):
             iIfHierarchy -= 1
             oToken.set_hierarchy(iIfHierarchy)
+

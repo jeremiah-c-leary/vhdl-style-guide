@@ -18,3 +18,4 @@ class rule_011(move_token_to_the_right_of_several_possible_tokens):
 
     def __init__(self):
         move_token_to_the_right_of_several_possible_tokens.__init__(self, 'context', '011', oToken, lTokens)
+        self.subphase = 3

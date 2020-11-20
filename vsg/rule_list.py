@@ -151,7 +151,9 @@ class rule_list():
                         oRule.fix(self.oVhdlFile)
                     else:
                         oRule.analyze(self.oVhdlFile)
-            
+
+            if phase == 1:
+                self.oVhdlFile.fix_blank_lines()
 
     def get_rules_in_phase(self, iPhaseNumber):
         '''

@@ -698,3 +698,34 @@ def convert_token_list_to_string(lTokens):
     for oToken in lTokens:
         sReturn += oToken.get_value()
     return sReturn
+
+
+def fix_blank_lines(lTokens):
+    lReturn = []
+    for iToken, oToken in enumerate(lTokens):
+        try:
+            if isinstance(oToken, parser.carriage_return) and isinstance(lTokens[iToken + 1], parser.carriage_return): 
+                lReturn.append(oToken)
+                lReturn.append(parser.blank_line())
+                continue
+        except IndexError:
+            pass
+        try:
+            if isinstance(lTokens[iToken - 1], parser.carriage_return) and isinstance(oToken, parser.whitespace) and isinstance(lTokens[iToken + 1], parser.carriage_return):
+                lReturn.append(parser.blank_line())
+                continue
+        except IndexError:
+            pass
+        lReturn.append(oToken)
+
+#    for oToken in lTokens:
+#        print(oToken)
+#        if isinstance(oToken, parser.carriage_return):
+#            print('\n')
+#    print('='*80)
+#    for oToken in lReturn:
+#        print(oToken)
+#        if isinstance(oToken, parser.carriage_return):
+#            print('\n')
+
+    return lReturn

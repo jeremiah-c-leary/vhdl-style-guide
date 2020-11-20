@@ -8,7 +8,7 @@ from vsg.vhdlFile import utils
 
 class rule_012(rule_item.Rule):
     '''
-    Checks the case for words.
+    Checks for consecutive blank lines.
 
     Parameters
     ----------
@@ -27,6 +27,7 @@ class rule_012(rule_item.Rule):
         rule_item.Rule.__init__(self, 'whitespace', '012')
         self.solution = None
         self.phase = 3
+        self.subphase = 3
         self.numBlankLines = 1
         self.configuration.append('numBlankLines')
 
@@ -35,7 +36,6 @@ class rule_012(rule_item.Rule):
         iLine, lTokens = utils.get_toi_parameters(oToi)
         iCount = 0
         for iToken, oToken in enumerate(lTokens[:len(lTokens) - 1]):
-
             iLine = utils.increment_line_number(iLine, oToken)
 
             if isinstance(oToken, parser.blank_line):
@@ -75,4 +75,3 @@ class rule_012(rule_item.Rule):
             oViolation.set_tokens(lTokens)
                
         oFile.update(self.violations)
-

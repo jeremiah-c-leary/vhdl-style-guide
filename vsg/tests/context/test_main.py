@@ -8,6 +8,11 @@ import unittest
 from unittest import mock
 
 from vsg import __main__
+from vsg import rule_list
+from vsg import severity
+from vsg import vhdlFile
+from vsg import parser
+
 from vsg.tests import utils
 
 sFileName = 'context_classification_test_input.vhd'
@@ -15,6 +20,8 @@ sFixedFileName = 'context_classification_test_input.fixed.vhd'
 
 sFile = os.path.join(os.path.dirname(__file__), sFileName)
 sFixedFile = os.path.join(os.path.dirname(__file__), sFixedFileName)
+
+oSeverityList = severity.create_list({})
 
 
 class test_context_using_main(unittest.TestCase):
@@ -27,7 +34,6 @@ class test_context_using_main(unittest.TestCase):
     def tearDown(self):
         os.remove(sFileName)
 
-    @unittest.skip('Disabled until all the rules have been refactored to use new parser.')
     @mock.patch('sys.stdout')
     def test_classification_file(self, mock_stdout):
         self.maxDiff = None
@@ -44,3 +50,23 @@ class test_context_using_main(unittest.TestCase):
         utils.read_file(sFixedFile, lExpected)
 
         self.assertEqual(lExpected, lActual)
+
+#    def test_debug(self):
+#        lFile = utils.read_vhdlfile(sFixedFile)
+#        oFile = vhdlFile.vhdlFile(lFile)
+#
+#        dLegacyConfig = {}
+#        dLegacyConfig['debug'] = False
+#
+#        oRuleList = rule_list.rule_list(oFile, oSeverityList)
+#        oRuleList.configure(dLegacyConfig)
+#        oRuleList.fix()
+#
+#        lTokens = oFile.get_lines()
+#        for oToken in lTokens:
+#            print(oToken)
+#            if isinstance(oToken, parser.carriage_return):
+#                print('\n' + '-'*80 + '\n')
+    
+#        utils.print_objects(oFile,True)
+
