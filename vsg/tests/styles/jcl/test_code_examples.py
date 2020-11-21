@@ -42,25 +42,24 @@ class testCodeExample(unittest.TestCase):
 
         self.assertEqual(lExpected, oTimestamp.get_lines()) 
 
-    @unittest.skip('Need to wait until all rules have been refactored.')
     def test_spi_slave(self):
         oRuleList = rule_list.rule_list(oSpiSlave, oSeverityList)
         oRuleList.configure(dConfig)
         oRuleList.fix()
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'spi_slave.fixed.vhd'), lExpected)
-        for iLineNumber, sLine in enumerate(lExpected):
-            self.assertEqual(oSpiSlave.lines[iLineNumber].line, sLine)
 
-    @unittest.skip('Need to wait until all rules have been refactored.')
+        self.assertEqual(lExpected, oSpiSlave.get_lines())
+
     def test_spi_master(self):
         oRuleList = rule_list.rule_list(oSpiMaster, oSeverityList)
         oRuleList.configure(dConfig)
         oRuleList.fix()
+
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'spi_master.fixed.vhd'), lExpected)
-        for iLineNumber, sLine in enumerate(lExpected):
-            self.assertEqual(oSpiMaster.lines[iLineNumber].line, sLine)
+
+        self.assertEqual(lExpected, oSpiMaster.get_lines())
 
     def test_grp_debouncer(self):
         oRuleList = rule_list.rule_list(oGrpDebouncer, oSeverityList)

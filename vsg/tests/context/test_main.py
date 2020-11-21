@@ -50,23 +50,3 @@ class test_context_using_main(unittest.TestCase):
         utils.read_file(sFixedFile, lExpected)
 
         self.assertEqual(lExpected, lActual)
-
-#    def test_debug(self):
-#        lFile = utils.read_vhdlfile(sFixedFile)
-#        oFile = vhdlFile.vhdlFile(lFile)
-#
-#        dLegacyConfig = {}
-#        dLegacyConfig['debug'] = False
-#
-#        oRuleList = rule_list.rule_list(oFile, oSeverityList)
-#        oRuleList.configure(dLegacyConfig)
-#        oRuleList.fix()
-#
-#        lTokens = oFile.get_lines()
-#        for oToken in lTokens:
-#            print(oToken)
-#            if isinstance(oToken, parser.carriage_return):
-#                print('\n' + '-'*80 + '\n')
-    
-#        utils.print_objects(oFile,True)
-

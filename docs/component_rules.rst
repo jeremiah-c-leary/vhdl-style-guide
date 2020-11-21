@@ -51,6 +51,8 @@ component_003
 
 This rule checks for a blank line above the **component** declaration.
 
+Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+
 **Violation**
 
 .. code-block:: vhdl
@@ -361,6 +363,8 @@ component_018
 #############
 
 This rule checks for a blank line below the **end component** line.
+
+Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
 
 **Violation**
 

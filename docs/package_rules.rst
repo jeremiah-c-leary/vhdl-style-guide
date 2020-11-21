@@ -44,6 +44,8 @@ package_003
 
 This rule checks for a blank line above the **package** keyword.
 
+Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+
 **Violation**
 
 .. code-block:: vhdl
@@ -192,6 +194,8 @@ package_011
 
 This rule checks for a blank line below the **package** keyword.
 
+Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+
 **Violation**
 
 .. code-block:: vhdl
@@ -211,6 +215,8 @@ package_012
 ###########
 
 This rule checks for a blank line above the **end package** keyword.
+
+Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
 
 **Violation**
 

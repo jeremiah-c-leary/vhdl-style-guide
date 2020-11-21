@@ -224,6 +224,8 @@ process_011
  
 This rule checks for a blank line after the **end process** keyword.
 
+Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+
 **Violation**
 
 .. code-block:: vhdl
@@ -326,6 +328,10 @@ process_015
 ###########
  
 This rule checks for a blank line or comment above the **process** declaration.
+
+.. NOTE:: Comments are allowed above the instantiation.
+
+Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
 
 **Violation**
 
@@ -506,6 +512,8 @@ process_022
  
 This rule checks for a blank line below the **begin** keyword.
 
+Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+
 **Violation**
 
 .. code-block:: vhdl
@@ -531,6 +539,8 @@ process_023
 ###########
  
 This rule checks for a blank line above the **end process** keyword.
+
+Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
 
 **Violation**
 

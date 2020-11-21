@@ -1,14 +1,139 @@
 
-from vsg.rules import insert_token_left_of_token_if_it_does_not_exist_between_tokens_using_value_from_token
+from vsg import parser
+from vsg import rule_item
+from vsg import token
+from vsg import violation
 
-from vsg.token import for_generate_statement as token
+from vsg.vhdlFile import utils
+
+oInsertTokens = token.for_generate_statement.end_generate_label
+oAnchorTokens = token.for_generate_statement.semicolon
+oLeftTokens = token.for_generate_statement.end_keyword
+oRightTokens = token.for_generate_statement.semicolon
+oValueTokens = token.for_generate_statement.generate_label
 
 
-class rule_011(insert_token_left_of_token_if_it_does_not_exist_between_tokens_using_value_from_token):
+class rule_011(rule_item.Rule):
     '''
-    Checks for generate_simple_name.
+    Checks for the existence of a token and will insert it if it does not exist.
+
+    Parameters
+    ----------
+
+    name : string
+       The group the rule belongs to.
+
+    identifier : string
+       unique identifier.  Usually in the form of 00N.
+
+    insert_token : token object
+       token to insert if it does not exist.
+
+    anchor_token : token object
+       token to check if insert_token exists to the right of
+
+    
+       token to pull the value from
     '''
 
     def __init__(self):
-        insert_token_left_of_token_if_it_does_not_exist_between_tokens_using_value_from_token.__init__(self, 'generate', '011', token.end_generate_label, token.semicolon, token.end_keyword, token.semicolon, token.generate_label)
+        rule_item.Rule.__init__(self, 'generate', '011')
         self.solution = 'Add generate label'
+        self.phase = 1
+        self.insert_token = oInsertTokens
+        self.anchor_token = oAnchorTokens
+        self.left_token = oLeftTokens
+        self.right_token = oRightTokens
+        self.value_token = oValueTokens
+
+    def analyze(self, oFile):
+        lToi = oFile.get_tokens_bounded_by(token.architecture_body.begin_keyword, token.architecture_body.end_keyword)
+        for oToi in lToi:
+            iLine, lTokens = utils.get_toi_parameters(oToi)
+            lLabels = []
+            for iToken, oToken in enumerate(lTokens):
+               iLine = utils.increment_line_number(iLine, oToken)
+
+               if manage_labels(oToken, lLabels):
+                   continue
+
+               if isinstance(oToken, token.for_generate_statement.end_generate_keyword):
+                   if not utils.are_next_consecutive_token_types_ignoring_whitespace([token.for_generate_statement.end_generate_label], iToken + 1, lTokens):
+                       oNewToi = oToi.extract_tokens(iToken, iToken)
+                       dAction = {}
+                       dAction['label'] = token.for_generate_statement.end_generate_label(lLabels[-1].get_value())
+                       sSolution = 'Add label ' + lLabels[-1].get_value()
+                       oViolation = violation.New(oNewToi.get_line_number(), oNewToi, sSolution)
+                       oViolation.set_action(dAction)
+                       self.add_violation(oViolation)
+                   continue
+
+               if isinstance(oToken, token.if_generate_statement.end_generate_keyword):
+                   if not utils.are_next_consecutive_token_types_ignoring_whitespace([token.if_generate_statement.end_generate_label], iToken + 1, lTokens):
+                       oNewToi = oToi.extract_tokens(iToken, iToken)
+                       dAction = {}
+                       dAction['label'] = token.if_generate_statement.end_generate_label(lLabels[-1].get_value())
+                       sSolution = 'Add label ' + lLabels[-1].get_value()
+                       oViolation = violation.New(oNewToi.get_line_number(), oNewToi, sSolution)
+                       oViolation.set_action(dAction)
+                       self.add_violation(oViolation)
+                   continue
+
+               if isinstance(oToken, token.case_generate_statement.end_generate_keyword):
+                   if not utils.are_next_consecutive_token_types_ignoring_whitespace([token.case_generate_statement.end_generate_label], iToken + 1, lTokens):
+                       oNewToi = oToi.extract_tokens(iToken, iToken)
+                       dAction = {}
+                       dAction['label'] = token.case_generate_statement.end_generate_label(lLabels[-1].get_value())
+                       sSolution = 'Add label ' + lLabels[-1].get_value()
+                       oViolation = violation.New(oNewToi.get_line_number(), oNewToi, sSolution)
+                       oViolation.set_action(dAction)
+                       self.add_violation(oViolation)
+                   continue
+
+    def fix(self, oFile):
+        '''
+        Applies fixes for any rule violations.
+        '''
+        if self.fixable:
+            self.analyze(oFile)
+            self._print_debug_message('Fixing rule: ' + self.name + '_' + self.identifier)
+            self._fix_violation(oFile)
+            self.violations = []
+
+    def _fix_violation(self, oFile):
+        for oViolation in self.violations:
+            lTokens = oViolation.get_tokens()
+            dAction = oViolation.get_action()
+            lTokens.append(parser.whitespace(' '))
+            lTokens.append(dAction['label'])
+            oViolation.set_tokens(lTokens)
+        oFile.update(self.violations)
+
+
+def manage_labels(oToken, lLabels):
+
+    if isinstance(oToken, token.for_generate_statement.generate_label):
+        lLabels.append(oToken)
+        return True
+
+    if isinstance(oToken, token.if_generate_statement.generate_label):
+        lLabels.append(oToken)
+        return True
+
+    if isinstance(oToken, token.case_generate_statement.generate_label):
+        lLabels.append(oToken)
+        return True
+
+    if isinstance(oToken, token.for_generate_statement.semicolon):
+        lLabels.pop()
+        return True
+
+    if isinstance(oToken, token.if_generate_statement.semicolon):
+        lLabels.pop()
+        return True
+
+    if isinstance(oToken, token.case_generate_statement.semicolon):
+        lLabels.pop()
+        return True
+
+    return False

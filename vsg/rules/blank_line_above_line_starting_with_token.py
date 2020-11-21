@@ -30,7 +30,7 @@ class blank_line_above_line_starting_with_token(rule_item.Rule):
         self.phase = 3
         self.lTokens = lTokens
         self.lHierarchyLimits = None
-        self.allow_comments = True
+        self.allow_comments = False
         self.configuration.append('allow_comments')
 
     def analyze(self, oFile):

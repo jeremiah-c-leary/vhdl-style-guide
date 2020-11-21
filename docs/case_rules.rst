@@ -135,6 +135,8 @@ case_007
 This rule checks for a blank line before the **case** keyword.
 Comments are allowed before the **case** keyword.
 
+Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+
 **Violation**
 
 .. code-block:: vhdl
@@ -163,6 +165,8 @@ case_008
 
 This rule checks for a blank line below the **is** keyword.
 
+Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+
 **Violation**
 
 .. code-block:: vhdl
@@ -182,6 +186,8 @@ case_009
 ########
 
 This rule checks for a blank line above the **end** keyword.
+
+Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
 
 **Violation**
 
@@ -204,6 +210,8 @@ case_010
 ########
 
 This rule checks for a blank line below the **end case** keywords.
+
+Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
 
 **Violation**
 

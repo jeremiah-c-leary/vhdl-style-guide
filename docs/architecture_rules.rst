@@ -35,6 +35,8 @@ architecture_003
 
 This rule check for a blank line above the **architecture** declaration.
 
+Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+
 **Violation**
 
 .. code-block:: vhdl
@@ -269,6 +271,8 @@ architecture_015
 
 This rule check for a blank line below the architecture declaration.
 
+Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+
 **Violation**
 
 .. code-block:: vhdl
@@ -291,6 +295,8 @@ architecture_016
 ################
 
 This rule checks for a blank line above the **begin** keyword.
+
+Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
 
 **Violation**
 
@@ -317,6 +323,8 @@ architecture_017
 
 This rule checks for a blank line below the **begin** keyword.
 
+Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+
 **Violation**
 
 .. code-block:: vhdl
@@ -336,6 +344,8 @@ architecture_018
 ################
 
 This rule checks for a blank line above the **end architecture** declaration.
+
+Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
 
 **Violation**
 

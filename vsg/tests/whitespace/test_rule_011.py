@@ -36,6 +36,7 @@ class test_context_rule(unittest.TestCase):
         lExpected.extend(range(51, 54))
         lExpected.extend(range(55, 58))
         lExpected.extend(range(59, 62))
+        lExpected.extend(range(63, 65))
 
 #        utils.print_objects(self.oFile,True)
 

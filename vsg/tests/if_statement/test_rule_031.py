@@ -22,6 +22,8 @@ class test_if_statement_rule(unittest.TestCase):
 
     def test_rule_031(self):
         oRule = if_statement.rule_031()
+        oRule.allow_comments = True
+
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'if')
         self.assertEqual(oRule.identifier, '031')
@@ -33,6 +35,7 @@ class test_if_statement_rule(unittest.TestCase):
 
     def test_fix_rule_031(self):
         oRule = if_statement.rule_031()
+        oRule.allow_comments = True
 
         oRule.fix(self.oFile)
 

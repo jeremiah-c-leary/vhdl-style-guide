@@ -55,11 +55,14 @@ end context c8;
 -- Check comments
 
 context c9 is -- comment 1
+
   -- comment 2
   -- comment 3
+
   library ieee; -- comment 4
 
 end context c9; -- comment 5
+
 -- comment 6
 -- comment 7
 -- comment 8

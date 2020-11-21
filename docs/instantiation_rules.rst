@@ -69,6 +69,8 @@ This rule checks for a blank line above the instantiation.
 
 .. NOTE:: Comments are allowed above the instantiation.
 
+Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+
 **Violation**
 
 .. code-block:: vhdl
@@ -392,6 +394,8 @@ instantiation_019
 #################
 
 This rule checks for a blank line below the end of the instantiation declaration.
+
+Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
 
 **Violation**
 

@@ -22,6 +22,8 @@ class test_case_rule(unittest.TestCase):
 
     def test_rule_007(self):
         oRule = case.rule_007()
+        oRule.allow_comments = True
+
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'case')
         self.assertEqual(oRule.identifier, '007')
@@ -33,6 +35,7 @@ class test_case_rule(unittest.TestCase):
 
     def test_fix_rule_007(self):
         oRule = case.rule_007()
+        oRule.allow_comments = True
 
         oRule.fix(self.oFile)
 

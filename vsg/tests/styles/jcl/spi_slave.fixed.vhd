@@ -249,7 +249,7 @@ begin
     severity FAILURE;
   -- maximum prefetch lookahead check
   assert PREFETCH <= N - 5
-    report "Generic parameter 'PREFETCH' error: lookahead count out of range, needs to be N - 5 maximum"
+    report "Generic parameter 'PREFETCH' error: lookahead count out of range, needs to be N-5 maximum"
     severity FAILURE;
 
   --=============================================================================================

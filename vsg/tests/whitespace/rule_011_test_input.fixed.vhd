@@ -60,4 +60,7 @@ begin
   a <= (b) ** (c);
   a <= (b) ** (c);
 
+  a(N - 1 downto 0);
+  a(N + 1 downto 0);
+
 end architecture RTL;

@@ -47,6 +47,8 @@ context_003
 This rule checks for a blank line above the **context** keyword.
 Comment are allowed.
 
+Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+
 **Violation**
 
 .. code-block:: vhdl
@@ -458,6 +460,8 @@ context_023
 
 This rule adds a blank line below the **is** keyword.
 
+Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+
 **Violation**
 
 .. code-block:: vhdl
@@ -478,6 +482,8 @@ context_024
 
 This rule adds a blank line above the **end** keyword.
 
+Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+
 **Violation**
 
 .. code-block:: vhdl
@@ -497,6 +503,8 @@ context_025
 ###########
 
 This rule adds a blank line below the context semicolon.
+
+Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
 
 **Violation**
 

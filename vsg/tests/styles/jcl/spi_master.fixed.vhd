@@ -214,6 +214,7 @@ end entity SPI_MASTER;
 -- this architecture is a pipelined register-transfer description.
 -- all signals are clocked at the rising edge of the system clock 'sclk_i'.
 --================================================================================================================
+
 architecture RTL of SPI_MASTER is
 
   -- core clocks, generated from 'sclk_i': initialized at GSR to differential values
@@ -298,7 +299,7 @@ begin
     severity FAILURE;
   -- maximum prefetch lookahead check
   assert PREFETCH <= N - 5
-    report "Generic parameter 'PREFETCH' (lookahead count) out of range, needs to be N - 5 maximum"
+    report "Generic parameter 'PREFETCH' (lookahead count) out of range, needs to be N-5 maximum"
     severity FAILURE;
   -- SPI_2X_CLK_DIV clock divider value must not be zero
   assert SPI_2X_CLK_DIV > 0

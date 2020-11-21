@@ -185,6 +185,8 @@ type_010
 
 This rule checks for a blank line above the **type** declaration.
 
+Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+
 **Violation**
 
 .. code-block:: vhdl
@@ -204,6 +206,8 @@ type_011
 ########
 
 This rule checks for a blank line below the **type** declaration.
+
+Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
 
 **Violation**
 

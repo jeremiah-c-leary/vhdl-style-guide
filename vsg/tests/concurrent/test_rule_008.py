@@ -20,19 +20,17 @@ class test_concurrent_rule(unittest.TestCase):
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
 
-    @unittest.skip('Need to rethink how this is done.')
     def test_rule_008(self):
         oRule = concurrent.rule_008()
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'concurrent')
         self.assertEqual(oRule.identifier, '008')
 
-        lExpected = [15, 16, 17, 18]
+        lExpected = [15, 16, 17, 18, 29, 30, 31, 33, 53, 54, 61, 62]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
-    @unittest.skip('Need to rethink how this is done.')
     def test_fix_rule_008(self):
         oRule = concurrent.rule_008()
 

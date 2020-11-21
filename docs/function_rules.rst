@@ -114,6 +114,8 @@ function_006
 
 This rule checks for a blank line above the **function** keyword.
 
+Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+
 **Violation**
 
 .. code-block:: vhdl
@@ -134,6 +136,8 @@ function_007
 ############
 
 This rule checks for a blank line below the end of the function declaration.
+
+Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
 
 **Violation**
 

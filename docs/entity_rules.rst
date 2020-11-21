@@ -45,6 +45,8 @@ entity_003
 
 This rule checks for a blank line above the entity keyword.
 
+Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+
 **Violation**
 
 .. code-block:: vhdl

@@ -231,3 +231,4 @@ Configure the indent size for all rules by setting the **global** attribute.
 .. include:: configuring_keyword_alignment.rst
 .. include:: configuring_declaration_identifier_alignment.rst
 .. include:: multiple_configurations.rst
+.. include:: configuring_blank_lines.rst

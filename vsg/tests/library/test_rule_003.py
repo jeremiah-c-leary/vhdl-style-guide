@@ -22,6 +22,7 @@ class test_library_rule(unittest.TestCase):
 
     def test_rule_003(self):
         oRule = library.rule_003()
+        oRule.allow_comments = True
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'library')
         self.assertEqual(oRule.identifier, '003')
@@ -33,6 +34,7 @@ class test_library_rule(unittest.TestCase):
 
     def test_fix_rule_003(self):
         oRule = library.rule_003()
+        oRule.allow_comments = True
 
         oRule.fix(self.oFile)
 
