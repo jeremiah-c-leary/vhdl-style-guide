@@ -1,5 +1,4 @@
 
-from .keyword_alignment_rule import keyword_alignment_rule
 from .token_indent import token_indent
 from .token_indent_between_tokens import token_indent_between_tokens
 from .remove_spaces_before_token_rule import remove_spaces_before_token_rule
