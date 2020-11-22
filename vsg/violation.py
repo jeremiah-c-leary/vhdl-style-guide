@@ -31,3 +31,11 @@ class New():
 
   def get_token_value(self):
       return self.oTokens.get_token_value()
+
+  def has_code_tag(self, sCodeTag):
+      try:
+          return self.oTokens.get_tokens()[0].has_code_tag(sCodeTag)
+      except IndexError:
+          return False
+      except AttributeError:
+          return False

@@ -1072,7 +1072,9 @@ class Tokens():
 
 
 def post_token_assignments(lTokens):
+    lCodeTags = []
     for iToken, oToken in enumerate(lTokens):
+        oToken.set_code_tags(lCodeTags)
         if isinstance(oToken, parser.todo):
             sValue = oToken.get_value()
             if sValue == '&':
@@ -1184,6 +1186,7 @@ def post_token_assignments(lTokens):
                 lTokens[iToken] = parser.character_literal(sValue)
                 continue
         else:
+            update_code_tags(oToken, lCodeTags)
             sValue = oToken.get_value()
             if sValue  == '+':
                 if utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken - 1, lTokens):
@@ -1212,3 +1215,25 @@ def set_token_hierarchy_value(lTokens):
             iIfHierarchy -= 1
             oToken.set_hierarchy(iIfHierarchy)
 
+def update_code_tags(oToken, lCodeTags):
+    if isinstance(oToken, parser.comment):
+        sValue = oToken.get_value()
+
+        if sValue.startswith('-- vsg_on'):
+          lValues = sValue.split()
+          if len(lValues) == 2:
+              lCodeTags.clear()
+          else:
+             for sCodeTag in lValues[2:]:
+                 lCodeTags.remove(sCodeTag)
+        elif sValue.startswith('-- vsg_off'):
+          lValues = sValue.split()
+          if len(lValues) == 2:
+              lCodeTags.clear()
+              lCodeTags.append('all')
+          else:
+             for sCodeTag in lValues[2:]:
+                 try:
+                     lCodeTags.append(sCodeTag)
+                 except ValueError:
+                     pass

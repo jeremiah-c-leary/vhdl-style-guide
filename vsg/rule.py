@@ -1,6 +1,7 @@
 
 
 from vsg import severity
+from vsg import violation
 
 
 class rule():
@@ -8,6 +9,7 @@ class rule():
     def __init__(self, name=None, identifier=None):
         self.name = name
         self.identifier = identifier
+        self.unique_id = str(name) + '_' + str(identifier)
         self.solution = None
         self.violations = []
         self.indentSize = 2
@@ -115,8 +117,9 @@ class rule():
         '''
         Adds a linenumber to a violations list.
         '''
-        self.violations.append(lineNumber)
-        self.severity.count += 1
+        if not lineNumber.has_code_tag(self.unique_id):
+            self.violations.append(lineNumber)
+            self.severity.count += 1
 
     def analyze(self, oFile):
         '''

@@ -11,6 +11,7 @@ class item():
         self.indent = None
         self.hierarchy = None
         self.context = []
+        self.code_tags = []
 
     def get_value(self):
         return self.value
@@ -41,6 +42,22 @@ class item():
 
     def get_context(self):
         return self.context()
+
+    def set_code_tags(self, lCodeTags):
+        self.code_tags = lCodeTags.copy()
+
+    def has_code_tag(self, sCodeTag):
+        if self.code_tags == ['all']:
+            return True
+        if sCodeTag in self.code_tags:
+            return True
+        return False
+        
+    def clear_code_tags(self):
+        self.code_tags = []
+
+    def set_all_code_tags(self):
+        self.code_tags = ['all']
 
 
 class todo(item):

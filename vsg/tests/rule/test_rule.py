@@ -2,7 +2,10 @@
 import unittest
 from unittest import mock
 
+from vsg import parser
 from vsg import rule
+from vsg import violation
+from vsg.vhdlFile.vhdlFile import Tokens
 
 
 class testRuleMethods(unittest.TestCase):
@@ -32,11 +35,15 @@ class testRuleMethods(unittest.TestCase):
     def test_add_violations_method(self):
         oRule = rule.rule()
         self.assertEqual(oRule.violations, [])
-        oRule.add_violation(1)
-        self.assertEqual(oRule.violations, [1])
-        oRule.add_violation(10)
-        oRule.add_violation(33)
-        self.assertEqual(oRule.violations, [1,10,33])
+
+        oTokens = Tokens(0, 0, [])
+        oViolation = violation.New(0, oTokens, '')
+
+        oRule.add_violation(oViolation)
+        self.assertEqual(len(oRule.violations), 1)
+        oRule.add_violation(oViolation)
+        oRule.add_violation(oViolation)
+        self.assertEqual(len(oRule.violations), 3)
 
     def test_rule_configure(self):
         oRule = rule.rule()
@@ -151,64 +158,43 @@ class testRuleMethods(unittest.TestCase):
         self.assertEqual(oRule.configuration, ['indentSize', 'phase', 'disable', 'fixable', 'severity', 'unknown'])
 
     def test_get_violations_w_vsg_output_method(self):
-        oRule = rule.rule()
-        oRule.name = 'xyz'
-        oRule.identifier = '001'
+        oRule = rule.rule('xyz', '001')
         oRule.solution = 'Solution'
-        dViolation = {}
-        dViolation['lineNumber'] = 1
-        oRule.add_violation(dViolation)
-        dViolation = {}
-        dViolation['lineNumber'] = 2
-        oRule.add_violation(dViolation)
-        dViolation = {}
-        dViolation['lines']= []
-        dLineViolation = {}
-        dLineViolation['number'] = 2
-        dViolation['lines'].append(dLineViolation)
-        dLineViolation = {}
-        dLineViolation['number'] = 3
-        dViolation['lines'].append(dLineViolation)
-        oRule.add_violation(dViolation)
 
-        lExpected = []
-        dExpected = {}
-        dExpected['rule'] = 'xyz_001'
-        dExpected['lineNumber'] = '1'
-        dExpected['solution'] = 'Solution'
-        dExpected['severity'] = {}
-        dExpected['severity']['name'] = 'Error'
-        dExpected['severity']['type'] = 'error'
-        lExpected.append(dExpected)
+        self.assertFalse(oRule.has_violations())
 
-        lActual = oRule.get_violations_at_linenumber(1)
-        self.assertEqual(lActual, lExpected)
+        oToken = parser.item('first')
+        oTokens = Tokens(0, 1, [oToken])
 
-        lExpected = []
-        dExpected = {}
-        dExpected['rule'] = 'xyz_001'
-        dExpected['lineNumber'] = '2'
-        dExpected['solution'] = 'Solution'
-        dExpected['severity'] = {}
-        dExpected['severity']['name'] = 'Error'
-        dExpected['severity']['type'] = 'error'
-        lExpected.append(dExpected)
-        dExpected = {}
-        dExpected['rule'] = 'xyz_001'
-        dExpected['lineNumber'] = '2'
-        dExpected['solution'] = 'Solution'
-        dExpected['severity'] = {}
-        dExpected['severity']['name'] = 'Error'
-        dExpected['severity']['type'] = 'error'
-        lExpected.append(dExpected)
+        oViolation = violation.New(1, oTokens, 'First')
+        oRule.add_violation(oViolation)
 
-        lActual = oRule.get_violations_at_linenumber(2)
-        self.assertEqual(lActual, lExpected)
+        oToken = parser.item('second')
+        oTokens = Tokens(1, 2, [oToken])
+
+        oViolation = violation.New(2, oTokens, 'Second')
+        oRule.add_violation(oViolation)
+
+        oToken = parser.item('third')
+        oTokens = Tokens(2, 3, [oToken])
+
+        oViolation = violation.New(3, oTokens, 'Third')
+        oRule.add_violation(oViolation)
+
+        dActual = oRule.get_violations_at_linenumber(1)
+        self.assertEqual('First', dActual[0]['solution'])
+
+        dActual = oRule.get_violations_at_linenumber(2)
+        self.assertEqual('Second', dActual[0]['solution'])
+
 
     def test_has_violations_method(self):
         oRule = rule.rule()
 
         self.assertFalse(oRule.has_violations())
 
-        oRule.add_violation(1)
+        oTokens = Tokens(0, 0, [])
+
+        oViolation = violation.New(0, oTokens, '')
+        oRule.add_violation(oViolation)
         self.assertTrue(oRule.has_violations())
