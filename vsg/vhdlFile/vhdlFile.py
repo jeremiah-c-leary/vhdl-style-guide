@@ -1002,6 +1002,9 @@ class vhdlFile():
 
         return lReturn
 
+    def get_tokens_between_indexes(self, iStartIndex, iEndIndex):
+        extract.get_tokens_between_indexes(iStartIndex, iEndIndex, self.lAllObjects)
+
 
 def is_whitespace(oObject):
     if type(oObject) == parser.carriage_return:
@@ -1211,6 +1214,10 @@ def set_token_hierarchy_value(lTokens):
         if isinstance(oToken, token.if_statement.if_keyword):
             oToken.set_hierarchy(iIfHierarchy)
             iIfHierarchy += 1
+        if isinstance(oToken, token.if_statement.elsif_keyword):
+            oToken.set_hierarchy(iIfHierarchy - 1)
+        if isinstance(oToken, token.if_statement.else_keyword):
+            oToken.set_hierarchy(iIfHierarchy - 1)
         if isinstance(oToken, token.if_statement.semicolon):
             iIfHierarchy -= 1
             oToken.set_hierarchy(iIfHierarchy)

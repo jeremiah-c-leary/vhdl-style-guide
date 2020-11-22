@@ -31,13 +31,14 @@ class align_tokens_in_region_between_tokens(rule_item.Rule):
        The second token that defines the region
     '''
 
-    def __init__(self, name, identifier, lTokens, left_token, right_token):
+    def __init__(self, name, identifier, lTokens, left_token, right_token, bIndexes=False):
         rule_item.Rule.__init__(self, name=name, identifier=identifier)
         self.solution = None
         self.phase = 5
         self.lTokens = lTokens
         self.left_token = left_token
         self.right_token = right_token
+        self.bIndexes = bIndexes
         ## Stuff below is from original keyword_alignment_rule
 
         self.compact_alignment = True
