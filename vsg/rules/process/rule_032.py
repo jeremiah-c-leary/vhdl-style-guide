@@ -20,3 +20,4 @@ class rule_032(move_token_sequences_left_of_token):
 
     def __init__(self):
         move_token_sequences_left_of_token.__init__(self, 'process', '032', lSequences, oLeftToken)
+        self.solution = 'Ensure process label is on the same line as process keyword.'
