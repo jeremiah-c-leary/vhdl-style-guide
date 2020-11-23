@@ -46,13 +46,13 @@ class token_indent_between_tokens(rule.Rule):
                 iWhitespace = len(lTokens[0].get_value())
                 iIndent = self.indentSize * lTokens[1].get_indent()
                 if iWhitespace != iIndent:
-                    sSolution = 'Indent level' + str(lTokens[1].get_indent())
+                    sSolution = 'Indent level ' + str(lTokens[1].get_indent())
                     oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
                     oViolation.set_action('adjust_whitespace')
                     self.add_violation(oViolation)
             elif len(lTokens) == 1:
                 if lTokens[0].get_indent() != 0:
-                    sSolution = 'Indent level' + str(lTokens[0].get_indent())
+                    sSolution = 'Indent level ' + str(lTokens[0].get_indent())
                     oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
                     oViolation.set_action('add_whitespace')
                     self.add_violation(oViolation)
