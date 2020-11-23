@@ -28,6 +28,11 @@ VHDL Style Guide (VSG)
 Announcements
 -------------
 
+**11/22/2020**
+
+All rules have been converted to the new parser and all previous tests are now passing.
+Additional hardening will continue to be performed.
+
 **11/12/2020**
 
 More progress has been made and I have started the hardening phase of the rewrite.
