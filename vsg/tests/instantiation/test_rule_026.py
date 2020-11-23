@@ -26,7 +26,7 @@ class test_instantiation_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'instantiation')
         self.assertEqual(oRule.identifier, '026')
 
-        lExpected = [21]
+        lExpected = [33]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
