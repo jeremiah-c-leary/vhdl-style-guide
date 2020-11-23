@@ -1,13 +1,13 @@
 
 
-from vsg import rule_item
+from vsg import rule
 from vsg import utils
 from vsg import parser
 
 from vsg import violation
 
 
-class token_case_in_range_bounded_by_tokens(rule_item.Rule):
+class token_case_in_range_bounded_by_tokens(rule.Rule):
     '''
     Checks the case for words.
 
@@ -25,7 +25,7 @@ class token_case_in_range_bounded_by_tokens(rule_item.Rule):
     '''
 
     def __init__(self, name, identifier, lTokens, oStart, oEnd):
-        rule_item.Rule.__init__(self, name=name, identifier=identifier)
+        rule.Rule.__init__(self, name=name, identifier=identifier)
         self.solution = None
         self.phase = 6
         self.case = 'lower'

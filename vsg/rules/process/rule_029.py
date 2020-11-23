@@ -1,7 +1,7 @@
 
 import sys
 
-from vsg import rule_item
+from vsg import rule
 from vsg import parser
 from vsg import token
 from vsg import vhdlFile
@@ -19,7 +19,7 @@ oStart = token.process_statement.begin_keyword
 oEnd = token.process_statement.end_keyword
 
 
-class rule_029(rule_item.Rule):
+class rule_029(rule.Rule):
     '''
     Checks the case for words.
 
@@ -37,7 +37,7 @@ class rule_029(rule_item.Rule):
     '''
 
     def __init__(self):
-        rule_item.Rule.__init__(self, 'process', '029')
+        rule.Rule.__init__(self, 'process', '029')
         self.solution = None
         self.phase = 1
         self.clock = 'event'

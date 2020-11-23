@@ -11,29 +11,29 @@ from vsg.vhdlFile.vhdlFile import Tokens
 class testRuleMethods(unittest.TestCase):
 
     def test_rule_exists(self):
-        oRule = rule.rule()
+        oRule = rule.Rule()
         self.assertTrue(oRule)
 
     def test_rule_name(self):
-        oRule = rule.rule()
+        oRule = rule.Rule()
         self.assertFalse(oRule.name)
         oRule.name = 'sName'
         self.assertEqual(oRule.name, 'sName')
 
     def test_rule_id(self):
-        oRule = rule.rule()
+        oRule = rule.Rule()
         self.assertFalse(oRule.identifier)
         oRule.id = 'rule id 001'
         self.assertEqual(oRule.id, 'rule id 001')
 
     def test_rule_solution(self):
-        oRule = rule.rule()
+        oRule = rule.Rule()
         self.assertFalse(oRule.solution)
         oRule.solution = 'rule solution'
         self.assertEqual(oRule.solution, 'rule solution')
 
     def test_add_violations_method(self):
-        oRule = rule.rule()
+        oRule = rule.Rule()
         self.assertEqual(oRule.violations, [])
 
         oTokens = Tokens(0, 0, [])
@@ -46,7 +46,7 @@ class testRuleMethods(unittest.TestCase):
         self.assertEqual(len(oRule.violations), 3)
 
     def test_rule_configure(self):
-        oRule = rule.rule()
+        oRule = rule.Rule()
         oRule.name = 'xyz'
         oRule.identifier = '001'
         oRule.solution = 'This is my solution'
@@ -94,7 +94,7 @@ class testRuleMethods(unittest.TestCase):
         self.assertEqual(oRule.indentSize,4)
 
     def test_get_configuration(self):
-        oRule = rule.rule()
+        oRule = rule.Rule()
         oRule.name = 'xyz'
         oRule.identifier = '010'
         oRule.phase = 3
@@ -111,13 +111,21 @@ class testRuleMethods(unittest.TestCase):
             self.assertEqual(dActual[sKey], dExpected[sKey])
 
     def test_get_solution(self):
-        oRule = rule.rule()
-        self.assertEqual(oRule._get_solution(100), None)
-        oRule.solution = 'Solution'
-        self.assertEqual(oRule._get_solution(100), 'Solution')
+        oRule = rule.Rule()
+
+        oTokens = Tokens(0, 0, [])
+        oViolation = violation.New(0, oTokens, 'Solution Line 0')
+
+        oRule.add_violation(oViolation)
+
+        oViolation = violation.New(1, oTokens, 'Solution Line 1')
+        oRule.add_violation(oViolation)
+
+        self.assertEqual(oRule._get_solution(0), 'Solution Line 0')
+        self.assertEqual(oRule._get_solution(1), 'Solution Line 1')
 
     def test_configure_rule_attributes_method(self):
-        oRule = rule.rule()
+        oRule = rule.Rule()
         oRule.name = 'xyz'
         oRule.identifier = '001'
         dConfiguration = {}
@@ -158,7 +166,7 @@ class testRuleMethods(unittest.TestCase):
         self.assertEqual(oRule.configuration, ['indentSize', 'phase', 'disable', 'fixable', 'severity', 'unknown'])
 
     def test_get_violations_w_vsg_output_method(self):
-        oRule = rule.rule('xyz', '001')
+        oRule = rule.Rule('xyz', '001')
         oRule.solution = 'Solution'
 
         self.assertFalse(oRule.has_violations())
@@ -189,7 +197,7 @@ class testRuleMethods(unittest.TestCase):
 
 
     def test_has_violations_method(self):
-        oRule = rule.rule()
+        oRule = rule.Rule()
 
         self.assertFalse(oRule.has_violations())
 

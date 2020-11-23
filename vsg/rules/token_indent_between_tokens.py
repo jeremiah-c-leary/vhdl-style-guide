@@ -1,13 +1,13 @@
 
 
-from vsg import rule_item
+from vsg import rule
 from vsg import utils
 from vsg import parser
 
 from vsg import violation
 
 
-class token_indent_between_tokens(rule_item.Rule):
+class token_indent_between_tokens(rule.Rule):
     '''
     Checks the case for words.
 
@@ -25,7 +25,7 @@ class token_indent_between_tokens(rule_item.Rule):
     '''
 
     def __init__(self, name, identifier, lTokens, oStart, oEnd, bIncludeLeadingCarriageReturn=False):
-        rule_item.Rule.__init__(self, name=name, identifier=identifier)
+        rule.Rule.__init__(self, name=name, identifier=identifier)
         self.solution = None
         self.phase = 4
         self.lTokens = lTokens

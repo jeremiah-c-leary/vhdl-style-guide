@@ -1,13 +1,13 @@
 
 
 from vsg import parser
-from vsg import rule_item
+from vsg import rule
 from vsg import violation
 
 from vsg.vhdlFile import utils
 
 
-class insert_carriage_return_after_token_if_it_is_not_followed_by_a_comment_when_between_tokens(rule_item.Rule):
+class insert_carriage_return_after_token_if_it_is_not_followed_by_a_comment_when_between_tokens(rule.Rule):
     '''
     Checks for a single space between two tokens.
 
@@ -31,7 +31,7 @@ class insert_carriage_return_after_token_if_it_is_not_followed_by_a_comment_when
     '''
 
     def __init__(self, name, identifier, lTokens, oStart, oEnd):
-        rule_item.Rule.__init__(self, name=name, identifier=identifier)
+        rule.Rule.__init__(self, name=name, identifier=identifier)
         self.solution = None
         self.phase = 1
         self.lTokens = lTokens

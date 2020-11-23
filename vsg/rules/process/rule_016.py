@@ -1,13 +1,13 @@
 
 from vsg import parser
-from vsg import rule_item
+from vsg import rule
 from vsg import token
 from vsg import violation
 
 from vsg.vhdlFile import utils
 
 
-class rule_016(rule_item.Rule):
+class rule_016(rule.Rule):
     '''
     Checks a process has a label.
 
@@ -28,7 +28,7 @@ class rule_016(rule_item.Rule):
     '''
 
     def __init__(self):
-        rule_item.Rule.__init__(self, 'process', '016')
+        rule.Rule.__init__(self, 'process', '016')
         self.solution = 'Add label for process'
         self.phase = 1
         self.fixable = False

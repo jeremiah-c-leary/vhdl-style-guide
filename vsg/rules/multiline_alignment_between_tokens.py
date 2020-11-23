@@ -1,14 +1,14 @@
 
 import copy
 
-from vsg import rule_item
+from vsg import rule
 from vsg import parser
 from vsg import violation
 
 from vsg.vhdlFile import utils
 
 
-class multiline_alignment_between_tokens(rule_item.Rule):
+class multiline_alignment_between_tokens(rule.Rule):
     '''
     Checks the case for words.
 
@@ -26,7 +26,7 @@ class multiline_alignment_between_tokens(rule_item.Rule):
     '''
 
     def __init__(self, name, identifier, lTokenPairs, bExcludeLastToken=False):
-        rule_item.Rule.__init__(self, name=name, identifier=identifier)
+        rule.Rule.__init__(self, name=name, identifier=identifier)
         self.solution = 'Align with open parenthesis on previous line.'
         self.phase = 4
         self.lTokenPairs = lTokenPairs

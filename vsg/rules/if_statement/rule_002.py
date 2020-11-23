@@ -1,7 +1,7 @@
 
 import sys
 
-from vsg import rule_item
+from vsg import rule
 from vsg import parser
 from vsg import token
 from vsg import vhdlFile
@@ -12,7 +12,7 @@ from vsg.token.ieee.std_logic_1164 import function
 from vsg.vhdlFile import utils
 
 
-class rule_002(rule_item.Rule):
+class rule_002(rule.Rule):
     '''
     Checks the expressions in if statements are enclosed in ()'s.
 
@@ -30,7 +30,7 @@ class rule_002(rule_item.Rule):
     '''
 
     def __init__(self):
-        rule_item.Rule.__init__(self, 'if', '002')
+        rule.Rule.__init__(self, 'if', '002')
         self.solution = None
         self.phase = 1
         self.solution = 'Enclose condition in ()\'s.'

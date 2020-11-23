@@ -1,6 +1,6 @@
 
 from vsg import parser
-from vsg import rule_item
+from vsg import rule
 from vsg import token
 from vsg import violation
 
@@ -13,7 +13,7 @@ oRightTokens = token.for_generate_statement.semicolon
 oValueTokens = token.for_generate_statement.generate_label
 
 
-class rule_011(rule_item.Rule):
+class rule_011(rule.Rule):
     '''
     Checks for the existence of a token and will insert it if it does not exist.
 
@@ -37,7 +37,7 @@ class rule_011(rule_item.Rule):
     '''
 
     def __init__(self):
-        rule_item.Rule.__init__(self, 'generate', '011')
+        rule.Rule.__init__(self, 'generate', '011')
         self.solution = 'Add generate label'
         self.phase = 1
         self.insert_token = oInsertTokens

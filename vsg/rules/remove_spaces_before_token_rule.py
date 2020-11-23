@@ -4,7 +4,7 @@ from vsg import rule
 from vsg import violation
 
 
-class remove_spaces_before_token_rule(rule.rule):
+class remove_spaces_before_token_rule(rule.Rule):
     '''
     This class removes whitespace before a given token.
 
@@ -23,7 +23,7 @@ class remove_spaces_before_token_rule(rule.rule):
 
     def __init__(self, name, identifier, oToken, bIgnoreIfLineStart=False):
 
-        rule.rule.__init__(self, name, identifier)
+        rule.Rule.__init__(self, name, identifier)
         self.phase = 2
         self.oToken = oToken
         self.solution = None
@@ -34,8 +34,6 @@ class remove_spaces_before_token_rule(rule.rule):
         for oToken in lTokens:
             self.add_violation(violation.New(oToken.get_line_number(), oToken, self.solution))
 
-    def _fix_violations(self, oFile):
-        for oViolation in self.violations:
-            lTokens = oViolation.get_tokens()
-            oViolation.set_tokens(lTokens[1:])
-        oFile.update(self.violations)
+    def _fix_violation(self, oViolation):
+        lTokens = oViolation.get_tokens()
+        oViolation.set_tokens(lTokens[1:])

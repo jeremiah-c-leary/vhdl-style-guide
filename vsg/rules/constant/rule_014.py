@@ -1,7 +1,7 @@
 
 import copy
 
-from vsg import rule_item
+from vsg import rule
 from vsg import parser
 from vsg import token
 from vsg import violation
@@ -13,7 +13,7 @@ lTokenPairs = []
 lTokenPairs.append([token.constant_declaration.assignment_operator, token.constant_declaration.semicolon])
 
 
-class rule_014(rule_item.Rule):
+class rule_014(rule.Rule):
     '''
     Checks the indent of multiline constants that are not arrays.
 
@@ -31,7 +31,7 @@ class rule_014(rule_item.Rule):
     '''
 
     def __init__(self):
-        rule_item.Rule.__init__(self, 'constant', '014')
+        rule.Rule.__init__(self, 'constant', '014')
         self.solution = 'Align one space after assignment operator'
         self.phase = 5
         self.lTokenPairs = lTokenPairs

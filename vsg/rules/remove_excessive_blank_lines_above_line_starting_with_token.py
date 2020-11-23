@@ -1,12 +1,12 @@
 
 from vsg import parser
-from vsg import rule_item
+from vsg import rule
 from vsg import violation
 
 from vsg.vhdlFile import utils
 
 
-class remove_excessive_blank_lines_above_line_starting_with_token(rule_item.Rule):
+class remove_excessive_blank_lines_above_line_starting_with_token(rule.Rule):
     '''
     Checks for excessive blank lines below a line ending with a given token
 
@@ -24,7 +24,7 @@ class remove_excessive_blank_lines_above_line_starting_with_token(rule_item.Rule
     '''
 
     def __init__(self, name, identifier, lTokens, iAllow=1, lOverrides=[]):
-        rule_item.Rule.__init__(self, name=name, identifier=identifier)
+        rule.Rule.__init__(self, name=name, identifier=identifier)
         self.solution = 'Remove blank lines above'
         self.phase = 3
         self.lTokens = lTokens

@@ -1,6 +1,6 @@
 
 from vsg import parser
-from vsg import rule_item
+from vsg import rule
 from vsg import token
 from vsg import violation
 
@@ -10,7 +10,7 @@ lTokens = []
 lTokens.append(token.generic_clause.close_parenthesis)
 
 
-class rule_010(rule_item.Rule):
+class rule_010(rule.Rule):
     '''
     Moves code after the ) to the next line.
 
@@ -28,7 +28,7 @@ class rule_010(rule_item.Rule):
     '''
 
     def __init__(self):
-        rule_item.Rule.__init__(self, 'generic', '010')
+        rule.Rule.__init__(self, 'generic', '010')
         self.solution = 'Closing parenthesis must be on a line by itself.'
         self.phase = 1
         self.lTokens = lTokens

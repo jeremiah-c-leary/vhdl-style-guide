@@ -1,13 +1,13 @@
 
 
-from vsg import rule_item
+from vsg import rule
 from vsg import utils
 from vsg import parser
 
 from vsg import violation
 
 
-class blank_line_above_line_starting_with_token(rule_item.Rule):
+class blank_line_above_line_starting_with_token(rule.Rule):
     '''
     Checks for a blank line above a line starting with a given token
 
@@ -25,7 +25,7 @@ class blank_line_above_line_starting_with_token(rule_item.Rule):
     '''
 
     def __init__(self, name, identifier, lTokens):
-        rule_item.Rule.__init__(self, name=name, identifier=identifier)
+        rule.Rule.__init__(self, name=name, identifier=identifier)
         self.solution = 'Insert blank line above'
         self.phase = 3
         self.lTokens = lTokens

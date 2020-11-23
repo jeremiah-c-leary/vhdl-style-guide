@@ -1,13 +1,13 @@
 
 
-from vsg import rule_item
+from vsg import rule
 from vsg import parser
 from vsg import violation
 
 from vsg.vhdlFile import utils
 
 
-class move_token_sequences_left_of_token(rule_item.Rule):
+class move_token_sequences_left_of_token(rule.Rule):
     '''
     Checks the case for words.
 
@@ -25,7 +25,7 @@ class move_token_sequences_left_of_token(rule_item.Rule):
     '''
 
     def __init__(self, name, identifier, lSequences, oLeftToken):
-        rule_item.Rule.__init__(self, name=name, identifier=identifier)
+        rule.Rule.__init__(self, name=name, identifier=identifier)
         self.solution = None
         self.phase = 1
         self.lSequences = lSequences

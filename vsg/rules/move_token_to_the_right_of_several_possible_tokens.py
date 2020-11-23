@@ -1,6 +1,6 @@
 
 
-from vsg import rule_item
+from vsg import rule
 from vsg import parser
 
 from vsg import violation
@@ -8,7 +8,7 @@ from vsg import violation
 from vsg.vhdlFile import utils
 
 
-class move_token_to_the_right_of_several_possible_tokens(rule_item.Rule):
+class move_token_to_the_right_of_several_possible_tokens(rule.Rule):
     '''
     Moves one token next to several possible tokens.
 
@@ -30,7 +30,7 @@ class move_token_to_the_right_of_several_possible_tokens(rule_item.Rule):
     '''
 
     def __init__(self, name, identifier, oMoveToken, lAnchorTokens):
-        rule_item.Rule.__init__(self, name, identifier)
+        rule.Rule.__init__(self, name, identifier)
         self.solution = None
         self.phase = 1
         self.oMoveToken = oMoveToken

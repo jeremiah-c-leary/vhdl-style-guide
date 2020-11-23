@@ -1,13 +1,13 @@
 
 
 from vsg import parser
-from vsg import rule_item
+from vsg import rule
 from vsg import violation
 
 from vsg.vhdlFile import utils
 
 
-class align_consecutive_lines_starting_with_a_comment_above_line_starting_with_token(rule_item.Rule):
+class align_consecutive_lines_starting_with_a_comment_above_line_starting_with_token(rule.Rule):
     '''
     Checks for a single space between two tokens.
 
@@ -25,7 +25,7 @@ class align_consecutive_lines_starting_with_a_comment_above_line_starting_with_t
     '''
 
     def __init__(self, name, identifier, token):
-        rule_item.Rule.__init__(self, name=name, identifier=identifier)
+        rule.Rule.__init__(self, name=name, identifier=identifier)
         self.solution = None
         self.phase = 4
         self.token = token

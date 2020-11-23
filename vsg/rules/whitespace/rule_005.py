@@ -1,6 +1,6 @@
 
 from vsg import parser
-from vsg import rule_item
+from vsg import rule
 from vsg import violation
 
 from vsg.vhdlFile import utils
@@ -9,13 +9,13 @@ lTokens = []
 lTokens.append(parser.open_parenthesis)
 
 
-class rule_005(rule_item.Rule):
+class rule_005(rule.Rule):
     '''
     Checks for spaces after an open parenthesis.
     '''
 
     def __init__(self):
-        rule_item.Rule.__init__(self, 'whitespace', '005')
+        rule.Rule.__init__(self, 'whitespace', '005')
         self.solution = 'Remove spaces after open (.'
         self.phase = 2
         self.iSpaces = 0

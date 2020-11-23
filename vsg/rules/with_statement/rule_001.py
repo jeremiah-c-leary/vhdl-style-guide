@@ -1,10 +1,10 @@
 
-from vsg import rule_item
+from vsg import rule
 from vsg import token
 from vsg import violation
 
 
-class rule_001(rule_item.Rule):
+class rule_001(rule.Rule):
     '''
     Checks the case for words.
 
@@ -22,7 +22,7 @@ class rule_001(rule_item.Rule):
     '''
 
     def __init__(self):
-        rule_item.Rule.__init__(self, name='with', identifier='001')
+        rule.Rule.__init__(self, name='with', identifier='001')
         self.solution = "Rewrite with as a process"
         self.phase = 1
         self.fixable = False

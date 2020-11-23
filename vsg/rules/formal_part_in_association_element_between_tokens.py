@@ -1,10 +1,10 @@
 
-from vsg import rule_item
+from vsg import rule
 from vsg import token
 from vsg import violation
 
 
-class formal_part_in_association_element_between_tokens(rule_item.Rule):
+class formal_part_in_association_element_between_tokens(rule.Rule):
     '''
     Checks the case for words.
 
@@ -25,7 +25,7 @@ class formal_part_in_association_element_between_tokens(rule_item.Rule):
     '''
 
     def __init__(self, name, identifier, oStart, oEnd):
-        rule_item.Rule.__init__(self, name=name, identifier=identifier)
+        rule.Rule.__init__(self, name=name, identifier=identifier)
         self.solution = None
         self.phase = 1
         self.fixable = False

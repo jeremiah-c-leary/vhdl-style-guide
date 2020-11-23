@@ -1,13 +1,13 @@
 
 
-from vsg import rule_item
+from vsg import rule
 from vsg import severity
 from vsg import violation
 
 from vsg.vhdlFile import utils
 
 
-class line_length(rule_item.Rule):
+class line_length(rule.Rule):
     '''
     Checks for a at least a single space before a token.
 
@@ -23,7 +23,7 @@ class line_length(rule_item.Rule):
     '''
 
     def __init__(self, name, identifier):
-        rule_item.Rule.__init__(self, name=name, identifier=identifier)
+        rule.Rule.__init__(self, name=name, identifier=identifier)
         self.phase = 7
         self.fixable = False  # The user will have to fix line length violations
         self.disable = False

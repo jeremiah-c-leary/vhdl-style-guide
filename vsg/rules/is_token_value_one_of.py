@@ -1,17 +1,17 @@
 
 
-from vsg import rule_item
+from vsg import rule
 from vsg import utils
 from vsg import violation
 
 
-class is_token_value_one_of(rule_item.Rule):
+class is_token_value_one_of(rule.Rule):
     '''
     Checks if a token value is in a list of provided values.
     '''
 
     def __init__(self, name, identifier, token):
-        rule_item.Rule.__init__(self, name, identifier)
+        rule.Rule.__init__(self, name, identifier)
         self.names = []
         self.solution = None
         self.phase = 7

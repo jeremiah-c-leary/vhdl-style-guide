@@ -1,13 +1,13 @@
 
-from vsg import rule_item
+from vsg import rule
 from vsg import token
 from vsg import violation
 
 
-class rule_001(rule_item.Rule):
+class rule_001(rule.Rule):
 
   def __init__(self):
-      rule_item.Rule.__init__(self, 'localized', '001')
+      rule.Rule.__init__(self, 'localized', '001')
       self.phase = 1
       self.fixable = False  # User must split the file
       self.solution = 'Split entity and architecture into seperate files.'

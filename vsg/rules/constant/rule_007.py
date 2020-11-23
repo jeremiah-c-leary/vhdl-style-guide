@@ -1,5 +1,5 @@
 
-from vsg import rule_item
+from vsg import rule
 from vsg import parser
 from vsg import violation
 
@@ -8,13 +8,13 @@ from vsg.token import constant_declaration as token
 from vsg.vhdlFile import utils
 
 
-class rule_007(rule_item.Rule):
+class rule_007(rule.Rule):
     '''
     Checks the assignment operator is on the same line as the constant keyword.
     '''
 
     def __init__(self):
-        rule_item.Rule.__init__(self, 'constant', '007')
+        rule.Rule.__init__(self, 'constant', '007')
         self.solution = 'move assignment to same line as constant declaration.'
         self.phase = 1
         self.fixable = False  # Too complicated at the moment to fix.

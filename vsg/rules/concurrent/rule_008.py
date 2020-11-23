@@ -1,6 +1,6 @@
 
 from vsg import parser
-from vsg import rule_item
+from vsg import rule
 from vsg import token
 from vsg import violation
 
@@ -27,7 +27,7 @@ lEnd.append(token.concurrent_conditional_signal_assignment.semicolon)
 lEnd.append(token.concurrent_simple_signal_assignment.semicolon)
 
 
-class rule_008(rule_item.Rule):
+class rule_008(rule.Rule):
     '''
     Checks for a single space between two tokens.
 
@@ -54,7 +54,7 @@ class rule_008(rule_item.Rule):
     '''
 
     def __init__(self):
-        rule_item.Rule.__init__(self, 'concurrent', '008')
+        rule.Rule.__init__(self, 'concurrent', '008')
         self.solution = 'Align comment'
         self.phase = 5
         self.subphase = 2

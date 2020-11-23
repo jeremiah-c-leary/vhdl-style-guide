@@ -1,13 +1,13 @@
 
 
 from vsg import parser
-from vsg import rule_item
+from vsg import rule
 from vsg import violation
 
 from vsg.vhdlFile import utils
 
 
-class whitespace_before_tokens_in_between_tokens(rule_item.Rule):
+class whitespace_before_tokens_in_between_tokens(rule.Rule):
     '''
     Checks for a at least a single space before a token.
 
@@ -31,7 +31,7 @@ class whitespace_before_tokens_in_between_tokens(rule_item.Rule):
     '''
 
     def __init__(self, name, identifier, lTokens, oStart, oEnd):
-        rule_item.Rule.__init__(self, name=name, identifier=identifier)
+        rule.Rule.__init__(self, name=name, identifier=identifier)
         self.solution = None
         self.phase = 2
         self.lTokens = lTokens

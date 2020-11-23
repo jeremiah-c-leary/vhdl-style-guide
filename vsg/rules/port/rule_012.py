@@ -1,5 +1,5 @@
 
-from vsg import rule_item
+from vsg import rule
 from vsg import parser
 from vsg import token
 from vsg import violation
@@ -11,7 +11,7 @@ lTokens.append(token.interface_variable_declaration.assignment)
 lTokens.append(token.interface_unknown_declaration.assignment)
 
 
-class rule_012(rule_item.Rule):
+class rule_012(rule.Rule):
     '''
     Checks the case for words.
 
@@ -29,7 +29,7 @@ class rule_012(rule_item.Rule):
     '''
 
     def __init__(self):
-        rule_item.Rule.__init__(self, name='port', identifier='012')
+        rule.Rule.__init__(self, name='port', identifier='012')
         self.solution = 'Remove assignment'
         self.phase = 1
         self.lTokens = lTokens

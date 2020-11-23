@@ -1,7 +1,7 @@
 
 import sys
 
-from vsg import rule_item
+from vsg import rule
 from vsg import parser
 from vsg import token
 from vsg import vhdlFile
@@ -30,7 +30,7 @@ lEndAssignments.append(token.simple_force_assignment.semicolon)
 lEndAssignments.append(token.simple_release_assignment.semicolon)
 
 
-class rule_001(rule_item.Rule):
+class rule_001(rule.Rule):
     '''
     Checks the case for words.
 
@@ -48,7 +48,7 @@ class rule_001(rule_item.Rule):
     '''
 
     def __init__(self):
-        rule_item.Rule.__init__(self, 'after', '001')
+        rule.Rule.__init__(self, 'after', '001')
         self.solution = None
         self.disable = True
         self.phase = 1

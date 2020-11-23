@@ -1,13 +1,13 @@
 
 from vsg import parser
-from vsg import rule_item
+from vsg import rule
 from vsg import token
 from vsg import violation
 
 from vsg.vhdlFile import utils
 
 
-class rule_012(rule_item.Rule):
+class rule_012(rule.Rule):
     '''
     Checks for a single space between two tokens.
 
@@ -34,7 +34,7 @@ class rule_012(rule_item.Rule):
     '''
 
     def __init__(self):
-        rule_item.Rule.__init__(self, 'signal', '012')
+        rule.Rule.__init__(self, 'signal', '012')
         self.solution = None
         self.phase = 5
         self.subphase = 2

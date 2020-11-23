@@ -1,13 +1,13 @@
 
 
 from vsg import parser
-from vsg import rule_item
+from vsg import rule
 from vsg import violation
 
 from vsg.vhdlFile import utils
 
 
-class insert_token_right_of_possible_tokens_if_it_does_not_exist_before_token(rule_item.Rule):
+class insert_token_right_of_possible_tokens_if_it_does_not_exist_before_token(rule.Rule):
     '''
     Checks for the existence of a token and will insert it if it does not exist.
 
@@ -31,7 +31,7 @@ class insert_token_right_of_possible_tokens_if_it_does_not_exist_before_token(ru
     '''
 
     def __init__(self, name, identifier, insert_token, anchor_tokens, end_token):
-        rule_item.Rule.__init__(self, name=name, identifier=identifier)
+        rule.Rule.__init__(self, name=name, identifier=identifier)
         self.solution = None
         self.phase = 1
         self.oInsertToken = insert_token

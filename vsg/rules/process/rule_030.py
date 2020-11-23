@@ -1,13 +1,13 @@
 
 from vsg import parser
-from vsg import rule_item
+from vsg import rule
 from vsg import token
 from vsg import violation
 
 from vsg.vhdlFile import utils
 
 
-class rule_030(rule_item.Rule):
+class rule_030(rule.Rule):
     '''
     Checks for single signal declarations on sensitivity list lines.
 
@@ -28,7 +28,7 @@ class rule_030(rule_item.Rule):
     '''
 
     def __init__(self):
-        rule_item.Rule.__init__(self, 'process', '030')
+        rule.Rule.__init__(self, 'process', '030')
         self.solution = 'Compact sensitivity list to reduce the number of lines it uses.'
         self.phase = 1
         self.fixable = False

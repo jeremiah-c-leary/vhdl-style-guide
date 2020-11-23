@@ -1,5 +1,5 @@
 
-from vsg import rule_item
+from vsg import rule
 from vsg import parser
 from vsg import token
 from vsg import violation
@@ -18,13 +18,13 @@ lTokenPairs.append([token.concurrent_conditional_signal_assignment.assignment, t
 lTokenPairs.append([token.conditional_waveform_assignment.assignment, token.conditional_waveform_assignment.semicolon])
 
 
-class rule_001(rule_item.Rule):
+class rule_001(rule.Rule):
     '''
     Checks the when and else keywords are on the same line
     '''
 
     def __init__(self):
-        rule_item.Rule.__init__(self, 'when', '001')
+        rule.Rule.__init__(self, 'when', '001')
         self.solution = None
         self.phase = 1
         self.lMoveTokens = lMoveTokens

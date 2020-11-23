@@ -1,13 +1,13 @@
 
 
 from vsg import parser
-from vsg import rule_item
+from vsg import rule
 from vsg import token
 from vsg.vhdlFile import utils
 from vsg import violation
 
 
-class remove_carriage_returns_between_token_pairs(rule_item.Rule):
+class remove_carriage_returns_between_token_pairs(rule.Rule):
     '''
     Checks the case for words.
 
@@ -28,7 +28,7 @@ class remove_carriage_returns_between_token_pairs(rule_item.Rule):
     '''
 
     def __init__(self, name, identifier, lTokens):
-        rule_item.Rule.__init__(self, name=name, identifier=identifier)
+        rule.Rule.__init__(self, name=name, identifier=identifier)
         self.solution = None
         self.phase = 1
         self.lTokens = lTokens

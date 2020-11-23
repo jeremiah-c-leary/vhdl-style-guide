@@ -2,9 +2,10 @@
 
 from vsg import severity
 from vsg import violation
+from vsg import utils
 
 
-class rule():
+class Rule():
 
     def __init__(self, name=None, identifier=None):
         self.name = name
@@ -71,6 +72,7 @@ class rule():
     def get_unique_id(self):
         return self.name + '_' + self.identifier
 
+
     def get_violations_at_linenumber(self, iLineNumber):
         '''
         Returns a list of formatted violations.
@@ -84,20 +86,8 @@ class rule():
         lReturn = []
 
         for violation in self.violations:
-            check_for_old_violation_format(violation)
-            try:
-                lKeys = list(violation.keys())
-                if 'lineNumber' in lKeys:
-                    sViolation = str(violation['lineNumber'])
-                    self._build_violation_dict(lReturn, sViolation, iLineNumber)
-    
-                elif 'lines' in lKeys:
-                    for dLineViolation in violation['lines']:
-                        sViolation = str(dLineViolation['number'])
-                        self._build_violation_dict(lReturn, sViolation, iLineNumber)
-            except AttributeError:
-                if violation.get_line_number() == iLineNumber:
-                    lReturn.append(self._build_violation_dict_from_violation_object(violation))
+            if violation.get_line_number() == iLineNumber:
+                lReturn.append(self._build_violation_dict_from_violation_object(violation))
 
         return lReturn
 
@@ -107,11 +97,12 @@ class rule():
         '''
         if self.fixable:
             self.analyze(oFile)
-            self._print_debug_message('Fixing rule: ' + self.name + '_' + self.identifier)
-            self._fix_violations(oFile)
+            self._print_debug_message('Fixing rule: ' + self.unique_id)
+            for oViolation in self.violations[::-1]:
+                self._fix_violation(oViolation)
+            oFile.update(self.violations)
             self.clear_violations()
-            self.dFix = {}
-            self.dFix['violations'] = {}
+
 
     def add_violation(self, lineNumber):
         '''
@@ -176,12 +167,18 @@ class rule():
         dConfig['severity'] = self.severity.name
         return dConfig
 
+#    def _get_solution(self, iLineNumber):
+#        '''
+#        By default this method return self.solution.
+#        This method can be overloaded by a rule if a more complex solution output is required.
+#        '''
+#        return self.solution
+
     def _get_solution(self, iLineNumber):
         '''
-        By default this method return self.solution.
-        This method can be overloaded by a rule if a more complex solution output is required.
+        Returns the solution for a violation.
         '''
-        return self.solution
+        return utils.get_violation_solution_at_line_number(self.violations, iLineNumber)
 
     def _pre_analyze(self):
         '''
