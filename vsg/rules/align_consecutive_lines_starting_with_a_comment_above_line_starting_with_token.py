@@ -107,6 +107,7 @@ class align_consecutive_lines_starting_with_a_comment_above_line_starting_with_t
                 lTokens[0].set_value(' ' * dAction['adjust'])
             elif dAction['type'] == 'insert':
                 lTokens.insert(0, parser.whitespace(' ' * dAction['adjust']))
+            lTokens[1].set_indent(lTokens[1].get_indent() - 1)
             oViolation.set_tokens(lTokens)
         oFile.update(self.violations)
 
