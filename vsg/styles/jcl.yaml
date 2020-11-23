@@ -25,9 +25,9 @@ rule :
     case : upper
   instantiation_009 :
     case : upper
-  instantiation_011 :
+  port_map_002:
     case : upper
-  instantiation_016 :
+  generic_map_002:
     case : upper
   port_010 : 
     case : upper

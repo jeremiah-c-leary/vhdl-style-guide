@@ -110,42 +110,15 @@ This rule checks the **port map** keywords are on their own line.
    U_FIFO : FIFO
      port map (
 
-instantiation_006
-#################
+instantiation_006 (depricated)
+##############################
 
-This rule checks the **port map** keywords have proper case.
+This rule has been renamed to **port_map_001**
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+instantiation_007 (depricated)
+##############################
 
-**Violation**
-
-.. code-block:: vhdl
-
-   PORT MAP (
-
-**Fix**
-
-.. code-block:: vhdl
-
-   port map (
-
-instantiation_007
-#################
-
-This rule checks the closing ) for the port map is on it's own line.
-
-**Violation**
-
-.. code-block:: vhdl
-
-    WR_EN => wr_en);
-
-**Fix**
-
-.. code-block:: vhdl
-
-      WR_EN => wr_en
-    );
+This rule has been renamed to **port_map_004**
 
 instantiation_008
 #################
@@ -226,35 +199,10 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring_keyword_a
        overflow => overflow
      );
 
-instantiation_011
-#################
+instantiation_011 (depricated)
+##############################
 
-This rule checks the port name is uppercase.
-Indexes on ports will not be uppercased.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   U_FIFO : FIFO
-     port map (
-       wr_en              => wr_en,
-       rd_en              => rd_en,
-       OVERFLOW           => overflow,
-       underflow(c_index) => underflow
-     );
-
-**Fix**
-
-.. code-block:: vhdl
-
-   U_FIFO : FIFO
-     port map (
-       WR_EN              => wr_en,
-       RD_EN              => rd_en,
-       OVERFLOW           => overflow,
-       UNDERFLOW(c_index) => underflow
-     );
+This rule has been renamed to **port_map_002**
 
 instantiation_012
 #################
@@ -274,121 +222,30 @@ This rule checks the instantiation declaration and the **generic map** keywords 
    U_FIFO : FIFO
      generic map (
 
-instantiation_013
-#################
+instantiation_013 (depricated)
+##############################
 
-This rule checks the **generic map** keywords have proper case.
+This rule has been renamed to **generic_map_001**
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+instantiation_014 (depricated)
+##############################
 
-**Violation**
+This rule has been renamed to **generic_map_004**
 
-.. code-block:: vhdl
+instantiation_016 (depricated)
+##############################
 
-   GENERIC MAP (
+This rule has been renamed to **generic_map_002**
 
-**Fix**
+instantiation_017 (depricated)
+##############################
 
-.. code-block:: vhdl
+This rule has been renamed to **generic_map_005**
 
-   generic map (
+instantiation_018 (depricated)
+##############################
 
-instantiation_014
-#################
-
-This rule checks for the closing parenthesis *)* on generic maps are on their own line.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   INSTANCE_NAME : ENTITY_NAME
-     generic map (
-       GENERIC_1 => 0,
-       GENERIC_2 => TRUE,
-       GENERIC_3 => FALSE)
-
-**Fix**
-
-.. code-block:: vhdl
-
-   INSTANCE_NAME : ENTITY_NAME
-     generic map (
-       GENERIC_1 => 0,
-       GENERIC_2 => TRUE,
-       GENERIC_3 => FALSE
-     )
-
-instantiation_016
-#################
-
-This rule checks generic names have proper case.
-
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   u_fifo : fifo
-     generic map (
-       DEPTH => 512,
-       WIDTH => 32
-     )
-
-**Fix**
-
-.. code-block:: vhdl
-
-   u_fifo : fifo
-     generic map (
-       depth => 512,
-       width => 32
-     )
-
-
-instantiation_017
-#################
-
-This rule checks if the **generic map** keywords and a generic assignment are on the same line.
-
-**Violation**
-
-.. code-block:: vhdl
-
-     generic map (DEPTH => 512,
-       WIDTH => 32
-     )
-
-**Fix**
-
-.. code-block:: vhdl
-
-     generic map (
-       DEPTH => 512,
-       WIDTH => 32
-     )
-
-instantiation_018
-#################
-
-This rule checks for a single space between the **map** keyword and the (.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   generic map(
-
-   generic map   (
-
-**Fix**
-
-.. code-block:: vhdl
-
-   generic map (
-
-   generic map (
+This rule has been renamed to **generic_map_006**
 
 instantiation_019
 #################
@@ -425,79 +282,17 @@ Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ f
 instantiation_020
 #################
 
-This rule checks for a port assignment on the same line as the **port map** keyword.
+This rule has been renamed to **port_map_005**
 
-**Violation**
+instantiation_021 (depricated)
+##############################
 
-.. code-block:: vhdl
+This rule has been renamed to **port_map_009**
 
-   U_FIFO : FIFO
-     port map (WR_EN    => wr_en,
-       RD_EN    => rd_en,
-       OVERFLOW => overflow
-     );
+instantiation_022 (depricated)
+##############################
 
-**Fix**
-
-.. code-block:: vhdl
-
-   U_FIFO : FIFO
-     port map (
-       WR_EN    => wr_en,
-       RD_EN    => rd_en,
-       OVERFLOW => overflow
-     );
-
-instantiation_021
-#################
-
-This rule checks multiple port assignments on the same line.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   port map (
-     WR_EN => w_wr_en, RD_EN => w_rd_en,
-     OVERFLOW => w_overflow
-   );
-
-**Fix**
-
-.. code-block:: vhdl
-
-   port map (
-     WR_EN => w_wr_en,
-     RD_EN => w_rd_en,
-     OVERFLOW => w_overflow
-   );
-
-instantiation_022
-#################
-
-This rule checks for a single space after the **=>** operator in port maps.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   U_FIFO : FIFO
-     port map (
-       WR_EN    =>   wr_en,
-       RD_EN    =>rd_en,
-       OVERFLOW =>     overflow
-     );
-
-**Fix**
-
-.. code-block:: vhdl
-
-   U_FIFO : FIFO
-     port map (
-       WR_EN    => wr_en,
-       RD_EN    => rd_en,
-       OVERFLOW => overflow
-     );
+This rule has been renamed to **port_map_007**
 
 instantiation_023
 #################
@@ -521,87 +316,22 @@ Refer to the entity for port types, port directions and purpose.
    WR_EN => w_wr_en;
    RD_EN => w_rd_en;
 
-instantiation_024
-#################
+instantiation_024 (depricated)
+##############################
 
-This rule checks for positional generics and ports.
-Positional ports and generics are subject to problems when the position of the underlying component changes.
+This rule has been split into **generic_map_008** and **port_map_008**.
 
-**Violation**
+instantiation_025 (depricated)
+##############################
 
-.. code-block:: vhdl
+This rule has been renamed to **port_map_003**
 
-   port map (
-     WR_EN, RD_EN, OVERFLOW
-   );
+instantiation_026 (depricated)
+##############################
 
-**Fix**
+This rule has been renamed to **generic_map_003**
 
-Use explicit port mapping.
-
-.. code-block:: vhdl
-
-   port map (
-     WR_EN    => WR_EN,
-     RD_EN    => RD_EN,
-     OVERFLOW => OVERFLOW
-   );
-
-instantiation_025
-#################
-
-This rule checks the ( is on the same line as the **port map** keywords.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   port map
-   (
-     WR_EN    => WR_EN,
-     RD_EN    => RD_EN,
-     OVERFLOW => OVERFLOW
-   );
-
-**Fix**
-
-Use explicit port mapping.
-
-.. code-block:: vhdl
-
-   port map (
-     WR_EN    => WR_EN,
-     RD_EN    => RD_EN,
-     OVERFLOW => OVERFLOW
-   );
-
-instantiation_026
-#################
-
-This rule checks the ( is on the same line as the **generic map** keywords.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   generic map
-   (
-     WIDTH => 32,
-     DEPTH => 512
-   )
-
-**Fix**
-
-Use explicit port mapping.
-
-.. code-block:: vhdl
-
-   generic map (
-     WIDTH => 32,
-     DEPTH => 512
-   )
-
-instantiation_027
+instantiation_027 (depricated)
 #################
 
 This rule checks the **entity** keyword has proper case in direct instantiations.
@@ -667,30 +397,10 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring_keyword_a
        rd_en    => read_enable,  -- Read enable
        overflow => overflow,     -- FIFO has overflowed
 
-instantiation_030
-#################
+instantiation_030 (depricated)
+##############################
 
-This rule checks for a single space after the **=>** keyword in generic maps.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   generic map
-   (
-     WIDTH =>    32,
-     DEPTH => 512
-   )
-
-**Fix**
-
-.. code-block:: vhdl
-
-   generic map
-   (
-     WIDTH => 32,
-     DEPTH => 512
-   )
+This rule has been renamed to **generic_map_007**
 
 instantiation_031
 #################
