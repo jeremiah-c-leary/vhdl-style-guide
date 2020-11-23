@@ -17,10 +17,10 @@ from vsg.token.ieee.std_logic_1164 import function
 from vsg.vhdlFile import extract
 from vsg.vhdlFile import utils
 
-from vsg.vhdlFile.classify_new import blank
-from vsg.vhdlFile.classify_new import comment
-from vsg.vhdlFile.classify_new import design_file
-from vsg.vhdlFile.classify_new import whitespace
+from vsg.vhdlFile.classify import blank
+from vsg.vhdlFile.classify import comment
+from vsg.vhdlFile.classify import design_file
+from vsg.vhdlFile.classify import whitespace
 
 from vsg.vhdlFile.indent import loop_statement
 from vsg.vhdlFile.indent import function_specification
