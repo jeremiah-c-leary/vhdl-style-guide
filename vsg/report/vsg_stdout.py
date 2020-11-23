@@ -94,7 +94,10 @@ def print_violations(dRunInfo):
             sOutputString += ' | '
             sOutputString += dViolation['lineNumber'].rjust(10)
             sOutputString += ' | '
-            sOutputString += dViolation['solution']
+            try:
+                sOutputString += dViolation['solution']
+            except TypeError:
+                sOutputString += 'None'
             print(sOutputString)
         print_divider()
         print('NOTE: Refer to online documentation at https://vhdl-style-guide.readthedocs.io/en/latest/index.html for more information.')
