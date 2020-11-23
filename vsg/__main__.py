@@ -223,6 +223,14 @@ def read_vhdlfile(sFileName):
                 lLines.append(sLine)
         oFile.close()
         return lLines
+    except UnicodeDecodeError:
+        lLines = []
+        with open(sFileName, encoding="ISO-8859-1") as oFile:
+            for sLine in oFile:
+                lLines.append(sLine)
+        oFile.close()
+        return lLines
+
     except IOError:
         return []
 
