@@ -14,3 +14,4 @@ class rule_004(whitespace_before_token):
 
     def __init__(self):
         whitespace_before_token.__init__(self, 'comment', '004', lTokens)
+        self.solution = 'Add a single space before comment'
