@@ -97,8 +97,8 @@ class multiline_alignment_between_tokens(rule.Rule):
                             dAction = {}
                             dAction['column'] = lColumn[-1]
                             dAction['action'] = 'insert'
-                            oViolation.set_action(dAction)
                             oViolation = violation.New(iLine, oToi.extract_tokens(iToken, iToken), self.solution)
+                            oViolation.set_action(dAction)
                             self.add_violation(oViolation)
                     bCheckAlignment = False
 
