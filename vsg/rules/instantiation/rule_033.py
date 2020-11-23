@@ -14,3 +14,4 @@ class rule_033(remove_token_and_whitespace_before_it):
     '''
     def __init__(self):
         remove_token_and_whitespace_before_it.__init__(self, 'instantiation', '033', lTokens)
+        self.solution = 'Remove *component* keyword'
