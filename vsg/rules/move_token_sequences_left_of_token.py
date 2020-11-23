@@ -43,8 +43,8 @@ class move_token_sequences_left_of_token(rule.Rule):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             for iToken, oToken in enumerate(lTokens):
-                bFound = False
                 for lSequence in self.lSequences:
+                    bFound = False
                     if isinstance(oToken, lSequence[0]):
                         if utils.are_next_consecutive_token_types(lSequence, iToken, lTokens):
                             bFound = True
@@ -52,11 +52,9 @@ class move_token_sequences_left_of_token(rule.Rule):
                         if utils.are_next_consecutive_token_types(lSequence[:-1], iToken, lTokens):
                             dAction = {}
                             dAction['num_tokens'] = len(lSequence) - 1
-                            break
-                        if utils.are_next_consecutive_token_types(lSequence[:-2], iToken, lTokens):
+                        elif utils.are_next_consecutive_token_types(lSequence[:-2], iToken, lTokens):
                             dAction = {}
                             dAction['num_tokens'] = len(lSequence) - 2
-                            break
                             
                 if bFound:
                     break

@@ -12,6 +12,19 @@ begin
   begin
   end process;
 
+  PROC_LABEL :process
+  begin
+  end process;
+
+  PROC_LABEL:process
+  begin
+  end process;
+
+  PROC_LABEL: process
+  begin
+  end process;
+
+
   -- Violations below
 
   PROC_LABEL :
