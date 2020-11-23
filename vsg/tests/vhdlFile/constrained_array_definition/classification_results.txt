@@ -98,13 +98,75 @@
 13 | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-14 | begin
-<class 'vsg.token.architecture_body.begin_keyword'>
+14 |   type type1 is array (2**(a(b)) downto 2**(c(d))) of integer;
+<class 'vsg.token.full_type_declaration.type_keyword'>
+<class 'vsg.token.full_type_declaration.identifier'>
+<class 'vsg.token.full_type_declaration.is_keyword'>
+<class 'vsg.token.constrained_array_definition.array_keyword'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.miscellaneous_operator.double_star'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.direction.downto'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.miscellaneous_operator.double_star'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.constrained_array_definition.of_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.full_type_declaration.semicolon'>
 --------------------------------------------------------------------------------
 15 | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-16 | end architecture RTL;
+16 |   type type2 is array (func1(a, b, c) downto func2(d, e, f)) of integer;
+<class 'vsg.token.full_type_declaration.type_keyword'>
+<class 'vsg.token.full_type_declaration.identifier'>
+<class 'vsg.token.full_type_declaration.is_keyword'>
+<class 'vsg.token.constrained_array_definition.array_keyword'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.comma'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.comma'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.direction.downto'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.comma'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.comma'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.constrained_array_definition.of_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.full_type_declaration.semicolon'>
+--------------------------------------------------------------------------------
+17 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+18 | begin
+<class 'vsg.token.architecture_body.begin_keyword'>
+--------------------------------------------------------------------------------
+19 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+20 | end architecture RTL;
 <class 'vsg.token.architecture_body.end_keyword'>
 <class 'vsg.token.architecture_body.end_architecture_keyword'>
 <class 'vsg.token.architecture_body.architecture_simple_name'>

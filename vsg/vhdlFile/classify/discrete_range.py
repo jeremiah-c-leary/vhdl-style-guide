@@ -26,8 +26,11 @@ def classify_until(lUntils, iToken, lObjects):
            iCloseParenthesis += 1
         if iOpenParenthesis < iCloseParenthesis:
             break
-        elif lObjects[iCurrent].get_value().lower() in lUntils:
-            break
+        elif iOpenParenthesis == iCloseParenthesis:
+            if lObjects[iCurrent].get_value().lower() in lUntils:
+                break
+            else:
+                utils.assign_token(lObjects, iCurrent, parser.todo)
         else:
             utils.assign_token(lObjects, iCurrent, parser.todo)
     return iCurrent

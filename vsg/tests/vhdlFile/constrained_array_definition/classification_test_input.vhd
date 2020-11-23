@@ -11,6 +11,10 @@ architecture RTL of FIFO is
 
   type DATA_BUS is array (0 to 7, X) of BIT;
 
+  type type1 is array (2**(a(b)) downto 2**(c(d))) of integer;
+
+  type type2 is array (func1(a, b, c) downto func2(d, e, f)) of integer;
+
 begin
 
 end architecture RTL;
