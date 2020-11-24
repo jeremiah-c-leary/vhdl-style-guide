@@ -30,6 +30,7 @@ from vsg.vhdlFile.indent import generate_statement
 from vsg.vhdlFile.indent import generic_clause
 from vsg.vhdlFile.indent import port_clause
 from vsg.vhdlFile.indent import if_statement
+from vsg.vhdlFile.indent import package_body
 from vsg.vhdlFile.indent import package_declaration
 from vsg.vhdlFile.indent import simple_signal_assignment
 from vsg.vhdlFile.indent import signal_declaration
@@ -382,6 +383,7 @@ class vhdlFile():
             iIndent, bLabelFound = generic_clause.set_indent(iIndent, bLabelFound, oToken)
             iIndent, bLabelFound = port_clause.set_indent(iIndent, bLabelFound, oToken)
             iIndent, bLabelFound = if_statement.set_indent(iIndent, bLabelFound, oToken)
+            iIndent, bLabelFound = package_body.set_indent(iIndent, bLabelFound, oToken)
             iIndent, bLabelFound = package_declaration.set_indent(iIndent, bLabelFound, oToken)
             iIndent, bLabelFound = simple_signal_assignment.set_indent(iIndent, bLabelFound, oToken)
             iIndent, bLabelFound = signal_declaration.set_indent(iIndent, bLabelFound, oToken)
