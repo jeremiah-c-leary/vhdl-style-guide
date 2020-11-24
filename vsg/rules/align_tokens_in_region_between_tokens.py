@@ -82,6 +82,7 @@ class align_tokens_in_region_between_tokens(rule.Rule):
                            dAnalysis[iLine]['token_column'] = iColumn
                            dAnalysis[iLine]['token_index'] = iToken
                            dAnalysis[iLine]['line_number'] = iLine
+                           dAnalysis[iLine]['token_value'] = oToken.get_value()
                            if isinstance(lTokens[iIndex -1], parser.whitespace):
                                dAnalysis[iLine]['left_column'] = iColumn - len(lTokens[iIndex - 1].get_value())
                            else:
@@ -95,7 +96,8 @@ class align_tokens_in_region_between_tokens(rule.Rule):
                    for iKey in list(dAnalysis.keys()):
                        if dAnalysis[iKey]['adjust'] != 0:
                            oLineTokens = oFile.get_tokens_from_line(iKey)
-                           oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, self.solution)
+                           sSolution = 'Move ' + dAnalysis[iKey]['token_value'] + ' ' + str(dAnalysis[iKey]['adjust']) + ' columns'
+                           oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, sSolution)
                            oViolation.set_action(dAnalysis[iKey])
                            self.violations.append(oViolation)
 
@@ -106,7 +108,8 @@ class align_tokens_in_region_between_tokens(rule.Rule):
                    for iKey in list(dAnalysis.keys()):
                        if dAnalysis[iKey]['adjust'] != 0:
                            oLineTokens = oFile.get_tokens_from_line(iKey)
-                           oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, self.solution)
+                           sSolution = 'Move ' + dAnalysis[iKey]['token_value'] + ' ' + str(dAnalysis[iKey]['adjust']) + ' columns'
+                           oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, sSolution)
                            oViolation.set_action(dAnalysis[iKey])
                            self.violations.append(oViolation)
 
@@ -125,7 +128,8 @@ class align_tokens_in_region_between_tokens(rule.Rule):
                            for iKey in list(dAnalysis.keys()):
                                if dAnalysis[iKey]['adjust'] != 0:
                                    oLineTokens = oFile.get_tokens_from_line(iKey)
-                                   oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, self.solution)
+                                   sSolution = 'Move ' + dAnalysis[iKey]['token_value'] + ' ' + str(dAnalysis[iKey]['adjust']) + ' columns'
+                                   oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, sSolution)
                                    oViolation.set_action(dAnalysis[iKey])
                                    self.violations.append(oViolation)
 
@@ -138,7 +142,8 @@ class align_tokens_in_region_between_tokens(rule.Rule):
                            for iKey in list(dAnalysis.keys()):
                                if dAnalysis[iKey]['adjust'] != 0:
                                    oLineTokens = oFile.get_tokens_from_line(iKey)
-                                   oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, self.solution)
+                                   sSolution = 'Move ' + dAnalysis[iKey]['token_value'] + ' ' + str(dAnalysis[iKey]['adjust']) + ' columns'
+                                   oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, sSolution)
                                    oViolation.set_action(dAnalysis[iKey])
                                    self.violations.append(oViolation)
 
@@ -149,7 +154,8 @@ class align_tokens_in_region_between_tokens(rule.Rule):
             for iKey in list(dAnalysis.keys()):
                 if dAnalysis[iKey]['adjust'] != 0:
                     oLineTokens = oFile.get_tokens_from_line(iKey)
-                    oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, self.solution)
+                    sSolution = 'Move ' + dAnalysis[iKey]['token_value'] + ' ' + str(dAnalysis[iKey]['adjust']) + ' columns'
+                    oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, sSolution)
                     oViolation.set_action(dAnalysis[iKey])
                     self.violations.append(oViolation)
 

@@ -88,7 +88,8 @@ class multiline_alignment_between_tokens(rule.Rule):
                             dAction['action'] = 'adjust'
                             dAction['indent'] = iIndent
                             dAction['previous'] = iPreviousColumn
-                            oViolation = violation.New(iLine, oToi.extract_tokens(iToken, iToken), self.solution)
+                            sSolution = 'Adjust indent to column ' + str(iIndent + lColumn[-1])
+                            oViolation = violation.New(iLine, oToi.extract_tokens(iToken, iToken), sSolution)
                             oViolation.set_action(dAction)
                             self.add_violation(oViolation)
 #                            print(dAction)
@@ -97,7 +98,8 @@ class multiline_alignment_between_tokens(rule.Rule):
                             dAction = {}
                             dAction['column'] = lColumn[-1]
                             dAction['action'] = 'insert'
-                            oViolation = violation.New(iLine, oToi.extract_tokens(iToken, iToken), self.solution)
+                            sSolution = 'Adjust indent to column ' + str(iIndent + lColumn[-1])
+                            oViolation = violation.New(iLine, oToi.extract_tokens(iToken, iToken), sSolution)
                             oViolation.set_action(dAction)
                             self.add_violation(oViolation)
                     bCheckAlignment = False
