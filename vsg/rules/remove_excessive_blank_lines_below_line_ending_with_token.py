@@ -1,10 +1,9 @@
 
-
-from vsg import rule
-from vsg import utils
 from vsg import parser
-
+from vsg import rule
 from vsg import violation
+
+from vsg.vhdlFile import utils
 
 
 class remove_excessive_blank_lines_below_line_ending_with_token(rule.Rule):
@@ -24,38 +23,48 @@ class remove_excessive_blank_lines_below_line_ending_with_token(rule.Rule):
        token object that a blank line below should appear
     '''
 
-    def __init__(self, name, identifier, lTokens, iAllow=1):
+    def __init__(self, name, identifier, lTokens, iAllow=1, lOverrides=[]):
         rule.Rule.__init__(self, name=name, identifier=identifier)
         self.solution = 'Remove blank lines below'
         self.phase = 3
         self.lTokens = lTokens
         self.iAllow = iAllow
+        self.lOverrides = lOverrides
 
     def analyze(self, oFile):
         lToi = oFile.get_blank_lines_below_line_ending_with_token(self.lTokens)
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             iCount = 0
+            iLine = oToi.get_line_number()
             for oToken in lTokens:
                 if isinstance(oToken, parser.blank_line):
                     iCount += 1
+                iLine = utils.increment_line_number(iLine, oToken)
+            bOverride = check_if_override_exists(oFile, iLine, self.lOverrides)
+            if bOverride:
+                iCount -= 1
             if iCount > self.iAllow:
                 oViolation = violation.New(oToi.get_line_number(), oToi, self.solution)
+                dAction = {}
+                dAction['remove'] = self.iAllow - iCount
+                oViolation.set_action(dAction)
                 self.add_violation(oViolation)
 
-    def fix(self, oFile):
-        '''
-        Applies fixes for any rule violations.
-        '''
-        if self.fixable:
-            self.analyze(oFile)
-            self._print_debug_message('Fixing rule: ' + self.name + '_' + self.identifier)
-            self._fix_violation(oFile)
-            self.violations = []
-
-    def _fix_violation(self, oFile):
-        for oViolation in self.violations:
+    def _fix_violation(self, oViolation):
             lTokens = oViolation.get_tokens()
-            lNewTokens = lTokens[0:2*self.iAllow]
+            dAction = oViolation.get_action()
+            lNewTokens = lTokens[0:2*dAction['remove']]
             oViolation.set_tokens(lNewTokens)
-        oFile.update(self.violations)
+
+
+def check_if_override_exists(oFile, iLine, lOverrides):
+    oMyToi = oFile.get_tokens_from_line(iLine + 1)
+    try:
+        lTokens = oMyToi.get_tokens()
+        for oOverride in lOverrides:
+            if utils.does_token_type_exist_in_list_of_tokens(oOverride, lTokens):
+                return True
+        return False
+    except AttributeError:
+        return False

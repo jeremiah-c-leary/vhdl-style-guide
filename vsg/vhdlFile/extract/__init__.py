@@ -15,3 +15,4 @@ from .get_all_tokens import get_all_tokens
 from .get_token_and_n_tokens_before_it import get_token_and_n_tokens_before_it 
 from .get_blank_lines_above_line_starting_with_token import get_blank_lines_above_line_starting_with_token
 from .get_line_preceeding_line import get_line_preceeding_line
+from .get_line_succeeding_line import get_line_succeeding_line

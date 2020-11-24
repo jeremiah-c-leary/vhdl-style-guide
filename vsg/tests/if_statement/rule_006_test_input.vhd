@@ -40,6 +40,23 @@ begin
       end if;
     end if;
 
+    -- Check overrides
+
+    if a = '1' then
+
+        case x is
+        end case;
+    end if;
+
+    if a = '1' then
+
+
+
+
+
+        case x is
+        end case;
+    end if;
 
   end process;
 

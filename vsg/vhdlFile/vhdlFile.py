@@ -400,6 +400,9 @@ class vhdlFile():
     def get_line_preceeding_line(self, iLine):
         return extract.get_line_preceeding_line(iLine, self.lAllObjects)
 
+    def get_line_succeeding_line(self, iLine, iNumLines=1):
+        return extract.get_line_succeeding_line(iLine, self.lAllObjects, iNumLines)
+
     def get_all_tokens(self):
         return extract.get_all_tokens(self.lAllObjects)
 
