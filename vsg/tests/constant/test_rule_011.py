@@ -29,7 +29,7 @@ class test_constant_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'constant')
         self.assertEqual(oRule.identifier, '011')
 
-        lExpected = [6, 8]
+        lExpected = [6, 8, 12]
 
         oRule.analyze(self.oFile)
         self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
@@ -41,7 +41,7 @@ class test_constant_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'constant')
         self.assertEqual(oRule.identifier, '011')
 
-        lExpected = [4, 8]
+        lExpected = [4, 8, 10]
         oRule.analyze(self.oFile)
         self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
 
