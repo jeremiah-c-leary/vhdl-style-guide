@@ -33,6 +33,12 @@ begin
       b <= '1';
     end if;
 
+    if a = 1 then
+       b <= 1;
+    elsif
+          b = 1 then
+       c <= 2;
+    end if;
 
   end process;
 

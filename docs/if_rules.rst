@@ -669,3 +669,27 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
    end if;
 
    end if;
+
+if_035
+######
+
+This rule checks the expression after the **if** or **elsif** keyword starts on the same line.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   if
+     a = '1' then
+
+   elsif
+     b = '1' then
+
+**Fix**
+
+.. code-block:: vhdl
+
+   if a = '1' then
+
+   elsif b = '1' then
+

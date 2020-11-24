@@ -27,11 +27,12 @@ class remove_carriage_returns_between_token_pairs(rule.Rule):
        acceptable prefixes
     '''
 
-    def __init__(self, name, identifier, lTokens):
+    def __init__(self, name, identifier, lTokens, bInsertSpace=False):
         rule.Rule.__init__(self, name=name, identifier=identifier)
         self.solution = None
         self.phase = 1
         self.lTokens = lTokens
+        self.bInsertSpace = bInsertSpace
 
     def analyze(self, oFile):
 
@@ -48,23 +49,14 @@ class remove_carriage_returns_between_token_pairs(rule.Rule):
                     self.add_violation(oViolation)
                     break
 
-    def fix(self, oFile):
-        '''
-        Applies fixes for any rule violations.
-        '''
-        if self.fixable:
-            self.analyze(oFile)
-            self._print_debug_message('Fixing rule: ' + self.name + '_' + self.identifier)
-            self._fix_violation(oFile)
-            self.violations = []
+    def _fix_violation(self, oViolation):
+        lTokens = oViolation.get_tokens()
 
-    def _fix_violation(self, oFile):
-        for oViolation in self.violations:
-            lTokens = oViolation.get_tokens()
+        lTokens = utils.remove_carriage_returns_from_token_list(lTokens)
+        lTokens = utils.remove_consecutive_whitespace_tokens(lTokens)
+        if self.bInsertSpace:
+            if not isinstance(lTokens[1], parser.whitespace):
+                lTokens.insert(1, parser.whitespace(' '))
 
-            lTokens = utils.remove_carriage_returns_from_token_list(lTokens)
-            lTokens = utils.remove_consecutive_whitespace_tokens(lTokens)
-
-            oViolation.set_tokens(lTokens)
+        oViolation.set_tokens(lTokens)
                
-        oFile.update(self.violations)
