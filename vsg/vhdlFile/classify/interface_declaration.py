@@ -1,6 +1,4 @@
 
-from vsg.vhdlFile import utils
-
 from vsg.vhdlFile.classify import interface_object_declaration
 from vsg.vhdlFile.classify import interface_package_declaration
 from vsg.vhdlFile.classify import interface_subprogram_declaration

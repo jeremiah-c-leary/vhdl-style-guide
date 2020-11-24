@@ -126,11 +126,10 @@ class vhdlFile():
         Set the indent level of tokens.
         '''
         iIndent = 0
-        bCarriageReturnFound = False
         iTokenCount = 0
         vLabelFound = False
         bLabelFound = False
-        bLibraryFound = False 
+        bLibraryFound = False
         bArchitectureFound = False
         for oToken in self.lAllObjects:
 
@@ -138,7 +137,7 @@ class vhdlFile():
                 continue
 
             if isinstance(oToken, parser.blank_line):
-                bLibraryFound = False 
+                bLibraryFound = False
                 continue
 
             if isinstance(oToken, parser.carriage_return):
@@ -146,7 +145,7 @@ class vhdlFile():
 
             if isinstance(oToken, token.context_declaration.context_keyword):
                 oToken.set_indent(0)
-                iIndent += 1 
+                iIndent += 1
                 continue
 
             if isinstance(oToken, token.context_declaration.end_keyword):
@@ -171,7 +170,7 @@ class vhdlFile():
                      oToken.set_indent(iIndent + 1)
                  else:
                      oToken.set_indent(iIndent)
-                 continue 
+                 continue
 
             if isinstance(oToken, token.entity_declaration.entity_keyword):
                 oToken.set_indent(iIndent)
@@ -185,7 +184,7 @@ class vhdlFile():
 
             if isinstance(oToken, token.architecture_body.architecture_keyword):
                 oToken.set_indent(0)
-                iIndent = 1 
+                iIndent = 1
                 bArchitectureFound = True
                 continue
 
@@ -196,7 +195,7 @@ class vhdlFile():
 
             if isinstance(oToken, token.architecture_body.end_keyword):
                 oToken.set_indent(0)
-                iIndent = 0 
+                iIndent = 0
                 continue
 
             if isinstance(oToken, token.architecture_body.semicolon):
@@ -223,11 +222,11 @@ class vhdlFile():
                   iIndent += 1
                 bLabelFound = False
                 continue
-                    
+
             if isinstance(oToken, token.assertion.report_keyword):
                 oToken.set_indent(iIndent)
                 continue
-                    
+
             if isinstance(oToken, token.assertion.severity_keyword):
                 oToken.set_indent(iIndent)
                 continue
@@ -244,7 +243,7 @@ class vhdlFile():
             if isinstance(oToken, token.attribute_declaration.attribute_keyword):
                 oToken.set_indent(iIndent)
                 continue
-          
+
             if isinstance(oToken, token.attribute_specification.attribute_keyword):
                 oToken.set_indent(iIndent)
                 continue
@@ -262,7 +261,7 @@ class vhdlFile():
                   iIndent += 2
                 bLabelFound = False
                 continue
-                    
+
             if isinstance(oToken, token.case_statement_alternative.when_keyword):
                 oToken.set_indent(iIndent - 1)
                 continue
@@ -296,7 +295,7 @@ class vhdlFile():
                   oToken.set_indent(iIndent - 1)
                 bLabelFound = False
                 continue
-                    
+
             if isinstance(oToken, token.process_statement.begin_keyword):
                 oToken.set_indent(iIndent - 1)
                 continue
@@ -305,7 +304,7 @@ class vhdlFile():
                 oToken.set_indent(iIndent - 1)
                 iIndent -= 1
                 continue
-           
+
             ### Null statements
             if isinstance(oToken, token.null_statement.label):
                 oToken.set_indent(iIndent)
@@ -314,12 +313,12 @@ class vhdlFile():
             if isinstance(oToken, token.null_statement.null_keyword):
                 oToken.set_indent(iIndent)
                 continue
-                    
-            ### Comments 
+
+            ### Comments
             if isinstance(oToken, parser.comment):
                 oToken.set_indent(iIndent)
                 continue
-                    
+
             ### Components
             if isinstance(oToken, token.component_declaration.component_keyword):
                 oToken.set_indent(iIndent)
@@ -343,26 +342,26 @@ class vhdlFile():
             if isinstance(oToken, token.concurrent_simple_signal_assignment.target):
                 oToken.set_indent(iIndent)
                 continue
-           
+
             if isinstance(oToken, token.concurrent_conditional_signal_assignment.target):
                 oToken.set_indent(iIndent)
                 continue
-           
+
             if isinstance(oToken, token.concurrent_selected_signal_assignment.with_keyword):
                 oToken.set_indent(iIndent)
                 continue
-           
-            ### Constant declaration 
+
+            ### Constant declaration
             if isinstance(oToken, token.constant_declaration.constant_keyword):
                 oToken.set_indent(iIndent)
                 continue
 
-            ### Variable declaration 
+            ### Variable declaration
             if isinstance(oToken, token.variable_declaration.variable_keyword):
                 oToken.set_indent(iIndent)
                 continue
 
-            ### File declaration 
+            ### File declaration
             if isinstance(oToken, token.file_declaration.file_keyword):
                 oToken.set_indent(iIndent)
                 continue
@@ -396,7 +395,7 @@ class vhdlFile():
             iIndent, bLabelFound = generic_map_aspect.set_indent(iIndent, bLabelFound, oToken)
             iIndent, bLabelFound = port_map_aspect.set_indent(iIndent, bLabelFound, oToken)
             iIndent, bLabelFound = association_element.set_indent(iIndent, bLabelFound, oToken)
-  
+
     def get_line_preceeding_line(self, iLine):
         return extract.get_line_preceeding_line(iLine, self.lAllObjects)
 
@@ -429,7 +428,7 @@ class vhdlFile():
             if isinstance(self.lAllObjects[iIndex], oStart):
                 bSearch = True
             if isinstance(self.lAllObjects[iIndex], oEnd):
-                bSearch = False 
+                bSearch = False
             if bSearch:
                 for oToken in lTokens:
                     if isinstance(self.lAllObjects[iIndex], oToken):
@@ -536,7 +535,7 @@ class vhdlFile():
                     elif utils.are_next_consecutive_token_types([oToken], iStart, self.lAllObjects):
                         lReturn.append(Tokens(iStart, iLine, [self.lAllObjects[iStart]]))
 
-        return lReturn                    
+        return lReturn
 
     def get_tokens_at_beginning_of_line_matching_between_tokens(self, lTokens, oStart, oEnd, bIncludePreCarriageReturn=False):
         iLine = 1
@@ -556,7 +555,7 @@ class vhdlFile():
             if isinstance(self.lAllObjects[iIndex], oEnd):
                 bSearch = False
 
-            
+
             if isinstance(self.lAllObjects[iIndex], parser.carriage_return):
                 iLine +=1
                 iStart = iIndex + 1
@@ -567,7 +566,7 @@ class vhdlFile():
                         elif utils.are_next_consecutive_token_types([oToken], iStart, self.lAllObjects):
                             lReturn.append(Tokens(iStart, iLine, [self.lAllObjects[iStart]]))
 
-        return lReturn                    
+        return lReturn
 
     def get_column_of_token_index(self, iToken):
         return extract.get_column_of_token_index(iToken, self.lAllObjects)
@@ -710,7 +709,7 @@ class vhdlFile():
                     if utils.are_next_consecutive_token_types([parser.whitespace, stop_token], iIndex + 1, self.lAllObjects) or \
                        utils.are_next_consecutive_token_types([stop_token], iIndex + 1, self.lAllObjects):
                         bStop = True
-                       
+
         return lReturn
 
     def get_tokens_where_line_starts_with_token_until_ending_token_is_found(self, start_token, stop_token):
@@ -739,7 +738,7 @@ class vhdlFile():
                            iStart = iIndex + 1
                            bStore = True
                            iLineNumber = iLine
-                       
+
         return lReturn
 
 
@@ -807,7 +806,6 @@ class vhdlFile():
     def get_blank_lines_below_line_ending_with_token(self, lTokens):
         lReturn = []
         iLine = 1
-        lCurrentLine = []
         lTemp = []
         bTokenFound = False
         bCrFound = False
@@ -857,7 +855,7 @@ class vhdlFile():
 
                 iLine +=1
 
-        return lReturn                    
+        return lReturn
 
 
     def get_blank_lines_above_line_starting_with_token(self, lTokens):
@@ -874,7 +872,7 @@ class vhdlFile():
             if isinstance(self.lAllObjects[iIndex], oStart):
                 bSearch = True
             if isinstance(self.lAllObjects[iIndex], oEnd):
-                bSearch = False 
+                bSearch = False
                 bStore = False
                 if len(lTemp) > 0:
                     lReturn.append(Tokens(iStart, iLineNumber, lTemp))
@@ -890,7 +888,7 @@ class vhdlFile():
                     bStore = True
                     iStart = iIndex
                     iLineNumber = iLine
-                
+
                 if isinstance(oToken, token.association_list.comma):
                     lReturn.append(Tokens(iStart, iLineNumber, lTemp))
                     lTemp = []
@@ -917,7 +915,7 @@ class vhdlFile():
                 bSearch = True
                 continue
             if isinstance(oToken, oEnd):
-                bSearch = False 
+                bSearch = False
                 bStore = False
                 if len(lTemp) > 0:
                     for i in range(1, 3):
@@ -927,7 +925,7 @@ class vhdlFile():
                         if isinstance(lTemp[-1], parser.carriage_return):
                             lTemp.pop()
                             continue
-                        break 
+                        break
                     lReturn.append(Tokens(iStart, iLineNumber, lTemp))
                 lTemp = []
                 continue
@@ -937,7 +935,7 @@ class vhdlFile():
                     bStore = True
                     iStart = iIndex
                     iLineNumber = iLine
-                
+
                 if isinstance(oToken, token.interface_list.semicolon):
                     lReturn.append(Tokens(iStart, iLineNumber, lTemp))
                     lTemp = []
@@ -955,7 +953,7 @@ class vhdlFile():
         iLine = 1
         lReturn = []
         lTemp = []
-        bFirstTokenInLine = True
+        bFirstTokenInLine = False
         for iIndex in range(0, len(self.lAllObjects)):
 
             if isinstance(self.lAllObjects[iIndex], parser.carriage_return):
@@ -1012,13 +1010,13 @@ class vhdlFile():
 
 
 def is_whitespace(oObject):
-    if type(oObject) == parser.carriage_return:
+    if isinstance(oObject, parser.carriage_return):
         return True
-    if type(oObject) == parser.blank_line:
+    if isinstance(oObject, parser.blank_line):
         return True
-    if type(oObject) == parser.comment:
+    if isinstance(oObject, parser.comment):
         return True
-    if type(oObject) == parser.whitespace:
+    if isinstance(oObject, parser.whitespace):
         return True
     return False
 

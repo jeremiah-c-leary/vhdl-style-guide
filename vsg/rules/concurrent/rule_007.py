@@ -37,9 +37,7 @@ class rule_007(rule.Rule):
 
             if utils.find_carriage_return(lTokens) is None and self.allow_single_line:
                 for oSplitToken in self.lSplitTokens:
-                    bBreak = False
                     if utils.count_token_types_in_list_of_tokens(oSplitToken, lTokens) > 1:
-                        bBreak = True
                         break
                 else:
                     continue

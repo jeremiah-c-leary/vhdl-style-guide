@@ -41,7 +41,7 @@ class item():
         return self.context.pop()
 
     def get_context(self):
-        return self.context()
+        return self.context
 
     def set_code_tags(self, lCodeTags):
         self.code_tags = lCodeTags.copy()
@@ -52,7 +52,7 @@ class item():
         if sCodeTag in self.code_tags:
             return True
         return False
-        
+
     def clear_code_tags(self):
         self.code_tags = []
 

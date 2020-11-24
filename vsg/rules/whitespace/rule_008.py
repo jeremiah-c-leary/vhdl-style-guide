@@ -30,21 +30,7 @@ class rule_008(rule.Rule):
                     oViolation = violation.New(iLine, lExtractedTokens, self.solution)
                     self.add_violation(oViolation)
 
-    def fix(self, oFile):
-        '''
-        Applies fixes for any rule violations.
-        '''
-        if self.fixable:
-            self.analyze(oFile)
-            self._print_debug_message('Fixing rule: ' + self.name + '_' + self.identifier)
-            self._fix_violation(oFile)
-            self.violations = []
-
-    def _fix_violation(self, oFile):
-        for oViolation in self.violations:
-            lTokens = oViolation.get_tokens()
-            lTokens.pop()
-            oViolation.set_tokens(lTokens)
-               
-        oFile.update(self.violations)
-
+    def _fix_violation(self, oViolation):
+        lTokens = oViolation.get_tokens()
+        lTokens.pop()
+        oViolation.set_tokens(lTokens)

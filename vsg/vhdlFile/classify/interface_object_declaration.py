@@ -1,6 +1,4 @@
 
-from vsg.vhdlFile import utils
-
 from vsg.vhdlFile.classify import interface_constant_declaration
 from vsg.vhdlFile.classify import interface_file_declaration
 from vsg.vhdlFile.classify import interface_signal_declaration

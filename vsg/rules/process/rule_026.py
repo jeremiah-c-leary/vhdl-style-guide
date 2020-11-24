@@ -24,7 +24,7 @@ class rule_026(rule.Rule):
             lTokens = oToi.get_tokens()
             if not are_there_process_declarative_items(lTokens):
                 continue
-            iLine, iSearch, oLeftToken = find_beginning_of_process_declarative_region(oToi.get_line_number(), lTokens)
+            iLine, iSearch = find_beginning_of_process_declarative_region(oToi.get_line_number(), lTokens)
 
             if does_a_blank_line_exist(iSearch, lTokens):
                 continue
@@ -36,25 +36,12 @@ class rule_026(rule.Rule):
             oViolation.set_action(dAction)
             self.add_violation(oViolation)
 
-
-    def fix(self, oFile):
-        '''
-        Applies fixes for any rule violations.
-        '''
-        if self.fixable:
-            self.analyze(oFile)
-            self._print_debug_message('Fixing rule: ' + self.name + '_' + self.identifier)
-            self._fix_violation(oFile)
-            self.violations = []
-
-    def _fix_violation(self, oFile):
-        for oViolation in self.violations:
-            lTokens = oViolation.get_tokens()
-            dAction = oViolation.get_action()
-            lTokens.insert(dAction['insert'], parser.carriage_return())
-            lTokens.insert(dAction['insert'], parser.blank_line())
-            oViolation.set_tokens(lTokens)
-        oFile.update(self.violations)
+    def _fix_violation(self, oViolation):
+        lTokens = oViolation.get_tokens()
+        dAction = oViolation.get_action()
+        lTokens.insert(dAction['insert'], parser.carriage_return())
+        lTokens.insert(dAction['insert'], parser.blank_line())
+        oViolation.set_tokens(lTokens)
 
 
 def are_there_process_declarative_items(lTokens):
@@ -71,7 +58,6 @@ def are_there_process_declarative_items(lTokens):
 
 
 def find_beginning_of_process_declarative_region(iLine, lTokens):
-    oReturn = lTokens[0]
     iReturn = 1
     iMyLine = iLine
     iReturnLine = iLine
@@ -79,14 +65,12 @@ def find_beginning_of_process_declarative_region(iLine, lTokens):
         iMyLine = utils.increment_line_number(iMyLine, oToken)
         if isinstance(oToken, token.close_parenthesis):
             iReturnLine = iMyLine
-            oReturn = oToken
             iReturn = iToken + 1
         if isinstance(oToken, token.is_keyword):
             iReturnLine = iMyLine
-            oReturn = oToken
             iReturn = iToken + 1
             break
-    return iReturnLine, iReturn, oToken
+    return iReturnLine, iReturn
 
 
 def does_a_blank_line_exist(iToken, lTokens):

@@ -40,30 +40,17 @@ class rule_021(rule.Rule):
                         self.add_violation(oViolation)
                         break
 
-
-    def fix(self, oFile):
-        '''
-        Applies fixes for any rule violations.
-        '''
-        if self.fixable:
-            self.analyze(oFile)
-            self._print_debug_message('Fixing rule: ' + self.name + '_' + self.identifier)
-            self._fix_violation(oFile)
-            self.violations = []
-
-    def _fix_violation(self, oFile):
-        for oViolation in self.violations:
-            lTokens = oViolation.get_tokens()
-            lTokens.reverse()
-            lNewTokens = []
-            for iToken, oToken in enumerate(lTokens):
-                if isinstance(oToken, parser.blank_line):
-                    lNewTokens.pop()
-                    continue
-                lNewTokens.append(oToken)
-            lNewTokens.reverse()
-            oViolation.set_tokens(lNewTokens)
-        oFile.update(self.violations)
+    def _fix_violation(self, oViolation):
+        lTokens = oViolation.get_tokens()
+        lTokens.reverse()
+        lNewTokens = []
+        for iToken, oToken in enumerate(lTokens):
+            if isinstance(oToken, parser.blank_line):
+                lNewTokens.pop()
+                continue
+            lNewTokens.append(oToken)
+        lNewTokens.reverse()
+        oViolation.set_tokens(lNewTokens)
 
 
 def blank_lines_exist(iToken, lTokens):

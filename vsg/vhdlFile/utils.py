@@ -1,5 +1,4 @@
 
-from vsg import token
 from vsg import parser
 
 
@@ -299,7 +298,6 @@ def find_next_token(iToken, lObjects):
 
 def find_next_non_whitespace_token(iToken, lObjects):
     iCurrent = iToken
-    iEnd = len(lObjects)
     for iIndex in range(iToken, len(lObjects)):
         oToken = lObjects[iIndex]
         if token_is_whitespace_or_comment(oToken):
@@ -319,7 +317,7 @@ def find_previous_non_whitespace_token(iToken, lObjects):
 
 
 def detect_submodule(iToken, lObjects, module):
-    iEnd = len(lObjects) - 1  
+    iEnd = len(lObjects) - 1
     iLast = -1
     iReturn = iToken
     while iLast != iReturn:
@@ -393,7 +391,7 @@ def tokenize_semicolon(iObject, lObjects, token):
     while iItemCount < 3:
         if is_item(lObjects, iIndex):
             if object_value_is(lObjects, iIndex, ';'):
-                assign_token(lObjects, iIndex, token) 
+                assign_token(lObjects, iIndex, token)
                 return iIndex
             iItemCount += 1
         iIndex += 1
@@ -577,7 +575,7 @@ def remove_carriage_returns_from_token_list(lTokens):
         if isinstance(oToken, parser.carriage_return):
             continue
         lMyTokens.append(oToken)
-    return lMyTokens 
+    return lMyTokens
 
 
 def remove_consecutive_whitespace_tokens(lTokens):
@@ -599,7 +597,7 @@ def remove_whitespace_from_token_list(lTokens):
         if isinstance(oToken, parser.whitespace):
             continue
         lMyTokens.append(oToken)
-    return lMyTokens 
+    return lMyTokens
 
 
 def remove_comment_at_end_of_token_list(lTokens):
@@ -704,7 +702,7 @@ def fix_blank_lines(lTokens):
     lReturn = []
     for iToken, oToken in enumerate(lTokens):
         try:
-            if isinstance(oToken, parser.carriage_return) and isinstance(lTokens[iToken + 1], parser.carriage_return): 
+            if isinstance(oToken, parser.carriage_return) and isinstance(lTokens[iToken + 1], parser.carriage_return):
                 lReturn.append(oToken)
                 lReturn.append(parser.blank_line())
                 continue

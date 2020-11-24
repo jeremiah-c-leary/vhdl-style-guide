@@ -10,7 +10,6 @@ def tokenize(lObjects):
         design_unit { design_unit }
     '''
     iReturn = 0
-    iEnd = len(lObjects)
     for iCurrent in range(0, len(lObjects)):
         iTemp = iCurrent
         if iTemp >= iReturn:

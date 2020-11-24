@@ -20,7 +20,7 @@ class comma(parser.comma):
         parser.comma.__init__(self)
 
 
-class colon(parser.semicolon):
+class colon(parser.colon):
 
     def __init__(self, sString=':'):
         parser.colon.__init__(self)

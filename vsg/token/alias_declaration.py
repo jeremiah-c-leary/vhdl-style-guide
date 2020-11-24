@@ -11,7 +11,7 @@ class alias_keyword(parser.keyword):
 class alias_designator(parser.designator):
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        parser.designator.__init__(self, sString)
 
 
 class colon(parser.colon):

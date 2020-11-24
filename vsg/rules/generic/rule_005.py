@@ -1,5 +1,4 @@
 
-from vsg import parser
 from vsg import token
 
 from vsg.rules import single_space_between_token_pairs_bounded_by_tokens

@@ -69,7 +69,6 @@ class rule_002(rule.Rule):
         for oToi in lPreToi:
             iLine, lTokens = utils.get_toi_parameters(oToi)
             bInsideClockDef = False
-            bInsideAssignment = False
             for iToken, oToken in enumerate(lTokens):
                 iLine = utils.increment_line_number(iLine, oToken)
 
@@ -155,29 +154,17 @@ class rule_002(rule.Rule):
 
             dAnalysis = {}
 
-    def fix(self, oFile):
-        '''
-        Applies fixes for any rule violations.
-        '''
-        if self.fixable:
-            self.analyze(oFile)
-            self._print_debug_message('Fixing rule: ' + self.name + '_' + self.identifier)
-            self._fix_violation(oFile)
-            self.violations = []
+    def _fix_violation(self, oViolation):
+        lTokens = oViolation.get_tokens()
+        dAction = oViolation.get_action()
+        iTokenIndex = dAction['token_index']
 
-    def _fix_violation(self, oFile):
-        for oViolation in self.violations:
-            lTokens = oViolation.get_tokens()
-            dAction = oViolation.get_action()
-            iTokenIndex = dAction['token_index']
-
-            if isinstance(lTokens[iTokenIndex - 1], parser.whitespace):
-                iLen = len(lTokens[iTokenIndex - 1].get_value())
-                lTokens[iTokenIndex - 1].set_value(' '*(iLen + dAction['adjust']))
-            else:
-                lTokens.insert(iTokenIndex, parser.whitespace(' '*dAction['adjust']))
-            oViolation.set_tokens(lTokens)
-        oFile.update(self.violations)
+        if isinstance(lTokens[iTokenIndex - 1], parser.whitespace):
+            iLen = len(lTokens[iTokenIndex - 1].get_value())
+            lTokens[iTokenIndex - 1].set_value(' '*(iLen + dAction['adjust']))
+        else:
+            lTokens.insert(iTokenIndex, parser.whitespace(' '*dAction['adjust']))
+        oViolation.set_tokens(lTokens)
 
 
 def add_adjustments_to_dAnalysis(dAnalysis, compact_alignment):
@@ -198,7 +185,6 @@ def add_adjustments_to_dAnalysis(dAnalysis, compact_alignment):
     else:
         for iKey in list(dAnalysis.keys()):
             dAnalysis[iKey]['adjust'] = iMaxTokenColumn - dAnalysis[iKey]['token_column']
-
 
 
 def detect_clock_definition(iToken, oToken, lTokens):

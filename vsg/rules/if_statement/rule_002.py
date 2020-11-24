@@ -1,15 +1,7 @@
 
-import sys
-
-from vsg import rule
 from vsg import parser
-from vsg import token
-from vsg import vhdlFile
+from vsg import rule
 from vsg import violation
-
-from vsg.token.ieee.std_logic_1164 import function
-
-from vsg.vhdlFile import utils
 
 
 class rule_002(rule.Rule):
@@ -43,7 +35,6 @@ class rule_002(rule.Rule):
             if not isinstance(lTokens[0], parser.open_parenthesis):
                 oViolation = violation.New(oToi.get_line_number(), oToi, self.solution)
                 self.add_violation(oViolation)
-            
 
     def fix(self, oFile):
         '''

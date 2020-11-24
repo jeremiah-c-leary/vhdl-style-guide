@@ -59,28 +59,14 @@ class rule_010(rule.Rule):
             oViolation.set_action(dAction)
             self.add_violation(oViolation)
 
-    def fix(self, oFile):
-        '''
-        Applies fixes for any rule violations.
-        '''
-        if self.fixable:
-            self.analyze(oFile)
-            self._print_debug_message('Fixing rule: ' + self.name + '_' + self.identifier)
-            self._fix_violation(oFile)
-            self.violations = []
+    def _fix_violation(self, oViolation):
+        lTokens = oViolation.get_tokens()
+        dAction = oViolation.get_action()
+        if dAction['action'] == 'insert':
+            lTokens.insert(0, parser.carriage_return())
+        else:
+            lNewTokens = lTokens[dAction['index'] + 1:]
+            lNewTokens.extend(lTokens[:dAction['index'] + 1])
+            lNewTokens.append(parser.carriage_return())
 
-    def _fix_violation(self, oFile):
-        for oViolation in self.violations:
-            lTokens = oViolation.get_tokens()
-            dAction = oViolation.get_action()
-            if dAction['action'] == 'insert':
-                lTokens.insert(0, parser.carriage_return())
-            else:
-                lNewTokens = lTokens[dAction['index'] + 1:]
-                lNewTokens.extend(lTokens[:dAction['index'] + 1])
-                lNewTokens.append(parser.carriage_return())
-
-            oViolation.set_tokens(lNewTokens)
-               
-        oFile.update(self.violations)
-
+        oViolation.set_tokens(lNewTokens)

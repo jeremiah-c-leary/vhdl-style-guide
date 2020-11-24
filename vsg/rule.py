@@ -1,7 +1,6 @@
 
 
 from vsg import severity
-from vsg import violation
 from vsg import utils
 
 
@@ -198,11 +197,11 @@ class Rule():
     def _print_debug_message(self, sString):
         '''
         Prints a debug message to stdio.
-    
+
         Parameters:
-    
+
           sString : (string)
-    
+
         Returns: Nothing
         '''
         if self.debug:

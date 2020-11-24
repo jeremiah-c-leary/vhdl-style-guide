@@ -10,7 +10,7 @@ def detect(iToken, lObjects):
         [ *formal*_generic_clause ]
         [ *formal*_port_clause ]
     '''
-    
+
     iReturn = generic_clause.detect(iToken, lObjects)
 
     iReturn = port_clause.detect(iReturn, lObjects)

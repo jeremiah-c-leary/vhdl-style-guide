@@ -36,7 +36,7 @@ def detect(iToken, lObjects):
                     return False
                 if utils.object_value_is(lObjects, iCurrent, 'with'):
                     return False
-    
+
             if utils.object_value_is(lObjects, iCurrent, '<=') and not bAssignmentFound:
                 bAssignmentFound = True
         iCurrent += 1

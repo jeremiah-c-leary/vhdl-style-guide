@@ -1,6 +1,4 @@
 
-from vsg import parser
-
 from vsg.token import concurrent_simple_signal_assignment as token
 
 from vsg.vhdlFile import utils

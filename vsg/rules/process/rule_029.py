@@ -4,7 +4,6 @@ import sys
 from vsg import rule
 from vsg import parser
 from vsg import token
-from vsg import vhdlFile
 from vsg import violation
 
 from vsg.token.ieee.std_logic_1164 import function
@@ -75,7 +74,7 @@ class rule_029(rule.Rule):
                         oViolation.set_action(dAction)
                         self.add_violation(oViolation)
                         bEventFound = False
-      
+
                 elif self.clock == 'event':
 
                     if isinstance(oToken, token.ieee.std_logic_1164.function.rising_edge):

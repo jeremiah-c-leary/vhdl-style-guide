@@ -1,11 +1,11 @@
 
-from vsg import parser
 from vsg import token
 
 from vsg.rules import single_space_between_token_pairs
 
 lTokens = []
 lTokens.append([token.port_clause.port_keyword, token.port_clause.open_parenthesis])
+
 
 class rule_003(single_space_between_token_pairs):
     '''

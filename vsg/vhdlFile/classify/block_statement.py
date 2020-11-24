@@ -37,7 +37,7 @@ def classify(iToken, lObjects):
         iCurrent = utils.assign_next_token_required(')', token.guard_close_parenthesis, iCurrent, lObjects)
 
     iCurrent = utils.assign_next_token_if('is', token.is_keyword, iCurrent, lObjects)
-        
+
     iCurrent = block_header.detect(iCurrent, lObjects)
 
     iCurrent = block_declarative_part.detect(iCurrent, lObjects)

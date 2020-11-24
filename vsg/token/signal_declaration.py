@@ -41,7 +41,7 @@ class subtype_indication(parser.subtype_indication):
 class assignment_operator(parser.assignment):
 
     def __init__(self, sString=':='):
-        parser.item.__init__(self, ':=')
+        parser.assignment.__init__(self, ':=')
 
 
 class assignment_expression(parser.item):

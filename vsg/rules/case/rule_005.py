@@ -1,6 +1,4 @@
 
-from vsg import parser
-
 from vsg.rules import single_space_before_token
 
 from vsg.token import case_statement_alternative as token

@@ -22,6 +22,6 @@ def classify(iToken, lObjects):
     while not utils.is_next_token(')', iCurrent, lObjects):
         iCurrent = utils.assign_next_token_if(',', token.comma, iCurrent, lObjects)
         iCurrent = utils.assign_next_token(token.enumeration_literal, iCurrent, lObjects)
-    
+
     iCurrent = utils.assign_next_token_required(')', token.close_parenthesis, iCurrent, lObjects)
     return iCurrent

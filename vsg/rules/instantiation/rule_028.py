@@ -1,8 +1,6 @@
 
-from vsg import parser
 from vsg import rule
 from vsg import token
-from vsg import utils
 from vsg import violation
 
 
@@ -52,33 +50,19 @@ class rule_028(rule.Rule):
                     oViolation.set_action(dAction)
                     self.add_violation(oViolation)
 
-
-    def fix(self, oFile):
-        '''
-        Applies fixes for any rule violations.
-        '''
-        if self.fixable:
-            self.analyze(oFile)
-            self._print_debug_message('Fixing rule: ' + self.name + '_' + self.identifier)
-            self._fix_violation(oFile)
-            self.violations = []
-
-    def _fix_violation(self, oFile):
-        for oViolation in self.violations:
-            lTokens = oViolation.get_tokens()
-            dAction = oViolation.get_action()
-            if not dAction['period']:
-                if self.case == 'lower':
-                    lTokens[0].set_value(lTokens[0].get_value().lower())
-                if self.case == 'upper':
-                    lTokens[0].set_value(lTokens[0].get_value().upper())
-            else:
-                lTemp = lTokens[0].get_value().split('.')
-                if self.case == 'lower':
-                    lTemp[-1] = lTemp[-1].lower()
-                if self.case == 'upper':
-                    lTemp[-1] = lTemp[-1].upper()
-                lTokens[0].set_value('.'.join(lTemp))
-            oViolation.set_tokens(lTokens)
-        oFile.update(self.violations)
-
+    def _fix_violation(self, oViolation):
+        lTokens = oViolation.get_tokens()
+        dAction = oViolation.get_action()
+        if not dAction['period']:
+            if self.case == 'lower':
+                lTokens[0].set_value(lTokens[0].get_value().lower())
+            if self.case == 'upper':
+                lTokens[0].set_value(lTokens[0].get_value().upper())
+        else:
+            lTemp = lTokens[0].get_value().split('.')
+            if self.case == 'lower':
+                lTemp[-1] = lTemp[-1].lower()
+            if self.case == 'upper':
+                lTemp[-1] = lTemp[-1].upper()
+            lTokens[0].set_value('.'.join(lTemp))
+        oViolation.set_tokens(lTokens)

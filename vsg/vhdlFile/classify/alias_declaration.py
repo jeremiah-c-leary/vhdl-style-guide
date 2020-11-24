@@ -14,7 +14,7 @@ def detect(iToken, lObjects):
     '''
 
     if utils.is_next_token('alias', iToken, lObjects):
-        return classify(iToken, lObjects)    
+        return classify(iToken, lObjects)
 
     return iToken
 

@@ -40,7 +40,6 @@ class rule_030(rule.Rule):
             lTokens = utils.remove_whitespace_from_token_list(lTokens)[1:-1]
             lNewList = []
             iSignals = 0
-            oPrevToken = parser.whitespace(' ')
             oSignal = None
             for oToken in lTokens:
                 if isinstance(oToken, token.sensitivity_list.comma):
