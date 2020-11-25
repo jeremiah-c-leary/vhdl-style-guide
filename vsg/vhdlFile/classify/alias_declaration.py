@@ -36,4 +36,4 @@ def classify(iToken, lObjects):
 
     iCurrent = utils.assign_next_token_required(';', token.semicolon, iCurrent, lObjects)
 
-    return iCurrent 
+    return iCurrent

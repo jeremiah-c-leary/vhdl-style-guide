@@ -10,7 +10,6 @@ def detect(iToken, lObjects):
       | constrained_array_definition
     '''
 
-
     iCurrent = unbounded_array_definition.detect(iToken, lObjects)
     if iCurrent != iToken:
         return iCurrent

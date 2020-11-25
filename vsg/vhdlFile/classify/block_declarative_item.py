@@ -108,11 +108,8 @@ def detect(iToken, lObjects):
     if iReturn != iToken:
         return iReturn
 
-
-
     iReturn = use_clause.detect(iToken, lObjects)
     if iReturn != iToken:
         return iReturn
-
 
     return iToken

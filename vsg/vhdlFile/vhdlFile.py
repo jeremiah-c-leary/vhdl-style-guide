@@ -82,7 +82,6 @@ class vhdlFile():
             whitespace.classify(lTokens, lObjects)
             comment.classify(lTokens, lObjects)
 
-
             self.lAllObjects.extend(lObjects)
             self.lAllObjects.append(parser.carriage_return())
 
@@ -153,23 +152,23 @@ class vhdlFile():
                 continue
 
             if isinstance(oToken, token.library_clause.keyword):
-                 oToken.set_indent(iIndent)
-                 bLibraryFound = True
-                 continue
+                oToken.set_indent(iIndent)
+                bLibraryFound = True
+                continue
 
             if isinstance(oToken, token.use_clause.keyword):
-                 if not bArchitectureFound:
-                     oToken.set_indent(iIndent + 1)
-                 else:
-                     oToken.set_indent(iIndent)
-                 continue
+                if not bArchitectureFound:
+                    oToken.set_indent(iIndent + 1)
+                else:
+                    oToken.set_indent(iIndent)
+                continue
 
             if isinstance(oToken, token.context_reference.keyword):
-                 if bLibraryFound:
-                     oToken.set_indent(iIndent + 1)
-                 else:
-                     oToken.set_indent(iIndent)
-                 continue
+                if bLibraryFound:
+                    oToken.set_indent(iIndent + 1)
+                else:
+                    oToken.set_indent(iIndent)
+                continue
 
             if isinstance(oToken, token.entity_declaration.entity_keyword):
                 oToken.set_indent(iIndent)

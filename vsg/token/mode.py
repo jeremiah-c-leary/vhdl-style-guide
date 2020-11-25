@@ -1,6 +1,7 @@
 
 from vsg import parser
 
+
 class mode(parser.keyword):
 
     def __init__(self, sString):

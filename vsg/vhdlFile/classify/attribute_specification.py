@@ -13,7 +13,7 @@ def detect(iToken, lObjects):
         attribute attribute_designator of entity_specification is expression ;
     '''
     if utils.are_next_consecutive_tokens(['attribute', None, 'of'], iToken, lObjects):
-        return classify(iToken, lObjects)    
+        return classify(iToken, lObjects)
     return iToken
 
 
@@ -31,4 +31,4 @@ def classify(iToken, lObjects):
 
     iCurrent = utils.assign_next_token_required(';', token.semicolon, iCurrent, lObjects)
 
-    return iCurrent 
+    return iCurrent

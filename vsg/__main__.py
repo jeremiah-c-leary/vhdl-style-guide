@@ -124,7 +124,6 @@ def read_configuration_files(dStyle, commandLineArguments):
             except AttributeError:
                 tempConfiguration = open_configuration_file(sConfigFilename)
 
-
             for sKey in tempConfiguration.keys():
                 if sKey == 'file_list':
                     if 'file_list' not in dConfiguration:
@@ -302,7 +301,7 @@ def display_rule_configuration(commandLineArguments, configuration):
 
 
 def validate_files_exist_to_analyze(sName):
-    if sName == None:
+    if sName is None:
         print('ERROR: No file defined by the -f command line option or filename given in configuration file.')
         sys.exit(1)
 

@@ -6,7 +6,6 @@ from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import assertion
 
 
-
 def detect(iToken, lObjects):
     '''
     concurrent_assertion_statement ::=

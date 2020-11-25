@@ -517,6 +517,7 @@ def remove_leading_whitespace_and_comments(iToken, lTokens):
     else:
         return iToken, lTokens
 
+
 def token_is_whitespace_or_comment(oToken):
     if isinstance(oToken, parser.whitespace) or \
        isinstance(oToken, parser.carriage_return) or \
@@ -525,6 +526,7 @@ def token_is_whitespace_or_comment(oToken):
         return True
     else:
         return False
+
 
 def increment_line_number(iLine, oToken):
     if isinstance(oToken, parser.carriage_return):
@@ -596,15 +598,5 @@ def fix_blank_lines(lTokens):
         except IndexError:
             pass
         lReturn.append(oToken)
-
-#    for oToken in lTokens:
-#        print(oToken)
-#        if isinstance(oToken, parser.carriage_return):
-#            print('\n')
-#    print('='*80)
-#    for oToken in lReturn:
-#        print(oToken)
-#        if isinstance(oToken, parser.carriage_return):
-#            print('\n')
 
     return lReturn
