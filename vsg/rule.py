@@ -47,17 +47,6 @@ class Rule():
             return False
         return True
 
-    def _build_violation_dict(self, lReturn, sViolation, iLineNumber):
-        if str(sViolation).startswith(str(iLineNumber) + '-') or str(iLineNumber) == str(sViolation):
-            dViolation = {}
-            dViolation['severity'] = {}
-            dViolation['severity']['name'] = self.severity.name
-            dViolation['severity']['type'] = self.severity.type
-            dViolation['rule'] = self.get_unique_id()
-            dViolation['lineNumber'] = sViolation
-            dViolation['solution'] = self._get_solution(iLineNumber)
-            lReturn.append(dViolation)
-
     def _build_violation_dict_from_violation_object(self, violation):
         dViolation = {}
         dViolation['severity'] = {}
@@ -111,15 +100,17 @@ class Rule():
             self.violations.append(lineNumber)
             self.severity.count += 1
 
-    def analyze(self, oFile):
-        '''
-        Performs the analysis.
-        '''
-        self._print_debug_message('Analyzing rule: ' + self.name + '_' + self.identifier)
-        self._pre_analyze()
-        for iLineNumber, oLine in enumerate(oFile.lines):
-            if not self._is_vsg_off(oLine):
-                self._analyze(oFile, oLine, iLineNumber)
+# JCL - need to think of how to use this analyze.
+#       Each rule currently defines it's own analyze method.
+#    def analyze(self, oFile):
+#        '''
+#        Performs the analysis.
+#        '''
+#        self._print_debug_message('Analyzing rule: ' + self.name + '_' + self.identifier)
+#        self._pre_analyze()
+#        for iLineNumber, oLine in enumerate(oFile.lines):
+#            if not self._is_vsg_off(oLine):
+#                self._analyze(oFile, oLine, iLineNumber)
 
     def _configure_global_rule_attributes(self, dConfiguration):
         '''
@@ -147,14 +138,6 @@ class Rule():
         except KeyError:
             pass
 
-    def _is_vsg_off(self, oLine):
-        '''
-        Checks if the rule has been disabled for a given line.
-        '''
-        if 'vsg_off' in oLine.codeTags:
-            if len(oLine.codeTags['vsg_off']) == 0 or self.get_unique_id() in oLine.codeTags['vsg_off']:
-                return True
-        return False
 
     def get_configuration(self):
         '''
@@ -171,12 +154,6 @@ class Rule():
         Returns the solution for a violation.
         '''
         return utils.get_violation_solution_at_line_number(self.violations, iLineNumber)
-
-    def _pre_analyze(self):
-        '''
-        This method is called before the _analyze method and allows each rule to setup any variables needed.
-        '''
-        return
 
     def clear_violations(self):
         self.violations = []
@@ -199,12 +176,3 @@ class Rule():
         '''
         if self.debug:
             print('INFO: ' + sString)
-
-def check_for_old_violation_format(violation):
-    # Remove this some time after 2.0.0 has been released
-    if isinstance(violation, int):
-        print('ERROR:  Violations have changed from an integer to a dictionary.  Skipping this violation')
-        print('        Use the function utils.create_violation_dict to update to current format.')
-        print('        Refer to documentation on local rules for more information.')
-        sys.exit(1)
-

@@ -2,39 +2,6 @@
 from vsg import parser
 
 
-def is_object(sType, oType, oObject, lNewObjects):
-    if oObject.get_value().lower() == sType:
-        lNewObjects.append(oType(oObject.get_value()))
-        return True
-    return False
-
-
-def is_current_level(dVars, sLevel):
-    if current_level(dVars) == sLevel:
-        return True
-    return False
-
-
-def pop_level(dVars):
-    dVars['history'].pop()
-
-
-def push_level(dVars, level):
-    dVars['history'].append(level)
-
-
-def current_level(dVars):
-    return dVars['history'][-1]
-
-
-def have_guard_condition(iToken, lObjects):
-    return is_next_token('(', iToken, lObjects)
-
-
-def have_is_keyword(iToken, lObjects):
-    return is_next_token('is', iToken, lObjects)
-
-
 def assign_tokens_until(sToken, token, iToken, lObjects):
     iCurrent = iToken
     while not is_next_token(sToken, iCurrent, lObjects):
@@ -123,26 +90,10 @@ def get_range(lObjects, iStart, sEnd):
     return iStart, iEnd
 
 
-def classify_next_token_if(sToken, token, iToken, lObjects):
-    iCurrent = find_next_token(iToken, lObjects)
-    if object_value_is(lObjects, iCurrent, sToken):
-        iCurrent = assign_token(lObjects, iCurrent, token)
-        return iCurrent
-    return iToken
-
-
 def classify_next_token(token, iToken, lObjects):
     iCurrent = find_next_token(iToken, lObjects)
     iCurrent = assign_token(lObjects, iCurrent, token)
     return iCurrent
-
-
-def classify_token(sToken, token, iToken, lObjects):
-    iToken = find_next_token(iToken, lObjects)
-    if object_value_is(lObjects, iToken, sToken):
-        iToken = assign_token(lObjects, iToken, token)
-        return True
-    return False
 
 
 def find_in_range(sValue, iToken, sEnd, lObjects):
@@ -244,32 +195,6 @@ def find_in_next_n_tokens(sValue, iMax, iToken, lObjects):
         return False
 
 
-def find_earliest_occurance_ignoring_matched_parenthesis(lEnd, iToken, lObjects):
-    print('--> find_earliest_occurance_ignoring_matched_parenthesis')
-    iEarliest = 9999999999999999999999999999
-    print(lEnd)
-    for sEnd in lEnd:
-        print(f'----> Searching for {sEnd}')
-        iOpenParenthesis = 0
-        iCloseParenthesis = 0
-        for iIndex in range(iToken, len(lObjects) - 1):
-            if token_is_open_parenthesis(iIndex, lObjects):
-                iOpenParenthesis +=1
-            print(f'{iIndex} | {lObjects[iIndex].get_value()} | {iOpenParenthesis} | {iCloseParenthesis}')
-            if lObjects[iIndex].get_value().lower() == sEnd:
-                if iOpenParenthesis == iCloseParenthesis:
-                    if iIndex < iEarliest:
-                        sEarliest = lObjects[iIndex].get_value()
-                        iEarliest = iIndex
-                    break
-            if iIndex == iEarliest:
-                break
-            if token_is_close_parenthesis(iIndex, lObjects):
-                iCloseParenthesis += 1
-    print(f'<-- find_earliest_occurance_ignoring_matched_parenthesis :: {sEarliest}')
-    return sEarliest
-
-
 def find_earliest_occurance(lEnd, iToken, lObjects):
     iEarliest = 9999999999999999999999999999
     for sEnd in lEnd:
@@ -279,14 +204,6 @@ def find_earliest_occurance(lEnd, iToken, lObjects):
                     sEarliest = lObjects[iIndex].get_value()
                     iEarliest = iIndex
     return sEarliest
-
-
-def find_in_range_with_multiple_ends(sValue, iToken, lEnd, lObjects):
-    iStart, iEnd = get_range(lObjects, iToken, sEarliest)
-    for iIndex in range(iStart, iEnd + 1):
-        if object_value_is(lObjects, iIndex, sValue):
-            return True
-    return False
 
 
 def find_next_token(iToken, lObjects):
@@ -330,28 +247,6 @@ def detect_submodule(iToken, lObjects, module):
     return iReturn
 
 
-def classify_begin_keyword(iToken, token, lObjects):
-    iReturn = iToken
-    if classify_token('begin', token, iToken, lObjects):
-        iReturn = iToken + 1
-    return iReturn
-
-
-def classify_is_keyword(iToken, token, lObjects):
-    iReturn = iToken
-    if classify_token('is', token, iToken, lObjects):
-        iReturn = iToken + 1
-    return iReturn
-
-
-def classify_semicolon(iToken, token, lObjects):
-    find_next_token(iToken, lObjects)
-    if classify_token(';', token, iToken, lObjects):
-        iToken += 1
-        return True
-    return False
-
-
 def has_label(iObject, lObjects):
     iCurrent = find_next_token(iObject, lObjects)
     iCurrent = increment_token_count(iCurrent)
@@ -383,19 +278,6 @@ def tokenize_label(iToken, lObjects, label_token, colon_token):
             iCurrent += 1
         return iCurrent
     return iToken
-
-
-def tokenize_semicolon(iObject, lObjects, token):
-    iIndex = iObject
-    iItemCount = 0
-    while iItemCount < 3:
-        if is_item(lObjects, iIndex):
-            if object_value_is(lObjects, iIndex, ';'):
-                assign_token(lObjects, iIndex, token)
-                return iIndex
-            iItemCount += 1
-        iIndex += 1
-    return iObject
 
 
 def print_debug(sTitle, iStart, iEnd, lObjects):
