@@ -35,6 +35,9 @@ def set_token_indent(lTokens):
     bLabelFound = False
     bLibraryFound = False
     bArchitectureFound = False
+    dVars = {}
+    dVars['insideConcurrentSignalAssignment'] = False
+
     for oToken in lTokens:
 
         if isinstance(oToken, parser.whitespace):
@@ -220,7 +223,8 @@ def set_token_indent(lTokens):
 
         ### Comments
         if isinstance(oToken, parser.comment):
-            oToken.set_indent(iIndent)
+            if not dVars['insideConcurrentSignalAssignment']:
+                oToken.set_indent(iIndent)
             continue
 
         ### Components
@@ -237,22 +241,39 @@ def set_token_indent(lTokens):
         ### Concurrent signal assignment
         if isinstance(oToken, token.concurrent_signal_assignment_statement.label_name):
             oToken.set_indent(iIndent)
+            dVars['insideConcurrentSignalAssignment'] = True
             continue
 
         if isinstance(oToken, token.concurrent_signal_assignment_statement.postponed_keyword):
             oToken.set_indent(iIndent)
+            dVars['insideConcurrentSignalAssignment'] = True
             continue
 
         if isinstance(oToken, token.concurrent_simple_signal_assignment.target):
             oToken.set_indent(iIndent)
+            dVars['insideConcurrentSignalAssignment'] = True
             continue
 
         if isinstance(oToken, token.concurrent_conditional_signal_assignment.target):
             oToken.set_indent(iIndent)
+            dVars['insideConcurrentSignalAssignment'] = True
             continue
 
         if isinstance(oToken, token.concurrent_selected_signal_assignment.with_keyword):
             oToken.set_indent(iIndent)
+            dVars['insideConcurrentSignalAssignment'] = True
+            continue
+
+        if isinstance(oToken, token.concurrent_simple_signal_assignment.semicolon):
+            dVars['insideConcurrentSignalAssignment'] = False
+            continue
+
+        if isinstance(oToken, token.concurrent_conditional_signal_assignment.semicolon):
+            dVars['insideConcurrentSignalAssignment'] = False
+            continue
+
+        if isinstance(oToken, token.concurrent_selected_signal_assignment.semicolon):
+            dVars['insideConcurrentSignalAssignment'] = False
             continue
 
         ### Constant declaration
