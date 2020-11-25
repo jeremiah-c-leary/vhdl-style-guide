@@ -12,6 +12,9 @@ lIgnore.append(token.interface_unknown_declaration.identifier)
 lIgnore.append(token.interface_constant_declaration.identifier)
 lIgnore.append(token.interface_variable_declaration.identifier)
 lIgnore.append(token.association_element.formal_part)
+lIgnore.append(token.entity_declaration.identifier)
+lIgnore.append(token.entity_declaration.entity_simple_name)
+lIgnore.append(token.architecture_body.entity_name)
 
 
 class rule_011(consistent_token_case):
