@@ -13,7 +13,8 @@ def detect(iToken, lObjects):
         while condition
       | for *loop*_parameter_specification
     '''
-
+    if utils.find_in_next_n_tokens('else', 3, iToken, lObjects):
+        return False
     if utils.find_in_next_n_tokens('while', 3, iToken, lObjects):
         return True
     if utils.find_in_next_n_tokens('for', 3, iToken, lObjects):

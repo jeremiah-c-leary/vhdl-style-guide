@@ -34,6 +34,12 @@ begin
       Output_1 <= F;
     end if;
 
+    if a = b then
+      wait for 10 ns;
+    else
+      wait for 20 ns;
+    end if;
+
   end process;
 
 end architecture RTL;
