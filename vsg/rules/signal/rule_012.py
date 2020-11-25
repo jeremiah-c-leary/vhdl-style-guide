@@ -114,36 +114,24 @@ class rule_012(rule.Rule):
             for iKey in list(dAnalysis.keys()):
                 if dAnalysis[iKey]['adjust'] != 0:
                     oLineTokens = oToi.extract_tokens(dAnalysis[iKey]['comma_index'], dAnalysis[iKey]['token_index'])
-                    sSolution = 'Move ' + dAnalysis[iKey]['token_value'] + ' ' + str(dAnalysis[iKey]['adjust']) + ' columns' 
+                    sSolution = 'Move ' + dAnalysis[iKey]['token_value'] + ' ' + str(dAnalysis[iKey]['adjust']) + ' columns'
                     oViolation = violation.New(dAnalysis[iKey]['line_number'], oLineTokens, sSolution)
                     oViolation.set_action(dAnalysis[iKey])
                     self.violations.append(oViolation)
 
             dAnalysis = {}
 
-    def fix(self, oFile):
-        '''
-        Applies fixes for any rule violations.
-        '''
-        if self.fixable:
-            self.analyze(oFile)
-            self._print_debug_message('Fixing rule: ' + self.name + '_' + self.identifier)
-            self._fix_violation(oFile)
-            self.violations = []
+    def _fix_violation(self, oViolation):
+        lTokens = oViolation.get_tokens()
+        dAction = oViolation.get_action()
 
-    def _fix_violation(self, oFile):
-        for oViolation in self.violations:
-            lTokens = oViolation.get_tokens()
-            dAction = oViolation.get_action()
-            
-            if len(lTokens) == 2:
-                lTokens.insert(1, parser.whitespace(' '*dAction['adjust']))
-            else:
-                iLen = len(lTokens[1].get_value()) + dAction['adjust']
-                lTokens[1].set_value(' '*iLen)
+        if len(lTokens) == 2:
+            lTokens.insert(1, parser.whitespace(' '*dAction['adjust']))
+        else:
+            iLen = len(lTokens[1].get_value()) + dAction['adjust']
+            lTokens[1].set_value(' '*iLen)
 
-            oViolation.set_tokens(lTokens)
-        oFile.update(self.violations)
+        oViolation.set_tokens(lTokens)
 
 
 def add_adjustments_to_dAnalysis(dAnalysis, compact_alignment):
@@ -175,7 +163,7 @@ def check_for_exclusions(bSkip, oToken, lUnless):
     return bSkip
 
 
-def check_for_signal_declaration(bSignalFound, oToken): 
+def check_for_signal_declaration(bSignalFound, oToken):
     if isinstance(oToken, token.signal_declaration.signal_keyword):
         return True
     if isinstance(oToken, token.signal_declaration.semicolon):

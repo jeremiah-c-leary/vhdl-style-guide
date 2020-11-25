@@ -1,10 +1,7 @@
 
-import sys
-
 from vsg import rule
 from vsg import parser
 from vsg import token
-from vsg import vhdlFile
 from vsg import violation
 
 from vsg.token.ieee.std_logic_1164 import function
@@ -20,7 +17,7 @@ lAssignments.append(token.simple_waveform_assignment.assignment)
 lAssignments.append(token.simple_force_assignment.assignment)
 lAssignments.append(token.simple_release_assignment.assignment)
 
-lEndAssignments = []                
+lEndAssignments = []
 lEndAssignments.append(token.simple_waveform_assignment.semicolon)
 lEndAssignments.append(token.simple_force_assignment.semicolon)
 lEndAssignments.append(token.simple_release_assignment.semicolon)
@@ -111,7 +108,7 @@ class rule_002(rule.Rule):
                            break
 
                    iColumn += len(oToken.get_value())
-               
+
                if isinstance(oToken, parser.carriage_return):
                    iLine += 1
                    iColumn = 0

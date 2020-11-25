@@ -6,7 +6,6 @@ from vsg import violation
 
 from vsg.vhdlFile import utils
 
-
 lMoveTokens = []
 lMoveTokens.append(token.conditional_expressions.else_keyword)
 lMoveTokens.append(token.conditional_waveforms.else_keyword)
@@ -58,24 +57,11 @@ class rule_001(rule.Rule):
                     iMoveToLine = iLine
                     oAnchorToken = oToken
 
-
-    def fix(self, oFile):
-        '''
-        Applies fixes for any rule violations.
-        '''
-        if self.fixable:
-            self.analyze(oFile)
-            self._print_debug_message('Fixing rule: ' + self.name + '_' + self.identifier)
-            self._fix_violation(oFile)
-            self.violations = []
-
-    def _fix_violation(self, oFile):
-        for oViolation in self.violations:
-            lTokens = oViolation.get_tokens()
-            if isinstance(lTokens[-1], parser.whitespace):
-                lTokens.pop()
-            oToken = lTokens.pop()
-            lTokens.insert(0, oToken)
-            lTokens.insert(0, parser.whitespace(' '))
-            oViolation.set_tokens(lTokens)
-        oFile.update(self.violations)
+    def _fix_violation(self, oViolation):
+        lTokens = oViolation.get_tokens()
+        if isinstance(lTokens[-1], parser.whitespace):
+            lTokens.pop()
+        oToken = lTokens.pop()
+        lTokens.insert(0, oToken)
+        lTokens.insert(0, parser.whitespace(' '))
+        oViolation.set_tokens(lTokens)

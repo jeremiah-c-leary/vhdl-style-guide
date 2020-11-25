@@ -11,7 +11,7 @@ def detect(iToken, lObjects):
     '''
 
     if utils.is_next_token_one_of(['open', 'is'], iToken, lObjects):
-        return classify(iToken, lObjects)    
+        return classify(iToken, lObjects)
     return iToken
 
 
@@ -26,4 +26,4 @@ def classify(iToken, lObjects):
     iCurrent = utils.assign_next_token_required('is', token.is_keyword, iCurrent, lObjects)
     iCurrent = utils.assign_next_token(token.file_logical_name, iCurrent, lObjects)
 
-    return iCurrent 
+    return iCurrent

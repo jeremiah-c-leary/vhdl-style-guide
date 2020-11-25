@@ -32,7 +32,6 @@ class rule_011(rule.Rule):
     anchor_token : token object
        token to check if insert_token exists to the right of
 
-    
        token to pull the value from
     '''
 

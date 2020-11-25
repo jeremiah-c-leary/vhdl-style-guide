@@ -1,8 +1,6 @@
 
 from vsg.rules import separate_multiple_signal_identifiers_into_individual_statements
 
-from vsg import token
-
 iAllow = 2
 
 

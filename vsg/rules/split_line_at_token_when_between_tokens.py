@@ -1,9 +1,7 @@
 
 
 from vsg import rule
-from vsg import utils
 from vsg import parser
-
 from vsg import violation
 
 

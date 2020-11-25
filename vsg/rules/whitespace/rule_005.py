@@ -28,7 +28,6 @@ class rule_005(rule.Rule):
 
         for oToi in lToi:
             iLine, lTokens = utils.get_toi_parameters(oToi)
-            dAction = {}
 
             oRight = lTokens[-2]
             if isinstance(oRight, parser.whitespace):

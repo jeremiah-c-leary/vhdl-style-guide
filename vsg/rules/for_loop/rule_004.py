@@ -10,4 +10,4 @@ class rule_004(single_space_between_tokens):
     '''
     def __init__(self):
         single_space_between_tokens.__init__(self, 'for_loop', '004', token.loop_label, token.label_colon)
-        self.solution = 'Ensure a single space between label and :.' 
+        self.solution = 'Ensure a single space between label and :.'

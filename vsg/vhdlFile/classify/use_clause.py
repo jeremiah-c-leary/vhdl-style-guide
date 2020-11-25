@@ -23,6 +23,6 @@ def classify(iToken, lObjects):
     while utils.is_next_token(',', iCurrent, lObjects):
         iCurrent = utils.assign_next_token_required(',', token.comma, iCurrent, lObjects)
         iCurrent = utils.assign_next_token(token.selected_name, iCurrent, lObjects)
- 
+
     iCurrent = utils.assign_next_token_required(';', token.semicolon, iCurrent, lObjects)
     return iCurrent

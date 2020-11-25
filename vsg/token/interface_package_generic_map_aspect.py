@@ -28,8 +28,8 @@ class default_keyword(parser.keyword):
 
 class undefined_range(parser.undefined_range):
 
-    def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+    def __init__(self, sString='<>'):
+        parser.undefined_range.__init__(self)
 
 
 class close_parenthesis(parser.close_parenthesis):

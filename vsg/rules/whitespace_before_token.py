@@ -38,7 +38,7 @@ class whitespace_before_token(rule.Rule):
         for oToken in self.lTokens:
             lToi_a = oFile.get_token_and_n_tokens_before_it(oToken, 1)
             lToi = utils.combine_two_token_class_lists(lToi, lToi_a)
- 
+
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             iLine = oToi.get_line_number()

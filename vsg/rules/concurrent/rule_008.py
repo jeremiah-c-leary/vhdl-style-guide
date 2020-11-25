@@ -82,10 +82,7 @@ class rule_008(rule.Rule):
             iLine, lTokens = utils.get_toi_parameters(oToi)
             dAnalysis = {}
             iColumn = 0
-            bTokenFound = False
             iToken = -1
-            bSkip = False
-            iMaxColumn = 0
             iLeftColumn = 0
             bStartFound = False
             bEndFound = False
@@ -93,8 +90,6 @@ class rule_008(rule.Rule):
             for iIndex in range(0, len(lTokens)):
                iToken += 1
                oToken = lTokens[iIndex]
-
-                    
 
                if bStartFound:
                    if isinstance(oToken, parser.carriage_return):
@@ -169,30 +164,17 @@ class rule_008(rule.Rule):
                            bStartFound = True
                            break
 
-    def fix(self, oFile):
-        '''
-        Applies fixes for any rule violations.
-        '''
-        if self.fixable:
-            self.analyze(oFile)
-            self._print_debug_message('Fixing rule: ' + self.name + '_' + self.identifier)
-            self._fix_violation(oFile)
-            self.violations = []
+    def _fix_violation(self, oViolation):
+        lTokens = oViolation.get_tokens()
+        dAction = oViolation.get_action()
+        iTokenIndex = dAction['token_index']
 
-    def _fix_violation(self, oFile):
-        for oViolation in self.violations:
-            lTokens = oViolation.get_tokens()
-            dAction = oViolation.get_action()
-#            print(dAction)
-            iTokenIndex = dAction['token_index']
-
-            if isinstance(lTokens[iTokenIndex - 1], parser.whitespace):
-                iLen = len(lTokens[iTokenIndex - 1].get_value())
-                lTokens[iTokenIndex - 1].set_value(' '*(iLen + dAction['adjust']))
-            else:
-                lTokens.insert(iTokenIndex, parser.whitespace(' '*dAction['adjust']))
-            oViolation.set_tokens(lTokens)
-        oFile.update(self.violations)
+        if isinstance(lTokens[iTokenIndex - 1], parser.whitespace):
+            iLen = len(lTokens[iTokenIndex - 1].get_value())
+            lTokens[iTokenIndex - 1].set_value(' '*(iLen + dAction['adjust']))
+        else:
+            lTokens.insert(iTokenIndex, parser.whitespace(' '*dAction['adjust']))
+        oViolation.set_tokens(lTokens)
 
 
 def add_adjustments_to_dAnalysis(dAnalysis, compact_alignment, include_lines_without_comments=False, iMaxColumn=0):

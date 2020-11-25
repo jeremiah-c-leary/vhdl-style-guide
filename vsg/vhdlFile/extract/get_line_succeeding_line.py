@@ -11,7 +11,6 @@ def get_line_succeeding_line(iLine, lAllTokens, iNumLines=1):
     iEndLine = iLine + iNumLines + 1
     bStoreTokens = False
     lTemp = []
-    iCount = 0
     for iToken, oToken in enumerate(lAllTokens):
         if bStoreTokens:
             lTemp.append(oToken)

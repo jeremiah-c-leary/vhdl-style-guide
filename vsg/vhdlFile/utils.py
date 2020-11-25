@@ -489,7 +489,7 @@ def classify_subelement_until(sToken, element, iToken, lObjects):
 def calculate_line_number(iToken, lObjects):
     iReturn = 1
     for iIndex in range(0, iToken):
-        if type(lObjects[iIndex]) == parser.carriage_return:
+        if isinstance(lObjects[iIndex], parser.carriage_return):
             iReturn += 1
     return iReturn
 
@@ -613,7 +613,6 @@ def does_token_type_match(oToken, oType):
 
 
 def remove_trailing_whitespace_and_comments(lTokens):
-    lReturn = []
     lTokens.reverse()
     for iIndex in range(0, len(lTokens)):
         if token_is_whitespace_or_comment(lTokens[iIndex]):

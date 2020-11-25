@@ -4,8 +4,6 @@ from vsg import parser
 from vsg import rule
 from vsg import violation
 
-from vsg.vhdlFile import utils
-
 
 class align_consecutive_lines_starting_with_a_comment_above_line_starting_with_token(rule.Rule):
     '''

@@ -3,13 +3,14 @@ lSingleCharacterSymbols = [',', ':', '(', ')', '\'', '"', '+', '&', '-', '*', '/
 lTwoCharacterSymbols = ['=>','**', ':=', '/=', '>=', '<=', '<>', '??', '?=', '?<', '?>', '<<', '>>', '--']
 lThreeCharacterSymbols = ['?/=', '?<', '?<=', '?>=']
 
+
 def create(sString):
     '''
     This function takes a string and returns a list of tokens.
     '''
     lCharacters = []
 
-    for iIndex, sChar in enumerate(sString):
+    for sChar in sString:
         lCharacters.append(sChar)
 
     lCharacters = combine_whitespace(lCharacters)
@@ -20,13 +21,6 @@ def create(sString):
     lCharacters = combine_comments(lCharacters)
 
     return lCharacters
-
-    lCharacters = insert_empty_space(lCharacters)
-
-    lTokens = extract_tokens(lCharacters)
-    lSeparators = extract_separators(lCharacters)
- 
-    return lTokens, lSeparators
 
 
 def combine_comments(lChars):
@@ -94,29 +88,6 @@ def combine_character_literals(lChars):
     return lReturn
 
 
-def insert_empty_space(lChars):
-    lReturn = []
-    sPrevChar = ' '
-
-    try:
-        if not lChars[0].startswith(' '):
-            lReturn.append('')
-    except IndexError:
-        return lReturn
-
-    for sChar in lChars:
-        if sChar.startswith(' '):
-            lReturn.append(sChar)
-        elif not sPrevChar.startswith(' '):
-            lReturn.append('')
-            lReturn.append(sChar)
-        else:
-            lReturn.append(sChar)
-        sPrevChar = sChar
-
-    return lReturn
-
-
 def combine_characters_into_words(lChars):
     lReturn = []
     sTemp = ''
@@ -141,7 +112,7 @@ def combine_characters_into_words(lChars):
 
     if len(sTemp) != 0:
         lReturn.append(sTemp)
-                
+
     return lReturn
 
 
@@ -155,11 +126,11 @@ def combine_whitespace(lChars):
             if sSpace != '':
                 lReturn.append(sSpace)
                 sSpace = ''
-            lReturn.append(sChar) 
+            lReturn.append(sChar)
 
     if sSpace != '':
         lReturn.append(sSpace)
-                
+
     return lReturn
 
 
@@ -179,21 +150,5 @@ def combine_two_character_symbols(lChars):
             bSkip = True
             lReturn.append(sChar + sNextChar)
         else:
-            lReturn.append(sChar)
-    return lReturn
-
-
-def extract_tokens(lChars):
-    lReturn = []
-    for sChar in lChars:
-        if not sChar.startswith(' ') and sChar != '':
-            lReturn.append(sChar)
-    return lReturn
-
-
-def extract_separators(lChars):
-    lReturn = []
-    for sChar in lChars:
-        if sChar.startswith(' ') or sChar == '':
             lReturn.append(sChar)
     return lReturn

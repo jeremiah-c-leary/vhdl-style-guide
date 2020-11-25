@@ -16,4 +16,4 @@ def classify(iToken, lObjects):
 
     iCurrent = signature.detect(iCurrent, lObjects)
 
-    return iCurrent 
+    return iCurrent

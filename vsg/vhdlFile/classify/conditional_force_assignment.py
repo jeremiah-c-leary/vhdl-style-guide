@@ -27,7 +27,7 @@ def classify(iToken, lObjects):
     iCurrent = utils.assign_next_token_required('<=', token.assignment, iCurrent, lObjects)
     iCurrent = utils.assign_next_token_required('force', token.force_keyword, iCurrent, lObjects)
 
-    iCurreht = force_mode.detect(iCurrent, lObjects)
+    iCurrent = force_mode.detect(iCurrent, lObjects)
 
     iCurrent = conditional_expressions.classify_until([';'], iCurrent, lObjects)
 

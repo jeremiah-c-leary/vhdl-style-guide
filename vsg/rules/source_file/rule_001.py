@@ -2,8 +2,6 @@
 from vsg import rule
 from vsg import violation
 
-from vsg.vhdlFile import utils
-
 
 class rule_001(rule.Rule):
     '''

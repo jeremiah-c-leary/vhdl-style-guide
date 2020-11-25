@@ -54,7 +54,7 @@ class rule_012(rule.Rule):
                         dAction['remove'] = iCount - self.numBlankLines
                         oViolation.set_action(dAction)
                         self.add_violation(oViolation)
-     
+
                     iCount = 0
 
     def fix(self, oFile):

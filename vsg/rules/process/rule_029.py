@@ -84,7 +84,7 @@ class rule_029(rule.Rule):
                         dAction['convert_to'] = 'event'
                         dAction['edge'] = "'1'"
                         bEventFound = True
-    
+
                     elif isinstance(oToken, token.ieee.std_logic_1164.function.falling_edge):
                         sSolution = 'Change falling_edge to event format.'
                         iStartIndex = iToken

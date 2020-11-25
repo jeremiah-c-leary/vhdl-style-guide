@@ -5,8 +5,6 @@ from vsg.token import choice as token
 
 from vsg.vhdlFile import utils
 
-from vsg.vhdlFile.classify import choice
-
 
 def classify_until(lUntils, iToken, lObjects):
     '''

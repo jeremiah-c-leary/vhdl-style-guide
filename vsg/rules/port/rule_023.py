@@ -26,7 +26,7 @@ class rule_023(rule.Rule):
     def __init__(self):
         rule.Rule.__init__(self, name='port', identifier='023')
         self.solution = 'Add mode'
-        self.phase = 1 
+        self.phase = 1
         self.fixable = False
 
     def analyze(self, oFile):

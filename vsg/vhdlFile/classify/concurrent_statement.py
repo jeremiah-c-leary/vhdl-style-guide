@@ -7,8 +7,6 @@ from vsg.vhdlFile.classify import concurrent_signal_assignment_statement
 from vsg.vhdlFile.classify import generate_statement
 from vsg.vhdlFile.classify import process_statement
 
-from vsg.vhdlFile import utils
-
 
 def detect(iToken, lObjects):
     '''

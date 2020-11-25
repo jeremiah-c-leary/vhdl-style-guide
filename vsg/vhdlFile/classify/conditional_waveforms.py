@@ -1,6 +1,4 @@
 
-from vsg import parser
-
 from vsg.token import conditional_waveforms as token
 
 from vsg.vhdlFile import utils

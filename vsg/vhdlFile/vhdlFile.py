@@ -127,7 +127,6 @@ class vhdlFile():
         '''
         iIndent = 0
         iTokenCount = 0
-        vLabelFound = False
         bLabelFound = False
         bLibraryFound = False
         bArchitectureFound = False
@@ -594,7 +593,6 @@ class vhdlFile():
         lTemp = []
         lReturn = []
         iMatchCount = 0
-        iMatchLength = len(lTokens)
         iStart = 0
         iEnd = len(lTokens)
         for iIndex in range(0, len(self.lAllObjects)):
@@ -967,7 +965,6 @@ class vhdlFile():
             lTemp.append(self.lAllObjects[iIndex])
             if bFirstTokenInLine:
                 iStart = iIndex
-                bFirstTokenInLine
 
         return lReturn
 
@@ -1025,7 +1022,7 @@ def split_on_carriage_return(lObjects):
     lMyObjects = []
     iLine = 1
     for oObject in lObjects:
-        if type(oObject) == parser.carriage_return:
+        if isinstance(oObject, parser.carriage_return):
             lReturn.append(lMyObjects)
             iLine += 1
             lMyObjects = []
@@ -1213,7 +1210,7 @@ def post_token_assignments(lTokens):
 
 def set_token_hierarchy_value(lTokens):
     iIfHierarchy = 0
-    for iToken, oToken in enumerate(lTokens):
+    for oToken in lTokens:
         if isinstance(oToken, token.if_statement.if_keyword):
             oToken.set_hierarchy(iIfHierarchy)
             iIfHierarchy += 1

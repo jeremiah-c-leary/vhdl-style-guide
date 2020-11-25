@@ -79,7 +79,7 @@ def read_predefined_style(sStyleName):
         sFileName = os.path.join(os.path.dirname(__file__), 'styles', sStyleName + '.yaml')
         dReturn = open_configuration_file(sFileName)
     return dReturn
-    
+
 
 def open_configuration_file(sFileName, sJUnitFileName=None):
     '''Attempts to open a configuration file and read it's contents.'''

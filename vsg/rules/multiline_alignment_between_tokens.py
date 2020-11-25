@@ -1,6 +1,4 @@
 
-import copy
-
 from vsg import rule
 from vsg import parser
 from vsg import violation
@@ -72,9 +70,7 @@ class multiline_alignment_between_tokens(rule.Rule):
                 iColumn += len(oToken.get_value())
 
                 if isinstance(oToken, parser.open_parenthesis):
-                    lTemp = lColumn.copy()
                     lColumn.append(iColumn + iPreviousColumn - iIndent)
-#                    print(f'{iColumn} | {iPreviousColumn} | {iIndent} | {lTemp} | {lColumn}')
 
                 if isinstance(oToken, parser.close_parenthesis):
                     lColumn.pop()

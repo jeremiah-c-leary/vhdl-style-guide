@@ -141,7 +141,7 @@ class rule_list():
                 if phase == 1:
                     self.oVhdlFile.set_token_indent()
                 continue
-            
+
             for subphase in range(1, 5):
                 lRules = self.get_rules_in_phase(phase)
                 lRules = self.get_rules_in_subphase(lRules, subphase)

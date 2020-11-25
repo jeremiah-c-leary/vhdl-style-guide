@@ -26,7 +26,7 @@ def classify(iToken, lObjects):
 
     iCurrent = conditional_force_assignment.detect(iToken, lObjects)
     if iCurrent != iToken:
-        return iCurrent    
+        return iCurrent
 
     iCurrent = conditional_waveform_assignment.detect(iToken, lObjects)
 

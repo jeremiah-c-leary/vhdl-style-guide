@@ -1,5 +1,4 @@
 
-from vsg import parser
 from vsg import token
 
 from vsg.rules import remove_token_and_whitespace_before_it

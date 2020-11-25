@@ -1,6 +1,4 @@
 
-from vsg import severity
-
 from vsg.rules import line_length
 
 

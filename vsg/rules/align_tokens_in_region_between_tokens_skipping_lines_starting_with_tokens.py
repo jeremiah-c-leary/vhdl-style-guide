@@ -99,7 +99,7 @@ class align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens(
                            break
 
                    iColumn += len(oToken.get_value())
-               
+
                if isinstance(oToken, token.generic_clause.semicolon) and self.separate_generic_port_alignment:
                    add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
                    for iKey in list(dAnalysis.keys()):

@@ -6,7 +6,7 @@ from vsg.vhdlFile.classify import design_unit
 
 def tokenize(lObjects):
     '''
-    design_file ::= 
+    design_file ::=
         design_unit { design_unit }
     '''
     iReturn = 0

@@ -1,10 +1,7 @@
 
-import sys
-
 from vsg import rule
 from vsg import parser
 from vsg import token
-from vsg import vhdlFile
 from vsg import violation
 
 from vsg.token.ieee.std_logic_1164 import function
@@ -24,7 +21,7 @@ lAssignments.append(token.simple_waveform_assignment.assignment)
 lAssignments.append(token.simple_force_assignment.assignment)
 lAssignments.append(token.simple_release_assignment.assignment)
 
-lEndAssignments = []                
+lEndAssignments = []
 lEndAssignments.append(token.simple_waveform_assignment.semicolon)
 lEndAssignments.append(token.simple_force_assignment.semicolon)
 lEndAssignments.append(token.simple_release_assignment.semicolon)
@@ -64,7 +61,6 @@ class rule_003(rule.Rule):
 
         for oToi in lToi:
             iLine, lTokens = utils.get_toi_parameters(oToi)
-            bInsideClockDef = False
             bInsideAssignment = False
             bResetFound = False
 
@@ -108,24 +104,11 @@ class rule_003(rule.Rule):
                         iStartIndex = iToken
                     bAfterFound = True
 
-
-    def fix(self, oFile):
-        '''
-        Applies fixes for any rule violations.
-        '''
-        if self.fixable:
-            self.analyze(oFile)
-            self._print_debug_message('Fixing rule: ' + self.name + '_' + self.identifier)
-            self._fix_violation(oFile)
-            self.violations = []
-
-    def _fix_violation(self, oFile):
-        for oViolation in self.violations:
-            lTokens = oViolation.get_tokens()
-            lNewTokens = []
-            lNewTokens.append(lTokens[-1])
-            oViolation.set_tokens(lNewTokens)
-        oFile.update(self.violations)
+    def _fix_violation(self, oViolation):
+        lTokens = oViolation.get_tokens()
+        lNewTokens = []
+        lNewTokens.append(lTokens[-1])
+        oViolation.set_tokens(lNewTokens)
 
 
 def detect_clock_definition(iToken, oToken, lTokens):

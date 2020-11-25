@@ -166,13 +166,6 @@ class Rule():
         dConfig['severity'] = self.severity.name
         return dConfig
 
-#    def _get_solution(self, iLineNumber):
-#        '''
-#        By default this method return self.solution.
-#        This method can be overloaded by a rule if a more complex solution output is required.
-#        '''
-#        return self.solution
-
     def _get_solution(self, iLineNumber):
         '''
         Returns the solution for a violation.
