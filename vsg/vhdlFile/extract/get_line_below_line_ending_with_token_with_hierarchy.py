@@ -8,7 +8,6 @@ from vsg.vhdlFile import vhdlFile
 def get_line_below_line_ending_with_token_with_hierarchy(lTokens, lAllTokens, lHierarchy):
     lReturn = []
     iLine = 1
-    lCurrentLine = []
     lTemp = []
     bTokenFound = False
     bCrFound = False

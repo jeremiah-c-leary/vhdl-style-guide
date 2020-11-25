@@ -1,9 +1,6 @@
 
-
 from vsg import rule
-from vsg import utils
 from vsg import parser
-
 from vsg import violation
 
 
@@ -52,21 +49,8 @@ class blank_line_above_line_starting_with_token(rule.Rule):
             oViolation = violation.New(oToi.get_line_number(), oToi, self.solution)
             self.add_violation(oViolation)
 
-
-    def fix(self, oFile):
-        '''
-        Applies fixes for any rule violations.
-        '''
-        if self.fixable:
-            self.analyze(oFile)
-            self._print_debug_message('Fixing rule: ' + self.name + '_' + self.identifier)
-            self._fix_violation(oFile)
-            self.violations = []
-
-    def _fix_violation(self, oFile):
-        for oViolation in self.violations:
-            lTokens = oViolation.get_tokens()
-            lTokens.append(parser.carriage_return())
-            lTokens.append(parser.blank_line())
-            oViolation.set_tokens(lTokens)
-        oFile.update(self.violations)
+    def _fix_violation(self, oViolation):
+        lTokens = oViolation.get_tokens()
+        lTokens.append(parser.carriage_return())
+        lTokens.append(parser.blank_line())
+        oViolation.set_tokens(lTokens)

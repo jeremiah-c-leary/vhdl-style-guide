@@ -1,6 +1,4 @@
 
-from vsg.vhdlFile import utils
-
 from vsg.vhdlFile.classify import interface_function_specification
 from vsg.vhdlFile.classify import interface_procedure_specification
 

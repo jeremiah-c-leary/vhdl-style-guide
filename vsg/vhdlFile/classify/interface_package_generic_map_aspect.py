@@ -13,8 +13,6 @@ def detect(iToken, lObjects):
       | generic map ( <> )
       | generic map ( default )
     '''
-    iTokenCount = 0
-    iCurrent = iToken
     if utils.are_next_consecutive_tokens(['generic', 'map', '(', '<>'], iToken, lObjects):
         return classify(iToken, lObjects)
     elif utils.are_next_consecutive_tokens(['generic', 'map', '(', 'default'], iToken, lObjects):

@@ -1,9 +1,7 @@
 
-
 from vsg import parser
 from vsg import rule
 from vsg import token
-from vsg import utils
 from vsg import violation
 
 
@@ -57,53 +55,38 @@ class separate_multiple_signal_identifiers_into_individual_statements(rule.Rule)
                 oViolation.set_action(dAction)
                 self.add_violation(oViolation)
 
-
-    def fix(self, oFile):
-        '''
-        Applies fixes for any rule violations.
-        '''
-        if self.fixable:
-            self.analyze(oFile)
-            self._print_debug_message('Fixing rule: ' + self.name + '_' + self.identifier)
-            self._fix_violation(oFile)
-            self.violations = []
-
-    def _fix_violation(self, oFile):
-        for oViolation in self.violations:
-            lTokens = oViolation.get_tokens()
-            dAction = oViolation.get_action()
-            lPreTokens = lTokens[:dAction['start']]
-            lPostTokens = []
-            lTemp = lTokens[dAction['end'] + 1:]
-            for iToken, oToken in enumerate(lTemp):
-                if isinstance(oToken, parser.carriage_return):
+    def _fix_violation(self, oViolation):
+        lTokens = oViolation.get_tokens()
+        dAction = oViolation.get_action()
+        lPreTokens = lTokens[:dAction['start']]
+        lPostTokens = []
+        lTemp = lTokens[dAction['end'] + 1:]
+        for iToken, oToken in enumerate(lTemp):
+            if isinstance(oToken, parser.carriage_return):
+                continue
+            lPostTokens.append(oToken)
+        lTemp = lPostTokens
+        lPostTokens = []
+        for iToken, oToken in enumerate(lTemp):
+            if iToken == 0:
+                if isinstance(oToken, parser.whitespace):
                     continue
-                lPostTokens.append(oToken)
-            lTemp = lPostTokens
-            lPostTokens = []
-            for iToken, oToken in enumerate(lTemp):
-                if iToken == 0:
-                    if isinstance(oToken, parser.whitespace):
-                        continue
+            else:
+                if isinstance(oToken, parser.whitespace) and isinstance(lTemp[iToken - 1], parser.whitespace):
+                    continue
                 else:
-                    if isinstance(oToken, parser.whitespace) and isinstance(lTemp[iToken - 1], parser.whitespace):
-                        continue
-                    else:
-                        lPostTokens.append(oToken)
+                    lPostTokens.append(oToken)
 
 
-            lIdentifiers = lTokens[dAction['start']:dAction['end'] + 1]
+        lIdentifiers = lTokens[dAction['start']:dAction['end'] + 1]
 
-            lNewTokens = []
-            iIdentifiers = 0
-            for oToken in lIdentifiers:
-                if isinstance(oToken, token.signal_declaration.identifier):
-                    iIdentifiers += 1
-                    if iIdentifiers == dAction['number']:
-                        lNewTokens.extend(lPreTokens + [oToken, parser.whitespace(' ')] + lPostTokens)
-                    else:
-                        lNewTokens.extend(lPreTokens + [oToken, parser.whitespace(' ')] + lPostTokens + [parser.carriage_return()])
-            oViolation.set_tokens(lNewTokens)
-
-        oFile.update(self.violations)
-
+        lNewTokens = []
+        iIdentifiers = 0
+        for oToken in lIdentifiers:
+            if isinstance(oToken, token.signal_declaration.identifier):
+                iIdentifiers += 1
+                if iIdentifiers == dAction['number']:
+                    lNewTokens.extend(lPreTokens + [oToken, parser.whitespace(' ')] + lPostTokens)
+                else:
+                    lNewTokens.extend(lPreTokens + [oToken, parser.whitespace(' ')] + lPostTokens + [parser.carriage_return()])
+        oViolation.set_tokens(lNewTokens)

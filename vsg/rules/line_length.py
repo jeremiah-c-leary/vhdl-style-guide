@@ -32,8 +32,6 @@ class line_length(rule.Rule):
 
     def analyze(self, oFile):
 
-        dAnalysis = {}
-
         lToi = oFile.get_lines_with_length_that_exceed_column(self.length)
         for oToi in lToi:
             oViolation = violation.New(oToi.get_line_number(), oToi, self.solution)

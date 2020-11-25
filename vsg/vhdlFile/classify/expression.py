@@ -16,7 +16,6 @@ def classify(iToken, lObjects):
 def classify_until(lUntils, iToken, lObjects):
     iEnd = len(lObjects) - 1
     iCurrent = iToken
-    iStop = len(lObjects) - 1
     iOpenParenthesis = 0
     iCloseParenthesis = 0
     for iIndex in range(iToken, len(lObjects)):

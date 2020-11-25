@@ -1,10 +1,6 @@
 
-
-from vsg import parser
 from vsg import rule
 from vsg import violation
-
-from vsg.vhdlFile import utils
 
 
 class remove_tokens_bounded_by_tokens_and_remove_trailing_whitespace(rule.Rule):
@@ -41,18 +37,5 @@ class remove_tokens_bounded_by_tokens_and_remove_trailing_whitespace(rule.Rule):
         for oToi in lToi:
            self.violations.append(violation.New(oToi.get_line_number(), oToi, self.solution))
 
-
-    def fix(self, oFile):
-        '''
-        Applies fixes for any rule violations.
-        '''
-        if self.fixable:
-            self.analyze(oFile)
-            self._print_debug_message('Fixing rule: ' + self.name + '_' + self.identifier)
-            self._fix_violation(oFile)
-            self.violations = []
-
-    def _fix_violation(self, oFile):
-        for oViolation in self.violations:
-            oViolation.set_tokens([])
-        oFile.update(self.violations)
+    def _fix_violation(self, oViolation):
+        oViolation.set_tokens([])

@@ -1,5 +1,4 @@
 
-from vsg import parser
 from vsg.vhdlFile import utils
 
 from vsg.token import case_generate_statement as token

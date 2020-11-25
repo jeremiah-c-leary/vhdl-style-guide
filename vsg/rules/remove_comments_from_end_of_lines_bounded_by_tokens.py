@@ -1,9 +1,6 @@
 
-
 from vsg import parser
 from vsg import rule
-from vsg import token
-from vsg.vhdlFile import utils
 from vsg import violation
 
 
@@ -56,18 +53,6 @@ class remove_comments_from_end_of_lines_bounded_by_tokens(rule.Rule):
                             oViolation = violation.New(oNewToi.get_line_number(), oNewToi, self.solution)
                             self.add_violation(oViolation)
 
-    def fix(self, oFile):
-        '''
-        Applies fixes for any rule violations.
-        '''
-        if self.fixable:
-            self.analyze(oFile)
-            self._print_debug_message('Fixing rule: ' + self.name + '_' + self.identifier)
-            self._fix_violation(oFile)
-            self.violations = []
-
-    def _fix_violation(self, oFile):
+    def _fix_violation(self, oViolation):
         for oViolation in self.violations:
             oViolation.set_tokens([])
-
-        oFile.update(self.violations)

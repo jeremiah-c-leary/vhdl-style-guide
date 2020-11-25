@@ -38,7 +38,6 @@ class remove_blank_lines_above_line_starting_with_token(rule.Rule):
             iLine = oToi.get_line_number()
 
             iTargetIndent = lTokens[-1].get_indent()
-            iWhitespaceLength = iTargetIndent * self.indentSize
 
             for iIndex in range(0, len(lTokens)):
                oToken = lTokens[iIndex]

@@ -33,7 +33,6 @@ class whitespace_before_token(rule.Rule):
     def analyze(self, oFile):
 
         self._print_debug_message('Analyzing rule: ' + self.name + '_' + self.identifier)
-        dAnalysis = {}
         lToi = []
         for oToken in self.lTokens:
             lToi_a = oFile.get_token_and_n_tokens_before_it(oToken, 1)
@@ -41,7 +40,6 @@ class whitespace_before_token(rule.Rule):
 
         for oToi in lToi:
             lTokens = oToi.get_tokens()
-            iLine = oToi.get_line_number()
 
             if isinstance(lTokens[0], parser.whitespace):
                 continue

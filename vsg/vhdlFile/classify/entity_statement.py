@@ -1,6 +1,4 @@
 
-from vsg.vhdlFile import utils
-
 from vsg.vhdlFile.classify import concurrent_assertion_statement
 from vsg.vhdlFile.classify import concurrent_procedure_call_statement
 from vsg.vhdlFile.classify import process_statement

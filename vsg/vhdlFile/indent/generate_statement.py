@@ -1,6 +1,4 @@
 
-from vsg import token
-
 from vsg.vhdlFile.indent import case_generate_statement
 from vsg.vhdlFile.indent import for_generate_statement
 from vsg.vhdlFile.indent import if_generate_statement

@@ -508,7 +508,6 @@ def remove_trailing_whitespace_and_comments(lTokens):
 
 
 def remove_leading_whitespace_and_comments(iToken, lTokens):
-    lReturn = []
     for iIndex in range(0, len(lTokens)):
         if token_is_whitespace_or_comment(lTokens[iIndex]):
             continue

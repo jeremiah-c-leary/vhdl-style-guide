@@ -1,10 +1,7 @@
 
-
 from vsg import parser
 from vsg import rule
 from vsg import violation
-
-from vsg.vhdlFile import utils
 
 
 class align_consecutive_lines_after_line_starting_with_token_and_stopping_with_token(rule.Rule):
@@ -71,25 +68,11 @@ class align_consecutive_lines_after_line_starting_with_token_and_stopping_with_t
                        oViolation.set_action(dAction)
                        self.violations.append(oViolation)
 
-
-    def fix(self, oFile):
-        '''
-        Applies fixes for any rule violations.
-        '''
-        if self.fixable:
-            self.analyze(oFile)
-            self._print_debug_message('Fixing rule: ' + self.name + '_' + self.identifier)
-            self._fix_violation(oFile)
-            self.violations = []
-
-    def _fix_violation(self, oFile):
-        for oViolation in self.violations:
-            lTokens = oViolation.get_tokens()
-            dAction = oViolation.get_action()
-            if dAction['type'] == 'adjust':
-                lTokens[0].set_value(' ' * dAction['adjust'])
-            elif dAction['type'] == 'insert':
-                lTokens.insert(0, parser.whitespace(' ' * dAction['adjust']))
-            oViolation.set_tokens(lTokens)
-        oFile.update(self.violations)
-
+    def _fix_violation(self, oViolation):
+        lTokens = oViolation.get_tokens()
+        dAction = oViolation.get_action()
+        if dAction['type'] == 'adjust':
+            lTokens[0].set_value(' ' * dAction['adjust'])
+        elif dAction['type'] == 'insert':
+            lTokens.insert(0, parser.whitespace(' ' * dAction['adjust']))
+        oViolation.set_tokens(lTokens)

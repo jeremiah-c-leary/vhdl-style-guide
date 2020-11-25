@@ -3,7 +3,6 @@ from vsg import parser
 
 from vsg.vhdlFile import vhdlFile as token_class
 
-from vsg.vhdlFile import utils
 
 def get_n_token_after_tokens(iToken, lTokens, lAllTokens):
     iLine = 1

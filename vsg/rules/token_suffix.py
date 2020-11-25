@@ -1,9 +1,5 @@
 
-
 from vsg import rule
-from vsg import utils
-from vsg import parser
-
 from vsg import violation
 
 
@@ -50,7 +46,6 @@ class token_suffix(rule.Rule):
                 sSolution = 'Suffix ' + lTokens[0].get_value() + ' with one of the following: ' + ', '.join(self.suffixes)
                 oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
                 self.add_violation(oViolation)
-
 
     def fix(self, oFile):
         '''

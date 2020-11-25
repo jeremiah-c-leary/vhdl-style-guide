@@ -1,9 +1,5 @@
 
-
 from vsg import rule
-from vsg import utils
-from vsg import parser
-
 from vsg import violation
 
 
@@ -46,24 +42,10 @@ class token_case_subtype_indication(rule.Rule):
                     sSolution = 'Change "' + sObjectValue + '" to "' + sObjectValue.upper() + '"'
                     self.add_violation(violation.New(oToi.get_line_number(), oToi, sSolution))
 
-
-    def fix(self, oFile):
-        '''
-        Applies fixes for any rule violations.
-        '''
-        if self.fixable:
-            self.analyze(oFile)
-            self._print_debug_message('Fixing rule: ' + self.name + '_' + self.identifier)
-            self._fix_violation(oFile)
-            self.violations = []
-
-    def _fix_violation(self, oFile):
-        for oViolation in self.violations:
-            lTokens = oViolation.get_tokens()
-            if self.case == 'lower':
-                lTokens[0].set_value(lTokens[0].get_value().lower())
-            if self.case == 'upper':
-                lTokens[0].set_value(lTokens[0].get_value().upper())
-            oViolation.set_tokens(lTokens)
-        oFile.update(self.violations)
-
+    def _fix_violation(self, oViolation):
+        lTokens = oViolation.get_tokens()
+        if self.case == 'lower':
+            lTokens[0].set_value(lTokens[0].get_value().lower())
+        if self.case == 'upper':
+            lTokens[0].set_value(lTokens[0].get_value().upper())
+        oViolation.set_tokens(lTokens)

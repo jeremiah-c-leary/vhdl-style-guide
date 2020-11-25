@@ -1,9 +1,5 @@
 
-
 from vsg import rule
-from vsg import utils
-from vsg import parser
-
 from vsg import violation
 
 
@@ -39,7 +35,6 @@ class existence_of_tokens_which_should_not_occur(rule.Rule):
         for oToi in lToi:
             oViolation = violation.New(oToi.get_line_number(), oToi, self.solution)
             self.add_violation(oViolation)
-
 
     def fix(self, oFile):
         '''

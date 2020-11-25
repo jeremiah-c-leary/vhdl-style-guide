@@ -1,5 +1,4 @@
 
-from vsg import parser
 from vsg import token
 
 from vsg.rules import formal_part_in_association_element_between_tokens

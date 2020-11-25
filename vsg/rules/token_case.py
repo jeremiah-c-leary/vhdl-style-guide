@@ -1,9 +1,5 @@
 
-
 from vsg import rule
-from vsg import utils
-from vsg import parser
-
 from vsg import violation
 
 
@@ -44,7 +40,6 @@ class token_case(rule.Rule):
                 if not sObjectValue.isupper():
                     sSolution = 'Change "' + sObjectValue + '" to "' + sObjectValue.upper() + '"'
                     self.add_violation(violation.New(oToken.get_line_number(), oToken, sSolution))
-
 
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()

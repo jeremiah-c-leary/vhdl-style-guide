@@ -47,7 +47,6 @@ class insert_token_right_of_possible_tokens_if_it_does_not_exist_before_token(ru
             if utils.does_token_type_exist_in_list_of_tokens(type(self.oInsertToken), lTokens):
                 continue
 
-            dAction = {}
             for iToken, oToken in enumerate(lTokens):
                 iLine = utils.increment_line_number(iLine, oToken)
                 for oSearch in self.lAnchorTokens:

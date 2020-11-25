@@ -1,10 +1,9 @@
 
-
 from vsg import parser
 from vsg import rule
-from vsg import token
-from vsg.vhdlFile import utils
 from vsg import violation
+
+from vsg.vhdlFile import utils
 
 
 class remove_carriage_returns_between_token_pairs(rule.Rule):
@@ -59,4 +58,3 @@ class remove_carriage_returns_between_token_pairs(rule.Rule):
                 lTokens.insert(1, parser.whitespace(' '))
 
         oViolation.set_tokens(lTokens)
-

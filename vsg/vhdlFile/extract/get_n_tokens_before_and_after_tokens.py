@@ -7,7 +7,6 @@ from vsg.vhdlFile import vhdlFile as token_class
 def get_n_tokens_before_and_after_tokens(iToken, lTokens, lAllTokens):
     iLine = 1
     lReturn = []
-    bSearch = False
     for iIndex in range(0, len(lAllTokens)):
         for oToken in lTokens:
             if isinstance(lAllTokens[iIndex], oToken):

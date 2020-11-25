@@ -1,9 +1,6 @@
 
-
 from vsg import rule
-from vsg import utils
 from vsg import parser
-
 from vsg import violation
 
 
@@ -40,24 +37,10 @@ class split_line_at_token(rule.Rule):
             oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
             self.add_violation(oViolation)
 
-    def fix(self, oFile):
-        '''
-        Applies fixes for any rule violations.
-        '''
-        if self.fixable:
-            self.analyze(oFile)
-            self._print_debug_message('Fixing rule: ' + self.name + '_' + self.identifier)
-            self._fix_violation(oFile)
-            self.violations = []
-
-    def _fix_violation(self, oFile):
-        for oViolation in self.violations:
-            lTokens = oViolation.get_tokens()
-            if isinstance(lTokens[1], parser.whitespace):
-                lTokens.insert(-2, parser.carriage_return())
-            else:
-                lTokens.insert(-1, parser.carriage_return())
-            oViolation.set_tokens(lTokens)
-
-        oFile.update(self.violations)
-
+    def _fix_violation(self, oViolation):
+        lTokens = oViolation.get_tokens()
+        if isinstance(lTokens[1], parser.whitespace):
+            lTokens.insert(-2, parser.carriage_return())
+        else:
+            lTokens.insert(-1, parser.carriage_return())
+        oViolation.set_tokens(lTokens)

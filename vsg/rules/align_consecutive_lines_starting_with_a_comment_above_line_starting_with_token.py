@@ -30,8 +30,6 @@ class align_consecutive_lines_starting_with_a_comment_above_line_starting_with_t
 
     def analyze(self, oFile):
 
-        dAnalysis = {}
-
         lToi = oFile.get_consecutive_lines_starting_with_token_and_stopping_when_token_starting_line_is_found(parser.comment, self.token)
         for oToi in lToi:
             lTokens = oToi.get_tokens()

@@ -1,9 +1,6 @@
 
-
 from vsg import rule
-from vsg import utils
 from vsg import parser
-
 from vsg import violation
 
 
@@ -55,23 +52,11 @@ class consistent_token_case(rule.Rule):
                             oViolation.set_action(dAction)
                             self.add_violation(oViolation)
 
-    def fix(self, oFile):
-        '''
-        Applies fixes for any rule violations.
-        '''
-        if self.fixable:
-            self.analyze(oFile)
-            self._print_debug_message('Fixing rule: ' + self.name + '_' + self.identifier)
-            self._fix_violation(oFile)
-            self.violations = []
-
-    def _fix_violation(self, oFile):
-        for oViolation in self.violations:
-            lTokens = oViolation.get_tokens()
-            dActions = oViolation.get_action()
-            lTokens[0].set_value(dActions['constant'])
-            oViolation.set_tokens(lTokens)
-        oFile.update(self.violations)
+    def _fix_violation(self, oViolation):
+        lTokens = oViolation.get_tokens()
+        dActions = oViolation.get_action()
+        lTokens[0].set_value(dActions['constant'])
+        oViolation.set_tokens(lTokens)
 
 
 def is_token_in_ignore_token_list(oToken, lIgnoreTokens):

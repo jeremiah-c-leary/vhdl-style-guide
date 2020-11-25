@@ -1,10 +1,7 @@
 
-
 from vsg import parser
 from vsg import rule
 from vsg import violation
-
-from vsg.vhdlFile import utils
 
 
 class remove_token_and_whitespace_before_it(rule.Rule):
@@ -39,21 +36,9 @@ class remove_token_and_whitespace_before_it(rule.Rule):
            self.violations.append(violation.New(oToi.get_line_number(), oToi, self.solution))
 
 
-    def fix(self, oFile):
-        '''
-        Applies fixes for any rule violations.
-        '''
-        if self.fixable:
-            self.analyze(oFile)
-            self._print_debug_message('Fixing rule: ' + self.name + '_' + self.identifier)
-            self._fix_violation(oFile)
-            self.violations = []
-
-    def _fix_violation(self, oFile):
-        for oViolation in self.violations:
-            lTokens = oViolation.get_tokens()
-            if isinstance(lTokens[0], parser.whitespace):
-                oViolation.set_tokens([])
-            else:
-                oViolation.set_tokens(lTokens[1])
-        oFile.update(self.violations)
+    def _fix_violation(self, oViolation):
+        lTokens = oViolation.get_tokens()
+        if isinstance(lTokens[0], parser.whitespace):
+            oViolation.set_tokens([])
+        else:
+            oViolation.set_tokens(lTokens[1])

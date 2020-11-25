@@ -125,7 +125,6 @@ class vhdlFile():
         Set the indent level of tokens.
         '''
         iIndent = 0
-        iTokenCount = 0
         bLabelFound = False
         bLibraryFound = False
         bArchitectureFound = False
