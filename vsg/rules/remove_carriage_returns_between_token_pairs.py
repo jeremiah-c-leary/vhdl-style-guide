@@ -59,4 +59,4 @@ class remove_carriage_returns_between_token_pairs(rule.Rule):
                 lTokens.insert(1, parser.whitespace(' '))
 
         oViolation.set_tokens(lTokens)
-               
+

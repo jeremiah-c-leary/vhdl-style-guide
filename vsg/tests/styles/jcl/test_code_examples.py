@@ -40,7 +40,7 @@ class testCodeExample(unittest.TestCase):
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'timestamp.fixed.vhdl'), lExpected)
 
-        self.assertEqual(lExpected, oTimestamp.get_lines()) 
+        self.assertEqual(lExpected, oTimestamp.get_lines())
 
     def test_spi_slave(self):
         oRuleList = rule_list.rule_list(oSpiSlave, oSeverityList)
@@ -69,7 +69,7 @@ class testCodeExample(unittest.TestCase):
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'grp_debouncer.fixed.vhd'), lExpected)
 
-        self.assertEqual(lExpected, oGrpDebouncer.get_lines()) 
+        self.assertEqual(lExpected, oGrpDebouncer.get_lines())
 
     def test_pic(self):
         oRuleList = rule_list.rule_list(oPIC, oSeverityList)
@@ -79,4 +79,4 @@ class testCodeExample(unittest.TestCase):
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'PIC.fixed.vhd'), lExpected)
 
-        self.assertEqual(lExpected, oPIC.get_lines()) 
+        self.assertEqual(lExpected, oPIC.get_lines())

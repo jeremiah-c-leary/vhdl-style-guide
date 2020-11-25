@@ -3,7 +3,7 @@ from vsg.token import if_generate_statement as token
 
 from vsg.vhdlFile import utils
 
-from vsg.vhdlFile.classify import condition 
+from vsg.vhdlFile.classify import condition
 from vsg.vhdlFile.classify import generate_statement_body
 
 
@@ -35,7 +35,7 @@ def classify(iToken, lObjects):
     iCurrent = condition.classify_until(['generate'], iCurrent, lObjects)
 
     iCurrent = utils.assign_next_token_required('generate', token.generate_keyword, iCurrent, lObjects)
-   
+
     iCurrent = generate_statement_body.classify(iCurrent, lObjects)
 
     while utils.is_next_token('elsif', iCurrent, lObjects):
@@ -44,14 +44,14 @@ def classify(iToken, lObjects):
         iCurrent = condition.classify_until(['generate'], iCurrent, lObjects)
 
         iCurrent = utils.assign_next_token_required('generate', token.generate_keyword, iCurrent, lObjects)
-   
+
         iCurrent = generate_statement_body.classify(iCurrent, lObjects)
 
     if utils.is_next_token('else', iCurrent, lObjects):
         iCurrent = utils.assign_next_token_required('else', token.else_keyword, iCurrent, lObjects)
 
         iCurrent = utils.assign_next_token_required('generate', token.generate_keyword, iCurrent, lObjects)
-   
+
         iCurrent = generate_statement_body.classify(iCurrent, lObjects)
 
     iCurrent = utils.assign_next_token_required('end', token.end_keyword, iCurrent, lObjects)

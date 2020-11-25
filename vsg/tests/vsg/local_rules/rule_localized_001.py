@@ -15,7 +15,7 @@ class rule_001(rule.Rule):
   def analyze(self, oFile):
       lToiEntity = oFile.get_tokens_matching([token.entity_declaration.entity_keyword])
       lToiArchitecture = oFile.get_tokens_matching([token.architecture_body.architecture_keyword])
- 
+
       if len(lToiEntity) > 0 and len(lToiArchitecture) > 0:
           oViolation = violation.New(1, lToiEntity, self.solution)
           self.add_violation(oViolation)

@@ -17,6 +17,6 @@ def classify(iToken, lObjects):
     while not utils.is_next_token(')', iCurrent, lObjects):
         iCurrent = discrete_range.classify_until([','], iCurrent, lObjects)
         iCurrent = utils.assign_next_token_if(',', token.comma, iCurrent, lObjects)
-    
+
     iCurrent = utils.assign_next_token_required(')', token.close_parenthesis, iCurrent, lObjects)
     return iCurrent

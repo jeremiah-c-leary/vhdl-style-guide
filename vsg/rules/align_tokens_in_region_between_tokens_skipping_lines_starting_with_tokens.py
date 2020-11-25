@@ -178,8 +178,8 @@ class align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens(
                                    self.violations.append(oViolation)
 
                            dAnalysis = {}
-                       
-                       
+
+
 
             add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment, self.include_lines_without_comments, iMaxColumn)
 

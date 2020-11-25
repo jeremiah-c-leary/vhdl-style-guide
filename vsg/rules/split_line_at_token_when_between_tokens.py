@@ -64,6 +64,6 @@ class split_line_at_token_when_between_tokens(rule.Rule):
             else:
                 lTokens.insert(-1, parser.carriage_return())
             oViolation.set_tokens(lTokens)
-               
+
         oFile.update(self.violations)
 

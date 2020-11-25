@@ -122,7 +122,7 @@ class multiline_alignment_between_tokens(rule.Rule):
                 lTokens.insert(0, parser.whitespace(' '*dAction['column']))
 
             oViolation.set_tokens(lTokens)
-               
+
         oFile.update(self.violations)
 
 

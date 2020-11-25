@@ -73,5 +73,5 @@ class rule_012(rule.Rule):
             dAction = oViolation.get_action()
             lTokens = lTokens[2*dAction['remove']:]
             oViolation.set_tokens(lTokens)
-               
+
         oFile.update(self.violations)

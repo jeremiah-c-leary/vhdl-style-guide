@@ -32,9 +32,9 @@ def get_blank_lines_above_line_starting_with_token(lTokens, lAllTokens):
                 if utils.are_next_consecutive_token_types([oToken], iCurrent, lAllTokens):
                     lReturn.append(vutils.Tokens(iStart, iLine, lTemp))
                     break
-         
+
             if not utils.are_next_consecutive_token_types([parser.blank_line, parser.carriage_return], iCurrent, lAllTokens):
                 bStore = False
                 lTemp = []
 
-    return lReturn                    
+    return lReturn

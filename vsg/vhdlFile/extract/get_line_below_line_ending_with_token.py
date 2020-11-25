@@ -47,4 +47,4 @@ def get_line_below_line_ending_with_token(lTokens, lAllTokens):
 
             iLine +=1
 
-    return lReturn                    
+    return lReturn

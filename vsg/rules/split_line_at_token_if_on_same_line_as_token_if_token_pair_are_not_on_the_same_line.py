@@ -74,7 +74,7 @@ class split_line_at_token_if_on_same_line_as_token_if_token_pair_are_not_on_the_
             dAction = oViolation.get_action()
             lTokens.insert(dAction['insert_index'], parser.carriage_return())
             oViolation.set_tokens(lTokens)
-               
+
         oFile.update(self.violations)
 
 

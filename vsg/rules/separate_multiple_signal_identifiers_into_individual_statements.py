@@ -90,7 +90,7 @@ class separate_multiple_signal_identifiers_into_individual_statements(rule.Rule)
                         continue
                     else:
                         lPostTokens.append(oToken)
-                
+
 
             lIdentifiers = lTokens[dAction['start']:dAction['end'] + 1]
 
@@ -104,6 +104,6 @@ class separate_multiple_signal_identifiers_into_individual_statements(rule.Rule)
                     else:
                         lNewTokens.extend(lPreTokens + [oToken, parser.whitespace(' ')] + lPostTokens + [parser.carriage_return()])
             oViolation.set_tokens(lNewTokens)
-               
+
         oFile.update(self.violations)
 

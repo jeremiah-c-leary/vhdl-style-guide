@@ -39,7 +39,7 @@ class testMethods(unittest.TestCase):
         lExpected.append(severity.warning('Guideline'))
         lExpected.append(severity.error('Todo'))
 
-    
+
         lActual = severity._extract_severities_from_configuration(dConfiguration)
 
         self.assertEqual(len(lActual), len(lExpected))
@@ -47,7 +47,7 @@ class testMethods(unittest.TestCase):
         for iIndex, oExpected in enumerate(lExpected):
             self.assertEqual(lActual[iIndex].name, oExpected.name)
             self.assertEqual(lActual[iIndex].type, oExpected.type)
-    
+
     def test_create_list_add_severity_method(self):
         oSeverityList = severity.create_list({})
         self.assertEqual(len(oSeverityList.lSeverities), 2)
@@ -87,4 +87,4 @@ class testMethods(unittest.TestCase):
         for iIndex, oExpected in enumerate(lExpected):
             self.assertEqual(lActual[iIndex].name, oExpected.name)
             self.assertEqual(lActual[iIndex].type, oExpected.type)
-    
+

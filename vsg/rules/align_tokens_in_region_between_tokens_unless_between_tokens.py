@@ -100,7 +100,7 @@ class align_tokens_in_region_between_tokens_unless_between_tokens(rule.Rule):
                            break
 
                    iColumn += len(oToken.get_value())
-               
+
                if isinstance(oToken, parser.carriage_return):
                    iLine += 1
                    iColumn = 0
@@ -114,7 +114,7 @@ class align_tokens_in_region_between_tokens_unless_between_tokens(rule.Rule):
                            for iKey in list(dAnalysis.keys()):
                                if dAnalysis[iKey]['adjust'] != 0:
                                    oLineTokens = oFile.get_tokens_from_line(iKey)
-                                   sSolution = 'Move ' + dAnalysis[iKey]['token_value'] + ' ' + str(dAnalysis[iKey]['adjust']) + ' columns' 
+                                   sSolution = 'Move ' + dAnalysis[iKey]['token_value'] + ' ' + str(dAnalysis[iKey]['adjust']) + ' columns'
                                    oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, sSolution)
                                    oViolation.set_action(dAnalysis[iKey])
                                    self.violations.append(oViolation)
@@ -127,7 +127,7 @@ class align_tokens_in_region_between_tokens_unless_between_tokens(rule.Rule):
                            for iKey in list(dAnalysis.keys()):
                                if dAnalysis[iKey]['adjust'] != 0:
                                    oLineTokens = oFile.get_tokens_from_line(iKey)
-                                   sSolution = 'Move ' + dAnalysis[iKey]['token_value'] + ' ' + str(dAnalysis[iKey]['adjust']) + ' columns' 
+                                   sSolution = 'Move ' + dAnalysis[iKey]['token_value'] + ' ' + str(dAnalysis[iKey]['adjust']) + ' columns'
                                    oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, sSolution)
                                    oViolation.set_action(dAnalysis[iKey])
                                    self.violations.append(oViolation)
@@ -141,7 +141,7 @@ class align_tokens_in_region_between_tokens_unless_between_tokens(rule.Rule):
                            for iKey in list(dAnalysis.keys()):
                                if dAnalysis[iKey]['adjust'] != 0:
                                    oLineTokens = oFile.get_tokens_from_line(iKey)
-                                   sSolution = 'Move ' + dAnalysis[iKey]['token_value'] + ' ' + str(dAnalysis[iKey]['adjust']) + ' columns' 
+                                   sSolution = 'Move ' + dAnalysis[iKey]['token_value'] + ' ' + str(dAnalysis[iKey]['adjust']) + ' columns'
                                    oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, sSolution)
                                    oViolation.set_action(dAnalysis[iKey])
                                    self.violations.append(oViolation)
@@ -155,14 +155,14 @@ class align_tokens_in_region_between_tokens_unless_between_tokens(rule.Rule):
                            for iKey in list(dAnalysis.keys()):
                                if dAnalysis[iKey]['adjust'] != 0:
                                    oLineTokens = oFile.get_tokens_from_line(iKey)
-                                   sSolution = 'Move ' + dAnalysis[iKey]['token_value'] + ' ' + str(dAnalysis[iKey]['adjust']) + ' columns' 
+                                   sSolution = 'Move ' + dAnalysis[iKey]['token_value'] + ' ' + str(dAnalysis[iKey]['adjust']) + ' columns'
                                    oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, sSolution)
                                    oViolation.set_action(dAnalysis[iKey])
                                    self.violations.append(oViolation)
 
                            dAnalysis = {}
-                       
-                       
+
+
 
             add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
 
@@ -170,7 +170,7 @@ class align_tokens_in_region_between_tokens_unless_between_tokens(rule.Rule):
             for iKey in list(dAnalysis.keys()):
                 if dAnalysis[iKey]['adjust'] != 0:
                     oLineTokens = oFile.get_tokens_from_line(iKey)
-                    sSolution = 'Move ' + dAnalysis[iKey]['token_value'] + ' ' + str(dAnalysis[iKey]['adjust']) + ' columns' 
+                    sSolution = 'Move ' + dAnalysis[iKey]['token_value'] + ' ' + str(dAnalysis[iKey]['adjust']) + ' columns'
                     oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, sSolution)
                     oViolation.set_action(dAnalysis[iKey])
                     self.violations.append(oViolation)
@@ -230,10 +230,10 @@ def check_for_exclusions(oToken, bSkip, oEndSkipToken, lUnless):
         for lTokenPairs in lUnless:
             if isinstance(oToken, lTokenPairs[0]):
                 return True, lTokenPairs[1]
-                
+
     return bSkip, oEndSkipToken
-   
- 
+
+
 def check_for_if_keywords(iToken, lTokens):
     iMyToken = iToken
     if isinstance(lTokens[iToken], parser.whitespace):
@@ -241,16 +241,16 @@ def check_for_if_keywords(iToken, lTokens):
 
     if isinstance(lTokens[iMyToken], token.if_statement.if_label):
         return True
-    
+
     if isinstance(lTokens[iMyToken], token.if_statement.if_keyword):
         return True
-    
+
     if isinstance(lTokens[iMyToken], token.if_statement.elsif_keyword):
         return True
-    
+
     if isinstance(lTokens[iMyToken], token.if_statement.else_keyword):
         return True
-    
+
     if isinstance(lTokens[iMyToken], token.if_statement.end_keyword):
         return True
 
@@ -264,13 +264,13 @@ def check_for_case_keywords(iToken, lTokens):
 
     if isinstance(lTokens[iMyToken], token.case_statement.case_label):
         return True
-    
+
     if isinstance(lTokens[iMyToken], token.case_statement.case_keyword):
         return True
-    
+
     if isinstance(lTokens[iMyToken], token.case_statement_alternative.when_keyword):
         return True
-    
+
     if isinstance(lTokens[iMyToken], token.case_statement.end_keyword):
         return True
 

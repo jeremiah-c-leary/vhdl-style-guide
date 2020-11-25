@@ -77,6 +77,6 @@ class token_indent(rule.Rule):
                 oToken = parser.whitespace(lTokens[0].get_indent() * self.indentSize * ' ')
                 lTokens.insert(0, oToken)
                 oViolation.set_tokens(lTokens)
-               
+
         oFile.update(self.violations)
 

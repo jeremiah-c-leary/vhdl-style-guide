@@ -31,4 +31,4 @@ def get_line_above_line_starting_with_token(lTokens, lAllTokens):
         else:
             lCurrentLine.append(lAllTokens[iIndex])
 
-    return lReturn                    
+    return lReturn

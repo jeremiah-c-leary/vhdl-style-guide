@@ -115,7 +115,7 @@ class align_tokens_in_region_between_tokens(rule.Rule):
 
                    dAnalysis = {}
 
-               
+
                if isinstance(oToken, parser.carriage_return):
                    iLine += 1
                    iColumn = 0

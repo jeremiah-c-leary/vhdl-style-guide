@@ -23,5 +23,5 @@ class test_token(unittest.TestCase):
 
         for oObject in utils.extract_objects(oFile, True):
             lActual.append(str(oObject))
-        
+
         self.assertEqual(lExpected, lActual)

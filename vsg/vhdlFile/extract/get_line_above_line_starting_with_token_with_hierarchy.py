@@ -33,4 +33,4 @@ def get_line_above_line_starting_with_token_with_hierarchy(lTokens, lAllTokens, 
         else:
             lCurrentLine.append(lAllTokens[iIndex])
 
-    return lReturn                    
+    return lReturn

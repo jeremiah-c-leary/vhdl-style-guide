@@ -23,7 +23,7 @@ class testVsg(unittest.TestCase):
     def tearDown(self):
         if os.path.isfile('deleteme.json'):
             os.remove('deleteme.json')
-        
+
 
     def test_multiple_configuration_w_multiple_filelists(self):
         lExpected = []

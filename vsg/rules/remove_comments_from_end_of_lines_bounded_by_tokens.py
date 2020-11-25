@@ -69,5 +69,5 @@ class remove_comments_from_end_of_lines_bounded_by_tokens(rule.Rule):
     def _fix_violation(self, oFile):
         for oViolation in self.violations:
             oViolation.set_tokens([])
-               
+
         oFile.update(self.violations)

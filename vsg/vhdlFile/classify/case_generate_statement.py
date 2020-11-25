@@ -29,15 +29,15 @@ def classify(iToken, lObjects):
 
     iCurrent = utils.assign_next_token_required('case', token.case_keyword, iCurrent, lObjects)
 
-    iCurrent = expression.classify_until(['generate'], iCurrent, lObjects) 
+    iCurrent = expression.classify_until(['generate'], iCurrent, lObjects)
 
     iCurrent = utils.assign_next_token_required('generate', token.generate_keyword, iCurrent, lObjects)
 
     iToken = utils.detect_submodule(iToken, lObjects, case_generate_alternative)
 
-    iCurrent = utils.assign_next_token_required('end', token.end_keyword, iCurrent, lObjects) 
-    iCurrent = utils.assign_next_token_required('generate', token.end_generate_keyword, iCurrent, lObjects) 
-    iCurrent = utils.assign_next_token_if_not(';', token.end_generate_label, iCurrent, lObjects) 
-    iCurrent = utils.assign_next_token_required(';', token.semicolon, iCurrent, lObjects) 
+    iCurrent = utils.assign_next_token_required('end', token.end_keyword, iCurrent, lObjects)
+    iCurrent = utils.assign_next_token_required('generate', token.end_generate_keyword, iCurrent, lObjects)
+    iCurrent = utils.assign_next_token_if_not(';', token.end_generate_label, iCurrent, lObjects)
+    iCurrent = utils.assign_next_token_required(';', token.semicolon, iCurrent, lObjects)
 
     return iCurrent

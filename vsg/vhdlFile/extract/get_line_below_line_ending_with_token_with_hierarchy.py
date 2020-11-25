@@ -48,4 +48,4 @@ def get_line_below_line_ending_with_token_with_hierarchy(lTokens, lAllTokens, lH
 
             iLine +=1
 
-    return lReturn                    
+    return lReturn

@@ -42,7 +42,7 @@ class move_token_next_to_another_token(rule.Rule):
             lTokens = oToi.get_tokens()
             if not utils.are_next_consecutive_token_types([self.anchor_token, parser.whitespace, self.token_to_move], 0, lTokens) and \
                not utils.are_next_consecutive_token_types([self.anchor_token, self.token_to_move], 0, lTokens):
-                self.add_violation(violation.New(oToi.get_line_number(), oToi, self.solution)) 
+                self.add_violation(violation.New(oToi.get_line_number(), oToi, self.solution))
 
 
     def fix(self, oFile):

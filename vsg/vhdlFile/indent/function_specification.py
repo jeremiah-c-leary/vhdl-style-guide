@@ -24,7 +24,7 @@ def set_indent(iCurrentIndent, bLabelFound, oToken):
         else:
           oToken.set_indent(iIndent - 1)
         bMyLabelFound = False
-            
+
     if isinstance(oToken, token.subprogram_body.begin_keyword):
         oToken.set_indent(iIndent - 1)
 

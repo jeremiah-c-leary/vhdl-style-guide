@@ -55,7 +55,7 @@ class move_token_sequences_left_of_token(rule.Rule):
                         elif utils.are_next_consecutive_token_types(lSequence[:-2], iToken, lTokens):
                             dAction = {}
                             dAction['num_tokens'] = len(lSequence) - 2
-                            
+
                 if bFound:
                     break
             else:
@@ -82,6 +82,6 @@ class move_token_sequences_left_of_token(rule.Rule):
             lTokens = lTokens[dAction['num_tokens']:]
             lTokens = lTokens[:-1] + lMoveTokens + [parser.whitespace(' ')] + [lTokens[-1]]
             oViolation.set_tokens(lTokens)
-               
+
         oFile.update(self.violations)
 
