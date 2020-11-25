@@ -37,6 +37,8 @@ class token_indent(rule.Rule):
                 oViolation.set_action('remove_whitespace')
                 self.add_violation(oViolation)
             elif len(lTokens) == 2:
+                if lTokens[1].get_indent() is None:
+                    continue
                 iWhitespace = len(lTokens[0].get_value())
                 iIndent = self.indentSize * lTokens[1].get_indent()
                 if iWhitespace != iIndent:
@@ -45,6 +47,8 @@ class token_indent(rule.Rule):
                     oViolation.set_action('adjust_whitespace')
                     self.add_violation(oViolation)
             elif len(lTokens) == 1:
+                if lTokens[0].get_indent() is None:
+                    continue
                 if lTokens[0].get_indent() != 0:
                     sSolution = 'Indent level ' + str(lTokens[0].get_indent())
                     oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
