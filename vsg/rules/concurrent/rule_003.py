@@ -5,7 +5,6 @@ from vsg import token
 
 lTokenPairs = []
 lTokenPairs.append([token.concurrent_simple_signal_assignment.assignment, token.concurrent_simple_signal_assignment.semicolon])
-lTokenPairs.append([token.concurrent_conditional_signal_assignment.assignment, token.concurrent_conditional_signal_assignment.semicolon])
 
 
 class rule_003(multiline_alignment_between_tokens):

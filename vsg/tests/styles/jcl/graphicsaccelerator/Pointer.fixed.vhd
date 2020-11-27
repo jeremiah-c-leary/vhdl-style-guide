@@ -31,7 +31,7 @@ architecture BEHAVIORAL of POINTER is
 begin
 
   Here <= '1' when syncX(9 downto 3)=rx(9 downto 3) and
-          syncY(8 downto 3)=ry(8 downto 3) else
+                   syncY(8 downto 3)=ry(8 downto 3) else
           '0';
   X    <= rx;
   Y    <= ry;
