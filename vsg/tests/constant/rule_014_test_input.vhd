@@ -3,6 +3,9 @@ architecture RTL of FIFO is
 
   constant con1 : integer := a + b + c + d;
 
+  constant con1 : integer :=
+                             a + b + c + d;
+
   constant con2 : integer := a + b +
                              c + d;
 
@@ -24,13 +27,14 @@ architecture RTL of FIFO is
 
   -- Violations
 
-  constant con1 : integer := a + b + c + d;
-
   constant con2 : integer := a + b +
 c + d;
 
   constant con2 : integer := a + b +
                                   c + d;
+
+  constant con1 : integer :=
+     a + b + c + d;
 
   constant con3 : integer := 
   (

@@ -32,6 +32,7 @@ class rule_014(rule.Rule):
         rule.Rule.__init__(self, 'constant', '014')
         self.solution = 'Align one space after assignment operator'
         self.phase = 5
+        self.subphase = 4
         self.lTokenPairs = lTokenPairs
         self.bExcludeLastToken = False
 
