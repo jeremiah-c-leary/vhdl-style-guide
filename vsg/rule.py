@@ -60,7 +60,6 @@ class Rule():
     def get_unique_id(self):
         return self.name + '_' + self.identifier
 
-
     def get_violations_at_linenumber(self, iLineNumber):
         '''
         Returns a list of formatted violations.
@@ -91,7 +90,6 @@ class Rule():
             oFile.update(self.violations)
             self.clear_violations()
 
-
     def add_violation(self, lineNumber):
         '''
         Adds a linenumber to a violations list.
@@ -100,17 +98,12 @@ class Rule():
             self.violations.append(lineNumber)
             self.severity.count += 1
 
-# JCL - need to think of how to use this analyze.
-#       Each rule currently defines it's own analyze method.
-#    def analyze(self, oFile):
-#        '''
-#        Performs the analysis.
-#        '''
-#        self._print_debug_message('Analyzing rule: ' + self.name + '_' + self.identifier)
-#        self._pre_analyze()
-#        for iLineNumber, oLine in enumerate(oFile.lines):
-#            if not self._is_vsg_off(oLine):
-#                self._analyze(oFile, oLine, iLineNumber)
+    def analyze(self, oFile):
+        '''
+        Performs the analysis.
+        '''
+        lToi = self._get_tokens_of_interest(oFile)
+        self._analyze(lToi)
 
     def _configure_global_rule_attributes(self, dConfiguration):
         '''
@@ -137,7 +130,6 @@ class Rule():
                     self.__dict__[sAttributeName] = dConfiguration['rule'][self.get_unique_id()][sAttributeName]
         except KeyError:
             pass
-
 
     def get_configuration(self):
         '''

@@ -234,3 +234,33 @@ Aligning to the parenthesis improves readability.
    w_foo <= I_FOO when ((I_BAR = '1') and
                         (I_CRUFT = '1')) else
             '0';
+
+concurrent_010
+##############
+
+This rule removes blank lines within concurrent signal assignments.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   wr_en <= '0' when q_wr_en = '1' else
+
+        '1';
+
+   w_foo <= I_FOO when ((I_BAR = '1') and
+
+                        (I_CRUFT = '1')) else
+
+            '0';
+
+**Fix**
+
+.. code-block:: vhdl
+
+   wr_en <= '0' when q_wr_en = '1' else
+            '1';
+
+   w_foo <= I_FOO when ((I_BAR = '1') and
+                        (I_CRUFT = '1')) else
+            '0';
