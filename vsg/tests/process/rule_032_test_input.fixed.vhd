@@ -41,4 +41,11 @@ begin
   begin
   end process;
 
+
+  ---------------------------
+  -- Some comment
+  ---------------------------
+  PROC_LABEL :  process begin end process;
+
+
 end architecture RTL;

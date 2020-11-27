@@ -81,6 +81,7 @@ class move_token_sequences_left_of_token(rule.Rule):
             lMoveTokens = lTokens[0:dAction['num_tokens']]
             lTokens = lTokens[dAction['num_tokens']:]
             lTokens = lTokens[:-1] + lMoveTokens + [parser.whitespace(' ')] + [lTokens[-1]]
+            lTokens = utils.remove_consecutive_whitespace_tokens(lTokens)
             oViolation.set_tokens(lTokens)
 
         oFile.update(self.violations)
