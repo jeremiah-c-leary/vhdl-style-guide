@@ -16,13 +16,14 @@ lTokenPairs.append([token.concurrent_conditional_signal_assignment.assignment, t
 
 class rule_007(rule.Rule):
     '''
-    Checks the when and else keywords are on the same line
+    Checks for code after the **else** keyword.
     '''
 
     def __init__(self):
         rule.Rule.__init__(self, 'concurrent', '007')
         self.solution = 'move code after else to next line.'
         self.phase = 1
+        self.subphase = 2
         self.lSplitTokens = lSplitTokens
         self.lTokenPairs = lTokenPairs
         self.allow_single_line = False
