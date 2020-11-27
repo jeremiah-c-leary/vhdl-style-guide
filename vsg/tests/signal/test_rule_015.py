@@ -26,13 +26,14 @@ class test_signal_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'signal')
         self.assertEqual(oRule.identifier, '015')
 
-        lExpected = [5, 8, 79]
+        lExpected = [5, 8, 79, 81, 82]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
     def test_fix_rule_015(self):
         oRule = signal.rule_015()
+        self.maxDiff = None
 
         oRule.fix(self.oFile)
 

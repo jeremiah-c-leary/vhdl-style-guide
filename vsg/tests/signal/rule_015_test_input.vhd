@@ -78,6 +78,9 @@ architecture ARCH of ENTITY is
   signal foo : std_logic_vector(maximum(G_A, G_B) + maximum(C_A, C_B)-1 downto 0);
   signal foo, bar, mine : std_logic_vector(maximum(G_A, G_B) + maximum(C_A, C_B)-1 downto 0);
 
+  signal  ar,ai,ar3,ai3:    STD_LOGIC_VECTOR (width-1 downto 0);
+  signal  br1,bi1,br,bi,br2,bi2:    STD_LOGIC_VECTOR (width-1 downto 0);
+
 begin
 
 end architecture ARCH;
