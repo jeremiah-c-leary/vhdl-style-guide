@@ -4,15 +4,18 @@ from vsg import parser
 from vsg.vhdlFile import vhdlFile as utils
 
 
-def get_tokens_matching(lTokens, lAllTokens):
-    iLine = 1
+def get_tokens_matching(lTokens, lAllTokens, oTokenMap):
+
     lReturn = []
-    for iIndex in range(0, len(lAllTokens)):
-        for oToken in lTokens:
-            if isinstance(lAllTokens[iIndex], oToken):
-                lReturn.append(utils.Tokens(iIndex, iLine, [lAllTokens[iIndex]]))
+    lIndexes = []
 
-        if isinstance(lAllTokens[iIndex], parser.carriage_return):
-            iLine +=1
-
+    for oToken in lTokens:
+        lIndexes.extend(oTokenMap.get_token_indexes(oToken))
+    
+    lIndexes.sort()
+    
+    for iIndex in lIndexes:
+        iLine = oTokenMap.get_line_number_of_index(iIndex)
+        lReturn.append(utils.Tokens(iIndex, iLine, [lAllTokens[iIndex]]))
+    
     return lReturn

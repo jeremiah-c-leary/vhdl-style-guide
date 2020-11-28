@@ -24,6 +24,8 @@ from vsg.vhdlFile.classify import whitespace
 
 from vsg.vhdlFile.indent.set_token_indent import set_token_indent
 
+from vsg.token_map import process_tokens
+
 
 class vhdlFile():
     '''
@@ -70,15 +72,28 @@ class vhdlFile():
 
         self.set_token_indent()
         set_token_hierarchy_value(self.lAllObjects)
+        self.oTokenMap = process_tokens(self.lAllObjects)
+#        lIndex = self.oTokenMap.get_token_indexes(token.library_clause.keyword)
+#        print(lIndex)
+#        for iIndex in lIndex:
+#            print(self.oTokenMap.get_line_number_of_index(iIndex))
+#        exit()
 
     def update(self, lUpdates):
         if len(lUpdates) == 0:
             return
+        bUpdateMap = False
         for oUpdate in lUpdates[::-1]:
             iStart = oUpdate.oTokens.iStartIndex
             lTokens = oUpdate.get_tokens()
             iEnd = oUpdate.oTokens.iEndIndex
+            iDelta = iEnd - iStart
+            if iDelta != len(lTokens):
+                bUpdateMap = True
+#                print('Need to adjust @ ' + str(iStart) + ' by ' + str(iDelta - len(lTokens)))
             self.lAllObjects[iStart:iEnd] = lTokens
+        if bUpdateMap:
+            self.oTokenMap = process_tokens(self.lAllObjects)
 
     def get_object_lines(self):
         lReturn = []
@@ -119,7 +134,7 @@ class vhdlFile():
         return extract.get_sequence_of_tokens_matching_bounded_by_tokens(lTokens, oStart, oEnd, self.lAllObjects)
 
     def get_tokens_matching(self, lTokens):
-        return extract.get_tokens_matching(lTokens, self.lAllObjects)
+        return extract.get_tokens_matching(lTokens, self.lAllObjects, self.oTokenMap)
 
     def get_n_token_after_tokens(self, iToken, lTokens):
         return extract.get_n_token_after_tokens(iToken, lTokens, self.lAllObjects)
@@ -449,7 +464,7 @@ class vhdlFile():
 
 
     def get_token_and_n_tokens_before_it(self, oToken, iTokens):
-        return extract.get_token_and_n_tokens_before_it(oToken, iTokens, self.lAllObjects)
+        return extract.get_token_and_n_tokens_before_it(oToken, iTokens, self.lAllObjects, self.oTokenMap)
 
     def get_token_and_n_tokens_before_it_in_between_tokens(self, lTokens, iTokens, oStart, oEnd):
         iLine = 1

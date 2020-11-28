@@ -4,7 +4,7 @@ from vsg import parser
 from vsg.vhdlFile import vhdlFile as utils
 
 
-def get_token_and_n_tokens_before_it(oToken, iTokens, lTokens):
+def get_token_and_n_tokens_before_it(oToken, iTokens, lTokens, oTokenMap):
     iLine = 1
     lReturn = []
     iStart = 0

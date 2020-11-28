@@ -3,6 +3,8 @@ from vsg import rule
 from vsg import parser
 from vsg import violation
 
+from vsg.vhdlFile import utils
+
 
 class consistent_token_case(rule.Rule):
     '''
@@ -31,26 +33,29 @@ class consistent_token_case(rule.Rule):
 
     def analyze(self, oFile):
         lTargetTypes = oFile.get_tokens_matching(self.lTokens)
-        lToi = oFile.get_tokens_matching([parser.item])
-        for oToi in lToi:
-            lTokens = oToi.get_tokens()
-            for oToken in lTokens:
+        oToi = oFile.get_all_tokens()
+        iLine, lTokens = utils.get_toi_parameters(oToi)
 
-                if is_token_in_ignore_token_list(oToken, self.lIgnoreTokens):
-                    continue
+        for iToken, oToken in enumerate(lTokens):
 
-                for oTargetType in lTargetTypes:
-                    sTokenValue = oToken.get_value()
-                    sTargetType = oTargetType.get_tokens()[0].get_value()
-                    if sTokenValue.lower() == sTargetType.lower():
-                        if sTokenValue != sTargetType:
-                            sSolution = 'Change "' + sTokenValue + '" to "' + sTargetType + '"'
-                            oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
-                            dAction = {}
-                            dAction['constant'] = sTargetType
-                            dAction['found'] = sTokenValue
-                            oViolation.set_action(dAction)
-                            self.add_violation(oViolation)
+            iLine = utils.increment_line_number(iLine, oToken)
+
+            if is_token_in_ignore_token_list(oToken, self.lIgnoreTokens):
+                continue
+
+            for oTargetType in lTargetTypes:
+                sTokenValue = oToken.get_value()
+                sTargetType = oTargetType.get_tokens()[0].get_value()
+                if sTokenValue.lower() == sTargetType.lower():
+                    if sTokenValue != sTargetType:
+                        sSolution = 'Change "' + sTokenValue + '" to "' + sTargetType + '"'
+                        oNewToi = oToi.extract_tokens(iToken, iToken)
+                        oViolation = violation.New(iLine, oNewToi, sSolution)
+                        dAction = {}
+                        dAction['constant'] = sTargetType
+                        dAction['found'] = sTokenValue
+                        oViolation.set_action(dAction)
+                        self.add_violation(oViolation)
 
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
