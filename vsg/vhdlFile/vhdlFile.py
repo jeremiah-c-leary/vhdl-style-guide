@@ -128,10 +128,10 @@ class vhdlFile():
         return extract.get_all_tokens(self.lAllObjects)
 
     def get_sequence_of_tokens_matching(self, lTokens, bIgnoreIfLineStart=False):
-        return extract.get_sequence_of_tokens_matching(lTokens, self.lAllObjects, bIgnoreIfLineStart)
+        return extract.get_sequence_of_tokens_matching(lTokens, self.lAllObjects, self.oTokenMap, bIgnoreIfLineStart)
 
     def get_sequence_of_tokens_matching_bounded_by_tokens(self, lTokens, oStart, oEnd):
-        return extract.get_sequence_of_tokens_matching_bounded_by_tokens(lTokens, oStart, oEnd, self.lAllObjects)
+        return extract.get_sequence_of_tokens_matching_bounded_by_tokens(lTokens, oStart, oEnd, self.lAllObjects, self.oTokenMap)
 
     def get_tokens_matching(self, lTokens):
         return extract.get_tokens_matching(lTokens, self.lAllObjects, self.oTokenMap)
@@ -309,7 +309,7 @@ class vhdlFile():
         return extract.get_if_statement_conditions(self.lAllObjects)
 
     def get_n_tokens_before_and_after_tokens(self, iToken, lTokens):
-        return extract.get_n_tokens_before_and_after_tokens(iToken, lTokens, self.lAllObjects)
+        return extract.get_n_tokens_before_and_after_tokens(iToken, lTokens, self.lAllObjects, self.oTokenMap)
 
     def get_sequence_of_tokens_not_matching(self, lTokens):
         iLine = 1

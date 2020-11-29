@@ -2,42 +2,27 @@
 from vsg import parser
 
 from vsg.vhdlFile import vhdlFile as utils
+from vsg.vhdlFile.extract import get_sequence_of_tokens_matching
 
 
-def get_sequence_of_tokens_matching_bounded_by_tokens(lTokens, oStart, oEnd, lAllTokens):
-    iLine = 1
-    lTemp = []
+def get_sequence_of_tokens_matching_bounded_by_tokens(lTokens, oStart, oEnd, lAllTokens, oTokenMap):
+
     lReturn = []
-    iMatchCount = 0
-    iMatchLength = len(lTokens)
-    iStart = 0
-    bCheck = False
-    for iIndex in range(0, len(lAllTokens)):
 
-        if isinstance(lAllTokens[iIndex], oStart):
-            bCheck = True
-            lTemp = []
-            iMatchCount = 0
-        if isinstance(lAllTokens[iIndex], oEnd):
-            bCheck = False
-            lTemp = []
-            iMatchCount = 0
+    lStart = oTokenMap.get_token_indexes(oStart)
+    lEnd = oTokenMap.get_token_indexes(oEnd)
+    lIndexes = []
+    for iStart, iEnd in zip(lStart, lEnd):
+        lIndexes.extend(oTokenMap.get_token_indexes_between_indexes(lTokens[0], iStart, iEnd))
 
-        if bCheck:
-            if isinstance(lAllTokens[iIndex], lTokens[iMatchCount]):
-                if iMatchCount == 0:
-                    iStart = iIndex
-                lTemp.append(lAllTokens[iIndex])
-                iMatchCount +=1
-                if iMatchCount == iMatchLength:
-                    lReturn.append(utils.Tokens(iStart, iLine, lTemp))
-                    lTemp = []
-                    iMatchCount = 0
-            elif iMatchCount > 0:
-                lTemp = []
-                iMatchCount = 0
+    lIndexes.sort()
 
-        if isinstance(lAllTokens[iIndex], parser.carriage_return):
-            iLine +=1
+    for iIndex in lIndexes:
+        iLine = oTokenMap.get_line_number_of_index(iIndex)
+        for iToken, oToken in enumerate(lTokens):
+            if not isinstance(lAllTokens[iToken + iIndex], oToken):
+                break
+        else:
+            lReturn.append(utils.Tokens(iIndex, iLine, lAllTokens[iIndex:iIndex + len(lTokens)]))
 
     return lReturn

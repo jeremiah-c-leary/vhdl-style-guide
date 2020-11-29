@@ -4,16 +4,17 @@ from vsg import parser
 from vsg.vhdlFile import vhdlFile as token_class
 
 
-def get_n_tokens_before_and_after_tokens(iToken, lTokens, lAllTokens):
-    iLine = 1
+def get_n_tokens_before_and_after_tokens(iToken, lTokens, lAllTokens, oTokenMap):
     lReturn = []
-    for iIndex in range(0, len(lAllTokens)):
-        for oToken in lTokens:
-            if isinstance(lAllTokens[iIndex], oToken):
+    lIndexes = []
 
-                lReturn.append(token_class.Tokens(iIndex - iToken, iLine, lAllTokens[iIndex - iToken:iIndex + iToken + 1]))
-
-        if isinstance(lAllTokens[iIndex], parser.carriage_return):
-            iLine +=1
-
+    for oToken in lTokens:
+        lIndexes.extend(oTokenMap.get_token_indexes(oToken))
+    
+    lIndexes.sort()
+    
+    for iIndex in lIndexes:
+        iLine = oTokenMap.get_line_number_of_index(iIndex)
+        lReturn.append(token_class.Tokens(iIndex - iToken, iLine, lAllTokens[iIndex - iToken:iIndex + iToken + 1]))
+    
     return lReturn
