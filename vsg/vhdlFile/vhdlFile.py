@@ -92,9 +92,6 @@ class vhdlFile():
                 bUpdateMap = True
             elif oUpdate.get_remap():
                 bUpdateMap = True
-            if oUpdate.fix_blanks():
-                bUpdateMap = True
-#                self.fix_blank_lines()
             self.lAllObjects[iStart:iEnd] = lTokens
         if bUpdateMap:
             self.oTokenMap = process_tokens(self.lAllObjects)
