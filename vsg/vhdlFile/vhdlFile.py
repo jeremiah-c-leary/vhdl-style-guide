@@ -123,7 +123,7 @@ class vhdlFile():
         return extract.get_line_preceeding_line(iLine, self.lAllObjects)
 
     def get_line_succeeding_line(self, iLine, iNumLines=1):
-        return extract.get_line_succeeding_line(iLine, self.lAllObjects, iNumLines)
+        return extract.get_line_succeeding_line(iLine, self.lAllObjects, iNumLines, self.oTokenMap)
 
     def get_all_tokens(self):
         return extract.get_all_tokens(self.lAllObjects)

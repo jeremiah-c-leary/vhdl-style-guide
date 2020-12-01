@@ -1,26 +1,15 @@
 
 from vsg import parser
 
-from vsg.vhdlFile import vhdlFile as utils
+from vsg.vhdlFile.extract import tokens
 
 
-def get_line_succeeding_line(iLine, lAllTokens, iNumLines=1):
+def get_line_succeeding_line(iLine, lAllTokens, iNumLines, oTokenMap):
 
-    iMyLine = 0
-    iTargetLine = iLine + 1
-    iEndLine = iLine + iNumLines + 1
-    bStoreTokens = False
-    lTemp = []
-    for iToken, oToken in enumerate(lAllTokens):
-        if bStoreTokens:
-            lTemp.append(oToken)
-        if isinstance(oToken, parser.carriage_return):
-            iMyLine += 1
-            if iMyLine == iTargetLine:
-                bStoreTokens = True
-                iStartIndex = iToken + 1
-            if iMyLine == iEndLine:
-                lTemp.pop()
-                return utils.Tokens(iStartIndex, iTargetLine, lTemp)
+    lCarriageReturns = oTokenMap.get_token_indexes(parser.carriage_return)
 
-    return None
+    iStart = lCarriageReturns[iLine] + 1
+    iEnd = lCarriageReturns[iLine + iNumLines] - 1
+
+    lTemp = lAllTokens[iStart:iEnd]
+    return tokens.New(iStart, iLine - iNumLines, lTemp)
