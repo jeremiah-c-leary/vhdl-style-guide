@@ -276,7 +276,7 @@ class vhdlFile():
         return extract.get_line_below_line_ending_with_token_with_hierarchy(lTokens, self.lAllObjects, lHierarchy, self.oTokenMap)
 
     def get_if_statement_conditions(self):
-        return extract.get_if_statement_conditions(self.lAllObjects)
+        return extract.get_if_statement_conditions(self.lAllObjects, self.oTokenMap)
 
     def get_n_tokens_before_and_after_tokens(self, iToken, lTokens):
         return extract.get_n_tokens_before_and_after_tokens(iToken, lTokens, self.lAllObjects, self.oTokenMap)

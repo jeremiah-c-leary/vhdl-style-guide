@@ -1,41 +1,29 @@
 
-from vsg import parser
 from vsg.token import if_statement as token
 
 from vsg.vhdlFile import utils
-from vsg.vhdlFile import vhdlFile
 
-lStartTokens = []
-lStartTokens.append(token.if_keyword)
-lStartTokens.append(token.elsif_keyword)
-
-lEndTokens = []
-lEndTokens.append(token.then_keyword)
+from vsg.vhdlFile.extract import tokens
 
 
-def get_if_statement_conditions(lAllTokens):
-    iLine = 1
+def get_if_statement_conditions(lAllTokens, oTokenMap):
     lReturn = []
-    bTokenFound = False
-    for iIndex in range(0, len(lAllTokens)):
-        for oToken in lEndTokens:
-            if isinstance(lAllTokens[iIndex], oToken) and bTokenFound:
-                bTokenFound = False
-                iStartIndex, lTemp = utils.remove_leading_whitespace_and_comments(iStartIndex, lTemp)
-                lTemp = utils.remove_trailing_whitespace_and_comments(lTemp)
-                lReturn.append(vhdlFile.Tokens(iStartIndex, iLine, lTemp))
-                break
-        if bTokenFound:
-            lTemp.append(lAllTokens[iIndex])
-        for oToken in lStartTokens:
-            if isinstance(lAllTokens[iIndex], oToken) and not bTokenFound:
-                iStartIndex = iIndex
-                lTemp = []
-                bTokenFound = True
-                break
 
-        if isinstance(lAllTokens[iIndex], parser.carriage_return):
-            iLine +=1
+    lStart = oTokenMap.get_token_indexes(token.if_keyword)
+    lStart.extend(oTokenMap.get_token_indexes(token.elsif_keyword))
+    lStart.sort()    
+
+    lEnd = []
+    for iStart in lStart:
+        lEnd.append(oTokenMap.get_index_of_token_after_index(token.then_keyword, iStart))
+
+    for iStart, iEnd in zip(lStart, lEnd):
+        lTemp = lAllTokens[iStart + 1: iEnd]
+        iStartIndex, lTemp = utils.remove_leading_whitespace_and_comments(iStart, lTemp)
+        lTemp = utils.remove_trailing_whitespace_and_comments(lTemp)
+
+        iLine = oTokenMap.get_line_number_of_index(iStartIndex)
+
+        lReturn.append(tokens.New(iStartIndex, iLine, lTemp))
 
     return lReturn
-
