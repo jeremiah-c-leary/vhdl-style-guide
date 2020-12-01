@@ -1,8 +1,9 @@
 
-from vsg import rule
 from vsg import parser
-
+from vsg import rule
 from vsg import violation
+
+from vsg.vhdlFile import utils
 
 
 class move_token_next_to_another_token_if_it_exists_between_tokens(rule.Rule):
@@ -34,8 +35,10 @@ class move_token_next_to_another_token_if_it_exists_between_tokens(rule.Rule):
         self.token_to_move = token_to_move
         self.between_tokens = between_tokens
 
-    def analyze(self, oFile):
-        lToi = oFile.get_tokens_bounded_by(self.between_tokens[0], self.between_tokens[1])
+    def _get_tokens_of_interest(self, oFile):
+        return oFile.get_tokens_bounded_by(self.between_tokens[0], self.between_tokens[1], bIncludeTillEndOfLine=True)
+
+    def _analyze(self, lToi):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             for iToken, oToken in enumerate(lTokens):
@@ -49,6 +52,8 @@ class move_token_next_to_another_token_if_it_exists_between_tokens(rule.Rule):
                         dAction['insertIndex'] = iStartIndex + 1
                         dAction['moveIndex'] = iMoveIndex
                         oViolation.set_action(dAction)
+                        oViolation.set_remap()
+                        oViolation.fix_blank_lines = True
                         self.add_violation(oViolation)
 
     def _fix_violation(self, oViolation):
@@ -57,4 +62,5 @@ class move_token_next_to_another_token_if_it_exists_between_tokens(rule.Rule):
         oMoveToken = lTokens.pop(dAction['moveIndex'])
         lTokens.insert(dAction['insertIndex'], oMoveToken)
         lTokens.insert(dAction['insertIndex'], parser.whitespace(' '))
+        lTokens = utils.fix_blank_lines(lTokens)
         oViolation.set_tokens(lTokens)

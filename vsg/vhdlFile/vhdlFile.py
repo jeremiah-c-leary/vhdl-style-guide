@@ -82,7 +82,7 @@ class vhdlFile():
     def update(self, lUpdates):
         if len(lUpdates) == 0:
             return
-        bUpdateMap = False
+        bUpdateMap = True
         for oUpdate in lUpdates[::-1]:
             iStart = oUpdate.oTokens.iStartIndex
             lTokens = oUpdate.get_tokens()
@@ -90,7 +90,11 @@ class vhdlFile():
             iDelta = iEnd - iStart
             if iDelta != len(lTokens):
                 bUpdateMap = True
-#                print('Need to adjust @ ' + str(iStart) + ' by ' + str(iDelta - len(lTokens)))
+            elif oUpdate.get_remap():
+                bUpdateMap = True
+            if oUpdate.fix_blanks():
+                bUpdateMap = True
+#                self.fix_blank_lines()
             self.lAllObjects[iStart:iEnd] = lTokens
         if bUpdateMap:
             self.oTokenMap = process_tokens(self.lAllObjects)
@@ -139,6 +143,12 @@ class vhdlFile():
     def get_n_token_after_tokens(self, iToken, lTokens):
         return extract.get_n_token_after_tokens(iToken, lTokens, self.lAllObjects)
 
+    def get_n_tokens_after_token(self, iN, lTokens):
+        return extract.get_m_tokens_before_and_n_tokens_after_token(0, iN, lTokens, self.lAllObjects, self.oTokenMap)
+
+    def get_m_tokens_before_and_n_tokens_after_token(self, iM, iN, lTokens):
+        return extract.get_m_tokens_before_and_n_tokens_after_token(iM, iN, lTokens, self.lAllObjects, self.oTokenMap)
+
     def get_n_token_after_tokens_between_tokens(self, iToken, lTokens, oStart, oEnd):
         return extract.get_n_token_after_tokens_between_tokens(iToken, lTokens, oStart, oEnd, self.lAllObjects)
 
@@ -161,45 +171,8 @@ class vhdlFile():
 
         return lReturn
 
-    def get_tokens_bounded_by(self, oLeft, oRight, include_trailing_whitespace=False, bExcludeLastToken=False):
-        iLine = 1
-        lTemp = []
-        lReturn = []
-        bStore = False
-        bRightFound = False
-        for iIndex in range(0, len(self.lAllObjects)):
-            if isinstance(self.lAllObjects[iIndex], oLeft):
-                bStore = True
-                iStart = iIndex
-                iStartLine = iLine
-            if bStore:
-                lTemp.append(self.lAllObjects[iIndex])
-            if bRightFound:
-                if isinstance(self.lAllObjects[iIndex], parser.whitespace):
-                    lReturn.append(Tokens(iStart, iStartLine, lTemp))
-                else:
-                    lReturn.append(Tokens(iStart, iStartLine, lTemp[:-1]))
-                bRightFound = False
-                lTemp = []
-                bStore = False
-            if isinstance(self.lAllObjects[iIndex], oRight) and bStore:
-                if not include_trailing_whitespace:
-                    if bExcludeLastToken:
-                        lTemp.pop()
-                        if isinstance(lTemp[-1], parser.whitespace):
-                            lTemp.pop()
-                        if isinstance(lTemp[-1], parser.carriage_return):
-                            lTemp.pop()
-                    lReturn.append(Tokens(iStart, iStartLine, lTemp))
-                    lTemp = []
-                    bStore = False
-                else:
-                    bRightFound = True
-
-            if isinstance(self.lAllObjects[iIndex], parser.carriage_return):
-                iLine +=1
-
-        return lReturn
+    def get_tokens_bounded_by(self, oLeft, oRight, include_trailing_whitespace=False, bExcludeLastToken=False, bIncludeTillEndOfLine=False):
+        return extract.get_tokens_bounded_by(oLeft, oRight, self.lAllObjects, self.oTokenMap, include_trailing_whitespace=include_trailing_whitespace, bExcludeLastToken=bExcludeLastToken, bIncludeTillEndOfLine=bIncludeTillEndOfLine)
 
     def get_tokens_bounded_by_token_when_between_tokens(self, oLeft, oRight, oStart, oEnd, include_trailing_whitespace=False):
         iLine = 1

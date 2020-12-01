@@ -31,6 +31,49 @@ class New():
         iLine = bisect.bisect_left(self.dMap['parser']['carriage_return'], iIndex) + 1
         return iLine
 
+    def get_index_of_carriage_return_after_index(self, iIndex):
+        iTemp = bisect.bisect_right(self.dMap['parser']['carriage_return'], iIndex)
+        return self.dMap['parser']['carriage_return'][iTemp]
+
+    def get_index_of_token_after_index(self, oToken, iIndex):
+        sBase, sSub = extract_unique_id(oToken)
+        try:
+            iTemp = bisect.bisect_right(self.dMap[sBase][sSub], iIndex)
+            return self.dMap[sBase][sSub][iTemp]
+        except IndexError:
+            return None
+        except KeyError:
+            return None
+
+    def get_token_pair_indexes(self, oStart, oEnd):
+        lStartIndexes = self.get_token_indexes(oStart)
+        lEndIndexes = []
+        for iIndex in lStartIndexes:
+            lEndIndexes.append(self.get_index_of_token_after_index(oEnd, iIndex))
+        return lStartIndexes, lEndIndexes
+
+    def get_index_of_next_non_whitespace_token(self, iIndex):
+        iStartIndex = iIndex + 1
+        lTokens = [None, None, None, None]
+        lBaseKeys = list(self.dMap.keys())
+        for sBaseKey in lBaseKeys:
+            lSubKeys = list(self.dMap[sBaseKey].keys())
+            if sBaseKey == 'parser':
+                lSubKeys.remove('whitespace')
+                lSubKeys.remove('carriage_return')
+                lSubKeys.remove('blank_line')
+            for sSubKey in lSubKeys:
+                for iIdx in range(0, 4):
+                    iSearchIdx = iStartIndex + iIdx
+                    if iSearchIdx in self.dMap['parser'][sSubKey]:
+                        lTokens[iIdx] = iSearchIdx
+                        continue
+
+        for iToken in lTokens:
+            if iToken is not None:
+                return iToken
+        return None
+
     def pretty_print(self):
         pp=pprint.PrettyPrinter(indent=4)
         pp.pprint(self.dMap)
@@ -74,7 +117,7 @@ def process_tokens(lTokens):
                     dMap[sBase][sBase] = []
                     dMap[sBase][sBase].append(iToken)
             continue
-        if isinstance(oToken, parser.comma):
+        if sSub == 'comma':
             try:
                 if iToken not in dMap['parser']['comma']:
                     dMap['parser']['comma'].append(iToken)
@@ -87,7 +130,7 @@ def process_tokens(lTokens):
                     dMap['parser']['comma'] = []
                     dMap['parser']['comma'].append(iToken)
             continue
-        if isinstance(oToken, parser.open_parenthesis):
+        if sSub == 'open_parenthesis':
             try:
                 if iToken not in dMap['parser']['open_parenthesis']:
                     dMap['parser']['open_parenthesis'].append(iToken)

@@ -62,6 +62,8 @@ class move_token_sequences_left_of_token(rule.Rule):
                 sSolution = self.solution
                 oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
                 oViolation.set_action(dAction)
+                oViolation.set_remap()
+                oViolation.fix_blank_lines = True
                 self.add_violation(oViolation)
 
     def fix(self, oFile):

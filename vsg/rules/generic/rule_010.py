@@ -46,11 +46,15 @@ class rule_010(rule.Rule):
             sSolution = self.solution
             dAction = {}
 
-            if utils.does_token_type_exist_in_list_of_tokens(token.generic_clause.semicolon, aToi[iToi].get_tokens()):
-                for iToken, oToken in enumerate(aToi[iToi].get_tokens()):
-                    if isinstance(oToken, token.generic_clause.semicolon):
+            if utils.does_token_type_exist_in_list_of_tokens(parser.comment, aToi[iToi].get_tokens()):
+                lNewTokens = aToi[iToi].get_tokens()
+                for iToken, oToken in enumerate(lNewTokens):
+                    if isinstance(oToken, parser.comment):
                         dAction['action'] = 'move'
-                        dAction['index'] = iToken
+                        if isinstance(lNewTokens[iToken - 1], parser.whitespace):
+                            dAction['index'] = iToken - 2
+                        else:
+                            dAction['index'] = iToken - 1
                         break
             else:
                 dAction['action'] = 'insert'
@@ -64,9 +68,9 @@ class rule_010(rule.Rule):
         dAction = oViolation.get_action()
         if dAction['action'] == 'insert':
             lTokens.insert(0, parser.carriage_return())
+            oViolation.set_tokens(lTokens)
         else:
             lNewTokens = lTokens[dAction['index'] + 1:]
-            lNewTokens.extend(lTokens[:dAction['index'] + 1])
             lNewTokens.append(parser.carriage_return())
-
-        oViolation.set_tokens(lNewTokens)
+            lNewTokens.extend(lTokens[:dAction['index'] + 1])
+            oViolation.set_tokens(lNewTokens)

@@ -31,7 +31,7 @@ begin
 
   U_INST1 : INST1
     generic map (
-    
+
       G_GEN_1 => 3,
       G_GEN_2 => 4,
       G_GEN_3 => 5

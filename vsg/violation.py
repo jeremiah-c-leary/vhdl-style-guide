@@ -7,6 +7,8 @@ class New():
       self.oTokens = oTokens
       self.sSolution = sSolution
       self.action = None
+      self.remap = False
+      self.fix_blank_lines = False
 
   def get_tokens(self):
       return self.oTokens.get_tokens()
@@ -39,3 +41,12 @@ class New():
           return False
       except AttributeError:
           return False
+
+  def set_remap(self):
+      self.remap = True
+
+  def get_remap(self):
+      return self.remap
+
+  def fix_blanks(self):
+      return self.fix_blank_lines

@@ -11,7 +11,7 @@ end entity FIFO;
 
 entity FIFO is
   generic (
- 
+
     G_WIDTH : integer := 256;
     G_DEPTH : integer := 32
   );

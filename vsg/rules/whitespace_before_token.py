@@ -30,13 +30,14 @@ class whitespace_before_token(rule.Rule):
         self.phase = 2
         self.lTokens = lTokens
 
-    def analyze(self, oFile):
-
-        self._print_debug_message('Analyzing rule: ' + self.name + '_' + self.identifier)
+    def _get_tokens_of_interest(self, oFile):
         lToi = []
         for oToken in self.lTokens:
             lToi_a = oFile.get_token_and_n_tokens_before_it(oToken, 1)
             lToi = utils.combine_two_token_class_lists(lToi, lToi_a)
+        return lToi
+
+    def _analyze(self, lToi):
 
         for oToi in lToi:
             lTokens = oToi.get_tokens()
@@ -51,20 +52,8 @@ class whitespace_before_token(rule.Rule):
             self.violations.append(oViolation)
 
 
-    def fix(self, oFile):
-        '''
-        Applies fixes for any rule violations.
-        '''
-        if self.fixable:
-            self.analyze(oFile)
-            self._print_debug_message('Fixing rule: ' + self.name + '_' + self.identifier)
-            self._fix_violation(oFile)
-            self.violations = []
-
-    def _fix_violation(self, oFile):
-        for oViolation in self.violations:
-            lTokens = oViolation.get_tokens()
-            lTokens.insert(1, parser.whitespace(' '))
-            oViolation.set_tokens(lTokens)
-        oFile.update(self.violations)
+    def _fix_violation(self, oViolation):
+        lTokens = oViolation.get_tokens()
+        lTokens.insert(1, parser.whitespace(' '))
+        oViolation.set_tokens(lTokens)
 

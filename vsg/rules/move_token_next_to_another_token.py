@@ -36,30 +36,27 @@ class move_token_next_to_another_token(rule.Rule):
         self.anchor_token = anchor_token
         self.token_to_move = token_to_move
 
-    def analyze(self, oFile):
-        lToi = oFile.get_tokens_bounded_by(self.anchor_token, self.token_to_move)
+    def _get_tokens_of_interest(self, oFile):
+        return oFile.get_tokens_bounded_by(self.anchor_token, self.token_to_move, bIncludeTillEndOfLine=True)
+
+    def _analyze(self, lToi):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
-            if not utils.are_next_consecutive_token_types([self.anchor_token, parser.whitespace, self.token_to_move], 0, lTokens) and \
-               not utils.are_next_consecutive_token_types([self.anchor_token, self.token_to_move], 0, lTokens):
-                self.add_violation(violation.New(oToi.get_line_number(), oToi, self.solution))
+            if not utils.are_next_consecutive_token_types([parser.whitespace, self.token_to_move], 1, lTokens) and \
+               not utils.are_next_consecutive_token_types([self.token_to_move], 1, lTokens):
+                oViolation = violation.New(oToi.get_line_number(), oToi, self.solution)
+                oViolation.set_remap()
+                oViolation.fix_blank_lines = True
+                self.add_violation(oViolation)
 
 
-    def fix(self, oFile):
-        '''
-        Applies fixes for any rule violations.
-        '''
-        if self.fixable:
-            self.analyze(oFile)
-            self._print_debug_message('Fixing rule: ' + self.name + '_' + self.identifier)
-            self._fix_violation(oFile)
-            self.violations = []
+    def _fix_violation(self, oViolation):
+        lTokens = oViolation.get_tokens()
+        iIndex = oViolation.get_token_value()
 
-    def _fix_violation(self, oFile):
-        for oViolation in self.violations:
-            lTokens = oViolation.get_tokens()
-            lTokens.insert(1, lTokens.pop())
-            lTokens.insert(1, parser.whitespace(' '))
-            oViolation.set_tokens(lTokens)
-        oFile.update(self.violations)
+        lTokens.insert(1, lTokens.pop(iIndex))
+        lTokens.insert(1, parser.whitespace(' '))
+        lNewTokens = utils.remove_consecutive_whitespace_tokens(lTokens)
+        lNewTokens = utils.fix_blank_lines(lNewTokens)
 
+        oViolation.set_tokens(lNewTokens)

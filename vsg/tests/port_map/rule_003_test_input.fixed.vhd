@@ -36,7 +36,7 @@ begin
       G_GEN_3 => 5
     )
     port map (
-    
+
       PORT_1 => w_port_1,
       PORT_2 => w_port_2,
       PORT_3 => w_port_3

@@ -33,8 +33,10 @@ class move_token_to_the_right_of_several_possible_tokens(rule.Rule):
         self.oMoveToken = oMoveToken
         self.lAnchorTokens = lAnchorTokens
 
-    def analyze(self, oFile):
-        lToi = oFile.get_tokens_bounded_by(self.lAnchorTokens[0], self.oMoveToken)
+    def _get_tokens_of_interest(self, oFile):
+        return oFile.get_tokens_bounded_by(self.lAnchorTokens[0], self.oMoveToken, bIncludeTillEndOfLine=True)
+
+    def _analyze(self, lToi):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             bPassing = False
@@ -54,6 +56,8 @@ class move_token_to_the_right_of_several_possible_tokens(rule.Rule):
             else:
                 oViolation = violation.New(iLine, oToi, self.solution)
                 oViolation.set_action(dAction)
+                oViolation.set_remap()
+                oViolation.fix_blank_lines = True
                 self.add_violation(oViolation)
 
     def _fix_violation(self, oViolation):

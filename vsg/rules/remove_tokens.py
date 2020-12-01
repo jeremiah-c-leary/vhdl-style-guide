@@ -1,11 +1,14 @@
 
+from vsg import parser
 from vsg import rule
 from vsg import violation
 
+from vsg.vhdlFile import utils
 
-class remove_tokens_bounded_by_tokens_and_remove_trailing_whitespace(rule.Rule):
+
+class remove_tokens(rule.Rule):
     '''
-    Checks for a single space between two tokens.
+    Removes a token and duplicate whitespace.
 
     Parameters
     ----------
@@ -16,26 +19,26 @@ class remove_tokens_bounded_by_tokens_and_remove_trailing_whitespace(rule.Rule):
     identifier : string
        unique identifier.  Usually in the form of 00N.
 
-    left_token : token object
-       The first token that defines the region
+    lTokens : token object type list
+       tokens to remove
 
-    right_token : token object
-       The second token that defines the region
     '''
 
-    def __init__(self, name, identifier, left_token, right_token):
+    def __init__(self, name, identifier, lTokens):
         rule.Rule.__init__(self, name=name, identifier=identifier)
         self.solution = None
         self.phase = 1
-        self.left_token = left_token
-        self.right_token = right_token
+        self.lTokens = lTokens
 
     def _get_tokens_of_interest(self, oFile):
-        return oFile.get_tokens_bounded_by(self.left_token, self.right_token, include_trailing_whitespace=True)
+        return oFile.get_n_tokens_before_and_after_tokens(1, self.lTokens)
 
     def _analyze(self, lToi):
         for oToi in lToi:
            self.violations.append(violation.New(oToi.get_line_number(), oToi, self.solution))
 
     def _fix_violation(self, oViolation):
-        oViolation.set_tokens([])
+        lTokens = oViolation.get_tokens()
+        lTokens.pop(1)
+        lTokens = utils.remove_consecutive_whitespace_tokens(lTokens)
+        oViolation.set_tokens(lTokens)

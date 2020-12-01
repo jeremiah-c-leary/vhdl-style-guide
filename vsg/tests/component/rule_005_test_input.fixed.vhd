@@ -8,13 +8,13 @@ architecture RTl of FIFO is
   -- Failures below
 
   COMPONENT fifo is --Some Comemnt
-   -- Some COmment
+  -- Some COmment
 
   end component fifo;
 
   Component fifo is--Other comment
   -- Some Comment
- 
+
 
   end component fifo;
 

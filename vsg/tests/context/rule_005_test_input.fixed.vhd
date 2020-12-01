@@ -10,19 +10,19 @@ context c1
 end context c1;
 
 context c1
- 
+
 is
 
 end context c1;
 
 context c1
-   -- Some comment
+ -- Some comment
 is
 
 end context c1;
 
 context c1  -- Yet another commet
-   -- Some comment
+ -- Some comment
 is
 
 end context c1;

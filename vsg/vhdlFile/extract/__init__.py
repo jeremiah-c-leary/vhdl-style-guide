@@ -16,3 +16,6 @@ from .get_token_and_n_tokens_before_it import get_token_and_n_tokens_before_it
 from .get_blank_lines_above_line_starting_with_token import get_blank_lines_above_line_starting_with_token
 from .get_line_preceeding_line import get_line_preceeding_line
 from .get_line_succeeding_line import get_line_succeeding_line
+from .get_tokens_bounded_by import get_tokens_bounded_by
+
+from .get_m_tokens_before_and_n_tokens_after_token import get_m_tokens_before_and_n_tokens_after_token 

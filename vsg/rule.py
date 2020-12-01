@@ -102,6 +102,7 @@ class Rule():
         '''
         Performs the analysis.
         '''
+        self._print_debug_message('Analyzing rule: ' + self.unique_id)
         lToi = self._get_tokens_of_interest(oFile)
         self._analyze(lToi)
 
