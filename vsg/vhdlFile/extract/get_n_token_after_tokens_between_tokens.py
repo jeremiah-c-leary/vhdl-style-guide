@@ -1,40 +1,27 @@
 
-from vsg import parser
+from vsg.vhdlFile.extract import tokens
 
-from vsg.vhdlFile import vhdlFile as token_class
 
-from vsg.vhdlFile import utils
-
-def get_n_token_after_tokens_between_tokens(iToken, lTokens, oStart, oEnd, lAllTokens):
-    iLine = 1
+def get_n_token_after_tokens_between_tokens(iToken, lTokens, oStart, oEnd, lAllTokens, oTokenMap):
     lReturn = []
-    bSearch = False
-    for iIndex in range(0, len(lAllTokens)):
-        if utils.does_token_type_match(lAllTokens[iIndex], oStart):
-            bSearch = True
-        if utils.does_token_type_match(lAllTokens[iIndex], oEnd):
-            bSearch = False
-        if bSearch:
-            for oToken in lTokens:
-                if isinstance(lAllTokens[iIndex], oToken):
-                    lReturn.append(search_for_next_n_token(iToken, iLine, iIndex + 1, lAllTokens))
 
-        if isinstance(lAllTokens[iIndex], parser.carriage_return):
-            iLine +=1
+    lStart, lEnd = oTokenMap.get_token_pair_indexes(oStart, oEnd)
+
+    lIndexes = []
+    for iStart, iEnd in zip(lStart, lEnd):
+        for oToken in lTokens:
+            lTemp = oTokenMap.get_token_indexes_between_indexes(oToken, iStart, iEnd)
+            for iTemp in lTemp:
+                iTokenIndex = iTemp
+                for iCount in range(0, iToken):
+                    iTokenIndex = oTokenMap.get_index_of_next_non_whitespace_token(iTokenIndex, bExcludeComments=True)
+                else:
+                    lIndexes.append(iTokenIndex)
+
+    lIndexes.sort()
+
+    for iIndex in lIndexes:
+        iLine = oTokenMap.get_line_number_of_index(iIndex)
+        lReturn.append(tokens.New(iIndex, iLine, [lAllTokens[iIndex]]))
 
     return lReturn
-
-
-def search_for_next_n_token(iN, iLine, iToken, lAllTokens):
-    iSearchLine = iLine
-    iNTokens = 0
-    for iSearch in range(iToken, len(lAllTokens)):
-        oToken = lAllTokens[iSearch]
-        if isinstance(oToken, parser.carriage_return):
-            iSearchLine += 1
-        if not isinstance(oToken, parser.whitespace) and \
-           not isinstance(oToken, parser.carriage_return) and \
-           not isinstance(oToken, parser.comment):
-            iNTokens += 1
-            if iNTokens == iN:
-                return token_class.Tokens(iSearch, iSearchLine, [oToken])

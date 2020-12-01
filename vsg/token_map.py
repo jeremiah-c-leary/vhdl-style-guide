@@ -49,7 +49,7 @@ class New():
             lEndIndexes.append(self.get_index_of_token_after_index(oEnd, iIndex))
         return lStartIndexes, lEndIndexes
 
-    def get_index_of_next_non_whitespace_token(self, iIndex):
+    def get_index_of_next_non_whitespace_token(self, iIndex, bExcludeComments=False):
         iStartIndex = iIndex + 1
         lTokens = [None, None, None, None]
         lBaseKeys = list(self.dMap.keys())
@@ -59,10 +59,15 @@ class New():
                 lSubKeys.remove('whitespace')
                 lSubKeys.remove('carriage_return')
                 lSubKeys.remove('blank_line')
+            try:
+                if bExcludeComments:
+                    lSubKeys.remove('comment')
+            except ValueError:
+                pass
             for sSubKey in lSubKeys:
                 for iIdx in range(0, 4):
                     iSearchIdx = iStartIndex + iIdx
-                    if iSearchIdx in self.dMap['parser'][sSubKey]:
+                    if iSearchIdx in self.dMap[sBaseKey][sSubKey]:
                         lTokens[iIdx] = iSearchIdx
                         continue
 
