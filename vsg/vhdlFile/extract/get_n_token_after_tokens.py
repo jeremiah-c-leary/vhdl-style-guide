@@ -1,33 +1,23 @@
 
-from vsg import parser
-
-from vsg.vhdlFile import vhdlFile as token_class
+from vsg.vhdlFile.extract import tokens
 
 
-def get_n_token_after_tokens(iToken, lTokens, lAllTokens):
-    iLine = 1
+def get_n_token_after_tokens(iToken, lTokens, lAllTokens, oTokenMap):
     lReturn = []
-    for iIndex in range(0, len(lAllTokens)):
-        for oToken in lTokens:
-            if isinstance(lAllTokens[iIndex], oToken):
-                lReturn.append(search_for_next_n_token(iToken, iLine, iIndex + 1, lAllTokens))
+    lIndexes = []
+    for oToken in lTokens:
+        lTemp = oTokenMap.get_token_indexes(oToken)
+        for iTemp in lTemp:
+            iTokenIndex = iTemp
+            for iCount in range(0, iToken):
+                iTokenIndex = oTokenMap.get_index_of_next_non_whitespace_token(iTokenIndex, bExcludeComments=True)
+            else:
+                lIndexes.append(iTokenIndex)
 
-        if isinstance(lAllTokens[iIndex], parser.carriage_return):
-            iLine +=1
+    lIndexes.sort()
+
+    for iIndex in lIndexes:
+        iLine = oTokenMap.get_line_number_of_index(iIndex)
+        lReturn.append(tokens.New(iIndex, iLine, [lAllTokens[iIndex]]))
 
     return lReturn
-
-
-def search_for_next_n_token(iN, iLine, iToken, lAllTokens):
-    iSearchLine = iLine
-    iNTokens = 0
-    for iSearch in range(iToken, len(lAllTokens)):
-        oToken = lAllTokens[iSearch]
-        if isinstance(oToken, parser.carriage_return):
-            iSearchLine += 1
-        if not isinstance(oToken, parser.whitespace) and \
-           not isinstance(oToken, parser.carriage_return) and \
-           not isinstance(oToken, parser.comment):
-            iNTokens += 1
-            if iNTokens == iN:
-                return token_class.Tokens(iSearch, iSearchLine, [oToken])

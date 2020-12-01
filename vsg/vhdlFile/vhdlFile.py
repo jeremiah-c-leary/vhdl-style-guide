@@ -138,7 +138,7 @@ class vhdlFile():
         return extract.get_tokens_matching(lTokens, self.lAllObjects, self.oTokenMap)
 
     def get_n_token_after_tokens(self, iToken, lTokens):
-        return extract.get_n_token_after_tokens(iToken, lTokens, self.lAllObjects)
+        return extract.get_n_token_after_tokens(iToken, lTokens, self.lAllObjects, self.oTokenMap)
 
     def get_n_tokens_after_token(self, iN, lTokens):
         return extract.get_m_tokens_before_and_n_tokens_after_token(0, iN, lTokens, self.lAllObjects, self.oTokenMap)
