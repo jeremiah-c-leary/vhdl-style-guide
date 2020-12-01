@@ -63,7 +63,7 @@ class remove_excessive_blank_lines_above_line_starting_with_token(rule.Rule):
 
 def check_if_override_exists(oFile, iLine, lOverrides):
 
-    oMyToi = oFile.get_line_preceeding_line(iLine - 1)
+    oMyToi = oFile.get_line_preceeding_line(iLine)
     try:
         lTokens = oMyToi.get_tokens()
 
