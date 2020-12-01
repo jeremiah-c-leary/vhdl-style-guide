@@ -270,7 +270,7 @@ class vhdlFile():
         return extract.get_line_above_line_starting_with_token_with_hierarchy(lTokens, self.lAllObjects, lHierarchy)
 
     def get_line_below_line_ending_with_token(self, lTokens):
-        return extract.get_line_below_line_ending_with_token(lTokens, self.lAllObjects)
+        return extract.get_line_below_line_ending_with_token(lTokens, self.lAllObjects, self.oTokenMap)
 
     def get_line_below_line_ending_with_token_with_hierarchy(self, lTokens, lHierarchy):
         return extract.get_line_below_line_ending_with_token_with_hierarchy(lTokens, self.lAllObjects, lHierarchy, self.oTokenMap)
