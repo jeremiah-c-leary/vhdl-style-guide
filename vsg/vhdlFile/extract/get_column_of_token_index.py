@@ -1,12 +1,14 @@
 
 from vsg import parser
 
+def get_column_of_token_index(iToken, lAllTokens, oTokenMap):
 
-def get_column_of_token_index(iToken, lAllTokens):
+    oToken = lAllTokens[iToken]
+    iLine = oTokenMap.get_line_number_of_index(iToken) - 1
+    lCarriageReturns = oTokenMap.get_token_indexes(parser.carriage_return)
+    iStart = lCarriageReturns[iLine - 1] + 1
+
     iReturn = 0
-    for iIndex in range(iToken - 1, 0, -1):
-        oToken = lAllTokens[iIndex]
-        if isinstance(oToken, parser.carriage_return):
-            return iReturn
-        iReturn += len(lAllTokens[iIndex].get_value())
+    for oToken in lAllTokens[iStart:iToken]:
+        iReturn += len(oToken.get_value())
     return iReturn
