@@ -1,25 +1,15 @@
 
 from vsg import parser
 
-from vsg.vhdlFile import vhdlFile as utils
+from vsg.vhdlFile.extract import tokens
 
 
-def get_line_preceeding_line(iLine, lAllTokens):
+def get_line_preceeding_line(iLine, lAllTokens, iNumLines, oTokenMap):
+    lCarriageReturns = oTokenMap.get_token_indexes(parser.carriage_return)
 
-    iMyLine = 1
-    iTargetLine = iLine - 1
-    bStoreTokens = False
-    lTemp = []
-    for iToken, oToken in enumerate(lAllTokens):
-        if bStoreTokens:
-            lTemp.append(oToken)
-        if isinstance(oToken, parser.carriage_return):
-            iMyLine += 1
-            if bStoreTokens:
-                lTemp.pop()
-                return utils.Tokens(iStartIndex, iTargetLine, lTemp)
-            if iMyLine == iTargetLine:
-                bStoreTokens = True
-                iStartIndex = iToken + 1
+    iAdjust = -1
+    iStart = lCarriageReturns[iLine - iNumLines + iAdjust] + 1
+    iEnd = lCarriageReturns[iLine + iAdjust]
+    lTemp = lAllTokens[iStart:iEnd]
 
-    return None
+    return tokens.New(iStart, iLine - iNumLines, lTemp)

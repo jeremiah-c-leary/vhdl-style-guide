@@ -54,29 +54,19 @@ class remove_excessive_blank_lines_above_line_starting_with_token(rule.Rule):
                 oViolation.set_action(dAction)
                 self.add_violation(oViolation)
 
-    def fix(self, oFile):
-        '''
-        Applies fixes for any rule violations.
-        '''
-        if self.fixable:
-            self.analyze(oFile)
-            self._print_debug_message('Fixing rule: ' + self.name + '_' + self.identifier)
-            self._fix_violation(oFile)
-            self.violations = []
-
-    def _fix_violation(self, oFile):
-        for oViolation in self.violations:
-            lTokens = oViolation.get_tokens()
-            dAction = oViolation.get_action()
-            lNewTokens = lTokens[0:dAction['index']]
-            oViolation.set_tokens(lNewTokens)
-        oFile.update(self.violations)
+    def _fix_violation(self, oViolation):
+        lTokens = oViolation.get_tokens()
+        dAction = oViolation.get_action()
+        lNewTokens = lTokens[0:dAction['index']]
+        oViolation.set_tokens(lNewTokens)
 
 
 def check_if_override_exists(oFile, iLine, lOverrides):
-    oMyToi = oFile.get_line_preceeding_line(iLine)
+
+    oMyToi = oFile.get_line_preceeding_line(iLine - 1)
     try:
         lTokens = oMyToi.get_tokens()
+
         for oOverride in lOverrides:
             if utils.does_token_type_exist_in_list_of_tokens(oOverride, lTokens):
                 return True
