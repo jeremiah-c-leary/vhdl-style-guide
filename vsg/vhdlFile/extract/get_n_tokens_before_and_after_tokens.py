@@ -1,7 +1,7 @@
 
-from vsg import parser
-
 from vsg.vhdlFile import vhdlFile as token_class
+
+from vsg.vhdlFile.extract import tokens
 
 
 def get_n_tokens_before_and_after_tokens(iToken, lTokens, lAllTokens, oTokenMap):
@@ -15,6 +15,6 @@ def get_n_tokens_before_and_after_tokens(iToken, lTokens, lAllTokens, oTokenMap)
     
     for iIndex in lIndexes:
         iLine = oTokenMap.get_line_number_of_index(iIndex)
-        lReturn.append(token_class.Tokens(iIndex - iToken, iLine, lAllTokens[iIndex - iToken:iIndex + iToken + 1]))
+        lReturn.append(tokens.New(iIndex - iToken, iLine, lAllTokens[iIndex - iToken:iIndex + iToken + 1]))
     
     return lReturn

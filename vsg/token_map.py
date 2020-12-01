@@ -2,9 +2,6 @@
 import bisect
 import pprint
 
-from vsg import parser
-from vsg import token
-
 
 class New():
 
@@ -73,6 +70,12 @@ class New():
             if iToken is not None:
                 return iToken
         return None
+
+    def is_token_at_index(self, oToken, iIndex):
+        sBase, sSub = extract_unique_id(oToken)
+        if iIndex in self.dMap[sBase][sSub]:
+            return True
+        return False
 
     def pretty_print(self):
         pp=pprint.PrettyPrinter(indent=4)

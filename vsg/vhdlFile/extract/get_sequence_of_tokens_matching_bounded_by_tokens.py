@@ -1,8 +1,5 @@
 
-from vsg import parser
-
-from vsg.vhdlFile import vhdlFile as utils
-from vsg.vhdlFile.extract import get_sequence_of_tokens_matching
+from vsg.vhdlFile.extract import tokens
 
 
 def get_sequence_of_tokens_matching_bounded_by_tokens(lTokens, oStart, oEnd, lAllTokens, oTokenMap):
@@ -23,6 +20,6 @@ def get_sequence_of_tokens_matching_bounded_by_tokens(lTokens, oStart, oEnd, lAl
             if not isinstance(lAllTokens[iToken + iIndex], oToken):
                 break
         else:
-            lReturn.append(utils.Tokens(iIndex, iLine, lAllTokens[iIndex:iIndex + len(lTokens)]))
+            lReturn.append(tokens.New(iIndex, iLine, lAllTokens[iIndex:iIndex + len(lTokens)]))
 
     return lReturn
