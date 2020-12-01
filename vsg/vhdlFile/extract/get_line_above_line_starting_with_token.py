@@ -1,34 +1,23 @@
 
-from vsg import parser
+from vsg.vhdlFile.extract import utils
 
-from vsg.vhdlFile import utils
-
-from vsg.vhdlFile import vhdlFile
+from vsg.vhdlFile.extract.get_line_preceeding_line import get_line_preceeding_line
 
 
-def get_line_above_line_starting_with_token(lTokens, lAllTokens):
+def get_line_above_line_starting_with_token(lTokens, lAllTokens, oTokenMap):
+
     lReturn = []
-    iLine = 1
-    lPreviousLine = []
-    iPrevious = 0
-    lCurrentLine = []
-    iCurrent = 0
-    for iIndex in range(0, len(lAllTokens)):
+    
+    lTokenIndexes = utils.get_indexes_of_token_list(lTokens, oTokenMap)
 
-        if isinstance(lAllTokens[iIndex], parser.carriage_return):
-            iLine +=1
-            lPreviousLine = lCurrentLine.copy()
-            iPrevious = iCurrent
-            lCurrentLine = []
-            iCurrent = iIndex + 1
-            for oToken in lTokens:
-                if utils.are_next_consecutive_token_types([parser.whitespace, oToken], iCurrent, lAllTokens):
-                    lReturn.append(vhdlFile.Tokens(iPrevious, iLine, lPreviousLine))
-                    break
-                if utils.are_next_consecutive_token_types([oToken], iCurrent, lAllTokens):
-                    lReturn.append(vhdlFile.Tokens(iPrevious, iLine, lPreviousLine))
-                    break
-        else:
-            lCurrentLine.append(lAllTokens[iIndex])
+    lIndexes = []
+    for iIndex in lTokenIndexes:
+        if utils.is_token_at_start_of_line(iIndex, oTokenMap):
+            lIndexes.append(iIndex)
+
+    lLine = utils.get_line_numbers_of_indexes_in_list(lIndexes, oTokenMap) 
+
+    for iLine in lLine:
+        lReturn.append(get_line_preceeding_line(iLine, lAllTokens, 1, oTokenMap))
 
     return lReturn
