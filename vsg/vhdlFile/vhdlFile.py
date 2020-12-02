@@ -150,23 +150,7 @@ class vhdlFile():
         return extract.get_n_token_after_tokens_between_tokens(iToken, lTokens, oStart, oEnd, self.lAllObjects, self.oTokenMap)
 
     def get_tokens_matching_in_range_bounded_by_tokens(self, lTokens, oStart, oEnd):
-        iLine = 1
-        lReturn = []
-        bSearch = False
-        for iIndex in range(0, len(self.lAllObjects)):
-            if isinstance(self.lAllObjects[iIndex], oStart):
-                bSearch = True
-            if isinstance(self.lAllObjects[iIndex], oEnd):
-                bSearch = False
-            if bSearch:
-                for oToken in lTokens:
-                    if isinstance(self.lAllObjects[iIndex], oToken):
-                        lReturn.append(Tokens(iIndex, iLine, [self.lAllObjects[iIndex]]))
-
-            if isinstance(self.lAllObjects[iIndex], parser.carriage_return):
-                iLine +=1
-
-        return lReturn
+        return extract.get_tokens_matching_in_range_bounded_by_tokens(lTokens, oStart, oEnd, self.lAllObjects, self.oTokenMap)
 
     def get_tokens_bounded_by(self, oLeft, oRight, include_trailing_whitespace=False, bExcludeLastToken=False, bIncludeTillEndOfLine=False):
         return extract.get_tokens_bounded_by(oLeft, oRight, self.lAllObjects, self.oTokenMap, include_trailing_whitespace=include_trailing_whitespace, bExcludeLastToken=bExcludeLastToken, bIncludeTillEndOfLine=bIncludeTillEndOfLine)
