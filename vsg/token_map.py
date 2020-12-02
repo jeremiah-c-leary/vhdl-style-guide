@@ -12,7 +12,7 @@ class New():
         lReturn = []
         sBase, sSub = extract_unique_id(oToken)
         try:
-            return self.dMap[sBase][sSub].copy()
+            return self.dMap[sBase][sSub]
         except KeyError:
             return []
 

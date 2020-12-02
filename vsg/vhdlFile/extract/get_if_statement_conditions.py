@@ -10,6 +10,7 @@ def get_if_statement_conditions(lAllTokens, oTokenMap):
     lReturn = []
 
     lStart = oTokenMap.get_token_indexes(token.if_keyword)
+    lStart = lStart.copy()
     lStart.extend(oTokenMap.get_token_indexes(token.elsif_keyword))
     lStart.sort()    
 
