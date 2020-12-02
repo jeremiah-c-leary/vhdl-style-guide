@@ -192,23 +192,7 @@ class vhdlFile():
         return extract.get_tokens_between_tokens_inclusive_while_storing_value_from_token(left_token, right_token, value_token, self.lAllObjects, self.oTokenMap)
 
     def get_tokens_from_line(self, iLineNumber):
-        iLine = 1
-        lTemp = []
-        iStart = 0
-        bStore = False
-        for iIndex in range(0, len(self.lAllObjects)):
-
-            if bStore:
-                lTemp.append(self.lAllObjects[iIndex])
-
-            if isinstance(self.lAllObjects[iIndex], parser.carriage_return):
-                iLine +=1
-                if iLine == iLineNumber:
-                    bStore = True
-                    iStart = iIndex + 1
-                if iLine == iLineNumber + 1:
-                    return(Tokens(iStart, iLineNumber, lTemp))
-
+        return extract.get_tokens_from_line(iLineNumber, self.lAllObjects, self.oTokenMap)
 
     def get_consecutive_lines_starting_with_token_and_stopping_when_token_starting_line_is_found(self, search_token, stop_token):
         iLine = 1
