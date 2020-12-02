@@ -27,8 +27,10 @@ class token_indent(rule.Rule):
         self.phase = 4
         self.lTokens = lTokens
 
-    def analyze(self, oFile):
-        lToi = oFile.get_tokens_at_beginning_of_line_matching(self.lTokens)
+    def _get_tokens_of_interest(self, oFile):
+        return oFile.get_tokens_at_beginning_of_line_matching(self.lTokens)
+
+    def _analyze(self, lToi):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             if len(lTokens) == 2 and lTokens[1].get_indent() == 0:

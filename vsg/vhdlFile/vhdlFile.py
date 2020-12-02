@@ -159,19 +159,7 @@ class vhdlFile():
         return extract.get_tokens_bounded_by_token_when_between_tokens(oLeft, oRight, oStart, oEnd, self.lAllObjects, self.oTokenMap, include_trailing_whitespace)
 
     def get_tokens_at_beginning_of_line_matching(self, lTokens):
-        iLine = 1
-        lReturn = []
-        for iIndex in range(0, len(self.lAllObjects)):
-            if isinstance(self.lAllObjects[iIndex], parser.carriage_return):
-                iLine +=1
-                iStart = iIndex + 1
-                for oToken in lTokens:
-                    if utils.are_next_consecutive_token_types([parser.whitespace, oToken], iStart, self.lAllObjects):
-                        lReturn.append(Tokens(iStart, iLine, self.lAllObjects[iStart:iStart + 2]))
-                    elif utils.are_next_consecutive_token_types([oToken], iStart, self.lAllObjects):
-                        lReturn.append(Tokens(iStart, iLine, [self.lAllObjects[iStart]]))
-
-        return lReturn
+        return extract.get_tokens_at_beginning_of_line_matching(lTokens, self.lAllObjects, self.oTokenMap)
 
     def get_tokens_at_beginning_of_line_matching_between_tokens(self, lTokens, oStart, oEnd, bIncludePreCarriageReturn=False):
         iLine = 1
