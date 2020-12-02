@@ -156,47 +156,7 @@ class vhdlFile():
         return extract.get_tokens_bounded_by(oLeft, oRight, self.lAllObjects, self.oTokenMap, include_trailing_whitespace=include_trailing_whitespace, bExcludeLastToken=bExcludeLastToken, bIncludeTillEndOfLine=bIncludeTillEndOfLine)
 
     def get_tokens_bounded_by_token_when_between_tokens(self, oLeft, oRight, oStart, oEnd, include_trailing_whitespace=False):
-        iLine = 1
-        lTemp = []
-        lReturn = []
-        bStore = False
-        bRightFound = False
-        bSearch = False
-        for iIndex in range(0, len(self.lAllObjects)):
-
-            if isinstance(self.lAllObjects[iIndex], oStart):
-                bSearch = True
-            if isinstance(self.lAllObjects[iIndex], oEnd):
-                bSearch = False
-
-            if bSearch:
-                if isinstance(self.lAllObjects[iIndex], oLeft):
-                    bStore = True
-                    iStart = iIndex
-                    iStartLine = iLine
-                if bStore:
-                    lTemp.append(self.lAllObjects[iIndex])
-                if bRightFound:
-                    if isinstance(self.lAllObjects[iIndex], parser.whitespace):
-                        lReturn.append(Tokens(iStart, iStartLine, lTemp))
-                    else:
-                        lReturn.append(Tokens(iStart, iStartLine, lTemp[:-1]))
-                    bRightFound = False
-                    lTemp = []
-                    bStore = False
-                if isinstance(self.lAllObjects[iIndex], oRight) and bStore:
-                    if not include_trailing_whitespace:
-                        lReturn.append(Tokens(iStart, iStartLine, lTemp))
-                        lTemp = []
-                        bStore = False
-                    else:
-                        bRightFound = True
-
-            if isinstance(self.lAllObjects[iIndex], parser.carriage_return):
-                iLine +=1
-
-        return lReturn
-
+        return extract.get_tokens_bounded_by_token_when_between_tokens(oLeft, oRight, oStart, oEnd, self.lAllObjects, self.oTokenMap, include_trailing_whitespace)
 
     def get_tokens_at_beginning_of_line_matching(self, lTokens):
         iLine = 1
