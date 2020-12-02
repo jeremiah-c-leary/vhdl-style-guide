@@ -9,9 +9,8 @@ from vsg.vhdlFile.extract import tokens
 def get_if_statement_conditions(lAllTokens, oTokenMap):
     lReturn = []
 
-    lStart = oTokenMap.get_token_indexes(token.if_keyword)
-    lStart = lStart.copy()
-    lStart.extend(oTokenMap.get_token_indexes(token.elsif_keyword))
+    lStart = oTokenMap.get_token_indexes(token.if_keyword, bCopy=True)
+    lStart.extend(oTokenMap.get_token_indexes(token.elsif_keyword, bCopy=True))
     lStart.sort()    
 
     lEnd = []

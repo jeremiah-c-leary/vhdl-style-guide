@@ -8,11 +8,14 @@ class New():
     def __init__(self, dMap):
         self.dMap = dMap
 
-    def get_token_indexes(self, oToken):
+    def get_token_indexes(self, oToken, bCopy=False):
         lReturn = []
         sBase, sSub = extract_unique_id(oToken)
         try:
-            return self.dMap[sBase][sSub]
+            if bCopy:
+                return self.dMap[sBase][sSub].copy()
+            else:
+                return self.dMap[sBase][sSub]
         except KeyError:
             return []
 
