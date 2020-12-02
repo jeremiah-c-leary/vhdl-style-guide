@@ -5,43 +5,20 @@ from vsg.vhdlFile.extract import tokens
 
 
 def get_tokens_bounded_by_token_when_between_tokens(oLeft, oRight, oStart, oEnd, lAllTokens, oTokenMap, include_trailing_whitespace=False):
-    iLine = 1
-    lTemp = []
+
+    lLeft, lRight = oTokenMap.get_token_pair_indexes(oLeft, oRight)
+    lStart, lEnd = oTokenMap.get_token_pair_indexes(oStart, oEnd)
+
     lReturn = []
-    bStore = False
-    bRightFound = False
-    bSearch = False
-    for iIndex in range(0, len(lAllTokens)):
-
-        if isinstance(lAllTokens[iIndex], oStart):
-            bSearch = True
-        if isinstance(lAllTokens[iIndex], oEnd):
-            bSearch = False
-
-        if bSearch:
-            if isinstance(lAllTokens[iIndex], oLeft):
-                bStore = True
-                iStart = iIndex
-                iStartLine = iLine
-            if bStore:
-                lTemp.append(lAllTokens[iIndex])
-            if bRightFound:
-                if isinstance(lAllTokens[iIndex], parser.whitespace):
-                    lReturn.append(tokens.New(iStart, iStartLine, lTemp))
+    for iStart, iEnd in zip(lStart, lEnd):
+        for iLeft, iRight in zip(lLeft, lRight):
+            if iStart < iLeft and iRight < iEnd:
+                iLine = oTokenMap.get_line_number_of_index(iLeft)
+                if include_trailing_whitespace:
+                    if oTokenMap.is_token_at_index(iRight + 1, parser.whitespace):
+                        lReturn.append(tokens.New(iLeft, iLine, lAllTokens[iLeft:iRight + 2]))
+                    else:
+                        lReturn.append(tokens.New(iLeft, iLine, lAllTokens[iLeft:iRight + 1]))
                 else:
-                    lReturn.append(tokens.New(iStart, iStartLine, lTemp[:-1]))
-                bRightFound = False
-                lTemp = []
-                bStore = False
-            if isinstance(lAllTokens[iIndex], oRight) and bStore:
-                if not include_trailing_whitespace:
-                    lReturn.append(tokens.New(iStart, iStartLine, lTemp))
-                    lTemp = []
-                    bStore = False
-                else:
-                    bRightFound = True
-
-        if isinstance(lAllTokens[iIndex], parser.carriage_return):
-            iLine +=1
-
+                    lReturn.append(tokens.New(iLeft, iLine, lAllTokens[iLeft:iRight + 1]))
     return lReturn

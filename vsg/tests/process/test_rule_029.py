@@ -33,7 +33,7 @@ class test_process_rule(unittest.TestCase):
         lExpected = [18, 22]
 
         oRule.analyze(self.oFile)
-        self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
     def test_rule_029_edge(self):
         oRule = process.rule_029()
@@ -45,7 +45,7 @@ class test_process_rule(unittest.TestCase):
 
         lExpected = [10, 14]
         oRule.analyze(self.oFile)
-        self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
     def test_fix_rule_029_event(self):
         oRule = process.rule_029()
