@@ -188,38 +188,8 @@ class vhdlFile():
     def get_sequence_of_tokens_not_matching(self, lTokens):
         return extract.get_sequence_of_tokens_not_matching(lTokens, self.lAllObjects, self.oTokenMap)
 
-    def get_tokens_between_tokens_inclusive_while_storing_value_from_token(self, left_token, right_token, value_token ):
-        iLine = 1
-        lTemp = []
-        lReturn = []
-        iStart = 0
-        sValue = None
-        bStore = False
-        for iIndex in range(0, len(self.lAllObjects)):
-
-            if isinstance(self.lAllObjects[iIndex], left_token):
-                bStore = True
-                iStart = iIndex
-                iLineNumber = iLine
-
-            if bStore:
-                lTemp.append(self.lAllObjects[iIndex])
-
-            if isinstance(self.lAllObjects[iIndex], value_token):
-                sValue = self.lAllObjects[iIndex].get_value()
-
-            if isinstance(self.lAllObjects[iIndex], right_token):
-                oTokens = Tokens(iStart, iLineNumber, lTemp)
-                oTokens.set_token_value(sValue)
-                lReturn.append(oTokens)
-                lTemp = []
-                bStore = False
-                sValue = None
-
-            if isinstance(self.lAllObjects[iIndex], parser.carriage_return):
-                iLine +=1
-
-        return lReturn
+    def get_tokens_between_tokens_inclusive_while_storing_value_from_token(self, left_token, right_token, value_token):
+        return extract.get_tokens_between_tokens_inclusive_while_storing_value_from_token(left_token, right_token, value_token, self.lAllObjects, self.oTokenMap)
 
     def get_tokens_from_line(self, iLineNumber):
         iLine = 1
