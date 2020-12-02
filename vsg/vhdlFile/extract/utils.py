@@ -41,3 +41,14 @@ def get_line_numbers_of_indexes_in_list(lIndexes, oTokenMap):
     lReturn.sort()
 
     return lReturn
+
+
+def is_index_between_indexes(iIndex, lStart, lEnd, bInclusive=False):
+    for iStart, iEnd in zip(lStart, lEnd):
+        if bInclusive:
+            if iStart <= iIndex and iIndex <= iEnd:
+                return True
+        else:
+            if iStart < iIndex and iIndex < iEnd:
+                return True
+    return False

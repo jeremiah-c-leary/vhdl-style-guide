@@ -161,36 +161,8 @@ class vhdlFile():
     def get_tokens_at_beginning_of_line_matching(self, lTokens):
         return extract.get_tokens_at_beginning_of_line_matching(lTokens, self.lAllObjects, self.oTokenMap)
 
-    def get_tokens_at_beginning_of_line_matching_between_tokens(self, lTokens, oStart, oEnd, bIncludePreCarriageReturn=False):
-        iLine = 1
-        lReturn = []
-        bSearch = False
-        for iIndex in range(0, len(self.lAllObjects)):
-
-            if bIncludePreCarriageReturn:
-                for oToken in lTokens:
-                    if utils.are_next_consecutive_token_types([parser.carriage_return, oToken], iIndex, self.lAllObjects):
-                        bSearch = True
-                    if utils.are_next_consecutive_token_types([parser.carriage_return, parser.whitespace, oToken], iIndex, self.lAllObjects):
-                        bSearch = True
-            else:
-                if isinstance(self.lAllObjects[iIndex], oStart):
-                    bSearch = True
-            if isinstance(self.lAllObjects[iIndex], oEnd):
-                bSearch = False
-
-
-            if isinstance(self.lAllObjects[iIndex], parser.carriage_return):
-                iLine +=1
-                iStart = iIndex + 1
-                if bSearch :
-                    for oToken in lTokens:
-                        if utils.are_next_consecutive_token_types([parser.whitespace, oToken], iStart, self.lAllObjects):
-                            lReturn.append(Tokens(iStart, iLine, self.lAllObjects[iStart:iStart + 2]))
-                        elif utils.are_next_consecutive_token_types([oToken], iStart, self.lAllObjects):
-                            lReturn.append(Tokens(iStart, iLine, [self.lAllObjects[iStart]]))
-
-        return lReturn
+    def get_tokens_at_beginning_of_line_matching_between_tokens(self, lTokens, oStart, oEnd, bInclusive=False):
+        return extract.get_tokens_at_beginning_of_line_matching_between_tokens(lTokens, oStart, oEnd, bInclusive, self.lAllObjects, self.oTokenMap)
 
     def get_column_of_token_index(self, iToken):
         return extract.get_column_of_token_index(iToken, self.lAllObjects, self.oTokenMap)

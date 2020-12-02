@@ -25,4 +25,4 @@ class rule_001(token_indent_between_tokens):
     '''
 
     def __init__(self):
-        token_indent_between_tokens.__init__(self, 'instantiation', '001', lTokens, oStart, oEnd, True)
+        token_indent_between_tokens.__init__(self, 'instantiation', '001', lTokens, oStart, oEnd, bInclusive=True)

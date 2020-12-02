@@ -21,19 +21,22 @@ class token_indent_between_tokens(rule.Rule):
        object type to apply the case check against
     '''
 
-    def __init__(self, name, identifier, lTokens, oStart, oEnd, bIncludeLeadingCarriageReturn=False):
+    def __init__(self, name, identifier, lTokens, oStart, oEnd, bInclusive=False):
         rule.Rule.__init__(self, name=name, identifier=identifier)
         self.solution = None
         self.phase = 4
         self.lTokens = lTokens
         self.oStart = oStart
         self.oEnd = oEnd
-        self.bIncludeLeadingCarriageReturn = bIncludeLeadingCarriageReturn
+        self.bInclusive = bInclusive
 
-    def analyze(self, oFile):
-        lToi = oFile.get_tokens_at_beginning_of_line_matching_between_tokens(self.lTokens, self.oStart, self.oEnd, self.bIncludeLeadingCarriageReturn)
+    def _get_tokens_of_interest(self, oFile):
+        return oFile.get_tokens_at_beginning_of_line_matching_between_tokens(self.lTokens, self.oStart, self.oEnd, self.bInclusive)
+
+    def _analyze(self, lToi):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
+
             if len(lTokens) == 2 and lTokens[1].get_indent() == 0:
                 sSolution = "Indent level 0"
                 oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
