@@ -186,33 +186,7 @@ class vhdlFile():
         return extract.get_n_tokens_before_and_after_tokens(iToken, lTokens, self.lAllObjects, self.oTokenMap)
 
     def get_sequence_of_tokens_not_matching(self, lTokens):
-        iLine = 1
-        lTemp = []
-        lReturn = []
-        iMatchCount = 0
-        iStart = 0
-        iEnd = len(lTokens)
-        for iIndex in range(0, len(self.lAllObjects)):
-            if iMatchCount != 0:
-                if type(self.lAllObjects[iIndex]) == lTokens[iMatchCount]:
-                    iMatchCount += 1
-                else:
-                    lReturn.append(Tokens(iStart, iLine, lTemp))
-                    lTemp = []
-                    iMatchCount = 0
-                if iMatchCount == iEnd:
-                    lTemp = []
-                    iMatchCount = 0
-            if iMatchCount == 0:
-                if isinstance(self.lAllObjects[iIndex], lTokens[0]):
-                    iStart = iIndex
-                    lTemp.append(self.lAllObjects[iIndex])
-                    iMatchCount += 1
-
-            if isinstance(self.lAllObjects[iIndex], parser.carriage_return):
-                iLine +=1
-
-        return lReturn
+        return extract.get_sequence_of_tokens_not_matching(lTokens, self.lAllObjects, self.oTokenMap)
 
     def get_tokens_between_tokens_inclusive_while_storing_value_from_token(self, left_token, right_token, value_token ):
         iLine = 1

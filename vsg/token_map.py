@@ -80,10 +80,13 @@ class New():
         return None
 
     def is_token_at_index(self, oToken, iIndex):
-        sBase, sSub = extract_unique_id(oToken)
-        if iIndex in self.dMap[sBase][sSub]:
-            return True
-        return False
+        try:
+            sBase, sSub = extract_unique_id(oToken)
+            if iIndex in self.dMap[sBase][sSub]:
+                return True
+            return False
+        except KeyError:
+            return False
 
     def pretty_print(self):
         pp=pprint.PrettyPrinter(indent=4)
