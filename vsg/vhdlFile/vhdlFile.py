@@ -219,45 +219,7 @@ class vhdlFile():
         return extract.get_blank_lines_above_line_starting_with_token(lTokens, self.lAllObjects, self.oTokenMap)
 
     def get_association_elements_between_tokens(self, oStart, oEnd):
-        iLine = 1
-        lReturn = []
-        bSearch = False
-        bStore = False
-        lTemp = []
-        iLineNumber = None
-        for iIndex in range(0, len(self.lAllObjects)):
-            if isinstance(self.lAllObjects[iIndex], oStart):
-                bSearch = True
-            if isinstance(self.lAllObjects[iIndex], oEnd):
-                bSearch = False
-                bStore = False
-                if len(lTemp) > 0:
-                    lReturn.append(Tokens(iStart, iLineNumber, lTemp))
-                lTemp = []
-
-            if bSearch:
-                oToken = self.lAllObjects[iIndex]
-                if isinstance(oToken, token.association_element.formal_part):
-                    bStore = True
-                    iStart = iIndex
-                    iLineNumber = iLine
-                if isinstance(oToken, token.association_element.actual_part) and not bStore:
-                    bStore = True
-                    iStart = iIndex
-                    iLineNumber = iLine
-
-                if isinstance(oToken, token.association_list.comma):
-                    lReturn.append(Tokens(iStart, iLineNumber, lTemp))
-                    lTemp = []
-                    bStore = False
-
-                if bStore:
-                   lTemp.append(self.lAllObjects[iIndex])
-
-            if isinstance(self.lAllObjects[iIndex], parser.carriage_return):
-                iLine +=1
-
-        return lReturn
+        return extract.get_association_elements_between_tokens(oStart, oEnd, self.lAllObjects, self.oTokenMap)
 
     def get_interface_elements_between_tokens(self, oStart, oEnd, include_end_of_line_comments=False):
         iLine = 1

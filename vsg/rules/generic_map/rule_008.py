@@ -3,8 +3,8 @@ from vsg import token
 
 from vsg.rules import formal_part_in_association_element_between_tokens
 
-lStart = token.port_map_aspect.open_parenthesis
-lEnd = token.port_map_aspect.close_parenthesis
+lStart = token.generic_map_aspect.open_parenthesis
+lEnd = token.generic_map_aspect.close_parenthesis
 
 
 class rule_008(formal_part_in_association_element_between_tokens):
