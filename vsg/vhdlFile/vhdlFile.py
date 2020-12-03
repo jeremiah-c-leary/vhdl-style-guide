@@ -195,45 +195,7 @@ class vhdlFile():
         return extract.get_tokens_from_line(iLineNumber, self.lAllObjects, self.oTokenMap)
 
     def get_consecutive_lines_starting_with_token_and_stopping_when_token_starting_line_is_found(self, search_token, stop_token):
-        iLine = 1
-        lTemp = []
-        lReturn = []
-        iStart = 0
-        bStore = False
-        bStop = False
-        iLineNumber = None
-        for iIndex in range(0, len(self.lAllObjects)):
-
-            if bStore:
-                lTemp.append(self.lAllObjects[iIndex])
-
-            if bStop and isinstance(self.lAllObjects[iIndex], stop_token):
-                oTokens = Tokens(iStart, iLineNumber, lTemp)
-                lReturn.append(oTokens)
-                bStore = False
-                lTemp = []
-                bStop = False
-
-            if isinstance(self.lAllObjects[iIndex], parser.carriage_return):
-                iLine +=1
-                if not bStore:
-                    if utils.are_next_consecutive_token_types([parser.whitespace, search_token], iIndex + 1, self.lAllObjects) or \
-                       utils.are_next_consecutive_token_types([search_token], iIndex + 1, self.lAllObjects):
-                           iStart = iIndex + 1
-                           bStore = True
-                           iLineNumber = iLine
-                else:
-                    if not utils.are_next_consecutive_token_types([parser.whitespace, search_token], iIndex + 1, self.lAllObjects) and \
-                       not utils.are_next_consecutive_token_types([search_token], iIndex + 1, self.lAllObjects) and \
-                       not utils.are_next_consecutive_token_types([parser.whitespace, stop_token], iIndex + 1, self.lAllObjects) and \
-                       not utils.are_next_consecutive_token_types([stop_token], iIndex + 1, self.lAllObjects):
-                           bStore = False
-                           lTemp = []
-                    if utils.are_next_consecutive_token_types([parser.whitespace, stop_token], iIndex + 1, self.lAllObjects) or \
-                       utils.are_next_consecutive_token_types([stop_token], iIndex + 1, self.lAllObjects):
-                        bStop = True
-
-        return lReturn
+        return extract.get_consecutive_lines_starting_with_token_and_stopping_when_token_starting_line_is_found(search_token, stop_token, self.lAllObjects, self.oTokenMap)
 
     def get_tokens_where_line_starts_with_token_until_ending_token_is_found(self, start_token, stop_token):
         iLine = 1

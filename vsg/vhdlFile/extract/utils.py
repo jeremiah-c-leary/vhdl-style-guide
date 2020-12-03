@@ -52,3 +52,12 @@ def is_index_between_indexes(iIndex, lStart, lEnd, bInclusive=False):
             if iStart < iIndex and iIndex < iEnd:
                 return True
     return False
+
+
+def filter_indexes_which_start_a_line(oToken, oTokenMap):
+    lReturn = []
+    lTemp = oTokenMap.get_token_indexes(oToken)
+    for iTemp in lTemp:
+        if is_token_at_start_of_line(iTemp, oTokenMap):
+            lReturn.append(iTemp)
+    return lReturn
