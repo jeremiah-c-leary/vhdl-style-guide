@@ -225,25 +225,7 @@ class vhdlFile():
         return extract.get_interface_elements_between_tokens(oStart, oEnd, self.lAllObjects, self.oTokenMap)
 
     def get_lines_with_length_that_exceed_column(self, iColumn):
-        iLine = 1
-        lReturn = []
-        lTemp = []
-        bFirstTokenInLine = False
-        for iIndex in range(0, len(self.lAllObjects)):
-
-            if isinstance(self.lAllObjects[iIndex], parser.carriage_return):
-                if utils.does_length_of_tokens_exceed(lTemp, iColumn):
-                    lReturn.append(Tokens(iStart, iLine, lTemp))
-                iLine +=1
-                lTemp = []
-                bFirstTokenInLine = True
-                continue
-
-            lTemp.append(self.lAllObjects[iIndex])
-            if bFirstTokenInLine:
-                iStart = iIndex
-
-        return lReturn
+        return extract.get_lines_with_length_that_exceed_column(iColumn, self.lAllObjects, self.oTokenMap)
 
     def get_tokens_starting_with_token_and_ending_with_one_of_possible_tokens(self, lStartTokens, lEndTokens):
         iLine = 1
