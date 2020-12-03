@@ -37,8 +37,10 @@ class rule_012(rule.Rule):
         self.oEnd = token.port_clause.close_parenthesis
         self.fixable = False
 
-    def analyze(self, oFile):
-        lToi = oFile.get_interface_elements_between_tokens(self.oStart, self.oEnd)
+    def _get_tokens_of_interest(self, oFile):
+        return oFile.get_interface_elements_between_tokens(self.oStart, self.oEnd)
+
+    def _analyze(self, lToi):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             for iToken, oToken in enumerate(lTokens):
@@ -54,34 +56,20 @@ class rule_012(rule.Rule):
                         self.add_violation(oViolation)
                         break
 
-
-    def fix(self, oFile):
-        '''
-        Applies fixes for any rule violations.
-        '''
-        if self.fixable:
-            self.analyze(oFile)
-            self._print_debug_message('Fixing rule: ' + self.name + '_' + self.identifier)
-            self._fix_violation(oFile)
-            self.violations = []
-
-    def _fix_violation(self, oFile):
-        for oViolation in self.violations:
-            lTokens = oViolation.get_tokens()
-            dAction = oViolation.get_action()
-            for iIndex in range(dAction['index'], len(lTokens)):
-                if isinstance(lTokens[iIndex], parser.comment):
-                    if isinstance(lTokens[iIndex - 1], parser.whitespace):
-                        iEnd = iIndex - 1
-                    else:
-                        iEnd = iIndex
-                    break
-            else:
-                iEnd = iIndex
-            if iEnd + 1 == len(lTokens):
-                lNewTokens = lTokens[:dAction['index']]
-            else:
-                lNewTokens = lTokens[:dAction['index']] + lTokens[iEnd:]
-            oViolation.set_tokens(lNewTokens)
-        oFile.update(self.violations)
-
+    def _fix_violation(self, oViolation):
+        lTokens = oViolation.get_tokens()
+        dAction = oViolation.get_action()
+        for iIndex in range(dAction['index'], len(lTokens)):
+            if isinstance(lTokens[iIndex], parser.comment):
+                if isinstance(lTokens[iIndex - 1], parser.whitespace):
+                    iEnd = iIndex - 1
+                else:
+                    iEnd = iIndex
+                break
+        else:
+            iEnd = iIndex
+        if iEnd + 1 == len(lTokens):
+            lNewTokens = lTokens[:dAction['index']]
+        else:
+            lNewTokens = lTokens[:dAction['index']] + lTokens[iEnd:]
+        oViolation.set_tokens(lNewTokens)

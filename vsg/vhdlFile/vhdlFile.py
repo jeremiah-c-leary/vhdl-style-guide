@@ -222,51 +222,7 @@ class vhdlFile():
         return extract.get_association_elements_between_tokens(oStart, oEnd, self.lAllObjects, self.oTokenMap)
 
     def get_interface_elements_between_tokens(self, oStart, oEnd, include_end_of_line_comments=False):
-        iLine = 1
-        lReturn = []
-        bSearch = False
-        bStore = False
-        lTemp = []
-        iLineNumber = None
-        for iIndex in range(0, len(self.lAllObjects)):
-            oToken = self.lAllObjects[iIndex]
-            if isinstance(oToken, oStart):
-                bSearch = True
-                continue
-            if isinstance(oToken, oEnd):
-                bSearch = False
-                bStore = False
-                if len(lTemp) > 0:
-                    for i in range(1, 3):
-                        if isinstance(lTemp[-1], parser.whitespace):
-                            lTemp.pop()
-                            continue
-                        if isinstance(lTemp[-1], parser.carriage_return):
-                            lTemp.pop()
-                            continue
-                        break
-                    lReturn.append(Tokens(iStart, iLineNumber, lTemp))
-                lTemp = []
-                continue
-
-            if bSearch:
-                if not isinstance(oToken, parser.whitespace) and not isinstance(oToken, parser.carriage_return) and not isinstance(oToken, parser.comment) and not bStore:
-                    bStore = True
-                    iStart = iIndex
-                    iLineNumber = iLine
-
-                if isinstance(oToken, token.interface_list.semicolon):
-                    lReturn.append(Tokens(iStart, iLineNumber, lTemp))
-                    lTemp = []
-                    bStore = False
-
-                if bStore:
-                   lTemp.append(oToken)
-
-            if isinstance(oToken, parser.carriage_return):
-                iLine +=1
-
-        return lReturn
+        return extract.get_interface_elements_between_tokens(oStart, oEnd, self.lAllObjects, self.oTokenMap)
 
     def get_lines_with_length_that_exceed_column(self, iColumn):
         iLine = 1
