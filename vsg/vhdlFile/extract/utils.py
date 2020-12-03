@@ -61,3 +61,14 @@ def filter_indexes_which_start_a_line(oToken, oTokenMap):
         if is_token_at_start_of_line(iTemp, oTokenMap):
             lReturn.append(iTemp)
     return lReturn
+
+
+def filter_tokens_between_tokens(lTokens, oStart, oEnd, oTokenMap):
+    lStart = oTokenMap.get_token_indexes(oStart)
+    lEnd = oTokenMap.get_token_indexes(oEnd)
+
+    lReturn = []
+    for oToken in lTokens:
+        for iStart, iEnd in zip(lStart, lEnd):
+            lReturn.extend(oTokenMap.get_token_indexes_between_indexes(oToken, iStart, iEnd))
+    return lReturn
