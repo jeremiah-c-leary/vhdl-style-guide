@@ -213,59 +213,7 @@ class vhdlFile():
         return extract.get_token_and_n_tokens_after_it_when_between_tokens(lTokens, iTokens, oStart, oEnd, self.lAllObjects, self.oTokenMap)
 
     def get_blank_lines_below_line_ending_with_token(self, lTokens):
-        lReturn = []
-        iLine = 1
-        lTemp = []
-        bTokenFound = False
-        bCrFound = False
-        for iIndex in range(0, len(self.lAllObjects)):
-
-            if not bTokenFound:
-                for oToken in lTokens:
-                    if isinstance(self.lAllObjects[iIndex], oToken):
-                        if utils.are_next_consecutive_token_types([parser.carriage_return], iIndex + 1, self.lAllObjects):
-                            bTokenFound = True
-                            iLineNumber = iLine
-                            break
-                        if utils.are_next_consecutive_token_types([parser.whitespace, parser.carriage_return], iIndex + 1, self.lAllObjects):
-                            bTokenFound = True
-                            iLineNumber = iLine
-                            break
-                        if utils.are_next_consecutive_token_types([parser.whitespace, parser.comment, parser.carriage_return], iIndex + 1, self.lAllObjects):
-                            bTokenFound = True
-                            iLineNumber = iLine
-                            break
-                        if utils.are_next_consecutive_token_types([parser.comment, parser.carriage_return], iIndex + 1, self.lAllObjects):
-                            bTokenFound = True
-                            iLineNumber = iLine
-                            break
-#            else:
-#                print(self.lAllObjects[iIndex])
-
-
-            if bCrFound:
-                lTemp.append(self.lAllObjects[iIndex])
-
-            if isinstance(self.lAllObjects[iIndex], parser.carriage_return):
-                if not utils.are_next_consecutive_token_types([parser.blank_line, parser.carriage_return], iIndex + 1, self.lAllObjects):
-                    if len(lTemp) > 2:
-                        lReturn.append(Tokens(iStart, iLineNumber, lTemp))
-                    elif len(lTemp) == 2:
-                        lReturn.append(Tokens(iStart, iLineNumber, lTemp))
-
-
-                    lTemp = []
-                    bCrFound = False
-                    bTokenFound = False
-
-                elif bTokenFound and not bCrFound:
-                    bCrFound = True
-                    iStart = iIndex + 1
-
-                iLine +=1
-
-        return lReturn
-
+        return extract.get_blank_lines_below_line_ending_with_token(lTokens, self.lAllObjects, self.oTokenMap)
 
     def get_blank_lines_above_line_starting_with_token(self, lTokens):
         return extract.get_blank_lines_above_line_starting_with_token(lTokens, self.lAllObjects, self.oTokenMap)
