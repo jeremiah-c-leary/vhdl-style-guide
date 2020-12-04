@@ -1,7 +1,16 @@
 
+from vsg import parser
+from vsg import token
+
 from vsg.rules import consistent_token_case
 
-from vsg import token
+lTokens = []
+lTokens.append(token.function_specification.designator)
+
+lIgnore = []
+lIgnore.append(parser.whitespace)
+lIgnore.append(parser.carriage_return)
+lIgnore.append(parser.blank_line)
 
 
 class rule_010(consistent_token_case):
@@ -10,4 +19,4 @@ class rule_010(consistent_token_case):
     '''
 
     def __init__(self):
-        consistent_token_case.__init__(self, 'function', '010', [token.function_specification.designator])
+        consistent_token_case.__init__(self, 'function', '010', lTokens, lIgnore)
