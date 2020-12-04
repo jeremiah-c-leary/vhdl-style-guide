@@ -5,7 +5,7 @@ from unittest import mock
 from vsg import parser
 from vsg import rule
 from vsg import violation
-from vsg.vhdlFile.vhdlFile import Tokens
+from vsg.vhdlFile.extract import tokens
 
 
 class testRuleMethods(unittest.TestCase):
@@ -36,7 +36,7 @@ class testRuleMethods(unittest.TestCase):
         oRule = rule.Rule()
         self.assertEqual(oRule.violations, [])
 
-        oTokens = Tokens(0, 0, [])
+        oTokens = tokens.New(0, 0, [])
         oViolation = violation.New(0, oTokens, '')
 
         oRule.add_violation(oViolation)
@@ -113,7 +113,7 @@ class testRuleMethods(unittest.TestCase):
     def test_get_solution(self):
         oRule = rule.Rule()
 
-        oTokens = Tokens(0, 0, [])
+        oTokens = tokens.New(0, 0, [])
         oViolation = violation.New(0, oTokens, 'Solution Line 0')
 
         oRule.add_violation(oViolation)
@@ -172,19 +172,19 @@ class testRuleMethods(unittest.TestCase):
         self.assertFalse(oRule.has_violations())
 
         oToken = parser.item('first')
-        oTokens = Tokens(0, 1, [oToken])
+        oTokens = tokens.New(0, 1, [oToken])
 
         oViolation = violation.New(1, oTokens, 'First')
         oRule.add_violation(oViolation)
 
         oToken = parser.item('second')
-        oTokens = Tokens(1, 2, [oToken])
+        oTokens = tokens.New(1, 2, [oToken])
 
         oViolation = violation.New(2, oTokens, 'Second')
         oRule.add_violation(oViolation)
 
         oToken = parser.item('third')
-        oTokens = Tokens(2, 3, [oToken])
+        oTokens = tokens.New(2, 3, [oToken])
 
         oViolation = violation.New(3, oTokens, 'Third')
         oRule.add_violation(oViolation)
@@ -201,7 +201,7 @@ class testRuleMethods(unittest.TestCase):
 
         self.assertFalse(oRule.has_violations())
 
-        oTokens = Tokens(0, 0, [])
+        oTokens = tokens.New(0, 0, [])
 
         oViolation = violation.New(0, oTokens, '')
         oRule.add_violation(oViolation)

@@ -228,53 +228,11 @@ class vhdlFile():
         return extract.get_lines_with_length_that_exceed_column(iColumn, self.lAllObjects, self.oTokenMap)
 
     def get_tokens_starting_with_token_and_ending_with_one_of_possible_tokens(self, lStartTokens, lEndTokens):
-        iLine = 1
-        lReturn = []
-        lTemp = []
-        bStore = False
-
-        for iIndex in range(0, len(self.lAllObjects)):
-            oToken = self.lAllObjects[iIndex]
-
-            if bStore:
-                for oEndToken in lEndTokens:
-                    if isinstance(oToken, oEndToken):
-                        lReturn.append(Tokens(iStart, iStartLine, lTemp))
-                        bStore = False
-                        lTemp = []
-
-            if bStore:
-                if len(lTemp) == 0:
-                    if not is_whitespace(oToken):
-                        iStartLine = iLine
-                        iStart = iIndex
-                        lTemp.append(oToken)
-                else:
-                    lTemp.append(oToken)
-
-            for oStartToken in lStartTokens:
-                if isinstance(oToken, oStartToken):
-                    bStore = True
-
-            if isinstance(self.lAllObjects[iIndex], parser.carriage_return):
-                iLine +=1
-
-        return lReturn
+        return extract.get_tokens_starting_with_token_and_ending_with_one_of_possible_tokens(lStartTokens, lEndTokens, self.lAllObjects, self.oTokenMap)
 
     def get_tokens_between_indexes(self, iStartIndex, iEndIndex):
-        extract.get_tokens_between_indexes(iStartIndex, iEndIndex, self.lAllObjects)
+        return extract.get_tokens_between_indexes(iStartIndex, iEndIndex, self.lAllObjects)
 
-
-def is_whitespace(oObject):
-    if isinstance(oObject, parser.carriage_return):
-        return True
-    if isinstance(oObject, parser.blank_line):
-        return True
-    if isinstance(oObject, parser.comment):
-        return True
-    if isinstance(oObject, parser.whitespace):
-        return True
-    return False
 
 def split_on_carriage_return(lObjects):
     lReturn = []
@@ -290,47 +248,6 @@ def split_on_carriage_return(lObjects):
     if len(lMyObjects) > 0:
         lReturn.append(lMyObjects)
     return lReturn
-
-
-class Tokens():
-
-    def __init__(self, iStartIndex, iLine, lTokens):
-
-        self.iStartIndex = iStartIndex
-        self.lTokens = lTokens
-        self.iLine = iLine
-        self.iEndIndex = iStartIndex + len(lTokens)
-        self.sTokenValue = None
-
-    def get_tokens(self):
-        return self.lTokens
-
-    def set_tokens(self, lTokens):
-        self.lTokens = lTokens
-
-    def get_line_number(self):
-        return self.iLine
-
-    def set_token_value(self, sToken):
-        self.sTokenValue = sToken
-
-    def get_token_value(self):
-        return self.sTokenValue
-
-    def extract_tokens(self, iStart, iEnd):
-        lTokens = self.lTokens[iStart:iEnd + 1]
-        iStartIndex = iStart + self.iStartIndex
-        iLine = self.iLine
-        for iIndex in range(0, iStart + 1):
-            if isinstance(self.lTokens[iIndex], parser.carriage_return):
-                iLine += 1
-        return Tokens(iStartIndex, iLine, lTokens)
-
-    def get_start_index(self):
-        return self.iStartIndex
-
-    def get_end_index(self):
-        return self.iEndIndex
 
 
 def post_token_assignments(lTokens):

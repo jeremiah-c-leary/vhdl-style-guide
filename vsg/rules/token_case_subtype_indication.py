@@ -29,8 +29,10 @@ class token_case_subtype_indication(rule.Rule):
         self.lTokens = lTokens
         self.lEndTokens = lEndTokens
 
-    def analyze(self, oFile):
-        lToi = oFile.get_tokens_starting_with_token_and_ending_with_one_of_possible_tokens(self.lTokens, self.lEndTokens)
+    def _get_tokens_of_interest(self, oFile):
+        return oFile.get_tokens_starting_with_token_and_ending_with_one_of_possible_tokens(self.lTokens, self.lEndTokens)
+
+    def _analyze(self, lToi):
         for oToi in lToi:
             sObjectValue = oToi.get_tokens()[0].get_value()
             if self.case == 'lower':

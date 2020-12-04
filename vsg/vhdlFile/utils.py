@@ -599,3 +599,15 @@ def fix_blank_lines(lTokens):
         lReturn.append(oToken)
 
     return lReturn
+
+
+def is_whitespace(oObject):
+    if isinstance(oObject, parser.carriage_return):
+        return True
+    if isinstance(oObject, parser.blank_line):
+        return True
+    if isinstance(oObject, parser.comment):
+        return True
+    if isinstance(oObject, parser.whitespace):
+        return True
+    return False
