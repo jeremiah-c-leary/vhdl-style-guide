@@ -59,15 +59,6 @@ class align_tokens_in_region_between_tokens_unless_between_tokens(rule.Rule):
 
 
     def analyze(self, oFile):
-
-        lIncludeLines = []
-        if not self.blank_line_ends_group:
-            lIncludeLines.append(parser.blank_line)
-        if not self.comment_line_ends_group:
-            lIncludeLines.append(parser.comment)
-
-        dAnalysis = {}
-
         lToi = oFile.get_tokens_bounded_by(self.left_token, self.right_token)
         for oToi in lToi:
             lTokens = oToi.get_tokens()
@@ -77,6 +68,7 @@ class align_tokens_in_region_between_tokens_unless_between_tokens(rule.Rule):
             iToken = -1
             bSkip = False
             oEndSkipToken = None
+            dAnalysis = {}
 
             for iIndex in range(0, len(lTokens)):
                iToken += 1
@@ -177,29 +169,17 @@ class align_tokens_in_region_between_tokens_unless_between_tokens(rule.Rule):
 
             dAnalysis = {}
 
-    def fix(self, oFile):
-        '''
-        Applies fixes for any rule violations.
-        '''
-        if self.fixable:
-            self.analyze(oFile)
-            self._print_debug_message('Fixing rule: ' + self.name + '_' + self.identifier)
-            self._fix_violation(oFile)
-            self.violations = []
+    def _fix_violation(self, oViolation):
+        lTokens = oViolation.get_tokens()
+        dAction = oViolation.get_action()
+        iTokenIndex = dAction['token_index']
 
-    def _fix_violation(self, oFile):
-        for oViolation in self.violations:
-            lTokens = oViolation.get_tokens()
-            dAction = oViolation.get_action()
-            iTokenIndex = dAction['token_index']
-
-            if isinstance(lTokens[iTokenIndex - 1], parser.whitespace):
-                iLen = len(lTokens[iTokenIndex - 1].get_value())
-                lTokens[iTokenIndex - 1].set_value(' '*(iLen + dAction['adjust']))
-            else:
-                lTokens.insert(iTokenIndex, parser.whitespace(' '*dAction['adjust']))
-            oViolation.set_tokens(lTokens)
-        oFile.update(self.violations)
+        if isinstance(lTokens[iTokenIndex - 1], parser.whitespace):
+            iLen = len(lTokens[iTokenIndex - 1].get_value())
+            lTokens[iTokenIndex - 1].set_value(' '*(iLen + dAction['adjust']))
+        else:
+            lTokens.insert(iTokenIndex, parser.whitespace(' '*dAction['adjust']))
+        oViolation.set_tokens(lTokens)
 
 
 def add_adjustments_to_dAnalysis(dAnalysis, compact_alignment):

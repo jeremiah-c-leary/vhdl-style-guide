@@ -35,9 +35,10 @@ class whitespace_before_tokens_in_between_tokens(rule.Rule):
         self.oStart = oStart
         self.oEnd = oEnd
 
-    def analyze(self, oFile):
+    def _get_tokens_of_interest(self, oFile):
+        return oFile.get_token_and_n_tokens_before_it_in_between_tokens(self.lTokens, 1, self.oStart, self.oEnd)
 
-        lToi = oFile.get_token_and_n_tokens_before_it_in_between_tokens(self.lTokens, 1, self.oStart, self.oEnd)
+    def _analyze(self, lToi):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
 

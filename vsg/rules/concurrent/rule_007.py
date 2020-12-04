@@ -29,10 +29,14 @@ class rule_007(rule.Rule):
         self.allow_single_line = False
         self.configuration.append('allow_single_line')
 
-    def analyze(self, oFile):
+    def _get_tokens_of_interest(self, oFile):
+        lToi = []
+        for lTokenPair in lTokenPairs:
+            aToi = oFile.get_tokens_bounded_by(lTokenPair[0], lTokenPair[1])
+            lToi = utils.combine_two_token_class_lists(lToi, aToi)
+        return lToi
 
-        lToi = get_tokens_of_interest(oFile, self.lTokenPairs)
-
+    def _analyze(self, lToi):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
 
@@ -58,28 +62,7 @@ class rule_007(rule.Rule):
                         self.add_violation(oViolation)
                         break
 
-    def fix(self, oFile):
-        '''
-        Applies fixes for any rule violations.
-        '''
-        if self.fixable:
-            self.analyze(oFile)
-            self._print_debug_message('Fixing rule: ' + self.name + '_' + self.identifier)
-            self._fix_violation(oFile)
-            self.violations = []
-
-    def _fix_violation(self, oFile):
-        for oViolation in self.violations:
-            lTokens = oViolation.get_tokens()
-            lTokens.append(parser.carriage_return())
-            oViolation.set_tokens(lTokens)
-        oFile.update(self.violations)
-
-
-def get_tokens_of_interest(oFile, lTokenPairs):
-    lToi = []
-    for lTokenPair in lTokenPairs:
-        aToi = oFile.get_tokens_bounded_by(lTokenPair[0], lTokenPair[1])
-        lToi = utils.combine_two_token_class_lists(lToi, aToi)
-    return lToi
-
+    def _fix_violation(self, oViolation):
+        lTokens = oViolation.get_tokens()
+        lTokens.append(parser.carriage_return())
+        oViolation.set_tokens(lTokens)

@@ -1,5 +1,4 @@
 
-
 from vsg import parser
 from vsg import rule
 from vsg import violation
@@ -38,8 +37,10 @@ class insert_token_right_of_possible_tokens_if_it_does_not_exist_before_token(ru
         self.lAnchorTokens = anchor_tokens
         self.oEndToken = end_token
 
-    def analyze(self, oFile):
-        lToi = oFile.get_tokens_bounded_by(self.lAnchorTokens[0], self.oEndToken)
+    def _get_tokens_of_interest(self, oFile):
+        return oFile.get_tokens_bounded_by(self.lAnchorTokens[0], self.oEndToken)
+
+    def _analyze(self, lToi):
         for oToi in lToi:
 
             iLine, lTokens = utils.get_toi_parameters(oToi)
@@ -59,24 +60,8 @@ class insert_token_right_of_possible_tokens_if_it_does_not_exist_before_token(ru
             oViolation = violation.New(iLineNumber, oToi.extract_tokens(iIndex, iIndex), sSolution)
             self.add_violation(oViolation)
 
-
-    def fix(self, oFile):
-        '''
-        Applies fixes for any rule violations.
-        '''
-        if self.fixable:
-            self.analyze(oFile)
-            self._print_debug_message('Fixing rule: ' + self.name + '_' + self.identifier)
-            self._fix_violation(oFile)
-            self.violations = []
-
-    def _fix_violation(self, oFile):
-        for oViolation in self.violations:
-            lTokens = oViolation.get_tokens()
-            lTokens.insert(1, self.oInsertToken)
-            lTokens.insert(1, parser.whitespace(' '))
-            oViolation.set_tokens(lTokens)
-        oFile.update(self.violations)
-
-
-
+    def _fix_violation(self, oViolation):
+        lTokens = oViolation.get_tokens()
+        lTokens.insert(1, self.oInsertToken)
+        lTokens.insert(1, parser.whitespace(' '))
+        oViolation.set_tokens(lTokens)

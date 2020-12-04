@@ -35,8 +35,10 @@ class token_suffix_between_tokens(rule.Rule):
         self.oStart = oStart
         self.oEnd = oEnd
 
-    def analyze(self, oFile):
-        lToi = oFile.get_tokens_matching_in_range_bounded_by_tokens(self.lTokens, self.oStart, self.oEnd)
+    def _get_tokens_of_interest(self, oFile):
+        return oFile.get_tokens_matching_in_range_bounded_by_tokens(self.lTokens, self.oStart, self.oEnd)
+
+    def _analyze(self, lToi):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             sToken = lTokens[0].get_value().lower()
@@ -48,9 +50,3 @@ class token_suffix_between_tokens(rule.Rule):
                 sSolution = 'Suffix ' + lTokens[0].get_value() + ' with one of the following: ' + ', '.join(self.suffixes)
                 oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
                 self.add_violation(oViolation)
-
-    def fix(self, oFile):
-        '''
-        Applies fixes for any rule violations.
-        '''
-        return

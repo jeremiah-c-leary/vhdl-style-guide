@@ -19,13 +19,14 @@ class is_token_value_one_of(rule.Rule):
         self.configuration.append('names')
         self.token = token
 
+    def _get_tokens_of_interest(self, oFile):
+        return oFile.get_tokens_matching([self.token])
 
-    def analyze(self, oFile):
+    def _analyze(self, lToi):
         lower_names = []
         for sName in self.names:
             lower_names.append(sName.lower())
 
-        lToi = oFile.get_tokens_matching([self.token])
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             if not lTokens[0].get_value().lower() in lower_names:

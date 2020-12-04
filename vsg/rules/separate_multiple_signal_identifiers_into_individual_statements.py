@@ -37,8 +37,10 @@ class separate_multiple_signal_identifiers_into_individual_statements(rule.Rule)
         self.consecutive = iAllow
         self.configuration.append('consecutive')
 
-    def analyze(self, oFile):
-        lToi = oFile.get_tokens_bounded_by(token.signal_declaration.signal_keyword, token.signal_declaration.semicolon)
+    def _get_tokens_of_interest(self, oFile):
+        return oFile.get_tokens_bounded_by(token.signal_declaration.signal_keyword, token.signal_declaration.semicolon)
+
+    def _analyze(self, lToi):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             iIdentifiers = 0

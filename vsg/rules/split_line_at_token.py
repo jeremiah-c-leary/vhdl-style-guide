@@ -27,8 +27,10 @@ class split_line_at_token(rule.Rule):
         self.phase = 1
         self.lTokens = lTokens
 
-    def analyze(self, oFile):
-        lToi = oFile.get_token_and_n_tokens_before_it(self.lTokens[0], 2)
+    def _get_tokens_of_interest(self, oFile):
+        return oFile.get_token_and_n_tokens_before_it(self.lTokens[0], 2)
+
+    def _analyze(self, lToi):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             if isinstance(lTokens[0], parser.carriage_return) or isinstance(lTokens[1], parser.carriage_return):

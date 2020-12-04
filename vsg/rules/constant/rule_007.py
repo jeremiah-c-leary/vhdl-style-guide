@@ -18,17 +18,12 @@ class rule_007(rule.Rule):
         self.phase = 1
         self.fixable = False  # Too complicated at the moment to fix.
 
-    def analyze(self, oFile):
-        lToi = oFile.get_tokens_bounded_by(token.constant_keyword, token.assignment_operator)
+    def _get_tokens_of_interest(self, oFile):
+        return oFile.get_tokens_bounded_by(token.constant_keyword, token.assignment_operator)
+
+    def _analyze(self, lToi):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             if utils.find_carriage_return(lTokens) is not None:
                 oViolation = violation.New(oToi.get_line_number(), oToi, self.solution)
                 self.add_violation(oViolation)
-
-
-    def fix(self, oFile):
-        '''
-        Applies fixes for any rule violations.
-        '''
-        return

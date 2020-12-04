@@ -27,30 +27,19 @@ class rule_002(rule.Rule):
         self.phase = 1
         self.solution = 'Enclose condition in ()\'s.'
 
-    def analyze(self, oFile):
-        lToi = oFile.get_if_statement_conditions()
+    def _get_tokens_of_interest(self, oFile):
+        return oFile.get_if_statement_conditions()
 
+    def _analyze(self, lToi):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             if not isinstance(lTokens[0], parser.open_parenthesis):
                 oViolation = violation.New(oToi.get_line_number(), oToi, self.solution)
                 self.add_violation(oViolation)
 
-    def fix(self, oFile):
-        '''
-        Applies fixes for any rule violations.
-        '''
-        if self.fixable:
-            self.analyze(oFile)
-            self._print_debug_message('Fixing rule: ' + self.name + '_' + self.identifier)
-            self._fix_violation(oFile)
-            self.violations = []
+    def _fix_violation(self, oViolation):
+        lTokens = oViolation.get_tokens()
+        lTokens.insert(0, parser.open_parenthesis())
+        lTokens.append(parser.close_parenthesis())
 
-    def _fix_violation(self, oFile):
-        for oViolation in self.violations:
-            lTokens = oViolation.get_tokens()
-            lTokens.insert(0, parser.open_parenthesis())
-            lTokens.append(parser.close_parenthesis())
-
-            oViolation.set_tokens(lTokens)
-        oFile.update(self.violations)
+        oViolation.set_tokens(lTokens)

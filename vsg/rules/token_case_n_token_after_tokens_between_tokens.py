@@ -43,8 +43,10 @@ class token_case_n_token_after_tokens_between_tokens(rule.Rule):
         self.disabled = False
         self.bLimitToVhdlKeywords = bLimitToVhdlKeywords
 
-    def analyze(self, oFile):
-        lToi = oFile.get_n_token_after_tokens_between_tokens(self.iToken, self.lTokens, self.oStart, self.oEnd)
+    def _get_tokens_of_interest(self, oFile):
+        return oFile.get_n_token_after_tokens_between_tokens(self.iToken, self.lTokens, self.oStart, self.oEnd)
+
+    def _analyze(self, lToi):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             sObjectValue = lTokens[0].get_value()

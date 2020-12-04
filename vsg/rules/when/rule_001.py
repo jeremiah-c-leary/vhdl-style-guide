@@ -1,6 +1,6 @@
 
-from vsg import rule
 from vsg import parser
+from vsg import rule
 from vsg import token
 from vsg import violation
 
@@ -29,12 +29,14 @@ class rule_001(rule.Rule):
         self.lMoveTokens = lMoveTokens
         self.lTokenPairs = lTokenPairs
 
-    def analyze(self, oFile):
+    def _get_tokens_of_interest(self, oFile):
         lToi = []
         for lTokenPair in self.lTokenPairs:
             aToi = oFile.get_tokens_bounded_by(lTokenPair[0], lTokenPair[1])
             lToi = utils.combine_two_token_class_lists(lToi, aToi)
+        return lToi
 
+    def _analyze(self, lToi):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             iLine = oToi.get_line_number()

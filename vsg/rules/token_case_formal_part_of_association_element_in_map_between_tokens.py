@@ -38,8 +38,10 @@ class token_case_formal_part_of_association_element_in_map_between_tokens(rule.R
         self.oStart = oStart
         self.oEnd = oEnd
 
-    def analyze(self, oFile):
-        lToi = oFile.get_tokens_bounded_by(self.oStart, self.oEnd)
+    def _get_tokens_of_interest(self, oFile):
+        return oFile.get_tokens_bounded_by(self.oStart, self.oEnd)
+
+    def _analyze(self, lToi):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             bMapFound = False
@@ -69,24 +71,10 @@ class token_case_formal_part_of_association_element_in_map_between_tokens(rule.R
                 if isinstance(oToken, token.association_element.assignment):
                     bFormalFound = False
 
-
-    def fix(self, oFile):
-        '''
-        Applies fixes for any rule violations.
-        '''
-        if self.fixable:
-            self.analyze(oFile)
-            self._print_debug_message('Fixing rule: ' + self.name + '_' + self.identifier)
-            self._fix_violation(oFile)
-            self.violations = []
-
-    def _fix_violation(self, oFile):
-        for oViolation in self.violations:
-            lTokens = oViolation.get_tokens()
-            if self.case == 'lower':
-                lTokens[0].set_value(lTokens[0].get_value().lower())
-            if self.case == 'upper':
-                lTokens[0].set_value(lTokens[0].get_value().upper())
-            oViolation.set_tokens(lTokens)
-        oFile.update(self.violations)
-
+    def _fix_violation(self, oViolation):
+        lTokens = oViolation.get_tokens()
+        if self.case == 'lower':
+            lTokens[0].set_value(lTokens[0].get_value().lower())
+        if self.case == 'upper':
+            lTokens[0].set_value(lTokens[0].get_value().upper())
+        oViolation.set_tokens(lTokens)

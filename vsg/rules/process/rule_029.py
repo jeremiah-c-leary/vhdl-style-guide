@@ -44,13 +44,15 @@ class rule_029(rule.Rule):
         self.oStart = oStart
         self.oEnd = oEnd
 
-    def analyze(self, oFile):
+    def _get_tokens_of_interest(self, oFile):
         lToi = []
         aToi = oFile.get_tokens_bounded_by_token_when_between_tokens(lElsifBoundingTokens[0], lElsifBoundingTokens[1], oStart, oEnd)
         lToi = utils.combine_two_token_class_lists(lToi, aToi)
         aToi = oFile.get_tokens_bounded_by_token_when_between_tokens(lIfBoundingTokens[0], lIfBoundingTokens[1], oStart, oEnd)
         lToi = utils.combine_two_token_class_lists(lToi, aToi)
+        return lToi
 
+    def _analyze(self, lToi):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             bEventFound = False
@@ -106,43 +108,30 @@ class rule_029(rule.Rule):
                     sys.stderr.write('Invalid configuration option ' + self.clock)
                     exit(1)
 
-
-    def fix(self, oFile):
-        '''
-        Applies fixes for any rule violations.
-        '''
-        if self.fixable:
-            self.analyze(oFile)
-            self._print_debug_message('Fixing rule: ' + self.name + '_' + self.identifier)
-            self._fix_violation(oFile)
-            self.violations = []
-
-    def _fix_violation(self, oFile):
-        for oViolation in self.violations:
-            dAction = oViolation.get_action()
-            if dAction['convert_to'] == 'edge':
-                lTokens = []
-                if dAction['edge'] == 'rising_edge':
-                    lTokens.append(token.ieee.std_logic_1164.function.rising_edge('rising_edge'))
-                else:
-                    lTokens.append(token.ieee.std_logic_1164.function.falling_edge('falling_edge'))
-
-                lTokens.append(parser.open_parenthesis())
-                lTokens.append(parser.todo(dAction['clock']))
-                lTokens.append(parser.close_parenthesis())
+    def _fix_violation(self, oViolation):
+        dAction = oViolation.get_action()
+        if dAction['convert_to'] == 'edge':
+            lTokens = []
+            if dAction['edge'] == 'rising_edge':
+                lTokens.append(token.ieee.std_logic_1164.function.rising_edge('rising_edge'))
             else:
-                lTokens = []
-                lTokens.append(parser.todo(dAction['clock']))
-                lTokens.append(parser.tic("'"))
-                lTokens.append(parser.event_keyword('event'))
-                lTokens.append(parser.whitespace(' '))
-                lTokens.append(token.logical_operator.and_operator('and'))
-                lTokens.append(parser.whitespace(' '))
-                lTokens.append(parser.todo(dAction['clock']))
-                lTokens.append(parser.whitespace(' '))
-                lTokens.append(token.relational_operator.equal('='))
-                lTokens.append(parser.whitespace(' '))
-                lTokens.append(parser.character_literal(dAction['edge']))
+                lTokens.append(token.ieee.std_logic_1164.function.falling_edge('falling_edge'))
 
-            oViolation.set_tokens(lTokens)
-        oFile.update(self.violations)
+            lTokens.append(parser.open_parenthesis())
+            lTokens.append(parser.todo(dAction['clock']))
+            lTokens.append(parser.close_parenthesis())
+        else:
+            lTokens = []
+            lTokens.append(parser.todo(dAction['clock']))
+            lTokens.append(parser.tic("'"))
+            lTokens.append(parser.event_keyword('event'))
+            lTokens.append(parser.whitespace(' '))
+            lTokens.append(token.logical_operator.and_operator('and'))
+            lTokens.append(parser.whitespace(' '))
+            lTokens.append(parser.todo(dAction['clock']))
+            lTokens.append(parser.whitespace(' '))
+            lTokens.append(token.relational_operator.equal('='))
+            lTokens.append(parser.whitespace(' '))
+            lTokens.append(parser.character_literal(dAction['edge']))
+
+        oViolation.set_tokens(lTokens)

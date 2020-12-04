@@ -34,12 +34,13 @@ class single_space_between_tokens(rule.Rule):
         self.left_token = left_token
         self.right_token = right_token
 
-    def analyze(self, oFile):
+    def _get_tokens_of_interest(self, oFile):
         lToi_a = oFile.get_sequence_of_tokens_matching([self.left_token, parser.whitespace, self.right_token])
         lToi_b = oFile.get_sequence_of_tokens_matching([self.left_token, self.right_token])
 
-        lToi = utils.combine_two_token_class_lists(lToi_a, lToi_b)
+        return utils.combine_two_token_class_lists(lToi_a, lToi_b)
 
+    def _analyze(self, lToi):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             if len(lTokens) == 2:
@@ -47,25 +48,10 @@ class single_space_between_tokens(rule.Rule):
             elif len(lTokens[1].get_value()) != 1:
                 self.add_violation(violation.New(oToi.get_line_number(), oToi, self.solution))
 
-
-    def fix(self, oFile):
-        '''
-        Applies fixes for any rule violations.
-        '''
-        if self.fixable:
-            self.analyze(oFile)
-            self._print_debug_message('Fixing rule: ' + self.name + '_' + self.identifier)
-            self._fix_violation(oFile)
-            self.violations = []
-
-    def _fix_violation(self, oFile):
-        for oViolation in self.violations:
-            lTokens = oViolation.get_tokens()
-            if isinstance(lTokens[1], parser.whitespace):
-                lTokens[1].set_value(' ')
-            else:
-                lTokens.insert(1, parser.whitespace(' '))
-            oViolation.set_tokens(lTokens)
-        oFile.update(self.violations)
-
-
+    def _fix_violation(self, oViolation):
+        lTokens = oViolation.get_tokens()
+        if isinstance(lTokens[1], parser.whitespace):
+            lTokens[1].set_value(' ')
+        else:
+            lTokens.insert(1, parser.whitespace(' '))
+        oViolation.set_tokens(lTokens)

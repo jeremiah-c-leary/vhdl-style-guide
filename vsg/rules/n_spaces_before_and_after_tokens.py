@@ -32,11 +32,10 @@ class n_spaces_before_and_after_tokens(rule.Rule):
         self.lTokens = lTokens
         self.bNIsMinimum = bNIsMinimum
 
-    def analyze(self, oFile):
-        lToi = []
+    def _get_tokens_of_interest(self, oFile):
+        return oFile.get_n_tokens_before_and_after_tokens(1, self.lTokens)
 
-        lToi = oFile.get_n_tokens_before_and_after_tokens(1, self.lTokens)
-
+    def _analyze(self, lToi):
         for oToi in lToi:
             iLine, lTokens = utils.get_toi_parameters(oToi)
             dAction = {}
@@ -75,35 +74,22 @@ class n_spaces_before_and_after_tokens(rule.Rule):
                 oViolation.set_action(dAction)
                 self.add_violation(oViolation)
 
-
-    def fix(self, oFile):
-        '''
-        Applies fixes for any rule violations.
-        '''
-        if self.fixable:
-            self.analyze(oFile)
-            self._print_debug_message('Fixing rule: ' + self.name + '_' + self.identifier)
-            self._fix_violation(oFile)
-            self.violations = []
-
-    def _fix_violation(self, oFile):
-        for oViolation in self.violations:
-            lTokens = oViolation.get_tokens()
-            dAction = oViolation.get_action()
-            lKeys = list(dAction.keys())
-            for sKey in lKeys:
-                if sKey == 'left':
-                    if dAction[sKey]['action'] == 'adjust':
-                        lTokens[0].set_value(' '*self.iSpaces)
-                    else:
-                        lTokens.insert(1, parser.whitespace(' '))
-                if sKey == 'right':
-                    if dAction[sKey]['action'] == 'adjust':
-                        lTokens[-1].set_value(' '*self.iSpaces)
-                    else:
-                        lTokens.insert(len(lTokens) -1, parser.whitespace(' '))
-            oViolation.set_tokens(lTokens)
-        oFile.update(self.violations)
+    def _fix_violation(self, oViolation):
+        lTokens = oViolation.get_tokens()
+        dAction = oViolation.get_action()
+        lKeys = list(dAction.keys())
+        for sKey in lKeys:
+            if sKey == 'left':
+                if dAction[sKey]['action'] == 'adjust':
+                    lTokens[0].set_value(' '*self.iSpaces)
+                else:
+                    lTokens.insert(1, parser.whitespace(' '))
+            if sKey == 'right':
+                if dAction[sKey]['action'] == 'adjust':
+                    lTokens[-1].set_value(' '*self.iSpaces)
+                else:
+                    lTokens.insert(len(lTokens) -1, parser.whitespace(' '))
+        oViolation.set_tokens(lTokens)
 
 
 def create_solution_text(dAction, iNumSpaces, lTokens):

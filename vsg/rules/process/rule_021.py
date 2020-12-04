@@ -18,8 +18,10 @@ class rule_021(rule.Rule):
         self.solution = 'Remove blank lines above begin keyword'
         self.phase = 1
 
-    def analyze(self, oFile):
-        lToi = oFile.get_tokens_bounded_by(token.process_keyword, token.begin_keyword)
+    def _get_tokens_of_interest(self, oFile):
+        return oFile.get_tokens_bounded_by(token.process_keyword, token.begin_keyword)
+
+    def _analyze(self, lToi):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             iLine = oToi.get_line_number() + utils.count_carriage_returns(lTokens)

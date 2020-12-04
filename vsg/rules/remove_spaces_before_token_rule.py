@@ -29,10 +29,12 @@ class remove_spaces_before_token_rule(rule.Rule):
         self.solution = None
         self.bIgnoreIfLineStart = bIgnoreIfLineStart
 
-    def analyze(self, oFile):
-        lTokens = oFile.get_sequence_of_tokens_matching([parser.whitespace, self.oToken], self.bIgnoreIfLineStart)
-        for oToken in lTokens:
-            self.add_violation(violation.New(oToken.get_line_number(), oToken, self.solution))
+    def _get_tokens_of_interest(self, oFile):
+        return oFile.get_sequence_of_tokens_matching([parser.whitespace, self.oToken], self.bIgnoreIfLineStart)
+
+    def _analyze(self, lToi):
+        for oToi in lToi:
+            self.add_violation(violation.New(oToi.get_line_number(), oToi, self.solution))
 
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()

@@ -32,8 +32,10 @@ class formal_part_in_association_element_between_tokens(rule.Rule):
         self.oStart = oStart
         self.oEnd = oEnd
 
-    def analyze(self, oFile):
-        lToi = oFile.get_association_elements_between_tokens(self.oStart, self.oEnd)
+    def _get_tokens_of_interest(self, oFile):
+        return oFile.get_association_elements_between_tokens(self.oStart, self.oEnd)
+
+    def _analyze(self, lToi):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             bFound = False
@@ -46,16 +48,5 @@ class formal_part_in_association_element_between_tokens(rule.Rule):
                 oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
                 self.add_violation(oViolation)
 
-
-    def fix(self, oFile):
-        '''
-        Applies fixes for any rule violations.
-        '''
-        if self.fixable:
-            self.analyze(oFile)
-            self._print_debug_message('Fixing rule: ' + self.name + '_' + self.identifier)
-            self._fix_violation(oFile)
-            self.violations = []
-
-    def _fix_violation(self, oFile):
+    def _fix_violation(self, oViolation):
         return None

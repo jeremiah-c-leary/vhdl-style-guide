@@ -29,8 +29,10 @@ class rule_023(rule.Rule):
         self.phase = 1
         self.fixable = False
 
-    def analyze(self, oFile):
-        lToi = oFile.get_interface_elements_between_tokens(token.open_parenthesis, token.close_parenthesis)
+    def _get_tokens_of_interest(self, oFile):
+        return oFile.get_interface_elements_between_tokens(token.open_parenthesis, token.close_parenthesis)
+
+    def _analyze(self, lToi):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             for oToken in lTokens:
@@ -39,7 +41,7 @@ class rule_023(rule.Rule):
             else:
                 self.add_violation(violation.New(oToi.get_line_number(), oToi, self.solution))
 
-    def fix(self, oFile):
+    def _fix_violation(self, oViolation):
         '''
         Applies fixes for any rule violations.
         '''

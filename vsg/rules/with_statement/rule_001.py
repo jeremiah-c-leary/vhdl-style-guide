@@ -27,14 +27,9 @@ class rule_001(rule.Rule):
         self.phase = 1
         self.fixable = False
 
-    def analyze(self, oFile):
-        lToi = oFile.get_tokens_matching([token.concurrent_selected_signal_assignment.with_keyword])
+    def _get_tokens_of_interest(self, oFile):
+        return oFile.get_tokens_matching([token.concurrent_selected_signal_assignment.with_keyword])
+
+    def _analyze(self, lToi):
         for oToi in lToi:
             self.add_violation(violation.New(oToi.get_line_number(), oToi, self.solution))
-
-
-    def fix(self, oFile):
-        '''
-        Applies fixes for any rule violations.
-        '''
-        return

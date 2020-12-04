@@ -47,15 +47,10 @@ class rule_012(rule.Rule):
         self.compact_alignment = True
         self.configuration.append('compact_alignment')
 
-#        self.blank_line_ends_group = False
-#        self.configuration.append('blank_line_ends_group')
-#        self.comment_line_ends_group = False
-#        self.configuration.append('comment_line_ends_group')
+    def _get_tokens_of_interest(self, oFile):
+        return oFile.get_tokens_bounded_by(self.left_token, self.right_token)
 
-
-    def analyze(self, oFile):
-
-        lToi = oFile.get_tokens_bounded_by(self.left_token, self.right_token)
+    def _analyze(self, lToi):
         for oToi in lToi:
             iLine, lTokens = utils.get_toi_parameters(oToi)
             iColumn = 0
@@ -107,7 +102,6 @@ class rule_012(rule.Rule):
                        dTemp['token_value'] = lTokens[iToken + 1].get_value()
                    else:
                        bSignalFound = False
-
 
             add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
 

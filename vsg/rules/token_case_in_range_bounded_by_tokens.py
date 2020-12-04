@@ -30,18 +30,20 @@ class token_case_in_range_bounded_by_tokens(rule.Rule):
         self.oStart = oStart
         self.oEnd = oEnd
 
-    def analyze(self, oFile):
-        lTokens = oFile.get_tokens_matching_in_range_bounded_by_tokens(self.lTokens, self.oStart, self.oEnd)
-        for oToken in lTokens:
-            sObjectValue = oToken.get_tokens()[0].get_value()
+    def _get_tokens_of_interest(self, oFile):
+        return oFile.get_tokens_matching_in_range_bounded_by_tokens(self.lTokens, self.oStart, self.oEnd)
+
+    def _analyze(self, lToi):
+        for oToi in lToi:
+            sObjectValue = oToi.get_tokens()[0].get_value()
             if self.case == 'lower':
                 if not sObjectValue.islower():
                     sSolution = 'Change "' + sObjectValue + '" to "' + sObjectValue.lower() + '"'
-                    self.add_violation(violation.New(oToken.get_line_number(), oToken, sSolution))
+                    self.add_violation(violation.New(oToi.get_line_number(), oToi, sSolution))
             if self.case == 'upper':
                 if not sObjectValue.isupper():
                     sSolution = 'Change "' + sObjectValue + '" to "' + sObjectValue.upper() + '"'
-                    self.add_violation(violation.New(oToken.get_line_number(), oToken, sSolution))
+                    self.add_violation(violation.New(oToi.get_line_number(), oToi, sSolution))
 
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()

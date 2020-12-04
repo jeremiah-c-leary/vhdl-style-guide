@@ -18,8 +18,10 @@ class rule_026(rule.Rule):
         self.solution = 'Insert blank line below'
         self.phase = 3
 
-    def analyze(self, oFile):
-        lToi = oFile.get_tokens_bounded_by(token.process_keyword, token.begin_keyword)
+    def _get_tokens_of_interest(self, oFile):
+        return oFile.get_tokens_bounded_by(token.process_keyword, token.begin_keyword)
+
+    def _analyze(self, lToi):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             if not are_there_process_declarative_items(lTokens):

@@ -1,5 +1,4 @@
 
-
 from vsg import parser
 from vsg import rule
 from vsg import violation
@@ -38,9 +37,10 @@ class insert_carriage_return_after_token_if_it_is_not_followed_by_a_comment_when
         self.oStart = oStart
         self.oEnd = oEnd
 
-    def analyze(self, oFile):
+    def _get_tokens_of_interest(self, oFile):
+        return oFile.get_token_and_n_tokens_after_it_when_between_tokens(self.lTokens, 2, self.oStart, self.oEnd)
 
-        lToi = oFile.get_token_and_n_tokens_after_it_when_between_tokens(self.lTokens, 2, self.oStart, self.oEnd)
+    def _analyze(self, lToi):
         for oToi in lToi:
            lTokens = oToi.get_tokens()
            if utils.are_next_consecutive_token_types([parser.carriage_return], 1, lTokens):
@@ -52,20 +52,7 @@ class insert_carriage_return_after_token_if_it_is_not_followed_by_a_comment_when
            else:
                self.violations.append(violation.New(oToi.get_line_number(), oToi, self.solution))
 
-
-    def fix(self, oFile):
-        '''
-        Applies fixes for any rule violations.
-        '''
-        if self.fixable:
-            self.analyze(oFile)
-            self._print_debug_message('Fixing rule: ' + self.name + '_' + self.identifier)
-            self._fix_violation(oFile)
-            self.violations = []
-
-    def _fix_violation(self, oFile):
-        for oViolation in self.violations:
-            lTokens = oViolation.get_tokens()
-            lTokens.insert(1, parser.carriage_return())
-            oViolation.set_tokens(lTokens)
-        oFile.update(self.violations)
+    def _fix_violation(self, oViolation):
+        lTokens = oViolation.get_tokens()
+        lTokens.insert(1, parser.carriage_return())
+        oViolation.set_tokens(lTokens)

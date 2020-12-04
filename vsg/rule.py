@@ -169,3 +169,9 @@ class Rule():
         '''
         if self.debug:
             print('INFO: ' + sString)
+
+    def _fix_violation(self, oViolation):
+        '''
+        Default if rule is not fixable
+        '''
+        return

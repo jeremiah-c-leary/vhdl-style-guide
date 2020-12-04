@@ -38,10 +38,12 @@ class split_line_at_token_if_on_same_line_as_token_if_token_pair_are_not_on_the_
         self.oSameLineToken = oSameLineToken
         self.lTokenPair = lTokenPair
 
-    def analyze(self, oFile):
+    def _get_tokens_of_interest(self, oFile):
         lToi = oFile.get_tokens_bounded_by(self.lTokenPair[0], self.lTokenPair[1])
         lToi = extract_multi_line_statements(lToi)
+        return lToi
 
+    def _analyze(self, lToi):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             iLine = oToi.get_line_number()
@@ -58,24 +60,11 @@ class split_line_at_token_if_on_same_line_as_token_if_token_pair_are_not_on_the_
                         oViolation.set_action(dAction)
                         self.add_violation(oViolation)
 
-    def fix(self, oFile):
-        '''
-        Applies fixes for any rule violations.
-        '''
-        if self.fixable:
-            self.analyze(oFile)
-            self._print_debug_message('Fixing rule: ' + self.name + '_' + self.identifier)
-            self._fix_violation(oFile)
-            self.violations = []
-
-    def _fix_violation(self, oFile):
-        for oViolation in self.violations:
-            lTokens = oViolation.get_tokens()
-            dAction = oViolation.get_action()
-            lTokens.insert(dAction['insert_index'], parser.carriage_return())
-            oViolation.set_tokens(lTokens)
-
-        oFile.update(self.violations)
+    def _fix_violation(self, oViolation):
+        lTokens = oViolation.get_tokens()
+        dAction = oViolation.get_action()
+        lTokens.insert(dAction['insert_index'], parser.carriage_return())
+        oViolation.set_tokens(lTokens)
 
 
 def extract_multi_line_statements(lToi):

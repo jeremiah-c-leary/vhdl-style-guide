@@ -30,9 +30,10 @@ class remove_blank_lines_above_line_starting_with_token(rule.Rule):
         self.phase = 3
         self.lTokens = lTokens
 
-    def analyze(self, oFile):
+    def _get_tokens_of_interest(self, oFile):
+        return oFile.get_consecutive_lines_starting_with_token_and_stopping_when_token_starting_line_is_found(parser.blank_line, self.lTokens[0])
 
-        lToi = oFile.get_consecutive_lines_starting_with_token_and_stopping_when_token_starting_line_is_found(parser.blank_line, self.lTokens[0])
+    def _analyze(self, lToi):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             iLine = oToi.get_line_number()
@@ -53,22 +54,8 @@ class remove_blank_lines_above_line_starting_with_token(rule.Rule):
                            oViolation.set_action(dAction)
                            self.violations.append(oViolation)
 
-
-    def fix(self, oFile):
-        '''
-        Applies fixes for any rule violations.
-        '''
-        if self.fixable:
-            self.analyze(oFile)
-            self._print_debug_message('Fixing rule: ' + self.name + '_' + self.identifier)
-            self._fix_violation(oFile)
-            self.violations = []
-
-    def _fix_violation(self, oFile):
-        for oViolation in self.violations:
-            lTokens = oViolation.get_tokens()
-            dAction = oViolation.get_action()
-            lMyTokens = lTokens[dAction['remove_to_index']:]
-            oViolation.set_tokens(lMyTokens)
-        oFile.update(self.violations)
-
+    def _fix_violation(self, oViolation):
+        lTokens = oViolation.get_tokens()
+        dAction = oViolation.get_action()
+        lMyTokens = lTokens[dAction['remove_to_index']:]
+        oViolation.set_tokens(lMyTokens)

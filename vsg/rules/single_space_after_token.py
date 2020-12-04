@@ -27,9 +27,10 @@ class single_space_after_token(rule.Rule):
         self.phase = 2
         self.lTokens = lTokens
 
-    def analyze(self, oFile):
-        lToi = oFile.get_token_and_n_tokens_after_it(self.lTokens, 1)
+    def _get_tokens_of_interest(self, oFile):
+        return oFile.get_token_and_n_tokens_after_it(self.lTokens, 1)
 
+    def _analyze(self, lToi):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             if not isinstance(lTokens[1], parser.whitespace):

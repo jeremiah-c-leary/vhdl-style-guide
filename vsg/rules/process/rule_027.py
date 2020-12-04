@@ -18,8 +18,10 @@ class rule_027(rule.Rule):
         self.solution = 'Insert blank line above begin keyword'
         self.phase = 3
 
-    def analyze(self, oFile):
-        lToi = oFile.get_tokens_bounded_by(token.process_keyword, token.begin_keyword)
+    def _get_tokens_of_interest(self, oFile):
+        return oFile.get_tokens_bounded_by(token.process_keyword, token.begin_keyword)
+
+    def _analyze(self, lToi):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             iLine = oToi.get_line_number() + utils.count_carriage_returns(lTokens)
@@ -44,22 +46,9 @@ class rule_027(rule.Rule):
             oViolation.set_action(dAction)
             self.add_violation(oViolation)
 
-
-    def fix(self, oFile):
-        '''
-        Applies fixes for any rule violations.
-        '''
-        if self.fixable:
-            self.analyze(oFile)
-            self._print_debug_message('Fixing rule: ' + self.name + '_' + self.identifier)
-            self._fix_violation(oFile)
-            self.violations = []
-
-    def _fix_violation(self, oFile):
-        for oViolation in self.violations:
-            lTokens = oViolation.get_tokens()
-            dAction = oViolation.get_action()
-            lTokens.insert(dAction['insert'], parser.carriage_return())
-            lTokens.insert(dAction['insert'], parser.blank_line())
-            oViolation.set_tokens(lTokens)
-        oFile.update(self.violations)
+    def _fix_violation(self, oViolation):
+        lTokens = oViolation.get_tokens()
+        dAction = oViolation.get_action()
+        lTokens.insert(dAction['insert'], parser.carriage_return())
+        lTokens.insert(dAction['insert'], parser.blank_line())
+        oViolation.set_tokens(lTokens)

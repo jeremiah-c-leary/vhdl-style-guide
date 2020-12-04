@@ -17,8 +17,11 @@ class rule_008(rule.Rule):
         self.solution = 'Remove spaces after std_logic_vector'
         self.phase = 2
 
-    def analyze(self, oFile):
-        oToi = oFile.get_all_tokens()
+    def _get_tokens_of_interest(self, oFile):
+        return [oFile.get_all_tokens()]
+
+    def _analyze(self, lToi):
+        oToi = lToi[0]
         iLine, lTokens = utils.get_toi_parameters(oToi)
         for iToken, oToken in enumerate(lTokens[:len(lTokens) - 2]):
 

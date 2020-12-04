@@ -55,8 +55,10 @@ class rule_003(rule.Rule):
         self.units = 'ns'
         self.configuration.extend(['magnitude', 'units'])
 
-    def analyze(self, oFile):
-        lToi = oFile.get_tokens_bounded_by(self.oStart, self.oEnd)
+    def _get_tokens_of_interest(self, oFile):
+        return oFile.get_tokens_bounded_by(self.oStart, self.oEnd)
+
+    def _analyze(self, lToi):
         lNewToi = []
 
         for oToi in lToi:

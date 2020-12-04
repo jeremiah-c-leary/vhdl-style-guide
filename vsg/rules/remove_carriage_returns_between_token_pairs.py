@@ -33,13 +33,14 @@ class remove_carriage_returns_between_token_pairs(rule.Rule):
         self.lTokens = lTokens
         self.bInsertSpace = bInsertSpace
 
-    def analyze(self, oFile):
-
+    def _get_tokens_of_interest(self, oFile):
         lToi = []
         for oToken in self.lTokens:
             lToi_a = oFile.get_tokens_bounded_by(oToken[0], oToken[1])
             lToi = utils.combine_two_token_class_lists(lToi, lToi_a)
+        return lToi
 
+    def _analyze(self, lToi):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             for oToken in lTokens:

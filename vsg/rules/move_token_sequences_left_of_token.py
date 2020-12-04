@@ -1,5 +1,4 @@
 
-
 from vsg import rule
 from vsg import parser
 from vsg import violation
@@ -31,7 +30,7 @@ class move_token_sequences_left_of_token(rule.Rule):
         self.lSequences = lSequences
         self.oLeftToken = oLeftToken
 
-    def analyze(self, oFile):
+    def _get_tokens_of_interest(self, oFile):
         lToi = []
         lPrevious = []
         for lSequence in self.lSequences:
@@ -39,7 +38,9 @@ class move_token_sequences_left_of_token(rule.Rule):
                 aToi = oFile.get_tokens_bounded_by(lSequence[0], self.oLeftToken)
                 lToi = utils.combine_two_token_class_lists(lToi, aToi)
             lPrevious.append(lSequence[0])
+        return lToi
 
+    def _analyze(self, lToi):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             for iToken, oToken in enumerate(lTokens):
@@ -66,25 +67,11 @@ class move_token_sequences_left_of_token(rule.Rule):
                 oViolation.fix_blank_lines = True
                 self.add_violation(oViolation)
 
-    def fix(self, oFile):
-        '''
-        Applies fixes for any rule violations.
-        '''
-        if self.fixable:
-            self.analyze(oFile)
-            self._print_debug_message('Fixing rule: ' + self.name + '_' + self.identifier)
-            self._fix_violation(oFile)
-            self.violations = []
-
-    def _fix_violation(self, oFile):
-        for oViolation in self.violations:
-            lTokens = oViolation.get_tokens()
-            dAction = oViolation.get_action()
-            lMoveTokens = lTokens[0:dAction['num_tokens']]
-            lTokens = lTokens[dAction['num_tokens']:]
-            lTokens = lTokens[:-1] + lMoveTokens + [parser.whitespace(' ')] + [lTokens[-1]]
-            lTokens = utils.remove_consecutive_whitespace_tokens(lTokens)
-            oViolation.set_tokens(lTokens)
-
-        oFile.update(self.violations)
-
+    def _fix_violation(self, oViolation):
+        lTokens = oViolation.get_tokens()
+        dAction = oViolation.get_action()
+        lMoveTokens = lTokens[0:dAction['num_tokens']]
+        lTokens = lTokens[dAction['num_tokens']:]
+        lTokens = lTokens[:-1] + lMoveTokens + [parser.whitespace(' ')] + [lTokens[-1]]
+        lTokens = utils.remove_consecutive_whitespace_tokens(lTokens)
+        oViolation.set_tokens(lTokens)

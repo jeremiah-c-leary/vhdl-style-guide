@@ -45,10 +45,3 @@ class rule_016(rule.Rule):
                 oViolation = violation.New(oKeyword.get_line_number(), oKeyword, self.solution)
                 self.add_violation(oViolation)
             iPreviousIndex = iCurrentIndex
-
-
-    def fix(self, oFile):
-        '''
-        Applies fixes for any rule violations.
-        '''
-        return

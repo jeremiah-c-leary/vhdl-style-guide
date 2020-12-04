@@ -31,9 +31,10 @@ class remove_comments_from_end_of_lines_bounded_by_tokens(rule.Rule):
         self.oStart = oStart
         self.oEnd = oEnd
 
-    def analyze(self, oFile):
+    def _get_tokens_of_interest(self, oFile):
+        return oFile.get_tokens_bounded_by(self.oStart, self.oEnd)
 
-        lToi = oFile.get_tokens_bounded_by(self.oStart, self.oEnd)
+    def _analyze(self, lToi):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             iLine = oToi.get_line_number()

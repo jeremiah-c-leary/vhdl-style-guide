@@ -36,8 +36,10 @@ class insert_token_right_of_token_if_it_does_not_exist_before_token(rule.Rule):
         self.anchor_token = anchor_token
         self.end_token = end_token
 
-    def analyze(self, oFile):
-        lToi = oFile.get_tokens_bounded_by(self.anchor_token, self.end_token)
+    def _get_tokens_of_interest(self, oFile):
+        return oFile.get_tokens_bounded_by(self.anchor_token, self.end_token)
+
+    def _analyze(self, lToi):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             bFound = False
@@ -48,20 +50,8 @@ class insert_token_right_of_token_if_it_does_not_exist_before_token(rule.Rule):
             if not bFound:
                 self.add_violation(violation.New(oToi.get_line_number(), oToi, self.solution))
 
-    def fix(self, oFile):
-        '''
-        Applies fixes for any rule violations.
-        '''
-        if self.fixable:
-            self.analyze(oFile)
-            self._print_debug_message('Fixing rule: ' + self.name + '_' + self.identifier)
-            self._fix_violation(oFile)
-            self.violations = []
-
-    def _fix_violation(self, oFile):
-        for oViolation in self.violations:
-            lTokens = oViolation.get_tokens()
-            lTokens.insert(1, self.insert_token)
-            lTokens.insert(1, parser.whitespace(' '))
-            oViolation.set_tokens(lTokens)
-        oFile.update(self.violations)
+    def _fix_violation(self, oViolation):
+        lTokens = oViolation.get_tokens()
+        lTokens.insert(1, self.insert_token)
+        lTokens.insert(1, parser.whitespace(' '))
+        oViolation.set_tokens(lTokens)

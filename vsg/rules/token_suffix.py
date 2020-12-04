@@ -33,8 +33,10 @@ class token_suffix(rule.Rule):
         self.fixable = False
         self.disable = True
 
-    def analyze(self, oFile):
-        lToi = oFile.get_tokens_matching(self.lTokens)
+    def _get_tokens_of_interest(self, oFile):
+        return oFile.get_tokens_matching(self.lTokens)
+
+    def _analyze(self, lToi):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             sToken = lTokens[0].get_value().lower()
@@ -46,9 +48,3 @@ class token_suffix(rule.Rule):
                 sSolution = 'Suffix ' + lTokens[0].get_value() + ' with one of the following: ' + ', '.join(self.suffixes)
                 oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
                 self.add_violation(oViolation)
-
-    def fix(self, oFile):
-        '''
-        Applies fixes for any rule violations.
-        '''
-        return

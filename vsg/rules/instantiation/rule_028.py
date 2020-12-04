@@ -24,8 +24,10 @@ class rule_028(rule.Rule):
         self.case = 'lower'
         self.configuration.append('case')
 
-    def analyze(self, oFile):
-        lToi = oFile.get_tokens_matching([token.instantiated_unit.entity_name])
+    def _get_tokens_of_interest(self, oFile):
+        return oFile.get_tokens_matching([token.instantiated_unit.entity_name])
+
+    def _analyze(self, lToi):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             dAction = {}

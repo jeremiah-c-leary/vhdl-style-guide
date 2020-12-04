@@ -30,14 +30,10 @@ class existence_of_tokens_which_should_not_occur(rule.Rule):
         self.lTokens = lTokens
         self.fixable = False
 
-    def analyze(self, oFile):
-        lToi = oFile.get_tokens_matching(self.lTokens)
+    def _get_tokens_of_interest(self, oFile):
+        return oFile.get_tokens_matching(self.lTokens)
+
+    def _analyze(self, lToi):
         for oToi in lToi:
             oViolation = violation.New(oToi.get_line_number(), oToi, self.solution)
             self.add_violation(oViolation)
-
-    def fix(self, oFile):
-        '''
-        Applies fixes for any rule violations.
-        '''
-        return
