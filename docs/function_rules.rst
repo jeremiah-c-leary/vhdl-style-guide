@@ -243,7 +243,7 @@ This rule checks for consistent capitalization of function names.
 
    end architecture rtl;
 
-**Violation**
+**Fix**
 
 .. code-block:: vhdl
 
@@ -380,3 +380,22 @@ This rule checks the indent of return statements in function bodies.
      return 99;
      return 99;
    end func1;
+
+function_017
+############
+
+This rule checks the function designator has proper case.
+ 
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   function OVERflow (a: integer) return integer is
+
+**Fix**
+
+.. code-block:: vhdl
+
+   function overflow (a: integer) return integer is

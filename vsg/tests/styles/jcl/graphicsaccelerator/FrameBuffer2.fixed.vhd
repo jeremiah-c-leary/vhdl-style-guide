@@ -21,7 +21,7 @@ architecture BEHAVIORAL of FRAMEBUFFER is
 
   type fbuffer is array (0 to 524288 / 16 - 1) of std_logic_vector(2 downto 0);
 
-  impure function initFB return fbuffer is
+  impure function initfb return fbuffer is
     variable temp : fbuffer;
     variable i    : integer;
   begin
@@ -29,9 +29,9 @@ architecture BEHAVIORAL of FRAMEBUFFER is
       temp(i) := "000";
     end loop;
     return temp;
-  end initFB;
+  end initfb;
 
-  signal mybuffer                  : fbuffer := initFB;
+  signal mybuffer                  : fbuffer := initfb;
   signal addresswrite, addressread : std_logic_vector(14 downto 0);
   signal temp                      : std_logic_vector(2 downto 0);
 
