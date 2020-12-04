@@ -33,6 +33,13 @@ class consistent_token_case(rule.Rule):
 
     def analyze(self, oFile):
         lTargetTypes = oFile.get_tokens_matching(self.lTokens)
+        lTargetValues = []
+        lTargetValuesLower = []
+        for oTargetType in lTargetTypes:
+            oToken = oTargetType.get_tokens()[0]
+            lTargetValues.append(oToken.get_value())
+            lTargetValuesLower.append(oToken.get_value().lower())
+
         oToi = oFile.get_all_tokens()
         iLine, lTokens = utils.get_toi_parameters(oToi)
 
@@ -43,16 +50,16 @@ class consistent_token_case(rule.Rule):
             if is_token_in_ignore_token_list(oToken, self.lIgnoreTokens):
                 continue
 
-            for oTargetType in lTargetTypes:
-                sTokenValue = oToken.get_value()
-                sTargetType = oTargetType.get_tokens()[0].get_value()
-                if sTokenValue.lower() == sTargetType.lower():
-                    if sTokenValue != sTargetType:
-                        sSolution = 'Change "' + sTokenValue + '" to "' + sTargetType + '"'
+            sTokenValue = oToken.get_value()
+            sTokenValueLower = sTokenValue.lower()
+            for sTargetValue, sTargetValueLower in zip(lTargetValues, lTargetValuesLower):
+                if sTokenValueLower == sTargetValueLower:
+                    if sTokenValue != sTargetValue:
+                        sSolution = 'Change "' + sTokenValue + '" to "' + sTargetValue + '"'
                         oNewToi = oToi.extract_tokens(iToken, iToken)
                         oViolation = violation.New(iLine, oNewToi, sSolution)
                         dAction = {}
-                        dAction['constant'] = sTargetType
+                        dAction['constant'] = sTargetValue
                         dAction['found'] = sTokenValue
                         oViolation.set_action(dAction)
                         self.add_violation(oViolation)

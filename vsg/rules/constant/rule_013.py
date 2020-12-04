@@ -1,7 +1,8 @@
 
-from vsg.rules import consistent_token_case
-
+from vsg import parser
 from vsg import token
+
+from vsg.rules import consistent_token_case
 
 lTokens = []
 lTokens.append(token.constant_declaration.identifier)
@@ -15,6 +16,9 @@ lIgnore.append(token.association_element.formal_part)
 lIgnore.append(token.entity_declaration.identifier)
 lIgnore.append(token.entity_declaration.entity_simple_name)
 lIgnore.append(token.architecture_body.entity_name)
+lIgnore.append(parser.whitespace)
+lIgnore.append(parser.carriage_return)
+lIgnore.append(parser.blank_line)
 
 
 class rule_013(consistent_token_case):
