@@ -1,5 +1,4 @@
 
-from vsg import parser
 from vsg import token
 
 from vsg.rules import remove_carriage_return_after_token

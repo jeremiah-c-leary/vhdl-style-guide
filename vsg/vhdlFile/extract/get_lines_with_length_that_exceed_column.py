@@ -11,9 +11,9 @@ def get_lines_with_length_that_exceed_column(iColumn, lAllTokens, oTokenMap):
     lReturn = []
     lTemp = []
     bFirstTokenInLine = False
-    for iIndex in range(0, len(lAllTokens)):
+    for iToken, oToken in enumerate(lAllTokens):
 
-        if isinstance(lAllTokens[iIndex], parser.carriage_return):
+        if isinstance(oToken, parser.carriage_return):
             if utils.does_length_of_tokens_exceed(lTemp, iColumn):
                 lReturn.append(tokens.New(iStart, iLine, lTemp))
             iLine +=1
@@ -21,8 +21,9 @@ def get_lines_with_length_that_exceed_column(iColumn, lAllTokens, oTokenMap):
             bFirstTokenInLine = True
             continue
 
-        lTemp.append(lAllTokens[iIndex])
+        lTemp.append(oToken)
+
         if bFirstTokenInLine:
-            iStart = iIndex
+            iStart = iToken
 
     return lReturn

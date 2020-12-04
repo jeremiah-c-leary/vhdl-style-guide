@@ -27,8 +27,8 @@ def detect(iToken, lObjects):
             if lObjects[iCurrent].get_value() == '<=':
                 return True
         iCurrent += 1
-    else:
-        return False
+
+    return False
 
 
 def classify(iToken, lObjects):

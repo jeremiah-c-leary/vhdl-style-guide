@@ -3,13 +3,12 @@ from vsg.token import enumeration_type_definition as token
 
 from vsg.vhdlFile import utils
 
-'''
-    enumeration_type_definition ::=
-        ( enumeration_literal { , enumeration_literal } )
-'''
-
 
 def detect(iToken, lObjects):
+    '''
+    enumeration_type_definition ::=
+        ( enumeration_literal { , enumeration_literal } )
+    '''
     if utils.is_next_token('(', iToken, lObjects):
         return classify(iToken, lObjects)
 

@@ -13,7 +13,7 @@ def get_tokens_starting_with_token_and_ending_with_one_of_possible_tokens(lStart
     lStartIndexes = []
     for iIndex in lStartIndexesTemp:
         lStartIndexes.append(iIndex + 1)
-    
+
     lEndIndexes = []
     iMax = 0
     iMaxLength = 0

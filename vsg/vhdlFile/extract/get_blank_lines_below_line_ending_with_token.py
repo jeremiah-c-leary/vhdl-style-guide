@@ -24,5 +24,5 @@ def get_blank_lines_below_line_ending_with_token(lTokens, lAllTokens, oTokenMap)
                 if len(lTemp) > 0:
                     lReturn.append(tokens.New(iStart, iLine, lTemp))
                 break
-    
+
     return lReturn

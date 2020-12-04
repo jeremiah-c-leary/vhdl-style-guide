@@ -11,7 +11,7 @@ def get_if_statement_conditions(lAllTokens, oTokenMap):
 
     lStart = oTokenMap.get_token_indexes(token.if_keyword, bCopy=True)
     lStart.extend(oTokenMap.get_token_indexes(token.elsif_keyword, bCopy=True))
-    lStart.sort()    
+    lStart.sort()
 
     lEnd = []
     for iStart in lStart:

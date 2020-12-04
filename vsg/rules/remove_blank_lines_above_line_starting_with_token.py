@@ -38,19 +38,15 @@ class remove_blank_lines_above_line_starting_with_token(rule.Rule):
             lTokens = oToi.get_tokens()
             iLine = oToi.get_line_number()
 
-            iTargetIndent = lTokens[-1].get_indent()
-
-            for iIndex in range(0, len(lTokens)):
-               oToken = lTokens[iIndex]
-
+            for iToken, oToken in enumerate(lTokens):
                if isinstance(oToken, parser.carriage_return):
                    iLine += 1
                    for oSearchToken in self.lTokens:
-                       if utils.are_next_consecutive_token_types([parser.whitespace, oSearchToken], iIndex + 1, lTokens) or \
-                          utils.are_next_consecutive_token_types([oSearchToken], iIndex + 1, lTokens):
+                       if utils.are_next_consecutive_token_types([parser.whitespace, oSearchToken], iToken + 1, lTokens) or \
+                          utils.are_next_consecutive_token_types([oSearchToken], iToken + 1, lTokens):
                            oViolation = violation.New(iLine, oToi, self.solution)
                            dAction = {}
-                           dAction['remove_to_index'] = iIndex + 1
+                           dAction['remove_to_index'] = iToken + 1
                            oViolation.set_action(dAction)
                            self.violations.append(oViolation)
 

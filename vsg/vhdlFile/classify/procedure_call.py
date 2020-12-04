@@ -34,8 +34,8 @@ def detect(iToken, lObjects):
             if lObjects[iCurrent].get_value().lower() in lExceptions:
                 return False
         iCurrent += 1
-    else:
-        return True
+
+    return True
 
 
 def classify(iToken, lObjects):

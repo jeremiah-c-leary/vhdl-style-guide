@@ -48,8 +48,6 @@ class separate_multiple_signal_identifiers_into_individual_statements(rule.Rule)
             iEndIndex = 0
             bPreTokens = True
             lPreTokens = []
-            bPostTokens = False
-            lPostTokens = []
             lIdentifiers = []
             for iToken, oToken in enumerate(lTokens):
                 if isinstance(oToken, token.signal_declaration.identifier):
@@ -62,7 +60,7 @@ class separate_multiple_signal_identifiers_into_individual_statements(rule.Rule)
 
                 if bPreTokens:
                     lPreTokens.append(oToken)
-                
+
             if iIdentifiers > self.consecutive:
                 oViolation = violation.New(oToi.get_line_number(), oToi, self.solution)
                 dAction = {}
@@ -91,5 +89,5 @@ class separate_multiple_signal_identifiers_into_individual_statements(rule.Rule)
             lFinalTokens.extend(lNewTokens)
             lFinalTokens.append(parser.carriage_return())
 
-        lFinalTokens.pop()            
+        lFinalTokens.pop()
         oViolation.set_tokens(lFinalTokens)

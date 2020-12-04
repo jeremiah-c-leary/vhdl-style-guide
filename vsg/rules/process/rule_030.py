@@ -55,10 +55,10 @@ class rule_030(rule.Rule):
                     lNewList.append(oToken)
                 else:
                     oSignal = parser.todo('signal name')
-            else:
-                if oSignal is not None and not isinstance(oToken, parser.carriage_return):
-                    lNewList.append(parser.todo('signal name'))
-                    iSignals += 1
+
+            if oSignal is not None and not isinstance(oToken, parser.carriage_return):
+                lNewList.append(parser.todo('signal name'))
+                iSignals += 1
 
 
             if iSignals > 1:

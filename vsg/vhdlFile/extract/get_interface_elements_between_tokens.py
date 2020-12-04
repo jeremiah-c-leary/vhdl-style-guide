@@ -22,28 +22,28 @@ def get_interface_elements_between_tokens(oStart, oEnd, lAllTokens, oTokenMap):
                 bStore = True
                 iStartIndex = iIndex + iStart + 1
                 iLineNumber = iLine
-    
+
             if bStore:
                lTemp.append(lToi[iIndex])
-    
+
             if isinstance(oToken, token.interface_list.semicolon):
                 lTemp.pop()
                 lReturn.append(tokens.New(iStartIndex, iLineNumber, lTemp))
                 lTemp = []
                 bStore = False
-    
+
             if isinstance(lToi[iIndex], parser.carriage_return):
                 iLine +=1
-        else:
-            if len(lTemp) > 0:
-                lTemp.pop()
-                for i in range(1, 3):
-                    if isinstance(lTemp[-1], parser.whitespace):
-                        lTemp.pop()
-                        continue
-                    if isinstance(lTemp[-1], parser.carriage_return):
-                        lTemp.pop()
-                        continue
-                lReturn.append(tokens.New(iStartIndex, iLineNumber, lTemp))
+
+        if len(lTemp) > 0:
+            lTemp.pop()
+            for i in range(1, 3):
+                if isinstance(lTemp[-1], parser.whitespace):
+                    lTemp.pop()
+                    continue
+                if isinstance(lTemp[-1], parser.carriage_return):
+                    lTemp.pop()
+                    continue
+            lReturn.append(tokens.New(iStartIndex, iLineNumber, lTemp))
 
     return lReturn

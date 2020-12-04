@@ -11,35 +11,33 @@ def get_association_elements_between_tokens(oStart, oEnd, lAllTokens, oTokenMap)
 
     for iStart, iEnd in zip(lStartIndexes, lEndIndexes):
         iLine = oTokenMap.get_line_number_of_index(iStart)
-        lToi = lAllTokens[iStart:iEnd + 1]
+        lTokens = lAllTokens[iStart:iEnd + 1]
 
         bStore = False
         iLineNumber = None
         lTemp = []
-        for iIndex in range(0, len(lToi)):
-            oToken = lToi[iIndex]
+        for iToken, oToken in enumerate(lTokens):
             if isinstance(oToken, token.association_element.formal_part):
                 bStore = True
-                iStartIndex = iIndex + iStart
+                iStartIndex = iToken + iStart
                 iLineNumber = iLine
             if isinstance(oToken, token.association_element.actual_part) and not bStore:
                 bStore = True
-                iStartIndex = iIndex + iStart
+                iStartIndex = iToken + iStart
                 iLineNumber = iLine
-    
+
             if bStore:
-               lTemp.append(lToi[iIndex])
-    
+               lTemp.append(oToken)
+
             if isinstance(oToken, token.association_list.comma):
                 lReturn.append(tokens.New(iStartIndex, iLineNumber, lTemp))
                 lTemp = []
                 bStore = False
-    
-            if isinstance(lToi[iIndex], parser.carriage_return):
-                iLine +=1
-        else:
-            if len(lTemp) > 0:
-                lReturn.append(tokens.New(iStartIndex, iLineNumber, lTemp))
 
+            if isinstance(oToken, parser.carriage_return):
+                iLine +=1
+
+        if len(lTemp) > 0:
+            lReturn.append(tokens.New(iStartIndex, iLineNumber, lTemp))
 
     return lReturn

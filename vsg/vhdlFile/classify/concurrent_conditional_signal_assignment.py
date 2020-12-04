@@ -40,8 +40,8 @@ def detect(iToken, lObjects):
             if utils.object_value_is(lObjects, iCurrent, '<=') and not bAssignmentFound:
                 bAssignmentFound = True
         iCurrent += 1
-    else:
-        return False
+
+    return False
 
 
 def classify(iToken, lObjects):

@@ -84,9 +84,8 @@ def get_range(lObjects, iStart, sEnd):
     iIndex = iStart
     while lObjects[iIndex].get_value().lower() != sEnd:
         iIndex += 1
-    else:
-        iEnd = iIndex
-        iStart = iStart
+    iEnd = iIndex
+    iStart = iStart
     return iStart, iEnd
 
 

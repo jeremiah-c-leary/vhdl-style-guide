@@ -1,6 +1,5 @@
 
 from vsg.vhdlFile.extract import tokens
-from vsg.vhdlFile.extract import utils
 
 
 def get_sequence_of_tokens_not_matching(lTokens, lAllTokens, oTokenMap):

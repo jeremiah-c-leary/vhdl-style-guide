@@ -33,7 +33,7 @@ class insert_carriage_return_after_token_if_it_is_not_followed_by_a_comment_and_
 
     def _analyze(self, lToi):
         for oToi in lToi:
-           iLine, lTokens = utils.get_toi_parameters(oToi)
+           lTokens = oToi.get_tokens()
            if utils.are_next_consecutive_token_types([parser.carriage_return], 1, lTokens):
                continue
            if utils.are_next_consecutive_token_types([parser.whitespace, parser.comment], 1, lTokens):

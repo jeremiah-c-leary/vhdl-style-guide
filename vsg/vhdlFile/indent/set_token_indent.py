@@ -2,8 +2,6 @@
 from vsg import parser
 from vsg import token
 
-from vsg import tokens
-
 from vsg.vhdlFile.indent import loop_statement
 from vsg.vhdlFile.indent import function_specification
 from vsg.vhdlFile.indent import procedure_specification

@@ -9,7 +9,6 @@ class New():
         self.dMap = dMap
 
     def get_token_indexes(self, oToken, bCopy=False):
-        lReturn = []
         sBase, sSub = extract_unique_id(oToken)
         try:
             if bCopy:
@@ -94,8 +93,6 @@ class New():
 
 
 def extract_unique_id(oToken):
-    sBase = None
-    sSub = None
     lDoc = oToken.__doc__.split()
     for iDoc, sDoc in enumerate(lDoc):
         if sDoc == 'unique_id':
@@ -104,7 +101,6 @@ def extract_unique_id(oToken):
 
 
 def process_tokens(lTokens):
-    iLibIndex = 0
     dMap = build_default_map()
     for iToken, oToken in enumerate(lTokens):
         sBase, sSub = oToken.get_unique_id()
