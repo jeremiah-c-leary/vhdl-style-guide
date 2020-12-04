@@ -1,6 +1,8 @@
 
 architecture RTL of FIFO is
 
+  constant c_width : integer;
+
   constant c_width : integer := 16;
 
   constant c_depth : integer

@@ -19,7 +19,7 @@ class rule_007(rule.Rule):
         self.fixable = False  # Too complicated at the moment to fix.
 
     def _get_tokens_of_interest(self, oFile):
-        return oFile.get_tokens_bounded_by(token.constant_keyword, token.assignment_operator)
+        return oFile.get_tokens_bounded_by_tokens_if_token_is_between_them(token.constant_keyword, token.semicolon, token.assignment_operator)
 
     def _analyze(self, lToi):
         for oToi in lToi:
