@@ -1,22 +1,13 @@
-version = '2.0.0'
 
-import subprocess
+sVersion = 'master'
+sShaNum = 'NA'
+
 
 def print_version(oCommandLineArguments):
 
     if (oCommandLineArguments.version):
-        print('VHDL Style Guide (VSG) version ' + str(version))
+        print('VHDL Style Guide (VSG) version: ' + str(sVersion))
 
-        print(retrieve_git_sha())
+        print(f'Git commit SHA: {sShaNum}')
 
         exit(0)
-
-
-def retrieve_git_sha():
-
-        try:
-            sShaNum = subprocess.check_output(['git', 'log', '--pretty=%h', '-n', '1'], stderr=subprocess.STDOUT)
-            sShaNum = sShaNum.decode('utf-8').strip()
-            return f'Git commit SHA: {sShaNum}'
-        except subprocess.CalledProcessError:
-            return ''
