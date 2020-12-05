@@ -332,7 +332,7 @@ instantiation_026 (depricated)
 This rule has been renamed to **generic_map_003**
 
 instantiation_027 (depricated)
-#################
+##############################
 
 This rule checks the **entity** keyword has proper case in direct instantiations.
  

@@ -11,12 +11,3 @@ There are two main modules you will use when incorporating VSG into another prog
 
    vsg.vhdlFile
    vsg.rule_list
-
-Use the following modules when writing rules:
-
-.. toctree::
-
-   vsg.check
-   vsg.fix
-   vsg.utilities
-

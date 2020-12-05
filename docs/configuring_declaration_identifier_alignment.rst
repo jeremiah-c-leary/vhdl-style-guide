@@ -72,6 +72,7 @@ Following configuration options can be independently changed for each of the ide
     **Fix (comment_line_ends_group = False)**
 
     .. code-block:: vhdl
+
       signal   wr_en   : std_logic;
       file     results :
       -- some comment

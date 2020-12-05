@@ -334,7 +334,7 @@ Refer to the section `Configuring Prefix and Suffix Rules <configuring_prefix_su
 package_018
 ###########
 
-This rule checks the **package** keyword in the **end package* has proper case.
+This rule checks the **package** keyword in the **end package** has proper case.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 

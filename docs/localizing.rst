@@ -1,5 +1,7 @@
 Localizing
 ==========
+.. WARNING:: This information is out of date with the release of 3.0.0
+.. WARNING:: This information is out of date with the release of 3.0.0
 
 VSG supports customization to your coding style standards by allowing localized rules.
 These rules are stored in a directory with an __init__.py file and one or more python files.
@@ -75,7 +77,6 @@ Now we need to add the **analyze** method to perform the check.
      def analyze(self, oFile):
 
 The built in variables in the vsg.line class can be used to build rules.
-There are helper functions in :doc:`vsg.utilities`, :doc:`vsg.check`, and :doc:`vsg.fix` also.
 In this case, the vsg.vhdlFile class has two attributes (**hasEntity** and **hasArchitecture**) that are exactly what we need.
 We are ready to write the body of the **analyze** method:
 
