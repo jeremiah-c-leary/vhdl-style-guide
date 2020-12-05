@@ -6,7 +6,7 @@ from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import actual_parameter_part
 
 
-lExceptions = ['<=', 'end', 'map', 'component', 'entity', 'configuration']
+lExceptions = ['<=', 'end', 'map', 'component', 'entity', 'configuration', 'if']
 
 
 def detect(iToken, lObjects):
