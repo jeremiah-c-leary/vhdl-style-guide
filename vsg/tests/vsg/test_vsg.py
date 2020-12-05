@@ -277,7 +277,7 @@ class testVsg(unittest.TestCase):
 
     def test_version_command_line_argument(self):
         lExpected = []
-        lExpected.append('VHDL Style Guide (VSG) version ' + version.version)
+        lExpected.append('VHDL Style Guide (VSG) version: ' + version.sVersion)
 
         lActual = subprocess.check_output(['bin/vsg','--version'])
         lActual = str(lActual.decode('utf-8')).split('\n')
@@ -324,6 +324,6 @@ class testVsg(unittest.TestCase):
             pass
 
         mockStdout.write.assert_has_calls([
-            mock.call('VHDL Style Guide (VSG) version ' + version.version),
+            mock.call('VHDL Style Guide (VSG) version: ' + version.sVersion),
             mock.call('\n')
         ])
