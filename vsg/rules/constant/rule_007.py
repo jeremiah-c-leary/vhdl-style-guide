@@ -23,7 +23,14 @@ class rule_007(rule.Rule):
 
     def _analyze(self, lToi):
         for oToi in lToi:
-            lTokens = oToi.get_tokens()
-            if utils.find_carriage_return(lTokens) is not None:
-                oViolation = violation.New(oToi.get_line_number(), oToi, self.solution)
-                self.add_violation(oViolation)
+            iLine, lTokens = utils.get_toi_parameters(oToi)
+            for oToken in lTokens:
+                iLine = utils.increment_line_number(iLine, oToken)
+
+                if isinstance(oToken, token.constant_keyword):
+                    iKeywordLine = iLine
+
+                if isinstance(oToken, token.assignment_operator):
+                    if iKeywordLine != iLine:
+                        oViolation = violation.New(oToi.get_line_number(), oToi, self.solution)
+                        self.add_violation(oViolation)
