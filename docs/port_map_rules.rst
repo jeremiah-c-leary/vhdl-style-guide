@@ -1,5 +1,5 @@
-Instantiation Rules
--------------------
+Port Map Rules
+--------------
 
 port_map_001 (instantiation_006)
 ################################

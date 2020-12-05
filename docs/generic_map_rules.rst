@@ -1,5 +1,5 @@
-Instantiation Rules
--------------------
+Generic Map Rules
+-----------------
 
 generic_map_001 (instantiation_013)
 ###################################
