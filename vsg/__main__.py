@@ -364,7 +364,11 @@ def main():
 
     dViolations = {}
 
+    dJson = {}
+    dJson['files'] = []
+
     for iIndex, sFileName in enumerate(commandLineArguments.filename):
+        dJsonEntry = {}
         oVhdlFile = vhdlFile.vhdlFile(read_vhdlfile(sFileName))
         oVhdlFile.filename = sFileName
         oRules = rule_list.rule_list(oVhdlFile, oSeverityList, commandLineArguments.local_rules)
@@ -392,7 +396,9 @@ def main():
             oJunitTestsuite.add_testcase(oRules.extract_junit_testcase(sFileName))
 
         if commandLineArguments.json:
-            dViolations[sFileName] = oRules.extract_violation_dictionary()
+            dJsonEntry['file_path'] = sFileName
+            dJsonEntry['violations'] = oRules.extract_violation_dictionary()['violations']
+            dJson['files'].append(dJsonEntry)
 
     if commandLineArguments.junit:
         oJunitFile.add_testsuite(oJunitTestsuite)
@@ -400,7 +406,7 @@ def main():
 
     if commandLineArguments.json:
         with open(commandLineArguments.json, 'w') as oFile:
-            oFile.write(json.dumps(dViolations, indent=2))
+            oFile.write(json.dumps(dJson, indent=2))
 
 
     sys.exit(fExitStatus)
