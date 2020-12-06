@@ -50,4 +50,7 @@ def get_violation_solution_at_line_number(lViolations, iLineNumber):
         return dViolation['solution']
     except TypeError:
         oViolation = get_violation_at_line_number(lViolations, iLineNumber)
-        return oViolation.get_solution()
+        try:
+            return oViolation.get_solution()
+        except AttributeError:
+            return None

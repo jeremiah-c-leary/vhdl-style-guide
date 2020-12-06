@@ -1,7 +1,6 @@
 import os
 import unittest
 
-
 from vsg import vhdlFile
 from vsg import rule_list
 from vsg import severity
@@ -28,6 +27,7 @@ dLegacyConfig = utils.read_configuration(os.path.join(os.path.dirname(__file__),
 dLegacyConfig['debug'] = False
 
 oSeverityList = severity.create_list({})
+
 
 class testCodeExample(unittest.TestCase):
 

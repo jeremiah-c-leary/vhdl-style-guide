@@ -69,11 +69,12 @@ The command line tool can be invoked with:
 +-------------------------------+-------------------------------------------------+
 | --junit                       | Filename of JUnit XML file to generate.         |
 +-------------------------------+-------------------------------------------------+
+| --json                        | Filename of JSON file to generate.              |
++-------------------------------+-------------------------------------------------+
 | --output_format               | Configures the sdout output format.             |
 |                               |   vsg -- standard VSG output                    |
 |                               |   syntastic -- format compatible with the       |
 |                               |   syntastic VIM module                          |
-|                               |   json -- violations in a JSON format           |
 +-------------------------------+-------------------------------------------------+
 | --backup                      | Creates a copy of the input file before         |
 |                               | applying any fixes.  This can be used to        |

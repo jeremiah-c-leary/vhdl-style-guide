@@ -316,6 +316,24 @@ class rule_list():
 
         return oTestcase
 
+    def extract_violation_dictionary(self):
+        '''
+        Creates a dictionary of violations which were found.
+
+        Returns: (dictionary)
+        '''
+        dReturn = {}
+        dReturn['violations'] = []
+        for oRule in self.rules:
+            if oRule.has_violations:
+                for oViolation in oRule.violations:
+                    dTemp = {}
+                    dTemp['rule'] = oRule.unique_id
+                    dTemp['linenumber'] = oViolation.get_line_number()
+                    dTemp['solution'] = oViolation.get_solution()
+                    dReturn['violations'].append(dTemp)
+        return dReturn
+
     def get_configuration(self):
         '''
         Returns a dictionary with every rule and how it is configured.

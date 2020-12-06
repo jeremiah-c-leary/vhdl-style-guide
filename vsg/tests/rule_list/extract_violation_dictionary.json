@@ -1,0 +1,434 @@
+{
+    "violations": [
+      {
+        "rule": "concurrent_005",
+        "linenumber": 580,
+        "solution": "Remove Label"
+      },
+      {
+        "rule": "concurrent_005",
+        "linenumber": 581,
+        "solution": "Remove Label"
+      },
+      {
+        "rule": "concurrent_005",
+        "linenumber": 582,
+        "solution": "Remove Label"
+      },
+      {
+        "rule": "concurrent_005",
+        "linenumber": 583,
+        "solution": "Remove Label"
+      },
+      {
+        "rule": "concurrent_005",
+        "linenumber": 584,
+        "solution": "Remove Label"
+      },
+      {
+        "rule": "concurrent_005",
+        "linenumber": 607,
+        "solution": "Remove Label"
+      },
+      {
+        "rule": "concurrent_005",
+        "linenumber": 608,
+        "solution": "Remove Label"
+      },
+      {
+        "rule": "concurrent_005",
+        "linenumber": 609,
+        "solution": "Remove Label"
+      },
+      {
+        "rule": "concurrent_005",
+        "linenumber": 610,
+        "solution": "Remove Label"
+      },
+      {
+        "rule": "concurrent_005",
+        "linenumber": 611,
+        "solution": "Remove Label"
+      },
+      {
+        "rule": "concurrent_005",
+        "linenumber": 612,
+        "solution": "Remove Label"
+      },
+      {
+        "rule": "concurrent_005",
+        "linenumber": 613,
+        "solution": "Remove Label"
+      },
+      {
+        "rule": "concurrent_005",
+        "linenumber": 614,
+        "solution": "Remove Label"
+      },
+      {
+        "rule": "concurrent_005",
+        "linenumber": 615,
+        "solution": "Remove Label"
+      },
+      {
+        "rule": "concurrent_005",
+        "linenumber": 616,
+        "solution": "Remove Label"
+      },
+      {
+        "rule": "concurrent_005",
+        "linenumber": 617,
+        "solution": "Remove Label"
+      },
+      {
+        "rule": "entity_015",
+        "linenumber": 209,
+        "solution": "Add entity keyword"
+      },
+      {
+        "rule": "generate_011",
+        "linenumber": 360,
+        "solution": "Add label spi_sck_cpol_0_proc"
+      },
+      {
+        "rule": "generate_011",
+        "linenumber": 365,
+        "solution": "Add label spi_sck_cpol_1_proc"
+      },
+      {
+        "rule": "generate_011",
+        "linenumber": 372,
+        "solution": "Add label samp_ce_cpha_0_proc"
+      },
+      {
+        "rule": "generate_011",
+        "linenumber": 377,
+        "solution": "Add label samp_ce_cpha_1_proc"
+      },
+      {
+        "rule": "generate_011",
+        "linenumber": 383,
+        "solution": "Add label fsm_ce_cpha_0_proc"
+      },
+      {
+        "rule": "generate_011",
+        "linenumber": 388,
+        "solution": "Add label fsm_ce_cpha_1_proc"
+      },
+      {
+        "rule": "generic_010",
+        "linenumber": 179,
+        "solution": "Closing parenthesis must be on a line by itself."
+      },
+      {
+        "rule": "if_002",
+        "linenumber": 324,
+        "solution": "Enclose condition in ()'s."
+      },
+      {
+        "rule": "if_002",
+        "linenumber": 325,
+        "solution": "Enclose condition in ()'s."
+      },
+      {
+        "rule": "if_002",
+        "linenumber": 338,
+        "solution": "Enclose condition in ()'s."
+      },
+      {
+        "rule": "if_002",
+        "linenumber": 339,
+        "solution": "Enclose condition in ()'s."
+      },
+      {
+        "rule": "if_002",
+        "linenumber": 399,
+        "solution": "Enclose condition in ()'s."
+      },
+      {
+        "rule": "if_002",
+        "linenumber": 400,
+        "solution": "Enclose condition in ()'s."
+      },
+      {
+        "rule": "if_002",
+        "linenumber": 416,
+        "solution": "Enclose condition in ()'s."
+      },
+      {
+        "rule": "if_002",
+        "linenumber": 439,
+        "solution": "Enclose condition in ()'s."
+      },
+      {
+        "rule": "if_002",
+        "linenumber": 440,
+        "solution": "Enclose condition in ()'s."
+      },
+      {
+        "rule": "if_002",
+        "linenumber": 445,
+        "solution": "Enclose condition in ()'s."
+      },
+      {
+        "rule": "if_002",
+        "linenumber": 446,
+        "solution": "Enclose condition in ()'s."
+      },
+      {
+        "rule": "if_002",
+        "linenumber": 448,
+        "solution": "Enclose condition in ()'s."
+      },
+      {
+        "rule": "if_002",
+        "linenumber": 461,
+        "solution": "Enclose condition in ()'s."
+      },
+      {
+        "rule": "if_002",
+        "linenumber": 462,
+        "solution": "Enclose condition in ()'s."
+      },
+      {
+        "rule": "if_002",
+        "linenumber": 464,
+        "solution": "Enclose condition in ()'s."
+      },
+      {
+        "rule": "if_002",
+        "linenumber": 469,
+        "solution": "Enclose condition in ()'s."
+      },
+      {
+        "rule": "if_002",
+        "linenumber": 470,
+        "solution": "Enclose condition in ()'s."
+      },
+      {
+        "rule": "if_002",
+        "linenumber": 480,
+        "solution": "Enclose condition in ()'s."
+      },
+      {
+        "rule": "if_002",
+        "linenumber": 481,
+        "solution": "Enclose condition in ()'s."
+      },
+      {
+        "rule": "if_002",
+        "linenumber": 544,
+        "solution": "Enclose condition in ()'s."
+      },
+      {
+        "rule": "if_002",
+        "linenumber": 558,
+        "solution": "Enclose condition in ()'s."
+      },
+      {
+        "rule": "if_002",
+        "linenumber": 593,
+        "solution": "Enclose condition in ()'s."
+      },
+      {
+        "rule": "if_002",
+        "linenumber": 594,
+        "solution": "Enclose condition in ()'s."
+      },
+      {
+        "rule": "port_012",
+        "linenumber": 181,
+        "solution": "Remove assignment"
+      },
+      {
+        "rule": "port_012",
+        "linenumber": 182,
+        "solution": "Remove assignment"
+      },
+      {
+        "rule": "port_012",
+        "linenumber": 183,
+        "solution": "Remove assignment"
+      },
+      {
+        "rule": "port_012",
+        "linenumber": 188,
+        "solution": "Remove assignment"
+      },
+      {
+        "rule": "port_012",
+        "linenumber": 191,
+        "solution": "Remove assignment"
+      },
+      {
+        "rule": "port_012",
+        "linenumber": 192,
+        "solution": "Remove assignment"
+      },
+      {
+        "rule": "signal_007",
+        "linenumber": 217,
+        "solution": "Remove default assignment."
+      },
+      {
+        "rule": "signal_007",
+        "linenumber": 218,
+        "solution": "Remove default assignment."
+      },
+      {
+        "rule": "signal_007",
+        "linenumber": 219,
+        "solution": "Remove default assignment."
+      },
+      {
+        "rule": "signal_007",
+        "linenumber": 220,
+        "solution": "Remove default assignment."
+      },
+      {
+        "rule": "signal_007",
+        "linenumber": 222,
+        "solution": "Remove default assignment."
+      },
+      {
+        "rule": "signal_007",
+        "linenumber": 223,
+        "solution": "Remove default assignment."
+      },
+      {
+        "rule": "signal_007",
+        "linenumber": 226,
+        "solution": "Remove default assignment."
+      },
+      {
+        "rule": "signal_007",
+        "linenumber": 227,
+        "solution": "Remove default assignment."
+      },
+      {
+        "rule": "signal_007",
+        "linenumber": 228,
+        "solution": "Remove default assignment."
+      },
+      {
+        "rule": "signal_007",
+        "linenumber": 240,
+        "solution": "Remove default assignment."
+      },
+      {
+        "rule": "signal_007",
+        "linenumber": 241,
+        "solution": "Remove default assignment."
+      },
+      {
+        "rule": "signal_007",
+        "linenumber": 246,
+        "solution": "Remove default assignment."
+      },
+      {
+        "rule": "signal_007",
+        "linenumber": 251,
+        "solution": "Remove default assignment."
+      },
+      {
+        "rule": "signal_007",
+        "linenumber": 252,
+        "solution": "Remove default assignment."
+      },
+      {
+        "rule": "signal_007",
+        "linenumber": 254,
+        "solution": "Remove default assignment."
+      },
+      {
+        "rule": "signal_007",
+        "linenumber": 255,
+        "solution": "Remove default assignment."
+      },
+      {
+        "rule": "signal_007",
+        "linenumber": 263,
+        "solution": "Remove default assignment."
+      },
+      {
+        "rule": "signal_007",
+        "linenumber": 264,
+        "solution": "Remove default assignment."
+      },
+      {
+        "rule": "signal_007",
+        "linenumber": 266,
+        "solution": "Remove default assignment."
+      },
+      {
+        "rule": "signal_007",
+        "linenumber": 267,
+        "solution": "Remove default assignment."
+      },
+      {
+        "rule": "signal_007",
+        "linenumber": 269,
+        "solution": "Remove default assignment."
+      },
+      {
+        "rule": "signal_007",
+        "linenumber": 270,
+        "solution": "Remove default assignment."
+      },
+      {
+        "rule": "signal_007",
+        "linenumber": 271,
+        "solution": "Remove default assignment."
+      },
+      {
+        "rule": "signal_007",
+        "linenumber": 272,
+        "solution": "Remove default assignment."
+      },
+      {
+        "rule": "signal_007",
+        "linenumber": 273,
+        "solution": "Remove default assignment."
+      },
+      {
+        "rule": "signal_007",
+        "linenumber": 274,
+        "solution": "Remove default assignment."
+      },
+      {
+        "rule": "signal_007",
+        "linenumber": 276,
+        "solution": "Remove default assignment."
+      },
+      {
+        "rule": "signal_007",
+        "linenumber": 277,
+        "solution": "Remove default assignment."
+      },
+      {
+        "rule": "signal_007",
+        "linenumber": 278,
+        "solution": "Remove default assignment."
+      },
+      {
+        "rule": "signal_007",
+        "linenumber": 279,
+        "solution": "Remove default assignment."
+      },
+      {
+        "rule": "signal_007",
+        "linenumber": 280,
+        "solution": "Remove default assignment."
+      },
+      {
+        "rule": "signal_007",
+        "linenumber": 281,
+        "solution": "Remove default assignment."
+      },
+      {
+        "rule": "variable_007",
+        "linenumber": 322,
+        "solution": "Remove default assignment."
+      }
+    ]
+}
