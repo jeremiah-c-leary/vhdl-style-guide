@@ -189,14 +189,15 @@ class rule_list():
                 lReturn.append(oRule)
         return lReturn
 
-    def check_rules(self, lSkipPhase=[]):
+    def check_rules(self, bAllPhases=False, lSkipPhase=[]):
         '''
         Analyzes all rules in increasing phase order.
         If there is a violation in a phase, analysis is halted.
 
         Parameters:
 
-          lSkipPhase : (list of integers)
+            bAllPhases : (boolean)
+            lSkipPhase : (list of integers)
         '''
         self.iNumberRulesRan = 0
         iFailures = 0
@@ -214,7 +215,7 @@ class rule_list():
                     iFailures += len(oRule.violations)
                 self.iNumberRulesRan += 1
             self.lastPhaseRan = phase
-            if iFailures > 0:
+            if iFailures > 0 and not bAllPhases:
                 self.violations = True
                 break
 

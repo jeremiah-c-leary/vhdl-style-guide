@@ -18,6 +18,7 @@ Welcome to vhdl-style-guide's documentation!
    configuring
    code_tags
    editor_integration
+   tool_integration
    localizing
    phases
    rule_severity

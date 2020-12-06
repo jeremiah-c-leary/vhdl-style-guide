@@ -36,6 +36,7 @@ def parse_command_line_arguments():
     parser.add_argument('-rc', '--rule_configuration', default=None, action='store', help='Display configuration of a rule')
     parser.add_argument('--style', action='store', default=None, choices=get_predefined_styles(), help='Use predefined style')
     parser.add_argument('-v', '--version', default=False, action='store_true', help='Displays version information')
+    parser.add_argument('-ap', '--all_phases', default=False, action='store_true', help='Do not stop when a violation is detected.')
     parser.add_argument('--debug', default=False, action='store_true', help='Displays verbose debug information')
 
     if len(sys.argv) == 1:
@@ -380,7 +381,7 @@ def main():
 
         oRules.oSeverityList.clear_severity_counts()
         oRules.clear_violations()
-        oRules.check_rules(commandLineArguments.skip_phase)
+        oRules.check_rules(bAllPhases=commandLineArguments.all_phases, lSkipPhase=commandLineArguments.skip_phase)
         oRules.report_violations(commandLineArguments.output_format)
         fExitStatus = update_exit_status(fExitStatus, oRules)
 
