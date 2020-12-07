@@ -26,7 +26,7 @@ class test_process_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'process')
         self.assertEqual(oRule.identifier, '018')
 
-        lExpected = [15, 19]
+        lExpected = [6, 16, 20]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -41,4 +41,4 @@ class test_process_rule(unittest.TestCase):
         self.assertEqual(lExpected, lActual)
 
         oRule.analyze(self.oFile)
-        self.assertEqual(len(oRule.violations), 1)
+        self.assertEqual(len(oRule.violations), 2)
