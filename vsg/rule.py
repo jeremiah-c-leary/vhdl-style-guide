@@ -78,17 +78,34 @@ class Rule():
 
         return lReturn
 
-    def fix(self, oFile):
+    def fix(self, oFile, dFixOnly=None):
         '''
         Applies fixes for any rule violations.
         '''
         if self.fixable:
             self.analyze(oFile)
             self._print_debug_message('Fixing rule: ' + self.unique_id)
+            self._filter_out_fix_only_violations(dFixOnly)
             for oViolation in self.violations[::-1]:
                 self._fix_violation(oViolation)
             oFile.update(self.violations)
             self.clear_violations()
+
+    def _filter_out_fix_only_violations(self, dFixOnly):
+        if dFixOnly is None:
+            return
+
+        try:
+            if 'all' in dFixOnly['fix']['rule'][self.unique_id]:
+                return
+        except KeyError:
+            self.violations = []
+
+        lTemp = []
+        for oViolation in self.violations:
+            if oViolation.get_line_number() in dFixOnly['fix']['rule'][self.unique_id]:
+                lTemp.append(oViolation)
+        self.violations = lTemp
 
     def add_violation(self, lineNumber):
         '''

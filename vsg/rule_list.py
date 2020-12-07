@@ -126,7 +126,7 @@ class rule_list():
         self.violations = False
         self.oSeverityList = oSeverityList
 
-    def fix(self, iFixPhase=7, lSkipPhase=[]):
+    def fix(self, iFixPhase=7, lSkipPhase=[], dFixOnly=None):
         '''
         Applies fixes to all violations found.
 
@@ -135,6 +135,8 @@ class rule_list():
           iFixPhase : (integer)
 
           lSkipPhases : (list of integers)
+
+          dFixOnly : (fix list dictionary)
         '''
         for phase in range(1, int(iFixPhase) + 1):
             if phase in lSkipPhase:
@@ -148,7 +150,7 @@ class rule_list():
                 lRules = filter_out_disabled_rules(lRules)
                 for oRule in lRules:
                     if oRule.severity.type == severity.error_type:
-                        oRule.fix(self.oVhdlFile)
+                        oRule.fix(self.oVhdlFile, dFixOnly)
                     else:
                         oRule.analyze(self.oVhdlFile)
 

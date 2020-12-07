@@ -101,29 +101,29 @@ class multiline_alignment_between_tokens(rule.Rule):
                     bCheckAlignment = False
 
 
-    def fix(self, oFile):
+    def fix(self, oFile, dFixOnly=None):
         '''
         Applies fixes for any rule violations.
         '''
         if self.fixable:
             self.analyze(oFile)
-            self._print_debug_message('Fixing rule: ' + self.name + '_' + self.identifier)
-            self._fix_violation(oFile)
-            self.violations = []
+            self._print_debug_message('Fixing rule: ' + self.unique_id)
+            self._filter_out_fix_only_violations(dFixOnly)
+            for oViolation in self.violations[::-1]:
+                self._fix_violation(oViolation)
+            oFile.update(self.violations)
+            self.clear_violations()
 
-    def _fix_violation(self, oFile):
-        for oViolation in self.violations:
-            lTokens = oViolation.get_tokens()
-            dAction = oViolation.get_action()
+    def _fix_violation(self, oViolation):
+        lTokens = oViolation.get_tokens()
+        dAction = oViolation.get_action()
 
-            if dAction['action'] == 'adjust':
-                lTokens[0].set_value(' '*dAction['column'])
-            else:
-                lTokens.insert(0, parser.whitespace(' '*dAction['column']))
+        if dAction['action'] == 'adjust':
+            lTokens[0].set_value(' '*dAction['column'])
+        else:
+            lTokens.insert(0, parser.whitespace(' '*dAction['column']))
 
-            oViolation.set_tokens(lTokens)
-
-        oFile.update(self.violations)
+        oViolation.set_tokens(lTokens)
 
 
 def calculate_start_column(oFile, oToi):

@@ -38,6 +38,7 @@ def parse_command_line_arguments():
     parser.add_argument('--style', action='store', default=None, choices=get_predefined_styles(), help='Use predefined style')
     parser.add_argument('-v', '--version', default=False, action='store_true', help='Displays version information')
     parser.add_argument('-ap', '--all_phases', default=False, action='store_true', help='Do not stop when a violation is detected.')
+    parser.add_argument('--fix_only', action='store', help='Restrict fixing via JSON file.')
     parser.add_argument('--debug', default=False, action='store_true', help='Displays verbose debug information')
 
     if len(sys.argv) == 1:
@@ -81,6 +82,30 @@ def read_predefined_style(sStyleName):
         sFileName = os.path.join(os.path.dirname(__file__), 'styles', sStyleName + '.yaml')
         dReturn = open_configuration_file(sFileName)
     return dReturn
+
+
+def open_fix_file(sFileName):
+    '''Attempts to open a configuration file and read it's contents.'''
+    try:
+        with open(sFileName) as yaml_file:
+            temp = yaml.full_load(yaml_file)
+            return temp
+    except IOError:
+        print('ERROR: Could not find JSON fix file: ' + sFileName)
+        write_invalid_configuration_junit_file(sFileName, sJUnitFileName)
+        sys.exit(1)
+    except yaml.scanner.ScannerError as e:
+        print('ERROR: Invalid JSON fix file: ' + sFileName)
+        print(e)
+        write_invalid_configuration_junit_file(sFileName, sJUnitFileName)
+        exit()
+    except yaml.parser.ParserError as e:
+        print('ERROR: Invalid JSON fix file: ' + sFileName)
+        print(e)
+        write_invalid_configuration_junit_file(sFileName, sJUnitFileName)
+        exit()
+    except TypeError:
+        return None
 
 
 def open_configuration_file(sFileName, sJUnitFileName=None):
@@ -341,6 +366,8 @@ def main():
 
     configuration = read_configuration_files(dStyle, commandLineArguments)
 
+    fix_only = open_fix_file(commandLineArguments.fix_only)
+
     update_command_line_arguments(commandLineArguments, configuration)
 
     configuration = add_debug_to_configuration(commandLineArguments, configuration)
@@ -383,7 +410,7 @@ def main():
         if commandLineArguments.fix:
             if commandLineArguments.backup:
                 create_backup_file(sFileName)
-            oRules.fix(commandLineArguments.fix_phase, commandLineArguments.skip_phase)
+            oRules.fix(commandLineArguments.fix_phase, commandLineArguments.skip_phase, fix_only)
             write_vhdl_file(oVhdlFile)
 
         oRules.oSeverityList.clear_severity_counts()
