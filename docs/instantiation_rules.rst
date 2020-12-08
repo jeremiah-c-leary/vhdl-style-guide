@@ -476,3 +476,34 @@ The component keyword is optional and does not provide clarity.
 .. code-block:: vhdl
 
    INSTANCE_NAME : ENTITY_NAME
+
+instantiation_034
+#################
+
+This rule checks for component versus direct instantiations.
+
+Refer to the section `Configuring Type of Instantiation <configuring_type_of_instantiation.html>`_ for options to configure the allowed configuration.
+
+component instantiation
+^^^^^^^^^^^^^^^^^^^^^^^
+
+.. NOTE:: This is the default configuration
+
+**Violation**
+
+.. code-block:: vhdl
+
+   U_FIFO : entity fifo_dsn.FIFO(RTL)
+
+
+entity instantiation
+^^^^^^^^^^^^^^^^^^^^
+
+**Violation**
+
+.. code-block:: vhdl
+
+   U_FIFO : component FIFO
+
+   U_FIFO : FIFO
+
