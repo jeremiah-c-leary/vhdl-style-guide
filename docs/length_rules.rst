@@ -8,6 +8,8 @@ length_001
 
 This rule checks the length of the line.
 
+Refer to the section `Configuring Length Rules <configuring_length_rules.html>`_ for configuring this option.
+
 **Violation**
 
 .. code-block:: vhdl
@@ -18,3 +20,10 @@ This rule checks the length of the line.
 
 .. NOTE::  The user must fix this violation.
    Refer to the section `Configuring Line Length <configuring_line_length.html>`_ for information on changing the default.
+
+length_002
+##########
+
+This rule checks the length of a file.
+
+Refer to the section `Configuring Length Rules <configuring_length_rules.html>`_ for configuring this option.

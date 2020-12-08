@@ -227,7 +227,7 @@ Configure the indent size for all rules by setting the **global** attribute.
 .. include:: configuring_case.rst
 .. include:: configuring_prefix_suffix.rst
 .. include:: configuring_number_of_signals.rst
-.. include:: configuring_line_length.rst
+.. include:: configuring_length_rules.rst
 .. include:: configuring_keyword_alignment.rst
 .. include:: configuring_declaration_identifier_alignment.rst
 .. include:: multiple_configurations.rst
