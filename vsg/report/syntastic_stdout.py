@@ -24,5 +24,7 @@ def print_output(dRunInfo):
 def _set_violation_type(dViolation):
     if dViolation['severity']['type'] == severity.error_type:
         return 'ERROR: '
-    else:
+    elif dViolation['severity']['type'] == severity.warning_type:
         return 'WARNING: '
+    else:
+        return 'GUIDELINE: '

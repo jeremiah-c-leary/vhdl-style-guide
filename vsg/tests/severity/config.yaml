@@ -1,10 +1,10 @@
 
 severity:
-  Guideline:
+  ToDo:
     type: warning
 
 rule:
   entity_019:
-    severity: Guideline
+    severity: ToDo
   architecture_024:
     severity: Warning

@@ -9,8 +9,11 @@ class New():
         self.iStartIndex = iStartIndex
         self.lTokens = lTokens
         self.iLine = iLine
-        self.iEndIndex = iStartIndex + len(lTokens)
         self.sTokenValue = None
+        try:
+            self.iEndIndex = iStartIndex + len(lTokens)
+        except TypeError:
+            self.iEndIndex = None
 
     def get_tokens(self):
         return self.lTokens

@@ -19,7 +19,7 @@ class testMethods(unittest.TestCase):
 
     def test_create_list(self):
         oSeverityList = severity.create_list({})
-        self.assertEqual(len(oSeverityList.lSeverities), 2)
+        self.assertEqual(len(oSeverityList.lSeverities), 3)
 
         self.assertEqual(oSeverityList.get_severity_named('Error').name, 'Error')
         self.assertEqual(oSeverityList.get_severity_named('Warning').name, 'Warning')
@@ -50,12 +50,12 @@ class testMethods(unittest.TestCase):
 
     def test_create_list_add_severity_method(self):
         oSeverityList = severity.create_list({})
-        self.assertEqual(len(oSeverityList.lSeverities), 2)
+        self.assertEqual(len(oSeverityList.lSeverities), 3)
 
         oSeverity = severity.warning('Guideline')
         oSeverityList.add_severity(oSeverity)
 
-        self.assertEqual(len(oSeverityList.lSeverities), 3)
+        self.assertEqual(len(oSeverityList.lSeverities), 4)
 
         self.assertEqual(oSeverityList.get_severity_named('Error').name, 'Error')
         self.assertEqual(oSeverityList.get_severity_named('Warning').name, 'Warning')
@@ -78,6 +78,7 @@ class testMethods(unittest.TestCase):
         lExpected.append(severity.error('Error'))
         lExpected.append(severity.warning('Warning'))
         lExpected.append(severity.warning('Guideline'))
+        lExpected.append(severity.guideline('Guideline'))
         lExpected.append(severity.error('Todo'))
 
         lActual = oSeverityList.lSeverities

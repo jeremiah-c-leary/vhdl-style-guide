@@ -27,3 +27,10 @@ length_002
 This rule checks the length of a file.
 
 Refer to the section `Configuring Length Rules <configuring_length_rules.html>`_ for configuring this option.
+
+length_003
+##########
+
+This rule check the length of a process statement.
+
+Refer to the section `Configuring Length Rules <configuring_length_rules.html>`_ for configuring this option.

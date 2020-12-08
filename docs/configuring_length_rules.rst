@@ -33,3 +33,20 @@ Use the following configuration to change the file length to 5000.
    rule :
      length_002 :
         length : 5000
+
+Overridding Process Line Length
+###############################
+
+Limiting the length of a VHDL processes can improve readability.
+Processes should perform a limited number of functions.
+Smaller processes are easier to understand.
+
+The default length is 500 lines, and can be changed by configuring rule **length_003**.
+
+Use the following configuration to change the process length to 1000. 
+
+.. code-block:: yaml
+
+   rule :
+     length_003 :
+        length : 1000

@@ -115,6 +115,9 @@ class vhdlFile():
     def get_line_count(self):
         return utils.count_carriage_returns(self.lAllObjects)
 
+    def get_line_count_between_tokens(self, oStart, oEnd):
+        return extract.get_line_count_between_tokens(oStart, oEnd, self.lAllObjects, self.oTokenMap)
+
     def fix_blank_lines(self):
         self.lAllObjects = utils.fix_blank_lines(self.lAllObjects)
 

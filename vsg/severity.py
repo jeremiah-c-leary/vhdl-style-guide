@@ -1,6 +1,7 @@
 
 error_type = 'error'
 warning_type = 'warning'
+guideline_type = 'warning'
 
 
 class error():
@@ -18,9 +19,16 @@ class warning():
         self.type = warning_type
         self.count = 0
 
+class guideline():
+
+    def __init__(self, name):
+        self.name = name
+        self.type = guideline_type
+        self.count = 0
 
 set_error_severity = error('Error')
 set_warning_severity = warning('Warning')
+set_guideline_severity = guideline('Guideline')
 
 
 class create_list():
@@ -59,7 +67,8 @@ def _add_built_in_severities(self):
     lReturn = []
     lReturn.append(set_error_severity)
     lReturn.append(set_warning_severity)
-    self.iMaxNameLength = max(self.iMaxNameLength, len('Warning'))
+    lReturn.append(set_guideline_severity)
+    self.iMaxNameLength = max(self.iMaxNameLength, len('Guideline'))
     return lReturn
 
 
@@ -80,6 +89,8 @@ def _extract_severities_from_configuration(dConfiguration):
                 lReturn.append(error(sKey))
             elif dConfiguration['severity'][sKey]['type'] == warning_type:
                 lReturn.append(warning(sKey))
+            elif dConfiguration['severity'][sKey]['type'] == guideline_type:
+                lReturn.append(guideline(sKey))
     return lReturn
 
 
