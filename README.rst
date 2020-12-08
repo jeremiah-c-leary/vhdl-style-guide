@@ -25,38 +25,21 @@ VHDL Style Guide (VSG)
    :target: https://gitter.im/vhdl-style-guide/community
    :alt: Gitter
 
-Announcements
--------------
+Release 3.0.0 Announcements
+---------------------------
 
-**11/22/2020**
+The new parser has been completed and all rules have been converted.
+Initial hardening tests have also been completed.
+Effort is underway to address all bugs against version 2.
 
-All rules have been converted to the new parser and all previous tests are now passing.
-Additional hardening will continue to be performed.
+I am targetting January 2020 for release 3.0.0.
 
-**11/12/2020**
+Major Changes:
 
-More progress has been made and I have started the hardening phase of the rewrite.
-
-**11/01/2020**
-
-Significant progress has been made.
-I have converter 430 out of 445 rules for the new parser.
-Rule and parser hardening will being shortly after converting the last 15 rules.
-
-**09/26/2020**
-
-In order to address some outstanding issues, I decided to implement a new parser.
-An initial parser has been complete.
-I am now in the process of convertering existing rules to use the new parser.
-Unfortunetely, at some point the master branch broke.
-
-I have decided to keep moving forward instead of keeping backwards compatibility.
-
-Below is a roadmap showing when I expect master to be working again.
-
-.. image:: https://github.com/jeremiah-c-leary/vhdl-style-guide/blob/master/docs/img/roadmap.png
-
-
+* New parser
+* Instantiation rules moved to generic_map and port_map rules
+* Updated multiline alignment rules
+* Tool integration updates
 
 .. image:: https://github.com/jeremiah-c-leary/vhdl-style-guide/blob/master/docs/img/vim_macro.gif
 
