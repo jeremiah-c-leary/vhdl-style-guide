@@ -126,3 +126,22 @@ This rule checks for comments within multiline sequential statements.
 
    overflow <= wr_en and
                rd_en;
+
+sequential_007
+##############
+
+This rule checks for code after a sequential assignment.
+
+**Violation**
+
+.. code-block:: vhdl
+
+    a <= '0'; b <= '1'; c <= '0'; -- comment
+
+**Fix**
+
+.. code-block:: vhdl
+
+    a <= '0';
+    b <= '1';
+    c <= '0'; -- comment
