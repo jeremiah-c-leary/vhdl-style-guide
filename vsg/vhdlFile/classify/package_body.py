@@ -43,8 +43,9 @@ def classify_opening_declaration(iToken, lObjects):
 def classify_closing_declaration(iToken, lObjects):
 
     iCurrent = utils.assign_next_token_required('end', token.end_keyword, iToken, lObjects)
-    iCurrent = utils.assign_next_token_if('package', token.end_package_keyword, iToken, lObjects)
-    iCurrent = utils.assign_next_token_if('body', token.end_body_keyword, iToken, lObjects)
+    if utils.are_next_consecutive_tokens(['package'], iCurrent, lObjects):
+        iCurrent = utils.assign_next_token_required('package', token.end_package_keyword, iToken, lObjects)
+        iCurrent = utils.assign_next_token_required('body', token.end_body_keyword, iToken, lObjects)
     iCurrent = utils.assign_next_token_if_not(';', token.end_package_simple_name, iToken, lObjects)
     iCurrent = utils.assign_next_token_required(';', token.semicolon, iToken, lObjects)
 

@@ -29,6 +29,7 @@ The rules are divided into catagories depending on the part of the VHDL code bei
    length_rules.rst
    library_rules.rst
    package_rules.rst
+   package_body_rules.rst
    port_rules.rst
    port_map_rules.rst
    procedure_rules.rst
