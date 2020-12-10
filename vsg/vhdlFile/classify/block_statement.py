@@ -28,7 +28,7 @@ def detect(iToken, lObjects):
 def classify(iToken, lObjects):
 
     iCurrent = utils.tokenize_label(iToken, lObjects, token.block_label, token.label_colon)
-    iCurrent = utils.assign_next_token_required('block', token.keyword, iCurrent, lObjects)
+    iCurrent = utils.assign_next_token_required('block', token.block_keyword, iCurrent, lObjects)
 
     if utils.is_next_token('(', iCurrent, lObjects):
         iCurrent = utils.assign_next_token_required('(', token.guard_open_parenthesis, iCurrent, lObjects)

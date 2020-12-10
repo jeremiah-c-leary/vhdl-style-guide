@@ -34,6 +34,10 @@ class New():
         iTemp = bisect.bisect_right(self.dMap['parser']['carriage_return'], iIndex)
         return self.dMap['parser']['carriage_return'][iTemp]
 
+    def get_index_of_carriage_return_before_index(self, iIndex):
+        iTemp = bisect.bisect_left(self.dMap['parser']['carriage_return'], iIndex) - 1
+        return self.dMap['parser']['carriage_return'][iTemp]
+
     def get_index_of_token_after_index(self, oToken, iIndex):
         sBase, sSub = extract_unique_id(oToken)
         try:

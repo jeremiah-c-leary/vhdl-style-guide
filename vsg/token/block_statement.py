@@ -20,7 +20,7 @@ class label_colon(parser.label_colon):
         parser.label_colon.__init__(self)
 
 
-class keyword(parser.keyword):
+class block_keyword(parser.keyword):
     '''
     unique_id = block_statement : keyword
     '''

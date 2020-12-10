@@ -26,7 +26,7 @@
 7 |   BLK : block is
 <class 'vsg.token.block_statement.block_label'>
 <class 'vsg.token.block_statement.label_colon'>
-<class 'vsg.token.block_statement.keyword'>
+<class 'vsg.token.block_statement.block_keyword'>
 <class 'vsg.token.block_statement.is_keyword'>
 --------------------------------------------------------------------------------
 8 | 
@@ -177,7 +177,7 @@
 38 |   BLK : block is
 <class 'vsg.token.block_statement.block_label'>
 <class 'vsg.token.block_statement.label_colon'>
-<class 'vsg.token.block_statement.keyword'>
+<class 'vsg.token.block_statement.block_keyword'>
 <class 'vsg.token.block_statement.is_keyword'>
 --------------------------------------------------------------------------------
 39 | 
@@ -301,7 +301,7 @@
 64 |   BLK : block is
 <class 'vsg.token.block_statement.block_label'>
 <class 'vsg.token.block_statement.label_colon'>
-<class 'vsg.token.block_statement.keyword'>
+<class 'vsg.token.block_statement.block_keyword'>
 <class 'vsg.token.block_statement.is_keyword'>
 --------------------------------------------------------------------------------
 65 | 
@@ -417,7 +417,7 @@
 88 |   BLK : block is
 <class 'vsg.token.block_statement.block_label'>
 <class 'vsg.token.block_statement.label_colon'>
-<class 'vsg.token.block_statement.keyword'>
+<class 'vsg.token.block_statement.block_keyword'>
 <class 'vsg.token.block_statement.is_keyword'>
 --------------------------------------------------------------------------------
 89 | 
@@ -541,7 +541,7 @@
 114 |   BLK : block is
 <class 'vsg.token.block_statement.block_label'>
 <class 'vsg.token.block_statement.label_colon'>
-<class 'vsg.token.block_statement.keyword'>
+<class 'vsg.token.block_statement.block_keyword'>
 <class 'vsg.token.block_statement.is_keyword'>
 --------------------------------------------------------------------------------
 115 | 

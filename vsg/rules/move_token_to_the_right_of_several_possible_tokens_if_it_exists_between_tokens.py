@@ -80,5 +80,6 @@ class move_token_to_the_right_of_several_possible_tokens_if_it_exists_between_to
         lTokens.insert(dAction['insert'], oToken)
         if self.bInsertWhitespace:
             lTokens.insert(dAction['insert'], parser.whitespace(' '))
+        lTokens = utils.remove_consecutive_whitespace_tokens(lTokens)
         lTokens = utils.fix_blank_lines(lTokens)
         oViolation.set_tokens(lTokens)

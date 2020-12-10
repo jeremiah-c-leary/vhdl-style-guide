@@ -23,6 +23,7 @@ from vsg.vhdlFile.indent import component_instantiation_statement
 from vsg.vhdlFile.indent import generic_map_aspect
 from vsg.vhdlFile.indent import port_map_aspect
 from vsg.vhdlFile.indent import association_element
+from vsg.vhdlFile.indent import block_statement
 
 
 def set_token_indent(lTokens):
@@ -318,3 +319,4 @@ def set_token_indent(lTokens):
         iIndent, bLabelFound = generic_map_aspect.set_indent(iIndent, bLabelFound, oToken)
         iIndent, bLabelFound = port_map_aspect.set_indent(iIndent, bLabelFound, oToken)
         iIndent, bLabelFound = association_element.set_indent(iIndent, bLabelFound, oToken)
+        iIndent, bLabelFound = block_statement.set_indent(iIndent, bLabelFound, oToken)

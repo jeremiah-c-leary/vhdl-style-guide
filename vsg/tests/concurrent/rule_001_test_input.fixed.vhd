@@ -43,4 +43,12 @@ begin
      a <= b when z = "000",
           c when z = "001";
 
+  BLOCK_LABEL : block
+  begin
+
+    a <= b;
+    z <= x;
+
+  end block BLOCK_LABEL;
+
 end architecture RTL;

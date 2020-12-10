@@ -24,12 +24,13 @@ class single_space_between_token_pairs(rule.Rule):
        The tokens to check for a single space between
     '''
 
-    def __init__(self, name, identifier, lTokens, bMinimum=False):
+    def __init__(self, name, identifier, lTokens, bMinimum=False, iSpaces=1):
         rule.Rule.__init__(self, name=name, identifier=identifier)
         self.solution = None
         self.phase = 2
         self.lTokens = lTokens
         self.bMinimum = bMinimum
+        self.iSpaces = iSpaces
 
     def _get_tokens_of_interest(self, oFile):
         lToi = []
@@ -44,11 +45,14 @@ class single_space_between_token_pairs(rule.Rule):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             if len(lTokens) == 2:
-                self.add_violation(violation.New(oToi.get_line_number(), oToi, self.solution))
+                sSolution = f'Add {self.iSpaces} space(s) between {lTokens[0].get_value()} and {lTokens[0].get_value()}'
+                oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
+                self.add_violation(oViolation)
             elif self.bMinimum:
                 continue
             elif len(lTokens[1].get_value()) != 1:
-                self.add_violation(violation.New(oToi.get_line_number(), oToi, self.solution))
+                sSolution = f'Change spaces between {lTokens[0].get_value()} and {lTokens[0].get_value()} to {self.iSpaces}'
+                self.add_violation(violation.New(oToi.get_line_number(), oToi, sSolution))
 
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()

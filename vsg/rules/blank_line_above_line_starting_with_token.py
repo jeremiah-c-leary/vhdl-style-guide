@@ -21,7 +21,7 @@ class blank_line_above_line_starting_with_token(rule.Rule):
        token object that a blank line above should appear
     '''
 
-    def __init__(self, name, identifier, lTokens):
+    def __init__(self, name, identifier, lTokens, lAllowTokens=[]):
         rule.Rule.__init__(self, name=name, identifier=identifier)
         self.solution = 'Insert blank line above'
         self.phase = 3
@@ -29,6 +29,7 @@ class blank_line_above_line_starting_with_token(rule.Rule):
         self.lHierarchyLimits = None
         self.allow_comments = False
         self.configuration.append('allow_comments')
+        self.lAllowTokens = lAllowTokens
 
     def _get_tokens_of_interest(self, oFile):
         if self.lHierarchyLimits is None:
@@ -39,6 +40,16 @@ class blank_line_above_line_starting_with_token(rule.Rule):
     def _analyze(self, lToi):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
+            bSkip = False
+            for oAllowToken in self.lAllowTokens:
+                for oToken in lTokens:
+                    if isinstance(oToken, oAllowToken):
+                        bSkip = True
+                        break
+                if bSkip:
+                   break
+            if bSkip:
+                continue
             if len(lTokens) == 1:
                 if isinstance(lTokens[0], parser.blank_line):
                     continue

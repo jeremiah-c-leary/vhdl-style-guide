@@ -26,7 +26,7 @@ class test_concurrent_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'concurrent')
         self.assertEqual(oRule.identifier, '001')
 
-        lExpected = [18, 20, 22, 28, 30, 32, 38, 40, 42]
+        lExpected = [18, 20, 22, 28, 30, 32, 38, 40, 42, 49]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))

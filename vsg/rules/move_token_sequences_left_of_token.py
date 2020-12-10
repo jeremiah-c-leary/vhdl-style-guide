@@ -35,7 +35,7 @@ class move_token_sequences_left_of_token(rule.Rule):
         lPrevious = []
         for lSequence in self.lSequences:
             if not lSequence[0] in lPrevious:
-                aToi = oFile.get_tokens_bounded_by(lSequence[0], self.oLeftToken)
+                aToi = oFile.get_tokens_bounded_by(lSequence[0], self.oLeftToken, bIncludeTillBeginningOfLine=True)
                 lToi = utils.combine_two_token_class_lists(lToi, aToi)
             lPrevious.append(lSequence[0])
         return lToi
@@ -70,8 +70,14 @@ class move_token_sequences_left_of_token(rule.Rule):
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
         dAction = oViolation.get_action()
+        bInsertBlankLine = False
+        if isinstance(lTokens[0], parser.whitespace):
+            lTokens = lTokens[1:]
+            bInsertBlankLine = True
         lMoveTokens = lTokens[0:dAction['num_tokens']]
         lTokens = lTokens[dAction['num_tokens']:]
         lTokens = lTokens[:-1] + lMoveTokens + [parser.whitespace(' ')] + [lTokens[-1]]
         lTokens = utils.remove_consecutive_whitespace_tokens(lTokens)
+        if bInsertBlankLine:
+            lTokens.insert(0, parser.blank_line())
         oViolation.set_tokens(lTokens)

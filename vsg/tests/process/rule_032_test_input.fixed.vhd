@@ -27,12 +27,12 @@ begin
 
   -- Violations below
 
-  
+
   PROC_LABEL : process (b) is
   begin
   end process;
 
-  
+
 
 
 
@@ -43,7 +43,7 @@ begin
 
 
   ---------------------------
-  -- Some comment
+-- Some comment
   ---------------------------
   PROC_LABEL :  process begin end process;
 

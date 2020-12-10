@@ -23,6 +23,7 @@ class testVsg(unittest.TestCase):
         self.assertEqual(dExpected, oRules.extract_violation_dictionary())
         
     def test_extract_violation_dictionary_w_all_phases_enabled(self):
+        self.maxDiff = None
         lFile = []
         utils.read_file('vsg/tests/styles/code_examples/spi_master.vhd', lFile)
         oFile = vhdlFile.vhdlFile(lFile)

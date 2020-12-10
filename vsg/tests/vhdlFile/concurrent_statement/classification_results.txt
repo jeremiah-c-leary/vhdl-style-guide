@@ -37,7 +37,7 @@
 9 |   BLK : block is
 <class 'vsg.token.block_statement.block_label'>
 <class 'vsg.token.block_statement.label_colon'>
-<class 'vsg.token.block_statement.keyword'>
+<class 'vsg.token.block_statement.block_keyword'>
 <class 'vsg.token.block_statement.is_keyword'>
 --------------------------------------------------------------------------------
 10 |   begin
@@ -135,7 +135,7 @@
 30 |       BLK2 : block is
 <class 'vsg.token.block_statement.block_label'>
 <class 'vsg.token.block_statement.label_colon'>
-<class 'vsg.token.block_statement.keyword'>
+<class 'vsg.token.block_statement.block_keyword'>
 <class 'vsg.token.block_statement.is_keyword'>
 --------------------------------------------------------------------------------
 31 |       begin
@@ -286,7 +286,7 @@
 63 |   BLK : block is
 <class 'vsg.token.block_statement.block_label'>
 <class 'vsg.token.block_statement.label_colon'>
-<class 'vsg.token.block_statement.keyword'>
+<class 'vsg.token.block_statement.block_keyword'>
 <class 'vsg.token.block_statement.is_keyword'>
 --------------------------------------------------------------------------------
 64 |   begin
@@ -375,7 +375,7 @@
 80 |         BLK2 : block is
 <class 'vsg.token.block_statement.block_label'>
 <class 'vsg.token.block_statement.label_colon'>
-<class 'vsg.token.block_statement.keyword'>
+<class 'vsg.token.block_statement.block_keyword'>
 <class 'vsg.token.block_statement.is_keyword'>
 --------------------------------------------------------------------------------
 81 |         begin
@@ -465,7 +465,7 @@
 97 |                 BLK3: block is
 <class 'vsg.token.block_statement.block_label'>
 <class 'vsg.token.block_statement.label_colon'>
-<class 'vsg.token.block_statement.keyword'>
+<class 'vsg.token.block_statement.block_keyword'>
 <class 'vsg.token.block_statement.is_keyword'>
 --------------------------------------------------------------------------------
 98 |                 begin
@@ -509,7 +509,7 @@
 107 |             BLK4 : block is
 <class 'vsg.token.block_statement.block_label'>
 <class 'vsg.token.block_statement.label_colon'>
-<class 'vsg.token.block_statement.keyword'>
+<class 'vsg.token.block_statement.block_keyword'>
 <class 'vsg.token.block_statement.is_keyword'>
 --------------------------------------------------------------------------------
 108 |             begin
@@ -594,7 +594,7 @@
 123 |                     BLK4A : block is
 <class 'vsg.token.block_statement.block_label'>
 <class 'vsg.token.block_statement.label_colon'>
-<class 'vsg.token.block_statement.keyword'>
+<class 'vsg.token.block_statement.block_keyword'>
 <class 'vsg.token.block_statement.is_keyword'>
 --------------------------------------------------------------------------------
 124 |                     begin
@@ -733,7 +733,7 @@
 151 |                     BLK4B : block is
 <class 'vsg.token.block_statement.block_label'>
 <class 'vsg.token.block_statement.label_colon'>
-<class 'vsg.token.block_statement.keyword'>
+<class 'vsg.token.block_statement.block_keyword'>
 <class 'vsg.token.block_statement.is_keyword'>
 --------------------------------------------------------------------------------
 152 |                     begin
@@ -816,7 +816,7 @@
 168 |             BLK5 : block is
 <class 'vsg.token.block_statement.block_label'>
 <class 'vsg.token.block_statement.label_colon'>
-<class 'vsg.token.block_statement.keyword'>
+<class 'vsg.token.block_statement.block_keyword'>
 <class 'vsg.token.block_statement.is_keyword'>
 --------------------------------------------------------------------------------
 169 |             begin
@@ -1027,7 +1027,7 @@
 207 |             BLK2 : block is
 <class 'vsg.token.block_statement.block_label'>
 <class 'vsg.token.block_statement.label_colon'>
-<class 'vsg.token.block_statement.keyword'>
+<class 'vsg.token.block_statement.block_keyword'>
 <class 'vsg.token.block_statement.is_keyword'>
 --------------------------------------------------------------------------------
 208 |             begin
@@ -1094,7 +1094,7 @@
 220 |             BLK2 : block is
 <class 'vsg.token.block_statement.block_label'>
 <class 'vsg.token.block_statement.label_colon'>
-<class 'vsg.token.block_statement.keyword'>
+<class 'vsg.token.block_statement.block_keyword'>
 <class 'vsg.token.block_statement.is_keyword'>
 --------------------------------------------------------------------------------
 221 |             begin

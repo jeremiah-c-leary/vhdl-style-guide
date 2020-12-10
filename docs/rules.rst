@@ -10,6 +10,7 @@ The rules are divided into catagories depending on the part of the VHDL code bei
    architecture_rules.rst
    assert_rules.rst
    attribute_rules.rst
+   block_rules.rst
    case_rules.rst
    comment_rules.rst
    component_rules.rst

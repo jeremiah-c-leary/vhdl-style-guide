@@ -4,7 +4,7 @@ from vsg import parser
 from vsg.vhdlFile.extract import tokens
 
 
-def get_tokens_bounded_by(oStart, oEnd, lAllObjects, oTokenMap, include_trailing_whitespace=False, bExcludeLastToken=False, bIncludeTillEndOfLine=False):
+def get_tokens_bounded_by(oStart, oEnd, lAllObjects, oTokenMap, include_trailing_whitespace=False, bExcludeLastToken=False, bIncludeTillEndOfLine=False, bIncludeTillBeginningOfLine=False):
 
 #    oTokenMap.pretty_print()
     lReturn = []
@@ -12,6 +12,13 @@ def get_tokens_bounded_by(oStart, oEnd, lAllObjects, oTokenMap, include_trailing
     lStart, lEnd = oTokenMap.get_token_pair_indexes(oStart, oEnd)
 
     lCarriageReturns = oTokenMap.get_token_indexes(parser.carriage_return)
+
+    lNewStart = []
+    if bIncludeTillBeginningOfLine:
+        for iStart in lStart:
+            lNewStart.append(oTokenMap.get_index_of_carriage_return_before_index(iStart) + 1)
+    else:
+        lNewStart = lStart 
 
     if bExcludeLastToken:
         lEnd = [x - 1 for x in lEnd]
@@ -38,7 +45,7 @@ def get_tokens_bounded_by(oStart, oEnd, lAllObjects, oTokenMap, include_trailing
                 lNewEnd[iNewEnd] -= 1
             if lNewEnd[iNewEnd] in lCarriageReturns:
                 lNewEnd[iNewEnd] -= 1
-
+        
 #    print(lStart)
 #    print(lEnd)
 #    print(lNewEnd)
@@ -49,7 +56,7 @@ def get_tokens_bounded_by(oStart, oEnd, lAllObjects, oTokenMap, include_trailing
 #        iNewEnd = lNewEnd[i]
 #        print(f'{lAllObjects[iStart]} | {lAllObjects[iEnd]} | {lAllObjects[iNewEnd]}')
 
-    for iStart, iEnd, iIndex in zip(lStart, lNewEnd, lEnd):
+    for iStart, iEnd, iIndex in zip(lNewStart, lNewEnd, lEnd):
         lTemp = lAllObjects[iStart: iEnd + 1]
         iStartLine = oTokenMap.get_line_number_of_index(iStart)
         oToi = tokens.New(iStart, iStartLine, lTemp)
