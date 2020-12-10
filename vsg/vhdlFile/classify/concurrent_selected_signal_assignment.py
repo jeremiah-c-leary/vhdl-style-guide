@@ -16,14 +16,13 @@ def detect(iToken, lObjects):
 
     The key to detecting this is looking for the **with** keyword before the **select** keyword.
     '''
-
     if utils.find_in_next_n_tokens('with', 4, iToken, lObjects):
-        return True
+        if not utils.find_in_next_n_tokens('end', 1, iToken, lObjects):
+            return True
     return False
 
 
 def classify(iToken, lObjects):
-
     iCurrent = utils.assign_next_token_required('with', token.with_keyword, iToken, lObjects)
 
     iCurrent = expression.classify_until(['select'], iCurrent, lObjects)
