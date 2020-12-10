@@ -482,7 +482,7 @@ instantiation_034
 
 This rule checks for component versus direct instantiations.
 
-Refer to the section `Configuring Type of Instantiation <configuring_type_of_instantiation.html>`_ for options to configure the allowed configuration.
+Refer to the section `Configuring Type of Instantiation <configuring_type_of_instantiations.html>`_ for options to configure the allowed configuration.
 
 component instantiation
 ^^^^^^^^^^^^^^^^^^^^^^^
