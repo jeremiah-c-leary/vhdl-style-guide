@@ -277,6 +277,8 @@ entity_015
 
 This rule checks for the keyword **entity** in the **end entity** statement.
 
+Refer to the section `Configuring Optional Items <configuring_optional_items.html>`_ for options.
+
 **Violation**
 
 .. code-block:: vhdl
@@ -404,6 +406,8 @@ entity_019
 ##########
 
 This rule checks for the entity name in the **end entity** statement.
+
+Refer to the section `Configuring Optional Items <configuring_optional_items.html>`_ for options.
 
 **Violation**
 

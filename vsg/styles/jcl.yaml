@@ -78,22 +78,6 @@ rule :
     compact_alignment : true
     blank_line_ends_group : true
     comment_line_ends_group : true
-  # Set blank line rules
-#  type_011 :
-#    allow_comments : false 
-#  process_011 :
-#    allow_comments : false 
-#  if_030 :
-#    allow_comments : false 
-#  architecture_015 :
-#    allow_comments : false 
-#  library_003 :
-#    allow_comments : false
-#  function_006 :
-#    allow_comments : false
-#  architecture_017 :
-#    allow_comments : false
-#  generate_003 :
-#    allow_comments : false
-#  generate_004 :
-#    allow_comments : false
+  # Set optional item rules
+  instantiation_033 :
+    action : remove

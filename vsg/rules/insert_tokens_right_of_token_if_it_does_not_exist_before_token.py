@@ -4,6 +4,8 @@ from vsg import parser
 from vsg import rule
 from vsg import violation
 
+from vsg.vhdlFile import utils
+
 
 class insert_tokens_right_of_token_if_it_does_not_exist_before_token(rule.Rule):
     '''
@@ -35,25 +37,48 @@ class insert_tokens_right_of_token_if_it_does_not_exist_before_token(rule.Rule):
         self.insert_tokens = insert_tokens
         self.anchor_token = anchor_token
         self.end_token = end_token
+        self.action = 'add'
+        self.configuration.append('action')
 
     def _get_tokens_of_interest(self, oFile):
         return oFile.get_tokens_bounded_by(self.anchor_token, self.end_token)
 
     def _analyze(self, lToi):
-        for oToi in lToi:
-            lTokens = oToi.get_tokens()
-            bFound = False
-            for oToken in lTokens:
-                if isinstance(oToken, type(self.insert_tokens[0])):
-                    break
-            else:
-                self.add_violation(violation.New(oToi.get_line_number(), oToi, self.solution))
+        if self.action == 'add':
+            for oToi in lToi:
+                lTokens = oToi.get_tokens()
+                bFound = False
+                for oToken in lTokens:
+                    if isinstance(oToken, type(self.insert_tokens[0])):
+                        break
+                else:
+                    sSolution = self.action.capitalize() + ' ' + self.solution
+                    self.add_violation(violation.New(oToi.get_line_number(), oToi, sSolution))
+        else:
+            for oToi in lToi:
+                lTokens = oToi.get_tokens()
+                for iToken, oToken in enumerate(lTokens):
+                    if isinstance(oToken, type(self.insert_tokens[0])):
+                        sSolution = self.action.capitalize() + ' ' + self.solution
+                        dAction = {}
+                        dAction['iStartIndex'] = iToken
+                        dAction['iEndIndex'] = iToken + len(self.insert_tokens)
+                        oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
+                        oViolation.set_action(dAction)
+                        self.add_violation(oViolation)
+                        break
 
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
-        lNewTokens = []
-        lNewTokens.append(lTokens[0])
-        lNewTokens.append(parser.whitespace(' '))
-        lNewTokens.extend(self.insert_tokens)
-        lNewTokens.extend(lTokens[1:])
+        if self.action == 'add':
+            lNewTokens = []
+            lNewTokens.append(lTokens[0])
+            lNewTokens.append(parser.whitespace(' '))
+            lNewTokens.extend(self.insert_tokens)
+            lNewTokens.extend(lTokens[1:])
+        else:
+            dAction = oViolation.get_action()
+            lNewTokens = lTokens[:dAction['iStartIndex']]
+            lNewTokens.extend(lTokens[dAction['iEndIndex']:])
+            lNewTokens = utils.remove_consecutive_whitespace_tokens(lNewTokens)
         oViolation.set_tokens(lNewTokens)

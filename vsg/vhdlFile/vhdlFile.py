@@ -90,10 +90,10 @@ class vhdlFile():
             lTokens = oUpdate.get_tokens()
             iEnd = oUpdate.oTokens.iEndIndex
             iDelta = iEnd - iStart
-            if iDelta != len(lTokens):
-                bUpdateMap = True
-            elif oUpdate.get_remap():
-                bUpdateMap = True
+#            if iDelta != len(lTokens):
+#                bUpdateMap = True
+#            elif oUpdate.get_remap():
+#                bUpdateMap = True
             self.lAllObjects[iStart:iEnd] = lTokens
         if bUpdateMap:
             self.oTokenMap = process_tokens(self.lAllObjects)

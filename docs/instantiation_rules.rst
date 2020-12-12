@@ -421,22 +421,6 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
 
    instance_name : component entity_name
 
-.. NOTE:: This rule is off by default.
-   If this rule is desired, then enable this rule and disable instantiation_033. 
-
-   .. code-block:: json
-   
-      {
-        "rule":{
-          "instantiation_031":{
-             "disable":"False"
-          },
-          "instantiation_033":{
-             "disable":"True"
-          }
-        }
-      }
-
 instantiation_032
 #################
 
@@ -461,21 +445,21 @@ This rule checks for a single space after the **component** keyword if it is use
 instantiation_033
 #################
 
-This rule checks for the **component** keyword and will remove it.
+This rule checks for the **component** keyword for a component instantiation.
 
-The component keyword is optional and does not provide clarity.
+Refer to the section `Configuring Optional Items <configuring_optional_items.html>`_ for options.
 
 **Violation**
 
 .. code-block:: vhdl
 
-   INSTANCE_NAME : component ENTITY_NAME
+   INSTANCE_NAME : ENTITY_NAME
 
 **Fix**
 
 .. code-block:: vhdl
 
-   INSTANCE_NAME : ENTITY_NAME
+   INSTANCE_NAME : component ENTITY_NAME
 
 instantiation_034
 #################

@@ -1,8 +1,9 @@
 
-
 from vsg import parser
 from vsg import rule
 from vsg import violation
+
+from vsg.rules import utils as rule_utils
 
 
 class insert_token_right_of_token_if_it_does_not_exist_before_token(rule.Rule):
@@ -35,11 +36,22 @@ class insert_token_right_of_token_if_it_does_not_exist_before_token(rule.Rule):
         self.insert_token = insert_token
         self.anchor_token = anchor_token
         self.end_token = end_token
+        self.action = 'add'
+        self.configuration.append('action')
 
     def _get_tokens_of_interest(self, oFile):
-        return oFile.get_tokens_bounded_by(self.anchor_token, self.end_token)
+        if self.action == 'add':
+            return oFile.get_tokens_bounded_by(self.anchor_token, self.end_token)
+        else:
+            return oFile.get_token_and_n_tokens_before_it(self.insert_token, 1)
 
     def _analyze(self, lToi):
+        if self.action == 'remove':
+            for oToi in lToi:
+                sSolution = self.action.capitalize() + ' ' + self.solution
+                self.add_violation(violation.New(oToi.get_line_number(), oToi, sSolution))
+            return
+
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             bFound = False
@@ -48,10 +60,14 @@ class insert_token_right_of_token_if_it_does_not_exist_before_token(rule.Rule):
                     bFound = True
                     break
             if not bFound:
-                self.add_violation(violation.New(oToi.get_line_number(), oToi, self.solution))
+                sSolution = self.action.capitalize() + ' ' + self.solution
+                self.add_violation(violation.New(oToi.get_line_number(), oToi, sSolution))
 
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
-        lTokens.insert(1, self.insert_token)
-        lTokens.insert(1, parser.whitespace(' '))
-        oViolation.set_tokens(lTokens)
+        if self.action == 'remove':
+            rule_utils.remove_optional_item(lTokens, oViolation, self.insert_token)
+        else:
+            lTokens.insert(1, self.insert_token)
+            lTokens.insert(1, parser.whitespace(' '))
+            oViolation.set_tokens(lTokens)

@@ -15,6 +15,8 @@ begin
       PORT_3 => w_port_3
     );
 
+  U_ENTITY_INST : entity FIFO(rtl);
+
   -- Violations below
 
   U_INST1 : INST1

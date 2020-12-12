@@ -179,6 +179,8 @@ architecture_010
 This rule checks for the keyword **architecture** in the **end architecture** statement.
 It is clearer to the reader to state what is ending.
 
+Refer to the section `Configuring Optional Items <configuring_optional_items.html>`_ for options.
+
 **Violation**
 
 .. code-block:: vhdl
@@ -443,6 +445,8 @@ architecture_024
 
 This rule checks for the architecture name in the **end architecture** statement.
 It is clearer to the reader to state which architecture the end statement is closing.
+
+Refer to the section `Configuring Optional Items <configuring_optional_items.html>`_ for options.
 
 **Violation**
 

@@ -246,6 +246,8 @@ process_012
  
 This rule checks for the existence of the **is** keyword.
 
+Refer to the section `Configuring Optional Items <configuring_optional_items.html>`_ for options.
+
 **Violation**
 
 .. code-block:: vhdl
@@ -407,6 +409,8 @@ process_018
  
 This rule checks the **end process** line has a label.
 The closing label will be added if the opening process label exists.
+
+Refer to the section `Configuring Optional Items <configuring_optional_items.html>`_ for options.
 
 **Violation**
 

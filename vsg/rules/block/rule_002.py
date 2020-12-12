@@ -19,4 +19,4 @@ class rule_002(insert_token_right_of_possible_tokens_if_it_does_not_exist_before
 
     def __init__(self):
         insert_token_right_of_possible_tokens_if_it_does_not_exist_before_token.__init__(self, 'block', '002', oInsertToken, lRightTokens, oBeforeToken)
-        self.solution = 'Add is keyword'
+        self.solution = '*is* keyword'

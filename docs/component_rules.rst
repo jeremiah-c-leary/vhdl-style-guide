@@ -452,6 +452,8 @@ component_021
 
 This rule inserts the optional **is** keyword if it does not exist.
 
+Refer to the section `Configuring Optional Items <configuring_optional_items.html>`_ for options.
+
 **Violation**
 
 .. code-block:: vhdl

@@ -422,6 +422,8 @@ context_021
 
 This rule checks for the keyword **context** in the **end context** statement.
 
+Refer to the section `Configuring Optional Items <configuring_optional_items.html>`_ for options.
+
 **Violation**
 
 .. code-block:: vhdl
@@ -442,6 +444,8 @@ context_022
 ###########
 
 This rule checks for the context name in the **end context** statement.
+
+Refer to the section `Configuring Optional Items <configuring_optional_items.html>`_ for options.
 
 **Violation**
 

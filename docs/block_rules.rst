@@ -28,6 +28,8 @@ block_002
  
 This rule checks for the existence of the **is** keyword.
 
+Refer to the section `Configuring Optional Items <configuring_optional_items.html>`_ for options.
+
 **Violation**
 
 .. code-block:: vhdl
@@ -118,6 +120,8 @@ block_007
 ^^^^^^^^^
 
 This rule checks the block label exists in the closing of the block statement.
+
+Refer to the section `Configuring Optional Items <configuring_optional_items.html>`_ for options.
 
 **Violation**
 

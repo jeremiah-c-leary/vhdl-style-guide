@@ -10,9 +10,13 @@ sTestDir = os.path.dirname(__file__)
 
 lFile = utils.read_vhdlfile(os.path.join(sTestDir,'rule_033_test_input.vhd'))
 
-lExpected = []
-lExpected.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_033_test_input.fixed.vhd'), lExpected)
+lExpected_add = []
+lExpected_add.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_033_test_input.fixed_add.vhd'), lExpected_add)
+
+lExpected_remove = []
+lExpected_remove.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_033_test_input.fixed_remove.vhd'), lExpected_remove)
 
 
 class test_instantiation_rule(unittest.TestCase):
@@ -20,25 +24,49 @@ class test_instantiation_rule(unittest.TestCase):
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
 
-    def test_rule_033(self):
+    def test_rule_033_add(self):
         oRule = instantiation.rule_033()
+        oRule.action = 'add'
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'instantiation')
         self.assertEqual(oRule.identifier, '033')
 
-        lExpected = [20]
+        lExpected = [6]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
-    def test_fix_rule_033(self):
+    def test_fix_rule_033_add(self):
         oRule = instantiation.rule_033()
+        oRule.action = 'add'
 
         oRule.fix(self.oFile)
 
         lActual = self.oFile.get_lines()
 
-        self.assertEqual(lExpected, lActual)
+        self.assertEqual(lExpected_add, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+
+    def test_rule_033_remove(self):
+        oRule = instantiation.rule_033()
+        oRule.action = 'remove'
+
+        lExpected = [22]
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+
+    def test_fix_rule_033_remove(self):
+        oRule = instantiation.rule_033()
+        oRule.action = 'remove'
+
+        oRule.fix(self.oFile)
+
+        lActual = self.oFile.get_lines()
+
+        self.assertEqual(lExpected_remove, lActual)
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])

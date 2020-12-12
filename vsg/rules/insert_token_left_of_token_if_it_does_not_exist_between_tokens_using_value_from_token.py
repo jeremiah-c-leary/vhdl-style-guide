@@ -6,6 +6,8 @@ from vsg import violation
 
 from vsg.vhdlFile import utils
 
+from vsg.rules import utils as rule_utils
+
 
 class insert_token_left_of_token_if_it_does_not_exist_between_tokens_using_value_from_token(rule.Rule):
     '''
@@ -39,12 +41,22 @@ class insert_token_left_of_token_if_it_does_not_exist_between_tokens_using_value
         self.left_token = left_token
         self.right_token = right_token
         self.value_token = value_token
+        self.action = 'add'
+        self.configuration.append('action')
 
     def _get_tokens_of_interest(self, oFile):
-        return oFile.get_tokens_between_tokens_inclusive_while_storing_value_from_token(self.left_token, self.right_token, self.value_token)
+        if self.action == 'add':
+            return oFile.get_tokens_between_tokens_inclusive_while_storing_value_from_token(self.left_token, self.right_token, self.value_token)
+        else:
+            return oFile.get_token_and_n_tokens_before_it(self.insert_token, 1)
 
     def _analyze(self, lToi):
-#        print(f'{self.name}_{self.identifier}')
+        if self.action == 'remove':
+            for oToi in lToi:
+                sSolution = self.action.capitalize() + ' ' + self.solution
+                self.add_violation(violation.New(oToi.get_line_number(), oToi, sSolution))
+            return
+
         for oToi in lToi:
             iLine, lTokens = utils.get_toi_parameters(oToi)
             bFound = False
@@ -54,13 +66,17 @@ class insert_token_left_of_token_if_it_does_not_exist_between_tokens_using_value
                    bFound = True
                    break
             if not bFound:
-                self.add_violation(violation.New(iLine, oToi, self.solution))
+                sSolution = self.action.capitalize() + ' ' + self.solution
+                self.add_violation(violation.New(iLine, oToi, sSolution))
 
     def _fix_violation(self, oViolation):
-        if oViolation.get_token_value() is not None:
-            lTokens = oViolation.get_tokens()
-            for iIndex in range(0, len(lTokens)):
-                if isinstance(lTokens[iIndex], self.anchor_token):
-                    lTokens.insert(iIndex, self.insert_token(oViolation.get_token_value()))
-                    lTokens.insert(iIndex, parser.whitespace(' '))
-            oViolation.set_tokens(lTokens)
+        lTokens = oViolation.get_tokens()
+        if self.action == 'remove':
+            rule_utils.remove_optional_item(lTokens, oViolation, self.insert_token)
+        else:
+            if oViolation.get_token_value() is not None:
+                for iIndex in range(0, len(lTokens)):
+                    if isinstance(lTokens[iIndex], self.anchor_token):
+                        lTokens.insert(iIndex, self.insert_token(oViolation.get_token_value()))
+                        lTokens.insert(iIndex, parser.whitespace(' '))
+                oViolation.set_tokens(lTokens)

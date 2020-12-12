@@ -27,6 +27,8 @@ package_body_002
 
 This rule checks for the optional **package body** keywords on the end package body declaration.
 
+Refer to the section `Configuring Optional Items <configuring_optional_items.html>`_ for options.
+
 **Violation**
 
 .. code-block:: vhdl
@@ -43,6 +45,8 @@ package_body_003
 ^^^^^^^^^^^^^^^^
 
 This rule checks the package name exists in the closing of the package body declaration.
+
+Refer to the section `Configuring Optional Items <configuring_optional_items.html>`_ for options.
 
 **Violation**
 
