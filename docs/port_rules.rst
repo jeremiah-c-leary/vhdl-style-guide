@@ -311,7 +311,7 @@ This rule checks for multiple ports declared on a single line.
 port_014
 ########
 
-This rule checks the closing parenthesis of the port map are on a line by itself.
+This rule checks the closing parenthesis of the port map is on a line by itself.
 
 **Violation**
 

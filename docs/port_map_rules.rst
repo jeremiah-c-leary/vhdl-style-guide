@@ -120,9 +120,6 @@ This rule checks for a port assignment on the same line as the **port map** keyw
        OVERFLOW => overflow
      );
 
-port_map_006 ()
-###############
-
 port_map_007 (instantiation_022)
 ################################
 

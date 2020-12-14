@@ -201,7 +201,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
 signal_012
 ##########
 
-This rule checks multiple signal assignments on a single line are column aligned.
+This rule checks multiple signal declarations on a single line are column aligned.
 
 .. NOTE::
     This rule will only cover two signals on a single line.
