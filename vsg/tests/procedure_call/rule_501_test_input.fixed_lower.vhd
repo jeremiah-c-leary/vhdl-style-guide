@@ -1,0 +1,10 @@
+
+architecture rtl of fifo is
+
+begin
+
+  procedure_call_label : postponed wr_en(a, b);
+
+  procedure_call_label : postponed wr_en(a, b);
+
+end architecture rtl;

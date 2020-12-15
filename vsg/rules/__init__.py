@@ -97,6 +97,7 @@ from vsg.rules import port
 from vsg.rules import port_map
 from vsg.rules import process
 from vsg.rules import procedure
+from vsg.rules import procedure_call
 from vsg.rules import ranges
 from vsg.rules import sequential
 from vsg.rules import signal

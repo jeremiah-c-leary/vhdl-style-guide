@@ -24,6 +24,9 @@ from vsg.vhdlFile.indent import generic_map_aspect
 from vsg.vhdlFile.indent import port_map_aspect
 from vsg.vhdlFile.indent import association_element
 from vsg.vhdlFile.indent import block_statement
+from vsg.vhdlFile.indent import concurrent_procedure_call_statement
+from vsg.vhdlFile.indent import procedure_call_statement
+from vsg.vhdlFile.indent import procedure_call
 
 
 def set_token_indent(lTokens):
@@ -320,3 +323,6 @@ def set_token_indent(lTokens):
         iIndent, bLabelFound = port_map_aspect.set_indent(iIndent, bLabelFound, oToken)
         iIndent, bLabelFound = association_element.set_indent(iIndent, bLabelFound, oToken)
         iIndent, bLabelFound = block_statement.set_indent(iIndent, bLabelFound, oToken)
+        iIndent, bLabelFound = concurrent_procedure_call_statement.set_indent(iIndent, bLabelFound, oToken)
+        iIndent, bLabelFound = procedure_call_statement.set_indent(iIndent, bLabelFound, oToken)
+        iIndent, bLabelFound = procedure_call.set_indent(iIndent, bLabelFound, oToken)
