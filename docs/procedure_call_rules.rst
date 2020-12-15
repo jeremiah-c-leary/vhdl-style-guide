@@ -1,5 +1,5 @@
-Package Call Rules
-------------------
+Procedure Call Rules
+--------------------
 
 These rules handle **procedure_call_statement** and **concurrent_procedure_call_statement** elements.
 
