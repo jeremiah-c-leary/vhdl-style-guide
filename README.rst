@@ -36,10 +36,12 @@ I am targetting January 2020 for release 3.0.0.
 
 Major Changes:
 
+* Minimum Python version 3.5 is required
 * New parser
 * Instantiation rules moved to generic_map and port_map rules
 * Updated multiline alignment rules
 * Tool integration updates
+
 
 .. image:: https://github.com/jeremiah-c-leary/vhdl-style-guide/blob/master/docs/img/vim_macro.gif
 
