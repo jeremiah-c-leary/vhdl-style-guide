@@ -26,5 +26,3 @@ def _set_violation_type(dViolation):
         return 'ERROR: '
     elif dViolation['severity']['type'] == severity.warning_type:
         return 'WARNING: '
-    else:
-        return 'GUIDELINE: '

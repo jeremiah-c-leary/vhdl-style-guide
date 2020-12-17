@@ -14,6 +14,7 @@ Welcome to vhdl-style-guide's documentation!
    gallery
    installing
    usage
+   formatting_terminal_output
    styles
    configuring
    code_tags

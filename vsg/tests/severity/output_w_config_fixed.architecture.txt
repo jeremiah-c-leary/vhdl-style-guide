@@ -4,10 +4,9 @@ File:  architecture.vhd
 Phase 7 of 7... Reporting
 Total Rules Checked: 200
 Total Violations:    1
-  Error     :     0
-  Warning   :     1
-  Guideline :     0
-  ToDo      :     0
+  Error   :     0
+  Warning :     1
+  ToDo    :     0
 ----------------------------+------------+------------+--------------------------------------
   Rule                      |  severity  |  line(s)   | Solution
 ----------------------------+------------+------------+--------------------------------------

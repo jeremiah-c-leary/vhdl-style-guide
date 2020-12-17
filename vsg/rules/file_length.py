@@ -24,7 +24,7 @@ class file_length(rule.Rule):
         rule.Rule.__init__(self, name=name, identifier=identifier)
         self.phase = 7
         self.fixable = False  # The user will have to fix line length violations
-        self.severity = severity.set_guideline_severity
+        self.severity = severity.set_warning_severity
         self.length = 2000
         self.configuration.append('length')
 

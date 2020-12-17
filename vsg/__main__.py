@@ -31,7 +31,7 @@ def parse_command_line_arguments():
     parser.add_argument('-fp', '--fix_phase', default=7, action='store', help='Fix issues up to and including this phase')
     parser.add_argument('-j', '--junit', action='store', help='Extract Junit file')
     parser.add_argument('-js', '--json', action='store', help='Extract JSON file')
-    parser.add_argument('-of', '--output_format', action='store', default='vsg', choices=['vsg', 'syntastic'], help='Sets the output format.')
+    parser.add_argument('-of', '--output_format', action='store', default='vsg', choices=['vsg', 'syntastic', 'summary'], help='Sets the output format.')
     parser.add_argument('-b', '--backup', default=False, action='store_true', help='Creates a copy of input file for comparison with fixed version.')
     parser.add_argument('-oc', '--output_configuration', default=None, action='store', help='Write configuration to file name.')
     parser.add_argument('-rc', '--rule_configuration', default=None, action='store', help='Display configuration of a rule')

@@ -253,8 +253,10 @@ class rule_list():
 #        print(dRunInfo)
         if sOutputFormat == 'vsg':
             report.vsg_stdout.print_output(dRunInfo)
-        else:
+        elif sOutputFormat == 'syntastic':
             report.syntastic_stdout.print_output(dRunInfo)
+        else:
+            report.summary_stdout.print_output(dRunInfo)
 
     def configure(self, configurationFile):
         '''

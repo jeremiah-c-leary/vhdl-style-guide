@@ -1,7 +1,7 @@
 Rule Severity
 =============
 
-VSG supports rule severity with three built in levels:  Error, Warning and Guideline.
+VSG supports rule severity with two built in levels:  Error and Warning.
 The default behavior for most rules is **Error**.
 Only the **Error** severity level will result in an exit status of 1.
 **Errors** will also be the only errors written to a JUnit XML file if that option is chosen.
@@ -15,21 +15,19 @@ The table below summarizes the built in severities:
 +-------------+-----------+-------------+-------+-----------+---------------------------------------------------------------+
 | Warning     | warning   |      0      |  No   |  WARNING  | A rule which should be fixed.                                 |
 +-------------+-----------+-------------+-------+-----------+---------------------------------------------------------------+
-| Guideline   | guideline |      0      |  No   |  WARNING  | A rule which should be fixed if it is reasonable to do so.    |
-+-------------+-----------+-------------+-------+-----------+---------------------------------------------------------------+
 
 Configuring Severity Levels
 ---------------------------
 
 The existing severity level of a rule can be configured.
-For example, if you want to change the line length rule, *length_001*, to a **Warning** instead of a **Guideline**, use the following configuration:
+For example, if you want to change the line length rule, *length_001*, to an **Error** instead of a **Warning**, use the following configuration:
 
 .. code-block:: json
 
    {
        "rule":{
            "length_001":{
-               "severity": "Warning"
+               "severity": "Error"
            }
        }
    }
