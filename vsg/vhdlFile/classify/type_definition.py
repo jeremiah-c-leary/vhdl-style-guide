@@ -2,6 +2,7 @@
 from vsg.vhdlFile.classify import access_type_definition
 from vsg.vhdlFile.classify import composite_type_definition
 from vsg.vhdlFile.classify import file_type_definition
+from vsg.vhdlFile.classify import protected_type_definition
 from vsg.vhdlFile.classify import scalar_type_definition
 
 
@@ -28,6 +29,10 @@ def detect(iToken, lObjects):
         return iReturn
 
     iReturn = file_type_definition.detect(iToken, lObjects)
+    if iReturn != iToken:
+        return iReturn
+
+    iReturn = protected_type_definition.detect(iToken, lObjects)
     if iReturn != iToken:
         return iReturn
 
