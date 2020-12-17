@@ -1453,32 +1453,32 @@
         {
           "rule": "generate_002",
           "linenumber": 357,
-          "solution": "Add 1 space(s) between spi_sck_cpol_0_proc and spi_sck_cpol_0_proc"
+          "solution": "Add 1 space(s) between spi_sck_cpol_0_proc and :"
         },
         {
           "rule": "generate_002",
           "linenumber": 362,
-          "solution": "Add 1 space(s) between spi_sck_cpol_1_proc and spi_sck_cpol_1_proc"
+          "solution": "Add 1 space(s) between spi_sck_cpol_1_proc and :"
         },
         {
           "rule": "generate_002",
           "linenumber": 369,
-          "solution": "Add 1 space(s) between samp_ce_cpha_0_proc and samp_ce_cpha_0_proc"
+          "solution": "Add 1 space(s) between samp_ce_cpha_0_proc and :"
         },
         {
           "rule": "generate_002",
           "linenumber": 374,
-          "solution": "Add 1 space(s) between samp_ce_cpha_1_proc and samp_ce_cpha_1_proc"
+          "solution": "Add 1 space(s) between samp_ce_cpha_1_proc and :"
         },
         {
           "rule": "generate_002",
           "linenumber": 380,
-          "solution": "Add 1 space(s) between fsm_ce_cpha_0_proc and fsm_ce_cpha_0_proc"
+          "solution": "Add 1 space(s) between fsm_ce_cpha_0_proc and :"
         },
         {
           "rule": "generate_002",
           "linenumber": 385,
-          "solution": "Add 1 space(s) between fsm_ce_cpha_1_proc and fsm_ce_cpha_1_proc"
+          "solution": "Add 1 space(s) between fsm_ce_cpha_1_proc and :"
         },
         {
           "rule": "generate_003",
@@ -2028,12 +2028,12 @@
         {
           "rule": "if_015",
           "linenumber": 443,
-          "solution": "Change spaces between end and end to 1"
+          "solution": "Change spaces between end and if to 1"
         },
         {
           "rule": "if_015",
           "linenumber": 451,
-          "solution": "Change spaces between end and end to 1"
+          "solution": "Change spaces between end and if to 1"
         },
         {
           "rule": "if_030",
@@ -2993,12 +2993,12 @@
         {
           "rule": "process_024",
           "linenumber": 321,
-          "solution": "Add 1 space(s) between spi_2x_ce_gen_proc and spi_2x_ce_gen_proc"
+          "solution": "Add 1 space(s) between spi_2x_ce_gen_proc and :"
         },
         {
           "rule": "process_024",
           "linenumber": 436,
-          "solution": "Add 1 space(s) between in_transfer_proc and in_transfer_proc"
+          "solution": "Add 1 space(s) between in_transfer_proc and :"
         },
         {
           "rule": "process_026",

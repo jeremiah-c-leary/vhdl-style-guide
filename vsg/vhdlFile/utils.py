@@ -391,8 +391,9 @@ def print_error_message(sToken, token, iToken, lObjects):
     iLine = calculate_line_number(iToken, lObjects)
     iColumn = calculate_column(iToken, lObjects)
     sModuleName = extract_module_name(token)
-    print(f'Error: Unknown token in {sModuleName}({iLine}:{iColumn})')
-    print(f'       Expecting {sToken}, found {sFoundToken}')
+    print(f'Error: Unexpected token detected while parsing {sModuleName} @ Line {iLine}, Column {iColumn}')
+    print(f'       Expecting : {sToken}')
+    print(f'       Found     : {sFoundToken}')
     exit()
 
 

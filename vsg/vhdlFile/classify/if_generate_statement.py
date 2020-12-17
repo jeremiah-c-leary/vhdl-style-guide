@@ -22,6 +22,10 @@ def detect(iToken, lObjects):
 
     if utils.are_next_consecutive_tokens([None, ':', 'if'], iToken, lObjects):
         return classify(iToken, lObjects)
+    if utils.are_next_consecutive_tokens(['if'], iToken, lObjects):
+        iIndex = utils.find_next_token(iToken, lObjects)
+        oToken = token.if_keyword(lObjects[iToken].get_value())
+        utils.print_error_message('generate_label', oToken, iIndex, lObjects)
     return iToken
 
 

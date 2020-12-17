@@ -19,6 +19,10 @@ from vsg.vhdlFile.classify import case_generate_alternative
 def detect(iToken, lObjects):
     if utils.are_next_consecutive_tokens([None, ':', 'case'], iToken, lObjects):
         return classify(iToken, lObjects)
+    if utils.are_next_consecutive_tokens(['case'], iToken, lObjects):
+        iIndex = utils.find_next_token(iToken, lObjects)
+        oToken = token.case_keyword(lObjects[iToken].get_value())
+        utils.print_error_message('generate_label', oToken, iIndex, lObjects)
     return iToken
 
 
