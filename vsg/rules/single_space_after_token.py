@@ -33,6 +33,8 @@ class single_space_after_token(rule.Rule):
     def _analyze(self, lToi):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
+            if isinstance(lTokens[1], parser.carriage_return):
+                continue
             if not isinstance(lTokens[1], parser.whitespace):
                 oViolation = violation.New(oToi.get_line_number(), oToi, self.solution)
                 oViolation.set_action('insert')

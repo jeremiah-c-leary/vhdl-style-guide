@@ -13,6 +13,9 @@ begin
      a <= b when z = "000",
           c when z = "001";
 
+  a <=
+       b;
+
   -- Violation below
 
   a <= b;
