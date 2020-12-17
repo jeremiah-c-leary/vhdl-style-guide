@@ -37,7 +37,11 @@ class blank_line_above_line_starting_with_token(rule.Rule):
         else:
             return oFile.get_line_above_line_starting_with_token_with_hierarchy(self.lTokens, self.lHierarchyLimits)
 
+    def _set_allow_tokens(self):
+        return
+
     def _analyze(self, lToi):
+        self._set_allow_tokens()
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             bSkip = False

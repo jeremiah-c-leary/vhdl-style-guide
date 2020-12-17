@@ -46,11 +46,21 @@ This rule checks for a blank line above the **library** keyword.
 
 Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
 
+There is an additional **allow_library_clause** option which can be set.
+Refer to section `Reporting Single Rule Configuration <configuring.html>`_ for details on finding configuration options for individual rules.
+
+allow_library_clause
+^^^^^^^^^^^^^^^^^^^^
+
+When set to **True**, it allows consecutive library clauses.
+
 **Violation**
 
 .. code-block:: vhdl
 
    library ieee;
+     use ieee.std_logic_1164.all;
+   library top_dsn;
    library fifo_dsn;
 
 **Fix**
@@ -58,7 +68,9 @@ Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ f
 .. code-block:: vhdl
 
    library ieee;
+     use ieee.std_logic_1164.all;
 
+   library top_dsn;
    library fifo_dsn;
 
 library_004

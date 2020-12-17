@@ -14,3 +14,10 @@ class rule_003(blank_line_above_line_starting_with_token):
 
     def __init__(self):
         blank_line_above_line_starting_with_token.__init__(self, 'library', '003', lTokens)
+        self.allow_library_clause = False
+        self.configuration.append('allow_library_clause')
+
+    def _set_allow_tokens(self):
+        if self.allow_library_clause:
+            self.lAllowTokens = []
+            self.lAllowTokens.append(token.library_clause.keyword)
