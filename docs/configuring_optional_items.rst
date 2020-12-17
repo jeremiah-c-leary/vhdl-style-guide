@@ -45,7 +45,7 @@ Rules Enforcing Optional Items
 * `context_022 <context_rules.html#context_022>`_
 * `entity_015 <entity_rules.html#entity_015>`_
 * `entity_019 <entity_rules.html#entity_019>`_
-* `instantiation_033 <instantiation_rules.html.html#instantiation_033>`_
+* `instantiation_033 <instantiation_rules.html#instantiation_033>`_
 * `package_007 <package_rules.html#package_007>`_
 * `package_014 <package_rules.html#package_014>`_
 * `package_body_002 <package_body_rules.html#package_body_002>`_
