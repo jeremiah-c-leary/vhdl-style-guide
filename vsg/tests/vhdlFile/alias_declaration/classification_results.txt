@@ -37,7 +37,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.close_parenthesis'>
 <class 'vsg.token.alias_declaration.is_keyword'>
-<class 'vsg.token.alias_declaration.name'>
+<class 'vsg.parser.todo'>
 <class 'vsg.token.signature.open_bracket'>
 <class 'vsg.token.type_mark.name'>
 <class 'vsg.token.signature.comma'>
@@ -61,7 +61,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.close_parenthesis'>
 <class 'vsg.token.alias_declaration.is_keyword'>
-<class 'vsg.token.alias_declaration.name'>
+<class 'vsg.parser.todo'>
 <class 'vsg.token.signature.open_bracket'>
 <class 'vsg.token.type_mark.name'>
 <class 'vsg.token.signature.comma'>
@@ -83,7 +83,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.close_parenthesis'>
 <class 'vsg.token.alias_declaration.is_keyword'>
-<class 'vsg.token.alias_declaration.name'>
+<class 'vsg.parser.todo'>
 <class 'vsg.token.signature.open_bracket'>
 <class 'vsg.token.signature.return_keyword'>
 <class 'vsg.token.type_mark.name'>
@@ -93,7 +93,7 @@
 13 | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-14 |   alias ident : std_logic_vector(3 downto 0) is write_enable;
+14 |   alias ident : std_logic_vector(3 downto 0) is write_enable(15 downto 0);
 <class 'vsg.token.alias_declaration.alias_keyword'>
 <class 'vsg.token.alias_declaration.alias_designator'>
 <class 'vsg.token.alias_declaration.colon'>
@@ -104,7 +104,12 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.close_parenthesis'>
 <class 'vsg.token.alias_declaration.is_keyword'>
-<class 'vsg.token.alias_declaration.name'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.downto'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
 <class 'vsg.token.alias_declaration.semicolon'>
 --------------------------------------------------------------------------------
 15 | 
@@ -117,7 +122,7 @@
 <class 'vsg.token.alias_declaration.alias_keyword'>
 <class 'vsg.token.alias_declaration.alias_designator'>
 <class 'vsg.token.alias_declaration.is_keyword'>
-<class 'vsg.token.alias_declaration.name'>
+<class 'vsg.parser.todo'>
 <class 'vsg.token.signature.open_bracket'>
 <class 'vsg.token.type_mark.name'>
 <class 'vsg.token.signature.comma'>
@@ -134,7 +139,7 @@
 <class 'vsg.token.alias_declaration.alias_keyword'>
 <class 'vsg.token.alias_declaration.alias_designator'>
 <class 'vsg.token.alias_declaration.is_keyword'>
-<class 'vsg.token.alias_declaration.name'>
+<class 'vsg.parser.todo'>
 <class 'vsg.token.signature.open_bracket'>
 <class 'vsg.token.type_mark.name'>
 <class 'vsg.token.signature.comma'>
@@ -149,7 +154,7 @@
 <class 'vsg.token.alias_declaration.alias_keyword'>
 <class 'vsg.token.alias_declaration.alias_designator'>
 <class 'vsg.token.alias_declaration.is_keyword'>
-<class 'vsg.token.alias_declaration.name'>
+<class 'vsg.parser.todo'>
 <class 'vsg.token.signature.open_bracket'>
 <class 'vsg.token.signature.return_keyword'>
 <class 'vsg.token.type_mark.name'>
@@ -163,7 +168,7 @@
 <class 'vsg.token.alias_declaration.alias_keyword'>
 <class 'vsg.token.alias_declaration.alias_designator'>
 <class 'vsg.token.alias_declaration.is_keyword'>
-<class 'vsg.token.alias_declaration.name'>
+<class 'vsg.parser.todo'>
 <class 'vsg.token.alias_declaration.semicolon'>
 --------------------------------------------------------------------------------
 24 | 
