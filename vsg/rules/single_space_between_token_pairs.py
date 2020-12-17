@@ -45,13 +45,13 @@ class single_space_between_token_pairs(rule.Rule):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             if len(lTokens) == 2:
-                sSolution = f'Add {self.iSpaces} space(s) between {lTokens[0].get_value()} and {lTokens[0].get_value()}'
+                sSolution = f'Add {self.iSpaces} space(s) between {lTokens[0].get_value()} and {lTokens[1].get_value()}'
                 oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
                 self.add_violation(oViolation)
             elif self.bMinimum:
                 continue
             elif len(lTokens[1].get_value()) != 1:
-                sSolution = f'Change spaces between {lTokens[0].get_value()} and {lTokens[0].get_value()} to {self.iSpaces}'
+                sSolution = f'Change spaces between {lTokens[0].get_value()} and {lTokens[2].get_value()} to {self.iSpaces}'
                 self.add_violation(violation.New(oToi.get_line_number(), oToi, sSolution))
 
     def _fix_violation(self, oViolation):

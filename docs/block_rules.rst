@@ -224,7 +224,7 @@ Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ f
 block_202
 ^^^^^^^^^
 
-This rule checks for a blank line above the **begin** keyword..
+This rule checks for a blank line above the **begin** keyword.
 
 Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
 
@@ -232,7 +232,7 @@ Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ f
 
 .. code-block:: vhdl
 
-   block label block is
+   block_label block is
 
      constant width : integer := 32;
    begin
@@ -241,7 +241,7 @@ Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ f
 
 .. code-block:: vhdl
 
-   block label block is
+   block_label block is
 
      constant width : integer := 32;
 
