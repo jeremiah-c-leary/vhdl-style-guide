@@ -40,7 +40,7 @@ setup(
   install_requires=[
     'PyYAML>=5.1'
   ],
-  python_requires='>=3.9',
+  python_requires='>=3.5',
   entry_points={
     'console_scripts': [
       'vsg = vsg.__main__:main'
