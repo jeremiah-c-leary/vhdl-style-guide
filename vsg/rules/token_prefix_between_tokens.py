@@ -40,11 +40,14 @@ class token_prefix_between_tokens(rule.Rule):
         return oFile.get_tokens_matching_in_range_bounded_by_tokens(self.lTokens, self.oStart, self.oEnd)
 
     def _analyze(self, lToi):
+        lPrefixLower = []
+        for sPrefix in self.prefixes:
+            lPrefixLower.append(sPrefix.lower())
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             sToken = lTokens[0].get_value().lower()
             bValid = False
-            for sPrefix in self.prefixes:
+            for sPrefix in lPrefixLower:
                 if sToken.startswith(sPrefix):
                     bValid = True
             if not bValid:

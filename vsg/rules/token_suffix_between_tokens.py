@@ -39,11 +39,14 @@ class token_suffix_between_tokens(rule.Rule):
         return oFile.get_tokens_matching_in_range_bounded_by_tokens(self.lTokens, self.oStart, self.oEnd)
 
     def _analyze(self, lToi):
+        lSuffixLower = []
+        for sSuffix in self.suffixes:
+            lSuffixLower.append(sSuffix.lower())
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             sToken = lTokens[0].get_value().lower()
             bValid = False
-            for sSuffix in self.suffixes:
+            for sSuffix in lSuffixLower:
                 if sToken.endswith(sSuffix):
                     bValid = True
             if not bValid:

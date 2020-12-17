@@ -27,3 +27,15 @@ class test_package_body_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
+    def test_rule_600_capitalized(self):
+        oRule = package_body.rule_600()
+        oRule.suffixes = ['_PKG']
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'package_body')
+        self.assertEqual(oRule.identifier, '600')
+
+        lExpected = [6, 8]
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+

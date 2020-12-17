@@ -26,3 +26,15 @@ class test_port_rule(unittest.TestCase):
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+
+    def test_rule_025_capitalized(self):
+        oRule = port.rule_025()
+        oRule.suffixes = ['_I', '_O', '_IO']
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'port')
+        self.assertEqual(oRule.identifier, '025')
+
+        lExpected = [14, 15, 16, 17]
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))

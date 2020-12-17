@@ -38,12 +38,15 @@ class token_prefix(rule.Rule):
         return oFile.get_tokens_matching(self.lTokens)
 
     def _analyze(self, lToi):
+        lPrefixLower = []
+        for sPrefix in self.prefixes:
+            lPrefixLower.append(sPrefix.lower())
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             sToken = lTokens[0].get_value().lower()
             bValid = False
-            for sPrefix in self.prefixes:
-                if sToken.startswith(sPrefix):
+            for sPrefix in lPrefixLower:
+                if sToken.startswith(sPrefix.lower()):
                     bValid = True
             if not bValid:
                 sSolution = 'Prefix ' + lTokens[0].get_value() + ' with one of the following: ' + ', '.join(self.prefixes)
