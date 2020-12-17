@@ -492,3 +492,46 @@ entity instantiation
 
    U_FIFO : FIFO
 
+Naming Convention Rules (600 - 699)
+###################################
+
+instantiation_600
+^^^^^^^^^^^^^^^^^
+
+This rule checks for valid suffixes on instantiation labels.
+The default suffix is *_inst*.
+
+Refer to the section `Configuring Prefix and Suffix Rules <configuring_prefix_suffix.html>`_ for information on changing the allowed suffixes.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   fifo_32x2k : FIFO
+
+**Fix**
+
+.. code-block:: vhdl
+
+   fifo_32x2k_inst : FIFO
+
+instantiation_601
+^^^^^^^^^^^^^^^^^
+
+This rule checks for valid prefixes on instantiation labels.
+The default prefix is *u_*.
+
+Refer to the section `Configuring Prefix and Suffix Rules <configuring_prefix_suffix.html>`_ for information on changing the allowed prefixes.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   fifo_32x2k : FIFO
+
+**Fix**
+
+.. code-block:: vhdl
+
+   u_fifo_32x2k : FIFO
+

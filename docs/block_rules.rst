@@ -580,7 +580,7 @@ block_600
 ^^^^^^^^^
 
 This rule checks for valid suffixes on block labels.
-The default package suffix is *_blk*.
+The default suffix is *_blk*.
 
 Refer to the section `Configuring Prefix and Suffix Rules <configuring_prefix_suffix.html>`_ for information on changing the allowed suffixes.
 
@@ -600,7 +600,7 @@ block_601
 ^^^^^^^^^
 
 This rule checks for valid prefixes on block labels.
-The default package prefix is *blk_*.
+The default prefix is *blk_*.
 
 Refer to the section `Configuring Prefix and Suffix Rules <configuring_prefix_suffix.html>`_ for information on changing the allowed prefixes.
 
