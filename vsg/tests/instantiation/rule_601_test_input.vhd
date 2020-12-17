@@ -3,7 +3,7 @@ architecture ARCH of ENTITY1 is
 
 begin
 
-  U_INST1 : INST1
+  INST_INST1 : INST1
     generic map (
       G_GEN_1 => 3,
       G_GEN_2 => 4,

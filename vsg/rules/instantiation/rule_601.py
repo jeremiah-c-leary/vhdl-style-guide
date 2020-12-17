@@ -14,5 +14,5 @@ class rule_601(token_prefix):
 
     def __init__(self):
         token_prefix.__init__(self, 'instantiation', '601', lTokens)
-        self.prefixes = ['u_']
+        self.prefixes = ['inst_']
         self.solution = 'instantiation label'
