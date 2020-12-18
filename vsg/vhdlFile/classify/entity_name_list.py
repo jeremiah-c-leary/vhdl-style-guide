@@ -16,11 +16,11 @@ def classify(iToken, lObjects):
 
     if utils.is_next_token('others', iToken, lObjects):
 
-        return utils.assign_next_token_required('others', token.others, iToken, lObjects)
+        return utils.assign_next_token_required('others', token.others_keyword, iToken, lObjects)
 
     elif utils.is_next_token('all', iToken, lObjects):
 
-        return utils.assign_next_token_required('all', token.all, iToken, lObjects)
+        return utils.assign_next_token_required('all', token.all_keyword, iToken, lObjects)
 
     else:
 

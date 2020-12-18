@@ -45,7 +45,7 @@ class insert_token_right_of_possible_tokens_if_it_does_not_exist_before_token(ru
         if self.action == 'add':
             return oFile.get_tokens_bounded_by(self.lAnchorTokens[0], self.oEndToken)
         else:
-            return oFile.get_token_and_n_tokens_before_it(self.oInsertToken, 1)
+            return oFile.get_token_and_n_tokens_before_it([self.oInsertToken], 1)
 
     def _analyze(self, lToi):
         if self.action == 'remove':

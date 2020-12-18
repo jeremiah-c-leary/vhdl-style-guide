@@ -44,7 +44,7 @@ class insert_token_left_of_token_if_it_does_not_exist_between_tokens(rule.Rule):
         if self.action == 'add':
             return oFile.get_tokens_bounded_by(self.start_token, self.end_token)
         else:
-            return oFile.get_token_and_n_tokens_before_it(self.insert_token, 1)
+            return oFile.get_token_and_n_tokens_before_it([self.insert_token], 1)
 
     def _analyze(self, lToi):
         if self.action == 'remove':

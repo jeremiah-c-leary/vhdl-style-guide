@@ -33,13 +33,17 @@ class single_space_before_token(rule.Rule):
     def _analyze(self, lToi):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
+            if isinstance(lTokens[0], parser.carriage_return):
+                continue
             if not isinstance(lTokens[0], parser.whitespace):
-                oViolation = violation.New(oToi.get_line_number(), oToi, self.solution)
+                sSolution = 'Ensure a single space before ' + lTokens[1].get_value()
+                oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
                 oViolation.set_action('insert')
                 self.add_violation(oViolation)
             else:
                 if lTokens[0].get_value() != ' ':
-                    oViolation = violation.New(oToi.get_line_number(), oToi, self.solution)
+                    sSolution = 'Ensure a single space before ' + lTokens[1].get_value()
+                    oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
                     oViolation.set_action('adjust')
                     self.add_violation(oViolation)
 

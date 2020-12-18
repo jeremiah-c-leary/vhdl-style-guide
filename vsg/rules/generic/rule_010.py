@@ -35,7 +35,7 @@ class rule_010(rule.Rule):
 
     def analyze(self, oFile):
         aToi = oFile.get_tokens_bounded_by(token.generic_clause.close_parenthesis, parser.carriage_return)
-        lToi = oFile.get_token_and_n_tokens_before_it(token.generic_clause.close_parenthesis, 2)
+        lToi = oFile.get_token_and_n_tokens_before_it([token.generic_clause.close_parenthesis], 2)
         for iToi, oToi in enumerate(lToi):
 
             lTokens = oToi.get_tokens()

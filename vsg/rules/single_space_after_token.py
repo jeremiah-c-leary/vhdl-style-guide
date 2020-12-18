@@ -36,12 +36,14 @@ class single_space_after_token(rule.Rule):
             if isinstance(lTokens[1], parser.carriage_return):
                 continue
             if not isinstance(lTokens[1], parser.whitespace):
-                oViolation = violation.New(oToi.get_line_number(), oToi, self.solution)
+                sSolution = 'Ensure a single space after ' + lTokens[0].get_value()
+                oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
                 oViolation.set_action('insert')
                 self.add_violation(oViolation)
             else:
                 if lTokens[1].get_value() != ' ':
-                    oViolation = violation.New(oToi.get_line_number(), oToi, self.solution)
+                    sSolution = 'Ensure a single space after ' + lTokens[0].get_value()
+                    oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
                     oViolation.set_action('adjust')
                     self.add_violation(oViolation)
 

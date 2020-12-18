@@ -40,7 +40,7 @@ class insert_token_right_of_token_if_it_does_not_exist(rule.Rule):
         if self.action == 'add':
             return oFile.get_sequence_of_tokens_not_matching([self.anchor_token, parser.whitespace, type(self.insert_token)])
         else:
-            return oFile.get_token_and_n_tokens_before_it(self.insert_token, 1)
+            return oFile.get_token_and_n_tokens_before_it([self.insert_token], 1)
 
     def _analyze(self, lToi):
         for oToi in lToi:

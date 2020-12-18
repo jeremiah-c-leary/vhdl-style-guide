@@ -176,7 +176,7 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring_keyword_a
 
    U_FIFO : FIFO
      generic map (
-       g_width => 8
+       g_width => 8,
        g_delay    => 2
      )
      port map (
@@ -191,7 +191,7 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring_keyword_a
 
    U_FIFO : FIFO
      generic map (
-       g_width => 8
+       g_width => 8,
        g_delay => 2
      )
      port map (

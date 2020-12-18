@@ -29,7 +29,7 @@ class remove_token_and_whitespace_before_it(rule.Rule):
         self.lTokens = lTokens
 
     def _get_tokens_of_interest(self, oFile):
-        return oFile.get_token_and_n_tokens_before_it(self.lTokens[0], 1)
+        return oFile.get_token_and_n_tokens_before_it([self.lTokens[0]], 1)
 
     def _analyze(self, lToi):
         for oToi in lToi:
