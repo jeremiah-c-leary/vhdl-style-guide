@@ -39,7 +39,6 @@ def set_token_indent(lTokens):
     bArchitectureFound = False
     dVars = {}
     dVars['insideConcurrentSignalAssignment'] = False
-
     for oToken in lTokens:
 
         if isinstance(oToken, parser.whitespace):
@@ -60,6 +59,7 @@ def set_token_indent(lTokens):
         if isinstance(oToken, token.context_declaration.end_keyword):
             oToken.set_indent(0)
             iIndent -= 1
+            bLibraryFound = False
             continue
 
         if isinstance(oToken, token.library_clause.keyword):
@@ -225,7 +225,9 @@ def set_token_indent(lTokens):
 
         ### Comments
         if isinstance(oToken, parser.comment):
-            if not dVars['insideConcurrentSignalAssignment']:
+            if bLibraryFound:
+                oToken.set_indent(iIndent + 1)
+            elif not dVars['insideConcurrentSignalAssignment']:
                 oToken.set_indent(iIndent)
             continue
 
