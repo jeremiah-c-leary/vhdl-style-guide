@@ -97,7 +97,7 @@ class align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens(
                            sSolution = 'Move ' + str(dAnalysis[iKey]['adjust']) + ' columns'
                            oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, sSolution)
                            oViolation.set_action(dAnalysis[iKey])
-                           self.violations.append(oViolation)
+                           self.add_violation(oViolation)
 
                    dAnalysis = {}
 
@@ -109,7 +109,7 @@ class align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens(
                            sSolution = 'Move ' + str(dAnalysis[iKey]['adjust']) + ' columns'
                            oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, sSolution)
                            oViolation.set_action(dAnalysis[iKey])
-                           self.violations.append(oViolation)
+                           self.add_violation(oViolation)
 
                    dAnalysis = {}
 
@@ -151,7 +151,7 @@ class align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens(
                                    sSolution = 'Move ' + str(dAnalysis[iKey]['adjust']) + ' columns'
                                    oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, sSolution)
                                    oViolation.set_action(dAnalysis[iKey])
-                                   self.violations.append(oViolation)
+                                   self.add_violation(oViolation)
 
                            dAnalysis = {}
                    if self.blank_line_ends_group:
@@ -164,7 +164,7 @@ class align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens(
                                    sSolution = 'Move ' + str(dAnalysis[iKey]['adjust']) + ' columns'
                                    oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, sSolution)
                                    oViolation.set_action(dAnalysis[iKey])
-                                   self.violations.append(oViolation)
+                                   self.add_violation(oViolation)
 
                            dAnalysis = {}
 
@@ -179,7 +179,7 @@ class align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens(
                     sSolution = 'Move ' + str(dAnalysis[iKey]['adjust']) + ' columns'
                     oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, sSolution)
                     oViolation.set_action(dAnalysis[iKey])
-                    self.violations.append(oViolation)
+                    self.add_violation(oViolation)
 
             dAnalysis = {}
 

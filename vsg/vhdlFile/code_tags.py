@@ -46,7 +46,7 @@ class New():
               else:
                  for sCodeTag in lValues[2:]:
                      self.add(sCodeTag)
-          elif sValue.startswith('-- vsg-disable-next-line'):
+          elif sValue.startswith('-- vsg_disable_next_line'):
               lValues = sValue.split()
               for sCodeTag in lValues[2:]:
                  if sCodeTag not in self.next_line_code_tags:

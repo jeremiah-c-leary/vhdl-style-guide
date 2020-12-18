@@ -44,7 +44,7 @@ class insert_carriage_return_after_token_if_it_is_not_followed_by_a_comment_and_
                if isinstance(oToken, self.oSameLineToken):
                    break
            else:
-               self.violations.append(violation.New(oToi.get_line_number(), oToi, self.solution))
+               self.add_violation(violation.New(oToi.get_line_number(), oToi, self.solution))
 
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()

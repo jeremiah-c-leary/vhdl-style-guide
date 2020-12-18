@@ -49,7 +49,7 @@ class whitespace_before_tokens_in_between_tokens(rule.Rule):
                 continue
 
             oViolation = violation.New(oToi.get_line_number(), oToi, self.solution)
-            self.violations.append(oViolation)
+            self.add_violation(oViolation)
 
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()

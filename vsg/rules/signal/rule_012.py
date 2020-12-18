@@ -111,7 +111,7 @@ class rule_012(rule.Rule):
                     sSolution = 'Move ' + dAnalysis[iKey]['token_value'] + ' ' + str(dAnalysis[iKey]['adjust']) + ' columns'
                     oViolation = violation.New(dAnalysis[iKey]['line_number'], oLineTokens, sSolution)
                     oViolation.set_action(dAnalysis[iKey])
-                    self.violations.append(oViolation)
+                    self.add_violation(oViolation)
 
             dAnalysis = {}
 

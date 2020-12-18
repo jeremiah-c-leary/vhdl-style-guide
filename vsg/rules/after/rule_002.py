@@ -123,7 +123,7 @@ class rule_002(rule.Rule):
                                    oLineTokens = oFile.get_tokens_from_line(iKey)
                                    oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, self.solution)
                                    oViolation.set_action(dAnalysis[iKey])
-                                   self.violations.append(oViolation)
+                                   self.add_violation(oViolation)
 
                            dAnalysis = {}
 
@@ -136,7 +136,7 @@ class rule_002(rule.Rule):
                                    oLineTokens = oFile.get_tokens_from_line(iKey)
                                    oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, self.solution)
                                    oViolation.set_action(dAnalysis[iKey])
-                                   self.violations.append(oViolation)
+                                   self.add_violation(oViolation)
 
                            dAnalysis = {}
 
@@ -147,7 +147,7 @@ class rule_002(rule.Rule):
                     oLineTokens = oFile.get_tokens_from_line(iKey)
                     oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, self.solution)
                     oViolation.set_action(dAnalysis[iKey])
-                    self.violations.append(oViolation)
+                    self.add_violation(oViolation)
 
             dAnalysis = {}
 

@@ -48,7 +48,7 @@ class remove_blank_lines_above_line_starting_with_token(rule.Rule):
                            dAction = {}
                            dAction['remove_to_index'] = iToken + 1
                            oViolation.set_action(dAction)
-                           self.violations.append(oViolation)
+                           self.add_violation(oViolation)
 
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()

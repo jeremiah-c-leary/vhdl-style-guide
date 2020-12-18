@@ -36,4 +36,4 @@ class line_length(rule.Rule):
     def _analyze(self, lToi):
         for oToi in lToi:
             oViolation = violation.New(oToi.get_line_number(), oToi, self.solution)
-            self.violations.append(oViolation)
+            self.add_violation(oViolation)

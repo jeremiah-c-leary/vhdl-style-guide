@@ -58,7 +58,7 @@ class align_consecutive_lines_after_line_starting_with_token_and_stopping_with_t
                            dAction['type'] = 'adjust'
                            dAction['adjust'] = iWhitespaceLength
                            oViolation.set_action(dAction)
-                           self.violations.append(oViolation)
+                           self.add_violation(oViolation)
                    else:
                        oLineTokens = oFile.get_tokens_from_line(iLine)
                        oViolation = violation.New(iLine, oLineTokens, self.solution)
@@ -66,7 +66,7 @@ class align_consecutive_lines_after_line_starting_with_token_and_stopping_with_t
                        dAction['type'] = 'insert'
                        dAction['adjust'] = iWhitespaceLength
                        oViolation.set_action(dAction)
-                       self.violations.append(oViolation)
+                       self.add_violation(oViolation)
 
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()

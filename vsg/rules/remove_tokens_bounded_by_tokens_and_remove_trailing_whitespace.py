@@ -35,7 +35,7 @@ class remove_tokens_bounded_by_tokens_and_remove_trailing_whitespace(rule.Rule):
 
     def _analyze(self, lToi):
         for oToi in lToi:
-           self.violations.append(violation.New(oToi.get_line_number(), oToi, self.solution))
+           self.add_violation(violation.New(oToi.get_line_number(), oToi, self.solution))
 
     def _fix_violation(self, oViolation):
         oViolation.set_tokens([])

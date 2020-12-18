@@ -35,4 +35,4 @@ class file_length(rule.Rule):
         if len(lToi) > self.length:
             sSolution = 'Reduce file length to less than ' + str(self.length) + ' lines'
             oViolation = violation.New(self.length, None, sSolution)
-            self.violations.append(oViolation)
+            self.add_violation(oViolation)

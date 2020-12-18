@@ -65,7 +65,7 @@ class align_left_token_with_right_token_if_right_token_starts_a_line(rule.Rule):
                 dAction['column'] = iRightColumn
                 oViolation = violation.New(iLineNumber, oToi, sSolution)
                 oViolation.set_action(dAction)
-                self.violations.append(oViolation)
+                self.add_violation(oViolation)
 
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()

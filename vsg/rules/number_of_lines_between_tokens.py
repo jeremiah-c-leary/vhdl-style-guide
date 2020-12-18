@@ -40,4 +40,4 @@ class number_of_lines_between_tokens(rule.Rule):
             if oToi.get_token_value() > self.length:
                 sSolution = 'Reduce process to less than ' + str(self.length) + ' lines'
                 oViolation = violation.New(oToi.get_line_number(), None, sSolution)
-                self.violations.append(oViolation)
+                self.add_violation(oViolation)
