@@ -670,3 +670,28 @@ This rule checks for a single space between the entity_name and the **is** keywo
 
    architecture rtl of fifo is
 
+Vertical Spacing Rules (200 - 299)
+##################################
+
+block_200
+^^^^^^^^^
+
+This rule checks for a blank line below the end architecture statement.
+
+Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   end architecture;
+   library ieee;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   end architecture;
+
+   library ieee;
+
