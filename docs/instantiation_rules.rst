@@ -519,7 +519,7 @@ instantiation_601
 ^^^^^^^^^^^^^^^^^
 
 This rule checks for valid prefixes on instantiation labels.
-The default prefix is *u_*.
+The default prefix is *inst_*.
 
 Refer to the section `Configuring Prefix and Suffix Rules <configuring_prefix_suffix.html>`_ for information on changing the allowed prefixes.
 
@@ -533,5 +533,5 @@ Refer to the section `Configuring Prefix and Suffix Rules <configuring_prefix_su
 
 .. code-block:: vhdl
 
-   u_fifo_32x2k : FIFO
+   inst_fifo_32x2k : FIFO
 
