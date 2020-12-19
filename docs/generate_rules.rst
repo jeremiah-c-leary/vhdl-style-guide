@@ -364,3 +364,142 @@ This rule checks the indent of the **end** keyword in the generate statement bod
    begin
    end;
    end generate;
+
+Alignment Rules (400 - 499)
+###########################
+
+generate_400
+^^^^^^^^^^^^
+
+This rule checks the identifiers for all declarations are aligned in the generate declarative part in for generate statements.
+
+Refer to the section `Configuring Identifier Alignment Rules <configuring_declaration_identifier_alignment.html>`_ for information on changing the configurations.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   variable    var1 : natural;
+   constant  c_period : time;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   variable var1     : natural;
+   constant c_period : time;
+
+generate_401
+^^^^^^^^^^^^
+
+This rule checks the colons are in the same column for all declarations in the generate declarative part in for generate statements..
+Refer to the section `Configuring Keyword Alignment Rules <configuring_keyword_alignment.html>`_ for information on changing the configurations.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   signal sig1: natural;
+   variable var2  : natural;
+   constant c_period : time;
+   file my_test_input : my_file_type;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   signal sig1        : natural;
+   variable var2      : natural;
+   constant c_period  : time;
+   file my_test_input : my_file_type;
+
+generate_402
+^^^^^^^^^^^^
+
+This rule checks the identifiers for all declarations are aligned in the generate declarative part in if generate statements.
+
+Refer to the section `Configuring Identifier Alignment Rules <configuring_declaration_identifier_alignment.html>`_ for information on changing the configurations.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   variable    var1 : natural;
+   constant  c_period : time;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   variable var1     : natural;
+   constant c_period : time;
+
+generate_403
+^^^^^^^^^^^^
+
+This rule checks the colons are in the same column for all declarations in the generate declarative part in if generate statements..
+Refer to the section `Configuring Keyword Alignment Rules <configuring_keyword_alignment.html>`_ for information on changing the configurations.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   signal sig1: natural;
+   variable var2  : natural;
+   constant c_period : time;
+   file my_test_input : my_file_type;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   signal sig1        : natural;
+   variable var2      : natural;
+   constant c_period  : time;
+   file my_test_input : my_file_type;
+
+generate_404
+^^^^^^^^^^^^
+
+This rule checks the identifiers for all declarations are aligned in the generate declarative part in case generate statements.
+
+Refer to the section `Configuring Identifier Alignment Rules <configuring_declaration_identifier_alignment.html>`_ for information on changing the configurations.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   variable    var1 : natural;
+   constant  c_period : time;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   variable var1     : natural;
+   constant c_period : time;
+
+generate_405
+^^^^^^^^^^^^
+
+This rule checks the colons are in the same column for all declarations in the generate declarative part in case generate statements..
+Refer to the section `Configuring Keyword Alignment Rules <configuring_keyword_alignment.html>`_ for information on changing the configurations.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   signal sig1: natural;
+   variable var2  : natural;
+   constant c_period : time;
+   file my_test_input : my_file_type;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   signal sig1        : natural;
+   variable var2      : natural;
+   constant c_period  : time;
+   file my_test_input : my_file_type;
+
