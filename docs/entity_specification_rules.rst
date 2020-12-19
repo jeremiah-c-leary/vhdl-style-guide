@@ -31,7 +31,7 @@ This rule checks for a single space after the colon.
 entity_specification_101
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-This rule checks for at least a single space before the :.
+This rule checks for at least a single space before the colon.
 
 **Violation**
 
