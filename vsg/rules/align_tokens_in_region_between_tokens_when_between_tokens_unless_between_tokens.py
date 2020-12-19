@@ -8,7 +8,7 @@ from vsg import violation
 from vsg.vhdlFile import utils
 
 
-class align_tokens_in_region_between_tokens_unless_between_tokens(rule.Rule):
+class align_tokens_in_region_between_tokens_when_between_tokens_unless_between_tokens(rule.Rule):
     '''
     Checks for a single space between two tokens.
 
@@ -34,13 +34,14 @@ class align_tokens_in_region_between_tokens_unless_between_tokens(rule.Rule):
        A list of pairs of tokens in which to exclude alignment
     '''
 
-    def __init__(self, name, identifier, lTokens, left_token, right_token, lUnless):
+    def __init__(self, name, identifier, lTokens, left_token, right_token, lBetween, lUnless):
         rule.Rule.__init__(self, name=name, identifier=identifier)
         self.solution = None
         self.phase = 5
         self.lTokens = lTokens
         self.left_token = left_token
         self.right_token = right_token
+        self.lBetween = lBetween[0]
         self.lUnless = lUnless
         ## attributes below are configurable by the user
 
@@ -59,7 +60,7 @@ class align_tokens_in_region_between_tokens_unless_between_tokens(rule.Rule):
 
 
     def analyze(self, oFile):
-        lToi = oFile.get_tokens_bounded_by(self.left_token, self.right_token)
+        lToi = oFile.get_tokens_bounded_by_token_when_between_tokens(self.left_token, self.right_token, self.lBetween[0], self.lBetween[1])
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             iLine = oToi.get_line_number()

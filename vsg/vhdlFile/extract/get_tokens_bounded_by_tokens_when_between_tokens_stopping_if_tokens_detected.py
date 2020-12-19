@@ -4,7 +4,7 @@ from vsg import parser
 from vsg.vhdlFile.extract import tokens
 
 
-def get_tokens_bounded_by_token_when_between_tokens(oLeft, oRight, oStart, oEnd, lAllTokens, oTokenMap, include_trailing_whitespace=False):
+def get_tokens_bounded_by_token_when_between_tokens_stopping_if_tokens_detected(oLeft, oRight, oStart, oEnd, lStop, lAllTokens, oTokenMap, include_trailing_whitespace=False):
 
     lLeft, lRight = oTokenMap.get_token_pair_indexes(oLeft, oRight)
     lStart, lEnd = oTokenMap.get_token_pair_indexes(oStart, oEnd)
