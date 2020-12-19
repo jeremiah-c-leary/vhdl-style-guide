@@ -25,10 +25,10 @@ architecture_002
 
 This rule has been split into the following rules:
 
-* architecture_030
-* architecture_031
-* architecture_032
-* architecture_033
+* :ref:`architecture_030`
+* :ref:`architecture_031`
+* :ref:`architecture_032`
+* :ref:`architecture_033`
 
 architecture_003
 ################
