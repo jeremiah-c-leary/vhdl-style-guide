@@ -202,6 +202,9 @@ class vhdlFile():
     def get_tokens_from_line(self, iLineNumber):
         return extract.get_tokens_from_line(iLineNumber, self.lAllObjects, self.oTokenMap)
 
+    def get_consecutive_lines_starting_with_token(self, search_token, min_num_lines=2):
+        return extract.get_consecutive_lines_starting_with_token(search_token, min_num_lines, self.lAllObjects, self.oTokenMap)
+
     def get_consecutive_lines_starting_with_token_and_stopping_when_token_starting_line_is_found(self, search_token, stop_token):
         return extract.get_consecutive_lines_starting_with_token_and_stopping_when_token_starting_line_is_found(search_token, stop_token, self.lAllObjects, self.oTokenMap)
 

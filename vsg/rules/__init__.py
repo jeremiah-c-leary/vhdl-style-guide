@@ -77,6 +77,7 @@ from vsg.rules import assert_statement
 from vsg.rules import attribute_declaration
 from vsg.rules import attribute_specification
 from vsg.rules import block
+from vsg.rules import block_comment
 from vsg.rules import case
 from vsg.rules import comment
 from vsg.rules import component
