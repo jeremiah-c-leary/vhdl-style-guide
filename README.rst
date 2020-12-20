@@ -32,7 +32,7 @@ The new parser has been completed and all rules have been converted.
 Initial hardening tests have also been completed.
 Effort is underway to address all bugs against version 2.
 
-I am targetting January 2020 for release 3.0.0.
+I am targeting January 2021 for release 3.0.0.
 
 Major Changes:
 
@@ -41,6 +41,7 @@ Major Changes:
 * Instantiation rules moved to generic_map and port_map rules
 * Updated multiline alignment rules
 * Tool integration updates
+* Additional rules
 
 
 .. image:: https://github.com/jeremiah-c-leary/vhdl-style-guide/blob/master/docs/img/vim_macro.gif
