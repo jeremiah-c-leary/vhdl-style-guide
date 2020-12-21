@@ -372,7 +372,6 @@ def read_indent_configuration(dConfiguration):
     ### This merges an indent configuration into the base indent dictionary
     if 'indent' in list(dConfiguration.keys()):
         dGroups = dConfiguration['indent']['tokens']
-        print(dGroups)
         for sGroup in list(dGroups.keys()):
             for sToken in list(dGroups[sGroup].keys()):
                 for sParameter in list(dGroups[sGroup][sToken].keys()):
