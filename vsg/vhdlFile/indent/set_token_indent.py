@@ -4,90 +4,6 @@ from vsg import token
 
 
 def set_token_indent(dIndentMap, lTokens):
-    '''
-    Set the indent level of tokens.
-    '''
-    iIndent = 0
-    bLabelFound = False
-    bLibraryFound = False
-    bArchitectureFound = False
-    dVars = {}
-    dVars['insideConcurrentSignalAssignment'] = False
-    for oToken in lTokens:
-
-        if isinstance(oToken, token.context_declaration.end_keyword):
-            bLibraryFound = False
-            continue
-
-        if isinstance(oToken, token.library_clause.keyword):
-            bLibraryFound = True
-            continue
-
-        if isinstance(oToken, token.use_clause.keyword):
-            if not bArchitectureFound:
-                oToken.set_indent(iIndent + 1)
-            else:
-                oToken.set_indent(iIndent)
-            continue
-
-        if isinstance(oToken, token.context_reference.keyword):
-            if bLibraryFound:
-                oToken.set_indent(iIndent + 1)
-            else:
-                oToken.set_indent(iIndent)
-            continue
-
-        if isinstance(oToken, token.architecture_body.architecture_keyword):
-            bArchitectureFound = True
-            continue
-
-        if isinstance(oToken, token.architecture_body.semicolon):
-            bArchitectureFound = False
-            continue
-
-        ### Comments
-        if isinstance(oToken, parser.comment):
-            if bLibraryFound:
-                oToken.set_indent(iIndent + 1)
-            elif not dVars['insideConcurrentSignalAssignment']:
-                oToken.set_indent(iIndent)
-            continue
-
-        ### Concurrent signal assignment
-        if isinstance(oToken, token.concurrent_signal_assignment_statement.label_name):
-            dVars['insideConcurrentSignalAssignment'] = True
-            continue
-
-        if isinstance(oToken, token.concurrent_signal_assignment_statement.postponed_keyword):
-            dVars['insideConcurrentSignalAssignment'] = True
-            continue
-
-        if isinstance(oToken, token.concurrent_simple_signal_assignment.target):
-            dVars['insideConcurrentSignalAssignment'] = True
-            continue
-
-        if isinstance(oToken, token.concurrent_conditional_signal_assignment.target):
-            dVars['insideConcurrentSignalAssignment'] = True
-            continue
-
-        if isinstance(oToken, token.concurrent_selected_signal_assignment.with_keyword):
-            dVars['insideConcurrentSignalAssignment'] = True
-            continue
-
-        if isinstance(oToken, token.concurrent_simple_signal_assignment.semicolon):
-            dVars['insideConcurrentSignalAssignment'] = False
-            continue
-
-        if isinstance(oToken, token.concurrent_conditional_signal_assignment.semicolon):
-            dVars['insideConcurrentSignalAssignment'] = False
-            continue
-
-        if isinstance(oToken, token.concurrent_selected_signal_assignment.semicolon):
-            dVars['insideConcurrentSignalAssignment'] = False
-            continue
-
-
-def set_token_indent(dIndentMap, lTokens):
 
     lTokenKeys, dIndents = process_indent_map(dIndentMap)
 
@@ -189,6 +105,7 @@ def set_token_indent(dIndentMap, lTokens):
             dVars['insideConcurrentSignalAssignment'] = False
             continue
 
+
 def update_indent_var(iIndent, update):
     if str(update).startswith('+'):
         return iIndent + int(update)
@@ -197,6 +114,7 @@ def update_indent_var(iIndent, update):
     if update == 'current':
         return iIndent
     return update
+
 
 def process_indent_map(dIndentMap):
     dReturn = {}
