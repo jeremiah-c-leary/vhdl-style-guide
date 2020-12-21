@@ -21,6 +21,7 @@ from vsg.vhdlFile.classify import blank
 from vsg.vhdlFile.classify import comment
 from vsg.vhdlFile.classify import design_file
 from vsg.vhdlFile.classify import whitespace
+from vsg.vhdlFile.classify import preprocessor
 
 from vsg.vhdlFile.indent.set_token_indent import set_token_indent
 
@@ -56,7 +57,6 @@ class vhdlFile():
     def _processFile(self):
 
         self.lAllObjects = []
-
         for sLine in self.filecontent:
             lTokens = tokens.create(sLine.replace('\t', '  ').rstrip())
             lObjects = []
@@ -66,6 +66,7 @@ class vhdlFile():
             blank.classify(lObjects)
             whitespace.classify(lTokens, lObjects)
             comment.classify(lTokens, lObjects)
+            preprocessor.classify(lTokens, lObjects)
 
             self.lAllObjects.extend(lObjects)
             self.lAllObjects.append(parser.carriage_return())

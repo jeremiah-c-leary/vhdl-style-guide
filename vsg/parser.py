@@ -97,6 +97,14 @@ class todo(item):
 # Base VHDL type classes
 ###############################################################################
 
+class preprocessor(item):
+    '''
+    unique_id = parser : preprocessor
+    '''
+
+    def __init__(self, sString):
+        item.__init__(self, sString)
+
 
 class type(item):
     '''

@@ -521,7 +521,8 @@ def token_is_whitespace_or_comment(oToken):
     if isinstance(oToken, parser.whitespace) or \
        isinstance(oToken, parser.carriage_return) or \
        isinstance(oToken, parser.comment) or \
-       isinstance(oToken, parser.blank_line):
+       isinstance(oToken, parser.blank_line) or \
+       isinstance(oToken, parser.preprocessor):
         return True
     else:
         return False
@@ -609,5 +610,7 @@ def is_whitespace(oObject):
     if isinstance(oObject, parser.comment):
         return True
     if isinstance(oObject, parser.whitespace):
+        return True
+    if isinstance(oObject, parser.preprocessor):
         return True
     return False
