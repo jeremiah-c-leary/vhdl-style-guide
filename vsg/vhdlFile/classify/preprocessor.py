@@ -12,6 +12,6 @@ def classify(lTokens, lObjects):
     try:
         if lTokens[0].startswith('#') or (lTokens[0].startswith(' ') and lTokens[1].startswith('#')):
             lObjects.clear()
-            lObjects.append(parser.preprocessor(''))
+            lObjects.append(parser.preprocessor(''.join(lTokens)))
     except IndexError:
         return
