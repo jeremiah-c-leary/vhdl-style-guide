@@ -342,3 +342,32 @@ This rule checks the indent of the closing parenthesis on multiline types.
 
    begin
 
+Alignment Rules (400 - 499)
+###########################
+
+block_400
+^^^^^^^^^
+
+This rule checks the colons are in the same column for all elements in the block declarative part.
+
+Refer to the section `Configuring Keyword Alignment Rules <configuring_keyword_alignment.html>`_ for information on changing the configurations.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   type t_some_record is record
+     element_1 : natural;
+     some_other_element : natural;
+     yet_another_element : natural;
+   end record;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   type t_some_record is record
+     element_1           : natural;
+     some_other_element  : natural;
+     yet_another_element : natural;
+   end record;
