@@ -7,13 +7,17 @@ from vsg import rule_list
 from vsg import severity
 from vsg.tests import utils
 
+dIndentMap = utils.read_indent_file()
+
 lIteration = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','..','code_examples', 'turbocodes', 'iteration_synth.vhd'))
 oIteration = vhdlFile.vhdlFile(lIteration)
+oIteration.set_indent_map(dIndentMap) 
 
 dLegacyConfig = utils.read_configuration(os.path.join(os.path.dirname(__file__),'..','..','..','..','styles', 'indent_only.yaml'))
 dLegacyConfig['debug'] = False
 
 oSeverityList = severity.create_list({})
+
 
 class testCodeExample(unittest.TestCase):
 

@@ -51,6 +51,7 @@ class vhdlFile():
         self.lAllObjects = []
         self._processFile()
         self.filename = None
+        self.dIndentMap = None
 
     def _processFile(self):
 
@@ -72,14 +73,8 @@ class vhdlFile():
         design_file.tokenize(self.lAllObjects)
         post_token_assignments(self.lAllObjects)
 
-        self.set_token_indent()
         set_token_hierarchy_value(self.lAllObjects)
         self.oTokenMap = process_tokens(self.lAllObjects)
-#        lIndex = self.oTokenMap.get_token_indexes(token.library_clause.keyword)
-#        print(lIndex)
-#        for iIndex in lIndex:
-#            print(self.oTokenMap.get_line_number_of_index(iIndex))
-#        exit()
 
     def update(self, lUpdates):
         if len(lUpdates) == 0:
@@ -97,6 +92,13 @@ class vhdlFile():
             self.lAllObjects[iStart:iEnd] = lTokens
         if bUpdateMap:
             self.oTokenMap = process_tokens(self.lAllObjects)
+
+    def set_indent_map(self, dIndentMap):
+        self.dIndentMap = dIndentMap
+        set_token_indent(self.dIndentMap, self.lAllObjects)
+
+    def get_indent_map(self):
+        return self.dIndentMap
 
     def get_object_lines(self):
         lReturn = []
@@ -122,7 +124,7 @@ class vhdlFile():
         self.lAllObjects = utils.fix_blank_lines(self.lAllObjects)
 
     def set_token_indent(self):
-        set_token_indent(self.lAllObjects)
+        set_token_indent(self.dIndentMap, self.lAllObjects)
 
     def get_line_preceeding_line(self, iLine, iNumLines=1):
         return extract.get_line_preceeding_line(iLine, self.lAllObjects, iNumLines, self.oTokenMap)

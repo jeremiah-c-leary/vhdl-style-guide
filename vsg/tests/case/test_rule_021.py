@@ -10,6 +10,8 @@ sTestDir = os.path.dirname(__file__)
 
 lFile = utils.read_vhdlfile(os.path.join(sTestDir,'rule_021_test_input.vhd'))
 
+dIndentMap = utils.read_indent_file()
+
 lExpected = []
 lExpected.append('')
 utils.read_file(os.path.join(sTestDir, 'rule_021_test_input.fixed.vhd'), lExpected)
@@ -19,6 +21,7 @@ class test_case_rule(unittest.TestCase):
 
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
+        self.oFile.set_indent_map(dIndentMap)
 
     def test_rule_021(self):
         oRule = case.rule_021()

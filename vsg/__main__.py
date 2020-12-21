@@ -289,6 +289,7 @@ def generate_output_configuration(commandLineArguments, configuration):
         if commandLineArguments.local_rules:
             dOutputConfiguration['local_rules'] = commandLineArguments.local_rules
         dOutputConfiguration['rule'] = oRules.get_configuration()
+        dOutputConfiguration['indent'] = configuration['indent']
         with open(commandLineArguments.output_configuration, 'w') as json_file:
             json.dump(dOutputConfiguration, json_file, sort_keys=True, indent=2)
         sys.exit(fExitStatus)
@@ -353,6 +354,35 @@ def add_debug_to_configuration(oCLA, dConfiguration):
     return dConfiguration
 
 
+def read_indent_configuration(dConfiguration):
+    '''
+    Reads the default indent dictionary and merges any changes from a user configuration.
+
+    Parameters:
+
+       dConfiguration: (dictionary)
+
+    Returns:  (dictionary)
+    '''
+
+    sFileName = os.path.join(os.path.dirname(__file__), 'vhdlFile', 'indent', 'indent_config.yaml')
+   
+    dReturn = open_configuration_file(sFileName)
+
+    ### This merges an indent configuration into the base indent dictionary
+    if 'indent' in list(dConfiguration.keys()):
+        dGroups = dConfiguration['indent']['tokens']
+        print(dGroups)
+        for sGroup in list(dGroups.keys()):
+            for sToken in list(dGroups[sGroup].keys()):
+                for sParameter in list(dGroups[sGroup][sToken].keys()):
+                    dReturn['indent']['tokens'][sGroup][sToken][sParameter] = dGroups[sGroup][sToken][sParameter]
+
+    dConfiguration['indent'] = dReturn['indent']
+
+    return dReturn
+
+
 def main():
     '''Main routine of the VHDL Style Guide (VSG) program.'''
 
@@ -365,6 +395,8 @@ def main():
     dStyle = read_predefined_style(commandLineArguments.style)
 
     configuration = read_configuration_files(dStyle, commandLineArguments)
+
+    dIndent = read_indent_configuration(configuration)
 
     fix_only = open_fix_file(commandLineArguments.fix_only)
 
@@ -398,6 +430,7 @@ def main():
         dJsonEntry = {}
         oVhdlFile = vhdlFile.vhdlFile(read_vhdlfile(sFileName))
         oVhdlFile.filename = sFileName
+        oVhdlFile.set_indent_map(dIndent)
         oRules = rule_list.rule_list(oVhdlFile, oSeverityList, commandLineArguments.local_rules)
         oRules.configure(configuration)
         try:

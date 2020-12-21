@@ -73,8 +73,10 @@ class item():
     def set_all_code_tags(self):
         self.code_tags = ['all']
 
-    def get_unique_id(self):
-        return self.base_token, self.sub_token
+    def get_unique_id(self, sJoin=None):
+        if sJoin is None:
+            return self.base_token, self.sub_token
+        return self.base_token + sJoin + self.sub_token
 
     def get_base_token(self):
         return self.base_token

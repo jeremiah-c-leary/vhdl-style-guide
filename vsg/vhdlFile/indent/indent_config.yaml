@@ -1,0 +1,450 @@
+
+indent:
+    tokens:
+        architecture_body:
+            architecture_keyword:
+                token : 0
+                after : 1
+            begin_keyword:
+                token : 0
+                after : 1
+            end_keyword:
+                token : 0
+                after : 0
+        assertion:
+            keyword:
+                token : current
+                after : '+1'
+            report_keyword:
+                token : current
+                after : current
+            severity_keyword:
+                token : current
+                after : current
+        assertion_statement:
+            label:
+                token : current
+                after : current
+            semicolon:
+                token : current
+                after : '-1'
+        association_element:
+            formal_part:
+                token : current
+                after : current
+        attribute_declaration:
+            attribute_keyword:
+                token : current
+                after : current
+        attribute_specification:
+            attribute_keyword:
+                token : current
+                after : current
+        block_statement:
+            block_label:
+                token : current
+                after : '+1'
+            begin_keyword:
+                token : '-1'
+                after : current
+            end_keyword:
+                token : '-1'
+                after : '-1'
+        case_generate_alternative:
+            when_keyword:
+                token : '-1'
+                after : current
+        case_generate_statement:
+            generate_label:
+                token : current
+                after : '+2'
+            end_keyword:
+                token : '-2'
+                after : '-2'
+        case_statement:
+            case_label:
+                token : current
+                after : current
+            case_keyword:
+                token : current
+                after : '+2'
+            end_keyword:
+                token : '-2'
+                after : '-2'
+        case_statement_alternative:
+            when_keyword:
+                token : '-1' 
+                after : current
+        component_declaration:
+            component_keyword:
+                token : current
+                after : '+1'
+            end_keyword:
+                token : '-1'
+                after : '-1'
+        component_instantiation_statement:
+            instantiation_label:
+                token : current
+                after : '+1'
+            semicolon:
+                token : current
+                after : '-1'
+        concurrent_assertion_statement:
+            label_name:
+                token : current
+                after : current
+            semicolon:
+                token : '-1'
+                after : '-1'
+        concurrent_conditional_signal_assignment:
+            target:
+                token : current
+                after : current
+        concurrent_procedure_call_statement:
+            label_name:
+                token : current
+                after : current
+            postponed_keyword:
+                token : current
+                after : current
+        concurrent_selected_signal_assignment:
+            with_keyword:
+                token : current
+                after : current
+        concurrent_signal_assignment_statement:
+            label_name:
+                token : current
+                after : current
+            postponed_keyword:
+                token : current
+                after : current
+        concurrent_simple_signal_assignment:
+            target:
+                token : current
+                after : current
+        conditional_variable_assignment:
+            target:
+                token : current
+                after : current
+        context_declaration:
+            context_keyword:
+                token : 0
+                after : '+1'
+            end_keyword:
+                token : 0
+                after : 0
+        constant_declaration:
+            constant_keyword:
+                token : current
+                after : current
+        if_generate_statement:
+            generate_label:
+                token : current
+                after : '+1'
+            if_keyword:
+                token : '-1'
+                after : current
+            elsif_keyword:
+                token : '-1'
+                after : current
+            else_keyword:
+                token : '-1'
+                after : current
+            end_keyword:
+                token : '-1'
+                after : '-1'
+        entity_declaration:
+            entity_keyword:
+                token : 0
+                after : 1
+            end_keyword:
+                token : 0
+                after : 0
+        enumeration_type_definition:
+            open_parenthesis:
+                token : current
+                after : '+1'
+            enumeration_literal:
+                token : current
+                after : current
+            close_parenthesis:
+                token : '-1'
+                after : '-1'
+        file_declaration:
+            file_keyword:
+                token : current
+                after : current
+        file_open_information:
+            open_keyword:
+                token : '+1'
+                after : current
+            is_keyword:
+                token : '+1'
+                after : current
+        for_generate_statement:
+            generate_label:
+                token : current
+                after : '+1'
+            end_keyword:
+                token : '-1'
+                after : '-1'
+        full_type_declaration:
+            type_keyword:
+                token : current
+                after : current
+        function_specification:
+            pure_keyword:
+                token : current
+                after : current
+            impure_keyword:
+                token : current
+                after : current
+            function_keyword:
+                token : current
+                after : '+1'
+            close_parenthesis:
+                token : '-1'
+                after : current
+        generate_statement_body:
+            begin_keyword:
+                token : '-1'
+                after : current
+            end_keyword:
+                token : '-1'
+                after : current
+        generic_clause:
+            generic_keyword:
+                token : current
+                after : '+1'
+            close_parenthesis:
+                token : '-1'
+                after : '-1'
+        generic_map_aspect:
+            generic_keyword:
+                token : current
+                after : '+1'
+            close_parenthesis:
+                token : '-1'
+                after : '-1'
+        identifier_list:
+            identifier:
+                token : current
+                after : current
+        if_statement:
+            if_label:
+                token : current
+                after : current
+            if_keyword:
+                token : current
+                after : '+1'
+            elsif_keyword:
+                token : '-1'
+                after : current
+            else_keyword:
+                token : '-1'
+                after : current
+            end_keyword:
+                token : '-1'
+                after : '-1'
+        incomplete_type_declaration:
+            type_keyword:
+                token : current
+                after : current
+        interface_constant_declaration:
+            constant_keyword:
+                token : current
+                after : current
+        interface_file_declaration:
+            file_keyword:
+                token : current
+                after : current
+        interface_function_specification:
+            function_keyword:
+                token : current
+                after : current
+        interface_incomplete_type_declaration:
+            type_keyword:
+                token : current
+                after : current
+        interface_package_declaration:
+            package_keyword:
+                token : current
+                after : current
+        interface_procedure_specification:
+            procedure_keyword:
+                token : current
+                after : current
+        interface_signal_declaration:
+            signal_keyword:
+                token : current
+                after : current
+        interface_unknown_declaration:
+            identifier:
+                token : current
+                after : current
+        interface_variable_declaration:
+            variable_keyword:
+                token : current
+                after : current
+        iteration_scheme:
+            for_keyword:
+                token : current
+                after : '+1'
+            while_keyword:
+                token : current
+                after : '+1'
+        library_clause:
+            keyword:
+                token : current
+                after : current
+        loop_statement:
+            loop_label:
+                token : current
+                after : current
+            loop_keyword:
+                token : '-1'
+                after : current
+            end_keyword:
+                token : '-1'
+                after : '-1'
+        null_statement:
+            label:
+                token : current
+                after : current
+            null_keyword:
+                token : current
+                after : current
+        package_body:
+            package_keyword:
+                token : current
+                after : '+1'
+            end_keyword:
+                token : '-1'
+                after : '-1'
+        package_declaration:
+            package_keyword:
+                token : current
+                after : '+1'
+            end_keyword:
+                token : '-1'
+                after : '-1'
+        port_clause:
+            port_keyword:
+                token : current
+                after : '+1'
+            close_parenthesis:
+                token : '-1'
+                after : '-1'
+        port_map_aspect:
+            port_keyword:
+                token : current
+                after : '+1'
+            close_parenthesis:
+                token : '-1'
+                after : '-1'
+        procedure_call:
+            procedure_name:
+                token : current
+                after : current
+        procedure_call_statement:
+            label:
+                token : current
+                after : current
+        procedure_specification:
+            procedure_keyword:
+                token : current
+                after : '+1'
+            close_parenthesis:
+                token : '-1'
+                after : current
+        process_statement:
+            process_label:
+                token : current
+                after : current
+            postponed_keyword:
+                token : current
+                after : current
+            process_keyword:
+                token : current
+                after : '+1'
+            begin_keyword:
+                token : '-1'
+                after : current
+            end_keyword:
+                token : '-1'
+                after : '-1'
+        record_type_definition:
+            record_keyword:
+                token : current
+                after : '+1'
+            end_keyword:
+                token : current
+                after : '-1'
+        return_statement:
+            return_keyword:
+                token : current
+                after : current
+        selected_variable_assignment:
+            with_keyword:
+                token : current
+                after : current
+        signal_assignment_statement:
+            label:
+                token : current
+                after : current
+        signal_declaration:
+            signal_keyword:
+                token : current
+                after : current
+        simple_force_assignment:
+            target:
+                token : current
+                after : current
+        simple_release_assignment:
+            target:
+                token : current
+                after : current
+        simple_variable_assignment:
+            target:
+                token : current
+                after : current
+        simple_waveform_assignment:
+            target:
+                token : current
+                after : current
+        subprogram_body:
+            begin_keyword:
+                token : '-1'
+                after : current
+            end_keyword:
+                token : '-1'
+                after : current
+            semicolon:
+                token : current
+                after : '-1'
+        subprogram_declaration:
+            semicolon:
+                token : current
+                after : '-1'
+        subtype_declaration:
+            subtype_keyword:
+                token : current
+                after : current
+        variable_assignment_statement:
+            label:
+                token : current
+                after : current
+        variable_declaration:
+            shared_keyword:
+                token : current
+                after : current
+            variable_keyword:
+                token : current
+                after : current
+        wait_statement:
+            label:
+                token : current
+                after : current
+            wait_keyword:
+                token : current
+                after : current

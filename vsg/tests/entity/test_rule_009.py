@@ -19,6 +19,8 @@ class test_entity_rule(unittest.TestCase):
 
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
+        dIndentMap = utils.read_indent_file()
+        self.oFile.set_indent_map(dIndentMap)
 
     def test_rule_009(self):
         oRule = entity.rule_009()

@@ -14,3 +14,4 @@ class rule_016(remove_blank_lines_above_line_starting_with_token):
 
     def __init__(self):
         remove_blank_lines_above_line_starting_with_token.__init__(self, 'entity', '016', lTokens)
+        self.solution = 'Remove blank lines above'

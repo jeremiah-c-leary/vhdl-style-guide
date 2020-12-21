@@ -7,7 +7,10 @@ from vsg import severity
 
 from vsg.tests import utils
 
+dIndentMap = utils.read_indent_file()
+
 oSeverityList = severity.create_list({})
+
 
 class testVsg(unittest.TestCase):
 
@@ -16,6 +19,7 @@ class testVsg(unittest.TestCase):
         lFile = []
         utils.read_file('vsg/tests/styles/code_examples/spi_master.vhd', lFile)
         oFile = vhdlFile.vhdlFile(lFile)
+        oFile.set_indent_map(dIndentMap)
         oRules = rule_list.rule_list(oFile, oSeverityList)
         oRules.check_rules()
         with open('vsg/tests/rule_list/extract_violation_dictionary.json') as jsonFile:
@@ -27,6 +31,7 @@ class testVsg(unittest.TestCase):
         lFile = []
         utils.read_file('vsg/tests/styles/code_examples/spi_master.vhd', lFile)
         oFile = vhdlFile.vhdlFile(lFile)
+        oFile.set_indent_map(dIndentMap)
         oRules = rule_list.rule_list(oFile, oSeverityList)
         oRules.check_rules(True)
         with open('vsg/tests/rule_list/extract_violation_dictionary_w_all_phases_enabled.json') as jsonFile:

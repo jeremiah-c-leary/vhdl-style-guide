@@ -46,6 +46,13 @@ def read_vhdlfile(sFileName):
         return []
 
 
+def read_indent_file():
+    sFileName = os.path.join('vsg', 'vhdlFile', 'indent', 'indent_config.yaml')
+    with open(sFileName) as yaml_file:
+        dFile = yaml.full_load(yaml_file)
+    return dFile
+
+
 def add_violation(iLineNumber):
     dViolation = {}
     dViolation['lines'] = []
