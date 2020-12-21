@@ -5,12 +5,12 @@ Block Comment Rules
 
     * header_left = '+'
     * header_left_repeat = '-'
-    * header_string = '[ Description ]'
+    * header_string = '[ Header ]'
     * header_right_repeat = '='
     * comment_left = '|'
     * footer_left = '+'
     * footer_left_repeat = '-'
-    * footer_string = '[ Description ]'
+    * footer_string = '[ Footer ]'
     * footer_right_repeat = '='
     * min_height = 3
     * header_alignment = 'center'
@@ -41,7 +41,7 @@ Refer to the section `Configuring Block Comments <configuring_block_comments.htm
 
 .. code-block:: vhdl
 
-   --+-----------[ Description ]===========
+   --+-------------[ Header ]==============
    --   Comment
    --   Comment
    ----------------------------------------
@@ -57,7 +57,7 @@ Refer to the section `Configuring Block Comments <configuring_block_comments.htm
 
 .. code-block:: vhdl
 
-   --+-----------[ Description ]===========
+   --+-------------[ Header ]==============
    --   Comment
    --   Comment
    ----------------------------------------
@@ -66,7 +66,7 @@ Refer to the section `Configuring Block Comments <configuring_block_comments.htm
 
 .. code-block:: vhdl
 
-   --+-----------[ Description ]===========
+   --+-------------[ Header ]==============
    --|  Comment
    --|  Comment
    ----------------------------------------
@@ -82,7 +82,7 @@ Refer to the section `Configuring Block Comments <configuring_block_comments.htm
 
 .. code-block:: vhdl
 
-   --+-----------[ Description ]===========
+   --+-------------[ Header ]==============
    --|  Comment
    --|  Comment
    ----------------------------------------
@@ -91,8 +91,8 @@ Refer to the section `Configuring Block Comments <configuring_block_comments.htm
 
 .. code-block:: vhdl
 
-   --+-----------[ Description ]===========
+   --+-------------[ Header ]==============
    --|  Comment
    --|  Comment
-   --+---------------------[ Description ]=
+   --+--------------------------[ Footer ]=
 

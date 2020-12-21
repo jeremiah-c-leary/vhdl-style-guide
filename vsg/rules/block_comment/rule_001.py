@@ -1,4 +1,6 @@
 
+import math
+
 from vsg import block_rule
 from vsg import parser
 from vsg import violation
@@ -38,12 +40,10 @@ class rule_001(block_rule.Rule):
 
         for oToi in lToi:
             lTokens = oToi.get_tokens()
-
             if isinstance(lTokens[0], parser.whitespace):
                 iWhitespace = len(lTokens[0].get_value())
             else:
                 iWhitespace = 0
-
             sHeader = '--'
             if self.header_left is not None:
                 sHeader += self.header_left
@@ -51,18 +51,19 @@ class rule_001(block_rule.Rule):
             if self.header_string is None:
                 sHeader += self.header_left_repeat * (self.max_header_column - iWhitespace - len(sHeader))
             elif self.header_alignment == 'center':
-                iLength = int((self.max_header_column - iWhitespace - len(sHeader) - len(self.header_string)) / 2)
+                iTemp = (self.max_header_column - iWhitespace - len(sHeader) - len(self.header_string)) / 2
+                iLength = math.floor((self.max_header_column - iWhitespace - len(sHeader) - len(self.header_string)) / 2)
                 sHeader += self.header_left_repeat * (iLength)
                 sHeader += self.header_string
-                sHeader += self.header_right_repeat * (self.max_header_column - len(sHeader))
+                sHeader += self.header_right_repeat * (self.max_header_column - iWhitespace - len(sHeader))
             elif self.header_alignment == 'left':
                 sHeader += self.header_left_repeat
                 sHeader += self.header_string
                 iLength = self.max_header_column - iWhitespace - len(sHeader)
-                sHeader += self.header_right_repeat * (self.max_header_column - len(sHeader))
+                sHeader += self.header_right_repeat * iLength
             elif self.header_alignment == 'right':
                 iLength = self.max_header_column - iWhitespace - len(sHeader) - len(self.header_string) - 1
-                sHeader += self.header_left_repeat * (iLength)
+                sHeader += self.header_left_repeat * iLength
                 sHeader += self.header_string
                 sHeader += self.header_right_repeat
 
@@ -70,7 +71,7 @@ class rule_001(block_rule.Rule):
                 if isinstance(oToken, parser.comment):
                     sComment = oToken.get_value()
                     try:
-                        if not sComment[2].isalnum():
+                        if not sComment[2].isalnum() and sComment[2] != '!':
                             if sComment != sHeader:
                                 sSolution = 'Change block comment header to : ' + sHeader
                                 oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)

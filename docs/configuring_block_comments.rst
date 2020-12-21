@@ -137,10 +137,10 @@ To configure the following example...
 
 .. code-block:: vhdl
 
-    --+-[Description]=========================
+    --+-<Header>==============================
     --| Purpose:
     --| Author:
-    --+-------------------------[Description]=
+    --+------------------------------<Footer>=
 
 ...the configuration would be:
 
@@ -151,7 +151,7 @@ To configure the following example...
        disable : False
        header_left : '+'
        header_left_repeat : '-'
-       header_string : '[Description]'
+       header_string : '<Header>'
        header_right_repeat : '='
        header_alignment : 'left'
      block_comment_002:
@@ -161,7 +161,7 @@ To configure the following example...
        disable : False
        footer_left : '+'
        footer_left_repeat : '-'
-       footer_string : '[Description]'
+       footer_string : '<Footer>'
        footer_right_repeat : '='
        footer_alignment : 'right' 
 
@@ -174,10 +174,10 @@ To configure a block comment for Doxygen...
 
 .. code-block:: vhdl
 
-    --!-------------------------------
+    ----------------------------------
     --! Comment
     --! Comment
-    --!-------------------------------
+    ----------------------------------
 
 ...the configuration would be:
 
@@ -186,7 +186,7 @@ To configure a block comment for Doxygen...
    rule:
      block_comment_001:
        disable : False
-       header_left : '!'
+       header_left : '-'
        header_left_repeat : '-'
        header_string : None
        header_right_repeat : None
@@ -195,7 +195,7 @@ To configure a block comment for Doxygen...
        comment_left : '!'
      block_comment_003:
        disable : False
-       footer_left : '!'
+       footer_left : '-'
        footer_left_repeat : '-'
        footer_string : None
        footer_right_repeat : None
