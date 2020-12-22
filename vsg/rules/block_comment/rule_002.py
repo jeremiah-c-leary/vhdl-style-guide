@@ -1,4 +1,6 @@
 
+import string
+
 from vsg import block_rule
 from vsg import parser
 from vsg import violation
@@ -41,9 +43,14 @@ class rule_002(block_rule.Rule):
                 
                 if isinstance(oToken, parser.comment):
                     iComment += 1
-                    if iComment > 1 and iComment < iComments:
+                    if iComment == 1:
+                        if not is_header(oToken.get_value()):
+                            break
+                    elif iComment > 1 and iComment < iComments:
 
                         if isinstance(lTokens[iToken - 1], parser.whitespace):
+                            if not self.allow_indenting:
+                                break
                             iWhitespace = len(lTokens[iToken - 1].get_value())
                         else:
                             iWhitespace = 0
@@ -55,3 +62,12 @@ class rule_002(block_rule.Rule):
                             sSolution = 'Comment must start with ' + sHeader
                             oViolation = violation.New(iLine, oToi, sSolution)
                             self.add_violation(oViolation)
+
+def is_header(sComment):
+    if sComment[2] not in string.punctuation:
+        return False
+    if sComment[2] == '!':
+        return False
+    if sComment[3] not in string.punctuation:
+        return False
+    return True

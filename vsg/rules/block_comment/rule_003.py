@@ -1,4 +1,6 @@
 
+import string
+
 from vsg import block_rule
 from vsg import parser
 from vsg import violation
@@ -48,6 +50,8 @@ class rule_003(block_rule.Rule):
 
                         if isinstance(lTokens[iToken - 1], parser.whitespace):
                             iWhitespace = len(lTokens[iToken - 1].get_value())
+                            if not self.allow_indenting:
+                                break
                         else:
                             iWhitespace = 0
 
@@ -75,7 +79,7 @@ class rule_003(block_rule.Rule):
 
                         sComment = oToken.get_value()
                         try:
-                            if not sComment[2].isalnum():
+                            if is_footer(sComment):
                                 if sComment != sFooter:
                                     sSolution = 'Change block comment footer to : ' + sFooter
                                     oViolation = violation.New(iLine, oToi, sSolution)
@@ -83,3 +87,12 @@ class rule_003(block_rule.Rule):
                                     break
                         except IndexError:
                             break
+
+def is_footer(sComment):
+    if sComment[2] not in string.punctuation:
+        return False
+    if sComment[2] == '!':
+        return False
+    if sComment[3] not in string.punctuation:
+        return False
+    return True

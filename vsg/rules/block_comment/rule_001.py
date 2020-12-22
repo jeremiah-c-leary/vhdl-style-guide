@@ -1,5 +1,6 @@
 
 import math
+import string
 
 from vsg import block_rule
 from vsg import parser
@@ -41,6 +42,8 @@ class rule_001(block_rule.Rule):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             if isinstance(lTokens[0], parser.whitespace):
+                if not self.allow_indenting:
+                    continue
                 iWhitespace = len(lTokens[0].get_value())
             else:
                 iWhitespace = 0
@@ -71,7 +74,7 @@ class rule_001(block_rule.Rule):
                 if isinstance(oToken, parser.comment):
                     sComment = oToken.get_value()
                     try:
-                        if not sComment[2].isalnum() and sComment[2] != '!':
+                        if is_header(sComment):
                             if sComment != sHeader:
                                 sSolution = 'Change block comment header to : ' + sHeader
                                 oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
@@ -79,3 +82,13 @@ class rule_001(block_rule.Rule):
                         break
                     except IndexError:
                         break
+
+
+def is_header(sComment):
+    if sComment[2] not in string.punctuation:
+        return False
+    if sComment[2] == '!':
+        return False
+    if sComment[3] not in string.punctuation:
+        return False
+    return True

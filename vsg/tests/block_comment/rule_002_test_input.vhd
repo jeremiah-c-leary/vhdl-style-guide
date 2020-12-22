@@ -27,3 +27,23 @@
 
 -- comment
 -- comment
+-- comment
+-- comment
+-- comment
+
+
+--+ Comment
+--+ Comment
+--+ Comment
+
+
+--| Comment
+--| Comment
+--| Comment
+--| Comment
+
+  ------------------------------------------------------------------------------
+  --+ Comment
+  --+ Comment
+  --+ Comment
+  ------------------------------------------------------------------------------
