@@ -50,10 +50,14 @@ class New():
 
     def get_token_pair_indexes(self, oStart, oEnd):
         lStartIndexes = self.get_token_indexes(oStart)
-        lEndIndexes = []
+        lReturnEndIndexes = []
+        lReturnStartIndexes = []
         for iIndex in lStartIndexes:
-            lEndIndexes.append(self.get_index_of_token_after_index(oEnd, iIndex))
-        return lStartIndexes, lEndIndexes
+            iEndIndex = self.get_index_of_token_after_index(oEnd, iIndex)
+            if iEndIndex is not None:
+                lReturnStartIndexes.append(iIndex)
+                lReturnEndIndexes.append(iEndIndex)
+        return lReturnStartIndexes, lReturnEndIndexes
 
     def get_index_of_next_non_whitespace_token(self, iIndex, bExcludeComments=False):
         iStartIndex = iIndex + 1
