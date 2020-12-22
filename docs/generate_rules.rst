@@ -392,7 +392,8 @@ Refer to the section `Configuring Identifier Alignment Rules <configuring_declar
 generate_401
 ^^^^^^^^^^^^
 
-This rule checks the colons are in the same column for all declarations in the generate declarative part in for generate statements..
+This rule checks the colons are in the same column for all declarations in the generate declarative part in for generate statements.
+
 Refer to the section `Configuring Keyword Alignment Rules <configuring_keyword_alignment.html>`_ for information on changing the configurations.
 
 **Violation**
@@ -437,7 +438,8 @@ Refer to the section `Configuring Identifier Alignment Rules <configuring_declar
 generate_403
 ^^^^^^^^^^^^
 
-This rule checks the colons are in the same column for all declarations in the generate declarative part in if generate statements..
+This rule checks the colons are in the same column for all declarations in the generate declarative part in if generate statements.
+
 Refer to the section `Configuring Keyword Alignment Rules <configuring_keyword_alignment.html>`_ for information on changing the configurations.
 
 **Violation**
@@ -482,7 +484,8 @@ Refer to the section `Configuring Identifier Alignment Rules <configuring_declar
 generate_405
 ^^^^^^^^^^^^
 
-This rule checks the colons are in the same column for all declarations in the generate declarative part in case generate statements..
+This rule checks the colons are in the same column for all declarations in the generate declarative part in case generate statements.
+
 Refer to the section `Configuring Keyword Alignment Rules <configuring_keyword_alignment.html>`_ for information on changing the configurations.
 
 **Violation**
