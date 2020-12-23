@@ -8,6 +8,8 @@ from vsg.tests import utils
 
 sTestDir = os.path.dirname(__file__)
 
+dIndentMap = utils.read_indent_file()
+
 lFile = utils.read_vhdlfile(os.path.join(sTestDir,'rule_003_test_input.vhd'))
 
 
@@ -15,6 +17,7 @@ class test_block_comment_rule(unittest.TestCase):
 
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
+        self.oFile.set_indent_map(dIndentMap)
 
     def test_rule_003_default(self):
         oRule = block_comment.rule_003()
@@ -22,7 +25,7 @@ class test_block_comment_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'block_comment')
         self.assertEqual(oRule.identifier, '003')
 
-        lExpected = [8, 12, 16, 20, 24, 28]
+        lExpected = [8, 12, 16, 20, 24, 30]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -55,7 +58,7 @@ class test_block_comment_rule(unittest.TestCase):
         oRule.footer_left = '|'
         oRule.max_footer_column = 80
 
-        lExpected = [4, 8, 16, 20, 24, 28]
+        lExpected = [4, 8, 16, 20, 24, 30]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -68,7 +71,7 @@ class test_block_comment_rule(unittest.TestCase):
         oRule.footer_right_repeat = '='
         oRule.footer_alignment = 'center'
 
-        lExpected = [4, 8, 12, 20, 24, 28]
+        lExpected = [4, 8, 12, 20, 24, 30]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -81,7 +84,7 @@ class test_block_comment_rule(unittest.TestCase):
         oRule.footer_right_repeat = '='
         oRule.footer_alignment = 'left'
 
-        lExpected = [4, 8, 12, 16, 24, 28]
+        lExpected = [4, 8, 12, 16, 24, 30]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -94,7 +97,7 @@ class test_block_comment_rule(unittest.TestCase):
         oRule.footer_right_repeat = '='
         oRule.footer_alignment = 'right'
 
-        lExpected = [4, 8, 12, 16, 20, 28]
+        lExpected = [4, 8, 12, 16, 20, 30]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))

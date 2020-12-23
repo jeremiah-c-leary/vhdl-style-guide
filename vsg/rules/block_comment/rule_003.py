@@ -33,7 +33,12 @@ class rule_003(block_rule.Rule):
         self.max_footer_column = 120
         self.configuration.extend(['footer_left', 'footer_left_repeat', 'footer_string', 'footer_right_repeat', 'footer_alignment', 'max_footer_column'])
 
-    def _analyze(self, lToi):
+    def analyze(self, oFile):
+
+        self._print_debug_message('Analyzing rule: ' + self.unique_id)
+        lToi = self._get_tokens_of_interest(oFile)
+
+        lUpdate = []
 
         for oToi in lToi:
             iLine, lTokens = utils.get_toi_parameters(oToi)
@@ -48,21 +53,25 @@ class rule_003(block_rule.Rule):
                     iComment += 1
                     if iComment == iComments:
 
-                        if isinstance(lTokens[iToken - 1], parser.whitespace):
-                            iWhitespace = len(lTokens[iToken - 1].get_value())
-                            if not self.allow_indenting:
+                        if not self.allow_indenting:
+                            if isinstance(lTokens[iToken - 1], parser.whitespace):
                                 break
-                        else:
-                            iWhitespace = 0
+                            else:
+                                oToken.set_indent(0)
+
+                        iWhitespace = self.indentSize * oToken.get_indent()
 
                         sFooter = '--'
                         if self.footer_left is not None:
                             sFooter += self.footer_left
+                            iFooter_left = len(self.footer_left)
+                        else:
+                            iFooter_left = 0
 
                         if self.footer_string is None:
                             sFooter += self.footer_left_repeat * (self.max_footer_column - iWhitespace - len(sFooter))
                         elif self.footer_alignment == 'center':
-                            iLength = int((self.max_footer_column - iWhitespace - len(sFooter) - len(self.footer_string)) / 2)
+                            iLength = int((self.max_footer_column - iWhitespace - len(self.footer_string)) / 2) - iFooter_left - 2
                             sFooter += self.footer_left_repeat * (iLength)
                             sFooter += self.footer_string
                             sFooter += self.footer_right_repeat * (self.max_footer_column - len(sFooter))
@@ -80,6 +89,8 @@ class rule_003(block_rule.Rule):
                         sComment = oToken.get_value()
                         try:
                             if is_footer(sComment):
+                                if not self.allow_indenting:
+                                    oToken.set_indent(0)
                                 if sComment != sFooter:
                                     sSolution = 'Change block comment footer to : ' + sFooter
                                     oViolation = violation.New(iLine, oToi, sSolution)
@@ -87,6 +98,13 @@ class rule_003(block_rule.Rule):
                                     break
                         except IndexError:
                             break
+
+            if not self.allow_indenting:
+                lUpdate.append(violation.New(0, oToi, ''))
+
+        if not self.allow_indenting:
+            oFile.update(lUpdate)
+
 
 def is_footer(sComment):
     if sComment[2] not in string.punctuation:

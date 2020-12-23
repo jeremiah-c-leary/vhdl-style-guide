@@ -28,9 +28,12 @@ class rule_002(block_rule.Rule):
         self.comment_left = None
         self.configuration.append('comment_left')
 
-    def _analyze(self, lToi):
-        if self.comment_left is None:
-            return
+    def analyze(self, oFile):
+
+        self._print_debug_message('Analyzing rule: ' + self.unique_id)
+        lToi = self._get_tokens_of_interest(oFile)
+
+        lUpdate = []
 
         for oToi in lToi:
             iLine, lTokens = utils.get_toi_parameters(oToi)
@@ -48,12 +51,15 @@ class rule_002(block_rule.Rule):
                             break
                     elif iComment > 1 and iComment < iComments:
 
+                        if not self.allow_indenting:
+                            oToken.set_indent(0)
+
+                        if self.comment_left is None:
+                            continue
+
                         if isinstance(lTokens[iToken - 1], parser.whitespace):
                             if not self.allow_indenting:
                                 break
-                            iWhitespace = len(lTokens[iToken - 1].get_value())
-                        else:
-                            iWhitespace = 0
 
                         sHeader = '--'
                         sHeader += self.comment_left
@@ -62,6 +68,13 @@ class rule_002(block_rule.Rule):
                             sSolution = 'Comment must start with ' + sHeader
                             oViolation = violation.New(iLine, oToi, sSolution)
                             self.add_violation(oViolation)
+
+            if not self.allow_indenting:
+                lUpdate.append(violation.New(0, oToi, ''))
+
+        if not self.allow_indenting:
+            oFile.update(lUpdate)
+
 
 def is_header(sComment):
     if sComment[2] not in string.punctuation:

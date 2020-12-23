@@ -19,3 +19,9 @@ class Rule(rule.Rule):
     def _get_tokens_of_interest(self, oFile):
         return oFile.get_consecutive_lines_starting_with_token(parser.comment, self.min_height)
 
+    def fix(self, oFile, dFixOnly=None):
+        '''
+        Applies fixes for any rule violations.
+        '''
+        self.analyze(oFile)
+

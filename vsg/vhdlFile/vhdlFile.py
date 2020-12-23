@@ -78,6 +78,7 @@ class vhdlFile():
         self.oTokenMap = process_tokens(self.lAllObjects)
 
     def update(self, lUpdates):
+    
         if len(lUpdates) == 0:
             return
         bUpdateMap = True

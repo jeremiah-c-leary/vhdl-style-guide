@@ -8,6 +8,8 @@ from vsg.tests import utils
 
 sTestDir = os.path.dirname(__file__)
 
+dIndentMap = utils.read_indent_file()
+
 lFile = utils.read_vhdlfile(os.path.join(sTestDir,'rule_002_test_input.vhd'))
 
 
@@ -15,6 +17,7 @@ class test_block_comment_rule(unittest.TestCase):
 
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
+        self.oFile.set_indent_map(dIndentMap)
 
     def test_rule_002_default(self):
         oRule = block_comment.rule_002()
