@@ -208,18 +208,23 @@ class rule_list():
             if phase in lSkipPhase:
                 continue
 
-            lRules = self.get_rules_in_phase(phase)
-            lRules = filter_out_disabled_rules(lRules)
-
-            for oRule in lRules:
-                oRule.analyze(self.oVhdlFile)
-                if oRule.severity.type == severity.error_type:
-                    iFailures += len(oRule.violations)
-                self.iNumberRulesRan += 1
-            self.lastPhaseRan = phase
-            if iFailures > 0 and not bAllPhases:
-                self.violations = True
-                break
+            for subphase in range(1, 5):
+                lRules = self.get_rules_in_phase(phase)
+                lRules = self.get_rules_in_subphase(lRules, subphase)
+                lRules = filter_out_disabled_rules(lRules)
+    
+                for oRule in lRules:
+                    oRule.analyze(self.oVhdlFile)
+                    if oRule.severity.type == severity.error_type:
+                        iFailures += len(oRule.violations)
+                    self.iNumberRulesRan += 1
+                self.lastPhaseRan = phase
+                if iFailures > 0 and not bAllPhases:
+                    self.violations = True
+                    break
+            else:
+                continue
+            break
 
     def report_violations(self, sOutputFormat):
         '''

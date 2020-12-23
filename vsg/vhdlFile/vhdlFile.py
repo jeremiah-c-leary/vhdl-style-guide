@@ -384,6 +384,7 @@ def post_token_assignments(lTokens):
                 continue
         else:
             oCodeTags.update(oToken)
+            oToken.set_code_tags(oCodeTags.get_tags())
             sValue = oToken.get_value()
             if sValue  == '+':
                 if utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken - 1, lTokens):

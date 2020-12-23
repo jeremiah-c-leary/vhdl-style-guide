@@ -11,3 +11,5 @@ class rule_010(token_indent):
 
     def __init__(self):
         token_indent.__init__(self, 'comment', '010', [parser.comment])
+        self.phase = 4
+        self.subphase = 3

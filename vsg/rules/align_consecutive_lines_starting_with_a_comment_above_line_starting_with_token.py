@@ -31,14 +31,17 @@ class align_consecutive_lines_starting_with_a_comment_above_line_starting_with_t
         self.bIncrement = bIncrement
 
     def analyze(self, oFile):
-
+        self._print_debug_message('Analyzing rule: ' + self.unique_id)
         lToi = oFile.get_consecutive_lines_starting_with_token_and_stopping_when_token_starting_line_is_found(parser.comment, self.token)
+        lUpdate = []
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             iLine = oToi.get_line_number()
 
             iTargetIndent = lTokens[-1].get_indent()
             iWhitespaceLength = iTargetIndent * self.indentSize
+
+            lUpdate = []
 
             for iIndex in range(0, len(lTokens)):
                oToken = lTokens[iIndex]
@@ -56,6 +59,7 @@ class align_consecutive_lines_starting_with_a_comment_above_line_starting_with_t
                            dAction['adjust'] = iWhitespaceLength
                            oViolation.set_action(dAction)
                            self.add_violation(oViolation)
+                       self._adjust_token_indent(lTokens[1], iTargetIndent)
                    else:
                        oLineTokens = oFile.get_tokens_from_line(iLine)
                        oViolation = violation.New(iLine, oLineTokens, self.solution)
@@ -64,7 +68,7 @@ class align_consecutive_lines_starting_with_a_comment_above_line_starting_with_t
                        dAction['adjust'] = iWhitespaceLength
                        oViolation.set_action(dAction)
                        self.add_violation(oViolation)
-
+                       self._adjust_token_indent(lTokens[0], iTargetIndent)
 
                if isinstance(oToken, parser.carriage_return):
                    iLine += 1
@@ -77,6 +81,7 @@ class align_consecutive_lines_starting_with_a_comment_above_line_starting_with_t
                            dAction['adjust'] = iWhitespaceLength
                            oViolation.set_action(dAction)
                            self.add_violation(oViolation)
+                       self._adjust_token_indent(lTokens[iIndex + 2], iTargetIndent)
                    else:
                        oLineTokens = oFile.get_tokens_from_line(iLine)
                        oViolation = violation.New(iLine, oLineTokens, self.solution)
@@ -85,6 +90,11 @@ class align_consecutive_lines_starting_with_a_comment_above_line_starting_with_t
                        dAction['adjust'] = iWhitespaceLength
                        oViolation.set_action(dAction)
                        self.add_violation(oViolation)
+                       self._adjust_token_indent(lTokens[iIndex + 1], iTargetIndent)
+
+            lUpdate.append(violation.New(0, oToi, ''))
+
+        oFile.update(lUpdate)
 
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
@@ -93,8 +103,7 @@ class align_consecutive_lines_starting_with_a_comment_above_line_starting_with_t
             lTokens[0].set_value(' ' * dAction['adjust'])
         elif dAction['type'] == 'insert':
             lTokens.insert(0, parser.whitespace(' ' * dAction['adjust']))
-        if self.bIncrement:
-            lTokens[1].set_indent(lTokens[1].get_indent() + 1)
-        else:
-            lTokens[1].set_indent(lTokens[1].get_indent() - 1)
         oViolation.set_tokens(lTokens)
+
+    def _adjust_token_indent(self, oToken, iIndent):
+        oToken.set_indent(iIndent)
