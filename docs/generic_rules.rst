@@ -351,3 +351,4 @@ Refer to the section `Configuring Prefix and Suffix Rules <configuring_prefix_su
 .. code-block:: vhdl
 
    generic(g_my_generic : integer);
+

@@ -25,8 +25,8 @@ end entity POINTER;
 
 architecture BEHAVIORAL of POINTER is
 
-  signal rx : std_logic_vector(9 downto 0) := initX;
-  signal ry : std_logic_vector(8 downto 0) := initY;
+  signal rx : std_logic_vector(9 downto 0) := INITX;
+  signal ry : std_logic_vector(8 downto 0) := INITY;
 
 begin
 

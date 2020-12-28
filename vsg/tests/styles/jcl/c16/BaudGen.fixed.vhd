@@ -38,9 +38,9 @@ architecture BEHAVIORAL of BAUDGEN is
 
   end;
 
-  constant common_div : integer := gcd(bg_clock_freq, 16 * bg_baud_rate);
-  constant clock_freq : integer := bg_clock_freq     / common_div;
-  constant baud_freq  : integer := 16 * bg_baud_rate / common_div;
+  constant common_div : integer := gcd(BG_CLOCK_FREQ, 16 * BG_BAUD_RATE);
+  constant clock_freq : integer := BG_CLOCK_FREQ     / common_div;
+  constant baud_freq  : integer := 16 * BG_BAUD_RATE / common_div;
   constant limit      : integer := clock_freq - baud_freq;
 
   signal counter      : integer range 0 to clock_freq - 1;

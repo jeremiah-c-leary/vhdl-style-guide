@@ -460,3 +460,38 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring_keyword_a
        data_o : in std_logic  -- Data output
    );
 
+Naming Convention Rules (600 - 699)
+###################################
+
+entity_600
+##########
+
+This rule checks for consistent capitalization of generic names in entity declarations.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   entity FIFO is
+     generic (
+       G_WIDTH : natural := 16
+     );
+     port (
+       I_DATA : std_logic_vector(g_width - 1 downto 0);
+       O_DATA : std_logic_vector(g_width - 1 downto 0)
+     );
+   end entity fifo;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   entity FIFO is
+     generic (
+       G_WIDTH : natural := 16
+     );
+     port (
+       I_DATA : std_logic_vector(G_WIDTH - 1 downto 0);
+       O_DATA : std_logic_vector(G_WIDTH - 1 downto 0)
+     );
+   end entity fifo;

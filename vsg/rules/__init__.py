@@ -43,6 +43,7 @@ from .n_spaces_between_token_pairs_when_bounded_by_tokens import n_spaces_betwee
 from .n_spaces_before_and_after_tokens import n_spaces_before_and_after_tokens
 from .n_spaces_after_tokens import n_spaces_after_tokens
 from .consistent_token_case import consistent_token_case
+from .consistent_case_of_tokens_from_between_tokens_applied_to_region import consistent_case_of_tokens_from_between_tokens_applied_to_region
 from .token_prefix import token_prefix
 from .token_prefix_between_tokens import token_prefix_between_tokens
 from .token_suffix import token_suffix

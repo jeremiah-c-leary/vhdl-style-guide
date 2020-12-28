@@ -673,8 +673,8 @@ This rule checks for a single space between the entity_name and the **is** keywo
 Vertical Spacing Rules (200 - 299)
 ##################################
 
-block_200
-^^^^^^^^^
+architecture_200
+^^^^^^^^^^^^^^^^
 
 This rule checks for a blank line below the end architecture statement.
 
@@ -694,4 +694,52 @@ Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ f
    end architecture;
 
    library ieee;
+
+Naming Convention Rules (600 - 699)
+###################################
+
+architecture_600
+################
+
+This rule checks for consistent capitalization of generic names in an architecture body.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   entity FIFO is
+     generic (
+       G_WIDTH : natural := 16
+     );
+   end entity fifo;
+
+   architecture rtl of fifo is
+
+      signal w_data : std_logic_vector(g_width - 1 downto 0);
+
+   begin
+
+      output <= large_data(g_width - 1 downto 0);
+
+   end architecture rtl;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   entity FIFO is
+     generic (
+       G_WIDTH : natural := 16
+     );
+   end entity fifo;
+
+   architecture rtl of fifo is
+
+      signal w_data : std_logic_vector(g_width - 1 downto 0);
+
+   begin
+
+      output <= large_data(g_width - 1 downto 0);
+
+   end architecture rtl;
 
