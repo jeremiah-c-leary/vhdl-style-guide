@@ -31,7 +31,7 @@ This rule checks for the proper indentation of instantiations.
 instantiation_002
 #################
 
-This rule checks for a single space after the :.
+This rule checks for a single space after the colon.
 
 **Violation**
 
@@ -48,7 +48,7 @@ This rule checks for a single space after the :.
 instantiation_003
 #################
 
-This rule checks for a single space before the :.
+This rule checks for a single space before the colon.
 
 **Violation**
 

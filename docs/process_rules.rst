@@ -587,7 +587,7 @@ This rule checks for a single space after the process label.
 process_025
 ###########
  
-This rule checks for a single space after the : and before the **process** keyword.
+This rule checks for a single space after the colon and before the **process** keyword.
 
 **Violation**
 

@@ -89,7 +89,7 @@ This rule checks the indent of port declarations.
 port_005
 ########
 
-This rule checks for a single space after the :.
+This rule checks for a single space after the colon.
 
 **Violation**
 
@@ -468,7 +468,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
 port_020
 ########
 
-This rule checks for at least one space before the :.
+This rule checks for at least one space before the colon.
 
 **Violation**
 

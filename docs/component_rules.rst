@@ -319,7 +319,7 @@ This rule checks for blank lines above the **end component** line.
 component_017
 #############
 
-This rule checks the alignment of the **:** for each generic and port in the component declaration.
+This rule checks the alignment of the colon for each generic and port in the component declaration.
 
 Following extra configurations are supported:
 

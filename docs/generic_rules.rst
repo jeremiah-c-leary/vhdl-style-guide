@@ -224,7 +224,7 @@ This rule checks for the **generic** keyword on the same line as a generic decla
 generic_014
 ###########
 
-This rule checks for at least a single space before the :.
+This rule checks for at least a single space before the colon.
 
 **Violation**
 

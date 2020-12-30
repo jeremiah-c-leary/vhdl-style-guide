@@ -324,7 +324,7 @@ This rule checks for blank lines above the **end entity** keywords.
 entity_017
 ##########
 
-This rule checks the alignment of the **:** for each generic and port in the entity declaration.
+This rule checks the alignment of the colon for each generic and port in the entity declaration.
 
 Following extra configurations are supported:
 

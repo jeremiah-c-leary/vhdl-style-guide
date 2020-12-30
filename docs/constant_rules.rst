@@ -71,7 +71,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
 constant_005
 ############
 
-This rule checks for a single space after the :.
+This rule checks for a single space after the colon.
 
 **Violation**
 
@@ -90,7 +90,7 @@ This rule checks for a single space after the :.
 constant_006
 ############
 
-This rule checks for at least a single space before the :.
+This rule checks for at least a single space before the colon.
 
 **Violation**
 

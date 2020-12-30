@@ -31,7 +31,7 @@ This rule checks the indent of the generate declaration.
 generate_002
 ############
 
-This rule checks for a single space between the label and the :.
+This rule checks for a single space between the label and the colon.
 
 **Violation**
 
@@ -264,7 +264,7 @@ This rule checks for a single space after the **generate** keyword and the label
 generate_014
 ############
 
-This rule checks for a single space between the : and the **for** keyword.
+This rule checks for a single space between the colon and the **for** keyword.
 
 **Violation**
 
