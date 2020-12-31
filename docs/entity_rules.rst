@@ -464,7 +464,7 @@ Naming Convention Rules (600 - 699)
 ###################################
 
 entity_600
-##########
+^^^^^^^^^^
 
 This rule checks for consistent capitalization of generic names in entity declarations.
 

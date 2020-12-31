@@ -699,7 +699,7 @@ Naming Convention Rules (600 - 699)
 ###################################
 
 architecture_600
-################
+^^^^^^^^^^^^^^^^
 
 This rule checks for consistent capitalization of generic names in an architecture body.
 
@@ -735,11 +735,11 @@ This rule checks for consistent capitalization of generic names in an architectu
 
    architecture rtl of fifo is
 
-      signal w_data : std_logic_vector(g_width - 1 downto 0);
+      signal w_data : std_logic_vector(G_WIDTH - 1 downto 0);
 
    begin
 
-      output <= large_data(g_width - 1 downto 0);
+      output <= large_data(G_WIDTH - 1 downto 0);
 
    end architecture rtl;
 
