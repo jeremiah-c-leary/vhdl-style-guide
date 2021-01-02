@@ -33,44 +33,28 @@ class n_spaces_before_and_after_tokens(rule.Rule):
         self.bNIsMinimum = bNIsMinimum
 
     def _get_tokens_of_interest(self, oFile):
-        return oFile.get_n_tokens_before_and_after_tokens(1, self.lTokens)
+        return oFile.get_n_tokens_before_and_after_tokens(2, self.lTokens)
 
     def _analyze(self, lToi):
         for oToi in lToi:
             iLine, lTokens = utils.get_toi_parameters(oToi)
+
+            fStartLine = False
+            if isinstance(lTokens[0], parser.carriage_return) and isinstance(lTokens[1], parser.whitespace):
+                fStartLine = True
+
+            myToi = oToi.extract_tokens(1, 3)
+
+            iLine, lTokens = utils.get_toi_parameters(myToi)
             dAction = {}
 
-            oLeft = lTokens[0]
-            if not isinstance(oLeft, parser.carriage_return):
-                if isinstance(oLeft, parser.whitespace):
-                    if self.bNIsMinimum:
-                        if self.iSpaces > len(oLeft.get_value()):
-                            dAction['left'] = {}
-                            dAction['left']['action'] = 'adjust'
-                    elif self.iSpaces != len(oLeft.get_value()):
-                        dAction['left'] = {}
-                        dAction['left']['action'] = 'adjust'
-                else:
-                    dAction['left'] = {}
-                    dAction['left']['action'] = 'insert'
+            check_spaces_on_left_side(lTokens, fStartLine, self.bNIsMinimum, dAction, self.iSpaces)
 
-            oRight = lTokens[-1]
-            if not isinstance(oRight, parser.carriage_return):
-                if isinstance(oRight, parser.whitespace):
-                    if self.bNIsMinimum:
-                        if self.iSpaces > len(oRight.get_value()):
-                            dAction['right'] = {}
-                            dAction['right']['action'] = 'adjust'
-                    elif self.iSpaces != len(oLeft.get_value()):
-                        dAction['right'] = {}
-                        dAction['right']['action'] = 'adjust'
-                else:
-                    dAction['right'] = {}
-                    dAction['right']['action'] = 'insert'
+            check_spaces_on_right_side(lTokens, self.bNIsMinimum, dAction, self.iSpaces)
 
             if len(list(dAction.keys())) > 0:
                 sSolution = create_solution_text(dAction, self.iSpaces, lTokens)
-                oViolation = violation.New(iLine, oToi, sSolution)
+                oViolation = violation.New(iLine, myToi, sSolution)
                 oViolation.set_action(dAction)
                 self.add_violation(oViolation)
 
@@ -88,7 +72,7 @@ class n_spaces_before_and_after_tokens(rule.Rule):
                 if dAction[sKey]['action'] == 'adjust':
                     lTokens[-1].set_value(' '*self.iSpaces)
                 else:
-                    lTokens.insert(len(lTokens) -1, parser.whitespace(' '))
+                    lTokens.insert(len(lTokens) - 1, parser.whitespace(' '))
         oViolation.set_tokens(lTokens)
 
 
@@ -106,3 +90,36 @@ def create_solution_text(dAction, iNumSpaces, lTokens):
             else:
                 sReturn += 'Add ' + str(iNumSpaces) + ' space(s) after ' + lTokens[1].get_value()
     return sReturn
+
+
+def check_spaces_on_left_side(lTokens, fStartLine, bNIsMinimum, dAction, iSpaces):
+    if not fStartLine:
+        oLeft = lTokens[0]
+        if not isinstance(oLeft, parser.carriage_return):
+            if isinstance(oLeft, parser.whitespace):
+                if bNIsMinimum:
+                    if iSpaces > len(oLeft.get_value()):
+                        dAction['left'] = {}
+                        dAction['left']['action'] = 'adjust'
+                elif iSpaces != len(oLeft.get_value()):
+                    dAction['left'] = {}
+                    dAction['left']['action'] = 'adjust'
+            else:
+                dAction['left'] = {}
+                dAction['left']['action'] = 'insert'
+
+
+def check_spaces_on_right_side(lTokens, bNIsMinimum, dAction, iSpaces):
+    oRight = lTokens[-1]
+    if not isinstance(oRight, parser.carriage_return):
+        if isinstance(oRight, parser.whitespace):
+            if bNIsMinimum:
+                if iSpaces > len(oRight.get_value()):
+                    dAction['right'] = {}
+                    dAction['right']['action'] = 'adjust'
+            elif iSpaces != len(oRight.get_value()):
+                dAction['right'] = {}
+                dAction['right']['action'] = 'adjust'
+        else:
+            dAction['right'] = {}
+            dAction['right']['action'] = 'insert'

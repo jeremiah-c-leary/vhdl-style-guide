@@ -21,4 +21,10 @@ begin
 
   a <= b & c & d & e;
 
+  -- This is okay
+
+  a <= b
+       & c
+       & d;
+
 end architecture RTL;
