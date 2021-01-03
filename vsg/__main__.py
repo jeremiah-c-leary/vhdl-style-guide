@@ -84,35 +84,11 @@ def read_predefined_style(sStyleName):
     return dReturn
 
 
-def open_fix_file(sFileName):
-    '''Attempts to open a configuration file and read it's contents.'''
-    try:
-        with open(sFileName) as yaml_file:
-            temp = yaml.full_load(yaml_file)
-            return temp
-    except IOError:
-        print('ERROR: Could not find JSON fix file: ' + sFileName)
-        write_invalid_configuration_junit_file(sFileName, sJUnitFileName)
-        sys.exit(1)
-    except yaml.scanner.ScannerError as e:
-        print('ERROR: Invalid JSON fix file: ' + sFileName)
-        print(e)
-        write_invalid_configuration_junit_file(sFileName, sJUnitFileName)
-        exit()
-    except yaml.parser.ParserError as e:
-        print('ERROR: Invalid JSON fix file: ' + sFileName)
-        print(e)
-        write_invalid_configuration_junit_file(sFileName, sJUnitFileName)
-        exit()
-    except TypeError:
-        return None
-
-
 def open_configuration_file(sFileName, sJUnitFileName=None):
     '''Attempts to open a configuration file and read it's contents.'''
     try:
         with open(sFileName) as yaml_file:
-            tempConfiguration = yaml.full_load(yaml_file)
+            return yaml.full_load(yaml_file)
     except IOError:
         print('ERROR: Could not find configuration file: ' + sFileName)
         write_invalid_configuration_junit_file(sFileName, sJUnitFileName)
@@ -127,7 +103,8 @@ def open_configuration_file(sFileName, sJUnitFileName=None):
         print(e)
         write_invalid_configuration_junit_file(sFileName, sJUnitFileName)
         exit()
-    return tempConfiguration
+    except TypeError:
+        return None
 
 
 def validate_file_exists(sFilename, sConfigName):
@@ -394,7 +371,7 @@ def main():
 
     dIndent = read_indent_configuration(configuration)
 
-    fix_only = open_fix_file(commandLineArguments.fix_only)
+    fix_only = open_configuration_file(commandLineArguments.fix_only)
 
     update_command_line_arguments(commandLineArguments, configuration)
 
