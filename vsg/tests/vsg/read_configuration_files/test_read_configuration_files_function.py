@@ -19,6 +19,7 @@ class command_line_args():
     ''' This is used as an input into the read_configuration function.'''
     def __init__(self, configuration=False):
         self.configuration = configuration
+        self.junit = None
 
 
 class test_read_configuration_function(unittest.TestCase):
