@@ -146,10 +146,7 @@ def read_configuration_files(dStyle, commandLineArguments):
     dConfiguration = dStyle
     if commandLineArguments.configuration:
         for sConfigFilename in commandLineArguments.configuration:
-            try:
-                tempConfiguration = open_configuration_file(sConfigFilename, commandLineArguments.junit)
-            except AttributeError:
-                tempConfiguration = open_configuration_file(sConfigFilename)
+            tempConfiguration = open_configuration_file(sConfigFilename, commandLineArguments.junit)
 
             for sKey in tempConfiguration.keys():
                 if sKey == 'file_list':
