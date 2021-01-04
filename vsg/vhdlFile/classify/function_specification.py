@@ -17,7 +17,7 @@ def detect(iToken, lObjects):
     '''
 
     if utils.is_next_token_one_of(['pure', 'impure', 'function'], iToken, lObjects):
-        if not utils.find_in_next_n_tokens('is', 4, iToken, lObjects):
+        if not utils.find_in_next_n_tokens('new', 4, iToken, lObjects):
             return classify(iToken, lObjects)
     return iToken
 

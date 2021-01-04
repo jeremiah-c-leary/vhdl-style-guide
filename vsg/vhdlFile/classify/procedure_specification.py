@@ -16,7 +16,7 @@ def detect(iToken, lObjects):
     '''
 
     if utils.is_next_token('procedure', iToken, lObjects):
-        if not utils.find_in_next_n_tokens('is', 3, iToken, lObjects):
+        if not utils.find_in_next_n_tokens('new', 4, iToken, lObjects):
             return classify(iToken, lObjects)
     return iToken
 

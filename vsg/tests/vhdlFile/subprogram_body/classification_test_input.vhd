@@ -25,6 +25,10 @@ architecture RTL of FIFO is
    begin
    end;
 
+  procedure PARITY is
+   begin
+   end;
+
   function PARITY
    (signal X : in std_logic_vector;
     signal Y : out std_logic) return integer is
@@ -46,6 +50,10 @@ architecture RTL of FIFO is
   function PARITY
    (signal X : in std_logic_vector;
     signal Y : out std_logic) return positive is
+   begin
+   end;
+
+  function PARITY return positive is
    begin
    end;
 

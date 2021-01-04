@@ -146,11 +146,26 @@
 27 | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-28 |   function PARITY
+28 |   procedure PARITY is
+<class 'vsg.token.procedure_specification.procedure_keyword'>
+<class 'vsg.token.procedure_specification.designator'>
+<class 'vsg.token.subprogram_body.is_keyword'>
+--------------------------------------------------------------------------------
+29 |    begin
+<class 'vsg.token.subprogram_body.begin_keyword'>
+--------------------------------------------------------------------------------
+30 |    end;
+<class 'vsg.token.subprogram_body.end_keyword'>
+<class 'vsg.token.subprogram_body.semicolon'>
+--------------------------------------------------------------------------------
+31 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+32 |   function PARITY
 <class 'vsg.token.function_specification.function_keyword'>
 <class 'vsg.token.function_specification.designator'>
 --------------------------------------------------------------------------------
-29 |    (signal X : in std_logic_vector;
+33 |    (signal X : in std_logic_vector;
 <class 'vsg.token.function_specification.open_parenthesis'>
 <class 'vsg.token.interface_signal_declaration.signal_keyword'>
 <class 'vsg.token.interface_signal_declaration.identifier'>
@@ -159,7 +174,7 @@
 <class 'vsg.token.interface_signal_declaration.subtype_indication'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
-30 |     signal Y : out std_logic) return integer is
+34 |     signal Y : out std_logic) return integer is
 <class 'vsg.token.interface_signal_declaration.signal_keyword'>
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
@@ -170,23 +185,23 @@
 <class 'vsg.token.type_mark.name'>
 <class 'vsg.token.subprogram_body.is_keyword'>
 --------------------------------------------------------------------------------
-31 |    begin
+35 |    begin
 <class 'vsg.token.subprogram_body.begin_keyword'>
 --------------------------------------------------------------------------------
-32 |    end function PARITY;
+36 |    end function PARITY;
 <class 'vsg.token.subprogram_body.end_keyword'>
 <class 'vsg.token.subprogram_kind.function_keyword'>
 <class 'vsg.token.subprogram_body.designator'>
 <class 'vsg.token.subprogram_body.semicolon'>
 --------------------------------------------------------------------------------
-33 | 
+37 | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-34 |   function PARITY
+38 |   function PARITY
 <class 'vsg.token.function_specification.function_keyword'>
 <class 'vsg.token.function_specification.designator'>
 --------------------------------------------------------------------------------
-35 |    (signal X : in std_logic_vector;
+39 |    (signal X : in std_logic_vector;
 <class 'vsg.token.function_specification.open_parenthesis'>
 <class 'vsg.token.interface_signal_declaration.signal_keyword'>
 <class 'vsg.token.interface_signal_declaration.identifier'>
@@ -195,7 +210,7 @@
 <class 'vsg.token.interface_signal_declaration.subtype_indication'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
-36 |     signal Y : out std_logic) return string is
+40 |     signal Y : out std_logic) return string is
 <class 'vsg.token.interface_signal_declaration.signal_keyword'>
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
@@ -206,22 +221,22 @@
 <class 'vsg.token.type_mark.name'>
 <class 'vsg.token.subprogram_body.is_keyword'>
 --------------------------------------------------------------------------------
-37 |    begin
+41 |    begin
 <class 'vsg.token.subprogram_body.begin_keyword'>
 --------------------------------------------------------------------------------
-38 |    end function;
+42 |    end function;
 <class 'vsg.token.subprogram_body.end_keyword'>
 <class 'vsg.token.subprogram_kind.function_keyword'>
 <class 'vsg.token.subprogram_body.semicolon'>
 --------------------------------------------------------------------------------
-39 | 
+43 | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-40 |   function PARITY
+44 |   function PARITY
 <class 'vsg.token.function_specification.function_keyword'>
 <class 'vsg.token.function_specification.designator'>
 --------------------------------------------------------------------------------
-41 |    (signal X : in std_logic_vector;
+45 |    (signal X : in std_logic_vector;
 <class 'vsg.token.function_specification.open_parenthesis'>
 <class 'vsg.token.interface_signal_declaration.signal_keyword'>
 <class 'vsg.token.interface_signal_declaration.identifier'>
@@ -230,7 +245,7 @@
 <class 'vsg.token.interface_signal_declaration.subtype_indication'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
-42 |     signal Y : out std_logic) return natural is
+46 |     signal Y : out std_logic) return natural is
 <class 'vsg.token.interface_signal_declaration.signal_keyword'>
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
@@ -241,22 +256,22 @@
 <class 'vsg.token.type_mark.name'>
 <class 'vsg.token.subprogram_body.is_keyword'>
 --------------------------------------------------------------------------------
-43 |    begin
+47 |    begin
 <class 'vsg.token.subprogram_body.begin_keyword'>
 --------------------------------------------------------------------------------
-44 |    end PARITY;
+48 |    end PARITY;
 <class 'vsg.token.subprogram_body.end_keyword'>
 <class 'vsg.token.subprogram_body.designator'>
 <class 'vsg.token.subprogram_body.semicolon'>
 --------------------------------------------------------------------------------
-45 | 
+49 | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-46 |   function PARITY
+50 |   function PARITY
 <class 'vsg.token.function_specification.function_keyword'>
 <class 'vsg.token.function_specification.designator'>
 --------------------------------------------------------------------------------
-47 |    (signal X : in std_logic_vector;
+51 |    (signal X : in std_logic_vector;
 <class 'vsg.token.function_specification.open_parenthesis'>
 <class 'vsg.token.interface_signal_declaration.signal_keyword'>
 <class 'vsg.token.interface_signal_declaration.identifier'>
@@ -265,7 +280,7 @@
 <class 'vsg.token.interface_signal_declaration.subtype_indication'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
-48 |     signal Y : out std_logic) return positive is
+52 |     signal Y : out std_logic) return positive is
 <class 'vsg.token.interface_signal_declaration.signal_keyword'>
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
@@ -276,26 +291,43 @@
 <class 'vsg.token.type_mark.name'>
 <class 'vsg.token.subprogram_body.is_keyword'>
 --------------------------------------------------------------------------------
-49 |    begin
+53 |    begin
 <class 'vsg.token.subprogram_body.begin_keyword'>
 --------------------------------------------------------------------------------
-50 |    end;
+54 |    end;
 <class 'vsg.token.subprogram_body.end_keyword'>
 <class 'vsg.token.subprogram_body.semicolon'>
 --------------------------------------------------------------------------------
-51 | 
+55 | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-52 | begin
+56 |   function PARITY return positive is
+<class 'vsg.token.function_specification.function_keyword'>
+<class 'vsg.token.function_specification.designator'>
+<class 'vsg.token.function_specification.return_keyword'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.subprogram_body.is_keyword'>
+--------------------------------------------------------------------------------
+57 |    begin
+<class 'vsg.token.subprogram_body.begin_keyword'>
+--------------------------------------------------------------------------------
+58 |    end;
+<class 'vsg.token.subprogram_body.end_keyword'>
+<class 'vsg.token.subprogram_body.semicolon'>
+--------------------------------------------------------------------------------
+59 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+60 | begin
 <class 'vsg.token.architecture_body.begin_keyword'>
 --------------------------------------------------------------------------------
-53 | 
+61 | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-54 | 
+62 | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-55 | end architecture RTL;
+63 | end architecture RTL;
 <class 'vsg.token.architecture_body.end_keyword'>
 <class 'vsg.token.architecture_body.end_architecture_keyword'>
 <class 'vsg.token.architecture_body.architecture_simple_name'>
