@@ -7,12 +7,16 @@ import json
 import shutil
 import glob
 import yaml
+import pathlib
+import logging
+
 
 from . import junit
 from . import rule_list
 from . import severity
 from . import version
 from . import vhdlFile
+from . import settings
 
 
 def parse_command_line_arguments():
@@ -80,31 +84,8 @@ def read_predefined_style(sStyleName):
     dReturn = {}
     if sStyleName is not None:
         sFileName = os.path.join(os.path.dirname(__file__), 'styles', sStyleName + '.yaml')
-        dReturn = open_configuration_file(sFileName)
+        dReturn = settings.open_configuration_file(sFileName)
     return dReturn
-
-
-def open_configuration_file(sFileName, sJUnitFileName=None):
-    '''Attempts to open a configuration file and read it's contents.'''
-    try:
-        with open(sFileName) as yaml_file:
-            return yaml.full_load(yaml_file)
-    except IOError:
-        print('ERROR: Could not find configuration file: ' + sFileName)
-        write_invalid_configuration_junit_file(sFileName, sJUnitFileName)
-        sys.exit(1)
-    except yaml.scanner.ScannerError as e:
-        print('ERROR: Invalid configuration file: ' + sFileName)
-        print(e)
-        write_invalid_configuration_junit_file(sFileName, sJUnitFileName)
-        exit()
-    except yaml.parser.ParserError as e:
-        print('ERROR: Invalid configuration file: ' + sFileName)
-        print(e)
-        write_invalid_configuration_junit_file(sFileName, sJUnitFileName)
-        exit()
-    except TypeError:
-        return None
 
 
 def validate_file_exists(sFilename, sConfigName):
@@ -121,37 +102,54 @@ def validate_file_exists(sFilename, sConfigName):
 
 def read_configuration_files(dStyle, commandLineArguments):
     dConfiguration = dStyle
-    if commandLineArguments.configuration:
-        for sConfigFilename in commandLineArguments.configuration:
-            tempConfiguration = open_configuration_file(sConfigFilename, commandLineArguments.junit)
+    for sConfigFilename in commandLineArguments.configuration:
+        tempConfiguration = settings.open_configuration_file(sConfigFilename, commandLineArguments.junit)
 
-            for sKey in tempConfiguration.keys():
-                if sKey == 'file_list':
-                    if 'file_list' not in dConfiguration:
-                        dConfiguration['file_list'] = []
-                    for iIndex, sFilename in enumerate(tempConfiguration['file_list']):
-                        validate_file_exists(sFilename, sConfigFilename)
-                        try:
-                            for sGlobbedFilename in glob.glob(expand_filename(sFilename)):
-                                dConfiguration['file_list'].append(sGlobbedFilename)
-                        except TypeError:
-                            sKey = list(sFilename.keys())[0]
-                            for sGlobbedFilename in glob.glob(expand_filename(sKey)):
-                                dTemp = {}
-                                dTemp[sGlobbedFilename] = {}
-                                dTemp[sGlobbedFilename].update(tempConfiguration['file_list'][iIndex][sKey])
-                                dConfiguration['file_list'].append(dTemp)
+        for sKey in tempConfiguration.keys():
+            if sKey == 'file_list':
+                if 'file_list' not in dConfiguration:
+                    dConfiguration['file_list'] = []
+                for iIndex, sFilename in enumerate(tempConfiguration['file_list']):
+                    validate_file_exists(sFilename, sConfigFilename)
+                    try:
+                        for sGlobbedFilename in glob.glob(expand_filename(sFilename)):
+                            dConfiguration['file_list'].append(sGlobbedFilename)
+                    except TypeError:
+                        sKey = list(sFilename.keys())[0]
+                        for sGlobbedFilename in glob.glob(expand_filename(sKey)):
+                            dTemp = {}
+                            dTemp[sGlobbedFilename] = {}
+                            dTemp[sGlobbedFilename].update(tempConfiguration['file_list'][iIndex][sKey])
+                            dConfiguration['file_list'].append(dTemp)
 
-                elif sKey == 'rule':
-                    for sRule in tempConfiguration[sKey]:
-                        try:
-                            dConfiguration[sKey][sRule] = tempConfiguration[sKey][sRule]
-                        except:
-                            dConfiguration[sKey] = {}
-                            dConfiguration[sKey][sRule] = tempConfiguration[sKey][sRule]
-                else:
-                    dConfiguration[sKey] = tempConfiguration[sKey]
+            elif sKey == 'rule':
+                for sRule in tempConfiguration[sKey]:
+                    try:
+                        dConfiguration[sKey][sRule] = tempConfiguration[sKey][sRule]
+                    except:
+                        dConfiguration[sKey] = {}
+                        dConfiguration[sKey][sRule] = tempConfiguration[sKey][sRule]
+            else:
+                dConfiguration[sKey] = tempConfiguration[sKey]
 
+    return dConfiguration
+
+
+def read_configuration_files2(dStyle, commandLineArguments):
+    dConfiguration = dStyle
+    dConfiguration['file_list'] = []
+
+    for sFilename in commandLineArguments.filename:
+        tempConfiguration = settings.find_config(pathlib.Path(sFilename).parent)
+        if tempConfiguration:
+            dConfiguration['file_list'].append({str(sFilename): tempConfiguration})
+        else:
+            dConfiguration['file_list'].append(str(sFilename))
+
+    if 'skip_phase' in dConfiguration:
+        commandLineArguments.skip_phase = dConfiguration['skip_phase']
+    else:
+        commandLineArguments.skip_phase = []
     return dConfiguration
 
 
@@ -193,7 +191,18 @@ def update_command_line_arguments(commandLineArguments, configuration):
     if not configuration:
         return
 
-    if 'file_list' in configuration:
+    if commandLineArguments.filename:
+        temp = []
+        for filename in commandLineArguments.filename:
+            if pathlib.Path(filename).is_dir():
+                temp.extend(list(pathlib.Path(filename).rglob("*.[vV][hH][dD]")))
+            elif pathlib.Path(filename).is_file():
+                temp.append(filename)
+            else:
+                logging.error("invalid filename")
+        commandLineArguments.filename = temp
+
+    elif 'file_list' in configuration:
         for sFilename in configuration['file_list']:
             if isinstance(sFilename, dict):
                 sFilename = list(sFilename.keys())[0]
@@ -201,8 +210,26 @@ def update_command_line_arguments(commandLineArguments, configuration):
                 commandLineArguments.filename.extend(glob.glob(expand_filename(sFilename)))
             except:
                 commandLineArguments.filename = glob.glob(expand_filename(sFilename))
+    else:
+        logging.error("no filenames provided")
+
     if 'local_rules' in configuration:
         commandLineArguments.local_rules = expand_filename(configuration['local_rules'])
+
+
+def update_command_line_arguments2(commandLineArguments):
+    if commandLineArguments.filename:
+        temp = []
+        for filename in commandLineArguments.filename:
+            if pathlib.Path(filename).is_dir():
+                temp.extend(list(pathlib.Path(filename).rglob("*.[vV][hH][dD]")))
+            elif pathlib.Path(filename).is_file():
+                temp.append(filename)
+            else:
+                logging.error("invalid filename")
+        commandLineArguments.filename = temp
+    else:
+        raise Exception
 
 
 def expand_filename(sFileName):
@@ -340,8 +367,8 @@ def read_indent_configuration(dConfiguration):
     '''
 
     sFileName = os.path.join(os.path.dirname(__file__), 'vhdlFile', 'indent', 'indent_config.yaml')
-   
-    dReturn = open_configuration_file(sFileName)
+
+    dReturn = settings.open_configuration_file(sFileName)
 
     ### This merges an indent configuration into the base indent dictionary
     if 'indent' in list(dConfiguration.keys()):
@@ -367,13 +394,21 @@ def main():
 
     dStyle = read_predefined_style(commandLineArguments.style)
 
-    configuration = read_configuration_files(dStyle, commandLineArguments)
+    fix_only = settings.open_configuration_file(commandLineArguments.fix_only)
 
-    dIndent = read_indent_configuration(configuration)
+    if commandLineArguments.configuration:
+        configuration = read_configuration_files(dStyle, commandLineArguments)
 
-    fix_only = open_configuration_file(commandLineArguments.fix_only)
+        dIndent = read_indent_configuration(configuration)
 
-    update_command_line_arguments(commandLineArguments, configuration)
+        update_command_line_arguments(commandLineArguments, configuration)
+
+    else:
+        update_command_line_arguments2(commandLineArguments)
+
+        configuration = read_configuration_files2(dStyle, commandLineArguments)
+
+        dIndent = read_indent_configuration(configuration)
 
     configuration = add_debug_to_configuration(commandLineArguments, configuration)
 
