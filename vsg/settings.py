@@ -32,7 +32,7 @@ from typing import Any, Callable, Dict, FrozenSet, Iterable, List, Optional, Pat
 from . import junit
 # The number of parent directories to for a config file within
 MAX_CONFIG_SEARCH_DEPTH: int = 25
-STOP_CONFIG_SEARCH_ON_DIRS: Tuple[str, ...] = (".git", ".hg")
+STOP_CONFIG_SEARCH_ON_DIRS: Tuple[str, ...] = (".git", ".hg", ".svn")
 CONFIG_SOURCES: Tuple[str, ...] = (
     "vsg_conf.yaml",
     "vsg_conf.yml",
