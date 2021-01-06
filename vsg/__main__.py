@@ -94,17 +94,32 @@ def validate_file_exists(sFilename, sConfigName):
         sExpandedFilename = list(sFilename.keys())[0]
     else:
         sExpandedFilename = sFilename
-    lFileNames = glob.glob(expand_filename(sExpandedFilename))
+    lFileNames = glob.glob(expand_filename(str(pathlib.Path(sConfigName.parent / sExpandedFilename))))
     if len(lFileNames) == 0:
-        print('ERROR: Could not find file ' + sFilename + ' in configuration file ' + sConfigName)
+        print('ERROR: Could not find file ' + sExpandedFilename + ' in configuration file ' + str(sConfigName))
         sys.exit(1)
 
 
 def read_configuration_files(dStyle, commandLineArguments):
     dConfiguration = dStyle
-    for sConfigFilename in commandLineArguments.configuration:
-        tempConfiguration = settings.open_configuration_file(sConfigFilename, commandLineArguments.junit)
+    lConfig = []
+    bHasFile = False
+    bHasDir = False
+    for sConfigDirFilename in commandLineArguments.configuration:
+        if pathlib.Path(sConfigDirFilename).is_dir():
+            bHasDir = True
+            for config_file_name in settings.CONFIG_SOURCES:
+                lConfig.extend(list(pathlib.Path(sConfigDirFilename).rglob(config_file_name)))
+        elif pathlib.Path(sConfigDirFilename).is_file():
+            bHasFile = True
+            lConfig.append(pathlib.Path(sConfigDirFilename))
+        else:
+            logging.warn("Invalid argument, config should be file or directory to search.")
+    if bHasFile and bHasDir:
+        logging.warn("Provided both files and dirs as configuration, can cause conflicts")
 
+    for sConfigFilename in lConfig:
+        tempConfiguration = settings.open_configuration_file(sConfigFilename, commandLineArguments.junit)
         for sKey in tempConfiguration.keys():
             if sKey == 'file_list':
                 if 'file_list' not in dConfiguration:
@@ -126,7 +141,7 @@ def read_configuration_files(dStyle, commandLineArguments):
                 for sRule in tempConfiguration[sKey]:
                     try:
                         dConfiguration[sKey][sRule] = tempConfiguration[sKey][sRule]
-                    except:
+                    except KeyError:
                         dConfiguration[sKey] = {}
                         dConfiguration[sKey][sRule] = tempConfiguration[sKey][sRule]
             else:
