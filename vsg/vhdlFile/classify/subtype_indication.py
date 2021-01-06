@@ -20,7 +20,6 @@ def classify_until(lUntils, iToken, lObjects, oType=parser.todo):
     subtype_indication ::=
         [ resolution_indication ] type_mark [ constraint ]
     '''
-
     iCurrent = iToken
     iStop = len(lObjects) - 1
     iOpenParenthesis = 0
@@ -31,10 +30,18 @@ def classify_until(lUntils, iToken, lObjects, oType=parser.todo):
            iOpenParenthesis += 1
         if utils.token_is_close_parenthesis(iCurrent, lObjects):
            iCloseParenthesis += 1
+
         if iOpenParenthesis < iCloseParenthesis:
             break
         elif lObjects[iCurrent].get_value().lower() in lUntils:
-            break
+            if utils.token_is_close_parenthesis(iCurrent, lObjects):
+                if iOpenParenthesis == iCloseParenthesis:
+                    utils.assign_token(lObjects, iCurrent, parser.close_parenthesis)
+                    continue
+                else:
+                    break
+            else:
+                break
         else:
             sValue = lObjects[iCurrent].get_value()
             if sValue == ')':

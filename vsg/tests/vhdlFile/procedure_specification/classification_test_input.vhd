@@ -30,6 +30,15 @@ architecture RTL of FIFO is
                  complex_fixed_formal_pkg => fixed_dsp_pkg)
     parameter (signal Sig: inout Bit);
 
+  -- Test parenthesis procedure interface
+  procedure proc_3 (signal sig1: in std_logic_vector(3 downto 0));
+
+  procedure proc_3 (constant con1: in std_logic_vector(3 downto 0));
+
+  procedure proc_3 (variable var1: in std_logic_vector(3 downto 0));
+
+  procedure proc_3 (sig1: in std_logic_vector(3 downto 0));
+
 begin
 
 

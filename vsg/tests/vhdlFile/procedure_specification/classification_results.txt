@@ -256,16 +256,98 @@
 32 | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-33 | begin
-<class 'vsg.token.architecture_body.begin_keyword'>
+33 |   -- Test parenthesis procedure interface
+<class 'vsg.parser.comment'>
 --------------------------------------------------------------------------------
-34 | 
-<class 'vsg.parser.blank_line'>
+34 |   procedure proc_3 (signal sig1: in std_logic_vector(3 downto 0));
+<class 'vsg.token.procedure_specification.procedure_keyword'>
+<class 'vsg.token.procedure_specification.designator'>
+<class 'vsg.token.procedure_specification.open_parenthesis'>
+<class 'vsg.token.interface_signal_declaration.signal_keyword'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
+<class 'vsg.token.interface_signal_declaration.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.token.interface_signal_declaration.subtype_indication'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.token.interface_signal_declaration.subtype_indication'>
+<class 'vsg.token.direction.downto'>
+<class 'vsg.token.interface_signal_declaration.subtype_indication'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.procedure_specification.close_parenthesis'>
+<class 'vsg.token.subprogram_declaration.semicolon'>
 --------------------------------------------------------------------------------
 35 | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-36 | end architecture RTL;
+36 |   procedure proc_3 (constant con1: in std_logic_vector(3 downto 0));
+<class 'vsg.token.procedure_specification.procedure_keyword'>
+<class 'vsg.token.procedure_specification.designator'>
+<class 'vsg.token.procedure_specification.open_parenthesis'>
+<class 'vsg.token.interface_constant_declaration.constant_keyword'>
+<class 'vsg.token.interface_constant_declaration.identifier'>
+<class 'vsg.token.interface_constant_declaration.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.token.interface_constant_declaration.subtype_indication'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.token.interface_constant_declaration.subtype_indication'>
+<class 'vsg.token.direction.downto'>
+<class 'vsg.token.interface_constant_declaration.subtype_indication'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.procedure_specification.close_parenthesis'>
+<class 'vsg.token.subprogram_declaration.semicolon'>
+--------------------------------------------------------------------------------
+37 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+38 |   procedure proc_3 (variable var1: in std_logic_vector(3 downto 0));
+<class 'vsg.token.procedure_specification.procedure_keyword'>
+<class 'vsg.token.procedure_specification.designator'>
+<class 'vsg.token.procedure_specification.open_parenthesis'>
+<class 'vsg.token.interface_variable_declaration.variable_keyword'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
+<class 'vsg.token.interface_variable_declaration.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.token.interface_variable_declaration.subtype_indication'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.token.interface_variable_declaration.subtype_indication'>
+<class 'vsg.token.direction.downto'>
+<class 'vsg.token.interface_variable_declaration.subtype_indication'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.procedure_specification.close_parenthesis'>
+<class 'vsg.token.subprogram_declaration.semicolon'>
+--------------------------------------------------------------------------------
+39 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+40 |   procedure proc_3 (sig1: in std_logic_vector(3 downto 0));
+<class 'vsg.token.procedure_specification.procedure_keyword'>
+<class 'vsg.token.procedure_specification.designator'>
+<class 'vsg.token.procedure_specification.open_parenthesis'>
+<class 'vsg.token.interface_unknown_declaration.identifier'>
+<class 'vsg.token.interface_unknown_declaration.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.token.interface_unknown_declaration.subtype_indication'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.token.interface_unknown_declaration.subtype_indication'>
+<class 'vsg.token.direction.downto'>
+<class 'vsg.token.interface_unknown_declaration.subtype_indication'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.procedure_specification.close_parenthesis'>
+<class 'vsg.token.subprogram_declaration.semicolon'>
+--------------------------------------------------------------------------------
+41 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+42 | begin
+<class 'vsg.token.architecture_body.begin_keyword'>
+--------------------------------------------------------------------------------
+43 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+44 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+45 | end architecture RTL;
 <class 'vsg.token.architecture_body.end_keyword'>
 <class 'vsg.token.architecture_body.end_architecture_keyword'>
 <class 'vsg.token.architecture_body.architecture_simple_name'>
