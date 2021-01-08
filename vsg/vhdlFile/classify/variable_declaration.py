@@ -35,7 +35,7 @@ def classify(iToken, lObjects):
 
     if utils.is_next_token(':=', iCurrent, lObjects):
         iCurrent = utils.assign_next_token_required(':=', token.assignment_operator, iCurrent, lObjects)
-        iCurrent = expression.classify_until(';', iCurrent, lObjects)
+        iCurrent = expression.classify_until([';'], iCurrent, lObjects)
 
     iCurrent = utils.assign_next_token_required(';', token.semicolon, iCurrent, lObjects)
     return iCurrent

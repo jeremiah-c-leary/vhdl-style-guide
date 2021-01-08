@@ -40,6 +40,11 @@ def classify_until(lUntils, iToken, lObjects, oType=parser.todo):
                     continue
                 else:
                     break
+            elif utils.token_is_comma(iCurrent, lObjects):
+                if iOpenParenthesis == iCloseParenthesis:
+                    break
+                else:
+                    utils.assign_token(lObjects, iCurrent, parser.comma)
             else:
                 break
         else:

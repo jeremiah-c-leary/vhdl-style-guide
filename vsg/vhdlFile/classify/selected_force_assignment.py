@@ -26,7 +26,7 @@ def detect(iToken, lObjects):
 def classify(iToken, lObjects):
 
     iCurrent = utils.assign_next_token_required('with', token.with_keyword, iToken, lObjects)
-    iCurrent = expression.classify_until('select', iToken, lObjects)
+    iCurrent = expression.classify_until(['select'], iToken, lObjects)
     iCurrent = utils.assign_next_token_required('select', token.select_keyword, iToken, lObjects)
     iCurrent = utils.assign_next_token_if('?', token.question_mark, iCurrent, lObjects)
     iCurrent = utils.assign_tokens_until('<=', token.target, iCurrent, lObjects)

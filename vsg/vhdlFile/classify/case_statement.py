@@ -27,7 +27,7 @@ def classify(iToken, lObjects):
     iCurrent = utils.assign_next_token_required('case', token.case_keyword, iCurrent, lObjects)
     iCurrent = utils.assign_next_token_if('?', token.question_mark, iCurrent, lObjects)
 
-    iCurrent = expression.classify_until('is', iCurrent, lObjects)
+    iCurrent = expression.classify_until(['is'], iCurrent, lObjects)
 
     iCurrent = utils.assign_next_token_required('is', token.is_keyword, iCurrent, lObjects)
 

@@ -20,7 +20,7 @@ def classify_until(lUntils, iToken, lObjects):
     lMyWhenUntils = lUntils.copy()
     lMyWhenUntils.append('when')
 
-    iCurrent = expression.classify_until('when', iToken, lObjects)
+    iCurrent = expression.classify_until(['when'], iToken, lObjects)
     iCurrent = utils.assign_next_token_required('when', token.when_keyword, iCurrent, lObjects)
     iCurrent = condition.classify_until(lMyElseUntils, iCurrent, lObjects)
 

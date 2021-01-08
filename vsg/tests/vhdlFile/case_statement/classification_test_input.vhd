@@ -44,4 +44,10 @@ begin
     end case;
   end process;
 
+  process begin
+    case foo(i) is
+    end case;
+  end process;
+
+
 end architecture RTL;

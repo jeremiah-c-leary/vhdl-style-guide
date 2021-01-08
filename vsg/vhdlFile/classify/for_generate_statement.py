@@ -31,7 +31,7 @@ def classify(iToken, lObjects):
 
     iCurrent = utils.assign_next_token_required('for', token.for_keyword, iCurrent, lObjects)
 
-    iCurrent = parameter_specification.classify_until('generate', iCurrent, lObjects)
+    iCurrent = parameter_specification.classify_until(['generate'], iCurrent, lObjects)
 
     iCurrent = utils.assign_next_token_required('generate', token.generate_keyword, iCurrent, lObjects)
 

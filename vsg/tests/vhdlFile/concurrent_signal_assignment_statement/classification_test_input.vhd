@@ -75,4 +75,11 @@ begin
             c when "10",
             d when others;
 
+  --+-------------------
+  --| Test parenthesis
+  --+-------------------
+
+  a <= std_logic(to_unsigned(b, 4));
+
+
 end architecture RTL;
