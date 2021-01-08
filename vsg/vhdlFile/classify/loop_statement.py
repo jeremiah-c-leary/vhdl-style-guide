@@ -15,23 +15,19 @@ def detect(iToken, lObjects):
                 sequence_of_statements
             end loop [ loop_label ] ;
     '''
-
     if utils.find_in_next_n_tokens(':', 2, iToken, lObjects):
         iCurrent = utils.find_next_token(iToken, lObjects)
         iCurrent += 1
-        iCurrent = utils.find_next_token(iToken, lObjects)
+        iCurrent = utils.find_next_token(iCurrent, lObjects)
         iCurrent += 1
-        if iteration_scheme.detect(iToken, lObjects):
-            return classify(iToken, lObjects)
-        if utils.is_next_token('loop', iToken, lObjects):
-            return classify(iToken, lObjects)
-        return iToken
     else:
-        if iteration_scheme.detect(iToken, lObjects):
-            return classify(iToken, lObjects)
-        if utils.is_next_token('loop', iToken, lObjects):
-            return classify(iToken, lObjects)
-        return iToken
+        iCurrent = iToken
+
+    if iteration_scheme.detect(iCurrent, lObjects):
+        return classify(iToken, lObjects)
+    if utils.is_next_token('loop', iCurrent, lObjects):
+        return classify(iToken, lObjects)
+
     return iToken
 
 
@@ -41,7 +37,7 @@ def classify(iToken, lObjects):
 
     iCurrent = iteration_scheme.classify(iCurrent, lObjects)
 
-    iCurrent = utils.assign_next_token_required('loop', token.loop_keyword, iToken, lObjects)
+    iCurrent = utils.assign_next_token_required('loop', token.loop_keyword, iCurrent, lObjects)
 
     iCurrent = sequence_of_statements.detect(iCurrent, lObjects)
 

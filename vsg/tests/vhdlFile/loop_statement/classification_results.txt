@@ -172,18 +172,32 @@
 42 | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-43 | 
+43 |     FOR_LABEL : loop
+<class 'vsg.token.loop_statement.loop_label'>
+<class 'vsg.token.loop_statement.label_colon'>
+<class 'vsg.token.loop_statement.loop_keyword'>
+--------------------------------------------------------------------------------
+44 |       null;
+<class 'vsg.token.null_statement.null_keyword'>
+<class 'vsg.token.null_statement.semicolon'>
+--------------------------------------------------------------------------------
+45 |     end loop;
+<class 'vsg.token.loop_statement.end_keyword'>
+<class 'vsg.token.loop_statement.end_loop_keyword'>
+<class 'vsg.token.loop_statement.semicolon'>
+--------------------------------------------------------------------------------
+46 | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-44 |   end process;
+47 |   end process;
 <class 'vsg.token.process_statement.end_keyword'>
 <class 'vsg.token.process_statement.end_process_keyword'>
 <class 'vsg.token.process_statement.semicolon'>
 --------------------------------------------------------------------------------
-45 | 
+48 | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-46 | end architecture RTL;
+49 | end architecture RTL;
 <class 'vsg.token.architecture_body.end_keyword'>
 <class 'vsg.token.architecture_body.end_architecture_keyword'>
 <class 'vsg.token.architecture_body.architecture_simple_name'>

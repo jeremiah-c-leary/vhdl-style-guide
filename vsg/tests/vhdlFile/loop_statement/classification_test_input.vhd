@@ -40,6 +40,9 @@ begin
 
     end loop;
 
+    FOR_LABEL : loop
+      null;
+    end loop;
 
   end process;
 
