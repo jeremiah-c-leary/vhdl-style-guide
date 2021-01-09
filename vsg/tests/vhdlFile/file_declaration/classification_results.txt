@@ -27,7 +27,7 @@
 <class 'vsg.token.file_declaration.colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.file_open_information.is_keyword'>
-<class 'vsg.token.file_open_information.file_logical_name'>
+<class 'vsg.parser.todo'>
 <class 'vsg.token.file_declaration.semicolon'>
 --------------------------------------------------------------------------------
 6 | 
@@ -41,7 +41,7 @@
 <class 'vsg.token.file_open_information.open_keyword'>
 <class 'vsg.token.file_open_information.file_open_kind_expression'>
 <class 'vsg.token.file_open_information.is_keyword'>
-<class 'vsg.token.file_open_information.file_logical_name'>
+<class 'vsg.parser.todo'>
 <class 'vsg.token.file_declaration.semicolon'>
 --------------------------------------------------------------------------------
 8 | 
@@ -59,19 +59,38 @@
 <class 'vsg.token.file_open_information.open_keyword'>
 <class 'vsg.token.file_open_information.file_open_kind_expression'>
 <class 'vsg.token.file_open_information.is_keyword'>
-<class 'vsg.token.file_open_information.file_logical_name'>
+<class 'vsg.parser.todo'>
 <class 'vsg.token.file_declaration.semicolon'>
 --------------------------------------------------------------------------------
 10 | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-11 | begin
-<class 'vsg.token.architecture_body.begin_keyword'>
+11 |   file F1 : IntegerFile open WRITE_MODEM is (something(else));
+<class 'vsg.token.file_declaration.file_keyword'>
+<class 'vsg.token.file_declaration.identifier'>
+<class 'vsg.token.file_declaration.colon'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.file_open_information.open_keyword'>
+<class 'vsg.token.file_open_information.file_open_kind_expression'>
+<class 'vsg.token.file_open_information.is_keyword'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.file_declaration.semicolon'>
 --------------------------------------------------------------------------------
 12 | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-13 | end architecture RTL;
+13 | begin
+<class 'vsg.token.architecture_body.begin_keyword'>
+--------------------------------------------------------------------------------
+14 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+15 | end architecture RTL;
 <class 'vsg.token.architecture_body.end_keyword'>
 <class 'vsg.token.architecture_body.end_architecture_keyword'>
 <class 'vsg.token.architecture_body.architecture_simple_name'>

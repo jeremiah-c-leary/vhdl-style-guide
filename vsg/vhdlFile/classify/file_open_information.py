@@ -3,6 +3,8 @@ from vsg.token import file_open_information as token
 
 from vsg.vhdlFile import utils
 
+from vsg.vhdlFile.classify import file_logical_name
+
 
 def detect(iToken, lObjects):
     '''
@@ -24,6 +26,7 @@ def classify(iToken, lObjects):
         iCurrent = utils.assign_next_token(token.file_open_kind_expression, iCurrent, lObjects)
 
     iCurrent = utils.assign_next_token_required('is', token.is_keyword, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token(token.file_logical_name, iCurrent, lObjects)
+
+    iCurrent = file_logical_name.classify(iCurrent, lObjects)
 
     return iCurrent
