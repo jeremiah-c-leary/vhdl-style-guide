@@ -1,0 +1,51 @@
+--------------------------------------------------------------------------------
+0 | 
+--------------------------------------------------------------------------------
+1 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+2 | entity FIFO is
+<class 'vsg.token.entity_declaration.entity_keyword'>
+<class 'vsg.token.entity_declaration.identifier'>
+<class 'vsg.token.entity_declaration.is_keyword'>
+--------------------------------------------------------------------------------
+3 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+4 | end entity FIFO;
+<class 'vsg.token.entity_declaration.end_keyword'>
+<class 'vsg.token.entity_declaration.end_entity_keyword'>
+<class 'vsg.token.entity_declaration.entity_simple_name'>
+<class 'vsg.token.entity_declaration.semicolon'>
+--------------------------------------------------------------------------------
+5 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+6 | --vhdl_comp_off
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+7 | entity FIFO is
+<class 'vsg.token.pragma.ignore'>
+<class 'vsg.token.pragma.ignore'>
+<class 'vsg.token.pragma.ignore'>
+<class 'vsg.token.pragma.ignore'>
+<class 'vsg.token.pragma.ignore'>
+--------------------------------------------------------------------------------
+8 | --vhdl_comp_on
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+9 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+10 | entity FIFO is
+<class 'vsg.token.entity_declaration.entity_keyword'>
+<class 'vsg.token.entity_declaration.identifier'>
+<class 'vsg.token.entity_declaration.is_keyword'>
+--------------------------------------------------------------------------------
+11 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+12 | end entity;
+<class 'vsg.token.entity_declaration.end_keyword'>
+<class 'vsg.token.entity_declaration.end_entity_keyword'>
+<class 'vsg.token.entity_declaration.semicolon'>

@@ -22,6 +22,7 @@ from vsg.vhdlFile.classify import comment
 from vsg.vhdlFile.classify import design_file
 from vsg.vhdlFile.classify import whitespace
 from vsg.vhdlFile.classify import preprocessor
+from vsg.vhdlFile.classify import pragma
 
 from vsg.vhdlFile.indent.set_token_indent import set_token_indent
 
@@ -50,9 +51,13 @@ class vhdlFile():
         self.hasArchitecture = False
         self.hasEntity = False
         self.lAllObjects = []
-        self._processFile()
         self.filename = None
         self.dIndentMap = None
+        self.lOpenPragmas = ['--vhdl_comp_off']
+        self.lClosePragmas = ['--vhdl_comp_on']
+        self.dVars = {}
+        self.dVars['pragma'] = False
+        self._processFile()
 
     def _processFile(self):
 
@@ -67,6 +72,7 @@ class vhdlFile():
             whitespace.classify(lTokens, lObjects)
             comment.classify(lTokens, lObjects)
             preprocessor.classify(lTokens, lObjects)
+            pragma.classify(lTokens, lObjects, self.lOpenPragmas, self.lClosePragmas, self.dVars)
 
             self.lAllObjects.extend(lObjects)
             self.lAllObjects.append(parser.carriage_return())
