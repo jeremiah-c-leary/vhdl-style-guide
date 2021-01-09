@@ -37,11 +37,14 @@ def get_interface_elements_between_tokens(oStart, oEnd, lAllTokens, oTokenMap):
 
         if len(lTemp) > 0:
             lTemp.pop()
-            for i in range(1, 3):
+            for i in range(1, 5):
                 if isinstance(lTemp[-1], parser.whitespace):
                     lTemp.pop()
                     continue
                 if isinstance(lTemp[-1], parser.carriage_return):
+                    lTemp.pop()
+                    continue
+                if isinstance(lTemp[-1], parser.comment):
                     lTemp.pop()
                     continue
             lReturn.append(tokens.New(iStartIndex, iLineNumber, lTemp))

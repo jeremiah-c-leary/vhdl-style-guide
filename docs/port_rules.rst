@@ -616,7 +616,6 @@ Refer to the section `Configuring Prefix and Suffix Rules <configuring_prefix_su
      data     : inout std_logic
    );
 
-
 **Fix**
 
 .. code-block:: vhdl
@@ -626,4 +625,33 @@ Refer to the section `Configuring Prefix and Suffix Rules <configuring_prefix_su
      rd_en_i    : in    std_logic;
      overflow_o : out   std_logic;
      data_io    : inout std_logic
+   );
+
+port_026
+########
+
+This rule checks for multiple identifiers on port declarations.
+
+Any comments are not replicated.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   port (
+     wr_en, rd_en : in    std_logic;  -- Comment
+     data     : inout std_logic;
+     overflow, empty : out   std_logic -- Other comment
+   );
+
+**Fix**
+
+.. code-block:: vhdl
+
+   port (
+     wr_en    : in    std_logic;
+     rd_en    : in    std_logic;  -- Comment
+     data    : inout std_logic
+     overflow : out   std_logic;
+     empty : out   std_logic -- Other comment
    );
