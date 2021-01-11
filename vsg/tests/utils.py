@@ -111,7 +111,7 @@ def extract_objects(oFile, bIgnoreWhiteSpace=False):
     for iLine, oLine in enumerate(oFile.get_object_lines()):
         lReturn.append('-'*80)
         sLine = vutils.convert_token_list_to_string(oLine)
-        lReturn.append(f'{iLine} | {sLine}')
+        lReturn.append(f'{iLine} | {sLine}'.rstrip())
         for oObject in oLine:
             if bIgnoreWhiteSpace:
                 if type(oObject) == parser.whitespace:
