@@ -189,15 +189,38 @@
 46 | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-47 |   end process;
+47 |     foo;
+<class 'vsg.token.procedure_call.procedure_name'>
+<class 'vsg.token.procedure_call_statement.semicolon'>
+--------------------------------------------------------------------------------
+48 |     for i in 0 to G_GENERIC-1 loop
+<class 'vsg.token.iteration_scheme.for_keyword'>
+<class 'vsg.token.parameter_specification.identifier'>
+<class 'vsg.token.parameter_specification.in_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.to'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.adding_operator.minus'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.loop_statement.loop_keyword'>
+--------------------------------------------------------------------------------
+49 |     end loop;
+<class 'vsg.token.loop_statement.end_keyword'>
+<class 'vsg.token.loop_statement.end_loop_keyword'>
+<class 'vsg.token.loop_statement.semicolon'>
+--------------------------------------------------------------------------------
+50 | 
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+51 |   end process;
 <class 'vsg.token.process_statement.end_keyword'>
 <class 'vsg.token.process_statement.end_process_keyword'>
 <class 'vsg.token.process_statement.semicolon'>
 --------------------------------------------------------------------------------
-48 | 
+52 | 
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-49 | end architecture RTL;
+53 | end architecture RTL;
 <class 'vsg.token.architecture_body.end_keyword'>
 <class 'vsg.token.architecture_body.end_architecture_keyword'>
 <class 'vsg.token.architecture_body.architecture_simple_name'>

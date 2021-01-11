@@ -44,6 +44,10 @@ begin
       null;
     end loop;
 
+    foo;
+    for i in 0 to G_GENERIC-1 loop
+    end loop;
+
   end process;
 
 end architecture RTL;
