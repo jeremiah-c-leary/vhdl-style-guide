@@ -24,7 +24,7 @@ def print_header(sFilename):
     Returns: Nothing
     '''
     print('=' * iLineLength)
-    print('File:  ' + sFilename)
+    print('File:  ' + str(sFilename))
     print('=' * iLineLength)
 
 
