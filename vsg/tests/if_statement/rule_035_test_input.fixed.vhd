@@ -28,7 +28,7 @@ begin
 
     if                   a = '1' then
       b <= '0';
-    elsif                      c = '1' and 
+    elsif                      c = '1' and
    d = '0' then
       b <= '1';
     end if;

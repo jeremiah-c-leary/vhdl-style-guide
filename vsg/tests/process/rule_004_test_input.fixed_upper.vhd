@@ -4,13 +4,13 @@ architecture RTL of FIFO is
 begin
 
 
-  process 
+  process
   BEGIN
   end process;
 
   -- Violations below
 
-  process 
+  process
   BEGIN
   end process;
 

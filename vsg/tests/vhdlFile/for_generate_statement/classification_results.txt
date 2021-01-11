@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
-0 | 
+0 |
 --------------------------------------------------------------------------------
-1 | 
+1 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 2 | architecture RTL of FIFO is
@@ -11,13 +11,13 @@
 <class 'vsg.token.architecture_body.entity_name'>
 <class 'vsg.token.architecture_body.is_keyword'>
 --------------------------------------------------------------------------------
-3 | 
+3 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 4 | begin
 <class 'vsg.token.architecture_body.begin_keyword'>
 --------------------------------------------------------------------------------
-5 | 
+5 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 6 |   -- Demonstrates Use Case #1: Replicating Logic
@@ -37,7 +37,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.for_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-9 | 
+9 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 10 |   end generate LABEL1;
@@ -46,7 +46,7 @@
 <class 'vsg.token.for_generate_statement.end_generate_label'>
 <class 'vsg.token.for_generate_statement.semicolon'>
 --------------------------------------------------------------------------------
-11 | 
+11 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 12 |   -- Test nesting
@@ -103,7 +103,7 @@
 <class 'vsg.token.for_generate_statement.end_generate_label'>
 <class 'vsg.token.for_generate_statement.semicolon'>
 --------------------------------------------------------------------------------
-19 | 
+19 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 20 |   -- Test multiple layers of nesting
@@ -228,7 +228,7 @@
 <class 'vsg.token.for_generate_statement.end_generate_label'>
 <class 'vsg.token.for_generate_statement.semicolon'>
 --------------------------------------------------------------------------------
-35 | 
+35 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 36 |   -- Test generate_statement_body
@@ -245,7 +245,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.for_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-38 | 
+38 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 39 |       signal blah : std_logic;
@@ -255,7 +255,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.signal_declaration.semicolon'>
 --------------------------------------------------------------------------------
-40 | 
+40 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 41 |     begin
@@ -271,7 +271,7 @@
 <class 'vsg.token.generate_statement_body.end_keyword'>
 <class 'vsg.token.generate_statement_body.semicolon'>
 --------------------------------------------------------------------------------
-44 | 
+44 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 45 |   end generate LABEL3;
@@ -280,7 +280,7 @@
 <class 'vsg.token.for_generate_statement.end_generate_label'>
 <class 'vsg.token.for_generate_statement.semicolon'>
 --------------------------------------------------------------------------------
-46 | 
+46 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 47 | end architecture RTL;

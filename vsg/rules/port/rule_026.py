@@ -48,7 +48,7 @@ class rule_026(rule.Rule):
                 sSolution = 'Split identifiers ' + ', '.join(lIdentifiers) + ' to individual lines.'
                 dAction = {}
                 if oToi == lToi[-1]:
-                    dAction['last_element'] = False 
+                    dAction['last_element'] = False
                 else:
                     dAction['last_element'] = True
                 dAction['identifier_indexes'] = lIdentifierIndexes

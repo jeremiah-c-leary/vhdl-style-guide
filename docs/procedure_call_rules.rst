@@ -103,7 +103,7 @@ This rule checks the indent of the **postponed** keyword if it exists..
    a <= b;
 
      postponed WR_EN(parameter);
- 
+
 **Fix**
 
 .. code-block:: vhdl
@@ -111,7 +111,7 @@ This rule checks the indent of the **postponed** keyword if it exists..
    a <= b;
 
    postponed WR_EN(parameter);
- 
+
 procedure_call_302
 ^^^^^^^^^^^^^^^^^^
 
@@ -124,7 +124,7 @@ This rule checks the indent of the *procedure*_name.
    a <= b;
 
      WR_EN(parameter);
- 
+
 **Fix**
 
 .. code-block:: vhdl
@@ -132,7 +132,7 @@ This rule checks the indent of the *procedure*_name.
    a <= b;
 
    WR_EN(parameter);
- 
+
 Alignment Rules
 ###############
 

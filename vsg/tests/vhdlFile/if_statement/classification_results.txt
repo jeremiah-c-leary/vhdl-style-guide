@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
-0 | 
+0 |
 --------------------------------------------------------------------------------
-1 | 
+1 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 2 | architecture RTL of ENTITY_NAME is
@@ -11,13 +11,13 @@
 <class 'vsg.token.architecture_body.entity_name'>
 <class 'vsg.token.architecture_body.is_keyword'>
 --------------------------------------------------------------------------------
-3 | 
+3 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 4 | begin
 <class 'vsg.token.architecture_body.begin_keyword'>
 --------------------------------------------------------------------------------
-5 | 
+5 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 6 |   process
@@ -26,7 +26,7 @@
 7 |   begin
 <class 'vsg.token.process_statement.begin_keyword'>
 --------------------------------------------------------------------------------
-8 | 
+8 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 9 |     I1: if Status_Signal = hold
@@ -52,7 +52,7 @@
 <class 'vsg.token.if_statement.end_if_label'>
 <class 'vsg.token.if_statement.semicolon'>
 --------------------------------------------------------------------------------
-12 | 
+12 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 13 |     I2: if x = '1' and y = '1'
@@ -85,10 +85,10 @@
 <class 'vsg.token.if_statement.end_if_label'>
 <class 'vsg.token.if_statement.semicolon'>
 --------------------------------------------------------------------------------
-17 | 
+17 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-18 | 
+18 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 19 |     I3: if Code_of_Operation(1) = '1'
@@ -142,7 +142,7 @@
 <class 'vsg.token.if_statement.end_if_label'>
 <class 'vsg.token.if_statement.semicolon'>
 --------------------------------------------------------------------------------
-25 | 
+25 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 26 |     if Status = RUN
@@ -196,7 +196,7 @@
 <class 'vsg.token.if_statement.end_if_keyword'>
 <class 'vsg.token.if_statement.semicolon'>
 --------------------------------------------------------------------------------
-36 | 
+36 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 37 |     if a = b then
@@ -228,7 +228,7 @@
 <class 'vsg.token.if_statement.end_if_keyword'>
 <class 'vsg.token.if_statement.semicolon'>
 --------------------------------------------------------------------------------
-42 | 
+42 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 43 |   end process;
@@ -236,7 +236,7 @@
 <class 'vsg.token.process_statement.end_process_keyword'>
 <class 'vsg.token.process_statement.semicolon'>
 --------------------------------------------------------------------------------
-44 | 
+44 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 45 | end architecture RTL;

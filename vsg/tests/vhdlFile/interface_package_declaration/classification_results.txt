@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
-0 | 
+0 |
 --------------------------------------------------------------------------------
-1 | 
+1 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 2 | -- Test generic clause
@@ -12,14 +12,14 @@
 <class 'vsg.token.package_declaration.identifier'>
 <class 'vsg.token.package_declaration.is_keyword'>
 --------------------------------------------------------------------------------
-4 | 
+4 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 5 |   generic (
 <class 'vsg.token.generic_clause.generic_keyword'>
 <class 'vsg.token.generic_clause.open_parenthesis'>
 --------------------------------------------------------------------------------
-6 | 
+6 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 7 |     package pack1 is new fifostuff generic map (<>);
@@ -35,7 +35,7 @@
 <class 'vsg.token.interface_package_generic_map_aspect.close_parenthesis'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
-8 | 
+8 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 9 |     package pack1 is new fifostuff generic map (default);
@@ -51,7 +51,7 @@
 <class 'vsg.token.interface_package_generic_map_aspect.close_parenthesis'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
-10 | 
+10 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 11 |     package pack1 is new fifostuff generic map ( A => B, C => D)
@@ -72,20 +72,20 @@
 <class 'vsg.token.association_element.actual_part'>
 <class 'vsg.token.generic_map_aspect.close_parenthesis'>
 --------------------------------------------------------------------------------
-12 | 
+12 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-13 | 
+13 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 14 |     );
 <class 'vsg.token.generic_clause.close_parenthesis'>
 <class 'vsg.token.generic_clause.semicolon'>
 --------------------------------------------------------------------------------
-15 | 
+15 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-16 | 
+16 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 17 | end package PACK1;

@@ -12,11 +12,11 @@ This rule checks the indent of **case**, **when**, and **end case** keywords.
 
 
    case data is
- 
+
        when 0 =>
    when 1 =>
            when 3 =>
- 
+
   end case;
 
 **Fix**
@@ -24,11 +24,11 @@ This rule checks the indent of **case**, **when**, and **end case** keywords.
 .. code-block:: vhdl
 
   case data is
- 
+
     when 0 =>
     when 1 =>
     when 3 =>
- 
+
   end case;
 
 case_002
@@ -280,7 +280,7 @@ This rule checks the indent of the **null** keyword.
 
      when others =>
         null;
-  
+
      when others =>
    null;
 

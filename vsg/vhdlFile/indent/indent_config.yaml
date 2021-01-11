@@ -73,7 +73,7 @@ indent:
                 after : '-2'
         case_statement_alternative:
             when_keyword:
-                token : '-1' 
+                token : '-1'
                 after : current
         component_declaration:
             component_keyword:

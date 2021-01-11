@@ -2,7 +2,7 @@
 -- Test generic clause
 package PACK1 is
 
-  generic ( 
+  generic (
 
     -- Test function
     pure function funct1 parameter (
@@ -35,7 +35,7 @@ package PACK1 is
       variable sig1, sig2 : in      std_logic := 0;
       sig1, sig2 : in      std_logic bus := 0;
       file fil1, fil2 : std_logic;
-      type typ1) return boolean is func1; 
+      type typ1) return boolean is func1;
 
     -- Remove Parameter
     pure function funct1 (
@@ -68,7 +68,7 @@ package PACK1 is
       variable sig1, sig2 : in      std_logic := 0;
       sig1, sig2 : in      std_logic bus := 0;
       file fil1, fil2 : std_logic;
-      type typ1) return boolean is func1; 
+      type typ1) return boolean is func1;
 
     -- Remove formal_parameter_list
     pure function funct1 return boolean is <>;
@@ -99,5 +99,5 @@ package PACK1 is
 
     );
 
-    
+
 end package PACK1;

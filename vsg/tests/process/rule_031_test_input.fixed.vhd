@@ -64,13 +64,13 @@ begin
       state3, state4
     );
     variable sig1 : std_logic;
-  
+
     -- This should not error
     type state_type2 is (
       state1, state2,
       state3, state4
     );
-  
+
     variable sig1 : std_logic;
   begin
   end process PROC;
@@ -94,7 +94,7 @@ begin
       constant con1 : integer := 0;
       variable sig1 : std_logic_vector;
     begin
-  
+
     end;
 
       variable sig1 : std_logic;
@@ -109,7 +109,7 @@ begin
       file file1 : load_file_type open read_mode is load_file_name;
       variable var1 : integer;
     begin
-    end procedure AVERAGE_SAMPLES;  
+    end procedure AVERAGE_SAMPLES;
 
      variable sig1 : std_logic;
      file     fil1 : something;

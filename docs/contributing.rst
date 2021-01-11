@@ -72,7 +72,7 @@ These are the same tests Travis CI will run.
 To run the tests issue the following command when using python 2.7:
 
 .. code-block:: text
-   
+
    python -m unittest discover
 
 To run the tests using python 3 use the following command:
@@ -112,6 +112,6 @@ After issuing the command the tests will be executed.
    ...........................................
    -------------------------------------------------
    Ran 1170 tests in 6.424s
-   
+
    OK
 

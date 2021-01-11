@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
-0 | 
+0 |
 --------------------------------------------------------------------------------
-1 | 
+1 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 2 | package pack1 is new pack_name
@@ -37,7 +37,7 @@
 <class 'vsg.token.generic_map_aspect.close_parenthesis'>
 <class 'vsg.token.package_instantiation_declaration.semicolon'>
 --------------------------------------------------------------------------------
-8 | 
+8 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 9 | package pack2 is new pack2_name;
@@ -48,5 +48,5 @@
 <class 'vsg.token.package_instantiation_declaration.uninstantiated_package_name'>
 <class 'vsg.token.package_instantiation_declaration.semicolon'>
 --------------------------------------------------------------------------------
-10 | 
+10 |
 <class 'vsg.parser.blank_line'>

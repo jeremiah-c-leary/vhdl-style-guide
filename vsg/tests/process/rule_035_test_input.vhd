@@ -23,7 +23,7 @@ begin
 
   -- Violations below
 
-  process 
+  process
 
   begin
 

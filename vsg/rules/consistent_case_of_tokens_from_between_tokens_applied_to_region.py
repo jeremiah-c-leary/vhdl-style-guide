@@ -49,14 +49,14 @@ class consistent_case_of_tokens_from_between_tokens_applied_to_region(rule.Rule)
 
         for oToi in lToi:
             iLine, lTokens = utils.get_toi_parameters(oToi)
-    
+
             for iToken, oToken in enumerate(lTokens):
-    
+
                 iLine = utils.increment_line_number(iLine, oToken)
-    
+
                 if is_token_in_ignore_token_list(oToken, self.lIgnoreTokens):
                     continue
-    
+
                 sTokenValue = oToken.get_value()
                 sTokenValueLower = sTokenValue.lower()
 

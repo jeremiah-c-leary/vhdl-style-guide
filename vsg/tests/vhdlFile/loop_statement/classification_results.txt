@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
-0 | 
+0 |
 --------------------------------------------------------------------------------
-1 | 
+1 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 2 | architecture RTL of ENTITY_NAME is
@@ -11,25 +11,25 @@
 <class 'vsg.token.architecture_body.entity_name'>
 <class 'vsg.token.architecture_body.is_keyword'>
 --------------------------------------------------------------------------------
-3 | 
+3 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 4 | begin
 <class 'vsg.token.architecture_body.begin_keyword'>
 --------------------------------------------------------------------------------
-5 | 
+5 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 6 |   process
 <class 'vsg.token.process_statement.process_keyword'>
 --------------------------------------------------------------------------------
-7 | 
+7 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 8 |   begin
 <class 'vsg.token.process_statement.begin_keyword'>
 --------------------------------------------------------------------------------
-9 | 
+9 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 10 |     WHILE_LABEL : while a < 50 loop
@@ -41,14 +41,14 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.loop_statement.loop_keyword'>
 --------------------------------------------------------------------------------
-11 | 
+11 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 12 |         null;
 <class 'vsg.token.null_statement.null_keyword'>
 <class 'vsg.token.null_statement.semicolon'>
 --------------------------------------------------------------------------------
-13 | 
+13 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 14 |     end loop WHILE_LABEL;
@@ -57,7 +57,7 @@
 <class 'vsg.token.loop_statement.end_loop_label'>
 <class 'vsg.token.loop_statement.semicolon'>
 --------------------------------------------------------------------------------
-15 | 
+15 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 16 |     while a < 50 loop
@@ -67,14 +67,14 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.loop_statement.loop_keyword'>
 --------------------------------------------------------------------------------
-17 | 
+17 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 18 |         null;
 <class 'vsg.token.null_statement.null_keyword'>
 <class 'vsg.token.null_statement.semicolon'>
 --------------------------------------------------------------------------------
-19 | 
+19 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 20 |     end loop;
@@ -82,10 +82,10 @@
 <class 'vsg.token.loop_statement.end_loop_keyword'>
 <class 'vsg.token.loop_statement.semicolon'>
 --------------------------------------------------------------------------------
-21 | 
+21 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-22 | 
+22 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 23 |     FOR_LABEL : for count in 1 to 8 loop
@@ -99,14 +99,14 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.loop_statement.loop_keyword'>
 --------------------------------------------------------------------------------
-24 | 
+24 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 25 |         null;
 <class 'vsg.token.null_statement.null_keyword'>
 <class 'vsg.token.null_statement.semicolon'>
 --------------------------------------------------------------------------------
-26 | 
+26 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 27 |     end loop FOR_LABEL;
@@ -115,10 +115,10 @@
 <class 'vsg.token.loop_statement.end_loop_label'>
 <class 'vsg.token.loop_statement.semicolon'>
 --------------------------------------------------------------------------------
-28 | 
+28 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-29 | 
+29 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 30 |     for count in 1 to 8 loop
@@ -130,14 +130,14 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.loop_statement.loop_keyword'>
 --------------------------------------------------------------------------------
-31 | 
+31 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 32 |         null;
 <class 'vsg.token.null_statement.null_keyword'>
 <class 'vsg.token.null_statement.semicolon'>
 --------------------------------------------------------------------------------
-33 | 
+33 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 34 |     end loop;
@@ -145,23 +145,23 @@
 <class 'vsg.token.loop_statement.end_loop_keyword'>
 <class 'vsg.token.loop_statement.semicolon'>
 --------------------------------------------------------------------------------
-35 | 
+35 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-36 | 
+36 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 37 |     loop
 <class 'vsg.token.loop_statement.loop_keyword'>
 --------------------------------------------------------------------------------
-38 | 
+38 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 39 |         null;
 <class 'vsg.token.null_statement.null_keyword'>
 <class 'vsg.token.null_statement.semicolon'>
 --------------------------------------------------------------------------------
-40 | 
+40 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 41 |     end loop;
@@ -169,7 +169,7 @@
 <class 'vsg.token.loop_statement.end_loop_keyword'>
 <class 'vsg.token.loop_statement.semicolon'>
 --------------------------------------------------------------------------------
-42 | 
+42 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 43 |     FOR_LABEL : loop
@@ -186,7 +186,7 @@
 <class 'vsg.token.loop_statement.end_loop_keyword'>
 <class 'vsg.token.loop_statement.semicolon'>
 --------------------------------------------------------------------------------
-46 | 
+46 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 47 |     foo;
@@ -209,7 +209,7 @@
 <class 'vsg.token.loop_statement.end_loop_keyword'>
 <class 'vsg.token.loop_statement.semicolon'>
 --------------------------------------------------------------------------------
-50 | 
+50 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 51 |   end process;
@@ -217,7 +217,7 @@
 <class 'vsg.token.process_statement.end_process_keyword'>
 <class 'vsg.token.process_statement.semicolon'>
 --------------------------------------------------------------------------------
-52 | 
+52 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 53 | end architecture RTL;

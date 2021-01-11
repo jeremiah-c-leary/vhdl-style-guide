@@ -1,5 +1,5 @@
 --------------------------------------------------------------------------------
-0 | 
+0 |
 --------------------------------------------------------------------------------
 1 | architecture RTL of fifo is
 <class 'vsg.token.architecture_body.architecture_keyword'>
@@ -8,7 +8,7 @@
 <class 'vsg.token.architecture_body.entity_name'>
 <class 'vsg.token.architecture_body.is_keyword'>
 --------------------------------------------------------------------------------
-2 | 
+2 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 3 |   variable INDEX: integer range 0 to 99 := 0;
@@ -24,7 +24,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.variable_declaration.semicolon'>
 --------------------------------------------------------------------------------
-4 | 
+4 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 5 |   variable COUNT: POSITIVE;
@@ -34,7 +34,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.variable_declaration.semicolon'>
 --------------------------------------------------------------------------------
-6 | 
+6 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 7 |   variable MEMORY: BIT_MATRIX (0 to 7, 0 to 1023);
@@ -53,7 +53,7 @@
 <class 'vsg.parser.close_parenthesis'>
 <class 'vsg.token.variable_declaration.semicolon'>
 --------------------------------------------------------------------------------
-8 | 
+8 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 9 |   shared variable Counter: SharedCounter;
@@ -64,7 +64,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.variable_declaration.semicolon'>
 --------------------------------------------------------------------------------
-10 | 
+10 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 11 |   shared variable addend, augend, result: ComplexNumber;
@@ -79,7 +79,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.variable_declaration.semicolon'>
 --------------------------------------------------------------------------------
-12 | 
+12 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 13 |   variable bit_stack: VariableSizeBitArray := "0000";
@@ -91,13 +91,13 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.variable_declaration.semicolon'>
 --------------------------------------------------------------------------------
-14 | 
+14 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 15 | begin
 <class 'vsg.token.architecture_body.begin_keyword'>
 --------------------------------------------------------------------------------
-16 | 
+16 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 17 | end architecture RTL;

@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
-0 | 
+0 |
 --------------------------------------------------------------------------------
-1 | 
+1 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 2 | architecture RTL of ENTITY_NAME is
@@ -11,13 +11,13 @@
 <class 'vsg.token.architecture_body.entity_name'>
 <class 'vsg.token.architecture_body.is_keyword'>
 --------------------------------------------------------------------------------
-3 | 
+3 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 4 | begin
 <class 'vsg.token.architecture_body.begin_keyword'>
 --------------------------------------------------------------------------------
-5 | 
+5 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 6 |   process
@@ -26,7 +26,7 @@
 7 |   begin
 <class 'vsg.token.process_statement.begin_keyword'>
 --------------------------------------------------------------------------------
-8 | 
+8 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 9 |     SEL_LABEL : with some expression select ?
@@ -80,10 +80,10 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.selected_force_assignment.semicolon'>
 --------------------------------------------------------------------------------
-13 | 
+13 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-14 | 
+14 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 15 |     SEL_LABEL : with some expression select ?
@@ -137,10 +137,10 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.selected_force_assignment.semicolon'>
 --------------------------------------------------------------------------------
-19 | 
+19 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-20 | 
+20 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 21 |     SEL_LABEL : with some expression select
@@ -193,10 +193,10 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.selected_force_assignment.semicolon'>
 --------------------------------------------------------------------------------
-25 | 
+25 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-26 | 
+26 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 27 |     SEL_LABEL : with some expression select ?
@@ -221,10 +221,10 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.selected_force_assignment.semicolon'>
 --------------------------------------------------------------------------------
-29 | 
+29 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-30 | 
+30 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 31 |     with some expression select ?
@@ -276,7 +276,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.selected_force_assignment.semicolon'>
 --------------------------------------------------------------------------------
-35 | 
+35 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 36 |   end process;
@@ -284,7 +284,7 @@
 <class 'vsg.token.process_statement.end_process_keyword'>
 <class 'vsg.token.process_statement.semicolon'>
 --------------------------------------------------------------------------------
-37 | 
+37 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 38 | end architecture RTL;

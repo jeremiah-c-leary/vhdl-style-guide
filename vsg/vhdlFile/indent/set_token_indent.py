@@ -124,7 +124,7 @@ def process_indent_map(dIndentMap):
         for sSubKey in lSubKeys:
             sUniqueId = sTopKey + ':' + sSubKey
             dReturn[sUniqueId] = dIndentMap['indent']['tokens'][sTopKey][sSubKey]
-        
+
     lReturn = list(dReturn.keys())
 
     return lReturn, dReturn

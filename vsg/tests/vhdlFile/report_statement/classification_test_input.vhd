@@ -5,13 +5,13 @@ begin
 
   process
   begin
-  
+
     LABEL : report "This is a string"
       severity WARNING;
-    
+
     report "This is a string"
       severity WARNING;
-    
+
     LABEL : report "This is a string";
 
   end process;

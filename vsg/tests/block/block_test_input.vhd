@@ -24,7 +24,7 @@ begin
         PORT_2 => w_port_2,
         PORT_3 => w_port_3
       );
-    
+
   end block BLK;
 
 end architecture RTL;

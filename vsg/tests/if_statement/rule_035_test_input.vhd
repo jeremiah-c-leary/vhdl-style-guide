@@ -14,7 +14,7 @@ begin
     end if;
 
     -- Violations below
-    if 
+    if
 a = '1' then
       b <= '0';
     elsif
@@ -34,7 +34,7 @@ c = '1' then
                    a = '1' then
       b <= '0';
     elsif
-                      c = '1' and 
+                      c = '1' and
    d = '0' then
       b <= '1';
     end if;

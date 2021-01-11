@@ -25,7 +25,7 @@ class testVsg(unittest.TestCase):
         with open('vsg/tests/rule_list/extract_violation_dictionary.json') as jsonFile:
             dExpected = json.load(jsonFile)
         self.assertEqual(dExpected, oRules.extract_violation_dictionary())
-        
+
     def test_extract_violation_dictionary_w_all_phases_enabled(self):
         self.maxDiff = None
         lFile = []

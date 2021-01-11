@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
-0 | 
+0 |
 --------------------------------------------------------------------------------
-1 | 
+1 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 2 | entity FIFO is
@@ -9,13 +9,13 @@
 <class 'vsg.token.entity_declaration.identifier'>
 <class 'vsg.token.entity_declaration.is_keyword'>
 --------------------------------------------------------------------------------
-3 | 
+3 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 4 |   begin
 <class 'vsg.token.entity_declaration.begin_keyword'>
 --------------------------------------------------------------------------------
-5 | 
+5 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 6 |     LABEL : assert TRUE
@@ -33,7 +33,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_assertion_statement.semicolon'>
 --------------------------------------------------------------------------------
-9 | 
+9 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 10 |     LABEL1: postponed Proc1 (Clock);
@@ -64,7 +64,7 @@
 <class 'vsg.token.procedure_call.close_parenthesis'>
 <class 'vsg.token.concurrent_procedure_call_statement.semicolon'>
 --------------------------------------------------------------------------------
-13 | 
+13 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 14 |     process_and_or : postponed process(a,b,d,e) is
@@ -83,13 +83,13 @@
 <class 'vsg.token.process_statement.close_parenthesis'>
 <class 'vsg.token.process_statement.is_keyword'>
 --------------------------------------------------------------------------------
-15 | 
+15 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 16 |     begin
 <class 'vsg.token.process_statement.begin_keyword'>
 --------------------------------------------------------------------------------
-17 | 
+17 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 18 |     end postponed process process_and_or;
@@ -99,10 +99,10 @@
 <class 'vsg.token.process_statement.end_process_label'>
 <class 'vsg.token.process_statement.semicolon'>
 --------------------------------------------------------------------------------
-19 | 
+19 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-20 | 
+20 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 21 | end entity FIFO;

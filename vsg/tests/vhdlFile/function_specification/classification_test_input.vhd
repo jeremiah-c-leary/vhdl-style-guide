@@ -17,7 +17,7 @@ architecture RTL of FIFO is
 
   function Proc_2 (signal Sig: inout Bit) return string;
 
-  function sum2num(signal a: in signed(3 downto 0); 
+  function sum2num(signal a: in signed(3 downto 0);
                     signal b: in signed(3 downto 0);
                     signal sum : out signed (3 downto 0)) return std_logic_vector;
 

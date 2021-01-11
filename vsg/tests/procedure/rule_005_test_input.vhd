@@ -20,7 +20,7 @@ signal d : out std_logic) is
       constant con1 : integer := 0;
 variable var1 : integer := 12;
   use ieee.std_logic_1164.all;
-    
+
   begin
   end procedure proc_name;
 
@@ -32,7 +32,7 @@ constant a : in integer;
 constant con1 : integer := 0;
   variable var1 : integer := 12;
       use ieee.std_logic_1164.all;
-    
+
   begin
   end procedure proc_name;
 

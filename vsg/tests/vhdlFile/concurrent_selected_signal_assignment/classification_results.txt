@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
-0 | 
+0 |
 --------------------------------------------------------------------------------
-1 | 
+1 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 2 | architecture RTL of FIFO is
@@ -11,13 +11,13 @@
 <class 'vsg.token.architecture_body.entity_name'>
 <class 'vsg.token.architecture_body.is_keyword'>
 --------------------------------------------------------------------------------
-3 | 
+3 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 4 | begin
 <class 'vsg.token.architecture_body.begin_keyword'>
 --------------------------------------------------------------------------------
-5 | 
+5 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 6 |   -- Basic version
@@ -54,10 +54,10 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_selected_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
-12 | 
+12 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-13 | 
+13 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 14 |   --with guarded keyword
@@ -95,10 +95,10 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_selected_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
-20 | 
+20 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-21 | 
+21 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 22 |   --with transport delay mechanism
@@ -136,7 +136,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_selected_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
-28 | 
+28 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 29 |   --with inertial delay mechanism
@@ -174,7 +174,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_selected_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
-35 | 
+35 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 36 |   --with reject inertial delay mechanism
@@ -215,7 +215,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_selected_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
-42 | 
+42 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 43 | end architecture RTL;

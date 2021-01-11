@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
-0 | 
+0 |
 --------------------------------------------------------------------------------
-1 | 
+1 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 2 | architecture RTL of FIFO is
@@ -11,7 +11,7 @@
 <class 'vsg.token.architecture_body.entity_name'>
 <class 'vsg.token.architecture_body.is_keyword'>
 --------------------------------------------------------------------------------
-3 | 
+3 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 4 |   signal fifo_wr : std_logic;
@@ -21,7 +21,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.signal_declaration.semicolon'>
 --------------------------------------------------------------------------------
-5 | 
+5 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 6 |   signal fifo_wr : std_logic_vector(3 downto 0);
@@ -36,7 +36,7 @@
 <class 'vsg.parser.close_parenthesis'>
 <class 'vsg.token.signal_declaration.semicolon'>
 --------------------------------------------------------------------------------
-7 | 
+7 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 8 |   signal fifo_wr : std_logic_vector(3 downto 0) := "000";
@@ -53,7 +53,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.signal_declaration.semicolon'>
 --------------------------------------------------------------------------------
-9 | 
+9 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 10 |   signal fifo_wr, fifo_rd, fifo_empty : std_logic := '1';
@@ -69,13 +69,13 @@
 <class 'vsg.parser.character_literal'>
 <class 'vsg.token.signal_declaration.semicolon'>
 --------------------------------------------------------------------------------
-11 | 
+11 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 12 | begin
 <class 'vsg.token.architecture_body.begin_keyword'>
 --------------------------------------------------------------------------------
-13 | 
+13 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 14 | end architecture RTL;

@@ -2,7 +2,7 @@
 -- Test generic clause
 package PACK1 is
 
-  generic ( 
+  generic (
     -- Test constants
     constant con1, con2 : in std_logic := 0;
     constant con1, con2 : std_logic := 0;
@@ -15,7 +15,7 @@ package PACK1 is
     signal sig1, sig2 : inout   std_logic bus := 0;
     signal sig1, sig2 : buffer  std_logic bus := 0;
     signal sig1, sig2 : linkage std_logic bus := 0;
-    
+
     signal sig1, sig2 : in      std_logic bus;
     signal sig1, sig2 : out     std_logic bus;
     signal sig1, sig2 : inout   std_logic bus;
@@ -27,13 +27,13 @@ package PACK1 is
     signal sig1, sig2 : std_logic bus := 0;
     signal sig1, sig2 : std_logic bus := 0;
     signal sig1, sig2 : std_logic bus := 0;
-    
+
     signal sig1, sig2 : std_logic := 0;
     signal sig1, sig2 : std_logic := 0;
     signal sig1, sig2 : std_logic := 0;
     signal sig1, sig2 : std_logic := 0;
     signal sig1, sig2 : std_logic := 0;
-    
+
     signal sig1, sig2 : std_logic;
     signal sig1, sig2 : std_logic;
     signal sig1, sig2 : std_logic;
@@ -71,7 +71,7 @@ package PACK1 is
     sig1, sig2 : inout   std_logic bus := 0;
     sig1, sig2 : buffer  std_logic bus := 0;
     sig1, sig2 : linkage std_logic bus := 0;
-    
+
     sig1, sig2 : in      std_logic bus;
     sig1, sig2 : out     std_logic bus;
     sig1, sig2 : inout   std_logic bus;
@@ -83,13 +83,13 @@ package PACK1 is
     sig1, sig2 : std_logic bus := 0;
     sig1, sig2 : std_logic bus := 0;
     sig1, sig2 : std_logic bus := 0;
-    
+
     sig1, sig2 : std_logic := 0;
     sig1, sig2 : std_logic := 0;
     sig1, sig2 : std_logic := 0;
     sig1, sig2 : std_logic := 0;
     sig1, sig2 : std_logic := 0;
-    
+
     sig1, sig2 : std_logic;
     sig1, sig2 : std_logic;
     sig1, sig2 : std_logic;
@@ -174,7 +174,7 @@ package PACK1 is
       variable sig1, sig2 : in      std_logic := 0;
       sig1, sig2 : in      std_logic bus := 0;
       file fil1, fil2 : std_logic;
-      type typ1) return boolean is func1; 
+      type typ1) return boolean is func1;
 
     -- Remove Parameter
     pure function funct1 (
@@ -207,7 +207,7 @@ package PACK1 is
       variable sig1, sig2 : in      std_logic := 0;
       sig1, sig2 : in      std_logic bus := 0;
       file fil1, fil2 : std_logic;
-      type typ1) return boolean is func1; 
+      type typ1) return boolean is func1;
 
     -- Remove formal_parameter_list
     pure function funct1 return boolean is <>;
@@ -234,5 +234,5 @@ package PACK1 is
        C => D,
        E, F
     );
-    
+
 end package PACK1;

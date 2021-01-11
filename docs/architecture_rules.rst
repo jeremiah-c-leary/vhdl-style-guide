@@ -229,7 +229,7 @@ This rule checks for a single space between **end** and **architecture** keyword
 .. code-block:: vhdl
 
    end architecture architecture_name;
- 
+
 architecture_013
 ################
 
@@ -422,7 +422,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
 
    architecture rtl of fifo is
    begin
- 
+
 architecture_022
 ################
 
@@ -589,16 +589,16 @@ Refer to the section `Configuring Identifier Alignment Rules <configuring_declar
 .. code-block:: vhdl
 
    signal    sig1 : std_logic;
-   file some_file : 
+   file some_file :
    variable v_var1 : std_logic;
    type t_myType : std_logic;
-   
+
 **Fix**
 
 .. code-block:: vhdl
 
    signal   sig1 : std_logic;
-   file     some_file : 
+   file     some_file :
    variable v_var1 : std_logic;
    type     t_myType : std_logic;
 

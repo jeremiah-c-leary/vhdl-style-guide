@@ -170,7 +170,7 @@ generic_009
 ###########
 
 This rule checks the **generic** keyword has proper case.
- 
+
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
@@ -298,7 +298,7 @@ This rule checks the **generic** keyword is on the same line as the (.
 
 .. code-block:: vhdl
 
-  generic 
+  generic
    (
 
 **Fix**

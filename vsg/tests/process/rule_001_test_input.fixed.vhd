@@ -4,29 +4,29 @@ architecture RTL of FIFO is
 begin
 
 
-  PROC_LABEL : process 
+  PROC_LABEL : process
   begin
   end process;
 
-  postponed process 
+  postponed process
   begin
   end process;
 
-  process 
+  process
   begin
   end process;
 
   -- Violations below
 
-  PROC_LABEL : process 
+  PROC_LABEL : process
   begin
   end process;
 
-  postponed process 
+  postponed process
   begin
   end process;
 
-  process 
+  process
   begin
   end process;
 

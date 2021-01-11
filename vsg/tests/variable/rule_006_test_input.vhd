@@ -8,7 +8,7 @@ begin
   process
     variable var1 : integer;
   begin
-  end process; 
+  end process;
 
 end architecture RTL;
 
@@ -25,6 +25,6 @@ begin
     variable var1: integer;
     variable var1    : integer;
   begin
-  end process; 
+  end process;
 
 end architecture RTL;

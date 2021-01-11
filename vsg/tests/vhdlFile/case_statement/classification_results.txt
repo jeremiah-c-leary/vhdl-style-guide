@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
-0 | 
+0 |
 --------------------------------------------------------------------------------
-1 | 
+1 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 2 | architecture RTL of ENTITY_NAME is
@@ -11,13 +11,13 @@
 <class 'vsg.token.architecture_body.entity_name'>
 <class 'vsg.token.architecture_body.is_keyword'>
 --------------------------------------------------------------------------------
-3 | 
+3 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 4 | begin
 <class 'vsg.token.architecture_body.begin_keyword'>
 --------------------------------------------------------------------------------
-5 | 
+5 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 6 |   process
@@ -26,7 +26,7 @@
 7 |   begin
 <class 'vsg.token.process_statement.begin_keyword'>
 --------------------------------------------------------------------------------
-8 | 
+8 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 9 |     C1: case ? x is
@@ -71,7 +71,7 @@
 <class 'vsg.token.case_statement.end_case_label'>
 <class 'vsg.token.case_statement.semicolon'>
 --------------------------------------------------------------------------------
-14 | 
+14 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 15 |     C1: case x is
@@ -114,7 +114,7 @@
 <class 'vsg.token.case_statement.end_case_label'>
 <class 'vsg.token.case_statement.semicolon'>
 --------------------------------------------------------------------------------
-20 | 
+20 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 21 |     case x is
@@ -154,7 +154,7 @@
 <class 'vsg.token.case_statement.end_case_keyword'>
 <class 'vsg.token.case_statement.semicolon'>
 --------------------------------------------------------------------------------
-26 | 
+26 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 27 |   end process;
@@ -162,7 +162,7 @@
 <class 'vsg.token.process_statement.end_process_keyword'>
 <class 'vsg.token.process_statement.semicolon'>
 --------------------------------------------------------------------------------
-28 | 
+28 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 29 |   process
@@ -171,7 +171,7 @@
 30 |   begin
 <class 'vsg.token.process_statement.begin_keyword'>
 --------------------------------------------------------------------------------
-31 | 
+31 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 32 |     C3: case Code_Variable is
@@ -209,7 +209,7 @@
 <class 'vsg.token.case_statement.end_case_label'>
 <class 'vsg.token.case_statement.semicolon'>
 --------------------------------------------------------------------------------
-36 | 
+36 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 37 |   end process;
@@ -217,13 +217,13 @@
 <class 'vsg.token.process_statement.end_process_keyword'>
 <class 'vsg.token.process_statement.semicolon'>
 --------------------------------------------------------------------------------
-38 | 
+38 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 39 |   -- Check others
 <class 'vsg.parser.comment'>
 --------------------------------------------------------------------------------
-40 | 
+40 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 41 |   process begin
@@ -254,7 +254,7 @@
 <class 'vsg.token.process_statement.end_process_keyword'>
 <class 'vsg.token.process_statement.semicolon'>
 --------------------------------------------------------------------------------
-46 | 
+46 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 47 |   process begin
@@ -279,10 +279,10 @@
 <class 'vsg.token.process_statement.end_process_keyword'>
 <class 'vsg.token.process_statement.semicolon'>
 --------------------------------------------------------------------------------
-51 | 
+51 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-52 | 
+52 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 53 | end architecture RTL;

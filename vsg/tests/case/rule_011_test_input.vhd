@@ -19,7 +19,7 @@ begin
       -- This should fail
       when STATE_1 | STATE_2 |
       | STATE_3 | STATE_4 |
-                  | STATE_5 
+                  | STATE_5
            | STATE_6
          | STATE_7 =>
         a <= b;

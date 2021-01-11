@@ -13,15 +13,15 @@ dIndentMap = utils.read_indent_file()
 
 lBaudGen = utils.read_vhdlfile(os.path.join(sSourceDir,'BaudGen.vhd'))
 oBaudGen = vhdlFile.vhdlFile(lBaudGen)
-oBaudGen.set_indent_map(dIndentMap) 
+oBaudGen.set_indent_map(dIndentMap)
 
 lBoardCpu = utils.read_vhdlfile(os.path.join(sSourceDir,'Board_cpu.vhd'))
 oBoardCpu = vhdlFile.vhdlFile(lBoardCpu)
-oBoardCpu.set_indent_map(dIndentMap) 
+oBoardCpu.set_indent_map(dIndentMap)
 
 lDataCore = utils.read_vhdlfile(os.path.join(sSourceDir,'data_core.vhd'))
 oDataCore = vhdlFile.vhdlFile(lDataCore)
-oDataCore.set_indent_map(dIndentMap) 
+oDataCore.set_indent_map(dIndentMap)
 
 dConfig = utils.read_configuration(os.path.join(os.path.dirname(__file__),'..','..','..','..','styles', 'jcl.yaml'))
 dConfig['debug'] = False

@@ -166,7 +166,7 @@ To configure the following example...
        footer_left_repeat : '-'
        footer_string : '<Footer>'
        footer_right_repeat : '='
-       footer_alignment : 'right' 
+       footer_alignment : 'right'
 
 
 Doxygen Block Comment

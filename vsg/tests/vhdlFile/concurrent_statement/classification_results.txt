@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
-0 | 
+0 |
 --------------------------------------------------------------------------------
-1 | 
+1 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 2 | entity BLOCK_EXAMPLE is
@@ -15,7 +15,7 @@
 <class 'vsg.token.entity_declaration.entity_simple_name'>
 <class 'vsg.token.entity_declaration.semicolon'>
 --------------------------------------------------------------------------------
-4 | 
+4 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 5 | architecture RTL of BLOCK_EXAMPLE is
@@ -25,13 +25,13 @@
 <class 'vsg.token.architecture_body.entity_name'>
 <class 'vsg.token.architecture_body.is_keyword'>
 --------------------------------------------------------------------------------
-6 | 
+6 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 7 | begin
 <class 'vsg.token.architecture_body.begin_keyword'>
 --------------------------------------------------------------------------------
-8 | 
+8 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 9 |   BLK : block is
@@ -43,7 +43,7 @@
 10 |   begin
 <class 'vsg.token.block_statement.begin_keyword'>
 --------------------------------------------------------------------------------
-11 | 
+11 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 12 |     LABEL : assert TRUE
@@ -61,7 +61,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_assertion_statement.semicolon'>
 --------------------------------------------------------------------------------
-15 | 
+15 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 16 |     -- Simple form
@@ -73,7 +73,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
-18 | 
+18 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 19 |     GEN : for ii in 0 to 7 generate
@@ -87,7 +87,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.for_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-20 | 
+20 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 21 |       -- Simple form
@@ -111,7 +111,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_conditional_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
-25 | 
+25 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 26 |       LABEL : assert TRUE
@@ -129,7 +129,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_assertion_statement.semicolon'>
 --------------------------------------------------------------------------------
-29 | 
+29 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 30 |       BLK2 : block is
@@ -154,10 +154,10 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_assertion_statement.semicolon'>
 --------------------------------------------------------------------------------
-35 | 
+35 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-36 | 
+36 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 37 |         -- Basic version
@@ -194,7 +194,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_selected_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
-43 | 
+43 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 44 |         GEN2 : for jj in 0 to 7 generate
@@ -208,7 +208,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.for_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-45 | 
+45 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 46 |           -- Simple form
@@ -222,7 +222,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
-48 | 
+48 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 49 |           assert TRUE
@@ -238,10 +238,10 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_assertion_statement.semicolon'>
 --------------------------------------------------------------------------------
-52 | 
+52 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-53 | 
+53 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 54 |         end generate GEN2;
@@ -250,7 +250,7 @@
 <class 'vsg.token.for_generate_statement.end_generate_label'>
 <class 'vsg.token.for_generate_statement.semicolon'>
 --------------------------------------------------------------------------------
-55 | 
+55 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 56 |       end block BLK2;
@@ -259,7 +259,7 @@
 <class 'vsg.token.block_statement.end_block_label'>
 <class 'vsg.token.block_statement.semicolon'>
 --------------------------------------------------------------------------------
-57 | 
+57 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 58 |     end generate GEN;
@@ -268,7 +268,7 @@
 <class 'vsg.token.for_generate_statement.end_generate_label'>
 <class 'vsg.token.for_generate_statement.semicolon'>
 --------------------------------------------------------------------------------
-59 | 
+59 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 60 |   end block BLK;
@@ -277,10 +277,10 @@
 <class 'vsg.token.block_statement.end_block_label'>
 <class 'vsg.token.block_statement.semicolon'>
 --------------------------------------------------------------------------------
-61 | 
+61 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-62 | 
+62 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 63 |   BLK : block is
@@ -292,7 +292,7 @@
 64 |   begin
 <class 'vsg.token.block_statement.begin_keyword'>
 --------------------------------------------------------------------------------
-65 | 
+65 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 66 |     -- Simple form
@@ -318,7 +318,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_conditional_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
-70 | 
+70 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 71 |     IF_GEN_LABEL: if a = x generate
@@ -330,7 +330,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-72 | 
+72 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 73 |         -- Basic version
@@ -369,7 +369,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_selected_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
-79 | 
+79 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 80 |         BLK2 : block is
@@ -381,7 +381,7 @@
 81 |         begin
 <class 'vsg.token.block_statement.begin_keyword'>
 --------------------------------------------------------------------------------
-82 | 
+82 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 83 |             LABEL : assert TRUE
@@ -407,7 +407,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
-87 | 
+87 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 88 |             GEN2 : for jj in 0 to 7 generate
@@ -421,7 +421,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.for_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-89 | 
+89 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 90 |                 -- Simple form
@@ -459,7 +459,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_assertion_statement.semicolon'>
 --------------------------------------------------------------------------------
-96 | 
+96 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 97 |                 BLK3: block is
@@ -471,7 +471,7 @@
 98 |                 begin
 <class 'vsg.token.block_statement.begin_keyword'>
 --------------------------------------------------------------------------------
-99 | 
+99 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 100 |                   LABEL : assert TRUE
@@ -485,7 +485,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_assertion_statement.semicolon'>
 --------------------------------------------------------------------------------
-102 | 
+102 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 103 |                 end block BLK3;
@@ -494,7 +494,7 @@
 <class 'vsg.token.block_statement.end_block_label'>
 <class 'vsg.token.block_statement.semicolon'>
 --------------------------------------------------------------------------------
-104 | 
+104 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 105 |             end generate GEN2;
@@ -503,7 +503,7 @@
 <class 'vsg.token.for_generate_statement.end_generate_label'>
 <class 'vsg.token.for_generate_statement.semicolon'>
 --------------------------------------------------------------------------------
-106 | 
+106 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 107 |             BLK4 : block is
@@ -515,7 +515,7 @@
 108 |             begin
 <class 'vsg.token.block_statement.begin_keyword'>
 --------------------------------------------------------------------------------
-109 | 
+109 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 110 |               CASE_GEN_LABEL : case a & B & c generate
@@ -529,7 +529,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.case_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-111 | 
+111 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 112 |                 when "000" =>
@@ -537,7 +537,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.case_generate_alternative.assignment'>
 --------------------------------------------------------------------------------
-113 | 
+113 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 114 |                   LABEL : assert TRUE
@@ -551,7 +551,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_assertion_statement.semicolon'>
 --------------------------------------------------------------------------------
-116 | 
+116 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 117 |                     -- Basic version
@@ -600,7 +600,7 @@
 124 |                     begin
 <class 'vsg.token.block_statement.begin_keyword'>
 --------------------------------------------------------------------------------
-125 | 
+125 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 126 |                       LABEL : assert TRUE
@@ -624,7 +624,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
-130 | 
+130 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 131 |                     end block BLK4A;
@@ -638,7 +638,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.case_generate_alternative.assignment'>
 --------------------------------------------------------------------------------
-133 | 
+133 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 134 |                   -- Simple form
@@ -663,7 +663,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_conditional_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
-138 | 
+138 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 139 |                   IF_GEN_LABELA: if a = y generate
@@ -675,7 +675,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-140 | 
+140 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 141 |                     LABEL : assert TRUE
@@ -689,7 +689,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_assertion_statement.semicolon'>
 --------------------------------------------------------------------------------
-143 | 
+143 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 144 |                     -- Basic version
@@ -727,7 +727,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_selected_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
-150 | 
+150 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 151 |                     BLK4B : block is
@@ -750,7 +750,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_assertion_statement.semicolon'>
 --------------------------------------------------------------------------------
-155 | 
+155 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 156 |                       -- Simple form
@@ -783,7 +783,7 @@
 <class 'vsg.token.block_statement.end_block_label'>
 <class 'vsg.token.block_statement.semicolon'>
 --------------------------------------------------------------------------------
-161 | 
+161 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 162 |                   end generate IF_GEN_LABELA;
@@ -792,7 +792,7 @@
 <class 'vsg.token.if_generate_statement.end_generate_label'>
 <class 'vsg.token.if_generate_statement.semicolon'>
 --------------------------------------------------------------------------------
-163 | 
+163 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 164 |                end generate CASE_GEN_LABEL;
@@ -801,7 +801,7 @@
 <class 'vsg.token.case_generate_statement.end_generate_label'>
 <class 'vsg.token.case_generate_statement.semicolon'>
 --------------------------------------------------------------------------------
-165 | 
+165 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 166 |             end block BLK4;
@@ -810,7 +810,7 @@
 <class 'vsg.token.block_statement.end_block_label'>
 <class 'vsg.token.block_statement.semicolon'>
 --------------------------------------------------------------------------------
-167 | 
+167 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 168 |             BLK5 : block is
@@ -832,7 +832,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_assertion_statement.semicolon'>
 --------------------------------------------------------------------------------
-172 | 
+172 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 173 |                 -- Simple form
@@ -865,7 +865,7 @@
 <class 'vsg.token.block_statement.end_block_label'>
 <class 'vsg.token.block_statement.semicolon'>
 --------------------------------------------------------------------------------
-178 | 
+178 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 179 |         end block BLK2;
@@ -874,7 +874,7 @@
 <class 'vsg.token.block_statement.end_block_label'>
 <class 'vsg.token.block_statement.semicolon'>
 --------------------------------------------------------------------------------
-180 | 
+180 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 181 |     end generate IF_GEN_LABEL;
@@ -883,7 +883,7 @@
 <class 'vsg.token.if_generate_statement.end_generate_label'>
 <class 'vsg.token.if_generate_statement.semicolon'>
 --------------------------------------------------------------------------------
-182 | 
+182 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 183 |     GEN : for ii in 0 to 7 generate
@@ -897,7 +897,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.for_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-184 | 
+184 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 185 |                 -- Simple form
@@ -934,7 +934,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_assertion_statement.semicolon'>
 --------------------------------------------------------------------------------
-191 | 
+191 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 192 |         GEN2 : for jj in 0 to 7 generate
@@ -958,7 +958,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_assertion_statement.semicolon'>
 --------------------------------------------------------------------------------
-195 | 
+195 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 196 |                 -- Simple form
@@ -994,7 +994,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-201 | 
+201 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 202 |                 -- Simple form
@@ -1021,7 +1021,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_conditional_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
-206 | 
+206 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 207 |             BLK2 : block is
@@ -1033,7 +1033,7 @@
 208 |             begin
 <class 'vsg.token.block_statement.begin_keyword'>
 --------------------------------------------------------------------------------
-209 | 
+209 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 210 |                 LABEL : postponed assert TRUE
@@ -1078,7 +1078,7 @@
 <class 'vsg.token.block_statement.end_block_label'>
 <class 'vsg.token.block_statement.semicolon'>
 --------------------------------------------------------------------------------
-217 | 
+217 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 218 |           elsif x = z generate
@@ -1088,7 +1088,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-219 | 
+219 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 220 |             BLK2 : block is
@@ -1100,7 +1100,7 @@
 221 |             begin
 <class 'vsg.token.block_statement.begin_keyword'>
 --------------------------------------------------------------------------------
-222 | 
+222 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 223 |                 -- Simple form
@@ -1127,7 +1127,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_conditional_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
-227 | 
+227 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 228 |                 LABEL : postponed assert TRUE
@@ -1148,7 +1148,7 @@
 <class 'vsg.token.block_statement.end_block_label'>
 <class 'vsg.token.block_statement.semicolon'>
 --------------------------------------------------------------------------------
-231 | 
+231 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 232 |         end generate IF_GEN_LABEL2;
@@ -1157,7 +1157,7 @@
 <class 'vsg.token.if_generate_statement.end_generate_label'>
 <class 'vsg.token.if_generate_statement.semicolon'>
 --------------------------------------------------------------------------------
-233 | 
+233 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 234 |         end generate GEN2;
@@ -1172,7 +1172,7 @@
 <class 'vsg.token.for_generate_statement.end_generate_label'>
 <class 'vsg.token.for_generate_statement.semicolon'>
 --------------------------------------------------------------------------------
-236 | 
+236 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 237 |   end block BLK;
@@ -1181,7 +1181,7 @@
 <class 'vsg.token.block_statement.end_block_label'>
 <class 'vsg.token.block_statement.semicolon'>
 --------------------------------------------------------------------------------
-238 | 
+238 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 239 | end architecture RTL;

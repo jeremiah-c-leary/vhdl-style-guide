@@ -1,8 +1,8 @@
- 
+
 architecture RTL of FIFO is
-   
+
 begin
-   
+
   -- Test generate_statement_body
   LABEL_1 : for i in 0 to 7 generate
 

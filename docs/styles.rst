@@ -99,7 +99,7 @@ Create a configuration with the following:
      global:
        indentSize: 3
      entity_004:
-       case: lower 
+       case: lower
    ...
 
 Then use the style and configuration together:

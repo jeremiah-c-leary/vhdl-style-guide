@@ -169,7 +169,7 @@ This rule checks the indent of the **end** keyword.
 
      wr_en : in    std_logic;
      rd_en : in    std_logic
-   );   
+   );
      end entity fifo;
 
 **Fix**
@@ -178,7 +178,7 @@ This rule checks the indent of the **end** keyword.
 
        wr_en : in    std_logic;
        rd_en : in    std_logic
-     );   
+     );
    end entity fifo;
 
 entity_010
@@ -308,7 +308,7 @@ This rule checks for blank lines above the **end entity** keywords.
        rd_en : in    std_logic
      );
 
-  
+
    end entity fifo;
 
 
@@ -318,7 +318,7 @@ This rule checks for blank lines above the **end entity** keywords.
 
        wr_en : in    std_logic;
        rd_en : in    std_logic
-     );   
+     );
    end entity fifo;
 
 entity_017

@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
-0 | 
+0 |
 --------------------------------------------------------------------------------
-1 | 
+1 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 2 | entity FIFO is
@@ -9,7 +9,7 @@
 <class 'vsg.token.entity_declaration.identifier'>
 <class 'vsg.token.entity_declaration.is_keyword'>
 --------------------------------------------------------------------------------
-3 | 
+3 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 4 |   generic (
@@ -82,7 +82,7 @@
 <class 'vsg.token.port_clause.close_parenthesis'>
 <class 'vsg.token.port_clause.semicolon'>
 --------------------------------------------------------------------------------
-15 | 
+15 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 16 | end entity FIFO;
@@ -91,7 +91,7 @@
 <class 'vsg.token.entity_declaration.entity_simple_name'>
 <class 'vsg.token.entity_declaration.semicolon'>
 --------------------------------------------------------------------------------
-17 | 
+17 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 18 | entity FIFO is
@@ -99,7 +99,7 @@
 <class 'vsg.token.entity_declaration.identifier'>
 <class 'vsg.token.entity_declaration.is_keyword'>
 --------------------------------------------------------------------------------
-19 | 
+19 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 20 |   generic (
@@ -133,7 +133,7 @@
 <class 'vsg.token.generic_clause.close_parenthesis'>
 <class 'vsg.token.generic_clause.semicolon'>
 --------------------------------------------------------------------------------
-25 | 
+25 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 26 | end entity FIFO;
@@ -142,7 +142,7 @@
 <class 'vsg.token.entity_declaration.entity_simple_name'>
 <class 'vsg.token.entity_declaration.semicolon'>
 --------------------------------------------------------------------------------
-27 | 
+27 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 28 | entity FIFO is
@@ -150,7 +150,7 @@
 <class 'vsg.token.entity_declaration.identifier'>
 <class 'vsg.token.entity_declaration.is_keyword'>
 --------------------------------------------------------------------------------
-29 | 
+29 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 30 |   port (
@@ -192,7 +192,7 @@
 <class 'vsg.token.port_clause.close_parenthesis'>
 <class 'vsg.token.port_clause.semicolon'>
 --------------------------------------------------------------------------------
-36 | 
+36 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 37 | end entity FIFO;
@@ -201,7 +201,7 @@
 <class 'vsg.token.entity_declaration.entity_simple_name'>
 <class 'vsg.token.entity_declaration.semicolon'>
 --------------------------------------------------------------------------------
-38 | 
+38 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 39 | entity FIFO is
@@ -209,10 +209,10 @@
 <class 'vsg.token.entity_declaration.identifier'>
 <class 'vsg.token.entity_declaration.is_keyword'>
 --------------------------------------------------------------------------------
-40 | 
+40 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-41 | 
+41 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 42 | end entity FIFO;
@@ -221,5 +221,5 @@
 <class 'vsg.token.entity_declaration.entity_simple_name'>
 <class 'vsg.token.entity_declaration.semicolon'>
 --------------------------------------------------------------------------------
-43 | 
+43 |
 <class 'vsg.parser.blank_line'>

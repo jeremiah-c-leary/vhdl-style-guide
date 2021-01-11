@@ -10,7 +10,7 @@ end context
 c1;
 
 context
-c1 
+c1
 is
 
 end
@@ -29,7 +29,7 @@ context c1  -- Yet another commet
   -- Some comment
 is
 
-end 
+end
  -- Comment again
 
 context

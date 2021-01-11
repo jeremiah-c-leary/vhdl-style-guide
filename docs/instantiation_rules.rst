@@ -336,7 +336,7 @@ instantiation_027 (depricated)
 ##############################
 
 This rule checks the **entity** keyword has proper case in direct instantiations.
- 
+
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**

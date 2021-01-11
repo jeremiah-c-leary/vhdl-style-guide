@@ -12,7 +12,7 @@ begin
     LABEL : assert TRUE
       report "This is a string"
       severity WARNING;
-  
+
     -- Simple form
     a <= b;
 
@@ -32,7 +32,7 @@ begin
         assert TRUE
           report "This is a string"
           severity WARNING;
-  
+
 
         -- Basic version
         with sel select
@@ -49,9 +49,9 @@ begin
           assert TRUE
             report "This is a string"
             severity WARNING;
-  
 
-        end generate GEN2; 
+
+        end generate GEN2;
 
       end block BLK2;
 
@@ -79,14 +79,14 @@ begin
 
         BLK2 : block is
         begin
-  
+
             LABEL : assert TRUE
               report "This is a string";
             -- Simple form
             simple_label : postponed a <= b;
 
             GEN2 : for jj in 0 to 7 generate
-    
+
                 -- Simple form
                 conditional_label : postponed a <= b when 'a' else
                      c when 'b' else
@@ -96,13 +96,13 @@ begin
 
                 BLK3: block is
                 begin
-          
+
                   LABEL : assert TRUE
                     report "This is a string";
 
                 end block BLK3;
-  
-            end generate GEN2; 
+
+            end generate GEN2;
 
             BLK4 : block is
             begin
@@ -113,7 +113,7 @@ begin
 
                   LABEL : assert TRUE
                     report "This is a string";
-  
+
                     -- Basic version
                     select_label : postponed with sel select
                       out1 <= a when "00",
@@ -137,7 +137,7 @@ begin
                        d;
 
                   IF_GEN_LABELA: if a = y generate
-  
+
                     LABEL : assert TRUE
                       severity WARNING;
 
@@ -159,17 +159,17 @@ begin
                            d;
                     end block BLK4B;
 
-                  end generate IF_GEN_LABELA;     
+                  end generate IF_GEN_LABELA;
 
                end generate CASE_GEN_LABEL;
-      
+
             end block BLK4;
-      
+
             BLK5 : block is
             begin
                 postponed assert TRUE
                   report "This is a string";
-    
+
                 -- Simple form
                 conditional_label : postponed a <= b when 'a' else
                      c when 'b' else
@@ -188,7 +188,7 @@ begin
                      d;
                 postponed assert TRUE
                   report "This is a string";
-    
+
         GEN2 : for jj in 0 to 7 generate
                 postponed assert TRUE
                   report "This is a string";
@@ -203,10 +203,10 @@ begin
                 conditional_label : postponed a <= b when 'a' else
                      c when 'b' else
                      d;
-    
+
             BLK2 : block is
             begin
-      
+
                 LABEL : postponed assert TRUE
                   report "This is a string";
                 -- Simple form
@@ -214,12 +214,12 @@ begin
                      c when 'b' else
                      d;
             end block BLK2;
-   
+
           elsif x = z generate
- 
+
             BLK2 : block is
             begin
-      
+
                 -- Simple form
                 conditional_label : postponed a <= b when 'a' else
                      c when 'b' else
