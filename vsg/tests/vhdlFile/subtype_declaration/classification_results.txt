@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
-0 | 
+0 |
 --------------------------------------------------------------------------------
-1 | 
+1 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 2 | architecture RTL of FIFO is
@@ -11,10 +11,10 @@
 <class 'vsg.token.architecture_body.entity_name'>
 <class 'vsg.token.architecture_body.is_keyword'>
 --------------------------------------------------------------------------------
-3 | 
+3 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-4 | 
+4 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 5 |   subtype DIGITS is INTEGER range 0 to 9;
@@ -28,7 +28,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.subtype_declaration.semicolon'>
 --------------------------------------------------------------------------------
-6 | 
+6 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 7 |   subtype BIT_NEW is RESOLVE_VALUE BIT;
@@ -39,7 +39,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.subtype_declaration.semicolon'>
 --------------------------------------------------------------------------------
-8 | 
+8 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 9 |   -- EXAMPLE 1 : a resolved subtype
@@ -53,7 +53,7 @@
 <class 'vsg.token.ieee.std_logic_1164.types.std_ulogic'>
 <class 'vsg.token.subtype_declaration.semicolon'>
 --------------------------------------------------------------------------------
-11 | 
+11 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 12 |   -- EXAMPLE 2: an integer subtype
@@ -70,7 +70,7 @@
 <class 'vsg.parser.character_literal'>
 <class 'vsg.token.subtype_declaration.semicolon'>
 --------------------------------------------------------------------------------
-14 | 
+14 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 15 |   -- EXAMPLE 3 : an array subtype
@@ -88,19 +88,19 @@
 <class 'vsg.parser.close_parenthesis'>
 <class 'vsg.token.subtype_declaration.semicolon'>
 --------------------------------------------------------------------------------
-17 | 
+17 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-18 | 
+18 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-19 | 
+19 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 20 | begin
 <class 'vsg.token.architecture_body.begin_keyword'>
 --------------------------------------------------------------------------------
-21 | 
+21 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 22 | end architecture RTL;

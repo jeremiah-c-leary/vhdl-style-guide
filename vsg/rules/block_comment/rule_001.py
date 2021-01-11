@@ -113,7 +113,7 @@ class rule_001(block_rule.Rule):
 
         if not self.allow_indenting:
             oFile.update(lUpdate)
-                
+
 
 def is_header(sComment):
     if sComment[2] not in string.punctuation:

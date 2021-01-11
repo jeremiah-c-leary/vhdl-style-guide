@@ -212,7 +212,7 @@ class rule_list():
                 lRules = self.get_rules_in_phase(phase)
                 lRules = self.get_rules_in_subphase(lRules, subphase)
                 lRules = filter_out_disabled_rules(lRules)
-    
+
                 for oRule in lRules:
                     oRule.analyze(self.oVhdlFile)
                     if oRule.severity.type == severity.error_type:

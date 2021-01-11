@@ -11,7 +11,7 @@ architecture RTL of FIFO is
 
   procedure Proc_2 (signal Sig: inout Bit);
 
-  procedure sum2num(signal a: in signed(3 downto 0); 
+  procedure sum2num(signal a: in signed(3 downto 0);
                     signal b: in signed(3 downto 0);
                     signal sum : out signed (3 downto 0));
 

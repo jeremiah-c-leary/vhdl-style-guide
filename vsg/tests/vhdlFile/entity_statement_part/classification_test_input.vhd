@@ -2,11 +2,11 @@
 entity FIFO is
 
   begin
-    
+
     LABEL : assert TRUE
       report "This is a string"
       severity WARNING;
-  
+
     LABEL1: postponed Proc1 (Clock);
     LABEL2 : postponed READ (L     => BufLine,
                    VALUE => Q);

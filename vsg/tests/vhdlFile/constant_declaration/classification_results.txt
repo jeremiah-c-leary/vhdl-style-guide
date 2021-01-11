@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
-0 | 
+0 |
 --------------------------------------------------------------------------------
-1 | 
+1 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 2 | architecture RTL of FIFO is
@@ -11,7 +11,7 @@
 <class 'vsg.token.architecture_body.entity_name'>
 <class 'vsg.token.architecture_body.is_keyword'>
 --------------------------------------------------------------------------------
-3 | 
+3 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 4 |   constant StartDay : WeekDay := Sat;
@@ -23,7 +23,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.constant_declaration.semicolon'>
 --------------------------------------------------------------------------------
-5 | 
+5 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 6 |   constant LogicalGND : Bit := '0';
@@ -35,7 +35,7 @@
 <class 'vsg.parser.character_literal'>
 <class 'vsg.token.constant_declaration.semicolon'>
 --------------------------------------------------------------------------------
-7 | 
+7 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 8 |   constant BusWidth, QueueLength : Integer := 16;
@@ -49,7 +49,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.constant_declaration.semicolon'>
 --------------------------------------------------------------------------------
-9 | 
+9 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 10 |   constant CLKPeriod : Time := 15 ns;
@@ -62,7 +62,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.constant_declaration.semicolon'>
 --------------------------------------------------------------------------------
-11 | 
+11 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 12 |   constant MaxSimTime : Time := 200 * CLKPeriod;
@@ -76,7 +76,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.constant_declaration.semicolon'>
 --------------------------------------------------------------------------------
-13 | 
+13 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 14 |   constant EntryCode : NumericCodeType := (2,6,4,8,0,0,1,3);
@@ -104,7 +104,7 @@
 <class 'vsg.parser.close_parenthesis'>
 <class 'vsg.token.constant_declaration.semicolon'>
 --------------------------------------------------------------------------------
-15 | 
+15 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 16 |   constant DataBusReset: Std_Logic_Vector(7 downto 0) := "00000000";
@@ -121,13 +121,13 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.constant_declaration.semicolon'>
 --------------------------------------------------------------------------------
-17 | 
+17 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 18 | begin
 <class 'vsg.token.architecture_body.begin_keyword'>
 --------------------------------------------------------------------------------
-19 | 
+19 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 20 | end architecture RTL;

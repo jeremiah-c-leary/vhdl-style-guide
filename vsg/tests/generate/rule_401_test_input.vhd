@@ -25,12 +25,12 @@ begin
 
   CASE_LABEL : case data generate
 
-    when a = 1 => 
+    when a = 1 =>
 
         signal          sig1 : std_logic;
         constant        con1 : std_logic;
         shared variable var1 : std_logic;
-    
+
       begin
 
   end generate;
@@ -59,12 +59,12 @@ begin
 
   CASE_LABEL : case data generate
 
-    when a = 1 => 
+    when a = 1 =>
 
         signal  sig1 : std_logic;
         constant             con1 : std_logic;
         shared variable   var1 : std_logic;
-    
+
       begin
 
   end generate;

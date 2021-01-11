@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
-0 | 
+0 |
 --------------------------------------------------------------------------------
-1 | 
+1 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 2 | architecture arch of entity1 is
@@ -11,13 +11,13 @@
 <class 'vsg.token.architecture_body.entity_name'>
 <class 'vsg.token.architecture_body.is_keyword'>
 --------------------------------------------------------------------------------
-3 | 
+3 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 4 | begin
 <class 'vsg.token.architecture_body.begin_keyword'>
 --------------------------------------------------------------------------------
-5 | 
+5 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 6 |   block_label : block is
@@ -26,7 +26,7 @@
 <class 'vsg.token.block_statement.block_keyword'>
 <class 'vsg.token.block_statement.is_keyword'>
 --------------------------------------------------------------------------------
-7 | 
+7 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 8 |     type type1;
@@ -34,13 +34,13 @@
 <class 'vsg.token.incomplete_type_declaration.identifier'>
 <class 'vsg.token.incomplete_type_declaration.semicolon'>
 --------------------------------------------------------------------------------
-9 | 
+9 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 10 |   begin
 <class 'vsg.token.block_statement.begin_keyword'>
 --------------------------------------------------------------------------------
-11 | 
+11 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 12 |   end block block_label;
@@ -49,7 +49,7 @@
 <class 'vsg.token.block_statement.end_block_label'>
 <class 'vsg.token.block_statement.semicolon'>
 --------------------------------------------------------------------------------
-13 | 
+13 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 14 | end architecture arch;

@@ -8,7 +8,7 @@ begin
   process
     VARIABLE var1 : integer;
   begin
-  end process; 
+  end process;
 
 end architecture RTL;
 
@@ -23,6 +23,6 @@ begin
   process
     VARIABLE var1 : integer;
   begin
-  end process; 
+  end process;
 
 end architecture RTL;

@@ -6,7 +6,7 @@ architecture RTL of FIFO is
   constant con2 : integer := a + b +
                              c + d;
 
-  constant con3 : integer := 
+  constant con3 : integer :=
   (
    0,
    1,
@@ -14,7 +14,7 @@ architecture RTL of FIFO is
    3
   );
 
-  constant con4 : dictionary := 
+  constant con4 : dictionary :=
   (
    (3, 4, 5),
    (1, 2, 3),
@@ -32,7 +32,7 @@ c + d;
   constant con2 : integer := a + b +
                                   c + d;
 
-  constant con3 : integer := 
+  constant con3 : integer :=
   (
      0,
 1,
@@ -40,7 +40,7 @@ c + d;
   3
   );
 
-  constant con4 : dictionary := 
+  constant con4 : dictionary :=
   (
      (3, 4, 5),
 (1, 2, 3),

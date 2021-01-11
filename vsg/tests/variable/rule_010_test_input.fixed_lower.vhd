@@ -10,7 +10,7 @@ begin
     variable var1 : integer;
     variable var2 : std_logic_vector(3 downto 0);
   begin
-  end process; 
+  end process;
 
 end architecture RTL;
 
@@ -27,6 +27,6 @@ begin
     variable var1 : integer;
     variable var2 : std_logic_vector(3 downto 0);
   begin
-  end process; 
+  end process;
 
 end architecture RTL;

@@ -3,7 +3,7 @@ Configuring
 
 VSG can use a configuration file to alter it's behavior and/or include a list of files to analyze.
 This is accomplished by passing JSON and/or YAML file(s) through the **--configuration** command line argument.
-This is the basic form of a configuration file in JSON: 
+This is the basic form of a configuration file in JSON:
 
 .. code-block:: json
 
@@ -20,10 +20,10 @@ This is the basic form of a configuration file in JSON:
        "local_rules":"$DIRECTORY_PATH",
        "rule":{
            "global":{
-               "attributeName":"AttributeValue" 
+               "attributeName":"AttributeValue"
            },
            "ruleId_ruleNumber":{
-               "attributeName":"AttributeValue" 
+               "attributeName":"AttributeValue"
            }
        }
    }
@@ -134,7 +134,7 @@ Rule Configuration Priorities
 -----------------------------
 
 There are three ways to configure a rule.
-From least to highest priority are: 
+From least to highest priority are:
 
 * **[rule][global]**
 * **[rule][<identifier>]**

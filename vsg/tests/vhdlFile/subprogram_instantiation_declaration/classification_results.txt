@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
-0 | 
+0 |
 --------------------------------------------------------------------------------
-1 | 
+1 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 2 | architecture RTL of FIFO is
@@ -11,7 +11,7 @@
 <class 'vsg.token.architecture_body.entity_name'>
 <class 'vsg.token.architecture_body.is_keyword'>
 --------------------------------------------------------------------------------
-3 | 
+3 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 4 |   function PARITY is new uninstantiated_subprogram_name [name1, name2 return integer]
@@ -54,7 +54,7 @@
 <class 'vsg.token.generic_map_aspect.close_parenthesis'>
 <class 'vsg.token.subprogram_instantiation_declaration.semicolon'>
 --------------------------------------------------------------------------------
-10 | 
+10 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 11 |   function PARITY is new uninstantiated_subprogram_name
@@ -90,7 +90,7 @@
 <class 'vsg.token.generic_map_aspect.close_parenthesis'>
 <class 'vsg.token.subprogram_instantiation_declaration.semicolon'>
 --------------------------------------------------------------------------------
-17 | 
+17 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 18 |   function PARITY is new uninstantiated_subprogram_name [name1, name2 return integer];
@@ -108,7 +108,7 @@
 <class 'vsg.token.signature.close_bracket'>
 <class 'vsg.token.subprogram_instantiation_declaration.semicolon'>
 --------------------------------------------------------------------------------
-19 | 
+19 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 20 |   function PARITY is new uninstantiated_subprogram_name;
@@ -119,10 +119,10 @@
 <class 'vsg.token.subprogram_instantiation_declaration.uninstantiated_subprogram_name'>
 <class 'vsg.token.subprogram_instantiation_declaration.semicolon'>
 --------------------------------------------------------------------------------
-21 | 
+21 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-22 | 
+22 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 23 |   procedure PARITY is new uninstantiated_subprogram_name [name1, name2 return integer]
@@ -165,7 +165,7 @@
 <class 'vsg.token.generic_map_aspect.close_parenthesis'>
 <class 'vsg.token.subprogram_instantiation_declaration.semicolon'>
 --------------------------------------------------------------------------------
-29 | 
+29 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 30 |   procedure PARITY is new uninstantiated_subprogram_name
@@ -201,7 +201,7 @@
 <class 'vsg.token.generic_map_aspect.close_parenthesis'>
 <class 'vsg.token.subprogram_instantiation_declaration.semicolon'>
 --------------------------------------------------------------------------------
-36 | 
+36 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 37 |   procedure PARITY is new uninstantiated_subprogram_name [name1, name2 return integer];
@@ -219,7 +219,7 @@
 <class 'vsg.token.signature.close_bracket'>
 <class 'vsg.token.subprogram_instantiation_declaration.semicolon'>
 --------------------------------------------------------------------------------
-38 | 
+38 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 39 |   procedure PARITY is new uninstantiated_subprogram_name;
@@ -230,16 +230,16 @@
 <class 'vsg.token.subprogram_instantiation_declaration.uninstantiated_subprogram_name'>
 <class 'vsg.token.subprogram_instantiation_declaration.semicolon'>
 --------------------------------------------------------------------------------
-40 | 
+40 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 41 | begin
 <class 'vsg.token.architecture_body.begin_keyword'>
 --------------------------------------------------------------------------------
-42 | 
+42 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-43 | 
+43 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 44 | end architecture RTL;

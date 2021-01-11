@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
-0 | 
+0 |
 --------------------------------------------------------------------------------
-1 | 
+1 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 2 | architecture RTL of FIFO is
@@ -11,13 +11,13 @@
 <class 'vsg.token.architecture_body.entity_name'>
 <class 'vsg.token.architecture_body.is_keyword'>
 --------------------------------------------------------------------------------
-3 | 
+3 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 4 | begin
 <class 'vsg.token.architecture_body.begin_keyword'>
 --------------------------------------------------------------------------------
-5 | 
+5 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 6 |   LABEL : assert TRUE
@@ -35,7 +35,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_assertion_statement.semicolon'>
 --------------------------------------------------------------------------------
-9 | 
+9 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 10 |   assert TRUE
@@ -51,7 +51,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_assertion_statement.semicolon'>
 --------------------------------------------------------------------------------
-13 | 
+13 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 14 |   LABEL : assert TRUE
@@ -65,7 +65,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_assertion_statement.semicolon'>
 --------------------------------------------------------------------------------
-16 | 
+16 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 17 |   LABEL : assert TRUE
@@ -79,7 +79,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_assertion_statement.semicolon'>
 --------------------------------------------------------------------------------
-19 | 
+19 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 20 |   postponed assert TRUE
@@ -92,7 +92,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_assertion_statement.semicolon'>
 --------------------------------------------------------------------------------
-22 | 
+22 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 23 |   LABEL : postponed assert TRUE
@@ -107,7 +107,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_assertion_statement.semicolon'>
 --------------------------------------------------------------------------------
-25 | 
+25 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 26 | end architecture RTL;

@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
-0 | 
+0 |
 --------------------------------------------------------------------------------
-1 | 
+1 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 2 | architecture RTL of FIFO is
@@ -11,13 +11,13 @@
 <class 'vsg.token.architecture_body.entity_name'>
 <class 'vsg.token.architecture_body.is_keyword'>
 --------------------------------------------------------------------------------
-3 | 
+3 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 4 | begin
 <class 'vsg.token.architecture_body.begin_keyword'>
 --------------------------------------------------------------------------------
-5 | 
+5 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 6 |   LABEL0 : case a & b & c generate
@@ -31,7 +31,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.case_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-7 | 
+7 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 8 |     when "000" =>
@@ -39,7 +39,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.case_generate_alternative.assignment'>
 --------------------------------------------------------------------------------
-9 | 
+9 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 10 |     when "001" =>
@@ -47,7 +47,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.case_generate_alternative.assignment'>
 --------------------------------------------------------------------------------
-11 | 
+11 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 12 |   end generate LABEL0;
@@ -56,10 +56,10 @@
 <class 'vsg.token.case_generate_statement.end_generate_label'>
 <class 'vsg.token.case_generate_statement.semicolon'>
 --------------------------------------------------------------------------------
-13 | 
+13 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-14 | 
+14 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 15 |   -- Test nested case generates
@@ -76,7 +76,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.case_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-17 | 
+17 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 18 |     when "000" =>
@@ -84,7 +84,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.case_generate_alternative.assignment'>
 --------------------------------------------------------------------------------
-19 | 
+19 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 20 |       LABEL1 : case a & b & c generate
@@ -98,7 +98,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.case_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-21 | 
+21 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 22 |         when "000" =>
@@ -106,7 +106,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.case_generate_alternative.assignment'>
 --------------------------------------------------------------------------------
-23 | 
+23 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 24 |         when "001" =>
@@ -114,7 +114,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.case_generate_alternative.assignment'>
 --------------------------------------------------------------------------------
-25 | 
+25 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 26 |       end generate LABEL1;
@@ -123,7 +123,7 @@
 <class 'vsg.token.case_generate_statement.end_generate_label'>
 <class 'vsg.token.case_generate_statement.semicolon'>
 --------------------------------------------------------------------------------
-27 | 
+27 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 28 |     when "001" =>
@@ -131,7 +131,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.case_generate_alternative.assignment'>
 --------------------------------------------------------------------------------
-29 | 
+29 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 30 |   end generate LABEL0;
@@ -140,7 +140,7 @@
 <class 'vsg.token.case_generate_statement.end_generate_label'>
 <class 'vsg.token.case_generate_statement.semicolon'>
 --------------------------------------------------------------------------------
-31 | 
+31 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 32 |   -- Test deeply nested case generates
@@ -157,7 +157,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.case_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-34 | 
+34 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 35 |     when "000" =>
@@ -165,7 +165,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.case_generate_alternative.assignment'>
 --------------------------------------------------------------------------------
-36 | 
+36 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 37 |       LABEL1A : case a & b & c generate
@@ -179,7 +179,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.case_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-38 | 
+38 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 39 |         when "000" =>
@@ -187,7 +187,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.case_generate_alternative.assignment'>
 --------------------------------------------------------------------------------
-40 | 
+40 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 41 |           LABEL2A : case a & b & c generate
@@ -201,7 +201,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.case_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-42 | 
+42 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 43 |             when "000" =>
@@ -209,7 +209,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.case_generate_alternative.assignment'>
 --------------------------------------------------------------------------------
-44 | 
+44 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 45 |             when "001" =>
@@ -217,7 +217,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.case_generate_alternative.assignment'>
 --------------------------------------------------------------------------------
-46 | 
+46 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 47 |               LABEL2A : case a & b & c generate
@@ -231,7 +231,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.case_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-48 | 
+48 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 49 |                 when "000" =>
@@ -239,7 +239,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.case_generate_alternative.assignment'>
 --------------------------------------------------------------------------------
-50 | 
+50 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 51 |                 when "001" =>
@@ -247,7 +247,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.case_generate_alternative.assignment'>
 --------------------------------------------------------------------------------
-52 | 
+52 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 53 |               end generate LABEL2A;
@@ -256,7 +256,7 @@
 <class 'vsg.token.case_generate_statement.end_generate_label'>
 <class 'vsg.token.case_generate_statement.semicolon'>
 --------------------------------------------------------------------------------
-54 | 
+54 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 55 |           end generate LABEL2A;
@@ -265,7 +265,7 @@
 <class 'vsg.token.case_generate_statement.end_generate_label'>
 <class 'vsg.token.case_generate_statement.semicolon'>
 --------------------------------------------------------------------------------
-56 | 
+56 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 57 |         when "001" =>
@@ -273,7 +273,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.case_generate_alternative.assignment'>
 --------------------------------------------------------------------------------
-58 | 
+58 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 59 |       end generate LABEL1A;
@@ -282,7 +282,7 @@
 <class 'vsg.token.case_generate_statement.end_generate_label'>
 <class 'vsg.token.case_generate_statement.semicolon'>
 --------------------------------------------------------------------------------
-60 | 
+60 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 61 |     when "001" =>
@@ -290,7 +290,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.case_generate_alternative.assignment'>
 --------------------------------------------------------------------------------
-62 | 
+62 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 63 |       LABEL1B : case a & b & c generate
@@ -304,7 +304,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.case_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-64 | 
+64 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 65 |         when "000" =>
@@ -312,7 +312,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.case_generate_alternative.assignment'>
 --------------------------------------------------------------------------------
-66 | 
+66 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 67 |         when "001" =>
@@ -320,7 +320,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.case_generate_alternative.assignment'>
 --------------------------------------------------------------------------------
-68 | 
+68 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 69 |       end generate LABEL1B;
@@ -329,7 +329,7 @@
 <class 'vsg.token.case_generate_statement.end_generate_label'>
 <class 'vsg.token.case_generate_statement.semicolon'>
 --------------------------------------------------------------------------------
-70 | 
+70 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 71 |   end generate LABEL0;
@@ -338,10 +338,10 @@
 <class 'vsg.token.case_generate_statement.end_generate_label'>
 <class 'vsg.token.case_generate_statement.semicolon'>
 --------------------------------------------------------------------------------
-72 | 
+72 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-73 | 
+73 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 74 | end architecture RTL;

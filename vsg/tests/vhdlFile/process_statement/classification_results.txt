@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
-0 | 
+0 |
 --------------------------------------------------------------------------------
-1 | 
+1 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 2 | architecture RTL of FIFO is
@@ -11,13 +11,13 @@
 <class 'vsg.token.architecture_body.entity_name'>
 <class 'vsg.token.architecture_body.is_keyword'>
 --------------------------------------------------------------------------------
-3 | 
+3 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 4 | begin
 <class 'vsg.token.architecture_body.begin_keyword'>
 --------------------------------------------------------------------------------
-5 | 
+5 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 6 |   process_and_or : process(a,b,d,e) is
@@ -35,13 +35,13 @@
 <class 'vsg.token.process_statement.close_parenthesis'>
 <class 'vsg.token.process_statement.is_keyword'>
 --------------------------------------------------------------------------------
-7 | 
+7 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 8 |   begin
 <class 'vsg.token.process_statement.begin_keyword'>
 --------------------------------------------------------------------------------
-9 | 
+9 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 10 |   end process process_and_or;
@@ -50,7 +50,7 @@
 <class 'vsg.token.process_statement.end_process_label'>
 <class 'vsg.token.process_statement.semicolon'>
 --------------------------------------------------------------------------------
-11 | 
+11 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 12 |   process_and_or : postponed process(a,b,d,e) is
@@ -69,13 +69,13 @@
 <class 'vsg.token.process_statement.close_parenthesis'>
 <class 'vsg.token.process_statement.is_keyword'>
 --------------------------------------------------------------------------------
-13 | 
+13 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 14 |   begin
 <class 'vsg.token.process_statement.begin_keyword'>
 --------------------------------------------------------------------------------
-15 | 
+15 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 16 |   end postponed process process_and_or;
@@ -85,7 +85,7 @@
 <class 'vsg.token.process_statement.end_process_label'>
 <class 'vsg.token.process_statement.semicolon'>
 --------------------------------------------------------------------------------
-17 | 
+17 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 18 |   process_and_or : postponed process is
@@ -105,7 +105,7 @@
 <class 'vsg.token.process_statement.end_process_label'>
 <class 'vsg.token.process_statement.semicolon'>
 --------------------------------------------------------------------------------
-21 | 
+21 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 22 |   process_and_or : postponed process
@@ -124,7 +124,7 @@
 <class 'vsg.token.process_statement.end_process_label'>
 <class 'vsg.token.process_statement.semicolon'>
 --------------------------------------------------------------------------------
-25 | 
+25 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 26 |   process_and_or : process
@@ -141,7 +141,7 @@
 <class 'vsg.token.process_statement.end_process_label'>
 <class 'vsg.token.process_statement.semicolon'>
 --------------------------------------------------------------------------------
-29 | 
+29 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 30 |   process
@@ -155,7 +155,7 @@
 <class 'vsg.token.process_statement.end_process_keyword'>
 <class 'vsg.token.process_statement.semicolon'>
 --------------------------------------------------------------------------------
-33 | 
+33 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 34 |   process is
@@ -170,7 +170,7 @@
 <class 'vsg.token.process_statement.end_process_keyword'>
 <class 'vsg.token.process_statement.semicolon'>
 --------------------------------------------------------------------------------
-37 | 
+37 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 38 | end architecture RTL;

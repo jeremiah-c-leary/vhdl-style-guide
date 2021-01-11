@@ -60,7 +60,7 @@ begin
                         and I_HUB = 23);
 
    w_foo <= I_FOO when (I_BAR = 1 or ((I_STUFF = 0 and
-                                       (I_CRUFT = 1 or 
+                                       (I_CRUFT = 1 or
                                         I_BLAH = 10)
                                        and I_GRUB = 20) or
                                       I_STUB = 45)

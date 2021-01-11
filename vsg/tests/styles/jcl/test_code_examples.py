@@ -14,23 +14,23 @@ dIndentMap = utils.read_indent_file()
 
 lTimestamp = utils.read_vhdlfile(os.path.join(sSourceCodeDir,'timestamp.vhdl'))
 oTimestamp = vhdlFile.vhdlFile(lTimestamp)
-oTimestamp.set_indent_map(dIndentMap) 
+oTimestamp.set_indent_map(dIndentMap)
 
 lSpiSlave = utils.read_vhdlfile(os.path.join(sSourceCodeDir,'spi_slave.vhd'))
 oSpiSlave = vhdlFile.vhdlFile(lSpiSlave)
-oSpiSlave.set_indent_map(dIndentMap) 
+oSpiSlave.set_indent_map(dIndentMap)
 
 lSpiMaster = utils.read_vhdlfile(os.path.join(sSourceCodeDir,'spi_master.vhd'))
 oSpiMaster = vhdlFile.vhdlFile(lSpiMaster)
-oSpiMaster.set_indent_map(dIndentMap) 
+oSpiMaster.set_indent_map(dIndentMap)
 
 lGrpDebouncer = utils.read_vhdlfile(os.path.join(sSourceCodeDir,'grp_debouncer.vhd'))
 oGrpDebouncer = vhdlFile.vhdlFile(lGrpDebouncer)
-oGrpDebouncer.set_indent_map(dIndentMap) 
+oGrpDebouncer.set_indent_map(dIndentMap)
 
 lPIC = utils.read_vhdlfile(os.path.join(sSourceCodeDir,'PIC.vhd'))
 oPIC = vhdlFile.vhdlFile(lPIC)
-oPIC.set_indent_map(dIndentMap) 
+oPIC.set_indent_map(dIndentMap)
 
 dConfig = utils.read_configuration(os.path.join(os.path.dirname(__file__),'..','..','..','styles', 'jcl.yaml'))
 dConfig['debug'] = False

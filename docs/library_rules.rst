@@ -238,5 +238,5 @@ This rule checks the **use** keyword is on it's own line.
 
 .. code-block:: vhdl
 
-   context c1 is library ieee; 
+   context c1 is library ieee;
        use ieee.std_logic_1164.all; end context c1;

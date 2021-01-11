@@ -1,5 +1,5 @@
 --------------------------------------------------------------------------------
-0 | 
+0 |
 --------------------------------------------------------------------------------
 1 | architecture RTL of FIFO is
 <class 'vsg.token.architecture_body.architecture_keyword'>
@@ -8,7 +8,7 @@
 <class 'vsg.token.architecture_body.entity_name'>
 <class 'vsg.token.architecture_body.is_keyword'>
 --------------------------------------------------------------------------------
-2 | 
+2 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 3 |   attribute Component_symbol of Comp_1 [name1, name2 return integer], Comp2 [name3, name4 return std_logic], Comp3 [name5, name6 return std_logic_vector] : component is "Counter_16";
@@ -47,7 +47,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.attribute_specification.semicolon'>
 --------------------------------------------------------------------------------
-4 | 
+4 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 5 |   attribute Component_symbol of Comp_1 [name1, name2 return integer] : component is "Counter_16";
@@ -68,7 +68,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.attribute_specification.semicolon'>
 --------------------------------------------------------------------------------
-6 | 
+6 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 7 |   attribute Component_symbol of Comp_1 : component is "Counter_16";
@@ -82,7 +82,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.attribute_specification.semicolon'>
 --------------------------------------------------------------------------------
-8 | 
+8 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 9 |   attribute Coordinate of Comp_1: component is (0.0, 17.5);
@@ -100,7 +100,7 @@
 <class 'vsg.parser.close_parenthesis'>
 <class 'vsg.token.attribute_specification.semicolon'>
 --------------------------------------------------------------------------------
-10 | 
+10 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 11 |   attribute Pin_code of Sig_1: signal is 17;
@@ -114,7 +114,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.attribute_specification.semicolon'>
 --------------------------------------------------------------------------------
-12 | 
+12 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 13 |   attribute Max_delay of Const_1: constant is 10 ns;
@@ -129,13 +129,13 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.attribute_specification.semicolon'>
 --------------------------------------------------------------------------------
-14 | 
+14 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 15 | begin
 <class 'vsg.token.architecture_body.begin_keyword'>
 --------------------------------------------------------------------------------
-16 | 
+16 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 17 | end architecture RTL;

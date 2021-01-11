@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
-0 | 
+0 |
 --------------------------------------------------------------------------------
-1 | 
+1 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 2 | architecture RTL of BLOCK_EXAMPLE is
@@ -11,13 +11,13 @@
 <class 'vsg.token.architecture_body.entity_name'>
 <class 'vsg.token.architecture_body.is_keyword'>
 --------------------------------------------------------------------------------
-3 | 
+3 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 4 | begin
 <class 'vsg.token.architecture_body.begin_keyword'>
 --------------------------------------------------------------------------------
-5 | 
+5 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 6 |   -- correct block format
@@ -29,7 +29,7 @@
 <class 'vsg.token.block_statement.block_keyword'>
 <class 'vsg.token.block_statement.is_keyword'>
 --------------------------------------------------------------------------------
-8 | 
+8 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 9 |     generic (
@@ -91,7 +91,7 @@
 <class 'vsg.token.generic_map_aspect.close_parenthesis'>
 <class 'vsg.token.block_header.semicolon'>
 --------------------------------------------------------------------------------
-20 | 
+20 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 21 |     port (
@@ -153,13 +153,13 @@
 <class 'vsg.token.port_map_aspect.close_parenthesis'>
 <class 'vsg.token.block_header.semicolon'>
 --------------------------------------------------------------------------------
-32 | 
+32 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 33 |   begin
 <class 'vsg.token.block_statement.begin_keyword'>
 --------------------------------------------------------------------------------
-34 | 
+34 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 35 |   end block BLK;
@@ -168,7 +168,7 @@
 <class 'vsg.token.block_statement.end_block_label'>
 <class 'vsg.token.block_statement.semicolon'>
 --------------------------------------------------------------------------------
-36 | 
+36 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 37 |   -- correct block format
@@ -180,7 +180,7 @@
 <class 'vsg.token.block_statement.block_keyword'>
 <class 'vsg.token.block_statement.is_keyword'>
 --------------------------------------------------------------------------------
-39 | 
+39 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 40 |     generic map (
@@ -215,7 +215,7 @@
 <class 'vsg.token.generic_map_aspect.close_parenthesis'>
 <class 'vsg.token.block_header.semicolon'>
 --------------------------------------------------------------------------------
-46 | 
+46 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 47 |     port (
@@ -277,13 +277,13 @@
 <class 'vsg.token.port_map_aspect.close_parenthesis'>
 <class 'vsg.token.block_header.semicolon'>
 --------------------------------------------------------------------------------
-58 | 
+58 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 59 |   begin
 <class 'vsg.token.block_statement.begin_keyword'>
 --------------------------------------------------------------------------------
-60 | 
+60 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 61 |   end block BLK;
@@ -292,7 +292,7 @@
 <class 'vsg.token.block_statement.end_block_label'>
 <class 'vsg.token.block_statement.semicolon'>
 --------------------------------------------------------------------------------
-62 | 
+62 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 63 |   -- correct block format
@@ -304,7 +304,7 @@
 <class 'vsg.token.block_statement.block_keyword'>
 <class 'vsg.token.block_statement.is_keyword'>
 --------------------------------------------------------------------------------
-65 | 
+65 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 66 |     generic (
@@ -393,13 +393,13 @@
 <class 'vsg.token.port_map_aspect.close_parenthesis'>
 <class 'vsg.token.block_header.semicolon'>
 --------------------------------------------------------------------------------
-82 | 
+82 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 83 |   begin
 <class 'vsg.token.block_statement.begin_keyword'>
 --------------------------------------------------------------------------------
-84 | 
+84 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 85 |   end block BLK;
@@ -408,7 +408,7 @@
 <class 'vsg.token.block_statement.end_block_label'>
 <class 'vsg.token.block_statement.semicolon'>
 --------------------------------------------------------------------------------
-86 | 
+86 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 87 |   -- correct block format
@@ -420,7 +420,7 @@
 <class 'vsg.token.block_statement.block_keyword'>
 <class 'vsg.token.block_statement.is_keyword'>
 --------------------------------------------------------------------------------
-89 | 
+89 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 90 |     generic (
@@ -482,7 +482,7 @@
 <class 'vsg.token.generic_map_aspect.close_parenthesis'>
 <class 'vsg.token.block_header.semicolon'>
 --------------------------------------------------------------------------------
-101 | 
+101 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 102 |     port map (
@@ -517,13 +517,13 @@
 <class 'vsg.token.port_map_aspect.close_parenthesis'>
 <class 'vsg.token.block_header.semicolon'>
 --------------------------------------------------------------------------------
-108 | 
+108 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 109 |   begin
 <class 'vsg.token.block_statement.begin_keyword'>
 --------------------------------------------------------------------------------
-110 | 
+110 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 111 |   end block BLK;
@@ -532,7 +532,7 @@
 <class 'vsg.token.block_statement.end_block_label'>
 <class 'vsg.token.block_statement.semicolon'>
 --------------------------------------------------------------------------------
-112 | 
+112 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 113 |   -- correct block format
@@ -544,7 +544,7 @@
 <class 'vsg.token.block_statement.block_keyword'>
 <class 'vsg.token.block_statement.is_keyword'>
 --------------------------------------------------------------------------------
-115 | 
+115 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 116 |     generic (
@@ -606,7 +606,7 @@
 <class 'vsg.token.generic_map_aspect.close_parenthesis'>
 <class 'vsg.token.block_header.semicolon'>
 --------------------------------------------------------------------------------
-127 | 
+127 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 128 |     port (
@@ -636,13 +636,13 @@
 <class 'vsg.token.port_clause.close_parenthesis'>
 <class 'vsg.token.port_clause.semicolon'>
 --------------------------------------------------------------------------------
-133 | 
+133 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 134 |   begin
 <class 'vsg.token.block_statement.begin_keyword'>
 --------------------------------------------------------------------------------
-135 | 
+135 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 136 |   end block BLK;
@@ -651,7 +651,7 @@
 <class 'vsg.token.block_statement.end_block_label'>
 <class 'vsg.token.block_statement.semicolon'>
 --------------------------------------------------------------------------------
-137 | 
+137 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 138 | end architecture RTL;
@@ -660,5 +660,5 @@
 <class 'vsg.token.architecture_body.architecture_simple_name'>
 <class 'vsg.token.architecture_body.semicolon'>
 --------------------------------------------------------------------------------
-139 | 
+139 |
 <class 'vsg.parser.blank_line'>

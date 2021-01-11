@@ -3,7 +3,7 @@ entity FIFO is
 
   generic (
     A : std_logic := 0;
-    B, C : std_logic := '0';   
+    B, C : std_logic := '0';
     D : integer
   );
   port (
@@ -19,7 +19,7 @@ entity FIFO is
 
   generic (
     A : std_logic := 0;
-    B, C : std_logic := '0';   
+    B, C : std_logic := '0';
     D : integer
   );
 

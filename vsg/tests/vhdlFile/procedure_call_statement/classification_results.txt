@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
-0 | 
+0 |
 --------------------------------------------------------------------------------
-1 | 
+1 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 2 | architecture RTL of ENTITY_NAME is
@@ -11,13 +11,13 @@
 <class 'vsg.token.architecture_body.entity_name'>
 <class 'vsg.token.architecture_body.is_keyword'>
 --------------------------------------------------------------------------------
-3 | 
+3 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 4 | begin
 <class 'vsg.token.architecture_body.begin_keyword'>
 --------------------------------------------------------------------------------
-5 | 
+5 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 6 |   process
@@ -26,7 +26,7 @@
 7 |   begin
 <class 'vsg.token.process_statement.begin_keyword'>
 --------------------------------------------------------------------------------
-8 | 
+8 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 9 |     PROC_LABEL : proc(a, b, c);
@@ -42,7 +42,7 @@
 <class 'vsg.token.procedure_call.close_parenthesis'>
 <class 'vsg.token.procedure_call_statement.semicolon'>
 --------------------------------------------------------------------------------
-10 | 
+10 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 11 |     PROC_LABEL : proc;
@@ -51,7 +51,7 @@
 <class 'vsg.token.procedure_call.procedure_name'>
 <class 'vsg.token.procedure_call_statement.semicolon'>
 --------------------------------------------------------------------------------
-12 | 
+12 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 13 |     proc(a, b, c);
@@ -65,14 +65,14 @@
 <class 'vsg.token.procedure_call.close_parenthesis'>
 <class 'vsg.token.procedure_call_statement.semicolon'>
 --------------------------------------------------------------------------------
-14 | 
+14 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 15 |     proc;
 <class 'vsg.token.procedure_call.procedure_name'>
 <class 'vsg.token.procedure_call_statement.semicolon'>
 --------------------------------------------------------------------------------
-16 | 
+16 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 17 |   end process;
@@ -80,7 +80,7 @@
 <class 'vsg.token.process_statement.end_process_keyword'>
 <class 'vsg.token.process_statement.semicolon'>
 --------------------------------------------------------------------------------
-18 | 
+18 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 19 | end architecture RTL;

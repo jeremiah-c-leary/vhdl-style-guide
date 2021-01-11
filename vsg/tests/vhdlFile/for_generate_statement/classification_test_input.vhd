@@ -1,8 +1,8 @@
- 
+
 architecture RTL of FIFO is
-   
+
 begin
-   
+
   -- Demonstrates Use Case #1: Replicating Logic
   -- Stores just the most significant byte in a new signal
   LABEL1: for i in 0 to 7 generate
@@ -16,7 +16,7 @@ begin
           end generate LABEL2C;
       end generate LABEL2B;
   end generate LABEL2A;
-   
+
   -- Test multiple layers of nesting
   LABEL2A: for i in 0 to 7 generate
       LABEL2B: for i in 0 to 7 generate

@@ -7,7 +7,7 @@ architecture RTL of FIFO is
 
   type state_machine is (
 idle,
-    write, 
+    write,
     read, done);
 
   type state_machine is (
@@ -17,7 +17,7 @@ idle,
   type state_machine is (
 idle,
     write,
-    read, 
+    read,
     done);
 
 begin

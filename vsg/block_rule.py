@@ -10,7 +10,7 @@ class Rule(rule.Rule):
         self.fixable = False
         self.disable = True
         self.phase = 1
-        
+
         self.min_height = 3
         self.configuration.append('min_height')
         self.allow_indenting = True

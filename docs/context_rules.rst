@@ -99,7 +99,7 @@ This rule checks the context identifier is on the same line as the **context** k
 .. code-block:: vhdl
 
    context
-   c1 
+   c1
      is
 
 **Fix**
@@ -118,7 +118,7 @@ This rule checks the **is** keyword is on the same line as the context identifie
 
 .. code-block:: vhdl
 
-   context c1 
+   context c1
      is
 
 **Fix**
@@ -181,14 +181,14 @@ This rule checks the **context** keyword is on the same line as the end context 
 
 .. code-block:: vhdl
 
-   end 
+   end
    context c1;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   end context 
+   end context
      c1;
 
 context_010

@@ -4,7 +4,7 @@ architecture RTL of FIFO is
 begin
 
 
-  process 
+  process
     variable var1 : integer;
 
   begin
@@ -24,7 +24,7 @@ begin
 
   -- Violations below
 
-  process 
+  process
     variable var1 : integer;
   begin
   end process;

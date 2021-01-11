@@ -4,7 +4,7 @@ architecture RTL of FIFO is
 begin
 
 
-  process 
+  process
   begin
 
     a <= b;
@@ -13,7 +13,7 @@ begin
 
   -- Violations below
 
-  process 
+  process
   begin
 
     a <= b;

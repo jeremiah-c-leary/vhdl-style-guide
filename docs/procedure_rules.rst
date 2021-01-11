@@ -232,7 +232,7 @@ This rule checks for consistent capitalization of procedure names.
 
      end process proc1;
 
-   end architecture rtl; 
+   end architecture rtl;
 
 **Fix**
 
@@ -254,7 +254,7 @@ This rule checks for consistent capitalization of procedure names.
 
      end process proc1;
 
-   end architecture RTL; 
+   end architecture RTL;
 
 procedure_008
 #############

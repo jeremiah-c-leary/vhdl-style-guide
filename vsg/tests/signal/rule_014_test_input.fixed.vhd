@@ -58,7 +58,7 @@ begin
   sig1 <= '0';
   sig1 <= sig2 and sig3;
   sig1 <= sig2 and sig3;
-  sig1 <= sig2 and 
+  sig1 <= sig2 and
           sig3;
   sig1 <= sig2 and sig3;
   sig1 <= sig1 or sig1;

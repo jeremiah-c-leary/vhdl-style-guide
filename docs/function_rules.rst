@@ -73,7 +73,7 @@ function_004
 ############
 
 This rule checks the **begin** keyword has proper case.
- 
+
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
@@ -94,7 +94,7 @@ function_005
 ############
 
 This rule checks the **function** keyword has proper case.
- 
+
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**
@@ -171,7 +171,7 @@ This rule checks the indent of function parameters on multiple lines.
        d : std_logic_vector(7 downto 0);
           e : std_logic) return integer is
    begin
-      
+
    end;
 
 **Fix**
@@ -183,7 +183,7 @@ This rule checks the indent of function parameters on multiple lines.
      d : std_logic_vector(7 downto 0);
      e : std_logic) return integer is
    begin
-      
+
    end;
 
 function_009
@@ -200,7 +200,7 @@ This rule checks for a function parameter on the same line as the function keywo
      d : std_logic_vector(7 downto 0);
      e : std_logic) return integer is
    begin
-      
+
    end;
 
 
@@ -214,7 +214,7 @@ This rule checks for a function parameter on the same line as the function keywo
      d : std_logic_vector(7 downto 0);
      e : std_logic) return integer is
    begin
-      
+
    end;
 
 function_010
@@ -263,7 +263,7 @@ This rule checks for consistent capitalization of function names.
      end process;
 
    end architecture rtl;
-   
+
 function_012
 ############
 
@@ -385,7 +385,7 @@ function_017
 ############
 
 This rule checks the function designator has proper case.
- 
+
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
 
 **Violation**

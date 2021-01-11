@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
-0 | 
+0 |
 --------------------------------------------------------------------------------
-1 | 
+1 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 2 | architecture RTL of FIFO is
@@ -11,13 +11,13 @@
 <class 'vsg.token.architecture_body.entity_name'>
 <class 'vsg.token.architecture_body.is_keyword'>
 --------------------------------------------------------------------------------
-3 | 
+3 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-4 | 
+4 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-5 | 
+5 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 6 |   procedure PARITY
@@ -42,7 +42,7 @@
 <class 'vsg.token.procedure_specification.close_parenthesis'>
 <class 'vsg.token.subprogram_declaration.semicolon'>
 --------------------------------------------------------------------------------
-9 | 
+9 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 10 |   procedure Proc_1 (constant In1: in Integer; variable O1: out Integer);
@@ -63,7 +63,7 @@
 <class 'vsg.token.procedure_specification.close_parenthesis'>
 <class 'vsg.token.subprogram_declaration.semicolon'>
 --------------------------------------------------------------------------------
-11 | 
+11 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 12 |   procedure Proc_2 (signal Sig: inout Bit);
@@ -78,7 +78,7 @@
 <class 'vsg.token.procedure_specification.close_parenthesis'>
 <class 'vsg.token.subprogram_declaration.semicolon'>
 --------------------------------------------------------------------------------
-13 | 
+13 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 14 |   procedure sum2num(signal a: in signed(3 downto 0);
@@ -124,7 +124,7 @@
 <class 'vsg.token.procedure_specification.close_parenthesis'>
 <class 'vsg.token.subprogram_declaration.semicolon'>
 --------------------------------------------------------------------------------
-17 | 
+17 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 18 |   -- Test parameter keyword
@@ -143,7 +143,7 @@
 <class 'vsg.token.procedure_specification.close_parenthesis'>
 <class 'vsg.token.subprogram_declaration.semicolon'>
 --------------------------------------------------------------------------------
-20 | 
+20 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 21 |   -- Test subprogram header
@@ -188,7 +188,7 @@
 <class 'vsg.token.procedure_specification.close_parenthesis'>
 <class 'vsg.token.subprogram_declaration.semicolon'>
 --------------------------------------------------------------------------------
-25 | 
+25 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 26 |   -- Test subprogram header with generic_map_aspect
@@ -253,7 +253,7 @@
 <class 'vsg.token.procedure_specification.close_parenthesis'>
 <class 'vsg.token.subprogram_declaration.semicolon'>
 --------------------------------------------------------------------------------
-32 | 
+32 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 33 |   -- Test parenthesis procedure interface
@@ -276,7 +276,7 @@
 <class 'vsg.token.procedure_specification.close_parenthesis'>
 <class 'vsg.token.subprogram_declaration.semicolon'>
 --------------------------------------------------------------------------------
-35 | 
+35 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 36 |   procedure proc_3 (constant con1: in std_logic_vector(3 downto 0));
@@ -296,7 +296,7 @@
 <class 'vsg.token.procedure_specification.close_parenthesis'>
 <class 'vsg.token.subprogram_declaration.semicolon'>
 --------------------------------------------------------------------------------
-37 | 
+37 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 38 |   procedure proc_3 (variable var1: in std_logic_vector(3 downto 0));
@@ -316,7 +316,7 @@
 <class 'vsg.token.procedure_specification.close_parenthesis'>
 <class 'vsg.token.subprogram_declaration.semicolon'>
 --------------------------------------------------------------------------------
-39 | 
+39 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 40 |   procedure proc_3 (sig1: in std_logic_vector(3 downto 0));
@@ -335,16 +335,16 @@
 <class 'vsg.token.procedure_specification.close_parenthesis'>
 <class 'vsg.token.subprogram_declaration.semicolon'>
 --------------------------------------------------------------------------------
-41 | 
+41 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 42 | begin
 <class 'vsg.token.architecture_body.begin_keyword'>
 --------------------------------------------------------------------------------
-43 | 
+43 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-44 | 
+44 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 45 | end architecture RTL;

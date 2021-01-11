@@ -32,7 +32,7 @@ package body FIFO_PKG is
     file     file1 : something;
     constant var1 : integer;
   begin
-  end procedure AVERAGE_SAMPLES;  
+  end procedure AVERAGE_SAMPLES;
 
   procedure AVERAGE_SAMPLES (constant x : in integer;
     constant a : in integer;
@@ -43,7 +43,7 @@ package body FIFO_PKG is
     file     file1 : something;
     constant var1 : integer;
   begin
-  end procedure AVERAGE_SAMPLES;  
+  end procedure AVERAGE_SAMPLES;
 
   -- Variations on end of procedure parameter and is keyword
 
@@ -57,7 +57,7 @@ package body FIFO_PKG is
     file     file1 : something;
     constant var1 : integer;
   begin
-  end procedure AVERAGE_SAMPLES;  
+  end procedure AVERAGE_SAMPLES;
 
   procedure AVERAGE_SAMPLES (
     constant a : in integer;
@@ -69,7 +69,7 @@ package body FIFO_PKG is
     file     file1 : something;
     constant var1 : integer;
   begin
-  end procedure AVERAGE_SAMPLES;  
+  end procedure AVERAGE_SAMPLES;
 
   procedure AVERAGE_SAMPLES (
     constant a : in integer;
@@ -82,7 +82,7 @@ package body FIFO_PKG is
     file     file1 : something;
     constant var1 : integer;
   begin
-  end procedure AVERAGE_SAMPLES;  
+  end procedure AVERAGE_SAMPLES;
 
 
 end package body FIFO_PKG;
@@ -98,7 +98,7 @@ architecture RTL of ENT is
     file     file1 : something;
     constant var1 : integer;
   begin
-  end procedure AVERAGE_SAMPLES;  
+  end procedure AVERAGE_SAMPLES;
 
   procedure AVERAGE_SAMPLES (constant x : in integer;
     constant a : in integer;
@@ -109,7 +109,7 @@ architecture RTL of ENT is
     file     file1 : something;
     constant var1 : integer;
   begin
-  end procedure AVERAGE_SAMPLES;  
+  end procedure AVERAGE_SAMPLES;
 
 begin
 
@@ -124,7 +124,7 @@ begin
       file     file1 : something;
       constant var1 : integer;
     begin
-    end procedure AVERAGE_SAMPLES;  
+    end procedure AVERAGE_SAMPLES;
 
   begin
 
@@ -141,7 +141,7 @@ begin
         file     file1 : something;
         constant var1 : integer;
     begin
-    end procedure AVERAGE_SAMPLES;  
+    end procedure AVERAGE_SAMPLES;
 
   begin
 

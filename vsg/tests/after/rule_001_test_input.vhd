@@ -19,7 +19,7 @@ begin
     end if;
   end process CLK_PROC;
 
-  -- This process checks for a clock process without a reset 
+  -- This process checks for a clock process without a reset
   CLK_PROC : process (reset, clk) is
   begin
 
@@ -31,7 +31,7 @@ begin
     end if;
   end process CLK_PROC;
 
-  -- This process checks for a clock process without a reset 
+  -- This process checks for a clock process without a reset
   CLK_PROC : process (reset, clk) is
   begin
 
@@ -43,7 +43,7 @@ begin
     end if;
   end process CLK_PROC;
 
-  -- This process checks for a clock process without a reset 
+  -- This process checks for a clock process without a reset
   CLK_PROC : process (reset, clk) is
   begin
 
@@ -77,7 +77,7 @@ begin
     end if;
   end process CLK_PROC;
 
-  -- This process checks for a clock process without a reset 
+  -- This process checks for a clock process without a reset
   CLK_PROC : process (reset, clk) is
   begin
 
@@ -89,7 +89,7 @@ begin
     end if;
   end process CLK_PROC;
 
-  -- This process checks for a clock process without a reset 
+  -- This process checks for a clock process without a reset
   CLK_PROC : process (reset, clk) is
   begin
 
@@ -101,7 +101,7 @@ begin
     end if;
   end process CLK_PROC;
 
-  -- This process checks for a clock process without a reset 
+  -- This process checks for a clock process without a reset
   CLK_PROC : process (reset, clk) is
   begin
 

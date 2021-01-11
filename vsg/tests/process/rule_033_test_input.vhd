@@ -4,7 +4,7 @@ architecture RTL of FIFO is
 begin
 
 
-  process 
+  process
 
     variable var1  : integer := 0;
     file     file1 : load_file_file open read_mode is load_file_name;
@@ -15,7 +15,7 @@ begin
 
   -- Violations below
 
-  process 
+  process
 
     variable var1 : integer := 0;
     file     file1: load_file_file open read_mode is load_file_name;

@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
-0 | 
+0 |
 --------------------------------------------------------------------------------
-1 | 
+1 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 2 | -- Test generic clause
@@ -12,14 +12,14 @@
 <class 'vsg.token.package_declaration.identifier'>
 <class 'vsg.token.package_declaration.is_keyword'>
 --------------------------------------------------------------------------------
-4 | 
+4 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 5 |   generic (
 <class 'vsg.token.generic_clause.generic_keyword'>
 <class 'vsg.token.generic_clause.open_parenthesis'>
 --------------------------------------------------------------------------------
-6 | 
+6 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 7 |     -- Test function
@@ -100,7 +100,7 @@
 <class 'vsg.token.interface_subprogram_default.undefined_range'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
-15 | 
+15 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 16 |     pure function funct1 parameter (
@@ -178,7 +178,7 @@
 <class 'vsg.token.interface_subprogram_default.subprogram_name'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
-23 | 
+23 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 24 |     impure function funct1 parameter (
@@ -256,7 +256,7 @@
 <class 'vsg.token.interface_subprogram_default.undefined_range'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
-31 | 
+31 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 32 |     impure function funct1 parameter (
@@ -334,7 +334,7 @@
 <class 'vsg.token.interface_subprogram_default.subprogram_name'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
-39 | 
+39 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 40 |     -- Remove Parameter
@@ -414,7 +414,7 @@
 <class 'vsg.token.interface_subprogram_default.undefined_range'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
-48 | 
+48 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 49 |     pure function funct1 (
@@ -491,7 +491,7 @@
 <class 'vsg.token.interface_subprogram_default.subprogram_name'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
-56 | 
+56 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 57 |     impure function funct1 (
@@ -568,7 +568,7 @@
 <class 'vsg.token.interface_subprogram_default.undefined_range'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
-64 | 
+64 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 65 |     impure function funct1 (
@@ -645,7 +645,7 @@
 <class 'vsg.token.interface_subprogram_default.subprogram_name'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
-72 | 
+72 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 73 |     -- Remove formal_parameter_list
@@ -661,7 +661,7 @@
 <class 'vsg.token.interface_subprogram_default.undefined_range'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
-75 | 
+75 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 76 |     pure function funct1 return boolean is func1;
@@ -674,7 +674,7 @@
 <class 'vsg.token.interface_subprogram_default.subprogram_name'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
-77 | 
+77 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 78 |     impure function funct1 return boolean is <>;
@@ -687,7 +687,7 @@
 <class 'vsg.token.interface_subprogram_default.undefined_range'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
-79 | 
+79 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 80 |     impure function funct1 return boolean is func1;
@@ -700,7 +700,7 @@
 <class 'vsg.token.interface_subprogram_default.subprogram_name'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
-81 | 
+81 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 82 |     -- Remove interface_subprogram_default
@@ -714,7 +714,7 @@
 <class 'vsg.token.type_mark.name'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
-84 | 
+84 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 85 |     pure function funct1 return boolean;
@@ -725,7 +725,7 @@
 <class 'vsg.token.type_mark.name'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
-86 | 
+86 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 87 |     impure function funct1 return boolean;
@@ -736,7 +736,7 @@
 <class 'vsg.token.type_mark.name'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
-88 | 
+88 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 89 |     impure function funct1 return boolean;
@@ -747,7 +747,7 @@
 <class 'vsg.token.type_mark.name'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
-90 | 
+90 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 91 |     -- Remove pure/impure
@@ -760,7 +760,7 @@
 <class 'vsg.token.type_mark.name'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
-93 | 
+93 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 94 |     function funct1 return boolean;
@@ -770,7 +770,7 @@
 <class 'vsg.token.type_mark.name'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
-95 | 
+95 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 96 |     function funct1 return boolean;
@@ -780,7 +780,7 @@
 <class 'vsg.token.type_mark.name'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
-97 | 
+97 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 98 |     function funct1 return boolean
@@ -789,17 +789,17 @@
 <class 'vsg.token.interface_function_specification.return_keyword'>
 <class 'vsg.token.type_mark.name'>
 --------------------------------------------------------------------------------
-99 | 
+99 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 100 |     );
 <class 'vsg.token.generic_clause.close_parenthesis'>
 <class 'vsg.token.generic_clause.semicolon'>
 --------------------------------------------------------------------------------
-101 | 
+101 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-102 | 
+102 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 103 | end package PACK1;

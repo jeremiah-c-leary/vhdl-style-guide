@@ -47,7 +47,7 @@ Since this is the first rule, we will number it **001**.
 
      def __init__(self):
          rule.rule.__init__(self, 'localized', '001')
-         
+
 Referencing the :doc:`phases`, we decide it should be in phase 1: structural.
 
 .. code-block:: python
@@ -97,7 +97,7 @@ We are ready to write the body of the **analyze** method:
 
 The base rule class has an **add_violation** method which takes a dictionary as an argument.
 The *create_violation_dict* function will create the dictionary.
-This dictionary can be modified to include other information about the violation. 
+This dictionary can be modified to include other information about the violation.
 This method appends the dictionary to a violation list, which is processed later for reporting and fixing purposes.
 In this case, any line number will do so we picked 1.
 
@@ -229,18 +229,18 @@ We will look at the rule **constant_014** to illustrate how VSG uses the methods
         '''
         Constant rule 014 checks the indent of multiline constants that are not arrays.
         '''
-    
+
         def __init__(self):
             rule.rule.__init__(self)
             self.name = 'constant'
             self.identifier = '014'
             self.solution = 'Align with := keyword on constant declaration line.'
             self.phase = 5
-    
+
         def _pre_analyze(self):
             self.alignmentColumn = 0
             self.fKeywordFound = False
-    
+
         def _analyze(self, oFile, oLine, iLineNumber):
             if not oLine.isConstantArray and oLine.insideConstant:
                 if oLine.isConstant and ':=' in oLine.line:
@@ -253,7 +253,7 @@ We will look at the rule **constant_014** to illustrate how VSG uses the methods
                         self.dFix['violations'][iLineNumber] = self.alignmentColumn
                 if oLine.isConstantEnd:
                     self.fKeywordFound = False
-    
+
         def _fix_violations(self, oFile):
             for iLineNumber in self.violations:
                 sLine = oFile.lines[iLineNumber].line
@@ -275,7 +275,7 @@ We also add a comment to describe what the rule is doing.
 
 Adding __init__
 ~~~~~~~~~~~~~~~~
-    
+
 Then we add the **__init__** method.
 It calls the init of the base rule class, then we modify attributes for this specific rule:
 
@@ -415,7 +415,7 @@ This is the generic format of the dictionary represented by json:
 .. code-block:: json
 
    {
-     "lines" : [ 
+     "lines" : [
         {
           "number" : "<integer>",
           "<line_attribute>" : "<line_value>",
@@ -440,7 +440,7 @@ These dictionaries use the minimumal form.
 .. code-block:: json
 
    {
-     "lines" : [ 
+     "lines" : [
         {
           "number" : 40
         }
@@ -486,7 +486,7 @@ If a rule covers multiple lines, then information about individual lines can be 
      ],
      "desired_column" : 15
    }
-       
+
 In the above case, we are trying to align a keyword over multiple lines.
 Each line which is not aligned is reported in the **lines** list.
 The **column** attribute indicates which column the keyword was found.

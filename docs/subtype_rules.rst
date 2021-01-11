@@ -50,7 +50,7 @@ This rule checks for consistent capitalization of subtype names.
 
    constant read_sz  : read_size := 8;
    constant write_sz : WRITE_size := 1;
-   
+
 
 **Fix**
 

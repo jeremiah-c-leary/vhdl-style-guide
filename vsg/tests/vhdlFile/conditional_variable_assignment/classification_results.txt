@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
-0 | 
+0 |
 --------------------------------------------------------------------------------
-1 | 
+1 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 2 | architecture RTL of ENTITY_NAME is
@@ -11,13 +11,13 @@
 <class 'vsg.token.architecture_body.entity_name'>
 <class 'vsg.token.architecture_body.is_keyword'>
 --------------------------------------------------------------------------------
-3 | 
+3 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 4 | begin
 <class 'vsg.token.architecture_body.begin_keyword'>
 --------------------------------------------------------------------------------
-5 | 
+5 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 6 |   process
@@ -26,7 +26,7 @@
 7 |   begin
 <class 'vsg.token.process_statement.begin_keyword'>
 --------------------------------------------------------------------------------
-8 | 
+8 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 9 |     SEL_LABEL : some target := some expression when some condition else
@@ -55,7 +55,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_variable_assignment.semicolon'>
 --------------------------------------------------------------------------------
-12 | 
+12 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 13 |     SEL_LABEL : some target := some expression when some condition;
@@ -71,7 +71,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_variable_assignment.semicolon'>
 --------------------------------------------------------------------------------
-14 | 
+14 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 15 |     some target := some expression when some condition else
@@ -98,7 +98,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_variable_assignment.semicolon'>
 --------------------------------------------------------------------------------
-18 | 
+18 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 19 |     some target := some expression when some condition;
@@ -112,7 +112,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_variable_assignment.semicolon'>
 --------------------------------------------------------------------------------
-20 | 
+20 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 21 |   end process;
@@ -120,7 +120,7 @@
 <class 'vsg.token.process_statement.end_process_keyword'>
 <class 'vsg.token.process_statement.semicolon'>
 --------------------------------------------------------------------------------
-22 | 
+22 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 23 | end architecture RTL;

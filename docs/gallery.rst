@@ -38,24 +38,24 @@ Architectures
 .. code-block:: vhdl
 
   architecture BEHAVIORAL of PIC is
-  
+
     type state_type is (
       reset_s, get_commands, jump_int_method, start_polling,
       ack_txinfo_rxd, start_priority_check, tx_int_info_priority
     );
-  
+
     signal next_s               : state_type :=reset_s;
     signal int_type             : unsigned(1 downto 0):="01";
     signal int_index, count_cmd : integer := 0;
-  
+
     type prior_table is array (0 to 7) of unsigned(2 downto 0);
-  
+
     signal pt                   : prior_table := (others => (others => '0'));
     signal int_pt               : unsigned(2 downto 0):="000";
     signal flag,      flag1     : std_logic := '0';
-  
+
   begin
-  
+
   end architecture BEHAVIORAL;
 
 Component Declarations
@@ -67,19 +67,19 @@ Component Declarations
       port (
         CLK_I        : in    std_logic;
         SWITCH       : in    std_logic_vector(9 downto 0);
-  
+
         SER_IN       : in    std_logic;
         SER_OUT      : out   std_logic;
-  
+
         TEMP_SPO     : in    std_logic;
         TEMP_SPI     : out   std_logic;
         TEMP_CE      : out   std_logic;
         TEMP_SCLK    : out   std_logic;
-  
+
         SEG1         : out   std_logic_vector(7 downto 0);
         SEG2         : out   std_logic_vector( 7 downto 0);
         LED          : out   std_logic_vector( 7 downto 0);
-  
+
         XM_ADR       : out   std_logic_vector(15 downto 0);
         XM_RDAT      : in    std_logic_vector( 7 downto 0);
         XM_WDAT      : out   std_logic_vector( 7 downto 0);

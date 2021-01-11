@@ -29,7 +29,7 @@ rule :
     case : upper
   generic_map_002:
     case : upper
-  port_010 : 
+  port_010 :
     case : upper
   process_017 :
     case : upper

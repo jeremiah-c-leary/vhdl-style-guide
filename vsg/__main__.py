@@ -366,7 +366,7 @@ def read_indent_configuration(dConfiguration):
     '''
 
     sFileName = os.path.join(os.path.dirname(__file__), 'vhdlFile', 'indent', 'indent_config.yaml')
-   
+
     dReturn = open_configuration_file(sFileName)
 
     ### This merges an indent configuration into the base indent dictionary

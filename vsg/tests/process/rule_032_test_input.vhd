@@ -4,11 +4,11 @@ architecture RTL of FIFO is
 begin
 
 
-  PROC_LABEL : process 
+  PROC_LABEL : process
   begin
   end process;
 
-  process 
+  process
   begin
   end process;
 
@@ -46,6 +46,6 @@ begin
   PROC_LABEL :  -- Some comment
   ---------------------------
   process begin end process;
-  
+
 
 end architecture RTL;

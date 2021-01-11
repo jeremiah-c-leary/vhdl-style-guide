@@ -31,7 +31,7 @@ begin
         sig5_abc <= sig6;
         sig6_abc <= sig7;
         sig6_abc <= sig7;
-        
+
     end case;
 
   end process;

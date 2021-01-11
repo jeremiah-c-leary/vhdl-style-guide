@@ -57,7 +57,7 @@ This rule checks for a single space between the **if** keyword and the (.
 .. code-block:: vhdl
 
   if(a = '1') then
-  
+
   if   (a = '1') then
 
 **Fix**
@@ -579,7 +579,7 @@ Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ f
    if (A = '1') then
      B <= '0';
    end if;
-   
+
 **Fix**
 
 .. code-block:: vhdl

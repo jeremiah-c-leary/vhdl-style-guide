@@ -220,7 +220,7 @@ This rule checks the indent of the end package declaration.
 .. code-block:: vhdl
 
    package body FIFO_PKG is
- 
+
       end package body fifo_pkg;
 
 **Fix**

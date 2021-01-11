@@ -7,7 +7,7 @@ begin
        sig2 when b = '0' else
        sig3;
 
-  process 
+  process
   begin
 
     d <= sig1 when b = '1' else--This is a comment
@@ -23,7 +23,7 @@ begin
        else sig2 when b = '0'
 else sig3;
 
-  process 
+  process
   begin
 
     d <= sig1 when b = '1'--This is a comment

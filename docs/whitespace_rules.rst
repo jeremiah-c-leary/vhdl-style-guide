@@ -204,7 +204,7 @@ This rule enforces a maximum number of consecutive blank lines.
   This can be changed by setting the *numBlankLines* attribute to another number.
 
   .. code-block:: json
-  
+
      {
          "rule":{
              "whitespace_012":{

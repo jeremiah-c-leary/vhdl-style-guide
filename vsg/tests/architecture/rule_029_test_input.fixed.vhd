@@ -90,7 +90,7 @@ architecture RTL of ENTITY1 is
     file file1 : something;
     variable var1 : integer;
   begin
-  end procedure AVERAGE_SAMPLES;  
+  end procedure AVERAGE_SAMPLES;
 
   procedure AVERAGE_SAMPLES (constant x : in integer;
     constant a : in integer;
@@ -101,7 +101,7 @@ architecture RTL of ENTITY1 is
     file     file1 : something;
     variable var1 : integer;
   begin
-  end procedure AVERAGE_SAMPLES;  
+  end procedure AVERAGE_SAMPLES;
 
   function func_1 (
     constant a : integer;

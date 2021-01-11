@@ -1,5 +1,5 @@
 --------------------------------------------------------------------------------
-0 | 
+0 |
 --------------------------------------------------------------------------------
 1 | architecture RTL of FIFO is
 <class 'vsg.token.architecture_body.architecture_keyword'>
@@ -8,7 +8,7 @@
 <class 'vsg.token.architecture_body.entity_name'>
 <class 'vsg.token.architecture_body.is_keyword'>
 --------------------------------------------------------------------------------
-2 | 
+2 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 3 |   file F1 : IntegerFile;
@@ -18,7 +18,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.file_declaration.semicolon'>
 --------------------------------------------------------------------------------
-4 | 
+4 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 5 |   file F2 : IntegerFile is "test.dat";
@@ -30,7 +30,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.file_declaration.semicolon'>
 --------------------------------------------------------------------------------
-6 | 
+6 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 7 |   file F3 : IntegerFile open WRITE_MODEW is "test.dat";
@@ -44,7 +44,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.file_declaration.semicolon'>
 --------------------------------------------------------------------------------
-8 | 
+8 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 9 |   file F1, F2, F3 : IntegerFile open WRITE_MODEW is "test.dat";
@@ -62,7 +62,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.file_declaration.semicolon'>
 --------------------------------------------------------------------------------
-10 | 
+10 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 11 |   file F1 : IntegerFile open WRITE_MODEM is (something(else));
@@ -81,13 +81,13 @@
 <class 'vsg.parser.close_parenthesis'>
 <class 'vsg.token.file_declaration.semicolon'>
 --------------------------------------------------------------------------------
-12 | 
+12 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 13 | begin
 <class 'vsg.token.architecture_body.begin_keyword'>
 --------------------------------------------------------------------------------
-14 | 
+14 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 15 | end architecture RTL;

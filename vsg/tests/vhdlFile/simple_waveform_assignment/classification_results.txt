@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
-0 | 
+0 |
 --------------------------------------------------------------------------------
-1 | 
+1 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 2 | architecture RTL of ENTITY_NAME is
@@ -11,13 +11,13 @@
 <class 'vsg.token.architecture_body.entity_name'>
 <class 'vsg.token.architecture_body.is_keyword'>
 --------------------------------------------------------------------------------
-3 | 
+3 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 4 | begin
 <class 'vsg.token.architecture_body.begin_keyword'>
 --------------------------------------------------------------------------------
-5 | 
+5 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 6 |   process
@@ -26,7 +26,7 @@
 7 |   begin
 <class 'vsg.token.process_statement.begin_keyword'>
 --------------------------------------------------------------------------------
-8 | 
+8 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 9 |     FORCE_LABEL : sig1 <= transport a and c;
@@ -40,7 +40,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.simple_waveform_assignment.semicolon'>
 --------------------------------------------------------------------------------
-10 | 
+10 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 11 |     FORCE_LABEL : sig1 <= a and c;
@@ -53,7 +53,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.simple_waveform_assignment.semicolon'>
 --------------------------------------------------------------------------------
-12 | 
+12 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 13 |     sig1 <= a and c;
@@ -64,7 +64,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.simple_waveform_assignment.semicolon'>
 --------------------------------------------------------------------------------
-14 | 
+14 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 15 |   end process;
@@ -72,7 +72,7 @@
 <class 'vsg.token.process_statement.end_process_keyword'>
 <class 'vsg.token.process_statement.semicolon'>
 --------------------------------------------------------------------------------
-16 | 
+16 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 17 | end architecture RTL;

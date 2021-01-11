@@ -25,7 +25,7 @@ Keeping the label and generate on the same line reduces excessive indenting.
 
 block_002
 ^^^^^^^^^
- 
+
 This rule checks for the existence of the **is** keyword.
 
 Refer to the section `Configuring Optional Items <configuring_optional_items.html>`_ for options.

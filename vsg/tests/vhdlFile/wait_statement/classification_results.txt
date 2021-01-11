@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
-0 | 
+0 |
 --------------------------------------------------------------------------------
-1 | 
+1 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 2 | architecture RTL of ENTITY_NAME is
@@ -11,13 +11,13 @@
 <class 'vsg.token.architecture_body.entity_name'>
 <class 'vsg.token.architecture_body.is_keyword'>
 --------------------------------------------------------------------------------
-3 | 
+3 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 4 | begin
 <class 'vsg.token.architecture_body.begin_keyword'>
 --------------------------------------------------------------------------------
-5 | 
+5 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 6 |   process
@@ -26,13 +26,13 @@
 7 |   begin
 <class 'vsg.token.process_statement.begin_keyword'>
 --------------------------------------------------------------------------------
-8 | 
+8 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 9 |     -- Test all possible combinations
 <class 'vsg.parser.comment'>
 --------------------------------------------------------------------------------
-10 | 
+10 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 11 |     WAIT_LABEL : wait on sig1, sig2, sig3 until some condition met for some time_expression;
@@ -54,7 +54,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.wait_statement.semicolon'>
 --------------------------------------------------------------------------------
-12 | 
+12 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 13 |     WAIT_LABEL : wait on sig1, sig2, sig3 until some condition met;
@@ -73,7 +73,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.wait_statement.semicolon'>
 --------------------------------------------------------------------------------
-14 | 
+14 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 15 |     WAIT_LABEL : wait on sig1, sig2, sig3 for some time_expression;
@@ -91,7 +91,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.wait_statement.semicolon'>
 --------------------------------------------------------------------------------
-16 | 
+16 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 17 |     WAIT_LABEL : wait on sig1, sig2, sig3;
@@ -106,7 +106,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.wait_statement.semicolon'>
 --------------------------------------------------------------------------------
-18 | 
+18 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 19 |     WAIT_LABEL : wait until some condition met for some time_expression;
@@ -122,7 +122,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.wait_statement.semicolon'>
 --------------------------------------------------------------------------------
-20 | 
+20 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 21 |     WAIT_LABEL : wait until some condition met;
@@ -135,7 +135,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.wait_statement.semicolon'>
 --------------------------------------------------------------------------------
-22 | 
+22 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 23 |     WAIT_LABEL : wait for some time_expression;
@@ -147,7 +147,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.wait_statement.semicolon'>
 --------------------------------------------------------------------------------
-24 | 
+24 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 25 |     WAIT_LABEL : wait;
@@ -156,13 +156,13 @@
 <class 'vsg.token.wait_statement.wait_keyword'>
 <class 'vsg.token.wait_statement.semicolon'>
 --------------------------------------------------------------------------------
-26 | 
+26 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 27 |     -- Test without a label
 <class 'vsg.parser.comment'>
 --------------------------------------------------------------------------------
-28 | 
+28 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 29 |     wait on sig1, sig2, sig3 until some condition met for some time_expression;
@@ -182,7 +182,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.wait_statement.semicolon'>
 --------------------------------------------------------------------------------
-30 | 
+30 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 31 |     wait on sig1, sig2, sig3 until some condition met;
@@ -199,7 +199,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.wait_statement.semicolon'>
 --------------------------------------------------------------------------------
-32 | 
+32 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 33 |     wait on sig1, sig2, sig3 for some time_expression;
@@ -215,7 +215,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.wait_statement.semicolon'>
 --------------------------------------------------------------------------------
-34 | 
+34 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 35 |     wait on sig1, sig2, sig3;
@@ -228,7 +228,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.wait_statement.semicolon'>
 --------------------------------------------------------------------------------
-36 | 
+36 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 37 |     wait until some condition met for some time_expression;
@@ -242,7 +242,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.wait_statement.semicolon'>
 --------------------------------------------------------------------------------
-38 | 
+38 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 39 |     wait until some condition met;
@@ -253,7 +253,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.wait_statement.semicolon'>
 --------------------------------------------------------------------------------
-40 | 
+40 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 41 |     wait for some time_expression;
@@ -263,14 +263,14 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.wait_statement.semicolon'>
 --------------------------------------------------------------------------------
-42 | 
+42 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 43 |     wait;
 <class 'vsg.token.wait_statement.wait_keyword'>
 <class 'vsg.token.wait_statement.semicolon'>
 --------------------------------------------------------------------------------
-44 | 
+44 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 45 |   end process;
@@ -278,7 +278,7 @@
 <class 'vsg.token.process_statement.end_process_keyword'>
 <class 'vsg.token.process_statement.semicolon'>
 --------------------------------------------------------------------------------
-46 | 
+46 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 47 | end architecture RTL;

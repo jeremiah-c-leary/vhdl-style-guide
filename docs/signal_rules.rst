@@ -303,7 +303,7 @@ Refer to the section `Configuring Number of Signals in Signal Declaration <confi
    signal sig3 : std_logic;
    signal sig4 : std_logic;
    signal sig5 : std_logic;
-   
+
 signal_016
 ##########
 

@@ -10,10 +10,10 @@ The command line tool can be invoked with:
     usage: VHDL Style Guide (VSG) [-h] [-f FILENAME [FILENAME ...]] [-lr LOCAL_RULES] [-c CONFIGURATION [CONFIGURATION ...]] [--fix]
                                   [-fp FIX_PHASE] [-j JUNIT] [-of {vsg,syntastic}] [-b] [-oc OUTPUT_CONFIGURATION]
                                   [-rc RULE_CONFIGURATION] [--style {indent_only,jcl}] [-v] [-ap] [--debug]
-    
+
     Analyzes VHDL files for style guide violations. Reference documentation is located at: http://vhdl-style-
     guide.readthedocs.io/en/latest/index.html
-    
+
     optional arguments:
       -h, --help            show this help message and exit
       -f FILENAME [FILENAME ...], --filename FILENAME [FILENAME ...]

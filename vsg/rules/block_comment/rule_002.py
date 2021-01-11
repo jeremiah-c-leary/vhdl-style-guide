@@ -43,7 +43,7 @@ class rule_002(block_rule.Rule):
             iComment = 0
             for iToken, oToken in enumerate(lTokens):
                 iLine = utils.increment_line_number(iLine, oToken)
-                
+
                 if isinstance(oToken, parser.comment):
                     iComment += 1
                     if iComment == 1:

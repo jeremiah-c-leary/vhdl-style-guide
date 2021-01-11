@@ -87,7 +87,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
 for_loop_004
 ############
 
-This rule checks if a label exists on a for loop that a single space exists between the label and the colon. 
+This rule checks if a label exists on a for loop that a single space exists between the label and the colon.
 
 **Violation**
 
@@ -106,7 +106,7 @@ This rule checks if a label exists on a for loop that a single space exists betw
 for_loop_005
 ############
 
-This rule checks if a label exists on a for loop that a single space exists after the colon. 
+This rule checks if a label exists on a for loop that a single space exists after the colon.
 
 **Violation**
 

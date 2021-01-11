@@ -36,7 +36,7 @@ begin
     x := z when b = 0 else  -- check for something
          y;
 
-    with some_expression 
+    with some_expression
      --comment
      select a := b
      --comment

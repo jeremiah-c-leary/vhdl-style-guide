@@ -3,7 +3,7 @@ Process Rules
 
 process_001
 ###########
- 
+
 This rule checks the indent of the process declaration.
 
 **Violation**
@@ -29,7 +29,7 @@ This rule checks the indent of the process declaration.
 
 process_002
 ###########
- 
+
 This rule checks for a single space after the **process** keyword.
 
 **Violation**
@@ -50,7 +50,7 @@ This rule checks for a single space after the **process** keyword.
 
 process_003
 ###########
- 
+
 This rule checks the indent of the **begin** keyword.
 
 **Violation**
@@ -73,7 +73,7 @@ This rule checks the indent of the **begin** keyword.
 
 process_004
 ###########
- 
+
 This rule checks the **begin** keyword has proper case.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
@@ -98,7 +98,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
 
 process_005
 ###########
- 
+
 This rule checks the **process** keyword has proper case.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
@@ -117,7 +117,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
 
 process_006
 ###########
- 
+
 This rule checks the indent of the **end process** keywords.
 
 **Violation**
@@ -144,7 +144,7 @@ This rule checks the indent of the **end process** keywords.
 
 process_007
 ###########
- 
+
 This rule checks for a single space after the **end** keyword.
 
 **Violation**
@@ -161,7 +161,7 @@ This rule checks for a single space after the **end** keyword.
 
 process_008
 ###########
- 
+
 This rule checks the **end** keyword has proper case.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
@@ -180,7 +180,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
 
 process_009
 ###########
- 
+
 This rule checks the **process** keyword has proper case in the **end process** line.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
@@ -199,7 +199,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
 
 process_010
 ###########
- 
+
 This rule checks the **begin** keyword is on it's own line.
 
 **Violation**
@@ -221,7 +221,7 @@ This rule checks the **begin** keyword is on it's own line.
 
 process_011
 ###########
- 
+
 This rule checks for a blank line after the **end process** keyword.
 
 Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
@@ -243,7 +243,7 @@ Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ f
 
 process_012
 ###########
- 
+
 This rule checks for the existence of the **is** keyword.
 
 Refer to the section `Configuring Optional Items <configuring_optional_items.html>`_ for options.
@@ -280,7 +280,7 @@ Refer to the section `Configuring Optional Items <configuring_optional_items.htm
 
 process_013
 ###########
- 
+
 This rule checks the **is** keyword has proper case.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
@@ -305,7 +305,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
 
 process_014
 ###########
- 
+
 This rule checks for a single space before the **is** keyword.
 
 **Violation**
@@ -328,7 +328,7 @@ This rule checks for a single space before the **is** keyword.
 
 process_015
 ###########
- 
+
 This rule checks for a blank line or comment above the **process** declaration.
 
 .. NOTE:: Comments are allowed above the instantiation.
@@ -339,7 +339,7 @@ Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ f
 
 .. code-block:: vhdl
 
-   -- This process performs FIFO operations.   
+   -- This process performs FIFO operations.
    proc_a : process (rd_en, wr_en, data_in, data_out,
 
    wr_en <= wr_en;
@@ -349,7 +349,7 @@ Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ f
 
 .. code-block:: vhdl
 
-   -- This process performs FIFO operations.   
+   -- This process performs FIFO operations.
    proc_a : process (rd_en, wr_en, data_in, data_out,
 
    wr_en <= wr_en;
@@ -358,7 +358,7 @@ Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ f
 
 process_016
 ###########
- 
+
 This rule checks the process has a label.
 
 **Violation**
@@ -381,7 +381,7 @@ This rule checks the process has a label.
 
 process_017
 ###########
- 
+
 This rule checks the process label has proper case.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
@@ -406,7 +406,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
 
 process_018
 ###########
- 
+
 This rule checks the **end process** line has a label.
 The closing label will be added if the opening process label exists.
 
@@ -426,7 +426,7 @@ Refer to the section `Configuring Optional Items <configuring_optional_items.htm
 
 process_019
 ###########
- 
+
 This rule checks the **end process** label has proper case.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
@@ -445,7 +445,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
 
 process_020
 ###########
- 
+
 This rule checks the indentation of multiline sensitivity lists.
 
 **Violation**
@@ -469,7 +469,7 @@ This rule checks the indentation of multiline sensitivity lists.
 
 process_021
 ###########
- 
+
 This rule checks for blank lines before the **begin** keyword if there are no process declarative items.
 
 **Violation**
@@ -513,7 +513,7 @@ This rule checks for blank lines before the **begin** keyword if there are no pr
 
 process_022
 ###########
- 
+
 This rule checks for a blank line below the **begin** keyword.
 
 Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
@@ -541,7 +541,7 @@ Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ f
 
 process_023
 ###########
- 
+
 This rule checks for a blank line above the **end process** keyword.
 
 Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
@@ -563,7 +563,7 @@ Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ f
 
 process_024
 ###########
- 
+
 This rule checks for a single space after the process label.
 
 **Violation**
@@ -586,7 +586,7 @@ This rule checks for a single space after the process label.
 
 process_025
 ###########
- 
+
 This rule checks for a single space after the colon and before the **process** keyword.
 
 **Violation**
@@ -608,7 +608,7 @@ This rule checks for a single space after the colon and before the **process** k
 
 process_026
 ###########
- 
+
 This rule checks for blank lines between the end of the sensitivity list and process declarative lines.
 
 **Violation**
@@ -636,7 +636,7 @@ This rule checks for blank lines between the end of the sensitivity list and pro
 
 process_027
 ###########
- 
+
 This rule checks for blank lines between process declarative lines and the **begin** keyword.
 
 **Violation**

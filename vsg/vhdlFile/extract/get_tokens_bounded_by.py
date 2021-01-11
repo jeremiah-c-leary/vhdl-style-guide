@@ -18,7 +18,7 @@ def get_tokens_bounded_by(oStart, oEnd, lAllObjects, oTokenMap, include_trailing
         for iStart in lStart:
             lNewStart.append(oTokenMap.get_index_of_carriage_return_before_index(iStart) + 1)
     else:
-        lNewStart = lStart 
+        lNewStart = lStart
 
     if bExcludeLastToken:
         lEnd = [x - 1 for x in lEnd]
@@ -45,7 +45,7 @@ def get_tokens_bounded_by(oStart, oEnd, lAllObjects, oTokenMap, include_trailing
                 lNewEnd[iNewEnd] -= 1
             if lNewEnd[iNewEnd] in lCarriageReturns:
                 lNewEnd[iNewEnd] -= 1
-        
+
 #    print(lStart)
 #    print(lEnd)
 #    print(lNewEnd)

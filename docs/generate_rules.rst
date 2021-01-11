@@ -151,7 +151,7 @@ This rule checks the indent of the **end generate** keyword.
 
 generate_008
 ############
- 
+
 This rule checks for a single space after the **end** keyword.
 
 **Violation**
@@ -168,7 +168,7 @@ This rule checks for a single space after the **end** keyword.
 
 generate_009
 ############
- 
+
 This rule checks the **end** keyword has proper case.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
@@ -187,7 +187,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
 
 generate_010
 ############
- 
+
 This rule checks the **generate** keyword has the proper case in the **end generate** line.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
@@ -206,7 +206,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
 
 generate_011
 ############
- 
+
 This rule checks the **end generate** line has a label on for generate statements.
 
 **Violation**
@@ -227,7 +227,7 @@ This rule checks the **end generate** line has a label on for generate statement
 
 generate_012
 ############
- 
+
 This rule checks the **end generate** label has proper case.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
@@ -246,7 +246,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
 
 generate_013
 ############
- 
+
 This rule checks for a single space after the **generate** keyword and the label in the **end generate** keywords.
 
 **Violation**

@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
-0 | 
+0 |
 --------------------------------------------------------------------------------
-1 | 
+1 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 2 | architecture RTL of FIFO is
@@ -11,13 +11,13 @@
 <class 'vsg.token.architecture_body.entity_name'>
 <class 'vsg.token.architecture_body.is_keyword'>
 --------------------------------------------------------------------------------
-3 | 
+3 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 4 | begin
 <class 'vsg.token.architecture_body.begin_keyword'>
 --------------------------------------------------------------------------------
-5 | 
+5 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 6 |   LABEL0 : if a = 1 generate
@@ -29,7 +29,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-7 | 
+7 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 8 |   end generate LABEL0;
@@ -38,7 +38,7 @@
 <class 'vsg.token.if_generate_statement.end_generate_label'>
 <class 'vsg.token.if_generate_statement.semicolon'>
 --------------------------------------------------------------------------------
-9 | 
+9 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 10 |   -- Simple test case
@@ -53,7 +53,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-12 | 
+12 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 13 |   elsif a = 0 generate
@@ -63,7 +63,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-14 | 
+14 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 15 |   elsif a = 1 generate
@@ -73,14 +73,14 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-16 | 
+16 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 17 |   else generate
 <class 'vsg.token.if_generate_statement.else_keyword'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-18 | 
+18 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 19 |   end generate LABEL1;
@@ -89,7 +89,7 @@
 <class 'vsg.token.if_generate_statement.end_generate_label'>
 <class 'vsg.token.if_generate_statement.semicolon'>
 --------------------------------------------------------------------------------
-20 | 
+20 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 21 |   -- Test nesting
@@ -104,7 +104,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-23 | 
+23 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 24 |     LABEL3A : if x = 0 generate
@@ -116,7 +116,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-25 | 
+25 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 26 |     elsif y = 1 generate
@@ -126,14 +126,14 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-27 | 
+27 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 28 |     else generate
 <class 'vsg.token.if_generate_statement.else_keyword'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-29 | 
+29 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 30 |     end generate LABEL3A;
@@ -142,7 +142,7 @@
 <class 'vsg.token.if_generate_statement.end_generate_label'>
 <class 'vsg.token.if_generate_statement.semicolon'>
 --------------------------------------------------------------------------------
-31 | 
+31 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 32 |   elsif b = 0 generate
@@ -152,7 +152,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-33 | 
+33 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 34 |   elsif c = 1 generate
@@ -162,14 +162,14 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-35 | 
+35 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 36 |   else generate
 <class 'vsg.token.if_generate_statement.else_keyword'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-37 | 
+37 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 38 |   end generate LABEL2A;
@@ -178,7 +178,7 @@
 <class 'vsg.token.if_generate_statement.end_generate_label'>
 <class 'vsg.token.if_generate_statement.semicolon'>
 --------------------------------------------------------------------------------
-39 | 
+39 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 40 |   -- Test multiple layers of nesting
@@ -193,7 +193,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-42 | 
+42 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 43 |       LABEL3A : if x = 0 generate
@@ -205,7 +205,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-44 | 
+44 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 45 |           LABEL4A : if x = 0 generate
@@ -217,7 +217,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-46 | 
+46 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 47 |           elsif y = 1 generate
@@ -227,14 +227,14 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-48 | 
+48 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 49 |           else generate
 <class 'vsg.token.if_generate_statement.else_keyword'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-50 | 
+50 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 51 |           end generate LABEL4A;
@@ -243,7 +243,7 @@
 <class 'vsg.token.if_generate_statement.end_generate_label'>
 <class 'vsg.token.if_generate_statement.semicolon'>
 --------------------------------------------------------------------------------
-52 | 
+52 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 53 |       elsif y = 1 generate
@@ -253,14 +253,14 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-54 | 
+54 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 55 |       else generate
 <class 'vsg.token.if_generate_statement.else_keyword'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-56 | 
+56 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 57 |       end generate LABEL3A;
@@ -269,7 +269,7 @@
 <class 'vsg.token.if_generate_statement.end_generate_label'>
 <class 'vsg.token.if_generate_statement.semicolon'>
 --------------------------------------------------------------------------------
-58 | 
+58 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 59 |   elsif b = 0 generate
@@ -279,7 +279,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-60 | 
+60 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 61 |       LABEL3A : if x = 0 generate
@@ -291,7 +291,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-62 | 
+62 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 63 |           LABEL4A : if x = 0 generate
@@ -303,7 +303,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-64 | 
+64 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 65 |           elsif y = 1 generate
@@ -313,14 +313,14 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-66 | 
+66 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 67 |           else generate
 <class 'vsg.token.if_generate_statement.else_keyword'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-68 | 
+68 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 69 |           end generate LABEL4A;
@@ -329,7 +329,7 @@
 <class 'vsg.token.if_generate_statement.end_generate_label'>
 <class 'vsg.token.if_generate_statement.semicolon'>
 --------------------------------------------------------------------------------
-70 | 
+70 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 71 |       elsif y = 1 generate
@@ -339,14 +339,14 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-72 | 
+72 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 73 |       else generate
 <class 'vsg.token.if_generate_statement.else_keyword'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-74 | 
+74 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 75 |       end generate LABEL3A;
@@ -355,7 +355,7 @@
 <class 'vsg.token.if_generate_statement.end_generate_label'>
 <class 'vsg.token.if_generate_statement.semicolon'>
 --------------------------------------------------------------------------------
-76 | 
+76 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 77 |   elsif c = 1 generate
@@ -365,7 +365,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-78 | 
+78 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 79 |       LABEL3A : if x = 0 generate
@@ -377,7 +377,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-80 | 
+80 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 81 |           LABEL4A : if x = 0 generate
@@ -389,7 +389,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-82 | 
+82 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 83 |           elsif y = 1 generate
@@ -399,14 +399,14 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-84 | 
+84 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 85 |           else generate
 <class 'vsg.token.if_generate_statement.else_keyword'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-86 | 
+86 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 87 |           end generate LABEL4A;
@@ -415,7 +415,7 @@
 <class 'vsg.token.if_generate_statement.end_generate_label'>
 <class 'vsg.token.if_generate_statement.semicolon'>
 --------------------------------------------------------------------------------
-88 | 
+88 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 89 |       elsif y = 1 generate
@@ -425,14 +425,14 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-90 | 
+90 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 91 |       else generate
 <class 'vsg.token.if_generate_statement.else_keyword'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-92 | 
+92 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 93 |       end generate LABEL3A;
@@ -441,14 +441,14 @@
 <class 'vsg.token.if_generate_statement.end_generate_label'>
 <class 'vsg.token.if_generate_statement.semicolon'>
 --------------------------------------------------------------------------------
-94 | 
+94 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 95 |   else generate
 <class 'vsg.token.if_generate_statement.else_keyword'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-96 | 
+96 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 97 |       LABEL3A : if x = 0 generate
@@ -460,7 +460,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-98 | 
+98 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 99 |           LABEL4A : if x = 0 generate
@@ -472,7 +472,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-100 | 
+100 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 101 |           elsif y = 1 generate
@@ -482,14 +482,14 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-102 | 
+102 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 103 |           else generate
 <class 'vsg.token.if_generate_statement.else_keyword'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-104 | 
+104 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 105 |           end generate LABEL4A;
@@ -498,7 +498,7 @@
 <class 'vsg.token.if_generate_statement.end_generate_label'>
 <class 'vsg.token.if_generate_statement.semicolon'>
 --------------------------------------------------------------------------------
-106 | 
+106 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 107 |       elsif y = 1 generate
@@ -508,14 +508,14 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-108 | 
+108 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 109 |       else generate
 <class 'vsg.token.if_generate_statement.else_keyword'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
-110 | 
+110 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 111 |       end generate LABEL3A;
@@ -524,7 +524,7 @@
 <class 'vsg.token.if_generate_statement.end_generate_label'>
 <class 'vsg.token.if_generate_statement.semicolon'>
 --------------------------------------------------------------------------------
-112 | 
+112 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 113 |   end generate LABEL2A;
@@ -533,7 +533,7 @@
 <class 'vsg.token.if_generate_statement.end_generate_label'>
 <class 'vsg.token.if_generate_statement.semicolon'>
 --------------------------------------------------------------------------------
-114 | 
+114 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 115 | end architecture RTL;

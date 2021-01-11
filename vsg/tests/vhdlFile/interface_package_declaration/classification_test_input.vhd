@@ -2,7 +2,7 @@
 -- Test generic clause
 package PACK1 is
 
-  generic ( 
+  generic (
 
     package pack1 is new fifostuff generic map (<>);
 
@@ -13,5 +13,5 @@ package PACK1 is
 
     );
 
-    
+
 end package PACK1;

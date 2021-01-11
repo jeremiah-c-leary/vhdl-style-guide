@@ -20,7 +20,7 @@ architecture RTL of FIFO is
       G_GEN2 : integer := 0
     );
   end component COMP;
-  
+
   -- test with ports
   component COMP is
     port (

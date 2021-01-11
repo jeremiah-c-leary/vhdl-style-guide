@@ -30,7 +30,7 @@ class New():
   def update(self, oToken):
       if isinstance(oToken, parser.comment):
           sValue = oToken.get_value()
-  
+
           if sValue.startswith('-- vsg_on'):
               lValues = sValue.split()
               if len(lValues) == 2:

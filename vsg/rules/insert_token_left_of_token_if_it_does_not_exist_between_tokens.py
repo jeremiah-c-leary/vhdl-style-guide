@@ -61,7 +61,7 @@ class insert_token_left_of_token_if_it_does_not_exist_between_tokens(rule.Rule):
                 if isinstance(oToken, type(self.insert_token)):
                     break
                 if isinstance(oToken, self.anchor_token):
-                    dAction['index'] = iToken - 1 
+                    dAction['index'] = iToken - 1
             else:
                 if dAction == {}:
                     continue
