@@ -417,8 +417,6 @@ def main():
 
     validate_files_exist_to_analyze(commandLineArguments.filename)
 
-    dViolations = {}
-
     dJson = {}
     dJson['files'] = []
 
