@@ -248,8 +248,8 @@ class vhdlFile():
     def get_lines_with_length_that_exceed_column(self, iColumn):
         return extract.get_lines_with_length_that_exceed_column(iColumn, self.lAllObjects, self.oTokenMap)
 
-    def get_tokens_starting_with_token_and_ending_with_one_of_possible_tokens(self, lStartTokens, lEndTokens):
-        return extract.get_tokens_starting_with_token_and_ending_with_one_of_possible_tokens(lStartTokens, lEndTokens, self.lAllObjects, self.oTokenMap)
+    def get_tokens_starting_with_token_and_ending_with_one_of_possible_tokens(self, lStartTokens, lEndTokens, bIncludeStartToken=False, bIncludeEndToken=True, bEarliestDetect=False):
+        return extract.get_tokens_starting_with_token_and_ending_with_one_of_possible_tokens(lStartTokens, lEndTokens, self.lAllObjects, self.oTokenMap, bIncludeStartToken, bIncludeEndToken, bEarliestDetect)
 
     def get_tokens_between_indexes(self, iStartIndex, iEndIndex):
         return extract.get_tokens_between_indexes(iStartIndex, iEndIndex, self.lAllObjects)
