@@ -169,7 +169,7 @@ def read_configuration_files(dStyle, commandLineArguments):
                     for sRule in tempConfiguration[sKey]:
                         try:
                             dConfiguration[sKey][sRule] = tempConfiguration[sKey][sRule]
-                        except:
+                        except KeyError:
                             dConfiguration[sKey] = {}
                             dConfiguration[sKey][sRule] = tempConfiguration[sKey][sRule]
                 else:
