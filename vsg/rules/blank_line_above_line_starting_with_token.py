@@ -37,7 +37,7 @@ class blank_line_above_line_starting_with_token(rule.Rule):
         if self.lHierarchyLimits is None:
             return oFile.get_line_above_line_starting_with_token(self.lTokens, self.blank_above_comment)
         else:
-            return oFile.get_line_above_line_starting_with_token_with_hierarchy(self.lTokens, self.lHierarchyLimits)
+            return oFile.get_line_above_line_starting_with_token_with_hierarchy(self.lTokens, self.lHierarchyLimits, self.blank_above_comment)
 
     def _set_allow_tokens(self):
         return

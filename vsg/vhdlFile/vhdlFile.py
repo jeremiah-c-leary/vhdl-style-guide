@@ -188,8 +188,8 @@ class vhdlFile():
     def get_line_above_line_starting_with_token(self, lTokens, bIncludeComments):
         return extract.get_line_above_line_starting_with_token(lTokens, self.lAllObjects, self.oTokenMap, bIncludeComments)
 
-    def get_line_above_line_starting_with_token_with_hierarchy(self, lTokens, lHierarchy):
-        return extract.get_line_above_line_starting_with_token_with_hierarchy(lTokens, self.lAllObjects, lHierarchy, self.oTokenMap)
+    def get_line_above_line_starting_with_token_with_hierarchy(self, lTokens, lHierarchy, bIncludeComments):
+        return extract.get_line_above_line_starting_with_token_with_hierarchy(lTokens, self.lAllObjects, lHierarchy, self.oTokenMap, bIncludeComments)
 
     def get_line_below_line_ending_with_token(self, lTokens):
         return extract.get_line_below_line_ending_with_token(lTokens, self.lAllObjects, self.oTokenMap)

@@ -8,7 +8,7 @@ import copy
 
 
 def get_line_preceeding_line(iLine, lAllTokens, iNumLines, oTokenMap, bSkipComments=False):
-#    print('--> get_line_preceeding_line')
+
     lCarriageReturns = oTokenMap.get_token_indexes(parser.carriage_return)
 
     if not bSkipComments:
@@ -23,18 +23,37 @@ def get_line_preceeding_line(iLine, lAllTokens, iNumLines, oTokenMap, bSkipComme
     #    print(f'{iLine} | {iStart} | {iEnd} | {lTemp}')
         return tokens.New(iStart, iLine, lTemp)
     else:
-#        print(f'{iLine}')
+
+        iStartIndex = _get_start_index(lCarriageReturns, iLine, oTokenMap)
+
+        if iStartIndex == 0:
+            iTokenStartIndex = 0
+            iTokenEndIndex = lCarriageReturns[iTokenStartIndex]
+        else:
+            iTokenStartIndex = lCarriageReturns[iStartIndex - 1] + 1
+            iTokenEndIndex = lCarriageReturns[iStartIndex]
+
+        iLine = iStartIndex + 2
+        lTokens = lAllTokens[iTokenStartIndex:iTokenEndIndex]
+        return tokens.New(iTokenStartIndex, iLine, lTokens)
+
+
+def _build_index_list(oTokenMap):
         lTemp = oTokenMap.get_token_indexes(parser.comment).copy()
         lTemp.extend(oTokenMap.get_token_indexes(parser.whitespace).copy())
-        lTemp.extend(lCarriageReturns.copy())
+        lTemp.extend(oTokenMap.get_token_indexes(parser.carriage_return).copy())
         lTemp.sort()
-        iCRIndex = lCarriageReturns[iLine - 2] 
+        return lTemp
+
+
+def _get_start_index(lCarriageReturns, iLine, oTokenMap):
+        lTemp = _build_index_list(oTokenMap)
+        iCurrent = lCarriageReturns[iLine - 2]
 #        print(f'lCarraigeReturns = {lCarriageReturns}')
-#        print(f'Index = {iCRIndex}')
+#        print(f'Index = {iCurrent}')
 #        print(f'lTemp            = {lTemp}')
-        iTempIndex = lTemp.index(iCRIndex) - 1
+        iTempIndex = lTemp.index(iCurrent) - 1
 #        print(f'iTempIndex = {iTempIndex}')
-        iCurrent = iCRIndex
         for i in range(iTempIndex, -1, -1):
 #            print(i)
 #            print(f'lTemp[i] | {iCurrent - 1}')
@@ -44,15 +63,4 @@ def get_line_preceeding_line(iLine, lAllTokens, iNumLines, oTokenMap, bSkipComme
 #        print(f'iCurrent = {iCurrent}')
 #        iStartIndex = lCarriageReturns.index(iCurrent)
         iStartIndex = bisect.bisect_left(lCarriageReturns, iCurrent)
-#        print(f'iStartIndex = {iStartIndex}')
-        if iStartIndex == 0:
-            iTokenStartIndex = 0
-            iTokenEndIndex = lCarriageReturns[iTokenStartIndex]
-        else:
-            iTokenStartIndex = lCarriageReturns[iStartIndex - 1] + 1
-            iTokenEndIndex = lCarriageReturns[iStartIndex]
-#        print(f'iTokenStartIndex = {iTokenStartIndex}')
-#        print(f'iTokenEndIndex = {iTokenEndIndex}')
-        iLine = iStartIndex + 2
-        lTokens = lAllTokens[iTokenStartIndex:iTokenEndIndex]
-        return tokens.New(iTokenStartIndex, iLine, lTokens)
+        return iStartIndex
