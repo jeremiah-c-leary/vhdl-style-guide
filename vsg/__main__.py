@@ -146,10 +146,7 @@ def read_configuration_files(dStyle, commandLineArguments):
     dConfiguration = dStyle
     if commandLineArguments.configuration:
         for sConfigFilename in commandLineArguments.configuration:
-            try:
-                tempConfiguration = open_configuration_file(sConfigFilename, commandLineArguments.junit)
-            except AttributeError:
-                tempConfiguration = open_configuration_file(sConfigFilename)
+            tempConfiguration = open_configuration_file(sConfigFilename, commandLineArguments.junit)
 
             for sKey in tempConfiguration.keys():
                 if sKey == 'file_list':
@@ -172,7 +169,7 @@ def read_configuration_files(dStyle, commandLineArguments):
                     for sRule in tempConfiguration[sKey]:
                         try:
                             dConfiguration[sKey][sRule] = tempConfiguration[sKey][sRule]
-                        except:
+                        except KeyError:
                             dConfiguration[sKey] = {}
                             dConfiguration[sKey][sRule] = tempConfiguration[sKey][sRule]
                 else:
@@ -419,8 +416,6 @@ def main():
     display_rule_configuration(commandLineArguments, configuration)
 
     validate_files_exist_to_analyze(commandLineArguments.filename)
-
-    dViolations = {}
 
     dJson = {}
     dJson['files'] = []
