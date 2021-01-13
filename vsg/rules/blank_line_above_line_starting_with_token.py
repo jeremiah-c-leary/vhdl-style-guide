@@ -28,12 +28,14 @@ class blank_line_above_line_starting_with_token(rule.Rule):
         self.lTokens = lTokens
         self.lHierarchyLimits = None
         self.allow_comments = False
+        self.blank_above_comment = False
         self.configuration.append('allow_comments')
+        self.configuration.append('blank_above_comment')
         self.lAllowTokens = lAllowTokens
 
     def _get_tokens_of_interest(self, oFile):
         if self.lHierarchyLimits is None:
-            return oFile.get_line_above_line_starting_with_token(self.lTokens)
+            return oFile.get_line_above_line_starting_with_token(self.lTokens, self.blank_above_comment)
         else:
             return oFile.get_line_above_line_starting_with_token_with_hierarchy(self.lTokens, self.lHierarchyLimits)
 
