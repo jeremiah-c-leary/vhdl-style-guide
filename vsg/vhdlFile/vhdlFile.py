@@ -46,12 +46,12 @@ class vhdlFile():
 
        fileobject
     '''
-    def __init__(self, filecontent):
+    def __init__(self, filecontent, sFilename=None):
         self.filecontent = filecontent
         self.hasArchitecture = False
         self.hasEntity = False
         self.lAllObjects = []
-        self.filename = None
+        self.filename = sFilename
         self.dIndentMap = None
         self.lOpenPragmas = ['--vhdl_comp_off']
         self.lClosePragmas = ['--vhdl_comp_on']
@@ -76,6 +76,11 @@ class vhdlFile():
 
             self.lAllObjects.extend(lObjects)
             self.lAllObjects.append(parser.carriage_return())
+
+        try:
+            self.lAllObjects[0].set_filename(self.filename)
+        except IndexError:
+            pass
 
         design_file.tokenize(self.lAllObjects)
         post_token_assignments(self.lAllObjects)

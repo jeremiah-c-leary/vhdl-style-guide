@@ -422,8 +422,7 @@ def main():
 
     for iIndex, sFileName in enumerate(commandLineArguments.filename):
         dJsonEntry = {}
-        oVhdlFile = vhdlFile.vhdlFile(read_vhdlfile(sFileName))
-        oVhdlFile.filename = sFileName
+        oVhdlFile = vhdlFile.vhdlFile(read_vhdlfile(sFileName), sFileName)
         oVhdlFile.set_indent_map(dIndent)
         oRules = rule_list.rule_list(oVhdlFile, oSeverityList, commandLineArguments.local_rules)
         oRules.configure(configuration)
