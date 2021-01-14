@@ -10,7 +10,7 @@ from vsg.token import procedure_call
 
 
 sTestDir = os.path.join(os.path.dirname(__file__),   'concurrent_statement')
-lFile = utils.read_vhdlfile(os.path.join(sTestDir, 'classification_test_input.vhd'))
+lFile = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir, 'classification_test_input.vhd'))
 oFile = vhdlFile.vhdlFile(lFile)
 
 

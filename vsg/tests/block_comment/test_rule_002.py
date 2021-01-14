@@ -10,7 +10,7 @@ sTestDir = os.path.dirname(__file__)
 
 dIndentMap = utils.read_indent_file()
 
-lFile = utils.read_vhdlfile(os.path.join(sTestDir,'rule_002_test_input.vhd'))
+lFile = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_002_test_input.vhd'))
 
 
 class test_block_comment_rule(unittest.TestCase):

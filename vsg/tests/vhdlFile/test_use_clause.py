@@ -7,7 +7,7 @@ from vsg.tests import utils
 
 sLrmUnit = 'use_clause'
 
-lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__), sLrmUnit,'classification_test_input.vhd'))
+lFile = vhdlFile.utils.read_vhdlfile(os.path.join(os.path.dirname(__file__), sLrmUnit,'classification_test_input.vhd'))
 oFile = vhdlFile.vhdlFile(lFile)
 
 
