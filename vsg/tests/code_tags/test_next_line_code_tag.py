@@ -10,7 +10,7 @@ from vsg.tests import utils
 
 # Read in test file used for all tests
 
-oFile = vhdlFile.vhdlFile(utils.read_vhdlfile(os.path.join(os.path.dirname(__file__), 'next_line_code_tag_test_input.vhd')))
+oFile = vhdlFile.vhdlFile(vhdlFile.utils.read_vhdlfile(os.path.join(os.path.dirname(__file__), 'next_line_code_tag_test_input.vhd')))
 
 class testCodeTags(unittest.TestCase):
 

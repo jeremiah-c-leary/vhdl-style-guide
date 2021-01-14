@@ -8,7 +8,7 @@ from vsg.tests import utils
 
 sTestDir = os.path.dirname(__file__)
 
-lFile = utils.read_vhdlfile(os.path.join(sTestDir,'rule_025_test_input.vhd'))
+lFile = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_025_test_input.vhd'))
 lExpected = []
 lExpected.append('')
 utils.read_file(os.path.join(sTestDir, 'rule_025_test_input.fixed.vhd'), lExpected)

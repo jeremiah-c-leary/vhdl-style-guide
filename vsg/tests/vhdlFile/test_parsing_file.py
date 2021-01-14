@@ -8,7 +8,7 @@ from vsg.tests import utils
 try:
     sLrmUnit = os.environ['vsg_file_to_parse']
 
-    lFile = utils.read_vhdlfile(sLrmUnit)
+    lFile = vhdlFile.utils.read_vhdlfile(sLrmUnit)
     oFile = vhdlFile.vhdlFile(lFile)
 
 

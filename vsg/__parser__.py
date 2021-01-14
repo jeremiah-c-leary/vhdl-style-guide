@@ -27,26 +27,6 @@ def parse_command_line_arguments():
         return parser.parse_args()
 
 
-def read_vhdlfile(sFileName):
-    try:
-        lLines = []
-        with open(sFileName) as oFile:
-            for sLine in oFile:
-                lLines.append(sLine)
-        oFile.close()
-        return lLines
-    except UnicodeDecodeError:
-        lLines = []
-        with open(sFileName, encoding="ISO-8859-1") as oFile:
-            for sLine in oFile:
-                lLines.append(sLine)
-        oFile.close()
-        return lLines
-
-    except IOError:
-        return []
-
-
 def main():
     '''Main routine of parser output'''
 
@@ -56,7 +36,7 @@ def main():
 
     sFileName = commandLineArguments.filename
 
-    oVhdlFile = vhdlFile.vhdlFile(read_vhdlfile(sFileName))
+    oVhdlFile = vhdlFile.vhdlFile(vhdlFile.utils.read_vhdlfile(sFileName))
     oVhdlFile.filename = sFileName
 
     utils.print_objects(oVhdlFile, not commandLineArguments.whitespace)

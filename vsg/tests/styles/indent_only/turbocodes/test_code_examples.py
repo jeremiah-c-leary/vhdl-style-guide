@@ -9,7 +9,7 @@ from vsg.tests import utils
 
 dIndentMap = utils.read_indent_file()
 
-lIteration = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','..','code_examples', 'turbocodes', 'iteration_synth.vhd'))
+lIteration = vhdlFile.utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','..','code_examples', 'turbocodes', 'iteration_synth.vhd'))
 oIteration = vhdlFile.vhdlFile(lIteration)
 oIteration.set_indent_map(dIndentMap)
 

@@ -34,18 +34,6 @@ def remove_file(sFileName):
         pass
 
 
-def read_vhdlfile(sFileName):
-    try:
-        lLines = []
-        with open(sFileName) as oFile:
-            for sLine in oFile:
-                lLines.append(sLine)
-        oFile.close()
-        return lLines
-    except IOError:
-        return []
-
-
 def read_indent_file():
     sFileName = os.path.join('vsg', 'vhdlFile', 'indent', 'indent_config.yaml')
     with open(sFileName) as yaml_file:
