@@ -1,5 +1,9 @@
+# Python
 *.pyc
 *.swp
-_build
+build
 /*.egg-info
 dist
+
+# Sphinx
+_build
