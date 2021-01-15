@@ -623,13 +623,12 @@ def read_vhdlfile(sFileName):
         with open(sFileName) as oFile:
             for sLine in oFile:
                 lLines.append(sLine)
-        return lLines
+        return lLines, None
     except UnicodeDecodeError:
         lLines = []
         with open(sFileName, encoding="ISO-8859-1") as oFile:
             for sLine in oFile:
                 lLines.append(sLine)
-        return lLines
+        return lLines, None
     except OSError as e:
-        print(f'ERROR: encountered {e.__class__.__name__}, {e.args[1]} : ' + sFileName)
-        sys.exit(1)
+        return [], e
