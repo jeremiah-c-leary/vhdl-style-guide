@@ -9,13 +9,15 @@ from vsg.tests import utils
 
 sTestDir = os.path.dirname(__file__)
 
-lFile = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_001_test_input.vhd'))
+lFile, eError = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir, 'rule_001_test_input.vhd'))
 
 
 class test_with_statement_rule(unittest.TestCase):
 
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
+        self.assertIsNone(eError)
+        self.assertIsNone(eError)
 
     def test_rule_001(self):
         oRule = with_statement.rule_001()

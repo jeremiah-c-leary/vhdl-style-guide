@@ -8,7 +8,7 @@ from vsg.tests import utils
 
 sTestDir = os.path.dirname(__file__)
 
-lFile = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_302_test_input.vhd'))
+lFile, eError =vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_302_test_input.vhd'))
 
 dIndentMap = utils.read_indent_file()
 
@@ -21,6 +21,7 @@ class test_block_rule(unittest.TestCase):
 
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
+        self.assertIsNone(eError)
         self.oFile.set_indent_map(dIndentMap)
 
     def test_rule_302(self):

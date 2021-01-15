@@ -8,13 +8,14 @@ from vsg.tests import utils
 
 sTestDir = os.path.dirname(__file__)
 
-lFile = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_001_test_input.vhd'))
+lFile, eError =vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_001_test_input.vhd'))
 
 
 class test_length_rule(unittest.TestCase):
 
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
+        self.assertIsNone(eError)
 
     def test_rule_001_default(self):
         oRule = length.rule_001()

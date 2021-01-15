@@ -11,15 +11,15 @@ sSourceDir = os.path.join(os.path.dirname(__file__),'..','..','code_examples','c
 
 dIndentMap = utils.read_indent_file()
 
-lBaudGen = vhdlFile.utils.read_vhdlfile(os.path.join(sSourceDir,'BaudGen.vhd'))
+lBaudGen, eBaudGenError = vhdlFile.utils.read_vhdlfile(os.path.join(sSourceDir,'BaudGen.vhd'))
 oBaudGen = vhdlFile.vhdlFile(lBaudGen)
 oBaudGen.set_indent_map(dIndentMap)
 
-lBoardCpu = vhdlFile.utils.read_vhdlfile(os.path.join(sSourceDir,'Board_cpu.vhd'))
+lBoardCpu, eBoardCpuError = vhdlFile.utils.read_vhdlfile(os.path.join(sSourceDir,'Board_cpu.vhd'))
 oBoardCpu = vhdlFile.vhdlFile(lBoardCpu)
 oBoardCpu.set_indent_map(dIndentMap)
 
-lDataCore = vhdlFile.utils.read_vhdlfile(os.path.join(sSourceDir,'data_core.vhd'))
+lDataCore, eDataCoreError = vhdlFile.utils.read_vhdlfile(os.path.join(sSourceDir,'data_core.vhd'))
 oDataCore = vhdlFile.vhdlFile(lDataCore)
 oDataCore.set_indent_map(dIndentMap)
 
@@ -30,6 +30,11 @@ oSeverityList = severity.create_list({})
 
 
 class testCodeExample(unittest.TestCase):
+
+    def setUp(self):
+        self.assertIsNone(eBaudGenError)
+        self.assertIsNone(eBoardCpuError)
+        self.assertIsNone(eDataCoreError)
 
     def test_baudgen(self):
         oRuleList = rule_list.rule_list(oBaudGen, oSeverityList)

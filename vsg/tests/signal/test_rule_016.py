@@ -8,7 +8,7 @@ from vsg.tests import utils
 
 sTestDir = os.path.dirname(__file__)
 
-lFile = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_016_test_input.vhd'))
+lFile, eError =vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_016_test_input.vhd'))
 
 lExpected = []
 lExpected.append('')
@@ -19,6 +19,7 @@ class test_signal_rule(unittest.TestCase):
 
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
+        self.assertIsNone(eError)
 
     def test_rule_016(self):
         oRule = signal.rule_016()

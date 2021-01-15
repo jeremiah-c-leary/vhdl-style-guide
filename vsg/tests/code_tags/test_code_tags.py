@@ -11,9 +11,14 @@ from vsg.tests import utils
 
 # Read in test file used for all tests
 
-oFile = vhdlFile.vhdlFile(vhdlFile.utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'code_tag_test_input.vhd')))
+lFile, eError = vhdlFile.utils.read_vhdlfile(os.path.join(os.path.dirname(__file__), 'code_tag_test_input.vhd'))
+oFile = vhdlFile.vhdlFile(lFile)
+
 
 class testCodeTags(unittest.TestCase):
+
+    def setUp(self):
+        self.assertIsNone(eError)
 
     def test_rule_library_008(self):
         oRule = library.rule_008()
