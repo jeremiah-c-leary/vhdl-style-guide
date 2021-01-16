@@ -240,13 +240,12 @@ class rule_list():
         dRunInfo['stopPhase'] = 7
         dRunInfo['violations'] = []
 
-        for iLineNumber in range(0, self.oVhdlFile.get_line_count() + 1):
-            for oRule in self.rules:
-                if oRule.has_violations():
-                    lViolations = oRule.get_violations_at_linenumber(iLineNumber)
+        for oRule in self.rules:
+            if oRule.has_violations():
+                lViolations = oRule.get_violations()
 #                    print(f'{oRule.name}_{oRule.identifier} | {iLineNumber} | {len(lViolations)}')
-                    dRunInfo['violations'].extend(lViolations)
-
+                dRunInfo['violations'].extend(lViolations)
+        dRunInfo['violations'] = sorted(dRunInfo['violations'], key=lambda x: int(x['lineNumber']))
         dRunInfo['stopPhase'] = self.lastPhaseRan
         dRunInfo['num_rules_checked'] = self.get_number_of_rules_ran()
         dRunInfo['total_violations'] = len(dRunInfo['violations'])

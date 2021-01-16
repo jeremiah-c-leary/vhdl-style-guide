@@ -78,6 +78,14 @@ class Rule():
 
         return lReturn
 
+    def get_violations(self):
+        lReturn = []
+
+        for violation in self.violations:
+            lReturn.append(self._build_violation_dict_from_violation_object(violation))
+
+        return lReturn
+
     def fix(self, oFile, dFixOnly=None):
         '''
         Applies fixes for any rule violations.
