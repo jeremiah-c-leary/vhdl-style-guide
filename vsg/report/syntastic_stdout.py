@@ -9,6 +9,7 @@ def print_output(dRunInfo):
     Parameters:
       dRunInfo (dictionary)
     '''
+    sOutputString = ''
     for dViolation in dRunInfo['violations']:
         sOutputString = _set_violation_type(dViolation)
         sOutputString += dRunInfo['filename']
@@ -18,7 +19,8 @@ def print_output(dRunInfo):
         sOutputString += dViolation['rule']
         sOutputString += ' -- '
         sOutputString += dViolation['solution']
-        print(sOutputString)
+        sOutputString += '\n'
+    return sOutputString[:-1], None
 
 
 def _set_violation_type(dViolation):

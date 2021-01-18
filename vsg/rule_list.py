@@ -256,11 +256,12 @@ class rule_list():
 
 #        print(dRunInfo)
         if sOutputFormat == 'vsg':
-            report.vsg_stdout.print_output(dRunInfo)
+            sOutputStd, sOutputErr = report.vsg_stdout.print_output(dRunInfo)
         elif sOutputFormat == 'syntastic':
-            report.syntastic_stdout.print_output(dRunInfo)
+            sOutputStd, sOutputErr = report.syntastic_stdout.print_output(dRunInfo)
         else:
-            report.summary_stdout.print_output(dRunInfo)
+            sOutputStd, sOutputErr = report.summary_stdout.print_output(dRunInfo)
+        return sOutputStd, sOutputErr
 
     def configure(self, configurationFile):
         '''

@@ -391,13 +391,26 @@ def main():
 
     f = functools.partial(apply_rules, commandLineArguments, configuration, dIndent, fix_only)
     # It's easier to debug when not using multiprocessing.Pool()
+    lReturn = []
     if commandLineArguments.jobs == 1:
-        lReturn = []
         for iIndex, sFileName in enumerate(commandLineArguments.filename):
-            lReturn.append(f((iIndex, sFileName)))
+            fStatus, testCase, dJsonEntry, sOutputStd, sOutputErr =  f((iIndex, sFileName))
+            lReturn.append((fStatus, testCase, dJsonEntry))
+            if sOutputStd:
+                print(sOutputStd)
+            if sOutputErr:
+                print(sOutputErr, file=sys.stderr)
+
     else:
         pool = multiprocessing.Pool(commandLineArguments.jobs)
-        lReturn = pool.map(f, enumerate(commandLineArguments.filename))
+        for tResult in pool.imap(f, enumerate(commandLineArguments.filename)):
+            fStatus, testCase, dJsonEntry, sOutputStd, sOutputErr = tResult
+            lReturn.append((fStatus, testCase, dJsonEntry))
+            if sOutputStd:
+                print(sOutputStd)
+            if sOutputErr:
+                print(sOutputErr, file=sys.stderr)
+
         pool.close()
         pool.join()
 
@@ -432,8 +445,9 @@ def apply_rules(commandLineArguments, configuration, dIndent, fix_only, tIndexFi
     try:
         oRules = rule_list.rule_list(oVhdlFile, configuration['severity_list'], commandLineArguments.local_rules)
     except OSError as e:
-        print(f'ERROR: encountered {e.__class__.__name__}, {e.args[1]} ' + commandLineArguments.local_rules + ' when trying to open local rules file.')
-        return 1, None, dJsonEntry
+        sOutputStd = f'ERROR: encountered {e.__class__.__name__}, {e.args[1]} ' + commandLineArguments.local_rules + ' when trying to open local rules file.'
+        sOutputErr = None
+        return 1, None, dJsonEntry, sOutputStd, sOutputErr
     oRules.configure(configuration)
     try:
         oRules.configure(configuration['file_list'][iIndex][sFileName])
@@ -450,7 +464,7 @@ def apply_rules(commandLineArguments, configuration, dIndent, fix_only, tIndexFi
 
     oRules.clear_violations()
     oRules.check_rules(bAllPhases=commandLineArguments.all_phases, lSkipPhase=commandLineArguments.skip_phase)
-    oRules.report_violations(commandLineArguments.output_format)
+    sOutputStd, sOutputErr = oRules.report_violations(commandLineArguments.output_format)
     fExitStatus = oRules.violations
 
     if commandLineArguments.junit:
@@ -462,7 +476,7 @@ def apply_rules(commandLineArguments, configuration, dIndent, fix_only, tIndexFi
         dJsonEntry['file_path'] = sFileName
         dJsonEntry['violations'] = oRules.extract_violation_dictionary()['violations']
 
-    return fExitStatus, testCase, dJsonEntry
+    return fExitStatus, testCase, dJsonEntry, sOutputStd, sOutputErr
 
 
 def update_exit_status(fExitStatus, oRules):
