@@ -24,67 +24,40 @@ class testOSError(unittest.TestCase):
         if os.path.isfile(sNoPermissionFile):
             os.remove(sNoPermissionFile)
 
-    @mock.patch('sys.stdout')
-    @mock.patch('vsg.__main__.rule_list.rule_list.get_number_of_rules_ran')
-    def test_file_not_found(self, mock_rule_ran, mock_stdout):
-        mock_rule_ran.return_value = 200
+    def test_file_not_found(self):
         try:
-            sys.argv = ['vsg', '-f', 'no_file.vhd']
-            __main__.main()
-        except SystemExit as e:
-            self.assertEqual(e.code, 1)
+            subprocess.check_output(['bin/vsg','-f', 'no_file.vhd'])
+        except subprocess.CalledProcessError as e:
+            lActual = str(e.output.decode('utf-8')).split('\n')
+            iExitStatus = e.returncode
 
-        lOutputFile = []
-        utils.read_file(sOutputNoFile, lOutputFile)
+        lExpected = pathlib.Path(sOutputNoFile).read_text().split('\n')
 
-        lExpected = []
-        for sLine in lOutputFile:
-            lExpected.append(mock.call(sLine))
-            lExpected.append(mock.call('\n'))
+        self.assertEqual(iExitStatus, 1)
+        self.assertEqual(utils.replace_total_count(lActual), lExpected)
 
-        mock_stdout.write.assert_has_calls(lExpected)
-
-    @mock.patch('sys.stdout')
-    @mock.patch('vsg.__main__.rule_list.rule_list.get_number_of_rules_ran')
-    def test_file_no_permission(self, mock_rule_ran, mock_stdout):
+    def test_file_no_permission(self):
         pathlib.Path(sNoPermissionFile).touch(mode=0o222, exist_ok=True)
-        # exists = pathlib.Path('vsg/tests/source_file/'+sNoPermissionFile).exists()
-        # self.assertEqual(exists, "1")
 
-        mock_rule_ran.return_value = 200
         try:
-            sys.argv = ['vsg', '-f', sNoPermissionFile]
-            __main__.main()
-        except SystemExit as e:
-            self.assertEqual(e.code, 1)
+            subprocess.check_output(['bin/vsg', '-f', sNoPermissionFile])
+        except subprocess.CalledProcessError as e:
+            lActual = str(e.output.decode('utf-8')).split('\n')
+            iExitStatus = e.returncode
 
-        lOutputFile = []
-        utils.read_file(sOutputNoPermission, lOutputFile)
+        lExpected = pathlib.Path(sOutputNoPermission).read_text().split('\n')
 
-        lExpected = []
-        for sLine in lOutputFile:
-            lExpected.append(mock.call(sLine))
-            lExpected.append(mock.call('\n'))
+        self.assertEqual(iExitStatus, 1)
+        self.assertEqual(utils.replace_total_count(lActual), lExpected)
 
-        mock_stdout.write.assert_has_calls(lExpected)
-
-    @mock.patch('sys.stdout')
-    @mock.patch('vsg.__main__.rule_list.rule_list.get_number_of_rules_ran')
-    def test_file_empty(self, mock_rule_ran, mock_stdout):
-
-        mock_rule_ran.return_value = 200
+    def test_file_empty(self):
         try:
-            sys.argv = ['vsg', '-f', 'vsg/tests/source_file/empty_file.vhd']
-            __main__.main()
-        except SystemExit as e:
-            self.assertEqual(e.code, 1)
+            subprocess.check_output(['bin/vsg', '-f', 'vsg/tests/source_file/' + sEmptyFile])
+        except subprocess.CalledProcessError as e:
+            lActual = str(e.output.decode('utf-8')).split('\n')
+            iExitStatus = e.returncode
 
-        lOutputFile = []
-        utils.read_file(sOutputEmptyFile, lOutputFile)
+        lExpected = pathlib.Path(sOutputEmptyFile).read_text().split('\n')
 
-        lExpected = []
-        for sLine in lOutputFile:
-            lExpected.append(mock.call(sLine))
-            lExpected.append(mock.call('\n'))
-
-        mock_stdout.write.assert_has_calls(lExpected)
+        self.assertEqual(iExitStatus, 1)
+        self.assertEqual(utils.replace_total_count(lActual), lExpected)

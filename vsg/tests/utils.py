@@ -1,4 +1,4 @@
-
+import re
 import os
 import pprint
 import yaml
@@ -114,3 +114,6 @@ def print_objects(oFile, bIgnoreWhiteSpace=False):
 def extract_lrm_unit_name(sName):
     return sName.split('.')[-1][5:]
 
+
+def replace_total_count(lOutput):
+    return [re.sub(r'^Total Rules Checked: [1-9][0-9]*$', 'Total Rules Checked: 200', line) for line in lOutput]
