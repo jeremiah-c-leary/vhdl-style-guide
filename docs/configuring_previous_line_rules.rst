@@ -131,4 +131,3 @@ The following code would pass these options:
 
    -- Comment
    entity fifo is
-
