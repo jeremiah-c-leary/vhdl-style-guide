@@ -43,9 +43,9 @@ This rule checks for a single space after the **entity** keyword.
 entity_003
 ##########
 
-This rule checks for a blank line above the entity keyword.
+This rule checks for a blank lines or comments above the entity keyword.
 
-Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+Refer to the section `Configuring Previous Line Rules <configuring_previous_line_rules.html>`_ for options.
 
 **Violation**
 

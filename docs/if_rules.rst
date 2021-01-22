@@ -534,7 +534,7 @@ if_030
 
 This rule checks for at least a single blank line after the **end if**.
 In the case of nested **if** statements, the rule will be enfoced on the last **end if**.
-
+ 
 Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
 
 **Violation**
@@ -559,12 +559,10 @@ Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ f
 if_031
 ######
 
-This rule checks for at least a single blank line before the **if**, unless there is a comment.
+This rule checks for blank lines or comments before the **if** keyword.
 In the case of nested **if** statements, the rule will be enfoced on the first **if**.
-
-.. NOTE:: Comments are allowed above the instantiation.
-
-Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+ 
+Refer to `Configuring Previous Line Rules <configuring_previous_line_rules.html>`_ for options.
 
 **Violation**
 

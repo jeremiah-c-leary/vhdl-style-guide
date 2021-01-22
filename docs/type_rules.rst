@@ -183,9 +183,9 @@ This rule checks for an enumerate type after the open parenthesis on multiline e
 type_010
 ########
 
-This rule checks for a blank line above the **type** declaration.
+This rule checks for blank lines or comments above the **type** declaration.
 
-Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+Refer to `Configuring Previous Line Rules <configuring_previous_line_rules.html>`_ for options.
 
 **Violation**
 

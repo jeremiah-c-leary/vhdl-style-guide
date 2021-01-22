@@ -49,9 +49,9 @@ This rule checks for a single space after the **component** keyword.
 component_003
 #############
 
-This rule checks for a blank line above the **component** declaration.
+This rule checks for blank lines or comments above the **component** declaration.
 
-Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+Refer to `Configuring Previous Line Rules <configuring_previous_line_rules.html>`_ for options.
 
 **Violation**
 

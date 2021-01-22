@@ -65,11 +65,9 @@ This rule checks for a single space before the colon.
 instantiation_004
 #################
 
-This rule checks for a blank line above the instantiation.
+This rule checks for blank lines or comments above the instantiation.
 
-.. NOTE:: Comments are allowed above the instantiation.
-
-Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+Refer to `Configuring Previous Line Rules <configuring_previous_line_rules.html>`_ for options.
 
 **Violation**
 

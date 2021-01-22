@@ -44,10 +44,9 @@ This rule checks for a single space between the **context** keyword and the cont
 context_003
 ###########
 
-This rule checks for a blank line above the **context** keyword.
-Comment are allowed.
+This rule checks for blank lines or comments above the **context** keyword.
 
-Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+Refer to `Configuring Previous Line Rules <configuring_previous_line_rules.html>`_ for options.
 
 **Violation**
 
@@ -484,9 +483,9 @@ Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ f
 context_024
 ###########
 
-This rule adds a blank line above the **end** keyword.
+This rule checks for blank lines or comments above the **end** keyword.
 
-Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+Refer to `Configuring Previous Line Rules <configuring_previous_line_rules.html>`_ for options.
 
 **Violation**
 

@@ -112,9 +112,9 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
 function_006
 ############
 
-This rule checks for a blank line above the **function** keyword.
+This rule checks for blank lines or comments above the **function** keyword.
 
-Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+Refer to `Configuring Previous Line Rules <configuring_previous_line_rules.html>`_ for options.
 
 **Violation**
 
