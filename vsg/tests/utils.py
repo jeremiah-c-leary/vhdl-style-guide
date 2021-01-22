@@ -117,3 +117,7 @@ def extract_lrm_unit_name(sName):
 
 def replace_total_count(lOutput):
     return [re.sub(r'^Total Rules Checked: [1-9][0-9]*$', 'Total Rules Checked: 200', line) for line in lOutput]
+
+
+def replace_total_count_summary(lOutput):
+    return [re.sub(r'\([1-9][0-9]* rules checked\)', '(200 rules checked)', line) for line in lOutput]
