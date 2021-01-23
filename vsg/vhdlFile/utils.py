@@ -1,3 +1,4 @@
+import sys
 
 from vsg import parser
 
@@ -614,3 +615,20 @@ def is_whitespace(oObject):
     if isinstance(oObject, parser.preprocessor):
         return True
     return False
+
+
+def read_vhdlfile(sFileName):
+    try:
+        lLines = []
+        with open(sFileName) as oFile:
+            for sLine in oFile:
+                lLines.append(sLine)
+        return lLines, None
+    except UnicodeDecodeError:
+        lLines = []
+        with open(sFileName, encoding="ISO-8859-1") as oFile:
+            for sLine in oFile:
+                lLines.append(sLine)
+        return lLines, None
+    except OSError as e:
+        return [], e

@@ -10,31 +10,31 @@ sSourceDir = os.path.join(os.path.dirname(__file__),'..','..','code_examples','g
 
 dIndentMap = utils.read_indent_file()
 
-lBresenhamer = utils.read_vhdlfile(os.path.join(sSourceDir,'Bresenhamer.vhd'))
+lBresenhamer, eBresenhamerError = vhdlFile.utils.read_vhdlfile(os.path.join(sSourceDir,'Bresenhamer.vhd'))
 oBresenhamer = vhdlFile.vhdlFile(lBresenhamer)
 oBresenhamer.set_indent_map(dIndentMap)
 
-lDebouncer = utils.read_vhdlfile(os.path.join(sSourceDir,'Debouncer.vhd'))
+lDebouncer, eDebouncerError = vhdlFile.utils.read_vhdlfile(os.path.join(sSourceDir,'Debouncer.vhd'))
 oDebouncer = vhdlFile.vhdlFile(lDebouncer)
 oDebouncer.set_indent_map(dIndentMap)
 
-lVgatop = utils.read_vhdlfile(os.path.join(sSourceDir,'VGA_Top.vhd'))
+lVgatop, eVgatopError = vhdlFile.utils.read_vhdlfile(os.path.join(sSourceDir,'VGA_Top.vhd'))
 oVgatop = vhdlFile.vhdlFile(lVgatop)
 oVgatop.set_indent_map(dIndentMap)
 
-lPointer = utils.read_vhdlfile(os.path.join(sSourceDir,'Pointer.vhd'))
+lPointer, ePointerError = vhdlFile.utils.read_vhdlfile(os.path.join(sSourceDir,'Pointer.vhd'))
 oPointer = vhdlFile.vhdlFile(lPointer)
 oPointer.set_indent_map(dIndentMap)
 
-lFreqDiv = utils.read_vhdlfile(os.path.join(sSourceDir,'FreqDiv.vhd'))
+lFreqDiv, eFreqDivError = vhdlFile.utils.read_vhdlfile(os.path.join(sSourceDir,'FreqDiv.vhd'))
 oFreqDiv = vhdlFile.vhdlFile(lFreqDiv)
 oFreqDiv.set_indent_map(dIndentMap)
 
-lSynchronizer = utils.read_vhdlfile(os.path.join(sSourceDir,'Synchronizer.vhd'))
+lSynchronizer, eSynchronizerError = vhdlFile.utils.read_vhdlfile(os.path.join(sSourceDir,'Synchronizer.vhd'))
 oSynchronizer = vhdlFile.vhdlFile(lSynchronizer)
 oSynchronizer.set_indent_map(dIndentMap)
 
-lFrameBuffer =  utils.read_vhdlfile(os.path.join(sSourceDir,'FrameBuffer2.vhd'))
+lFrameBuffer, eFrameBufferError =  vhdlFile.utils.read_vhdlfile(os.path.join(sSourceDir,'FrameBuffer2.vhd'))
 oFrameBuffer =  vhdlFile.vhdlFile(lFrameBuffer)
 oFrameBuffer.set_indent_map(dIndentMap)
 
@@ -45,6 +45,15 @@ oSeverityList = severity.create_list({})
 
 
 class testCodeExample(unittest.TestCase):
+
+    def setUp(self):
+        self.assertIsNone(eDebouncerError)
+        self.assertIsNone(eBresenhamerError)
+        self.assertIsNone(eVgatopError)
+        self.assertIsNone(ePointerError)
+        self.assertIsNone(eFreqDivError)
+        self.assertIsNone(eSynchronizerError)
+        self.assertIsNone(eFrameBufferError)
 
     def test_bresenhamer(self):
         oRuleList = rule_list.rule_list(oBresenhamer, oSeverityList)

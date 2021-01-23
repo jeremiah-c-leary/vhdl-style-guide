@@ -142,10 +142,15 @@ class testVsg(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_invalid_local_rule_directory(self):
-        lExpected = ['ERROR: specified local rules directory vsg/tests/vsg/invalid_local_rule_directory could not be found.']
-        lExpected.append('')
-        lActual = subprocess.check_output(['bin/vsg', '-f', 'vsg/tests/vsg/entity_architecture.vhd', '-of', 'syntastic', '-lr', 'vsg/tests/vsg/invalid_local_rule_directory'])
-        lActual = str(lActual.decode('utf-8')).split('\n')
+        lExpected = ['ERROR: specified local rules directory vsg/tests/vsg/invalid_local_rule_directory could not be found.', '']
+
+        try:
+            lActual = subprocess.check_output(['bin/vsg', '-f', 'vsg/tests/vsg/entity_architecture.vhd', '-of', 'syntastic', '-lr', 'vsg/tests/vsg/invalid_local_rule_directory'])
+        except subprocess.CalledProcessError as e:
+            lActual = str(e.output.decode('utf-8')).split('\n')
+            iExitStatus = e.returncode
+
+        self.assertEqual(iExitStatus, 1)
         self.assertEqual(lActual, lExpected)
 
     def test_globbing_filenames_in_configuration(self):
@@ -313,7 +318,83 @@ class testVsg(unittest.TestCase):
 
         self.assertEqual(lActual, lExpected)
 
+    def test_summary_output_format_error(self):
+        lExpectedStdErr = ['File: vsg/tests/vsg/entity_architecture.vhd ERROR (200 rules checked) [Error: 11] [Warning: 0]', '']
+        lExpectedStdOut = ['']
 
+        try:
+            subprocess.check_output(['bin/vsg', '-f', 'vsg/tests/vsg/entity_architecture.vhd', '-of', 'summary'], stderr=subprocess.PIPE)
+            iExitStatus = 0
+        except subprocess.CalledProcessError as e:
+            lActualStdOut = str(e.output.decode('utf-8')).split('\n')
+            lActualStdErr = str(e.stderr.decode('utf-8')).split('\n')
+            iExitStatus = e.returncode
+
+        self.assertEqual(iExitStatus, 1)
+
+        self.assertEqual(utils.replace_total_count_summary(lActualStdErr), lExpectedStdErr)
+        self.assertEqual(utils.replace_total_count_summary(lActualStdOut), lExpectedStdOut)
+
+    def test_summary_output_format_error_with_local_rules(self):
+        lExpectedStdErr = ['File: vsg/tests/vsg/entity_architecture.vhd ERROR (200 rules checked) [Error: 1] [Warning: 0]', '']
+        lExpectedStdOut = ['']
+
+        try:
+            subprocess.check_output(['bin/vsg', '-f', 'vsg/tests/vsg/entity_architecture.vhd', '-of', 'summary', '-lr', 'vsg/tests/vsg/local_rules'], stderr=subprocess.PIPE)
+            iExitStatus = 0
+        except subprocess.CalledProcessError as e:
+            lActualStdOut = str(e.output.decode('utf-8')).split('\n')
+            lActualStdErr = str(e.stderr.decode('utf-8')).split('\n')
+            iExitStatus = e.returncode
+
+        self.assertEqual(iExitStatus, 1)
+
+        self.assertEqual(utils.replace_total_count_summary(lActualStdErr), lExpectedStdErr)
+        self.assertEqual(utils.replace_total_count_summary(lActualStdOut), lExpectedStdOut)
+
+    def test_summary_output_format_ok(self):
+        lExpected = ['File: vsg/tests/vsg/entity_architecture.fixed.vhd OK (200 rules checked) [Error: 0] [Warning: 0]', '']
+
+        lActual = subprocess.check_output(
+                ['bin/vsg', '-f', 'vsg/tests/vsg/entity_architecture.fixed.vhd', '-of', 'summary'],
+                stderr=subprocess.STDOUT
+                ).decode('utf-8').split('\n')
+
+        self.assertEqual(utils.replace_total_count_summary(lActual), lExpected)
+
+    def test_summary_output_format_multiple_mixed(self):
+        lExpectedStdErr = [
+                'File: vsg/tests/vsg/entity_architecture.vhd ERROR (200 rules checked) [Error: 11] [Warning: 0]',
+                'File: vsg/tests/vsg/entity1.vhd ERROR (200 rules checked) [Error: 1] [Warning: 0]',
+                'File: vsg/tests/vsg/entity2.vhd ERROR (200 rules checked) [Error: 1] [Warning: 0]',
+                '',
+                ]
+        lExpectedStdOut = ['File: vsg/tests/vsg/entity_architecture.fixed.vhd OK (200 rules checked) [Error: 0] [Warning: 0]', '']
+
+        try:
+            subprocess.check_output(
+                    [
+                        'bin/vsg',
+                        '-f',
+                        'vsg/tests/vsg/entity_architecture.vhd',
+                        'vsg/tests/vsg/entity_architecture.fixed.vhd',
+                        'vsg/tests/vsg/entity1.vhd',
+                        'vsg/tests/vsg/entity2.vhd',
+                        '--output_format',
+                        'summary'
+                    ],
+                    stderr=subprocess.PIPE
+                    )
+            iExitStatus = 0
+        except subprocess.CalledProcessError as e:
+            lActualStdOut = str(e.output.decode('utf-8')).split('\n')
+            lActualStdErr = str(e.stderr.decode('utf-8')).split('\n')
+            iExitStatus = e.returncode
+
+        self.assertEqual(iExitStatus, 1)
+
+        self.assertEqual(utils.replace_total_count_summary(lActualStdErr), lExpectedStdErr)
+        self.assertEqual(utils.replace_total_count_summary(lActualStdOut), lExpectedStdOut)
 
     @mock.patch('sys.stdout')
     def test_version(self, mockStdout):

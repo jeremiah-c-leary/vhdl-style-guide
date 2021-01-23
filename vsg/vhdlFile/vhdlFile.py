@@ -46,7 +46,7 @@ class vhdlFile():
 
        fileobject
     '''
-    def __init__(self, filecontent, sFilename=None):
+    def __init__(self, filecontent, sFilename=None, eError=None):
         self.filecontent = filecontent
         self.hasArchitecture = False
         self.hasEntity = False
@@ -57,6 +57,7 @@ class vhdlFile():
         self.lClosePragmas = ['--vhdl_comp_on']
         self.dVars = {}
         self.dVars['pragma'] = False
+        self.eError = eError
         self._processFile()
 
     def _processFile(self):

@@ -29,7 +29,7 @@ def get_python_modules_from_directory(sDirectoryName, lModules):
                 lModules.append(sFileName.replace('.py', ''))
     except OSError:
         print('ERROR: specified local rules directory ' + sDirectoryName + ' could not be found.')
-        exit()
+        exit(1)
 
 
 def get_rules_from_module(lModules, lRules):

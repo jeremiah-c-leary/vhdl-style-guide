@@ -1,4 +1,4 @@
-
+import re
 import os
 import pprint
 import yaml
@@ -32,18 +32,6 @@ def remove_file(sFileName):
         os.remove(sFileName)
     except OSError:
         pass
-
-
-def read_vhdlfile(sFileName):
-    try:
-        lLines = []
-        with open(sFileName) as oFile:
-            for sLine in oFile:
-                lLines.append(sLine)
-        oFile.close()
-        return lLines
-    except IOError:
-        return []
 
 
 def read_indent_file():
@@ -126,3 +114,10 @@ def print_objects(oFile, bIgnoreWhiteSpace=False):
 def extract_lrm_unit_name(sName):
     return sName.split('.')[-1][5:]
 
+
+def replace_total_count(lOutput):
+    return [re.sub(r'^Total Rules Checked: [1-9][0-9]*$', 'Total Rules Checked: 200', line) for line in lOutput]
+
+
+def replace_total_count_summary(lOutput):
+    return [re.sub(r'\([1-9][0-9]* rules checked\)', '(200 rules checked)', line) for line in lOutput]

@@ -9,7 +9,7 @@ from vsg.tests import utils
 
 dIndentMap = utils.read_indent_file()
 
-lIteration = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','..','code_examples', 'turbocodes', 'iteration_synth.vhd'))
+lIteration, eError = vhdlFile.utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),'..','..','code_examples', 'turbocodes', 'iteration_synth.vhd'))
 oIteration = vhdlFile.vhdlFile(lIteration)
 oIteration.set_indent_map(dIndentMap)
 
@@ -20,6 +20,9 @@ oSeverityList = severity.create_list({})
 
 
 class testCodeExample(unittest.TestCase):
+
+    def setUp(self):
+        self.assertIsNone(eError)
 
     def test_iteration_synth(self):
         oRuleList = rule_list.rule_list(oIteration, oSeverityList)

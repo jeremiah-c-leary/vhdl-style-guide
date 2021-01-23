@@ -3,12 +3,12 @@ import os
 import unittest
 
 from vsg.tests import utils
-from vsg.vhdlFile import vhdlFile
+import vsg.vhdlFile as vhdlFile
 
 sLrmUnit = utils.extract_lrm_unit_name(__name__)
 
-lFile = utils.read_vhdlfile(os.path.join(os.path.dirname(__file__), sLrmUnit,'classification_test_input.vhd'))
-oFile = vhdlFile(lFile)
+lFile, eError =vhdlFile.utils.read_vhdlfile(os.path.join(os.path.dirname(__file__), sLrmUnit,'classification_test_input.vhd'))
+oFile = vhdlFile.vhdlFile(lFile)
 
 
 class test_token(unittest.TestCase):

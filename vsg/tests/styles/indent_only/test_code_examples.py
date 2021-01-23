@@ -10,23 +10,23 @@ sSourceCodeDir = os.path.join(os.path.dirname(__file__),'..','code_examples')
 
 dIndentMap = utils.read_indent_file()
 
-lTimestamp = utils.read_vhdlfile(os.path.join(sSourceCodeDir,'timestamp.vhdl'))
+lTimestamp, eTimestampError = vhdlFile.utils.read_vhdlfile(os.path.join(sSourceCodeDir,'timestamp.vhdl'))
 oTimestamp = vhdlFile.vhdlFile(lTimestamp)
 oTimestamp.set_indent_map(dIndentMap)
 
-lSpiSlave = utils.read_vhdlfile(os.path.join(sSourceCodeDir,'spi_slave.vhd'))
+lSpiSlave, eSpiSlaveError = vhdlFile.utils.read_vhdlfile(os.path.join(sSourceCodeDir,'spi_slave.vhd'))
 oSpiSlave = vhdlFile.vhdlFile(lSpiSlave)
 oSpiSlave.set_indent_map(dIndentMap)
 
-lSpiMaster = utils.read_vhdlfile(os.path.join(sSourceCodeDir,'spi_master.vhd'))
+lSpiMaster, eSpiMasterError = vhdlFile.utils.read_vhdlfile(os.path.join(sSourceCodeDir,'spi_master.vhd'))
 oSpiMaster = vhdlFile.vhdlFile(lSpiMaster)
 oSpiMaster.set_indent_map(dIndentMap)
 
-lGrpDebouncer = utils.read_vhdlfile(os.path.join(sSourceCodeDir,'grp_debouncer.vhd'))
+lGrpDebouncer, eGrpDebouncerError = vhdlFile.utils.read_vhdlfile(os.path.join(sSourceCodeDir,'grp_debouncer.vhd'))
 oGrpDebouncer = vhdlFile.vhdlFile(lGrpDebouncer)
 oGrpDebouncer.set_indent_map(dIndentMap)
 
-lPIC = utils.read_vhdlfile(os.path.join(sSourceCodeDir,'PIC.vhd'))
+lPIC, ePICError = vhdlFile.utils.read_vhdlfile(os.path.join(sSourceCodeDir,'PIC.vhd'))
 oPIC = vhdlFile.vhdlFile(lPIC)
 oPIC.set_indent_map(dIndentMap)
 
@@ -37,6 +37,13 @@ oSeverityList = severity.create_list({})
 
 
 class testCodeExample(unittest.TestCase):
+
+    def setUp(self):
+        self.assertIsNone(eTimestampError)
+        self.assertIsNone(eSpiSlaveError)
+        self.assertIsNone(eSpiMasterError)
+        self.assertIsNone(eGrpDebouncerError)
+        self.assertIsNone(ePICError)
 
     def test_timestamp_vhdl(self):
         oRuleList = rule_list.rule_list(oTimestamp, oSeverityList)

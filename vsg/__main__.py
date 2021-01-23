@@ -238,26 +238,6 @@ def create_backup_file(sFileName):
     shutil.copy2(sFileName, sFileName + '.bak')
 
 
-def read_vhdlfile(sFileName):
-    try:
-        lLines = []
-        with open(sFileName) as oFile:
-            for sLine in oFile:
-                lLines.append(sLine)
-        oFile.close()
-        return lLines
-    except UnicodeDecodeError:
-        lLines = []
-        with open(sFileName, encoding="ISO-8859-1") as oFile:
-            for sLine in oFile:
-                lLines.append(sLine)
-        oFile.close()
-        return lLines
-
-    except IOError:
-        return []
-
-
 def generate_output_configuration(commandLineArguments, configuration):
     '''
     Creates a configuration based on parameters passed on the command line.
@@ -422,7 +402,8 @@ def main():
 
     for iIndex, sFileName in enumerate(commandLineArguments.filename):
         dJsonEntry = {}
-        oVhdlFile = vhdlFile.vhdlFile(read_vhdlfile(sFileName), sFileName)
+        lFileContent, eError = vhdlFile.utils.read_vhdlfile(sFileName)
+        oVhdlFile = vhdlFile.vhdlFile(lFileContent, sFileName, eError)
         oVhdlFile.set_indent_map(dIndent)
         oRules = rule_list.rule_list(oVhdlFile, oSeverityList, commandLineArguments.local_rules)
         oRules.configure(configuration)

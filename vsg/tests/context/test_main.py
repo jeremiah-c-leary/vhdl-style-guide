@@ -1,11 +1,9 @@
-
+import pathlib
+import subprocess
 import shutil
-import sys
 import os
 
-
 import unittest
-from unittest import mock
 
 from vsg import __main__
 from vsg import rule_list
@@ -34,19 +32,11 @@ class test_context_using_main(unittest.TestCase):
     def tearDown(self):
         os.remove(sFileName)
 
-    @mock.patch('sys.stdout')
-    def test_classification_file(self, mock_stdout):
+    def test_classification_file(self):
         self.maxDiff = None
-        try:
-            sys.argv =  ['vsg', '-f', sFileName, '--fix']
-            __main__.main()
-        except SystemExit as e:
-            self.assertEqual(e.code, 0)
+        subprocess.check_output(['bin/vsg', '-f', sFileName, '--fix']).decode('utf-8').split('\n')
 
-        lActual = []
-        utils.read_file(sFileName, lActual)
-
-        lExpected = []
-        utils.read_file(sFixedFile, lExpected)
+        lActual = pathlib.Path(sFileName).read_text().split('\n')
+        lExpected = pathlib.Path(sFixedFile).read_text().split('\n')
 
         self.assertEqual(lExpected, lActual)
