@@ -22,7 +22,7 @@ class test_architecture_rule(unittest.TestCase):
 
     def test_rule_003(self):
         oRule = architecture.rule_003()
-        oRule.allow_comments = True
+        oRule.method = 'no_code'
 
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'architecture')
@@ -35,7 +35,7 @@ class test_architecture_rule(unittest.TestCase):
 
     def test_fix_rule_003(self):
         oRule = architecture.rule_003()
-        oRule.allow_comments = True
+        oRule.method = 'no_code'
 
         oRule.fix(self.oFile)
 

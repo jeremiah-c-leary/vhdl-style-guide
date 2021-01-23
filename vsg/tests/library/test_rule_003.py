@@ -26,8 +26,9 @@ class test_library_rule(unittest.TestCase):
 
     def test_rule_003(self):
         oRule = library.rule_003()
-        oRule.allow_comments = True
+        oRule.method = 'no_code'
         oRule.allow_library_clause = False
+
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'library')
         self.assertEqual(oRule.identifier, '003')
@@ -39,7 +40,7 @@ class test_library_rule(unittest.TestCase):
 
     def test_fix_rule_003(self):
         oRule = library.rule_003()
-        oRule.allow_comments = True
+        oRule.method = 'no_code'
         oRule.allow_library_clause = False
 
         oRule.fix(self.oFile)
@@ -53,7 +54,6 @@ class test_library_rule(unittest.TestCase):
 
     def test_rule_003_w_allow_library_clause(self):
         oRule = library.rule_003()
-        oRule.allow_comments = False
         oRule.allow_library_clause = True
 
         lExpected = [5]
@@ -63,7 +63,6 @@ class test_library_rule(unittest.TestCase):
 
     def test_fix_rule_003_w_allow_library_clause(self):
         oRule = library.rule_003()
-        oRule.allow_comments = False
         oRule.allow_library_clause = True
 
         oRule.fix(self.oFile)

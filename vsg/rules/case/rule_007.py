@@ -11,4 +11,4 @@ class rule_007(blank_line_above_line_starting_with_token):
 
     def __init__(self):
         blank_line_above_line_starting_with_token.__init__(self, 'case', '007', [token.case_keyword])
-        self.allow_blank_lines = True
+        self.method = 'no_code'

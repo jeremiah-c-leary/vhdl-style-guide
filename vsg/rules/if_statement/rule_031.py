@@ -15,4 +15,4 @@ class rule_031(blank_line_above_line_starting_with_token):
     def __init__(self):
         blank_line_above_line_starting_with_token.__init__(self, 'if', '031', lTokens)
         self.lHierarchyLimits = [0]
-        self.allow_comments = True
+        self.method = 'no_code'

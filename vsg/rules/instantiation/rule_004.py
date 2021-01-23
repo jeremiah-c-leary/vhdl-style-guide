@@ -14,4 +14,4 @@ class rule_004(blank_line_above_line_starting_with_token):
 
     def __init__(self):
         blank_line_above_line_starting_with_token.__init__(self, 'instantiation', '004', lTokens)
-        self.allow_comments = True
+        self.method = 'no_code'

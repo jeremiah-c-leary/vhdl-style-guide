@@ -1,8 +1,8 @@
 {
       "violations": [
         {
-          "rule": "architecture_003",
           "linenumber": 215,
+          "rule": "architecture_003",
           "solution": "Insert blank line above"
         },
         {

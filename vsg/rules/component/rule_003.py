@@ -11,3 +11,4 @@ class rule_003(blank_line_above_line_starting_with_token):
 
     def __init__(self):
         blank_line_above_line_starting_with_token.__init__(self, 'component', '003', [token.component_keyword])
+        self.method = 'no_code'
