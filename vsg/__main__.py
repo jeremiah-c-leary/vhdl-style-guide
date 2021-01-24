@@ -50,11 +50,17 @@ def parse_command_line_arguments():
     parser.add_argument('-p', '--jobs', action='store', default=os.cpu_count(), type=check_strict_positive, help='number of parallel jobs to use, default is the number of cpu cores')
     parser.add_argument('--debug', default=False, action='store_true', help='Displays verbose debug information')
 
+    args_ = parser.parse_args()
+
+    if sys.platform == "win32":
+        # Work around https://bugs.python.org/issue26903
+        args_.jobs = min(args_.jobs, 60)
+
     if len(sys.argv) == 1:
         parser.print_help()
         sys.exit(1)
     else:
-        return parser.parse_args()
+        return args_
 
 
 def get_predefined_styles():
