@@ -432,7 +432,7 @@ def apply_rules(commandLineArguments, configuration, dIndent, fix_only, tIndexFi
     try:
         oRules = rule_list.rule_list(oVhdlFile, configuration['severity_list'], commandLineArguments.local_rules)
     except OSError as e:
-        print(f'ERROR: encountered {e.__class__.__name__}, {e.args[1]} : ' + sFileName)
+        print(f'ERROR: encountered {e.__class__.__name__}, {e.args[1]} ' + commandLineArguments.local_rules + ' when trying to open local rules file.')
         return 1, None, dJsonEntry
     oRules.configure(configuration)
     try:

@@ -148,7 +148,7 @@ class testVsg(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_invalid_local_rule_directory(self):
-        lExpected = ['ERROR: specified local rules directory vsg/tests/vsg/invalid_local_rule_directory could not be found.', '']
+        lExpected = ['ERROR: encountered FileNotFoundError, No such file or directory vsg/tests/vsg/invalid_local_rule_directory when trying to open local rules file.', '']
 
         try:
             lActual = subprocess.check_output(['bin/vsg', '-f', 'vsg/tests/vsg/entity_architecture.vhd', '-of', 'syntastic', '-lr', 'vsg/tests/vsg/invalid_local_rule_directory'])
