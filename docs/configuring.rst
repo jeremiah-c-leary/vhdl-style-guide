@@ -237,3 +237,4 @@ Configure the indent size for all rules by setting the **global** attribute.
 .. include:: configuring_optional_items.rst
 .. include:: configuring_block_comments.rst
 .. include:: configuring_indentation.rst
+.. include:: configuring_multiline_rules.rst
