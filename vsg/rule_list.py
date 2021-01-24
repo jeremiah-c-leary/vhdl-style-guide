@@ -22,14 +22,10 @@ def get_python_modules_from_directory(sDirectoryName, lModules):
 
       lModules (string list)
     '''
-    try:
-        lDirectoryContents = os.listdir(sDirectoryName)
-        for sFileName in lDirectoryContents:
-            if sFileName.endswith('.py') and not sFileName.startswith('__'):
-                lModules.append(sFileName.replace('.py', ''))
-    except OSError:
-        print('ERROR: specified local rules directory ' + sDirectoryName + ' could not be found.')
-        exit(1)
+    lDirectoryContents = os.listdir(sDirectoryName)
+    for sFileName in lDirectoryContents:
+        if sFileName.endswith('.py') and not sFileName.startswith('__'):
+            lModules.append(sFileName.replace('.py', ''))
 
 
 def get_rules_from_module(lModules, lRules):
