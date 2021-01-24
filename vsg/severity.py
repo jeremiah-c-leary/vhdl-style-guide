@@ -8,7 +8,6 @@ class error():
     def __init__(self, name):
         self.name = name
         self.type = error_type
-        self.count = 0
 
 
 class warning():
@@ -16,10 +15,6 @@ class warning():
     def __init__(self, name):
         self.name = name
         self.type = warning_type
-        self.count = 0
-
-set_error_severity = error('Error')
-set_warning_severity = warning('Warning')
 
 
 class create_list():
@@ -28,7 +23,6 @@ class create_list():
         self.iMaxNameLength = 0
         self.lSeverities = _add_built_in_severities(self)
         _update_severities_from_configuration(self, dConfiguration)
-        self.clear_severity_counts()
 
     def add_severity(self, oSeverity):
         self.lSeverities.append(oSeverity)
@@ -42,11 +36,6 @@ class create_list():
     def get_severities(self):
         return self.lSeverities
 
-    def clear_severity_counts(self):
-        for oSeverity in self.lSeverities:
-            oSeverity.count = 0
-
-
 def _add_built_in_severities(self):
     '''
     Creates the built in severity types.
@@ -56,8 +45,8 @@ def _add_built_in_severities(self):
     Returns: (list of severity objects)
     '''
     lReturn = []
-    lReturn.append(set_error_severity)
-    lReturn.append(set_warning_severity)
+    lReturn.append(error('Error'))
+    lReturn.append(warning('Warning'))
     self.iMaxNameLength = max(self.iMaxNameLength, len('Warning'))
     return lReturn
 

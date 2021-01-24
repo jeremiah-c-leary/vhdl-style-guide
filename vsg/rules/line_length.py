@@ -25,7 +25,7 @@ class line_length(rule.Rule):
         self.phase = 7
         self.fixable = False  # The user will have to fix line length violations
         self.disable = False
-        self.severity = severity.set_warning_severity
+        self.severity = severity.warning('Warning')
         self.length = 120
         self.configuration.append('length')
         self.solution = 'Reduce line to less than ' + str(self.length) + ' characters'

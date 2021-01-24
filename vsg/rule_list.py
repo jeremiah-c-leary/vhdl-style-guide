@@ -249,7 +249,11 @@ class rule_list():
         dRunInfo['severities'] = {}
 
         for oSeverity in self.oSeverityList.get_severities():
-            dRunInfo['severities'][oSeverity.name] = oSeverity.count
+            dRunInfo['severities'][oSeverity.name] = 0
+        for dViolation in dRunInfo['violations']:
+            name = dViolation['severity']['name']
+            dRunInfo['severities'][name] = dRunInfo['severities'][name] + 1
+
 #        print(dRunInfo)
         if sOutputFormat == 'vsg':
             report.vsg_stdout.print_output(dRunInfo)

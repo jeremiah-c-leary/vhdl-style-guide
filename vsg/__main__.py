@@ -448,7 +448,6 @@ def apply_rules(commandLineArguments, configuration, dIndent, fix_only, tIndexFi
         oRules.fix(commandLineArguments.fix_phase, commandLineArguments.skip_phase, fix_only)
         write_vhdl_file(oVhdlFile)
 
-    oRules.oSeverityList.clear_severity_counts()
     oRules.clear_violations()
     oRules.check_rules(bAllPhases=commandLineArguments.all_phases, lSkipPhase=commandLineArguments.skip_phase)
     oRules.report_violations(commandLineArguments.output_format)
