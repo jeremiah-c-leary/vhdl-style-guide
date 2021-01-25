@@ -62,7 +62,7 @@ def get_predefined_styles():
     for sStyle in lStyles:
         if sStyle.endswith('.yaml'):
             with open(os.path.join(sStylePath, sStyle)) as yaml_file:
-                tempConfiguration = yaml.full_load(yaml_file)
+                tempConfiguration = yaml.safe_load(yaml_file)
             lReturn.append(tempConfiguration['name'])
     return lReturn
 
