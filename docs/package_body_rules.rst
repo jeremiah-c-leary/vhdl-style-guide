@@ -105,7 +105,7 @@ package_body_200
 
 This rule checks for blank lines or comments above the **package** keyword.
 
-Refer to `Configuring Previous Line Rules <configuring_previous_line_rules.html>`_ for options.
+Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous-line-rules>`_ for options.
 
 **Violation**
 
@@ -149,7 +149,7 @@ package_body_202
 
 This rule checks for blank lines or comments above the **end package** keyword.
 
-Refer to `Configuring Previous Line Rules <configuring_previous_line_rules.html>`_ for options.
+Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous-line-rules>`_ for options.
 
 **Violation**
 

@@ -35,7 +35,7 @@ architecture_003
 
 This rule check for a blank lines or comments above the **architecture** declaration.
 
-Refer to `Configuring Previous Line Rules <configuring_previous_line_rules.html>`_ for options.
+Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous-line-rules>`_ for options.
 
 **Violation**
 
@@ -298,7 +298,7 @@ architecture_016
 
 This rule checks for a blank lines or comments above the **begin** keyword.
 
-Refer to `Configuring Previous Line Rules <configuring_previous_line_rules.html>`_ for options.
+Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous-line-rules>`_ for options.
 
 **Violation**
 
@@ -347,7 +347,7 @@ architecture_018
 
 This rule checks for blank lines or comments above the **end architecture** declaration.
 
-Refer to `Configuring Previous Line Rules <configuring_previous_line_rules.html>`_ for options.
+Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous-line-rules>`_ for options.
 
 **Violation**
 

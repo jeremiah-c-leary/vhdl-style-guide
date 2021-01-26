@@ -185,7 +185,7 @@ type_010
 
 This rule checks for blank lines or comments above the **type** declaration.
 
-Refer to `Configuring Previous Line Rules <configuring_previous_line_rules.html>`_ for options.
+Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous-line-rules>`_ for options.
 
 **Violation**
 

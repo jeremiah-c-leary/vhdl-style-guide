@@ -46,7 +46,7 @@ context_003
 
 This rule checks for blank lines or comments above the **context** keyword.
 
-Refer to `Configuring Previous Line Rules <configuring_previous_line_rules.html>`_ for options.
+Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous-line-rules>`_ for options.
 
 The default style is :code:`no_code`.
 
@@ -487,7 +487,7 @@ context_024
 
 This rule checks for blank lines or comments above the **end** keyword.
 
-Refer to `Configuring Previous Line Rules <configuring_previous_line_rules.html>`_ for options.
+Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous-line-rules>`_ for options.
 
 The default style is :code:`no_code`.
 

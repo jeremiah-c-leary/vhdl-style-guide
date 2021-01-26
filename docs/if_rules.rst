@@ -562,7 +562,7 @@ if_031
 This rule checks for blank lines or comments before the **if** keyword.
 In the case of nested **if** statements, the rule will be enfoced on the first **if**.
  
-Refer to `Configuring Previous Line Rules <configuring_previous_line_rules.html>`_ for options.
+Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous-line-rules>`_ for options.
 
 The default style is :code:`no_code`.
 
