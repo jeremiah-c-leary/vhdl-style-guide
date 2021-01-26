@@ -564,6 +564,8 @@ In the case of nested **if** statements, the rule will be enfoced on the first *
  
 Refer to `Configuring Previous Line Rules <configuring_previous_line_rules.html>`_ for options.
 
+The default style is :code:`no_code`.
+
 **Violation**
 
 .. code-block:: vhdl

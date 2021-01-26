@@ -329,11 +329,11 @@ This rule checks for a single space before the **is** keyword.
 process_015
 ###########
 
-This rule checks for a blank line or comment above the **process** declaration.
-
-.. NOTE:: Comments are allowed above the instantiation.
+This rule checks for blank lines or comments above the **process** declaration.
 
 Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+
+The default style is :code:`no_code`.
 
 **Violation**
 

@@ -27,14 +27,14 @@ class blank_line_above_line_starting_with_token(rule.Rule):
         self.phase = 3
         self.lTokens = lTokens
         self.lHierarchyLimits = None
-        self.method = 'require_blank'
-        self.configuration.append('method')
+        self.style = 'require_blank'
+        self.configuration.append('style')
         self.lAllowTokens = lAllowTokens
 
     def _get_tokens_of_interest(self, oFile):
-        bIncludeComments = _include_comments(self.method)
+        bIncludeComments = _include_comments(self.style)
 
-        if self.method == 'require_comment':
+        if self.style == 'require_comment':
             if self.lHierarchyLimits is None:
                 lFirst = oFile.get_line_above_line_starting_with_token(self.lTokens, False)
                 lSecond = oFile.get_line_above_line_starting_with_token(self.lTokens, True)
@@ -56,13 +56,13 @@ class blank_line_above_line_starting_with_token(rule.Rule):
 
     def _analyze(self, lToi):
         self._set_allow_tokens()
-        if self.method == 'require_blank':
+        if self.style == 'require_blank':
             _analyze_require_blank(self, lToi, self.lAllowTokens)
-        elif self.method == 'no_code':
+        elif self.style == 'no_code':
             _analyze_no_code(self, lToi, self.lAllowTokens)
-        elif self.method == 'allow_comment':
+        elif self.style == 'allow_comment':
             _analyze_no_code(self, lToi, self.lAllowTokens)
-        elif self.method == 'require_comment':
+        elif self.style == 'require_comment':
             _analyze_require_comment(self, lToi, self.lAllowTokens)
 
     def _fix_violation(self, oViolation):

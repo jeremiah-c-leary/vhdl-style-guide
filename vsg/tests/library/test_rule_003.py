@@ -27,7 +27,7 @@ class test_library_rule(unittest.TestCase):
 
     def test_rule_003(self):
         oRule = library.rule_003()
-        oRule.method = 'no_code'
+        oRule.style = 'no_code'
         oRule.allow_library_clause = False
 
         self.assertTrue(oRule)
@@ -41,7 +41,7 @@ class test_library_rule(unittest.TestCase):
 
     def test_fix_rule_003(self):
         oRule = library.rule_003()
-        oRule.method = 'no_code'
+        oRule.style = 'no_code'
         oRule.allow_library_clause = False
 
         oRule.fix(self.oFile)

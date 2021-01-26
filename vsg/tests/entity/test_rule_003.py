@@ -35,7 +35,7 @@ class test_entity_rule(unittest.TestCase):
 
     def test_rule_003_w_require_blank(self):
         oRule = entity.rule_003()
-        oRule.method = 'require_blank'
+        oRule.style = 'require_blank'
 
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'entity')
@@ -48,7 +48,7 @@ class test_entity_rule(unittest.TestCase):
 
     def test_rule_003_w_no_code(self):
         oRule = entity.rule_003()
-        oRule.method = 'no_code'
+        oRule.style = 'no_code'
 
         lExpected = [8]
 
@@ -57,7 +57,7 @@ class test_entity_rule(unittest.TestCase):
 
     def test_rule_003_w_allow_comment(self):
         oRule = entity.rule_003()
-        oRule.method = 'allow_comment'
+        oRule.style = 'allow_comment'
 
         lExpected = [8, 21]
 
@@ -66,7 +66,7 @@ class test_entity_rule(unittest.TestCase):
 
     def test_rule_003_w_require_comment(self):
         oRule = entity.rule_003()
-        oRule.method = 'require_comment'
+        oRule.style = 'require_comment'
 
         lExpected = [8, 21, 26]
 
@@ -75,7 +75,7 @@ class test_entity_rule(unittest.TestCase):
 
     def test_fix_rule_003_w_require_blank(self):
         oRule = entity.rule_003()
-        oRule.method = 'require_blank'
+        oRule.style = 'require_blank'
 
         oRule.fix(self.oFile)
 
@@ -88,7 +88,7 @@ class test_entity_rule(unittest.TestCase):
 
     def test_fix_rule_003_w_no_code(self):
         oRule = entity.rule_003()
-        oRule.method = 'no_code'
+        oRule.style = 'no_code'
 
         oRule.fix(self.oFile)
 
@@ -101,7 +101,7 @@ class test_entity_rule(unittest.TestCase):
 
     def test_fix_rule_003_w_allow_comment(self):
         oRule = entity.rule_003()
-        oRule.method = 'allow_comment'
+        oRule.style = 'allow_comment'
 
         oRule.fix(self.oFile)
 
@@ -114,7 +114,7 @@ class test_entity_rule(unittest.TestCase):
 
     def test_fix_rule_003_w_require_comment(self):
         oRule = entity.rule_003()
-        oRule.method = 'require_comment'
+        oRule.style = 'require_comment'
 
         oRule.fix(self.oFile)
 

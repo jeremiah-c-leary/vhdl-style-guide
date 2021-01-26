@@ -69,6 +69,8 @@ This rule checks for blank lines or comments above the instantiation.
 
 Refer to `Configuring Previous Line Rules <configuring_previous_line_rules.html>`_ for options.
 
+The default style is :code:`no_code`.
+
 **Violation**
 
 .. code-block:: vhdl
