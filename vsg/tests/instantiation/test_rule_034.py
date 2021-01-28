@@ -30,7 +30,7 @@ class test_instantiation_rule(unittest.TestCase):
 
     def test_rule_034_w_entity(self):
         oRule = instantiation.rule_034()
-        oRule.style = 'entity'
+        oRule.method = 'entity'
 
         lExpected = [6, 18]
 

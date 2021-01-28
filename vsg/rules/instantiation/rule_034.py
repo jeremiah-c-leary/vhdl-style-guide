@@ -25,19 +25,19 @@ class rule_034(rule.Rule):
         rule.Rule.__init__(self, name='instantiation', identifier='034')
         self.solution = None
         self.phase = 1
-        self.style = 'component'
-        self.configuration.append('style')
+        self.method = 'component'
+        self.configuration.append('method')
         self.fixable = False
 
     def _get_tokens_of_interest(self, oFile):
-        if self.style == 'component':
+        if self.method == 'component':
             return oFile.get_tokens_matching_in_range_bounded_by_tokens([token.instantiated_unit.entity_keyword], token.component_instantiation_statement.instantiation_label, token.component_instantiation_statement.semicolon)
         else:
             return oFile.get_tokens_matching_in_range_bounded_by_tokens([token.instantiated_unit.component_name], token.component_instantiation_statement.instantiation_label, token.component_instantiation_statement.semicolon)
 
     def _analyze(self, lToi):
         for oToi in lToi:
-            if self.style == 'component':
+            if self.method == 'component':
                 sSolution = 'Change to component instantiation'
             else:
                 sSolution = 'Change to entity instantiation'
