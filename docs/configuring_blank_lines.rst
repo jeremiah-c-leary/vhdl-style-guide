@@ -1,32 +1,86 @@
 Configuring Blank Lines
 -----------------------
 
-There are rules which will check for blank lines above or below a line.
+There are rules which will check for blank lines below a line.
 These rules are designed to improve readability by separating code using blank lines.
-
-However, there is always a question of comments.
-
-The blank line rules allow for comments by configuring the option :code:`allow_comments`.
 
 .. code-block:: yaml
 
-   ---
-
    rule :
-     library_003:
-        allow_comments : True
+     architecture_015:
+        style : require_blank_line
 
-iF :code:`allow_comments` is set to true, then comments are allowed on the preceding line:
+Example: require_blank_line
+###########################
 
-.. code-Block:: vhdl
-
-    -- Bring in libraries
-    library ieee;
-
-If :code:`allow_comments` is set to false, then comments are not allowed on the preceding line:
+The following code would fail with this option:
 
 .. code-Block:: vhdl
 
-    -- Bring in libraries
+   architecture rtl of fifo is
+     -- Comment
 
-    library ieee;
+   architecture rtl of fifo is
+     signal s_sig1 : std_logic;
+
+The following code would pass with this option:
+
+.. code-block:: vhdl
+
+   architecture rtl of fifo is
+
+     -- Comment
+
+   architecture rtl of fifo is
+
+     signal s_sig1 : std_logic;
+
+Example: no_blank_line
+######################
+
+The following code would fail with this option:
+
+.. code-Block:: vhdl
+
+   architecture rtl of fifo is
+
+     -- Comment
+
+   architecture rtl of fifo is
+
+     signal s_sig1 : std_logic;
+
+The following code would pass with this option:
+
+.. code-block:: vhdl
+
+   architecture rtl of fifo is
+     -- Comment
+
+   architecture rtl of fifo is
+     signal s_sig1 : std_logic;
+
+Rules Enforcing Blank Lines
+###########################
+
+* `architecture_015 <architecture_rules.html#architecture-015>`_
+* `architecture_017 <architecture_rules.html#architecture-017>`_
+* `architecture_200 <architecture_rules.html#architecture-200>`_
+* `block_201 <block_rules.html#block-201>`_
+* `block_203 <block_rules.html#block-203>`_
+* `block_205 <block_rules.html#block-205>`_
+* `case_010 <case_rules.html#case-010>`_
+* `case_008 <case_rules.html#case-008>`_
+* `component_018 <component_rules.html#component-018>`_
+* `context_023 <context_rules.html#context-023>`_
+* `context_025 <context_rules.html#context-025>`_
+* `function_007 <function_rules.html#function-007>`_
+* `generate_003 <generate_rules.html#generate-003>`_
+* `if_030 <if_statement_rules.html#if_statement-030>`_
+* `instantiation_019 <instantiation_rules.html#instantiation-019>`_
+* `package_011 <package_rules.html#package-011>`_
+* `package_body_201 <package_body_rules.html#package_body-201>`_
+* `package_body_203 <package_body_rules.html#package_body-203>`_
+* `process_011 <process_rules.html#process-011>`_
+* `process_022 <process_rules.html#process-022>`_
+* `type_definition_011 <type_definition_rules.html#type_definition-011>`_

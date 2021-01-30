@@ -42,9 +42,9 @@ This rule checks for excessive spaces after the **library** keyword.
 library_003
 ###########
 
-This rule checks for a blank line above the **library** keyword.
+This rule checks for blank lines or comments above the entity keyword.
 
-Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+Refer to the section `Configuring Previous Line Rules <configuring.html#configuring-previous-line-rules>`_ for options.
 
 There is an additional **allow_library_clause** option which can be set.
 Refer to section `Reporting Single Rule Configuration <configuring.html>`_ for details on finding configuration options for individual rules.
