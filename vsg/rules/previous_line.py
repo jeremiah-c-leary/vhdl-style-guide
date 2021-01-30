@@ -4,7 +4,7 @@ from vsg import parser
 from vsg import violation
 
 
-class blank_line_above_line_starting_with_token(rule.Rule):
+class previous_line(rule.Rule):
     '''
     Checks for a blank line above a line starting with a given token
 

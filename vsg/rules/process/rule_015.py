@@ -1,5 +1,5 @@
 
-from vsg.rules import blank_line_above_line_starting_with_token
+from vsg.rules import previous_line
 
 from vsg import token
 
@@ -8,11 +8,11 @@ lTokens.append(token.process_statement.process_keyword)
 lTokens.append(token.process_statement.process_label)
 
 
-class rule_015(blank_line_above_line_starting_with_token):
+class rule_015(previous_line):
     '''
     Checks for a blank line above the "process" keyword.
     '''
 
     def __init__(self):
-        blank_line_above_line_starting_with_token.__init__(self, 'process', '015', lTokens)
+        previous_line.__init__(self, 'process', '015', lTokens)
         self.style = 'no_code'

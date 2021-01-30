@@ -1,5 +1,5 @@
 
-from vsg.rules import blank_line_above_line_starting_with_token
+from vsg.rules import previous_line
 
 from vsg.token import function_specification as token
 
@@ -9,10 +9,10 @@ lTokens.append(token.pure_keyword)
 lTokens.append(token.impure_keyword)
 
 
-class rule_006(blank_line_above_line_starting_with_token):
+class rule_006(previous_line):
     '''
     Checks for a blank line above the "function" keyword.
     '''
 
     def __init__(self):
-        blank_line_above_line_starting_with_token.__init__(self, 'function', '006', lTokens)
+        previous_line.__init__(self, 'function', '006', lTokens)
