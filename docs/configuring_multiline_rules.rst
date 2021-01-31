@@ -13,19 +13,31 @@ There are several options to these rules:
 | last_paren_new_line  | boolean |  False  | Last closing parenthesis on it's own line.              |
 +----------------------+---------+---------+---------------------------------------------------------+
 | open_paren_new_line  | boolean |  False  | Insert new line after open parenthesis.                 |
-+----------------------+-----------------------------------------------------------------------------+
++----------------------+---------+---------+---------------------------------------------------------+
 | close_paren_new_line | boolean |  False  | Insert new line before close parenthesis.               |
-+----------------------+-----------------------------------------------------------------------------+
++----------------------+---------+---------+---------------------------------------------------------+
 | new_line_after_comma | boolean |  False  | Insert new line after the commas.                       |
-+----------------------+-----------------------------------------------------------------------------+
++----------------------+---------+---------+---------------------------------------------------------+
 | align_left           | boolean |  True   | True = New lines will be aligned left.                  |
 |                      |         |         | False = Align to current column                         |
-+----------------------+-----------------------------------------------------------------------------+
++----------------------+---------+---------+---------------------------------------------------------+
 | ignore_single_line   | boolean |  True   | Do not apply rules if expression/condition is contained |
 |                      |         |         | on a single line.                                       |
 +----------------------+-----------------------------------------------------------------------------+
 
 The options can be combined to format the output.
+
+Each option allows one of three values:  True, False and Ignore.
+
++----------------------+---------------------------------------------------------+
+| Option Value         | Action                                                  |
++======================+=========================================================+
+| True                 | Option will be enforced.                                |
++----------------------+---------------------------------------------------------+
+| False                | The inverse of the Option will be enforced.             |
++----------------------+---------------------------------------------------------+
+| Ignore               | The option will be ignored.                             |
++----------------------+---------------------------------------------------------+
 
 This is an example of how to configure these options.
 
@@ -37,7 +49,8 @@ This is an example of how to configure these options.
         last_paren_new_line : True
         open_paren_new_line : True
         close_paren_new_line : True
-        new_line_after_comma : False
+        new_line_after_comma : Ignore
+        ignore_single_line : False
 
 .. NOTE:: All examples below are using the rule **constant_012**.
 

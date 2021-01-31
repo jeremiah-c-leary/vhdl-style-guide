@@ -535,6 +535,12 @@ def increment_line_number(iLine, oToken):
     return iLine
 
 
+def decrement_line_number(iLine, oToken):
+    if isinstance(oToken, parser.carriage_return):
+        return iLine - 1
+    return iLine
+
+
 def count_carriage_returns(lTokens):
     iReturn = 0
     for oToken in lTokens:
