@@ -47,8 +47,8 @@ class rule_012(rule.Rule):
         self.configuration.append('new_line_after_comma')
         self.align_left = True
         self.configuration.append('align_left')
-        self.ignore_single_line = True
-        self.configuration.append('ignore_single_line')
+        self.Ignore_single_line = True
+        self.configuration.append('Ignore_single_line')
 
     def _get_tokens_of_interest(self, oFile):
         lToi = []
@@ -63,13 +63,14 @@ class rule_012(rule.Rule):
 
         for oToi in lToi:
 
-            if rule_utils.is_single_line(oToi) and self.ignore_single_line:
+            if rule_utils.is_single_line(oToi) and self.Ignore_single_line:
                 continue
 
             if not _is_open_paren_after_assignment(oToi):
                 continue
 
             _check_first_paren_new_line(self, oToi)
+            _check_last_paren_new_line(self, oToi)
 
 
 #        for oNewToi in lToi:
@@ -189,6 +190,9 @@ class rule_012(rule.Rule):
 
 def _check_first_paren_new_line(self, oToi):
     
+    if self.first_paren_new_line == 'Ignore':
+        return 
+
     iLine, lTokens = utils.get_toi_parameters(oToi)
     bSearch = False
     for iToken, oToken in enumerate(lTokens):
@@ -207,6 +211,38 @@ def _check_first_paren_new_line(self, oToi):
                     sSolution = 'Move parenthesis to same line as assignment operator.'
                     oViolation = violation.New(iLine, oToi.extract_tokens(iStart, iToken), sSolution)
                     self.add_violation(oViolation)
+            break
+                
+def _check_last_paren_new_line(self, oToi):
+    if self.last_paren_new_line == 'Ignore':
+        return 
+    iLine, lTokens = utils.get_toi_parameters(oToi)
+    bSearch = False
+    lTokens.reverse()
+    iLine = iLine + utils.count_carriage_returns(lTokens)
+    bReturnFound = False
+    for iToken, oToken in enumerate(lTokens):
+        iLine = utils.decrement_line_number(iLine, oToken)
+        if isinstance(oToken, parser.close_parenthesis):
+            iEnd = len(lTokens) - iToken
+            if utils.are_next_consecutive_token_types([parser.whitespace, parser.carriage_return], iToken + 1, lTokens):
+                iStart = len(lTokens) - iToken - 2
+                bReturnFound = True
+            elif utils.are_next_consecutive_token_types([parser.carriage_return], iToken + 1, lTokens):
+                iStart = len(lTokens) - iToken - 1
+                bReturnFound = True
+            
+            if self.last_paren_new_line and not bReturnFound:
+                lTokens.reverse()
+                sSolution = 'Move closing parenthesis to the next line.'
+                oViolation = violation.New(iLine, oToi.extract_tokens(iEnd, iEnd), sSolution)
+                self.add_violation(oViolation)
+            elif not self.last_paren_new_line and bReturnFound:
+                lTokens.reverse()
+                sSolution = 'Move closing parenthesis to previous line.'
+                oViolation = violation.New(iLine, oToi.extract_tokens(iStart, iEnd), sSolution)
+                self.add_violation(oViolation)
+
             break
                 
   
