@@ -27,6 +27,7 @@ class test_constant_rule(unittest.TestCase):
         oRule.last_paren_new_line = 'Ignore'
         oRule.open_paren_new_line = 'Ignore'
         oRule.close_paren_new_line = 'Ignore'
+        oRule.new_line_after_comma = 'Ignore'
 
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'constant')
@@ -43,6 +44,7 @@ class test_constant_rule(unittest.TestCase):
         oRule.last_paren_new_line = 'Ignore'
         oRule.open_paren_new_line = 'Ignore'
         oRule.close_paren_new_line = 'Ignore'
+        oRule.new_line_after_comma = 'Ignore'
 
         lExpected = [14, 17, 21, 27, 41, 57]
 
@@ -55,6 +57,7 @@ class test_constant_rule(unittest.TestCase):
         oRule.last_paren_new_line = True
         oRule.open_paren_new_line = 'Ignore'
         oRule.close_paren_new_line = 'Ignore'
+        oRule.new_line_after_comma = 'Ignore'
 
         lExpected = [11, 14]
 
@@ -67,6 +70,7 @@ class test_constant_rule(unittest.TestCase):
         oRule.last_paren_new_line = False
         oRule.open_paren_new_line = 'Ignore'
         oRule.close_paren_new_line = 'Ignore'
+        oRule.new_line_after_comma = 'Ignore'
 
         lExpected = [18, 24, 38, 54, 72]
 
@@ -79,6 +83,7 @@ class test_constant_rule(unittest.TestCase):
         oRule.last_paren_new_line = 'Ignore'
         oRule.open_paren_new_line = True
         oRule.close_paren_new_line = 'Ignore'
+        oRule.new_line_after_comma = 'Ignore'
 
         lExpected = [11, 11, 14, 14, 14, 17, 17, 17, 22, 23, 28, 33]
 
@@ -91,6 +96,7 @@ class test_constant_rule(unittest.TestCase):
         oRule.last_paren_new_line = 'Ignore'
         oRule.open_paren_new_line = False
         oRule.close_paren_new_line = 'Ignore'
+        oRule.new_line_after_comma = 'Ignore'
 
         lExpected = [10, 21, 27, 41, 42, 48, 57, 58, 65]
 
@@ -103,6 +109,7 @@ class test_constant_rule(unittest.TestCase):
         oRule.last_paren_new_line = 'Ignore'
         oRule.open_paren_new_line = 'Ignore'
         oRule.close_paren_new_line = True
+        oRule.new_line_after_comma = 'Ignore'
 
         lExpected = [11, 11, 14, 14, 17, 17, 22, 23, 32, 37, 47, 53]
 
@@ -115,8 +122,46 @@ class test_constant_rule(unittest.TestCase):
         oRule.last_paren_new_line = 'Ignore'
         oRule.open_paren_new_line = 'Ignore'
         oRule.close_paren_new_line = False
+        oRule.new_line_after_comma = 'Ignore'
 
         lExpected = [64, 71]
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+
+    def test_rule_012_new_line_after_comma_true(self):
+        oRule = constant.rule_012()
+        oRule.first_paren_new_line = 'Ignore'
+        oRule.last_paren_new_line = 'Ignore'
+        oRule.open_paren_new_line = 'Ignore'
+        oRule.close_paren_new_line = 'Ignore'
+        oRule.new_line_after_comma = True
+
+        lExpected = []
+        lExpected.extend([11, 11, 11, 11, 11, 11, 11, 11, 11])
+        lExpected.extend([14, 14, 14, 14, 14, 14, 14, 14, 14])
+        lExpected.extend([17, 17, 17, 17, 17, 17, 17, 17, 17])
+        lExpected.extend([22, 22, 22, 22])
+        lExpected.extend([23, 23, 23, 23])
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+
+    def test_rule_012_new_line_after_comma_false(self):
+        oRule = constant.rule_012()
+        oRule.first_paren_new_line = 'Ignore'
+        oRule.last_paren_new_line = 'Ignore'
+        oRule.open_paren_new_line = 'Ignore'
+        oRule.close_paren_new_line = 'Ignore'
+        oRule.new_line_after_comma = False
+
+        lExpected = [22]
+        lExpected.extend(range(28, 37))
+        lExpected.extend(range(43, 48))
+        lExpected.extend(range(49, 53))
+        lExpected.extend(range(59, 63))
+        lExpected.append(64)
+        lExpected.extend(range(66, 70))
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
