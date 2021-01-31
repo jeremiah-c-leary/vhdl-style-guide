@@ -73,6 +73,7 @@ class rule_012(rule.Rule):
             _check_last_paren_new_line(self, oToi)
             _check_open_paren_new_line(self, oToi)
             _check_close_paren_new_line(self, oToi)
+            _check_new_line_after_comma(self, oToi)
 
 
 #        for oNewToi in lToi:
@@ -302,6 +303,32 @@ def _check_close_paren_new_line(self, oToi):
                     oViolation = violation.New(iLine, oToi.extract_tokens(iToken, iToken), sSolution)
                     self.add_violation(oViolation)
 
+
+def _check_new_line_after_comma(self, oToi):
+    
+    if self.new_line_after_comma == 'Ignore':
+        return 
+
+    iLine, lTokens = utils.get_toi_parameters(oToi)
+
+    bSearch = False
+    for iToken, oToken in enumerate(lTokens):
+        iLine = utils.increment_line_number(iLine, oToken)
+        if isinstance(oToken, token.constant_declaration.assignment_operator):
+            bSearch = True
+        if isinstance(oToken, parser.comma) and bSearch:
+            if utils.is_token_at_end_of_line(iToken, lTokens):
+                if not self.new_line_after_comma:
+                    iEnd = utils.find_carriage_return(lTokens, iToken)
+                    sSolution = 'Remove carriage return after comma.'
+                    oViolation = violation.New(iLine, oToi.extract_tokens(iToken, iEnd), sSolution)
+                    self.add_violation(oViolation)
+            else:
+                if self.new_line_after_comma:
+                    sSolution = 'Add carriage return after comma.'
+                    oViolation = violation.New(iLine, oToi.extract_tokens(iToken, iToken), sSolution)
+                    self.add_violation(oViolation)
+                
   
 def _is_open_paren_after_assignment(oToi):
     
