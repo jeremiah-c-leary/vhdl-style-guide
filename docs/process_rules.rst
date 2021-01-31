@@ -224,7 +224,7 @@ process_011
 
 This rule checks for a blank line after the **end process** keyword.
 
-Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines.html>`_ for options.
 
 **Violation**
 
@@ -472,6 +472,8 @@ process_021
 
 This rule checks for blank lines before the **begin** keyword if there are no process declarative items.
 
+Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines.html>`_ for options.
+
 **Violation**
 
 .. code-block:: vhdl
@@ -544,7 +546,7 @@ process_023
 
 This rule checks for a blank line above the **end process** keyword.
 
-Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines.html>`_ for options.
 
 **Violation**
 
@@ -611,6 +613,8 @@ process_026
 
 This rule checks for blank lines between the end of the sensitivity list and process declarative lines.
 
+Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines.html>`_ for options.
+
 **Violation**
 
 .. code-block:: vhdl
@@ -638,6 +642,8 @@ process_027
 ###########
 
 This rule checks for blank lines between process declarative lines and the **begin** keyword.
+
+Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines.html>`_ for options.
 
 **Violation**
 

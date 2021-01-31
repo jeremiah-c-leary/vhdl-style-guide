@@ -70,7 +70,7 @@ Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ f
 generate_004
 ############
 
-This rule checks for blank lines or comments before the **generate** keyword.
+This rule checks for blank lines or comments before the **generate** label.
 
 Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous-line-rules>`_ for options.
 

@@ -226,7 +226,7 @@ block_202
 
 This rule checks for blank lines or comments above the **begin** keyword.
 
-Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous-line-rules>`_ for options.
+Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines.html>`_ for options.
 
 **Violation**
 
@@ -274,7 +274,7 @@ block_204
 
 This rule checks for blank lines or comments above the **end** keyword.
 
-Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous-line-rules>`_ for options.
+Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines.html>`_ for options.
 
 **Violation**
 

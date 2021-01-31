@@ -271,9 +271,9 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
 architecture_015
 ################
 
-This rule check for a blank line below the architecture declaration.
+This rule check for blank lines below the architecture declaration.
 
-Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines.html>`_ for options.
 
 **Violation**
 
@@ -292,13 +292,12 @@ Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ f
      signal wr_en : std_logic;
    begin
 
-
 architecture_016
 ################
 
-This rule checks for a blank lines or comments above the **begin** keyword.
+This rule checks for blank lines above the **begin** keyword.
 
-Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous-line-rules>`_ for options.
+Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines.html>`_ for options.
 
 **Violation**
 
@@ -347,7 +346,7 @@ architecture_018
 
 This rule checks for blank lines or comments above the **end architecture** declaration.
 
-Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous-line-rules>`_ for options.
+Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines.html>`_ for options.
 
 **Violation**
 

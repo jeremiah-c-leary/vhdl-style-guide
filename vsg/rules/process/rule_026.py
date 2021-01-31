@@ -17,34 +17,73 @@ class rule_026(rule.Rule):
         rule.Rule.__init__(self, 'process', '026')
         self.solution = 'Insert blank line below'
         self.phase = 3
+        self.style = 'require_blank'
+        self.configuration.append('style')
 
     def _get_tokens_of_interest(self, oFile):
         return oFile.get_tokens_bounded_by(token.process_keyword, token.begin_keyword)
 
     def _analyze(self, lToi):
-        for oToi in lToi:
-            lTokens = oToi.get_tokens()
-            if not are_there_process_declarative_items(lTokens):
-                continue
-            iLine, iSearch = find_beginning_of_process_declarative_region(oToi.get_line_number(), lTokens)
-
-            if does_a_blank_line_exist(iSearch, lTokens):
-                continue
-
-            dAction = {}
-            dAction['insert'] = find_carriage_return(iSearch, lTokens) + 1
-
-            oViolation = violation.New(iLine, oToi, self.solution)
-            oViolation.set_action(dAction)
-            self.add_violation(oViolation)
+        if self.style == 'require_blank':
+            _analyze_require_blank(self, lToi)
+        elif self.style == 'no_blank':
+            _analyze_no_blank(self, lToi)
 
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
         dAction = oViolation.get_action()
-        lTokens.insert(dAction['insert'], parser.carriage_return())
-        lTokens.insert(dAction['insert'], parser.blank_line())
-        oViolation.set_tokens(lTokens)
+        if dAction['action'] == 'Insert':
+            lTokens.insert(dAction['index'], parser.carriage_return())
+            lTokens.insert(dAction['index'], parser.blank_line())
+            oViolation.set_tokens(lTokens)
+        else:
+            iStart = dAction['start']
+            iEnd = dAction['end']
+            lNewTokens = lTokens[:iStart]
+            lNewTokens.extend(lTokens[iEnd:])
+            oViolation.set_tokens(lTokens[:iStart] + lTokens[iEnd:])
 
+
+def _analyze_require_blank(self, lToi):
+    for oToi in lToi:
+        lTokens = oToi.get_tokens()
+        if not are_there_process_declarative_items(lTokens):
+            continue
+        iLine, iSearch = find_beginning_of_process_declarative_region(oToi.get_line_number(), lTokens)
+
+        if does_a_blank_line_exist(iSearch, lTokens):
+            continue
+
+        dAction = {}
+        dAction['action'] = 'Insert'
+        dAction['index'] = find_carriage_return(iSearch, lTokens) + 1
+
+        oViolation = violation.New(iLine, oToi, self.solution)
+        oViolation.set_action(dAction)
+        self.add_violation(oViolation)
+
+def _analyze_no_blank(self, lToi):
+    for oToi in lToi:
+        lTokens = oToi.get_tokens()
+        if not are_there_process_declarative_items(lTokens):
+            continue
+        iLine, iSearch = find_beginning_of_process_declarative_region(oToi.get_line_number(), lTokens)
+
+        if not does_a_blank_line_exist(iSearch, lTokens):
+            continue
+
+        dAction = {}
+        dAction['action'] = 'Remove'
+        dAction['start'] = iSearch
+        for iToken, oToken in enumerate(lTokens[iSearch:]):
+            if isinstance(oToken, parser.carriage_return):
+                if not isinstance(lTokens[iSearch + iToken + 1], parser.blank_line):
+                    dAction['end'] = iSearch + iToken - 1
+                    break 
+
+        oViolation = violation.New(iLine, oToi, self.solution)
+        oViolation.set_action(dAction)
+        self.add_violation(oViolation)
 
 def are_there_process_declarative_items(lTokens):
     for iToken, oToken in enumerate(lTokens):

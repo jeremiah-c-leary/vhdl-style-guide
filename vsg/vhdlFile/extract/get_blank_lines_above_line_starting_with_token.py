@@ -20,7 +20,8 @@ def get_blank_lines_above_line_starting_with_token(lTokens, lAllTokens, oTokenMa
             iCarriageReturnIndex = lCarriageReturns[i]
             if not iCarriageReturnIndex + 1 in lBlankLines:
                 iStart = lCarriageReturns[i + 1]
-                lReturn.append(tokens.New(iStart, iLine, lAllTokens[iStart:iEnd]))
+                if iStart != iEnd:
+                    lReturn.append(tokens.New(iStart, iLine, lAllTokens[iStart:iEnd]))
                 break
 
     return lReturn

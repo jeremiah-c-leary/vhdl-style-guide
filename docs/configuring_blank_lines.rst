@@ -1,14 +1,24 @@
 Configuring Blank Lines
 -----------------------
 
-There are rules which will check for blank lines below a line.
+There are rules which will check for blank lines either above or below a line.
 These rules are designed to improve readability by separating code using blank lines.
+
+There are a couple of options to these rules, which can be selected by using the :code:`style` option:
+
++---------------------+----------------------------------------------------------+
+| Style               | Description                                              |
++=====================+==========================================================+
+| require_blank       | Requires a blank line on the line above.                 |
++---------------------+----------------------------------------------------------+
+| no_blank            | Removes blank lines above the line.                      |
++---------------------+----------------------------------------------------------+
 
 .. code-block:: yaml
 
    rule :
      architecture_015:
-        style : require_blank_line
+        style : require_blank
 
 Example: require_blank_line
 ###########################
@@ -82,5 +92,8 @@ Rules Enforcing Blank Lines
 * `package_body_201 <package_body_rules.html#package_body-201>`_
 * `package_body_203 <package_body_rules.html#package_body-203>`_
 * `process_011 <process_rules.html#process-011>`_
+* `process_021 <process_rules.html#process-021>`_
 * `process_022 <process_rules.html#process-022>`_
-* `type_definition_011 <type_definition_rules.html#type_definition-011>`_
+* `process_026 <process_rules.html#process-026>`_
+* `process_027 <process_rules.html#process-027>`_
+* `type_011 <type_rules.html#type-011>`_

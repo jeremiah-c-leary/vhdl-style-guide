@@ -138,16 +138,16 @@ Rules Enforcing Previous Lines
 ##############################
 
 * `architecture_003 <architecture_rules.html#architecture-003>`_
-* `architecture_016 <architecture_rules.html#architecture-016>`_
-* `architecture_018 <architecture_rules.html#architecture-018>`_
+  * `architecture_016 <architecture_rules.html#architecture-016>`_
+  * `architecture_018 <architecture_rules.html#architecture-018>`_
 * `block_200 <block_rules.html#block-200>`_
-* `block_202 <block_rules.html#block-202>`_
-* `block_204 <block_rules.html#block-204>`_
+  * `block_202 <block_rules.html#block-202>`_
+  * `block_204 <block_rules.html#block-204>`_
 * `case_007 <case_rules.html#case-007>`_
-* `case_009 <case_rules.html#case-009>`_
+  * `case_009 <case_rules.html#case-009>`_
 * `component_003 <component_rules.html#component-003>`_
 * `context_003 <context_rules.html#context-003>`_
-* `context_024 <context_rules.html#context-024>`_
+  * `context_024 <context_rules.html#context-024>`_
 * `entity_003 <entity_rules.html#entity-003>`_
 * `function_006 <function_rules.html#function-006>`_
 * `generate_004 <generate_rules.html#generate-004>`_
@@ -155,9 +155,9 @@ Rules Enforcing Previous Lines
 * `instantiation_004 <instantiation_rules.html#instantiation-004>`_
 * `library_003 <library_rules.html#library-003>`_
 * `package_003 <package_rules.html#package-003>`_
-* `package_012 <package_rules.html#package-012>`_
+  * `package_012 <package_rules.html#package-012>`_
 * `package_body_200 <package_body_rules.html#package_body-200>`_
-* `package_body_202 <package_body_rules.html#package_body-202>`_
+  * `package_body_202 <package_body_rules.html#package_body-202>`_
 * `process_015 <process_rules.html#process-015>`_
-* `process_023 <process_rules.html#process-023>`_
+  * `process_023 <process_rules.html#process-023>`_
 * `type_010 <type_rules.html#type-010>`_

@@ -156,7 +156,6 @@ Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ f
 
    signal wr_en : std_logic;
 
-
 function_008
 ############
 
