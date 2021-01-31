@@ -5,7 +5,7 @@ from vsg import token
 from vsg import violation
 
 from vsg.vhdlFile import utils
-
+from vsg.rules import utils as rule_utils
 
 lTokenPairs = []
 lTokenPairs.append([token.constant_declaration.constant_keyword, token.constant_declaration.semicolon])
@@ -35,123 +35,186 @@ class rule_012(rule.Rule):
         self.subphase = 4
         self.lTokenPairs = lTokenPairs
         self.bExcludeLastToken = False
+        self.first_paren_new_line = False
+        self.configuration.append('first_paren_new_line')
+        self.last_paren_new_line = False
+        self.configuration.append('last_paren_new_line')
+        self.open_paren_new_line = False
+        self.configuration.append('open_paren_new_line')
+        self.close_paren_new_line = False
+        self.configuration.append('close_paren_new_line')
+        self.new_line_after_comma = False
+        self.configuration.append('new_line_after_comma')
+        self.align_left = True
+        self.configuration.append('align_left')
+        self.ignore_single_line = True
+        self.configuration.append('ignore_single_line')
 
-    def analyze(self, oFile):
+    def _get_tokens_of_interest(self, oFile):
         lToi = []
         for lTokenPair in self.lTokenPairs:
             aToi = oFile.get_tokens_bounded_by(lTokenPair[0], lTokenPair[1], bExcludeLastToken=self.bExcludeLastToken)
             lToi = utils.combine_two_token_class_lists(lToi, aToi)
+        return lToi
 
-        for oNewToi in lToi:
 
-            iLine, lTokens = utils.get_toi_parameters(oNewToi)
+    def analyze(self, oFile):
+        lToi = self._get_tokens_of_interest(oFile)
 
-            bSearchOpen = False
-            bSearchClose = False
-            for iToken, oToken in enumerate(lTokens):
-                if isinstance(oToken, token.constant_declaration.assignment_operator):
-                    if utils.are_next_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken + 1, lTokens):
-                        bSearchOpen = True
-                if bSearchOpen:
-                    if isinstance(oToken, parser.open_parenthesis):
-                        iStartIndex = iToken
-                        bSearchOpen = False
-                        bSearchClose = True
-                if bSearchClose:
-                    if isinstance(oToken, parser.close_parenthesis):
-                        iEndIndex = iToken
-                if bSearchClose and isinstance(oToken, token.constant_declaration.semicolon):
-                    lNewTokens = lTokens.copy()
-                    lNewTokens = utils.remove_trailing_whitespace_and_comments(lNewTokens[:iEndIndex])
-                    iEndIndex = iEndIndex - ( len(lTokens) - len(lNewTokens) )
-                    oToi = oNewToi.extract_tokens(iStartIndex, iEndIndex)
-                    break
-            else:
+        for oToi in lToi:
+
+            if rule_utils.is_single_line(oToi) and self.ignore_single_line:
                 continue
 
-            iLine, lTokens = utils.get_toi_parameters(oToi)
+            if not _is_open_paren_after_assignment(oToi):
+                continue
 
-#            print('-'*80)
-#            print(iLine)
-#            print(lTokens)
-            iStartColumn = calculate_start_column(oFile, oToi)
-            lColumn = []
-            lColumn.append(iStartColumn)
-            bCheckAlignment = False
-            iFirstColumn = oFile.get_column_of_token_index(oToi.get_start_index())
-            iColumn = iFirstColumn
-            iPreviousColumn = 0
-            iIndent = 0
-#            print('-'*80)
-            for iToken, oToken in enumerate(lTokens):
-
-                iLine = utils.increment_line_number(iLine, oToken)
-
-                if isinstance(oToken, parser.carriage_return):
-                    bCheckAlignment = True
-                    iPreviousColumn = lColumn[-1]
-                    iColumn = 0
-                    if isinstance(lTokens[iToken + 1], parser.whitespace):
-                        iIndent = len(lTokens[iToken + 1].get_value())
-                    else:
-                        iIndent = 0
-                    continue
-
-                if isinstance(oToken, parser.blank_line):
-                    bCheckAlignment = False
-                    continue
-
-                iColumn += len(oToken.get_value())
-
-                if isinstance(oToken, parser.open_parenthesis):
-                    lColumn.append(iColumn + iPreviousColumn - iIndent)
-
-                if isinstance(oToken, parser.close_parenthesis):
-                    lColumn.pop()
-
-                if bCheckAlignment:
-                    if isinstance(oToken, parser.whitespace):
-                        if len(oToken.get_value()) != lColumn[-1]:
-                            dAction = {}
-                            dAction['line'] = iLine
-                            dAction['column'] = lColumn[-1]
-                            dAction['action'] = 'adjust'
-                            dAction['indent'] = iIndent
-                            dAction['previous'] = iPreviousColumn
-                            oViolation = violation.New(iLine, oToi.extract_tokens(iToken, iToken), self.solution)
-                            oViolation.set_action(dAction)
-                            self.add_violation(oViolation)
-#                            print(dAction)
-                    else:
-                        if lColumn != 0:
-                            dAction = {}
-                            dAction['line'] = iLine
-                            if isinstance(oToken, parser.open_parenthesis):
-                                dAction['column'] = lColumn[-2]
-                            else:
-                                dAction['column'] = lColumn[-1]
-                            dAction['action'] = 'insert'
-                            dAction['indent'] = iIndent
-                            dAction['previous'] = iPreviousColumn
-                            oViolation = violation.New(iLine, oToi.extract_tokens(iToken, iToken), self.solution)
-                            oViolation.set_action(dAction)
-                            self.add_violation(oViolation)
-                    bCheckAlignment = False
-
-    def _fix_violation(self, oViolation):
-        lTokens = oViolation.get_tokens()
-        dAction = oViolation.get_action()
-
-        if dAction['action'] == 'adjust':
-            lTokens[0].set_value(' '*dAction['column'])
-        else:
-            lTokens.insert(0, parser.whitespace(' '*dAction['column']))
-
-        oViolation.set_tokens(lTokens)
+            _check_first_paren_new_line(self, oToi)
 
 
-def calculate_start_column(oFile, oToi):
-    iReturn = oFile.get_column_of_token_index(oToi.get_start_index())
-    iReturn += len(oToi.get_tokens()[0].get_value())
-    iReturn += 1
-    return iReturn
+#        for oNewToi in lToi:
+#
+#            iLine, lTokens = utils.get_toi_parameters(oNewToi)
+#
+#            bSearchOpen = False
+#            bSearchClose = False
+#            for iToken, oToken in enumerate(lTokens):
+#                if isinstance(oToken, token.constant_declaration.assignment_operator):
+#                    if utils.are_next_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken + 1, lTokens):
+#                        bSearchOpen = True
+#                if bSearchOpen:
+#                    if isinstance(oToken, parser.open_parenthesis):
+#                        iStartIndex = iToken
+#                        bSearchOpen = False
+#                        bSearchClose = True
+#                if bSearchClose:
+#                    if isinstance(oToken, parser.close_parenthesis):
+#                        iEndIndex = iToken
+#                if bSearchClose and isinstance(oToken, token.constant_declaration.semicolon):
+#                    lNewTokens = lTokens.copy()
+#                    lNewTokens = utils.remove_trailing_whitespace_and_comments(lNewTokens[:iEndIndex])
+#                    iEndIndex = iEndIndex - ( len(lTokens) - len(lNewTokens) )
+#                    oToi = oNewToi.extract_tokens(iStartIndex, iEndIndex)
+#                    break
+#            else:
+#                continue
+#
+#            iLine, lTokens = utils.get_toi_parameters(oToi)
+#
+##            print('-'*80)
+##            print(iLine)
+##            print(lTokens)
+#            iStartColumn = calculate_start_column(oFile, oToi)
+#            lColumn = []
+#            lColumn.append(iStartColumn)
+#            bCheckAlignment = False
+#            iFirstColumn = oFile.get_column_of_token_index(oToi.get_start_index())
+#            iColumn = iFirstColumn
+#            iPreviousColumn = 0
+#            iIndent = 0
+##            print('-'*80)
+#            for iToken, oToken in enumerate(lTokens):
+#
+#                iLine = utils.increment_line_number(iLine, oToken)
+#
+#                if isinstance(oToken, parser.carriage_return):
+#                    bCheckAlignment = True
+#                    iPreviousColumn = lColumn[-1]
+#                    iColumn = 0
+#                    if isinstance(lTokens[iToken + 1], parser.whitespace):
+#                        iIndent = len(lTokens[iToken + 1].get_value())
+#                    else:
+#                        iIndent = 0
+#                    continue
+#
+#                if isinstance(oToken, parser.blank_line):
+#                    bCheckAlignment = False
+#                    continue
+#
+#                iColumn += len(oToken.get_value())
+#
+#                if isinstance(oToken, parser.open_parenthesis):
+#                    lColumn.append(iColumn + iPreviousColumn - iIndent)
+#
+#                if isinstance(oToken, parser.close_parenthesis):
+#                    lColumn.pop()
+#
+#                if bCheckAlignment:
+#                    if isinstance(oToken, parser.whitespace):
+#                        if len(oToken.get_value()) != lColumn[-1]:
+#                            dAction = {}
+#                            dAction['line'] = iLine
+#                            dAction['column'] = lColumn[-1]
+#                            dAction['action'] = 'adjust'
+#                            dAction['indent'] = iIndent
+#                            dAction['previous'] = iPreviousColumn
+#                            oViolation = violation.New(iLine, oToi.extract_tokens(iToken, iToken), self.solution)
+#                            oViolation.set_action(dAction)
+#                            self.add_violation(oViolation)
+##                            print(dAction)
+#                    else:
+#                        if lColumn != 0:
+#                            dAction = {}
+#                            dAction['line'] = iLine
+#                            if isinstance(oToken, parser.open_parenthesis):
+#                                dAction['column'] = lColumn[-2]
+#                            else:
+#                                dAction['column'] = lColumn[-1]
+#                            dAction['action'] = 'insert'
+#                            dAction['indent'] = iIndent
+#                            dAction['previous'] = iPreviousColumn
+#                            oViolation = violation.New(iLine, oToi.extract_tokens(iToken, iToken), self.solution)
+#                            oViolation.set_action(dAction)
+#                            self.add_violation(oViolation)
+#                    bCheckAlignment = False
+#
+#    def _fix_violation(self, oViolation):
+#        lTokens = oViolation.get_tokens()
+#        dAction = oViolation.get_action()
+#
+#        if dAction['action'] == 'adjust':
+#            lTokens[0].set_value(' '*dAction['column'])
+#        else:
+#            lTokens.insert(0, parser.whitespace(' '*dAction['column']))
+#
+#        oViolation.set_tokens(lTokens)
+
+
+#def calculate_start_column(oFile, oToi):
+#    iReturn = oFile.get_column_of_token_index(oToi.get_start_index())
+#    iReturn += len(oToi.get_tokens()[0].get_value())
+#    iReturn += 1
+#    return iReturn
+
+
+def _check_first_paren_new_line(self, oToi):
+    
+    iLine, lTokens = utils.get_toi_parameters(oToi)
+    bSearch = False
+    for iToken, oToken in enumerate(lTokens):
+        iLine = utils.increment_line_number(iLine, oToken)
+        if isinstance(oToken, token.constant_declaration.assignment_operator):
+            iStart = iToken
+            bSearch = True
+        if isinstance(oToken, parser.open_parenthesis) and bSearch:
+            if utils.find_carriage_return(lTokens[iStart:iToken]) is None:
+                if self.first_paren_new_line:
+                    sSolution = 'Move parenthesis after assignment to the next line.'
+                    oViolation = violation.New(iLine, oToi.extract_tokens(iStart, iToken), sSolution)
+                    self.add_violation(oViolation)
+            else:
+                if not self.first_paren_new_line:
+                    sSolution = 'Move parenthesis to same line as assignment operator.'
+                    oViolation = violation.New(iLine, oToi.extract_tokens(iStart, iToken), sSolution)
+                    self.add_violation(oViolation)
+            break
+                
+  
+def _is_open_paren_after_assignment(oToi):
+    
+    iLine, lTokens = utils.get_toi_parameters(oToi)
+    for iToken, oToken in enumerate(lTokens):
+        if isinstance(oToken, token.constant_declaration.assignment_operator):
+            if utils.are_next_consecutive_token_types_ignoring_whitespace([token.constant_declaration.assignment_operator, parser.open_parenthesis], iToken, lTokens):
+                return True
+    return False
