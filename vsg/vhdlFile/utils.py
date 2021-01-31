@@ -638,3 +638,16 @@ def read_vhdlfile(sFileName):
         return lLines, None
     except OSError as e:
         return [], e
+
+
+def is_token_at_end_of_line(iToken, lTokens):
+    iMyToken = iToken + 1
+    if are_next_consecutive_token_types([parser.carriage_return], iMyToken, lTokens):
+        return True
+    if are_next_consecutive_token_types([parser.whitespace, parser.carriage_return], iMyToken, lTokens):
+        return True
+    if are_next_consecutive_token_types([parser.comment, parser.carriage_return], iMyToken, lTokens):
+        return True
+    if are_next_consecutive_token_types([parser.whitespace, parser.comment, parser.carriage_return], iMyToken, lTokens):
+        return True
+    return False

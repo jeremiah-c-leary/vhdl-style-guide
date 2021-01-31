@@ -25,6 +25,7 @@ class test_constant_rule(unittest.TestCase):
         oRule = constant.rule_012()
         oRule.first_paren_new_line = True
         oRule.last_paren_new_line = 'Ignore'
+        oRule.open_paren_new_line = 'Ignore'
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'constant')
         self.assertEqual(oRule.identifier, '012')
@@ -38,6 +39,7 @@ class test_constant_rule(unittest.TestCase):
         oRule = constant.rule_012()
         oRule.first_paren_new_line = False
         oRule.last_paren_new_line = 'Ignore'
+        oRule.open_paren_new_line = 'Ignore'
 
         lExpected = [14, 17, 21, 27, 41, 57]
 
@@ -48,6 +50,7 @@ class test_constant_rule(unittest.TestCase):
         oRule = constant.rule_012()
         oRule.first_paren_new_line = 'Ignore'
         oRule.last_paren_new_line = True
+        oRule.open_paren_new_line = 'Ignore'
 
         lExpected = [11, 14]
 
@@ -58,8 +61,31 @@ class test_constant_rule(unittest.TestCase):
         oRule = constant.rule_012()
         oRule.first_paren_new_line = 'Ignore'
         oRule.last_paren_new_line = False
+        oRule.open_paren_new_line = 'Ignore'
 
         lExpected = [18, 24, 38, 54, 72]
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+
+    def test_rule_012_open_paren_new_line_true(self):
+        oRule = constant.rule_012()
+        oRule.first_paren_new_line = 'Ignore'
+        oRule.last_paren_new_line = 'Ignore'
+        oRule.open_paren_new_line = True
+
+        lExpected = [11, 11, 14, 14, 14, 17, 17, 17, 22, 23, 28, 33]
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+
+    def test_rule_012_open_paren_new_line_false(self):
+        oRule = constant.rule_012()
+        oRule.first_paren_new_line = 'Ignore'
+        oRule.last_paren_new_line = 'Ignore'
+        oRule.open_paren_new_line = False
+
+        lExpected = [10, 21, 27, 41, 42, 48, 57, 58, 65]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
