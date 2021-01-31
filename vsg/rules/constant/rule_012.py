@@ -72,6 +72,7 @@ class rule_012(rule.Rule):
             _check_first_paren_new_line(self, oToi)
             _check_last_paren_new_line(self, oToi)
             _check_open_paren_new_line(self, oToi)
+            _check_close_paren_new_line(self, oToi)
 
 
 #        for oNewToi in lToi:
@@ -254,6 +255,7 @@ def _check_open_paren_new_line(self, oToi):
 
     iLine, lTokens = utils.get_toi_parameters(oToi)
 
+    bSearch = False
     for iToken, oToken in enumerate(lTokens):
         iLine = utils.increment_line_number(iLine, oToken)
         if isinstance(oToken, token.constant_declaration.assignment_operator):
@@ -271,6 +273,35 @@ def _check_open_paren_new_line(self, oToi):
                     oViolation = violation.New(iLine, oToi.extract_tokens(iToken, iToken), sSolution)
                     self.add_violation(oViolation)
                 
+
+def _check_close_paren_new_line(self, oToi):
+    if self.close_paren_new_line == 'Ignore':
+        return 
+
+    iLine, lTokens = utils.get_toi_parameters(oToi)
+    bSearch = False
+    for iToken, oToken in reversed(list(enumerate(lTokens))):
+        if isinstance(oToken, parser.close_parenthesis):
+            iEnd = iToken
+            break
+
+    bSearch = False
+    for iToken, oToken in enumerate(lTokens[:iEnd]):
+        iLine = utils.increment_line_number(iLine, oToken)
+        if isinstance(oToken, token.constant_declaration.assignment_operator):
+            bSearch = True
+        if isinstance(oToken, parser.close_parenthesis) and bSearch:
+            if utils.does_token_start_line(iToken, lTokens):
+                if not self.close_paren_new_line:
+                    sSolution = 'Move closing parenthesis to previous line.'
+                    oViolation = violation.New(iLine, oToi.extract_tokens(iToken, iToken), sSolution)
+                    self.add_violation(oViolation)
+            else:
+                if self.close_paren_new_line:
+                    sSolution = 'Move closing parenthesis to the next line.'
+                    oViolation = violation.New(iLine, oToi.extract_tokens(iToken, iToken), sSolution)
+                    self.add_violation(oViolation)
+
   
 def _is_open_paren_after_assignment(oToi):
     
