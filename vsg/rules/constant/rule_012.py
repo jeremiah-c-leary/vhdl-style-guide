@@ -80,6 +80,8 @@ class rule_012(rule.Rule):
         dAction = oViolation.get_action()
         if dAction['type'] == 'first_paren_new_line':
             _fix_first_paren_new_line(oViolation)
+        elif dAction['type'] == 'last_paren_new_line':
+            _fix_last_paren_new_line(oViolation)
 
 
 def _check_first_paren_new_line(self, oToi):
@@ -126,23 +128,30 @@ def _check_last_paren_new_line(self, oToi):
     for iToken, oToken in enumerate(lTokens):
         iLine = utils.decrement_line_number(iLine, oToken)
         if isinstance(oToken, parser.close_parenthesis):
-            iEnd = len(lTokens) - iToken
+            iEnd = len(lTokens) - iToken - 1
             if utils.are_next_consecutive_token_types([parser.whitespace, parser.carriage_return], iToken + 1, lTokens):
-                iStart = len(lTokens) - iToken - 2
                 bReturnFound = True
             elif utils.are_next_consecutive_token_types([parser.carriage_return], iToken + 1, lTokens):
-                iStart = len(lTokens) - iToken - 1
                 bReturnFound = True
             
             if self.last_paren_new_line and not bReturnFound:
                 lTokens.reverse()
+                dAction = {}
+                dAction['type'] = 'last_paren_new_line'
+                dAction['action'] = 'insert'
                 sSolution = 'Move closing parenthesis to the next line.'
-                oViolation = violation.New(iLine, oToi.extract_tokens(iEnd, iEnd), sSolution)
+                oViolation = violation.New(iLine, oToi.extract_tokens(iEnd - 1, iEnd), sSolution)
+                oViolation.set_action(dAction)
                 self.add_violation(oViolation)
             elif not self.last_paren_new_line and bReturnFound:
                 lTokens.reverse()
+                dAction = {}
+                dAction['type'] = 'last_paren_new_line'
+                dAction['action'] = 'remove'
                 sSolution = 'Move closing parenthesis to previous line.'
+                iStart = utils.find_previous_non_whitespace_token(iEnd - 1, lTokens)
                 oViolation = violation.New(iLine, oToi.extract_tokens(iStart, iEnd), sSolution)
+                oViolation.set_action(dAction)
                 self.add_violation(oViolation)
 
             break
@@ -251,5 +260,20 @@ def _fix_first_paren_new_line(oViolation):
         lNewTokens = []
         lNewTokens.append(lTokens[0])
         lNewTokens.append(parser.whitespace(' '))
+        lNewTokens.append(lTokens[-1])
+        oViolation.set_tokens(lNewTokens)
+
+
+def _fix_last_paren_new_line(oViolation):
+    lTokens = oViolation.get_tokens()
+    dAction = oViolation.get_action()
+    if dAction['action'] == 'insert':
+        if not isinstance(lTokens[0], parser.whitespace):
+            lTokens.insert(1, parser.whitespace(' '))
+        lTokens.insert(1, parser.carriage_return())
+        oViolation.set_tokens(lTokens)
+    elif dAction['action'] == 'remove':
+        lNewTokens = []
+        lNewTokens.append(lTokens[0])
         lNewTokens.append(lTokens[-1])
         oViolation.set_tokens(lNewTokens)
