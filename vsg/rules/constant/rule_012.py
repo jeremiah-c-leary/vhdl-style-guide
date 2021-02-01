@@ -82,6 +82,8 @@ class rule_012(rule.Rule):
             _fix_first_paren_new_line(oViolation)
         elif dAction['type'] == 'last_paren_new_line':
             _fix_last_paren_new_line(oViolation)
+        elif dAction['type'] == 'open_paren_new_line':
+            _fix_open_paren_new_line(oViolation)
 
 
 def _check_first_paren_new_line(self, oToi):
@@ -172,14 +174,22 @@ def _check_open_paren_new_line(self, oToi):
         if isinstance(oToken, parser.open_parenthesis) and bSearch:
             if utils.is_token_at_end_of_line(iToken, lTokens):
                 if not self.open_paren_new_line:
-                    iEnd = utils.find_carriage_return(lTokens, iToken)
+                    iEnd = utils.find_next_non_whitespace_token(iToken + 1, lTokens)
+                    dAction = {}
+                    dAction['type'] = 'last_paren_new_line'
+                    dAction['action'] = 'remove'
                     sSolution = 'Remove carriage return after open parenthesis.'
                     oViolation = violation.New(iLine, oToi.extract_tokens(iToken, iEnd), sSolution)
+                    oViolation.set_action(dAction)
                     self.add_violation(oViolation)
             else:
                 if self.open_paren_new_line:
+                    dAction = {}
+                    dAction['type'] = 'open_paren_new_line'
+                    dAction['action'] = 'insert'
                     sSolution = 'Add carriage return after open parenthesis.'
                     oViolation = violation.New(iLine, oToi.extract_tokens(iToken, iToken), sSolution)
+                    oViolation.set_action(dAction)
                     self.add_violation(oViolation)
                 
 
@@ -271,6 +281,19 @@ def _fix_last_paren_new_line(oViolation):
         if not isinstance(lTokens[0], parser.whitespace):
             lTokens.insert(1, parser.whitespace(' '))
         lTokens.insert(1, parser.carriage_return())
+        oViolation.set_tokens(lTokens)
+    elif dAction['action'] == 'remove':
+        lNewTokens = []
+        lNewTokens.append(lTokens[0])
+        lNewTokens.append(lTokens[-1])
+        oViolation.set_tokens(lNewTokens)
+
+def _fix_open_paren_new_line(oViolation):
+    lTokens = oViolation.get_tokens()
+    dAction = oViolation.get_action()
+    if dAction['action'] == 'insert':
+        lTokens.append(parser.carriage_return())
+        lTokens.append(parser.whitespace(' '))
         oViolation.set_tokens(lTokens)
     elif dAction['action'] == 'remove':
         lNewTokens = []
