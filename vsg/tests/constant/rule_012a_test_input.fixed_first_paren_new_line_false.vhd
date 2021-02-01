@@ -10,21 +10,17 @@ architecture rtl of fifo is
   constant c_stimulus : t_stimulus_array := (
                       (name => "Hold in reset", clk_in => "01", rst_in => "11", cnt_en_in => "00", cnt_out => "00"), (name => "Not enabled", clk_in => "01", rst_in => "00", cnt_en_in => "00", cnt_out => "00"));
 
-  constant c_stimulus : t_stimulus_array :=
-     ((name => "Hold in reset", clk_in => "01", rst_in => "11", cnt_en_in => "00", cnt_out => "00"), (name => "Not enabled", clk_in => "01", rst_in => "00", cnt_en_in => "00", cnt_out => "00"));
+  constant c_stimulus : t_stimulus_array := ((name => "Hold in reset", clk_in => "01", rst_in => "11", cnt_en_in => "00", cnt_out => "00"), (name => "Not enabled", clk_in => "01", rst_in => "00", cnt_en_in => "00", cnt_out => "00"));
 
-  constant c_stimulus : t_stimulus_array :=
-((name => "Hold in reset", clk_in => "01", rst_in => "11", cnt_en_in => "00", cnt_out => "00"), (name => "Not enabled", clk_in => "01", rst_in => "00", cnt_en_in => "00", cnt_out => "00")
+  constant c_stimulus : t_stimulus_array := ((name => "Hold in reset", clk_in => "01", rst_in => "11", cnt_en_in => "00", cnt_out => "00"), (name => "Not enabled", clk_in => "01", rst_in => "00", cnt_en_in => "00", cnt_out => "00")
   );
 
-  constant c_stimulus : t_stimulus_array :=
-  (
+  constant c_stimulus : t_stimulus_array := (
     (name => "Hold in reset", clk_in => "01", rst_in => "11", cnt_en_in => "00", cnt_out => "00"),
     (name => "Not enabled", clk_in => "01", rst_in => "00", cnt_en_in => "00", cnt_out => "00")
   );
 
-  constant c_stimulus : t_stimulus_array :=
-  (
+  constant c_stimulus : t_stimulus_array := (
     (name => "Hold in reset",
       clk_in => "01",
       rst_in => "11",
@@ -37,8 +33,7 @@ architecture rtl of fifo is
       cnt_out => "00")
   );
 
-  constant c_stimulus : t_stimulus_array :=
-  (
+  constant c_stimulus : t_stimulus_array := (
     (
       name => "Hold in reset",
       clk_in => "01",
@@ -53,8 +48,7 @@ architecture rtl of fifo is
       cnt_out => "00")
   );
 
-  constant c_stimulus : t_stimulus_array :=
-  (
+  constant c_stimulus : t_stimulus_array := (
     (
       name => "Hold in reset",
       clk_in => "01",
