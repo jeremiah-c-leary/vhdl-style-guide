@@ -1,3 +1,4 @@
+import pathlib
 import unittest
 from unittest import mock
 import subprocess
@@ -109,10 +110,15 @@ class testVsg(unittest.TestCase):
         lExpected.append('expected the node content, but found \',\'')
         lExpected.append('  in "vsg/tests/vsg/config_error.json", line 2, column 16')
         lExpected.append('')
+        try:
+            lActual = subprocess.check_output(['bin/vsg','--configuration','vsg/tests/vsg/config_error.json','--output_format','syntastic','-f','vsg/tests/vsg/entity1.vhd','--junit','vsg/tests/vsg/config_error.actual.xml'])
+        except subprocess.CalledProcessError as e:
+            lActual = str(e.output.decode('utf-8')).split('\n')
+            iExitStatus = e.returncode
 
-        lActual = subprocess.check_output(['bin/vsg','--configuration','vsg/tests/vsg/config_error.json','--output_format','syntastic','-f','vsg/tests/vsg/entity1.vhd','--junit','vsg/tests/vsg/config_error.actual.xml'])
-        lActual = str(lActual.decode('utf-8')).split('\n')
         self.assertEqual(lActual, lExpected)
+        self.assertEqual(iExitStatus,1)
+
         # Read in the expected JUnit XML file for comparison
         lExpected = []
         utils.read_file(os.path.join(os.path.dirname(__file__),'config_error.expected.xml'), lExpected)
@@ -289,19 +295,35 @@ class testVsg(unittest.TestCase):
         self.assertEqual(lExpected[0], lActual[0])
 
     def test_missing_configuration_file(self):
-        lExpected = []
-        lExpected.append('ERROR: Could not find configuration file: missing_configuration.yaml')
-        lExpected.append('')
+        sExpected = 'ERROR: encountered FileNotFoundError, No such file or directory while opening configuration file: missing_configuration.yaml\n'
 
         try:
-            subprocess.check_output(['bin/vsg','-c', 'missing_configuration.yaml'])
+            subprocess.check_output(['bin/vsg', '-c', 'missing_configuration.yaml'])
         except subprocess.CalledProcessError as e:
-            lActual = str(e.output.decode('utf-8')).split('\n')
+            sActual = str(e.output.decode('utf-8'))
             iExitStatus = e.returncode
 
-        self.assertEqual(iExitStatus,1)
+        self.assertEqual(iExitStatus, 1)
 
-        self.assertEqual(lActual, lExpected)
+        self.assertEqual(sActual, sExpected)
+
+    def test_no_permission_configuration_file(self):
+        sNoPermissionFile = 'no_permission.yml'
+        pathlib.Path(sNoPermissionFile).touch(mode=0o222, exist_ok=True)
+        sExpected = f'ERROR: encountered PermissionError, Permission denied while opening configuration file: {sNoPermissionFile}\n'
+
+        try:
+            subprocess.check_output(['bin/vsg', '-c', sNoPermissionFile])
+        except subprocess.CalledProcessError as e:
+            sActual = str(e.output.decode('utf-8'))
+            iExitStatus = e.returncode
+
+            self.assertEqual(iExitStatus, 1)
+
+            self.assertEqual(sActual, sExpected)
+        finally:
+            if os.path.isfile(sNoPermissionFile):
+                os.remove(sNoPermissionFile)
 
     def test_missing_files_in_configuration_file(self):
         lExpected = []

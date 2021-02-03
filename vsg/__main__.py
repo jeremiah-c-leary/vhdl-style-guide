@@ -62,7 +62,7 @@ def get_predefined_styles():
     for sStyle in lStyles:
         if sStyle.endswith('.yaml'):
             with open(os.path.join(sStylePath, sStyle)) as yaml_file:
-                tempConfiguration = yaml.full_load(yaml_file)
+                tempConfiguration = yaml.safe_load(yaml_file)
             lReturn.append(tempConfiguration['name'])
     return lReturn
 
@@ -84,49 +84,20 @@ def read_predefined_style(sStyleName):
     return dReturn
 
 
-def open_fix_file(sFileName):
-    '''Attempts to open a configuration file and read it's contents.'''
-    try:
-        with open(sFileName) as yaml_file:
-            temp = yaml.full_load(yaml_file)
-            return temp
-    except IOError:
-        print('ERROR: Could not find JSON fix file: ' + sFileName)
-        write_invalid_configuration_junit_file(sFileName, sJUnitFileName)
-        sys.exit(1)
-    except yaml.scanner.ScannerError as e:
-        print('ERROR: Invalid JSON fix file: ' + sFileName)
-        print(e)
-        write_invalid_configuration_junit_file(sFileName, sJUnitFileName)
-        exit()
-    except yaml.parser.ParserError as e:
-        print('ERROR: Invalid JSON fix file: ' + sFileName)
-        print(e)
-        write_invalid_configuration_junit_file(sFileName, sJUnitFileName)
-        exit()
-    except TypeError:
-        return None
-
-
 def open_configuration_file(sFileName, sJUnitFileName=None):
     '''Attempts to open a configuration file and read it's contents.'''
     try:
         with open(sFileName) as yaml_file:
             tempConfiguration = yaml.full_load(yaml_file)
-    except IOError:
-        print('ERROR: Could not find configuration file: ' + sFileName)
+    except OSError as e:
+        print(f'ERROR: encountered {e.__class__.__name__}, {e.args[1]} while opening configuration file: ' + sFileName)
         write_invalid_configuration_junit_file(sFileName, sJUnitFileName)
         sys.exit(1)
-    except yaml.scanner.ScannerError as e:
+    except (yaml.parser.ParserError, yaml.scanner.ScannerError) as e:
         print('ERROR: Invalid configuration file: ' + sFileName)
         print(e)
         write_invalid_configuration_junit_file(sFileName, sJUnitFileName)
-        exit()
-    except yaml.parser.ParserError as e:
-        print('ERROR: Invalid configuration file: ' + sFileName)
-        print(e)
-        write_invalid_configuration_junit_file(sFileName, sJUnitFileName)
-        exit()
+        sys.exit(1)
     return tempConfiguration
 
 
@@ -374,7 +345,10 @@ def main():
 
     dIndent = read_indent_configuration(configuration)
 
-    fix_only = open_fix_file(commandLineArguments.fix_only)
+    if commandLineArguments.fix_only:
+        fix_only = open_configuration_file(commandLineArguments.fix_only)
+    else:
+        fix_only = None
 
     update_command_line_arguments(commandLineArguments, configuration)
 
