@@ -143,7 +143,11 @@ This rule checks for excessive spaces after the **use** keyword.
 library_007
 ###########
 
-This rule removes blank lines above the **use** keyword.
+This rule checks for blank lines or comments above the **process** declaration.
+
+Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+
+The default style is :code:`no_blank`.
 
 **Violation**
 

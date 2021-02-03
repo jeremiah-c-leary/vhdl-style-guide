@@ -532,7 +532,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_cas
 if_030
 ######
 
-This rule checks for at least a single blank line after the **end if**.
+This rule checks a single blank line after the **end if**.
 In the case of nested **if** statements, the rule will be enfoced on the last **end if**.
  
 Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
@@ -559,7 +559,7 @@ Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ f
 if_031
 ######
 
-This rule checks for blank lines or comments before the **if** keyword.
+This rule checks for blank lines or comments above the **if** keyword.
 In the case of nested **if** statements, the rule will be enfoced on the first **if**.
  
 Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous-line-rules>`_ for options.

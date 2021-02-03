@@ -222,7 +222,7 @@ This rule checks the **begin** keyword is on it's own line.
 process_011
 ###########
 
-This rule checks for a blank line after the **end process** keyword.
+This rule checks for a blank line below the **end process** keyword.
 
 Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines.html>`_ for options.
 
@@ -470,7 +470,7 @@ This rule checks the indentation of multiline sensitivity lists.
 process_021
 ###########
 
-This rule checks for blank lines before the **begin** keyword if there are no process declarative items.
+This rule checks for blank lines above the **begin** keyword if there are no process declarative items.
 
 Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines.html>`_ for options.
 
@@ -611,7 +611,7 @@ This rule checks for a single space after the colon and before the **process** k
 process_026
 ###########
 
-This rule checks for blank lines between the end of the sensitivity list and process declarative lines.
+This rule checks for blank lines above the first declarative line, if it exists.
 
 Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines.html>`_ for options.
 
@@ -641,7 +641,7 @@ Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines.html
 process_027
 ###########
 
-This rule checks for blank lines between process declarative lines and the **begin** keyword.
+This rule checks for blank lines above the **begin** keyword if a declarative item exists.
 
 Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines.html>`_ for options.
 

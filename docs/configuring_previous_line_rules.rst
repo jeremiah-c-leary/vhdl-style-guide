@@ -9,6 +9,8 @@ There are several options to these rules, which can be selected by using the :co
 +---------------------+----------------------------------------------------------+
 | Style               | Description                                              |
 +=====================+==========================================================+
+| no_blank            | Removes blank lines on the line above.                   |
++---------------------+----------------------------------------------------------+
 | require_blank_line  | Requires a blank line on the line above.                 |
 +---------------------+----------------------------------------------------------+
 | no_code             | Either a blank line; or comment(s) on the line(s) above. |
@@ -32,6 +34,26 @@ This is an example of how to configure these options.
 
 .. NOTE:: All examples below are using the rule **entity_004**.
 
+Example: no_blank
+#################
+
+The following code would fail with this option:
+
+.. code-Block:: vhdl
+
+    library fifo_dsn;
+    -- Define entity
+
+    entity fifo is
+
+The following code would pass with this option:
+
+.. code-block:: vhdl
+
+    library fifo_dsn;
+    -- Define entity
+    entity fifo is
+
 Example: require_blank_line
 ###########################
 
@@ -40,7 +62,7 @@ The following code would fail with this option:
 .. code-Block:: vhdl
 
     library fifo_dsn;
-    -- Bring in libraries
+    -- Define entity
     entity fifo is
 
 The following code would pass with this option:
@@ -48,7 +70,7 @@ The following code would pass with this option:
 .. code-block:: vhdl
 
     library fifo_dsn;
-    -- Bring in libraries
+    -- Define entity
 
     entity fifo is
 

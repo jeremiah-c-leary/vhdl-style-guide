@@ -44,6 +44,8 @@ class previous_line(rule.Rule):
                 lSecond = oFile.get_line_above_line_starting_with_token_with_hierarchy(self.lTokens, self.lHierarchyLimits, True)
                 return zip(lFirst, lSecond)
         
+        elif self.style == 'no_blank':
+            return oFile.get_blank_lines_above_line_starting_with_token(self.lTokens)
         else:
 
             if self.lHierarchyLimits is None:
@@ -56,7 +58,9 @@ class previous_line(rule.Rule):
 
     def _analyze(self, lToi):
         self._set_allow_tokens()
-        if self.style == 'require_blank':
+        if self.style == 'no_blank':
+            _analyze_no_blank(self, lToi, self.lAllowTokens)
+        elif self.style == 'require_blank':
             _analyze_require_blank(self, lToi, self.lAllowTokens)
         elif self.style == 'no_code':
             _analyze_no_code(self, lToi, self.lAllowTokens)
@@ -72,6 +76,8 @@ class previous_line(rule.Rule):
             lTokens.append(parser.carriage_return())
             lTokens.append(parser.blank_line())
             oViolation.set_tokens(lTokens)
+        elif dAction['action'] == 'Remove':
+            oViolation.set_tokens([])
 
 
 def _include_comments(sMethod):
@@ -84,6 +90,16 @@ def _include_comments(sMethod):
     elif sMethod == 'require_comment':
         return True
     return None
+
+
+def _analyze_no_blank(self, lToi, lAllowTokens):
+        for oToi in lToi:
+            sSolution = 'Remove blank lines'
+            oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
+            dAction = {}
+            dAction['action'] = 'Remove'
+            oViolation.set_action(dAction)
+            self.add_violation(oViolation)
 
 
 def _analyze_require_blank(self, lToi, lAllowTokens):

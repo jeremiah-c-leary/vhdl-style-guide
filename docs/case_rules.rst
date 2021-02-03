@@ -132,7 +132,7 @@ This rule checks for a single space between the **end** and **case** keywords.
 case_007
 ########
 
-This rule checks for blank lines or comments before the **case** keyword.
+This rule checks for blank lines or comments above the **case** keyword.
 
 Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous-line-rules>`_ for options.
 

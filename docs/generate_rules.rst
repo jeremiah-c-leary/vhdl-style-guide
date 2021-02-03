@@ -48,7 +48,7 @@ This rule checks for a single space between the label and the colon.
 generate_003
 ############
 
-This rule checks for a blank line after the **end generate** keywords.
+This rule checks for a blank line below the **end generate** keywords.
 
 Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
 
