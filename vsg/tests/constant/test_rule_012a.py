@@ -42,6 +42,14 @@ lExpected_close_paren_new_line_false = []
 lExpected_close_paren_new_line_false.append('')
 utils.read_file(os.path.join(sTestDir, 'rule_012a_test_input.fixed_close_paren_new_line_false.vhd'), lExpected_close_paren_new_line_false)
 
+lExpected_new_line_after_comma_true = []
+lExpected_new_line_after_comma_true.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_012a_test_input.fixed_new_line_after_comma_true.vhd'), lExpected_new_line_after_comma_true)
+
+lExpected_new_line_after_comma_false = []
+lExpected_new_line_after_comma_false.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_012a_test_input.fixed_new_line_after_comma_false.vhd'), lExpected_new_line_after_comma_false)
+
 
 class test_constant_rule(unittest.TestCase):
 
@@ -378,6 +386,42 @@ class test_constant_rule(unittest.TestCase):
         lActual = self.oFile.get_lines()
 
         self.assertEqual(lExpected_close_paren_new_line_false, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+
+    def test_fix_rule_012_new_line_after_comma_true(self):
+        oRule = constant.rule_012()
+        oRule.first_paren_new_line = 'Ignore'
+        oRule.last_paren_new_line = 'Ignore'
+        oRule.open_paren_new_line = 'Ignore'
+        oRule.close_paren_new_line = 'Ignore'
+        oRule.new_line_after_comma = True
+        oRule.align_left = 'Ignore'
+
+        oRule.fix(self.oFile)
+
+        lActual = self.oFile.get_lines()
+
+        self.assertEqual(lExpected_new_line_after_comma_true, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+
+    def test_fix_rule_012_new_line_after_comma_false(self):
+        oRule = constant.rule_012()
+        oRule.first_paren_new_line = 'Ignore'
+        oRule.last_paren_new_line = 'Ignore'
+        oRule.open_paren_new_line = 'Ignore'
+        oRule.close_paren_new_line = 'Ignore'
+        oRule.new_line_after_comma = False
+        oRule.align_left = 'Ignore'
+
+        oRule.fix(self.oFile)
+
+        lActual = self.oFile.get_lines()
+
+        self.assertEqual(lExpected_new_line_after_comma_false, lActual)
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
