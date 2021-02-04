@@ -6,7 +6,7 @@ generic_map_001 (instantiation_013)
 
 This rule checks the **generic map** keywords have proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
 
 **Violation**
 
@@ -25,7 +25,7 @@ generic_map_002 (instantiation_016)
 
 This rule checks generic names have proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
 
 **Violation**
 

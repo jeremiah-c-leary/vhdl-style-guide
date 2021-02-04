@@ -68,7 +68,7 @@ package_004
 
 This rule checks the package keyword has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
 
 **Violation**
 
@@ -105,7 +105,7 @@ package_006
 
 This rule checks the **end** keyword has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
 
 **Violation**
 
@@ -124,7 +124,7 @@ package_007
 
 This rule checks for the **package** keyword on the end package declaration.
 
-Refer to the section `Configuring Optional Items <configuring_optional_items.html>`_ for options.
+Refer to the section `Configuring Optional Items <configuring.html#configuring-optional-items>`_ for options.
 
 **Violation**
 
@@ -143,7 +143,7 @@ package_008
 
 This rule checks the package name has proper case on the end package declaration.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
 
 **Violation**
 
@@ -179,7 +179,7 @@ package_010
 
 This rule checks the package name has proper case in the package declaration.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
 
 **Violation**
 
@@ -198,7 +198,7 @@ package_011
 
 This rule checks for a blank line below the **package** keyword.
 
-Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
 
 **Violation**
 
@@ -220,7 +220,7 @@ package_012
 
 This rule checks for blank lines or comments above the **end package** keyword.
 
-Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines.html>`_ for options.
+Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options.
 
 **Violation**
 
@@ -242,7 +242,7 @@ package_013
 
 This rule checks the **is** keyword has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
 
 **Violation**
 
@@ -261,7 +261,7 @@ package_014
 
 This rule checks the package name exists on the same line as the **end package** keywords.
 
-Refer to the section `Configuring Optional Items <configuring_optional_items.html>`_ for options.
+Refer to the section `Configuring Optional Items <configuring.html#configuring-optional-items>`_ for options.
 
 **Violation**
 
@@ -302,7 +302,7 @@ package_016
 This rule checks for valid suffixes on package identifiers.
 The default package suffix is *_pkg*.
 
-Refer to the section `Configuring Prefix and Suffix Rules <configuring_prefix_suffix.html>`_ for information on changing the allowed suffixes.
+Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-suffix>`_ for information on changing the allowed suffixes.
 
 **Violation**
 
@@ -323,7 +323,7 @@ package_017
 This rule checks for valid prefixes on package identifiers.
 The default package prefix is *pkg_*.
 
-Refer to the section `Configuring Prefix and Suffix Rules <configuring_prefix_suffix.html>`_ for information on changing the allowed prefixes.
+Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-suffix>`_ for information on changing the allowed prefixes.
 
 **Violation**
 
@@ -342,7 +342,7 @@ package_018
 
 This rule checks the **package** keyword in the **end package** has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
 
 **Violation**
 
@@ -361,7 +361,7 @@ package_019
 
 This rule checks the identifiers for all declarations are aligned in the package declarative region.
 
-Refer to the section `Configuring Identifier Alignment Rules <configuring_declaration_identifier_alignment.html>`_ for information on changing the configurations.
+Refer to the section `Configuring Identifier Alignment Rules <configuring.html#configuring-declaration-identifier-alignment>`_ for information on changing the configurations.
 
 **Violation**
 

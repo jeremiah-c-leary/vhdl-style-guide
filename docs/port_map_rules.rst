@@ -6,7 +6,7 @@ port_map_001 (instantiation_006)
 
 This rule checks the **port map** keywords have proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
 
 **Violation**
 

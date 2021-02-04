@@ -52,7 +52,7 @@ after_002
 #########
 
 This rule checks the *after* keywords are aligned in a clock process.
-Refer to the section `Configuring Keyword Alignment Rules <configuring_keyword_alignment.html>`_ for information on changing the configurations.
+Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment>`_ for information on changing the configurations.
 
 **Violation**
 

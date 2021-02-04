@@ -50,7 +50,7 @@ generate_003
 
 This rule checks for a blank line below the **end generate** keywords.
 
-Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
 
 **Violation**
 
@@ -94,7 +94,7 @@ generate_005
 
 This rule checks the generate label has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
 
 **Violation**
 
@@ -171,7 +171,7 @@ generate_009
 
 This rule checks the **end** keyword has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
 
 **Violation**
 
@@ -190,7 +190,7 @@ generate_010
 
 This rule checks the **generate** keyword has the proper case in the **end generate** line.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
 
 **Violation**
 
@@ -230,7 +230,7 @@ generate_012
 
 This rule checks the **end generate** label has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
 
 **Violation**
 
@@ -328,7 +328,7 @@ generate_017
 This rule checks for valid prefixes on generate statement labels.
 The default prefix is *gen\_*.
 
-Refer to the section `Configuring Prefix and Suffix Rules <configuring_prefix_suffix.html>`_ for information on changing the allowed prefixes.
+Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-suffix>`_ for information on changing the allowed prefixes.
 
 **Violation**
 
@@ -373,7 +373,7 @@ generate_400
 
 This rule checks the identifiers for all declarations are aligned in the generate declarative part in for generate statements.
 
-Refer to the section `Configuring Identifier Alignment Rules <configuring_declaration_identifier_alignment.html>`_ for information on changing the configurations.
+Refer to the section `Configuring Identifier Alignment Rules <configuring.html#configuring-declaration-identifier-alignment>`_ for information on changing the configurations.
 
 **Violation**
 
@@ -394,7 +394,7 @@ generate_401
 
 This rule checks the colons are in the same column for all declarations in the generate declarative part in for generate statements.
 
-Refer to the section `Configuring Keyword Alignment Rules <configuring_keyword_alignment.html>`_ for information on changing the configurations.
+Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment>`_ for information on changing the configurations.
 
 **Violation**
 
@@ -419,7 +419,7 @@ generate_402
 
 This rule checks the identifiers for all declarations are aligned in the generate declarative part in if generate statements.
 
-Refer to the section `Configuring Identifier Alignment Rules <configuring_declaration_identifier_alignment.html>`_ for information on changing the configurations.
+Refer to the section `Configuring Identifier Alignment Rules <configuring.html#configuring-declaration-identifier-alignment>`_ for information on changing the configurations.
 
 **Violation**
 
@@ -440,7 +440,7 @@ generate_403
 
 This rule checks the colons are in the same column for all declarations in the generate declarative part in if generate statements.
 
-Refer to the section `Configuring Keyword Alignment Rules <configuring_keyword_alignment.html>`_ for information on changing the configurations.
+Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment>`_ for information on changing the configurations.
 
 **Violation**
 
@@ -465,7 +465,7 @@ generate_404
 
 This rule checks the identifiers for all declarations are aligned in the generate declarative part in case generate statements.
 
-Refer to the section `Configuring Identifier Alignment Rules <configuring_declaration_identifier_alignment.html>`_ for information on changing the configurations.
+Refer to the section `Configuring Identifier Alignment Rules <configuring.html#configuring-declaration-identifier-alignment>`_ for information on changing the configurations.
 
 **Violation**
 
@@ -486,7 +486,7 @@ generate_405
 
 This rule checks the colons are in the same column for all declarations in the generate declarative part in case generate statements.
 
-Refer to the section `Configuring Keyword Alignment Rules <configuring_keyword_alignment.html>`_ for information on changing the configurations.
+Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment>`_ for information on changing the configurations.
 
 **Violation**
 

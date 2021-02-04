@@ -133,7 +133,7 @@ generic_007
 
 This rule checks the generic names have proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
 
 **Violation**
 
@@ -171,7 +171,7 @@ generic_009
 
 This rule checks the **generic** keyword has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
 
 **Violation**
 
@@ -269,7 +269,7 @@ generic_017
 
 This rule checks the generic type has proper case if it is a VHDL keyword.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
 
 **Violation**
 
@@ -338,7 +338,7 @@ generic_020
 This rule checks for valid prefixes on generic identifiers.
 The default generic prefix is *g\_*.
 
-Refer to the section `Configuring Prefix and Suffix Rules <configuring_prefix_suffix.html>`_ for information on changing the allowed prefixes.
+Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-suffix>`_ for information on changing the allowed prefixes.
 
 **Violation**
 

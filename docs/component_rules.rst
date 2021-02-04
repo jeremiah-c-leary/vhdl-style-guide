@@ -75,7 +75,7 @@ component_004
 
 This rule checks the **component** keyword has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
 
 **Violation**
 
@@ -121,7 +121,7 @@ component_006
 
 This rule checks the **is** keyword has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
 
 **Violation**
 
@@ -161,7 +161,7 @@ component_008
 
 This rule checks the component name has proper case in the component declaration.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
 
 **Violation**
 
@@ -202,7 +202,7 @@ component_010
 
 This rule checks the **end** keyword has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
 
 **Violation**
 
@@ -238,7 +238,7 @@ component_012
 
 This rule checks the proper case of the component name in the **end component** line.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
 
 **Violation**
 
@@ -274,7 +274,7 @@ component_014
 
 This rule checks the **component** keyword in the **end component** line has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
 
 **Violation**
 
@@ -327,7 +327,7 @@ Following extra configurations are supported:
 
 * :code:`separate_generic_port_alignment`.
 
-Refer to the section `Configuring Keyword Alignment Rules <configuring_keyword_alignment.html>`_ for information on changing the configurations.
+Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment>`_ for information on changing the configurations.
 
 **Violation**
 
@@ -366,7 +366,7 @@ component_018
 
 This rule checks for a blank line below the **end component** line.
 
-Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
 
 **Violation**
 
@@ -415,7 +415,7 @@ Following extra configurations are supported:
 
 * :code:`separate_generic_port_alignment`.
 
-Refer to the section `Configuring Keyword Alignment Rules <configuring_keyword_alignment.html>`_ for information on changing the configurations.
+Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment>`_ for information on changing the configurations.
 
 **Violation**
 
@@ -454,7 +454,7 @@ component_021
 
 This rule inserts the optional **is** keyword if it does not exist.
 
-Refer to the section `Configuring Optional Items <configuring_optional_items.html>`_ for options.
+Refer to the section `Configuring Optional Items <configuring.html#configuring-optional-items>`_ for options.
 
 **Violation**
 

@@ -57,7 +57,7 @@ architecture_004
 
 This rule checks the proper case of the **architecture** keyword in the architecture declaration.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
 
 **Violation**
 
@@ -155,7 +155,7 @@ architecture_009
 
 This rule checks the **end** keyword has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
 
 **Violation**
 
@@ -179,7 +179,7 @@ architecture_010
 This rule checks for the keyword **architecture** in the **end architecture** statement.
 It is clearer to the reader to state what is ending.
 
-Refer to the section `Configuring Optional Items <configuring_optional_items.html>`_ for options.
+Refer to the section `Configuring Optional Items <configuring.html#configuring-optional-items>`_ for options.
 
 **Violation**
 
@@ -198,7 +198,7 @@ architecture_011
 
 This rule checks the architecture name case in the **end architecture** statement.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
 
 
 **Violation**
@@ -235,7 +235,7 @@ architecture_013
 
 This rule checks the case of the architecture name in the architecture declaration.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
 
 **Violation**
 
@@ -254,7 +254,7 @@ architecture_014
 
 This rule checks the case of the entity name in the architecture declaration.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
 
 **Violation**
 
@@ -273,7 +273,7 @@ architecture_015
 
 This rule check for blank lines below the architecture declaration.
 
-Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines.html>`_ for options.
+Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options.
 
 **Violation**
 
@@ -297,7 +297,7 @@ architecture_016
 
 This rule checks for blank lines above the **begin** keyword.
 
-Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines.html>`_ for options.
+Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options.
 
 **Violation**
 
@@ -324,7 +324,7 @@ architecture_017
 
 This rule checks for a blank line below the **begin** keyword.
 
-Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
 
 **Violation**
 
@@ -346,7 +346,7 @@ architecture_018
 
 This rule checks for blank lines or comments above the **end architecture** declaration.
 
-Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines.html>`_ for options.
+Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options.
 
 **Violation**
 
@@ -368,7 +368,7 @@ architecture_019
 
 This rule checks the proper case of the **of** keyword in the architecture declaration.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
 
 **Violation**
 
@@ -387,7 +387,7 @@ architecture_020
 
 This rule checks the proper case of the **is** keyword in the architecture declaration.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
 
 **Violation**
 
@@ -406,7 +406,7 @@ architecture_021
 
 This rule checks the proper case of the **begin** keyword.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
 
 **Violation**
 
@@ -445,7 +445,7 @@ architecture_024
 This rule checks for the architecture name in the **end architecture** statement.
 It is clearer to the reader to state which architecture the end statement is closing.
 
-Refer to the section `Configuring Optional Items <configuring_optional_items.html>`_ for options.
+Refer to the section `Configuring Optional Items <configuring.html#configuring-optional-items>`_ for options.
 
 **Violation**
 
@@ -496,7 +496,7 @@ architecture_026
 
 This rule checks the colons are in the same column for all declarations in the architecture declarative part.
 
-Refer to the section `Configuring Keyword Alignment Rules <configuring_keyword_alignment.html>`_ for information on changing the configurations.
+Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment>`_ for information on changing the configurations.
 
 **Violation**
 
@@ -527,7 +527,7 @@ architecture_027
 
 This rule checks the alignment of inline comments in the architecture declarative part.
 
-Refer to the section `Configuring Keyword Alignment Rules <configuring_keyword_alignment.html>`_ for information on changing the configurations.
+Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment>`_ for information on changing the configurations.
 
 **Violation**
 
@@ -558,7 +558,7 @@ architecture_028
 
 This rule checks the **architecture** keyword in the **end architecture** has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
 
 **Violation**
 
@@ -581,7 +581,7 @@ architecture_029
 
 This rule checks for alignment of identifiers in attribute, type, subtype, constant, signal, variable and file declarations in the architecture declarative region.
 
-Refer to the section `Configuring Identifier Alignment Rules <configuring_declaration_identifier_alignment.html>`_ for information on changing the configurations.
+Refer to the section `Configuring Identifier Alignment Rules <configuring.html#configuring-declaration-identifier-alignment>`_ for information on changing the configurations.
 
 **Violation**
 
@@ -677,7 +677,7 @@ architecture_200
 
 This rule checks for a blank line below the end architecture statement.
 
-Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
 
 **Violation**
 

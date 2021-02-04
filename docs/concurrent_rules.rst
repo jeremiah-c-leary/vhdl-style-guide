@@ -116,7 +116,7 @@ concurrent_006
 ##############
 
 This rule checks the alignment of the **<=** operator over multiple consecutive lines.
-Refer to the section `Configuring Keyword Alignment Rules <configuring_keyword_alignment.html>`_ for information on changing the configurations.
+Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment>`_ for information on changing the configurations.
 
 **Violation**
 
@@ -184,7 +184,7 @@ concurrent_008
 ##############
 
 This rule checks the alignment of inline comments in consecutive concurrent statements.
-Refer to the section `Configuring Keyword Alignment Rules <configuring_keyword_alignment.html>`_ for information on changing the configurations.
+Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment>`_ for information on changing the configurations.
 
 **Violation**
 

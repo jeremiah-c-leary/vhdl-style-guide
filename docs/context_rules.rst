@@ -76,7 +76,7 @@ context_004
 
 This rule checks the **context** keyword has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
 
 **Violation**
 
@@ -245,7 +245,7 @@ context_012
 
 This rule checks the context identifier has proper case in the context declaration.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
 
 **Violation**
 
@@ -265,7 +265,7 @@ context_013
 
 This rule checks the **is** keyword has proper case in the context declaration.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
 
 **Violation**
 
@@ -284,7 +284,7 @@ context_014
 
 This rule checks the **end** keyword has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
 
 **Violation**
 
@@ -307,7 +307,7 @@ context_015
 
 This rule checks the context keyword has proper case in the end context declaration.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
 
 **Violation**
 
@@ -326,7 +326,7 @@ context_016
 
 This rule checks the context identifier has proper case in the end context declaration.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
 
 **Violation**
 
@@ -423,7 +423,7 @@ context_021
 
 This rule checks for the keyword **context** in the **end context** statement.
 
-Refer to the section `Configuring Optional Items <configuring_optional_items.html>`_ for options.
+Refer to the section `Configuring Optional Items <configuring.html#configuring-optional-items>`_ for options.
 
 **Violation**
 
@@ -446,7 +446,7 @@ context_022
 
 This rule checks for the context name in the **end context** statement.
 
-Refer to the section `Configuring Optional Items <configuring_optional_items.html>`_ for options.
+Refer to the section `Configuring Optional Items <configuring.html#configuring-optional-items>`_ for options.
 
 **Violation**
 
@@ -465,7 +465,7 @@ context_023
 
 This rule adds a blank line below the **is** keyword.
 
-Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
 
 **Violation**
 
@@ -511,7 +511,7 @@ context_025
 
 This rule adds a blank line below the context semicolon.
 
-Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
 
 **Violation**
 
@@ -579,7 +579,7 @@ context_028 (Proposed)
 
 This rule checks for alignment of inline comments in the context declaration.
 
-Refer to the section `Configuring Keyword Alignment Rules <configuring_keyword_alignment.html>`_ for information on changing the configurations.
+Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment>`_ for information on changing the configurations.
 
 **Violation**
 

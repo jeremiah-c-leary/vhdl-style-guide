@@ -125,7 +125,7 @@ instantiation_008
 
 This rule checks the instance label has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
 
 **Violation**
 
@@ -144,7 +144,7 @@ instantiation_009
 
 This rule checks the component name has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
 
 **Violation**
 
@@ -168,7 +168,7 @@ Following extra configurations are supported:
 
 * :code:`separate_generic_port_alignment`.
 
-Refer to the section `Configuring Keyword Alignment Rules <configuring_keyword_alignment.html>`_ for information on changing the configurations.
+Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment>`_ for information on changing the configurations.
 
 **Violation**
 
@@ -253,7 +253,7 @@ instantiation_019
 
 This rule checks for a blank line below the end of the instantiation declaration.
 
-Refer to the section `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
 
 **Violation**
 
@@ -337,7 +337,7 @@ instantiation_027 (depricated)
 
 This rule checks the **entity** keyword has proper case in direct instantiations.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
 
 **Violation**
 
@@ -356,7 +356,7 @@ instantiation_028
 
 This rule checks the entity name has proper case in direct instantiations.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
 
 **Violation**
 
@@ -379,7 +379,7 @@ Following extra configurations are supported:
 
 * :code:`separate_generic_port_alignment`.
 
-Refer to the section `Configuring Keyword Alignment Rules <configuring_keyword_alignment.html>`_ for information on changing the configurations.
+Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment>`_ for information on changing the configurations.
 **Violation**
 
 **Violation**
@@ -408,7 +408,7 @@ instantiation_031
 
 This rule checks the component keyword has proper case in component instantiations that use the **component** keyword.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring_case.html>`_ for information on changing the default case.
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
 
 **Violation**
 
@@ -448,7 +448,7 @@ instantiation_033
 
 This rule checks for the **component** keyword for a component instantiation.
 
-Refer to the section `Configuring Optional Items <configuring_optional_items.html>`_ for options.
+Refer to the section `Configuring Optional Items <configuring.html#configuring-optional-items>`_ for options.
 
 **Violation**
 
@@ -467,7 +467,7 @@ instantiation_034
 
 This rule checks for component versus direct instantiations.
 
-Refer to the section `Configuring Type of Instantiation <configuring_type_of_instantiations.html>`_ for options to configure the allowed configuration.
+Refer to the section `Configuring Type of Instantiation <configuring.html#configuring-type-of-instantiations>`_ for options to configure the allowed configuration.
 
 component instantiation
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -501,7 +501,7 @@ instantiation_600
 This rule checks for valid suffixes on instantiation labels.
 The default suffix is *_inst*.
 
-Refer to the section `Configuring Prefix and Suffix Rules <configuring_prefix_suffix.html>`_ for information on changing the allowed suffixes.
+Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-suffix>`_ for information on changing the allowed suffixes.
 
 **Violation**
 
@@ -521,7 +521,7 @@ instantiation_601
 This rule checks for valid prefixes on instantiation labels.
 The default prefix is *inst_*.
 
-Refer to the section `Configuring Prefix and Suffix Rules <configuring_prefix_suffix.html>`_ for information on changing the allowed prefixes.
+Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-suffix>`_ for information on changing the allowed prefixes.
 
 **Violation**
 
