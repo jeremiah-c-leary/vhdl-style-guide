@@ -50,7 +50,7 @@ class test_if_statement_rule(unittest.TestCase):
 
     def test_rule_030_w_no_blank(self):
         oRule = if_statement.rule_030()
-        oRule.style = 'no_blank'
+        oRule.style = 'no_blank_line'
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'if')
         self.assertEqual(oRule.identifier, '030')
@@ -62,7 +62,7 @@ class test_if_statement_rule(unittest.TestCase):
 
     def test_fix_rule_030_w_no_blank(self):
         oRule = if_statement.rule_030()
-        oRule.style = 'no_blank'
+        oRule.style = 'no_blank_line'
 
         oRule.fix(self.oFile)
 

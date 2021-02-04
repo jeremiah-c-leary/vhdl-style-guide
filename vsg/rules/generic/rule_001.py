@@ -13,4 +13,4 @@ class rule_001(blank_line_above_line_starting_with_token):
     '''
     def __init__(self):
         blank_line_above_line_starting_with_token.__init__(self, 'generic', '001', lTokens)
-        self.style = 'no_blank'
+        self.style = 'no_blank_line'

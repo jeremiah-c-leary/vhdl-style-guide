@@ -27,7 +27,7 @@ class test_process_rule(unittest.TestCase):
 
     def test_rule_021_no_blank(self):
         oRule = process.rule_021()
-        oRule.style = 'no_blank'
+        oRule.style = 'no_blank_line'
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'process')
         self.assertEqual(oRule.identifier, '021')
@@ -39,7 +39,7 @@ class test_process_rule(unittest.TestCase):
 
     def test_fix_rule_021_no_blank(self):
         oRule = process.rule_021()
-        oRule.style = 'no_blank'
+        oRule.style = 'no_blank_line'
 
         oRule.fix(self.oFile)
 
@@ -52,7 +52,7 @@ class test_process_rule(unittest.TestCase):
 
     def test_rule_021_require_blank(self):
         oRule = process.rule_021()
-        oRule.style = 'require_blank'
+        oRule.style = 'require_blank_line'
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'process')
         self.assertEqual(oRule.identifier, '021')
@@ -64,7 +64,7 @@ class test_process_rule(unittest.TestCase):
 
     def test_fix_rule_021_require_blank(self):
         oRule = process.rule_021()
-        oRule.style = 'require_blank'
+        oRule.style = 'require_blank_line'
 
         oRule.fix(self.oFile)
 

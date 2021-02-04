@@ -35,7 +35,7 @@ class test_entity_rule(unittest.TestCase):
 
     def test_rule_003_w_require_blank(self):
         oRule = entity.rule_003()
-        oRule.style = 'require_blank'
+        oRule.style = 'require_blank_line'
 
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'entity')
@@ -75,7 +75,7 @@ class test_entity_rule(unittest.TestCase):
 
     def test_fix_rule_003_w_require_blank(self):
         oRule = entity.rule_003()
-        oRule.style = 'require_blank'
+        oRule.style = 'require_blank_line'
 
         oRule.fix(self.oFile)
 

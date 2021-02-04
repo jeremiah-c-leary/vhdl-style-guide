@@ -9,7 +9,7 @@ There are several options to these rules, which can be selected by using the :co
 +---------------------+----------------------------------------------------------+
 | Style               | Description                                              |
 +=====================+==========================================================+
-| no_blank            | Removes blank lines on the line above.                   |
+| no_blank_line       | Removes blank lines on the line above.                   |
 +---------------------+----------------------------------------------------------+
 | require_blank_line  | Requires a blank line on the line above.                 |
 +---------------------+----------------------------------------------------------+

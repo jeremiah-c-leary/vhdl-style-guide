@@ -12,4 +12,4 @@ class rule_007(previous_line):
     '''
     def __init__(self):
         previous_line.__init__(self, 'library', '007', lTokens)
-        self.style = 'no_blank'
+        self.style = 'no_blank_line'

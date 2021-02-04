@@ -50,7 +50,7 @@ class test_architecture_rule(unittest.TestCase):
 
     def test_rule_016_no_blank(self):
         oRule = architecture.rule_016()
-        oRule.style = 'no_blank'
+        oRule.style = 'no_blank_line'
 
         lExpected = [23]
 
@@ -59,7 +59,7 @@ class test_architecture_rule(unittest.TestCase):
 
     def test_fix_rule_016_no_blank(self):
         oRule = architecture.rule_016()
-        oRule.style = 'no_blank'
+        oRule.style = 'no_blank_line'
 
         oRule.fix(self.oFile)
 

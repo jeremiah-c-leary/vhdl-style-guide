@@ -17,21 +17,21 @@ class rule_021(rule.Rule):
         rule.Rule.__init__(self, 'process', '021')
         self.solution = 'Remove blank lines above begin keyword'
         self.phase = 1
-        self.style = 'no_blank'
+        self.style = 'no_blank_line_line'
         self.configuration.append('style')
 
     def _get_tokens_of_interest(self, oFile):
         return oFile.get_tokens_bounded_by(token.process_keyword, token.begin_keyword)
 
     def _analyze(self, lToi):
-        if self.style == 'no_blank':
-            _analyze_no_blank(self, lToi)
-        elif self.style == 'require_blank':
-            _analyze_require_blank(self, lToi)
+        if self.style == 'no_blank_line':
+            _analyze_no_blank_line(self, lToi)
+        elif self.style == 'require_blank_line':
+            _analyze_require_blank_line(self, lToi)
 
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
-        if self.style == 'no_blank':
+        if self.style == 'no_blank_line':
             lTokens.reverse()
             lNewTokens = []
             for iToken, oToken in enumerate(lTokens):
@@ -41,7 +41,7 @@ class rule_021(rule.Rule):
                 lNewTokens.append(oToken)
             lNewTokens.reverse()
             oViolation.set_tokens(lNewTokens)
-        elif self.style == 'require_blank':
+        elif self.style == 'require_blank_line':
             if isinstance(lTokens[-2], parser.whitespace):
                 lTokens.insert(-3, parser.blank_line())
                 lTokens.insert(-3, parser.carriage_return())
@@ -52,7 +52,7 @@ class rule_021(rule.Rule):
             oViolation.set_tokens(lTokens)
 
 
-def _analyze_no_blank(self, lToi):
+def _analyze_no_blank_line(self, lToi):
     sSolution = 'Remove blank lines above begin keyword'
     dAction = {}
     dAction['action'] = 'Remove'
@@ -79,7 +79,7 @@ def _analyze_no_blank(self, lToi):
                     self.add_violation(oViolation)
                     break
 
-def _analyze_require_blank(self, lToi):
+def _analyze_require_blank_line(self, lToi):
     sSolution = 'Add blank line above begin keyword'
     dAction = {}
     dAction['action'] = 'Insert'

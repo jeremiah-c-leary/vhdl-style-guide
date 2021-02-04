@@ -16,7 +16,7 @@ class rule_003(previous_line):
         previous_line.__init__(self, 'library', '003', lTokens)
         self.allow_library_clause = False
         self.configuration.append('allow_library_clause')
-        self.style = 'require_blank'
+        self.style = 'require_blank_line'
 
     def _set_allow_tokens(self):
         if self.allow_library_clause:

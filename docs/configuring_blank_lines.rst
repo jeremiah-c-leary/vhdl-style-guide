@@ -9,16 +9,16 @@ There are a couple of options to these rules, which can be selected by using the
 +---------------------+----------------------------------------------------------+
 | Style               | Description                                              |
 +=====================+==========================================================+
-| require_blank       | Requires a blank line on the line above.                 |
+| require_blank_line  | Requires a blank line on the line above.                 |
 +---------------------+----------------------------------------------------------+
-| no_blank            | Removes blank lines above the line.                      |
+| no_blank_line       | Removes blank lines above the line.                      |
 +---------------------+----------------------------------------------------------+
 
 .. code-block:: yaml
 
    rule :
      architecture_015:
-        style : require_blank
+        style : require_blank_line
 
 Example: require_blank_line
 ###########################

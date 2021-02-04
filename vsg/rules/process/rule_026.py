@@ -17,17 +17,17 @@ class rule_026(rule.Rule):
         rule.Rule.__init__(self, 'process', '026')
         self.solution = 'Insert blank line below'
         self.phase = 3
-        self.style = 'require_blank'
+        self.style = 'require_blank_line'
         self.configuration.append('style')
 
     def _get_tokens_of_interest(self, oFile):
         return oFile.get_tokens_bounded_by(token.process_keyword, token.begin_keyword)
 
     def _analyze(self, lToi):
-        if self.style == 'require_blank':
-            _analyze_require_blank(self, lToi)
-        elif self.style == 'no_blank':
-            _analyze_no_blank(self, lToi)
+        if self.style == 'require_blank_line':
+            _analyze_require_blank_line(self, lToi)
+        elif self.style == 'no_blank_line':
+            _analyze_no_blank_line(self, lToi)
 
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
@@ -44,7 +44,7 @@ class rule_026(rule.Rule):
             oViolation.set_tokens(lTokens[:iStart] + lTokens[iEnd:])
 
 
-def _analyze_require_blank(self, lToi):
+def _analyze_require_blank_line(self, lToi):
     for oToi in lToi:
         lTokens = oToi.get_tokens()
         if not are_there_process_declarative_items(lTokens):
@@ -62,7 +62,7 @@ def _analyze_require_blank(self, lToi):
         oViolation.set_action(dAction)
         self.add_violation(oViolation)
 
-def _analyze_no_blank(self, lToi):
+def _analyze_no_blank_line(self, lToi):
     for oToi in lToi:
         lTokens = oToi.get_tokens()
         if not are_there_process_declarative_items(lTokens):

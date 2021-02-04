@@ -27,13 +27,13 @@ class blank_line_above_line_starting_with_token(rule.Rule):
         self.phase = 3
         self.lTokens = lTokens
         self.lAllowTokens = lAllowTokens
-        self.style = 'require_blank'
+        self.style = 'require_blank_line'
         self.configuration.append('style')
 
     def _get_tokens_of_interest(self, oFile):
-        if self.style == 'require_blank':
+        if self.style == 'require_blank_line':
             return oFile.get_line_above_line_starting_with_token(self.lTokens, bIncludeComments=False)
-        elif self.style == 'no_blank':
+        elif self.style == 'no_blank_line':
             return oFile.get_blank_lines_above_line_starting_with_token(self.lTokens)
 
     def _set_allow_tokens(self):
@@ -41,10 +41,10 @@ class blank_line_above_line_starting_with_token(rule.Rule):
 
     def _analyze(self, lToi):
         self._set_allow_tokens()
-        if self.style == 'require_blank':
-            _analyze_require_blank(self, lToi, self.lAllowTokens)
-        elif self.style == 'no_blank':
-            _analyze_no_blank(self, lToi, self.lAllowTokens)
+        if self.style == 'require_blank_line':
+            _analyze_require_blank_line(self, lToi, self.lAllowTokens)
+        elif self.style == 'no_blank_line':
+            _analyze_no_blank_line(self, lToi, self.lAllowTokens)
 
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
@@ -57,7 +57,7 @@ class blank_line_above_line_starting_with_token(rule.Rule):
             oViolation.set_tokens([])
 
 
-def _analyze_require_blank(self, lToi, lAllowTokens):
+def _analyze_require_blank_line(self, lToi, lAllowTokens):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             if _is_allowed_token(lAllowTokens, lTokens):
@@ -73,7 +73,7 @@ def _analyze_require_blank(self, lToi, lAllowTokens):
             self.add_violation(oViolation)
 
 
-def _analyze_no_blank(self, lToi, lAllowTokens):
+def _analyze_no_blank_line(self, lToi, lAllowTokens):
         for oToi in lToi:
             sSolution = 'Remove blank lines'
             oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
