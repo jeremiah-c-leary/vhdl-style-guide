@@ -21,6 +21,7 @@ class test_constant_rule(unittest.TestCase):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
 
+    @unittest.skip('Need to refactor after splitting rule.')
     def test_rule_012(self):
         oRule = constant.rule_012()
         self.assertTrue(oRule)
@@ -34,6 +35,7 @@ class test_constant_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
+    @unittest.skip('Need to refactor after splitting rule.')
     def test_fix_rule_012(self):
         oRule = constant.rule_012()
 

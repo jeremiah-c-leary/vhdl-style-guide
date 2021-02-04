@@ -60,20 +60,28 @@ class rule_012(rule.Rule):
 
     def analyze(self, oFile):
         lToi = self._get_tokens_of_interest(oFile)
-
+#        print(f'Num_toi = {len(lToi)}')
         for oToi in lToi:
-
+#            print('='*80)
             if rule_utils.is_single_line(oToi) and self.ignore_single_line:
+#                print('Skip')
                 continue
 
             if not _is_open_paren_after_assignment(oToi):
                 continue
 
             _check_first_paren_new_line(self, oToi)
+#            print(f'Num_Violation = {len(self.violations)}')
             _check_last_paren_new_line(self, oToi)
+#            print(f'Num_Violation = {len(self.violations)}')
             _check_open_paren_new_line(self, oToi)
+#            print(f'Num_Violation = {len(self.violations)}')
             _check_close_paren_new_line(self, oToi)
+#            print(f'Num_Violation = {len(self.violations)}')
             _check_new_line_after_comma(self, oToi)
+#            print(f'Num_Violation = {len(self.violations)}')
+
+        self._sort_violations()
 
 
     def _fix_violation(self, oViolation):
@@ -91,7 +99,7 @@ class rule_012(rule.Rule):
 
 
 def _check_first_paren_new_line(self, oToi):
-    
+#    print('-->_check_first_paren_new_line')    
     if self.first_paren_new_line == 'Ignore':
         return 
 
@@ -105,6 +113,7 @@ def _check_first_paren_new_line(self, oToi):
         if isinstance(oToken, parser.open_parenthesis) and bSearch:
             if utils.find_carriage_return(lTokens[iStart:iToken]) is None:
                 if self.first_paren_new_line:
+#                    print('---->Insert')
                     dAction = {}
                     dAction['type'] = 'first_paren_new_line'
                     dAction['action'] = 'insert'
@@ -124,6 +133,7 @@ def _check_first_paren_new_line(self, oToi):
             break
                 
 def _check_last_paren_new_line(self, oToi):
+#    print('-->_check_last_paren_new_line')    
     if self.last_paren_new_line == 'Ignore':
         return 
     iLine, lTokens = utils.get_toi_parameters(oToi)
@@ -141,6 +151,7 @@ def _check_last_paren_new_line(self, oToi):
                 bReturnFound = True
             
             if self.last_paren_new_line and not bReturnFound:
+#                print('---->Insert')
                 lTokens.reverse()
                 dAction = {}
                 dAction['type'] = 'last_paren_new_line'
@@ -159,16 +170,20 @@ def _check_last_paren_new_line(self, oToi):
                 oViolation = violation.New(iLine, oToi.extract_tokens(iStart, iEnd), sSolution)
                 oViolation.set_action(dAction)
                 self.add_violation(oViolation)
+            else:
+                lTokens.reverse()
 
             break
                 
 
 def _check_open_paren_new_line(self, oToi):
+#    print('-->_check_open_paren_new_line')    
     
     if self.open_paren_new_line == 'Ignore':
         return 
 
     iLine, lTokens = utils.get_toi_parameters(oToi)
+#    print(lTokens)
 
     bSearch = False
     for iToken, oToken in enumerate(lTokens):
@@ -188,6 +203,7 @@ def _check_open_paren_new_line(self, oToi):
                     self.add_violation(oViolation)
             else:
                 if self.open_paren_new_line:
+#                    print('---->Insert')
                     dAction = {}
                     dAction['type'] = 'open_paren_new_line'
                     dAction['action'] = 'insert'
@@ -198,6 +214,7 @@ def _check_open_paren_new_line(self, oToi):
                 
 
 def _check_close_paren_new_line(self, oToi):
+#    print('-->_check_close_paren_new_line')    
     if self.close_paren_new_line == 'Ignore':
         return 
 
@@ -226,6 +243,7 @@ def _check_close_paren_new_line(self, oToi):
                     self.add_violation(oViolation)
             else:
                 if self.close_paren_new_line:
+#                    print('---->Insert')
                     dAction = {}
                     dAction['type'] = 'close_paren_new_line'
                     dAction['action'] = 'insert'
@@ -236,6 +254,7 @@ def _check_close_paren_new_line(self, oToi):
 
 
 def _check_new_line_after_comma(self, oToi):
+#    print('-->_check_new_line_after_comma')    
     
     if self.new_line_after_comma == 'Ignore':
         return 
@@ -260,6 +279,7 @@ def _check_new_line_after_comma(self, oToi):
                     self.add_violation(oViolation)
             else:
                 if self.new_line_after_comma:
+#                    print('---->Insert')
                     dAction = {}
                     dAction['type'] = 'new_line_after_comma'
                     dAction['action'] = 'insert'

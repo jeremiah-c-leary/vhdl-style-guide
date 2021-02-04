@@ -50,6 +50,14 @@ lExpected_new_line_after_comma_false = []
 lExpected_new_line_after_comma_false.append('')
 utils.read_file(os.path.join(sTestDir, 'rule_012a_test_input.fixed_new_line_after_comma_false.vhd'), lExpected_new_line_after_comma_false)
 
+lExpected_all_true = []
+lExpected_all_true.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_012a_test_input.fixed_all_true.vhd'), lExpected_all_true)
+
+lExpected_all_false= []
+lExpected_all_false.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_012a_test_input.fixed_all_false.vhd'), lExpected_all_false)
+
 
 class test_constant_rule(unittest.TestCase):
 
@@ -422,6 +430,44 @@ class test_constant_rule(unittest.TestCase):
         lActual = self.oFile.get_lines()
 
         self.assertEqual(lExpected_new_line_after_comma_false, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+
+    def test_fix_rule_012_all_true(self):
+#        self.maxDiff = None
+        oRule = constant.rule_012()
+        oRule.first_paren_new_line = True
+        oRule.last_paren_new_line = True
+        oRule.open_paren_new_line = True
+        oRule.close_paren_new_line = True
+        oRule.new_line_after_comma = True
+        oRule.align_left = 'Ignore'
+
+        oRule.fix(self.oFile)
+
+        lActual = self.oFile.get_lines()
+
+        self.assertEqual(lExpected_all_true, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+
+    def test_fix_rule_012_all_false(self):
+#        self.maxDiff = None
+        oRule = constant.rule_012()
+        oRule.first_paren_new_line = False
+        oRule.last_paren_new_line = False
+        oRule.open_paren_new_line = False
+        oRule.close_paren_new_line = False
+        oRule.new_line_after_comma = False
+        oRule.align_left = 'Ignore'
+
+        oRule.fix(self.oFile)
+
+        lActual = self.oFile.get_lines()
+
+        self.assertEqual(lExpected_all_false, lActual)
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
