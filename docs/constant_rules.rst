@@ -176,6 +176,10 @@ constant_012
 
 This rule checks the indent of multiline constants that contain arrays.
 
+Refer to section `Configuring Multiline Indent Rules <configuring.html#configuring-multiline-indent-rules>`_ for options.
+
+.. NOTE:: The structure of multiline array constants is handled by the rule `constant_016 <constant_rules.html#constant-016>`_.
+
 **Violation**
 
 .. code-block:: vhdl
@@ -299,3 +303,30 @@ Refer to the section `Configuring Prefix and Suffix Rules <configuring_prefix_su
 .. code-block:: vhdl
 
    constant c_my_const : integer;
+
+constant_016
+############
+
+This rule checks the structure of multiline constants that contain arrays.
+
+Refer to section `Configuring Multiline Structure Rules <configuring.html#configuring-multiline-structure-rules>`_ for options.
+
+.. NOTE:: The indenting of multiline array constants is handled by the rule `constant_012 <constant_rules.html#constant-012>`_.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   constant rom : romq_type := (0, 65535, 32768);
+
+**Fix**
+
+.. code-block:: vhdl
+
+   constant rom : romq_type :=
+   (
+     0,
+     65535,
+     32768
+   );
+
