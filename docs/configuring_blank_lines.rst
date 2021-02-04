@@ -9,9 +9,9 @@ There are a couple of options to these rules, which can be selected by using the
 +---------------------+----------------------------------------------------------+
 | Style               | Description                                              |
 +=====================+==========================================================+
-| require_blank_line  | Requires a blank line on the line above.                 |
+| no_blank_line       | Removes blank lines on the line above or below.          |
 +---------------------+----------------------------------------------------------+
-| no_blank_line       | Removes blank lines above the line.                      |
+| require_blank_line  | Requires a blank line on the line above or below.        |
 +---------------------+----------------------------------------------------------+
 
 .. code-block:: yaml
