@@ -8,55 +8,55 @@ from vsg.tests import utils
 
 sTestDir = os.path.dirname(__file__)
 
-lFile, eError =vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_012a_test_input.vhd'))
+lFile, eError =vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_016_test_input.vhd'))
 
 lExpected_first_paren_new_line_true = []
 lExpected_first_paren_new_line_true.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_012a_test_input.fixed_first_paren_new_line_true.vhd'), lExpected_first_paren_new_line_true)
+utils.read_file(os.path.join(sTestDir, 'rule_016_test_input.fixed_first_paren_new_line_true.vhd'), lExpected_first_paren_new_line_true)
 
 lExpected_first_paren_new_line_false = []
 lExpected_first_paren_new_line_false.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_012a_test_input.fixed_first_paren_new_line_false.vhd'), lExpected_first_paren_new_line_false)
+utils.read_file(os.path.join(sTestDir, 'rule_016_test_input.fixed_first_paren_new_line_false.vhd'), lExpected_first_paren_new_line_false)
 
 lExpected_last_paren_new_line_true = []
 lExpected_last_paren_new_line_true.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_012a_test_input.fixed_last_paren_new_line_true.vhd'), lExpected_last_paren_new_line_true)
+utils.read_file(os.path.join(sTestDir, 'rule_016_test_input.fixed_last_paren_new_line_true.vhd'), lExpected_last_paren_new_line_true)
 
 lExpected_last_paren_new_line_false = []
 lExpected_last_paren_new_line_false.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_012a_test_input.fixed_last_paren_new_line_false.vhd'), lExpected_last_paren_new_line_false)
+utils.read_file(os.path.join(sTestDir, 'rule_016_test_input.fixed_last_paren_new_line_false.vhd'), lExpected_last_paren_new_line_false)
 
 lExpected_open_paren_new_line_true = []
 lExpected_open_paren_new_line_true.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_012a_test_input.fixed_open_paren_new_line_true.vhd'), lExpected_open_paren_new_line_true)
+utils.read_file(os.path.join(sTestDir, 'rule_016_test_input.fixed_open_paren_new_line_true.vhd'), lExpected_open_paren_new_line_true)
 
 lExpected_open_paren_new_line_false = []
 lExpected_open_paren_new_line_false.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_012a_test_input.fixed_open_paren_new_line_false.vhd'), lExpected_open_paren_new_line_false)
+utils.read_file(os.path.join(sTestDir, 'rule_016_test_input.fixed_open_paren_new_line_false.vhd'), lExpected_open_paren_new_line_false)
 
 lExpected_close_paren_new_line_true = []
 lExpected_close_paren_new_line_true.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_012a_test_input.fixed_close_paren_new_line_true.vhd'), lExpected_close_paren_new_line_true)
+utils.read_file(os.path.join(sTestDir, 'rule_016_test_input.fixed_close_paren_new_line_true.vhd'), lExpected_close_paren_new_line_true)
 
 lExpected_close_paren_new_line_false = []
 lExpected_close_paren_new_line_false.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_012a_test_input.fixed_close_paren_new_line_false.vhd'), lExpected_close_paren_new_line_false)
+utils.read_file(os.path.join(sTestDir, 'rule_016_test_input.fixed_close_paren_new_line_false.vhd'), lExpected_close_paren_new_line_false)
 
 lExpected_new_line_after_comma_true = []
 lExpected_new_line_after_comma_true.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_012a_test_input.fixed_new_line_after_comma_true.vhd'), lExpected_new_line_after_comma_true)
+utils.read_file(os.path.join(sTestDir, 'rule_016_test_input.fixed_new_line_after_comma_true.vhd'), lExpected_new_line_after_comma_true)
 
 lExpected_new_line_after_comma_false = []
 lExpected_new_line_after_comma_false.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_012a_test_input.fixed_new_line_after_comma_false.vhd'), lExpected_new_line_after_comma_false)
+utils.read_file(os.path.join(sTestDir, 'rule_016_test_input.fixed_new_line_after_comma_false.vhd'), lExpected_new_line_after_comma_false)
 
 lExpected_all_true = []
 lExpected_all_true.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_012a_test_input.fixed_all_true.vhd'), lExpected_all_true)
+utils.read_file(os.path.join(sTestDir, 'rule_016_test_input.fixed_all_true.vhd'), lExpected_all_true)
 
 lExpected_all_false= []
 lExpected_all_false.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_012a_test_input.fixed_all_false.vhd'), lExpected_all_false)
+utils.read_file(os.path.join(sTestDir, 'rule_016_test_input.fixed_all_false.vhd'), lExpected_all_false)
 
 
 class test_constant_rule(unittest.TestCase):
@@ -65,8 +65,8 @@ class test_constant_rule(unittest.TestCase):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
 
-    def test_rule_012_first_paren_new_line_true(self):
-        oRule = constant.rule_012()
+    def test_rule_016_first_paren_new_line_true(self):
+        oRule = constant.rule_016()
         oRule.first_paren_new_line = True
         oRule.last_paren_new_line = 'Ignore'
         oRule.open_paren_new_line = 'Ignore'
@@ -76,15 +76,15 @@ class test_constant_rule(unittest.TestCase):
 
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'constant')
-        self.assertEqual(oRule.identifier, '012')
+        self.assertEqual(oRule.identifier, '016')
 
         lExpected = [10]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
-    def test_rule_012_first_paren_new_line_false(self):
-        oRule = constant.rule_012()
+    def test_rule_016_first_paren_new_line_false(self):
+        oRule = constant.rule_016()
         oRule.first_paren_new_line = False
         oRule.last_paren_new_line = 'Ignore'
         oRule.open_paren_new_line = 'Ignore'
@@ -97,8 +97,8 @@ class test_constant_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
-    def test_rule_012_last_paren_new_line_true(self):
-        oRule = constant.rule_012()
+    def test_rule_016_last_paren_new_line_true(self):
+        oRule = constant.rule_016()
         oRule.first_paren_new_line = 'Ignore'
         oRule.last_paren_new_line = True
         oRule.open_paren_new_line = 'Ignore'
@@ -111,8 +111,8 @@ class test_constant_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
-    def test_rule_012_last_paren_new_line_false(self):
-        oRule = constant.rule_012()
+    def test_rule_016_last_paren_new_line_false(self):
+        oRule = constant.rule_016()
         oRule.first_paren_new_line = 'Ignore'
         oRule.last_paren_new_line = False
         oRule.open_paren_new_line = 'Ignore'
@@ -125,8 +125,8 @@ class test_constant_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
-    def test_rule_012_open_paren_new_line_true(self):
-        oRule = constant.rule_012()
+    def test_rule_016_open_paren_new_line_true(self):
+        oRule = constant.rule_016()
         oRule.first_paren_new_line = 'Ignore'
         oRule.last_paren_new_line = 'Ignore'
         oRule.open_paren_new_line = True
@@ -139,8 +139,8 @@ class test_constant_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
-    def test_rule_012_open_paren_new_line_false(self):
-        oRule = constant.rule_012()
+    def test_rule_016_open_paren_new_line_false(self):
+        oRule = constant.rule_016()
         oRule.first_paren_new_line = 'Ignore'
         oRule.last_paren_new_line = 'Ignore'
         oRule.open_paren_new_line = False
@@ -153,8 +153,8 @@ class test_constant_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
-    def test_rule_012_close_paren_new_line_true(self):
-        oRule = constant.rule_012()
+    def test_rule_016_close_paren_new_line_true(self):
+        oRule = constant.rule_016()
         oRule.first_paren_new_line = 'Ignore'
         oRule.last_paren_new_line = 'Ignore'
         oRule.open_paren_new_line = 'Ignore'
@@ -167,8 +167,8 @@ class test_constant_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
-    def test_rule_012_close_paren_new_line_false(self):
-        oRule = constant.rule_012()
+    def test_rule_016_close_paren_new_line_false(self):
+        oRule = constant.rule_016()
         oRule.first_paren_new_line = 'Ignore'
         oRule.last_paren_new_line = 'Ignore'
         oRule.open_paren_new_line = 'Ignore'
@@ -181,8 +181,8 @@ class test_constant_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
-    def test_rule_012_new_line_after_comma_true(self):
-        oRule = constant.rule_012()
+    def test_rule_016_new_line_after_comma_true(self):
+        oRule = constant.rule_016()
         oRule.first_paren_new_line = 'Ignore'
         oRule.last_paren_new_line = 'Ignore'
         oRule.open_paren_new_line = 'Ignore'
@@ -200,8 +200,8 @@ class test_constant_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
-    def test_rule_012_new_line_after_comma_false(self):
-        oRule = constant.rule_012()
+    def test_rule_016_new_line_after_comma_false(self):
+        oRule = constant.rule_016()
         oRule.first_paren_new_line = 'Ignore'
         oRule.last_paren_new_line = 'Ignore'
         oRule.open_paren_new_line = 'Ignore'
@@ -220,8 +220,8 @@ class test_constant_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
-#    def test_rule_012_align_left_true(self):
-#        oRule = constant.rule_012()
+#    def test_rule_016_align_left_true(self):
+#        oRule = constant.rule_016()
 #        oRule.first_paren_new_line = 'Ignore'
 #        oRule.last_paren_new_line = 'Ignore'
 #        oRule.open_paren_new_line = 'Ignore'
@@ -234,8 +234,8 @@ class test_constant_rule(unittest.TestCase):
 #        oRule.analyze(self.oFile)
 #        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 #
-#    def test_rule_012_align_left_false(self):
-#        oRule = constant.rule_012()
+#    def test_rule_016_align_left_false(self):
+#        oRule = constant.rule_016()
 #        oRule.first_paren_new_line = 'Ignore'
 #        oRule.last_paren_new_line = 'Ignore'
 #        oRule.open_paren_new_line = 'Ignore'
@@ -254,8 +254,8 @@ class test_constant_rule(unittest.TestCase):
 #        oRule.analyze(self.oFile)
 #        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
-    def test_fix_rule_012_first_paren_new_line_true(self):
-        oRule = constant.rule_012()
+    def test_fix_rule_016_first_paren_new_line_true(self):
+        oRule = constant.rule_016()
         oRule.first_paren_new_line = True
         oRule.last_paren_new_line = 'Ignore'
         oRule.open_paren_new_line = 'Ignore'
@@ -272,8 +272,8 @@ class test_constant_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
 
-    def test_fix_rule_012_first_paren_new_line_false(self):
-        oRule = constant.rule_012()
+    def test_fix_rule_016_first_paren_new_line_false(self):
+        oRule = constant.rule_016()
         oRule.first_paren_new_line = False
         oRule.last_paren_new_line = 'Ignore'
         oRule.open_paren_new_line = 'Ignore'
@@ -290,8 +290,8 @@ class test_constant_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
 
-    def test_fix_rule_012_last_paren_new_line_true(self):
-        oRule = constant.rule_012()
+    def test_fix_rule_016_last_paren_new_line_true(self):
+        oRule = constant.rule_016()
         oRule.first_paren_new_line = 'Ignore'
         oRule.last_paren_new_line = True
         oRule.open_paren_new_line = 'Ignore'
@@ -308,8 +308,8 @@ class test_constant_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
 
-    def test_fix_rule_012_last_paren_new_line_false(self):
-        oRule = constant.rule_012()
+    def test_fix_rule_016_last_paren_new_line_false(self):
+        oRule = constant.rule_016()
         oRule.first_paren_new_line = 'Ignore'
         oRule.last_paren_new_line = False
         oRule.open_paren_new_line = 'Ignore'
@@ -326,8 +326,8 @@ class test_constant_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
 
-    def test_fix_rule_012_open_paren_new_line_true(self):
-        oRule = constant.rule_012()
+    def test_fix_rule_016_open_paren_new_line_true(self):
+        oRule = constant.rule_016()
         oRule.first_paren_new_line = 'Ignore'
         oRule.last_paren_new_line = 'Ignore'
         oRule.open_paren_new_line = True
@@ -344,8 +344,8 @@ class test_constant_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
 
-    def test_fix_rule_012_open_paren_new_line_false(self):
-        oRule = constant.rule_012()
+    def test_fix_rule_016_open_paren_new_line_false(self):
+        oRule = constant.rule_016()
         oRule.first_paren_new_line = 'Ignore'
         oRule.last_paren_new_line = 'Ignore'
         oRule.open_paren_new_line = False
@@ -362,8 +362,8 @@ class test_constant_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
 
-    def test_fix_rule_012_close_paren_new_line_true(self):
-        oRule = constant.rule_012()
+    def test_fix_rule_016_close_paren_new_line_true(self):
+        oRule = constant.rule_016()
         oRule.first_paren_new_line = 'Ignore'
         oRule.last_paren_new_line = 'Ignore'
         oRule.open_paren_new_line = 'Ignore'
@@ -380,8 +380,8 @@ class test_constant_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
 
-    def test_fix_rule_012_close_paren_new_line_false(self):
-        oRule = constant.rule_012()
+    def test_fix_rule_016_close_paren_new_line_false(self):
+        oRule = constant.rule_016()
         oRule.first_paren_new_line = 'Ignore'
         oRule.last_paren_new_line = 'Ignore'
         oRule.open_paren_new_line = 'Ignore'
@@ -398,8 +398,8 @@ class test_constant_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
 
-    def test_fix_rule_012_new_line_after_comma_true(self):
-        oRule = constant.rule_012()
+    def test_fix_rule_016_new_line_after_comma_true(self):
+        oRule = constant.rule_016()
         oRule.first_paren_new_line = 'Ignore'
         oRule.last_paren_new_line = 'Ignore'
         oRule.open_paren_new_line = 'Ignore'
@@ -416,8 +416,8 @@ class test_constant_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
 
-    def test_fix_rule_012_new_line_after_comma_false(self):
-        oRule = constant.rule_012()
+    def test_fix_rule_016_new_line_after_comma_false(self):
+        oRule = constant.rule_016()
         oRule.first_paren_new_line = 'Ignore'
         oRule.last_paren_new_line = 'Ignore'
         oRule.open_paren_new_line = 'Ignore'
@@ -434,9 +434,9 @@ class test_constant_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
 
-    def test_fix_rule_012_all_true(self):
+    def test_fix_rule_016_all_true(self):
 #        self.maxDiff = None
-        oRule = constant.rule_012()
+        oRule = constant.rule_016()
         oRule.first_paren_new_line = True
         oRule.last_paren_new_line = True
         oRule.open_paren_new_line = True
@@ -453,9 +453,9 @@ class test_constant_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
 
-    def test_fix_rule_012_all_false(self):
+    def test_fix_rule_016_all_false(self):
 #        self.maxDiff = None
-        oRule = constant.rule_012()
+        oRule = constant.rule_016()
         oRule.first_paren_new_line = False
         oRule.last_paren_new_line = False
         oRule.open_paren_new_line = False

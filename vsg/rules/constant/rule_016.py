@@ -1,27 +1,4 @@
 
-
-
-from vsg.rules import multiline_alignment_between_tokens
-
-from vsg import token
-
-lTokenPairs = []
-lTokenPairs.append([token.simple_waveform_assignment.assignment, token.simple_waveform_assignment.semicolon])
-lTokenPairs.append([token.simple_force_assignment.assignment, token.simple_force_assignment.semicolon])
-lTokenPairs.append([token.conditional_waveform_assignment.assignment, token.conditional_waveform_assignment.semicolon])
-lTokenPairs.append([token.conditional_force_assignment.assignment, token.conditional_force_assignment.semicolon])
-
-
-class rule_012(multiline_alignment_between_tokens):
-    '''
-    Checks the alignment of multiline constants signal assignments.
-    '''
-
-    def __init__(self):
-        multiline_alignment_between_tokens.__init__(self, 'sequential', '004', lTokenPairs)
-
-
-
 from vsg import rule
 from vsg import parser
 from vsg import token
@@ -34,7 +11,7 @@ lTokenPairs = []
 lTokenPairs.append([token.constant_declaration.constant_keyword, token.constant_declaration.semicolon])
 
 
-class rule_012(rule.Rule):
+class rule_016(rule.Rule):
     '''
     Checks for the proper indentation of multiline constants.
 
@@ -52,7 +29,7 @@ class rule_012(rule.Rule):
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self, 'constant', '012')
+        rule.Rule.__init__(self, 'constant', '016')
         self.solution = 'Align one space after assignment operator'
         self.phase = 5
         self.subphase = 4
@@ -68,8 +45,6 @@ class rule_012(rule.Rule):
         self.configuration.append('close_paren_new_line')
         self.new_line_after_comma = False
         self.configuration.append('new_line_after_comma')
-        self.align_left = True
-        self.configuration.append('align_left')
         self.ignore_single_line = True
         self.configuration.append('ignore_single_line')
 
