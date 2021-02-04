@@ -50,3 +50,6 @@ class New():
 
   def fix_blanks(self):
       return self.fix_blank_lines
+
+  def get_start_index(self):
+      return self.oTokens.get_start_index()
