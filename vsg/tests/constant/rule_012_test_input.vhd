@@ -1,53 +1,76 @@
 
-architecture RTL of FIFO is
+architecture rtl of fifo is
 
-  constant con1 : integer := a + b + c + d;
+  constant c_zeros : std_logic_vector(7 downto 0) := (others => '0');
+  constant c_one   : std_logic_vector(7 downto 0) := (0 => '1', (others => '0'));
+  constant c_two   : std_logic_vector(7 downto 0) := (1 => '1', (others => '0'));
 
-  constant con2 : integer := a + b +
-                             c + d;
+  constant c_stimulus : t_stimulus_array := ((name => "Hold in reset", clk_in => "01", rst_in => "11", cnt_en_in => "00", cnt_out => "00"), (name => "Not enabled", clk_in => "01", rst_in => "00", cnt_en_in => "00", cnt_out => "00"));
 
-  constant con3 : integer :=
-  (
-   0,
-   1,
-   2,
-   3
+  constant c_stimulus : t_stimulus_array := (
+                      (name => "Hold in reset", clk_in => "01", rst_in => "11", cnt_en_in => "00", cnt_out => "00"), (name => "Not enabled", clk_in => "01", rst_in => "00", cnt_en_in => "00", cnt_out => "00"));
+
+  constant c_stimulus : t_stimulus_array :=
+     ((name => "Hold in reset", clk_in => "01", rst_in => "11", cnt_en_in => "00", cnt_out => "00"), (name => "Not enabled", clk_in => "01", rst_in => "00", cnt_en_in => "00", cnt_out => "00"));
+
+  constant c_stimulus : t_stimulus_array :=
+((name => "Hold in reset", clk_in => "01", rst_in => "11", cnt_en_in => "00", cnt_out => "00"), (name => "Not enabled", clk_in => "01", rst_in => "00", cnt_en_in => "00", cnt_out => "00")
   );
 
-  constant con4 : dictionary :=
+  constant c_stimulus : t_stimulus_array :=
+(
+        (name => "Hold in reset", clk_in => "01", rst_in => "11", cnt_en_in => "00", cnt_out => "00"),
+      (name => "Not enabled", clk_in => "01", rst_in => "00", cnt_en_in => "00", cnt_out => "00")
+ );
+
+  constant c_stimulus : t_stimulus_array :=
+         (
+     (name => "Hold in reset",
+clk_in => "01",
+        rst_in => "11",
+     cnt_en_in => "00",
+        cnt_out => "00"),
+                 (name => "Not enabled",
+clk_in => "01",
+rst_in => "00",
+       cnt_en_in => "00",
+     cnt_out => "00")
+   );
+
+  constant c_stimulus : t_stimulus_array :=
+    (
   (
-   (3, 4, 5),
-   (1, 2, 3),
-   (9, 8, 7)
-  );
+ name => "Hold in reset",
+        clk_in => "01",
+     rst_in => "11",
+       cnt_en_in => "00",
+   cnt_out => "00"),
+(
+        name => "Not enabled",
+                clk_in => "01",
+   rst_in => "00",
+           cnt_en_in => "00",
+        cnt_out => "00")
+                 );
 
-
-  -- Violations
-
-  constant con1 : integer := a + b + c + d;
-
-  constant con2 : integer := a + b +
-c + d;
-
-  constant con2 : integer := a + b +
-                                  c + d;
-
-  constant con3 : integer :=
+  constant c_stimulus : t_stimulus_array :=
+     (
   (
-     0,
-1,
-    2,
-  3
-  );
-
-  constant con4 : dictionary :=
-  (
-     (3, 4, 5),
-(1, 2, 3),
-  (9, 8, 7)
-  );
-
+name => "Hold in reset",
+        clk_in => "01",
+   rst_in => "11",
+       cnt_en_in => "00",
+  cnt_out => "00"
+           ),
+(
+         name => "Not enabled",
+  clk_in => "01",
+         rst_in => "00",
+        cnt_en_in => "00",
+     cnt_out => "00"
+         )
+);
 
 begin
 
-end architecture RTL;
+end architecture rtl;
