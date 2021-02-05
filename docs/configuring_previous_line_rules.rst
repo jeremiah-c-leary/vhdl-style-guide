@@ -171,6 +171,6 @@ Rules Enforcing Previous Lines
 * `instantiation_004 <instantiation_rules.html#instantiation-004>`_
 * `library_003 <library_rules.html#library-003>`_
 * `package_003 <package_rules.html#package-003>`_
-* `package_body_200 <package_body_rules.html#package_body-200>`_
+* `package_body_200 <package_body_rules.html#package-body-200>`_
 * `process_015 <process_rules.html#process-015>`_
 * `type_010 <type_rules.html#type-010>`_
