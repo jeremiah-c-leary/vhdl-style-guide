@@ -22,7 +22,11 @@ There are several options to these rules, which can be selected by using the :co
 |                     | blank line above the comment(s).                         |
 +---------------------+----------------------------------------------------------+
 
-.. NOTE:: Unless stated in rule description, the default style is :code:`require_blank_line`.
+.. NOTE:: Unless stated in the rule description, the default style is :code:`require_blank_line`.
+
+.. WARNING:: It is important to be aware these rules may conflict with rules that enforce blank lines below keywords.
+  This can occur when a below rule is applied and then on the next line a previous rule applies.
+  Resolve any conflicts by changing the configuration of either rule.
 
 This is an example of how to configure these options.
 

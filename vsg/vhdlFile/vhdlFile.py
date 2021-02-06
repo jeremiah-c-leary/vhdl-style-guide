@@ -200,6 +200,9 @@ class vhdlFile():
     def get_line_below_line_ending_with_token(self, lTokens):
         return extract.get_line_below_line_ending_with_token(lTokens, self.lAllObjects, self.oTokenMap)
 
+    def get_line_below_line_ending_with_several_possible_tokens(self, lTokens):
+        return extract.get_line_below_line_ending_with_several_possible_tokens(lTokens, self.lAllObjects, self.oTokenMap)
+
     def get_line_below_line_ending_with_token_with_hierarchy(self, lTokens, lHierarchy):
         return extract.get_line_below_line_ending_with_token_with_hierarchy(lTokens, self.lAllObjects, lHierarchy, self.oTokenMap)
 
@@ -241,6 +244,9 @@ class vhdlFile():
 
     def get_blank_lines_below_line_ending_with_token(self, lTokens, lHierarhcy=None):
         return extract.get_blank_lines_below_line_ending_with_token(lTokens, lHierarhcy, self.lAllObjects, self.oTokenMap)
+
+    def get_blank_lines_below_line_ending_with_several_possible_tokens(self, lTokens):
+        return extract.get_blank_lines_below_line_ending_with_several_possible_tokens(lTokens, self.lAllObjects, self.oTokenMap)
 
     def get_blank_lines_above_line_starting_with_token(self, lTokens):
         return extract.get_blank_lines_above_line_starting_with_token(lTokens, self.lAllObjects, self.oTokenMap)

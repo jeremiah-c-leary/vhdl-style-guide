@@ -20,6 +20,10 @@ There are a couple of options to these rules, which can be selected by using the
      architecture_015:
         style : require_blank_line
 
+.. WARNING:: It is important to be aware these rules may conflict with rules that enforce rules on previous lines.
+  This can occur when a below rule is applied and then on the next line a previous rule applies.
+  Resolve any conflicts by changing the configuration of either rule.
+
 Example: require_blank_line
 ###########################
 
@@ -83,9 +87,9 @@ Rules Enforcing Blank Lines
 * `block_203 <block_rules.html#block-203>`_
 * `block_204 <block_rules.html#block-204>`_
 * `block_205 <block_rules.html#block-205>`_
+* `case_008 <case_rules.html#case-008>`_
 * `case_009 <case_rules.html#case-009>`_
 * `case_010 <case_rules.html#case-010>`_
-* `case_008 <case_rules.html#case-008>`_
 * `component_018 <component_rules.html#component-018>`_
 * `context_023 <context_rules.html#context-023>`_
 * `context_024 <context_rules.html#context-024>`_

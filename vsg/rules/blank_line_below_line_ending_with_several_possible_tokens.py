@@ -4,7 +4,7 @@ from vsg import parser
 from vsg import violation
 
 
-class blank_line_below_line_ending_with_token(rule.Rule):
+class blank_line_below_line_ending_with_several_possible_tokens(rule.Rule):
     '''
     Checks for a blank line below a line ending with a given token
 
@@ -25,19 +25,15 @@ class blank_line_below_line_ending_with_token(rule.Rule):
         rule.Rule.__init__(self, name=name, identifier=identifier)
         self.phase = 3
         self.lTokens = lTokens
-        self.lHierarchyLimits = None
         self.lAllowTokens = lAllowTokens
         self.style = 'require_blank_line'
         self.configuration.append('style')
 
     def _get_tokens_of_interest(self, oFile):
         if self.style == 'require_blank_line':
-            if self.lHierarchyLimits is None:
-                return oFile.get_line_below_line_ending_with_token(self.lTokens)
-            else:
-                return oFile.get_line_below_line_ending_with_token_with_hierarchy(self.lTokens, self.lHierarchyLimits)
+            return oFile.get_line_below_line_ending_with_several_possible_tokens(self.lTokens)
         elif self.style == 'no_blank_line':
-            return oFile.get_blank_lines_below_line_ending_with_token(self.lTokens, self.lHierarchyLimits)
+            return oFile.get_blank_lines_below_line_ending_with_several_possible_tokens(self.lTokens)
 
     def _analyze(self, lToi):
         if self.style == 'require_blank_line':

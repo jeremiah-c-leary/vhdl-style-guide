@@ -9,7 +9,6 @@ begin
   end block;
 
   BLOCK_LABEL : block
-
     signal sig1 : std_logic;
   begin
   end block;
@@ -20,7 +19,6 @@ begin
   end block;
 
   BLOCK_LABEL : block (guard) is
-
     signal sig1 : std_logic;
   begin
   end block;
@@ -31,13 +29,12 @@ begin
   end block;
 
   BLOCK_LABEL : block (guard)
-
     signal sig1 : std_logic;
   begin
   end block;
 
   -- multi line
-  BLOCK_LABEL : block 
+  BLOCK_LABEL : block
   (guard)
   is
   begin
@@ -46,7 +43,6 @@ begin
   BLOCK_LABEL : block
   (guard)
   is
-
     signal sig1 : std_logic;
   begin
   end block;
