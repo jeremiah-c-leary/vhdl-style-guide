@@ -55,7 +55,7 @@ class rule_012(rule.Rule):
             lColumn = []
             lColumn.append(iStartColumn)
             bCheckAlignment = False
-            iFirstColumn, iNextColumn = _find_first_column(oFile, oToi, self.align_left, self.indentSize)
+            iFirstColumn, iNextColumn, iLastColumn = _find_first_column(oFile, oToi, self.align_left, self.indentSize, self.indent_step)
             iColumn = iFirstColumn
             iPreviousColumn = 0
             iIndent = 0
@@ -76,7 +76,10 @@ class rule_012(rule.Rule):
                     if isinstance(lTokens[iToken + 1], parser.whitespace):
                         iIndent = len(lTokens[iToken + 1].get_value())
                         if isinstance(lTokens[iToken + 2], parser.close_parenthesis):
-                            lColumn.pop()
+                            if len(lColumn) > 1:
+                                lColumn.pop()
+                            else:
+                                lColumn = [iLastColumn]
 #                            print(f'Close Paren = {lColumn}')
                             bSkipPop = True
 
@@ -160,13 +163,28 @@ def calculate_start_column(oFile, oToi):
     return iReturn
 
 
-def _find_first_column(oFile, oToi, bAlignLeft, iIndentSize):
+def _find_first_column(oFile, oToi, bAlignLeft, iIndentSize, iIndentStep):
     iStartIndex = oToi.get_start_index()
     if bAlignLeft:
         iFirstColumn = oFile.get_column_of_token_index(iStartIndex)
         iIndentLevel = oFile.get_indent_of_line_at_index(iStartIndex)
-        iNextColumn = iIndentSize * iIndentLevel
+        if is_token_before_carriage_return(parser.open_parenthesis, oToi.get_tokens()):
+            iNextColumn = iIndentSize * iIndentLevel + iIndentStep
+            iLastColumn = iIndentSize * iIndentLevel
+        else:
+            iNextColumn = iIndentSize * iIndentLevel
+            iLastColumn = iIndentSize * iIndentLevel
     else:
         iFirstColumn = oFile.get_column_of_token_index(iStartIndex)
         iNextColumn = iFirstColumn
-    return iFirstColumn, iNextColumn
+        iLastColumn = iFirstColumn
+    return iFirstColumn, iNextColumn, iLastColumn
+
+
+def is_token_before_carriage_return(tToken, lTokens):
+    for oToken in lTokens:
+        if isinstance(oToken, tToken):
+            return True
+        if isinstance(oToken, parser.carriage_return):
+            return False
+    return False
