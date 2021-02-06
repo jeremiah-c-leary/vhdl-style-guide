@@ -97,3 +97,14 @@ begin
 
 
 end architecture rtl;
+
+architecture rtl of fifo is
+
+  constant avmm_master_null : avmm_master_t := (
+                                                (others => '0'),
+                                                (others => '0'),
+                                                '0',
+                                                '0'
+                                               );
+
+begin end architecture rtl;
