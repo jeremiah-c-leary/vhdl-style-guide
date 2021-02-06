@@ -9,7 +9,10 @@ There are several options to these rules:
 | Method               |   Type  | Default | Description                                             |
 +======================+=========+=========+=========================================================+
 | align_left           | boolean |  True   | True = New lines will be aligned left.                  |
-|                      |         |         | False = Align to current column                         |
+|                      |         |         | False = Align to left of assignment operator.           |
++----------------------+-----------------------------------------------------------------------------+
+| indent_step          | integer |    1    | Sets how many columns to the right to check for         |
+|                      |         |         | alignment.                                              |
 +----------------------+-----------------------------------------------------------------------------+
 
 This is an example of how to configure the option.
@@ -19,11 +22,12 @@ This is an example of how to configure the option.
    rule :
      constant_012:
         align_left : False
+        indent_step : 2
 
 .. NOTE:: All examples below are using the rule **constant_012**.
 
-Example: align_left is True
-###########################
+Example: align_left True and indent_step 1
+##########################################
 
 The following code would fail with this option:
 
@@ -41,6 +45,76 @@ The following code would fail with this option:
                                    )
                                  );
 
+    constant c_const : t_type :=
+    (
+      (
+        a => 0,
+        b => 1
+      ),
+      (
+        c => 0,
+        d => 1
+      )
+    );
+
+The following code would pass with this option:
+
+.. code-block:: vhdl
+
+    constant c_const : t_type :=
+    (
+     (
+      a => 0,
+      b => 1
+     ),
+     (
+      c => 0,
+      d => 1
+     )
+    );
+
+    constant c_const : t_type :=
+    (
+     (
+      a => 0,
+      b => 1
+     ),
+     (
+      c => 0,
+      d => 1
+     )
+    );
+
+Example: align_left True and indent_step 2
+##########################################
+
+The following code would fail with this option:
+
+.. code-Block:: vhdl
+
+    constant c_const : t_type :=
+                                 (
+                                   (
+                                     a => 0,
+                                     b => 1
+                                   ),
+                                   (
+                                     c => 0,
+                                     d => 1
+                                   )
+                                 );
+
+    constant c_const : t_type :=
+    (
+     (
+      a => 0,
+      b => 1
+     ),
+     (
+      c => 0,
+      d => 1
+     )
+    );
 
 The following code would pass with this option:
 
@@ -58,8 +132,20 @@ The following code would pass with this option:
       )
     );
 
-Example: align_left is False
-############################
+    constant c_const : t_type :=
+    (
+      (
+        a => 0,
+        b => 1
+      ),
+      (
+        c => 0,
+        d => 1
+      )
+    );
+
+Example: align_left False and indent_step 2
+###########################################
 
 The following code would fail with this option:
 

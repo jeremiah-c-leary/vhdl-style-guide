@@ -33,6 +33,8 @@ class rule_012(rule.Rule):
         self.lTokenPairs = lTokenPairs
         self.align_left = False
         self.configuration.append('align_left')
+        self.indent_step = 1
+        self.configuration.append('indent_step')
 
     def _get_tokens_of_interest(self, oFile):
         lToi = []
@@ -46,14 +48,14 @@ class rule_012(rule.Rule):
 
         for oToi in lToi:
 
-            print('-'*80)
+#            print('-'*80)
             iLine, lTokens = utils.get_toi_parameters(oToi)
 
             iStartColumn = calculate_start_column(oFile, oToi)
             lColumn = []
             lColumn.append(iStartColumn)
             bCheckAlignment = False
-            iFirstColumn, iNextColumn = _find_first_column(oFile, oToi, self.align_left)
+            iFirstColumn, iNextColumn = _find_first_column(oFile, oToi, self.align_left, self.indentSize)
             iColumn = iFirstColumn
             iPreviousColumn = 0
             iIndent = 0
@@ -64,7 +66,7 @@ class rule_012(rule.Rule):
                 iLine = utils.increment_line_number(iLine, oToken)
 
                 if isinstance(oToken, parser.carriage_return):
-                    print(lColumn)
+#                    print(lColumn)
                     if bPopFirstColumn and self.align_left:
                         lColumn = [iNextColumn]
                         bPopFirstColumn = False 
@@ -75,7 +77,7 @@ class rule_012(rule.Rule):
                         iIndent = len(lTokens[iToken + 1].get_value())
                         if isinstance(lTokens[iToken + 2], parser.close_parenthesis):
                             lColumn.pop()
-                            print(f'Close Paren = {lColumn}')
+#                            print(f'Close Paren = {lColumn}')
                             bSkipPop = True
 
                     else:
@@ -92,7 +94,7 @@ class rule_012(rule.Rule):
                     bSkipPop = False
                 elif isinstance(oToken, parser.close_parenthesis):
                     lColumn.pop()
-                    print(f'Close Paren = {lColumn}')
+#                    print(f'Close Paren = {lColumn}')
 
                 if bCheckAlignment:
                     if isinstance(oToken, parser.whitespace):
@@ -105,7 +107,7 @@ class rule_012(rule.Rule):
                             oViolation = violation.New(iLine, oToi.extract_tokens(iToken, iToken), sSolution)
                             oViolation.set_action(dAction)
                             self.add_violation(oViolation)
-                            print(f"Action = {dAction['action']}")
+#                            print(f"Action = {dAction['action']}")
 #                            print(dAction)
                     else:
                         if lColumn != 0:
@@ -117,12 +119,12 @@ class rule_012(rule.Rule):
                             oViolation = violation.New(iLine, oToi.extract_tokens(iToken, iToken), sSolution)
                             oViolation.set_action(dAction)
                             self.add_violation(oViolation)
-                            print(f"Action = {dAction['action']}")
+#                            print(f"Action = {dAction['action']}")
                     bCheckAlignment = False
 
                 if isinstance(oToken, parser.open_parenthesis):
-                    lColumn.append(iColumn + iPreviousColumn - iIndent)
-                    print(f'Open Paren = {lColumn}')
+                    lColumn.append(iColumn + iPreviousColumn - iIndent + (self.indent_step - 1))
+#                    print(f'Open Paren = {lColumn}')
 
 
     def fix(self, oFile, dFixOnly=None):
@@ -141,7 +143,7 @@ class rule_012(rule.Rule):
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
         dAction = oViolation.get_action()
-        print(dAction)
+#        print(dAction)
         if dAction['action'] == 'adjust':
             lTokens[0].set_value(' '*dAction['column'])
         else:
@@ -154,15 +156,17 @@ def calculate_start_column(oFile, oToi):
     iReturn = oFile.get_column_of_token_index(oToi.get_start_index())
     iReturn += len(oToi.get_tokens()[0].get_value())
     iReturn += 1
-    print(f'Start Column = {iReturn}')
+#    print(f'Start Column = {iReturn}')
     return iReturn
 
 
-def _find_first_column(oFile, oToi, bAlignLeft):
+def _find_first_column(oFile, oToi, bAlignLeft, iIndentSize):
+    iStartIndex = oToi.get_start_index()
     if bAlignLeft:
-        iFirstColumn = oFile.get_column_of_token_index(oToi.get_start_index())
-        iNextColumn = 2
+        iFirstColumn = oFile.get_column_of_token_index(iStartIndex)
+        iIndentLevel = oFile.get_indent_of_line_at_index(iStartIndex)
+        iNextColumn = iIndentSize * iIndentLevel
     else:
-        iFirstColumn = oFile.get_column_of_token_index(oToi.get_start_index())
+        iFirstColumn = oFile.get_column_of_token_index(iStartIndex)
         iNextColumn = iFirstColumn
     return iFirstColumn, iNextColumn
