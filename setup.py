@@ -11,9 +11,11 @@ sVersionInfoFileName = os.path.join('vsg', 'version_info.py')
 
 if not os.path.exists(sVersionInfoFileName):
 
-    sVersion = '0.0.0'
-    sBranch = version.get_git_branch()
-    sShaNum = version.get_git_sha(None, None)
+    sVersion, sShaNum = version.get_version_info(None, None)
+    print(sVersion)
+    print(sShaNum)
+#    sBranch = version.get_git_branch()
+#    sShaNum = version.get_git_sha(None, None)
 
     lVersionInfo = []
     lVersionInfo.append('sVersion = \'' + sVersion + "'")
@@ -24,9 +26,10 @@ if not os.path.exists(sVersionInfoFileName):
             oFile.write(sLine + '\n')
     oFile.close()
 
-    sInstallVersion = sVersion + '-' + sBranch + '-' + sShaNum
+    sInstallVersion = sVersion
 
 else:
+
     from vsg import version_info
 
     sInstallVersion = version_info.sVersion
