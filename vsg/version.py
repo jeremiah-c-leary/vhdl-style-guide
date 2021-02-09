@@ -67,4 +67,5 @@ def get_version_info(sVersion, sShaNum):
         os.chdir(sReturnPath)
         return sVersion, sShaNum
     except subprocess.CalledProcessError:
+        os.chdir(sReturnPath)
         return '0.0.0.dev0', 'unknown'
