@@ -202,7 +202,7 @@ Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous
 block_201
 ^^^^^^^^^
 
-This rule checks for a blank line below the **is** keyword.
+This rule checks for a blank line below the **block** keyword.
 
 Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
 
