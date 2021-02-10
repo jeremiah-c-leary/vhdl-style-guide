@@ -1,10 +1,7 @@
 
-from vsg import parser
 from vsg import rule
 from vsg import severity
 from vsg import violation
-
-from vsg.vhdlFile import utils
 
 
 class number_of_lines_between_tokens(rule.Rule):

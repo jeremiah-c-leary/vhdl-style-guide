@@ -4,7 +4,6 @@ from vsg import parser
 from vsg.vhdlFile.extract import tokens
 
 import bisect
-import copy
 
 
 def get_line_preceeding_line(iLine, lAllTokens, iNumLines, oTokenMap, bSkipComments=False):

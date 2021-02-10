@@ -1,9 +1,6 @@
 import unittest
-from unittest import mock
-import subprocess
 import os
 
-from vsg.tests import utils
 from vsg.__main__ import read_configuration_files
 
 def get_index_of_dictionary_in_list(lList, sKey):

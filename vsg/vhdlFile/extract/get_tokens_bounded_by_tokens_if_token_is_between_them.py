@@ -1,8 +1,5 @@
 
-from vsg import parser
-
 from vsg.vhdlFile.extract import tokens
-from vsg.vhdlFile.extract import utils
 
 
 def get_tokens_bounded_by_tokens_if_token_is_between_them(oStart, oEnd, oToken, lAllObjects, oTokenMap):
