@@ -11,11 +11,7 @@ sVersionInfoFileName = os.path.join('vsg', 'version_info.py')
 
 if not os.path.exists(sVersionInfoFileName):
 
-    sVersion, sShaNum = version.get_version_info(None, None)
-    print(sVersion)
-    print(sShaNum)
-#    sBranch = version.get_git_branch()
-#    sShaNum = version.get_git_sha(None, None)
+    sVersion, sShaNum = version.get_version_info(version.sVersion, None)
 
     lVersionInfo = []
     lVersionInfo.append('sVersion = \'' + sVersion + "'")
@@ -27,13 +23,18 @@ if not os.path.exists(sVersionInfoFileName):
     oFile.close()
 
     sInstallVersion = sVersion
+    bRemoveVersionFile = True
 
 else:
 
     from vsg import version_info
 
-    sInstallVersion = version_info.sVersion
+    try:
+        sInstallVersion = version_info.sVersion
+    except AttributeError:
+        sInstallVersion = version.sVersion
 
+    bRemoveVersionFile = False
 
 def readme():
     with open('README.rst') as f:
@@ -78,4 +79,5 @@ setup(
 )
 
 ### Cleanup version information
-os.remove(sVersionInfoFileName)
+if bRemoveVersionFile:
+    os.remove(sVersionInfoFileName)

@@ -2,13 +2,18 @@
 import subprocess
 import os
 
+sVersion = '2.0.0'
+
 try:
     from vsg import version_info
-    sVersion = version_info.sVersion
+    try:
+        sVersion = version_info.sVersion
+    except AttributeError:
+        pass
     sShaNum = version_info.sShaNum
 except ImportError:
-    sVersion = None
     sShaNum = None
+
 
 def print_version(oCommandLineArguments, sVersion=sVersion, sShaNum=sShaNum):
 
@@ -22,36 +27,8 @@ def print_version(oCommandLineArguments, sVersion=sVersion, sShaNum=sShaNum):
 
         exit(0)
 
-#def get_git_sha(sVersion, sShaNum):
-#    try:
-#        if sShaNum is None and sVersion is None:
-#            sReturnPath = os.getcwd()
-#            sPath = os.path.dirname(__file__)
-#            os.chdir(sPath)
-#            lActual = subprocess.check_output(['git', 'rev-parse', 'HEAD'])
-#            lActual = str(lActual.decode('utf-8')).split('\n')
-#            sReturn = lActual[0]
-#            os.chdir(sReturnPath)
-#        else:
-#            return sShaNum
-#        return sReturn
-#    except subprocess.CalledProcessError:
-#        return 'Unknown'
-#
-#def get_git_branch():
-#    try:
-#        sReturnPath = os.getcwd()
-#        sPath = os.path.dirname(__file__)
-#        os.chdir(sPath)
-#        lActual = subprocess.check_output(['git', 'branch', '--show-current'])
-#        lActual = str(lActual.decode('utf-8')).split('\n')
-#        sReturn = lActual[0]
-#        os.chdir(sReturnPath)
-#        return sReturn
-#    except subprocess.CalledProcessError:
-#        return 'Unknown'
-
 def get_version_info(sVersion, sShaNum):
+
     if sVersion is not None and sShaNum is not None:
         return sVersion, sShaNum
 
@@ -68,4 +45,4 @@ def get_version_info(sVersion, sShaNum):
         return sVersion, sShaNum
     except subprocess.CalledProcessError:
         os.chdir(sReturnPath)
-        return '0.0.0.dev0', 'unknown'
+        return sVersion + '+zip.file', 'Unknown.  Installed via zip file.'
