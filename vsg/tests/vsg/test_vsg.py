@@ -309,8 +309,13 @@ class testVsg(unittest.TestCase):
         self.assertEqual(sActual, sExpected)
 
     def test_no_permission_configuration_file(self):
+        # Check if we are root.  Root always has permissions so test will fail.
+        if 'SUDO_UID' in os.environ.keys() or os.geteuid() == 0:
+            return
+
         sNoPermissionFile = 'no_permission.yml'
         pathlib.Path(sNoPermissionFile).touch(mode=0o222, exist_ok=True)
+
         sExpected = f'ERROR: encountered PermissionError, Permission denied while opening configuration file: {sNoPermissionFile}\n'
 
         try:
