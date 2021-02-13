@@ -186,6 +186,7 @@ def _check_open_paren_new_line(self, oToi):
     iOpenParen = 0
     iCloseParen = 0
     bAssignmentFound = False
+    bOthersClause = False
     for iToken, oToken in enumerate(lTokens):
         iLine = utils.increment_line_number(iLine, oToken)
         if isinstance(oToken, token.constant_declaration.assignment_operator):
@@ -193,10 +194,28 @@ def _check_open_paren_new_line(self, oToi):
         if not bSearch:
             continue
 
+
+        if isinstance(oToken, parser.close_parenthesis):
+            if bOthersClause:
+                bOthersClause = False
+                continue
+
+        if isinstance(oToken, parser.open_parenthesis):
+#            print(f'_check_open_paren_new_line = {_inside_others_clause(iToken, lTokens)}')
+            if _inside_others_clause(iToken, lTokens):
+                bOthersClause = True
+
+        if bOthersClause:
+            continue
+
+
+
         if bAssignmentFound:
             if isinstance(oToken, parser.close_parenthesis):
                 iCloseParen += 1
                 if iOpenParen == iCloseParen:
+                    bAssignmentFound = False
+                elif iCloseParen > iOpenParen:
                     bAssignmentFound = False
     
             if isinstance(oToken, parser.open_parenthesis):
@@ -206,6 +225,8 @@ def _check_open_paren_new_line(self, oToi):
 
         if not bAssignmentFound and oToken.get_value() == '=>':
             bAssignmentFound = True
+            iOpenParen = 0
+            iCloseParen = 0
             continue
 
         if isinstance(oToken, parser.open_parenthesis):
@@ -246,6 +267,7 @@ def _check_close_paren_new_line(self, oToi):
     iOpenParen = 0
     iCloseParen = 0
     bAssignmentFound = False
+    bOthersClause = False
     for iToken, oToken in enumerate(lTokens[:iEnd]):
         iLine = utils.increment_line_number(iLine, oToken)
         if isinstance(oToken, token.constant_declaration.assignment_operator):
@@ -253,20 +275,33 @@ def _check_close_paren_new_line(self, oToi):
         if not bSearch:
             continue
 
-        if bAssignmentFound:
-            if isinstance(oToken, parser.close_parenthesis):
-                iCloseParen += 1
-                if iOpenParen == iCloseParen:
-                    bAssignmentFound = False
-    
-            if isinstance(oToken, parser.open_parenthesis):
-                iOpenParen += 1
+        if isinstance(oToken, parser.close_parenthesis):
+            if bOthersClause:
+                bOthersClause = False
+                continue
 
+        if isinstance(oToken, parser.open_parenthesis):
+#            print(f'_check_new_line_after_comma = {_inside_others_clause(iToken, lTokens)}')
+            if _inside_others_clause(iToken, lTokens):
+                bOthersClause = True
+
+        if bOthersClause:
             continue
 
-        if not bAssignmentFound and oToken.get_value() == '=>':
-            bAssignmentFound = True
-            continue
+#        if bAssignmentFound:
+#            if isinstance(oToken, parser.close_parenthesis):
+#                iCloseParen += 1
+#                if iOpenParen == iCloseParen:
+#                    bAssignmentFound = False
+#    
+#            if isinstance(oToken, parser.open_parenthesis):
+#                iOpenParen += 1
+#
+#            continue
+#
+#        if not bAssignmentFound and oToken.get_value() == '=>':
+#            bAssignmentFound = True
+#            continue
 
         if isinstance(oToken, parser.close_parenthesis):
             if utils.does_token_start_line(iToken, lTokens):
@@ -303,6 +338,7 @@ def _check_new_line_after_comma(self, oToi):
     iOpenParen = 0
     iCloseParen = 0
     bAssignmentFound = False
+    bOthersClause = False
     for iToken, oToken in enumerate(lTokens):
         iLine = utils.increment_line_number(iLine, oToken)
         if isinstance(oToken, token.constant_declaration.assignment_operator):
@@ -310,24 +346,43 @@ def _check_new_line_after_comma(self, oToi):
         if not bSearch:
             continue
 
-        if bAssignmentFound:
-            if isinstance(oToken, parser.close_parenthesis):
-                iCloseParen += 1
-                if iOpenParen == iCloseParen:
-                    bAssignmentFound = False
-    
-            if isinstance(oToken, parser.open_parenthesis):
-                iOpenParen += 1
+        if isinstance(oToken, parser.close_parenthesis):
+            if bOthersClause:
+                bOthersClause = False
+                continue
 
+        if isinstance(oToken, parser.open_parenthesis):
+#            print(f'_check_new_line_after_comma = {_inside_others_clause(iToken, lTokens)}')
+            if _inside_others_clause(iToken, lTokens):
+                bOthersClause = True
+
+        if bOthersClause:
             continue
 
-        if not bAssignmentFound and oToken.get_value() == '=>':
-            bAssignmentFound = True
-            continue
+#        if bAssignmentFound:
+#            if isinstance(oToken, parser.close_parenthesis):
+#                iCloseParen += 1
+#                if iOpenParen == iCloseParen:
+#                    bAssignmentFound = False
+#                elif iCloseParen > iOpenParen:
+#                    bAssignmentFound = False
+#    
+#            if isinstance(oToken, parser.open_parenthesis):
+#                iOpenParen += 1
+#
+#            continue
+#
+#        if not bAssignmentFound and oToken.get_value() == '=>':
+#            bAssignmentFound = True
+#            iOpenParen = 0
+#            iCloseParen = 0
+#            continue
 
         if isinstance(oToken, parser.comma):
+#            print('comma detected')
             if utils.is_token_at_end_of_line(iToken, lTokens):
                 if not self.new_line_after_comma:
+#                    print('---->Remove')
                     iEnd = utils.find_next_non_whitespace_token(iToken + 1, lTokens)
                     dAction = {}
                     dAction['type'] = 'new_line_after_comma'
@@ -425,8 +480,10 @@ def _fix_new_line_after_comma(oViolation):
         if isinstance(lTokens[1], parser.whitespace):
             lTokens.insert(1, parser.carriage_return())
         else:
-            lTokens.append(parser.carriage_return())
-            lTokens.append(parser.whitespace(' '))
+            lTokens.insert(1, parser.whitespace(' '))
+            lTokens.insert(1, parser.carriage_return())
+#            lTokens.append(parser.carriage_return())
+#            lTokens.append(parser.whitespace(' '))
         oViolation.set_tokens(lTokens)
     elif dAction['action'] == 'remove':
         lNewTokens = []
@@ -435,3 +492,18 @@ def _fix_new_line_after_comma(oViolation):
         lNewTokens.append(lTokens[-1])
         oViolation.set_tokens(lNewTokens)
 
+def _inside_others_clause(iToken, lTokens):
+#    print(lTokens[iToken + 1:])
+    for oToken in lTokens[iToken + 1:]: 
+        if utils.token_is_whitespace_or_comment(oToken):
+            continue
+        elif isinstance(oToken, parser.open_parenthesis):
+            return False
+        elif isinstance(oToken, parser.close_parenthesis):
+            return False
+        else:
+            if oToken.get_value().lower() == 'others':
+                break
+    else:
+        return False 
+    return True
