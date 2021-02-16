@@ -277,31 +277,55 @@ def _check_close_paren_new_line(self, oToi):
 
         if isinstance(oToken, parser.close_parenthesis):
             if bOthersClause:
-                bOthersClause = False
-                continue
+                iCloseParen += 1
+                if iOpenParen == iCloseParen:
+                    bOthersClause = False
+                    continue
+                elif iCloseParen > iOpenParen:
+                    bOthersCluase = False
 
         if isinstance(oToken, parser.open_parenthesis):
+            if not bOthersClause:
 #            print(f'_check_new_line_after_comma = {_inside_others_clause(iToken, lTokens)}')
-            if _inside_others_clause(iToken, lTokens):
-                bOthersClause = True
+                if _inside_others_clause(iToken, lTokens):
+                    bOthersClause = True
+                    iOpenParen = 0
+                    iCloseParen = 0
+            else:
+                iOpenParen += 1
 
         if bOthersClause:
             continue
 
-#        if bAssignmentFound:
-#            if isinstance(oToken, parser.close_parenthesis):
-#                iCloseParen += 1
-#                if iOpenParen == iCloseParen:
-#                    bAssignmentFound = False
-#    
-#            if isinstance(oToken, parser.open_parenthesis):
-#                iOpenParen += 1
-#
-#            continue
-#
-#        if not bAssignmentFound and oToken.get_value() == '=>':
-#            bAssignmentFound = True
-#            continue
+
+        if bAssignmentFound:
+            if isinstance(oToken, parser.close_parenthesis):
+                iCloseParen += 1
+                if iOpenParen == iCloseParen:
+                    bAssignmentFound = False
+                    continue
+                elif iCloseParen > iOpenParen:
+                    bAssignmentFound = False 
+                else:
+                    continue
+
+            elif isinstance(oToken, parser.open_parenthesis):
+                iOpenParen += 1
+                continue
+
+            elif isinstance(oToken, parser.comma):
+                if iOpenParen == iCloseParen:
+                    bAssignmentFound = False
+                else:
+                    continue
+            else:
+                continue
+
+        if not bAssignmentFound and oToken.get_value() == '=>':
+            bAssignmentFound = True
+            iOpenParen = 0
+            iCloseParen = 0
+            continue
 
         if isinstance(oToken, parser.close_parenthesis):
             if utils.does_token_start_line(iToken, lTokens):
@@ -359,24 +383,30 @@ def _check_new_line_after_comma(self, oToi):
         if bOthersClause:
             continue
 
-#        if bAssignmentFound:
-#            if isinstance(oToken, parser.close_parenthesis):
-#                iCloseParen += 1
-#                if iOpenParen == iCloseParen:
-#                    bAssignmentFound = False
-#                elif iCloseParen > iOpenParen:
-#                    bAssignmentFound = False
-#    
-#            if isinstance(oToken, parser.open_parenthesis):
-#                iOpenParen += 1
-#
-#            continue
-#
-#        if not bAssignmentFound and oToken.get_value() == '=>':
-#            bAssignmentFound = True
-#            iOpenParen = 0
-#            iCloseParen = 0
-#            continue
+        if bAssignmentFound:
+            if isinstance(oToken, parser.close_parenthesis):
+                iCloseParen += 1
+                if iOpenParen == iCloseParen:
+                    bAssignmentFound = False
+                elif iCloseParen > iOpenParen:
+                    bAssignmentFound = False
+    
+            if isinstance(oToken, parser.open_parenthesis):
+                iOpenParen += 1
+
+            if isinstance(oToken, parser.comma):
+                if iOpenParen == iCloseParen:
+                    bAssignmentFound = False
+                else:
+                    continue
+            else:
+                continue
+
+        if not bAssignmentFound and oToken.get_value() == '=>':
+            bAssignmentFound = True
+            iOpenParen = 0
+            iCloseParen = 0
+            continue
 
         if isinstance(oToken, parser.comma):
 #            print('comma detected')
