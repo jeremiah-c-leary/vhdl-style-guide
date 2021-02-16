@@ -10,6 +10,7 @@ sTestDir = os.path.dirname(__file__)
 
 lFile, eError =vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_016_test_input.vhd'))
 lFileOthers, eError = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir, 'rule_016_test_input_others.vhd'))
+lFileAssignment, eError = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir, 'rule_016_test_input_assignment.vhd'))
 
 lExpected_first_paren_new_line_true = []
 lExpected_first_paren_new_line_true.append('')
@@ -62,6 +63,10 @@ utils.read_file(os.path.join(sTestDir, 'rule_016_test_input.fixed_all_false.vhd'
 lExpected_others = []
 lExpected_others.append('')
 utils.read_file(os.path.join(sTestDir, 'rule_016_test_input_others.fixed.vhd'), lExpected_others)
+
+lExpected_assignment = []
+lExpected_assignment.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_016_test_input_assignment.fixed.vhd'), lExpected_assignment)
 
 
 class test_constant_rule(unittest.TestCase):
@@ -494,5 +499,24 @@ class test_constant_rule(unittest.TestCase):
         self.assertEqual(lExpected_others, lActual)
 
         oRule.analyze(oFileOthers)
+        self.assertEqual(oRule.violations, [])
+
+    def test_fix_rule_016_assignment(self):
+        self.maxDiff = None
+        oRule = constant.rule_016()
+        oRule.first_paren_new_line = True
+        oRule.last_paren_new_line = True
+        oRule.open_paren_new_line = True
+        oRule.close_paren_new_line = True
+        oRule.new_line_after_comma = True
+
+        oFileAssignment = vhdlFile.vhdlFile(lFileAssignment)
+        oRule.fix(oFileAssignment)
+
+        lActual = oFileAssignment.get_lines()
+
+        self.assertEqual(lExpected_assignment, lActual)
+
+        oRule.analyze(oFileAssignment)
         self.assertEqual(oRule.violations, [])
 
