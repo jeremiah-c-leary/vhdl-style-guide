@@ -55,32 +55,21 @@ class rule_016(rule.Rule):
             lToi = utils.combine_two_token_class_lists(lToi, aToi)
         return lToi
 
-
-    def analyze(self, oFile):
-        lToi = self._get_tokens_of_interest(oFile)
-#        print(f'Num_toi = {len(lToi)}')
+    def _analyze(self, lToi):
         for oToi in lToi:
-#            print('='*80)
             if rule_utils.is_single_line(oToi) and self.ignore_single_line:
-#                print('Skip')
                 continue
 
             if not _is_open_paren_after_assignment(oToi):
                 continue
 
             _check_first_paren_new_line(self, oToi)
-#            print(f'Num_Violation = {len(self.violations)}')
             _check_last_paren_new_line(self, oToi)
-#            print(f'Num_Violation = {len(self.violations)}')
             _check_open_paren_new_line(self, oToi)
-#            print(f'Num_Violation = {len(self.violations)}')
             _check_close_paren_new_line(self, oToi)
-#            print(f'Num_Violation = {len(self.violations)}')
             _check_new_line_after_comma(self, oToi)
-#            print(f'Num_Violation = {len(self.violations)}')
 
         self._sort_violations()
-
 
     def _fix_violation(self, oViolation):
         dAction = oViolation.get_action()
