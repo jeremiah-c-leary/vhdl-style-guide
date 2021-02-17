@@ -86,7 +86,7 @@ class rule_016(rule.Rule):
 
 
 def _check_first_paren_new_line(self, oToi):
-#    print('-->_check_first_paren_new_line')    
+
     if self.first_paren_new_line == 'Ignore':
         return 
 
@@ -100,25 +100,21 @@ def _check_first_paren_new_line(self, oToi):
         if isinstance(oToken, parser.open_parenthesis) and bSearch:
             if utils.find_carriage_return(lTokens[iStart:iToken]) is None:
                 if self.first_paren_new_line:
-#                    print('---->Insert')
-                    dAction = {}
-                    dAction['type'] = 'first_paren_new_line'
-                    dAction['action'] = 'insert'
+                    dAction = _create_action_dictionary('first_paren_new_line', 'insert')
                     sSolution = 'Move parenthesis after assignment to the next line.'
                     oViolation = violation.New(iLine, oToi.extract_tokens(iToken - 1, iToken), sSolution)
                     oViolation.set_action(dAction)
                     self.add_violation(oViolation)
             else:
                 if not self.first_paren_new_line:
-                    dAction = {}
-                    dAction['type'] = 'first_paren_new_line'
-                    dAction['action'] = 'remove'
+                    dAction = _create_action_dictionary('first_paren_new_line', 'remove')
                     sSolution = 'Move parenthesis to same line as assignment operator.'
                     oViolation = violation.New(iLine, oToi.extract_tokens(iStart, iToken), sSolution)
                     oViolation.set_action(dAction)
                     self.add_violation(oViolation)
             break
-                
+
+
 def _check_last_paren_new_line(self, oToi):
 #    print('-->_check_last_paren_new_line')    
     if self.last_paren_new_line == 'Ignore':
@@ -138,20 +134,15 @@ def _check_last_paren_new_line(self, oToi):
                 bReturnFound = True
             
             if self.last_paren_new_line and not bReturnFound:
-#                print('---->Insert')
                 lTokens.reverse()
-                dAction = {}
-                dAction['type'] = 'last_paren_new_line'
-                dAction['action'] = 'insert'
+                dAction = _create_action_dictionary('last_paren_new_line', 'insert')
                 sSolution = 'Move closing parenthesis to the next line.'
                 oViolation = violation.New(iLine, oToi.extract_tokens(iEnd - 1, iEnd), sSolution)
                 oViolation.set_action(dAction)
                 self.add_violation(oViolation)
             elif not self.last_paren_new_line and bReturnFound:
                 lTokens.reverse()
-                dAction = {}
-                dAction['type'] = 'last_paren_new_line'
-                dAction['action'] = 'remove'
+                dAction = _create_action_dictionary('last_paren_new_line', 'remove')
                 sSolution = 'Move closing parenthesis to previous line.'
                 iStart = utils.find_previous_non_whitespace_token(iEnd - 1, lTokens)
                 oViolation = violation.New(iLine, oToi.extract_tokens(iStart, iEnd), sSolution)
@@ -223,18 +214,14 @@ def _check_open_paren_new_line(self, oToi):
             if utils.is_token_at_end_of_line(iToken, lTokens):
                 if not self.open_paren_new_line:
                     iEnd = utils.find_next_non_whitespace_token(iToken + 1, lTokens)
-                    dAction = {}
-                    dAction['type'] = 'last_paren_new_line'
-                    dAction['action'] = 'remove'
+                    dAction = _create_action_dictionary('open_paren_new_line', 'remove')
                     sSolution = 'Remove carriage return after open parenthesis.'
                     oViolation = violation.New(iLine, oToi.extract_tokens(iToken, iEnd), sSolution)
                     oViolation.set_action(dAction)
                     self.add_violation(oViolation)
             else:
                 if self.open_paren_new_line:
-                    dAction = {}
-                    dAction['type'] = 'open_paren_new_line'
-                    dAction['action'] = 'insert'
+                    dAction = _create_action_dictionary('open_paren_new_line', 'insert')
                     sSolution = 'Add carriage return after open parenthesis.'
                     oViolation = violation.New(iLine, oToi.extract_tokens(iToken, iToken), sSolution)
                     oViolation.set_action(dAction)
@@ -320,9 +307,7 @@ def _check_close_paren_new_line(self, oToi):
         if isinstance(oToken, parser.close_parenthesis):
             if utils.does_token_start_line(iToken, lTokens):
                 if not self.close_paren_new_line:
-                    dAction = {}
-                    dAction['type'] = 'close_paren_new_line'
-                    dAction['action'] = 'remove'
+                    dAction = _create_action_dictionary('close_paren_new_line', 'remove')
                     sSolution = 'Move closing parenthesis to previous line.'
                     iStart = utils.find_previous_non_whitespace_token(iToken - 1, lTokens)
                     oViolation = violation.New(iLine, oToi.extract_tokens(iStart, iToken), sSolution)
@@ -330,10 +315,7 @@ def _check_close_paren_new_line(self, oToi):
                     self.add_violation(oViolation)
             else:
                 if self.close_paren_new_line:
-#                    print('---->Insert')
-                    dAction = {}
-                    dAction['type'] = 'close_paren_new_line'
-                    dAction['action'] = 'insert'
+                    dAction = _create_action_dictionary('close_paren_new_line', 'insert')
                     sSolution = 'Move closing parenthesis to the next line.'
                     oViolation = violation.New(iLine, oToi.extract_tokens(iToken - 1, iToken), sSolution)
                     oViolation.set_action(dAction)
@@ -408,18 +390,14 @@ def _check_new_line_after_comma(self, oToi):
             if utils.is_token_at_end_of_line(iToken, lTokens):
                 if self.new_line_after_comma == 'Remove':
                     iEnd = utils.find_next_non_whitespace_token(iToken + 1, lTokens)
-                    dAction = {}
-                    dAction['type'] = 'new_line_after_comma'
-                    dAction['action'] = 'remove'
+                    dAction = _create_action_dictionary('new_line_after_comma', 'remove')
                     sSolution = 'Remove carriage return after comma.'
                     oViolation = violation.New(iLine, oToi.extract_tokens(iToken, iEnd), sSolution)
                     oViolation.set_action(dAction)
                     self.add_violation(oViolation)
             else:
                 if self.new_line_after_comma == 'Add':
-                    dAction = {}
-                    dAction['type'] = 'new_line_after_comma'
-                    dAction['action'] = 'insert'
+                    dAction = _create_action_dictionary('new_line_after_comma', 'insert')
                     sSolution = 'Add carriage return after comma.'
                     oViolation = violation.New(iLine, oToi.extract_tokens(iToken, iToken + 1), sSolution)
                     oViolation.set_action(dAction)
@@ -515,6 +493,7 @@ def _fix_new_line_after_comma(oViolation):
         lNewTokens.append(lTokens[-1])
         oViolation.set_tokens(lNewTokens)
 
+
 def _inside_others_clause(iToken, lTokens):
 #    print(lTokens[iToken + 1:])
     for oToken in lTokens[iToken + 1:]: 
@@ -530,3 +509,10 @@ def _inside_others_clause(iToken, lTokens):
     else:
         return False 
     return True
+
+
+def _create_action_dictionary(sType, sAction):
+    dReturn = {}
+    dReturn['type'] = sType
+    dReturn['action'] = sAction
+    return dReturn
