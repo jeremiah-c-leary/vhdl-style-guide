@@ -402,17 +402,14 @@ def main():
                 print(sOutputErr, file=sys.stderr)
 
     else:
-        pool = multiprocessing.Pool(commandLineArguments.jobs)
-        for tResult in pool.imap(f, enumerate(commandLineArguments.filename)):
-            fStatus, testCase, dJsonEntry, sOutputStd, sOutputErr = tResult
-            lReturn.append((fStatus, testCase, dJsonEntry))
-            if sOutputStd:
-                print(sOutputStd)
-            if sOutputErr:
-                print(sOutputErr, file=sys.stderr)
-
-        pool.close()
-        pool.join()
+        with multiprocessing.Pool(commandLineArguments.jobs) as pool:
+            for tResult in pool.imap(f, enumerate(commandLineArguments.filename)):
+                fStatus, testCase, dJsonEntry, sOutputStd, sOutputErr = tResult
+                lReturn.append((fStatus, testCase, dJsonEntry))
+                if sOutputStd:
+                    print(sOutputStd)
+                if sOutputErr:
+                    print(sOutputErr, file=sys.stderr)
 
     for tValue in lReturn:
         fStatus, testCase, dJsonEntry = tValue
