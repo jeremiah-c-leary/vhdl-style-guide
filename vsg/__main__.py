@@ -47,7 +47,14 @@ def parse_command_line_arguments():
     parser.add_argument('-v', '--version', default=False, action='store_true', help='Displays version information')
     parser.add_argument('-ap', '--all_phases', default=False, action='store_true', help='Do not stop when a violation is detected.')
     parser.add_argument('--fix_only', action='store', help='Restrict fixing via JSON file.')
-    parser.add_argument('-p', '--jobs', action='store', default=os.cpu_count(), type=check_strict_positive, help='number of parallel jobs to use, default is the number of cpu cores')
+    parser.add_argument(
+        "-p",
+        "--jobs",
+        action="store",
+        default=os.cpu_count(),
+        type=check_strict_positive,
+        help="number of parallel jobs to use, default is the number of cpu cores",
+    )
     parser.add_argument('--debug', default=False, action='store_true', help='Displays verbose debug information')
 
     args_ = parser.parse_args()
@@ -386,15 +393,14 @@ def main():
 
     validate_files_exist_to_analyze(commandLineArguments.filename)
 
-    dJson = {}
-    dJson['files'] = []
+    dJson = {'files'}
 
     f = functools.partial(apply_rules, commandLineArguments, configuration, dIndent, fix_only)
     # It's easier to debug when not using multiprocessing.Pool()
     lReturn = []
     if commandLineArguments.jobs == 1:
         for iIndex, sFileName in enumerate(commandLineArguments.filename):
-            fStatus, testCase, dJsonEntry, sOutputStd, sOutputErr =  f((iIndex, sFileName))
+            fStatus, testCase, dJsonEntry, sOutputStd, sOutputErr = f((iIndex, sFileName))
             lReturn.append((fStatus, testCase, dJsonEntry))
             if sOutputStd:
                 print(sOutputStd)

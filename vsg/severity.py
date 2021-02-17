@@ -36,6 +36,7 @@ class create_list():
     def get_severities(self):
         return self.lSeverities
 
+
 def _add_built_in_severities(self):
     '''
     Creates the built in severity types.
