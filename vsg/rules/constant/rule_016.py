@@ -34,6 +34,7 @@ class rule_016(rule.Rule):
         self.phase = 1
         self.lTokenPairs = lTokenPairs
         self.bExcludeLastToken = False
+
         self.first_paren_new_line = False
         self.configuration.append('first_paren_new_line')
         self.last_paren_new_line = False
@@ -42,7 +43,7 @@ class rule_016(rule.Rule):
         self.configuration.append('open_paren_new_line')
         self.close_paren_new_line = False
         self.configuration.append('close_paren_new_line')
-        self.new_line_after_comma = False
+        self.new_line_after_comma = 'Remove'
         self.configuration.append('new_line_after_comma')
         self.ignore_single_line = True
         self.configuration.append('ignore_single_line')
@@ -353,7 +354,7 @@ def _check_close_paren_new_line(self, oToi):
 def _check_new_line_after_comma(self, oToi):
 #    print('-->_check_new_line_after_comma')    
     
-    if self.new_line_after_comma == 'Ignore':
+    if self.new_line_after_comma == 'Ignore_all':
         return 
 
     iLine, lTokens = utils.get_toi_parameters(oToi)
@@ -363,6 +364,7 @@ def _check_new_line_after_comma(self, oToi):
     iCloseParen = 0
     bAssignmentFound = False
     bOthersClause = False
+    bPositionalFound = True
     for iToken, oToken in enumerate(lTokens):
         iLine = utils.increment_line_number(iLine, oToken)
         if isinstance(oToken, token.constant_declaration.assignment_operator):
@@ -376,9 +378,9 @@ def _check_new_line_after_comma(self, oToi):
                 continue
 
         if isinstance(oToken, parser.open_parenthesis):
-#            print(f'_check_new_line_after_comma = {_inside_others_clause(iToken, lTokens)}')
             if _inside_others_clause(iToken, lTokens):
                 bOthersClause = True
+                bPositionalFound = False
 
         if bOthersClause:
             continue
@@ -406,13 +408,16 @@ def _check_new_line_after_comma(self, oToi):
             bAssignmentFound = True
             iOpenParen = 0
             iCloseParen = 0
+            bPositionalFound = False
             continue
 
         if isinstance(oToken, parser.comma):
-#            print('comma detected')
+            if bPositionalFound and self.new_line_after_comma == 'Ignore_positional':
+                continue
+            bPositionalFound = True
+
             if utils.is_token_at_end_of_line(iToken, lTokens):
-                if not self.new_line_after_comma:
-#                    print('---->Remove')
+                if self.new_line_after_comma == 'Remove':
                     iEnd = utils.find_next_non_whitespace_token(iToken + 1, lTokens)
                     dAction = {}
                     dAction['type'] = 'new_line_after_comma'
@@ -422,8 +427,7 @@ def _check_new_line_after_comma(self, oToi):
                     oViolation.set_action(dAction)
                     self.add_violation(oViolation)
             else:
-                if self.new_line_after_comma:
-#                    print('---->Insert')
+                if self.new_line_after_comma == 'Add':
                     dAction = {}
                     dAction['type'] = 'new_line_after_comma'
                     dAction['action'] = 'insert'
