@@ -327,13 +327,23 @@ def _check_new_line_after_comma(self, oToi):
 
         if isinstance(oToken, parser.close_parenthesis):
             if bOthersClause:
-                bOthersClause = False
-                continue
+                iCloseParen += 1
+                if iOpenParen == iCloseParen:
+                    bOthersClause = False
+                    continue
+                elif iCloseParen > iOpenParen:
+                    bOthersClause = False
 
         if isinstance(oToken, parser.open_parenthesis):
-            if _inside_others_clause(iToken, lTokens):
-                bOthersClause = True
-                bPositionalFound = False
+            if not bOthersClause:
+#            print(f'_check_new_line_after_comma = {_inside_others_clause(iToken, lTokens)}')
+                if _inside_others_clause(iToken, lTokens):
+                    bOthersClause = True
+                    bPositionalFound = False
+                    iOpenParen = 0
+                    iCloseParen = 0
+            else:
+                iOpenParen += 1
 
         if bOthersClause:
             continue
@@ -376,7 +386,7 @@ def _check_new_line_after_comma(self, oToi):
                     oViolation = _create_violation(oToi, iLine, iToken, iEnd, 'new_line_after_comma', 'remove', sSolution)
                     self.add_violation(oViolation)
             else:
-                if self.new_line_after_comma == 'Add':
+                if self.new_line_after_comma == 'Add' or self.new_line_after_comma == 'Ignore_positional':
                     sSolution = 'Add carriage return after comma.'
                     oViolation = _create_violation(oToi, iLine, iToken, iToken + 1, 'new_line_after_comma', 'insert', sSolution)
                     self.add_violation(oViolation)
