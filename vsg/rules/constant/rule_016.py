@@ -43,7 +43,7 @@ class rule_016(rule.Rule):
         self.configuration.append('open_paren_new_line')
         self.close_paren_new_line = False
         self.configuration.append('close_paren_new_line')
-        self.new_line_after_comma = 'Remove'
+        self.new_line_after_comma = False
         self.configuration.append('new_line_after_comma')
         self.ignore_single_line = True
         self.configuration.append('ignore_single_line')
@@ -87,7 +87,7 @@ class rule_016(rule.Rule):
 
 def _check_first_paren_new_line(self, oToi):
 
-    if self.first_paren_new_line == 'Ignore':
+    if self.first_paren_new_line == 'ignore':
         return 
 
     iLine, lTokens = utils.get_toi_parameters(oToi)
@@ -113,7 +113,7 @@ def _check_first_paren_new_line(self, oToi):
 
 def _check_last_paren_new_line(self, oToi):
 #    print('-->_check_last_paren_new_line')    
-    if self.last_paren_new_line == 'Ignore':
+    if self.last_paren_new_line == 'ignore':
         return 
     iLine, lTokens = utils.get_toi_parameters(oToi)
     bSearch = False
@@ -147,7 +147,7 @@ def _check_last_paren_new_line(self, oToi):
 def _check_open_paren_new_line(self, oToi):
 #    print('-->_check_open_paren_new_line')    
     
-    if self.open_paren_new_line == 'Ignore':
+    if self.open_paren_new_line == 'ignore':
         return 
 
     iLine, lTokens = utils.get_toi_parameters(oToi)
@@ -216,7 +216,7 @@ def _check_open_paren_new_line(self, oToi):
 
 def _check_close_paren_new_line(self, oToi):
 #    print('-->_check_close_paren_new_line')    
-    if self.close_paren_new_line == 'Ignore':
+    if self.close_paren_new_line == 'ignore':
         return 
 
     iLine, lTokens = utils.get_toi_parameters(oToi)
@@ -307,7 +307,7 @@ def _check_close_paren_new_line(self, oToi):
 def _check_new_line_after_comma(self, oToi):
 #    print('-->_check_new_line_after_comma')    
     
-    if self.new_line_after_comma == 'Ignore_all':
+    if self.new_line_after_comma == 'ignore_all':
         return 
 
     iLine, lTokens = utils.get_toi_parameters(oToi)
@@ -375,18 +375,18 @@ def _check_new_line_after_comma(self, oToi):
             continue
 
         if isinstance(oToken, parser.comma):
-            if bPositionalFound and self.new_line_after_comma == 'Ignore_positional':
+            if bPositionalFound and self.new_line_after_comma == 'ignore_positional':
                 continue
             bPositionalFound = True
 
             if utils.is_token_at_end_of_line(iToken, lTokens):
-                if self.new_line_after_comma == 'Remove':
+                if not self.new_line_after_comma:
                     iEnd = utils.find_next_non_whitespace_token(iToken + 1, lTokens)
                     sSolution = 'Remove carriage return after comma.'
                     oViolation = _create_violation(oToi, iLine, iToken, iEnd, 'new_line_after_comma', 'remove', sSolution)
                     self.add_violation(oViolation)
             else:
-                if self.new_line_after_comma == 'Add' or self.new_line_after_comma == 'Ignore_positional':
+                if self.new_line_after_comma or self.new_line_after_comma == 'ignore_positional':
                     sSolution = 'Add carriage return after comma.'
                     oViolation = _create_violation(oToi, iLine, iToken, iToken + 1, 'new_line_after_comma', 'insert', sSolution)
                     self.add_violation(oViolation)
