@@ -12,33 +12,47 @@ There are several options to these rules:
 +----------------------+---------+---------+---------------------------------------------------------+
 | Method               |   Type  | Default | Description                                             |
 +======================+=========+=========+=========================================================+
-| first_paren_new_line | boolean |  False  | First opening parenthesis on it's own line.             |
+| first_paren_new_line | boolean |  false  | First opening parenthesis on it's own line.             |
 +----------------------+---------+---------+---------------------------------------------------------+
-| last_paren_new_line  | boolean |  False  | Last closing parenthesis on it's own line.              |
+| last_paren_new_line  | boolean |  false  | Last closing parenthesis on it's own line.              |
 +----------------------+---------+---------+---------------------------------------------------------+
-| open_paren_new_line  | boolean |  False  | Insert new line after open parenthesis.                 |
+| open_paren_new_line  | boolean |  false  | Insert new line after open parenthesis.                 |
 +----------------------+---------+---------+---------------------------------------------------------+
-| close_paren_new_line | boolean |  False  | Insert new line before close parenthesis.               |
+| close_paren_new_line | boolean |  false  | Insert new line before close parenthesis.               |
 +----------------------+---------+---------+---------------------------------------------------------+
-| new_line_after_comma | boolean |  False  | Insert new line after the commas.                       |
+| new_line_after_comma | boolean |  false  | Insert new line after the commas.                       |
 +----------------------+---------+---------+---------------------------------------------------------+
-| ignore_single_line   | boolean |  True   | Do not apply rules if expression/condition is contained |
+| ignore_single_line   | boolean |  true   | Do not apply rules if expression/condition is contained |
 |                      |         |         | on a single line.                                       |
 +----------------------+-----------------------------------------------------------------------------+
 
 The options can be combined to format the output.
 
-Each option allows one of three values:  True, False and Ignore.
+Each option except :code:`new_line_after_comma` allows one of three values:  true, false and ignore.
 
 +----------------------+---------------------------------------------------------+
 | Option Value         | Action                                                  |
 +======================+=========================================================+
-| True                 | Option will be enforced.                                |
+| true                 | Option will be enforced.                                |
 +----------------------+---------------------------------------------------------+
-| False                | The inverse of the Option will be enforced.             |
+| false                | The inverse of the Option will be enforced.             |
 +----------------------+---------------------------------------------------------+
-| Ignore               | The option will be ignored.                             |
+| ignore               | The option will be ignored.                             |
 +----------------------+---------------------------------------------------------+
+
+The :code:`new_line_after_comma` option allows one of four values:  true, false, ignore and ignore_positional.
+
++----------------------+--------------------------------------------------------------+
+| Option Value         | Action                                                       |
++======================+==============================================================+
+| true                 | Insert new line after commas.                                |
++----------------------+--------------------------------------------------------------+
+| false                | Remove new line after commas.                                |
++----------------------+--------------------------------------------------------------+
+| ignore               | Ignore commas.                                               |
++----------------------+--------------------------------------------------------------+
+| ignore_positional    | Insert new line after commas unless elements are positional. |
++----------------------+--------------------------------------------------------------+
 
 This is an example of how to configure these options.
 
