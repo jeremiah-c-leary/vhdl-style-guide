@@ -20,8 +20,8 @@ architecture rtl of fifo is
 
   -- Verify others are still handled 
   constant cons2 : t_type :=
-  (others => (valid => '0', data => (others => '0')),
- others => (1 => '0', (others => '0')
+  (
+ (others => (valid => '0', data => (others => '0'))), (others => (1 => '0', (others => '0')))
  );
 
   -- Verify assignments are still handled
@@ -30,6 +30,11 @@ architecture rtl of fifo is
     1 => func1(std_logic_vector(G_GEN), G_GEN2),
  2 => func1(std_logic_vector(G_GEN3), G_GEN4)
  );
+
+  constant AVMM_MASTER_NULL  : t_avmm_master :=
+  (
+    (others => '0'), (others => '0'), '0', '0'
+  );
 
 begin
 

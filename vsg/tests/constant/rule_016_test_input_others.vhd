@@ -12,7 +12,7 @@ architecture rtl of fifo is
   ((others => '0'),(1 => '0', others => '1'),(others => '0'));
 
   constant cons2 : t_type :=
-  (others => (valid => '0', data => (others => '0')), others => (1 => '0', (others => '0'));
+  ((others => (valid => '0', data => (others => '0'))), (others => (1 => '0', (others => '0'))));
 
 begin
 
