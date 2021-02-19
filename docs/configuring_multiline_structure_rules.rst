@@ -12,17 +12,17 @@ There are several options to these rules:
 +----------------------+---------+---------+---------------------------------------------------------+
 | Method               |   Type  | Default | Description                                             |
 +======================+=========+=========+=========================================================+
-| first_paren_new_line | boolean |  false  | First opening parenthesis on it's own line.             |
+| first_paren_new_line | string  |  false  | First opening parenthesis on it's own line.             |
 +----------------------+---------+---------+---------------------------------------------------------+
-| last_paren_new_line  | boolean |  false  | Last closing parenthesis on it's own line.              |
+| last_paren_new_line  | string  |  false  | Last closing parenthesis on it's own line.              |
 +----------------------+---------+---------+---------------------------------------------------------+
-| open_paren_new_line  | boolean |  false  | Insert new line after open parenthesis.                 |
+| open_paren_new_line  | string  |  false  | Insert new line after open parenthesis.                 |
 +----------------------+---------+---------+---------------------------------------------------------+
-| close_paren_new_line | boolean |  false  | Insert new line before close parenthesis.               |
+| close_paren_new_line | string  |  false  | Insert new line before close parenthesis.               |
 +----------------------+---------+---------+---------------------------------------------------------+
-| new_line_after_comma | boolean |  false  | Insert new line after the commas.                       |
+| new_line_after_comma | string  |  false  | Insert new line after the commas.                       |
 +----------------------+---------+---------+---------------------------------------------------------+
-| ignore_single_line   | boolean |  true   | Do not apply rules if expression/condition is contained |
+| ignore_single_line   | string  |  true   | Do not apply rules if expression/condition is contained |
 |                      |         |         | on a single line.                                       |
 +----------------------+-----------------------------------------------------------------------------+
 
@@ -60,12 +60,12 @@ This is an example of how to configure these options.
 
    rule :
      constant_012:
-        first_paren_new_line : True
-        last_paren_new_line : True
-        open_paren_new_line : True
-        close_paren_new_line : True
-        new_line_after_comma : Ignore
-        ignore_single_line : False
+        first_paren_new_line : 'true'
+        last_paren_new_line : 'true'
+        open_paren_new_line : 'true'
+        close_paren_new_line : 'true'
+        new_line_after_comma : 'ignore'
+        ignore_single_line : 'false'
 
 .. NOTE:: All examples below are using the rule **constant_012** and the option ignore_single_line is False.
 
