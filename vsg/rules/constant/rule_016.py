@@ -112,7 +112,7 @@ def _check_first_paren_new_line(self, oToi):
 
 
 def _check_last_paren_new_line(self, oToi):
-#    print('-->_check_last_paren_new_line')    
+
     if self.last_paren_new_line == 'ignore':
         return 
     iLine, lTokens = utils.get_toi_parameters(oToi)
@@ -145,62 +145,40 @@ def _check_last_paren_new_line(self, oToi):
                 
 
 def _check_open_paren_new_line(self, oToi):
-#    print('-->_check_open_paren_new_line')    
     
     if self.open_paren_new_line == 'ignore':
         return 
 
     iLine, lTokens = utils.get_toi_parameters(oToi)
-#    print(lTokens)
 
     bSearch = False
     iOpenParen = 0
     iCloseParen = 0
     bAssignmentFound = False
     bOthersClause = False
-    for iToken, oToken in enumerate(lTokens):
-        iLine = utils.increment_line_number(iLine, oToken)
-        if isinstance(oToken, token.constant_declaration.assignment_operator):
-            bSearch = True
-        if not bSearch:
-            continue
 
+    iToken = _find_assignment_operator(lTokens) + 1
+    iStopIndex = len(lTokens)
+    bFirstParenFound = False
+    while iToken < iStopIndex:
 
-        if isinstance(oToken, parser.close_parenthesis):
+        if bFirstParenFound:
+            iToken, bOthersClause = _classify_others(iToken, lTokens)
+   
             if bOthersClause:
-                bOthersClause = False
-                continue
+                iToken += 1
+                continue 
+
+            iToken, bAssignmentFound = _classify_assignment(iToken, lTokens)
+
+            if bAssignmentFound:
+               iToken += 1
+               continue
+
+        oToken = lTokens[iToken]
 
         if isinstance(oToken, parser.open_parenthesis):
-#            print(f'_check_open_paren_new_line = {_inside_others_clause(iToken, lTokens)}')
-            if _inside_others_clause(iToken, lTokens):
-                bOthersClause = True
-
-        if bOthersClause:
-            continue
-
-
-
-        if bAssignmentFound:
-            if isinstance(oToken, parser.close_parenthesis):
-                iCloseParen += 1
-                if iOpenParen == iCloseParen:
-                    bAssignmentFound = False
-                elif iCloseParen > iOpenParen:
-                    bAssignmentFound = False
-    
-            if isinstance(oToken, parser.open_parenthesis):
-                iOpenParen += 1
-
-            continue
-
-        if not bAssignmentFound and oToken.get_value() == '=>':
-            bAssignmentFound = True
-            iOpenParen = 0
-            iCloseParen = 0
-            continue
-
-        if isinstance(oToken, parser.open_parenthesis):
+            bFirstParenFound = True
             if utils.is_token_at_end_of_line(iToken, lTokens):
                 if self.open_paren_new_line == 'false':
                     iEnd = utils.find_next_non_whitespace_token(iToken + 1, lTokens)
@@ -212,84 +190,47 @@ def _check_open_paren_new_line(self, oToi):
                     sSolution = 'Add carriage return after open parenthesis.'
                     oViolation = _create_violation(oToi, iLine, iToken, iToken, 'open_paren_new_line', 'insert', sSolution)
                     self.add_violation(oViolation)
+        bOthersClause = False
+        iToken += 1
+                
+    return None 
                 
 
 def _check_close_paren_new_line(self, oToi):
-#    print('-->_check_close_paren_new_line')    
+    
     if self.close_paren_new_line == 'ignore':
         return 
 
     iLine, lTokens = utils.get_toi_parameters(oToi)
-    bSearch = False
-    for iToken, oToken in reversed(list(enumerate(lTokens))):
-        if isinstance(oToken, parser.close_parenthesis):
-            iEnd = iToken
-            break
 
     bSearch = False
     iOpenParen = 0
     iCloseParen = 0
     bAssignmentFound = False
     bOthersClause = False
-    for iToken, oToken in enumerate(lTokens[:iEnd]):
-        iLine = utils.increment_line_number(iLine, oToken)
-        if isinstance(oToken, token.constant_declaration.assignment_operator):
-            bSearch = True
-        if not bSearch:
-            continue
 
-        if isinstance(oToken, parser.close_parenthesis):
+    iToken = _find_assignment_operator(lTokens) + 1
+    iStopIndex = _find_last_closing_paren(lTokens)
+    bFirstParenFound = False
+    while iToken < iStopIndex:
+
+        if bFirstParenFound:
+            iToken, bOthersClause = _classify_others(iToken, lTokens)
+   
             if bOthersClause:
-                iCloseParen += 1
-#                if iOpenParen == iCloseParen:
-#                    bOthersClause = False
-#                    continue
-#                elif iCloseParen > iOpenParen:
-                if iCloseParen > iOpenParen:
-                    bOthersCluase = False
+                iToken += 1
+                continue 
+
+            iToken, bAssignmentFound = _classify_assignment(iToken, lTokens)
+
+            if bAssignmentFound:
+               iToken += 1
+               continue
+
+        oToken = lTokens[iToken]
 
         if isinstance(oToken, parser.open_parenthesis):
-            if not bOthersClause:
-#            print(f'_check_new_line_after_comma = {_inside_others_clause(iToken, lTokens)}')
-                if _inside_others_clause(iToken, lTokens):
-                    bOthersClause = True
-                    iOpenParen = 0
-                    iCloseParen = 0
-            else:
-                iOpenParen += 1
-
-        if bOthersClause:
-            continue
-
-
-        if bAssignmentFound:
-            if isinstance(oToken, parser.close_parenthesis):
-                iCloseParen += 1
-                if iOpenParen == iCloseParen:
-                    bAssignmentFound = False
-                    continue
-                elif iCloseParen > iOpenParen:
-                    bAssignmentFound = False 
-                else:
-                    continue
-
-            elif isinstance(oToken, parser.open_parenthesis):
-                iOpenParen += 1
-                continue
-
-            elif isinstance(oToken, parser.comma):
-                if iOpenParen == iCloseParen:
-                    bAssignmentFound = False
-                else:
-                    continue
-            else:
-                continue
-
-        if not bAssignmentFound and oToken.get_value() == '=>':
-            bAssignmentFound = True
-            iOpenParen = 0
-            iCloseParen = 0
-            continue
+            bFirstParenFound = True
 
         if isinstance(oToken, parser.close_parenthesis):
             if utils.does_token_start_line(iToken, lTokens):
@@ -300,13 +241,17 @@ def _check_close_paren_new_line(self, oToi):
                     self.add_violation(oViolation)
             else:
                 if self.close_paren_new_line == 'true':
+                    iStart = iToken - 1
                     sSolution = 'Move closing parenthesis to the next line.'
-                    oViolation = _create_violation(oToi, iLine, iToken - 1, iToken, 'close_paren_new_line', 'insert', sSolution)
+                    oViolation = _create_violation(oToi, iLine, iStart, iToken, 'close_paren_new_line', 'insert', sSolution)
                     self.add_violation(oViolation)
+
+        iToken += 1
+                
+    return None 
 
 
 def _check_new_line_after_comma(self, oToi):
-#    print('-->_check_new_line_after_comma')    
     
     if self.new_line_after_comma == 'ignore':
         return 
@@ -318,68 +263,39 @@ def _check_new_line_after_comma(self, oToi):
     iCloseParen = 0
     bAssignmentFound = False
     bOthersClause = False
-    bPositionalFound = True
-    for iToken, oToken in enumerate(lTokens):
-        iLine = utils.increment_line_number(iLine, oToken)
-        if isinstance(oToken, token.constant_declaration.assignment_operator):
-            bSearch = True
-        if not bSearch:
-            continue
+    bPositionalFound = False
 
-        if isinstance(oToken, parser.close_parenthesis):
+    iToken = _find_assignment_operator(lTokens) + 1
+    iStopIndex = len(lTokens)
+    bFirstParenFound = False
+    while iToken < iStopIndex:
+
+        if bFirstParenFound:
+            bPositionalFound = False
+            iToken, bOthersClause = _classify_others(iToken, lTokens)
+   
             if bOthersClause:
-                iCloseParen += 1
-#                if iOpenParen == iCloseParen:
-#                    bOthersClause = False
-#                    continue
-#                elif iCloseParen > iOpenParen:
-                if iCloseParen > iOpenParen:
-                    bOthersClause = False
+                iToken += 1
+                continue 
+
+            iToken, bAssignmentFound = _classify_assignment(iToken, lTokens)
+
+            if bAssignmentFound:
+               iToken += 1
+               continue
+
+            bPositionalFound = True
+
+
+        oToken = lTokens[iToken]
 
         if isinstance(oToken, parser.open_parenthesis):
-            if not bOthersClause:
-#            print(f'_check_new_line_after_comma = {_inside_others_clause(iToken, lTokens)}')
-                if _inside_others_clause(iToken, lTokens):
-                    bOthersClause = True
-                    bPositionalFound = True
-                    iOpenParen = 0
-                    iCloseParen = 0
-            else:
-                iOpenParen += 1
-
-        if bOthersClause:
-            continue
-
-        if bAssignmentFound:
-            if isinstance(oToken, parser.close_parenthesis):
-                iCloseParen += 1
-                if iOpenParen == iCloseParen:
-                    bAssignmentFound = False
-                elif iCloseParen > iOpenParen:
-                    bAssignmentFound = False
-    
-            if isinstance(oToken, parser.open_parenthesis):
-                iOpenParen += 1
-
-            if isinstance(oToken, parser.comma):
-                if iOpenParen == iCloseParen:
-                    bAssignmentFound = False
-                else:
-                    continue
-            else:
-                continue
-
-        if not bAssignmentFound and oToken.get_value() == '=>':
-            bAssignmentFound = True
-            iOpenParen = 0
-            iCloseParen = 0
-            bPositionalFound = False
-            continue
+            bFirstParenFound = True
 
         if isinstance(oToken, parser.comma):
             if bPositionalFound and self.new_line_after_comma == 'ignore_positional':
+                iToken += 1
                 continue
-            bPositionalFound = True
 
             if utils.is_token_at_end_of_line(iToken, lTokens):
                 if self.new_line_after_comma == 'false':
@@ -392,6 +308,99 @@ def _check_new_line_after_comma(self, oToi):
                     sSolution = 'Add carriage return after comma.'
                     oViolation = _create_violation(oToi, iLine, iToken, iToken + 1, 'new_line_after_comma', 'insert', sSolution)
                     self.add_violation(oViolation)
+
+        iToken += 1
+                
+    return None 
+
+
+#def _check_new_line_after_comma(self, oToi):
+##    print('-->_check_new_line_after_comma')    
+#    
+#    if self.new_line_after_comma == 'ignore':
+#        return 
+#
+#    iLine, lTokens = utils.get_toi_parameters(oToi)
+#
+#    bSearch = False
+#    iOpenParen = 0
+#    iCloseParen = 0
+#    bAssignmentFound = False
+#    bOthersClause = False
+#    bPositionalFound = True
+#    for iToken, oToken in enumerate(lTokens):
+#        iLine = utils.increment_line_number(iLine, oToken)
+#        if isinstance(oToken, token.constant_declaration.assignment_operator):
+#            bSearch = True
+#        if not bSearch:
+#            continue
+#
+##        if isinstance(oToken, parser.close_parenthesis):
+##            if bOthersClause:
+##                iCloseParen += 1
+###                if iOpenParen == iCloseParen:
+###                    bOthersClause = False
+###                    continue
+###                elif iCloseParen > iOpenParen:
+##                if iCloseParen > iOpenParen:
+##                    bOthersClause = False
+##
+##        if isinstance(oToken, parser.open_parenthesis):
+##            if not bOthersClause:
+###            print(f'_check_new_line_after_comma = {_inside_others_clause(iToken, lTokens)}')
+##                if _inside_others_clause(iToken, lTokens):
+##                    bOthersClause = True
+##                    bPositionalFound = True
+##                    iOpenParen = 0
+##                    iCloseParen = 0
+##            else:
+##                iOpenParen += 1
+##
+##        if bOthersClause:
+##            continue
+#
+#        if bAssignmentFound:
+#            if isinstance(oToken, parser.close_parenthesis):
+#                iCloseParen += 1
+#                if iOpenParen == iCloseParen:
+#                    bAssignmentFound = False
+#                elif iCloseParen > iOpenParen:
+#                    bAssignmentFound = False
+#    
+#            if isinstance(oToken, parser.open_parenthesis):
+#                iOpenParen += 1
+#
+#            if isinstance(oToken, parser.comma):
+#                if iOpenParen == iCloseParen:
+#                    bAssignmentFound = False
+#                else:
+#                    continue
+#            else:
+#                continue
+#
+#        if not bAssignmentFound and oToken.get_value() == '=>':
+#            bAssignmentFound = True
+#            iOpenParen = 0
+#            iCloseParen = 0
+#            bPositionalFound = False
+#            continue
+#
+#        if isinstance(oToken, parser.comma):
+#            if bPositionalFound and self.new_line_after_comma == 'ignore_positional':
+#                continue
+#            bPositionalFound = True
+#
+#            if utils.is_token_at_end_of_line(iToken, lTokens):
+#                if self.new_line_after_comma == 'false':
+#                    iEnd = utils.find_next_non_whitespace_token(iToken + 1, lTokens)
+#                    sSolution = 'Remove carriage return after comma.'
+#                    oViolation = _create_violation(oToi, iLine, iToken, iEnd, 'new_line_after_comma', 'remove', sSolution)
+#                    self.add_violation(oViolation)
+#            else:
+#                if self.new_line_after_comma == 'true' or self.new_line_after_comma == 'ignore_positional':
+#                    sSolution = 'Add carriage return after comma.'
+#                    oViolation = _create_violation(oToi, iLine, iToken, iToken + 1, 'new_line_after_comma', 'insert', sSolution)
+#                    self.add_violation(oViolation)
                 
   
 def _is_open_paren_after_assignment(oToi):
@@ -513,3 +522,78 @@ def _create_action_dictionary(sType, sAction):
     dReturn['type'] = sType
     dReturn['action'] = sAction
     return dReturn
+
+
+def _found_assignment_operator(oToken, bSearch):
+    if bSearch:
+        return True
+    if isinstance(oToken, token.constant_declaration.assignment_operator):
+        return True
+    return False
+
+
+def _find_assignment_operator(lTokens):
+    for iToken, oToken in enumerate(lTokens):
+        if isinstance(oToken, token.constant_declaration.assignment_operator):
+            return iToken
+    return None
+
+
+def _find_last_closing_paren(lTokens):
+    iReturn = None
+    for iToken, oToken in enumerate(lTokens):
+        if isinstance(oToken, parser.close_parenthesis):
+            iReturn = iToken
+    return iReturn
+
+
+def _classify_assignment(iToken, lTokens):
+    oToken = lTokens[iToken]
+    if oToken.get_value() == '=>':
+        iOpenParen = 0
+        iCloseParen = 0
+        for iReturn, oToken in enumerate(lTokens[iToken:]):
+            if isinstance(oToken, parser.open_parenthesis):
+                iOpenParen += 1
+            elif isinstance(oToken, parser.close_parenthesis):
+                iEnd = iToken + iReturn
+                iCloseParen += 1
+                if iCloseParen > iOpenParen:
+                    return iEnd - 1, True
+                elif iOpenParen == iCloseParen:
+                    return iEnd, True
+            elif isinstance(oToken, parser.comma):
+                if iOpenParen == iCloseParen:
+                    iEnd = iToken + iReturn - 1
+                    return iEnd, True
+        return None
+    return iToken, False
+
+
+def _classify_others(iToken, lTokens):
+    oToken = lTokens[iToken]
+    if oToken.get_value() == '(':
+        iOpenParen = 0
+        iCloseParen = 0
+        iStart = iToken
+        for iReturn, oToken in enumerate(lTokens[iToken:]):
+            if isinstance(oToken, parser.open_parenthesis):
+                iOpenParen += 1
+            elif isinstance(oToken, parser.close_parenthesis):
+                iCloseParen += 1
+                if iOpenParen == iCloseParen:
+                    break
+        else:
+            return iToken, False
+
+        iEnd = iReturn + iStart
+
+        sDeleteme = ''
+        for oToken in lTokens[iStart:iEnd + 1]:
+            sDeleteme += oToken.get_value()
+#        print(sDeleteme)
+        for iIndex in range(iStart + 1, iEnd):
+            if lTokens[iIndex].get_value().lower() == 'others':
+                return iEnd, True
+    return iToken, False
+
