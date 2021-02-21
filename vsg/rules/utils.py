@@ -29,3 +29,10 @@ def number_of_carriage_returns(lTokens):
         if isinstance(oToken, parser.carriage_return):
             iReturn += 1
     return iReturn
+
+
+def print_debug(lTokens):
+    sPrint = ''
+    for oToken in lTokens:
+        sPrint += oToken.get_value()
+    print(sPrint)

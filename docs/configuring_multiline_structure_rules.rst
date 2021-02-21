@@ -9,26 +9,28 @@ The corresponding rule will be noted in the rule documentation.
 
 There are several options to these rules:
 
-+----------------------+---------+---------+---------------------------------------------------------+
-| Method               |   Type  | Default | Description                                             |
-+======================+=========+=========+=========================================================+
-| first_paren_new_line | string  |  false  | First opening parenthesis on it's own line.             |
-+----------------------+---------+---------+---------------------------------------------------------+
-| last_paren_new_line  | string  |  false  | Last closing parenthesis on it's own line.              |
-+----------------------+---------+---------+---------------------------------------------------------+
-| open_paren_new_line  | string  |  false  | Insert new line after open parenthesis.                 |
-+----------------------+---------+---------+---------------------------------------------------------+
-| close_paren_new_line | string  |  false  | Insert new line before close parenthesis.               |
-+----------------------+---------+---------+---------------------------------------------------------+
-| new_line_after_comma | string  |  false  | Insert new line after the commas.                       |
-+----------------------+---------+---------+---------------------------------------------------------+
-| ignore_single_line   | string  |  true   | Do not apply rules if expression/condition is contained |
-|                      |         |         | on a single line.                                       |
-+----------------------+-----------------------------------------------------------------------------+
++-----------------------+---------+---------+---------------------------------------------------------+
+| Method                |   Type  | Default | Description                                             |
++=======================+=========+=========+=========================================================+
+| first_paren_new_line  | string  |  false  | First opening parenthesis on it's own line.             |
++-----------------------+---------+---------+---------------------------------------------------------+
+| last_paren_new_line   | string  |  false  | Last closing parenthesis on it's own line.              |
++-----------------------+---------+---------+---------------------------------------------------------+
+| open_paren_new_line   | string  |  false  | Insert new line after open parenthesis.                 |
++-----------------------+---------+---------+---------------------------------------------------------+
+| close_paren_new_line  | string  |  false  | Insert new line before close parenthesis.               |
++-----------------------+---------+---------+---------------------------------------------------------+
+| new_line_after_comma  | string  |  false  | Insert new line after the commas.                       |
++-----------------------+---------+---------+---------------------------------------------------------+
+| assign_on_single_line | string  |  true   | Keep assignments on a single line.                      |
++-----------------------+---------+---------+---------------------------------------------------------+
+| ignore_single_line    | string  |  true   | Do not apply rules if expression/condition is contained |
+|                       |         |         | on a single line.                                       |
++-----------------------+-----------------------------------------------------------------------------+
 
 The options can be combined to format the output.
 
-Each option except :code:`new_line_after_comma` allows one of three values:  true, false and ignore.
+Each option except :code:`new_line_after_comma` and :code:`assign_on_single_line` allows one of three values:  true, false and ignore.
 
 +----------------------+---------------------------------------------------------+
 | Option Value         | Action                                                  |
@@ -52,6 +54,16 @@ The :code:`new_line_after_comma` option allows one of four values:  true, false,
 | ignore               | Ignore commas.                                               |
 +----------------------+--------------------------------------------------------------+
 | ignore_positional    | Insert new line after commas unless elements are positional. |
++----------------------+--------------------------------------------------------------+
+
+The :code:`assign_on_single_line` option allows one of two values:  true and ignore.
+
++----------------------+--------------------------------------------------------------+
+| Option Value         | Action                                                       |
++======================+==============================================================+
+| true                 | Force assignments to a single line.                          |
++----------------------+--------------------------------------------------------------+
+| ignore               | Allow assignments to span multiple lines.                    |
 +----------------------+--------------------------------------------------------------+
 
 This is an example of how to configure these options.
@@ -256,4 +268,28 @@ The following code would fail with this option:
 .. code-Block:: vhdl
 
     constant c_const : t_type := ((a => 0, b => 1), (c => 0, d => 1));
+
+Example: assign_on_single_line
+##############################
+
+The following code would pass with this option set to True:
+
+.. code-block:: vhdl
+
+    constant c_const : t_type :=
+    (
+      1 => func1(std_logic_vector(G_GEN), G_GEN2),
+      2 => func1(std_logic_vector(G_GEN), G_GEN2)
+    );
+
+The following code would fail with this option set to True:
+
+.. code-block:: vhdl
+
+    constant c_const : t_type :=
+    (
+      1 => func1(std_logic_vector(G_GEN), G_GEN2),
+      2 => func1(
+                 std_logic_vector(G_GEN), G_GEN2)
+    );
 
