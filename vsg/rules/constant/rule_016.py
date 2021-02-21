@@ -543,7 +543,8 @@ def _classify_assignment(iToken, lTokens):
                 if iCloseParen > iOpenParen:
 #                    print(lTokens[iToken:iEnd -1])
 #                    rule_utils.print_debug(lTokens[iToken:iEnd + 1])
-                    return iEnd - 1, True
+                    iEnd = utils.find_previous_non_whitespace_token(iEnd - 1, lTokens)
+                    return iEnd, True
                 elif iOpenParen == iCloseParen:
 #                    print(lTokens[iToken:iEnd])
 #                    rule_utils.print_debug(lTokens[iToken:iEnd + 1])
