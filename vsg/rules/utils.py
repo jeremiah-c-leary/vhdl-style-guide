@@ -21,3 +21,11 @@ def is_single_line(oToi):
         if isinstance(oToken, parser.carriage_return):
             return False
     return True
+
+
+def number_of_carriage_returns(lTokens):
+    iReturn = 0
+    for oToken in lTokens:
+        if isinstance(oToken, parser.carriage_return):
+            iReturn += 1
+    return iReturn

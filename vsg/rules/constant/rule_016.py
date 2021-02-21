@@ -182,13 +182,15 @@ def _check_open_paren_new_line(self, oToi):
             if utils.is_token_at_end_of_line(iToken, lTokens):
                 if self.open_paren_new_line == 'false':
                     iEnd = utils.find_next_non_whitespace_token(iToken + 1, lTokens)
+                    iErrorLine = rule_utils.number_of_carriage_returns(lTokens[:iToken]) + iLine
                     sSolution = 'Remove carriage return after open parenthesis.'
-                    oViolation = _create_violation(oToi, iLine, iToken, iEnd, 'open_paren_new_line', 'remove', sSolution)
+                    oViolation = _create_violation(oToi, iErrorLine, iToken, iEnd, 'open_paren_new_line', 'remove', sSolution)
                     self.add_violation(oViolation)
             else:
                 if self.open_paren_new_line == 'true':
                     sSolution = 'Add carriage return after open parenthesis.'
-                    oViolation = _create_violation(oToi, iLine, iToken, iToken, 'open_paren_new_line', 'insert', sSolution)
+                    iErrorLine = rule_utils.number_of_carriage_returns(lTokens[:iToken]) + iLine
+                    oViolation = _create_violation(oToi, iErrorLine, iToken, iToken, 'open_paren_new_line', 'insert', sSolution)
                     self.add_violation(oViolation)
         bOthersClause = False
         iToken += 1
@@ -236,14 +238,16 @@ def _check_close_paren_new_line(self, oToi):
             if utils.does_token_start_line(iToken, lTokens):
                 if self.close_paren_new_line == 'false':
                     iStart = utils.find_previous_non_whitespace_token(iToken - 1, lTokens)
+                    iErrorLine = rule_utils.number_of_carriage_returns(lTokens[:iToken]) + iLine
                     sSolution = 'Move closing parenthesis to previous line.'
-                    oViolation = _create_violation(oToi, iLine, iStart, iToken, 'close_paren_new_line', 'remove', sSolution)
+                    oViolation = _create_violation(oToi, iErrorLine, iStart, iToken, 'close_paren_new_line', 'remove', sSolution)
                     self.add_violation(oViolation)
             else:
                 if self.close_paren_new_line == 'true':
                     iStart = iToken - 1
+                    iErrorLine = rule_utils.number_of_carriage_returns(lTokens[:iToken]) + iLine
                     sSolution = 'Move closing parenthesis to the next line.'
-                    oViolation = _create_violation(oToi, iLine, iStart, iToken, 'close_paren_new_line', 'insert', sSolution)
+                    oViolation = _create_violation(oToi, iErrorLine, iStart, iToken, 'close_paren_new_line', 'insert', sSolution)
                     self.add_violation(oViolation)
 
         iToken += 1
@@ -299,13 +303,15 @@ def _check_new_line_after_comma(self, oToi):
             if utils.is_token_at_end_of_line(iToken, lTokens):
                 if self.new_line_after_comma == 'false':
                     iEnd = utils.find_next_non_whitespace_token(iToken + 1, lTokens)
+                    iErrorLine = rule_utils.number_of_carriage_returns(lTokens[:iToken]) + iLine
                     sSolution = 'Remove carriage return after comma.'
-                    oViolation = _create_violation(oToi, iLine, iToken, iEnd, 'new_line_after_comma', 'remove', sSolution)
+                    oViolation = _create_violation(oToi, iErrorLine, iToken, iEnd, 'new_line_after_comma', 'remove', sSolution)
                     self.add_violation(oViolation)
             else:
                 if self.new_line_after_comma == 'true' or self.new_line_after_comma == 'ignore_positional':
+                    iErrorLine = rule_utils.number_of_carriage_returns(lTokens[:iToken]) + iLine
                     sSolution = 'Add carriage return after comma.'
-                    oViolation = _create_violation(oToi, iLine, iToken, iToken + 1, 'new_line_after_comma', 'insert', sSolution)
+                    oViolation = _create_violation(oToi, iErrorLine, iToken, iToken + 1, 'new_line_after_comma', 'insert', sSolution)
                     self.add_violation(oViolation)
 
         iToken += 1
