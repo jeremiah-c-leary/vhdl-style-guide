@@ -252,7 +252,7 @@ def _check_close_paren_new_line(self, oToi):
 
 
 def _check_new_line_after_comma(self, oToi):
-    
+
     if self.new_line_after_comma == 'ignore':
         return 
 
@@ -263,7 +263,7 @@ def _check_new_line_after_comma(self, oToi):
     iCloseParen = 0
     bAssignmentFound = False
     bOthersClause = False
-    bPositionalFound = False
+    bPositionalFound = True
 
     iToken = _find_assignment_operator(lTokens) + 1
     iStopIndex = len(lTokens)
@@ -271,10 +271,10 @@ def _check_new_line_after_comma(self, oToi):
     while iToken < iStopIndex:
 
         if bFirstParenFound:
-            bPositionalFound = False
             iToken, bOthersClause = _classify_others(iToken, lTokens)
    
             if bOthersClause:
+                bPositionalFound = True
                 iToken += 1
                 continue 
 
@@ -282,10 +282,8 @@ def _check_new_line_after_comma(self, oToi):
 
             if bAssignmentFound:
                iToken += 1
+               bPositionalFound = False
                continue
-
-            bPositionalFound = True
-
 
         oToken = lTokens[iToken]
 
@@ -295,6 +293,7 @@ def _check_new_line_after_comma(self, oToi):
         if isinstance(oToken, parser.comma):
             if bPositionalFound and self.new_line_after_comma == 'ignore_positional':
                 iToken += 1
+                bPositionalFound = True
                 continue
 
             if utils.is_token_at_end_of_line(iToken, lTokens):
@@ -313,95 +312,6 @@ def _check_new_line_after_comma(self, oToi):
                 
     return None 
 
-
-#def _check_new_line_after_comma(self, oToi):
-##    print('-->_check_new_line_after_comma')    
-#    
-#    if self.new_line_after_comma == 'ignore':
-#        return 
-#
-#    iLine, lTokens = utils.get_toi_parameters(oToi)
-#
-#    bSearch = False
-#    iOpenParen = 0
-#    iCloseParen = 0
-#    bAssignmentFound = False
-#    bOthersClause = False
-#    bPositionalFound = True
-#    for iToken, oToken in enumerate(lTokens):
-#        iLine = utils.increment_line_number(iLine, oToken)
-#        if isinstance(oToken, token.constant_declaration.assignment_operator):
-#            bSearch = True
-#        if not bSearch:
-#            continue
-#
-##        if isinstance(oToken, parser.close_parenthesis):
-##            if bOthersClause:
-##                iCloseParen += 1
-###                if iOpenParen == iCloseParen:
-###                    bOthersClause = False
-###                    continue
-###                elif iCloseParen > iOpenParen:
-##                if iCloseParen > iOpenParen:
-##                    bOthersClause = False
-##
-##        if isinstance(oToken, parser.open_parenthesis):
-##            if not bOthersClause:
-###            print(f'_check_new_line_after_comma = {_inside_others_clause(iToken, lTokens)}')
-##                if _inside_others_clause(iToken, lTokens):
-##                    bOthersClause = True
-##                    bPositionalFound = True
-##                    iOpenParen = 0
-##                    iCloseParen = 0
-##            else:
-##                iOpenParen += 1
-##
-##        if bOthersClause:
-##            continue
-#
-#        if bAssignmentFound:
-#            if isinstance(oToken, parser.close_parenthesis):
-#                iCloseParen += 1
-#                if iOpenParen == iCloseParen:
-#                    bAssignmentFound = False
-#                elif iCloseParen > iOpenParen:
-#                    bAssignmentFound = False
-#    
-#            if isinstance(oToken, parser.open_parenthesis):
-#                iOpenParen += 1
-#
-#            if isinstance(oToken, parser.comma):
-#                if iOpenParen == iCloseParen:
-#                    bAssignmentFound = False
-#                else:
-#                    continue
-#            else:
-#                continue
-#
-#        if not bAssignmentFound and oToken.get_value() == '=>':
-#            bAssignmentFound = True
-#            iOpenParen = 0
-#            iCloseParen = 0
-#            bPositionalFound = False
-#            continue
-#
-#        if isinstance(oToken, parser.comma):
-#            if bPositionalFound and self.new_line_after_comma == 'ignore_positional':
-#                continue
-#            bPositionalFound = True
-#
-#            if utils.is_token_at_end_of_line(iToken, lTokens):
-#                if self.new_line_after_comma == 'false':
-#                    iEnd = utils.find_next_non_whitespace_token(iToken + 1, lTokens)
-#                    sSolution = 'Remove carriage return after comma.'
-#                    oViolation = _create_violation(oToi, iLine, iToken, iEnd, 'new_line_after_comma', 'remove', sSolution)
-#                    self.add_violation(oViolation)
-#            else:
-#                if self.new_line_after_comma == 'true' or self.new_line_after_comma == 'ignore_positional':
-#                    sSolution = 'Add carriage return after comma.'
-#                    oViolation = _create_violation(oToi, iLine, iToken, iToken + 1, 'new_line_after_comma', 'insert', sSolution)
-#                    self.add_violation(oViolation)
-                
   
 def _is_open_paren_after_assignment(oToi):
     
@@ -482,8 +392,6 @@ def _fix_new_line_after_comma(oViolation):
         else:
             lTokens.insert(1, parser.whitespace(' '))
             lTokens.insert(1, parser.carriage_return())
-#            lTokens.append(parser.carriage_return())
-#            lTokens.append(parser.whitespace(' '))
         oViolation.set_tokens(lTokens)
     elif dAction['action'] == 'remove':
         lNewTokens = []
@@ -494,7 +402,6 @@ def _fix_new_line_after_comma(oViolation):
 
 
 def _inside_others_clause(iToken, lTokens):
-#    print(lTokens[iToken + 1:])
     for oToken in lTokens[iToken + 1:]: 
         if utils.token_is_whitespace_or_comment(oToken):
             continue
@@ -588,12 +495,8 @@ def _classify_others(iToken, lTokens):
 
         iEnd = iReturn + iStart
 
-        sDeleteme = ''
-        for oToken in lTokens[iStart:iEnd + 1]:
-            sDeleteme += oToken.get_value()
-#        print(sDeleteme)
         for iIndex in range(iStart + 1, iEnd):
             if lTokens[iIndex].get_value().lower() == 'others':
                 return iEnd, True
-    return iToken, False
 
+    return iToken, False
