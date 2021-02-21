@@ -461,6 +461,15 @@ def remove_carriage_returns_from_token_list(lTokens):
     return lMyTokens
 
 
+def remove_comments_from_token_list(lTokens):
+    lMyTokens = []
+    for oToken in lTokens:
+        if isinstance(oToken, parser.comment):
+            continue
+        lMyTokens.append(oToken)
+    return lMyTokens
+
+
 def remove_consecutive_whitespace_tokens(lTokens):
     lMyTokens = []
     for iToken, oToken in enumerate(lTokens):

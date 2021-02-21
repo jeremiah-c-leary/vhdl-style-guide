@@ -11,6 +11,7 @@ sTestDir = os.path.dirname(__file__)
 lFile, eError =vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_016_test_input.vhd'))
 lFileOthers, eError = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir, 'rule_016_test_input_others.vhd'))
 lFileAssignment, eError = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir, 'rule_016_test_input_assignment.vhd'))
+lFileAssignOnSingleLine, eError = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir, 'rule_016_test_input_assignment.vhd'))
 lFilePositional, eError = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir, 'rule_016_test_input_positional.vhd'))
 
 lExpected_first_paren_new_line_true = []
@@ -69,6 +70,10 @@ lExpected_assignment = []
 lExpected_assignment.append('')
 utils.read_file(os.path.join(sTestDir, 'rule_016_test_input_assignment.fixed.vhd'), lExpected_assignment)
 
+lExpected_assign_on_single_line = []
+lExpected_assign_on_single_line.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_016_test_input_assignment.fixed_assign_on_single_line_true.vhd'), lExpected_assign_on_single_line)
+
 lExpected_positional = []
 lExpected_positional.append('')
 utils.read_file(os.path.join(sTestDir, 'rule_016_test_input_positional.fixed.vhd'), lExpected_positional)
@@ -87,7 +92,7 @@ class test_constant_rule(unittest.TestCase):
         oRule.open_paren_new_line = 'ignore'
         oRule.close_paren_new_line = 'ignore'
         oRule.new_line_after_comma = 'ignore'
-        oRule.align_left = 'ignore'
+        oRule.assign_on_single_line = 'ignore'
 
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'constant')
@@ -105,7 +110,7 @@ class test_constant_rule(unittest.TestCase):
         oRule.open_paren_new_line = 'ignore'
         oRule.close_paren_new_line = 'ignore'
         oRule.new_line_after_comma = 'ignore'
-        oRule.align_left = 'ignore'
+        oRule.assign_on_single_line = 'ignore'
 
         lExpected = [14, 17, 21, 27, 41, 57]
 
@@ -119,7 +124,7 @@ class test_constant_rule(unittest.TestCase):
         oRule.open_paren_new_line = 'ignore'
         oRule.close_paren_new_line = 'ignore'
         oRule.new_line_after_comma = 'ignore'
-        oRule.align_left = 'ignore'
+        oRule.assign_on_single_line = 'ignore'
 
         lExpected = [11, 14]
 
@@ -133,7 +138,7 @@ class test_constant_rule(unittest.TestCase):
         oRule.open_paren_new_line = 'ignore'
         oRule.close_paren_new_line = 'ignore'
         oRule.new_line_after_comma = 'ignore'
-        oRule.align_left = 'ignore'
+        oRule.assign_on_single_line = 'ignore'
 
         lExpected = [18, 24, 38, 54, 72]
 
@@ -147,7 +152,7 @@ class test_constant_rule(unittest.TestCase):
         oRule.open_paren_new_line = 'true'
         oRule.close_paren_new_line = 'ignore'
         oRule.new_line_after_comma = 'ignore'
-        oRule.align_left = 'ignore'
+        oRule.assign_on_single_line = 'ignore'
 
         lExpected = [11, 11, 14, 14, 14, 17, 17, 17, 22, 23, 28, 33]
 
@@ -161,7 +166,7 @@ class test_constant_rule(unittest.TestCase):
         oRule.open_paren_new_line = 'false'
         oRule.close_paren_new_line = 'ignore'
         oRule.new_line_after_comma = 'ignore'
-        oRule.align_left = 'ignore'
+        oRule.assign_on_single_line = 'ignore'
 
         lExpected = [10, 21, 27, 41, 42, 48, 57, 58, 65]
 
@@ -175,7 +180,7 @@ class test_constant_rule(unittest.TestCase):
         oRule.open_paren_new_line = 'ignore'
         oRule.close_paren_new_line = 'true'
         oRule.new_line_after_comma = 'ignore'
-        oRule.align_left = 'ignore'
+        oRule.assign_on_single_line = 'ignore'
 
         lExpected = [11, 11, 14, 14, 17, 17, 22, 23, 32, 37, 47, 53]
 
@@ -189,7 +194,7 @@ class test_constant_rule(unittest.TestCase):
         oRule.open_paren_new_line = 'ignore'
         oRule.close_paren_new_line = 'false'
         oRule.new_line_after_comma = 'ignore'
-        oRule.align_left = 'ignore'
+        oRule.assign_on_single_line = 'ignore'
 
         lExpected = [64, 71]
 
@@ -203,7 +208,7 @@ class test_constant_rule(unittest.TestCase):
         oRule.open_paren_new_line = 'ignore'
         oRule.close_paren_new_line = 'ignore'
         oRule.new_line_after_comma = 'true'
-        oRule.align_left = 'ignore'
+        oRule.assign_on_single_line = 'ignore'
 
         lExpected = []
         lExpected.extend([11, 11, 11, 11, 11, 11, 11, 11, 11])
@@ -222,7 +227,7 @@ class test_constant_rule(unittest.TestCase):
         oRule.open_paren_new_line = 'ignore'
         oRule.close_paren_new_line = 'ignore'
         oRule.new_line_after_comma = 'false'
-        oRule.align_left = 'ignore'
+        oRule.assign_on_single_line = 'ignore'
 
         lExpected = [22]
         lExpected.extend(range(28, 37))
@@ -235,6 +240,21 @@ class test_constant_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
+    def test_rule_016_assign_on_single_line(self):
+        oRule = constant.rule_016()
+        oRule.first_paren_new_line = 'ignore'
+        oRule.last_paren_new_line = 'ignore'
+        oRule.open_paren_new_line = 'ignore'
+        oRule.close_paren_new_line = 'ignore'
+        oRule.new_line_after_comma = 'ignore'
+        oRule.assign_on_single_line = 'true'
+
+        lExpected = [9, 14, 18]
+
+        oFile = vhdlFile.vhdlFile(lFileAssignOnSingleLine)
+        oRule.analyze(oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+
     def test_fix_rule_016_first_paren_new_line_true(self):
         oRule = constant.rule_016()
         oRule.first_paren_new_line = 'true'
@@ -242,7 +262,7 @@ class test_constant_rule(unittest.TestCase):
         oRule.open_paren_new_line = 'ignore'
         oRule.close_paren_new_line = 'ignore'
         oRule.new_line_after_comma = 'ignore'
-        oRule.align_left = 'ignore'
+        oRule.assign_on_single_line = 'ignore'
 
         oRule.fix(self.oFile)
 
@@ -260,7 +280,7 @@ class test_constant_rule(unittest.TestCase):
         oRule.open_paren_new_line = 'ignore'
         oRule.close_paren_new_line = 'ignore'
         oRule.new_line_after_comma = 'ignore'
-        oRule.align_left = 'ignore'
+        oRule.assign_on_single_line = 'ignore'
 
         oRule.fix(self.oFile)
 
@@ -278,7 +298,7 @@ class test_constant_rule(unittest.TestCase):
         oRule.open_paren_new_line = 'ignore'
         oRule.close_paren_new_line = 'ignore'
         oRule.new_line_after_comma = 'ignore'
-        oRule.align_left = 'ignore'
+        oRule.assign_on_single_line = 'ignore'
 
         oRule.fix(self.oFile)
 
@@ -296,7 +316,7 @@ class test_constant_rule(unittest.TestCase):
         oRule.open_paren_new_line = 'ignore'
         oRule.close_paren_new_line = 'ignore'
         oRule.new_line_after_comma = 'ignore'
-        oRule.align_left = 'ignore'
+        oRule.assign_on_single_line = 'ignore'
 
         oRule.fix(self.oFile)
 
@@ -314,7 +334,7 @@ class test_constant_rule(unittest.TestCase):
         oRule.open_paren_new_line = 'true'
         oRule.close_paren_new_line = 'ignore'
         oRule.new_line_after_comma = 'ignore'
-        oRule.align_left = 'ignore'
+        oRule.assign_on_single_line = 'ignore'
 
         oRule.fix(self.oFile)
 
@@ -332,7 +352,7 @@ class test_constant_rule(unittest.TestCase):
         oRule.open_paren_new_line = 'false'
         oRule.close_paren_new_line = 'ignore'
         oRule.new_line_after_comma = 'ignore'
-        oRule.align_left = 'ignore'
+        oRule.assign_on_single_line = 'ignore'
 
         oRule.fix(self.oFile)
 
@@ -350,7 +370,7 @@ class test_constant_rule(unittest.TestCase):
         oRule.open_paren_new_line = 'ignore'
         oRule.close_paren_new_line = 'true'
         oRule.new_line_after_comma = 'ignore'
-        oRule.align_left = 'ignore'
+        oRule.assign_on_single_line = 'ignore'
 
         oRule.fix(self.oFile)
 
@@ -368,7 +388,7 @@ class test_constant_rule(unittest.TestCase):
         oRule.open_paren_new_line = 'ignore'
         oRule.close_paren_new_line = 'false'
         oRule.new_line_after_comma = 'ignore'
-        oRule.align_left = 'ignore'
+        oRule.assign_on_single_line = 'ignore'
 
         oRule.fix(self.oFile)
 
@@ -386,7 +406,7 @@ class test_constant_rule(unittest.TestCase):
         oRule.open_paren_new_line = 'ignore'
         oRule.close_paren_new_line = 'ignore'
         oRule.new_line_after_comma ='true'
-        oRule.align_left = 'ignore'
+        oRule.assign_on_single_line = 'ignore'
 
         oRule.fix(self.oFile)
 
@@ -404,7 +424,7 @@ class test_constant_rule(unittest.TestCase):
         oRule.open_paren_new_line = 'ignore'
         oRule.close_paren_new_line = 'ignore'
         oRule.new_line_after_comma = 'false'
-        oRule.align_left = 'ignore'
+        oRule.assign_on_single_line = 'ignore'
 
         oRule.fix(self.oFile)
 
@@ -423,7 +443,7 @@ class test_constant_rule(unittest.TestCase):
         oRule.open_paren_new_line = 'true'
         oRule.close_paren_new_line = 'true'
         oRule.new_line_after_comma = 'true'
-        oRule.align_left = 'ignore'
+        oRule.assign_on_single_line = 'ignore'
 
         oRule.fix(self.oFile)
 
@@ -442,7 +462,7 @@ class test_constant_rule(unittest.TestCase):
         oRule.open_paren_new_line = 'false'
         oRule.close_paren_new_line = 'false'
         oRule.new_line_after_comma = 'false'
-        oRule.align_left = 'ignore'
+        oRule.assign_on_single_line = 'ignore'
 
         oRule.fix(self.oFile)
 
@@ -461,6 +481,7 @@ class test_constant_rule(unittest.TestCase):
         oRule.open_paren_new_line = 'true'
         oRule.close_paren_new_line = 'true'
         oRule.new_line_after_comma = 'true'
+        oRule.assign_on_single_line = 'ignore'
 
         oFileOthers = vhdlFile.vhdlFile(lFileOthers)
         oRule.fix(oFileOthers)
@@ -480,6 +501,7 @@ class test_constant_rule(unittest.TestCase):
         oRule.open_paren_new_line = 'true'
         oRule.close_paren_new_line = 'true'
         oRule.new_line_after_comma = 'true'
+        oRule.assign_on_single_line = 'ignore'
 
         oFileAssignment = vhdlFile.vhdlFile(lFileAssignment)
         oRule.fix(oFileAssignment)
@@ -491,6 +513,26 @@ class test_constant_rule(unittest.TestCase):
         oRule.analyze(oFileAssignment)
         self.assertEqual(oRule.violations, [])
 
+    def test_fix_rule_016_assign_on_single_line(self):
+        self.maxDiff = None
+        oRule = constant.rule_016()
+        oRule.first_paren_new_line = 'true'
+        oRule.last_paren_new_line = 'true'
+        oRule.open_paren_new_line = 'true'
+        oRule.close_paren_new_line = 'true'
+        oRule.new_line_after_comma = 'true'
+        oRule.assign_on_single_line = 'true'
+
+        oFile = vhdlFile.vhdlFile(lFileAssignOnSingleLine)
+        oRule.fix(oFile)
+
+        lActual = oFile.get_lines()
+
+        self.assertEqual(lExpected_assign_on_single_line, lActual)
+
+        oRule.analyze(oFile)
+        self.assertEqual(oRule.violations, [])
+
     def test_fix_rule_016_positional(self):
         self.maxDiff = None
         oRule = constant.rule_016()
@@ -499,6 +541,7 @@ class test_constant_rule(unittest.TestCase):
         oRule.open_paren_new_line = 'true'
         oRule.close_paren_new_line = 'true'
         oRule.new_line_after_comma = 'ignore_positional'
+        oRule.assign_on_single_line = 'ignore'
 
         oFilePositional = vhdlFile.vhdlFile(lFilePositional)
         oRule.fix(oFilePositional)
