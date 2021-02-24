@@ -32,7 +32,7 @@ The new parser has been completed and all rules have been converted.
 Initial hardening tests have also been completed.
 Effort is underway to address all bugs against version 2.
 
-I am targeting January 2021 for release 3.0.0.
+I am targeting March 2021 for release 3.0.0.
 
 Major Changes:
 
