@@ -14,6 +14,9 @@ There are several options to these rules:
 | indent_step          | integer |    1    | Sets how many columns to the right to check for         |
 |                      |         |         | alignment.                                              |
 +----------------------+-----------------------------------------------------------------------------+
+| align_paren          | boolean |  True   | True = Use open parenthesis for alignment.              |
+|                      |         |         | False = Do not use open parenthesis for alignment.      |
++----------------------+-----------------------------------------------------------------------------+
 
 This is an example of how to configure the option.
 
@@ -178,3 +181,46 @@ The following code would pass with this option:
                                      d => 1
                                    )
                                  );
+
+Example: align_left True and indent_step 2 and align_paren True
+###############################################################
+
+The following code would fail with this option:
+
+.. code-block:: vhdl
+
+   constant c_const : t_type := (
+     1 => func1(
+       G_GENERIC1, G_GENERIC2)
+   );
+
+The following code would pass with this option:
+
+.. code-block:: vhdl
+
+   constant c_const : t_type := (
+     1 => func1(
+                  G_GENERIC1, G_GENERIC2)
+   );
+
+Example: align_left True and indent_step 2 and align_paren False
+################################################################
+
+The following code would fail with this option:
+
+.. code-block:: vhdl
+
+   constant c_const : t_type := (
+     1 => func1(
+                  G_GENERIC1, G_GENERIC2)
+   );
+
+The following code would pass with this option:
+
+.. code-block:: vhdl
+
+   constant c_const : t_type := (
+     1 => func1(
+       G_GENERIC1, G_GENERIC2)
+   );
+

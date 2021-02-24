@@ -26,7 +26,7 @@ There are several options to these rules:
 +-----------------------+---------+---------+---------------------------------------------------------+
 | ignore_single_line    | string  |  true   | Do not apply rules if expression/condition is contained |
 |                       |         |         | on a single line.                                       |
-+-----------------------+-----------------------------------------------------------------------------+
++-----------------------+---------+---------+---------------------------------------------------------+
 
 The options can be combined to format the output.
 
@@ -79,7 +79,7 @@ This is an example of how to configure these options.
         new_line_after_comma : 'ignore'
         ignore_single_line : 'false'
 
-.. NOTE:: All examples below are using the rule **constant_012** and the option ignore_single_line is False.
+.. NOTE:: All examples below are using the rule **constant_016** and the option ignore_single_line is False.
 
 Example: first_paren_new_line
 #############################
