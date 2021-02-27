@@ -148,7 +148,7 @@ class testVsg(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_invalid_local_rule_directory(self):
-        lExpected = ['ERROR: specified local rules directory vsg/tests/vsg/invalid_local_rule_directory could not be found.', '']
+        lExpected = ['ERROR: encountered FileNotFoundError, No such file or directory vsg/tests/vsg/invalid_local_rule_directory when trying to open local rules file.', '']
 
         try:
             lActual = subprocess.check_output(['bin/vsg', '-f', 'vsg/tests/vsg/entity_architecture.vhd', '-of', 'syntastic', '-lr', 'vsg/tests/vsg/invalid_local_rule_directory'])
@@ -420,6 +420,78 @@ class testVsg(unittest.TestCase):
 
         self.assertEqual(utils.replace_total_count_summary(lActualStdErr), lExpectedStdErr)
         self.assertEqual(utils.replace_total_count_summary(lActualStdOut), lExpectedStdOut)
+
+    def test_summary_output_format_multiple_mixed_jobs_1(self):
+        lExpectedStdErr = [
+                'File: vsg/tests/vsg/entity_architecture.vhd ERROR (200 rules checked) [Error: 11] [Warning: 0]',
+                'File: vsg/tests/vsg/entity1.vhd ERROR (200 rules checked) [Error: 1] [Warning: 0]',
+                'File: vsg/tests/vsg/entity2.vhd ERROR (200 rules checked) [Error: 1] [Warning: 0]',
+                '',
+                ]
+        lExpectedStdOut = ['File: vsg/tests/vsg/entity_architecture.fixed.vhd OK (200 rules checked) [Error: 0] [Warning: 0]', '']
+
+        try:
+            subprocess.check_output(
+                    [
+                        'bin/vsg',
+                        '-f',
+                        'vsg/tests/vsg/entity_architecture.vhd',
+                        'vsg/tests/vsg/entity_architecture.fixed.vhd',
+                        'vsg/tests/vsg/entity1.vhd',
+                        'vsg/tests/vsg/entity2.vhd',
+                        '--output_format',
+                        'summary',
+                        '--jobs=1',
+                    ],
+                    stderr=subprocess.PIPE
+                    )
+            iExitStatus = 0
+        except subprocess.CalledProcessError as e:
+            lActualStdOut = str(e.output.decode('utf-8')).split('\n')
+            lActualStdErr = str(e.stderr.decode('utf-8')).split('\n')
+            iExitStatus = e.returncode
+
+        self.assertEqual(iExitStatus, 1)
+
+        self.assertEqual(utils.replace_total_count_summary(lActualStdErr), lExpectedStdErr)
+        self.assertEqual(utils.replace_total_count_summary(lActualStdOut), lExpectedStdOut)
+
+
+    def test_summary_output_format_multiple_mixed_jobs_2(self):
+        lExpectedStdErr = [
+                'File: vsg/tests/vsg/entity_architecture.vhd ERROR (200 rules checked) [Error: 11] [Warning: 0]',
+                'File: vsg/tests/vsg/entity1.vhd ERROR (200 rules checked) [Error: 1] [Warning: 0]',
+                'File: vsg/tests/vsg/entity2.vhd ERROR (200 rules checked) [Error: 1] [Warning: 0]',
+                '',
+                ]
+        lExpectedStdOut = ['File: vsg/tests/vsg/entity_architecture.fixed.vhd OK (200 rules checked) [Error: 0] [Warning: 0]', '']
+
+        try:
+            subprocess.check_output(
+                    [
+                        'bin/vsg',
+                        '-f',
+                        'vsg/tests/vsg/entity_architecture.vhd',
+                        'vsg/tests/vsg/entity_architecture.fixed.vhd',
+                        'vsg/tests/vsg/entity1.vhd',
+                        'vsg/tests/vsg/entity2.vhd',
+                        '--output_format',
+                        'summary',
+                        '-p 2',
+                    ],
+                    stderr=subprocess.PIPE
+                    )
+            iExitStatus = 0
+        except subprocess.CalledProcessError as e:
+            lActualStdOut = str(e.output.decode('utf-8')).split('\n')
+            lActualStdErr = str(e.stderr.decode('utf-8')).split('\n')
+            iExitStatus = e.returncode
+
+        self.assertEqual(iExitStatus, 1)
+
+        self.assertEqual(utils.replace_total_count_summary(lActualStdErr), lExpectedStdErr)
+        self.assertEqual(utils.replace_total_count_summary(lActualStdOut), lExpectedStdOut)
+
 
     @unittest.skip('Version is performing git commands and is impossible to predict the output.')
     @mock.patch('sys.stdout')

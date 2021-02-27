@@ -22,14 +22,10 @@ def get_python_modules_from_directory(sDirectoryName, lModules):
 
       lModules (string list)
     '''
-    try:
-        lDirectoryContents = os.listdir(sDirectoryName)
-        for sFileName in lDirectoryContents:
-            if sFileName.endswith('.py') and not sFileName.startswith('__'):
-                lModules.append(sFileName.replace('.py', ''))
-    except OSError:
-        print('ERROR: specified local rules directory ' + sDirectoryName + ' could not be found.')
-        exit(1)
+    lDirectoryContents = os.listdir(sDirectoryName)
+    for sFileName in lDirectoryContents:
+        if sFileName.endswith('.py') and not sFileName.startswith('__'):
+            lModules.append(sFileName.replace('.py', ''))
 
 
 def get_rules_from_module(lModules, lRules):
@@ -253,14 +249,19 @@ class rule_list():
         dRunInfo['severities'] = {}
 
         for oSeverity in self.oSeverityList.get_severities():
-            dRunInfo['severities'][oSeverity.name] = oSeverity.count
+            dRunInfo['severities'][oSeverity.name] = 0
+        for dViolation in dRunInfo['violations']:
+            name = dViolation['severity']['name']
+            dRunInfo['severities'][name] = dRunInfo['severities'][name] + 1
+
 #        print(dRunInfo)
         if sOutputFormat == 'vsg':
-            report.vsg_stdout.print_output(dRunInfo)
+            sOutputStd, sOutputErr = report.vsg_stdout.print_output(dRunInfo)
         elif sOutputFormat == 'syntastic':
-            report.syntastic_stdout.print_output(dRunInfo)
+            sOutputStd, sOutputErr = report.syntastic_stdout.print_output(dRunInfo)
         else:
-            report.summary_stdout.print_output(dRunInfo)
+            sOutputStd, sOutputErr = report.summary_stdout.print_output(dRunInfo)
+        return sOutputStd, sOutputErr
 
     def configure(self, configurationFile):
         '''

@@ -9,9 +9,10 @@ def print_output(dRunInfo):
     Parameters:
       dRunInfo (dictionary)
     '''
-    print_header(dRunInfo['filename'])
-    print_stats(dRunInfo)
-    print_violations(dRunInfo)
+    header = print_header(dRunInfo['filename'])
+    stats = print_stats(dRunInfo)
+    violations = print_violations(dRunInfo)
+    return header + stats + violations, None
 
 
 def print_header(sFilename):
@@ -23,27 +24,28 @@ def print_header(sFilename):
 
     Returns: Nothing
     '''
-    print('=' * iLineLength)
-    print('File:  ' + sFilename)
-    print('=' * iLineLength)
+    top = '=' * iLineLength + '\n'
+    filename = 'File:  ' + sFilename + '\n'
+    bottom = '=' * iLineLength + '\n'
+    return top + filename + bottom
 
 
 def print_phase_information(iPhaseNumber):
     '''
     Prints information about the analysis.
     '''
-    print('Phase ' + str(iPhaseNumber) + ' of 7... Reporting')
+    return 'Phase ' + str(iPhaseNumber) + ' of 7... Reporting\n'
 
 
 def print_divider():
     '''
     Prints a divider that matches the column divisions in the violations.
     '''
-    print('-'*28 + '+' + '-'*12 + '+' + '-'*12 + '+' + '-'*38)
+    return '-'*28 + '+' + '-'*12 + '+' + '-'*12 + '+' + '-'*38 + '\n'
 
 
 def print_violation_header():
-    print_divider()
+    top_divider = print_divider()
     sOutputString = '  '
     sOutputString += 'Rule'.ljust(25)
     sOutputString += ' | '
@@ -51,9 +53,9 @@ def print_violation_header():
     sOutputString += ' | '
     sOutputString += 'line(s)'.center(10)
     sOutputString += ' | '
-    sOutputString += 'Solution'
-    print(sOutputString)
-    print_divider()
+    sOutputString += 'Solution\n'
+    bottom_divider = print_divider()
+    return top_divider + sOutputString + bottom_divider
 
 
 def print_stats(dRunInfo):
@@ -66,12 +68,13 @@ def print_stats(dRunInfo):
 
     Returns: Nothing
     '''
-    print('Phase ' + str(dRunInfo['stopPhase']) + ' of 7... Reporting')
-    print('Total Rules Checked: ' + str(dRunInfo['num_rules_checked']))
-    print('Total Violations:    ' + str(dRunInfo['total_violations']))
+    stats = 'Phase ' + str(dRunInfo['stopPhase']) + ' of 7... Reporting\n'
+    stats += 'Total Rules Checked: ' + str(dRunInfo['num_rules_checked']) + '\n'
+    stats += 'Total Violations:    ' + str(dRunInfo['total_violations']) + '\n'
     for sSeverity in list(dRunInfo['severities'].keys()):
         sFormat = '  {0:<' + str(dRunInfo['maxSeverityNameLength']) + 's} : {1:5d}'
-        print(sFormat.format(sSeverity, dRunInfo['severities'][sSeverity]))
+        stats += sFormat.format(sSeverity, dRunInfo['severities'][sSeverity]) + '\n'
+    return stats
 
 
 def print_violations(dRunInfo):
@@ -85,9 +88,9 @@ def print_violations(dRunInfo):
     Returns: Nothing
     '''
     if dRunInfo['total_violations'] > 0:
-        print_violation_header()
+        sOutputString = print_violation_header()
         for dViolation in dRunInfo['violations']:
-            sOutputString = '  '
+            sOutputString += '  '
             sOutputString += dViolation['rule'].ljust(25)
             sOutputString += ' | '
             sOutputString += dViolation['severity']['name'].ljust(10)
@@ -98,6 +101,9 @@ def print_violations(dRunInfo):
                 sOutputString += dViolation['solution']
             except TypeError:
                 sOutputString += 'None'
-            print(sOutputString)
-        print_divider()
-        print('NOTE: Refer to online documentation at https://vhdl-style-guide.readthedocs.io/en/latest/index.html for more information.')
+            sOutputString += '\n'
+        sOutputString += print_divider()
+        sOutputString += 'NOTE: Refer to online documentation at https://vhdl-style-guide.readthedocs.io/en/latest/index.html for more information.'
+        return sOutputString
+    else:
+        return ''

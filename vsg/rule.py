@@ -17,7 +17,7 @@ class Rule():
         self.subphase = 1
         self.disable = False
         self.fixable = True
-        self.severity = severity.set_error_severity
+        self.severity = severity.error('Error')
         self.debug = False
         self.dFix = {}
         self.dFix['violations'] = {}
@@ -121,7 +121,6 @@ class Rule():
         '''
         if not lineNumber.has_code_tag(self.unique_id):
             self.violations.append(lineNumber)
-            self.severity.count += 1
 
     def analyze(self, oFile):
         '''

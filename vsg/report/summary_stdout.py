@@ -1,7 +1,3 @@
-
-import sys
-
-
 def print_output(dRunInfo):
     '''
     Displays results to stdout in a compact format.
@@ -32,6 +28,6 @@ def print_output(dRunInfo):
         sOutputString += str(dRunInfo['severities'][sSeverity])
         sOutputString += ']'
     if dRunInfo['severities']['Error'] == 0:
-        print(sOutputString)
+        return sOutputString, None
     else:
-        sys.stderr.write(sOutputString + '\n')
+        return None, sOutputString

@@ -7,6 +7,8 @@ import json
 import shutil
 import glob
 import yaml
+import functools
+import multiprocessing
 
 from . import junit
 from . import rule_list
@@ -17,6 +19,12 @@ from . import vhdlFile
 
 def parse_command_line_arguments():
     '''Parses the command line arguments and returns them.'''
+
+    def check_strict_positive(value):
+        iValue = int(value)
+        if iValue <= 0:
+            raise argparse.ArgumentTypeError(f"{value} is an invalid value for number of jobs")
+        return iValue
 
     parser = argparse.ArgumentParser(
       prog='VHDL Style Guide (VSG)',
@@ -39,13 +47,27 @@ def parse_command_line_arguments():
     parser.add_argument('-v', '--version', default=False, action='store_true', help='Displays version information')
     parser.add_argument('-ap', '--all_phases', default=False, action='store_true', help='Do not stop when a violation is detected.')
     parser.add_argument('--fix_only', action='store', help='Restrict fixing via JSON file.')
+    parser.add_argument(
+        "-p",
+        "--jobs",
+        action="store",
+        default=os.cpu_count(),
+        type=check_strict_positive,
+        help="number of parallel jobs to use, default is the number of cpu cores",
+    )
     parser.add_argument('--debug', default=False, action='store_true', help='Displays verbose debug information')
+
+    args_ = parser.parse_args()
+
+    if sys.platform == "win32":
+        # Work around https://bugs.python.org/issue26903
+        args_.jobs = min(args_.jobs, 60)
 
     if len(sys.argv) == 1:
         parser.print_help()
         sys.exit(1)
     else:
-        return parser.parse_args()
+        return args_
 
 
 def get_predefined_styles():
@@ -371,41 +393,38 @@ def main():
 
     validate_files_exist_to_analyze(commandLineArguments.filename)
 
-    dJson = {}
-    dJson['files'] = []
+    dJson = {'files'}
 
-    for iIndex, sFileName in enumerate(commandLineArguments.filename):
-        dJsonEntry = {}
-        lFileContent, eError = vhdlFile.utils.read_vhdlfile(sFileName)
-        oVhdlFile = vhdlFile.vhdlFile(lFileContent, sFileName, eError)
-        oVhdlFile.set_indent_map(dIndent)
-        oRules = rule_list.rule_list(oVhdlFile, oSeverityList, commandLineArguments.local_rules)
-        oRules.configure(configuration)
-        try:
-            oRules.configure(configuration['file_list'][iIndex][sFileName])
-        except TypeError:
-            pass
-        except KeyError:
-            pass
+    f = functools.partial(apply_rules, commandLineArguments, configuration, dIndent, fix_only)
+    # It's easier to debug when not using multiprocessing.Pool()
+    lReturn = []
+    if commandLineArguments.jobs == 1:
+        for iIndex, sFileName in enumerate(commandLineArguments.filename):
+            fStatus, testCase, dJsonEntry, sOutputStd, sOutputErr = f((iIndex, sFileName))
+            lReturn.append((fStatus, testCase, dJsonEntry))
+            if sOutputStd:
+                print(sOutputStd)
+            if sOutputErr:
+                print(sOutputErr, file=sys.stderr)
 
-        if commandLineArguments.fix:
-            if commandLineArguments.backup:
-                create_backup_file(sFileName)
-            oRules.fix(commandLineArguments.fix_phase, commandLineArguments.skip_phase, fix_only)
-            write_vhdl_file(oVhdlFile)
+    else:
+        with multiprocessing.Pool(commandLineArguments.jobs) as pool:
+            for tResult in pool.imap(f, enumerate(commandLineArguments.filename)):
+                fStatus, testCase, dJsonEntry, sOutputStd, sOutputErr = tResult
+                lReturn.append((fStatus, testCase, dJsonEntry))
+                if sOutputStd:
+                    print(sOutputStd)
+                if sOutputErr:
+                    print(sOutputErr, file=sys.stderr)
 
-        oRules.oSeverityList.clear_severity_counts()
-        oRules.clear_violations()
-        oRules.check_rules(bAllPhases=commandLineArguments.all_phases, lSkipPhase=commandLineArguments.skip_phase)
-        oRules.report_violations(commandLineArguments.output_format)
-        fExitStatus = update_exit_status(fExitStatus, oRules)
+    for tValue in lReturn:
+        fStatus, testCase, dJsonEntry = tValue
+        fExitStatus = fExitStatus or fStatus
 
         if commandLineArguments.junit:
-            oJunitTestsuite.add_testcase(oRules.extract_junit_testcase(sFileName))
+            oJunitTestsuite.add_testcase(testCase)
 
         if commandLineArguments.json:
-            dJsonEntry['file_path'] = sFileName
-            dJsonEntry['violations'] = oRules.extract_violation_dictionary()['violations']
             dJson['files'].append(dJsonEntry)
 
     if commandLineArguments.junit:
@@ -418,6 +437,49 @@ def main():
 
 
     sys.exit(fExitStatus)
+
+
+def apply_rules(commandLineArguments, configuration, dIndent, fix_only, tIndexFileName):
+    iIndex, sFileName = tIndexFileName
+    dJsonEntry = {}
+    lFileContent, eError = vhdlFile.utils.read_vhdlfile(sFileName)
+    oVhdlFile = vhdlFile.vhdlFile(lFileContent, sFileName, eError)
+    oVhdlFile.set_indent_map(dIndent)
+    try:
+        oRules = rule_list.rule_list(oVhdlFile, configuration['severity_list'], commandLineArguments.local_rules)
+    except OSError as e:
+        sOutputStd = f'ERROR: encountered {e.__class__.__name__}, {e.args[1]} ' + commandLineArguments.local_rules + ' when trying to open local rules file.'
+        sOutputErr = None
+        return 1, None, dJsonEntry, sOutputStd, sOutputErr
+    oRules.configure(configuration)
+    try:
+        oRules.configure(configuration['file_list'][iIndex][sFileName])
+    except TypeError:
+        pass
+    except KeyError:
+        pass
+
+    if commandLineArguments.fix:
+        if commandLineArguments.backup:
+            create_backup_file(sFileName)
+        oRules.fix(commandLineArguments.fix_phase, commandLineArguments.skip_phase, fix_only)
+        write_vhdl_file(oVhdlFile)
+
+    oRules.clear_violations()
+    oRules.check_rules(bAllPhases=commandLineArguments.all_phases, lSkipPhase=commandLineArguments.skip_phase)
+    sOutputStd, sOutputErr = oRules.report_violations(commandLineArguments.output_format)
+    fExitStatus = oRules.violations
+
+    if commandLineArguments.junit:
+        testCase = oRules.extract_junit_testcase(sFileName)
+    else:
+        testCase = None
+
+    if commandLineArguments.json:
+        dJsonEntry['file_path'] = sFileName
+        dJsonEntry['violations'] = oRules.extract_violation_dictionary()['violations']
+
+    return fExitStatus, testCase, dJsonEntry, sOutputStd, sOutputErr
 
 
 def update_exit_status(fExitStatus, oRules):
