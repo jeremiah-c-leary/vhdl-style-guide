@@ -106,6 +106,8 @@ class rule_012(rule.Rule):
                 dExpectedIndent = _analyze_align_paren_false(iFirstLine, iLastLine, lParens, self.indent_step, dActualIndent, bStartsWithParen)
             if self.align_paren and not self.align_left:
                 dExpectedIndent = _analyze_align_paren_true(iFirstLine, iLastLine, lParens, dActualIndent, self.indent_step, bStartsWithParen, iAssignColumn)
+            if self.align_paren and self.align_left:
+                dExpectedIndent = _analyze_align_paren_true_align_left_true(iFirstLine, iLastLine, lParens, dActualIndent, self.indent_step, bStartsWithParen, iAssignColumn)
 
 #            print(f'Actual = {dActualIndent}')
 #            print(f'Expect = {dExpectedIndent}')
@@ -311,6 +313,84 @@ def _analyze_align_paren_true(iFirstLine, iLastLine, lParens, dActualIndent, iIn
                     dExpectedIndent[iLine + 1] = lColumn[-1]
                 else:
                     dExpectedIndent[iLine + 1] = lColumn[-1]
+
+#        print(f'{iLine} | {lColumn} | {dExpectedIndent}')
+
+    return dExpectedIndent
+
+
+def _analyze_align_paren_true_align_left_true(iFirstLine, iLastLine, lParens, dActualIndent, iIndentStep, bStartsWithParen, iAssignColumn):
+    dExpectedIndent = {}
+    dExpectedIndent[iFirstLine] = dActualIndent[iFirstLine]
+
+    if bStartsWithParen:
+       iAdjust = 0
+       iIndent = dActualIndent[iFirstLine]
+       iColumn = iIndent
+       lColumn = [dActualIndent[iFirstLine]]
+    else:
+       iAdjust = iAssignColumn
+       iIndent = iAssignColumn + 2 + 1
+       iColumn = iIndent
+       lColumn = [iIndent]
+#        dActualIndent[iFirstLine] = iIndent
+
+#    print('*'*80)
+#    print(lParens)
+
+    iParens = 0
+
+    for iLine in range(iFirstLine, iLastLine + 1):
+#        print('-->  ' + str(iLine) + '  <--------------------------')
+        lTemp = []
+        for dParen in lParens:
+            if dParen['line'] == iLine:
+                lTemp.append(dParen)
+
+#        print(f'lTemp = {lTemp}')
+        iTemp = lColumn[-1]
+        for dTemp in lTemp:
+            if dTemp['type'] == 'open':
+                iParens += 1
+                if iLine == iFirstLine:
+                    iColumn = dTemp['column'] + iIndentStep - 1
+                else:
+                    iColumn = dTemp['column'] + (iTemp - dActualIndent[iLine]) + iIndentStep - 1
+#                print(f"iColumn = {dTemp['column']} + ({iTemp} - {dActualIndent[iLine]}) + {iIndentStep} - 1 = {iColumn}")
+                lColumn.append(iColumn)
+                dExpectedIndent[iLine + 1] = iColumn
+            else:
+                iParens -= 1
+                lColumn.pop()
+                dExpectedIndent[iLine + 1] = lColumn[-1]
+                if dTemp['begin_line']:
+                    dExpectedIndent[iLine] = dExpectedIndent[iLine] - iIndentStep
+
+#        print(f'iParens = {iParens}')
+#        if iParens == 0 and not bStartsWithParen:
+#            dExpectedIndent[iLine] = dExpectedIndent[iLine] - iIndentStep
+
+
+        if len(lTemp) == 0:
+#            dExpectedIndent[iLine + 1] = iColumn
+            if bStartsWithParen:
+                dExpectedIndent[iLine + 1] = lColumn[-1]
+            else:
+                if iParens == 0:
+                    dExpectedIndent[iLine + 1] = lColumn[-1]
+                else:
+                    dExpectedIndent[iLine + 1] = lColumn[-1]
+
+        if iLine == iFirstLine:
+            dExpectedIndent[iLine + 1] = iParens * iIndentStep + dActualIndent[iFirstLine]
+            lColumn[-1] = iParens * iIndentStep + dActualIndent[iFirstLine] 
+            if iParens == 0 and not bStartsWithParen:
+                dExpectedIndent[iLine + 1] = iIndentStep + dActualIndent[iFirstLine]
+                lColumn[-1] = iIndentStep + dActualIndent[iFirstLine] 
+        else:
+            if iParens == 1:
+                dExpectedIndent[iLine + 1] = iParens * iIndentStep + dActualIndent[iFirstLine]
+                lColumn[-1] = iParens * iIndentStep + dActualIndent[iFirstLine] 
 
 #        print(f'{iLine} | {lColumn} | {dExpectedIndent}')
 

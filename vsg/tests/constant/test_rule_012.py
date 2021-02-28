@@ -157,7 +157,6 @@ class test_constant_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
-    @unittest.skip('Still messing with the algorithm')
     def test_fix_rule_012_align_left_true_align_paren_true(self):
 #        self.maxDiff = None
         oRule = constant.rule_012()

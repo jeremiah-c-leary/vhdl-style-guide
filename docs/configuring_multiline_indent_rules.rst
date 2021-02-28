@@ -203,24 +203,3 @@ The following code would pass with this option:
                   G_GENERIC1, G_GENERIC2)
    );
 
-Example: align_left True, align_paren True and indent_step 2
-############################################################
-
-The following code would fail with this option:
-
-.. code-block:: vhdl
-
-   constant c_const : t_type := (
-     1 => func1(
-                  G_GENERIC1, G_GENERIC2)
-   );
-
-The following code would pass with this option:
-
-.. code-block:: vhdl
-
-   constant c_const : t_type := (
-     1 => func1(
-       G_GENERIC1, G_GENERIC2)
-   );
-
