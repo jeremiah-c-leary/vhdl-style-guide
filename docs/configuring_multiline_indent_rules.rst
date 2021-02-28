@@ -29,8 +29,8 @@ This is an example of how to configure the option.
 
 .. NOTE:: All examples below are using the rule **constant_012**.
 
-Example: align_left True and indent_step 1
-##########################################
+Example: align_left True, align_paren False and indent_step 1
+#############################################################
 
 The following code would fail with this option:
 
@@ -88,8 +88,8 @@ The following code would pass with this option:
      )
     );
 
-Example: align_left True and indent_step 2
-##########################################
+Example: align_left True, align_paren False and indent_step 2
+#############################################################
 
 The following code would fail with this option:
 
@@ -147,8 +147,8 @@ The following code would pass with this option:
       )
     );
 
-Example: align_left False and indent_step 2
-###########################################
+Example: align_left False, align_paren False and indent_step 2
+##############################################################
 
 The following code would fail with this option:
 
@@ -182,8 +182,8 @@ The following code would pass with this option:
                                    )
                                  );
 
-Example: align_left True and indent_step 2 and align_paren True
-###############################################################
+Example: align_left True, align_paren True and indent_step 2
+############################################################
 
 The following code would fail with this option:
 
@@ -203,8 +203,8 @@ The following code would pass with this option:
                   G_GENERIC1, G_GENERIC2)
    );
 
-Example: align_left True and indent_step 2 and align_paren False
-################################################################
+Example: align_left True, align_paren True and indent_step 2
+############################################################
 
 The following code would fail with this option:
 

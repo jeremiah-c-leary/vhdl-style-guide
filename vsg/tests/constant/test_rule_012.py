@@ -16,9 +16,17 @@ lExpected_align_left_true = []
 lExpected_align_left_true.append('')
 utils.read_file(os.path.join(sTestDir, 'rule_012_test_input.fixed_align_left_true.vhd'), lExpected_align_left_true)
 
-lExpected_align_left_false = []
-lExpected_align_left_false.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_012_test_input.fixed_align_left_false.vhd'), lExpected_align_left_false)
+lExpected_align_left_true_align_paren_true = []
+lExpected_align_left_true_align_paren_true.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_012_test_input.fixed_align_left_true_align_paren_true.vhd'), lExpected_align_left_true_align_paren_true)
+
+lExpected_align_left_false_align_paren_true = []
+lExpected_align_left_false_align_paren_true.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_012_test_input.fixed_align_left_false_align_paren_true.vhd'), lExpected_align_left_false_align_paren_true)
+
+lExpected_align_left_false_align_paren_true_indent_step_2 = []
+lExpected_align_left_false_align_paren_true_indent_step_2.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_012_test_input.fixed_align_left_false_align_paren_true_indent_step_2.vhd'), lExpected_align_left_false_align_paren_true_indent_step_2)
 
 lExpected_align_left_true_indent_step_2 = []
 lExpected_align_left_true_indent_step_2.append('')
@@ -32,9 +40,11 @@ class test_constant_rule(unittest.TestCase):
         self.assertIsNone(eError)
         self.oFile.set_indent_map(dIndentMap)
 
-    def test_rule_012_align_left_false(self):
+    @unittest.skip('Until the fixes are done.')
+    def test_rule_012_align_left_false_align_paren_true(self):
         oRule = constant.rule_012()
         oRule.align_left = False
+        oRule.align_paren = True
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'constant')
         self.assertEqual(oRule.identifier, '012')
@@ -50,26 +60,45 @@ class test_constant_rule(unittest.TestCase):
         lExpected.extend(range(57, 73))
         lExpected.extend(range(79, 95))
         lExpected.extend(range(104, 109))
+        lExpected.extend(range(115, 126))
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
-    def test_fix_rule_012_align_left_false(self):
+    def test_fix_rule_012_align_left_false_align_paren_true(self):
         oRule = constant.rule_012()
         oRule.align_left = False
+        oRule.align_paren = True
 
         oRule.fix(self.oFile)
 
         lActual = self.oFile.get_lines()
 
-        self.assertEqual(lExpected_align_left_false, lActual)
+        self.assertEqual(lExpected_align_left_false_align_paren_true, lActual)
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
 
-    def test_rule_012_align_left_true(self):
+    def test_fix_rule_012_align_left_false_align_paren_true_indent_step_2(self):
+        oRule = constant.rule_012()
+        oRule.align_left = False
+        oRule.align_paren = True
+        oRule.indent_step = 2
+
+        oRule.fix(self.oFile)
+
+        lActual = self.oFile.get_lines()
+
+        self.assertEqual(lExpected_align_left_false_align_paren_true_indent_step_2, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+
+    @unittest.skip('Until the fixes are done.')
+    def test_rule_012_align_left_true_align_paren_false(self):
         oRule = constant.rule_012()
         oRule.align_left = True
+        oRule.align_paren = False
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'constant')
         self.assertEqual(oRule.identifier, '012')
@@ -84,14 +113,16 @@ class test_constant_rule(unittest.TestCase):
         lExpected.extend(range(57, 73))
         lExpected.extend(range(79, 95))
         lExpected.extend(range(104, 108))
+        lExpected.extend(range(115, 126))
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
-    def test_fix_rule_012_align_left_true(self):
+    def test_fix_rule_012_align_left_true_align_paren_false(self):
 #        self.maxDiff = None
         oRule = constant.rule_012()
         oRule.align_left = True
+        oRule.align_paren = False
 
         oRule.fix(self.oFile)
 
@@ -102,10 +133,51 @@ class test_constant_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
 
+    @unittest.skip('Until the fixes are done.')
+    def test_rule_012_align_left_true_align_paren_true(self):
+        oRule = constant.rule_012()
+        oRule.align_left = True
+        oRule.align_paren = True
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'constant')
+        self.assertEqual(oRule.identifier, '012')
+
+        lExpected = []
+        lExpected.append(11)
+        lExpected.append(14)
+        lExpected.append(17)
+        lExpected.extend(range(21, 25))
+        lExpected.extend(range(27, 39))
+        lExpected.extend(range(41, 55))
+        lExpected.extend(range(57, 73))
+        lExpected.extend(range(79, 95))
+        lExpected.extend(range(104, 108))
+        lExpected.extend(range(115, 126))
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+
+    @unittest.skip('Still messing with the algorithm')
+    def test_fix_rule_012_align_left_true_align_paren_true(self):
+#        self.maxDiff = None
+        oRule = constant.rule_012()
+        oRule.align_left = True
+        oRule.align_paren = True
+
+        oRule.fix(self.oFile)
+
+        lActual = self.oFile.get_lines()
+
+        self.assertEqual(lExpected_align_left_true_align_paren_true, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+
     def test_fix_rule_012_align_left_true_indent_step_2(self):
 #        self.maxDiff = None
         oRule = constant.rule_012()
         oRule.align_left = True
+        oRule.align_paren = False
         oRule.indent_step = 2
 
         oRule.fix(self.oFile)
