@@ -10,10 +10,10 @@ There are several options to these rules:
 +======================+=========+=========+=========================================================+
 | align_left           | boolean |  True   | True = New lines will be aligned left.                  |
 |                      |         |         | False = Align to left of assignment operator.           |
-+----------------------+-----------------------------------------------------------------------------+
++----------------------+---------+---------+---------------------------------------------------------+
 | align_paren          | boolean |  True   | True = Use open parenthesis for alignment.              |
 |                      |         |         | False = Do not use open parenthesis for alignment.      |
-+----------------------+-----------------------------------------------------------------------------+
++----------------------+---------+---------+---------------------------------------------------------+
 
 This is an example of how to configure the option.
 
