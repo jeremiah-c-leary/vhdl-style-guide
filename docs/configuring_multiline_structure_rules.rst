@@ -12,56 +12,56 @@ There are several options to these rules:
 +-----------------------+---------+---------+---------------------------------------------------------+
 | Method                |   Type  | Default | Description                                             |
 +=======================+=========+=========+=========================================================+
-| first_paren_new_line  | string  |  false  | First opening parenthesis on it's own line.             |
+| first_paren_new_line  | string  |   yes   | First opening parenthesis on it's own line.             |
 +-----------------------+---------+---------+---------------------------------------------------------+
-| last_paren_new_line   | string  |  false  | Last closing parenthesis on it's own line.              |
+| last_paren_new_line   | string  |   yes   | Last closing parenthesis on it's own line.              |
 +-----------------------+---------+---------+---------------------------------------------------------+
-| open_paren_new_line   | string  |  false  | Insert new line after open parenthesis.                 |
+| open_paren_new_line   | string  |   yes   | Insert new line after open parenthesis.                 |
 +-----------------------+---------+---------+---------------------------------------------------------+
-| close_paren_new_line  | string  |  false  | Insert new line before close parenthesis.               |
+| close_paren_new_line  | string  |   yes   | Insert new line before close parenthesis.               |
 +-----------------------+---------+---------+---------------------------------------------------------+
-| new_line_after_comma  | string  |  false  | Insert new line after the commas.                       |
+| new_line_after_comma  | string  |   yes   | Insert new line after the commas.                       |
 +-----------------------+---------+---------+---------------------------------------------------------+
-| assign_on_single_line | string  |  true   | Keep assignments on a single line.                      |
+| assign_on_single_line | string  |   yes   | Keep assignments on a single line.                      |
 +-----------------------+---------+---------+---------------------------------------------------------+
-| ignore_single_line    | string  |  true   | Do not apply rules if expression/condition is contained |
+| ignore_single_line    | string  |   yes   | Do not apply rules if expression/condition is contained |
 |                       |         |         | on a single line.                                       |
 +-----------------------+---------+---------+---------------------------------------------------------+
 
 The options can be combined to format the output.
 
-Each option except :code:`new_line_after_comma` and :code:`assign_on_single_line` allows one of three values:  true, false and ignore.
+Each option except :code:`new_line_after_comma` and :code:`assign_on_single_line` allows one of three values:  yes, no and ignore.
 
 +----------------------+---------------------------------------------------------+
 | Option Value         | Action                                                  |
 +======================+=========================================================+
-| true                 | Option will be enforced.                                |
+| yes                  | Option will be enforced.                                |
 +----------------------+---------------------------------------------------------+
-| false                | The inverse of the Option will be enforced.             |
+| no                   | The inverse of the Option will be enforced.             |
 +----------------------+---------------------------------------------------------+
 | ignore               | The option will be ignored.                             |
 +----------------------+---------------------------------------------------------+
 
-The :code:`new_line_after_comma` option allows one of four values:  true, false, ignore and ignore_positional.
+The :code:`new_line_after_comma` option allows one of four values:  yes, no, ignore and ignore_positional.
 
 +----------------------+--------------------------------------------------------------+
 | Option Value         | Action                                                       |
 +======================+==============================================================+
-| true                 | Insert new line after commas.                                |
+| yes                  | Insert new line after commas.                                |
 +----------------------+--------------------------------------------------------------+
-| false                | Remove new line after commas.                                |
+| no                   | Remove new line after commas.                                |
 +----------------------+--------------------------------------------------------------+
 | ignore               | Ignore commas.                                               |
 +----------------------+--------------------------------------------------------------+
 | ignore_positional    | Insert new line after commas unless elements are positional. |
 +----------------------+--------------------------------------------------------------+
 
-The :code:`assign_on_single_line` option allows one of two values:  true and ignore.
+The :code:`assign_on_single_line` option allows one of two values:  yes and ignore.
 
 +----------------------+--------------------------------------------------------------+
 | Option Value         | Action                                                       |
 +======================+==============================================================+
-| true                 | Force assignments to a single line.                          |
+| yes                  | Force assignments to a single line.                          |
 +----------------------+--------------------------------------------------------------+
 | ignore               | Allow assignments to span multiple lines.                    |
 +----------------------+--------------------------------------------------------------+
@@ -72,12 +72,12 @@ This is an example of how to configure these options.
 
    rule :
      constant_012:
-        first_paren_new_line : 'true'
-        last_paren_new_line : 'true'
-        open_paren_new_line : 'true'
-        close_paren_new_line : 'true'
+        first_paren_new_line : 'yes'
+        last_paren_new_line : 'yes'
+        open_paren_new_line : 'yes'
+        close_paren_new_line : 'yes'
         new_line_after_comma : 'ignore'
-        ignore_single_line : 'false'
+        ignore_single_line : 'no'
 
 .. NOTE:: All examples below are using the rule **constant_016** and the option ignore_single_line is False.
 
@@ -148,7 +148,7 @@ The following code would pass with this option:
     b => 1);
 
 Example: new_line_after_comma and first_paren_new_line and last_paren_new_line 
-#############################################################################################
+##############################################################################
 
 The following code would fail with this option:
 
@@ -219,8 +219,8 @@ The following code would pass with this option:
       c => 0, d => 1
     ));
 
-Example: all options True
-#########################
+Example: all options yes
+########################
 
 The following code would fail with this option:
 
@@ -244,8 +244,8 @@ The following code would pass with this option:
       )
     );
 
-Example: all options False
-##########################
+Example: all options no
+#######################
 
 The following code would pass with this option:
 

@@ -35,19 +35,19 @@ class rule_016(rule.Rule):
         self.lTokenPairs = lTokenPairs
         self.bExcludeLastToken = False
 
-        self.first_paren_new_line = 'false'
+        self.first_paren_new_line = 'yes'
         self.configuration.append('first_paren_new_line')
-        self.last_paren_new_line = 'false'
+        self.last_paren_new_line = 'yes'
         self.configuration.append('last_paren_new_line')
-        self.open_paren_new_line = 'false'
+        self.open_paren_new_line = 'yes'
         self.configuration.append('open_paren_new_line')
-        self.close_paren_new_line = 'false'
+        self.close_paren_new_line = 'yes'
         self.configuration.append('close_paren_new_line')
-        self.new_line_after_comma = 'false'
+        self.new_line_after_comma = 'yes'
         self.configuration.append('new_line_after_comma')
-        self.assign_on_single_line = 'true'
+        self.assign_on_single_line = 'yes'
         self.configuration.append('assign_on_single_line')
-        self.ignore_single_line = 'false'
+        self.ignore_single_line = 'yes'
         self.configuration.append('ignore_single_line')
 
     def _get_tokens_of_interest(self, oFile):
@@ -104,12 +104,12 @@ def _check_first_paren_new_line(self, oToi):
             bSearch = True
         if isinstance(oToken, parser.open_parenthesis) and bSearch:
             if utils.find_carriage_return(lTokens[iStart:iToken]) is None:
-                if self.first_paren_new_line == 'true':
+                if self.first_paren_new_line == 'yes':
                     sSolution = 'Move parenthesis after assignment to the next line.'
                     oViolation = _create_violation(oToi, iLine, iToken - 1, iToken, 'first_paren_new_line', 'insert', sSolution)
                     self.add_violation(oViolation)
             else:
-                if self.first_paren_new_line == 'false':
+                if self.first_paren_new_line == 'no':
                     sSolution = 'Move parenthesis to same line as assignment operator.'
                     oViolation = _create_violation(oToi, iLine, iStart, iToken, 'first_paren_new_line', 'remove', sSolution)
                     self.add_violation(oViolation)
@@ -136,11 +136,11 @@ def _check_last_paren_new_line(self, oToi):
 
             lTokens.reverse()            
 
-            if self.last_paren_new_line == 'true' and not bReturnFound:
+            if self.last_paren_new_line == 'yes' and not bReturnFound:
                 sSolution = 'Move closing parenthesis to the next line.'
                 oViolation = _create_violation(oToi, iLine, iEnd - 1, iEnd, 'last_paren_new_line', 'insert', sSolution)
                 self.add_violation(oViolation)
-            elif self.last_paren_new_line == 'false' and bReturnFound:
+            elif self.last_paren_new_line == 'no' and bReturnFound:
                 sSolution = 'Move closing parenthesis to previous line.'
                 iStart = utils.find_previous_non_whitespace_token(iEnd - 1, lTokens)
                 oViolation = _create_violation(oToi, iLine, iStart, iEnd, 'last_paren_new_line', 'remove', sSolution)
@@ -185,14 +185,14 @@ def _check_open_paren_new_line(self, oToi):
         if isinstance(oToken, parser.open_parenthesis):
             bFirstParenFound = True
             if utils.is_token_at_end_of_line(iToken, lTokens):
-                if self.open_paren_new_line == 'false':
+                if self.open_paren_new_line == 'no':
                     iEnd = utils.find_next_non_whitespace_token(iToken + 1, lTokens)
                     iErrorLine = rule_utils.number_of_carriage_returns(lTokens[:iToken]) + iLine
                     sSolution = 'Remove carriage return after open parenthesis.'
                     oViolation = _create_violation(oToi, iErrorLine, iToken, iEnd, 'open_paren_new_line', 'remove', sSolution)
                     self.add_violation(oViolation)
             else:
-                if self.open_paren_new_line == 'true':
+                if self.open_paren_new_line == 'yes':
                     sSolution = 'Add carriage return after open parenthesis.'
                     iErrorLine = rule_utils.number_of_carriage_returns(lTokens[:iToken]) + iLine
                     oViolation = _create_violation(oToi, iErrorLine, iToken, iToken, 'open_paren_new_line', 'insert', sSolution)
@@ -241,14 +241,14 @@ def _check_close_paren_new_line(self, oToi):
 
         if isinstance(oToken, parser.close_parenthesis):
             if utils.does_token_start_line(iToken, lTokens):
-                if self.close_paren_new_line == 'false':
+                if self.close_paren_new_line == 'no':
                     iStart = utils.find_previous_non_whitespace_token(iToken - 1, lTokens)
                     iErrorLine = rule_utils.number_of_carriage_returns(lTokens[:iToken]) + iLine
                     sSolution = 'Move closing parenthesis to previous line.'
                     oViolation = _create_violation(oToi, iErrorLine, iStart, iToken, 'close_paren_new_line', 'remove', sSolution)
                     self.add_violation(oViolation)
             else:
-                if self.close_paren_new_line == 'true':
+                if self.close_paren_new_line == 'yes':
                     iStart = iToken - 1
                     iErrorLine = rule_utils.number_of_carriage_returns(lTokens[:iToken]) + iLine
                     sSolution = 'Move closing parenthesis to the next line.'
@@ -306,14 +306,14 @@ def _check_new_line_after_comma(self, oToi):
                 continue
 
             if utils.is_token_at_end_of_line(iToken, lTokens):
-                if self.new_line_after_comma == 'false':
+                if self.new_line_after_comma == 'no':
                     iEnd = utils.find_next_non_whitespace_token(iToken + 1, lTokens)
                     iErrorLine = rule_utils.number_of_carriage_returns(lTokens[:iToken]) + iLine
                     sSolution = 'Remove carriage return after comma.'
                     oViolation = _create_violation(oToi, iErrorLine, iToken, iEnd, 'new_line_after_comma', 'remove', sSolution)
                     self.add_violation(oViolation)
             else:
-                if self.new_line_after_comma == 'true' or self.new_line_after_comma == 'ignore_positional':
+                if self.new_line_after_comma == 'yes' or self.new_line_after_comma == 'ignore_positional':
                     iErrorLine = rule_utils.number_of_carriage_returns(lTokens[:iToken]) + iLine
                     sSolution = 'Add carriage return after comma.'
                     oViolation = _create_violation(oToi, iErrorLine, iToken, iToken + 1, 'new_line_after_comma', 'insert', sSolution)
