@@ -45,6 +45,7 @@ class test_constant_rule(unittest.TestCase):
         oRule = constant.rule_012()
         oRule.align_left = False
         oRule.align_paren = True
+        oRule.indentSize = 1
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'constant')
         self.assertEqual(oRule.identifier, '012')
@@ -69,6 +70,7 @@ class test_constant_rule(unittest.TestCase):
         oRule = constant.rule_012()
         oRule.align_left = False
         oRule.align_paren = True
+        oRule.indentSize = 1
 
         oRule.fix(self.oFile)
 
@@ -83,7 +85,7 @@ class test_constant_rule(unittest.TestCase):
         oRule = constant.rule_012()
         oRule.align_left = False
         oRule.align_paren = True
-        oRule.indent_step = 2
+        oRule.indentSize = 2
 
         oRule.fix(self.oFile)
 
@@ -99,6 +101,7 @@ class test_constant_rule(unittest.TestCase):
         oRule = constant.rule_012()
         oRule.align_left = True
         oRule.align_paren = False
+        oRule.indentSize = 1
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'constant')
         self.assertEqual(oRule.identifier, '012')
@@ -123,6 +126,7 @@ class test_constant_rule(unittest.TestCase):
         oRule = constant.rule_012()
         oRule.align_left = True
         oRule.align_paren = False
+        oRule.indentSize = 1
 
         oRule.fix(self.oFile)
 
@@ -138,6 +142,7 @@ class test_constant_rule(unittest.TestCase):
         oRule = constant.rule_012()
         oRule.align_left = True
         oRule.align_paren = True
+        oRule.indentSize = 1
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'constant')
         self.assertEqual(oRule.identifier, '012')
@@ -162,6 +167,7 @@ class test_constant_rule(unittest.TestCase):
         oRule = constant.rule_012()
         oRule.align_left = True
         oRule.align_paren = True
+        oRule.indentSize = 1
 
         oRule.fix(self.oFile)
 
@@ -177,7 +183,7 @@ class test_constant_rule(unittest.TestCase):
         oRule = constant.rule_012()
         oRule.align_left = True
         oRule.align_paren = False
-        oRule.indent_step = 2
+        oRule.indentSize = 2
 
         oRule.fix(self.oFile)
 

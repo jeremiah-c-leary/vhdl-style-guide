@@ -34,8 +34,6 @@ class rule_012(rule.Rule):
         self.lTokenPairs = lTokenPairs
         self.align_left = False
         self.configuration.append('align_left')
-        self.indent_step = 1
-        self.configuration.append('indent_step')
         self.align_paren = True
         self.configuration.append('align_paren')
 
@@ -53,14 +51,15 @@ class rule_012(rule.Rule):
             iLine, lTokens = utils.get_toi_parameters(oToi)
 #            print('='*5 + str(iLine) + '='*70)
 
-            iFirstLine = iLine
-            
-            iFirstColumn, iNextColumn, iLastColumn = _find_first_column(oFile, oToi, self.align_left, self.indentSize, self.indent_step)
+            iFirstLine, iFirstLineIndent = _get_first_line_info(iLine, oFile)
+
+            iFirstColumn, iNextColumn, iLastColumn = _find_first_column(oFile, oToi, self.align_left, iFirstLineIndent, self.indentSize)
             iAssignColumn = oFile.get_column_of_token_index(oToi.get_start_index())
             iColumn = iAssignColumn
 #            iIndent = 0
             dActualIndent = {}
-            dActualIndent[iLine] = oFile.get_indent_of_line_at_index(oToi.get_start_index()) * self.indentSize
+
+            dActualIndent[iLine] = iFirstLineIndent
             lParens = []
             dIndex = {}
 
@@ -103,11 +102,11 @@ class rule_012(rule.Rule):
                 continue
 
             if not self.align_paren and self.align_left:
-                dExpectedIndent = _analyze_align_paren_false(iFirstLine, iLastLine, lParens, self.indent_step, dActualIndent, bStartsWithParen)
+                dExpectedIndent = _analyze_align_paren_false(iFirstLine, iLastLine, lParens, self.indentSize, dActualIndent, bStartsWithParen)
             if self.align_paren and not self.align_left:
-                dExpectedIndent = _analyze_align_paren_true(iFirstLine, iLastLine, lParens, dActualIndent, self.indent_step, bStartsWithParen, iAssignColumn)
+                dExpectedIndent = _analyze_align_paren_true(iFirstLine, iLastLine, lParens, dActualIndent, self.indentSize, bStartsWithParen, iAssignColumn)
             if self.align_paren and self.align_left:
-                dExpectedIndent = _analyze_align_paren_true_align_left_true(iFirstLine, iLastLine, lParens, dActualIndent, self.indent_step, bStartsWithParen, iAssignColumn)
+                dExpectedIndent = _analyze_align_paren_true_align_left_true(iFirstLine, iLastLine, lParens, dActualIndent, self.indentSize, bStartsWithParen, iAssignColumn)
 
 #            print(f'Actual = {dActualIndent}')
 #            print(f'Expect = {dExpectedIndent}')
@@ -415,3 +414,10 @@ def _starts_with_paren(lTokens):
     if isinstance(lTokens[iToken], parser.open_parenthesis):
         return True
     return False
+
+
+def _get_first_line_info(iLine, oFile):
+    lTemp = oFile.get_tokens_from_line(iLine)
+    iIndent = len(lTemp.get_tokens()[0].get_value())
+    return iLine, iIndent
+    
