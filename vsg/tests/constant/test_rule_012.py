@@ -40,7 +40,6 @@ class test_constant_rule(unittest.TestCase):
         self.assertIsNone(eError)
         self.oFile.set_indent_map(dIndentMap)
 
-    @unittest.skip('Until the fixes are done.')
     def test_rule_012_align_left_false_align_paren_true(self):
         oRule = constant.rule_012()
         oRule.align_left = False
@@ -54,7 +53,6 @@ class test_constant_rule(unittest.TestCase):
         lExpected.append(11)
         lExpected.append(14)
         lExpected.append(17)
-        lExpected.append(18)
         lExpected.extend(range(21, 25))
         lExpected.extend(range(27, 39))
         lExpected.extend(range(41, 55))
@@ -62,6 +60,11 @@ class test_constant_rule(unittest.TestCase):
         lExpected.extend(range(79, 95))
         lExpected.extend(range(104, 109))
         lExpected.extend(range(115, 126))
+        lExpected.extend(range(128, 134))
+        lExpected.extend(range(136, 139))
+        lExpected.extend(range(141, 153))
+        lExpected.append(161)
+        lExpected.append(164)
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -96,7 +99,6 @@ class test_constant_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
 
-    @unittest.skip('Until the fixes are done.')
     def test_rule_012_align_left_true_align_paren_false(self):
         oRule = constant.rule_012()
         oRule.align_left = True
@@ -117,6 +119,11 @@ class test_constant_rule(unittest.TestCase):
         lExpected.extend(range(79, 95))
         lExpected.extend(range(104, 108))
         lExpected.extend(range(115, 126))
+        lExpected.extend(range(128, 134))
+        lExpected.extend(range(136, 139))
+        lExpected.extend(range(141, 153))
+        lExpected.append(161)
+        lExpected.append(164)
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -137,7 +144,6 @@ class test_constant_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
 
-    @unittest.skip('Until the fixes are done.')
     def test_rule_012_align_left_true_align_paren_true(self):
         oRule = constant.rule_012()
         oRule.align_left = True
@@ -158,6 +164,11 @@ class test_constant_rule(unittest.TestCase):
         lExpected.extend(range(79, 95))
         lExpected.extend(range(104, 108))
         lExpected.extend(range(115, 126))
+        lExpected.extend(range(128, 134))
+        lExpected.extend(range(136, 139))
+        lExpected.extend(range(141, 153))
+        lExpected.append(161)
+        lExpected.append(164)
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))

@@ -8,7 +8,7 @@ from vsg.vhdlFile import utils
 
 lTokenPairs = []
 lTokenPairs.append([token.constant_declaration.assignment_operator, token.constant_declaration.semicolon])
-#lTokenPairs.append([token.constant_declaration.constant_keyword, token.constant_declaration.semicolon])
+
 
 class rule_012(rule.Rule):
     '''
@@ -56,7 +56,7 @@ class rule_012(rule.Rule):
             iFirstColumn, iNextColumn, iLastColumn = _find_first_column(oFile, oToi, self.align_left, iFirstLineIndent, self.indentSize)
             iAssignColumn = oFile.get_column_of_token_index(oToi.get_start_index())
             iColumn = iAssignColumn
-#            iIndent = 0
+
             dActualIndent = {}
 
             dActualIndent[iLine] = iFirstLineIndent
@@ -74,7 +74,6 @@ class rule_012(rule.Rule):
 
                 if isinstance(oToken, parser.carriage_return):
                     iColumn = 0
-#                    iIndent = _set_indent(iToken, lTokens)
                     dActualIndent[iLine] = _set_indent(iToken, lTokens)
                     dIndex[iLine] = iToken + 1
                     continue
@@ -112,7 +111,6 @@ class rule_012(rule.Rule):
 #            print(f'Expect = {dExpectedIndent}')
 #            print(f'Index  = {dIndex}')
 
-#            for iLine in range(iFirstLine, lParens[-1]['line'] + 1):
             for iLine in range(iFirstLine, iLastLine + 1):
                 if dActualIndent[iLine] == dExpectedIndent[iLine]:
                     continue
@@ -265,7 +263,6 @@ def _analyze_align_paren_true(iFirstLine, iLastLine, lParens, dActualIndent, iIn
        iIndent = iAssignColumn + 2 + 1
        iColumn = iIndent
        lColumn = [iIndent]
-#        dActualIndent[iFirstLine] = iIndent
 
 #    print('*'*80)
 #    print(lParens)
@@ -299,12 +296,9 @@ def _analyze_align_paren_true(iFirstLine, iLastLine, lParens, dActualIndent, iIn
                     dExpectedIndent[iLine] = dExpectedIndent[iLine] - iIndentStep
 
 #        print(f'iParens = {iParens}')
-#        if iParens == 0 and not bStartsWithParen:
-#            dExpectedIndent[iLine] = dExpectedIndent[iLine] - iIndentStep
 
 
         if len(lTemp) == 0:
-#            dExpectedIndent[iLine + 1] = iColumn
             if bStartsWithParen:
                 dExpectedIndent[iLine + 1] = lColumn[-1]
             else:
@@ -332,7 +326,6 @@ def _analyze_align_paren_true_align_left_true(iFirstLine, iLastLine, lParens, dA
        iIndent = iAssignColumn + 2 + 1
        iColumn = iIndent
        lColumn = [iIndent]
-#        dActualIndent[iFirstLine] = iIndent
 
 #    print('*'*80)
 #    print(lParens)
@@ -366,12 +359,8 @@ def _analyze_align_paren_true_align_left_true(iFirstLine, iLastLine, lParens, dA
                     dExpectedIndent[iLine] = dExpectedIndent[iLine] - iIndentStep
 
 #        print(f'iParens = {iParens}')
-#        if iParens == 0 and not bStartsWithParen:
-#            dExpectedIndent[iLine] = dExpectedIndent[iLine] - iIndentStep
-
 
         if len(lTemp) == 0:
-#            dExpectedIndent[iLine + 1] = iColumn
             if bStartsWithParen:
                 dExpectedIndent[iLine + 1] = lColumn[-1]
             else:
@@ -394,18 +383,6 @@ def _analyze_align_paren_true_align_left_true(iFirstLine, iLastLine, lParens, dA
 #        print(f'{iLine} | {lColumn} | {dExpectedIndent}')
 
     return dExpectedIndent
-
-
-def _gather_paren_pairs(lParens):
-    lPairs = []
-    lOpen = []
-    for dParen in lParens:
-        if dParen['type'] == 'open':
-            lOpen.append(dParen)
-        else:
-            lPairs.append([lOpen.pop(), dParen])
-#    print(lPairs)
-    return lPairs
 
 
 def _starts_with_paren(lTokens):
