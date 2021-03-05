@@ -41,36 +41,28 @@ There are several options to these rules:
 +---------------------------+---------+---------+---------------------------------------------------------+
 | Option                    |   Type  | Default | Description                                             |
 +===========================+=========+=========+=========================================================+
-| first_expression_new_line | boolean |  False  | First opening parenthesis on it's own line.             |
+| indent_condition_at_when  | string  |  'yes'  | Indent multiline condition at when keyword.             |
 +---------------------------+---------+---------+---------------------------------------------------------+
-| indent_condition_at_when  | boolean |  True   | Indent multiline condition at when keyword.             |
+| align_when_keywords       | string  |  'no'   | each when keyword will be aligned                       |
 +---------------------------+---------+---------+---------------------------------------------------------+
-| align_when_keywords       | boolean |  Ignore | each when keyword will be aligned                       |
+| align_else_keywords       | string  |  'no'   | each else keyword will be aligned                       |
 +---------------------------+---------+---------+---------------------------------------------------------+
-| align_else_keywords       | boolean |  Ignore | each else keyword will be aligned                       |
+| align_left                | string  |  'no'   | Align multilines to the left                            |
 +---------------------------+---------+---------+---------------------------------------------------------+
-| align_left                | boolean |  False  | Align multilines to the left                            |
-+---------------------------+---------+---------+---------------------------------------------------------+
-| open_paren_new_line       | boolean |  Ignore | Insert new line after open parenthesis.                 |
-+---------------------------+---------+---------+---------------------------------------------------------+
-| close_paren_new_line      | boolean |  Ignore | Insert new line before close parenthesis.               |
-+---------------------------+---------+---------+---------------------------------------------------------+
-| ignore_single_line        | boolean |  True   | Do not apply rules if expression/condition is contained |
+| ignore_single_line        | string  |  'yes'  | Do not apply rules if expression/condition is contained |
 |                           |         |         | on a single line.                                       |
 +---------------------------+-----------------------------------------------------------------------------+
 
 The options can be combined to format the conditional expression or conditional waveform.
 
-Each option allows one of three values:  True, False and Ignore.
+Each option allows one two values:  'yes' and 'no'.
 
 +----------------------+---------------------------------------------------------+
 | Option Value         | Action                                                  |
 +======================+=========================================================+
-| True                 | Option will be enforced.                                |
+| 'yes'                | Option will be enforced.                                |
 +----------------------+---------------------------------------------------------+
-| False                | The inverse of the Option will be enforced.             |
-+----------------------+---------------------------------------------------------+
-| Ignore               | The option will be ignored.                             |
+| 'no'                 | The inverse of the Option will be enforced.             |
 +----------------------+---------------------------------------------------------+
 
 This is an example of how to configure these options.
@@ -79,38 +71,13 @@ This is an example of how to configure these options.
 
    rule :
      constant_009:
-        first_expression_new_line : False
-        wrap_condition_at_when : True
-        align_when_keywords : 'Ignore'
-        align_else_keywords : 'Ignore'
-        align_left : False
-        open_paren_new_line : 'Ignore'
-        close_paren_new_line : 'Ignore'
-        ignore_single_line : True
+        wrap_condition_at_when : 'yes'
+        align_when_keywords : 'yes'
+        align_else_keywords : 'yes'
+        align_left : 'no'
+        ignore_single_line : 'yes'
 
 .. NOTE:: All examples below are using the rule **concurrent_009** and the option ignore_single_line is False.
-
-Example: first_expression_new_line
-##################################
-
-The following code would fail with this option:
-
-.. code-Block:: vhdl
-
-     output <= '1' when input = "00" else
-               sig_a or sig_b when input = "01" else
-               sig_c and sig_d when input = "10" else
-               '0';
-
-The following code would pass with this option:
-
-.. code-block:: vhdl
-
-     output <=
-               '1' when input = "00" else
-               sig_a or sig_b when input = "01" else
-               sig_c and sig_d when input = "10" else
-               '0';
 
 Example: indent_condition_at_when
 #################################
@@ -181,28 +148,7 @@ The following code would pass with this option:
                sig_c          when input = "10"                      else
                '0';
 
-Example: align_left True
-########################
-
-The following code would fail with this option:
-
-.. code-Block:: vhdl
-
-     output <= '1' when input = "0000" else
-               sig_a or sig_b when input = "0100" and input = "1100" else
-               sig_c when input = "10" else
-               '0';
-
-The following code would pass with this option:
-
-.. code-block:: vhdl
-
-     output <= '1' when input = "0000" else
-       sig_a or sig_b when input = "0100" and input = "1100" else
-       sig_c when input = "10" else
-       '0';
-
-Example: align_left False
+Example: align_left 'yes'
 #########################
 
 The following code would fail with this option:
@@ -210,6 +156,27 @@ The following code would fail with this option:
 .. code-Block:: vhdl
 
      output <= '1' when input = "0000" else
+               sig_a or sig_b when input = "0100" and input = "1100" else
+               sig_c when input = "10" else
+               '0';
+
+The following code would pass with this option:
+
+.. code-block:: vhdl
+
+     output <= '1' when input = "0000" else
+       sig_a or sig_b when input = "0100" and input = "1100" else
+       sig_c when input = "10" else
+       '0';
+
+Example: align_left 'no'
+########################
+
+The following code would fail with this option:
+
+.. code-Block:: vhdl
+
+     output <= '1' when input = "0000" else
        sig_a or sig_b when input = "0100" and input = "1100" else
        sig_c when input = "10" else
        '0';
@@ -222,26 +189,3 @@ The following code would pass with this option:
                sig_a or sig_b when input = "0100" and input = "1100" else
                sig_c when input = "10" else
                '0';
-
-Example: first_expression_new_line and align_when_keywords and align_else_keywords and align_left
-#################################################################################################
-
-The following code would fail with this option:
-
-.. code-Block:: vhdl
-
-     output <= '1' when input = "0000" else
-               sig_a or sig_b when input = "0100" and input = "1100" else
-               sig_c when input = "10" else
-               '0';
-
-The following code would pass with this option:
-
-.. code-block:: vhdl
-
-     output <=
-       '1'            when input = "0000"                    else
-       sig_a or sig_b when input = "0100" and input = "1100" else
-       sig_c          when input = "10"                      else
-       '0';
-
