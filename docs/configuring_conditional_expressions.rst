@@ -41,13 +41,15 @@ There are several options to these rules:
 +---------------------------+---------+---------+---------------------------------------------------------+
 | Option                    |   Type  | Default | Description                                             |
 +===========================+=========+=========+=========================================================+
-| indent_condition_at_when  | string  |  'yes'  | Indent multiline condition at when keyword.             |
+| wrap_condition_at_when    | string  |  'yes'  | Indent multiline condition at when keyword.             |
 +---------------------------+---------+---------+---------------------------------------------------------+
 | align_when_keywords       | string  |  'no'   | each when keyword will be aligned                       |
 +---------------------------+---------+---------+---------------------------------------------------------+
 | align_else_keywords       | string  |  'no'   | each else keyword will be aligned                       |
 +---------------------------+---------+---------+---------------------------------------------------------+
 | align_left                | string  |  'no'   | Align multilines to the left                            |
++---------------------------+---------+---------+---------------------------------------------------------+
+| align_paren               | string  |  'yes'  | Indent lines based on parenthesis                       |
 +---------------------------+---------+---------+---------------------------------------------------------+
 | ignore_single_line        | string  |  'yes'  | Do not apply rules if expression/condition is contained |
 |                           |         |         | on a single line.                                       |
