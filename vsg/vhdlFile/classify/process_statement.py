@@ -19,12 +19,12 @@ def detect(iToken, lObjects):
             end [ postponed ] process [ *process*_label ] ;
     '''
     if utils.find_in_next_n_tokens('process', 4, iToken, lObjects):
-        return classify(iToken, lObjects)
+        if not utils.find_in_next_n_tokens(';', 3, iToken, lObjects):
+            return classify(iToken, lObjects)
     return iToken
 
 
 def classify(iToken, lObjects):
-
     iCurrent = classify_opening_declaration(iToken, lObjects)
 
     iCurrent = process_declarative_part.detect(iCurrent, lObjects)

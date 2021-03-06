@@ -89,7 +89,11 @@ def get_indexes_of_tokens_between(lStartToken, lEndTokens, oTokenMap):
         try:
             iNextStart = lStartIndexes[iStartIndex + 1]
         except IndexError:
-            iNextStart = lEndIndexes[-1] + 1
+            try:
+                iNextStart = lEndIndexes[-1] + 1
+            except IndexError:
+                lReturn.append(iStartIndex)
+                return lReturn
         iEndIndex = iStart
         for iEnd in lEndIndexes:
             if iEnd > iStart and iEnd < iNextStart:

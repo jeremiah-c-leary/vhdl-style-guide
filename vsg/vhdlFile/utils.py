@@ -461,6 +461,15 @@ def remove_carriage_returns_from_token_list(lTokens):
     return lMyTokens
 
 
+def remove_comments_from_token_list(lTokens):
+    lMyTokens = []
+    for oToken in lTokens:
+        if isinstance(oToken, parser.comment):
+            continue
+        lMyTokens.append(oToken)
+    return lMyTokens
+
+
 def remove_consecutive_whitespace_tokens(lTokens):
     lMyTokens = []
     for iToken, oToken in enumerate(lTokens):
@@ -532,6 +541,12 @@ def token_is_whitespace_or_comment(oToken):
 def increment_line_number(iLine, oToken):
     if isinstance(oToken, parser.carriage_return):
         return iLine + 1
+    return iLine
+
+
+def decrement_line_number(iLine, oToken):
+    if isinstance(oToken, parser.carriage_return):
+        return iLine - 1
     return iLine
 
 
@@ -632,3 +647,16 @@ def read_vhdlfile(sFileName):
         return lLines, None
     except OSError as e:
         return [], e
+
+
+def is_token_at_end_of_line(iToken, lTokens):
+    iMyToken = iToken + 1
+    if are_next_consecutive_token_types([parser.carriage_return], iMyToken, lTokens):
+        return True
+    if are_next_consecutive_token_types([parser.whitespace, parser.carriage_return], iMyToken, lTokens):
+        return True
+    if are_next_consecutive_token_types([parser.comment, parser.carriage_return], iMyToken, lTokens):
+        return True
+    if are_next_consecutive_token_types([parser.whitespace, parser.comment, parser.carriage_return], iMyToken, lTokens):
+        return True
+    return False

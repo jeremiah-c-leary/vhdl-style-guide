@@ -125,7 +125,7 @@ Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous
 package_body_201
 ^^^^^^^^^^^^^^^^
 
-This rule checks for a blank line below the **is** keyword.
+This rule checks for a blank line below the **package** keyword.
 
 Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
 

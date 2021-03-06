@@ -266,6 +266,12 @@ class vhdlFile():
     def get_tokens_between_indexes(self, iStartIndex, iEndIndex):
         return extract.get_tokens_between_indexes(iStartIndex, iEndIndex, self.lAllObjects)
 
+    def get_indent_of_line_at_index(self, iIndex):
+        for iToken in range(iIndex, 0, -1):
+            oToken = self.lAllObjects[iToken]
+            if oToken.get_indent() is not None:
+                return oToken.get_indent()
+        return 0
 
 def split_on_carriage_return(lObjects):
     lReturn = []

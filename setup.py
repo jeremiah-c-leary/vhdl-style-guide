@@ -1,18 +1,48 @@
 from setuptools import setup
 from setuptools import find_packages
 
+### Implement Version information
+import subprocess
+import os
 
 from vsg import version
 
+sVersionInfoFileName = os.path.join('vsg', 'version_info.py')
+
+if not os.path.exists(sVersionInfoFileName):
+
+    sVersion, sShaNum = version.get_version_info(version.sVersion, None)
+
+    lVersionInfo = []
+    lVersionInfo.append('sVersion = \'' + sVersion + "'")
+    lVersionInfo.append('sShaNum = \'' + sShaNum + "'")
+
+    with open(sVersionInfoFileName, 'w') as oFile:
+        for sLine in lVersionInfo:
+            oFile.write(sLine + '\n')
+    oFile.close()
+
+    sInstallVersion = sVersion
+    bRemoveVersionFile = True
+
+else:
+
+    from vsg import version_info
+
+    try:
+        sInstallVersion = version_info.sVersion
+    except AttributeError:
+        sInstallVersion = version.sVersion
+
+    bRemoveVersionFile = False
 
 def readme():
     with open('README.rst') as f:
         return f.read()
 
-
 setup(
   name='vsg',
-  version=str(version.sVersion),
+  version=str(sInstallVersion),
   description='VHDL Style Guide',
   long_description=readme(),
   classifiers=[
@@ -47,3 +77,7 @@ setup(
     ]
   }
 )
+
+### Cleanup version information
+if bRemoveVersionFile:
+    os.remove(sVersionInfoFileName)

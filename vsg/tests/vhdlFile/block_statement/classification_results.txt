@@ -155,11 +155,30 @@
 38 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-39 | end architecture RTL;
+39 |   b1  : block begin end block;
+<class 'vsg.token.block_statement.block_label'>
+<class 'vsg.token.block_statement.label_colon'>
+<class 'vsg.token.block_statement.block_keyword'>
+<class 'vsg.token.block_statement.begin_keyword'>
+<class 'vsg.token.block_statement.end_keyword'>
+<class 'vsg.token.block_statement.end_block_keyword'>
+<class 'vsg.token.block_statement.semicolon'>
+--------------------------------------------------------------------------------
+40 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+41 |   process begin end process;
+<class 'vsg.token.process_statement.process_keyword'>
+<class 'vsg.token.process_statement.begin_keyword'>
+<class 'vsg.token.process_statement.end_keyword'>
+<class 'vsg.token.process_statement.end_process_keyword'>
+<class 'vsg.token.process_statement.semicolon'>
+--------------------------------------------------------------------------------
+42 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+43 | end architecture RTL;
 <class 'vsg.token.architecture_body.end_keyword'>
 <class 'vsg.token.architecture_body.end_architecture_keyword'>
 <class 'vsg.token.architecture_body.architecture_simple_name'>
 <class 'vsg.token.architecture_body.semicolon'>
---------------------------------------------------------------------------------
-40 |
-<class 'vsg.parser.blank_line'>

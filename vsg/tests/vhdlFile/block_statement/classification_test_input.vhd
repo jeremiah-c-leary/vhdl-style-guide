@@ -36,5 +36,8 @@ begin
 
   end block BLK;
 
-end architecture RTL;
+  b1  : block begin end block;
 
+  process begin end process;
+
+end architecture RTL;

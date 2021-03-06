@@ -17,7 +17,7 @@ class Rule():
         self.subphase = 1
         self.disable = False
         self.fixable = True
-        self.severity = severity.set_error_severity
+        self.severity = severity.error('Error')
         self.debug = False
         self.dFix = {}
         self.dFix['violations'] = {}
@@ -121,7 +121,6 @@ class Rule():
         '''
         if not lineNumber.has_code_tag(self.unique_id):
             self.violations.append(lineNumber)
-            self.severity.count += 1
 
     def analyze(self, oFile):
         '''
@@ -200,3 +199,30 @@ class Rule():
         Default if rule is not fixable
         '''
         return
+
+    def _sort_violations(self):
+        '''
+        Sorts self.violations based on the start index of each violation.
+        Sort order is increasing start index.
+        '''
+#        print('-->sort_violations')
+#        print(f'Num_violations = {len(self.violations)}')
+#        print(self.violations)
+        if not self.violations:
+            return
+        lNewViolations = []
+        lNewViolations.append(self.violations[0])
+        for oViolation in self.violations[1:]:
+            iStartIndex = oViolation.get_start_index()
+            for iInsertIndex, oNewViolation in enumerate(lNewViolations):
+                iNewIndex = oNewViolation.get_start_index()
+                if iStartIndex < iNewIndex:
+                    lNewViolations.insert(iInsertIndex, oViolation)
+                    break
+            else:
+                lNewViolations.append(oViolation)
+        self.violations = lNewViolations       
+#        print(self.violations)
+#        print(f'Num_violations = {len(self.violations)}')
+#        for oViolation in self.violations:
+#            print(oViolation.get_line_number())

@@ -148,7 +148,7 @@ class testVsg(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_invalid_local_rule_directory(self):
-        lExpected = ['ERROR: specified local rules directory vsg/tests/vsg/invalid_local_rule_directory could not be found.', '']
+        lExpected = ['ERROR: encountered FileNotFoundError, No such file or directory vsg/tests/vsg/invalid_local_rule_directory when trying to open local rules file.', '']
 
         try:
             lActual = subprocess.check_output(['bin/vsg', '-f', 'vsg/tests/vsg/entity_architecture.vhd', '-of', 'syntastic', '-lr', 'vsg/tests/vsg/invalid_local_rule_directory'])
@@ -286,9 +286,10 @@ class testVsg(unittest.TestCase):
         lActual = str(lActual.decode('utf-8')).split('\n')
         self.assertEqual(lActual, lExpected)
 
+    @unittest.skip('Version is performing git commands and is impossible to predict the output.')
     def test_version_command_line_argument(self):
         lExpected = []
-        lExpected.append('VHDL Style Guide (VSG) version: ' + version.sVersion)
+        lExpected.append('VHDL Style Guide (VSG) version: ' + str(version.sVersion))
 
         lActual = subprocess.check_output(['bin/vsg','--version'])
         lActual = str(lActual.decode('utf-8')).split('\n')
@@ -307,9 +308,11 @@ class testVsg(unittest.TestCase):
 
         self.assertEqual(sActual, sExpected)
 
+    @unittest.skipIf('SUDO_UID' in os.environ.keys() or os.geteuid() == 0, "We are root. Root always has permissions so test will fail.")
     def test_no_permission_configuration_file(self):
         sNoPermissionFile = 'no_permission.yml'
         pathlib.Path(sNoPermissionFile).touch(mode=0o222, exist_ok=True)
+
         sExpected = f'ERROR: encountered PermissionError, Permission denied while opening configuration file: {sNoPermissionFile}\n'
 
         try:
@@ -418,6 +421,79 @@ class testVsg(unittest.TestCase):
         self.assertEqual(utils.replace_total_count_summary(lActualStdErr), lExpectedStdErr)
         self.assertEqual(utils.replace_total_count_summary(lActualStdOut), lExpectedStdOut)
 
+    def test_summary_output_format_multiple_mixed_jobs_1(self):
+        lExpectedStdErr = [
+                'File: vsg/tests/vsg/entity_architecture.vhd ERROR (200 rules checked) [Error: 11] [Warning: 0]',
+                'File: vsg/tests/vsg/entity1.vhd ERROR (200 rules checked) [Error: 1] [Warning: 0]',
+                'File: vsg/tests/vsg/entity2.vhd ERROR (200 rules checked) [Error: 1] [Warning: 0]',
+                '',
+                ]
+        lExpectedStdOut = ['File: vsg/tests/vsg/entity_architecture.fixed.vhd OK (200 rules checked) [Error: 0] [Warning: 0]', '']
+
+        try:
+            subprocess.check_output(
+                    [
+                        'bin/vsg',
+                        '-f',
+                        'vsg/tests/vsg/entity_architecture.vhd',
+                        'vsg/tests/vsg/entity_architecture.fixed.vhd',
+                        'vsg/tests/vsg/entity1.vhd',
+                        'vsg/tests/vsg/entity2.vhd',
+                        '--output_format',
+                        'summary',
+                        '--jobs=1',
+                    ],
+                    stderr=subprocess.PIPE
+                    )
+            iExitStatus = 0
+        except subprocess.CalledProcessError as e:
+            lActualStdOut = str(e.output.decode('utf-8')).split('\n')
+            lActualStdErr = str(e.stderr.decode('utf-8')).split('\n')
+            iExitStatus = e.returncode
+
+        self.assertEqual(iExitStatus, 1)
+
+        self.assertEqual(utils.replace_total_count_summary(lActualStdErr), lExpectedStdErr)
+        self.assertEqual(utils.replace_total_count_summary(lActualStdOut), lExpectedStdOut)
+
+
+    def test_summary_output_format_multiple_mixed_jobs_2(self):
+        lExpectedStdErr = [
+                'File: vsg/tests/vsg/entity_architecture.vhd ERROR (200 rules checked) [Error: 11] [Warning: 0]',
+                'File: vsg/tests/vsg/entity1.vhd ERROR (200 rules checked) [Error: 1] [Warning: 0]',
+                'File: vsg/tests/vsg/entity2.vhd ERROR (200 rules checked) [Error: 1] [Warning: 0]',
+                '',
+                ]
+        lExpectedStdOut = ['File: vsg/tests/vsg/entity_architecture.fixed.vhd OK (200 rules checked) [Error: 0] [Warning: 0]', '']
+
+        try:
+            subprocess.check_output(
+                    [
+                        'bin/vsg',
+                        '-f',
+                        'vsg/tests/vsg/entity_architecture.vhd',
+                        'vsg/tests/vsg/entity_architecture.fixed.vhd',
+                        'vsg/tests/vsg/entity1.vhd',
+                        'vsg/tests/vsg/entity2.vhd',
+                        '--output_format',
+                        'summary',
+                        '-p 2',
+                    ],
+                    stderr=subprocess.PIPE
+                    )
+            iExitStatus = 0
+        except subprocess.CalledProcessError as e:
+            lActualStdOut = str(e.output.decode('utf-8')).split('\n')
+            lActualStdErr = str(e.stderr.decode('utf-8')).split('\n')
+            iExitStatus = e.returncode
+
+        self.assertEqual(iExitStatus, 1)
+
+        self.assertEqual(utils.replace_total_count_summary(lActualStdErr), lExpectedStdErr)
+        self.assertEqual(utils.replace_total_count_summary(lActualStdOut), lExpectedStdOut)
+
+
+    @unittest.skip('Version is performing git commands and is impossible to predict the output.')
     @mock.patch('sys.stdout')
     def test_version(self, mockStdout):
         oCommandLineArguments = command_line_args(True)
@@ -427,6 +503,6 @@ class testVsg(unittest.TestCase):
             pass
 
         mockStdout.write.assert_has_calls([
-            mock.call('VHDL Style Guide (VSG) version: ' + version.sVersion),
+            mock.call('VHDL Style Guide (VSG) version: ' + str(version.sVersion)),
             mock.call('\n')
         ])
