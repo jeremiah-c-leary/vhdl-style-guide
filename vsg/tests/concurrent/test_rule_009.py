@@ -10,21 +10,73 @@ sTestDir = os.path.dirname(__file__)
 
 lFile, eError =vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_009_test_input.vhd'))
 
-lExpected = []
-lExpected.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_009_test_input.fixed.vhd'), lExpected)
+lExpected_align_left_no = []
+lExpected_align_left_no.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_009_test_input.fixed_align_left_no.vhd'), lExpected_align_left_no)
 
-lExpected_align_left_yes_align_paren_no = []
-lExpected_align_left_yes_align_paren_no.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_009_test_input.fixed_align_left_yes_align_paren_no.vhd'), lExpected_align_left_yes_align_paren_no)
+lExpected_align_left_no_align_paren_no_align_when_no_wrap_at_when_yes = []
+lExpected_align_left_no_align_paren_no_align_when_no_wrap_at_when_yes.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_009_test_input.fixed_align_left_no_align_paren_no_align_when_no_wrap_at_when_yes.vhd'), lExpected_align_left_no_align_paren_no_align_when_no_wrap_at_when_yes)
 
-lExpected_align_left_no_align_paren_no = []
-lExpected_align_left_no_align_paren_no.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_009_test_input.fixed_align_left_no_align_paren_no.vhd'), lExpected_align_left_no_align_paren_no)
+lExpected_align_left_no_align_paren_no_align_when_yes = []
+lExpected_align_left_no_align_paren_no_align_when_yes.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_009_test_input.fixed_align_left_no_align_paren_no_align_when_yes.vhd'), lExpected_align_left_no_align_paren_no_align_when_yes)
 
-lExpected_align_left_no_align_paren_yes_wrap_at_when_yes = []
-lExpected_align_left_no_align_paren_yes_wrap_at_when_yes.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_009_test_input.fixed_align_left_no_align_paren_yes_wrap_at_when_yes.vhd'), lExpected_align_left_no_align_paren_yes_wrap_at_when_yes)
+lExpected_align_left_no_align_paren_no_align_when_yes_wrap_at_when_yes = []
+lExpected_align_left_no_align_paren_no_align_when_yes_wrap_at_when_yes.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_009_test_input.fixed_align_left_no_align_paren_no_align_when_yes_wrap_at_when_yes.vhd'), lExpected_align_left_no_align_paren_no_align_when_yes_wrap_at_when_yes)
+
+lExpected_align_left_no_align_paren_yes = []
+lExpected_align_left_no_align_paren_yes.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_009_test_input.fixed_align_left_no_align_paren_yes.vhd'), lExpected_align_left_no_align_paren_yes)
+
+lExpected_align_left_no_align_paren_yes_align_when_no_wrap_at_when_yes = []
+lExpected_align_left_no_align_paren_yes_align_when_no_wrap_at_when_yes.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_009_test_input.fixed_align_left_no_align_paren_yes_align_when_no_wrap_at_when_yes.vhd'), lExpected_align_left_no_align_paren_yes_align_when_no_wrap_at_when_yes)
+
+lExpected_align_left_no_align_paren_yes_align_when_yes = []
+lExpected_align_left_no_align_paren_yes_align_when_yes.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_009_test_input.fixed_align_left_no_align_paren_yes_align_when_yes.vhd'), lExpected_align_left_no_align_paren_yes_align_when_yes)
+
+lExpected_align_left_no_align_paren_yes_align_when_yes_wrap_at_when_yes = []
+lExpected_align_left_no_align_paren_yes_align_when_yes_wrap_at_when_yes.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_009_test_input.fixed_align_left_no_align_paren_yes_align_when_yes_wrap_at_when_yes.vhd'), lExpected_align_left_no_align_paren_yes_align_when_yes_wrap_at_when_yes)
+
+lExpected_align_left_yes = []
+lExpected_align_left_yes.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_009_test_input.fixed_align_left_yes.vhd'), lExpected_align_left_yes)
+
+lExpected_align_left_yes_align_paren_no_align_when_no_wrap_at_when_yes = []
+lExpected_align_left_yes_align_paren_no_align_when_no_wrap_at_when_yes.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_009_test_input.fixed_align_left_yes_align_paren_no_align_when_no_wrap_at_when_yes.vhd'), lExpected_align_left_yes_align_paren_no_align_when_no_wrap_at_when_yes)
+
+lExpected_align_left_yes_align_paren_no_align_when_yes = []
+lExpected_align_left_yes_align_paren_no_align_when_yes.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_009_test_input.fixed_align_left_yes_align_paren_no_align_when_yes.vhd'), lExpected_align_left_yes_align_paren_no_align_when_yes)
+
+lExpected_align_left_yes_align_paren_no_align_when_yes_wrap_at_when_yes = []
+lExpected_align_left_yes_align_paren_no_align_when_yes_wrap_at_when_yes.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_009_test_input.fixed_align_left_yes_align_paren_no_align_when_yes_wrap_at_when_yes.vhd'), lExpected_align_left_yes_align_paren_no_align_when_yes_wrap_at_when_yes)
+
+lExpected_align_left_yes_align_paren_yes = []
+lExpected_align_left_yes_align_paren_yes.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_009_test_input.fixed_align_left_yes_align_paren_yes.vhd'), lExpected_align_left_yes_align_paren_yes)
+
+lExpected_align_left_yes_align_paren_yes_align_when_no_wrap_at_when_yes = []
+lExpected_align_left_yes_align_paren_yes_align_when_no_wrap_at_when_yes.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_009_test_input.fixed_align_left_yes_align_paren_yes_align_when_no_wrap_at_when_yes.vhd'), lExpected_align_left_yes_align_paren_yes_align_when_no_wrap_at_when_yes)
+
+lExpected_align_left_yes_align_paren_yes_align_when_yes = []
+lExpected_align_left_yes_align_paren_yes_align_when_yes.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_009_test_input.fixed_align_left_yes_align_paren_yes_align_when_yes.vhd'), lExpected_align_left_yes_align_paren_yes_align_when_yes)
+
+lExpected_align_left_yes_align_paren_yes_align_when_yes_wrap_at_when_yes = []
+lExpected_align_left_yes_align_paren_yes_align_when_yes_wrap_at_when_yes.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_009_test_input.fixed_align_left_yes_align_paren_yes_align_when_yes_wrap_at_when_yes.vhd'), lExpected_align_left_yes_align_paren_yes_align_when_yes_wrap_at_when_yes)
+
+lExpected_align_left_yes_align_paren_yes_align_when_yes_wrap_at_when_yes_align_else_yes = []
+lExpected_align_left_yes_align_paren_yes_align_when_yes_wrap_at_when_yes_align_else_yes.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_009_test_input.fixed_align_left_yes_align_paren_yes_align_when_yes_wrap_at_when_yes_align_else_yes.vhd'), lExpected_align_left_yes_align_paren_yes_align_when_yes_wrap_at_when_yes_align_else_yes)
 
 
 class test_concurrent_rule(unittest.TestCase):
@@ -60,57 +112,293 @@ class test_concurrent_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
 
-
-    def test_fix_rule_009_align_left_yes_align_paren_no(self):
+    def test_fix_rule_009_align_left_yes(self):
         oRule = concurrent.rule_009()
         oRule.align_left = 'yes'
-        oRule.wrap_condition_at_when = 'no'
+        oRule.wrap_at_when = 'no'
         oRule.align_when_keywords = 'no'
         oRule.align_else_keywords = 'no'
         oRule.align_paren = 'no'
-        oRule.ignore_single_line = 'yes'
 
         oRule.fix(self.oFile)
 
         lActual = self.oFile.get_lines()
 
-        self.assertEqual(lExpected_align_left_yes_align_paren_no, lActual)
+        self.assertEqual(lExpected_align_left_yes, lActual)
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
 
-    def test_fix_rule_009_align_left_no_align_paren_no(self):
+    def test_fix_rule_009_align_left_no(self):
         oRule = concurrent.rule_009()
         oRule.align_left = 'no'
-        oRule.wrap_condition_at_when = 'no'
+        oRule.wrap_at_when = 'no'
         oRule.align_when_keywords = 'no'
         oRule.align_else_keywords = 'no'
         oRule.align_paren = 'no'
-        oRule.ignore_single_line = 'yes'
 
         oRule.fix(self.oFile)
 
         lActual = self.oFile.get_lines()
 
-        self.assertEqual(lExpected_align_left_no_align_paren_no, lActual)
+        self.assertEqual(lExpected_align_left_no, lActual)
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
 
-    def test_fix_rule_009_align_left_no_align_paren_yes_wrap_at_when_yes(self):
+    def test_fix_rule_009_align_left_yes_align_paren_yes(self):
+        oRule = concurrent.rule_009()
+        oRule.align_left = 'yes'
+        oRule.wrap_at_when = 'no'
+        oRule.align_when_keywords = 'no'
+        oRule.align_else_keywords = 'no'
+        oRule.align_paren = 'yes'
+
+        oRule.fix(self.oFile)
+
+        lActual = self.oFile.get_lines()
+
+        self.assertEqual(lExpected_align_left_yes_align_paren_yes, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+
+
+    def test_fix_rule_009_align_left_no_align_paren_yes(self):
+        oRule = concurrent.rule_009()
+        oRule.align_left = 'no'
+        oRule.wrap_at_when = 'no'
+        oRule.align_when_keywords = 'no'
+        oRule.align_else_keywords = 'no'
+        oRule.align_paren = 'yes'
+
+        oRule.fix(self.oFile)
+
+        lActual = self.oFile.get_lines()
+
+        self.assertEqual(lExpected_align_left_no_align_paren_yes, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+
+    def test_fix_rule_009_align_left_no_align_paren_yes_align_when_yes(self):
+        oRule = concurrent.rule_009()
+        oRule.align_left = 'no'
+        oRule.wrap_at_when = 'no'
+        oRule.align_when_keywords = 'yes'
+        oRule.align_else_keywords = 'no'
+        oRule.align_paren = 'yes'
+
+        oRule.fix(self.oFile)
+
+        lActual = self.oFile.get_lines()
+
+        self.assertEqual(lExpected_align_left_no_align_paren_yes_align_when_yes, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+
+    def test_fix_rule_009_align_left_no_align_paren_no_align_when_yes(self):
+        oRule = concurrent.rule_009()
+        oRule.align_left = 'no'
+        oRule.wrap_at_when = 'no'
+        oRule.align_when_keywords = 'yes'
+        oRule.align_else_keywords = 'no'
+        oRule.align_paren = 'no'
+
+        oRule.fix(self.oFile)
+
+        lActual = self.oFile.get_lines()
+
+        self.assertEqual(lExpected_align_left_no_align_paren_no_align_when_yes, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+
+    def test_fix_rule_009_align_left_yes_align_paren_yes_align_when_yes(self):
+        oRule = concurrent.rule_009()
+        oRule.align_left = 'yes'
+        oRule.wrap_at_when = 'no'
+        oRule.align_when_keywords = 'yes'
+        oRule.align_else_keywords = 'no'
+        oRule.align_paren = 'yes'
+
+        oRule.fix(self.oFile)
+
+        lActual = self.oFile.get_lines()
+
+        self.assertEqual(lExpected_align_left_yes_align_paren_yes_align_when_yes, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+
+    def test_fix_rule_009_align_left_yes_align_paren_no_align_when_yes(self):
+        oRule = concurrent.rule_009()
+        oRule.align_left = 'yes'
+        oRule.wrap_at_when = 'no'
+        oRule.align_when_keywords = 'yes'
+        oRule.align_else_keywords = 'no'
+        oRule.align_paren = 'no'
+
+        oRule.fix(self.oFile)
+
+        lActual = self.oFile.get_lines()
+
+        self.assertEqual(lExpected_align_left_yes_align_paren_no_align_when_yes, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+
+    def test_fix_rule_009_align_left_no_align_paren_yes_align_when_yes_wrap_at_when_yes(self):
+        oRule = concurrent.rule_009()
+        oRule.align_left = 'no'
+        oRule.wrap_at_when = 'yes'
+        oRule.align_when_keywords = 'yes'
+        oRule.align_else_keywords = 'no'
+        oRule.align_paren = 'yes'
+
+        oRule.fix(self.oFile)
+
+        lActual = self.oFile.get_lines()
+
+        self.assertEqual(lExpected_align_left_no_align_paren_yes_align_when_yes_wrap_at_when_yes, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+
+    def test_fix_rule_009_align_left_no_align_paren_yes_align_when_no_wrap_at_when_yes(self):
         oRule = concurrent.rule_009()
         oRule.align_left = 'no'
         oRule.wrap_at_when = 'yes'
         oRule.align_when_keywords = 'no'
         oRule.align_else_keywords = 'no'
-        oRule.align_paren = 'no'
-        oRule.ignore_single_line = 'yes'
+        oRule.align_paren = 'yes'
 
         oRule.fix(self.oFile)
 
         lActual = self.oFile.get_lines()
 
-        self.assertEqual(lExpected_align_left_no_align_paren_yes_wrap_at_when_yes, lActual)
+        self.assertEqual(lExpected_align_left_no_align_paren_yes_align_when_no_wrap_at_when_yes, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+
+    def test_fix_rule_009_align_left_no_align_paren_no_align_when_yes_wrap_at_when_yes(self):
+        oRule = concurrent.rule_009()
+        oRule.align_left = 'no'
+        oRule.align_paren = 'no'
+        oRule.align_when_keywords = 'yes'
+        oRule.wrap_at_when = 'yes'
+        oRule.align_else_keywords = 'no'
+
+        oRule.fix(self.oFile)
+
+        lActual = self.oFile.get_lines()
+
+        self.assertEqual(lExpected_align_left_no_align_paren_no_align_when_yes_wrap_at_when_yes, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+
+    def test_fix_rule_009_align_left_no_align_paren_no_align_when_no_wrap_at_when_yes(self):
+        oRule = concurrent.rule_009()
+        oRule.align_left = 'no'
+        oRule.align_paren = 'no'
+        oRule.align_when_keywords = 'no'
+        oRule.wrap_at_when = 'yes'
+        oRule.align_else_keywords = 'no'
+
+        oRule.fix(self.oFile)
+
+        lActual = self.oFile.get_lines()
+
+        self.assertEqual(lExpected_align_left_no_align_paren_no_align_when_no_wrap_at_when_yes, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+
+    def test_fix_rule_009_align_left_yes_align_paren_no_align_when_no_wrap_at_when_yes(self):
+        oRule = concurrent.rule_009()
+        oRule.align_left = 'yes'
+        oRule.align_paren = 'no'
+        oRule.align_when_keywords = 'no'
+        oRule.wrap_at_when = 'yes'
+        oRule.align_else_keywords = 'no'
+
+        oRule.fix(self.oFile)
+
+        lActual = self.oFile.get_lines()
+
+        self.assertEqual(lExpected_align_left_yes_align_paren_no_align_when_no_wrap_at_when_yes, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+
+    def test_fix_rule_009_align_left_yes_align_paren_yes_align_when_no_wrap_at_when_yes(self):
+        oRule = concurrent.rule_009()
+        oRule.align_left = 'yes'
+        oRule.align_paren = 'yes'
+        oRule.align_when_keywords = 'no'
+        oRule.wrap_at_when = 'yes'
+        oRule.align_else_keywords = 'no'
+
+        oRule.fix(self.oFile)
+
+        lActual = self.oFile.get_lines()
+
+        self.assertEqual(lExpected_align_left_yes_align_paren_yes_align_when_no_wrap_at_when_yes, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+
+    def test_fix_rule_009_align_left_yes_align_paren_no_align_when_yes_wrap_at_when_yes(self):
+        oRule = concurrent.rule_009()
+        oRule.align_left = 'yes'
+        oRule.align_paren = 'no'
+        oRule.align_when_keywords = 'yes'
+        oRule.wrap_at_when = 'yes'
+        oRule.align_else_keywords = 'no'
+
+        oRule.fix(self.oFile)
+
+        lActual = self.oFile.get_lines()
+
+        self.assertEqual(lExpected_align_left_yes_align_paren_no_align_when_yes_wrap_at_when_yes, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+
+    def test_fix_rule_009_align_left_yes_align_paren_yes_align_when_yes_wrap_at_when_yes(self):
+        oRule = concurrent.rule_009()
+        oRule.align_left = 'yes'
+        oRule.align_paren = 'yes'
+        oRule.align_when_keywords = 'yes'
+        oRule.wrap_at_when = 'yes'
+        oRule.align_else_keywords = 'no'
+
+        oRule.fix(self.oFile)
+
+        lActual = self.oFile.get_lines()
+
+        self.assertEqual(lExpected_align_left_yes_align_paren_yes_align_when_yes_wrap_at_when_yes, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+
+    @unittest.skip('just for now')
+    def test_fix_rule_009_align_left_yes_align_paren_yes_align_when_yes_wrap_at_when_yes_align_else_yes(self):
+        oRule = concurrent.rule_009()
+        oRule.align_left = 'yes'
+        oRule.align_paren = 'yes'
+        oRule.align_when_keywords = 'yes'
+        oRule.wrap_at_when = 'yes'
+        oRule.align_else_keywords = 'yes'
+
+        oRule.fix(self.oFile)
+
+        lActual = self.oFile.get_lines()
+
+        self.assertEqual(lExpected_align_left_yes_align_paren_yes_align_when_yes_wrap_at_when_yes_align_else_yes, lActual)
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])

@@ -23,7 +23,7 @@ begin
         to_integer(cons1(37 downto 0))) = 256 else
     '0' when input(3 downto 0) = "0010" else
     'Z';
- 
+
   my_signal <= '1' when a = "0000" and func1(345) or
       b = "1000" and func2(567) and
       c = "00" else

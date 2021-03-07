@@ -41,19 +41,16 @@ There are several options to these rules:
 +---------------------------+---------+---------+---------------------------------------------------------+
 | Option                    |   Type  | Default | Description                                             |
 +===========================+=========+=========+=========================================================+
-| wrap_condition_at_when    | string  |  'yes'  | Indent multiline condition at when keyword.             |
-+---------------------------+---------+---------+---------------------------------------------------------+
-| align_when_keywords       | string  |  'no'   | each when keyword will be aligned                       |
-+---------------------------+---------+---------+---------------------------------------------------------+
-| align_else_keywords       | string  |  'no'   | each else keyword will be aligned                       |
-+---------------------------+---------+---------+---------------------------------------------------------+
 | align_left                | string  |  'no'   | Align multilines to the left                            |
 +---------------------------+---------+---------+---------------------------------------------------------+
 | align_paren               | string  |  'yes'  | Indent lines based on parenthesis                       |
 +---------------------------+---------+---------+---------------------------------------------------------+
-| ignore_single_line        | string  |  'yes'  | Do not apply rules if expression/condition is contained |
-|                           |         |         | on a single line.                                       |
-+---------------------------+-----------------------------------------------------------------------------+
+| align_when_keywords       | string  |  'no'   | each when keyword will be aligned                       |
++---------------------------+---------+---------+---------------------------------------------------------+
+| wrap_at_when              | string  |  'yes'  | Indent multiline condition at when keyword.             |
++---------------------------+---------+---------+---------------------------------------------------------+
+| align_else_keywords       | string  |  'no'   | each else keyword will be aligned                       |
++---------------------------+---------+---------+---------------------------------------------------------+
 
 The options can be combined to format the conditional expression or conditional waveform.
 
@@ -79,7 +76,7 @@ This is an example of how to configure these options.
         align_left : 'no'
         ignore_single_line : 'yes'
 
-.. NOTE:: All examples below are using the rule **concurrent_009** and the option ignore_single_line is False.
+.. NOTE:: All examples below are using the rule **concurrent_009**.
 
 Example: indent_condition_at_when
 #################################
