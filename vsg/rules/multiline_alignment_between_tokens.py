@@ -450,10 +450,13 @@ def _analyze_align_paren_no_align_left_no(iFirstLine, iLastLine, lParens, dActua
 
 
 def _starts_with_paren(lTokens):
- 
     iToken = utils.find_next_non_whitespace_token(1, lTokens)
-    if isinstance(lTokens[iToken], parser.open_parenthesis):
-        return True
+    try:
+        if isinstance(lTokens[iToken], parser.open_parenthesis):
+            return True
+    except IndexError:
+        if isinstance(lTokens[0], parser.open_parenthesis):
+            return True
     return False
 
 

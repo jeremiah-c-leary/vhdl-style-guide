@@ -31,7 +31,8 @@ class rule_009(rule.Rule):
 
     def __init__(self):
         rule.Rule.__init__(self, 'concurrent', '009')
-        self.phase = 4
+        self.phase = 5
+        self.subphase = 2
         self.lTokenPairs = lTokenPairs
         self.align_left = 'no'
         self.configuration.append('align_left')

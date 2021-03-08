@@ -22,7 +22,7 @@ architecture Behavioral of Pointer is
   signal rY : STD_LOGIC_VECTOR (8 downto 0) := initY;
 begin
   Here <= '1' when syncX(9 downto 3)=rX(9 downto 3) and
-                   syncY(8 downto 3)=rY(8 downto 3) else '0';
+            syncY(8 downto 3)=rY(8 downto 3) else '0';
   X <= rX;
   Y <= rY;
   process (Clk) begin
