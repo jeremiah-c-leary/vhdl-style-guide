@@ -1,7 +1,7 @@
-Configuring Conditional Expressions and Conditional Waveforms
--------------------------------------------------------------
+Configuring Conditional Expressions and Conditional Waveforms Indent and Alignment
+----------------------------------------------------------------------------------
 
-There are rules which will check indent and formatting of multiline conditional expressions and conditional waveforms.
+There are rules which will check indent and alignment of multiline conditional expressions and conditional waveforms.
 
 Conditional expressions and conditional waveforms are defined as:
 
