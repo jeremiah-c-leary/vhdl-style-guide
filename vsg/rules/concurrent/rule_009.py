@@ -31,7 +31,6 @@ class rule_009(rule.Rule):
 
     def __init__(self):
         rule.Rule.__init__(self, 'concurrent', '009')
-        self.solution = 'Align with open parenthesis on previous line.'
         self.phase = 4
         self.lTokenPairs = lTokenPairs
         self.align_left = 'no'
@@ -42,6 +41,8 @@ class rule_009(rule.Rule):
         self.configuration.append('wrap_at_when')
         self.align_when_keywords = 'no'
         self.configuration.append('align_when_keywords')
+        self.align_else_keywords = 'no'
+        self.configuration.append('align_else_keywords')
 
     def _get_tokens_of_interest(self, oFile):
         lToi = []
@@ -96,6 +97,11 @@ class rule_009(rule.Rule):
             dExpectedIndent, lStructure = _apply_wrap_at_when_option(self.wrap_at_when, lStructure, dExpectedIndent, bStartsWithParen, self.indentSize, iAssignColumn, iFirstIndent)
             if self.wrap_at_when == 'yes' and self.align_paren == 'yes':
                 dExpectedIndent, lStructure = _apply_align_paren_after_when(lStructure, dExpectedIndent, bStartsWithParen, self.indentSize, iAssignColumn, iFirstIndent)
+#            print('#'*80)
+#            print(lStructure)
+            dExpectedIndent, lStructure = _apply_align_else_keywords_option(self.align_else_keywords, lStructure, dExpectedIndent, bStartsWithParen, self.indentSize, iAssignColumn, iFirstIndent)
+#            print(lStructure)
+
 #            print(lStructure)
 #            print(lActualStructure)
 
@@ -137,6 +143,20 @@ class rule_009(rule.Rule):
                             oViolation.set_action(dAction)
                             self.add_violation(oViolation)
 
+            if self.align_else_keywords == 'yes':
+                for dActual, dExpect in zip(lActualStructure, lStructure):
+                    if dActual['type'] == 'else':
+                        if dExpect['adjust'] != 0:
+                            dAction = {}
+                            dAction['type'] = 'else'
+                            dAction['line'] = dExpect['line']
+                            dAction['column'] = dExpect['column']
+                            dAction['adjust'] = dExpect['adjust']
+                            sSolution = 'Align else with other elses at column ' + str(dExpect['column'])
+                            oViolation = violation.New(dAction['line'], oToi.extract_tokens(dActual['iToken'] - 1, dActual['iToken'] - 1), sSolution)
+                            oViolation.set_action(dAction)
+                            self.add_violation(oViolation)
+
 
         self._sort_violations()
 
@@ -148,7 +168,11 @@ class rule_009(rule.Rule):
             iSpace = len(lTokens[0].get_value())
             iNewSpace = iSpace + dAction['adjust']
             lTokens[0].set_value(' '*iNewSpace)
-        if dAction['type'] == 'indent':
+        elif dAction['type'] == 'else':
+            iSpace = len(lTokens[0].get_value())
+            iNewSpace = iSpace + dAction['adjust']
+            lTokens[0].set_value(' '*iNewSpace)
+        elif dAction['type'] == 'indent':
             if dAction['action'] == 'adjust':
                 lTokens[0].set_value(' '*dAction['column'])
             else:
@@ -563,6 +587,38 @@ def _apply_align_paren_after_when(lStructure, dActualIndent, bStartsWithParen, i
 
     lReturnStructure = _update_structure(dExpectedIndent, dActualIndent, lStructure)
     return dExpectedIndent, lReturnStructure
+
+
+def _apply_align_else_keywords_option(sConfig, lStructure, dActualIndent, bStartsWithParen, iIndentStep, iAssignColumn, iFirstIndent):
+#    print('--> _apply_align_when_keywords_option <-' + '-'*70)
+    if sConfig == 'no':
+        return dActualIndent, lStructure 
+    iFirstLine = _get_first_line(dActualIndent)
+    iLastLine = _get_last_line(dActualIndent)
+
+    iElseMax = -1
+    for dStruct in lStructure:
+        if dStruct['type'] == 'else':
+            iElseMax = max(iElseMax, dStruct['column'])
+
+#    print(f'iWhenMax = {iWhenMax}')
+
+    lNewStruct = []
+    bAdjust = False
+    for dStruct in lStructure:
+        if dStruct['type'] == 'else':
+            iAdjust = iElseMax - dStruct['column']
+            if iAdjust != 0:
+                bAdjust = True
+            dStruct['adjust'] = iAdjust
+        if dStruct['type'] == 'return':
+            bAdjust = False
+        if bAdjust:
+            dStruct['column'] += iAdjust 
+        lNewStruct.append(dStruct)
+
+    return dActualIndent, lNewStruct
+
 
 
 def _analyze_align_paren_no_align_left_yes_wrap_at_when_no(iFirstLine, iLastLine, lParens, iIndentStep, dActualIndent, bStartsWithParen, lStructure):
