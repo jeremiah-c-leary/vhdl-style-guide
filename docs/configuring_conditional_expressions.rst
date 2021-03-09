@@ -69,7 +69,7 @@ This is an example of how to configure these options.
 .. code-block:: yaml
 
    rule :
-     constant_009:
+     concurrent_009:
         wrap_condition_at_when : 'yes'
         align_when_keywords : 'yes'
         align_else_keywords : 'yes'

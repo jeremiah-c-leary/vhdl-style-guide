@@ -14,14 +14,14 @@ begin
     '0';
 
   my_signal <= '1' when input(1 downto 0) = "00" and func1(func2(G_VALUE1),
-      to_integer(cons1(37 downto 0))) = 256 else
-    '0' when input(3 downto 0) = "0010"     else
+        to_integer(cons1(37 downto 0))) = 256 else
+    '0' when input(3 downto 0) = "0010"       else
     'Z';
  
   my_signal <= '1' when input(1 downto
-      0) = "00" and func1(func2(G_VALUE1),
-        to_integer(cons1(37 downto 0))) = 256 else
-    '0' when input(3 downto 0) = "0010"       else
+        0) = "00" and func1(func2(G_VALUE1),
+          to_integer(cons1(37 downto 0))) = 256 else
+    '0' when input(3 downto 0) = "0010"         else
     'Z';
 
   my_signal <= '1' when a = "0000" and func1(345) or
@@ -32,9 +32,18 @@ begin
     '0';
 
   my_signal <= '1' when input(1 downto
-      0) = "00" and func1(func2(G_VALUE1),
-        to_integer(cons1(37 downto 0))) = 256 else
-    my_signal when input(3 downto 0) = "0010" else
+        0) = "00" and func1(func2(G_VALUE1),
+          to_integer(cons1(37 downto 0))) = 256 else
+    my_signal when input(3 downto 0) = "0010"   else
+    'Z';
+
+  -- Testing no code after assignment
+
+  my_signal <=
+    '1' when input(1 downto
+        0) = "00" and func1(func2(G_VALUE1),
+          to_integer(cons1(37 downto 0))) = 256 else
+    my_signal when input(3 downto 0) = "0010"   else
     'Z';
 
 end architecture rtl;

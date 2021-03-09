@@ -199,79 +199,41 @@ def _set_indent(iToken, lTokens):
 def _apply_align_left_option(sConfig, lStructure, dActualIndent, bStartsWithParen, iIndentStep, iAssignColumn, iFirstIndent):
 #    print('--> _apply_align_left_option  <-' + '-'*70)
     iFirstLine = _get_first_line(dActualIndent)
-    iLastLine = _get_last_line(dActualIndent)
 
     dExpectedIndent = {}
     dExpectedIndent[iFirstLine] = dActualIndent[iFirstLine]
 
-    iIndent = iFirstIndent
-
     bWhenFound = False
     iParens = 0
-    lWhenIndent = []
-    lParens = []
+    iLine = iFirstLine
     for dStruct in lStructure:
         if dStruct['type'] == 'when':
             bWhenFound = True
         elif dStruct['type'] == 'else':
             bWhenFound = False
-        elif dStruct['type'] == 'return' and bWhenFound:
-            if iParens == 0:
-                lWhenIndent.append(dStruct['line'])
+        elif dStruct['type'] == 'return':
+#            print(f'iLine = {iLine} | bWhenFound = {bWhenFound} | iParens = {iParens}')
+            iLine += 1
+            if bWhenFound:
+                if iLine == iFirstLine:
+                    iIndent = iFirstIndent
+                    iIndent += iIndentStep
+                elif iLine == iFirstLine + 1:
+                    iIndent = iFirstIndent
+                    iIndent += iIndentStep
+                elif dExpectedIndent[iLine - 1] == iFirstIndent:
+                    iIndent = iFirstIndent
+                    iIndent += iIndentStep
+                else:
+                    iIndent = dExpectedIndent[iLine - 1]
+                iIndent += iParens * iIndentStep
+            else:
+                iIndent = iFirstIndent
+            dExpectedIndent[iLine] = iIndent
         elif dStruct['type'] == 'open':
             iParens +=1
-            lParens.append(dStruct)
         elif dStruct['type'] == 'close':
             iParens -= 1
-            lParens.append(dStruct)
-
-#    print(f'lWhenIndent = {lWhenIndent}')
-            
-    iParens = 0
-
-    for iLine in range(iFirstLine, iLastLine + 1):
-#        print('-->  ' + str(iLine) + '  <--------------------------')
-
-        lTemp = []
-        for dParen in lParens:
-            if dParen['line'] == iLine:
-                lTemp.append(dParen)
-
-        if len(lTemp) == 0:
-            dExpectedIndent[iLine + 1] = iIndent
-
-        else:
-
-            for dTemp in lTemp:
-                if dTemp['type'] == 'open':
-                    iParens += 1
-                else:
-                    iParens -= 1
-                    if dTemp['begin_line']:
-                        dExpectedIndent[iLine] -= iIndentStep 
-
-        if iLine == iFirstLine:
-            if bStartsWithParen:
-                iIndent = iFirstIndent + iParens * iIndentStep
-            else: 
-                if iParens == 0:
-                    iIndent = iFirstIndent
-                else:
-                    iIndent = iFirstIndent + iParens * iIndentStep
-        else:
-            if iParens == 0:
-                iIndent = iFirstIndent
-            else:
-                iIndent = iFirstIndent + iParens * iIndentStep + iIndentStep
-
-#        print(f'Prev = {iIndent}')
-#        print(f'{iLine} | {lColumn} | {dExpectedIndent}')
-#        print(f'iLine + 1 = {iLine + 1}')
-        if (iLine + 1) in lWhenIndent:
-            iIndent = iFirstIndent + iIndentStep
-#        print(f'indent = {iIndent} | iPerens = {iParens}')
-#        print(f'Next = {iIndent}')
-        dExpectedIndent[iLine + 1] = iIndent
 
     lReturnStructure = _update_structure(dExpectedIndent, dActualIndent, lStructure)
     return dExpectedIndent, lReturnStructure
@@ -546,6 +508,7 @@ def _apply_align_paren_after_when(lStructure, dActualIndent, bStartsWithParen, i
 
 def _apply_align_else_keywords_option(sConfig, lStructure, dActualIndent, bStartsWithParen, iIndentStep, iAssignColumn, iFirstIndent):
 #    print('--> _apply_align_when_keywords_option <-' + '-'*70)
+
     if sConfig == 'no':
         return dActualIndent, lStructure 
     iFirstLine = _get_first_line(dActualIndent)
@@ -556,13 +519,14 @@ def _apply_align_else_keywords_option(sConfig, lStructure, dActualIndent, bStart
         if dStruct['type'] == 'else':
             iElseMax = max(iElseMax, dStruct['column'])
 
-#    print(f'iWhenMax = {iWhenMax}')
+#    print(f'iElseMax = {iElseMax}')
 
     lNewStruct = []
     bAdjust = False
     for dStruct in lStructure:
         if dStruct['type'] == 'else':
             iAdjust = iElseMax - dStruct['column']
+#            print(f'{iAdjust} = {iElseMax} - {dStruct["column"]}')
             if iAdjust != 0:
                 bAdjust = True
             dStruct['adjust'] = iAdjust
