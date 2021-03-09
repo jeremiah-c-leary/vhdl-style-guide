@@ -49,5 +49,11 @@ begin
     end case;
   end process;
 
+  -- Testing combined case and ?
+
+  process begin
+    case? is
+    end case;
+  end process;
 
 end architecture RTL;

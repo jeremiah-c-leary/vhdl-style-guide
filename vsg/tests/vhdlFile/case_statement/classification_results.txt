@@ -282,10 +282,35 @@
 51 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-52 |
+52 |   -- Testing combined case and ?
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+53 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-53 | end architecture RTL;
+54 |   process begin
+<class 'vsg.token.process_statement.process_keyword'>
+<class 'vsg.token.process_statement.begin_keyword'>
+--------------------------------------------------------------------------------
+55 |     case? is
+<class 'vsg.token.case_statement.case_keyword'>
+<class 'vsg.token.case_statement.question_mark'>
+<class 'vsg.token.case_statement.is_keyword'>
+--------------------------------------------------------------------------------
+56 |     end case;
+<class 'vsg.token.case_statement.end_keyword'>
+<class 'vsg.token.case_statement.end_case_keyword'>
+<class 'vsg.token.case_statement.semicolon'>
+--------------------------------------------------------------------------------
+57 |   end process;
+<class 'vsg.token.process_statement.end_keyword'>
+<class 'vsg.token.process_statement.end_process_keyword'>
+<class 'vsg.token.process_statement.semicolon'>
+--------------------------------------------------------------------------------
+58 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+59 | end architecture RTL;
 <class 'vsg.token.architecture_body.end_keyword'>
 <class 'vsg.token.architecture_body.end_architecture_keyword'>
 <class 'vsg.token.architecture_body.architecture_simple_name'>
