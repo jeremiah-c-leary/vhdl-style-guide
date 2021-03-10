@@ -43,7 +43,7 @@ class previous_line(rule.Rule):
                 lFirst = oFile.get_line_above_line_starting_with_token_with_hierarchy(self.lTokens, self.lHierarchyLimits, False)
                 lSecond = oFile.get_line_above_line_starting_with_token_with_hierarchy(self.lTokens, self.lHierarchyLimits, True)
                 return zip(lFirst, lSecond)
-        
+
         elif self.style == 'no_blank_line':
             return oFile.get_blank_lines_above_line_starting_with_token(self.lTokens)
         else:

@@ -37,7 +37,7 @@ class remove_excessive_blank_lines_above_line_starting_with_token(rule.Rule):
             lTokens = oToi.get_tokens()
             iCount = 0
             iLine = 0
-            for iToken, oToken in enumerate(lTokens):
+            for oToken in lTokens:
                 if isinstance(oToken, parser.blank_line):
                     iCount += 1
                 iLine = utils.increment_line_number(iLine, oToken)

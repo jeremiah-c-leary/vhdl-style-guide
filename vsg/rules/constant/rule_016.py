@@ -93,7 +93,7 @@ class rule_016(rule.Rule):
 def _check_first_paren_new_line(self, oToi):
 
     if self.first_paren_new_line == 'ignore':
-        return 
+        return
 
     iLine, lTokens = utils.get_toi_parameters(oToi)
     bSearch = False
@@ -119,9 +119,8 @@ def _check_first_paren_new_line(self, oToi):
 def _check_last_paren_new_line(self, oToi):
 
     if self.last_paren_new_line == 'ignore':
-        return 
+        return
     iLine, lTokens = utils.get_toi_parameters(oToi)
-    bSearch = False
     lTokens.reverse()
     iLine = iLine + utils.count_carriage_returns(lTokens)
     bReturnFound = False
@@ -134,7 +133,7 @@ def _check_last_paren_new_line(self, oToi):
             elif utils.are_next_consecutive_token_types([parser.carriage_return], iToken + 1, lTokens):
                 bReturnFound = True
 
-            lTokens.reverse()            
+            lTokens.reverse()
 
             if self.last_paren_new_line == 'yes' and not bReturnFound:
                 sSolution = 'Move closing parenthesis to the next line.'
@@ -147,18 +146,16 @@ def _check_last_paren_new_line(self, oToi):
                 self.add_violation(oViolation)
 
             break
-                
+
 
 def _check_open_paren_new_line(self, oToi):
-    
+
     if self.open_paren_new_line == 'ignore':
-        return 
+        return
 
     iLine, lTokens = utils.get_toi_parameters(oToi)
 
     bSearch = False
-    iOpenParen = 0
-    iCloseParen = 0
     bAssignmentFound = False
     bOthersClause = False
 
@@ -169,10 +166,10 @@ def _check_open_paren_new_line(self, oToi):
 
         if bFirstParenFound:
             iToken, bOthersClause = _classify_others(iToken, lTokens)
-   
+
             if bOthersClause:
                 iToken += 1
-                continue 
+                continue
 
             iToken, bAssignmentFound = _classify_assignment(iToken, lTokens)
 
@@ -199,14 +196,14 @@ def _check_open_paren_new_line(self, oToi):
                     self.add_violation(oViolation)
         bOthersClause = False
         iToken += 1
-                
-    return None 
-                
+
+    return None
+
 
 def _check_close_paren_new_line(self, oToi):
-    
+
     if self.close_paren_new_line == 'ignore':
-        return 
+        return
 
     iLine, lTokens = utils.get_toi_parameters(oToi)
 
@@ -223,10 +220,10 @@ def _check_close_paren_new_line(self, oToi):
 
         if bFirstParenFound:
             iToken, bOthersClause = _classify_others(iToken, lTokens)
-   
+
             if bOthersClause:
                 iToken += 1
-                continue 
+                continue
 
             iToken, bAssignmentFound = _classify_assignment(iToken, lTokens)
 
@@ -256,14 +253,14 @@ def _check_close_paren_new_line(self, oToi):
                     self.add_violation(oViolation)
 
         iToken += 1
-                
-    return None 
+
+    return None
 
 
 def _check_new_line_after_comma(self, oToi):
 
     if self.new_line_after_comma == 'ignore':
-        return 
+        return
 
     iLine, lTokens = utils.get_toi_parameters(oToi)
 
@@ -281,11 +278,11 @@ def _check_new_line_after_comma(self, oToi):
 
         if bFirstParenFound:
             iToken, bOthersClause = _classify_others(iToken, lTokens)
-   
+
             if bOthersClause:
                 bPositionalFound = True
                 iToken += 1
-                continue 
+                continue
 
             iToken, bAssignmentFound = _classify_assignment(iToken, lTokens)
 
@@ -320,14 +317,14 @@ def _check_new_line_after_comma(self, oToi):
                     self.add_violation(oViolation)
 
         iToken += 1
-                
-    return None 
+
+    return None
 
 
 def _check_assign_on_single_line(self, oToi):
 
     if self.assign_on_single_line == 'ignore':
-        return 
+        return
 
     iLine, lTokens = utils.get_toi_parameters(oToi)
 
@@ -336,7 +333,6 @@ def _check_assign_on_single_line(self, oToi):
     iCloseParen = 0
     bAssignmentFound = False
     bOthersClause = False
-    bPositionalFound = True
 
     iToken = _find_assignment_operator(lTokens) + 1
     iStopIndex = len(lTokens)
@@ -345,11 +341,10 @@ def _check_assign_on_single_line(self, oToi):
 
         if bFirstParenFound:
             iToken, bOthersClause = _classify_others(iToken, lTokens)
-   
+
             if bOthersClause:
-                bPositionalFound = True
                 iToken += 1
-                continue 
+                continue
 
             if lTokens[iToken].get_value() == '=>':
                 iPreviousToken = utils.find_previous_non_whitespace_token(iToken - 1, lTokens)
@@ -358,13 +353,12 @@ def _check_assign_on_single_line(self, oToi):
             if bAssignmentFound:
 #                rule_utils.print_debug(lTokens[iPreviousToken:iToken + 1])
                 if rule_utils.number_of_carriage_returns(lTokens[iPreviousToken:iToken]) > 0:
-                     iEnd = utils.find_next_non_whitespace_token(iToken + 1, lTokens)
                      iErrorLine = rule_utils.number_of_carriage_returns(lTokens[:iPreviousToken]) + iLine
                      sSolution = 'Remove carriage returns for assignments.'
                      oViolation = _create_violation(oToi, iErrorLine, iPreviousToken, iToken, 'assign_on_single_line', 'remove', sSolution)
                      self.add_violation(oViolation)
-               
-                
+
+
         oToken = lTokens[iToken]
 
         if isinstance(oToken, parser.open_parenthesis):
@@ -372,11 +366,11 @@ def _check_assign_on_single_line(self, oToi):
 
         iToken += 1
 
-    return None 
+    return None
 
 
 def _is_open_paren_after_assignment(oToi):
-    
+
     iLine, lTokens = utils.get_toi_parameters(oToi)
     for iToken, oToken in enumerate(lTokens):
         if isinstance(oToken, token.constant_declaration.assignment_operator):
@@ -476,7 +470,7 @@ def _fix_assign_on_single_line(oViolation):
 
 
 def _inside_others_clause(iToken, lTokens):
-    for oToken in lTokens[iToken + 1:]: 
+    for oToken in lTokens[iToken + 1:]:
         if utils.token_is_whitespace_or_comment(oToken):
             continue
         elif isinstance(oToken, parser.open_parenthesis):
@@ -487,7 +481,7 @@ def _inside_others_clause(iToken, lTokens):
             if oToken.get_value().lower() == 'others':
                 break
     else:
-        return False 
+        return False
     return True
 
 

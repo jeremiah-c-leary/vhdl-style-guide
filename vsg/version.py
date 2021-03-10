@@ -36,7 +36,7 @@ def get_version_info(sVersion, sShaNum):
     sPath = os.path.dirname(__file__)
     if not os.path.isdir(os.path.join(sPath, '..', '.git')):
         return sVersion + '+zip.file', 'Unknown.  Installed via zip file.'
-    
+
     try:
         os.chdir(sPath)
         lActual = subprocess.check_output(['git', 'describe', '--tags'])

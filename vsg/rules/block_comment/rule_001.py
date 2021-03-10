@@ -94,7 +94,7 @@ class rule_001(block_rule.Rule):
                 sHeader += self.header_string
                 sHeader += self.header_right_repeat
 
-            for iToken, oToken in enumerate(lTokens):
+            for oToken in lTokens:
                 if isinstance(oToken, parser.comment):
                     sComment = oToken.get_value()
                     try:

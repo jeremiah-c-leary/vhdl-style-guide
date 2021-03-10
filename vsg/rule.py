@@ -205,9 +205,6 @@ class Rule():
         Sorts self.violations based on the start index of each violation.
         Sort order is increasing start index.
         '''
-#        print('-->sort_violations')
-#        print(f'Num_violations = {len(self.violations)}')
-#        print(self.violations)
         if not self.violations:
             return
         lNewViolations = []
@@ -221,8 +218,4 @@ class Rule():
                     break
             else:
                 lNewViolations.append(oViolation)
-        self.violations = lNewViolations       
-#        print(self.violations)
-#        print(f'Num_violations = {len(self.violations)}')
-#        for oViolation in self.violations:
-#            print(oViolation.get_line_number())
+        self.violations = lNewViolations

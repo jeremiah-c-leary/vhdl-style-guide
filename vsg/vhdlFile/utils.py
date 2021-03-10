@@ -1,4 +1,3 @@
-import sys
 
 from vsg import parser
 
@@ -122,8 +121,8 @@ def are_next_consecutive_tokens(lTokens, iToken, lObjects):
                 return False
         iCurrent += 1
         iTokenCount += 1
-    else:
-        return True
+
+    return True
 
 
 def are_next_consecutive_token_types(lTypes, iToken, lObjects):
@@ -303,7 +302,7 @@ def print_token(iObject, lObjects):
 def print_line(lObjects, iStart):
     iIndex = iStart
     sOutput = ''
-    while type(lObjects[iIndex]) != parser.carriage_return:
+    while not isinstance(lObjects[iIndex], parser.carriage_return):
         sOutput += lObjects[iIndex].get_value()
         iIndex += 1
     print(sOutput)
@@ -379,7 +378,7 @@ def calculate_line_number(iToken, lObjects):
 def calculate_column(iToken, lObjects):
     iColumn = 0
     for iCarriageReturn in range(iToken, 0, -1):
-        if type(lObjects[iCarriageReturn]) == parser.carriage_return:
+        if isinstance(lObjects[iCarriageReturn], parser.carriage_return):
             break;
     for iIndex in range(iCarriageReturn + 1, iToken):
         iColumn += len(lObjects[iIndex].get_value())

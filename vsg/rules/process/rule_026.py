@@ -79,7 +79,7 @@ def _analyze_no_blank_line(self, lToi):
             if isinstance(oToken, parser.carriage_return):
                 if not isinstance(lTokens[iSearch + iToken + 1], parser.blank_line):
                     dAction['end'] = iSearch + iToken - 1
-                    break 
+                    break
 
         oViolation = violation.New(iLine, oToi, self.solution)
         oViolation.set_action(dAction)
