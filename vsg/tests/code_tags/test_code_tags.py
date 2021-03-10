@@ -6,7 +6,6 @@ from vsg.rules import library
 from vsg.rules import entity
 from vsg.rules import port
 from vsg import vhdlFile
-from vsg.tests import utils
 
 
 # Read in test file used for all tests

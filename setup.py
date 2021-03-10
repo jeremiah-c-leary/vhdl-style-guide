@@ -2,7 +2,6 @@ from setuptools import setup
 from setuptools import find_packages
 
 ### Implement Version information
-import subprocess
 import os
 
 from vsg import version

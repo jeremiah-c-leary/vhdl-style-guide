@@ -6,12 +6,7 @@ import os
 import unittest
 
 from vsg import __main__
-from vsg import rule_list
 from vsg import severity
-from vsg import vhdlFile
-from vsg import parser
-
-from vsg.tests import utils
 
 sFileName = 'context_classification_test_input.vhd'
 sFixedFileName = 'context_classification_test_input.fixed.vhd'

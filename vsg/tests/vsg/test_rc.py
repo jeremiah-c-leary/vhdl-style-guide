@@ -1,12 +1,5 @@
 import unittest
-from unittest import mock
 import subprocess
-import os
-
-from tempfile import TemporaryFile
-
-from vsg.tests import utils
-from vsg import version
 
 class command_line_args():
     ''' This is used as an input into the version command.'''

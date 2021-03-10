@@ -5,9 +5,6 @@ import unittest
 from vsg import vhdlFile
 from vsg.tests import utils
 
-from vsg.token import concurrent_procedure_call_statement as token
-from vsg.token import procedure_call
-
 
 sTestDir = os.path.join(os.path.dirname(__file__),   'concurrent_statement')
 lFile, eError =vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir, 'classification_test_input.vhd'))

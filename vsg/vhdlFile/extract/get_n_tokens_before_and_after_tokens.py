@@ -1,6 +1,4 @@
 
-from vsg.vhdlFile import vhdlFile as token_class
-
 from vsg.vhdlFile.extract import tokens
 
 
