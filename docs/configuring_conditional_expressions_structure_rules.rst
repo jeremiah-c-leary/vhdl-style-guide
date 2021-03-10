@@ -67,3 +67,8 @@ The following code would pass with this option:
 
     write_en <=
       '1' when sig1 = "00" else '0';
+
+Rules Enforcing Conditional Expression Structure
+################################################
+
+* `concurrent_011 <concurrent_rules.html#concurrent-011>`_

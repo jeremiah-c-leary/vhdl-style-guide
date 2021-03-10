@@ -188,3 +188,8 @@ The following code would pass with this option:
                sig_a or sig_b when input = "0100" and input = "1100" else
                sig_c when input = "10" else
                '0';
+
+Rules Enforcing Conditional Expression
+######################################
+
+* `concurrent_009 <concurrent_rules.html#concurrent-009>`_
