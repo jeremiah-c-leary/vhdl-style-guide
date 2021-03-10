@@ -76,7 +76,7 @@ class rule_009(rule.Rule):
             if iFirstLine == iLastLine:
                 continue
 
-            iFirstIndent = _find_first_indent(self.align_left, bStartsWithParen, dActualIndent, self.indentSize, iAssignColumn)
+            iFirstIndent = _find_first_indent(self.align_left, dActualIndent, self.indentSize, iAssignColumn)
 
             dExpectedIndent, lStructure = _apply_align_left_option(self.align_left, lStructure, dActualIndent, bStartsWithParen, self.indentSize, iAssignColumn, iFirstIndent)
             dExpectedIndent, lStructure = _apply_align_paren_option(self.align_paren, lStructure, dExpectedIndent, bStartsWithParen, self.indentSize, iAssignColumn, iFirstIndent)
@@ -249,14 +249,14 @@ def _apply_align_paren_option(sConfig, lStructure, dActualIndent, bStartsWithPar
     dExpectedIndent = {}
     dExpectedIndent[iFirstLine] = dActualIndent[iFirstLine]
 
-    if bStartsWithParen:
-       iIndent = dActualIndent[iFirstLine]
-       iColumn = iIndent
-       lColumn = [dActualIndent[iFirstLine]]
-    else:
-       iIndent = iFirstIndent
-       iColumn = iIndent
-       lColumn = [iIndent]
+#    if bStartsWithParen:
+#       iIndent = dActualIndent[iFirstLine]
+#       iColumn = iIndent
+#       lColumn = [dActualIndent[iFirstLine]]
+#    else:
+    iIndent = iFirstIndent
+    iColumn = iIndent
+    lColumn = [iIndent]
 
 #    print('*'*80)
 #    print(lParens)
@@ -426,14 +426,14 @@ def _apply_align_paren_after_when(lStructure, dActualIndent, bStartsWithParen, i
     dExpectedIndent = {}
     dExpectedIndent[iFirstLine] = dActualIndent[iFirstLine]
 
-    if bStartsWithParen:
-       iIndent = dActualIndent[iFirstLine]
-       iColumn = iIndent
-       lColumn = [dActualIndent[iFirstLine]]
-    else:
-       iIndent = iFirstIndent
-       iColumn = iIndent
-       lColumn = [iIndent]
+#    if bStartsWithParen:
+#       iIndent = dActualIndent[iFirstLine]
+#       iColumn = iIndent
+#       lColumn = [dActualIndent[iFirstLine]]
+#    else:
+    iIndent = iFirstIndent
+    iColumn = iIndent
+    lColumn = [iIndent]
 
 #    print('*'*80)
 #    print(lParens)
@@ -671,13 +671,10 @@ def _update_structure(dExpectedIndent, dActualIndent, lStructure):
     return lReturn
 
 
-def _find_first_indent(sConfig, bStartsWithParen, dActualIndent, iIndentStep, iAssignColumn):
+def _find_first_indent(sConfig, dActualIndent, iIndentStep, iAssignColumn):
     iFirstLine = _get_first_line(dActualIndent)
     if sConfig == 'yes':
-        if bStartsWithParen: 
-            iFirstIndent = dActualIndent[iFirstLine]
-        else:
-            iFirstIndent = dActualIndent[iFirstLine] + iIndentStep
+        iFirstIndent = dActualIndent[iFirstLine] + iIndentStep
     else:
         iFirstIndent = iAssignColumn + 2 + 1
     return iFirstIndent
