@@ -66,4 +66,9 @@ begin
   c <= d; -- comment
   -- comment line
 
+  s <= a;
+  -- A
+  s <= b;  -- B
+  s <= cc; -- C
+
 end architecture RTL;

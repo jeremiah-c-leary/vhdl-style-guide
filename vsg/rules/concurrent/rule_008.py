@@ -90,6 +90,7 @@ class rule_008(rule.Rule):
             for iIndex in range(0, len(lTokens)):
                iToken += 1
                oToken = lTokens[iIndex]
+#               print(f'{oToken} | {oToken.get_value()}')
 
                if bStartFound:
                    if isinstance(oToken, parser.carriage_return):
@@ -106,6 +107,11 @@ class rule_008(rule.Rule):
                            dAnalysis = {}
                            bStartFound = False
                            bEndFound = False
+
+                           iLine += 1
+                           iLeftColumn = 0
+                           iColumn = 0
+                           iToken = -1
                            continue
 
                    elif isinstance(oToken, parser.comment):
@@ -160,7 +166,7 @@ class rule_008(rule.Rule):
                else:
                    for oStartToken in self.lStart:
                        if isinstance(oToken, oStartToken):
-#                           print(f'--> Start Token Found | {iLine} | {iColumn}')
+#                           print(f'--> Start Token Found | {iLine} | {iColumn} | {oToken}')
                            bStartFound = True
                            break
 
