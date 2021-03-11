@@ -37,7 +37,7 @@ class test_concurrent_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'concurrent')
         self.assertEqual(oRule.identifier, '003')
 
-        lExpected = [14, 17]
+        lExpected = [14, 17, 20, 21, 22, 23, 24]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -61,7 +61,7 @@ class test_concurrent_rule(unittest.TestCase):
         oRule.align_left = 'yes'
         oRule.align_paren = 'no'
 
-        lExpected = [8, 11, 14, 17]
+        lExpected = [8, 11, 14, 17, 20, 21, 22, 23, 24]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -85,7 +85,7 @@ class test_concurrent_rule(unittest.TestCase):
         oRule.align_left = 'yes'
         oRule.align_paren = 'yes'
 
-        lExpected = [8, 11, 14, 17]
+        lExpected = [8, 11, 14, 17, 20, 21, 22, 23, 24]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))

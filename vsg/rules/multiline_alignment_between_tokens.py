@@ -202,10 +202,9 @@ def _set_indent(iToken, lTokens):
 
 
 def _analyze_align_paren_no(iFirstLine, iLastLine, lParens, iIndentStep, dActualIndent, bStartsWithParen):
-#    print('--> _analyze_align_paren_no <-' + '-'*70)
+    print('--> _analyze_align_paren_no <-' + '-'*70)
     dExpectedIndent = {}
     dExpectedIndent[iFirstLine] = dActualIndent[iFirstLine]
-#    print(iIndent) 
     if bStartsWithParen: 
         iFirstIndent = dActualIndent[iFirstLine]
     else:
@@ -213,10 +212,11 @@ def _analyze_align_paren_no(iFirstLine, iLastLine, lParens, iIndentStep, dActual
 
     iIndent = iFirstIndent
 
+    print(iIndent) 
     iParens = 0
 
     for iLine in range(iFirstLine, iLastLine + 1):
-#        print('-->  ' + str(iLine) + '  <--------------------------')
+        print('-->  ' + str(iLine) + '  <--------------------------')
 
         lTemp = []
         for dParen in lParens:
@@ -241,7 +241,7 @@ def _analyze_align_paren_no(iFirstLine, iLastLine, lParens, iIndentStep, dActual
                     iIndent = iFirstIndent + iParens * iIndentStep
                 else:
                     iIndent = iFirstIndent + iParens * iIndentStep + iIndentStep
-#                iIndent = iFirstIndent + iParens * iIndentStep
+#                    iIndent = iFirstIndent + iParens * iIndentStep
             else: 
                 if iParens == 0:
                     iIndent = iFirstIndent + iParens * iIndentStep
@@ -255,6 +255,7 @@ def _analyze_align_paren_no(iFirstLine, iLastLine, lParens, iIndentStep, dActual
 
 #        print(f'indent = {iIndent} | iPerens = {iParens}')
         dExpectedIndent[iLine + 1] = iIndent
+        print(dExpectedIndent)
 
     return dExpectedIndent
 
