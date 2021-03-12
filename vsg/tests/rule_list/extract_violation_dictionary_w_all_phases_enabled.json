@@ -2898,17 +2898,17 @@
         {
           "rule": "process_020",
           "linenumber": 413,
-          "solution": "Adjust indent to column 67"
+          "solution": "Adjust indent to column 33"
         },
         {
           "rule": "process_020",
           "linenumber": 414,
-          "solution": "Adjust indent to column 67"
+          "solution": "Adjust indent to column 33"
         },
         {
           "rule": "process_020",
           "linenumber": 492,
-          "solution": "Adjust indent to column 63"
+          "solution": "Adjust indent to column 31"
         },
         {
           "rule": "process_022",

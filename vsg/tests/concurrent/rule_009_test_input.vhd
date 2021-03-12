@@ -1,82 +1,56 @@
 
-architecture RTL of ENT is
+architecture rtl of fifo is
 
 begin
 
-   -- These should pass the check
-   wr_en <= '0' when q_wr_en = '1' else
-            '1';
-
-   w_foo <= I_FOO when ((I_BAR = '1') and
-                        (I_CRUFT = '1')) else
-            '0';
-
-   w_foo <= I_FOO when ((I_BAR = 1 or (I_STUFF = 0 and
-                                       I_CRUFT = 1) or
-                         I_BLAH = 10)) else
-            I_BAR;
-
-   w_foo <= I_FOO when (I_BAR = 1 or ((I_STUFF = 0 and
-                                       (I_CRUFT = 1 or I_BLAH = 10)
-                                       and I_GRUB = 20) or
-                                      I_STUB = 45)
-                        and I_HUB = 23) else
-            I_BAR;
-
-   hbusreq_t <= '1' when
-                         (
-                          (dma_count>0 and mst_state=req_phase) or
-                          (dma_count>1 and (mst_state=addr or mst_state=addr_data))
-                         ) else
-                '0';
-
-   hbusreq_t <= '1' when
-                         (dma_count>0 and mst_state=req_phase) or
-                         (dma_count>1 and (mst_state=addr or mst_state=addr_data))
-                         else
-                '0';
-
-   fifo_reset <= '1' when (
-                           (mst_state=error_phase) or
-                           (mst_in.hresp=ok_resp and r_mst_out.htrans/=busy and r_mst_out.hwrite='1' and mst_in.hready='1' and mst_state=data and dma_count=0)
-                          ) else '0';
-
-   -- These should fail the check
-   wr_en <= '0' when q_wr_en = '1' else
-         '1';
-
-   w_foo <= I_FOO when ((I_BAR = '1') and
-            (I_CRUFT = '1')) else
-            '0';
-
-   w_foo <= I_FOO when ((I_BAR = 1 or (I_STUFF = 0 and
-                                         I_CRUFT = 1) or
-                    I_BLAH = 10));
-
-   w_foo <= I_FOO when (I_BAR = 1 or ((I_STUFF = 0 and
-                                 (I_CRUFT = 1 or I_BLAH = 10)
-                                            and I_GRUB = 20) or
-            I_STUB = 45)
-                                 and I_HUB = 23);
-
-   w_foo <= I_FOO when (I_BAR = 1 or ((I_STUFF = 0 and
-                           (I_CRUFT = 1 or
-                                                    I_BLAH = 10)
-                  and I_GRUB = 20) or
-                                                 I_STUB = 45)
- and I_HUB = 23);
-
-   hbusreq_t <= '1' when
-(
-(dma_count>0 and mst_state=req_phase) or
-(dma_count>1 and (mst_state=addr or mst_state=addr_data))
-) else
-'0';
-
-   fifo_reset <= '1' when (
-(mst_state=error_phase) or
-(mst_in.hresp=ok_resp and r_mst_out.htrans/=busy and r_mst_out.hwrite='1' and mst_in.hready='1' and mst_state=data and dma_count=0)
-) else
+  my_signal <= '1' when input = "00" else
+            my_signal2 or my_sig3 when input = "01" else
+                   my_sig4 and my_sig5 when input = "10" else
                  '0';
 
-end architecture RTL;
+  my_signal <= '1' when input = "0000" else
+                         my_signal2 or my_sig3 when input = "0100" and input = "1100" else
+my_sig4 when input = "0010" else
+         '0';
+
+  my_signal <= '1' when input(1 downto 0) = "00" and func1(func2(G_VALUE1),
+        to_integer(cons1(37 downto 0))) = 256 else
+                   '0' when input(3 downto 0) = "0010" else
+          'Z';
+ 
+  my_signal <= '1' when input(1 downto
+0) = "00" and func1(func2(G_VALUE1),
+        to_integer(cons1(37 downto 0))) = 256 else
+         '0' when input(3 downto 0) = "0010" else
+                       'Z';
+
+  my_signal <= '1' when a = "0000" and func1(345) or
+     b = "1000" and func2(567) and
+  c = "00" else
+     sig1 when a = "1000" and func2(560) and
+  b = "0010" else
+  '0';
+
+  my_signal <= '1' when input(1 downto
+0) = "00" and func1(func2(G_VALUE1),
+        to_integer(cons1(37 downto 0))) = 256 else
+         my_signal when input(3 downto 0) = "0010" else
+                       'Z';
+
+  -- Testing no code after assignment
+
+  my_signal <=
+      '1' when input(1 downto
+0) = "00" and func1(func2(G_VALUE1),
+        to_integer(cons1(37 downto 0))) = 256 else
+         my_signal when input(3 downto 0) = "0010" else
+                       'Z';
+  
+  my_signal <=
+      (others => '0') when input(1 downto
+0) = "00" and func1(func2(G_VALUE1),
+        to_integer(cons1(37 downto 0))) = 256 else
+         my_signal when input(3 downto 0) = "0010" else
+                       'Z';
+  
+end architecture rtl;

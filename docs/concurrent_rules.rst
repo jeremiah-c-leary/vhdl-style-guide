@@ -1,7 +1,6 @@
 Concurrent Rules
 ----------------
 
-
 concurrent_001
 ##############
 
@@ -206,12 +205,8 @@ concurrent_009
 ##############
 
 This rule checks alignment of multiline concurrent conditional signal statements.
-The waveform should align to the space after the assignment operator.
-Conditions should align with the **when** keyword.
 
-However, there is a special case if there are parenthesis in the assignment.
-If the parenthesis are not closed on the same line, then the next line will be aligned to the parenthesis.
-Aligning to the parenthesis improves readability.
+Refer to the section `Configuring Conditional Expressions and Conditional Waveforms Indent and Alignment <configuring.html#configuring-conditional-expressions>`_ for information on formatting options.
 
 **Violation**
 
@@ -252,6 +247,37 @@ This rule removes blank lines within concurrent signal assignments.
 
                         (I_CRUFT = '1')) else
 
+            '0';
+
+**Fix**
+
+.. code-block:: vhdl
+
+   wr_en <= '0' when q_wr_en = '1' else
+            '1';
+
+   w_foo <= I_FOO when ((I_BAR = '1') and
+                        (I_CRUFT = '1')) else
+            '0';
+
+concurrent_011
+##############
+
+This rule checks the structure of simple and conditional concurrent statements.
+
+Refer to the section `Configuring Conditional Expressions and Conditional Waveforms Structure Rules<configuring.html#configuring-conditional-expressions-structure-rules>`_ for information on formatting options.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   wr_en <=
+     '0' when q_wr_en = '1' else
+            '1';
+
+   w_foo <= 
+     I_FOO when ((I_BAR = '1') and
+                        (I_CRUFT = '1')) else
             '0';
 
 **Fix**
