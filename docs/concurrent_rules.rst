@@ -206,7 +206,7 @@ concurrent_009
 
 This rule checks alignment of multiline concurrent conditional signal statements.
 
-Refer to the section `Configuring Conditional Expressions and Conditional Waveforms Indent and Alignment <configuring.html#configuring-conditional-expressions>`_ for information on formatting options.
+Refer to the section `Configuring Concurrent Alignment Rules <configuring.html#configuring-concurrent-alignment-rules>`_ for information on formatting options.
 
 **Violation**
 
@@ -265,7 +265,7 @@ concurrent_011
 
 This rule checks the structure of simple and conditional concurrent statements.
 
-Refer to the section `Configuring Conditional Expressions and Conditional Waveforms Structure Rules<configuring.html#configuring-conditional-expressions-structure-rules>`_ for information on formatting options.
+Refer to the section `Configuring Concurrent Structure Rules <configuring.html#configuring-concurrent-structure-rules>`_ for information on formatting options.
 
 **Violation**
 

@@ -1,5 +1,5 @@
-Configuring Conditional Expressions and Conditional Waveforms Indent and Alignment
-----------------------------------------------------------------------------------
+Configuring Concurrent Alignment Rules
+--------------------------------------
 
 There are rules which will check indent and alignment of multiline conditional expressions and conditional waveforms.
 
@@ -70,11 +70,10 @@ This is an example of how to configure these options.
 
    rule :
      concurrent_009:
-        wrap_condition_at_when : 'yes'
+        wrap_at_when : 'yes'
         align_when_keywords : 'yes'
         align_else_keywords : 'yes'
         align_left : 'no'
-        ignore_single_line : 'yes'
 
 .. NOTE:: All examples below are using the rule **concurrent_009**.
 
@@ -188,6 +187,29 @@ The following code would pass with this option:
                sig_a or sig_b when input = "0100" and input = "1100" else
                sig_c when input = "10" else
                '0';
+
+Example: align_paren 'yes' and align_left 'no'
+##############################################
+
+The following code would fail with this option:
+
+.. code-block:: vhdl
+
+   output <= '1' when func1(func2(G_VALUE1,
+                        G_VALUE2), func3(
+                        G_VALUE3)
+                        ) else
+             '0';
+
+The following code would pass with this option:
+
+.. code-block:: vhdl
+
+   output <= '1' when func1(func2(G_VALUE1,
+                                   G_VALUE2), func3(
+                                                     G_VALUE3)
+                           ) else
+             '0';
 
 Rules Enforcing Conditional Expression
 ######################################

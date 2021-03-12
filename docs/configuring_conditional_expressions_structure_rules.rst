@@ -1,5 +1,5 @@
-Configuring Conditional Expressions and Conditional Waveforms Structures
-------------------------------------------------------------------------
+Configuring Concurrent Structure Rules
+--------------------------------------
 
 There are rules which will check the structure of conditional expressions and waveforms.
 
