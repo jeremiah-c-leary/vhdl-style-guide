@@ -202,7 +202,7 @@ def _set_indent(iToken, lTokens):
 
 
 def _analyze_align_paren_no(iFirstLine, iLastLine, lParens, iIndentStep, dActualIndent, bStartsWithParen):
-    print('--> _analyze_align_paren_no <-' + '-'*70)
+#    print('--> _analyze_align_paren_no <-' + '-'*70)
     dExpectedIndent = {}
     dExpectedIndent[iFirstLine] = dActualIndent[iFirstLine]
     if bStartsWithParen: 
@@ -212,11 +212,11 @@ def _analyze_align_paren_no(iFirstLine, iLastLine, lParens, iIndentStep, dActual
 
     iIndent = iFirstIndent
 
-    print(iIndent) 
+#    print(iIndent) 
     iParens = 0
 
     for iLine in range(iFirstLine, iLastLine + 1):
-        print('-->  ' + str(iLine) + '  <--------------------------')
+#        print('-->  ' + str(iLine) + '  <--------------------------')
 
         lTemp = []
         for dParen in lParens:
@@ -235,27 +235,11 @@ def _analyze_align_paren_no(iFirstLine, iLastLine, lParens, iIndentStep, dActual
                 if dTemp['begin_line']:
                     dExpectedIndent[iLine] -= iIndentStep 
 
-        if iLine == iFirstLine:
-            if bStartsWithParen:
-                if iParens == 0:
-                    iIndent = iFirstIndent + iParens * iIndentStep
-                else:
-                    iIndent = iFirstIndent + iParens * iIndentStep + iIndentStep
-#                    iIndent = iFirstIndent + iParens * iIndentStep
-            else: 
-                if iParens == 0:
-                    iIndent = iFirstIndent + iParens * iIndentStep
-                else:
-                    iIndent = iFirstIndent + iParens * iIndentStep
-        else:
-            if iParens == 0:
-                iIndent = iFirstIndent + iParens * iIndentStep
-            else:
-                iIndent = iFirstIndent + iParens * iIndentStep + iIndentStep
+        iIndent = iFirstIndent + iParens * iIndentStep
 
 #        print(f'indent = {iIndent} | iPerens = {iParens}')
         dExpectedIndent[iLine + 1] = iIndent
-        print(dExpectedIndent)
+#        print(dExpectedIndent)
 
     return dExpectedIndent
 
@@ -265,14 +249,14 @@ def _analyze_align_paren_yes_align_left_no(iFirstLine, iLastLine, lParens, dActu
     dExpectedIndent = {}
     dExpectedIndent[iFirstLine] = dActualIndent[iFirstLine]
 
-    if bStartsWithParen:
-       iIndent = dActualIndent[iFirstLine]
-       iColumn = iIndent
-       lColumn = [dActualIndent[iFirstLine]]
-    else:
-       iIndent = iAssignColumn + iFirstTokenLength + 1
-       iColumn = iIndent
-       lColumn = [iIndent]
+#    if bStartsWithParen:
+#       iIndent = dActualIndent[iFirstLine]
+#       iColumn = iIndent
+#       lColumn = [dActualIndent[iFirstLine]]
+#    else:
+    iIndent = iAssignColumn + iFirstTokenLength + 1
+    iColumn = iIndent
+    lColumn = [iIndent]
 
 #    print('*'*80)
 #    print(lParens)
@@ -294,7 +278,7 @@ def _analyze_align_paren_yes_align_left_no(iFirstLine, iLastLine, lParens, dActu
                 if iLine == iFirstLine:
                     iColumn = dTemp['column']
                 else:
-                    iColumn = dTemp['column'] + (iTemp - dActualIndent[iLine])
+                    iColumn = dTemp['column'] + (iTemp - dActualIndent[iLine]) + iIndentStep - 1
 #                print(f"iColumn = {dTemp['column']} + ({iTemp} - {dActualIndent[iLine]}) + {iIndentStep} - 1 = {iColumn}")
                 lColumn.append(iColumn)
                 dExpectedIndent[iLine + 1] = iColumn
@@ -303,7 +287,7 @@ def _analyze_align_paren_yes_align_left_no(iFirstLine, iLastLine, lParens, dActu
                 lColumn.pop()
                 dExpectedIndent[iLine + 1] = lColumn[-1]
                 if dTemp['begin_line']:
-                    dExpectedIndent[iLine] = dExpectedIndent[iLine] - 1
+                    dExpectedIndent[iLine] = dExpectedIndent[iLine] - iIndentStep
 
 #        print(f'iParens = {iParens}')
 
@@ -328,12 +312,10 @@ def _analyze_align_paren_yes_align_left_yes(iFirstLine, iLastLine, lParens, dAct
     dExpectedIndent[iFirstLine] = dActualIndent[iFirstLine]
 
     if bStartsWithParen:
-       iAdjust = 0
        iIndent = dActualIndent[iFirstLine]
        iColumn = iIndent
        lColumn = [dActualIndent[iFirstLine]]
     else:
-       iAdjust = iAssignColumn
        iIndent = iAssignColumn + 2 + 1
        iColumn = iIndent
        lColumn = [iIndent]
@@ -386,6 +368,10 @@ def _analyze_align_paren_yes_align_left_yes(iFirstLine, iLastLine, lParens, dAct
             if iParens == 0 and not bStartsWithParen:
                 dExpectedIndent[iLine + 1] = iIndentStep + dActualIndent[iFirstLine]
                 lColumn[-1] = iIndentStep + dActualIndent[iFirstLine] 
+            elif iParens == 0 and bStartsWithParen:
+                dExpectedIndent[iLine + 1] = dActualIndent[iFirstLine]
+                lColumn[-1] = dActualIndent[iFirstLine] 
+                
         else:
             if iParens == 1:
                 dExpectedIndent[iLine + 1] = iParens * iIndentStep + dActualIndent[iFirstLine]
