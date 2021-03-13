@@ -21,12 +21,15 @@ class blank_line_above_line_starting_with_token(rule.Rule):
        token object that a blank line above should appear
     '''
 
-    def __init__(self, name, identifier, lTokens, lAllowTokens=[]):
+    def __init__(self, name, identifier, lTokens, lAllowTokens=None):
         rule.Rule.__init__(self, name=name, identifier=identifier)
         self.solution = 'Insert blank line above'
         self.phase = 3
         self.lTokens = lTokens
-        self.lAllowTokens = lAllowTokens
+        if lAllowTokens is None:
+            self.lAllowTokens = []
+        else:
+            self.lAllowTokens = lAllowTokens
         self.style = 'require_blank_line'
         self.configuration.append('style')
 

@@ -23,13 +23,16 @@ class remove_excessive_blank_lines_above_line_starting_with_token(rule.Rule):
        token object that a blank line below should appear
     '''
 
-    def __init__(self, name, identifier, lTokens, iAllow=1, lOverrides=[]):
+    def __init__(self, name, identifier, lTokens, iAllow=1, lOverrides=None):
         rule.Rule.__init__(self, name=name, identifier=identifier)
         self.solution = 'Remove blank lines above'
         self.phase = 3
         self.lTokens = lTokens
         self.iAllow = iAllow
-        self.lOverrides = lOverrides
+        if lOverrides == None:
+            self.lOverrides = []
+        else:
+            self.lOverrides = lOverrides
 
     def analyze(self, oFile):
         lToi = oFile.get_blank_lines_above_line_starting_with_token(self.lTokens)

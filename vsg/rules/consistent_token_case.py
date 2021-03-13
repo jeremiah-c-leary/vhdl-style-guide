@@ -22,13 +22,16 @@ class consistent_token_case(rule.Rule):
        token type to apply the case check against
     '''
 
-    def __init__(self, name, identifier, lTokens, lIgnore=[]):
+    def __init__(self, name, identifier, lTokens, lIgnore=None):
         rule.Rule.__init__(self, name=name, identifier=identifier)
         self.solution = None
         self.phase = 6
         self.subphase = 2
         self.lTokens = lTokens
-        self.lIgnoreTokens = lIgnore
+        if lIgnore == None:
+            self.lIgnoreTokens = []
+        else:
+            self.lIgnoreTokens = lIgnore
 
     def analyze(self, oFile):
         lTargetTypes = oFile.get_tokens_matching(self.lTokens)
