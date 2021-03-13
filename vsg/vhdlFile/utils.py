@@ -136,8 +136,7 @@ def are_next_consecutive_token_types(lTypes, iToken, lObjects):
                     return False
             iCurrent += 1
             iTokenCount += 1
-        else:
-            return True
+        return True
     except IndexError:
         return False
 
