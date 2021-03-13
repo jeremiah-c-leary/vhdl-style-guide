@@ -65,7 +65,7 @@ class rule_009(rule.Rule):
             iAssignColumn = oFile.get_column_of_token_index(oToi.get_start_index())
             iColumn = iAssignColumn
 
-            bStartsWithParen = _starts_with_paren(lTokens) 
+            bStartsWithParen = _starts_with_paren(lTokens)
 
             dActualIndent = _build_actual_indent_dict(iLine, lTokens, iFirstLineIndent)
 
@@ -242,7 +242,7 @@ def _apply_align_left_option(sConfig, lStructure, dActualIndent, bStartsWithPare
 def _apply_align_paren_option(sConfig, lStructure, dActualIndent, bStartsWithParen, iIndentStep, iAssignColumn, iFirstIndent):
 #    print('--> _apply_align_paren_option <-' + '-'*70)
     if sConfig == 'no':
-        return dActualIndent, lStructure 
+        return dActualIndent, lStructure
     iFirstLine = _get_first_line(dActualIndent)
     iLastLine = _get_last_line(dActualIndent)
 
@@ -332,7 +332,7 @@ def _apply_align_paren_option(sConfig, lStructure, dActualIndent, bStartsWithPar
 def _apply_align_when_keywords_option(sConfig, lStructure, dActualIndent, bStartsWithParen, iIndentStep, iAssignColumn, iFirstIndent):
 #    print('--> _apply_align_when_keywords_option <-' + '-'*70)
     if sConfig == 'no':
-        return dActualIndent, lStructure 
+        return dActualIndent, lStructure
 
     iWhenMax = -1
     for dStruct in lStructure:
@@ -352,7 +352,7 @@ def _apply_align_when_keywords_option(sConfig, lStructure, dActualIndent, bStart
         if dStruct['type'] == 'return':
             bAdjust = False
         if bAdjust:
-            dStruct['column'] += iAdjust 
+            dStruct['column'] += iAdjust
         lNewStruct.append(dStruct)
 
     return dActualIndent, lNewStruct
@@ -361,7 +361,7 @@ def _apply_align_when_keywords_option(sConfig, lStructure, dActualIndent, bStart
 def _apply_wrap_at_when_option(sConfig, lStructure, dActualIndent, bStartsWithParen, iIndentStep, iAssignColumn, iFirstIndent):
 #    print('--> _apply_wrap_at_when_option <-' + '-'*70)
     if sConfig == 'no':
-        return dActualIndent, lStructure 
+        return dActualIndent, lStructure
     iFirstLine = _get_first_line(dActualIndent)
     iLastLine = _get_last_line(dActualIndent)
 
@@ -388,7 +388,7 @@ def _apply_wrap_at_when_option(sConfig, lStructure, dActualIndent, bStartsWithPa
 
     iWhenIndent = -1
     iParens = 0
-    
+
     for iLine in range(iFirstLine, iLastLine):
 
         lTemp = []
@@ -410,7 +410,7 @@ def _apply_wrap_at_when_option(sConfig, lStructure, dActualIndent, bStartsWithPa
             dExpectedIndent[iLine + 1] = iWhenIndent
         else:
             dExpectedIndent[iLine + 1] = dActualIndent[iLine + 1]
- 
+
     lReturnStructure = _update_structure(dExpectedIndent, dActualIndent, lStructure)
     return dExpectedIndent, lReturnStructure
 
@@ -507,7 +507,7 @@ def _apply_align_else_keywords_option(sConfig, lStructure, dActualIndent, bStart
 #    print('--> _apply_align_when_keywords_option <-' + '-'*70)
 
     if sConfig == 'no':
-        return dActualIndent, lStructure 
+        return dActualIndent, lStructure
     iFirstLine = _get_first_line(dActualIndent)
     iLastLine = _get_last_line(dActualIndent)
 
@@ -530,14 +530,14 @@ def _apply_align_else_keywords_option(sConfig, lStructure, dActualIndent, bStart
         if dStruct['type'] == 'return':
             bAdjust = False
         if bAdjust:
-            dStruct['column'] += iAdjust 
+            dStruct['column'] += iAdjust
         lNewStruct.append(dStruct)
 
     return dActualIndent, lNewStruct
 
 
 def _starts_with_paren(lTokens):
- 
+
     iToken = utils.find_next_non_whitespace_token(1, lTokens)
     if isinstance(lTokens[iToken], parser.open_parenthesis):
         return True
@@ -550,10 +550,10 @@ def _get_first_line_info(iLine, oFile):
     return iLine, iIndent
 
 
-def _build_actual_indent_dict(iLine, lTokens, iFirstLineIndent):    
+def _build_actual_indent_dict(iLine, lTokens, iFirstLineIndent):
     dReturn = {}
     dReturn[iLine] = iFirstLineIndent
-     
+
     for iToken, oToken in enumerate(lTokens):
 
         iLine = utils.increment_line_number(iLine, oToken)

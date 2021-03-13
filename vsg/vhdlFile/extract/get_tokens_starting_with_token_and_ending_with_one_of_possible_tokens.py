@@ -8,7 +8,7 @@ from vsg.vhdlFile import utils as vhdl_utils
 
 def get_tokens_starting_with_token_and_ending_with_one_of_possible_tokens(lStartTokens, lEndTokens, lAllTokens, oTokenMap, bIncludeStartToken=False, bIncludeEndToken=True, bEarliestDetect=False):
     '''
-    Returns a list of tokens objects which start with a token and ends 
+    Returns a list of tokens objects which start with a token and ends
 
     This extract function is intended for situations in which the start of a sequence of tokens is known, but the end token can vary due to optional language constructs.
 

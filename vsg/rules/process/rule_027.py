@@ -102,7 +102,7 @@ def _analyze_no_blank_line(self, lToi):
         lTokens.reverse()
 
         dAction['start'] = iStart
-        dAction['end'] = iEnd            
+        dAction['end'] = iEnd
         oViolation = violation.New(iLine, oToi, sSolution)
         oViolation.set_action(dAction)
         self.add_violation(oViolation)
