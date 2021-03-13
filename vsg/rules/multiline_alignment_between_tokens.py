@@ -50,7 +50,6 @@ class multiline_alignment_between_tokens(rule.Rule):
 
             iFirstLine, iFirstLineIndent = _get_first_line_info(iLine, oFile)
 
-            iFirstColumn, iNextColumn, iLastColumn = _find_first_column(oFile, oToi, self.align_left, iFirstLineIndent, self.indentSize)
             iAssignColumn = oFile.get_column_of_token_index(oToi.get_start_index())
             iColumn = iAssignColumn
 
@@ -151,25 +150,6 @@ def calculate_start_column(oFile, oToi):
     iReturn += 1
 #    print(f'Start Column = {iReturn}')
     return iReturn
-
-
-def _find_first_column(oFile, oToi, sAlignLeft, iIndentSize, iIndentStep):
-    iStartIndex = oToi.get_start_index()
-    if sAlignLeft == 'yes':
-        iIndentLevel = oFile.get_indent_of_line_at_index(iStartIndex)
-        iFirstColumn = iIndentLevel * iIndentSize + iIndentStep
-        if is_token_before_carriage_return(parser.open_parenthesis, oToi.get_tokens()):
-            iNextColumn = iFirstColumn + iIndentStep
-            iLastColumn = iIndentSize * iIndentLevel
-        else:
-            iNextColumn = iIndentSize * iIndentLevel
-            iLastColumn = iIndentSize * iIndentLevel
-    else:
-        iFirstColumn = oFile.get_column_of_token_index(iStartIndex)
-        iNextColumn = iFirstColumn
-        iLastColumn = iFirstColumn
-#    print(f'({iFirstColumn, iNextColumn, iLastColumn}')
-    return iFirstColumn, iNextColumn, iLastColumn
 
 
 def is_token_before_carriage_return(tToken, lTokens):
