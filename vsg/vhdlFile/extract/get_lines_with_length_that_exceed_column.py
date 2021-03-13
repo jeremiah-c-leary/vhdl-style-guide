@@ -10,6 +10,7 @@ def get_lines_with_length_that_exceed_column(iColumn, lAllTokens, oTokenMap):
     iLine = 1
     lReturn = []
     lTemp = []
+    iStart = None
     bFirstTokenInLine = False
     for iToken, oToken in enumerate(lAllTokens):
 

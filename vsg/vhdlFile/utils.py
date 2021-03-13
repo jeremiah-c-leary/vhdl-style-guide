@@ -153,8 +153,7 @@ def are_next_consecutive_token_types_ignoring_whitespace(lTypes, iToken, lObject
                     return False
             iCurrent += 1
             iTokenCount += 1
-        else:
-            return True
+        return True
     except IndexError:
         return False
 
@@ -171,8 +170,7 @@ def are_previous_consecutive_token_types_ignoring_whitespace(lTypes, iToken, lOb
                     return False
             iCurrent -= 1
             iTokenCount -= 1
-        else:
-            return True
+        return True
     except IndexError:
         return False
 
@@ -189,8 +187,7 @@ def find_in_next_n_tokens(sValue, iMax, iToken, lObjects):
         iCurrent += 1
         if iCurrent == iEnd:
             return False
-    else:
-        return False
+    return False
 
 
 def find_earliest_occurance(lEnd, iToken, lObjects):

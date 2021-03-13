@@ -508,8 +508,6 @@ def _apply_align_else_keywords_option(sConfig, lStructure, dActualIndent, bStart
 
     if sConfig == 'no':
         return dActualIndent, lStructure
-    iFirstLine = _get_first_line(dActualIndent)
-    iLastLine = _get_last_line(dActualIndent)
 
     iElseMax = -1
     for dStruct in lStructure:

@@ -14,7 +14,7 @@ def detect(iToken, lObjects):
         This is a classification if the signal, constant, or variable keywords can not be found.
         This is not in the VHDL LRM.
         It is based off the interface_signal_declaration as it has the most keywords.
-    
+
         interface_unknown_declaration ::=
             identifier_list : [ mode ] subtype_indication [ bus ] [ := *static*_expression ]
     '''
