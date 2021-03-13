@@ -6,17 +6,18 @@ from vsg.token import case_generate_statement as token
 from vsg.vhdlFile.classify import expression
 from vsg.vhdlFile.classify import case_generate_alternative
 
-'''
-    case_generate_statement ::=
-        *generate*_label :
-            case expression generate
-                case_generate_alternative
-                { case_generate_alternative }
-            end generate [ *generate*_label ] ;
-'''
 
 
 def detect(iToken, lObjects):
+    '''
+        case_generate_statement ::=
+            *generate*_label :
+                case expression generate
+                    case_generate_alternative
+                    { case_generate_alternative }
+                end generate [ *generate*_label ] ;
+    '''
+
     if utils.are_next_consecutive_tokens([None, ':', 'case'], iToken, lObjects):
         return classify(iToken, lObjects)
     if utils.are_next_consecutive_tokens(['case'], iToken, lObjects):

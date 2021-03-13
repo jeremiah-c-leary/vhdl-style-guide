@@ -8,16 +8,17 @@ from vsg.vhdlFile.classify import identifier_list
 from vsg.vhdlFile.classify import mode
 from vsg.vhdlFile.classify import subtype_indication
 
-'''
-    This is a classification if the signal, constant, or variable keywords can not be found.
-    This is not in the VHDL LRM.
-    It is based off the interface_signal_declaration as it has the most keywords.
-
-    interface_unknown_declaration ::=
-        identifier_list : [ mode ] subtype_indication [ bus ] [ := *static*_expression ]
-'''
 
 def detect(iToken, lObjects):
+    '''
+        This is a classification if the signal, constant, or variable keywords can not be found.
+        This is not in the VHDL LRM.
+        It is based off the interface_signal_declaration as it has the most keywords.
+    
+        interface_unknown_declaration ::=
+            identifier_list : [ mode ] subtype_indication [ bus ] [ := *static*_expression ]
+    '''
+
     if utils.is_next_token_one_of(['type', 'file', 'function', 'procedure', 'impure', 'pure', 'package'], iToken, lObjects):
         return iToken
     else:

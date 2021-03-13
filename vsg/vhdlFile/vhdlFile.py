@@ -323,54 +323,54 @@ def post_token_assignments(lTokens):
                 lTokens[iToken] = parser.comma()
                 continue
             if sValue.lower() == 'to':
-                lTokens[iToken] = token.direction.to(sValue)
+                lTokens[iToken] = direction.to(sValue)
                 continue
             if sValue.lower() == 'downto':
-                lTokens[iToken] = token.direction.downto(sValue)
+                lTokens[iToken] = direction.downto(sValue)
                 continue
             if sValue.lower() == 'and':
-                lTokens[iToken] = token.logical_operator.and_operator(sValue)
+                lTokens[iToken] = logical_operator.and_operator(sValue)
                 continue
             if sValue.lower() == 'or':
-                lTokens[iToken] = token.logical_operator.or_operator(sValue)
+                lTokens[iToken] = logical_operator.or_operator(sValue)
                 continue
             if sValue.lower() == 'nand':
-                lTokens[iToken] = token.logical_operator.nand_operator(sValue)
+                lTokens[iToken] = logical_operator.nand_operator(sValue)
                 continue
             if sValue.lower() == 'nor':
-                lTokens[iToken] = token.logical_operator.nor_operator(sValue)
+                lTokens[iToken] = logical_operator.nor_operator(sValue)
                 continue
             if sValue.lower() == 'xor':
-                lTokens[iToken] = token.logical_operator.xor_operator(sValue)
+                lTokens[iToken] = logical_operator.xor_operator(sValue)
                 continue
             if sValue.lower() == 'xnor':
-                lTokens[iToken] = token.logical_operator.xnor_operator(sValue)
+                lTokens[iToken] = logical_operator.xnor_operator(sValue)
                 continue
             if sValue.lower() == '**':
-                lTokens[iToken] = token.miscellaneous_operator.double_star(sValue)
+                lTokens[iToken] = miscellaneous_operator.double_star(sValue)
                 continue
             if sValue.lower() == 'abs':
-                lTokens[iToken] = token.miscellaneous_operator.abs_operator(sValue)
+                lTokens[iToken] = miscellaneous_operator.abs_operator(sValue)
                 continue
             if sValue.lower() == 'not':
-                lTokens[iToken] = token.miscellaneous_operator.not_operator(sValue)
+                lTokens[iToken] = miscellaneous_operator.not_operator(sValue)
                 continue
 
             if sValue.lower() == '*':
-                lTokens[iToken] = token.multiplying_operator.star(sValue)
+                lTokens[iToken] = multiplying_operator.star(sValue)
                 continue
             if sValue.lower() == '/':
-                lTokens[iToken] = token.multiplying_operator.slash(sValue)
+                lTokens[iToken] = multiplying_operator.slash(sValue)
                 continue
             if sValue.lower() == 'mod':
-                lTokens[iToken] = token.multiplying_operator.mod_operator(sValue)
+                lTokens[iToken] = multiplying_operator.mod_operator(sValue)
                 continue
             if sValue.lower() == 'rem':
-                lTokens[iToken] = token.multiplying_operator.rem_operator(sValue)
+                lTokens[iToken] = multiplying_operator.rem_operator(sValue)
                 continue
 
             if sValue == '=':
-                lTokens[iToken] = token.relational_operator.equal(sValue)
+                lTokens[iToken] = relational_operator.equal(sValue)
                 continue
 
 
@@ -384,20 +384,20 @@ def post_token_assignments(lTokens):
 
             ### IEEE values
             if sValue.lower() == 'rising_edge':
-                lTokens[iToken] = token.ieee.std_logic_1164.function.rising_edge(sValue)
+                lTokens[iToken] = function.rising_edge(sValue)
                 continue
             if sValue.lower() == 'falling_edge':
-                lTokens[iToken] = token.ieee.std_logic_1164.function.falling_edge(sValue)
+                lTokens[iToken] = function.falling_edge(sValue)
                 continue
 
             if sValue.lower() == 'std_logic_vector':
-                lTokens[iToken] = token.ieee.std_logic_1164.types.std_logic_vector(sValue)
+                lTokens[iToken] = types.std_logic_vector(sValue)
 
             if sValue.lower() == 'std_ulogic_vector':
-                lTokens[iToken] = token.ieee.std_logic_1164.types.std_ulogic_vector(sValue)
+                lTokens[iToken] = types.std_ulogic_vector(sValue)
 
             if sValue.lower() == 'std_ulogic':
-                lTokens[iToken] = token.ieee.std_logic_1164.types.std_ulogic(sValue)
+                lTokens[iToken] = types.std_ulogic(sValue)
 
             if len(sValue) == 3 and sValue.startswith("'") and sValue.endswith("'"):
                 lTokens[iToken] = parser.character_literal(sValue)
