@@ -40,6 +40,10 @@ class rule_001(rule.Rule):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             iLine = oToi.get_line_number()
+            oAnchorToken = None
+            iMoveToLine = None
+            iLeft = None
+
             for iToken, oToken in enumerate(lTokens):
                 iLine = utils.increment_line_number(iLine, oToken)
                 for oMoveToken in self.lMoveTokens:

@@ -22,7 +22,7 @@ class consistent_case_of_tokens_from_between_tokens_applied_to_region(rule.Rule)
        token type to apply the case check against
     '''
 
-    def __init__(self, name, identifier, lTokens, oStart, oEnd, oRegionStart, oRegionEnd, lIgnore=[]):
+    def __init__(self, name, identifier, lTokens, oStart, oEnd, oRegionStart, oRegionEnd, lIgnore=None):
         rule.Rule.__init__(self, name=name, identifier=identifier)
         self.solution = None
         self.phase = 6
@@ -32,7 +32,10 @@ class consistent_case_of_tokens_from_between_tokens_applied_to_region(rule.Rule)
         self.oEnd = oEnd
         self.oRegionStart = oRegionStart
         self.oRegionEnd = oRegionEnd
-        self.lIgnoreTokens = lIgnore
+        if lIgnore is None:
+            self.lIgnoreTokens = []
+        else:
+            self.lIgnoreTokens = lIgnore
 
     def analyze(self, oFile):
         self._print_debug_message('Analyzing rule: ' + self.unique_id)

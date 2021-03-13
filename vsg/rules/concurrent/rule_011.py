@@ -64,7 +64,7 @@ class rule_011(rule.Rule):
 def _check_new_line_after_assign(self, oToi):
 
     if self.new_line_after_assign == 'ignore':
-        return 
+        return
 
     iLine, lTokens = utils.get_toi_parameters(oToi)
 

@@ -55,7 +55,6 @@ class insert_token_left_of_token_if_it_does_not_exist_between_tokens(rule.Rule):
 
         for oToi in lToi:
             lTokens = oToi.get_tokens()
-            bFound = False
             dAction = {}
             for iToken, oToken in enumerate(lTokens):
                 if isinstance(oToken, type(self.insert_token)):

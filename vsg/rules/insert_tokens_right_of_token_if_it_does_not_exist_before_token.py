@@ -47,7 +47,7 @@ class insert_tokens_right_of_token_if_it_does_not_exist_before_token(rule.Rule):
         if self.action == 'add':
             for oToi in lToi:
                 lTokens = oToi.get_tokens()
-                bFound = False
+
                 for oToken in lTokens:
                     if isinstance(oToken, type(self.insert_tokens[0])):
                         break

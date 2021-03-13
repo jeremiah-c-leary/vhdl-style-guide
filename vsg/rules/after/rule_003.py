@@ -63,6 +63,7 @@ class rule_003(rule.Rule):
             iLine, lTokens = utils.get_toi_parameters(oToi)
             bInsideAssignment = False
             bResetFound = False
+            iStartIndex = None
 
             for iToken, oToken in enumerate(lTokens):
                 iLine = utils.increment_line_number(iLine, oToken)

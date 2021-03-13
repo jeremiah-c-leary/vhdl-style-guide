@@ -155,7 +155,6 @@ def _check_open_paren_new_line(self, oToi):
 
     iLine, lTokens = utils.get_toi_parameters(oToi)
 
-    bSearch = False
     bAssignmentFound = False
     bOthersClause = False
 
@@ -207,9 +206,6 @@ def _check_close_paren_new_line(self, oToi):
 
     iLine, lTokens = utils.get_toi_parameters(oToi)
 
-    bSearch = False
-    iOpenParen = 0
-    iCloseParen = 0
     bAssignmentFound = False
     bOthersClause = False
 
@@ -264,9 +260,6 @@ def _check_new_line_after_comma(self, oToi):
 
     iLine, lTokens = utils.get_toi_parameters(oToi)
 
-    bSearch = False
-    iOpenParen = 0
-    iCloseParen = 0
     bAssignmentFound = False
     bOthersClause = False
     bPositionalFound = True
@@ -328,9 +321,6 @@ def _check_assign_on_single_line(self, oToi):
 
     iLine, lTokens = utils.get_toi_parameters(oToi)
 
-    bSearch = False
-    iOpenParen = 0
-    iCloseParen = 0
     bAssignmentFound = False
     bOthersClause = False
 

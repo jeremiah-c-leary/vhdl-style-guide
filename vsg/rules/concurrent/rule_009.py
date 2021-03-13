@@ -61,7 +61,7 @@ class rule_009(rule.Rule):
 
             iFirstLine, iFirstLineIndent = _get_first_line_info(iLine, oFile)
 
-            iFirstColumn = _find_first_column(oFile, oToi, self.align_left, iFirstLineIndent, self.indentSize)
+#            iFirstColumn = _find_first_column(oFile, oToi, self.align_left, iFirstLineIndent, self.indentSize)
             iAssignColumn = oFile.get_column_of_token_index(oToi.get_start_index())
             iColumn = iAssignColumn
 
@@ -333,8 +333,6 @@ def _apply_align_when_keywords_option(sConfig, lStructure, dActualIndent, bStart
 #    print('--> _apply_align_when_keywords_option <-' + '-'*70)
     if sConfig == 'no':
         return dActualIndent, lStructure 
-    iFirstLine = _get_first_line(dActualIndent)
-    iLastLine = _get_last_line(dActualIndent)
 
     iWhenMax = -1
     for dStruct in lStructure:
@@ -389,7 +387,6 @@ def _apply_wrap_at_when_option(sConfig, lStructure, dActualIndent, bStartsWithPa
             lParens.append(dStruct)
 
     iWhenIndent = -1
-    iParensLast = 0
     iParens = 0
     
     for iLine in range(iFirstLine, iLastLine):

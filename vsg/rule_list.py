@@ -122,7 +122,7 @@ class rule_list():
         self.violations = False
         self.oSeverityList = oSeverityList
 
-    def fix(self, iFixPhase=7, lSkipPhase=[], dFixOnly=None):
+    def fix(self, iFixPhase=7, lSkipPhase=None, dFixOnly=None):
         '''
         Applies fixes to all violations found.
 
@@ -134,6 +134,8 @@ class rule_list():
 
           dFixOnly : (fix list dictionary)
         '''
+        if lSkipPhase is None:
+            lSkipPhase = []
         for phase in range(1, int(iFixPhase) + 1):
             if phase in lSkipPhase:
                 if phase == 1:
@@ -187,7 +189,7 @@ class rule_list():
                 lReturn.append(oRule)
         return lReturn
 
-    def check_rules(self, bAllPhases=False, lSkipPhase=[]):
+    def check_rules(self, bAllPhases=False, lSkipPhase=None):
         '''
         Analyzes all rules in increasing phase order.
         If there is a violation in a phase, analysis is halted.
@@ -197,6 +199,8 @@ class rule_list():
             bAllPhases : (boolean)
             lSkipPhase : (list of integers)
         '''
+        if lSkipPhase is None:
+            lSkipPhase = []
         self.iNumberRulesRan = 0
         iFailures = 0
         self.violations = False

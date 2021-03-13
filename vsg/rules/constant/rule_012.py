@@ -53,7 +53,6 @@ class rule_012(rule.Rule):
 
             iFirstLine, iFirstLineIndent = _get_first_line_info(iLine, oFile)
 
-            iFirstColumn, iNextColumn, iLastColumn = _find_first_column(oFile, oToi, self.align_left, iFirstLineIndent, self.indentSize)
             iAssignColumn = oFile.get_column_of_token_index(oToi.get_start_index())
             iColumn = iAssignColumn
 
@@ -151,25 +150,6 @@ def calculate_start_column(oFile, oToi):
     return iReturn
 
 
-def _find_first_column(oFile, oToi, bAlignLeft, iIndentSize, iIndentStep):
-    iStartIndex = oToi.get_start_index()
-    if bAlignLeft:
-        iIndentLevel = oFile.get_indent_of_line_at_index(iStartIndex)
-        iFirstColumn = iIndentLevel * iIndentSize + iIndentStep
-        if is_token_before_carriage_return(parser.open_parenthesis, oToi.get_tokens()):
-            iNextColumn = iFirstColumn + iIndentStep
-            iLastColumn = iIndentSize * iIndentLevel
-        else:
-            iNextColumn = iIndentSize * iIndentLevel
-            iLastColumn = iIndentSize * iIndentLevel
-    else:
-        iFirstColumn = oFile.get_column_of_token_index(iStartIndex)
-        iNextColumn = iFirstColumn
-        iLastColumn = iFirstColumn
-#    print(f'({iFirstColumn, iNextColumn, iLastColumn}')
-    return iFirstColumn, iNextColumn, iLastColumn
-
-
 def is_token_before_carriage_return(tToken, lTokens):
     for oToken in lTokens:
         if isinstance(oToken, tToken):
@@ -254,12 +234,10 @@ def _analyze_align_paren_true(iFirstLine, iLastLine, lParens, dActualIndent, iIn
     dExpectedIndent[iFirstLine] = dActualIndent[iFirstLine]
 
     if bStartsWithParen:
-       iAdjust = 0
        iIndent = dActualIndent[iFirstLine]
        iColumn = iIndent
        lColumn = [dActualIndent[iFirstLine]]
     else:
-       iAdjust = iAssignColumn
        iIndent = iAssignColumn + 2 + 1
        iColumn = iIndent
        lColumn = [iIndent]
@@ -317,12 +295,10 @@ def _analyze_align_paren_true_align_left_true(iFirstLine, iLastLine, lParens, dA
     dExpectedIndent[iFirstLine] = dActualIndent[iFirstLine]
 
     if bStartsWithParen:
-       iAdjust = 0
        iIndent = dActualIndent[iFirstLine]
        iColumn = iIndent
        lColumn = [dActualIndent[iFirstLine]]
     else:
-       iAdjust = iAssignColumn
        iIndent = iAssignColumn + 2 + 1
        iColumn = iIndent
        lColumn = [iIndent]
