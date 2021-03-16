@@ -41,20 +41,20 @@ There are several options to these rules:
 +---------------------------+---------+---------+---------------------------------------------------------+
 | Option                    |   Type  | Default | Description                                             |
 +===========================+=========+=========+=========================================================+
-| align_left                | string  |  'no'   | Align multilines to the left                            |
+| align_left                | string  |  'no'   | Align multilines to the left.                           |
 +---------------------------+---------+---------+---------------------------------------------------------+
-| align_paren               | string  |  'yes'  | Indent lines based on parenthesis                       |
+| align_paren               | string  |  'yes'  | Indent lines based on parenthesis.                      |
 +---------------------------+---------+---------+---------------------------------------------------------+
-| align_when_keywords       | string  |  'no'   | each when keyword will be aligned                       |
+| align_when_keywords       | string  |  'no'   | Each when keyword will be aligned.                      |
 +---------------------------+---------+---------+---------------------------------------------------------+
-| wrap_at_when              | string  |  'yes'  | Indent multiline condition at when keyword.             |
+| wrap_at_when              | string  |  'yes'  | Indent multiline condition at 'when' keyword.           |
 +---------------------------+---------+---------+---------------------------------------------------------+
-| align_else_keywords       | string  |  'no'   | each else keyword will be aligned                       |
+| align_else_keywords       | string  |  'no'   | Each else keyword will be aligned.                      |
 +---------------------------+---------+---------+---------------------------------------------------------+
 
 The options can be combined to format the conditional expression or conditional waveform.
 
-Each option allows one two values:  'yes' and 'no'.
+Each option allows one of two values:  'yes' and 'no'.
 
 +----------------------+---------------------------------------------------------+
 | Option Value         | Action                                                  |

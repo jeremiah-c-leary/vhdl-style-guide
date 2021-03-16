@@ -293,3 +293,7 @@ The following code would fail with this option set to True:
                  std_logic_vector(G_GEN), G_GEN2)
     );
 
+Rules Enforcing Multiline Structure Rules
+#########################################
+
+* `concurrent_011 <concurrent_rules.html#concurrent_011>`_
