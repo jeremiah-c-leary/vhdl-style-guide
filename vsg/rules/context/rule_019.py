@@ -10,4 +10,4 @@ class rule_019(single_space_between_tokens):
     '''
     def __init__(self):
         single_space_between_tokens.__init__(self, 'context', '019', token.end_context_keyword, token.context_simple_name)
-        self.solution = 'Reduce spaces between context keyword and context_simple_name to a single space.'
+        self.solution = 'Reduce spaces between *context* keyword and context_simple_name to a single space.'

@@ -19,4 +19,4 @@ class rule_100(single_space_between_token_pairs):
     '''
     def __init__(self):
         single_space_between_token_pairs.__init__(self, 'procedure_call', '100', lTokens)
-        self.solution = 'Ensure a single space between the label, colon, postponed keyword and procedure_name.'
+        self.solution = 'Ensure a single space between the label, colon, *postponed* keyword and procedure_name.'

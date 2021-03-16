@@ -15,7 +15,7 @@ class rule_021(rule.Rule):
 
     def __init__(self):
         rule.Rule.__init__(self, 'process', '021')
-        self.solution = 'Remove blank lines above begin keyword'
+        self.solution = 'Remove blank lines above *begin* keyword'
         self.phase = 1
         self.style = 'no_blank_line_line'
         self.configuration.append('style')
@@ -53,7 +53,7 @@ class rule_021(rule.Rule):
 
 
 def _analyze_no_blank_line(self, lToi):
-    sSolution = 'Remove blank lines above begin keyword'
+    sSolution = 'Remove blank lines above *begin* keyword'
     dAction = {}
     dAction['action'] = 'Remove'
     for oToi in lToi:
@@ -80,7 +80,7 @@ def _analyze_no_blank_line(self, lToi):
                     break
 
 def _analyze_require_blank_line(self, lToi):
-    sSolution = 'Add blank line above begin keyword'
+    sSolution = 'Add blank line above *begin* keyword'
     dAction = {}
     dAction['action'] = 'Insert'
     for oToi in lToi:

@@ -15,4 +15,4 @@ class rule_013(single_space_between_token_pairs):
     '''
     def __init__(self):
         single_space_between_token_pairs.__init__(self, 'generate', '013', lTokens)
-        self.solution = 'Ensure there is only one space between the "generate" keyword and the label.'
+        self.solution = 'Ensure there is only one space between the *generate* keyword and the label.'

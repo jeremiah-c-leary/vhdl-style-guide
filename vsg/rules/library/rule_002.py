@@ -13,4 +13,4 @@ class rule_002(single_space_between_token_pairs):
     '''
     def __init__(self):
         single_space_between_token_pairs.__init__(self, 'library', '002', lTokens)
-        self.solution = 'Ensure a single space between the library keyword and the logical_name.'
+        self.solution = 'Ensure a single space between the *library* keyword and the logical_name.'

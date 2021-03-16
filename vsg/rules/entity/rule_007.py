@@ -10,4 +10,4 @@ class rule_007(single_space_between_tokens):
     '''
     def __init__(self):
         single_space_between_tokens.__init__(self, 'entity', '007', token.identifier, token.is_keyword)
-        self.solution = 'Reduce spaces between identifier and is keyword to a single space.'
+        self.solution = 'Reduce spaces between identifier and *is* keyword to a single space.'

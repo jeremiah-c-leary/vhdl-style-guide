@@ -13,4 +13,4 @@ class rule_025(single_space_between_token_pairs):
     '''
     def __init__(self):
         single_space_between_token_pairs.__init__(self, 'process', '025', lTokens)
-        self.solution = 'Ensure a single space exists between the : and the "process" keyword.'
+        self.solution = 'Ensure a single space exists between the : and the *process* keyword.'

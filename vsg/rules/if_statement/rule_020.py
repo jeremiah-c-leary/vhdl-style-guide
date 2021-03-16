@@ -14,4 +14,4 @@ class rule_020(split_line_at_token):
 
     def __init__(self):
         split_line_at_token.__init__(self, 'if', '020', lTokens)
-        self.solution = 'Move "end if" keyword to it\'s own line.'
+        self.solution = 'Move *end if* keywords to their own line.'

@@ -14,4 +14,4 @@ class rule_009(single_space_between_token_pairs):
     '''
     def __init__(self):
         single_space_between_token_pairs.__init__(self, 'package', '009', lTokens)
-        self.solution = 'Single space between "end" and "package" keywords and package_simple_name.'
+        self.solution = 'Single space between *end* and *package* keywords and package_simple_name.'

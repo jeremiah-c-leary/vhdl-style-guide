@@ -13,4 +13,4 @@ class rule_006(single_space_between_token_pairs):
     '''
     def __init__(self):
         single_space_between_token_pairs.__init__(self, 'type', '006', lTokens)
-        self.solution = 'Ensure only a single space before the is keyword.'
+        self.solution = 'Ensure only a single space before the *is* keyword.'

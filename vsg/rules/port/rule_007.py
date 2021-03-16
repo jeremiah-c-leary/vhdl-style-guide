@@ -19,4 +19,4 @@ class rule_007(n_spaces_between_token_pairs_when_bounded_by_tokens):
     '''
     def __init__(self):
         n_spaces_between_token_pairs_when_bounded_by_tokens.__init__(self, 'port', '007', 4, lTokens, oStart, oEnd)
-        self.solution = 'Change the number of spaces after the "in" keyword to four spaces.'
+        self.solution = 'Change the number of spaces after the *in* keyword to four spaces.'

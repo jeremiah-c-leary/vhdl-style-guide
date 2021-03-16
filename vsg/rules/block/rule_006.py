@@ -14,4 +14,4 @@ class rule_006(split_line_at_token):
 
     def __init__(self):
         split_line_at_token.__init__(self, 'block', '006', lTokens)
-        self.solution = 'Move end keyword and code after it to the next line'
+        self.solution = 'Move *end* keyword and code after it to the next line'

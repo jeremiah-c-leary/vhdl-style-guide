@@ -14,4 +14,4 @@ class rule_004(single_space_between_token_pairs):
     '''
     def __init__(self):
         single_space_between_token_pairs.__init__(self, 'if', '004', lTokens)
-        self.solution = 'Ensure only a single space exists between the ) and "then" keyword.'
+        self.solution = 'Ensure only a single space exists between the ) and *then* keyword.'

@@ -19,4 +19,4 @@ class rule_009(n_spaces_between_token_pairs_when_bounded_by_tokens):
     '''
     def __init__(self):
         n_spaces_between_token_pairs_when_bounded_by_tokens.__init__(self, 'port', '009', 1, lTokens, oStart, oEnd)
-        self.solution = 'Change the number of spaces after the "inout" keyword to one space.'
+        self.solution = 'Change the number of spaces after the *inout* keyword to one space.'

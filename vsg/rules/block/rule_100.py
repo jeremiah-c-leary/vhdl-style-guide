@@ -17,4 +17,4 @@ class rule_100(single_space_between_token_pairs):
     '''
     def __init__(self):
         single_space_between_token_pairs.__init__(self, 'block', '100', lTokens)
-        self.solution = 'Ensure a single space between the package keyword and body keyword and identifier and is keyword.'
+        self.solution = 'Ensure a single space between the *package* keyword and *body* keyword and identifier and *is* keyword.'

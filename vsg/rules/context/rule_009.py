@@ -14,4 +14,4 @@ class rule_009(move_token_next_to_another_token_if_it_exists_between_tokens):
     def __init__(self):
         move_token_next_to_another_token_if_it_exists_between_tokens.__init__(self, 'context', '009', token.end_keyword, token.end_context_keyword, lBetweenTokens)
         self.subphase = 1
-        self.solution = 'Move identifier next to end keyword'
+        self.solution = 'Move identifier next to *end* keyword'

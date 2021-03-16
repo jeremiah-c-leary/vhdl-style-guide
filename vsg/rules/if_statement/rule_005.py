@@ -14,4 +14,4 @@ class rule_005(single_space_between_token_pairs):
     '''
     def __init__(self):
         single_space_between_token_pairs.__init__(self, 'if', '005', lTokens)
-        self.solution = 'Ensure only a single space exists between the elsif keyword and {.'
+        self.solution = 'Ensure only a single space exists between the *elsif* keyword and {.'

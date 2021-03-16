@@ -15,4 +15,4 @@ class rule_003(whitespace_before_token):
     '''
     def __init__(self):
         whitespace_before_token.__init__(self, 'variable_assignment', '003', lTokens)
-        self.solution = 'Ensure at least a single space exists before the ":=" keyword.'
+        self.solution = 'Ensure at least a single space exists before the *:=* keyword.'

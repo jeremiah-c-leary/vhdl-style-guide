@@ -1158,7 +1158,7 @@
         {
           "rule": "entity_015",
           "linenumber": 209,
-          "solution": "Add entity keyword"
+          "solution": "Add *entity* keyword"
         },
         {
           "rule": "entity_017",
@@ -2608,122 +2608,122 @@
         {
           "rule": "port_007",
           "linenumber": 181,
-          "solution": "Change the number of spaces after the \"in\" keyword to four spaces."
+          "solution": "Change the number of spaces after the *in* keyword to four spaces."
         },
         {
           "rule": "port_007",
           "linenumber": 182,
-          "solution": "Change the number of spaces after the \"in\" keyword to four spaces."
+          "solution": "Change the number of spaces after the *in* keyword to four spaces."
         },
         {
           "rule": "port_007",
           "linenumber": 183,
-          "solution": "Change the number of spaces after the \"in\" keyword to four spaces."
+          "solution": "Change the number of spaces after the *in* keyword to four spaces."
         },
         {
           "rule": "port_007",
           "linenumber": 188,
-          "solution": "Change the number of spaces after the \"in\" keyword to four spaces."
+          "solution": "Change the number of spaces after the *in* keyword to four spaces."
         },
         {
           "rule": "port_007",
           "linenumber": 191,
-          "solution": "Change the number of spaces after the \"in\" keyword to four spaces."
+          "solution": "Change the number of spaces after the *in* keyword to four spaces."
         },
         {
           "rule": "port_007",
           "linenumber": 192,
-          "solution": "Change the number of spaces after the \"in\" keyword to four spaces."
+          "solution": "Change the number of spaces after the *in* keyword to four spaces."
         },
         {
           "rule": "port_008",
           "linenumber": 185,
-          "solution": "Change the number of spaces after the \"out\" keyword to three spaces."
+          "solution": "Change the number of spaces after the *out* keyword to three spaces."
         },
         {
           "rule": "port_008",
           "linenumber": 186,
-          "solution": "Change the number of spaces after the \"out\" keyword to three spaces."
+          "solution": "Change the number of spaces after the *out* keyword to three spaces."
         },
         {
           "rule": "port_008",
           "linenumber": 187,
-          "solution": "Change the number of spaces after the \"out\" keyword to three spaces."
+          "solution": "Change the number of spaces after the *out* keyword to three spaces."
         },
         {
           "rule": "port_008",
           "linenumber": 190,
-          "solution": "Change the number of spaces after the \"out\" keyword to three spaces."
+          "solution": "Change the number of spaces after the *out* keyword to three spaces."
         },
         {
           "rule": "port_008",
           "linenumber": 193,
-          "solution": "Change the number of spaces after the \"out\" keyword to three spaces."
+          "solution": "Change the number of spaces after the *out* keyword to three spaces."
         },
         {
           "rule": "port_008",
           "linenumber": 194,
-          "solution": "Change the number of spaces after the \"out\" keyword to three spaces."
+          "solution": "Change the number of spaces after the *out* keyword to three spaces."
         },
         {
           "rule": "port_008",
           "linenumber": 195,
-          "solution": "Change the number of spaces after the \"out\" keyword to three spaces."
+          "solution": "Change the number of spaces after the *out* keyword to three spaces."
         },
         {
           "rule": "port_008",
           "linenumber": 197,
-          "solution": "Change the number of spaces after the \"out\" keyword to three spaces."
+          "solution": "Change the number of spaces after the *out* keyword to three spaces."
         },
         {
           "rule": "port_008",
           "linenumber": 198,
-          "solution": "Change the number of spaces after the \"out\" keyword to three spaces."
+          "solution": "Change the number of spaces after the *out* keyword to three spaces."
         },
         {
           "rule": "port_008",
           "linenumber": 199,
-          "solution": "Change the number of spaces after the \"out\" keyword to three spaces."
+          "solution": "Change the number of spaces after the *out* keyword to three spaces."
         },
         {
           "rule": "port_008",
           "linenumber": 200,
-          "solution": "Change the number of spaces after the \"out\" keyword to three spaces."
+          "solution": "Change the number of spaces after the *out* keyword to three spaces."
         },
         {
           "rule": "port_008",
           "linenumber": 201,
-          "solution": "Change the number of spaces after the \"out\" keyword to three spaces."
+          "solution": "Change the number of spaces after the *out* keyword to three spaces."
         },
         {
           "rule": "port_008",
           "linenumber": 202,
-          "solution": "Change the number of spaces after the \"out\" keyword to three spaces."
+          "solution": "Change the number of spaces after the *out* keyword to three spaces."
         },
         {
           "rule": "port_008",
           "linenumber": 203,
-          "solution": "Change the number of spaces after the \"out\" keyword to three spaces."
+          "solution": "Change the number of spaces after the *out* keyword to three spaces."
         },
         {
           "rule": "port_008",
           "linenumber": 204,
-          "solution": "Change the number of spaces after the \"out\" keyword to three spaces."
+          "solution": "Change the number of spaces after the *out* keyword to three spaces."
         },
         {
           "rule": "port_008",
           "linenumber": 205,
-          "solution": "Change the number of spaces after the \"out\" keyword to three spaces."
+          "solution": "Change the number of spaces after the *out* keyword to three spaces."
         },
         {
           "rule": "port_008",
           "linenumber": 206,
-          "solution": "Change the number of spaces after the \"out\" keyword to three spaces."
+          "solution": "Change the number of spaces after the *out* keyword to three spaces."
         },
         {
           "rule": "port_008",
           "linenumber": 207,
-          "solution": "Change the number of spaces after the \"out\" keyword to three spaces."
+          "solution": "Change the number of spaces after the *out* keyword to three spaces."
         },
         {
           "rule": "port_012",
@@ -3008,7 +3008,7 @@
         {
           "rule": "process_027",
           "linenumber": 323,
-          "solution": "Insert blank line above begin keyword"
+          "solution": "Insert blank line above *begin* keyword"
         },
         {
           "rule": "process_035",

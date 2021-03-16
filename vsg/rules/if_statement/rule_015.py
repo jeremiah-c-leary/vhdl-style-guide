@@ -13,4 +13,4 @@ class rule_015(single_space_between_token_pairs):
     '''
     def __init__(self):
         single_space_between_token_pairs.__init__(self, 'if', '015', lTokens)
-        self.solution = 'Ensure only a single space exists between the "end" and "if" keywords.'
+        self.solution = 'Ensure only a single space exists between the *end* and *if* keywords.'

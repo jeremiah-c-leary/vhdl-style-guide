@@ -14,4 +14,4 @@ class rule_007(single_space_between_token_pairs):
     '''
     def __init__(self):
         single_space_between_token_pairs.__init__(self, 'process', '007', lTokens)
-        self.solution = 'Ensure a single space after the end keyword.'
+        self.solution = 'Ensure a single space after the *end* keyword.'

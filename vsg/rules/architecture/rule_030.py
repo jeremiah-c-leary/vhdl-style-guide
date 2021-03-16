@@ -9,4 +9,4 @@ class rule_030(single_space_between_tokens):
     '''
     def __init__(self):
         single_space_between_tokens.__init__(self, 'architecture', '030', token.architecture_keyword, token.identifier)
-        self.solution = 'Reduce spaces between architecture keyword and identifier to a single space.'
+        self.solution = 'Reduce spaces between *architecture* keyword and identifier to a single space.'

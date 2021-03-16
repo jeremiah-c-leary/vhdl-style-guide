@@ -83,7 +83,7 @@
       {
         "rule": "entity_015",
         "linenumber": 209,
-        "solution": "Add entity keyword"
+        "solution": "Add *entity* keyword"
       },
       {
         "rule": "generate_011",

@@ -44,7 +44,7 @@ class rule_027(rule.Rule):
 
 
 def _analyze_require_blank_line(self, lToi):
-    sSolution = 'Insert blank line above begin keyword'
+    sSolution = 'Insert blank line above *begin* keyword'
     for oToi in lToi:
         lTokens = oToi.get_tokens()
         iLine = oToi.get_line_number() + utils.count_carriage_returns(lTokens)
@@ -71,7 +71,7 @@ def _analyze_require_blank_line(self, lToi):
         self.add_violation(oViolation)
 
 def _analyze_no_blank_line(self, lToi):
-    sSolution = 'Remove blank line(s) above begin keyword'
+    sSolution = 'Remove blank line(s) above *begin* keyword'
     for oToi in lToi:
         lTokens = oToi.get_tokens()
         iLine = oToi.get_line_number() + utils.count_carriage_returns(lTokens)

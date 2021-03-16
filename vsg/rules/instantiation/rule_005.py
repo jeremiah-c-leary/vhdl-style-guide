@@ -18,4 +18,4 @@ class rule_005(split_line_at_token_when_between_tokens):
 
     def __init__(self):
         split_line_at_token_when_between_tokens.__init__(self, 'instantiation', '005', lTokens, oStart, oEnd)
-        self.solution = 'Place "port map" keywords on the next line by itself'
+        self.solution = 'Place *port map* keywords on the next line by itself'
