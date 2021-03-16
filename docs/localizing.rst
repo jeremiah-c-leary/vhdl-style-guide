@@ -2,6 +2,7 @@ Localizing
 ==========
 .. WARNING:: This information is out of date with the release of 3.0.0
 .. WARNING:: This information is out of date with the release of 3.0.0
+.. NOTE:: If you have local rules defined in a version prior to 3.0.0, create an issue and I can work with you to convert it to 3.0.0 format.
 
 VSG supports customization to your coding style standards by allowing localized rules.
 These rules are stored in a directory with an __init__.py file and one or more python files.

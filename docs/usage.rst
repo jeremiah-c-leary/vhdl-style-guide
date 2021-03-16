@@ -6,48 +6,49 @@ The command line tool can be invoked with:
 
 .. code-block:: mono
 
-    $ vsg
-    usage: VHDL Style Guide (VSG) [-h] [-f FILENAME [FILENAME ...]] [-lr LOCAL_RULES] [-c CONFIGURATION [CONFIGURATION ...]] [--fix]
-                                  [-fp FIX_PHASE] [-j JUNIT] [-of {vsg,syntastic}] [-b] [-oc OUTPUT_CONFIGURATION]
-                                  [-rc RULE_CONFIGURATION] [--style {indent_only,jcl}] [-v] [-ap] [--debug]
-
-    Analyzes VHDL files for style guide violations. Reference documentation is located at: http://vhdl-style-
-    guide.readthedocs.io/en/latest/index.html
-
-    optional arguments:
-      -h, --help            show this help message and exit
-      -f FILENAME [FILENAME ...], --filename FILENAME [FILENAME ...]
-                            File to analyze
-      -lr LOCAL_RULES, --local_rules LOCAL_RULES
-                            Path to local rules
-      -c CONFIGURATION [CONFIGURATION ...], --configuration CONFIGURATION [CONFIGURATION ...]
-                            JSON or YAML configuration file(s)
-      --fix                 Fix issues found
-      -fp FIX_PHASE, --fix_phase FIX_PHASE
-                            Fix issues up to and including this phase
-      -j JUNIT, --junit JUNIT
-                            Extract Junit file
-      -of {vsg,syntastic}, --output_format {vsg,syntastic}
-                            Sets the output format.
-      -b, --backup          Creates a copy of input file for comparison with fixed version.
-      -oc OUTPUT_CONFIGURATION, --output_configuration OUTPUT_CONFIGURATION
-                            Write configuration to file name.
-      -rc RULE_CONFIGURATION, --rule_configuration RULE_CONFIGURATION
-                            Display configuration of a rule
-      --style {indent_only,jcl}
-                            Use predefined style
-      -v, --version         Displays version information
-      -ap, --all_phases     Do not stop when a violation is detected.
-      --debug               Displays verbose debug information
+   $ vsg
+   usage: VHDL Style Guide (VSG) [-h] [-f FILENAME [FILENAME ...]] [-lr LOCAL_RULES] [-c CONFIGURATION [CONFIGURATION ...]] [--fix]
+                                 [-fp FIX_PHASE] [-j JUNIT] [-js JSON] [-of {vsg,syntastic,summary}] [-b] [-oc OUTPUT_CONFIGURATION]
+                                 [-rc RULE_CONFIGURATION] [--style {indent_only,jcl}] [-v] [-ap] [--fix_only FIX_ONLY] [-p JOBS]
+                                 [--debug]
+   
+   Analyzes VHDL files for style guide violations. Reference documentation is located at: http://vhdl-style-guide.readthedocs.io/en/latest/index.html
+   
+   optional arguments:
+     -h, --help            show this help message and exit
+     -f FILENAME [FILENAME ...], --filename FILENAME [FILENAME ...]
+                           File to analyze
+     -lr LOCAL_RULES, --local_rules LOCAL_RULES
+                           Path to local rules
+     -c CONFIGURATION [CONFIGURATION ...], --configuration CONFIGURATION [CONFIGURATION ...]
+                           JSON or YAML configuration file(s)
+     --fix                 Fix issues found
+     -fp FIX_PHASE, --fix_phase FIX_PHASE
+                           Fix issues up to and including this phase
+     -j JUNIT, --junit JUNIT
+                           Extract Junit file
+     -js JSON, --json JSON
+                           Extract JSON file
+     -of {vsg,syntastic,summary}, --output_format {vsg,syntastic,summary}
+                           Sets the output format.
+     -b, --backup          Creates a copy of input file for comparison with fixed version.
+     -oc OUTPUT_CONFIGURATION, --output_configuration OUTPUT_CONFIGURATION
+                           Write configuration to file name.
+     -rc RULE_CONFIGURATION, --rule_configuration RULE_CONFIGURATION
+                           Display configuration of a rule
+     --style {indent_only,jcl}
+                           Use predefined style
+     -v, --version         Displays version information
+     -ap, --all_phases     Do not stop when a violation is detected.
+     --fix_only FIX_ONLY   Restrict fixing via JSON file.
+     -p JOBS, --jobs JOBS  number of parallel jobs to use, default is the number of cpu cores
+     --debug               Displays verbose debug information
 
 **Command Line Options**
 
 +-------------------------------+-------------------------------------------------+
 | Option                        |  Description                                    |
 +-------------------------------+-------------------------------------------------+
-| --debug                       | Print verbose debug information to assist with  |
-|                               | debuging errors with VSG.                       |
-+===============================+=================================================+
 | -f FILENAME                   | The VHDL file to be analyzed or fixed.          |
 |                               | Multiple files can be passed through this       |
 |                               | option.                                         |
@@ -75,6 +76,8 @@ The command line tool can be invoked with:
 |                               |   vsg -- standard VSG output                    |
 |                               |   syntastic -- format compatible with the       |
 |                               |   syntastic VIM module                          |
+|                               |   summary -- Minimal output useful when running |
+|                               |   on multiple files                             |
 +-------------------------------+-------------------------------------------------+
 | --backup                      | Creates a copy of the input file before         |
 |                               | applying any fixes.  This can be used to        |
@@ -94,6 +97,15 @@ The command line tool can be invoked with:
 | --all-phases                  | Executes all phases without stopping if a       |
 |                               | violation is found.                             |
 +-------------------------------+-------------------------------------------------+
+| --fix_only                    | Restrict which rules are fixed based on JSON    |
+|                               | file.                                           |
++-------------------------------+-------------------------------------------------+
+| --jobs                        | Restrict the number of cores used to run.  The  |
+|                               | default is the number of cores available.       |
++-------------------------------+-------------------------------------------------+
+| --debug                       | Print verbose debug information to assist with  |
+|                               | debuging errors with VSG.                       |
++-------------------------------+-------------------------------------------------+
 
 
 Here is an example output running against a test file:
@@ -104,15 +116,17 @@ Here is an example output running against a test file:
    ================================================================================
    File:  example/architecture-empty.vhd
    ================================================================================
-   Phase 2 of 7... Reporting
-   Total Rules Checked: 151
-   Total Violations:    3
-   ----------------------------+------------+--------------------------------------
-     Rule                      |  line(s)   | Solution
-   ----------------------------+------------+--------------------------------------
-     signal_003                |          4 | Ensure there are only 1 space(s) after the "signal" keyword.
-     signal_005                |          4 | Ensure only a signal space after the colon.
-     signal_005                |          5 | Ensure only a signal space after the colon.
+   Phase 1 of 7... Reporting
+   Total Rules Checked: 83
+   Total Violations:     3
+     Error   :     3
+     Warning :     0
+   ----------------------------+------------+------------+--------------------------------------
+     Rule                      |  severity  |  line(s)   | Solution
+   ----------------------------+------------+------------+--------------------------------------
+     port_021                  | Error      |         45 | Move the ( to the same line as the "port" keyword.
+     instantiation_034         | Error      |        169 | Change to component instantiation
+     generic_map_003           | Error      |        170 | Move the ( to the same line as the "generic map" keyword.
    ----------------------------+------------+--------------------------------------
    NOTE: Refer to online documentation at https://vhdl-style-guide.readthedocs.io/en/latest/index.html for more information.
 
@@ -144,11 +158,13 @@ If rule violations can not be fixed, they will be reported after fixing everythi
    File:  example/architecture-empty.vhd
    ================================================================================
    Phase 1 of 7... Reporting
-   Total Rules Checked: 61
-   Total Violations:    1
-   ----------------------------+------------+--------------------------------------
-     Rule                      |  line(s)   | Solution
-   ----------------------------+------------+--------------------------------------
-     signal_007                |          5 | Remove default assignment.
+   Total Rules Checked: 83
+   Total Violations:     1
+     Error   :     1
+     Warning :     0
+   ----------------------------+------------+------------+--------------------------------------
+     Rule                      |  severity  |  line(s)   | Solution
+   ----------------------------+------------+------------+--------------------------------------
+     instantiation_034         | Error      |        169 | Change to component instantiation
    ----------------------------+------------+--------------------------------------
    NOTE: Refer to online documentation at https://vhdl-style-guide.readthedocs.io/en/latest/index.html for more information.

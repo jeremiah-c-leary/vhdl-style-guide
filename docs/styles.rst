@@ -84,7 +84,7 @@ Follow these steps to adjust the styles to the local flavor:
 Example
 ~~~~~~~
 
-Let us assume the legacy style matches 95% of the desired style.
+Let us assume the jcl style matches 95% of the desired style.
 The only differences are:
 
 * The entity keyword is always lower case
@@ -106,4 +106,4 @@ Then use the style and configuration together:
 
 .. code-block:: mono
 
-   $ vsg --style legacy --configuration my_config.yaml -f fifo.vhd
+   $ vsg --style jcl --configuration my_config.yaml -f fifo.vhd

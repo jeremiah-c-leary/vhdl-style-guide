@@ -25,5 +25,4 @@ Welcome to vhdl-style-guide's documentation!
    phases
    rule_severity
    rules
-   api
    contributing
