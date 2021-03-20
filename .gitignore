@@ -7,3 +7,6 @@ dist
 
 # Sphinx
 _build
+
+# This version file should never be committed
+vsg/version_info.py
