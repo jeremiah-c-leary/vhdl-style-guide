@@ -13,8 +13,8 @@ if not os.path.exists(sVersionInfoFileName):
     sVersion, sShaNum = version.get_version_info(version.sVersion, None)
 
     lVersionInfo = []
-    lVersionInfo.append('sVersion = \'' + sVersion + "'")
-    lVersionInfo.append('sShaNum = \'' + sShaNum + "'")
+    lVersionInfo.append('sVersion = \'' + str(sVersion) + "'")
+    lVersionInfo.append('sShaNum = \'' + str(sShaNum) + "'")
 
     with open(sVersionInfoFileName, 'w') as oFile:
         for sLine in lVersionInfo:
