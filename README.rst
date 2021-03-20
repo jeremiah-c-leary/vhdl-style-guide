@@ -40,8 +40,8 @@ Review release notes for full details.
 
 When upgrading to 3.0.0, keep this in mind:
 
-  * Review the configuring section for new options
-  * Run against a small subset of your code base first to check for differences
+* Review the configuring section for new options
+* Run against a small subset of your code base first to check for differences
 
 NOTE:  Any rules written for pre 3.0.0 will need to be updated for the new parser.  If you have any custom rules, I can work with you to upgrade them.
 
@@ -53,7 +53,7 @@ Table of Contents
 *   `Overview`_
 *   `Key Benefits`_
 *   `Key Features`_
-*   `Known Limitation`_
+*   `Known Limitations`_
 *   `Installation`_
 *   `Usage`_
 *   `Documentation`_
