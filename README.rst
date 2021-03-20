@@ -22,16 +22,12 @@ VHDL Style Guide (VSG)
    :target: https://www.codacy.com/app/jeremiah-c-leary/vhdl-style-guide?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jeremiah-c-leary/vhdl-style-guide&amp;utm_campaign=Badge_Grade
    :alt: Codacy
 
-Release 3.0.0 Announcements
----------------------------
+Announcements
+-------------
 
-The new parser has been completed and all rules have been converted.
-Initial hardening tests have also been completed.
-Effort is underway to address all bugs against version 2.
+Release 3.0.0 is now available.
 
-I am targeting March 2021 for release 3.0.0.
-
-Major Changes:
+This is a major new release with a lot changes.
 
 * Minimum Python version 3.5 is required
 * New parser
@@ -39,6 +35,13 @@ Major Changes:
 * Updated multiline alignment rules
 * Tool integration updates
 * Additional rules
+
+Review release notes for full details.
+
+When upgrading to 3.0.0, keep this in mind:
+
+  * Review the configuring section for new options
+  * Run against a small subset of your code base first to check for differences
 
 NOTE:  Any rules written for pre 3.0.0 will need to be updated for the new parser.  If you have any custom rules, I can work with you to upgrade them.
 
@@ -50,6 +53,7 @@ Table of Contents
 *   `Overview`_
 *   `Key Benefits`_
 *   `Key Features`_
+*   `Known Limitation`_
 *   `Installation`_
 *   `Usage`_
 *   `Documentation`_
@@ -117,6 +121,16 @@ Key Features
 * Built in styles
 
   * Use existing style or create your own
+
+Known Limitations
+-----------------
+
+VSG is a continual work in progress.
+As such, this version has the following known limitations:
+
+* Parser will not process configurations
+* Parser will not process embedded PSL
+* Parser will not process VHDL 2019
 
 Installation
 ------------
