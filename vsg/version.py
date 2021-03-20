@@ -2,7 +2,7 @@
 import subprocess
 import os
 
-sVersion = '3.0.0'
+sVersion = '2.2.0'
 
 try:
     from vsg import version_info
@@ -42,8 +42,11 @@ def get_version_info(sVersion, sShaNum):
         lActual = subprocess.check_output(['git', 'describe', '--tags'])
         lActual = str(lActual.decode('utf-8')).split('\n')
         lVersion = lActual[0].split('-')
-        sVersion = str(lVersion[0]) + '.dev' + str(lVersion[1])
-        sShaNum = str(lVersion[-1])
+        try:
+            sVersion = str(lVersion[0]) + '.dev' + str(lVersion[1])
+            sShaNum = str(lVersion[-1])
+        except IndexError:
+            sVersion = str(lVersion[0])
         os.chdir(sReturnPath)
         return sVersion, sShaNum
     except subprocess.CalledProcessError:
