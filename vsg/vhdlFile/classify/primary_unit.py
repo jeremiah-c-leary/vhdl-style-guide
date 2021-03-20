@@ -1,4 +1,5 @@
 
+from vsg.vhdlFile.classify import configuration_declaration
 from vsg.vhdlFile.classify import context_declaration
 from vsg.vhdlFile.classify import entity_declaration
 from vsg.vhdlFile.classify import package_declaration
@@ -29,6 +30,10 @@ def detect(iToken, lObjects):
         return iReturned
 
     iReturned = package_instantiation_declaration.detect(iToken, lObjects)
+    if iReturned != iToken:
+        return iReturned
+
+    iReturned = configuration_declaration.detect(iToken, lObjects)
     if iReturned != iToken:
         return iReturned
 

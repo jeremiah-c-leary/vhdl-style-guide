@@ -1,0 +1,52 @@
+--------------------------------------------------------------------------------
+0 |
+--------------------------------------------------------------------------------
+1 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+2 | configuration CFG of FIFO is
+<class 'vsg.token.configuration_declaration.configuration_keyword'>
+<class 'vsg.token.configuration_declaration.identifier'>
+<class 'vsg.token.configuration_declaration.of_keyword'>
+<class 'vsg.token.configuration_declaration.entity_name'>
+<class 'vsg.token.configuration_declaration.is_keyword'>
+--------------------------------------------------------------------------------
+3 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+4 |   group group1_identifier : group1_template_name ( group_constituent1 );
+<class 'vsg.token.group_declaration.group_keyword'>
+<class 'vsg.token.group_declaration.identifier'>
+<class 'vsg.token.group_declaration.colon'>
+<class 'vsg.token.group_declaration.group_template_name'>
+<class 'vsg.token.group_declaration.open_parenthesis'>
+<class 'vsg.token.group_constituent_list.group_constituent'>
+<class 'vsg.token.group_declaration.close_parenthesis'>
+<class 'vsg.token.group_declaration.semicolon'>
+--------------------------------------------------------------------------------
+5 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+6 |   group group2_identifier : group2_template_name ( group_constituent1, group_constintuent2 );
+<class 'vsg.token.group_declaration.group_keyword'>
+<class 'vsg.token.group_declaration.identifier'>
+<class 'vsg.token.group_declaration.colon'>
+<class 'vsg.token.group_declaration.group_template_name'>
+<class 'vsg.token.group_declaration.open_parenthesis'>
+<class 'vsg.token.group_constituent_list.group_constituent'>
+<class 'vsg.token.group_constituent_list.comma'>
+<class 'vsg.token.group_constituent_list.group_constituent'>
+<class 'vsg.token.group_declaration.close_parenthesis'>
+<class 'vsg.token.group_declaration.semicolon'>
+--------------------------------------------------------------------------------
+7 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+8 | end configuration CFG;
+<class 'vsg.token.configuration_declaration.end_keyword'>
+<class 'vsg.token.configuration_declaration.end_configuration_keyword'>
+<class 'vsg.token.configuration_declaration.configuration_simple_name'>
+<class 'vsg.token.configuration_declaration.semicolon'>
+--------------------------------------------------------------------------------
+9 |
+<class 'vsg.parser.blank_line'>

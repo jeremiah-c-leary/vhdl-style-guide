@@ -1,0 +1,74 @@
+--------------------------------------------------------------------------------
+0 |
+--------------------------------------------------------------------------------
+1 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+2 | configuration CFG of FIFO is
+<class 'vsg.token.configuration_declaration.configuration_keyword'>
+<class 'vsg.token.configuration_declaration.identifier'>
+<class 'vsg.token.configuration_declaration.of_keyword'>
+<class 'vsg.token.configuration_declaration.entity_name'>
+<class 'vsg.token.configuration_declaration.is_keyword'>
+--------------------------------------------------------------------------------
+3 | end configuration CFG;
+<class 'vsg.token.configuration_declaration.end_keyword'>
+<class 'vsg.token.configuration_declaration.end_configuration_keyword'>
+<class 'vsg.token.configuration_declaration.configuration_simple_name'>
+<class 'vsg.token.configuration_declaration.semicolon'>
+--------------------------------------------------------------------------------
+4 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+5 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+6 | configuration CFG of FIFO is
+<class 'vsg.token.configuration_declaration.configuration_keyword'>
+<class 'vsg.token.configuration_declaration.identifier'>
+<class 'vsg.token.configuration_declaration.of_keyword'>
+<class 'vsg.token.configuration_declaration.entity_name'>
+<class 'vsg.token.configuration_declaration.is_keyword'>
+--------------------------------------------------------------------------------
+7 | end;
+<class 'vsg.token.configuration_declaration.end_keyword'>
+<class 'vsg.token.configuration_declaration.semicolon'>
+--------------------------------------------------------------------------------
+8 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+9 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+10 | configuration CFG of FIFO is
+<class 'vsg.token.configuration_declaration.configuration_keyword'>
+<class 'vsg.token.configuration_declaration.identifier'>
+<class 'vsg.token.configuration_declaration.of_keyword'>
+<class 'vsg.token.configuration_declaration.entity_name'>
+<class 'vsg.token.configuration_declaration.is_keyword'>
+--------------------------------------------------------------------------------
+11 | end configuration;
+<class 'vsg.token.configuration_declaration.end_keyword'>
+<class 'vsg.token.configuration_declaration.end_configuration_keyword'>
+<class 'vsg.token.configuration_declaration.semicolon'>
+--------------------------------------------------------------------------------
+12 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+13 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+14 | configuration CFG of FIFO is
+<class 'vsg.token.configuration_declaration.configuration_keyword'>
+<class 'vsg.token.configuration_declaration.identifier'>
+<class 'vsg.token.configuration_declaration.of_keyword'>
+<class 'vsg.token.configuration_declaration.entity_name'>
+<class 'vsg.token.configuration_declaration.is_keyword'>
+--------------------------------------------------------------------------------
+15 | end CFG;
+<class 'vsg.token.configuration_declaration.end_keyword'>
+<class 'vsg.token.configuration_declaration.configuration_simple_name'>
+<class 'vsg.token.configuration_declaration.semicolon'>
+--------------------------------------------------------------------------------
+16 |
+<class 'vsg.parser.blank_line'>
