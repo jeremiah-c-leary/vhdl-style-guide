@@ -26,3 +26,4 @@ Welcome to vhdl-style-guide's documentation!
    rule_severity
    rules
    contributing
+   relase_notes
