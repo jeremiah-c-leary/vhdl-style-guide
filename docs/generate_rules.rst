@@ -328,7 +328,7 @@ generate_017
 This rule checks for valid prefixes on generate statement labels.
 The default prefix is *gen\_*.
 
-Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-suffix>`_ for information on changing the allowed prefixes.
+Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed prefixes.
 
 **Violation**
 

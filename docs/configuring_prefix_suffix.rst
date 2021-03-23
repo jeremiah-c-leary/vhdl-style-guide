@@ -47,8 +47,8 @@ Rules enforcing prefixes and suffixes
 * `generic_020 <generic_rules.html#generic-020>`_
 * `package_016 <package_rules.html#package-016>`_
 * `package_017 <package_rules.html#package-017>`_
-* `package_body_600 <package_body_rules.html#package_body-600>`_
-* `package_body_601 <package_body_rules.html#package_body-601>`_
+* `package_body_600 <package_body_rules.html#package-body-600>`_
+* `package_body_601 <package_body_rules.html#package-body-601>`_
 * `port_011 <port_rules.html#port-011>`_
 * `port_025 <port_rules.html#port-025>`_
 * `process_036 <process_rules.html#process-036>`_
