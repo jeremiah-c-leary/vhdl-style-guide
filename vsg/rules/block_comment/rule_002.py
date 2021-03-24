@@ -50,7 +50,6 @@ class rule_002(block_rule.Rule):
                         if not is_header(oToken.get_value()):
                             break
                     elif iComment > 1 and iComment < iComments:
-
                         if not self.allow_indenting:
                             oToken.set_indent(0)
 

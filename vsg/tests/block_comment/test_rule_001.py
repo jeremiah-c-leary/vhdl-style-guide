@@ -35,7 +35,7 @@ class test_block_comment_rule(unittest.TestCase):
         oRule = block_comment.rule_001()
         oRule.allow_indenting = False
 
-        lExpected = [6, 14, 18, 22, 38]
+        lExpected = [6, 14, 18, 22, 26, 38]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
