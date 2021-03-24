@@ -7,8 +7,10 @@ It is noted in the documentation, what the default prefixes for each such rule.
 All prefix rules are disabled by default.
 The default prefixes for each of these rules can be overridden using a configuration.
 
-Overriding Default Prefixes Enforcement
-#######################################
+.. NOTE::  Some elements have both prefix and suffix rules.  Depending on the desired style, either or both can be enabled.
+
+Overriding Default Prefix Enforcement
+#####################################
 
 The default setting can be changed using a configuration.
 The rule variable_012 defaults to following prefix: ['v\_'].

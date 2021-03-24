@@ -7,8 +7,10 @@ It is noted in the documentation, what the default suffixes for each such rule.
 All suffix rules are disabled by default.
 The default suffixes for each of these rules can be overridden using a configuration.
 
-Overriding Default Suffixes Enforcement
-#######################################
+.. NOTE::  Some elements have both prefix and suffix rules.  Depending on the desired style, either or both can be enabled.
+
+Overriding Default Suffix Enforcement
+#####################################
 
 The default setting can be changed using a configuration.
 For example, the rule port_025 defaults to following suffixes: ['_I', '_O', '_IO'].
