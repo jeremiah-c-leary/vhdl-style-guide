@@ -1,3 +1,5 @@
+-- This should be okay
+
 architecture rtl of fifo is
 
   signal a : std_logic; -- Comment

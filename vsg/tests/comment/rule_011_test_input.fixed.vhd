@@ -1,3 +1,5 @@
+-- This should be okay
+
 architecture rtl of fifo is
 
  -- Comment
