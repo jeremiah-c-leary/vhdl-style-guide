@@ -56,3 +56,23 @@ This rule checks the indent lines starting with comments.
      signal rd_en : std_Logic;
 
    begin
+
+comment_011
+###########
+
+This rule checks for in-line comments and moves them to the line above.
+
+.. NOTE:: This rule is disabled by default.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   a <= b; -- Assign signal
+
+**Fix**
+
+.. code-block:: vhdl
+
+   -- Assign signal
+   a <= b;

@@ -36,3 +36,15 @@ def print_debug(lTokens):
     for oToken in lTokens:
         sPrint += oToken.get_value()
     print(sPrint)
+
+
+def does_line_start_with_comment(lTokens):
+    if isinstance(lTokens[0], parser.comment):
+        return True
+    if isinstance(lTokens[0], parser.whitespace) and isinstance(lTokens[1], parser.comment):
+        return True
+    return False
+
+
+def get_toi_parameters(oToi):
+    return oToi.get_line_number(), oToi.get_tokens()
