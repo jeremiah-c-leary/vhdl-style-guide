@@ -582,7 +582,7 @@ block_600
 This rule checks for valid suffixes on block labels.
 The default suffix is *_blk*.
 
-Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed suffixes.
+Refer to the section `Configuring Suffix Rules <configuring.html#configuring-suffix-rules>`_ for information on changing the allowed suffixes.
 
 **Violation**
 
@@ -602,7 +602,7 @@ block_601
 This rule checks for valid prefixes on block labels.
 The default prefix is *blk_*.
 
-Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed prefixes.
+Refer to the section `Configuring Prefix Rules <configuring.html#configuring-prefix-rules>`_ for information on changing the allowed prefixes.
 
 **Violation**
 
