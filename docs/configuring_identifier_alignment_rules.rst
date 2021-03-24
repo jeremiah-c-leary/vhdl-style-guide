@@ -1,5 +1,5 @@
-Configuring Identifer Alignment Rules
--------------------------------------
+Configuring Identifier Alignment Rules
+--------------------------------------
 
 There are several rules that enforce alignment of identifiers in group of lines.
 Some of the configurations are available in all keyword alignment rules, while others are rule specific.
@@ -81,3 +81,16 @@ Following configuration options can be independently changed for each of the ide
 
 
 .. NOTE:: As all identifier alignment rules have above configurations they are not mentioned in the documentation for each rule.
+
+Rules Enforcing Identifier Alignment
+####################################
+
+* `architecture_029 <architecture_rules.html#architecture-029>`_
+* `block_400 <block_rules.html#block-400>`_
+* `function_015 <function_rules.html#function-015>`_
+* `generate-400 <generate_rules.html#generate-400>`_
+* `generate-402 <generate_rules.html#generate-402>`_
+* `generate-404 <generate_rules.html#generate-404>`_
+* `package_body_400 <package_body_rules.html#package-body-400>`_
+* `package_019 <package_rules.html#package-019>`_
+* `procedure_010 <procedure_rules.html#procedure-010>`_

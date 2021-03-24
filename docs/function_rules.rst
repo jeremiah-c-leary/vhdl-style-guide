@@ -268,7 +268,7 @@ function_012
 
 This rule checks the colons are in the same column for all declarations in the function declarative part.
 
-Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment>`_ for information on changing the configurations.
+Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
 
 **Violation**
 
@@ -337,7 +337,7 @@ function_015
 
 This rule checks the identifiers for all declarations are aligned in the function declarative part.
 
-Refer to the section `Configuring Identifier Alignment Rules <configuring.html#configuring-declaration-identifier-alignment>`_ for information on changing the configurations.
+Refer to the section `Configuring Identifier Alignment Rules <configuring.html#configuring-identifier-alignment-rules>`_ for information on changing the configurations.
 
 **Violation**
 

@@ -296,4 +296,4 @@ The following code would fail with this option set to True:
 Rules Enforcing Multiline Structure Rules
 #########################################
 
-* `concurrent_011 <concurrent_rules.html#concurrent_011>`_
+* `concurrent_011 <concurrent_rules.html#concurrent-011>`_

@@ -203,3 +203,9 @@ To configure a block comment for Doxygen...
        footer_string : None
        footer_right_repeat : None
 
+Rules Enforcing Block Comments
+##############################
+
+* `block_comment_001 <block_comment_rules.html#block-comment-001>`_
+* `block_comment_002 <block_comment_rules.html#block-comment-002>`_
+* `block_comment_003 <block_comment_rules.html#block-comment-003>`_

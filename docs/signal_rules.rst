@@ -283,7 +283,7 @@ signal_015
 This rule checks for multiple signal names defined in a single signal declaration.
 By default, this rule will only flag more than two signal declarations.
 
-Refer to the section `Configuring Number of Signals in Signal Declaration <configuring.html#configuring-number-of-signals>`_ for information on changing the default.
+Refer to the section `Configuring Number of Signals in Signal Declaration <configuring.html#configuring-number-of-signals-in-signal-declaration>`_ for information on changing the default.
 
 **Violation**
 

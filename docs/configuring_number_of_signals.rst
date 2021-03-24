@@ -21,3 +21,7 @@ We can use the following configuration to change the number of signals allowed t
      signal_015 :
         consecutive : 1
 
+Rules Enforcing Number of Signals
+#################################
+
+* `signal_015 <signal_rules.html#signal-015>`_

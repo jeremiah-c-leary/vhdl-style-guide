@@ -262,3 +262,31 @@ Rule Specific Keyword Alignment Configuration
 .. NOTE:: If given keyword alignment rule has any of the above keyword alignment specific configuration, then it is explicitly noted in the documentation of this rule.
 
 The default value for each of these case rules can be overridden using a configuration.
+
+Rules Enforcing Keyword Alignment
+#################################
+
+* `after_002 <after_rules.html#after-002>`_
+* `architecture_026 <architecture_rules.html#architecture-026>`_
+* `architecture_027 <architecture_rules.html#architecture-027>`_
+* `block_401 <block_rules.html#block-401>`_
+* `component_017 <component_rules.html#component-017>`_
+* `component_020 <component_rules.html#component-020>`_
+* `concurrent_006 <concurrent_rules.html#concurrent-006>`_
+* `concurrent_008 <concurrent_rules.html#concurrent-008>`_
+* `context_028 <context_rules.html#context-028>`_
+* `entity_017 <entity_rules.html#entity-017>`_
+* `entity_018 <entity_rules.html#entity-018>`_
+* `entity_020 <entity_rules.html#entity-020>`_
+* `function_012 <function_rules.html#function-012>`_
+* `generate_401 <generate_rules.html#generate-401>`_
+* `generate_403 <generate_rules.html#generate-403>`_
+* `generate_405 <generate_rules.html#generate-405>`_
+* `instantiation_010 <instantiation_rules.html#instantiation-010>`_
+* `instantiation_029 <instantiation_rules.html#instantiation-029>`_
+* `process_033 <process_rules.html#process-033>`_
+* `process_034 <process_rules.html#process-034>`_
+* `process_035 <process_rules.html#process-035>`_
+* `sequential_005 <sequential_rules.html#sequential-005>`_
+* `type_400 <type_rules.html#type-400>`_
+* `variable_assignment_005 <variable_assignment_rules.html#variable_assignment-005>`_

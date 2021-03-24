@@ -18,3 +18,8 @@ We can use the following configuration to change it to **entity** instantiation.
    rule :
      instantiation_034:
         method: 'entity'
+
+Rules Enforcing Type of Instantiations
+######################################
+
+* `instantiation_034 <instantiation_rules.html#instantiation-034>`_

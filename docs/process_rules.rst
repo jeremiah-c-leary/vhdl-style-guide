@@ -846,7 +846,7 @@ process_033
 ###########
 
 This rule checks the colons are in the same column for all declarations in the process declarative part.
-Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment>`_ for information on changing the configurations.
+Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
 
 **Violation**
 
@@ -870,7 +870,7 @@ process_034
 ###########
 
 This rule aligns inline comments between the end of the process sensitivity list and the process **begin** keyword.
-Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment>`_ for information on changing the configurations.
+Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
 
 **Violation**
 
@@ -902,7 +902,7 @@ process_035
 ###########
 
 This rule checks the alignment of inline comments between the process begin and end process lines.
-Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment>`_ for information on changing the configurations.
+Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
 
 **Violation**
 

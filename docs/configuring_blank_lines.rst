@@ -100,9 +100,9 @@ Rules Enforcing Blank Lines
 * `instantiation_019 <instantiation_rules.html#instantiation-019>`_
 * `package_011 <package_rules.html#package-011>`_
 * `package_012 <package_rules.html#package-012>`_
-* `package_body_201 <package_body_rules.html#package_body-201>`_
-* `package_body_202 <package_body_rules.html#package_body-202>`_
-* `package_body_203 <package_body_rules.html#package_body-203>`_
+* `package_body_201 <package_body_rules.html#package-body-201>`_
+* `package_body_202 <package_body_rules.html#package-body-202>`_
+* `package_body_203 <package_body_rules.html#package-body-203>`_
 * `process_011 <process_rules.html#process-011>`_
 * `process_021 <process_rules.html#process-021>`_
 * `process_022 <process_rules.html#process-022>`_
