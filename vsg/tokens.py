@@ -70,7 +70,7 @@ def combine_character_literals(lChars):
     bLiteral = False
     for iChar, sChar in enumerate(lChars):
         try:
-            if sChar == "'" and lChars[iChar + 2] == "'" and len(lChars[iChar + 1]) == 1 and not bLiteral:
+            if sChar == "'" and lChars[iChar + 2] == "'" and len(lChars[iChar + 1]) == 1 and not bLiteral and lChars[iChar + 1] != '(':
                 sLiteral += sChar
                 bLiteral = True
                 continue

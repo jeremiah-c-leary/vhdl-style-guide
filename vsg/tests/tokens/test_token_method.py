@@ -582,4 +582,23 @@ class testTokenMethod(unittest.TestCase):
 
         self.assertEqual(lTokens, lActual)
 
+    def test_qualified_expression(self):
+        sLine = "  a => std_logic'('1'),"
 
+        lTokens = []
+
+        lTokens.append('  ')
+        lTokens.append('a')
+        lTokens.append(' ')
+        lTokens.append('=>')
+        lTokens.append(' ')
+        lTokens.append('std_logic')
+        lTokens.append("'")
+        lTokens.append('(')
+        lTokens.append("'1'")
+        lTokens.append(')')
+        lTokens.append(',')
+
+        lActual = tokens.create(sLine)
+
+        self.assertEqual(lTokens, lActual)
