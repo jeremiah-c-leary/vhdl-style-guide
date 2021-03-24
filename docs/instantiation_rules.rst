@@ -501,7 +501,7 @@ instantiation_600
 This rule checks for valid suffixes on instantiation labels.
 The default suffix is *_inst*.
 
-Refer to the section `Configuring Prefix Rules <configuring.html#configuring-prefix-rules>`_ for information on changing the allowed suffixes.
+Refer to the section `Configuring Prefix Suffix Rules <configuring.html#configuring-prefix-suffix-rules>`_ for information on changing the allowed suffixes.
 
 **Violation**
 
@@ -521,7 +521,7 @@ instantiation_601
 This rule checks for valid prefixes on instantiation labels.
 The default prefix is *inst_*.
 
-Refer to the section `Configuring Prefix Rules <configuring.html#configuring-prefix-rules>`_ for information on changing the allowed prefixes.
+Refer to the section `Configuring Prefix Suffix Rules <configuring.html#configuring-prefix-suffix-rules>`_ for information on changing the allowed prefixes.
 
 **Violation**
 
