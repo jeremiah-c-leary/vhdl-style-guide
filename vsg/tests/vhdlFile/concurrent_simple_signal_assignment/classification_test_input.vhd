@@ -27,4 +27,12 @@ begin
   -- with guarded and reject delay mechanism
   a <= guarded reject 10 ns inertial b;
 
+  -- test unary operators
+  a <= (others => func(and b, or b, nand b, or b, nor b, xnor b));
+  a <= (others => func(nand b));
+  a <= (others => func(or b));
+  a <= (others => func(nor b));
+  a <= (others => func(xor b));
+  a <= (others => func(xnor b));
+
 end architecture RTL;

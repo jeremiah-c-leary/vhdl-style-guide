@@ -132,7 +132,112 @@
 29 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-30 | end architecture RTL;
+30 |   -- test unary operators
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+31 |   a <= (others => func(and b, or b, nand b, or b, nor b, xnor b));
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.token.unary_logical_operator.and_operator'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.comma'>
+<class 'vsg.token.unary_logical_operator.or_operator'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.comma'>
+<class 'vsg.token.unary_logical_operator.nand_operator'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.comma'>
+<class 'vsg.token.unary_logical_operator.or_operator'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.comma'>
+<class 'vsg.token.unary_logical_operator.nor_operator'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.comma'>
+<class 'vsg.token.unary_logical_operator.xnor_operator'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+32 |   a <= (others => func(nand b));
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.token.unary_logical_operator.nand_operator'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+33 |   a <= (others => func(or b));
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.token.unary_logical_operator.or_operator'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+34 |   a <= (others => func(nor b));
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.token.unary_logical_operator.nor_operator'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+35 |   a <= (others => func(xor b));
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.token.unary_logical_operator.xor_operator'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+36 |   a <= (others => func(xnor b));
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.token.unary_logical_operator.xnor_operator'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+37 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+38 | end architecture RTL;
 <class 'vsg.token.architecture_body.end_keyword'>
 <class 'vsg.token.architecture_body.end_architecture_keyword'>
 <class 'vsg.token.architecture_body.architecture_simple_name'>
