@@ -64,3 +64,17 @@ begin
   a(N+1 downto 0);
 
 end architecture RTL;
+
+architecture RTL of FIFO is
+
+  constant c_con2 : t_type := (
+    -900, -- comment 1
+    -901, -- comment 2
+    -902, -- comment 3
+    +903, -- comment 4
+    -904  -- comment 5
+  );
+
+begin
+
+end architecture RTL;
