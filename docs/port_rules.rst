@@ -229,7 +229,7 @@ port_011
 This rule checks for valid prefixes on port identifiers.
 The default port prefixes are: *i\_*, *o\_*, *io\_*.
 
-Refer to the section `Configuring Prefix Suffix Rules <configuring.html#configuring-prefix-suffix-rules>`_ for information on changing the allowed prefixes.
+Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed prefixes.
 
 **Violation**
 
@@ -603,7 +603,7 @@ port_025
 This rule checks for valid suffixes on port identifiers.
 The default port suffixes are *_i*, *_o*, *_io*.
 
-Refer to the section `Configuring Prefix Suffix Rules <configuring.html#configuring-prefix-suffix-rules>`_ for information on changing the allowed suffixes.
+Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed suffixes.
 
 **Violation**
 

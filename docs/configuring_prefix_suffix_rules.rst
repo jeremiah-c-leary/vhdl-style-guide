@@ -1,10 +1,10 @@
-Configuring Prefix Suffix Rules
--------------------------------
+Configuring Prefix and Suffix Rules
+-----------------------------------
 
-There are several rules that enforce specific prefixes/suffixes in different name identifiers.
-It is noted in the documentation, what the default prefixes/suffixes are for each such rule.
+There are several rules that enforce specific prefixes or suffixes in different name identifiers.
+It is noted in the documentation, what the default prefixes and suffixes are for each such rule.
 
-All prefix/suffix rules are disabled by default.
+All prefix and suffix rules are disabled by default.
 The defaults for each of these rules can be overridden using a configuration.
 
 .. NOTE::  Some elements have both prefix and suffix rules.  Depending on the desired style, either or both can be enabled.
@@ -43,11 +43,11 @@ We can use the following configuration to change allowed suffixes:
             disable: false
             suffixes: ['_i', '_o']
 
-Rules enforcing prefixes and suffixes
+Rules Enforcing Prefixes and Suffixes
 #####################################
 
 +-------------------------+----------------------------------------------------------------+----------------------------------------------------------------+
-| Element                 | Prefix Rule                                                    |  Suffix Rule                                                   |
+| **Element**             | **Prefix Rule**                                                |  **Suffix Rule**                                               |
 +-------------------------+----------------------------------------------------------------+----------------------------------------------------------------+
 | Block Label             | `block_601 <block_rules.html#block-601>`_                      | `block_600 <block_rules.html#block-600>`_                      |
 +-------------------------+----------------------------------------------------------------+----------------------------------------------------------------+
@@ -55,13 +55,13 @@ Rules enforcing prefixes and suffixes
 +-------------------------+----------------------------------------------------------------+----------------------------------------------------------------+
 | Generate Label          | `generate_017 <generate_rules.html#generate-017>`_             |  NA                                                            |
 +-------------------------+----------------------------------------------------------------+----------------------------------------------------------------+
-| Generic Name            | `generic_020 <generic_rules.html#generic-020>`_                |  NA                                                            |
+| Generic Identifier      | `generic_020 <generic_rules.html#generic-020>`_                |  NA                                                            |
 +-------------------------+----------------------------------------------------------------+----------------------------------------------------------------+
 | Package Identifier      | `package_017 <package_rules.html#package-017>`_                | `package_016 <package_rules.html#package-016>`_                |
 +-------------------------+----------------------------------------------------------------+----------------------------------------------------------------+
 | Package Body Identifier | `package_body_601 <package_body_rules.html#package-body-601>`_ | `package_body_600 <package_body_rules.html#package-body-600>`_ |
 +-------------------------+----------------------------------------------------------------+----------------------------------------------------------------+
-| Port Name               | `port_011 <port_rules.html#port-011>`_                         | `port_025 <port_rules.html#port-025>`_                         |
+| Port Identifier         | `port_011 <port_rules.html#port-011>`_                         | `port_025 <port_rules.html#port-025>`_                         |
 +-------------------------+----------------------------------------------------------------+----------------------------------------------------------------+
 | Process Label           | `process_036 <process_rules.html#process-036>`_                |  NA                                                            |
 +-------------------------+----------------------------------------------------------------+----------------------------------------------------------------+

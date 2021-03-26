@@ -134,7 +134,7 @@ signal_008
 This rule checks for valid prefixes on signal identifiers.
 Default signal prefix is *s\_*.
 
-Refer to the section `Configuring Prefix Suffix Rules <configuring.html#configuring-prefix-suffix-rules>`_ for information on changing the allowed prefixes.
+Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed prefixes.
 
 **Violation**
 
