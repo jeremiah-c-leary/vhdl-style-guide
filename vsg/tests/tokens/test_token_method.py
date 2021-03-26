@@ -602,3 +602,14 @@ class testTokenMethod(unittest.TestCase):
         lActual = tokens.create(sLine)
 
         self.assertEqual(lTokens, lActual)
+
+    def test_quotes_in_comments(self):
+        sLine = '--! some text "other text'
+
+        lTokens = []
+
+        lTokens.append('--! some text "other text')
+
+        lActual = tokens.create(sLine)
+
+        self.assertEqual(lTokens, lActual)

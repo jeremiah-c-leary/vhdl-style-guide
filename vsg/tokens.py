@@ -12,13 +12,12 @@ def create(sString):
 
     for sChar in sString:
         lCharacters.append(sChar)
-
     lCharacters = combine_whitespace(lCharacters)
     lCharacters = combine_two_character_symbols(lCharacters)
+    lCharacters = combine_comments(lCharacters)
     lCharacters = combine_characters_into_words(lCharacters)
     lCharacters = combine_string_literals(lCharacters)
     lCharacters = combine_character_literals(lCharacters)
-    lCharacters = combine_comments(lCharacters)
 
     return lCharacters
 
