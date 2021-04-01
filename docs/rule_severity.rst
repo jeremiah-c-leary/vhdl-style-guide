@@ -36,7 +36,7 @@ Defining Severity Levels
 ------------------------
 
 VSG supports user defined severity level.
-Any new severity level will follow the same rules as the severity it is based on..
+Any new severity level will follow the same rules as the severity it is based on.
 It will be reported to the screen, but will not be reported in JUnit XML files and will not force an exit status of 1.
 
 To create your own severity level, create a configuration which defines just the severity level following this format:
@@ -75,4 +75,11 @@ Apply the defined severity levels by calling both configurations:
 .. code-block:: mono
 
    vsg -c severity.json rule_configuration.json -f fifo.vhd
+
+Rules Which are Warnings by Default
+###################################
+
+* :any:`length_001`
+* :any:`length_002`
+* :any:`length_003`
 
