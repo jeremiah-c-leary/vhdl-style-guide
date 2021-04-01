@@ -7,8 +7,8 @@ These rules cover the length of lines in the VHDL file.
 
 .. _length_001:
 
-length_001 |phase_7| |warning|
-##############################
+length_001
+##########
 
 |phase_7| |warning|
 
@@ -18,8 +18,8 @@ Refer to the section `Configuring Length Rules <configuring.html#configuring-len
 
 .. _length_002:
 
-length_002 |phase_7| |warning|
-##############################
+length_002
+##########
 
 |phase_7| |warning|
 
@@ -29,8 +29,8 @@ Refer to the section `Configuring Length Rules <configuring.html#configuring-len
 
 .. _length_003:
 
-length_003 |phase_7| |warning|
-##############################
+length_003
+##########
 
 |phase_7| |warning|
 

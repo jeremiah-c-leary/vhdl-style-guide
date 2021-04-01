@@ -53,8 +53,8 @@ This rule checks for **after x** in signal assignments in clock processes.
 
 .. _after_002:
 
-after_002 |phase_5| |disabled| |error|
-######################################
+after_002
+#########
 
 |phase_5| |disabled| |error|
 
@@ -93,8 +93,8 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
 
 .. _after_003:
 
-after_003 |phase_1| |disabled| |error|
-######################################
+after_003
+#########
 
 |phase_1| |disabled| |error|
 
