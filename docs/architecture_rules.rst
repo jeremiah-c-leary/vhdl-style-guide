@@ -238,6 +238,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 architecture_012
 ################
 
+|phase_2| |error|
+
 This rule checks for a single space between **end** and **architecture** keywords.
 
 **Violation**
@@ -254,6 +256,8 @@ This rule checks for a single space between **end** and **architecture** keyword
 
 architecture_013
 ################
+
+|phase_6| |error|
 
 This rule checks the case of the architecture name in the architecture declaration.
 
@@ -274,6 +278,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 architecture_014
 ################
 
+|phase_6| |error|
+
 This rule checks the case of the entity name in the architecture declaration.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
@@ -292,6 +298,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
 architecture_015
 ################
+
+|phase_3| |error|
 
 This rule check for blank lines below the architecture declaration.
 
@@ -316,6 +324,8 @@ Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ f
 
 architecture_016
 ################
+
+|phase_3| |error|
 
 This rule checks for blank lines above the **begin** keyword.
 
@@ -344,6 +354,8 @@ Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ f
 architecture_017
 ################
 
+|phase_3| |error|
+
 This rule checks for a blank line below the **begin** keyword.
 
 Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
@@ -365,6 +377,8 @@ Refer to the section `Configuring Blank Lines <configuring.html#configuring-blan
 
 architecture_018
 ################
+
+|phase_3| |error|
 
 This rule checks for blank lines or comments above the **end architecture** declaration.
 
@@ -388,6 +402,8 @@ Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ f
 architecture_019
 ################
 
+|phase_6| |error|
+
 This rule checks the proper case of the **of** keyword in the architecture declaration.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
@@ -407,6 +423,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 architecture_020
 ################
 
+|phase_6| |error|
+
 This rule checks the proper case of the **is** keyword in the architecture declaration.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
@@ -425,6 +443,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
 architecture_021
 ################
+
+|phase_6| |error|
 
 This rule checks the proper case of the **begin** keyword.
 
@@ -447,6 +467,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 architecture_022
 ################
 
+|phase_2| |error|
+
 This rule checks for a single space before the entity name in the end architecture declaration.
 
 **Violation**
@@ -463,6 +485,8 @@ This rule checks for a single space before the entity name in the end architectu
 
 architecture_024
 ################
+
+|phase_1| |error|
 
 This rule checks for the architecture name in the **end architecture** statement.
 It is clearer to the reader to state which architecture the end statement is closing.
@@ -518,6 +542,8 @@ The user is required to decide which is the correct architecture name.
 architecture_026
 ################
 
+|phase_5| |error|
+
 This rule checks the colons are in the same column for all declarations in the architecture declarative part.
 
 Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
@@ -548,6 +574,8 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
 
 architecture_027
 ################
+
+|phase_5| |error|
 
 This rule checks the alignment of inline comments in the architecture declarative part.
 
@@ -580,6 +608,8 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
 architecture_028
 ################
 
+|phase_6| |error|
+
 This rule checks the **architecture** keyword in the **end architecture** has proper case.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
@@ -602,6 +632,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
 architecture_029
 ################
+
+|phase_5| |error|
 
 This rule checks for alignment of identifiers in attribute, type, subtype, constant, signal, variable and file declarations in the architecture declarative region.
 
@@ -628,6 +660,8 @@ Refer to the section `Configuring Identifier Alignment Rules <configuring.html#c
 architecture_030
 ################
 
+|phase_2| |error|
+
 This rule checks for a single space between **architecture** and the identifier.
 
 **Violation**
@@ -644,6 +678,8 @@ This rule checks for a single space between **architecture** and the identifier.
 
 architecture_031
 ################
+
+|phase_2| |error|
 
 This rule checks for a single space between the identifier and the **of** keyword.
 
@@ -662,6 +698,8 @@ This rule checks for a single space between the identifier and the **of** keywor
 architecture_032
 ################
 
+|phase_2| |error|
+
 This rule checks for a single space between the **of** keyword and the entity_name.
 
 **Violation**
@@ -678,6 +716,8 @@ This rule checks for a single space between the **of** keyword and the entity_na
 
 architecture_033
 ################
+
+|phase_2| |error|
 
 This rule checks for a single space between the entity_name and the **is** keyword.
 
@@ -698,6 +738,8 @@ Vertical Spacing Rules (200 - 299)
 
 architecture_200
 ^^^^^^^^^^^^^^^^
+
+|phase_3| |error|
 
 This rule checks for a blank line below the end architecture statement.
 
@@ -723,6 +765,8 @@ Naming Convention Rules (600 - 699)
 
 architecture_600
 ^^^^^^^^^^^^^^^^
+
+|phase_6| |error|
 
 This rule checks for consistent capitalization of generic names in an architecture body.
 
