@@ -1,3 +1,5 @@
+.. include:: icons.rst
+
 Type Rules
 ----------
 
@@ -295,6 +297,8 @@ This rule checks for consistent capitalization of type names.
 
 type_015
 ##########
+
+|phase_7| |disabled| |error|
 
 This rule checks for valid prefixes in user defined type identifiers.
 The default new type prefix is *t\_*.

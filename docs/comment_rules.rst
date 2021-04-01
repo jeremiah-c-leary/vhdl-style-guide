@@ -1,3 +1,5 @@
+.. include:: icons.rst
+
 Comment Rules
 -------------
 
@@ -59,6 +61,8 @@ This rule checks the indent lines starting with comments.
 
 comment_011
 ###########
+
+|phase_1| |disabled| |error|
 
 This rule checks for in-line comments and moves them to the line above.
 

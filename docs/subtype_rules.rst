@@ -1,3 +1,5 @@
+.. include:: icons.rst
+
 Subtype Rules
 -------------
 
@@ -72,6 +74,8 @@ This rule was depricated and replaced with rules:  function_015, package_019, pr
 
 subtype_004
 ###########
+
+|phase_7| |disabled| |error|
 
 This rule checks for valid prefixes in subtype identifiers.
 The default new subtype prefix is *st\_*.

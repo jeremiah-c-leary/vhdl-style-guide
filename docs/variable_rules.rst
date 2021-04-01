@@ -1,3 +1,5 @@
+.. include:: icons.rst
+
 Variable Rules
 --------------
 
@@ -205,6 +207,8 @@ This rule checks for consistent capitalization of variable names.
 
 variable_012
 ############
+
+|phase_7| |disabled| |error|
 
 This rule checks for valid prefixes on variable identifiers.
 The default variable prefix is *v\_*.

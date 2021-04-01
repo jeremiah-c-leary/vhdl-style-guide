@@ -3,8 +3,6 @@
 After Rules
 -----------
 
-.. _after_001:
-
 after_001
 #########
 
@@ -90,8 +88,6 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
        b <= c     after 1 ns;
      end if;
    end process clk_proc;
-
-.. _after_003:
 
 after_003
 #########

@@ -1,8 +1,12 @@
+.. include:: icons.rst
+
 Architecture Rules
 ------------------
 
 architecture_001
 ################
+
+|phase_4| |error|
 
 This rule checks for blank spaces before the **architecture** keyword.
 
@@ -33,6 +37,8 @@ This rule has been split into the following rules:
 architecture_003
 ################
 
+|phase_3| |error|
+
 This rule check for a blank lines or comments above the **architecture** declaration.
 
 Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous-line-rules>`_ for options.
@@ -55,6 +61,8 @@ Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous
 architecture_004
 ################
 
+|phase_6| |error|
+
 This rule checks the proper case of the **architecture** keyword in the architecture declaration.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
@@ -71,6 +79,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
 architecture_005
 ################
+
+|phase_1| |error|
 
 This rule checks the **of** keyword is on the same line as the **architecture** keyword.
 
@@ -90,6 +100,8 @@ This rule checks the **of** keyword is on the same line as the **architecture** 
 
 architecture_006
 ################
+
+|phase_1| |error|
 
 This rule checks the **is** keyword is on the same line as the **architecture** keyword.
 
@@ -113,6 +125,8 @@ This rule checks the **is** keyword is on the same line as the **architecture** 
 architecture_007
 ################
 
+|phase_4| |error|
+
 This rule checks for spaces before the **begin** keyword.
 
 **Violation**
@@ -131,6 +145,8 @@ This rule checks for spaces before the **begin** keyword.
 
 architecture_008
 ################
+
+|phase_4| |error|
 
 This rule checks for spaces before the **end architecture** keywords.
 
@@ -152,6 +168,8 @@ This rule checks for spaces before the **end architecture** keywords.
 
 architecture_009
 ################
+
+|phase_6| |error|
 
 This rule checks the **end** keyword has proper case.
 
@@ -176,6 +194,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 architecture_010
 ################
 
+|phase_1| |error|
+
 This rule checks for the keyword **architecture** in the **end architecture** statement.
 It is clearer to the reader to state what is ending.
 
@@ -195,6 +215,8 @@ Refer to the section `Configuring Optional Items <configuring.html#configuring-o
 
 architecture_011
 ################
+
+|phase_6| |error|
 
 This rule checks the architecture name case in the **end architecture** statement.
 
@@ -461,6 +483,8 @@ Refer to the section `Configuring Optional Items <configuring.html#configuring-o
 
 architecture_025
 ################
+
+|phase_7| |disabled| |error|
 
 This rule checks for valid names for the architecture.
 Typical architecture names are:  RTL, EMPTY, and BEHAVE.

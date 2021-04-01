@@ -1,3 +1,5 @@
+.. include:: icons.rst
+
 Package Body Rules
 ------------------
 
@@ -416,6 +418,8 @@ Naming Convention Rules
 package_body_600
 ^^^^^^^^^^^^^^^^
 
+|phase_7| |disabled| |error|
+
 This rule checks for valid suffixes on package body identifiers.
 The default package suffix is *_pkg*.
 
@@ -435,6 +439,8 @@ Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#conf
 
 package_body_601
 ^^^^^^^^^^^^^^^^
+
+|phase_7| |disabled| |error|
 
 This rule checks for valid prefixes on package body identifiers.
 The default package prefix is *pkg_*.

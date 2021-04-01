@@ -1,3 +1,5 @@
+.. include:: icons.rst
+
 Package Rules
 -------------
 
@@ -299,6 +301,8 @@ This rule checks the indent of the end package declaration.
 package_016
 ###########
 
+|phase_7| |disabled| |error|
+
 This rule checks for valid suffixes on package identifiers.
 The default package suffix is *_pkg*.
 
@@ -319,6 +323,8 @@ Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#conf
 
 package_017
 ###########
+
+|phase_7| |disabled| |error|
 
 This rule checks for valid prefixes on package identifiers.
 The default package prefix is *pkg_*.

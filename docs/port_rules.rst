@@ -1,3 +1,5 @@
+.. include:: icons.rst
+
 Port Rules
 ----------
 
@@ -225,6 +227,8 @@ This rule checks port names are uppercase.
 
 port_011
 ########
+
+|phase_7| |disabled| |error|
 
 This rule checks for valid prefixes on port identifiers.
 The default port prefixes are: *i\_*, *o\_*, *io\_*.
@@ -599,6 +603,8 @@ This rule checks for blank lines before the close parenthesis in port declaratio
 
 port_025
 ########
+
+|phase_7| |disabled| |error|
 
 This rule checks for valid suffixes on port identifiers.
 The default port suffixes are *_i*, *_o*, *_io*.

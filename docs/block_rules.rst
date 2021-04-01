@@ -1,3 +1,5 @@
+.. include:: icons.rst
+
 Block Rules
 -----------
 
@@ -579,6 +581,8 @@ Naming Convention Rules (600 - 699)
 block_600
 ^^^^^^^^^
 
+|phase_7| |disabled| |error|
+
 This rule checks for valid suffixes on block labels.
 The default suffix is *_blk*.
 
@@ -598,6 +602,8 @@ Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#conf
 
 block_601
 ^^^^^^^^^
+
+|phase_7| |disabled| |error|
 
 This rule checks for valid prefixes on block labels.
 The default prefix is *blk_*.

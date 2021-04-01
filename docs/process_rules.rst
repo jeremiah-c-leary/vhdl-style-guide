@@ -1,3 +1,5 @@
+.. include:: icons.rst
+
 Process Rules
 -------------
 
@@ -931,7 +933,9 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
    end process proc_1;
 
 process_036
-############
+###########
+
+|phase_7| |disabled| |error|
 
 This rule checks for valid prefixes on process labels.
 The default prefix is *proc\_*.

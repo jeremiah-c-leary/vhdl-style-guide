@@ -1,3 +1,5 @@
+.. include:: icons.rst
+
 Constant Rules
 --------------
 
@@ -286,6 +288,8 @@ This rule checks the indent of multiline constants that do not contain arrays.
 
 constant_015
 ############
+
+|phase_7| |disabled| |error|
 
 This rule checks for valid prefixes on constant identifiers.
 The default constant prefix is *c\_*.

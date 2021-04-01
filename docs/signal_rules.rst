@@ -1,3 +1,5 @@
+.. include:: icons.rst
+
 Signal Rules
 ------------
 
@@ -130,6 +132,8 @@ This rule checks for default assignments in signal declarations.
 
 signal_008
 ##########
+
+|phase_7| |disabled| |error|
 
 This rule checks for valid prefixes on signal identifiers.
 Default signal prefix is *s\_*.

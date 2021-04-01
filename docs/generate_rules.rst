@@ -1,3 +1,5 @@
+.. include:: icons.rst
+
 Generate Rules
 --------------
 
@@ -324,6 +326,8 @@ This rule checks the indent of the **when** keyword in generate case statements.
 
 generate_017
 ############
+
+|phase_7| |disabled| |error|
 
 This rule checks for valid prefixes on generate statement labels.
 The default prefix is *gen\_*.

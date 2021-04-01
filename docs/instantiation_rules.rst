@@ -1,3 +1,5 @@
+.. include:: icons.rst
+
 Instantiation Rules
 -------------------
 
@@ -498,6 +500,8 @@ Naming Convention Rules (600 - 699)
 instantiation_600
 ^^^^^^^^^^^^^^^^^
 
+|phase_7| |disabled| |error|
+
 This rule checks for valid suffixes on instantiation labels.
 The default suffix is *_inst*.
 
@@ -517,6 +521,8 @@ Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#conf
 
 instantiation_601
 ^^^^^^^^^^^^^^^^^
+
+|phase_7| |disabled| |error|
 
 This rule checks for valid prefixes on instantiation labels.
 The default prefix is *inst_*.

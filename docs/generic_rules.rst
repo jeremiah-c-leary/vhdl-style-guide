@@ -335,6 +335,8 @@ This rule checks for blank lines before the ); of the generic declaration.
 generic_020
 ###########
 
+|phase_7| |disabled| |error|
+
 This rule checks for valid prefixes on generic identifiers.
 The default generic prefix is *g\_*.
 
