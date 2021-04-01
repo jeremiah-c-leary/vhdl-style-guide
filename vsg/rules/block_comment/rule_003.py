@@ -107,10 +107,14 @@ class rule_003(block_rule.Rule):
 
 
 def is_footer(sComment):
-    if sComment[2] not in string.punctuation:
-        return False
-    if sComment[2] == '!':
-        return False
-    if sComment[3] not in string.punctuation:
-        return False
+    try:
+        if sComment[2] not in string.punctuation:
+            return False
+        if sComment[2] == '!':
+            return False
+        if sComment[3] not in string.punctuation:
+            return False
+        return True
+    except IndexError:
+        return True
     return True

@@ -44,3 +44,19 @@ end architecture rtl;
 --!  Doxygen comment
 --!  Doxygen comment
 --!  Doxygen comment
+
+architecture rtl of FIFO is
+
+begin
+
+    inst_dummy : entity lib.module
+    port map (
+      -- Clocks
+      clk   => clk
+      --
+      -- Dummy comment
+      --
+      data_i => data_i
+    );
+
+end architecture rtl;

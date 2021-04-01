@@ -111,12 +111,15 @@ class rule_001(block_rule.Rule):
 
 
 def is_header(sComment):
-    if sComment[2] not in string.punctuation:
-        return False
-    if sComment[2] == '!':
-        return False
-    if sComment[3] not in string.punctuation:
-        return False
+    try:
+        if sComment[2] not in string.punctuation:
+            return False
+        if sComment[2] == '!':
+            return False
+        if sComment[3] not in string.punctuation:
+            return False
+    except IndexError:
+        return True
     return True
 
 #         1         2         3         4         5         6         7         8
