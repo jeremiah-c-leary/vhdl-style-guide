@@ -5,8 +5,10 @@ After Rules
 
 .. _after_001:
 
-after_001 |phase_1| |disabled| |error|
-######################################
+after_001
+#########
+
+|phase_1| |disabled| |error|
 
 This rule checks for **after x** in signal assignments in clock processes.
 
@@ -54,6 +56,8 @@ This rule checks for **after x** in signal assignments in clock processes.
 after_002 |phase_5| |disabled| |error|
 ######################################
 
+|phase_5| |disabled| |error|
+
 This rule checks the *after* keywords are aligned in a clock process.
 Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
 
@@ -91,6 +95,8 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
 
 after_003 |phase_1| |disabled| |error|
 ######################################
+
+|phase_1| |disabled| |error|
 
 This rule checks the *after* keywords do not exist in the reset portion of a clock process.
 
