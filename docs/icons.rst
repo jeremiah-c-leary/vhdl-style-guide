@@ -2,7 +2,7 @@
 .. |disabled| image:: img/disabled_icon.svg
    :height: 25px
    :width: 25px
-   :target: `configuring.html`
+   :target: configuring.html
 
 .. |warning| image:: img/warning_icon.svg
    :height: 25px
