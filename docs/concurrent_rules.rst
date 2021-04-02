@@ -1,8 +1,12 @@
+.. include:: icons.rst
+
 Concurrent Rules
 ----------------
 
 concurrent_001
 ##############
+
+|phase_4| |error|
 
 This rule checks the indent of concurrent assignments.
 
@@ -29,6 +33,8 @@ This rule checks the indent of concurrent assignments.
 concurrent_002
 ##############
 
+|phase_2| |error|
+
 This rule checks for a single space after the **<=** operator.
 
 **Violation**
@@ -47,6 +53,8 @@ This rule checks for a single space after the **<=** operator.
 
 concurrent_003
 ##############
+
+|phase_5| |error|
 
 This rule checks alignment of multiline concurrent simple signal assignments.
 Succesive lines should align to the space after the assignment operator.
@@ -77,6 +85,8 @@ Aligning to the parenthesis improves readability.
 concurrent_004
 ##############
 
+|phase_2| |error|
+
 This rule checks for at least a single space before the **<=** operator.
 
 **Violation**
@@ -93,6 +103,8 @@ This rule checks for at least a single space before the **<=** operator.
 
 concurrent_005
 ##############
+
+|phase_1| |error|
 
 This rule checks for labels on concurrent assignments.
 Labels on concurrents are optional and do not provide additional information.
@@ -113,6 +125,8 @@ Labels on concurrents are optional and do not provide additional information.
 
 concurrent_006
 ##############
+
+|phase_5| |error|
 
 This rule checks the alignment of the **<=** operator over multiple consecutive lines.
 Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
@@ -135,6 +149,8 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
 
 concurrent_007
 ##############
+
+|phase_1| |error|
 
 This rule checks for code after the **else** keyword.
 
@@ -182,6 +198,8 @@ allow_single_line set to True
 concurrent_008
 ##############
 
+|phase_5| |error|
+
 This rule checks the alignment of inline comments in consecutive concurrent statements.
 Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
 
@@ -203,6 +221,8 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
 
 concurrent_009
 ##############
+
+|phase_5| |error|
 
 This rule checks alignment of multiline concurrent conditional signal statements.
 
@@ -233,6 +253,8 @@ Refer to the section `Configuring Concurrent Alignment Rules <configuring.html#c
 concurrent_010
 ##############
 
+|phase_3| |error|
+
 This rule removes blank lines within concurrent signal assignments.
 
 **Violation**
@@ -262,6 +284,8 @@ This rule removes blank lines within concurrent signal assignments.
 
 concurrent_011
 ##############
+
+|phase_1| |error|
 
 This rule checks the structure of simple and conditional concurrent statements.
 

@@ -1,8 +1,12 @@
+.. include:: icons.rst
+
 Generic Rules
 -------------
 
 generic_001
 ###########
+
+|phase_3| |error|
 
 This rule checks for blank lines above the **generic** keyword.
 
@@ -25,6 +29,8 @@ This rule checks for blank lines above the **generic** keyword.
 
 generic_002
 ###########
+
+|phase_4| |error|
 
 This rule checks the indent of the **generic** keyword.
 
@@ -51,6 +57,8 @@ This rule checks the indent of the **generic** keyword.
 generic_003
 ###########
 
+|phase_2| |error|
+
 This rule checks for a single space between the **generic** keyword and the (.
 
 **Violation**
@@ -71,6 +79,8 @@ This rule checks for a single space between the **generic** keyword and the (.
 
 generic_004
 ###########
+
+|phase_4| |error|
 
 This rule checks the indent of generic declarations.
 
@@ -95,6 +105,8 @@ This rule checks the indent of generic declarations.
 generic_005
 ###########
 
+|phase_2| |error|
+
 This rule checks for a single space after the colon in a generic declaration.
 
 **Violation**
@@ -111,6 +123,8 @@ This rule checks for a single space after the colon in a generic declaration.
 
 generic_006
 ###########
+
+|phase_2| |error|
 
 This rule checks for a single space after the default assignment.
 
@@ -131,6 +145,8 @@ This rule checks for a single space after the default assignment.
 generic_007
 ###########
 
+|phase_6| |error|
+
 This rule checks the generic names have proper case.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
@@ -149,6 +165,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
 generic_008
 ###########
+
+|phase_4| |error|
 
 This rule checks the indent of the closing parenthesis.
 
@@ -169,6 +187,8 @@ This rule checks the indent of the closing parenthesis.
 generic_009
 ###########
 
+|phase_6| |error|
+
 This rule checks the **generic** keyword has proper case.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
@@ -188,6 +208,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 generic_010
 ###########
 
+|phase_1| |error|
+
 This rule checks the closing parenthesis is on a line by itself.
 
 **Violation**
@@ -206,6 +228,8 @@ This rule checks the closing parenthesis is on a line by itself.
 generic_013
 ###########
 
+|phase_1| |error|
+
 This rule checks for the **generic** keyword on the same line as a generic declaration.
 
 **Violation**
@@ -223,6 +247,8 @@ This rule checks for the **generic** keyword on the same line as a generic decla
 
 generic_014
 ###########
+
+|phase_2| |error|
 
 This rule checks for at least a single space before the colon.
 
@@ -245,6 +271,8 @@ This rule checks for at least a single space before the colon.
 generic_016
 ###########
 
+|phase_1| |error|
+
 This rule checks for multiple generics defined on a single line.
 
 **Violation**
@@ -266,6 +294,8 @@ This rule checks for multiple generics defined on a single line.
 
 generic_017
 ###########
+
+|phase_6| |error|
 
 This rule checks the generic type has proper case if it is a VHDL keyword.
 
@@ -292,6 +322,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 generic_018
 ###########
 
+|phase_1| |error|
+
 This rule checks the **generic** keyword is on the same line as the (.
 
 **Violation**
@@ -309,6 +341,8 @@ This rule checks the **generic** keyword is on the same line as the (.
 
 generic_019
 ###########
+
+|phase_3| |error|
 
 This rule checks for blank lines before the ); of the generic declaration.
 

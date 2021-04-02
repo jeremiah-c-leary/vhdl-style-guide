@@ -1,8 +1,12 @@
+.. include:: icons.rst
+
 File Rules
 ----------
 
 file_001
 ########
+
+|phase_4| |error|
 
 This rule checks the indent of **file** declarations.
 
@@ -35,6 +39,8 @@ This rule checks the indent of **file** declarations.
 file_002
 ########
 
+|phase_6| |error|
+
 This rule checks the **file** keyword has proper case.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
@@ -59,7 +65,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
    begin
 
-file_003
-########
+file_003 (depricated)
+#####################
 
 This rule was depricated and replaced with rules:  function_015, package_019, procedure_010, architecture_029 and process_037.

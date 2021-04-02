@@ -1,8 +1,12 @@
+.. include:: icons.rst
+
 Variable Assignment Rules
 -------------------------
 
 variable_assignment_001
 #######################
+
+|phase_4| |error|
 
 This rule checks the indent of a variable assignment.
 
@@ -31,6 +35,8 @@ This rule checks the indent of a variable assignment.
 variable_assignment_002
 #######################
 
+|phase_2| |error|
+
 This rule checks for a single space after the assignment.
 
 **Violation**
@@ -49,6 +55,8 @@ This rule checks for a single space after the assignment.
 
 variable_assignment_003
 #######################
+
+|phase_2| |error|
 
 This rule checks for at least a single space before the assignment.
 
@@ -69,6 +77,8 @@ This rule checks for at least a single space before the assignment.
 variable_assignment_004
 #######################
 
+|phase_4| |error|
+
 This rule checks the alignment of multiline variable assignments.
 
 **Violation**
@@ -87,6 +97,8 @@ This rule checks the alignment of multiline variable assignments.
 
 variable_assignment_005
 #######################
+
+|phase_5| |error|
 
 This rule checks the alignment of **:=** operators over multiple lines.
 
@@ -114,6 +126,8 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
 
 variable_assignment_006
 #######################
+
+|phase_2| |error|
 
 This rule checks for comments in multiline variable assignments.
 

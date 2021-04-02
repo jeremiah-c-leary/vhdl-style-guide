@@ -1,8 +1,12 @@
+.. include:: icons.rst
+
 Library Rules
 -------------
 
 library_001
 ###########
+
+|phase_4| |error|
 
 This rule checks the indent of the **library** keyword.
 Indenting helps in comprehending the code.
@@ -25,6 +29,8 @@ Indenting helps in comprehending the code.
 library_002
 ###########
 
+|phase_2| |error|
+
 This rule checks for excessive spaces after the **library** keyword.
 
 **Violation**
@@ -41,6 +47,8 @@ This rule checks for excessive spaces after the **library** keyword.
 
 library_003
 ###########
+
+|phase_3| |error|
 
 This rule checks for blank lines or comments above the entity keyword.
 
@@ -76,6 +84,8 @@ When set to **True**, it allows consecutive library clauses.
 library_004
 ###########
 
+|phase_6| |error|
+
 This rule checks the **library** keyword has proper case.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
@@ -98,6 +108,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
 library_005
 ###########
+
+|phase_6| |error|
 
 This rule checks the **use** keyword has proper case.
 
@@ -122,6 +134,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 library_006
 ###########
 
+|phase_2| |error|
+
 This rule checks for excessive spaces after the **use** keyword.
 
 **Violation**
@@ -142,6 +156,8 @@ This rule checks for excessive spaces after the **use** keyword.
 
 library_007
 ###########
+
+|phase_3| |error|
 
 This rule checks for blank lines or comments above the **process** declaration.
 
@@ -170,6 +186,8 @@ The default style is :code:`no_blank`.
 library_008
 ###########
 
+|phase_4| |error|
+
 This rule checks the indent of the **use** keyword.
 
 **Violation**
@@ -190,6 +208,8 @@ This rule checks the indent of the **use** keyword.
 
 library_009
 ###########
+
+|phase_4| |error|
 
 This rule checks alignment of comments above library use statements.
 
@@ -212,6 +232,8 @@ This rule checks alignment of comments above library use statements.
 library_010
 ###########
 
+|phase_1| |error|
+
 This rule checks the **library** keyword is on it's own line.
 
 **Violation**
@@ -229,6 +251,8 @@ This rule checks the **library** keyword is on it's own line.
 
 library_011
 ###########
+
+|phase_1| |error|
 
 This rule checks the **use** keyword is on it's own line.
 

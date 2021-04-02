@@ -1,8 +1,12 @@
+.. include:: icons.rst
+
 Generic Map Rules
 -----------------
 
 generic_map_001 (instantiation_013)
 ###################################
+
+|phase_6| |error|
 
 This rule checks the **generic map** keywords have proper case.
 
@@ -22,6 +26,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
 generic_map_002 (instantiation_016)
 ###################################
+
+|phase_6| |error|
 
 This rule checks generic names have proper case.
 
@@ -47,6 +53,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
 generic_map_003 (instantiation_026)
 ###################################
+
+|phase_1| |error|
 
 This rule checks the ( is on the same line as the **generic map** keywords.
 
@@ -74,6 +82,8 @@ Use explicit port mapping.
 generic_map_004 (instantiation_014)
 ###################################
 
+|phase_1| |error|
+
 This rule checks for the closing parenthesis *)* on generic maps are on their own line.
 
 **Violation**
@@ -99,6 +109,8 @@ This rule checks for the closing parenthesis *)* on generic maps are on their ow
 generic_map_005 (instantiation_017)
 ###################################
 
+|phase_1| |error|
+
 This rule checks if the **generic map** keywords and a generic assignment are on the same line.
 
 **Violation**
@@ -121,6 +133,8 @@ This rule checks if the **generic map** keywords and a generic assignment are on
 generic_map_006 (instantiation_018)
 ###################################
 
+|phase_2| |error|
+
 This rule checks for a single space between the **map** keyword and the (.
 
 **Violation**
@@ -141,6 +155,8 @@ This rule checks for a single space between the **map** keyword and the (.
 
 generic_map_007 (instantiation_030)
 ###################################
+
+|phase_2| |error|
 
 This rule checks for a single space after the **=>** keyword in generic maps.
 
@@ -166,6 +182,8 @@ This rule checks for a single space after the **=>** keyword in generic maps.
 
 generic_map_008 (instantiation_024)
 ###################################
+
+|phase_1| |error|
 
 This rule checks for positional generics.
 Positional ports and generics are subject to problems when the position of the underlying component changes.

@@ -760,6 +760,8 @@ Refer to the section `Configuring Blank Lines <configuring.html#configuring-blan
 
    library ieee;
 
+.. _architecture_naming_convention_rules:
+
 Naming Convention Rules (600 - 699)
 ###################################
 

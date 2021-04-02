@@ -6,6 +6,8 @@ Instantiation Rules
 instantiation_001
 #################
 
+|phase_4| |error|
+
 This rule checks for the proper indentation of instantiations.
 
 **Violation**
@@ -33,6 +35,8 @@ This rule checks for the proper indentation of instantiations.
 instantiation_002
 #################
 
+|phase_2| |error|
+
 This rule checks for a single space after the colon.
 
 **Violation**
@@ -50,6 +54,8 @@ This rule checks for a single space after the colon.
 instantiation_003
 #################
 
+|phase_2| |error|
+
 This rule checks for a single space before the colon.
 
 **Violation**
@@ -66,6 +72,8 @@ This rule checks for a single space before the colon.
 
 instantiation_004
 #################
+
+|phase_3| |error|
 
 This rule checks for blank lines or comments above the instantiation.
 
@@ -97,6 +105,8 @@ The default style is :code:`no_code`.
 instantiation_005
 #################
 
+|phase_1| |error|
+
 This rule checks the **port map** keywords are on their own line.
 
 **Violation**
@@ -125,6 +135,8 @@ This rule has been renamed to **port_map_004**
 instantiation_008
 #################
 
+|phase_6| |error|
+
 This rule checks the instance label has proper case.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
@@ -143,6 +155,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
 instantiation_009
 #################
+
+|phase_6| |error|
 
 This rule checks the component name has proper case.
 
@@ -163,6 +177,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
 instantiation_010
 #################
+
+|phase_5| |error|
 
 This rule checks the alignment of the **=>** operator for each generic and port in the instantiation.
 
@@ -210,6 +226,8 @@ This rule has been renamed to **port_map_002**
 instantiation_012
 #################
 
+|phase_1| |error|
+
 This rule checks the instantiation declaration and the **generic map** keywords are not on the same line.
 
 **Violation**
@@ -252,6 +270,8 @@ This rule has been renamed to **generic_map_006**
 
 instantiation_019
 #################
+
+|phase_3| |error|
 
 This rule checks for a blank line below the end of the instantiation declaration.
 
@@ -300,6 +320,8 @@ This rule has been renamed to **port_map_007**
 instantiation_023
 #################
 
+|phase_1| |error|
+
 This rule checks for comments at the end of the port and generic assignments in instantiations.
 These comments represent additional maintainence.
 They will be out of sync with the entity at some point.
@@ -334,8 +356,10 @@ instantiation_026 (depricated)
 
 This rule has been renamed to **generic_map_003**
 
-instantiation_027 (depricated)
-##############################
+instantiation_027
+#################
+
+|phase_6| |error|
 
 This rule checks the **entity** keyword has proper case in direct instantiations.
 
@@ -356,6 +380,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 instantiation_028
 #################
 
+|phase_6| |error|
+
 This rule checks the entity name has proper case in direct instantiations.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
@@ -374,6 +400,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
 instantiation_029
 #################
+
+|phase_5| |error|
 
 This rule checks for alignment of inline comments in an instantiation.
 
@@ -408,6 +436,8 @@ This rule has been renamed to **generic_map_007**
 instantiation_031
 #################
 
+|phase_6| |error|
+
 This rule checks the component keyword has proper case in component instantiations that use the **component** keyword.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
@@ -426,6 +456,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
 instantiation_032
 #################
+
+|phase_2| |error|
 
 This rule checks for a single space after the **component** keyword if it is used.
 
@@ -448,6 +480,8 @@ This rule checks for a single space after the **component** keyword if it is use
 instantiation_033
 #################
 
+|phase_1| |error|
+
 This rule checks for the **component** keyword for a component instantiation.
 
 Refer to the section `Configuring Optional Items <configuring.html#configuring-optional-items>`_ for options.
@@ -466,6 +500,8 @@ Refer to the section `Configuring Optional Items <configuring.html#configuring-o
 
 instantiation_034
 #################
+
+|phase_1| |error|
 
 This rule checks for component versus direct instantiations.
 

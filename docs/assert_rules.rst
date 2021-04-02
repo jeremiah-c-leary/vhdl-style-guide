@@ -1,8 +1,12 @@
+.. include:: icons.rst
+
 Assert Rules
 ------------
 
 assert_001
 ##########
+
+|phase_4| |error|
 
 This rule checks indent of multiline assert statements.
 
@@ -27,6 +31,8 @@ Alignment Rules (400 - 499)
 
 assert_400
 ^^^^^^^^^^
+
+|phase_4| |error|
 
 This rule checks the alignment of the report expressions.
 

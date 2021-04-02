@@ -1,3 +1,5 @@
+.. include:: icons.rst
+
 When Rules
 ----------
 
@@ -5,6 +7,8 @@ These rules cover the usage of **when** keywords in sequential and concurrent st
 
 when_001
 ########
+
+|phase_1| |error|
 
 This rule checks the **else** keyword is not at the beginning of a line.
 The else should be at the end of the preceeding line.

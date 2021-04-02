@@ -6,6 +6,8 @@ Constant Rules
 constant_001
 ############
 
+|phase_4| |error|
+
 This rule checks the indent of a constant declaration.
 
 **Violation**
@@ -29,6 +31,8 @@ This rule checks the indent of a constant declaration.
 
 constant_002
 ############
+
+|phase_6| |error|
 
 This rule checks the **constant** keyword is has proper case.
 
@@ -54,6 +58,8 @@ This rule was depricated and replaced with rules:  function_015, package_019, pr
 constant_004
 ############
 
+|phase_6| |error|
+
 This rule checks the constant identifier has proper case.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
@@ -72,6 +78,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
 constant_005
 ############
+
+|phase_2| |error|
 
 This rule checks for a single space after the colon.
 
@@ -92,6 +100,8 @@ This rule checks for a single space after the colon.
 constant_006
 ############
 
+|phase_2| |error|
+
 This rule checks for at least a single space before the colon.
 
 **Violation**
@@ -110,6 +120,8 @@ This rule checks for at least a single space before the colon.
 
 constant_007
 ############
+
+|phase_1| |error|
 
 This rule checks the **:=** is on the same line at the **constant** keyword.
 
@@ -137,6 +149,8 @@ This rule checks the **:=** is on the same line at the **constant** keyword.
 constant_010
 ############
 
+|phase_2| |error|
+
 This rule checks for a single space before the := keyword in constant declarations.
 Having a space makes it clearer where the assignment occurs on the line.
 
@@ -157,6 +171,8 @@ Having a space makes it clearer where the assignment occurs on the line.
 constant_011
 ############
 
+|phase_6| |error|
+
 This rule checks the constant type has proper case.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
@@ -175,6 +191,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
 constant_012
 ############
+
+|phase_4| |error|
 
 This rule checks the indent of multiline constants that contain arrays.
 
@@ -206,6 +224,8 @@ Refer to section `Configuring Multiline Indent Rules <configuring.html#configuri
 
 constant_013
 ############
+
+|phase_6| |error|
 
 This rule checks for consistent capitalization of constant names.
 
@@ -270,6 +290,8 @@ This rule checks for consistent capitalization of constant names.
 constant_014
 ############
 
+|phase_5| |error|
+
 This rule checks the indent of multiline constants that do not contain arrays.
 
 **Violation**
@@ -310,6 +332,8 @@ Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#conf
 
 constant_016
 ############
+
+|phase_1| |error|
 
 This rule checks the structure of multiline constants that contain arrays.
 

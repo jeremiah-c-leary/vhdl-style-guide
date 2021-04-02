@@ -6,6 +6,8 @@ Process Rules
 process_001
 ###########
 
+|phase_4| |error|
+
 This rule checks the indent of the process declaration.
 
 **Violation**
@@ -32,6 +34,8 @@ This rule checks the indent of the process declaration.
 process_002
 ###########
 
+|phase_2| |error|
+
 This rule checks for a single space after the **process** keyword.
 
 **Violation**
@@ -52,6 +56,8 @@ This rule checks for a single space after the **process** keyword.
 
 process_003
 ###########
+
+|phase_4| |error|
 
 This rule checks the indent of the **begin** keyword.
 
@@ -75,6 +81,8 @@ This rule checks the indent of the **begin** keyword.
 
 process_004
 ###########
+
+|phase_6| |error|
 
 This rule checks the **begin** keyword has proper case.
 
@@ -101,6 +109,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 process_005
 ###########
 
+|phase_6| |error|
+
 This rule checks the **process** keyword has proper case.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
@@ -119,6 +129,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
 process_006
 ###########
+
+|phase_4| |error|
 
 This rule checks the indent of the **end process** keywords.
 
@@ -147,6 +159,8 @@ This rule checks the indent of the **end process** keywords.
 process_007
 ###########
 
+|phase_2| |error|
+
 This rule checks for a single space after the **end** keyword.
 
 **Violation**
@@ -163,6 +177,8 @@ This rule checks for a single space after the **end** keyword.
 
 process_008
 ###########
+
+|phase_6| |error|
 
 This rule checks the **end** keyword has proper case.
 
@@ -183,6 +199,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 process_009
 ###########
 
+|phase_6| |error|
+
 This rule checks the **process** keyword has proper case in the **end process** line.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
@@ -201,6 +219,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
 process_010
 ###########
+
+|phase_1| |error|
 
 This rule checks the **begin** keyword is on it's own line.
 
@@ -224,6 +244,8 @@ This rule checks the **begin** keyword is on it's own line.
 process_011
 ###########
 
+|phase_3| |error|
+
 This rule checks for a blank line below the **end process** keyword.
 
 Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options.
@@ -245,6 +267,8 @@ Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ f
 
 process_012
 ###########
+
+|phase_1| |error|
 
 This rule checks for the existence of the **is** keyword.
 
@@ -283,6 +307,8 @@ Refer to the section `Configuring Optional Items <configuring.html#configuring-o
 process_013
 ###########
 
+|phase_6| |error|
+
 This rule checks the **is** keyword has proper case.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
@@ -308,6 +334,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 process_014
 ###########
 
+|phase_2| |error|
+
 This rule checks for a single space before the **is** keyword.
 
 **Violation**
@@ -330,6 +358,8 @@ This rule checks for a single space before the **is** keyword.
 
 process_015
 ###########
+
+|phase_3| |error|
 
 This rule checks for blank lines or comments above the **process** declaration.
 
@@ -361,6 +391,8 @@ The default style is :code:`no_code`.
 process_016
 ###########
 
+|phase_1| |error|
+
 This rule checks the process has a label.
 
 **Violation**
@@ -383,6 +415,8 @@ This rule checks the process has a label.
 
 process_017
 ###########
+
+|phase_6| |error|
 
 This rule checks the process label has proper case.
 
@@ -409,6 +443,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 process_018
 ###########
 
+|phase_1| |error|
+
 This rule checks the **end process** line has a label.
 The closing label will be added if the opening process label exists.
 
@@ -429,6 +465,8 @@ Refer to the section `Configuring Optional Items <configuring.html#configuring-o
 process_019
 ###########
 
+|phase_6| |error|
+
 This rule checks the **end process** label has proper case.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
@@ -447,6 +485,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
 process_020
 ###########
+
+|phase_4| |error|
 
 This rule checks the indentation of multiline sensitivity lists.
 
@@ -471,6 +511,8 @@ This rule checks the indentation of multiline sensitivity lists.
 
 process_021
 ###########
+
+|phase_1| |error|
 
 This rule checks for blank lines above the **begin** keyword if there are no process declarative items.
 
@@ -518,6 +560,8 @@ Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ f
 process_022
 ###########
 
+|phase_3| |error|
+
 This rule checks for a blank line below the **begin** keyword.
 
 Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
@@ -546,6 +590,8 @@ Refer to the section `Configuring Blank Lines <configuring.html#configuring-blan
 process_023
 ###########
 
+|phase_3| |error|
+
 This rule checks for a blank line above the **end process** keyword.
 
 Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options.
@@ -567,6 +613,8 @@ Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ f
 
 process_024
 ###########
+
+|phase_2| |error|
 
 This rule checks for a single space after the process label.
 
@@ -591,6 +639,8 @@ This rule checks for a single space after the process label.
 process_025
 ###########
 
+|phase_2| |error|
+
 This rule checks for a single space after the colon and before the **process** keyword.
 
 **Violation**
@@ -612,6 +662,8 @@ This rule checks for a single space after the colon and before the **process** k
 
 process_026
 ###########
+
+|phase_3| |error|
 
 This rule checks for blank lines above the first declarative line, if it exists.
 
@@ -642,6 +694,8 @@ Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ f
 
 process_027
 ###########
+
+|phase_3| |error|
 
 This rule checks for blank lines above the **begin** keyword if a declarative item exists.
 
@@ -675,6 +729,8 @@ Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ f
 process_028
 ###########
 
+|phase_5| |error|
+
 This rule checks the alignment of the closing parenthesis of a sensitivity list.
 Parenthesis on multiple lines should be in the same column.
 
@@ -696,6 +752,8 @@ Parenthesis on multiple lines should be in the same column.
 
 process_029
 ###########
+
+|phase_1| |error|
 
 This rule checks for the format of clock definitions in clock processes.
 The rule can be set to enforce **event** definition:
@@ -765,6 +823,8 @@ edge configuration
 process_030
 ###########
 
+|phase_1| |error|
+
 This rule checks for a single signal per line in a sensitivity list that is not the last one.
 The sensitivity list is required by the compiler, but provides no useful information to the reader.
 Therefore, the vertical spacing of the sensitivity list should be minimized.
@@ -794,6 +854,8 @@ This will help with code readability.
 
 process_031
 ###########
+
+|phase_5| |error|
 
 This rule checks for alignment of identifiers in the process declarative region.
 
@@ -828,6 +890,8 @@ This rule checks for alignment of identifiers in the process declarative region.
 process_032
 ###########
 
+|phase_1| |error|
+
 This rule checks the process label is on the same line as the process keyword.
 
 **Violation**
@@ -846,6 +910,8 @@ This rule checks the process label is on the same line as the process keyword.
 
 process_033
 ###########
+
+|phase_5| |error|
 
 This rule checks the colons are in the same column for all declarations in the process declarative part.
 Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
@@ -870,6 +936,8 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
 
 process_034
 ###########
+
+|phase_5| |error|
 
 This rule aligns inline comments between the end of the process sensitivity list and the process **begin** keyword.
 Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
@@ -902,6 +970,8 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
 
 process_035
 ###########
+
+|phase_5| |error|
 
 This rule checks the alignment of inline comments between the process begin and end process lines.
 Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.

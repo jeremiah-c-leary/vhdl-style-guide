@@ -6,6 +6,8 @@ Type Rules
 type_001
 ########
 
+|phase_4| |error|
+
 This rule checks the indent of the **type** declaration.
 
 **Violation**
@@ -31,6 +33,8 @@ This rule checks the indent of the **type** declaration.
 type_002
 ########
 
+|phase_6| |error|
+
 This rule checks the **type** keyword has proper case.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
@@ -47,13 +51,15 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
    type state_machine is (idle, write, read, done);
 
-type_003
-########
+type_003 (depricated)
+#####################
 
 This rule was depricated and replaced with rules:  function_015, package_019, procedure_010, architecture_029 and process_037.
 
 type_004
 ########
+
+|phase_6| |error|
 
 This rule checks the type identifier has proper case.
 
@@ -73,6 +79,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
 type_005
 ########
+
+|phase_4| |error|
 
 This rule checks the indent of multiline enumerated types.
 
@@ -99,6 +107,8 @@ This rule checks the indent of multiline enumerated types.
 type_006
 ########
 
+|phase_2| |error|
+
 This rule checks for a single space before the **is** keyword.
 
 **Violation**
@@ -116,6 +126,8 @@ This rule checks for a single space before the **is** keyword.
 type_007
 ########
 
+|phase_2| |error|
+
 This rule checks for a single space after the **is** keyword.
 
 **Violation**
@@ -132,6 +144,8 @@ This rule checks for a single space after the **is** keyword.
 
 type_008
 ########
+
+|phase_1| |error|
 
 This rule checks the closing parenthesis of multiline enumerated types is on it's own line.
 
@@ -159,6 +173,8 @@ This rule checks the closing parenthesis of multiline enumerated types is on it'
 type_009
 ########
 
+|phase_1| |error|
+
 This rule checks for an enumerate type after the open parenthesis on multiline enumerated types.
 
 **Violation**
@@ -185,6 +201,8 @@ This rule checks for an enumerate type after the open parenthesis on multiline e
 type_010
 ########
 
+|phase_3| |error|
+
 This rule checks for blank lines or comments above the **type** declaration.
 
 Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous-line-rules>`_ for options.
@@ -207,6 +225,8 @@ Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous
 type_011
 ########
 
+|phase_3| |error|
+
 This rule checks for a blank line below the **type** declaration.
 
 Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
@@ -228,6 +248,8 @@ Refer to the section `Configuring Blank Lines <configuring.html#configuring-blan
 
 type_012
 ########
+
+|phase_4| |error|
 
 This rule checks the indent of record elements in record type declarations.
 
@@ -254,6 +276,8 @@ This rule checks the indent of record elements in record type declarations.
 type_013
 ########
 
+|phase_6| |error|
+
 This rule checks the **is** keyword in type definitions has proper case.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
@@ -276,6 +300,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
 type_014
 ########
+
+|phase_6| |error|
 
 This rule checks for consistent capitalization of type names.
 
@@ -320,6 +346,8 @@ Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#conf
 type_016
 ########
 
+|phase_4| |error|
+
 This rule checks the indent of the closing parenthesis on multiline types.
 
 **Violation**
@@ -346,11 +374,15 @@ This rule checks the indent of the closing parenthesis on multiline types.
 
    begin
 
+.. _type_alignment_rules:
+
 Alignment Rules (400 - 499)
 ###########################
 
 type_400
 ^^^^^^^^
+
+|phase_5| |error|
 
 This rule checks the colons are in the same column for all elements in the block declarative part.
 

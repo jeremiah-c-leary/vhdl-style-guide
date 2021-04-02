@@ -6,6 +6,8 @@ Subtype Rules
 subtype_001
 ###########
 
+|phase_4| |error|
+
 This rule checks for indentation of the **subtype** keyword.
 Proper indentation enhances comprehension.
 
@@ -38,6 +40,8 @@ The indent amount can be controlled by the **indentSize** attribute on the rule.
 subtype_002
 ###########
 
+|phase_6| |error|
+
 This rule checks for consistent capitalization of subtype names.
 
 **Violation**
@@ -67,8 +71,8 @@ This rule checks for consistent capitalization of subtype names.
    constant read_sz  : read_size := 8;
    constant write_sz : write_size := 1;
 
-subtype_003
-###########
+subtype_003 (depricated)
+########################
 
 This rule was depricated and replaced with rules:  function_015, package_019, procedure_010, architecture_029 and process_037.
 

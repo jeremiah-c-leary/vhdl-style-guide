@@ -1,8 +1,12 @@
+.. include:: icons.rst
+
 Source File Rules
 -----------------
 
 source_file_001
 ###############
+
+|phase_1| |error|
 
 This rule checks for the existance of the source file passed to VSG.
 

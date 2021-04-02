@@ -1,15 +1,17 @@
+.. include:: icons.rst
+
 Whitespace Rules
 ----------------
 
-whitespace_001
-##############
+whitespace_001 (depricated)
+###########################
 
 This rule has been depricated.
 
 VSG strips trailing spaces when a file is read in.
 
-whitespace_002
-##############
+whitespace_002 (depricated)
+###########################
 
 This rule has been depricated.
 
@@ -17,6 +19,8 @@ VSG changes tabs to spaces when a file is read in.
 
 whitespace_003
 ##############
+
+|phase_2| |error|
 
 This rule checks for spaces before semicolons.
 
@@ -34,6 +38,8 @@ This rule checks for spaces before semicolons.
 
 whitespace_004
 ##############
+
+|phase_2| |error|
 
 This rule checks for spaces before commas.
 
@@ -53,6 +59,8 @@ This rule checks for spaces before commas.
 
 whitespace_005
 ##############
+
+|phase_2| |error|
 
 This rule checks for spaces after an open parenthesis.
 
@@ -78,6 +86,8 @@ This rule checks for spaces after an open parenthesis.
 whitespace_006
 ##############
 
+|phase_2| |error|
+
 This rule checks for spaces before a close parenthesis.
 
 **Violation**
@@ -99,6 +109,8 @@ This rule checks for spaces before a close parenthesis.
 whitespace_007
 ##############
 
+|phase_2| |error|
+
 This rule checks for spaces after a comma.
 
 **Violation**
@@ -115,6 +127,8 @@ This rule checks for spaces after a comma.
 
 whitespace_008
 ##############
+
+|phase_2| |error|
 
 This rule checks for spaces after the **std_logic_vector** keyword.
 
@@ -135,6 +149,8 @@ This rule checks for spaces after the **std_logic_vector** keyword.
 whitespace_010
 ##############
 
+|phase_2| |error|
+
 This rule checks for spaces before and after the concate (&) operator.
 
 **Violation**
@@ -151,6 +167,8 @@ This rule checks for spaces before and after the concate (&) operator.
 
 whitespace_011
 ##############
+
+|phase_2| |error|
 
 This rule checks for at least a single space before and after math operators +, -, /, \* and \*\*.
 
@@ -178,6 +196,8 @@ This rule checks for at least a single space before and after math operators +, 
 
 whitespace_012
 ##############
+
+|phase_2| |error|
 
 This rule enforces a maximum number of consecutive blank lines.
 
@@ -215,6 +235,8 @@ This rule enforces a maximum number of consecutive blank lines.
 
 whitespace_013
 ##############
+
+|phase_2| |error|
 
 This rule checks for at least a single space before and after logical operators.
 

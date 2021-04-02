@@ -9,6 +9,8 @@ Structural Rules
 package_body_001
 ^^^^^^^^^^^^^^^^
 
+|phase_1| |error|
+
 This rule checks the **is** keyword is on the same line as the **package** keyword.
 
 **Violation**
@@ -26,6 +28,8 @@ This rule checks the **is** keyword is on the same line as the **package** keywo
 
 package_body_002
 ^^^^^^^^^^^^^^^^
+
+|phase_1| |error|
 
 This rule checks for the optional **package body** keywords on the end package body declaration.
 
@@ -45,6 +49,8 @@ Refer to the section `Configuring Optional Items <configuring.html#configuring-o
 
 package_body_003
 ^^^^^^^^^^^^^^^^
+
+|phase_1| |error|
 
 This rule checks the package name exists in the closing of the package body declaration.
 
@@ -68,6 +74,8 @@ Whitespacing Rules
 package_body_100
 ^^^^^^^^^^^^^^^^
 
+|phase_2| |error|
+
 This rule checks for a single space between **package**, **body** and **is** keywords.
 
 **Violation**
@@ -84,6 +92,8 @@ This rule checks for a single space between **package**, **body** and **is** key
 
 package_body_101
 ^^^^^^^^^^^^^^^^
+
+|phase_2| |error|
 
 This rule checks for a single space between the **end**, **package** and **body** keywords and package name.
 
@@ -104,6 +114,8 @@ Vertical Spacing Rules
 
 package_body_200
 ^^^^^^^^^^^^^^^^
+
+|phase_3| |error|
 
 This rule checks for blank lines or comments above the **package** keyword.
 
@@ -127,6 +139,8 @@ Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous
 package_body_201
 ^^^^^^^^^^^^^^^^
 
+|phase_3| |error|
+
 This rule checks for a blank line below the **package** keyword.
 
 Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
@@ -149,6 +163,8 @@ Refer to the section `Configuring Blank Lines <configuring.html#configuring-blan
 package_body_202
 ^^^^^^^^^^^^^^^^
 
+|phase_3| |error|
+
 This rule checks for blank lines or comments above the **end** keyword.
 
 Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options.
@@ -170,6 +186,8 @@ Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ f
 
 package_body_203
 ^^^^^^^^^^^^^^^^
+
+|phase_3| |error|
 
 This rule checks for a blank line below the **end package** keyword.
 
@@ -194,6 +212,8 @@ Indentation Rules
 package_body_300
 ^^^^^^^^^^^^^^^^
 
+|phase_4| |error|
+
 This rule checks the indent of the package body keyword.
 
 **Violation**
@@ -214,6 +234,8 @@ This rule checks the indent of the package body keyword.
 
 package_body_301
 ^^^^^^^^^^^^^^^^
+
+|phase_4| |error|
 
 This rule checks the indent of the end package declaration.
 
@@ -239,6 +261,8 @@ Alignment Rules
 package_body_400
 ^^^^^^^^^^^^^^^^
 
+|phase_5| |error|
+
 This rule checks the identifiers for all declarations are aligned in the package body declarative region.
 
 Refer to the section `Configuring Identifier Alignment Rules <configuring.html#configuring-identifier-alignment-rules>`_ for information on changing the configurations.
@@ -263,6 +287,8 @@ Captialization Rules
 package_body_500
 ^^^^^^^^^^^^^^^^
 
+|phase_6| |error|
+
 This rule checks the **package** keyword has proper case.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
@@ -281,6 +307,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
 package_body_501
 ^^^^^^^^^^^^^^^^
+
+|phase_6| |error|
 
 This rule checks the **body** keyword has proper case.
 
@@ -301,6 +329,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 package_body_502
 ^^^^^^^^^^^^^^^^
 
+|phase_6| |error|
+
 This rule checks the package name has proper case in the package declaration.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
@@ -319,6 +349,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
 package_body_503
 ^^^^^^^^^^^^^^^^
+
+|phase_6| |error|
 
 This rule checks the **is** keyword has proper case.
 
@@ -339,6 +371,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 package_body_504
 ^^^^^^^^^^^^^^^^
 
+|phase_6| |error|
+
 This rule checks the **end** keyword has proper case.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
@@ -357,6 +391,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
 package_body_505
 ^^^^^^^^^^^^^^^^
+
+|phase_6| |error|
 
 This rule checks the **package** keyword in the **end package body** has proper case.
 
@@ -377,6 +413,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 package_body_506
 ^^^^^^^^^^^^^^^^
 
+|phase_6| |error|
+
 This rule checks the **body** keyword in the **end package body** has proper case.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
@@ -395,6 +433,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
 package_body_507
 ^^^^^^^^^^^^^^^^
+
+|phase_6| |error|
 
 This rule checks the package name has proper case on the end package declaration.
 

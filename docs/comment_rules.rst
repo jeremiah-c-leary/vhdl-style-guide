@@ -6,6 +6,8 @@ Comment Rules
 comment_004
 ###########
 
+|phase_2| |error|
+
 This rule checks for at least a single space before inline comments.
 
 **Violation**
@@ -24,6 +26,8 @@ This rule checks for at least a single space before inline comments.
 
 comment_010
 ###########
+
+|phase_4| |error|
 
 This rule checks the indent lines starting with comments.
 

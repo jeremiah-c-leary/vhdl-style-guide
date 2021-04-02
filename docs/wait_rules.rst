@@ -1,8 +1,12 @@
+.. include:: icons.rst
+
 Wait Rules
 ----------
 
 wait_001
-##############
+########
+
+|phase_4| |error|
 
 This rule checks for indentation of the **wait** keyword.
 Proper indentation enhances comprehension.

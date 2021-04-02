@@ -1,8 +1,12 @@
+.. include:: icons.rst
+
 Port Map Rules
 --------------
 
 port_map_001 (instantiation_006)
 ################################
+
+|phase_6| |error|
 
 This rule checks the **port map** keywords have proper case.
 
@@ -22,6 +26,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
 port_map_002 (instantiation_011)
 ################################
+
+|phase_6| |error|
 
 This rule checks the port name is uppercase.
 Indexes on ports will not be uppercased.
@@ -51,6 +57,8 @@ Indexes on ports will not be uppercased.
 port_map_003 (instantiation_025)
 ################################
 
+|phase_1| |error|
+
 This rule checks the ( is on the same line as the **port map** keywords.
 
 **Violation**
@@ -79,6 +87,8 @@ Use explicit port mapping.
 port_map_004 (instantiation_007)
 ################################
 
+|phase_1| |error|
+
 This rule checks the closing ) for the port map is on it's own line.
 
 **Violation**
@@ -98,6 +108,8 @@ This rule checks the closing ) for the port map is on it's own line.
 
 port_map_005 (instantiation_020)
 ################################
+
+|phase_1| |error|
 
 This rule checks for a port assignment on the same line as the **port map** keyword.
 
@@ -122,6 +134,8 @@ This rule checks for a port assignment on the same line as the **port map** keyw
 
 port_map_007 (instantiation_022)
 ################################
+
+|phase_2| |error|
 
 This rule checks for a single space after the **=>** operator in port maps.
 
@@ -150,6 +164,8 @@ This rule checks for a single space after the **=>** operator in port maps.
 port_map_008 (instantiation_024)
 ################################
 
+|phase_1| |error|
+
 This rule checks for positional ports.
 Positional ports are subject to problems when the position of the underlying component changes.
 
@@ -175,6 +191,8 @@ Use explicit port mapping.
 
 port_map_009 (instantiation_021)
 ################################
+
+|phase_1| |error|
 
 This rule checks multiple port assignments on the same line.
 

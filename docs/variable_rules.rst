@@ -6,6 +6,8 @@ Variable Rules
 variable_001
 ############
 
+|phase_4| |error|
+
 This rule checks the indent of variable declarations.
 
 **Violation**
@@ -33,6 +35,8 @@ This rule checks the indent of variable declarations.
 variable_002
 ############
 
+|phase_6| |error|
+
 This rule checks the **variable** keyword has proper case.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
@@ -49,13 +53,15 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
    variable count : integer;
 
-variable_003
-############
+variable_003 (depricated)
+#########################
 
 This rule was depricated and replaced with rules:  function_015, package_019, procedure_010, architecture_029 and process_037.
 
 variable_004
 ############
+
+|phase_6| |error|
 
 This rule checks the variable name has proper case.
 
@@ -76,6 +82,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 variable_005
 ############
 
+|phase_2| |error|
+
 This rule checks there is a single space after the colon.
 
 **Violation**
@@ -94,6 +102,8 @@ This rule checks there is a single space after the colon.
 
 variable_006
 ############
+
+|phase_2| |error|
 
 This rule checks for at least a single space before the colon.
 
@@ -114,6 +124,8 @@ This rule checks for at least a single space before the colon.
 variable_007
 ############
 
+|phase_1| |error|
+
 This rule checks for default assignments in variable declarations.
 
 **Violation**
@@ -130,6 +142,8 @@ This rule checks for default assignments in variable declarations.
 
 variable_010
 ############
+
+|phase_6| |error|
 
 This rule checks the variable type has proper case.
 
@@ -149,6 +163,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
 variable_011
 ############
+
+|phase_6| |error|
 
 This rule checks for consistent capitalization of variable names.
 

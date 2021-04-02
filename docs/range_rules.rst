@@ -1,3 +1,5 @@
+.. include:: icons.rst
+
 Range Rules
 -----------
 
@@ -5,6 +7,8 @@ These rules cover the range definitions in signals, constants, ports and other c
 
 range_001
 #########
+
+|phase_6| |error|
 
 This rule checks the case of the **downto** keyword.
 
@@ -26,6 +30,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
 range_002
 #########
+
+|phase_6| |error|
 
 This rule checks the case of the **to** keyword.
 

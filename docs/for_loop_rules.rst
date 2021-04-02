@@ -1,8 +1,12 @@
+.. include:: icons.rst
+
 For Loop Rules
 --------------
 
 for_loop_001
 ############
+
+|phase_4| |error|
 
 This rule checks the indentation of the **for** keyword.
 
@@ -35,6 +39,8 @@ This rule checks the indentation of the **for** keyword.
 for_loop_002
 ############
 
+|phase_4| |error|
+
 This rule checks the indentation of the **end loop** keywords.
 
 **Violation**
@@ -66,6 +72,8 @@ This rule checks the indentation of the **end loop** keywords.
 for_loop_003
 ############
 
+|phase_6| |error|
+
 This rule checks the proper case of the label on a foor loop.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
@@ -87,6 +95,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 for_loop_004
 ############
 
+|phase_2| |error|
+
 This rule checks if a label exists on a for loop that a single space exists between the label and the colon.
 
 **Violation**
@@ -105,6 +115,8 @@ This rule checks if a label exists on a for loop that a single space exists betw
 
 for_loop_005
 ############
+
+|phase_2| |error|
 
 This rule checks if a label exists on a for loop that a single space exists after the colon.
 

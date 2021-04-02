@@ -1,3 +1,5 @@
+.. include:: icons.rst
+
 Attribute Declaration Rules
 ---------------------------
 
@@ -11,6 +13,8 @@ Whitespacing Rules (100 - 199)
 
 attribute_declaration_100
 ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+|phase_2| |error|
 
 This rule checks for a single space after the following elements:  **attribute** keyword and colon.
 
@@ -28,6 +32,8 @@ This rule checks for a single space after the following elements:  **attribute**
 
 attribute_declaration_101
 ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+|phase_2| |error|
 
 This rule checks for at least a single space before the colon.
 
@@ -53,6 +59,8 @@ Indentation Rules (300 - 399)
 
 attribute_declaration_300
 ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+|phase_4| |error|
 
 This rule checks the indent of the **attribute** keyword.
 
@@ -81,6 +89,8 @@ Capitalization Rules (500 - 599)
 attribute_declaration_500
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
+|phase_6| |error|
+
 This rule checks the **attribute** keyword has proper case.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
@@ -100,6 +110,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 attribute_declaration_501
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
+|phase_6| |error|
+
 This rule checks the *identifier* has proper case.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
@@ -118,6 +130,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
 attribute_declaration_502
 ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+|phase_6| |error|
 
 This rule checks the *type_mark* has proper case.
 

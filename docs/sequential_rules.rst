@@ -1,8 +1,12 @@
+.. include:: icons.rst
+
 Sequential Rules
 ----------------
 
 sequential_001
 ##############
+
+|phase_4| |error|
 
 This rule checks the indent of sequential statements.
 
@@ -27,6 +31,8 @@ This rule checks the indent of sequential statements.
 sequential_002
 ##############
 
+|phase_2| |error|
+
 This rule checks for a single space after the **<=** operator.
 
 **Violation**
@@ -45,6 +51,8 @@ This rule checks for a single space after the **<=** operator.
 
 sequential_003
 ##############
+
+|phase_2| |error|
 
 This rule checks for at least a single space before the **<=** operator.
 
@@ -65,6 +73,8 @@ This rule checks for at least a single space before the **<=** operator.
 sequential_004
 ##############
 
+|phase_4| |error|
+
 This rule checks the alignment of multiline sequential statements.
 
 **Violation**
@@ -83,6 +93,8 @@ This rule checks the alignment of multiline sequential statements.
 
 sequential_005
 ##############
+
+|phase_5| |error|
 
 This rule checks the alignment of the **<=** operators over consecutive sequential lines.
 
@@ -110,6 +122,8 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
 sequential_006
 ##############
 
+|phase_2| |error|
+
 This rule checks for comments within multiline sequential statements.
 
 **Violation**
@@ -129,6 +143,8 @@ This rule checks for comments within multiline sequential statements.
 
 sequential_007
 ##############
+
+|phase_1| |error|
 
 This rule checks for code after a sequential assignment.
 

@@ -1,3 +1,5 @@
+.. include:: icons.rst
+
 Procedure Rules
 ---------------
 
@@ -38,6 +40,8 @@ There are three forms a procedure:  with parameters, without parameters, and a p
 procedure_001
 #############
 
+|phase_4| |error|
+
 This rule checks the indent of the **procedure** keyword.
 
 **Violation**
@@ -66,6 +70,8 @@ This rule checks the indent of the **procedure** keyword.
 
 procedure_002
 #############
+
+|phase_4| |error|
 
 This rule checks the indent of the **begin** keyword.
 
@@ -96,6 +102,8 @@ This rule checks the indent of the **begin** keyword.
 procedure_003
 #############
 
+|phase_4| |error|
+
 This rule checks the indent of the **end** keyword.
 
 **Violation**
@@ -125,6 +133,8 @@ This rule checks the indent of the **end** keyword.
 procedure_004
 #############
 
+|phase_4| |error|
+
 This rule checks the indent of parameters.
 
 **Violation**
@@ -153,6 +163,8 @@ This rule checks the indent of parameters.
 
 procedure_005
 #############
+
+|phase_4| |error|
 
 This rule checks the indent of line between the **is** and **begin** keywords
 
@@ -186,6 +198,8 @@ This rule checks the indent of line between the **is** and **begin** keywords
 procedure_006
 #############
 
+|phase_4| |error|
+
 This rule checks the indent of the closing parenthesis if it is on it's own line.
 
 **Violation**
@@ -209,6 +223,8 @@ This rule checks the indent of the closing parenthesis if it is on it's own line
 
 procedure_007
 #############
+
+|phase_6| |error|
 
 This rule checks for consistent capitalization of procedure names.
 
@@ -259,6 +275,8 @@ This rule checks for consistent capitalization of procedure names.
 procedure_008
 #############
 
+|phase_6| |error|
+
 This rule checks the **end** keyword has proper case.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
@@ -282,6 +300,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 procedure_009
 #############
 
+|phase_6| |error|
+
 This rule checks the **procedure** keyword in the **end procedure** has proper case.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
@@ -304,6 +324,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
 procedure_010
 #############
+
+|phase_5| |error|
 
 This rule checks the identifiers for all declarations are aligned in the procedure declarative part.
 

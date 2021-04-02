@@ -1,8 +1,12 @@
+.. include:: icons.rst
+
 Context Reference Rules
 -----------------------
 
 context_ref_001
 ###############
+
+|phase_4| |error|
 
 This rule checks the indent of the **context** keyword.
 
@@ -24,6 +28,8 @@ This rule checks the indent of the **context** keyword.
 context_ref_002
 ###############
 
+|phase_2| |error|
+
 This rule checks for a single space between the **context** keyword and the context selected name.
 
 **Violation**
@@ -41,6 +47,8 @@ This rule checks for a single space between the **context** keyword and the cont
 
 context_ref_003
 ###############
+
+|phase_6| |error|
 
 This rule checks the **context** keyword has proper case.
 
@@ -61,6 +69,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
 context_ref_004
 ###############
+
+|phase_6| |error|
 
 This rule checks the context selected names have proper case in the context reference.
 
@@ -85,6 +95,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
 context_ref_005
 ###############
+
+|phase_1| |error|
 
 This rule checks the **context** keyword is on it's own line.
 

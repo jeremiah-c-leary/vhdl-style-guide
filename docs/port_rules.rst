@@ -6,6 +6,8 @@ Port Rules
 port_001
 ########
 
+|phase_3| |error|
+
 This rule checks for a blank line above the **port** keyword.
 
 **Violation**
@@ -26,6 +28,8 @@ This rule checks for a blank line above the **port** keyword.
 port_002
 ########
 
+|phase_4| |error|
+
 This rule checks the indent of the **port** keyword.
 
 **Violation**
@@ -44,6 +48,8 @@ This rule checks the indent of the **port** keyword.
 
 port_003
 ########
+
+|phase_2| |error|
 
 This rule checks for a single space after the **port** keyword and (.
 
@@ -65,6 +71,8 @@ This rule checks for a single space after the **port** keyword and (.
 
 port_004
 ########
+
+|phase_4| |error|
 
 This rule checks the indent of port declarations.
 
@@ -91,6 +99,8 @@ This rule checks the indent of port declarations.
 port_005
 ########
 
+|phase_2| |error|
+
 This rule checks for a single space after the colon.
 
 **Violation**
@@ -115,14 +125,16 @@ This rule checks for a single space after the colon.
      DATA     : inout std_logic
    );
 
-port_006
-########
+port_006 (depricated)
+#####################
 
 This rule has been depricated and it's function was include in rule **port_005**.
 
 
 port_007
 ########
+
+|phase_2| |error|
 
 This rule checks for four spaces after the **in** keyword.
 
@@ -150,6 +162,8 @@ This rule checks for four spaces after the **in** keyword.
 port_008
 ########
 
+|phase_2| |error|
+
 This rule checks for three spaces after the **out** keyword.
 
 **Violation**
@@ -176,6 +190,8 @@ This rule checks for three spaces after the **out** keyword.
 port_009
 ########
 
+|phase_2| |error|
+
 This rule checks for a single space after the **inout** keyword.
 
 **Violation**
@@ -200,6 +216,8 @@ This rule checks for a single space after the **inout** keyword.
 
 port_010
 ########
+
+|phase_6| |error|
 
 This rule checks port names are uppercase.
 
@@ -261,6 +279,8 @@ Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#conf
 port_012
 ########
 
+|phase_1| |error|
+
 This rule checks for default assignments on port declarations.
 
 This rule is defaulted to not fixable and can be overridden with a configuration to remove the default assignments.
@@ -290,6 +310,8 @@ This rule is defaulted to not fixable and can be overridden with a configuration
 port_013
 ########
 
+|phase_1| |error|
+
 This rule checks for multiple ports declared on a single line.
 
 **Violation**
@@ -314,6 +336,8 @@ This rule checks for multiple ports declared on a single line.
 
 port_014
 ########
+
+|phase_1| |error|
 
 This rule checks the closing parenthesis of the port map is on a line by itself.
 
@@ -340,6 +364,8 @@ This rule checks the closing parenthesis of the port map is on a line by itself.
 
 port_015
 ########
+
+|phase_4| |error|
 
 This rule checks the indent of the closing parenthesis for port maps.
 
@@ -368,6 +394,8 @@ This rule checks the indent of the closing parenthesis for port maps.
 port_016
 ########
 
+|phase_1| |error|
+
 This rule checks for a port definition on the same line as the **port** keyword.
 
 **Violation**
@@ -394,6 +422,8 @@ This rule checks for a port definition on the same line as the **port** keyword.
 port_017
 ########
 
+|phase_6| |error|
+
 This rule checks the **port** keyword has proper case.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
@@ -412,6 +442,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
 port_018
 ########
+
+|phase_6| |error|
 
 This rule checks the port type has proper case if it is a VHDL keyword.
 
@@ -443,6 +475,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 port_019
 ########
 
+|phase_6| |error|
+
 This rule checks the port direction has proper case.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
@@ -472,6 +506,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 port_020
 ########
 
+|phase_2| |error|
+
 This rule checks for at least one space before the colon.
 
 **Violation**
@@ -499,6 +535,8 @@ This rule checks for at least one space before the colon.
 port_021
 ########
 
+|phase_1| |error|
+
 This rule checks the **port** keyword is on the same line as the (.
 
 **Violation**
@@ -516,6 +554,8 @@ This rule checks the **port** keyword is on the same line as the (.
 
 port_022
 ########
+
+|phase_3| |error|
 
 This rule checks for blank lines after the **port** keyword.
 
@@ -546,6 +586,8 @@ This rule checks for blank lines after the **port** keyword.
 port_023
 ########
 
+|phase_1| |error|
+
 This rule checks for missing modes in port declarations.
 
 .. NOTE:: This must be fixed by the user.  VSG makes no assumption on the direction of the port.
@@ -574,6 +616,8 @@ This rule checks for missing modes in port declarations.
 
 port_024
 ########
+
+|phase_3| |error|
 
 This rule checks for blank lines before the close parenthesis in port declarations.
 
@@ -635,6 +679,8 @@ Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#conf
 
 port_026
 ########
+
+|phase_1| |error|
 
 This rule checks for multiple identifiers on port declarations.
 

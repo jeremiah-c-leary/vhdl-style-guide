@@ -1,8 +1,12 @@
+.. include:: icons.rst
+
 Function Rules
 --------------
 
 function_001
 ############
+
+|phase_4| |error|
 
 This rule checks the indentation of the **function** keyword.
 
@@ -34,6 +38,8 @@ This rule checks the indentation of the **function** keyword.
 function_002
 ############
 
+|phase_2| |error|
+
 This rule checks a single space exists after the **function** keyword.
 
 **Violation**
@@ -50,6 +56,8 @@ This rule checks a single space exists after the **function** keyword.
 
 function_003
 ############
+
+|phase_2| |error|
 
 This rule checks for a single space between the function name and the (.'
 
@@ -72,6 +80,8 @@ This rule checks for a single space between the function name and the (.'
 function_004
 ############
 
+|phase_6| |error|
+
 This rule checks the **begin** keyword has proper case.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
@@ -93,6 +103,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 function_005
 ############
 
+|phase_6| |error|
+
 This rule checks the **function** keyword has proper case.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
@@ -111,6 +123,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
 function_006
 ############
+
+|phase_3| |error|
 
 This rule checks for blank lines or comments above the **function** keyword.
 
@@ -135,6 +149,8 @@ Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous
 function_007
 ############
 
+|phase_3| |error|
+
 This rule checks for a blank line below the end of the function declaration.
 
 Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
@@ -158,6 +174,8 @@ Refer to the section `Configuring Blank Lines <configuring.html#configuring-blan
 
 function_008
 ############
+
+|phase_4| |error|
 
 This rule checks the indent of function parameters on multiple lines.
 
@@ -187,6 +205,8 @@ This rule checks the indent of function parameters on multiple lines.
 
 function_009
 ############
+
+|phase_1| |error|
 
 This rule checks for a function parameter on the same line as the function keyword when the parameters are on multiple lines.
 
@@ -218,6 +238,8 @@ This rule checks for a function parameter on the same line as the function keywo
 
 function_010
 ############
+
+|phase_6| |error|
 
 This rule checks for consistent capitalization of function names.
 
@@ -266,6 +288,8 @@ This rule checks for consistent capitalization of function names.
 function_012
 ############
 
+|phase_5| |error|
+
 This rule checks the colons are in the same column for all declarations in the function declarative part.
 
 Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
@@ -288,6 +312,8 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
 
 function_013
 ############
+
+|phase_6| |error|
 
 This rule checks the **end** keyword has proper case.
 
@@ -312,6 +338,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 function_014
 ############
 
+|phase_6| |error|
+
 This rule checks the **function** keyword in the **end function** has proper case.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
@@ -335,6 +363,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 function_015
 ############
 
+|phase_5| |error|
+
 This rule checks the identifiers for all declarations are aligned in the function declarative part.
 
 Refer to the section `Configuring Identifier Alignment Rules <configuring.html#configuring-identifier-alignment-rules>`_ for information on changing the configurations.
@@ -357,6 +387,8 @@ Refer to the section `Configuring Identifier Alignment Rules <configuring.html#c
 
 function_016
 ############
+
+|phase_4| |error|
 
 This rule checks the indent of return statements in function bodies.
 
@@ -382,6 +414,8 @@ This rule checks the indent of return statements in function bodies.
 
 function_017
 ############
+
+|phase_6| |error|
 
 This rule checks the function designator has proper case.
 

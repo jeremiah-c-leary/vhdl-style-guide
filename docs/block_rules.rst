@@ -9,6 +9,8 @@ Structural Rules (000 - 099)
 block_001
 ^^^^^^^^^
 
+|phase_1| |error|
+
 This rule checks the block label and the **block** keyword are on the same line.
 Keeping the label and generate on the same line reduces excessive indenting.
 
@@ -27,6 +29,8 @@ Keeping the label and generate on the same line reduces excessive indenting.
 
 block_002
 ^^^^^^^^^
+
+|phase_1| |error|
 
 This rule checks for the existence of the **is** keyword.
 
@@ -49,6 +53,8 @@ Refer to the section `Configuring Optional Items <configuring.html#configuring-o
 block_003
 ^^^^^^^^^
 
+|phase_1| |error|
+
 This rule checks the **is** keyword is on the same line as the **block** keyword.
 
 **Violation**
@@ -66,6 +72,8 @@ This rule checks the **is** keyword is on the same line as the **block** keyword
 
 block_004
 ^^^^^^^^^
+
+|phase_1| |error|
 
 This rule checks the **begin** keyword is on it's own line.
 
@@ -85,6 +93,8 @@ This rule checks the **begin** keyword is on it's own line.
 block_005
 ^^^^^^^^^
 
+|phase_1| |error|
+
 This rule check for code after the **begin** keyword.
 
 **Violation**
@@ -103,6 +113,8 @@ This rule check for code after the **begin** keyword.
 block_006
 ^^^^^^^^^
 
+|phase_1| |error|
+
 This rule checks the **end** keyword is on it's own line.
 
 **Violation**
@@ -120,6 +132,8 @@ This rule checks the **end** keyword is on it's own line.
 
 block_007
 ^^^^^^^^^
+
+|phase_1| |error|
 
 This rule checks the block label exists in the closing of the block statement.
 
@@ -143,6 +157,8 @@ Whitespacing Rules (100 - 199)
 block_100
 ^^^^^^^^^
 
+|phase_2| |error|
+
 This rule checks for a single space between the following block elements:  label, label colon, **block** keyword, guard open parenthesis, guart close parenthesis, and **is** keywords.
 
 **Violation**
@@ -161,6 +177,8 @@ This rule checks for a single space between the following block elements:  label
 
 block_101
 ^^^^^^^^^
+
+|phase_2| |error|
 
 This rule checks for a single space between the **end** and **block** keywords and label.
 
@@ -181,6 +199,8 @@ Vertical Spacing Rules (200 - 299)
 
 block_200
 ^^^^^^^^^
+
+|phase_3| |error|
 
 This rule checks for blank lines or comments above the block label.
 
@@ -204,6 +224,8 @@ Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous
 block_201
 ^^^^^^^^^
 
+|phase_3| |error|
+
 This rule checks for a blank line below the **block** keyword.
 
 Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
@@ -225,6 +247,8 @@ Refer to the section `Configuring Blank Lines <configuring.html#configuring-blan
 
 block_202
 ^^^^^^^^^
+
+|phase_3| |error|
 
 This rule checks for blank lines or comments above the **begin** keyword.
 
@@ -252,6 +276,8 @@ Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ f
 block_203
 ^^^^^^^^^
 
+|phase_3| |error|
+
 This rule checks for a blank line below the **begin** keyword.
 
 Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
@@ -273,6 +299,8 @@ Refer to the section `Configuring Blank Lines <configuring.html#configuring-blan
 
 block_204
 ^^^^^^^^^
+
+|phase_3| |error|
 
 This rule checks for blank lines or comments above the **end** keyword.
 
@@ -300,6 +328,8 @@ Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ f
 block_205
 ^^^^^^^^^
 
+|phase_3| |error|
+
 This rule checks for a blank line below the semicolon.
 
 Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
@@ -325,6 +355,8 @@ Indentation Rules (300 - 399)
 block_300
 ^^^^^^^^^
 
+|phase_4| |error|
+
 This rule checks the indent of the block label.
 
 **Violation**
@@ -346,6 +378,8 @@ This rule checks the indent of the block label.
 block_301
 ^^^^^^^^^
 
+|phase_4| |error|
+
 This rule checks the indent of the **begin** keyword.
 
 **Violation**
@@ -366,6 +400,8 @@ This rule checks the indent of the **begin** keyword.
 
 block_302
 ^^^^^^^^^
+
+|phase_4| |error|
 
 This rule checks the indent of the **end** keyword.
 
@@ -395,6 +431,8 @@ Alignment Rules (400 - 499)
 block_400
 ^^^^^^^^^
 
+|phase_5| |error|
+
 This rule checks the identifiers for all declarations are aligned in the block declarative region.
 
 Refer to the section `Configuring Identifier Alignment Rules <configuring.html#configuring-identifier-alignment-rules>`_ for information on changing the configurations.
@@ -415,6 +453,8 @@ Refer to the section `Configuring Identifier Alignment Rules <configuring.html#c
 
 block_401
 ^^^^^^^^^
+
+|phase_5| |error|
 
 This rule checks the colons are in the same column for all declarations in the block declarative part.
 Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
@@ -443,6 +483,8 @@ Captialization Rules (500 - 599)
 block_500
 ^^^^^^^^^
 
+|phase_6| |error|
+
 This rule checks the label has proper case.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
@@ -461,6 +503,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
 block_501
 ^^^^^^^^^
+
+|phase_6| |error|
 
 This rule checks the **block** keyword has proper case.
 
@@ -481,6 +525,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 block_502
 ^^^^^^^^^
 
+|phase_6| |error|
+
 This rule checks the **is** keyword has proper case.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
@@ -499,6 +545,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
 block_503
 ^^^^^^^^^
+
+|phase_6| |error|
 
 This rule checks the **begin** keyword has proper case.
 
@@ -521,6 +569,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 block_504
 ^^^^^^^^^
 
+|phase_6| |error|
+
 This rule checks the **end** keyword has proper case.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
@@ -540,6 +590,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 block_505
 ^^^^^^^^^
 
+|phase_6| |error|
+
 This rule checks the **block** keyword in the **end block** has proper case.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
@@ -558,6 +610,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
 block_506
 ^^^^^^^^^
+
+|phase_6| |error|
 
 This rule checks the label has proper case on the end block declaration.
 
