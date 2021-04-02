@@ -51,7 +51,8 @@ def parse_command_line_arguments():
         "-p",
         "--jobs",
         action="store",
-        default=os.cpu_count(),
+        default=1,
+#        default=os.cpu_count(),
         type=check_strict_positive,
         help="number of parallel jobs to use, default is the number of cpu cores",
     )
