@@ -1,3 +1,6 @@
+
+.. include:: icons.rst
+
 Rule Severity
 =============
 
@@ -5,6 +8,12 @@ VSG supports rule severity with two built in levels:  Error and Warning.
 The default behavior for most rules is **Error**.
 Only the **Error** severity level will result in an exit status of 1.
 **Errors** will also be the only errors written to a JUnit XML file if that option is chosen.
+
+The severity level of each rule is indicated with one of the following icons in the rule description:
+
+Warning : |warning|
+
+Error: |error|
 
 The table below summarizes the built in severities:
 
@@ -72,7 +81,7 @@ The newly defined severity levels can then be applied to a rule using a second c
 
 Apply the defined severity levels by calling both configurations:
 
-.. code-block:: mono
+.. code-block:: bash
 
    vsg -c severity.json rule_configuration.json -f fifo.vhd
 

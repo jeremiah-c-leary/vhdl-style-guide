@@ -1,49 +1,85 @@
+.. include:: icons.rst
 
 Phases
-------
+======
 
 Rules are grouped together and executed in phases.
 This simplifies rule generation for rules in later phases.
-If issues are found during a phase, then successive phases will not run.
+If issues are found during a phase, then successive phases will not be run.
 The phases are constructed to model the proper order of fixing issues.
 Each phase prepares the code for the next phase.
 
-Phase 1 - Structural
-####################
+Which phase a rule is executed in is indicated by one of these phase labels:
 
-This phase checks the structure of VHDL statements.
+|phase_1| |phase_2| |phase_3| |phase_4| |phase_5| |phase_6| |phase_7|
+
+Phase |phase_1| - Structural
+-------------------------------
+
 This ensures the VHDL is structured properly for future phases.
 
-Phase 2 - Whitespace
-####################
+It includes the following operations:
+
+* Addition or removal of optional VHDL elements
+* Addition or carriage returns to split lines
+* Removal of carriage returns to combine lines
+
+Phase |phase_2| - Whitespace
+--------------------------------
 
 This phase checks whitespace rules.
-However, this does not include indentation.
 
-Phase 3 - Vertical Spacing
-##########################
+It includes the following operations:
 
-This phase checks all vertical spacing requirements.
+* Addition of whitespace between VHDL elements
+* Reduction of whitespace between VHDL elements
 
-Phase 4 - Indentation
-#####################
+Phase |phase_3| - Vertical Spacing
+--------------------------------------
 
-This phase checks all indentation rules.
+This phase checks vertical spacing between lines.
 
-Phase 5 - Alignment
-###################
+It includes the following operations:
 
-This phase checks all alignment rules.
+* Addition of carriage returns to emphasize VHDL elements
+* Removal of carriage returns to deemphasize VHDL elements
 
-Phase 6 - Capitalization
-########################
+Phase |phase_4| - Indentation
+----------------------------------
 
-This phase checks capitalization rules.
+This phase checks the indent of lines.
 
-Phase 7 - Naming conventions
-############################
+Phase |phase_5| - Alignment
+-------------------------------
 
-This phase checks naming conventions for signals, constants, ports, etc...
+This phase checks VHDL elements are column aligned.
+
+It includes the following operations:
+
+* Alignment of colons
+* Alignment of assignment operators
+* Alignment of identifiers
+
+Phase |phase_6| - Capitalization
+------------------------------------
+
+This phase checks case of VHDL elements.
+
+It includes the following operations:
+
+* Case of VHDL keywords
+* Case of identifiers
+
+Phase |phase_7| - Naming conventions
+----------------------------------------
+
+This phase checks naming conventions for non VHDL keywords.
+
+It includes the following operations:
+
+* Signal prefixes
+* Port prefixes and suffixes
+* Architecture identifiers
 
 Subphases
 ---------
