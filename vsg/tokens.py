@@ -14,11 +14,11 @@ def create(sString):
         lCharacters.append(sChar)
     lCharacters = combine_whitespace(lCharacters)
     lCharacters = combine_two_character_symbols(lCharacters)
-    lCharacters = combine_comments(lCharacters)
     lCharacters = combine_characters_into_words(lCharacters)
     lCharacters = combine_string_literals(lCharacters)
     lCharacters = combine_character_literals(lCharacters)
-
+    lCharacters = combine_comments(lCharacters)
+#    print(lCharacters)
     return lCharacters
 
 
@@ -46,11 +46,14 @@ def combine_string_literals(lChars):
     lReturn = []
     sLiteral = ''
     bLiteral = False
-    for sChar in lChars:
-        if sChar == '"' and not bLiteral:
-            sLiteral += sChar
-            bLiteral = True
-            continue
+    for iChar, sChar in enumerate(lChars):
+        try:
+            if sChar == '"' and not bLiteral and '"' in lChars[iChar + 1:]:
+                sLiteral += sChar
+                bLiteral = True
+                continue
+        except IndexError:
+            break
         if not bLiteral:
             lReturn.append(sChar)
         else:
