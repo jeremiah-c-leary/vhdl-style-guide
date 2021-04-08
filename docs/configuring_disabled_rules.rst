@@ -1,8 +1,14 @@
+
+.. include:: icons.rst
+
 Configuring Disabled Rules
 --------------------------
 
-There are several rules which are disabled by default.
-These are typically naming convention rules.
+Each rule is either enabled (actively checked) or disabled (not checked).
+Each rule can be enabled or disabled by user configuration.
+
+Most rules are enabled by default while some are disabled by default.
+Rules disabled by default are marked by |disabled| and are typically naming convention rules.
 They can be enabled by setting the `disable` option to `False` in a configuration.
 
 .. code-block:: yaml
