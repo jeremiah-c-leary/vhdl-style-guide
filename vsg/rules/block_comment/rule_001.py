@@ -47,14 +47,6 @@ class rule_001(block_rule.Rule):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
 
-            if not self.allow_indenting:
-                if isinstance(lTokens[0], parser.comment):
-                    lTokens[0].set_indent(0)
-                elif isinstance(lTokens[1], parser.comment):
-                    lTokens[1].set_indent(0)
-                else:
-                    continue
-
             if isinstance(lTokens[0], parser.comment):
                 iWhitespace = self.indentSize * lTokens[0].get_indent()
             else:
