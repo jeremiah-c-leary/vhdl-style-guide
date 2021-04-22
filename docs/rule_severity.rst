@@ -15,7 +15,7 @@ Warning : |warning|
 
 Error: |error|
 
-The table below summarizes the built in severities:
+The table below summarizes the built-in severities:
 
 +-------------+-----------+-------------+-------+-----------+---------------------------------------------------------------+
 | Name        |  Type     | Exit Status | JUnit | Syntastic | Description                                                   |
