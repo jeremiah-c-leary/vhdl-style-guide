@@ -8,7 +8,7 @@ from vsg.rules import utils
 
 class rule_011(rule.Rule):
     '''
-    This rule will move inline comm
+    This rule will move inline comments to the previous line.
     '''
 
     def __init__(self):
@@ -23,22 +23,9 @@ class rule_011(rule.Rule):
 
     def _analyze(self, lToi):
         for oToi in lToi:
-            iLine, lTokens = utils.get_toi_parameters(oToi)
-            if utils.does_line_start_with_comment(lTokens):
+            if line_starts_with_comment(oToi):
                 continue
-
-            iWhitespace = 0
-            for iToken, oToken in enumerate(lTokens):
-                if isinstance(oToken, parser.comment):
-                    dAction = {}
-                    if isinstance(lTokens[iToken - 1], parser.whitespace):
-                        dAction['iToken'] = iToken - 1
-                    else:
-                        dAction['iToken'] = iToken
-                    
-                    oViolation = violation.New(iLine, oToi, self.solution)
-                    oViolation.set_action(dAction)
-                    self.add_violation(oViolation)
+            self._check_for_inline_comment(oToi)
 
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
@@ -49,3 +36,38 @@ class rule_011(rule.Rule):
         lTemp.extend(lTokens[:dAction['iToken']])
 
         oViolation.set_tokens(lTemp)
+
+    def _check_for_inline_comment(self, oToi):
+        iLine, lTokens = utils.get_toi_parameters(oToi)
+        iToken = len(lTokens) - 1
+        if line_has_inline_comment(lTokens, iToken):
+            dAction = create_action(lTokens, iToken)
+            oViolation = create_violation(iLine, oToi, self.solution, dAction) 
+            self.add_violation(oViolation)
+
+
+def line_starts_with_comment(oToi):
+    if utils.does_line_start_with_comment(oToi.get_tokens()):
+        return True
+    return False
+
+
+def line_has_inline_comment(lTokens, iToken):
+    if isinstance(lTokens[iToken], parser.comment):
+        return True
+    return False
+
+
+def create_action(lTokens, iToken):
+    dAction = {}
+    if isinstance(lTokens[iToken - 1], parser.whitespace):
+        dAction['iToken'] = iToken - 1
+    else:
+        dAction['iToken'] = iToken
+    return dAction
+
+
+def create_violation(iLine, oToi, solution, dAction):
+    oViolation = violation.New(iLine, oToi, solution)
+    oViolation.set_action(dAction)
+    return oViolation
