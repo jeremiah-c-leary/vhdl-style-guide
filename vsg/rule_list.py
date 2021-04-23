@@ -219,9 +219,10 @@ class rule_list():
                         iFailures += len(oRule.violations)
                     self.iNumberRulesRan += 1
                 self.lastPhaseRan = phase
-                if iFailures > 0 and not bAllPhases:
+                if iFailures > 0:
                     self.violations = True
-                    break
+                    if not bAllPhases:
+                        break
             else:
                 continue
             break
