@@ -18,11 +18,11 @@ def classify(iToken, lObjects):
 
     iCurrent = utils.assign_next_token_required('use', token.keyword, iToken, lObjects)
 
-    iCurrent = utils.assign_next_token(token.selected_name, iCurrent, lObjects)
-
-    while utils.is_next_token(',', iCurrent, lObjects):
-        iCurrent = utils.assign_next_token_required(',', token.comma, iCurrent, lObjects)
+    while not utils.is_next_token(';', iCurrent, lObjects):
         iCurrent = utils.assign_next_token(token.selected_name, iCurrent, lObjects)
+    
+        if utils.is_next_token(',', iCurrent, lObjects):
+            iCurrent = utils.assign_next_token_required(',', token.comma, iCurrent, lObjects)
 
     iCurrent = utils.assign_next_token_required(';', token.semicolon, iCurrent, lObjects)
     return iCurrent

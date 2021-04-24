@@ -24,3 +24,18 @@
 --------------------------------------------------------------------------------
 6 |
 <class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+7 | use ieee.std_logic."ceil";
+<class 'vsg.token.use_clause.keyword'>
+<class 'vsg.token.use_clause.selected_name'>
+<class 'vsg.token.use_clause.semicolon'>
+--------------------------------------------------------------------------------
+8 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+9 | use ieee.std_logic."ceil", ieee.std_logic."ceil";
+<class 'vsg.token.use_clause.keyword'>
+<class 'vsg.token.use_clause.selected_name'>
+<class 'vsg.token.use_clause.comma'>
+<class 'vsg.token.use_clause.selected_name'>
+<class 'vsg.token.use_clause.semicolon'>

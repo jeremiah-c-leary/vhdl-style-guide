@@ -87,6 +87,7 @@ class vhdlFile():
 
         design_file.tokenize(self.lAllObjects)
         post_token_assignments(self.lAllObjects)
+        self.lAllObjects = combine_use_clause_selected_name(self.lAllObjects)
 
         set_token_hierarchy_value(self.lAllObjects)
         self.oTokenMap = process_tokens(self.lAllObjects)
@@ -474,6 +475,7 @@ def post_token_assignments(lTokens):
                     lTokens[iToken] = adding_operator.minus()
                 continue
 
+
 def set_token_hierarchy_value(lTokens):
     iIfHierarchy = 0
     for oToken in lTokens:
@@ -487,3 +489,14 @@ def set_token_hierarchy_value(lTokens):
         if isinstance(oToken, token.if_statement.semicolon):
             iIfHierarchy -= 1
             oToken.set_hierarchy(iIfHierarchy)
+
+
+def combine_use_clause_selected_name(lTokens):
+    lReturn = []
+    for iToken, oToken in enumerate(lTokens):
+        if isinstance(oToken, token.use_clause.selected_name):
+            if isinstance(lReturn[-1], token.use_clause.selected_name):
+                lReturn[-1].value = lReturn[-1].value + oToken.value
+                continue
+        lReturn.append(oToken)
+    return lReturn
