@@ -614,15 +614,14 @@ class testTokenMethod(unittest.TestCase):
 
         self.assertEqual(lTokens, lActual)
 
-
     def test_double_dash_in_string_literal(self):
-          sLine = ' x"--";'
-          lTokens = []
-          lTokens.append(' ')
-          lTokens.append('x')
-          lTokens.append('"--"')
-          lTokens.append(';')
+        sLine = ' x"--";'
+        lTokens = []
+        lTokens.append(' ')
+        lTokens.append('x')
+        lTokens.append('"--"')
+        lTokens.append(';')
   
-          lActual = tokens.create(sLine)
+        lActual = tokens.create(sLine)
   
-          self.assertEqual(lTokens, lActual)
+        self.assertEqual(lTokens, lActual)
