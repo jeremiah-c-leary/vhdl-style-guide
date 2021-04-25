@@ -380,6 +380,16 @@ indent:
             end_keyword:
                 token : '-1'
                 after : '-1'
+        report_statement:
+            report_keyword:
+                token : current
+                after : '+2'
+            severity_keyword:
+                token : '-1'
+                after : current
+            semicolon:
+                token : current
+                after : '-2'
         return_statement:
             return_keyword:
                 token : current
