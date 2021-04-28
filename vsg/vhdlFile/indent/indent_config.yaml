@@ -289,10 +289,10 @@ indent:
         iteration_scheme:
             for_keyword:
                 token : current
-                after : '+1'
+                after : current
             while_keyword:
                 token : current
-                after : '+1'
+                after : current
         library_clause:
             keyword:
                 token : current
@@ -302,8 +302,8 @@ indent:
                 token : current
                 after : current
             loop_keyword:
-                token : '-1'
-                after : current
+                token : current
+                after : '+1'
             end_keyword:
                 token : '-1'
                 after : '-1'
