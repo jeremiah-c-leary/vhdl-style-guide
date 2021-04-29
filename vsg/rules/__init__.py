@@ -100,6 +100,7 @@ from vsg.rules import if_statement
 from vsg.rules import instantiation
 from vsg.rules import length
 from vsg.rules import library
+from vsg.rules import loop_statement
 from vsg.rules import package
 from vsg.rules import package_body
 from vsg.rules import port
