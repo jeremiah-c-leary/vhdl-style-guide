@@ -18,3 +18,4 @@ class rule_012(align_tokens_in_region_between_tokens):
     def __init__(self):
         align_tokens_in_region_between_tokens.__init__(self, 'function', '012', lAlign, token.subprogram_body.is_keyword, token.subprogram_body.begin_keyword)
         self.solution = 'Align :.'
+        self.subphase = 2
