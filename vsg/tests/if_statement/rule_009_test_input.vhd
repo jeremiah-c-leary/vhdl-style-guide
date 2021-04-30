@@ -42,4 +42,15 @@ begin
 
   end process;
 
+  -- Check comments in if statements
+  process begin
+
+    if (a = 1 and
+-- Comment
+  b = 0) then
+      b <= '1';
+    end if;
+
+  end process;
+
 end architecture RTL;

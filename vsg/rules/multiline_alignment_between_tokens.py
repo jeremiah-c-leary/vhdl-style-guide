@@ -5,6 +5,8 @@ from vsg import violation
 
 from vsg.vhdlFile import utils
 
+from vsg.rules import utils as rule_utils
+
 
 class multiline_alignment_between_tokens(rule.Rule):
     '''
@@ -59,6 +61,7 @@ class multiline_alignment_between_tokens(rule.Rule):
             dIndex = {}
 
             bStartsWithParen = _starts_with_paren(lTokens)
+            bSkipCommentLine = False
 
             for iToken, oToken in enumerate(lTokens):
 
@@ -67,10 +70,18 @@ class multiline_alignment_between_tokens(rule.Rule):
                 if isinstance(oToken, parser.blank_line):
                     continue
 
+                if bSkipCommentLine:
+                   if not isinstance(oToken, parser.carriage_return):
+                       continue
+
                 if isinstance(oToken, parser.carriage_return):
                     iColumn = 0
-                    dActualIndent[iLine] = _set_indent(iToken, lTokens)
-                    dIndex[iLine] = iToken + 1
+                    bSkipCommentLine = rule_utils.does_line_start_with_comment(lTokens[iToken + 1:iToken + 3])
+                    if bSkipCommentLine:
+                        dActualIndent[iLine] = None
+                    else:
+                        dActualIndent[iLine] = _set_indent(iToken, lTokens)
+                        dIndex[iLine] = iToken + 1
                     continue
 
                 iColumn += len(oToken.get_value())
@@ -112,22 +123,12 @@ class multiline_alignment_between_tokens(rule.Rule):
 #            print(f'Index  = {dIndex}')
 
             for iLine in range(iFirstLine, iLastLine + 1):
-                if dActualIndent[iLine] == dExpectedIndent[iLine]:
+                if dActualIndent[iLine] is None:
+                    continue
+                if indents_match(dActualIndent[iLine], dExpectedIndent[iLine]):
                     continue
 
-                dAction = {}
-                dAction['line'] = iLine
-                dAction['column'] = dExpectedIndent[iLine]
-
-                if dActualIndent[iLine] > 0:
-                    dAction['action'] = 'adjust'
-                else:
-                    dAction['action'] = 'insert'
-
-                sSolution = 'Adjust indent to column ' + str(dExpectedIndent[iLine])
-                iToken = dIndex[iLine]
-                oViolation = violation.New(iLine, oToi.extract_tokens(iToken, iToken), sSolution)
-                oViolation.set_action(dAction)
+                oViolation = build_violation(iLine, oToi, iToken, dExpectedIndent, dIndex, dActualIndent)
                 self.add_violation(oViolation)
 
 
@@ -141,6 +142,39 @@ class multiline_alignment_between_tokens(rule.Rule):
             lTokens.insert(0, parser.whitespace(' '*dAction['column']))
 
         oViolation.set_tokens(lTokens)
+
+
+def build_violation(iLine, oToi, iToken, dExpectedIndent, dIndex, dActualIndent):
+    sSolution = 'Adjust indent to column ' + str(dExpectedIndent[iLine])
+    dAction = build_action_dictionary(iLine, dActualIndent, dExpectedIndent)
+    iToken = dIndex[iLine]
+    oViolation = violation.New(iLine, oToi.extract_tokens(iToken, iToken), sSolution)
+    oViolation.set_action(dAction)
+    return oViolation
+
+
+def build_action_dictionary(iLine, dActualIndent, dExpectedIndent):
+    dAction = {}
+    dAction['line'] = iLine
+    dAction['column'] = dExpectedIndent[iLine]
+
+    if dActualIndent[iLine] > 0:
+        dAction['action'] = 'adjust'
+    else:
+        dAction['action'] = 'insert'
+    return dAction
+
+
+def line_starts_with_comment(iActual):
+    if iActual is None:
+        return True
+    return False
+
+
+def indents_match(iActual, iExpected):
+    if iActual == iExpected:
+        return True
+    return False
 
 
 def calculate_start_column(oFile, oToi):
