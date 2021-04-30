@@ -418,3 +418,69 @@ Refer to the section `Configuring Identifier Alignment Rules <configuring.html#c
    variable var1     : natural;
    signal   sig1     : natural;
    constant c_period : time;
+
+package_400
+###########
+
+|phase_5| |error|
+
+This rule checks the colons are in the same column for all declarations in the package declarative part.
+
+Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   package my_package is
+
+     signal   wr_en : std_logic;
+     signal   rd_en   : std_logic;
+     constant c_period : time;
+
+   end package my_package;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   package my_package is
+
+     signal   wr_en    : std_logic;
+     signal   rd_en    : std_logic;
+     constant c_period : time;
+
+   end package my_package;
+
+package_401
+###########
+
+|phase_5| |error|
+
+This rule checks the alignment of inline comments in the package declarative part.
+
+Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   package my_package is
+
+     signal   wr_en    : std_logic;  -- Comment 1
+     signal   rd_en    : std_logic;     -- Comment 2
+     constant c_period : time; -- Comment 3
+
+   end package my_package;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   package my_package is
+
+     signal   wr_en    : std_logic; -- Comment 1
+     signal   rd_en    : std_logic; -- Comment 2
+     constant c_period : time;      -- Comment 3
+
+   end package my_package;
