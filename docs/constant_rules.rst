@@ -358,3 +358,29 @@ Refer to section `Configuring Multiline Structure Rules <configuring.html#config
      32768
    );
 
+Naming Convention Rules (600 - 699)
+###################################
+
+constant_600
+############
+
+|phase_7| |disabled| |error|
+
+This rule checks for valid suffixes on constant identifiers.
+The default constant prefix is *\_c*.
+
+Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed prefixes.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   constant my_const : integer;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   constant my_const_c : integer;
+
+
