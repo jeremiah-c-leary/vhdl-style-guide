@@ -15,5 +15,8 @@ begin
 
   a <= (b or ((c and d and e)));
 
+  a <= (b or ' ');
+  a <= (b or ' ');
+
 end architecture RTL;
 

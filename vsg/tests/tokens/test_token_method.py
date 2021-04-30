@@ -625,3 +625,21 @@ class testTokenMethod(unittest.TestCase):
         lActual = tokens.create(sLine)
   
         self.assertEqual(lTokens, lActual)
+
+    def test_single_quotes_around_spaces(self):
+        sLine = "before = ' ' & after"
+        lTokens = []
+        lTokens.append('before')
+        lTokens.append(' ')
+        lTokens.append('=')
+        lTokens.append(' ')
+        lTokens.append("' '")
+        lTokens.append(' ')
+        lTokens.append('&') 
+        lTokens.append(' ')
+        lTokens.append('after')
+  
+        lActual = tokens.create(sLine)
+  
+        self.assertEqual(lTokens, lActual)
+
