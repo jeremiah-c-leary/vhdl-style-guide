@@ -367,9 +367,9 @@ constant_600
 |phase_7| |disabled| |error|
 
 This rule checks for valid suffixes on constant identifiers.
-The default constant prefix is *\_c*.
+The default constant suffix is *\_c*.
 
-Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed prefixes.
+Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed suffixes.
 
 **Violation**
 
