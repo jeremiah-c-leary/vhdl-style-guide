@@ -48,3 +48,46 @@ def does_line_start_with_comment(lTokens):
 
 def get_toi_parameters(oToi):
     return oToi.get_line_number(), oToi.get_tokens()
+
+
+def insert_token(lTokens, index, oToken):
+    try:
+        oToken = update_code_tags(lTokens[index], oToken)
+    except IndexError:
+        oToken = update_code_tags(lTokens[0], oToken)
+
+    lTokens.insert(index, oToken)
+
+
+def append_token(lTokens, oToken):
+    oToken = update_code_tags(lTokens[-1], oToken)
+    lTokens.append(oToken)
+
+
+def update_code_tags(oToken1, oToken2):
+    oToken2.code_tags = oToken1.code_tags
+    return oToken2
+
+
+def insert_whitespace(lTokens, index, num=1):
+    insert_token(lTokens, index, parser.whitespace(' '*num))
+
+
+def insert_carriage_return(lTokens, index):
+    insert_token(lTokens, index, parser.carriage_return())
+
+
+def insert_blank_line(lTokens, index):
+    insert_token(lTokens, index, parser.blank_line())
+
+
+def append_whitespace(lTokens, num=1):
+    append_token(lTokens, parser.whitespace(' '*num))
+
+
+def append_carriage_return(lTokens):
+    append_token(lTokens, parser.carriage_return())
+
+
+def append_blank_line(lTokens):
+    append_token(lTokens, parser.blank_line())

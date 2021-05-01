@@ -3,6 +3,8 @@ from vsg import rule
 from vsg import parser
 from vsg import violation
 
+from vsg.rules import utils as rules_utils
+
 from vsg.vhdlFile import utils
 
 
@@ -79,5 +81,5 @@ class move_token_sequences_left_of_token(rule.Rule):
         lTokens = lTokens[:-1] + lMoveTokens + [parser.whitespace(' ')] + [lTokens[-1]]
         lTokens = utils.remove_consecutive_whitespace_tokens(lTokens)
         if bInsertBlankLine:
-            lTokens.insert(0, parser.blank_line())
+            rules_utils.insert_blank_line(lTokens, 0)
         oViolation.set_tokens(lTokens)

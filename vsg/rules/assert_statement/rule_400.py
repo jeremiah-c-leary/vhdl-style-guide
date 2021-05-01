@@ -7,6 +7,8 @@ from vsg.token import assertion
 from vsg.token import assertion_statement
 from vsg.token import concurrent_assertion_statement
 
+from vsg.rules import utils as rules_utils
+
 from vsg.vhdlFile import utils
 
 
@@ -78,7 +80,7 @@ class rule_400(rule.Rule):
         if dAction['action'] == 'adjust':
             lTokens[0].set_value(' '*dAction['column'])
         else:
-            lTokens.insert(0, parser.whitespace(' '*dAction['column']))
+            rules_utils.insert_whitespace(lTokens, 0, dAction['column'])
 
         oViolation.set_tokens(lTokens)
 

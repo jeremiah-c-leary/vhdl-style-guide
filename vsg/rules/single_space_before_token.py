@@ -3,6 +3,8 @@ from vsg import parser
 from vsg import rule
 from vsg import violation
 
+from vsg.rules import utils as rules_utils
+
 
 class single_space_before_token(rule.Rule):
     '''
@@ -51,7 +53,7 @@ class single_space_before_token(rule.Rule):
         lTokens = oViolation.get_tokens()
         sAction = oViolation.get_action()
         if sAction == 'insert':
-            lTokens.insert(1, parser.whitespace(' '))
+            rules_utils.insert_whitespace(lTokens, 1)
         elif sAction == 'adjust':
             lTokens[0].set_value(' ')
         oViolation.set_tokens(lTokens)

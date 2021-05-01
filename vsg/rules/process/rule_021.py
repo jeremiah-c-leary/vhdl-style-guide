@@ -5,6 +5,8 @@ from vsg import violation
 
 from vsg.token import process_statement as token
 
+from vsg.rules import utils as rules_utils
+
 from vsg.vhdlFile import utils
 
 
@@ -43,11 +45,11 @@ class rule_021(rule.Rule):
             oViolation.set_tokens(lNewTokens)
         elif self.style == 'require_blank_line':
             if isinstance(lTokens[-2], parser.whitespace):
-                lTokens.insert(-3, parser.blank_line())
-                lTokens.insert(-3, parser.carriage_return())
+                rules_utils.insert_blank_line(lTokens, -3)
+                rules_utils.insert_carriage_return(lTokens, -3)
             else:
-                lTokens.insert(-2, parser.blank_line())
-                lTokens.insert(-2, parser.carriage_return())
+                rules_utils.insert_blank_line(lTokens, -2)
+                rules_utils.insert_carriage_return(lTokens, -2)
 
             oViolation.set_tokens(lTokens)
 

@@ -3,6 +3,8 @@ from vsg import parser
 from vsg import rule
 from vsg import violation
 
+from vsg.rules import utils as rules_utils
+
 from vsg.vhdlFile import utils
 
 
@@ -54,5 +56,5 @@ class insert_carriage_return_after_token_if_it_is_not_followed_by_a_comment_when
 
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
-        lTokens.insert(1, parser.carriage_return())
+        rules_utils.insert_carriage_return(lTokens, 1)
         oViolation.set_tokens(lTokens)

@@ -6,7 +6,7 @@ from vsg import violation
 
 from vsg.vhdlFile import utils
 
-from vsg.rules import utils as rule_utils
+from vsg.rules import utils as rules_utils
 
 
 class insert_token_left_of_token_if_it_does_not_exist_between_tokens_using_value_from_token(rule.Rule):
@@ -72,11 +72,11 @@ class insert_token_left_of_token_if_it_does_not_exist_between_tokens_using_value
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
         if self.action == 'remove':
-            rule_utils.remove_optional_item(lTokens, oViolation, self.insert_token)
+            rules_utils.remove_optional_item(lTokens, oViolation, self.insert_token)
         else:
             if oViolation.get_token_value() is not None:
                 for iIndex in range(0, len(lTokens)):
                     if isinstance(lTokens[iIndex], self.anchor_token):
-                        lTokens.insert(iIndex, self.insert_token(oViolation.get_token_value()))
-                        lTokens.insert(iIndex, parser.whitespace(' '))
+                        rules_utils.insert_token(lTokens, iIndex, self.insert_token(oViolation.get_token_value()))
+                        rules_utils.insert_whitespace(lTokens, iIndex)
                 oViolation.set_tokens(lTokens)

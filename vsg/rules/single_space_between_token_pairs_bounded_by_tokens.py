@@ -4,6 +4,8 @@ from vsg import parser
 from vsg import rule
 from vsg import violation
 
+from vsg.rules import utils as rules_utils
+
 from vsg.vhdlFile import utils
 
 
@@ -54,5 +56,5 @@ class single_space_between_token_pairs_bounded_by_tokens(rule.Rule):
         if isinstance(lTokens[1], parser.whitespace):
             lTokens[1].set_value(' ')
         else:
-            lTokens.insert(1, parser.whitespace(' '))
+            rules_utils.insert_whitespace(lTokens, 1)
         oViolation.set_tokens(lTokens)

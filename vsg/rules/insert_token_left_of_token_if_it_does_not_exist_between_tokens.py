@@ -3,7 +3,7 @@ from vsg import parser
 from vsg import rule
 from vsg import violation
 
-from vsg.rules import utils as rule_utils
+from vsg.rules import utils as rules_utils
 
 
 class insert_token_left_of_token_if_it_does_not_exist_between_tokens(rule.Rule):
@@ -72,9 +72,9 @@ class insert_token_left_of_token_if_it_does_not_exist_between_tokens(rule.Rule):
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
         if self.action == 'remove':
-            rule_utils.remove_optional_item(lTokens, oViolation, self.insert_token)
+            rules_utils.remove_optional_item(lTokens, oViolation, self.insert_token)
         else:
             dAction = oViolation.get_action()
-            lTokens.insert(dAction['index'], self.insert_token)
-            lTokens.insert(dAction['index'], parser.whitespace(' '))
+            rules_utils.insert_token(lTokens, dAction['index'], self.insert_token)
+            rules_utils.insert_whitespace(lTokens, dAction['index'])
             oViolation.set_tokens(lTokens)

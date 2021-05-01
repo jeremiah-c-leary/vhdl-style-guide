@@ -3,7 +3,7 @@ from vsg import parser
 from vsg import rule
 from vsg import violation
 
-from vsg.rules import utils as rule_utils
+from vsg.rules import utils as rules_utils
 
 from vsg.vhdlFile import utils
 
@@ -75,8 +75,8 @@ class insert_token_right_of_possible_tokens_if_it_does_not_exist_before_token(ru
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
         if self.action == 'remove':
-            rule_utils.remove_optional_item(lTokens, oViolation, self.oInsertToken)
+            rules_utils.remove_optional_item(lTokens, oViolation, self.oInsertToken)
         else:
-            lTokens.insert(1, self.oInsertToken)
-            lTokens.insert(1, parser.whitespace(' '))
+            rules_utils.insert_token(lTokens, 1, self.oInsertToken)
+            rules_utils.insert_whitespace(lTokens, 1)
             oViolation.set_tokens(lTokens)

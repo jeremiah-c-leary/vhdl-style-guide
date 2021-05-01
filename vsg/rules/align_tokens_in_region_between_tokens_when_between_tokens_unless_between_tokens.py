@@ -5,6 +5,8 @@ from vsg import rule
 from vsg import token
 from vsg import violation
 
+from vsg.rules import utils as rules_utils
+
 from vsg.vhdlFile import utils
 
 
@@ -179,7 +181,7 @@ class align_tokens_in_region_between_tokens_when_between_tokens_unless_between_t
             iLen = len(lTokens[iTokenIndex - 1].get_value())
             lTokens[iTokenIndex - 1].set_value(' '*(iLen + dAction['adjust']))
         else:
-            lTokens.insert(iTokenIndex, parser.whitespace(' '*dAction['adjust']))
+            rules_utils.insert_whitespace(lTokens, iTokenIndex, dAction['adjust'])
         oViolation.set_tokens(lTokens)
 
 

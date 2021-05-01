@@ -5,6 +5,8 @@ from vsg import violation
 
 from vsg.token import process_statement as token
 
+from vsg.rules import utils as rules_utils
+
 from vsg.vhdlFile import utils
 
 
@@ -33,8 +35,8 @@ class rule_026(rule.Rule):
         lTokens = oViolation.get_tokens()
         dAction = oViolation.get_action()
         if dAction['action'] == 'Insert':
-            lTokens.insert(dAction['index'], parser.carriage_return())
-            lTokens.insert(dAction['index'], parser.blank_line())
+            rules_utils.insert_carriage_return(lTokens, dAction['index'])
+            rules_utils.insert_blank_line(lTokens, dAction['index'])
             oViolation.set_tokens(lTokens)
         else:
             iStart = dAction['start']

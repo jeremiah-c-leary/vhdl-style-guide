@@ -4,6 +4,8 @@ from vsg import parser
 from vsg import rule
 from vsg import violation
 
+from vsg.rules import utils as rules_utils
+
 from vsg.vhdlFile import utils
 
 
@@ -63,7 +65,7 @@ class split_line_at_token_if_on_same_line_as_token_if_token_pair_are_not_on_the_
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
         dAction = oViolation.get_action()
-        lTokens.insert(dAction['insert_index'], parser.carriage_return())
+        rules_utils.insert_carriage_return(lTokens, dAction['insert_index'])
         oViolation.set_tokens(lTokens)
 
 

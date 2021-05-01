@@ -5,6 +5,7 @@ from vsg import rule
 from vsg import violation
 
 from vsg.vhdlFile import utils
+from vsg.rules import utils as rule_utils
 
 
 class n_spaces_after_tokens(rule.Rule):
@@ -71,7 +72,7 @@ class n_spaces_after_tokens(rule.Rule):
                 if dAction[sKey]['action'] == 'adjust':
                     lTokens[-1].set_value(' '*self.iSpaces)
                 else:
-                    lTokens.insert(len(lTokens) -1, parser.whitespace(' '))
+                    rule_utils.insert_whitespace(lTokens, len(lTokens) -1)
         oViolation.set_tokens(lTokens)
 
 

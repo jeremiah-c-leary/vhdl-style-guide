@@ -4,6 +4,8 @@ from vsg import rule
 from vsg import token
 from vsg import violation
 
+from vsg.rules import utils as rules_utils
+
 from vsg.vhdlFile import utils
 
 lTokens = []
@@ -67,10 +69,10 @@ class rule_010(rule.Rule):
         lTokens = oViolation.get_tokens()
         dAction = oViolation.get_action()
         if dAction['action'] == 'insert':
-            lTokens.insert(0, parser.carriage_return())
+            rules_utils.insert_carriage_return(lTokens, 0)
             oViolation.set_tokens(lTokens)
         else:
             lNewTokens = lTokens[dAction['index'] + 1:]
-            lNewTokens.append(parser.carriage_return())
+            rules_utils.append_carriage_return(lNewTokens)
             lNewTokens.extend(lTokens[:dAction['index'] + 1])
             oViolation.set_tokens(lNewTokens)

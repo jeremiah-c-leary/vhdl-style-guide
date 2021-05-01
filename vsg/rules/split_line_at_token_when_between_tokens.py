@@ -4,6 +4,8 @@ from vsg import rule
 from vsg import parser
 from vsg import violation
 
+from vsg.rules import utils as rules_utils
+
 
 class split_line_at_token_when_between_tokens(rule.Rule):
     '''
@@ -51,7 +53,7 @@ class split_line_at_token_when_between_tokens(rule.Rule):
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
         if isinstance(lTokens[1], parser.whitespace):
-            lTokens.insert(-2, parser.carriage_return())
+            rules_utils.insert_carriage_return(lTokens, -2)
         else:
-            lTokens.insert(-1, parser.carriage_return())
+            rules_utils.insert_carriage_return(lTokens, -1)
         oViolation.set_tokens(lTokens)

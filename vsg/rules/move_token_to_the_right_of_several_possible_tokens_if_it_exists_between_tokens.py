@@ -3,6 +3,8 @@ from vsg import parser
 from vsg import rule
 from vsg import violation
 
+from vsg.rules import utils as rules_utils
+
 from vsg.vhdlFile import utils
 
 
@@ -77,9 +79,9 @@ class move_token_to_the_right_of_several_possible_tokens_if_it_exists_between_to
         dAction = oViolation.get_action()
 
         oToken = lTokens.pop(dAction['move_index'])
-        lTokens.insert(dAction['insert'], oToken)
+        rules_utils.insert_token(lTokens, dAction['insert'], oToken)
         if self.bInsertWhitespace:
-            lTokens.insert(dAction['insert'], parser.whitespace(' '))
+            rules_utils.insert_whitespace(lTokens, dAction['insert'])
         lTokens = utils.remove_consecutive_whitespace_tokens(lTokens)
         lTokens = utils.fix_blank_lines(lTokens)
         oViolation.set_tokens(lTokens)
