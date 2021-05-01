@@ -9,7 +9,7 @@ lTokens.append(token.signal_declaration.identifier)
 
 class rule_600(token_suffix):
     '''
-    Constant rule 600 checks for suffixes in signal identifiers.
+    Signal rule 600 checks for suffixes in signal identifiers.
     '''
 
     def __init__(self):
