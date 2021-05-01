@@ -407,3 +407,30 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
      some_other_element  : natural;
      yet_another_element : natural;
    end record;
+
+Naming Convention Rules (600 - 699)
+###################################
+
+type_600
+##########
+
+|phase_7| |disabled| |error|
+
+This rule checks for valid suffixes in user defined type identifiers.
+The default new type suffix is *\_t*.
+
+Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed suffixes.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   type my_type is range -5 to 5 ;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   type my_type_t is range -5 to 5 ;
+
+
