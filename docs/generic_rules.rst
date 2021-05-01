@@ -388,3 +388,28 @@ Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#conf
 
    generic(g_my_generic : integer);
 
+Naming Convention Rules (600 - 699)
+###################################
+
+generic_600
+###########
+
+|phase_7| |disabled| |error|
+
+This rule checks for valid suffixes on generic identifiers.
+The default generic suffix is *\_g*.
+
+Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed suffixes.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   generic(my_generic : integer);
+
+**Fix**
+
+.. code-block:: vhdl
+
+   generic(my_generic_g : integer);
+
