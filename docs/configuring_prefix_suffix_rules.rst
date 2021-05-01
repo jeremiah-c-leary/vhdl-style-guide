@@ -51,9 +51,9 @@ Rules Enforcing Prefixes and Suffixes
 +-------------------------+----------------------------------------------------------------+----------------------------------------------------------------+
 | Block Label             | `block_601 <block_rules.html#block-601>`_                      | `block_600 <block_rules.html#block-600>`_                      |
 +-------------------------+----------------------------------------------------------------+----------------------------------------------------------------+
-| Constant Identifier     | `constant_015 <constant_rules.html#constant-015>`_             | `constant_600 <constant_rules.html#constant-600>`_                                                            |
+| Constant Identifier     | `constant_015 <constant_rules.html#constant-015>`_             | `constant_600 <constant_rules.html#constant-600>`_             |
 +-------------------------+----------------------------------------------------------------+----------------------------------------------------------------+
-| Generate Label          | `generate_017 <generate_rules.html#generate-017>`_             |  NA                                                            |
+| Generate Label          | `generate_017 <generate_rules.html#generate-017>`_             | `generate_600 <generate_rules.html#generate-600>`_             |
 +-------------------------+----------------------------------------------------------------+----------------------------------------------------------------+
 | Generic Identifier      | `generic_020 <generic_rules.html#generic-020>`_                |  NA                                                            |
 +-------------------------+----------------------------------------------------------------+----------------------------------------------------------------+
