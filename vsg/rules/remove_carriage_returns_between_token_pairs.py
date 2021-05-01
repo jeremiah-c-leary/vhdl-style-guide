@@ -3,6 +3,8 @@ from vsg import parser
 from vsg import rule
 from vsg import violation
 
+from vsg.rules import utils as rules_utils
+
 from vsg.vhdlFile import utils
 
 
@@ -56,6 +58,6 @@ class remove_carriage_returns_between_token_pairs(rule.Rule):
         lTokens = utils.remove_consecutive_whitespace_tokens(lTokens)
         if self.bInsertSpace:
             if not isinstance(lTokens[1], parser.whitespace):
-                lTokens.insert(1, parser.whitespace(' '))
+                rules_utils.insert_whitespace(lTokens, 1)
 
         oViolation.set_tokens(lTokens)

@@ -2,8 +2,9 @@
 
 from vsg import rule
 from vsg import parser
-
 from vsg import violation
+
+from vsg.rules import utils as rules_utils
 
 from vsg.vhdlFile import utils
 
@@ -54,8 +55,8 @@ class move_token_next_to_another_token(rule.Rule):
         lTokens = oViolation.get_tokens()
         iIndex = oViolation.get_token_value()
 
-        lTokens.insert(1, lTokens.pop(iIndex))
-        lTokens.insert(1, parser.whitespace(' '))
+        rules_utils.insert_token(lTokens, 1, lTokens.pop(iIndex))
+        rules_utils.insert_whitespace(lTokens, 1)
         lNewTokens = utils.remove_consecutive_whitespace_tokens(lTokens)
         lNewTokens = utils.fix_blank_lines(lNewTokens)
 

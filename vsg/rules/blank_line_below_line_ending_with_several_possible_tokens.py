@@ -3,6 +3,8 @@ from vsg import rule
 from vsg import parser
 from vsg import violation
 
+from vsg.rules import utils as rules_utils
+
 
 class blank_line_below_line_ending_with_several_possible_tokens(rule.Rule):
     '''
@@ -48,8 +50,8 @@ class blank_line_below_line_ending_with_several_possible_tokens(rule.Rule):
         lTokens = oViolation.get_tokens()
         dAction = oViolation.get_action()
         if dAction['action'] == 'Insert':
-            lTokens.insert(0, parser.carriage_return())
-            lTokens.insert(0, parser.blank_line())
+            rules_utils.insert_carriage_return(lTokens, 0)
+            rules_utils.insert_blank_line(lTokens, 0)
             oViolation.set_tokens(lTokens)
         elif dAction['action'] == 'Remove':
             oViolation.set_tokens([])

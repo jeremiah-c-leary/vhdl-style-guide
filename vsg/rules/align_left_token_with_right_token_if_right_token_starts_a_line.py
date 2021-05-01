@@ -3,6 +3,8 @@ from vsg import parser
 from vsg import rule
 from vsg import violation
 
+from vsg.rules import utils as rules_utils
+
 from vsg.vhdlFile import utils
 
 
@@ -71,7 +73,7 @@ class align_left_token_with_right_token_if_right_token_starts_a_line(rule.Rule):
         lTokens = oViolation.get_tokens()
         dAction = oViolation.get_action()
         if dAction['action'] == 'insert':
-            lTokens.insert(len(lTokens) - 1, parser.whitespace(' '*dAction['column']))
+            rules_utils.insert_whitespace(lTokens, len(lTokens) - 1, dAction['column'])
         else:
             lTokens[-2].set_value(' '*dAction['column'])
         oViolation.set_tokens(lTokens)

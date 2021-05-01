@@ -115,12 +115,12 @@ class Rule():
                 lTemp.append(oViolation)
         self.violations = lTemp
 
-    def add_violation(self, lineNumber):
+    def add_violation(self, violation):
         '''
         Adds a linenumber to a violations list.
         '''
-        if not lineNumber.has_code_tag(self.unique_id):
-            self.violations.append(lineNumber)
+        if not violation.has_code_tag(self.unique_id):
+            self.violations.append(violation)
 
     def analyze(self, oFile):
         '''

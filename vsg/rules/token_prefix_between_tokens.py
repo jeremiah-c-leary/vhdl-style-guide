@@ -3,6 +3,8 @@ from vsg import rule
 from vsg import parser
 from vsg import violation
 
+from vsg.rules import utils as rules_utils
+
 
 class token_prefix_between_tokens(rule.Rule):
     '''
@@ -63,6 +65,5 @@ class token_prefix_between_tokens(rule.Rule):
             lTokens[0].set_value(lTokens[1].get_indent() * self.indentSize * ' ')
             oViolation.set_tokens(lTokens)
         elif oViolation.get_action() == 'add_whitespace':
-            oToken = parser.whitespace(lTokens[0].get_indent() * self.indentSize * ' ')
-            lTokens.insert(0, oToken)
+            rules_utils.insert_whitespace(lTokens, 0, lTokens[0].get_indent() * self.indentSize)
             oViolation.set_tokens(lTokens)

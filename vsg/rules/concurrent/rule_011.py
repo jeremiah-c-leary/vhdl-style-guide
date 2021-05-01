@@ -4,8 +4,9 @@ from vsg import parser
 from vsg import token
 from vsg import violation
 
+from vsg.rules import utils as rules_utils
+
 from vsg.vhdlFile import utils
-from vsg.rules import utils as rule_utils
 
 lTokenPairs = []
 lTokenPairs.append([token.concurrent_simple_signal_assignment.assignment, token.concurrent_simple_signal_assignment.semicolon])
@@ -48,7 +49,7 @@ class rule_011(rule.Rule):
 
     def _analyze(self, lToi):
         for oToi in lToi:
-            if rule_utils.is_single_line(oToi) and self.ignore_single_line:
+            if rules_utils.is_single_line(oToi) and self.ignore_single_line:
                 continue
 
             _check_new_line_after_assign(self, oToi)
@@ -89,13 +90,13 @@ def _fix_new_line_after_assign(oViolation):
     dAction = oViolation.get_action()
     if dAction['action'] == 'insert':
         if not isinstance(lTokens[0], parser.whitespace):
-            lTokens.insert(0, parser.whitespace(' '))
-        lTokens.insert(0, parser.carriage_return())
+            rules_utils.insert_whitespace(lTokens, 0)
+        rules_utils.insert_carriage_return(lTokens, 0)
         oViolation.set_tokens(lTokens)
     elif dAction['action'] == 'remove':
         lNewTokens = []
         lNewTokens.append(lTokens[0])
-        lNewTokens.append(parser.whitespace(' '))
+        rules_utils.append_whitespace(lNewTokens)
         lNewTokens.append(lTokens[-1])
         oViolation.set_tokens(lNewTokens)
 

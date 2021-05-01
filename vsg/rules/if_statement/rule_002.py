@@ -3,6 +3,8 @@ from vsg import parser
 from vsg import rule
 from vsg import violation
 
+from vsg.rules import utils as rules_utils
+
 
 class rule_002(rule.Rule):
     '''
@@ -39,7 +41,7 @@ class rule_002(rule.Rule):
 
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
-        lTokens.insert(0, parser.open_parenthesis())
+        rules_utils.insert_token(lTokens, 0, parser.open_parenthesis())
         lTokens.append(parser.close_parenthesis())
 
         oViolation.set_tokens(lTokens)

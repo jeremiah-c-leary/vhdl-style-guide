@@ -4,6 +4,8 @@ from vsg import rule
 from vsg import token
 from vsg import violation
 
+from vsg.rules import utils as rules_utils
+
 from vsg.vhdlFile import utils
 
 lMoveTokens = []
@@ -68,6 +70,6 @@ class rule_001(rule.Rule):
         if isinstance(lTokens[-1], parser.whitespace):
             lTokens.pop()
         oToken = lTokens.pop()
-        lTokens.insert(0, oToken)
-        lTokens.insert(0, parser.whitespace(' '))
+        rules_utils.insert_token(lTokens, 0, oToken)
+        rules_utils.insert_whitespace(lTokens, 0)
         oViolation.set_tokens(lTokens)

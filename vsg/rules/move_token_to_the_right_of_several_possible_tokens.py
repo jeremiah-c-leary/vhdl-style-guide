@@ -2,6 +2,8 @@
 from vsg import rule
 from vsg import violation
 
+from vsg.rules import utils as rules_utils
+
 from vsg.vhdlFile import utils
 
 
@@ -64,5 +66,5 @@ class move_token_to_the_right_of_several_possible_tokens(rule.Rule):
         lTokens = oViolation.get_tokens()
         dAction = oViolation.get_action()
         oToken = lTokens.pop()
-        lTokens.insert(dAction['insert'], oToken)
+        rules_utils.insert_token(lTokens, dAction['insert'], oToken)
         oViolation.set_tokens(lTokens)

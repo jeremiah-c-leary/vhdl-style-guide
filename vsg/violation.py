@@ -36,7 +36,11 @@ class New():
 
   def has_code_tag(self, sCodeTag):
       try:
-          return self.oTokens.get_tokens()[0].has_code_tag(sCodeTag)
+          for oToken in self.oTokens.get_tokens():
+              if oToken.has_code_tag(sCodeTag):
+                  return True
+          return False
+#          return self.oTokens.get_tokens()[0].has_code_tag(sCodeTag)
       except IndexError:
           return False
       except AttributeError:

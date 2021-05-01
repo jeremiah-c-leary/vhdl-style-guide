@@ -3,6 +3,8 @@ from vsg import parser
 from vsg import rule
 from vsg import violation
 
+from vsg.rules import utils as rules_utils
+
 from vsg.vhdlFile import utils
 
 
@@ -60,7 +62,7 @@ class move_token_next_to_another_token_if_it_exists_between_tokens(rule.Rule):
         lTokens = oViolation.get_tokens()
         dAction = oViolation.get_action()
         oMoveToken = lTokens.pop(dAction['moveIndex'])
-        lTokens.insert(dAction['insertIndex'], oMoveToken)
-        lTokens.insert(dAction['insertIndex'], parser.whitespace(' '))
+        rules_utils.insert_token(lTokens, dAction['insertIndex'], oMoveToken)
+        rules_utils.insert_whitespace(lTokens, dAction['insertIndex'])
         lTokens = utils.fix_blank_lines(lTokens)
         oViolation.set_tokens(lTokens)

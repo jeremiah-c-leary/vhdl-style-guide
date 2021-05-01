@@ -3,6 +3,8 @@ from vsg import parser
 from vsg import rule
 from vsg import violation
 
+from vsg.rules import utils as rules_utils
+
 
 class align_consecutive_lines_after_line_starting_with_token_and_stopping_with_token(rule.Rule):
     '''
@@ -74,5 +76,5 @@ class align_consecutive_lines_after_line_starting_with_token_and_stopping_with_t
         if dAction['type'] == 'adjust':
             lTokens[0].set_value(' ' * dAction['adjust'])
         elif dAction['type'] == 'insert':
-            lTokens.insert(0, parser.whitespace(' ' * dAction['adjust']))
+            rules_utils.insert_whitespace(lTokens, 0, dAction['adjust'])
         oViolation.set_tokens(lTokens)

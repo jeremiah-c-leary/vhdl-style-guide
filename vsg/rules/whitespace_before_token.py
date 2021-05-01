@@ -4,6 +4,8 @@ from vsg import parser
 from vsg import rule
 from vsg import violation
 
+from vsg.rules import utils as rules_utils
+
 
 class whitespace_before_token(rule.Rule):
     '''
@@ -48,6 +50,6 @@ class whitespace_before_token(rule.Rule):
 
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
-        lTokens.insert(1, parser.whitespace(' '))
+        rules_utils.insert_whitespace(lTokens, 1)
         oViolation.set_tokens(lTokens)
 

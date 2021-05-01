@@ -3,9 +3,9 @@ from vsg import rule
 from vsg import parser
 from vsg import violation
 
-from vsg.vhdlFile import utils
+from vsg.rules import utils as rules_utils
 
-from vsg.rules import utils as rule_utils
+from vsg.vhdlFile import utils
 
 
 class multiline_alignment_between_tokens(rule.Rule):
@@ -76,7 +76,7 @@ class multiline_alignment_between_tokens(rule.Rule):
 
                 if isinstance(oToken, parser.carriage_return):
                     iColumn = 0
-                    bSkipCommentLine = rule_utils.does_line_start_with_comment(lTokens[iToken + 1:iToken + 3])
+                    bSkipCommentLine = rules_utils.does_line_start_with_comment(lTokens[iToken + 1:iToken + 3])
                     if bSkipCommentLine:
                         dActualIndent[iLine] = None
                     else:
@@ -139,7 +139,7 @@ class multiline_alignment_between_tokens(rule.Rule):
         if dAction['action'] == 'adjust':
             lTokens[0].set_value(' '*dAction['column'])
         else:
-            lTokens.insert(0, parser.whitespace(' '*dAction['column']))
+            rules_utils.insert_whitespace(lTokens, 0, dAction['column'])
 
         oViolation.set_tokens(lTokens)
 

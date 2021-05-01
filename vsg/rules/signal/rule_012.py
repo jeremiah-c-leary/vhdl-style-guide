@@ -4,6 +4,8 @@ from vsg import rule
 from vsg import token
 from vsg import violation
 
+from vsg.rules import utils as rules_utils
+
 from vsg.vhdlFile import utils
 
 
@@ -120,7 +122,7 @@ class rule_012(rule.Rule):
         dAction = oViolation.get_action()
 
         if len(lTokens) == 2:
-            lTokens.insert(1, parser.whitespace(' '*dAction['adjust']))
+            rules_utils.insert_whitespace(lTokens, 1)
         else:
             iLen = len(lTokens[1].get_value()) + dAction['adjust']
             lTokens[1].set_value(' '*iLen)
