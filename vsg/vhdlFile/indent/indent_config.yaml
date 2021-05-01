@@ -170,6 +170,13 @@ indent:
             close_parenthesis:
                 token : '-1'
                 after : '-1'
+        exit_statement:
+            label:
+                token : current
+                after : current
+            exit_keyword:
+                token : current
+                after : current
         file_declaration:
             file_keyword:
                 token : current
@@ -383,13 +390,13 @@ indent:
         report_statement:
             report_keyword:
                 token : current
-                after : '+2'
+                after : '+1'
             severity_keyword:
-                token : '-1'
+                token : current
                 after : current
             semicolon:
                 token : current
-                after : '-2'
+                after : '-1'
         return_statement:
             return_keyword:
                 token : current
