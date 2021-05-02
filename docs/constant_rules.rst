@@ -333,7 +333,7 @@ Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#conf
 constant_016
 ############
 
-|phase_1| |error|
+|phase_4| |error|
 
 This rule checks the structure of multiline constants that contain arrays.
 
