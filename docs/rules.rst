@@ -23,6 +23,7 @@ The rules are divided into catagories depending on the part of the VHDL code bei
    context_reference_rules.rst
    entity_rules.rst
    entity_specification_rules.rst
+   exit_statement_rules.rst
    file_rules.rst
    for_loop_rules.rst
    function_rules.rst

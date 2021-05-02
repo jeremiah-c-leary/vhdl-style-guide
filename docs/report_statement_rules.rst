@@ -103,6 +103,53 @@ This rule checks indent of multiline report statements.
     report "FIFO width is limited to 16 bits."
       severity FAILURE;
 
+report_statement_400
+####################
+
+|phase_5| |error|
+
+This rule checks the alignment of the report expressions.
+
+.. NOTE:: There is a configuration option **alignment** which changes the indent location of multiple lines.
+
+alignment set to 'report' (Default)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Violation**
+
+.. code-block:: vhdl
+
+   report "FIFO width is limited" &
+   " to 16 bits."
+     severity FAILURE;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   report "FIFO width is limited" &
+          " to 16 bits."
+     severity FAILURE;
+
+alignment set to 'left'
+^^^^^^^^^^^^^^^^^^^^^^^
+
+**Violation**
+
+.. code-block:: vhdl
+
+   report "FIFO width is limited" &
+   " to 16 bits."
+     severity FAILURE;
+
+**Fix**
+
+.. code-block:: vhdl
+
+     report "FIFO width is limited" &
+         " to 16 bits."
+       severity FAILURE;
+
 report_statement_500
 ####################
 
@@ -144,3 +191,4 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
     report "FIFO width is limited to 16 bits."
       severity FAILURE;
+
