@@ -28,7 +28,7 @@ class test_generic_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
-    def test_rule_600_w_uppercase(self):
+    def test_rule_600_g_uppercase(self):
         oRule = generic.rule_600()
         oRule.suffixes = ['_G']
         self.assertTrue(oRule)
