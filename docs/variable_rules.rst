@@ -242,3 +242,29 @@ Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#conf
 .. code-block:: vhdl
 
    variable v_my_var : natural;
+
+Naming Convention Rules (600 - 699)
+###################################
+
+variable_600
+############
+
+|phase_7| |disabled| |error|
+
+This rule checks for valid suffix on variable identifiers.
+The default variable suffix is *v\_*.
+
+Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed suffixes.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   variable my_var : natural;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   variable my_var_v : natural;
+

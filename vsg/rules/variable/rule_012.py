@@ -9,7 +9,7 @@ lTokens.append(token.variable_declaration.identifier)
 
 class rule_012(token_prefix):
     '''
-    Constant rule 012 checks for prefixes in variable identifiers.
+    Variable rule 012 checks for prefixes in variable identifiers.
     '''
 
     def __init__(self):

@@ -24,3 +24,5 @@ from .rule_402 import rule_402
 from .rule_403 import rule_403
 from .rule_404 import rule_404
 from .rule_405 import rule_405
+
+from .rule_600 import rule_600

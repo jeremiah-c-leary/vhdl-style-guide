@@ -556,3 +556,29 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
    constant c_period  : time;
    file my_test_input : my_file_type;
 
+Naming Convention Rules (600 - 699)
+###################################
+
+generate_600
+############
+
+|phase_7| |disabled| |error|
+
+This rule checks for valid suffixes on generate statement labels.
+The default suffix is *\_gen*.
+
+Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed suffixes.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   label : case condition generate
+
+**Fix**
+
+.. code-block:: vhdl
+
+   label_gen : case condition generate
+
+

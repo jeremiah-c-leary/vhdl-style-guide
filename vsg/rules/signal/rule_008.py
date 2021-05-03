@@ -9,7 +9,7 @@ lTokens.append(token.signal_declaration.identifier)
 
 class rule_008(token_prefix):
     '''
-    Constant rule 008 checks for prefixes in signal identifiers.
+    Signal rule 008 checks for prefixes in signal identifiers.
     '''
 
     def __init__(self):
