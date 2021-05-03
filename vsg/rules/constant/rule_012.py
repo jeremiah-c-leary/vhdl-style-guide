@@ -32,7 +32,7 @@ class rule_012(rule.Rule):
     def __init__(self):
         rule.Rule.__init__(self, 'constant', '012')
         self.solution = 'Align with open parenthesis on previous line.'
-        self.phase = 4
+        self.phase = 5
         self.subphase = 2
         self.lTokenPairs = lTokenPairs
         self.align_left = False

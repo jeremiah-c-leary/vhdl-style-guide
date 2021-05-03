@@ -33,6 +33,16 @@ def get_indexes_of_token_list(lTokens, oTokenMap):
     return lReturn
 
 
+def get_indexes_of_token_pairs(lPairs, oTokenMap):
+    lReturn = []
+    for lPair in lPairs:
+        lStart, lEnd = oTokenMap.get_token_pair_indexes(lPair[0], lPair[1])
+        for iStart, iEnd in zip(lStart, lEnd):
+            lReturn.append([iStart, iEnd])
+    
+    return lReturn
+
+
 def get_line_numbers_of_indexes_in_list(lIndexes, oTokenMap):
     lReturn = []
     for iIndex in lIndexes:

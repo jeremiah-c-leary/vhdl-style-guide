@@ -34,3 +34,19 @@ begin
   -- failure
 
 end architecture RTL;
+
+architecture rtl of fifo is
+
+  constant c_cons1 : t_type :=
+  (
+      -- Comment 1
+   (
+ -- Comment 2
+     a => 1,
+              -- Comment 3
+     b => 2
+   )
+       -- Comment 4
+  );
+
+begin end architecture RTL;

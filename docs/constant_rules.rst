@@ -192,9 +192,9 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 constant_012
 ############
 
-|phase_4| |error|
+|phase_5| |error|
 
-This rule checks the indent of multiline constants that contain arrays.
+This rule checks the alignment of multiline constants that contain arrays.
 
 Refer to section `Configuring Multiline Indent Rules <configuring.html#configuring-multiline-indent-rules>`_ for options.
 
@@ -333,7 +333,7 @@ Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#conf
 constant_016
 ############
 
-|phase_4| |error|
+|phase_5| |error|
 
 This rule checks the structure of multiline constants that contain arrays.
 

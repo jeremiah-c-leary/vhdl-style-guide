@@ -183,6 +183,9 @@ class vhdlFile():
     def get_tokens_at_beginning_of_line_matching(self, lTokens):
         return extract.get_tokens_at_beginning_of_line_matching(lTokens, self.lAllObjects, self.oTokenMap)
 
+    def get_tokens_at_beginning_of_line_matching_unless_between_tokens(self, lTokens, lUnless):
+        return extract.get_tokens_at_beginning_of_line_matching_unless_between_tokens(lTokens, lUnless, self.lAllObjects, self.oTokenMap)
+
     def get_tokens_at_beginning_of_line_matching_between_tokens(self, lTokens, oStart, oEnd, bInclusive=False):
         return extract.get_tokens_at_beginning_of_line_matching_between_tokens(lTokens, oStart, oEnd, bInclusive, self.lAllObjects, self.oTokenMap)
 
