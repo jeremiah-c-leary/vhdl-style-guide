@@ -20,15 +20,15 @@ def get_tokens_bounded_by(oStart, oEnd, lAllObjects, oTokenMap, include_trailing
     else:
         lNewStart = lStart
 
-    if bExcludeLastToken:
-        lEnd = [x - 1 for x in lEnd]
-
     lNewEnd = []
     if bIncludeTillEndOfLine:
         for iEnd in lEnd:
             lNewEnd.append(oTokenMap.get_index_of_carriage_return_after_index(iEnd))
     else:
         lNewEnd = lEnd
+
+    if bExcludeLastToken:
+        lNewEnd = [x - 1 for x in lNewEnd]
 
 #    print(lStart)
 #    print(lEnd)

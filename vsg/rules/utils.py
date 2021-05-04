@@ -91,3 +91,10 @@ def append_carriage_return(lTokens):
 
 def append_blank_line(lTokens):
     append_token(lTokens, parser.blank_line())
+
+
+def get_index_of_token_in_list(oToken, lTokens):
+    for iToken, token in enumerate(lTokens):
+        if isinstance(token, oToken):
+            return iToken
+    return None

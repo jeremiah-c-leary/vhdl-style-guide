@@ -27,6 +27,9 @@ There are several options to these rules:
 | ignore_single_line    | string  |   yes   | Do not apply rules if expression/condition is contained |
 |                       |         |         | on a single line.                                       |
 +-----------------------+---------+---------+---------------------------------------------------------+
+| move_last_comment     | string  | ignore  | If last_paren_new_line is 'yes', then move any trailing |
+|                       |         |         | comments to the previous  line.                         |
++-----------------------+---------+---------+---------------------------------------------------------+
 
 The options can be combined to format the output.
 
@@ -291,6 +294,28 @@ The following code would fail with this option set to True:
       1 => func1(std_logic_vector(G_GEN), G_GEN2),
       2 => func1(
                  std_logic_vector(G_GEN), G_GEN2)
+    );
+
+Example: last_paren_new_line and move_last_comment
+##################################################
+
+The following code would fail with this option:
+
+.. code-Block:: vhdl
+
+    constant c_const : t_type :=
+    (
+      a => 0,
+      b => 1); -- Comment
+
+The following code would pass with this option:
+
+.. code-block:: vhdl
+
+    constant c_const : t_type :=
+    (
+      a => 0,
+      b => 1 -- Comment
     );
 
 Rules Enforcing Multiline Structure Rules

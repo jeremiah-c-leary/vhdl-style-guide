@@ -4,7 +4,7 @@ from vsg import parser
 from vsg import token
 from vsg import violation
 
-from vsg.rules import utils as rule_utils
+from vsg.rules import utils as rules_utils
 
 from vsg.vhdlFile import utils
 
@@ -34,7 +34,7 @@ class rule_016(rule.Rule):
         self.solution = 'Align one space after assignment operator'
         self.phase = 5
         self.lTokenPairs = lTokenPairs
-        self.bExcludeLastToken = False
+        self.bExcludeLastToken = True
 
         self.first_paren_new_line = 'yes'
         self.configuration.append('first_paren_new_line')
@@ -50,17 +50,19 @@ class rule_016(rule.Rule):
         self.configuration.append('assign_on_single_line')
         self.ignore_single_line = 'yes'
         self.configuration.append('ignore_single_line')
+        self.move_last_comment = 'ignore'
+        self.configuration.append('move_last_comment')
 
     def _get_tokens_of_interest(self, oFile):
         lToi = []
         for lTokenPair in self.lTokenPairs:
-            aToi = oFile.get_tokens_bounded_by(lTokenPair[0], lTokenPair[1], bExcludeLastToken=self.bExcludeLastToken)
+            aToi = oFile.get_tokens_bounded_by(lTokenPair[0], lTokenPair[1], bExcludeLastToken=self.bExcludeLastToken, bIncludeTillEndOfLine=True)
             lToi = utils.combine_two_token_class_lists(lToi, aToi)
         return lToi
 
     def _analyze(self, lToi):
         for oToi in lToi:
-            if rule_utils.is_single_line(oToi) and self.ignore_single_line:
+            if rules_utils.is_single_line(oToi) and self.ignore_single_line:
                 continue
 
             if not _is_open_paren_after_assignment(oToi):
@@ -125,8 +127,11 @@ def _check_last_paren_new_line(self, oToi):
     lTokens.reverse()
     iLine = iLine + utils.count_carriage_returns(lTokens)
     bReturnFound = False
+    bCommentFound = False
     for iToken, oToken in enumerate(lTokens):
         iLine = utils.decrement_line_number(iLine, oToken)
+        if isinstance(oToken, parser.comment):
+            bCommentFound = True
         if isinstance(oToken, parser.close_parenthesis):
             iEnd = len(lTokens) - iToken - 1
             if utils.are_next_consecutive_token_types([parser.whitespace, parser.carriage_return], iToken + 1, lTokens):
@@ -137,9 +142,14 @@ def _check_last_paren_new_line(self, oToi):
             lTokens.reverse()
 
             if self.last_paren_new_line == 'yes' and not bReturnFound:
-                sSolution = 'Move closing parenthesis to the next line.'
-                oViolation = _create_violation(oToi, iLine, iEnd - 1, iEnd, 'last_paren_new_line', 'insert', sSolution)
-                self.add_violation(oViolation)
+                if self.move_last_comment == 'yes' and bCommentFound:
+                    sSolution = 'Move parenthesis after assignment to the next line and trailing comment to previous line.'
+                    oViolation = _create_violation(oToi, iLine, iEnd - 1, len(lTokens) - 1, 'last_paren_new_line', 'insert_and_move_comment', sSolution)
+                    self.add_violation(oViolation)
+                else: 
+                    sSolution = 'Move closing parenthesis to the next line.'
+                    oViolation = _create_violation(oToi, iLine, iEnd - 1, iEnd, 'last_paren_new_line', 'insert', sSolution)
+                    self.add_violation(oViolation)
             elif self.last_paren_new_line == 'no' and bReturnFound:
                 sSolution = 'Move closing parenthesis to previous line.'
                 iStart = utils.find_previous_non_whitespace_token(iEnd - 1, lTokens)
@@ -184,14 +194,14 @@ def _check_open_paren_new_line(self, oToi):
             if utils.is_token_at_end_of_line(iToken, lTokens):
                 if self.open_paren_new_line == 'no':
                     iEnd = utils.find_next_non_whitespace_token(iToken + 1, lTokens)
-                    iErrorLine = rule_utils.number_of_carriage_returns(lTokens[:iToken]) + iLine
+                    iErrorLine = rules_utils.number_of_carriage_returns(lTokens[:iToken]) + iLine
                     sSolution = 'Remove carriage return after open parenthesis.'
                     oViolation = _create_violation(oToi, iErrorLine, iToken, iEnd, 'open_paren_new_line', 'remove', sSolution)
                     self.add_violation(oViolation)
             else:
                 if self.open_paren_new_line == 'yes':
                     sSolution = 'Add carriage return after open parenthesis.'
-                    iErrorLine = rule_utils.number_of_carriage_returns(lTokens[:iToken]) + iLine
+                    iErrorLine = rules_utils.number_of_carriage_returns(lTokens[:iToken]) + iLine
                     oViolation = _create_violation(oToi, iErrorLine, iToken, iToken, 'open_paren_new_line', 'insert', sSolution)
                     self.add_violation(oViolation)
         bOthersClause = False
@@ -237,14 +247,14 @@ def _check_close_paren_new_line(self, oToi):
             if utils.does_token_start_line(iToken, lTokens):
                 if self.close_paren_new_line == 'no':
                     iStart = utils.find_previous_non_whitespace_token(iToken - 1, lTokens)
-                    iErrorLine = rule_utils.number_of_carriage_returns(lTokens[:iToken]) + iLine
+                    iErrorLine = rules_utils.number_of_carriage_returns(lTokens[:iToken]) + iLine
                     sSolution = 'Move closing parenthesis to previous line.'
                     oViolation = _create_violation(oToi, iErrorLine, iStart, iToken, 'close_paren_new_line', 'remove', sSolution)
                     self.add_violation(oViolation)
             else:
                 if self.close_paren_new_line == 'yes':
                     iStart = iToken - 1
-                    iErrorLine = rule_utils.number_of_carriage_returns(lTokens[:iToken]) + iLine
+                    iErrorLine = rules_utils.number_of_carriage_returns(lTokens[:iToken]) + iLine
                     sSolution = 'Move closing parenthesis to the next line.'
                     oViolation = _create_violation(oToi, iErrorLine, iStart, iToken, 'close_paren_new_line', 'insert', sSolution)
                     self.add_violation(oViolation)
@@ -299,13 +309,13 @@ def _check_new_line_after_comma(self, oToi):
             if utils.is_token_at_end_of_line(iToken, lTokens):
                 if self.new_line_after_comma == 'no':
                     iEnd = utils.find_next_non_whitespace_token(iToken + 1, lTokens)
-                    iErrorLine = rule_utils.number_of_carriage_returns(lTokens[:iToken]) + iLine
+                    iErrorLine = rules_utils.number_of_carriage_returns(lTokens[:iToken]) + iLine
                     sSolution = 'Remove carriage return after comma.'
                     oViolation = _create_violation(oToi, iErrorLine, iToken, iEnd, 'new_line_after_comma', 'remove', sSolution)
                     self.add_violation(oViolation)
             else:
                 if self.new_line_after_comma == 'yes' or self.new_line_after_comma == 'ignore_positional':
-                    iErrorLine = rule_utils.number_of_carriage_returns(lTokens[:iToken]) + iLine
+                    iErrorLine = rules_utils.number_of_carriage_returns(lTokens[:iToken]) + iLine
                     sSolution = 'Add carriage return after comma.'
                     oViolation = _create_violation(oToi, iErrorLine, iToken, iToken + 1, 'new_line_after_comma', 'insert', sSolution)
                     self.add_violation(oViolation)
@@ -342,9 +352,9 @@ def _check_assign_on_single_line(self, oToi):
             iToken, bAssignmentFound = _classify_assignment(iToken, lTokens)
 
             if bAssignmentFound:
-#                rule_utils.print_debug(lTokens[iPreviousToken:iToken + 1])
-                if rule_utils.number_of_carriage_returns(lTokens[iPreviousToken:iToken]) > 0:
-                     iErrorLine = rule_utils.number_of_carriage_returns(lTokens[:iPreviousToken]) + iLine
+#                rules_utils.print_debug(lTokens[iPreviousToken:iToken + 1])
+                if rules_utils.number_of_carriage_returns(lTokens[iPreviousToken:iToken]) > 0:
+                     iErrorLine = rules_utils.number_of_carriage_returns(lTokens[:iPreviousToken]) + iLine
                      sSolution = 'Remove carriage returns for assignments.'
                      oViolation = _create_violation(oToi, iErrorLine, iPreviousToken, iToken, 'assign_on_single_line', 'remove', sSolution)
                      self.add_violation(oViolation)
@@ -368,18 +378,20 @@ def _is_open_paren_after_assignment(oToi):
             if utils.are_next_consecutive_token_types_ignoring_whitespace([token.constant_declaration.assignment_operator, parser.open_parenthesis], iToken, lTokens):
                 return True
     return False
+
+
 def _fix_first_paren_new_line(oViolation):
     lTokens = oViolation.get_tokens()
     dAction = oViolation.get_action()
     if dAction['action'] == 'insert':
         if not isinstance(lTokens[0], parser.whitespace):
-            rule_utils.insert_whitespace(lTokens, 0)
-        rule_utils.insert_carriage_return(lTokens, 0)
+            rules_utils.insert_whitespace(lTokens, 0)
+        rules_utils.insert_carriage_return(lTokens, 0)
         oViolation.set_tokens(lTokens)
     elif dAction['action'] == 'remove':
         lNewTokens = []
         lNewTokens.append(lTokens[0])
-        rule_utils.append_whitespace(lNewTokens)
+        rules_utils.append_whitespace(lNewTokens)
         lNewTokens.append(lTokens[-1])
         oViolation.set_tokens(lNewTokens)
 
@@ -389,13 +401,24 @@ def _fix_last_paren_new_line(oViolation):
     dAction = oViolation.get_action()
     if dAction['action'] == 'insert':
         if not isinstance(lTokens[0], parser.whitespace):
-            rule_utils.insert_whitespace(lTokens, 1)
-        rule_utils.insert_carriage_return(lTokens, 1)
+            rules_utils.insert_whitespace(lTokens, 1)
+        rules_utils.insert_carriage_return(lTokens, 1)
         oViolation.set_tokens(lTokens)
     elif dAction['action'] == 'remove':
         lNewTokens = []
         lNewTokens.append(lTokens[0])
         lNewTokens.append(lTokens[-1])
+        oViolation.set_tokens(lNewTokens)
+    elif dAction['action'] == 'insert_and_move_comment':
+        if not isinstance(lTokens[0], parser.whitespace):
+            rules_utils.insert_whitespace(lTokens, 1)
+        iSwapIndex = rules_utils.get_index_of_token_in_list(token.constant_declaration.semicolon, lTokens) + 1
+        lNewTokens = [] 
+        lNewTokens.append(lTokens[0])
+        lNewTokens.extend(lTokens[iSwapIndex:])
+        rules_utils.append_carriage_return(lNewTokens)
+        lNewTokens.extend(lTokens[1:iSwapIndex])
+
         oViolation.set_tokens(lNewTokens)
 
 
@@ -403,8 +426,8 @@ def _fix_open_paren_new_line(oViolation):
     lTokens = oViolation.get_tokens()
     dAction = oViolation.get_action()
     if dAction['action'] == 'insert':
-        rule_utils.append_carriage_return(lTokens)
-        rule_utils.append_whitespace(lTokens)
+        rules_utils.append_carriage_return(lTokens)
+        rules_utils.append_whitespace(lTokens)
         oViolation.set_tokens(lTokens)
     elif dAction['action'] == 'remove':
         lNewTokens = []
@@ -418,8 +441,8 @@ def _fix_close_paren_new_line(oViolation):
     dAction = oViolation.get_action()
     if dAction['action'] == 'insert':
         if not isinstance(lTokens[0], parser.whitespace):
-            rule_utils.insert_whitespace(lTokens, 1)
-        rule_utils.insert_carriage_return(lTokens, 1)
+            rules_utils.insert_whitespace(lTokens, 1)
+        rules_utils.insert_carriage_return(lTokens, 1)
         oViolation.set_tokens(lTokens)
     elif dAction['action'] == 'remove':
         lNewTokens = []
@@ -433,10 +456,10 @@ def _fix_new_line_after_comma(oViolation):
     dAction = oViolation.get_action()
     if dAction['action'] == 'insert':
         if isinstance(lTokens[1], parser.whitespace):
-            rule_utils.insert_carriage_return(lTokens, 1)
+            rules_utils.insert_carriage_return(lTokens, 1)
         else:
-            rule_utils.insert_whitespace(lTokens, 1)
-            rule_utils.insert_carriage_return(lTokens, 1)
+            rules_utils.insert_whitespace(lTokens, 1)
+            rules_utils.insert_carriage_return(lTokens, 1)
         oViolation.set_tokens(lTokens)
     elif dAction['action'] == 'remove':
         lNewTokens = []
@@ -525,18 +548,18 @@ def _classify_assignment(iToken, lTokens):
                 iCloseParen += 1
                 if iCloseParen > iOpenParen:
 #                    print(lTokens[iToken:iEnd -1])
-#                    rule_utils.print_debug(lTokens[iToken:iEnd + 1])
+#                    rules_utils.print_debug(lTokens[iToken:iEnd + 1])
                     iEnd = utils.find_previous_non_whitespace_token(iEnd - 1, lTokens)
                     return iEnd, True
                 elif iOpenParen == iCloseParen:
 #                    print(lTokens[iToken:iEnd])
-#                    rule_utils.print_debug(lTokens[iToken:iEnd + 1])
+#                    rules_utils.print_debug(lTokens[iToken:iEnd + 1])
                     return iEnd, True
             elif isinstance(oToken, parser.comma):
                 if iOpenParen == iCloseParen:
                     iEnd = iToken + iReturn - 1
 #                    print(lTokens[iToken:iEnd])
-#                    rule_utils.print_debug(lTokens[iToken:iEnd + 1])
+#                    rules_utils.print_debug(lTokens[iToken:iEnd + 1])
                     return iEnd, True
         return None
     return iToken, False

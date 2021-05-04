@@ -62,6 +62,13 @@ architecture rtl of fifo is
     )
   );
 
+  constant c_stimulus : t_stimulus_array :=
+  (name => "Not enabled",
+   clk_in => "01",
+   rst_in => "00",
+   cnt_en_in => "00",
+   cnt_out => "00"); -- Comment
+
 begin
 
 end architecture rtl;
