@@ -388,9 +388,6 @@ Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#conf
 
    generic(g_my_generic : integer);
 
-Naming Convention Rules (600 - 699)
-###################################
-
 generic_600
 ###########
 

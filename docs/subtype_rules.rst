@@ -71,8 +71,8 @@ This rule checks for consistent capitalization of subtype names.
    constant read_sz  : read_size := 8;
    constant write_sz : write_size := 1;
 
-subtype_003 (depricated)
-########################
+subtype_003
+###########
 
 This rule was depricated and replaced with rules:  function_015, package_019, procedure_010, architecture_029 and process_037.
 
@@ -97,9 +97,6 @@ Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#conf
 .. code-block:: vhdl
 
    subtype st_my_subtype is range 0 to 9;
-
-Naming Convention Rules (600 - 699)
-###################################
 
 subtype_600
 ###########

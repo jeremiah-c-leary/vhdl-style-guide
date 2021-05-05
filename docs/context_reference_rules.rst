@@ -119,10 +119,12 @@ This rule checks the **context** keyword is on it's own line.
    context con2;
 
 
-context_ref_006 (Proposed)
-##########################
+context_ref_006
+###############
 
 This rule checks the semicolon is on the same line as the context selected name.
+
+.. NOTE:: This rule has not been implemented yet.
 
 **Violation**
 
@@ -144,10 +146,12 @@ This rule checks the semicolon is on the same line as the context selected name.
    context
    c1;
 
-context_ref_007 (Proposed)
-##########################
+context_ref_007
+###############
 
 This rule checks for code after the semicolon.
+
+.. NOTE:: This rule has not been implemented yet.
 
 **Violation**
 
@@ -167,10 +171,12 @@ This rule checks for code after the semicolon.
      library ieee; -- This is not allowed
 
 
-context_ref_008 (Proposed)
-##########################
+context_ref_008
+###############
 
 This rule checks the context selected name is on the same line as the **context** keyword.
+
+.. NOTE:: This rule has not been implemented yet.
 
 **Violation**
 
@@ -189,10 +195,12 @@ This rule checks the context selected name is on the same line as the **context*
    ;
 
 
-context_ref_009 (Proposed)
-##########################
+context_ref_009
+###############
 
 This rule checks for multiple selected names in a single reference.
+
+.. NOTE:: This rule has not been implemented yet.
 
 **Violation**
 

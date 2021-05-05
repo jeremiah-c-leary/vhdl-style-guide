@@ -3,13 +3,8 @@
 With Rules
 ----------
 
-.. _with_structural_rules:
-
-Structural Rules (000 - 099)
-############################
-
 with_001
-^^^^^^^^
+########
 
 |phase_1| |error|
 

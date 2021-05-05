@@ -358,9 +358,6 @@ Refer to section `Configuring Multiline Structure Rules <configuring.html#config
      32768
    );
 
-Naming Convention Rules (600 - 699)
-###################################
-
 constant_600
 ############
 

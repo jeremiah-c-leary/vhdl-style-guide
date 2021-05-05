@@ -122,13 +122,13 @@ This rule checks the **port map** keywords are on their own line.
    U_FIFO : FIFO
      port map (
 
-instantiation_006 (depricated)
-##############################
+instantiation_006
+#################
 
 This rule has been renamed to **port_map_001**
 
-instantiation_007 (depricated)
-##############################
+instantiation_007
+#################
 
 This rule has been renamed to **port_map_004**
 
@@ -218,8 +218,8 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
        overflow => overflow
      );
 
-instantiation_011 (depricated)
-##############################
+instantiation_011
+#################
 
 This rule has been renamed to **port_map_002**
 
@@ -243,28 +243,28 @@ This rule checks the instantiation declaration and the **generic map** keywords 
    U_FIFO : FIFO
      generic map (
 
-instantiation_013 (depricated)
-##############################
+instantiation_013
+#################
 
 This rule has been renamed to **generic_map_001**
 
-instantiation_014 (depricated)
-##############################
+instantiation_014
+#################
 
 This rule has been renamed to **generic_map_004**
 
-instantiation_016 (depricated)
-##############################
+instantiation_016
+#################
 
 This rule has been renamed to **generic_map_002**
 
-instantiation_017 (depricated)
-##############################
+instantiation_017
+#################
 
 This rule has been renamed to **generic_map_005**
 
-instantiation_018 (depricated)
-##############################
+instantiation_018
+#################
 
 This rule has been renamed to **generic_map_006**
 
@@ -307,13 +307,13 @@ instantiation_020
 
 This rule has been renamed to **port_map_005**
 
-instantiation_021 (depricated)
-##############################
+instantiation_021
+#################
 
 This rule has been renamed to **port_map_009**
 
-instantiation_022 (depricated)
-##############################
+instantiation_022
+#################
 
 This rule has been renamed to **port_map_007**
 
@@ -341,18 +341,18 @@ Refer to the entity for port types, port directions and purpose.
    WR_EN => w_wr_en;
    RD_EN => w_rd_en;
 
-instantiation_024 (depricated)
-##############################
+instantiation_024
+#################
 
 This rule has been split into **generic_map_008** and **port_map_008**.
 
-instantiation_025 (depricated)
-##############################
+instantiation_025
+#################
 
 This rule has been renamed to **port_map_003**
 
-instantiation_026 (depricated)
-##############################
+instantiation_026
+#################
 
 This rule has been renamed to **generic_map_003**
 
@@ -428,8 +428,8 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
        rd_en    => read_enable,  -- Read enable
        overflow => overflow,     -- FIFO has overflowed
 
-instantiation_030 (depricated)
-##############################
+instantiation_030
+#################
 
 This rule has been renamed to **generic_map_007**
 
@@ -530,11 +530,8 @@ entity instantiation
 
    U_FIFO : FIFO
 
-Naming Convention Rules (600 - 699)
-###################################
-
 instantiation_600
-^^^^^^^^^^^^^^^^^
+#################
 
 |phase_7| |disabled| |error|
 
@@ -556,7 +553,7 @@ Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#conf
    fifo_32x2k_inst : FIFO
 
 instantiation_601
-^^^^^^^^^^^^^^^^^
+#################
 
 |phase_7| |disabled| |error|
 

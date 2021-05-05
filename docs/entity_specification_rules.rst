@@ -3,16 +3,8 @@
 Entity Specification Rules
 --------------------------
 
-Structural Rules (000 - 099)
-############################
-
-No rules identified.
-
-Whitespacing Rules (100 - 199)
-##############################
-
 entity_specification_100
-^^^^^^^^^^^^^^^^^^^^^^^^
+########################
 
 |phase_2| |error|
 
@@ -33,7 +25,7 @@ This rule checks for a single space after the colon.
    attribute coordinate of comp_1 : component is (0.0, 17.5);
 
 entity_specification_101
-^^^^^^^^^^^^^^^^^^^^^^^^
+########################
 
 |phase_2| |error|
 
@@ -55,26 +47,8 @@ This rule checks for at least a single space before the colon.
 
    attribute coordinate of comp_1     : component is (0.0, 17.5);
 
-Vertical Spacing Rules (200 - 299)
-##################################
-
-No rules have been identified.
-
-Indentation Rules (300 - 399)
-#############################
-
-No rules have been identified.
-
-Alignment Rules (400 - 499)
-###########################
-
-No rules have been identified.
-
-Capitalization Rules (500 - 599)
-################################
-
 entity_specification_500
-^^^^^^^^^^^^^^^^^^^^^^^^
+########################
 
 |phase_6| |error|
 
@@ -95,7 +69,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
    attribute coordinate of others : component is (0.0, 17.5);
 
 entity_specification_501
-^^^^^^^^^^^^^^^^^^^^^^^^
+########################
 
 |phase_6| |error|
 
@@ -116,7 +90,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
    attribute coordinate of all : component is (0.0, 17.5);
 
 entity_specification_502
-^^^^^^^^^^^^^^^^^^^^^^^^
+########################
 
 |phase_6| |error|
 
@@ -137,7 +111,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
    attribute coordinate of comp_1, comp_2 : component is (0.0, 17.5);
 
 entity_specification_503
-^^^^^^^^^^^^^^^^^^^^^^^^
+########################
 
 |phase_6| |error|
 
@@ -156,8 +130,3 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 .. code-block:: vhdl
 
    attribute coordinate of comp_1 : component is (0.0, 17.5);
-
-Naming Convention Rules (600 - 699)
-###################################
-
-No rules have been identified.

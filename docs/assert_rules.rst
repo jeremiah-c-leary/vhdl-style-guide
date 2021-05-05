@@ -57,7 +57,7 @@ This rule checks the **report** keyword is on it's own line for concurrent asser
    end architecture rtl;
 
 assert_003
-==========
+##########
 
 This rule checks the **report** keyword is on it's own line for assertion statements.
 
@@ -97,7 +97,7 @@ This rule checks the **report** keyword is on it's own line for assertion statem
    end architecture rtl;
 
 assert_004
-==========
+##########
 
 This rule checks the **severity** keyword is on it's own line for concurrent assertion statements.
 
@@ -126,11 +126,8 @@ This rule checks the **severity** keyword is on it's own line for concurrent ass
 
    end architecture rtl;
 
-Alignment Rules (400 - 499)
-###########################
-
 assert_400
-^^^^^^^^^^
+==========
 
 |phase_4| |error|
 

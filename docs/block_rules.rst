@@ -3,11 +3,8 @@
 Block Rules
 -----------
 
-Structural Rules (000 - 099)
-############################
-
 block_001
-^^^^^^^^^
+#########
 
 |phase_1| |error|
 
@@ -28,7 +25,7 @@ Keeping the label and generate on the same line reduces excessive indenting.
    block_label : block is
 
 block_002
-^^^^^^^^^
+#########
 
 |phase_1| |error|
 
@@ -51,7 +48,7 @@ Refer to the section `Configuring Optional Items <configuring.html#configuring-o
    block_label : block (guard_condition) is
 
 block_003
-^^^^^^^^^
+#########
 
 |phase_1| |error|
 
@@ -71,7 +68,7 @@ This rule checks the **is** keyword is on the same line as the **block** keyword
    block_labeel : block is
 
 block_004
-^^^^^^^^^
+#########
 
 |phase_1| |error|
 
@@ -91,7 +88,7 @@ This rule checks the **begin** keyword is on it's own line.
    begin
 
 block_005
-^^^^^^^^^
+#########
 
 |phase_1| |error|
 
@@ -111,7 +108,7 @@ This rule check for code after the **begin** keyword.
    a <= b;
 
 block_006
-^^^^^^^^^
+#########
 
 |phase_1| |error|
 
@@ -131,7 +128,7 @@ This rule checks the **end** keyword is on it's own line.
    end block;
 
 block_007
-^^^^^^^^^
+#########
 
 |phase_1| |error|
 
@@ -151,11 +148,8 @@ Refer to the section `Configuring Optional Items <configuring.html#configuring-o
 
    end block block_label;
 
-Whitespacing Rules (100 - 199)
-##############################
-
 block_100
-^^^^^^^^^
+#########
 
 |phase_2| |error|
 
@@ -176,7 +170,7 @@ This rule checks for a single space between the following block elements:  label
    block_label : block is
 
 block_101
-^^^^^^^^^
+#########
 
 |phase_2| |error|
 
@@ -194,11 +188,8 @@ This rule checks for a single space between the **end** and **block** keywords a
 
    end block block_label;
 
-Vertical Spacing Rules (200 - 299)
-##################################
-
 block_200
-^^^^^^^^^
+#########
 
 |phase_3| |error|
 
@@ -222,7 +213,7 @@ Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous
    block_label : block is
 
 block_201
-^^^^^^^^^
+#########
 
 |phase_3| |error|
 
@@ -246,7 +237,7 @@ Refer to the section `Configuring Blank Lines <configuring.html#configuring-blan
      constant width : integer := 32;
 
 block_202
-^^^^^^^^^
+#########
 
 |phase_3| |error|
 
@@ -274,7 +265,7 @@ Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ f
    begin
 
 block_203
-^^^^^^^^^
+#########
 
 |phase_3| |error|
 
@@ -298,7 +289,7 @@ Refer to the section `Configuring Blank Lines <configuring.html#configuring-blan
      a <= b;
 
 block_204
-^^^^^^^^^
+#########
 
 |phase_3| |error|
 
@@ -326,7 +317,7 @@ Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ f
    end block block_label;
 
 block_205
-^^^^^^^^^
+#########
 
 |phase_3| |error|
 
@@ -349,11 +340,8 @@ Refer to the section `Configuring Blank Lines <configuring.html#configuring-blan
 
    a <= b;
 
-Indentation Rules (300 - 399)
-#############################
-
 block_300
-^^^^^^^^^
+#########
 
 |phase_4| |error|
 
@@ -376,7 +364,7 @@ This rule checks the indent of the block label.
    block_label : block is
 
 block_301
-^^^^^^^^^
+#########
 
 |phase_4| |error|
 
@@ -399,7 +387,7 @@ This rule checks the indent of the **begin** keyword.
    begin
 
 block_302
-^^^^^^^^^
+#########
 
 |phase_4| |error|
 
@@ -425,11 +413,8 @@ This rule checks the indent of the **end** keyword.
 
    end block block_label;
 
-Alignment Rules (400 - 499)
-###########################
-
 block_400
-^^^^^^^^^
+#########
 
 |phase_5| |error|
 
@@ -452,7 +437,7 @@ Refer to the section `Configuring Identifier Alignment Rules <configuring.html#c
    constant c_period : time;
 
 block_401
-^^^^^^^^^
+#########
 
 |phase_5| |error|
 
@@ -477,11 +462,8 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
    constant c_period  : time;
    file my_test_input : my_file_type;
 
-Captialization Rules (500 - 599)
-################################
-
 block_500
-^^^^^^^^^
+#########
 
 |phase_6| |error|
 
@@ -502,7 +484,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
    block_label : block is
 
 block_501
-^^^^^^^^^
+#########
 
 |phase_6| |error|
 
@@ -523,7 +505,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
    block_label : block is
 
 block_502
-^^^^^^^^^
+#########
 
 |phase_6| |error|
 
@@ -544,7 +526,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
    block_label : block is
 
 block_503
-^^^^^^^^^
+#########
 
 |phase_6| |error|
 
@@ -567,7 +549,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
    begin
 
 block_504
-^^^^^^^^^
+#########
 
 |phase_6| |error|
 
@@ -588,7 +570,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
    end block block_label;
 
 block_505
-^^^^^^^^^
+#########
 
 |phase_6| |error|
 
@@ -609,7 +591,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
    end block block_label;
 
 block_506
-^^^^^^^^^
+#########
 
 |phase_6| |error|
 
@@ -629,11 +611,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
    end block block_label;
 
-Naming Convention Rules (600 - 699)
-###################################
-
 block_600
-^^^^^^^^^
+#########
 
 |phase_7| |disabled| |error|
 
@@ -655,7 +634,7 @@ Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#conf
    block_label_blk : block is
 
 block_601
-^^^^^^^^^
+#########
 
 |phase_7| |disabled| |error|
 

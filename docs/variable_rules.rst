@@ -53,8 +53,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
    variable count : integer;
 
-variable_003 (depricated)
-#########################
+variable_003
+############
 
 This rule was depricated and replaced with rules:  function_015, package_019, procedure_010, architecture_029 and process_037.
 
@@ -242,9 +242,6 @@ Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#conf
 .. code-block:: vhdl
 
    variable v_my_var : natural;
-
-Naming Convention Rules (600 - 699)
-###################################
 
 variable_600
 ############

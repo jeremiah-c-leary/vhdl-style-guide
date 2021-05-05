@@ -3,8 +3,8 @@
 Port Map Rules
 --------------
 
-port_map_001 (instantiation_006)
-################################
+port_map_001
+############
 
 |phase_6| |error|
 
@@ -24,8 +24,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
    port map (
 
-port_map_002 (instantiation_011)
-################################
+port_map_002
+############
 
 |phase_6| |error|
 
@@ -54,8 +54,8 @@ Indexes on ports will not be uppercased.
        UNDERFLOW(c_index) => underflow
      );
 
-port_map_003 (instantiation_025)
-################################
+port_map_003
+############
 
 |phase_1| |error|
 
@@ -84,8 +84,8 @@ Use explicit port mapping.
      OVERFLOW => OVERFLOW
    );
 
-port_map_004 (instantiation_007)
-################################
+port_map_004
+############
 
 |phase_1| |error|
 
@@ -106,8 +106,8 @@ This rule checks the closing ) for the port map is on it's own line.
       WR_EN => wr_en
     );
 
-port_map_005 (instantiation_020)
-################################
+port_map_005
+############
 
 |phase_1| |error|
 
@@ -132,8 +132,8 @@ This rule checks for a port assignment on the same line as the **port map** keyw
        OVERFLOW => overflow
      );
 
-port_map_007 (instantiation_022)
-################################
+port_map_007
+############
 
 |phase_2| |error|
 
@@ -161,8 +161,8 @@ This rule checks for a single space after the **=>** operator in port maps.
        OVERFLOW => overflow
      );
 
-port_map_008 (instantiation_024)
-################################
+port_map_008
+############
 
 |phase_1| |error|
 
@@ -189,8 +189,8 @@ Use explicit port mapping.
      OVERFLOW => OVERFLOW
    );
 
-port_map_009 (instantiation_021)
-################################
+port_map_009
+############
 
 |phase_1| |error|
 

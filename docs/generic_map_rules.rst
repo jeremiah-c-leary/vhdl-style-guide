@@ -3,8 +3,8 @@
 Generic Map Rules
 -----------------
 
-generic_map_001 (instantiation_013)
-###################################
+generic_map_001
+###############
 
 |phase_6| |error|
 
@@ -24,8 +24,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
    generic map (
 
-generic_map_002 (instantiation_016)
-###################################
+generic_map_002
+###############
 
 |phase_6| |error|
 
@@ -51,8 +51,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
        width => 32
      )
 
-generic_map_003 (instantiation_026)
-###################################
+generic_map_003
+###############
 
 |phase_1| |error|
 
@@ -79,8 +79,8 @@ Use explicit port mapping.
      DEPTH => 512
    )
 
-generic_map_004 (instantiation_014)
-###################################
+generic_map_004
+###############
 
 |phase_1| |error|
 
@@ -106,8 +106,8 @@ This rule checks for the closing parenthesis *)* on generic maps are on their ow
      )
 
 
-generic_map_005 (instantiation_017)
-###################################
+generic_map_005
+###############
 
 |phase_1| |error|
 
@@ -130,8 +130,8 @@ This rule checks if the **generic map** keywords and a generic assignment are on
        WIDTH => 32
      )
 
-generic_map_006 (instantiation_018)
-###################################
+generic_map_006
+###############
 
 |phase_2| |error|
 
@@ -153,8 +153,8 @@ This rule checks for a single space between the **map** keyword and the (.
 
    generic map (
 
-generic_map_007 (instantiation_030)
-###################################
+generic_map_007
+###############
 
 |phase_2| |error|
 
@@ -180,8 +180,8 @@ This rule checks for a single space after the **=>** keyword in generic maps.
      DEPTH => 512
    )
 
-generic_map_008 (instantiation_024)
-###################################
+generic_map_008
+###############
 
 |phase_1| |error|
 

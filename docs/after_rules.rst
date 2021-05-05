@@ -49,8 +49,6 @@ This rule checks for **after x** in signal assignments in clock processes.
 
    The **units** is a valid time unit: ms, us, ns, ps etc...  Default is *ns*.
 
-.. _after_002:
-
 after_002
 #########
 

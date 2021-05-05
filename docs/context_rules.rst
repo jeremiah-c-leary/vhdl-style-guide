@@ -630,8 +630,10 @@ This rule ensures a single blank line before the **end** keword.
 
    end context;
 
-context_028 (Proposed)
-######################
+context_028
+###########
+
+.. NOTE:: This rule has not been implemented yet.
 
 This rule checks for alignment of inline comments in the context declaration.
 

@@ -65,7 +65,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
    begin
 
-file_003 (depricated)
-#####################
+file_003
+########
 
 This rule was depricated and replaced with rules:  function_015, package_019, procedure_010, architecture_029 and process_037.

@@ -403,11 +403,8 @@ This rule checks the indent of the **end** keyword in the generate statement bod
    end;
    end generate;
 
-Alignment Rules (400 - 499)
-###########################
-
 generate_400
-^^^^^^^^^^^^
+############
 
 |phase_5| |error|
 
@@ -430,7 +427,7 @@ Refer to the section `Configuring Identifier Alignment Rules <configuring.html#c
    constant c_period : time;
 
 generate_401
-^^^^^^^^^^^^
+############
 
 |phase_5| |error|
 
@@ -457,7 +454,7 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
    file my_test_input : my_file_type;
 
 generate_402
-^^^^^^^^^^^^
+############
 
 |phase_5| |error|
 
@@ -480,7 +477,7 @@ Refer to the section `Configuring Identifier Alignment Rules <configuring.html#c
    constant c_period : time;
 
 generate_403
-^^^^^^^^^^^^
+############
 
 |phase_5| |error|
 
@@ -507,7 +504,7 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
    file my_test_input : my_file_type;
 
 generate_404
-^^^^^^^^^^^^
+############
 
 |phase_5| |error|
 
@@ -530,7 +527,7 @@ Refer to the section `Configuring Identifier Alignment Rules <configuring.html#c
    constant c_period : time;
 
 generate_405
-^^^^^^^^^^^^
+############
 
 |phase_5| |error|
 
@@ -555,9 +552,6 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
    variable var2      : natural;
    constant c_period  : time;
    file my_test_input : my_file_type;
-
-Naming Convention Rules (600 - 699)
-###################################
 
 generate_600
 ############

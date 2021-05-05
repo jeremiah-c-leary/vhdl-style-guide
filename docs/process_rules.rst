@@ -1024,9 +1024,6 @@ Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#conf
 
    proc_main: process () is
 
-Naming Convention Rules (600 - 699)
-###################################
-
 process_600
 ###########
 

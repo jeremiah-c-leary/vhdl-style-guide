@@ -125,8 +125,8 @@ This rule checks for a single space after the colon.
      DATA     : inout std_logic
    );
 
-port_006 (depricated)
-#####################
+port_006
+########
 
 This rule has been depricated and it's function was include in rule **port_005**.
 

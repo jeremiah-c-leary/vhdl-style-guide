@@ -3,16 +3,8 @@
 Attribute Declaration Rules
 ---------------------------
 
-Structural Rules (000 - 099)
-############################
-
-No rules have been identified.
-
-Whitespacing Rules (100 - 199)
-##############################
-
 attribute_declaration_100
-^^^^^^^^^^^^^^^^^^^^^^^^^
+#########################
 
 |phase_2| |error|
 
@@ -31,7 +23,7 @@ This rule checks for a single space after the following elements:  **attribute**
    attribute max_delay : time;
 
 attribute_declaration_101
-^^^^^^^^^^^^^^^^^^^^^^^^^
+#########################
 
 |phase_2| |error|
 
@@ -49,16 +41,8 @@ This rule checks for at least a single space before the colon.
 
    attribute max_delay : time;
 
-Vertical Spacing Rules (200 - 299)
-##################################
-
-No rules have been identified at this time.
-
-Indentation Rules (300 - 399)
-#############################
-
 attribute_declaration_300
-^^^^^^^^^^^^^^^^^^^^^^^^^
+#########################
 
 |phase_4| |error|
 
@@ -78,16 +62,8 @@ This rule checks the indent of the **attribute** keyword.
    signal sig1 : std_logic;
    attribute max_delay : time;
 
-Alignment Rules (400 - 499)
-###########################
-
-Alignment rules would be handled by the element using attributes.
-
-Capitalization Rules (500 - 599)
-################################
-
 attribute_declaration_500
-^^^^^^^^^^^^^^^^^^^^^^^^^
+#########################
 
 |phase_6| |error|
 
@@ -108,7 +84,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
    attribute max_delay : time;
 
 attribute_declaration_501
-^^^^^^^^^^^^^^^^^^^^^^^^^
+#########################
 
 |phase_6| |error|
 
@@ -129,7 +105,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
    attribute max_delay : time;
 
 attribute_declaration_502
-^^^^^^^^^^^^^^^^^^^^^^^^^
+#########################
 
 |phase_6| |error|
 
@@ -148,8 +124,3 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 .. code-block:: vhdl
 
    attribute max_delay : time;
-
-Naming Convention Rules (600 - 699)
-###################################
-
-No rules have been identified.

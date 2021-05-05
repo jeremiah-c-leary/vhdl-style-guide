@@ -3,15 +3,15 @@
 Whitespace Rules
 ----------------
 
-whitespace_001 (depricated)
-###########################
+whitespace_001
+##############
 
 This rule has been depricated.
 
 VSG strips trailing spaces when a file is read in.
 
-whitespace_002 (depricated)
-###########################
+whitespace_002
+##############
 
 This rule has been depricated.
 

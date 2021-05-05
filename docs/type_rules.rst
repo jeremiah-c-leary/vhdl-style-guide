@@ -51,8 +51,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
    type state_machine is (idle, write, read, done);
 
-type_003 (depricated)
-#####################
+type_003
+########
 
 This rule was depricated and replaced with rules:  function_015, package_019, procedure_010, architecture_029 and process_037.
 
@@ -322,7 +322,7 @@ This rule checks for consistent capitalization of type names.
    signal sm : state_machine;
 
 type_015
-##########
+########
 
 |phase_7| |disabled| |error|
 
@@ -374,13 +374,8 @@ This rule checks the indent of the closing parenthesis on multiline types.
 
    begin
 
-.. _type_alignment_rules:
-
-Alignment Rules (400 - 499)
-###########################
-
 type_400
-^^^^^^^^
+########
 
 |phase_5| |error|
 
@@ -408,11 +403,8 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
      yet_another_element : natural;
    end record;
 
-Naming Convention Rules (600 - 699)
-###################################
-
 type_600
-##########
+########
 
 |phase_7| |disabled| |error|
 

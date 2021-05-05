@@ -3,11 +3,8 @@
 Package Body Rules
 ------------------
 
-Structural Rules
-################
-
 package_body_001
-^^^^^^^^^^^^^^^^
+################
 
 |phase_1| |error|
 
@@ -27,7 +24,7 @@ This rule checks the **is** keyword is on the same line as the **package** keywo
    package body FIFO_PKG is
 
 package_body_002
-^^^^^^^^^^^^^^^^
+################
 
 |phase_1| |error|
 
@@ -48,7 +45,7 @@ Refer to the section `Configuring Optional Items <configuring.html#configuring-o
    end package body FIFO_PKG;
 
 package_body_003
-^^^^^^^^^^^^^^^^
+################
 
 |phase_1| |error|
 
@@ -68,11 +65,8 @@ Refer to the section `Configuring Optional Items <configuring.html#configuring-o
 
    end package body fifo_pkg;
 
-Whitespacing Rules
-##################
-
 package_body_100
-^^^^^^^^^^^^^^^^
+################
 
 |phase_2| |error|
 
@@ -91,7 +85,7 @@ This rule checks for a single space between **package**, **body** and **is** key
    package body FIFO_PKG is
 
 package_body_101
-^^^^^^^^^^^^^^^^
+################
 
 |phase_2| |error|
 
@@ -109,11 +103,8 @@ This rule checks for a single space between the **end**, **package** and **body*
 
    end package  body   FIFO_PKG;
 
-Vertical Spacing Rules
-######################
-
 package_body_200
-^^^^^^^^^^^^^^^^
+################
 
 |phase_3| |error|
 
@@ -137,7 +128,7 @@ Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous
    package body FIFO_PKG is
 
 package_body_201
-^^^^^^^^^^^^^^^^
+################
 
 |phase_3| |error|
 
@@ -161,7 +152,7 @@ Refer to the section `Configuring Blank Lines <configuring.html#configuring-blan
      constant width : integer := 32;
 
 package_body_202
-^^^^^^^^^^^^^^^^
+################
 
 |phase_3| |error|
 
@@ -185,7 +176,7 @@ Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ f
    end package body FIFO_PKG;
 
 package_body_203
-^^^^^^^^^^^^^^^^
+################
 
 |phase_3| |error|
 
@@ -206,11 +197,8 @@ Refer to the section `Configuring Blank Lines <configuring.html#configuring-blan
 
    end package body FIFO_PKG;
 
-Indentation Rules
-#################
-
 package_body_300
-^^^^^^^^^^^^^^^^
+################
 
 |phase_4| |error|
 
@@ -233,7 +221,7 @@ This rule checks the indent of the package body keyword.
    package body FIFO_PKG is
 
 package_body_301
-^^^^^^^^^^^^^^^^
+################
 
 |phase_4| |error|
 
@@ -255,11 +243,8 @@ This rule checks the indent of the end package declaration.
 
    end package body fifo_pkg;
 
-Alignment Rules
-###############
-
 package_body_400
-^^^^^^^^^^^^^^^^
+################
 
 |phase_5| |error|
 
@@ -281,11 +266,8 @@ Refer to the section `Configuring Identifier Alignment Rules <configuring.html#c
    variable var1     : natural;
    constant c_period : time;
 
-Captialization Rules
-####################
-
 package_body_500
-^^^^^^^^^^^^^^^^
+################
 
 |phase_6| |error|
 
@@ -306,7 +288,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
    package body FIFO_PKG is
 
 package_body_501
-^^^^^^^^^^^^^^^^
+################
 
 |phase_6| |error|
 
@@ -327,7 +309,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
    package body FIFO_PKG is
 
 package_body_502
-^^^^^^^^^^^^^^^^
+################
 
 |phase_6| |error|
 
@@ -348,7 +330,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
    package body fifo_pkg is
 
 package_body_503
-^^^^^^^^^^^^^^^^
+################
 
 |phase_6| |error|
 
@@ -369,7 +351,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
    package fifo_pkg is
 
 package_body_504
-^^^^^^^^^^^^^^^^
+################
 
 |phase_6| |error|
 
@@ -390,7 +372,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
    end package fifo_pkg;
 
 package_body_505
-^^^^^^^^^^^^^^^^
+################
 
 |phase_6| |error|
 
@@ -411,7 +393,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
    end package body fifo_pkg;
 
 package_body_506
-^^^^^^^^^^^^^^^^
+################
 
 |phase_6| |error|
 
@@ -432,7 +414,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
    end package body fifo_pkg;
 
 package_body_507
-^^^^^^^^^^^^^^^^
+################
 
 |phase_6| |error|
 
@@ -452,11 +434,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
    end package fifo_pkg;
 
-Naming Convention Rules
-#######################
-
 package_body_600
-^^^^^^^^^^^^^^^^
+################
 
 |phase_7| |disabled| |error|
 
@@ -478,7 +457,7 @@ Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#conf
    package body foo_pkg is
 
 package_body_601
-^^^^^^^^^^^^^^^^
+################
 
 |phase_7| |disabled| |error|
 

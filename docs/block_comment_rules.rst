@@ -20,11 +20,8 @@ Block Comment Rules
     * footer_alignment = 'right'
     * max_footer_column = 40
 
-Structural Rules (000 - 099)
-############################
-
 block_comment_001
-^^^^^^^^^^^^^^^^^
+#################
 
 |phase_1| |disabled| |error|
 
@@ -51,7 +48,7 @@ Refer to the section `Configuring Block Comments <configuring.html#configuring-b
    ----------------------------------------
 
 block_comment_002
-^^^^^^^^^^^^^^^^^
+#################
 
 |phase_1| |disabled| |error|
 
@@ -78,7 +75,7 @@ Refer to the section `Configuring Block Comments <configuring.html#configuring-b
    ----------------------------------------
 
 block_comment_003
-^^^^^^^^^^^^^^^^^
+#################
 
 |phase_1| |disabled| |error|
 

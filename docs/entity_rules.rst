@@ -502,11 +502,8 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
        data_o : in std_logic  -- Data output
    );
 
-Naming Convention Rules (600 - 699)
-###################################
-
 entity_600
-^^^^^^^^^^
+##########
 
 |phase_6| |error|
 

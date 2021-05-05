@@ -53,8 +53,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
    signal wr_en : std_logic;
 
-signal_003 (depricated)
-#######################
+signal_003
+##########
 
 This rule was depricated and replaced with rules:  function_015, package_019, procedure_010, architecture_029 and process_037.
 
@@ -354,9 +354,6 @@ This rule checks the signal declaration is on a single line.
    signal sig1 : std_logic;
 
    signal sig2 : std_logic;
-
-Naming Convention Rules (600 - 699)
-###################################
 
 signal_600
 ##########
