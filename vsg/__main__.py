@@ -130,7 +130,9 @@ def validate_file_exists(sFilename, sConfigName):
         sExpandedFilename = list(sFilename.keys())[0]
     else:
         sExpandedFilename = sFilename
-    lFileNames = glob.glob(expand_filename(sExpandedFilename))
+    print(sExpandedFilename)
+    lFileNames = glob.glob(expand_filename(sExpandedFilename), recursive=True)
+    print(lFileNames)
     if len(lFileNames) == 0:
         print('ERROR: Could not find file ' + sFilename + ' in configuration file ' + sConfigName)
         sys.exit(1)
@@ -149,11 +151,11 @@ def read_configuration_files(dStyle, commandLineArguments):
                     for iIndex, sFilename in enumerate(tempConfiguration['file_list']):
                         validate_file_exists(sFilename, sConfigFilename)
                         try:
-                            for sGlobbedFilename in glob.glob(expand_filename(sFilename)):
+                            for sGlobbedFilename in glob.glob(expand_filename(sFilename), recursive=True):
                                 dConfiguration['file_list'].append(sGlobbedFilename)
                         except TypeError:
                             sKey = list(sFilename.keys())[0]
-                            for sGlobbedFilename in glob.glob(expand_filename(sKey)):
+                            for sGlobbedFilename in glob.glob(expand_filename(sKey), recursive=True):
                                 dTemp = {}
                                 dTemp[sGlobbedFilename] = {}
                                 dTemp[sGlobbedFilename].update(tempConfiguration['file_list'][iIndex][sKey])
@@ -215,9 +217,9 @@ def update_command_line_arguments(commandLineArguments, configuration):
             if isinstance(sFilename, dict):
                 sFilename = list(sFilename.keys())[0]
             try:
-                commandLineArguments.filename.extend(glob.glob(expand_filename(sFilename)))
+                commandLineArguments.filename.extend(glob.glob(expand_filename(sFilename), recursive=True))
             except:
-                commandLineArguments.filename = glob.glob(expand_filename(sFilename))
+                commandLineArguments.filename = glob.glob(expand_filename(sFilename), recursive=True)
     if 'local_rules' in configuration:
         commandLineArguments.local_rules = expand_filename(configuration['local_rules'])
 
