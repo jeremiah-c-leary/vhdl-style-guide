@@ -27,7 +27,7 @@ This rule checks indent of multiline assert statements.
      severity FAILURE;
 
 assert_002
-==========
+##########
 
 This rule checks the **report** keyword is on it's own line for concurrent assertion statements.
 
@@ -127,7 +127,7 @@ This rule checks the **severity** keyword is on it's own line for concurrent ass
    end architecture rtl;
 
 assert_400
-==========
+##########
 
 |phase_4| |error|
 

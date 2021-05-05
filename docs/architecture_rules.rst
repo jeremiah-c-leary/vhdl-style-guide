@@ -733,11 +733,8 @@ This rule checks for a single space between the entity_name and the **is** keywo
 
    architecture rtl of fifo is
 
-Vertical Spacing Rules (200 - 299)
-##################################
-
 architecture_200
-^^^^^^^^^^^^^^^^
+################
 
 |phase_3| |error|
 
@@ -762,11 +759,8 @@ Refer to the section `Configuring Blank Lines <configuring.html#configuring-blan
 
 .. _architecture_naming_convention_rules:
 
-Naming Convention Rules (600 - 699)
-###################################
-
 architecture_600
-^^^^^^^^^^^^^^^^
+################
 
 |phase_6| |error|
 
