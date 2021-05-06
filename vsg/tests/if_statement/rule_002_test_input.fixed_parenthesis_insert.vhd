@@ -15,6 +15,8 @@ begin
       b <= '0';
     elsif (a(3 downto 0) + f(34, 56, 72) - g(f(35, 25, 60) downto h(45, 32))) then
       b <= '1';
+    elsif ((a or b) and (c or d)) then
+      b <= '0';
     end if;
 
     -- Violations below
@@ -27,6 +29,8 @@ begin
       b <= '0';
     elsif (a(3 downto 0) + f(34, 56, 72) - g(f(35, 25, 60) downto h(45, 32))) then
       b <= '1';
+    elsif ((a or b) and (c or d)) then
+      b <= '0';
     end if;
 
   end process;

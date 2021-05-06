@@ -41,6 +41,11 @@ if_002
 
 This rule checks the bolean expression is enclosed in ().
 
+.. NOTE:: There is a configuration option **parenthesis** which will either insert or remove the parenthesis.
+
+parenthesis set to 'insert' (Default)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 **Violation**
 
 .. code-block:: vhdl
@@ -52,6 +57,21 @@ This rule checks the bolean expression is enclosed in ().
 .. code-block:: vhdl
 
   if (a = '1') then
+
+parenthesis set to 'remove'
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Violation**
+
+.. code-block:: vhdl
+
+  if (a = '1') then
+
+**Fix**
+
+.. code-block:: vhdl
+
+  if a = '1' then
 
 if_003
 ######
