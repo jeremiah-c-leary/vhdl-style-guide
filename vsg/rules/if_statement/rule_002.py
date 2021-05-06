@@ -18,30 +18,102 @@ class rule_002(rule.Rule):
 
     identifier : string
        unique identifier.  Usually in the form of 00N.
-
-    trigger : parser object type
-       object type to apply the case check against
     '''
 
     def __init__(self):
         rule.Rule.__init__(self, 'if', '002')
-        self.solution = None
         self.phase = 1
-        self.solution = 'Enclose condition in ()\'s.'
+        self.parenthesis = 'insert'
+        self.configuration.append('parenthesis')
 
     def _get_tokens_of_interest(self, oFile):
         return oFile.get_if_statement_conditions()
 
     def _analyze(self, lToi):
         for oToi in lToi:
-            lTokens = oToi.get_tokens()
-            if not isinstance(lTokens[0], parser.open_parenthesis):
-                oViolation = violation.New(oToi.get_line_number(), oToi, self.solution)
-                self.add_violation(oViolation)
+            if insert_parenthesis(self.parenthesis):
+                self._check_insert_parenthesis(oToi)
+            else:
+                self._check_remove_parenthesis(oToi)
 
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
-        rules_utils.insert_token(lTokens, 0, parser.open_parenthesis())
-        lTokens.append(parser.close_parenthesis())
+        dAction = oViolation.get_action()
+        if insert_parenthesis(dAction['action']):
+            rules_utils.insert_token(lTokens, 0, parser.open_parenthesis())
+            lTokens.append(parser.close_parenthesis())
+            oViolation.set_tokens(lTokens)
+        else:
+            lNewTokens = lTokens[1:-1]
+            oViolation.set_tokens(lNewTokens)
 
-        oViolation.set_tokens(lTokens)
+    def _check_insert_parenthesis(self, oToi):
+        lTokens = oToi.get_tokens()
+        if not isinstance(lTokens[0], parser.open_parenthesis):
+            sSolution = 'Enclose condition in ()\'s.'
+            dAction = {}
+            dAction['action'] = 'insert'
+            oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
+            oViolation.set_action(dAction)
+            self.add_violation(oViolation)
+        else:
+            lParens = build_parenthesis_list(lTokens)
+            lNewParens = remove_inner_parenthesis(lParens)
+            if len(lNewParens) == 0:
+                sSolution = 'Enclose condition in ()\'s.'
+                dAction = {}
+                dAction['action'] = 'insert'
+                oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
+                oViolation.set_action(dAction)
+                self.add_violation(oViolation)
+
+    def _check_remove_parenthesis(self, oToi):
+        lTokens = oToi.get_tokens()
+        if isinstance(lTokens[0], parser.open_parenthesis):
+            lParens = build_parenthesis_list(lTokens)
+            lNewParens = remove_inner_parenthesis(lParens)
+
+            if len(lNewParens) == 2:
+             sSolution = 'Remove enclosing ()\'s'
+             dAction = {}
+             dAction['action'] = 'remove'
+             oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
+             oViolation.set_action(dAction)
+             self.add_violation(oViolation)
+
+
+def insert_parenthesis(option):
+    if option == 'insert':
+        return True
+    return False
+
+
+def build_parenthesis_list(lTokens):
+    lParens = []
+    for oToken in lTokens:
+       if isinstance(oToken, parser.open_parenthesis):
+           lParens.append(oToken)
+       elif isinstance(oToken, parser.close_parenthesis):
+           lParens.append(oToken)
+    return lParens
+
+
+def remove_inner_parenthesis(lParens):
+    lNewParens = []
+    bSkipCloseParen = False
+    if len(lParens) <= 2:
+        return lParens
+
+    for iParen, oParen in enumerate(lParens[:-1]):
+        if bSkipCloseParen:
+           bSkipCloseParen = False
+           continue
+        if isinstance(oParen, parser.open_parenthesis) and isinstance(lParens[iParen + 1], parser.close_parenthesis):
+            bSkipCloseParen = True
+            continue
+        lNewParens.append(oParen)
+    if isinstance(lParens[-2], parser.close_parenthesis) and isinstance(lParens[-1], parser.close_parenthesis):
+       lNewParens.append(lParens[-1])
+
+    lNewParens = remove_inner_parenthesis(lNewParens)
+    return lNewParens

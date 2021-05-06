@@ -10,9 +10,13 @@ sTestDir = os.path.dirname(__file__)
 
 lFile, eError =vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_002_test_input.vhd'))
 
-lExpected = []
-lExpected.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_002_test_input.fixed.vhd'), lExpected)
+lExpected_parenthesis_insert = []
+lExpected_parenthesis_insert.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_002_test_input.fixed_parenthesis_insert.vhd'), lExpected_parenthesis_insert)
+
+lExpected_parenthesis_remove = []
+lExpected_parenthesis_remove.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_002_test_input.fixed_parenthesis_remove.vhd'), lExpected_parenthesis_remove)
 
 
 class test_if_statement_rule(unittest.TestCase):
@@ -21,25 +25,48 @@ class test_if_statement_rule(unittest.TestCase):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
 
-    def test_rule_002(self):
+    def test_rule_002_parenthesis_insert(self):
         oRule = if_statement.rule_002()
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'if')
         self.assertEqual(oRule.identifier, '002')
+        oRule.parenthesis = 'insert'
 
-        lExpected = [22, 24, 26, 28]
+        lExpected = [24, 26, 28, 30, 32]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
-    def test_fix_rule_002(self):
+    def test_fix_rule_002_parenthesis_insert(self):
         oRule = if_statement.rule_002()
 
         oRule.fix(self.oFile)
 
         lActual = self.oFile.get_lines()
 
-        self.assertEqual(lExpected, lActual)
+        self.assertEqual(lExpected_parenthesis_insert, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+
+    def test_rule_002_parenthesis_remove(self):
+        oRule = if_statement.rule_002()
+        oRule.parenthesis = 'remove'
+
+        lExpected = [10, 12, 14, 16, 18]
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+
+    def test_fix_rule_002_parenthesis_remove(self):
+        oRule = if_statement.rule_002()
+        oRule.parenthesis = 'remove'
+
+        oRule.fix(self.oFile)
+
+        lActual = self.oFile.get_lines()
+
+        self.assertEqual(lExpected_parenthesis_remove, lActual)
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])

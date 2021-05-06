@@ -7,15 +7,15 @@ begin
 
   begin
 
-    if (a = '1') then
+    if a = '1' then
       b <= '0';
-    elsif (c = '1') then
+    elsif c = '1' then
       b <= '1';
-    elsif (a(3 downto 0) = 0) then
+    elsif a(3 downto 0) = 0 then
       b <= '0';
-    elsif (a(3 downto 0) + f(34, 56, 72) - g(f(35, 25, 60) downto h(45, 32))) then
+    elsif a(3 downto 0) + f(34, 56, 72) - g(f(35, 25, 60) downto h(45, 32)) then
       b <= '1';
-    elsif ((a or b) and (c or d)) then
+    elsif (a or b) and (c or d) then
       b <= '0';
     end if;
 
