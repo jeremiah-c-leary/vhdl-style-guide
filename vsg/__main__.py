@@ -130,46 +130,57 @@ def validate_file_exists(sFilename, sConfigName):
         sExpandedFilename = list(sFilename.keys())[0]
     else:
         sExpandedFilename = sFilename
-    print(sExpandedFilename)
+
     lFileNames = glob.glob(expand_filename(sExpandedFilename), recursive=True)
-    print(lFileNames)
+
     if len(lFileNames) == 0:
         print('ERROR: Could not find file ' + sFilename + ' in configuration file ' + sConfigName)
         sys.exit(1)
 
 
 def read_configuration_files(dStyle, commandLineArguments):
+
     dConfiguration = dStyle
-    if commandLineArguments.configuration:
-        for sConfigFilename in commandLineArguments.configuration:
-            tempConfiguration = open_configuration_file(sConfigFilename, commandLineArguments.junit)
 
-            for sKey in tempConfiguration.keys():
-                if sKey == 'file_list':
-                    if 'file_list' not in dConfiguration:
-                        dConfiguration['file_list'] = []
-                    for iIndex, sFilename in enumerate(tempConfiguration['file_list']):
-                        validate_file_exists(sFilename, sConfigFilename)
-                        try:
-                            for sGlobbedFilename in glob.glob(expand_filename(sFilename), recursive=True):
-                                dConfiguration['file_list'].append(sGlobbedFilename)
-                        except TypeError:
-                            sKey = list(sFilename.keys())[0]
-                            for sGlobbedFilename in glob.glob(expand_filename(sKey), recursive=True):
-                                dTemp = {}
-                                dTemp[sGlobbedFilename] = {}
-                                dTemp[sGlobbedFilename].update(tempConfiguration['file_list'][iIndex][sKey])
-                                dConfiguration['file_list'].append(dTemp)
+    if commandLineArguments.filename is not None:
+#3        try:
+#            dConfiguration['file_list'].extend(commandLineArguments.filename)
+##        except KeyError:
+            dConfiguration['file_list'] = commandLineArguments.filename
 
-                elif sKey == 'rule':
-                    for sRule in tempConfiguration[sKey]:
-                        try:
-                            dConfiguration[sKey][sRule] = tempConfiguration[sKey][sRule]
-                        except KeyError:
-                            dConfiguration[sKey] = {}
-                            dConfiguration[sKey][sRule] = tempConfiguration[sKey][sRule]
-                else:
-                    dConfiguration[sKey] = tempConfiguration[sKey]
+    if not commandLineArguments.configuration:
+        return dConfiguration
+
+    for sConfigFilename in commandLineArguments.configuration:
+        tempConfiguration = open_configuration_file(sConfigFilename, commandLineArguments.junit)
+ 
+        for sKey in tempConfiguration.keys():
+            if sKey == 'file_list':
+                if 'file_list' not in dConfiguration:
+                    dConfiguration['file_list'] = []
+                for iIndex, sFilename in enumerate(tempConfiguration['file_list']):
+                    validate_file_exists(sFilename, sConfigFilename)
+                    try:
+                        for sGlobbedFilename in glob.glob(expand_filename(sFilename), recursive=True):
+                            dConfiguration['file_list'].append(sGlobbedFilename)
+                    except TypeError:
+                        sKey = list(sFilename.keys())[0]
+                        for sGlobbedFilename in glob.glob(expand_filename(sKey), recursive=True):
+                            dTemp = {}
+                            dTemp[sGlobbedFilename] = {}
+                            dTemp[sGlobbedFilename].update(tempConfiguration['file_list'][iIndex][sKey])
+                            dConfiguration['file_list'].append(dTemp)
+ 
+            elif sKey == 'rule':
+                for sRule in tempConfiguration[sKey]:
+                    try:
+                        dConfiguration[sKey][sRule] = tempConfiguration[sKey][sRule]
+                    except KeyError:
+                        dConfiguration[sKey] = {}
+                        dConfiguration[sKey][sRule] = tempConfiguration[sKey][sRule]
+            else:
+                dConfiguration[sKey] = tempConfiguration[sKey]
+
 
     return dConfiguration
 
@@ -209,17 +220,6 @@ def update_command_line_arguments(commandLineArguments, configuration):
     else:
         commandLineArguments.skip_phase = []
 
-    if not configuration:
-        return
-
-    if 'file_list' in configuration:
-        for sFilename in configuration['file_list']:
-            if isinstance(sFilename, dict):
-                sFilename = list(sFilename.keys())[0]
-            try:
-                commandLineArguments.filename.extend(glob.glob(expand_filename(sFilename), recursive=True))
-            except:
-                commandLineArguments.filename = glob.glob(expand_filename(sFilename), recursive=True)
     if 'local_rules' in configuration:
         commandLineArguments.local_rules = expand_filename(configuration['local_rules'])
 
@@ -394,7 +394,7 @@ def main():
 
     display_rule_configuration(commandLineArguments, configuration)
 
-    validate_files_exist_to_analyze(commandLineArguments.filename)
+#    validate_files_exist_to_analyze(commandLineArguments.filename)
 
     dJson = {'files'}
 
@@ -402,14 +402,14 @@ def main():
     # It's easier to debug when not using multiprocessing.Pool()
     lReturn = []
     if commandLineArguments.jobs == 1:
-        for iIndex, sFileName in enumerate(commandLineArguments.filename):
+#        for iIndex, sFileName in enumerate(commandLineArguments.filename):
+        for iIndex, sFileName in enumerate(configuration['file_list']):
             fStatus, testCase, dJsonEntry, sOutputStd, sOutputErr = f((iIndex, sFileName))
             lReturn.append((fStatus, testCase, dJsonEntry))
             if sOutputStd:
                 print(sOutputStd)
             if sOutputErr:
                 print(sOutputErr, file=sys.stderr)
-
     else:
         with multiprocessing.Pool(commandLineArguments.jobs) as pool:
             for tResult in pool.imap(f, enumerate(commandLineArguments.filename)):
