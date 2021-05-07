@@ -276,11 +276,21 @@ class rule_list():
 
           configurationFile: (dictionary)
         '''
+        lDepricatedMessages = []
+
         if configurationFile and 'rule' in configurationFile:
             self._validate_configuration_rule_exists(configurationFile)
             for oRule in self.rules:
-                oRule.configure(configurationFile)
+                lDepricatedMessages.extend(oRule.configure(configurationFile))
+
+        if len(lDepricatedMessages) != 0:
+            print(f'ERROR: Invalid configuration of file {self.oVhdlFile.filename}')
+            for sMessage in lDepricatedMessages:
+                print(sMessage)
+            exit()
+
         if configurationFile['debug']:
+            print('  Blah 2')
             for oRule in self.rules:
                 oRule.set_debug()
 

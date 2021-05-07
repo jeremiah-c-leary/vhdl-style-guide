@@ -12,6 +12,8 @@ This rule checks the **generic map** keywords have proper case.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
 
+This rule was renamed from **instantiation_013**.
+
 **Violation**
 
 .. code-block:: vhdl
@@ -32,6 +34,8 @@ generic_map_002
 This rule checks generic names have proper case.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+
+This rule was renamed from **instantiation_016**.
 
 **Violation**
 
@@ -57,6 +61,8 @@ generic_map_003
 |phase_1| |error|
 
 This rule checks the ( is on the same line as the **generic map** keywords.
+
+This rule was renamed from **instantiation_026**.
 
 **Violation**
 
@@ -85,6 +91,8 @@ generic_map_004
 |phase_1| |error|
 
 This rule checks for the closing parenthesis *)* on generic maps are on their own line.
+
+This rule was renamed from **instantiation_014**.
 
 **Violation**
 

@@ -22,6 +22,7 @@ class Rule():
         self.dFix = {}
         self.dFix['violations'] = {}
         self.configuration = ['indentSize', 'phase', 'disable', 'fixable', 'severity']
+        self.depricated = False
 
     def configure(self, dConfiguration):
         '''Configures attributes on rules using a dictionary of the following form:
@@ -38,9 +39,10 @@ class Rule():
           The rule:global dictionary will apply to all rules.
           Individual rule attributes can be modified with [self.name_self.identifier].
         '''
-
+        lReturn = []
         self._configure_global_rule_attributes(dConfiguration)
-        self._configure_rule_attributes(dConfiguration)
+        lReturn.extend(self._configure_rule_attributes(dConfiguration))
+        return lReturn
 
     def has_violations(self):
         if len(self.violations) == 0:
@@ -147,6 +149,10 @@ class Rule():
         '''
         Updates rule attributes based on configuration input files
         '''
+        if self.depricated:
+            if self.unique_id in dConfiguration['rule']:
+                return self.print_output()
+            return []
         try:
             for sAttributeName in dConfiguration['rule'][self.get_unique_id()]:
                 if sAttributeName == 'severity':
@@ -155,6 +161,7 @@ class Rule():
                     self.__dict__[sAttributeName] = dConfiguration['rule'][self.get_unique_id()][sAttributeName]
         except KeyError:
             pass
+        return []
 
     def get_configuration(self):
         '''
