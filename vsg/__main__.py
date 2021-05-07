@@ -134,7 +134,7 @@ def validate_file_exists(sFilename, sConfigName):
     lFileNames = glob.glob(expand_filename(sExpandedFilename), recursive=True)
 
     if len(lFileNames) == 0:
-        print('ERROR: Could not find file ' + sFilename + ' in configuration file ' + sConfigName)
+        print('ERROR: Could not find file ' + sExpandedFilename + ' in configuration file ' + sConfigName)
         sys.exit(1)
 
 
@@ -444,6 +444,8 @@ def main():
 
 def apply_rules(commandLineArguments, configuration, dIndent, fix_only, tIndexFileName):
     iIndex, sFileName = tIndexFileName
+    if isinstance(sFileName, dict):
+        sFileName = list(sFileName.keys())[0]
     dJsonEntry = {}
     lFileContent, eError = vhdlFile.utils.read_vhdlfile(sFileName)
     oVhdlFile = vhdlFile.vhdlFile(lFileContent, sFileName, eError)
