@@ -154,8 +154,8 @@ def main():
         oJunitFile = junit.xmlfile(commandLineArguments.junit)
         oJunitTestsuite = junit.testsuite('vhdl-style-guide', str(0))
 
-    oSeverityList = severity.create_list(configuration)
-    configuration['severity_list'] = oSeverityList
+#    oSeverityList = severity.create_list(configuration)
+#    configuration['severity_list'] = oSeverityList
 
     generate_output_configuration(commandLineArguments, configuration)
 

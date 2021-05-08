@@ -5,6 +5,7 @@ import sys
 import yaml
 
 from . import junit
+from . import severity
 from . import utils
 
 
@@ -158,6 +159,10 @@ def New(commandLineArguments):
 
     dStyle = read_predefined_style(commandLineArguments.style)
     dConfig = read_configuration_files(dStyle, commandLineArguments)
+
+    oSeverityList = severity.create_list(dConfig)
+    dConfig['severity_list'] = oSeverityList
+
     oReturn.dConfig = dConfig
 
     dIndent = read_indent_configuration(dConfig)
@@ -177,3 +182,4 @@ class config():
         dIndent = None
         dConfig = None
         dFixOnly = None
+        severity_list = None
