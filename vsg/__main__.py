@@ -138,11 +138,9 @@ def main():
 
     version.print_version(commandLineArguments)
 
-    dStyle = config.read_predefined_style(commandLineArguments.style)
+    oConfig = config.New(commandLineArguments)
 
-    configuration = config.read_configuration_files(dStyle, commandLineArguments)
-
-    dIndent = config.read_indent_configuration(configuration)
+    configuration = oConfig.dConfig
 
     if commandLineArguments.fix_only:
         fix_only = config.open_configuration_file(commandLineArguments.fix_only)
@@ -172,7 +170,7 @@ def main():
 
     dJson = {'files'}
 
-    f = functools.partial(apply_rules, commandLineArguments, configuration, dIndent, fix_only)
+    f = functools.partial(apply_rules, commandLineArguments, configuration, oConfig.dIndent, fix_only)
     # It's easier to debug when not using multiprocessing.Pool()
     lReturn = []
     if commandLineArguments.jobs == 1:

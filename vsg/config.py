@@ -151,3 +151,23 @@ def read_indent_configuration(dConfiguration):
     dConfiguration['indent'] = dReturn['indent']
 
     return dReturn
+
+
+def New(commandLineArguments):
+    oReturn = config()
+
+    dStyle = read_predefined_style(commandLineArguments.style)
+    dConfig = read_configuration_files(dStyle, commandLineArguments)
+    oReturn.dConfig = dConfig
+
+    dIndent = read_indent_configuration(dConfig)
+    oReturn.dIndent = dIndent
+
+    return oReturn
+
+
+class config():
+
+    def __init__(self):
+        dIndent = None
+        dConfig = None
