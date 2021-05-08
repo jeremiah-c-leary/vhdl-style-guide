@@ -144,8 +144,6 @@ def main():
 
     update_command_line_arguments(commandLineArguments, configuration)
 
-    configuration = config.add_debug_to_configuration(commandLineArguments, configuration)
-
     # Add local rule path to system path so the rules can be loaded
     if commandLineArguments.local_rules:
         sys.path.append(os.path.abspath(commandLineArguments.local_rules))
@@ -153,9 +151,6 @@ def main():
     if commandLineArguments.junit:
         oJunitFile = junit.xmlfile(commandLineArguments.junit)
         oJunitTestsuite = junit.testsuite('vhdl-style-guide', str(0))
-
-#    oSeverityList = severity.create_list(configuration)
-#    configuration['severity_list'] = oSeverityList
 
     generate_output_configuration(commandLineArguments, configuration)
 

@@ -163,6 +163,8 @@ def New(commandLineArguments):
     oSeverityList = severity.create_list(dConfig)
     dConfig['severity_list'] = oSeverityList
 
+    dConfig = add_debug_to_configuration(commandLineArguments, dConfig)
+
     oReturn.dConfig = dConfig
 
     dIndent = read_indent_configuration(dConfig)
