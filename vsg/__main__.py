@@ -29,28 +29,6 @@ def write_vhdl_file(oVhdlFile):
         print (err, "Could not write fixes back to file.")
 
 
-def update_command_line_arguments(commandLineArguments, configuration):
-
-    if 'skip_phase' in configuration:
-        commandLineArguments.skip_phase = configuration['skip_phase']
-    else:
-        commandLineArguments.skip_phase = []
-
-    if not configuration:
-        return
-
-    if 'file_list' in configuration:
-        for sFilename in configuration['file_list']:
-            if isinstance(sFilename, dict):
-                sFilename = list(sFilename.keys())[0]
-            try:
-                commandLineArguments.filename.extend(glob.glob(utils.expand_filename(sFilename), recursive=True))
-            except:
-                commandLineArguments.filename = glob.glob(utils.expand_filename(sFilename), recursive=True)
-    if 'local_rules' in configuration:
-        commandLineArguments.local_rules = utils.expand_filename(configuration['local_rules'])
-
-
 def create_backup_file(sFileName):
     '''Copies existing file and adds .bak to the end.'''
     shutil.copy2(sFileName, sFileName + '.bak')
@@ -140,10 +118,6 @@ def main():
 
     oConfig = config.New(commandLineArguments)
 
-    configuration = oConfig.dConfig
-
-    update_command_line_arguments(commandLineArguments, configuration)
-
     # Add local rule path to system path so the rules can be loaded
     if commandLineArguments.local_rules:
         sys.path.append(os.path.abspath(commandLineArguments.local_rules))
@@ -152,15 +126,15 @@ def main():
         oJunitFile = junit.xmlfile(commandLineArguments.junit)
         oJunitTestsuite = junit.testsuite('vhdl-style-guide', str(0))
 
-    generate_output_configuration(commandLineArguments, configuration)
+    generate_output_configuration(commandLineArguments, oConfig.dConfig)
 
-    display_rule_configuration(commandLineArguments, configuration)
+    display_rule_configuration(commandLineArguments, oConfig.dConfig)
 
     validate_files_exist_to_analyze(commandLineArguments.filename)
 
     dJson = {'files'}
 
-    f = functools.partial(apply_rules, commandLineArguments, configuration, oConfig.dIndent, oConfig.dFixOnly)
+    f = functools.partial(apply_rules, commandLineArguments, oConfig.dConfig, oConfig.dIndent, oConfig.dFixOnly)
     # It's easier to debug when not using multiprocessing.Pool()
     lReturn = []
     if commandLineArguments.jobs == 1:

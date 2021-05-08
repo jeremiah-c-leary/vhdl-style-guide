@@ -154,6 +154,28 @@ def read_indent_configuration(dConfiguration):
     return dReturn
 
 
+def update_command_line_arguments(commandLineArguments, configuration):
+
+    if 'skip_phase' in configuration:
+        commandLineArguments.skip_phase = configuration['skip_phase']
+    else:
+        commandLineArguments.skip_phase = []
+
+    if not configuration:
+        return
+
+    if 'file_list' in configuration:
+        for sFilename in configuration['file_list']:
+            if isinstance(sFilename, dict):
+                sFilename = list(sFilename.keys())[0]
+            try:
+                commandLineArguments.filename.extend(glob.glob(utils.expand_filename(sFilename), recursive=True))
+            except:
+                commandLineArguments.filename = glob.glob(utils.expand_filename(sFilename), recursive=True)
+    if 'local_rules' in configuration:
+        commandLineArguments.local_rules = utils.expand_filename(configuration['local_rules'])
+
+
 def New(commandLineArguments):
     oReturn = config()
 
@@ -162,6 +184,8 @@ def New(commandLineArguments):
 
     oSeverityList = severity.create_list(dConfig)
     dConfig['severity_list'] = oSeverityList
+
+    update_command_line_arguments(commandLineArguments, dConfig)
 
     dConfig = add_debug_to_configuration(commandLineArguments, dConfig)
 
