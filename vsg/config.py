@@ -163,6 +163,11 @@ def New(commandLineArguments):
     dIndent = read_indent_configuration(dConfig)
     oReturn.dIndent = dIndent
 
+    if commandLineArguments.fix_only:
+        oReturn.dFixOnly = open_configuration_file(commandLineArguments.fix_only)
+    else:
+        oReturn.dFixOnly = None
+
     return oReturn
 
 
@@ -171,3 +176,4 @@ class config():
     def __init__(self):
         dIndent = None
         dConfig = None
+        dFixOnly = None

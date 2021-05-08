@@ -142,11 +142,6 @@ def main():
 
     configuration = oConfig.dConfig
 
-    if commandLineArguments.fix_only:
-        fix_only = config.open_configuration_file(commandLineArguments.fix_only)
-    else:
-        fix_only = None
-
     update_command_line_arguments(commandLineArguments, configuration)
 
     configuration = config.add_debug_to_configuration(commandLineArguments, configuration)
@@ -170,7 +165,7 @@ def main():
 
     dJson = {'files'}
 
-    f = functools.partial(apply_rules, commandLineArguments, configuration, oConfig.dIndent, fix_only)
+    f = functools.partial(apply_rules, commandLineArguments, configuration, oConfig.dIndent, oConfig.dFixOnly)
     # It's easier to debug when not using multiprocessing.Pool()
     lReturn = []
     if commandLineArguments.jobs == 1:
