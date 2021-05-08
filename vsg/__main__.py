@@ -10,109 +10,14 @@ import functools
 import multiprocessing
 
 from . import cmd_line_args
+from . import config
+from . import utils
 
 from . import junit
 from . import rule_list
 from . import severity
 from . import version
 from . import vhdlFile
-
-
-def read_predefined_style(sStyleName):
-    '''
-    Reads a predefined style file.
-
-    Parameters :
-
-      sStyleName : (string)
-
-    Returns : (dictionary)
-    '''
-    dReturn = {}
-    if sStyleName is not None:
-        sFileName = os.path.join(os.path.dirname(__file__), 'styles', sStyleName + '.yaml')
-        dReturn = open_configuration_file(sFileName)
-    return dReturn
-
-
-def open_configuration_file(sFileName, sJUnitFileName=None):
-    '''Attempts to open a configuration file and read it's contents.'''
-    try:
-        with open(sFileName) as yaml_file:
-            tempConfiguration = yaml.full_load(yaml_file)
-    except OSError as e:
-        print(f'ERROR: encountered {e.__class__.__name__}, {e.args[1]} while opening configuration file: ' + sFileName)
-        write_invalid_configuration_junit_file(sFileName, sJUnitFileName)
-        sys.exit(1)
-    except (yaml.parser.ParserError, yaml.scanner.ScannerError) as e:
-        print('ERROR: Invalid configuration file: ' + sFileName)
-        print(e)
-        write_invalid_configuration_junit_file(sFileName, sJUnitFileName)
-        sys.exit(1)
-    return tempConfiguration
-
-
-def validate_file_exists(sFilename, sConfigName):
-    '''Validates a file exist while using the glob function to expand filenames.'''
-    if isinstance(sFilename, dict):
-        sExpandedFilename = list(sFilename.keys())[0]
-    else:
-        sExpandedFilename = sFilename
-#    print(sExpandedFilename)
-    lFileNames = glob.glob(expand_filename(sExpandedFilename), recursive=True)
-#    print(lFileNames)
-    if len(lFileNames) == 0:
-        print('ERROR: Could not find file ' + sFilename + ' in configuration file ' + sConfigName)
-        sys.exit(1)
-
-
-def read_configuration_files(dStyle, commandLineArguments):
-    dConfiguration = dStyle
-    if commandLineArguments.configuration:
-        for sConfigFilename in commandLineArguments.configuration:
-            tempConfiguration = open_configuration_file(sConfigFilename, commandLineArguments.junit)
-
-            for sKey in tempConfiguration.keys():
-                if sKey == 'file_list':
-                    if 'file_list' not in dConfiguration:
-                        dConfiguration['file_list'] = []
-                    for iIndex, sFilename in enumerate(tempConfiguration['file_list']):
-                        validate_file_exists(sFilename, sConfigFilename)
-                        try:
-                            for sGlobbedFilename in glob.glob(expand_filename(sFilename), recursive=True):
-                                dConfiguration['file_list'].append(sGlobbedFilename)
-                        except TypeError:
-                            sKey = list(sFilename.keys())[0]
-                            for sGlobbedFilename in glob.glob(expand_filename(sKey), recursive=True):
-                                dTemp = {}
-                                dTemp[sGlobbedFilename] = {}
-                                dTemp[sGlobbedFilename].update(tempConfiguration['file_list'][iIndex][sKey])
-                                dConfiguration['file_list'].append(dTemp)
-
-                elif sKey == 'rule':
-                    for sRule in tempConfiguration[sKey]:
-                        try:
-                            dConfiguration[sKey][sRule] = tempConfiguration[sKey][sRule]
-                        except KeyError:
-                            dConfiguration[sKey] = {}
-                            dConfiguration[sKey][sRule] = tempConfiguration[sKey][sRule]
-                else:
-                    dConfiguration[sKey] = tempConfiguration[sKey]
-
-    return dConfiguration
-
-
-def write_invalid_configuration_junit_file(sFileName, sJUnitFileName):
-    if sJUnitFileName:
-        oJunitFile = junit.xmlfile(sJUnitFileName)
-        oJunitTestsuite = junit.testsuite('vhdl-style-guide', str(0))
-        oJunitTestcase = junit.testcase(sFileName, str(0), 'failure')
-        oFailure = junit.failure('Failure')
-        oFailure.add_text('Invalid JSON format.  Review configuration for errors.')
-        oJunitTestcase.add_failure(oFailure)
-        oJunitTestsuite.add_testcase(oJunitTestcase)
-        oJunitFile.add_testsuite(oJunitTestsuite)
-        write_junit_xml_file(oJunitFile)
 
 
 def write_vhdl_file(oVhdlFile):
@@ -122,12 +27,6 @@ def write_vhdl_file(oVhdlFile):
                 oFile.write(sLine + '\n')
     except PermissionError as err:
         print (err, "Could not write fixes back to file.")
-
-
-def write_junit_xml_file(oJunitFile):
-    with open(oJunitFile.filename, 'w') as oFile:
-        for sLine in oJunitFile.build_junit():
-            oFile.write(sLine + '\n')
 
 
 def update_command_line_arguments(commandLineArguments, configuration):
@@ -145,16 +44,11 @@ def update_command_line_arguments(commandLineArguments, configuration):
             if isinstance(sFilename, dict):
                 sFilename = list(sFilename.keys())[0]
             try:
-                commandLineArguments.filename.extend(glob.glob(expand_filename(sFilename), recursive=True))
+                commandLineArguments.filename.extend(glob.glob(utils.expand_filename(sFilename), recursive=True))
             except:
-                commandLineArguments.filename = glob.glob(expand_filename(sFilename), recursive=True)
+                commandLineArguments.filename = glob.glob(utils.expand_filename(sFilename), recursive=True)
     if 'local_rules' in configuration:
-        commandLineArguments.local_rules = expand_filename(configuration['local_rules'])
-
-
-def expand_filename(sFileName):
-    '''Expands environment variables in filenames.'''
-    return os.path.expanduser(os.path.expandvars(sFileName))
+        commandLineArguments.local_rules = utils.expand_filename(configuration['local_rules'])
 
 
 def create_backup_file(sFileName):
@@ -235,54 +129,6 @@ def validate_files_exist_to_analyze(sName):
         sys.exit(1)
 
 
-def add_debug_to_configuration(oCLA, dConfiguration):
-    '''
-    Adds debug values to the configuration dictionary for later use.
-
-    Parameters:
-
-      oCLA: (command line argument object)
-
-      dConfiguration: (dictionary)
-
-    Returns:  Nothing
-    '''
-    try:
-        dConfiguration['debug'] = oCLA.debug
-    except TypeError:
-        dConfiguration = {}
-        dConfiguration['debug'] = oCLA.debug
-    return dConfiguration
-
-
-def read_indent_configuration(dConfiguration):
-    '''
-    Reads the default indent dictionary and merges any changes from a user configuration.
-
-    Parameters:
-
-       dConfiguration: (dictionary)
-
-    Returns:  (dictionary)
-    '''
-
-    sFileName = os.path.join(os.path.dirname(__file__), 'vhdlFile', 'indent', 'indent_config.yaml')
-
-    dReturn = open_configuration_file(sFileName)
-
-    ### This merges an indent configuration into the base indent dictionary
-    if 'indent' in list(dConfiguration.keys()):
-        dGroups = dConfiguration['indent']['tokens']
-        for sGroup in list(dGroups.keys()):
-            for sToken in list(dGroups[sGroup].keys()):
-                for sParameter in list(dGroups[sGroup][sToken].keys()):
-                    dReturn['indent']['tokens'][sGroup][sToken][sParameter] = dGroups[sGroup][sToken][sParameter]
-
-    dConfiguration['indent'] = dReturn['indent']
-
-    return dReturn
-
-
 def main():
     '''Main routine of the VHDL Style Guide (VSG) program.'''
 
@@ -292,20 +138,20 @@ def main():
 
     version.print_version(commandLineArguments)
 
-    dStyle = read_predefined_style(commandLineArguments.style)
+    dStyle = config.read_predefined_style(commandLineArguments.style)
 
-    configuration = read_configuration_files(dStyle, commandLineArguments)
+    configuration = config.read_configuration_files(dStyle, commandLineArguments)
 
-    dIndent = read_indent_configuration(configuration)
+    dIndent = config.read_indent_configuration(configuration)
 
     if commandLineArguments.fix_only:
-        fix_only = open_configuration_file(commandLineArguments.fix_only)
+        fix_only = config.open_configuration_file(commandLineArguments.fix_only)
     else:
         fix_only = None
 
     update_command_line_arguments(commandLineArguments, configuration)
 
-    configuration = add_debug_to_configuration(commandLineArguments, configuration)
+    configuration = config.add_debug_to_configuration(commandLineArguments, configuration)
 
     # Add local rule path to system path so the rules can be loaded
     if commandLineArguments.local_rules:
@@ -360,7 +206,7 @@ def main():
 
     if commandLineArguments.junit:
         oJunitFile.add_testsuite(oJunitTestsuite)
-        write_junit_xml_file(oJunitFile)
+        utils.write_junit_xml_file(oJunitFile)
 
     if commandLineArguments.json:
         with open(commandLineArguments.json, 'w') as oFile:
