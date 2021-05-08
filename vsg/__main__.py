@@ -259,11 +259,5 @@ def apply_rules(commandLineArguments, configuration, dIndent, fix_only, tIndexFi
     return fExitStatus, testCase, dJsonEntry, sOutputStd, sOutputErr
 
 
-def update_exit_status(fExitStatus, oRules):
-    if fExitStatus == 1 or oRules.violations:
-        return 1
-    else:
-        return 0
-
 if __name__ == '__main__':
     main()
