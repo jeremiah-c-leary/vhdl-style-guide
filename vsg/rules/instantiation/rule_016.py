@@ -3,9 +3,6 @@ from vsg.depricated_rule import Depricated
 
 
 class rule_016(Depricated):
-    '''
-    Constant rule 601 checks for prefixes in package identifiers.
-    '''
 
     def __init__(self):
         Depricated.__init__(self, 'instantiation', '016')

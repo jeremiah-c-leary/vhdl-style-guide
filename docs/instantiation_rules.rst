@@ -125,12 +125,12 @@ This rule checks the **port map** keywords are on their own line.
 instantiation_006
 #################
 
-This rule has been renamed to **port_map_001**
+This rule has been renamed to `port_map_001 <port_map_rules.html#port-map-001>`_.
 
 instantiation_007
 #################
 
-This rule has been renamed to **port_map_004**
+This rule has been renamed to `port_map_004 <port_map_rules.html#port-map-004>`_.
 
 instantiation_008
 #################
@@ -221,7 +221,7 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
 instantiation_011
 #################
 
-This rule has been renamed to **port_map_002**
+This rule has been renamed to `port_map_002 <port_map_rules.html#port-map-002>`_.
 
 instantiation_012
 #################
@@ -246,27 +246,27 @@ This rule checks the instantiation declaration and the **generic map** keywords 
 instantiation_013
 #################
 
-This rule has been renamed to **generic_map_001**
+This rule has been renamed to `generic_map_001 <generic_map_rules.html#generic-map-001>`_.
 
 instantiation_014
 #################
 
-This rule has been renamed to **generic_map_004**
+This rule has been renamed to `generic_map_004 <generic_map_rules.html#generic-map-004>`_.
 
 instantiation_016
 #################
 
-This rule has been renamed to **generic_map_002**
+This rule has been renamed to `generic_map_002 <generic_map_rules.html#generic-map-002>`_.
 
 instantiation_017
 #################
 
-This rule has been renamed to **generic_map_005**
+This rule has been renamed to `generic_map_005 <generic_map_rules.html#generic-map-005>`_.
 
 instantiation_018
 #################
 
-This rule has been renamed to **generic_map_006**
+This rule has been renamed to `generic_map_006 <generic_map_rules.html#generic-map-006>`_.
 
 instantiation_019
 #################
@@ -305,17 +305,17 @@ Refer to the section `Configuring Blank Lines <configuring.html#configuring-blan
 instantiation_020
 #################
 
-This rule has been renamed to **port_map_005**
+This rule has been renamed to `port_map_005 <port_map_rules.html#port-map-005>`_.
 
 instantiation_021
 #################
 
-This rule has been renamed to **port_map_009**
+This rule has been renamed to `port_map_009 <port_map_rules.html#port-map-009>`_.
 
 instantiation_022
 #################
 
-This rule has been renamed to **port_map_007**
+This rule has been renamed to `port_map_007 <port_map_rules.html#port-map-007>`_.
 
 instantiation_023
 #################
@@ -344,17 +344,20 @@ Refer to the entity for port types, port directions and purpose.
 instantiation_024
 #################
 
-This rule has been split into **generic_map_008** and **port_map_008**.
+This rule has been split into:
+
+* `generic_map_008 <generic_map_rules.html#generic-map-008>`_
+* `port_map_008 <port_map_rules.html#port-map-008>`_
 
 instantiation_025
 #################
 
-This rule has been renamed to **port_map_003**
+This rule has been renamed to `port_map_003 <port_map_rules.html#port-map-003>`_.
 
 instantiation_026
 #################
 
-This rule has been renamed to **generic_map_003**
+This rule has been renamed to `generic_map_003 <generic_map_rules.html#generic-map-003>`_.
 
 instantiation_027
 #################
@@ -431,7 +434,7 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
 instantiation_030
 #################
 
-This rule has been renamed to **generic_map_007**
+This rule has been renamed to `generic_map_007 <generic_map_rules.html#generic-map-007>`_.
 
 instantiation_031
 #################

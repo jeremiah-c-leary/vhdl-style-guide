@@ -78,6 +78,7 @@ from .number_of_lines_between_tokens import number_of_lines_between_tokens
 from vsg.rules import after
 from vsg.rules import architecture
 from vsg.rules import assert_statement
+from vsg.rules import attribute
 from vsg.rules import attribute_declaration
 from vsg.rules import attribute_specification
 from vsg.rules import block

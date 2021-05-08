@@ -56,7 +56,12 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 variable_003
 ############
 
-This rule was depricated and replaced with rules:  function_015, package_019, procedure_010, architecture_029 and process_037.
+This rule was depricated and replaced with rules:
+
+* `function_015 <function_rules.html#function-015>`_
+* `package_019 <package_rules.html#package-019>`_
+* `procedure_010 <procedure_rules.html#procedure-010>`_
+* `architecture_029 <architecture_rules.html#architecture-029>`_
 
 variable_004
 ############
