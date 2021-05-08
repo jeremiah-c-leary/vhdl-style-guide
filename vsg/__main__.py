@@ -257,7 +257,3 @@ def apply_rules(commandLineArguments, configuration, dIndent, fix_only, tIndexFi
         dJsonEntry['violations'] = oRules.extract_violation_dictionary()['violations']
 
     return fExitStatus, testCase, dJsonEntry, sOutputStd, sOutputErr
-
-
-if __name__ == '__main__':
-    main()
