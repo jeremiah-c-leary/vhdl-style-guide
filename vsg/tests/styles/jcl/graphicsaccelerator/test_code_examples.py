@@ -39,8 +39,7 @@ lFrameBuffer, eFrameBufferError =  vhdlFile.utils.read_vhdlfile(os.path.join(sSo
 oFrameBuffer =  vhdlFile.vhdlFile(lFrameBuffer)
 oFrameBuffer.set_indent_map(dIndentMap)
 
-dConfig = utils.read_configuration(os.path.join(os.path.dirname(__file__),'..','..','..','..','styles', 'jcl.yaml'))
-dConfig['debug'] = False
+oConfig = utils.read_configuration(os.path.join(os.path.dirname(__file__),'..','..','..','..','styles', 'jcl.yaml'))
 
 oSeverityList = severity.create_list({})
 
@@ -57,7 +56,7 @@ class testCodeExample(unittest.TestCase):
 
     def test_bresenhamer(self):
         oRuleList = rule_list.rule_list(oBresenhamer, oSeverityList)
-        oRuleList.configure(dConfig)
+        oRuleList.configure(oConfig)
         oRuleList.fix()
 
         lExpected = ['']
@@ -68,7 +67,7 @@ class testCodeExample(unittest.TestCase):
 
     def test_debouncer(self):
         oRuleList = rule_list.rule_list(oDebouncer, oSeverityList)
-        oRuleList.configure(dConfig)
+        oRuleList.configure(oConfig)
         oRuleList.fix()
 
         lExpected = ['']
@@ -79,7 +78,7 @@ class testCodeExample(unittest.TestCase):
 
     def test_vga_top(self):
         oRuleList = rule_list.rule_list(oVgatop, oSeverityList)
-        oRuleList.configure(dConfig)
+        oRuleList.configure(oConfig)
         oRuleList.fix()
 
         lExpected = ['']
@@ -90,7 +89,7 @@ class testCodeExample(unittest.TestCase):
 
     def test_pointer(self):
         oRuleList = rule_list.rule_list(oPointer, oSeverityList)
-        oRuleList.configure(dConfig)
+        oRuleList.configure(oConfig)
         oRuleList.fix()
 
         lExpected = ['']
@@ -101,7 +100,7 @@ class testCodeExample(unittest.TestCase):
 
     def test_freqdiv(self):
         oRuleList = rule_list.rule_list(oFreqDiv, oSeverityList)
-        oRuleList.configure(dConfig)
+        oRuleList.configure(oConfig)
         oRuleList.fix()
 
         lExpected = ['']
@@ -112,7 +111,7 @@ class testCodeExample(unittest.TestCase):
 
     def test_synchronizer(self):
         oRuleList = rule_list.rule_list(oSynchronizer, oSeverityList)
-        oRuleList.configure(dConfig)
+        oRuleList.configure(oConfig)
         oRuleList.fix()
 
         lExpected = ['']
@@ -123,7 +122,7 @@ class testCodeExample(unittest.TestCase):
 
     def test_framebuffer(self):
         oRuleList = rule_list.rule_list(oFrameBuffer, oSeverityList)
-        oRuleList.configure(dConfig)
+        oRuleList.configure(oConfig)
         oRuleList.fix()
 
         lExpected = ['']

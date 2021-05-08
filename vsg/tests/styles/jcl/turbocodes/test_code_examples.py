@@ -13,8 +13,7 @@ lIteration, eError = vhdlFile.utils.read_vhdlfile(os.path.join(os.path.dirname(_
 oIteration = vhdlFile.vhdlFile(lIteration)
 oIteration.set_indent_map(dIndentMap)
 
-dConfig = utils.read_configuration(os.path.join(os.path.dirname(__file__),'..','..','..','..','styles', 'jcl.yaml'))
-dConfig['debug'] = False
+oConfig = utils.read_configuration(os.path.join(os.path.dirname(__file__),'..','..','..','..','styles', 'jcl.yaml'))
 
 oSeverityList = severity.create_list({})
 
@@ -26,7 +25,7 @@ class testCodeExample(unittest.TestCase):
 
     def test_iteration_synth(self):
         oRuleList = rule_list.rule_list(oIteration, oSeverityList)
-        oRuleList.configure(dConfig)
+        oRuleList.configure(oConfig)
         oRuleList.fix()
 
         lExpected = ['']

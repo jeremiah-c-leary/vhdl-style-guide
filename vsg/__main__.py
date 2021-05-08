@@ -34,7 +34,7 @@ def create_backup_file(sFileName):
     shutil.copy2(sFileName, sFileName + '.bak')
 
 
-def generate_output_configuration(commandLineArguments, configuration):
+def generate_output_configuration(commandLineArguments, oConfig):
     '''
     Creates a configuration based on parameters passed on the command line.
     It will send the output to a file in JSON format.
@@ -48,11 +48,12 @@ def generate_output_configuration(commandLineArguments, configuration):
     Returns:  Nothing
     '''
     if commandLineArguments.output_configuration:
+        configuration = oConfig.dConfig
         fExitStatus = 0
         # Create empty file so it can be used to create the rule list
         oVhdlFile = vhdlFile.vhdlFile([''])
-        oRules = rule_list.rule_list(oVhdlFile, configuration['severity_list'], commandLineArguments.local_rules)
-        oRules.configure(configuration)
+        oRules = rule_list.rule_list(oVhdlFile, oConfig.severity_list, commandLineArguments.local_rules)
+        oRules.configure(oConfig)
         dOutputConfiguration = {}
         dOutputConfiguration['cwd'] = os.getcwd()
         if commandLineArguments.filename:
@@ -68,7 +69,7 @@ def generate_output_configuration(commandLineArguments, configuration):
         sys.exit(fExitStatus)
 
 
-def display_rule_configuration(commandLineArguments, configuration):
+def display_rule_configuration(commandLineArguments, oConfig):
     '''
     Displays the configuration of a rule passed on the command line.
 
@@ -81,11 +82,12 @@ def display_rule_configuration(commandLineArguments, configuration):
     Returns:  Nothing
     '''
     if commandLineArguments.rule_configuration:
+        configuration = oConfig.dConfig
         fExitStatus = 0
         # Create empty file so it can be used to create the rule list
         oVhdlFile = vhdlFile.vhdlFile([''])
-        oRules = rule_list.rule_list(oVhdlFile, configuration['severity_list'], commandLineArguments.local_rules)
-        oRules.configure(configuration)
+        oRules = rule_list.rule_list(oVhdlFile, oConfig.severity_list, commandLineArguments.local_rules)
+        oRules.configure(oConfig)
         dOutputConfiguration = {}
         if commandLineArguments.local_rules:
             dOutputConfiguration['local_rules'] = commandLineArguments.local_rules
@@ -126,15 +128,15 @@ def main():
         oJunitFile = junit.xmlfile(commandLineArguments.junit)
         oJunitTestsuite = junit.testsuite('vhdl-style-guide', str(0))
 
-    generate_output_configuration(commandLineArguments, oConfig.dConfig)
+    generate_output_configuration(commandLineArguments, oConfig)
 
-    display_rule_configuration(commandLineArguments, oConfig.dConfig)
+    display_rule_configuration(commandLineArguments, oConfig)
 
     validate_files_exist_to_analyze(commandLineArguments.filename)
 
     dJson = {'files'}
 
-    f = functools.partial(apply_rules, commandLineArguments, oConfig.dConfig, oConfig.dIndent, oConfig.dFixOnly)
+    f = functools.partial(apply_rules, commandLineArguments, oConfig)
     # It's easier to debug when not using multiprocessing.Pool()
     lReturn = []
     if commandLineArguments.jobs == 1:
@@ -178,21 +180,27 @@ def main():
     sys.exit(fExitStatus)
 
 
-def apply_rules(commandLineArguments, configuration, dIndent, fix_only, tIndexFileName):
+def apply_rules(commandLineArguments, oConfig, tIndexFileName):
+    configuration = oConfig.dConfig
+    dIndent = oConfig.dIndent
+    fix_only = oConfig.dFixOnly
+    
     iIndex, sFileName = tIndexFileName
     dJsonEntry = {}
     lFileContent, eError = vhdlFile.utils.read_vhdlfile(sFileName)
     oVhdlFile = vhdlFile.vhdlFile(lFileContent, sFileName, eError)
     oVhdlFile.set_indent_map(dIndent)
     try:
-        oRules = rule_list.rule_list(oVhdlFile, configuration['severity_list'], commandLineArguments.local_rules)
+        oRules = rule_list.rule_list(oVhdlFile, oConfig.severity_list, commandLineArguments.local_rules)
     except OSError as e:
         sOutputStd = f'ERROR: encountered {e.__class__.__name__}, {e.args[1]} ' + commandLineArguments.local_rules + ' when trying to open local rules file.'
         sOutputErr = None
         return 1, None, dJsonEntry, sOutputStd, sOutputErr
-    oRules.configure(configuration)
+    oRules.configure(oConfig)
     try:
-        oRules.configure(configuration['file_list'][iIndex][sFileName])
+        oRuleConfig = config.New()
+        oRuleConfig.dConfig = configuration['file_list'][iIndex][sFileName]
+        oRules.configure(oRuleConfig)
     except TypeError:
         pass
     except KeyError:

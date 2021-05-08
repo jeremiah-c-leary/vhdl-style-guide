@@ -182,8 +182,7 @@ def New(commandLineArguments):
     dStyle = read_predefined_style(commandLineArguments.style)
     dConfig = read_configuration_files(dStyle, commandLineArguments)
 
-    oSeverityList = severity.create_list(dConfig)
-    dConfig['severity_list'] = oSeverityList
+    oReturn.severity_list = severity.create_list(dConfig)
 
     update_command_line_arguments(commandLineArguments, dConfig)
 
