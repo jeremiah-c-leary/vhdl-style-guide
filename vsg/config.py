@@ -58,39 +58,53 @@ def validate_file_exists(sFilename, sConfigName):
 
 
 def read_configuration_files(dStyle, commandLineArguments):
+    if not commandLineArguments.configuration:
+        return dStyle
+
     dConfiguration = dStyle
-    if commandLineArguments.configuration:
-        for sConfigFilename in commandLineArguments.configuration:
-            tempConfiguration = open_configuration_file(sConfigFilename, commandLineArguments.junit)
+    for sConfigFilename in commandLineArguments.configuration:
+        tempConfiguration = open_configuration_file(sConfigFilename, commandLineArguments.junit)
 
-            for sKey in tempConfiguration.keys():
-                if sKey == 'file_list':
-                    if 'file_list' not in dConfiguration:
-                        dConfiguration['file_list'] = []
-                    for iIndex, sFilename in enumerate(tempConfiguration['file_list']):
-                        validate_file_exists(sFilename, sConfigFilename)
-                        try:
-                            for sGlobbedFilename in glob.glob(utils.expand_filename(sFilename), recursive=True):
-                                dConfiguration['file_list'].append(sGlobbedFilename)
-                        except TypeError:
-                            sKey = list(sFilename.keys())[0]
-                            for sGlobbedFilename in glob.glob(utils.expand_filename(sKey), recursive=True):
-                                dTemp = {}
-                                dTemp[sGlobbedFilename] = {}
-                                dTemp[sGlobbedFilename].update(tempConfiguration['file_list'][iIndex][sKey])
-                                dConfiguration['file_list'].append(dTemp)
-
-                elif sKey == 'rule':
-                    for sRule in tempConfiguration[sKey]:
-                        try:
-                            dConfiguration[sKey][sRule] = tempConfiguration[sKey][sRule]
-                        except KeyError:
-                            dConfiguration[sKey] = {}
-                            dConfiguration[sKey][sRule] = tempConfiguration[sKey][sRule]
-                else:
-                    dConfiguration[sKey] = tempConfiguration[sKey]
+        dConfiguration = process_config_file(dConfiguration, tempConfiguration, sConfigFilename)
 
     return dConfiguration
+
+
+def process_config_file(dConfiguration, tempConfiguration, sConfigFilename):
+    dReturn = dConfiguration
+    for sKey in tempConfiguration.keys():
+        if sKey == 'file_list':
+            dReturn = process_file_list_key(dReturn, tempConfiguration, sKey, sConfigFilename)
+
+        elif sKey == 'rule':
+            for sRule in tempConfiguration[sKey]:
+                try:
+                    dReturn[sKey][sRule] = tempConfiguration[sKey][sRule]
+                except KeyError:
+                    dReturn[sKey] = {}
+                    dReturn[sKey][sRule] = tempConfiguration[sKey][sRule]
+        else:
+            dReturn[sKey] = tempConfiguration[sKey]
+    return dReturn
+
+
+def process_file_list_key(dConfig, tempConfiguration, sKey, sConfigFilename):
+    dReturn = dConfig
+    if 'file_list' not in dConfig:
+        dReturn['file_list'] = []
+    for iIndex, sFilename in enumerate(tempConfiguration['file_list']):
+        validate_file_exists(sFilename, sConfigFilename)
+        try:
+            for sGlobbedFilename in glob.glob(utils.expand_filename(sFilename), recursive=True):
+                dReturn['file_list'].append(sGlobbedFilename)
+        except TypeError:
+            sKey = list(sFilename.keys())[0]
+            for sGlobbedFilename in glob.glob(utils.expand_filename(sKey), recursive=True):
+                dTemp = {}
+                dTemp[sGlobbedFilename] = {}
+                dTemp[sGlobbedFilename].update(tempConfiguration['file_list'][iIndex][sKey])
+                dReturn['file_list'].append(dTemp)
+    return dReturn
 
 
 def write_invalid_configuration_junit_file(sFileName, sJUnitFileName):
@@ -169,7 +183,10 @@ def update_command_line_arguments(commandLineArguments, configuration):
             if isinstance(sFilename, dict):
                 sFilename = list(sFilename.keys())[0]
             try:
-                commandLineArguments.filename.extend(glob.glob(utils.expand_filename(sFilename), recursive=True))
+                lFileNames = glob.glob(utils.expand_filename(sFilename), recursive=True)
+                for sFileName in lFileNames:
+                    if sFileName not in commandLineArguments:
+                        commandLineArguments.filename.append(sFileName)
             except:
                 commandLineArguments.filename = glob.glob(utils.expand_filename(sFilename), recursive=True)
     if 'local_rules' in configuration:

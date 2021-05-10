@@ -198,7 +198,7 @@ def apply_rules(commandLineArguments, oConfig, tIndexFileName):
         return 1, None, dJsonEntry, sOutputStd, sOutputErr
     oRules.configure(oConfig)
     try:
-        oRuleConfig = config.New()
+        oRuleConfig = config.config()
         oRuleConfig.dConfig = configuration['file_list'][iIndex][sFileName]
         oRules.configure(oRuleConfig)
     except TypeError:
