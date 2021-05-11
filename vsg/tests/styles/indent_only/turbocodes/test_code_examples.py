@@ -13,8 +13,7 @@ lIteration, eIterationError = vhdlFile.utils.read_vhdlfile(os.path.join(os.path.
 oIteration = vhdlFile.vhdlFile(lIteration)
 oIteration.set_indent_map(dIndentMap)
 
-dLegacyConfig = utils.read_configuration(os.path.join(os.path.dirname(__file__),'..','..','..','..','styles', 'indent_only.yaml'))
-dLegacyConfig['debug'] = False
+oConfig = utils.read_configuration(os.path.join(os.path.dirname(__file__),'..','..','..','..','styles', 'indent_only.yaml'))
 
 oSeverityList = severity.create_list({})
 
@@ -26,8 +25,8 @@ class testCodeExample(unittest.TestCase):
 
     def test_iteration_synth(self):
         oRuleList = rule_list.rule_list(oIteration, oSeverityList)
-        oRuleList.configure(dLegacyConfig)
-        oRuleList.fix(7, dLegacyConfig['skip_phase'])
+        oRuleList.configure(oConfig)
+        oRuleList.fix(7, oConfig.dConfig['skip_phase'])
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'iteration_synth.vhd'), lExpected)
         self.assertEqual(lExpected, oIteration.get_lines())

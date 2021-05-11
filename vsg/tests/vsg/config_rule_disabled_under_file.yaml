@@ -1,0 +1,8 @@
+---
+# Include files to be processed
+file_list:
+    - vsg/tests/vsg/entity1.vhd:
+        rule:
+          port_007:
+              disable: True
+...

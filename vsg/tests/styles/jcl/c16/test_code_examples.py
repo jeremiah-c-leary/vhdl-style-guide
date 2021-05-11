@@ -23,8 +23,7 @@ lDataCore, eDataCoreError = vhdlFile.utils.read_vhdlfile(os.path.join(sSourceDir
 oDataCore = vhdlFile.vhdlFile(lDataCore)
 oDataCore.set_indent_map(dIndentMap)
 
-dConfig = utils.read_configuration(os.path.join(os.path.dirname(__file__),'..','..','..','..','styles', 'jcl.yaml'))
-dConfig['debug'] = False
+oConfig = utils.read_configuration(os.path.join(os.path.dirname(__file__),'..','..','..','..','styles', 'jcl.yaml'))
 
 oSeverityList = severity.create_list({})
 
@@ -38,7 +37,7 @@ class testCodeExample(unittest.TestCase):
 
     def test_baudgen(self):
         oRuleList = rule_list.rule_list(oBaudGen, oSeverityList)
-        oRuleList.configure(dConfig)
+        oRuleList.configure(oConfig)
         oRuleList.fix()
 
         lExpected = ['']
@@ -49,7 +48,7 @@ class testCodeExample(unittest.TestCase):
 
     def test_board_cpu(self):
         oRuleList = rule_list.rule_list(oBoardCpu, oSeverityList)
-        oRuleList.configure(dConfig)
+        oRuleList.configure(oConfig)
         oRuleList.fix()
 
         lExpected = ['']
@@ -60,7 +59,7 @@ class testCodeExample(unittest.TestCase):
 
     def test_data_core(self):
         oRuleList = rule_list.rule_list(oDataCore, oSeverityList)
-        oRuleList.configure(dConfig)
+        oRuleList.configure(oConfig)
         oRuleList.fix()
 
         lExpected = ['']

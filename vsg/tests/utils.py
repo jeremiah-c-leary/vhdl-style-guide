@@ -3,6 +3,7 @@ import os
 import pprint
 import yaml
 
+from vsg import config
 from vsg import parser
 from vsg.vhdlFile import utils as vutils
 
@@ -63,8 +64,13 @@ def add_violation_list(lLineNumbers):
 
 
 def read_configuration(sFileName):
+    oReturn = config.config()
     with open(sFileName) as yaml_file:
-        return yaml.full_load(yaml_file)
+        dConfig = yaml.full_load(yaml_file)
+    dConfig['debug'] = False
+    oReturn.dConfig = dConfig
+    return oReturn
+
 
 def extract_violation_lines(lViolations):
     lReturn = []

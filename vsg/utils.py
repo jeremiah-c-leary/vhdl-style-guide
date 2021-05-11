@@ -1,6 +1,5 @@
-'''
-This module provides functions for rules to use.
-'''
+
+import os
 
 
 def get_violation_line_number(dViolation):
@@ -54,3 +53,14 @@ def get_violation_solution_at_line_number(lViolations, iLineNumber):
             return oViolation.get_solution()
         except AttributeError:
             return None
+
+
+def expand_filename(sFileName):
+    '''Expands environment variables in filenames.'''
+    return os.path.expanduser(os.path.expandvars(sFileName))
+
+
+def write_junit_xml_file(oJunitFile):
+    with open(oJunitFile.filename, 'w') as oFile:
+        for sLine in oJunitFile.build_junit():
+            oFile.write(sLine + '\n')

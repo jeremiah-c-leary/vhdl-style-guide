@@ -1,0 +1,355 @@
+import pathlib
+import unittest
+from unittest import mock
+import subprocess
+import os
+import sys
+
+from tempfile import TemporaryFile
+
+from vsg.tests import utils
+from vsg import version
+from vsg import __main__
+
+
+class command_line_args():
+    ''' This is used as an input into the version command.'''
+    def __init__(self, version=False):
+        self.version = version
+
+
+class testVsg(unittest.TestCase):
+
+    def setUp(self):
+        if os.path.isfile('deleteme.json'):
+            os.remove('deleteme.json')
+
+    def tearDown(self):
+        if os.path.isfile('deleteme.json'):
+            os.remove('deleteme.json')
+
+    @mock.patch('sys.stdout')
+    def test_multiple_configuration_w_multiple_filelists(self, mock_stdout):
+
+        lExpected = []
+        lExpected.append(mock.call('ERROR: vsg/tests/vsg/entity1.vhd(7)port_007 -- Change the number of spaces after the *in* keyword to four spaces.'))
+        lExpected.append(mock.call('\n'))
+        lExpected.append(mock.call('ERROR: vsg/tests/vsg/entity2.vhd(8)port_008 -- Change the number of spaces after the *out* keyword to three spaces.'))
+        lExpected.append(mock.call('\n'))
+
+        sys.argv = ['vsg']
+        sys.argv.extend(['--output_format', 'syntastic'])
+        sys.argv.extend(['--configuration', 'vsg/tests/vsg/config_1.json', 'vsg/tests/vsg/config_2.json'])
+
+        try:
+            __main__.main()
+        except SystemExit:
+            pass
+
+        mock_stdout.write.assert_has_calls(lExpected)
+
+    @mock.patch('sys.stdout')
+    def test_single_configuration_w_filelist(self, mock_stdout):
+        lExpected = []
+        lExpected.append(mock.call('ERROR: vsg/tests/vsg/entity1.vhd(7)port_007 -- Change the number of spaces after the *in* keyword to four spaces.'))
+        lExpected.append(mock.call('\n'))
+
+        sys.argv = ['vsg']
+        sys.argv.extend(['--output_format', 'syntastic'])
+        sys.argv.extend(['--configuration', 'vsg/tests/vsg/config_1.json'])
+
+        try:
+            __main__.main()
+        except SystemExit:
+            pass
+
+        mock_stdout.write.assert_has_calls(lExpected)
+
+        lExpected = []
+        lExpected.append(mock.call('ERROR: vsg/tests/vsg/entity2.vhd(8)port_008 -- Change the number of spaces after the *out* keyword to three spaces.'))
+        lExpected.append(mock.call('\n'))
+
+        sys.argv = ['vsg']
+        sys.argv.extend(['--output_format', 'syntastic'])
+        sys.argv.extend(['--configuration', 'vsg/tests/vsg/config_2.json'])
+
+        try:
+            __main__.main()
+        except SystemExit:
+            pass
+
+        mock_stdout.write.assert_has_calls(lExpected)
+
+    @mock.patch('sys.stdout')
+    def test_single_configuration_w_rule_disable(self, mock_stdout):
+        lExpected = []
+        lExpected.append(mock.call('\n'))
+
+        sys.argv = ['vsg']
+        sys.argv.extend(['--output_format', 'syntastic'])
+        sys.argv.extend(['--configuration', 'vsg/tests/vsg/config_3.json'])
+
+        try:
+            __main__.main()
+        except SystemExit:
+            pass
+
+        mock_stdout.write.assert_has_calls(lExpected)
+
+    @mock.patch('sys.stdout')
+    def test_multiple_configuration_w_rule_disable(self, mock_stdout):
+        lExpected = []
+        lExpected.append(mock.call('ERROR: vsg/tests/vsg/entity1.vhd(7)port_007 -- Change the number of spaces after the *in* keyword to four spaces.'))
+        lExpected.append(mock.call('\n'))
+
+        sys.argv = ['vsg']
+        sys.argv.extend(['--output_format', 'syntastic'])
+        sys.argv.extend(['--configuration', 'vsg/tests/vsg/config_3.json', 'vsg/tests/vsg/config_4.json'])
+        sys.argv.extend(['-f', 'vsg/tests/vsg/entity1.vhd'])
+
+        try:
+            __main__.main()
+        except SystemExit:
+            pass
+
+        mock_stdout.write.assert_has_calls(lExpected)
+
+    @mock.patch('sys.stdout')
+    def test_invalid_configuration(self, mock_stdout):
+#    def test_invalid_configuration(self):
+        utils.remove_file('vsg/tests/vsg/config_error.actual.xml')
+        lExpected = []
+        lExpected.append(mock.call('ERROR: Invalid configuration file: vsg/tests/vsg/config_error.json'))
+        lExpected.append(mock.call('\n'))
+        lExpected.append(mock.call('while parsing a flow node\nexpected the node content, but found \',\'\n  in "vsg/tests/vsg/config_error.json", line 2, column 16'))
+        lExpected.append(mock.call('\n'))
+
+        sys.argv = ['vsg']
+        sys.argv.extend(['--output_format', 'syntastic'])
+        sys.argv.extend(['--configuration', 'vsg/tests/vsg/config_error.json'])
+        sys.argv.extend(['-f', 'vsg/tests/vsg/entity1.vhd'])
+        sys.argv.extend(['--junit', 'vsg/tests/vsg/config_error.actual.xml'])
+
+        try:
+            __main__.main()
+        except SystemExit:
+            pass
+
+        mock_stdout.write.assert_has_calls(lExpected)
+
+        # Read in the expected JUnit XML file for comparison
+        lExpected = []
+        utils.read_file(os.path.join(os.path.dirname(__file__),'config_error.expected.xml'), lExpected)
+        # Read in the actual JUnit XML file for comparison
+        lActual = []
+        utils.read_file(os.path.join(os.path.dirname(__file__),'config_error.actual.xml'), lActual)
+        # Compare the two files, but skip the line with the timestamp (as it will never match)
+        for iLineNumber, sLine in enumerate(lExpected):
+            if iLineNumber != 1:
+                self.assertEqual(sLine, lActual[iLineNumber])
+        # Clean up
+        utils.remove_file('vsg/tests/vsg/config_error.actual.xml')
+
+    @mock.patch('sys.stdout')
+    def test_local_rules(self,mock_stdout):
+        lExpected = []
+        lExpected.append(mock.call('ERROR: vsg/tests/vsg/entity_architecture.vhd(1)localized_001 -- Split entity and architecture into seperate files.'))
+        lExpected.append(mock.call('\n'))
+
+        sys.argv = ['vsg']
+        sys.argv.extend(['--output_format', 'syntastic'])
+        sys.argv.extend(['--style', 'jcl'])
+        sys.argv.extend(['-f', 'vsg/tests/vsg/entity_architecture.vhd'])
+        sys.argv.extend(['-lr', 'vsg/tests/vsg/local_rules'])
+
+        try:
+            __main__.main()
+        except SystemExit:
+            pass
+
+        mock_stdout.write.assert_has_calls(lExpected)
+
+    @mock.patch('sys.stdout')
+    def test_invalid_local_rule_directory(self, mock_stdout):
+        lExpected = []
+        lExpected.append(mock.call('ERROR: encountered FileNotFoundError, No such file or directory vsg/tests/vsg/invalid_local_rule_directory when trying to open local rules file.'))
+        lExpected.append(mock.call('\n'))
+
+        sys.argv = ['vsg']
+        sys.argv.extend(['--output_format', 'syntastic'])
+        sys.argv.extend(['-f', 'vsg/tests/vsg/entity_architecture.vhd'])
+        sys.argv.extend(['-lr', 'vsg/tests/vsg/invalid_local_rule_directory'])
+
+        try:
+            __main__.main()
+        except SystemExit:
+            pass
+
+        mock_stdout.write.assert_has_calls(lExpected)
+
+    @mock.patch('sys.stdout')
+    def test_globbing_filenames_in_configuration(self, mock_stdout):
+        lExpected = []
+        lExpected.append(mock.call('ERROR: vsg/tests/vsg/entity2.vhd(8)port_008 -- Change the number of spaces after the *out* keyword to three spaces.'))
+        lExpected.append(mock.call('\n'))
+        lExpected.append(mock.call('ERROR: vsg/tests/vsg/entity1.vhd(7)port_007 -- Change the number of spaces after the *in* keyword to four spaces.'))
+        lExpected.append(mock.call('\n'))
+
+        sys.argv = ['vsg']
+        sys.argv.extend(['--output_format', 'syntastic'])
+        sys.argv.extend(['--configuration', 'vsg/tests/vsg/config_glob.json'])
+
+        try:
+            __main__.main()
+        except SystemExit:
+            pass
+
+        mock_stdout.write.assert_has_calls(lExpected)
+
+    @mock.patch('sys.stdout')
+    def test_single_yaml_configuration_w_filelist(self, mock_stdout):
+        lExpected = []
+        lExpected.append(mock.call('ERROR: vsg/tests/vsg/entity1.vhd(7)port_007 -- Change the number of spaces after the *in* keyword to four spaces.'))
+        lExpected.append(mock.call('\n'))
+
+        sys.argv = ['vsg']
+        sys.argv.extend(['--output_format', 'syntastic'])
+        sys.argv.extend(['--configuration', 'vsg/tests/vsg/config_1.yaml'])
+
+        try:
+            __main__.main()
+        except SystemExit:
+            pass
+
+        mock_stdout.write.assert_has_calls(lExpected)
+
+        lExpected = []
+        lExpected.append(mock.call('ERROR: vsg/tests/vsg/entity2.vhd(8)port_008 -- Change the number of spaces after the *out* keyword to three spaces.'))
+        lExpected.append(mock.call('\n'))
+
+        sys.argv = ['vsg']
+        sys.argv.extend(['--output_format', 'syntastic'])
+        sys.argv.extend(['--configuration', 'vsg/tests/vsg/config_2.json'])
+
+        try:
+            __main__.main()
+        except SystemExit:
+            pass
+
+        mock_stdout.write.assert_has_calls(lExpected)
+
+    @mock.patch('sys.stdout')
+    def test_multiple_yaml_configuration_w_multiple_filelists(self, mock_stdout):
+        lExpected = []
+        lExpected.append(mock.call('ERROR: vsg/tests/vsg/entity1.vhd(7)port_007 -- Change the number of spaces after the *in* keyword to four spaces.'))
+        lExpected.append(mock.call('\n'))
+        lExpected.append(mock.call('ERROR: vsg/tests/vsg/entity2.vhd(8)port_008 -- Change the number of spaces after the *out* keyword to three spaces.'))
+        lExpected.append(mock.call('\n'))
+
+        sys.argv = ['vsg']
+        sys.argv.extend(['--output_format', 'syntastic'])
+        sys.argv.extend(['--configuration', 'vsg/tests/vsg/config_1.yaml', 'vsg/tests/vsg/config_2.yaml'])
+
+        try:
+            __main__.main()
+        except SystemExit:
+            pass
+
+        mock_stdout.write.assert_has_calls(lExpected)
+
+    @mock.patch('sys.stdout')
+    def test_single_yaml_configuration_w_rule_disable(self, mock_stdout):
+        lExpected = []
+
+        sys.argv = ['vsg']
+        sys.argv.extend(['--output_format', 'syntastic'])
+        sys.argv.extend(['--configuration', 'vsg/tests/vsg/config_3.yaml'])
+        sys.argv.extend(['-f', 'vsg/tests/vsg/entity1.vhd'])
+
+        try:
+            __main__.main()
+        except SystemExit:
+            pass
+
+        mock_stdout.write.assert_has_calls(lExpected)
+
+    @mock.patch('sys.stdout')
+    def test_multiple_yaml_configuration_w_rule_disable(self, mock_stdout):
+        lExpected = []
+        lExpected.append(mock.call('ERROR: vsg/tests/vsg/entity1.vhd(7)port_007 -- Change the number of spaces after the *in* keyword to four spaces.'))
+        lExpected.append(mock.call('\n'))
+
+        sys.argv = ['vsg']
+        sys.argv.extend(['--output_format', 'syntastic'])
+        sys.argv.extend(['--configuration', 'vsg/tests/vsg/config_3.yaml', 'vsg/tests/vsg/config_4.yaml'])
+        sys.argv.extend(['-f', 'vsg/tests/vsg/entity1.vhd'])
+
+        try:
+            __main__.main()
+        except SystemExit:
+            pass
+
+        mock_stdout.write.assert_has_calls(lExpected)
+
+    @mock.patch('sys.stdout')
+    def test_reverse_yaml_multiple_configuration_w_rule_disable(self, mock_stdout):
+        lExpected = []
+
+        sys.argv = ['vsg']
+        sys.argv.extend(['--output_format', 'syntastic'])
+        sys.argv.extend(['--configuration', 'vsg/tests/vsg/config_4.yaml', 'vsg/tests/vsg/config_3.yaml'])
+        sys.argv.extend(['-f', 'vsg/tests/vsg/entity1.vhd'])
+
+        try:
+            __main__.main()
+        except SystemExit:
+            pass
+
+        mock_stdout.write.assert_has_calls(lExpected)
+
+    @mock.patch('sys.stdout')
+    def test_globbing_filenames_in_yaml_configuration(self, mock_stdout):
+        lExpected = []
+        lExpected.append(mock.call('ERROR: vsg/tests/vsg/entity2.vhd(8)port_008 -- Change the number of spaces after the *out* keyword to three spaces.'))
+        lExpected.append(mock.call('\n'))
+        lExpected.append(mock.call('ERROR: vsg/tests/vsg/entity1.vhd(7)port_007 -- Change the number of spaces after the *in* keyword to four spaces.'))
+        lExpected.append(mock.call('\n'))
+
+        sys.argv = ['vsg']
+        sys.argv.extend(['--output_format', 'syntastic'])
+        sys.argv.extend(['--configuration', 'vsg/tests/vsg/config_glob.yaml'])
+
+        try:
+            __main__.main()
+        except SystemExit:
+            pass
+
+        mock_stdout.write.assert_has_calls(lExpected)
+
+    @mock.patch('sys.stdout')
+    def test_oc_command_line_argument(self, mock_stdout):
+        lExpected = []
+
+        sys.argv = ['vsg']
+        sys.argv.extend(['-oc', 'deleteme.json'])
+
+        try:
+            __main__.main()
+        except SystemExit:
+            pass
+
+        mock_stdout.write.assert_has_calls(lExpected)
+
+    @mock.patch('sys.stdout')
+    def test_rule_disabled_under_file(self, mock_stdout):
+        lExpected = []
+
+        sys.argv = ['vsg']
+        sys.argv.extend(['-c', 'vsg/tests/vsg/config_rule_disabled_under_file.yaml'])
+
+        try:
+            __main__.main()
+        except SystemExit:
+            pass
+
+        mock_stdout.write.assert_has_calls(lExpected)

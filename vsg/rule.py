@@ -24,7 +24,7 @@ class Rule():
         self.configuration = ['indentSize', 'phase', 'disable', 'fixable', 'severity']
         self.depricated = False
 
-    def configure(self, dConfiguration):
+    def configure(self, oConfig):
         '''Configures attributes on rules using a dictionary of the following form:
 
             dConfiguration['rule'] = {}
@@ -40,8 +40,9 @@ class Rule():
           Individual rule attributes can be modified with [self.name_self.identifier].
         '''
         lReturn = []
-        self._configure_global_rule_attributes(dConfiguration)
-        lReturn.extend(self._configure_rule_attributes(dConfiguration))
+        dConfiguration = oConfig.dConfig
+        self._configure_global_rule_attributes(oConfig)
+        lReturn.extend(self._configure_rule_attributes(oConfig))
         return lReturn
 
     def has_violations(self):
@@ -132,33 +133,33 @@ class Rule():
         lToi = self._get_tokens_of_interest(oFile)
         self._analyze(lToi)
 
-    def _configure_global_rule_attributes(self, dConfiguration):
+    def _configure_global_rule_attributes(self, oConfig):
         '''
         Updates rule attributes based on configuration input files
         '''
         try:
-            for sAttributeName in dConfiguration['rule']['global']:
+            for sAttributeName in oConfig.dConfig['rule']['global']:
                 if sAttributeName == 'severity':
-                    self.severity = dConfiguration['severity_list'].get_severity_named(dConfiguration['rule']['global']['severity'])
+                    self.severity = oConfig.severity_list.get_severity_named(oConfig.dConfig['rule']['global']['severity'])
                 elif sAttributeName in self.__dict__:
-                    self.__dict__[sAttributeName] = dConfiguration['rule']['global'][sAttributeName]
+                    self.__dict__[sAttributeName] = oConfig.dConfig['rule']['global'][sAttributeName]
         except KeyError:
             pass
 
-    def _configure_rule_attributes(self, dConfiguration):
+    def _configure_rule_attributes(self, oConfig):
         '''
         Updates rule attributes based on configuration input files
         '''
         if self.depricated:
-            if self.unique_id in dConfiguration['rule']:
+            if self.unique_id in oConfig.dConfig['rule']:
                 return self.print_output()
             return []
         try:
-            for sAttributeName in dConfiguration['rule'][self.get_unique_id()]:
+            for sAttributeName in oConfig.dConfig['rule'][self.get_unique_id()]:
                 if sAttributeName == 'severity':
-                    self.severity = dConfiguration['severity_list'].get_severity_named(dConfiguration['rule'][self.get_unique_id()]['severity'])
+                    self.severity = oConfig.severity_list.get_severity_named(oConfig.dConfig['rule'][self.get_unique_id()]['severity'])
                 elif sAttributeName in self.__dict__:
-                    self.__dict__[sAttributeName] = dConfiguration['rule'][self.get_unique_id()][sAttributeName]
+                    self.__dict__[sAttributeName] = oConfig.dConfig['rule'][self.get_unique_id()][sAttributeName]
         except KeyError:
             pass
         return []

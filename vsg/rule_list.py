@@ -268,7 +268,7 @@ class rule_list():
             sOutputStd, sOutputErr = report.summary_stdout.print_output(dRunInfo)
         return sOutputStd, sOutputErr
 
-    def configure(self, configurationFile):
+    def configure(self, oConfig):
         '''
         Configures individual rules based on dictionary passed.
 
@@ -277,11 +277,11 @@ class rule_list():
           configurationFile: (dictionary)
         '''
         lDepricatedMessages = []
-
+        configurationFile = oConfig.dConfig
         if configurationFile and 'rule' in configurationFile:
             self._validate_configuration_rule_exists(configurationFile)
             for oRule in self.rules:
-                lDepricatedMessages.extend(oRule.configure(configurationFile))
+                lDepricatedMessages.extend(oRule.configure(oConfig))
 
         if len(lDepricatedMessages) != 0:
             print(f'ERROR: Invalid configuration of file {self.oVhdlFile.filename}')
