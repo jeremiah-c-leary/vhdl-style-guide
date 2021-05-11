@@ -23,7 +23,6 @@ class blank_line_above_line_starting_with_token(rule.Rule):
 
     def __init__(self, name, identifier, lTokens, lAllowTokens=None):
         rule.Rule.__init__(self, name=name, identifier=identifier)
-        self.solution = 'Insert blank line above'
         self.phase = 3
         self.lTokens = lTokens
         if lAllowTokens is None:

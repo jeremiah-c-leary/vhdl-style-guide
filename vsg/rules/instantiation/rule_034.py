@@ -23,7 +23,6 @@ class rule_034(rule.Rule):
 
     def __init__(self):
         rule.Rule.__init__(self, name='instantiation', identifier='034')
-        self.solution = None
         self.phase = 1
         self.method = 'component'
         self.configuration.append('method')

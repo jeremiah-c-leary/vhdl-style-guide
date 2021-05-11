@@ -31,7 +31,6 @@ class rule_400(rule.Rule):
 
     def __init__(self):
         rule.Rule.__init__(self, name="assert", identifier="400")
-        self.solution = 'Align with open parenthesis on previous line.'
         self.alignment = 'report'
         self.configuration.append('alignment')
         self.phase = 4

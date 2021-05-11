@@ -41,7 +41,7 @@ class rule_002(rule.Rule):
 
     def __init__(self):
         rule.Rule.__init__(self, 'after', '002')
-        self.solution = None
+        self.solution = 'Align **after** keyword.'
         self.disable = True
         self.phase = 5
         self.subphase = 2

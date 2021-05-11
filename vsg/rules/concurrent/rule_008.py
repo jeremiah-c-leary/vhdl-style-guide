@@ -57,7 +57,6 @@ class rule_008(rule.Rule):
 
     def __init__(self):
         rule.Rule.__init__(self, 'concurrent', '008')
-        self.solution = 'Align comment'
         self.phase = 5
         self.subphase = 3
         self.lTokens = lTokens
