@@ -185,10 +185,11 @@ def update_command_line_arguments(commandLineArguments, configuration):
             try:
                 lFileNames = glob.glob(utils.expand_filename(sFilename), recursive=True)
                 for sFileName in lFileNames:
-                    if sFileName not in commandLineArguments:
+                    if sFileName not in commandLineArguments.filename:
                         commandLineArguments.filename.append(sFileName)
             except:
                 commandLineArguments.filename = glob.glob(utils.expand_filename(sFilename), recursive=True)
+
     if 'local_rules' in configuration:
         commandLineArguments.local_rules = utils.expand_filename(configuration['local_rules'])
 
