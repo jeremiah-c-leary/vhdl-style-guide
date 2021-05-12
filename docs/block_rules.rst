@@ -92,7 +92,7 @@ block_005
 
 |phase_1| |error|
 
-This rule check for code after the **begin** keyword.
+This rule checks for code after the **begin** keyword.
 
 **Violation**
 

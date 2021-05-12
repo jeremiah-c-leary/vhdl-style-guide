@@ -39,7 +39,7 @@ architecture_003
 
 |phase_3| |error|
 
-This rule check for a blank lines or comments above the **architecture** declaration.
+This rule checks for a blank lines or comments above the **architecture** declaration.
 
 Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous-line-rules>`_ for options.
 
@@ -301,7 +301,7 @@ architecture_015
 
 |phase_3| |error|
 
-This rule check for blank lines below the architecture declaration.
+This rule checks for blank lines below the architecture declaration.
 
 Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options.
 
