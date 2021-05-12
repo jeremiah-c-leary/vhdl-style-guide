@@ -5,6 +5,9 @@ import subprocess
 import os
 import sys
 
+import contextlib
+from io import StringIO
+
 from tempfile import TemporaryFile
 
 from vsg.tests import utils
@@ -187,24 +190,30 @@ class testVsg(unittest.TestCase):
 
         mock_stdout.write.assert_has_calls(lExpected)
 
-    @mock.patch('sys.stdout')
-    def test_globbing_filenames_in_configuration(self, mock_stdout):
+    def test_globbing_filenames_in_configuration(self):
         lExpected = []
-        lExpected.append(mock.call('ERROR: vsg/tests/vsg/entity2.vhd(8)port_008 -- Change the number of spaces after the *out* keyword to three spaces.'))
-        lExpected.append(mock.call('\n'))
-        lExpected.append(mock.call('ERROR: vsg/tests/vsg/entity1.vhd(7)port_007 -- Change the number of spaces after the *in* keyword to four spaces.'))
-        lExpected.append(mock.call('\n'))
+        lExpected.append('ERROR: vsg/tests/vsg/entity2.vhd(8)port_008 -- Change the number of spaces after the *out* keyword to three spaces.')
+        lExpected.append('ERROR: vsg/tests/vsg/entity1.vhd(7)port_007 -- Change the number of spaces after the *in* keyword to four spaces.')
 
         sys.argv = ['vsg']
         sys.argv.extend(['--output_format', 'syntastic'])
         sys.argv.extend(['--configuration', 'vsg/tests/vsg/config_glob.json'])
 
-        try:
-            __main__.main()
-        except SystemExit:
-            pass
+        temp_stdout = StringIO()
 
-        mock_stdout.write.assert_has_calls(lExpected)
+        with contextlib.redirect_stdout(temp_stdout):
+
+            try:
+                __main__.main()
+            except SystemExit:
+                pass
+
+        lActual = temp_stdout.getvalue().strip().split('\n')
+
+        if lActual[0] == lExpected[1]:
+            lExpected = [lExpected[1], lExpected[0]]
+
+        self.assertEqual(lExpected, lActual)
 
     @mock.patch('sys.stdout')
     def test_single_yaml_configuration_w_filelist(self, mock_stdout):
@@ -307,24 +316,30 @@ class testVsg(unittest.TestCase):
 
         mock_stdout.write.assert_has_calls(lExpected)
 
-    @mock.patch('sys.stdout')
-    def test_globbing_filenames_in_yaml_configuration(self, mock_stdout):
+    def test_globbing_filenames_in_yaml_configuration(self):
         lExpected = []
-        lExpected.append(mock.call('ERROR: vsg/tests/vsg/entity2.vhd(8)port_008 -- Change the number of spaces after the *out* keyword to three spaces.'))
-        lExpected.append(mock.call('\n'))
-        lExpected.append(mock.call('ERROR: vsg/tests/vsg/entity1.vhd(7)port_007 -- Change the number of spaces after the *in* keyword to four spaces.'))
-        lExpected.append(mock.call('\n'))
+        lExpected.append('ERROR: vsg/tests/vsg/entity2.vhd(8)port_008 -- Change the number of spaces after the *out* keyword to three spaces.')
+        lExpected.append('ERROR: vsg/tests/vsg/entity1.vhd(7)port_007 -- Change the number of spaces after the *in* keyword to four spaces.')
 
         sys.argv = ['vsg']
         sys.argv.extend(['--output_format', 'syntastic'])
         sys.argv.extend(['--configuration', 'vsg/tests/vsg/config_glob.yaml'])
 
-        try:
-            __main__.main()
-        except SystemExit:
-            pass
+        temp_stdout = StringIO()
 
-        mock_stdout.write.assert_has_calls(lExpected)
+        with contextlib.redirect_stdout(temp_stdout):
+
+            try:
+                __main__.main()
+            except SystemExit:
+                pass
+
+        lActual = temp_stdout.getvalue().strip().split('\n')
+
+        if lActual[0] == lExpected[1]:
+            lExpected = [lExpected[1], lExpected[0]]
+
+        self.assertEqual(lExpected, lActual)
 
     @mock.patch('sys.stdout')
     def test_oc_command_line_argument(self, mock_stdout):
