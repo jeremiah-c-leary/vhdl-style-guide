@@ -290,7 +290,6 @@ class rule_list():
             exit()
 
         if configurationFile['debug']:
-            print('  Blah 2')
             for oRule in self.rules:
                 oRule.set_debug()
 
