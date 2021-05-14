@@ -287,7 +287,7 @@ class rule_list():
             print(f'ERROR: Invalid configuration of file {self.oVhdlFile.filename}')
             for sMessage in lDepricatedMessages:
                 print(sMessage)
-            exit()
+            exit(2)
 
         if configurationFile['debug']:
             for oRule in self.rules:

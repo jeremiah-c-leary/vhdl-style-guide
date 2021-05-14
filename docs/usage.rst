@@ -168,3 +168,20 @@ If rule violations can not be fixed, they will be reported after fixing everythi
      instantiation_034         | Error      |        169 | Change to component instantiation
    ----------------------------+------------+--------------------------------------
    NOTE: Refer to online documentation at https://vhdl-style-guide.readthedocs.io/en/latest/index.html for more information.
+
+Error Codes
+###########
+
+One of the following error codes will be returned after running VSG:
+
++------------+-------------------------------------------------+
+| Error Code |  Description                                    |
++------------+-------------------------------------------------+
+|     0      |  VSG ran without encountering any errors and no |
+|            |  rule violations were detected.                 |
++------------+-------------------------------------------------+
+|     1      |  VSG ran and detected a rule violation.         |
++------------+-------------------------------------------------+
+|     2      |  An attempt was made to configure a rule which  |
+|            |  was depricated.                                |
++------------+-------------------------------------------------+
