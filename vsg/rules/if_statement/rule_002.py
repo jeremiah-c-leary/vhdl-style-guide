@@ -59,7 +59,7 @@ class rule_002(rule.Rule):
         else:
             lParens = build_parenthesis_list(lTokens)
             lNewParens = remove_inner_parenthesis(lParens)
-            if len(lNewParens) == 0:
+            if missing_enclosed_parens(lParens, lNewParens):
                 sSolution = 'Enclose condition in ()\'s.'
                 dAction = {}
                 dAction['action'] = 'insert'
@@ -74,12 +74,13 @@ class rule_002(rule.Rule):
             lNewParens = remove_inner_parenthesis(lParens)
 
             if len(lNewParens) == 2:
-             sSolution = 'Remove enclosing ()\'s'
-             dAction = {}
-             dAction['action'] = 'remove'
-             oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
-             oViolation.set_action(dAction)
-             self.add_violation(oViolation)
+                if parens_match(lParens, lNewParens):
+                    sSolution = 'Remove enclosing ()\'s'
+                    dAction = {}
+                    dAction['action'] = 'remove'
+                    oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
+                    oViolation.set_action(dAction)
+                    self.add_violation(oViolation)
 
 
 def insert_parenthesis(option):
@@ -99,9 +100,12 @@ def build_parenthesis_list(lTokens):
 
 
 def remove_inner_parenthesis(lParens):
+#    print('--> remove_inner_parenthesis [' + '-'*80)
+#    print(f'lParens = {lParens}')
     lNewParens = []
     bSkipCloseParen = False
     if len(lParens) <= 2:
+#        print('<-- remove_inner_parenthesis::lParens <= 2 [' + '-'*80)
         return lParens
 
     for iParen, oParen in enumerate(lParens[:-1]):
@@ -115,5 +119,22 @@ def remove_inner_parenthesis(lParens):
     if isinstance(lParens[-2], parser.close_parenthesis) and isinstance(lParens[-1], parser.close_parenthesis):
        lNewParens.append(lParens[-1])
 
-    lNewParens = remove_inner_parenthesis(lNewParens)
-    return lNewParens
+#    print(f'lNewParens = {lNewParens}')
+    lReturnParens = remove_inner_parenthesis(lNewParens)
+#    print(f'lReturnParens = {lReturnParens}')
+#    print('<-- remove_inner_parenthesis [' + '-'*80)
+    return lReturnParens
+
+
+def parens_match(lParens, lNewParens):
+    if lParens[0] == lNewParens[0] and lParens[-1] == lNewParens[-1]:
+        return True
+    return False
+
+
+def missing_enclosed_parens(lParens, lNewParens):
+    if len(lNewParens) == 0:
+        return True
+    if not parens_match(lParens, lNewParens):
+        return True
+    return False

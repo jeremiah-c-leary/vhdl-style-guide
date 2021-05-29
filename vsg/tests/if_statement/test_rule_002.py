@@ -32,7 +32,7 @@ class test_if_statement_rule(unittest.TestCase):
         self.assertEqual(oRule.identifier, '002')
         oRule.parenthesis = 'insert'
 
-        lExpected = [24, 26, 28, 30, 32]
+        lExpected = [24, 26, 28, 30, 32, 40, 44]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))

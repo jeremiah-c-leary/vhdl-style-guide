@@ -35,4 +35,16 @@ begin
 
   end process;
 
+  process begin
+
+    if ((x(k) = '1') and (v_y = '0')) then
+      b <= '0';
+    end if;
+
+    if (((ctrl_done_d1 = '0') and (CTRL_DONE = '1')) or (dev_addr = dev_addr_prv)) then
+      b <= '0';
+    end if;
+
+  end process;
+
 end architecture RTL;
