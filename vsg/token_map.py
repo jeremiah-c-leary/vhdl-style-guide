@@ -2,6 +2,8 @@
 import bisect
 import pprint
 
+from vsg import parser
+
 
 class New():
 
@@ -86,6 +88,12 @@ class New():
         for iToken in lTokens:
             if iToken is not None:
                 return iToken
+
+    def get_index_of_previous_non_whitespace_token(self, iIndex):
+        iStartIndex = iIndex - 1
+        for i in range(iStartIndex, 0, -1):
+            if not self.is_token_at_index_whitespace(i):
+                return i
         return None
 
     def is_token_at_index(self, oToken, iIndex):
@@ -96,6 +104,17 @@ class New():
             return False
         except KeyError:
             return False
+
+    def is_token_at_index_whitespace(self, iIndex):
+        if self.is_token_at_index(parser.whitespace, iIndex):
+            return True
+        if self.is_token_at_index(parser.comment, iIndex):
+            return True
+        if self.is_token_at_index(parser.carriage_return, iIndex):
+            return True
+        if self.is_token_at_index(parser.blank_line, iIndex):
+            return True
+        return False
 
     def pretty_print(self):
         pp=pprint.PrettyPrinter(indent=4)

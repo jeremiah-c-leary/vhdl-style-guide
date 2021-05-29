@@ -222,6 +222,9 @@ class vhdlFile():
     def get_tokens_between_tokens_inclusive_while_storing_value_from_token(self, left_token, right_token, value_token):
         return extract.get_tokens_between_tokens_inclusive_while_storing_value_from_token(left_token, right_token, value_token, self.lAllObjects, self.oTokenMap)
 
+    def get_tokens_between_non_whitespace_token_and_token(self, right_token):
+        return extract.get_tokens_between_non_whitespace_token_and_token(right_token, self.lAllObjects, self.oTokenMap)
+
     def get_tokens_from_line(self, iLineNumber):
         return extract.get_tokens_from_line(iLineNumber, self.lAllObjects, self.oTokenMap)
 

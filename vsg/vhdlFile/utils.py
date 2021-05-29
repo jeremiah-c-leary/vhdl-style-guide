@@ -499,6 +499,19 @@ def does_token_type_match(oToken, oType):
     return False
 
 
+def remove_trailing_whitespace(lTokens):
+    lTokens.reverse()
+    for iIndex in range(0, len(lTokens)):
+        if token_is_whitespace(lTokens[iIndex]):
+            continue
+        else:
+            lMyTokens = lTokens[iIndex:]
+            lMyTokens.reverse()
+            return lMyTokens
+    else:
+        return lTokens
+
+
 def remove_trailing_whitespace_and_comments(lTokens):
     lTokens.reverse()
     for iIndex in range(0, len(lTokens)):
@@ -526,6 +539,16 @@ def token_is_whitespace_or_comment(oToken):
     if isinstance(oToken, parser.whitespace) or \
        isinstance(oToken, parser.carriage_return) or \
        isinstance(oToken, parser.comment) or \
+       isinstance(oToken, parser.blank_line) or \
+       isinstance(oToken, parser.preprocessor):
+        return True
+    else:
+        return False
+
+
+def token_is_whitespace(oToken):
+    if isinstance(oToken, parser.whitespace) or \
+       isinstance(oToken, parser.carriage_return) or \
        isinstance(oToken, parser.blank_line) or \
        isinstance(oToken, parser.preprocessor):
         return True

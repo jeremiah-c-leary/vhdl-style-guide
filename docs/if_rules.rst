@@ -777,3 +777,24 @@ This rule checks the expression after the **if** or **elsif** keyword starts on 
 
    elsif b = '1' then
 
+
+if_036
+######
+
+|phase_1| |error|
+
+This rule checks the **then** keyword is not on a line by itself.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   if a = '1'
+     then
+
+**Fix**
+
+.. code-block:: vhdl
+
+   if a = '1' then
+
