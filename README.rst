@@ -25,25 +25,12 @@ VHDL Style Guide (VSG)
 Announcements
 -------------
 
-Release 3.0.0 is now available.
+I have some personal stuff going on at the moment I need to address.
+Tentatively I plan to pick this back up in July, depending on how June goes.
 
-This is a major new release with a lot changes.
+Regards,
 
-* Minimum Python version 3.5 is required
-* New parser
-* Instantiation rules moved to generic_map and port_map rules
-* Updated multiline alignment rules
-* Tool integration updates
-* Additional rules
-
-Review release notes for full details.
-
-When upgrading to 3.0.0, keep this in mind:
-
-* Review the configuring section for new options
-* Run against a small subset of your code base first to check for differences
-
-NOTE:  Any rules written for pre 3.0.0 will need to be updated for the new parser.  If you have any custom rules, I can work with you to upgrade them.
+--Jeremy
 
 .. image:: https://github.com/jeremiah-c-leary/vhdl-style-guide/blob/master/docs/img/vim_macro.gif
 
