@@ -64,3 +64,21 @@ def write_junit_xml_file(oJunitFile):
     with open(oJunitFile.filename, 'w') as oFile:
         for sLine in oJunitFile.build_junit():
             oFile.write(sLine + '\n')
+
+
+def extract_file_names_from_file_list(lFiles):
+    lReturn = []
+    for dFile in lFiles:
+        if isinstance(dFile, dict):
+            lReturn.extend(extract_keys_from_dict(dFile))
+        else:
+            lReturn.append(dFile)
+
+    return lReturn
+
+
+def extract_keys_from_dict(dFile):
+    lReturn = []
+    lReturn.extend(list(dFile.keys()))
+    return lReturn
+

@@ -182,6 +182,7 @@ def main():
 
 def apply_rules(commandLineArguments, oConfig, tIndexFileName):
     configuration = oConfig.dConfig
+
     dIndent = oConfig.dIndent
     fix_only = oConfig.dFixOnly
     
@@ -196,15 +197,9 @@ def apply_rules(commandLineArguments, oConfig, tIndexFileName):
         sOutputStd = f'ERROR: encountered {e.__class__.__name__}, {e.args[1]} ' + commandLineArguments.local_rules + ' when trying to open local rules file.'
         sOutputErr = None
         return 1, None, dJsonEntry, sOutputStd, sOutputErr
-    oRules.configure(oConfig)
-    try:
-        oRuleConfig = config.config()
-        oRuleConfig.dConfig = configuration['file_list'][iIndex][sFileName]
-        oRules.configure(oRuleConfig)
-    except TypeError:
-        pass
-    except KeyError:
-        pass
+
+    configure_rules(oConfig, oRules, configuration, iIndex, sFileName)
+
 
     if commandLineArguments.fix:
         if commandLineArguments.backup:
@@ -227,3 +222,37 @@ def apply_rules(commandLineArguments, oConfig, tIndexFileName):
         dJsonEntry['violations'] = oRules.extract_violation_dictionary()['violations']
 
     return fExitStatus, testCase, dJsonEntry, sOutputStd, sOutputErr
+
+
+def configure_rules(oConfig, oRules, configuration, iIndex, sFileName):
+
+    oRules.configure(oConfig)
+    if is_filename_in_file_list(configuration, sFileName):
+        iMyIndex = get_index_of_filename_in_file_list(configuration, sFileName)
+        oRuleConfig = config.config()
+        if does_file_have_rule_configuration(configuration, iMyIndex, sFileName):
+            oRuleConfig.dConfig = configuration['file_list'][iMyIndex][sFileName]
+            oRules.configure(oRuleConfig)
+        
+
+def is_filename_in_file_list(configuration, sFileName):
+    try:
+        lFileNames = utils.extract_file_names_from_file_list(configuration['file_list'])
+        if sFileName in lFileNames:
+            return True
+        return False
+    except KeyError:
+        return False
+
+
+def get_index_of_filename_in_file_list(configuration, sFileName):
+    lFileNames = utils.extract_file_names_from_file_list(configuration['file_list'])
+    return lFileNames.index(sFileName)
+
+
+def does_file_have_rule_configuration(configuration, iMyIndex, sFileName):
+    try:
+       sTemp = configuration['file_list'][iMyIndex][sFileName]
+       return True
+    except:
+       return False

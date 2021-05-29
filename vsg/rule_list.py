@@ -289,9 +289,12 @@ class rule_list():
                 print(sMessage)
             exit(2)
 
-        if configurationFile['debug']:
-            for oRule in self.rules:
-                oRule.set_debug()
+        try:
+            if configurationFile['debug']:
+                for oRule in self.rules:
+                    oRule.set_debug()
+        except KeyError:
+            pass
 
     def _validate_configuration_rule_exists(self, configurationFile):
         '''
