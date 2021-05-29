@@ -3,11 +3,11 @@ import os
 import importlib
 import inspect
 
+from . import depricated_rule
 from . import junit
 from . import report
 from . import utils
 from . import severity
-
 
 def get_python_modules_from_directory(sDirectoryName, lModules):
     '''
@@ -369,8 +369,9 @@ class rule_list():
         '''
         dConfiguration = {}
         for oRule in self.rules:
-            sId = oRule.name + '_' + oRule.identifier
-            dConfiguration[sId] = oRule.get_configuration()
+            if is_rule_depricated(oRule):
+                continue
+            dConfiguration[oRule.unique_id] = oRule.get_configuration()
         return dConfiguration
 
     def clear_violations(self):
@@ -396,3 +397,9 @@ def filter_out_disabled_rules(lRules):
         if not oRule.disable:
             lReturn.append(oRule)
     return lReturn
+
+
+def is_rule_depricated(oRule):
+    if isinstance(oRule, depricated_rule.Depricated):
+        return True
+    return False
