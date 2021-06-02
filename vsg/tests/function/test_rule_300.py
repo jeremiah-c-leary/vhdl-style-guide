@@ -30,7 +30,7 @@ class test_function_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'function')
         self.assertEqual(oRule.identifier, '300')
 
-        lExpected = [18, 27]
+        lExpected = [43, 54, 65, 76, 87, 98]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
