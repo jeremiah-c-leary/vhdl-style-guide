@@ -346,3 +346,24 @@ Refer to the section `Configuring Identifier Alignment Rules <configuring.html#c
    variable var1     : natural;
    signal   sig1     : natural;
    constant c_period : time;
+
+procedure_100
+#############
+
+|phase_2| |error|
+
+This rule checks a single space exists after the **procedure** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   procedure    average_samples is
+
+**Fix**
+
+.. code-block:: vhdl
+
+   procedure average_samples is
+
+
