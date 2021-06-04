@@ -352,7 +352,7 @@ procedure_100
 
 |phase_2| |error|
 
-This rule checks for a single space between the following procedure elements:  **procedure** keyword, procedure name, and open parenthesis.
+This rule checks for a single space between the following procedure elements:  **procedure** keyword, procedure name, open parenthesis, close parenthesis, and **is** keywords.
 
 **Violation**
 
@@ -371,7 +371,7 @@ This rule checks for a single space between the following procedure elements:  *
    procedure average_samples (
        constant a : in integer;
        signal d : out std_logic
-     )    is
-   procedure average_samples      is
+     ) is
+   procedure average_samples is
 
 
