@@ -352,40 +352,26 @@ procedure_100
 
 |phase_2| |error|
 
-This rule checks a single space exists after the **procedure** keyword.
+This rule checks for a single space between the following procedure elements:  **procedure** keyword, procedure name, and open parenthesis.
 
 **Violation**
 
 .. code-block:: vhdl
 
-   procedure    average_samples is
-
-**Fix**
-
-.. code-block:: vhdl
-
-   procedure average_samples is
-
-procedure_101
-#############
-
-|phase_2| |error|
-
-This rule checks for a single space between the procedure name and the (.'
-
-**Violation**
-
-.. code-block:: vhdl
-
-   procedure average_samples    (
-
-   procedure average_samples(
+   procedure    average_samples    (
+       constant a : in integer;
+       signal d : out std_logic
+     )    is
+   procedure    average_samples      is
 
 **Fix**
 
 .. code-block:: vhdl
 
    procedure average_samples (
+       constant a : in integer;
+       signal d : out std_logic
+     )    is
+   procedure average_samples      is
 
-   procedure average_samples (
 
