@@ -352,7 +352,7 @@ procedure_100
 
 |phase_2| |error|
 
-This rule checks for a single space between the following procedure elements:  **procedure** keyword, procedure name, open parenthesis, close parenthesis, and **is** keywords.
+This rule checks for a single space between the following procedure elements:  **procedure** keyword, procedure designator, open parenthesis, close parenthesis, and **is** keywords.
 
 **Violation**
 
@@ -379,7 +379,7 @@ procedure_101
 
 |phase_2| |error|
 
-This rule checks for a single space between the **end** and **procedure** keywords and procedure name.
+This rule checks for a single space between the **end** and **procedure** keywords and procedure designator.
 
 **Violation**
 
@@ -423,7 +423,7 @@ procedure_501
 
 |phase_6| |error|
 
-This rule checks the procedure name has proper case.
+This rule checks the procedure designator has proper case.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
 
@@ -530,7 +530,7 @@ procedure_506
 
 |phase_6| |error|
 
-This rule checks the procedure name has proper case on the end procedure declaration.
+This rule checks the procedure designator has proper case on the end procedure declaration.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
 

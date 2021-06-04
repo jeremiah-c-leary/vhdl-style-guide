@@ -9,7 +9,7 @@ lTokens.append(token.subprogram_body.designator)
 
 class rule_506(token_case):
     '''
-    Checks the procedure end procedure name has proper case.
+    Checks the procedure designator in the end procedure has proper case.
     '''
 
     def __init__(self):
