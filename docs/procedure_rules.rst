@@ -397,4 +397,153 @@ This rule checks for a single space between the **end** and **procedure** keywor
    end procedure;
    end average_samples;
 
+procedure_500
+#############
+
+|phase_6| |error|
+
+This rule checks the **procedure** keyword has proper case.
+
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   PROCEDURE average_samples is
+
+**Fix**
+
+.. code-block:: vhdl
+
+   procedure average_samples is
+
+procedure_501
+#############
+
+|phase_6| |error|
+
+This rule checks the procedure name has proper case.
+
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   procedure AVERAGE_SAMPLES is
+
+**Fix**
+
+.. code-block:: vhdl
+
+   procedure average_samples is
+
+procedure_502
+#############
+
+|phase_6| |error|
+
+This rule checks the **is** keyword has proper case.
+
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   procedure average_samples IS
+
+**Fix**
+
+.. code-block:: vhdl
+
+   procedure average_samples is
+
+procedure_503
+#############
+
+|phase_6| |error|
+
+This rule checks the **begin** keyword has proper case.
+
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   procedure average_samples is
+   BEGIN
+
+**Fix**
+
+.. code-block:: vhdl
+
+   procedure average_samples is
+   begin
+
+procedure_504
+#############
+
+|phase_6| |error|
+
+This rule checks the **end** keyword has proper case.
+
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   END procedure average_samples;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   end procedure average_samples;
+
+procedure_505
+#############
+
+|phase_6| |error|
+
+This rule checks the **procedure** keyword in the **end procedure** has proper case.
+
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   end PROCEDURE average_samples;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   end procedure average_samples;
+
+procedure_506
+#############
+
+|phase_6| |error|
+
+This rule checks the procedure name has proper case on the end procedure declaration.
+
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   end procedure AVERAGE_SAMPLES;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   end procedure average_samples;
+
 
