@@ -374,4 +374,27 @@ This rule checks for a single space between the following procedure elements:  *
      ) is
    procedure average_samples is
 
+procedure_101
+#############
+
+|phase_2| |error|
+
+This rule checks for a single space between the **end** and **procedure** keywords and procedure name.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   end   procedure   average_samples;
+   end   procedure;
+   end   average_samples;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   end procedure average_samples;
+   end procedure;
+   end average_samples;
+
 
