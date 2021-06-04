@@ -397,6 +397,31 @@ This rule checks for a single space between the **end** and **procedure** keywor
    end procedure;
    end average_samples;
 
+procedure_200
+#############
+
+|phase_3| |error|
+
+This rule checks for blank lines or comments above the **procedure** keyword.
+
+Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous-line-rules>`_ for options.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   architecture RTL of FIFO is
+     procedure proc1 is
+
+
+**Fix**
+
+.. code-block:: vhdl
+
+   architecture RTL of FIFO is
+
+     procedure proc1 is
+
 procedure_500
 #############
 
