@@ -505,6 +505,60 @@ Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ f
 
    begin
 
+procedure_203
+#############
+
+|phase_3| |error|
+
+This rule checks for a blank line below the **begin** keyword.
+
+Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   procedure average_samples is
+   begin
+     a <= b;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   procedure average_samples is
+   begin
+
+     a <= b;
+
+procedure_204
+#############
+
+|phase_3| |error|
+
+This rule checks for blank lines above the **end** keyword.
+
+Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   begin
+
+     a <= b;
+   end procedure average_samples;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   begin
+
+     a <= b;
+
+   end procedure average_samples;
+
 procedure_205
 #############
 
