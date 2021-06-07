@@ -347,6 +347,33 @@ Refer to the section `Configuring Identifier Alignment Rules <configuring.html#c
    signal   sig1     : natural;
    constant c_period : time;
 
+procedure_011
+#############
+
+|phase_1| |error|
+
+This rule checks for a procedure parameter on the same line as the procedure keyword when the parameters are on multiple lines.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   procedure average_samples (constant a : in integer;
+     signal d : out std_logic
+   ) is
+   begin
+
+
+**Fix**
+
+.. code-block:: vhdl
+
+   procedure average_samples (
+     constant a : in integer;
+     signal d : out std_logic
+   ) is
+   begin
+
 procedure_100
 #############
 
