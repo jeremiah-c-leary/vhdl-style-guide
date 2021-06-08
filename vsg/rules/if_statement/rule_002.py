@@ -49,7 +49,7 @@ class rule_002(rule.Rule):
 
     def _check_insert_parenthesis(self, oToi):
         lTokens = oToi.get_tokens()
-        if (not isinstance(lTokens[0], parser.open_parenthesis) or 
+        if (not isinstance(lTokens[0], parser.open_parenthesis) or
                 not isinstance(lTokens[-1], parser.close_parenthesis)):
             sSolution = 'Enclose condition in ()\'s.'
             dAction = {}
