@@ -31,10 +31,10 @@ def filter_indexes_in_unless_regions(lIndexes, lUnless, oTokenMap):
         return lIndexes
 
     for iIndex in lIndexes:
-        bAppend=True
+        bAppend = True
         for unless in lUnlessIndexes:
             if iIndex >= unless[0] and iIndex <= unless[1]:
-                bAppend=False
+                bAppend = False
                 break
         if bAppend:
             lReturn.append(iIndex)
