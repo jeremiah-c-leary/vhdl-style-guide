@@ -50,3 +50,12 @@ architecture rtl of fifo is
   );
 
 begin end architecture RTL;
+
+architecture RTL of FIFO is
+
+  -- pass
+
+  constant c_const1 : natural := 0;
+  constant c_const2 : natural := 1;
+
+begin end architecture RTL;

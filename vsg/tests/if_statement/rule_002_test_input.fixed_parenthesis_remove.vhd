@@ -47,4 +47,12 @@ begin
 
   end process;
 
+  process begin
+
+    if (sync_reset) = '1' then
+      b <= '0';
+    end if;
+
+  end process;
+
 end architecture RTL;
