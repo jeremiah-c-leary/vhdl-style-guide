@@ -69,6 +69,28 @@ begin
 
     end case;
 
+    sig1_abcdefghijklmn   <= sig2;
+    sig2_abcdefghijklmn   <= sig3;
+    sig3_abcdefghijklmn   <= sig3;
+
+    for index in 4 to 23 loop
+      sig5_abc            <= sig6;
+      sig6_abc            <= sig7;
+      sig6_abc            <= sig7;
+    end loop;
+
+    while (temp /= 10) loop
+      sig1_abcdefghijklmn <= sig2;
+      sig2_abcdefghijklmn <= sig3;
+      sig3_abcdefghijklmn <= sig3;
+    end loop;
+
+    loop
+      sig5_a              <= sig6;
+      sig6_a              <= sig7;
+      sig6_a              <= sig7;
+    end loop;
+
   end process;
 
 
