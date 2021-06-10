@@ -59,6 +59,8 @@ class align_tokens_in_region_between_tokens_unless_between_tokens(rule.Rule):
         self.configuration.append('case_control_statements_ends_group')
         self.case_keyword_statements_ends_group = False
         self.configuration.append('case_keyword_statements_ends_group')
+        self.loop_control_statements_ends_group = False
+        self.configuration.append('loop_control_statements_ends_group')
 
     def analyze(self, oFile):
         lToi = oFile.get_tokens_bounded_by(self.left_token, self.right_token)
@@ -169,6 +171,21 @@ class align_tokens_in_region_between_tokens_unless_between_tokens(rule.Rule):
 
                            dAnalysis = {}
 
+                   if self.loop_control_statements_ends_group:
+                       if check_for_loop_keywords(iIndex + 1, lTokens):
+                           add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
+
+                           for iKey in list(dAnalysis.keys()):
+                               if dAnalysis[iKey]['adjust'] != 0:
+                                   oLineTokens = oFile.get_tokens_from_line(iKey)
+                                   sSolution = 'Move ' + dAnalysis[iKey]['token_value'] + ' ' + str(dAnalysis[iKey]['adjust']) + ' columns'
+                                   oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, sSolution)
+                                   oViolation.set_action(dAnalysis[iKey])
+                                   self.add_violation(oViolation)
+
+                           dAnalysis = {}
+
+
 
             add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
 
@@ -275,3 +292,29 @@ def check_for_when_keywords(iToken, lTokens):
         return True
 
     return False
+
+def check_for_loop_keywords(iToken, lTokens):
+    iMyToken = iToken
+    if isinstance(lTokens[iToken], parser.whitespace):
+        iMyToken += 1
+
+    if isinstance(lTokens[iMyToken], token.loop_statement.loop_label):
+        return True
+
+    if isinstance(lTokens[iMyToken], token.iteration_scheme.while_keyword):
+        return True
+
+    if isinstance(lTokens[iMyToken], token.iteration_scheme.for_keyword):
+        return True
+
+    if isinstance(lTokens[iMyToken], token.loop_statement.loop_keyword):
+        return True
+
+    if isinstance(lTokens[iMyToken], token.loop_statement.end_keyword):
+        return True
+
+    if isinstance(lTokens[iMyToken], token.loop_statement.end_loop_keyword):
+        return True
+
+    return False
+

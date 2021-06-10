@@ -30,6 +30,10 @@ lExpected_blank_when = []
 lExpected_blank_when.append('')
 utils.read_file(os.path.join(sTestDir, 'rule_005_test_input.fixed_allowing_blank_and_when.vhd'), lExpected_blank_when)
 
+lExpected_blank_no_loop = []
+lExpected_blank_no_loop.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_005_test_input.fixed_allowing_blank_and_no_loop.vhd'), lExpected_blank_no_loop)
+
 class test_sequential_rule(unittest.TestCase):
 
     def setUp(self):
@@ -108,6 +112,20 @@ class test_sequential_rule(unittest.TestCase):
         oRule.analyze(self.oFile), 
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
+    def test_rule_005_allowing_blank_no_loop(self):
+        oRule = sequential.rule_005()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'sequential')
+        self.assertEqual(oRule.identifier, '005')
+
+        oRule.blank_line_ends_group = False
+        oRule.loop_control_statements_ends_group = True
+
+        lExpected = [48, 49, 50, 53, 54, 55, 57, 58, 66, 67, 68]
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+
     def test_fix_rule_005(self):
         oRule = sequential.rule_005()
 
@@ -178,6 +196,21 @@ class test_sequential_rule(unittest.TestCase):
         lActual = self.oFile.get_lines()
 
         self.assertEqual(lExpected_blank_when, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+
+    def test_fix_rule_005_allowing_blank_and_no_loop(self):
+        oRule = sequential.rule_005()
+
+        oRule.blank_line_ends_group = False
+        oRule.loop_control_statements_ends_group = True
+
+        oRule.fix(self.oFile)
+
+        lActual = self.oFile.get_lines()
+
+        self.assertEqual(lExpected_blank_no_loop, lActual)
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
