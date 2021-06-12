@@ -265,7 +265,7 @@ Rule Specific Keyword Alignment Configuration
       end case
       data_valid_after  <= '1';
 
-#. :code:`case_keyword_statements_ends_group` - if set to :code:`True` and :code:`case_control_statements_ends_group` is set to :code:`False`, any line with case when statement ends the group of lines that should be aligned and starts new group. If set to :code:`False`, this configuration has no effect and :code:`case_control_statements_ends_group` rules are followed. 
+#. :code:`case_keyword_statements_ends_group` - if set to :code:`True` and :code:`case_control_statements_ends_group` is set to :code:`False`, any line with :code:`case` or :code:`end case` statements ends the group of lines that should be aligned and starts new group. If set to :code:`False`, this configuration has no effect and :code:`case_control_statements_ends_group` rules are followed. 
    By default set to :code:`False`.
 
     **Violation**
