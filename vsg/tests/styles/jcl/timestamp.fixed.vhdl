@@ -114,7 +114,7 @@ begin
 
         if (APUFCMFLUSH = '1') then
           next_state <= IDLE;
-        elsif (APUFCMINSTRVALID and APUFCMDECODED and APUFCMDECUDIVALID) = '1' then
+        elsif ((APUFCMINSTRVALID and APUFCMDECODED and APUFCMDECUDIVALID) = '1') then
           if (APUFCMWRITEBACKOK = '1') then
             -- operands are ready
             if (APUFCMDECUDI = "000") then
