@@ -205,7 +205,7 @@ Rule Specific Keyword Alignment Configuration
           hold_transmission <= '1';
       end if;
 
-#. :code:`case_control_statements_ends_group` - if set to :code:`True` any line with case control statement ends the group of lines that should be aligned and starts new group.
+#. :code:`case_control_statements_ends_group` - if set to :code:`True`, any line with case control statements (:code:`case`, :code:`when` or :code:`end case`) ends the group of lines that should be aligned and starts new group. If set to :code:`False`, no line with case control statements ends the group of lines that should be aligned and starts a group. If set to :code:`break_on_case_or_end_case`, any line with :code:`case` or :code:`end case` ends the group of lines that should be aligned and starts new group.
    By default set to :code:`True`.
 
     **Violation**
@@ -265,29 +265,7 @@ Rule Specific Keyword Alignment Configuration
       end case
       data_valid_after  <= '1';
 
-#. :code:`case_keyword_statements_ends_group` - if set to :code:`True` and :code:`case_control_statements_ends_group` is set to :code:`False`, any line with :code:`case` or :code:`end case` statements ends the group of lines that should be aligned and starts new group. If set to :code:`False`, this configuration has no effect and :code:`case_control_statements_ends_group` rules are followed. 
-   By default set to :code:`False`.
-
-    **Violation**
-
-    .. code-block:: vhdl
-
-      data_valid_before    <= '1';
-      case A is
-          when A =>
-              X <= F;
-              XY <= G;
-              XYZ <= H;
-          when B =>
-              a <= I;
-              ab <= h;
-              c <= a;
-          when others =>
-            null;
-      end case
-      data_valid_after       <= '1';
-
-    **Fix (case_keyword_statements_ends_group = True and case_control_statements_ends_group = False)**
+    **Fix (case_control_statements_ends_group = break_on_case_or_end_case)**
 
     .. code-block:: vhdl
 
@@ -305,26 +283,6 @@ Rule Specific Keyword Alignment Configuration
               null;
       end case
       data_valid_after <= '1';
-
-    **Fix (case_keyword_statements_ends_group = False and case_control_statements_ends_group = False)**
-
-    .. code-block:: vhdl
-
-      data_valid_before <= '1';
-      case A is
-          when A =>
-              X         <= F;
-              XY        <= G;
-              XYZ       <= H;
-          when B =>
-              a         <= I;
-              ab        <= h;
-              c         <= a;
-          when others =>
-              null;
-      end case
-      data_valid_after  <= '1';
-
 
 #. :code:`loop_control_statements_ends_group` - if set to :code:`True` any line with loop control statement (including for and while loops) ends the group of lines that should be aligned and starts new group.
    By default set to :code:`False`.

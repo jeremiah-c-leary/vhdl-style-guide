@@ -87,8 +87,7 @@ class test_sequential_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'sequential')
         self.assertEqual(oRule.identifier, '005')
 
-        oRule.case_control_statements_ends_group = False
-        oRule.case_keyword_statements_ends_group = True
+        oRule.case_control_statements_ends_group = 'break_on_case_or_end_case'
         oRule.blank_line_ends_group = False
 
         lExpected = [31, 32, 33, 48, 49, 50, 53, 54, 55, 57, 58, 66, 67, 68,
@@ -187,8 +186,7 @@ class test_sequential_rule(unittest.TestCase):
     def test_fix_rule_005_allowing_blank_and_when(self):
         oRule = sequential.rule_005()
 
-        oRule.case_control_statements_ends_group = False
-        oRule.case_keyword_statements_ends_group = True
+        oRule.case_control_statements_ends_group = 'break_on_case_or_end_case'
         oRule.blank_line_ends_group = False
 
         oRule.fix(self.oFile)
