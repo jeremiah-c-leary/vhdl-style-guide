@@ -23,3 +23,7 @@ from .rule_203 import rule_203
 from .rule_204 import rule_204
 
 from .rule_300 import rule_300
+
+from .rule_502 import rule_502
+from .rule_506 import rule_506
+
