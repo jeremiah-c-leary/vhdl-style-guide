@@ -38,12 +38,12 @@ This rule checks the indentation of the **function** keyword.
 function_002
 ############
 
-This rule has been included in `function_100 <function_rules.html#function-100>`_.
+This rule has been merged into `function_100 <function_rules.html#function-100>`_.
 
 function_003
 ############
 
-This rule has been included in `function_100 <function_rules.html#function-100>`_.
+This rule has been merged into `function_100 <function_rules.html#function-100>`_.
 
 function_004
 ############
