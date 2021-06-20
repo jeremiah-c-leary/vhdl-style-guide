@@ -410,8 +410,6 @@ This rule checks for a single space between the following function elements:  **
 
 **Violation**
 
-**Violation**
-
 .. code-block:: vhdl
 
    function     overflow    (a: integer)     return     integer    is
