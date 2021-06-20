@@ -38,44 +38,12 @@ This rule checks the indentation of the **function** keyword.
 function_002
 ############
 
-|phase_2| |error|
-
-This rule checks a single space exists after the **function** keyword.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   function     overflow (a: integer) return integer is
-
-**Fix**
-
-.. code-block:: vhdl
-
-   function overflow (a: integer) return integer is
+This rule has been included in `function_100 <function_rules.html#function-100>`_.
 
 function_003
 ############
 
-|phase_2| |error|
-
-This rule checks for a single space between the function name and the (.'
-
-**Violation**
-
-.. code-block:: vhdl
-
-   function overflow   (a: integer) return integer is
-
-   function underflow(a: integer) return integer is
-
-**Fix**
-
-.. code-block:: vhdl
-
-   function overflow (a: integer) return integer is
-
-   function underflow (a: integer) return integer is
+This rule has been included in `function_100 <function_rules.html#function-100>`_.
 
 function_004
 ############
