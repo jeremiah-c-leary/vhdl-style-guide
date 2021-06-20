@@ -433,6 +433,29 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
    function overflow (a: integer) return integer is
 
+procedure_101
+#############
+
+|phase_2| |error|
+
+This rule checks for a single space between the **end** and **procedure** keywords and procedure designator.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   end   function   overflow;
+   end   function;
+   end   overflow;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   end function overflow;
+   end function;
+   end overflow;
+
 function_201
 ############
 
