@@ -346,3 +346,31 @@ Refer to the section `Configuring Identifier Alignment Rules <configuring.html#c
    variable var1     : natural;
    signal   sig1     : natural;
    constant c_period : time;
+
+procedure_410
+#############
+
+|phase_5| |error|
+
+This rule checks the alignment of the colon for each parameter in the procedure declaration.
+
+Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
+
+**Violation**
+
+.. code-block:: vhdl
+
+     procedure average_samples (
+       constant a : in integer;
+       signal d : out std_logic
+     );
+
+**Fix**
+
+.. code-block:: vhdl
+
+     procedure average_samples (
+       constant a : in integer;
+       signal d   : out std_logic
+     );
+
