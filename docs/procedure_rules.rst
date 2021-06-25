@@ -374,3 +374,42 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
        signal d   : out std_logic
      );
 
+procedure_411
+#############
+
+|phase_5| |error|
+
+This rule checks the alignment of **:=** operator for each parameter in the procedure declaration.
+
+Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   generic (
+       g_width        : positive := 8;
+       g_output_delay : positive      := 5
+   );
+   port (
+       clk_i   : in std_logic;
+       data1_i : in std_logic  := 'X';
+       data2_i : in std_logic      := 'X';
+       data_o  : in std_logic
+   );
+
+**Fix**
+
+.. code-block:: vhdl
+
+   generic (
+       g_width        : positive := 8;
+       g_output_delay : positive := 5
+   );
+   port (
+       clk_i   : in std_logic;
+       data1_i : in std_logic := 'X';
+       data2_i : in std_logic := 'X';
+       data_o  : in std_logic
+   );
+
