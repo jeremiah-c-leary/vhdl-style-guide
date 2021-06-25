@@ -387,29 +387,18 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
 
 .. code-block:: vhdl
 
-   generic (
-       g_width        : positive := 8;
-       g_output_delay : positive      := 5
-   );
-   port (
-       clk_i   : in std_logic;
-       data1_i : in std_logic  := 'X';
-       data2_i : in std_logic      := 'X';
-       data_o  : in std_logic
-   );
+     procedure average_samples (
+       constant a : in integer := 0;
+       signal d : out std_logic   := 'X';
+     );
 
 **Fix**
 
 .. code-block:: vhdl
 
-   generic (
-       g_width        : positive := 8;
-       g_output_delay : positive := 5
-   );
-   port (
-       clk_i   : in std_logic;
-       data1_i : in std_logic := 'X';
-       data2_i : in std_logic := 'X';
-       data_o  : in std_logic
-   );
+     procedure average_samples (
+       constant a : in integer  := 0;
+       signal d : out std_logic := 'X';
+     );
+
 
