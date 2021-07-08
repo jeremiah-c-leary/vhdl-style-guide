@@ -12,4 +12,5 @@ from .rule_010 import rule_010
 
 from .rule_410 import rule_410
 from .rule_411 import rule_411
+from .rule_412 import rule_412
 

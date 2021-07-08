@@ -401,4 +401,30 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
        signal d : out std_logic := 'X';
      );
 
+procedure_412
+#############
+
+|phase_5| |error|
+
+This rule checks for alignment of inline comments for each parameter in the procedure declaration.
+
+Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
+
+**Violation**
+
+.. code-block:: vhdl
+
+     procedure average_samples (
+       constant a : in integer;   -- Comment about a
+       signal d   : out std_logic;   -- Comment about d
+     );
+
+**Fix**
+
+.. code-block:: vhdl
+
+     procedure average_samples (
+       constant a : in integer;    -- Comment about a
+       signal d   : out std_logic; -- Comment about d
+     );
 
