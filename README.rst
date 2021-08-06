@@ -25,8 +25,12 @@ VHDL Style Guide (VSG)
 Announcements
 -------------
 
-I have some personal stuff going on at the moment I need to address.
-Tentatively I plan to pick this back up in July, depending on how June goes.
+Update 08/05/2021
+Well...I had hoped to get back to this in July, but events have not turned out the way I expected.
+
+So I am expecting to start back up in Sept.
+
+I will keep you posted.
 
 Regards,
 
