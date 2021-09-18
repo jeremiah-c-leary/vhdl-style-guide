@@ -19,8 +19,8 @@ class token_indent(rule.Rule):
     identifier : string
        unique identifier.  Usually in the form of 00N.
 
-    trigger : parser object type
-       object type to apply the case check against
+    lTokens : list of token types
+       token type to apply the indent rule
     '''
 
     def __init__(self, name, identifier, lTokens):
@@ -35,29 +35,12 @@ class token_indent(rule.Rule):
     def _analyze(self, lToi):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
-            if len(lTokens) == 2 and lTokens[1].get_indent() == 0:
-                sSolution = "Indent level 0"
-                oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
-                oViolation.set_action('remove_whitespace')
-                self.add_violation(oViolation)
-            elif len(lTokens) == 2:
-                if lTokens[1].get_indent() is None:
-                    continue
-                iWhitespace = len(lTokens[0].get_value())
-                iIndent = self.indentSize * lTokens[1].get_indent()
-                if iWhitespace != iIndent:
-                    sSolution = 'Indent level ' + str(lTokens[1].get_indent())
-                    oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
-                    oViolation.set_action('adjust_whitespace')
-                    self.add_violation(oViolation)
-            elif len(lTokens) == 1:
-                if lTokens[0].get_indent() is None:
-                    continue
-                if lTokens[0].get_indent() != 0:
-                    sSolution = 'Indent level ' + str(lTokens[0].get_indent())
-                    oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
-                    oViolation.set_action('add_whitespace')
-                    self.add_violation(oViolation)
+            if indent_should_be_zero_but_has_leading_whitespace(lTokens):
+                create_zero_indent_violation(self, oToi)
+            elif indent_exists_but_is_incorrect(self, lTokens):
+                create_indent_violation(self, oToi, lTokens)
+            elif no_indent_exists_but_should(lTokens):
+                create_no_indent_violation(self, oToi, lTokens)
 
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
@@ -69,3 +52,51 @@ class token_indent(rule.Rule):
         elif oViolation.get_action() == 'add_whitespace':
             rules_utils.insert_whitespace(lTokens, 0, lTokens[0].get_indent() * self.indentSize)
             oViolation.set_tokens(lTokens)
+
+
+def indent_should_be_zero_but_has_leading_whitespace(lTokens):
+    if len(lTokens) == 2 and lTokens[1].get_indent() == 0:
+        return True
+    return False
+
+
+def create_zero_indent_violation(self, oToi):
+    sSolution = "Indent level 0"
+    create_violation(self, oToi, sSolution, 'remove_whitespace')
+
+
+def indent_exists_but_is_incorrect(self, lTokens):
+    if len(lTokens) == 2:
+        if lTokens[1].get_indent() is None:
+            return False
+        iWhitespace = len(lTokens[0].get_value())
+        iIndent = self.indentSize * lTokens[1].get_indent()
+        if iWhitespace != iIndent:
+            return True
+    return False
+
+
+def create_indent_violation(self, oToi, lTokens):
+    sSolution = 'Indent level ' + str(lTokens[1].get_indent())
+    create_violation(self, oToi, sSolution, 'adjust_whitespace')
+
+
+def no_indent_exists_but_should(lTokens):
+    if len(lTokens) == 1:
+        if lTokens[0].get_indent() is None:
+            return False
+        if lTokens[0].get_indent() != 0:
+            return True
+    return False
+
+
+def create_no_indent_violation(self, oToi, lTokens):
+    sSolution = 'Indent level ' + str(lTokens[0].get_indent())
+    create_violation(self, oToi, sSolution, 'add_whitespace')
+
+
+def create_violation(self, oToi, sSolution, sAction):
+    oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
+    oViolation.set_action(sAction)
+    self.add_violation(oViolation)
+
