@@ -98,3 +98,10 @@ def get_index_of_token_in_list(oToken, lTokens):
         if isinstance(token, oToken):
             return iToken
     return None
+
+
+def get_indent_of_line(lTokens):
+    if isinstance(lTokens[0], parser.whitespace):
+        return lTokens[1].get_indent()
+    else:
+        return lTokens[0].get_indent()

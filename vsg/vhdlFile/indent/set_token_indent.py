@@ -27,6 +27,8 @@ def set_token_indent(dIndentMap, lTokens):
 
         sUniqueId = oToken.get_unique_id(sJoin=':')
 
+        iTokenIndent = None
+
         if sUniqueId in lTokenKeys:
             token_key = dIndents[sUniqueId]['token']
             after_key = dIndents[sUniqueId]['after']
@@ -104,6 +106,8 @@ def set_token_indent(dIndentMap, lTokens):
         if isinstance(oToken, token.concurrent_selected_signal_assignment.semicolon):
             dVars['insideConcurrentSignalAssignment'] = False
             continue
+
+        oToken.set_indent(iTokenIndent)
 
 
 def update_indent_var(iIndent, update):
