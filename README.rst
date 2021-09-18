@@ -25,12 +25,10 @@ VHDL Style Guide (VSG)
 Announcements
 -------------
 
-Update 08/05/2021
-Well...I had hoped to get back to this in July, but events have not turned out the way I expected.
+Update 09/18/2021
 
-So I am expecting to start back up in Sept.
-
-I will keep you posted.
+Things have started to settle down to the point where I can pick this back up a little.
+I will be able to devote more time in October.
 
 Regards,
 
