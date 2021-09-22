@@ -84,6 +84,24 @@ def filter_tokens_between_tokens(lTokens, oStart, oEnd, oTokenMap):
     return lReturn
 
 
+def filter_tokens_between_tokens_unless_token_exists_between_them(lTokens, oStart, oEnd, oStop, oTokenMap):
+    lStart = oTokenMap.get_token_indexes(oStart)
+    lEnd = oTokenMap.get_token_indexes(oEnd)
+    lStop = oTokenMap.get_token_indexes(oStop)
+    lReturn = []
+    for oToken in lTokens:
+        for iStart in lStart:
+            for iEnd in lEnd:
+                if iEnd > iStart:
+                    for iStop in lStop:
+                        if iStart < iStop < iEnd:
+                            break
+                    else:
+                        lReturn.extend(oTokenMap.get_token_indexes_between_indexes(oToken, iStart, iEnd))
+                        break
+    return lReturn
+
+
 def get_indexes_of_tokens_between(lStartToken, lEndTokens, oTokenMap):
     '''
     This function will take a list of start tokens and a list of end tokens.

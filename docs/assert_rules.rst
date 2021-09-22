@@ -29,6 +29,8 @@ This rule checks indent of multiline assert statements.
 assert_002
 ##########
 
+|phase_4| |error|
+
 This rule checks the **report** keyword is on it's own line for concurrent assertion statements.
 
 **Violation**
@@ -59,7 +61,9 @@ This rule checks the **report** keyword is on it's own line for concurrent asser
 assert_003
 ##########
 
-This rule checks the **report** keyword is on it's own line for assertion statements.
+|phase_4| |error|
+
+This rule checks the **report** keyword is on it's own line for sequential assertion statements.
 
 **Violation**
 
@@ -99,6 +103,8 @@ This rule checks the **report** keyword is on it's own line for assertion statem
 assert_004
 ##########
 
+|phase_4| |error|
+
 This rule checks the **severity** keyword is on it's own line for concurrent assertion statements.
 
 **Violation**
@@ -123,6 +129,44 @@ This rule checks the **severity** keyword is on it's own line for concurrent ass
      assert WIDTH > 16
        report "FIFO width is limited to 16 bits."
        severity FAILURE;
+
+   end architecture rtl;
+
+assert_005
+##########
+
+|phase_4| |error|
+
+This rule checks the **severity** keyword is on it's own line for sequential assertion statements.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   architecture rtl of fifo is
+   begin
+
+     process begin
+
+       assert WIDTH > 16 report "FIFO width is limited to 16 bits." severity FAILURE;
+
+     end process;
+
+   end architecture rtl;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   architecture rtl of fifo is
+   begin
+
+     process begin
+
+       assert WIDTH > 16
+         report "FIFO width is limited to 16 bits." severity FAILURE;
+
+     end process;
 
    end architecture rtl;
 
