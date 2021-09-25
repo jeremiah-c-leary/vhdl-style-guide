@@ -118,6 +118,8 @@ Rules Enforcing Case
 * `function_013 <function_rules.html#function-013>`_
 * `function_014 <function_rules.html#function-014>`_
 * `function_017 <function_rules.html#function-017>`_
+* `function_502 <function_rules.html#function-502>`_
+* `function_506 <function_rules.html#function-506>`_
 
 * `generate_005 <generate_rules.html#generate-005>`_
 * `generate_009 <generate_rules.html#generate-009>`_
@@ -173,6 +175,14 @@ Rules Enforcing Case
 * `procedure_007 <procedure_rules.html#procedure-007>`_
 * `procedure_008 <procedure_rules.html#procedure-008>`_
 * `procedure_009 <procedure_rules.html#procedure-009>`_
+* `procedure_500 <procedure_rules.html#procedure-500>`_
+* `procedure_501 <procedure_rules.html#procedure-501>`_
+* `procedure_502 <procedure_rules.html#procedure-502>`_
+* `procedure_503 <procedure_rules.html#procedure-503>`_
+* `procedure_504 <procedure_rules.html#procedure-504>`_
+* `procedure_505 <procedure_rules.html#procedure-505>`_
+* `procedure_506 <procedure_rules.html#procedure-506>`_
+* `procedure_507 <procedure_rules.html#procedure-507>`_
 
 * `process_004 <process_rules.html#process-004>`_
 * `process_005 <process_rules.html#process-005>`_

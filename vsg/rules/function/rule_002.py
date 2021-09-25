@@ -1,13 +1,9 @@
 
-from vsg.rules import single_space_between_tokens
-
-from vsg.token import function_specification as token
+from vsg.depricated_rule import Depricated
 
 
-class rule_002(single_space_between_tokens):
-    '''
-    Entity rule 002 checks for a single space between the entity keyword and token identifier.
-    '''
+class rule_002(Depricated):
+
     def __init__(self):
-        single_space_between_tokens.__init__(self, 'function', '002', token.function_keyword, token.designator)
-        self.solution = 'Reduce spaces between *function* keyword and designator to a single space.'
+        Depricated.__init__(self, 'function', '002')
+        self.message.append('Rule ' + self.unique_id + ' has been merged into function_100.')

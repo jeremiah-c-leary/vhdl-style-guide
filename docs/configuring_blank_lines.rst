@@ -95,6 +95,10 @@ Rules Enforcing Blank Lines
 * `context_024 <context_rules.html#context-024>`_
 * `context_025 <context_rules.html#context-025>`_
 * `function_007 <function_rules.html#function-007>`_
+* `function_201 <function_rules.html#function-201>`_
+* `function_202 <function_rules.html#function-202>`_
+* `function_203 <function_rules.html#function-203>`_
+* `function_204 <function_rules.html#function-204>`_
 * `generate_003 <generate_rules.html#generate-003>`_
 * `if_030 <if_statement_rules.html#if_statement-030>`_
 * `instantiation_019 <instantiation_rules.html#instantiation-019>`_
@@ -103,6 +107,12 @@ Rules Enforcing Blank Lines
 * `package_body_201 <package_body_rules.html#package-body-201>`_
 * `package_body_202 <package_body_rules.html#package-body-202>`_
 * `package_body_203 <package_body_rules.html#package-body-203>`_
+* `procedure_200 <procedure_rules.html#procedure-200>`_
+* `procedure_201 <procedure_rules.html#procedure-201>`_
+* `procedure_202 <procedure_rules.html#procedure-202>`_
+* `procedure_203 <procedure_rules.html#procedure-203>`_
+* `procedure_204 <procedure_rules.html#procedure-204>`_
+* `procedure_205 <procedure_rules.html#procedure-205>`_
 * `process_011 <process_rules.html#process-011>`_
 * `process_021 <process_rules.html#process-021>`_
 * `process_022 <process_rules.html#process-022>`_

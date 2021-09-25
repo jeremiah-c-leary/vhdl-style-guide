@@ -38,44 +38,12 @@ This rule checks the indentation of the **function** keyword.
 function_002
 ############
 
-|phase_2| |error|
-
-This rule checks a single space exists after the **function** keyword.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   function     overflow (a: integer) return integer is
-
-**Fix**
-
-.. code-block:: vhdl
-
-   function overflow (a: integer) return integer is
+This rule has been merged into `function_100 <function_rules.html#function-100>`_.
 
 function_003
 ############
 
-|phase_2| |error|
-
-This rule checks for a single space between the function name and the (.'
-
-**Violation**
-
-.. code-block:: vhdl
-
-   function overflow   (a: integer) return integer is
-
-   function underflow(a: integer) return integer is
-
-**Fix**
-
-.. code-block:: vhdl
-
-   function overflow (a: integer) return integer is
-
-   function underflow (a: integer) return integer is
+This rule has been merged into `function_100 <function_rules.html#function-100>`_.
 
 function_004
 ############
@@ -432,3 +400,239 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 .. code-block:: vhdl
 
    function overflow (a: integer) return integer is
+
+function_100
+############
+
+|phase_2| |error|
+
+This rule checks for a single space between the following function elements:  **function** keyword, function designator, open parenthesis, close parenthesis, **return** keyword, return type and **is** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   function     overflow    (a: integer)     return     integer    is
+
+**Fix**
+
+.. code-block:: vhdl
+
+   function overflow (a: integer) return integer is
+
+function_101
+############
+
+|phase_2| |error|
+
+This rule checks for a single space between the **end** and **function** keywords and function designator.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   end   function   overflow;
+   end   function;
+   end   overflow;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   end function overflow;
+   end function;
+   end overflow;
+
+function_201
+############
+
+|phase_3| |error|
+
+This rule checks for a blank line below the **is** keyword.
+
+This rule allows the **begin** keyword to occupy the blank line:
+
+.. code-block:: vhdl
+
+   function overflow (a: integer) return integer is
+   begin
+
+Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   function overflow (a: integer) return integer is
+     constant width : integer := 32;
+   begin
+
+**Fix**
+
+.. code-block:: vhdl
+
+   function overflow (a: integer) return integer is
+
+     constant width : integer := 32;
+   begin
+
+function_202
+############
+
+|phase_3| |error|
+
+This rule checks for blank lines above the **begin** keyword.
+
+This rule allows the **is** keyword to occupy the blank line:
+
+.. code-block:: vhdl
+
+   function overflow (a: integer) return integer is
+   begin
+
+Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   function overflow (a: integer) return integer is
+
+     constant width : integer := 32;
+   begin
+
+**Fix**
+
+.. code-block:: vhdl
+
+   function overflow (a: integer) return integer is
+
+     constant width : integer := 32;
+
+   begin
+
+function_203
+############
+
+|phase_3| |error|
+
+This rule checks for a blank line below the **begin** keyword.
+
+Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   function overflow (a: integer) return integer is
+   begin
+     a <= b;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   function overflow (a: integer) return integer is
+   begin
+
+     a <= b;
+
+function_204
+############
+
+|phase_3| |error|
+
+This rule checks for blank lines above the **end** keyword.
+
+Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   begin
+
+     a <= b;
+   end function overflow;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   begin
+
+     a <= b;
+
+   end function overflow;
+
+function_300
+############
+
+|phase_4| |error|
+
+This rule checks the indent of the closing parenthesis if it is on it's own line.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   function func_1 (a : integer; b : integer;
+     c : unsigned(3 downto 0);
+     d : std_logic_vector(7 downto 0);
+     e : std_logic
+     ) return integer is
+
+
+**Fix**
+
+.. code-block:: vhdl
+
+   function func_1 (a : integer; b : integer;
+     c : unsigned(3 downto 0);
+     d : std_logic_vector(7 downto 0);
+     e : std_logic
+   ) return integer is
+
+function_502
+############
+
+|phase_6| |error|
+
+This rule checks the **is** keyword has proper case.
+
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   function overflow (a: integer) return integer IS
+
+**Fix**
+
+.. code-block:: vhdl
+
+   function overflow (a: integer) return integer is
+
+function_506
+############
+
+|phase_6| |error|
+
+This rule checks the function designator has proper case on the end function declaration.
+
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   end function OVERFLOW;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   end function overflow;
+
+
