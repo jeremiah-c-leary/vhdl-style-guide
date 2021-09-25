@@ -70,7 +70,7 @@ def set_token_indent(dIndentMap, lTokens):
         if isinstance(oToken, parser.comment):
             if bLibraryFound:
                 oToken.set_indent(iIndent + 1)
-            elif not dVars['insideConcurrentSignalAssignment']:
+            else:
                 oToken.set_indent(iIndent)
             continue
 

@@ -34,7 +34,7 @@ class rule_011(rule.Rule):
         lTemp = lTokens[dAction['iToken']:]
         lTemp.append(parser.carriage_return())
         lTemp.extend(lTokens[:dAction['iToken']])
-        lTemp[dAction['index']].set_indent(dAction['indent'])
+#        lTemp[dAction['index']].set_indent(dAction['indent'])
 
         oViolation.set_tokens(lTemp)
 
@@ -67,7 +67,7 @@ def create_action(lTokens, iToken):
     else:
         dAction['iToken'] = iToken
         dAction['index'] = 0
-    dAction['indent'] = utils.get_indent_of_line(lTokens)
+#    dAction['indent'] = utils.get_indent_of_line(lTokens)
     return dAction
 
 
