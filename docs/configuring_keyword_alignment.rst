@@ -345,6 +345,7 @@ Rules Enforcing Keyword Alignment
 * `generate_405 <generate_rules.html#generate-405>`_
 * `instantiation_010 <instantiation_rules.html#instantiation-010>`_
 * `instantiation_029 <instantiation_rules.html#instantiation-029>`_
+* `procedure_401 <procedure_rules.html#procedure-401>`_
 * `process_033 <process_rules.html#process-033>`_
 * `process_034 <process_rules.html#process-034>`_
 * `process_035 <process_rules.html#process-035>`_
