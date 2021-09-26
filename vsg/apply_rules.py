@@ -94,3 +94,14 @@ def apply_rules(commandLineArguments, oConfig, tIndexFileName):
         dJsonEntry["violations"] = oRules.extract_violation_dictionary()["violations"]
 
     return fExitStatus, testCase, dJsonEntry, sOutputStd, sOutputErr
+
+
+def write_vhdl_file(oVhdlFile):
+    try:
+        with open(oVhdlFile.filename, 'w') as oFile:
+            for sLine in oVhdlFile.get_lines()[1:]:
+                oFile.write(sLine + '\n')
+    except PermissionError as err:
+        print (err, "Could not write fixes back to file.")
+
+

@@ -21,15 +21,6 @@ from . import version
 from . import vhdlFile
 
 
-def write_vhdl_file(oVhdlFile):
-    try:
-        with open(oVhdlFile.filename, 'w') as oFile:
-            for sLine in oVhdlFile.get_lines()[1:]:
-                oFile.write(sLine + '\n')
-    except PermissionError as err:
-        print (err, "Could not write fixes back to file.")
-
-
 def create_backup_file(sFileName):
     '''Copies existing file and adds .bak to the end.'''
     shutil.copy2(sFileName, sFileName + '.bak')
