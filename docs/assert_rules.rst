@@ -31,7 +31,7 @@ assert_002
 
 |phase_4| |error|
 
-This rule checks the **report** keyword is on it's own line for concurrent assertion statements.
+This rule checks the **report** keyword is on its own line for concurrent assertion statements.
 
 **Violation**
 
@@ -63,7 +63,7 @@ assert_003
 
 |phase_4| |error|
 
-This rule checks the **report** keyword is on it's own line for sequential assertion statements.
+This rule checks the **report** keyword is on its own line for sequential assertion statements.
 
 **Violation**
 
@@ -105,7 +105,7 @@ assert_004
 
 |phase_4| |error|
 
-This rule checks the **severity** keyword is on it's own line for concurrent assertion statements.
+This rule checks the **severity** keyword is on its own line for concurrent assertion statements.
 
 **Violation**
 
@@ -137,7 +137,7 @@ assert_005
 
 |phase_4| |error|
 
-This rule checks the **severity** keyword is on it's own line for sequential assertion statements.
+This rule checks the **severity** keyword is on its own line for sequential assertion statements.
 
 **Violation**
 
