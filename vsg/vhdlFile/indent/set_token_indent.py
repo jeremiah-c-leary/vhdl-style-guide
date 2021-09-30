@@ -59,11 +59,24 @@ def set_token_indent(dIndentMap, lTokens):
             continue
 
         if isinstance(oToken, token.architecture_body.architecture_keyword):
+            bLibraryFound = False
             bArchitectureFound = True
             continue
 
         if isinstance(oToken, token.architecture_body.semicolon):
             bArchitectureFound = False
+            continue
+
+        if isinstance(oToken, token.entity_declaration.entity_keyword):
+            bLibraryFound = False
+            continue
+
+        if isinstance(oToken, token.package_body.package_keyword):
+            bLibraryFound = False
+            continue
+
+        if isinstance(oToken, token.package_declaration.package_keyword):
+            bLibraryFound = False
             continue
 
         ### Comments
