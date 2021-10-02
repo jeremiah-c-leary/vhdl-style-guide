@@ -40,7 +40,7 @@ class testCodeExample(unittest.TestCase):
         oRuleList.configure(oConfig)
         oRuleList.fix(7, oConfig.dConfig['skip_phase'])
         lExpected = ['']
-        utils.read_file(os.path.join(os.path.dirname(__file__),'BaudGen.vhd'), lExpected)
+        utils.read_file(os.path.join(os.path.dirname(__file__),'BaudGen.vhd'), lExpected, bStrip=False)
         self.assertEqual(lExpected, oBaudGen.get_lines())
 
     def test_board_cpu(self):
@@ -48,7 +48,7 @@ class testCodeExample(unittest.TestCase):
         oRuleList.configure(oConfig)
         oRuleList.fix(7, oConfig.dConfig['skip_phase'])
         lExpected = ['']
-        utils.read_file(os.path.join(os.path.dirname(__file__),'Board_cpu.vhd'), lExpected)
+        utils.read_file(os.path.join(os.path.dirname(__file__),'Board_cpu.vhd'), lExpected, bStrip=False)
         self.assertEqual(lExpected, oBoardCpu.get_lines())
 
     def test_data_core(self):
@@ -56,5 +56,5 @@ class testCodeExample(unittest.TestCase):
         oRuleList.configure(oConfig)
         oRuleList.fix(7, oConfig.dConfig['skip_phase'])
         lExpected = ['']
-        utils.read_file(os.path.join(os.path.dirname(__file__),'data_core.vhd'), lExpected)
+        utils.read_file(os.path.join(os.path.dirname(__file__),'data_core.vhd'), lExpected, bStrip=False)
         self.assertEqual(lExpected, oDataCore.get_lines())

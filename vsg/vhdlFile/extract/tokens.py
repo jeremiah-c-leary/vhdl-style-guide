@@ -10,10 +10,7 @@ class New():
         self.lTokens = lTokens
         self.iLine = iLine
         self.sTokenValue = None
-        try:
-            self.iEndIndex = iStartIndex + len(lTokens)
-        except TypeError:
-            self.iEndIndex = None
+        self.iEndIndex = calculate_end_index(iStartIndex, lTokens)
 
     def get_tokens(self):
         return self.lTokens
@@ -44,3 +41,14 @@ class New():
 
     def get_end_index(self):
         return self.iEndIndex
+
+
+def calculate_end_index(iStartIndex, lTokens):
+    try:
+        iReturn = iStartIndex
+        for oToken in lTokens:
+            if not isinstance(oToken, parser.beginning_of_file):
+                iReturn += 1
+        return iReturn
+    except TypeError:
+        return None

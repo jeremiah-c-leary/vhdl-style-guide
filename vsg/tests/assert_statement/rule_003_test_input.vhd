@@ -8,25 +8,25 @@ begin
   process begin
 
     LABEL : assert boolean report "Something" severity FAILURE;
-  
+
     LABEL : assert boolean
       report "Something" severity FAILURE;
-  
+
     LABEL : assert boolean report "Something"
       severity FAILURE;
-  
+
     LABEL : assert boolean
       report "Something"
       severity FAILURE;
-  
+
     assert boolean report "Something" severity FAILURE;
-  
+
     assert boolean
       report "Something" severity FAILURE;
-  
+
     assert boolean report "Something"
       severity FAILURE;
-  
+
     assert boolean
       report "Something"
       severity FAILURE;

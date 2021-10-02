@@ -37,7 +37,7 @@ begin
   end block;
 
   -- multi line
-  BLOCK_LABEL : block 
+  BLOCK_LABEL : block
   (guard)
   is
   begin

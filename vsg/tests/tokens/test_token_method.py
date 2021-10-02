@@ -81,7 +81,8 @@ class testTokenMethod(unittest.TestCase):
         lTokens.append(' ')
         lTokens.append('line')
         lTokens.append(' ')
-        lTokens.append('--  This is a comment  ')
+        lTokens.append('--  This is a comment')
+        lTokens.append('  ')
 
         lActual = tokens.create(sLine)
 
@@ -93,7 +94,8 @@ class testTokenMethod(unittest.TestCase):
         lTokens = []
 
         lTokens.append(' ')
-        lTokens.append('-- This is a comment  ')
+        lTokens.append('-- This is a comment')
+        lTokens.append('  ')
 
         lActual = tokens.create(sLine)
 
@@ -104,7 +106,8 @@ class testTokenMethod(unittest.TestCase):
 
         lTokens = []
 
-        lTokens.append('-- This is a comment  ')
+        lTokens.append('-- This is a comment')
+        lTokens.append('  ')
 
         lActual = tokens.create(sLine)
 

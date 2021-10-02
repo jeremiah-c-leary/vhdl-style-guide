@@ -66,7 +66,8 @@ class vhdlFile():
 
         self.lAllObjects = []
         for sLine in self.filecontent:
-            lTokens = tokens.create(sLine.replace('\t', '  ').rstrip())
+            lTokens = tokens.create(sLine.replace('\t', '  ').rstrip('\n').rstrip('\r'))
+#            lTokens = tokens.create(sLine.replace('\t', '  ').rstrip())
             lObjects = []
             for sToken in lTokens:
                 lObjects.append(parser.item(sToken))
@@ -101,7 +102,8 @@ class vhdlFile():
             iStart = oUpdate.oTokens.iStartIndex
             lTokens = oUpdate.get_tokens()
             iEnd = oUpdate.oTokens.iEndIndex
-            self.lAllObjects[iStart:iEnd] = lTokens
+            lMyTokens = remove_beginning_of_file_tokens(lTokens)
+            self.lAllObjects[iStart:iEnd] = lMyTokens
         if bUpdateMap:
             self.oTokenMap = process_tokens(self.lAllObjects)
 
@@ -158,6 +160,9 @@ class vhdlFile():
 
     def get_n_token_after_tokens(self, iToken, lTokens):
         return extract.get_n_token_after_tokens(iToken, lTokens, self.lAllObjects, self.oTokenMap)
+
+    def get_n_tokens_before_token(self, iN, lTokens):
+        return extract.get_m_tokens_before_and_n_tokens_after_token(iN, 0, lTokens, self.lAllObjects, self.oTokenMap)
 
     def get_n_tokens_after_token(self, iN, lTokens):
         return extract.get_m_tokens_before_and_n_tokens_after_token(0, iN, lTokens, self.lAllObjects, self.oTokenMap)
@@ -508,4 +513,12 @@ def combine_use_clause_selected_name(lTokens):
                 lReturn[-1].value = lReturn[-1].value + oToken.value
                 continue
         lReturn.append(oToken)
+    return lReturn
+
+
+def remove_beginning_of_file_tokens(lTokens):
+    lReturn = []
+    for oToken in lTokens:
+        if not isinstance(oToken, parser.beginning_of_file):
+            lReturn.append(oToken)
     return lReturn

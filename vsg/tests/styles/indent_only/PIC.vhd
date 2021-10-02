@@ -1,11 +1,11 @@
 ----------------------------------------------------------------------------
----- Create Date:    00:12:45 10/23/2010
----- Design Name: pic
----- Project Name: PIC
----- Description:
+---- Create Date:    00:12:45 10/23/2010                      
+---- Design Name: pic                                        
+---- Project Name: PIC                        
+---- Description:                                     
 ----  A Programmable Interrupt Controller which can handle upto 8   ----
 ---- level triggered interrupts.The operating modes available are    ----
----- polling fixed priority modes.              ----                                                           ----
+---- polling fixed priority modes.              ----                                                           ----  
 ----------------------------------------------------------------------------
 ----                                                                    ----
 ---- This file is a part of the pic project at                 ----
@@ -86,7 +86,7 @@ begin
           int_pt <= "000";
           pt <= (others => (others => '0'));
           if( RST_I = '0' ) then
-            next_s <= get_commands;
+            next_s <= get_commands;  
           else
             next_s <= reset_s;
           end if;
@@ -109,13 +109,13 @@ begin
             pt(4) <= DataBus(7 downto 5);
             pt(5) <= DataBus(4 downto 2);
             count_cmd <= count_cmd + 1;
-            next_s <= get_commands;
+            next_s <= get_commands;    
           elsif( DataBus(1 downto 0) = "10" and count_cmd = 3) then
             pt(6) <= DataBus(7 downto 5);
             pt(7) <= DataBus(4 downto 2);
             count_cmd <= 0;
             int_type <= "10";
-            next_s <= jump_int_method;
+            next_s <= jump_int_method;  
           else
             next_s <= get_commands;
           end if;
@@ -131,7 +131,7 @@ begin
             next_s <= start_priority_check;  --Fixed priority scheme.
           else
             next_s <= reset_s;  --Error if no method is specified.
-          end if;
+          end if;  
           DataBus <= (others => 'Z');
         when start_polling =>     --Check for interrupts(one by one) using polling method.
           if( IR(int_index) = '1' ) then
@@ -142,14 +142,14 @@ begin
           end if;
           if( int_index = 7 ) then
             int_index <= 0;
-          else
-            int_index <= int_index+1;
-          end if;
+          else  
+            int_index <= int_index+1;        
+          end if;  
           DataBus <= (others => 'Z');
         when tx_int_info_polling =>   --Transmit interrupt information if an interrupt is found.
           if( INTA_I = '0' ) then
             INTR_O <= '0';
-          end if;
+          end if;  
           if( flag = '0' ) then
             DataBus <= "01011" & to_unsigned( (int_index-1),3);  --MSB "01011" is for matching purpose.
             flag1 <= '1';
@@ -160,19 +160,19 @@ begin
             next_s <= ack_txinfo_rxd;
             if( INTA_I = '0' ) then
               DataBus <= (others => 'Z');
-            end if;
-          end if;
+            end if;  
+          end if;  
         when ack_txinfo_rxd =>   --ACK send by processor to tell PIC that interrupt info is received correctly.
           if( INTA_I <= '0' ) then
             next_s <= ack_ISR_done;
             DataBus <= (others => 'Z');
-          end if;
+          end if;  
         when ack_ISR_done =>  --Wait for the ISR for the particular interrupt to get over.
           if( INTA_I = '0' and DataBus(7 downto 3) = "10100" and DataBus(2 downto 0) = to_unsigned(int_index-1,3) ) then
             next_s <= start_polling;
           else
             next_s <= ack_ISR_done;
-          end if;
+          end if;  
         when start_priority_check =>   --Fixed priority method for interrupt handling.
           --Interrupts are checked based on their priority.
           if( IR(to_integer(pt(0))) = '1' ) then
@@ -206,15 +206,15 @@ begin
           elsif( IR(to_integer(pt(7))) = '1' ) then
             int_pt <= pt(7);
             INTR_O <= '1';
-            next_s <= tx_int_info_priority;
+            next_s <= tx_int_info_priority;  
           else
             next_s <= start_priority_check;
-          end if;
+          end if;  
           DataBus <= (others => 'Z');
         when tx_int_info_priority =>      --Transmit interrupt information if an interrupt is found.
           if( INTA_I = '0' ) then
             INTR_O <= '0';
-          end if;
+          end if;  
           if( flag = '0' ) then
             DataBus <= "10011" & int_pt;  --MSB "10011" is for matching purpose.
             flag1 <= '1';
@@ -225,8 +225,8 @@ begin
             next_s <= ack_txinfo_rxd_priority;
             if( INTA_I = '0' ) then
               DataBus <= (others => 'Z');
-            end if;
-          end if;
+            end if;  
+          end if;  
         when ack_txinfo_rxd_priority =>   --ACK send by processor to tell PIC that interrupt info is received correctly.
           if( INTA_I <= '0' ) then
             next_s <= ack_ISR_done_pt;
@@ -239,11 +239,11 @@ begin
             next_s <= reset_s;   --Error.
           else
             next_s <= ack_ISR_done_pt;
-          end if;
+          end if;  
         when others =>
-          DataBus <= (others => 'Z');
-      end case;
-    end if;
+          DataBus <= (others => 'Z');  
+      end case;  
+    end if;  
   end process;
 
 end Behavioral;

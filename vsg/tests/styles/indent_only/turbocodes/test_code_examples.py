@@ -28,5 +28,5 @@ class testCodeExample(unittest.TestCase):
         oRuleList.configure(oConfig)
         oRuleList.fix(7, oConfig.dConfig['skip_phase'])
         lExpected = ['']
-        utils.read_file(os.path.join(os.path.dirname(__file__),'iteration_synth.vhd'), lExpected)
+        utils.read_file(os.path.join(os.path.dirname(__file__),'iteration_synth.vhd'), lExpected, bStrip=False)
         self.assertEqual(lExpected, oIteration.get_lines())

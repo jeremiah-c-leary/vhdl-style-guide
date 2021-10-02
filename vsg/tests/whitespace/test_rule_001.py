@@ -2,41 +2,37 @@
 import os
 import unittest
 
-from vsg.rules import package
+from vsg.rules import whitespace
 from vsg import vhdlFile
 from vsg.tests import utils
 
 sTestDir = os.path.dirname(__file__)
 
-lFile, eError =vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_401_test_input.vhd'))
-
-dIndentMap = utils.read_indent_file()
-
+lFile, eError =vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_001_test_input.vhd'))
 lExpected = []
 lExpected.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_401_test_input.fixed.vhd'), lExpected, bStrip=False)
+utils.read_file(os.path.join(sTestDir, 'rule_001_test_input.fixed.vhd'), lExpected)
 
 
-class test_package_rule(unittest.TestCase):
+class test(unittest.TestCase):
 
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
-        self.oFile.set_indent_map(dIndentMap)
 
-    def test_rule_401(self):
-        oRule = package.rule_401()
+    def test_rule_001(self):
+        oRule = whitespace.rule_001()
         self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'package')
-        self.assertEqual(oRule.identifier, '401')
+        self.assertEqual(oRule.name, 'whitespace')
+        self.assertEqual(oRule.identifier, '001')
 
-        lExpected = [8, 9, 10]
+        lExpected = [1, 8, 9, 10, 12]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
-    def test_fix_rule_401(self):
-        oRule = package.rule_401()
+    def test_fix_rule_001(self):
+        oRule = whitespace.rule_001()
 
         oRule.fix(self.oFile)
 
@@ -46,3 +42,4 @@ class test_package_rule(unittest.TestCase):
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
+

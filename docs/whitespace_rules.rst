@@ -6,9 +6,23 @@ Whitespace Rules
 whitespace_001
 ##############
 
-This rule has been depricated.
+|phase_1| |error|
 
-VSG strips trailing spaces when a file is read in.
+This rule check for trailing spaces.
+
+**Violation**
+
+Where periods indicate spaces:
+
+.. code-block:: vhdl
+
+    library ieee;....
+
+**Fix**
+
+.. code-block:: vhdl
+
+    library ieee;
 
 whitespace_002
 ##############
