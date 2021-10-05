@@ -37,7 +37,7 @@ def combine_comments(lChars):
             lReturn.append(sChar)
         else:
             if iChar == iEnd:
-                if ' ' in sChar:
+                if sChar.isspace():
                     lReturn.append(sComment)
                     lReturn.append(sChar)
                     bComment = False

@@ -646,3 +646,22 @@ class testTokenMethod(unittest.TestCase):
   
         self.assertEqual(lTokens, lActual)
 
+
+    def test_double_quotes_in_comment(self):
+        sLine = '--| "yet another string"'
+        lTokens = []
+        lTokens.append('--| "yet another string"')
+  
+        lActual = tokens.create(sLine)
+  
+        self.assertEqual(lTokens, lActual)
+
+    def test_single_quotes_in_comment(self):
+        sLine = "--| 'a'"
+        lTokens = []
+        lTokens.append("--| 'a'")
+  
+        lActual = tokens.create(sLine)
+  
+        self.assertEqual(lTokens, lActual)
+
