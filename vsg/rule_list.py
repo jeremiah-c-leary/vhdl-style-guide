@@ -142,7 +142,7 @@ class rule_list():
                     self.oVhdlFile.set_token_indent()
                 continue
 
-            for subphase in range(1, 5):
+            for subphase in range(0, 5):
                 lRules = self.get_rules_in_phase(phase)
                 lRules = self.get_rules_in_subphase(lRules, subphase)
                 lRules = filter_out_disabled_rules(lRules)
@@ -208,7 +208,7 @@ class rule_list():
             if phase in lSkipPhase:
                 continue
 
-            for subphase in range(1, 5):
+            for subphase in range(0, 5):
                 lRules = self.get_rules_in_phase(phase)
                 lRules = self.get_rules_in_subphase(lRules, subphase)
                 lRules = filter_out_disabled_rules(lRules)
@@ -221,11 +221,9 @@ class rule_list():
                 self.lastPhaseRan = phase
                 if iFailures > 0:
                     self.violations = True
-                    if not bAllPhases:
-                        break
-            else:
-                continue
-            break
+            if self.violations:
+                if not bAllPhases:
+                    break
 
     def report_violations(self, sOutputFormat):
         '''

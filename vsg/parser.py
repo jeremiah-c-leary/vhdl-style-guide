@@ -489,3 +489,12 @@ class choices(item):
 
     def __init__(self, sString):
         item.__init__(self, sString)
+
+
+class beginning_of_file(item):
+    '''
+    unique_id = parser : choices
+    '''
+
+    def __init__(self):
+        item.__init__(self, 'beginning_of_file')

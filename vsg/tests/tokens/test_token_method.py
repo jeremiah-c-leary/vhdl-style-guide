@@ -81,7 +81,8 @@ class testTokenMethod(unittest.TestCase):
         lTokens.append(' ')
         lTokens.append('line')
         lTokens.append(' ')
-        lTokens.append('--  This is a comment  ')
+        lTokens.append('--  This is a comment')
+        lTokens.append('  ')
 
         lActual = tokens.create(sLine)
 
@@ -93,7 +94,8 @@ class testTokenMethod(unittest.TestCase):
         lTokens = []
 
         lTokens.append(' ')
-        lTokens.append('-- This is a comment  ')
+        lTokens.append('-- This is a comment')
+        lTokens.append('  ')
 
         lActual = tokens.create(sLine)
 
@@ -104,7 +106,8 @@ class testTokenMethod(unittest.TestCase):
 
         lTokens = []
 
-        lTokens.append('-- This is a comment  ')
+        lTokens.append('-- This is a comment')
+        lTokens.append('  ')
 
         lActual = tokens.create(sLine)
 
@@ -638,6 +641,25 @@ class testTokenMethod(unittest.TestCase):
         lTokens.append('&') 
         lTokens.append(' ')
         lTokens.append('after')
+  
+        lActual = tokens.create(sLine)
+  
+        self.assertEqual(lTokens, lActual)
+
+
+    def test_double_quotes_in_comment(self):
+        sLine = '--| "yet another string"'
+        lTokens = []
+        lTokens.append('--| "yet another string"')
+  
+        lActual = tokens.create(sLine)
+  
+        self.assertEqual(lTokens, lActual)
+
+    def test_single_quotes_in_comment(self):
+        sLine = "--| 'a'"
+        lTokens = []
+        lTokens.append("--| 'a'")
   
         lActual = tokens.create(sLine)
   

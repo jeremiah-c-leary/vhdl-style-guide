@@ -49,7 +49,7 @@ class testCodeExample(unittest.TestCase):
         oRuleList.configure(oConfig)
         oRuleList.fix(7, oConfig.dConfig['skip_phase'])
         lExpected = ['']
-        utils.read_file(os.path.join(os.path.dirname(__file__),'timestamp.vhdl'), lExpected)
+        utils.read_file(os.path.join(os.path.dirname(__file__),'timestamp.vhdl'), lExpected, bStrip=False)
         self.assertEqual(lExpected, oTimestamp.get_lines())
 
     def test_spi_slave(self):
@@ -57,7 +57,7 @@ class testCodeExample(unittest.TestCase):
         oRuleList.configure(oConfig)
         oRuleList.fix(7, oConfig.dConfig['skip_phase'])
         lExpected = ['']
-        utils.read_file(os.path.join(os.path.dirname(__file__),'spi_slave.vhd'), lExpected)
+        utils.read_file(os.path.join(os.path.dirname(__file__),'spi_slave.vhd'), lExpected, bStrip=False)
         self.assertEqual(lExpected, oSpiSlave.get_lines())
 
     def test_spi_master(self):
@@ -65,7 +65,7 @@ class testCodeExample(unittest.TestCase):
         oRuleList.configure(oConfig)
         oRuleList.fix(7, oConfig.dConfig['skip_phase'])
         lExpected = ['']
-        utils.read_file(os.path.join(os.path.dirname(__file__),'spi_master.vhd'), lExpected)
+        utils.read_file(os.path.join(os.path.dirname(__file__),'spi_master.vhd'), lExpected, bStrip=False)
         self.assertEqual(lExpected, oSpiMaster.get_lines())
 
     def test_grp_debouncer(self):
@@ -73,7 +73,7 @@ class testCodeExample(unittest.TestCase):
         oRuleList.configure(oConfig)
         oRuleList.fix(7, oConfig.dConfig['skip_phase'])
         lExpected = ['']
-        utils.read_file(os.path.join(os.path.dirname(__file__),'grp_debouncer.vhd'), lExpected)
+        utils.read_file(os.path.join(os.path.dirname(__file__),'grp_debouncer.vhd'), lExpected, bStrip=False)
         self.assertEqual(lExpected, oGrpDebouncer.get_lines())
 
     def test_pic(self):
@@ -81,5 +81,5 @@ class testCodeExample(unittest.TestCase):
         oRuleList.configure(oConfig)
         oRuleList.fix(7, oConfig.dConfig['skip_phase'])
         lExpected = ['']
-        utils.read_file(os.path.join(os.path.dirname(__file__),'PIC.vhd'), lExpected)
+        utils.read_file(os.path.join(os.path.dirname(__file__),'PIC.vhd'), lExpected, bStrip=False)
         self.assertEqual(lExpected, oPIC.get_lines())

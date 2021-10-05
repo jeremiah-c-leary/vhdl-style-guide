@@ -48,7 +48,9 @@ architecture BEHAVIORAL of DATA_CORE is
 
   function b8 (A : std_logic) return std_logic_vector is
   begin
+
     return A & A & A & A & A & A & A & A;
+
   end;
 
   component ALU8 is

@@ -69,6 +69,7 @@ comment_011
 |phase_1| |disabled| |error|
 
 This rule checks for in-line comments and moves them to the line above.
+The indent of the comment will be set to the indent of the current line.
 
 .. NOTE:: This rule is disabled by default.
 

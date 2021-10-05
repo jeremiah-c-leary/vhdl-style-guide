@@ -10,10 +10,29 @@ sTestDir = os.path.dirname(__file__)
 
 lFile, eError =vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_005_test_input.vhd'))
 
-lExpected = []
-lExpected.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_005_test_input.fixed.vhd'), lExpected)
+lExpected_all = []
+lExpected_all.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_005_test_input.fixed.vhd'), lExpected_all)
 
+lExpected_blank_if = []
+lExpected_blank_if.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_005_test_input.fixed_allowing_blank_and_if.vhd'), lExpected_blank_if)
+
+lExpected_blank_if_case = []
+lExpected_blank_if_case.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_005_test_input.fixed_allowing_blank_and_if_and_case.vhd'), lExpected_blank_if_case)
+
+lExpected_blank_case = []
+lExpected_blank_case.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_005_test_input.fixed_allowing_blank_and_case.vhd'), lExpected_blank_case)
+
+lExpected_blank_when = []
+lExpected_blank_when.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_005_test_input.fixed_allowing_blank_and_when.vhd'), lExpected_blank_when)
+
+lExpected_blank_no_loop = []
+lExpected_blank_no_loop.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_005_test_input.fixed_allowing_blank_and_no_loop.vhd'), lExpected_blank_no_loop)
 
 class test_sequential_rule(unittest.TestCase):
 
@@ -27,7 +46,81 @@ class test_sequential_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'sequential')
         self.assertEqual(oRule.identifier, '005')
 
-        lExpected = [44, 45, 46, 49, 50, 51, 53, 54, 62, 63, 64]
+        lExpected = [48, 49, 50, 53, 54, 55, 57, 58, 66, 67, 68]
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+
+    def test_rule_005_allowing_blank_and_if(self):
+        oRule = sequential.rule_005()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'sequential')
+        self.assertEqual(oRule.identifier, '005')
+
+        oRule.if_control_statements_ends_group = False
+        oRule.blank_line_ends_group = False
+
+        lExpected = [9, 10, 11, 14, 15, 16, 18, 19, 20, 48, 49, 50, 53, 54, 55, 57, 58, 66, 67, 68,
+             72, 73, 74, 77, 78, 79, 89, 90, 91]
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+
+    def test_rule_005_allowing_blank_and_case(self):
+        oRule = sequential.rule_005()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'sequential')
+        self.assertEqual(oRule.identifier, '005')
+
+        oRule.case_control_statements_ends_group = False
+        oRule.blank_line_ends_group = False
+
+        lExpected = [31, 32, 33, 35, 36, 37, 48, 49, 50, 53, 54, 55, 57, 58, 66, 67, 68,
+             72, 73, 74, 77, 78, 79, 89, 90, 91]
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+
+    def test_rule_005_allowing_blank_and_when(self):
+        oRule = sequential.rule_005()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'sequential')
+        self.assertEqual(oRule.identifier, '005')
+
+        oRule.case_control_statements_ends_group = 'break_on_case_or_end_case'
+        oRule.blank_line_ends_group = False
+
+        lExpected = [31, 32, 33, 48, 49, 50, 53, 54, 55, 57, 58, 66, 67, 68,
+             72, 73, 74, 77, 78, 79, 89, 90, 91]
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+
+    def test_rule_005_allowing_blank_and_if_and_case(self):
+        oRule = sequential.rule_005()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'sequential')
+        self.assertEqual(oRule.identifier, '005')
+
+        oRule.if_control_statements_ends_group = False
+        oRule.case_control_statements_ends_group = False
+        oRule.blank_line_ends_group = False
+
+        lExpected = [9, 10, 11, 14, 15, 16, 18, 19, 20, 31, 32, 33, 35, 36, 37, 48, 49, 50, 53, 54, 55, 57, 58, 59, 66, 67, 68,
+             72, 73, 74, 77, 78, 79, 89, 90, 91]
+        oRule.analyze(self.oFile), 
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+
+    def test_rule_005_allowing_blank_no_loop(self):
+        oRule = sequential.rule_005()
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'sequential')
+        self.assertEqual(oRule.identifier, '005')
+
+        oRule.blank_line_ends_group = False
+        oRule.loop_control_statements_ends_group = True
+
+        lExpected = [48, 49, 50, 53, 54, 55, 57, 58, 66, 67, 68]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -39,7 +132,84 @@ class test_sequential_rule(unittest.TestCase):
 
         lActual = self.oFile.get_lines()
 
-        self.assertEqual(lExpected, lActual)
+        self.assertEqual(lExpected_all, lActual)
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
+
+    def test_fix_rule_005_allowing_blank_and_if(self):
+        oRule = sequential.rule_005()
+
+        oRule.if_control_statements_ends_group = False
+        oRule.blank_line_ends_group = False
+
+        oRule.fix(self.oFile)
+
+        lActual = self.oFile.get_lines()
+
+        self.assertEqual(lExpected_blank_if, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+
+    def test_fix_rule_005_allowing_blank_and_if_and_case(self):
+        oRule = sequential.rule_005()
+
+        oRule.if_control_statements_ends_group = False
+        oRule.case_control_statements_ends_group = False
+        oRule.blank_line_ends_group = False
+
+        oRule.fix(self.oFile)
+
+        lActual = self.oFile.get_lines()
+
+        self.assertEqual(lExpected_blank_if_case, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+
+    def test_fix_rule_005_allowing_blank_and_case(self):
+        oRule = sequential.rule_005()
+
+        oRule.case_control_statements_ends_group = False
+        oRule.blank_line_ends_group = False
+
+        oRule.fix(self.oFile)
+
+        lActual = self.oFile.get_lines()
+
+        self.assertEqual(lExpected_blank_case, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+
+    def test_fix_rule_005_allowing_blank_and_when(self):
+        oRule = sequential.rule_005()
+
+        oRule.case_control_statements_ends_group = 'break_on_case_or_end_case'
+        oRule.blank_line_ends_group = False
+
+        oRule.fix(self.oFile)
+
+        lActual = self.oFile.get_lines()
+
+        self.assertEqual(lExpected_blank_when, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+
+    def test_fix_rule_005_allowing_blank_and_no_loop(self):
+        oRule = sequential.rule_005()
+
+        oRule.blank_line_ends_group = False
+        oRule.loop_control_statements_ends_group = True
+
+        oRule.fix(self.oFile)
+
+        lActual = self.oFile.get_lines()
+
+        self.assertEqual(lExpected_blank_no_loop, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+

@@ -2,6 +2,7 @@
 import os
 import unittest
 
+from vsg import parser
 from vsg.rules import comment
 from vsg import vhdlFile
 from vsg.tests import utils
@@ -30,7 +31,7 @@ class test_comment_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'comment')
         self.assertEqual(oRule.identifier, '011')
 
-        lExpected = [5, 12, 13, 14]
+        lExpected = [5, 12, 13, 14, 16, 17, 18, 19, 20, 21, 22, 23]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -46,3 +47,10 @@ class test_comment_rule(unittest.TestCase):
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
+
+        oAllTokens = self.oFile.get_all_tokens()
+        for oToken in oAllTokens.lTokens:
+            if isinstance(oToken, parser.comment):
+#                print(f'{oToken} | {oToken.indent}')
+                self.assertIsNotNone(oToken.indent)
+

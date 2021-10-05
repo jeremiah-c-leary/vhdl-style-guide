@@ -18,7 +18,7 @@ architecture rtl of fifo is
     "000000"
   );
 
-  -- Verify others are still handled 
+  -- Verify others are still handled
   constant cons2 : t_type :=
   ((others => (valid => '0', data => (others => '0'))), (others => (1 => '0', (others => '0'))));
 

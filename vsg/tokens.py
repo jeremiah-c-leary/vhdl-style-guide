@@ -26,7 +26,9 @@ def combine_comments(lChars):
     lReturn = []
     sComment = ''
     bComment = False
-    for sChar in lChars:
+    iEnd = len(lChars) - 1
+    for iChar, sChar in enumerate(lChars):
+#        print(f'|{sChar}|')
         if sChar.startswith('--') and not bComment:
             sComment += sChar
             bComment = True
@@ -34,6 +36,13 @@ def combine_comments(lChars):
         if not bComment:
             lReturn.append(sChar)
         else:
+            if iChar == iEnd:
+                if sChar.isspace():
+                    lReturn.append(sComment)
+                    lReturn.append(sChar)
+                    bComment = False
+                    continue
+
             sComment += sChar
 
     if bComment:

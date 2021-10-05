@@ -31,4 +31,12 @@ begin
     report "Something"
     severity FAILURE;
 
+  process begin
+    assert boolean report "Something" severity FAILURE;
+    assert boolean report "Something" severity FAILURE;
+  end process;
+
+  assert boolean report "Something"
+ severity FAILURE;
+
 end architecture ARCH;

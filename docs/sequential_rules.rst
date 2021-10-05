@@ -100,8 +100,10 @@ This rule checks the alignment of the **<=** operators over consecutive sequenti
 
 Following extra configurations are supported:
 
-* :code:`if_control_statements_end_group`,
-* :code:`case_control_statements_end_group`.
+* :code:`if_control_statements_ends_group`,
+* :code:`case_control_statements_ends_group`.
+* :code:`case_keyword_statements_ends_group`.
+* :code:`loop_control_statements_ends_group`,
 
 Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
 

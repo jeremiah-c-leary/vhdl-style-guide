@@ -14,7 +14,7 @@ dIndentMap = utils.read_indent_file()
 
 lExpected = []
 lExpected.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_401_test_input.fixed.vhd'), lExpected)
+utils.read_file(os.path.join(sTestDir, 'rule_401_test_input.fixed.vhd'), lExpected, bStrip=False)
 
 
 class test_package_rule(unittest.TestCase):

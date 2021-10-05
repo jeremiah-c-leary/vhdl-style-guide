@@ -59,7 +59,7 @@ class testCodeExample(unittest.TestCase):
         oRuleList.configure(oConfig)
         oRuleList.fix(7, oConfig.dConfig['skip_phase'])
         lExpected = ['']
-        utils.read_file(os.path.join(os.path.dirname(__file__),'Bresenhamer.vhd'), lExpected)
+        utils.read_file(os.path.join(os.path.dirname(__file__),'Bresenhamer.vhd'), lExpected, bStrip=False)
         self.assertEqual(lExpected, oBresenhamer.get_lines())
 
     def test_debouncer(self):
@@ -67,7 +67,7 @@ class testCodeExample(unittest.TestCase):
         oRuleList.configure(oConfig)
         oRuleList.fix(7, oConfig.dConfig['skip_phase'])
         lExpected = ['']
-        utils.read_file(os.path.join(os.path.dirname(__file__),'Debouncer.vhd'), lExpected)
+        utils.read_file(os.path.join(os.path.dirname(__file__),'Debouncer.vhd'), lExpected, bStrip=False)
         self.assertEqual(lExpected, oDebouncer.get_lines())
 
     def test_vga_top(self):
@@ -75,7 +75,7 @@ class testCodeExample(unittest.TestCase):
         oRuleList.configure(oConfig)
         oRuleList.fix(7, oConfig.dConfig['skip_phase'])
         lExpected = ['']
-        utils.read_file(os.path.join(os.path.dirname(__file__),'VGA_Top.vhd'), lExpected)
+        utils.read_file(os.path.join(os.path.dirname(__file__),'VGA_Top.vhd'), lExpected, bStrip=False)
         self.assertEqual(lExpected, oVgatop.get_lines())
 
     def test_pointer(self):
@@ -83,7 +83,7 @@ class testCodeExample(unittest.TestCase):
         oRuleList.configure(oConfig)
         oRuleList.fix(7, oConfig.dConfig['skip_phase'])
         lExpected = ['']
-        utils.read_file(os.path.join(os.path.dirname(__file__),'Pointer.vhd'), lExpected)
+        utils.read_file(os.path.join(os.path.dirname(__file__),'Pointer.vhd'), lExpected, bStrip=False)
         self.assertEqual(lExpected, oPointer.get_lines())
 
     def test_freqdiv(self):
@@ -91,7 +91,7 @@ class testCodeExample(unittest.TestCase):
         oRuleList.configure(oConfig)
         oRuleList.fix(7, oConfig.dConfig['skip_phase'])
         lExpected = ['']
-        utils.read_file(os.path.join(os.path.dirname(__file__),'FreqDiv.vhd'), lExpected)
+        utils.read_file(os.path.join(os.path.dirname(__file__),'FreqDiv.vhd'), lExpected, bStrip=False)
         self.assertEqual(lExpected, oFreqDiv.get_lines())
 
     def test_synchronizer(self):
@@ -99,7 +99,7 @@ class testCodeExample(unittest.TestCase):
         oRuleList.configure(oConfig)
         oRuleList.fix(7, oConfig.dConfig['skip_phase'])
         lExpected = ['']
-        utils.read_file(os.path.join(os.path.dirname(__file__),'Synchronizer.vhd'), lExpected)
+        utils.read_file(os.path.join(os.path.dirname(__file__),'Synchronizer.vhd'), lExpected, bStrip=False)
         self.assertEqual(lExpected, oSynchronizer.get_lines())
 
     def test_framebuffer(self):
@@ -107,5 +107,5 @@ class testCodeExample(unittest.TestCase):
         oRuleList.configure(oConfig)
         oRuleList.fix(7, oConfig.dConfig['skip_phase'])
         lExpected = ['']
-        utils.read_file(os.path.join(os.path.dirname(__file__),'FrameBuffer2.vhd'), lExpected)
+        utils.read_file(os.path.join(os.path.dirname(__file__),'FrameBuffer2.vhd'), lExpected, bStrip=False)
         self.assertEqual(lExpected, oFrameBuffer.get_lines())

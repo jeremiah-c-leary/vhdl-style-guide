@@ -27,6 +27,8 @@ def set_token_indent(dIndentMap, lTokens):
 
         sUniqueId = oToken.get_unique_id(sJoin=':')
 
+        iTokenIndent = None
+
         if sUniqueId in lTokenKeys:
             token_key = dIndents[sUniqueId]['token']
             after_key = dIndents[sUniqueId]['after']
@@ -57,6 +59,7 @@ def set_token_indent(dIndentMap, lTokens):
             continue
 
         if isinstance(oToken, token.architecture_body.architecture_keyword):
+            bLibraryFound = False
             bArchitectureFound = True
             continue
 
@@ -64,11 +67,23 @@ def set_token_indent(dIndentMap, lTokens):
             bArchitectureFound = False
             continue
 
+        if isinstance(oToken, token.entity_declaration.entity_keyword):
+            bLibraryFound = False
+            continue
+
+        if isinstance(oToken, token.package_body.package_keyword):
+            bLibraryFound = False
+            continue
+
+        if isinstance(oToken, token.package_declaration.package_keyword):
+            bLibraryFound = False
+            continue
+
         ### Comments
         if isinstance(oToken, parser.comment):
             if bLibraryFound:
                 oToken.set_indent(iIndent + 1)
-            elif not dVars['insideConcurrentSignalAssignment']:
+            else:
                 oToken.set_indent(iIndent)
             continue
 
@@ -104,6 +119,8 @@ def set_token_indent(dIndentMap, lTokens):
         if isinstance(oToken, token.concurrent_selected_signal_assignment.semicolon):
             dVars['insideConcurrentSignalAssignment'] = False
             continue
+
+        oToken.set_indent(iTokenIndent)
 
 
 def update_indent_var(iIndent, update):

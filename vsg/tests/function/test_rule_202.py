@@ -8,11 +8,11 @@ from vsg.tests import utils
 
 sTestDir = os.path.dirname(__file__)
 
-lFile, eError =vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_003_test_input.vhd'))
+lFile, eError =vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_202_test_input.vhd'))
 
 lExpected = []
 lExpected.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_003_test_input.fixed.vhd'), lExpected)
+utils.read_file(os.path.join(sTestDir, 'rule_202_test_input.fixed.vhd'), lExpected, False)
 
 
 class test_function_rule(unittest.TestCase):
@@ -21,19 +21,19 @@ class test_function_rule(unittest.TestCase):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
 
-    def test_rule_003(self):
-        oRule = function.rule_003()
+    def test_rule_202(self):
+        oRule = function.rule_202()
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'function')
-        self.assertEqual(oRule.identifier, '003')
+        self.assertEqual(oRule.identifier, '202')
 
-        lExpected = [8, 10]
+        lExpected = [44, 50, 56]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
-    def test_fix_rule_003(self):
-        oRule = function.rule_003()
+    def test_fix_rule_202(self):
+        oRule = function.rule_202()
 
         oRule.fix(self.oFile)
 
