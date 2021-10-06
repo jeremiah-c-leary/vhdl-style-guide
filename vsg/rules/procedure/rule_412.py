@@ -17,7 +17,8 @@ class rule_412(align_tokens_in_region_between_tokens_skipping_lines_starting_wit
     '''
 
     def __init__(self):
-        align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens.__init__(self, 'procedure', '412', lAlign,
+        align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens.__init__(
+            self, 'procedure', '412', lAlign,
             token.procedure_specification.open_parenthesis, token.procedure_specification.close_parenthesis, lSkip)
         self.solution = 'Align comment.'
         self.subphase = 3
