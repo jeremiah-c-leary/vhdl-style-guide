@@ -785,8 +785,8 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
    end procedure average_samples;
 
-function_507
-############
+procedure_507
+#############
 
 |phase_6| |error|
 
