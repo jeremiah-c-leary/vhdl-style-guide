@@ -9,10 +9,6 @@ subtype_001
 |phase_4| |error|
 
 This rule checks for indentation of the **subtype** keyword.
-Proper indentation enhances comprehension.
-
-The indent amount can be controlled by the **indentSize** attribute on the rule.
-**indentSize** defaults to 2.
 
 **Violation**
 

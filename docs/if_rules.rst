@@ -39,7 +39,7 @@ if_002
 
 |phase_1| |error|
 
-This rule checks the bolean expression is enclosed in ().
+This rule checks the boolean expression is enclosed in ().
 
 .. NOTE:: There is a configuration option **parenthesis** which will either insert or remove the parenthesis.
 

@@ -29,8 +29,9 @@ port_map_002
 
 |phase_6| |error|
 
-This rule checks the port name is uppercase.
-Indexes on ports will not be uppercased.
+This rule checks the port names have proper case.
+
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
 
 **Violation**
 

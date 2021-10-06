@@ -159,11 +159,11 @@ library_007
 
 |phase_3| |error|
 
-This rule checks for blank lines or comments above the **process** declaration.
+This rule checks for blank lines or comments above the **use** declaration.
 
 Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
 
-The default style is :code:`no_blank`.
+The default style is :code:`no_blank_line`.
 
 **Violation**
 

@@ -166,7 +166,7 @@ procedure_005
 
 |phase_4| |error|
 
-This rule checks the indent of line between the **is** and **begin** keywords
+This rule checks the indent of lines between the **is** and **begin** keywords
 
 **Violation**
 

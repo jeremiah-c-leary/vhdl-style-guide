@@ -197,6 +197,8 @@ Refer to the section `Configuring Blank Lines <configuring.html#configuring-blan
 
    end package body FIFO_PKG;
 
+   library ieee;
+
 package_body_300
 ################
 
