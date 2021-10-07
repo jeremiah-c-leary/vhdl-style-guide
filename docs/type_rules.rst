@@ -414,7 +414,7 @@ type_600
 |phase_7| |disabled| |error|
 
 This rule checks for valid suffixes in user defined type identifiers.
-The default new type suffix is *\_t*.
+The default new type suffix is *\_st*.
 
 Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed suffixes.
 
@@ -429,5 +429,3 @@ Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#conf
 .. code-block:: vhdl
 
    type my_type_t is range -5 to 5 ;
-
-
