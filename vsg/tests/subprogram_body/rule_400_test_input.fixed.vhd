@@ -7,12 +7,14 @@ architecture arc of ent is
     begin
         a <= (others => '0');
         b <= (others => '0');
+        c := d;
     end procedure;
 
     procedure rst_procedure is
     begin
         a <= (others => '0');
         b <= (others => '0');
+        c := d;
     end procedure;
 
 begin
@@ -22,18 +24,21 @@ begin
         begin
             a <= (others => '0');
             b <= (others => '0');
+            c := d;
         end procedure;
 
         procedure rst_procedure is
         begin
             a <= (others => '0');
             b <= (others => '0');
+            c := d;
         end procedure;
 
         procedure rst_procedure is
         begin
             a <= (others => '0');
             b <= (others => '0');
+            c := d;
         end procedure;
 
     begin
@@ -42,6 +47,7 @@ begin
         elsif rising_edge(clk_i) then
             a <= (others => '1');
             b    <= (others => '1');
+            c  := d;
         end if;
     end process proc_p;
 
@@ -53,12 +59,14 @@ package body my_package is
   begin
       a <= (others => '0');
       b <= (others => '0');
+      c := d;
   end procedure;
 
   procedure rst_procedure is
   begin
       a <= (others => '0');
       b <= (others => '0');
+      c := d;
   end procedure;
 
 end package body;

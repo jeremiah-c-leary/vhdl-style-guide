@@ -8,7 +8,7 @@ subprogram_body_400
 
 |phase_5| |error|
 
-This rule checks the alignment of the **<=** operators over consecutive sequential assignments in subprogram bodies.
+This rule checks the alignment of the **<=** and **:=** operators over consecutive sequential assignments in subprogram bodies.
 
 Following extra configurations are supported:
 
@@ -25,10 +25,12 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
 
    wr_en <= '1';
    rd_en   <= '0';
+   v_variable := 10;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   wr_en <= '1';
-   rd_en <= '0';
+   wr_en      <= '1';
+   rd_en      <= '0';
+   v_variable := 10;
