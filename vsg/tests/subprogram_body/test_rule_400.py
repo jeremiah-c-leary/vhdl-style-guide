@@ -27,7 +27,7 @@ class test_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'subprogram_body')
         self.assertEqual(oRule.identifier, '400')
 
-        lExpected = [8, 14, 15, 23, 35, 54]
+        lExpected = [8, 10, 15, 16, 17, 25, 27, 39, 41, 60, 62, 69]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
