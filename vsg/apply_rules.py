@@ -1,7 +1,15 @@
+
+import shutil
+
 from . import config
 from . import rule_list
 from . import utils
 from . import vhdlFile
+
+
+def create_backup_file(sFileName):
+    '''Copies existing file and adds .bak to the end.'''
+    shutil.copy2(sFileName, sFileName + '.bak')
 
 
 def configure_rules(oConfig, oRules, configuration, iIndex, sFileName):
