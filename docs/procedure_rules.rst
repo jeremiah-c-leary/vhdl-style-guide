@@ -636,6 +636,87 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
    constant c_period  : time;
    file my_test_input : my_file_type;
 
+procedure_410
+#############
+
+|phase_5| |error|
+
+This rule checks the alignment of the colon for each parameter in the procedure declaration.
+
+Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
+
+**Violation**
+
+.. code-block:: vhdl
+
+     procedure average_samples (
+       constant a : in integer;
+       signal d : out std_logic
+     );
+
+**Fix**
+
+.. code-block:: vhdl
+
+     procedure average_samples (
+       constant a : in integer;
+       signal d   : out std_logic
+     );
+
+procedure_411
+#############
+
+|phase_5| |error|
+
+This rule checks the alignment of **:=** operator for each parameter in the procedure declaration.
+
+Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
+
+**Violation**
+
+.. code-block:: vhdl
+
+     procedure average_samples (
+       constant a : in integer := 0;
+       signal d : out std_logic   := 'X';
+     );
+
+**Fix**
+
+.. code-block:: vhdl
+
+     procedure average_samples (
+       constant a : in integer  := 0;
+       signal d : out std_logic := 'X';
+     );
+
+procedure_412
+#############
+
+|phase_5| |error|
+
+This rule checks for alignment of inline comments for each parameter in the procedure declaration.
+
+Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
+
+**Violation**
+
+.. code-block:: vhdl
+
+     procedure average_samples (
+       constant a : in integer;   -- Comment about a
+       signal d   : out std_logic;   -- Comment about d
+     );
+
+**Fix**
+
+.. code-block:: vhdl
+
+     procedure average_samples (
+       constant a : in integer;    -- Comment about a
+       signal d   : out std_logic; -- Comment about d
+     );
+
 procedure_500
 #############
 
