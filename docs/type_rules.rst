@@ -429,5 +429,3 @@ Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#conf
 .. code-block:: vhdl
 
    type my_type_t is range -5 to 5 ;
-
-

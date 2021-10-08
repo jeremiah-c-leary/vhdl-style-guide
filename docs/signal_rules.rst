@@ -133,7 +133,7 @@ signal_007
 
 This rule checks for default assignments in signal declarations.
 
-.. NOTE:: This rule is requires the user to remove the default assignments.
+.. NOTE:: This rule requires the user to remove the default assignments.
 
 **Violation**
 
@@ -383,6 +383,3 @@ Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#conf
 
    signal wr_en_s : std_logic;
    signal rd_en_s : std_logic;
-
-
-
