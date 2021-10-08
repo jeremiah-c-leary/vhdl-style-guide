@@ -25,5 +25,5 @@ class rule_400(align_tokens_in_region_between_tokens_unless_between_tokens):
         self.solution = 'Align identifer.'
         self.if_control_statements_ends_group = True
         self.case_control_statements_ends_group = True
-        self.case_keyword_statements_ends_group = False
-        self.loop_control_statements_ends_group = False
+        self.case_keyword_statements_ends_group = True
+        self.loop_control_statements_ends_group = True
