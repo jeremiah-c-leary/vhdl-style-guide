@@ -126,7 +126,7 @@ def main():
 
     validate_files_exist_to_analyze(commandLineArguments.filename)
 
-    dJson = {'files'}
+    dJson = create_json_dictionary()
 
     f = functools.partial(apply_rules.apply_rules, commandLineArguments, oConfig)
     # It's easier to debug when not using multiprocessing.Pool()
@@ -170,3 +170,12 @@ def main():
 
 
     sys.exit(fExitStatus)
+
+
+def create_json_dictionary():
+    '''
+    Returns a dictionary to be used when the --json option is chosen.
+    '''
+    dJson = {}
+    dJson['files'] = []
+    return dJson
