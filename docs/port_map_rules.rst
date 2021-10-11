@@ -49,10 +49,10 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 .. code-block:: vhdl
 
      port map (
-       WR_EN              => wr_en,
-       RD_EN              => rd_en,
-       OVERFLOW           => overflow,
-       UNDERFLOW(c_index) => underflow
+       wr_en              => wr_en,
+       rd_en              => rd_en,
+       overflow           => overflow,
+       underflow(c_index) => underflow
      );
 
 port_map_003
@@ -60,7 +60,7 @@ port_map_003
 
 |phase_1| |error|
 
-This rule checks the ( is on the same line as the **port map** keywords.
+This rule checks the "(" character is on the same line as the **port map** keywords.
 
 **Violation**
 
@@ -90,7 +90,7 @@ port_map_004
 
 |phase_1| |error|
 
-This rule checks the closing ) for the port map is on it's own line.
+This rule checks the closing ")" character for the port map is on it's own line.
 
 **Violation**
 
