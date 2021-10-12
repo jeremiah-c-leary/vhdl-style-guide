@@ -1,7 +1,7 @@
 Contributing
 ------------
 
-I welcome any contributions to this project.
+Any contributions to this project are welcomed.
 No matter how small or large.
 
 There are several ways to contribute:
@@ -14,10 +14,10 @@ There are several ways to contribute:
 Bug Reports
 ###########
 
-I used code from open cores to develop VSG.
+Code from open cores was utilized to develop VSG.
 It provided many different coding styles to process.
-There are bound to be some corner cases or incorrect assumptions in the code.
-If you run into anything that is not handled correctly, please submit an issue.
+There are bound to be some corner cases or incorrect assumptions in the code due to the small sample size.
+If problems are found with the output or in using VSG, please submit an issue.
 When creating the issue, use the **bug** label to highlight it.
 Fixing bugs is prioritized over feature enhancements.
 
@@ -25,41 +25,48 @@ Code Base Improvements
 ######################
 
 VSG started out to solve a problem and learn how to code in Python.
-The learning part is still on going, and I am sure the code base could be improved.
-I run the code through *Codacy* and *Code Climate*, and they are very helpful.
-However, I would appreciate any suggestions to improve the code base.
+The learning part is still on going, and the code base could always be improved.
+The code base is run through *Codacy* and *Code Climate*, and they are very helpful.
+However, any suggestions to improve the code base would be appreciated.
 
 Create an issue and use the **refactor** label for any code which could be improved.
 
 Feature Requests
 ################
 
-Let me know if there is anything I could add to VSG easier to use.
-The following features were not in my original concept of VSG.
+VSG is still a work in progress and by no means feature complete.
+In fact, the following features were not in the original concept of VSG.
 
 * fix
 * fix_phase
 * output_format
 * backup
 
-Fix is probably the most important feature of VSG.
-I added it when someone said it would be nice if VSG just fixed the problems it found.
-There may be other important features, I just have not thought of them yet.
+Fix is probably the most important feature.
+It was added when a user said it would be nice if VSG just fixed the problems it found.
+There may be other important missing features in the current implementation.
 
-If you have an idea for a new feature, create an issue with the **enhancement** label.
+Create an issue with the **enhancement** label for any new features.
 
 Pull Requests
 #############
 
 Pull requests are always welcome.
-I am trying to follow a Test Driven Development (TDD) process.
-Currently there are over 1000 tests.
-If you do add a new feature or fix a bug, I would appreciate a new or updated test to go along with the change.
 
-I use *Travis CI* to run all the tests.
-I also use *Codacy* and *Code Climate* to check for code style issues.
-I use *Codcov* to check the code coverage of the tests.
+VSG was developed using a Test Driven Development (TDD) process.
+There are over 1000 tests which cover individual rules and other features of VSG.
+For each pull request, an accompaning test to validate the pull request would be appreciated.
 
-*Travis CI* will run these tools when a pull request is made.
+Refer to `Setting up a Development Environment <setting_up_a_development_environment.html#running-unit-tests>`_ for more information on how to get started.
+
+Quality Control
+###############
+
+This project uses the following open source tools to help with code quality:
+
+* *Travis CI* to run all the tests.
+* *Codacy* and *Code Climate* to check for code style issues.
+* *Codcov* to check the code coverage of the tests.
+
 The results will be available on the pull request Github page.
 
