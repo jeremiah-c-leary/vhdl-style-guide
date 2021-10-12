@@ -82,6 +82,7 @@ The command line tool can be invoked with:
 | --backup                      | Creates a copy of the input file before         |
 |                               | applying any fixes.  This can be used to        |
 |                               | compare the fixed file against the original.    |
+|                               | NOTE:  This is only valid when using --fix.     |
 +-------------------------------+-------------------------------------------------+
 | --output_configuration        | Writes a JSON configuration file of the current |
 |                               | run.  It includes a file_list, local_rules (if  |
