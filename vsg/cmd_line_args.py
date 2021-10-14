@@ -59,6 +59,7 @@ def parse_command_line_arguments():
     args_ = parser.parse_args()
 
     validate_backup_argument(args_)
+    validate_ap_argument(args_)
 
     if sys.platform == "win32":
         # Work around https://bugs.python.org/issue26903
@@ -89,6 +90,7 @@ def get_predefined_styles():
             lReturn.append(tempConfiguration['name'])
     return lReturn
 
+
 def validate_backup_argument(args_):
     '''
     The function validates the backup option is only present when the fix option is also present.
@@ -97,3 +99,11 @@ def validate_backup_argument(args_):
         print('ERROR:  --backup argument requires --fix argument')
         sys.exit(1)
 
+
+def validate_ap_argument(args_):
+    '''
+    The function validates the ap option is not present when the fix option is also present.
+    '''
+    if args_.all_phases and args_.fix:
+        print('ERROR:  -ap argument is invalid with the --fix argument')
+        sys.exit(1)
