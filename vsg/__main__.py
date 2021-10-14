@@ -41,7 +41,6 @@ def generate_output_configuration(commandLineArguments, oConfig):
         oRules = rule_list.rule_list(oVhdlFile, oConfig.severity_list, commandLineArguments.local_rules)
         oRules.configure(oConfig)
         dOutputConfiguration = {}
-        dOutputConfiguration['cwd'] = os.getcwd()
         if commandLineArguments.filename:
             dOutputConfiguration['file_list'] = []
             for sFileName in commandLineArguments.filename:
