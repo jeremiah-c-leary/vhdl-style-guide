@@ -3,7 +3,6 @@
 import sys
 import os
 import json
-import shutil
 import glob
 import yaml
 import functools
@@ -19,11 +18,6 @@ from . import rule_list
 from . import severity
 from . import version
 from . import vhdlFile
-
-
-def create_backup_file(sFileName):
-    '''Copies existing file and adds .bak to the end.'''
-    shutil.copy2(sFileName, sFileName + '.bak')
 
 
 def generate_output_configuration(commandLineArguments, oConfig):

@@ -1,8 +1,10 @@
+import filecmp
 import pathlib
 import unittest
 from unittest import mock
-import subprocess
 import os
+import subprocess
+import shutil
 import sys
 import shutil
 
@@ -370,6 +372,7 @@ class testMain(unittest.TestCase):
 
         mock_stdout.write.assert_has_calls(lExpected)
 
+
     def test_json_parameter(self):
 
         self.assertFalse(os.path.isfile('deleteme.json'))
@@ -394,3 +397,57 @@ class testMain(unittest.TestCase):
 
         self.assertTrue(os.path.isfile('deleteme.json'))
 
+    @mock.patch('sys.stdout')
+    def test_backup_file(self, mock_stdout):
+
+        if os.path.isfile('vsg/tests/vsg/deleteme.vhd'):
+            os.remove('vsg/tests/vsg/deleteme.vhd')
+
+        if os.path.isfile('vsg/tests/vsg/deleteme.vhd.bak'):
+            os.remove('vsg/tests/vsg/deleteme.vhd.bak')
+
+        shutil.copyfile('vsg/tests/vsg/entity1.vhd', 'vsg/tests/vsg/deleteme.vhd')
+
+        lExpected = []
+
+        sys.argv = ['vsg']
+        sys.argv.extend(['--output_format', 'syntastic'])
+        sys.argv.extend(['-f', 'vsg/tests/vsg/deleteme.vhd'])
+        sys.argv.extend(['--fix'])
+        sys.argv.extend(['--backup'])
+
+        try:
+            __main__.main()
+        except SystemExit:
+            pass
+
+        self.assertTrue(os.path.isfile('vsg/tests/vsg/deleteme.vhd.bak'))
+
+        self.assertTrue(filecmp.cmp('vsg/tests/vsg/entity1.vhd', 'vsg/tests/vsg/deleteme.vhd.bak'))
+
+        mock_stdout.write.assert_has_calls(lExpected)
+
+        if os.path.isfile('vsg/tests/vsg/deleteme.vhd'):
+            os.remove('vsg/tests/vsg/deleteme.vhd')
+
+        if os.path.isfile('vsg/tests/vsg/deleteme.vhd.bak'):
+            os.remove('vsg/tests/vsg/deleteme.vhd.bak')
+
+    @mock.patch('sys.stdout')
+    def test_backup_file_without_fix(self, mock_stdout):
+
+        lExpected = []
+        lExpected.append(mock.call('ERROR:  --backup argument requires --fix argument'))
+        lExpected.append(mock.call('\n'))
+
+        sys.argv = ['vsg']
+        sys.argv.extend(['--output_format', 'syntastic'])
+        sys.argv.extend(['-f', 'vsg/tests/vsg/entity1.vhd'])
+        sys.argv.extend(['--backup'])
+
+        with self.assertRaises(SystemExit) as cm:
+            __main__.main()
+
+        mock_stdout.write.assert_has_calls(lExpected)
+        self.assertEqual(cm.exception.code, 1)
+        self.assertFalse(os.path.isfile('vsg/tests/vsg/entity1.vhd.bak'))

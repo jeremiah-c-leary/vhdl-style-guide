@@ -219,7 +219,7 @@ port_010
 
 |phase_6| |error|
 
-This rule checks port names are uppercase.
+This rule checks the port names have proper case.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
 
@@ -239,10 +239,10 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 .. code-block:: vhdl
 
    port (
-     WR_EN     : in    std_logic;
-     RD_EN     : in    std_logic;
-     OVERFLOW  : out   std_logic;
-     UNDERFLOW : out   std_logic
+     wr_en     : in    std_logic;
+     rd_en     : in    std_logic;
+     overflow  : out   std_logic;
+     underflow : out   std_logic
    );
 
 port_011
