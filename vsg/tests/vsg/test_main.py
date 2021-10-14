@@ -6,6 +6,7 @@ import os
 import subprocess
 import shutil
 import sys
+import shutil
 
 import contextlib
 from io import StringIO
@@ -23,7 +24,7 @@ class command_line_args():
         self.version = version
 
 
-class testVsg(unittest.TestCase):
+class testMain(unittest.TestCase):
 
     def setUp(self):
         if os.path.isfile('deleteme.json'):
@@ -370,6 +371,31 @@ class testVsg(unittest.TestCase):
             pass
 
         mock_stdout.write.assert_has_calls(lExpected)
+
+
+    def test_json_parameter(self):
+
+        self.assertFalse(os.path.isfile('deleteme.json'))
+
+        lExpected = []
+        lExpected.append('ERROR: vsg/tests/vsg/entity2.vhd(8)port_008 -- Change the number of spaces after the *out* keyword to three spaces.')
+        lExpected.append('ERROR: vsg/tests/vsg/entity1.vhd(7)port_007 -- Change the number of spaces after the *in* keyword to four spaces.')
+
+        sys.argv = ['vsg']
+        sys.argv.extend(['--output_format', 'syntastic'])
+        sys.argv.extend(['--configuration', 'vsg/tests/vsg/config_glob.yaml'])
+        sys.argv.extend(['--json', 'deleteme.json'])
+
+        temp_stdout = StringIO()
+
+        with contextlib.redirect_stdout(temp_stdout):
+
+            try:
+                __main__.main()
+            except SystemExit:
+                pass
+
+        self.assertTrue(os.path.isfile('deleteme.json'))
 
     @mock.patch('sys.stdout')
     def test_backup_file(self, mock_stdout):

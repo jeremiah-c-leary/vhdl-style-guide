@@ -4,7 +4,7 @@ Usage
 VSG is a both a command line tool and a python package.
 The command line tool can be invoked with:
 
-.. code-block:: mono
+.. code-block:: text
 
    $ vsg
    usage: VHDL Style Guide (VSG) [-h] [-f FILENAME [FILENAME ...]] [-lr LOCAL_RULES] [-c CONFIGURATION [CONFIGURATION ...]] [--fix]
@@ -52,6 +52,8 @@ The command line tool can be invoked with:
 | -f FILENAME                   | The VHDL file to be analyzed or fixed.          |
 |                               | Multiple files can be passed through this       |
 |                               | option.                                         |
+|                               | The path to each file can also be specified.    |
+|                               | File globbing is also supported.                |
 +-------------------------------+-------------------------------------------------+
 | --local_rules LOCAL_RULES     | Additional rules not in the base set.           |
 +-------------------------------+-------------------------------------------------+
@@ -69,8 +71,12 @@ The command line tool can be invoked with:
 |                               | on all phases.                                  |
 +-------------------------------+-------------------------------------------------+
 | --junit                       | Filename of JUnit XML file to generate.         |
+|                               | The path to the file can also be specified, but |
+|                               | the destination directory must exist.           |
 +-------------------------------+-------------------------------------------------+
 | --json                        | Filename of JSON file to generate.              |
+|                               | The path to the file can also be specified, but |
+|                               | the destination directory must exist.           |
 +-------------------------------+-------------------------------------------------+
 | --output_format               | Configures the sdout output format.             |
 |                               |   vsg -- standard VSG output                    |
@@ -88,6 +94,8 @@ The command line tool can be invoked with:
 |                               | run.  It includes a file_list, local_rules (if  |
 |                               | used), and how every rule was configured.       |
 |                               | This configuration can be fed back into VSG.    |
+|                               | The path to the file can also be specified, but |
+|                               | the destination directory must exist.           |
 +-------------------------------+-------------------------------------------------+
 | --rule_configuration          | Displays the configuration of a rule.           |
 +-------------------------------+-------------------------------------------------+
@@ -111,7 +119,7 @@ The command line tool can be invoked with:
 
 Here is an example output running against a test file:
 
-.. code-block:: bash
+.. code-block:: text
 
    $ vsg -f example/architecture-empty.vhd
    ================================================================================
@@ -140,7 +148,7 @@ The violation and the appropriate fix for each rule is shown.
 
 The violations can be fixed manually, or use the **--fix** option to have VSG update the file.
 
-.. code-block:: bash
+.. code-block:: text
 
    $ vsg -f example/architecture-empty.vhd
    ================================================================================
@@ -152,7 +160,7 @@ The violations can be fixed manually, or use the **--fix** option to have VSG up
 
 If rule violations can not be fixed, they will be reported after fixing everything else:
 
-.. code-block:: bash
+.. code-block:: text
 
    $ vsg -f example/architecture-empty.vhd
    ================================================================================
@@ -169,6 +177,65 @@ If rule violations can not be fixed, they will be reported after fixing everythi
      instantiation_034         | Error      |        169 | Change to component instantiation
    ----------------------------+------------+--------------------------------------
    NOTE: Refer to online documentation at https://vhdl-style-guide.readthedocs.io/en/latest/index.html for more information.
+
+Use Cases
+#########
+
+Checking a single file
+----------------------
+
+.. code-block:: text
+
+   $ vsg -f fifo.vhd
+
+Checking multiple files using globbing
+--------------------------------------
+
+.. code-block:: text
+
+   $ vsg -f *.vhd
+
+Checking multiple files in different directories
+------------------------------------------------
+
+.. code-block:: text
+
+   $ vsg -f fifos/src/*.vhd cpu_core/src/*.vhd usb_hub/src/*.vhd
+
+Checking all files in a project
+-------------------------------
+
+.. code-block:: text
+
+   $ find . -name "*.vhd" -exec vsg -f {} \;
+
+Integration with CI server
+--------------------------
+
+.. code-block:: text
+
+   $ vsg -f fifos/src/*.vhd --junit fifos/src/fifos_junit.xml
+
+Fixing a single file
+--------------------
+
+.. code-block:: text
+
+   $ vsg -f fifo.vhd --fix
+
+Fixing multiple files using globbing
+------------------------------------
+
+.. code-block:: text
+
+   $ vsg -f *.vhd --fix
+
+Fixing all files in a project
+-----------------------------
+
+.. code-block:: text
+
+   $ find . -name "*.vhd" -exec vsg -f {} --fix \;
 
 Error Codes
 ###########
