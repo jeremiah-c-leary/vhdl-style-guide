@@ -105,6 +105,7 @@ The command line tool can be invoked with:
 +-------------------------------+-------------------------------------------------+
 | --all-phases                  | Executes all phases without stopping if a       |
 |                               | violation is found.                             |
+|                               | NOTE: This is not valid with the --fix option.  |
 +-------------------------------+-------------------------------------------------+
 | --fix_only                    | Restrict which rules are fixed based on JSON    |
 |                               | file.                                           |

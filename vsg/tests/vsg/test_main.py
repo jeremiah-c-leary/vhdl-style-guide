@@ -451,3 +451,22 @@ class testMain(unittest.TestCase):
         mock_stdout.write.assert_has_calls(lExpected)
         self.assertEqual(cm.exception.code, 1)
         self.assertFalse(os.path.isfile('vsg/tests/vsg/entity1.vhd.bak'))
+
+    @mock.patch('sys.stdout')
+    def test_ap_with_fix(self, mock_stdout):
+
+        lExpected = []
+        lExpected.append(mock.call('ERROR:  -ap argument is invalid with the --fix argument'))
+        lExpected.append(mock.call('\n'))
+
+        sys.argv = ['vsg']
+        sys.argv.extend(['--output_format', 'syntastic'])
+        sys.argv.extend(['-f', 'vsg/tests/vsg/entity1.vhd'])
+        sys.argv.extend(['-ap'])
+        sys.argv.extend(['--fix'])
+
+        with self.assertRaises(SystemExit) as cm:
+            __main__.main()
+
+        mock_stdout.write.assert_has_calls(lExpected)
+        self.assertEqual(cm.exception.code, 1)
