@@ -85,3 +85,28 @@ The indent of the comment will be set to the indent of the current line.
 
    -- Assign signal
    a <= b;
+
+comment_100
+###########
+
+|phase_2| |error|
+
+This rule checks for a single space after the **--**.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   --Comment 1
+   --|Comment 2
+   ---Comment
+   ---------------------------
+
+**Fix**
+
+.. code-block:: vhdl
+
+   -- Comment 1
+   --| Comment 2
+   --- Comment
+   ---------------------------
