@@ -81,3 +81,6 @@ rule :
   # Set optional item rules
   instantiation_033 :
     action : remove
+  # Set blank line rules
+  case_200 :
+    disable: True

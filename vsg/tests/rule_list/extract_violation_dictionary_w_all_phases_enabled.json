@@ -296,6 +296,41 @@
           "solution": "Insert blank line below"
         },
         {
+         "rule": "case_200",
+         "linenumber": 505,
+         "solution": "Insert blank line below"
+        },
+        {
+         "rule": "case_200",
+         "linenumber": 513,
+         "solution": "Insert blank line below"
+        },
+        {
+         "rule": "case_200",
+         "linenumber": 521,
+         "solution": "Insert blank line below"
+        },
+        {
+         "rule": "case_200",
+         "linenumber": 530,
+         "solution": "Insert blank line below"
+        },
+        {
+         "rule": "case_200",
+         "linenumber": 538,
+         "solution": "Insert blank line below"
+        },
+        {
+         "rule": "case_200",
+         "linenumber": 555,
+         "solution": "Insert blank line below"
+        },
+        {
+         "rule": "case_200",
+         "linenumber": 571,
+          "solution": "Insert blank line below"
+        },
+        {
           "rule": "comment_010",
           "linenumber": 184,
           "solution": "Indent level 2"
