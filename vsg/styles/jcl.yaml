@@ -74,7 +74,7 @@ rule :
     blank_line_ends_group : false
     comment_line_ends_group : false
     include_lines_without_comments : false
-  sequential_005 :
+  process_400:
     compact_alignment : true
     blank_line_ends_group : true
     comment_line_ends_group : true
