@@ -397,10 +397,10 @@ class testMain(unittest.TestCase):
 
         self.assertTrue(os.path.isfile('deleteme.json'))
 
-        # Read in the expected JUnit XML file for comparison
+        # Read in the expected JSON file for comparison
         lExpected = []
         utils.read_file(os.path.join(os.path.dirname(__file__),'json-expected.json'), lExpected)
-        # Read in the actual JUnit XML file for comparison
+        # Read in the actual JSON file for comparison
         lActual = []
         utils.read_file(os.path.join('deleteme.json'), lActual)
 
