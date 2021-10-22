@@ -1,16 +1,19 @@
 
-from vsg.rules import token_case
+from vsg.rules import token_case_in_range_bounded_by_tokens
 
 from vsg import token
 
 lTokens = []
 lTokens.append(token.subprogram_body.designator)
 
+oStartToken = token.function_specification.function_keyword
+oEndToken = token.subprogram_body.semicolon
 
-class rule_506(token_case):
+
+class rule_506(token_case_in_range_bounded_by_tokens):
     '''
     Checks the function designator in the end procedure has proper case.
     '''
 
     def __init__(self):
-        token_case.__init__(self, 'function', '506', lTokens)
+        token_case_in_range_bounded_by_tokens.__init__(self, 'function', '506', lTokens, oStartToken, oEndToken)

@@ -2,7 +2,7 @@
 import os
 import unittest
 
-from vsg.rules import procedure
+from vsg.rules import subprogram_body
 from vsg import vhdlFile
 from vsg.tests import utils
 
@@ -15,16 +15,16 @@ lExpected.append('')
 utils.read_file(os.path.join(sTestDir, 'rule_205_test_input.fixed.vhd'), lExpected, False)
 
 
-class test_procedure_rule(unittest.TestCase):
+class test_subprogram_body_rule(unittest.TestCase):
 
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
 
     def test_rule_205(self):
-        oRule = procedure.rule_205()
+        oRule = subprogram_body.rule_205()
         self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'procedure')
+        self.assertEqual(oRule.name, 'subprogram_body')
         self.assertEqual(oRule.identifier, '205')
 
         lExpected = [13]
@@ -33,7 +33,7 @@ class test_procedure_rule(unittest.TestCase):
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
     def test_fix_rule_205(self):
-        oRule = procedure.rule_205()
+        oRule = subprogram_body.rule_205()
 
         oRule.fix(self.oFile)
 

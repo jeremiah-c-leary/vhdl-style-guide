@@ -452,163 +452,27 @@ Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous
 procedure_201
 #############
 
-|phase_3| |error|
-
-This rule checks for a blank line below the **is** keyword.
-
-This rule allows the **begin** keyword to occupy the blank line:
-
-.. code-block:: vhdl
-
-   procedure average_samples is
-   begin
-
-Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   procedure average_samples (
-       constant a : in integer;
-       signal d : out std_logic
-   ) is
-     constant width : integer := 32;
-   begin
-
-   procedure average_samples is
-     constant width : integer := 32;
-   begin
-
-**Fix**
-
-.. code-block:: vhdl
-
-   procedure average_samples (
-       constant a : in integer;
-       signal d : out std_logic
-   ) is
-
-     constant width : integer := 32;
-   begin
-
-   procedure average_samples is
-
-     constant width : integer := 32;
-   begin
+This rule has been moved to rule `subprogram_body_201 <subprogram_rules.html#subprogram-body-201>`_.
 
 procedure_202
 #############
 
-|phase_3| |error|
-
-This rule checks for blank lines above the **begin** keyword.
-
-This rule allows the **is** keyword to occupy the blank line:
-
-.. code-block:: vhdl
-
-   procedure average_samples is
-   begin
-
-Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   procedure average_samples is
-
-     constant width : integer := 32;
-   begin
-
-**Fix**
-
-.. code-block:: vhdl
-
-   procedure average_samples is
-
-     constant width : integer := 32;
-
-   begin
+This rule has been moved to rule `subprogram_body_202 <subprogram_rules.html#subprogram-body-202>`_.
 
 procedure_203
 #############
 
-|phase_3| |error|
-
-This rule checks for a blank line below the **begin** keyword.
-
-Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   procedure average_samples is
-   begin
-     a <= b;
-
-**Fix**
-
-.. code-block:: vhdl
-
-   procedure average_samples is
-   begin
-
-     a <= b;
+This rule has been moved to rule `subprogram_body_203 <subprogram_rules.html#subprogram-body-203>`_.
 
 procedure_204
 #############
 
-|phase_3| |error|
-
-This rule checks for blank lines above the **end** keyword.
-
-Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   begin
-
-     a <= b;
-   end procedure average_samples;
-
-**Fix**
-
-.. code-block:: vhdl
-
-   begin
-
-     a <= b;
-
-   end procedure average_samples;
+This rule has been moved to rule `subprogram_body_204 <subprogram_rules.html#subprogram-body-204>`_.
 
 procedure_205
 #############
 
-|phase_3| |error|
-
-This rule checks for a blank line below the semicolon at the end of the procedure declaration.
-
-Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   end procedure average_samples;
-   signal wr_en : std_logic;
-
-**Fix**
-
-.. code-block:: vhdl
-
-   end procedure average_samples;
-
-   signal wr_en : std_logic;
+This rule has been moved to rule `subprogram_body_205 <subprogram_rules.html#subprogram-body-205>`_.
 
 procedure_401
 #############

@@ -15,6 +15,13 @@ architecture RTL of FIFO is
   begin
   end function func1;
 
+  procedure proc_1 is
+    constant c   : integer;
+    variable v : integer;
+    file f         : something;
+  begin
+  end procedure proc_1;
+
 begin
 
 end architecture RTL;

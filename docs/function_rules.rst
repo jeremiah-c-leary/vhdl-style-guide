@@ -117,28 +117,7 @@ Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous
 function_007
 ############
 
-|phase_3| |error|
-
-This rule checks for a blank line below the end of the function declaration.
-
-Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   function overflow (a: integer) return integer is
-   end;
-   signal wr_en : std_logic;
-
-**Fix**
-
-.. code-block:: vhdl
-
-   function overflow (a: integer) return integer is
-   end;
-
-   signal wr_en : std_logic;
+This rule has been moved to rule `subprogram_body_205 <subprogram_rules.html#subprogram-body-205>`_.
 
 function_008
 ############
@@ -446,124 +425,22 @@ This rule checks for a single space between the **end** and **function** keyword
 function_201
 ############
 
-|phase_3| |error|
-
-This rule checks for a blank line below the **is** keyword.
-
-This rule allows the **begin** keyword to occupy the blank line:
-
-.. code-block:: vhdl
-
-   function overflow (a: integer) return integer is
-   begin
-
-Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   function overflow (a: integer) return integer is
-     constant width : integer := 32;
-   begin
-
-**Fix**
-
-.. code-block:: vhdl
-
-   function overflow (a: integer) return integer is
-
-     constant width : integer := 32;
-   begin
+This rule has been moved to rule `subprogram_body_201 <subprogram_rules.html#subprogram-body-201>`_.
 
 function_202
 ############
 
-|phase_3| |error|
-
-This rule checks for blank lines above the **begin** keyword.
-
-This rule allows the **is** keyword to occupy the blank line:
-
-.. code-block:: vhdl
-
-   function overflow (a: integer) return integer is
-   begin
-
-Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   function overflow (a: integer) return integer is
-
-     constant width : integer := 32;
-   begin
-
-**Fix**
-
-.. code-block:: vhdl
-
-   function overflow (a: integer) return integer is
-
-     constant width : integer := 32;
-
-   begin
+This rule has been moved to rule `subprogram_body_202 <subprogram_rules.html#subprogram-body-202>`_.
 
 function_203
 ############
 
-|phase_3| |error|
-
-This rule checks for a blank line below the **begin** keyword.
-
-Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   function overflow (a: integer) return integer is
-   begin
-     a <= b;
-
-**Fix**
-
-.. code-block:: vhdl
-
-   function overflow (a: integer) return integer is
-   begin
-
-     a <= b;
+This rule has been moved to rule `subprogram_body_203 <subprogram_rules.html#subprogram-body-203>`_.
 
 function_204
 ############
 
-|phase_3| |error|
-
-This rule checks for blank lines above the **end** keyword.
-
-Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   begin
-
-     a <= b;
-   end function overflow;
-
-**Fix**
-
-.. code-block:: vhdl
-
-   begin
-
-     a <= b;
-
-   end function overflow;
+This rule has been moved to rule `subprogram_body_204 <subprogram_rules.html#subprogram-body-204>`_.
 
 function_300
 ############

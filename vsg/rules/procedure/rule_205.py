@@ -1,16 +1,9 @@
 
-from vsg.rules import blank_line_below_line_ending_with_token
-
-from vsg import token
-
-lTokens = []
-lTokens.append(token.subprogram_body.semicolon)
+from vsg.depricated_rule import Depricated
 
 
-class rule_205(blank_line_below_line_ending_with_token):
-    '''
-    Checks for a blank line below the semicolon at the end of a procedure declaration.
-    '''
+class rule_205(Depricated):
 
     def __init__(self):
-        blank_line_below_line_ending_with_token.__init__(self, 'procedure', '205', lTokens)
+        Depricated.__init__(self, 'procedure', '205')
+        self.message.append('Rule ' + self.unique_id + ' has been moved to rule subprogram_body_205.')
