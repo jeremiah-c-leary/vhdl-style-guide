@@ -34,7 +34,9 @@ def main():
 
     sFileName = commandLineArguments.filename
 
-    oVhdlFile = vhdlFile.vhdlFile(vhdlFile.utils.read_vhdlfile(sFileName))
+    lLines = vhdlFile.utils.read_vhdlfile(sFileName)
+
+    oVhdlFile = vhdlFile.vhdlFile(lLines[0])
     oVhdlFile.filename = sFileName
 
     utils.print_objects(oVhdlFile, not commandLineArguments.whitespace)
