@@ -16,8 +16,6 @@ For example the rule constant_002 can be changed to enforce uppercase using the 
 
 .. code-block:: yaml
 
-   ---
-
    rule :
      constant_002 :
         case : 'upper'
@@ -30,13 +28,42 @@ For example, if you want to uppercase everything except the entity name, you cou
 
 .. code-block:: yaml
 
-   ---
-
    rule :
      global :
        case : 'upper'
      entity_008 :
        case : 'lower'
+
+Adding Prefix and Suffix Exceptions
+###################################
+
+Some rules allow for prefixes and suffixes to be cased differently than the rest of the identifier.
+This is performed by changing the `prefix_exceptions` and `suffix_exceptions` parameters.
+The default values for these are an empty list.
+
+If they are set and if the prefix and/or suffix are encountered, then the exact prefix/suffix will be validated along with the case of the rest of the string.
+
+.. code-block:: yaml
+
+   rule :
+     constant_007 :
+        case : 'lower'
+        prefix_exceptions : ['G_']
+
+.. code-block:: yaml
+
+   rule :
+     constant_007 :
+        case : 'lower'
+        suffix_exceptions : ['_G']
+
+.. code-block:: yaml
+
+   rule :
+     constant_007 :
+        case : 'lower'
+        prefix_exceptions : ['G_']
+        suffix_exceptions : ['_G']
 
 Rules Enforcing Case
 ####################

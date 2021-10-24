@@ -2,7 +2,8 @@
 entity FIFO is
   generic (
     G_WIDTH : integer := 256;
-    G_DEPTH : integer := 32
+    G_DEPTH : integer := 32;
+    prefix_GENERIC_suffix : integer := 20
   );
   port (
     I_PORT1 : in std_logic;
@@ -10,13 +11,47 @@ entity FIFO is
   );
 end entity FIFO;
 
+entity FIFO is
+  generic (
+    G_WIDTH : integer := 256;
+    G_DEPTH : integer := 32;
+    PREFIX_GENERIC_suffix : integer := 20
+  );
+  port (
+    I_PORT1 : in std_logic;
+    I_PORT2 : out std_logic
+  );
+end entity FIFO;
 
--- Violation below
+entity FIFO is
+  generic (
+    G_WIDTH : integer := 256;
+    G_DEPTH : integer := 32;
+    prefix_GENERIC_SUFFIX : integer := 20
+  );
+  port (
+    I_PORT1 : in std_logic;
+    I_PORT2 : out std_logic
+  );
+end entity FIFO;
+
+entity FIFO is
+  generic (
+    G_WIDTH : integer := 256;
+    G_DEPTH : integer := 32;
+    PREFIX_GENERIC_SUFFIX : integer := 20
+  );
+  port (
+    I_PORT1 : in std_logic;
+    I_PORT2 : out std_logic
+  );
+end entity FIFO;
 
 entity FIFO is
   generic(g_size : integer := 10;
    g_width : integer := 256;
-   g_depth : integer := 32
+   g_depth : integer := 32;
+   prefix_generic_suffix : integer := 20
   );
   port (
     i_port1 : in std_logic := '0';
@@ -24,4 +59,39 @@ entity FIFO is
   );
 end entity FIFO;
 
+entity FIFO is
+  generic(g_size : integer := 10;
+   g_width : integer := 256;
+   g_depth : integer := 32;
+   PREFIX_generic_suffix : integer := 20
+  );
+  port (
+    i_port1 : in std_logic := '0';
+    i_port2 : out std_logic :='1'
+  );
+end entity FIFO;
+
+entity FIFO is
+  generic(g_size : integer := 10;
+   g_width : integer := 256;
+   g_depth : integer := 32;
+   prefix_generic_SUFFIX : integer := 20
+  );
+  port (
+    i_port1 : in std_logic := '0';
+    i_port2 : out std_logic :='1'
+  );
+end entity FIFO;
+
+entity FIFO is
+  generic(g_size : integer := 10;
+   g_width : integer := 256;
+   g_depth : integer := 32;
+   PREFIX_generic_SUFFIX : integer := 20
+  );
+  port (
+    i_port1 : in std_logic := '0';
+    i_port2 : out std_logic :='1'
+  );
+end entity FIFO;
 

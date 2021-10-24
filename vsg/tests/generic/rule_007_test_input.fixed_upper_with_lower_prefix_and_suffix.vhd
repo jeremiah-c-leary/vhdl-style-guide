@@ -1,9 +1,9 @@
 
 entity FIFO is
   generic (
-    g_width : integer := 256;
-    g_depth : integer := 32;
-    prefix_generic_suffix : integer := 20
+    G_WIDTH : integer := 256;
+    G_DEPTH : integer := 32;
+    prefix_GENERIC_suffix : integer := 20
   );
   port (
     I_PORT1 : in std_logic;
@@ -13,9 +13,9 @@ end entity FIFO;
 
 entity FIFO is
   generic (
-    g_width : integer := 256;
-    g_depth : integer := 32;
-    prefix_generic_suffix : integer := 20
+    G_WIDTH : integer := 256;
+    G_DEPTH : integer := 32;
+    prefix_GENERIC_suffix : integer := 20
   );
   port (
     I_PORT1 : in std_logic;
@@ -25,9 +25,9 @@ end entity FIFO;
 
 entity FIFO is
   generic (
-    g_width : integer := 256;
-    g_depth : integer := 32;
-    prefix_generic_suffix : integer := 20
+    G_WIDTH : integer := 256;
+    G_DEPTH : integer := 32;
+    prefix_GENERIC_suffix : integer := 20
   );
   port (
     I_PORT1 : in std_logic;
@@ -37,9 +37,9 @@ end entity FIFO;
 
 entity FIFO is
   generic (
-    g_width : integer := 256;
-    g_depth : integer := 32;
-    prefix_generic_suffix : integer := 20
+    G_WIDTH : integer := 256;
+    G_DEPTH : integer := 32;
+    prefix_GENERIC_suffix : integer := 20
   );
   port (
     I_PORT1 : in std_logic;
@@ -48,10 +48,10 @@ entity FIFO is
 end entity FIFO;
 
 entity FIFO is
-  generic(g_size : integer := 10;
-   g_width : integer := 256;
-   g_depth : integer := 32;
-   prefix_generic_suffix : integer := 20
+  generic(G_SIZE : integer := 10;
+   G_WIDTH : integer := 256;
+   G_DEPTH : integer := 32;
+   prefix_GENERIC_suffix : integer := 20
   );
   port (
     i_port1 : in std_logic := '0';
@@ -60,10 +60,10 @@ entity FIFO is
 end entity FIFO;
 
 entity FIFO is
-  generic(g_size : integer := 10;
-   g_width : integer := 256;
-   g_depth : integer := 32;
-   prefix_generic_suffix : integer := 20
+  generic(G_SIZE : integer := 10;
+   G_WIDTH : integer := 256;
+   G_DEPTH : integer := 32;
+   prefix_GENERIC_suffix : integer := 20
   );
   port (
     i_port1 : in std_logic := '0';
@@ -72,10 +72,10 @@ entity FIFO is
 end entity FIFO;
 
 entity FIFO is
-  generic(g_size : integer := 10;
-   g_width : integer := 256;
-   g_depth : integer := 32;
-   prefix_generic_suffix : integer := 20
+  generic(G_SIZE : integer := 10;
+   G_WIDTH : integer := 256;
+   G_DEPTH : integer := 32;
+   prefix_GENERIC_suffix : integer := 20
   );
   port (
     i_port1 : in std_logic := '0';
@@ -84,10 +84,10 @@ entity FIFO is
 end entity FIFO;
 
 entity FIFO is
-  generic(g_size : integer := 10;
-   g_width : integer := 256;
-   g_depth : integer := 32;
-   prefix_generic_suffix : integer := 20
+  generic(G_SIZE : integer := 10;
+   G_WIDTH : integer := 256;
+   G_DEPTH : integer := 32;
+   prefix_GENERIC_suffix : integer := 20
   );
   port (
     i_port1 : in std_logic := '0';
