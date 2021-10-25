@@ -1,5 +1,4 @@
 
-import argparse
 import sys
 import os
 import json
@@ -14,6 +13,8 @@ from . import rule_list
 from . import severity
 from . import version
 from . import vhdlFile
+import argparse
+from .CustomArgumentParser import CustomArgumentParser
 
 
 def parse_command_line_arguments():
@@ -35,7 +36,7 @@ def parse_command_line_arguments():
             raise argparse.ArgumentTypeError(f"The file {value} does not exist.")
         return value
 
-    parser = argparse.ArgumentParser(
+    parser = CustomArgumentParser(
       prog='VHDL Style Guide (VSG)',
       description='''Analyzes VHDL files for style guide violations.
                    Reference documentation is located at:
