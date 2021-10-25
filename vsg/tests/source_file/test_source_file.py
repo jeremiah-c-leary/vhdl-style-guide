@@ -18,6 +18,7 @@ sOutputNoFile = os.path.join(os.path.dirname(__file__),'output_no_file.txt')
 sOutputNoPermission = os.path.join(os.path.dirname(__file__),'output_no_permission.txt')
 sOutputEmptyFile = os.path.join(os.path.dirname(__file__),'output_empty_file.txt')
 
+
 class testOSError(unittest.TestCase):
 
     def tearDown(self):
@@ -26,15 +27,11 @@ class testOSError(unittest.TestCase):
 
     def test_file_not_found(self):
         try:
-            subprocess.check_output(['bin/vsg','-f', 'no_file.vhd'])
+            subprocess.check_output(['bin/vsg', '-f', 'no_file.vhd'])
         except subprocess.CalledProcessError as e:
-            lActual = str(e.output.decode('utf-8')).split('\n')
-            iExitStatus = e.returncode
+            exit_status: int = e.returncode
 
-        lExpected = pathlib.Path(sOutputNoFile).read_text().split('\n')
-
-        self.assertEqual(iExitStatus, 1)
-        self.assertEqual(utils.replace_total_count(lActual), lExpected)
+        self.assertEqual(exit_status, 1)
 
     @unittest.skipIf('SUDO_UID' in os.environ.keys() or os.geteuid() == 0, "We are root. Root always has permissions so test will fail.")
     def test_file_no_permission(self):
