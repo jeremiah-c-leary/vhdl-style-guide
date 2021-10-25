@@ -25,13 +25,23 @@ def parse_command_line_arguments():
             raise argparse.ArgumentTypeError(f"{value} is an invalid value for number of jobs")
         return iValue
 
+    def is_valid_file(value: str) -> str:
+        """
+        Check an argument in argparse to be a path to an existing file
+        :param value: String path to analyze.
+        :return:
+        """
+        if not os.path.isfile(value):
+            raise argparse.ArgumentTypeError(f"The file {value} does not exist.")
+        return value
+
     parser = argparse.ArgumentParser(
       prog='VHDL Style Guide (VSG)',
       description='''Analyzes VHDL files for style guide violations.
                    Reference documentation is located at:
                    http://vhdl-style-guide.readthedocs.io/en/latest/index.html''')
 
-    parser.add_argument('-f', '--filename', nargs='+', help='File to analyze')
+    parser.add_argument('-f', '--filename', type=is_valid_file, nargs='+', help='File to analyze')
     parser.add_argument('-lr', '--local_rules', help='Path to local rules')
     parser.add_argument('-c', '--configuration', nargs='+', help='JSON or YAML configuration file(s)')
     parser.add_argument('--fix', default=False, action='store_true', help='Fix issues found')
