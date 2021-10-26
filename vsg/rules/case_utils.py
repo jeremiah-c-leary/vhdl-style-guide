@@ -10,10 +10,7 @@ def is_exception_enabled(lList):
 
 def check_for_case_violation(oToi, self, check_prefix=False, check_suffix=False, iIndex=0, iLine=None):
     sObjectValue = oToi.get_tokens()[iIndex].get_value()
-    if iLine is None:
-        iMyLine = oToi.get_line_number()
-    else:
-        iMyLine = iLine
+    iMyLine = get_violation_line(oToi, iLine)
 
     if self.case == 'lower' and not check_prefix and not check_suffix:
         if not sObjectValue.islower():
@@ -104,14 +101,17 @@ def prefix_detected(sString, lPrefixes):
     else:
         return False 
 
+
 def get_matched_prefix(sString, lPrefixes):
     sLowerString = sString.lower()
     for sPrefix in lPrefixes:
        if sLowerString.startswith(sPrefix.lower()):
            return sPrefix
 
+
 def extract_prefix(sString, sPrefix):
     return sString[0:len(sPrefix)]
+
 
 def remove_prefix(sString, sPrefix):
     return sString[len(sPrefix):]
@@ -125,17 +125,21 @@ def suffix_detected(sString, lSuffixes):
     else:
         return False 
 
+
 def get_matched_suffix(sString, lSuffixes):
     sLowerString = sString.lower()
     for sSuffix in lSuffixes:
        if sLowerString.endswith(sSuffix.lower()):
            return sSuffix
 
+
 def extract_suffix(sString, sSuffix):
     return sString[len(sString) - len(sSuffix):]
 
+
 def remove_suffix(sString, sSuffix):
     return sString[0:len(sString) - len(sSuffix)]
+
 
 def create_case_violation(sActual, sExpected, oToi, iIndex, iLine):
     sSolution = 'Change "' + sActual + '" to "' + sExpected + '"'
@@ -145,4 +149,12 @@ def create_case_violation(sActual, sExpected, oToi, iIndex, iLine):
     dAction['index'] = iIndex
     oViolation.set_action(dAction)
     return oViolation
+
+
+def get_violation_line(oToi, iLine):
+    if iLine is None:
+        return oToi.get_line_number()
+    else:
+        return iLine
+    
 
