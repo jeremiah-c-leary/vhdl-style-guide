@@ -8,12 +8,16 @@ def is_exception_enabled(lList):
     return True 
 
 
-def check_for_case_violation(oToi, self, check_prefix=False, check_suffix=False):
-    sObjectValue = oToi.get_tokens()[0].get_value()
+def check_for_case_violation(oToi, self, check_prefix=False, check_suffix=False, iIndex=0, iLine=None):
+    sObjectValue = oToi.get_tokens()[iIndex].get_value()
+    if iLine is None:
+        iMyLine = oToi.get_line_number()
+    else:
+        iMyLine = iLine
 
     if self.case == 'lower' and not check_prefix and not check_suffix:
         if not sObjectValue.islower():
-            return create_case_violation(sObjectValue, sObjectValue.lower(), oToi)
+            return create_case_violation(sObjectValue, sObjectValue.lower(), oToi, iIndex, iMyLine)
 
     if self.case == 'lower' and check_prefix and not check_suffix:
         if prefix_detected(sObjectValue, self.prefix_exceptions):
@@ -22,9 +26,9 @@ def check_for_case_violation(oToi, self, check_prefix=False, check_suffix=False)
             sConstant = remove_prefix(sObjectValue, sActualPrefix)
             sExpected = sDesiredPrefix + sConstant.lower()
             if sObjectValue != sExpected:
-                return create_case_violation(sObjectValue, sExpected, oToi)
+                return create_case_violation(sObjectValue, sExpected, oToi, iIndex, iMyLine)
         elif not sObjectValue.islower():
-            return create_case_violation(sObjectValue, sObjectValue.lower(), oToi)
+            return create_case_violation(sObjectValue, sObjectValue.lower(), oToi, iIndex, iMyLine)
 
     if self.case == 'lower' and not check_prefix and check_suffix:
         if suffix_detected(sObjectValue, self.suffix_exceptions):
@@ -33,9 +37,9 @@ def check_for_case_violation(oToi, self, check_prefix=False, check_suffix=False)
             sConstant = remove_suffix(sObjectValue, sActualSuffix)
             sExpected = sConstant.lower() + sDesiredSuffix
             if sObjectValue != sExpected:
-                return create_case_violation(sObjectValue, sExpected, oToi)
+                return create_case_violation(sObjectValue, sExpected, oToi, iIndex, iMyLine)
         elif not sObjectValue.islower():
-            return create_case_violation(sObjectValue, sObjectValue.lower(), oToi)
+            return create_case_violation(sObjectValue, sObjectValue.lower(), oToi, iIndex, iMyLine)
 
     if self.case == 'lower' and check_prefix and check_suffix:
         if prefix_detected(sObjectValue, self.prefix_exceptions) and suffix_detected(sObjectValue, self.suffix_exceptions):
@@ -47,13 +51,13 @@ def check_for_case_violation(oToi, self, check_prefix=False, check_suffix=False)
             sConstant = remove_suffix(sConstant, sActualSuffix)
             sExpected = sDesiredPrefix + sConstant.lower() + sDesiredSuffix
             if sObjectValue != sExpected:
-                return create_case_violation(sObjectValue, sExpected, oToi)
+                return create_case_violation(sObjectValue, sExpected, oToi, iIndex, iMyLine)
         elif not sObjectValue.islower():
-            return create_case_violation(sObjectValue, sObjectValue.lower(), oToi)
+            return create_case_violation(sObjectValue, sObjectValue.lower(), oToi, iIndex, iMyLine)
 
     if self.case == 'upper' and not check_prefix and not check_suffix:
         if not sObjectValue.isupper():
-            return create_case_violation(sObjectValue, sObjectValue.upper(), oToi)
+            return create_case_violation(sObjectValue, sObjectValue.upper(), oToi, iIndex, iMyLine)
 
     if self.case == 'upper' and check_prefix and not check_suffix:
         if prefix_detected(sObjectValue, self.prefix_exceptions):
@@ -62,9 +66,9 @@ def check_for_case_violation(oToi, self, check_prefix=False, check_suffix=False)
             sConstant = remove_prefix(sObjectValue, sActualPrefix)
             sExpected = sDesiredPrefix + sConstant.upper()
             if sObjectValue != sExpected:
-                return create_case_violation(sObjectValue, sExpected, oToi)
+                return create_case_violation(sObjectValue, sExpected, oToi, iIndex, iMyLine)
         elif not sObjectValue.isupper():
-            return create_case_violation(sObjectValue, sObjectValue.upper(), oToi)
+            return create_case_violation(sObjectValue, sObjectValue.upper(), oToi, iIndex, iMyLine)
 
     if self.case == 'upper' and not check_prefix and check_suffix:
         if suffix_detected(sObjectValue, self.suffix_exceptions):
@@ -73,9 +77,9 @@ def check_for_case_violation(oToi, self, check_prefix=False, check_suffix=False)
             sConstant = remove_suffix(sObjectValue, sActualSuffix)
             sExpected = sConstant.upper() + sDesiredSuffix
             if sObjectValue != sExpected:
-                return create_case_violation(sObjectValue, sExpected, oToi)
+                return create_case_violation(sObjectValue, sExpected, oToi, iIndex, iMyLine)
         elif not sObjectValue.isupper():
-            return create_case_violation(sObjectValue, sObjectValue.upper(), oToi)
+            return create_case_violation(sObjectValue, sObjectValue.upper(), oToi, iIndex, iMyLine)
 
     if self.case == 'upper' and check_prefix and check_suffix:
         if prefix_detected(sObjectValue, self.prefix_exceptions) and suffix_detected(sObjectValue, self.suffix_exceptions):
@@ -87,9 +91,9 @@ def check_for_case_violation(oToi, self, check_prefix=False, check_suffix=False)
             sConstant = remove_suffix(sConstant, sActualSuffix)
             sExpected = sDesiredPrefix + sConstant.upper() + sDesiredSuffix
             if sObjectValue != sExpected:
-                return create_case_violation(sObjectValue, sExpected, oToi)
+                return create_case_violation(sObjectValue, sExpected, oToi, iIndex, iMyLine)
         elif not sObjectValue.isupper():
-            return create_case_violation(sObjectValue, sObjectValue.upper(), oToi)
+            return create_case_violation(sObjectValue, sObjectValue.upper(), oToi, iIndex, iMyLine)
 
 
 def prefix_detected(sString, lPrefixes):
@@ -133,11 +137,12 @@ def extract_suffix(sString, sSuffix):
 def remove_suffix(sString, sSuffix):
     return sString[0:len(sString) - len(sSuffix)]
 
-def create_case_violation(sActual, sExpected, oToi):
+def create_case_violation(sActual, sExpected, oToi, iIndex, iLine):
     sSolution = 'Change "' + sActual + '" to "' + sExpected + '"'
-    oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
+    oViolation = violation.New(iLine, oToi, sSolution)
     dAction = {}
     dAction['value'] = sExpected
+    dAction['index'] = iIndex
     oViolation.set_action(dAction)
     return oViolation
 

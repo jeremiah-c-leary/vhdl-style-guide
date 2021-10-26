@@ -15,3 +15,5 @@ class rule_004(token_case_with_prefix_suffix):
 
     def __init__(self):
         token_case_with_prefix_suffix.__init__(self, 'type', '004', lTokens)
+        self.configuration.append('prefix_exceptions')
+        self.configuration.append('suffix_exceptions')

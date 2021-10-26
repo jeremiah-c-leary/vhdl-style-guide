@@ -15,3 +15,5 @@ class rule_010(token_case_n_token_after_tokens):
     def __init__(self):
         token_case_n_token_after_tokens.__init__(self, 'variable', '010', 1, lTokens)
         self.disabled = True
+        self.configuration.append('prefix_exceptions')
+        self.configuration.append('suffix_exceptions')
