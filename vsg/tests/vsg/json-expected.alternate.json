@@ -5,17 +5,6 @@
       "violations": []
     },
     {
-      "file_path": "vsg/tests/vsg/entity2.vhd",
-      "violations": [
-        {
-          "rule": "port_008",
-          "linenumber": 8,
-          "severity": "Error",
-          "solution": "Change the number of spaces after the *out* keyword to three spaces."
-        }
-      ]
-    },
-    {
       "file_path": "vsg/tests/vsg/entity_architecture.fixed.vhd",
       "violations": []
     },
@@ -27,6 +16,17 @@
           "linenumber": 7,
           "severity": "Error",
           "solution": "Change the number of spaces after the *in* keyword to four spaces."
+        }
+      ]
+    },
+    {
+      "file_path": "vsg/tests/vsg/entity2.vhd",
+      "violations": [
+        {
+          "rule": "port_008",
+          "linenumber": 8,
+          "severity": "Error",
+          "solution": "Change the number of spaces after the *out* keyword to three spaces."
         }
       ]
     }
