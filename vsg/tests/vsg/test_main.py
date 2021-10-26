@@ -414,7 +414,7 @@ class testMain(unittest.TestCase):
         elif lActual == lAlternateExpected:
             self.assertEqual(lActual, lAlternateExpected)
         else:
-            self.assertEqual(lActual, lExpected)
+            self.assertEqual(lActual, lAlternateExpected)
 
 #        for sActual, sExpected in zip(lActual, lExpected):
 #            self.assertEqual(sActual, sExpected)
