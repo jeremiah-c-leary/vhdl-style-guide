@@ -29,3 +29,16 @@ jobs:
 
       - name: Run Unit Tests
         run: python -m unittest
+
+      - name: Generate Code Coverage Report
+        run: |
+          pip install coverage
+          coverage run -m unittest
+      - name: Upload Coverage to Codecov
+        uses: codecov/codecov-action@v1
+      
+#      - name: SonarCloud Scan
+#        uses: SonarSource/sonarcloud-github-action@master
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+#          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
