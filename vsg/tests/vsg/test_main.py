@@ -400,14 +400,24 @@ class testMain(unittest.TestCase):
         # Read in the expected JSON file for comparison
         lExpected = []
         utils.read_file(os.path.join(os.path.dirname(__file__),'json-expected.json'), lExpected)
+        # Read in the alternate expected JSON file for comparison
+        lAlternateExpected = []
+        utils.read_file(os.path.join(os.path.dirname(__file__),'json-expected.alternate.json'), lAlternateExpected)
         # Read in the actual JSON file for comparison
         lActual = []
         utils.read_file(os.path.join('deleteme.json'), lActual)
 
         self.assertEqual(len(lExpected), len(lActual))
 
-        for sActual, sExpected in zip(lActual, lExpected):
-            self.assertEqual(sActual, sExpected)
+        if lActual == lExpected:
+            self.assertEqual(lActual, lExpected)
+        elif lActual == lAlternateExpected:
+            self.assertEqual(lActual, lAlternateExpected)
+        else:
+            self.assertEqual(lActual, lExpected)
+
+#        for sActual, sExpected in zip(lActual, lExpected):
+#            self.assertEqual(sActual, sExpected)
 
     @mock.patch('sys.stdout')
     def test_backup_file(self, mock_stdout):
