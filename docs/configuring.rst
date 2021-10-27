@@ -8,31 +8,31 @@ This is the basic form of a configuration file in JSON:
 .. code-block:: json
 
    {
-       "file_list":[
-         "fifo.vhd",
-         "$PATH_TO_FILE/spi_master.vhd",
-         "$OTHER_PATH/src/*.vhd",
-         "source/spi.vhd": {
-           "rule": {
-             "ruleId_ruleNumber":"blah"
+     "file_list": [
+       "fifo.vhd",
+       "$PATH_TO_FILE/spi_master.vhd",
+       "$OTHER_PATH/src/*.vhd",
+       "source/spi.vhd": {
+         "rule": {
+           "ruleId_ruleNumber":"blah"
          }
-       ],
-       "local_rules":"$DIRECTORY_PATH",
-       "rule":{
-           "global":{
-               "attributeName":"AttributeValue"
-           },
-           "ruleId_ruleNumber":{
-               "attributeName":"AttributeValue"
-           }
        }
+     ],
+     "local_rules":"$DIRECTORY_PATH",
+     "rule": {
+       "global": {
+         "attributeName":"AttributeValue"
+       },
+       "ruleId_ruleNumber": {
+         "attributeName":"AttributeValue"
+       }
+     }
    }
 
 This is the basic form of a configuration file in YAML:
 
 .. code-block:: yaml
 
-   ---
    file_list:
      - fifo.vhd
      - source/spi.vhd:
@@ -47,7 +47,6 @@ This is the basic form of a configuration file in YAML:
        attributeName: AttributeValue
      ruleId_ruleNumber:
        attributeName: AttributeValue
-   ...
 
 
 It is not required to have **file_list**, **local_rules**, and **rule** defined in the configuration file.
@@ -102,7 +101,7 @@ Reporting Single Rule Configuration
 
 The configuration for a single rule can be reported using the **-rc** option:
 
-.. code-block:: bash
+.. code-block:: text
 
    $ vsg -rc entity_001
    {
@@ -124,7 +123,7 @@ Reporting Configuration for All Rules
 
 Every rule configuration can be report and saved to a file using the **-oc** option:
 
-.. code-block:: bash
+.. code-block:: text
 
    $ vsg -oc configuration.json
 
@@ -166,6 +165,7 @@ If the same rule is defined in all three locations as in the example below, then
        }
      }
    }
+  }
 
 
 In this example configuration, all rules are disabled by the **global** configuration.
@@ -189,7 +189,7 @@ Below is an example of a JSON file which disables the rule **entity_004**
 
 Use the configuration with the **--configuration** command line argument:
 
-.. code-block:: bash
+.. code-block:: text
 
    $ vsg -f RAM.vhd --configuration entity_004_disable.json
 
