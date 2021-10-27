@@ -48,22 +48,26 @@ If they are set and if the prefix and/or suffix are encountered, then the exact 
    rule :
      constant_007 :
         case : 'lower'
-        prefix_exceptions : ['G_']
+        prefix_exceptions :
+          - 'G_'
 
 .. code-block:: yaml
 
    rule :
      constant_007 :
         case : 'lower'
-        suffix_exceptions : ['_G']
+        suffix_exceptions :
+          - '_G'
 
 .. code-block:: yaml
 
    rule :
      constant_007 :
         case : 'lower'
-        prefix_exceptions : ['G_']
-        suffix_exceptions : ['_G']
+        prefix_exceptions :
+          - 'G_'
+        suffix_exceptions :
+          - '_G'
 
 Rules Enforcing Case
 ####################
