@@ -3,7 +3,7 @@ from vsg import violation
 
 
 def check_for_case_violation(oToi, self, check_prefix=False, check_suffix=False, iIndex=0, iLine=None):
-    sObjectValue = oToi.get_tokens()[iIndex].get_value()
+    sObjectValue = get_token_value(oToi, iIndex)
     iMyLine = get_violation_line(oToi, iLine)
 
     if is_lower_case_without_prefix_or_suffix_exception(self.case, check_prefix, check_suffix):
@@ -31,13 +31,16 @@ def check_for_case_violation(oToi, self, check_prefix=False, check_suffix=False,
         return check_for_upper_case_with_prefix_and_suffix_exceptions(sObjectValue, self, oToi, iIndex, iMyLine)
 
 
+def get_token_value(oToi, iIndex):
+    return oToi.get_tokens()[iIndex].get_value()
+
+
 def prefix_detected(sString, lPrefixes):
     sLowerString = sString.lower()
     for sPrefix in lPrefixes:
        if sLowerString.startswith(sPrefix.lower()):
            return True
-    else:
-        return False 
+    return False
 
 
 def get_matched_prefix(sString, lPrefixes):
@@ -61,7 +64,7 @@ def suffix_detected(sString, lSuffixes):
        if sLowerString.endswith(sSuffix.lower()):
            return True
     else:
-        return False 
+        return False
 
 
 def get_matched_suffix(sString, lSuffixes):
@@ -95,11 +98,11 @@ def get_violation_line(oToi, iLine):
     else:
         return iLine
 
-    
+
 def is_exception_enabled(lList):
     if len(lList) == 0:
         return False
-    return True 
+    return True
 
 
 def is_lower_case_without_prefix_or_suffix_exception(sCase, bPrefix, bSuffix):

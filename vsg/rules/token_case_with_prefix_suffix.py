@@ -1,6 +1,5 @@
 
 from vsg import rules
-from vsg.rules import token_case
 
 
 class token_case_with_prefix_suffix(rules.token_case):
