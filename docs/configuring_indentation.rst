@@ -39,11 +39,11 @@ where:
 | after       |   NA         | Indicates the value to apply after the token.                     |
 +-------------+--------------+-------------------------------------------------------------------+
 | value       | <integer>    | The type of behavior to apply to the token or after the token.    |
-|             |  current     |                                                                   |
+|             | current      |                                                                   |
 |             | "+<integer>" |                                                                   |
 |             | "-<integer>" |                                                                   |
 +-------------+--------------+-------------------------------------------------------------------+
-
+ 
 The **group_name** and **token_name** keys provide unique identifier which can be matched to types of tokens after the file has been parsed.
 There are more tokens than are currently defined in the indent configuration, as not all tokens require indenting rules.
 
