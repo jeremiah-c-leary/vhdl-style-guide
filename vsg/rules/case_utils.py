@@ -66,8 +66,7 @@ def suffix_detected(sString, lSuffixes):
     for sSuffix in lSuffixes:
        if sLowerString.endswith(sSuffix.lower()):
            return True
-    else:
-        return False
+    return False
 
 
 def get_matched_suffix(sString, lSuffixes):
@@ -98,8 +97,7 @@ def create_case_violation(sActual, sExpected, oToi, iIndex, iLine):
 def get_violation_line(oToi, iLine):
     if iLine is None:
         return oToi.get_line_number()
-    else:
-        return iLine
+    return iLine
 
 
 def is_exception_enabled(lList):
