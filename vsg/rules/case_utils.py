@@ -5,30 +5,33 @@ from vsg import violation
 def check_for_case_violation(oToi, self, check_prefix=False, check_suffix=False, iIndex=0, iLine=None):
     sObjectValue = get_token_value(oToi, iIndex)
     iMyLine = get_violation_line(oToi, iLine)
+    oViolation = None
 
     if is_lower_case_without_prefix_or_suffix_exception(self.case, check_prefix, check_suffix):
-        return check_for_lower_case(sObjectValue, oToi, iIndex, iMyLine)
+        oViolation = check_for_lower_case(sObjectValue, oToi, iIndex, iMyLine)
 
     if is_lower_case_with_prefix_exception(self.case, check_prefix, check_suffix):
-        return check_for_lower_case_with_prefix_exception(sObjectValue, self, oToi, iIndex, iMyLine)
+        oViolation = check_for_lower_case_with_prefix_exception(sObjectValue, self, oToi, iIndex, iMyLine)
 
     if is_lower_case_with_suffix_exception(self.case, check_prefix, check_suffix):
-        return check_for_lower_case_with_suffix_exception(sObjectValue, self, oToi, iIndex, iMyLine)
+        oViolation = check_for_lower_case_with_suffix_exception(sObjectValue, self, oToi, iIndex, iMyLine)
 
     if is_lower_case_with_prefix_and_suffix_exception(self.case, check_prefix, check_suffix):
-        return check_for_lower_case_with_prefix_and_suffix_exceptions(sObjectValue, self, oToi, iIndex, iMyLine)
+        oViolation = check_for_lower_case_with_prefix_and_suffix_exceptions(sObjectValue, self, oToi, iIndex, iMyLine)
 
     if is_upper_case_without_prefix_or_suffix_exception(self.case, check_prefix, check_suffix):
-        return check_for_upper_case(sObjectValue, oToi, iIndex, iMyLine)
+        oViolation = check_for_upper_case(sObjectValue, oToi, iIndex, iMyLine)
 
     if is_upper_case_with_prefix_exception(self.case, check_prefix, check_suffix):
-        return check_for_upper_case_with_prefix_exception(sObjectValue, self, oToi, iIndex, iMyLine)
+        oViolation = check_for_upper_case_with_prefix_exception(sObjectValue, self, oToi, iIndex, iMyLine)
 
     if is_upper_case_with_suffix_exception(self.case, check_prefix, check_suffix):
-        return check_for_upper_case_with_suffix_exception(sObjectValue, self, oToi, iIndex, iMyLine)
+        oViolation = check_for_upper_case_with_suffix_exception(sObjectValue, self, oToi, iIndex, iMyLine)
 
     if is_upper_case_with_prefix_and_suffix_exception(self.case, check_prefix, check_suffix):
-        return check_for_upper_case_with_prefix_and_suffix_exceptions(sObjectValue, self, oToi, iIndex, iMyLine)
+        oViolation = check_for_upper_case_with_prefix_and_suffix_exceptions(sObjectValue, self, oToi, iIndex, iMyLine)
+
+    return oViolation
 
 
 def get_token_value(oToi, iIndex):
