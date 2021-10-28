@@ -16,6 +16,8 @@ For example the rule constant_002 can be changed to enforce uppercase using the 
 
 .. code-block:: yaml
 
+   ---
+
    rule :
      constant_002 :
         case : 'upper'
@@ -27,6 +29,8 @@ If there are a lot of case rules you want to change, you can use the global opti
 For example, if you want to uppercase everything except the entity name, you could write the following configuration:
 
 .. code-block:: yaml
+
+   ---
 
    rule :
      global :
