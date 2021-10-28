@@ -6,3 +6,25 @@
 Welcome to vhdl-style-guide's documentation!
 ============================================
 
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+   overview
+   gallery
+   installing
+   usage
+   formatting_terminal_output
+   styles
+   configuring
+   code_tags
+   editor_integration
+   tool_integration
+   pragmas
+   localizing
+   phases
+   rule_severity
+   rules
+   contributing
+   setting_up_a_development_environment
+   release_notes
