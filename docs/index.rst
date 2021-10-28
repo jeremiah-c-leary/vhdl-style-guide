@@ -16,7 +16,6 @@ Welcome to vhdl-style-guide's documentation!
    usage
    formatting_terminal_output
    styles
-   configuring
    code_tags
    editor_integration
    tool_integration
