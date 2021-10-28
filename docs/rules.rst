@@ -43,7 +43,6 @@ The rules are divided into catagories depending on the part of the VHDL code bei
    procedure_call_rules.rst
    process_rules.rst
    range_rules.rst
-   report_statement_rules.rst
    sequential_rules.rst
    signal_rules.rst
    source_file.rst
