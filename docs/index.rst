@@ -23,7 +23,6 @@ Welcome to vhdl-style-guide's documentation!
    localizing
    phases
    rule_severity
-   rules
    contributing
    setting_up_a_development_environment
    release_notes
