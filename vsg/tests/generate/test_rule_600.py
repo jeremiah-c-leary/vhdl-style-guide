@@ -23,7 +23,7 @@ class test_generate_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'generate')
         self.assertEqual(oRule.identifier, '600')
 
-        lExpected = [20, 24, 28]
+        lExpected = [20, 22, 24, 26, 28, 30]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
