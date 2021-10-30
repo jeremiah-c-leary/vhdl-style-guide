@@ -81,7 +81,7 @@ begin
 
     wait until clock'event and clock = '1';
 
-    if (reset = '1') then
+    if (RESET = '1') then
       state        <= IDLE;
       counter      <= X"00000000";
       addr_counter <= "0000000000";

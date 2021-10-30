@@ -16,12 +16,12 @@ architecture BEHAVIORAL of FREQDIV is
 
 begin
 
-  Clk2 <= counter(19);
+  CLK2 <= counter(19);
 
-  process (Clk) is
+  process (CLK) is
   begin
 
-    if (Clk'event and Clk = '1') then
+    if (CLK'event and CLK = '1') then
       counter <= counter + 1;
     end if;
 

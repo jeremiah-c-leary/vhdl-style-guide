@@ -32,8 +32,11 @@ class New():
         iStartIndex = iStart + self.iStartIndex
         iLine = self.iLine
         for iIndex in range(0, iStart + 1):
-            if isinstance(self.lTokens[iIndex], parser.carriage_return):
-                iLine += 1
+            try:
+                if isinstance(self.lTokens[iIndex], parser.carriage_return):
+                    iLine += 1
+            except IndexError:
+               iLine = iLine
         return New(iStartIndex, iLine, lTokens)
 
     def get_start_index(self):
