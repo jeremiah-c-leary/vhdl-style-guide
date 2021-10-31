@@ -31,9 +31,8 @@ class test_architecture_rule(unittest.TestCase):
         self.assertEqual(oRule.identifier, '601')
 
         lExpected = []
-        lExpected.extend([127, 128, 129, 135, 135, 135, 138, 139, 140, 144, 145, 146, 150, 151, 152])
-        lExpected.extend([282, 283, 284, 290, 290, 290, 293, 294, 295, 299, 300, 301, 305, 306, 307]) 
-
+        lExpected.extend([146, 147, 148, 154, 154, 154, 157, 158, 159, 163, 164, 165, 169, 170, 171, 178, 179, 180, 188, 189, 190])
+        lExpected.extend([341, 342, 343, 349, 349, 349, 352, 353, 354, 358, 359, 360, 364, 365, 366, 373, 374, 375, 383, 384, 385]) 
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))

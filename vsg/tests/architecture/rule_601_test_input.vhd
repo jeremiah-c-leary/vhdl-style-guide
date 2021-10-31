@@ -78,6 +78,25 @@ begin
   b <= O_OUTPUT;
   c <= IO_INOUT;
 
+  U_RAM : RAM
+    generic map (
+      g_width => g_width
+    )
+    port map (
+      i_input => I_INPUT,
+      o_output => O_OUTPUT,
+      io_inout => IO_INOUT
+    );
+
+  U_RAM : RAM
+    generic map (
+      g_width => g_width
+    )
+    port map (
+      I_INPUT,
+      O_OUTPUT,
+      IO_INOUT
+    );
 
 end architecture rtl;
 
@@ -150,6 +169,26 @@ begin
   a <= i_input;
   b <= o_output;
   c <= io_inout;
+
+  U_RAM : RAM
+    generic map (
+      g_width => g_width
+    )
+    port map (
+      i_input => i_input,
+      o_output => o_output,
+      io_inout => io_inout
+    );
+
+  U_RAM : RAM
+    generic map (
+      g_width => g_width
+    )
+    port map (
+      i_input,
+      o_output,
+      io_inout
+    );
 
 end architecture rtl;
 
@@ -234,6 +273,26 @@ begin
   b <= o_output;
   c <= io_inout;
 
+  U_RAM : RAM
+    generic map (
+      G_WIDTH => G_WIDTH
+    )
+    port map (
+      I_INPUT => i_input,
+      O_OUTPUT => o_output,
+      IO_INOUT => io_inout
+    );
+
+  U_RAM : RAM
+    generic map (
+      G_WIDTH => G_WIDTH
+    )
+    port map (
+      i_input,
+      o_output,
+      io_inout
+    );
+
 end architecture rtl;
 
 -- Violations
@@ -305,6 +364,26 @@ begin
   a <= I_INPUT;
   b <= O_OUTPUT;
   c <= IO_INOUT;
+
+  U_RAM : RAM
+    generic map (
+      G_WIDTH => G_WIDTH
+    )
+    port map (
+      I_INPUT => I_INPUT,
+      O_OUTPUT => O_OUTPUT,
+      IO_INOUT => IO_INOUT
+    );
+
+  U_RAM : RAM
+    generic map (
+      G_WIDTH => G_WIDTH
+    )
+    port map (
+      I_INPUT,
+      O_OUTPUT,
+      IO_INOUT
+    );
 
 end architecture rtl;
 

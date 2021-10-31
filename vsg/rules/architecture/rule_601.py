@@ -1,49 +1,31 @@
 
-from vsg import parser
 from vsg import token
 from vsg import rule
 from vsg.vhdlFile import utils
 from vsg import violation
 
-lTokens = []
-lTokens.append(token.interface_unknown_declaration.identifier)
-lTokens.append(token.interface_constant_declaration.identifier)
-lTokens.append(token.interface_variable_declaration.identifier)
-lTokens.append(token.interface_signal_declaration.identifier)
-
-lIgnore = []
-lIgnore.append(parser.whitespace)
-lIgnore.append(parser.carriage_return)
-lIgnore.append(parser.blank_line)
-lIgnore.append(token.identifier.identifier)
-
-oStartToken = token.port_clause.open_parenthesis
-oEndToken = token.port_clause.close_parenthesis
-
-oRegionStart = token.architecture_body.is_keyword
-oRegionEnd = token.architecture_body.end_keyword
+lPortTokens = []
+lPortTokens.append(token.interface_unknown_declaration.identifier)
+lPortTokens.append(token.interface_constant_declaration.identifier)
+lPortTokens.append(token.interface_variable_declaration.identifier)
+lPortTokens.append(token.interface_signal_declaration.identifier)
 
 lPairs = []
-#[token.type_declaration.is_keyword, token.type_declaration.semicolon]
-#[token.subtype_declaration.is_keyword, token.subtype_declaration.semicolon]
-lPairs.append([token.simple_waveform_assignment.target, token.simple_waveform_assignment.semicolon])
 lPairs.append([token.concurrent_simple_signal_assignment.target, token.concurrent_simple_signal_assignment.semicolon])
 lPairs.append([token.concurrent_conditional_signal_assignment.target, token.concurrent_conditional_signal_assignment.semicolon])
 lPairs.append([token.constant_declaration.colon, token.constant_declaration.semicolon])
 lPairs.append([token.signal_declaration.colon, token.signal_declaration.semicolon])
 lPairs.append([token.variable_declaration.colon, token.variable_declaration.semicolon])
-lPairs.append([token.if_statement.if_keyword, token.if_statement.then_keyword])
-#[token.file_declaration.colon, token.file_declaration.semicolon]
-#[token.alias_declaration.colon, token.alias_declaration.semicolon]
-#[token.attribute_declaration.colon, token.attribute_declaration.semicolon]
-#[token.attribute_specification.is_keyword, token.attribute_declaration.semicolon]
 lPairs.append([token.process_statement.open_parenthesis, token.process_statement.close_parenthesis])
-#[token.process_statement.begin_keyword, token.process_statement.end_keyword]
+lPairs.append([token.process_statement.begin_keyword, token.process_statement.end_keyword])
+
+oStartToken = token.architecture_body.entity_name
+oEndToken = token.architecture_body.end_keyword
 
 
 class rule_601(rule.Rule):
     '''
-    Checks the case for words.
+    Checks for consistent case of entity ports in the architecture body.
 
     Parameters
     ----------
@@ -53,9 +35,6 @@ class rule_601(rule.Rule):
 
     identifier : string
        unique identifier.  Usually in the form of 00N.
-
-    lTokens: list of token type objects
-       token type to apply the case check against
     '''
 
     def __init__(self):
@@ -66,20 +45,63 @@ class rule_601(rule.Rule):
 
     def analyze(self, oFile):
         lPorts = extract_port_names_from_entities(oFile)
-        if len(lPorts) > 0:
-            lArchitectures = oFile.get_tokens_bounded_by(token.architecture_body.entity_name, token.architecture_body.end_keyword)
-            for oArchitecture in lArchitectures:
-                oArchitecture.name = extract_entity_name(oArchitecture)
-                lMyPorts = lPorts[oArchitecture.name]
-                lToi = extract_token_pairs(oArchitecture, lPairs)
-                for oToi in lToi:
-                    validate_port_name_in_token_list(self, lMyPorts, oToi)
+
+        if no_ports_detected(lPorts):
+            return None
+
+        lArchitectures = oFile.get_tokens_bounded_by(oStartToken, oEndToken)
+        for oArchitecture in lArchitectures:
+            oArchitecture.name = extract_entity_name(oArchitecture)
+            lArchitecturePorts = lPorts[oArchitecture.name]
+            lToi = extract_token_pairs(oArchitecture, lPairs)
+            lToi.extend(extract_component_instantiation_actual_parts(oArchitecture))
+            for oToi in lToi:
+                validate_port_name_in_token_list(self, lArchitecturePorts, oToi)
 
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
         dActions = oViolation.get_action()
         lTokens[0].set_value(dActions['value'])
         oViolation.set_tokens(lTokens)
+
+
+def extract_component_instantiation_actual_parts(oArchitecture):
+    lReturn = []
+
+    lInstantiations = extract_component_instantiations(oArchitecture)
+    for oInstantiation in lInstantiations:
+        oGenericMapAspect = extract_generic_map_aspect(oInstantiation)
+        lReturn.extend(extract_actual_part(oGenericMapAspect))
+        oPortMapAspect = extract_port_map_aspect(oInstantiation)
+        lReturn.extend(extract_actual_part(oPortMapAspect))
+    return lReturn
+
+
+def extract_component_instantiations(oArchitecture):
+    return extract_token_pairs(oArchitecture, [[token.component_instantiation_statement.label_colon, token.component_instantiation_statement.semicolon]])
+
+
+def extract_generic_map_aspect(oInstantiation):
+    return extract_token_pairs(oInstantiation, [[token.generic_map_aspect.open_parenthesis, token.generic_map_aspect.close_parenthesis]])
+
+
+def extract_port_map_aspect(oInstantiation):
+    return extract_token_pairs(oInstantiation, [[token.port_map_aspect.open_parenthesis, token.port_map_aspect.close_parenthesis]])
+
+
+def extract_actual_part(lMapAspect):
+    lReturn = []
+    for oMapAspect in lMapAspect:
+        for iToken, oToken in enumerate(oMapAspect.get_tokens()):
+            if isinstance(oToken, token.association_element.actual_part):
+                lReturn.append(oMapAspect.extract_tokens(iToken, iToken))
+    return lReturn
+
+
+def no_ports_detected(lPorts):
+    if len(lPorts) == 0:
+        return True
+    return False
 
 
 def validate_port_name_in_token_list(self, lMyPorts, oToi):
@@ -93,19 +115,19 @@ def validate_port_name_in_token_list(self, lMyPorts, oToi):
     for iToken, oToken in enumerate(lTokens):
         sToken = oToken.get_value()
         if port_case_mismatch(sToken, lMyPorts, lMyPortsLower):
-           sSolution = 'Port case mismatch:  Change ' + sToken + ' to ' + dPortMap[sToken.lower()]
-           oNewToi = oToi.extract_tokens(iToken, iToken)
-           oViolation = violation.New(oNewToi.get_line_number(), oNewToi, sSolution)
-#           print(f'{iLine} | MisMatch!! Expected {dPortMap[sToken.lower()]}  Found {sToken}')
-           dAction = {}
-           dAction['value'] = dPortMap[sToken.lower()]
-           oViolation.set_action(dAction)
+           oViolation = create_violation(sToken, iToken, dPortMap, oToi)
            self.add_violation(oViolation)
 
-#        if sToken.lower() in lMyPortsLower:
-#            print(f'{iLine}|{oToken.get_value()}|{lMyPortsLower}')
-#            if sToken not in lMyPorts:
-#               print(f'MisMatch!! Expected {dPortMap[sToken.lower()]}  Found {sToken}')
+
+def create_violation(sToken, iToken, dPortMap, oToi):
+    sSolution = 'Port case mismatch:  Change ' + sToken + ' to ' + dPortMap[sToken.lower()]
+    oNewToi = oToi.extract_tokens(iToken, iToken)
+    oViolation = violation.New(oNewToi.get_line_number(), oNewToi, sSolution)
+    dAction = {}
+    dAction['value'] = dPortMap[sToken.lower()]
+    oViolation.set_action(dAction)
+    return oViolation
+
 
 def skip_code(oToken, bSkip):
     bReturn = bSkip
@@ -170,18 +192,12 @@ def extract_entity_name(oToi):
 def extract_port_names(oToi):
     lReturn = []
 
-    lTokens = []
-    lTokens.append(token.interface_unknown_declaration.identifier)
-    lTokens.append(token.interface_constant_declaration.identifier)
-    lTokens.append(token.interface_variable_declaration.identifier)
-    lTokens.append(token.interface_signal_declaration.identifier)
-
     bSearch = False
     for oToken in oToi.get_tokens():
         if isinstance(oToken, token.port_clause.close_parenthesis):
             break
         if bSearch: 
-            if is_token_in_token_type_list(oToken, lTokens):
+            if is_token_in_token_type_list(oToken, lPortTokens):
                 lReturn.append(oToken.get_value())
         if isinstance(oToken, token.port_clause.open_parenthesis):
             bSearch = True
