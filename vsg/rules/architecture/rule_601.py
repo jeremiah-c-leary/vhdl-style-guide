@@ -129,7 +129,7 @@ def validate_port_name_in_token_list(self, lMyPorts, oToi):
         lMyPortsLower.append(sPort.lower())
         dPortMap[sPort.lower()] = sPort
 
-    iLine, lTokens = utils.get_toi_parameters(oToi)
+    lTokens = oToi.get_tokens()
     for iToken, oToken in enumerate(lTokens):
         sToken = oToken.get_value()
         if port_case_mismatch(sToken, lMyPorts, lMyPortsLower):
@@ -188,7 +188,7 @@ def port_case_mismatch(sToken, lPorts, lPortsLower):
 
 def extract_matching_value(sFind, lValues):
     sLower = sFind.lower()
-    for iValue, sValue in enumerate(lValues):
+    for sValue in lValues:
         if sLower == sValue.lower():
             return sValue
 
