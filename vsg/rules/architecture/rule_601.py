@@ -165,7 +165,7 @@ def end_of_skip_region_found(oToken, bReturn):
 def start_of_skip_region_found(oToken, bReturn):
     bReturn = function_keyword_found(oToken, bReturn)
     bReturn = procedure_keyword_found(oToken, bReturn)
-    return bReturn 
+    return bReturn
 
 
 def function_keyword_found(oToken, bReturn):
@@ -262,7 +262,7 @@ def end_search(oToken, bSearch):
 
 
 def extract_port_token(bSearch, oToken, lPortTokens):
-    lReturn = [] 
+    lReturn = []
     if bSearch:
         if is_token_in_token_type_list(oToken, lPortTokens):
             lReturn.append(oToken.get_value())
