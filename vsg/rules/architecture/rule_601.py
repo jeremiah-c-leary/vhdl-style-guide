@@ -1,7 +1,6 @@
 
 from vsg import token
 from vsg import rule
-from vsg.vhdlFile import utils
 from vsg import violation
 
 lPortTokens = []
