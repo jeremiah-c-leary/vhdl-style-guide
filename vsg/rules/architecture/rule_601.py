@@ -70,10 +70,10 @@ def extract_component_instantiation_actual_parts(oArchitecture):
 
     lInstantiations = extract_component_instantiations(oArchitecture)
     for oInstantiation in lInstantiations:
-        oGenericMapAspect = extract_generic_map_aspect(oInstantiation)
-        lReturn.extend(extract_actual_part(oGenericMapAspect))
-        oPortMapAspect = extract_port_map_aspect(oInstantiation)
-        lReturn.extend(extract_actual_part(oPortMapAspect))
+        lGenericMapAspects = extract_generic_map_aspect(oInstantiation)
+        lReturn.extend(extract_actual_part_tokens_from_aspects(lGenericMapAspects))
+        lPortMapAspects = extract_port_map_aspect(oInstantiation)
+        lReturn.extend(extract_actual_part_tokens_from_aspects(lPortMapAspects))
     return lReturn
 
 
@@ -89,13 +89,31 @@ def extract_port_map_aspect(oInstantiation):
     return extract_token_pairs(oInstantiation, [[token.port_map_aspect.open_parenthesis, token.port_map_aspect.close_parenthesis]])
 
 
-def extract_actual_part(lMapAspect):
+def extract_actual_part_tokens_from_aspects(lMapAspect):
     lReturn = []
     for oMapAspect in lMapAspect:
-        for iToken, oToken in enumerate(oMapAspect.get_tokens()):
-            if isinstance(oToken, token.association_element.actual_part):
-                lReturn.append(oMapAspect.extract_tokens(iToken, iToken))
+        lReturn.extend(extract_actual_part_tokens_from_aspect(oMapAspect))
     return lReturn
+
+
+def extract_actual_part_tokens_from_aspect(oMapAspect):
+    lReturn = []
+    for iToken, oToken in enumerate(oMapAspect.get_tokens()):
+        lReturn.extend(extract_actual_part_token(oMapAspect, iToken, oToken))
+    return lReturn
+
+
+def extract_actual_part_token(oMapAspect, iToken, oToken):
+    lReturn = []
+    if is_actual_part_token(oToken):
+        lReturn.append(oMapAspect.extract_tokens(iToken, iToken))
+    return lReturn
+
+
+def is_actual_part_token(oToken):
+    if isinstance(oToken, token.association_element.actual_part):
+        return True
+    return False
 
 
 def no_ports_detected(lPorts):
@@ -115,8 +133,8 @@ def validate_port_name_in_token_list(self, lMyPorts, oToi):
     for iToken, oToken in enumerate(lTokens):
         sToken = oToken.get_value()
         if port_case_mismatch(sToken, lMyPorts, lMyPortsLower):
-           oViolation = create_violation(sToken, iToken, dPortMap, oToi)
-           self.add_violation(oViolation)
+            oViolation = create_violation(sToken, iToken, dPortMap, oToi)
+            self.add_violation(oViolation)
 
 
 def create_violation(sToken, iToken, dPortMap, oToi):
@@ -131,21 +149,40 @@ def create_violation(sToken, iToken, dPortMap, oToi):
 
 def skip_code(oToken, bSkip):
     bReturn = bSkip
+
     if not bSkip:
-        if isinstance(oToken, token.function_specification.function_keyword):
-            bReturn = True
-        if isinstance(oToken, token.procedure_specification.procedure_keyword):
-            bReturn = True
-    else:
-        if isinstance(oToken, token.subprogram_body.semicolon):
-            bReturn = False
+        return start_of_skip_region_found(oToken, bReturn)
+
+    return end_of_skip_region_found(oToken, bReturn)
+
+
+def end_of_skip_region_found(oToken, bReturn):
+    if isinstance(oToken, token.subprogram_body.semicolon):
+        return False
+    return True
+
+
+def start_of_skip_region_found(oToken, bReturn):
+    bReturn = function_keyword_found(oToken, bReturn)
+    bReturn = procedure_keyword_found(oToken, bReturn)
+    return bReturn 
+
+
+def function_keyword_found(oToken, bReturn):
+    if isinstance(oToken, token.function_specification.function_keyword):
+        return True
+    return bReturn
+
+
+def procedure_keyword_found(oToken, bReturn):
+    if isinstance(oToken, token.procedure_specification.procedure_keyword):
+        return True
     return bReturn
 
 
 def port_case_mismatch(sToken, lPorts, lPortsLower):
-    if sToken.lower() in lPortsLower:
-        if sToken not in lPorts:
-            return True
+    if sToken.lower() in lPortsLower and sToken not in lPorts:
+        return True
     return False
 
 
@@ -159,16 +196,34 @@ def extract_matching_value(sFind, lValues):
 def extract_token_pairs(oArchitecture, lPairs):
     lReturn = []
     for lPair in lPairs:
-        bSkip = False
-        for iToken, oToken in enumerate(oArchitecture.get_tokens()):
-            bSkip = skip_code(oToken, bSkip)
-            if bSkip:
-                continue
-            if isinstance(oToken, lPair[0]):
-                iStart = iToken
-            if isinstance(oToken, lPair[1]):
-                lReturn.append(oArchitecture.extract_tokens(iStart, iToken))
+        lReturn.extend(extract_token_pair(oArchitecture, lPair))
     return lReturn
+
+
+def extract_token_pair(oArchitecture, lPair):
+    lReturn = []
+    bSkip = False
+    iStart = None
+    for iToken, oToken in enumerate(oArchitecture.get_tokens()):
+        bSkip = skip_code(oToken, bSkip)
+        if bSkip:
+            continue
+        iStart = set_start_index(iToken, oToken, lPair, iStart)
+        lReturn.extend(extract_tokens_if_end_is_found(oArchitecture, iToken, oToken, lPair, iStart))
+    return lReturn
+
+
+def extract_tokens_if_end_is_found(oArchitecture, iToken, oToken, lPair, iStart):
+    lReturn = []
+    if isinstance(oToken, lPair[1]):
+        lReturn.append(oArchitecture.extract_tokens(iStart, iToken))
+    return lReturn
+
+
+def set_start_index(iToken, oToken, lPair, iStart):
+    if isinstance(oToken, lPair[0]):
+        return iToken
+    return iStart
 
 
 def extract_port_names_from_entities(oFile):
@@ -187,21 +242,37 @@ def extract_entity_name(oToi):
             return oToken.get_value().lower()
         if isinstance(oToken, token.architecture_body.entity_name):
             return oToken.get_value().lower()
-    
+
 
 def extract_port_names(oToi):
     lReturn = []
 
     bSearch = False
     for oToken in oToi.get_tokens():
-        if isinstance(oToken, token.port_clause.close_parenthesis):
-            break
-        if bSearch: 
-            if is_token_in_token_type_list(oToken, lPortTokens):
-                lReturn.append(oToken.get_value())
-        if isinstance(oToken, token.port_clause.open_parenthesis):
-            bSearch = True
+        bSearch = end_search(oToken, bSearch)
+        lReturn.extend(extract_port_token(bSearch, oToken, lPortTokens))
+        bSearch = start_search(oToken, bSearch)
     return lReturn
+
+
+def end_search(oToken, bSearch):
+    if isinstance(oToken, token.port_clause.close_parenthesis):
+        return False
+    return bSearch
+
+
+def extract_port_token(bSearch, oToken, lPortTokens):
+    lReturn = [] 
+    if bSearch:
+        if is_token_in_token_type_list(oToken, lPortTokens):
+            lReturn.append(oToken.get_value())
+    return lReturn
+
+
+def start_search(oToken, bSearch):
+    if isinstance(oToken, token.port_clause.open_parenthesis):
+        return True
+    return bSearch
 
 
 def is_token_in_token_type_list(oToken, lTokenTypes):
