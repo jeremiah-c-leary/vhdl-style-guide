@@ -374,6 +374,7 @@ class testMain(unittest.TestCase):
 
 
     def test_json_parameter(self):
+        self.maxDiff = None
 
         self.assertFalse(os.path.isfile('deleteme.json'))
 
