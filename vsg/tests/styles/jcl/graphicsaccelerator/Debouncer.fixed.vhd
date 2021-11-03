@@ -19,20 +19,20 @@ architecture BEHAVIORAL of DEBOUNCER is
 
 begin
 
-  ncounter       <= x"FFFFFF" when counter=x"FFFFFF" and Button='1' else
-                    x"000000" when counter=x"000000" and Button='0' else
-                    counter + 1 when Button='1' else
+  ncounter       <= x"FFFFFF" when counter=x"FFFFFF" and BUTTON='1' else
+                    x"000000" when counter=x"000000" and BUTTON='0' else
+                    counter + 1 when BUTTON='1' else
                     counter - 1;
   nexthistory    <= '0' when counter=x"000000" else
                     '1';
   nbuttonhistory <= nexthistory & buttonhistory(1);
-  Dout           <= '1' when buttonhistory="01" else
+  DOUT           <= '1' when buttonhistory="01" else
                     '0';
 
-  process (Clk) is
+  process (CLK) is
   begin
 
-    if (Clk'event and Clk = '1') then
+    if (CLK'event and CLK = '1') then
       counter       <= ncounter;
       buttonhistory <= nbuttonhistory;
     end if;

@@ -42,19 +42,19 @@ begin
                    '1';
   enabledisplay <= '1' when xstate=tdp and ystate=tdp else
                    '0';
-  R             <= dataIn(0) when enabledisplay='1' else
+  R             <= DATAIN(0) when enabledisplay='1' else
                    '0';
-  B             <= dataIn(1) when enabledisplay='1' else
+  B             <= DATAIN(1) when enabledisplay='1' else
                    '0';
-  G             <= dataIn(2) when enabledisplay='1' else
+  G             <= DATAIN(2) when enabledisplay='1' else
                    '0';
-  AddressX      <= x(10 downto 1);
-  AddressY      <= addressofy - 30;
+  ADDRESSX      <= x(10 downto 1);
+  ADDRESSY      <= addressofy - 30;
 
-  process (Clk) is
+  process (CLK) is
   begin
 
-    if (Clk'event and Clk = '1') then
+    if (CLK'event and CLK = '1') then
       if (xstate=tpw and x(7 downto 1)="1100000") then
         x      <= (others=>'0');
         xstate <= tbp;

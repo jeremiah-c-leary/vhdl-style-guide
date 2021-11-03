@@ -30,31 +30,31 @@ architecture BEHAVIORAL of POINTER is
 
 begin
 
-  Here <= '1' when syncX(9 downto 3)=rx(9 downto 3) and
-                   syncY(8 downto 3)=ry(8 downto 3) else
+  HERE <= '1' when SYNCX(9 downto 3)=rx(9 downto 3) and
+                   SYNCY(8 downto 3)=ry(8 downto 3) else
           '0';
   X    <= rx;
   Y    <= ry;
 
-  process (Clk) is
+  process (CLK) is
   begin
 
-    if (Clk'event and Clk = '1') then
-      if (Move = '1') then
-        if (MoveLeft = '1' and MoveRight = '0') then
+    if (CLK'event and CLK = '1') then
+      if (MOVE = '1') then
+        if (MOVELEFT = '1' and MOVERIGHT = '0') then
           if (not (rx = "0000000000")) then
             rx <= rx - 1;
           end if;
-        elsif (MoveLeft = '0' and MoveRight = '1') then
+        elsif (MOVELEFT = '0' and MOVERIGHT = '1') then
           if (not (rx = "1001111111")) then
             rx <= rx + 1;
           end if;
         end if;
-        if (MoveUp = '1' and MoveDown = '0') then
+        if (MOVEUP = '1' and MOVEDOWN = '0') then
           if (not (ry = "000000000")) then
             ry <= ry - 1;
           end if;
-        elsif (MoveUp = '0' and MoveDown = '1') then
+        elsif (MOVEUP = '0' and MOVEDOWN = '1') then
           if (not (ry = "111011111")) then
             ry <= ry + 1;
           end if;

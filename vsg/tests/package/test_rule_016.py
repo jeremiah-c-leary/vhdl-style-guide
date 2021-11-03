@@ -23,7 +23,7 @@ class test_package_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'package')
         self.assertEqual(oRule.identifier, '016')
 
-        lExpected = [6]
+        lExpected = [6, 8]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))

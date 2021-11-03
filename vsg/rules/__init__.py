@@ -15,6 +15,7 @@ from .single_space_between_tokens import single_space_between_tokens
 from .line_length import line_length
 from .file_length import file_length
 from .token_case import token_case
+from .token_case_with_prefix_suffix import token_case_with_prefix_suffix
 from .token_case_in_range_bounded_by_tokens import token_case_in_range_bounded_by_tokens
 from .blank_line_below_line_ending_with_token import blank_line_below_line_ending_with_token
 from .blank_line_below_line_ending_with_several_possible_tokens import blank_line_below_line_ending_with_several_possible_tokens

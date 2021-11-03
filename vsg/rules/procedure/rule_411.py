@@ -7,6 +7,7 @@ lAlign = []
 lAlign.append(token.interface_signal_declaration.assignment)
 lAlign.append(token.interface_constant_declaration.assignment)
 lAlign.append(token.interface_variable_declaration.assignment)
+lAlign.append(token.interface_unknown_declaration.assignment)
 
 
 class rule_411(align_tokens_in_region_between_tokens):

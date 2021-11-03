@@ -31,7 +31,7 @@ Block Comment Structure
 
 The above examples can be generalized into the following:
 
-.. code-block:: mono
+.. code-block:: text
 
    --<header_left><header_left_repeat><header_string><header_right_repeat>
    --<comment_left>
