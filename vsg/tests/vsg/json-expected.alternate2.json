@@ -23,11 +23,11 @@
       ]
     },
     {
-      "file_path": "vsg/tests/vsg/entity_architecture.vhd",
+      "file_path": "vsg/tests/vsg/entity_architecture.fixed.vhd",
       "violations": []
     },
     {
-      "file_path": "vsg/tests/vsg/entity_architecture.fixed.vhd",
+      "file_path": "vsg/tests/vsg/entity_architecture.vhd",
       "violations": []
     }
   ]
