@@ -386,6 +386,7 @@ class testMain(unittest.TestCase):
         sys.argv.extend(['--output_format', 'syntastic'])
         sys.argv.extend(['--configuration', 'vsg/tests/vsg/config_glob.yaml'])
         sys.argv.extend(['--json', 'deleteme.json'])
+        sys.argv.extend(['-p 1'])
 
         temp_stdout = StringIO()
 

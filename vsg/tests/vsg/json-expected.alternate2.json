@@ -12,6 +12,10 @@
       ]
     },
     {
+      "file_path": "vsg/tests/vsg/entity_architecture.fixed.vhd",
+      "violations": []
+    },
+    {
       "file_path": "vsg/tests/vsg/entity2.vhd",
       "violations": [
         {
@@ -21,10 +25,6 @@
           "solution": "Change the number of spaces after the *out* keyword to three spaces."
         }
       ]
-    },
-    {
-      "file_path": "vsg/tests/vsg/entity_architecture.fixed.vhd",
-      "violations": []
     },
     {
       "file_path": "vsg/tests/vsg/entity_architecture.vhd",
