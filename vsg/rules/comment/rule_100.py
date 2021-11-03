@@ -24,46 +24,81 @@ class rule_100(rule.Rule):
     def _analyze(self, lToi):
         for oToi in lToi:
             dResults = analyze_comment(oToi)
-            if space_after_comment_keyword(dResults):
+            if no_space_after_comment_keyword(dResults):
                 create_violation(self, oToi, dResults)
 
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
         dAction = oViolation.get_action()
- 
+
         sToken = lTokens[0].get_value()
         sNewToken = sToken[0:dAction['index']] + ' ' + sToken[dAction['index']:]
         lTokens[0].set_value(sNewToken)
         oViolation.set_tokens(lTokens)
 
 
-def space_after_comment_keyword(dResults):
+def no_space_after_comment_keyword(dResults):
     return dResults['violation']
 
 
 def analyze_comment(oToi):
-    iLine, lTokens = utils.get_toi_parameters(oToi)
-    oToken = lTokens[0]
-    sToken = oToken.get_value()
-    dAction = {}
-    dAction['violation'] = False
-    if len(sToken) == 2:
-        return dAction
-    if sToken.startswith('-- '):
-        return dAction
-    if sToken.startswith('---'):
-        return dAction
-    if sToken[2].isalnum():
-        dAction['violation'] = True
-        dAction['index'] = 2
-        dAction['solution'] = create_solution(2, sToken)
-    elif not sToken[3].isspace():
-        if sToken[3].isalnum():
-            dAction['violation'] = True
-            dAction['index'] = 3
-            dAction['solution'] = create_solution(3, sToken)
+    sToken = get_comment_string(oToi)
+    dAction = create_passing_action_dict()
+
+    if not valid_comment(sToken):
+        dAction = check_for_invalid_comment(dAction, sToken)
 
     return dAction
+
+
+def create_passing_action_dict():
+    dReturn = {}
+    dReturn['violation'] = False
+    return dReturn
+
+
+def get_comment_string(oToi):
+    lTokens = oToi.get_tokens()
+    oToken = lTokens[0]
+    return oToken.get_value()
+
+
+def check_for_invalid_comment(dAction, sToken):
+    if is_character_after_double_dash_a_letter_or_number(sToken):
+        dAction = create_violation_action_dict(sToken, 2)
+    elif is_a_header_candidate(sToken):
+        dAction = create_violation_action_dict(sToken, 3)
+    return dAction
+
+
+def is_a_header_candidate(sToken):
+    if not sToken[3].isspace() and sToken[3].isalnum():
+        return True
+    return False
+
+
+def is_character_after_double_dash_a_letter_or_number(sToken):
+    if sToken[2].isalnum():
+        return True
+    return False
+
+
+def create_violation_action_dict(sToken, iIndex):
+    dReturn = {}
+    dReturn['violation'] = True
+    dReturn['index'] = iIndex
+    dReturn['solution'] = create_solution(iIndex, sToken)
+    return dReturn
+
+
+def valid_comment(sToken):
+    if len(sToken) == 2:
+        return True
+    if sToken.startswith('-- '):
+        return True
+    if sToken.startswith('---'):
+        return True
+    return False
 
 
 def create_violation(self, oToi, dResults):
