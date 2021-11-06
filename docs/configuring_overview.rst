@@ -23,6 +23,11 @@ This is the basic form of a configuration file in JSON:
        "global": {
          "attributeName":"AttributeValue"
        },
+       "group": {
+         "group_name": {
+           "attributeName":"AttributeValue"
+         }
+       }
        "ruleId_ruleNumber": {
          "attributeName":"AttributeValue"
        }
@@ -45,6 +50,9 @@ This is the basic form of a configuration file in YAML:
    rule:
      global:
        attributeName: AttributeValue
+     group:
+       group_name:
+         attributeName : AttributeValue
      ruleId_ruleNumber:
        attributeName: AttributeValue
 
@@ -76,6 +84,7 @@ rule
 
 Any attribute of any rule can be configured.
 Using **global** will set the attribute for every rule.
+Using **group** will set attributes for groups of rules.
 Each rule is addressable by using it's unique **ruleId** and **ruleNumber** combination.  For example, whitespace_006 or port_010.
 
 .. NOTE::
@@ -136,10 +145,11 @@ There are three ways to configure a rule.
 From least to highest priority are:
 
 * **[rule][global]**
+* **[rule][group]**
 * **[rule][<identifier>]**
 * **[file_list][<filename>][rule][<identifier>]**.
 
-If the same rule is defined in all three locations as in the example below, then the final setting will be equal to the highest priority.
+If the same rule is defined in all four locations as in the example below, then the final setting will be equal to the highest priority.
 
 .. code-block:: json
 
@@ -158,6 +168,11 @@ If the same rule is defined in all three locations as in the example below, then
      "rule":{
        "global":{
          "disable": true
+       },
+       "group":{
+         "length": {
+           "disable": false
+         }
        },
        "rule": {
          "length_001":{
@@ -220,6 +235,26 @@ Configure the indent size for all rules by setting the **global** attribute.
        "rule":{
            "global":{
                "indentSize":4
+           }
+       }
+   }
+
+Example: Enabling only indent rules
+-----------------------------------
+
+Configure the indent size for all rules by setting the **global** attribute.
+
+.. code-block:: json
+
+   {
+       "rule":{
+           "global":{
+               "indentSize":4
+           },
+           "group":{
+               "indent":{
+                   "disable":False
+               }
            }
        }
    }

@@ -23,6 +23,7 @@ class Rule():
         self.dFix['violations'] = {}
         self.configuration = ['indentSize', 'phase', 'disable', 'fixable', 'severity']
         self.depricated = False
+        self.groups = []
 
     def configure(self, oConfig):
         '''Configures attributes on rules using a dictionary of the following form:
@@ -42,6 +43,7 @@ class Rule():
         lReturn = []
         dConfiguration = oConfig.dConfig
         self._configure_global_rule_attributes(oConfig)
+        self._configure_group_rule_attributes(oConfig)
         lReturn.extend(self._configure_rule_attributes(oConfig))
         return lReturn
 
@@ -143,6 +145,22 @@ class Rule():
                     self.severity = oConfig.severity_list.get_severity_named(oConfig.dConfig['rule']['global']['severity'])
                 elif sAttributeName in self.__dict__:
                     self.__dict__[sAttributeName] = oConfig.dConfig['rule']['global'][sAttributeName]
+        except KeyError:
+            pass
+
+    def _configure_group_rule_attributes(self, oConfig):
+        '''
+        Updates rule attributes based on configuration input files
+        '''
+        try:
+            for sGroupName in oConfig.dConfig['rule']['group']:
+                if not sGroupName in self.groups:
+                    break
+                for sAttributeName in oConfig.dConfig['rule']['group'][sGroupName]:
+                    if sAttributeName == 'severity':
+                        self.severity = oConfig.severity_list.get_severity_named(oConfig.dConfig['rule']['group']['severity'])
+                    elif sAttributeName in self.__dict__:
+                        self.__dict__[sAttributeName] = oConfig.dConfig['rule']['group'][sGroupName][sAttributeName]
         except KeyError:
             pass
 

@@ -309,13 +309,17 @@ class rule_list():
 
         Returns:  nothing
         '''
-        lRuleNames = []
-        for oRule in self.rules:
-            lRuleNames.append(oRule.name + '_' + oRule.identifier)
+        lRuleNames = self.get_list_of_rule_names()
         for sRule in configurationFile['rule']:
-            if not sRule == 'global' and sRule not in lRuleNames:
+            if rule_does_not_exist_in_list(sRule, lRuleNames):
                 print('ERROR: Rule ' + sRule + ' referenced in configuration could not be found')
                 exit(1)
+
+    def get_list_of_rule_names(self):
+        lReturn = []
+        for oRule in self.rules:
+            lReturn.append(oRule.get_unique_id())
+        return lReturn
 
     def extract_junit_testcase(self, sVhdlFileName):
         '''
@@ -403,5 +407,27 @@ def filter_out_disabled_rules(lRules):
 
 def is_rule_depricated(oRule):
     if isinstance(oRule, depricated_rule.Depricated):
+        return True
+    return False
+
+
+def rule_does_not_exist_in_list(sRule, lRuleNames):
+    if is_global_configuration(sRule):
+        return False
+    if is_group_configuration(sRule):
+        return False
+    if sRule not in lRuleNames:
+        return True
+    return False
+
+
+def is_global_configuration(sName):
+    if sName == 'global':
+        return True
+    return False
+
+
+def is_group_configuration(sName):
+    if sName == 'group':
         return True
     return False
