@@ -40,6 +40,8 @@ class Rule():
           The rule:global dictionary will apply to all rules.
           Individual rule attributes can be modified with [self.name_self.identifier].
         '''
+        if self.depricated and self.unique_id in oConfig.dConfig['rule']:
+            return self.print_output()
         lReturn = []
         dConfiguration = oConfig.dConfig
         configure_global_rule_attributes(self, oConfig)
@@ -241,10 +243,6 @@ def configure_rule_attributes(self, oConfig):
     '''
     Updates rule attributes based on configuration input files
     '''
-    if self.depricated:
-        if self.unique_id in oConfig.dConfig['rule']:
-            return self.print_output()
-        return []
     try:
         for sAttributeName in oConfig.dConfig['rule'][self.get_unique_id()]:
             if sAttributeName == 'severity':
@@ -254,4 +252,3 @@ def configure_rule_attributes(self, oConfig):
     except KeyError:
         pass
     return []
-
