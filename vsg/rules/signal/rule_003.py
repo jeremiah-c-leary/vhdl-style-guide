@@ -1,11 +1,11 @@
 
-from vsg.depricated_rule import Depricated
+from vsg import deprecated_rule
 
 
-class rule_003(Depricated):
+class rule_003(deprecated_rule.Rule):
 
     def __init__(self):
-        Depricated.__init__(self, 'signal', '003')
+        deprecated_rule.Rule.__init__(self, 'signal', '003')
         self.message.append('Rule ' + self.unique_id + ' has been replaced with the following rules:')
         self.message.append('  function_015')
         self.message.append('  package_019')

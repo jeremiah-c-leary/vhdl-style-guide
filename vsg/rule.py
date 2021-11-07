@@ -22,7 +22,7 @@ class Rule():
         self.dFix = {}
         self.dFix['violations'] = {}
         self.configuration = ['indentSize', 'phase', 'disable', 'fixable', 'severity']
-        self.depricated = False
+        self.deprecated = False
         self.groups = []
 
     def configure(self, oConfig):
@@ -40,14 +40,14 @@ class Rule():
           The rule:global dictionary will apply to all rules.
           Individual rule attributes can be modified with [self.name_self.identifier].
         '''
-        if self.depricated and self.unique_id in oConfig.dConfig['rule']:
+        if self.deprecated and self.unique_id in oConfig.dConfig['rule']:
             return self.print_output()
-        lReturn = []
+
         dConfiguration = oConfig.dConfig
         configure_global_rule_attributes(self, oConfig)
         configure_group_rule_attributes(self, oConfig)
-        lReturn.extend(configure_rule_attributes(self, oConfig))
-        return lReturn
+        configure_rule_attributes(self, oConfig)
+        return []
 
     def has_violations(self):
         if len(self.violations) == 0:
@@ -218,7 +218,7 @@ def configure_attribute(self, oConfig, sGroupName):
     try:
         for sAttributeName in oConfig.dConfig['rule']['group'][sGroupName]:
             if sAttributeName == 'severity':
-                self.severity = oConfig.severity_list.get_severity_named(oConfig.dConfig['rule']['group']['severity'])
+                self.severity = oConfig.severity_list.get_severity_named(oConfig.dConfig['rule']['group'][sGroupName]['severity'])
             elif sAttributeName in self.__dict__:
                 self.__dict__[sAttributeName] = oConfig.dConfig['rule']['group'][sGroupName][sAttributeName]
     except KeyError:
@@ -251,4 +251,3 @@ def configure_rule_attributes(self, oConfig):
                 self.__dict__[sAttributeName] = oConfig.dConfig['rule'][self.get_unique_id()][sAttributeName]
     except KeyError:
         pass
-    return []

@@ -3,7 +3,7 @@ import os
 import importlib
 import inspect
 
-from . import depricated_rule
+from . import deprecated_rule
 from . import junit
 from . import report
 from . import utils
@@ -274,16 +274,16 @@ class rule_list():
 
           configurationFile: (dictionary)
         '''
-        lDepricatedMessages = []
+        lDeprecatedMessages = []
         configurationFile = oConfig.dConfig
         if configurationFile and 'rule' in configurationFile:
             self._validate_configuration_rule_exists(configurationFile)
             for oRule in self.rules:
-                lDepricatedMessages.extend(oRule.configure(oConfig))
+                lDeprecatedMessages.extend(oRule.configure(oConfig))
 
-        if len(lDepricatedMessages) != 0:
+        if len(lDeprecatedMessages) != 0:
             print(f'ERROR: Invalid configuration of file {self.oVhdlFile.filename}')
-            for sMessage in lDepricatedMessages:
+            for sMessage in lDeprecatedMessages:
                 print(sMessage)
             exit(2)
 
@@ -375,7 +375,7 @@ class rule_list():
         '''
         dConfiguration = {}
         for oRule in self.rules:
-            if is_rule_depricated(oRule):
+            if is_rule_deprecated(oRule):
                 continue
             dConfiguration[oRule.unique_id] = oRule.get_configuration()
         return dConfiguration
@@ -405,8 +405,8 @@ def filter_out_disabled_rules(lRules):
     return lReturn
 
 
-def is_rule_depricated(oRule):
-    if isinstance(oRule, depricated_rule.Depricated):
+def is_rule_deprecated(oRule):
+    if isinstance(oRule, deprecated_rule.Rule):
         return True
     return False
 

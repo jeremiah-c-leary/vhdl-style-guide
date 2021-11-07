@@ -27,7 +27,7 @@ class command_line_args():
 class testGroup(unittest.TestCase):
 
     @mock.patch('sys.stdout')
-    def test_group(self, mock_stdout):
+    def test_group_by_disabling(self, mock_stdout):
 
         lExpected = []
 
@@ -35,6 +35,25 @@ class testGroup(unittest.TestCase):
         sys.argv.extend(['--output_format', 'syntastic'])
         sys.argv.extend(['-f', 'vsg/tests/groups/group_config_example.vhd'])
         sys.argv.extend(['-c', 'vsg/tests/groups/disable_indent_group.yaml'])
+        sys.argv.extend(['-p 1'])
+
+        with self.assertRaises(SystemExit) as cm:
+            __main__.main()
+
+        mock_stdout.write.assert_has_calls(lExpected)
+        self.assertEqual(cm.exception.code, 0)
+
+    @mock.patch('sys.stdout')
+    def test_group_with_warning_severity(self, mock_stdout):
+
+        lExpected = []
+        lExpected.append(mock.call('WARNING: vsg/tests/groups/group_config_example.vhd(6)architecture_008 -- Indent level 0'))
+        lExpected.append(mock.call('\n'))
+
+        sys.argv = ['vsg']
+        sys.argv.extend(['--output_format', 'syntastic'])
+        sys.argv.extend(['-f', 'vsg/tests/groups/group_config_example.vhd'])
+        sys.argv.extend(['-c', 'vsg/tests/groups/warning_indent_group.yaml'])
         sys.argv.extend(['-p 1'])
 
         with self.assertRaises(SystemExit) as cm:

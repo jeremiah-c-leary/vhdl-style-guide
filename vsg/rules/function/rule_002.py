@@ -1,9 +1,9 @@
 
-from vsg.depricated_rule import Depricated
+from vsg import deprecated_rule
 
 
-class rule_002(Depricated):
+class rule_002(deprecated_rule.Rule):
 
     def __init__(self):
-        Depricated.__init__(self, 'function', '002')
+        deprecated_rule.Rule.__init__(self, 'function', '002')
         self.message.append('Rule ' + self.unique_id + ' has been merged into function_100.')
