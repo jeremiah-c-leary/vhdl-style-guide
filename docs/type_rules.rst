@@ -6,7 +6,7 @@ Type Rules
 type_001
 ########
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the **type** declaration.
 
@@ -85,7 +85,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 type_005
 ########
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of multiline enumerated types.
 
@@ -254,7 +254,7 @@ Refer to the section `Configuring Blank Lines <configuring.html#configuring-blan
 type_012
 ########
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of record elements in record type declarations.
 
@@ -351,7 +351,7 @@ Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#conf
 type_016
 ########
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the closing parenthesis on multiline types.
 

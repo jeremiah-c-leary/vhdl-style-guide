@@ -6,7 +6,7 @@ Context Reference Rules
 context_ref_001
 ###############
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the **context** keyword.
 

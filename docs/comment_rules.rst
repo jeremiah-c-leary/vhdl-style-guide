@@ -27,7 +27,7 @@ This rule checks for at least a single space before inline comments.
 comment_010
 ###########
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent lines starting with comments.
 

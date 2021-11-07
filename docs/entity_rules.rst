@@ -6,7 +6,7 @@ Entity Rules
 entity_001
 ##########
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the **entity** keyword.
 
@@ -179,7 +179,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 entity_009
 ##########
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the **end** keyword.
 

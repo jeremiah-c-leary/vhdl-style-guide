@@ -40,7 +40,7 @@ There are three forms a procedure:  with parameters, without parameters, and a p
 procedure_001
 #############
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the **procedure** keyword.
 
@@ -71,7 +71,7 @@ This rule checks the indent of the **procedure** keyword.
 procedure_002
 #############
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the **begin** keyword.
 
@@ -102,7 +102,7 @@ This rule checks the indent of the **begin** keyword.
 procedure_003
 #############
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the **end** keyword.
 
@@ -133,7 +133,7 @@ This rule checks the indent of the **end** keyword.
 procedure_004
 #############
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of parameters.
 
@@ -164,7 +164,7 @@ This rule checks the indent of parameters.
 procedure_005
 #############
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of lines between the **is** and **begin** keywords
 
@@ -198,7 +198,7 @@ This rule checks the indent of lines between the **is** and **begin** keywords
 procedure_006
 #############
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the closing parenthesis if it is on it's own line.
 

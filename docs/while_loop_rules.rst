@@ -6,7 +6,7 @@ While Loop Rules
 while_loop_001
 ##############
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks for indentation of the **while** keyword.
 Proper indentation enhances comprehension.
@@ -35,7 +35,7 @@ Proper indentation enhances comprehension.
 while_loop_002
 ##############
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks for indentation of the **end loop** keywords.
 The **end loop** must line up with the **while** keyword.

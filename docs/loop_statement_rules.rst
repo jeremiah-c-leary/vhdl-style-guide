@@ -6,7 +6,7 @@ Loop Statement Rules
 loop_statement_300
 ##################
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indentation of the **loop** keyword.
 

@@ -6,7 +6,7 @@ Generate Rules
 generate_001
 ############
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the generate declaration.
 
@@ -124,7 +124,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 generate_006
 ############
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the **begin** keyword.
 
@@ -145,7 +145,7 @@ This rule checks the indent of the **begin** keyword.
 generate_007
 ############
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the **end generate** keyword.
 
@@ -334,7 +334,7 @@ Keeping the label and generate on the same line reduces excessive indenting.
 generate_016
 ############
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the **when** keyword in generate case statements.
 
@@ -381,7 +381,7 @@ Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#conf
 generate_018
 ############
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the **end** keyword in the generate statement body.
 

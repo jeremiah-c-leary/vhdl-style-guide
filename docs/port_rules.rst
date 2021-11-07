@@ -28,7 +28,7 @@ This rule checks for a blank line above the **port** keyword.
 port_002
 ########
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the **port** keyword.
 
@@ -72,7 +72,7 @@ This rule checks for a single space after the **port** keyword and (.
 port_004
 ########
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of port declarations.
 
@@ -367,7 +367,7 @@ This rule checks the closing parenthesis of the port map is on a line by itself.
 port_015
 ########
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the closing parenthesis for port maps.
 

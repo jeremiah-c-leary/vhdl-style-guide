@@ -71,7 +71,7 @@ This rule checks for a single space between the following block elements:  label
 procedure_call_300
 ##################
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the procedure_call label.
 
@@ -94,7 +94,7 @@ This rule checks the indent of the procedure_call label.
 procedure_call_301
 ##################
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the **postponed** keyword if it exists..
 
@@ -117,7 +117,7 @@ This rule checks the indent of the **postponed** keyword if it exists..
 procedure_call_302
 ##################
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the *procedure* name.
 

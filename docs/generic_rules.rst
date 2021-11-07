@@ -30,7 +30,7 @@ This rule checks for blank lines above the **generic** keyword.
 generic_002
 ###########
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the **generic** keyword.
 
@@ -80,7 +80,7 @@ This rule checks for a single space between the **generic** keyword and the (.
 generic_004
 ###########
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of generic declarations.
 
@@ -166,7 +166,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 generic_008
 ###########
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the closing parenthesis.
 

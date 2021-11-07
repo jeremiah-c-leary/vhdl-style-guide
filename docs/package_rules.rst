@@ -6,7 +6,7 @@ Package Rules
 package_001
 ###########
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the package declaration.
 
@@ -308,7 +308,7 @@ Refer to the section `Configuring Optional Items <configuring.html#configuring-o
 package_015
 ###########
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the end package declaration.
 

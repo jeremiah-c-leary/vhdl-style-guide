@@ -6,7 +6,7 @@ Subtype Rules
 subtype_001
 ###########
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks for indentation of the **subtype** keyword.
 

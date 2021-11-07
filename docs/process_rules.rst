@@ -6,7 +6,7 @@ Process Rules
 process_001
 ###########
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the process declaration.
 
@@ -57,7 +57,7 @@ This rule checks for a single space after the **process** keyword.
 process_003
 ###########
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the **begin** keyword.
 
@@ -130,7 +130,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 process_006
 ###########
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the **end process** keywords.
 

@@ -6,7 +6,7 @@ Component Rules
 component_001
 #############
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indentation of the **component** keyword.
 
@@ -194,7 +194,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 component_009
 #############
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the **end component** keywords.
 

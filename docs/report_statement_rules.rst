@@ -85,7 +85,7 @@ This rule checks for a single space after the **severity** keyword.
 report_statement_300
 ####################
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks indent of multiline report statements.
 

@@ -6,7 +6,7 @@ If Rules
 if_001
 ######
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the **if** keyword.
 
@@ -282,7 +282,7 @@ This rule checks for empty lines after the **else** keyword.
 if_012
 ######
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the **elsif** keyword.
 
@@ -313,7 +313,7 @@ This rule checks the indent of the **elsif** keyword.
 if_013
 ######
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the **else** keyword.
 
@@ -344,7 +344,7 @@ This rule checks the indent of the **else** keyword.
 if_014
 ######
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the **end if** keyword.
 

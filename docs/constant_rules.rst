@@ -6,7 +6,7 @@ Constant Rules
 constant_001
 ############
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of a constant declaration.
 

@@ -6,7 +6,7 @@ For Loop Rules
 for_loop_001
 ############
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indentation of the **for** keyword.
 
@@ -39,7 +39,7 @@ This rule checks the indentation of the **for** keyword.
 for_loop_002
 ############
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indentation of the **end loop** keywords.
 

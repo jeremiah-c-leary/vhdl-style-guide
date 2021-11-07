@@ -6,7 +6,7 @@ Function Rules
 function_001
 ############
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indentation of the **function** keyword.
 
@@ -143,7 +143,7 @@ Refer to the section `Configuring Blank Lines <configuring.html#configuring-blan
 function_008
 ############
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of function parameters on multiple lines.
 
@@ -356,7 +356,7 @@ Refer to the section `Configuring Identifier Alignment Rules <configuring.html#c
 function_016
 ############
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of return statements in function bodies.
 
@@ -568,7 +568,7 @@ Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ f
 function_300
 ############
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the closing parenthesis if it is on it's own line.
 

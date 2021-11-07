@@ -44,7 +44,7 @@ This rule checks for at least a single space before the colon.
 attribute_declaration_300
 #########################
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the **attribute** keyword.
 

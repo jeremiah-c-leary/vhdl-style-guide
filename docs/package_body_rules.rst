@@ -202,7 +202,7 @@ Refer to the section `Configuring Blank Lines <configuring.html#configuring-blan
 package_body_300
 ################
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the package body keyword.
 
@@ -225,7 +225,7 @@ This rule checks the indent of the package body keyword.
 package_body_301
 ################
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the end package declaration.
 

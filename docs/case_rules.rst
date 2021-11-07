@@ -6,7 +6,7 @@ Case Rules
 case_001
 ########
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of **case**, **when**, and **end case** keywords.
 
@@ -299,7 +299,7 @@ This rule checks for code after the **=>** operator.
 case_013
 ########
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the **null** keyword.
 

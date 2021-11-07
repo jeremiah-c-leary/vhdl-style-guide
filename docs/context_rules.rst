@@ -6,7 +6,7 @@ Context Rules
 context_001
 ###########
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the **context** keyword.
 
@@ -442,7 +442,7 @@ This rule checks for a single space between the **context** keyword and the cont
 context_020
 ###########
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the **end** keyword.
 

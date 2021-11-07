@@ -6,7 +6,7 @@ Architecture Rules
 architecture_001
 ################
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks for blank spaces before the **architecture** keyword.
 
@@ -125,7 +125,7 @@ This rule checks the **is** keyword is on the same line as the **architecture** 
 architecture_007
 ################
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks for spaces before the **begin** keyword.
 
@@ -146,7 +146,7 @@ This rule checks for spaces before the **begin** keyword.
 architecture_008
 ################
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks for spaces before the **end architecture** keywords.
 

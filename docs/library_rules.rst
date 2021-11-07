@@ -6,7 +6,7 @@ Library Rules
 library_001
 ###########
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the **library** keyword.
 Indenting helps in comprehending the code.
@@ -186,7 +186,7 @@ The default style is :code:`no_blank_line`.
 library_008
 ###########
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the **use** keyword.
 

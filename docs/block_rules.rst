@@ -343,7 +343,7 @@ Refer to the section `Configuring Blank Lines <configuring.html#configuring-blan
 block_300
 #########
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the block label.
 
@@ -366,7 +366,7 @@ This rule checks the indent of the block label.
 block_301
 #########
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the **begin** keyword.
 
@@ -389,7 +389,7 @@ This rule checks the indent of the **begin** keyword.
 block_302
 #########
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the **end** keyword.
 
