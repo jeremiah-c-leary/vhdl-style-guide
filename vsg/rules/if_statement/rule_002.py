@@ -34,7 +34,7 @@ class rule_002(rule.Rule):
     def _analyze(self, lToi):
         for oToi in lToi:
             if insert_parenthesis(self.parenthesis):
-                self._check_insert_parenthesis(oToi)
+                check_insert_parenthesis(self, oToi)
             else:
                 check_remove_parenthesis(self, oToi)
 
@@ -51,7 +51,7 @@ class rule_002(rule.Rule):
             for iToken, oToken in enumerate(lTokens):
                 if iToken not in dAction['left_remove']:
                     lNewTokens.append(oToken)
-#            lNewTokens.extend(lTokens[1:-1])
+
             iDelta = len(lTokens) - len(lNewTokens)
             lNewNewTokens = []
             for iToken, oToken in enumerate(lNewTokens):
@@ -60,26 +60,21 @@ class rule_002(rule.Rule):
             lNewNewTokens.extend(dAction['right_insert'])
             oViolation.set_tokens(lNewNewTokens)
 
-    def _check_insert_parenthesis(self, oToi):
-        lTokens = oToi.get_tokens()
-        if (not isinstance(lTokens[0], parser.open_parenthesis) or
-                not isinstance(lTokens[-1], parser.close_parenthesis)):
-            sSolution = 'Enclose condition in ()\'s.'
-            dAction = {}
-            dAction['action'] = 'insert'
-            oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
-            oViolation.set_action(dAction)
-            self.add_violation(oViolation)
-        else:
-            lParens = build_parenthesis_list(lTokens)
-            lNewParens = remove_inner_parenthesis(lParens)
-            if missing_enclosed_parens(lParens, lNewParens):
-                sSolution = 'Enclose condition in ()\'s.'
-                dAction = {}
-                dAction['action'] = 'insert'
-                oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
-                oViolation.set_action(dAction)
-                self.add_violation(oViolation)
+
+def check_insert_parenthesis(self, oToi):
+    lTokens = oToi.get_tokens()
+    if not enclosing_parens_found(lTokens):
+        oViolation = create_insert_violation(oToi)
+        self.add_violation(oViolation)
+
+
+def create_insert_violation(oToi):
+    sSolution = 'Enclose condition in ()\'s.'
+    dAction = {}
+    dAction['action'] = 'insert'
+    oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
+    oViolation.set_action(dAction)
+    return oViolation
 
 
 def check_remove_parenthesis(self, oToi):
