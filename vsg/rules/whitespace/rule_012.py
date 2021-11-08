@@ -1,12 +1,12 @@
 
 from vsg import parser
-from vsg import rule
 from vsg import violation
 
+from vsg.rule_group import blank_line
 from vsg.vhdlFile import utils
 
 
-class rule_012(rule.Rule):
+class rule_012(blank_line.Rule):
     '''
     Checks for consecutive blank lines.
 
@@ -24,7 +24,7 @@ class rule_012(rule.Rule):
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self, 'whitespace', '012')
+        blank_line.Rule.__init__(self, 'whitespace', '012')
         self.solution = None
         self.phase = 3
         self.subphase = 3

@@ -1,24 +1,24 @@
 
-from vsg import rule
 from vsg import parser
 from vsg import violation
 
-from vsg.token import process_statement as token
+from vsg.rule_group import blank_line
 
 from vsg.rules import utils as rules_utils
+
+from vsg.token import process_statement as token
 
 from vsg.vhdlFile import utils
 
 
-class rule_026(rule.Rule):
+class rule_026(blank_line.Rule):
     '''
     Process rule 026 checks for blank lines between the end of the sensitivity list and process declarative lines.
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self, 'process', '026')
+        blank_line.Rule.__init__(self, 'process', '026')
         self.solution = 'Insert blank line below'
-        self.phase = 3
         self.style = 'require_blank_line'
         self.configuration.append('style')
 

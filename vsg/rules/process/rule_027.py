@@ -1,22 +1,23 @@
 
-from vsg import rule
 from vsg import parser
 from vsg import violation
 
 from vsg.token import process_statement as token
+
+from vsg.rule_group import blank_line
 
 from vsg.rules import utils as rules_utils
 
 from vsg.vhdlFile import utils
 
 
-class rule_027(rule.Rule):
+class rule_027(blank_line.Rule):
     '''
     Checks for blank lines between the process declarative lines and the "begin" keyword.
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self, 'process', '027')
+        blank_line.Rule.__init__(self, 'process', '027')
         self.phase = 3
         self.style = 'require_blank_line'
         self.configuration.append('style')
