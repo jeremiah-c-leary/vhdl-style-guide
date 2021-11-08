@@ -1,12 +1,12 @@
 
-from vsg import rule
 from vsg import parser
 from vsg import violation
 
 from vsg.rules import utils as rules_utils
+from vsg.rule_group import blank_line
 
 
-class blank_line_below_line_ending_with_token(rule.Rule):
+class blank_line_below_line_ending_with_token(blank_line.Rule):
     '''
     Checks for a blank line below a line ending with a given token
 
@@ -24,8 +24,7 @@ class blank_line_below_line_ending_with_token(rule.Rule):
     '''
 
     def __init__(self, name, identifier, lTokens, lAllowTokens=None):
-        rule.Rule.__init__(self, name=name, identifier=identifier)
-        self.phase = 3
+        blank_line.Rule.__init__(self, name=name, identifier=identifier)
         self.lTokens = lTokens
         self.lHierarchyLimits = None
         if lAllowTokens is None:
