@@ -10,7 +10,7 @@ lAlign.append(token.constant_declaration.colon)
 lAlign.append(token.variable_declaration.colon)
 
 lUnless = []
-lUnless.append([token.subprogram_body.is_keyword,token.subprogram_body.begin_keyword])
+lUnless.append([token.subprogram_body.is_keyword, token.subprogram_body.begin_keyword])
 
 
 class rule_033(align_tokens_in_region_between_tokens_unless_between_tokens):
