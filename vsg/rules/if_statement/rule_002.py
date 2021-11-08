@@ -30,14 +30,13 @@ class rule_002(rule.Rule):
         if self.parenthesis == 'insert':
             return oFile.get_if_statement_conditions()
         return oFile.get_if_statement_conditions(fRemoveWhitespace=False)
-      
 
     def _analyze(self, lToi):
         for oToi in lToi:
             if insert_parenthesis(self.parenthesis):
                 self._check_insert_parenthesis(oToi)
             else:
-                self._check_remove_parenthesis(oToi)
+                check_remove_parenthesis(self, oToi)
 
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
@@ -58,7 +57,7 @@ class rule_002(rule.Rule):
             for iToken, oToken in enumerate(lNewTokens):
                 if iToken + iDelta not in dAction['right_remove']:
                     lNewNewTokens.append(oToken)
-            lNewNewTokens.extend(dAction['right_insert']) 
+            lNewNewTokens.extend(dAction['right_insert'])
             oViolation.set_tokens(lNewNewTokens)
 
     def _check_insert_parenthesis(self, oToi):
@@ -82,50 +81,111 @@ class rule_002(rule.Rule):
                 oViolation.set_action(dAction)
                 self.add_violation(oViolation)
 
-    def _check_remove_parenthesis(self, oToi):
-        lTokens = oToi.get_tokens()
-        if condition_starts_with_parenthesis(lTokens) and condition_ends_with_parenthesis(lTokens):
-            lParens = build_parenthesis_list(lTokens)
-            lNewParens = remove_inner_parenthesis(lParens)
 
-            if len(lNewParens) == 2:
-                if parens_match(lParens, lNewParens):
-                    sSolution = 'Remove enclosing ()\'s'
-                    dAction = {}
-                    dAction['action'] = 'remove'
-                    if isinstance(lTokens[0], parser.open_parenthesis) and isinstance(lTokens[1], parser.whitespace):
-                        dAction['left_remove'] = [0]
-                        dAction['left_insert'] = []
-                    elif isinstance(lTokens[0], parser.whitespace) and isinstance(lTokens[1], parser.open_parenthesis) and isinstance(lTokens[2], parser.whitespace):
-                        dAction['left_remove'] = [0, 1]
-                        dAction['left_insert'] = []
-                    elif isinstance(lTokens[0], parser.whitespace) and isinstance(lTokens[1], parser.open_parenthesis):
-                        dAction['left_remove'] = [1]
-                        dAction['left_insert'] = []
-                    else:
-                        dAction['left_remove'] = [0]
-                        dAction['left_insert'] = [parser.whitespace(' ')]
-                    iLength = len(lTokens)
-                    if isinstance(lTokens[-1], parser.close_parenthesis) and isinstance(lTokens[-2], parser.whitespace):
-                        dAction['right_remove'] = [iLength - 1]
-                        dAction['right_insert'] = []
-                    elif isinstance(lTokens[-1], parser.whitespace) and isinstance(lTokens[-2], parser.close_parenthesis) and isinstance(lTokens[-3], parser.whitespace):
-                        dAction['right_remove'] = [iLength - 1, iLength - 2]
-                        dAction['right_insert'] = []
-                    elif isinstance(lTokens[-1], parser.whitespace) and isinstance(lTokens[-2], parser.close_parenthesis):
-                        dAction['right_remove'] = [iLength - 2]
-                        dAction['right_insert'] = []
-                    else:
-                        dAction['right_remove'] = [iLength - 1]
-                        dAction['right_insert'] = [parser.whitespace(' ')]
+def check_remove_parenthesis(self, oToi):
+    lTokens = oToi.get_tokens()
+    if enclosing_parens_found(lTokens):
+        oViolation = create_remove_violation(oToi, lTokens)
+        self.add_violation(oViolation)
 
-                    oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
-                    oViolation.set_action(dAction)
-                    self.add_violation(oViolation)
+
+def create_remove_violation(oToi, lTokens):
+        sSolution = 'Remove enclosing ()\'s'
+        dAction = create_remove_action_dict(lTokens)
+
+        oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
+        oViolation.set_action(dAction)
+        return oViolation
+
+
+def create_remove_action_dict(lTokens):
+        dAction = {}
+        dAction['action'] = 'remove'
+        analyze_open_paren_cases(lTokens, dAction)
+        analyze_close_paren_cases(lTokens, dAction)
+        return dAction
+
+
+def enclosing_parens_found(lTokens):
+    if condition_starts_with_parenthesis(lTokens) and condition_ends_with_parenthesis(lTokens):
+        lParens = build_parenthesis_list(lTokens)
+        lNewParens = remove_inner_parenthesis(lParens)
+
+        if len(lNewParens) == 2 and parens_match(lParens, lNewParens):
+            return True
+    return False
+
+
+def analyze_close_paren_cases(lTokens, dAction):
+
+    iLength = len(lTokens)
+    if close_paren_space(lTokens):
+        dAction['right_remove'] = [iLength - 1]
+        dAction['right_insert'] = []
+    elif space_close_paren_space(lTokens):
+        dAction['right_remove'] = [iLength - 1, iLength - 2]
+        dAction['right_insert'] = []
+    elif space_close_paren(lTokens):
+        dAction['right_remove'] = [iLength - 2]
+        dAction['right_insert'] = []
+    else:
+        dAction['right_remove'] = [iLength - 1]
+        dAction['right_insert'] = [parser.whitespace(' ')]
+
+
+def analyze_open_paren_cases(lTokens, dAction):
+    if open_paren_space(lTokens):
+        dAction['left_remove'] = [0]
+        dAction['left_insert'] = []
+    elif space_open_paren_space(lTokens):
+        dAction['left_remove'] = [0, 1]
+        dAction['left_insert'] = []
+    elif space_open_paren(lTokens):
+        dAction['left_remove'] = [1]
+        dAction['left_insert'] = []
+    else:
+        dAction['left_remove'] = [0]
+        dAction['left_insert'] = [parser.whitespace(' ')]
+
+
+def open_paren_space(lTokens):
+    if isinstance(lTokens[0], parser.open_parenthesis) and isinstance(lTokens[1], parser.whitespace):
+        return True
+    return False
+
+
+def space_open_paren_space(lTokens):
+    if isinstance(lTokens[0], parser.whitespace) and isinstance(lTokens[1], parser.open_parenthesis) and isinstance(lTokens[2], parser.whitespace):
+        return True
+    return False
+
+
+def space_open_paren(lTokens):
+    if isinstance(lTokens[0], parser.whitespace) and isinstance(lTokens[1], parser.open_parenthesis):
+        return True
+    return False
 
 
 def insert_parenthesis(option):
     if option == 'insert':
+        return True
+    return False
+
+
+def close_paren_space(lTokens):
+    if isinstance(lTokens[-1], parser.close_parenthesis) and isinstance(lTokens[-2], parser.whitespace):
+        return True
+    return False
+
+
+def space_close_paren_space(lTokens):
+    if isinstance(lTokens[-1], parser.whitespace) and isinstance(lTokens[-2], parser.close_parenthesis) and isinstance(lTokens[-3], parser.whitespace):
+        return True
+    return False
+
+
+def space_close_paren(lTokens):
+    if isinstance(lTokens[-1], parser.whitespace) and isinstance(lTokens[-2], parser.close_parenthesis):
         return True
     return False
 
