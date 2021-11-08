@@ -259,7 +259,7 @@ def missing_enclosed_parens(lParens, lNewParens):
 def condition_starts_with_parenthesis(lTokens):
     if isinstance(lTokens[0], parser.open_parenthesis):
         return True
-    elif isinstance(lTokens[1], parser.open_parenthesis):
+    if isinstance(lTokens[1], parser.open_parenthesis):
         return True
     return False
 
@@ -267,6 +267,6 @@ def condition_starts_with_parenthesis(lTokens):
 def condition_ends_with_parenthesis(lTokens):
     if isinstance(lTokens[-1], parser.close_parenthesis):
         return True
-    elif isinstance(lTokens[-2], parser.close_parenthesis):
+    if isinstance(lTokens[-2], parser.close_parenthesis):
         return True
     return False
