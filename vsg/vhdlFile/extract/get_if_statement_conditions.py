@@ -6,7 +6,7 @@ from vsg.vhdlFile import utils
 from vsg.vhdlFile.extract import tokens
 
 
-def get_if_statement_conditions(lAllTokens, oTokenMap):
+def get_if_statement_conditions(lAllTokens, oTokenMap, fRemoveWhitespace=True):
     lReturn = []
 
     lStart = oTokenMap.get_token_indexes(token.if_keyword, bCopy=True)
@@ -19,8 +19,10 @@ def get_if_statement_conditions(lAllTokens, oTokenMap):
 
     for iStart, iEnd in zip(lStart, lEnd):
         lTemp = lAllTokens[iStart + 1: iEnd]
-        iStartIndex, lTemp = utils.remove_leading_whitespace_and_comments(iStart, lTemp)
-        lTemp = utils.remove_trailing_whitespace_and_comments(lTemp)
+        iStartIndex = iStart + 1
+        if fRemoveWhitespace:
+            iStartIndex, lTemp = utils.remove_leading_whitespace_and_comments(iStart, lTemp)
+            lTemp = utils.remove_trailing_whitespace_and_comments(lTemp)
 
         iLine = oTokenMap.get_line_number_of_index(iStartIndex)
 
