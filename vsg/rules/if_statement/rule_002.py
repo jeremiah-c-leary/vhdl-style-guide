@@ -39,26 +39,46 @@ class rule_002(rule.Rule):
                 check_remove_parenthesis(self, oToi)
 
     def _fix_violation(self, oViolation):
-        lTokens = oViolation.get_tokens()
-        dAction = oViolation.get_action()
-        if insert_parenthesis(dAction['action']):
-            rules_utils.insert_token(lTokens, 0, parser.open_parenthesis())
-            lTokens.append(parser.close_parenthesis())
-            oViolation.set_tokens(lTokens)
+        if insert_parenthesis(self.parenthesis):
+            add_enclosing_parens(oViolation)
         else:
-            lNewTokens = []
-            lNewTokens.extend(dAction['left_insert'])
-            for iToken, oToken in enumerate(lTokens):
-                if iToken not in dAction['left_remove']:
-                    lNewTokens.append(oToken)
+            remove_enclosing_parens(oViolation)
 
-            iDelta = len(lTokens) - len(lNewTokens)
-            lNewNewTokens = []
-            for iToken, oToken in enumerate(lNewTokens):
-                if iToken + iDelta not in dAction['right_remove']:
-                    lNewNewTokens.append(oToken)
-            lNewNewTokens.extend(dAction['right_insert'])
-            oViolation.set_tokens(lNewNewTokens)
+
+def remove_enclosing_parens(oViolation):
+    lTokens = oViolation.get_tokens()
+    dAction = oViolation.get_action()
+
+    lNewTokens = remove_open_paren(lTokens, dAction)
+    iDelta = len(lTokens) - len(lNewTokens)
+    lNewTokens = remove_close_paren(lNewTokens, dAction, iDelta)
+    oViolation.set_tokens(lNewTokens)
+
+
+def remove_close_paren(lTokens, dAction, iDelta):
+    lReturn = []
+    for iToken, oToken in enumerate(lTokens):
+        if iToken + iDelta not in dAction['right_remove']:
+            lReturn.append(oToken)
+    lReturn.extend(dAction['right_insert'])
+    return lReturn
+
+
+def remove_open_paren(lTokens, dAction):
+    lReturn = []
+    lReturn.extend(dAction['left_insert'])
+    for iToken, oToken in enumerate(lTokens):
+        if iToken not in dAction['left_remove']:
+            lReturn.append(oToken)
+    return lReturn
+
+
+def add_enclosing_parens(oViolation):
+    lTokens = oViolation.get_tokens()
+    dAction = oViolation.get_action()
+    rules_utils.insert_token(lTokens, 0, parser.open_parenthesis())
+    lTokens.append(parser.close_parenthesis())
+    oViolation.set_tokens(lTokens)
 
 
 def check_insert_parenthesis(self, oToi):
