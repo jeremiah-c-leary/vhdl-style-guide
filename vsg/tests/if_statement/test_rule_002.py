@@ -53,7 +53,7 @@ class test_if_statement_rule(unittest.TestCase):
         oRule = if_statement.rule_002()
         oRule.parenthesis = 'remove'
 
-        lExpected = [10, 12, 14, 16, 18]
+        lExpected = [10, 12, 14, 16, 18, 56, 60, 64, 68, 72, 76]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
