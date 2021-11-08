@@ -5,7 +5,7 @@ from vsg import severity
 
 class Rule(rule.Rule):
     '''
-    Class for assigning rules to the indent group.
+    Class for assigning rules to the length group.
 
     Parameters
     ----------
