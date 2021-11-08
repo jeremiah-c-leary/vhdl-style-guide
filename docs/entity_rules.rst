@@ -49,7 +49,7 @@ This rule checks for a single space after the **entity** keyword.
 entity_003
 ##########
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for blank lines or comments above the entity keyword.
 
@@ -330,7 +330,7 @@ Refer to the section `Configuring Optional Items <configuring.html#configuring-o
 entity_016
 ##########
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for blank lines above the **end entity** keywords.
 

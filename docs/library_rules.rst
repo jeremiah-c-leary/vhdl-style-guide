@@ -48,7 +48,7 @@ This rule checks for excessive spaces after the **library** keyword.
 library_003
 ###########
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for blank lines or comments above the entity keyword.
 
@@ -157,7 +157,7 @@ This rule checks for excessive spaces after the **use** keyword.
 library_007
 ###########
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for blank lines or comments above the **use** declaration.
 

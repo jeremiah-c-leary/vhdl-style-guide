@@ -50,7 +50,7 @@ This rule checks for a single space between the **context** keyword and the cont
 context_003
 ###########
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for blank lines or comments above the **context** keyword.
 
@@ -509,7 +509,7 @@ Refer to the section `Configuring Optional Items <configuring.html#configuring-o
 context_023
 ###########
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule adds a blank line below the **is** keyword.
 
@@ -533,7 +533,7 @@ Refer to the section `Configuring Blank Lines <configuring.html#configuring-blan
 context_024
 ###########
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for blank lines or comments above the **end** keyword.
 
@@ -559,7 +559,7 @@ The default style is :code:`no_code`.
 context_025
 ###########
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule adds a blank line below the context semicolon.
 
@@ -583,7 +583,7 @@ Refer to the section `Configuring Blank Lines <configuring.html#configuring-blan
 context_026
 ###########
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule ensures a single blank line after the **context** keword.
 
@@ -608,7 +608,7 @@ This rule ensures a single blank line after the **context** keword.
 context_027
 ###########
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule ensures a single blank line before the **end** keword.
 

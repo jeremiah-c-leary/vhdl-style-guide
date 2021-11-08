@@ -73,7 +73,7 @@ This rule checks for a single space before the colon.
 instantiation_004
 #################
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for blank lines or comments above the instantiation.
 
@@ -271,7 +271,7 @@ This rule has been renamed to `generic_map_006 <generic_map_rules.html#generic-m
 instantiation_019
 #################
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for a blank line below the end of the instantiation declaration.
 

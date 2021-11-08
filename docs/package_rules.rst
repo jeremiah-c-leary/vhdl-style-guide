@@ -48,7 +48,7 @@ This rule checks for a single space between **package** and **is** keywords.
 package_003
 ###########
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for blank lines or comments above the **package** keyword.
 
@@ -218,7 +218,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 package_011
 ###########
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for a blank line below the **package** keyword.
 
@@ -242,7 +242,7 @@ Refer to the section `Configuring Blank Lines <configuring.html#configuring-blan
 package_012
 ###########
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for blank lines or comments above the **end package** keyword.
 

@@ -54,7 +54,7 @@ This rule checks for a single space after the **component** keyword.
 component_003
 #############
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for blank lines or comments above the **component** declaration.
 
@@ -325,7 +325,7 @@ The **component** keyword is required per the LRM.
 component_016
 #############
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for blank lines above the **end component** line.
 
@@ -396,7 +396,7 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
 component_018
 #############
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for a blank line below the **end component** line.
 

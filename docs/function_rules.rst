@@ -92,7 +92,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 function_006
 ############
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for blank lines or comments above the **function** keyword.
 
@@ -117,7 +117,7 @@ Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous
 function_007
 ############
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for a blank line below the end of the function declaration.
 
@@ -446,7 +446,7 @@ This rule checks for a single space between the **end** and **function** keyword
 function_201
 ############
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for a blank line below the **is** keyword.
 
@@ -479,7 +479,7 @@ Refer to the section `Configuring Blank Lines <configuring.html#configuring-blan
 function_202
 ############
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for blank lines above the **begin** keyword.
 
@@ -514,7 +514,7 @@ Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ f
 function_203
 ############
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for a blank line below the **begin** keyword.
 
@@ -540,7 +540,7 @@ Refer to the section `Configuring Blank Lines <configuring.html#configuring-blan
 function_204
 ############
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for blank lines above the **end** keyword.
 

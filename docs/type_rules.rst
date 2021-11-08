@@ -206,7 +206,7 @@ This rule checks for an enumerate type after the open parenthesis on multiline e
 type_010
 ########
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for blank lines or comments above the **type** declaration.
 
@@ -230,7 +230,7 @@ Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous
 type_011
 ########
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for a blank line below the **type** declaration.
 

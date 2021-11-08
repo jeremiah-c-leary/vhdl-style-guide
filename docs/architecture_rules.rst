@@ -37,7 +37,7 @@ This rule has been split into the following rules:
 architecture_003
 ################
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for a blank lines or comments above the **architecture** declaration.
 
@@ -299,7 +299,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 architecture_015
 ################
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for blank lines below the architecture declaration.
 
@@ -325,7 +325,7 @@ Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ f
 architecture_016
 ################
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for blank lines above the **begin** keyword.
 
@@ -354,7 +354,7 @@ Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ f
 architecture_017
 ################
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for a blank line below the **begin** keyword.
 
@@ -378,7 +378,7 @@ Refer to the section `Configuring Blank Lines <configuring.html#configuring-blan
 architecture_018
 ################
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for blank lines or comments above the **end architecture** declaration.
 
@@ -736,7 +736,7 @@ This rule checks for a single space between the entity_name and the **is** keywo
 architecture_200
 ################
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for a blank line below the end architecture statement.
 

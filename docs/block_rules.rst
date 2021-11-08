@@ -191,7 +191,7 @@ This rule checks for a single space between the **end** and **block** keywords a
 block_200
 #########
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for blank lines or comments above the block label.
 
@@ -215,7 +215,7 @@ Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous
 block_201
 #########
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for a blank line below the **block** keyword.
 
@@ -239,7 +239,7 @@ Refer to the section `Configuring Blank Lines <configuring.html#configuring-blan
 block_202
 #########
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for blank lines or comments above the **begin** keyword.
 
@@ -267,7 +267,7 @@ Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ f
 block_203
 #########
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for a blank line below the **begin** keyword.
 
@@ -291,7 +291,7 @@ Refer to the section `Configuring Blank Lines <configuring.html#configuring-blan
 block_204
 #########
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for blank lines or comments above the **end** keyword.
 
@@ -319,7 +319,7 @@ Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ f
 block_205
 #########
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for a blank line below the semicolon.
 

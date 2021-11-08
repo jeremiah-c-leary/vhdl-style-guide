@@ -6,7 +6,7 @@ Port Rules
 port_001
 ########
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for a blank line above the **port** keyword.
 
@@ -557,7 +557,7 @@ This rule checks the **port** keyword is on the same line as the (.
 port_022
 ########
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for blank lines after the **port** keyword.
 
@@ -619,7 +619,7 @@ This rule checks for missing modes in port declarations.
 port_024
 ########
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for blank lines before the close parenthesis in port declarations.
 

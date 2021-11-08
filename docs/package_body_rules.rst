@@ -106,7 +106,7 @@ This rule checks for a single space between the **end**, **package** and **body*
 package_body_200
 ################
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for blank lines or comments above the **package** keyword.
 
@@ -130,7 +130,7 @@ Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous
 package_body_201
 ################
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for a blank line below the **package** keyword.
 
@@ -154,7 +154,7 @@ Refer to the section `Configuring Blank Lines <configuring.html#configuring-blan
 package_body_202
 ################
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for blank lines or comments above the **end** keyword.
 
@@ -178,7 +178,7 @@ Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ f
 package_body_203
 ################
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for a blank line below the **end package** keyword.
 

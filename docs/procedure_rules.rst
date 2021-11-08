@@ -427,7 +427,7 @@ This rule checks for a single space between the **end** and **procedure** keywor
 procedure_200
 #############
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for blank lines or comments above the **procedure** keyword.
 
@@ -452,7 +452,7 @@ Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous
 procedure_201
 #############
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for a blank line below the **is** keyword.
 
@@ -500,7 +500,7 @@ Refer to the section `Configuring Blank Lines <configuring.html#configuring-blan
 procedure_202
 #############
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for blank lines above the **begin** keyword.
 
@@ -535,7 +535,7 @@ Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ f
 procedure_203
 #############
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for a blank line below the **begin** keyword.
 
@@ -561,7 +561,7 @@ Refer to the section `Configuring Blank Lines <configuring.html#configuring-blan
 procedure_204
 #############
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for blank lines above the **end** keyword.
 
@@ -589,7 +589,7 @@ Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ f
 procedure_205
 #############
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for a blank line below the semicolon at the end of the procedure declaration.
 

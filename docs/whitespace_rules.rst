@@ -211,7 +211,7 @@ This rule checks for at least a single space before and after math operators +, 
 whitespace_012
 ##############
 
-|phase_2| |error|
+|phase_2| |error| |blank_line|
 
 This rule enforces a maximum number of consecutive blank lines.
 

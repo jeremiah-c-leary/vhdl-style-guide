@@ -253,7 +253,7 @@ Refer to the section `Configuring Concurrent Alignment Rules <configuring.html#c
 concurrent_010
 ##############
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule removes blank lines within concurrent signal assignments.
 

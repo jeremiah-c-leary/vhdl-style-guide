@@ -6,7 +6,7 @@ Generic Rules
 generic_001
 ###########
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for blank lines above the **generic** keyword.
 
@@ -342,7 +342,7 @@ This rule checks the **generic** keyword is on the same line as the (.
 generic_019
 ###########
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for blank lines before the ); of the generic declaration.
 

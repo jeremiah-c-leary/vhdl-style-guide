@@ -145,9 +145,9 @@ This rule checks for a single space between the **elsif** keyword and the (.
 if_006
 ######
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
-This rule checks for empty lines after the **then** keyword.
+This rule checks for blank lines after the **then** keyword.
 
 **Violation**
 
@@ -168,9 +168,9 @@ This rule checks for empty lines after the **then** keyword.
 if_007
 ######
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
-This rule checks for empty lines before the **elsif** keyword.
+This rule checks for blank lines before the **elsif** keyword.
 
 **Violation**
 
@@ -192,9 +192,9 @@ This rule checks for empty lines before the **elsif** keyword.
 if_008
 ######
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
-This rule checks for empty lines before the **end if** keywords.
+This rule checks for blank lines before the **end if** keywords.
 
 **Violation**
 
@@ -236,9 +236,9 @@ This rule checks the alignment of multiline boolean expressions.
 if_010
 ######
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
-This rule checks for empty lines before the **else** keyword.
+This rule checks for blank lines before the **else** keyword.
 
 **Violation**
 
@@ -259,9 +259,9 @@ This rule checks for empty lines before the **else** keyword.
 if_011
 ######
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
-This rule checks for empty lines after the **else** keyword.
+This rule checks for blank lines after the **else** keyword.
 
 **Violation**
 
@@ -604,7 +604,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 if_030
 ######
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks a single blank line after the **end if**.
 In the case of nested **if** statements, the rule will be enfoced on the last **end if**.
@@ -633,7 +633,7 @@ Refer to the section `Configuring Blank Lines <configuring.html#configuring-blan
 if_031
 ######
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for blank lines or comments above the **if** keyword.
 In the case of nested **if** statements, the rule will be enfoced on the first **if**.

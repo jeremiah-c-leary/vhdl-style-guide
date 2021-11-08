@@ -146,7 +146,7 @@ This rule checks for a single space between the **end** and **case** keywords.
 case_007
 ########
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for blank lines or comments above the **case** keyword.
 
@@ -180,7 +180,7 @@ The default style is :code:`no_code`.
 case_008
 ########
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for a blank line below the **is** keyword.
 
@@ -204,7 +204,7 @@ Refer to the section `Configuring Blank Lines <configuring.html#configuring-blan
 case_009
 ########
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for blank lines or comments above the **end** keyword.
 
@@ -230,7 +230,7 @@ Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ f
 case_010
 ########
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for a blank line below the **end case** keywords.
 
