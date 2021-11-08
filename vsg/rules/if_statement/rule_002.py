@@ -75,7 +75,6 @@ def remove_open_paren(lTokens, dAction):
 
 def add_enclosing_parens(oViolation):
     lTokens = oViolation.get_tokens()
-    dAction = oViolation.get_action()
     rules_utils.insert_token(lTokens, 0, parser.open_parenthesis())
     lTokens.append(parser.close_parenthesis())
     oViolation.set_tokens(lTokens)
