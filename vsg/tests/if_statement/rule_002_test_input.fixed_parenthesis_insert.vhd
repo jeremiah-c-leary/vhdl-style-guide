@@ -69,7 +69,7 @@ begin
       b <= '0';
     end if;
 
-    if (a='1') then
+    if (a='1' )then
       b <= '0';
     end if;
 
