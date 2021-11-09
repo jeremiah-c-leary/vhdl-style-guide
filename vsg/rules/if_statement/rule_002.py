@@ -123,6 +123,12 @@ def create_remove_action_dict(lTokens):
 def enclosing_parens_found(lTokens):
     if has_single_element(lTokens):
         return False
+    if has_enclosing_parens(lTokens):
+        return True
+    return False
+
+
+def has_enclosing_parens(lTokens):
     if condition_starts_with_parenthesis(lTokens) and condition_ends_with_parenthesis(lTokens):
         lParens = build_parenthesis_list(lTokens)
         lNewParens = remove_inner_parenthesis(lParens)
