@@ -28,7 +28,7 @@ This rule checks the indent of the **context** keyword.
 context_ref_002
 ###############
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space between the **context** keyword and the context selected name.
 

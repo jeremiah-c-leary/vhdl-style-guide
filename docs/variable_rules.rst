@@ -87,7 +87,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 variable_005
 ############
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks there is a single space after the colon.
 

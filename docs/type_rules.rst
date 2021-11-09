@@ -112,7 +112,7 @@ This rule checks the indent of multiline enumerated types.
 type_006
 ########
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space before the **is** keyword.
 
@@ -131,7 +131,7 @@ This rule checks for a single space before the **is** keyword.
 type_007
 ########
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space after the **is** keyword.
 

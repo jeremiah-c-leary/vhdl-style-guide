@@ -238,7 +238,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 architecture_012
 ################
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space between **end** and **architecture** keywords.
 
@@ -660,7 +660,7 @@ Refer to the section `Configuring Identifier Alignment Rules <configuring.html#c
 architecture_030
 ################
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space between **architecture** and the identifier.
 
@@ -679,7 +679,7 @@ This rule checks for a single space between **architecture** and the identifier.
 architecture_031
 ################
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space between the identifier and the **of** keyword.
 
@@ -698,7 +698,7 @@ This rule checks for a single space between the identifier and the **of** keywor
 architecture_032
 ################
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space between the **of** keyword and the entity_name.
 
@@ -717,7 +717,7 @@ This rule checks for a single space between the **of** keyword and the entity_na
 architecture_033
 ################
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space between the entity_name and the **is** keyword.
 

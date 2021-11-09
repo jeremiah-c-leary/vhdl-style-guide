@@ -6,7 +6,7 @@ Attribute Specification Rules
 attribute_specification_100
 ###########################
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space after the following attribute_specification elements:  **attribute** keyword, *attribute_designator*, **of** keyword and **is** keyword.
 
@@ -29,7 +29,7 @@ This rule checks for a single space after the following attribute_specification 
 attribute_specification_101
 ###########################
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space before the **is** keyword.
 

@@ -33,7 +33,7 @@ This rule checks the indent of concurrent assignments.
 concurrent_002
 ##############
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space after the **<=** operator.
 
@@ -85,7 +85,7 @@ Aligning to the parenthesis improves readability.
 concurrent_004
 ##############
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for at least a single space before the **<=** operator.
 

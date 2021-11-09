@@ -151,7 +151,7 @@ Refer to the section `Configuring Optional Items <configuring.html#configuring-o
 block_100
 #########
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space between the following block elements:  label, label colon, **block** keyword, guard open parenthesis, guart close parenthesis, and **is** keywords.
 
@@ -172,7 +172,7 @@ This rule checks for a single space between the following block elements:  label
 block_101
 #########
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space between the **end** and **block** keywords and label.
 

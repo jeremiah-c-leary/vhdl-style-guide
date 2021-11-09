@@ -29,7 +29,7 @@ This rule checks the indent of the package declaration.
 package_002
 ###########
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space between **package** and **is** keywords.
 
@@ -178,7 +178,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 package_009
 ###########
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space between the **end** and **package** keywords and package name.
 

@@ -34,7 +34,7 @@ This rule checks the indent of the process declaration.
 process_002
 ###########
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space after the **process** keyword.
 
@@ -159,7 +159,7 @@ This rule checks the indent of the **end process** keywords.
 process_007
 ###########
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space after the **end** keyword.
 
@@ -334,7 +334,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 process_014
 ###########
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space before the **is** keyword.
 
@@ -614,7 +614,7 @@ Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ f
 process_024
 ###########
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space after the process label.
 
@@ -639,7 +639,7 @@ This rule checks for a single space after the process label.
 process_025
 ###########
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space after the colon and before the **process** keyword.
 

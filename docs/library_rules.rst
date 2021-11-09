@@ -29,7 +29,7 @@ Indenting helps in comprehending the code.
 library_002
 ###########
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for excessive spaces after the **library** keyword.
 
@@ -134,7 +134,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 library_006
 ###########
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for excessive spaces after the **use** keyword.
 

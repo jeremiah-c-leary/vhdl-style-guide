@@ -133,7 +133,7 @@ This rule checks if the **generic map** keywords and a generic assignment are on
 generic_map_006
 ###############
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space between the **map** keyword and the (.
 
@@ -156,7 +156,7 @@ This rule checks for a single space between the **map** keyword and the (.
 generic_map_007
 ###############
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space after the **=>** keyword in generic maps.
 

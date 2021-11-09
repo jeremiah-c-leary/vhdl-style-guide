@@ -35,7 +35,7 @@ This rule checks for the proper indentation of instantiations.
 instantiation_002
 #################
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space after the colon.
 
@@ -54,7 +54,7 @@ This rule checks for a single space after the colon.
 instantiation_003
 #################
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space before the colon.
 
@@ -460,7 +460,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 instantiation_032
 #################
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space after the **component** keyword if it is used.
 

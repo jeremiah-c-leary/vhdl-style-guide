@@ -377,7 +377,7 @@ This rule checks for a procedure parameter on the same line as the procedure key
 procedure_100
 #############
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space between the following procedure elements:  **procedure** keyword, procedure designator, open parenthesis, close parenthesis, and **is** keywords.
 
@@ -404,7 +404,7 @@ This rule checks for a single space between the following procedure elements:  *
 procedure_101
 #############
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space between the **end** and **procedure** keywords and procedure designator.
 

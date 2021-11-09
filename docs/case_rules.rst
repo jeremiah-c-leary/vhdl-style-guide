@@ -38,7 +38,7 @@ This rule checks the indent of **case**, **when**, and **end case** keywords.
 case_002
 ########
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space after the **case** keyword.
 
@@ -58,7 +58,7 @@ This rule checks for a single space after the **case** keyword.
 case_003
 ########
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space before the **is** keyword.
 
@@ -77,7 +77,7 @@ This rule checks for a single space before the **is** keyword.
 case_004
 ########
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space after the **when** keyword.
 
@@ -100,7 +100,7 @@ This rule checks for a single space after the **when** keyword.
 case_005
 ########
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space before the **=>** operator.
 
@@ -123,7 +123,7 @@ This rule checks for a single space before the **=>** operator.
 case_006
 ########
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space between the **end** and **case** keywords.
 

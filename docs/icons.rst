@@ -60,3 +60,7 @@
 .. |blank_line| image:: img/blank_line.svg
    :height: 25px
    :target: rule_groups.html
+
+.. |whitespace| image:: img/whitespace.svg
+   :height: 25px
+   :target: rule_groups.html

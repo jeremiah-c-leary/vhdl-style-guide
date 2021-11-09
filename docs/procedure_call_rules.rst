@@ -52,7 +52,7 @@ Labels on procedure calls are optional and do not provide additional information
 procedure_call_100
 ##################
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space between the following block elements:  label, label colon, **postponed** keyword and the *procedure* name.
 

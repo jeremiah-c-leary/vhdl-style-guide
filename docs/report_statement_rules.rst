@@ -45,7 +45,7 @@ This rule checks the **severity** keyword is on it's own line.
 report_statement_100
 ####################
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space after the **report** keyword.
 
@@ -64,7 +64,7 @@ This rule checks for a single space after the **report** keyword.
 report_statement_101
 ####################
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space after the **severity** keyword.
 

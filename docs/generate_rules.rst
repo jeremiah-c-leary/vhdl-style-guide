@@ -35,7 +35,7 @@ This rule checks the indent of the generate declaration.
 generate_002
 ############
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space between the label and the colon.
 
@@ -168,7 +168,7 @@ This rule checks the indent of the **end generate** keyword.
 generate_008
 ############
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space after the **end** keyword.
 
@@ -273,7 +273,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 generate_013
 ############
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space after the **generate** keyword and the label in the **end generate** keywords.
 
@@ -292,7 +292,7 @@ This rule checks for a single space after the **generate** keyword and the label
 generate_014
 ############
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space between the colon and the **for** keyword.
 

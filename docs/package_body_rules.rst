@@ -68,7 +68,7 @@ Refer to the section `Configuring Optional Items <configuring.html#configuring-o
 package_body_100
 ################
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space between **package**, **body** and **is** keywords.
 
@@ -87,7 +87,7 @@ This rule checks for a single space between **package**, **body** and **is** key
 package_body_101
 ################
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space between the **end**, **package** and **body** keywords and package name.
 

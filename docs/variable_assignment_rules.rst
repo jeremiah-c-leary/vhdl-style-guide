@@ -35,7 +35,7 @@ This rule checks the indent of a variable assignment.
 variable_assignment_002
 #######################
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space after the assignment.
 

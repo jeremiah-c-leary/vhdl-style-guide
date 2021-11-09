@@ -87,7 +87,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 signal_005
 ##########
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space after the colon.
 

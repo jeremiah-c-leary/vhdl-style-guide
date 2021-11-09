@@ -404,7 +404,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 function_100
 ############
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space between the following function elements:  **function** keyword, function designator, open parenthesis, close parenthesis, **return** keyword, return type and **is** keyword.
 
@@ -423,7 +423,7 @@ This rule checks for a single space between the following function elements:  **
 function_101
 ############
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space between the **end** and **function** keywords and function designator.
 

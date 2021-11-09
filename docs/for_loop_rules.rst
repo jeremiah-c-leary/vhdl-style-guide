@@ -95,7 +95,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 for_loop_004
 ############
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks if a label exists on a for loop that a single space exists between the label and the colon.
 
@@ -116,7 +116,7 @@ This rule checks if a label exists on a for loop that a single space exists betw
 for_loop_005
 ############
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks if a label exists on a for loop that a single space exists after the colon.
 

@@ -136,7 +136,7 @@ This rule checks for a port assignment on the same line as the **port map** keyw
 port_map_007
 ############
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space after the **=>** operator in port maps.
 

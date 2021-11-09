@@ -31,7 +31,7 @@ This rule checks the indent of the **context** keyword.
 context_002
 ###########
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space between the **context** keyword and the context identifier.
 
@@ -377,7 +377,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 context_017
 ###########
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space between the context identifier and the **is** keyword.
 
@@ -396,7 +396,7 @@ This rule checks for a single space between the context identifier and the **is*
 context_018
 ###########
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space between the **end** keyword and the **context** keyword.
 
@@ -419,7 +419,7 @@ This rule checks for a single space between the **end** keyword and the **contex
 context_019
 ###########
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space between the **context** keyword and the context identifier.
 

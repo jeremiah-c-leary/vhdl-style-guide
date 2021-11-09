@@ -30,7 +30,7 @@ This rule checks the indent of the **entity** keyword.
 entity_002
 ##########
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space after the **entity** keyword.
 
@@ -139,7 +139,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 entity_007
 ##########
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space before the **is** keyword.
 
@@ -225,7 +225,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 entity_011
 ##########
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space after the **end** keyword.
 
@@ -265,7 +265,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 entity_013
 ##########
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space after the **entity** keyword in the closing of the entity declaration.
 

@@ -76,7 +76,7 @@ parenthesis set to 'remove'
 if_003
 ######
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space between the **if** keyword and the (.
 
@@ -99,7 +99,7 @@ This rule checks for a single space between the **if** keyword and the (.
 if_004
 ######
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space between the ) and the **then** keyword.
 
@@ -122,7 +122,7 @@ This rule checks for a single space between the ) and the **then** keyword.
 if_005
 ######
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space between the **elsif** keyword and the (.
 
@@ -375,7 +375,7 @@ This rule checks the indent of the **end if** keyword.
 if_015
 ######
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space between the **end if** keywords.
 

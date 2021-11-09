@@ -6,7 +6,7 @@ Attribute Declaration Rules
 attribute_declaration_100
 #########################
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space after the following elements:  **attribute** keyword and colon.
 

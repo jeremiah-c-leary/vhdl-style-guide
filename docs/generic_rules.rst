@@ -57,7 +57,7 @@ This rule checks the indent of the **generic** keyword.
 generic_003
 ###########
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space between the **generic** keyword and the (.
 
@@ -105,7 +105,7 @@ This rule checks the indent of generic declarations.
 generic_005
 ###########
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space after the colon in a generic declaration.
 
@@ -124,7 +124,7 @@ This rule checks for a single space after the colon in a generic declaration.
 generic_006
 ###########
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space after the default assignment.
 

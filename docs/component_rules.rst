@@ -35,7 +35,7 @@ This rule checks the indentation of the **component** keyword.
 component_002
 #############
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space after the **component** keyword.
 
@@ -154,7 +154,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 component_007
 #############
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space before the **is** keyword.
 
@@ -239,7 +239,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 component_011
 #############
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for single space after the **end** keyword.
 
@@ -279,7 +279,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 component_013
 #############
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space after the **component** keyword in the **end component** line.
 
