@@ -52,26 +52,46 @@ def combine_comments(lChars):
 
     return lReturn
 
+
 lStopChars = [' ', '(', ';']
+
 
 def combine_backslash_characters_into_symbols(lChars):
     lReturn = []
     sLiteral = ''
     bLiteral = False
-    for iChar, sChar in enumerate(lChars):
-        if (sChar in lStopChars  or ' ' in sChar) and bLiteral:
+    for sChar in lChars:
+        if stop_character_found(sChar, bLiteral):
             bLiteral = False
             lReturn.append(sLiteral)
             sLiteral = ''
-        if sChar == '\\':
+        if backslash_character_found(sChar):
             bLiteral = True
-        if not bLiteral:
-            lReturn.append(sChar)
-        else:
+        if bLiteral:
             sLiteral += sChar
-    if len(sLiteral) > 0:
-        lReturn.append(sLiteral)
+        else:
+            lReturn.append(sChar)
+    lReturn = add_trailing_string(lReturn, sLiteral)
     return lReturn
+
+
+def backslash_character_found(sChar):
+    if sChar == '\\':
+        return True
+    return False
+
+
+def stop_character_found(sChar, bLiteral):
+    if (sChar in lStopChars or ' ' in sChar) and bLiteral:
+        return True
+    return False
+
+
+def add_trailing_string(lReturn, sString):
+    if len(sString) > 0:
+        lReturn.append(sString)
+    return lReturn
+
 
 
 def combine_string_literals(lChars):
