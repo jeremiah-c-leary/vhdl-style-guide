@@ -2,6 +2,7 @@
 lSingleCharacterSymbols = [',', ':', '(', ')', '\'', '"', '+', '&', '-', '*', '/', '<', '>', ';', '=', '[', ']', '?']
 lTwoCharacterSymbols = ['=>','**', ':=', '/=', '>=', '<=', '<>', '??', '?=', '?<', '?>', '<<', '>>', '--']
 lThreeCharacterSymbols = ['?/=', '?<', '?<=', '?>=']
+lFourCharacterSymbols = ['\\?=\\']
 
 
 def create(sString):
@@ -13,6 +14,7 @@ def create(sString):
     for sChar in sString:
         lCharacters.append(sChar)
     lCharacters = combine_whitespace(lCharacters)
+    lCharacters = combine_backslash_characters_into_symbols(lCharacters)
     lCharacters = combine_two_character_symbols(lCharacters)
     lCharacters = combine_characters_into_words(lCharacters)
     lCharacters = combine_string_literals(lCharacters)
@@ -48,6 +50,27 @@ def combine_comments(lChars):
     if bComment:
         lReturn.append(sComment)
 
+    return lReturn
+
+lStopChars = [' ', '(', ';']
+
+def combine_backslash_characters_into_symbols(lChars):
+    lReturn = []
+    sLiteral = ''
+    bLiteral = False
+    for iChar, sChar in enumerate(lChars):
+        if (sChar in lStopChars  or ' ' in sChar) and bLiteral:
+            bLiteral = False
+            lReturn.append(sLiteral)
+            sLiteral = ''
+        if sChar == '\\':
+            bLiteral = True
+        if not bLiteral:
+            lReturn.append(sChar)
+        else:
+            sLiteral += sChar
+    if len(sLiteral) > 0:
+        lReturn.append(sLiteral)
     return lReturn
 
 

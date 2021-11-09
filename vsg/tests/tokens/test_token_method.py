@@ -665,3 +665,175 @@ class testTokenMethod(unittest.TestCase):
   
         self.assertEqual(lTokens, lActual)
 
+    def test_backward_slashes(self):
+        sLine = '  function \?=\ (L, R : ufixed) return STD_ULOGIC;'
+        lTokens = []
+        lTokens.append('  ')
+        lTokens.append('function')
+        lTokens.append(' ')
+        lTokens.append('\\' + '?=' + '\\')
+        lTokens.append(' ')
+        lTokens.append('(')
+        lTokens.append('L')
+        lTokens.append(',')
+        lTokens.append(' ')
+        lTokens.append('R')
+        lTokens.append(' ')
+        lTokens.append(':')
+        lTokens.append(' ')
+        lTokens.append('ufixed')
+        lTokens.append(')')
+        lTokens.append(' ')
+        lTokens.append('return')
+        lTokens.append(' ')
+        lTokens.append('STD_ULOGIC')
+        lTokens.append(';')
+  
+        lActual = tokens.create(sLine)
+  
+        self.assertEqual(lTokens, lActual)
+
+    def test_combine_backslash_characters_into_symbols(self):
+        sLine = ' function \?=\ hello'
+        lLine = []
+        for sChar in sLine:
+            lLine.append(sChar)
+         
+        lActual = tokens.combine_whitespace(lLine)
+
+        lExpected = lLine
+        self.assertEqual(lExpected, lActual)
+
+        lActual = tokens.combine_backslash_characters_into_symbols(lActual)
+
+        lExpected = []
+        lExpected.append(' ')
+        lExpected.extend(['f', 'u', 'n', 'c', 't', 'i', 'o', 'n'])
+        lExpected.append(' ')
+        lExpected.append('\\?=\\')
+        lExpected.append(' ')
+        lExpected.extend(['h', 'e', 'l', 'l', 'o'])
+
+        self.assertEqual(lExpected, lActual)
+
+
+        sLine = ' function \?=\\'
+        lLine = []
+        for sChar in sLine:
+            lLine.append(sChar)
+         
+        lActual = tokens.combine_whitespace(lLine)
+
+        lExpected = lLine
+        self.assertEqual(lExpected, lActual)
+
+        lActual = tokens.combine_backslash_characters_into_symbols(lActual)
+
+        lExpected = []
+        lExpected.append(' ')
+        lExpected.extend(['f', 'u', 'n', 'c', 't', 'i', 'o', 'n'])
+        lExpected.append(' ')
+        lExpected.append('\\?=\\')
+
+        self.assertEqual(lExpected, lActual)
+
+        
+        sLine = ' function \?=\\('
+        lLine = []
+        for sChar in sLine:
+            lLine.append(sChar)
+         
+        lActual = tokens.combine_whitespace(lLine)
+
+        lExpected = lLine
+        self.assertEqual(lExpected, lActual)
+
+        lActual = tokens.combine_backslash_characters_into_symbols(lActual)
+
+        lExpected = []
+        lExpected.append(' ')
+        lExpected.extend(['f', 'u', 'n', 'c', 't', 'i', 'o', 'n'])
+        lExpected.append(' ')
+        lExpected.append('\\?=\\')
+        lExpected.append('(')
+
+        self.assertEqual(lExpected, lActual)
+
+        
+        sLine = ' function \?=\\ '
+        lLine = []
+        for sChar in sLine:
+            lLine.append(sChar)
+         
+        lActual = tokens.combine_whitespace(lLine)
+
+        lExpected = lLine
+        self.assertEqual(lExpected, lActual)
+
+        lActual = tokens.combine_backslash_characters_into_symbols(lActual)
+
+        lExpected = []
+        lExpected.append(' ')
+        lExpected.extend(['f', 'u', 'n', 'c', 't', 'i', 'o', 'n'])
+        lExpected.append(' ')
+        lExpected.append('\\?=\\')
+        lExpected.append(' ')
+
+        self.assertEqual(lExpected, lActual)
+
+        
+        sLine = ' function \?=\\;'
+        lLine = []
+        for sChar in sLine:
+            lLine.append(sChar)
+         
+        lActual = tokens.combine_whitespace(lLine)
+
+        lExpected = lLine
+        self.assertEqual(lExpected, lActual)
+
+        lActual = tokens.combine_backslash_characters_into_symbols(lActual)
+
+        lExpected = []
+        lExpected.append(' ')
+        lExpected.extend(['f', 'u', 'n', 'c', 't', 'i', 'o', 'n'])
+        lExpected.append(' ')
+        lExpected.append('\\?=\\')
+        lExpected.append(';')
+
+        self.assertEqual(lExpected, lActual)
+
+        sLine = ' function \\?>\\  ('
+        lLine = []
+        for sChar in sLine:
+            lLine.append(sChar)
+         
+        lActual = tokens.combine_whitespace(lLine)
+
+        lExpected = []
+        lExpected.append(' ')
+        lExpected.extend(['f', 'u', 'n', 'c', 't', 'i', 'o', 'n'])
+        lExpected.append(' ')
+        lExpected.append('\\')
+        lExpected.append('?')
+        lExpected.append('>')
+        lExpected.append('\\')
+        lExpected.append('  ')
+        lExpected.append('(')
+
+        self.assertEqual(lExpected, lActual)
+
+        lActual = tokens.combine_backslash_characters_into_symbols(lActual)
+
+        lExpected = []
+        lExpected.append(' ')
+        lExpected.extend(['f', 'u', 'n', 'c', 't', 'i', 'o', 'n'])
+        lExpected.append(' ')
+        lExpected.append('\\?>\\')
+        lExpected.append('  ')
+        lExpected.append('(')
+
+        self.assertEqual(lExpected, lActual)
+
+        
+        
