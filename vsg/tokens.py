@@ -58,20 +58,31 @@ lStopChars = [' ', '(', ';']
 
 def combine_backslash_characters_into_symbols(lChars):
     lReturn = []
-    sLiteral = ''
-    bLiteral = False
+    sSymbol = ''
+    bSymbol = False
     for sChar in lChars:
-        if stop_character_found(sChar, bLiteral):
-            bLiteral = False
-            lReturn.append(sLiteral)
-            sLiteral = ''
+        if stop_character_found(sChar, bSymbol):
+            bSymbol = False
+            lReturn.append(sSymbol)
+            sSymbol = ''
         if backslash_character_found(sChar):
-            bLiteral = True
-        if bLiteral:
-            sLiteral += sChar
-        else:
-            lReturn.append(sChar)
-    lReturn = add_trailing_string(lReturn, sLiteral)
+            bSymbol = True
+        sSymbol = append_to_symbol(bSymbol, sSymbol, sChar)
+        lReturn = append_to_list(bSymbol, lReturn, sChar)
+    lReturn = add_trailing_string(lReturn, sSymbol)
+    return lReturn
+
+
+def append_to_symbol(bSomething, sSymbol, sChar):
+    if bSomething:
+        return sSymbol + sChar
+    return sSymbol
+
+
+def append_to_list(bSomething, lChars, sChar):
+    lReturn = lChars
+    if not bSomething:
+       lReturn.append(sChar)
     return lReturn
 
 
@@ -91,7 +102,6 @@ def add_trailing_string(lReturn, sString):
     if len(sString) > 0:
         lReturn.append(sString)
     return lReturn
-
 
 
 def combine_string_literals(lChars):
