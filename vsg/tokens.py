@@ -65,24 +65,29 @@ def combine_backslash_characters_into_symbols(lChars):
             bSymbol = False
             lReturn.append(sSymbol)
             sSymbol = ''
-        if backslash_character_found(sChar):
-            bSymbol = True
+        bSymbol = inside_backslash_symbol(bSymbol, sChar)
         sSymbol = append_to_symbol(bSymbol, sSymbol, sChar)
         lReturn = append_to_list(bSymbol, lReturn, sChar)
     lReturn = add_trailing_string(lReturn, sSymbol)
     return lReturn
 
 
-def append_to_symbol(bSomething, sSymbol, sChar):
-    if bSomething:
+def inside_backslash_symbol(bSymbol, sChar):
+    if backslash_character_found(sChar):
+        return True
+    return bSymbol
+
+
+def append_to_symbol(bSymbol, sSymbol, sChar):
+    if bSymbol:
         return sSymbol + sChar
     return sSymbol
 
 
-def append_to_list(bSomething, lChars, sChar):
+def append_to_list(bSymbol, lChars, sChar):
     lReturn = lChars
-    if not bSomething:
-       lReturn.append(sChar)
+    if not bSymbol:
+        lReturn.append(sChar)
     return lReturn
 
 
