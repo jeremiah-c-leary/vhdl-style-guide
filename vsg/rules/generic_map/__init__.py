@@ -9,3 +9,4 @@ from .rule_007 import rule_007
 from .rule_008 import rule_008
 
 from .rule_600 import rule_600
+from .rule_601 import rule_601
