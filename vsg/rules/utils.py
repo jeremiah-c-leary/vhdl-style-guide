@@ -8,7 +8,8 @@ def add_optional_item(lTokens, oViolation, oInsertToken):
     oViolation.set_tokens(lTokens)
 
 
-def remove_optional_item(lTokens, oViolation, oInsertToken):
+def remove_optional_item(oViolation, oInsertToken):
+    lTokens = oViolation.get_tokens()
     if isinstance(lTokens[0], parser.whitespace):
         oViolation.set_tokens([])
     else:

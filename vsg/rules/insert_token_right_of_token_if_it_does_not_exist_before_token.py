@@ -66,7 +66,7 @@ class insert_token_right_of_token_if_it_does_not_exist_before_token(rule.Rule):
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
         if self.action == 'remove':
-            rules_utils.remove_optional_item(lTokens, oViolation, self.insert_token)
+            rules_utils.remove_optional_item(oViolation, self.insert_token)
         else:
             rules_utils.insert_token(lTokens, 1, self.insert_token)
             rules_utils.insert_whitespace(lTokens, 1)

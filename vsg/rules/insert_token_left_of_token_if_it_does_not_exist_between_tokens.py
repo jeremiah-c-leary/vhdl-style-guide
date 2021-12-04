@@ -72,7 +72,7 @@ class insert_token_left_of_token_if_it_does_not_exist_between_tokens(rule.Rule):
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
         if self.action == 'remove':
-            rules_utils.remove_optional_item(lTokens, oViolation, self.insert_token)
+            rules_utils.remove_optional_item(oViolation, self.insert_token)
         else:
             dAction = oViolation.get_action()
             rules_utils.insert_token(lTokens, dAction['index'], self.insert_token)

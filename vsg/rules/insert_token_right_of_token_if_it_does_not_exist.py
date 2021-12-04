@@ -52,4 +52,4 @@ class insert_token_right_of_token_if_it_does_not_exist(rule.Rule):
         if self.action == 'add':
             utils.add_optional_item(lTokens, oViolation, self.insert_token)
         else:
-            utils.remove_optional_item(lTokens, oViolation, self.insert_token)
+            utils.remove_optional_item(oViolation, self.insert_token)
