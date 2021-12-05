@@ -11,6 +11,17 @@ architecture RTl of FIFO is
 
   end component fifo;
 
+  component
+    fifo
+
+  end component fifo;
+
+  component fifo--Comment
+  end component fifo;
+
+  component fifo--Comment
+ end component fifo;
+
 begin
 
 end architecture RTL;
