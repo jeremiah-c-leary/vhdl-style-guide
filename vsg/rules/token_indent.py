@@ -82,13 +82,16 @@ def create_indent_violation(self, oToi, lTokens):
 
 
 def no_indent_exists_but_should(self, lTokens):
-    if len(lTokens) == 1:
-        if lTokens[0].get_indent() is None:
-            return False
-        if self.indentSize == 0:
-            return False
-        if lTokens[0].get_indent() != 0:
-            return True
+    if not len(lTokens) == 1:
+        return False
+
+    if lTokens[0].get_indent() is None:
+        return False
+    if self.indentSize == 0:
+        return False
+    if lTokens[0].get_indent() != 0:
+        return True
+
     return False
 
 
