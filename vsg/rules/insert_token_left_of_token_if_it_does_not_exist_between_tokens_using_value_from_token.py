@@ -52,13 +52,12 @@ class insert_token_left_of_token_if_it_does_not_exist_between_tokens_using_value
 
     def _analyze(self, lToi):
         if remove_keyword(self):
-            check_for_existence_of_optional_keyword(lToi, self)
+            analyze_for_existence_of_optional_keyword(lToi, self)
         else:
-            check_for_missing_optional_keyword(lToi, self)
+            analyze_for_missing_optional_keyword(lToi, self)
 
     def _fix_violation(self, oViolation):
         if remove_keyword(self):
-            lTokens = oViolation.get_tokens()
             rules_utils.remove_optional_item(oViolation, self.insert_token)
         else:
             add_optional_item(oViolation, self)
@@ -70,32 +69,50 @@ def remove_keyword(self):
     return False
 
 
-def check_for_existence_of_optional_keyword(lToi, self):
+def analyze_for_existence_of_optional_keyword(lToi, self):
     for oToi in lToi:
-        sSolution = self.action.capitalize() + ' ' + self.solution
-        self.add_violation(violation.New(oToi.get_line_number(), oToi, sSolution))
+        oViolation = create_violation(oToi, oToi.get_line_number(), self)
+        self.add_violation(oViolation)
 
 
-def check_for_missing_optional_keyword(lToi, self):
+def analyze_for_missing_optional_keyword(lToi, self):
     for oToi in lToi:
         iLine, lTokens = utils.get_toi_parameters(oToi)
-        bFound = False
-        for oToken in lTokens:
-           iLine = utils.increment_line_number(iLine, oToken)
-           if isinstance(oToken, self.insert_token):
-               bFound = True
-               break
-        if not bFound:
-            sSolution = self.action.capitalize() + ' ' + self.solution
-            self.add_violation(violation.New(iLine, oToi, sSolution))
+        if not optional_keyword_exists(self.insert_token, lTokens):
+            iLine += rules_utils.get_number_of_carriage_returns_before_token(self.anchor_token, lTokens)
+            oViolation = create_violation(oToi, iLine, self)
+            self.add_violation(oViolation)
+
+
+def optional_keyword_exists(oToken, lTokens):
+    if rules_utils.get_index_of_token_in_list(oToken, lTokens) is None:
+        return False
+    return True
 
 
 def add_optional_item(oViolation, self):
     lTokens = oViolation.get_tokens()
+    if not token_value_available(oViolation):
+        return
+
+    if not optional_keyword_exists(self.anchor_token, lTokens):
+        return
+
+    iIndex = rules_utils.get_index_of_token_in_list(self.anchor_token, lTokens)
+
+    rules_utils.insert_token(lTokens, iIndex, self.insert_token(oViolation.get_token_value()))
+    if not rules_utils.whitespace_before_token_index(lTokens, iIndex):
+        rules_utils.insert_whitespace(lTokens, iIndex)
+    oViolation.set_tokens(lTokens)
+
+
+def token_value_available(oViolation):
     if oViolation.get_token_value() is not None:
-        for iIndex in range(0, len(lTokens)):
-            if isinstance(lTokens[iIndex], self.anchor_token):
-                rules_utils.insert_token(lTokens, iIndex, self.insert_token(oViolation.get_token_value()))
-                if not isinstance(lTokens[iIndex - 1], parser.whitespace):                
-                    rules_utils.insert_whitespace(lTokens, iIndex)
-        oViolation.set_tokens(lTokens)
+        return True
+    return False
+
+
+def create_violation(oToi, iLineNumber, self):
+    sSolution = self.action.capitalize() + ' ' + self.solution
+    oViolation  = violation.New(iLineNumber, oToi, sSolution)
+    return oViolation
