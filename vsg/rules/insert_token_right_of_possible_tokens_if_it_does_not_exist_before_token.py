@@ -76,7 +76,7 @@ class insert_token_right_of_possible_tokens_if_it_does_not_exist_before_token(ru
                 dAction['whitespace'] = True
             if isinstance(lTokens[iIndex + 1], parser.carriage_return):
                 dAction['carriage_return'] = True
- 
+
             oViolation = violation.New(iLineNumber, oToi.extract_tokens(iIndex, iIndex), sSolution)
             oViolation.set_action(dAction)
             self.add_violation(oViolation)
