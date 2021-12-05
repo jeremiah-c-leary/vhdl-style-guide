@@ -101,11 +101,13 @@ def get_index_of_token_in_list(oToken, lTokens):
     return None
 
 
-def get_number_of_carriage_returns_before_token(oToken, lTokens):
+def get_number_of_carriage_returns_before_token(oStopToken, lTokens):
     iReturn = 0
     for oToken in lTokens:
         if isinstance(oToken, parser.carriage_return):
             iReturn += 1
+        if isinstance(oToken, oStopToken):
+            break
     return iReturn
 
 

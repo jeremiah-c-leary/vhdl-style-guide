@@ -114,5 +114,5 @@ def token_value_available(oViolation):
 
 def create_violation(oToi, iLineNumber, self):
     sSolution = self.action.capitalize() + ' ' + self.solution
-    oViolation  = violation.New(iLineNumber, oToi, sSolution)
+    oViolation = violation.New(iLineNumber, oToi, sSolution)
     return oViolation
