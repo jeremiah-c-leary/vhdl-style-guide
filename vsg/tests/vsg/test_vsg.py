@@ -298,16 +298,12 @@ class testVsg(unittest.TestCase):
         self.assertEqual(lExpected[0], lActual[0])
 
     def test_missing_configuration_file(self):
-        sExpected = 'ERROR: encountered FileNotFoundError, No such file or directory while opening configuration file: missing_configuration.yaml\n'
-
         try:
             subprocess.check_output(['bin/vsg', '-c', 'missing_configuration.yaml'])
         except subprocess.CalledProcessError as e:
-            sActual = str(e.output.decode('utf-8'))
             iExitStatus = e.returncode
 
         self.assertEqual(iExitStatus, 1)
-        self.assertEqual(sActual, sExpected)
 
     @unittest.skipIf('SUDO_UID' in os.environ.keys() or os.geteuid() == 0, "We are root. Root always has permissions so test will fail.")
     def test_no_permission_configuration_file(self):
