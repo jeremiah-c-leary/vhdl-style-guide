@@ -45,7 +45,7 @@ def parse_command_line_arguments():
 
     parser.add_argument('-f', '--filename', type=__is_valid_file, nargs='+', help='File to analyze')
     parser.add_argument('-lr', '--local_rules', help='Path to local rules')
-    parser.add_argument('-c', '--configuration', nargs='+', help='JSON or YAML configuration file(s)')
+    parser.add_argument('-c', '--configuration', type=__is_valid_file, nargs='+', help='JSON or YAML configuration file(s)')
     parser.add_argument('--fix', default=False, action='store_true', help='Fix issues found')
     parser.add_argument('-fp', '--fix_phase', default=7, action='store',
                         help='Fix issues up to and including this phase')
