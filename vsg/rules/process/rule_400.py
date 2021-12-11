@@ -15,6 +15,7 @@ oEnd = token.process_statement.end_keyword
 
 lUnless = []
 
+
 class rule_400(align_tokens_in_region_between_tokens_unless_between_tokens):
     '''
     Ensures the alignment of the "<=" and ":=" tokens over multiple lines.
