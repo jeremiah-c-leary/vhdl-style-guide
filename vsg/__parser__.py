@@ -6,12 +6,13 @@ import sys
 from . import vhdlFile
 
 from vsg.tests import utils
+from .CustomArgumentParser import CustomArgumentParser
 
 
 def parse_command_line_arguments():
     '''Parses the command line arguments and returns them.'''
 
-    parser = argparse.ArgumentParser(
+    parser = CustomArgumentParser(
       prog='VHDL Style Guide (VSG) Parser',
       description='''Outputs the results from parsing a VHDL file.''')
 
