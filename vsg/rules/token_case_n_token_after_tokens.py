@@ -1,6 +1,6 @@
 
 from vsg import rule
-from vsg import violation
+from vsg.rules import case_utils
 
 lKeywords = []
 lKeywords.append('std_logic')
@@ -39,30 +39,27 @@ class token_case_n_token_after_tokens(rule.Rule):
         self.lTokens = lTokens
         self.disabled = False
         self.bLimitToVhdlKeywords = bLimitToVhdlKeywords
+        self.prefix_exceptions = []
+        self.suffix_exceptions = []
 
     def _get_tokens_of_interest(self, oFile):
         return oFile.get_n_token_after_tokens(self.iToken, self.lTokens)
 
     def _analyze(self, lToi):
+        check_prefix = case_utils.is_exception_enabled(self.prefix_exceptions)
+        check_suffix = case_utils.is_exception_enabled(self.suffix_exceptions)
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             sObjectValue = lTokens[0].get_value()
             if self.bLimitToVhdlKeywords:
                 if sObjectValue.lower() not in lKeywords:
                     continue
-            if self.case == 'lower':
-                if not sObjectValue.islower():
-                    sSolution = 'Change "' + sObjectValue + '" to "' + sObjectValue.lower() + '"'
-                    self.add_violation(violation.New(oToi.get_line_number(), oToi, sSolution))
-            if self.case == 'upper':
-                if not sObjectValue.isupper():
-                    sSolution = 'Change "' + sObjectValue + '" to "' + sObjectValue.upper() + '"'
-                    self.add_violation(violation.New(oToi.get_line_number(), oToi, sSolution))
+            oViolation = case_utils.check_for_case_violation(oToi, self, check_prefix, check_suffix)
+            if oViolation is not None:
+                self.add_violation(oViolation)
 
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
-        if self.case == 'lower':
-            lTokens[0].set_value(lTokens[0].get_value().lower())
-        if self.case == 'upper':
-            lTokens[0].set_value(lTokens[0].get_value().upper())
+        dAction = oViolation.get_action()
+        lTokens[0].set_value(dAction['value'])
         oViolation.set_tokens(lTokens)

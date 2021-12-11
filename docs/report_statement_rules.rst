@@ -72,7 +72,7 @@ This rule checks for a single space after the **severity** keyword.
 
 .. code-block:: vhdl
 
-    report FIFO width is limited to 16 bits."
+    report "FIFO width is limited to 16 bits."
       severity    FAILURE;
 
 **Fix**
@@ -93,7 +93,7 @@ This rule checks indent of multiline report statements.
 
 .. code-block:: vhdl
 
-    report FIFO width is limited to 16 bits."
+    report "FIFO width is limited to 16 bits."
             severity FAILURE;
 
 **Fix**

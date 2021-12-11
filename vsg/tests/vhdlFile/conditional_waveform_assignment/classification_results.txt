@@ -14,22 +14,96 @@
 3 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-4 | begin
+4 |   function func1 return integer is
+<class 'vsg.token.function_specification.function_keyword'>
+<class 'vsg.token.function_specification.designator'>
+<class 'vsg.token.function_specification.return_keyword'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.subprogram_body.is_keyword'>
+--------------------------------------------------------------------------------
+5 |   begin
+<class 'vsg.token.subprogram_body.begin_keyword'>
+--------------------------------------------------------------------------------
+6 |     hpp := '1'  when (pf_vlan2x_tci(3 downto 0) >= x"A" and pf_vlan2x_tci(3 downto 0) <= x"F") else '0';
+<class 'vsg.token.conditional_variable_assignment.target'>
+<class 'vsg.token.conditional_variable_assignment.assignment'>
+<class 'vsg.parser.character_literal'>
+<class 'vsg.token.conditional_expressions.when_keyword'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.downto'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.logical_operator.and_operator'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.downto'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.conditional_expressions.else_keyword'>
+<class 'vsg.parser.character_literal'>
+<class 'vsg.token.conditional_variable_assignment.semicolon'>
+--------------------------------------------------------------------------------
+7 |     hpp := '1' when a >= b and x <= y else '0';
+<class 'vsg.token.conditional_variable_assignment.target'>
+<class 'vsg.token.conditional_variable_assignment.assignment'>
+<class 'vsg.parser.character_literal'>
+<class 'vsg.token.conditional_expressions.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.logical_operator.and_operator'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.conditional_expressions.else_keyword'>
+<class 'vsg.parser.character_literal'>
+<class 'vsg.token.conditional_variable_assignment.semicolon'>
+--------------------------------------------------------------------------------
+8 |     other_target <= '0' when x <= y;
+<class 'vsg.token.conditional_waveform_assignment.target'>
+<class 'vsg.token.conditional_waveform_assignment.assignment'>
+<class 'vsg.parser.character_literal'>
+<class 'vsg.token.conditional_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.conditional_waveform_assignment.semicolon'>
+--------------------------------------------------------------------------------
+9 |   end function;
+<class 'vsg.token.subprogram_body.end_keyword'>
+<class 'vsg.token.subprogram_kind.function_keyword'>
+<class 'vsg.token.subprogram_body.semicolon'>
+--------------------------------------------------------------------------------
+10 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+11 | begin
 <class 'vsg.token.architecture_body.begin_keyword'>
 --------------------------------------------------------------------------------
-5 |
+12 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-6 |   process
+13 |   process
 <class 'vsg.token.process_statement.process_keyword'>
 --------------------------------------------------------------------------------
-7 |   begin
+14 |   begin
 <class 'vsg.token.process_statement.begin_keyword'>
 --------------------------------------------------------------------------------
-8 |
+15 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-9 |     SEL_LABEL : some target <= transport some expression when some condition else
+16 |     SEL_LABEL : some target <= transport some expression when some condition else
 <class 'vsg.token.signal_assignment_statement.label'>
 <class 'vsg.token.signal_assignment_statement.label_colon'>
 <class 'vsg.token.conditional_waveform_assignment.target'>
@@ -43,7 +117,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.else_keyword'>
 --------------------------------------------------------------------------------
-10 |                                          some expression when some condition else
+17 |                                          some expression when some condition else
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.when_keyword'>
@@ -51,60 +125,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.else_keyword'>
 --------------------------------------------------------------------------------
-11 |                                          some expression;
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
-<class 'vsg.token.conditional_waveform_assignment.semicolon'>
---------------------------------------------------------------------------------
-12 |
-<class 'vsg.parser.blank_line'>
---------------------------------------------------------------------------------
-13 |     SEL_LABEL : some target <= some expression when some condition else
-<class 'vsg.token.signal_assignment_statement.label'>
-<class 'vsg.token.signal_assignment_statement.label_colon'>
-<class 'vsg.token.conditional_waveform_assignment.target'>
-<class 'vsg.token.conditional_waveform_assignment.target'>
-<class 'vsg.token.conditional_waveform_assignment.assignment'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
-<class 'vsg.token.conditional_waveforms.when_keyword'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
-<class 'vsg.token.conditional_waveforms.else_keyword'>
---------------------------------------------------------------------------------
-14 |                                some expression when some condition else
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
-<class 'vsg.token.conditional_waveforms.when_keyword'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
-<class 'vsg.token.conditional_waveforms.else_keyword'>
---------------------------------------------------------------------------------
-15 |                                some expression;
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
-<class 'vsg.token.conditional_waveform_assignment.semicolon'>
---------------------------------------------------------------------------------
-16 |
-<class 'vsg.parser.blank_line'>
---------------------------------------------------------------------------------
-17 |     SEL_LABEL : some target <= some expression when some condition else
-<class 'vsg.token.signal_assignment_statement.label'>
-<class 'vsg.token.signal_assignment_statement.label_colon'>
-<class 'vsg.token.conditional_waveform_assignment.target'>
-<class 'vsg.token.conditional_waveform_assignment.target'>
-<class 'vsg.token.conditional_waveform_assignment.assignment'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
-<class 'vsg.token.conditional_waveforms.when_keyword'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
-<class 'vsg.token.conditional_waveforms.else_keyword'>
---------------------------------------------------------------------------------
-18 |                                some expression when some condition;
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
-<class 'vsg.token.conditional_waveforms.when_keyword'>
+18 |                                          some expression;
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveform_assignment.semicolon'>
@@ -112,7 +133,60 @@
 19 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-20 |     SEL_LABEL : some target <= some expression when some condition;
+20 |     SEL_LABEL : some target <= some expression when some condition else
+<class 'vsg.token.signal_assignment_statement.label'>
+<class 'vsg.token.signal_assignment_statement.label_colon'>
+<class 'vsg.token.conditional_waveform_assignment.target'>
+<class 'vsg.token.conditional_waveform_assignment.target'>
+<class 'vsg.token.conditional_waveform_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.conditional_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.conditional_waveforms.else_keyword'>
+--------------------------------------------------------------------------------
+21 |                                some expression when some condition else
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.conditional_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.conditional_waveforms.else_keyword'>
+--------------------------------------------------------------------------------
+22 |                                some expression;
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.conditional_waveform_assignment.semicolon'>
+--------------------------------------------------------------------------------
+23 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+24 |     SEL_LABEL : some target <= some expression when some condition else
+<class 'vsg.token.signal_assignment_statement.label'>
+<class 'vsg.token.signal_assignment_statement.label_colon'>
+<class 'vsg.token.conditional_waveform_assignment.target'>
+<class 'vsg.token.conditional_waveform_assignment.target'>
+<class 'vsg.token.conditional_waveform_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.conditional_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.conditional_waveforms.else_keyword'>
+--------------------------------------------------------------------------------
+25 |                                some expression when some condition;
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.conditional_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.conditional_waveform_assignment.semicolon'>
+--------------------------------------------------------------------------------
+26 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+27 |     SEL_LABEL : some target <= some expression when some condition;
 <class 'vsg.token.signal_assignment_statement.label'>
 <class 'vsg.token.signal_assignment_statement.label_colon'>
 <class 'vsg.token.conditional_waveform_assignment.target'>
@@ -125,16 +199,16 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveform_assignment.semicolon'>
 --------------------------------------------------------------------------------
-21 |
+28 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-22 |     -- Remove the labels
+29 |     -- Remove the labels
 <class 'vsg.parser.comment'>
 --------------------------------------------------------------------------------
-23 |
+30 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-24 |     some target <= transport some expression when some condition else
+31 |     some target <= transport some expression when some condition else
 <class 'vsg.token.conditional_waveform_assignment.target'>
 <class 'vsg.token.conditional_waveform_assignment.target'>
 <class 'vsg.token.conditional_waveform_assignment.assignment'>
@@ -146,7 +220,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.else_keyword'>
 --------------------------------------------------------------------------------
-25 |                              some expression when some condition else
+32 |                              some expression when some condition else
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.when_keyword'>
@@ -154,56 +228,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveforms.else_keyword'>
 --------------------------------------------------------------------------------
-26 |                              some expression;
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
-<class 'vsg.token.conditional_waveform_assignment.semicolon'>
---------------------------------------------------------------------------------
-27 |
-<class 'vsg.parser.blank_line'>
---------------------------------------------------------------------------------
-28 |     some target <= some expression when some condition else
-<class 'vsg.token.conditional_waveform_assignment.target'>
-<class 'vsg.token.conditional_waveform_assignment.target'>
-<class 'vsg.token.conditional_waveform_assignment.assignment'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
-<class 'vsg.token.conditional_waveforms.when_keyword'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
-<class 'vsg.token.conditional_waveforms.else_keyword'>
---------------------------------------------------------------------------------
-29 |                    some expression when some condition else
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
-<class 'vsg.token.conditional_waveforms.when_keyword'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
-<class 'vsg.token.conditional_waveforms.else_keyword'>
---------------------------------------------------------------------------------
-30 |                    some expression;
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
-<class 'vsg.token.conditional_waveform_assignment.semicolon'>
---------------------------------------------------------------------------------
-31 |
-<class 'vsg.parser.blank_line'>
---------------------------------------------------------------------------------
-32 |     some target <= some expression when some condition else
-<class 'vsg.token.conditional_waveform_assignment.target'>
-<class 'vsg.token.conditional_waveform_assignment.target'>
-<class 'vsg.token.conditional_waveform_assignment.assignment'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
-<class 'vsg.token.conditional_waveforms.when_keyword'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
-<class 'vsg.token.conditional_waveforms.else_keyword'>
---------------------------------------------------------------------------------
-33 |                    some expression when some condition;
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
-<class 'vsg.token.conditional_waveforms.when_keyword'>
+33 |                              some expression;
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveform_assignment.semicolon'>
@@ -211,7 +236,56 @@
 34 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-35 |     some target <= some expression when some condition;
+35 |     some target <= some expression when some condition else
+<class 'vsg.token.conditional_waveform_assignment.target'>
+<class 'vsg.token.conditional_waveform_assignment.target'>
+<class 'vsg.token.conditional_waveform_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.conditional_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.conditional_waveforms.else_keyword'>
+--------------------------------------------------------------------------------
+36 |                    some expression when some condition else
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.conditional_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.conditional_waveforms.else_keyword'>
+--------------------------------------------------------------------------------
+37 |                    some expression;
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.conditional_waveform_assignment.semicolon'>
+--------------------------------------------------------------------------------
+38 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+39 |     some target <= some expression when some condition else
+<class 'vsg.token.conditional_waveform_assignment.target'>
+<class 'vsg.token.conditional_waveform_assignment.target'>
+<class 'vsg.token.conditional_waveform_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.conditional_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.conditional_waveforms.else_keyword'>
+--------------------------------------------------------------------------------
+40 |                    some expression when some condition;
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.conditional_waveforms.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.conditional_waveform_assignment.semicolon'>
+--------------------------------------------------------------------------------
+41 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+42 |     some target <= some expression when some condition;
 <class 'vsg.token.conditional_waveform_assignment.target'>
 <class 'vsg.token.conditional_waveform_assignment.target'>
 <class 'vsg.token.conditional_waveform_assignment.assignment'>
@@ -222,18 +296,18 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.conditional_waveform_assignment.semicolon'>
 --------------------------------------------------------------------------------
-36 |
+43 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-37 |   end process;
+44 |   end process;
 <class 'vsg.token.process_statement.end_keyword'>
 <class 'vsg.token.process_statement.end_process_keyword'>
 <class 'vsg.token.process_statement.semicolon'>
 --------------------------------------------------------------------------------
-38 |
+45 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-39 | end architecture RTL;
+46 | end architecture RTL;
 <class 'vsg.token.architecture_body.end_keyword'>
 <class 'vsg.token.architecture_body.end_architecture_keyword'>
 <class 'vsg.token.architecture_body.architecture_simple_name'>

@@ -76,7 +76,7 @@ begin
   ndy               <= ("000" & Y2) - ("000" & Y1);
   neg_dx            <= 0 - dx;
   neg_dy            <= 0 - dy;
-  dbg               <= p;
+  DBG               <= p;
   dx_minus_dy       <= dx + neg_dy;
   minus_dx_minus_dy <= neg_dx + neg_dy;
   minus_dx_plus_dy  <= neg_dx + dy;
@@ -114,18 +114,18 @@ begin
   Y                 <= ccounter(18 downto 10) when state = clear else
                        myy1(8 downto 0);
   SS                <= state;
-  WriteEnable       <= '0' when state = idle or state = init else
+  WRITEENABLE       <= '0' when state = idle or state = init else
                        '1';
 
-  process (Clk) is
+  process (CLK) is
   begin
 
-    if (Clk'event and Clk = '1') then
+    if (CLK'event and CLK = '1') then
       if (state = idle) then
-        if (Reset = '1') then
+        if (RESET = '1') then
           state    <= clear;
           ccounter <= (others=>'0');
-        elsif (StartDraw = '1') then
+        elsif (STARTDRAW = '1') then
           myx1(9 downto 0)   <= X1;
           myx1(11 downto 10) <= "00";
           myy1(8 downto 0)   <= Y1;

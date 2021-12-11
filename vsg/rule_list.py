@@ -354,6 +354,7 @@ class rule_list():
                     dTemp = {}
                     dTemp['rule'] = oRule.unique_id
                     dTemp['linenumber'] = oViolation.get_line_number()
+                    dTemp['severity'] = oRule.severity.name
                     dTemp['solution'] = oViolation.get_solution()
                     dReturn['violations'].append(dTemp)
         return dReturn
