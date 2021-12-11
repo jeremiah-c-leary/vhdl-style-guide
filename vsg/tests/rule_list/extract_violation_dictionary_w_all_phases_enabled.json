@@ -298,37 +298,44 @@
         {
          "rule": "case_200",
          "linenumber": 505,
+         "severity": "Error",
          "solution": "Insert blank line below"
         },
         {
          "rule": "case_200",
          "linenumber": 513,
+         "severity": "Error",
          "solution": "Insert blank line below"
         },
         {
          "rule": "case_200",
          "linenumber": 521,
+         "severity": "Error",
          "solution": "Insert blank line below"
         },
         {
          "rule": "case_200",
          "linenumber": 530,
+         "severity": "Error",
          "solution": "Insert blank line below"
         },
         {
          "rule": "case_200",
          "linenumber": 538,
+         "severity": "Error",
          "solution": "Insert blank line below"
         },
         {
          "rule": "case_200",
          "linenumber": 555,
+         "severity": "Error",
          "solution": "Insert blank line below"
         },
         {
          "rule": "case_200",
          "linenumber": 571,
-          "solution": "Insert blank line below"
+         "severity": "Error",
+         "solution": "Insert blank line below"
         },
         {
           "rule": "comment_010",
