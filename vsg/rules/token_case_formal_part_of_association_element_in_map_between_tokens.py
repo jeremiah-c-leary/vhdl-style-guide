@@ -4,6 +4,7 @@ from vsg import parser
 from vsg import rule
 from vsg import token
 from vsg import violation
+from vsg.rules import case_utils
 
 
 class token_case_formal_part_of_association_element_in_map_between_tokens(rule.Rule):
@@ -29,6 +30,8 @@ class token_case_formal_part_of_association_element_in_map_between_tokens(rule.R
         self.phase = 6
         self.case = 'lower'
         self.configuration.append('case')
+        self.prefix_exceptions = []
+        self.suffix_exceptions = []
         if sMapType == 'port':
             self.oMapStart = token.port_map_aspect.open_parenthesis
             self.oMapEnd = token.port_map_aspect.close_parenthesis
@@ -42,6 +45,8 @@ class token_case_formal_part_of_association_element_in_map_between_tokens(rule.R
         return oFile.get_tokens_bounded_by(self.oStart, self.oEnd)
 
     def _analyze(self, lToi):
+        check_prefix = case_utils.is_exception_enabled(self.prefix_exceptions)
+        check_suffix = case_utils.is_exception_enabled(self.suffix_exceptions)
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             bMapFound = False
@@ -59,22 +64,14 @@ class token_case_formal_part_of_association_element_in_map_between_tokens(rule.R
 
                 if isinstance(oToken, token.association_element.formal_part) and not bFormalFound and bMapFound:
                     bFormalFound = True
-                    sObjectValue = oToken.get_value()
-                    if self.case == 'lower':
-                        if not sObjectValue.islower():
-                            sSolution = 'Change "' + sObjectValue + '" to "' + sObjectValue.lower() + '"'
-                            self.add_violation(violation.New(iLine, oToi.extract_tokens(iToken, iToken), sSolution))
-                    if self.case == 'upper':
-                        if not sObjectValue.isupper():
-                            sSolution = 'Change "' + sObjectValue + '" to "' + sObjectValue.upper() + '"'
-                            self.add_violation(violation.New(iLine, oToi.extract_tokens(iToken, iToken), sSolution))
+                    oViolation = case_utils.check_for_case_violation(oToi, self, check_prefix, check_suffix, iToken, iLine)
+                    if oViolation is not None:
+                        self.add_violation(oViolation)
                 if isinstance(oToken, token.association_element.assignment):
                     bFormalFound = False
 
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
-        if self.case == 'lower':
-            lTokens[0].set_value(lTokens[0].get_value().lower())
-        if self.case == 'upper':
-            lTokens[0].set_value(lTokens[0].get_value().upper())
+        dAction = oViolation.get_action()
+        lTokens[dAction['index']].set_value(dAction['value'])
         oViolation.set_tokens(lTokens)

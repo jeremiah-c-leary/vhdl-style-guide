@@ -260,7 +260,7 @@ begin
   --  DATA INPUTS
   --=============================================================================================
   -- connect rx bit input
-  rx_bit_next <= spi_mosi_i;
+  rx_bit_next <= SPI_MOSI_I;
 
   --=============================================================================================
   --  CROSS-CLOCK PIPELINE TRANSFER LOGIC
@@ -268,12 +268,12 @@ begin
   -- do_valid_o and di_req_o strobe output logic
   -- this is a delayed pulse generator with a ripple-transfer FFD pipeline, that generates a
   -- fixed-length delayed pulse for the output flags, at the parallel clock domain
-  OUT_TRANSFER_PROC : process (clk_i, do_transfer_reg, di_req_reg,
+  OUT_TRANSFER_PROC : process (CLK_I, do_transfer_reg, di_req_reg,
                                do_valid_a, do_valid_b, do_valid_d,
                                di_req_o_a, di_req_o_b, di_req_o_d) is
   begin
 
-    if (clk_i'event and clk_i = '1') then                     -- clock at parallel port clock
+    if (CLK_I'event and CLK_I = '1') then                     -- clock at parallel port clock
       -- do_transfer_reg -> do_valid_o_reg
       do_valid_a     <= do_transfer_reg;                      -- the input signal must be at least 2 clocks long
       do_valid_b     <= do_valid_a;                           -- feed it to a ripple chain of FFDs
@@ -296,19 +296,19 @@ begin
   end process OUT_TRANSFER_PROC;
 
   -- parallel load input registers: data register and write enable
-  IN_TRANSFER_PROC : process (clk_i, wren_i, wr_ack_reg) is
+  IN_TRANSFER_PROC : process (CLK_I, WREN_I, wr_ack_reg) is
   begin
 
     -- registered data input, input register with clock enable
-    if (clk_i'event and clk_i = '1') then
-      if (wren_i = '1') then
-        di_reg <= di_i;                                     -- parallel data input buffer register
+    if (CLK_I'event and CLK_I = '1') then
+      if (WREN_I = '1') then
+        di_reg <= DI_I;                                     -- parallel data input buffer register
       end if;
     end if;
 
     -- stretch wren pulse to be detected by spi fsm (ffd with sync preset and sync reset)
-    if (clk_i'event and clk_i = '1') then
-      if (wren_i = '1') then                                -- wren_i is the sync preset for wren
+    if (CLK_I'event and CLK_I = '1') then
+      if (WREN_I = '1') then                                -- wren_i is the sync preset for wren
         wren <= '1';
       elsif (wr_ack_reg = '1') then                         -- wr_ack is the sync reset for wren
         wren <= '0';
@@ -321,20 +321,20 @@ begin
   --  REGISTER TRANSFER PROCESSES
   --=============================================================================================
   -- fsm state and data registers change on spi SHIFT_EDGE
-  CORE_REG_PROC : process (spi_sck_i, spi_ssel_i) is
+  CORE_REG_PROC : process (SPI_SCK_I, SPI_SSEL_I) is
   begin
 
     -- FFD registers clocked on SHIFT edge and cleared on idle (spi_ssel_i = 1)
     -- state fsm register (fdr)
-    if (spi_ssel_i = '1') then                                     -- async clr
+    if (SPI_SSEL_I = '1') then                                     -- async clr
       state_reg <= 0;                                              -- state falls back to idle when slave not selected
-    elsif (spi_sck_i'event and spi_sck_i = shift_edge) then        -- on SHIFT edge, update state register
+    elsif (SPI_SCK_I'event and SPI_SCK_I = shift_edge) then        -- on SHIFT edge, update state register
       state_reg <= state_next;                                     -- core fsm changes state with spi SHIFT clock
     end if;
 
     -- FFD registers clocked on SHIFT edge
     -- rtl core registers (fd)
-    if (spi_sck_i'event and spi_sck_i = shift_edge) then           -- on fsm state change, update all core registers
+    if (SPI_SCK_I'event and SPI_SCK_I = shift_edge) then           -- on fsm state change, update all core registers
       sh_reg          <= sh_next;                                  -- core shift register
       do_buffer_reg   <= do_buffer_next;                           -- registered data output
       do_transfer_reg <= do_transfer_next;                         -- cross-clock transfer flag
@@ -344,15 +344,15 @@ begin
 
     -- FFD registers clocked on CHANGE edge and cleared on idle (spi_ssel_i = 1)
     -- miso MUX preload control register (fdp)
-    if (spi_ssel_i = '1') then                                     -- async preset
+    if (SPI_SSEL_I = '1') then                                     -- async preset
       preload_miso <= '1';                                         -- miso MUX sees top bit of parallel input when slave not selected
-    elsif (spi_sck_i'event and spi_sck_i = change_edge) then       -- on CHANGE edge, change to tx_reg output
-      preload_miso <= spi_ssel_i;                                  -- miso MUX sees tx_bit_reg when it is driven by SCK
+    elsif (SPI_SCK_I'event and SPI_SCK_I = change_edge) then       -- on CHANGE edge, change to tx_reg output
+      preload_miso <= SPI_SSEL_I;                                  -- miso MUX sees tx_bit_reg when it is driven by SCK
     end if;
 
     -- FFD registers clocked on CHANGE edge
     -- tx_bit register (fd)
-    if (spi_sck_i'event and spi_sck_i = change_edge) then
+    if (SPI_SCK_I'event and SPI_SCK_I = change_edge) then
       tx_bit_reg <= tx_bit_next;                                   -- update MISO driver from the MSb
     end if;
 
@@ -447,10 +447,10 @@ begin
   --  OUTPUT LOGIC PROCESSES
   --=============================================================================================
   -- data output processes
-  do_o       <= do_buffer_reg;                          -- do_o always available
-  do_valid_o <= do_valid_o_reg;                         -- copy registered do_valid_o to output
-  di_req_o   <= di_req_o_reg;                           -- copy registered di_req_o to output
-  wr_ack_o   <= wr_ack_reg;                             -- copy registered wr_ack_o to output
+  DO_O       <= do_buffer_reg;                          -- do_o always available
+  DO_VALID_O <= do_valid_o_reg;                         -- copy registered do_valid_o to output
+  DI_REQ_O   <= di_req_o_reg;                           -- copy registered di_req_o to output
+  WR_ACK_O   <= wr_ack_reg;                             -- copy registered wr_ack_o to output
 
   -----------------------------------------------------------------------------------------------
   -- MISO driver process: preload top bit of parallel data to MOSI at reset
@@ -461,9 +461,9 @@ begin
   begin
 
     if (preload_miso = '1') then
-      spi_miso_o <= di_reg(N - 1);                                  -- copy top bit of parallel data at reset
+      SPI_MISO_O <= di_reg(N - 1);                                  -- copy top bit of parallel data at reset
     else
-      spi_miso_o <= tx_bit_reg;                                     -- copy top bit of shifter at sequential operation
+      SPI_MISO_O <= tx_bit_reg;                                     -- copy top bit of shifter at sequential operation
     end if;
 
   end process SPI_MISO_O_PROC;
@@ -472,11 +472,11 @@ begin
   --  DEBUG LOGIC PROCESSES
   --=============================================================================================
   -- these signals are useful for verification, and can be deleted after debug.
-  do_transfer_o <= do_transfer_reg;
-  state_dbg_o   <= std_logic_vector(to_unsigned(state_reg, 4)); -- export internal state to debug
-  rx_bit_next_o <= rx_bit_next;
-  wren_o        <= wren;
-  sh_reg_dbg_o  <= sh_reg;                                      -- export sh_reg to debug
+  DO_TRANSFER_O <= do_transfer_reg;
+  STATE_DBG_O   <= std_logic_vector(to_unsigned(state_reg, 4)); -- export internal state to debug
+  RX_BIT_NEXT_O <= rx_bit_next;
+  WREN_O        <= wren;
+  SH_REG_DBG_O  <= sh_reg;                                      -- export sh_reg to debug
 
 end architecture RTL;
 

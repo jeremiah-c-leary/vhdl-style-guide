@@ -138,9 +138,9 @@ begin
       OUTX        => adx,
       OUTY        => ady,
       OUTCOLOR    => data,
-      INCOLOR     => inColor,
+      INCOLOR     => INCOLOR,
       BUFFERWRITE => bufferwrite,
-      CLK         => Clk
+      CLK         => CLK
     );
 
   INS_SYNCHRONIZER : SYNCHRONIZER
@@ -150,7 +150,7 @@ begin
       B        => bt,
       HS       => HS,
       VS       => VS,
-      CLK      => Clk,
+      CLK      => CLK,
       DATAIN   => data,
       ADDRESSX => adx,
       ADDRESSY => ady
@@ -158,8 +158,8 @@ begin
 
   INST_DEBOUNCER : DEBOUNCER
     port map (
-      CLK    => Clk,
-      BUTTON => Button,
+      CLK    => CLK,
+      BUTTON => BUTTON,
       DOUT   => dout
     );
 
@@ -172,9 +172,9 @@ begin
       Y1          => y1,
       X2          => x2,
       Y2          => y2,
-      CLK         => Clk,
+      CLK         => CLK,
       SS          => ss,
-      RESET       => reset,
+      RESET       => RESET,
       STARTDRAW   => dout
     );
 
@@ -191,9 +191,9 @@ begin
 
   INST_SEVENSEGMENT : SEVENSEGMENT
     port map (
-      CLK               => Clk,
-      ENABLES           => Enables,
-      SEGMENTS          => Segments,
+      CLK               => CLK,
+      ENABLES           => ENABLES,
+      SEGMENTS          => SEGMENTS,
       DATA(3 downto 0)  => ss,
       DATA(15 downto 4) => "000000000000"
     );
@@ -204,11 +204,11 @@ begin
       INITY => "011110000"
     )
     port map (
-      MOVEUP    => MoveUp,
-      MOVEDOWN  => MoveDown,
-      MOVELEFT  => MoveLeft,
-      MOVERIGHT => MoveRight,
-      MOVE      => MoveP1,
+      MOVEUP    => MOVEUP,
+      MOVEDOWN  => MOVEDOWN,
+      MOVELEFT  => MOVELEFT,
+      MOVERIGHT => MOVERIGHT,
+      MOVE      => MOVEP1,
       CLK       => clk2,
       HERE      => p1region,
       X         => x1,
@@ -219,7 +219,7 @@ begin
 
   INST_FREQDIV : FREQDIV
     port map (
-      CLK  => Clk,
+      CLK  => CLK,
       CLK2 => clk2
     );
 
@@ -229,11 +229,11 @@ begin
       INITY => "011110000"
     )
     port map (
-      MOVEUP    => MoveUp,
-      MOVEDOWN  => MoveDown,
-      MOVELEFT  => MoveLeft,
-      MOVERIGHT => MoveRight,
-      MOVE      => MoveP2,
+      MOVEUP    => MOVEUP,
+      MOVEDOWN  => MOVEDOWN,
+      MOVELEFT  => MOVELEFT,
+      MOVERIGHT => MOVERIGHT,
+      MOVE      => MOVEP2,
       CLK       => clk2,
       HERE      => p2region,
       X         => x2,

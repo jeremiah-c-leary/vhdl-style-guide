@@ -24,7 +24,7 @@ This format is the most verbose of all output formats.
 
 Here is a sample output:
 
-.. code-block:: mono
+.. code-block:: text
 
    ================================================================================
    File:  design_fixed/BufFifo/BUF_FIFO.vhd
@@ -64,7 +64,7 @@ Using the syntastic format allows editors with understand that standard to use t
 
 Below is the output format definition:
 
-.. code-block:: mono
+.. code-block:: text
 
    <status>: <filename>(<line_number>)<rule> -- <solution>
 
@@ -87,7 +87,7 @@ Where:
 
 Here is a sample output using the **syntastic** option:
 
-.. code-block:: mono
+.. code-block:: text
 
    ERROR: design_fixed/mdct/DBUFCTL.VHD(38)entity_017 -- Move : -1 columns
    ERROR: design_fixed/mdct/DBUFCTL.VHD(59)process_035 -- Move 13 columns
@@ -103,7 +103,7 @@ Individual rule violations will not be displayed.
 
 Below is the output format definition:
 
-.. code-block:: mono
+.. code-block:: text
 
     File: <filename> <status> (<num_rules> rules checked) [<severity>: <num_severity>] ...
 
@@ -128,7 +128,7 @@ Where:
 
 Here is a sample output using the **summary** option:
 
-.. code-block:: mono
+.. code-block:: text
 
    File: design/top/JpegEnc.vhd ERROR (83 rules checked) [Error: 23] [Warning: 0]
    File: design/BufFifo/SUB_RAMZ.VHD OK (329 rules checked) [Error: 0] [Warning: 0]

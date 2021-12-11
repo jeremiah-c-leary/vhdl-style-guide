@@ -63,13 +63,14 @@ def detect(iToken, lObjects):
     iReturn = loop_statement.detect(iToken, lObjects)
     if iReturn != iToken:
         return iReturn
-#    print('--> checking signal_assignment')
-    iReturn = signal_assignment_statement.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
 
 #    print('--> checking variable_assignment')
     iReturn = variable_assignment_statement.detect(iToken, lObjects)
+    if iReturn != iToken:
+        return iReturn
+
+#    print('--> checking signal_assignment')
+    iReturn = signal_assignment_statement.detect(iToken, lObjects)
     if iReturn != iToken:
         return iReturn
 

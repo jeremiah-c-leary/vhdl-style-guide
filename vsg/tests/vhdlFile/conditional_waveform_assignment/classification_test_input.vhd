@@ -1,6 +1,13 @@
 
 architecture RTL of ENTITY_NAME is
 
+  function func1 return integer is
+  begin
+    hpp := '1'  when (pf_vlan2x_tci(3 downto 0) >= x"A" and pf_vlan2x_tci(3 downto 0) <= x"F") else '0';
+    hpp := '1' when a >= b and x <= y else '0';
+    other_target <= '0' when x <= y;
+  end function;
+
 begin
 
   process

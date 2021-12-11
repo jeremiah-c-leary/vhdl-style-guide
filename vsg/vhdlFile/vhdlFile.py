@@ -218,8 +218,8 @@ class vhdlFile():
     def get_line_which_includes_tokens(self, lTokens):
         return extract.get_line_which_includes_tokens(lTokens, self.lAllObjects, self.oTokenMap)
 
-    def get_if_statement_conditions(self):
-        return extract.get_if_statement_conditions(self.lAllObjects, self.oTokenMap)
+    def get_if_statement_conditions(self, fRemoveWhitespace=True):
+        return extract.get_if_statement_conditions(self.lAllObjects, self.oTokenMap, fRemoveWhitespace)
 
     def get_n_tokens_before_and_after_tokens(self, iToken, lTokens):
         return extract.get_n_tokens_before_and_after_tokens(iToken, lTokens, self.lAllObjects, self.oTokenMap)

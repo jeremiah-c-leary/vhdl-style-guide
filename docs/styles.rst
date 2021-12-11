@@ -104,6 +104,6 @@ Create a configuration with the following:
 
 Then use the style and configuration together:
 
-.. code-block:: mono
+.. code-block:: text
 
    $ vsg --style jcl --configuration my_config.yaml -f fifo.vhd

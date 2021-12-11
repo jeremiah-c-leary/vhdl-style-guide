@@ -352,7 +352,6 @@ Rules Enforcing Keyword Alignment
 * `process_033 <process_rules.html#process-033>`_
 * `process_034 <process_rules.html#process-034>`_
 * `process_035 <process_rules.html#process-035>`_
-* `sequential_005 <sequential_rules.html#sequential-005>`_
+* `process_400 <process_rules.html#process-400>`_
 * `subprogram_body_400 <subprogram_body_rules.html#subprogram_body-400>`_
 * `type_400 <type_rules.html#type-400>`_
-* `variable_assignment_005 <variable_assignment_rules.html#variable_assignment-005>`_

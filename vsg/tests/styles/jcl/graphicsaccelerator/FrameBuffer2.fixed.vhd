@@ -41,16 +41,16 @@ architecture BEHAVIORAL of FRAMEBUFFER is
 
 begin
 
-  addresswrite <= inX(9 downto 2) & inY(8 downto 2);
-  addressread  <= outX(9 downto 2) & outY(8 downto 2);
-  outColor     <= temp;
+  addresswrite <= INX(9 downto 2) & INY(8 downto 2);
+  addressread  <= OUTX(9 downto 2) & OUTY(8 downto 2);
+  OUTCOLOR     <= temp;
 
-  process (clk) is
+  process (CLK) is
   begin
 
-    if (Clk'event and Clk = '1') then
-      if (BufferWrite = '1') then
-        mybuffer(conv_integer(addresswrite)) <= inColor;
+    if (CLK'event and CLK = '1') then
+      if (BUFFERWRITE = '1') then
+        mybuffer(conv_integer(addresswrite)) <= INCOLOR;
       end if;
       temp <= mybuffer(conv_integer(addressread));
     end if;

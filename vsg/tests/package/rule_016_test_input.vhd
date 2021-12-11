@@ -1,9 +1,9 @@
 
 package fifo_pkg is
 
-end package;
+end package fifo_pkg;
 
 package fifo is
 
-end package;
+end package fifo;
 

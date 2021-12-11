@@ -5,6 +5,7 @@ from vsg.rules import token_suffix
 
 lTokens = []
 lTokens.append(token.package_declaration.identifier)
+lTokens.append(token.package_declaration.end_package_simple_name)
 
 
 class rule_016(token_suffix):

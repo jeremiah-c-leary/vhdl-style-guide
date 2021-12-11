@@ -39,7 +39,7 @@ class token_indent(rule.Rule):
                 create_zero_indent_violation(self, oToi)
             elif indent_exists_but_is_incorrect(self, lTokens):
                 create_indent_violation(self, oToi, lTokens)
-            elif no_indent_exists_but_should(lTokens):
+            elif no_indent_exists_but_should(self, lTokens):
                 create_no_indent_violation(self, oToi, lTokens)
 
     def _fix_violation(self, oViolation):
@@ -81,12 +81,17 @@ def create_indent_violation(self, oToi, lTokens):
     create_violation(self, oToi, sSolution, 'adjust_whitespace')
 
 
-def no_indent_exists_but_should(lTokens):
-    if len(lTokens) == 1:
-        if lTokens[0].get_indent() is None:
-            return False
-        if lTokens[0].get_indent() != 0:
-            return True
+def no_indent_exists_but_should(self, lTokens):
+    if not len(lTokens) == 1:
+        return False
+
+    if lTokens[0].get_indent() is None:
+        return False
+    if self.indentSize == 0:
+        return False
+    if lTokens[0].get_indent() != 0:
+        return True
+
     return False
 
 
@@ -99,4 +104,3 @@ def create_violation(self, oToi, sSolution, sAction):
     oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
     oViolation.set_action(sAction)
     self.add_violation(oViolation)
-
