@@ -317,5 +317,4 @@ def is_case_keyword(config, iIndex, lTokens):
     return False
 
 def get_tokens_of_interest(self, oFile):
-#    return oFile.get_tokens_bounded_by(self.left_token, self.right_token)
     return oFile.get_tokens_bounded_by_unless_between(self.left_token, self.right_token, self.lUnless)

@@ -6,7 +6,6 @@ from vsg.vhdlFile.extract import tokens
 
 def get_tokens_bounded_by_unless_between(oStart, oEnd, lUnless, lAllObjects, oTokenMap, include_trailing_whitespace=False, bExcludeLastToken=False, bIncludeTillEndOfLine=False, bIncludeTillBeginningOfLine=False):
 
-#    oTokenMap.pretty_print()
     lReturn = []
 
     lStart, lEnd = oTokenMap.get_token_pair_indexes(oStart, oEnd)
@@ -38,7 +37,7 @@ def get_tokens_bounded_by_unless_between(oStart, oEnd, lUnless, lAllObjects, oTo
     if include_trailing_whitespace:
         for iNewEnd, iIndex in enumerate(lNewEnd):
             if iIndex + 1 in lWhiteSpace:
-                lNewEnd[iNewEnd] +=1
+                lNewEnd[iNewEnd] += 1
     elif not bIncludeTillEndOfLine:
         for iNewEnd, iIndex in enumerate(lNewEnd):
             if iIndex in lWhiteSpace:
@@ -73,7 +72,7 @@ def filter_token_pairs(lStart, lEnd, lUnlessStart, lUnlessEnd):
         for iUnlessStart, iUnlessEnd in zip(lUnlessStart, lUnlessEnd):
             if iUnlessStart < iStart < iUnlessEnd and \
                iUnlessStart < iEnd < iUnlessEnd:
-                   break;
+                break
         else:
             lReturnStart.append(iStart)
             lReturnEnd.append(iEnd)

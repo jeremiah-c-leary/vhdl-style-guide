@@ -14,6 +14,7 @@ oEndToken = token.subprogram_body.begin_keyword
 lUnless = []
 lUnless.append([token.function_specification.function_keyword, token.subprogram_body.semicolon])
 
+
 class rule_401(align_tokens_in_region_between_tokens_unless_between_tokens):
     '''
     Procedure rule 401 checks the colons are in the same column for all declarations
