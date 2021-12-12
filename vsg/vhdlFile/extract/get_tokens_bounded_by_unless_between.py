@@ -69,11 +69,15 @@ def filter_token_pairs(lStart, lEnd, lUnlessStart, lUnlessEnd):
     lReturnStart = []
     lReturnEnd = []
     for iStart, iEnd in zip(lStart, lEnd):
-        for iUnlessStart, iUnlessEnd in zip(lUnlessStart, lUnlessEnd):
-            if iUnlessStart < iStart < iUnlessEnd and \
-               iUnlessStart < iEnd < iUnlessEnd:
-                break
-        else:
+        if not indexes_between_indexes(iStart, iEnd, lUnlessStart, lUnlessEnd):
             lReturnStart.append(iStart)
             lReturnEnd.append(iEnd)
     return lReturnStart, lReturnEnd
+
+
+def indexes_between_indexes(iStart, iEnd, lUnlessStart, lUnlessEnd):
+    for iUnlessStart, iUnlessEnd in zip(lUnlessStart, lUnlessEnd):
+        if iUnlessStart < iStart < iUnlessEnd and \
+           iUnlessStart < iEnd < iUnlessEnd:
+            return True
+    return False
