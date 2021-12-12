@@ -45,38 +45,74 @@ class insert_token_left_of_token_if_it_does_not_exist_between_tokens_using_value
         self.configuration.append('action')
 
     def _get_tokens_of_interest(self, oFile):
-        if self.action == 'add':
-            return oFile.get_tokens_between_tokens_inclusive_while_storing_value_from_token(self.left_token, self.right_token, self.value_token)
-        else:
+        if remove_keyword(self):
             return oFile.get_token_and_n_tokens_before_it([self.insert_token], 1)
+        else:
+            return oFile.get_tokens_between_tokens_inclusive_while_storing_value_from_token(self.left_token, self.right_token, self.value_token)
 
     def _analyze(self, lToi):
-        if self.action == 'remove':
-            for oToi in lToi:
-                sSolution = self.action.capitalize() + ' ' + self.solution
-                self.add_violation(violation.New(oToi.get_line_number(), oToi, sSolution))
-            return
-
-        for oToi in lToi:
-            iLine, lTokens = utils.get_toi_parameters(oToi)
-            bFound = False
-            for oToken in lTokens:
-               iLine = utils.increment_line_number(iLine, oToken)
-               if isinstance(oToken, self.insert_token):
-                   bFound = True
-                   break
-            if not bFound:
-                sSolution = self.action.capitalize() + ' ' + self.solution
-                self.add_violation(violation.New(iLine, oToi, sSolution))
+        if remove_keyword(self):
+            analyze_for_existence_of_optional_keyword(lToi, self)
+        else:
+            analyze_for_missing_optional_keyword(lToi, self)
 
     def _fix_violation(self, oViolation):
-        lTokens = oViolation.get_tokens()
-        if self.action == 'remove':
-            rules_utils.remove_optional_item(lTokens, oViolation, self.insert_token)
+        if remove_keyword(self):
+            rules_utils.remove_optional_item(oViolation, self.insert_token)
         else:
-            if oViolation.get_token_value() is not None:
-                for iIndex in range(0, len(lTokens)):
-                    if isinstance(lTokens[iIndex], self.anchor_token):
-                        rules_utils.insert_token(lTokens, iIndex, self.insert_token(oViolation.get_token_value()))
-                        rules_utils.insert_whitespace(lTokens, iIndex)
-                oViolation.set_tokens(lTokens)
+            add_optional_item(oViolation, self)
+
+
+def remove_keyword(self):
+    if self.action == 'remove':
+        return True
+    return False
+
+
+def analyze_for_existence_of_optional_keyword(lToi, self):
+    for oToi in lToi:
+        oViolation = create_violation(oToi, oToi.get_line_number(), self)
+        self.add_violation(oViolation)
+
+
+def analyze_for_missing_optional_keyword(lToi, self):
+    for oToi in lToi:
+        iLine, lTokens = utils.get_toi_parameters(oToi)
+        if not optional_keyword_exists(self.insert_token, lTokens):
+            iLine += rules_utils.get_number_of_carriage_returns_before_token(self.anchor_token, lTokens)
+            oViolation = create_violation(oToi, iLine, self)
+            self.add_violation(oViolation)
+
+
+def optional_keyword_exists(oToken, lTokens):
+    if rules_utils.get_index_of_token_in_list(oToken, lTokens) is None:
+        return False
+    return True
+
+
+def add_optional_item(oViolation, self):
+    lTokens = oViolation.get_tokens()
+    if not token_value_available(oViolation):
+        return
+
+    if not optional_keyword_exists(self.anchor_token, lTokens):
+        return
+
+    iIndex = rules_utils.get_index_of_token_in_list(self.anchor_token, lTokens)
+
+    rules_utils.insert_token(lTokens, iIndex, self.insert_token(oViolation.get_token_value()))
+    if not rules_utils.whitespace_before_token_index(lTokens, iIndex):
+        rules_utils.insert_whitespace(lTokens, iIndex)
+    oViolation.set_tokens(lTokens)
+
+
+def token_value_available(oViolation):
+    if oViolation.get_token_value() is not None:
+        return True
+    return False
+
+
+def create_violation(oToi, iLineNumber, self):
+    sSolution = self.action.capitalize() + ' ' + self.solution
+    oViolation = violation.New(iLineNumber, oToi, sSolution)
+    return oViolation

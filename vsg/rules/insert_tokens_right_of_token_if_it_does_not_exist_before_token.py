@@ -73,9 +73,14 @@ class insert_tokens_right_of_token_if_it_does_not_exist_before_token(rule.Rule):
         if self.action == 'add':
             lNewTokens = []
             lNewTokens.append(lTokens[0])
-            lNewTokens.append(parser.whitespace(' '))
-            lNewTokens.extend(self.insert_tokens)
-            lNewTokens.extend(lTokens[1:])
+            if isinstance(lTokens[1], parser.whitespace) and isinstance(lTokens[2], parser.semicolon):
+                lNewTokens.append(lTokens[1])
+                lNewTokens.extend(self.insert_tokens)
+                lNewTokens.extend(lTokens[2:])
+            else:
+                lNewTokens.append(parser.whitespace(' '))
+                lNewTokens.extend(self.insert_tokens)
+                lNewTokens.extend(lTokens[1:])
         else:
             dAction = oViolation.get_action()
             lNewTokens = lTokens[:dAction['iStartIndex']]

@@ -41,10 +41,10 @@ class insert_token_left_of_token_if_it_does_not_exist_between_tokens(rule.Rule):
         self.configuration.append('action')
 
     def _get_tokens_of_interest(self, oFile):
-        if self.action == 'add':
-            return oFile.get_tokens_bounded_by(self.start_token, self.end_token)
-        else:
+        if self.action == 'remove':
             return oFile.get_token_and_n_tokens_before_it([self.insert_token], 1)
+        else:
+            return oFile.get_tokens_bounded_by(self.start_token, self.end_token)
 
     def _analyze(self, lToi):
         if self.action == 'remove':
@@ -60,7 +60,7 @@ class insert_token_left_of_token_if_it_does_not_exist_between_tokens(rule.Rule):
                 if isinstance(oToken, type(self.insert_token)):
                     break
                 if isinstance(oToken, self.anchor_token):
-                    dAction['index'] = iToken - 1
+                    dAction['index'] = iToken
             else:
                 if dAction == {}:
                     continue
@@ -70,11 +70,11 @@ class insert_token_left_of_token_if_it_does_not_exist_between_tokens(rule.Rule):
                 self.add_violation(oViolation)
 
     def _fix_violation(self, oViolation):
-        lTokens = oViolation.get_tokens()
         if self.action == 'remove':
-            rules_utils.remove_optional_item(lTokens, oViolation, self.insert_token)
+            rules_utils.remove_optional_item(oViolation, self.insert_token)
         else:
+            lTokens = oViolation.get_tokens()
             dAction = oViolation.get_action()
             rules_utils.insert_token(lTokens, dAction['index'], self.insert_token)
-            rules_utils.insert_whitespace(lTokens, dAction['index'])
+            rules_utils.insert_whitespace(lTokens, dAction['index'] + 1)
             oViolation.set_tokens(lTokens)
