@@ -17,6 +17,8 @@ architecture RTL of FIFO is
   begin
   END procedure proc_name;
 
+  function func1 return integer is begin End function func1;
+
 begin
 
 end architecture RTL;

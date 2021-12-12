@@ -61,7 +61,7 @@ class align_tokens_in_region_between_tokens_unless_between_tokens(rule.Rule):
         self.configuration.append('loop_control_statements_ends_group')
 
     def analyze(self, oFile):
-        lToi = oFile.get_tokens_bounded_by(self.left_token, self.right_token)
+        lToi = get_tokens_of_interest(self, oFile)
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             iLine = oToi.get_line_number()
@@ -316,3 +316,5 @@ def is_case_keyword(config, iIndex, lTokens):
            return True
     return False
 
+def get_tokens_of_interest(self, oFile):
+    return oFile.get_tokens_bounded_by_unless_between(self.left_token, self.right_token, self.lUnless)

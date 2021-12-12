@@ -13,6 +13,7 @@ lAlign.append(token.subtype_declaration.identifier)
 lAlign.append(token.variable_declaration.identifier)
 
 lUnless = []
+lUnless.append([token.procedure_specification.procedure_keyword, token.subprogram_body.semicolon])
 
 
 class rule_015(align_tokens_in_region_between_tokens_unless_between_tokens):

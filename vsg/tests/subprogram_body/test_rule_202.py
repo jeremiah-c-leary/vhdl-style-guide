@@ -2,38 +2,38 @@
 import os
 import unittest
 
-from vsg.rules import procedure
+from vsg.rules import subprogram_body
 from vsg import vhdlFile
 from vsg.tests import utils
 
 sTestDir = os.path.dirname(__file__)
 
-lFile, eError =vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_204_test_input.vhd'))
+lFile, eError =vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_202_test_input.vhd'))
 
 lExpected = []
 lExpected.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_204_test_input.fixed.vhd'), lExpected, False)
+utils.read_file(os.path.join(sTestDir, 'rule_202_test_input.fixed.vhd'), lExpected, False)
 
 
-class test_procedure_rule(unittest.TestCase):
+class test_subprogram_body_rule(unittest.TestCase):
 
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
 
-    def test_rule_204(self):
-        oRule = procedure.rule_204()
+    def test_rule_202(self):
+        oRule = subprogram_body.rule_202()
         self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'procedure')
-        self.assertEqual(oRule.identifier, '204')
+        self.assertEqual(oRule.name, 'subprogram_body')
+        self.assertEqual(oRule.identifier, '202')
 
-        lExpected = [13]
+        lExpected = [47, 55]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
-    def test_fix_rule_204(self):
-        oRule = procedure.rule_204()
+    def test_fix_rule_202(self):
+        oRule = subprogram_body.rule_202()
 
         oRule.fix(self.oFile)
 

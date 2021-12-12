@@ -1,16 +1,9 @@
 
-from vsg.rules import blank_line_above_line_starting_with_token
-
-from vsg import token
-
-lTokens = []
-lTokens.append(token.subprogram_body.end_keyword)
+from vsg.depricated_rule import Depricated
 
 
-class rule_204(blank_line_above_line_starting_with_token):
-    '''
-    Checks for a blank line above the end keyword.
-    '''
+class rule_204(Depricated):
 
     def __init__(self):
-        blank_line_above_line_starting_with_token.__init__(self, 'function', '204', lTokens)
+        Depricated.__init__(self, 'function', '204')
+        self.message.append('Rule ' + self.unique_id + ' has been moved to rule subprogram_body_204.')
