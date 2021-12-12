@@ -90,6 +90,7 @@ Rules Enforcing Blank Lines
 * `case_008 <case_rules.html#case-008>`_
 * `case_009 <case_rules.html#case-009>`_
 * `case_010 <case_rules.html#case-010>`_
+* `case_200 <case_rules.html#case-200>`_
 * `component_018 <component_rules.html#component-018>`_
 * `context_023 <context_rules.html#context-023>`_
 * `context_024 <context_rules.html#context-024>`_
