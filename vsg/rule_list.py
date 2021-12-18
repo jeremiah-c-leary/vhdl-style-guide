@@ -144,7 +144,7 @@ class rule_list():
 
             # Update indents before checking indent
             if phase == 4:
-               self.oVhdlFile.set_token_indent()
+                self.oVhdlFile.set_token_indent()
 
             for subphase in range(0, 5):
                 lRules = self.get_rules_in_phase(phase)
