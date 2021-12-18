@@ -142,7 +142,7 @@ class rule_list():
                     self.oVhdlFile.set_token_indent()
                 continue
 
-            # Update indents before checking indent 
+            # Update indents before checking indent
             if phase == 4:
                self.oVhdlFile.set_token_indent()
 
