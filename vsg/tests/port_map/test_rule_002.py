@@ -29,6 +29,7 @@ class test_port_map_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'port_map')
         self.assertEqual(oRule.identifier, '002')
+        self.assertEqual(oRule.groups, ['case'])
 
         lExpected = [13, 14, 15]
 
