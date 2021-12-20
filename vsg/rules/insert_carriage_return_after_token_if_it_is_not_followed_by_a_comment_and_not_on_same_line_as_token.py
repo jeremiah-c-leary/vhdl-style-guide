@@ -5,11 +5,11 @@ from vsg import rule
 from vsg import violation
 
 from vsg.rules import utils as rules_utils
-
+from vsg.rule_group import structure
 from vsg.vhdlFile import utils
 
 
-class insert_carriage_return_after_token_if_it_is_not_followed_by_a_comment_and_not_on_same_line_as_token(rule.Rule):
+class insert_carriage_return_after_token_if_it_is_not_followed_by_a_comment_and_not_on_same_line_as_token(structure.Rule):
     '''
     Checks function parameters are on their own line except if they are all on the same line.
 
@@ -24,9 +24,7 @@ class insert_carriage_return_after_token_if_it_is_not_followed_by_a_comment_and_
     '''
 
     def __init__(self, name, identifier, token, oSameLineToken):
-        rule.Rule.__init__(self, name=name, identifier=identifier)
-        self.solution = None
-        self.phase = 1
+        structure.Rule.__init__(self, name=name, identifier=identifier)
         self.token = token
         self.oSameLineToken = oSameLineToken
 

@@ -26,6 +26,7 @@ class test_sequential_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'sequential')
         self.assertEqual(oRule.identifier, '006')
+        self.assertEqual(oRule.groups, ['structure'])
 
         lExpected = [19, 21]
 

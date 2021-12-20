@@ -5,11 +5,11 @@ from vsg import rule
 from vsg import violation
 
 from vsg.rules import utils as rules_utils
-
+from vsg.rule_group import structure
 from vsg.vhdlFile import utils
 
 
-class insert_carriage_return_after_token_if_it_is_not_followed_by_a_comment(rule.Rule):
+class insert_carriage_return_after_token_if_it_is_not_followed_by_a_comment(structure.Rule):
     '''
     Checks for a single space between two tokens.
 
@@ -27,19 +27,15 @@ class insert_carriage_return_after_token_if_it_is_not_followed_by_a_comment(rule
     '''
 
     def __init__(self, name, identifier, lTokens):
-        rule.Rule.__init__(self, name=name, identifier=identifier)
-        self.solution = None
-        self.phase = 1
+        structure.Rule.__init__(self, name=name, identifier=identifier)
         self.lTokens = lTokens
 
     def _get_tokens_of_interest(self, oFile):
-#        return oFile.get_tokens_bounded_by(self.token, parser.carriage_return)
         return oFile.get_n_tokens_after_token(2, self.lTokens)
 
     def _analyze(self, lToi):
         for oToi in lToi:
            lTokens = oToi.get_tokens()
-#           print(lTokens)
            if utils.are_next_consecutive_token_types([parser.carriage_return], 1, lTokens):
                continue
            if utils.are_next_consecutive_token_types([parser.whitespace, parser.comment], 1, lTokens):

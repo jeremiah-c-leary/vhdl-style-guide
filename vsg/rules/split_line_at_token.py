@@ -3,10 +3,11 @@ from vsg import rule
 from vsg import parser
 from vsg import violation
 
+from vsg.rule_group import structure
 from vsg.rules import utils as rules_utils
 
 
-class split_line_at_token(rule.Rule):
+class split_line_at_token(structure.Rule):
     '''
     Checks the case for words.
 
@@ -24,9 +25,7 @@ class split_line_at_token(rule.Rule):
     '''
 
     def __init__(self, name, identifier, lTokens):
-        rule.Rule.__init__(self, name=name, identifier=identifier)
-        self.solution = None
-        self.phase = 1
+        structure.Rule.__init__(self, name=name, identifier=identifier)
         self.lTokens = lTokens
 
     def _get_tokens_of_interest(self, oFile):

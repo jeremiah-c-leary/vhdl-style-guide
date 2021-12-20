@@ -26,6 +26,7 @@ class test_context_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'context')
         self.assertEqual(oRule.identifier, '009')
+        self.assertEqual(oRule.groups, ['structure'])
 
         lExpected = [9, 16, 23, 31]
 

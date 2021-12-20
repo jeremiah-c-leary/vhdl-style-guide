@@ -25,6 +25,7 @@ class test_library_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'library')
         self.assertEqual(oRule.identifier, '011')
+        self.assertEqual(oRule.groups, ['structure'])
 
         lExpected = [7, 7, 7, 9, 9, 10]
 

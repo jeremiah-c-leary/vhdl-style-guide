@@ -4,11 +4,11 @@ from vsg import rule
 from vsg import violation
 
 from vsg.rules import utils as rules_utils
-
+from vsg.rule_group import structure
 from vsg.vhdlFile import utils
 
 
-class remove_carriage_returns_between_token_pairs(rule.Rule):
+class remove_carriage_returns_between_token_pairs(structure.Rule):
     '''
     Checks the case for words.
 
@@ -29,7 +29,7 @@ class remove_carriage_returns_between_token_pairs(rule.Rule):
     '''
 
     def __init__(self, name, identifier, lTokens, bInsertSpace=False):
-        rule.Rule.__init__(self, name=name, identifier=identifier)
+        structure.Rule.__init__(self, name=name, identifier=identifier)
         self.solution = None
         self.phase = 1
         self.lTokens = lTokens

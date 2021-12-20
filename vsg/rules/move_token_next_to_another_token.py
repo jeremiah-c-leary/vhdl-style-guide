@@ -5,11 +5,11 @@ from vsg import parser
 from vsg import violation
 
 from vsg.rules import utils as rules_utils
-
+from vsg.rule_group import structure
 from vsg.vhdlFile import utils
 
 
-class move_token_next_to_another_token(rule.Rule):
+class move_token_next_to_another_token(structure.Rule):
     '''
     Moves one token next to another and places a single space between them.
 
@@ -30,9 +30,7 @@ class move_token_next_to_another_token(rule.Rule):
     '''
 
     def __init__(self, name, identifier, anchor_token, token_to_move):
-        rule.Rule.__init__(self, name, identifier)
-        self.solution = None
-        self.phase = 1
+        structure.Rule.__init__(self, name, identifier)
         self.subphase = 2
         self.anchor_token = anchor_token
         self.token_to_move = token_to_move

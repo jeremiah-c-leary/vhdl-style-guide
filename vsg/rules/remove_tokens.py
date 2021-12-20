@@ -2,10 +2,11 @@
 from vsg import rule
 from vsg import violation
 
+from vsg.rule_group import structure
 from vsg.vhdlFile import utils
 
 
-class remove_tokens(rule.Rule):
+class remove_tokens(structure.Rule):
     '''
     Removes a token and duplicate whitespace.
 
@@ -24,7 +25,7 @@ class remove_tokens(rule.Rule):
     '''
 
     def __init__(self, name, identifier, lTokens):
-        rule.Rule.__init__(self, name=name, identifier=identifier)
+        structure.Rule.__init__(self, name=name, identifier=identifier)
         self.solution = None
         self.phase = 1
         self.lTokens = lTokens

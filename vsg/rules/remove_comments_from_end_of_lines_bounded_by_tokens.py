@@ -3,8 +3,10 @@ from vsg import parser
 from vsg import rule
 from vsg import violation
 
+from vsg.rule_group import structure
 
-class remove_comments_from_end_of_lines_bounded_by_tokens(rule.Rule):
+
+class remove_comments_from_end_of_lines_bounded_by_tokens(structure.Rule):
     '''
     Checks the case for words.
 
@@ -25,9 +27,7 @@ class remove_comments_from_end_of_lines_bounded_by_tokens(rule.Rule):
     '''
 
     def __init__(self, name, identifier, oStart, oEnd):
-        rule.Rule.__init__(self, name=name, identifier=identifier)
-        self.solution = None
-        self.phase = 1
+        structure.Rule.__init__(self, name=name, identifier=identifier)
         self.oStart = oStart
         self.oEnd = oEnd
 

@@ -26,6 +26,7 @@ class test_procedure_call_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'procedure_call')
         self.assertEqual(oRule.identifier, '001')
+        self.assertEqual(oRule.groups, ['structure'])
 
         lExpected = [13]
 

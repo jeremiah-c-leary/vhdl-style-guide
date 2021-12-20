@@ -4,12 +4,13 @@ from vsg import parser
 from vsg import rule
 from vsg import violation
 
+from vsg.rule_group import structure
 from vsg.rules import utils as rules_utils
 
 from vsg.vhdlFile import utils
 
 
-class split_line_at_token_if_on_same_line_as_token_if_token_pair_are_not_on_the_same_line(rule.Rule):
+class split_line_at_token_if_on_same_line_as_token_if_token_pair_are_not_on_the_same_line(structure.Rule):
     '''
     Checks the case for words.
 
@@ -33,7 +34,7 @@ class split_line_at_token_if_on_same_line_as_token_if_token_pair_are_not_on_the_
     '''
 
     def __init__(self, name, identifier, oToken, oSameLineToken, lTokenPair):
-        rule.Rule.__init__(self, name=name, identifier=identifier)
+        structure.Rule.__init__(self, name=name, identifier=identifier)
         self.solution = None
         self.phase = 1
         self.oToken = oToken
