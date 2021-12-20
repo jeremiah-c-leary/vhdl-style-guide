@@ -4,6 +4,8 @@ from vsg import parser
 from vsg import token
 from vsg import violation
 
+from vsg.rule_group import structure
+
 lTokens = []
 lTokens.append(token.interface_constant_declaration.assignment)
 lTokens.append(token.interface_signal_declaration.assignment)
@@ -11,7 +13,7 @@ lTokens.append(token.interface_variable_declaration.assignment)
 lTokens.append(token.interface_unknown_declaration.assignment)
 
 
-class rule_012(rule.Rule):
+class rule_012(structure.Rule):
     '''
     Checks the case for words.
 
@@ -29,9 +31,8 @@ class rule_012(rule.Rule):
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self, name='port', identifier='012')
+        structure.Rule.__init__(self, name='port', identifier='012')
         self.solution = 'Remove assignment'
-        self.phase = 1
         self.lTokens = lTokens
         self.oStart = token.port_clause.open_parenthesis
         self.oEnd = token.port_clause.close_parenthesis

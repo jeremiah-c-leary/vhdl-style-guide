@@ -5,7 +5,7 @@ from vsg import token
 from vsg import violation
 
 from vsg.rules import utils as rules_utils
-
+from vsg.rule_group import structure
 from vsg.vhdlFile import utils
 
 lTokenPairs = []
@@ -13,7 +13,7 @@ lTokenPairs.append([token.concurrent_simple_signal_assignment.assignment, token.
 lTokenPairs.append([token.concurrent_conditional_signal_assignment.assignment, token.concurrent_conditional_signal_assignment.semicolon])
 
 
-class rule_011(rule.Rule):
+class rule_011(structure.Rule):
     '''
     Checks for proper structure of concurrent assignments.
 
@@ -31,8 +31,7 @@ class rule_011(rule.Rule):
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self, 'concurrent', '011')
-        self.phase = 1
+        structure.Rule.__init__(self, 'concurrent', '011')
         self.lTokenPairs = lTokenPairs
 
         self.new_line_after_assign = 'no'

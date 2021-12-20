@@ -30,6 +30,7 @@ class test_comment_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'comment')
         self.assertEqual(oRule.identifier, '011')
+        self.assertEqual(oRule.groups, ['structure'])
 
         lExpected = [5, 12, 13, 14, 16, 17, 18, 19, 20, 21, 22, 23]
 

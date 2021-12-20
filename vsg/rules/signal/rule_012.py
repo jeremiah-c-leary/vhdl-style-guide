@@ -5,11 +5,11 @@ from vsg import token
 from vsg import violation
 
 from vsg.rules import utils as rules_utils
-
+from vsg.rule_group import alignment
 from vsg.vhdlFile import utils
 
 
-class rule_012(rule.Rule):
+class rule_012(alignment.Rule):
     '''
     Checks for a single space between two tokens.
 
@@ -36,9 +36,7 @@ class rule_012(rule.Rule):
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self, 'signal', '012')
-        self.solution = None
-        self.phase = 5
+        alignment.Rule.__init__(self, 'signal', '012')
         self.subphase = 2
         self.left_token = token.architecture_body.is_keyword
         self.right_token = token.architecture_body.begin_keyword

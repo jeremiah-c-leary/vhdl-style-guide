@@ -5,7 +5,7 @@ from vsg import token
 from vsg import violation
 
 from vsg.vhdlFile import utils
-
+from vsg.rule_group import structure
 
 lSplitTokens = []
 lSplitTokens.append(token.conditional_waveforms.else_keyword)
@@ -14,15 +14,14 @@ lTokenPairs = []
 lTokenPairs.append([token.concurrent_conditional_signal_assignment.assignment, token.concurrent_conditional_signal_assignment.semicolon])
 
 
-class rule_007(rule.Rule):
+class rule_007(structure.Rule):
     '''
     Checks for code after the **else** keyword.
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self, 'concurrent', '007')
+        structure.Rule.__init__(self, 'concurrent', '007')
         self.solution = 'move code after else to next line.'
-        self.phase = 1
         self.subphase = 2
         self.lSplitTokens = lSplitTokens
         self.lTokenPairs = lTokenPairs

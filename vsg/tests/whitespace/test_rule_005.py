@@ -25,6 +25,7 @@ class test_context_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'whitespace')
         self.assertEqual(oRule.identifier, '005')
+        self.assertEqual(oRule.groups, ['whitespace'])
 
         lExpected = [12]
 

@@ -5,14 +5,14 @@ from vsg import token
 from vsg import violation
 
 from vsg.rules import utils as rules_utils
-
+from vsg.rule_group import alignment
 from vsg.vhdlFile import utils
 
 lTokenPairs = []
 lTokenPairs.append([token.constant_declaration.constant_keyword, token.constant_declaration.semicolon])
 
 
-class rule_016(rule.Rule):
+class rule_016(alignment.Rule):
     '''
     Checks for the proper indentation of multiline constants.
 
@@ -30,8 +30,7 @@ class rule_016(rule.Rule):
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self, 'constant', '016')
-        self.phase = 5
+        alignment.Rule.__init__(self, 'constant', '016')
         self.lTokenPairs = lTokenPairs
         self.bExcludeLastToken = True
 

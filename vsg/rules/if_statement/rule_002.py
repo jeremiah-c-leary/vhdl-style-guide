@@ -4,9 +4,10 @@ from vsg import rule
 from vsg import violation
 
 from vsg.rules import utils as rules_utils
+from vsg.rule_group import structure
 
 
-class rule_002(rule.Rule):
+class rule_002(structure.Rule):
     '''
     Checks the expressions in if statements are enclosed in ()'s.
 
@@ -21,8 +22,7 @@ class rule_002(rule.Rule):
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self, 'if', '002')
-        self.phase = 1
+        structure.Rule.__init__(self, 'if', '002')
         self.parenthesis = 'insert'
         self.configuration.append('parenthesis')
 

@@ -26,6 +26,7 @@ class test_generate_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'generate')
         self.assertEqual(oRule.identifier, '011')
+        self.assertEqual(oRule.groups, ['structure'])
 
         lExpected = [22, 26, 30, 40, 44, 46, 52, 56, 58, 60]
 

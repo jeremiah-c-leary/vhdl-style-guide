@@ -7,6 +7,7 @@ from vsg import token
 from vsg import violation
 
 from vsg.vhdlFile import utils
+from vsg.rule_group import structure
 
 lIfBoundingTokens = [token.if_statement.if_keyword, token.if_statement.then_keyword]
 
@@ -16,7 +17,7 @@ oStart = token.process_statement.begin_keyword
 oEnd = token.process_statement.end_keyword
 
 
-class rule_029(rule.Rule):
+class rule_029(structure.Rule):
     '''
     Checks the case for words.
 
@@ -34,9 +35,7 @@ class rule_029(rule.Rule):
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self, 'process', '029')
-        self.solution = None
-        self.phase = 1
+        structure.Rule.__init__(self, 'process', '029')
         self.clock = 'event'
         self.configuration.append('clock')
         self.oStart = oStart

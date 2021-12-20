@@ -5,7 +5,7 @@ from vsg import token
 from vsg import violation
 
 from vsg.rules import utils as rules_utils
-
+from vsg.rule_group import alignment
 from vsg.vhdlFile import utils
 
 lTokens = []
@@ -29,7 +29,7 @@ lEnd.append(token.concurrent_conditional_signal_assignment.semicolon)
 lEnd.append(token.concurrent_simple_signal_assignment.semicolon)
 
 
-class rule_008(rule.Rule):
+class rule_008(alignment.Rule):
     '''
     Checks for a single space between two tokens.
 
@@ -56,8 +56,7 @@ class rule_008(rule.Rule):
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self, 'concurrent', '008')
-        self.phase = 5
+        alignment.Rule.__init__(self, 'concurrent', '008')
         self.subphase = 3
         self.lTokens = lTokens
         self.left_token = oLeftToken

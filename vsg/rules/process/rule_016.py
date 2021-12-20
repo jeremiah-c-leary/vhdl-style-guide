@@ -3,8 +3,10 @@ from vsg import rule
 from vsg import token
 from vsg import violation
 
+from vsg.rule_group import structure
 
-class rule_016(rule.Rule):
+
+class rule_016(structure.Rule):
     '''
     Checks a process has a label.
 
@@ -25,9 +27,8 @@ class rule_016(rule.Rule):
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self, 'process', '016')
+        structure.Rule.__init__(self, 'process', '016')
         self.solution = 'Add label for process'
-        self.phase = 1
         self.fixable = False
 
     def analyze(self, oFile):

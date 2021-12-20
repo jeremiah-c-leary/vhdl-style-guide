@@ -6,11 +6,11 @@ from vsg import violation
 from vsg.token import report_statement
 
 from vsg.rules import utils as rules_utils
-
+from vsg.rule_group import alignment
 from vsg.vhdlFile import utils
 
 
-class rule_400(rule.Rule):
+class rule_400(alignment.Rule):
     '''
     Checks the case for words.
 
@@ -28,10 +28,9 @@ class rule_400(rule.Rule):
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self, name="report_statement", identifier="400")
+        alignment.Rule.__init__(self, name="report_statement", identifier="400")
         self.alignment = 'report'
         self.configuration.append('alignment')
-        self.phase = 5
 
     def _get_tokens_of_interest(self, oFile):
         return oFile.get_tokens_starting_with_token_and_ending_with_one_of_possible_tokens([report_statement.report_keyword], [report_statement.severity_keyword, report_statement.semicolon], True, False, True)

@@ -6,9 +6,10 @@ from vsg import violation
 from vsg.token import port_clause as token
 from vsg.token import interface_unknown_declaration
 from vsg.token import interface_list
+from vsg.rule_group import structure
 
 
-class rule_026(rule.Rule):
+class rule_026(structure.Rule):
     '''
     Checks for multiple instances of identifiers in port declarations.
 
@@ -26,8 +27,7 @@ class rule_026(rule.Rule):
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self, name='port', identifier='026')
-        self.phase = 1
+        structure.Rule.__init__(self, name='port', identifier='026')
         self.subphase = 2
 
     def _get_tokens_of_interest(self, oFile):

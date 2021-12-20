@@ -7,14 +7,14 @@ from vsg import token
 from vsg import violation
 
 from vsg.rules import utils as rules_utils
-
+from vsg.rule_group import alignment
 from vsg.vhdlFile import utils
 
 lTokenPairs = []
 lTokenPairs.append([token.concurrent_conditional_signal_assignment.assignment, token.concurrent_conditional_signal_assignment.semicolon])
 
 
-class rule_009(rule.Rule):
+class rule_009(alignment.Rule):
     '''
     Checks the case for words.
 
@@ -32,8 +32,7 @@ class rule_009(rule.Rule):
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self, 'concurrent', '009')
-        self.phase = 5
+        alignment.Rule.__init__(self, 'concurrent', '009')
         self.subphase = 2
         self.lTokenPairs = lTokenPairs
         self.align_left = 'no'

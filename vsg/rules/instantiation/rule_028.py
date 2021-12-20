@@ -2,9 +2,10 @@
 from vsg import rule
 from vsg import token
 from vsg import violation
+from vsg.rule_group import case
 
 
-class rule_028(rule.Rule):
+class rule_028(case.Rule):
     '''
     Instantiation rule 028 checks the entity name is uppercase in direct instantiations.
 
@@ -19,8 +20,7 @@ class rule_028(rule.Rule):
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self, name='instantiation', identifier='028')
-        self.phase = 6
+        case.Rule.__init__(self, name='instantiation', identifier='028')
         self.case = 'lower'
         self.configuration.append('case')
 

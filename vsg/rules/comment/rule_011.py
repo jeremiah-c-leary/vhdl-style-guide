@@ -4,17 +4,17 @@ from vsg import rule
 from vsg import violation
 
 from vsg.rules import utils
+from vsg.rule_group import structure
 
 
-class rule_011(rule.Rule):
+class rule_011(structure.Rule):
     '''
     This rule will move inline comments to the previous line.
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self, name='comment', identifier='011')
+        structure.Rule.__init__(self, name='comment', identifier='011')
         self.solution = 'Move inline comment to previous line.'
-        self.phase = 1
         self.disable = True
         self.lTokens = [parser.comment]
 

@@ -29,6 +29,7 @@ class test_instantiation_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'instantiation')
         self.assertEqual(oRule.identifier, '028')
+        self.assertEqual(oRule.groups, ['case'])
 
         lExpected = [27, 41]
 

@@ -5,6 +5,7 @@ from vsg import token
 from vsg import violation
 
 from vsg.vhdlFile import utils
+from vsg.rule_group import structure
 
 oInsertTokens = token.for_generate_statement.end_generate_label
 oAnchorTokens = token.for_generate_statement.semicolon
@@ -13,7 +14,7 @@ oRightTokens = token.for_generate_statement.semicolon
 oValueTokens = token.for_generate_statement.generate_label
 
 
-class rule_011(rule.Rule):
+class rule_011(structure.Rule):
     '''
     Checks for the existence of a token and will insert it if it does not exist.
 
@@ -36,9 +37,8 @@ class rule_011(rule.Rule):
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self, 'generate', '011')
+        structure.Rule.__init__(self, 'generate', '011')
         self.solution = 'Add generate label'
-        self.phase = 1
         self.insert_token = oInsertTokens
         self.anchor_token = oAnchorTokens
         self.left_token = oLeftTokens

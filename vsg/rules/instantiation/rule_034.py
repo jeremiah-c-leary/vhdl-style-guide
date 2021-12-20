@@ -2,9 +2,10 @@
 from vsg import rule
 from vsg import token
 from vsg import violation
+from vsg.rule_group import structure
 
 
-class rule_034(rule.Rule):
+class rule_034(structure.Rule):
     '''
     Checks for component or entity instantiations.
 
@@ -22,8 +23,7 @@ class rule_034(rule.Rule):
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self, name='instantiation', identifier='034')
-        self.phase = 1
+        structure.Rule.__init__(self, name='instantiation', identifier='034')
         self.method = 'component'
         self.configuration.append('method')
         self.fixable = False

@@ -5,14 +5,14 @@ from vsg import token
 from vsg import violation
 
 from vsg.rules import utils as rules_utils
-
+from vsg.rule_group import structure
 from vsg.vhdlFile import utils
 
 lTokens = []
 lTokens.append(token.generic_clause.close_parenthesis)
 
 
-class rule_010(rule.Rule):
+class rule_010(structure.Rule):
     '''
     Moves code after the ) to the next line.
 
@@ -30,9 +30,8 @@ class rule_010(rule.Rule):
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self, 'generic', '010')
+        structure.Rule.__init__(self, 'generic', '010')
         self.solution = 'Closing parenthesis must be on a line by itself.'
-        self.phase = 1
         self.lTokens = lTokens
 
     def analyze(self, oFile):

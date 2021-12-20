@@ -5,6 +5,7 @@ from vsg import token
 from vsg import violation
 
 from vsg.vhdlFile import utils
+from vsg.rule_group import alignment
 from vsg.rules import utils as rules_utils
 
 oStart = token.process_statement.begin_keyword
@@ -22,7 +23,7 @@ lEndAssignments.append(token.simple_force_assignment.semicolon)
 lEndAssignments.append(token.simple_release_assignment.semicolon)
 
 
-class rule_002(rule.Rule):
+class rule_002(alignment.Rule):
     '''
     Ensures the alignment of the after keyword in clock processes.
 
@@ -40,10 +41,9 @@ class rule_002(rule.Rule):
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self, 'after', '002')
+        alignment.Rule.__init__(self, 'after', '002')
         self.solution = 'Align **after** keyword.'
         self.disable = True
-        self.phase = 5
         self.subphase = 2
         self.oStart = oStart
         self.oEnd = oEnd

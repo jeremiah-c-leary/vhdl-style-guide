@@ -3,6 +3,8 @@ from vsg import token
 from vsg import rule
 from vsg import violation
 
+from vsg.rule_group import case
+
 lPortTokens = []
 lPortTokens.append(token.interface_unknown_declaration.identifier)
 lPortTokens.append(token.interface_constant_declaration.identifier)
@@ -22,7 +24,7 @@ oStartToken = token.architecture_body.entity_name
 oEndToken = token.architecture_body.end_keyword
 
 
-class rule_601(rule.Rule):
+class rule_601(case.Rule):
     '''
     Checks for consistent case of entity ports in the architecture body.
 
@@ -37,9 +39,7 @@ class rule_601(rule.Rule):
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self, name="architecture", identifier="601")
-        self.solution = None
-        self.phase = 6
+        case.Rule.__init__(self, name="architecture", identifier="601")
         self.subphase = 2
 
     def analyze(self, oFile):

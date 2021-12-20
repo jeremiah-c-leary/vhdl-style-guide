@@ -4,9 +4,10 @@ from vsg import violation
 
 from vsg.token import port_clause as token
 from vsg.token import mode
+from vsg.rule_group import structure
 
 
-class rule_023(rule.Rule):
+class rule_023(structure.Rule):
     '''
     Checks for the existance of port modes.
 
@@ -24,9 +25,8 @@ class rule_023(rule.Rule):
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self, name='port', identifier='023')
+        structure.Rule.__init__(self, name='port', identifier='023')
         self.solution = 'Add mode'
-        self.phase = 1
         self.fixable = False
 
     def _get_tokens_of_interest(self, oFile):

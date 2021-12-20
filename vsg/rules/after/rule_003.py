@@ -5,6 +5,7 @@ from vsg import token
 from vsg import violation
 
 from vsg.vhdlFile import utils
+from vsg.rule_group import structure
 
 lIfBoundingTokens = [token.if_statement.if_keyword, token.if_statement.then_keyword]
 
@@ -25,7 +26,7 @@ lEndAssignments.append(token.simple_force_assignment.semicolon)
 lEndAssignments.append(token.simple_release_assignment.semicolon)
 
 
-class rule_003(rule.Rule):
+class rule_003(structure.Rule):
     '''
     Checks for after keywords in waveform_elements in the reset part of a clock process.
 
@@ -43,10 +44,8 @@ class rule_003(rule.Rule):
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self, 'after', '003')
-        self.solution = None
+        structure.Rule.__init__(self, 'after', '003')
         self.disable = True
-        self.phase = 1
         self.oStart = oStart
         self.oEnd = oEnd
         self.magnitude = 1

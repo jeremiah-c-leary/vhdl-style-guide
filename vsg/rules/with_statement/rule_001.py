@@ -3,8 +3,10 @@ from vsg import rule
 from vsg import token
 from vsg import violation
 
+from vsg.rule_group import structure
 
-class rule_001(rule.Rule):
+
+class rule_001(structure.Rule):
     '''
     Checks the case for words.
 
@@ -22,9 +24,8 @@ class rule_001(rule.Rule):
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self, name='with', identifier='001')
+        structure.Rule.__init__(self, name='with', identifier='001')
         self.solution = "Rewrite with as a process"
-        self.phase = 1
         self.fixable = False
 
     def _get_tokens_of_interest(self, oFile):

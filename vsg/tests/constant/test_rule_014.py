@@ -26,6 +26,7 @@ class test_constant_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'constant')
         self.assertEqual(oRule.identifier, '014')
+        self.assertEqual(oRule.groups, ['alignment'])
 
         lExpected = [31, 34, 37]
 

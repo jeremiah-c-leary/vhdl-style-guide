@@ -8,11 +8,11 @@ from vsg.token import assertion_statement
 from vsg.token import concurrent_assertion_statement
 
 from vsg.rules import utils as rules_utils
-
+from vsg.rule_group import alignment
 from vsg.vhdlFile import utils
 
 
-class rule_400(rule.Rule):
+class rule_400(alignment.Rule):
     '''
     Checks the case for words.
 
@@ -30,7 +30,7 @@ class rule_400(rule.Rule):
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self, name="assert", identifier="400")
+        alignment.Rule.__init__(self, name="assert", identifier="400")
         self.alignment = 'report'
         self.configuration.append('alignment')
         self.phase = 4

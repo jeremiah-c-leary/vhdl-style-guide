@@ -22,6 +22,7 @@ class test_constant_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'constant')
         self.assertEqual(oRule.identifier, '007')
+        self.assertEqual(oRule.groups, ['structure'])
 
         lExpected = [8]
 

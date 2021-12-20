@@ -26,6 +26,7 @@ class test_after_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'after')
         self.assertEqual(oRule.identifier, '003')
+        self.assertEqual(oRule.groups, ['structure'])
 
         lExpected = [28, 29, 31]
 

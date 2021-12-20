@@ -3,8 +3,10 @@ from vsg import parser
 from vsg import rule
 from vsg import violation
 
+from vsg.rule_group import whitespace
 
-class rule_001(rule.Rule):
+
+class rule_001(whitespace.Rule):
     '''
     This class removes whitespace before a given token.
 
@@ -23,8 +25,7 @@ class rule_001(rule.Rule):
 
     def __init__(self):
 
-        rule.Rule.__init__(self, 'whitespace', '001')
-        self.phase = 1
+        whitespace.Rule.__init__(self, 'whitespace', '001')
         self.subphase = 0
         self.solution = 'Remove trailing whitespace'
 
