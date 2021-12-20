@@ -2,8 +2,10 @@
 from vsg import rule
 from vsg import violation
 
+from vsg.rule_group import naming
 
-class token_suffix(rule.Rule):
+
+class token_suffix(naming.Rule):
     '''
     Checks the suffix of a token.
 
@@ -24,9 +26,7 @@ class token_suffix(rule.Rule):
     '''
 
     def __init__(self, name, identifier, lTokens):
-        rule.Rule.__init__(self, name=name, identifier=identifier)
-        self.solution = None
-        self.phase = 7
+        naming.Rule.__init__(self, name=name, identifier=identifier)
         self.lTokens = lTokens
         self.suffixes = None
         self.configuration.append('suffixes')

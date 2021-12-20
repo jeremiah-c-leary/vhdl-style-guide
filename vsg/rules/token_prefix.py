@@ -4,9 +4,10 @@ from vsg import parser
 from vsg import violation
 
 from vsg.rules import utils as rules_utils
+from vsg.rule_group import naming
 
 
-class token_prefix(rule.Rule):
+class token_prefix(naming.Rule):
     '''
     Checks the case for words.
 
@@ -27,9 +28,7 @@ class token_prefix(rule.Rule):
     '''
 
     def __init__(self, name, identifier, lTokens):
-        rule.Rule.__init__(self, name=name, identifier=identifier)
-        self.solution = None
-        self.phase = 7
+        naming.Rule.__init__(self, name=name, identifier=identifier)
         self.lTokens = lTokens
         self.prefixes = None
         self.configuration.append('prefixes')
