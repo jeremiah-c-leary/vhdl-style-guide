@@ -29,6 +29,7 @@ class test_if_statement_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'if')
         self.assertEqual(oRule.identifier, '032')
+        self.assertEqual(oRule.groups, ['alignment'])
 
         lExpected = [31, 37, 39]
 

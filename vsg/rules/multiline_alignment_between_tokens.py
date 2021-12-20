@@ -4,11 +4,11 @@ from vsg import parser
 from vsg import violation
 
 from vsg.rules import utils as rules_utils
-
+from vsg.rule_group import alignment
 from vsg.vhdlFile import utils
 
 
-class multiline_alignment_between_tokens(rule.Rule):
+class multiline_alignment_between_tokens(alignment.Rule):
     '''
     Checks the case for words.
 
@@ -26,7 +26,7 @@ class multiline_alignment_between_tokens(rule.Rule):
     '''
 
     def __init__(self, name, identifier, lTokenPairs, bExcludeLastToken=False):
-        rule.Rule.__init__(self, name=name, identifier=identifier)
+        alignment.Rule.__init__(self, name=name, identifier=identifier)
         self.phase = 4
         self.lTokenPairs = lTokenPairs
         self.bExcludeLastToken = bExcludeLastToken

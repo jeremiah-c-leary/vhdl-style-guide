@@ -5,9 +5,10 @@ from vsg import rule
 from vsg import violation
 
 from vsg.rules import utils as rules_utils
+from vsg.rule_group import alignment
 
 
-class align_consecutive_lines_starting_with_a_comment_above_line_starting_with_token(rule.Rule):
+class align_consecutive_lines_starting_with_a_comment_above_line_starting_with_token(alignment.Rule):
     '''
     Checks for a single space between two tokens.
 
@@ -25,8 +26,7 @@ class align_consecutive_lines_starting_with_a_comment_above_line_starting_with_t
     '''
 
     def __init__(self, name, identifier, token, bIncrement=False):
-        rule.Rule.__init__(self, name=name, identifier=identifier)
-        self.solution = None
+        alignment.Rule.__init__(self, name=name, identifier=identifier)
         self.phase = 4
         self.subphase = 2
         self.token = token
