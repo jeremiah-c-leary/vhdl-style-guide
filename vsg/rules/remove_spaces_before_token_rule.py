@@ -3,8 +3,10 @@ from vsg import parser
 from vsg import rule
 from vsg import violation
 
+from vsg.rule_group import whitespace
 
-class remove_spaces_before_token_rule(rule.Rule):
+
+class remove_spaces_before_token_rule(whitespace.Rule):
     '''
     This class removes whitespace before a given token.
 
@@ -23,10 +25,8 @@ class remove_spaces_before_token_rule(rule.Rule):
 
     def __init__(self, name, identifier, oToken, bIgnoreIfLineStart=False):
 
-        rule.Rule.__init__(self, name, identifier)
-        self.phase = 2
+        whitespace.Rule.__init__(self, name, identifier)
         self.oToken = oToken
-        self.solution = None
         self.bIgnoreIfLineStart = bIgnoreIfLineStart
 
     def _get_tokens_of_interest(self, oFile):

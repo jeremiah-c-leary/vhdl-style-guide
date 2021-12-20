@@ -6,9 +6,10 @@ from vsg import violation
 
 from vsg.vhdlFile import utils
 from vsg.rules import utils as rule_utils
+from vsg.rule_group import whitespace
 
 
-class n_spaces_after_tokens(rule.Rule):
+class n_spaces_after_tokens(whitespace.Rule):
     '''
     Checks for a single space between two tokens.
 
@@ -26,9 +27,7 @@ class n_spaces_after_tokens(rule.Rule):
     '''
 
     def __init__(self, name, identifier, iSpaces, lTokens, bNIsMinimum=False):
-        rule.Rule.__init__(self, name=name, identifier=identifier)
-        self.solution = None
-        self.phase = 2
+        whitespace.Rule.__init__(self, name=name, identifier=identifier)
         self.iSpaces = iSpaces
         self.lTokens = lTokens
         self.bNIsMinimum = bNIsMinimum
