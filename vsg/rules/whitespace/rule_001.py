@@ -26,6 +26,7 @@ class rule_001(whitespace.Rule):
     def __init__(self):
 
         whitespace.Rule.__init__(self, 'whitespace', '001')
+        self.phase = 1
         self.subphase = 0
         self.solution = 'Remove trailing whitespace'
 
