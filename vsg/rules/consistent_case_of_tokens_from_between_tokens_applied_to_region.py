@@ -3,9 +3,10 @@ from vsg import rule
 from vsg import violation
 
 from vsg.vhdlFile import utils
+from vsg.rule_group import case
 
 
-class consistent_case_of_tokens_from_between_tokens_applied_to_region(rule.Rule):
+class consistent_case_of_tokens_from_between_tokens_applied_to_region(case.Rule):
     '''
     Checks the case for words.
 
@@ -23,9 +24,7 @@ class consistent_case_of_tokens_from_between_tokens_applied_to_region(rule.Rule)
     '''
 
     def __init__(self, name, identifier, lTokens, oStart, oEnd, oRegionStart, oRegionEnd, lIgnore=None):
-        rule.Rule.__init__(self, name=name, identifier=identifier)
-        self.solution = None
-        self.phase = 6
+        case.Rule.__init__(self, name=name, identifier=identifier)
         self.subphase = 2
         self.lTokens = lTokens
         self.oStart = oStart
