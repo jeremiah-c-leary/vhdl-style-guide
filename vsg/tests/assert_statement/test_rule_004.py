@@ -32,6 +32,7 @@ class test_assert_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'assert')
         self.assertEqual(oRule.identifier, '004')
+        self.assertEqual(oRule.groups, ['structure'])
 
         lExpected = [6, 9, 18, 21, 35]
 
