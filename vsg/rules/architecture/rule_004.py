@@ -11,3 +11,4 @@ class rule_004(token_case):
 
     def __init__(self):
         token_case.__init__(self, 'architecture', '004', [token.architecture_keyword])
+        self.groups.append('case::keyword')

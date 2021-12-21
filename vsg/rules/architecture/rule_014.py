@@ -14,3 +14,4 @@ class rule_014(token_case_with_prefix_suffix):
 
     def __init__(self):
         token_case_with_prefix_suffix.__init__(self, 'architecture', '014', lTokens)
+        self.groups.append('case::name')

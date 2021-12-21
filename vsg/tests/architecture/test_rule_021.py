@@ -29,7 +29,8 @@ class test_architecture_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'architecture')
         self.assertEqual(oRule.identifier, '021')
-
+        self.assertEqual(oRule.groups, ['case', 'case::keyword'])
+       
         lExpected = [3, 11]
 
         oRule.analyze(self.oFile)

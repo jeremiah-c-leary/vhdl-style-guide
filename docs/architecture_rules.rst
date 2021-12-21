@@ -61,7 +61,7 @@ Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous
 architecture_004
 ################
 
-|phase_6| |error|
+|phase_6| |error| |case_keyword|
 
 This rule checks the proper case of the **architecture** keyword in the architecture declaration.
 
@@ -80,7 +80,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 architecture_005
 ################
 
-|phase_1| |error|
+|phase_1| |error| |structural|
 
 This rule checks the **of** keyword is on the same line as the **architecture** keyword.
 
@@ -101,7 +101,7 @@ This rule checks the **of** keyword is on the same line as the **architecture** 
 architecture_006
 ################
 
-|phase_1| |error|
+|phase_1| |error| |structural|
 
 This rule checks the **is** keyword is on the same line as the **architecture** keyword.
 
@@ -169,7 +169,7 @@ This rule checks for spaces before the **end architecture** keywords.
 architecture_009
 ################
 
-|phase_6| |error|
+|phase_6| |error| |case_keyword|
 
 This rule checks the **end** keyword has proper case.
 
@@ -194,7 +194,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 architecture_010
 ################
 
-|phase_1| |error|
+|phase_1| |error| |structural|
 
 This rule checks for the keyword **architecture** in the **end architecture** statement.
 It is clearer to the reader to state what is ending.
@@ -216,7 +216,7 @@ Refer to the section `Configuring Optional Items <configuring.html#configuring-o
 architecture_011
 ################
 
-|phase_6| |error|
+|phase_6| |error| |case_name|
 
 This rule checks the architecture name case in the **end architecture** statement.
 
@@ -257,7 +257,7 @@ This rule checks for a single space between **end** and **architecture** keyword
 architecture_013
 ################
 
-|phase_6| |error|
+|phase_6| |error| |case_name|
 
 This rule checks the case of the architecture name in the architecture declaration.
 
@@ -278,7 +278,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 architecture_014
 ################
 
-|phase_6| |error|
+|phase_6| |error| |case_name|
 
 This rule checks the case of the entity name in the architecture declaration.
 
@@ -402,7 +402,7 @@ Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ f
 architecture_019
 ################
 
-|phase_6| |error|
+|phase_6| |error| |case_keyword|
 
 This rule checks the proper case of the **of** keyword in the architecture declaration.
 
@@ -423,7 +423,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 architecture_020
 ################
 
-|phase_6| |error|
+|phase_6| |error| |case_keyword|
 
 This rule checks the proper case of the **is** keyword in the architecture declaration.
 
@@ -444,7 +444,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 architecture_021
 ################
 
-|phase_6| |error|
+|phase_6| |error| |case_keyword|
 
 This rule checks the proper case of the **begin** keyword.
 
@@ -467,7 +467,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 architecture_022
 ################
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space before the entity name in the end architecture declaration.
 
@@ -486,7 +486,7 @@ This rule checks for a single space before the entity name in the end architectu
 architecture_024
 ################
 
-|phase_1| |error|
+|phase_1| |error| |structural_optional|
 
 This rule checks for the architecture name in the **end architecture** statement.
 It is clearer to the reader to state which architecture the end statement is closing.
@@ -508,7 +508,7 @@ Refer to the section `Configuring Optional Items <configuring.html#configuring-o
 architecture_025
 ################
 
-|phase_7| |disabled| |error|
+|phase_7| |disabled| |error| |structural|
 
 This rule checks for valid names for the architecture.
 Typical architecture names are:  RTL, EMPTY, and BEHAVE.
@@ -542,7 +542,7 @@ The user is required to decide which is the correct architecture name.
 architecture_026
 ################
 
-|phase_5| |error|
+|phase_5| |error| |alignment|
 
 This rule checks the colons are in the same column for all declarations in the architecture declarative part.
 
@@ -575,7 +575,7 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
 architecture_027
 ################
 
-|phase_5| |error|
+|phase_5| |error| |alignment|
 
 This rule checks the alignment of inline comments in the architecture declarative part.
 
@@ -608,7 +608,7 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
 architecture_028
 ################
 
-|phase_6| |error|
+|phase_6| |error| |case_keyword|
 
 This rule checks the **architecture** keyword in the **end architecture** has proper case.
 
@@ -633,11 +633,11 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 architecture_029
 ################
 
-|phase_5| |error|
+|phase_5| |error| |alignment|
 
-This rule checks for alignment of identifiers in attribute, type, subtype, constant, signal, variable and file declarations in the architecture declarative region.
+This rule checks for alignment of names in attribute, type, subtype, constant, signal, variable and file declarations in the architecture declarative region.
 
-Refer to the section `Configuring Identifier Alignment Rules <configuring.html#configuring-identifier-alignment-rules>`_ for information on changing the configurations.
+Refer to the section `Configuring Identifier Alignment Rules <configuring.html#configuring-name-alignment-rules>`_ for information on changing the configurations.
 
 **Violation**
 
@@ -662,7 +662,7 @@ architecture_030
 
 |phase_2| |error| |whitespace|
 
-This rule checks for a single space between **architecture** and the identifier.
+This rule checks for a single space between **architecture** and the name.
 
 **Violation**
 
@@ -681,7 +681,7 @@ architecture_031
 
 |phase_2| |error| |whitespace|
 
-This rule checks for a single space between the identifier and the **of** keyword.
+This rule checks for a single space between the name and the **of** keyword.
 
 **Violation**
 
@@ -762,7 +762,7 @@ Refer to the section `Configuring Blank Lines <configuring.html#configuring-blan
 architecture_600
 ################
 
-|phase_6| |error|
+|phase_6| |error| |case|
 
 This rule checks for consistent capitalization of generic names in an architecture body.
 
@@ -807,9 +807,9 @@ This rule checks for consistent capitalization of generic names in an architectu
    end architecture rtl;
 
 architecture_601
-^^^^^^^^^^^^^^^^
+################
 
-|phase_6| |error|
+|phase_6| |error| |case|
 
 This rule checks for consistent capitalization of port names in an architecture body.
 

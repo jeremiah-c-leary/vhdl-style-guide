@@ -64,3 +64,39 @@
 .. |whitespace| image:: img/whitespace.svg
    :height: 25px
    :target: rule_groups.html
+
+.. |structural| image:: img/structural.svg
+   :height: 25px
+   :target: rule_groups.html
+
+.. |alignment| image:: img/alignment.svg
+   :height: 25px
+   :target: rule_groups.html
+
+.. |structural_optional| image:: img/structural_optional.svg
+   :height: 25px
+   :target: rule_groups.html
+
+.. |case| image:: img/case.svg
+   :height: 25px
+   :target: rule_groups.html
+
+.. |keyword| image:: img/keyword.svg
+   :height: 25px
+   :target: rule_groups.html
+
+.. |name| image:: img/name.svg
+   :height: 25px
+   :target: rule_groups.html
+
+.. |case_keyword| image:: img/case_keyword.svg
+   :height: 25px
+   :target: rule_groups.html
+
+.. |case_name| image:: img/case_name.svg
+   :height: 25px
+   :target: rule_groups.html
+
+.. |case_label| image:: img/case_label.svg
+   :height: 25px
+   :target: rule_groups.html

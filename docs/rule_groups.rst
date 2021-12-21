@@ -5,19 +5,28 @@ Rule groups allow for easier configuration of similar rules.
 
 The following are a list of the rule groups:
 
+
++-------------------------+---------+------+
+|  case                   | keyword | blah |
+|                         +---------+------+
+|                         | name    | blah |
+|                         +---------+------+
+|                         | label   | blah |
++-------------------------+---------+------+
+
+* structural
+** length
+** optional_keyword
 * indent
 * case
-** case vhdlkeyword
-** case label
-** case identifier
-* blank line above
-* blank line below
-* prefix
-* suffix
+** vhdlkeyword
+** label
+** identifier
+* blank_line
+* naming
+** prefix
+** suffix
 * whitespace
-* structural
-* length
-* optional_keyword
 * alignment
 
 Configuring a rule group
