@@ -11,7 +11,32 @@ lTokens.append(token.case_statement_alternative.when_keyword)
 
 class rule_001(token_indent):
     '''
-    Case rule 001 checks for the proper indentation at the beginning of the line.
+    This rule checks the indent of **case**, **when**, and **end case** keywords.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+    
+       case data is
+    
+           when 0 =>
+       when 1 =>
+               when 3 =>
+    
+      end case;
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+      case data is
+    
+        when 0 =>
+        when 1 =>
+        when 3 =>
+    
+      end case;
     '''
 
     def __init__(self):

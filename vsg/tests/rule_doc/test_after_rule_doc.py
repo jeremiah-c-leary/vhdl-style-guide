@@ -63,6 +63,11 @@ class testDocGen(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
+    def test_case_rules_doc(self):
+
+        lExpected, lActual = compare_files('case')
+
+        self.assertEqual(lExpected, lActual)
 
 
 

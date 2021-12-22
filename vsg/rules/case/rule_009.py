@@ -6,7 +6,26 @@ from vsg.token import case_statement as token
 
 class rule_009(blank_line_above_line_starting_with_token):
     '''
-    Case rule 009 ensures a blank line exists above the "end case" keywords.
+    This rule checks for blank lines or comments above the **end** keyword.
+    
+    Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+         when others =>
+           null;
+       end case;
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+         when others =>
+           null;
+    
+       end case;
     '''
 
     def __init__(self):

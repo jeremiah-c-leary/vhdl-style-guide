@@ -6,7 +6,34 @@ from vsg.token import case_statement as token
 
 class rule_007(previous_line):
     '''
-    Case rule 007 ensures a blank line exists before the "case" keyword.
+    This rule checks for blank lines or comments above the **case** keyword.
+    
+    Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous-line-rules>`_ for options.
+    
+    The default style is :code:`no_code`.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       a <= '1';
+       case data is
+    
+    
+       -- This is a comment
+       case data is
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       a <= '1';
+    
+       case data is
+    
+    
+       -- This is a comment
+       case data is
     '''
 
     def __init__(self):
