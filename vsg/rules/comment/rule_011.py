@@ -9,7 +9,23 @@ from vsg.rule_group import structure
 
 class rule_011(structure.Rule):
     '''
-    This rule will move inline comments to the previous line.
+    This rule checks for in-line comments and moves them to the line above.
+    The indent of the comment will be set to the indent of the current line.
+    
+    .. NOTE:: This rule is disabled by default.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       a <= b; -- Assign signal
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       -- Assign signal
+       a <= b;
     '''
 
     def __init__(self):

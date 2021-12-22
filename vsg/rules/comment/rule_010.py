@@ -14,7 +14,39 @@ lUnless.append([constant_declaration.constant_keyword, constant_declaration.semi
 
 class rule_010(token_indent_unless_between_tokens):
     '''
-    Comment rule 010 checks for the proper indent of comments.
+    This rule checks the indent lines starting with comments.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+           -- Libraries
+       libary ieee;
+    
+        -- Define architecture
+       architecture rtl of fifo is
+    
+       -- Define signals
+         signal wr_en : std_logic;
+         signal rd_en : std_Logic;
+    
+       begin
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       -- Libraries
+       libary ieee;
+    
+       -- Define architecture
+       architecture rtl of fifo is
+    
+         -- Define signals
+         signal wr_en : std_logic;
+         signal rd_en : std_Logic;
+    
+       begin
     '''
 
     def __init__(self):

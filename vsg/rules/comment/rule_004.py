@@ -9,7 +9,21 @@ lTokens.append(parser.comment)
 
 class rule_004(whitespace_before_token):
     '''
-    Comment rule 004 ensures there is at least one space before comments on a line with code.
+    This rule checks for at least a single space before inline comments.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       wr_en <= '1';--Write data
+       rd_en <= '1';   -- Read data
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       wr_en <= '1'; --Write data
+       rd_en <= '1';   -- Read data
     '''
 
     def __init__(self):

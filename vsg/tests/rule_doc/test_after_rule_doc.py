@@ -69,6 +69,12 @@ class testDocGen(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
+    def test_comment_rules_doc(self):
+
+        lExpected, lActual = compare_files('comment')
+
+        self.assertEqual(lExpected, lActual)
+
 
 
 
