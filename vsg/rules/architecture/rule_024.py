@@ -6,7 +6,22 @@ from vsg.token import architecture_body as token
 
 class rule_024(insert_token_left_of_token_if_it_does_not_exist_between_tokens_using_value_from_token):
     '''
-    Architecture rule 024 checks for the architecture simple name in the "end architecture" statement.
+    This rule checks for the architecture name in the **end architecture** statement.
+    It is clearer to the reader to state which architecture the end statement is closing.
+    
+    Refer to the section `Configuring Optional Items <configuring.html#configuring-optional-items>`_ for options.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       end architecture;
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       end architecture architecture_name;
     '''
 
     def __init__(self):

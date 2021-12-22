@@ -6,7 +6,25 @@ from vsg.token import architecture_body as token
 
 class rule_028(token_case):
     '''
-    Entity rule 028 checks the end *architecture* keyword has proper case.
+    This rule checks the **architecture** keyword in the **end architecture** has proper case.
+    
+    Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       end ARCHITECTURE;
+    
+       end Architecture;
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       end architecture;
+    
+       end architecture;
     '''
 
     def __init__(self):

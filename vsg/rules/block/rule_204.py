@@ -9,7 +9,28 @@ lTokens.append(token.block_statement.end_keyword)
 
 class rule_204(blank_line_above_line_starting_with_token):
     '''
-    Checks for a blank line above the end keyword.
+    This rule checks for blank lines or comments above the **end** keyword.
+    
+    Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       begin
+    
+         a <= b;
+       end block block_label;
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       begin
+    
+         a <= b;
+    
+       end block block_label;
     '''
 
     def __init__(self):

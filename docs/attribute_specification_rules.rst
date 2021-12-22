@@ -71,7 +71,7 @@ This rule checks the indent of the **attribute** keyword.
 attribute_specification_500
 ###########################
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **attribute** keyword has proper case.
 
@@ -92,7 +92,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 attribute_specification_501
 ###########################
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_name|
 
 This rule checks the *attribute_designator* has proper case.
 
@@ -113,7 +113,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 attribute_specification_502
 ###########################
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **of** keyword has proper case.
 
@@ -134,7 +134,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 attribute_specification_503
 ###########################
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **is** keyword has proper case.
 

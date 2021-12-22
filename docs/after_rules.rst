@@ -6,7 +6,7 @@ After Rules
 after_001
 #########
 
-|phase_1| |disabled| |error| |structural|
+|phase_1| |disabled| |error| |structure|
 
 This rule checks for **after x** in signal assignments in clock processes.
 
@@ -90,7 +90,7 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
 after_003
 #########
 
-|phase_1| |disabled| |error| |structural|
+|phase_1| |disabled| |error| |structure|
 
 This rule checks the *after* keywords do not exist in the reset portion of a clock process.
 

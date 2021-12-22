@@ -28,19 +28,46 @@ lEndAssignments.append(token.simple_release_assignment.semicolon)
 
 class rule_001(structure.Rule):
     '''
-    Checks the case for words.
-
-    Parameters
-    ----------
-
-    name : string
-       The group the rule belongs to.
-
-    identifier : string
-       unique identifier.  Usually in the form of 00N.
-
-    trigger : parser object type
-       object type to apply the case check against
+    This rule checks for **after x** in signal assignments in clock processes.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       clk_proc : process(clock, reset) is
+       begin
+         if (reset = '1') then
+           a <= '0';
+           b <= '1';
+         elsif (clock'event and clock = '1') then
+           a <= d;
+           b <= c;
+         end if;
+       end process clk_proc;
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       clk_proc : process(clock, reset) is
+       begin
+         if (reset = '1') then
+           a <= '0';
+           b <= '1';
+         elsif (clock'event and clock = '1') then
+           a <= d after 1 ns;
+           b <= c after 1 ns;
+         end if;
+       end process clk_proc;
+    
+    .. NOTE::  This rule has two configurable items:
+    
+       * magnitude
+       * units
+    
+       The **magnitude** is the number of units.  Default is *1*.
+    
+       The **units** is a valid time unit: ms, us, ns, ps etc...  Default is *ns*.
     '''
 
     def __init__(self):

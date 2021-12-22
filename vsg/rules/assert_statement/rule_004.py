@@ -13,7 +13,32 @@ oStop = token.assertion_statement.semicolon
 
 class rule_004(split_line_at_token_when_between_tokens_unless_token_is_found):
     '''
-    Checks the severity keyword is on its own line for concurrent assertion statements.
+    This rule checks the **severity** keyword is on its own line for concurrent assertion statements.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       architecture rtl of fifo is
+       begin
+    
+         assert WIDTH > 16
+           report "FIFO width is limited to 16 bits." severity FAILURE;
+    
+       end architecture rtl;
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       architecture rtl of fifo is
+       begin
+    
+         assert WIDTH > 16
+           report "FIFO width is limited to 16 bits."
+           severity FAILURE;
+    
+       end architecture rtl;
     '''
 
     def __init__(self):

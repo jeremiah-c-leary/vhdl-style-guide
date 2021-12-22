@@ -13,7 +13,21 @@ oEndToken = token.attribute_declaration.semicolon
 
 class rule_502(token_case_in_range_bounded_by_tokens):
     '''
-    Checks the identifier has proper case.
+    This rule checks the *type_mark* has proper case.
+    
+    Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       attribute max_delay : TIME;
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       attribute max_delay : time;
     '''
 
     def __init__(self):

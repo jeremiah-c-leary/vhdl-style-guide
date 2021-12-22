@@ -1,3 +1,5 @@
+.. include:: icons.rst
+
 Attribute Rules
 ---------------
 
@@ -16,3 +18,4 @@ This rule has been superceeded by:
 
 * `attribute_declaration_500 <attribute_declaration_rules.html#attribute-declaration-500>`_
 * `attribute_specification_500 <attribute_specification_rules.html#attribute-specification-500>`_
+

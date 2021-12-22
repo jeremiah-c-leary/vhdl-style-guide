@@ -10,7 +10,22 @@ lTokens.append(token.block_statement.end_block_label)
 
 class rule_601(token_prefix):
     '''
-    Constant rule 601 checks for prefixes in package identifiers.
+    This rule checks for valid prefixes on block labels.
+    The default prefix is *blk_*.
+    
+    Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed prefixes.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       block_label : block is
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       blk_block_label : block is
     '''
 
     def __init__(self):

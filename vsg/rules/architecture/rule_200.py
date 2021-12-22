@@ -9,7 +9,24 @@ lTokens.append(token.architecture_body.semicolon)
 
 class rule_200(blank_line_below_line_ending_with_token):
     '''
-    Checks for a blank line below the package keyword.
+    This rule checks for a blank line below the end architecture statement.
+    
+    Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       end architecture;
+       library ieee;
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       end architecture;
+    
+       library ieee;
     '''
 
     def __init__(self):

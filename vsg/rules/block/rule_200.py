@@ -9,7 +9,24 @@ lTokens.append(token.block_statement.block_label)
 
 class rule_200(previous_line):
     '''
-    Checks for a blank line above the block label.
+    This rule checks for blank lines or comments above the block label.
+    
+    Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous-line-rules>`_ for options.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       a <= b;
+       block_label : block is
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       a <= b;
+    
+       block_label : block is
     '''
 
     def __init__(self):

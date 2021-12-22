@@ -6,7 +6,24 @@ from vsg.token import architecture_body as token
 
 class rule_018(blank_line_above_line_starting_with_token):
     '''
-    Architecture rule 018 checks for a blank line above the *end* keyword.
+    This rule checks for blank lines or comments above the **end architecture** declaration.
+    
+    Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+         rd_en <= '1';
+       end architecture RTL;
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+         rd_en <= '1';
+    
+       end architecture RTL;
     '''
 
     def __init__(self):

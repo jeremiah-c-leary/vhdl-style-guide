@@ -28,19 +28,37 @@ lEndAssignments.append(token.simple_release_assignment.semicolon)
 
 class rule_003(structure.Rule):
     '''
-    Checks for after keywords in waveform_elements in the reset part of a clock process.
-
-    Parameters
-    ----------
-
-    name : string
-       The group the rule belongs to.
-
-    identifier : string
-       unique identifier.  Usually in the form of 00N.
-
-    trigger : parser object type
-       object type to apply the case check against
+    This rule checks the *after* keywords do not exist in the reset portion of a clock process.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       clk_proc : process(clock, reset) is
+       begin
+         if (reset = '1') then
+           a <= '0' after 1 ns;
+           b <= '1' after 1 ns;
+         elsif (clock'event and clock = '1') then
+           a <= d after 1 ns;
+           b <= c after 1 ns;
+         end if;
+       end process clk_proc;
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       clk_proc : process(clock, reset) is
+       begin
+         if (reset = '1') then
+           a <= '0';
+           b <= '1';
+         elsif (clock'event and clock = '1') then
+           a <= d  after 1 ns;
+           b <= c  after 1 ns;
+         end if;
+       end process clk_proc;
     '''
 
     def __init__(self):

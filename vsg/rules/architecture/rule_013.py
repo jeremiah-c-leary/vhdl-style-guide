@@ -9,7 +9,21 @@ lTokens.append(token.identifier)
 
 class rule_013(token_case_with_prefix_suffix):
     '''
-    Entity rule 013 checks the architecture identifier has proper case.
+    This rule checks the case of the architecture name in the architecture declaration.
+    
+    Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       architecture RTL of fifo is
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       architecture rtl of fifo is
     '''
 
     def __init__(self):

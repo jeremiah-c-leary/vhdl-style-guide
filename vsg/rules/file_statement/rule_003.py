@@ -3,6 +3,14 @@ from vsg import deprecated_rule
 
 
 class rule_003(deprecated_rule.Rule):
+    '''
+    This rule was depricated and replaced with rules:
+    
+    * function_015
+    * package_019
+    * procedure_010
+    * architecture_029
+    '''
 
     def __init__(self):
         deprecated_rule.Rule.__init__(self, 'file_statement', '003')

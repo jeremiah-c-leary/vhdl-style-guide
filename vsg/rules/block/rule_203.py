@@ -9,7 +9,24 @@ lTokens.append(token.block_statement.begin_keyword)
 
 class rule_203(blank_line_below_line_ending_with_token):
     '''
-    Checks for a blank line below the package keyword.
+    This rule checks for a blank line below the **begin** keyword.
+    
+    Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       begin
+         a <= b;
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       begin
+    
+         a <= b;
     '''
 
     def __init__(self):

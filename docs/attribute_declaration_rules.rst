@@ -65,7 +65,7 @@ This rule checks the indent of the **attribute** keyword.
 attribute_declaration_500
 #########################
 
-|phase_6| |error| |case| |case::keyword|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **attribute** keyword has proper case.
 
@@ -86,7 +86,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 attribute_declaration_501
 #########################
 
-|phase_6| |error| |case| |case::name|
+|phase_6| |error| |case| |case_name|
 
 This rule checks the *identifier* has proper case.
 
@@ -107,7 +107,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 attribute_declaration_502
 #########################
 
-|phase_6| |error| |case| |case::name|
+|phase_6| |error| |case| |case_name|
 
 This rule checks the *type_mark* has proper case.
 
@@ -124,3 +124,4 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 .. code-block:: vhdl
 
    attribute max_delay : time;
+

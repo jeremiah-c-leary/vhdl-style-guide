@@ -6,7 +6,21 @@ from vsg.token import architecture_body as token
 
 class rule_001(token_indent):
     '''
-    Architecture rule 001 checks for spaces at the beginning of the line.
+    This rule checks for blank spaces before the **architecture** keyword.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+         architecture rtl of fifo is
+       begin
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       architecture rtl of fifo is
+       begin
     '''
 
     def __init__(self):
