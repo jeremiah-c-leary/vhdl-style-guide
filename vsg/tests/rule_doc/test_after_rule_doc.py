@@ -57,6 +57,12 @@ class testDocGen(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
+    def test_block_comment_rules_doc(self):
+
+        lExpected, lActual = compare_files('block_comment')
+
+        self.assertEqual(lExpected, lActual)
+
 
 
 

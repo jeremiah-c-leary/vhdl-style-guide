@@ -2,6 +2,7 @@
 
 import argparse
 import sys
+import os
 
 from . import config
 from . import rule_list
@@ -42,7 +43,7 @@ def create_rule_documentation():
     print(lRuleNames)
     for sRuleName in lRuleNames:
         build_rule_class_doc(sRuleName, dRules)
-        if sRuleName == 'block':
+        if sRuleName == 'block_comment':
             break
 
 def build_rule_class_doc(sRuleName, dRules):
@@ -54,11 +55,19 @@ def build_rule_class_doc(sRuleName, dRules):
     lRuleClassDoc.append(sTitle)
     lRuleClassDoc.append('-'*len(sTitle))
     lRuleClassDoc.extend(blank_line())
-
+    lRuleClassDoc.extend(import_preamble_doc(sRuleName))
     lRuleClassDoc.extend(do_something(list(dRules[sRuleName])))
 
     write_file(f'{sRuleName}_rules.rst', lRuleClassDoc)
 
+
+def import_preamble_doc(sRuleName):
+    lReturn = []
+    sFileName = f'vsg/rules/{sRuleName}/preamble_doc.rst'
+    if os.path.exists(sFileName):
+        lReturn = read_file(sFileName)
+        lReturn.extend(blank_line())
+    return lReturn
 
 def build_rule_list():
     oVhdlFile = vhdlFile.vhdlFile([''])
@@ -135,6 +144,14 @@ def write_file(sFilename, lLines):
     with open(sFilename, 'w') as oFile:
         for sLine in lLines:
             oFile.write(sLine + '\n')
+
+
+def read_file(sFileName):
+    lLines = []
+    with open(sFileName) as oFile:
+        for sLine in oFile:
+            lLines.append(sLine.rstrip())
+    return lLines
 
 
 def generate_icons(oRule):
