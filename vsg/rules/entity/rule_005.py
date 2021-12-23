@@ -6,7 +6,24 @@ from vsg.token import entity_declaration as token
 
 class rule_005(move_token_next_to_another_token):
     '''
-    Checks the "entity" identifier is on the same line as the "entity" keyword.
+    This rule checks the **is** keyword is on the same line as the **entity** keyword.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       entity fifo
+    
+       entity fifo
+         is
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       entity fifo is
+    
+       entity fifo is
     '''
 
     def __init__(self):

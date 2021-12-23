@@ -105,6 +105,12 @@ class testDocGen(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
+    def test_entity_ref_rules_doc(self):
+
+        lExpected, lActual = compare_files('entity')
+
+        self.assertEqual(lExpected, lActual)
+
 
 def compare_files(sRuleName):
     lExpected = []

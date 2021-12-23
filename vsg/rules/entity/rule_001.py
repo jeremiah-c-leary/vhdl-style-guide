@@ -9,7 +9,23 @@ lTokens.append(token.entity_declaration.entity_keyword)
 
 class rule_001(token_indent):
     '''
-    Constant rule 001 checks for the proper indentation at the beginning of the line.
+    This rule checks the indent of the **entity** keyword.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       library ieee;
+    
+         entity fifo is
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       library ieee;
+    
+       entity fifo is
     '''
 
     def __init__(self):

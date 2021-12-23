@@ -25,7 +25,35 @@ oRegionEnd = token.port_clause.close_parenthesis
 
 class rule_600(consistent_case_of_tokens_from_between_tokens_applied_to_region):
     '''
-    Checks capitalization consistency of function names.
+    This rule checks for consistent capitalization of generic names in entity declarations.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       entity FIFO is
+         generic (
+           G_WIDTH : natural := 16
+         );
+         port (
+           I_DATA : std_logic_vector(g_width - 1 downto 0);
+           O_DATA : std_logic_vector(g_width - 1 downto 0)
+         );
+       end entity fifo;
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       entity FIFO is
+         generic (
+           G_WIDTH : natural := 16
+         );
+         port (
+           I_DATA : std_logic_vector(G_WIDTH - 1 downto 0);
+           O_DATA : std_logic_vector(G_WIDTH - 1 downto 0)
+         );
+       end entity fifo;
     '''
 
     def __init__(self):

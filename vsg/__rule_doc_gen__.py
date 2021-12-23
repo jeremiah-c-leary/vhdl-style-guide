@@ -43,7 +43,7 @@ def create_rule_documentation():
     print(lRuleNames)
     for sRuleName in lRuleNames:
         build_rule_class_doc(sRuleName, dRules)
-        if sRuleName == 'context_ref':
+        if sRuleName == 'entity':
             break
 
 def build_rule_class_doc(sRuleName, dRules):

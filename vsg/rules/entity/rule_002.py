@@ -6,7 +6,19 @@ from vsg.token import entity_declaration as token
 
 class rule_002(single_space_between_tokens):
     '''
-    Entity rule 002 checks for a single space between the entity keyword and token identifier.
+    This rule checks for a single space after the **entity** keyword.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       entity    fifo is
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       entity fifo is
     '''
     def __init__(self):
         single_space_between_tokens.__init__(self, 'entity', '002', token.entity_keyword, token.identifier)
