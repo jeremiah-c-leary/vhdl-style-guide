@@ -31,28 +31,24 @@ lEnd.append(token.concurrent_simple_signal_assignment.semicolon)
 
 class rule_008(alignment.Rule):
     '''
-    Checks for a single space between two tokens.
-
-    Parameters
-    ----------
-
-    name : string
-       The group the rule belongs to.
-
-    identifier : string
-       unique identifier.  Usually in the form of 00N.
-
-    lTokens : token object list
-       List of tokens to align
-
-    left_token : token object
-       The first token that defines the region
-
-    right_token : token object
-       The second token that defines the region
-
-    lSkip : token object list
-       List of tokens to skip if they start a line.
+    This rule checks the alignment of inline comments in consecutive concurrent statements.
+    Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       wr_en <= '0';     -- Write enable
+       rd_en <= '1';   -- Read enable
+       data  <= (others => '0'); -- Write data
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       wr_en <= '0';             -- Write enable
+       rd_en <= '1';             -- Read enable
+       data  <= (others => '0'); -- Write data
     '''
 
     def __init__(self):

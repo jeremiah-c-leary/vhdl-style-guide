@@ -81,6 +81,11 @@ class testDocGen(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
+    def test_concurrent_rules_doc(self):
+
+        lExpected, lActual = compare_files('concurrent')
+
+        self.assertEqual(lExpected, lActual)
 
 
 def compare_files(sRuleName):

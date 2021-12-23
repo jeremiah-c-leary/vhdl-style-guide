@@ -16,19 +16,31 @@ lTokenPairs.append([token.concurrent_conditional_signal_assignment.assignment, t
 
 class rule_009(alignment.Rule):
     '''
-    Checks the case for words.
-
-    Parameters
-    ----------
-
-    name : string
-       The group the rule belongs to.
-
-    identifier : string
-       unique identifier.  Usually in the form of 00N.
-
-    trigger : parser object type
-       object type to apply the case check against
+    This rule checks alignment of multiline concurrent conditional signal statements.
+    
+    Refer to the section `Configuring Concurrent Alignment Rules <configuring.html#configuring-concurrent-alignment-rules>`_ for information on formatting options.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       wr_en <= '0' when q_wr_en = '1' else
+            '1';
+    
+       w_foo <= I_FOO when ((I_BAR = '1') and
+                (I_CRUFT = '1')) else
+                '0';
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       wr_en <= '0' when q_wr_en = '1' else
+                '1';
+    
+       w_foo <= I_FOO when ((I_BAR = '1') and
+                            (I_CRUFT = '1')) else
+                '0';
     '''
 
     def __init__(self):

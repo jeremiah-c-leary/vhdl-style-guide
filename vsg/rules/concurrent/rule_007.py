@@ -16,7 +16,48 @@ lTokenPairs.append([token.concurrent_conditional_signal_assignment.assignment, t
 
 class rule_007(structure.Rule):
     '''
-    Checks for code after the **else** keyword.
+    This rule checks for code after the **else** keyword.
+    
+    .. NOTE:: There is a configuration option **allow_single_line** which allows single line concurrent statements.
+    
+    allow_single_line set to False (Default)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       wr_en <= '0' when overflow = '0' else '1';
+       wr_en <= '0' when overflow = '0' else '1' when underflow = '1' else sig_a;
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       wr_en <= '0' when overflow = '0' else
+                '1';
+       wr_en <= '0' when overflow = '0' else
+                '1' when underflow = '1' else
+                sig_a;
+    
+    allow_single_line set to True
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       wr_en <= '0' when overflow = '0' else '1';
+       wr_en <= '0' when overflow = '0' else '1' when underflow = '1' else sig_a;
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       wr_en <= '0' when overflow = '0' else '1';
+       wr_en <= '0' when overflow = '0' else
+                '1' when underflow = '1' else
+                sig_a;
     '''
 
     def __init__(self):

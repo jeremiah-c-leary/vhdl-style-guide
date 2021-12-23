@@ -10,7 +10,24 @@ lAlign.append(token.concurrent_conditional_signal_assignment.assignment)
 
 class rule_006(align_tokens_in_region_between_tokens):
     '''
-    Concurrent rule 006 ensures the alignment of the "<=" keyword over multiple lines.
+    This rule checks the alignment of the **<=** operator over multiple consecutive lines.
+    Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       wr_en <= '0';
+       rd_en   <= '1';
+       data <= (others => '0');
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       wr_en <= '0';
+       rd_en <= '1';
+       data  <= (others => '0');
     '''
 
     def __init__(self):
