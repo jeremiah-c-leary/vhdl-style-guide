@@ -75,6 +75,11 @@ class testDocGen(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
+    def test_component_rules_doc(self):
+
+        lExpected, lActual = compare_files('component')
+
+        self.assertEqual(lExpected, lActual)
 
 
 

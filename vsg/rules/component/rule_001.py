@@ -9,7 +9,29 @@ lTokens.append(token.component_declaration.component_keyword)
 
 class rule_001(token_indent):
     '''
-    Component rule 001 checks for the proper indentation at the beginning of the line.
+    This rule checks the indentation of the **component** keyword.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       architecture rtl of fifo is
+       begin
+    
+       component fifo is
+    
+            component ram is
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       architecture rtl of fifo is
+       begin
+    
+         component fifo is
+    
+         component ram is
     '''
 
     def __init__(self):

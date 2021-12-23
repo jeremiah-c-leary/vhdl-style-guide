@@ -9,7 +9,23 @@ lTokens.append(token.component_declaration.end_keyword)
 
 class rule_009(token_indent):
     '''
-    Component rule 009 checks for spaces before the "end" keyword.
+    This rule checks the indent of the **end component** keywords.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+          overflow : std_logic
+        );
+            end component fifo;
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+           overflow : std_logic
+         );
+       end component fifo;
     '''
 
     def __init__(self):

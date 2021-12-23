@@ -6,7 +6,24 @@ from vsg.token import component_declaration as token
 
 class rule_005(move_token_next_to_another_token):
     '''
-    Checks the "is" keyword is on the same line as the component keyword.
+    This rule checks the **is** keyword is on the same line as the **component** keyword.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       component fifo
+    
+       component fifo
+       is
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       component fifo is
+    
+       component fifo is
     '''
 
     def __init__(self):
