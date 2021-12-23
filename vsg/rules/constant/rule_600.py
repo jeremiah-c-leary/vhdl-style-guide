@@ -9,7 +9,22 @@ lTokens.append(token.constant_declaration.identifier)
 
 class rule_600(token_suffix):
     '''
-    Constant rule 600 checks for suffixes in constant identifiers.
+    This rule checks for valid suffixes on constant identifiers.
+    The default constant suffix is *\_c*.
+    
+    Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed suffixes.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       constant my_const : integer;
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       constant my_const_c : integer;
     '''
 
     def __init__(self):

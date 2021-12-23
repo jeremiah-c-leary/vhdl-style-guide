@@ -9,7 +9,25 @@ lTokens.append(token.constant_declaration.constant_keyword)
 
 class rule_001(token_indent):
     '''
-    Constant rule 001 checks for the proper indentation at the beginning of the line.
+    This rule checks the indent of a constant declaration.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       architecture RTL of FIFO is
+    
+       constant size : integer := 1;
+           constant width : integer := 32
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       architecture RTL of FIFO is
+    
+         constant size : integer := 1;
+         constant width : integer := 32
     '''
 
     def __init__(self):

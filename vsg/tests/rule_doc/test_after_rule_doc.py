@@ -87,6 +87,12 @@ class testDocGen(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
+    def test_constant_rules_doc(self):
+
+        lExpected, lActual = compare_files('constant')
+
+        self.assertEqual(lExpected, lActual)
+
 
 def compare_files(sRuleName):
     lExpected = []

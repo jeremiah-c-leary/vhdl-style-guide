@@ -5,32 +5,42 @@ from vsg import token
 from vsg import violation
 
 from vsg.rules import utils as rules_utils
-from vsg.rule_group import alignment
+from vsg.rule_group import structure
 from vsg.vhdlFile import utils
 
 lTokenPairs = []
 lTokenPairs.append([token.constant_declaration.constant_keyword, token.constant_declaration.semicolon])
 
 
-class rule_016(alignment.Rule):
+class rule_016(structure.Rule):
     '''
-    Checks for the proper indentation of multiline constants.
-
-    Parameters
-    ----------
-
-    name : string
-       The group the rule belongs to.
-
-    identifier : string
-       unique identifier.  Usually in the form of 00N.
-
-    trigger : parser object type
-       object type to apply the case check against
+    This rule checks the structure of multiline constants that contain arrays.
+    
+    Refer to section `Configuring Multiline Structure Rules <configuring.html#configuring-multiline-structure-rules>`_ for options.
+    
+    .. NOTE:: The indenting of multiline array constants is handled by the rule `constant_012 <constant_rules.html#constant-012>`_.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       constant rom : romq_type := (0, 65535, 32768);
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       constant rom : romq_type :=
+       (
+         0,
+         65535,
+         32768
+       );
     '''
 
     def __init__(self):
-        alignment.Rule.__init__(self, 'constant', '016')
+        structure.Rule.__init__(self, 'constant', '016')
+        self.phase = 5
         self.lTokenPairs = lTokenPairs
         self.bExcludeLastToken = True
 

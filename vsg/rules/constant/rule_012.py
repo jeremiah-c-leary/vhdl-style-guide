@@ -14,19 +14,33 @@ lTokenPairs.append([token.constant_declaration.assignment_operator, token.consta
 
 class rule_012(alignment.Rule):
     '''
-    Checks the case for words.
-
-    Parameters
-    ----------
-
-    name : string
-       The group the rule belongs to.
-
-    identifier : string
-       unique identifier.  Usually in the form of 00N.
-
-    trigger : parser object type
-       object type to apply the case check against
+    This rule checks the alignment of multiline constants that contain arrays.
+    
+    Refer to section `Configuring Multiline Indent Rules <configuring.html#configuring-multiline-indent-rules>`_ for options.
+    
+    .. NOTE:: The structure of multiline array constants is handled by the rule `constant_016 <constant_rules.html#constant-016>`_.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       constant rom : romq_type :=
+       (
+                0,
+            65535,
+            32768
+         );
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       constant rom : romq_type :=
+       (
+         0,
+         65535,
+         32768
+       );
     '''
 
     def __init__(self):

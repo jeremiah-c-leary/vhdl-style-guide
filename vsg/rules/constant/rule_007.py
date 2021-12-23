@@ -9,7 +9,27 @@ from vsg.vhdlFile import utils
 
 class rule_007(structure.Rule):
     '''
-    Checks the assignment operator is on the same line as the constant keyword.
+    This rule checks the **:=** is on the same line at the **constant** keyword.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       constant size : integer
+          := 1;
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       constant size : integer := 1;
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       constant size    : integer := 1;
+       constant width   : integer := 32
     '''
 
     def __init__(self):

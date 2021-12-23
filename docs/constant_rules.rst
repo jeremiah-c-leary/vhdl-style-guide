@@ -28,13 +28,12 @@ This rule checks the indent of a constant declaration.
      constant size : integer := 1;
      constant width : integer := 32
 
-
 constant_002
 ############
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
-This rule checks the **constant** keyword is has proper case.
+This rule checks the **constant** keyword has proper case.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
 
@@ -58,7 +57,7 @@ This rule was depricated and replaced with rules:  function_015, package_019, pr
 constant_004
 ############
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_name|
 
 This rule checks the constant identifier has proper case.
 
@@ -88,7 +87,7 @@ This rule checks for a single space after the colon.
 .. code-block:: vhdl
 
    constant size  :integer := 1;
-   constant wdith :     integer := 32;
+   constant width :     integer := 32;
 
 **Fix**
 
@@ -100,7 +99,7 @@ This rule checks for a single space after the colon.
 constant_006
 ############
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for at least a single space before the colon.
 
@@ -121,7 +120,7 @@ This rule checks for at least a single space before the colon.
 constant_007
 ############
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks the **:=** is on the same line at the **constant** keyword.
 
@@ -145,11 +144,10 @@ This rule checks the **:=** is on the same line at the **constant** keyword.
    constant size    : integer := 1;
    constant width   : integer := 32
 
-
 constant_010
 ############
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space before the := keyword in constant declarations.
 Having a space makes it clearer where the assignment occurs on the line.
@@ -171,7 +169,7 @@ Having a space makes it clearer where the assignment occurs on the line.
 constant_011
 ############
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_name|
 
 This rule checks the constant type has proper case.
 
@@ -192,7 +190,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 constant_012
 ############
 
-|phase_5| |error|
+|phase_5| |error| |alignment|
 
 This rule checks the alignment of multiline constants that contain arrays.
 
@@ -225,7 +223,7 @@ Refer to section `Configuring Multiline Indent Rules <configuring.html#configuri
 constant_013
 ############
 
-|phase_6| |error|
+|phase_6| |error| |case|
 
 This rule checks for consistent capitalization of constant names.
 
@@ -290,7 +288,7 @@ This rule checks for consistent capitalization of constant names.
 constant_014
 ############
 
-|phase_5| |error|
+|phase_5| |error| |alignment|
 
 This rule checks the indent of multiline constants that do not contain arrays.
 
@@ -311,7 +309,7 @@ This rule checks the indent of multiline constants that do not contain arrays.
 constant_015
 ############
 
-|phase_7| |disabled| |error|
+|phase_7| |disabled| |error| |naming|
 
 This rule checks for valid prefixes on constant identifiers.
 The default constant prefix is *c\_*.
@@ -333,7 +331,7 @@ Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#conf
 constant_016
 ############
 
-|phase_5| |error|
+|phase_5| |error| |structure|
 
 This rule checks the structure of multiline constants that contain arrays.
 
@@ -361,7 +359,7 @@ Refer to section `Configuring Multiline Structure Rules <configuring.html#config
 constant_600
 ############
 
-|phase_7| |disabled| |error|
+|phase_7| |disabled| |error| |naming|
 
 This rule checks for valid suffixes on constant identifiers.
 The default constant suffix is *\_c*.
@@ -379,5 +377,4 @@ Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#conf
 .. code-block:: vhdl
 
    constant my_const_c : integer;
-
 

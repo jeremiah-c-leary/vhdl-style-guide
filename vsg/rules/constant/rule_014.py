@@ -15,19 +15,21 @@ lTokenPairs.append([token.constant_declaration.assignment_operator, token.consta
 
 class rule_014(alignment.Rule):
     '''
-    Checks the indent of multiline constants that are not arrays.
-
-    Parameters
-    ----------
-
-    name : string
-       The group the rule belongs to.
-
-    identifier : string
-       unique identifier.  Usually in the form of 00N.
-
-    trigger : parser object type
-       object type to apply the case check against
+    This rule checks the indent of multiline constants that do not contain arrays.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       constant width : integer := a + b +
+         c + d;
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       constant width : integer := a + b +
+                                   c + d;
     '''
 
     def __init__(self):
