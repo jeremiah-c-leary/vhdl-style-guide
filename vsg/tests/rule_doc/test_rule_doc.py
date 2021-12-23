@@ -117,6 +117,13 @@ class testDocGen(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
+    def test_exit_statement_rules_doc(self):
+
+        lExpected, lActual = compare_files('exit_statement')
+
+        self.assertEqual(lExpected, lActual)
+
+
 
 def compare_files(sRuleName):
     lExpected = []

@@ -43,7 +43,7 @@ def create_rule_documentation():
     print(lRuleNames)
     for sRuleName in lRuleNames:
         build_rule_class_doc(sRuleName, dRules)
-        if sRuleName == 'entity_specification':
+        if sRuleName == 'exit_statement':
             break
 
 def build_rule_class_doc(sRuleName, dRules):
@@ -53,6 +53,8 @@ def build_rule_class_doc(sRuleName, dRules):
     lRuleClassDoc.extend(blank_line())
     if sRuleName == 'context_ref':
         sTitle = 'Context Reference Rules'
+    elif sRuleName == 'exit_statement':
+        sTitle = 'Exit Rules'
     else:    
         sTitle = (sRuleName.title() + ' Rules').replace('_', ' ')
     lRuleClassDoc.append(sTitle)

@@ -10,7 +10,23 @@ lTokens.append(token.exit_statement.exit_keyword)
 
 class rule_300(token_indent):
     '''
-    Checks for indent of the exit_statement label.
+    This rule checks the indent of the **exit** keyword.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       end if;
+    
+         exit;
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       end if;
+    
+       exit;
     '''
 
     def __init__(self):
