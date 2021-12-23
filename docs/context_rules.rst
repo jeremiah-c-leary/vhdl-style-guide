@@ -18,7 +18,6 @@ This rule checks the indent of the **context** keyword.
 
      library ieee;
 
-
 **Fix**
 
 .. code-block:: vhdl
@@ -26,7 +25,6 @@ This rule checks the indent of the **context** keyword.
    context c1 is
 
      library ieee;
-
 
 context_002
 ###########
@@ -82,7 +80,7 @@ The default style is :code:`no_code`.
 context_004
 ###########
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **context** keyword has proper case.
 
@@ -103,7 +101,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 context_005
 ###########
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks the context identifier is on the same line as the **context** keyword.
 
@@ -125,7 +123,7 @@ This rule checks the context identifier is on the same line as the **context** k
 context_006
 ###########
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks the **is** keyword is on the same line as the context identifier.
 
@@ -145,7 +143,7 @@ This rule checks the **is** keyword is on the same line as the context identifie
 context_007
 ###########
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks for code after the **is** keyword.
 
@@ -169,7 +167,7 @@ This rule checks for code after the **is** keyword.
 context_008
 ###########
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks the **end** keyword is on it's own line.
 
@@ -194,7 +192,7 @@ This rule checks the **end** keyword is on it's own line.
 context_009
 ###########
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks the **context** keyword is on the same line as the end context keyword.
 
@@ -215,7 +213,7 @@ This rule checks the **context** keyword is on the same line as the end context 
 context_010
 ###########
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks the context identifier is on the same line as the end context keyword.
 
@@ -235,7 +233,7 @@ This rule checks the context identifier is on the same line as the end context k
 context_011
 ###########
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks the semicolon is on the same line as the **end** keyword.
 
@@ -263,11 +261,10 @@ This rule checks the semicolon is on the same line as the **end** keyword.
 
    end context c1;
 
-
 context_012
 ###########
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_name|
 
 This rule checks the context identifier has proper case in the context declaration.
 
@@ -285,11 +282,10 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
    context c1 is
 
-
 context_013
 ###########
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **is** keyword has proper case in the context declaration.
 
@@ -310,7 +306,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 context_014
 ###########
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **end** keyword has proper case.
 
@@ -335,7 +331,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 context_015
 ###########
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the context keyword has proper case in the end context declaration.
 
@@ -356,7 +352,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 context_016
 ###########
 
-|phase_2| |error|
+|phase_6| |error| |case| |case_name|
 
 This rule checks the context identifier has proper case in the end context declaration.
 
@@ -463,7 +459,7 @@ This rule checks the indent of the **end** keyword.
 context_021
 ###########
 
-|phase_1| |error|
+|phase_1| |error| |structure| |structure_optional|
 
 This rule checks for the keyword **context** in the **end context** statement.
 
@@ -488,7 +484,7 @@ Refer to the section `Configuring Optional Items <configuring.html#configuring-o
 context_022
 ###########
 
-|phase_1| |error|
+|phase_1| |error| |structure| |structure_optional|
 
 This rule checks for the context name in the **end context** statement.
 

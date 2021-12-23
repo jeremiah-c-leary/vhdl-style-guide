@@ -43,7 +43,7 @@ def create_rule_documentation():
     print(lRuleNames)
     for sRuleName in lRuleNames:
         build_rule_class_doc(sRuleName, dRules)
-        if sRuleName == 'constant':
+        if sRuleName == 'context':
             break
 
 def build_rule_class_doc(sRuleName, dRules):
@@ -101,7 +101,7 @@ def do_something(lRules):
         print(oRule)
         lRuleDoc.extend(generate_rule_header(oRule))
         lRuleDoc.extend(blank_line())
-        if not oRule.deprecated:
+        if not oRule.deprecated and not oRule.proposed:
             lRuleDoc.extend(generate_icons(oRule))
             lRuleDoc.extend(blank_line())
         lRuleDoc.extend(add_doc_string(oRule))

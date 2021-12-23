@@ -23,6 +23,7 @@ class Rule():
         self.dFix['violations'] = {}
         self.configuration = ['indentSize', 'phase', 'disable', 'fixable', 'severity']
         self.deprecated = False
+        self.proposed = False
         self.groups = []
 
     def configure(self, oConfig):

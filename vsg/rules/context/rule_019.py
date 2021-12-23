@@ -6,7 +6,23 @@ from vsg.token import context_declaration as token
 
 class rule_019(single_space_between_tokens):
     '''
-    Checks for a single space between the context keyword and the context identifier in the end context portion of a context declaration.
+    This rule checks for a single space between the **context** keyword and the context identifier.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       end context;
+    
+       end context    c1;
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       end context;
+    
+       end context c1;
     '''
     def __init__(self):
         single_space_between_tokens.__init__(self, 'context', '019', token.end_context_keyword, token.context_simple_name)

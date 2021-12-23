@@ -6,7 +6,26 @@ from vsg.token import context_declaration as token
 
 class rule_024(blank_line_above_line_starting_with_token):
     '''
-    Checks for a blank line above the end context declaration.
+    This rule checks for blank lines or comments above the **end** keyword.
+    
+    Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous-line-rules>`_ for options.
+    
+    The default style is :code:`no_code`.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+         use ieee.std_logic_1164.all;
+       end context;
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+         use ieee.std_logic_1164.all;
+    
+       end context;
     '''
 
     def __init__(self):
