@@ -30,7 +30,7 @@ class test_component_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'component')
         self.assertEqual(oRule.identifier, '021')
-        self.assertEqual(oRule.groups, ['structure'])
+        self.assertEqual(oRule.groups, ['structure', 'structure::optional'])
 
         lExpected = [10]
 
