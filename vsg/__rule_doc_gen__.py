@@ -43,7 +43,7 @@ def create_rule_documentation():
     print(lRuleNames)
     for sRuleName in lRuleNames:
         build_rule_class_doc(sRuleName, dRules)
-        if sRuleName == 'context':
+        if sRuleName == 'context_ref':
             break
 
 def build_rule_class_doc(sRuleName, dRules):
@@ -51,7 +51,10 @@ def build_rule_class_doc(sRuleName, dRules):
     lRuleClassDoc = []
     lRuleClassDoc.append('.. include:: icons.rst')
     lRuleClassDoc.extend(blank_line())
-    sTitle = (sRuleName.title() + ' Rules').replace('_', ' ')
+    if sRuleName == 'context_ref':
+        sTitle = 'Context Reference Rules'
+    else:    
+        sTitle = (sRuleName.title() + ' Rules').replace('_', ' ')
     lRuleClassDoc.append(sTitle)
     lRuleClassDoc.append('-'*len(sTitle))
     lRuleClassDoc.extend(blank_line())

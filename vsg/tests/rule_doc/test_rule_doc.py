@@ -99,6 +99,12 @@ class testDocGen(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
+    def test_context_ref_rules_doc(self):
+
+        lExpected, lActual = compare_files('context_ref')
+
+        self.assertEqual(lExpected, lActual)
+
 
 def compare_files(sRuleName):
     lExpected = []

@@ -9,7 +9,21 @@ lTokens.append(token.context_reference.keyword)
 
 class rule_001(token_indent):
     '''
-    Checks for indent on the context reference keyword.
+    This rule checks the indent of the **context** keyword.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       library ieee;
+       context c1;
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       library ieee;
+         context c1;
     '''
 
     def __init__(self):
