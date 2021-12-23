@@ -129,6 +129,12 @@ class testDocGen(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
+    def test_for_loop_rules_doc(self):
+
+        lExpected, lActual = compare_files('for_loop')
+
+        self.assertEqual(lExpected, lActual)
+
 
 
 def compare_files(sRuleName):

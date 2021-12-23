@@ -72,7 +72,7 @@ This rule checks the indentation of the **end loop** keywords.
 for_loop_003
 ############
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_label|
 
 This rule checks the proper case of the label on a foor loop.
 
@@ -133,3 +133,4 @@ This rule checks if a label exists on a for loop that a single space exists afte
 
      label : for index in 4 to 23 loop
      label : for index in 0 to 100 loop
+
