@@ -12,7 +12,33 @@ lAllowTokens.append(token.subprogram_body.begin_keyword)
 
 class rule_201(blank_line_below_line_ending_with_token):
     '''
-    Checks for a blank line below the opening section of a function specification.
+    This rule checks for a blank line below the **is** keyword.
+    
+    This rule allows the **begin** keyword to occupy the blank line:
+    
+    .. code-block:: vhdl
+    
+       function overflow (a: integer) return integer is
+       begin
+    
+    Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       function overflow (a: integer) return integer is
+         constant width : integer := 32;
+       begin
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       function overflow (a: integer) return integer is
+    
+         constant width : integer := 32;
+       begin
     '''
 
     def __init__(self):

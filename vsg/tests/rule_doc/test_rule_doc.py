@@ -135,6 +135,12 @@ class testDocGen(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
+    def test_function_rules_doc(self):
+
+        lExpected, lActual = compare_files('function')
+
+        self.assertEqual(lExpected, lActual)
+
 
 
 def compare_files(sRuleName):

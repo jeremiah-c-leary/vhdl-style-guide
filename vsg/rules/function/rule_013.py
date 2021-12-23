@@ -9,8 +9,27 @@ lTokens.append(token.subprogram_body.end_keyword)
 
 class rule_013(token_case):
     '''
-    Checks the *end* keyword has proper case.
+    This rule checks the **end** keyword has proper case.
+    
+    Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       END;
+    
+       End function foo;
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       end;
+    
+       end function foo;
     '''
 
     def __init__(self):
         token_case.__init__(self, 'function', '013', lTokens)
+        self.groups.append('case::keyword')
