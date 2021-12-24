@@ -10,7 +10,23 @@ lTokens.append([token.port_map_aspect.map_keyword, token.port_map_aspect.open_pa
 
 class rule_006(single_space_between_token_pairs):
     '''
-   Checks for a single space before the (
+    This rule checks for a single space between the **map** keyword and the (.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       generic map(
+    
+       generic map   (
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       generic map (
+    
+       generic map (
     '''
     def __init__(self):
         single_space_between_token_pairs.__init__(self, 'generic_map', '006', lTokens)

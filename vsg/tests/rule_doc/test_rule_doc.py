@@ -153,6 +153,12 @@ class testDocGen(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
+    def test_generic_map_rules_doc(self):
+
+        lExpected, lActual = compare_files('generic_map')
+
+        self.assertEqual(lExpected, lActual)
+
 
 
 def compare_files(sRuleName):
