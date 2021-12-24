@@ -171,6 +171,12 @@ class testDocGen(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
+    def test_length_rules_doc(self):
+
+        lExpected, lActual = compare_files('length')
+
+        self.assertEqual(lExpected, lActual)
+
 
 
 
