@@ -189,6 +189,12 @@ class testDocGen(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
+    def test_package_rules_doc(self):
+
+        lExpected, lActual = compare_files('package')
+
+        self.assertEqual(lExpected, lActual)
+
 
 
 

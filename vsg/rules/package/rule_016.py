@@ -10,7 +10,22 @@ lTokens.append(token.package_declaration.end_package_simple_name)
 
 class rule_016(token_suffix):
     '''
-    Constant rule 016 checks for suffixes in package identifiers.
+    This rule checks for valid suffixes on package identifiers.
+    The default package suffix is *_pkg*.
+    
+    Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed suffixes.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       package foo is
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       package foo_pkg is
     '''
 
     def __init__(self):

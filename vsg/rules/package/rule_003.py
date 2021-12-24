@@ -9,7 +9,26 @@ lTokens.append(token.package_declaration.package_keyword)
 
 class rule_003(previous_line):
     '''
-    Checks for a blank line above the package keyword.
+    This rule checks for blank lines or comments above the **package** keyword.
+    
+    Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous-line-rules>`_ for options.
+    
+    The default style is :code:`no_code`.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       library ieee;
+       package FIFO_PKG is
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       library ieee;
+    
+       package FIFO_PKG is
     '''
 
     def __init__(self):
