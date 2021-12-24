@@ -14,19 +14,20 @@ lTokens.append(token.generic_clause.close_parenthesis)
 
 class rule_010(structure.Rule):
     '''
-    Moves code after the ) to the next line.
-
-    Parameters
-    ----------
-
-    name : string
-       The group the rule belongs to.
-
-    identifier : string
-       unique identifier.  Usually in the form of 00N.
-
-    lTokens : list of parser object types
-       object type to split a line at
+    This rule checks the closing parenthesis is on a line by itself.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       g_depth : integer := 512);
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+         g_depth : integer := 512
+       );
     '''
 
     def __init__(self):

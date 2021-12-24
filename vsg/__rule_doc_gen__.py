@@ -40,11 +40,12 @@ def create_rule_documentation():
 
     dRules = build_rule_dictionary(oRuleList)
     lRuleNames = get_names_of_rule_classes(oRuleList)
-    print(lRuleNames)
     for sRuleName in lRuleNames:
         build_rule_class_doc(sRuleName, dRules)
-        if sRuleName == 'generate':
+        if sRuleName == 'generic':
             break
+    print('='*80)
+    print(lRuleNames)
 
 def build_rule_class_doc(sRuleName, dRules):
 #    for sRuleName in lRuleName:
@@ -120,6 +121,8 @@ def add_doc_string(oRule):
     sReturn = sReturn[iFirstCharacter:]
     sReturn = sReturn.replace('\n' + ' '*(iFirstCharacter-1), '\n')
     sReturn = sReturn.replace('\n' + ' '*(iFirstCharacter-2) + '\n', '\n\n')
+    sReturn = sReturn.replace('[Violation]', '**Violation**\n\n.. code-block:: vhdl')
+    sReturn = sReturn.replace('[Fix]', '**Fix**\n\n.. code-block:: vhdl')
     lReturn.append(sReturn)
     return lReturn
 

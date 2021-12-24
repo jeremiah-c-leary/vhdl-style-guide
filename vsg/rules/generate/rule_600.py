@@ -18,16 +18,12 @@ class rule_600(token_suffix):
     The default suffix is *\_gen*.
     
     Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed suffixes.
-    
-    **Violation**
-    
-    .. code-block:: vhdl
+
+    [Violation]
     
        label : case condition generate
     
-    **Fix**
-    
-    .. code-block:: vhdl
+    [Fix]
     
        label_gen : case condition generate
     '''

@@ -147,6 +147,12 @@ class testDocGen(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
+    def test_generic_rules_doc(self):
+
+        lExpected, lActual = compare_files('generic')
+
+        self.assertEqual(lExpected, lActual)
+
 
 
 def compare_files(sRuleName):

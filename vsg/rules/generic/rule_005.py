@@ -16,7 +16,19 @@ lEnd = token.generic_clause.close_parenthesis
 
 class rule_005(single_space_between_token_pairs_bounded_by_tokens):
     '''
-    Checks for a single space between the : and identifier.
+    This rule checks for a single space after the colon in a generic declaration.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       g_width :integer := 32;
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       g_width : integer := 32;
     '''
     def __init__(self):
         single_space_between_token_pairs_bounded_by_tokens.__init__(self, 'generic', '005', lTokens, lStart, lEnd)

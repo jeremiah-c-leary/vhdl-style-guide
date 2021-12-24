@@ -145,7 +145,7 @@ This rule checks for a single space after the default assignment.
 generic_007
 ###########
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_name|
 
 This rule checks the generic names have proper case.
 
@@ -187,7 +187,7 @@ This rule checks the indent of the closing parenthesis.
 generic_009
 ###########
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **generic** keyword has proper case.
 
@@ -208,7 +208,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 generic_010
 ###########
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks the closing parenthesis is on a line by itself.
 
@@ -228,7 +228,7 @@ This rule checks the closing parenthesis is on a line by itself.
 generic_013
 ###########
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks for the **generic** keyword on the same line as a generic declaration.
 
@@ -248,7 +248,7 @@ This rule checks for the **generic** keyword on the same line as a generic decla
 generic_014
 ###########
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for at least a single space before the colon.
 
@@ -271,7 +271,7 @@ This rule checks for at least a single space before the colon.
 generic_016
 ###########
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks for multiple generics defined on a single line.
 
@@ -295,7 +295,7 @@ This rule checks for multiple generics defined on a single line.
 generic_017
 ###########
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the generic type has proper case if it is a VHDL keyword.
 
@@ -322,7 +322,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 generic_018
 ###########
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks the **generic** keyword is on the same line as the (.
 
@@ -369,7 +369,7 @@ This rule checks for blank lines before the ); of the generic declaration.
 generic_020
 ###########
 
-|phase_7| |disabled| |error|
+|phase_7| |disabled| |error| |naming|
 
 This rule checks for valid prefixes on generic identifiers.
 The default generic prefix is *g\_*.
@@ -391,7 +391,7 @@ Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#conf
 generic_600
 ###########
 
-|phase_7| |disabled| |error|
+|phase_7| |disabled| |error| |naming|
 
 This rule checks for valid suffixes on generic identifiers.
 The default generic suffix is *\_g*.
