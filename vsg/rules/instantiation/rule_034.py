@@ -7,19 +7,32 @@ from vsg.rule_group import structure
 
 class rule_034(structure.Rule):
     '''
-    Checks for component or entity instantiations.
-
-    Parameters
-    ----------
-
-    name : string
-       The group the rule belongs to.
-
-    identifier : string
-       unique identifier.  Usually in the form of 00N.
-
-    lTokens : list of token types
-       The token types to check the case on.
+    This rule checks for component versus direct instantiations.
+    
+    Refer to the section `Configuring Type of Instantiation <configuring.html#configuring-type-of-instantiations>`_ for options to configure the allowed configuration.
+    
+    component instantiation
+    ^^^^^^^^^^^^^^^^^^^^^^^
+    
+    .. NOTE:: This is the default configuration
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       U_FIFO : entity fifo_dsn.FIFO(RTL)
+    
+    
+    entity instantiation
+    ^^^^^^^^^^^^^^^^^^^^
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       U_FIFO : component FIFO
+    
+       U_FIFO : FIFO
     '''
 
     def __init__(self):

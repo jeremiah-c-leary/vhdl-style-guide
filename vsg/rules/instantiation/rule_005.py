@@ -12,8 +12,20 @@ oEnd = token.component_instantiation_statement.semicolon
 
 class rule_005(split_line_at_token_when_between_tokens):
     '''
-    Instantiation rule 005 checks the instantiation declaration and
-    "port map" keywords are not on the same line.
+    This rule checks the **port map** keywords are on their own line.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       U_FIFO : FIFO port map (
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       U_FIFO : FIFO
+         port map (
     '''
 
     def __init__(self):
