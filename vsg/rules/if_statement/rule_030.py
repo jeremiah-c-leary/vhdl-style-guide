@@ -9,7 +9,29 @@ lTokens.append(token.if_statement.semicolon)
 
 class rule_030(blank_line_below_line_ending_with_token):
     '''
-    Checks for a blank line after the "end if" keyword.
+    This rule checks a single blank line after the **end if**.
+    In the case of nested **if** statements, the rule will be enfoced on the last **end if**.
+     
+    Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       if (A = '1') then
+         B <= '0';
+       end if;
+       C <= '1';
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       if (A = '1') then
+         B <= '0';
+       end if;
+    
+       C <= '1';
     '''
 
     def __init__(self):

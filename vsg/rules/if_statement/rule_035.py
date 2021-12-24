@@ -10,7 +10,25 @@ lTokens.append(token.if_statement.elsif_keyword)
 
 class rule_035(remove_carriage_return_after_token):
     '''
-    Checks code after the **elsif** keyword are on the same line as the **elsif** keyword.
+    This rule checks the expression after the **if** or **elsif** keyword starts on the same line.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       if
+         a = '1' then
+    
+       elsif
+         b = '1' then
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       if a = '1' then
+    
+       elsif b = '1' then
     '''
 
     def __init__(self):
