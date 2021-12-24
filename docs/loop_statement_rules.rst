@@ -35,3 +35,4 @@ This rule checks the indentation of the **loop** keyword.
      end loop;
 
    end process;
+
