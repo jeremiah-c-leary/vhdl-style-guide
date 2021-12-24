@@ -15,7 +15,21 @@ oValueToken = token.package_simple_name
 
 class rule_003(insert_token_left_of_token_if_it_does_not_exist_between_tokens_using_value_from_token):
     '''
-    Checks the package name exists on the same line as the "end" and "package" keywords.
+    This rule checks the package name exists in the closing of the package body declaration.
+    
+    Refer to the section `Configuring Optional Items <configuring.html#configuring-optional-items>`_ for options.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       end package body;
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       end package body fifo_pkg;
     '''
 
     def __init__(self):

@@ -6,7 +6,7 @@ Package Body Rules
 package_body_001
 ################
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks the **is** keyword is on the same line as the **package** keyword.
 
@@ -26,7 +26,7 @@ This rule checks the **is** keyword is on the same line as the **package** keywo
 package_body_002
 ################
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks for the optional **package body** keywords on the end package body declaration.
 
@@ -47,7 +47,7 @@ Refer to the section `Configuring Optional Items <configuring.html#configuring-o
 package_body_003
 ################
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks the package name exists in the closing of the package body declaration.
 
@@ -248,7 +248,7 @@ This rule checks the indent of the end package declaration.
 package_body_400
 ################
 
-|phase_5| |error|
+|phase_5| |error| |alignment|
 
 This rule checks the identifiers for all declarations are aligned in the package body declarative region.
 
@@ -271,7 +271,7 @@ Refer to the section `Configuring Identifier Alignment Rules <configuring.html#c
 package_body_500
 ################
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **package** keyword has proper case.
 
@@ -292,7 +292,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 package_body_501
 ################
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **body** keyword has proper case.
 
@@ -313,7 +313,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 package_body_502
 ################
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_name|
 
 This rule checks the package name has proper case in the package declaration.
 
@@ -334,7 +334,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 package_body_503
 ################
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **is** keyword has proper case.
 
@@ -355,7 +355,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 package_body_504
 ################
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **end** keyword has proper case.
 
@@ -376,7 +376,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 package_body_505
 ################
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **package** keyword in the **end package body** has proper case.
 
@@ -397,7 +397,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 package_body_506
 ################
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **body** keyword in the **end package body** has proper case.
 
@@ -418,7 +418,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 package_body_507
 ################
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_name|
 
 This rule checks the package name has proper case on the end package declaration.
 
@@ -439,7 +439,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 package_body_600
 ################
 
-|phase_7| |disabled| |error|
+|phase_7| |disabled| |error| |naming|
 
 This rule checks for valid suffixes on package body identifiers.
 The default package suffix is *_pkg*.
@@ -461,7 +461,7 @@ Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#conf
 package_body_601
 ################
 
-|phase_7| |disabled| |error|
+|phase_7| |disabled| |error| |naming|
 
 This rule checks for valid prefixes on package body identifiers.
 The default package prefix is *pkg_*.
