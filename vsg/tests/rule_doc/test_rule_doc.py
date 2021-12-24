@@ -219,6 +219,12 @@ class testDocGen(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
+    def test_procedure_call_rules_doc(self):
+
+        lExpected, lActual = compare_files('procedure_call')
+
+        self.assertEqual(lExpected, lActual)
+
 
 
 

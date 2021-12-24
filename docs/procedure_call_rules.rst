@@ -10,7 +10,7 @@ These rules handle **procedure_call_statement** and **concurrent_procedure_call_
 procedure_call_001
 ##################
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks for labels on procedure call statements.
 Labels on procedure calls are optional and do not provide additional information.
@@ -30,7 +30,7 @@ Labels on procedure calls are optional and do not provide additional information
 procedure_call_002
 ##################
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks for labels on concurrent procedure call statements.
 Labels on procedure calls are optional and do not provide additional information.
@@ -140,7 +140,7 @@ This rule checks the indent of the *procedure* name.
 procedure_call_500
 ##################
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_label|
 
 This rule checks the label has proper case.
 
@@ -161,7 +161,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 procedure_call_501
 ##################
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **postponed** keyword has proper case.
 
@@ -178,3 +178,4 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 .. code-block:: vhdl
 
    postponed WR_EN(parameter)
+
