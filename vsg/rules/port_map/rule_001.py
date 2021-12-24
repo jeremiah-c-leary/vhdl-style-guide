@@ -13,8 +13,23 @@ oEnd = token.component_instantiation_statement.semicolon
 
 class rule_001(token_case_in_range_bounded_by_tokens):
     '''
-    Checks the "port map" keywords have proper case.
+    This rule checks the **port map** keywords have proper case.
+    
+    Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       PORT MAP (
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       port map (
     '''
 
     def __init__(self):
         token_case_in_range_bounded_by_tokens.__init__(self, 'port_map', '001', lTokens, oStart, oEnd)
+        self.groups.append('case::keyword')

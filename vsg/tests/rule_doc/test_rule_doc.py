@@ -207,6 +207,12 @@ class testDocGen(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
+    def test_port_map_rules_doc(self):
+
+        lExpected, lActual = compare_files('port_map')
+
+        self.assertEqual(lExpected, lActual)
+
 
 
 
