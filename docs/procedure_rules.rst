@@ -224,7 +224,7 @@ This rule checks the indent of the closing parenthesis if it is on it's own line
 procedure_007
 #############
 
-|phase_6| |error|
+|phase_6| |error| |case|
 
 This rule checks for consistent capitalization of procedure names.
 
@@ -275,7 +275,7 @@ This rule checks for consistent capitalization of procedure names.
 procedure_008
 #############
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **end** keyword has proper case.
 
@@ -300,7 +300,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 procedure_009
 #############
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **procedure** keyword in the **end procedure** has proper case.
 
@@ -325,7 +325,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 procedure_010
 #############
 
-|phase_5| |error|
+|phase_5| |error| |alignment|
 
 This rule checks the identifiers for all declarations are aligned in the procedure declarative part.
 
@@ -350,7 +350,7 @@ Refer to the section `Configuring Identifier Alignment Rules <configuring.html#c
 procedure_011
 #############
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks for a procedure parameter on the same line as the procedure keyword when the parameters are on multiple lines.
 
@@ -613,7 +613,7 @@ Refer to the section `Configuring Blank Lines <configuring.html#configuring-blan
 procedure_401
 #############
 
-|phase_5| |error|
+|phase_5| |error| |alignment|
 
 This rule checks the colons are in the same column for all declarations in the procedure declarative part.
 Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
@@ -639,7 +639,7 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
 procedure_410
 #############
 
-|phase_5| |error|
+|phase_5| |error| |alignment|
 
 This rule checks the alignment of the colon for each parameter in the procedure declaration.
 
@@ -666,7 +666,7 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
 procedure_411
 #############
 
-|phase_5| |error|
+|phase_5| |error| |alignment|
 
 This rule checks the alignment of **:=** operator for each parameter in the procedure declaration.
 
@@ -693,7 +693,7 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
 procedure_412
 #############
 
-|phase_5| |error|
+|phase_5| |error| |alignment|
 
 This rule checks for alignment of inline comments for each parameter in the procedure declaration.
 
@@ -720,7 +720,7 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
 procedure_500
 #############
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **procedure** keyword has proper case.
 
@@ -741,7 +741,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 procedure_501
 #############
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_name|
 
 This rule checks the procedure designator has proper case.
 
@@ -762,7 +762,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 procedure_502
 #############
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **is** keyword has proper case.
 
@@ -783,7 +783,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 procedure_503
 #############
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **begin** keyword has proper case.
 
@@ -806,7 +806,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 procedure_504
 #############
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **end** keyword has proper case.
 
@@ -827,7 +827,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 procedure_505
 #############
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **procedure** keyword in the **end procedure** has proper case.
 
@@ -848,7 +848,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 procedure_506
 #############
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_name|
 
 This rule checks the procedure designator has proper case on the end procedure declaration.
 
@@ -869,7 +869,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 procedure_507
 #############
 
-|phase_6| |error|
+|phase_6| |error| |case|
 
 This rule checks for consistent capitalization of procedure names.
 
@@ -918,5 +918,4 @@ This rule checks for consistent capitalization of procedure names.
      end process;
 
    end architecture rtl;
-
 

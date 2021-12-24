@@ -14,7 +14,34 @@ oEnd = token.subprogram_body.begin_keyword
 
 class rule_005(token_indent_between_tokens):
     '''
-    Checks the indent of procedure parameters when they are on multiple lines.
+    This rule checks the indent of lines between the **is** and **begin** keywords
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       procedure average_samples (
+         constant a : in integer;
+         signal d : out std_logic ) is
+       variable var_1 : integer;
+           variable var_1 : integer;
+       begin
+       end procedure average_samples;
+    
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       procedure average_samples (
+         constant a : in integer;
+         signal b : in std_logic;
+         variable c : in std_logic_vector(3 downto 0);
+         signal d : out std_logic ) is
+         variable var_1 : integer;
+         variable var_1 : integer;
+       begin
+       end procedure average_samples;
     '''
 
     def __init__(self):
