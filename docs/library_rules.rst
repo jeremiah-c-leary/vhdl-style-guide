@@ -84,7 +84,7 @@ When set to **True**, it allows consecutive library clauses.
 library_004
 ###########
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **library** keyword has proper case.
 
@@ -109,7 +109,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 library_005
 ###########
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **use** keyword has proper case.
 
@@ -209,7 +209,7 @@ This rule checks the indent of the **use** keyword.
 library_009
 ###########
 
-|phase_4| |error|
+|phase_4| |error| |alignment|
 
 This rule checks alignment of comments above library use statements.
 
@@ -232,7 +232,7 @@ This rule checks alignment of comments above library use statements.
 library_010
 ###########
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks the **library** keyword is on it's own line.
 
@@ -252,7 +252,7 @@ This rule checks the **library** keyword is on it's own line.
 library_011
 ###########
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks the **use** keyword is on it's own line.
 
@@ -268,3 +268,4 @@ This rule checks the **use** keyword is on it's own line.
 
    context c1 is library ieee;
        use ieee.std_logic_1164.all; end context c1;
+
