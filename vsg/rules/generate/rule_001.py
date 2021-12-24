@@ -11,7 +11,29 @@ lTokens.append(token.if_generate_statement.generate_label)
 
 class rule_001(token_indent):
     '''
-    Checks the indent of the generate label.
+    This rule checks the indent of the generate declaration.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       architecture rtl of fifo is
+       begin
+    
+       ram_array : for i in 0 to 7 generate
+    
+             ram_array : for i in 0 to 7 generate
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       architecture rtl of fifo is
+       begin
+    
+         ram_array : for i in 0 to 7 generate
+    
+         ram_array : for i in 0 to 7 generate
     '''
 
     def __init__(self):

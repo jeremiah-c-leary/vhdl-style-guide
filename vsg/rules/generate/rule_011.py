@@ -16,24 +16,23 @@ oValueTokens = token.for_generate_statement.generate_label
 
 class rule_011(structure.Rule):
     '''
-    Checks for the existence of a token and will insert it if it does not exist.
-
-    Parameters
-    ----------
-
-    name : string
-       The group the rule belongs to.
-
-    identifier : string
-       unique identifier.  Usually in the form of 00N.
-
-    insert_token : token object
-       token to insert if it does not exist.
-
-    anchor_token : token object
-       token to check if insert_token exists to the right of
-
-       token to pull the value from
+    This rule checks the **end generate** line has a label on for generate statements.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       ram_array : for i in 0 to 127 generate
+    
+       end generate;
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       ram_array : for i in 0 to 127 generate
+    
+       end generate ram_array;
     '''
 
     def __init__(self):
@@ -44,6 +43,7 @@ class rule_011(structure.Rule):
         self.left_token = oLeftTokens
         self.right_token = oRightTokens
         self.value_token = oValueTokens
+        self.groups.append('structure::optional')
 
     def _get_tokens_of_interest(self, oFile):
         return oFile.get_tokens_bounded_by(token.architecture_body.begin_keyword, token.architecture_body.end_keyword)

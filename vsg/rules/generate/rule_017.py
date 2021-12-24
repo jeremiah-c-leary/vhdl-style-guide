@@ -14,7 +14,22 @@ lTokens.append(token.if_generate_statement.end_generate_label)
 
 class rule_017(token_prefix):
     '''
-    Constant rule 017 checks for prefixes in generate identifiers.
+    This rule checks for valid prefixes on generate statement labels.
+    The default prefix is *gen\_*.
+    
+    Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed prefixes.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       label : case condition generate
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       gen_label : case condition generate
     '''
 
     def __init__(self):
