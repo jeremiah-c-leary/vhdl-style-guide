@@ -16,8 +16,33 @@ oEnd = token.port_clause.close_parenthesis
 
 class rule_019(token_case_in_range_bounded_by_tokens):
     '''
-    Checks the "port" keyword has proper case.
+    This rule checks the port direction has proper case.
+    
+    Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       port (
+         WR_EN    : IN    std_logic;
+         RD_EN    : in    std_logic;
+         OVERFLOW : OUT   std_logic;
+         DATA     : INOUT std_logic
+       );
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       port (
+         WR_EN    : in    std_logic;
+         RD_EN    : in    std_logic;
+         OVERFLOW : out   std_logic;
+         DATA     : inout std_logic
+       );
     '''
 
     def __init__(self):
         token_case_in_range_bounded_by_tokens.__init__(self, 'port', '019', lTokens, oStart, oEnd)
+        self.groups.append('case::keyword')

@@ -11,19 +11,31 @@ from vsg.rule_group import structure
 
 class rule_026(structure.Rule):
     '''
-    Checks for multiple instances of identifiers in port declarations.
-
-    Parameters
-    ----------
-
-    name : string
-       The group the rule belongs to.
-
-    identifier : string
-       unique identifier.  Usually in the form of 00N.
-
-    trigger : parser object type
-       object type to apply the case check against
+    This rule checks for multiple identifiers on port declarations.
+    
+    Any comments are not replicated.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       port (
+         wr_en, rd_en : in    std_logic;  -- Comment
+         data     : inout std_logic;
+         overflow, empty : out   std_logic -- Other comment
+       );
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       port (
+         wr_en    : in    std_logic;
+         rd_en    : in    std_logic;  -- Comment
+         data    : inout std_logic
+         overflow : out   std_logic;
+         empty : out   std_logic -- Other comment
+       );
     '''
 
     def __init__(self):

@@ -6,7 +6,20 @@ from vsg.token import port_clause as token
 
 class rule_021(move_token_next_to_another_token):
     '''
-    Checks the **port** keyword is on the same line as the (.
+    This rule checks the **port** keyword is on the same line as the (.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       port
+       (
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       port (
     '''
 
     def __init__(self):

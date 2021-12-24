@@ -9,19 +9,31 @@ from vsg.rule_group import structure
 
 class rule_023(structure.Rule):
     '''
-    Checks for the existance of port modes.
-
-    Parameters
-    ----------
-
-    name : string
-       The group the rule belongs to.
-
-    identifier : string
-       unique identifier.  Usually in the form of 00N.
-
-    trigger : parser object type
-       object type to apply the case check against
+    This rule checks for missing modes in port declarations.
+    
+    .. NOTE:: This must be fixed by the user.  VSG makes no assumption on the direction of the port.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       port (
+         WR_EN    : std_logic;
+         RD_EN    : std_logic;
+         OVERFLOW : std_logic;
+         DATA     : inout std_logic
+       );
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       port (
+         WR_EN    : in    std_logic;
+         RD_EN    : in    std_logic;
+         OVERFLOW : out   std_logic;
+         DATA     : inout std_logic
+       );
     '''
 
     def __init__(self):

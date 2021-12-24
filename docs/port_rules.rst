@@ -128,13 +128,12 @@ This rule checks for a single space after the colon.
 port_006
 ########
 
-This rule has been depricated and it's function was include in rule **port_005**.
-
+This rule has been deprecated and it's function was include in rule **port_005**.
 
 port_007
 ########
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for four spaces after the **in** keyword.
 
@@ -162,7 +161,7 @@ This rule checks for four spaces after the **in** keyword.
 port_008
 ########
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for three spaces after the **out** keyword.
 
@@ -190,7 +189,7 @@ This rule checks for three spaces after the **out** keyword.
 port_009
 ########
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space after the **inout** keyword.
 
@@ -217,7 +216,7 @@ This rule checks for a single space after the **inout** keyword.
 port_010
 ########
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_name|
 
 This rule checks the port names have proper case.
 
@@ -248,7 +247,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 port_011
 ########
 
-|phase_7| |disabled| |error|
+|phase_7| |disabled| |error| |naming|
 
 This rule checks for valid prefixes on port identifiers.
 The default port prefixes are: *i\_*, *o\_*, *io\_*.
@@ -281,7 +280,7 @@ Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#conf
 port_012
 ########
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks for default assignments on port declarations.
 
@@ -312,7 +311,7 @@ This rule is defaulted to not fixable and can be overridden with a configuration
 port_013
 ########
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks for multiple ports declared on a single line.
 
@@ -339,7 +338,7 @@ This rule checks for multiple ports declared on a single line.
 port_014
 ########
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks the closing parenthesis of the port map is on a line by itself.
 
@@ -396,7 +395,7 @@ This rule checks the indent of the closing parenthesis for port maps.
 port_016
 ########
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks for a port definition on the same line as the **port** keyword.
 
@@ -424,7 +423,7 @@ This rule checks for a port definition on the same line as the **port** keyword.
 port_017
 ########
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **port** keyword has proper case.
 
@@ -445,7 +444,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 port_018
 ########
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the port type has proper case if it is a VHDL keyword.
 
@@ -477,7 +476,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 port_019
 ########
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the port direction has proper case.
 
@@ -508,7 +507,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 port_020
 ########
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for at least one space before the colon.
 
@@ -537,7 +536,7 @@ This rule checks for at least one space before the colon.
 port_021
 ########
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks the **port** keyword is on the same line as the (.
 
@@ -588,7 +587,7 @@ This rule checks for blank lines after the **port** keyword.
 port_023
 ########
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks for missing modes in port declarations.
 
@@ -650,7 +649,7 @@ This rule checks for blank lines before the close parenthesis in port declaratio
 port_025
 ########
 
-|phase_7| |disabled| |error|
+|phase_7| |disabled| |error| |naming|
 
 This rule checks for valid suffixes on port identifiers.
 The default port suffixes are *_i*, *_o*, *_io*.
@@ -682,7 +681,7 @@ Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#conf
 port_026
 ########
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks for multiple identifiers on port declarations.
 
@@ -709,3 +708,4 @@ Any comments are not replicated.
      overflow : out   std_logic;
      empty : out   std_logic -- Other comment
    );
+
