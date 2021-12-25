@@ -12,7 +12,20 @@ oEnd = token.report_statement.semicolon
 
 class rule_002(split_line_at_token_when_between_tokens):
     '''
-    Checks the severity keyword is on it's own line for report_statement statements.
+    This rule checks the **severity** keyword is on it's own line.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+        report "FIFO width is limited to 16 bits." severity FAILURE;
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+        report "FIFO width is limited to 16 bits."
+          severity FAILURE;
     '''
 
     def __init__(self):

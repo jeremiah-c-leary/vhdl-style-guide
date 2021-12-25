@@ -237,6 +237,12 @@ class testDocGen(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
+    def test_report_statement_rules_doc(self):
+
+        lExpected, lActual = compare_files('report_statement')
+
+        self.assertEqual(lExpected, lActual)
+
 
 
 

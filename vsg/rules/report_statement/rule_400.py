@@ -12,19 +12,47 @@ from vsg.vhdlFile import utils
 
 class rule_400(alignment.Rule):
     '''
-    Checks the case for words.
-
-    Parameters
-    ----------
-
-    name : string
-       The group the rule belongs to.
-
-    identifier : string
-       unique identifier.  Usually in the form of 00N.
-
-    trigger : parser object type
-       object type to apply the case check against
+    This rule checks the alignment of the report expressions.
+    
+    .. NOTE:: There is a configuration option **alignment** which changes the indent location of multiple lines.
+    
+    alignment set to 'report' (Default)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       report "FIFO width is limited" &
+       " to 16 bits."
+         severity FAILURE;
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       report "FIFO width is limited" &
+              " to 16 bits."
+         severity FAILURE;
+    
+    alignment set to 'left'
+    ^^^^^^^^^^^^^^^^^^^^^^^
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       report "FIFO width is limited" &
+       " to 16 bits."
+         severity FAILURE;
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+         report "FIFO width is limited" &
+             " to 16 bits."
+           severity FAILURE;
     '''
 
     def __init__(self):
