@@ -8,19 +8,39 @@ from vsg.vhdlFile import utils
 
 class rule_012(blank_line.Rule):
     '''
-    Checks for consecutive blank lines.
-
-    Parameters
-    ----------
-
-    name : string
-       The group the rule belongs to.
-
-    identifier : string
-       unique identifier.  Usually in the form of 00N.
-
-    trigger : parser object type
-       object type to apply the case check against
+    This rule enforces a maximum number of consecutive blank lines.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+      a <= b;
+    
+    
+      c <= d;
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+      a <= b;
+    
+      c <= d;
+    
+    .. NOTE::
+    
+      The default is set to 1.
+      This can be changed by setting the *numBlankLines* attribute to another number.
+    
+      .. code-block:: json
+    
+         {
+             "rule":{
+                 "whitespace_012":{
+                     "numBlankLines":3
+                 }
+             }
+         }
     '''
 
     def __init__(self):

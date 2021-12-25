@@ -8,19 +8,21 @@ from vsg.rule_group import whitespace
 
 class rule_001(whitespace.Rule):
     '''
-    This class removes whitespace before a given token.
-
-    Parameters
-    ----------
-
-    name : string
-       The group the rule belongs to.
-
-    identifier : string
-       unique identifier.  Usually in the form of 00N.
-
-    oToken : token object
-       The token where spaces will be removed before.
+    This rule check for trailing spaces.
+    
+    **Violation**
+    
+    Where periods indicate spaces:
+    
+    .. code-block:: vhdl
+    
+        library ieee;....
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+        library ieee;
     '''
 
     def __init__(self):

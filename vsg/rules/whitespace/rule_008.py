@@ -9,8 +9,21 @@ from vsg.rule_group import whitespace
 
 class rule_008(whitespace.Rule):
     '''
-    Checks for spaces after "std_logic_vector"
-
+    This rule checks for spaces after the **std_logic_vector** keyword.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       signal data    : std_logic_vector (7 downto 0);
+       signal counter : std_logic_vector    (7 downto 0);
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       signal data    : std_logic_vector(7 downto 0);
+       signal counter : std_logic_vector(7 downto 0);
     '''
 
     def __init__(self):
