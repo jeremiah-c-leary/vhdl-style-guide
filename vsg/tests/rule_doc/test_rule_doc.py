@@ -267,6 +267,12 @@ class testDocGen(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
+    def test_subtype_rules_doc(self):
+
+        lExpected, lActual = compare_files('subtype')
+
+        self.assertEqual(lExpected, lActual)
+
 
 
 def compare_files(sRuleName):
