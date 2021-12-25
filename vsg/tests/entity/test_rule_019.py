@@ -30,7 +30,7 @@ class test_entity_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'entity')
         self.assertEqual(oRule.identifier, '019')
-        self.assertEqual(oRule.groups, ['structure'])
+        self.assertEqual(oRule.groups, ['structure', 'structure::optional'])
 
         lExpected = [9]
 

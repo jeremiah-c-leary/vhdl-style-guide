@@ -29,7 +29,7 @@ class test_variable_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'variable')
         self.assertEqual(oRule.identifier, '010')
-        self.assertEqual(oRule.groups, ['case'])
+        self.assertEqual(oRule.groups, ['case', 'case::name'])
 
         lExpected = [21, 22, 27, 28]
 
