@@ -46,7 +46,7 @@ The rules are divided into catagories depending on the part of the VHDL code bei
    report_statement_rules.rst
    sequential_rules.rst
    signal_rules.rst
-   source_file.rst
+   source_file_rules.rst
    subprogram_body_rules.rst
    subtype_rules.rst
    type_rules.rst
