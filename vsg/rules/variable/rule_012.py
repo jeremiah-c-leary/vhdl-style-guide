@@ -9,7 +9,22 @@ lTokens.append(token.variable_declaration.identifier)
 
 class rule_012(token_prefix):
     '''
-    Variable rule 012 checks for prefixes in variable identifiers.
+    This rule checks for valid prefixes on variable identifiers.
+    The default variable prefix is *v\_*.
+    
+    Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed prefixes.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       variable my_var : natural;
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       variable v_my_var : natural;
     '''
 
     def __init__(self):
