@@ -297,6 +297,12 @@ class testDocGen(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
+    def test_when_rules_doc(self):
+
+        lExpected, lActual = compare_files('when')
+
+        self.assertEqual(lExpected, lActual)
+
 
 def compare_files(sRuleName):
     lExpected = []
