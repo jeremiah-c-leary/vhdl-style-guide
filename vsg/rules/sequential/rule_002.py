@@ -15,7 +15,21 @@ lTokens.append(token.conditional_force_assignment.assignment)
 
 class rule_002(single_space_after_token):
     '''
-    Checks for at least a single space after the <=.
+    This rule checks for a single space after the **<=** operator.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       wr_en <=     '1';
+       rd_en <='0';
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       wr_en <= '1';
+       rd_en <= '0';
     '''
     def __init__(self):
         single_space_after_token.__init__(self, 'sequential', '002', lTokens)
