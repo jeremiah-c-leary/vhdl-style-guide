@@ -261,6 +261,12 @@ class testDocGen(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
+    def test_subprogram_body_rules_doc(self):
+
+        lExpected, lActual = compare_files('subprogram_body')
+
+        self.assertEqual(lExpected, lActual)
+
 
 
 def compare_files(sRuleName):

@@ -4,9 +4,9 @@ Subprogram Body Rules
 ---------------------
 
 subprogram_body_400
-####################
+###################
 
-|phase_5| |error|
+|phase_5| |error| |alignment|
 
 This rule checks the alignment of the **<=** and **:=** operators over consecutive sequential assignments in subprogram bodies.
 
@@ -34,3 +34,4 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
    wr_en      <= '1';
    rd_en      <= '0';
    v_variable := 10;
+
