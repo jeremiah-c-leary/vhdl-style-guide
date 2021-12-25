@@ -42,10 +42,6 @@ def create_rule_documentation():
     lRuleNames = get_names_of_rule_classes(oRuleList)
     for sRuleName in lRuleNames:
         build_rule_class_doc(sRuleName, dRules)
-        if sRuleName == 'whitespace':
-            break
-    print('='*80)
-    print(lRuleNames)
 
 def build_rule_class_doc(sRuleName, dRules):
 #    for sRuleName in lRuleName:
@@ -107,7 +103,6 @@ def get_names_of_rule_classes(oRuleList):
 def do_something(lRules):
     lRuleDoc = []
     for oRule in lRules:
-        print(oRule)
         lRuleDoc.extend(generate_rule_header(oRule))
         lRuleDoc.extend(blank_line())
         if not oRule.deprecated and not oRule.proposed:

@@ -8,19 +8,17 @@ from vsg.rule_group import structure
 
 class rule_001(structure.Rule):
     '''
-    Checks the case for words.
-
-    Parameters
-    ----------
-
-    name : string
-       The group the rule belongs to.
-
-    identifier : string
-       unique identifier.  Usually in the form of 00N.
-
-    trigger : parser object type
-       object type to apply the case check against
+    This rule checks for **with** statements.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       with buttons select
+    
+    **Fix**
+    
+    Refactor **with** statement into a process.
     '''
 
     def __init__(self):
