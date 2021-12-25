@@ -31,7 +31,6 @@ Proper indentation enhances comprehension.
        temp := temp/2;
      end loop;
 
-
 while_loop_002
 ##############
 

@@ -303,6 +303,12 @@ class testDocGen(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
+    def test_while_loop_rules_doc(self):
+
+        lExpected, lActual = compare_files('while_loop')
+
+        self.assertEqual(lExpected, lActual)
+
 
 def compare_files(sRuleName):
     lExpected = []
