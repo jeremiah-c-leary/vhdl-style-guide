@@ -285,6 +285,11 @@ class testDocGen(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
+    def test_variable_assignment_rules_doc(self):
+
+        lExpected, lActual = compare_files('variable_assignment')
+
+        self.assertEqual(lExpected, lActual)
 
 
 def compare_files(sRuleName):

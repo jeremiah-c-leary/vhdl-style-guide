@@ -56,7 +56,7 @@ This rule checks for a single space after the assignment.
 variable_assignment_003
 #######################
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for at least a single space before the assignment.
 
@@ -77,7 +77,7 @@ This rule checks for at least a single space before the assignment.
 variable_assignment_004
 #######################
 
-|phase_4| |error|
+|phase_4| |error| |alignment|
 
 This rule checks the alignment of multiline variable assignments.
 
@@ -98,7 +98,7 @@ This rule checks the alignment of multiline variable assignments.
 variable_assignment_005
 #######################
 
-|phase_5| |error|
+|phase_5| |error| |alignment|
 
 This rule checks the alignment of **:=** operators over multiple lines.
 
@@ -127,7 +127,7 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
 variable_assignment_006
 #######################
 
-|phase_2| |error|
+|phase_2| |error| |structure|
 
 This rule checks for comments in multiline variable assignments.
 

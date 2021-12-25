@@ -42,7 +42,7 @@ def create_rule_documentation():
     lRuleNames = get_names_of_rule_classes(oRuleList)
     for sRuleName in lRuleNames:
         build_rule_class_doc(sRuleName, dRules)
-        if sRuleName == 'variable':
+        if sRuleName == 'variable_assignment':
             break
     print('='*80)
     print(lRuleNames)
