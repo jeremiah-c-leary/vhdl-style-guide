@@ -9,7 +9,27 @@ lTokens.append(token.enumeration_type_definition.enumeration_literal)
 
 class rule_005(token_indent):
     '''
-    Checks for the proper indentation of multiline enumerated types.
+    This rule checks the indent of multiline enumerated types.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       type state_machine is (
+       idle,
+         write,
+       read,
+          done);
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       type state_machine is (
+         idle,
+         write,
+         read,
+         done);
     '''
 
     def __init__(self):

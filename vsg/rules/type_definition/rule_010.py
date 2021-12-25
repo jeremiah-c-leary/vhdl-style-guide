@@ -10,7 +10,24 @@ lTokens.append(token.full_type_declaration.type_keyword)
 
 class rule_010(previous_line):
     '''
-    Checks for a blank line above the "type" declaration.
+    This rule checks for blank lines or comments above the **type** declaration.
+    
+    Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous-line-rules>`_ for options.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       signal wr_en : std_logic;
+       type state_machine is (idle, write, read, done);
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       signal wr_en : std_logic;
+    
+       type state_machine is (idle, write, read, done);
     '''
 
     def __init__(self):

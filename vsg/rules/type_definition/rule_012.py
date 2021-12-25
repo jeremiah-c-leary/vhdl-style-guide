@@ -11,7 +11,27 @@ oEnd = token.record_type_definition.end_keyword
 
 class rule_012(token_indent_between_tokens):
     '''
-    Checks the indent of record elements.
+    This rule checks the indent of record elements in record type declarations.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       type interface is record
+         data : std_logic_vector(31 downto 0);
+       chip_select : std_logic;
+           wr_en : std_logic;
+       end record;
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       type interface is record
+         data : std_logic_vector(31 downto 0);
+         chip_select : std_logic;
+         wr_en : std_logic;
+       end record;
     '''
 
     def __init__(self):

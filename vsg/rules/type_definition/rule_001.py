@@ -10,7 +10,27 @@ lTokens.append(token.full_type_declaration.type_keyword)
 
 class rule_001(token_indent):
     '''
-    Checks for the proper indentation at the beginning of the type statement.
+    This rule checks the indent of the **type** declaration.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       architecture rtl of fifo is
+    
+           type state_machine is (idle, write, read, done);
+    
+       begin
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       architecture rtl of fifo is
+    
+         type state_machine is (idle, write, read, done);
+    
+       begin
     '''
 
     def __init__(self):
