@@ -8,7 +8,7 @@ These rules cover the range definitions in signals, constants, ports and other c
 range_001
 #########
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the case of the **downto** keyword.
 
@@ -31,7 +31,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 range_002
 #########
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the case of the **to** keyword.
 
@@ -50,3 +50,4 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
    signal sig1 : std_logic_vector(3 to 0);
    signal sig2 : std_logic_vector(16 to 1);
+

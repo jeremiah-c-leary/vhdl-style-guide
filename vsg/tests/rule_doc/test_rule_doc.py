@@ -231,6 +231,12 @@ class testDocGen(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
+    def test_range_rules_doc(self):
+
+        lExpected, lActual = compare_files('range')
+
+        self.assertEqual(lExpected, lActual)
+
 
 
 
