@@ -9,7 +9,21 @@ lTokens.append(token.signal_declaration.assignment_operator)
 
 class rule_007(existence_of_tokens_which_should_not_occur):
     '''
-    Checks for default assignments in signal declarations.
+    This rule checks for default assignments in signal declarations.
+    
+    .. NOTE:: This rule requires the user to remove the default assignments.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       signal wr_en : std_logic := '0';
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       signal wr_en : std_logic;
     '''
 
     def __init__(self):

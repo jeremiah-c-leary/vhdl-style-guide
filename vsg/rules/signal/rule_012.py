@@ -11,28 +11,26 @@ from vsg.vhdlFile import utils
 
 class rule_012(alignment.Rule):
     '''
-    Checks for a single space between two tokens.
-
-    Parameters
-    ----------
-
-    name : string
-       The group the rule belongs to.
-
-    identifier : string
-       unique identifier.  Usually in the form of 00N.
-
-    lTokens : token object list
-       List of tokens to align
-
-    left_token : token object
-       The first token that defines the region
-
-    right_token : token object
-       The second token that defines the region
-
-    lUnless : token object pairs list
-       A list of pairs of tokens to in which to exclude alignment
+    This rule checks multiple signal declarations on a single line are column aligned.
+    
+    .. NOTE::
+        This rule will only cover two signals on a single line.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       signal wr_en, wr_en_f             : std_logic;
+       signal rd_en_f, rd_en             : std_logic;
+       signal chip_select, chip_select_f : t_user_defined_type;
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       signal wr_en,       wr_en_f       : std_logic;
+       signal rd_en_f,     rd_en         : std_logic;
+       signal chip_select, chip_select_f : t_user_defined_type;
     '''
 
     def __init__(self):

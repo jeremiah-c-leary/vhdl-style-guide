@@ -9,7 +9,24 @@ lTokens.append(token.signal_declaration.identifier)
 
 class rule_008(token_prefix):
     '''
-    Signal rule 008 checks for prefixes in signal identifiers.
+    This rule checks for valid prefixes on signal identifiers.
+    Default signal prefix is *s\_*.
+    
+    Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed prefixes.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       signal wr_en : std_logic;
+       signal rd_en : std_logic;
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       signal s_wr_en : std_logic;
+       signal s_rd_en : std_logic;
     '''
 
     def __init__(self):

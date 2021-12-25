@@ -249,6 +249,11 @@ class testDocGen(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
+    def test_signal_statement_rules_doc(self):
+
+        lExpected, lActual = compare_files('signal')
+
+        self.assertEqual(lExpected, lActual)
 
 
 

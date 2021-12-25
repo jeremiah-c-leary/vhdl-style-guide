@@ -23,7 +23,57 @@ lIgnore.append(parser.blank_line)
 
 class rule_014(consistent_token_case):
     '''
-    Constant rule 014 checks case consistency of signal names.
+    This rule checks for consistent capitalization of signal names.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       architecture rtl of entity1 is
+    
+         signal sig1 : std_logic;
+         signal sig2 : std_logic;
+    
+       begin
+    
+         proc_name : process (siG2) is
+         begin
+    
+           siG1 <= '0';
+    
+           if (SIG2 = '0') then
+             sIg1 <= '1';
+           elisif (SiG2 = '1') then
+             SIg1 <= '0';
+           end if;
+    
+         end process proc_name;
+    
+       end architecture rtl;
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       architecture rtl of entity1 is
+    
+         signal sig1 : std_logic;
+         signal sig2 : std_logic;
+    
+         proc_name : process (sig2) is
+         begin
+    
+           sig1 <= '0';
+    
+           if (sig2 = '0') then
+             sig1 <= '1';
+           elisif (sig2 = '1') then
+             sig1 <= '0';
+           end if;
+    
+         end process proc_name;
+    
+       end architecture rtl;
     '''
 
     def __init__(self):

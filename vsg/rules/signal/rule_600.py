@@ -9,7 +9,24 @@ lTokens.append(token.signal_declaration.identifier)
 
 class rule_600(token_suffix):
     '''
-    Signal rule 600 checks for suffixes in signal identifiers.
+    This rule checks for valid suffixes on signal identifiers.
+    Default signal suffix is *\_s*.
+    
+    Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed suffixes.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       signal wr_en : std_logic;
+       signal rd_en : std_logic;
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       signal wr_en_s : std_logic;
+       signal rd_en_s : std_logic;
     '''
 
     def __init__(self):

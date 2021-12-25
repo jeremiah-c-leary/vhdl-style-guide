@@ -9,7 +9,25 @@ lTokens.append([token.signal_declaration.signal_keyword, token.signal_declaratio
 
 class rule_016(remove_carriage_returns_between_token_pairs):
     '''
-    Checks a signal declaration is on a single line.
+    This rule checks the signal declaration is on a single line.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       signal sig1
+         : std_logic;
+    
+       signal sig2 :
+         std_logic;
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       signal sig1 : std_logic;
+    
+       signal sig2 : std_logic;
     '''
 
     def __init__(self):
