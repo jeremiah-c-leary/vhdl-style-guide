@@ -225,6 +225,12 @@ class testDocGen(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
+    def test_process_rules_doc(self):
+
+        lExpected, lActual = compare_files('process')
+
+        self.assertEqual(lExpected, lActual)
+
 
 
 

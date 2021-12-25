@@ -16,7 +16,34 @@ lSkip.append(parser.comment)
 
 class rule_035(align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens):
     '''
-    Ensures the alignment of inline comments in the process_statement_part.
+    This rule checks the alignment of inline comments between the process begin and end process lines.
+    Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       proc_1: process () is
+       begin
+    
+         a <= '1';   -- Assert
+         b <= '0';       -- Deassert
+         c <= '1'; -- Enable
+    
+       end process proc_1;
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       proc_1: process () is
+       begin
+    
+         a <= '1'; -- Assert
+         b <= '0'; -- Deassert
+         c <= '1'; -- Enable
+    
+       end process proc_1;
     '''
 
     def __init__(self):

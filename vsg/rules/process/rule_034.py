@@ -16,7 +16,34 @@ lSkip.append(parser.comment)
 
 class rule_034(align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens):
     '''
-    Ensures the alignment of inline comments in an process.
+    This rule aligns inline comments between the end of the process sensitivity list and the process **begin** keyword.
+    Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       proc_1 : process () is
+    
+          variable counter : integer range 0 to 31;     -- Counts the number of frames received
+          variable width   : natural range 0 to 255; -- Keeps track of the data word size
+    
+          variable size    : natural range 0 to 7; -- Keeps track of the frame size
+    
+       begin
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       proc_1 : process () is
+    
+          variable counter : integer range 0 to 31;  -- Counts the number of frames received
+          variable width   : natural range 0 to 255; -- Keeps track of the data word size
+    
+          variable size    : natural range 0 to 7;   -- Keeps track of the frame size
+    
+       begin
     '''
 
     def __init__(self):

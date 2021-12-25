@@ -10,22 +10,32 @@ from vsg.rule_group import structure
 
 class rule_030(structure.Rule):
     '''
-    Checks for single signal declarations on sensitivity list lines.
-
-    Parameters
-    ----------
-
-    name : string
-       The group the rule belongs to.
-
-    identifier : string
-       unique identifier.  Usually in the form of 00N.
-
-    lTokens : list of parser object types
-       object types to check the prefix
-
-    lSuffixes: string list
-       acceptable suffixes
+    This rule checks for a single signal per line in a sensitivity list that is not the last one.
+    The sensitivity list is required by the compiler, but provides no useful information to the reader.
+    Therefore, the vertical spacing of the sensitivity list should be minimized.
+    This will help with code readability.
+    
+    .. NOTE::  This rule is left to the user to fix.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       proc_a : process (rd_en,
+                         wr_en,
+                         data_in,
+                         data_out,
+                         rd_full,
+                         wr_full
+                        )
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       proc_a : process (rd_en, wr_en, data_in, data_out,
+                         rd_full, wr_full
+                        )
     '''
 
     def __init__(self):

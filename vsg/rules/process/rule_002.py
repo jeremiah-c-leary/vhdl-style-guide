@@ -11,7 +11,23 @@ lTokens.append([token.process_statement.process_keyword, token.process_statement
 
 class rule_002(single_space_between_token_pairs):
     '''
-    Checks for a single space between the process keyword and the process logical name
+    This rule checks for a single space after the **process** keyword.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       proc_a : process(rd_en, wr_en, data_in, data_out,
+    
+       proc_a : process    (rd_en, wr_en, data_in, data_out,
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       proc_a : process (rd_en, wr_en, data_in, data_out,
+    
+       proc_a : process (rd_en, wr_en, data_in, data_out,
     '''
     def __init__(self):
         single_space_between_token_pairs.__init__(self, 'process', '002', lTokens)

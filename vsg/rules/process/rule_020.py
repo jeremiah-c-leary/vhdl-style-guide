@@ -9,7 +9,26 @@ lTokenPairs.append([token.process_statement.open_parenthesis, token.process_stat
 
 class rule_020(multiline_alignment_between_tokens):
     '''
-    Checks the alignment of multiline sensitivity lists.
+    This rule checks the indentation of multiline sensitivity lists.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       proc_a : process (rd_en, wr_en, data_in, data_out,
+                            rd_full, wr_full,
+                   overflow, underflow
+                        ) is begin
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       proc_a : process (rd_en, wr_en, data_in, data_out,
+                         rd_full, wr_full,
+                         overflow, underflow
+                        ) is
+       begin
     '''
 
     def __init__(self):

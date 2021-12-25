@@ -13,7 +13,48 @@ from vsg.vhdlFile import utils
 
 class rule_021(blank_line.Rule):
     '''
-    Checks for blank lines before the begin keyword if there are no process declarative items.
+    This rule checks for blank lines above the **begin** keyword if there are no process declarative items.
+    
+    Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options.
+    
+    **Violation**
+    
+    .. code-block:: vhdl
+    
+       proc_a : process
+    
+       begin
+    
+    
+       proc_a : process (rd_en, wr_en)
+    
+       begin
+    
+    
+       proc_a : process (rd_en, wr_en, data_in, data_out,
+                         rd_full, wr_full
+                        ) is
+    
+    
+    
+       begin
+    
+    **Fix**
+    
+    .. code-block:: vhdl
+    
+       proc_a : process
+       begin
+    
+    
+       proc_a : process (rd_en, wr_en)
+       begin
+    
+    
+       proc_a : process (rd_en, wr_en, data_in, data_out,
+                         rd_full, wr_full
+                        ) is
+       begin
     '''
 
     def __init__(self):

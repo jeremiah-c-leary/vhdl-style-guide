@@ -30,7 +30,6 @@ This rule checks the indent of the process declaration.
 
      proc_a : process (rd_en, wr_en, data_in, data_out,
 
-
 process_002
 ###########
 
@@ -82,7 +81,7 @@ This rule checks the indent of the **begin** keyword.
 process_004
 ###########
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **begin** keyword has proper case.
 
@@ -109,7 +108,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 process_005
 ###########
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **process** keyword has proper case.
 
@@ -178,7 +177,7 @@ This rule checks for a single space after the **end** keyword.
 process_008
 ###########
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **end** keyword has proper case.
 
@@ -199,7 +198,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 process_009
 ###########
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **process** keyword has proper case in the **end process** line.
 
@@ -220,7 +219,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 process_010
 ###########
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks the **begin** keyword is on it's own line.
 
@@ -268,7 +267,7 @@ Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ f
 process_012
 ###########
 
-|phase_1| |error|
+|phase_1| |error| |structure| |structure_optional|
 
 This rule checks for the existence of the **is** keyword.
 
@@ -307,7 +306,7 @@ Refer to the section `Configuring Optional Items <configuring.html#configuring-o
 process_013
 ###########
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **is** keyword has proper case.
 
@@ -391,7 +390,7 @@ The default style is :code:`no_code`.
 process_016
 ###########
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks the process has a label.
 
@@ -416,7 +415,7 @@ This rule checks the process has a label.
 process_017
 ###########
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_label|
 
 This rule checks the process label has proper case.
 
@@ -443,7 +442,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 process_018
 ###########
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks the **end process** line has a label.
 The closing label will be added if the opening process label exists.
@@ -465,7 +464,7 @@ Refer to the section `Configuring Optional Items <configuring.html#configuring-o
 process_019
 ###########
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_label|
 
 This rule checks the **end process** label has proper case.
 
@@ -486,7 +485,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 process_020
 ###########
 
-|phase_4| |error|
+|phase_4| |error| |alignment|
 
 This rule checks the indentation of multiline sensitivity lists.
 
@@ -729,7 +728,7 @@ Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ f
 process_028
 ###########
 
-|phase_5| |error|
+|phase_5| |error| |alignment|
 
 This rule checks the alignment of the closing parenthesis of a sensitivity list.
 Parenthesis on multiple lines should be in the same column.
@@ -753,7 +752,7 @@ Parenthesis on multiple lines should be in the same column.
 process_029
 ###########
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks for the format of clock definitions in clock processes.
 The rule can be set to enforce **event** definition:
@@ -823,7 +822,7 @@ edge configuration
 process_030
 ###########
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks for a single signal per line in a sensitivity list that is not the last one.
 The sensitivity list is required by the compiler, but provides no useful information to the reader.
@@ -855,7 +854,7 @@ This will help with code readability.
 process_031
 ###########
 
-|phase_5| |error|
+|phase_5| |error| |alignment|
 
 This rule checks for alignment of identifiers in the process declarative region.
 
@@ -890,7 +889,7 @@ This rule checks for alignment of identifiers in the process declarative region.
 process_032
 ###########
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks the process label is on the same line as the process keyword.
 
@@ -911,7 +910,7 @@ This rule checks the process label is on the same line as the process keyword.
 process_033
 ###########
 
-|phase_5| |error|
+|phase_5| |error| |alignment|
 
 This rule checks the colons are in the same column for all declarations in the process declarative part.
 Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
@@ -937,7 +936,7 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
 process_034
 ###########
 
-|phase_5| |error|
+|phase_5| |error| |alignment|
 
 This rule aligns inline comments between the end of the process sensitivity list and the process **begin** keyword.
 Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
@@ -971,7 +970,7 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
 process_035
 ###########
 
-|phase_5| |error|
+|phase_5| |error| |alignment|
 
 This rule checks the alignment of inline comments between the process begin and end process lines.
 Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
@@ -1005,7 +1004,7 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
 process_036
 ###########
 
-|phase_7| |disabled| |error|
+|phase_7| |disabled| |error| |naming|
 
 This rule checks for valid prefixes on process labels.
 The default prefix is *proc\_*.
@@ -1027,7 +1026,7 @@ Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#conf
 process_600
 ###########
 
-|phase_7| |disabled| |error|
+|phase_7| |disabled| |error| |naming|
 
 This rule checks for valid suffixes on process labels.
 The default suffix is *\_proc*.
