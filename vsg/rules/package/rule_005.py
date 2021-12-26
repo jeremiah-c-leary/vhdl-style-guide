@@ -7,18 +7,18 @@ from vsg.token import package_declaration as token
 class rule_005(move_token_next_to_another_token):
     '''
     This rule checks the **is** keyword is on the same line as the **package** keyword.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        package FIFO_PKG
        is
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        package FIFO_PKG is
     '''
 

@@ -27,41 +27,41 @@ oEndToken = token.architecture_body.end_keyword
 class rule_601(case.Rule):
     '''
     This rule checks for consistent capitalization of port names in an architecture body.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        entity FIFO is
          port (
            I_DATA : in std_logic_vector(31 downto 0)
          );
        end entity fifo;
-    
+
        architecture rtl of fifo is
-    
+
        begin
-    
+
           register <= i_data;
-    
+
        end architecture rtl;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        entity FIFO is
          port (
            I_DATA : in std_logic_vector(31 downto 0)
          );
        end entity fifo;
-    
+
        architecture rtl of fifo is
-    
+
        begin
-    
+
           register <= I_DATA;
-    
+
        end architecture rtl;
     '''
 

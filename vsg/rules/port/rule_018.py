@@ -16,25 +16,25 @@ oEnd = token.port_clause.close_parenthesis
 class rule_018(token_case_n_token_after_tokens_between_tokens):
     '''
     This rule checks the port type has proper case if it is a VHDL keyword.
-    
+
     Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
-    
-    
+
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        port (
          WR_EN    : in    STD_LOGIC;
          RD_EN    : in    std_logic;
          OVERFLOW : out   t_OVERFLOW;
          DATA     : inout STD_LOGIC_VECTOR(31 downto 0)
        );
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        port (
          WR_EN    : in    std_logic;
          RD_EN    : in    std_logic;

@@ -10,17 +10,17 @@ lTokens.append(token.if_statement.else_keyword)
 class rule_021(split_line_at_token):
     '''
     This rule checks the **else** keyword is on it's own line.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        if (a = '1') then c <= '1'; else c <= '0'; end if;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        if (a = '1') then c <= '0';
        else c <= '1'; end if;
     '''

@@ -12,19 +12,19 @@ lTokens.append([token.subprogram_kind.function_keyword, token.subprogram_body.de
 class rule_101(single_space_between_token_pairs):
     '''
     This rule checks for a single space between the **end** and **function** keywords and function designator.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        end   function   overflow;
        end   function;
        end   overflow;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        end function overflow;
        end function;
        end overflow;

@@ -14,17 +14,17 @@ lSkip.append(parser.comment)
 class rule_020(align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens):
     '''
     This rule checks for alignment of inline comments in the component declaration.
-    
+
     Following extra configurations are supported:
-    
+
     * :code:`separate_generic_port_alignment`.
-    
+
     Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        component my_component
            generic (
                g_width        : positive;  -- Data width
@@ -36,11 +36,11 @@ class rule_020(align_tokens_in_region_between_tokens_skipping_lines_starting_wit
                data_o : in std_logic -- Data output
            );
        end my_component;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        component my_component
            generic (
                g_width        : positive; -- Data width

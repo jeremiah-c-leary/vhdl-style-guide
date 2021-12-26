@@ -13,22 +13,22 @@ lEnd = token.port_map_aspect.close_parenthesis
 class rule_007(single_space_between_token_pairs_bounded_by_tokens):
     '''
     This rule checks for a single space after the **=>** operator in port maps.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        U_FIFO : FIFO
          port map (
            WR_EN    =>   wr_en,
            RD_EN    =>rd_en,
            OVERFLOW =>     overflow
          );
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        U_FIFO : FIFO
          port map (
            WR_EN    => wr_en,

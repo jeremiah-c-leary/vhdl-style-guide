@@ -13,20 +13,20 @@ oEnd = token.component_instantiation_statement.semicolon
 class rule_004(split_line_at_token_when_between_tokens):
     '''
     This rule checks for the closing parenthesis *)* on generic maps are on their own line.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
          generic map (
            GENERIC_1 => 0,
            GENERIC_2 => TRUE,
            GENERIC_3 => FALSE)
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
          generic map (
            GENERIC_1 => 0,
            GENERIC_2 => TRUE,

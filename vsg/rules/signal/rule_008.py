@@ -11,20 +11,20 @@ class rule_008(token_prefix):
     '''
     This rule checks for valid prefixes on signal identifiers.
     Default signal prefix is *s\_*.
-    
+
     Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed prefixes.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        signal wr_en : std_logic;
        signal rd_en : std_logic;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        signal s_wr_en : std_logic;
        signal s_rd_en : std_logic;
     '''

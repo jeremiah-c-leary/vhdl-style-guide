@@ -10,17 +10,17 @@ lAlign.append(token.interface_unknown_declaration.assignment)
 class rule_018(align_tokens_in_region_between_tokens):
     '''
     This rule checks the alignment of **:=** operator for each generic and port in the entity declaration.
-    
+
     Following extra configurations are supported:
-    
+
     * :code:`separate_generic_port_alignment`.
-    
+
     Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        generic (
            g_width        : positive := 8;
            g_output_delay : positive      := 5
@@ -31,11 +31,11 @@ class rule_018(align_tokens_in_region_between_tokens):
            data2_i : in std_logic      := 'X';
            data_o  : in std_logic
        );
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        generic (
            g_width        : positive := 8;
            g_output_delay : positive := 5

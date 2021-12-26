@@ -11,24 +11,24 @@ lTokens.append(token.null_statement.null_keyword)
 class rule_013(token_indent):
     '''
     This rule checks the indent of the **null** keyword.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
          when others =>
             null;
-    
+
          when others =>
        null;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        when others =>
          null;
-    
+
        when others =>
          null;
     '''

@@ -10,19 +10,19 @@ lTokens.append(token.context_declaration.end_context_keyword)
 class rule_015(token_case):
     '''
     This rule checks the context keyword has proper case in the end context declaration.
-    
+
     Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        end CONTEXT;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        end context;
     '''
 

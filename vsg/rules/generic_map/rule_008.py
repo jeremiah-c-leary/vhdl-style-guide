@@ -11,21 +11,21 @@ class rule_008(formal_part_in_association_element_between_tokens):
     '''
     This rule checks for positional generics.
     Positional ports and generics are subject to problems when the position of the underlying component changes.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        port map (
          WR_EN, RD_EN, OVERFLOW
        );
-    
+
     **Fix**
-    
+
     Use explicit port mapping.
-    
+
     .. code-block:: vhdl
-    
+
        port map (
          WR_EN    => WR_EN,
          RD_EN    => RD_EN,

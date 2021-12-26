@@ -10,24 +10,24 @@ lTokens.append(token.generic_clause.generic_keyword)
 class rule_002(token_indent):
     '''
     This rule checks the indent of the **generic** keyword.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        entity fifo is
             generic (
-    
+
        entity fifo is
        generic (
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        entity fifo is
          generic (
-    
+
        entity fifo is
          generic (
     '''

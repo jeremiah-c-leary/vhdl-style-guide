@@ -12,19 +12,19 @@ class rule_036(token_prefix):
     '''
     This rule checks for valid prefixes on process labels.
     The default prefix is *proc\_*.
-    
+
     Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed prefixes.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        main: process () is
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        proc_main: process () is
     '''
 

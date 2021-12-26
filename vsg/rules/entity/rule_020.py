@@ -13,17 +13,17 @@ lSkip.append(parser.comment)
 class rule_020(align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens):
     '''
     This rule checks for alignment of inline comments in the entity declaration.
-    
+
     Following extra configurations are supported:
-    
+
     * :code:`separate_generic_port_alignment`.
-    
+
     Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        generic (
            g_width        : positive;  -- Data width
            g_output_delay : positive -- Delay at output
@@ -33,11 +33,11 @@ class rule_020(align_tokens_in_region_between_tokens_skipping_lines_starting_wit
            data_i : in std_logic;   -- Data input
            data_o : in std_logic -- Data output
        );
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        generic (
            g_width        : positive; -- Data width
            g_output_delay : positive  -- Delay at output

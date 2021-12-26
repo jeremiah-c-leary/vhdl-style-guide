@@ -7,17 +7,17 @@ from vsg.token import report_statement as token
 class rule_001(remove_tokens_bounded_by_tokens_and_remove_trailing_whitespace):
     '''
     This rule removes labels on report_statement_statements.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
         REPORT_LABEL : report "FIFO width is limited to 16 bits.";
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
         REPORT_LABEL : report "FIFO width is limited to 16 bits.";
     '''
 

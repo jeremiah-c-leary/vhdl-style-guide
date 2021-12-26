@@ -12,22 +12,22 @@ lTokens.append(token.if_generate_statement.semicolon)
 class rule_003(blank_line_below_line_ending_with_token):
     '''
     This rule checks for a blank line below the **end generate** keywords.
-    
+
     Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        end generate ram_array;
        wr_en <= '1';
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        end generate ram_array;
-    
+
        wr_en <= '1';
     '''
 

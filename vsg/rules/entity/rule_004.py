@@ -10,19 +10,19 @@ lTokens.append(token.entity_declaration.entity_keyword)
 class rule_004(token_case):
     '''
     This rule checks the **entity** keyword has proper case.
-    
+
     Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        ENTITY fifo is
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        entity fifo is
     '''
 

@@ -16,49 +16,49 @@ lIgnore.append(parser.blank_line)
 class rule_007(consistent_token_case):
     '''
     This rule checks for consistent capitalization of procedure names.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        architecture rtl of entity1 is
-    
+
          procedure average_samples (
            constant a : in integer;
            signal d : out std_logic
          ) is
-    
+
        begin
-    
+
          proc1 : process () is
          begin
-    
+
            Average_samples();
-    
+
          end process proc1;
-    
+
        end architecture rtl;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        architecture rtl of entity1 is
-    
+
          procedure average_samples (
            constant a : in integer;
            signal d : out std_logic
          ) is
-    
+
        begin
-    
+
          proc1 : process () is
          begin
-    
+
            average_samples();
-    
+
          end process proc1;
-    
+
        end architecture RTL;
     '''
 

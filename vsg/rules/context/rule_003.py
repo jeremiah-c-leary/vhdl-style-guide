@@ -7,29 +7,29 @@ from vsg.token import context_declaration as token
 class rule_003(previous_line):
     '''
     This rule checks for blank lines or comments above the **context** keyword.
-    
+
     Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous-line-rules>`_ for options.
-    
+
     The default style is :code:`no_code`.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        library ieee;
        context c1 is
-    
+
        --Some Comment
        context c1 is
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        library ieee;
-    
+
        context c1 is
-    
+
        --Some Comment
        context c1 is
     '''

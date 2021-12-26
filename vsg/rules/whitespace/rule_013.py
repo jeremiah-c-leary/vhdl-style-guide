@@ -10,18 +10,18 @@ lTokens.append(token.logical_operator.logical_operator)
 class rule_013(n_spaces_before_and_after_tokens):
     '''
     This rule checks for at least a single space before and after logical operators.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
       if (a = '1')and(b = '0')
       if (a = '0')or (b = '1')
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
       if (a = '1') and (b = '0')
       if (a = '0') or (b = '1')
     '''

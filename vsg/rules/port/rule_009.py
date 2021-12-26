@@ -16,21 +16,21 @@ oEnd = token.port_clause.close_parenthesis
 class rule_009(n_spaces_between_token_pairs_when_bounded_by_tokens):
     '''
     This rule checks for a single space after the **inout** keyword.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        port (
          WR_EN    : in    std_logic;
          RD_EN    : in    std_logic;
          DATA     : inout    std_logic
        );
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        port (
          WR_EN    : in    std_logic;
          RD_EN    : in    std_logic;

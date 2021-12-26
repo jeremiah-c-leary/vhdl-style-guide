@@ -13,18 +13,18 @@ lTokenPairs.append([token.conditional_force_assignment.assignment, token.conditi
 class rule_004(multiline_alignment_between_tokens):
     '''
     This rule checks the alignment of multiline sequential statements.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        overflow <= wr_en and
          rd_en;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        overflow <= wr_en and
                    rd_en;
     '''

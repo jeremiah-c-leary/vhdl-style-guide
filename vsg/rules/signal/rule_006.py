@@ -10,18 +10,18 @@ lTokens.append(token.signal_declaration.colon)
 class rule_006(whitespace_before_token):
     '''
     This rule checks for at least a single space before the colon.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        signal wr_en: std_logic;
        signal rd_en   : std_logic;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        signal wr_en : std_logic;
        signal rd_en   : std_logic;
     '''

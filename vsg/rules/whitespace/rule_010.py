@@ -10,17 +10,17 @@ lTokens.append(token.adding_operator.concat)
 class rule_010(n_spaces_before_and_after_tokens):
     '''
     This rule checks for spaces before and after the concate (&) operator.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        a <= b&c;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        a <= b & c;
     '''
 

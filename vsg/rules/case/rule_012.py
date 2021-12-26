@@ -10,17 +10,17 @@ lTokens.append(token.assignment)
 class rule_012(insert_carriage_return_after_token_if_it_is_not_followed_by_a_comment):
     '''
     This rule checks for code after the **=>** operator.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        when 0 => a <= '1';
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        when 0 =>
          a <= '1';
     '''

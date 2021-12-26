@@ -22,21 +22,21 @@ lIgnore.append(parser.blank_line)
 class rule_014(consistent_token_case):
     '''
     This rule checks for consistent capitalization of type names.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        type state_machine is (idle, write, read, done);
-    
+
        signal sm : State_Machine;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        type state_machine is (idle, write, read, done);
-    
+
        signal sm : state_machine;
     '''
 

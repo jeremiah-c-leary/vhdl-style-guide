@@ -11,19 +11,19 @@ lTokens.append([token.subprogram_kind.procedure_keyword, token.subprogram_body.d
 class rule_101(single_space_between_token_pairs):
     '''
     This rule checks for a single space between the **end** and **procedure** keywords and procedure designator.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        end   procedure   average_samples;
        end   procedure;
        end   average_samples;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        end procedure average_samples;
        end procedure;
        end average_samples;

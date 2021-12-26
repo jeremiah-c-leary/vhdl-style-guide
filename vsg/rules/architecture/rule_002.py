@@ -5,7 +5,7 @@ from vsg import deprecated_rule
 class rule_002(deprecated_rule.Rule):
     '''
     This rule has been split into the following rules:
-    
+
     * :ref:`architecture_030`
     * :ref:`architecture_031`
     * :ref:`architecture_032`

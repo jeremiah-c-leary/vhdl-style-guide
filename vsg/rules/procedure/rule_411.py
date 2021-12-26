@@ -13,22 +13,22 @@ lAlign.append(token.interface_unknown_declaration.assignment)
 class rule_411(align_tokens_in_region_between_tokens):
     '''
     This rule checks the alignment of **:=** operator for each parameter in the procedure declaration.
-    
+
     Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
          procedure average_samples (
            constant a : in integer := 0;
            signal d : out std_logic   := 'X';
          );
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
          procedure average_samples (
            constant a : in integer  := 0;
            signal d : out std_logic := 'X';

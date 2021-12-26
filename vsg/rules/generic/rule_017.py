@@ -16,22 +16,22 @@ oEnd = token.generic_clause.close_parenthesis
 class rule_017(token_case_n_token_after_tokens_between_tokens):
     '''
     This rule checks the generic type has proper case if it is a VHDL keyword.
-    
+
     Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
       generic (
         g_width : STD_LOGIC := '0';
         g_depth : Std_logic := '1'
       );
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
       generic (
         g_width : std_logic := '0';
         g_depth : std_logic := '1'

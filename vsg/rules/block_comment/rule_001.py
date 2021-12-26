@@ -10,22 +10,22 @@ from vsg import violation
 class rule_001(block_rule.Rule):
     '''
     This rule checks the block comment header is correct.
-    
+
     Refer to the section `Configuring Block Comments <configuring.html#configuring-block-comments>`_ for additional information.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        ----------------------------------------
        --   Comment
        --   Comment
        ----------------------------------------
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        --+-------------[ Header ]==============
        --   Comment
        --   Comment

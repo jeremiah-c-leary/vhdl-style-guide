@@ -12,17 +12,17 @@ lTokens.append([token.if_generate_statement.end_keyword, token.if_generate_state
 class rule_008(single_space_between_token_pairs):
     '''
     This rule checks for a single space after the **end** keyword.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        end   generate ram_array;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        end generate ram_array;
     '''
     def __init__(self):

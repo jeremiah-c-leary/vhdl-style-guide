@@ -21,29 +21,29 @@ oEnd = token.function_specification.close_parenthesis
 class rule_008(token_indent_between_tokens):
     '''
     This rule checks the indent of function parameters on multiple lines.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        function func_1 (a : integer; b : integer;
                    c : unsigned(3 downto 0);
            d : std_logic_vector(7 downto 0);
               e : std_logic) return integer is
        begin
-    
+
        end;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        function func_1 (a : integer; b : integer;
          c : unsigned(3 downto 0);
          d : std_logic_vector(7 downto 0);
          e : std_logic) return integer is
        begin
-    
+
        end;
     '''
 

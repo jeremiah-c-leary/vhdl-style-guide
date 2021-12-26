@@ -10,37 +10,37 @@ from vsg.rule_group import structure
 class rule_002(structure.Rule):
     '''
     This rule checks the boolean expression is enclosed in ().
-    
+
     .. NOTE:: There is a configuration option **parenthesis** which will either insert or remove the parenthesis.
-    
+
     parenthesis set to 'insert' (Default)
     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
       if a = '1' then
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
       if (a = '1') then
-    
+
     parenthesis set to 'remove'
     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
       if (a = '1') then
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
       if a = '1' then
     '''
 

@@ -12,19 +12,19 @@ lTokens.append(token.if_generate_statement.generate_label)
 class rule_005(token_case_with_prefix_suffix):
     '''
     This rule checks the generate label has proper case.
-    
+
     Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        RAM_ARRAY: for i in 0 to 7 generate
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        ram_array: for i in 0 to 7 generate
     '''
 

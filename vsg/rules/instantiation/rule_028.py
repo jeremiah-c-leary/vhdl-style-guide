@@ -8,19 +8,19 @@ from vsg.rule_group import case
 class rule_028(case.Rule):
     '''
     This rule checks the entity name has proper case in direct instantiations.
-    
+
     Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        instance_name : entity library.ENTITY_NAME
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        instance_name : entity library.entity_name
     '''
 

@@ -10,22 +10,22 @@ lTokens.append(token.component_declaration.end_keyword)
 class rule_016(blank_line_above_line_starting_with_token):
     '''
     This rule checks for blank lines above the **end component** line.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
            overflow : std_logic
          );
-    
-    
-    
+
+
+
        end component fifo;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
            overflow : std_logic
          );
        end component fifo;

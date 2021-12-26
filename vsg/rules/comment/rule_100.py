@@ -10,20 +10,20 @@ from vsg.rule_group import whitespace
 class rule_100(whitespace.Rule):
     '''
     This rule checks for a single space after the **--**.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        --Comment 1
        --|Comment 2
        ---Comment
        ---------------------------
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        -- Comment 1
        --| Comment 2
        --- Comment

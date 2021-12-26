@@ -12,7 +12,7 @@ iLines = 500
 class rule_003(number_of_lines_between_tokens):
     '''
     This rule checks the length of a process statement.
-    
+
     Refer to the section `Configuring Length Rules <configuring.html#configuring-length-rules>`_ for configuring this option.
     '''
 

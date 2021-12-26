@@ -33,19 +33,19 @@ class rule_008(alignment.Rule):
     '''
     This rule checks the alignment of inline comments in consecutive concurrent statements.
     Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        wr_en <= '0';     -- Write enable
        rd_en <= '1';   -- Read enable
        data  <= (others => '0'); -- Write data
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        wr_en <= '0';             -- Write enable
        rd_en <= '1';             -- Read enable
        data  <= (others => '0'); -- Write data

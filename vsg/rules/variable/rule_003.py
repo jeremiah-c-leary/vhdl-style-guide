@@ -5,7 +5,7 @@ from vsg import deprecated_rule
 class rule_003(deprecated_rule.Rule):
     '''
     This rule was depricated and replaced with rules:
-    
+
     * `function_015 <function_rules.html#function-015>`_
     * `package_019 <package_rules.html#package-019>`_
     * `procedure_010 <procedure_rules.html#procedure-010>`_

@@ -9,21 +9,21 @@ from vsg.token import case_statement_alternative as token
 class rule_004(single_space_between_tokens):
     '''
     This rule checks for a single space after the **when** keyword.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
       case data is
-    
+
         when   3 =>
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
       case data is
-    
+
         when 3 =>
     '''
     def __init__(self):

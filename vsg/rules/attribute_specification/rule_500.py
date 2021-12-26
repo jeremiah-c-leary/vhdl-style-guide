@@ -10,19 +10,19 @@ lTokens.append(token.attribute_specification.attribute_keyword)
 class rule_500(token_case):
     '''
     This rule checks the **attribute** keyword has proper case.
-    
+
     Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        ATTRIBUTE coordinate of comp_1 : component is (0.0, 17.5);
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        attribute coordinate of comp_1 : component is (0.0, 17.5);
     '''
 

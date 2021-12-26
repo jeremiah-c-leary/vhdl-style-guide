@@ -14,19 +14,19 @@ lEndTokens.append(token.constant_declaration.semicolon)
 class rule_011(token_case_subtype_indication):
     '''
     This rule checks the constant type has proper case.
-    
+
     Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        constant size : INTEGER := 1;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        constant size : integer := 1;
     '''
 

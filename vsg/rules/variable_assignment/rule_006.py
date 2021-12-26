@@ -13,19 +13,19 @@ oRemoveToken = parser.comment
 class rule_006(remove_lines_starting_with_token_between_token_pairs):
     '''
     This rule checks for comments in multiline variable assignments.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
          counter := 1 + 4 + 10 + 25 +
                     -- Add in more stuff
                     30 + 35;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
          counter := 1 + 4 + 10 + 25 +
                     30 + 35;
     '''

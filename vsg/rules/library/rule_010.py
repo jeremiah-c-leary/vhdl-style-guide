@@ -10,17 +10,17 @@ lTokens.append(token.library_clause.keyword)
 class rule_010(split_line_at_token):
     '''
     This rule checks the **library** keyword is on it's own line.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        context c1 is library ieee; use ieee.std_logic_1164.all; end context c1;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        context c1 is
          library ieee; use ieee.std_logic_1164.all; end context c1;
     '''

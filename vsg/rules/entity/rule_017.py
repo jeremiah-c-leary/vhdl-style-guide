@@ -10,17 +10,17 @@ lAlign.append(token.interface_unknown_declaration.colon)
 class rule_017(align_tokens_in_region_between_tokens):
     '''
     This rule checks the alignment of the colon for each generic and port in the entity declaration.
-    
+
     Following extra configurations are supported:
-    
+
     * :code:`separate_generic_port_alignment`.
-    
+
     Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        generic (
            g_width : positive;
            g_output_delay : positive
@@ -30,11 +30,11 @@ class rule_017(align_tokens_in_region_between_tokens):
            data_i : in std_logic;
            data_o : in std_logic
        );
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        generic (
            g_width        : positive;
            g_output_delay : positive

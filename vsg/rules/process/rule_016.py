@@ -9,20 +9,20 @@ from vsg.rule_group import structure
 class rule_016(structure.Rule):
     '''
     This rule checks the process has a label.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        process (rd_en, wr_en, data_in, data_out,
                 rd_full, wr_full
                ) is
        begin
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        proc_a : process (rd_en, wr_en, data_in, data_out,
                          rd_full, wr_full
                         ) is

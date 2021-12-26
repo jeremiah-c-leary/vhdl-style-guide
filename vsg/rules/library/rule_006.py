@@ -10,19 +10,19 @@ lTokens.append([token.use_clause.keyword, token.use_clause.selected_name])
 class rule_006(single_space_between_token_pairs):
     '''
     This rule checks for excessive spaces after the **use** keyword.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        library ieee;
          use    ieee.std_logic_1164.all;
          use   ieee.std_logic_unsigned.all;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        library ieee;
          use ieee.std_logic_1164.all;
          use ieee.std_logic_unsigned.all;

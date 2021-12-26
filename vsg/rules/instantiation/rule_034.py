@@ -8,30 +8,30 @@ from vsg.rule_group import structure
 class rule_034(structure.Rule):
     '''
     This rule checks for component versus direct instantiations.
-    
+
     Refer to the section `Configuring Type of Instantiation <configuring.html#configuring-type-of-instantiations>`_ for options to configure the allowed configuration.
-    
+
     component instantiation
     ^^^^^^^^^^^^^^^^^^^^^^^
-    
+
     .. NOTE:: This is the default configuration
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        U_FIFO : entity fifo_dsn.FIFO(RTL)
-    
-    
+
+
     entity instantiation
     ^^^^^^^^^^^^^^^^^^^^
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        U_FIFO : component FIFO
-    
+
        U_FIFO : FIFO
     '''
 

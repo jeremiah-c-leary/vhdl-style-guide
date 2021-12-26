@@ -15,21 +15,21 @@ lTokenPairs.append([token.constant_declaration.constant_keyword, token.constant_
 class rule_016(structure.Rule):
     '''
     This rule checks the structure of multiline constants that contain arrays.
-    
+
     Refer to section `Configuring Multiline Structure Rules <configuring.html#configuring-multiline-structure-rules>`_ for options.
-    
+
     .. NOTE:: The indenting of multiline array constants is handled by the rule `constant_012 <constant_rules.html#constant-012>`_.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        constant rom : romq_type := (0, 65535, 32768);
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        constant rom : romq_type :=
        (
          0,
@@ -154,7 +154,7 @@ def _check_last_paren_new_line(self, oToi):
                     sSolution = 'Move parenthesis after assignment to the next line and trailing comment to previous line.'
                     oViolation = _create_violation(oToi, iLine, iEnd - 1, len(lTokens) - 1, 'last_paren_new_line', 'insert_and_move_comment', sSolution)
                     self.add_violation(oViolation)
-                else: 
+                else:
                     sSolution = 'Move closing parenthesis to the next line.'
                     oViolation = _create_violation(oToi, iLine, iEnd - 1, iEnd, 'last_paren_new_line', 'insert', sSolution)
                     self.add_violation(oViolation)
@@ -421,7 +421,7 @@ def _fix_last_paren_new_line(oViolation):
         if not isinstance(lTokens[0], parser.whitespace):
             rules_utils.insert_whitespace(lTokens, 1)
         iSwapIndex = rules_utils.get_index_of_token_in_list(token.constant_declaration.semicolon, lTokens) + 1
-        lNewTokens = [] 
+        lNewTokens = []
         lNewTokens.append(lTokens[0])
         lNewTokens.extend(lTokens[iSwapIndex:])
         rules_utils.append_carriage_return(lNewTokens)

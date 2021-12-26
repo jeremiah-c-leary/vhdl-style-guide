@@ -12,19 +12,19 @@ class rule_600(token_suffix):
     '''
     This rule checks for valid suffixes on block labels.
     The default suffix is *_blk*.
-    
+
     Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed suffixes.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        block_label : block is
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        block_label_blk : block is
     '''
 

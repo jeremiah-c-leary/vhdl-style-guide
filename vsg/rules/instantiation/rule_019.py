@@ -10,13 +10,13 @@ lTokens.append(token.component_instantiation_statement.semicolon)
 class rule_019(blank_line_below_line_ending_with_token):
     '''
     This rule checks for a blank line below the end of the instantiation declaration.
-    
+
     Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        U_FIFO : FIFO
          port map (
            WR_EN    => wr_en,
@@ -24,18 +24,18 @@ class rule_019(blank_line_below_line_ending_with_token):
            OVERFLOW => overflow
          );
        U_RAM : RAM
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        U_FIFO : FIFO
          port map (
            WR_EN    => wr_en,
            RD_EN    => rd_en,
            OVERFLOW => overflow
          );
-    
+
        U_RAM : RAM
     '''
 

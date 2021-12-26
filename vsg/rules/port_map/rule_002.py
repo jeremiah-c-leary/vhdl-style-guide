@@ -12,24 +12,24 @@ sMapType = 'port'
 class rule_002(token_case_formal_part_of_association_element_in_map_between_tokens):
     '''
     This rule checks the port names have proper case.
-    
+
     Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
          port map (
            wr_en              => wr_en,
            rd_en              => rd_en,
            OVERFLOW           => overflow,
            underflow(c_index) => underflow
          );
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
          port map (
            wr_en              => wr_en,
            rd_en              => rd_en,

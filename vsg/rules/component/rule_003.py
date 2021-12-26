@@ -7,24 +7,24 @@ from vsg.token import component_declaration as token
 class rule_003(previous_line):
     '''
     This rule checks for blank lines or comments above the **component** declaration.
-    
+
     Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous-line-rules>`_ for options.
-    
+
     The default style is :code:`no_code`.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        end component fifo;
        component ram is
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        end component fifo;
-    
+
        component ram is
     '''
 

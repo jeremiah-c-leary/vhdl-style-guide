@@ -9,15 +9,15 @@ from vsg.rule_group import structure
 class rule_001(structure.Rule):
     '''
     This rule checks for **with** statements.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        with buttons select
-    
+
     **Fix**
-    
+
     Refactor **with** statement into a process.
     '''
 

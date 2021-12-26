@@ -21,45 +21,45 @@ class rule_029(structure.Rule):
     '''
     This rule checks for the format of clock definitions in clock processes.
     The rule can be set to enforce **event** definition:
-    
+
     .. code-block:: vhdl
-    
+
         if (clk'event and clk = '1') then
-    
+
     ..or **edge** definition:
-    
+
     .. code-block:: vhdl
-    
+
         if (rising_edge(clk)) then
-    
+
     event configuration
     ^^^^^^^^^^^^^^^^^^^
-    
+
     .. NOTE:: This is the default configuration.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        if (rising_edge(clk)) then
-    
+
        if (falling_edge(clk)) then
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        if (clk'event and clk = '1') then
-    
+
        if (clk'event and clk = '0') then
-    
+
     edge configuration
     ^^^^^^^^^^^^^^^^^^
-    
+
     .. NOTE::  Configuration this by setting the *'clock'* attribute to *'edge'*
-    
+
        .. code-block:: json
-    
+
           {
             "rule":{
               "process_029":{
@@ -67,21 +67,21 @@ class rule_029(structure.Rule):
               }
             }
           }
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        if (clk'event and clk = '1') then
-    
+
        if (clk'event and clk = '0') then
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        if (rising_edge(clk)) then
-    
+
        if (falling_edge(clk)) then
     '''
 

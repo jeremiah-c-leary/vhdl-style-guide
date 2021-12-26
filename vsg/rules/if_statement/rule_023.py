@@ -10,17 +10,17 @@ lTokens.append(token.if_statement.elsif_keyword)
 class rule_023(split_line_at_token):
     '''
     This rule checks the **elsif** keyword is on it's own line.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        if (a = '1') then c <= '1'; else c <= '0'; elsif (b = '0') then d <= '0'; end if;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        if (a = '1') then c <= '1'; else c <= '0';
        elsif (b = '0') then d <= '0'; end if;
     '''

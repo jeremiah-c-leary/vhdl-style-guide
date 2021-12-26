@@ -11,21 +11,21 @@ lTokens.append(token.procedure_call_statement.label)
 class rule_300(token_indent):
     '''
     This rule checks the indent of the procedure_call label.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        a <= b;
-    
+
          procedure_label : WR_EN(parameter);
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        a <= b;
-    
+
        procedure_label : WR_EN(parameter);
     '''
 

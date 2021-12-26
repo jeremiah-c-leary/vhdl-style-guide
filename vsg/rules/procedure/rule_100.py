@@ -12,21 +12,21 @@ lTokens.append([token.procedure_specification.close_parenthesis, token.subprogra
 class rule_100(single_space_between_token_pairs):
     '''
     This rule checks for a single space between the following procedure elements:  **procedure** keyword, procedure designator, open parenthesis, close parenthesis, and **is** keywords.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        procedure    average_samples    (
            constant a : in integer;
            signal d : out std_logic
          )    is
        procedure    average_samples      is
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        procedure average_samples (
            constant a : in integer;
            signal d : out std_logic

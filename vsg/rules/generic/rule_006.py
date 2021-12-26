@@ -17,18 +17,18 @@ oEnd = token.generic_clause.close_parenthesis
 class rule_006(single_space_between_token_pairs_bounded_by_tokens):
     '''
     This rule checks for a single space after the default assignment.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        g_width : integer :=32;
        g_depth : integer :=     512;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        g_width : integer := 32;
        g_depth : integer := 512;
     '''

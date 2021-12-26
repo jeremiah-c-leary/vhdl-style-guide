@@ -10,21 +10,21 @@ lTokens.append([token.port_clause.port_keyword, token.port_clause.open_parenthes
 class rule_003(single_space_between_token_pairs):
     '''
     This rule checks for a single space after the **port** keyword and (.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        port   (
-    
+
        port(
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        port (
-    
+
        port (
     '''
     def __init__(self):

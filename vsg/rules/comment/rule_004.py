@@ -10,18 +10,18 @@ lTokens.append(parser.comment)
 class rule_004(whitespace_before_token):
     '''
     This rule checks for at least a single space before inline comments.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        wr_en <= '1';--Write data
        rd_en <= '1';   -- Read data
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        wr_en <= '1'; --Write data
        rd_en <= '1';   -- Read data
     '''

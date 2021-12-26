@@ -13,18 +13,18 @@ lTokens.append([token.selected_variable_assignment.assignment, parser.todo])
 class rule_002(single_space_between_token_pairs):
     '''
     This rule checks for a single space after the assignment.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
          counter :=0;
          count   :=     counter + 1;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
          counter := 0;
          count   := counter + 1;
     '''

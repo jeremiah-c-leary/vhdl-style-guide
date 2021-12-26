@@ -11,19 +11,19 @@ class rule_028(align_left_token_with_right_token_if_right_token_starts_a_line):
     '''
     This rule checks the alignment of the closing parenthesis of a sensitivity list.
     Parenthesis on multiple lines should be in the same column.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        proc_a : process (rd_en, wr_en, data_in, data_out,
                          rd_full, wr_full
                            )
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        proc_a : process (rd_en, wr_en, data_in, data_out,
                          rd_full, wr_full
                         )

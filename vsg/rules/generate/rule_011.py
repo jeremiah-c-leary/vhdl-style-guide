@@ -17,21 +17,21 @@ oValueTokens = token.for_generate_statement.generate_label
 class rule_011(structure.Rule):
     '''
     This rule checks the **end generate** line has a label on for generate statements.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        ram_array : for i in 0 to 127 generate
-    
+
        end generate;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        ram_array : for i in 0 to 127 generate
-    
+
        end generate ram_array;
     '''
 

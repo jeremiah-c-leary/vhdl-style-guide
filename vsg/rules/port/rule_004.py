@@ -21,21 +21,21 @@ oEnd = token.port_clause.close_parenthesis
 class rule_004(token_indent_between_tokens):
     '''
     This rule checks the indent of port declarations.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        port (
        WR_EN    : in    std_logic;
             RD_EN    : in    std_logic;
          OVERFLOW : out   std_logic
        );
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        port (
          WR_EN    : in    std_logic;
          RD_EN    : in    std_logic;

@@ -10,19 +10,19 @@ lTokens.append(token.instantiated_unit.component_keyword)
 class rule_031(token_case):
     '''
     This rule checks the component keyword has proper case in component instantiations that use the **component** keyword.
-    
+
     Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        instance_name : COMPONENT entity_name
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        instance_name : component entity_name
     '''
 

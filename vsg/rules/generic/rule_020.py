@@ -14,19 +14,19 @@ class rule_020(token_prefix_between_tokens):
     '''
     This rule checks for valid prefixes on generic identifiers.
     The default generic prefix is *g\_*.
-    
+
     Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed prefixes.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        generic(my_generic : integer);
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        generic(g_my_generic : integer);
     '''
 

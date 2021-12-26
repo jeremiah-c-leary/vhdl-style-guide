@@ -14,22 +14,22 @@ lTokens.append(token.miscellaneous_operator.double_star)
 class rule_011(n_spaces_before_and_after_tokens):
     '''
     This rule checks for at least a single space before and after math operators +, -, /, \* and \*\*.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        a <= b+c;
        a <= b-c;
        a <= b/c;
        a <= b*c;
        a <= b**c;
        a <= (b+c)-(d-e);
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        a <= b + c;
        a <= b - c;
        a <= b / c;

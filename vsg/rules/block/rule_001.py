@@ -17,18 +17,18 @@ class rule_001(move_token_sequences_left_of_token):
     '''
     This rule checks the block label and the **block** keyword are on the same line.
     Keeping the label and generate on the same line reduces excessive indenting.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        block_label :
          block is
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        block_label : block is
     '''
 

@@ -17,31 +17,31 @@ oEnd = token.package_declaration.end_keyword
 class rule_401(align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens):
     '''
     This rule checks the alignment of inline comments in the package declarative part.
-    
+
     Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        package my_package is
-    
+
          signal   wr_en    : std_logic;  -- Comment 1
          signal   rd_en    : std_logic;     -- Comment 2
          constant c_period : time; -- Comment 3
-    
+
        end package my_package;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        package my_package is
-    
+
          signal   wr_en    : std_logic; -- Comment 1
          signal   rd_en    : std_logic; -- Comment 2
          constant c_period : time;      -- Comment 3
-    
+
        end package my_package;
     '''
 

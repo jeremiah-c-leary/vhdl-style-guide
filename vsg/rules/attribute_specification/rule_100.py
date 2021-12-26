@@ -13,21 +13,21 @@ lTokens.append(token.attribute_specification.is_keyword)
 class rule_100(single_space_after_token):
     '''
     This rule checks for a single space after the following attribute_specification elements:  **attribute** keyword, *attribute_designator*, **of** keyword and **is** keyword.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        attribute   coordinate   of   comp_1:component   is   (0.0, 17.5);
-    
+
        attribute   coordinate   of   comp_1:component   is(0.0, 17.5);
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        attribute coordinate of comp_1:component   is (0.0, 17.5);
-    
+
        attribute coordinate of comp_1:component   is (0.0, 17.5);
     '''
     def __init__(self):

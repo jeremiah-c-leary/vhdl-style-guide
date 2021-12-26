@@ -10,19 +10,19 @@ lTokens.append(token.port_keyword)
 class rule_001(blank_line_above_line_starting_with_token):
     '''
     This rule checks for a blank line above the **port** keyword.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        entity FIFO is
-    
+
          port (
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        entity FIFO is
          port (
     '''

@@ -21,20 +21,20 @@ oEnd = token.generic_clause.close_parenthesis
 class rule_004(token_indent_between_tokens):
     '''
     This rule checks the indent of generic declarations.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        generic (
        g_width : integer := 32;
               g_depth : integer := 512
        )
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        generic (
          g_width : integer := 32;
          g_depth : integer := 512

@@ -12,17 +12,17 @@ lTokens.append([token.concurrent_selected_signal_assignment.target, token.concur
 class rule_004(single_space_between_token_pairs):
     '''
     This rule checks for at least a single space before the **<=** operator.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        wr_en<= '0';
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        wr_en <= '0';
     '''
     def __init__(self):

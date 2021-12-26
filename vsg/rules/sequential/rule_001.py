@@ -12,22 +12,22 @@ lTokens.append(token.simple_waveform_assignment.target)
 class rule_001(token_indent):
     '''
     This rule checks the indent of sequential statements.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        begin
-    
+
            wr_en <= '1';
        rd_en <= '0';
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        begin
-    
+
          wr_en <= '1';
          rd_en <= '0';
     '''

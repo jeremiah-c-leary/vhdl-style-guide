@@ -11,22 +11,22 @@ from vsg.vhdlFile import utils
 class rule_003(block_rule.Rule):
     '''
     This rule checks the block comment footer is correct.
-    
+
     Refer to the section `Configuring Block Comments <configuring.html#configuring-block-comments>`_ for additional information.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        --+-------------[ Header ]==============
        --|  Comment
        --|  Comment
        ----------------------------------------
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        --+-------------[ Header ]==============
        --|  Comment
        --|  Comment

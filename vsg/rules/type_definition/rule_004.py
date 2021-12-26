@@ -11,19 +11,19 @@ lTokens.append(token.full_type_declaration.identifier)
 class rule_004(token_case_with_prefix_suffix):
     '''
     This rule checks the type identifier has proper case.
-    
+
     Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        type STATE_MACHINE is (idle, write, read, done);
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        type state_machine is (idle, write, read, done);
     '''
 

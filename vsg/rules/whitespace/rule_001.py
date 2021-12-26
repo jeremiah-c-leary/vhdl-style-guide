@@ -9,19 +9,19 @@ from vsg.rule_group import whitespace
 class rule_001(whitespace.Rule):
     '''
     This rule check for trailing spaces.
-    
+
     **Violation**
-    
+
     Where periods indicate spaces:
-    
+
     .. code-block:: vhdl
-    
+
         library ieee;....
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
         library ieee;
     '''
 

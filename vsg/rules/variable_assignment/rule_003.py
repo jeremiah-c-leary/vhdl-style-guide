@@ -12,18 +12,18 @@ lTokens.append(token.selected_variable_assignment.assignment)
 class rule_003(whitespace_before_token):
     '''
     This rule checks for at least a single space before the assignment.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
          counter:= 0;
          count := counter + 1;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
          counter := 0;
          count := counter + 1;
     '''

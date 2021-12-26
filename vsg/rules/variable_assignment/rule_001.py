@@ -13,28 +13,28 @@ lTokens.append(token.selected_variable_assignment.with_keyword)
 class rule_001(token_indent):
     '''
     This rule checks the indent of a variable assignment.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        proc : process () is
        begin
-    
+
            counter := 0;
        count := counter + 1;
-    
-    
+
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        proc : process () is
        begin
-    
+
          counter := 0;
          count   := counter + 1;
-    
+
     '''
 
     def __init__(self):

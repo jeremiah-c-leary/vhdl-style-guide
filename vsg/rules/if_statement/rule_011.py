@@ -14,20 +14,20 @@ lOverrides.append(token.case_statement.case_keyword)
 class rule_011(remove_excessive_blank_lines_below_line_ending_with_token):
     '''
     This rule checks for blank lines after the **else** keyword.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
       else
-    
-    
+
+
         e <= '0';
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
       else
         e <= '0';
     '''

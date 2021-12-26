@@ -16,24 +16,24 @@ lTokens.append(token.interface_unknown_declaration.assignment)
 class rule_012(structure.Rule):
     '''
     This rule checks for default assignments on port declarations.
-    
+
     This rule is defaulted to not fixable and can be overridden with a configuration to remove the default assignments.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        port (
          I_WR_EN    : in    std_logic := '0';
          I_RD_EN    : in    std_logic := '0';
          O_OVERFLOW : out   std_logic;
          IO_DATA    : inout std_logic := (others => 'Z')
        );
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        port (
          I_WR_EN    : in    std_logic;
          I_RD_EN    : in    std_logic;

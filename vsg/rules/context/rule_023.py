@@ -7,22 +7,22 @@ from vsg.token import context_declaration as token
 class rule_023(blank_line_below_line_ending_with_token):
     '''
     This rule adds a blank line below the **is** keyword.
-    
+
     Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        context c1 is
          library IEEE;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        context c1 is
-    
+
          library IEEE;
     '''
 

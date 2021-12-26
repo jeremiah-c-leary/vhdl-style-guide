@@ -11,30 +11,30 @@ lTokens.append(token.process_statement.process_label)
 class rule_015(previous_line):
     '''
     This rule checks for blank lines or comments above the **process** declaration.
-    
+
     Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
-    
+
     The default style is :code:`no_code`.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        -- This process performs FIFO operations.
        proc_a : process (rd_en, wr_en, data_in, data_out,
-    
+
        wr_en <= wr_en;
        proc_a : process (rd_en, wr_en, data_in, data_out,
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        -- This process performs FIFO operations.
        proc_a : process (rd_en, wr_en, data_in, data_out,
-    
+
        wr_en <= wr_en;
-    
+
        proc_a : process (rd_en, wr_en, data_in, data_out,
     '''
 

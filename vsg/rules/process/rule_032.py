@@ -16,19 +16,19 @@ oLeftToken = token.process_keyword
 class rule_032(move_token_sequences_left_of_token):
     '''
     This rule checks the process label is on the same line as the process keyword.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        proc_1 :
-    
+
        process(all) is
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        proc_1 : process(all) is
     '''
 

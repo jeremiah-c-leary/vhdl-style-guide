@@ -13,17 +13,17 @@ lTokens.append([token.component_instantiation_statement.label_colon, token.insta
 class rule_002(single_space_between_token_pairs):
     '''
     This rule checks for a single space after the colon.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        U_FIFO :FIFO
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        U_FIFO : FIFO
     '''
     def __init__(self):

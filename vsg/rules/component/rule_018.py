@@ -7,23 +7,23 @@ from vsg.token import component_declaration as token
 class rule_018(blank_line_below_line_ending_with_token):
     '''
     This rule checks for a blank line below the **end component** line.
-    
+
     Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        end component fifo;
        signal rd_en : std_logic;
-    
-    
+
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        end component fifo;
-    
+
        signal rd_en : std_logic;
     '''
 

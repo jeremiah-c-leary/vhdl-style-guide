@@ -12,33 +12,33 @@ lAllowTokens.append(token.subprogram_body.is_keyword)
 class rule_202(blank_line_above_line_starting_with_token):
     '''
     This rule checks for blank lines above the **begin** keyword.
-    
+
     This rule allows the **is** keyword to occupy the blank line:
-    
+
     .. code-block:: vhdl
-    
+
        procedure average_samples is
        begin
-    
+
     Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        procedure average_samples is
-    
+
          constant width : integer := 32;
        begin
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        procedure average_samples is
-    
+
          constant width : integer := 32;
-    
+
        begin
     '''
 

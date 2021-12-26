@@ -11,27 +11,27 @@ lTokens.append(token.variable_declaration.variable_keyword)
 class rule_001(token_indent):
     '''
     This rule checks the indent of variable declarations.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        proc : process () is
-    
+
        variable count : integer;
              variable counter : integer;
-    
+
        begin
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        proc : process () is
-    
+
          variable count : integer;
          variable counter : integer;
-    
+
        begin
     '''
 

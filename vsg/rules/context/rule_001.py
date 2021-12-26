@@ -10,21 +10,21 @@ lTokens.append(token.context_declaration.context_keyword)
 class rule_001(token_indent):
     '''
     This rule checks the indent of the **context** keyword.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
          context c1 is
-    
+
          library ieee;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        context c1 is
-    
+
          library ieee;
     '''
 

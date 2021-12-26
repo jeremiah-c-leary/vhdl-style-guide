@@ -10,11 +10,11 @@ lTokens.append(token.subprogram_body.begin_keyword)
 class rule_002(token_indent):
     '''
     This rule checks the indent of the **begin** keyword.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        procedure average_samples (
          constant a : in integer;
          signal b : in std_logic;
@@ -22,11 +22,11 @@ class rule_002(token_indent):
          signal d : out std_logic ) is
          begin
        end procedure average_samples;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        procedure average_samples (
          constant a : in integer;
          signal b : in std_logic;

@@ -14,19 +14,19 @@ lTokens.append(token.assertion_statement.label)
 class rule_001(token_indent):
     '''
     This rule checks indent of multiline assert statements.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        assert WIDTH > 16
             report "FIFO width is limited to 16 bits."
         severity FAILURE;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        assert WIDTH > 16
          report "FIFO width is limited to 16 bits."
          severity FAILURE;

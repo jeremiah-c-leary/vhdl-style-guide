@@ -11,19 +11,19 @@ class rule_011(structure.Rule):
     '''
     This rule checks for in-line comments and moves them to the line above.
     The indent of the comment will be set to the indent of the current line.
-    
+
     .. NOTE:: This rule is disabled by default.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        a <= b; -- Assign signal
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        -- Assign signal
        a <= b;
     '''
@@ -59,7 +59,7 @@ class rule_011(structure.Rule):
         iToken = len(lTokens) - 1
         if line_has_inline_comment(lTokens, iToken):
             dAction = create_action(lTokens, iToken)
-            oViolation = create_violation(iLine, oToi, self.solution, dAction) 
+            oViolation = create_violation(iLine, oToi, self.solution, dAction)
             self.add_violation(oViolation)
 
 

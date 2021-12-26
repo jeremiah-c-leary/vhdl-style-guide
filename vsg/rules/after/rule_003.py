@@ -29,11 +29,11 @@ lEndAssignments.append(token.simple_release_assignment.semicolon)
 class rule_003(structure.Rule):
     '''
     This rule checks the *after* keywords do not exist in the reset portion of a clock process.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        clk_proc : process(clock, reset) is
        begin
          if (reset = '1') then
@@ -44,11 +44,11 @@ class rule_003(structure.Rule):
            b <= c after 1 ns;
          end if;
        end process clk_proc;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        clk_proc : process(clock, reset) is
        begin
          if (reset = '1') then

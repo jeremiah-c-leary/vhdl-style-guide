@@ -13,18 +13,18 @@ oEnd = token.component_instantiation_statement.semicolon
 class rule_004(split_line_at_token_when_between_tokens):
     '''
     This rule checks the closing ")" character for the port map is on it's own line.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
         port map (
           WR_EN => wr_en);
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
         port map (
           WR_EN => wr_en
         );

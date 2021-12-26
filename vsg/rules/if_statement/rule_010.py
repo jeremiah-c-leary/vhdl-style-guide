@@ -13,20 +13,20 @@ lOverrides.append(token.case_statement.semicolon)
 class rule_010(remove_excessive_blank_lines_above_line_starting_with_token):
     '''
     This rule checks for blank lines before the **else** keyword.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
         d <= '1';
-    
-    
+
+
       else
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
         d <= '1';
       else
     '''

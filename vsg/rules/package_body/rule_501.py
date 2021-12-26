@@ -10,19 +10,19 @@ lTokens.append(token.package_body.body_keyword)
 class rule_501(token_case):
     '''
     This rule checks the **body** keyword has proper case.
-    
+
     Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        package BODY FIFO_PKG is
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        package body FIFO_PKG is
     '''
 

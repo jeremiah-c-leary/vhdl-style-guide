@@ -13,21 +13,21 @@ lTokenPair = [token.full_type_declaration.type_keyword, token.full_type_declarat
 class rule_009(split_line_at_token_if_on_same_line_as_token_if_token_pair_are_not_on_the_same_line):
     '''
     This rule checks for an enumerate type after the open parenthesis on multiline enumerated types.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        type state_machine is (idle,
          write,
          read,
          done
        );
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        type state_machine is (
          idle,
          write,

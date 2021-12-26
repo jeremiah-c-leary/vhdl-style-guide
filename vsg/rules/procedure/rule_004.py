@@ -21,11 +21,11 @@ oEnd = token.procedure_specification.close_parenthesis
 class rule_004(token_indent_between_tokens):
     '''
     This rule checks the indent of parameters.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        procedure average_samples (
        constant a : in integer;
            signal b : in std_logic;
@@ -33,11 +33,11 @@ class rule_004(token_indent_between_tokens):
         signal d : out std_logic ) is
        begin
        end procedure average_samples;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        procedure average_samples (
          constant a : in integer;
          signal b : in std_logic;

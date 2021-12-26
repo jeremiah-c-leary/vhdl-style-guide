@@ -11,17 +11,17 @@ lTokens.append([token.package_declaration.identifier, token.package_declaration.
 class rule_002(single_space_between_token_pairs):
     '''
     This rule checks for a single space between **package** and **is** keywords.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        package   FIFO_PKG   is
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        package FIFO_PKG is
     '''
     def __init__(self):

@@ -13,43 +13,43 @@ from vsg.vhdlFile import utils
 class rule_400(alignment.Rule):
     '''
     This rule checks the alignment of the report expressions.
-    
+
     .. NOTE:: There is a configuration option **alignment** which changes the indent location of multiple lines.
-    
+
     alignment set to 'report' (Default)
     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        report "FIFO width is limited" &
        " to 16 bits."
          severity FAILURE;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        report "FIFO width is limited" &
               " to 16 bits."
          severity FAILURE;
-    
+
     alignment set to 'left'
     ^^^^^^^^^^^^^^^^^^^^^^^
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        report "FIFO width is limited" &
        " to 16 bits."
          severity FAILURE;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
          report "FIFO width is limited" &
              " to 16 bits."
            severity FAILURE;

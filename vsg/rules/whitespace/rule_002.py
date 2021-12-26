@@ -5,7 +5,7 @@ from vsg import deprecated_rule
 class rule_002(deprecated_rule.Rule):
     '''
     This rule has been deprecated.
-    
+
     VSG changes tabs to spaces when a file is read in.
     '''
 

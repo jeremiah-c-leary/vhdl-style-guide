@@ -11,23 +11,23 @@ lTokens.append(token.if_statement.elsif_keyword)
 class rule_035(remove_carriage_return_after_token):
     '''
     This rule checks the expression after the **if** or **elsif** keyword starts on the same line.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        if
          a = '1' then
-    
+
        elsif
          b = '1' then
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        if a = '1' then
-    
+
        elsif b = '1' then
     '''
 

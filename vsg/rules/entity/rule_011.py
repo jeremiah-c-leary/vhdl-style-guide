@@ -7,17 +7,17 @@ from vsg.token import entity_declaration as token
 class rule_011(single_space_between_tokens):
     '''
     This rule checks for a single space after the **end** keyword.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        end    entity fifo;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        end entity fifo;
     '''
     def __init__(self):

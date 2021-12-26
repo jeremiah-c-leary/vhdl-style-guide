@@ -7,17 +7,17 @@ from vsg.token import architecture_body as token
 class rule_022(single_space_between_tokens):
     '''
     This rule checks for a single space before the entity name in the end architecture declaration.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        end architecture    fifo;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        end architecture fifo;
     '''
     def __init__(self):

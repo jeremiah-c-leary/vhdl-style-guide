@@ -16,27 +16,27 @@ oEnd = token.port_clause.close_parenthesis
 class rule_007(n_spaces_between_token_pairs_when_bounded_by_tokens):
     '''
     This rule checks for four spaces after the **in** keyword.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        port (
          WR_EN    : in std_logic;
          RD_EN    : in        std_logic;
          OVERFLOW : out   std_logic
        );
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        port (
          WR_EN    : in    std_logic;
          RD_EN    : in    std_logic;
          OVERFLOW : out   std_logic
        );
-    
+
     '''
     def __init__(self):
         n_spaces_between_token_pairs_when_bounded_by_tokens.__init__(self, 'port', '007', 4, lTokens, oStart, oEnd)

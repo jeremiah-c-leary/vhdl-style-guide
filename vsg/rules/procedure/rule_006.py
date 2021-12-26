@@ -10,21 +10,21 @@ lTokens.append(token.procedure_specification.close_parenthesis)
 class rule_006(token_indent):
     '''
     This rule checks the indent of the closing parenthesis if it is on it's own line.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        procedure average_samples (
          constant a : in integer;
          signal d : out std_logic
          ) is
-    
-    
+
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        procedure average_samples (
          constant a : in integer;
          signal d : out std_logic

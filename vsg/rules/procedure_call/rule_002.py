@@ -8,19 +8,19 @@ class rule_002(remove_tokens_bounded_by_tokens_and_remove_trailing_whitespace):
     '''
     This rule checks for labels on concurrent procedure call statements.
     Labels on procedure calls are optional and do not provide additional information.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        WR_EN_OUTPUT : WR_EN(parameter);
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        WR_EN(parameter);
-    
+
     .. _procedure_call_whitespacing_rules:
     '''
 

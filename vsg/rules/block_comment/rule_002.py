@@ -11,22 +11,22 @@ from vsg.vhdlFile import utils
 class rule_002(block_rule.Rule):
     '''
     This rule checks the **comment_left** attribute exists for all comments.
-    
+
     Refer to the section `Configuring Block Comments <configuring.html#configuring-block-comments>`_ for additional information.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        --+-------------[ Header ]==============
        --   Comment
        --   Comment
        ----------------------------------------
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        --+-------------[ Header ]==============
        --|  Comment
        --|  Comment

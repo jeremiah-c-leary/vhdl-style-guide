@@ -7,21 +7,21 @@ from vsg.token import case_statement as token
 class rule_006(single_space_between_tokens):
     '''
     This rule checks for a single space between the **end** and **case** keywords.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
       case data is
-    
+
       end    case;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
       case data is
-    
+
       end case;
     '''
     def __init__(self):

@@ -12,17 +12,17 @@ lTokens.append([token.package_body.end_body_keyword, token.package_body.end_pack
 class rule_101(single_space_between_token_pairs):
     '''
     This rule checks for a single space between the **end**, **package** and **body** keywords and package name.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        end   package   body    FIFO_PKG;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        end package  body   FIFO_PKG;
     '''
     def __init__(self):

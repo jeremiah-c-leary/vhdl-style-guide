@@ -10,22 +10,22 @@ lTokens.append(token.context_declaration.end_keyword)
 class rule_008(split_line_at_token):
     '''
     This rule checks the **end** keyword is on it's own line.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        context c1 is library ieee; end context c1;
-    
+
        context c1 is library ieee; end;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        context c1 is library ieee;
        end context c1;
-    
+
        context c1 is library ieee;
        end;
     '''

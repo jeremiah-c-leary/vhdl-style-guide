@@ -14,19 +14,19 @@ lInsertTokens.append(token.end_body_keyword('body'))
 class rule_002(insert_tokens_right_of_token_if_it_does_not_exist_before_token):
     '''
     This rule checks for the optional **package body** keywords on the end package body declaration.
-    
+
     Refer to the section `Configuring Optional Items <configuring.html#configuring-optional-items>`_ for options.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        end FIFO_PKG;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        end package body FIFO_PKG;
     '''
 

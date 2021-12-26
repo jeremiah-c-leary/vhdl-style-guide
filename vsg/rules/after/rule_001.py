@@ -29,11 +29,11 @@ lEndAssignments.append(token.simple_release_assignment.semicolon)
 class rule_001(structure.Rule):
     '''
     This rule checks for **after x** in signal assignments in clock processes.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        clk_proc : process(clock, reset) is
        begin
          if (reset = '1') then
@@ -44,11 +44,11 @@ class rule_001(structure.Rule):
            b <= c;
          end if;
        end process clk_proc;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        clk_proc : process(clock, reset) is
        begin
          if (reset = '1') then
@@ -59,14 +59,14 @@ class rule_001(structure.Rule):
            b <= c after 1 ns;
          end if;
        end process clk_proc;
-    
+
     .. NOTE::  This rule has two configurable items:
-    
+
        * magnitude
        * units
-    
+
        The **magnitude** is the number of units.  Default is *1*.
-    
+
        The **units** is a valid time unit: ms, us, ns, ps etc...  Default is *ns*.
     '''
 

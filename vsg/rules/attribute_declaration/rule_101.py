@@ -10,17 +10,17 @@ lTokens.append(token.attribute_declaration.colon)
 class rule_101(whitespace_before_token):
     '''
     This rule checks for at least a single space before the colon.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        attribute max_delay: time;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        attribute max_delay : time;
     '''
     def __init__(self):

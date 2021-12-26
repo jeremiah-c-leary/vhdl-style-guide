@@ -17,27 +17,27 @@ lUnless = []
 class rule_005(align_tokens_in_region_between_tokens_unless_between_tokens):
     '''
     This rule checks the alignment of the **<=** operators over consecutive sequential lines.
-    
+
     Following extra configurations are supported:
-    
+
     * :code:`if_control_statements_ends_group`,
     * :code:`case_control_statements_ends_group`.
     * :code:`case_keyword_statements_ends_group`.
     * :code:`loop_control_statements_ends_group`,
-    
+
     Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        wr_en <= '1';
        rd_en   <= '0';
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        wr_en <= '1';
        rd_en <= '0';
     '''

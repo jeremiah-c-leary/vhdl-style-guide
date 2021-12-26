@@ -11,19 +11,19 @@ class rule_601(token_prefix):
     '''
     This rule checks for valid prefixes on instantiation labels.
     The default prefix is *inst_*.
-    
+
     Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed prefixes.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        fifo_32x2k : FIFO
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        inst_fifo_32x2k : FIFO
     '''
 

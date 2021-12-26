@@ -7,19 +7,19 @@ from vsg.token import package_declaration as token
 class rule_014(insert_token_left_of_token_if_it_does_not_exist_between_tokens_using_value_from_token):
     '''
     This rule checks the package name exists on the same line as the **end package** keywords.
-    
+
     Refer to the section `Configuring Optional Items <configuring.html#configuring-optional-items>`_ for options.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        end package;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        end package fifo_pkg;
     '''
 

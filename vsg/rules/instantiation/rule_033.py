@@ -16,19 +16,19 @@ oEndToken = token.component_instantiation_statement.semicolon
 class rule_033(insert_token_left_of_token_if_it_does_not_exist_between_tokens):
     '''
     This rule checks for the **component** keyword for a component instantiation.
-    
+
     Refer to the section `Configuring Optional Items <configuring.html#configuring-optional-items>`_ for options.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        INSTANCE_NAME : ENTITY_NAME
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        INSTANCE_NAME : component ENTITY_NAME
     '''
     def __init__(self):

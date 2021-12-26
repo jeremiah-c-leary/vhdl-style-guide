@@ -16,21 +16,21 @@ lEndTokens.append(token.signal_kind.bus_keyword)
 class rule_011(token_case_subtype_indication):
     '''
     This rule checks the signal type has proper case.
-    
+
     Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        signal wr_en   : STD_LOGIC;
        signal rd_en   : Std_logic;
        signal cs_f    : t_User_Defined_Type;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        signal wr_en   : std_logic;
        signal rd_en   : std_logic;
        signal cs_f    : t_user_defined_type;

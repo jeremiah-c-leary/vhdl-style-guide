@@ -10,22 +10,22 @@ lTokens.append(token.package_declaration.end_keyword)
 class rule_012(blank_line_above_line_starting_with_token):
     '''
     This rule checks for blank lines or comments above the **end package** keyword.
-    
+
     Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
          constant depth : integer := 512;
        end package FIFO_PKG;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
          constant depth : integer := 512;
-    
+
        end package FIFO_PKG;
     '''
 

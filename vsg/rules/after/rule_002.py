@@ -29,9 +29,9 @@ class rule_002(alignment.Rule):
     Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
 
     **Violation**
-   
+
     .. code-block:: vhdl
-   
+
        clk_proc : process(clock, reset) is
        begin
          if (reset = '1') then
@@ -42,11 +42,11 @@ class rule_002(alignment.Rule):
            b <= c   after 1 ns;
          end if;
        end process clk_proc;
-   
+
     **Fix**
-   
+
     .. code-block:: vhdl
-   
+
        clk_proc : process(clock, reset) is
        begin
          if (reset = '1') then

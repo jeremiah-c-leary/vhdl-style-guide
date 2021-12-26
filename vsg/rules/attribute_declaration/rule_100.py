@@ -11,17 +11,17 @@ lTokens.append(token.attribute_declaration.colon)
 class rule_100(single_space_after_token):
     '''
     This rule checks for a single space after the following elements:  **attribute** keyword and colon.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        attribute   max_delay :   time;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        attribute max_delay : time;
     '''
     def __init__(self):

@@ -13,21 +13,21 @@ lOverrides.append(token.case_statement.semicolon)
 class rule_007(remove_excessive_blank_lines_above_line_starting_with_token):
     '''
     This rule checks for blank lines before the **elsif** keyword.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
         b <= '0'
-    
-    
-    
+
+
+
       elsif (c = '1') then
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
         b <= '0'
       elsif (c = '1') then
     '''

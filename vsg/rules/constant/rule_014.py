@@ -16,18 +16,18 @@ lTokenPairs.append([token.constant_declaration.assignment_operator, token.consta
 class rule_014(alignment.Rule):
     '''
     This rule checks the indent of multiline constants that do not contain arrays.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        constant width : integer := a + b +
          c + d;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        constant width : integer := a + b +
                                    c + d;
     '''

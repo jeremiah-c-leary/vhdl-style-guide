@@ -14,18 +14,18 @@ class rule_019(remove_comments_from_end_of_lines_bounded_by_tokens):
     These comments represent additional maintainence.
     They will be out of sync with the entity at some point.
     Refer to the entity for port types, port directions and purpose.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        wr_en : in    std_logic;  -- Enables write to RAM
        rd_en : out   std_logic; -- Enable reads from RAM
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        wr_en : in    std_logic;
        rd_en : out   std_logic;
     '''

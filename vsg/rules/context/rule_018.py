@@ -7,21 +7,21 @@ from vsg.token import context_declaration as token
 class rule_018(single_space_between_tokens):
     '''
     This rule checks for a single space between the **end** keyword and the **context** keyword.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        end;
-    
+
        end   context;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        end;
-    
+
        end context;
     '''
     def __init__(self):

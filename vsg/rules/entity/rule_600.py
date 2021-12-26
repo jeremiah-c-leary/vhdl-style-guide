@@ -26,11 +26,11 @@ oRegionEnd = token.port_clause.close_parenthesis
 class rule_600(consistent_case_of_tokens_from_between_tokens_applied_to_region):
     '''
     This rule checks for consistent capitalization of generic names in entity declarations.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        entity FIFO is
          generic (
            G_WIDTH : natural := 16
@@ -40,11 +40,11 @@ class rule_600(consistent_case_of_tokens_from_between_tokens_applied_to_region):
            O_DATA : std_logic_vector(g_width - 1 downto 0)
          );
        end entity fifo;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        entity FIFO is
          generic (
            G_WIDTH : natural := 16

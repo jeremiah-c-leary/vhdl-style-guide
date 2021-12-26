@@ -8,18 +8,18 @@ from vsg.token import iteration_scheme
 class rule_005(single_space_between_tokens):
     '''
     This rule checks if a label exists on a for loop that a single space exists after the colon.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
          label :    for index in 4 to 23 loop
          label :  for index in 0 to 100 loop
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
          label : for index in 4 to 23 loop
          label : for index in 0 to 100 loop
     '''

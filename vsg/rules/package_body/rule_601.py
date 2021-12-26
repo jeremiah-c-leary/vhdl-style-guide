@@ -12,19 +12,19 @@ class rule_601(token_prefix):
     '''
     This rule checks for valid prefixes on package body identifiers.
     The default package prefix is *pkg_*.
-    
+
     Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed prefixes.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        package body foo is
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        package body pkg_foo is
     '''
 

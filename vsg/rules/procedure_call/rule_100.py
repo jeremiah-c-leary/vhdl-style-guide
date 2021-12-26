@@ -16,17 +16,17 @@ lTokens.append([token.procedure_call_statement.label_colon, token.procedure_call
 class rule_100(single_space_between_token_pairs):
     '''
     This rule checks for a single space between the following block elements:  label, label colon, **postponed** keyword and the *procedure* name.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        procedure_label   :    postponed   WR_EN(parameter);
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        procedure_label : postponed WR_EN(parameter);
     '''
     def __init__(self):

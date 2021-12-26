@@ -10,21 +10,21 @@ lTokens.append(token.generic_keyword)
 class rule_001(blank_line_above_line_starting_with_token):
     '''
     This rule checks for blank lines above the **generic** keyword.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        entity fifo is
-    
-    
-    
+
+
+
          generic (
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        entity fifo is
          generic (
     '''

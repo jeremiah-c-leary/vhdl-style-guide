@@ -7,19 +7,19 @@ from vsg.token import context_declaration as token
 class rule_005(move_token_next_to_another_token):
     '''
     This rule checks the context identifier is on the same line as the **context** keyword.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        context
        c1
          is
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        context c1
          is
     '''

@@ -16,31 +16,31 @@ lUnless.append([token.subprogram_body.is_keyword,token.subprogram_body.begin_key
 class rule_026(align_tokens_in_region_between_tokens_unless_between_tokens):
     '''
     This rule checks the colons are in the same column for all declarations in the architecture declarative part.
-    
+
     Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        architecture rtl of my_entity is
-    
+
          signal   wr_en : std_logic;
          signal   rd_en   : std_logic;
          constant c_period : time;
-    
+
        begin
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        architecture rtl of my_entity is
-    
+
          signal   wr_en    : std_logic;
          signal   rd_en    : std_logic;
          constant c_period : time;
-    
+
        begin
     '''
 

@@ -10,22 +10,22 @@ lTokens.append(token.process_statement.semicolon)
 class rule_011(blank_line_below_line_ending_with_token):
     '''
     This rule checks for a blank line below the **end process** keyword.
-    
+
     Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        end process proc_a;
        wr_en <= wr_en;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        end process proc_a;
-    
+
        wr_en <= wr_en;
     '''
 

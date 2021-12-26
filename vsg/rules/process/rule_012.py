@@ -15,33 +15,33 @@ oBeforeToken = token.begin_keyword
 class rule_012(insert_token_right_of_possible_tokens_if_it_does_not_exist_before_token):
     '''
     This rule checks for the existence of the **is** keyword.
-    
+
     Refer to the section `Configuring Optional Items <configuring.html#configuring-optional-items>`_ for options.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        proc_a : process
        begin
        end process;
-    
+
        proc_a : process (rd_en, wr_en, data_in, data_out,
                          rd_full, wr_full
                         )
        begin
        end process;
-    
-    
+
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        proc_a : process is
        begin
        end process;
-    
-    
+
+
        proc_a : process (rd_en, wr_en, data_in, data_out,
                          rd_full, wr_full
                         ) is

@@ -14,28 +14,28 @@ from vsg.vhdlFile import utils
 class rule_026(blank_line.Rule):
     '''
     This rule checks for blank lines above the first declarative line, if it exists.
-    
+
     Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        proc_a : process (rd_en, wr_en, data_in, data_out,
                          rd_full, wr_full
                         ) is
          -- Keep track of the number of words in the FIFO
          variable word_count : integer;
        begin
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        proc_a : process (rd_en, wr_en, data_in, data_out,
                          rd_full, wr_full
                         ) is
-    
+
          -- Keep track of the number of words in the FIFO
          variable word_count : integer;
        begin

@@ -9,31 +9,31 @@ from vsg.vhdlFile import utils
 class rule_012(blank_line.Rule):
     '''
     This rule enforces a maximum number of consecutive blank lines.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
       a <= b;
-    
-    
+
+
       c <= d;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
       a <= b;
-    
+
       c <= d;
-    
+
     .. NOTE::
-    
+
       The default is set to 1.
       This can be changed by setting the *numBlankLines* attribute to another number.
-    
+
       .. code-block:: json
-    
+
          {
              "rule":{
                  "whitespace_012":{

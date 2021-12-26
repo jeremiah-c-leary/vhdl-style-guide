@@ -19,21 +19,21 @@ lUnless.append([token.subprogram_body.is_keyword,token.subprogram_body.begin_key
 class rule_019(align_tokens_in_region_between_tokens_unless_between_tokens):
     '''
     This rule checks the identifiers for all declarations are aligned in the package declarative region.
-    
+
     Refer to the section `Configuring Identifier Alignment Rules <configuring.html#configuring-identifier-alignment-rules>`_ for information on changing the configurations.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        variable var1 : natural;
        signal sig1 : natural;
        constant c_period : time;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        variable var1     : natural;
        signal   sig1     : natural;
        constant c_period : time;

@@ -15,11 +15,11 @@ oEnd = token.subprogram_body.begin_keyword
 class rule_005(token_indent_between_tokens):
     '''
     This rule checks the indent of lines between the **is** and **begin** keywords
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        procedure average_samples (
          constant a : in integer;
          signal d : out std_logic ) is
@@ -27,12 +27,12 @@ class rule_005(token_indent_between_tokens):
            variable var_1 : integer;
        begin
        end procedure average_samples;
-    
-    
+
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        procedure average_samples (
          constant a : in integer;
          signal b : in std_logic;

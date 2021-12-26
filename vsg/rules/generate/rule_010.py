@@ -12,19 +12,19 @@ lTokens.append(token.if_generate_statement.end_generate_keyword)
 class rule_010(token_case):
     '''
     This rule checks the **generate** keyword has the proper case in the **end generate** line.
-    
+
     Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        end GENERATE ram_array;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        end generate ram_array;
     '''
 

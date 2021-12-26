@@ -13,24 +13,24 @@ lTokens.append(token.interface_unknown_declaration.identifier)
 class rule_010(token_case_in_range_bounded_by_tokens):
     '''
     This rule checks the port names have proper case.
-    
+
     Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        port (
          wr_en     : in    std_logic;
          rd_en     : in    std_logic;
          OVERFLOW  : out   std_logic;
          underflow : out   std_logic
        );
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        port (
          wr_en     : in    std_logic;
          rd_en     : in    std_logic;

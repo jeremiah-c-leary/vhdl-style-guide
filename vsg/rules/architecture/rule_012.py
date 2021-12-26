@@ -7,17 +7,17 @@ from vsg.token import architecture_body as token
 class rule_012(single_space_between_tokens):
     '''
     This rule checks for a single space between **end** and **architecture** keywords.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        end    architecture architecture_name;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        end architecture architecture_name;
     '''
     def __init__(self):

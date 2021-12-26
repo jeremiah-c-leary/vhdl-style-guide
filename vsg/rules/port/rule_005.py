@@ -22,22 +22,22 @@ lEnd = token.port_clause.close_parenthesis
 class rule_005(single_space_between_token_pairs_bounded_by_tokens):
     '''
     This rule checks for a single space after the colon.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        port (
          WR_EN    : in    std_logic;
          RD_EN    :   in    std_logic;
          OVERFLOW :out   std_logic;
          DATA     :inout std_logic
        );
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        port (
          WR_EN    : in    std_logic;
          RD_EN    : in    std_logic;

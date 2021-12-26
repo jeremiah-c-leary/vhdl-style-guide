@@ -17,19 +17,19 @@ oEnd = token.generic_clause.close_parenthesis
 class rule_007(token_case_in_range_bounded_by_tokens):
     '''
     This rule checks the generic names have proper case.
-    
+
     Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        G_WIDTH : integer := 32;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        g_width : integer := 32;
     '''
 

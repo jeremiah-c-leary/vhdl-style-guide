@@ -11,18 +11,18 @@ lTokenPairs.append([token.if_statement.elsif_keyword, token.if_statement.then_ke
 class rule_009(multiline_alignment_between_tokens):
     '''
     This rule checks the alignment of multiline boolean expressions.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        if (a = '0' and b = '1' and
              c = '0') then
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        if (a = '0' and b = '1' and
            c = '0') then
     '''

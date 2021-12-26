@@ -12,22 +12,22 @@ from vsg.vhdlFile import utils
 class rule_012(alignment.Rule):
     '''
     This rule checks multiple signal declarations on a single line are column aligned.
-    
+
     .. NOTE::
         This rule will only cover two signals on a single line.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        signal wr_en, wr_en_f             : std_logic;
        signal rd_en_f, rd_en             : std_logic;
        signal chip_select, chip_select_f : t_user_defined_type;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        signal wr_en,       wr_en_f       : std_logic;
        signal rd_en_f,     rd_en         : std_logic;
        signal chip_select, chip_select_f : t_user_defined_type;

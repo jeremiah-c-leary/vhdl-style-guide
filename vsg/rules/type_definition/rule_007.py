@@ -16,17 +16,17 @@ lTokens.append([token.full_type_declaration.is_keyword, token.file_type_definiti
 class rule_007(single_space_between_token_pairs):
     '''
     This rule checks for a single space after the **is** keyword.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        type state_machine is     (idle, write, read, done);
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        type state_machine is (idle, write, read, done);
     '''
     def __init__(self):

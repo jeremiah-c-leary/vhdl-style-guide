@@ -12,23 +12,23 @@ from vsg.rule_group import structure
 class rule_026(structure.Rule):
     '''
     This rule checks for multiple identifiers on port declarations.
-    
+
     Any comments are not replicated.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        port (
          wr_en, rd_en : in    std_logic;  -- Comment
          data     : inout std_logic;
          overflow, empty : out   std_logic -- Other comment
        );
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        port (
          wr_en    : in    std_logic;
          rd_en    : in    std_logic;  -- Comment
