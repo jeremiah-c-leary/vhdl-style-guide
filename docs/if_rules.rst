@@ -607,7 +607,7 @@ if_030
 
 This rule checks a single blank line after the **end if**.
 In the case of nested **if** statements, the rule will be enfoced on the last **end if**.
- 
+
 Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
 
 **Violation**
@@ -636,7 +636,7 @@ if_031
 
 This rule checks for blank lines or comments above the **if** keyword.
 In the case of nested **if** statements, the rule will be enfoced on the first **if**.
- 
+
 Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous-line-rules>`_ for options.
 
 The default style is :code:`no_code`.

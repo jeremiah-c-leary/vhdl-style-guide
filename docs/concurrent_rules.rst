@@ -299,7 +299,7 @@ Refer to the section `Configuring Concurrent Structure Rules <configuring.html#c
      '0' when q_wr_en = '1' else
             '1';
 
-   w_foo <= 
+   w_foo <=
      I_FOO when ((I_BAR = '1') and
                         (I_CRUFT = '1')) else
             '0';
