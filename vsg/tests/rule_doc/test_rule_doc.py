@@ -1,3 +1,4 @@
+import glob
 import os
 import unittest
 
@@ -14,6 +15,14 @@ class testDocGen(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         __rule_doc_gen__.create_rule_documentation()
+
+    @classmethod
+    def tearDownClass(cls):
+        for sFilename in glob.glob('*_rules.rst'):
+            try:
+                os.remove(sFilename)
+            except:
+                pass
 
     def test_after_rules_doc(self):
 
