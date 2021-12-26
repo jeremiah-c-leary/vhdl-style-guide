@@ -20,7 +20,7 @@ The rules are divided into catagories depending on the part of the VHDL code bei
    concurrent_rules.rst
    constant_rules.rst
    context_rules.rst
-   context_reference_rules.rst
+   context_ref_rules.rst
    entity_rules.rst
    entity_specification_rules.rst
    exit_statement_rules.rst

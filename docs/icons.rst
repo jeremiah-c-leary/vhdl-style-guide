@@ -65,7 +65,7 @@
    :height: 25px
    :target: rule_groups.html
 
-.. |structural| image:: img/structural.svg
+.. |structure| image:: img/structure.svg
    :height: 25px
    :target: rule_groups.html
 
@@ -73,7 +73,7 @@
    :height: 25px
    :target: rule_groups.html
 
-.. |structural_optional| image:: img/structural_optional.svg
+.. |structure_optional| image:: img/structure_optional.svg
    :height: 25px
    :target: rule_groups.html
 
@@ -98,5 +98,9 @@
    :target: rule_groups.html
 
 .. |case_label| image:: img/case_label.svg
+   :height: 25px
+   :target: rule_groups.html
+
+.. |naming| image:: img/naming.svg
    :height: 25px
    :target: rule_groups.html
