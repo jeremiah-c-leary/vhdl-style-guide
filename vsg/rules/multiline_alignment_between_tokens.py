@@ -1,5 +1,4 @@
 
-from vsg import rule
 from vsg import parser
 from vsg import violation
 

@@ -1,6 +1,5 @@
 
 from vsg import parser
-from vsg import rule
 from vsg import violation
 
 from vsg.rule_group import whitespace

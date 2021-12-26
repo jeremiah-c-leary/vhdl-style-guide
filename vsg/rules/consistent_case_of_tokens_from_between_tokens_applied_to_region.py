@@ -1,5 +1,4 @@
 
-from vsg import rule
 from vsg import violation
 
 from vsg.vhdlFile import utils

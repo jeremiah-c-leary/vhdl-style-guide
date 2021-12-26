@@ -1,5 +1,4 @@
 
-from vsg import rule
 from vsg.rule_group import case
 from vsg.rules import case_utils
 
