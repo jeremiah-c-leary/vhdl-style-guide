@@ -6,11 +6,7 @@ import os
 
 from . import config
 from . import rule_list
-from . import severity
 from . import vhdlFile
-
-
-from vsg.tests import utils
 
 
 def parse_command_line_arguments():
@@ -52,7 +48,7 @@ def build_rule_class_doc(sRuleName, dRules):
         sTitle = 'Context Reference Rules'
     elif sRuleName == 'exit_statement':
         sTitle = 'Exit Rules'
-    else:    
+    else:
         sTitle = (sRuleName.title() + ' Rules').replace('_', ' ')
     lRuleClassDoc.append(sTitle)
     lRuleClassDoc.append('-'*len(sTitle))

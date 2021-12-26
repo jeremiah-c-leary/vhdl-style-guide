@@ -1,0 +1,9 @@
+rule:
+  group:
+    case::label:
+      case: 'lower'
+    case::keyword:
+      case: 'lower'
+    case::name:
+      case: 'upper'
+    

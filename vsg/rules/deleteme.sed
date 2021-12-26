@@ -1,1 +1,1 @@
-s/\s\s*$//g
+/from vsg import rule/d

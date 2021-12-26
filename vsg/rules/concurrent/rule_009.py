@@ -1,7 +1,6 @@
 
 import copy
 
-from vsg import rule
 from vsg import parser
 from vsg import token
 from vsg import violation

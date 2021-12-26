@@ -18,5 +18,5 @@ class Rule(rule.Rule):
 
     def __init__(self, name, identifier):
         rule.Rule.__init__(self, name=name, identifier=identifier)
-        self.phase =6 
+        self.phase = 6 
         self.groups.append('case')

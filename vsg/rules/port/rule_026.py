@@ -1,6 +1,5 @@
 
 from vsg import parser
-from vsg import rule
 from vsg import violation
 
 from vsg.token import port_clause as token
