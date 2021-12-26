@@ -16,7 +16,7 @@ END ENTITY blah;
 ARCHITECTURE rtl OF blah IS
 
   CONSTANT con_a : std_logic;
-  SIGNAL   sig_a : std_logic;
+  SIGNAL   sig_a : STD_LOGIC;
 
 BEGIN
 
