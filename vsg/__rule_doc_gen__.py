@@ -30,6 +30,7 @@ def main():
 
     sys.exit(fExitStatus)
 
+
 def create_rule_documentation():
 
     oRuleList = build_rule_list()
@@ -69,6 +70,7 @@ def import_preamble_doc(sRuleName):
         lReturn = read_file(sFileName)
         lReturn.extend(blank_line())
     return lReturn
+
 
 def build_rule_list():
     oVhdlFile = vhdlFile.vhdlFile([''])
@@ -125,8 +127,6 @@ def find_index_of_first_character(sReturn):
         if sChar != ' ' and sChar != '\n':
             return iChar
     return None
-
-
 
 
 def generate_rule_header(oRule):
