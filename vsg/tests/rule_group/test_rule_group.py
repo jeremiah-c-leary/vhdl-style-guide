@@ -54,7 +54,6 @@ class testMain(unittest.TestCase):
         if os.path.isfile('deleteme.json'):
             os.remove('deleteme.json')
 
-    @unittest.skip('Yes')
     def test_config_1(self):
 
         sConfigName = 'config_1'
@@ -79,7 +78,6 @@ class testMain(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
-    @unittest.skip('Yes')
     def test_config_2(self):
 
         sConfigName = 'config_2'

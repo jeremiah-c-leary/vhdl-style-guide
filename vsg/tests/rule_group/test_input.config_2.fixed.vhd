@@ -15,7 +15,7 @@ end entity BLAH;
 
 architecture RTL of BLAH is
 
-  constant CON_A : STD_LOGIC;
+  constant CON_A : std_logic;
   signal   SIG_A : std_logic;
 
 begin
