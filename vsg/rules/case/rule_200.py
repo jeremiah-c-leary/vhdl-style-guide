@@ -10,22 +10,22 @@ lTokens.append(token.assignment)
 class rule_200(blank_line_below_line_ending_with_token):
     '''
     This rule checks for a blank line below the **=>** keyword.
-    
+
     Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        when 0 =>
          a <= b;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        when 0 =>
-    
+
          a <= b;
     '''
 
