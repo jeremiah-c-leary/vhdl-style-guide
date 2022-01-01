@@ -13,7 +13,23 @@ lOverrides.append(token.case_statement.case_keyword)
 
 class rule_011(remove_excessive_blank_lines_below_line_ending_with_token):
     '''
-    Checks for an empty line after the "else" keyword.
+    This rule checks for blank lines after the **else** keyword.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+      else
+
+
+        e <= '0';
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+      else
+        e <= '0';
     '''
     def __init__(self):
         remove_excessive_blank_lines_below_line_ending_with_token.__init__(self, 'if', '011', lTokens, iAllow=0, lOverrides=lOverrides)

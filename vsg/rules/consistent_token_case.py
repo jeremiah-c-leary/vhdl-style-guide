@@ -1,11 +1,11 @@
 
-from vsg import rule
 from vsg import violation
 
 from vsg.vhdlFile import utils
+from vsg.rule_group import case
 
 
-class consistent_token_case(rule.Rule):
+class consistent_token_case(case.Rule):
     '''
     Checks the case for words.
 
@@ -23,9 +23,7 @@ class consistent_token_case(rule.Rule):
     '''
 
     def __init__(self, name, identifier, lTokens, lIgnore=None):
-        rule.Rule.__init__(self, name=name, identifier=identifier)
-        self.solution = None
-        self.phase = 6
+        case.Rule.__init__(self, name=name, identifier=identifier)
         self.subphase = 2
         self.lTokens = lTokens
         if lIgnore == None:

@@ -6,7 +6,7 @@ If Rules
 if_001
 ######
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the **if** keyword.
 
@@ -37,7 +37,7 @@ This rule checks the indent of the **if** keyword.
 if_002
 ######
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks the boolean expression is enclosed in ().
 
@@ -76,7 +76,7 @@ parenthesis set to 'remove'
 if_003
 ######
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space between the **if** keyword and the (.
 
@@ -99,7 +99,7 @@ This rule checks for a single space between the **if** keyword and the (.
 if_004
 ######
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space between the ) and the **then** keyword.
 
@@ -122,7 +122,7 @@ This rule checks for a single space between the ) and the **then** keyword.
 if_005
 ######
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space between the **elsif** keyword and the (.
 
@@ -145,9 +145,9 @@ This rule checks for a single space between the **elsif** keyword and the (.
 if_006
 ######
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
-This rule checks for empty lines after the **then** keyword.
+This rule checks for blank lines after the **then** keyword.
 
 **Violation**
 
@@ -168,9 +168,9 @@ This rule checks for empty lines after the **then** keyword.
 if_007
 ######
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
-This rule checks for empty lines before the **elsif** keyword.
+This rule checks for blank lines before the **elsif** keyword.
 
 **Violation**
 
@@ -192,9 +192,9 @@ This rule checks for empty lines before the **elsif** keyword.
 if_008
 ######
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
-This rule checks for empty lines before the **end if** keywords.
+This rule checks for blank lines before the **end if** keywords.
 
 **Violation**
 
@@ -215,7 +215,7 @@ This rule checks for empty lines before the **end if** keywords.
 if_009
 ######
 
-|phase_4| |error|
+|phase_4| |error| |alignment|
 
 This rule checks the alignment of multiline boolean expressions.
 
@@ -236,9 +236,9 @@ This rule checks the alignment of multiline boolean expressions.
 if_010
 ######
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
-This rule checks for empty lines before the **else** keyword.
+This rule checks for blank lines before the **else** keyword.
 
 **Violation**
 
@@ -259,9 +259,9 @@ This rule checks for empty lines before the **else** keyword.
 if_011
 ######
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
-This rule checks for empty lines after the **else** keyword.
+This rule checks for blank lines after the **else** keyword.
 
 **Violation**
 
@@ -282,7 +282,7 @@ This rule checks for empty lines after the **else** keyword.
 if_012
 ######
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the **elsif** keyword.
 
@@ -313,7 +313,7 @@ This rule checks the indent of the **elsif** keyword.
 if_013
 ######
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the **else** keyword.
 
@@ -344,7 +344,7 @@ This rule checks the indent of the **else** keyword.
 if_014
 ######
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the **end if** keyword.
 
@@ -375,7 +375,7 @@ This rule checks the indent of the **end if** keyword.
 if_015
 ######
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space between the **end if** keywords.
 
@@ -394,7 +394,7 @@ This rule checks for a single space between the **end if** keywords.
 if_020
 ######
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks the **end if** keyword is on it's own line.
 
@@ -414,7 +414,7 @@ This rule checks the **end if** keyword is on it's own line.
 if_021
 ######
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks the **else** keyword is on it's own line.
 
@@ -434,7 +434,7 @@ This rule checks the **else** keyword is on it's own line.
 if_022
 ######
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks for code after the **else** keyword.
 
@@ -454,7 +454,7 @@ This rule checks for code after the **else** keyword.
 if_023
 ######
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks the **elsif** keyword is on it's own line.
 
@@ -471,11 +471,10 @@ This rule checks the **elsif** keyword is on it's own line.
    if (a = '1') then c <= '1'; else c <= '0';
    elsif (b = '0') then d <= '0'; end if;
 
-
 if_024
 ######
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks for code after the **then** keyword.
 
@@ -495,7 +494,7 @@ This rule checks for code after the **then** keyword.
 if_025
 ######
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **if** keyword has proper case.
 
@@ -516,7 +515,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 if_026
 ######
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **elsif** keyword has proper case.
 
@@ -537,7 +536,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 if_027
 ######
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **else** keyword has proper case.
 
@@ -558,7 +557,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 if_028
 ######
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **end** keyword has proper case.
 
@@ -583,7 +582,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 if_029
 ######
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **then** keyword has proper case.
 
@@ -604,11 +603,11 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 if_030
 ######
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks a single blank line after the **end if**.
 In the case of nested **if** statements, the rule will be enfoced on the last **end if**.
- 
+
 Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
 
 **Violation**
@@ -633,11 +632,11 @@ Refer to the section `Configuring Blank Lines <configuring.html#configuring-blan
 if_031
 ######
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for blank lines or comments above the **if** keyword.
 In the case of nested **if** statements, the rule will be enfoced on the first **if**.
- 
+
 Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous-line-rules>`_ for options.
 
 The default style is :code:`no_code`.
@@ -674,7 +673,7 @@ The default style is :code:`no_code`.
 if_032
 ######
 
-|phase_4| |error|
+|phase_4| |error| |alignment|
 
 This rule aligns consecutive comment only lines above the **elsif** keyword in if statements.
 These comments are used to describe what the elsif code is going to do.
@@ -702,7 +701,7 @@ These comments are used to describe what the elsif code is going to do.
 if_033
 ######
 
-|phase_4| |error|
+|phase_4| |error| |alignment|
 
 This rule aligns consecutive comment only lines above the **else** keyword in if statements.
 These comments are used to describe what the elsif code is going to do.
@@ -730,7 +729,7 @@ These comments are used to describe what the elsif code is going to do.
 if_034
 ######
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **if** keyword in the **end if** has proper case.
 
@@ -755,7 +754,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 if_035
 ######
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks the expression after the **if** or **elsif** keyword starts on the same line.
 
@@ -777,11 +776,10 @@ This rule checks the expression after the **if** or **elsif** keyword starts on 
 
    elsif b = '1' then
 
-
 if_036
 ######
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks the **then** keyword is not on a line by itself.
 

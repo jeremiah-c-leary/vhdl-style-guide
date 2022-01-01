@@ -9,7 +9,27 @@ lTokens.append(token.return_statement.return_keyword)
 
 class rule_016(token_indent):
     '''
-    Checks for the proper indentation of return statements.
+    This rule checks the indent of return statements in function bodies.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       function func1 return integer is
+       begin
+            return 99;
+       return 99;
+       end func1;
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       function func1 return integer is
+       begin
+         return 99;
+         return 99;
+       end func1;
     '''
 
     def __init__(self):

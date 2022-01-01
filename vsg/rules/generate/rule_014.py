@@ -11,7 +11,21 @@ lTokens.append([token.if_generate_statement.label_colon, token.if_generate_state
 
 class rule_014(single_space_between_token_pairs):
     '''
-    Checks for a single space between the *end* keyword and the *generate* keyword.
+    This rule checks for a single space between the colon and the **for** keyword.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       ram_array :for i in 0 to 7 generate
+       ram_array :   for i in 0 to 7 generate
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       ram_array : for i in 0 to 7 generate
+       ram_array : for i in 0 to 7 generate
     '''
     def __init__(self):
         single_space_between_token_pairs.__init__(self, 'generate', '014', lTokens)

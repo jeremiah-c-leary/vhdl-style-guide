@@ -1,20 +1,35 @@
 
 from vsg import parser
-from vsg import rule
 from vsg import violation
 
 from vsg.rules import utils
+from vsg.rule_group import structure
 
 
-class rule_011(rule.Rule):
+class rule_011(structure.Rule):
     '''
-    This rule will move inline comments to the previous line.
+    This rule checks for in-line comments and moves them to the line above.
+    The indent of the comment will be set to the indent of the current line.
+
+    .. NOTE:: This rule is disabled by default.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       a <= b; -- Assign signal
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       -- Assign signal
+       a <= b;
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self, name='comment', identifier='011')
+        structure.Rule.__init__(self, name='comment', identifier='011')
         self.solution = 'Move inline comment to previous line.'
-        self.phase = 1
         self.disable = True
         self.lTokens = [parser.comment]
 
@@ -43,7 +58,7 @@ class rule_011(rule.Rule):
         iToken = len(lTokens) - 1
         if line_has_inline_comment(lTokens, iToken):
             dAction = create_action(lTokens, iToken)
-            oViolation = create_violation(iLine, oToi, self.solution, dAction) 
+            oViolation = create_violation(iLine, oToi, self.solution, dAction)
             self.add_violation(oViolation)
 
 

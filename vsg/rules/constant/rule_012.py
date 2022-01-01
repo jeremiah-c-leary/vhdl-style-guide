@@ -1,37 +1,49 @@
 
-from vsg import rule
 from vsg import parser
 from vsg import token
 from vsg import violation
 
 from vsg.rules import utils as rules_utils
-
+from vsg.rule_group import alignment
 from vsg.vhdlFile import utils
 
 lTokenPairs = []
 lTokenPairs.append([token.constant_declaration.assignment_operator, token.constant_declaration.semicolon])
 
 
-class rule_012(rule.Rule):
+class rule_012(alignment.Rule):
     '''
-    Checks the case for words.
+    This rule checks the alignment of multiline constants that contain arrays.
 
-    Parameters
-    ----------
+    Refer to section `Configuring Multiline Indent Rules <configuring.html#configuring-multiline-indent-rules>`_ for options.
 
-    name : string
-       The group the rule belongs to.
+    .. NOTE:: The structure of multiline array constants is handled by the rule `constant_016 <constant_rules.html#constant-016>`_.
 
-    identifier : string
-       unique identifier.  Usually in the form of 00N.
+    **Violation**
 
-    trigger : parser object type
-       object type to apply the case check against
+    .. code-block:: vhdl
+
+       constant rom : romq_type :=
+       (
+                0,
+            65535,
+            32768
+         );
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       constant rom : romq_type :=
+       (
+         0,
+         65535,
+         32768
+       );
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self, 'constant', '012')
-        self.phase = 5
+        alignment.Rule.__init__(self, 'constant', '012')
         self.subphase = 2
         self.lTokenPairs = lTokenPairs
         self.align_left = False

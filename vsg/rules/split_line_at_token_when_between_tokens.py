@@ -1,13 +1,13 @@
 
 
-from vsg import rule
 from vsg import parser
 from vsg import violation
 
+from vsg.rule_group import structure
 from vsg.rules import utils as rules_utils
 
 
-class split_line_at_token_when_between_tokens(rule.Rule):
+class split_line_at_token_when_between_tokens(structure.Rule):
     '''
     Checks the case for words.
 
@@ -31,7 +31,7 @@ class split_line_at_token_when_between_tokens(rule.Rule):
     '''
 
     def __init__(self, name, identifier, lTokens, oStart, oEnd):
-        rule.Rule.__init__(self, name=name, identifier=identifier)
+        structure.Rule.__init__(self, name=name, identifier=identifier)
         self.solution = None
         self.phase = 1
         self.lTokens = lTokens

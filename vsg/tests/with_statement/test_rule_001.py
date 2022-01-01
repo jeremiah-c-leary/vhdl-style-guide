@@ -24,6 +24,7 @@ class test_with_statement_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'with')
         self.assertEqual(oRule.identifier, '001')
+        self.assertEqual(oRule.groups, ['structure'])
 
         lExpected = [6]
 

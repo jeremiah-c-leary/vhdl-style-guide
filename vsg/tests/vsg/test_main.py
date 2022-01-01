@@ -46,6 +46,7 @@ class testMain(unittest.TestCase):
         sys.argv = ['vsg']
         sys.argv.extend(['--output_format', 'syntastic'])
         sys.argv.extend(['--configuration', 'vsg/tests/vsg/config_1.json', 'vsg/tests/vsg/config_2.json'])
+        sys.argv.extend(['-p 1'])
 
         try:
             __main__.main()
@@ -63,6 +64,7 @@ class testMain(unittest.TestCase):
         sys.argv = ['vsg']
         sys.argv.extend(['--output_format', 'syntastic'])
         sys.argv.extend(['--configuration', 'vsg/tests/vsg/config_1.json'])
+        sys.argv.extend(['-p 1'])
 
         try:
             __main__.main()
@@ -78,6 +80,7 @@ class testMain(unittest.TestCase):
         sys.argv = ['vsg']
         sys.argv.extend(['--output_format', 'syntastic'])
         sys.argv.extend(['--configuration', 'vsg/tests/vsg/config_2.json'])
+        sys.argv.extend(['-p 1'])
 
         try:
             __main__.main()
@@ -94,6 +97,7 @@ class testMain(unittest.TestCase):
         sys.argv = ['vsg']
         sys.argv.extend(['--output_format', 'syntastic'])
         sys.argv.extend(['--configuration', 'vsg/tests/vsg/config_3.json'])
+        sys.argv.extend(['-p 1'])
 
         try:
             __main__.main()
@@ -112,6 +116,7 @@ class testMain(unittest.TestCase):
         sys.argv.extend(['--output_format', 'syntastic'])
         sys.argv.extend(['--configuration', 'vsg/tests/vsg/config_3.json', 'vsg/tests/vsg/config_4.json'])
         sys.argv.extend(['-f', 'vsg/tests/vsg/entity1.vhd'])
+        sys.argv.extend(['-p 1'])
 
         try:
             __main__.main()
@@ -135,6 +140,7 @@ class testMain(unittest.TestCase):
         sys.argv.extend(['--configuration', 'vsg/tests/vsg/config_error.json'])
         sys.argv.extend(['-f', 'vsg/tests/vsg/entity1.vhd'])
         sys.argv.extend(['--junit', 'vsg/tests/vsg/config_error.actual.xml'])
+        sys.argv.extend(['-p 1'])
 
         try:
             __main__.main()
@@ -167,6 +173,7 @@ class testMain(unittest.TestCase):
         sys.argv.extend(['--style', 'jcl'])
         sys.argv.extend(['-f', 'vsg/tests/vsg/entity_architecture.vhd'])
         sys.argv.extend(['-lr', 'vsg/tests/vsg/local_rules'])
+        sys.argv.extend(['-p 1'])
 
         try:
             __main__.main()
@@ -185,6 +192,7 @@ class testMain(unittest.TestCase):
         sys.argv.extend(['--output_format', 'syntastic'])
         sys.argv.extend(['-f', 'vsg/tests/vsg/entity_architecture.vhd'])
         sys.argv.extend(['-lr', 'vsg/tests/vsg/invalid_local_rule_directory'])
+        sys.argv.extend(['-p 1'])
 
         try:
             __main__.main()
@@ -201,6 +209,7 @@ class testMain(unittest.TestCase):
         sys.argv = ['vsg']
         sys.argv.extend(['--output_format', 'syntastic'])
         sys.argv.extend(['--configuration', 'vsg/tests/vsg/config_glob.json'])
+        sys.argv.extend(['-p 1'])
 
         temp_stdout = StringIO()
 
@@ -227,6 +236,7 @@ class testMain(unittest.TestCase):
         sys.argv = ['vsg']
         sys.argv.extend(['--output_format', 'syntastic'])
         sys.argv.extend(['--configuration', 'vsg/tests/vsg/config_1.yaml'])
+        sys.argv.extend(['-p 1'])
 
         try:
             __main__.main()
@@ -242,6 +252,7 @@ class testMain(unittest.TestCase):
         sys.argv = ['vsg']
         sys.argv.extend(['--output_format', 'syntastic'])
         sys.argv.extend(['--configuration', 'vsg/tests/vsg/config_2.json'])
+        sys.argv.extend(['-p 1'])
 
         try:
             __main__.main()
@@ -261,6 +272,7 @@ class testMain(unittest.TestCase):
         sys.argv = ['vsg']
         sys.argv.extend(['--output_format', 'syntastic'])
         sys.argv.extend(['--configuration', 'vsg/tests/vsg/config_1.yaml', 'vsg/tests/vsg/config_2.yaml'])
+        sys.argv.extend(['-p 1'])
 
         try:
             __main__.main()
@@ -277,6 +289,7 @@ class testMain(unittest.TestCase):
         sys.argv.extend(['--output_format', 'syntastic'])
         sys.argv.extend(['--configuration', 'vsg/tests/vsg/config_3.yaml'])
         sys.argv.extend(['-f', 'vsg/tests/vsg/entity1.vhd'])
+        sys.argv.extend(['-p 1'])
 
         try:
             __main__.main()
@@ -295,6 +308,7 @@ class testMain(unittest.TestCase):
         sys.argv.extend(['--output_format', 'syntastic'])
         sys.argv.extend(['--configuration', 'vsg/tests/vsg/config_3.yaml', 'vsg/tests/vsg/config_4.yaml'])
         sys.argv.extend(['-f', 'vsg/tests/vsg/entity1.vhd'])
+        sys.argv.extend(['-p 1'])
 
         try:
             __main__.main()
@@ -311,6 +325,7 @@ class testMain(unittest.TestCase):
         sys.argv.extend(['--output_format', 'syntastic'])
         sys.argv.extend(['--configuration', 'vsg/tests/vsg/config_4.yaml', 'vsg/tests/vsg/config_3.yaml'])
         sys.argv.extend(['-f', 'vsg/tests/vsg/entity1.vhd'])
+        sys.argv.extend(['-p 1'])
 
         try:
             __main__.main()
@@ -327,6 +342,7 @@ class testMain(unittest.TestCase):
         sys.argv = ['vsg']
         sys.argv.extend(['--output_format', 'syntastic'])
         sys.argv.extend(['--configuration', 'vsg/tests/vsg/config_glob.yaml'])
+        sys.argv.extend(['-p 1'])
 
         temp_stdout = StringIO()
 
@@ -350,6 +366,7 @@ class testMain(unittest.TestCase):
 
         sys.argv = ['vsg']
         sys.argv.extend(['-oc', 'deleteme.json'])
+        sys.argv.extend(['-p 1'])
 
         try:
             __main__.main()
@@ -364,6 +381,7 @@ class testMain(unittest.TestCase):
 
         sys.argv = ['vsg']
         sys.argv.extend(['-c', 'vsg/tests/vsg/config_rule_disabled_under_file.yaml'])
+        sys.argv.extend(['-p 1'])
 
         try:
             __main__.main()
@@ -411,6 +429,9 @@ class testMain(unittest.TestCase):
         # Read in another alternate expected JSON file for comparison
         lAlternateExpected3 = []
         utils.read_file(os.path.join(os.path.dirname(__file__),'json-expected.alternate3.json'), lAlternateExpected3)
+        # Read in another alternate expected JSON file for comparison
+        lAlternateExpected4 = []
+        utils.read_file(os.path.join(os.path.dirname(__file__),'json-expected.alternate4.json'), lAlternateExpected4)
         # Read in the actual JSON file for comparison
         lActual = []
         utils.read_file(os.path.join('deleteme.json'), lActual)
@@ -425,6 +446,8 @@ class testMain(unittest.TestCase):
             self.assertEqual(lActual, lAlternateExpected2)
         elif lActual == lAlternateExpected3:
             self.assertEqual(lActual, lAlternateExpected3)
+        elif lActual == lAlternateExpected4:
+            self.assertEqual(lActual, lAlternateExpected4)
         else:
             self.assertEqual(lActual, lAlternateExpected2)
 
@@ -449,6 +472,7 @@ class testMain(unittest.TestCase):
         sys.argv.extend(['-f', 'vsg/tests/vsg/deleteme.vhd'])
         sys.argv.extend(['--fix'])
         sys.argv.extend(['--backup'])
+        sys.argv.extend(['-p 1'])
 
         try:
             __main__.main()
@@ -478,6 +502,7 @@ class testMain(unittest.TestCase):
         sys.argv.extend(['--output_format', 'syntastic'])
         sys.argv.extend(['-f', 'vsg/tests/vsg/entity1.vhd'])
         sys.argv.extend(['--backup'])
+        sys.argv.extend(['-p 1'])
 
         with self.assertRaises(SystemExit) as cm:
             __main__.main()
@@ -498,6 +523,7 @@ class testMain(unittest.TestCase):
         sys.argv.extend(['-f', 'vsg/tests/vsg/entity1.vhd'])
         sys.argv.extend(['-ap'])
         sys.argv.extend(['--fix'])
+        sys.argv.extend(['-p 1'])
 
         with self.assertRaises(SystemExit) as cm:
             __main__.main()

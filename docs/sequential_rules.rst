@@ -6,7 +6,7 @@ Sequential Rules
 sequential_001
 ##############
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of sequential statements.
 
@@ -31,7 +31,7 @@ This rule checks the indent of sequential statements.
 sequential_002
 ##############
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space after the **<=** operator.
 
@@ -52,7 +52,7 @@ This rule checks for a single space after the **<=** operator.
 sequential_003
 ##############
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for at least a single space before the **<=** operator.
 
@@ -73,7 +73,7 @@ This rule checks for at least a single space before the **<=** operator.
 sequential_004
 ##############
 
-|phase_4| |error|
+|phase_4| |error| |alignment|
 
 This rule checks the alignment of multiline sequential statements.
 
@@ -99,7 +99,7 @@ This rule has been deprecated and replaced with rule `process_400 <process_rules
 sequential_006
 ##############
 
-|phase_2| |error|
+|phase_2| |error| |structure|
 
 This rule checks for comments within multiline sequential statements.
 
@@ -121,7 +121,7 @@ This rule checks for comments within multiline sequential statements.
 sequential_007
 ##############
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks for code after a sequential assignment.
 
@@ -138,3 +138,4 @@ This rule checks for code after a sequential assignment.
     a <= '0';
     b <= '1';
     c <= '0'; -- comment
+

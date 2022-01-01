@@ -9,7 +9,28 @@ lTokens.append(token.open_parenthesis)
 
 class rule_016(insert_carriage_return_after_token_if_it_is_not_followed_by_a_comment):
     '''
-    Moves port parameters to their own line.
+    This rule checks for a port definition on the same line as the **port** keyword.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       port (WR_EN    : in    std_logic;
+         RD_EN    : in    std_logic;
+         OVERFLOW : out   std_logic;
+         DATA     : inout std_logic
+       );
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       port (
+         WR_EN    : in    std_logic;
+         RD_EN    : in    std_logic;
+         OVERFLOW : out   std_logic;
+         DATA     : inout std_logic
+       );
     '''
 
     def __init__(self):

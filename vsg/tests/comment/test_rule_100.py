@@ -30,6 +30,7 @@ class test_comment_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'comment')
         self.assertEqual(oRule.identifier, '100')
+        self.assertEqual(oRule.groups, ['whitespace'])
 
         lExpected = [7, 8]
 

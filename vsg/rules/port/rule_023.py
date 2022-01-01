@@ -1,32 +1,43 @@
 
-from vsg import rule
 from vsg import violation
 
 from vsg.token import port_clause as token
 from vsg.token import mode
+from vsg.rule_group import structure
 
 
-class rule_023(rule.Rule):
+class rule_023(structure.Rule):
     '''
-    Checks for the existance of port modes.
+    This rule checks for missing modes in port declarations.
 
-    Parameters
-    ----------
+    .. NOTE:: This must be fixed by the user.  VSG makes no assumption on the direction of the port.
 
-    name : string
-       The group the rule belongs to.
+    **Violation**
 
-    identifier : string
-       unique identifier.  Usually in the form of 00N.
+    .. code-block:: vhdl
 
-    trigger : parser object type
-       object type to apply the case check against
+       port (
+         WR_EN    : std_logic;
+         RD_EN    : std_logic;
+         OVERFLOW : std_logic;
+         DATA     : inout std_logic
+       );
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       port (
+         WR_EN    : in    std_logic;
+         RD_EN    : in    std_logic;
+         OVERFLOW : out   std_logic;
+         DATA     : inout std_logic
+       );
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self, name='port', identifier='023')
+        structure.Rule.__init__(self, name='port', identifier='023')
         self.solution = 'Add mode'
-        self.phase = 1
         self.fixable = False
 
     def _get_tokens_of_interest(self, oFile):

@@ -10,7 +10,22 @@ lTokens.append(token.block_statement.end_block_label)
 
 class rule_600(token_suffix):
     '''
-    Constant rule 600 checks for suffixes in block labels.
+    This rule checks for valid suffixes on block labels.
+    The default suffix is *_blk*.
+
+    Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed suffixes.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       block_label : block is
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       block_label_blk : block is
     '''
 
     def __init__(self):

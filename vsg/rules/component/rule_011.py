@@ -6,7 +6,19 @@ from vsg.token import component_declaration as token
 
 class rule_011(single_space_between_tokens):
     '''
-    Component rule 011 checks for a single space after the "end" keyword
+    This rule checks for single space after the **end** keyword.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       end   component fifo;
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       end component fifo;
     '''
     def __init__(self):
         single_space_between_tokens.__init__(self, 'component', '011', token.end_keyword, token.end_component_keyword)

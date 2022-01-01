@@ -26,6 +26,7 @@ class test_generate_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'generate')
         self.assertEqual(oRule.identifier, '401')
+        self.assertEqual(oRule.groups, ['alignment'])
 
         lExpected = [42, 43, 44]
 

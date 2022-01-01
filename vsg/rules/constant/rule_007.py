@@ -1,21 +1,39 @@
 
-from vsg import rule
 from vsg import violation
 
 from vsg.token import constant_declaration as token
-
+from vsg.rule_group import structure
 from vsg.vhdlFile import utils
 
 
-class rule_007(rule.Rule):
+class rule_007(structure.Rule):
     '''
-    Checks the assignment operator is on the same line as the constant keyword.
+    This rule checks the **:=** is on the same line at the **constant** keyword.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       constant size : integer
+          := 1;
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       constant size : integer := 1;
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       constant size    : integer := 1;
+       constant width   : integer := 32
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self, 'constant', '007')
+        structure.Rule.__init__(self, 'constant', '007')
         self.solution = 'move assignment to same line as constant declaration.'
-        self.phase = 1
         self.fixable = False  # Too complicated at the moment to fix.
 
     def _get_tokens_of_interest(self, oFile):

@@ -6,7 +6,7 @@ Context Reference Rules
 context_ref_001
 ###############
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the **context** keyword.
 
@@ -24,11 +24,10 @@ This rule checks the indent of the **context** keyword.
    library ieee;
      context c1;
 
-
 context_ref_002
 ###############
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space between the **context** keyword and the context selected name.
 
@@ -44,11 +43,10 @@ This rule checks for a single space between the **context** keyword and the cont
 
    context c1;
 
-
 context_ref_003
 ###############
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **context** keyword has proper case.
 
@@ -66,11 +64,10 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
    context c1;
 
-
 context_ref_004
 ###############
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_name|
 
 This rule checks the context selected names have proper case in the context reference.
 
@@ -92,11 +89,10 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
    context con1, con2;
 
-
 context_ref_005
 ###############
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks the **context** keyword is on it's own line.
 
@@ -117,7 +113,6 @@ This rule checks the **context** keyword is on it's own line.
 
    library ieee;
    context con2;
-
 
 context_ref_006
 ###############
@@ -170,7 +165,6 @@ This rule checks for code after the semicolon.
    context c1;
      library ieee; -- This is not allowed
 
-
 context_ref_008
 ###############
 
@@ -193,7 +187,6 @@ This rule checks the context selected name is on the same line as the **context*
    context c1
 
    ;
-
 
 context_ref_009
 ###############
@@ -221,3 +214,4 @@ This rule checks for multiple selected names in a single reference.
    context c1;
    context c2;
    context c3;
+

@@ -6,7 +6,7 @@ Attribute Declaration Rules
 attribute_declaration_100
 #########################
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space after the following elements:  **attribute** keyword and colon.
 
@@ -25,7 +25,7 @@ This rule checks for a single space after the following elements:  **attribute**
 attribute_declaration_101
 #########################
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for at least a single space before the colon.
 
@@ -44,7 +44,7 @@ This rule checks for at least a single space before the colon.
 attribute_declaration_300
 #########################
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the **attribute** keyword.
 
@@ -65,7 +65,7 @@ This rule checks the indent of the **attribute** keyword.
 attribute_declaration_500
 #########################
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **attribute** keyword has proper case.
 
@@ -86,7 +86,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 attribute_declaration_501
 #########################
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_name|
 
 This rule checks the *identifier* has proper case.
 
@@ -107,7 +107,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 attribute_declaration_502
 #########################
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_name|
 
 This rule checks the *type_mark* has proper case.
 
@@ -124,3 +124,4 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 .. code-block:: vhdl
 
    attribute max_delay : time;
+

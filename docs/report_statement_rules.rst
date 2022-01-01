@@ -6,7 +6,7 @@ Report Statement Rules
 report_statement_001
 ####################
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule removes labels on report_statement_statements.
 
@@ -25,7 +25,7 @@ This rule removes labels on report_statement_statements.
 report_statement_002
 ####################
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks the **severity** keyword is on it's own line.
 
@@ -45,7 +45,7 @@ This rule checks the **severity** keyword is on it's own line.
 report_statement_100
 ####################
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space after the **report** keyword.
 
@@ -64,7 +64,7 @@ This rule checks for a single space after the **report** keyword.
 report_statement_101
 ####################
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space after the **severity** keyword.
 
@@ -85,7 +85,7 @@ This rule checks for a single space after the **severity** keyword.
 report_statement_300
 ####################
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks indent of multiline report statements.
 
@@ -106,7 +106,7 @@ This rule checks indent of multiline report statements.
 report_statement_400
 ####################
 
-|phase_5| |error|
+|phase_5| |error| |alignment|
 
 This rule checks the alignment of the report expressions.
 
@@ -153,7 +153,7 @@ alignment set to 'left'
 report_statement_500
 ####################
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **report** keyword has proper case.
 
@@ -174,7 +174,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 report_statement_501
 ####################
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **severity** keyword has proper case.
 

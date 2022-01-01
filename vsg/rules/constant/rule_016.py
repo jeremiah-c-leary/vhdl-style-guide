@@ -1,36 +1,44 @@
 
-from vsg import rule
 from vsg import parser
 from vsg import token
 from vsg import violation
 
 from vsg.rules import utils as rules_utils
-
+from vsg.rule_group import structure
 from vsg.vhdlFile import utils
 
 lTokenPairs = []
 lTokenPairs.append([token.constant_declaration.constant_keyword, token.constant_declaration.semicolon])
 
 
-class rule_016(rule.Rule):
+class rule_016(structure.Rule):
     '''
-    Checks for the proper indentation of multiline constants.
+    This rule checks the structure of multiline constants that contain arrays.
 
-    Parameters
-    ----------
+    Refer to section `Configuring Multiline Structure Rules <configuring.html#configuring-multiline-structure-rules>`_ for options.
 
-    name : string
-       The group the rule belongs to.
+    .. NOTE:: The indenting of multiline array constants is handled by the rule `constant_012 <constant_rules.html#constant-012>`_.
 
-    identifier : string
-       unique identifier.  Usually in the form of 00N.
+    **Violation**
 
-    trigger : parser object type
-       object type to apply the case check against
+    .. code-block:: vhdl
+
+       constant rom : romq_type := (0, 65535, 32768);
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       constant rom : romq_type :=
+       (
+         0,
+         65535,
+         32768
+       );
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self, 'constant', '016')
+        structure.Rule.__init__(self, 'constant', '016')
         self.phase = 5
         self.lTokenPairs = lTokenPairs
         self.bExcludeLastToken = True
@@ -145,7 +153,7 @@ def _check_last_paren_new_line(self, oToi):
                     sSolution = 'Move parenthesis after assignment to the next line and trailing comment to previous line.'
                     oViolation = _create_violation(oToi, iLine, iEnd - 1, len(lTokens) - 1, 'last_paren_new_line', 'insert_and_move_comment', sSolution)
                     self.add_violation(oViolation)
-                else: 
+                else:
                     sSolution = 'Move closing parenthesis to the next line.'
                     oViolation = _create_violation(oToi, iLine, iEnd - 1, iEnd, 'last_paren_new_line', 'insert', sSolution)
                     self.add_violation(oViolation)
@@ -412,7 +420,7 @@ def _fix_last_paren_new_line(oViolation):
         if not isinstance(lTokens[0], parser.whitespace):
             rules_utils.insert_whitespace(lTokens, 1)
         iSwapIndex = rules_utils.get_index_of_token_in_list(token.constant_declaration.semicolon, lTokens) + 1
-        lNewTokens = [] 
+        lNewTokens = []
         lNewTokens.append(lTokens[0])
         lNewTokens.extend(lTokens[iSwapIndex:])
         rules_utils.append_carriage_return(lNewTokens)

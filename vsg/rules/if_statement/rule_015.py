@@ -9,7 +9,19 @@ lTokens.append([token.if_statement.end_keyword, token.if_statement.end_if_keywor
 
 class rule_015(single_space_between_token_pairs):
     '''
-    Checks there is a single space between the if keyword and the (.
+    This rule checks for a single space between the **end if** keywords.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       end    if;
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       end if;
     '''
     def __init__(self):
         single_space_between_token_pairs.__init__(self, 'if', '015', lTokens)

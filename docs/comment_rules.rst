@@ -6,7 +6,7 @@ Comment Rules
 comment_004
 ###########
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for at least a single space before inline comments.
 
@@ -27,7 +27,7 @@ This rule checks for at least a single space before inline comments.
 comment_010
 ###########
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent lines starting with comments.
 
@@ -66,7 +66,7 @@ This rule checks the indent lines starting with comments.
 comment_011
 ###########
 
-|phase_1| |disabled| |error|
+|phase_1| |disabled| |error| |structure|
 
 This rule checks for in-line comments and moves them to the line above.
 The indent of the comment will be set to the indent of the current line.
@@ -89,7 +89,7 @@ The indent of the comment will be set to the indent of the current line.
 comment_100
 ###########
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space after the **--**.
 
@@ -110,3 +110,4 @@ This rule checks for a single space after the **--**.
    --| Comment 2
    --- Comment
    ---------------------------
+

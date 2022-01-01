@@ -10,7 +10,21 @@ lTokenPairs.append([token.conditional_variable_assignment.assignment, token.cond
 
 class rule_004(multiline_alignment_between_tokens):
     '''
-    Checks the alignment of multiline variable assignments.
+    This rule checks the alignment of multiline variable assignments.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+         counter := 1 + 4 + 10 + 25 +
+              30 + 35;
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+         counter := 1 + 4 + 10 + 25 +
+                    30 + 35;
     '''
 
     def __init__(self):

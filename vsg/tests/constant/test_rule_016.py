@@ -97,6 +97,7 @@ class test_constant_rule(unittest.TestCase):
         oRule.close_paren_new_line = 'ignore'
         oRule.new_line_after_comma = 'ignore'
         oRule.assign_on_single_line = 'ignore'
+        self.assertEqual(oRule.groups, ['structure'])
 
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'constant')

@@ -12,7 +12,32 @@ lTokens.append(token.interface_unknown_declaration.identifier)
 
 class rule_025(token_suffix_between_tokens):
     '''
-    Checks for suffixes in port names.
+    This rule checks for valid suffixes on port identifiers.
+    The default port suffixes are *_i*, *_o*, *_io*.
+
+    Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed suffixes.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       port (
+         wr_en    : in    std_logic;
+         rd_en    : in    std_logic;
+         overflow : out   std_logic;
+         data     : inout std_logic
+       );
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       port (
+         wr_en_i    : in    std_logic;
+         rd_en_i    : in    std_logic;
+         overflow_o : out   std_logic;
+         data_io    : inout std_logic
+       );
     '''
 
     def __init__(self):

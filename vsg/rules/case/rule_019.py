@@ -6,7 +6,25 @@ from vsg.token import case_statement as token
 
 class rule_019(remove_tokens_bounded_by_tokens_and_remove_trailing_whitespace):
     '''
-    Case rule 019 checks for labels before the case case keyword.
+    This rule checks for labels before the **case** keyword.
+    The label should be removed.
+    The preference is to have comments above the case statement.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+          CASE_LABEL : case address is
+          CASE_LABEL: case address is
+          case address is
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+          case address is
+          case address is
+          case address is
     '''
 
     def __init__(self):

@@ -1,9 +1,9 @@
 
-from vsg import rule
+from vsg.rule_group import case
 from vsg.rules import case_utils
 
 
-class token_case(rule.Rule):
+class token_case(case.Rule):
     '''
     Checks the case for words.
 
@@ -21,7 +21,7 @@ class token_case(rule.Rule):
     '''
 
     def __init__(self, name, identifier, lTokens):
-        rule.Rule.__init__(self, name=name, identifier=identifier)
+        case.Rule.__init__(self, name=name, identifier=identifier)
         self.solution = None
         self.phase = 6
         self.case = 'lower'

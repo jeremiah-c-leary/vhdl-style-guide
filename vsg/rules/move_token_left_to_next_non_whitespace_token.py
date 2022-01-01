@@ -1,15 +1,14 @@
 
 
-from vsg import rule
 from vsg import parser
 from vsg import violation
 
 from vsg.rules import utils as rules_utils
-
+from vsg.rule_group import structure
 from vsg.vhdlFile import utils
 
 
-class move_token_left_to_next_non_whitespace_token(rule.Rule):
+class move_token_left_to_next_non_whitespace_token(structure.Rule):
     '''
     Moves one token to the left until it encounters a non whitespace token.
 
@@ -30,9 +29,7 @@ class move_token_left_to_next_non_whitespace_token(rule.Rule):
     '''
 
     def __init__(self, name, identifier, token_to_move):
-        rule.Rule.__init__(self, name, identifier)
-        self.solution = None
-        self.phase = 1
+        structure.Rule.__init__(self, name, identifier)
         self.subphase = 2
         self.token_to_move = token_to_move
 

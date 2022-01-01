@@ -29,6 +29,7 @@ class test_architecture_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'architecture')
         self.assertEqual(oRule.identifier, '601')
+        self.assertEqual(oRule.groups, ['case'])
 
         lExpected = []
         lExpected.extend([146, 147, 148, 154, 154, 154, 157, 158, 159, 163, 164, 165, 169, 170, 171, 178, 179, 180, 188, 189, 190])

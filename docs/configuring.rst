@@ -7,6 +7,7 @@ Configuring
    configuring_overview.rst
    multiple_configurations.rst
    configuring_disabled_rules.rst
+   configuring_rule_groups.rst
    configuring_case.rst
    configuring_prefix_suffix_rules.rst
    configuring_number_of_signals.rst

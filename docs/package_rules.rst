@@ -6,7 +6,7 @@ Package Rules
 package_001
 ###########
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the package declaration.
 
@@ -29,7 +29,7 @@ This rule checks the indent of the package declaration.
 package_002
 ###########
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space between **package** and **is** keywords.
 
@@ -48,7 +48,7 @@ This rule checks for a single space between **package** and **is** keywords.
 package_003
 ###########
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for blank lines or comments above the **package** keyword.
 
@@ -74,7 +74,7 @@ The default style is :code:`no_code`.
 package_004
 ###########
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the package keyword has proper case.
 
@@ -95,7 +95,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 package_005
 ###########
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks the **is** keyword is on the same line as the **package** keyword.
 
@@ -115,7 +115,7 @@ This rule checks the **is** keyword is on the same line as the **package** keywo
 package_006
 ###########
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **end** keyword has proper case.
 
@@ -136,7 +136,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 package_007
 ###########
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks for the **package** keyword on the end package declaration.
 
@@ -157,7 +157,7 @@ Refer to the section `Configuring Optional Items <configuring.html#configuring-o
 package_008
 ###########
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_name|
 
 This rule checks the package name has proper case on the end package declaration.
 
@@ -178,7 +178,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 package_009
 ###########
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space between the **end** and **package** keywords and package name.
 
@@ -197,7 +197,7 @@ This rule checks for a single space between the **end** and **package** keywords
 package_010
 ###########
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_name|
 
 This rule checks the package name has proper case in the package declaration.
 
@@ -218,7 +218,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 package_011
 ###########
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for a blank line below the **package** keyword.
 
@@ -242,7 +242,7 @@ Refer to the section `Configuring Blank Lines <configuring.html#configuring-blan
 package_012
 ###########
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for blank lines or comments above the **end package** keyword.
 
@@ -266,7 +266,7 @@ Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ f
 package_013
 ###########
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **is** keyword has proper case.
 
@@ -287,7 +287,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 package_014
 ###########
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks the package name exists on the same line as the **end package** keywords.
 
@@ -308,7 +308,7 @@ Refer to the section `Configuring Optional Items <configuring.html#configuring-o
 package_015
 ###########
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the end package declaration.
 
@@ -331,7 +331,7 @@ This rule checks the indent of the end package declaration.
 package_016
 ###########
 
-|phase_7| |disabled| |error|
+|phase_7| |disabled| |error| |naming|
 
 This rule checks for valid suffixes on package identifiers.
 The default package suffix is *_pkg*.
@@ -350,11 +350,10 @@ Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#conf
 
    package foo_pkg is
 
-
 package_017
 ###########
 
-|phase_7| |disabled| |error|
+|phase_7| |disabled| |error| |naming|
 
 This rule checks for valid prefixes on package identifiers.
 The default package prefix is *pkg_*.
@@ -376,7 +375,7 @@ Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#conf
 package_018
 ###########
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **package** keyword in the **end package** has proper case.
 
@@ -397,7 +396,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 package_019
 ###########
 
-|phase_5| |error|
+|phase_5| |error| |alignment|
 
 This rule checks the identifiers for all declarations are aligned in the package declarative region.
 
@@ -422,7 +421,7 @@ Refer to the section `Configuring Identifier Alignment Rules <configuring.html#c
 package_400
 ###########
 
-|phase_5| |error|
+|phase_5| |error| |alignment|
 
 This rule checks the colons are in the same column for all declarations in the package declarative part.
 
@@ -455,7 +454,7 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
 package_401
 ###########
 
-|phase_5| |error|
+|phase_5| |error| |alignment|
 
 This rule checks the alignment of inline comments in the package declarative part.
 
@@ -484,3 +483,4 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
      constant c_period : time;      -- Comment 3
 
    end package my_package;
+

@@ -6,7 +6,7 @@ Source File Rules
 source_file_001
 ###############
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks for the existance of the source file passed to VSG.
 

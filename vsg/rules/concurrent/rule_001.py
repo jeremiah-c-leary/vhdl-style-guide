@@ -13,7 +13,27 @@ lTokens.append(token.concurrent_selected_signal_assignment.with_keyword)
 
 class rule_001(token_indent):
     '''
-    Concurrent rule 001 checks for the proper indentation at the beginning of the line.
+    This rule checks the indent of concurrent assignments.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       architecture RTL of FIFO is
+       begin
+
+            wr_en <= '0';
+       rd_en <= '1';
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       architecture RTL of FIFO is
+       begin
+
+         wr_en <= '0';
+         rd_en <= '1';
     '''
 
     def __init__(self):

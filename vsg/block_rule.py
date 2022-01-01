@@ -1,15 +1,15 @@
 
 from vsg import parser
-from vsg import rule
+
+from vsg.rule_group import structure
 
 
-class Rule(rule.Rule):
+class Rule(structure.Rule):
 
     def __init__(self, name, identifier):
-        rule.Rule.__init__(self, name=name, identifier=identifier)
+        structure.Rule.__init__(self, name=name, identifier=identifier)
         self.fixable = False
         self.disable = True
-        self.phase = 1
 
         self.min_height = 3
         self.configuration.append('min_height')

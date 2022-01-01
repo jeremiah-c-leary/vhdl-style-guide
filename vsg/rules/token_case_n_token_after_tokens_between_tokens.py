@@ -1,5 +1,5 @@
 
-from vsg import rule
+from vsg.rule_group import case
 from vsg import violation
 
 lKeywords = []
@@ -12,7 +12,7 @@ lKeywords.append('natural')
 lKeywords.append('std_ulogic')
 
 
-class token_case_n_token_after_tokens_between_tokens(rule.Rule):
+class token_case_n_token_after_tokens_between_tokens(case.Rule):
     '''
     Checks the case for words.
 
@@ -30,7 +30,7 @@ class token_case_n_token_after_tokens_between_tokens(rule.Rule):
     '''
 
     def __init__(self, name, identifier, iToken, lTokens, oStart, oEnd, bLimitToVhdlKeywords=False):
-        rule.Rule.__init__(self, name=name, identifier=identifier)
+        case.Rule.__init__(self, name=name, identifier=identifier)
         self.solution = None
         self.phase = 6
         self.case = 'lower'

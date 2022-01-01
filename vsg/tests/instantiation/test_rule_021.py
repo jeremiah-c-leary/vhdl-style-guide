@@ -11,4 +11,4 @@ class test_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'instantiation')
         self.assertEqual(oRule.identifier, '021')
-        self.assertTrue(oRule.depricated)
+        self.assertTrue(oRule.deprecated)

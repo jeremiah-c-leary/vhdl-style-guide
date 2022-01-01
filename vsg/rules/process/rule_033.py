@@ -15,7 +15,26 @@ lUnless.append([token.subprogram_body.is_keyword, token.subprogram_body.begin_ke
 
 class rule_033(align_tokens_in_region_between_tokens_unless_between_tokens):
     '''
-    Checks the alignment of : in declarations in the process declarative region.
+    This rule checks the colons are in the same column for all declarations in the process declarative part.
+    Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       variable var1 : natural;
+       variable var2  : natural;
+       constant c_period : time;
+       file my_test_input : my_file_type;
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       variable var1      : natural;
+       variable var2      : natural;
+       constant c_period  : time;
+       file my_test_input : my_file_type;
     '''
 
     def __init__(self):

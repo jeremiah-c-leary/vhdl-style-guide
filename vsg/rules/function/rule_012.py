@@ -17,8 +17,25 @@ lUnless.append([token.procedure_specification.procedure_keyword, token.subprogra
 
 class rule_012(align_tokens_in_region_between_tokens_unless_between_tokens):
     '''
-    Function rule 012 checks the colons are in the same column for all declarations
-    in the function declarative part.
+    This rule checks the colons are in the same column for all declarations in the function declarative part.
+
+    Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       variable var1 : natural;
+       variable var2  : natural;
+       constant c_period : time;
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       variable var1     : natural;
+       variable var2     : natural;
+       constant c_period : time;
     '''
 
     def __init__(self):

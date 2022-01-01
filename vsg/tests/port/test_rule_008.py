@@ -26,6 +26,7 @@ class test_port_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'port')
         self.assertEqual(oRule.identifier, '008')
+        self.assertEqual(oRule.groups, ['whitespace'])
 
         lExpected = [15, 17]
 

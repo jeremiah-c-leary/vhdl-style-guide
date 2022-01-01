@@ -1,13 +1,13 @@
 
 
 from vsg import parser
-from vsg import rule
 from vsg import token
 from vsg import violation
+from vsg.rule_group import case
 from vsg.rules import case_utils
 
 
-class token_case_formal_part_of_association_element_in_map_between_tokens(rule.Rule):
+class token_case_formal_part_of_association_element_in_map_between_tokens(case.Rule):
     '''
     Checks the case for words.
 
@@ -25,7 +25,7 @@ class token_case_formal_part_of_association_element_in_map_between_tokens(rule.R
     '''
 
     def __init__(self, name, identifier, sMapType, oStart, oEnd):
-        rule.Rule.__init__(self, name=name, identifier=identifier)
+        case.Rule.__init__(self, name=name, identifier=identifier)
         self.solution = None
         self.phase = 6
         self.case = 'lower'

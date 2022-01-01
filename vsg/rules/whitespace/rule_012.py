@@ -1,30 +1,50 @@
 
 from vsg import parser
-from vsg import rule
 from vsg import violation
 
+from vsg.rule_group import blank_line
 from vsg.vhdlFile import utils
 
 
-class rule_012(rule.Rule):
+class rule_012(blank_line.Rule):
     '''
-    Checks for consecutive blank lines.
+    This rule enforces a maximum number of consecutive blank lines.
 
-    Parameters
-    ----------
+    **Violation**
 
-    name : string
-       The group the rule belongs to.
+    .. code-block:: vhdl
 
-    identifier : string
-       unique identifier.  Usually in the form of 00N.
+      a <= b;
 
-    trigger : parser object type
-       object type to apply the case check against
+
+      c <= d;
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+      a <= b;
+
+      c <= d;
+
+    .. NOTE::
+
+      The default is set to 1.
+      This can be changed by setting the *numBlankLines* attribute to another number.
+
+      .. code-block:: json
+
+         {
+             "rule":{
+                 "whitespace_012":{
+                     "numBlankLines":3
+                 }
+             }
+         }
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self, 'whitespace', '012')
+        blank_line.Rule.__init__(self, 'whitespace', '012')
         self.solution = None
         self.phase = 3
         self.subphase = 3

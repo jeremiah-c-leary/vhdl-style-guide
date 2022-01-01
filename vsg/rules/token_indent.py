@@ -1,12 +1,12 @@
 
-from vsg import rule
+from vsg.rule_group import indent
 from vsg import parser
 from vsg import violation
 
 from vsg.rules import utils as rules_utils
 
 
-class token_indent(rule.Rule):
+class token_indent(indent.Rule):
     '''
     Checks the case for words.
 
@@ -24,9 +24,7 @@ class token_indent(rule.Rule):
     '''
 
     def __init__(self, name, identifier, lTokens):
-        rule.Rule.__init__(self, name=name, identifier=identifier)
-        self.solution = None
-        self.phase = 4
+        indent.Rule.__init__(self, name=name, identifier=identifier)
         self.lTokens = lTokens
 
     def _get_tokens_of_interest(self, oFile):

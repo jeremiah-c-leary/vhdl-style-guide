@@ -26,6 +26,7 @@ class test_instantiation_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'instantiation')
         self.assertEqual(oRule.identifier, '029')
+        self.assertEqual(oRule.groups, ['alignment'])
 
         lExpected = [23, 24, 27, 28, 29]
 

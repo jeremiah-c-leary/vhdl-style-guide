@@ -6,8 +6,28 @@ from vsg.token import if_statement as token
 
 class rule_033(align_consecutive_lines_starting_with_a_comment_above_line_starting_with_token):
     '''
-    Checks consecutive comment lines above an "else" keyword
-    in an if statement are aligned with the "else" keyword.
+    This rule aligns consecutive comment only lines above the **else** keyword in if statements.
+    These comments are used to describe what the elsif code is going to do.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+           -- comment 1
+     -- comment 2
+        -- comment 3
+       else
+         rd_en <= '0';
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       -- comment 1
+       -- comment 2
+       -- comment 3
+       else
+         rd_en <= '0';
     '''
 
     def __init__(self):

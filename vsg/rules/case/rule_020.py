@@ -9,7 +9,23 @@ lTokens.append(token.end_case_label)
 
 class rule_020(remove_tokens):
     '''
-    Case rule 020 checks for labels after the "end case" keywords.
+    This rule checks for labels after the **end case** keywords.
+    The label should be removed.
+    The preference is to have comments above the case statement.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+          end case CASE_LABEL;
+          end case;
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+          end case;
+          end case;
     '''
 
     def __init__(self):

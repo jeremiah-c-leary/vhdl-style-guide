@@ -11,8 +11,23 @@ lTokens.append(token.if_generate_statement.end_generate_label)
 
 class rule_012(token_case_with_prefix_suffix):
     '''
-    Checks the *generate* keyword has proper case.
+    This rule checks the **end generate** label has proper case.
+
+    Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       end generate RAM_ARRAY;
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       end generate ram_array;
     '''
 
     def __init__(self):
         token_case_with_prefix_suffix.__init__(self, 'generate', '012', lTokens)
+        self.groups.append('case::label')

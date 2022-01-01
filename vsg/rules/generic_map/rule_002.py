@@ -11,9 +11,30 @@ sMapType = 'generic'
 
 class rule_002(token_case_formal_part_of_association_element_in_map_between_tokens):
     '''
-    Checks the generic name has proper case.
+    This rule checks generic names have proper case.
+
+    Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+         generic map (
+           DEPTH => 512,
+           WIDTH => 32
+         )
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+         generic map (
+           depth => 512,
+           width => 32
+         )
     '''
     def __init__(self):
         token_case_formal_part_of_association_element_in_map_between_tokens.__init__(self, 'generic_map', '002', sMapType, oStart, oEnd)
         self.configuration.append('prefix_exceptions')
         self.configuration.append('suffix_exceptions')
+        self.groups.append('case::name')

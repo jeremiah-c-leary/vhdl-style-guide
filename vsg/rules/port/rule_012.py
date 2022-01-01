@@ -1,8 +1,9 @@
 
-from vsg import rule
 from vsg import parser
 from vsg import token
 from vsg import violation
+
+from vsg.rule_group import structure
 
 lTokens = []
 lTokens.append(token.interface_constant_declaration.assignment)
@@ -11,27 +12,38 @@ lTokens.append(token.interface_variable_declaration.assignment)
 lTokens.append(token.interface_unknown_declaration.assignment)
 
 
-class rule_012(rule.Rule):
+class rule_012(structure.Rule):
     '''
-    Checks the case for words.
+    This rule checks for default assignments on port declarations.
 
-    Parameters
-    ----------
+    This rule is defaulted to not fixable and can be overridden with a configuration to remove the default assignments.
 
-    name : string
-       The group the rule belongs to.
+    **Violation**
 
-    identifier : string
-       unique identifier.  Usually in the form of 00N.
+    .. code-block:: vhdl
 
-    trigger : parser object type
-       object type to apply the case check against
+       port (
+         I_WR_EN    : in    std_logic := '0';
+         I_RD_EN    : in    std_logic := '0';
+         O_OVERFLOW : out   std_logic;
+         IO_DATA    : inout std_logic := (others => 'Z')
+       );
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       port (
+         I_WR_EN    : in    std_logic;
+         I_RD_EN    : in    std_logic;
+         O_OVERFLOW : out   std_logic;
+         IO_DATA    : inout std_logic
+       );
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self, name='port', identifier='012')
+        structure.Rule.__init__(self, name='port', identifier='012')
         self.solution = 'Remove assignment'
-        self.phase = 1
         self.lTokens = lTokens
         self.oStart = token.port_clause.open_parenthesis
         self.oEnd = token.port_clause.close_parenthesis

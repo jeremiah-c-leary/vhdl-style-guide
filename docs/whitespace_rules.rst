@@ -6,7 +6,7 @@ Whitespace Rules
 whitespace_001
 ##############
 
-|phase_1| |error|
+|phase_1| |error| |whitespace|
 
 This rule check for trailing spaces.
 
@@ -27,14 +27,14 @@ Where periods indicate spaces:
 whitespace_002
 ##############
 
-This rule has been depricated.
+This rule has been deprecated.
 
 VSG changes tabs to spaces when a file is read in.
 
 whitespace_003
 ##############
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for spaces before semicolons.
 
@@ -53,7 +53,7 @@ This rule checks for spaces before semicolons.
 whitespace_004
 ##############
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for spaces before commas.
 
@@ -74,7 +74,7 @@ This rule checks for spaces before commas.
 whitespace_005
 ##############
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for spaces after an open parenthesis.
 
@@ -100,7 +100,7 @@ This rule checks for spaces after an open parenthesis.
 whitespace_006
 ##############
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for spaces before a close parenthesis.
 
@@ -123,7 +123,7 @@ This rule checks for spaces before a close parenthesis.
 whitespace_007
 ##############
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for spaces after a comma.
 
@@ -142,7 +142,7 @@ This rule checks for spaces after a comma.
 whitespace_008
 ##############
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for spaces after the **std_logic_vector** keyword.
 
@@ -163,7 +163,7 @@ This rule checks for spaces after the **std_logic_vector** keyword.
 whitespace_010
 ##############
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for spaces before and after the concate (&) operator.
 
@@ -182,7 +182,7 @@ This rule checks for spaces before and after the concate (&) operator.
 whitespace_011
 ##############
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for at least a single space before and after math operators +, -, /, \* and \*\*.
 
@@ -211,7 +211,7 @@ This rule checks for at least a single space before and after math operators +, 
 whitespace_012
 ##############
 
-|phase_2| |error|
+|phase_3| |error| |blank_line|
 
 This rule enforces a maximum number of consecutive blank lines.
 
@@ -250,7 +250,7 @@ This rule enforces a maximum number of consecutive blank lines.
 whitespace_013
 ##############
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for at least a single space before and after logical operators.
 
@@ -267,3 +267,4 @@ This rule checks for at least a single space before and after logical operators.
 
   if (a = '1') and (b = '0')
   if (a = '0') or (b = '1')
+

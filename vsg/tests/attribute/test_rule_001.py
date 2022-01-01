@@ -11,4 +11,4 @@ class test_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'attribute')
         self.assertEqual(oRule.identifier, '001')
-        self.assertTrue(oRule.depricated)
+        self.assertTrue(oRule.deprecated)

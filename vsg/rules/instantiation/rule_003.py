@@ -9,7 +9,19 @@ lTokens.append([token.component_instantiation_statement.instantiation_label, tok
 
 class rule_003(single_space_between_token_pairs):
     '''
-    Checks for a single space before the :
+    This rule checks for a single space before the colon.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       U_FIFO: FIFO
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       U_FIFO : FIFO
     '''
     def __init__(self):
         single_space_between_token_pairs.__init__(self, 'instantiation', '003', lTokens)

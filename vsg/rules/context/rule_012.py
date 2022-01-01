@@ -9,8 +9,23 @@ lTokens.append(token.context_declaration.identifier)
 
 class rule_012(token_case_with_prefix_suffix):
     '''
-    Checks the context identifier has proper case.
+    This rule checks the context identifier has proper case in the context declaration.
+
+    Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       context C1 is
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       context c1 is
     '''
 
     def __init__(self):
         token_case_with_prefix_suffix.__init__(self, 'context', '012', lTokens)
+        self.groups.append('case::name')

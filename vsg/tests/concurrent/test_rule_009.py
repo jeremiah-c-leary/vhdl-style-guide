@@ -203,6 +203,7 @@ class test_concurrent_rule(unittest.TestCase):
 
         lActual = self.oFile.get_lines()
 
+        self.assertEqual(oRule.groups, ['alignment'])
         self.assertEqual(lExpected_align_left_no, lActual)
 
         oRule.analyze(self.oFile)

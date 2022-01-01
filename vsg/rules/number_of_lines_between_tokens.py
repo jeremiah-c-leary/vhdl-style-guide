@@ -1,10 +1,9 @@
 
-from vsg import rule
-from vsg import severity
+from vsg.rule_group import length
 from vsg import violation
 
 
-class number_of_lines_between_tokens(rule.Rule):
+class number_of_lines_between_tokens(length.Rule):
     '''
     Checks the number of lines between tokens do not exceed a specified number
 
@@ -20,12 +19,8 @@ class number_of_lines_between_tokens(rule.Rule):
     '''
 
     def __init__(self, name, identifier, oLeftToken, oRightToken, iLines):
-        rule.Rule.__init__(self, name=name, identifier=identifier)
-        self.phase = 7
-        self.fixable = False  # The user will have to fix line length violations
-        self.severity = severity.warning('Warning')
+        length.Rule.__init__(self, name=name, identifier=identifier)
         self.length = iLines
-        self.configuration.append('length')
         self.oLeftToken = oLeftToken
         self.oRightToken = oRightToken
 

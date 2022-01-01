@@ -6,7 +6,7 @@ Component Rules
 component_001
 #############
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indentation of the **component** keyword.
 
@@ -35,7 +35,7 @@ This rule checks the indentation of the **component** keyword.
 component_002
 #############
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space after the **component** keyword.
 
@@ -54,7 +54,7 @@ This rule checks for a single space after the **component** keyword.
 component_003
 #############
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for blank lines or comments above the **component** declaration.
 
@@ -80,7 +80,7 @@ The default style is :code:`no_code`.
 component_004
 #############
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **component** keyword has proper case.
 
@@ -105,7 +105,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 component_005
 #############
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks the **is** keyword is on the same line as the **component** keyword.
 
@@ -129,7 +129,7 @@ This rule checks the **is** keyword is on the same line as the **component** key
 component_006
 #############
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **is** keyword has proper case.
 
@@ -154,7 +154,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 component_007
 #############
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space before the **is** keyword.
 
@@ -173,7 +173,7 @@ This rule checks for a single space before the **is** keyword.
 component_008
 #############
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_name|
 
 This rule checks the component name has proper case in the component declaration.
 
@@ -194,7 +194,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 component_009
 #############
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the **end component** keywords.
 
@@ -214,11 +214,10 @@ This rule checks the indent of the **end component** keywords.
      );
    end component fifo;
 
-
 component_010
 #############
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **end** keyword has proper case.
 
@@ -239,7 +238,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 component_011
 #############
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for single space after the **end** keyword.
 
@@ -258,7 +257,7 @@ This rule checks for single space after the **end** keyword.
 component_012
 #############
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_name|
 
 This rule checks the proper case of the component name in the **end component** line.
 
@@ -279,7 +278,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 component_013
 #############
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space after the **component** keyword in the **end component** line.
 
@@ -298,7 +297,7 @@ This rule checks for a single space after the **component** keyword in the **end
 component_014
 #############
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **component** keyword in the **end component** line has proper case.
 
@@ -325,7 +324,7 @@ The **component** keyword is required per the LRM.
 component_016
 #############
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for blank lines above the **end component** line.
 
@@ -351,7 +350,7 @@ This rule checks for blank lines above the **end component** line.
 component_017
 #############
 
-|phase_5| |error|
+|phase_5| |error| |alignment|
 
 This rule checks the alignment of the colon for each generic and port in the component declaration.
 
@@ -396,7 +395,7 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
 component_018
 #############
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for a blank line below the **end component** line.
 
@@ -421,7 +420,7 @@ Refer to the section `Configuring Blank Lines <configuring.html#configuring-blan
 component_019
 #############
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks for comments at the end of the port and generic clauses in component declarations.
 These comments represent additional maintainence.
@@ -445,7 +444,7 @@ Refer to the entity for port types, port directions and purpose.
 component_020
 #############
 
-|phase_5| |error|
+|phase_5| |error| |alignment|
 
 This rule checks for alignment of inline comments in the component declaration.
 
@@ -490,7 +489,7 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
 component_021
 #############
 
-|phase_1| |error|
+|phase_1| |error| |structure| |structure_optional|
 
 This rule inserts the optional **is** keyword if it does not exist.
 

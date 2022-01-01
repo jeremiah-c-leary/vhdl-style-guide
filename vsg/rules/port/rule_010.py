@@ -12,10 +12,35 @@ lTokens.append(token.interface_unknown_declaration.identifier)
 
 class rule_010(token_case_in_range_bounded_by_tokens):
     '''
-    Checks for casee in port identifiers.
+    This rule checks the port names have proper case.
+
+    Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       port (
+         wr_en     : in    std_logic;
+         rd_en     : in    std_logic;
+         OVERFLOW  : out   std_logic;
+         underflow : out   std_logic
+       );
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       port (
+         wr_en     : in    std_logic;
+         rd_en     : in    std_logic;
+         overflow  : out   std_logic;
+         underflow : out   std_logic
+       );
     '''
 
     def __init__(self):
         token_case_in_range_bounded_by_tokens.__init__(self, 'port', '010', lTokens, token.port_clause.open_parenthesis, token.port_clause.close_parenthesis)
         self.configuration.append('prefix_exceptions')
         self.configuration.append('suffix_exceptions')
+        self.groups.append('case::name')

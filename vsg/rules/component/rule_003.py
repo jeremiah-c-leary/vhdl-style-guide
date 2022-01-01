@@ -6,7 +6,26 @@ from vsg.token import component_declaration as token
 
 class rule_003(previous_line):
     '''
-    Component rule 003 checks for a blank line above the component keyword.
+    This rule checks for blank lines or comments above the **component** declaration.
+
+    Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous-line-rules>`_ for options.
+
+    The default style is :code:`no_code`.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       end component fifo;
+       component ram is
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       end component fifo;
+
+       component ram is
     '''
 
     def __init__(self):

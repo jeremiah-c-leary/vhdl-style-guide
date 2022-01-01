@@ -6,7 +6,19 @@ from vsg.token import component_declaration as token
 
 class rule_002(single_space_between_tokens):
     '''
-    Component rule 002 checks for a single space between the "component" keyword and the identifier.
+    This rule checks for a single space after the **component** keyword.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       component    fifo is
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       component fifo is
     '''
     def __init__(self):
         single_space_between_tokens.__init__(self, 'component', '002', token.component_keyword, token.identifier)

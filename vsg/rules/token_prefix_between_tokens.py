@@ -1,12 +1,12 @@
 
-from vsg import rule
 from vsg import parser
 from vsg import violation
 
 from vsg.rules import utils as rules_utils
+from vsg.rule_group import naming
 
 
-class token_prefix_between_tokens(rule.Rule):
+class token_prefix_between_tokens(naming.Rule):
     '''
     Checks the case for words.
 
@@ -27,9 +27,7 @@ class token_prefix_between_tokens(rule.Rule):
     '''
 
     def __init__(self, name, identifier, lTokens, oStart, oEnd):
-        rule.Rule.__init__(self, name=name, identifier=identifier)
-        self.solution = None
-        self.phase = 7
+        naming.Rule.__init__(self, name=name, identifier=identifier)
         self.lTokens = lTokens
         self.prefixes = None
         self.configuration.append('prefixes')

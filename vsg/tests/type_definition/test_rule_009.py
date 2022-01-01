@@ -26,6 +26,7 @@ class test_type_definition_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'type')
         self.assertEqual(oRule.identifier, '009')
+        self.assertEqual(oRule.groups, ['structure'])
 
         lExpected = [8, 12, 15]
 

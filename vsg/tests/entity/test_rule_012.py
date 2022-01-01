@@ -29,6 +29,7 @@ class test_entity_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'entity')
         self.assertEqual(oRule.identifier, '012')
+        self.assertEqual(oRule.groups, ['case', 'case::name'])
 
         lExpected = [8, 12]
 

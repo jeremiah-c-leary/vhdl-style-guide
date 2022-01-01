@@ -9,7 +9,24 @@ lTokens.append(token.process_statement.begin_keyword)
 
 class rule_010(split_line_at_token):
     '''
-    Moves the *begin* keyword to it's own line.
+    This rule checks the **begin** keyword is on it's own line.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       proc_a : process (rd_en, wr_en, data_in, data_out,
+                         rd_full, wr_full
+                        ) is begin
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       proc_a : process (rd_en, wr_en, data_in, data_out,
+                         rd_full, wr_full
+                        ) is
+       begin
     '''
 
     def __init__(self):

@@ -9,7 +9,20 @@ lTokens.append(token.block_statement.begin_keyword)
 
 class rule_004(split_line_at_token):
     '''
-    Moves begin keyword and code following it to the next line
+    This rule checks the **begin** keyword is on it's own line.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       block is begin
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       block is
+       begin
     '''
 
     def __init__(self):

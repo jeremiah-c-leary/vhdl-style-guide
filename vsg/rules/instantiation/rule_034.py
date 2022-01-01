@@ -1,29 +1,41 @@
 
-from vsg import rule
 from vsg import token
 from vsg import violation
+from vsg.rule_group import structure
 
 
-class rule_034(rule.Rule):
+class rule_034(structure.Rule):
     '''
-    Checks for component or entity instantiations.
+    This rule checks for component versus direct instantiations.
 
-    Parameters
-    ----------
+    Refer to the section `Configuring Type of Instantiation <configuring.html#configuring-type-of-instantiations>`_ for options to configure the allowed configuration.
 
-    name : string
-       The group the rule belongs to.
+    component instantiation
+    ^^^^^^^^^^^^^^^^^^^^^^^
 
-    identifier : string
-       unique identifier.  Usually in the form of 00N.
+    .. NOTE:: This is the default configuration
 
-    lTokens : list of token types
-       The token types to check the case on.
+    **Violation**
+
+    .. code-block:: vhdl
+
+       U_FIFO : entity fifo_dsn.FIFO(RTL)
+
+
+    entity instantiation
+    ^^^^^^^^^^^^^^^^^^^^
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       U_FIFO : component FIFO
+
+       U_FIFO : FIFO
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self, name='instantiation', identifier='034')
-        self.phase = 1
+        structure.Rule.__init__(self, name='instantiation', identifier='034')
         self.method = 'component'
         self.configuration.append('method')
         self.fixable = False

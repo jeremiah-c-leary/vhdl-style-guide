@@ -22,6 +22,7 @@ class test_subtype_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'subtype')
         self.assertEqual(oRule.identifier, '600')
+        self.assertEqual(oRule.groups, ['naming'])
 
         lExpected = [7, 8, 10, 11]
 

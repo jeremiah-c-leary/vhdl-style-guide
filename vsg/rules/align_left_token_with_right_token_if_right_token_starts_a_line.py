@@ -1,14 +1,13 @@
 
 from vsg import parser
-from vsg import rule
 from vsg import violation
 
 from vsg.rules import utils as rules_utils
-
+from vsg.rule_group import alignment
 from vsg.vhdlFile import utils
 
 
-class align_left_token_with_right_token_if_right_token_starts_a_line(rule.Rule):
+class align_left_token_with_right_token_if_right_token_starts_a_line(alignment.Rule):
     '''
     Checks for a single space between two tokens.
 
@@ -32,9 +31,7 @@ class align_left_token_with_right_token_if_right_token_starts_a_line(rule.Rule):
     '''
 
     def __init__(self, name, identifier, left_token, right_token):
-        rule.Rule.__init__(self, name=name, identifier=identifier)
-        self.solution = None
-        self.phase = 5
+        alignment.Rule.__init__(self, name=name, identifier=identifier)
         self.left_token = left_token
         self.right_token = right_token
 

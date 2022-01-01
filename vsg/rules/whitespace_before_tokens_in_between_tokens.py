@@ -1,14 +1,14 @@
 
 from vsg import parser
-from vsg import rule
 from vsg import violation
 
+from vsg.rule_group import whitespace
 from vsg.rules import utils as rules_utils
 
 
-class whitespace_before_tokens_in_between_tokens(rule.Rule):
+class whitespace_before_tokens_in_between_tokens(whitespace.Rule):
     '''
-    Checks for a at least a single space before a token.
+    Checks for at least a single space before a token.
 
     Parameters
     ----------
@@ -19,8 +19,8 @@ class whitespace_before_tokens_in_between_tokens(rule.Rule):
     identifier : string
        unique identifier.  Usually in the form of 00N.
 
-    token : token object
-       reference token check for a whitespace before
+    lTokens : list of token object types
+       reference token to check for a whitespace before
 
     oStart : token object type
        The beginning of the range
@@ -30,9 +30,7 @@ class whitespace_before_tokens_in_between_tokens(rule.Rule):
     '''
 
     def __init__(self, name, identifier, lTokens, oStart, oEnd):
-        rule.Rule.__init__(self, name=name, identifier=identifier)
-        self.solution = None
-        self.phase = 2
+        whitespace.Rule.__init__(self, name=name, identifier=identifier)
         self.lTokens = lTokens
         self.oStart = oStart
         self.oEnd = oEnd

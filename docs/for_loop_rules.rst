@@ -6,7 +6,7 @@ For Loop Rules
 for_loop_001
 ############
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indentation of the **for** keyword.
 
@@ -39,7 +39,7 @@ This rule checks the indentation of the **for** keyword.
 for_loop_002
 ############
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indentation of the **end loop** keywords.
 
@@ -72,7 +72,7 @@ This rule checks the indentation of the **end loop** keywords.
 for_loop_003
 ############
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_label|
 
 This rule checks the proper case of the label on a foor loop.
 
@@ -95,7 +95,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 for_loop_004
 ############
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks if a label exists on a for loop that a single space exists between the label and the colon.
 
@@ -116,7 +116,7 @@ This rule checks if a label exists on a for loop that a single space exists betw
 for_loop_005
 ############
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks if a label exists on a for loop that a single space exists after the colon.
 
@@ -133,3 +133,4 @@ This rule checks if a label exists on a for loop that a single space exists afte
 
      label : for index in 4 to 23 loop
      label : for index in 0 to 100 loop
+

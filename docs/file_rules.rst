@@ -6,7 +6,7 @@ File Rules
 file_001
 ########
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of **file** declarations.
 
@@ -39,7 +39,7 @@ This rule checks the indent of **file** declarations.
 file_002
 ########
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **file** keyword has proper case.
 
@@ -74,3 +74,4 @@ This rule was depricated and replaced with rules:
 * `package_019 <package_rules.html#package-019>`_
 * `procedure_010 <procedure_rules.html#procedure-010>`_
 * `architecture_029 <architecture_rules.html#architecture-029>`_
+

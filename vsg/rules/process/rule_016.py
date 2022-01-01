@@ -1,33 +1,36 @@
 
-from vsg import rule
 from vsg import token
 from vsg import violation
 
+from vsg.rule_group import structure
 
-class rule_016(rule.Rule):
+
+class rule_016(structure.Rule):
     '''
-    Checks a process has a label.
+    This rule checks the process has a label.
 
-    Parameters
-    ----------
+    **Violation**
 
-    name : string
-       The group the rule belongs to.
+    .. code-block:: vhdl
 
-    identifier : string
-       unique identifier.  Usually in the form of 00N.
+       process (rd_en, wr_en, data_in, data_out,
+                rd_full, wr_full
+               ) is
+       begin
 
-    lTokens : list of parser object types
-       object types to check the prefix
+    **Fix**
 
-    lSuffixes: string list
-       acceptable suffixes
+    .. code-block:: vhdl
+
+       proc_a : process (rd_en, wr_en, data_in, data_out,
+                         rd_full, wr_full
+                        ) is
+       begin
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self, 'process', '016')
+        structure.Rule.__init__(self, 'process', '016')
         self.solution = 'Add label for process'
-        self.phase = 1
         self.fixable = False
 
     def analyze(self, oFile):

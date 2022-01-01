@@ -1,33 +1,44 @@
 
 from vsg import parser
-from vsg import rule
 from vsg import violation
 
 from vsg.token import port_clause as token
 from vsg.token import interface_unknown_declaration
 from vsg.token import interface_list
+from vsg.rule_group import structure
 
 
-class rule_026(rule.Rule):
+class rule_026(structure.Rule):
     '''
-    Checks for multiple instances of identifiers in port declarations.
+    This rule checks for multiple identifiers on port declarations.
 
-    Parameters
-    ----------
+    Any comments are not replicated.
 
-    name : string
-       The group the rule belongs to.
+    **Violation**
 
-    identifier : string
-       unique identifier.  Usually in the form of 00N.
+    .. code-block:: vhdl
 
-    trigger : parser object type
-       object type to apply the case check against
+       port (
+         wr_en, rd_en : in    std_logic;  -- Comment
+         data     : inout std_logic;
+         overflow, empty : out   std_logic -- Other comment
+       );
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       port (
+         wr_en    : in    std_logic;
+         rd_en    : in    std_logic;  -- Comment
+         data    : inout std_logic
+         overflow : out   std_logic;
+         empty : out   std_logic -- Other comment
+       );
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self, name='port', identifier='026')
-        self.phase = 1
+        structure.Rule.__init__(self, name='port', identifier='026')
         self.subphase = 2
 
     def _get_tokens_of_interest(self, oFile):

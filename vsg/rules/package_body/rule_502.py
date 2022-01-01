@@ -9,8 +9,23 @@ lTokens.append(token.package_body.package_simple_name)
 
 class rule_502(token_case_with_prefix_suffix):
     '''
-    Checks the "body" keyword has proper case.
+    This rule checks the package name has proper case in the package declaration.
+
+    Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       package body FIFO_PKG is
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       package body fifo_pkg is
     '''
 
     def __init__(self):
         token_case_with_prefix_suffix.__init__(self, 'package_body', '502', lTokens)
+        self.groups.append('case::name')

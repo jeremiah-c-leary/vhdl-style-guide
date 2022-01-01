@@ -26,6 +26,7 @@ class test_generic_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'generic')
         self.assertEqual(oRule.identifier, '010')
+        self.assertEqual(oRule.groups, ['structure'])
 
         lExpected = [19]
 

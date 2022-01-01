@@ -6,7 +6,7 @@ Assert Rules
 assert_001
 ##########
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks indent of multiline assert statements.
 
@@ -29,7 +29,7 @@ This rule checks indent of multiline assert statements.
 assert_002
 ##########
 
-|phase_4| |error|
+|phase_1| |error| |structure|
 
 This rule checks the **report** keyword is on its own line for concurrent assertion statements.
 
@@ -61,7 +61,7 @@ This rule checks the **report** keyword is on its own line for concurrent assert
 assert_003
 ##########
 
-|phase_4| |error|
+|phase_1| |error| |structure|
 
 This rule checks the **report** keyword is on its own line for sequential assertion statements.
 
@@ -103,7 +103,7 @@ This rule checks the **report** keyword is on its own line for sequential assert
 assert_004
 ##########
 
-|phase_4| |error|
+|phase_1| |error| |structure|
 
 This rule checks the **severity** keyword is on its own line for concurrent assertion statements.
 
@@ -135,7 +135,7 @@ This rule checks the **severity** keyword is on its own line for concurrent asse
 assert_005
 ##########
 
-|phase_4| |error|
+|phase_1| |error| |structure|
 
 This rule checks the **severity** keyword is on its own line for sequential assertion statements.
 
@@ -173,7 +173,7 @@ This rule checks the **severity** keyword is on its own line for sequential asse
 assert_400
 ##########
 
-|phase_4| |error|
+|phase_4| |error| |alignment|
 
 This rule checks the alignment of the report expressions.
 
@@ -220,3 +220,4 @@ alignment set to 'left'
      report "FIFO width is limited" &
        " to 16 bits."
      severity FAILURE;
+

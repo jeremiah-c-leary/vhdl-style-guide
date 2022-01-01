@@ -8,7 +8,20 @@ oToken = token.if_statement.then_keyword
 
 class rule_036(move_token_left_to_next_non_whitespace_token):
     '''
-    Checks code after the **elsif** keyword are on the same line as the **elsif** keyword.
+    This rule checks the **then** keyword is not on a line by itself.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       if a = '1'
+         then
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       if a = '1' then
     '''
 
     def __init__(self):

@@ -1,20 +1,38 @@
 
 from vsg import parser
-from vsg import rule
 from vsg import violation
 
 from vsg.rules import utils
+from vsg.rule_group import whitespace
 
 
-class rule_100(rule.Rule):
+class rule_100(whitespace.Rule):
     '''
-    This rule will check for spaces after the comment keyword "--".
+    This rule checks for a single space after the **--**.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       --Comment 1
+       --|Comment 2
+       ---Comment
+       ---------------------------
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       -- Comment 1
+       --| Comment 2
+       --- Comment
+       ---------------------------
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self, name='comment', identifier='100')
+        whitespace.Rule.__init__(self, name='comment', identifier='100')
         self.solution = 'Undefined'
-        self.phase = 3
+        self.phase = 2
         self.disable = False
         self.lTokens = [parser.comment]
 

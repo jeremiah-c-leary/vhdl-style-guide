@@ -14,7 +14,18 @@ lTokens.append(token.if_generate_statement.end_generate_label)
 
 class rule_600(token_suffix):
     '''
-    Constant rule 600 checks for suffixes in generate identifiers.
+    This rule checks for valid suffixes on generate statement labels.
+    The default suffix is *\_gen*.
+
+    Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed suffixes.
+
+    [Violation]
+
+       label : case condition generate
+
+    [Fix]
+
+       label_gen : case condition generate
     '''
 
     def __init__(self):

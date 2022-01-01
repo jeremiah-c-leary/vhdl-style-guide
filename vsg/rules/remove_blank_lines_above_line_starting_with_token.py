@@ -1,15 +1,15 @@
 
 
 from vsg import parser
-from vsg import rule
 from vsg import violation
 
+from vsg.rule_group import blank_line
 from vsg.vhdlFile import utils
 
 
-class remove_blank_lines_above_line_starting_with_token(rule.Rule):
+class remove_blank_lines_above_line_starting_with_token(blank_line.Rule):
     '''
-    Checks for a single space between two tokens.
+    Checks for blank lines above a line.
 
     Parameters
     ----------
@@ -20,14 +20,12 @@ class remove_blank_lines_above_line_starting_with_token(rule.Rule):
     identifier : string
        unique identifier.  Usually in the form of 00N.
 
-    token : token list
+    lTokens : token list
        reference tokens to remove blank lines above
     '''
 
     def __init__(self, name, identifier, lTokens):
-        rule.Rule.__init__(self, name=name, identifier=identifier)
-        self.solution = None
-        self.phase = 3
+        blank_line.Rule.__init__(self, name=name, identifier=identifier)
         self.lTokens = lTokens
 
     def _get_tokens_of_interest(self, oFile):

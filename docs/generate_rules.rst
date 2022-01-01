@@ -6,7 +6,7 @@ Generate Rules
 generate_001
 ############
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the generate declaration.
 
@@ -35,7 +35,7 @@ This rule checks the indent of the generate declaration.
 generate_002
 ############
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space between the label and the colon.
 
@@ -54,7 +54,7 @@ This rule checks for a single space between the label and the colon.
 generate_003
 ############
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for a blank line below the **end generate** keywords.
 
@@ -78,7 +78,7 @@ Refer to the section `Configuring Blank Lines <configuring.html#configuring-blan
 generate_004
 ############
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for blank lines or comments before the **generate** label.
 
@@ -102,7 +102,7 @@ Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous
 generate_005
 ############
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_label|
 
 This rule checks the generate label has proper case.
 
@@ -120,11 +120,10 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
    ram_array: for i in 0 to 7 generate
 
-
 generate_006
 ############
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the **begin** keyword.
 
@@ -145,7 +144,7 @@ This rule checks the indent of the **begin** keyword.
 generate_007
 ############
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the **end generate** keyword.
 
@@ -168,7 +167,7 @@ This rule checks the indent of the **end generate** keyword.
 generate_008
 ############
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space after the **end** keyword.
 
@@ -187,7 +186,7 @@ This rule checks for a single space after the **end** keyword.
 generate_009
 ############
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **end** keyword has proper case.
 
@@ -208,7 +207,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 generate_010
 ############
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **generate** keyword has the proper case in the **end generate** line.
 
@@ -229,7 +228,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 generate_011
 ############
 
-|phase_1| |error|
+|phase_1| |error| |structure| |structure_optional|
 
 This rule checks the **end generate** line has a label on for generate statements.
 
@@ -252,7 +251,7 @@ This rule checks the **end generate** line has a label on for generate statement
 generate_012
 ############
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_label|
 
 This rule checks the **end generate** label has proper case.
 
@@ -273,7 +272,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 generate_013
 ############
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space after the **generate** keyword and the label in the **end generate** keywords.
 
@@ -292,7 +291,7 @@ This rule checks for a single space after the **generate** keyword and the label
 generate_014
 ############
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space between the colon and the **for** keyword.
 
@@ -313,7 +312,7 @@ This rule checks for a single space between the colon and the **for** keyword.
 generate_015
 ############
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks the generate label and the **generate** keyword are on the same line.
 Keeping the label and generate on the same line reduces excessive indenting.
@@ -334,7 +333,7 @@ Keeping the label and generate on the same line reduces excessive indenting.
 generate_016
 ############
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the **when** keyword in generate case statements.
 
@@ -359,7 +358,7 @@ This rule checks the indent of the **when** keyword in generate case statements.
 generate_017
 ############
 
-|phase_7| |disabled| |error|
+|phase_7| |disabled| |error| |naming|
 
 This rule checks for valid prefixes on generate statement labels.
 The default prefix is *gen\_*.
@@ -381,7 +380,7 @@ Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#conf
 generate_018
 ############
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the **end** keyword in the generate statement body.
 
@@ -406,7 +405,7 @@ This rule checks the indent of the **end** keyword in the generate statement bod
 generate_400
 ############
 
-|phase_5| |error|
+|phase_5| |error| |alignment|
 
 This rule checks the identifiers for all declarations are aligned in the generate declarative part in for generate statements.
 
@@ -429,7 +428,7 @@ Refer to the section `Configuring Identifier Alignment Rules <configuring.html#c
 generate_401
 ############
 
-|phase_5| |error|
+|phase_5| |error| |alignment|
 
 This rule checks the colons are in the same column for all declarations in the generate declarative part in for generate statements.
 
@@ -456,7 +455,7 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
 generate_402
 ############
 
-|phase_5| |error|
+|phase_5| |error| |alignment|
 
 This rule checks the identifiers for all declarations are aligned in the generate declarative part in if generate statements.
 
@@ -479,7 +478,7 @@ Refer to the section `Configuring Identifier Alignment Rules <configuring.html#c
 generate_403
 ############
 
-|phase_5| |error|
+|phase_5| |error| |alignment|
 
 This rule checks the colons are in the same column for all declarations in the generate declarative part in if generate statements.
 
@@ -506,7 +505,7 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
 generate_404
 ############
 
-|phase_5| |error|
+|phase_5| |error| |alignment|
 
 This rule checks the identifiers for all declarations are aligned in the generate declarative part in case generate statements.
 
@@ -529,7 +528,7 @@ Refer to the section `Configuring Identifier Alignment Rules <configuring.html#c
 generate_405
 ############
 
-|phase_5| |error|
+|phase_5| |error| |alignment|
 
 This rule checks the colons are in the same column for all declarations in the generate declarative part in case generate statements.
 
@@ -556,7 +555,7 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
 generate_600
 ############
 
-|phase_7| |disabled| |error|
+|phase_7| |disabled| |error| |naming|
 
 This rule checks for valid suffixes on generate statement labels.
 The default suffix is *\_gen*.
@@ -574,5 +573,4 @@ Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#conf
 .. code-block:: vhdl
 
    label_gen : case condition generate
-
 

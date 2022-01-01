@@ -1,21 +1,33 @@
 
 from vsg import parser
-from vsg import rule
 from vsg import violation
 
 from vsg.vhdlFile import utils
+from vsg.rule_group import whitespace
 
 
-class rule_008(rule.Rule):
+class rule_008(whitespace.Rule):
     '''
-    Checks for spaces after "std_logic_vector"
+    This rule checks for spaces after the **std_logic_vector** keyword.
 
+    **Violation**
+
+    .. code-block:: vhdl
+
+       signal data    : std_logic_vector (7 downto 0);
+       signal counter : std_logic_vector    (7 downto 0);
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       signal data    : std_logic_vector(7 downto 0);
+       signal counter : std_logic_vector(7 downto 0);
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self, 'whitespace', '008')
+        whitespace.Rule.__init__(self, 'whitespace', '008')
         self.solution = 'Remove spaces after std_logic_vector'
-        self.phase = 2
 
     def _get_tokens_of_interest(self, oFile):
         return [oFile.get_all_tokens()]

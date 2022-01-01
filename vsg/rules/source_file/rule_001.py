@@ -1,16 +1,25 @@
 
-from vsg import rule
 from vsg import violation
+from vsg.rule_group import structure
 
 
-class rule_001(rule.Rule):
+class rule_001(structure.Rule):
     '''
-    Checks the length of the file and determines if the file is empty.
+    This rule checks for the existance of the source file passed to VSG.
+
+    **Violation**
+
+    Source file passed to VSG does not exist.
+    This violation will be reported at the command line in the normal output.
+    It will also be reported in the junit file if the --junit option is used.
+
+    **Fix**
+
+    Pass correct file name to VSG.
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self, 'source_file', '001')
-        self.phase = 1
+        structure.Rule.__init__(self, 'source_file', '001')
         # These are filled out when creating a new rule
         self.fixable = False
         self.solution = 'File empty.'

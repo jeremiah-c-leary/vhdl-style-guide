@@ -1,15 +1,14 @@
 
 
 from vsg import parser
-from vsg import rule
 from vsg import violation
 
 from vsg.vhdlFile import utils
-
+from vsg.rule_group import structure
 from vsg.rules import utils as rules_utils
 
 
-class insert_token_left_of_token_if_it_does_not_exist_between_tokens_using_value_from_token(rule.Rule):
+class insert_token_left_of_token_if_it_does_not_exist_between_tokens_using_value_from_token(structure.Rule):
     '''
     Checks for the existence of a token and will insert it if it does not exist.
 
@@ -33,9 +32,7 @@ class insert_token_left_of_token_if_it_does_not_exist_between_tokens_using_value
     '''
 
     def __init__(self, name, identifier, insert_token, anchor_token, left_token, right_token, value_token):
-        rule.Rule.__init__(self, name=name, identifier=identifier)
-        self.solution = None
-        self.phase = 1
+        structure.Rule.__init__(self, name=name, identifier=identifier)
         self.insert_token = insert_token
         self.anchor_token = anchor_token
         self.left_token = left_token

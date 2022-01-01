@@ -1,7 +1,8 @@
 
 from vsg import token
-from vsg import rule
 from vsg import violation
+
+from vsg.rule_group import case
 
 lPortTokens = []
 lPortTokens.append(token.interface_unknown_declaration.identifier)
@@ -22,24 +23,49 @@ oStartToken = token.architecture_body.entity_name
 oEndToken = token.architecture_body.end_keyword
 
 
-class rule_601(rule.Rule):
+class rule_601(case.Rule):
     '''
-    Checks for consistent case of entity ports in the architecture body.
+    This rule checks for consistent capitalization of port names in an architecture body.
 
-    Parameters
-    ----------
+    **Violation**
 
-    name : string
-       The group the rule belongs to.
+    .. code-block:: vhdl
 
-    identifier : string
-       unique identifier.  Usually in the form of 00N.
+       entity FIFO is
+         port (
+           I_DATA : in std_logic_vector(31 downto 0)
+         );
+       end entity fifo;
+
+       architecture rtl of fifo is
+
+       begin
+
+          register <= i_data;
+
+       end architecture rtl;
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       entity FIFO is
+         port (
+           I_DATA : in std_logic_vector(31 downto 0)
+         );
+       end entity fifo;
+
+       architecture rtl of fifo is
+
+       begin
+
+          register <= I_DATA;
+
+       end architecture rtl;
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self, name="architecture", identifier="601")
-        self.solution = None
-        self.phase = 6
+        case.Rule.__init__(self, name="architecture", identifier="601")
         self.subphase = 2
 
     def analyze(self, oFile):

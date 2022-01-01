@@ -6,7 +6,7 @@ Variable Rules
 variable_001
 ############
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of variable declarations.
 
@@ -35,7 +35,7 @@ This rule checks the indent of variable declarations.
 variable_002
 ############
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **variable** keyword has proper case.
 
@@ -66,7 +66,7 @@ This rule was depricated and replaced with rules:
 variable_004
 ############
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_name|
 
 This rule checks the variable name has proper case.
 
@@ -87,7 +87,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 variable_005
 ############
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks there is a single space after the colon.
 
@@ -108,7 +108,7 @@ This rule checks there is a single space after the colon.
 variable_006
 ############
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for at least a single space before the colon.
 
@@ -129,7 +129,7 @@ This rule checks for at least a single space before the colon.
 variable_007
 ############
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks for default assignments in variable declarations.
 
@@ -148,7 +148,7 @@ This rule checks for default assignments in variable declarations.
 variable_010
 ############
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_name|
 
 This rule checks the variable type has proper case.
 
@@ -169,7 +169,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 variable_011
 ############
 
-|phase_6| |error|
+|phase_6| |error| |case|
 
 This rule checks for consistent capitalization of variable names.
 
@@ -229,7 +229,7 @@ This rule checks for consistent capitalization of variable names.
 variable_012
 ############
 
-|phase_7| |disabled| |error|
+|phase_7| |disabled| |error| |naming|
 
 This rule checks for valid prefixes on variable identifiers.
 The default variable prefix is *v\_*.
@@ -251,7 +251,7 @@ Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#conf
 variable_600
 ############
 
-|phase_7| |disabled| |error|
+|phase_7| |disabled| |error| |naming|
 
 This rule checks for valid suffix on variable identifiers.
 The default variable suffix is *\_v*.
@@ -269,3 +269,4 @@ Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#conf
 .. code-block:: vhdl
 
    variable my_var_v : natural;
+

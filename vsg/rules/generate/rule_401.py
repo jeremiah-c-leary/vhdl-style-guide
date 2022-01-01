@@ -21,7 +21,27 @@ lUnless.append([token.subprogram_body.is_keyword,token.subprogram_body.begin_key
 
 class rule_401(align_tokens_in_region_between_tokens_when_between_tokens_unless_between_tokens):
     '''
-    Checks the alignment of declaration identifiers in the generate declarative region.
+    This rule checks the colons are in the same column for all declarations in the generate declarative part in for generate statements.
+
+    Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       signal sig1: natural;
+       variable var2  : natural;
+       constant c_period : time;
+       file my_test_input : my_file_type;
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       signal sig1        : natural;
+       variable var2      : natural;
+       constant c_period  : time;
+       file my_test_input : my_file_type;
     '''
 
     def __init__(self):

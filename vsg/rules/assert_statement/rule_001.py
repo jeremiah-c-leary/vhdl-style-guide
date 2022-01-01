@@ -10,9 +10,26 @@ lTokens.append(token.assertion.severity_keyword)
 lTokens.append(token.concurrent_assertion_statement.label_name)
 lTokens.append(token.assertion_statement.label)
 
+
 class rule_001(token_indent):
     '''
-    Assert rule 001 checks for spaces at the beginning of the line.
+    This rule checks indent of multiline assert statements.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       assert WIDTH > 16
+            report "FIFO width is limited to 16 bits."
+        severity FAILURE;
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       assert WIDTH > 16
+         report "FIFO width is limited to 16 bits."
+         severity FAILURE;
     '''
 
     def __init__(self):

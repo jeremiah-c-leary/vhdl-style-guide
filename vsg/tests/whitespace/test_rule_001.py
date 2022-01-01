@@ -25,6 +25,7 @@ class test(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'whitespace')
         self.assertEqual(oRule.identifier, '001')
+        self.assertEqual(oRule.groups, ['whitespace'])
 
         lExpected = [1, 8, 9, 10, 12]
 

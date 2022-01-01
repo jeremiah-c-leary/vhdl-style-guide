@@ -6,7 +6,7 @@ Function Rules
 function_001
 ############
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indentation of the **function** keyword.
 
@@ -48,7 +48,7 @@ This rule has been merged into `function_100 <function_rules.html#function-100>`
 function_004
 ############
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **begin** keyword has proper case.
 
@@ -71,7 +71,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 function_005
 ############
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **function** keyword has proper case.
 
@@ -92,7 +92,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 function_006
 ############
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for blank lines or comments above the **function** keyword.
 
@@ -122,7 +122,7 @@ This rule has been moved to rule `subprogram_body_205 <subprogram_rules.html#sub
 function_008
 ############
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of function parameters on multiple lines.
 
@@ -153,7 +153,7 @@ This rule checks the indent of function parameters on multiple lines.
 function_009
 ############
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks for a function parameter on the same line as the function keyword when the parameters are on multiple lines.
 
@@ -186,7 +186,7 @@ This rule checks for a function parameter on the same line as the function keywo
 function_010
 ############
 
-|phase_6| |error|
+|phase_6| |error| |case|
 
 This rule checks for consistent capitalization of function names.
 
@@ -235,7 +235,7 @@ This rule checks for consistent capitalization of function names.
 function_012
 ############
 
-|phase_5| |error|
+|phase_5| |error| |alignment|
 
 This rule checks the colons are in the same column for all declarations in the function declarative part.
 
@@ -260,7 +260,7 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
 function_013
 ############
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **end** keyword has proper case.
 
@@ -285,7 +285,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 function_014
 ############
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **function** keyword in the **end function** has proper case.
 
@@ -310,7 +310,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 function_015
 ############
 
-|phase_5| |error|
+|phase_5| |error| |alignment|
 
 This rule checks the identifiers for all declarations are aligned in the function declarative part.
 
@@ -335,7 +335,7 @@ Refer to the section `Configuring Identifier Alignment Rules <configuring.html#c
 function_016
 ############
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of return statements in function bodies.
 
@@ -362,7 +362,7 @@ This rule checks the indent of return statements in function bodies.
 function_017
 ############
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_name|
 
 This rule checks the function designator has proper case.
 
@@ -383,7 +383,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 function_100
 ############
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space between the following function elements:  **function** keyword, function designator, open parenthesis, close parenthesis, **return** keyword, return type and **is** keyword.
 
@@ -402,7 +402,7 @@ This rule checks for a single space between the following function elements:  **
 function_101
 ############
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space between the **end** and **function** keywords and function designator.
 
@@ -445,7 +445,7 @@ This rule has been moved to rule `subprogram_body_204 <subprogram_rules.html#sub
 function_300
 ############
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the closing parenthesis if it is on it's own line.
 
@@ -473,7 +473,7 @@ This rule checks the indent of the closing parenthesis if it is on it's own line
 function_502
 ############
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **is** keyword has proper case.
 
@@ -494,7 +494,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 function_506
 ############
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_name|
 
 This rule checks the function designator has proper case on the end function declaration.
 
@@ -511,5 +511,4 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 .. code-block:: vhdl
 
    end function overflow;
-
 

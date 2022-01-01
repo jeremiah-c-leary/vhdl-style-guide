@@ -1,9 +1,12 @@
 
-from vsg.depricated_rule import Depricated
+from vsg.deprecated_rule import Rule
 
 
-class rule_202(Depricated):
+class rule_202(Rule):
+    '''
+    This rule has been moved to rule `subprogram_body_202 <subprogram_rules.html#subprogram-body-202>`_.
+    '''
 
     def __init__(self):
-        Depricated.__init__(self, 'procedure', '202')
+        Rule.__init__(self, 'procedure', '202')
         self.message.append('Rule ' + self.unique_id + ' has been moved to rule subprogram_body_202.')

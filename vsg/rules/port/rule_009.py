@@ -15,7 +15,27 @@ oEnd = token.port_clause.close_parenthesis
 
 class rule_009(n_spaces_between_token_pairs_when_bounded_by_tokens):
     '''
-    Port rule 009 checks for one space after the "inout" keyword in a port declaration for "in" ports.
+    This rule checks for a single space after the **inout** keyword.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       port (
+         WR_EN    : in    std_logic;
+         RD_EN    : in    std_logic;
+         DATA     : inout    std_logic
+       );
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       port (
+         WR_EN    : in    std_logic;
+         RD_EN    : in    std_logic;
+         DATA     : inout std_logic
+       );
     '''
     def __init__(self):
         n_spaces_between_token_pairs_when_bounded_by_tokens.__init__(self, 'port', '009', 1, lTokens, oStart, oEnd)

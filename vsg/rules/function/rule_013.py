@@ -12,8 +12,27 @@ oEndToken = token.subprogram_body.semicolon
 
 class rule_013(token_case_in_range_bounded_by_tokens):
     '''
-    Checks the *end* keyword has proper case.
+    This rule checks the **end** keyword has proper case.
+
+    Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       END;
+
+       End function foo;
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       end;
+
+       end function foo;
     '''
 
     def __init__(self):
         token_case_in_range_bounded_by_tokens.__init__(self, 'function', '013', lTokens, oStartToken, oEndToken)
+        self.groups.append('case::keyword')

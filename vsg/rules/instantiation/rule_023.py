@@ -10,7 +10,24 @@ oEnd = token.component_instantiation_statement.semicolon
 
 class rule_023(remove_comments_from_end_of_lines_bounded_by_tokens):
     '''
-    Checks for comments after port and generic assignments.
+    This rule checks for comments at the end of the port and generic assignments in instantiations.
+    These comments represent additional maintainence.
+    They will be out of sync with the entity at some point.
+    Refer to the entity for port types, port directions and purpose.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       WR_EN => w_wr_en;   -- out : std_logic
+       RD_EN => w_rd_en;   -- Reads data when asserted
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       WR_EN => w_wr_en;
+       RD_EN => w_rd_en;
     '''
 
     def __init__(self):

@@ -21,7 +21,35 @@ lUnless.append([token.subprogram_body.is_keyword,token.subprogram_body.begin_key
 
 class rule_031(align_tokens_in_region_between_tokens_unless_between_tokens):
     '''
-    Checks the alignment of declaration identifiers in the process declarative region.
+    This rule checks for alignment of identifiers in the process declarative region.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       proc_1 : process(all) is
+
+        variable     var1 : boolean;
+        constant  cons1 : integer;
+        file            file1  : load_file_file open read_mode is load_file_name;
+
+       begin
+
+       end process proc_1;
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       proc_1 : process(all) is
+
+        variable var1 : boolean;
+        constant cons1 : integer;
+        file     file1  : load_file_file open read_mode is load_file_name;
+
+       begin
+
+       end process proc_1;
     '''
 
     def __init__(self):

@@ -14,7 +14,22 @@ oRemoveToken = parser.comment
 
 class rule_006(remove_lines_starting_with_token_between_token_pairs):
     '''
-    Checks for the proper indentation at the beginning of the sequential statement.
+    This rule checks for comments within multiline sequential statements.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       overflow <= wr_en and
+        --         rd_address(0)
+                   rd_en;
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       overflow <= wr_en and
+                   rd_en;
     '''
 
     def __init__(self):

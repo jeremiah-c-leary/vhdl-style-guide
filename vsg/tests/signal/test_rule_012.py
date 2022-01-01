@@ -26,6 +26,7 @@ class test_signal_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'signal')
         self.assertEqual(oRule.identifier, '012')
+        self.assertEqual(oRule.groups, ['alignment'])
 
         lExpected = [4, 5, 10]
 

@@ -9,8 +9,23 @@ lTokens.append(token.block_statement.end_keyword)
 
 class rule_504(token_case):
     '''
-    Checks the end keyword has proper case.
+    This rule checks the **end** keyword has proper case.
+
+    Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       END block block_label;
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       end block block_label;
     '''
 
     def __init__(self):
         token_case.__init__(self, 'block', '504', lTokens)
+        self.groups.append('case::keyword')

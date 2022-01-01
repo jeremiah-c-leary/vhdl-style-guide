@@ -1,28 +1,50 @@
 
 from vsg import parser
-from vsg import rule
 from vsg import violation
 
 from vsg.rules import utils as rules_utils
+from vsg.rule_group import structure
 
 
-class rule_002(rule.Rule):
+class rule_002(structure.Rule):
     '''
-    Checks the expressions in if statements are enclosed in ()'s.
+    This rule checks the boolean expression is enclosed in ().
 
-    Parameters
-    ----------
+    .. NOTE:: There is a configuration option **parenthesis** which will either insert or remove the parenthesis.
 
-    name : string
-       The group the rule belongs to.
+    parenthesis set to 'insert' (Default)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    identifier : string
-       unique identifier.  Usually in the form of 00N.
+    **Violation**
+
+    .. code-block:: vhdl
+
+      if a = '1' then
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+      if (a = '1') then
+
+    parenthesis set to 'remove'
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+      if (a = '1') then
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+      if a = '1' then
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self, 'if', '002')
-        self.phase = 1
+        structure.Rule.__init__(self, 'if', '002')
         self.parenthesis = 'insert'
         self.configuration.append('parenthesis')
 

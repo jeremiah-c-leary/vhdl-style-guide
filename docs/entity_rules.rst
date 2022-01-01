@@ -6,7 +6,7 @@ Entity Rules
 entity_001
 ##########
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the **entity** keyword.
 
@@ -26,11 +26,10 @@ This rule checks the indent of the **entity** keyword.
 
    entity fifo is
 
-
 entity_002
 ##########
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space after the **entity** keyword.
 
@@ -49,7 +48,7 @@ This rule checks for a single space after the **entity** keyword.
 entity_003
 ##########
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for blank lines or comments above the entity keyword.
 
@@ -73,7 +72,7 @@ Refer to the section `Configuring Previous Line Rules <configuring.html#configur
 entity_004
 ##########
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **entity** keyword has proper case.
 
@@ -94,7 +93,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 entity_005
 ##########
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks the **is** keyword is on the same line as the **entity** keyword.
 
@@ -118,7 +117,7 @@ This rule checks the **is** keyword is on the same line as the **entity** keywor
 entity_006
 ##########
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **is** keyword has proper case in the entity declaration.
 
@@ -139,7 +138,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 entity_007
 ##########
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space before the **is** keyword.
 
@@ -158,7 +157,7 @@ This rule checks for a single space before the **is** keyword.
 entity_008
 ##########
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_name|
 
 This rule checks the entity name has proper case in the entity declaration.
 
@@ -179,7 +178,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 entity_009
 ##########
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the **end** keyword.
 
@@ -204,7 +203,7 @@ This rule checks the indent of the **end** keyword.
 entity_010
 ##########
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **end** keyword has proper case.
 
@@ -225,7 +224,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 entity_011
 ##########
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space after the **end** keyword.
 
@@ -244,7 +243,7 @@ This rule checks for a single space after the **end** keyword.
 entity_012
 ##########
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_name|
 
 This rule checks the case of the entity name in the **end entity** statement.
 
@@ -265,7 +264,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 entity_013
 ##########
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space after the **entity** keyword in the closing of the entity declaration.
 
@@ -284,7 +283,7 @@ This rule checks for a single space after the **entity** keyword in the closing 
 entity_014
 ##########
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **entity** keyword has proper case in the closing of the entity declaration.
 
@@ -305,7 +304,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 entity_015
 ##########
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks for the keyword **entity** in the **end entity** statement.
 
@@ -330,7 +329,7 @@ Refer to the section `Configuring Optional Items <configuring.html#configuring-o
 entity_016
 ##########
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for blank lines above the **end entity** keywords.
 
@@ -358,7 +357,7 @@ This rule checks for blank lines above the **end entity** keywords.
 entity_017
 ##########
 
-|phase_5| |error|
+|phase_5| |error| |alignment|
 
 This rule checks the alignment of the colon for each generic and port in the entity declaration.
 
@@ -399,7 +398,7 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
 entity_018
 ##########
 
-|phase_5| |error|
+|phase_5| |error| |alignment|
 
 This rule checks the alignment of **:=** operator for each generic and port in the entity declaration.
 
@@ -439,11 +438,10 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
        data_o  : in std_logic
    );
 
-
 entity_019
 ##########
 
-|phase_1| |error|
+|phase_1| |error| |structure| |structure_optional|
 
 This rule checks for the entity name in the **end entity** statement.
 
@@ -464,7 +462,7 @@ Refer to the section `Configuring Optional Items <configuring.html#configuring-o
 entity_020
 ##########
 
-|phase_5| |error|
+|phase_5| |error| |alignment|
 
 This rule checks for alignment of inline comments in the entity declaration.
 
@@ -505,7 +503,7 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
 entity_600
 ##########
 
-|phase_6| |error|
+|phase_6| |error| |case|
 
 This rule checks for consistent capitalization of generic names in entity declarations.
 
@@ -536,3 +534,4 @@ This rule checks for consistent capitalization of generic names in entity declar
        O_DATA : std_logic_vector(G_WIDTH - 1 downto 0)
      );
    end entity fifo;
+

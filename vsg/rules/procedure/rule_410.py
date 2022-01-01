@@ -12,7 +12,27 @@ lAlign.append(token.interface_unknown_declaration.colon)
 
 class rule_410(align_tokens_in_region_between_tokens):
     '''
-    Component rule 410 ensures the alignment of the colon for each port in the procedure declaration.
+    This rule checks the alignment of the colon for each parameter in the procedure declaration.
+
+    Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+         procedure average_samples (
+           constant a : in integer;
+           signal d : out std_logic
+         );
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+         procedure average_samples (
+           constant a : in integer;
+           signal d   : out std_logic
+         );
     '''
 
     def __init__(self):

@@ -26,6 +26,7 @@ class test_procedure_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'procedure')
         self.assertEqual(oRule.identifier, '507')
+        self.assertEqual(oRule.groups, ['case'])
 
         lExpected = [8, 13, 14, 15]
 

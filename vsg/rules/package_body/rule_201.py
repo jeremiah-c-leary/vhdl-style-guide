@@ -9,7 +9,24 @@ lTokens.append(token.package_body.is_keyword)
 
 class rule_201(blank_line_below_line_ending_with_token):
     '''
-    Checks for a blank line below the package keyword.
+    This rule checks for a blank line below the **package** keyword.
+
+    Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       package body FIFO_PKG is
+         constant width : integer := 32;
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       package body FIFO_PKG is
+
+         constant width : integer := 32;
     '''
 
     def __init__(self):

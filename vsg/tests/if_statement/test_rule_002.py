@@ -31,6 +31,7 @@ class test_if_statement_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'if')
         self.assertEqual(oRule.identifier, '002')
         oRule.parenthesis = 'insert'
+        self.assertEqual(oRule.groups, ['structure'])
 
         lExpected = [24, 26, 28, 30, 32, 40, 44, 52, 84, 86]
 

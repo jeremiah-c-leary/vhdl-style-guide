@@ -1,13 +1,13 @@
 
 
 from vsg import parser
-from vsg import rule
 from vsg import violation
 
+from vsg.rule_group import whitespace
 from vsg.rules import utils as rules_utils
 
 
-class whitespace_before_token(rule.Rule):
+class whitespace_before_token(whitespace.Rule):
     '''
     Checks for a at least a single space before a token.
 
@@ -25,9 +25,7 @@ class whitespace_before_token(rule.Rule):
     '''
 
     def __init__(self, name, identifier, lTokens):
-        rule.Rule.__init__(self, name=name, identifier=identifier)
-        self.solution = None
-        self.phase = 2
+        whitespace.Rule.__init__(self, name=name, identifier=identifier)
         self.lTokens = lTokens
 
     def _get_tokens_of_interest(self, oFile):
@@ -47,9 +45,7 @@ class whitespace_before_token(rule.Rule):
             oViolation = violation.New(oToi.get_line_number(), oToi, self.solution)
             self.add_violation(oViolation)
 
-
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
         rules_utils.insert_whitespace(lTokens, 1)
         oViolation.set_tokens(lTokens)
-

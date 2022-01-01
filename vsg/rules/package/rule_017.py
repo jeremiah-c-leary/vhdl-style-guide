@@ -10,7 +10,22 @@ lTokens.append(token.package_declaration.end_package_simple_name)
 
 class rule_017(token_prefix):
     '''
-    Constant rule 017 checks for prefixes in package identifiers.
+    This rule checks for valid prefixes on package identifiers.
+    The default package prefix is *pkg_*.
+
+    Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed prefixes.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       package foo is
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       package pkg_foo is
     '''
 
     def __init__(self):

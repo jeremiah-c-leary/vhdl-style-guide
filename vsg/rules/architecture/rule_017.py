@@ -6,7 +6,24 @@ from vsg.token import architecture_body as token
 
 class rule_017(blank_line_below_line_ending_with_token):
     '''
-    Architecture rule 017 checks for a blank line below the "begin" keyword.
+    This rule checks for a blank line below the **begin** keyword.
+
+    Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       begin
+         wr_en <= '0';
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       begin
+
+         wr_en <= '0';
     '''
 
     def __init__(self):

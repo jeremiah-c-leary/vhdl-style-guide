@@ -11,7 +11,21 @@ lTokens.append([token.case_generate_statement.generate_label, token.case_generat
 
 class rule_015(remove_carriage_returns_between_token_pairs):
     '''
-    Checks label and generate keyword is on a single line.
+    This rule checks the generate label and the **generate** keyword are on the same line.
+    Keeping the label and generate on the same line reduces excessive indenting.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       ram_array :
+         for i in 0 to 7 generate
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       ram_array : for i in 0 to 7 generate
     '''
 
     def __init__(self):

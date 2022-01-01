@@ -1,15 +1,14 @@
 
 
 from vsg import parser
-from vsg import rule
 from vsg import violation
 
 from vsg.vhdlFile import utils
-
+from vsg.rule_group import whitespace
 from vsg.rules import utils as rules_utils
 
 
-class n_spaces_before_and_after_tokens(rule.Rule):
+class n_spaces_before_and_after_tokens(whitespace.Rule):
     '''
     Checks for a single space between two tokens.
 
@@ -27,9 +26,7 @@ class n_spaces_before_and_after_tokens(rule.Rule):
     '''
 
     def __init__(self, name, identifier, iSpaces, lTokens, bNIsMinimum=False):
-        rule.Rule.__init__(self, name=name, identifier=identifier)
-        self.solution = None
-        self.phase = 2
+        whitespace.Rule.__init__(self, name=name, identifier=identifier)
         self.iSpaces = iSpaces
         self.lTokens = lTokens
         self.bNIsMinimum = bNIsMinimum

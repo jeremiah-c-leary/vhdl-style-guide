@@ -1,11 +1,10 @@
 
-from vsg import rule
 from vsg import parser
 from vsg import token
 from vsg import violation
 
 from vsg.vhdlFile import utils
-
+from vsg.rule_group import structure
 
 lSplitTokens = []
 lSplitTokens.append(token.conditional_waveforms.else_keyword)
@@ -14,15 +13,55 @@ lTokenPairs = []
 lTokenPairs.append([token.concurrent_conditional_signal_assignment.assignment, token.concurrent_conditional_signal_assignment.semicolon])
 
 
-class rule_007(rule.Rule):
+class rule_007(structure.Rule):
     '''
-    Checks for code after the **else** keyword.
+    This rule checks for code after the **else** keyword.
+
+    .. NOTE:: There is a configuration option **allow_single_line** which allows single line concurrent statements.
+
+    allow_single_line set to False (Default)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       wr_en <= '0' when overflow = '0' else '1';
+       wr_en <= '0' when overflow = '0' else '1' when underflow = '1' else sig_a;
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       wr_en <= '0' when overflow = '0' else
+                '1';
+       wr_en <= '0' when overflow = '0' else
+                '1' when underflow = '1' else
+                sig_a;
+
+    allow_single_line set to True
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       wr_en <= '0' when overflow = '0' else '1';
+       wr_en <= '0' when overflow = '0' else '1' when underflow = '1' else sig_a;
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       wr_en <= '0' when overflow = '0' else '1';
+       wr_en <= '0' when overflow = '0' else
+                '1' when underflow = '1' else
+                sig_a;
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self, 'concurrent', '007')
+        structure.Rule.__init__(self, 'concurrent', '007')
         self.solution = 'move code after else to next line.'
-        self.phase = 1
         self.subphase = 2
         self.lSplitTokens = lSplitTokens
         self.lTokenPairs = lTokenPairs

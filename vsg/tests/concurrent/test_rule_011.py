@@ -31,6 +31,7 @@ class test_concurrent_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'concurrent')
         self.assertEqual(oRule.identifier, '011')
+        self.assertEqual(oRule.groups, ['structure'])
 
         lExpected = [19, 22]
 

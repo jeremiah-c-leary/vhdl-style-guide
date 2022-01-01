@@ -1,12 +1,12 @@
 
 from vsg import parser
-from vsg import rule
 from vsg import violation
 
+from vsg.rule_group import structure
 from vsg.vhdlFile import utils
 
 
-class remove_lines_starting_with_token_between_token_pairs(rule.Rule):
+class remove_lines_starting_with_token_between_token_pairs(structure.Rule):
     '''
     Checks for a single space between two tokens.
 
@@ -24,7 +24,7 @@ class remove_lines_starting_with_token_between_token_pairs(rule.Rule):
     '''
 
     def __init__(self, name, identifier, oRemoveToken, lTokens):
-        rule.Rule.__init__(self, name=name, identifier=identifier)
+        structure.Rule.__init__(self, name=name, identifier=identifier)
         self.solution = None
         self.phase = 2
         self.oRemoveToken = oRemoveToken

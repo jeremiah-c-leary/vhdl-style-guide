@@ -37,6 +37,7 @@ class test_assert_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'assert')
         self.assertEqual(oRule.identifier, '400')
+        self.assertEqual(oRule.groups, ['alignment'])
 
         lExpected = [9, 14, 29, 34]
 

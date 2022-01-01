@@ -13,7 +13,28 @@ lAllowTokens.append(token.block_statement.guard_close_parenthesis)
 
 class rule_202(blank_line_above_line_starting_with_token):
     '''
-    Checks for a blank line above the block label.
+    This rule checks for blank lines or comments above the **begin** keyword.
+
+    Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       block_label block is
+
+         constant width : integer := 32;
+       begin
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       block_label block is
+
+         constant width : integer := 32;
+
+       begin
     '''
 
     def __init__(self):

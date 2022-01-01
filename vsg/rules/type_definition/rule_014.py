@@ -21,7 +21,23 @@ lIgnore.append(parser.blank_line)
 
 class rule_014(consistent_token_case):
     '''
-    Constant rule 014 checks case consistency of type names.
+    This rule checks for consistent capitalization of type names.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       type state_machine is (idle, write, read, done);
+
+       signal sm : State_Machine;
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       type state_machine is (idle, write, read, done);
+
+       signal sm : state_machine;
     '''
 
     def __init__(self):

@@ -6,7 +6,7 @@ Context Rules
 context_001
 ###########
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the **context** keyword.
 
@@ -18,7 +18,6 @@ This rule checks the indent of the **context** keyword.
 
      library ieee;
 
-
 **Fix**
 
 .. code-block:: vhdl
@@ -27,11 +26,10 @@ This rule checks the indent of the **context** keyword.
 
      library ieee;
 
-
 context_002
 ###########
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space between the **context** keyword and the context identifier.
 
@@ -50,7 +48,7 @@ This rule checks for a single space between the **context** keyword and the cont
 context_003
 ###########
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for blank lines or comments above the **context** keyword.
 
@@ -82,7 +80,7 @@ The default style is :code:`no_code`.
 context_004
 ###########
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **context** keyword has proper case.
 
@@ -103,7 +101,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 context_005
 ###########
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks the context identifier is on the same line as the **context** keyword.
 
@@ -125,7 +123,7 @@ This rule checks the context identifier is on the same line as the **context** k
 context_006
 ###########
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks the **is** keyword is on the same line as the context identifier.
 
@@ -145,7 +143,7 @@ This rule checks the **is** keyword is on the same line as the context identifie
 context_007
 ###########
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks for code after the **is** keyword.
 
@@ -169,7 +167,7 @@ This rule checks for code after the **is** keyword.
 context_008
 ###########
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks the **end** keyword is on it's own line.
 
@@ -194,7 +192,7 @@ This rule checks the **end** keyword is on it's own line.
 context_009
 ###########
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks the **context** keyword is on the same line as the end context keyword.
 
@@ -215,7 +213,7 @@ This rule checks the **context** keyword is on the same line as the end context 
 context_010
 ###########
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks the context identifier is on the same line as the end context keyword.
 
@@ -235,7 +233,7 @@ This rule checks the context identifier is on the same line as the end context k
 context_011
 ###########
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks the semicolon is on the same line as the **end** keyword.
 
@@ -263,11 +261,10 @@ This rule checks the semicolon is on the same line as the **end** keyword.
 
    end context c1;
 
-
 context_012
 ###########
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_name|
 
 This rule checks the context identifier has proper case in the context declaration.
 
@@ -285,11 +282,10 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
    context c1 is
 
-
 context_013
 ###########
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **is** keyword has proper case in the context declaration.
 
@@ -310,7 +306,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 context_014
 ###########
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **end** keyword has proper case.
 
@@ -335,7 +331,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 context_015
 ###########
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the context keyword has proper case in the end context declaration.
 
@@ -356,7 +352,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 context_016
 ###########
 
-|phase_2| |error|
+|phase_6| |error| |case| |case_name|
 
 This rule checks the context identifier has proper case in the end context declaration.
 
@@ -377,7 +373,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 context_017
 ###########
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space between the context identifier and the **is** keyword.
 
@@ -396,7 +392,7 @@ This rule checks for a single space between the context identifier and the **is*
 context_018
 ###########
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space between the **end** keyword and the **context** keyword.
 
@@ -419,7 +415,7 @@ This rule checks for a single space between the **end** keyword and the **contex
 context_019
 ###########
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space between the **context** keyword and the context identifier.
 
@@ -442,7 +438,7 @@ This rule checks for a single space between the **context** keyword and the cont
 context_020
 ###########
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the **end** keyword.
 
@@ -463,7 +459,7 @@ This rule checks the indent of the **end** keyword.
 context_021
 ###########
 
-|phase_1| |error|
+|phase_1| |error| |structure| |structure_optional|
 
 This rule checks for the keyword **context** in the **end context** statement.
 
@@ -488,7 +484,7 @@ Refer to the section `Configuring Optional Items <configuring.html#configuring-o
 context_022
 ###########
 
-|phase_1| |error|
+|phase_1| |error| |structure| |structure_optional|
 
 This rule checks for the context name in the **end context** statement.
 
@@ -509,7 +505,7 @@ Refer to the section `Configuring Optional Items <configuring.html#configuring-o
 context_023
 ###########
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule adds a blank line below the **is** keyword.
 
@@ -533,7 +529,7 @@ Refer to the section `Configuring Blank Lines <configuring.html#configuring-blan
 context_024
 ###########
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for blank lines or comments above the **end** keyword.
 
@@ -559,7 +555,7 @@ The default style is :code:`no_code`.
 context_025
 ###########
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule adds a blank line below the context semicolon.
 
@@ -583,7 +579,7 @@ Refer to the section `Configuring Blank Lines <configuring.html#configuring-blan
 context_026
 ###########
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule ensures a single blank line after the **context** keword.
 
@@ -608,7 +604,7 @@ This rule ensures a single blank line after the **context** keword.
 context_027
 ###########
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule ensures a single blank line before the **end** keword.
 
