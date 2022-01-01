@@ -13,7 +13,7 @@ entity BLAH is
   );
 end entity BLAH;
 
-architecture RTL of BLAH is
+ARCHITECTURE RTL of BLAH is
 
   constant CON_A : STD_LOGIC;
   signal   SIG_A : STD_LOGIC;
@@ -31,7 +31,7 @@ architecture RTL of BLAH is
 
 begin
 
-  PROC_LABEL : process (Ab, Cd, Ef) is
+  proc_label : process (Ab, Cd, Ef) is
 
     variable : VAR_A : Std_logic_vector(7 downto 0);
 
@@ -39,9 +39,9 @@ begin
 
     a <= b Or c And d Xor e;
 
-  end process PROC_LABEL;
+  end process proc_label;
 
-  U_INST : component MY_COMP
+  u_inst : component MY_COMP
     generic map (
       G_GEN_1 => 1
     )

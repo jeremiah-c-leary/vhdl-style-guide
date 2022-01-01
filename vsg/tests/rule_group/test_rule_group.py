@@ -18,9 +18,6 @@ from vsg import version
 from vsg import __main__
 
 
-lConfigs = []
-lConfigs.append('config_1')
-
 def full_source_path():
     return full_file_path('test_input.vhd')
 
@@ -81,6 +78,30 @@ class testMain(unittest.TestCase):
     def test_config_2(self):
 
         sConfigName = 'config_2'
+        shutil.copy(full_source_path(), full_actual_path(sConfigName))
+
+        sys.argv = ['vsg']
+        sys.argv.extend(['--output_format', 'syntastic'])
+        sys.argv.extend(['--configuration', full_config_path(sConfigName)])
+        sys.argv.extend(['-p 1'])
+        sys.argv.extend(['-f', full_actual_path(sConfigName)])
+        sys.argv.extend(['--fix'])
+
+        try:
+            __main__.main()
+        except SystemExit:
+            pass
+
+        lExpected = []
+        utils.read_file(full_fixed_path(sConfigName), lExpected, False)
+        lActual = []
+        utils.read_file(full_actual_path(sConfigName), lActual, False)
+
+        self.assertEqual(lExpected, lActual)
+
+    def test_config_3(self):
+
+        sConfigName = 'config_3'
         shutil.copy(full_source_path(), full_actual_path(sConfigName))
 
         sys.argv = ['vsg']

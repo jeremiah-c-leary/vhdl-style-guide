@@ -1,9 +1,10 @@
 rule:
   group:
     case::label:
-      case: 'lower'
+      case: 'upper'
     case::keyword:
       case: 'lower'
     case::name:
       case: 'upper'
-    
+  signal_010:
+    disable: True    
