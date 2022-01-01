@@ -27,7 +27,7 @@ class test_procedure_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'procedure')
         self.assertEqual(oRule.identifier, '010')
 
-        lExpected = [31, 32, 97, 98, 123, 124, 140]
+        lExpected = [31, 32, 97, 98, 130, 131, 147]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))

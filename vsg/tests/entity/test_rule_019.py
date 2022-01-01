@@ -32,7 +32,7 @@ class test_entity_rule(unittest.TestCase):
         self.assertEqual(oRule.identifier, '019')
         self.assertEqual(oRule.groups, ['structure', 'structure::optional'])
 
-        lExpected = [9]
+        lExpected = [9, 14]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))

@@ -1,37 +1,12 @@
 
-from vsg.rules import blank_line_above_line_starting_with_token
-
-from vsg import token
-
-lTokens = []
-lTokens.append(token.subprogram_body.end_keyword)
+from vsg.deprecated_rule import Rule
 
 
-class rule_204(blank_line_above_line_starting_with_token):
+class rule_204(Rule):
     '''
-    This rule checks for blank lines above the **end** keyword.
-
-    Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options.
-
-    **Violation**
-
-    .. code-block:: vhdl
-
-       begin
-
-         a <= b;
-       end procedure average_samples;
-
-    **Fix**
-
-    .. code-block:: vhdl
-
-       begin
-
-         a <= b;
-
-       end procedure average_samples;
+    This rule has been moved to rule `subprogram_body_204 <subprogram_rules.html#subprogram-body-204>`_.
     '''
 
     def __init__(self):
-        blank_line_above_line_starting_with_token.__init__(self, 'procedure', '204', lTokens)
+        Rule.__init__(self, 'procedure', '204')
+        self.message.append('Rule ' + self.unique_id + ' has been moved to rule subprogram_body_204.')

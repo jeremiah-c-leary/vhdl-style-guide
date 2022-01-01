@@ -426,6 +426,9 @@ class testMain(unittest.TestCase):
         # Read in another alternate expected JSON file for comparison
         lAlternateExpected2 = []
         utils.read_file(os.path.join(os.path.dirname(__file__),'json-expected.alternate2.json'), lAlternateExpected2)
+        # Read in another alternate expected JSON file for comparison
+        lAlternateExpected3 = []
+        utils.read_file(os.path.join(os.path.dirname(__file__),'json-expected.alternate3.json'), lAlternateExpected3)
         # Read in the actual JSON file for comparison
         lActual = []
         utils.read_file(os.path.join('deleteme.json'), lActual)
@@ -438,6 +441,8 @@ class testMain(unittest.TestCase):
             self.assertEqual(lActual, lAlternateExpected)
         elif lActual == lAlternateExpected2:
             self.assertEqual(lActual, lAlternateExpected2)
+        elif lActual == lAlternateExpected3:
+            self.assertEqual(lActual, lAlternateExpected3)
         else:
             self.assertEqual(lActual, lAlternateExpected2)
 

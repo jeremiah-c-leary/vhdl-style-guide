@@ -531,3 +531,27 @@ This rule aligns consecutive comment only lines above a **when** keyword in a ca
    when wr_en =>
      rd_en <= '0';
 
+case_200
+########
+
+|phase_3| |error| |blank_line|
+
+This rule checks for a blank line below the **=>** keyword.
+
+Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   when 0 =>
+     a <= b;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   when 0 =>
+
+     a <= b;
+

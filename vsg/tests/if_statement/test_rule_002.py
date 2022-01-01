@@ -33,7 +33,7 @@ class test_if_statement_rule(unittest.TestCase):
         oRule.parenthesis = 'insert'
         self.assertEqual(oRule.groups, ['structure'])
 
-        lExpected = [24, 26, 28, 30, 32, 40, 44, 52]
+        lExpected = [24, 26, 28, 30, 32, 40, 44, 52, 84, 86]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -54,7 +54,7 @@ class test_if_statement_rule(unittest.TestCase):
         oRule = if_statement.rule_002()
         oRule.parenthesis = 'remove'
 
-        lExpected = [10, 12, 14, 16, 18]
+        lExpected = [10, 12, 14, 16, 18, 56, 60, 64, 68, 72, 76, 90, 92]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))

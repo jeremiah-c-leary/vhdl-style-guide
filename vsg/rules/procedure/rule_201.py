@@ -1,60 +1,12 @@
 
-from vsg.rules import blank_line_below_line_ending_with_token
-
-from vsg import token
-
-lTokens = []
-lTokens.append(token.subprogram_body.is_keyword)
-
-lAllowTokens = []
-lAllowTokens.append(token.subprogram_body.begin_keyword)
+from vsg.deprecated_rule import Rule
 
 
-class rule_201(blank_line_below_line_ending_with_token):
+class rule_201(Rule):
     '''
-    This rule checks for a blank line below the **is** keyword.
-
-    This rule allows the **begin** keyword to occupy the blank line:
-
-    .. code-block:: vhdl
-
-       procedure average_samples is
-       begin
-
-    Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
-
-    **Violation**
-
-    .. code-block:: vhdl
-
-       procedure average_samples (
-           constant a : in integer;
-           signal d : out std_logic
-       ) is
-         constant width : integer := 32;
-       begin
-
-       procedure average_samples is
-         constant width : integer := 32;
-       begin
-
-    **Fix**
-
-    .. code-block:: vhdl
-
-       procedure average_samples (
-           constant a : in integer;
-           signal d : out std_logic
-       ) is
-
-         constant width : integer := 32;
-       begin
-
-       procedure average_samples is
-
-         constant width : integer := 32;
-       begin
+    This rule has been moved to rule `subprogram_body_201 <subprogram_rules.html#subprogram-body-201>`_.
     '''
 
     def __init__(self):
-        blank_line_below_line_ending_with_token.__init__(self, 'procedure', '201', lTokens, lAllowTokens)
+        Rule.__init__(self, 'procedure', '201')
+        self.message.append('Rule ' + self.unique_id + ' has been moved to rule subprogram_body_201.')

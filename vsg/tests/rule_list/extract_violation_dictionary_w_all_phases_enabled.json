@@ -355,6 +355,48 @@
           "solution": "Insert blank line below"
         },
         {
+         "rule": "case_200",
+         "linenumber": 505,
+         "severity": "Error",
+         "solution": "Insert blank line below"
+        },
+        {
+         "rule": "case_200",
+         "linenumber": 513,
+         "severity": "Error",
+         "solution": "Insert blank line below"
+        },
+        {
+         "rule": "case_200",
+         "linenumber": 521,
+         "severity": "Error",
+         "solution": "Insert blank line below"
+        },
+        {
+         "rule": "case_200",
+         "linenumber": 530,
+         "severity": "Error",
+         "solution": "Insert blank line below"
+        },
+        {
+         "rule": "case_200",
+         "linenumber": 538,
+         "severity": "Error",
+         "solution": "Insert blank line below"
+        },
+        {
+         "rule": "case_200",
+         "linenumber": 555,
+         "severity": "Error",
+         "solution": "Insert blank line below"
+        },
+        {
+         "rule": "case_200",
+         "linenumber": 571,
+         "severity": "Error",
+         "solution": "Insert blank line below"
+        },
+        {
           "rule": "comment_010",
           "linenumber": 184,
           "severity": "Error",
@@ -3655,6 +3697,390 @@
           "solution": "Move 11 columns"
         },
         {
+          "rule": "process_400",
+          "linenumber": 327,
+          "severity": "Error",
+          "solution": "Move := 2 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 330,
+          "severity": "Error",
+          "solution": "Move := 2 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 341,
+          "severity": "Error",
+          "solution": "Move <= 2 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 344,
+          "severity": "Error",
+          "solution": "Move <= 2 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 347,
+          "severity": "Error",
+          "solution": "Move <= 2 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 418,
+          "severity": "Error",
+          "solution": "Move <= 4 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 419,
+          "severity": "Error",
+          "solution": "Move <= 4 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 420,
+          "severity": "Error",
+          "solution": "Move <= 4 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 421,
+          "severity": "Error",
+          "solution": "Move <= 4 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 425,
+          "severity": "Error",
+          "solution": "Move <= 2 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 426,
+          "severity": "Error",
+          "solution": "Move <= 2 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 427,
+          "severity": "Error",
+          "solution": "Move <= 2 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 428,
+          "severity": "Error",
+          "solution": "Move <= 2 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 471,
+          "severity": "Error",
+          "solution": "Move <= 9 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 472,
+          "severity": "Error",
+          "solution": "Move <= 3 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 473,
+          "severity": "Error",
+          "solution": "Move <= 2 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 475,
+          "severity": "Error",
+          "solution": "Move <= 5 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 476,
+          "severity": "Error",
+          "solution": "Move <= 5 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 494,
+          "severity": "Error",
+          "solution": "Move <= 9 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 495,
+          "severity": "Error",
+          "solution": "Move <= 3 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 496,
+          "severity": "Error",
+          "solution": "Move <= 4 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 497,
+          "severity": "Error",
+          "solution": "Move <= 2 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 499,
+          "severity": "Error",
+          "solution": "Move <= 5 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 500,
+          "severity": "Error",
+          "solution": "Move <= 5 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 501,
+          "severity": "Error",
+          "solution": "Move <= 6 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 502,
+          "severity": "Error",
+          "solution": "Move <= 6 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 506,
+          "severity": "Error",
+          "solution": "Move <= 3 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 508,
+          "severity": "Error",
+          "solution": "Move <= 1 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 509,
+          "severity": "Error",
+          "solution": "Move <= 2 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 510,
+          "severity": "Error",
+          "solution": "Move <= 2 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 511,
+          "severity": "Error",
+          "solution": "Move <= 3 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 514,
+          "severity": "Error",
+          "solution": "Move <= 11 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 515,
+          "severity": "Error",
+          "solution": "Move <= 10 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 517,
+          "severity": "Error",
+          "solution": "Move <= 11 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 518,
+          "severity": "Error",
+          "solution": "Move <= 10 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 519,
+          "severity": "Error",
+          "solution": "Move <= 11 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 522,
+          "severity": "Error",
+          "solution": "Move <= 11 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 523,
+          "severity": "Error",
+          "solution": "Move <= 10 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 524,
+          "severity": "Error",
+          "solution": "Move <= 5 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 526,
+          "severity": "Error",
+          "solution": "Move <= 11 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 527,
+          "severity": "Error",
+          "solution": "Move <= 10 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 528,
+          "severity": "Error",
+          "solution": "Move <= 11 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 531,
+          "severity": "Error",
+          "solution": "Move <= 11 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 532,
+          "severity": "Error",
+          "solution": "Move <= 10 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 534,
+          "severity": "Error",
+          "solution": "Move <= 11 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 535,
+          "severity": "Error",
+          "solution": "Move <= 10 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 536,
+          "severity": "Error",
+          "solution": "Move <= 11 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 539,
+          "severity": "Error",
+          "solution": "Move <= 18 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 540,
+          "severity": "Error",
+          "solution": "Move <= 17 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 542,
+          "severity": "Error",
+          "solution": "Move <= 11 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 543,
+          "severity": "Error",
+          "solution": "Move <= 12 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 545,
+          "severity": "Error",
+          "solution": "Move <= 2 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 546,
+          "severity": "Error",
+          "solution": "Move <= 5 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 548,
+          "severity": "Error",
+          "solution": "Move <= 1 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 551,
+          "severity": "Error",
+          "solution": "Move <= 1 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 552,
+          "severity": "Error",
+          "solution": "Move <= 2 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 556,
+          "severity": "Error",
+          "solution": "Move <= 1 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 559,
+          "severity": "Error",
+          "solution": "Move <= 3 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 561,
+          "severity": "Error",
+          "solution": "Move <= 3 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 562,
+          "severity": "Error",
+          "solution": "Move <= 6 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 563,
+          "severity": "Error",
+          "solution": "Move <= 2 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 565,
+          "severity": "Error",
+          "solution": "Move <= 3 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 567,
+          "severity": "Error",
+          "solution": "Move <= 2 columns"
+        },
+        {
+          "rule": "process_400",
+          "linenumber": 568,
+          "severity": "Error",
+          "solution": "Move <= 3 columns"
+        },
+        {
           "rule": "sequential_001",
           "linenumber": 326,
           "severity": "Error",
@@ -4217,378 +4643,6 @@
           "linenumber": 600,
           "severity": "Error",
           "solution": "Indent level 2"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 341,
-          "severity": "Error",
-          "solution": "Move <= 2 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 344,
-          "severity": "Error",
-          "solution": "Move <= 2 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 347,
-          "severity": "Error",
-          "solution": "Move <= 2 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 418,
-          "severity": "Error",
-          "solution": "Move <= 4 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 419,
-          "severity": "Error",
-          "solution": "Move <= 4 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 420,
-          "severity": "Error",
-          "solution": "Move <= 4 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 421,
-          "severity": "Error",
-          "solution": "Move <= 4 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 425,
-          "severity": "Error",
-          "solution": "Move <= 2 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 426,
-          "severity": "Error",
-          "solution": "Move <= 2 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 427,
-          "severity": "Error",
-          "solution": "Move <= 2 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 428,
-          "severity": "Error",
-          "solution": "Move <= 2 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 471,
-          "severity": "Error",
-          "solution": "Move <= 9 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 472,
-          "severity": "Error",
-          "solution": "Move <= 3 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 473,
-          "severity": "Error",
-          "solution": "Move <= 2 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 475,
-          "severity": "Error",
-          "solution": "Move <= 5 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 476,
-          "severity": "Error",
-          "solution": "Move <= 5 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 494,
-          "severity": "Error",
-          "solution": "Move <= 9 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 495,
-          "severity": "Error",
-          "solution": "Move <= 3 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 496,
-          "severity": "Error",
-          "solution": "Move <= 4 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 497,
-          "severity": "Error",
-          "solution": "Move <= 2 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 499,
-          "severity": "Error",
-          "solution": "Move <= 5 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 500,
-          "severity": "Error",
-          "solution": "Move <= 5 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 501,
-          "severity": "Error",
-          "solution": "Move <= 6 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 502,
-          "severity": "Error",
-          "solution": "Move <= 6 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 506,
-          "severity": "Error",
-          "solution": "Move <= 3 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 508,
-          "severity": "Error",
-          "solution": "Move <= 1 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 509,
-          "severity": "Error",
-          "solution": "Move <= 2 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 510,
-          "severity": "Error",
-          "solution": "Move <= 2 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 511,
-          "severity": "Error",
-          "solution": "Move <= 3 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 514,
-          "severity": "Error",
-          "solution": "Move <= 11 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 515,
-          "severity": "Error",
-          "solution": "Move <= 10 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 517,
-          "severity": "Error",
-          "solution": "Move <= 11 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 518,
-          "severity": "Error",
-          "solution": "Move <= 10 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 519,
-          "severity": "Error",
-          "solution": "Move <= 11 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 522,
-          "severity": "Error",
-          "solution": "Move <= 11 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 523,
-          "severity": "Error",
-          "solution": "Move <= 10 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 524,
-          "severity": "Error",
-          "solution": "Move <= 5 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 526,
-          "severity": "Error",
-          "solution": "Move <= 11 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 527,
-          "severity": "Error",
-          "solution": "Move <= 10 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 528,
-          "severity": "Error",
-          "solution": "Move <= 11 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 531,
-          "severity": "Error",
-          "solution": "Move <= 11 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 532,
-          "severity": "Error",
-          "solution": "Move <= 10 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 534,
-          "severity": "Error",
-          "solution": "Move <= 11 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 535,
-          "severity": "Error",
-          "solution": "Move <= 10 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 536,
-          "severity": "Error",
-          "solution": "Move <= 11 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 539,
-          "severity": "Error",
-          "solution": "Move <= 18 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 540,
-          "severity": "Error",
-          "solution": "Move <= 17 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 542,
-          "severity": "Error",
-          "solution": "Move <= 11 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 543,
-          "severity": "Error",
-          "solution": "Move <= 12 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 545,
-          "severity": "Error",
-          "solution": "Move <= 2 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 546,
-          "severity": "Error",
-          "solution": "Move <= 5 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 548,
-          "severity": "Error",
-          "solution": "Move <= 1 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 551,
-          "severity": "Error",
-          "solution": "Move <= 1 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 552,
-          "severity": "Error",
-          "solution": "Move <= 2 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 556,
-          "severity": "Error",
-          "solution": "Move <= 1 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 559,
-          "severity": "Error",
-          "solution": "Move <= 3 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 561,
-          "severity": "Error",
-          "solution": "Move <= 3 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 562,
-          "severity": "Error",
-          "solution": "Move <= 6 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 563,
-          "severity": "Error",
-          "solution": "Move <= 2 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 565,
-          "severity": "Error",
-          "solution": "Move <= 3 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 567,
-          "severity": "Error",
-          "solution": "Move <= 2 columns"
-        },
-        {
-          "rule": "sequential_005",
-          "linenumber": 568,
-          "severity": "Error",
-          "solution": "Move <= 3 columns"
         },
         {
           "rule": "signal_001",

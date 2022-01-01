@@ -16,6 +16,10 @@ lExpected = []
 lExpected.append('')
 utils.read_file(os.path.join(sTestDir, 'rule_008_test_input.fixed.vhd'), lExpected)
 
+lExpected_with_indent_size_zero = []
+lExpected_with_indent_size_zero.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_008_test_input.fixed_with_indent_size_0.vhd'), lExpected_with_indent_size_zero)
+
 
 class test_library_rule(unittest.TestCase):
 
@@ -43,6 +47,28 @@ class test_library_rule(unittest.TestCase):
         lActual = self.oFile.get_lines()
 
         self.assertEqual(lExpected, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+
+    def test_rule_008_indent_size_zero(self):
+        oRule = library.rule_008()
+        oRule.indentSize = 0
+
+        lExpected = [3, 4, 8, 9]
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+
+    def test_fix_rule_008_indent_size_zero(self):
+        oRule = library.rule_008()
+        oRule.indentSize = 0
+
+        oRule.fix(self.oFile)
+
+        lActual = self.oFile.get_lines()
+
+        self.assertEqual(lExpected_with_indent_size_zero, lActual)
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])

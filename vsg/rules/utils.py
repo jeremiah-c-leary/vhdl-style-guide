@@ -8,7 +8,8 @@ def add_optional_item(lTokens, oViolation, oInsertToken):
     oViolation.set_tokens(lTokens)
 
 
-def remove_optional_item(lTokens, oViolation, oInsertToken):
+def remove_optional_item(oViolation, oInsertToken):
+    lTokens = oViolation.get_tokens()
     if isinstance(lTokens[0], parser.whitespace):
         oViolation.set_tokens([])
     else:
@@ -100,8 +101,24 @@ def get_index_of_token_in_list(oToken, lTokens):
     return None
 
 
+def get_number_of_carriage_returns_before_token(oStopToken, lTokens):
+    iReturn = 0
+    for oToken in lTokens:
+        if isinstance(oToken, parser.carriage_return):
+            iReturn += 1
+        if isinstance(oToken, oStopToken):
+            break
+    return iReturn
+
+
 def get_indent_of_line(lTokens):
     if isinstance(lTokens[0], parser.whitespace):
         return lTokens[1].get_indent()
     else:
         return lTokens[0].get_indent()
+
+
+def whitespace_before_token_index(lTokens, iIndex):
+    if isinstance(lTokens[iIndex - 1], parser.whitespace):
+        return True
+    return False

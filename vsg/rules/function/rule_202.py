@@ -1,47 +1,12 @@
 
-from vsg.rules import blank_line_above_line_starting_with_token
-
-from vsg import token
-
-lTokens = []
-lTokens.append(token.subprogram_body.begin_keyword)
-
-lAllowTokens = []
-lAllowTokens.append(token.subprogram_body.is_keyword)
+from vsg.deprecated_rule import Rule
 
 
-class rule_202(blank_line_above_line_starting_with_token):
+class rule_202(Rule):
     '''
-    This rule checks for blank lines above the **begin** keyword.
-
-    This rule allows the **is** keyword to occupy the blank line:
-
-    .. code-block:: vhdl
-
-       function overflow (a: integer) return integer is
-       begin
-
-    Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options.
-
-    **Violation**
-
-    .. code-block:: vhdl
-
-       function overflow (a: integer) return integer is
-
-         constant width : integer := 32;
-       begin
-
-    **Fix**
-
-    .. code-block:: vhdl
-
-       function overflow (a: integer) return integer is
-
-         constant width : integer := 32;
-
-       begin
+    This rule has been moved to rule `subprogram_body_202 <subprogram_rules.html#subprogram-body-202>`_.
     '''
 
     def __init__(self):
-        blank_line_above_line_starting_with_token.__init__(self, 'function', '202', lTokens, lAllowTokens)
+        Rule.__init__(self, 'function', '202')
+        self.message.append('Rule ' + self.unique_id + ' has been moved to rule subprogram_body_202.')

@@ -64,8 +64,11 @@ class insert_token_right_of_token_if_it_does_not_exist_before_token(structure.Ru
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
         if self.action == 'remove':
-            rules_utils.remove_optional_item(lTokens, oViolation, self.insert_token)
+            rules_utils.remove_optional_item(oViolation, self.insert_token)
         else:
-            rules_utils.insert_token(lTokens, 1, self.insert_token)
-            rules_utils.insert_whitespace(lTokens, 1)
+            if isinstance(lTokens[1], parser.whitespace) and isinstance(lTokens[2], parser.semicolon):
+                rules_utils.insert_token(lTokens, 2, self.insert_token)
+            else:
+                rules_utils.insert_token(lTokens, 1, self.insert_token)
+                rules_utils.insert_whitespace(lTokens, 1)
             oViolation.set_tokens(lTokens)

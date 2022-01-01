@@ -111,6 +111,13 @@ architecture RTL of ENT is
   begin
   end procedure AVERAGE_SAMPLES;
 
+  function func_1 (a : integer) return integer is
+    constant  c : integer;
+    variable   v : integer;
+    file f : something;
+  begin
+  end function func1;
+
 begin
 
   TEST_PROCESS : process

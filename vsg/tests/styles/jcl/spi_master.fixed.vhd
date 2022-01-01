@@ -333,10 +333,10 @@ begin
     if (SCLK_I'event and SCLK_I = '1') then
       if (clk_cnt = SPI_2X_CLK_DIV - 1) then
         spi_2x_ce <= '1';
-        clk_cnt := 0;
+        clk_cnt   := 0;
       else
         spi_2x_ce <= '0';
-        clk_cnt := clk_cnt + 1;
+        clk_cnt   := clk_cnt + 1;
       end if;
     end if;
 
