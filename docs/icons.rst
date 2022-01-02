@@ -89,14 +89,6 @@
    :width: 86.65228113px
    :target: rule_groups.html
 
-.. |keyword| image:: img/keyword.svg
-   :height: 25px
-   :target: rule_groups.html
-
-.. |name| image:: img/name.svg
-   :height: 25px
-   :target: rule_groups.html
-
 .. |case_keyword| image:: img/case_keyword.svg
    :height: 25px
    :width: 105.1479655px
