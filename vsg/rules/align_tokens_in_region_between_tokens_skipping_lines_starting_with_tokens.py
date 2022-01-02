@@ -221,6 +221,6 @@ def not_enough_tokens_to_align(oToi, lTokens):
     lTemp = oToi.get_tokens()
     lTemp = rules_utils.remove_token_sequence_from_token_list([parser.carriage_return, parser.whitespace, parser.comment], lTemp)
 
-    if rules_utils.number_of_tokens_in_token_list(lTokens, lTemp) < 2:
+    if rules_utils.number_of_tokens_from_token_list_in_token_list(lTokens, lTemp) < 2:
         return True
     return False

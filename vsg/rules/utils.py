@@ -32,12 +32,18 @@ def number_of_carriage_returns(lTokens):
     return iReturn
 
 
-def number_of_tokens_in_token_list(lTokens, lTokenList):
+def number_of_tokens_from_token_list_in_token_list(lTokens, lTokenList):
     iReturn = 0
     for oToken in lTokens:
-        for oTokenItem in lTokenList:
-            if oToken == type(oTokenItem):
-                iReturn += 1
+        iReturn += number_of_tokens_in_token_list(oToken, lTokenList)
+    return iReturn
+
+
+def number_of_tokens_in_token_list(oToken, lTokens):
+    iReturn = 0
+    for oTokenItem in lTokens:
+        if oToken == type(oTokenItem):
+            iReturn += 1
     return iReturn
 
 
