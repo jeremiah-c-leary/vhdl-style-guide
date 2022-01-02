@@ -143,28 +143,18 @@ def find_indexes_of_token_sequence(lRemoveTokens, lTokens):
     iLength = len(lRemoveTokens)
     lReturn = []
     for iIndex in range(0, iTokenListLength - 1 - iLength):
-#        print('='*80)
-#        print(f'{lRemoveTokens} | {lTokens[iIndex:iIndex + iLength]}')
-#        print(f'{iIndex} | {lTokens[iIndex:iIndex + iLength]}')
         for iToken in range(0, iLength):
-#            print(f'  {lRemoveTokens[iToken]} | {type(lTokens[iIndex + iToken])}')
-            if lRemoveTokens[iToken] != type(lTokens[iIndex + iToken]):
+            if not isinstance(lTokens[iIndex + iToken], lRemoveTokens[iToken]):
                 break
         else:
             lReturn.append(iIndex)
-#            print('Hello')
-#            print(lTokens[iIndex::iIndex + iToken])
     return lReturn
+
 
 def remove_slices_from_list_at_indexes(lReturn, lRemoveIndexes, iLength):
     if len(lRemoveIndexes) > 0:
-#        print('-*'*40)
-#        print('Removing sequence')
         lRemoveIndexes.reverse()
-#        print(lRemoveIndexes)
-#        print(lReturn)
         for iIndex in lRemoveIndexes:
             iEnd = iIndex + iLength
             lReturn = lReturn[0:iIndex] + lReturn[iEnd::]
-#        print(lReturn) 
     return lReturn

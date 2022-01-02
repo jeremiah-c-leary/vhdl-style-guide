@@ -153,7 +153,7 @@ class align_tokens_in_region_between_tokens(alignment.Rule):
             dAnalysis = {}
 
     def _fix_violation(self, oViolation):
-        
+
         lTokens = oViolation.get_tokens()
         dAction = oViolation.get_action()
         iTokenIndex = dAction['token_index']
