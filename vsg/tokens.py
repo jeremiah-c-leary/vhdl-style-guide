@@ -2,6 +2,7 @@
 lSingleCharacterSymbols = [',', ':', '(', ')', '\'', '"', '+', '&', '-', '*', '/', '<', '>', ';', '=', '[', ']', '?']
 lTwoCharacterSymbols = ['=>','**', ':=', '/=', '>=', '<=', '<>', '??', '?=', '?<', '?>', '<<', '>>', '--']
 lThreeCharacterSymbols = ['?/=', '?<', '?<=', '?>=']
+lFourCharacterSymbols = ['\\?=\\']
 
 
 def create(sString):
@@ -13,6 +14,7 @@ def create(sString):
     for sChar in sString:
         lCharacters.append(sChar)
     lCharacters = combine_whitespace(lCharacters)
+    lCharacters = combine_backslash_characters_into_symbols(lCharacters)
     lCharacters = combine_two_character_symbols(lCharacters)
     lCharacters = combine_characters_into_words(lCharacters)
     lCharacters = combine_string_literals(lCharacters)
@@ -48,6 +50,62 @@ def combine_comments(lChars):
     if bComment:
         lReturn.append(sComment)
 
+    return lReturn
+
+
+lStopChars = [' ', '(', ';']
+
+
+def combine_backslash_characters_into_symbols(lChars):
+    lReturn = []
+    sSymbol = ''
+    bSymbol = False
+    for sChar in lChars:
+        if stop_character_found(sChar, bSymbol):
+            bSymbol = False
+            lReturn.append(sSymbol)
+            sSymbol = ''
+        bSymbol = inside_backslash_symbol(bSymbol, sChar)
+        sSymbol = append_to_symbol(bSymbol, sSymbol, sChar)
+        lReturn = append_to_list(bSymbol, lReturn, sChar)
+    lReturn = add_trailing_string(lReturn, sSymbol)
+    return lReturn
+
+
+def inside_backslash_symbol(bSymbol, sChar):
+    if backslash_character_found(sChar):
+        return True
+    return bSymbol
+
+
+def append_to_symbol(bSymbol, sSymbol, sChar):
+    if bSymbol:
+        return sSymbol + sChar
+    return sSymbol
+
+
+def append_to_list(bSymbol, lChars, sChar):
+    lReturn = lChars
+    if not bSymbol:
+        lReturn.append(sChar)
+    return lReturn
+
+
+def backslash_character_found(sChar):
+    if sChar == '\\':
+        return True
+    return False
+
+
+def stop_character_found(sChar, bLiteral):
+    if (sChar in lStopChars or ' ' in sChar) and bLiteral:
+        return True
+    return False
+
+
+def add_trailing_string(lReturn, sString):
+    if len(sString) > 0:
+        lReturn.append(sString)
     return lReturn
 
 
