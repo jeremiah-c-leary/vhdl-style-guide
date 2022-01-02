@@ -140,27 +140,38 @@ def whitespace_before_token_index(lTokens, iIndex):
 
 
 def remove_token_sequence_from_token_list(lRemoveTokens, lTokens):
-    lRemoveIndexes = find_indexes_of_token_sequence(lRemoveTokens, lTokens)
-    return remove_slices_from_list_at_indexes(lTokens, lRemoveIndexes, len(lRemoveTokens))
+    lSliceIndexes = find_slice_indexes_of_token_sequence_in_token_list(lRemoveTokens, lTokens)
+    return remove_slices_from_token_list(lTokens, lSliceIndexes)
 
 
-def find_indexes_of_token_sequence(lRemoveTokens, lTokens):
+def find_slice_indexes_of_token_sequence_in_token_list(lRemoveTokens, lTokens):
     iTokenListLength = len(lTokens)
     iLength = len(lRemoveTokens)
     lReturn = []
     for iIndex in range(0, iTokenListLength - 1 - iLength):
-        for iToken in range(0, iLength):
-            if not isinstance(lTokens[iIndex + iToken], lRemoveTokens[iToken]):
-                break
-        else:
-            lReturn.append(iIndex)
+        if is_token_sequence_at_index_in_token_list(lRemoveTokens, iIndex, lTokens):
+            lReturn.append([iIndex, iIndex + iLength])
     return lReturn
 
 
-def remove_slices_from_list_at_indexes(lReturn, lRemoveIndexes, iLength):
-    if len(lRemoveIndexes) > 0:
-        lRemoveIndexes.reverse()
-        for iIndex in lRemoveIndexes:
-            iEnd = iIndex + iLength
-            lReturn = lReturn[0:iIndex] + lReturn[iEnd::]
+def is_token_sequence_at_index_in_token_list(lRemoveTokens, iIndex, lTokens):
+    lReturn = []
+    iLength = len(lRemoveTokens)
+    for iToken in range(0, iLength):
+        if not isinstance(lTokens[iIndex + iToken], lRemoveTokens[iToken]):
+            return False
+    return True
+
+
+def remove_slices_from_token_list(lTokens, lSlices):
+    lReturn = lTokens
+    lSlices.reverse()
+    for lSlice in lSlices:
+        lReturn = remove_slice_from_token_list(lReturn, lSlice)
     return lReturn
+
+
+def remove_slice_from_token_list(lTokens, lSlice):
+    iStart = lSlice[0]
+    iEnd = lSlice[1]
+    return lTokens[0:iStart] + lTokens[iEnd::]
