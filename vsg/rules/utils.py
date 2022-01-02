@@ -155,7 +155,6 @@ def find_slice_indexes_of_token_sequence_in_token_list(lRemoveTokens, lTokens):
 
 
 def is_token_sequence_at_index_in_token_list(lRemoveTokens, iIndex, lTokens):
-    lReturn = []
     iLength = len(lRemoveTokens)
     for iToken in range(0, iLength):
         if not isinstance(lTokens[iIndex + iToken], lRemoveTokens[iToken]):
