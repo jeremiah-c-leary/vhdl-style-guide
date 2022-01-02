@@ -134,10 +134,14 @@ def whitespace_before_token_index(lTokens, iIndex):
 
 
 def remove_token_sequence_from_token_list(lRemoveTokens, lTokens):
-    lReturn = lTokens
-    iLength = len(lRemoveTokens)
+    lRemoveIndexes = find_indexes_of_token_sequence(lRemoveTokens, lTokens)
+    return remove_slices_from_list_at_indexes(lTokens, lRemoveIndexes, len(lRemoveTokens))
+
+
+def find_indexes_of_token_sequence(lRemoveTokens, lTokens):
     iTokenListLength = len(lTokens)
-    lRemoveIndexes = []
+    iLength = len(lRemoveTokens)
+    lReturn = []
     for iIndex in range(0, iTokenListLength - 1 - iLength):
 #        print('='*80)
 #        print(f'{lRemoveTokens} | {lTokens[iIndex:iIndex + iLength]}')
@@ -147,9 +151,12 @@ def remove_token_sequence_from_token_list(lRemoveTokens, lTokens):
             if lRemoveTokens[iToken] != type(lTokens[iIndex + iToken]):
                 break
         else:
-            lRemoveIndexes.append(iIndex)
+            lReturn.append(iIndex)
 #            print('Hello')
 #            print(lTokens[iIndex::iIndex + iToken])
+    return lReturn
+
+def remove_slices_from_list_at_indexes(lReturn, lRemoveIndexes, iLength):
     if len(lRemoveIndexes) > 0:
 #        print('-*'*40)
 #        print('Removing sequence')
