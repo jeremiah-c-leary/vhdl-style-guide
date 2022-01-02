@@ -124,15 +124,26 @@
 22 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-23 |   end process;
-<class 'vsg.token.process_statement.end_keyword'>
-<class 'vsg.token.process_statement.end_process_keyword'>
-<class 'vsg.token.process_statement.semicolon'>
+23 |     exit when a <= b;
+<class 'vsg.token.exit_statement.exit_keyword'>
+<class 'vsg.token.exit_statement.when_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.exit_statement.semicolon'>
 --------------------------------------------------------------------------------
 24 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-25 | end architecture RTL;
+25 |   end process;
+<class 'vsg.token.process_statement.end_keyword'>
+<class 'vsg.token.process_statement.end_process_keyword'>
+<class 'vsg.token.process_statement.semicolon'>
+--------------------------------------------------------------------------------
+26 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+27 | end architecture RTL;
 <class 'vsg.token.architecture_body.end_keyword'>
 <class 'vsg.token.architecture_body.end_architecture_keyword'>
 <class 'vsg.token.architecture_body.architecture_simple_name'>
