@@ -67,6 +67,13 @@ class align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens(
             iLeftColumn = 0
             dAnalysis = {}
 
+            lTemp = oToi.get_tokens()
+            lTemp = rules_utils.remove_token_sequence_from_token_list([parser.carriage_return, parser.whitespace, parser.comment], lTemp)
+
+            if rules_utils.number_of_tokens_in_token_list(self.lTokens, lTemp) == 1:
+                continue
+
+
             for iIndex in range(0, len(lTokens)):
                iToken += 1
                oToken = lTokens[iIndex]

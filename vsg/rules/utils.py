@@ -32,6 +32,15 @@ def number_of_carriage_returns(lTokens):
     return iReturn
 
 
+def number_of_tokens_in_token_list(lTokens, lTokenList):
+    iReturn = 0
+    for oToken in lTokens:
+        for oTokenItem in lTokenList:
+            if oToken == type(oTokenItem):
+                iReturn += 1
+    return iReturn
+
+
 def print_debug(lTokens):
     sPrint = ''
     for oToken in lTokens:
@@ -122,3 +131,33 @@ def whitespace_before_token_index(lTokens, iIndex):
     if isinstance(lTokens[iIndex - 1], parser.whitespace):
         return True
     return False
+
+
+def remove_token_sequence_from_token_list(lRemoveTokens, lTokens):
+    lReturn = lTokens
+    iLength = len(lRemoveTokens)
+    iTokenListLength = len(lTokens)
+    lRemoveIndexes = []
+    for iIndex in range(0, iTokenListLength - 1 - iLength):
+#        print('='*80)
+#        print(f'{lRemoveTokens} | {lTokens[iIndex:iIndex + iLength]}')
+#        print(f'{iIndex} | {lTokens[iIndex:iIndex + iLength]}')
+        for iToken in range(0, iLength):
+#            print(f'  {lRemoveTokens[iToken]} | {type(lTokens[iIndex + iToken])}')
+            if lRemoveTokens[iToken] != type(lTokens[iIndex + iToken]):
+                break
+        else:
+            lRemoveIndexes.append(iIndex)
+#            print('Hello')
+#            print(lTokens[iIndex::iIndex + iToken])
+    if len(lRemoveIndexes) > 0:
+#        print('-*'*40)
+#        print('Removing sequence')
+        lRemoveIndexes.reverse()
+#        print(lRemoveIndexes)
+#        print(lReturn)
+        for iIndex in lRemoveIndexes:
+            iEnd = iIndex + iLength
+            lReturn = lReturn[0:iIndex] + lReturn[iEnd::]
+#        print(lReturn) 
+    return lReturn
