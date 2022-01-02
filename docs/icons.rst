@@ -51,6 +51,7 @@
 
 .. |indent| image:: img/indent.svg
    :height: 25px
+   :width: 74px
    :target: rule_groups.html
 
 .. |length| image:: img/length.svg
