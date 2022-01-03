@@ -9,70 +9,19 @@ def create(sString):
     '''
     This function takes a string and returns a list of tokens.
     '''
-#    print(sString)
-    lCharacters = []
 
-    for sChar in sString:
-        lCharacters.append(sChar)
-    lCharacters = combine_whitespace(lCharacters)
-    lCharacters = combine_backslash_characters_into_symbols(lCharacters)
-    lCharacters = combine_two_character_symbols(lCharacters)
-    lCharacters = combine_characters_into_words(lCharacters)
-    lCharacters = combine_string_literals(lCharacters)
-#    print(lCharacters)
-    lCharacters = combine_character_literals(lCharacters)
-#    print(lCharacters)
-    lCharacters = combine_comments(lCharacters)
-#    print(lCharacters)
-    return lCharacters
-
-
-def combine_comments(lChars):
-    lReturn = []
-    sComment = ''
-    bComment = False
-    iEnd = len(lChars) - 1
-    for iChar, sChar in enumerate(lChars):
-#        print(f'|{sChar}|')
-        if sChar.startswith('--') and not bComment:
-            sComment += sChar
-            bComment = True
-            continue
-        if not bComment:
-            lReturn.append(sChar)
-        else:
-            if iChar == iEnd:
-                if sChar.isspace():
-                    lReturn.append(sComment)
-                    lReturn.append(sChar)
-                    bComment = False
-                    continue
-
-            sComment += sChar
-
-    if bComment:
-        lReturn.append(sComment)
-
-    return lReturn
+    oLine = New(sString)
+    oLine.combine_whitespace()
+    oLine.combine_backslash_characters_into_symbols()
+    oLine.combine_two_character_symbols()
+    oLine.combine_characters_into_words()
+    oLine.combine_string_literals()
+    oLine.combine_character_literals()
+    oLine.combine_comments()
+    return oLine.lChars
 
 
 lStopChars = [' ', '(', ';']
-
-
-def combine_backslash_characters_into_symbols(lChars):
-    lReturn = []
-    sSymbol = ''
-    bSymbol = False
-    for sChar in lChars:
-        if stop_character_found(sChar, bSymbol):
-            bSymbol = False
-            lReturn.append(sSymbol)
-            sSymbol = ''
-        bSymbol = inside_backslash_symbol(bSymbol, sChar)
-        sSymbol = append_to_symbol(bSymbol, sSymbol, sChar)
-        lReturn = append_to_list(bSymbol, lReturn, sChar)
-    lReturn = add_trailing_string(lReturn, sSymbol)
-    return lReturn
 
 
 def inside_backslash_symbol(bSymbol, sChar):
@@ -112,58 +61,11 @@ def add_trailing_string(lReturn, sString):
     return lReturn
 
 
-def combine_string_literals(lChars):
-    lReturn = []
-    sLiteral = ''
-    bLiteral = False
-    for iChar, sChar in enumerate(lChars):
-        try:
-            if sChar == '"' and not bLiteral and '"' in lChars[iChar + 1:]:
-                sLiteral += sChar
-                bLiteral = True
-                continue
-        except IndexError:
-            break
-        if not bLiteral:
-            lReturn.append(sChar)
-        else:
-            sLiteral += sChar
-        if sChar == '"' and bLiteral:
-            bLiteral = False
-            lReturn.append(sLiteral)
-            sLiteral = ''
-
-    return lReturn
-
-
-def combine_character_literals(lChars):
-    lReturn = []
-    sLiteral = ''
-    bLiteral = False
-    for iChar, sChar in enumerate(lChars):
-        if sChar == "'" and not bLiteral:
-            if not is_qualified_expression(iChar, lChars):
-                if is_character_literal(iChar, lChars):
-                    sLiteral += sChar
-                    bLiteral = True
-                    continue
-        if not bLiteral:
-            lReturn.append(sChar)
-        else:
-            sLiteral += sChar
-        if sChar == "'" and bLiteral:
-            bLiteral = False
-            lReturn.append(sLiteral)
-            sLiteral = ''
-
-    return lReturn
-
-
 def is_qualified_expression(iChar, lChars):
     lPattern = ["'", "(", "'"]
     try:
         if lChars[iChar:iChar + 3] == lPattern and len(lChars[iChar + 3]) == 1 and lChars[iChar + 4] == "'":
-           return True
+            return True
         return False
     except IndexError:
         return False
@@ -178,67 +80,169 @@ def is_character_literal(iChar, lChars):
         return False
 
 
-def combine_characters_into_words(lChars):
+class New():
+    def __init__(self, sLine):
+        self.lChars = convert_string_to_chars(sLine)
+
+    def combine_whitespace(self):
+        lReturn = [] 
+        sSpace = ''
+        for sChar in self.lChars:
+            if sChar == ' ':
+                sSpace += sChar
+            else:
+                if sSpace != '':
+                    lReturn.append(sSpace)
+                    sSpace = ''
+                lReturn.append(sChar)
+
+        if sSpace != '':
+            lReturn.append(sSpace)
+
+        self.lChars = lReturn
+
+    def combine_backslash_characters_into_symbols(self):
+        lReturn = []
+        sSymbol = ''
+        bSymbol = False
+        for sChar in self.lChars:
+            if stop_character_found(sChar, bSymbol):
+                bSymbol = False
+                lReturn.append(sSymbol)
+                sSymbol = ''
+            bSymbol = inside_backslash_symbol(bSymbol, sChar)
+            sSymbol = append_to_symbol(bSymbol, sSymbol, sChar)
+            lReturn = append_to_list(bSymbol, lReturn, sChar)
+        lReturn = add_trailing_string(lReturn, sSymbol)
+        self.lChars = lReturn
+
+
+    def combine_two_character_symbols(self):
+        lReturn = []
+        sNextChar = ''
+        bSkip = False
+        for iChar, sChar in enumerate(self.lChars):
+            if bSkip:
+                bSkip = False
+                continue
+            try:
+                sNextChar = self.lChars[iChar + 1]
+            except IndexError:
+                sNextChar = ''
+            if sChar + sNextChar in lTwoCharacterSymbols:
+                bSkip = True
+                lReturn.append(sChar + sNextChar)
+            else:
+                lReturn.append(sChar)
+        self.lChars = lReturn
+
+
+    def combine_characters_into_words(self):
+        lReturn = []
+        sTemp = ''
+        for sChar in self.lChars:
+            if len(sChar) > 1:
+                if sTemp != '':
+                    lReturn.append(sTemp)
+                lReturn.append(sChar)
+                sTemp = ''
+            elif sChar == ' ':
+                if sTemp != '':
+                    lReturn.append(sTemp)
+                lReturn.append(sChar)
+                sTemp = ''
+            elif sChar in lSingleCharacterSymbols:
+                if sTemp != '':
+                    lReturn.append(sTemp)
+                lReturn.append(sChar)
+                sTemp = ''
+            else:
+                sTemp += sChar
+
+        if len(sTemp) != 0:
+            lReturn.append(sTemp)
+
+        self.lChars = lReturn
+
+
+    def combine_string_literals(self):
+        lReturn = []
+        sLiteral = ''
+        bLiteral = False
+        for iChar, sChar in enumerate(self.lChars):
+            try:
+                if sChar == '"' and not bLiteral and '"' in self.lChars[iChar + 1:]:
+                    sLiteral += sChar
+                    bLiteral = True
+                    continue
+            except IndexError:
+                break
+            if not bLiteral:
+                lReturn.append(sChar)
+            else:
+                sLiteral += sChar
+            if sChar == '"' and bLiteral:
+                bLiteral = False
+                lReturn.append(sLiteral)
+                sLiteral = ''
+
+        self.lChars = lReturn
+
+    def combine_character_literals(self):
+        lReturn = []
+        sLiteral = ''
+        bLiteral = False
+        for iChar, sChar in enumerate(self.lChars):
+            if sChar == "'" and not bLiteral:
+                if not is_qualified_expression(iChar, self.lChars):
+                    if is_character_literal(iChar, self.lChars):
+                        sLiteral += sChar
+                        bLiteral = True
+                        continue
+            if not bLiteral:
+                lReturn.append(sChar)
+            else:
+                sLiteral += sChar
+            if sChar == "'" and bLiteral:
+                bLiteral = False
+                lReturn.append(sLiteral)
+                sLiteral = ''
+
+        self.lChars = lReturn
+
+
+    def combine_comments(self):
+        lReturn = []
+        sComment = ''
+        bComment = False
+        iEnd = len(self.lChars) - 1
+        for iChar, sChar in enumerate(self.lChars):
+#            print(f'|{sChar}|')
+            if sChar.startswith('--') and not bComment:
+                sComment += sChar
+                bComment = True
+                continue
+            if not bComment:
+                lReturn.append(sChar)
+            else:
+                if iChar == iEnd:
+                    if sChar.isspace():
+                        lReturn.append(sComment)
+                        lReturn.append(sChar)
+                        bComment = False
+                        continue
+
+                sComment += sChar
+
+        if bComment:
+            lReturn.append(sComment)
+
+        self.lChars = lReturn
+
+
+def convert_string_to_chars(sString):
     lReturn = []
-    sTemp = ''
-    for sChar in lChars:
-        if len(sChar) > 1:
-            if sTemp != '':
-                lReturn.append(sTemp)
-            lReturn.append(sChar)
-            sTemp = ''
-        elif sChar == ' ':
-            if sTemp != '':
-                lReturn.append(sTemp)
-            lReturn.append(sChar)
-            sTemp = ''
-        elif sChar in lSingleCharacterSymbols:
-            if sTemp != '':
-                lReturn.append(sTemp)
-            lReturn.append(sChar)
-            sTemp = ''
-        else:
-            sTemp += sChar
-
-    if len(sTemp) != 0:
-        lReturn.append(sTemp)
-
+    for sChar in sString:
+        lReturn.append(sChar)
     return lReturn
 
-
-def combine_whitespace(lChars):
-    lReturn = []
-    sSpace = ''
-    for sChar in lChars:
-        if sChar == ' ':
-            sSpace += sChar
-        else:
-            if sSpace != '':
-                lReturn.append(sSpace)
-                sSpace = ''
-            lReturn.append(sChar)
-
-    if sSpace != '':
-        lReturn.append(sSpace)
-
-    return lReturn
-
-
-def combine_two_character_symbols(lChars):
-    lReturn = []
-    sNextChar = ''
-    bSkip = False
-    for iChar, sChar in enumerate(lChars):
-        if bSkip:
-            bSkip = False
-            continue
-        try:
-            sNextChar = lChars[iChar + 1]
-        except IndexError:
-            sNextChar = ''
-        if sChar + sNextChar in lTwoCharacterSymbols:
-            bSkip = True
-            lReturn.append(sChar + sNextChar)
-        else:
-            lReturn.append(sChar)
-    return lReturn
