@@ -179,6 +179,8 @@ def combine_tokens_into_string(lTokens, iStart, iEnd):
 
 
 def has_trailing_whitespace(lChars):
+    if len(lChars) == 0:
+        return False
     if lChars[-1].isspace():
         return True
     return False
