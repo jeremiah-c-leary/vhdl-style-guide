@@ -9,6 +9,7 @@ def create(sString):
     '''
     This function takes a string and returns a list of tokens.
     '''
+#    print(sString)
     lCharacters = []
 
     for sChar in sString:
@@ -18,7 +19,9 @@ def create(sString):
     lCharacters = combine_two_character_symbols(lCharacters)
     lCharacters = combine_characters_into_words(lCharacters)
     lCharacters = combine_string_literals(lCharacters)
+#    print(lCharacters)
     lCharacters = combine_character_literals(lCharacters)
+#    print(lCharacters)
     lCharacters = combine_comments(lCharacters)
 #    print(lCharacters)
     return lCharacters
@@ -138,13 +141,12 @@ def combine_character_literals(lChars):
     sLiteral = ''
     bLiteral = False
     for iChar, sChar in enumerate(lChars):
-        try:
-            if sChar == "'" and lChars[iChar + 2] == "'" and len(lChars[iChar + 1]) == 1 and not bLiteral and lChars[iChar + 1] != '(':
-                sLiteral += sChar
-                bLiteral = True
-                continue
-        except IndexError:
-            pass
+        if sChar == "'" and not bLiteral:
+            if not is_qualified_expression(iChar, lChars):
+                if is_character_literal(iChar, lChars):
+                    sLiteral += sChar
+                    bLiteral = True
+                    continue
         if not bLiteral:
             lReturn.append(sChar)
         else:
@@ -155,6 +157,25 @@ def combine_character_literals(lChars):
             sLiteral = ''
 
     return lReturn
+
+
+def is_qualified_expression(iChar, lChars):
+    lPattern = ["'", "(", "'"]
+    try:
+        if lChars[iChar:iChar + 3] == lPattern and len(lChars[iChar + 3]) == 1 and lChars[iChar + 4] == "'":
+           return True
+        return False
+    except IndexError:
+        return False
+
+
+def is_character_literal(iChar, lChars):
+    try:
+        if lChars[iChar] == "'" and len(lChars[iChar + 1]) == 1 and lChars[iChar + 2] == "'":
+            return True
+        return False
+    except IndexError:
+        return False
 
 
 def combine_characters_into_words(lChars):

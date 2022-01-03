@@ -835,5 +835,16 @@ class testTokenMethod(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
-        
-        
+    def test_parenthesis_in_procedure_call(self):
+        sLine = "  write('(')"
+        lTokens = []
+        lTokens.append('  ')
+        lTokens.append('write')
+        lTokens.append('(')
+        lTokens.append("'('")
+        lTokens.append(')')
+  
+        lActual = tokens.create(sLine)
+  
+        self.assertEqual(lTokens, lActual)
+
