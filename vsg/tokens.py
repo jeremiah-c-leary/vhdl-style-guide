@@ -94,29 +94,17 @@ class New():
 
         self.lChars = lReturn
 
-
     def combine_string_literals(self):
-        lReturn = []
-        sLiteral = ''
-        bLiteral = False
-        for iChar, sChar in enumerate(self.lChars):
-            try:
-                if sChar == '"' and not bLiteral and '"' in self.lChars[iChar + 1:]:
-                    sLiteral += sChar
-                    bLiteral = True
-                    continue
-            except IndexError:
-                break
-            if not bLiteral:
-                lReturn.append(sChar)
-            else:
-                sLiteral += sChar
-            if sChar == '"' and bLiteral:
-                bLiteral = False
-                lReturn.append(sLiteral)
-                sLiteral = ''
+        lQuotePairs = find_indexes_of_double_quote_pairs(self.lChars)
+        lQuotePairs.reverse()
 
-        self.lChars = lReturn
+        for lPair in lQuotePairs:
+            iLeft = lPair[0]
+            iRight = lPair[1] + 1
+            lReturn = self.lChars[0:iLeft]
+            lReturn.append(''.join(self.lChars[iLeft:iRight]))
+            lReturn.extend(self.lChars[iRight:])
+            self.lChars = lReturn
 
     def combine_character_literals(self):
         lReturn = []
@@ -254,3 +242,17 @@ def character_is_part_of_word(sChar):
     elif sChar in lSingleCharacterSymbols:
         return False
     return True
+
+
+def find_indexes_of_double_quote_pairs(lTokens):
+    bStart = False
+    lReturn = []
+    for iToken, sToken in enumerate(lTokens):
+        if sToken == '"' and bStart:
+            lReturn.append([iStart, iToken]) 
+            bStart = False
+            continue
+        if sToken == '"' and not bStart:
+            iStart = iToken
+            bStart = True
+    return lReturn
