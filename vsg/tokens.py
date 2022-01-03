@@ -23,7 +23,6 @@ def create(sString):
     return oLine.lChars
 
 
-
 class New():
     def __init__(self, sLine):
         self.lChars = convert_string_to_chars(sLine)
@@ -82,28 +81,19 @@ class New():
         lReturn = []
         sTemp = ''
         for sChar in self.lChars:
-            if len(sChar) > 1:
-                if sTemp != '':
-                    lReturn.append(sTemp)
-                lReturn.append(sChar)
-                sTemp = ''
-            elif sChar == ' ':
-                if sTemp != '':
-                    lReturn.append(sTemp)
-                lReturn.append(sChar)
-                sTemp = ''
-            elif sChar in lSingleCharacterSymbols:
-                if sTemp != '':
-                    lReturn.append(sTemp)
-                lReturn.append(sChar)
-                sTemp = ''
-            else:
+            if character_is_part_of_word(sChar):
                 sTemp += sChar
+            else:
+                if sTemp != '':
+                    lReturn.append(sTemp)
+                lReturn.append(sChar)
+                sTemp = ''
 
         if len(sTemp) != 0:
             lReturn.append(sTemp)
 
         self.lChars = lReturn
+
 
     def combine_string_literals(self):
         lReturn = []
@@ -247,3 +237,20 @@ def convert_string_to_chars(sString):
     for sChar in sString:
         lReturn.append(sChar)
     return lReturn
+
+
+def append_character(sTemp, lReturn, sChar):
+    if sTemp != '':
+        lReturn.append(sTemp)
+    lReturn.append(sChar)
+    return lReturn, ''
+
+
+def character_is_part_of_word(sChar):
+    if len(sChar) > 1:
+        return False
+    elif sChar.isspace():
+        return False
+    elif sChar in lSingleCharacterSymbols:
+        return False
+    return True
