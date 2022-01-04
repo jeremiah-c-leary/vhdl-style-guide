@@ -777,7 +777,6 @@ class testTokenMethod(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
-
     def test_parenthesis_in_procedure_call(self):
         sLine = "  write('(')"
         lTokens = []
@@ -786,6 +785,23 @@ class testTokenMethod(unittest.TestCase):
         lTokens.append('(')
         lTokens.append("'('")
         lTokens.append(')')
+  
+        lActual = tokens.create(sLine)
+  
+        self.assertEqual(lTokens, lActual)
+
+    def test_multiple_character_literals(self):
+        sLine = "'a' or 'b' or 'c'"
+        lTokens = []
+        lTokens.append("'a'")
+        lTokens.append(' ')
+        lTokens.append('or')
+        lTokens.append(' ')
+        lTokens.append("'b'")
+        lTokens.append(' ')
+        lTokens.append('or')
+        lTokens.append(' ')
+        lTokens.append("'c'")
   
         lActual = tokens.create(sLine)
   
