@@ -110,7 +110,6 @@ class New():
 
         combine_quote_pairs(lQuotePairs, self)
 
-
     def combine_comments(self):
         if has_trailing_whitespace(self.lChars):
             combine_comment_with_trailing_whitespace(self)
@@ -131,10 +130,29 @@ def combine_quote_pairs(lQuotePairs, self):
 def find_character_literal_candidates(lQuotes, lChars):
     lReturn = []
     for iIndex, iQuote in enumerate(lQuotes[0:-1]):
-        if iQuote + 2 == lQuotes[iIndex + 1]:
-            if len(lChars[iQuote + 1]) == 1:
-                lReturn.append([iQuote, iQuote + 2])
+        if is_character_literal_candidate(iIndex, lQuotes, lChars):
+            lReturn.append([iQuote, iQuote + 2])
     return lReturn
+
+
+def is_character_literal_candidate(iIndex, lQuotes, lChars):
+    iQuote = lQuotes[iIndex]
+    if there_is_a_single_token_between_quotes(iIndex, lQuotes) and \
+       token_between_quotes_is_a_single_character(iQuote, lChars):
+        return True
+    return False
+
+
+def there_is_a_single_token_between_quotes(iIndex, lQuotes):
+    if lQuotes[iIndex] + 2 == lQuotes[iIndex + 1]:
+        return True
+    return False
+
+
+def token_between_quotes_is_a_single_character(iQuote, lChars):
+    if len(lChars[iQuote + 1]) == 1:
+        return True
+    return False
 
 
 def filter_character_literal_candidates(lLiterals):
@@ -211,16 +229,6 @@ def add_trailing_string(lReturn, sString):
     if len(sString) > 0:
         lReturn.append(sString)
     return lReturn
-
-
-def is_qualified_expression(iChar, lChars):
-    lPattern = ["'", "(", "'"]
-    try:
-        if lChars[iChar:iChar + 3] == lPattern and len(lChars[iChar + 3]) == 1 and lChars[iChar + 4] == "'":
-            return True
-        return False
-    except IndexError:
-        return False
 
 
 def is_character_literal(iChar, lChars):
