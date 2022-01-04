@@ -182,10 +182,6 @@ def combine_comment(self):
         self.lChars = lReturn
 
 
-def combine_tokens_into_string(lTokens, iStart, iEnd):
-    return ''.join(lTokens[iStart:iEnd])
-
-
 def has_trailing_whitespace(lChars):
     if len(lChars) == 0:
         return False
@@ -231,27 +227,11 @@ def add_trailing_string(lReturn, sString):
     return lReturn
 
 
-def is_character_literal(iChar, lChars):
-    try:
-        if lChars[iChar] == "'" and len(lChars[iChar + 1]) == 1 and lChars[iChar + 2] == "'":
-            return True
-        return False
-    except IndexError:
-        return False
-
-
 def convert_string_to_chars(sString):
     lReturn = []
     for sChar in sString:
         lReturn.append(sChar)
     return lReturn
-
-
-def append_character(sTemp, lReturn, sChar):
-    if sTemp != '':
-        lReturn.append(sTemp)
-    lReturn.append(sChar)
-    return lReturn, ''
 
 
 def character_is_part_of_word(sChar):
