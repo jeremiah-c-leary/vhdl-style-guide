@@ -245,14 +245,16 @@ def character_is_part_of_word(sChar):
 
 
 def find_indexes_of_double_quote_pairs(lTokens):
-    bStart = False
+    lReturn = []
+    lIndexes = find_indexes_of_token_with_value('"', lTokens)
+    for iIndex in range(0, len(lIndexes) - 1, 2):
+        lReturn.append([lIndexes[iIndex], lIndexes[iIndex + 1]])
+    return lReturn
+
+
+def find_indexes_of_token_with_value(sValue, lTokens):
     lReturn = []
     for iToken, sToken in enumerate(lTokens):
-        if sToken == '"' and bStart:
-            lReturn.append([iStart, iToken]) 
-            bStart = False
-            continue
-        if sToken == '"' and not bStart:
-            iStart = iToken
-            bStart = True
+        if sToken == sValue:
+            lReturn.append(iToken)
     return lReturn
