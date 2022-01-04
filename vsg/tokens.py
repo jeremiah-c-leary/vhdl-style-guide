@@ -98,41 +98,53 @@ class New():
         lQuotePairs = find_indexes_of_double_quote_pairs(self.lChars)
         lQuotePairs.reverse()
 
-        for lPair in lQuotePairs:
-            iLeft = lPair[0]
-            iRight = lPair[1] + 1
-            lReturn = self.lChars[0:iLeft]
-            lReturn.append(''.join(self.lChars[iLeft:iRight]))
-            lReturn.extend(self.lChars[iRight:])
-            self.lChars = lReturn
+        combine_quote_pairs(lQuotePairs, self)
 
     def combine_character_literals(self):
-        lReturn = []
-        sLiteral = ''
-        bLiteral = False
-        for iChar, sChar in enumerate(self.lChars):
-            if sChar == "'" and not bLiteral:
-                if not is_qualified_expression(iChar, self.lChars):
-                    if is_character_literal(iChar, self.lChars):
-                        sLiteral += sChar
-                        bLiteral = True
-                        continue
-            if not bLiteral:
-                lReturn.append(sChar)
-            else:
-                sLiteral += sChar
-            if sChar == "'" and bLiteral:
-                bLiteral = False
-                lReturn.append(sLiteral)
-                sLiteral = ''
+        lQuotes = find_indexes_of_token_with_value("'", self.lChars)
+        lLiterals = find_character_literal_candidates(lQuotes, self.lChars)
+        if len(lLiterals) == 0:
+            return None
+        lQuotePairs = filter_character_literal_candidates(lLiterals)
+        lQuotePairs.reverse()
 
-        self.lChars = lReturn
+        combine_quote_pairs(lQuotePairs, self)
+
 
     def combine_comments(self):
         if has_trailing_whitespace(self.lChars):
             combine_comment_with_trailing_whitespace(self)
         else:
             combine_comment(self)
+
+
+def combine_quote_pairs(lQuotePairs, self):
+    for lPair in lQuotePairs:
+        iLeft = lPair[0]
+        iRight = lPair[1] + 1
+        lReturn = self.lChars[0:iLeft]
+        lReturn.append(''.join(self.lChars[iLeft:iRight]))
+        lReturn.extend(self.lChars[iRight:])
+        self.lChars = lReturn
+
+
+def find_character_literal_candidates(lQuotes, lChars):
+    lReturn = []
+    for iIndex, iQuote in enumerate(lQuotes[0:-1]):
+        if iQuote + 2 == lQuotes[iIndex + 1]:
+            if len(lChars[iQuote + 1]) == 1:
+                lReturn.append([iQuote, iQuote + 2])
+    return lReturn
+
+
+def filter_character_literal_candidates(lLiterals):
+    lReturn = []
+    for iIndex, lLiteral in enumerate(lLiterals[0:-1]):
+        lNextLiteral = lLiterals[iIndex + 1]
+        if lLiteral[1] != lNextLiteral[0]:
+            lReturn.append(lLiteral)
+    lReturn.append(lLiterals[-1])
+    return lReturn
 
 
 def combine_comment_with_trailing_whitespace(self):
