@@ -77,7 +77,7 @@ This rule checks for at least a single space before the assignment.
 variable_assignment_004
 #######################
 
-|phase_4| |error| |alignment|
+|phase_5| |error| |alignment|
 
 This rule checks the alignment of multiline variable assignments.
 
