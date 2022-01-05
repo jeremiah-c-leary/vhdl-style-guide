@@ -269,6 +269,9 @@ class vhdlFile():
     def get_blank_lines_above_line_starting_with_token(self, lTokens):
         return extract.get_blank_lines_above_line_starting_with_token(lTokens, self.lAllObjects, self.oTokenMap)
 
+    def get_blank_lines_above_line_starting_with_token_when_between_tokens(self, lTokens, lBetweenTokens):
+        return extract.get_blank_lines_above_line_starting_with_token_when_between_tokens(lTokens, lBetweenTokens, self.lAllObjects, self.oTokenMap)
+
     def get_association_elements_between_tokens(self, oStart, oEnd):
         return extract.get_association_elements_between_tokens(oStart, oEnd, self.lAllObjects, self.oTokenMap)
 

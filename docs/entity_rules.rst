@@ -500,6 +500,30 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
        data_o : in std_logic  -- Data output
    );
 
+entity_200
+##########
+
+|phase_3| |error| |blank_line|
+
+This rule checks for blank lines above the **generic** keyword in entity specifications.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   entity fifo is
+
+
+
+     generic (
+
+**Fix**
+
+.. code-block:: vhdl
+
+   entity fifo is
+     generic (
+
 entity_600
 ##########
 
