@@ -392,13 +392,6 @@ def _get_first_line_info(iLine, oFile):
     return iLine, iIndent
 
 
-def print_lines(lObjects):
-    sOutput = ''
-    for oObject in lObjects:
-        sOutput += oObject.get_value()
-    print(sOutput)
-
-
 def remove_non_arrays(lToi):
     lReturn = []
     for oToi in lToi:
