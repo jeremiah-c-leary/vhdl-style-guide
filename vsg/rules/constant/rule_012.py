@@ -56,13 +56,16 @@ class rule_012(alignment.Rule):
         for lTokenPair in self.lTokenPairs:
             aToi = oFile.get_tokens_bounded_by(lTokenPair[0], lTokenPair[1])
             lToi = utils.combine_two_token_class_lists(lToi, aToi)
+        lToi = remove_non_arrays(lToi)
         return lToi
 
     def analyze(self, oFile):
+        self._print_debug_message('Analyzing rule: ' + self.unique_id)
         lToi = self._get_tokens_of_interest(oFile)
 
         for oToi in lToi:
             iLine, lTokens = utils.get_toi_parameters(oToi)
+
 #            print('='*5 + str(iLine) + '='*70)
 
             iFirstLine, iFirstLineIndent = _get_first_line_info(iLine, oFile)
@@ -388,3 +391,19 @@ def _get_first_line_info(iLine, oFile):
     iIndent = len(lTemp.get_tokens()[0].get_value())
     return iLine, iIndent
 
+
+def print_lines(lObjects):
+    sOutput = ''
+    for oObject in lObjects:
+        sOutput += oObject.get_value()
+    print(sOutput)
+
+
+def remove_non_arrays(lToi):
+    lReturn = []
+    for oToi in lToi:
+        lTokens = oToi.get_tokens()
+        iToken = utils.find_next_non_whitespace_token(1, lTokens)
+        if utils.token_is_open_parenthesis(iToken, lTokens):
+            lReturn.append(oToi)
+    return lReturn

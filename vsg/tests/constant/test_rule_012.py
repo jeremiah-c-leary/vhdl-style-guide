@@ -64,8 +64,6 @@ class test_constant_rule(unittest.TestCase):
         lExpected.extend(range(128, 134))
         lExpected.extend(range(136, 139))
         lExpected.extend(range(141, 153))
-        lExpected.append(161)
-        lExpected.append(164)
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -123,8 +121,6 @@ class test_constant_rule(unittest.TestCase):
         lExpected.extend(range(128, 134))
         lExpected.extend(range(136, 139))
         lExpected.extend(range(141, 153))
-        lExpected.append(161)
-        lExpected.append(164)
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -168,8 +164,6 @@ class test_constant_rule(unittest.TestCase):
         lExpected.extend(range(128, 134))
         lExpected.extend(range(136, 139))
         lExpected.extend(range(141, 153))
-        lExpected.append(161)
-        lExpected.append(164)
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
