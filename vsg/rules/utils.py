@@ -47,13 +47,6 @@ def number_of_tokens_in_token_list(oToken, lTokens):
     return iReturn
 
 
-def print_debug(lTokens):
-    sPrint = ''
-    for oToken in lTokens:
-        sPrint += oToken.get_value()
-    print(sPrint)
-
-
 def does_line_start_with_comment(lTokens):
     if isinstance(lTokens[0], parser.comment):
         return True
