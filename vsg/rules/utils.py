@@ -2,12 +2,6 @@
 from vsg import parser
 
 
-def add_optional_item(lTokens, oViolation, oInsertToken):
-    lTokens.append(parser.whitespace(' '))
-    lTokens.append(oInsertToken)
-    oViolation.set_tokens(lTokens)
-
-
 def remove_optional_item(oViolation, oInsertToken):
     lTokens = oViolation.get_tokens()
     if isinstance(lTokens[0], parser.whitespace):
@@ -98,10 +92,6 @@ def append_carriage_return(lTokens):
     append_token(lTokens, parser.carriage_return())
 
 
-def append_blank_line(lTokens):
-    append_token(lTokens, parser.blank_line())
-
-
 def get_index_of_token_in_list(oToken, lTokens):
     for iToken, token in enumerate(lTokens):
         if isinstance(token, oToken):
@@ -117,13 +107,6 @@ def get_number_of_carriage_returns_before_token(oStopToken, lTokens):
         if isinstance(oToken, oStopToken):
             break
     return iReturn
-
-
-def get_indent_of_line(lTokens):
-    if isinstance(lTokens[0], parser.whitespace):
-        return lTokens[1].get_indent()
-    else:
-        return lTokens[0].get_indent()
 
 
 def whitespace_before_token_index(lTokens, iIndex):
