@@ -94,14 +94,12 @@ class New():
         for i in range(iStartIndex, 0, -1):
             if not self.is_token_at_index_whitespace(i):
                 return i
-        return None
 
     def get_index_of_previous_non_whitespace_token(self, iIndex):
         iStartIndex = iIndex - 1
         for i in range(iStartIndex, 0, -1):
             if not self.is_token_at_index_whitespace_or_comment(i):
                 return i
-        return None
 
     def is_token_at_index(self, oToken, iIndex):
         try:
