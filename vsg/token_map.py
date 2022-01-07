@@ -112,11 +112,6 @@ class New():
         except KeyError:
             return False
 
-    def is_token_at_index_a_blank_line(self, iIndex):
-        if self.is_token_at_index(parser.blank_line, iIndex):
-            return True
-        return False
-
     def is_token_at_index_whitespace(self, iIndex):
         if self.is_token_at_index(parser.whitespace, iIndex):
             return True
