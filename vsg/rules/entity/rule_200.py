@@ -7,8 +7,6 @@ from vsg.token import entity_declaration as between
 lTokens = []
 lTokens.append(token.generic_keyword)
 
-lBetweenTokens = [between.entity_keyword, between.semicolon]
-
 
 class rule_200(Rule):
     '''
@@ -32,5 +30,6 @@ class rule_200(Rule):
          generic (
     '''
     def __init__(self):
-        Rule.__init__(self, 'entity', '200', lTokens, lBetweenTokens)
+        Rule.__init__(self, 'entity', '200', lTokens)
         self.style = 'no_blank_line'
+        self.lBetweenTokenPairs = [between.entity_keyword, between.semicolon]

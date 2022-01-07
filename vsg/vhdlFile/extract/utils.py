@@ -41,7 +41,7 @@ def get_indexes_of_token_pairs(lPairs, oTokenMap):
         lStart, lEnd = oTokenMap.get_token_pair_indexes(lPair[0], lPair[1])
         for iStart, iEnd in zip(lStart, lEnd):
             lReturn.append([iStart, iEnd])
-    
+
     return lReturn
 
 
@@ -68,7 +68,7 @@ def is_index_between_indexes(iIndex, lStart, lEnd, bInclusive=False):
 
 def filter_tokens_which_start_a_line(oToken, oTokenMap):
     lIndexes = oTokenMap.get_token_indexes(oToken)
-    return filter_indexes_which_start_a_line(lIndexes, oTokenMap) 
+    return filter_indexes_which_start_a_line(lIndexes, oTokenMap)
 
 
 def filter_indexes_which_start_a_line(lIndexes, oTokenMap):

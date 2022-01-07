@@ -1,7 +1,5 @@
 
 from vsg.rules import blank_line_above_line_starting_with_token as rule
-from vsg import parser
-from vsg import violation
 
 
 class Rule(rule):
@@ -21,9 +19,9 @@ class Rule(rule):
        token object that a blank line above should appear
     '''
 
-    def __init__(self, name, identifier, lTokens, lBetweenTokenPairs, lAllowTokens=None):
+    def __init__(self, name, identifier, lTokens, lAllowTokens=None):
         rule.__init__(self, name=name, identifier=identifier, lTokens=lTokens, lAllowTokens=lAllowTokens)
-        self.lBetweenTokenPairs = lBetweenTokenPairs 
+        self.lBetweenTokenPairs = None
 
     def _get_tokens_of_interest(self, oFile):
         if self.style == 'require_blank_line':

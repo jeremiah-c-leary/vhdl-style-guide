@@ -96,7 +96,6 @@ class New():
                 return i
         return None
 
-
     def get_index_of_previous_non_whitespace_token(self, iIndex):
         iStartIndex = iIndex - 1
         for i in range(iStartIndex, 0, -1):
