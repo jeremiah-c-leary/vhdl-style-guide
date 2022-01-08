@@ -55,22 +55,22 @@ class rule_012(alignment.Rule):
         lToi = []
         for lTokenPair in self.lTokenPairs:
             aToi = oFile.get_tokens_bounded_by(lTokenPair[0], lTokenPair[1])
+            for oToi in aToi:
+                oToi.iFirstLine, oToi.iFirstLineIndent = _get_first_line_info(oToi.iLine, oFile)
+                oToi.iAssignColumn = oFile.get_column_of_token_index(oToi.get_start_index())
             lToi = utils.combine_two_token_class_lists(lToi, aToi)
         lToi = remove_non_arrays(lToi)
         return lToi
 
-    def analyze(self, oFile):
-        self._print_debug_message('Analyzing rule: ' + self.unique_id)
-        lToi = self._get_tokens_of_interest(oFile)
+    def _analyze(self, lToi):
 
         for oToi in lToi:
             iLine, lTokens = utils.get_toi_parameters(oToi)
 
 #            print('='*5 + str(iLine) + '='*70)
-
-            iFirstLine, iFirstLineIndent = _get_first_line_info(iLine, oFile)
-
-            iAssignColumn = oFile.get_column_of_token_index(oToi.get_start_index())
+            iFirstLine = oToi.iFirstLine
+            iFirstLineIndent = oToi.iFirstLineIndent
+            iAssignColumn = oToi.iAssignColumn
             iColumn = iAssignColumn
 
             dActualIndent = {}
