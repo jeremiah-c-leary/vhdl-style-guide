@@ -166,9 +166,59 @@ def _set_indent(iToken, lTokens):
     return iReturn
 
 
-def _analyze_align_paren_false(iFirstLine, iLastLine, lParens, iIndentStep, dActualIndent):
+def create_expected_indent_dict(iFirstLine, dActualIndent):
     dExpectedIndent = {}
     dExpectedIndent[iFirstLine] = dActualIndent[iFirstLine]
+    return dExpectedIndent
+
+
+def get_parens_on_line(lParens, iLine):
+    lReturn = []
+    for dParen in lParens:
+        if dParen['line'] == iLine:
+            lReturn.append(dParen)
+    return lReturn
+
+
+def is_open_paren(dTemp):
+    if dTemp['type'] == 'open':
+        return True
+    return False
+
+
+def no_parens_on_line(lTemp):
+    if len(lTemp) == 0:
+        return True
+    return False
+
+
+def update_paren_depth(dParen, iParens):
+    if is_open_paren(dParen):
+        return iParens + 1
+    else:
+        return iParens - 1
+
+
+def line_begins_with_close_paren(dParen):
+    if not is_open_paren(dParen) and dParen['begin_line']:
+        return True
+    return False
+
+
+def update_paren_depth_for_line(lLineParens, iParens):
+    for dParen in lLineParens:
+        iParens = update_paren_depth(dParen, iParens)
+    return iParens
+
+
+def set_current_line_indent(lLineParens, iLine, iIndentStep, dExpectedIndent):
+    for dParen in lLineParens:
+        if line_begins_with_close_paren(dParen):
+            dExpectedIndent[iLine] -= iIndentStep
+
+
+def _analyze_align_paren_false(iFirstLine, iLastLine, lParens, iIndentStep, dActualIndent):
+    dExpectedIndent = create_expected_indent_dict(iFirstLine, dActualIndent)
 #    print(iIndent)
     iFirstIndent = dActualIndent[iFirstLine]
 
@@ -179,22 +229,15 @@ def _analyze_align_paren_false(iFirstLine, iLastLine, lParens, iIndentStep, dAct
     for iLine in range(iFirstLine, iLastLine + 1):
 #        print('-->  ' + str(iLine) + '  <--------------------------')
 
-        lTemp = []
-        for dParen in lParens:
-            if dParen['line'] == iLine:
-                lTemp.append(dParen)
+        lLineParens = get_parens_on_line(lParens, iLine)
 
-        if len(lTemp) == 0:
+        if no_parens_on_line(lLineParens):
             dExpectedIndent[iLine + 1] = iIndent
             continue
 
-        for dTemp in lTemp:
-            if dTemp['type'] == 'open':
-                iParens += 1
-            else:
-                iParens -= 1
-                if dTemp['begin_line']:
-                    dExpectedIndent[iLine] -= iIndentStep
+        iParens = update_paren_depth_for_line(lLineParens, iParens)
+
+        set_current_line_indent(lLineParens, iLine, iIndentStep, dExpectedIndent)
 
         iIndent = iFirstIndent + iParens * iIndentStep
 
@@ -204,9 +247,16 @@ def _analyze_align_paren_false(iFirstLine, iLastLine, lParens, iIndentStep, dAct
     return dExpectedIndent
 
 
+def set_expected_column(iLine, iFirstLine, dTemp, iIndentStep, iTemp, dActualIndent):
+    if iLine == iFirstLine:
+        iColumn = dTemp['column'] + iIndentStep - 1
+    else:
+        iColumn = dTemp['column'] + (iTemp - dActualIndent[iLine]) + iIndentStep - 1
+    return iColumn
+
+
 def _analyze_align_paren_true(iFirstLine, iLastLine, lParens, dActualIndent, iIndentStep, iAssignColumn):
-    dExpectedIndent = {}
-    dExpectedIndent[iFirstLine] = dActualIndent[iFirstLine]
+    dExpectedIndent = create_expected_indent_dict(iFirstLine, dActualIndent)
 
     iIndent = dActualIndent[iFirstLine]
     iColumn = iIndent
@@ -215,39 +265,27 @@ def _analyze_align_paren_true(iFirstLine, iLastLine, lParens, dActualIndent, iIn
 #    print('*'*80)
 #    print(lParens)
 
-    iParens = 0
-
     for iLine in range(iFirstLine, iLastLine + 1):
 #        print('-->  ' + str(iLine) + '  <--------------------------')
-        lTemp = []
-        for dParen in lParens:
-            if dParen['line'] == iLine:
-                lTemp.append(dParen)
+        lTemp = get_parens_on_line(lParens, iLine)
+
+        if no_parens_on_line(lTemp):
+            dExpectedIndent[iLine + 1] = lColumn[-1]
+            continue
 
 #        print(f'lTemp = {lTemp}')
         iTemp = lColumn[-1]
         for dTemp in lTemp:
-            if dTemp['type'] == 'open':
-                iParens += 1
-                if iLine == iFirstLine:
-                    iColumn = dTemp['column'] + iIndentStep - 1
-                else:
-                    iColumn = dTemp['column'] + (iTemp - dActualIndent[iLine]) + iIndentStep - 1
+            if is_open_paren(dTemp):
+                iColumn = set_expected_column(iLine, iFirstLine, dTemp, iIndentStep, iTemp, dActualIndent)
 #                print(f"iColumn = {dTemp['column']} + ({iTemp} - {dActualIndent[iLine]}) + {iIndentStep} - 1 = {iColumn}")
                 lColumn.append(iColumn)
                 dExpectedIndent[iLine + 1] = iColumn
             else:
-                iParens -= 1
                 lColumn.pop()
                 dExpectedIndent[iLine + 1] = lColumn[-1]
-                if dTemp['begin_line']:
+                if line_begins_with_close_paren(dTemp):
                     dExpectedIndent[iLine] = dExpectedIndent[iLine] - iIndentStep
-
-#        print(f'iParens = {iParens}')
-
-
-        if len(lTemp) == 0:
-            dExpectedIndent[iLine + 1] = lColumn[-1]
 
 #        print(f'{iLine} | {lColumn} | {dExpectedIndent}')
 
@@ -255,48 +293,43 @@ def _analyze_align_paren_true(iFirstLine, iLastLine, lParens, dActualIndent, iIn
 
 
 def _analyze_align_paren_true_align_left_true(iFirstLine, iLastLine, lParens, dActualIndent, iIndentStep, iAssignColumn):
-    dExpectedIndent = {}
-    dExpectedIndent[iFirstLine] = dActualIndent[iFirstLine]
+    dExpectedIndent = create_expected_indent_dict(iFirstLine, dActualIndent)
 
     iIndent = dActualIndent[iFirstLine]
     iColumn = iIndent
-    lColumn = [dActualIndent[iFirstLine]]
+    lColumn = [iColumn]
 
 #    print('*'*80)
 #    print(lParens)
+
 
     iParens = 0
 
     for iLine in range(iFirstLine, iLastLine + 1):
 #        print('-->  ' + str(iLine) + '  <--------------------------')
-        lTemp = []
-        for dParen in lParens:
-            if dParen['line'] == iLine:
-                lTemp.append(dParen)
+        lTemp = get_parens_on_line(lParens, iLine)
+
+        if no_parens_on_line(lTemp):
+            dExpectedIndent[iLine + 1] = lColumn[-1]
+            continue
 
 #        print(f'lTemp = {lTemp}')
         iTemp = lColumn[-1]
         for dTemp in lTemp:
-            if dTemp['type'] == 'open':
-                iParens += 1
-                if iLine == iFirstLine:
-                    iColumn = dTemp['column'] + iIndentStep - 1
-                else:
-                    iColumn = dTemp['column'] + (iTemp - dActualIndent[iLine]) + iIndentStep - 1
-#                print(f"iColumn = {dTemp['column']} + ({iTemp} - {dActualIndent[iLine]}) + {iIndentStep} - 1 = {iColumn}")
+            if is_open_paren(dTemp):
+                iColumn = set_expected_column(iLine, iFirstLine, dTemp, iIndentStep, iTemp, dActualIndent)
                 lColumn.append(iColumn)
                 dExpectedIndent[iLine + 1] = iColumn
             else:
-                iParens -= 1
                 lColumn.pop()
                 dExpectedIndent[iLine + 1] = lColumn[-1]
-                if dTemp['begin_line']:
+                if line_begins_with_close_paren(dTemp):
                     dExpectedIndent[iLine] = dExpectedIndent[iLine] - iIndentStep
 
-#        print(f'iParens = {iParens}')
 
-        if len(lTemp) == 0:
-            dExpectedIndent[iLine + 1] = lColumn[-1]
+        iParens = update_paren_depth_for_line(lTemp, iParens)
+
+#        print(f'iParens = {iParens}')
 
         if iLine == iFirstLine:
             dExpectedIndent[iLine + 1] = iParens * iIndentStep + dActualIndent[iFirstLine]
