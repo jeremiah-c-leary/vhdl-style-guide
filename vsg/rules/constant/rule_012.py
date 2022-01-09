@@ -185,7 +185,6 @@ def _analyze_align_paren_true(oToi, iIndentStep):
     iLastLine = oToi.iLastLine
     lParens = oToi.lParens
     dActualIndent = oToi.dActualIndent
-    iAssignColumn = oToi.iAssignColumn
     dExpectedIndent = create_expected_indent_dict(iFirstLine, dActualIndent)
 
     iIndent = dActualIndent[iFirstLine]
@@ -266,17 +265,20 @@ def _analyze_align_paren_true_align_left_true(oToi, iIndentStep):
 
 #        print(f'iParens = {iParens}')
 
-        if iLine == iFirstLine:
-            dExpectedIndent[iLine + 1] = iParens * iIndentStep + dActualIndent[iFirstLine]
-            lColumn[-1] = iParens * iIndentStep + dActualIndent[iFirstLine]
-        else:
-            if iParens == 1:
-                dExpectedIndent[iLine + 1] = iParens * iIndentStep + dActualIndent[iFirstLine]
-                lColumn[-1] = iParens * iIndentStep + dActualIndent[iFirstLine]
+        adjust_indent_left(iLine, oToi, dExpectedIndent, iParens, iIndentStep, lColumn)
 
 #        print(f'{iLine} | {lColumn} | {dExpectedIndent}')
 
     return dExpectedIndent
+
+
+def adjust_indent_left(iLine, oToi, dExpectedIndent, iParens, iIndentStep, lColumn):
+    if iLine == oToi.iFirstLine:
+        dExpectedIndent[iLine + 1] = iParens * iIndentStep + oToi.dActualIndent[oToi.iFirstLine]
+        lColumn[-1] = iParens * iIndentStep + oToi.dActualIndent[oToi.iFirstLine]
+    elif iParens == 1:
+        dExpectedIndent[iLine + 1] = iParens * iIndentStep + oToi.dActualIndent[oToi.iFirstLine]
+        lColumn[-1] = iParens * iIndentStep + oToi.dActualIndent[oToi.iFirstLine]
 
 
 def starts_with_paren(lTokens):
@@ -379,7 +381,7 @@ def update_open_paren_stats(oToken, iLine, iColumn, lParens):
 
 def set_last_line_number(oToi):
     iLine, lTokens = utils.get_toi_parameters(oToi)
-    for iToken, oToken in enumerate(lTokens):
+    for oToken in lTokens:
 
         iLine = utils.increment_line_number(iLine, oToken)
 
