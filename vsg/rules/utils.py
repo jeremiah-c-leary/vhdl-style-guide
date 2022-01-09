@@ -150,3 +150,15 @@ def remove_slice_from_token_list(lTokens, lSlice):
     iStart = lSlice[0]
     iEnd = lSlice[1]
     return lTokens[0:iStart] + lTokens[iEnd::]
+
+
+def token_is_carriage_return(oToken):
+    if isinstance(oToken, parser.carriage_return):
+        return True
+    return False
+
+
+def token_is_blank_line(oToken):
+    if isinstance(oToken, parser.blank_line):
+        return True
+    return False
