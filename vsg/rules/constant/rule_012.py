@@ -413,20 +413,28 @@ def calculate_expected_indents(self, oToi):
 def check_indents(self, dExpectedIndent, oToi):
     dIndex = get_mapping_of_carriage_returns(oToi)
     for iLine in range(oToi.iFirstLine, oToi.iLastLine + 1):
-        if oToi.dActualIndent[iLine] == dExpectedIndent[iLine]:
-            continue
+        if oToi.dActualIndent[iLine] != dExpectedIndent[iLine]:
+            oViolation = create_violation(oToi, dExpectedIndent, iLine, dIndex)
+            self.add_violation(oViolation)
 
-        dAction = {}
-        dAction['line'] = iLine
-        dAction['column'] = dExpectedIndent[iLine]
 
-        if oToi.dActualIndent[iLine] > 0:
-            dAction['action'] = 'adjust'
-        else:
-            dAction['action'] = 'insert'
+def create_violation(oToi, dExpectedIndent, iLine, dIndex):
+    dAction = create_action_dict(oToi, dExpectedIndent, iLine)
 
-        sSolution = 'Adjust indent to column ' + str(dExpectedIndent[iLine])
-        iToken = dIndex[iLine]
-        oViolation = violation.New(iLine, oToi.extract_tokens(iToken, iToken), sSolution)
-        oViolation.set_action(dAction)
-        self.add_violation(oViolation)
+    sSolution = 'Adjust indent to column ' + str(dExpectedIndent[iLine])
+    iToken = dIndex[iLine]
+    oViolation = violation.New(iLine, oToi.extract_tokens(iToken, iToken), sSolution)
+    oViolation.set_action(dAction)
+    return oViolation
+
+
+def create_action_dict(oToi, dExpectedIndent, iLine):
+    dAction = {}
+    dAction['line'] = iLine
+    dAction['column'] = dExpectedIndent[iLine]
+
+    if oToi.dActualIndent[iLine] > 0:
+        dAction['action'] = 'adjust'
+    else:
+        dAction['action'] = 'insert'
+    return dAction
