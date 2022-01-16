@@ -151,16 +151,16 @@ def set_current_line_indent(lLineParens, iLine, iIndentStep, dExpectedIndent):
 
 def analyze_align_left_true_align_paren_false(oToi, iIndentStep, oLines):
     iIndent = oLines.get_first_line_indent()
-
-    oLines.set_first_line_expected_indent(oLines.get_first_line_indent())
-    iParens = oLines.lines[0].get_delta_parens()
-
-    for oLine in oLines.lines[1::]:
-        if rules_utils.token_list_begins_with_close_paren(oLine.tokens):
-            oLine.set_expected_indent(iIndent + iParens * iIndentStep - iIndentStep)
+    iParens = 0
+    for oLine in oLines.lines:
+        if oLine.isFirst:
+            oLines.set_first_line_expected_indent(iIndent)
         else:
-            oLine.set_expected_indent(iIndent + iParens * iIndentStep)
-
+            if rules_utils.token_list_begins_with_close_paren(oLine.tokens):
+                oLine.set_expected_indent(iIndent + iParens * iIndentStep - iIndentStep)
+            else:
+                oLine.set_expected_indent(iIndent + iParens * iIndentStep)
+    
         iParens += oLine.get_delta_parens()
 
 
