@@ -162,3 +162,29 @@ def token_is_blank_line(oToken):
     if isinstance(oToken, parser.blank_line):
         return True
     return False
+
+
+def token_is_open_paren(oToken):
+    if isinstance(oToken, parser.open_parenthesis):
+        return True
+    return False
+
+
+def token_is_close_paren(oToken):
+    if isinstance(oToken, parser.close_parenthesis):
+        return True
+    return False
+
+
+def token_is_whitespace(oToken):
+    if isinstance(oToken, parser.whitespace):
+        return True
+    return False
+
+
+def token_list_begins_with_close_paren(lTokens):
+    if isinstance(lTokens[0], parser.whitespace) and isinstance(lTokens[1], parser.close_parenthesis):
+        return True
+    if isinstance(lTokens[0], parser.close_parenthesis):
+        return True
+    return False

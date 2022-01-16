@@ -41,6 +41,7 @@ class test_constant_rule(unittest.TestCase):
         self.oFile.set_indent_map(dIndentMap)
 
     def test_rule_012_align_left_false_align_paren_true(self):
+        self.maxDiff = None
         oRule = constant.rule_012()
         oRule.align_left = False
         oRule.align_paren = True
@@ -69,6 +70,7 @@ class test_constant_rule(unittest.TestCase):
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
     def test_fix_rule_012_align_left_false_align_paren_true(self):
+        self.maxDiff = None
         oRule = constant.rule_012()
         oRule.align_left = False
         oRule.align_paren = True
