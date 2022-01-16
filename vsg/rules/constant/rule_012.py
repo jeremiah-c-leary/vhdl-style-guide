@@ -227,47 +227,6 @@ def print_line_num(iNum, sString):
     print(sString + '[' + str(iNum) + ']' + sString*80)
 
 
-def analyze_align_paren_true(oToi, iIndentStep):
-    iFirstLine = oToi.iFirstLine
-    iLastLine = oToi.iLastLine
-    lParens = oToi.lParens
-    dActualIndent = oToi.dActualIndent
-    dExpectedIndent = create_expected_indent_dict(iFirstLine, dActualIndent)
-
-    iIndent = dActualIndent[iFirstLine]
-    iColumn = iIndent
-    lColumn = [dActualIndent[iFirstLine]]
-
-#    print('*'*80)
-#    print(lParens)
-
-    for iLine in range(iFirstLine, iLastLine + 1):
-#        print('-->  ' + str(iLine) + '  <--------------------------')
-        lTemp = get_parens_on_line(lParens, iLine)
-
-        if no_parens_on_line(lTemp):
-            dExpectedIndent[iLine + 1] = lColumn[-1]
-            continue
-
-#        print(f'lTemp = {lTemp}')
-        iTemp = lColumn[-1]
-        for dTemp in lTemp:
-            if is_open_paren(dTemp):
-                iColumn = set_expected_column(iLine, oToi, dTemp, iIndentStep, iTemp)
-#                print(f"iColumn = {dTemp['column']} + ({iTemp} - {dActualIndent[iLine]}) + {iIndentStep} - 1 = {iColumn}")
-                lColumn.append(iColumn)
-                dExpectedIndent[iLine + 1] = iColumn
-            else:
-                lColumn.pop()
-                dExpectedIndent[iLine + 1] = lColumn[-1]
-                if line_begins_with_close_paren(dTemp):
-                    dExpectedIndent[iLine] = dExpectedIndent[iLine] - iIndentStep
-
-#        print(f'{iLine} | {lColumn} | {dExpectedIndent}')
-
-    return dExpectedIndent
-
-
 def set_expected_column(iLine, oToi, dTemp, iIndentStep, iTemp):
     if iLine == oToi.iFirstLine:
         iColumn = dTemp['column'] + iIndentStep - 1
@@ -275,6 +234,47 @@ def set_expected_column(iLine, oToi, dTemp, iIndentStep, iTemp):
         iColumn = dTemp['column'] + (iTemp - oToi.dActualIndent[iLine]) + iIndentStep - 1
     return iColumn
 
+
+def analyze_align_left_true_align_paren_true(oToi, iIndentStep, oLines):
+
+#    print('='*80)
+    for oLine in oLines.lines:
+        if oLine.isFirst:
+            check_my_first_line(oLine, oLines, oToi, iIndentStep)
+        elif oLine.isLast:
+            check_last_line(oLine, oLines)
+#            adjust_line_left(oLine, oLines)
+        else:
+            check_middle_line(oLine, oLines)
+#            adjust_line_left(oLine, oLines)
+
+#    print_expected_indents(oLines)
+
+
+def check_my_first_line(oLine, oLines, oToi, iIndentStep):
+    iIndent = oLines.get_first_line_indent()
+    oLine.set_expected_indent(iIndent)
+
+    iAdjust = oToi.iAssignColumn
+#    print(f'iAdjust = {iAdjust}')
+    oLines.update_parens(oLine, iAdjust)
+
+    if oLines.no_parens():
+        oLines.iNextIndent = iIndent
+    else:
+        oLines.iNextIndent = len(oLines.lParens)*iIndentStep + iIndent
+#        print(f'iNextIndent = {oLines.iNextIndent}')
+
+    for iParen, oParen in enumerate(oLine.parens):
+        oParen.iExpectedColumn = iParen*iIndentStep + iIndent + 1
+#        print(f'{oParen.iExpectedColumn}')
+
+
+
+def adjust_indent_left(iLine, oToi, dExpectedIndent, iParens, iIndentStep, lColumn):
+    if iLine == oToi.iFirstLine or iParens == 1:
+        dExpectedIndent[iLine + 1] = iParens * iIndentStep + oToi.dActualIndent[oToi.iFirstLine]
+        lColumn[-1] = iParens * iIndentStep + oToi.dActualIndent[oToi.iFirstLine]
 
 
 def _analyze_align_paren_true_align_left_true(oToi, iIndentStep):
@@ -326,11 +326,6 @@ def _analyze_align_paren_true_align_left_true(oToi, iIndentStep):
 
     return dExpectedIndent
 
-
-def adjust_indent_left(iLine, oToi, dExpectedIndent, iParens, iIndentStep, lColumn):
-    if iLine == oToi.iFirstLine or iParens == 1:
-        dExpectedIndent[iLine + 1] = iParens * iIndentStep + oToi.dActualIndent[oToi.iFirstLine]
-        lColumn[-1] = iParens * iIndentStep + oToi.dActualIndent[oToi.iFirstLine]
 
 
 def starts_with_paren(lTokens):
@@ -460,7 +455,7 @@ def calculate_expected_indents(self, oToi, oLines):
     if self.align_paren and not self.align_left:
         dExpectedIndent = analyze_align_left_false_align_paren_true(oToi, self.indentSize, oLines)
     if self.align_paren and self.align_left:
-        dExpectedIndent = _analyze_align_paren_true_align_left_true(oToi, self.indentSize)
+        dExpectedIndent = analyze_align_left_true_align_paren_true(oToi, self.indentSize, oLines)
     return dExpectedIndent
 
 
