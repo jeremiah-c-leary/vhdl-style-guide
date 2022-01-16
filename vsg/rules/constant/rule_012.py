@@ -65,16 +65,6 @@ class rule_012(alignment.Rule):
         for oToi in lToi:
             oLines = lines(oToi)
             oLines.set_first_line_indent(oToi.iFirstLineIndent)
-#            print('-==-'*20)
-            for x in oLines.lines:
-                sString = ''
-                for y in x.tokens:
-                    sString += y.get_value()
-#                print('='*80)
-#                print(sString)
-#                print(x.parens)
-#                print(x.actual_indent)
-#                print(x.number)
             calculate_expected_indents(self, oToi, oLines)
             check_indents(self, oToi, oLines)
 
@@ -217,24 +207,6 @@ def check_middle_line(oLine, oLines):
     oLines.iNextIndent = oLines.lParens[-1].iExpectedColumn
 
 
-def debug_print_paren_list(lParens):
-    sPrint = ''
-    for oParen in lParens:
-        sPrint += f'[{oParen.sType}|{oParen.iColumn}|{oParen.iExpectedColumn}|{oParen.iId}]'
-    print(sPrint)
-
-def print_line_num(iNum, sString):
-    print(sString + '[' + str(iNum) + ']' + sString*80)
-
-
-def set_expected_column(iLine, oToi, dTemp, iIndentStep, iTemp):
-    if iLine == oToi.iFirstLine:
-        iColumn = dTemp['column'] + iIndentStep - 1
-    else:
-        iColumn = dTemp['column'] + (iTemp - oToi.dActualIndent[iLine]) + iIndentStep - 1
-    return iColumn
-
-
 def analyze_align_left_true_align_paren_true(oToi, iIndentStep, oLines):
 
 #    print('='*80)
@@ -271,63 +243,6 @@ def check_my_first_line(oLine, oLines, oToi, iIndentStep):
 
 
 
-def adjust_indent_left(iLine, oToi, dExpectedIndent, iParens, iIndentStep, lColumn):
-    if iLine == oToi.iFirstLine or iParens == 1:
-        dExpectedIndent[iLine + 1] = iParens * iIndentStep + oToi.dActualIndent[oToi.iFirstLine]
-        lColumn[-1] = iParens * iIndentStep + oToi.dActualIndent[oToi.iFirstLine]
-
-
-def _analyze_align_paren_true_align_left_true(oToi, iIndentStep):
-    iFirstLine = oToi.iFirstLine
-    iLastLine = oToi.iLastLine
-    lParens = oToi.lParens
-    dActualIndent = oToi.dActualIndent
-    dExpectedIndent = create_expected_indent_dict(iFirstLine, dActualIndent)
-
-    iIndent = dActualIndent[iFirstLine]
-    iColumn = iIndent
-    lColumn = [iColumn]
-
-#    print('*'*80)
-#    print(lParens)
-
-
-    iParens = 0
-
-    for iLine in range(iFirstLine, iLastLine + 1):
-#        print('-->  ' + str(iLine) + '  <--------------------------')
-        lTemp = get_parens_on_line(lParens, iLine)
-
-        if no_parens_on_line(lTemp):
-            dExpectedIndent[iLine + 1] = lColumn[-1]
-            continue
-
-#        print(f'lTemp = {lTemp}')
-        iTemp = lColumn[-1]
-        for dTemp in lTemp:
-            if is_open_paren(dTemp):
-                iColumn = set_expected_column(iLine, oToi, dTemp, iIndentStep, iTemp)
-                lColumn.append(iColumn)
-                dExpectedIndent[iLine + 1] = iColumn
-            else:
-                lColumn.pop()
-                dExpectedIndent[iLine + 1] = lColumn[-1]
-                if line_begins_with_close_paren(dTemp):
-                    dExpectedIndent[iLine] = dExpectedIndent[iLine] - iIndentStep
-
-
-        iParens = update_paren_depth_for_line(lTemp, iParens)
-
-#        print(f'iParens = {iParens}')
-
-        adjust_indent_left(iLine, oToi, dExpectedIndent, iParens, iIndentStep, lColumn)
-
-#        print(f'{iLine} | {lColumn} | {dExpectedIndent}')
-
-    return dExpectedIndent
-
-
-
 def starts_with_paren(lTokens):
 
     iToken = utils.find_next_non_whitespace_token(1, lTokens)
@@ -359,73 +274,6 @@ def remove_single_line_assignments(lToi):
     return lReturn
 
 
-def get_mapping_of_carriage_returns(oToi):
-    dReturn = {}
-    iLine, lTokens = utils.get_toi_parameters(oToi)
-    for iToken, oToken in enumerate(lTokens):
-
-        iLine = utils.increment_line_number(iLine, oToken)
-
-        if isinstance(oToken, parser.carriage_return):
-            dReturn[iLine] = iToken + 1
-    return dReturn
-
-
-def generate_paren_dicts(oToi):
-    iLine, lTokens = utils.get_toi_parameters(oToi)
-
-    iColumn = oToi.iAssignColumn
-
-    lParens = []
-
-    for iToken, oToken in enumerate(lTokens):
-
-        iLine = utils.increment_line_number(iLine, oToken)
-
-        iColumn = update_column_num(oToken, iColumn)
-
-        update_close_paren_stats(lTokens, iLine, iColumn, iToken, lParens)
-        update_open_paren_stats(oToken, iLine, iColumn, lParens)
-
-    oToi.lParens = lParens
-
-
-def update_actual_indent(oToi):
-    iLine, lTokens = utils.get_toi_parameters(oToi)
-
-    for iToken, oToken in enumerate(lTokens):
-        iLine = utils.increment_line_number(iLine, oToken)
-        if rules_utils.token_is_carriage_return(oToken):
-            oToi.dActualIndent[iLine] = _set_indent(iToken, lTokens)
-
-
-def update_column_num(oToken, iColumn):
-    if rules_utils.token_is_carriage_return(oToken):
-        return 0
-    else:
-        return iColumn + len(oToken.get_value())
-
-
-def update_close_paren_stats(lTokens, iLine, iColumn, iToken, lParens):
-    oToken = lTokens[iToken]
-    if isinstance(oToken, parser.close_parenthesis):
-        dParen = {}
-        dParen['type'] = 'close'
-        dParen['line'] = iLine
-        dParen['column'] = iColumn
-        dParen['begin_line'] = utils.does_token_start_line(iToken, lTokens)
-        lParens.append(dParen)
-
-
-def update_open_paren_stats(oToken, iLine, iColumn, lParens):
-    if isinstance(oToken, parser.open_parenthesis):
-        dParen = {}
-        dParen['type'] = 'open'
-        dParen['line'] = iLine
-        dParen['column'] = iColumn
-        lParens.append(dParen)
-
-
 def set_last_line_number(oToi):
     iLine, lTokens = utils.get_toi_parameters(oToi)
     for oToken in lTokens:
@@ -439,12 +287,6 @@ def populate_toi_parameters(aToi, oFile):
     for oToi in aToi:
         oToi.iFirstLine, oToi.iFirstLineIndent = _get_first_line_info(oToi.iLine, oFile)
         oToi.iAssignColumn = oFile.get_column_of_token_index(oToi.get_start_index())
-        oToi.iColumn = oToi.iAssignColumn
-        oToi.dActualIndent = {}
-        oToi.dActualIndent[oToi.iLine] = oToi.iFirstLineIndent
-        oToi.lParens = []
-        update_actual_indent(oToi)
-        generate_paren_dicts(oToi)
         set_last_line_number(oToi)
 
 
@@ -460,7 +302,6 @@ def calculate_expected_indents(self, oToi, oLines):
 
 
 def check_indents(self, oToi, oLines):
-    dIndex = get_mapping_of_carriage_returns(oToi)
     for oLine in oLines.lines:
         if oLine.actual_indent != oLine.iExpectedIndent:
             oViolation = create_violation(oToi, oLine)
@@ -495,11 +336,10 @@ class lines():
 
     def __init__(self, oToi):
         self.oToi = oToi
-        self.convert_toi(oToi)
-        self.update_paren_ids()
+        self._convert_toi(oToi)
         self.lParens = []
 
-    def convert_toi(self, oToi):
+    def _convert_toi(self, oToi):
         self.lines = []
         iLine, lTokens = utils.get_toi_parameters(oToi)
         lLine = []
@@ -531,20 +371,6 @@ class lines():
     def set_first_line_expected_indent(self, iIndent):
         self.lines[0].set_expected_indent(iIndent)
 
-    def update_paren_ids(self):
-        iOpenId = 0
-        lCloseParen = []
-        for oLine in self.lines:
-            for oParen in oLine.parens:
-                if oParen.is_open():
-                    oParen.iId = iOpenId
-                    lCloseParen.append(iOpenId)
-                    iOpenId += 1
-                  
-                if oParen.is_close():
-                    oParen.iId = lCloseParen[-1]
-                    lCloseParen.pop()
-
     def no_parens(self):
         if len(self.lParens) == 0:
             return True
@@ -560,14 +386,14 @@ class line():
         self.number = iLine
         self.tokens = lLine
         self.parens = []
-        self.detect_parenthesis(iIndent)
+        self.populate_paren_list(iIndent)
         self.set_actual_indent()
         self.token_index = iToken
         self.isFirst = False
         self.isLast = False
         self.iExpectedIndent = 0
 
-    def detect_parenthesis(self, iIndent):
+    def populate_paren_list(self, iIndent):
         iColumn = iIndent
         for oToken in self.tokens:
             iColumn += len(oToken.get_value())
@@ -596,31 +422,8 @@ class line():
     def set_expected_indent(self, iIndent):
         self.iExpectedIndent = iIndent
 
-    def column_of_right_most_open_paren(self, iColumn, iParens=0):
-        lParens = []
-        for oToken in self.tokens:
-            iColumn += len(oToken.get_value())
-            if isinstance(oToken, parser.open_parenthesis):
-                lParens.append(iColumn)
-                iParens += 1
-            if isinstance(oToken, parser.close_parenthesis):
-                if len(lParens) > 0:
-                    lParens.pop()
-                    iParens -= 1
-        if len(lParens) > 0:
-            return lParens[-1]
-        return None
-
     def starts_with_close_paren(self):
         return rules_utils.token_list_begins_with_close_paren(self.tokens)
-
-    def update_column_list(self, lColumn, iAdjust=0):
-        for oParen in self.parens:
-            if oParen.is_open():
-                iTemp = oParen.iColumn
-                lColumn.append(iTemp - self.actual_indent + self.iExpectedIndent + 1)
-            else:
-                lColumn.pop()
 
     def update_parens(self, lParens, iAdjust=0):
 #        print('-->update_parens')
