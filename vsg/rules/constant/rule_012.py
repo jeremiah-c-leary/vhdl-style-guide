@@ -89,15 +89,16 @@ class rule_012(alignment.Rule):
         return dExpectedIndent
 
     def analyze_align_left_true_align_paren_false(self, oToi, oLines):
-        iIndent = oLines.get_first_line_indent()
-        iParens = 0
+        oLines.iIndent = oLines.get_first_line_indent()
+        oLines.iParens = 0
+        oLines.indentSize = self.indentSize
         for oLine in oLines.lLines:
             if oLine.isFirst:
-                oLines.set_first_line_expected_indent(iIndent)
+                oLines.set_first_line_expected_indent(oLines.iIndent)
             else:
-                check_left_aligned_line(self, oLine, oLines, iParens, iIndent)
+                check_left_aligned_line(oLine, oLines)
 
-            iParens += oLine.get_delta_parens()
+            oLines.iParens += oLine.get_delta_parens()
 
     def analyze_align_left_false_align_paren_true(self, oToi, oLines):
 
@@ -182,11 +183,11 @@ def set_current_line_indent(lLineParens, iLine, iIndentStep, dExpectedIndent):
             dExpectedIndent[iLine] -= iIndentStep
 
 
-def check_left_aligned_line(self, oLine, oLines, iParens, iIndent):
+def check_left_aligned_line(oLine, oLines):
     if rules_utils.token_list_begins_with_close_paren(oLine.tokens):
-        oLine.set_expected_indent(iIndent + iParens * self.indentSize - self.indentSize)
+        oLine.set_expected_indent(oLines.iIndent + oLines.iParens * oLines.indentSize - oLines.indentSize)
     else:
-        oLine.set_expected_indent(iIndent + iParens * self.indentSize)
+        oLine.set_expected_indent(oLines.iIndent + oLines.iParens * oLines.indentSize)
 
 
 def check_first_line(oLine, oLines, oToi, iIndentStep):
