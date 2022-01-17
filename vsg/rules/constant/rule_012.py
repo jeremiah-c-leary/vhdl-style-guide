@@ -65,7 +65,7 @@ class rule_012(alignment.Rule):
         for oToi in lToi:
             oLines = lines(oToi)
             oLines.set_first_line_indent(oToi.iFirstLineIndent)
-            calculate_expected_indents(self, oToi, oLines)
+            self.calculate_expected_indents(oToi, oLines)
             check_indents(self, oToi, oLines)
 
     def _fix_violation(self, oViolation):
@@ -77,6 +77,50 @@ class rule_012(alignment.Rule):
             rules_utils.insert_whitespace(lTokens, 0, dAction['column'])
 
         oViolation.set_tokens(lTokens)
+
+    def calculate_expected_indents(self, oToi, oLines):
+        dExpectedIndent = {}
+        if not self.align_paren and self.align_left:
+            dExpectedIndent = self.analyze_align_left_true_align_paren_false(oToi, oLines)
+        if self.align_paren and not self.align_left:
+            dExpectedIndent = self.analyze_align_left_false_align_paren_true(oToi, oLines)
+        if self.align_paren and self.align_left:
+            dExpectedIndent = self.analyze_align_left_true_align_paren_true(oToi, oLines)
+        return dExpectedIndent
+
+    def analyze_align_left_true_align_paren_false(self, oToi, oLines):
+        iIndent = oLines.get_first_line_indent()
+        iParens = 0
+        for oLine in oLines.lines:
+            if oLine.isFirst:
+                oLines.set_first_line_expected_indent(iIndent)
+            else:
+                if rules_utils.token_list_begins_with_close_paren(oLine.tokens):
+                    oLine.set_expected_indent(iIndent + iParens * self.indentSize - self.indentSize)
+                else:
+                    oLine.set_expected_indent(iIndent + iParens * self.indentSize)
+        
+            iParens += oLine.get_delta_parens()
+
+    def analyze_align_left_false_align_paren_true(self, oToi, oLines):
+    
+        for oLine in oLines.lines:
+            if oLine.isFirst:
+                check_first_line(oLine, oLines, oToi, self.indentSize)
+            elif oLine.isLast:
+                check_last_line(oLine, oLines, self.indentSize)
+            else:
+                check_middle_line(oLine, oLines, self.indentSize)
+
+    def analyze_align_left_true_align_paren_true(self, oToi, oLines):
+    
+        for oLine in oLines.lines:
+            if oLine.isFirst:
+                check_my_first_line(oLine, oLines, oToi, self.indentSize)
+            elif oLine.isLast:
+                check_last_line(oLine, oLines, self.indentSize)
+            else:
+                check_middle_line(oLine, oLines, self.indentSize)
 
 
 def _set_indent(iToken, lTokens):
@@ -139,41 +183,6 @@ def set_current_line_indent(lLineParens, iLine, iIndentStep, dExpectedIndent):
             dExpectedIndent[iLine] -= iIndentStep
 
 
-def analyze_align_left_true_align_paren_false(oToi, iIndentStep, oLines):
-    iIndent = oLines.get_first_line_indent()
-    iParens = 0
-    for oLine in oLines.lines:
-        if oLine.isFirst:
-            oLines.set_first_line_expected_indent(iIndent)
-        else:
-            if rules_utils.token_list_begins_with_close_paren(oLine.tokens):
-                oLine.set_expected_indent(iIndent + iParens * iIndentStep - iIndentStep)
-            else:
-                oLine.set_expected_indent(iIndent + iParens * iIndentStep)
-    
-        iParens += oLine.get_delta_parens()
-
-
-def analyze_align_left_false_align_paren_true(oToi, iIndentStep, oLines):
-
-#    print('='*80)
-    for oLine in oLines.lines:
-        if oLine.isFirst:
-            check_first_line(oLine, oLines, oToi, iIndentStep)
-        elif oLine.isLast:
-            check_last_line(oLine, oLines, iIndentStep)
-        else:
-            check_middle_line(oLine, oLines, iIndentStep)
-
-#    print_expected_indents(oLines)
-
-
-def print_expected_indents(oLines):
-#    print('-'*80)
-    for oLine in oLines.lines:
-        print(f'[{oLine.number}][{oLine.iExpectedIndent}]')
-
-
 def check_first_line(oLine, oLines, oToi, iIndentStep):
     iIndent = oLines.get_first_line_indent()
     oLine.set_expected_indent(iIndent)
@@ -208,20 +217,6 @@ def check_middle_line(oLine, oLines, iIndentStep):
     oLines.iNextIndent = oLines.lParens[-1].iExpectedColumn
 
 
-def analyze_align_left_true_align_paren_true(oToi, iIndentStep, oLines):
-
-#    print('='*80)
-    for oLine in oLines.lines:
-        if oLine.isFirst:
-            check_my_first_line(oLine, oLines, oToi, iIndentStep)
-        elif oLine.isLast:
-            check_last_line(oLine, oLines, iIndentStep)
-        else:
-            check_middle_line(oLine, oLines, iIndentStep)
-
-#    print_expected_indents(oLines)
-
-
 def check_my_first_line(oLine, oLines, oToi, iIndentStep):
     iIndent = oLines.get_first_line_indent()
     oLine.set_expected_indent(iIndent)
@@ -239,7 +234,6 @@ def check_my_first_line(oLine, oLines, oToi, iIndentStep):
     for iParen, oParen in enumerate(oLine.parens):
         oParen.iExpectedColumn = iParen*iIndentStep + iIndent + iIndentStep
 #        print(f'{oParen.iExpectedColumn}')
-
 
 
 def starts_with_paren(lTokens):
@@ -287,17 +281,6 @@ def populate_toi_parameters(aToi, oFile):
         oToi.iFirstLine, oToi.iFirstLineIndent = _get_first_line_info(oToi.iLine, oFile)
         oToi.iAssignColumn = oFile.get_column_of_token_index(oToi.get_start_index())
         set_last_line_number(oToi)
-
-
-def calculate_expected_indents(self, oToi, oLines):
-    dExpectedIndent = {}
-    if not self.align_paren and self.align_left:
-        dExpectedIndent = analyze_align_left_true_align_paren_false(oToi, self.indentSize, oLines)
-    if self.align_paren and not self.align_left:
-        dExpectedIndent = analyze_align_left_false_align_paren_true(oToi, self.indentSize, oLines)
-    if self.align_paren and self.align_left:
-        dExpectedIndent = analyze_align_left_true_align_paren_true(oToi, self.indentSize, oLines)
-    return dExpectedIndent
 
 
 def check_indents(self, oToi, oLines):
@@ -456,13 +439,3 @@ class paren():
         if self.sType == 'close':
             return True
         return False
-
-
-def debug_print_parens(oLines):
-    print('--> debug_print_parens')
-    for oLine in oLines.lines:
-        sLine = f'[{oLine.number}][{oLine.iExpectedIndent}]'
-        for oParen in oLine.parens:
-            sLine += f'[{oParen.sType}|{oParen.iColumn}|{oParen.iId}]'
-        print(sLine)
-    print('<-- debug_print_parens')
