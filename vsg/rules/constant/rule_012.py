@@ -419,7 +419,7 @@ class line():
 
 
 def update_parens_expected_column(self, iIndentStep, iAdjust=0):
-    for iParen, oParen in enumerate(self.parens):
+    for oParen in self.parens:
         oParen.iExpectedColumn = oParen.iColumn + iAdjust - self.actual_indent + self.iExpectedIndent + iIndentStep - 1
 
 
