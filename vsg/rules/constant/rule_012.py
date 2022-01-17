@@ -132,57 +132,6 @@ def _set_indent(iToken, lTokens):
     return iReturn
 
 
-def create_expected_indent_dict(iFirstLine, dActualIndent):
-    dExpectedIndent = {}
-    dExpectedIndent[iFirstLine] = dActualIndent[iFirstLine]
-    return dExpectedIndent
-
-
-def get_parens_on_line(lParens, iLine):
-    lReturn = []
-    for dParen in lParens:
-        if dParen['line'] == iLine:
-            lReturn.append(dParen)
-    return lReturn
-
-
-def is_open_paren(dTemp):
-    if dTemp['type'] == 'open':
-        return True
-    return False
-
-
-def no_parens_on_line(lTemp):
-    if len(lTemp) == 0:
-        return True
-    return False
-
-
-def update_paren_depth(dParen, iParens):
-    if is_open_paren(dParen):
-        return iParens + 1
-    else:
-        return iParens - 1
-
-
-def line_begins_with_close_paren(dParen):
-    if not is_open_paren(dParen) and dParen['begin_line']:
-        return True
-    return False
-
-
-def update_paren_depth_for_line(lLineParens, iParens):
-    for dParen in lLineParens:
-        iParens = update_paren_depth(dParen, iParens)
-    return iParens
-
-
-def set_current_line_indent(lLineParens, iLine, iIndentStep, dExpectedIndent):
-    for dParen in lLineParens:
-        if line_begins_with_close_paren(dParen):
-            dExpectedIndent[iLine] -= iIndentStep
-
-
 def check_left_aligned_line(oLine, oLines):
     if rules_utils.token_list_begins_with_close_paren(oLine.tokens):
         oLine.set_expected_indent(oLines.iIndent + oLines.iParens * oLines.indentSize - oLines.indentSize)
