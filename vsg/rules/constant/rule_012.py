@@ -95,10 +95,7 @@ class rule_012(alignment.Rule):
             if oLine.isFirst:
                 oLines.set_first_line_expected_indent(iIndent)
             else:
-                if rules_utils.token_list_begins_with_close_paren(oLine.tokens):
-                    oLine.set_expected_indent(iIndent + iParens * self.indentSize - self.indentSize)
-                else:
-                    oLine.set_expected_indent(iIndent + iParens * self.indentSize)
+                check_left_aligned_line(self, oLine, oLines, iParens, iIndent)
 
             iParens += oLine.get_delta_parens()
 
@@ -121,6 +118,8 @@ class rule_012(alignment.Rule):
                 check_last_line(oLine, oLines, self.indentSize)
             else:
                 check_middle_line(oLine, oLines, self.indentSize)
+
+
 
 
 def _set_indent(iToken, lTokens):
@@ -181,6 +180,13 @@ def set_current_line_indent(lLineParens, iLine, iIndentStep, dExpectedIndent):
     for dParen in lLineParens:
         if line_begins_with_close_paren(dParen):
             dExpectedIndent[iLine] -= iIndentStep
+
+
+def check_left_aligned_line(self, oLine, oLines, iParens, iIndent):
+    if rules_utils.token_list_begins_with_close_paren(oLine.tokens):
+        oLine.set_expected_indent(iIndent + iParens * self.indentSize - self.indentSize)
+    else:
+        oLine.set_expected_indent(iIndent + iParens * self.indentSize)
 
 
 def check_first_line(oLine, oLines, oToi, iIndentStep):
@@ -331,8 +337,6 @@ class lines():
             if rules_utils.token_is_carriage_return(oToken):
                 oLine = line(lLine, iLine, iToken - len(lLine) + 1, iOffset)
                 oLine.isFirst = bFirstLine
-                if iToken == len(lTokens):
-                    oLine.isLast = True
                 bFirstLine = False
                 self.lLines.append(oLine)
                 iLine += 1
