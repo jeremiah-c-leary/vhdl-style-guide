@@ -702,10 +702,8 @@ def find_next_token_with_value(iToken, sValue, lTokens):
 
 def all_assignments_inside_parenthesis(iToken, sStop, lTokens):
     iStop = find_next_token_with_value(iToken, sStop, lTokens)
-    iCloseParen = 0
-    iOpenParen = 0
     iParen = 0
-    for iIndex in range (iToken, iStop + 1):
+    for iIndex in range(iToken, iStop + 1):
         iParen = update_paren_counter(iIndex, lTokens, iParen)
         if token_is_assignment_operator(iIndex, lTokens) and iParen == 0:
             return False
