@@ -698,20 +698,24 @@ def find_next_token_with_value(iToken, sValue, lTokens):
         if oToken.get_value() == sValue:
             return iToken + iIndex
     return None
-            
+
 
 def all_assignments_inside_parenthesis(iToken, sStop, lTokens):
     iStop = find_next_token_with_value(iToken, sStop, lTokens)
     iCloseParen = 0
     iOpenParen = 0
+    iParen = 0
     for iIndex, oToken in enumerate(lTokens[iToken:iStop + 1]):
-        if token_is_open_parenthesis(iIndex + iToken, lTokens):
-            iOpenParen += 1
-            continue
-        if token_is_close_parenthesis(iIndex + iToken, lTokens):
-            iCloseParen += 1
-            continue
+        iParen = update_paren_counter(iIndex + iToken, lTokens, iParen)
         if token_is_assignment_operator(iIndex + iToken, lTokens):
-            if iOpenParen == iCloseParen:
+            if iParen == 0:
                 return False
     return True
+
+
+def update_paren_counter(iToken, lTokens, iCounter):
+    if token_is_open_parenthesis(iToken, lTokens):
+        return iCounter + 1
+    if token_is_close_parenthesis(iToken, lTokens):
+        return iCounter - 1
+    return iCounter

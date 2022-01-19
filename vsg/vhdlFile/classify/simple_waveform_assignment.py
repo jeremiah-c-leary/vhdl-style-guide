@@ -14,15 +14,10 @@ def detect(iToken, lObjects):
     '''
 
     if utils.is_next_token_one_of(['when', 'if', 'elsif', 'else'], iToken, lObjects):
-        return False
-    if utils.find_in_range('<=', iToken, ';', lObjects):
-        if utils.all_assignments_inside_parenthesis(iToken, ';', lObjects):
-            return iToken
-        if utils.find_in_range('force', iToken, ';', lObjects):
-            return iToken
-        if utils.find_in_range('release', iToken, ';', lObjects):
-            return iToken
-    return classify(iToken, lObjects)
+        return iToken
+    if is_a_simple_waveform_assignment(iToken, lObjects):
+        return classify(iToken, lObjects)
+    return iToken
 
 
 def classify(iToken, lObjects):
@@ -37,3 +32,27 @@ def classify(iToken, lObjects):
     iCurrent = utils.assign_next_token_required(';', token.semicolon, iCurrent, lObjects)
 
     return iCurrent
+
+
+def is_a_simple_waveform_assignment(iToken, lObjects):
+    if assignment_operator_found(iToken, lObjects):
+        if force_or_release_keyword_found(iToken, lObjects):
+            return False
+        return True
+    return False
+
+
+def force_or_release_keyword_found(iToken, lObjects):
+    if utils.find_in_range('force', iToken, ';', lObjects):
+        return True
+    if utils.find_in_range('release', iToken, ';', lObjects):
+        return True
+    return False
+
+
+def assignment_operator_found(iToken, lObjects):
+    if utils.find_in_range('<=', iToken, ';', lObjects):
+        if utils.all_assignments_inside_parenthesis(iToken, ';', lObjects):
+            return False
+        return True
+    return False
