@@ -304,6 +304,13 @@ def print_line(lObjects, iStart):
     print(sOutput)
 
 
+def print_lines(lObjects):
+    sOutput = ''
+    for oObject in lObjects:
+        sOutput += oObject.get_value()
+    print(sOutput)
+
+
 def token_is_semicolon(iObject, lObjects):
     if object_value_is(lObjects, iObject, ';'):
         return True
@@ -324,6 +331,12 @@ def token_is_open_parenthesis(iObject, lObjects):
 
 def token_is_close_parenthesis(iObject, lObjects):
     if object_value_is(lObjects, iObject, ')'):
+        return True
+    return False
+
+
+def token_is_assignment_operator(iObject, lObjects):
+    if object_value_is(lObjects, iObject, '<='):
         return True
     return False
 
@@ -678,3 +691,27 @@ def is_token_at_end_of_line(iToken, lTokens):
     if are_next_consecutive_token_types([parser.whitespace, parser.comment, parser.carriage_return], iMyToken, lTokens):
         return True
     return False
+
+
+def find_next_token_with_value(iToken, sValue, lTokens):
+    for iIndex, oToken in enumerate(lTokens[iToken::]):
+        if oToken.get_value() == sValue:
+            return iToken + iIndex
+    return None
+            
+
+def all_assignments_inside_parenthesis(iToken, sStop, lTokens):
+    iStop = find_next_token_with_value(iToken, sStop, lTokens)
+    iCloseParen = 0
+    iOpenParen = 0
+    for iIndex, oToken in enumerate(lTokens[iToken:iStop + 1]):
+        if token_is_open_parenthesis(iIndex + iToken, lTokens):
+            iOpenParen += 1
+            continue
+        if token_is_close_parenthesis(iIndex + iToken, lTokens):
+            iCloseParen += 1
+            continue
+        if token_is_assignment_operator(iIndex + iToken, lTokens):
+            if iOpenParen == iCloseParen:
+                return False
+    return True

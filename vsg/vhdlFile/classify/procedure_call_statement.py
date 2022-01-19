@@ -27,7 +27,7 @@ def detect(iToken, lObjects):
     if lObjects[iCurrent].get_value().lower() in lKeywords:
         return iToken
     # Check if signal assignment operator exists
-    if utils.find_in_range('<=', iCurrent, ';', lObjects):
+    if not utils.all_assignments_inside_parenthesis(iToken, ';', lObjects):
         return iToken
     # Check if variable assignment operator exists
     if utils.find_in_range(':=', iCurrent, ';', lObjects):

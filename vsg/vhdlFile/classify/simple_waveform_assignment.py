@@ -16,6 +16,8 @@ def detect(iToken, lObjects):
     if utils.is_next_token_one_of(['when', 'if', 'elsif', 'else'], iToken, lObjects):
         return False
     if utils.find_in_range('<=', iToken, ';', lObjects):
+        if utils.all_assignments_inside_parenthesis(iToken, ';', lObjects):
+            return iToken
         if utils.find_in_range('force', iToken, ';', lObjects):
             return iToken
         if utils.find_in_range('release', iToken, ';', lObjects):
