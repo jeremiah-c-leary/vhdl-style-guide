@@ -35,7 +35,7 @@ def classify(iToken, lObjects):
 
 
 def is_a_simple_waveform_assignment(iToken, lObjects):
-    if assignment_operator_found(iToken, lObjects):
+    if utils.assignment_operator_found(iToken, lObjects):
         if force_or_release_keyword_found(iToken, lObjects):
             return False
         return True
@@ -46,13 +46,5 @@ def force_or_release_keyword_found(iToken, lObjects):
     if utils.find_in_range('force', iToken, ';', lObjects):
         return True
     if utils.find_in_range('release', iToken, ';', lObjects):
-        return True
-    return False
-
-
-def assignment_operator_found(iToken, lObjects):
-    if utils.find_in_range('<=', iToken, ';', lObjects):
-        if utils.all_assignments_inside_parenthesis(iToken, ';', lObjects):
-            return False
         return True
     return False

@@ -713,3 +713,11 @@ def update_paren_counter(iToken, lTokens, iCounter):
     if token_is_close_parenthesis(iToken, lTokens):
         return iCounter - 1
     return iCounter
+
+
+def assignment_operator_found(iToken, lObjects):
+    if find_in_range('<=', iToken, ';', lObjects):
+        if all_assignments_inside_parenthesis(iToken, ';', lObjects):
+            return False
+        return True
+    return False
