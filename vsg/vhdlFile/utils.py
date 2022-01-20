@@ -13,22 +13,19 @@ def assign_next_token(token, iToken, lObjects):
     iCurrent = find_next_token(iToken, lObjects)
     try:
         lObjects[iCurrent] = token(lObjects[iCurrent].get_value())
-        iCurrent+= 1
-        return iCurrent
     except TypeError:
-        lObjects[iToken] = token()
-    return iToken
+        lObjects[iCurrent] = token()
+    iCurrent+= 1
+    return iCurrent
 
 
 def assign_token(lObjects, iToken, token):
     iCurrent = find_next_token(iToken, lObjects)
     try:
         lObjects[iCurrent] = token(lObjects[iCurrent].get_value())
-        iCurrent+= 1
-        return iCurrent
     except TypeError:
         lObjects[iToken] = token()
-    return iToken
+    return iToken + 1
 
 
 def assign_next_token_if(sToken, token, iToken, lObjects):
