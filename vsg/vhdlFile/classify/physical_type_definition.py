@@ -31,7 +31,7 @@ def classify(iToken, lObjects):
 
     while not utils.is_next_token('end', iCurrent, lObjects):
         iCurrent = secondary_unit_declaration.detect(iCurrent, lObjects)
-      
+
     iCurrent = utils.assign_next_token(token.end_keyword, iCurrent, lObjects)
     iCurrent = utils.assign_next_token_required('units', token.end_units_keyword, iCurrent, lObjects)
     iCurrent = utils.assign_next_token_if_not(';', token.simple_name, iCurrent, lObjects)
