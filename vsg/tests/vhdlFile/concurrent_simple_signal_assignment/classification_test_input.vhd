@@ -35,4 +35,13 @@ begin
   a <= (others => func(xor b));
   a <= (others => func(xnor b));
 
+  U_FIFO : entity something.somethingelse
+    generic map (
+      G_FIRST => (blah <= 0),
+      G_SECOND => 3
+    )
+    port map (
+      I_INPUT => blah2
+    );
+
 end architecture RTL;

@@ -237,7 +237,53 @@
 37 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-38 | end architecture RTL;
+38 |   U_FIFO : entity something.somethingelse
+<class 'vsg.token.component_instantiation_statement.instantiation_label'>
+<class 'vsg.token.component_instantiation_statement.label_colon'>
+<class 'vsg.token.instantiated_unit.entity_keyword'>
+<class 'vsg.token.instantiated_unit.entity_name'>
+--------------------------------------------------------------------------------
+39 |     generic map (
+<class 'vsg.token.generic_map_aspect.generic_keyword'>
+<class 'vsg.token.generic_map_aspect.map_keyword'>
+<class 'vsg.token.generic_map_aspect.open_parenthesis'>
+--------------------------------------------------------------------------------
+40 |       G_FIRST => (blah <= 0),
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+--------------------------------------------------------------------------------
+41 |       G_SECOND => 3
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+--------------------------------------------------------------------------------
+42 |     )
+<class 'vsg.token.generic_map_aspect.close_parenthesis'>
+--------------------------------------------------------------------------------
+43 |     port map (
+<class 'vsg.token.port_map_aspect.port_keyword'>
+<class 'vsg.token.port_map_aspect.map_keyword'>
+<class 'vsg.token.port_map_aspect.open_parenthesis'>
+--------------------------------------------------------------------------------
+44 |       I_INPUT => blah2
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+--------------------------------------------------------------------------------
+45 |     );
+<class 'vsg.token.port_map_aspect.close_parenthesis'>
+<class 'vsg.token.component_instantiation_statement.semicolon'>
+--------------------------------------------------------------------------------
+46 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+47 | end architecture RTL;
 <class 'vsg.token.architecture_body.end_keyword'>
 <class 'vsg.token.architecture_body.end_architecture_keyword'>
 <class 'vsg.token.architecture_body.architecture_simple_name'>
