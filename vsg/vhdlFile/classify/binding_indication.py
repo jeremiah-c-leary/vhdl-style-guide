@@ -19,7 +19,7 @@ def classify(iToken, lObjects):
 
     if utils.is_next_token('use', iCurrent, lObjects):
         iCurrent = utils.assign_next_token_required('use', token.use_keyword, iCurrent, lObjects)
-        iCurrent = entity_aspect.classify(iCurrent, lObjects) 
+        iCurrent = entity_aspect.classify(iCurrent, lObjects)
 
     iCurrent = generic_map_aspect.detect(iCurrent, lObjects)
 
