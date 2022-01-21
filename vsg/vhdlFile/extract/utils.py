@@ -140,11 +140,12 @@ def get_indexes_of_tokens_between(lStartToken, lEndTokens, oTokenMap):
 
 def get_all_blank_lines_above_indexes(lIndexes, lAllTokens, oTokenMap):
     lReturn = []
-
     for iIndex in lIndexes:
         iLine = oTokenMap.get_line_number_of_index(iIndex)
         iEnd = oTokenMap.get_index_of_carriage_return_before_index(iIndex)
         iStart = oTokenMap.get_index_of_previous_non_whitespace_token_before_index(iEnd)
+        if iStart is None:
+            continue
         iStart = oTokenMap.get_index_of_carriage_return_after_index(iStart)
         if iStart != iEnd:
             lReturn.append(tokens.New(iStart, iLine, lAllTokens[iStart:iEnd]))
