@@ -177,7 +177,46 @@
 42 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-43 | end architecture RTL;
+43 |   b1 : block begin
+<class 'vsg.token.block_statement.block_label'>
+<class 'vsg.token.block_statement.label_colon'>
+<class 'vsg.token.block_statement.block_keyword'>
+<class 'vsg.token.block_statement.begin_keyword'>
+--------------------------------------------------------------------------------
+44 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+45 |       process begin end process;
+<class 'vsg.token.process_statement.process_keyword'>
+<class 'vsg.token.process_statement.begin_keyword'>
+<class 'vsg.token.process_statement.end_keyword'>
+<class 'vsg.token.process_statement.end_process_keyword'>
+<class 'vsg.token.process_statement.semicolon'>
+--------------------------------------------------------------------------------
+46 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+47 |   end block;
+<class 'vsg.token.block_statement.end_keyword'>
+<class 'vsg.token.block_statement.end_block_keyword'>
+<class 'vsg.token.block_statement.semicolon'>
+--------------------------------------------------------------------------------
+48 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+49 |   assert true report "something" severity failure;
+<class 'vsg.token.assertion.keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.assertion.report_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.assertion.severity_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.concurrent_assertion_statement.semicolon'>
+--------------------------------------------------------------------------------
+50 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+51 | end architecture RTL;
 <class 'vsg.token.architecture_body.end_keyword'>
 <class 'vsg.token.architecture_body.end_architecture_keyword'>
 <class 'vsg.token.architecture_body.architecture_simple_name'>

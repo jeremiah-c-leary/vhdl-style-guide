@@ -230,6 +230,8 @@ def detect_submodule(iToken, lObjects, module):
     iLast = -1
     iReturn = iToken
     while iLast != iReturn:
+        if is_next_token('end', iReturn, lObjects):
+            return iToken
         if iReturn == iEnd:
             return iReturn
         iReturn = find_next_token(iReturn, lObjects)
