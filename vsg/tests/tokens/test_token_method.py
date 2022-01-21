@@ -807,3 +807,15 @@ class testTokenMethod(unittest.TestCase):
   
         self.assertEqual(lTokens, lActual)
 
+    def test_backslash(self):
+        sLine = 'a "/\\" b'
+        lTokens = []
+        lTokens.append('a')
+        lTokens.append(' ')
+        lTokens.append('"/\\"')
+        lTokens.append(' ')
+        lTokens.append('b')
+  
+        lActual = tokens.create(sLine)
+  
+        self.assertEqual(lTokens, lActual)

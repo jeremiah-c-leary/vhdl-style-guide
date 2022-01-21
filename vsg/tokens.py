@@ -14,10 +14,10 @@ def create(sString):
 
     oLine = New(sString)
     oLine.combine_whitespace()
+    oLine.combine_string_literals()
     oLine.combine_backslash_characters_into_symbols()
     oLine.combine_two_character_symbols()
     oLine.combine_characters_into_words()
-    oLine.combine_string_literals()
     oLine.combine_character_literals()
     oLine.combine_comments()
     return oLine.lChars
