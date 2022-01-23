@@ -57,6 +57,10 @@ class align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens(
     def analyze(self, oFile):
         lToi = oFile.get_tokens_bounded_by(self.left_token, self.right_token)
         for oToi in lToi:
+
+            if not_enough_tokens_to_align(oToi, self.lTokens):
+                continue
+
             lTokens = oToi.get_tokens()
             iLine = oToi.get_line_number()
             iColumn = 0
@@ -211,3 +215,12 @@ def add_adjustments_to_dAnalysis(dAnalysis, compact_alignment, include_lines_wit
     else:
         for iKey in list(dAnalysis.keys()):
             dAnalysis[iKey]['adjust'] = iMaxTokenColumn - dAnalysis[iKey]['token_column']
+
+
+def not_enough_tokens_to_align(oToi, lTokens):
+    lTemp = oToi.get_tokens()
+    lTemp = rules_utils.remove_token_sequence_from_token_list([parser.carriage_return, parser.whitespace, parser.comment], lTemp)
+
+    if rules_utils.number_of_tokens_from_token_list_in_token_list(lTokens, lTemp) < 2:
+        return True
+    return False

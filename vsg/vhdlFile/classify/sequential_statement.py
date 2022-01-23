@@ -69,6 +69,11 @@ def detect(iToken, lObjects):
     if iReturn != iToken:
         return iReturn
 
+#    print('--> checking exit_statement')
+    iReturn = exit_statement.detect(iToken, lObjects)
+    if iReturn != iToken:
+        return iReturn
+
 #    print('--> checking signal_assignment')
     iReturn = signal_assignment_statement.detect(iToken, lObjects)
     if iReturn != iToken:
@@ -81,11 +86,6 @@ def detect(iToken, lObjects):
 
 #    print('--> checking next_statement')
     iReturn = next_statement.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
-
-#    print('--> checking exit_statement')
-    iReturn = exit_statement.detect(iToken, lObjects)
     if iReturn != iToken:
         return iReturn
 

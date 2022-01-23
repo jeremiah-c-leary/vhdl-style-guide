@@ -3,7 +3,7 @@ package FIFO_PKG is
 
   procedure AVERAGE_SAMPLES;
 
-  procedure AVERAGE_SAMPLES (constant a : in integer; signal b : in std_logic; variable c : in std_logic);
+  procedure AVERAGE_SAMPLES (constant a  : in integer; signal b  : in std_logic; variable c  : in std_logic);
 
   procedure AVERAGE_SAMPLES (
     constant a : in integer;

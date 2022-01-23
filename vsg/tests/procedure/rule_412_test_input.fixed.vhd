@@ -30,6 +30,11 @@ package FIFO_PKG is
     signal b : in std_logic; -- signal b
     variable ccc : in std_logic); -- variable ccc
 
+  procedure AVERAGE_SAMPLES (  -- parameters
+    constant a : in integer;
+    signal b : in std_logic;
+    variable ccc : in std_logic);
+
 end package FIFO_PKG;
 
 package body FIFO_PKG is
@@ -39,6 +44,14 @@ package body FIFO_PKG is
     signal b : in std_logic;    -- signal b
     variable ccc : in std_logic -- variable ccc
     -- line starting with comment
+  ) is
+  begin
+  end procedure AVERAGE_SAMPLES;
+
+  procedure AVERAGE_SAMPLES (  -- parameters
+    constant a : in integer;
+    signal b : in std_logic;
+    variable ccc : in std_logic
   ) is
   begin
   end procedure AVERAGE_SAMPLES;
@@ -66,6 +79,15 @@ architecture RTL of ENT is
   begin
   end procedure AVERAGE_SAMPLES;
 
+  procedure AVERAGE_SAMPLES (  -- parameters
+    constant a : in integer;
+    signal b : in std_logic;
+    variable ccc : in std_logic
+    -- line starting with comment
+  ) is
+  begin
+  end procedure AVERAGE_SAMPLES;
+
   -- Violations below this line
 
   procedure AVERAGE_SAMPLES (
@@ -84,6 +106,15 @@ begin
     constant a : in integer;    -- constant a
     signal b : in std_logic;    -- signal b
     variable ccc : in std_logic -- variable ccc
+    -- line starting with comment
+  ) is
+  begin
+  end procedure AVERAGE_SAMPLES;
+
+  procedure AVERAGE_SAMPLES ( -- parameters
+    constant a : in integer;
+    signal b : in std_logic;
+    variable ccc : in std_logic
     -- line starting with comment
   ) is
   begin

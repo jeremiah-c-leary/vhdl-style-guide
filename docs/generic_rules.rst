@@ -6,26 +6,7 @@ Generic Rules
 generic_001
 ###########
 
-|phase_3| |error| |blank_line|
-
-This rule checks for blank lines above the **generic** keyword.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   entity fifo is
-
-
-
-     generic (
-
-**Fix**
-
-.. code-block:: vhdl
-
-   entity fifo is
-     generic (
+This rule has been moved to `entity_200 <entity_rules.html#entity-200>`_ to isolate the rule to entity declarations.
 
 generic_002
 ###########

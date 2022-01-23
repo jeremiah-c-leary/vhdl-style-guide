@@ -90,6 +90,8 @@ def check_for_invalid_comment(dAction, sToken):
 
 
 def is_a_header_candidate(sToken):
+    if len(sToken) < 4:
+        return False
     if not sToken[3].isspace() and sToken[3].isalnum():
         return True
     return False

@@ -20,6 +20,8 @@ begin
 
     exit;
 
+    exit when a <= b;
+
   end process;
 
 end architecture RTL;

@@ -6,7 +6,7 @@ from vsg.vhdlFile.extract import utils
 def get_consecutive_lines_starting_with_token(search_token, min_num_lines, lAllTokens, oTokenMap):
 
     lReturn = []
-    lSearchIndexes = utils.filter_indexes_which_start_a_line(search_token, oTokenMap)
+    lSearchIndexes = utils.filter_tokens_which_start_a_line(search_token, oTokenMap)
 
     lSearchLines = []
     for iSearchIndex in lSearchIndexes:

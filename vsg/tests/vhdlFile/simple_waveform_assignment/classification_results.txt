@@ -67,15 +67,44 @@
 14 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-15 |   end process;
+15 |     check_value(to_integer(unsigned(v_normalized_chan)) <= config.max_channel, TB_FAILURE, "Sanity check: Check that channel number is supported.", scope, ID_NEVER, msg_id_panel, proc_call);
+<class 'vsg.token.procedure_call.procedure_name'>
+<class 'vsg.token.procedure_call.open_parenthesis'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.procedure_call.close_parenthesis'>
+<class 'vsg.token.procedure_call_statement.semicolon'>
+--------------------------------------------------------------------------------
+16 |
+--------------------------------------------------------------------------------
+17 |   end process;
 <class 'vsg.token.process_statement.end_keyword'>
 <class 'vsg.token.process_statement.end_process_keyword'>
 <class 'vsg.token.process_statement.semicolon'>
 --------------------------------------------------------------------------------
-16 |
+18 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-17 | end architecture RTL;
+19 | end architecture RTL;
 <class 'vsg.token.architecture_body.end_keyword'>
 <class 'vsg.token.architecture_body.end_architecture_keyword'>
 <class 'vsg.token.architecture_body.architecture_simple_name'>

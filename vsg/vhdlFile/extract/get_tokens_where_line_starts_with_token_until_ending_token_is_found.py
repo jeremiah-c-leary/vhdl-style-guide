@@ -7,7 +7,7 @@ def get_tokens_where_line_starts_with_token_until_ending_token_is_found(start_to
 
     lReturn = []
 
-    lStartIndexes = utils.filter_indexes_which_start_a_line(start_token, oTokenMap)
+    lStartIndexes = utils.filter_tokens_which_start_a_line(start_token, oTokenMap)
 
     lStopIndexes = []
     for iStartIndex in lStartIndexes:

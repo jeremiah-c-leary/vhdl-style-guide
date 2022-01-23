@@ -2,17 +2,17 @@
 import os
 import unittest
 
-from vsg.rules import generic
+from vsg.rules import entity
 from vsg import vhdlFile
 from vsg.tests import utils
 
 sTestDir = os.path.dirname(__file__)
 
-lFile, eError =vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_001_test_input.vhd'))
+lFile, eError =vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_200_test_input.vhd'))
 
 lExpected = []
 lExpected.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_001_test_input.fixed.vhd'), lExpected)
+utils.read_file(os.path.join(sTestDir, 'rule_200_test_input.fixed.vhd'), lExpected)
 
 
 class test_generic_rule(unittest.TestCase):
@@ -21,19 +21,19 @@ class test_generic_rule(unittest.TestCase):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
 
-    def test_rule_001(self):
-        oRule = generic.rule_001()
+    def test_rule_200(self):
+        oRule = entity.rule_200()
         self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'generic')
-        self.assertEqual(oRule.identifier, '001')
+        self.assertEqual(oRule.name, 'entity')
+        self.assertEqual(oRule.identifier, '200')
 
-        lExpected = [16]
+        lExpected = [24]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
-    def test_fix_rule_001(self):
-        oRule = generic.rule_001()
+    def test_fix_rule_200(self):
+        oRule = entity.rule_200()
 
         oRule.fix(self.oFile)
 

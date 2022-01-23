@@ -50,7 +50,6 @@ class align_tokens_in_region_between_tokens(alignment.Rule):
         self.configuration.append('separate_generic_port_alignment')
 
     def analyze(self, oFile):
-
         lToi = oFile.get_tokens_bounded_by(self.left_token, self.right_token)
         for oToi in lToi:
             lTokens = oToi.get_tokens()
@@ -59,6 +58,9 @@ class align_tokens_in_region_between_tokens(alignment.Rule):
             bTokenFound = False
             iToken = -1
             dAnalysis = {}
+
+            if rules_utils.number_of_carriage_returns(lTokens) == 0:
+                continue
 
             for iIndex in range(0, len(lTokens)):
                iToken += 1
@@ -151,6 +153,7 @@ class align_tokens_in_region_between_tokens(alignment.Rule):
             dAnalysis = {}
 
     def _fix_violation(self, oViolation):
+
         lTokens = oViolation.get_tokens()
         dAction = oViolation.get_action()
         iTokenIndex = dAction['token_index']

@@ -18,17 +18,11 @@ def detect(iToken, lObjects):
     This will be the default if the other types are not found.
     '''
 
-    iCurrent = iToken
-
-    while lObjects[iCurrent].get_value() != ';':
-        if utils.is_item(lObjects, iCurrent):
-            if utils.object_value_is(lObjects, iCurrent, 'when'):
-                return False
-            if lObjects[iCurrent].get_value() == '<=':
-                return True
-        iCurrent += 1
-
-    return False
+    if not utils.assignment_operator_found(iToken, lObjects):
+        return False
+    if utils.find_in_range('when', iToken, ';', lObjects):
+        return False
+    return True
 
 
 def classify(iToken, lObjects):

@@ -410,6 +410,15 @@ class close_parenthesis(item):
         item.__init__(self, ')')
 
 
+class equal_sign(item):
+    '''
+    unique_id = parser : equal_sign
+    '''
+
+    def __init__(self):
+        item.__init__(self, '=')
+
+
 class character_literal(item):
     '''
     unique_id = parser : character_literal

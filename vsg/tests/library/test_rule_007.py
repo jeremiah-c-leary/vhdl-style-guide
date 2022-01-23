@@ -27,7 +27,7 @@ class test_library_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'library')
         self.assertEqual(oRule.identifier, '007')
 
-        lExpected = [9, 14]
+        lExpected = [11, 16]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
