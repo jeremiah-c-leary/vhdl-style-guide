@@ -457,7 +457,7 @@ class testMain(unittest.TestCase):
         elif lActual == lAlternateExpected5:
             self.assertEqual(lActual, lAlternateExpected5)
         elif lActual == lAlternateExpected6:
-            self.assertEqual(lActual, lAlternateExpected5)
+            self.assertEqual(lActual, lAlternateExpected6)
         else:
             self.assertEqual(lActual, lAlternateExpected2)
 
