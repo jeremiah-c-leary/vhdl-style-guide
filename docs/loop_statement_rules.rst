@@ -36,3 +36,24 @@ This rule checks the indentation of the **loop** keyword.
 
    end process;
 
+loop_statement_500
+##################
+
+|phase_6| |error| |case| |case_keyword|
+
+This rule checks the **loop** keyword has proper case.
+
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   while (condition) LOOP
+
+**Fix**
+
+.. code-block:: vhdl
+
+   while (condition) loop
+
