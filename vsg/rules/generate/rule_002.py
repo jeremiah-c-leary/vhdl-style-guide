@@ -10,7 +10,19 @@ lTokens.append([token.case_generate_statement.generate_label, token.case_generat
 
 class rule_002(single_space_between_token_pairs):
     '''
-    Checks for a single space between the label and :.
+    This rule checks for a single space between the label and the colon.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       ram_array: for i in 0 to 7 generate
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       ram_array : for i in 0 to 7 generate
     '''
     def __init__(self):
         single_space_between_token_pairs.__init__(self, 'generate', '002', lTokens)

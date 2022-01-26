@@ -25,7 +25,7 @@ class TestParser(unittest.TestCase):
         with self.assertRaises(SystemExit) as cm:
             cmd_line_args.parse_command_line_arguments()
 
-        self.assertEqual(cm.exception.code, 2)
+        self.assertEqual(cm.exception.code, 1)
 
     def test_jobs_invalid_2(self):
         sys.argv[1:] = ["--jobs", "0"]
@@ -33,7 +33,7 @@ class TestParser(unittest.TestCase):
         with self.assertRaises(SystemExit) as cm:
             cmd_line_args.parse_command_line_arguments()
 
-        self.assertEqual(cm.exception.code, 2)
+        self.assertEqual(cm.exception.code, 1)
 
     def test_jobs_invalid_3(self):
         sys.argv[1:] = ["--jobs", "3.5"]
@@ -41,7 +41,7 @@ class TestParser(unittest.TestCase):
         with self.assertRaises(SystemExit) as cm:
             cmd_line_args.parse_command_line_arguments()
 
-        self.assertEqual(cm.exception.code, 2)
+        self.assertEqual(cm.exception.code, 1)
 
     def test_jobs_invalid_4(self):
         sys.argv[1:] = ["--jobs", "notanumber"]
@@ -49,4 +49,4 @@ class TestParser(unittest.TestCase):
         with self.assertRaises(SystemExit) as cm:
             cmd_line_args.parse_command_line_arguments()
 
-        self.assertEqual(cm.exception.code, 2)
+        self.assertEqual(cm.exception.code, 1)

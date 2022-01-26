@@ -1,9 +1,10 @@
 
-from vsg import rule
 from vsg import violation
 
+from vsg.rule_group import structure
 
-class remove_tokens_bounded_by_tokens_and_remove_trailing_whitespace(rule.Rule):
+
+class remove_tokens_bounded_by_tokens_and_remove_trailing_whitespace(structure.Rule):
     '''
     Checks for a single space between two tokens.
 
@@ -24,9 +25,7 @@ class remove_tokens_bounded_by_tokens_and_remove_trailing_whitespace(rule.Rule):
     '''
 
     def __init__(self, name, identifier, left_token, right_token):
-        rule.Rule.__init__(self, name=name, identifier=identifier)
-        self.solution = None
-        self.phase = 1
+        structure.Rule.__init__(self, name=name, identifier=identifier)
         self.left_token = left_token
         self.right_token = right_token
 

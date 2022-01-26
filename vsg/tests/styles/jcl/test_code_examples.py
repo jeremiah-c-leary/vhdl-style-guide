@@ -32,6 +32,14 @@ lPIC, ePICError = vhdlFile.utils.read_vhdlfile(os.path.join(sSourceCodeDir,'PIC.
 oPIC = vhdlFile.vhdlFile(lPIC)
 oPIC.set_indent_map(dIndentMap)
 
+lLibraryStatements, eLibraryStatementsError = vhdlFile.utils.read_vhdlfile(os.path.join(sSourceCodeDir,'library_statements.vhd'))
+oLibraryStatements = vhdlFile.vhdlFile(lLibraryStatements)
+oLibraryStatements.set_indent_map(dIndentMap)
+
+lAlignments, eAlignmentsError = vhdlFile.utils.read_vhdlfile(os.path.join(sSourceCodeDir,'alignments.vhd'))
+oAlignments = vhdlFile.vhdlFile(lAlignments)
+oAlignments.set_indent_map(dIndentMap)
+
 oConfig = utils.read_configuration(os.path.join(os.path.dirname(__file__),'..','..','..','styles', 'jcl.yaml'))
 
 oSeverityList = severity.create_list({})
@@ -44,6 +52,7 @@ class testCodeExample(unittest.TestCase):
         self.assertIsNone(eSpiMasterError)
         self.assertIsNone(eGrpDebouncerError)
         self.assertIsNone(ePICError)
+        self.assertIsNone(eLibraryStatementsError)
 
     def test_timestamp_vhdl(self):
         oRuleList = rule_list.rule_list(oTimestamp, oSeverityList)
@@ -93,3 +102,35 @@ class testCodeExample(unittest.TestCase):
         utils.read_file(os.path.join(os.path.dirname(__file__),'PIC.fixed.vhd'), lExpected)
 
         self.assertEqual(lExpected, oPIC.get_lines())
+
+    def test_library_statements(self):
+        oRuleList = rule_list.rule_list(oLibraryStatements, oSeverityList)
+        oRuleList.configure(oConfig)
+        oRuleList.fix()
+
+        lExpected = ['']
+        utils.read_file(os.path.join(os.path.dirname(__file__),'library_statements.fixed.vhd'), lExpected)
+
+        self.assertEqual(lExpected, oLibraryStatements.get_lines())
+
+        self.assertFalse(oRuleList.violations)
+        oRuleList.check_rules()
+        self.assertFalse(oRuleList.violations)
+
+    def test_alignments(self):
+        oRuleList = rule_list.rule_list(oAlignments, oSeverityList)
+        oRuleList.configure(oConfig)
+        oRuleList.fix()
+
+        lExpected = ['']
+        utils.read_file(os.path.join(os.path.dirname(__file__),'alignments.fixed.vhd'), lExpected)
+
+#        self.assertEqual(lExpected, oAlignments.get_lines())
+
+        self.assertFalse(oRuleList.violations)
+        oRuleList.check_rules()
+        self.assertFalse(oRuleList.violations)
+
+
+
+

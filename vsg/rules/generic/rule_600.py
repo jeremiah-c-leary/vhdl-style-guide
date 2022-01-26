@@ -12,7 +12,22 @@ lTokens.append(token.interface_unknown_declaration.identifier)
 
 class rule_600(token_suffix_between_tokens):
     '''
-    Checks for suffixes in generic names.
+    This rule checks for valid suffixes on generic identifiers.
+    The default generic suffix is *\_g*.
+
+    Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed suffixes.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       generic(my_generic : integer);
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       generic(my_generic_g : integer);
     '''
 
     def __init__(self):

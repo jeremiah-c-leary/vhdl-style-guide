@@ -162,10 +162,10 @@ begin
   -- This is better for Spartan-6 and Virtex-6 CLB architecture, because it uses less control sets.
   --
   -- cnt_reg register transfer logic
-  CNT_REG_PROC : process (clk_i) is
+  CNT_REG_PROC : process (CLK_I) is
   begin
 
-    if (clk_i'event and clk_i = '1') then
+    if (CLK_I'event and CLK_I = '1') then
       cnt_reg <= cnt_next;
     end if;
 
@@ -182,19 +182,19 @@ begin
   -- DATAPATH SIGNAL PIPELINE
   --=============================================================================================
   -- input pipeline logic
-  PIPELINE_PROC : process (clk_i) is
+  PIPELINE_PROC : process (CLK_I) is
   begin
 
-    if (clk_i'event and clk_i = '1') then
+    if (CLK_I'event and CLK_I = '1') then
       -- edge detection pipeline
-      reg_a <= data_i;
+      reg_a <= DATA_I;
       reg_b <= reg_a;
       -- new data strobe pipeline delay
       strb_reg <= strb_next;
     end if;
 
     -- output data pipeline
-    if (clk_i'event and clk_i = '1') then
+    if (CLK_I'event and CLK_I = '1') then
       if (dat_strb = '1') then
         reg_out <= reg_b;
       end if;
@@ -213,8 +213,8 @@ begin
   -- OUTPUT LOGIC
   --=============================================================================================
   -- connect output ports
-  data_o <= reg_out;
-  strb_o <= strb_reg;
+  DATA_O <= reg_out;
+  STRB_O <= strb_reg;
 
 end architecture RTL;
 

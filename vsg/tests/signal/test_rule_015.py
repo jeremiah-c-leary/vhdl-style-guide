@@ -26,6 +26,7 @@ class test_signal_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'signal')
         self.assertEqual(oRule.identifier, '015')
+        self.assertEqual(oRule.groups, ['structure'])
 
         lExpected = [5, 8, 79, 81, 82]
 

@@ -16,8 +16,25 @@ oEnd = token.generic_clause.close_parenthesis
 
 class rule_007(token_case_in_range_bounded_by_tokens):
     '''
-    Checks the "generic" keyword has proper case.
+    This rule checks the generic names have proper case.
+
+    Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       G_WIDTH : integer := 32;
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       g_width : integer := 32;
     '''
 
     def __init__(self):
         token_case_in_range_bounded_by_tokens.__init__(self, 'generic', '007', lTokens, oStart, oEnd)
+        self.configuration.append('prefix_exceptions')
+        self.configuration.append('suffix_exceptions')
+        self.groups.append('case::name')

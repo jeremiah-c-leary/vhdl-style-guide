@@ -9,7 +9,24 @@ lTokens.append(token.open_parenthesis)
 
 class rule_005(insert_carriage_return_after_token_if_it_is_not_followed_by_a_comment):
     '''
-    Instantiation rule 005 checks for generic map keyword and generic assignment on the same line.
+    This rule checks if the **generic map** keywords and a generic assignment are on the same line.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+         generic map (DEPTH => 512,
+           WIDTH => 32
+         )
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+         generic map (
+           DEPTH => 512,
+           WIDTH => 32
+         )
     '''
 
     def __init__(self):

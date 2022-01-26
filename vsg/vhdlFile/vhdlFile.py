@@ -185,6 +185,9 @@ class vhdlFile():
     def get_tokens_bounded_by_tokens_if_token_is_between_them(self, oLeft, oRight, oToken):
         return extract.get_tokens_bounded_by_tokens_if_token_is_between_them(oLeft, oRight, oToken, self.lAllObjects, self.oTokenMap)
 
+    def get_tokens_bounded_by_unless_between(self, oLeft, oRight, lUnless):
+        return extract.get_tokens_bounded_by_unless_between(oLeft, oRight, lUnless, self.lAllObjects, self.oTokenMap)
+
     def get_tokens_at_beginning_of_line_matching(self, lTokens):
         return extract.get_tokens_at_beginning_of_line_matching(lTokens, self.lAllObjects, self.oTokenMap)
 
@@ -215,8 +218,8 @@ class vhdlFile():
     def get_line_which_includes_tokens(self, lTokens):
         return extract.get_line_which_includes_tokens(lTokens, self.lAllObjects, self.oTokenMap)
 
-    def get_if_statement_conditions(self):
-        return extract.get_if_statement_conditions(self.lAllObjects, self.oTokenMap)
+    def get_if_statement_conditions(self, fRemoveWhitespace=True):
+        return extract.get_if_statement_conditions(self.lAllObjects, self.oTokenMap, fRemoveWhitespace)
 
     def get_n_tokens_before_and_after_tokens(self, iToken, lTokens):
         return extract.get_n_tokens_before_and_after_tokens(iToken, lTokens, self.lAllObjects, self.oTokenMap)
@@ -265,6 +268,9 @@ class vhdlFile():
 
     def get_blank_lines_above_line_starting_with_token(self, lTokens):
         return extract.get_blank_lines_above_line_starting_with_token(lTokens, self.lAllObjects, self.oTokenMap)
+
+    def get_blank_lines_above_line_starting_with_token_when_between_tokens(self, lTokens, lBetweenTokens):
+        return extract.get_blank_lines_above_line_starting_with_token_when_between_tokens(lTokens, lBetweenTokens, self.lAllObjects, self.oTokenMap)
 
     def get_association_elements_between_tokens(self, oStart, oEnd):
         return extract.get_association_elements_between_tokens(oStart, oEnd, self.lAllObjects, self.oTokenMap)

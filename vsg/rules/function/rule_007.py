@@ -1,17 +1,12 @@
 
-from vsg.rules import blank_line_below_line_ending_with_token
-
-from vsg import token
-
-lTokens = []
-lTokens.append(token.subprogram_declaration.semicolon)
-lTokens.append(token.subprogram_body.semicolon)
+from vsg.deprecated_rule import Rule
 
 
-class rule_007(blank_line_below_line_ending_with_token):
+class rule_007(Rule):
     '''
-    Function rule 007 enforces a blank line below the ;.
+    This rule has been moved to rule `subprogram_body_205 <subprogram_rules.html#subprogram-body-205>`_.
     '''
 
     def __init__(self):
-        blank_line_below_line_ending_with_token.__init__(self, 'function', '007', lTokens)
+        Rule.__init__(self, 'function', '007')
+        self.message.append('Rule ' + self.unique_id + ' has been moved to rule subprogram_body_205.')

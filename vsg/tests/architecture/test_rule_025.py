@@ -23,6 +23,7 @@ class test_architecture_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'architecture')
         self.assertEqual(oRule.identifier, '025')
         self.assertFalse(oRule.fixable)
+        self.assertEqual(oRule.groups, ['naming'])
 
         lExpected = [3, 10, 17, 24]
         oRule.analyze(self.oFile)

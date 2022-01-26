@@ -1,13 +1,13 @@
 
 
 from vsg import parser
-from vsg import rule
 from vsg import violation
 
 from vsg.vhdlFile import utils
+from vsg.rule_group import structure
 
 
-class insert_tokens_right_of_token_if_it_does_not_exist_before_token(rule.Rule):
+class insert_tokens_right_of_token_if_it_does_not_exist_before_token(structure.Rule):
     '''
     Checks for the existence of a token and will insert it if it does not exist.
 
@@ -31,9 +31,7 @@ class insert_tokens_right_of_token_if_it_does_not_exist_before_token(rule.Rule):
     '''
 
     def __init__(self, name, identifier, insert_tokens, anchor_token, end_token):
-        rule.Rule.__init__(self, name=name, identifier=identifier)
-        self.solution = None
-        self.phase = 1
+        structure.Rule.__init__(self, name=name, identifier=identifier)
         self.insert_tokens = insert_tokens
         self.anchor_token = anchor_token
         self.end_token = end_token
@@ -73,9 +71,14 @@ class insert_tokens_right_of_token_if_it_does_not_exist_before_token(rule.Rule):
         if self.action == 'add':
             lNewTokens = []
             lNewTokens.append(lTokens[0])
-            lNewTokens.append(parser.whitespace(' '))
-            lNewTokens.extend(self.insert_tokens)
-            lNewTokens.extend(lTokens[1:])
+            if isinstance(lTokens[1], parser.whitespace) and isinstance(lTokens[2], parser.semicolon):
+                lNewTokens.append(lTokens[1])
+                lNewTokens.extend(self.insert_tokens)
+                lNewTokens.extend(lTokens[2:])
+            else:
+                lNewTokens.append(parser.whitespace(' '))
+                lNewTokens.extend(self.insert_tokens)
+                lNewTokens.extend(lTokens[1:])
         else:
             dAction = oViolation.get_action()
             lNewTokens = lTokens[:dAction['iStartIndex']]

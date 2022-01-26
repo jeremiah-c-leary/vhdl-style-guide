@@ -31,7 +31,7 @@ class test_block_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'block')
         self.assertEqual(oRule.identifier, '002')
 
-        lExpected = [9]
+        lExpected = [9, 11, 14, 20, 22, 24, 27]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -52,7 +52,7 @@ class test_block_rule(unittest.TestCase):
         oRule = block.rule_002()
         oRule.action = 'remove'
 
-        lExpected = [6]
+        lExpected = [6, 18]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))

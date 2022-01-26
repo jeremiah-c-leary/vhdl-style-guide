@@ -30,6 +30,7 @@ class test_architecture_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'architecture')
         self.assertEqual(oRule.identifier, '024')
+        self.assertEqual(oRule.groups, ['structure', 'structure::optional'])
 
         lExpected = [2, 4, 11]
 

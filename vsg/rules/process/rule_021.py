@@ -1,22 +1,64 @@
 
-from vsg import rule
 from vsg import parser
 from vsg import violation
 
 from vsg.token import process_statement as token
+
+from vsg.rule_group import blank_line
 
 from vsg.rules import utils as rules_utils
 
 from vsg.vhdlFile import utils
 
 
-class rule_021(rule.Rule):
+class rule_021(blank_line.Rule):
     '''
-    Checks for blank lines before the begin keyword if there are no process declarative items.
+    This rule checks for blank lines above the **begin** keyword if there are no process declarative items.
+
+    Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       proc_a : process
+
+       begin
+
+
+       proc_a : process (rd_en, wr_en)
+
+       begin
+
+
+       proc_a : process (rd_en, wr_en, data_in, data_out,
+                         rd_full, wr_full
+                        ) is
+
+
+
+       begin
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       proc_a : process
+       begin
+
+
+       proc_a : process (rd_en, wr_en)
+       begin
+
+
+       proc_a : process (rd_en, wr_en, data_in, data_out,
+                         rd_full, wr_full
+                        ) is
+       begin
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self, 'process', '021')
+        blank_line.Rule.__init__(self, 'process', '021')
         self.solution = 'Remove blank lines above *begin* keyword'
         self.phase = 1
         self.style = 'no_blank_line_line'

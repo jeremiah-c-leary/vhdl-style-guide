@@ -1,14 +1,13 @@
 
 from vsg import parser
-from vsg import rule
 from vsg import violation
 
 from vsg.rules import utils as rules_utils
-
+from vsg.rule_group import whitespace
 from vsg.vhdlFile import utils
 
 
-class n_spaces_between_token_pairs_when_bounded_by_tokens(rule.Rule):
+class n_spaces_between_token_pairs_when_bounded_by_tokens(whitespace.Rule):
     '''
     Checks for a single space between two tokens.
 
@@ -26,9 +25,7 @@ class n_spaces_between_token_pairs_when_bounded_by_tokens(rule.Rule):
     '''
 
     def __init__(self, name, identifier, iSpaces, lTokens, oStart, oEnd):
-        rule.Rule.__init__(self, name=name, identifier=identifier)
-        self.solution = None
-        self.phase = 2
+        whitespace.Rule.__init__(self, name=name, identifier=identifier)
         self.iSpaces = iSpaces
         self.lTokens = lTokens
         self.oStart = oStart

@@ -6,7 +6,7 @@ Instantiation Rules
 instantiation_001
 #################
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks for the proper indentation of instantiations.
 
@@ -35,7 +35,7 @@ This rule checks for the proper indentation of instantiations.
 instantiation_002
 #################
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space after the colon.
 
@@ -54,7 +54,7 @@ This rule checks for a single space after the colon.
 instantiation_003
 #################
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space before the colon.
 
@@ -73,7 +73,7 @@ This rule checks for a single space before the colon.
 instantiation_004
 #################
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for blank lines or comments above the instantiation.
 
@@ -105,7 +105,7 @@ The default style is :code:`no_code`.
 instantiation_005
 #################
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks the **port map** keywords are on their own line.
 
@@ -135,7 +135,7 @@ This rule has been renamed to `port_map_004 <port_map_rules.html#port-map-004>`_
 instantiation_008
 #################
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_label|
 
 This rule checks the instance label has proper case.
 
@@ -156,7 +156,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 instantiation_009
 #################
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_name|
 
 This rule checks the component name has proper case.
 
@@ -178,7 +178,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 instantiation_010
 #################
 
-|phase_5| |error|
+|phase_5| |error| |alignment|
 
 This rule checks the alignment of the **=>** operator for each generic and port in the instantiation.
 
@@ -226,7 +226,7 @@ This rule has been renamed to `port_map_002 <port_map_rules.html#port-map-002>`_
 instantiation_012
 #################
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks the instantiation declaration and the **generic map** keywords are not on the same line.
 
@@ -271,7 +271,7 @@ This rule has been renamed to `generic_map_006 <generic_map_rules.html#generic-m
 instantiation_019
 #################
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for a blank line below the end of the instantiation declaration.
 
@@ -320,7 +320,7 @@ This rule has been renamed to `port_map_007 <port_map_rules.html#port-map-007>`_
 instantiation_023
 #################
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks for comments at the end of the port and generic assignments in instantiations.
 These comments represent additional maintainence.
@@ -362,7 +362,7 @@ This rule has been renamed to `generic_map_003 <generic_map_rules.html#generic-m
 instantiation_027
 #################
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **entity** keyword has proper case in direct instantiations.
 
@@ -383,7 +383,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 instantiation_028
 #################
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_name|
 
 This rule checks the entity name has proper case in direct instantiations.
 
@@ -404,7 +404,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 instantiation_029
 #################
 
-|phase_5| |error|
+|phase_5| |error| |alignment|
 
 This rule checks for alignment of inline comments in an instantiation.
 
@@ -439,7 +439,7 @@ This rule has been renamed to `generic_map_007 <generic_map_rules.html#generic-m
 instantiation_031
 #################
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the component keyword has proper case in component instantiations that use the **component** keyword.
 
@@ -460,7 +460,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 instantiation_032
 #################
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space after the **component** keyword if it is used.
 
@@ -483,7 +483,7 @@ This rule checks for a single space after the **component** keyword if it is use
 instantiation_033
 #################
 
-|phase_1| |error|
+|phase_1| |error| |structure| |structure_optional|
 
 This rule checks for the **component** keyword for a component instantiation.
 
@@ -504,7 +504,7 @@ Refer to the section `Configuring Optional Items <configuring.html#configuring-o
 instantiation_034
 #################
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks for component versus direct instantiations.
 
@@ -536,7 +536,7 @@ entity instantiation
 instantiation_600
 #################
 
-|phase_7| |disabled| |error|
+|phase_7| |disabled| |error| |naming|
 
 This rule checks for valid suffixes on instantiation labels.
 The default suffix is *_inst*.
@@ -558,7 +558,7 @@ Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#conf
 instantiation_601
 #################
 
-|phase_7| |disabled| |error|
+|phase_7| |disabled| |error| |naming|
 
 This rule checks for valid prefixes on instantiation labels.
 The default prefix is *inst_*.

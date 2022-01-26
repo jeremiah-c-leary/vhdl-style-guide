@@ -9,7 +9,21 @@ lTokens.append(token.generic_clause.close_parenthesis)
 
 class rule_008(token_indent):
     '''
-    Generic rule 008 checks the indentation of closing parenthesis for generic maps.
+    This rule checks the indent of the closing parenthesis.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       g_depth : integer := 512
+       );
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+         g_depth : integer := 512
+       );
     '''
 
     def __init__(self):

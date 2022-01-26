@@ -9,7 +9,23 @@ lTokens.append(token.library_clause.keyword)
 
 class rule_001(token_indent):
     '''
-    Checks for indent of the *library* keyword.
+    This rule checks the indent of the **library** keyword.
+    Indenting helps in comprehending the code.
+
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       library ieee;
+          library fifo_dsn;
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       library ieee;
+       library fifo_dsn;
     '''
 
     def __init__(self):

@@ -1,10 +1,11 @@
 
-from vsg import rule
 from vsg import parser
 from vsg import violation
 
+from vsg.rule_group import blank_line
 
-class previous_line(rule.Rule):
+
+class previous_line(blank_line.Rule):
     '''
     Checks for a blank line above a line starting with a given token
 
@@ -22,9 +23,8 @@ class previous_line(rule.Rule):
     '''
 
     def __init__(self, name, identifier, lTokens, lAllowTokens=None):
-        rule.Rule.__init__(self, name=name, identifier=identifier)
+        blank_line.Rule.__init__(self, name=name, identifier=identifier)
         self.solution = 'Insert blank line above'
-        self.phase = 3
         self.lTokens = lTokens
         self.lHierarchyLimits = None
         self.style = 'require_blank_line'

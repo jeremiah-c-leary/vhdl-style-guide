@@ -89,12 +89,17 @@ class New():
             if iToken is not None:
                 return iToken
 
-    def get_index_of_previous_non_whitespace_token(self, iIndex):
+    def get_index_of_previous_non_whitespace_token_before_index(self, iIndex):
         iStartIndex = iIndex - 1
         for i in range(iStartIndex, 0, -1):
             if not self.is_token_at_index_whitespace(i):
                 return i
-        return None
+
+    def get_index_of_previous_non_whitespace_token(self, iIndex):
+        iStartIndex = iIndex - 1
+        for i in range(iStartIndex, 0, -1):
+            if not self.is_token_at_index_whitespace_or_comment(i):
+                return i
 
     def is_token_at_index(self, oToken, iIndex):
         try:
@@ -106,6 +111,15 @@ class New():
             return False
 
     def is_token_at_index_whitespace(self, iIndex):
+        if self.is_token_at_index(parser.whitespace, iIndex):
+            return True
+        if self.is_token_at_index(parser.carriage_return, iIndex):
+            return True
+        if self.is_token_at_index(parser.blank_line, iIndex):
+            return True
+        return False
+
+    def is_token_at_index_whitespace_or_comment(self, iIndex):
         if self.is_token_at_index(parser.whitespace, iIndex):
             return True
         if self.is_token_at_index(parser.comment, iIndex):

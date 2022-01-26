@@ -6,7 +6,7 @@ Subtype Rules
 subtype_001
 ###########
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks for indentation of the **subtype** keyword.
 
@@ -36,7 +36,7 @@ This rule checks for indentation of the **subtype** keyword.
 subtype_002
 ###########
 
-|phase_6| |error|
+|phase_6| |error| |case|
 
 This rule checks for consistent capitalization of subtype names.
 
@@ -70,7 +70,7 @@ This rule checks for consistent capitalization of subtype names.
 subtype_003
 ###########
 
-This rule was depricated and replaced with rules:
+This rule was deprecated and replaced with rules:
 
 * `function_015 <function_rules.html#function-015>`_
 * `package_019 <package_rules.html#package-019>`_
@@ -80,7 +80,7 @@ This rule was depricated and replaced with rules:
 subtype_004
 ###########
 
-|phase_7| |disabled| |error|
+|phase_7| |disabled| |error| |naming|
 
 This rule checks for valid prefixes in subtype identifiers.
 The default new subtype prefix is *st\_*.
@@ -102,7 +102,7 @@ Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#conf
 subtype_600
 ###########
 
-|phase_7| |disabled| |error|
+|phase_7| |disabled| |error| |naming|
 
 This rule checks for valid suffixes in subtype identifiers.
 The default new subtype suffix is *\_st*.

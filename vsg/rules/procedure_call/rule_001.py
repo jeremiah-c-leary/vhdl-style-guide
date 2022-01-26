@@ -6,7 +6,20 @@ from vsg.token import procedure_call_statement as token
 
 class rule_001(remove_tokens_bounded_by_tokens_and_remove_trailing_whitespace):
     '''
-    Checks for labels on procedure_call_statements.
+    This rule checks for labels on procedure call statements.
+    Labels on procedure calls are optional and do not provide additional information.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       WR_EN_OUTPUT : WR_EN(parameter);
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       WR_EN(parameter);
     '''
 
     def __init__(self):

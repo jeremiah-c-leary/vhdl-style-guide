@@ -9,7 +9,21 @@ lTokens.append(token.attribute_declaration.attribute_keyword)
 
 class rule_300(token_indent):
     '''
-    Checks for indent of the *attribute* keyword.
+    This rule checks the indent of the **attribute** keyword.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       signal sig1 : std_logic;
+          attribute max_delay : time;
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       signal sig1 : std_logic;
+       attribute max_delay : time;
     '''
 
     def __init__(self):

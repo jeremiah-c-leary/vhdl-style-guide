@@ -41,6 +41,7 @@ class test_constant_rule(unittest.TestCase):
         self.oFile.set_indent_map(dIndentMap)
 
     def test_rule_012_align_left_false_align_paren_true(self):
+        self.maxDiff = None
         oRule = constant.rule_012()
         oRule.align_left = False
         oRule.align_paren = True
@@ -48,6 +49,7 @@ class test_constant_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'constant')
         self.assertEqual(oRule.identifier, '012')
+        self.assertEqual(oRule.groups, ['alignment'])
 
         lExpected = []
         lExpected.append(11)
@@ -63,13 +65,12 @@ class test_constant_rule(unittest.TestCase):
         lExpected.extend(range(128, 134))
         lExpected.extend(range(136, 139))
         lExpected.extend(range(141, 153))
-        lExpected.append(161)
-        lExpected.append(164)
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
     def test_fix_rule_012_align_left_false_align_paren_true(self):
+        self.maxDiff = None
         oRule = constant.rule_012()
         oRule.align_left = False
         oRule.align_paren = True
@@ -122,8 +123,6 @@ class test_constant_rule(unittest.TestCase):
         lExpected.extend(range(128, 134))
         lExpected.extend(range(136, 139))
         lExpected.extend(range(141, 153))
-        lExpected.append(161)
-        lExpected.append(164)
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -167,8 +166,6 @@ class test_constant_rule(unittest.TestCase):
         lExpected.extend(range(128, 134))
         lExpected.extend(range(136, 139))
         lExpected.extend(range(141, 153))
-        lExpected.append(161)
-        lExpected.append(164)
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))

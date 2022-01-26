@@ -1,10 +1,10 @@
 
-from vsg import rule
 from vsg import parser
 from vsg import token
 from vsg import violation
 
 from vsg.vhdlFile import utils
+from vsg.rule_group import alignment
 from vsg.rules import utils as rules_utils
 
 oStart = token.process_statement.begin_keyword
@@ -22,28 +22,46 @@ lEndAssignments.append(token.simple_force_assignment.semicolon)
 lEndAssignments.append(token.simple_release_assignment.semicolon)
 
 
-class rule_002(rule.Rule):
+class rule_002(alignment.Rule):
     '''
-    Ensures the alignment of the after keyword in clock processes.
+    This rule checks the *after* keywords are aligned in a clock process.
+    Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
 
-    Parameters
-    ----------
+    **Violation**
 
-    name : string
-       The group the rule belongs to.
+    .. code-block:: vhdl
 
-    identifier : string
-       unique identifier.  Usually in the form of 00N.
+       clk_proc : process(clock, reset) is
+       begin
+         if (reset = '1') then
+           a <= '0';
+           b <= '1';
+         elsif (clock'event and clock = '1') then
+           a <= d     after 1 ns;
+           b <= c   after 1 ns;
+         end if;
+       end process clk_proc;
 
-    trigger : parser object type
-       object type to apply the case check against
+    **Fix**
+
+    .. code-block:: vhdl
+
+       clk_proc : process(clock, reset) is
+       begin
+         if (reset = '1') then
+           a <= '0';
+           b <= '1';
+         elsif (clock'event and clock = '1') then
+           a <= d     after 1 ns;
+           b <= c     after 1 ns;
+         end if;
+       end process clk_proc;
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self, 'after', '002')
+        alignment.Rule.__init__(self, 'after', '002')
         self.solution = 'Align **after** keyword.'
         self.disable = True
-        self.phase = 5
         self.subphase = 2
         self.oStart = oStart
         self.oEnd = oEnd

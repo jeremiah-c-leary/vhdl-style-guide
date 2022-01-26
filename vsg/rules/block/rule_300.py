@@ -9,7 +9,23 @@ lTokens.append(token.block_statement.block_label)
 
 class rule_300(token_indent):
     '''
-    Checks for indent of the block label.
+    This rule checks the indent of the block label.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       a <= b;
+
+          block_label : block is
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       a <= b;
+
+       block_label : block is
     '''
 
     def __init__(self):

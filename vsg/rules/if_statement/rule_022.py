@@ -9,7 +9,20 @@ lTokens.append(token.else_keyword)
 
 class rule_022(insert_carriage_return_after_token_if_it_is_not_followed_by_a_comment):
     '''
-    Checks for code after the "else" keyword.
+    This rule checks for code after the **else** keyword.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       if (a = '1') then c <= '1'; else c <= '0'; end if;
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       if (a = '1') then c <= '1'; else
+         c <= '0'; end if;
     '''
 
     def __init__(self):

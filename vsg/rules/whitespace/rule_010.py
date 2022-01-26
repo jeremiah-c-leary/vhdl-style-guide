@@ -9,7 +9,19 @@ lTokens.append(token.adding_operator.concat)
 
 class rule_010(n_spaces_before_and_after_tokens):
     '''
-    Whitespace rule 010 checks for spaces before semicolons
+    This rule checks for spaces before and after the concate (&) operator.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       a <= b&c;
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       a <= b & c;
     '''
 
     def __init__(self):

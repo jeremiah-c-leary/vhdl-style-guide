@@ -1,5 +1,4 @@
 
-from vsg import rule
 from vsg import parser
 from vsg import violation
 
@@ -8,29 +7,61 @@ from vsg.token import assertion_statement
 from vsg.token import concurrent_assertion_statement
 
 from vsg.rules import utils as rules_utils
-
+from vsg.rule_group import alignment
 from vsg.vhdlFile import utils
 
 
-class rule_400(rule.Rule):
+class rule_400(alignment.Rule):
     '''
-    Checks the case for words.
+    This rule checks the alignment of the report expressions.
 
-    Parameters
-    ----------
+    .. NOTE:: There is a configuration option **alignment** which changes the indent location of multiple lines.
 
-    name : string
-       The group the rule belongs to.
+    alignment set to 'report' (Default)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    identifier : string
-       unique identifier.  Usually in the form of 00N.
+    **Violation**
 
-    trigger : parser object type
-       object type to apply the case check against
+    .. code-block:: vhdl
+
+       assert WIDTH > 16
+         report "FIFO width is limited" &
+       " to 16 bits."
+         severity FAILURE;
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       assert WIDTH > 16
+         report "FIFO width is limited" &
+                " to 16 bits."
+         severity FAILURE;
+
+    alignment set to 'left'
+    ^^^^^^^^^^^^^^^^^^^^^^^
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       assert WIDTH > 16
+         report "FIFO width is limited" &
+       " to 16 bits."
+         severity FAILURE;
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       assert WIDTH > 16
+         report "FIFO width is limited" &
+           " to 16 bits."
+         severity FAILURE;
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self, name="assert", identifier="400")
+        alignment.Rule.__init__(self, name="assert", identifier="400")
         self.alignment = 'report'
         self.configuration.append('alignment')
         self.phase = 4

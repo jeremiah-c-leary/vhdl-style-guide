@@ -13,22 +13,19 @@ def assign_next_token(token, iToken, lObjects):
     iCurrent = find_next_token(iToken, lObjects)
     try:
         lObjects[iCurrent] = token(lObjects[iCurrent].get_value())
-        iCurrent+= 1
-        return iCurrent
     except TypeError:
-        lObjects[iToken] = token()
-    return iToken
+        lObjects[iCurrent] = token()
+    iCurrent+= 1
+    return iCurrent
 
 
 def assign_token(lObjects, iToken, token):
     iCurrent = find_next_token(iToken, lObjects)
     try:
         lObjects[iCurrent] = token(lObjects[iCurrent].get_value())
-        iCurrent+= 1
-        return iCurrent
     except TypeError:
         lObjects[iToken] = token()
-    return iToken
+    return iToken + 1
 
 
 def assign_next_token_if(sToken, token, iToken, lObjects):
@@ -233,6 +230,8 @@ def detect_submodule(iToken, lObjects, module):
     iLast = -1
     iReturn = iToken
     while iLast != iReturn:
+        if is_next_token('end', iReturn, lObjects):
+            return iToken
         if iReturn == iEnd:
             return iReturn
         iReturn = find_next_token(iReturn, lObjects)
@@ -304,6 +303,13 @@ def print_line(lObjects, iStart):
     print(sOutput)
 
 
+def print_lines(lObjects):
+    sOutput = ''
+    for oObject in lObjects:
+        sOutput += oObject.get_value()
+    print(sOutput)
+
+
 def token_is_semicolon(iObject, lObjects):
     if object_value_is(lObjects, iObject, ';'):
         return True
@@ -324,6 +330,12 @@ def token_is_open_parenthesis(iObject, lObjects):
 
 def token_is_close_parenthesis(iObject, lObjects):
     if object_value_is(lObjects, iObject, ')'):
+        return True
+    return False
+
+
+def token_is_assignment_operator(iObject, lObjects):
+    if object_value_is(lObjects, iObject, '<='):
         return True
     return False
 
@@ -676,5 +688,38 @@ def is_token_at_end_of_line(iToken, lTokens):
     if are_next_consecutive_token_types([parser.comment, parser.carriage_return], iMyToken, lTokens):
         return True
     if are_next_consecutive_token_types([parser.whitespace, parser.comment, parser.carriage_return], iMyToken, lTokens):
+        return True
+    return False
+
+
+def find_next_token_with_value(iToken, sValue, lTokens):
+    for iIndex, oToken in enumerate(lTokens[iToken::]):
+        if oToken.get_value() == sValue:
+            return iToken + iIndex
+    return None
+
+
+def all_assignments_inside_parenthesis(iToken, sStop, lTokens):
+    iStop = find_next_token_with_value(iToken, sStop, lTokens)
+    iParen = 0
+    for iIndex in range(iToken, iStop + 1):
+        iParen = update_paren_counter(iIndex, lTokens, iParen)
+        if token_is_assignment_operator(iIndex, lTokens) and iParen == 0:
+            return False
+    return True
+
+
+def update_paren_counter(iToken, lTokens, iCounter):
+    if token_is_open_parenthesis(iToken, lTokens):
+        return iCounter + 1
+    if token_is_close_parenthesis(iToken, lTokens):
+        return iCounter - 1
+    return iCounter
+
+
+def assignment_operator_found(iToken, lObjects):
+    if find_in_range('<=', iToken, ';', lObjects):
+        if all_assignments_inside_parenthesis(iToken, ';', lObjects):
+            return False
         return True
     return False

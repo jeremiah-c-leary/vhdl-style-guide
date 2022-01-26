@@ -1,12 +1,12 @@
 
 import sys
 
-from vsg import rule
 from vsg import parser
 from vsg import token
 from vsg import violation
 
 from vsg.vhdlFile import utils
+from vsg.rule_group import structure
 
 lIfBoundingTokens = [token.if_statement.if_keyword, token.if_statement.then_keyword]
 
@@ -16,27 +16,76 @@ oStart = token.process_statement.begin_keyword
 oEnd = token.process_statement.end_keyword
 
 
-class rule_029(rule.Rule):
+class rule_029(structure.Rule):
     '''
-    Checks the case for words.
+    This rule checks for the format of clock definitions in clock processes.
+    The rule can be set to enforce **event** definition:
 
-    Parameters
-    ----------
+    .. code-block:: vhdl
 
-    name : string
-       The group the rule belongs to.
+        if (clk'event and clk = '1') then
 
-    identifier : string
-       unique identifier.  Usually in the form of 00N.
+    ..or **edge** definition:
 
-    trigger : parser object type
-       object type to apply the case check against
+    .. code-block:: vhdl
+
+        if (rising_edge(clk)) then
+
+    event configuration
+    ^^^^^^^^^^^^^^^^^^^
+
+    .. NOTE:: This is the default configuration.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       if (rising_edge(clk)) then
+
+       if (falling_edge(clk)) then
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       if (clk'event and clk = '1') then
+
+       if (clk'event and clk = '0') then
+
+    edge configuration
+    ^^^^^^^^^^^^^^^^^^
+
+    .. NOTE::  Configuration this by setting the *'clock'* attribute to *'edge'*
+
+       .. code-block:: json
+
+          {
+            "rule":{
+              "process_029":{
+                 "clock":"edge"
+              }
+            }
+          }
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       if (clk'event and clk = '1') then
+
+       if (clk'event and clk = '0') then
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       if (rising_edge(clk)) then
+
+       if (falling_edge(clk)) then
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self, 'process', '029')
-        self.solution = None
-        self.phase = 1
+        structure.Rule.__init__(self, 'process', '029')
         self.clock = 'event'
         self.configuration.append('clock')
         self.oStart = oStart

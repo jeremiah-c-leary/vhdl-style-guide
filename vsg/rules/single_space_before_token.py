@@ -1,14 +1,14 @@
 
 from vsg import parser
-from vsg import rule
 from vsg import violation
 
+from vsg.rule_group import whitespace
 from vsg.rules import utils as rules_utils
 
 
-class single_space_before_token(rule.Rule):
+class single_space_before_token(whitespace.Rule):
     '''
-    Checks for a single space between two tokens.
+    Checks for a single space before a token.
 
     Parameters
     ----------
@@ -20,13 +20,11 @@ class single_space_before_token(rule.Rule):
        unique identifier.  Usually in the form of 00N.
 
     lTokens : token type object list
-       A list of tokens to check for a single space after.
+       A list of tokens to check for a single space before.
     '''
 
     def __init__(self, name, identifier, lTokens):
-        rule.Rule.__init__(self, name=name, identifier=identifier)
-        self.solution = None
-        self.phase = 2
+        whitespace.Rule.__init__(self, name=name, identifier=identifier)
         self.lTokens = lTokens
 
     def _get_tokens_of_interest(self, oFile):

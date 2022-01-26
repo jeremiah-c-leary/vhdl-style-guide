@@ -13,7 +13,27 @@ lSkip.append(parser.comment)
 
 class rule_412(align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens):
     '''
-    Component rule 412 ensures the alignment of inline comments for each parameter in the procedure declaration.
+    This rule checks for alignment of inline comments for each parameter in the procedure declaration.
+
+    Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+         procedure average_samples (
+           constant a : in integer;   -- Comment about a
+           signal d   : out std_logic;   -- Comment about d
+         );
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+         procedure average_samples (
+           constant a : in integer;    -- Comment about a
+           signal d   : out std_logic; -- Comment about d
+         );
     '''
 
     def __init__(self):

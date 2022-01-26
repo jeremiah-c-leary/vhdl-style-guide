@@ -9,7 +9,23 @@ lTokens.append(token.procedure_call.procedure_name)
 
 class rule_302(token_indent):
     '''
-    Checks for indent of the procedure name.
+    This rule checks the indent of the *procedure* name.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       a <= b;
+
+         WR_EN(parameter);
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       a <= b;
+
+       WR_EN(parameter);
     '''
 
     def __init__(self):

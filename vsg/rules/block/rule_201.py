@@ -14,7 +14,24 @@ lAllowTokens.append(token.block_statement.begin_keyword)
 
 class rule_201(blank_line_below_line_ending_with_several_possible_tokens):
     '''
-    Checks for a blank line below the package keyword.
+    This rule checks for a blank line below the **block** keyword.
+
+    Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       block_label : block is
+         constant width : integer := 32;
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       block_label : block is
+
+         constant width : integer := 32;
     '''
 
     def __init__(self):

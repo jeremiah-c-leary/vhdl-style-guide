@@ -6,7 +6,7 @@ Signal Rules
 signal_001
 ##########
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of signal declarations.
 
@@ -35,7 +35,7 @@ This rule checks the indent of signal declarations.
 signal_002
 ##########
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **signal** keyword has proper case.
 
@@ -66,7 +66,7 @@ This rule was depricated and replaced with rules:
 signal_004
 ##########
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_name|
 
 This rule checks the signal name has proper case.
 
@@ -87,7 +87,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 signal_005
 ##########
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space after the colon.
 
@@ -108,7 +108,7 @@ This rule checks for a single space after the colon.
 signal_006
 ##########
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for at least a single space before the colon.
 
@@ -129,7 +129,7 @@ This rule checks for at least a single space before the colon.
 signal_007
 ##########
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks for default assignments in signal declarations.
 
@@ -150,7 +150,7 @@ This rule checks for default assignments in signal declarations.
 signal_008
 ##########
 
-|phase_7| |disabled| |error|
+|phase_7| |disabled| |error| |naming|
 
 This rule checks for valid prefixes on signal identifiers.
 Default signal prefix is *s\_*.
@@ -174,7 +174,7 @@ Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#conf
 signal_010
 ##########
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the signal type has proper case if it is a VHDL keyword.
 
@@ -201,7 +201,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 signal_011
 ##########
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_name|
 
 This rule checks the signal type has proper case.
 
@@ -226,7 +226,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 signal_012
 ##########
 
-|phase_5| |error|
+|phase_5| |error| |alignment|
 
 This rule checks multiple signal declarations on a single line are column aligned.
 
@@ -252,7 +252,7 @@ This rule checks multiple signal declarations on a single line are column aligne
 signal_014
 ##########
 
-|phase_6| |error|
+|phase_6| |error| |case|
 
 This rule checks for consistent capitalization of signal names.
 
@@ -309,7 +309,7 @@ This rule checks for consistent capitalization of signal names.
 signal_015
 ##########
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks for multiple signal names defined in a single signal declaration.
 By default, this rule will only flag more than two signal declarations.
@@ -338,7 +338,7 @@ Refer to the section `Configuring Number of Signals in Signal Declaration <confi
 signal_016
 ##########
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks the signal declaration is on a single line.
 
@@ -363,7 +363,7 @@ This rule checks the signal declaration is on a single line.
 signal_600
 ##########
 
-|phase_7| |disabled| |error|
+|phase_7| |disabled| |error| |naming|
 
 This rule checks for valid suffixes on signal identifiers.
 Default signal suffix is *\_s*.
@@ -383,3 +383,4 @@ Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#conf
 
    signal wr_en_s : std_logic;
    signal rd_en_s : std_logic;
+

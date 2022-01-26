@@ -1,19 +1,12 @@
 
-from vsg.rules import blank_line_below_line_ending_with_token
-
-from vsg import token
-
-lTokens = []
-lTokens.append(token.subprogram_body.is_keyword)
-
-lAllowTokens = []
-lAllowTokens.append(token.subprogram_body.begin_keyword)
+from vsg.deprecated_rule import Rule
 
 
-class rule_201(blank_line_below_line_ending_with_token):
+class rule_201(Rule):
     '''
-    Checks for a blank line below the opening section of a function specification.
+    This rule has been moved to rule `subprogram_body_201 <subprogram_rules.html#subprogram-body-201>`_.
     '''
 
     def __init__(self):
-        blank_line_below_line_ending_with_token.__init__(self, 'function', '201', lTokens, lAllowTokens)
+        Rule.__init__(self, 'function', '201')
+        self.message.append('Rule ' + self.unique_id + ' has been moved to rule subprogram_body_201.')

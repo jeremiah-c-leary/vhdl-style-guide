@@ -10,8 +10,8 @@ from vsg.vhdlFile.extract import utils
 def get_consecutive_lines_starting_with_token_and_stopping_when_token_starting_line_is_found(search_token, stop_token, lAllTokens, oTokenMap):
 
     lReturn = []
-    lSearchIndexes = utils.filter_indexes_which_start_a_line(search_token, oTokenMap)
-    lStopIndexes = utils.filter_indexes_which_start_a_line(stop_token, oTokenMap)
+    lSearchIndexes = utils.filter_tokens_which_start_a_line(search_token, oTokenMap)
+    lStopIndexes = utils.filter_tokens_which_start_a_line(stop_token, oTokenMap)
 
     lCarriageReturns = oTokenMap.get_token_indexes(parser.carriage_return)
 

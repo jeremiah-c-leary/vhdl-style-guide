@@ -32,6 +32,7 @@ class test_assert_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'assert')
         self.assertEqual(oRule.identifier, '001')
+        self.assertEqual(oRule.groups, ['indent'])
 
         lExpected = [32, 35, 38, 41, 42, 44, 47, 50, 53, 54]
 

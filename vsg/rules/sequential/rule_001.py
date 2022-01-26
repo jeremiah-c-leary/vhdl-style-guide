@@ -11,7 +11,25 @@ lTokens.append(token.simple_waveform_assignment.target)
 
 class rule_001(token_indent):
     '''
-    Checks for the proper indentation at the beginning of the sequential statement.
+    This rule checks the indent of sequential statements.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       begin
+
+           wr_en <= '1';
+       rd_en <= '0';
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       begin
+
+         wr_en <= '1';
+         rd_en <= '0';
     '''
 
     def __init__(self):

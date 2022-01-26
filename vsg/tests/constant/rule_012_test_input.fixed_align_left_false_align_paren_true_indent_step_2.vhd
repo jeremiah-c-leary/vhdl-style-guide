@@ -158,9 +158,9 @@ architecture rtl of fifo is
   constant cons1 : t_type := '0';
 
   constant cons2 : t_type := '0' and '1'
-                             and '0' or '1';
+       and '0' or '1';
 
   constant cons2 : t_type := func1(G_GENERIC1, G_GENERIC_2,
-                                    func2(G_GENERIC3));
+        func2(G_GENERIC3));
 
 begin end architecture rtl;

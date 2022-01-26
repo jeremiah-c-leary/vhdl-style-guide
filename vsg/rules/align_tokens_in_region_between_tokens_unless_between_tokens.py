@@ -1,15 +1,15 @@
 
 
 from vsg import parser
-from vsg import rule
 from vsg import token
 from vsg import violation
 
 from vsg.vhdlFile import utils
+from vsg.rule_group import alignment
 from vsg.rules import utils as rule_utils
 
 
-class align_tokens_in_region_between_tokens_unless_between_tokens(rule.Rule):
+class align_tokens_in_region_between_tokens_unless_between_tokens(alignment.Rule):
     '''
     Checks for a single space between two tokens.
 
@@ -36,9 +36,7 @@ class align_tokens_in_region_between_tokens_unless_between_tokens(rule.Rule):
     '''
 
     def __init__(self, name, identifier, lTokens, left_token, right_token, lUnless):
-        rule.Rule.__init__(self, name=name, identifier=identifier)
-        self.solution = None
-        self.phase = 5
+        alignment.Rule.__init__(self, name=name, identifier=identifier)
         self.lTokens = lTokens
         self.left_token = left_token
         self.right_token = right_token
@@ -61,7 +59,7 @@ class align_tokens_in_region_between_tokens_unless_between_tokens(rule.Rule):
         self.configuration.append('loop_control_statements_ends_group')
 
     def analyze(self, oFile):
-        lToi = oFile.get_tokens_bounded_by(self.left_token, self.right_token)
+        lToi = get_tokens_of_interest(self, oFile)
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             iLine = oToi.get_line_number()
@@ -316,3 +314,5 @@ def is_case_keyword(config, iIndex, lTokens):
            return True
     return False
 
+def get_tokens_of_interest(self, oFile):
+    return oFile.get_tokens_bounded_by_unless_between(self.left_token, self.right_token, self.lUnless)

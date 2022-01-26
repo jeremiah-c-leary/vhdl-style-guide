@@ -9,7 +9,31 @@ lTokens.append(token.subprogram_body.end_keyword)
 
 class rule_003(token_indent):
     '''
-    Checks for the proper indentation at the beginning of the procedure specification.
+    This rule checks the indent of the **end** keyword.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       procedure average_samples (
+         constant a : in integer;
+         signal b : in std_logic;
+         variable c : in std_logic_vector(3 downto 0);
+         signal d : out std_logic ) is
+       begin
+         end procedure average_samples;
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       procedure average_samples (
+         constant a : in integer;
+         signal b : in std_logic;
+         variable c : in std_logic_vector(3 downto 0);
+         signal d : out std_logic ) is
+       begin
+       end procedure average_samples;
     '''
 
     def __init__(self):

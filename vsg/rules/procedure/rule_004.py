@@ -20,7 +20,31 @@ oEnd = token.procedure_specification.close_parenthesis
 
 class rule_004(token_indent_between_tokens):
     '''
-    Checks the indent of procedure parameters when they are on multiple lines.
+    This rule checks the indent of parameters.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       procedure average_samples (
+       constant a : in integer;
+           signal b : in std_logic;
+          variable c : in std_logic_vector(3 downto 0);
+        signal d : out std_logic ) is
+       begin
+       end procedure average_samples;
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       procedure average_samples (
+         constant a : in integer;
+         signal b : in std_logic;
+         variable c : in std_logic_vector(3 downto 0);
+         signal d : out std_logic ) is
+       begin
+       end procedure average_samples;
     '''
 
     def __init__(self):

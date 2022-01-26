@@ -1,7 +1,7 @@
 
 from vsg import token
 
-from vsg.rules import token_case
+from vsg.rules import token_case_with_prefix_suffix
 
 lTokens = []
 lTokens.append(token.case_generate_statement.end_generate_label)
@@ -9,10 +9,25 @@ lTokens.append(token.for_generate_statement.end_generate_label)
 lTokens.append(token.if_generate_statement.end_generate_label)
 
 
-class rule_012(token_case):
+class rule_012(token_case_with_prefix_suffix):
     '''
-    Checks the *generate* keyword has proper case.
+    This rule checks the **end generate** label has proper case.
+
+    Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       end generate RAM_ARRAY;
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       end generate ram_array;
     '''
 
     def __init__(self):
-        token_case.__init__(self, 'generate', '012', lTokens)
+        token_case_with_prefix_suffix.__init__(self, 'generate', '012', lTokens)
+        self.groups.append('case::label')

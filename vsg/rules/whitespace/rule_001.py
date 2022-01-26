@@ -1,29 +1,32 @@
 
 from vsg import parser
-from vsg import rule
 from vsg import violation
 
+from vsg.rule_group import whitespace
 
-class rule_001(rule.Rule):
+
+class rule_001(whitespace.Rule):
     '''
-    This class removes whitespace before a given token.
+    This rule check for trailing spaces.
 
-    Parameters
-    ----------
+    **Violation**
 
-    name : string
-       The group the rule belongs to.
+    Where periods indicate spaces:
 
-    identifier : string
-       unique identifier.  Usually in the form of 00N.
+    .. code-block:: vhdl
 
-    oToken : token object
-       The token where spaces will be removed before.
+        library ieee;....
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+        library ieee;
     '''
 
     def __init__(self):
 
-        rule.Rule.__init__(self, 'whitespace', '001')
+        whitespace.Rule.__init__(self, 'whitespace', '001')
         self.phase = 1
         self.subphase = 0
         self.solution = 'Remove trailing whitespace'

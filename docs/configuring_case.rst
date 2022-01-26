@@ -16,8 +16,6 @@ For example the rule constant_002 can be changed to enforce uppercase using the 
 
 .. code-block:: yaml
 
-   ---
-
    rule :
      constant_002 :
         case : 'upper'
@@ -30,13 +28,46 @@ For example, if you want to uppercase everything except the entity name, you cou
 
 .. code-block:: yaml
 
-   ---
-
    rule :
      global :
        case : 'upper'
      entity_008 :
        case : 'lower'
+
+Adding Prefix and Suffix Exceptions
+###################################
+
+Some rules allow for prefixes and suffixes to be cased differently than the rest of the identifier.
+This is performed by changing the `prefix_exceptions` and `suffix_exceptions` parameters.
+The default values for these are an empty list.
+
+If they are set and if the prefix and/or suffix are encountered, then the exact prefix/suffix will be validated along with the case of the rest of the string.
+
+.. code-block:: yaml
+
+   rule :
+     constant_007 :
+        case : 'lower'
+        prefix_exceptions :
+          - 'G_'
+
+.. code-block:: yaml
+
+   rule :
+     constant_007 :
+        case : 'lower'
+        suffix_exceptions :
+          - '_G'
+
+.. code-block:: yaml
+
+   rule :
+     constant_007 :
+        case : 'lower'
+        prefix_exceptions :
+          - 'G_'
+        suffix_exceptions :
+          - '_G'
 
 Rules Enforcing Case
 ####################
@@ -84,7 +115,6 @@ Rules Enforcing Case
 * `constant_002 <constant_rules.html#constant-002>`_
 * `constant_004 <constant_rules.html#constant-004>`_
 * `constant_011 <constant_rules.html#constant-011>`_
-* `constant_013 <constant_rules.html#constant-013>`_
 
 * `context_004 <context_rules.html#context-004>`_
 * `context_012 <context_rules.html#context-012>`_
@@ -114,7 +144,6 @@ Rules Enforcing Case
 
 * `function_004 <function_rules.html#function-004>`_
 * `function_005 <function_rules.html#function-005>`_
-* `function_010 <function_rules.html#function-010>`_
 * `function_013 <function_rules.html#function-013>`_
 * `function_014 <function_rules.html#function-014>`_
 * `function_017 <function_rules.html#function-017>`_
@@ -172,7 +201,6 @@ Rules Enforcing Case
 * `port_map_001 <port_map_rules.html#port-map-001>`_
 * `port_map_002 <port_map_rules.html#port-map-002>`_
 
-* `procedure_007 <procedure_rules.html#procedure-007>`_
 * `procedure_008 <procedure_rules.html#procedure-008>`_
 * `procedure_009 <procedure_rules.html#procedure-009>`_
 * `procedure_500 <procedure_rules.html#procedure-500>`_
@@ -182,7 +210,6 @@ Rules Enforcing Case
 * `procedure_504 <procedure_rules.html#procedure-504>`_
 * `procedure_505 <procedure_rules.html#procedure-505>`_
 * `procedure_506 <procedure_rules.html#procedure-506>`_
-* `procedure_507 <procedure_rules.html#procedure-507>`_
 
 * `process_004 <process_rules.html#process-004>`_
 * `process_005 <process_rules.html#process-005>`_
@@ -199,16 +226,11 @@ Rules Enforcing Case
 * `signal_004 <signal_rules.html#signal-004>`_
 * `signal_010 <signal_rules.html#signal-010>`_
 * `signal_011 <signal_rules.html#signal-011>`_
-* `signal_014 <signal_rules.html#signal-014>`_
-
-* `subtype_002 <subtype_rules.html#subtype-002>`_
 
 * `type_definition_002 <type_definition.html#type-definition-002>`_
 * `type_definition_004 <type_definition.html#type-definition-004>`_
 * `type_definition_013 <type_definition.html#type-definition-013>`_
-* `type_definition_014 <type_definition.html#type-definition-014>`_
 
 * `variable_002 <variable_rules.html#variable-002>`_
 * `variable_004 <variable_rules.html#variable-004>`_
 * `variable_010 <variable_rules.html#variable-010>`_
-* `variable_011 <variable_rules.html#variable-011>`_

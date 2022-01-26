@@ -26,6 +26,7 @@ class test_block_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'block')
         self.assertEqual(oRule.identifier, '003')
+        self.assertEqual(oRule.groups, ['structure'])
 
         lExpected = [13, 16]
 

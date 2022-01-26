@@ -10,7 +10,27 @@ lTokens.append(token.null_statement.null_keyword)
 
 class rule_013(token_indent):
     '''
-    Case rule 013 verifies the indent of the "Null" keyword.
+    This rule checks the indent of the **null** keyword.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+         when others =>
+            null;
+
+         when others =>
+       null;
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       when others =>
+         null;
+
+       when others =>
+         null;
     '''
 
     def __init__(self):

@@ -8,9 +8,26 @@ lTokens.append([token.subprogram_body.end_keyword, token.subprogram_kind.functio
 lTokens.append([token.subprogram_body.end_keyword, token.subprogram_body.designator])
 lTokens.append([token.subprogram_kind.function_keyword, token.subprogram_body.designator])
 
+
 class rule_101(single_space_between_token_pairs):
     '''
-    Procedure rule 101 checks for a single space between keywords in the closing part of a function specification.
+    This rule checks for a single space between the **end** and **function** keywords and function designator.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       end   function   overflow;
+       end   function;
+       end   overflow;
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       end function overflow;
+       end function;
+       end overflow;
     '''
     def __init__(self):
         single_space_between_token_pairs.__init__(self, 'function', '101', lTokens)

@@ -1,14 +1,13 @@
 
 from vsg import parser
-from vsg import rule
 from vsg import violation
 
 from vsg.rules import utils as rules_utils
-
+from vsg.rule_group import structure
 from vsg.vhdlFile import utils
 
 
-class insert_token_right_of_possible_tokens_if_it_does_not_exist_before_token(rule.Rule):
+class insert_token_right_of_possible_tokens_if_it_does_not_exist_before_token(structure.Rule):
     '''
     Checks for the existence of a token and will insert it if it does not exist.
 
@@ -32,9 +31,7 @@ class insert_token_right_of_possible_tokens_if_it_does_not_exist_before_token(ru
     '''
 
     def __init__(self, name, identifier, insert_token, anchor_tokens, end_token):
-        rule.Rule.__init__(self, name=name, identifier=identifier)
-        self.solution = None
-        self.phase = 1
+        structure.Rule.__init__(self, name=name, identifier=identifier)
         self.oInsertToken = insert_token
         self.lAnchorTokens = anchor_tokens
         self.oEndToken = end_token
@@ -69,14 +66,30 @@ class insert_token_right_of_possible_tokens_if_it_does_not_exist_before_token(ru
                         iLineNumber = iLine
 
             sSolution = self.action.capitalize() + ' ' + self.solution
+            dAction = {}
+            dAction['whitespace'] = False
+            dAction['carriage_return'] = False
+            if isinstance(lTokens[iIndex + 1], parser.whitespace):
+                dAction['whitespace'] = True
+            if isinstance(lTokens[iIndex + 1], parser.carriage_return):
+                dAction['carriage_return'] = True
+
             oViolation = violation.New(iLineNumber, oToi.extract_tokens(iIndex, iIndex), sSolution)
+            oViolation.set_action(dAction)
             self.add_violation(oViolation)
 
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
         if self.action == 'remove':
-            rules_utils.remove_optional_item(lTokens, oViolation, self.oInsertToken)
+            rules_utils.remove_optional_item(oViolation, self.oInsertToken)
         else:
-            rules_utils.insert_token(lTokens, 1, self.oInsertToken)
-            rules_utils.insert_whitespace(lTokens, 1)
+            dAction = oViolation.get_action()
+            if isinstance(lTokens[0], parser.close_parenthesis) and dAction['carriage_return']:
+                rules_utils.insert_token(lTokens, 1, self.oInsertToken)
+            elif isinstance(lTokens[0], parser.close_parenthesis) and not dAction['whitespace']:
+                rules_utils.insert_whitespace(lTokens, 1)
+                rules_utils.insert_token(lTokens, 1, self.oInsertToken)
+            else:
+                rules_utils.insert_token(lTokens, 1, self.oInsertToken)
+                rules_utils.insert_whitespace(lTokens, 1)
             oViolation.set_tokens(lTokens)

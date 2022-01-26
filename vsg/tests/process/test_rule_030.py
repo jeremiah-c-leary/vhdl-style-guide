@@ -22,6 +22,7 @@ class test_process_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'process')
         self.assertEqual(oRule.identifier, '030')
+        self.assertEqual(oRule.groups, ['structure'])
 
         lExpected = [24, 31]
 

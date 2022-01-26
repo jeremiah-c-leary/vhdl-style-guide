@@ -6,7 +6,7 @@ Variable Assignment Rules
 variable_assignment_001
 #######################
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of a variable assignment.
 
@@ -35,7 +35,7 @@ This rule checks the indent of a variable assignment.
 variable_assignment_002
 #######################
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space after the assignment.
 
@@ -56,7 +56,7 @@ This rule checks for a single space after the assignment.
 variable_assignment_003
 #######################
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for at least a single space before the assignment.
 
@@ -77,7 +77,7 @@ This rule checks for at least a single space before the assignment.
 variable_assignment_004
 #######################
 
-|phase_4| |error|
+|phase_5| |error| |alignment|
 
 This rule checks the alignment of multiline variable assignments.
 
@@ -98,36 +98,12 @@ This rule checks the alignment of multiline variable assignments.
 variable_assignment_005
 #######################
 
-|phase_5| |error|
-
-This rule checks the alignment of **:=** operators over multiple lines.
-
-Following extra configurations are supported:
-
-* :code:`if_control_statements_end_group`.
-* :code:`case_control_statements_end_group`,
-
-
-Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
-
-**Violation**
-
-.. code-block:: vhdl
-
-     counter := 0;
-     count := counter + 1;
-
-**Fix**
-
-.. code-block:: vhdl
-
-     counter := 0;
-     count   := counter + 1;
+This rule has been deprecated and replaced with rule `process_400 <process_rules.html#process-400>`_.
 
 variable_assignment_006
 #######################
 
-|phase_2| |error|
+|phase_2| |error| |structure|
 
 This rule checks for comments in multiline variable assignments.
 

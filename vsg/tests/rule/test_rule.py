@@ -3,10 +3,21 @@ import unittest
 from unittest import mock
 
 from vsg import config
+from vsg import deprecated_rule
 from vsg import parser
 from vsg import rule
 from vsg import violation
 from vsg.vhdlFile.extract import tokens
+
+
+class command_line_args():
+    ''' This is used as an input into the version command.'''
+    def __init__(self, version=False):
+        self.version = version
+        self.style = 'indent_only'
+        self.configuration = []
+        self.debug = False
+        self.fix_only = False
 
 
 class testRuleMethods(unittest.TestCase):
@@ -45,6 +56,26 @@ class testRuleMethods(unittest.TestCase):
         oRule.add_violation(oViolation)
         oRule.add_violation(oViolation)
         self.assertEqual(len(oRule.violations), 3)
+
+    def test_fix_violation(self):
+        oRule = rule.Rule()
+        oTokens = tokens.New(0, 0, [])
+        oViolation = violation.New(0, oTokens, '')
+
+        self.assertIsNone(oRule._fix_violation(oViolation))
+
+    @mock.patch('sys.stdout')
+    def test_print_debug_message(self, mock_stdout):
+        oRule = rule.Rule()
+        oRule.set_debug()
+        sString = 'This is a debug message'
+
+        lExpected = []
+        lExpected.append(mock.call('INFO: This is a debug message'))
+        
+        oRule._print_debug_message(sString)
+
+        mock_stdout.write.assert_has_calls(lExpected)
 
     @unittest.skip('Waiting for full refactor of configuration')
     def test_rule_configure(self):
@@ -215,3 +246,25 @@ class testRuleMethods(unittest.TestCase):
         oViolation = violation.New(0, oTokens, '')
         oRule.add_violation(oViolation)
         self.assertTrue(oRule.has_violations())
+
+
+    def test_deprecated_rule(self):
+        oRule = deprecated_rule.Rule('some_rule', '001')
+        oRule.message = ['This has been deprecated.']
+
+        oConfig = config.New(command_line_args())
+
+        dConfig = {}
+        dConfig['rule'] = {}
+        dConfig['rule']['some_rule_001'] = {}
+        dConfig['rule']['some_rule_001']['disable'] = True
+
+        oConfig.dConfig = dConfig
+
+        lExpected = []
+        lExpected.append('ERROR [config-001] Rule some_rule_001 has been deprecated.')
+        lExpected.append('  ' + oRule.message[0])
+
+        lActual = oRule.configure(oConfig)
+
+        self.assertEqual(lExpected, lActual)

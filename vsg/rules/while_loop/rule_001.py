@@ -10,7 +10,28 @@ lTokens.append(token.iteration_scheme.while_keyword)
 
 class rule_001(token_indent):
     '''
-    For loop rule 001 checks while the proper indentation at the beginning of the line.
+    This rule checks for indentation of the **while** keyword.
+    Proper indentation enhances comprehension.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       begin
+
+       while (temp /= 0) loop
+           temp := temp/2;
+         end loop;
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       begin
+
+         while (temp /= 0) loop
+           temp := temp/2;
+         end loop;
     '''
 
     def __init__(self):

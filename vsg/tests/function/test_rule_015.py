@@ -26,6 +26,7 @@ class test_function_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'function')
         self.assertEqual(oRule.identifier, '015')
+        self.assertEqual(oRule.groups, ['alignment'])
 
         lExpected = [12, 13, 14]
 

@@ -10,9 +10,33 @@ lAlign.append(parser.comment)
 lSkip = []
 lSkip.append(parser.comment)
 
+
 class rule_029(align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens):
     '''
-    Ensures the alignment of inline comments in an instantiation.
+    This rule checks for alignment of inline comments in an instantiation.
+
+    Following extra configurations are supported:
+
+    * :code:`separate_generic_port_alignment`.
+
+    Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
+    **Violation**
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+           wr_en    => write_enable,        -- Wrte enable
+           rd_en    => read_enable,    -- Read enable
+           overflow => overflow,         -- FIFO has overflowed
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+           wr_en    => write_enable, -- Wrte enable
+           rd_en    => read_enable,  -- Read enable
+           overflow => overflow,     -- FIFO has overflowed
     '''
 
     def __init__(self):

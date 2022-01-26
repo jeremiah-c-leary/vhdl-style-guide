@@ -9,7 +9,23 @@ lTokens.append([token.instantiated_unit.component_keyword, token.instantiated_un
 
 class rule_032(single_space_between_token_pairs):
     '''
-   Checks for a single space between the *component* keyword and the entity_name.
+    This rule checks for a single space after the **component** keyword if it is used.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       INSTANCE_NAME : component ENTITY_NAME
+       INSTANCE_NAME : component   ENTITY_NAME
+       INSTANCE_NAME : component  ENTITY_NAME
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       INSTANCE_NAME : component ENTITY_NAME
+       INSTANCE_NAME : component ENTITY_NAME
+       INSTANCE_NAME : component ENTITY_NAME
     '''
     def __init__(self):
         single_space_between_token_pairs.__init__(self, 'instantiation', '032', lTokens)

@@ -11,7 +11,27 @@ lTokens.append(token.process_statement.process_keyword)
 
 class rule_001(token_indent):
     '''
-    Checks for the proper indentation at the beginning of the process specification.
+    This rule checks the indent of the process declaration.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       architecture rtl of fifo is
+
+       begin
+
+       proc_a : process (rd_en, wr_en, data_in, data_out,
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       architecture rtl of fifo is
+
+       begin
+
+         proc_a : process (rd_en, wr_en, data_in, data_out,
     '''
 
     def __init__(self):

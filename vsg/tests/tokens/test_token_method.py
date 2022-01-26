@@ -665,3 +665,157 @@ class testTokenMethod(unittest.TestCase):
   
         self.assertEqual(lTokens, lActual)
 
+    def test_backward_slashes(self):
+        sLine = '  function \?=\ (L, R : ufixed) return STD_ULOGIC;'
+        lTokens = []
+        lTokens.append('  ')
+        lTokens.append('function')
+        lTokens.append(' ')
+        lTokens.append('\\' + '?=' + '\\')
+        lTokens.append(' ')
+        lTokens.append('(')
+        lTokens.append('L')
+        lTokens.append(',')
+        lTokens.append(' ')
+        lTokens.append('R')
+        lTokens.append(' ')
+        lTokens.append(':')
+        lTokens.append(' ')
+        lTokens.append('ufixed')
+        lTokens.append(')')
+        lTokens.append(' ')
+        lTokens.append('return')
+        lTokens.append(' ')
+        lTokens.append('STD_ULOGIC')
+        lTokens.append(';')
+  
+        lActual = tokens.create(sLine)
+  
+        self.assertEqual(lTokens, lActual)
+
+    def test_combine_backslash_characters_into_symbols(self):
+        sLine = ' function \?=\ hello'
+         
+        lActual = tokens.create(sLine)
+
+        lExpected = []
+        lExpected.append(' ')
+        lExpected.append('function')
+        lExpected.append(' ')
+        lExpected.append('\\?=\\')
+        lExpected.append(' ')
+        lExpected.append('hello')
+
+        self.assertEqual(lExpected, lActual)
+
+
+        sLine = ' function \?=\\'
+         
+        lActual = tokens.create(sLine)
+
+        lExpected = []
+        lExpected.append(' ')
+        lExpected.append('function')
+        lExpected.append(' ')
+        lExpected.append('\\?=\\')
+
+        self.assertEqual(lExpected, lActual)
+
+        sLine = ' function \?=\\('
+         
+        lActual = tokens.create(sLine)
+
+        lExpected = []
+        lExpected.append(' ')
+        lExpected.append('function')
+        lExpected.append(' ')
+        lExpected.append('\\?=\\')
+        lExpected.append('(')
+
+        self.assertEqual(lExpected, lActual)
+
+        
+        sLine = ' function \?=\\ '
+         
+        lActual = tokens.create(sLine)
+
+        lExpected = []
+        lExpected.append(' ')
+        lExpected.append('function')
+        lExpected.append(' ')
+        lExpected.append('\\?=\\')
+        lExpected.append(' ')
+
+        self.assertEqual(lExpected, lActual)
+
+        
+        sLine = ' function \?=\\;'
+         
+        lActual = tokens.create(sLine)
+
+
+        lExpected = []
+        lExpected.append(' ')
+        lExpected.append('function')
+        lExpected.append(' ')
+        lExpected.append('\\?=\\')
+        lExpected.append(';')
+
+        self.assertEqual(lExpected, lActual)
+
+        sLine = ' function \\?>\\  ('
+         
+        lActual = tokens.create(sLine)
+
+        lExpected = []
+        lExpected.append(' ')
+        lExpected.append('function')
+        lExpected.append(' ')
+        lExpected.append('\\?>\\')
+        lExpected.append('  ')
+        lExpected.append('(')
+
+        self.assertEqual(lExpected, lActual)
+
+    def test_parenthesis_in_procedure_call(self):
+        sLine = "  write('(')"
+        lTokens = []
+        lTokens.append('  ')
+        lTokens.append('write')
+        lTokens.append('(')
+        lTokens.append("'('")
+        lTokens.append(')')
+  
+        lActual = tokens.create(sLine)
+  
+        self.assertEqual(lTokens, lActual)
+
+    def test_multiple_character_literals(self):
+        sLine = "'a' or 'b' or 'c'"
+        lTokens = []
+        lTokens.append("'a'")
+        lTokens.append(' ')
+        lTokens.append('or')
+        lTokens.append(' ')
+        lTokens.append("'b'")
+        lTokens.append(' ')
+        lTokens.append('or')
+        lTokens.append(' ')
+        lTokens.append("'c'")
+  
+        lActual = tokens.create(sLine)
+  
+        self.assertEqual(lTokens, lActual)
+
+    def test_backslash(self):
+        sLine = 'a "/\\" b'
+        lTokens = []
+        lTokens.append('a')
+        lTokens.append(' ')
+        lTokens.append('"/\\"')
+        lTokens.append(' ')
+        lTokens.append('b')
+  
+        lActual = tokens.create(sLine)
+  
+        self.assertEqual(lTokens, lActual)

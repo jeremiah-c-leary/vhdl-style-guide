@@ -1,36 +1,45 @@
 
 from vsg import parser
-from vsg import rule
 from vsg import token
 from vsg import violation
 
 from vsg.vhdlFile import utils
+from vsg.rule_group import structure
 
 
-class rule_030(rule.Rule):
+class rule_030(structure.Rule):
     '''
-    Checks for single signal declarations on sensitivity list lines.
+    This rule checks for a single signal per line in a sensitivity list that is not the last one.
+    The sensitivity list is required by the compiler, but provides no useful information to the reader.
+    Therefore, the vertical spacing of the sensitivity list should be minimized.
+    This will help with code readability.
 
-    Parameters
-    ----------
+    .. NOTE::  This rule is left to the user to fix.
 
-    name : string
-       The group the rule belongs to.
+    **Violation**
 
-    identifier : string
-       unique identifier.  Usually in the form of 00N.
+    .. code-block:: vhdl
 
-    lTokens : list of parser object types
-       object types to check the prefix
+       proc_a : process (rd_en,
+                         wr_en,
+                         data_in,
+                         data_out,
+                         rd_full,
+                         wr_full
+                        )
 
-    lSuffixes: string list
-       acceptable suffixes
+    **Fix**
+
+    .. code-block:: vhdl
+
+       proc_a : process (rd_en, wr_en, data_in, data_out,
+                         rd_full, wr_full
+                        )
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self, 'process', '030')
+        structure.Rule.__init__(self, 'process', '030')
         self.solution = 'Compact sensitivity list to reduce the number of lines it uses.'
-        self.phase = 1
         self.fixable = False
 
     def _get_tokens_of_interest(self, oFile):

@@ -1,13 +1,13 @@
 
 
 from vsg import parser
-from vsg import rule
 from vsg import violation
 
+from vsg.rule_group import blank_line
 from vsg.vhdlFile import utils
 
 
-class blank_lines_between_token_pairs(rule.Rule):
+class blank_lines_between_token_pairs(blank_line.Rule):
     '''
     Checks for a single space between two tokens.
 
@@ -25,9 +25,8 @@ class blank_lines_between_token_pairs(rule.Rule):
     '''
 
     def __init__(self, name, identifier, lTokenPairs):
-        rule.Rule.__init__(self, name=name, identifier=identifier)
+        blank_line.Rule.__init__(self, name=name, identifier=identifier)
         self.solution = 'Remove blank line'
-        self.phase = 3
         self.lTokenPairs = lTokenPairs
 
     def _get_tokens_of_interest(self, oFile):
@@ -48,7 +47,6 @@ class blank_lines_between_token_pairs(rule.Rule):
                     oNewToi = oToi.extract_tokens(iToken, iToken + 1)
                     oViolation = violation.New(iLine, oNewToi, self.solution)
                     self.add_violation(oViolation)
-
 
     def _fix_violation(self, oViolation):
         oViolation.set_tokens([])

@@ -3,6 +3,7 @@ from vsg.vhdlFile.classify import alias_declaration
 from vsg.vhdlFile.classify import attribute_declaration
 from vsg.vhdlFile.classify import attribute_specification
 from vsg.vhdlFile.classify import component_declaration
+from vsg.vhdlFile.classify import configuration_specification
 from vsg.vhdlFile.classify import constant_declaration
 from vsg.vhdlFile.classify import file_declaration
 from vsg.vhdlFile.classify import package_body
@@ -109,6 +110,10 @@ def detect(iToken, lObjects):
         return iReturn
 
     iReturn = use_clause.detect(iToken, lObjects)
+    if iReturn != iToken:
+        return iReturn
+
+    iReturn = configuration_specification.detect(iToken, lObjects)
     if iReturn != iToken:
         return iReturn
 

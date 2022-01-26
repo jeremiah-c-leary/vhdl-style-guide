@@ -2,14 +2,14 @@
 import copy
 
 from vsg import parser
-from vsg import rule
 from vsg import token
 from vsg import violation
 
+from vsg.rule_group import structure
 from vsg.vhdlFile import utils
 
 
-class separate_multiple_signal_identifiers_into_individual_statements(rule.Rule):
+class separate_multiple_signal_identifiers_into_individual_statements(structure.Rule):
     '''
     Checks the case for words.
 
@@ -30,9 +30,8 @@ class separate_multiple_signal_identifiers_into_individual_statements(rule.Rule)
     '''
 
     def __init__(self, name, identifier, lTokens, iAllow=2):
-        rule.Rule.__init__(self, name=name, identifier=identifier)
+        structure.Rule.__init__(self, name=name, identifier=identifier)
         self.solution = 'Split signal declaration into individual declarations'
-        self.phase = 1
         self.lTokens = lTokens
         self.consecutive = iAllow
         self.configuration.append('consecutive')

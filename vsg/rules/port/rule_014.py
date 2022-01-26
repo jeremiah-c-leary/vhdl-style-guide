@@ -9,7 +9,28 @@ lTokens.append(token.port_clause.close_parenthesis)
 
 class rule_014(split_line_at_token):
     '''
-    Moves the closing parenthesis to it's own line.
+    This rule checks the closing parenthesis of the port map is on a line by itself.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       port (
+         WR_EN    : in    std_logic;
+         RD_EN    : in    std_logic;
+         OVERFLOW : out   std_logic;
+         DATA     : inout std_logic);
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       port (
+         WR_EN    : in    std_logic;
+         RD_EN    : in    std_logic;
+         OVERFLOW : out   std_logic;
+         DATA     : inout std_logic
+       );
     '''
 
     def __init__(self):

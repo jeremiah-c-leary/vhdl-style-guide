@@ -1,10 +1,10 @@
 
 from vsg import parser
-from vsg import rule
 from vsg import token
 from vsg import violation
 
 from vsg.vhdlFile import utils
+from vsg.rule_group import structure
 
 oInsertTokens = token.for_generate_statement.end_generate_label
 oAnchorTokens = token.for_generate_statement.semicolon
@@ -13,37 +13,36 @@ oRightTokens = token.for_generate_statement.semicolon
 oValueTokens = token.for_generate_statement.generate_label
 
 
-class rule_011(rule.Rule):
+class rule_011(structure.Rule):
     '''
-    Checks for the existence of a token and will insert it if it does not exist.
+    This rule checks the **end generate** line has a label on for generate statements.
 
-    Parameters
-    ----------
+    **Violation**
 
-    name : string
-       The group the rule belongs to.
+    .. code-block:: vhdl
 
-    identifier : string
-       unique identifier.  Usually in the form of 00N.
+       ram_array : for i in 0 to 127 generate
 
-    insert_token : token object
-       token to insert if it does not exist.
+       end generate;
 
-    anchor_token : token object
-       token to check if insert_token exists to the right of
+    **Fix**
 
-       token to pull the value from
+    .. code-block:: vhdl
+
+       ram_array : for i in 0 to 127 generate
+
+       end generate ram_array;
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self, 'generate', '011')
+        structure.Rule.__init__(self, 'generate', '011')
         self.solution = 'Add generate label'
-        self.phase = 1
         self.insert_token = oInsertTokens
         self.anchor_token = oAnchorTokens
         self.left_token = oLeftTokens
         self.right_token = oRightTokens
         self.value_token = oValueTokens
+        self.groups.append('structure::optional')
 
     def _get_tokens_of_interest(self, oFile):
         return oFile.get_tokens_bounded_by(token.architecture_body.begin_keyword, token.architecture_body.end_keyword)

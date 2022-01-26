@@ -1,11 +1,18 @@
 
-from vsg.depricated_rule import Depricated
+from vsg import deprecated_rule
 
 
-class rule_003(Depricated):
+class rule_003(deprecated_rule.Rule):
+    '''
+    This rule was depricated and replaced with rules:
 
+    * `function_015 <function_rules.html#function-015>`_
+    * `package_019 <package_rules.html#package-019>`_
+    * `procedure_010 <procedure_rules.html#procedure-010>`_
+    * `architecture_029 <architecture_rules.html#architecture-029>`_
+    '''
     def __init__(self):
-        Depricated.__init__(self, 'variable', '003')
+        deprecated_rule.Rule.__init__(self, 'variable', '003')
         self.message.append('Rule ' + self.unique_id + ' has been replaced with the following rules:')
         self.message.append('  function_015')
         self.message.append('  package_019')

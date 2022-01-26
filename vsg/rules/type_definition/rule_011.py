@@ -10,7 +10,24 @@ lTokens.append(token.full_type_declaration.semicolon)
 
 class rule_011(blank_line_below_line_ending_with_token):
     '''
-    Checks for a blank line below the "type" declaration.
+    This rule checks for a blank line below the **type** declaration.
+
+    Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       type state_machine is (idle, write, read, done);
+       signal sm : state_machine;
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       type state_machine is (idle, write, read, done);
+
+       signal sm : state_machine;
     '''
 
     def __init__(self):

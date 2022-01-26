@@ -1,9 +1,10 @@
 
-from vsg import rule
 from vsg import violation
 
+from vsg.rule_group import structure
 
-class existence_of_tokens_which_should_not_occur(rule.Rule):
+
+class existence_of_tokens_which_should_not_occur(structure.Rule):
     '''
     Checks the case for words.
 
@@ -24,9 +25,7 @@ class existence_of_tokens_which_should_not_occur(rule.Rule):
     '''
 
     def __init__(self, name, identifier, lTokens):
-        rule.Rule.__init__(self, name=name, identifier=identifier)
-        self.solution = None
-        self.phase = 1
+        structure.Rule.__init__(self, name=name, identifier=identifier)
         self.lTokens = lTokens
         self.fixable = False
 

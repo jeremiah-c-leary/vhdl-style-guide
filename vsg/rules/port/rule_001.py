@@ -9,8 +9,22 @@ lTokens.append(token.port_keyword)
 
 class rule_001(blank_line_above_line_starting_with_token):
     '''
-    Checks for more than one blank line above the *port* keyword.
+    This rule checks for a blank line above the **port** keyword.
 
+    **Violation**
+
+    .. code-block:: vhdl
+
+       entity FIFO is
+
+         port (
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       entity FIFO is
+         port (
     '''
     def __init__(self):
         blank_line_above_line_starting_with_token.__init__(self, 'port', '001', lTokens)

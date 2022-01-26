@@ -9,7 +9,23 @@ lTokens.append(token.block_statement.begin_keyword)
 
 class rule_301(token_indent):
     '''
-    Checks for indent of the block label.
+    This rule checks the indent of the **begin** keyword.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       block_label : block is
+
+         begin
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       block_label : block is
+
+       begin
     '''
 
     def __init__(self):

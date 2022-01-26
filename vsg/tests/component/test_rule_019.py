@@ -26,6 +26,7 @@ class test_component_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'component')
         self.assertEqual(oRule.identifier, '019')
+        self.assertEqual(oRule.groups, ['structure'])
 
         lExpected = [6, 8, 9, 12, 14, 15, 23, 26, 31, 33, 35]
 

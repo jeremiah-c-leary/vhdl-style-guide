@@ -9,6 +9,6 @@ class test_rule(unittest.TestCase):
     def test_rule_003(self):
         oRule = file_statement.rule_003()
         self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'file_statement')
+        self.assertEqual(oRule.name, 'file')
         self.assertEqual(oRule.identifier, '003')
-        self.assertTrue(oRule.depricated)
+        self.assertTrue(oRule.deprecated)

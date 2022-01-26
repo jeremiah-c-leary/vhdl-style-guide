@@ -10,17 +10,27 @@ from vsg.vhdlFile import utils
 
 class rule_003(block_rule.Rule):
     '''
-    Checks the case for words.
+    This rule checks the block comment footer is correct.
 
-    Parameters
-    ----------
+    Refer to the section `Configuring Block Comments <configuring.html#configuring-block-comments>`_ for additional information.
 
-    name : string
-       The group the rule belongs to.
+    **Violation**
 
-    identifier : string
-       unique identifier.  Usually in the form of 00N.
+    .. code-block:: vhdl
 
+       --+-------------[ Header ]==============
+       --|  Comment
+       --|  Comment
+       ----------------------------------------
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       --+-------------[ Header ]==============
+       --|  Comment
+       --|  Comment
+       --+--------------------------[ Footer ]=
     '''
 
     def __init__(self):

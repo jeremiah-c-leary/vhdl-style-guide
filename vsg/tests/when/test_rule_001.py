@@ -26,6 +26,7 @@ class test_when_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'when')
         self.assertEqual(oRule.identifier, '001')
+        self.assertEqual(oRule.groups, ['structure'])
 
         lExpected = [23, 24, 30, 31, 32]
 

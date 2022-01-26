@@ -1,38 +1,37 @@
 
 from vsg import parser
-from vsg import rule
 from vsg import token
 from vsg import violation
 
 from vsg.rules import utils as rules_utils
-
+from vsg.rule_group import structure
 from vsg.vhdlFile import utils
 
 lTokens = []
 lTokens.append(token.generic_clause.close_parenthesis)
 
 
-class rule_010(rule.Rule):
+class rule_010(structure.Rule):
     '''
-    Moves code after the ) to the next line.
+    This rule checks the closing parenthesis is on a line by itself.
 
-    Parameters
-    ----------
+    **Violation**
 
-    name : string
-       The group the rule belongs to.
+    .. code-block:: vhdl
 
-    identifier : string
-       unique identifier.  Usually in the form of 00N.
+       g_depth : integer := 512);
 
-    lTokens : list of parser object types
-       object type to split a line at
+    **Fix**
+
+    .. code-block:: vhdl
+
+         g_depth : integer := 512
+       );
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self, 'generic', '010')
+        structure.Rule.__init__(self, 'generic', '010')
         self.solution = 'Closing parenthesis must be on a line by itself.'
-        self.phase = 1
         self.lTokens = lTokens
 
     def analyze(self, oFile):

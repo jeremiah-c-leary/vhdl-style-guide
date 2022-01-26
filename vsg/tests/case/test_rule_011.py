@@ -29,6 +29,7 @@ class test_case_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'case')
         self.assertEqual(oRule.identifier, '011')
+        self.assertEqual(oRule.groups, ['alignment'])
 
         lExpected = [21, 22, 24]
 

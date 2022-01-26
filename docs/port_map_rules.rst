@@ -6,7 +6,7 @@ Port Map Rules
 port_map_001
 ############
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **port map** keywords have proper case.
 
@@ -27,7 +27,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 port_map_002
 ############
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_name|
 
 This rule checks the port names have proper case.
 
@@ -58,7 +58,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 port_map_003
 ############
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks the "(" character is on the same line as the **port map** keywords.
 
@@ -88,7 +88,7 @@ Use explicit port mapping.
 port_map_004
 ############
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks the closing ")" character for the port map is on it's own line.
 
@@ -110,7 +110,7 @@ This rule checks the closing ")" character for the port map is on it's own line.
 port_map_005
 ############
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks for a port assignment on the same line as the **port map** keyword.
 
@@ -136,7 +136,7 @@ This rule checks for a port assignment on the same line as the **port map** keyw
 port_map_007
 ############
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space after the **=>** operator in port maps.
 
@@ -165,7 +165,7 @@ This rule checks for a single space after the **=>** operator in port maps.
 port_map_008
 ############
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks for positional ports.
 Positional ports are subject to problems when the position of the underlying component changes.
@@ -193,7 +193,7 @@ Use explicit port mapping.
 port_map_009
 ############
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks multiple port assignments on the same line.
 
@@ -215,3 +215,4 @@ This rule checks multiple port assignments on the same line.
      RD_EN => w_rd_en,
      OVERFLOW => w_overflow
    );
+

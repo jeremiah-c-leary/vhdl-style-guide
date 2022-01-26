@@ -9,7 +9,20 @@ lTokens.append(token.if_statement.end_keyword)
 
 class rule_020(split_line_at_token):
     '''
-    Moves code after the is keyword to the next line.
+    This rule checks the **end if** keyword is on it's own line.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       if (a = '1') then c <= '1'; else c <= '0'; end if;
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       if (a = '1') then c <= '1'; else c <= '0';
+       end if;
     '''
 
     def __init__(self):

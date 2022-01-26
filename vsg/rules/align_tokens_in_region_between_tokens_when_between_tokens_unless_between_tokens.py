@@ -1,16 +1,15 @@
 
 
 from vsg import parser
-from vsg import rule
 from vsg import token
 from vsg import violation
 
 from vsg.rules import utils as rules_utils
-
+from vsg.rule_group import alignment
 from vsg.vhdlFile import utils
 
 
-class align_tokens_in_region_between_tokens_when_between_tokens_unless_between_tokens(rule.Rule):
+class align_tokens_in_region_between_tokens_when_between_tokens_unless_between_tokens(alignment.Rule):
     '''
     Checks for a single space between two tokens.
 
@@ -37,9 +36,7 @@ class align_tokens_in_region_between_tokens_when_between_tokens_unless_between_t
     '''
 
     def __init__(self, name, identifier, lTokens, left_token, right_token, lBetween, lUnless):
-        rule.Rule.__init__(self, name=name, identifier=identifier)
-        self.solution = None
-        self.phase = 5
+        alignment.Rule.__init__(self, name=name, identifier=identifier)
         self.lTokens = lTokens
         self.left_token = left_token
         self.right_token = right_token

@@ -53,6 +53,46 @@ begin
       b <= '0';
     end if;
 
+    if a='1' then
+      b <= '0';
+    end if;
+
+    if a='1' then
+      b <= '0';
+    end if;
+
+    if a='1' then
+      b <= '0';
+    end if;
+
+    if a='1' then
+      b <= '0';
+    end if;
+
+    if a='1' then
+      b <= '0';
+    end if;
+
+    if a='1' then
+      b <= '0';
+    end if;
+
+  end process;
+
+  process begin
+
+    if something then
+      b <= 0;
+    elsif something_else then
+      b <= 1;
+    end if;
+  
+    if something then
+      b <= 0;
+    elsif something_else then
+      b <= 1;
+    end if;
+
   end process;
 
 end architecture RTL;

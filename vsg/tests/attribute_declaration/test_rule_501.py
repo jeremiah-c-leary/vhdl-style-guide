@@ -30,6 +30,7 @@ class test_attribute_declaration_statement_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'attribute_declaration')
         self.assertEqual(oRule.identifier, '501')
+        self.assertEqual(oRule.groups, ['case', 'case::name'])
 
         lExpected = [6]
 

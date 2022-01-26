@@ -26,6 +26,7 @@ class test_sequential_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'sequential')
         self.assertEqual(oRule.identifier, '004')
+        self.assertEqual(oRule.groups, ['alignment'])
 
         lExpected = [46, 47, 50, 56, 57, 63, 70]
 

@@ -30,8 +30,9 @@ class test_component_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'component')
         self.assertEqual(oRule.identifier, '021')
+        self.assertEqual(oRule.groups, ['structure', 'structure::optional'])
 
-        lExpected = [10]
+        lExpected = [10, 15, 19]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -52,7 +53,7 @@ class test_component_rule(unittest.TestCase):
         oRule = component.rule_021()
         oRule.action = 'remove'
 
-        lExpected = [4]
+        lExpected = [4, 23]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))

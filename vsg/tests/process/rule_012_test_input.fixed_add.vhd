@@ -18,9 +18,10 @@ begin
   begin
   end process;
 
-  process (a, b) is
+  process (a, b)is
   begin
   end process;
 
+  process(a,b)is begin end process;
 
 end architecture RTL;

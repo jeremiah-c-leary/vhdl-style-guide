@@ -16,7 +16,21 @@ oEnd = token.generic_clause.close_parenthesis
 
 class rule_006(single_space_between_token_pairs_bounded_by_tokens):
     '''
-    Checks for a single space between the := and expression.
+    This rule checks for a single space after the default assignment.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       g_width : integer :=32;
+       g_depth : integer :=     512;
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       g_width : integer := 32;
+       g_depth : integer := 512;
     '''
     def __init__(self):
         single_space_between_token_pairs_bounded_by_tokens.__init__(self, 'generic', '006', lTokens, oStart, oEnd)

@@ -1,28 +1,33 @@
 
-from vsg import rule
 from vsg import token
 from vsg import violation
+from vsg.rule_group import case
 
 
-class rule_028(rule.Rule):
+class rule_028(case.Rule):
     '''
-    Instantiation rule 028 checks the entity name is uppercase in direct instantiations.
+    This rule checks the entity name has proper case in direct instantiations.
 
-    Parameters
-    ----------
+    Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
 
-    name : string
-       The group the rule belongs to.
+    **Violation**
 
-    identifier : string
-       unique identifier.  Usually in the form of 00N.
+    .. code-block:: vhdl
+
+       instance_name : entity library.ENTITY_NAME
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       instance_name : entity library.entity_name
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self, name='instantiation', identifier='028')
-        self.phase = 6
+        case.Rule.__init__(self, name='instantiation', identifier='028')
         self.case = 'lower'
         self.configuration.append('case')
+        self.groups.append('case::name')
 
     def _get_tokens_of_interest(self, oFile):
         return oFile.get_tokens_matching([token.instantiated_unit.entity_name])

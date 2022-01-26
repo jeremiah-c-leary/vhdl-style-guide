@@ -83,6 +83,7 @@ def extract_violation_lines_from_violation_object(lViolations):
     lReturn = []
     for oViolation in lViolations:
         lReturn.append(oViolation.get_line_number())
+    lReturn.sort()
     return lReturn
 
 

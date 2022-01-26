@@ -6,9 +6,32 @@ from vsg.token import use_clause as token
 lTokens = []
 lTokens.append(token.keyword)
 
+
 class rule_007(previous_line):
     '''
-    Removes blank lines above the "use" keyword.
+    This rule checks for blank lines or comments above the **use** declaration.
+
+    Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
+
+    The default style is :code:`no_blank_line`.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       library ieee;
+
+         use ieee.std_logic_1164.all;
+
+         use ieee.std_logic_unsigned.all;
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       library ieee;
+         use ieee.std_logic_1164.all;
+         use ieee.std_logic_unsigned.all;
     '''
     def __init__(self):
         previous_line.__init__(self, 'library', '007', lTokens)

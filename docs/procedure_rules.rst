@@ -40,7 +40,7 @@ There are three forms a procedure:  with parameters, without parameters, and a p
 procedure_001
 #############
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the **procedure** keyword.
 
@@ -71,7 +71,7 @@ This rule checks the indent of the **procedure** keyword.
 procedure_002
 #############
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the **begin** keyword.
 
@@ -102,7 +102,7 @@ This rule checks the indent of the **begin** keyword.
 procedure_003
 #############
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the **end** keyword.
 
@@ -133,7 +133,7 @@ This rule checks the indent of the **end** keyword.
 procedure_004
 #############
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of parameters.
 
@@ -164,7 +164,7 @@ This rule checks the indent of parameters.
 procedure_005
 #############
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of lines between the **is** and **begin** keywords
 
@@ -198,7 +198,7 @@ This rule checks the indent of lines between the **is** and **begin** keywords
 procedure_006
 #############
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the closing parenthesis if it is on it's own line.
 
@@ -224,7 +224,7 @@ This rule checks the indent of the closing parenthesis if it is on it's own line
 procedure_007
 #############
 
-|phase_6| |error|
+|phase_6| |error| |case|
 
 This rule checks for consistent capitalization of procedure names.
 
@@ -275,7 +275,7 @@ This rule checks for consistent capitalization of procedure names.
 procedure_008
 #############
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **end** keyword has proper case.
 
@@ -300,7 +300,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 procedure_009
 #############
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **procedure** keyword in the **end procedure** has proper case.
 
@@ -325,7 +325,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 procedure_010
 #############
 
-|phase_5| |error|
+|phase_5| |error| |alignment|
 
 This rule checks the identifiers for all declarations are aligned in the procedure declarative part.
 
@@ -350,7 +350,7 @@ Refer to the section `Configuring Identifier Alignment Rules <configuring.html#c
 procedure_011
 #############
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks for a procedure parameter on the same line as the procedure keyword when the parameters are on multiple lines.
 
@@ -377,7 +377,7 @@ This rule checks for a procedure parameter on the same line as the procedure key
 procedure_100
 #############
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space between the following procedure elements:  **procedure** keyword, procedure designator, open parenthesis, close parenthesis, and **is** keywords.
 
@@ -404,7 +404,7 @@ This rule checks for a single space between the following procedure elements:  *
 procedure_101
 #############
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space between the **end** and **procedure** keywords and procedure designator.
 
@@ -427,7 +427,7 @@ This rule checks for a single space between the **end** and **procedure** keywor
 procedure_200
 #############
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for blank lines or comments above the **procedure** keyword.
 
@@ -452,168 +452,32 @@ Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous
 procedure_201
 #############
 
-|phase_3| |error|
-
-This rule checks for a blank line below the **is** keyword.
-
-This rule allows the **begin** keyword to occupy the blank line:
-
-.. code-block:: vhdl
-
-   procedure average_samples is
-   begin
-
-Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   procedure average_samples (
-       constant a : in integer;
-       signal d : out std_logic
-   ) is
-     constant width : integer := 32;
-   begin
-
-   procedure average_samples is
-     constant width : integer := 32;
-   begin
-
-**Fix**
-
-.. code-block:: vhdl
-
-   procedure average_samples (
-       constant a : in integer;
-       signal d : out std_logic
-   ) is
-
-     constant width : integer := 32;
-   begin
-
-   procedure average_samples is
-
-     constant width : integer := 32;
-   begin
+This rule has been moved to rule `subprogram_body_201 <subprogram_rules.html#subprogram-body-201>`_.
 
 procedure_202
 #############
 
-|phase_3| |error|
-
-This rule checks for blank lines above the **begin** keyword.
-
-This rule allows the **is** keyword to occupy the blank line:
-
-.. code-block:: vhdl
-
-   procedure average_samples is
-   begin
-
-Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   procedure average_samples is
-
-     constant width : integer := 32;
-   begin
-
-**Fix**
-
-.. code-block:: vhdl
-
-   procedure average_samples is
-
-     constant width : integer := 32;
-
-   begin
+This rule has been moved to rule `subprogram_body_202 <subprogram_rules.html#subprogram-body-202>`_.
 
 procedure_203
 #############
 
-|phase_3| |error|
-
-This rule checks for a blank line below the **begin** keyword.
-
-Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   procedure average_samples is
-   begin
-     a <= b;
-
-**Fix**
-
-.. code-block:: vhdl
-
-   procedure average_samples is
-   begin
-
-     a <= b;
+This rule has been moved to rule `subprogram_body_203 <subprogram_rules.html#subprogram-body-203>`_.
 
 procedure_204
 #############
 
-|phase_3| |error|
-
-This rule checks for blank lines above the **end** keyword.
-
-Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   begin
-
-     a <= b;
-   end procedure average_samples;
-
-**Fix**
-
-.. code-block:: vhdl
-
-   begin
-
-     a <= b;
-
-   end procedure average_samples;
+This rule has been moved to rule `subprogram_body_204 <subprogram_rules.html#subprogram-body-204>`_.
 
 procedure_205
 #############
 
-|phase_3| |error|
-
-This rule checks for a blank line below the semicolon at the end of the procedure declaration.
-
-Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   end procedure average_samples;
-   signal wr_en : std_logic;
-
-**Fix**
-
-.. code-block:: vhdl
-
-   end procedure average_samples;
-
-   signal wr_en : std_logic;
+This rule has been moved to rule `subprogram_body_205 <subprogram_rules.html#subprogram-body-205>`_.
 
 procedure_401
 #############
 
-|phase_5| |error|
+|phase_5| |error| |alignment|
 
 This rule checks the colons are in the same column for all declarations in the procedure declarative part.
 Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
@@ -639,7 +503,7 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
 procedure_410
 #############
 
-|phase_5| |error|
+|phase_5| |error| |alignment|
 
 This rule checks the alignment of the colon for each parameter in the procedure declaration.
 
@@ -666,7 +530,7 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
 procedure_411
 #############
 
-|phase_5| |error|
+|phase_5| |error| |alignment|
 
 This rule checks the alignment of **:=** operator for each parameter in the procedure declaration.
 
@@ -693,7 +557,7 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
 procedure_412
 #############
 
-|phase_5| |error|
+|phase_5| |error| |alignment|
 
 This rule checks for alignment of inline comments for each parameter in the procedure declaration.
 
@@ -720,7 +584,7 @@ Refer to the section `Configuring Keyword Alignment Rules <configuring.html#conf
 procedure_500
 #############
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **procedure** keyword has proper case.
 
@@ -741,7 +605,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 procedure_501
 #############
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_name|
 
 This rule checks the procedure designator has proper case.
 
@@ -762,7 +626,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 procedure_502
 #############
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **is** keyword has proper case.
 
@@ -783,7 +647,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 procedure_503
 #############
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **begin** keyword has proper case.
 
@@ -806,7 +670,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 procedure_504
 #############
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **end** keyword has proper case.
 
@@ -827,7 +691,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 procedure_505
 #############
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **procedure** keyword in the **end procedure** has proper case.
 
@@ -848,7 +712,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 procedure_506
 #############
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_name|
 
 This rule checks the procedure designator has proper case on the end procedure declaration.
 
@@ -869,7 +733,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 procedure_507
 #############
 
-|phase_6| |error|
+|phase_6| |error| |case|
 
 This rule checks for consistent capitalization of procedure names.
 
@@ -918,5 +782,4 @@ This rule checks for consistent capitalization of procedure names.
      end process;
 
    end architecture rtl;
-
 

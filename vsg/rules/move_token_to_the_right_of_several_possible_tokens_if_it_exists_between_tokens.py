@@ -1,14 +1,13 @@
 
 from vsg import parser
-from vsg import rule
 from vsg import violation
 
 from vsg.rules import utils as rules_utils
-
+from vsg.rule_group import structure
 from vsg.vhdlFile import utils
 
 
-class move_token_to_the_right_of_several_possible_tokens_if_it_exists_between_tokens(rule.Rule):
+class move_token_to_the_right_of_several_possible_tokens_if_it_exists_between_tokens(structure.Rule):
     '''
     Moves one token next to several possible tokens if it exists.
 
@@ -30,9 +29,7 @@ class move_token_to_the_right_of_several_possible_tokens_if_it_exists_between_to
     '''
 
     def __init__(self, name, identifier, oMoveToken, lAnchorTokens, oStartToken, oEndToken, bInsertWhitespace=False):
-        rule.Rule.__init__(self, name, identifier)
-        self.solution = None
-        self.phase = 1
+        structure.Rule.__init__(self, name, identifier)
         self.oMoveToken = oMoveToken
         self.lAnchorTokens = lAnchorTokens
         self.oStartToken = oStartToken

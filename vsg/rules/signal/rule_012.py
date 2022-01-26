@@ -1,44 +1,39 @@
 
 from vsg import parser
-from vsg import rule
 from vsg import token
 from vsg import violation
 
 from vsg.rules import utils as rules_utils
-
+from vsg.rule_group import alignment
 from vsg.vhdlFile import utils
 
 
-class rule_012(rule.Rule):
+class rule_012(alignment.Rule):
     '''
-    Checks for a single space between two tokens.
+    This rule checks multiple signal declarations on a single line are column aligned.
 
-    Parameters
-    ----------
+    .. NOTE::
+        This rule will only cover two signals on a single line.
 
-    name : string
-       The group the rule belongs to.
+    **Violation**
 
-    identifier : string
-       unique identifier.  Usually in the form of 00N.
+    .. code-block:: vhdl
 
-    lTokens : token object list
-       List of tokens to align
+       signal wr_en, wr_en_f             : std_logic;
+       signal rd_en_f, rd_en             : std_logic;
+       signal chip_select, chip_select_f : t_user_defined_type;
 
-    left_token : token object
-       The first token that defines the region
+    **Fix**
 
-    right_token : token object
-       The second token that defines the region
+    .. code-block:: vhdl
 
-    lUnless : token object pairs list
-       A list of pairs of tokens to in which to exclude alignment
+       signal wr_en,       wr_en_f       : std_logic;
+       signal rd_en_f,     rd_en         : std_logic;
+       signal chip_select, chip_select_f : t_user_defined_type;
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self, 'signal', '012')
-        self.solution = None
-        self.phase = 5
+        alignment.Rule.__init__(self, 'signal', '012')
         self.subphase = 2
         self.left_token = token.architecture_body.is_keyword
         self.right_token = token.architecture_body.begin_keyword

@@ -1,14 +1,13 @@
 
 from vsg import parser
-from vsg import rule
 from vsg import violation
 
 from vsg.rules import utils as rules_utils
-
+from vsg.rule_group import structure
 from vsg.vhdlFile import utils
 
 
-class remove_carriage_return_after_token(rule.Rule):
+class remove_carriage_return_after_token(structure.Rule):
     '''
     Checks for a carriage return within the next two tokens after the one given.
 
@@ -29,9 +28,7 @@ class remove_carriage_return_after_token(rule.Rule):
     '''
 
     def __init__(self, name, identifier, lTokens, bInsertSpace=False):
-        rule.Rule.__init__(self, name=name, identifier=identifier)
-        self.solution = None
-        self.phase = 1
+        structure.Rule.__init__(self, name=name, identifier=identifier)
         self.lTokens = lTokens
         self.bInsertSpace = bInsertSpace
 

@@ -22,6 +22,7 @@ class test_variable_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'variable')
         self.assertEqual(oRule.identifier, '007')
+        self.assertEqual(oRule.groups, ['structure'])
 
         lExpected = [19, 24]
 

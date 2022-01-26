@@ -246,7 +246,7 @@ Refer to the section `Configuring Blank Lines <configuring.html#configuring-blan
 loop_statement_300
 ##################
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indentation of the **loop** keyword.
 
@@ -380,4 +380,3 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 .. code-block:: vhdl
 
    end loop loop_label;
-

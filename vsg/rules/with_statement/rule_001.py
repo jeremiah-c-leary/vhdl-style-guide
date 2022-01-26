@@ -1,30 +1,28 @@
 
-from vsg import rule
 from vsg import token
 from vsg import violation
 
+from vsg.rule_group import structure
 
-class rule_001(rule.Rule):
+
+class rule_001(structure.Rule):
     '''
-    Checks the case for words.
+    This rule checks for **with** statements.
 
-    Parameters
-    ----------
+    **Violation**
 
-    name : string
-       The group the rule belongs to.
+    .. code-block:: vhdl
 
-    identifier : string
-       unique identifier.  Usually in the form of 00N.
+       with buttons select
 
-    trigger : parser object type
-       object type to apply the case check against
+    **Fix**
+
+    Refactor **with** statement into a process.
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self, name='with', identifier='001')
+        structure.Rule.__init__(self, name='with', identifier='001')
         self.solution = "Rewrite with as a process"
-        self.phase = 1
         self.fixable = False
 
     def _get_tokens_of_interest(self, oFile):

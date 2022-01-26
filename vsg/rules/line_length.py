@@ -1,11 +1,10 @@
 
 
-from vsg import rule
-from vsg import severity
+from vsg.rule_group import length
 from vsg import violation
 
 
-class line_length(rule.Rule):
+class line_length(length.Rule):
     '''
     Checks for a at least a single space before a token.
 
@@ -21,13 +20,9 @@ class line_length(rule.Rule):
     '''
 
     def __init__(self, name, identifier):
-        rule.Rule.__init__(self, name=name, identifier=identifier)
-        self.phase = 7
-        self.fixable = False  # The user will have to fix line length violations
+        length.Rule.__init__(self, name=name, identifier=identifier)
         self.disable = False
-        self.severity = severity.warning('Warning')
         self.length = 120
-        self.configuration.append('length')
         self.solution = 'Reduce line to less than ' + str(self.length) + ' characters'
 
     def _get_tokens_of_interest(self, oFile):

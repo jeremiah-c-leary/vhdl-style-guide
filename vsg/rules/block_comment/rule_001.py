@@ -9,22 +9,27 @@ from vsg import violation
 
 class rule_001(block_rule.Rule):
     '''
-    Checks the case for words.
+    This rule checks the block comment header is correct.
 
-    Parameters
-    ----------
+    Refer to the section `Configuring Block Comments <configuring.html#configuring-block-comments>`_ for additional information.
 
-    name : string
-       The group the rule belongs to.
+    **Violation**
 
-    identifier : string
-       unique identifier.  Usually in the form of 00N.
+    .. code-block:: vhdl
 
-    trigger : parser object type
-       object type to apply the case check against
+       ----------------------------------------
+       --   Comment
+       --   Comment
+       ----------------------------------------
 
+    **Fix**
 
+    .. code-block:: vhdl
 
+       --+-------------[ Header ]==============
+       --   Comment
+       --   Comment
+       ----------------------------------------
     '''
 
     def __init__(self):

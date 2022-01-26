@@ -6,7 +6,7 @@ Case Rules
 case_001
 ########
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of **case**, **when**, and **end case** keywords.
 
@@ -38,7 +38,7 @@ This rule checks the indent of **case**, **when**, and **end case** keywords.
 case_002
 ########
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space after the **case** keyword.
 
@@ -58,7 +58,7 @@ This rule checks for a single space after the **case** keyword.
 case_003
 ########
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space before the **is** keyword.
 
@@ -77,7 +77,7 @@ This rule checks for a single space before the **is** keyword.
 case_004
 ########
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space after the **when** keyword.
 
@@ -100,7 +100,7 @@ This rule checks for a single space after the **when** keyword.
 case_005
 ########
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space before the **=>** operator.
 
@@ -123,7 +123,7 @@ This rule checks for a single space before the **=>** operator.
 case_006
 ########
 
-|phase_2| |error|
+|phase_2| |error| |whitespace|
 
 This rule checks for a single space between the **end** and **case** keywords.
 
@@ -146,7 +146,7 @@ This rule checks for a single space between the **end** and **case** keywords.
 case_007
 ########
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for blank lines or comments above the **case** keyword.
 
@@ -180,7 +180,7 @@ The default style is :code:`no_code`.
 case_008
 ########
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for a blank line below the **is** keyword.
 
@@ -204,7 +204,7 @@ Refer to the section `Configuring Blank Lines <configuring.html#configuring-blan
 case_009
 ########
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for blank lines or comments above the **end** keyword.
 
@@ -230,7 +230,7 @@ Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ f
 case_010
 ########
 
-|phase_3| |error|
+|phase_3| |error| |blank_line|
 
 This rule checks for a blank line below the **end case** keywords.
 
@@ -254,7 +254,7 @@ Refer to the section `Configuring Blank Lines <configuring.html#configuring-blan
 case_011
 ########
 
-|phase_4| |error|
+|phase_4| |error| |alignment|
 
 This rule checks the alignment of multiline **when** statements.
 
@@ -279,7 +279,7 @@ This rule checks the alignment of multiline **when** statements.
 case_012
 ########
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks for code after the **=>** operator.
 
@@ -299,7 +299,7 @@ This rule checks for code after the **=>** operator.
 case_013
 ########
 
-|phase_4| |error|
+|phase_4| |error| |indent|
 
 This rule checks the indent of the **null** keyword.
 
@@ -326,7 +326,7 @@ This rule checks the indent of the **null** keyword.
 case_014
 ########
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **case** keyword has proper case.
 
@@ -355,7 +355,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 case_015
 ########
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **is** keyword has proper case.
 
@@ -384,7 +384,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 case_016
 ########
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **when** has proper case.
 
@@ -409,7 +409,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 case_017
 ########
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **end** keyword in the **end case** has proper case.
 
@@ -434,7 +434,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 case_018
 ########
 
-|phase_6| |error|
+|phase_6| |error| |case| |case_keyword|
 
 This rule checks the **case** keyword has proper case in the **end case**.
 
@@ -459,7 +459,7 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 case_019
 ########
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks for labels before the **case** keyword.
 The label should be removed.
@@ -484,7 +484,7 @@ The preference is to have comments above the case statement.
 case_020
 ########
 
-|phase_1| |error|
+|phase_1| |error| |structure|
 
 This rule checks for labels after the **end case** keywords.
 The label should be removed.
@@ -507,7 +507,7 @@ The preference is to have comments above the case statement.
 case_021
 ########
 
-|phase_4| |error|
+|phase_4| |error| |alignment|
 
 This rule aligns consecutive comment only lines above a **when** keyword in a case statement with the **when** keyword.
 
@@ -530,3 +530,28 @@ This rule aligns consecutive comment only lines above a **when** keyword in a ca
    -- comment 3
    when wr_en =>
      rd_en <= '0';
+
+case_200
+########
+
+|phase_3| |error| |blank_line|
+
+This rule checks for a blank line below the **=>** keyword.
+
+Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   when 0 =>
+     a <= b;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   when 0 =>
+
+     a <= b;
+

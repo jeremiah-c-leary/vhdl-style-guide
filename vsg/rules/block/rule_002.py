@@ -14,9 +14,26 @@ oBeforeToken = token.begin_keyword
 
 class rule_002(insert_token_right_of_possible_tokens_if_it_does_not_exist_before_token):
     '''
-    Checks for the existance of the "is" keyword.
+    This rule checks for the existence of the **is** keyword.
+
+    Refer to the section `Configuring Optional Items <configuring.html#configuring-optional-items>`_ for options.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       block_label : block
+       block_label : block (guard_condition)
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       block_label : block is
+       block_label : block (guard_condition) is
     '''
 
     def __init__(self):
         insert_token_right_of_possible_tokens_if_it_does_not_exist_before_token.__init__(self, 'block', '002', oInsertToken, lRightTokens, oBeforeToken)
         self.solution = '*is* keyword'
+        self.groups.append('structure::optional')

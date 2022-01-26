@@ -8,7 +8,21 @@ lBetweenTokens = [token.end_keyword, token.semicolon]
 
 class rule_009(move_token_next_to_another_token_if_it_exists_between_tokens):
     '''
-    Checks the context is keyword on the same line as the context identifier.
+    This rule checks the **context** keyword is on the same line as the end context keyword.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       end
+       context c1;
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       end context
+         c1;
     '''
 
     def __init__(self):

@@ -1,16 +1,15 @@
 
 
 from vsg import parser
-from vsg import rule
 from vsg import token
 from vsg import violation
 
 from vsg.rules import utils as rules_utils
-
+from vsg.rule_group import alignment
 from vsg.vhdlFile import utils
 
 
-class align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens(rule.Rule):
+class align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens(alignment.Rule):
     '''
     Checks for a single space between two tokens.
 
@@ -37,9 +36,7 @@ class align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens(
     '''
 
     def __init__(self, name, identifier, lTokens, left_token, right_token, lSkip):
-        rule.Rule.__init__(self, name=name, identifier=identifier)
-        self.solution = None
-        self.phase = 5
+        alignment.Rule.__init__(self, name=name, identifier=identifier)
         self.lTokens = lTokens
         self.left_token = left_token
         self.right_token = right_token
@@ -60,6 +57,10 @@ class align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens(
     def analyze(self, oFile):
         lToi = oFile.get_tokens_bounded_by(self.left_token, self.right_token)
         for oToi in lToi:
+
+            if not_enough_tokens_to_align(oToi, self.lTokens):
+                continue
+
             lTokens = oToi.get_tokens()
             iLine = oToi.get_line_number()
             iColumn = 0
@@ -214,3 +215,12 @@ def add_adjustments_to_dAnalysis(dAnalysis, compact_alignment, include_lines_wit
     else:
         for iKey in list(dAnalysis.keys()):
             dAnalysis[iKey]['adjust'] = iMaxTokenColumn - dAnalysis[iKey]['token_column']
+
+
+def not_enough_tokens_to_align(oToi, lTokens):
+    lTemp = oToi.get_tokens()
+    lTemp = rules_utils.remove_token_sequence_from_token_list([parser.carriage_return, parser.whitespace, parser.comment], lTemp)
+
+    if rules_utils.number_of_tokens_from_token_list_in_token_list(lTokens, lTemp) < 2:
+        return True
+    return False

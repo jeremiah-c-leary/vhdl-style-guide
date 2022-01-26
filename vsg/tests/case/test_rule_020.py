@@ -26,6 +26,7 @@ class test_case_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'case')
         self.assertEqual(oRule.identifier, '020')
+        self.assertEqual(oRule.groups, ['structure'])
 
         lExpected = [32]
 

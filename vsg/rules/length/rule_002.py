@@ -4,7 +4,9 @@ from vsg.rules import file_length
 
 class rule_002(file_length):
     '''
-    Checks for length of the file.
+    This rule checks the length of a file.
+
+    Refer to the section `Configuring Length Rules <configuring.html#configuring-length-rules>`_ for configuring this option.
     '''
 
     def __init__(self):

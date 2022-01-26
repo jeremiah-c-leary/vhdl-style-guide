@@ -6,7 +6,21 @@ from vsg.token import architecture_body as token
 
 class rule_007(token_indent):
     '''
-    Architecture rule 007 checks the indent of the *begin* keyword.
+    This rule checks for spaces before the **begin** keyword.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       architecture rtl of fifo is
+         begin
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       architecture rtl of fifo is
+       begin
     '''
 
     def __init__(self):
