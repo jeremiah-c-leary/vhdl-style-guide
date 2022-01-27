@@ -23,6 +23,28 @@ This rule checks for code after the **loop** keyword.
    loop
      a <= b;
 
+loop_statement_002
+##################
+
+|phase_1| |error| |structure|
+
+This rule checks the **end** keyword is on it's own line.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   loop
+     a <= b; end loop;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   loop
+     a <= b;
+   end loop;
+
 loop_statement_100
 ##################
 
