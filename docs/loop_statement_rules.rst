@@ -36,6 +36,39 @@ This rule checks the indentation of the **loop** keyword.
 
    end process;
 
+loop_statement_301
+##################
+
+|phase_4| |error| |indent|
+
+This rule checks the indentation of the loop label if it exists.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   fifo_proc : process () is
+   begin
+
+       LOOP_LABEL : loop
+
+     end loop;
+
+   end process;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   fifo_proc : process () is
+   begin
+
+     LOOP_LABEL : loop
+
+     end loop;
+
+   end process;
+
 loop_statement_500
 ##################
 
