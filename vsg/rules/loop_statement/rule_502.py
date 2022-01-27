@@ -4,12 +4,12 @@ from vsg.rules import token_case as Rule
 from vsg import token
 
 lTokens = []
-lTokens.append(token.loop_statement.end_keyword)
+lTokens.append(token.loop_statement.end_loop_keyword)
 
 
-class rule_501(Rule):
+class rule_502(Rule):
     '''
-    This rule checks the **end** keyword has proper case.
+    This rule checks the **loop** keyword has proper case.
 
     Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
 
@@ -19,7 +19,7 @@ class rule_501(Rule):
 
        while (condition) loop
 
-       END loop;
+       end LOOP;
 
     **Fix**
 
@@ -31,5 +31,5 @@ class rule_501(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'loop_statement', '501', lTokens)
+        Rule.__init__(self, 'loop_statement', '502', lTokens)
         self.groups.append('case::keyword')
