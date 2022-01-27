@@ -3,6 +3,27 @@
 Loop Statement Rules
 --------------------
 
+loop_statement_100
+##################
+
+|phase_2| |error| |whitespace|
+
+This rule checks that a single exists between the **end** and **loop** keywords
+
+**Violation**
+
+.. code-block:: vhdl
+
+     end loop;
+     end    loop;
+
+**Fix**
+
+.. code-block:: vhdl
+
+     end loop;
+     end loop;
+
 loop_statement_300
 ##################
 
