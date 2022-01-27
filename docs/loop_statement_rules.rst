@@ -43,6 +43,27 @@ This rule checks for a single space before the ending loop label if it exists.
 
    end loop END_LOOP_LABEL;
 
+loop_statement_102
+##################
+
+|phase_2| |error| |whitespace|
+
+This rule checks for a single space before the **loop** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+  for x in (0 to 30)loop
+  for x in (0 to 30)         loop
+
+**Fix**
+
+.. code-block:: vhdl
+
+  for x in (0 to 30) loop
+  for x in (0 to 30) loop
+
 loop_statement_300
 ##################
 

@@ -28,21 +28,23 @@ class single_space_before_token(whitespace.Rule):
         self.lTokens = lTokens
 
     def _get_tokens_of_interest(self, oFile):
-        return oFile.get_token_and_n_tokens_before_it(self.lTokens, 1)
+        return oFile.get_token_and_n_tokens_before_it(self.lTokens, 2)
 
     def _analyze(self, lToi):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
-            if isinstance(lTokens[0], parser.carriage_return):
+            if isinstance(lTokens[1], parser.carriage_return):
                 continue
-            if not isinstance(lTokens[0], parser.whitespace):
-                sSolution = 'Ensure a single space before ' + lTokens[1].get_value()
+            if isinstance(lTokens[0], parser.carriage_return) and isinstance(lTokens[1], parser.whitespace):
+                continue
+            if not isinstance(lTokens[1], parser.whitespace):
+                sSolution = 'Ensure a single space before ' + lTokens[2].get_value()
                 oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
                 oViolation.set_action('insert')
                 self.add_violation(oViolation)
             else:
-                if lTokens[0].get_value() != ' ':
-                    sSolution = 'Ensure a single space before ' + lTokens[1].get_value()
+                if lTokens[1].get_value() != ' ':
+                    sSolution = 'Ensure a single space before ' + lTokens[2].get_value()
                     oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
                     oViolation.set_action('adjust')
                     self.add_violation(oViolation)
@@ -51,7 +53,7 @@ class single_space_before_token(whitespace.Rule):
         lTokens = oViolation.get_tokens()
         sAction = oViolation.get_action()
         if sAction == 'insert':
-            rules_utils.insert_whitespace(lTokens, 1)
+            rules_utils.insert_whitespace(lTokens, 2)
         elif sAction == 'adjust':
-            lTokens[0].set_value(' ')
+            lTokens[1].set_value(' ')
         oViolation.set_tokens(lTokens)
