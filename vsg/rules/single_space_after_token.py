@@ -3,7 +3,7 @@ from vsg import parser
 from vsg import violation
 
 from vsg.rule_group import whitespace
-from vsg.rules import utils as rules_utils
+from vsg.rules import utils
 
 
 class single_space_after_token(whitespace.Rule):
@@ -35,10 +35,10 @@ class single_space_after_token(whitespace.Rule):
     def _analyze(self, lToi):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
-            if not whitespace_exists(lTokens):
+            if not whitespace_exists_after_token(lTokens):
                 oViolation = create_violation(oToi, 'insert')
                 self.add_violation(oViolation)
-            elif whitespace_is_more_than_a_single_character(lTokens):
+            elif utils.whitespace_is_larger_than_a_single_character(lTokens):
                 oViolation = create_violation(oToi, 'adjust')
                 self.add_violation(oViolation)
 
@@ -46,20 +46,14 @@ class single_space_after_token(whitespace.Rule):
         lTokens = oViolation.get_tokens()
         sAction = oViolation.get_action()
         if sAction == 'insert':
-            rules_utils.insert_whitespace(lTokens, 1)
+            utils.insert_whitespace(lTokens, 1)
         elif sAction == 'adjust':
             lTokens[1].set_value(' ')
         oViolation.set_tokens(lTokens)
 
 
-def whitespace_exists(lTokens):
+def whitespace_exists_after_token(lTokens):
     if isinstance(lTokens[1], parser.whitespace):
-        return True
-    return False
-
-
-def whitespace_is_more_than_a_single_character(lTokens):
-    if lTokens[1].get_value() != ' ':
         return True
     return False
 

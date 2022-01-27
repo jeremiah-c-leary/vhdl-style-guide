@@ -3,7 +3,7 @@ from vsg import parser
 from vsg import violation
 
 from vsg.rule_group import whitespace
-from vsg.rules import utils as rules_utils
+from vsg.rules import utils
 
 
 class single_space_before_token(whitespace.Rule):
@@ -38,7 +38,7 @@ class single_space_before_token(whitespace.Rule):
             if not whitespace_exists_before_token(lTokens):
                 oViolation = create_insert_violation(oToi)
                 self.add_violation(oViolation)
-            elif whitespace_is_larger_than_a_single_character(lTokens):
+            elif utils.whitespace_is_larger_than_a_single_character(lTokens):
                 oViolation = create_adjust_violation(oToi)
                 self.add_violation(oViolation)
 
@@ -46,7 +46,7 @@ class single_space_before_token(whitespace.Rule):
         lTokens = oViolation.get_tokens()
         sAction = oViolation.get_action()
         if sAction == 'insert':
-            rules_utils.insert_whitespace(lTokens, 2)
+            utils.insert_whitespace(lTokens, 2)
         elif sAction == 'adjust':
             lTokens[1].set_value(' ')
         oViolation.set_tokens(lTokens)
@@ -54,12 +54,6 @@ class single_space_before_token(whitespace.Rule):
 
 def whitespace_exists_before_token(lTokens):
     if isinstance(lTokens[1], parser.whitespace):
-        return True
-    return False
-
-
-def whitespace_is_larger_than_a_single_character(lTokens):
-    if lTokens[1].get_value() != ' ':
         return True
     return False
 

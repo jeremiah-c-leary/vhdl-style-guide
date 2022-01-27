@@ -188,3 +188,9 @@ def token_list_begins_with_close_paren(lTokens):
     if isinstance(lTokens[0], parser.close_parenthesis):
         return True
     return False
+
+
+def whitespace_is_larger_than_a_single_character(lTokens):
+    if lTokens[1].get_value() != ' ':
+        return True
+    return False
