@@ -33,6 +33,7 @@ architecture BEHAVIORAL of FRAMEBUFFER is
       temp(i) := "000";
 
     end loop;
+
     return temp;
 
   end initfb;

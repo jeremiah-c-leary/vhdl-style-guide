@@ -156,9 +156,9 @@ loop_statement_201
 
 |phase_3| |error| |blank_line|
 
-This rule adds a blank line below the **loop** keyword.
+This rule checks for blank lines below the **loop** keyword.
 
-Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
+Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options.
 
 **Violation**
 
@@ -199,6 +199,30 @@ Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous
      a <= b;
 
    end loop;
+
+loop_statement_203
+##################
+
+|phase_3| |error| |blank_line|
+
+This rule check for blank lines below the **end loop** keywords.
+
+Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   end loop;
+   a <= b;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   end loop;
+
+   a <= b;
 
 loop_statement_300
 ##################
