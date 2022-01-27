@@ -174,6 +174,32 @@ Refer to the section `Configuring Blank Lines <configuring.html#configuring-blan
    loop
      a <= b;
 
+loop_statement_202
+##################
+
+|phase_3| |error| |blank_line|
+
+This rule checks for blank lines or comments above the **end** keyword.
+
+Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous-line-rules>`_ for options.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   loop
+     a <= b;
+   end loop;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   loop
+     a <= b;
+
+   end loop;
+
 loop_statement_300
 ##################
 
