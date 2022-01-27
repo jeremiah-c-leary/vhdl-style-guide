@@ -95,4 +95,3 @@ def token_begins_a_line(lTokens):
     if isinstance(lTokens[1], parser.carriage_return):
         return True
     return False
-

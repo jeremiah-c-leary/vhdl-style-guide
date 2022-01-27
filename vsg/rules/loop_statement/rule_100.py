@@ -2,7 +2,6 @@
 from vsg.rules import single_space_between_tokens
 
 from vsg.token import loop_statement as token
-from vsg.token import iteration_scheme
 
 
 class rule_100(single_space_between_tokens):
