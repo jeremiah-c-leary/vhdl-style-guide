@@ -188,5 +188,3 @@ def token_list_begins_with_close_paren(lTokens):
     if isinstance(lTokens[0], parser.close_parenthesis):
         return True
     return False
-
-
