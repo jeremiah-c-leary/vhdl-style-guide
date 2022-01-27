@@ -28,24 +28,19 @@ class single_space_after_token(whitespace.Rule):
         self.lTokens = lTokens
 
     def _get_tokens_of_interest(self, oFile):
-        return oFile.get_token_and_n_tokens_after_it(self.lTokens, 1)
+        lToi = oFile.get_token_and_n_tokens_after_it(self.lTokens, 1)
+        lToi = remove_toi_if_token_is_at_the_end_of_the_line(lToi)
+        return lToi
 
     def _analyze(self, lToi):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
-            if isinstance(lTokens[1], parser.carriage_return):
-                continue
-            if not isinstance(lTokens[1], parser.whitespace):
-                sSolution = 'Ensure a single space after ' + lTokens[0].get_value()
-                oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
-                oViolation.set_action('insert')
+            if not whitespace_exists(lTokens):
+                oViolation = create_violation(oToi, 'insert')
                 self.add_violation(oViolation)
-            else:
-                if lTokens[1].get_value() != ' ':
-                    sSolution = 'Ensure a single space after ' + lTokens[0].get_value()
-                    oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
-                    oViolation.set_action('adjust')
-                    self.add_violation(oViolation)
+            elif whitespace_is_more_than_a_single_character(lTokens):
+                oViolation = create_violation(oToi, 'adjust')
+                self.add_violation(oViolation)
 
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
@@ -55,3 +50,32 @@ class single_space_after_token(whitespace.Rule):
         elif sAction == 'adjust':
             lTokens[1].set_value(' ')
         oViolation.set_tokens(lTokens)
+
+
+def whitespace_exists(lTokens):
+    if isinstance(lTokens[1], parser.whitespace):
+        return True
+    return False
+
+
+def whitespace_is_more_than_a_single_character(lTokens):
+    if lTokens[1].get_value() != ' ':
+        return True
+    return False
+
+
+def create_violation(oToi, sAdjust):
+    lTokens = oToi.get_tokens()
+    sSolution = 'Ensure a single space after ' + lTokens[0].get_value()
+    oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
+    oViolation.set_action(sAdjust)
+    return oViolation
+
+
+def remove_toi_if_token_is_at_the_end_of_the_line(lToi):
+    lReturn = []
+    for oToi in lToi:
+        lTokens = oToi.get_tokens()
+        if not isinstance(lTokens[1], parser.carriage_return):
+            lReturn.append(oToi)
+    return lReturn
