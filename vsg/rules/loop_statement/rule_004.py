@@ -1,5 +1,5 @@
 
-from vsg.rules import move_token_to_the_right_of_several_possible_tokens_if_it_exists_between_tokens
+from vsg.rules import move_token_to_the_right_of_several_possible_tokens_if_it_exists_between_tokens as Rule
 
 from vsg import token
 
@@ -13,7 +13,7 @@ oStartToken = token.loop_statement.end_loop_keyword
 oEndToken = token.loop_statement.semicolon
 
 
-class rule_004(move_token_to_the_right_of_several_possible_tokens_if_it_exists_between_tokens):
+class rule_004(Rule):
     '''
     This rule checks the semicolon is on the same line as the **end loop** keyword.
 
@@ -37,5 +37,5 @@ class rule_004(move_token_to_the_right_of_several_possible_tokens_if_it_exists_b
     '''
 
     def __init__(self):
-        move_token_to_the_right_of_several_possible_tokens_if_it_exists_between_tokens.__init__(self, 'loop_statement', '004', oToken, lAnchorTokens, oStartToken, oEndToken)
+        Rule.__init__(self, 'loop_statement', '004', oToken, lAnchorTokens, oStartToken, oEndToken)
         self.subphase = 3
