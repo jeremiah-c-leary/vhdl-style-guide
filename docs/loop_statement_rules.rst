@@ -24,6 +24,25 @@ This rule checks that a single exists between the **end** and **loop** keywords
      end loop;
      end loop;
 
+loop_statement_101
+##################
+
+|phase_2| |error| |whitespace|
+
+This rule checks for a single space before the ending loop label if it exists.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   end loop           END_LOOP_LABEL;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   end loop END_LOOP_LABEL;
+
 loop_statement_300
 ##################
 
