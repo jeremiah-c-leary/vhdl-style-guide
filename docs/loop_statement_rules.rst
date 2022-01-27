@@ -57,3 +57,28 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
    while (condition) loop
 
+loop_statement_501
+##################
+
+|phase_6| |error| |case| |case_keyword|
+
+This rule checks the **end** keyword has proper case.
+
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   while (condition) loop
+
+   end LOOP;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   while (condition) loop
+
+   end loop;
+
