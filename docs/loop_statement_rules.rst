@@ -65,6 +65,31 @@ This rule checks the **end** keyword is on the same line as the **end loop** key
 
    end loop;
 
+loop_statement_004
+##################
+
+|phase_1| |error| |structure|
+
+This rule checks the semicolon is on the same line as the **end loop** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   end loop
+   ;
+
+   end loop LOOP_LABEL
+   ;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   end loop;
+
+   end loop LOOP_LABEL;
+
 loop_statement_100
 ##################
 
@@ -125,6 +150,29 @@ This rule checks for a single space before the **loop** keyword.
 
   for x in (0 to 30) loop
   for x in (0 to 30) loop
+
+loop_statement_201
+##################
+
+|phase_3| |error| |blank_line|
+
+This rule adds a blank line below the **loop** keyword.
+
+Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   loop
+     a <= b;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   loop
+     a <= b;
 
 loop_statement_300
 ##################
