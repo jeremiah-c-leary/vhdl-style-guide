@@ -3,6 +3,26 @@
 Loop Statement Rules
 --------------------
 
+loop_statement_001
+##################
+
+|phase_1| |error| |structure|
+
+This rule checks for code after the **loop** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   loop a <= b;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   loop
+     a <= b;
+
 loop_statement_100
 ##################
 
