@@ -95,7 +95,7 @@ loop_statement_100
 
 |phase_2| |error| |whitespace|
 
-This rule checks that a single exists between the **end** and **loop** keywords
+This rule checks that a single space exists between the **end** and **loop** keywords
 
 **Violation**
 
@@ -205,7 +205,7 @@ loop_statement_203
 
 |phase_3| |error| |blank_line|
 
-This rule check for blank lines below the **end loop** keywords.
+This rule checks for blank lines below the **end loop** keywords.
 
 Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options.
 
@@ -285,6 +285,39 @@ This rule checks the indentation of the loop label if it exists.
    begin
 
      LOOP_LABEL : loop
+
+     end loop;
+
+   end process;
+
+loop_statement_302
+##################
+
+|phase_4| |error| |indent|
+
+This rule checks the indentation of the **end** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   fifo_proc : process () is
+   begin
+
+     for index in 4 to 23 loop
+
+        end loop;
+
+   end process;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   fifo_proc : process () is
+   begin
+
+     for index in 4 to 23 loop
 
      end loop;
 

@@ -6,7 +6,7 @@ from vsg.token import loop_statement as token
 
 class rule_203(blank_line_below_line_ending_with_token):
     '''
-    This rule check for blank lines below the **end loop** keywords.
+    This rule checks for blank lines below the **end loop** keywords.
 
     Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options.
 

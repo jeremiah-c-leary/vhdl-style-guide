@@ -6,7 +6,7 @@ from vsg.token import loop_statement as token
 
 class rule_100(single_space_between_tokens):
     '''
-    This rule checks that a single exists between the **end** and **loop** keywords
+    This rule checks that a single space exists between the **end** and **loop** keywords
 
     **Violation**
 
@@ -24,4 +24,4 @@ class rule_100(single_space_between_tokens):
     '''
     def __init__(self):
         single_space_between_tokens.__init__(self, 'loop_statement', '100', token.end_keyword, token.end_loop_keyword)
-        self.solution = 'Ensure a single space end and loop.'
+        self.solution = 'Ensure a single space is between *end* and *loop*.'
