@@ -49,42 +49,10 @@ This rule has been moved to **loop_statement_503**.
 for_loop_004
 ############
 
-|phase_2| |error| |whitespace|
-
-This rule checks if a label exists on a for loop that a single space exists between the label and the colon.
-
-**Violation**
-
-.. code-block:: vhdl
-
-     label: for index in 4 to 23 loop
-     label    : for index in 0 to 100 loop
-
-**Fix**
-
-.. code-block:: vhdl
-
-     label : for index in 4 to 23 loop
-     label : for index in 0 to 100 loop
+This rule has been moved to **loop_statement_103**.
 
 for_loop_005
 ############
 
-|phase_2| |error| |whitespace|
-
-This rule checks if a label exists on a for loop that a single space exists after the colon.
-
-**Violation**
-
-.. code-block:: vhdl
-
-     label :    for index in 4 to 23 loop
-     label :  for index in 0 to 100 loop
-
-**Fix**
-
-.. code-block:: vhdl
-
-     label : for index in 4 to 23 loop
-     label : for index in 0 to 100 loop
+This rule has been moved to **loop_statement_104**.
 

@@ -28,7 +28,7 @@ class single_space_after_token(whitespace.Rule):
         self.lTokens = lTokens
 
     def _get_tokens_of_interest(self, oFile):
-        lToi = oFile.get_token_and_n_tokens_after_it(self.lTokens, 1)
+        lToi = oFile.get_token_and_n_tokens_after_it(self.lTokens, 2)
         lToi = remove_toi_if_token_is_at_the_end_of_the_line(lToi)
         return lToi
 
@@ -70,6 +70,13 @@ def remove_toi_if_token_is_at_the_end_of_the_line(lToi):
     lReturn = []
     for oToi in lToi:
         lTokens = oToi.get_tokens()
-        if not isinstance(lTokens[1], parser.carriage_return):
-            lReturn.append(oToi)
+        if isinstance(lTokens[1], parser.carriage_return):
+           continue
+        if isinstance(lTokens[1], parser.comment):
+           continue 
+        if isinstance(lTokens[2], parser.carriage_return):
+           continue
+        if isinstance(lTokens[2], parser.comment):
+           continue 
+        lReturn.append(oToi)
     return lReturn
