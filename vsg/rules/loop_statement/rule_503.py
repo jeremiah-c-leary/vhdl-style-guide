@@ -9,7 +9,7 @@ lTokens.append(token.loop_statement.loop_label)
 
 class rule_503(token_case_with_prefix_suffix):
     '''
-    This rule checks the proper case of the label on a for loop.
+    This rule checks the proper case of the label on a loop statement.
 
     Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
 

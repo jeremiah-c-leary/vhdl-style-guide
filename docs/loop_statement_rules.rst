@@ -399,7 +399,7 @@ loop_statement_503
 
 |phase_6| |error| |case| |case_label|
 
-This rule checks the proper case of the label on a for loop.
+This rule checks the proper case of the label on a loop statement.
 
 Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
 
