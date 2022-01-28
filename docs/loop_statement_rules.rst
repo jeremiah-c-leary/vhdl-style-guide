@@ -459,3 +459,26 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
      label : for index in 4 to 23 loop
      label : for index in 0 to 100 loop
 
+loop_statement_504
+##################
+
+|phase_6| |error| |case| |case_label|
+
+This rule checks the proper case of the end label on a loop statement.
+
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+
+**Violation**
+
+.. code-block:: vhdl
+
+     end loop LABEL;
+     end loop Label;
+
+**Fix**
+
+.. code-block:: vhdl
+
+     end loop label;
+     end loop label;
+
