@@ -70,13 +70,19 @@ def remove_toi_if_token_is_at_the_end_of_the_line(lToi):
     lReturn = []
     for oToi in lToi:
         lTokens = oToi.get_tokens()
-        if isinstance(lTokens[1], parser.carriage_return):
-           continue
-        if isinstance(lTokens[1], parser.comment):
-           continue 
-        if isinstance(lTokens[2], parser.carriage_return):
-           continue
-        if isinstance(lTokens[2], parser.comment):
-           continue 
+        if comment_or_carriage_return_found(lTokens):
+            continue
         lReturn.append(oToi)
     return lReturn
+
+
+def comment_or_carriage_return_found(lTokens):
+    if isinstance(lTokens[1], parser.carriage_return):
+        return True
+    if isinstance(lTokens[1], parser.comment):
+        return True
+    if isinstance(lTokens[2], parser.carriage_return):
+        return True
+    if isinstance(lTokens[2], parser.comment):
+        return True
+    return False
