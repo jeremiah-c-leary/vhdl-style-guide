@@ -90,6 +90,36 @@ This rule checks the semicolon is on the same line as the **end loop** keyword.
 
    end loop LOOP_LABEL;
 
+loop_statement_005
+##################
+
+|phase_1| |error| |structure|
+
+This rule checks the loop label and the **while**, **for** or **loop** keywords are on the same line.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   LOOP_LABEL:
+     loop
+
+   LOOP_LABEL:
+     while condition loop
+
+   LOOP_LABEL:
+     for x in range(15 downto 0) loop
+
+**Fix**
+
+.. code-block:: vhdl
+
+   LOOP_LABEL: loop
+
+   LOOP_LABEL: while condition loop
+
+   LOOP_LABEL: for x in range(15 downto 0) loop
+
 loop_statement_100
 ##################
 
