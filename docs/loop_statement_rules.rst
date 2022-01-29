@@ -120,6 +120,28 @@ This rule checks the loop label and the **while**, **for** or **loop** keywords 
 
    LOOP_LABEL: for x in range(15 downto 0) loop
 
+loop_statement_007
+##################
+
+|phase_1| |disabled| |error| |structure|
+
+This rule checks the **end loop_statement** line has a label.
+The closing label will be added if the opening loop_statement label exists.
+
+Refer to the section `Configuring Optional Items <configuring.html#configuring-optional-items>`_ for options.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   end loop;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   end loop LOOP_LABEL;
+
 loop_statement_100
 ##################
 
