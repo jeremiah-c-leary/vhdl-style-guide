@@ -3,6 +3,29 @@
 Interation Scheme Rules
 -----------------------
 
+iteration_scheme_100
+####################
+
+|phase_2| |error| |whitespace|
+
+This rule checks that a single space exists after the **while** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   while(condition)
+
+   while      (condition)
+
+**Fix**
+
+.. code-block:: vhdl
+
+   while (condition)
+
+   while (condition)
+
 iteration_scheme_500
 ####################
 
