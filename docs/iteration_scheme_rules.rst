@@ -26,6 +26,25 @@ This rule checks that a single space exists after the **while** keyword.
 
    while (condition)
 
+iteration_scheme_101
+####################
+
+|phase_2| |error| |whitespace|
+
+This rule checks that a single space exists after the **for** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   for      x in (31 downto 0) loop
+
+**Fix**
+
+.. code-block:: vhdl
+
+   for x in (31 downto 0) loop
+
 iteration_scheme_500
 ####################
 
