@@ -120,6 +120,33 @@ This rule checks the loop label and the **while**, **for** or **loop** keywords 
 
    LOOP_LABEL: for x in range(15 downto 0) loop
 
+loop_statement_006
+##################
+
+|phase_1| |disabled| |error| |structure|
+
+This rule checks that loop statements have a label.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   loop
+
+   while (condition) loop
+
+   for x in range (31 downto 0) loop
+
+**Fix**
+
+.. code-block:: vhdl
+
+   LOOP_LABEL : loop
+
+   LOOP_LABEL : while (condition) loop
+
+   LOOP_LABEL : for x in range (31 downto 0) loop
+
 loop_statement_007
 ##################
 
