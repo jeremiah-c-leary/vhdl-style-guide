@@ -1,11 +1,13 @@
 
+from vsg.rules import token_does_not_exist_before_token as Rule
 from vsg.token import loop_statement as token
-from vsg import violation
 
-from vsg.rule_group import structure
+oFirstToken = token.loop_label
+
+oSecondToken = token.loop_keyword
 
 
-class rule_006(structure.Rule):
+class rule_006(Rule):
     '''
     This rule checks that loop statements have a label.
 
@@ -31,23 +33,7 @@ class rule_006(structure.Rule):
     '''
 
     def __init__(self):
-        structure.Rule.__init__(self, 'loop_statement', '006')
+        Rule.__init__(self, 'loop_statement', '006', oFirstToken, oSecondToken)
         self.solution = 'Add label for loop statement'
-        self.fixable = True
+        self.fixable = False
         self.disable = True
-
-    def analyze(self, oFile):
-        lKeywords = oFile.get_tokens_matching([token.loop_keyword])
-        lLabels = oFile.get_tokens_matching([token.loop_label])
-
-        iPreviousIndex = 0
-        for oKeyword in lKeywords:
-            iCurrentIndex = oKeyword.get_start_index()
-            for oLabel in lLabels:
-                iLabelIndex = oLabel.get_start_index()
-                if iPreviousIndex < iLabelIndex and iLabelIndex < iCurrentIndex:
-                    break
-            else:
-                oViolation = violation.New(oKeyword.get_line_number(), oKeyword, self.solution)
-                self.add_violation(oViolation)
-            iPreviousIndex = iCurrentIndex
