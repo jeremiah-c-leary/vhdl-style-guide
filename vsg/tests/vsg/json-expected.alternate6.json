@@ -1,13 +1,13 @@
 {
   "files": [
     {
-      "file_path": "vsg/tests/vsg/entity1.vhd",
+      "file_path": "vsg/tests/vsg/entity2.vhd",
       "violations": [
         {
-          "rule": "port_007",
-          "linenumber": 7,
+          "rule": "port_008",
+          "linenumber": 8,
           "severity": "Error",
-          "solution": "Change number of spaces after *in* to 4."
+          "solution": "Change the number of spaces after the *out* keyword to three spaces."
         }
       ]
     },
@@ -20,13 +20,13 @@
       "violations": []
     },
     {
-      "file_path": "vsg/tests/vsg/entity2.vhd",
+      "file_path": "vsg/tests/vsg/entity1.vhd",
       "violations": [
         {
-          "rule": "port_008",
-          "linenumber": 8,
+          "rule": "port_007",
+          "linenumber": 7,
           "severity": "Error",
-          "solution": "Change the number of spaces after the *out* keyword to three spaces."
+          "solution": "Change number of spaces after *in* to 4."
         }
       ]
     }

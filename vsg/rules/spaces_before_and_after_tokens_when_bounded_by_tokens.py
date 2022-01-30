@@ -40,13 +40,8 @@ class spaces_before_and_after_tokens_when_bounded_by_tokens(whitespace.Rule):
 
     def _analyze(self, lToi):
         for oToi in lToi:
-            iLine, lTokens = utils.get_toi_parameters(oToi)
 
-            fStartLine = False
-            if isinstance(lTokens[0], parser.carriage_return) and isinstance(lTokens[1], parser.whitespace):
-                fStartLine = True
-            if isinstance(lTokens[1], parser.carriage_return):
-                fStartLine = True
+            fStartLine = rules_utils.token_list_is_the_beginning_of_a_line(oToi.get_tokens())
 
             myToi = oToi.extract_tokens(1, 3)
 
@@ -57,7 +52,7 @@ class spaces_before_and_after_tokens_when_bounded_by_tokens(whitespace.Rule):
 
             check_spaces_on_right_side(lTokens, dAction, self.spaces_after)
 
-            if len(list(dAction.keys())) > 0:
+            if violations_found(dAction):
                 sSolution = create_solution_text(dAction, self.spaces_before, self.spaces_after, lTokens)
                 oViolation = violation.New(iLine, myToi, sSolution)
                 oViolation.set_action(dAction)
@@ -66,62 +61,122 @@ class spaces_before_and_after_tokens_when_bounded_by_tokens(whitespace.Rule):
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
         dAction = oViolation.get_action()
-        lKeys = list(dAction.keys())
-        for sKey in lKeys:
-            if sKey == 'left':
-                if dAction[sKey]['action'] == 'adjust':
-                    lTokens[1].set_value(' '*self.spaces_before)
-                elif dAction[sKey]['action'] == 'remove':
-                    lTokens.pop(0)
-                else:
-                    rules_utils.insert_whitespace(lTokens, self.spaces_before)
-            if sKey == 'right':
-                if dAction[sKey]['action'] == 'adjust':
-                    lTokens[-1].set_value(' '*self.spaces_after)
-                else:
-                    rules_utils.insert_whitespace(lTokens, len(lTokens) - self.spaces_after)
+        fix_left_violations(self, dAction, lTokens)
+        fix_right_violations(self, dAction, lTokens)
         oViolation.set_tokens(lTokens)
+
+
+def fix_left_violations(self, dAction, lTokens):
+    if not left_action_exists(dAction):
+        return
+    if dAction['left']['action'] == 'adjust':
+        lTokens[1].set_value(' '*self.spaces_before)
+    elif dAction['left']['action'] == 'remove':
+        lTokens.pop(0)
+    else:
+        rules_utils.insert_whitespace(lTokens, self.spaces_before)
+
+
+def fix_right_violations(self, dAction, lTokens):
+    if not right_action_exists(dAction):
+        return
+    if dAction['right']['action'] == 'adjust':
+        lTokens[-1].set_value(' '*self.spaces_after)
+    else:
+        rules_utils.insert_whitespace(lTokens, len(lTokens) - self.spaces_after)
+
+
+def right_action_exists(dAction):
+    if 'right' in list(dAction.keys()):
+        return True
+    return False
+
+
+def left_action_exists(dAction):
+    if 'left' in list(dAction.keys()):
+        return True
+    return False
 
 
 def create_solution_text(dAction, iNumSpacesBefore, iNumSpacesAfter, lTokens):
     sReturn = ''
-    for sKey in list(dAction.keys()):
-        if sKey == 'left':
-            if dAction[sKey]['action'] == 'adjust':
-                sReturn += 'Remove all but ' + str(iNumSpacesBefore) + ' space(s) before ' + lTokens[1].get_value() + '. '
-            elif dAction[sKey]['action'] == 'remove':
-                sReturn += 'Remove all space(s) before ' + lTokens[1].get_value() + '. '
-            else:
-                sReturn += 'Add ' + str(iNumSpacesBefore) + ' space(s) before ' + lTokens[1].get_value() + '. '
-        if sKey == 'right':
-            if dAction[sKey]['action'] == 'adjust':
-                sReturn += 'Remove all but ' + str(iNumSpacesAfter) + ' space(s) after ' + lTokens[1].get_value()
-            else:
-                sReturn += 'Add ' + str(iNumSpaces) + ' space(s) after ' + lTokens[1].get_value()
+    sReturn += create_left_solution(dAction, iNumSpacesBefore, lTokens)
+    sReturn += create_right_solution(dAction, iNumSpacesAfter, lTokens)
     return sReturn
 
 
-def check_spaces_on_left_side(lTokens, fStartLine, dAction, iSpaces):
-    if not fStartLine:
-        oLeft = lTokens[0]
-        if isinstance(oLeft, parser.whitespace) and iSpaces > 0:
-            if iSpaces != len(oLeft.get_value()):
-                dAction['left'] = {}
-                dAction['left']['action'] = 'adjust'
-        elif isinstance(oLeft, parser.whitespace) and iSpaces == 0:
-            dAction['left'] = {}
-            dAction['left']['action'] = 'remove'
-        elif iSpaces > 0:
-            dAction['left'] = {}
-            dAction['left']['action'] = 'insert'
+def create_left_solution(dAction, iNumSpaces, lTokens):
+    sReturn = ''
+    if left_action_exists(dAction):
+        sReturn = create_solution(dAction, 'left', iNumSpaces, lTokens)
+    return sReturn
 
+
+def create_right_solution(dAction, iNumSpaces, lTokens):
+    sReturn = ''
+    if right_action_exists(dAction):
+        sReturn = create_solution(dAction, 'right', iNumSpaces, lTokens)
+    return sReturn
+
+
+def create_solution(dAction, sKey, iNumSpaces, lTokens):
+    sSide = dAction[sKey]['side']
+    sTokenValue = lTokens[1].get_value()
+    if dAction[sKey]['action'] == 'adjust':
+        sReturn = f'Change number of spaces {sSide} *{sTokenValue}* to {iNumSpaces}.  '
+    elif dAction[sKey]['action'] == 'remove':
+        sReturn = f'Remove all space(s) {sSide} *{sTokenValue}*. '
+    else:
+        sReturn = f'Add {iNumSpaces} space(s) {sSide} *{sTokenValue}*.  '
+    return sReturn.strip()
+
+
+def check_spaces_on_left_side(lTokens, fStartLine, dAction, iSpaces):
+    if fStartLine:
+        return None
+    oLeft = lTokens[0]
+    if isinstance(oLeft, parser.whitespace) and iSpaces > 0:
+        set_adjust_action('left', oLeft, dAction, iSpaces)
+    elif isinstance(oLeft, parser.whitespace) and iSpaces == 0:
+        set_remove_action('left', dAction)
+    elif iSpaces > 0:
+        set_insert_action('left', dAction)
+     
 
 def check_spaces_on_right_side(lTokens, dAction, iSpaces):
     oRight = lTokens[-1]
     if isinstance(oRight, parser.whitespace):
-        if iSpaces != len(oRight.get_value()):
-            dAction['right'] = {}
-            dAction['right']['action'] = 'adjust'
+        set_adjust_action('right', oRight, dAction, iSpaces)
     else:
-        dAction['right'] = {}
-        dAction['right']['action'] = 'insert'
+        set_insert_action('right', dAction)
+
+
+def set_adjust_action(sSide, oToken, dAction, iSpaces):
+    if iSpaces != len(oToken.get_value()):
+        dAction[sSide] = {}
+        dAction[sSide]['action'] = 'adjust'
+        set_side_of_action(sSide, dAction)
+
+
+def set_remove_action(sSide, dAction):
+    dAction[sSide] = {}
+    dAction[sSide]['action'] = 'remove'
+    set_side_of_action(sSide, dAction)
+
+
+def set_insert_action(sSide, dAction):
+    dAction[sSide] = {}
+    dAction[sSide]['action'] = 'insert'
+    set_side_of_action(sSide, dAction)
+
+
+def set_side_of_action(sSide, dAction):
+    if sSide == 'right':
+        dAction[sSide]['side'] = 'after'
+    else:
+        dAction[sSide]['side'] = 'before'
+
+def violations_found(dAction):
+    if len(list(dAction.keys())) > 0:
+        return True
+    return False
