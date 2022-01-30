@@ -32,7 +32,7 @@ class spaces_before_and_after_tokens_when_bounded_by_tokens(whitespace.Rule):
         self.configuration.append('spaces_before')
         self.spaces_after = 4
         self.configuration.append('spaces_after')
-        self.lBetween= lBetween
+        self.lBetween = lBetween
         self.nTokens = 2
 
     def _get_tokens_of_interest(self, oFile):
@@ -141,7 +141,7 @@ def check_spaces_on_left_side(lTokens, fStartLine, dAction, iSpaces):
         set_remove_action('left', dAction)
     elif iSpaces > 0:
         set_insert_action('left', dAction)
-     
+
 
 def check_spaces_on_right_side(lTokens, dAction, iSpaces):
     oRight = lTokens[-1]
@@ -175,6 +175,7 @@ def set_side_of_action(sSide, dAction):
         dAction[sSide]['side'] = 'after'
     else:
         dAction[sSide]['side'] = 'before'
+
 
 def violations_found(dAction):
     if len(list(dAction.keys())) > 0:

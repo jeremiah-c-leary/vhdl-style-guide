@@ -192,7 +192,7 @@ def token_list_begins_with_close_paren(lTokens):
 
 def token_list_is_the_beginning_of_a_line(lTokens):
     if isinstance(lTokens[0], parser.carriage_return) and isinstance(lTokens[1], parser.whitespace):
-        fStartLine = True
+        return True
     if isinstance(lTokens[1], parser.carriage_return):
-        fStartLine = True
-    fStartLine = False
+        return True
+    return False
