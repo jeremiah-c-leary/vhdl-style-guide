@@ -32,17 +32,25 @@ class move_token_left_to_next_non_whitespace_token(structure.Rule):
         structure.Rule.__init__(self, name, identifier)
         self.subphase = 2
         self.token_to_move = token_to_move
+        self.bInsertWhitespace = True
 
     def _get_tokens_of_interest(self, oFile):
-        return oFile.get_tokens_between_non_whitespace_token_and_token(self.token_to_move)
+        lToi = oFile.get_tokens_between_non_whitespace_token_and_token(self.token_to_move)
+        lReturn = []
+        for oToi in lToi:
+            lTokens = oToi.get_tokens()
+            if self.bInsertWhitespace:
+                if does_a_whitespace_token_separate_tokens(lTokens):
+                    continue
+            lReturn.append(oToi)
+        return lReturn
+
 
     def _analyze(self, lToi):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
 
-            if does_a_whitespace_token_separate_tokens(lTokens):
-                continue
-            sSolution = 'Move **then** keyword to same line as ' + lTokens[0].get_value()            
+            sSolution = 'Move **then** keyword to same line as ' + lTokens[0].get_value()
             oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
             oViolation.set_remap()
             oViolation.fix_blank_lines = True
@@ -53,8 +61,10 @@ class move_token_left_to_next_non_whitespace_token(structure.Rule):
         lTokens = oViolation.get_tokens()
 
         rules_utils.insert_token(lTokens, 1, lTokens.pop())
-        rules_utils.insert_whitespace(lTokens, 1)
-        
+
+        if self.bInsertWhitespace:
+            rules_utils.insert_whitespace(lTokens, 1)
+
         lNewTokens = utils.remove_consecutive_whitespace_tokens(lTokens)
         lNewTokens = utils.remove_trailing_whitespace(lNewTokens)
         lNewTokens = utils.fix_blank_lines(lNewTokens)
@@ -63,7 +73,7 @@ class move_token_left_to_next_non_whitespace_token(structure.Rule):
 
 
 def does_a_whitespace_token_separate_tokens(lTokens):
-    if len(lTokens) == 3:
+    if len(lTokens) == 3 and isinstance(lTokens[1], parser.whitespace):
         return True
     return False
 
