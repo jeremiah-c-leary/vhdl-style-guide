@@ -14,6 +14,10 @@ lExpected = []
 lExpected.append('')
 utils.read_file(os.path.join(sTestDir, 'rule_004_test_input.fixed.vhd'), lExpected, True)
 
+lExpected_same_line = []
+lExpected_same_line.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_004_test_input.fixed_same_line.vhd'), lExpected_same_line, True)
+
 
 class test_port_map_rule(unittest.TestCase):
 
@@ -44,3 +48,26 @@ class test_port_map_rule(unittest.TestCase):
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
+
+    def test_rule_004_same_line(self):
+        oRule = port_map.rule_004()
+        oRule.location = 'same_line'
+
+        lExpected = [15, 28, 33, 38, 43, 48, 53, 58, 63]
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+
+    def test_fix_rule_004_same_line(self):
+        oRule = port_map.rule_004()
+        oRule.location = 'same_line'
+
+        oRule.fix(self.oFile)
+
+        lActual = self.oFile.get_lines()
+
+        self.assertEqual(lExpected_same_line, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+
