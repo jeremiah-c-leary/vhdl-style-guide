@@ -109,7 +109,7 @@ def fix_move_left_violations(oViolation):
     lTokens = oViolation.get_tokens()
 
     rules_utils.insert_token(lTokens, 1, lTokens.pop())
-    
+
     lNewTokens = utils.remove_consecutive_whitespace_tokens(lTokens)
     lNewTokens = utils.fix_blank_lines(lNewTokens)
 
