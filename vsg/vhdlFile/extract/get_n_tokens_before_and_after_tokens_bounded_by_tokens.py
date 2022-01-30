@@ -8,10 +8,6 @@ def get_n_tokens_before_and_after_tokens_bounded_by_tokens(iToken, lTokens, lBet
     lIndexes = []
 
     lIndexes = utils.filter_tokens_between_tokens(lTokens, lBetween[0], lBetween[1], oTokenMap)
-#    for oToken in lTokens:
-#        lIndexes.extend(oTokenMap.get_token_indexes(oToken))
-#
-#    lIndexes.sort()
 
     for iIndex in lIndexes:
         iLine = oTokenMap.get_line_number_of_index(iIndex)

@@ -71,7 +71,7 @@ def fix_left_violations(self, dAction, lTokens):
     if not left_action_exists(dAction):
         return
     if dAction['left']['action'] == 'adjust':
-        lTokens[1].set_value(' '*self.spaces_before)
+        lTokens[0].set_value(' '*self.spaces_before)
     elif dAction['left']['action'] == 'remove':
         lTokens.pop(0)
     else:
