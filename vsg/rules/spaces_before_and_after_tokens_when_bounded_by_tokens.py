@@ -133,12 +133,26 @@ def create_solution(dAction, sKey, iNumSpaces, lTokens):
 
 
 def check_spaces_on_left_side(lTokens, dAction, iSpaces):
+    check_for_adjustment_of_existing_whitespace(lTokens, dAction, iSpaces)
+    check_for_removal_of_existing_whitespace(lTokens, dAction, iSpaces)
+    check_for_insertion_of_missing_whitespace(lTokens, dAction, iSpaces)
+
+
+def check_for_adjustment_of_existing_whitespace(lTokens, dAction, iSpaces):
     oLeft = lTokens[0]
     if isinstance(oLeft, parser.whitespace) and iSpaces > 0:
         set_adjust_action('left', oLeft, dAction, iSpaces)
-    elif isinstance(oLeft, parser.whitespace) and iSpaces == 0:
+
+
+def check_for_removal_of_existing_whitespace(lTokens, dAction, iSpaces):
+    oLeft = lTokens[0]
+    if isinstance(oLeft, parser.whitespace) and iSpaces == 0:
         set_remove_action('left', dAction)
-    elif iSpaces > 0:
+
+
+def check_for_insertion_of_missing_whitespace(lTokens, dAction, iSpaces):
+    oLeft = lTokens[0]
+    if not isinstance(oLeft, parser.whitespace) and iSpaces > 0:
         set_insert_action('left', dAction)
 
 
