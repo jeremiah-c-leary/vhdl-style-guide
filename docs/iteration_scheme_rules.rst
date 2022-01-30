@@ -45,6 +45,34 @@ This rule checks that a single space exists after the **for** keyword.
 
    for x in (31 downto 0) loop
 
+iteration_scheme_300
+####################
+
+|phase_4| |error| |indent|
+
+This rule checks for indentation of the **while** keyword.
+Proper indentation enhances comprehension.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   begin
+
+   while (temp /= 0) loop
+       temp := temp/2;
+     end loop;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   begin
+
+     while (temp /= 0) loop
+       temp := temp/2;
+     end loop;
+
 iteration_scheme_500
 ####################
 
