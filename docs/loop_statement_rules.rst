@@ -272,6 +272,38 @@ This rule checks if a label exists that a single space exists after the colon.
      label : for index in 4 to 23 loop
      label : for index in 0 to 100 loop
 
+loop_statement_200
+##################
+
+|phase_3| |error| |blank_line|
+
+This rule checks for blank lines or comments above loop statements.
+
+Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
+
+The default style is :code:`no_code`.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   -- Comment
+   LOOP_LABEL : loop
+
+   wr_en <= wr_en;
+   LOOP_LABEL : loop
+
+**Fix**
+
+.. code-block:: vhdl
+
+   -- Comment
+   LOOP_LABEL : loop
+
+   wr_en <= wr_en;
+
+   LOOP_LABEL : loop
+
 loop_statement_201
 ##################
 
