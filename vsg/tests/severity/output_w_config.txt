@@ -12,8 +12,8 @@ Total Violations:    5
 ----------------------------+------------+------------+--------------------------------------
   port_007                  | Error      |          3 | Change number of spaces after *in* to 4.
   port_007                  | Error      |          4 | Change number of spaces after *in* to 4.
-  port_008                  | Error      |          6 | Change the number of spaces after the *out* keyword to three spaces.
-  port_008                  | Error      |          7 | Change the number of spaces after the *out* keyword to three spaces.
+  port_008                  | Error      |          6 | Change number of spaces after *out* to 3.
+  port_008                  | Error      |          7 | Change number of spaces after *out* to 3.
   entity_019                | ToDo       |          9 | Add entity simple name
 ----------------------------+------------+------------+--------------------------------------
 NOTE: Refer to online documentation at https://vhdl-style-guide.readthedocs.io/en/latest/index.html for more information.

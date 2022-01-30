@@ -1,21 +1,19 @@
 
 from vsg import token
 
-from vsg.rules import n_spaces_between_token_pairs_when_bounded_by_tokens
+from vsg.rules import spaces_before_and_after_tokens_when_bounded_by_tokens as Rule
 
 lTokens = []
-lTokens.append([token.mode.out_keyword, token.interface_unknown_declaration.subtype_indication])
-lTokens.append([token.mode.out_keyword, token.interface_signal_declaration.subtype_indication])
-lTokens.append([token.mode.out_keyword, token.interface_constant_declaration.subtype_indication])
-lTokens.append([token.mode.out_keyword, token.interface_variable_declaration.subtype_indication])
+lTokens.append(token.mode.out_keyword)
 
-oStart = token.port_clause.open_parenthesis
-oEnd = token.port_clause.close_parenthesis
+lBetween = [token.port_clause.open_parenthesis, token.port_clause.close_parenthesis]
 
 
-class rule_008(n_spaces_between_token_pairs_when_bounded_by_tokens):
+class rule_008(Rule):
     '''
-    This rule checks for three spaces after the **out** keyword.
+    This rule checks for spaces before and after the **out** mode keyword.
+
+    Refer to the section `Configuring Port Mode Alignment <configuring-port-mode-alignment>`_ for information on changing spaces.
 
     **Violation**
 
@@ -24,9 +22,8 @@ class rule_008(n_spaces_between_token_pairs_when_bounded_by_tokens):
        port (
          WR_EN    : in    std_logic;
          RD_EN    : in    std_logic;
-         OVERFLOW : out std_logic
+         OVERFLOW : out   std_logic
        );
-
 
     **Fix**
 
@@ -35,9 +32,10 @@ class rule_008(n_spaces_between_token_pairs_when_bounded_by_tokens):
        port (
          WR_EN    : in    std_logic;
          RD_EN    : in    std_logic;
-         OVERFLOW : out   std_logic
+         OVERFLOW : out std_logic
        );
     '''
     def __init__(self):
-        n_spaces_between_token_pairs_when_bounded_by_tokens.__init__(self, 'port', '008', 3, lTokens, oStart, oEnd)
-        self.solution = 'Change the number of spaces after the *out* keyword to three spaces.'
+        Rule.__init__(self, 'port', '008', lTokens, lBetween)
+        self.spaces_before = 1
+        self.spaces_after = 3

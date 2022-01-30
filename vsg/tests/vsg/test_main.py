@@ -40,7 +40,7 @@ class testMain(unittest.TestCase):
         lExpected = []
         lExpected.append(mock.call('ERROR: vsg/tests/vsg/entity1.vhd(7)port_007 -- Change number of spaces after *in* to 4.'))
         lExpected.append(mock.call('\n'))
-        lExpected.append(mock.call('ERROR: vsg/tests/vsg/entity2.vhd(8)port_008 -- Change the number of spaces after the *out* keyword to three spaces.'))
+        lExpected.append(mock.call('ERROR: vsg/tests/vsg/entity2.vhd(8)port_008 -- Change number of spaces after *out* to 3.'))
         lExpected.append(mock.call('\n'))
 
         sys.argv = ['vsg']
@@ -74,7 +74,7 @@ class testMain(unittest.TestCase):
         mock_stdout.write.assert_has_calls(lExpected)
 
         lExpected = []
-        lExpected.append(mock.call('ERROR: vsg/tests/vsg/entity2.vhd(8)port_008 -- Change the number of spaces after the *out* keyword to three spaces.'))
+        lExpected.append(mock.call('ERROR: vsg/tests/vsg/entity2.vhd(8)port_008 -- Change number of spaces after *out* to 3.'))
         lExpected.append(mock.call('\n'))
 
         sys.argv = ['vsg']
@@ -203,7 +203,7 @@ class testMain(unittest.TestCase):
 
     def test_globbing_filenames_in_configuration(self):
         lExpected = []
-        lExpected.append('ERROR: vsg/tests/vsg/entity2.vhd(8)port_008 -- Change the number of spaces after the *out* keyword to three spaces.')
+        lExpected.append('ERROR: vsg/tests/vsg/entity2.vhd(8)port_008 -- Change number of spaces after *out* to 3.')
         lExpected.append('ERROR: vsg/tests/vsg/entity1.vhd(7)port_007 -- Change number of spaces after *in* to 4.')
 
         sys.argv = ['vsg']
@@ -246,7 +246,7 @@ class testMain(unittest.TestCase):
         mock_stdout.write.assert_has_calls(lExpected)
 
         lExpected = []
-        lExpected.append(mock.call('ERROR: vsg/tests/vsg/entity2.vhd(8)port_008 -- Change the number of spaces after the *out* keyword to three spaces.'))
+        lExpected.append(mock.call('ERROR: vsg/tests/vsg/entity2.vhd(8)port_008 -- Change number of spaces after *out* to 3.'))
         lExpected.append(mock.call('\n'))
 
         sys.argv = ['vsg']
@@ -266,7 +266,7 @@ class testMain(unittest.TestCase):
         lExpected = []
         lExpected.append(mock.call('ERROR: vsg/tests/vsg/entity1.vhd(7)port_007 -- Change number of spaces after *in* to 4.'))
         lExpected.append(mock.call('\n'))
-        lExpected.append(mock.call('ERROR: vsg/tests/vsg/entity2.vhd(8)port_008 -- Change the number of spaces after the *out* keyword to three spaces.'))
+        lExpected.append(mock.call('ERROR: vsg/tests/vsg/entity2.vhd(8)port_008 -- Change number of spaces after *out* to 3.'))
         lExpected.append(mock.call('\n'))
 
         sys.argv = ['vsg']
@@ -336,7 +336,7 @@ class testMain(unittest.TestCase):
 
     def test_globbing_filenames_in_yaml_configuration(self):
         lExpected = []
-        lExpected.append('ERROR: vsg/tests/vsg/entity2.vhd(8)port_008 -- Change the number of spaces after the *out* keyword to three spaces.')
+        lExpected.append('ERROR: vsg/tests/vsg/entity2.vhd(8)port_008 -- Change number of spaces after *out* to 3.')
         lExpected.append('ERROR: vsg/tests/vsg/entity1.vhd(7)port_007 -- Change number of spaces after *in* to 4.')
 
         sys.argv = ['vsg']
@@ -397,7 +397,7 @@ class testMain(unittest.TestCase):
         self.assertFalse(os.path.isfile('deleteme.json'))
 
         lExpected = []
-        lExpected.append('ERROR: vsg/tests/vsg/entity2.vhd(8)port_008 -- Change the number of spaces after the *out* keyword to three spaces.')
+        lExpected.append('ERROR: vsg/tests/vsg/entity2.vhd(8)port_008 -- Change number of spaces after *out* to 3.')
         lExpected.append('ERROR: vsg/tests/vsg/entity1.vhd(7)port_007 -- Change number of spaces after *in* to 4.')
 
         sys.argv = ['vsg']

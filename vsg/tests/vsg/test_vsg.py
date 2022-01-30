@@ -29,7 +29,7 @@ class testVsg(unittest.TestCase):
     def test_multiple_configuration_w_multiple_filelists(self):
         lExpected = []
         lExpected.append('ERROR: vsg/tests/vsg/entity1.vhd(7)port_007 -- Change number of spaces after *in* to 4.')
-        lExpected.append('ERROR: vsg/tests/vsg/entity2.vhd(8)port_008 -- Change the number of spaces after the *out* keyword to three spaces.')
+        lExpected.append('ERROR: vsg/tests/vsg/entity2.vhd(8)port_008 -- Change number of spaces after *out* to 3.')
         lExpected.append('')
 
         try:
@@ -58,7 +58,7 @@ class testVsg(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
         lExpected = []
-        lExpected.append('ERROR: vsg/tests/vsg/entity2.vhd(8)port_008 -- Change the number of spaces after the *out* keyword to three spaces.')
+        lExpected.append('ERROR: vsg/tests/vsg/entity2.vhd(8)port_008 -- Change number of spaces after *out* to 3.')
         lExpected.append('')
 
         try:
@@ -161,7 +161,7 @@ class testVsg(unittest.TestCase):
 
     def test_globbing_filenames_in_configuration(self):
         lExpected = []
-        lExpected.append('ERROR: vsg/tests/vsg/entity2.vhd(8)port_008 -- Change the number of spaces after the *out* keyword to three spaces.')
+        lExpected.append('ERROR: vsg/tests/vsg/entity2.vhd(8)port_008 -- Change number of spaces after *out* to 3.')
         lExpected.append('ERROR: vsg/tests/vsg/entity1.vhd(7)port_007 -- Change number of spaces after *in* to 4.')
         lExpected.append('')
 
@@ -177,7 +177,7 @@ class testVsg(unittest.TestCase):
         if lActual[0] == lExpected[1]:
             lExpected = []
             lExpected.append('ERROR: vsg/tests/vsg/entity1.vhd(7)port_007 -- Change number of spaces after *in* to 4.')
-            lExpected.append('ERROR: vsg/tests/vsg/entity2.vhd(8)port_008 -- Change the number of spaces after the *out* keyword to three spaces.')
+            lExpected.append('ERROR: vsg/tests/vsg/entity2.vhd(8)port_008 -- Change number of spaces after *out* to 3.')
             lExpected.append('')
 
         self.assertEqual(lActual, lExpected)
@@ -198,7 +198,7 @@ class testVsg(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
         lExpected = []
-        lExpected.append('ERROR: vsg/tests/vsg/entity2.vhd(8)port_008 -- Change the number of spaces after the *out* keyword to three spaces.')
+        lExpected.append('ERROR: vsg/tests/vsg/entity2.vhd(8)port_008 -- Change number of spaces after *out* to 3.')
         lExpected.append('')
 
         try:
@@ -214,7 +214,7 @@ class testVsg(unittest.TestCase):
     def test_multiple_yaml_configuration_w_multiple_filelists(self):
         lExpected = []
         lExpected.append('ERROR: vsg/tests/vsg/entity1.vhd(7)port_007 -- Change number of spaces after *in* to 4.')
-        lExpected.append('ERROR: vsg/tests/vsg/entity2.vhd(8)port_008 -- Change the number of spaces after the *out* keyword to three spaces.')
+        lExpected.append('ERROR: vsg/tests/vsg/entity2.vhd(8)port_008 -- Change number of spaces after *out* to 3.')
         lExpected.append('')
 
         try:
@@ -260,7 +260,7 @@ class testVsg(unittest.TestCase):
 
     def test_globbing_filenames_in_yaml_configuration(self):
         lExpected = []
-        lExpected.append('ERROR: vsg/tests/vsg/entity2.vhd(8)port_008 -- Change the number of spaces after the *out* keyword to three spaces.')
+        lExpected.append('ERROR: vsg/tests/vsg/entity2.vhd(8)port_008 -- Change number of spaces after *out* to 3.')
         lExpected.append('ERROR: vsg/tests/vsg/entity1.vhd(7)port_007 -- Change number of spaces after *in* to 4.')
         lExpected.append('')
 
@@ -275,7 +275,7 @@ class testVsg(unittest.TestCase):
         if lActual[0] == lExpected[1]:
             lExpected = []
             lExpected.append('ERROR: vsg/tests/vsg/entity1.vhd(7)port_007 -- Change number of spaces after *in* to 4.')
-            lExpected.append('ERROR: vsg/tests/vsg/entity2.vhd(8)port_008 -- Change the number of spaces after the *out* keyword to three spaces.')
+            lExpected.append('ERROR: vsg/tests/vsg/entity2.vhd(8)port_008 -- Change number of spaces after *out* to 3.')
             lExpected.append('')
 
         self.assertEqual(lActual, lExpected)

@@ -37,3 +37,5 @@ class rule_007(Rule):
     '''
     def __init__(self):
         Rule.__init__(self, 'port', '007', lTokens, lBetween)
+        self.spaces_before = 1
+        self.spaces_after = 4

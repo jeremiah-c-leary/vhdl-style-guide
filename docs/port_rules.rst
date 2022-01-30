@@ -164,7 +164,9 @@ port_008
 
 |phase_2| |error| |whitespace|
 
-This rule checks for three spaces after the **out** keyword.
+This rule checks for spaces before and after the **out** mode keyword.
+
+Refer to the section `Configuring Port Mode Alignment <configuring-port-mode-alignment>`_ for information on changing spaces.
 
 **Violation**
 
@@ -173,9 +175,8 @@ This rule checks for three spaces after the **out** keyword.
    port (
      WR_EN    : in    std_logic;
      RD_EN    : in    std_logic;
-     OVERFLOW : out std_logic
+     OVERFLOW : out   std_logic
    );
-
 
 **Fix**
 
@@ -184,7 +185,7 @@ This rule checks for three spaces after the **out** keyword.
    port (
      WR_EN    : in    std_logic;
      RD_EN    : in    std_logic;
-     OVERFLOW : out   std_logic
+     OVERFLOW : out std_logic
    );
 
 port_009
