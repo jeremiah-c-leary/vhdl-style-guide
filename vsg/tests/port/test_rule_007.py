@@ -12,7 +12,11 @@ lFile, eError =vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_007_test
 
 lExpected = []
 lExpected.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_007_test_input.fixed.vhd'), lExpected)
+utils.read_file(os.path.join(sTestDir, 'rule_007_test_input.fixed_before_1_after_4.vhd'), lExpected)
+
+lExpected_before_0_after_1 = []
+lExpected_before_0_after_1.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_007_test_input.fixed_before_0_after_1.vhd'), lExpected_before_0_after_1)
 
 
 class test_port_rule(unittest.TestCase):
@@ -40,6 +44,30 @@ class test_port_rule(unittest.TestCase):
         lActual = self.oFile.get_lines()
 
         self.assertEqual(lExpected, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+
+    def test_rule_007_before_0_after_1(self):
+        oRule = port.rule_007()
+        oRule.spaces_before = 0
+        oRule.spaces_after = 1
+        
+        lExpected = [4, 6, 16]
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+
+    def test_fix_rule_007_before_0_after_1(self):
+        oRule = port.rule_007()
+        oRule.spaces_before = 0
+        oRule.spaces_after = 1
+
+        oRule.fix(self.oFile)
+
+        lActual = self.oFile.get_lines()
+
+        self.assertEqual(lExpected_before_0_after_1, lActual)
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])

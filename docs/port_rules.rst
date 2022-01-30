@@ -135,7 +135,9 @@ port_007
 
 |phase_2| |error| |whitespace|
 
-This rule checks for four spaces after the **in** keyword.
+This rule checks for spaces before and after the **in** mode keyword.
+
+Refer to the section `Configuring Port Mode Alignment <configuring-port-mode-alignment>`_ for information on changing spaces.
 
 **Violation**
 
@@ -156,7 +158,6 @@ This rule checks for four spaces after the **in** keyword.
      RD_EN    : in    std_logic;
      OVERFLOW : out   std_logic
    );
-
 
 port_008
 ########
