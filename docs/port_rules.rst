@@ -99,31 +99,7 @@ This rule checks the indent of port declarations.
 port_005
 ########
 
-|phase_2| |error| |whitespace|
-
-This rule checks for a single space after the colon.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   port (
-     WR_EN    : in    std_logic;
-     RD_EN    :   in    std_logic;
-     OVERFLOW :out   std_logic;
-     DATA     :inout std_logic
-   );
-
-**Fix**
-
-.. code-block:: vhdl
-
-   port (
-     WR_EN    : in    std_logic;
-     RD_EN    : in    std_logic;
-     OVERFLOW : out   std_logic;
-     DATA     : inout std_logic
-   );
+This rule has been deprecated and it's function has been included in rules **port_007**, **port_008** and **port_009**.
 
 port_006
 ########
