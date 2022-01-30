@@ -1,43 +1,12 @@
 
-from vsg.rules import token_indent
-
-from vsg import token
-
-lTokens = []
-lTokens.append(token.loop_statement.loop_label)
-lTokens.append(token.iteration_scheme.for_keyword)
+from vsg import deprecated_rule
 
 
-class rule_001(token_indent):
+class rule_001(deprecated_rule.Rule):
     '''
-    This rule checks the indentation of the **for** keyword.
-
-    **Violation**
-
-    .. code-block:: vhdl
-
-       fifo_proc : process () is
-       begin
-
-       for index in 4 to 23 loop
-
-         end loop;
-
-       end process;
-
-    **Fix**
-
-    .. code-block:: vhdl
-
-       fifo_proc : process () is
-       begin
-
-         for index in 4 to 23 loop
-
-         end loop;
-
-       end process;
+    This rule has been moved to **iteration_scheme_301**.
     '''
 
     def __init__(self):
-        token_indent.__init__(self, 'for_loop', '001', lTokens)
+        deprecated_rule.Rule.__init__(self, 'for_loop', '001')
+        self.message.append('Rule ' + self.unique_id + ' has been moved to iteration_scheme_301.')
