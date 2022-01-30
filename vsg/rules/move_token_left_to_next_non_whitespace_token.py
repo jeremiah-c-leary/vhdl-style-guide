@@ -39,9 +39,8 @@ class move_token_left_to_next_non_whitespace_token(structure.Rule):
         lReturn = []
         for oToi in lToi:
             lTokens = oToi.get_tokens()
-            if self.bInsertWhitespace:
-                if does_a_whitespace_token_separate_tokens(lTokens):
-                    continue
+            if skip_based_on_whitespace(self.bInsertWhitespace, lTokens):
+                continue
             lReturn.append(oToi)
         return lReturn
 
@@ -77,3 +76,8 @@ def does_a_whitespace_token_separate_tokens(lTokens):
         return True
     return False
 
+
+def skip_based_on_whitespace(bInsertWhitespace, lTokens):
+    if bInsertWhitespace and does_a_whitespace_token_separate_tokens(lTokens):
+        return True
+    return False
