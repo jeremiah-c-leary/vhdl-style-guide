@@ -51,7 +51,7 @@ class test_port_map_rule(unittest.TestCase):
 
     def test_rule_004_same_line(self):
         oRule = port_map.rule_004()
-        oRule.location = 'same_line'
+        oRule.action = 'same_line'
 
         lExpected = [15, 28, 33, 38, 43, 48, 53, 58, 63]
 
@@ -60,7 +60,7 @@ class test_port_map_rule(unittest.TestCase):
 
     def test_fix_rule_004_same_line(self):
         oRule = port_map.rule_004()
-        oRule.location = 'same_line'
+        oRule.action = 'same_line'
 
         oRule.fix(self.oFile)
 

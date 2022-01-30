@@ -30,23 +30,23 @@ class move_token(structure.Rule):
         self.solution = None
         self.phase = 1
         self.oToken = oToken
-        self.location = 'new_line'
-        self.configuration.append('location')
+        self.action = 'new_line'
+        self.configuration.append('action')
 
     def _get_tokens_of_interest(self, oFile):
-        if self.location == 'new_line':
+        if self.action == 'new_line':
             return get_toi_for_new_line_option(self, oFile)
         else:
             return get_toi_for_move_left_option(self, oFile)
 
     def _analyze(self, lToi):
-        if self.location == 'new_line':
+        if self.action == 'new_line':
             analyze_new_line(self, lToi)
         else:
             analyze_move_left(self, lToi)
 
     def _fix_violation(self, oViolation):
-        if self.location == 'new_line':
+        if self.action == 'new_line':
             fix_new_line_violations(oViolation)
         else:
             fix_move_left_violations(oViolation)
