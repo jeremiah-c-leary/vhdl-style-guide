@@ -193,7 +193,9 @@ port_009
 
 |phase_2| |error| |whitespace|
 
-This rule checks for a single space after the **inout** keyword.
+This rule checks for spaces before and after the **inout** mode keyword.
+
+Refer to the section `Configuring Port Mode Alignment <configuring-port-mode-alignment>`_ for information on changing spaces.
 
 **Violation**
 
