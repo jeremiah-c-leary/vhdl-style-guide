@@ -48,7 +48,8 @@ class spaces_before_and_after_tokens_when_bounded_by_tokens(whitespace.Rule):
             iLine, lTokens = utils.get_toi_parameters(myToi)
             dAction = {}
 
-            check_spaces_on_left_side(lTokens, fStartLine, dAction, self.spaces_before)
+            if not fStartLine:
+                check_spaces_on_left_side(lTokens, dAction, self.spaces_before)
 
             check_spaces_on_right_side(lTokens, dAction, self.spaces_after)
 
@@ -131,9 +132,7 @@ def create_solution(dAction, sKey, iNumSpaces, lTokens):
     return sReturn.strip()
 
 
-def check_spaces_on_left_side(lTokens, fStartLine, dAction, iSpaces):
-    if fStartLine:
-        return None
+def check_spaces_on_left_side(lTokens, dAction, iSpaces):
     oLeft = lTokens[0]
     if isinstance(oLeft, parser.whitespace) and iSpaces > 0:
         set_adjust_action('left', oLeft, dAction, iSpaces)
