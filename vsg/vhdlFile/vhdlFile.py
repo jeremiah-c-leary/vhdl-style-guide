@@ -108,7 +108,7 @@ class vhdlFile():
             self.oTokenMap = process_tokens(self.lAllObjects)
 
     def update_token_map(self):
-        self.oTokenmap = process_tokens(self.lAllObjects)
+        self.oTokenMap = process_tokens(self.lAllObjects)
 
     def set_indent_map(self, dIndentMap):
         self.dIndentMap = dIndentMap
