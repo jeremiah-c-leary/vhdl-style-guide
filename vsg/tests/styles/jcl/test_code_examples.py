@@ -40,6 +40,10 @@ lAlignments, eAlignmentsError = vhdlFile.utils.read_vhdlfile(os.path.join(sSourc
 oAlignments = vhdlFile.vhdlFile(lAlignments)
 oAlignments.set_indent_map(dIndentMap)
 
+lTrailingWhitespace, eAlignmentsError = vhdlFile.utils.read_vhdlfile(os.path.join(sSourceCodeDir,'trailing_whitespace.vhd'))
+oTrailingWhitespace = vhdlFile.vhdlFile(lTrailingWhitespace)
+oTrailingWhitespace.set_indent_map(dIndentMap)
+
 oConfig = utils.read_configuration(os.path.join(os.path.dirname(__file__),'..','..','..','styles', 'jcl.yaml'))
 
 oSeverityList = severity.create_list({})
@@ -131,6 +135,16 @@ class testCodeExample(unittest.TestCase):
         oRuleList.check_rules()
         self.assertFalse(oRuleList.violations)
 
+    def test_trailing_whitespace(self):
+        oRuleList = rule_list.rule_list(oTrailingWhitespace, oSeverityList)
+        oRuleList.configure(oConfig)
+        oRuleList.fix()
 
+        lExpected = ['']
+        utils.read_file(os.path.join(os.path.dirname(__file__),'trailing_whitespace.fixed.vhd'), lExpected)
 
+        self.assertEqual(lExpected, oTrailingWhitespace.get_lines())
 
+        self.assertFalse(oRuleList.violations)
+        oRuleList.check_rules()
+        self.assertFalse(oRuleList.violations)

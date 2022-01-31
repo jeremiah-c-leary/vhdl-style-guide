@@ -657,6 +657,21 @@ def fix_blank_lines(lTokens):
     return lReturn
 
 
+def fix_trailing_whitespace(lTokens):
+    lReturn = []
+    for iToken, oToken in enumerate(lTokens):
+        try:
+            if isinstance(oToken, parser.carriage_return) and isinstance(lTokens[iToken - 1], parser.whitespace):
+                lReturn.pop()
+                lReturn.append(oToken)
+                continue
+        except IndexError:
+            pass
+        lReturn.append(oToken)
+
+    return lReturn
+
+
 def is_whitespace(oObject):
     if isinstance(oObject, parser.carriage_return):
         return True
