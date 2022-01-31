@@ -44,4 +44,13 @@ begin
 
   end process proc_label;
 
+  PROC2_LABEL : process is
+  begin
+
+    if rising_edge(some_clk) then
+       a <= b;
+    end if;
+
+  end process PROC_LABEL;
+
 end architecture arch;

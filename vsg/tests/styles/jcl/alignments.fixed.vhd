@@ -46,4 +46,13 @@ begin
 
   end process PROC_LABEL;
 
+  PROC2_LABEL : process is
+  begin
+
+    if (some_clk'event and some_clk = '1') then
+      a <= b;
+    end if;
+
+  end process PROC_LABEL;
+
 end architecture ARCH;
