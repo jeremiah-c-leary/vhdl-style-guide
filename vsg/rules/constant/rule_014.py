@@ -4,6 +4,7 @@ from vsg.rules import multiline_alignment_between_tokens as Rule
 from vsg import parser
 from vsg import token
 from vsg.vhdlFile import utils
+from vsg.rules import utils as rules_utils
 
 lTokenPairs = []
 lTokenPairs.append([token.constant_declaration.assignment_operator, token.constant_declaration.semicolon])
@@ -46,14 +47,6 @@ def remove_arrays(lToi):
     lReturn = []
     for oToi in lToi:
         lTokens = oToi.get_tokens()
-        if not starts_with_paren(lTokens):
+        if not rules_utils.token_list_starts_with_paren(lTokens, 1):
             lReturn.append(oToi)
     return lReturn
-
-
-def starts_with_paren(lTokens):
-
-    iToken = utils.find_next_non_whitespace_token(1, lTokens)
-    if isinstance(lTokens[iToken], parser.open_parenthesis):
-        return True
-    return False
