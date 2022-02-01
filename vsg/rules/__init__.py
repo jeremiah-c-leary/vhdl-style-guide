@@ -76,6 +76,7 @@ from .remove_carriage_return_after_token import remove_carriage_return_after_tok
 from .move_token_to_the_right_of_several_possible_tokens_if_it_exists_between_tokens import move_token_to_the_right_of_several_possible_tokens_if_it_exists_between_tokens
 from .number_of_lines_between_tokens import number_of_lines_between_tokens
 
+from vsg.rules import alias_declaration
 from vsg.rules import after
 from vsg.rules import architecture
 from vsg.rules import assert_statement
