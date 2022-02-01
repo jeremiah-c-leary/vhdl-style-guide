@@ -24,3 +24,24 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
    alias alias_designator is name;
 
+alias_declaration_501
+#####################
+
+|phase_6| |error| |case| |case_keyword|
+
+This rule checks the **is** keyword has proper case.
+
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   alias alias_designator IS name;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   alias alias_designator is name;
+
