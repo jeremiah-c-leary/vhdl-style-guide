@@ -28,7 +28,7 @@ class test_function_rule(unittest.TestCase):
         self.assertEqual(oRule.identifier, '015')
         self.assertEqual(oRule.groups, ['alignment'])
 
-        lExpected = [12, 13, 14]
+        lExpected = [13, 14, 15, 16]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
