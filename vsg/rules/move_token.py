@@ -81,11 +81,8 @@ def get_toi_for_new_line_option_with_preserve_comment(self, oFile):
     lToi = oFile.get_line_which_includes_tokens([self.oToken])
     for oToi in lToi:
         lTokens = oToi.get_tokens()
-        if isinstance(lTokens[0], parser.whitespace) and isinstance(lTokens[1], self.oToken):
-            continue
-        if isinstance(lTokens[0], self.oToken):
-            continue
-        lReturn.append(oToi)
+        if not rules_utils.token_at_the_beginning_of_a_line(self.oToken, lTokens):
+            lReturn.append(oToi)
     return lReturn
 
 
