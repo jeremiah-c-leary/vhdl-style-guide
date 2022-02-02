@@ -23,6 +23,27 @@ This rule checks the **alias** keyword is on it's own line.
    signal sig1 : std_logic;
    alias designator is name;
 
+alias_declaration_100
+#####################
+
+|phase_2| |error| |whitespace|
+
+This rule checks for a single space after the colon for the subtype_indication.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   alias alias_designator :    subtype_indication is name;
+   alias alias_designator :subtype_indication is name;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   alias alias_designator : subtype_indication is name;
+   alias alias_designator : subtype_indication is name;
+
 alias_declaration_500
 #####################
 
