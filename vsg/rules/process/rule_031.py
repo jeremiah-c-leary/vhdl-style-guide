@@ -11,6 +11,7 @@ lAlign.append(token.signal_declaration.identifier)
 lAlign.append(token.constant_declaration.identifier)
 lAlign.append(token.subtype_declaration.identifier)
 lAlign.append(token.variable_declaration.identifier)
+lAlign.append(token.alias_declaration.alias_designator)
 
 oStart = token.process_statement.process_keyword
 oEnd = token.process_statement.begin_keyword
