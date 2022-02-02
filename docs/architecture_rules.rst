@@ -634,7 +634,7 @@ architecture_029
 
 |phase_5| |error| |alignment|
 
-This rule checks for alignment of names in attribute, type, subtype, constant, signal, variable and file declarations in the architecture declarative region.
+This rule checks for alignment of names in alias, attribute, type, subtype, constant, signal, variable and file declarations in the architecture declarative region.
 
 Refer to the section `Configuring Identifier Alignment Rules <configuring.html#configuring-name-alignment-rules>`_ for information on changing the configurations.
 
