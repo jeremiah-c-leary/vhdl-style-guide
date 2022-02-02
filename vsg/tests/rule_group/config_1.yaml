@@ -8,3 +8,5 @@ rule:
       case: 'lower'
   signal_010:
     disable: True    
+  library_600:
+    disable: True

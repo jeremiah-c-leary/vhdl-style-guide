@@ -269,3 +269,28 @@ This rule checks the **use** keyword is on it's own line.
    context c1 is library ieee;
        use ieee.std_logic_1164.all; end context c1;
 
+library_600
+###########
+
+|phase_6| |error| |case| |case_name|
+
+This rule checks the logical_name in a library_clause has proper case.
+
+Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   library IEEE;
+
+   library FIFO_dsn;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   library ieee;
+
+   library fifo_dsn;
+

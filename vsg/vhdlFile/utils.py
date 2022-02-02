@@ -1,4 +1,7 @@
 
+import sys
+
+from vsg import exceptions
 from vsg import parser
 
 
@@ -399,10 +402,16 @@ def print_error_message(sToken, token, iToken, lObjects):
     iLine = calculate_line_number(iToken, lObjects)
     iColumn = calculate_column(iToken, lObjects)
     sModuleName = extract_module_name(token)
-    print(f'Error: Unexpected token detected while parsing {sModuleName} @ Line {iLine}, Column {iColumn} in file {lObjects[0].get_filename()}')
-    print(f'       Expecting : {sToken}')
-    print(f'       Found     : {sFoundToken}')
-    exit()
+
+    sErrorMesasge = '\n'
+    sErrorMessage += f'Error: Unexpected token detected while parsing {sModuleName} @ Line {iLine}, Column {iColumn} in file {lObjects[0].get_filename()}'
+    sErrorMesasge += '\n'
+    sErrorMessage += f'       Expecting : {sToken}'
+    sErrorMesasge += '\n'
+    sErrorMessage += f'       Found     : {sFoundToken}'
+    sErrorMesasge += '\n'
+
+    raise exceptions.ClassifyError(sErrorMessage)
 
 
 def extract_module_name(token):
