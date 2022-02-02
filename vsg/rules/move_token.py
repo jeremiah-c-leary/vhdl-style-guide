@@ -32,22 +32,29 @@ class move_token(structure.Rule):
         self.oToken = oToken
         self.action = 'new_line'
         self.configuration.append('action')
+        self.preserve_comment = False
 
     def _get_tokens_of_interest(self, oFile):
-        if self.action == 'new_line':
+        if self.action == 'new_line' and not self.preserve_comment:
             return get_toi_for_new_line_option(self, oFile)
+        elif self.action == 'new_line' and self.preserve_comment:
+            return get_toi_for_new_line_option_with_preserve_comment(self, oFile)
         else:
             return get_toi_for_move_left_option(self, oFile)
 
     def _analyze(self, lToi):
-        if self.action == 'new_line':
+        if self.action == 'new_line' and not self.preserve_comment:
             analyze_new_line(self, lToi)
+        elif self.action == 'new_line' and self.preserve_comment:
+            analyze_new_line_with_preserve_comment(self, lToi)
         else:
             analyze_move_left(self, lToi)
 
     def _fix_violation(self, oViolation):
-        if self.action == 'new_line':
+        if self.action == 'new_line' and not self.preserve_comment:
             fix_new_line_violations(oViolation)
+        elif self.action == 'new_line' and self.preserve_comment:
+            fix_new_line_with_preserve_comment_violations(oViolation)
         else:
             fix_move_left_violations(oViolation)
 
@@ -64,6 +71,19 @@ def get_toi_for_new_line_option(self, oFile):
     for oToi in lToi:
         lTokens = oToi.get_tokens()
         if isinstance(lTokens[0], parser.carriage_return) or isinstance(lTokens[1], parser.carriage_return):
+            continue
+        lReturn.append(oToi)
+    return lReturn
+
+
+def get_toi_for_new_line_option_with_preserve_comment(self, oFile):
+    lReturn = []
+    lToi = oFile.get_line_which_includes_tokens([self.oToken])
+    for oToi in lToi:
+        lTokens = oToi.get_tokens()
+        if isinstance(lTokens[0], parser.whitespace) and isinstance(lTokens[1], self.oToken):
+            continue
+        if isinstance(lTokens[0], self.oToken):
             continue
         lReturn.append(oToi)
     return lReturn
@@ -86,6 +106,15 @@ def analyze_new_line(self, lToi):
         self.add_violation(oViolation)
 
 
+def analyze_new_line_with_preserve_comment(self, lToi):
+    for oToi in lToi:
+        lTokens = oToi.get_tokens()
+        iTokenIndex = oToi.token_index
+        sSolution = f'Move {lTokens[iTokenIndex].get_value()} to next line.'
+        oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
+        self.add_violation(oViolation)
+
+
 def analyze_move_left(self, lToi):
     for oToi in lToi:
         lTokens = oToi.get_tokens()
@@ -102,6 +131,20 @@ def fix_new_line_violations(oViolation):
         rules_utils.insert_carriage_return(lTokens, -2)
     else:
         rules_utils.insert_carriage_return(lTokens, -1)
+    oViolation.set_tokens(lTokens)
+
+
+def fix_new_line_with_preserve_comment_violations(oViolation):
+    lTokens = oViolation.get_tokens()
+    iTokenIndex = oViolation.oTokens.token_index
+    lTemp = []
+    if isinstance(lTokens[-1], parser.comment):
+        lTemp.append(lTokens.pop())
+        if isinstance(lTokens[-1], parser.whitespace):
+            lTemp.insert(0, lTokens.pop())
+    rules_utils.insert_carriage_return(lTokens, iTokenIndex)
+    lTokens[iTokenIndex:iTokenIndex] = lTemp
+
     oViolation.set_tokens(lTokens)
 
 
