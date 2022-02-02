@@ -3,6 +3,26 @@
 Alias Declaration Rules
 -----------------------
 
+alias_declaration_001
+#####################
+
+|phase_6| |error| |case| |case_keyword|
+
+This rule checks the **alias** keyword is on it's own line.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   signal sig1 : std_logic; alias designator is name;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   signal sig1 : std_logic;
+   alias designator is name;
+
 alias_declaration_500
 #####################
 
