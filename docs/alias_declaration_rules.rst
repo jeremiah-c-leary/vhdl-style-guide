@@ -44,6 +44,27 @@ This rule checks for a single space after the colon for the subtype_indication.
    alias alias_designator : subtype_indication is name;
    alias alias_designator : subtype_indication is name;
 
+alias_declaration_101
+#####################
+
+|phase_2| |error| |whitespace|
+
+This rule checks for a single space before the **is** keyword if the : is not present.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   alias alias_designator : subtype_indication     is name;
+   alias alias_designator   is name;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   alias alias_designator : subtype_indication is name;
+   alias alias_designator   is name;
+
 alias_declaration_500
 #####################
 
