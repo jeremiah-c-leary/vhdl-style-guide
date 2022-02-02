@@ -6,7 +6,7 @@ Alias Declaration Rules
 alias_declaration_001
 #####################
 
-|phase_6| |error| |case| |case_keyword|
+|phase_1| |error| |structure|
 
 This rule checks the **alias** keyword is on it's own line.
 
