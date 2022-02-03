@@ -31,7 +31,7 @@ class single_space_before_token_if_on_same_line_as_token(Rule):
         lExcept = oFile.get_line_which_includes_tokens([self.oExceptToken])
         lFilter = []
         for oExcept in lExcept:
-            lFilter.append(oExcept.get_line_number()) 
+            lFilter.append(oExcept.get_line_number())
         lReturn = []
         lToi = oFile.get_token_and_n_tokens_before_it([self.oFirstToken], 1)
         for oToi in lToi:
