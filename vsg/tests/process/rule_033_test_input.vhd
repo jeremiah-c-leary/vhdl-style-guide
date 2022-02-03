@@ -6,9 +6,11 @@ begin
 
   process
 
-    variable var1  : integer := 0;
-    file     file1 : load_file_file open read_mode is load_file_name;
-    constant con1  : std_logic := '1';
+    variable var1   : integer := 0;
+    file     file1  : load_file_file open read_mode is load_file_name;
+    constant con1   : std_logic := '1';
+    alias    alias1 is name;
+    alias    alias1 : subtype_indicator is name;
 
   begin
   end process;
@@ -20,6 +22,8 @@ begin
     variable var1 : integer := 0;
     file     file1: load_file_file open read_mode is load_file_name;
     constant con1    : std_logic := '1';
+    alias    alias1     is name;
+    alias    alias1: subtype_indicator is name;
 
   begin
   end process;
@@ -37,6 +41,8 @@ begin
     variable var1  : integer := 0;
     file     file1 : load_file_file open read_mode is load_file_name;
     constant con1  : std_logic := '1';
+    alias    alias1  is name;
+    alias    alias1          : subtype_indicator is name;
 
   begin end process;
 

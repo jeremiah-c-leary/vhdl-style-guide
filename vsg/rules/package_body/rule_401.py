@@ -1,5 +1,5 @@
 
-from vsg.rules import align_tokens_in_region_between_tokens_unless_between_tokens
+from vsg.rules import align_tokens_in_region_between_tokens_unless_between_tokens as Rule
 
 from vsg import token
 
@@ -11,16 +11,16 @@ lAlign.append(token.variable_declaration.colon)
 lAlign.append(token.alias_declaration.colon)
 lAlign.append(token.alias_declaration.is_keyword)
 
-oStart = token.package_declaration.is_keyword
-oEnd = token.package_declaration.end_keyword
+oStart = token.package_body.is_keyword
+oEnd = token.package_body.end_keyword
 
 lUnless = []
 lUnless.append([token.subprogram_body.is_keyword,token.subprogram_body.begin_keyword])
 
 
-class rule_400(align_tokens_in_region_between_tokens_unless_between_tokens):
+class rule_401(Rule):
     '''
-    This rule checks the colons are in the same column for all declarations in the package declarative part.
+    This rule checks the colons are in the same column for all declarations in the package body declarative part.
 
     Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
 
@@ -50,6 +50,6 @@ class rule_400(align_tokens_in_region_between_tokens_unless_between_tokens):
     '''
 
     def __init__(self):
-        align_tokens_in_region_between_tokens_unless_between_tokens.__init__(self, 'package', '400', lAlign, oStart, oEnd, lUnless)
+        Rule.__init__(self, 'package_body', '401', lAlign, oStart, oEnd, lUnless)
         self.solution = 'Align colon.'
         self.subphase = 3
