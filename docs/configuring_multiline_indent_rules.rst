@@ -8,10 +8,10 @@ There are several options to these rules:
 +----------------------+---------+---------+---------------------------------------------------------+
 | Method               |   Type  | Default | Description                                             |
 +======================+=========+=========+=========================================================+
-| align_left           | boolean |  "yes"  | "yes" = New lines will be aligned left.                  |
+| align_left           | string  |  "yes"  | "yes" = New lines will be aligned left.                  |
 |                      |         |         | "no" = Align to right of assignment operator.           |
 +----------------------+---------+---------+---------------------------------------------------------+
-| align_paren          | boolean |  "no"   | "yes" = Use open parenthesis for alignment.              |
+| align_paren          | string  |  "no"   | "yes" = Use open parenthesis for alignment.              |
 |                      |         |         | "no" = Do not use open parenthesis for alignment.      |
 +----------------------+---------+---------+---------------------------------------------------------+
 
@@ -145,6 +145,7 @@ Rules Enforcing Multiline Indent Rules
 ######################################
 
 * `concurrent_003 <concurrent_rules.html#concurrent-003>`_
+* `constant_012 <constant_rules.html#constant-012>`_
 * `constant_014 <constant_rules.html#constant-014>`_
 * `if_004 <if_rules.html#if-004>`_
 * `process_020 <process_rules.html#process-020>`_
