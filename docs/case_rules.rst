@@ -180,26 +180,7 @@ The default style is :code:`no_code`.
 case_008
 ########
 
-|phase_3| |error| |blank_line|
-
-This rule checks for a blank line below the **is** keyword.
-
-Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   case data is
-     when 0 =>
-
-**Fix**
-
-.. code-block:: vhdl
-
-   case data is
-
-     when 0 =>
+The function of this rule has been included in rule case_201.
 
 case_009
 ########
