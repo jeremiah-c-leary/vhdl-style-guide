@@ -84,6 +84,29 @@ This rule checks for a single space after the **is** keyword.
 
    alias alias_designator is name;
 
+alias_declaration_300
+#####################
+
+|phase_4| |error| |indent|
+
+This rule checks the indent of the **alias** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   signal sig1 : integer;
+
+     alias is name;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   signal sig1 : integer;
+
+   alias is name;
+
 alias_declaration_500
 #####################
 
