@@ -8,11 +8,11 @@ There are several options to these rules:
 +----------------------+---------+---------+---------------------------------------------------------+
 | Method               |   Type  | Default | Description                                             |
 +======================+=========+=========+=========================================================+
-| align_left           | boolean |  True   | True = New lines will be aligned left.                  |
-|                      |         |         | False = Align to left of assignment operator.           |
+| align_left           | string  |  "yes"  | "yes" = New lines will be aligned left.                  |
+|                      |         |         | "no" = Align to right of assignment operator.           |
 +----------------------+---------+---------+---------------------------------------------------------+
-| align_paren          | boolean |  True   | True = Use open parenthesis for alignment.              |
-|                      |         |         | False = Do not use open parenthesis for alignment.      |
+| align_paren          | string  |  "no"   | "yes" = Use open parenthesis for alignment.              |
+|                      |         |         | "no" = Do not use open parenthesis for alignment.      |
 +----------------------+---------+---------+---------------------------------------------------------+
 
 This is an example of how to configure the option.
@@ -21,12 +21,12 @@ This is an example of how to configure the option.
 
    rule :
      constant_012:
-        align_left : False
-        align_paren : True
+        align_left : "no"
+        align_paren : "yes"
 
 .. NOTE:: All examples below are using the rule **constant_012**.
 
-Example: align_left True, align_paren False
+Example: align_left "yes", align_paren "no"
 ###########################################
 
 The following code would fail with this option:
@@ -85,7 +85,7 @@ The following code would pass with this option:
       )
     );
 
-Example: align_left False, align_paren False
+Example: align_left "no", align_paren "no"
 ############################################
 
 The following code would fail with this option:
@@ -120,7 +120,7 @@ The following code would pass with this option:
                                    )
                                  );
 
-Example: align_left True, align_paren True
+Example: align_left "yes", align_paren "yes"
 ##########################################
 
 The following code would fail with this option:
@@ -145,6 +145,8 @@ Rules Enforcing Multiline Indent Rules
 ######################################
 
 * `concurrent_003 <concurrent_rules.html#concurrent-003>`_
+* `constant_012 <constant_rules.html#constant-012>`_
+* `constant_014 <constant_rules.html#constant-014>`_
 * `if_004 <if_rules.html#if-004>`_
 * `process_020 <process_rules.html#process-020>`_
 * `sequential_004 <sequential_rules.html#sequential-004>`_
