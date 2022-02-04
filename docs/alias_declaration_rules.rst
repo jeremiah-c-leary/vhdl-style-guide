@@ -195,3 +195,28 @@ Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#conf
    alias a_header is name;
    alias a_footer is name;
 
+alias_declaration_601
+#####################
+
+|phase_7| |disabled| |error| |naming|
+
+This rule checks for valid suffixes on alias designators.
+
+Default prefix is *\_a*.
+
+Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed prefixes.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   alias header is name;
+   alias footer is name;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   alias header_a is name;
+   alias footer_a is name;
+
