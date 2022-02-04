@@ -10,6 +10,8 @@ begin
         signal          signal1 : std_logic;
         constant        con1    : std_logic;
         shared variable var1    : std_logic;
+        alias           a       is name;
+        alias           a       : subtype_indication is name;
 
       begin
 
@@ -18,6 +20,8 @@ begin
         signal          sig1      : std_logic;
         constant        constant1 : std_logic;
         shared variable var1      : std_logic;
+        alias           a         is name;
+        alias           a         : subtype_indication is name;
 
       begin
 
@@ -26,6 +30,8 @@ begin
         signal          sig1  : std_logic;
         constant        con1  : std_logic;
         shared variable vars1 : std_logic;
+        alias           a     is name;
+        alias           a     : subtype_indication is name;
 
       begin
 
@@ -40,6 +46,8 @@ begin
         signal          signal1 : std_logic;
         constant        con1    : std_logic;
         shared variable var1    : std_logic;
+        alias           a       is name;
+        alias           a       : subtype_indication is name;
 
       begin
 
@@ -48,6 +56,8 @@ begin
         signal          sig1      : std_logic;
         constant        constant1 : std_logic;
         shared variable var1      : std_logic;
+        alias           a         is name;
+        alias           a         : subtype_indication is name;
 
       begin
 
@@ -56,6 +66,8 @@ begin
         signal          sig1  : std_logic;
         constant        con1  : std_logic;
         shared variable vars1 : std_logic;
+        alias           a     is name;
+        alias           a     : subtype_indication is name;
 
       begin
 
