@@ -555,3 +555,34 @@ Refer to the section `Configuring Blank Lines <configuring.html#configuring-blan
 
      a <= b;
 
+case_201
+########
+
+|phase_3| |error| |blank_line|
+
+This rule checks for blank lines or comments above the **when** keyword.
+
+Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous-line-rules>`_ for options.
+
+The default style is :code:`allow_comment`.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   case data is
+     when 3 =>
+     -- Comment
+     when 4 =>
+
+**Fix**
+
+.. code-block:: vhdl
+
+   case data is
+
+     when 3 =>
+
+     -- Comment
+     when 4 =>
+

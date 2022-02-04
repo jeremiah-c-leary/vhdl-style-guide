@@ -87,3 +87,5 @@ rule :
   # Set blank line rules
   case_200 :
     disable: True
+  case_201 :
+    disable: True
