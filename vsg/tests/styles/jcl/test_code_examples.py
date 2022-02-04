@@ -125,7 +125,7 @@ class testCodeExample(unittest.TestCase):
         lExpected = ['']
         utils.read_file(os.path.join(os.path.dirname(__file__),'alignments.fixed.vhd'), lExpected)
 
-#        self.assertEqual(lExpected, oAlignments.get_lines())
+        self.assertEqual(lExpected, oAlignments.get_lines())
 
         self.assertFalse(oRuleList.violations)
         oRuleList.check_rules()
