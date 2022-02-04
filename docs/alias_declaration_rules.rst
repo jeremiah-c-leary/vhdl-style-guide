@@ -170,6 +170,69 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
    alias alias_designator is name;
 
+alias_declaration_503
+#####################
+
+|phase_6| |error| |case|
+
+This rule checks for consistent capitalization of alias designators.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   architecture RTL of ENTITY1 is
+
+     signal instructure : bit_vector(15 downto 0);
+     alias opcode : bit_vector(3 downto 0) is instructure(15 downto 12);
+
+     signal data : std_logic_vector(OPCODE'range);
+
+   begin
+
+     data <= OpCode;
+
+     PROC_NAME : process () is
+     begin
+
+       data <= OpCOde;
+
+       if (opCODE = "0110") then
+         data <= oPCode;
+       end if;
+
+     end process PROC_NAME;
+
+   end architecture RTL;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   architecture RTL of ENTITY1 is
+
+     signal instructure : bit_vector(15 downto 0);
+     alias opcode : bit_vector(3 downto 0) is instructure(15 downto 12);
+
+     signal data : std_logic_vector(opcode'range);
+
+   begin
+
+     data <= opcode;
+
+     PROC_NAME : process () is
+     begin
+
+       data <= opcode;
+
+       if (opcode = "0110") then
+         data <= opcode;
+       end if;
+
+     end process PROC_NAME;
+
+   end architecture RTL;
+
 alias_declaration_600
 #####################
 
