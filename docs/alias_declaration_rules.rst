@@ -49,7 +49,7 @@ alias_declaration_101
 
 |phase_2| |error| |whitespace|
 
-This rule checks for a single space before the **is** keyword if the : is not present.
+This rule checks for a single space before the **is** keyword if the : is present.
 
 **Violation**
 

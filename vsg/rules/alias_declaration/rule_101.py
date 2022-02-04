@@ -6,7 +6,7 @@ from vsg.token import alias_declaration as token
 
 class rule_101(Rule):
     '''
-    This rule checks for a single space before the **is** keyword if the : is not present.
+    This rule checks for a single space before the **is** keyword if the : is present.
 
     **Violation**
 
