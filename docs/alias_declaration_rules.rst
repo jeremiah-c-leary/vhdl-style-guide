@@ -170,3 +170,28 @@ Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.htm
 
    alias alias_designator is name;
 
+alias_declaration_600
+#####################
+
+|phase_7| |disabled| |error| |naming|
+
+This rule checks for valid prefixes on alias designators.
+
+Default prefix is *a\_*.
+
+Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed prefixes.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   alias header is name;
+   alias footer is name;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   alias a_header is name;
+   alias a_footer is name;
+
