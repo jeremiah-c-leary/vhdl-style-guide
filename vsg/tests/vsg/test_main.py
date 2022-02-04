@@ -390,6 +390,7 @@ class testMain(unittest.TestCase):
 
         mock_stdout.write.assert_has_calls(lExpected)
 
+
     @unittest.skip('Skipping because test randomly fails depending on how the test runs on the host.')
     def test_json_parameter(self):
         self.maxDiff = None
