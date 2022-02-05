@@ -165,12 +165,12 @@ Rules Enforcing Case
 * `generic_map_001 <generic_map_rules.html#generic-map-001>`_
 * `generic_map_002 <generic_map_rules.html#generic-map-002>`_
 
-* `if_statement_025 <if_statement_rules.html#if-statement-025>`_
-* `if_statement_026 <if_statement_rules.html#if-statement-026>`_
-* `if_statement_027 <if_statement_rules.html#if-statement-027>`_
-* `if_statement_028 <if_statement_rules.html#if-statement-028>`_
-* `if_statement_029 <if_statement_rules.html#if-statement-029>`_
-* `if_statement_034 <if_statement_rules.html#if-statement-034>`_
+* `if_statement_025 <if_rules.html#if-statement-025>`_
+* `if_statement_026 <if_rules.html#if-statement-026>`_
+* `if_statement_027 <if_rules.html#if-statement-027>`_
+* `if_statement_028 <if_rules.html#if-statement-028>`_
+* `if_statement_029 <if_rules.html#if-statement-029>`_
+* `if_statement_034 <if_rules.html#if-statement-034>`_
 
 * `instantiation_008 <instantiation_rules.html#instantiation-008>`_
 * `instantiation_009 <instantiation_rules.html#instantiation-009>`_
@@ -230,9 +230,9 @@ Rules Enforcing Case
 * `signal_010 <signal_rules.html#signal-010>`_
 * `signal_011 <signal_rules.html#signal-011>`_
 
-* `type_definition_002 <type_definition.html#type-definition-002>`_
-* `type_definition_004 <type_definition.html#type-definition-004>`_
-* `type_definition_013 <type_definition.html#type-definition-013>`_
+* `type_definition_002 <type_rules.html#type-definition-002>`_
+* `type_definition_004 <type_rules.html#type-definition-004>`_
+* `type_definition_013 <type_rules.html#type-definition-013>`_
 
 * `variable_002 <variable_rules.html#variable-002>`_
 * `variable_004 <variable_rules.html#variable-004>`_
