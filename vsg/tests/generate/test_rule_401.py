@@ -28,7 +28,7 @@ class test_generate_rule(unittest.TestCase):
         self.assertEqual(oRule.identifier, '401')
         self.assertEqual(oRule.groups, ['alignment'])
 
-        lExpected = [42, 43, 44]
+        lExpected = [48, 49, 50, 51, 52]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))

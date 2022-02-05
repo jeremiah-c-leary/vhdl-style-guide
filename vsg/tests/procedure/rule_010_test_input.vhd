@@ -31,6 +31,7 @@ package body FIFO_PKG is
     variable  sig1 : std_logic;
     file file1 : something;
     constant var1 : integer;
+    alias alias1 is name;
   begin
   end procedure AVERAGE_SAMPLES;
 
@@ -42,6 +43,7 @@ package body FIFO_PKG is
     variable sig1 : std_logic;
     file     file1 : something;
     constant var1 : integer;
+    alias    alias1 is name;
   begin
   end procedure AVERAGE_SAMPLES;
 

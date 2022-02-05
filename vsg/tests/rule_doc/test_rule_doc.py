@@ -24,6 +24,12 @@ class testDocGen(unittest.TestCase):
             except:
                 pass
 
+    def test_alias_declaration_rules_doc(self):
+
+        lExpected, lActual = compare_files('alias_declaration')
+
+        self.assertEqual(lExpected, lActual)
+
     def test_after_rules_doc(self):
 
         lExpected, lActual = compare_files('after')

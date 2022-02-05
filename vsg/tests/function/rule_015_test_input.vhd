@@ -5,6 +5,7 @@ architecture RTL of FIFO is
     constant c : integer;
     variable v : integer;
     file     f : something;
+    alias    a is name;
   begin
   end function func1;
 
@@ -12,6 +13,7 @@ architecture RTL of FIFO is
     constant  c : integer;
     variable   v : integer;
     file f : something;
+    alias a is name;
   begin
   end function func1;
 
@@ -19,6 +21,7 @@ architecture RTL of FIFO is
     constant  c : integer;
     variable   v : integer;
     file f : something;
+    alias a is name;
   begin
   end procedure proc_1;
 

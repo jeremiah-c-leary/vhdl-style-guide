@@ -913,6 +913,7 @@ process_033
 |phase_5| |error| |alignment|
 
 This rule checks the colons are in the same column for all declarations in the process declarative part.
+
 Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
 
 **Violation**
