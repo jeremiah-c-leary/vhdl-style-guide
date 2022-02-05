@@ -567,28 +567,3 @@ The default style is :code:`allow_comment`.
      -- Comment
      when 4 =>
 
-case_202
-########
-
-|phase_3| |error| |blank_line|
-
-This rule ensures a single blank line after the **context** keword.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   case state is
-
-
-
-     when state1 =>
-
-**Fix**
-
-.. code-block:: vhdl
-
-   case state is
-
-     when state1 =>
-

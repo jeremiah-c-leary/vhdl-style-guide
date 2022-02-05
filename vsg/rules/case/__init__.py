@@ -23,4 +23,3 @@ from .rule_021 import rule_021
 
 from .rule_200 import rule_200
 from .rule_201 import rule_201
-from .rule_202 import rule_202
