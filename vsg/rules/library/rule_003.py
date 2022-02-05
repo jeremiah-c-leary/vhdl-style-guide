@@ -9,12 +9,12 @@ lTokens.append(token.library_clause.keyword)
 
 class rule_003(previous_line):
     '''
-    This rule checks for blank lines or comments above the entity keyword.
+    This rule checks for blank lines or comments above the **library** keyword.
 
     |configuring_previous_line_rules_link|
 
     There is an additional **allow_library_clause** option which can be set.
-    |reporting_single_rule_configuration_link|
+    Refer to section :ref:`reporting-single-rule-configuration` for details on finding configuration options for individual rules.
 
     allow_library_clause
     ^^^^^^^^^^^^^^^^^^^^

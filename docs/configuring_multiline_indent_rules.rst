@@ -11,11 +11,11 @@ There are several options to these rules:
 +----------------------+---------+---------+---------------------------------------------------------+
 | Method               |   Type  | Default | Description                                             |
 +======================+=========+=========+=========================================================+
-| align_left           | string  |  "yes"  | "yes" = New lines will be aligned left.                  |
+| align_left           | string  |  "yes"  | "yes" = New lines will be aligned left.                 |
 |                      |         |         | "no" = Align to right of assignment operator.           |
 +----------------------+---------+---------+---------------------------------------------------------+
-| align_paren          | string  |  "no"   | "yes" = Use open parenthesis for alignment.              |
-|                      |         |         | "no" = Do not use open parenthesis for alignment.      |
+| align_paren          | string  |  "no"   | "yes" = Use open parenthesis for alignment.             |
+|                      |         |         | "no" = Do not use open parenthesis for alignment.       |
 +----------------------+---------+---------+---------------------------------------------------------+
 
 This is an example of how to configure the option.
@@ -89,7 +89,7 @@ The following code would pass with this option:
     );
 
 Example: align_left "no", align_paren "no"
-############################################
+##########################################
 
 The following code would fail with this option:
 
@@ -124,7 +124,7 @@ The following code would pass with this option:
                                  );
 
 Example: align_left "yes", align_paren "yes"
-##########################################
+############################################
 
 The following code would fail with this option:
 
