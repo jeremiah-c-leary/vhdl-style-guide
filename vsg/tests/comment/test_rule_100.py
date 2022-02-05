@@ -36,6 +36,7 @@ class test_comment_rule(unittest.TestCase):
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+        self.assertEqual('Change "--T" to "-- T"', oRule.violations[0].sSolution)
 
     def test_fix_rule_100(self):
         oRule = comment.rule_100()

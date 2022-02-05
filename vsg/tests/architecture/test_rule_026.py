@@ -29,7 +29,7 @@ class test_architecture_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'architecture')
         self.assertEqual(oRule.identifier, '026')
 
-        lExpected = [5, 6, 7, 9, 10, 11, 12, 14, 15, 16, 17, 19, 20, 22]
+        lExpected = [5, 6, 7, 8, 9, 11, 12, 13, 14, 16, 17, 18, 19, 21, 22, 24]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -54,7 +54,7 @@ class test_architecture_rule(unittest.TestCase):
         oRule.blank_line_ends_group = False
         oRule.comment_line_ends_group = False
 
-        lExpected = [4, 5, 6, 7, 9, 10, 11, 12, 14, 16, 17, 19, 20, 21, 22]
+        lExpected = [4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 16, 18, 19, 21, 22, 23, 24]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -82,7 +82,7 @@ class test_architecture_rule(unittest.TestCase):
         oRule = architecture.rule_026()
         oRule.blank_line_ends_group = False
 
-        lExpected = [4, 5, 7, 9, 10, 11, 12, 14, 15, 17, 19, 20, 22]
+        lExpected = [4, 5, 7, 8, 9, 11, 12, 13, 14, 16, 17, 19, 21, 22, 24]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -108,7 +108,7 @@ class test_architecture_rule(unittest.TestCase):
         oRule = architecture.rule_026()
         oRule.comment_line_ends_group = False
 
-        lExpected = [4, 5, 6, 7, 9, 10, 12, 14, 15, 16, 17, 19, 20, 22]
+        lExpected = [4, 5, 6, 7, 8, 9, 11, 12, 14, 16, 17, 18, 19, 21, 22, 24]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -133,7 +133,7 @@ class test_architecture_rule(unittest.TestCase):
     def test_rule_026(self):
         oRule = architecture.rule_026()
 
-        lExpected = [4, 5, 7, 9, 10, 12, 14, 15, 17, 19, 20, 22]
+        lExpected = [4, 5, 7, 8, 9, 11, 12, 14, 16, 17, 19, 21, 22, 24]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))

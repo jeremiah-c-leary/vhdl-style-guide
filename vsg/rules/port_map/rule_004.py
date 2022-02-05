@@ -1,18 +1,18 @@
 
-from vsg.rules import split_line_at_token_when_between_tokens
+from vsg.rules import move_token as Rule
 
 from vsg import token
 
-lTokens = []
-lTokens.append(token.port_map_aspect.close_parenthesis)
-
-oStart = token.component_instantiation_statement.label_colon
-oEnd = token.component_instantiation_statement.semicolon
+oToken = token.port_map_aspect.close_parenthesis
 
 
-class rule_004(split_line_at_token_when_between_tokens):
+class rule_004(Rule):
     '''
-    This rule checks the closing ")" character for the port map is on it's own line.
+    This rule checks the location of the closing ")" character for the port map.
+
+    The default location is on a line by itself.
+
+    Refer to the section `Configuring Move Token Rules <configuring_move_token_rules.html>`_ for information on options.
 
     **Violation**
 
@@ -31,5 +31,4 @@ class rule_004(split_line_at_token_when_between_tokens):
     '''
 
     def __init__(self):
-        split_line_at_token_when_between_tokens.__init__(self, 'port_map', '004', lTokens, oStart, oEnd)
-        self.solution = 'Place closing ); on it\'s own line.'
+        Rule.__init__(self, 'port_map', '004', oToken)

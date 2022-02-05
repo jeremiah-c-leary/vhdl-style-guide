@@ -8,6 +8,8 @@ lAlign.append(token.file_declaration.colon)
 lAlign.append(token.signal_declaration.colon)
 lAlign.append(token.constant_declaration.colon)
 lAlign.append(token.variable_declaration.colon)
+lAlign.append(token.alias_declaration.colon)
+lAlign.append(token.alias_declaration.is_keyword)
 
 oStart = token.package_declaration.is_keyword
 oEnd = token.package_declaration.end_keyword

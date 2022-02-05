@@ -2038,7 +2038,7 @@
           "rule": "generic_010",
           "linenumber": 179,
           "severity": "Error",
-          "solution": "Closing parenthesis must be on a line by itself."
+          "solution": "Move ) to next line."
         },
         {
           "rule": "if_001",
