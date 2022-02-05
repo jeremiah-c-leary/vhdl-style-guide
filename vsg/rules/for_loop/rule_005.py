@@ -1,28 +1,12 @@
 
-from vsg.rules import single_space_between_tokens
-
-from vsg.token import loop_statement as token
-from vsg.token import iteration_scheme
+from vsg import deprecated_rule
 
 
-class rule_005(single_space_between_tokens):
+class rule_005(deprecated_rule.Rule):
     '''
-    This rule checks if a label exists on a for loop that a single space exists after the colon.
-
-    **Violation**
-
-    .. code-block:: vhdl
-
-         label :    for index in 4 to 23 loop
-         label :  for index in 0 to 100 loop
-
-    **Fix**
-
-    .. code-block:: vhdl
-
-         label : for index in 4 to 23 loop
-         label : for index in 0 to 100 loop
+    This rule has been moved to **loop_statement_104**.
     '''
+
     def __init__(self):
-        single_space_between_tokens.__init__(self, 'for_loop', '005', token.label_colon, iteration_scheme.for_keyword)
-        self.solution = 'Ensure a single space between label and :.'
+        deprecated_rule.Rule.__init__(self, 'for_loop', '005')
+        self.message.append('Rule ' + self.unique_id + ' move been moved to loop_statement_104.')

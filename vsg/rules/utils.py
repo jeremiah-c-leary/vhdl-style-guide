@@ -213,3 +213,9 @@ def token_list_is_the_beginning_of_a_line(lTokens):
     if isinstance(lTokens[1], parser.carriage_return):
         return True
     return False
+
+
+def whitespace_is_larger_than_a_single_character(lTokens):
+    if lTokens[1].get_value() != ' ':
+        return True
+    return False

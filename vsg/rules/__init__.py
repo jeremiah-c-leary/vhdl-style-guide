@@ -78,6 +78,7 @@ from .multiline_alignment_between_tokens import multiline_alignment_between_toke
 from .remove_carriage_return_after_token import remove_carriage_return_after_token
 from .move_token_to_the_right_of_several_possible_tokens_if_it_exists_between_tokens import move_token_to_the_right_of_several_possible_tokens_if_it_exists_between_tokens
 from .number_of_lines_between_tokens import number_of_lines_between_tokens
+from .token_does_not_exist_before_token import Rule as token_does_not_exist_before_token
 
 from vsg.rules import alias_declaration
 from vsg.rules import after
@@ -106,6 +107,7 @@ from vsg.rules import generic
 from vsg.rules import generic_map
 from vsg.rules import if_statement
 from vsg.rules import instantiation
+from vsg.rules import iteration_scheme
 from vsg.rules import length
 from vsg.rules import library
 from vsg.rules import loop_statement

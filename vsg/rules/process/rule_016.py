@@ -1,11 +1,13 @@
 
-from vsg import token
-from vsg import violation
+from vsg.rules import token_does_not_exist_before_token as Rule
+from vsg.token import process_statement as token
 
-from vsg.rule_group import structure
+oFirstToken = token.process_label
+
+oSecondToken = token.process_keyword
 
 
-class rule_016(structure.Rule):
+class rule_016(Rule):
     '''
     This rule checks the process has a label.
 
@@ -29,22 +31,6 @@ class rule_016(structure.Rule):
     '''
 
     def __init__(self):
-        structure.Rule.__init__(self, 'process', '016')
-        self.solution = 'Add label for process'
+        Rule.__init__(self, 'process', '016', oFirstToken, oSecondToken)
+        self.solution = 'Add label for process statement'
         self.fixable = False
-
-    def analyze(self, oFile):
-        lKeywords = oFile.get_tokens_matching([token.process_statement.process_keyword])
-        lLabels = oFile.get_tokens_matching([token.process_statement.process_label])
-
-        iPreviousIndex = 0
-        for oKeyword in lKeywords:
-            iCurrentIndex = oKeyword.get_start_index()
-            for oLabel in lLabels:
-                iLabelIndex = oLabel.get_start_index()
-                if iPreviousIndex < iLabelIndex and iLabelIndex < iCurrentIndex:
-                    break
-            else:
-                oViolation = violation.New(oKeyword.get_line_number(), oKeyword, self.solution)
-                self.add_violation(oViolation)
-            iPreviousIndex = iCurrentIndex
