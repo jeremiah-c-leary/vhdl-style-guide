@@ -292,6 +292,8 @@ constant_014
 
 This rule checks the indent of multiline constants that do not contain arrays.
 
+Refer to the section `Configuring Multiline Indent Rules <configuring_multiline_indent_rules.html>`_ for more information.
+
 **Violation**
 
 .. code-block:: vhdl

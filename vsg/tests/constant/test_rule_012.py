@@ -43,8 +43,8 @@ class test_constant_rule(unittest.TestCase):
     def test_rule_012_align_left_false_align_paren_true(self):
         self.maxDiff = None
         oRule = constant.rule_012()
-        oRule.align_left = False
-        oRule.align_paren = True
+        oRule.align_left = 'no'
+        oRule.align_paren = 'yes'
         oRule.indentSize = 1
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'constant')
@@ -72,8 +72,8 @@ class test_constant_rule(unittest.TestCase):
     def test_fix_rule_012_align_left_false_align_paren_true(self):
         self.maxDiff = None
         oRule = constant.rule_012()
-        oRule.align_left = False
-        oRule.align_paren = True
+        oRule.align_left = 'no'
+        oRule.align_paren = 'yes'
         oRule.indentSize = 1
 
         oRule.fix(self.oFile)
@@ -87,8 +87,8 @@ class test_constant_rule(unittest.TestCase):
 
     def test_fix_rule_012_align_left_false_align_paren_true_indent_step_2(self):
         oRule = constant.rule_012()
-        oRule.align_left = False
-        oRule.align_paren = True
+        oRule.align_left = 'no'
+        oRule.align_paren = 'yes'
         oRule.indentSize = 2
 
         oRule.fix(self.oFile)
@@ -102,8 +102,8 @@ class test_constant_rule(unittest.TestCase):
 
     def test_rule_012_align_left_true_align_paren_false(self):
         oRule = constant.rule_012()
-        oRule.align_left = True
-        oRule.align_paren = False
+        oRule.align_left = 'yes'
+        oRule.align_paren = 'no'
         oRule.indentSize = 1
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'constant')
@@ -130,8 +130,8 @@ class test_constant_rule(unittest.TestCase):
     def test_fix_rule_012_align_left_true_align_paren_false(self):
 #        self.maxDiff = None
         oRule = constant.rule_012()
-        oRule.align_left = True
-        oRule.align_paren = False
+        oRule.align_left = 'yes'
+        oRule.align_paren = 'no'
         oRule.indentSize = 1
 
         oRule.fix(self.oFile)
@@ -145,8 +145,8 @@ class test_constant_rule(unittest.TestCase):
 
     def test_rule_012_align_left_true_align_paren_true(self):
         oRule = constant.rule_012()
-        oRule.align_left = True
-        oRule.align_paren = True
+        oRule.align_left = 'yes'
+        oRule.align_paren = 'yes'
         oRule.indentSize = 1
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'constant')
@@ -173,8 +173,8 @@ class test_constant_rule(unittest.TestCase):
     def test_fix_rule_012_align_left_true_align_paren_true(self):
 #        self.maxDiff = None
         oRule = constant.rule_012()
-        oRule.align_left = True
-        oRule.align_paren = True
+        oRule.align_left = 'yes'
+        oRule.align_paren = 'yes'
         oRule.indentSize = 1
 
         oRule.fix(self.oFile)
@@ -189,8 +189,8 @@ class test_constant_rule(unittest.TestCase):
     def test_fix_rule_012_align_left_true_indent_step_2(self):
 #        self.maxDiff = None
         oRule = constant.rule_012()
-        oRule.align_left = True
-        oRule.align_paren = False
+        oRule.align_left = 'yes'
+        oRule.align_paren = 'no'
         oRule.indentSize = 2
 
         oRule.fix(self.oFile)

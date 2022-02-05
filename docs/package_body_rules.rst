@@ -268,6 +268,39 @@ Refer to the section `Configuring Identifier Alignment Rules <configuring.html#c
    variable var1     : natural;
    constant c_period : time;
 
+package_body_401
+################
+
+|phase_5| |error| |alignment|
+
+This rule checks the colons are in the same column for all declarations in the package body declarative part.
+
+Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   package my_package is
+
+     signal   wr_en : std_logic;
+     signal   rd_en   : std_logic;
+     constant c_period : time;
+
+   end package my_package;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   package my_package is
+
+     signal   wr_en    : std_logic;
+     signal   rd_en    : std_logic;
+     constant c_period : time;
+
+   end package my_package;
+
 package_body_500
 ################
 

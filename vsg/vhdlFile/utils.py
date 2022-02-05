@@ -1,6 +1,4 @@
 
-import sys
-
 from vsg import exceptions
 from vsg import parser
 

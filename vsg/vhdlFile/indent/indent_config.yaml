@@ -1,6 +1,10 @@
 
 indent:
     tokens:
+        alias_declaration:
+            alias_keyword:
+                token : current
+                after : current
         architecture_body:
             architecture_keyword:
                 token : 0
