@@ -21,6 +21,10 @@ def get_line_which_includes_tokens(lTokens, lAllTokens, oTokenMap):
         iLine = oTokenMap.get_line_number_of_index(iIndex)
 
         lTemp = lAllTokens[iStart:iEnd]
-        lReturn.append(tokens.New(iStart, iLine, lTemp))
+
+        oTokens = tokens.New(iStart, iLine, lTemp)
+        oTokens.token_index = iIndex - iStart
+
+        lReturn.append(oTokens)
 
     return lReturn

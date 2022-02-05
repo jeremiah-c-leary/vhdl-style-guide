@@ -12,8 +12,8 @@ begin
     port map (
       PORT_1 => w_port_1,
       PORT_2 => w_port_2,
-      PORT_3 => w_port_3
-    );
+      PORT_3 => w_port_3)
+    ;
 
   -- Violations below
 
@@ -21,48 +21,47 @@ begin
     port map (
       PORT_1 => w_port_1,
       PORT_2 => w_port_2,
-      PORT_3 => w_port_3
-);
+      PORT_3 => w_port_3);
 
   U_INST1 : INST1
     port map (
-      PORT_1 => w_port_1-- Comment
-);
+      PORT_1 => w_port_1)-- Comment
+;
 
   U_INST1 : INST1
     port map (
-      PORT_1 => w_port_1-- Comment
- );
+      PORT_1 => w_port_1)-- Comment
+ ;
 
   U_INST1 : INST1
     port map (
-      PORT_1 => w_port_1 -- Comment
-);
+      PORT_1 => w_port_1) -- Comment
+;
 
   U_INST1 : INST1
     port map (
-      PORT_1 => w_port_1 -- Comment
- );
+      PORT_1 => w_port_1) -- Comment
+ ;
 
   U_INST1 : INST1
     port map (
-      PORT_1 => w_port_1 -- Comment
-);-- Comment2
+      PORT_1 => w_port_1) -- Comment
+;-- Comment2
 
   U_INST1 : INST1
     port map (
-      PORT_1 => w_port_1 -- Comment
- );-- Comment2
+      PORT_1 => w_port_1) -- Comment
+ ;-- Comment2
 
   U_INST1 : INST1
     port map (
-      PORT_1 => w_port_1 -- Comment
-); -- Comment2
+      PORT_1 => w_port_1) -- Comment
+; -- Comment2
 
   U_INST1 : INST1
     port map (
-      PORT_1 => w_port_1 -- Comment
- ); -- Comment2
+      PORT_1 => w_port_1) -- Comment
+ ; -- Comment2
 
 end architecture ARCH;
 

@@ -533,6 +533,32 @@ entity instantiation
 
    U_FIFO : FIFO
 
+instantiation_035
+#################
+
+|phase_1| |error| |structure|
+
+This rule checks the semicolon is not on it's own line.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   U_FIFO : FIFO
+     port map (
+       A => B,
+       B => C)
+     ;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   U_FIFO : FIFO
+     port map (
+       A => B,
+       B => C);
+
 instantiation_600
 #################
 

@@ -340,7 +340,11 @@ port_014
 
 |phase_1| |error| |structure|
 
-This rule checks the closing parenthesis of the port map is on a line by itself.
+This rule checks the location of the closing ")" character for the port clause.
+
+The default location is on a line by itself.
+
+Refer to the section `Configuring Move Token Rules <configuring_move_token_rules.html>`_ for information on options.
 
 **Violation**
 
@@ -708,4 +712,30 @@ Any comments are not replicated.
      overflow : out   std_logic;
      empty : out   std_logic -- Other comment
    );
+
+port_027
+########
+
+|phase_1| |error| |structure|
+
+This rule checks the semicolon is not on it's own line.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   U_FIFO : FIFO
+     port (
+       I_WIDTH : in integer
+     )
+     ;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   U_FIFO : FIFO
+     generic (
+       I_WIDTH : in integer
+     );
 
