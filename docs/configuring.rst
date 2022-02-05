@@ -24,4 +24,5 @@ Configuring
    configuring_multiline_structure_rules.rst
    configuring_conditional_expressions.rst
    configuring_conditional_expressions_structure_rules.rst
+   configuring_port_mode_alignemnt.rst
    configuring_move_token_rules.rst

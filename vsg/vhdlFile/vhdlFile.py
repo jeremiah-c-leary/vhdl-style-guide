@@ -224,6 +224,9 @@ class vhdlFile():
     def get_n_tokens_before_and_after_tokens(self, iToken, lTokens):
         return extract.get_n_tokens_before_and_after_tokens(iToken, lTokens, self.lAllObjects, self.oTokenMap)
 
+    def get_n_tokens_before_and_after_tokens_bounded_by_tokens(self, iToken, lTokens, lBetween):
+        return extract.get_n_tokens_before_and_after_tokens_bounded_by_tokens(iToken, lTokens, lBetween, self.lAllObjects, self.oTokenMap)
+
     def get_sequence_of_tokens_not_matching(self, lTokens):
         return extract.get_sequence_of_tokens_not_matching(lTokens, self.lAllObjects, self.oTokenMap)
 

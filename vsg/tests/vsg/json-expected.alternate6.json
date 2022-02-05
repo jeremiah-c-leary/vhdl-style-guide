@@ -1,10 +1,6 @@
 {
   "files": [
     {
-      "file_path": "vsg/tests/vsg/entity_architecture.fixed.vhd",
-      "violations": []
-    },
-    {
       "file_path": "vsg/tests/vsg/entity2.vhd",
       "violations": [
         {
@@ -16,6 +12,14 @@
       ]
     },
     {
+      "file_path": "vsg/tests/vsg/entity_architecture.fixed.vhd",
+      "violations": []
+    },
+    {
+      "file_path": "vsg/tests/vsg/entity_architecture.vhd",
+      "violations": []
+    },
+    {
       "file_path": "vsg/tests/vsg/entity1.vhd",
       "violations": [
         {
@@ -25,10 +29,6 @@
           "solution": "Change number of spaces after *in* to 4."
         }
       ]
-    },
-    {
-      "file_path": "vsg/tests/vsg/entity_architecture.vhd",
-      "violations": []
     }
   ]
 }

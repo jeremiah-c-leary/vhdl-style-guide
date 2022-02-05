@@ -1,21 +1,19 @@
 
 from vsg import token
 
-from vsg.rules import n_spaces_between_token_pairs_when_bounded_by_tokens
+from vsg.rules import spaces_before_and_after_tokens_when_bounded_by_tokens as Rule
 
 lTokens = []
-lTokens.append([token.mode.inout_keyword, token.interface_unknown_declaration.subtype_indication])
-lTokens.append([token.mode.inout_keyword, token.interface_signal_declaration.subtype_indication])
-lTokens.append([token.mode.inout_keyword, token.interface_constant_declaration.subtype_indication])
-lTokens.append([token.mode.inout_keyword, token.interface_variable_declaration.subtype_indication])
+lTokens.append(token.mode.inout_keyword)
 
-oStart = token.port_clause.open_parenthesis
-oEnd = token.port_clause.close_parenthesis
+lBetween = [token.port_clause.open_parenthesis, token.port_clause.close_parenthesis]
 
 
-class rule_009(n_spaces_between_token_pairs_when_bounded_by_tokens):
+class rule_009(Rule):
     '''
-    This rule checks for a single space after the **inout** keyword.
+    This rule checks for spaces before and after the **inout** mode keyword.
+
+    Refer to the section `Configuring Port Mode Alignment <configuring-port-mode-alignment>`_ for information on changing spaces.
 
     **Violation**
 
@@ -38,5 +36,6 @@ class rule_009(n_spaces_between_token_pairs_when_bounded_by_tokens):
        );
     '''
     def __init__(self):
-        n_spaces_between_token_pairs_when_bounded_by_tokens.__init__(self, 'port', '009', 1, lTokens, oStart, oEnd)
-        self.solution = 'Change the number of spaces after the *inout* keyword to one space.'
+        Rule.__init__(self, 'port', '009', lTokens, lBetween)
+        self.spaces_before = 1
+        self.spaces_after = 1
