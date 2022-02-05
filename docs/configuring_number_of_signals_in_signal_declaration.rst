@@ -1,3 +1,6 @@
+
+.. _configuring-number-of-signals-in-signal-declaration:
+
 Configuring Number of Signals in Signal Declaration
 ---------------------------------------------------
 

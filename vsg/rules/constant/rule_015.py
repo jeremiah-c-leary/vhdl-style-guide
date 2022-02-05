@@ -12,7 +12,7 @@ class rule_015(token_prefix):
     This rule checks for valid prefixes on constant identifiers.
     The default constant prefix is *c\_*.
 
-    Refer to `Configuring Prefix and Suffix Rules <configuring_prefix_and_suffix_rules.html>`_ for information on changing the allowed prefixes.
+    |configuring_prefix_and_suffix_rules_link|
 
     **Violation**
 

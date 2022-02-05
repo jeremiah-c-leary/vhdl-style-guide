@@ -1,3 +1,6 @@
+
+.. _configuring-previous-line-rules:
+
 Configuring Previous Line Rules
 -------------------------------
 

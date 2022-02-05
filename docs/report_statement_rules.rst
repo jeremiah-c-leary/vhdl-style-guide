@@ -1,4 +1,4 @@
-.. include:: icons.rst
+.. include:: includes.rst
 
 Report Statement Rules
 ----------------------
@@ -157,7 +157,7 @@ report_statement_500
 
 This rule checks the **report** keyword has proper case.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -178,7 +178,7 @@ report_statement_501
 
 This rule checks the **severity** keyword has proper case.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 

@@ -1,4 +1,4 @@
-.. include:: icons.rst
+.. include:: includes.rst
 
 Subprogram Body Rules
 ---------------------
@@ -17,7 +17,7 @@ This rule allows the **begin** keyword to occupy the blank line:
    function overflow (a: integer) return integer is
    begin
 
-Refer to `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+|configuring_blank_lines_link|
 
 **Violation**
 
@@ -50,7 +50,7 @@ This rule allows the **is** keyword to occupy the blank line:
    function overflow (a: integer) return integer is
    begin
 
-Refer to `Configuring Blank Lines <configuring_blank_lines.html>`_ for options.
+|configuring_blank_lines_link|
 
 **Violation**
 
@@ -78,7 +78,7 @@ subprogram_body_203
 
 This rule checks for a blank line below the **begin** keyword.
 
-Refer to `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+|configuring_blank_lines_link|
 
 **Violation**
 
@@ -104,7 +104,7 @@ subprogram_body_204
 
 This rule checks for blank lines above the **end** keyword.
 
-Refer to `Configuring Blank Lines <configuring_blank_lines.html>`_ for options.
+|configuring_blank_lines_link|
 
 **Violation**
 
@@ -132,7 +132,7 @@ subprogram_body_205
 
 This rule checks for a blank line below the end of the function declaration.
 
-Refer to `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+|configuring_blank_lines_link|
 
 **Violation**
 
@@ -165,7 +165,7 @@ Following extra configurations are supported:
 * :code:`case_keyword_statements_ends_group`.
 * :code:`loop_control_statements_ends_group`,
 
-Refer to `Configuring Keyword Alignment Rules <configuring_keyword_alignment_rules.html>`_ for information on changing the configurations.
+|configuring_keyword_alignment_rules_link|
 
 **Violation**
 

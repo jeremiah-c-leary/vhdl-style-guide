@@ -15,7 +15,7 @@ class rule_025(token_suffix_between_tokens):
     This rule checks for valid suffixes on port identifiers.
     The default port suffixes are *_i*, *_o*, *_io*.
 
-    Refer to `Configuring Prefix and Suffix Rules <configuring_prefix_and_suffix_rules.html>`_ for information on changing the allowed suffixes.
+    |configuring_prefix_and_suffix_rules_link|
 
     **Violation**
 

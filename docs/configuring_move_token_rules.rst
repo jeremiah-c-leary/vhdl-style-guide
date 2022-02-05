@@ -1,3 +1,6 @@
+
+.. _configuring-move-token-rules:
+
 Configuring Move Token Rules
 ----------------------------
 

@@ -1,3 +1,6 @@
+
+.. _configuring-prefix-and-suffix-rules:
+
 Configuring Prefix and Suffix Rules
 -----------------------------------
 

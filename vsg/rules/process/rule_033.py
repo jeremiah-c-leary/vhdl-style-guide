@@ -19,7 +19,7 @@ class rule_033(Rule):
     '''
     This rule checks the colons are in the same column for all declarations in the process declarative part.
 
-    Refer to `Configuring Keyword Alignment Rules <configuring_keyword_alignment_rules.html>`_ for information on changing the configurations.
+    |configuring_keyword_alignment_rules_link|
 
     **Violation**
 

@@ -11,7 +11,7 @@ class rule_008(token_case_with_prefix_suffix):
     '''
     This rule checks the package name has proper case on the end package declaration.
 
-    Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+    |configuring_uppercase_and_lowercase_rules_link|
 
     **Violation**
 

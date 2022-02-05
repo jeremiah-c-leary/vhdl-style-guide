@@ -1,3 +1,6 @@
+
+.. _configuring-identifier-alignment-rules:
+
 Configuring Identifier Alignment Rules
 --------------------------------------
 

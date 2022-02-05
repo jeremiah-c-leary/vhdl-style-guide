@@ -13,7 +13,7 @@ class rule_010(token_case_n_token_after_tokens):
 
     .. NOTE:: This rule is disabled by default.
 
-    Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+    |configuring_uppercase_and_lowercase_rules_link|
 
     **Violation**
 

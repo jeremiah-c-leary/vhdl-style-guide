@@ -18,7 +18,7 @@ class rule_007(Rule):
     This rule checks the **end loop_statement** line has a label.
     The closing label will be added if the opening loop_statement label exists.
 
-    Refer to `Configuring Optional Items <configuring_optional_items.html>`_ for options.
+    |configuring_optional_items_link|
 
     **Violation**
 

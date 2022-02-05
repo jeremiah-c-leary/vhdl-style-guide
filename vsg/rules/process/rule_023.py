@@ -11,7 +11,7 @@ class rule_023(blank_line_above_line_starting_with_token):
     '''
     This rule checks for a blank line above the **end process** keyword.
 
-    Refer to `Configuring Blank Lines <configuring_blank_lines.html>`_ for options.
+    |configuring_blank_lines_link|
 
     **Violation**
 

@@ -12,7 +12,7 @@ class rule_011(blank_line_below_line_ending_with_token):
     '''
     This rule checks for a blank line below the **type** declaration.
 
-    Refer to `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+    |configuring_blank_lines_link|
 
     **Violation**
 

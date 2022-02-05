@@ -27,7 +27,7 @@ class rule_402(align_tokens_in_region_between_tokens_when_between_tokens_unless_
     '''
     This rule checks the identifiers for all declarations are aligned in the generate declarative part in if generate statements.
 
-    Refer to `Configuring Identifier Alignment Rules <configuring_identifier_alignment_rules.html>`_ for information on changing the configurations.
+    |configuring_identifier_alignment_rules_link|
 
     **Violation**
 

@@ -1,4 +1,4 @@
-.. include:: icons.rst
+.. include:: includes.rst
 
 Context Rules
 -------------
@@ -52,7 +52,7 @@ context_003
 
 This rule checks for blank lines or comments above the **context** keyword.
 
-Refer to `Configuring Previous Line Rules <configuring_previous_line_rules.html>`_ for options.
+|configuring_previous_line_rules_link|
 
 The default style is :code:`no_code`.
 
@@ -84,7 +84,7 @@ context_004
 
 This rule checks the **context** keyword has proper case.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -268,7 +268,7 @@ context_012
 
 This rule checks the context identifier has proper case in the context declaration.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -289,7 +289,7 @@ context_013
 
 This rule checks the **is** keyword has proper case in the context declaration.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -310,7 +310,7 @@ context_014
 
 This rule checks the **end** keyword has proper case.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -335,7 +335,7 @@ context_015
 
 This rule checks the context keyword has proper case in the end context declaration.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -356,7 +356,7 @@ context_016
 
 This rule checks the context identifier has proper case in the end context declaration.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -463,7 +463,7 @@ context_021
 
 This rule checks for the keyword **context** in the **end context** statement.
 
-Refer to `Configuring Optional Items <configuring_optional_items.html>`_ for options.
+|configuring_optional_items_link|
 
 **Violation**
 
@@ -488,7 +488,7 @@ context_022
 
 This rule checks for the context name in the **end context** statement.
 
-Refer to `Configuring Optional Items <configuring_optional_items.html>`_ for options.
+|configuring_optional_items_link|
 
 **Violation**
 
@@ -509,7 +509,7 @@ context_023
 
 This rule adds a blank line below the **is** keyword.
 
-Refer to `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+|configuring_blank_lines_link|
 
 **Violation**
 
@@ -533,7 +533,7 @@ context_024
 
 This rule checks for blank lines or comments above the **end** keyword.
 
-Refer to `Configuring Previous Line Rules <configuring_previous_line_rules.html>`_ for options.
+|configuring_previous_line_rules_link|
 
 The default style is :code:`no_code`.
 
@@ -559,7 +559,7 @@ context_025
 
 This rule adds a blank line below the context semicolon.
 
-Refer to `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+|configuring_blank_lines_link|
 
 **Violation**
 
@@ -633,7 +633,7 @@ context_028
 
 This rule checks for alignment of inline comments in the context declaration.
 
-Refer to `Configuring Keyword Alignment Rules <configuring_keyword_alignment_rules.html>`_ for information on changing the configurations.
+|configuring_keyword_alignment_rules_link|
 
 **Violation**
 

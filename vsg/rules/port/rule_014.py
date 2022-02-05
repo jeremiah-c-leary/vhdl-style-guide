@@ -12,7 +12,7 @@ class rule_014(Rule):
 
     The default location is on a line by itself.
 
-    Refer to `Configuring Move Token Rules <configuring_move_token_rules.html>`_ for information on options.
+    |configuring_move_token_rules_link|
 
     **Violation**
 

@@ -26,7 +26,7 @@ class rule_400(align_tokens_in_region_between_tokens_unless_between_tokens):
     * :code:`case_keyword_statements_ends_group`.
     * :code:`loop_control_statements_ends_group`,
 
-    Refer to `Configuring Keyword Alignment Rules <configuring_keyword_alignment_rules.html>`_ for information on changing the configurations.
+    |configuring_keyword_alignment_rules_link|
 
     **Violation**
 

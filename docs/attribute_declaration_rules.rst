@@ -1,4 +1,4 @@
-.. include:: icons.rst
+.. include:: includes.rst
 
 Attribute Declaration Rules
 ---------------------------
@@ -69,7 +69,7 @@ attribute_declaration_500
 
 This rule checks the **attribute** keyword has proper case.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -90,7 +90,7 @@ attribute_declaration_501
 
 This rule checks the *identifier* has proper case.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -111,7 +111,7 @@ attribute_declaration_502
 
 This rule checks the *type_mark* has proper case.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 

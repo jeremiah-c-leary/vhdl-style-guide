@@ -1,4 +1,4 @@
-.. include:: icons.rst
+.. include:: includes.rst
 
 Component Rules
 ---------------
@@ -58,7 +58,7 @@ component_003
 
 This rule checks for blank lines or comments above the **component** declaration.
 
-Refer to `Configuring Previous Line Rules <configuring_previous_line_rules.html>`_ for options.
+|configuring_previous_line_rules_link|
 
 The default style is :code:`no_code`.
 
@@ -84,7 +84,7 @@ component_004
 
 This rule checks the **component** keyword has proper case.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -133,7 +133,7 @@ component_006
 
 This rule checks the **is** keyword has proper case.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -177,7 +177,7 @@ component_008
 
 This rule checks the component name has proper case in the component declaration.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -221,7 +221,7 @@ component_010
 
 This rule checks the **end** keyword has proper case.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -261,7 +261,7 @@ component_012
 
 This rule checks the proper case of the component name in the **end component** line.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -301,7 +301,7 @@ component_014
 
 This rule checks the **component** keyword in the **end component** line has proper case.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -358,7 +358,7 @@ Following extra configurations are supported:
 
 * :code:`separate_generic_port_alignment`.
 
-Refer to `Configuring Keyword Alignment Rules <configuring_keyword_alignment_rules.html>`_ for information on changing the configurations.
+|configuring_keyword_alignment_rules_link|
 
 **Violation**
 
@@ -399,7 +399,7 @@ component_018
 
 This rule checks for a blank line below the **end component** line.
 
-Refer to `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+|configuring_blank_lines_link|
 
 **Violation**
 
@@ -452,7 +452,7 @@ Following extra configurations are supported:
 
 * :code:`separate_generic_port_alignment`.
 
-Refer to `Configuring Keyword Alignment Rules <configuring_keyword_alignment_rules.html>`_ for information on changing the configurations.
+|configuring_keyword_alignment_rules_link|
 
 **Violation**
 
@@ -493,7 +493,7 @@ component_021
 
 This rule inserts the optional **is** keyword if it does not exist.
 
-Refer to `Configuring Optional Items <configuring_optional_items.html>`_ for options.
+|configuring_optional_items_link|
 
 **Violation**
 

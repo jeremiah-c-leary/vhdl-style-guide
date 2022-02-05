@@ -1,4 +1,4 @@
-.. include:: icons.rst
+.. include:: includes.rst
 
 Procedure Rules
 ---------------
@@ -279,7 +279,7 @@ procedure_008
 
 This rule checks the **end** keyword has proper case.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -304,7 +304,7 @@ procedure_009
 
 This rule checks the **procedure** keyword in the **end procedure** has proper case.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -329,7 +329,7 @@ procedure_010
 
 This rule checks the identifiers for all declarations are aligned in the procedure declarative part.
 
-Refer to `Configuring Identifier Alignment Rules <configuring_identifier_alignment_rules.html>`_ for information on changing the configurations.
+|configuring_identifier_alignment_rules_link|
 
 **Violation**
 
@@ -431,7 +431,7 @@ procedure_200
 
 This rule checks for blank lines or comments above the **procedure** keyword.
 
-Refer to `Configuring Previous Line Rules <configuring_previous_line_rules.html>`_ for options.
+|configuring_previous_line_rules_link|
 
 **Violation**
 
@@ -481,7 +481,7 @@ procedure_401
 
 This rule checks the colons are in the same column for all declarations in the procedure declarative part.
 
-Refer to `Configuring Keyword Alignment Rules <configuring_keyword_alignment_rules.html>`_ for information on changing the configurations.
+|configuring_keyword_alignment_rules_link|
 
 **Violation**
 
@@ -508,7 +508,7 @@ procedure_410
 
 This rule checks the alignment of the colon for each parameter in the procedure declaration.
 
-Refer to `Configuring Keyword Alignment Rules <configuring_keyword_alignment_rules.html>`_ for information on changing the configurations.
+|configuring_keyword_alignment_rules_link|
 
 **Violation**
 
@@ -535,7 +535,7 @@ procedure_411
 
 This rule checks the alignment of **:=** operator for each parameter in the procedure declaration.
 
-Refer to `Configuring Keyword Alignment Rules <configuring_keyword_alignment_rules.html>`_ for information on changing the configurations.
+|configuring_keyword_alignment_rules_link|
 
 **Violation**
 
@@ -562,7 +562,7 @@ procedure_412
 
 This rule checks for alignment of inline comments for each parameter in the procedure declaration.
 
-Refer to `Configuring Keyword Alignment Rules <configuring_keyword_alignment_rules.html>`_ for information on changing the configurations.
+|configuring_keyword_alignment_rules_link|
 
 **Violation**
 
@@ -589,7 +589,7 @@ procedure_500
 
 This rule checks the **procedure** keyword has proper case.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -610,7 +610,7 @@ procedure_501
 
 This rule checks the procedure designator has proper case.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -631,7 +631,7 @@ procedure_502
 
 This rule checks the **is** keyword has proper case.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -652,7 +652,7 @@ procedure_503
 
 This rule checks the **begin** keyword has proper case.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -675,7 +675,7 @@ procedure_504
 
 This rule checks the **end** keyword has proper case.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -696,7 +696,7 @@ procedure_505
 
 This rule checks the **procedure** keyword in the **end procedure** has proper case.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -717,7 +717,7 @@ procedure_506
 
 This rule checks the procedure designator has proper case on the end procedure declaration.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 

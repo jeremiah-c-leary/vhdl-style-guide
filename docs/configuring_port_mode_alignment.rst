@@ -1,3 +1,6 @@
+
+.. _configuring-port-mode-alignment:
+
 Configuring Port Mode Alignment
 -------------------------------
 

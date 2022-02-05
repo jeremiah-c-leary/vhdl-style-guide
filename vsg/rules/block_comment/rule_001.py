@@ -11,7 +11,7 @@ class rule_001(block_rule.Rule):
     '''
     This rule checks the block comment header is correct.
 
-    Refer to `Configuring Block Comments <configuring_block_comments.html>`_ for additional information.
+    |configuring_block_comments_link|
 
     **Violation**
 

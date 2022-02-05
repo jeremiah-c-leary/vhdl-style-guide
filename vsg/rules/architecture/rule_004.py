@@ -8,7 +8,7 @@ class rule_004(token_case):
     '''
     This rule checks the proper case of the **architecture** keyword in the architecture declaration.
 
-    Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+    |configuring_uppercase_and_lowercase_rules_link|
 
     **Violation**
 

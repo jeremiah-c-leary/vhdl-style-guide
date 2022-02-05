@@ -1,4 +1,4 @@
-.. include:: icons.rst
+.. include:: includes.rst
 
 Instantiation Rules
 -------------------
@@ -77,7 +77,7 @@ instantiation_004
 
 This rule checks for blank lines or comments above the instantiation.
 
-Refer to `Configuring Previous Line Rules <configuring_previous_line_rules.html>`_ for options.
+|configuring_previous_line_rules_link|
 
 The default style is :code:`no_code`.
 
@@ -139,7 +139,7 @@ instantiation_008
 
 This rule checks the instance label has proper case.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -160,7 +160,7 @@ instantiation_009
 
 This rule checks the component name has proper case.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -186,7 +186,7 @@ Following extra configurations are supported:
 
 * :code:`separate_generic_port_alignment`.
 
-Refer to `Configuring Keyword Alignment Rules <configuring_keyword_alignment_rules.html>`_ for information on changing the configurations.
+|configuring_keyword_alignment_rules_link|
 
 **Violation**
 
@@ -275,7 +275,7 @@ instantiation_019
 
 This rule checks for a blank line below the end of the instantiation declaration.
 
-Refer to `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+|configuring_blank_lines_link|
 
 **Violation**
 
@@ -366,7 +366,7 @@ instantiation_027
 
 This rule checks the **entity** keyword has proper case in direct instantiations.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -387,7 +387,7 @@ instantiation_028
 
 This rule checks the entity name has proper case in direct instantiations.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -412,7 +412,7 @@ Following extra configurations are supported:
 
 * :code:`separate_generic_port_alignment`.
 
-Refer to `Configuring Keyword Alignment Rules <configuring_keyword_alignment_rules.html>`_ for information on changing the configurations.
+|configuring_keyword_alignment_rules_link|
 **Violation**
 
 **Violation**
@@ -443,7 +443,7 @@ instantiation_031
 
 This rule checks the component keyword has proper case in component instantiations that use the **component** keyword.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -487,7 +487,7 @@ instantiation_033
 
 This rule checks for the **component** keyword for a component instantiation.
 
-Refer to `Configuring Optional Items <configuring_optional_items.html>`_ for options.
+|configuring_optional_items_link|
 
 **Violation**
 
@@ -508,7 +508,7 @@ instantiation_034
 
 This rule checks for component versus direct instantiations.
 
-Refer to `Configuring Type of Instantiation <configuring_type_of_instantiations.html>`_ for options to configure the allowed configuration.
+|configuring_type_of_instantiations_link|
 
 component instantiation
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -567,7 +567,7 @@ instantiation_600
 This rule checks for valid suffixes on instantiation labels.
 The default suffix is *_inst*.
 
-Refer to `Configuring Prefix and Suffix Rules <configuring_prefix_and_suffix_rules.html>`_ for information on changing the allowed suffixes.
+|configuring_prefix_and_suffix_rules_link|
 
 **Violation**
 
@@ -589,7 +589,7 @@ instantiation_601
 This rule checks for valid prefixes on instantiation labels.
 The default prefix is *inst_*.
 
-Refer to `Configuring Prefix and Suffix Rules <configuring_prefix_and_suffix_rules.html>`_ for information on changing the allowed prefixes.
+|configuring_prefix_and_suffix_rules_link|
 
 **Violation**
 

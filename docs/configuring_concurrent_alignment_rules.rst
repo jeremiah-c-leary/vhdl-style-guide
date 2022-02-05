@@ -1,3 +1,5 @@
+.. _configuring-concurrent-alignment-rules:
+
 Configuring Concurrent Alignment Rules
 --------------------------------------
 

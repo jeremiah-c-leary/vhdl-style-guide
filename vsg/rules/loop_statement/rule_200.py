@@ -14,7 +14,7 @@ class rule_200(previous_line):
     '''
     This rule checks for blank lines or comments above loop statements.
 
-    Refer to `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+    |configuring_blank_lines_link|
 
     The default style is :code:`no_code`.
 

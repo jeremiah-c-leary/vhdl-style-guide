@@ -1,4 +1,4 @@
-.. include:: icons.rst
+.. include:: includes.rst
 
 Process Rules
 -------------
@@ -85,7 +85,7 @@ process_004
 
 This rule checks the **begin** keyword has proper case.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -112,7 +112,7 @@ process_005
 
 This rule checks the **process** keyword has proper case.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -181,7 +181,7 @@ process_008
 
 This rule checks the **end** keyword has proper case.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -202,7 +202,7 @@ process_009
 
 This rule checks the **process** keyword has proper case in the **end process** line.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -247,7 +247,7 @@ process_011
 
 This rule checks for a blank line below the **end process** keyword.
 
-Refer to `Configuring Blank Lines <configuring_blank_lines.html>`_ for options.
+|configuring_blank_lines_link|
 
 **Violation**
 
@@ -271,7 +271,7 @@ process_012
 
 This rule checks for the existence of the **is** keyword.
 
-Refer to `Configuring Optional Items <configuring_optional_items.html>`_ for options.
+|configuring_optional_items_link|
 
 **Violation**
 
@@ -310,7 +310,7 @@ process_013
 
 This rule checks the **is** keyword has proper case.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -362,7 +362,7 @@ process_015
 
 This rule checks for blank lines or comments above the **process** declaration.
 
-Refer to `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+|configuring_blank_lines_link|
 
 The default style is :code:`no_code`.
 
@@ -419,7 +419,7 @@ process_017
 
 This rule checks the process label has proper case.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -447,7 +447,7 @@ process_018
 This rule checks the **end process** line has a label.
 The closing label will be added if the opening process label exists.
 
-Refer to `Configuring Optional Items <configuring_optional_items.html>`_ for options.
+|configuring_optional_items_link|
 
 **Violation**
 
@@ -468,7 +468,7 @@ process_019
 
 This rule checks the **end process** label has proper case.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -515,7 +515,7 @@ process_021
 
 This rule checks for blank lines above the **begin** keyword if there are no process declarative items.
 
-Refer to `Configuring Blank Lines <configuring_blank_lines.html>`_ for options.
+|configuring_blank_lines_link|
 
 **Violation**
 
@@ -563,7 +563,7 @@ process_022
 
 This rule checks for a blank line below the **begin** keyword.
 
-Refer to `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+|configuring_blank_lines_link|
 
 **Violation**
 
@@ -593,7 +593,7 @@ process_023
 
 This rule checks for a blank line above the **end process** keyword.
 
-Refer to `Configuring Blank Lines <configuring_blank_lines.html>`_ for options.
+|configuring_blank_lines_link|
 
 **Violation**
 
@@ -666,7 +666,7 @@ process_026
 
 This rule checks for blank lines above the first declarative line, if it exists.
 
-Refer to `Configuring Blank Lines <configuring_blank_lines.html>`_ for options.
+|configuring_blank_lines_link|
 
 **Violation**
 
@@ -698,7 +698,7 @@ process_027
 
 This rule checks for blank lines above the **begin** keyword if a declarative item exists.
 
-Refer to `Configuring Blank Lines <configuring_blank_lines.html>`_ for options.
+|configuring_blank_lines_link|
 
 **Violation**
 
@@ -914,7 +914,7 @@ process_033
 
 This rule checks the colons are in the same column for all declarations in the process declarative part.
 
-Refer to `Configuring Keyword Alignment Rules <configuring_keyword_alignment_rules.html>`_ for information on changing the configurations.
+|configuring_keyword_alignment_rules_link|
 
 **Violation**
 
@@ -940,7 +940,7 @@ process_034
 |phase_5| |error| |alignment|
 
 This rule aligns inline comments between the end of the process sensitivity list and the process **begin** keyword.
-Refer to `Configuring Keyword Alignment Rules <configuring_keyword_alignment_rules.html>`_ for information on changing the configurations.
+|configuring_keyword_alignment_rules_link|
 
 **Violation**
 
@@ -974,7 +974,7 @@ process_035
 |phase_5| |error| |alignment|
 
 This rule checks the alignment of inline comments between the process begin and end process lines.
-Refer to `Configuring Keyword Alignment Rules <configuring_keyword_alignment_rules.html>`_ for information on changing the configurations.
+|configuring_keyword_alignment_rules_link|
 
 **Violation**
 
@@ -1010,7 +1010,7 @@ process_036
 This rule checks for valid prefixes on process labels.
 The default prefix is *proc\_*.
 
-Refer to `Configuring Prefix and Suffix Rules <configuring_prefix_and_suffix_rules.html>`_ for information on changing the allowed prefixes.
+|configuring_prefix_and_suffix_rules_link|
 
 **Violation**
 
@@ -1038,7 +1038,7 @@ Following extra configurations are supported:
 * :code:`case_keyword_statements_ends_group`.
 * :code:`loop_control_statements_ends_group`,
 
-Refer to `Configuring Keyword Alignment Rules <configuring_keyword_alignment_rules.html>`_ for information on changing the configurations.
+|configuring_keyword_alignment_rules_link|
 
 **Violation**
 
@@ -1064,7 +1064,7 @@ process_600
 This rule checks for valid suffixes on process labels.
 The default suffix is *\_proc*.
 
-Refer to `Configuring Prefix and Suffix Rules <configuring_prefix_and_suffix_rules.html>`_ for information on changing the allowed suffixes.
+|configuring_prefix_and_suffix_rules_link|
 
 **Violation**
 

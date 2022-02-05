@@ -1,4 +1,4 @@
-.. include:: icons.rst
+.. include:: includes.rst
 
 Type Rules
 ----------
@@ -37,7 +37,7 @@ type_002
 
 This rule checks the **type** keyword has proper case.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -68,7 +68,7 @@ type_004
 
 This rule checks the type identifier has proper case.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -210,7 +210,7 @@ type_010
 
 This rule checks for blank lines or comments above the **type** declaration.
 
-Refer to `Configuring Previous Line Rules <configuring_previous_line_rules.html>`_ for options.
+|configuring_previous_line_rules_link|
 
 **Violation**
 
@@ -234,7 +234,7 @@ type_011
 
 This rule checks for a blank line below the **type** declaration.
 
-Refer to `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+|configuring_blank_lines_link|
 
 **Violation**
 
@@ -285,7 +285,7 @@ type_013
 
 This rule checks the **is** keyword in type definitions has proper case.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -334,7 +334,7 @@ type_015
 This rule checks for valid prefixes in user defined type identifiers.
 The default new type prefix is *t\_*.
 
-Refer to `Configuring Prefix and Suffix Rules <configuring_prefix_and_suffix_rules.html>`_ for information on changing the allowed prefixes.
+|configuring_prefix_and_suffix_rules_link|
 
 **Violation**
 
@@ -386,7 +386,7 @@ type_400
 
 This rule checks the colons are in the same column for all elements in the block declarative part.
 
-Refer to `Configuring Keyword Alignment Rules <configuring_keyword_alignment_rules.html>`_ for information on changing the configurations.
+|configuring_keyword_alignment_rules_link|
 
 **Violation**
 
@@ -416,7 +416,7 @@ type_600
 This rule checks for valid suffixes in user defined type identifiers.
 The default new type suffix is *\_t*.
 
-Refer to `Configuring Prefix and Suffix Rules <configuring_prefix_and_suffix_rules.html>`_ for information on changing the allowed suffixes.
+|configuring_prefix_and_suffix_rules_link|
 
 **Violation**
 

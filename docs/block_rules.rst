@@ -1,4 +1,4 @@
-.. include:: icons.rst
+.. include:: includes.rst
 
 Block Rules
 -----------
@@ -31,7 +31,7 @@ block_002
 
 This rule checks for the existence of the **is** keyword.
 
-Refer to `Configuring Optional Items <configuring_optional_items.html>`_ for options.
+|configuring_optional_items_link|
 
 **Violation**
 
@@ -134,7 +134,7 @@ block_007
 
 This rule checks the block label exists in the closing of the block statement.
 
-Refer to `Configuring Optional Items <configuring_optional_items.html>`_ for options.
+|configuring_optional_items_link|
 
 **Violation**
 
@@ -195,7 +195,7 @@ block_200
 
 This rule checks for blank lines or comments above the block label.
 
-Refer to `Configuring Previous Line Rules <configuring_previous_line_rules.html>`_ for options.
+|configuring_previous_line_rules_link|
 
 **Violation**
 
@@ -219,7 +219,7 @@ block_201
 
 This rule checks for a blank line below the **block** keyword.
 
-Refer to `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+|configuring_blank_lines_link|
 
 **Violation**
 
@@ -243,7 +243,7 @@ block_202
 
 This rule checks for blank lines or comments above the **begin** keyword.
 
-Refer to `Configuring Blank Lines <configuring_blank_lines.html>`_ for options.
+|configuring_blank_lines_link|
 
 **Violation**
 
@@ -271,7 +271,7 @@ block_203
 
 This rule checks for a blank line below the **begin** keyword.
 
-Refer to `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+|configuring_blank_lines_link|
 
 **Violation**
 
@@ -295,7 +295,7 @@ block_204
 
 This rule checks for blank lines or comments above the **end** keyword.
 
-Refer to `Configuring Blank Lines <configuring_blank_lines.html>`_ for options.
+|configuring_blank_lines_link|
 
 **Violation**
 
@@ -323,7 +323,7 @@ block_205
 
 This rule checks for a blank line below the semicolon.
 
-Refer to `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+|configuring_blank_lines_link|
 
 **Violation**
 
@@ -420,7 +420,7 @@ block_400
 
 This rule checks the identifiers for all declarations are aligned in the block declarative region.
 
-Refer to `Configuring Identifier Alignment Rules <configuring_identifier_alignment_rules.html>`_ for information on changing the configurations.
+|configuring_identifier_alignment_rules_link|
 
 **Violation**
 
@@ -443,7 +443,7 @@ block_401
 
 This rule checks the colons are in the same column for all declarations in the block declarative part.
 
-Refer to `Configuring Keyword Alignment Rules <configuring_keyword_alignment_rules.html>`_ for information on changing the configurations.
+|configuring_keyword_alignment_rules_link|
 
 **Violation**
 
@@ -470,7 +470,7 @@ block_500
 
 This rule checks the label has proper case.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -491,7 +491,7 @@ block_501
 
 This rule checks the **block** keyword has proper case.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -512,7 +512,7 @@ block_502
 
 This rule checks the **is** keyword has proper case.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -533,7 +533,7 @@ block_503
 
 This rule checks the **begin** keyword has proper case.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -556,7 +556,7 @@ block_504
 
 This rule checks the **end** keyword has proper case.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -577,7 +577,7 @@ block_505
 
 This rule checks the **block** keyword in the **end block** has proper case.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -598,7 +598,7 @@ block_506
 
 This rule checks the label has proper case on the end block declaration.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -620,7 +620,7 @@ block_600
 This rule checks for valid suffixes on block labels.
 The default suffix is *_blk*.
 
-Refer to `Configuring Prefix and Suffix Rules <configuring_prefix_and_suffix_rules.html>`_ for information on changing the allowed suffixes.
+|configuring_prefix_and_suffix_rules_link|
 
 **Violation**
 
@@ -642,7 +642,7 @@ block_601
 This rule checks for valid prefixes on block labels.
 The default prefix is *blk_*.
 
-Refer to `Configuring Prefix and Suffix Rules <configuring_prefix_and_suffix_rules.html>`_ for information on changing the allowed prefixes.
+|configuring_prefix_and_suffix_rules_link|
 
 **Violation**
 

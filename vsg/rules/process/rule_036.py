@@ -13,7 +13,7 @@ class rule_036(token_prefix):
     This rule checks for valid prefixes on process labels.
     The default prefix is *proc\_*.
 
-    Refer to `Configuring Prefix and Suffix Rules <configuring_prefix_and_suffix_rules.html>`_ for information on changing the allowed prefixes.
+    |configuring_prefix_and_suffix_rules_link|
 
     **Violation**
 

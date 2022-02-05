@@ -1,4 +1,4 @@
-.. include:: icons.rst
+.. include:: includes.rst
 
 Length Rules
 ------------
@@ -12,7 +12,7 @@ length_001
 
 This rule checks the length of the line.
 
-Refer to `Configuring Length Rules <configuring_length_rules.html>`_ for configuring this option.
+|configuring_length_rules_link|
 
 length_002
 ##########
@@ -21,7 +21,7 @@ length_002
 
 This rule checks the length of a file.
 
-Refer to `Configuring Length Rules <configuring_length_rules.html>`_ for configuring this option.
+|configuring_length_rules_link|
 
 length_003
 ##########
@@ -30,5 +30,5 @@ length_003
 
 This rule checks the length of a process statement.
 
-Refer to `Configuring Length Rules <configuring_length_rules.html>`_ for configuring this option.
+|configuring_length_rules_link|
 

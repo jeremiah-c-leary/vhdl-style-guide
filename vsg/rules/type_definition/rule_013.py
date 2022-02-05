@@ -11,7 +11,7 @@ class rule_013(token_case):
     '''
     This rule checks the **is** keyword in type definitions has proper case.
 
-    Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+    |configuring_uppercase_and_lowercase_rules_link|
 
     **Violation**
 

@@ -13,7 +13,7 @@ class rule_600(token_suffix):
     This rule checks for valid suffixes on package body identifiers.
     The default package suffix is *_pkg*.
 
-    Refer to `Configuring Prefix and Suffix Rules <configuring_prefix_and_suffix_rules.html>`_ for information on changing the allowed suffixes.
+    |configuring_prefix_and_suffix_rules_link|
 
     **Violation**
 

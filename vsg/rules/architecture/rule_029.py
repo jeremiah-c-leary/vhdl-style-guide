@@ -21,7 +21,7 @@ class rule_029(align_tokens_in_region_between_tokens_unless_between_tokens):
     '''
     This rule checks for alignment of names in alias, attribute, type, subtype, constant, signal, variable and file declarations in the architecture declarative region.
 
-    Refer to `Configuring Identifier Alignment Rules <configuring_identifier_alignment_rules.html>`_ for information on changing the configurations.
+    |configuring_identifier_alignment_rules_link|
 
     **Violation**
 

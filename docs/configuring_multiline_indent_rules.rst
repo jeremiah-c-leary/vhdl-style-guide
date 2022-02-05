@@ -1,3 +1,6 @@
+
+.. _configuring-multiline-indent-rules:
+
 Configuring Multiline Indent Rules
 ----------------------------------
 

@@ -1,3 +1,6 @@
+
+.. _configuring-indentation:
+
 Configuring Indentation
 -----------------------
 

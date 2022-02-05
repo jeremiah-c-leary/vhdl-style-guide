@@ -14,7 +14,7 @@ class rule_014(Rule):
     '''
     This rule checks the indent of multiline constants that do not contain arrays.
 
-    Refer to `Configuring Multiline Indent Rules <configuring_multiline_indent_rules.html>`_ for more information.
+    |configuring_multiline_indent_rules_link|
 
     **Violation**
 

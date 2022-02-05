@@ -15,7 +15,7 @@ class rule_027(blank_line.Rule):
     '''
     This rule checks for blank lines above the **begin** keyword if a declarative item exists.
 
-    Refer to `Configuring Blank Lines <configuring_blank_lines.html>`_ for options.
+    |configuring_blank_lines_link|
 
     **Violation**
 

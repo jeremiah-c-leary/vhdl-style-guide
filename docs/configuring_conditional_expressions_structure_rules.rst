@@ -1,3 +1,6 @@
+
+.. _configuring-concurrent-structure-rules:
+
 Configuring Concurrent Structure Rules
 --------------------------------------
 

@@ -16,7 +16,7 @@ class rule_012(insert_token_right_of_possible_tokens_if_it_does_not_exist_before
     '''
     This rule checks for the existence of the **is** keyword.
 
-    Refer to `Configuring Optional Items <configuring_optional_items.html>`_ for options.
+    |configuring_optional_items_link|
 
     **Violation**
 

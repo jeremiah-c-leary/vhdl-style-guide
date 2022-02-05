@@ -1,3 +1,5 @@
+.. _configuring-keyword-alignment-rules:
+
 Configuring Keyword Alignment Rules
 -----------------------------------
 

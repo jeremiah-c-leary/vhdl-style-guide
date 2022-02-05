@@ -1,3 +1,5 @@
+.. _configuring-blank-lines:
+
 Configuring Blank Lines
 -----------------------
 

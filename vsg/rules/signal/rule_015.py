@@ -9,7 +9,7 @@ class rule_015(separate_multiple_signal_identifiers_into_individual_statements):
     This rule checks for multiple signal names defined in a single signal declaration.
     By default, this rule will only flag more than two signal declarations.
 
-    Refer to `Configuring Number of Signals in Signal Declaration <configuring_number_of_signals_in_signal_declaration.html>`_ for information on changing the default.
+    |configuring_number_of_signals_in_signal_declaration_link|
 
     **Violation**
 

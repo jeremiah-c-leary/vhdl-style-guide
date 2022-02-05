@@ -25,7 +25,8 @@ lEndAssignments.append(token.simple_release_assignment.semicolon)
 class rule_002(alignment.Rule):
     '''
     This rule checks the *after* keywords are aligned in a clock process.
-    Refer to `Configuring Keyword Alignment Rules <configuring_keyword_alignment_rules.html>`_ for information on changing the configurations.
+
+    |configuring_keyword_alignment_rules_link|
 
     **Violation**
 

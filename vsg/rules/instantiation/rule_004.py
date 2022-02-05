@@ -11,7 +11,7 @@ class rule_004(previous_line):
     '''
     This rule checks for blank lines or comments above the instantiation.
 
-    Refer to `Configuring Previous Line Rules <configuring_previous_line_rules.html>`_ for options.
+    |configuring_previous_line_rules_link|
 
     The default style is :code:`no_code`.
 

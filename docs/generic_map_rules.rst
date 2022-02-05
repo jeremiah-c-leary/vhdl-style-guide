@@ -1,4 +1,4 @@
-.. include:: icons.rst
+.. include:: includes.rst
 
 Generic Map Rules
 -----------------
@@ -10,7 +10,7 @@ generic_map_001
 
 This rule checks the **generic map** keywords have proper case.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -31,7 +31,7 @@ generic_map_002
 
 This rule checks generic names have proper case.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -88,7 +88,7 @@ This rule checks the location of the closing ")" character for the generic map.
 
 The default location is on a line by itself.
 
-Refer to `Configuring Move Token Rules <configuring_move_token_rules.html>`_ for information on options.
+|configuring_move_token_rules_link|
 
 **Violation**
 

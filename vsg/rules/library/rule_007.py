@@ -11,7 +11,7 @@ class rule_007(previous_line):
     '''
     This rule checks for blank lines or comments above the **use** declaration.
 
-    Refer to `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+    |configuring_blank_lines_link|
 
     The default style is :code:`no_blank_line`.
 

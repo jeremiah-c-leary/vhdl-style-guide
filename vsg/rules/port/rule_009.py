@@ -13,7 +13,7 @@ class rule_009(Rule):
     '''
     This rule checks for spaces before and after the **inout** mode keyword.
 
-    Refer to `Configuring Port Mode Alignment <configuring_port_mode_alignment.html>`_ for information on changing spaces.
+    |configuring_port_mode_alignment_link|
 
     **Violation**
 

@@ -8,7 +8,7 @@ class rule_021(token_case):
     '''
     This rule checks the proper case of the **begin** keyword.
 
-    Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+    |configuring_uppercase_and_lowercase_rules_link|
 
     **Violation**
 

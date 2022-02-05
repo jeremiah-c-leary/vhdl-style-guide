@@ -43,7 +43,7 @@ def create_rule_documentation():
 def build_rule_class_doc(sRuleName, dRules):
 #    for sRuleName in lRuleName:
     lRuleClassDoc = []
-    lRuleClassDoc.append('.. include:: icons.rst')
+    lRuleClassDoc.append('.. include:: includes.rst')
     lRuleClassDoc.extend(blank_line())
     if sRuleName == 'context_ref':
         sTitle = 'Context Reference Rules'

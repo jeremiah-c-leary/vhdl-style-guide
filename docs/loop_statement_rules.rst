@@ -1,4 +1,4 @@
-.. include:: icons.rst
+.. include:: includes.rst
 
 Loop Statement Rules
 --------------------
@@ -155,7 +155,7 @@ loop_statement_007
 This rule checks the **end loop_statement** line has a label.
 The closing label will be added if the opening loop_statement label exists.
 
-Refer to `Configuring Optional Items <configuring_optional_items.html>`_ for options.
+|configuring_optional_items_link|
 
 **Violation**
 
@@ -279,7 +279,7 @@ loop_statement_200
 
 This rule checks for blank lines or comments above loop statements.
 
-Refer to `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+|configuring_blank_lines_link|
 
 The default style is :code:`no_code`.
 
@@ -311,7 +311,7 @@ loop_statement_201
 
 This rule checks for blank lines below the **loop** keyword.
 
-Refer to `Configuring Blank Lines <configuring_blank_lines.html>`_ for options.
+|configuring_blank_lines_link|
 
 **Violation**
 
@@ -334,7 +334,7 @@ loop_statement_202
 
 This rule checks for blank lines or comments above the **end** keyword.
 
-Refer to `Configuring Previous Line Rules <configuring_previous_line_rules.html>`_ for options.
+|configuring_previous_line_rules_link|
 
 **Violation**
 
@@ -360,7 +360,7 @@ loop_statement_203
 
 This rule checks for blank lines below the **end loop** keywords.
 
-Refer to `Configuring Blank Lines <configuring_blank_lines.html>`_ for options.
+|configuring_blank_lines_link|
 
 **Violation**
 
@@ -483,7 +483,7 @@ loop_statement_500
 
 This rule checks the **loop** keyword has proper case.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -504,7 +504,7 @@ loop_statement_501
 
 This rule checks the **end** keyword has proper case.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -529,7 +529,7 @@ loop_statement_502
 
 This rule checks the **loop** keyword has proper case.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -554,7 +554,7 @@ loop_statement_503
 
 This rule checks the proper case of the label on a loop statement.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -577,7 +577,7 @@ loop_statement_504
 
 This rule checks the proper case of the end label on a loop statement.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 

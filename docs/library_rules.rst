@@ -1,4 +1,4 @@
-.. include:: icons.rst
+.. include:: includes.rst
 
 Library Rules
 -------------
@@ -52,10 +52,10 @@ library_003
 
 This rule checks for blank lines or comments above the entity keyword.
 
-Refer to `Configuring Previous Line Rules <configuring_previous_line_rules.html>`_ for options.
+|configuring_previous_line_rules_link|
 
 There is an additional **allow_library_clause** option which can be set.
-Refer to section `Reporting Single Rule Configuration <reporting_single_rule_configuration.html>`_ for details on finding configuration options for individual rules.
+|reporting_single_rule_configuration_link|
 
 allow_library_clause
 ^^^^^^^^^^^^^^^^^^^^
@@ -88,7 +88,7 @@ library_004
 
 This rule checks the **library** keyword has proper case.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -113,7 +113,7 @@ library_005
 
 This rule checks the **use** keyword has proper case.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -161,7 +161,7 @@ library_007
 
 This rule checks for blank lines or comments above the **use** declaration.
 
-Refer to `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+|configuring_blank_lines_link|
 
 The default style is :code:`no_blank_line`.
 
@@ -276,7 +276,7 @@ library_600
 
 This rule checks the logical_name in a library_clause has proper case.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 

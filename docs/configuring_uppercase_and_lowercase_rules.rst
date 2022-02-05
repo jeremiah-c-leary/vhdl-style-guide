@@ -1,3 +1,6 @@
+
+.. _configuring-uppercase-and-lowercase-rules:
+
 Configuring Uppercase and Lowercase Rules
 -----------------------------------------
 

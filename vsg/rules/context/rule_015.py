@@ -11,7 +11,7 @@ class rule_015(token_case):
     '''
     This rule checks the context keyword has proper case in the end context declaration.
 
-    Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+    |configuring_uppercase_and_lowercase_rules_link|
 
     **Violation**
 

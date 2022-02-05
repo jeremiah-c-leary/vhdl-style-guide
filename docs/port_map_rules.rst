@@ -1,4 +1,4 @@
-.. include:: icons.rst
+.. include:: includes.rst
 
 Port Map Rules
 --------------
@@ -10,7 +10,7 @@ port_map_001
 
 This rule checks the **port map** keywords have proper case.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -31,7 +31,7 @@ port_map_002
 
 This rule checks the port names have proper case.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -94,7 +94,7 @@ This rule checks the location of the closing ")" character for the port map.
 
 The default location is on a line by itself.
 
-Refer to `Configuring Move Token Rules <configuring_move_token_rules.html>`_ for information on options.
+|configuring_move_token_rules_link|
 
 **Violation**
 

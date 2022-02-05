@@ -12,7 +12,7 @@ class rule_010(previous_line):
     '''
     This rule checks for blank lines or comments above the **type** declaration.
 
-    Refer to `Configuring Previous Line Rules <configuring_previous_line_rules.html>`_ for options.
+    |configuring_previous_line_rules_link|
 
     **Violation**
 

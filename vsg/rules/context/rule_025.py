@@ -8,7 +8,7 @@ class rule_025(blank_line_below_line_ending_with_token):
     '''
     This rule adds a blank line below the context semicolon.
 
-    Refer to `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
+    |configuring_blank_lines_link|
 
     **Violation**
 

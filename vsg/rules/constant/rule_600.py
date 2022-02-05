@@ -12,7 +12,7 @@ class rule_600(token_suffix):
     This rule checks for valid suffixes on constant identifiers.
     The default constant suffix is *\_c*.
 
-    Refer to `Configuring Prefix and Suffix Rules <configuring_prefix_and_suffix_rules.html>`_ for information on changing the allowed suffixes.
+    |configuring_prefix_and_suffix_rules_link|
 
     **Violation**
 

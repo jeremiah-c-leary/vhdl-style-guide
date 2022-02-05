@@ -18,7 +18,7 @@ class rule_018(insert_token_left_of_token_if_it_does_not_exist_between_tokens_us
     This rule checks the **end process** line has a label.
     The closing label will be added if the opening process label exists.
 
-    Refer to `Configuring Optional Items <configuring_optional_items.html>`_ for options.
+    |configuring_optional_items_link|
 
     **Violation**
 

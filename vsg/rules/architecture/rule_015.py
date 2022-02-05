@@ -8,7 +8,7 @@ class rule_015(blank_line_below_line_ending_with_token):
     '''
     This rule checks for blank lines below the architecture declaration.
 
-    Refer to `Configuring Blank Lines <configuring_blank_lines.html>`_ for options.
+    |configuring_blank_lines_link|
 
     **Violation**
 

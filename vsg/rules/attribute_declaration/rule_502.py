@@ -15,7 +15,7 @@ class rule_502(token_case_in_range_bounded_by_tokens):
     '''
     This rule checks the *type_mark* has proper case.
 
-    Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+    |configuring_uppercase_and_lowercase_rules_link|
 
     **Violation**
 

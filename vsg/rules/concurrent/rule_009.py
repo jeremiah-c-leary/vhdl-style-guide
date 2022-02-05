@@ -17,7 +17,7 @@ class rule_009(alignment.Rule):
     '''
     This rule checks alignment of multiline concurrent conditional signal statements.
 
-    Refer to `Configuring Concurrent Alignment Rules <configuring_concurrent_alignment_rules.html>`_ for information on formatting options.
+    |configuring_concurrent_alignment_rules_link|
 
     **Violation**
 

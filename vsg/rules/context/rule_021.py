@@ -8,7 +8,7 @@ class rule_021(insert_token_right_of_token_if_it_does_not_exist_before_token):
     '''
     This rule checks for the keyword **context** in the **end context** statement.
 
-    Refer to `Configuring Optional Items <configuring_optional_items.html>`_ for options.
+    |configuring_optional_items_link|
 
     **Violation**
 

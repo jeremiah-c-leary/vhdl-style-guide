@@ -1,4 +1,4 @@
-.. include:: icons.rst
+.. include:: includes.rst
 
 Generic Rules
 -------------
@@ -130,7 +130,7 @@ generic_007
 
 This rule checks the generic names have proper case.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -172,7 +172,7 @@ generic_009
 
 This rule checks the **generic** keyword has proper case.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -195,7 +195,7 @@ This rule checks the location of the closing ")" character for the generic claus
 
 The default location is on a line by itself.
 
-Refer to `Configuring Move Token Rules <configuring_move_token_rules.html>`_ for information on options.
+|configuring_move_token_rules_link|
 
 **Violation**
 
@@ -284,7 +284,7 @@ generic_017
 
 This rule checks the generic type has proper case if it is a VHDL keyword.
 
-Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -359,7 +359,7 @@ generic_020
 This rule checks for valid prefixes on generic identifiers.
 The default generic prefix is *g\_*.
 
-Refer to `Configuring Prefix and Suffix Rules <configuring_prefix_and_suffix_rules.html>`_ for information on changing the allowed prefixes.
+|configuring_prefix_and_suffix_rules_link|
 
 **Violation**
 
@@ -407,7 +407,7 @@ generic_600
 This rule checks for valid suffixes on generic identifiers.
 The default generic suffix is *\_g*.
 
-Refer to `Configuring Prefix and Suffix Rules <configuring_prefix_and_suffix_rules.html>`_ for information on changing the allowed suffixes.
+|configuring_prefix_and_suffix_rules_link|
 
 **Violation**
 

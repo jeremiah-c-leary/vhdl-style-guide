@@ -1,4 +1,4 @@
-.. include:: icons.rst
+.. include:: includes.rst
 
 After Rules
 -----------
@@ -55,7 +55,8 @@ after_002
 |phase_5| |disabled| |error| |alignment|
 
 This rule checks the *after* keywords are aligned in a clock process.
-Refer to `Configuring Keyword Alignment Rules <configuring_keyword_alignment_rules.html>`_ for information on changing the configurations.
+
+|configuring_keyword_alignment_rules_link|
 
 **Violation**
 
