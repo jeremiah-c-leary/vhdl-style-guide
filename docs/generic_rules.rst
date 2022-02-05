@@ -191,7 +191,11 @@ generic_010
 
 |phase_1| |error| |structure|
 
-This rule checks the closing parenthesis is on a line by itself.
+This rule checks the location of the closing ")" character for the generic clause.
+
+The default location is on a line by itself.
+
+Refer to the section `Configuring Move Token Rules <configuring_move_token_rules.html>`_ for information on options.
 
 **Violation**
 
@@ -368,6 +372,32 @@ Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#conf
 .. code-block:: vhdl
 
    generic(g_my_generic : integer);
+
+generic_021
+###########
+
+|phase_1| |error| |structure|
+
+This rule checks the semicolon is not on it's own line.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   U_FIFO : FIFO
+     generic (
+       G_WIDTH : integer
+     )
+     ;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   U_FIFO : FIFO
+     generic (
+       G_WIDTH : integer
+     );
 
 generic_600
 ###########

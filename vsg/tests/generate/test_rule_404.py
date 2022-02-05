@@ -27,7 +27,10 @@ class test_generate_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'generate')
         self.assertEqual(oRule.identifier, '404')
 
-        lExpected = [40, 41, 42, 48, 49, 50, 56, 57, 58]
+        lExpected = []
+        lExpected.extend(range(46, 51))
+        lExpected.extend(range(56, 61))
+        lExpected.extend(range(66, 71))
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))

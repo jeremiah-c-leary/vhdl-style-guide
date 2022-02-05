@@ -5,6 +5,8 @@ architecture RTL of FIFO is
   signal sig_b          : std_logic;
   shared variable var_1 : integer;
   file file1            : integer;
+  alias alias1          is name;
+  alias alias1          : subtype_identifier is name;
   -- Comment to break up groups
   constant c_ab          : integer;
   signal sig_bc          : std_logic;

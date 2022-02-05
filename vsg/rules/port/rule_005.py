@@ -1,50 +1,12 @@
 
-from vsg import parser
-from vsg import token
-
-from vsg.rules import single_space_between_token_pairs_bounded_by_tokens
-
-lTokens = []
-lTokens.append([token.interface_constant_declaration.colon, parser.keyword])
-lTokens.append([token.interface_constant_declaration.colon, token.interface_constant_declaration.subtype_indication])
-lTokens.append([token.interface_signal_declaration.colon, parser.keyword])
-lTokens.append([token.interface_signal_declaration.colon, token.interface_signal_declaration.subtype_indication])
-lTokens.append([token.interface_variable_declaration.colon, parser.keyword])
-lTokens.append([token.interface_variable_declaration.colon, token.interface_variable_declaration.subtype_indication])
-lTokens.append([token.interface_file_declaration.colon, token.interface_file_declaration.subtype_indication])
-lTokens.append([token.interface_unknown_declaration.colon, parser.keyword])
-lTokens.append([token.interface_unknown_declaration.colon, token.interface_unknown_declaration.subtype_indication])
-
-lStart = token.port_clause.open_parenthesis
-lEnd = token.port_clause.close_parenthesis
+from vsg import deprecated_rule
 
 
-class rule_005(single_space_between_token_pairs_bounded_by_tokens):
+class rule_005(deprecated_rule.Rule):
     '''
-    This rule checks for a single space after the colon.
-
-    **Violation**
-
-    .. code-block:: vhdl
-
-       port (
-         WR_EN    : in    std_logic;
-         RD_EN    :   in    std_logic;
-         OVERFLOW :out   std_logic;
-         DATA     :inout std_logic
-       );
-
-    **Fix**
-
-    .. code-block:: vhdl
-
-       port (
-         WR_EN    : in    std_logic;
-         RD_EN    : in    std_logic;
-         OVERFLOW : out   std_logic;
-         DATA     : inout std_logic
-       );
+    This rule has been deprecated and it's function has been included in rules **port_007**, **port_008** and **port_009**.
     '''
+
     def __init__(self):
-        single_space_between_token_pairs_bounded_by_tokens.__init__(self, 'port', '005', lTokens, lStart, lEnd)
-        self.solution = 'Reduce number of spaces after the colon to 1.'
+        deprecated_rule.Rule.__init__(self, 'port', '005')
+        self.message.append('Rule ' + self.unique_id + ' has been included in rules port_007, port_008 and port_009.')

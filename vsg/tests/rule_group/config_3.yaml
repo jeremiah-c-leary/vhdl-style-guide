@@ -10,3 +10,5 @@ rule:
     disable: True    
   architecture_004:
     case: 'upper'
+  library_600:
+    disable: True

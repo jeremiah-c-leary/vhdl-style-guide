@@ -6,6 +6,8 @@ from . import rule_list
 from . import utils
 from . import vhdlFile
 
+from .exceptions import ClassifyError
+
 
 def create_backup_file(sFileName):
     '''Copies existing file and adds .bak to the end.'''
@@ -57,7 +59,17 @@ def apply_rules(commandLineArguments, oConfig, tIndexFileName):
     iIndex, sFileName = tIndexFileName
     dJsonEntry = {}
     lFileContent, eError = vhdlFile.utils.read_vhdlfile(sFileName)
-    oVhdlFile = vhdlFile.vhdlFile(lFileContent, sFileName, eError)
+    try:
+        oVhdlFile = vhdlFile.vhdlFile(lFileContent, sFileName, eError)
+    except ClassifyError as e:
+        fExitStatus = True
+        testCase = None
+        dJsonEntry["file_path"] = sFileName
+        dJsonEntry["violations"] = []
+        sOutputStd = ''
+        sOutputErr = e.message
+        return fExitStatus, testCase, dJsonEntry, sOutputStd, sOutputErr
+
     oVhdlFile.set_indent_map(dIndent)
     try:
         oRules = rule_list.rule_list(

@@ -128,4 +128,4 @@ def create_violation(self, oToi, dResults):
 
 
 def create_solution(iIndex, sComment):
-    return 'Change "' + sComment[0:iIndex + 1] + '" to "' + sComment[0:iIndex] + ' ' + sComment[iIndex + 1] + '"'
+    return 'Change "' + sComment[0:iIndex + 1] + '" to "' + sComment[0:iIndex] + ' ' + sComment[iIndex] + '"'
