@@ -25,7 +25,7 @@ class rule_401(align_tokens_in_region_between_tokens_when_between_tokens_unless_
     '''
     This rule checks the colons are in the same column for all declarations in the generate declarative part in for generate statements.
 
-    Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
+    Refer to `Configuring Keyword Alignment Rules <configuring_keyword_alignment_rules.html>`_ for information on changing the configurations.
 
     **Violation**
 

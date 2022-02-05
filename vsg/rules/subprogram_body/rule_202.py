@@ -21,7 +21,7 @@ class rule_202(blank_line_above_line_starting_with_token):
        function overflow (a: integer) return integer is
        begin
 
-    Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options.
+    Refer to `Configuring Blank Lines <configuring_blank_lines.html>`_ for options.
 
     **Violation**
 

@@ -13,7 +13,7 @@ class rule_007(Rule):
     '''
     This rule checks for spaces before and after the **in** mode keyword.
 
-    Refer to the section `Configuring Port Mode Alignment <configuring-port-mode-alignment>`_ for information on changing spaces.
+    Refer to `Configuring Port Mode Alignment <configuring_port_mode_alignment.html>`_ for information on changing spaces.
 
     **Violation**
 

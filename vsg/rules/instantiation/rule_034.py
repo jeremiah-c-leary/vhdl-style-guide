@@ -8,7 +8,7 @@ class rule_034(structure.Rule):
     '''
     This rule checks for component versus direct instantiations.
 
-    Refer to the section `Configuring Type of Instantiation <configuring.html#configuring-type-of-instantiations>`_ for options to configure the allowed configuration.
+    Refer to `Configuring Type of Instantiation <configuring_type_of_instantiations.html>`_ for options to configure the allowed configuration.
 
     component instantiation
     ^^^^^^^^^^^^^^^^^^^^^^^

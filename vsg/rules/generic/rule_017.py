@@ -17,7 +17,7 @@ class rule_017(token_case_n_token_after_tokens_between_tokens):
     '''
     This rule checks the generic type has proper case if it is a VHDL keyword.
 
-    Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+    Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
 
     **Violation**
 

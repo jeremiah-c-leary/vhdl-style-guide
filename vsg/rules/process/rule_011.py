@@ -11,7 +11,7 @@ class rule_011(blank_line_below_line_ending_with_token):
     '''
     This rule checks for a blank line below the **end process** keyword.
 
-    Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options.
+    Refer to `Configuring Blank Lines <configuring_blank_lines.html>`_ for options.
 
     **Violation**
 

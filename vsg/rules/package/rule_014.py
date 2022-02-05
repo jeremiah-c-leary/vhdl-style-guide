@@ -8,7 +8,7 @@ class rule_014(insert_token_left_of_token_if_it_does_not_exist_between_tokens_us
     '''
     This rule checks the package name exists on the same line as the **end package** keywords.
 
-    Refer to the section `Configuring Optional Items <configuring.html#configuring-optional-items>`_ for options.
+    Refer to `Configuring Optional Items <configuring_optional_items.html>`_ for options.
 
     **Violation**
 

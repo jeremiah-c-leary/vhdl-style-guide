@@ -129,7 +129,7 @@ concurrent_006
 |phase_5| |error| |alignment|
 
 This rule checks the alignment of the **<=** operator over multiple consecutive lines.
-Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
+Refer to `Configuring Keyword Alignment Rules <configuring_keyword_alignment_rules.html>`_ for information on changing the configurations.
 
 **Violation**
 
@@ -201,7 +201,7 @@ concurrent_008
 |phase_5| |error| |alignment|
 
 This rule checks the alignment of inline comments in consecutive concurrent statements.
-Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
+Refer to `Configuring Keyword Alignment Rules <configuring_keyword_alignment_rules.html>`_ for information on changing the configurations.
 
 **Violation**
 
@@ -226,7 +226,7 @@ concurrent_009
 
 This rule checks alignment of multiline concurrent conditional signal statements.
 
-Refer to the section `Configuring Concurrent Alignment Rules <configuring.html#configuring-concurrent-alignment-rules>`_ for information on formatting options.
+Refer to `Configuring Concurrent Alignment Rules <configuring_concurrent_alignment_rules.html>`_ for information on formatting options.
 
 **Violation**
 
@@ -289,7 +289,7 @@ concurrent_011
 
 This rule checks the structure of simple and conditional concurrent statements.
 
-Refer to the section `Configuring Concurrent Structure Rules <configuring.html#configuring-concurrent-structure-rules>`_ for information on formatting options.
+Refer to `Configuring Multiline Structure Rules <configuring_multiline_structure_rules.html>`_ for information on formatting options.
 
 **Violation**
 

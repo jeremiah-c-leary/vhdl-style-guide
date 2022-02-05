@@ -8,7 +8,7 @@ class rule_203(blank_line_below_line_ending_with_token):
     '''
     This rule checks for blank lines below the **end loop** keywords.
 
-    Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options.
+    Refer to `Configuring Blank Lines <configuring_blank_lines.html>`_ for options.
 
     **Violation**
 

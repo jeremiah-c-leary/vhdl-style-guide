@@ -11,7 +11,7 @@ class rule_014(token_case):
     '''
     This rule checks the **entity** keyword has proper case in the closing of the entity declaration.
 
-    Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+    Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
 
     **Violation**
 

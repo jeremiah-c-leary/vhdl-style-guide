@@ -21,7 +21,7 @@ class rule_015(align_tokens_in_region_between_tokens_unless_between_tokens):
     '''
     This rule checks the identifiers for all declarations are aligned in the function declarative part.
 
-    Refer to the section `Configuring Identifier Alignment Rules <configuring.html#configuring-identifier-alignment-rules>`_ for information on changing the configurations.
+    Refer to `Configuring Identifier Alignment Rules <configuring_identifier_alignment_rules.html>`_ for information on changing the configurations.
 
     **Violation**
 

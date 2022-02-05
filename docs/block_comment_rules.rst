@@ -27,7 +27,7 @@ block_comment_001
 
 This rule checks the block comment header is correct.
 
-Refer to the section `Configuring Block Comments <configuring.html#configuring-block-comments>`_ for additional information.
+Refer to `Configuring Block Comments <configuring_block_comments.html>`_ for additional information.
 
 **Violation**
 
@@ -54,7 +54,7 @@ block_comment_002
 
 This rule checks the **comment_left** attribute exists for all comments.
 
-Refer to the section `Configuring Block Comments <configuring.html#configuring-block-comments>`_ for additional information.
+Refer to `Configuring Block Comments <configuring_block_comments.html>`_ for additional information.
 
 **Violation**
 
@@ -81,7 +81,7 @@ block_comment_003
 
 This rule checks the block comment footer is correct.
 
-Refer to the section `Configuring Block Comments <configuring.html#configuring-block-comments>`_ for additional information.
+Refer to `Configuring Block Comments <configuring_block_comments.html>`_ for additional information.
 
 **Violation**
 

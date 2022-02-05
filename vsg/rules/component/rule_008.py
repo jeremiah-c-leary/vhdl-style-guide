@@ -11,7 +11,7 @@ class rule_008(token_case_with_prefix_suffix):
     '''
     This rule checks the component name has proper case in the component declaration.
 
-    Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+    Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
 
     **Violation**
 

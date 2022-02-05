@@ -15,7 +15,7 @@ class rule_012(alignment.Rule):
     '''
     This rule checks the alignment of multiline constants that contain arrays.
 
-    Refer to section `Configuring Multiline Indent Rules <configuring.html#configuring-multiline-indent-rules>`_ for options.
+    Refer to section `Configuring Multiline Indent Rules <configuring_multiline_indent_rules.html>`_ for options.
 
     .. NOTE:: The structure of multiline array constants is handled by the rule `constant_016 <constant_rules.html#constant-016>`_.
 

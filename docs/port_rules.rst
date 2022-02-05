@@ -113,7 +113,7 @@ port_007
 
 This rule checks for spaces before and after the **in** mode keyword.
 
-Refer to the section `Configuring Port Mode Alignment <configuring-port-mode-alignment>`_ for information on changing spaces.
+Refer to `Configuring Port Mode Alignment <configuring_port_mode_alignment.html>`_ for information on changing spaces.
 
 **Violation**
 
@@ -142,7 +142,7 @@ port_008
 
 This rule checks for spaces before and after the **out** mode keyword.
 
-Refer to the section `Configuring Port Mode Alignment <configuring-port-mode-alignment>`_ for information on changing spaces.
+Refer to `Configuring Port Mode Alignment <configuring_port_mode_alignment.html>`_ for information on changing spaces.
 
 **Violation**
 
@@ -171,7 +171,7 @@ port_009
 
 This rule checks for spaces before and after the **inout** mode keyword.
 
-Refer to the section `Configuring Port Mode Alignment <configuring-port-mode-alignment>`_ for information on changing spaces.
+Refer to `Configuring Port Mode Alignment <configuring_port_mode_alignment.html>`_ for information on changing spaces.
 
 **Violation**
 
@@ -200,7 +200,7 @@ port_010
 
 This rule checks the port names have proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
 
 **Violation**
 
@@ -232,7 +232,7 @@ port_011
 This rule checks for valid prefixes on port identifiers.
 The default port prefixes are: *i\_*, *o\_*, *io\_*.
 
-Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed prefixes.
+Refer to `Configuring Prefix and Suffix Rules <configuring_prefix_and_suffix_rules.html>`_ for information on changing the allowed prefixes.
 
 **Violation**
 
@@ -324,7 +324,7 @@ This rule checks the location of the closing ")" character for the port clause.
 
 The default location is on a line by itself.
 
-Refer to the section `Configuring Move Token Rules <configuring_move_token_rules.html>`_ for information on options.
+Refer to `Configuring Move Token Rules <configuring_move_token_rules.html>`_ for information on options.
 
 **Violation**
 
@@ -411,7 +411,7 @@ port_017
 
 This rule checks the **port** keyword has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
 
 **Violation**
 
@@ -432,7 +432,7 @@ port_018
 
 This rule checks the port type has proper case if it is a VHDL keyword.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
 
 
 **Violation**
@@ -464,7 +464,7 @@ port_019
 
 This rule checks the port direction has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
 
 **Violation**
 
@@ -638,7 +638,7 @@ port_025
 This rule checks for valid suffixes on port identifiers.
 The default port suffixes are *_i*, *_o*, *_io*.
 
-Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed suffixes.
+Refer to `Configuring Prefix and Suffix Rules <configuring_prefix_and_suffix_rules.html>`_ for information on changing the allowed suffixes.
 
 **Violation**
 

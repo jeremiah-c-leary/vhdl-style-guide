@@ -12,7 +12,7 @@ class rule_600(token_suffix):
     This rule checks for valid suffixes on instantiation labels.
     The default suffix is *_inst*.
 
-    Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed suffixes.
+    Refer to `Configuring Prefix and Suffix Rules <configuring_prefix_and_suffix_rules.html>`_ for information on changing the allowed suffixes.
 
     **Violation**
 

@@ -15,7 +15,7 @@ class rule_600(token_suffix_between_tokens):
     This rule checks for valid suffixes on generic identifiers.
     The default generic suffix is *\_g*.
 
-    Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed suffixes.
+    Refer to `Configuring Prefix and Suffix Rules <configuring_prefix_and_suffix_rules.html>`_ for information on changing the allowed suffixes.
 
     **Violation**
 

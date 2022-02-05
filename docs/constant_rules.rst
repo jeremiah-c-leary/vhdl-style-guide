@@ -35,7 +35,7 @@ constant_002
 
 This rule checks the **constant** keyword has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
 
 **Violation**
 
@@ -61,7 +61,7 @@ constant_004
 
 This rule checks the constant identifier has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
 
 **Violation**
 
@@ -173,7 +173,7 @@ constant_011
 
 This rule checks the constant type has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
 
 **Violation**
 
@@ -194,7 +194,7 @@ constant_012
 
 This rule checks the alignment of multiline constants that contain arrays.
 
-Refer to section `Configuring Multiline Indent Rules <configuring.html#configuring-multiline-indent-rules>`_ for options.
+Refer to section `Configuring Multiline Indent Rules <configuring_multiline_indent_rules.html>`_ for options.
 
 .. NOTE:: The structure of multiline array constants is handled by the rule `constant_016 <constant_rules.html#constant-016>`_.
 
@@ -292,7 +292,7 @@ constant_014
 
 This rule checks the indent of multiline constants that do not contain arrays.
 
-Refer to the section `Configuring Multiline Indent Rules <configuring_multiline_indent_rules.html>`_ for more information.
+Refer to `Configuring Multiline Indent Rules <configuring_multiline_indent_rules.html>`_ for more information.
 
 **Violation**
 
@@ -316,7 +316,7 @@ constant_015
 This rule checks for valid prefixes on constant identifiers.
 The default constant prefix is *c\_*.
 
-Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed prefixes.
+Refer to `Configuring Prefix and Suffix Rules <configuring_prefix_and_suffix_rules.html>`_ for information on changing the allowed prefixes.
 
 **Violation**
 
@@ -337,7 +337,7 @@ constant_016
 
 This rule checks the structure of multiline constants that contain arrays.
 
-Refer to section `Configuring Multiline Structure Rules <configuring.html#configuring-multiline-structure-rules>`_ for options.
+Refer to section `Configuring Multiline Structure Rules <configuring_multiline_structure_rules.html>`_ for options.
 
 .. NOTE:: The indenting of multiline array constants is handled by the rule `constant_012 <constant_rules.html#constant-012>`_.
 
@@ -366,7 +366,7 @@ constant_600
 This rule checks for valid suffixes on constant identifiers.
 The default constant suffix is *\_c*.
 
-Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed suffixes.
+Refer to `Configuring Prefix and Suffix Rules <configuring_prefix_and_suffix_rules.html>`_ for information on changing the allowed suffixes.
 
 **Violation**
 

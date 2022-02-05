@@ -17,7 +17,7 @@ class rule_017(token_prefix):
     This rule checks for valid prefixes on generate statement labels.
     The default prefix is *gen\_*.
 
-    Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed prefixes.
+    Refer to `Configuring Prefix and Suffix Rules <configuring_prefix_and_suffix_rules.html>`_ for information on changing the allowed prefixes.
 
     **Violation**
 

@@ -12,7 +12,7 @@ length_001
 
 This rule checks the length of the line.
 
-Refer to the section `Configuring Length Rules <configuring.html#configuring-length-rules>`_ for configuring this option.
+Refer to `Configuring Length Rules <configuring_length_rules.html>`_ for configuring this option.
 
 length_002
 ##########
@@ -21,7 +21,7 @@ length_002
 
 This rule checks the length of a file.
 
-Refer to the section `Configuring Length Rules <configuring.html#configuring-length-rules>`_ for configuring this option.
+Refer to `Configuring Length Rules <configuring_length_rules.html>`_ for configuring this option.
 
 length_003
 ##########
@@ -30,5 +30,5 @@ length_003
 
 This rule checks the length of a process statement.
 
-Refer to the section `Configuring Length Rules <configuring.html#configuring-length-rules>`_ for configuring this option.
+Refer to `Configuring Length Rules <configuring_length_rules.html>`_ for configuring this option.
 

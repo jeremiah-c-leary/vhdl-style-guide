@@ -11,10 +11,10 @@ class rule_003(previous_line):
     '''
     This rule checks for blank lines or comments above the entity keyword.
 
-    Refer to the section `Configuring Previous Line Rules <configuring.html#configuring-previous-line-rules>`_ for options.
+    Refer to `Configuring Previous Line Rules <configuring_previous_line_rules.html>`_ for options.
 
     There is an additional **allow_library_clause** option which can be set.
-    Refer to section `Reporting Single Rule Configuration <configuring.html#reporting-single-rule-configuration>`_ for details on finding configuration options for individual rules.
+    Refer to section `Reporting Single Rule Configuration <reporting_single_rule_configuration.html>`_ for details on finding configuration options for individual rules.
 
     allow_library_clause
     ^^^^^^^^^^^^^^^^^^^^

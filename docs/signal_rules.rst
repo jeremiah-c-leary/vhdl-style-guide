@@ -39,7 +39,7 @@ signal_002
 
 This rule checks the **signal** keyword has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
 
 **Violation**
 
@@ -70,7 +70,7 @@ signal_004
 
 This rule checks the signal name has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
 
 **Violation**
 
@@ -155,7 +155,7 @@ signal_008
 This rule checks for valid prefixes on signal identifiers.
 Default signal prefix is *s\_*.
 
-Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed prefixes.
+Refer to `Configuring Prefix and Suffix Rules <configuring_prefix_and_suffix_rules.html>`_ for information on changing the allowed prefixes.
 
 **Violation**
 
@@ -180,7 +180,7 @@ This rule checks the signal type has proper case if it is a VHDL keyword.
 
 .. NOTE:: This rule is disabled by default.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
 
 **Violation**
 
@@ -205,7 +205,7 @@ signal_011
 
 This rule checks the signal type has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
 
 **Violation**
 
@@ -314,7 +314,7 @@ signal_015
 This rule checks for multiple signal names defined in a single signal declaration.
 By default, this rule will only flag more than two signal declarations.
 
-Refer to the section `Configuring Number of Signals in Signal Declaration <configuring.html#configuring-number-of-signals-in-signal-declaration>`_ for information on changing the default.
+Refer to `Configuring Number of Signals in Signal Declaration <configuring_number_of_signals_in_signal_declaration.html>`_ for information on changing the default.
 
 **Violation**
 
@@ -368,7 +368,7 @@ signal_600
 This rule checks for valid suffixes on signal identifiers.
 Default signal suffix is *\_s*.
 
-Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed suffixes.
+Refer to `Configuring Prefix and Suffix Rules <configuring_prefix_and_suffix_rules.html>`_ for information on changing the allowed suffixes.
 
 **Violation**
 

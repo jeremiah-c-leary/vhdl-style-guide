@@ -8,7 +8,7 @@ class rule_018(blank_line_above_line_starting_with_token):
     '''
     This rule checks for blank lines or comments above the **end architecture** declaration.
 
-    Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options.
+    Refer to `Configuring Blank Lines <configuring_blank_lines.html>`_ for options.
 
     **Violation**
 

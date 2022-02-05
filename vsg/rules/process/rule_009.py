@@ -11,7 +11,7 @@ class rule_009(token_case):
     '''
     This rule checks the **process** keyword has proper case in the **end process** line.
 
-    Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+    Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
 
     **Violation**
 

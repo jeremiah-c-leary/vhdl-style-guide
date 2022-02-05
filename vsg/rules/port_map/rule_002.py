@@ -13,7 +13,7 @@ class rule_002(token_case_formal_part_of_association_element_in_map_between_toke
     '''
     This rule checks the port names have proper case.
 
-    Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+    Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
 
     **Violation**
 

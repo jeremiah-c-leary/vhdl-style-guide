@@ -14,7 +14,7 @@ class rule_410(align_tokens_in_region_between_tokens):
     '''
     This rule checks the alignment of the colon for each parameter in the procedure declaration.
 
-    Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
+    Refer to `Configuring Keyword Alignment Rules <configuring_keyword_alignment_rules.html>`_ for information on changing the configurations.
 
     **Violation**
 

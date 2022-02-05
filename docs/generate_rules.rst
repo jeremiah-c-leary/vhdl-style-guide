@@ -58,7 +58,7 @@ generate_003
 
 This rule checks for a blank line below the **end generate** keywords.
 
-Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
+Refer to `Configuring Blank Lines <configuring_blank_lines.html>`_ for options regarding comments.
 
 **Violation**
 
@@ -82,7 +82,7 @@ generate_004
 
 This rule checks for blank lines or comments before the **generate** label.
 
-Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous-line-rules>`_ for options.
+Refer to `Configuring Previous Line Rules <configuring_previous_line_rules.html>`_ for options.
 
 **Violation**
 
@@ -106,7 +106,7 @@ generate_005
 
 This rule checks the generate label has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
 
 **Violation**
 
@@ -190,7 +190,7 @@ generate_009
 
 This rule checks the **end** keyword has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
 
 **Violation**
 
@@ -211,7 +211,7 @@ generate_010
 
 This rule checks the **generate** keyword has the proper case in the **end generate** line.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
 
 **Violation**
 
@@ -255,7 +255,7 @@ generate_012
 
 This rule checks the **end generate** label has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+Refer to `Configuring Uppercase and Lowercase Rules <configuring_uppercase_and_lowercase_rules.html>`_ for information on changing the default case.
 
 **Violation**
 
@@ -363,7 +363,7 @@ generate_017
 This rule checks for valid prefixes on generate statement labels.
 The default prefix is *gen\_*.
 
-Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed prefixes.
+Refer to `Configuring Prefix and Suffix Rules <configuring_prefix_and_suffix_rules.html>`_ for information on changing the allowed prefixes.
 
 **Violation**
 
@@ -409,7 +409,7 @@ generate_400
 
 This rule checks the identifiers for all declarations are aligned in the generate declarative part in for generate statements.
 
-Refer to the section `Configuring Identifier Alignment Rules <configuring.html#configuring-identifier-alignment-rules>`_ for information on changing the configurations.
+Refer to `Configuring Identifier Alignment Rules <configuring_identifier_alignment_rules.html>`_ for information on changing the configurations.
 
 **Violation**
 
@@ -432,7 +432,7 @@ generate_401
 
 This rule checks the colons are in the same column for all declarations in the generate declarative part in for generate statements.
 
-Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
+Refer to `Configuring Keyword Alignment Rules <configuring_keyword_alignment_rules.html>`_ for information on changing the configurations.
 
 **Violation**
 
@@ -459,7 +459,7 @@ generate_402
 
 This rule checks the identifiers for all declarations are aligned in the generate declarative part in if generate statements.
 
-Refer to the section `Configuring Identifier Alignment Rules <configuring.html#configuring-identifier-alignment-rules>`_ for information on changing the configurations.
+Refer to `Configuring Identifier Alignment Rules <configuring_identifier_alignment_rules.html>`_ for information on changing the configurations.
 
 **Violation**
 
@@ -482,7 +482,7 @@ generate_403
 
 This rule checks the colons are in the same column for all declarations in the generate declarative part in if generate statements.
 
-Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
+Refer to `Configuring Keyword Alignment Rules <configuring_keyword_alignment_rules.html>`_ for information on changing the configurations.
 
 **Violation**
 
@@ -509,7 +509,7 @@ generate_404
 
 This rule checks the identifiers for all declarations are aligned in the generate declarative part in case generate statements.
 
-Refer to the section `Configuring Identifier Alignment Rules <configuring.html#configuring-identifier-alignment-rules>`_ for information on changing the configurations.
+Refer to `Configuring Identifier Alignment Rules <configuring_identifier_alignment_rules.html>`_ for information on changing the configurations.
 
 **Violation**
 
@@ -532,7 +532,7 @@ generate_405
 
 This rule checks the colons are in the same column for all declarations in the generate declarative part in case generate statements.
 
-Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
+Refer to `Configuring Keyword Alignment Rules <configuring_keyword_alignment_rules.html>`_ for information on changing the configurations.
 
 **Violation**
 
@@ -560,7 +560,7 @@ generate_600
 This rule checks for valid suffixes on generate statement labels.
 The default suffix is *\_gen*.
 
-Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed suffixes.
+Refer to `Configuring Prefix and Suffix Rules <configuring_prefix_and_suffix_rules.html>`_ for information on changing the allowed suffixes.
 
 **Violation**
 

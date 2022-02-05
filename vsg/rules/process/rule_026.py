@@ -15,7 +15,7 @@ class rule_026(blank_line.Rule):
     '''
     This rule checks for blank lines above the first declarative line, if it exists.
 
-    Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options.
+    Refer to `Configuring Blank Lines <configuring_blank_lines.html>`_ for options.
 
     **Violation**
 
