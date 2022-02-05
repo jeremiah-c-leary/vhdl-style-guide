@@ -29,3 +29,30 @@ package body my_pkg is
   end procedure some_proc;
 
 end package body my_pkg;
+
+architecture ARCH of ENT is
+
+begin
+
+  PROC_LABEL : process is
+  begin
+
+    var1 := 1;
+    sig1 <= 2 &
+            3 &
+            4;
+    sig2 <= 5;
+    sig3 <= 6;
+
+  end process PROC_LABEL;
+
+  PROC2_LABEL : process is
+  begin
+
+    if (some_clk'event and some_clk = '1') then
+      a <= b;
+    end if;
+
+  end process PROC_LABEL;
+
+end architecture ARCH;
