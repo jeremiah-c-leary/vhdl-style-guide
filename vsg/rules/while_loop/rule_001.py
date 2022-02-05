@@ -1,38 +1,12 @@
 
-from vsg.rules import token_indent
-
-from vsg import token
-
-lTokens = []
-lTokens.append(token.loop_statement.loop_label)
-lTokens.append(token.iteration_scheme.while_keyword)
+from vsg import deprecated_rule
 
 
-class rule_001(token_indent):
+class rule_001(deprecated_rule.Rule):
     '''
-    This rule checks for indentation of the **while** keyword.
-    Proper indentation enhances comprehension.
-
-    **Violation**
-
-    .. code-block:: vhdl
-
-       begin
-
-       while (temp /= 0) loop
-           temp := temp/2;
-         end loop;
-
-    **Fix**
-
-    .. code-block:: vhdl
-
-       begin
-
-         while (temp /= 0) loop
-           temp := temp/2;
-         end loop;
+    This rule has been moved to **iteration_scheme_300**.
     '''
 
     def __init__(self):
-        token_indent.__init__(self, 'while_loop', '001', lTokens)
+        deprecated_rule.Rule.__init__(self, 'while_loop', '001')
+        self.message.append('Rule ' + self.unique_id + ' has been moved to iteration_scheme_300.')

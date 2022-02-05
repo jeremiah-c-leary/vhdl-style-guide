@@ -99,31 +99,7 @@ This rule checks the indent of port declarations.
 port_005
 ########
 
-|phase_2| |error| |whitespace|
-
-This rule checks for a single space after the colon.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   port (
-     WR_EN    : in    std_logic;
-     RD_EN    :   in    std_logic;
-     OVERFLOW :out   std_logic;
-     DATA     :inout std_logic
-   );
-
-**Fix**
-
-.. code-block:: vhdl
-
-   port (
-     WR_EN    : in    std_logic;
-     RD_EN    : in    std_logic;
-     OVERFLOW : out   std_logic;
-     DATA     : inout std_logic
-   );
+This rule has been deprecated and it's function has been included in rules **port_007**, **port_008** and **port_009**.
 
 port_006
 ########
@@ -135,7 +111,9 @@ port_007
 
 |phase_2| |error| |whitespace|
 
-This rule checks for four spaces after the **in** keyword.
+This rule checks for spaces before and after the **in** mode keyword.
+
+Refer to the section `Configuring Port Mode Alignment <configuring-port-mode-alignment>`_ for information on changing spaces.
 
 **Violation**
 
@@ -157,26 +135,16 @@ This rule checks for four spaces after the **in** keyword.
      OVERFLOW : out   std_logic
    );
 
-
 port_008
 ########
 
 |phase_2| |error| |whitespace|
 
-This rule checks for three spaces after the **out** keyword.
+This rule checks for spaces before and after the **out** mode keyword.
+
+Refer to the section `Configuring Port Mode Alignment <configuring-port-mode-alignment>`_ for information on changing spaces.
 
 **Violation**
-
-.. code-block:: vhdl
-
-   port (
-     WR_EN    : in    std_logic;
-     RD_EN    : in    std_logic;
-     OVERFLOW : out std_logic
-   );
-
-
-**Fix**
 
 .. code-block:: vhdl
 
@@ -186,12 +154,24 @@ This rule checks for three spaces after the **out** keyword.
      OVERFLOW : out   std_logic
    );
 
+**Fix**
+
+.. code-block:: vhdl
+
+   port (
+     WR_EN    : in    std_logic;
+     RD_EN    : in    std_logic;
+     OVERFLOW : out std_logic
+   );
+
 port_009
 ########
 
 |phase_2| |error| |whitespace|
 
-This rule checks for a single space after the **inout** keyword.
+This rule checks for spaces before and after the **inout** mode keyword.
+
+Refer to the section `Configuring Port Mode Alignment <configuring-port-mode-alignment>`_ for information on changing spaces.
 
 **Violation**
 
@@ -340,7 +320,11 @@ port_014
 
 |phase_1| |error| |structure|
 
-This rule checks the closing parenthesis of the port map is on a line by itself.
+This rule checks the location of the closing ")" character for the port clause.
+
+The default location is on a line by itself.
+
+Refer to the section `Configuring Move Token Rules <configuring_move_token_rules.html>`_ for information on options.
 
 **Violation**
 
@@ -708,4 +692,30 @@ Any comments are not replicated.
      overflow : out   std_logic;
      empty : out   std_logic -- Other comment
    );
+
+port_027
+########
+
+|phase_1| |error| |structure|
+
+This rule checks the semicolon is not on it's own line.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   U_FIFO : FIFO
+     port (
+       I_WIDTH : in integer
+     )
+     ;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   U_FIFO : FIFO
+     generic (
+       I_WIDTH : in integer
+     );
 

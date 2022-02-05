@@ -29,8 +29,11 @@ architecture BEHAVIORAL of FRAMEBUFFER is
   begin
 
     for i in 0 to 524288 / 16 - 1 loop
+
       temp(i) := "000";
+
     end loop;
+
     return temp;
 
   end initfb;

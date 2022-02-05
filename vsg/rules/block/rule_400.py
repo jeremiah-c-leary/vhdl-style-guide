@@ -11,6 +11,7 @@ lAlign.append(token.constant_declaration.identifier)
 lAlign.append(token.signal_declaration.identifier)
 lAlign.append(token.subtype_declaration.identifier)
 lAlign.append(token.variable_declaration.identifier)
+lAlign.append(token.alias_declaration.alias_designator)
 
 lUnless = []
 lUnless.append([token.subprogram_body.is_keyword,token.subprogram_body.begin_keyword])

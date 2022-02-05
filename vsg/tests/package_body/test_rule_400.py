@@ -28,11 +28,11 @@ class test_package_body_rule(unittest.TestCase):
         self.assertEqual(oRule.identifier, '400')
 
         lExpected = []
-        lExpected.extend([7, 8, 9])
-        lExpected.extend([19, 20, 21, 23])
-        lExpected.extend([27, 28])
-        lExpected.append(41)
-        lExpected.extend([80, 81, 82])
+        lExpected.extend([7, 8, 9, 10])
+        lExpected.extend([21, 22, 23, 25, 26])
+        lExpected.extend([30, 31])
+        lExpected.append(44)
+        lExpected.extend([83, 84, 85])
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))

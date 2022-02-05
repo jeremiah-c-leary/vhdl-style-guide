@@ -25,9 +25,10 @@ VHDL Style Guide (VSG)
 Announcements
 -------------
 
-Update 01/23/2021
+Update 02/04/2022
 
-With the release of 3.6.0, my normal update schedule has resumed.
+The next release will be deprecating several rules.
+If you have a configuration which includes a deprecated rule, VSG will give you an error and a message indicating the reason.
 
 Regards,
 

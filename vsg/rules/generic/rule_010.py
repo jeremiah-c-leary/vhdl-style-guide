@@ -1,19 +1,18 @@
 
-from vsg import parser
+from vsg.rules import move_token as Rule
+
 from vsg import token
-from vsg import violation
 
-from vsg.rules import utils as rules_utils
-from vsg.rule_group import structure
-from vsg.vhdlFile import utils
-
-lTokens = []
-lTokens.append(token.generic_clause.close_parenthesis)
+oToken = token.generic_clause.close_parenthesis
 
 
-class rule_010(structure.Rule):
+class rule_010(Rule):
     '''
-    This rule checks the closing parenthesis is on a line by itself.
+    This rule checks the location of the closing ")" character for the generic clause.
+
+    The default location is on a line by itself.
+
+    Refer to the section `Configuring Move Token Rules <configuring_move_token_rules.html>`_ for information on options.
 
     **Violation**
 
@@ -30,48 +29,5 @@ class rule_010(structure.Rule):
     '''
 
     def __init__(self):
-        structure.Rule.__init__(self, 'generic', '010')
-        self.solution = 'Closing parenthesis must be on a line by itself.'
-        self.lTokens = lTokens
-
-    def analyze(self, oFile):
-        aToi = oFile.get_tokens_bounded_by(token.generic_clause.close_parenthesis, parser.carriage_return)
-        lToi = oFile.get_token_and_n_tokens_before_it([token.generic_clause.close_parenthesis], 2)
-        for iToi, oToi in enumerate(lToi):
-
-            lTokens = oToi.get_tokens()
-
-            if isinstance(lTokens[0], parser.carriage_return) or isinstance(lTokens[1], parser.carriage_return):
-                continue
-
-            sSolution = self.solution
-            dAction = {}
-
-            if utils.does_token_type_exist_in_list_of_tokens(parser.comment, aToi[iToi].get_tokens()):
-                lNewTokens = aToi[iToi].get_tokens()
-                for iToken, oToken in enumerate(lNewTokens):
-                    if isinstance(oToken, parser.comment):
-                        dAction['action'] = 'move'
-                        if isinstance(lNewTokens[iToken - 1], parser.whitespace):
-                            dAction['index'] = iToken - 2
-                        else:
-                            dAction['index'] = iToken - 1
-                        break
-            else:
-                dAction['action'] = 'insert'
-
-            oViolation = violation.New(aToi[iToi].get_line_number(), aToi[iToi], sSolution)
-            oViolation.set_action(dAction)
-            self.add_violation(oViolation)
-
-    def _fix_violation(self, oViolation):
-        lTokens = oViolation.get_tokens()
-        dAction = oViolation.get_action()
-        if dAction['action'] == 'insert':
-            rules_utils.insert_carriage_return(lTokens, 0)
-            oViolation.set_tokens(lTokens)
-        else:
-            lNewTokens = lTokens[dAction['index'] + 1:]
-            rules_utils.append_carriage_return(lNewTokens)
-            lNewTokens.extend(lTokens[:dAction['index'] + 1])
-            oViolation.set_tokens(lNewTokens)
+        Rule.__init__(self, 'generic', '010', oToken)
+        self.preserve_comment = True

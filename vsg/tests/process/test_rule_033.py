@@ -27,7 +27,7 @@ class test_process_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'process')
         self.assertEqual(oRule.identifier, '033')
 
-        lExpected = [20, 21, 22]
+        lExpected = [22, 23, 24, 25, 26, 41, 42, 43, 44, 45]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))

@@ -1,6 +1,8 @@
 
 from vsg import parser
 
+from vsg.vhdlFile import utils
+
 
 def remove_optional_item(oViolation, oInsertToken):
     lTokens = oViolation.get_tokens()
@@ -186,5 +188,34 @@ def token_list_begins_with_close_paren(lTokens):
     if isinstance(lTokens[0], parser.whitespace) and isinstance(lTokens[1], parser.close_parenthesis):
         return True
     if isinstance(lTokens[0], parser.close_parenthesis):
+        return True
+    return False
+
+
+def token_list_starts_with_paren(lTokens, iIndex=0):
+    iToken = utils.find_next_non_whitespace_token(iIndex, lTokens)
+    if isinstance(lTokens[iToken], parser.open_parenthesis):
+        return True
+    return False
+
+
+def token_at_the_beginning_of_a_line(oToken, lTokens):
+    if isinstance(lTokens[0], parser.whitespace) and isinstance(lTokens[1], oToken):
+        return True
+    if isinstance(lTokens[0], oToken):
+        return True
+    return False
+
+
+def token_list_is_the_beginning_of_a_line(lTokens):
+    if isinstance(lTokens[0], parser.carriage_return) and isinstance(lTokens[1], parser.whitespace):
+        return True
+    if isinstance(lTokens[1], parser.carriage_return):
+        return True
+    return False
+
+
+def whitespace_is_larger_than_a_single_character(lTokens):
+    if lTokens[1].get_value() != ' ':
         return True
     return False

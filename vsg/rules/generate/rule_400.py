@@ -11,6 +11,7 @@ lAlign.append(token.constant_declaration.identifier)
 lAlign.append(token.signal_declaration.identifier)
 lAlign.append(token.subtype_declaration.identifier)
 lAlign.append(token.variable_declaration.identifier)
+lAlign.append(token.alias_declaration.alias_designator)
 
 oStartToken = token.for_generate_statement.generate_keyword
 oEndToken = token.generate_statement_body.begin_keyword

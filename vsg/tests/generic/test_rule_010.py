@@ -14,6 +14,10 @@ lExpected = []
 lExpected.append('')
 utils.read_file(os.path.join(sTestDir, 'rule_010_test_input.fixed.vhd'), lExpected)
 
+lExpected_move_left = []
+lExpected_move_left.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_010_test_input.fixed_move_left.vhd'), lExpected_move_left)
+
 
 class test_generic_rule(unittest.TestCase):
 
@@ -41,6 +45,28 @@ class test_generic_rule(unittest.TestCase):
         lActual = self.oFile.get_lines()
 
         self.assertEqual(lExpected, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+
+    def test_rule_010_move_left(self):
+        oRule = generic.rule_010()
+        oRule.action = 'move_left'
+
+        lExpected = [5]
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+
+    def test_fix_rule_010_move_left(self):
+        oRule = generic.rule_010()
+        oRule.action = 'move_left'
+
+        oRule.fix(self.oFile)
+
+        lActual = self.oFile.get_lines()
+
+        self.assertEqual(lExpected_move_left, lActual)
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])

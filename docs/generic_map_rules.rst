@@ -84,7 +84,11 @@ generic_map_004
 
 |phase_1| |error| |structure|
 
-This rule checks for the closing parenthesis *)* on generic maps are on their own line.
+This rule checks the location of the closing ")" character for the generic map.
+
+The default location is on a line by itself.
+
+Refer to the section `Configuring Move Token Rules <configuring_move_token_rules.html>`_ for information on options.
 
 **Violation**
 
