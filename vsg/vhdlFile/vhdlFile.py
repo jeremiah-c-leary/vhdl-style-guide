@@ -107,6 +107,9 @@ class vhdlFile():
         if bUpdateMap:
             self.oTokenMap = process_tokens(self.lAllObjects)
 
+    def update_token_map(self):
+        self.oTokenMap = process_tokens(self.lAllObjects)
+
     def set_indent_map(self, dIndentMap):
         self.dIndentMap = dIndentMap
         set_token_indent(self.dIndentMap, self.lAllObjects)
@@ -136,6 +139,9 @@ class vhdlFile():
 
     def fix_blank_lines(self):
         self.lAllObjects = utils.fix_blank_lines(self.lAllObjects)
+
+    def fix_trailing_whitespace(self):
+        self.lAllObjects = utils.fix_trailing_whitespace(self.lAllObjects)
 
     def set_token_indent(self):
         set_token_indent(self.dIndentMap, self.lAllObjects)
