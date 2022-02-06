@@ -358,6 +358,28 @@ This rule checks the structure of multiline constants that contain arrays.
      32768
    );
 
+constant_100
+############
+
+|phase_2| |error| |whitespace|
+
+This rule checks for a single space after the := assignment in constant declarations.
+Having a space makes it clearer where the assignment occurs on the line.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   constant size : integer :=1;
+   constant width : t_type :=(
+
+**Fix**
+
+.. code-block:: vhdl
+
+   constant size : integer := 1;
+   constant width : t_type := (
+
 constant_600
 ############
 
