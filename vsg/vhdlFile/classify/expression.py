@@ -17,8 +17,9 @@ def classify(iToken, lObjects):
 
 def classify_until(lUntils, iToken, lObjects, oType=parser.todo):
     '''
-    subtype_indication ::=
-        [ resolution_indication ] type_mark [ constraint ]
+    expression ::=
+        condition_operator primary
+      | logical_expression
     '''
     iCurrent = iToken
     iStop = len(lObjects) - 1
