@@ -1,3 +1,6 @@
+
+.. _configuring-multiline-structure-rules:
+
 Configuring Multiline Structure Rules
 --------------------------------------
 

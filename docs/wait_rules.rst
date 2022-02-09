@@ -1,4 +1,4 @@
-.. include:: icons.rst
+.. include:: includes.rst
 
 Wait Rules
 ----------

@@ -12,7 +12,7 @@ class rule_600(token_suffix):
     This rule checks for valid suffix on variable identifiers.
     The default variable suffix is *\_v*.
 
-    Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed suffixes.
+    |configuring_prefix_and_suffix_rules_link|
 
     **Violation**
 

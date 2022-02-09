@@ -12,7 +12,7 @@ class rule_003(block_rule.Rule):
     '''
     This rule checks the block comment footer is correct.
 
-    Refer to the section `Configuring Block Comments <configuring.html#configuring-block-comments>`_ for additional information.
+    |configuring_block_comments_link|
 
     **Violation**
 

@@ -16,7 +16,7 @@ class rule_011(structure.Rule):
     '''
     This rule checks the structure of simple and conditional concurrent statements.
 
-    Refer to the section `Configuring Concurrent Structure Rules <configuring.html#configuring-concurrent-structure-rules>`_ for information on formatting options.
+    |configuring_multiline_structure_rules_link|
 
     **Violation**
 

@@ -1,3 +1,6 @@
+
+.. _configuring-block-comments:
+
 Configuring Block Comments
 --------------------------
 

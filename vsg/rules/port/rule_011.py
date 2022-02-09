@@ -15,7 +15,7 @@ class rule_011(token_prefix_between_tokens):
     This rule checks for valid prefixes on port identifiers.
     The default port prefixes are: *i\_*, *o\_*, *io\_*.
 
-    Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed prefixes.
+    |configuring_prefix_and_suffix_rules_link|
 
     **Violation**
 

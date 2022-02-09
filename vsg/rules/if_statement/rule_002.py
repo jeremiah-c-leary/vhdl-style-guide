@@ -47,6 +47,7 @@ class rule_002(structure.Rule):
         structure.Rule.__init__(self, 'if', '002')
         self.parenthesis = 'insert'
         self.configuration.append('parenthesis')
+        self.subphase = 2
 
     def _get_tokens_of_interest(self, oFile):
         if self.parenthesis == 'insert':

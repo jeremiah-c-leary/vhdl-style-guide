@@ -1,3 +1,6 @@
+
+.. _configuring-type-of-instantiations:
+
 Configuring Type of Instantiations
 ----------------------------------
 

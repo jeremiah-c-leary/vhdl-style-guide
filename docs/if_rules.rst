@@ -1,4 +1,4 @@
-.. include:: icons.rst
+.. include:: includes.rst
 
 If Rules
 --------
@@ -498,7 +498,7 @@ if_025
 
 This rule checks the **if** keyword has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -519,7 +519,7 @@ if_026
 
 This rule checks the **elsif** keyword has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -540,7 +540,7 @@ if_027
 
 This rule checks the **else** keyword has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -561,7 +561,7 @@ if_028
 
 This rule checks the **end** keyword has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -586,7 +586,7 @@ if_029
 
 This rule checks the **then** keyword has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -608,7 +608,7 @@ if_030
 This rule checks a single blank line after the **end if**.
 In the case of nested **if** statements, the rule will be enfoced on the last **end if**.
 
-Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
+|configuring_blank_lines_link|
 
 **Violation**
 
@@ -637,7 +637,7 @@ if_031
 This rule checks for blank lines or comments above the **if** keyword.
 In the case of nested **if** statements, the rule will be enfoced on the first **if**.
 
-Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous-line-rules>`_ for options.
+|configuring_previous_line_rules_link|
 
 The default style is :code:`no_code`.
 
@@ -733,7 +733,7 @@ if_034
 
 This rule checks the **if** keyword in the **end if** has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 

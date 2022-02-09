@@ -14,7 +14,7 @@ class rule_504(token_case_in_range_bounded_by_tokens):
     '''
     This rule checks the **end** keyword has proper case.
 
-    Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+    |configuring_uppercase_and_lowercase_rules_link|
 
     **Violation**
 

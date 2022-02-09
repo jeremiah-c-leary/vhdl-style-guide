@@ -11,7 +11,7 @@ lAlign.append(token.concurrent_conditional_signal_assignment.assignment)
 class rule_006(align_tokens_in_region_between_tokens):
     '''
     This rule checks the alignment of the **<=** operator over multiple consecutive lines.
-    Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
+    |configuring_keyword_alignment_rules_link|
 
     **Violation**
 

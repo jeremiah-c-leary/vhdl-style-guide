@@ -8,7 +8,7 @@ class rule_019(insert_token_left_of_token_if_it_does_not_exist_between_tokens_us
     '''
     This rule checks for the entity name in the **end entity** statement.
 
-    Refer to the section `Configuring Optional Items <configuring.html#configuring-optional-items>`_ for options.
+    |configuring_optional_items_link|
 
     **Violation**
 

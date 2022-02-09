@@ -1,5 +1,7 @@
 
-.. include:: icons.rst
+.. include:: includes.rst
+
+.. _configuring-disabled-rules:
 
 Configuring Disabled Rules
 --------------------------

@@ -9,7 +9,7 @@ class rule_010(insert_token_right_of_token_if_it_does_not_exist_before_token):
     This rule checks for the keyword **architecture** in the **end architecture** statement.
     It is clearer to the reader to state what is ending.
 
-    Refer to the section `Configuring Optional Items <configuring.html#configuring-optional-items>`_ for options.
+    |configuring_optional_items_link|
 
     **Violation**
 

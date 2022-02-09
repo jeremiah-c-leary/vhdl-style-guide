@@ -8,7 +8,7 @@ class rule_019(token_case):
     '''
     This rule checks the proper case of the **of** keyword in the architecture declaration.
 
-    Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+    |configuring_uppercase_and_lowercase_rules_link|
 
     **Violation**
 

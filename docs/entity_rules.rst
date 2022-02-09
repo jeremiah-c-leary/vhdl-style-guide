@@ -1,4 +1,4 @@
-.. include:: icons.rst
+.. include:: includes.rst
 
 Entity Rules
 ------------
@@ -52,7 +52,7 @@ entity_003
 
 This rule checks for blank lines or comments above the entity keyword.
 
-Refer to the section `Configuring Previous Line Rules <configuring.html#configuring-previous-line-rules>`_ for options.
+|configuring_previous_line_rules_link|
 
 **Violation**
 
@@ -76,7 +76,7 @@ entity_004
 
 This rule checks the **entity** keyword has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -121,7 +121,7 @@ entity_006
 
 This rule checks the **is** keyword has proper case in the entity declaration.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -161,7 +161,7 @@ entity_008
 
 This rule checks the entity name has proper case in the entity declaration.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -207,7 +207,7 @@ entity_010
 
 This rule checks the **end** keyword has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -247,7 +247,7 @@ entity_012
 
 This rule checks the case of the entity name in the **end entity** statement.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -287,7 +287,7 @@ entity_014
 
 This rule checks the **entity** keyword has proper case in the closing of the entity declaration.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -308,7 +308,7 @@ entity_015
 
 This rule checks for the keyword **entity** in the **end entity** statement.
 
-Refer to the section `Configuring Optional Items <configuring.html#configuring-optional-items>`_ for options.
+|configuring_optional_items_link|
 
 **Violation**
 
@@ -365,7 +365,7 @@ Following extra configurations are supported:
 
 * :code:`separate_generic_port_alignment`.
 
-Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
+|configuring_keyword_alignment_rules_link|
 
 **Violation**
 
@@ -406,7 +406,7 @@ Following extra configurations are supported:
 
 * :code:`separate_generic_port_alignment`.
 
-Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
+|configuring_keyword_alignment_rules_link|
 
 **Violation**
 
@@ -445,7 +445,7 @@ entity_019
 
 This rule checks for the entity name in the **end entity** statement.
 
-Refer to the section `Configuring Optional Items <configuring.html#configuring-optional-items>`_ for options.
+|configuring_optional_items_link|
 
 **Violation**
 
@@ -470,7 +470,7 @@ Following extra configurations are supported:
 
 * :code:`separate_generic_port_alignment`.
 
-Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
+|configuring_keyword_alignment_rules_link|
 
 **Violation**
 

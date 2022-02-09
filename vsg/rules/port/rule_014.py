@@ -1,15 +1,18 @@
 
-from vsg.rules import split_line_at_token
+from vsg.rules import move_token as Rule
 
 from vsg import token
 
-lTokens = []
-lTokens.append(token.port_clause.close_parenthesis)
+oToken = token.port_clause.close_parenthesis
 
 
-class rule_014(split_line_at_token):
+class rule_014(Rule):
     '''
-    This rule checks the closing parenthesis of the port map is on a line by itself.
+    This rule checks the location of the closing ")" character for the port clause.
+
+    The default location is on a line by itself.
+
+    |configuring_move_token_rules_link|
 
     **Violation**
 
@@ -34,5 +37,5 @@ class rule_014(split_line_at_token):
     '''
 
     def __init__(self):
-        split_line_at_token.__init__(self, 'port', '014', lTokens)
-        self.solution = 'Closing parenthesis must be on a line by itself.'
+        Rule.__init__(self, 'port', '014', oToken)
+        self.preserve_comment = True

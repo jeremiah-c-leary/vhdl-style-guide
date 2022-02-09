@@ -17,7 +17,7 @@ class rule_600(token_suffix):
     This rule checks for valid suffixes on generate statement labels.
     The default suffix is *\_gen*.
 
-    Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed suffixes.
+    |configuring_prefix_and_suffix_rules_link|
 
     [Violation]
 

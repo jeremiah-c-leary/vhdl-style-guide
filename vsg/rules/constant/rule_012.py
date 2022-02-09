@@ -15,7 +15,7 @@ class rule_012(alignment.Rule):
     '''
     This rule checks the alignment of multiline constants that contain arrays.
 
-    Refer to section `Configuring Multiline Indent Rules <configuring.html#configuring-multiline-indent-rules>`_ for options.
+    |configuring_multiline_indent_rules_link|
 
     .. NOTE:: The structure of multiline array constants is handled by the rule `constant_016 <constant_rules.html#constant-016>`_.
 
@@ -46,9 +46,9 @@ class rule_012(alignment.Rule):
         alignment.Rule.__init__(self, 'constant', '012')
         self.subphase = 2
         self.lTokenPairs = lTokenPairs
-        self.align_left = False
+        self.align_left = 'no'
         self.configuration.append('align_left')
-        self.align_paren = True
+        self.align_paren = 'yes'
         self.configuration.append('align_paren')
 
     def _get_tokens_of_interest(self, oFile):
@@ -80,11 +80,11 @@ class rule_012(alignment.Rule):
 
     def calculate_expected_indents(self, oToi, oLines):
         dExpectedIndent = {}
-        if not self.align_paren and self.align_left:
+        if not align_paren(self) and align_left(self):
             dExpectedIndent = self.analyze_align_left_true_align_paren_false(oToi, oLines)
-        if self.align_paren and not self.align_left:
+        if align_paren(self) and not align_left(self):
             dExpectedIndent = self.analyze_align_left_false_align_paren_true(oToi, oLines)
-        if self.align_paren and self.align_left:
+        if align_paren(self) and align_left(self):
             dExpectedIndent = self.analyze_align_left_true_align_paren_true(oToi, oLines)
         return dExpectedIndent
 
@@ -119,8 +119,6 @@ class rule_012(alignment.Rule):
                 check_last_line(oLine, oLines, self.indentSize)
             else:
                 check_middle_line(oLine, oLines, self.indentSize)
-
-
 
 
 def _set_indent(iToken, lTokens):
@@ -399,3 +397,15 @@ class paren():
         if self.sType == 'close':
             return True
         return False
+
+
+def align_left(self):
+    if self.align_left == 'yes':
+        return True
+    return False
+
+
+def align_paren(self):
+    if self.align_paren == 'yes':
+        return True
+    return False

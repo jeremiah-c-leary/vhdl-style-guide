@@ -8,7 +8,7 @@ class rule_023(blank_line_below_line_ending_with_token):
     '''
     This rule adds a blank line below the **is** keyword.
 
-    Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
+    |configuring_blank_lines_link|
 
     **Violation**
 

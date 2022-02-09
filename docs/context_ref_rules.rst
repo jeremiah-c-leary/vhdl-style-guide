@@ -1,4 +1,4 @@
-.. include:: icons.rst
+.. include:: includes.rst
 
 Context Reference Rules
 -----------------------
@@ -50,7 +50,7 @@ context_ref_003
 
 This rule checks the **context** keyword has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -71,7 +71,7 @@ context_ref_004
 
 This rule checks the context selected names have proper case in the context reference.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 

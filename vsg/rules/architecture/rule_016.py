@@ -8,7 +8,7 @@ class rule_016(blank_line_above_line_starting_with_token):
     '''
     This rule checks for blank lines above the **begin** keyword.
 
-    Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options.
+    |configuring_blank_lines_link|
 
     **Violation**
 

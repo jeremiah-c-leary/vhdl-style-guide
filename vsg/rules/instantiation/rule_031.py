@@ -11,7 +11,7 @@ class rule_031(token_case):
     '''
     This rule checks the component keyword has proper case in component instantiations that use the **component** keyword.
 
-    Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+    |configuring_uppercase_and_lowercase_rules_link|
 
     **Violation**
 

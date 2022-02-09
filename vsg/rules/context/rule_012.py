@@ -11,7 +11,7 @@ class rule_012(token_case_with_prefix_suffix):
     '''
     This rule checks the context identifier has proper case in the context declaration.
 
-    Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+    |configuring_uppercase_and_lowercase_rules_link|
 
     **Violation**
 

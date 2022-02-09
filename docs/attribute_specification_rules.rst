@@ -1,4 +1,4 @@
-.. include:: icons.rst
+.. include:: includes.rst
 
 Attribute Specification Rules
 -----------------------------
@@ -75,7 +75,7 @@ attribute_specification_500
 
 This rule checks the **attribute** keyword has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -96,7 +96,7 @@ attribute_specification_501
 
 This rule checks the *attribute_designator* has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -117,7 +117,7 @@ attribute_specification_502
 
 This rule checks the **of** keyword has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -138,7 +138,7 @@ attribute_specification_503
 
 This rule checks the **is** keyword has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 

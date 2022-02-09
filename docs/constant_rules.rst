@@ -1,4 +1,4 @@
-.. include:: icons.rst
+.. include:: includes.rst
 
 Constant Rules
 --------------
@@ -35,7 +35,7 @@ constant_002
 
 This rule checks the **constant** keyword has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -61,7 +61,7 @@ constant_004
 
 This rule checks the constant identifier has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -173,7 +173,7 @@ constant_011
 
 This rule checks the constant type has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -194,7 +194,7 @@ constant_012
 
 This rule checks the alignment of multiline constants that contain arrays.
 
-Refer to section `Configuring Multiline Indent Rules <configuring.html#configuring-multiline-indent-rules>`_ for options.
+|configuring_multiline_indent_rules_link|
 
 .. NOTE:: The structure of multiline array constants is handled by the rule `constant_016 <constant_rules.html#constant-016>`_.
 
@@ -292,6 +292,8 @@ constant_014
 
 This rule checks the indent of multiline constants that do not contain arrays.
 
+|configuring_multiline_indent_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -314,7 +316,7 @@ constant_015
 This rule checks for valid prefixes on constant identifiers.
 The default constant prefix is *c\_*.
 
-Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed prefixes.
+|configuring_prefix_and_suffix_rules_link|
 
 **Violation**
 
@@ -335,7 +337,7 @@ constant_016
 
 This rule checks the structure of multiline constants that contain arrays.
 
-Refer to section `Configuring Multiline Structure Rules <configuring.html#configuring-multiline-structure-rules>`_ for options.
+|configuring_multiline_structure_rules_link|
 
 .. NOTE:: The indenting of multiline array constants is handled by the rule `constant_012 <constant_rules.html#constant-012>`_.
 
@@ -356,6 +358,28 @@ Refer to section `Configuring Multiline Structure Rules <configuring.html#config
      32768
    );
 
+constant_100
+############
+
+|phase_2| |error| |whitespace|
+
+This rule checks for a single space after the := assignment in constant declarations.
+Having a space makes it clearer where the assignment occurs on the line.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   constant size : integer :=1;
+   constant width : t_type :=(
+
+**Fix**
+
+.. code-block:: vhdl
+
+   constant size : integer := 1;
+   constant width : t_type := (
+
 constant_600
 ############
 
@@ -364,7 +388,7 @@ constant_600
 This rule checks for valid suffixes on constant identifiers.
 The default constant suffix is *\_c*.
 
-Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed suffixes.
+|configuring_prefix_and_suffix_rules_link|
 
 **Violation**
 

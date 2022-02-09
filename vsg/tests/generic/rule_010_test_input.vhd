@@ -2,7 +2,7 @@
 entity FIFO is
   generic (
     G_WIDTH : integer := 256;
-    G_DEPTH : integer := 32
+    G_DEPTH : integer := 32  -- Comment
   );
   port (
     I_PORT1 : in std_logic;

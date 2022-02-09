@@ -1,4 +1,4 @@
-.. include:: icons.rst
+.. include:: includes.rst
 
 Package Body Rules
 ------------------
@@ -30,7 +30,7 @@ package_body_002
 
 This rule checks for the optional **package body** keywords on the end package body declaration.
 
-Refer to the section `Configuring Optional Items <configuring.html#configuring-optional-items>`_ for options.
+|configuring_optional_items_link|
 
 **Violation**
 
@@ -51,7 +51,7 @@ package_body_003
 
 This rule checks the package name exists in the closing of the package body declaration.
 
-Refer to the section `Configuring Optional Items <configuring.html#configuring-optional-items>`_ for options.
+|configuring_optional_items_link|
 
 **Violation**
 
@@ -110,7 +110,7 @@ package_body_200
 
 This rule checks for blank lines or comments above the **package** keyword.
 
-Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous-line-rules>`_ for options.
+|configuring_previous_line_rules_link|
 
 **Violation**
 
@@ -134,7 +134,7 @@ package_body_201
 
 This rule checks for a blank line below the **package** keyword.
 
-Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
+|configuring_blank_lines_link|
 
 **Violation**
 
@@ -158,7 +158,7 @@ package_body_202
 
 This rule checks for blank lines or comments above the **end** keyword.
 
-Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options.
+|configuring_blank_lines_link|
 
 **Violation**
 
@@ -182,7 +182,7 @@ package_body_203
 
 This rule checks for a blank line below the **end package** keyword.
 
-Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
+|configuring_blank_lines_link|
 
 **Violation**
 
@@ -252,7 +252,7 @@ package_body_400
 
 This rule checks the identifiers for all declarations are aligned in the package body declarative region.
 
-Refer to the section `Configuring Identifier Alignment Rules <configuring.html#configuring-identifier-alignment-rules>`_ for information on changing the configurations.
+|configuring_identifier_alignment_rules_link|
 
 **Violation**
 
@@ -268,6 +268,39 @@ Refer to the section `Configuring Identifier Alignment Rules <configuring.html#c
    variable var1     : natural;
    constant c_period : time;
 
+package_body_401
+################
+
+|phase_5| |error| |alignment|
+
+This rule checks the colons are in the same column for all declarations in the package body declarative part.
+
+|configuring_keyword_alignment_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   package my_package is
+
+     signal   wr_en : std_logic;
+     signal   rd_en   : std_logic;
+     constant c_period : time;
+
+   end package my_package;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   package my_package is
+
+     signal   wr_en    : std_logic;
+     signal   rd_en    : std_logic;
+     constant c_period : time;
+
+   end package my_package;
+
 package_body_500
 ################
 
@@ -275,7 +308,7 @@ package_body_500
 
 This rule checks the **package** keyword has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -296,7 +329,7 @@ package_body_501
 
 This rule checks the **body** keyword has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -317,7 +350,7 @@ package_body_502
 
 This rule checks the package name has proper case in the package declaration.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -338,7 +371,7 @@ package_body_503
 
 This rule checks the **is** keyword has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -359,7 +392,7 @@ package_body_504
 
 This rule checks the **end** keyword has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -380,7 +413,7 @@ package_body_505
 
 This rule checks the **package** keyword in the **end package body** has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -401,7 +434,7 @@ package_body_506
 
 This rule checks the **body** keyword in the **end package body** has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -422,7 +455,7 @@ package_body_507
 
 This rule checks the package name has proper case on the end package declaration.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -444,7 +477,7 @@ package_body_600
 This rule checks for valid suffixes on package body identifiers.
 The default package suffix is *_pkg*.
 
-Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed suffixes.
+|configuring_prefix_and_suffix_rules_link|
 
 **Violation**
 
@@ -466,7 +499,7 @@ package_body_601
 This rule checks for valid prefixes on package body identifiers.
 The default package prefix is *pkg_*.
 
-Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed prefixes.
+|configuring_prefix_and_suffix_rules_link|
 
 **Violation**
 

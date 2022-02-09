@@ -6,7 +6,7 @@ class rule_001(line_length):
     '''
     This rule checks the length of the line.
 
-    Refer to the section `Configuring Length Rules <configuring.html#configuring-length-rules>`_ for configuring this option.
+    |configuring_length_rules_link|
     '''
 
     def __init__(self):

@@ -8,6 +8,8 @@ lAlign.append(token.file_declaration.colon)
 lAlign.append(token.signal_declaration.colon)
 lAlign.append(token.constant_declaration.colon)
 lAlign.append(token.variable_declaration.colon)
+lAlign.append(token.alias_declaration.colon)
+lAlign.append(token.alias_declaration.is_keyword)
 
 oStart = token.package_declaration.is_keyword
 oEnd = token.package_declaration.end_keyword
@@ -20,7 +22,7 @@ class rule_400(align_tokens_in_region_between_tokens_unless_between_tokens):
     '''
     This rule checks the colons are in the same column for all declarations in the package declarative part.
 
-    Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
+    |configuring_keyword_alignment_rules_link|
 
     **Violation**
 

@@ -13,7 +13,7 @@ class rule_006(previous_line):
     '''
     This rule checks for blank lines or comments above the **function** keyword.
 
-    Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous-line-rules>`_ for options.
+    |configuring_previous_line_rules_link|
 
     **Violation**
 

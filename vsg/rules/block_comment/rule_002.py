@@ -12,7 +12,7 @@ class rule_002(block_rule.Rule):
     '''
     This rule checks the **comment_left** attribute exists for all comments.
 
-    Refer to the section `Configuring Block Comments <configuring.html#configuring-block-comments>`_ for additional information.
+    |configuring_block_comments_link|
 
     **Violation**
 

@@ -1,4 +1,4 @@
-.. include:: icons.rst
+.. include:: includes.rst
 
 Library Rules
 -------------
@@ -50,12 +50,12 @@ library_003
 
 |phase_3| |error| |blank_line|
 
-This rule checks for blank lines or comments above the entity keyword.
+This rule checks for blank lines or comments above the **library** keyword.
 
-Refer to the section `Configuring Previous Line Rules <configuring.html#configuring-previous-line-rules>`_ for options.
+|configuring_previous_line_rules_link|
 
 There is an additional **allow_library_clause** option which can be set.
-Refer to section `Reporting Single Rule Configuration <configuring.html#reporting-single-rule-configuration>`_ for details on finding configuration options for individual rules.
+Refer to section :ref:`reporting-single-rule-configuration` for details on finding configuration options for individual rules.
 
 allow_library_clause
 ^^^^^^^^^^^^^^^^^^^^
@@ -88,7 +88,7 @@ library_004
 
 This rule checks the **library** keyword has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -113,7 +113,7 @@ library_005
 
 This rule checks the **use** keyword has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -161,7 +161,7 @@ library_007
 
 This rule checks for blank lines or comments above the **use** declaration.
 
-Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
+|configuring_blank_lines_link|
 
 The default style is :code:`no_blank_line`.
 
@@ -276,7 +276,7 @@ library_600
 
 This rule checks the logical_name in a library_clause has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 

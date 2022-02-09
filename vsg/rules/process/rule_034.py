@@ -17,7 +17,7 @@ lSkip.append(parser.comment)
 class rule_034(align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens):
     '''
     This rule aligns inline comments between the end of the process sensitivity list and the process **begin** keyword.
-    Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
+    |configuring_keyword_alignment_rules_link|
 
     **Violation**
 

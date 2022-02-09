@@ -12,7 +12,7 @@ class rule_008(token_prefix):
     This rule checks for valid prefixes on signal identifiers.
     Default signal prefix is *s\_*.
 
-    Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed prefixes.
+    |configuring_prefix_and_suffix_rules_link|
 
     **Violation**
 

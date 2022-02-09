@@ -1,3 +1,6 @@
+
+.. _configuring-optional-items:
+
 Configuring Optional Items
 --------------------------
 

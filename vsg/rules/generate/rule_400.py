@@ -11,6 +11,7 @@ lAlign.append(token.constant_declaration.identifier)
 lAlign.append(token.signal_declaration.identifier)
 lAlign.append(token.subtype_declaration.identifier)
 lAlign.append(token.variable_declaration.identifier)
+lAlign.append(token.alias_declaration.alias_designator)
 
 oStartToken = token.for_generate_statement.generate_keyword
 oEndToken = token.generate_statement_body.begin_keyword
@@ -26,7 +27,7 @@ class rule_400(align_tokens_in_region_between_tokens_when_between_tokens_unless_
     '''
     This rule checks the identifiers for all declarations are aligned in the generate declarative part in for generate statements.
 
-    Refer to the section `Configuring Identifier Alignment Rules <configuring.html#configuring-identifier-alignment-rules>`_ for information on changing the configurations.
+    |configuring_identifier_alignment_rules_link|
 
     **Violation**
 

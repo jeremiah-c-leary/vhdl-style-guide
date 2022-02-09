@@ -10,7 +10,9 @@ sTestDir = os.path.dirname(__file__)
 
 dIndentMap = utils.read_indent_file()
 
-lFile, eError =vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_001_test_input.vhd'))
+lFile, eError = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_001_test_input.vhd'))
+
+lFile_align_left, eError = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_001_test_input.align_left.vhd'))
 
 
 class test_block_comment_rule(unittest.TestCase):
@@ -99,6 +101,25 @@ class test_block_comment_rule(unittest.TestCase):
         oRule.max_header_column = 80
 
         lExpected = [2, 6, 14, 18, 22, 26]
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+
+    def test_rule_001_align_left(self):
+        self.oFile = vhdlFile.vhdlFile(lFile_align_left)
+        self.assertIsNone(eError)
+        self.oFile.set_indent_map(dIndentMap)
+
+        oRule = block_comment.rule_001()
+
+        oRule.header_left_repeat = '-'
+        oRule.header_string = '<-    80 chars    ->'
+        oRule.header_right_repeat = '-'
+        oRule.header_alignment = 'center'
+        oRule.max_header_column = 80
+        oRule.allow_indenting = False
+
+        lExpected = []
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))

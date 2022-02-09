@@ -158,6 +158,8 @@ class rule_list():
 
             if phase == 1:
                 self.oVhdlFile.fix_blank_lines()
+                self.oVhdlFile.fix_trailing_whitespace()
+                self.oVhdlFile.update_token_map()
 
     def get_rules_in_phase(self, iPhaseNumber):
         '''

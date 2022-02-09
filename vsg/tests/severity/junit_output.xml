@@ -4,10 +4,10 @@
   </properties>
   <testcase name="entity.vhd" time="0" classname="failure">
     <failure type="Failure">
-      port_007: 3 : Change the number of spaces after the *in* keyword to four spaces.
-      port_007: 4 : Change the number of spaces after the *in* keyword to four spaces.
-      port_008: 6 : Change the number of spaces after the *out* keyword to three spaces.
-      port_008: 7 : Change the number of spaces after the *out* keyword to three spaces.
+      port_007: 3 : Change number of spaces after *in* to 4.
+      port_007: 4 : Change number of spaces after *in* to 4.
+      port_008: 6 : Change number of spaces after *out* to 3.
+      port_008: 7 : Change number of spaces after *out* to 3.
     </failure>
   </testcase>
   <system-out>

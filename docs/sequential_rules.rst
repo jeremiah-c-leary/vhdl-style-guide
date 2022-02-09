@@ -1,4 +1,4 @@
-.. include:: icons.rst
+.. include:: includes.rst
 
 Sequential Rules
 ----------------
@@ -73,7 +73,7 @@ This rule checks for at least a single space before the **<=** operator.
 sequential_004
 ##############
 
-|phase_4| |error| |alignment|
+|phase_5| |error| |alignment|
 
 This rule checks the alignment of multiline sequential statements.
 

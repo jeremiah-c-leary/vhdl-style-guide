@@ -11,7 +11,7 @@ class rule_600(token_case):
     '''
     This rule checks the logical_name in a library_clause has proper case.
 
-    Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+    |configuring_uppercase_and_lowercase_rules_link|
 
     **Violation**
 

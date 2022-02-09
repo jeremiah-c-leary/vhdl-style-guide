@@ -11,6 +11,7 @@ lAlign.append(token.constant_declaration.identifier)
 lAlign.append(token.signal_declaration.identifier)
 lAlign.append(token.subtype_declaration.identifier)
 lAlign.append(token.variable_declaration.identifier)
+lAlign.append(token.alias_declaration.alias_designator)
 
 lUnless = []
 lUnless.append([token.subprogram_body.is_keyword,token.subprogram_body.begin_keyword])
@@ -20,7 +21,7 @@ class rule_400(align_tokens_in_region_between_tokens_unless_between_tokens):
     '''
     This rule checks the identifiers for all declarations are aligned in the block declarative region.
 
-    Refer to the section `Configuring Identifier Alignment Rules <configuring.html#configuring-identifier-alignment-rules>`_ for information on changing the configurations.
+    |configuring_identifier_alignment_rules_link|
 
     **Violation**
 

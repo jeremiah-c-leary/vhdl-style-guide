@@ -11,7 +11,7 @@ class rule_011(token_case_with_prefix_suffix):
     '''
     This rule checks the architecture name case in the **end architecture** statement.
 
-    Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+    |configuring_uppercase_and_lowercase_rules_link|
 
 
     **Violation**

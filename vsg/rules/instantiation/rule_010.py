@@ -18,7 +18,7 @@ class rule_010(align_tokens_in_region_between_tokens):
 
     * :code:`separate_generic_port_alignment`.
 
-    Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
+    |configuring_keyword_alignment_rules_link|
 
     **Violation**
 

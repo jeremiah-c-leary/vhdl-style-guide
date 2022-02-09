@@ -105,6 +105,8 @@ Here are a list of attributes that can be altered for each rule:
 | fixable     | Boolean | If set to False, the violation will not be fixed |
 +-------------+---------+--------------------------------------------------+
 
+.. _reporting-single-rule-configuration:
+
 Reporting Single Rule Configuration
 -----------------------------------
 

@@ -1,4 +1,4 @@
-.. include:: icons.rst
+.. include:: includes.rst
 
 Generic Rules
 -------------
@@ -130,7 +130,7 @@ generic_007
 
 This rule checks the generic names have proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -172,7 +172,7 @@ generic_009
 
 This rule checks the **generic** keyword has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -191,7 +191,11 @@ generic_010
 
 |phase_1| |error| |structure|
 
-This rule checks the closing parenthesis is on a line by itself.
+This rule checks the location of the closing ")" character for the generic clause.
+
+The default location is on a line by itself.
+
+|configuring_move_token_rules_link|
 
 **Violation**
 
@@ -280,7 +284,7 @@ generic_017
 
 This rule checks the generic type has proper case if it is a VHDL keyword.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -355,7 +359,7 @@ generic_020
 This rule checks for valid prefixes on generic identifiers.
 The default generic prefix is *g\_*.
 
-Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed prefixes.
+|configuring_prefix_and_suffix_rules_link|
 
 **Violation**
 
@@ -369,6 +373,32 @@ Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#conf
 
    generic(g_my_generic : integer);
 
+generic_021
+###########
+
+|phase_1| |error| |structure|
+
+This rule checks the semicolon is not on it's own line.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   U_FIFO : FIFO
+     generic (
+       G_WIDTH : integer
+     )
+     ;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   U_FIFO : FIFO
+     generic (
+       G_WIDTH : integer
+     );
+
 generic_600
 ###########
 
@@ -377,7 +407,7 @@ generic_600
 This rule checks for valid suffixes on generic identifiers.
 The default generic suffix is *\_g*.
 
-Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed suffixes.
+|configuring_prefix_and_suffix_rules_link|
 
 **Violation**
 

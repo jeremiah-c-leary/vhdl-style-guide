@@ -13,7 +13,7 @@ class rule_010(token_case):
     '''
     This rule checks the **generate** keyword has the proper case in the **end generate** line.
 
-    Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+    |configuring_uppercase_and_lowercase_rules_link|
 
     **Violation**
 

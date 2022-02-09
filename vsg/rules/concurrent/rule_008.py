@@ -31,7 +31,7 @@ lEnd.append(token.concurrent_simple_signal_assignment.semicolon)
 class rule_008(alignment.Rule):
     '''
     This rule checks the alignment of inline comments in consecutive concurrent statements.
-    Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
+    |configuring_keyword_alignment_rules_link|
 
     **Violation**
 

@@ -1,3 +1,6 @@
+
+.. _configuring-length-rules:
+
 Configuring Length Rules
 ------------------------
 

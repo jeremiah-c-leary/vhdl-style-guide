@@ -1,4 +1,4 @@
-.. include:: icons.rst
+.. include:: includes.rst
 
 Case Rules
 ----------
@@ -150,7 +150,7 @@ case_007
 
 This rule checks for blank lines or comments above the **case** keyword.
 
-Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous-line-rules>`_ for options.
+|configuring_previous_line_rules_link|
 
 The default style is :code:`no_code`.
 
@@ -189,7 +189,7 @@ case_009
 
 This rule checks for blank lines or comments above the **end** keyword.
 
-Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options.
+|configuring_blank_lines_link|
 
 **Violation**
 
@@ -215,7 +215,7 @@ case_010
 
 This rule checks for a blank line below the **end case** keywords.
 
-Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
+|configuring_blank_lines_link|
 
 **Violation**
 
@@ -311,7 +311,7 @@ case_014
 
 This rule checks the **case** keyword has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -340,7 +340,7 @@ case_015
 
 This rule checks the **is** keyword has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -369,7 +369,7 @@ case_016
 
 This rule checks the **when** has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -394,7 +394,7 @@ case_017
 
 This rule checks the **end** keyword in the **end case** has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -419,7 +419,7 @@ case_018
 
 This rule checks the **case** keyword has proper case in the **end case**.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -519,7 +519,7 @@ case_200
 
 This rule checks for a blank line below the **=>** keyword.
 
-Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
+|configuring_blank_lines_link|
 
 **Violation**
 

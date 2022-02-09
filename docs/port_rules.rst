@@ -1,4 +1,4 @@
-.. include:: icons.rst
+.. include:: includes.rst
 
 Port Rules
 ----------
@@ -99,31 +99,7 @@ This rule checks the indent of port declarations.
 port_005
 ########
 
-|phase_2| |error| |whitespace|
-
-This rule checks for a single space after the colon.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   port (
-     WR_EN    : in    std_logic;
-     RD_EN    :   in    std_logic;
-     OVERFLOW :out   std_logic;
-     DATA     :inout std_logic
-   );
-
-**Fix**
-
-.. code-block:: vhdl
-
-   port (
-     WR_EN    : in    std_logic;
-     RD_EN    : in    std_logic;
-     OVERFLOW : out   std_logic;
-     DATA     : inout std_logic
-   );
+This rule has been deprecated and it's function has been included in rules **port_007**, **port_008** and **port_009**.
 
 port_006
 ########
@@ -135,7 +111,9 @@ port_007
 
 |phase_2| |error| |whitespace|
 
-This rule checks for four spaces after the **in** keyword.
+This rule checks for spaces before and after the **in** mode keyword.
+
+|configuring_port_mode_alignment_link|
 
 **Violation**
 
@@ -157,26 +135,16 @@ This rule checks for four spaces after the **in** keyword.
      OVERFLOW : out   std_logic
    );
 
-
 port_008
 ########
 
 |phase_2| |error| |whitespace|
 
-This rule checks for three spaces after the **out** keyword.
+This rule checks for spaces before and after the **out** mode keyword.
+
+|configuring_port_mode_alignment_link|
 
 **Violation**
-
-.. code-block:: vhdl
-
-   port (
-     WR_EN    : in    std_logic;
-     RD_EN    : in    std_logic;
-     OVERFLOW : out std_logic
-   );
-
-
-**Fix**
 
 .. code-block:: vhdl
 
@@ -186,12 +154,24 @@ This rule checks for three spaces after the **out** keyword.
      OVERFLOW : out   std_logic
    );
 
+**Fix**
+
+.. code-block:: vhdl
+
+   port (
+     WR_EN    : in    std_logic;
+     RD_EN    : in    std_logic;
+     OVERFLOW : out std_logic
+   );
+
 port_009
 ########
 
 |phase_2| |error| |whitespace|
 
-This rule checks for a single space after the **inout** keyword.
+This rule checks for spaces before and after the **inout** mode keyword.
+
+|configuring_port_mode_alignment_link|
 
 **Violation**
 
@@ -220,7 +200,7 @@ port_010
 
 This rule checks the port names have proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -252,7 +232,7 @@ port_011
 This rule checks for valid prefixes on port identifiers.
 The default port prefixes are: *i\_*, *o\_*, *io\_*.
 
-Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed prefixes.
+|configuring_prefix_and_suffix_rules_link|
 
 **Violation**
 
@@ -340,7 +320,11 @@ port_014
 
 |phase_1| |error| |structure|
 
-This rule checks the closing parenthesis of the port map is on a line by itself.
+This rule checks the location of the closing ")" character for the port clause.
+
+The default location is on a line by itself.
+
+|configuring_move_token_rules_link|
 
 **Violation**
 
@@ -427,7 +411,7 @@ port_017
 
 This rule checks the **port** keyword has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -448,7 +432,7 @@ port_018
 
 This rule checks the port type has proper case if it is a VHDL keyword.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 
 **Violation**
@@ -480,7 +464,7 @@ port_019
 
 This rule checks the port direction has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -654,7 +638,7 @@ port_025
 This rule checks for valid suffixes on port identifiers.
 The default port suffixes are *_i*, *_o*, *_io*.
 
-Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed suffixes.
+|configuring_prefix_and_suffix_rules_link|
 
 **Violation**
 
@@ -708,4 +692,30 @@ Any comments are not replicated.
      overflow : out   std_logic;
      empty : out   std_logic -- Other comment
    );
+
+port_027
+########
+
+|phase_1| |error| |structure|
+
+This rule checks the semicolon is not on it's own line.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   U_FIFO : FIFO
+     port (
+       I_WIDTH : in integer
+     )
+     ;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   U_FIFO : FIFO
+     generic (
+       I_WIDTH : in integer
+     );
 

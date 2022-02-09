@@ -1,4 +1,4 @@
-.. include:: icons.rst
+.. include:: includes.rst
 
 Package Rules
 -------------
@@ -52,7 +52,7 @@ package_003
 
 This rule checks for blank lines or comments above the **package** keyword.
 
-Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous-line-rules>`_ for options.
+|configuring_previous_line_rules_link|
 
 The default style is :code:`no_code`.
 
@@ -78,7 +78,7 @@ package_004
 
 This rule checks the package keyword has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -119,7 +119,7 @@ package_006
 
 This rule checks the **end** keyword has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -140,7 +140,7 @@ package_007
 
 This rule checks for the **package** keyword on the end package declaration.
 
-Refer to the section `Configuring Optional Items <configuring.html#configuring-optional-items>`_ for options.
+|configuring_optional_items_link|
 
 **Violation**
 
@@ -161,7 +161,7 @@ package_008
 
 This rule checks the package name has proper case on the end package declaration.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -201,7 +201,7 @@ package_010
 
 This rule checks the package name has proper case in the package declaration.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -222,7 +222,7 @@ package_011
 
 This rule checks for a blank line below the **package** keyword.
 
-Refer to the section `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options regarding comments.
+|configuring_blank_lines_link|
 
 **Violation**
 
@@ -246,7 +246,7 @@ package_012
 
 This rule checks for blank lines or comments above the **end package** keyword.
 
-Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options.
+|configuring_blank_lines_link|
 
 **Violation**
 
@@ -270,7 +270,7 @@ package_013
 
 This rule checks the **is** keyword has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -291,7 +291,7 @@ package_014
 
 This rule checks the package name exists on the same line as the **end package** keywords.
 
-Refer to the section `Configuring Optional Items <configuring.html#configuring-optional-items>`_ for options.
+|configuring_optional_items_link|
 
 **Violation**
 
@@ -336,7 +336,7 @@ package_016
 This rule checks for valid suffixes on package identifiers.
 The default package suffix is *_pkg*.
 
-Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed suffixes.
+|configuring_prefix_and_suffix_rules_link|
 
 **Violation**
 
@@ -358,7 +358,7 @@ package_017
 This rule checks for valid prefixes on package identifiers.
 The default package prefix is *pkg_*.
 
-Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed prefixes.
+|configuring_prefix_and_suffix_rules_link|
 
 **Violation**
 
@@ -379,7 +379,7 @@ package_018
 
 This rule checks the **package** keyword in the **end package** has proper case.
 
-Refer to the section `Configuring Uppercase and Lowercase Rules <configuring.html#configuring-uppercase-and-lowercase-rules>`_ for information on changing the default case.
+|configuring_uppercase_and_lowercase_rules_link|
 
 **Violation**
 
@@ -400,7 +400,7 @@ package_019
 
 This rule checks the identifiers for all declarations are aligned in the package declarative region.
 
-Refer to the section `Configuring Identifier Alignment Rules <configuring.html#configuring-identifier-alignment-rules>`_ for information on changing the configurations.
+|configuring_identifier_alignment_rules_link|
 
 **Violation**
 
@@ -425,7 +425,7 @@ package_400
 
 This rule checks the colons are in the same column for all declarations in the package declarative part.
 
-Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
+|configuring_keyword_alignment_rules_link|
 
 **Violation**
 
@@ -458,7 +458,7 @@ package_401
 
 This rule checks the alignment of inline comments in the package declarative part.
 
-Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
+|configuring_keyword_alignment_rules_link|
 
 **Violation**
 

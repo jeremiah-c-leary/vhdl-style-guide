@@ -1,3 +1,6 @@
+
+.. _configuring-rule-groups:
+
 Configuring Rule Groups
 -----------------------
 

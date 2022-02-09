@@ -15,7 +15,7 @@ class rule_021(blank_line.Rule):
     '''
     This rule checks for blank lines above the **begin** keyword if there are no process declarative items.
 
-    Refer to `Configuring Blank Lines <configuring.html#configuring-blank-lines>`_ for options.
+    |configuring_blank_lines_link|
 
     **Violation**
 

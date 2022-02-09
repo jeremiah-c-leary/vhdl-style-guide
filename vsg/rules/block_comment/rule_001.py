@@ -11,7 +11,7 @@ class rule_001(block_rule.Rule):
     '''
     This rule checks the block comment header is correct.
 
-    Refer to the section `Configuring Block Comments <configuring.html#configuring-block-comments>`_ for additional information.
+    |configuring_block_comments_link|
 
     **Violation**
 
@@ -52,11 +52,12 @@ class rule_001(block_rule.Rule):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
 
-            if isinstance(lTokens[0], parser.comment):
+            if not self.allow_indenting:
+                iWhitespace = 0
+            elif isinstance(lTokens[0], parser.comment):
                 iWhitespace = self.indentSize * lTokens[0].get_indent()
             else:
                 iWhitespace = self.indentSize * lTokens[1].get_indent()
-
 
             sHeader = '--'
 

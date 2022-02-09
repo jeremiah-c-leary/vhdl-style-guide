@@ -1,5 +1,5 @@
 
-from vsg.rules import align_tokens_in_region_between_tokens_unless_between_tokens
+from vsg.rules import align_tokens_in_region_between_tokens_unless_between_tokens as Rule
 
 from vsg import token
 
@@ -8,15 +8,18 @@ lAlign.append(token.file_declaration.colon)
 lAlign.append(token.signal_declaration.colon)
 lAlign.append(token.constant_declaration.colon)
 lAlign.append(token.variable_declaration.colon)
+lAlign.append(token.alias_declaration.colon)
+lAlign.append(token.alias_declaration.is_keyword)
 
 lUnless = []
 lUnless.append([token.subprogram_body.is_keyword, token.subprogram_body.begin_keyword])
 
 
-class rule_033(align_tokens_in_region_between_tokens_unless_between_tokens):
+class rule_033(Rule):
     '''
     This rule checks the colons are in the same column for all declarations in the process declarative part.
-    Refer to the section `Configuring Keyword Alignment Rules <configuring.html#configuring-keyword-alignment-rules>`_ for information on changing the configurations.
+
+    |configuring_keyword_alignment_rules_link|
 
     **Violation**
 
@@ -38,6 +41,6 @@ class rule_033(align_tokens_in_region_between_tokens_unless_between_tokens):
     '''
 
     def __init__(self):
-        align_tokens_in_region_between_tokens_unless_between_tokens.__init__(self, 'process', '033', lAlign, token.process_statement.process_keyword, token.process_statement.begin_keyword, lUnless)
+        Rule.__init__(self, 'process', '033', lAlign, token.process_statement.process_keyword, token.process_statement.begin_keyword, lUnless)
         self.solution = 'Align :\'s.'
         self.subphase = 2

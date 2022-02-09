@@ -1,6 +1,4 @@
 
-import sys
-
 from vsg import exceptions
 from vsg import parser
 
@@ -649,6 +647,21 @@ def fix_blank_lines(lTokens):
         try:
             if isinstance(lTokens[iToken - 1], parser.carriage_return) and isinstance(oToken, parser.whitespace) and isinstance(lTokens[iToken + 1], parser.carriage_return):
                 lReturn.append(parser.blank_line())
+                continue
+        except IndexError:
+            pass
+        lReturn.append(oToken)
+
+    return lReturn
+
+
+def fix_trailing_whitespace(lTokens):
+    lReturn = []
+    for iToken, oToken in enumerate(lTokens):
+        try:
+            if isinstance(oToken, parser.carriage_return) and isinstance(lTokens[iToken - 1], parser.whitespace):
+                lReturn.pop()
+                lReturn.append(oToken)
                 continue
         except IndexError:
             pass

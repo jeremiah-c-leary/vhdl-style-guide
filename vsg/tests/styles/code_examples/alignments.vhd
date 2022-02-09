@@ -27,3 +27,30 @@ package body my_pkg is
   end procedure some_proc;
 
 end package body my_pkg;
+
+architecture arch of ent is
+
+begin
+
+  proc_label : process is
+  begin
+
+    var1   := 1;
+    sig1   <= 2 &
+              3 &
+              4;
+    sig2   <= 5;
+    sig3   <= 6;
+
+  end process proc_label;
+
+  PROC2_LABEL : process is
+  begin
+
+    if rising_edge(some_clk) then
+       a <= b;
+    end if;
+
+  end process PROC_LABEL;
+
+end architecture arch;
