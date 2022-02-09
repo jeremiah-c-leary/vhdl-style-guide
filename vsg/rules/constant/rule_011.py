@@ -1,35 +1,18 @@
 
-from vsg import token
-
-from vsg.rules import token_case_subtype_indication
-
-lStartTokens = []
-lStartTokens.append(token.constant_declaration.colon)
-
-lEndTokens = []
-lEndTokens.append(token.constant_declaration.assignment_operator)
-lEndTokens.append(token.constant_declaration.semicolon)
+from vsg import deprecated_rule
 
 
-class rule_011(token_case_subtype_indication):
+class rule_011(deprecated_rule.Rule):
     '''
-    This rule checks the constant type has proper case.
-
-    |configuring_uppercase_and_lowercase_rules_link|
-
-    **Violation**
-
-    .. code-block:: vhdl
-
-       constant size : INTEGER := 1;
-
-    **Fix**
-
-    .. code-block:: vhdl
-
-       constant size : integer := 1;
+    The function of this rule has been superceeded by the following rules:
+    
+    * ieee_500
+    * subtype_002
+    * type_014
     '''
-
     def __init__(self):
-        token_case_subtype_indication.__init__(self, 'constant', '011', lStartTokens, lEndTokens)
-        self.groups.append('case::name')
+        deprecated_rule.Rule.__init__(self, 'constant', '011')
+        self.message.append('Rule ' + self.unique_id + ' has been superceeded by the following rules:')
+        self.message.append('  ieee_500')
+        self.message.append('  subtype_002')
+        self.message.append('  type_014')

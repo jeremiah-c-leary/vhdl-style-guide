@@ -169,23 +169,11 @@ Having a space makes it clearer where the assignment occurs on the line.
 constant_011
 ############
 
-|phase_6| |error| |case| |case_name|
+The function of this rule has been superceeded by the following rules:
 
-This rule checks the constant type has proper case.
-
-|configuring_uppercase_and_lowercase_rules_link|
-
-**Violation**
-
-.. code-block:: vhdl
-
-   constant size : INTEGER := 1;
-
-**Fix**
-
-.. code-block:: vhdl
-
-   constant size : integer := 1;
+* ieee_500
+* subtype_002
+* type_014
 
 constant_012
 ############

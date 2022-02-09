@@ -8,5 +8,3 @@ rule:
       case: 'lower'
   library_600:
     disable: True
-  constant_011:
-    disable: True
