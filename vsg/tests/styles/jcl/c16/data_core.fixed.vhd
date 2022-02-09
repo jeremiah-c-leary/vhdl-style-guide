@@ -140,8 +140,10 @@ begin
 
       when SA_43_I16 =>
         adr_x <= IMM;
+
       when SA_43_I8S =>
         adr_x <= b8(IMM(7)) & IMM(7 downto 0);
+
       when others =>
         adr_x <= b8(SA(3)) & b8(SA(3));
 
@@ -161,10 +163,13 @@ begin
 
       when SA_21_0 =>
         adr_z <= X"0000";
+
       when SA_21_LL =>
         adr_z <= ll;
+
       when SA_21_RR =>
         adr_z <= rr;
+
       when others =>
         adr_z <= sp;
 
@@ -193,10 +198,13 @@ begin
 
       when SX_LL =>
         xx <= ll;
+
       when SX_RR =>
         xx <= rr;
+
       when SX_SP =>
         xx <= sp;
+
       when others =>
         xx <= PC;
 
@@ -224,8 +232,10 @@ begin
 
           when SP_INC =>
             sp <= adr_yz;
+
           when SP_LOAD =>
             sp <= adr_xyz;
+
           when SP_NOP =>
             null;
 
