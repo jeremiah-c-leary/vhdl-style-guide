@@ -10,7 +10,5 @@ rule:
     case: 'upper'
   library_600:
     disable: True
-  signal_011:
-    disable: True
   constant_011:
     disable: True

@@ -1,41 +1,18 @@
 
-from vsg import token
-
-from vsg.rules import token_case_subtype_indication
-
-lStartTokens = []
-lStartTokens.append(token.signal_declaration.colon)
-
-lEndTokens = []
-lEndTokens.append(token.signal_declaration.assignment_operator)
-lEndTokens.append(token.signal_declaration.semicolon)
-lEndTokens.append(token.signal_kind.register_keyword)
-lEndTokens.append(token.signal_kind.bus_keyword)
+from vsg import deprecated_rule
 
 
-class rule_011(token_case_subtype_indication):
+class rule_011(deprecated_rule.Rule):
     '''
-    This rule checks the signal type has proper case.
-
-    |configuring_uppercase_and_lowercase_rules_link|
-
-    **Violation**
-
-    .. code-block:: vhdl
-
-       signal wr_en   : STD_LOGIC;
-       signal rd_en   : Std_logic;
-       signal cs_f    : t_User_Defined_Type;
-
-    **Fix**
-
-    .. code-block:: vhdl
-
-       signal wr_en   : std_logic;
-       signal rd_en   : std_logic;
-       signal cs_f    : t_user_defined_type;
+    The function of this rule has been superceeded by the following rules:
+    
+    * ieee_500
+    * subtype_002
+    * type_014
     '''
-
     def __init__(self):
-        token_case_subtype_indication.__init__(self, 'signal', '011', lStartTokens, lEndTokens)
-        self.groups.append('case::name')
+        deprecated_rule.Rule.__init__(self, 'signal', '011')
+        self.message.append('Rule ' + self.unique_id + ' has been superceeded by the following rules:')
+        self.message.append('  ieee_500')
+        self.message.append('  subtype_002')
+        self.message.append('  type_014')
