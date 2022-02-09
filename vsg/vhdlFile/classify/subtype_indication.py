@@ -4,6 +4,7 @@ from vsg import parser
 from vsg.vhdlFile import utils
 
 from vsg.token import direction
+from vsg.token.ieee.std_logic_1164 import types
 
 
 def classify(iToken, lObjects):
@@ -67,6 +68,23 @@ def classify_until(lUntils, iToken, lObjects, oType=parser.todo):
                 utils.assign_token(lObjects, iCurrent, direction.downto)
             elif sValue.lower() == 'to':
                 utils.assign_token(lObjects, iCurrent, direction.to)
+            elif sValue.lower() == 'std_logic_vector':
+                utils.assign_token(lObjects, iCurrent, types.std_logic_vector)
+            elif sValue.lower() == 'std_ulogic_vector':
+                utils.assign_token(lObjects, iCurrent, types.std_ulogic_vector)
+            elif sValue.lower() == 'std_ulogic':
+                utils.assign_token(lObjects, iCurrent, types.std_ulogic)
+            elif sValue.lower() == 'std_logic':
+                utils.assign_token(lObjects, iCurrent, types.std_logic)
+            elif sValue.lower() == 'integer':
+                utils.assign_token(lObjects, iCurrent, types.integer)
+            elif sValue.lower() == 'signed':
+                utils.assign_token(lObjects, iCurrent, types.signed)
+            elif sValue.lower() == 'unsigned':
+                utils.assign_token(lObjects, iCurrent, types.unsigned)
+            elif sValue.lower() == 'natural':
+                utils.assign_token(lObjects, iCurrent, types.natural)
+
             else:
                 utils.assign_token(lObjects, iCurrent, oType)
     return iCurrent

@@ -15,8 +15,8 @@ END ENTITY blah;
 
 ARCHITECTURE rtl OF blah IS
 
-  CONSTANT con_a : std_logic;
-  SIGNAL   sig_a : std_logic;
+  CONSTANT con_a : STD_LOGIC;
+  SIGNAL   sig_a : STD_LOGIC;
 
   COMPONENT comp_1 IS
     GENERIC (
@@ -33,7 +33,7 @@ BEGIN
 
   proc_label : PROCESS (Ab, Cd, Ef) IS
 
-    VARIABLE : var_a : Std_logic_vector(7 DOWNTO 0);
+    VARIABLE : var_a : STD_LOGIC_VECTOR(7 DOWNTO 0);
 
   BEGIN
 

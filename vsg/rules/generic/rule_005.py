@@ -1,20 +1,21 @@
 
+from vsg import parser
 from vsg import token
 
-from vsg.rules import single_space_between_token_pairs_bounded_by_tokens
+from vsg.rules import single_space_after_token as Rule
 
 lTokens = []
-lTokens.append([token.interface_constant_declaration.colon, token.interface_constant_declaration.subtype_indication])
-lTokens.append([token.interface_signal_declaration.colon, token.interface_signal_declaration.subtype_indication])
-lTokens.append([token.interface_variable_declaration.colon, token.interface_variable_declaration.subtype_indication])
-lTokens.append([token.interface_file_declaration.colon, token.interface_file_declaration.subtype_indication])
-lTokens.append([token.interface_unknown_declaration.colon, token.interface_unknown_declaration.subtype_indication])
+lTokens.append(token.interface_constant_declaration.colon)
+lTokens.append(token.interface_signal_declaration.colon)
+lTokens.append(token.interface_variable_declaration.colon)
+lTokens.append(token.interface_file_declaration.colon)
+lTokens.append(token.interface_unknown_declaration.colon)
 
-lStart = token.generic_clause.open_parenthesis
-lEnd = token.generic_clause.close_parenthesis
+oStart = token.generic_clause.open_parenthesis
+oEnd = token.generic_clause.close_parenthesis
 
 
-class rule_005(single_space_between_token_pairs_bounded_by_tokens):
+class rule_005(Rule):
     '''
     This rule checks for a single space after the colon in a generic declaration.
 
@@ -31,5 +32,10 @@ class rule_005(single_space_between_token_pairs_bounded_by_tokens):
        g_width : integer := 32;
     '''
     def __init__(self):
-        single_space_between_token_pairs_bounded_by_tokens.__init__(self, 'generic', '005', lTokens, lStart, lEnd)
+        Rule.__init__(self, 'generic', '005', lTokens)
         self.solution = 'Reduce number of spaces after the colon to 1.'
+
+    def _get_tokens_of_interest(self, oFile):
+        lToi = oFile.get_token_and_n_tokens_after_it_when_between_tokens(self.lTokens, 2, oStart, oEnd)
+        lToi = self.remove_toi_if_token_is_at_the_end_of_the_line(lToi)
+        return lToi
