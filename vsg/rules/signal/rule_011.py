@@ -5,7 +5,7 @@ from vsg import deprecated_rule
 class rule_011(deprecated_rule.Rule):
     '''
     The function of this rule has been superceeded by the following rules:
-    
+
     * ieee_500
     * subtype_002
     * type_014
