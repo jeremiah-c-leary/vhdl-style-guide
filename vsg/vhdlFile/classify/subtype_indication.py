@@ -3,9 +3,6 @@ from vsg import parser
 
 from vsg.vhdlFile import utils
 
-from vsg.token import direction
-from vsg.token.ieee.std_logic_1164 import types
-
 
 def classify(iToken, lObjects):
     '''
@@ -49,42 +46,5 @@ def classify_until(lUntils, iToken, lObjects, oType=parser.todo):
             else:
                 break
         else:
-            sValue = lObjects[iCurrent].get_value()
-            if sValue == ')':
-                utils.assign_token(lObjects, iCurrent, parser.close_parenthesis)
-            elif sValue == '(':
-                utils.assign_token(lObjects, iCurrent, parser.open_parenthesis)
-            elif sValue == '-':
-                utils.assign_token(lObjects, iCurrent, parser.todo)
-            elif sValue == '+':
-                utils.assign_token(lObjects, iCurrent, parser.todo)
-            elif sValue == '*':
-                utils.assign_token(lObjects, iCurrent, parser.todo)
-            elif sValue == '**':
-                utils.assign_token(lObjects, iCurrent, parser.todo)
-            elif sValue == '/':
-                utils.assign_token(lObjects, iCurrent, parser.todo)
-            elif sValue.lower() == 'downto':
-                utils.assign_token(lObjects, iCurrent, direction.downto)
-            elif sValue.lower() == 'to':
-                utils.assign_token(lObjects, iCurrent, direction.to)
-            elif sValue.lower() == 'std_logic_vector':
-                utils.assign_token(lObjects, iCurrent, types.std_logic_vector)
-            elif sValue.lower() == 'std_ulogic_vector':
-                utils.assign_token(lObjects, iCurrent, types.std_ulogic_vector)
-            elif sValue.lower() == 'std_ulogic':
-                utils.assign_token(lObjects, iCurrent, types.std_ulogic)
-            elif sValue.lower() == 'std_logic':
-                utils.assign_token(lObjects, iCurrent, types.std_logic)
-            elif sValue.lower() == 'integer':
-                utils.assign_token(lObjects, iCurrent, types.integer)
-            elif sValue.lower() == 'signed':
-                utils.assign_token(lObjects, iCurrent, types.signed)
-            elif sValue.lower() == 'unsigned':
-                utils.assign_token(lObjects, iCurrent, types.unsigned)
-            elif sValue.lower() == 'natural':
-                utils.assign_token(lObjects, iCurrent, types.natural)
-
-            else:
-                utils.assign_token(lObjects, iCurrent, oType)
+            utils.assign_special_tokens(lObjects, iCurrent, oType)
     return iCurrent

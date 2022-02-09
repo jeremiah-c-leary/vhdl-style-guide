@@ -84,5 +84,3 @@ def create_violation(oToi, sAdjust):
     oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
     oViolation.set_action(sAdjust)
     return oViolation
-
-
