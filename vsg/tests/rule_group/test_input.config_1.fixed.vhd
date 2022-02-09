@@ -33,7 +33,7 @@ BEGIN
 
   proc_label : PROCESS (Ab, Cd, Ef) IS
 
-    VARIABLE : var_a : STD_LOGIC_VECTOR(7 DOWNTO 0);
+    VARIABLE : Var_a : STD_LOGIC_VECTOR(7 DOWNTO 0);
 
   BEGIN
 

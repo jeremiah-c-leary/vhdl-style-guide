@@ -33,7 +33,7 @@ begin
 
   PROC_LABEL : process (Ab, Cd, Ef) is
 
-    variable : VAR_A : std_logic_vector(7 downto 0);
+    variable : Var_a : std_logic_vector(7 downto 0);
 
   begin
 

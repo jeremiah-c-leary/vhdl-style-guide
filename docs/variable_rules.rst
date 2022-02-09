@@ -148,23 +148,11 @@ This rule checks for default assignments in variable declarations.
 variable_010
 ############
 
-|phase_6| |error| |case| |case_name|
+The function of this rule has been superceeded by the following rules:
 
-This rule checks the variable type has proper case.
-
-|configuring_uppercase_and_lowercase_rules_link|
-
-**Violation**
-
-.. code-block:: vhdl
-
-   variable count : INTEGER;
-
-**Fix**
-
-.. code-block:: vhdl
-
-   variable count : integer;
+* ieee_500
+* subtype_002
+* type_014
 
 variable_011
 ############
