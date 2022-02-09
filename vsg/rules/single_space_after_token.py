@@ -29,7 +29,7 @@ class single_space_after_token(whitespace.Rule):
 
     def _get_tokens_of_interest(self, oFile):
         lToi = oFile.get_token_and_n_tokens_after_it(self.lTokens, 2)
-        lToi = self.remove_toi_if_token_is_at_the_end_of_the_line(lToi)
+        lToi = utils.remove_toi_if_token_is_at_the_end_of_the_line(lToi)
         return lToi
 
     def _analyze(self, lToi):
@@ -50,15 +50,6 @@ class single_space_after_token(whitespace.Rule):
         elif sAction == 'adjust':
             lTokens[1].set_value(' ')
         oViolation.set_tokens(lTokens)
-
-    def remove_toi_if_token_is_at_the_end_of_the_line(self, lToi):
-        lReturn = []
-        for oToi in lToi:
-            lTokens = oToi.get_tokens()
-            if utils.left_most_token_is_at_the_end_of_a_line(lTokens):
-                continue
-            lReturn.append(oToi)
-        return lReturn
 
 
 def whitespace_exists_after_token(lTokens):

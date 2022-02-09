@@ -2,6 +2,7 @@
 from vsg import token
 
 from vsg.rules import single_space_after_token as Rule
+from vsg.rules import utils
 
 lTokens = []
 lTokens.append(token.interface_constant_declaration.colon)
@@ -36,5 +37,5 @@ class rule_005(Rule):
 
     def _get_tokens_of_interest(self, oFile):
         lToi = oFile.get_token_and_n_tokens_after_it_when_between_tokens(self.lTokens, 2, oStart, oEnd)
-        lToi = self.remove_toi_if_token_is_at_the_end_of_the_line(lToi)
+        lToi = utils.remove_toi_if_token_is_at_the_end_of_the_line(lToi)
         return lToi
