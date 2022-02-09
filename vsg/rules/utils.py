@@ -215,6 +215,18 @@ def token_list_is_the_beginning_of_a_line(lTokens):
     return False
 
 
+def left_most_token_is_at_the_end_of_a_line(lTokens):
+    if isinstance(lTokens[1], parser.carriage_return):
+        return True
+    if isinstance(lTokens[1], parser.comment):
+        return True
+    if isinstance(lTokens[2], parser.carriage_return):
+        return True
+    if isinstance(lTokens[2], parser.comment):
+        return True
+    return False
+
+
 def whitespace_is_larger_than_a_single_character(lTokens):
     if lTokens[1].get_value() != ' ':
         return True
