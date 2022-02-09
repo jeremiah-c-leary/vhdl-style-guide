@@ -6,8 +6,6 @@ rule:
       case: 'lower'
     case::name:
       case: 'upper'
-  signal_010:
-    disable: True    
   library_600:
     disable: True
   signal_011:

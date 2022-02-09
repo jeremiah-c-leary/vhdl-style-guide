@@ -6,8 +6,6 @@ rule:
       case: 'lower'
     case::name:
       case: 'upper'
-  signal_010:
-    disable: True    
   architecture_004:
     case: 'upper'
   library_600:
