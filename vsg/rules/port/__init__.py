@@ -33,3 +33,4 @@ from .rule_602 import rule_602
 
 
 from .rule_605 import rule_605
+from .rule_606 import rule_606
