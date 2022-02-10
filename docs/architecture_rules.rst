@@ -522,7 +522,7 @@ This rule allows the user to restrict what can be used for an architecture name.
 
       rule :
         architecture_025 :
-          disabled : False
+          disable : False
           names :
             - rtl
             - empty
