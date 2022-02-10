@@ -28,3 +28,4 @@ from .rule_026 import rule_026
 from .rule_027 import rule_027
 
 from .rule_600 import rule_600
+from .rule_601 import rule_601

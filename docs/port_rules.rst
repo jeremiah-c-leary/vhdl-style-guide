@@ -749,3 +749,33 @@ The default prefix is: *i\_*.
      i_rd_en    : in    std_logic
    );
 
+port_601
+########
+
+|phase_7| |disabled| |error| |naming|
+
+This rule checks for valid prefixes on port identifiers for output ports.
+
+The default prefix is: *o\_*.
+
+|configuring_prefix_and_suffix_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   port (
+     wr_en    : out    std_logic;
+     rd_en    : out    std_logic
+   );
+
+
+**Fix**
+
+.. code-block:: vhdl
+
+   port (
+     o_wr_en    : out    std_logic;
+     o_rd_en    : out    std_logic
+   );
+
