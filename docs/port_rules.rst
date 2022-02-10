@@ -868,3 +868,32 @@ The default suffix is: *_o*.
      rd_en_o    : out    std_logic
    );
 
+port_607
+########
+
+|phase_7| |disabled| |error| |naming|
+
+This rule checks for valid suffixes on port identifiers for inout ports.
+
+The default suffix is: *_io*.
+
+|configuring_prefix_and_suffix_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   port (
+     wr_en    : inout    std_logic;
+     rd_en    : inout    std_logic
+   );
+
+**Fix**
+
+.. code-block:: vhdl
+
+   port (
+     wr_en_io    : inout    std_logic;
+     rd_en_io    : inout    std_logic
+   );
+
