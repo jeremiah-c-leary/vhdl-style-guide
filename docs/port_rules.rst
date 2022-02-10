@@ -719,3 +719,33 @@ This rule checks the semicolon is not on it's own line.
        I_WIDTH : in integer
      );
 
+port_600
+########
+
+|phase_7| |disabled| |error| |naming|
+
+This rule checks for valid prefixes on port identifiers for input ports.
+
+The default prefix is: *i\_*.
+
+|configuring_prefix_and_suffix_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   port (
+     wr_en    : in    std_logic;
+     rd_en    : in    std_logic
+   );
+
+
+**Fix**
+
+.. code-block:: vhdl
+
+   port (
+     i_wr_en    : in    std_logic;
+     i_rd_en    : in    std_logic
+   );
+
