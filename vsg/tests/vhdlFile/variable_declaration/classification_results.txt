@@ -15,7 +15,7 @@
 <class 'vsg.token.variable_declaration.variable_keyword'>
 <class 'vsg.token.variable_declaration.identifier'>
 <class 'vsg.token.variable_declaration.colon'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.ieee.std_logic_1164.types.integer'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.direction.to'>

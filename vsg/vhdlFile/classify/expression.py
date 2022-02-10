@@ -17,8 +17,9 @@ def classify(iToken, lObjects):
 
 def classify_until(lUntils, iToken, lObjects, oType=parser.todo):
     '''
-    subtype_indication ::=
-        [ resolution_indication ] type_mark [ constraint ]
+    expression ::=
+        condition_operator primary
+      | logical_expression
     '''
     iCurrent = iToken
     iStop = len(lObjects) - 1
@@ -48,27 +49,7 @@ def classify_until(lUntils, iToken, lObjects, oType=parser.todo):
             else:
                 break
         else:
-            sValue = lObjects[iCurrent].get_value()
-            if sValue == ')':
-                utils.assign_token(lObjects, iCurrent, parser.close_parenthesis)
-            elif sValue == '(':
-                utils.assign_token(lObjects, iCurrent, parser.open_parenthesis)
-            elif sValue == '-':
-                utils.assign_token(lObjects, iCurrent, parser.todo)
-            elif sValue == '+':
-                utils.assign_token(lObjects, iCurrent, parser.todo)
-            elif sValue == '*':
-                utils.assign_token(lObjects, iCurrent, parser.todo)
-            elif sValue == '**':
-                utils.assign_token(lObjects, iCurrent, parser.todo)
-            elif sValue == '/':
-                utils.assign_token(lObjects, iCurrent, parser.todo)
-            elif sValue.lower() == 'downto':
-                utils.assign_token(lObjects, iCurrent, direction.downto)
-            elif sValue.lower() == 'to':
-                utils.assign_token(lObjects, iCurrent, direction.to)
-            else:
-                utils.assign_token(lObjects, iCurrent, oType)
+            utils.assign_special_tokens(lObjects, iCurrent, oType)
     return iCurrent
 
 

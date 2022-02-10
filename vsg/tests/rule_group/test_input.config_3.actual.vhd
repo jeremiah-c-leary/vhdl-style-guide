@@ -15,8 +15,8 @@ end entity BLAH;
 
 ARCHITECTURE RTL of BLAH is
 
-  constant CON_A : STD_LOGIC;
-  signal   SIG_A : STD_LOGIC;
+  constant CON_A : std_logic;
+  signal   SIG_A : std_logic;
 
   component COMP_1 is
     generic (
@@ -33,7 +33,7 @@ begin
 
   proc_label : process (Ab, Cd, Ef) is
 
-    variable : VAR_A : Std_logic_vector(7 downto 0);
+    variable : Var_a : std_logic_vector(7 downto 0);
 
   begin
 

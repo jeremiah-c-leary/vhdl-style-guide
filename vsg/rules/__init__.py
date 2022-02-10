@@ -105,6 +105,7 @@ from vsg.rules import function
 from vsg.rules import generate
 from vsg.rules import generic
 from vsg.rules import generic_map
+from vsg.rules import ieee
 from vsg.rules import if_statement
 from vsg.rules import instantiation
 from vsg.rules import iteration_scheme

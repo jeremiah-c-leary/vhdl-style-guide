@@ -21,7 +21,7 @@
 <class 'vsg.token.subtype_declaration.subtype_keyword'>
 <class 'vsg.token.subtype_declaration.identifier'>
 <class 'vsg.token.subtype_declaration.is_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.ieee.std_logic_1164.types.integer'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.direction.to'>
@@ -63,7 +63,7 @@
 <class 'vsg.token.subtype_declaration.subtype_keyword'>
 <class 'vsg.token.subtype_declaration.identifier'>
 <class 'vsg.token.subtype_declaration.is_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.character_literal'>
 <class 'vsg.token.direction.to'>

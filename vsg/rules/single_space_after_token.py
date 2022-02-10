@@ -29,7 +29,7 @@ class single_space_after_token(whitespace.Rule):
 
     def _get_tokens_of_interest(self, oFile):
         lToi = oFile.get_token_and_n_tokens_after_it(self.lTokens, 2)
-        lToi = remove_toi_if_token_is_at_the_end_of_the_line(lToi)
+        lToi = utils.remove_toi_if_token_is_at_the_end_of_the_line(lToi)
         return lToi
 
     def _analyze(self, lToi):
@@ -64,25 +64,3 @@ def create_violation(oToi, sAdjust):
     oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
     oViolation.set_action(sAdjust)
     return oViolation
-
-
-def remove_toi_if_token_is_at_the_end_of_the_line(lToi):
-    lReturn = []
-    for oToi in lToi:
-        lTokens = oToi.get_tokens()
-        if comment_or_carriage_return_found(lTokens):
-            continue
-        lReturn.append(oToi)
-    return lReturn
-
-
-def comment_or_carriage_return_found(lTokens):
-    if isinstance(lTokens[1], parser.carriage_return):
-        return True
-    if isinstance(lTokens[1], parser.comment):
-        return True
-    if isinstance(lTokens[2], parser.carriage_return):
-        return True
-    if isinstance(lTokens[2], parser.comment):
-        return True
-    return False
