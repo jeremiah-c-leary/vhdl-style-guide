@@ -41,11 +41,11 @@ class rule_601(Rule):
     def _get_tokens_of_interest(self, oFile):
         lReturn = []
         lToi = oFile.get_interface_elements_between_tokens(token.port_clause.open_parenthesis, token.port_clause.close_parenthesis)
-        lReturn = extract_identifiers_with_mode_of_inout(lToi)
+        lReturn = extract_identifiers_with_mode_of_out(lToi)
         return lReturn
 
 
-def extract_identifiers_with_mode_of_inout(lToi):
+def extract_identifiers_with_mode_of_out(lToi):
     lReturn = []
     for oToi in lToi:
         if interface_element_mode_is_output(oToi):
