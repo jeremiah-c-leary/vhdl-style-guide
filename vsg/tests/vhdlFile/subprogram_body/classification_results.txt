@@ -24,7 +24,7 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
-<class 'vsg.token.interface_signal_declaration.subtype_indication'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic_vector'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 6 |     signal Y : out std_logic) is
@@ -32,7 +32,7 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.out_keyword'>
-<class 'vsg.token.interface_signal_declaration.subtype_indication'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
 <class 'vsg.token.procedure_specification.close_parenthesis'>
 <class 'vsg.token.subprogram_body.is_keyword'>
 --------------------------------------------------------------------------------
@@ -58,7 +58,7 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
-<class 'vsg.token.interface_signal_declaration.subtype_indication'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic_vector'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 12 |     signal Y : out std_logic) is
@@ -66,7 +66,7 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.out_keyword'>
-<class 'vsg.token.interface_signal_declaration.subtype_indication'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
 <class 'vsg.token.procedure_specification.close_parenthesis'>
 <class 'vsg.token.subprogram_body.is_keyword'>
 --------------------------------------------------------------------------------
@@ -91,7 +91,7 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
-<class 'vsg.token.interface_signal_declaration.subtype_indication'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic_vector'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 18 |     signal Y : out std_logic) is
@@ -99,7 +99,7 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.out_keyword'>
-<class 'vsg.token.interface_signal_declaration.subtype_indication'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
 <class 'vsg.token.procedure_specification.close_parenthesis'>
 <class 'vsg.token.subprogram_body.is_keyword'>
 --------------------------------------------------------------------------------
@@ -124,7 +124,7 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
-<class 'vsg.token.interface_signal_declaration.subtype_indication'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic_vector'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 24 |     signal Y : out std_logic) is
@@ -132,7 +132,7 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.out_keyword'>
-<class 'vsg.token.interface_signal_declaration.subtype_indication'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
 <class 'vsg.token.procedure_specification.close_parenthesis'>
 <class 'vsg.token.subprogram_body.is_keyword'>
 --------------------------------------------------------------------------------
@@ -171,7 +171,7 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
-<class 'vsg.token.interface_signal_declaration.subtype_indication'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic_vector'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 34 |     signal Y : out std_logic) return integer is
@@ -179,7 +179,7 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.out_keyword'>
-<class 'vsg.token.interface_signal_declaration.subtype_indication'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
 <class 'vsg.token.function_specification.close_parenthesis'>
 <class 'vsg.token.function_specification.return_keyword'>
 <class 'vsg.token.type_mark.name'>
@@ -207,7 +207,7 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
-<class 'vsg.token.interface_signal_declaration.subtype_indication'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic_vector'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 40 |     signal Y : out std_logic) return string is
@@ -215,7 +215,7 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.out_keyword'>
-<class 'vsg.token.interface_signal_declaration.subtype_indication'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
 <class 'vsg.token.function_specification.close_parenthesis'>
 <class 'vsg.token.function_specification.return_keyword'>
 <class 'vsg.token.type_mark.name'>
@@ -242,7 +242,7 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
-<class 'vsg.token.interface_signal_declaration.subtype_indication'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic_vector'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 46 |     signal Y : out std_logic) return natural is
@@ -250,7 +250,7 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.out_keyword'>
-<class 'vsg.token.interface_signal_declaration.subtype_indication'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
 <class 'vsg.token.function_specification.close_parenthesis'>
 <class 'vsg.token.function_specification.return_keyword'>
 <class 'vsg.token.type_mark.name'>
@@ -277,7 +277,7 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
-<class 'vsg.token.interface_signal_declaration.subtype_indication'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic_vector'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 52 |     signal Y : out std_logic) return positive is
@@ -285,7 +285,7 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.out_keyword'>
-<class 'vsg.token.interface_signal_declaration.subtype_indication'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
 <class 'vsg.token.function_specification.close_parenthesis'>
 <class 'vsg.token.function_specification.return_keyword'>
 <class 'vsg.token.type_mark.name'>

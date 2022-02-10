@@ -160,6 +160,12 @@ def token_is_carriage_return(oToken):
     return False
 
 
+def token_is_comment(oToken):
+    if isinstance(oToken, parser.comment):
+        return True
+    return False
+
+
 def token_is_blank_line(oToken):
     if isinstance(oToken, parser.blank_line):
         return True
@@ -215,7 +221,24 @@ def token_list_is_the_beginning_of_a_line(lTokens):
     return False
 
 
+def left_most_token_is_at_the_end_of_a_line(lTokens):
+    for oToken in lTokens[1:3]:
+        if token_is_carriage_return(oToken) or token_is_comment(oToken):
+            return True
+    return False
+
+
 def whitespace_is_larger_than_a_single_character(lTokens):
     if lTokens[1].get_value() != ' ':
         return True
     return False
+
+
+def remove_toi_if_token_is_at_the_end_of_the_line(lToi):
+    lReturn = []
+    for oToi in lToi:
+        lTokens = oToi.get_tokens()
+        if left_most_token_is_at_the_end_of_a_line(lTokens):
+            continue
+        lReturn.append(oToi)
+    return lReturn

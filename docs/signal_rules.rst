@@ -174,54 +174,16 @@ Default signal prefix is *s\_*.
 signal_010
 ##########
 
-|phase_6| |error| |case| |case_keyword|
-
-This rule checks the signal type has proper case if it is a VHDL keyword.
-
-.. NOTE:: This rule is disabled by default.
-
-|configuring_uppercase_and_lowercase_rules_link|
-
-**Violation**
-
-.. code-block:: vhdl
-
-   signal wr_en   : STD_LOGIC;
-   signal rd_en   : Std_logic;
-   signal cs_f    : t_User_Defined_Type;
-
-**Fix**
-
-.. code-block:: vhdl
-
-   signal wr_en   : std_logic;
-   signal rd_en   : std_logic;
-   signal cs_f    : t_User_Defined_Type;
+The function of this rule has been moved to rule ieee_500.
 
 signal_011
 ##########
 
-|phase_6| |error| |case| |case_name|
+The function of this rule has been superceeded by the following rules:
 
-This rule checks the signal type has proper case.
-
-|configuring_uppercase_and_lowercase_rules_link|
-
-**Violation**
-
-.. code-block:: vhdl
-
-   signal wr_en   : STD_LOGIC;
-   signal rd_en   : Std_logic;
-   signal cs_f    : t_User_Defined_Type;
-
-**Fix**
-
-.. code-block:: vhdl
-
-   signal wr_en   : std_logic;
-   signal rd_en   : std_logic;
-   signal cs_f    : t_user_defined_type;
+* ieee_500
+* subtype_002
+* type_014
 
 signal_012
 ##########

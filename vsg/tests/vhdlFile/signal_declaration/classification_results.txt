@@ -18,7 +18,7 @@
 <class 'vsg.token.signal_declaration.signal_keyword'>
 <class 'vsg.token.signal_declaration.identifier'>
 <class 'vsg.token.signal_declaration.colon'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
 <class 'vsg.token.signal_declaration.semicolon'>
 --------------------------------------------------------------------------------
 5 |
@@ -64,7 +64,7 @@
 <class 'vsg.token.identifier_list.comma'>
 <class 'vsg.token.signal_declaration.identifier'>
 <class 'vsg.token.signal_declaration.colon'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
 <class 'vsg.token.signal_declaration.assignment_operator'>
 <class 'vsg.parser.character_literal'>
 <class 'vsg.token.signal_declaration.semicolon'>

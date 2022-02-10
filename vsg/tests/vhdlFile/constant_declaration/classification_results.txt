@@ -44,7 +44,7 @@
 <class 'vsg.token.identifier_list.comma'>
 <class 'vsg.token.constant_declaration.identifier'>
 <class 'vsg.token.constant_declaration.colon'>
-<class 'vsg.token.constant_declaration.subtype_indication'>
+<class 'vsg.token.ieee.std_logic_1164.types.integer'>
 <class 'vsg.token.constant_declaration.assignment_operator'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.constant_declaration.semicolon'>
@@ -111,7 +111,7 @@
 <class 'vsg.token.constant_declaration.constant_keyword'>
 <class 'vsg.token.constant_declaration.identifier'>
 <class 'vsg.token.constant_declaration.colon'>
-<class 'vsg.token.constant_declaration.subtype_indication'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic_vector'>
 <class 'vsg.parser.open_parenthesis'>
 <class 'vsg.token.constant_declaration.subtype_indication'>
 <class 'vsg.token.direction.downto'>

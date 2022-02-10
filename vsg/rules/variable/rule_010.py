@@ -1,34 +1,18 @@
 
-from vsg.rules import token_case_n_token_after_tokens
-
-from vsg import token
-
-lTokens = []
-lTokens.append(token.variable_declaration.colon)
+from vsg import deprecated_rule
 
 
-class rule_010(token_case_n_token_after_tokens):
+class rule_010(deprecated_rule.Rule):
     '''
-    This rule checks the variable type has proper case.
+    The function of this rule has been superceeded by the following rules:
 
-    |configuring_uppercase_and_lowercase_rules_link|
-
-    **Violation**
-
-    .. code-block:: vhdl
-
-       variable count : INTEGER;
-
-    **Fix**
-
-    .. code-block:: vhdl
-
-       variable count : integer;
+    * ieee_500
+    * subtype_002
+    * type_014
     '''
-
     def __init__(self):
-        token_case_n_token_after_tokens.__init__(self, 'variable', '010', 1, lTokens)
-        self.disabled = True
-        self.configuration.append('prefix_exceptions')
-        self.configuration.append('suffix_exceptions')
-        self.groups.append('case::name')
+        deprecated_rule.Rule.__init__(self, 'variable', '010')
+        self.message.append('Rule ' + self.unique_id + ' has been superceeded by the following rules:')
+        self.message.append('  ieee_500')
+        self.message.append('  subtype_002')
+        self.message.append('  type_014')

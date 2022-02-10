@@ -2,6 +2,9 @@
 from vsg import exceptions
 from vsg import parser
 
+from vsg.token import direction
+from vsg.token.ieee.std_logic_1164 import types
+
 
 def assign_tokens_until(sToken, token, iToken, lObjects):
     iCurrent = iToken
@@ -745,3 +748,43 @@ def assignment_operator_found(iToken, lObjects):
             return False
         return True
     return False
+
+
+def assign_special_tokens(lObjects, iCurrent, oType):
+    sValue = lObjects[iCurrent].get_value()
+    if sValue == ')':
+        assign_token(lObjects, iCurrent, parser.close_parenthesis)
+    elif sValue == '(':
+        assign_token(lObjects, iCurrent, parser.open_parenthesis)
+    elif sValue == '-':
+        assign_token(lObjects, iCurrent, parser.todo)
+    elif sValue == '+':
+        assign_token(lObjects, iCurrent, parser.todo)
+    elif sValue == '*':
+        assign_token(lObjects, iCurrent, parser.todo)
+    elif sValue == '**':
+        assign_token(lObjects, iCurrent, parser.todo)
+    elif sValue == '/':
+        assign_token(lObjects, iCurrent, parser.todo)
+    elif sValue.lower() == 'downto':
+        assign_token(lObjects, iCurrent, direction.downto)
+    elif sValue.lower() == 'to':
+        assign_token(lObjects, iCurrent, direction.to)
+    elif sValue.lower() == 'std_logic_vector':
+        assign_token(lObjects, iCurrent, types.std_logic_vector)
+    elif sValue.lower() == 'std_ulogic_vector':
+        assign_token(lObjects, iCurrent, types.std_ulogic_vector)
+    elif sValue.lower() == 'std_ulogic':
+        assign_token(lObjects, iCurrent, types.std_ulogic)
+    elif sValue.lower() == 'std_logic':
+        assign_token(lObjects, iCurrent, types.std_logic)
+    elif sValue.lower() == 'integer':
+        assign_token(lObjects, iCurrent, types.integer)
+    elif sValue.lower() == 'signed':
+        assign_token(lObjects, iCurrent, types.signed)
+    elif sValue.lower() == 'unsigned':
+        assign_token(lObjects, iCurrent, types.unsigned)
+    elif sValue.lower() == 'natural':
+        assign_token(lObjects, iCurrent, types.natural)
+    else:
+        assign_token(lObjects, iCurrent, oType)
