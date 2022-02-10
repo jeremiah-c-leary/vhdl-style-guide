@@ -809,6 +809,36 @@ The default prefix is: *io\_*.
      io_rd_en    : inout    std_logic
    );
 
+port_603
+########
+
+|phase_7| |disabled| |error| |naming|
+
+This rule checks for valid prefixes on port identifiers for buffer ports.
+
+The default prefix is: *b\_*.
+
+|configuring_prefix_and_suffix_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   port (
+     wr_en    : buffer    std_logic;
+     rd_en    : buffer    std_logic
+   );
+
+
+**Fix**
+
+.. code-block:: vhdl
+
+   port (
+     b_wr_en    : buffer    std_logic;
+     b_rd_en    : buffer    std_logic
+   );
+
 port_605
 ########
 

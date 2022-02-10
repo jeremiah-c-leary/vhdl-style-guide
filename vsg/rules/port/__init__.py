@@ -30,7 +30,7 @@ from .rule_027 import rule_027
 from .rule_600 import rule_600
 from .rule_601 import rule_601
 from .rule_602 import rule_602
-
+from .rule_603 import rule_603
 
 from .rule_605 import rule_605
 from .rule_606 import rule_606
