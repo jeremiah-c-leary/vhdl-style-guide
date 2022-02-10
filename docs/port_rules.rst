@@ -809,3 +809,33 @@ The default prefix is: *io\_*.
      io_rd_en    : inout    std_logic
    );
 
+port_605
+########
+
+|phase_7| |disabled| |error| |naming|
+
+This rule checks for valid suffixes on port identifiers for input ports.
+
+The default suffix is: *_i*.
+
+|configuring_prefix_and_suffix_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   port (
+     wr_en    : in    std_logic;
+     rd_en    : in    std_logic
+   );
+
+
+**Fix**
+
+.. code-block:: vhdl
+
+   port (
+     wr_en_i    : in    std_logic;
+     rd_en_i    : in    std_logic
+   );
+
