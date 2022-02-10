@@ -779,3 +779,33 @@ The default prefix is: *o\_*.
      o_rd_en    : out    std_logic
    );
 
+port_602
+########
+
+|phase_7| |disabled| |error| |naming|
+
+This rule checks for valid prefixes on port identifiers for inout ports.
+
+The default prefix is: *io\_*.
+
+|configuring_prefix_and_suffix_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   port (
+     wr_en    : inout    std_logic;
+     rd_en    : inout    std_logic
+   );
+
+
+**Fix**
+
+.. code-block:: vhdl
+
+   port (
+     io_wr_en    : inout    std_logic;
+     io_rd_en    : inout    std_logic
+   );
+
