@@ -19,7 +19,7 @@ class rule_025(is_token_value_one_of):
 
           rule :
             architecture_025 :
-              disabled : False
+              disable : False
               names :
                 - rtl
                 - empty
