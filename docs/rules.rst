@@ -33,6 +33,7 @@ The rules are divided into catagories depending on the part of the VHDL code bei
    generic_map_rules.rst
    ieee_rules.rst
    if_rules.rst
+   if_generate_statement_rules.rst
    instantiation_rules.rst
    iteration_scheme_rules.rst
    length_rules.rst
