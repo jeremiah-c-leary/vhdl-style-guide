@@ -17,7 +17,7 @@ def get_consecutive_lines_starting_with_token(search_token, min_num_lines, lAllT
         iStartToken = oTokenMap.get_index_of_line(iStartLine)
         iEndToken = oTokenMap.get_index_of_carriage_return_after_index(oTokenMap.get_index_of_line(iEndLine))
         lTemp = lAllTokens[iStartToken:iEndToken]
-        
+
         lReturn.append(tokens.New(iStartToken, iStartLine, lTemp))
 
     return lReturn
