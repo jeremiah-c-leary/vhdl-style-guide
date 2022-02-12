@@ -27,6 +27,14 @@ class Rule(structure.Rule):
         '''
         self.analyze(oFile)
 
+    def set_token_indent(self, oToken):
+        if self.allow_indenting:
+            oToken.is_block_comment = False
+        else:
+            oToken.set_indent(0)
+            oToken.is_block_comment = True
+            oToken.block_comment_indent = 0
+
 
 def is_header(sComment):
     if bare_comment(sComment):

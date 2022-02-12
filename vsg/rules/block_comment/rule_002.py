@@ -56,12 +56,7 @@ class rule_002(block_rule.Rule):
                         if not block_rule.is_header(oToken.get_value()):
                             break
                     elif iComment > 1 and iComment < iComments:
-                        if self.allow_indenting:
-                            oToken.is_block_comment = False
-                        else:
-                            oToken.set_indent(0)
-                            oToken.is_block_comment = True
-                            oToken.block_comment_indent = 0
+                        self.set_token_indent(oToken)
 
                         if self.comment_left is None:
                             continue
