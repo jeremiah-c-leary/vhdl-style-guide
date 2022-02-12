@@ -36,27 +36,17 @@ class rule_002(block_rule.Rule):
         self.comment_left = None
         self.configuration.append('comment_left')
 
-    def _analyze(self, lToi):
-
-        for oToi in lToi:
-
-            if not block_rule.first_comment_is_a_header(oToi):
-                continue
-
-            analyze_comments(self, oToi)
-
-
-def analyze_comments(self, oToi):
-    iLine, lTokens = utils.get_toi_parameters(oToi)
-    iComments = utils.count_token_types_in_list_of_tokens(parser.comment, lTokens)
-    iComment = 0
-
-    for iToken, oToken in enumerate(lTokens):
-        iLine = utils.increment_line_number(iLine, oToken)
-        iComment = utils.increment_comment_counter(iComment, oToken)
-
-        if middle_comment(iComment, iComments, oToken):
-            analyze_comment(self, oToken, oToi, iLine)
+    def analyze_comments(self, oToi):
+        iLine, lTokens = utils.get_toi_parameters(oToi)
+        iComments = utils.count_token_types_in_list_of_tokens(parser.comment, lTokens)
+        iComment = 0
+    
+        for iToken, oToken in enumerate(lTokens):
+            iLine = utils.increment_line_number(iLine, oToken)
+            iComment = utils.increment_comment_counter(iComment, oToken)
+    
+            if middle_comment(iComment, iComments, oToken):
+                analyze_middle_comment(self, oToken, oToi, iLine)
 
 
 def middle_comment(iComment, iComments, oToken):
@@ -66,7 +56,7 @@ def middle_comment(iComment, iComments, oToken):
     return False
 
 
-def analyze_comment(self, oToken, oToi, iLine):
+def analyze_middle_comment(self, oToken, oToi, iLine):
 
     self.set_token_indent(oToken)
 

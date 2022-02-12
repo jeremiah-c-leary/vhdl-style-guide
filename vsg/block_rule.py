@@ -21,6 +21,15 @@ class Rule(structure.Rule):
     def _get_tokens_of_interest(self, oFile):
         return oFile.get_consecutive_lines_starting_with_token(parser.comment, self.min_height)
 
+    def _analyze(self, lToi):
+
+        for oToi in lToi:
+
+            if not first_comment_is_a_header(oToi):
+                continue
+
+            self.analyze_comments(oToi)
+
     def fix(self, oFile, dFixOnly=None):
         '''
         Applies fixes for any rule violations.
@@ -61,7 +70,6 @@ class Rule(structure.Rule):
         elif self.footer_alignment == 'left':
             sFooter += self.footer_left_repeat
             sFooter += self.footer_string
-            iLength = self.max_footer_column - iWhitespace - len(sFooter)
             sFooter += self.footer_right_repeat * (self.max_footer_column - len(sFooter))
         elif self.footer_alignment == 'right':
             iLength = self.max_footer_column - iWhitespace - len(sFooter) - len(self.footer_string) - 1

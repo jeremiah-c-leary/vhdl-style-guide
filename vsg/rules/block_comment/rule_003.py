@@ -44,28 +44,18 @@ class rule_003(block_rule.Rule):
         self.max_footer_column = 120
         self.configuration.extend(['footer_left', 'footer_left_repeat', 'footer_string', 'footer_right_repeat', 'footer_alignment', 'max_footer_column'])
 
-    def _analyze(self, lToi):
-
-        for oToi in lToi:
-
-            if not block_rule.first_comment_is_a_header(oToi):
-                continue
-
-            analyze_comments(self, oToi)
-
-
-def analyze_comments(self, oToi):
-
-    iLine, lTokens = utils.get_toi_parameters(oToi)
-    iComments = utils.count_token_types_in_list_of_tokens(parser.comment, lTokens)
-
-    iComment = 0
-    for iToken, oToken in enumerate(lTokens):
-        iLine = utils.increment_line_number(iLine, oToken)
-        iComment = utils.increment_comment_counter(iComment, oToken)
-
-        if last_comment(iComment, iComments):
-            analyze_footer(self, oToken, iLine, oToi)
+    def analyze_comments(self, oToi):
+    
+        iLine, lTokens = utils.get_toi_parameters(oToi)
+        iComments = utils.count_token_types_in_list_of_tokens(parser.comment, lTokens)
+    
+        iComment = 0
+        for iToken, oToken in enumerate(lTokens):
+            iLine = utils.increment_line_number(iLine, oToken)
+            iComment = utils.increment_comment_counter(iComment, oToken)
+    
+            if last_comment(iComment, iComments):
+                analyze_footer(self, oToken, iLine, oToi)
 
 
 def last_comment(iComment, iComments):
@@ -75,12 +65,12 @@ def last_comment(iComment, iComments):
 
 
 def analyze_footer(self, oToken, iLine, oToi):
-        sFooter = self.build_footer(oToken)
-        sComment = oToken.get_value()
+    sFooter = self.build_footer(oToken)
+    sComment = oToken.get_value()
 
-        if block_rule.is_footer(sComment):
-            self.set_token_indent(oToken)
-            if sComment != sFooter:
-                sSolution = 'Change block comment footer to : ' + sFooter
-                oViolation = violation.New(iLine, oToi, sSolution)
-                self.add_violation(oViolation)
+    if block_rule.is_footer(sComment):
+        self.set_token_indent(oToken)
+        if sComment != sFooter:
+            sSolution = 'Change block comment footer to : ' + sFooter
+            oViolation = violation.New(iLine, oToi, sSolution)
+            self.add_violation(oViolation)
