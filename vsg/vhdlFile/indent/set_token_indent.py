@@ -4,7 +4,6 @@ from vsg import token
 
 
 def set_token_indent(dIndentMap, lTokens):
-
     lTokenKeys, dIndents = process_indent_map(dIndentMap)
 
     iIndent = 0
@@ -83,6 +82,11 @@ def set_token_indent(dIndentMap, lTokens):
         if isinstance(oToken, parser.comment):
             if bLibraryFound:
                 oToken.set_indent(iIndent + 1)
+            elif oToken.is_block_comment:
+                if oToken.block_comment_indent == 0:
+                    oToken.set_indent(0)
+                else:
+                    oToken.set_indent(iIndent)
             else:
                 oToken.set_indent(iIndent)
             continue

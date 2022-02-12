@@ -1,4 +1,6 @@
 
+import string
+
 from vsg import parser
 
 from vsg.rule_group import structure
@@ -25,3 +27,33 @@ class Rule(structure.Rule):
         '''
         self.analyze(oFile)
 
+
+def is_header(sComment):
+    if sComment == '--' or sComment == '-- ':
+        return False
+    try:
+        if sComment[2] not in string.punctuation:
+            return False
+        if sComment[2] == '!':
+            return False
+        if sComment[3] not in string.punctuation:
+            return False
+    except IndexError:
+        return True
+    return True
+
+
+def is_footer(sComment):
+    if sComment == '--' or sComment == '-- ':
+        return False
+    try:
+        if sComment[2] not in string.punctuation:
+            return False
+        if sComment[2] == '!':
+            return False
+        if sComment[3] not in string.punctuation:
+            return False
+        return True
+    except IndexError:
+        return True
+    return True
