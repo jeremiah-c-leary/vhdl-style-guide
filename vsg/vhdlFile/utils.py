@@ -3,7 +3,6 @@ from vsg import exceptions
 from vsg import parser
 
 from vsg.token import direction
-from vsg import token
 from vsg.token.ieee.std_logic_1164 import types
 
 
@@ -787,7 +786,5 @@ def assign_special_tokens(lObjects, iCurrent, oType):
         assign_token(lObjects, iCurrent, types.unsigned)
     elif sValue.lower() == 'natural':
         assign_token(lObjects, iCurrent, types.natural)
-    elif sValue.lower() == 'others':
-        assign_token(lObjects, iCurrent, token.choice.others_keyword)
     else:
         assign_token(lObjects, iCurrent, oType)
