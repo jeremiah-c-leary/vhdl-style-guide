@@ -198,6 +198,12 @@ class testDocGen(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
+    def test_logical_operator_rules_doc(self):
+
+        lExpected, lActual = compare_files('logical_operator')
+
+        self.assertEqual(lExpected, lActual)
+
     def test_loop_statement_rules_doc(self):
 
         lExpected, lActual = compare_files('loop_statement')

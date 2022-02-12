@@ -37,7 +37,7 @@ begin
 
   begin
 
-    a <= b Or c And d Xor e;
+    a <= b or c and d xor e;
 
   end process PROC_LABEL;
 

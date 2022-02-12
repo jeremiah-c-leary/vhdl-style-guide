@@ -37,6 +37,7 @@ The rules are divided into catagories depending on the part of the VHDL code bei
    iteration_scheme_rules.rst
    length_rules.rst
    library_rules.rst
+   logical_operator_rules.rst
    loop_statement_rules.rst
    package_rules.rst
    package_body_rules.rst
