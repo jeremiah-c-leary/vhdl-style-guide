@@ -47,27 +47,40 @@ class rule_003(block_rule.Rule):
     def _analyze(self, lToi):
 
         for oToi in lToi:
-            iLine, lTokens = utils.get_toi_parameters(oToi)
-            iComments = utils.count_token_types_in_list_of_tokens(parser.comment, lTokens)
 
-            iComment = 0
-            for iToken, oToken in enumerate(lTokens):
-                iLine = utils.increment_line_number(iLine, oToken)
+            if not block_rule.first_comment_is_a_header(oToi):
+                continue
 
-                if not rules_utils.token_is_comment(oToken):
-                    continue
+            analyze_comments(self, oToi)
 
-                iComment += 1
-                if iComment < iComments:
-                    continue
 
-                sFooter = self.build_footer(oToken)
+def analyze_comments(self, oToi):
 
-                sComment = oToken.get_value()
+    iLine, lTokens = utils.get_toi_parameters(oToi)
+    iComments = utils.count_token_types_in_list_of_tokens(parser.comment, lTokens)
 
-                if block_rule.is_footer(sComment):
-                    self.set_token_indent(oToken)
-                    if sComment != sFooter:
-                        sSolution = 'Change block comment footer to : ' + sFooter
-                        oViolation = violation.New(iLine, oToi, sSolution)
-                        self.add_violation(oViolation)
+    iComment = 0
+    for iToken, oToken in enumerate(lTokens):
+        iLine = utils.increment_line_number(iLine, oToken)
+        iComment = utils.increment_comment_counter(iComment, oToken)
+
+        if last_comment(iComment, iComments):
+            analyze_footer(self, oToken, iLine, oToi)
+
+
+def last_comment(iComment, iComments):
+    if iComment == iComments:
+        return True
+    return False
+
+
+def analyze_footer(self, oToken, iLine, oToi):
+        sFooter = self.build_footer(oToken)
+        sComment = oToken.get_value()
+
+        if block_rule.is_footer(sComment):
+            self.set_token_indent(oToken)
+            if sComment != sFooter:
+                sSolution = 'Change block comment footer to : ' + sFooter
+                oViolation = violation.New(iLine, oToi, sSolution)
+                self.add_violation(oViolation)

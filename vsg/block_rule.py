@@ -109,3 +109,10 @@ def bare_comment(sString):
 
 def is_footer(sComment):
     return is_header(sComment)
+
+
+def first_comment_is_a_header(oToi):
+    oToken = oToi.get_first_token_matching(parser.comment)
+    if is_header(oToken.get_value()):
+        return True
+    return False

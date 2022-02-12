@@ -39,9 +39,8 @@ class rule_002(block_rule.Rule):
     def _analyze(self, lToi):
 
         for oToi in lToi:
-            iLine, lTokens = utils.get_toi_parameters(oToi)
 
-            if not first_comment_is_a_header(oToi):
+            if not block_rule.first_comment_is_a_header(oToi):
                 continue
 
             analyze_comments(self, oToi)
@@ -58,13 +57,6 @@ def analyze_comments(self, oToi):
 
         if middle_comment(iComment, iComments, oToken):
             analyze_comment(self, oToken, oToi, iLine)
-
-
-def first_comment_is_a_header(oToi):
-    oToken = oToi.get_first_token_matching(parser.comment)
-    if block_rule.is_header(oToken.get_value()):
-        return True
-    return False
 
 
 def middle_comment(iComment, iComments, oToken):
