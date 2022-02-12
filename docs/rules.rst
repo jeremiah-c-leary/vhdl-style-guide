@@ -27,6 +27,7 @@ The rules are divided into catagories depending on the part of the VHDL code bei
    exit_statement_rules.rst
    file_rules.rst
    for_loop_rules.rst
+   for_generate_statement_rules.rst
    function_rules.rst
    generate_rules.rst
    generic_rules.rst
