@@ -44,15 +44,20 @@ class rule_002(block_rule.Rule):
             if not first_comment_is_a_header(lTokens):
                 continue
 
-            iComments = utils.count_token_types_in_list_of_tokens(parser.comment, lTokens)
+            analyze_comments(self, oToi)
 
-            iComment = 0
-            for iToken, oToken in enumerate(lTokens):
-                iLine = utils.increment_line_number(iLine, oToken)
-                iComment = utils.increment_comment_counter(iComment, oToken)
 
-                if middle_comment(iComment, iComments, oToken):
-                    analyze_comment(self, oToken, oToi, iLine)
+def analyze_comments(self, oToi):
+    iLine, lTokens = utils.get_toi_parameters(oToi)
+    iComments = utils.count_token_types_in_list_of_tokens(parser.comment, lTokens)
+    iComment = 0
+
+    for iToken, oToken in enumerate(lTokens):
+        iLine = utils.increment_line_number(iLine, oToken)
+        iComment = utils.increment_comment_counter(iComment, oToken)
+
+        if middle_comment(iComment, iComments, oToken):
+            analyze_comment(self, oToken, oToi, iLine)
 
 
 def first_comment_is_a_header(lTokens):
