@@ -124,7 +124,7 @@ begin
       if (state = idle) then
         if (RESET = '1') then
           state    <= clear;
-          ccounter <= (others=>'0');
+          ccounter <= (others =>'0');
         elsif (STARTDRAW = '1') then
           myx1(9 downto 0)   <= X1;
           myx1(11 downto 10) <= "00";
