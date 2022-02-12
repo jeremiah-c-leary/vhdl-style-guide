@@ -16,6 +16,8 @@ The rules are divided into catagories depending on the part of the VHDL code bei
    block_rules.rst
    block_comment_rules.rst
    case_rules.rst
+   case_generate_alternative_rules.rst
+   case_generate_statement_rules.rst
    comment_rules.rst
    component_rules.rst
    concurrent_rules.rst
