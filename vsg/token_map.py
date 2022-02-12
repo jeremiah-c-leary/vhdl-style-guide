@@ -138,7 +138,6 @@ class New():
         return(self.dMap['parser']['carriage_return'][iLine - 2] + 1)
 
 
-
 def extract_unique_id(oToken):
     lDoc = oToken.__doc__.split()
     for iDoc, sDoc in enumerate(lDoc):
