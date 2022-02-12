@@ -29,31 +29,35 @@ class Rule(structure.Rule):
 
 
 def is_header(sComment):
-    if sComment == '--' or sComment == '-- ':
+    if bare_comment(sComment):
         return False
+    if not third_character_is_alphanumeric(sComment):
+        return False
+    return fourth_character_is_alphanumeric(sComment)
+
+
+def fourth_character_is_alphanumeric(sComment):
     try:
-        if sComment[2] not in string.punctuation:
-            return False
-        if sComment[2] == '!':
-            return False
         if sComment[3] not in string.punctuation:
             return False
     except IndexError:
         return True
     return True
+
+
+def third_character_is_alphanumeric(sComment):
+    if sComment[2] not in string.punctuation:
+        return False
+    if sComment[2] == '!':
+        return False
+    return True
+
+
+def bare_comment(sString):
+    if sString == '--':
+        return True
+    return False
 
 
 def is_footer(sComment):
-    if sComment == '--' or sComment == '-- ':
-        return False
-    try:
-        if sComment[2] not in string.punctuation:
-            return False
-        if sComment[2] == '!':
-            return False
-        if sComment[3] not in string.punctuation:
-            return False
-        return True
-    except IndexError:
-        return True
-    return True
+    return is_header(sComment)
