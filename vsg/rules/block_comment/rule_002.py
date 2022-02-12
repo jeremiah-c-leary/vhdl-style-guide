@@ -41,30 +41,33 @@ class rule_002(block_rule.Rule):
         for oToi in lToi:
             iLine, lTokens = utils.get_toi_parameters(oToi)
 
+            if not first_comment_is_a_header(lTokens):
+                continue
+
             iComments = utils.count_token_types_in_list_of_tokens(parser.comment, lTokens)
 
             iComment = 0
             for iToken, oToken in enumerate(lTokens):
                 iLine = utils.increment_line_number(iLine, oToken)
+                iComment = utils.increment_comment_counter(iComment, oToken)
 
-                if isinstance(oToken, parser.comment):
-                    iComment += 1
-                    if first_comment_is_not_a_header(oToken, iComment):
-                        break
-                    elif middle_comment(iComment, iComments):
-                        analyze_comment(self, oToken, oToi, iLine)
+                if middle_comment(iComment, iComments, oToken):
+                    analyze_comment(self, oToken, oToi, iLine)
 
 
-def first_comment_is_not_a_header(oToken, iComment):
-    if iComment == 1:
-        if not block_rule.is_header(oToken.get_value()):
-            return True
+def first_comment_is_a_header(lTokens):
+    for oToken in lTokens:
+        if isinstance(oToken, parser.comment):
+            if block_rule.is_header(oToken.get_value()):
+                return True
+            break
     return False
 
 
-def middle_comment(iComment, iComments):
-    if iComment > 1 and iComment < iComments:
-        return True
+def middle_comment(iComment, iComments, oToken):
+    if isinstance(oToken, parser.comment):
+        if iComment > 1 and iComment < iComments:
+            return True
     return False
 
 
