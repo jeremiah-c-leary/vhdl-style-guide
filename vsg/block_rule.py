@@ -70,6 +70,11 @@ class Rule(structure.Rule):
             sFooter += self.footer_right_repeat
         return sFooter
 
+    def build_comment(self, oToken):
+        sHeader = '--'
+        sHeader += self.comment_left
+        return sHeader
+
 
 def is_header(sComment):
     if bare_comment(sComment):

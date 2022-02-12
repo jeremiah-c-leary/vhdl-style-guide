@@ -49,9 +49,8 @@ class rule_002(block_rule.Rule):
 
                 if isinstance(oToken, parser.comment):
                     iComment += 1
-                    if iComment == 1:
-                        if not block_rule.is_header(oToken.get_value()):
-                            break
+                    if header_detected(oToken, iComment):
+                        break
                     elif iComment > 1 and iComment < iComments:
                         self.set_token_indent(oToken)
 
@@ -64,3 +63,11 @@ class rule_002(block_rule.Rule):
                             sSolution = 'Comment must start with ' + sHeader
                             oViolation = violation.New(iLine, oToi, sSolution)
                             self.add_violation(oViolation)
+
+
+def header_detected(oToken, iComment):
+    if iComment == 1:
+        if block_rule.is_header(oToken.get_value()):
+            return True
+    return False
+

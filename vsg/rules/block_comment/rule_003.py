@@ -44,10 +44,7 @@ class rule_003(block_rule.Rule):
         self.max_footer_column = 120
         self.configuration.extend(['footer_left', 'footer_left_repeat', 'footer_string', 'footer_right_repeat', 'footer_alignment', 'max_footer_column'])
 
-    def analyze(self, oFile):
-
-        self._print_debug_message('Analyzing rule: ' + self.unique_id)
-        lToi = self._get_tokens_of_interest(oFile)
+    def _analyze(self, lToi):
 
         for oToi in lToi:
             iLine, lTokens = utils.get_toi_parameters(oToi)
@@ -67,7 +64,7 @@ class rule_003(block_rule.Rule):
                 sFooter = self.build_footer(oToken)
 
                 sComment = oToken.get_value()
-                
+
                 if block_rule.is_footer(sComment):
                     self.set_token_indent(oToken)
                     if sComment != sFooter:
