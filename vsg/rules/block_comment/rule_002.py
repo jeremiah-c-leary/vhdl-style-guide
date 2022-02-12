@@ -49,18 +49,35 @@ class rule_002(block_rule.Rule):
 
                 if isinstance(oToken, parser.comment):
                     iComment += 1
-                    if iComment == 1:
-                        if not block_rule.is_header(oToken.get_value()):
-                            break
-                    elif iComment > 1 and iComment < iComments:
-                        self.set_token_indent(oToken)
+                    if first_comment_is_not_a_header(oToken, iComment):
+                        break
+                    elif middle_comment(iComment, iComments):
+                        analyze_comment(self, oToken, oToi, iLine)
 
-                        if self.comment_left is None:
-                            continue
 
-                        sHeader = self.build_comment(oToken)
-                        sComment = oToken.get_value()
-                        if not sComment.startswith(sHeader):
-                            sSolution = 'Comment must start with ' + sHeader
-                            oViolation = violation.New(iLine, oToi, sSolution)
-                            self.add_violation(oViolation)
+def first_comment_is_not_a_header(oToken, iComment):
+    if iComment == 1:
+        if not block_rule.is_header(oToken.get_value()):
+            return True
+    return False
+
+
+def middle_comment(iComment, iComments):
+    if iComment > 1 and iComment < iComments:
+        return True
+    return False
+
+
+def analyze_comment(self, oToken, oToi, iLine):
+
+    self.set_token_indent(oToken)
+
+    if self.comment_left is None:
+        return None
+
+    sHeader = self.build_comment(oToken)
+    sComment = oToken.get_value()
+    if not sComment.startswith(sHeader):
+        sSolution = 'Comment must start with ' + sHeader
+        oViolation = violation.New(iLine, oToi, sSolution)
+        self.add_violation(oViolation)
