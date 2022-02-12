@@ -35,6 +35,41 @@ class Rule(structure.Rule):
             oToken.is_block_comment = True
             oToken.block_comment_indent = 0
 
+    def calculate_leading_whitespace(self, oToken):
+        if self.allow_indenting:
+            iWhitespace = self.indentSize * oToken.get_indent()
+        else:
+            iWhitespace = 0
+        return iWhitespace
+
+    def build_footer(self, oToken):
+        iWhitespace = self.calculate_leading_whitespace(oToken)
+        sFooter = '--'
+        if self.footer_left is not None:
+            sFooter += self.footer_left
+            iFooter_left = len(self.footer_left)
+        else:
+            iFooter_left = 0
+
+        if self.footer_string is None:
+            sFooter += self.footer_left_repeat * (self.max_footer_column - iWhitespace - len(sFooter))
+        elif self.footer_alignment == 'center':
+            iLength = int((self.max_footer_column - iWhitespace - len(self.footer_string)) / 2) - iFooter_left - 2
+            sFooter += self.footer_left_repeat * (iLength)
+            sFooter += self.footer_string
+            sFooter += self.footer_right_repeat * (self.max_footer_column - len(sFooter))
+        elif self.footer_alignment == 'left':
+            sFooter += self.footer_left_repeat
+            sFooter += self.footer_string
+            iLength = self.max_footer_column - iWhitespace - len(sFooter)
+            sFooter += self.footer_right_repeat * (self.max_footer_column - len(sFooter))
+        elif self.footer_alignment == 'right':
+            iLength = self.max_footer_column - iWhitespace - len(sFooter) - len(self.footer_string) - 1
+            sFooter += self.footer_left_repeat * (iLength)
+            sFooter += self.footer_string
+            sFooter += self.footer_right_repeat
+        return sFooter
+
 
 def is_header(sComment):
     if bare_comment(sComment):

@@ -6,6 +6,8 @@ from vsg import violation
 
 from vsg.vhdlFile import utils
 
+from vsg.rules import utils as rules_utils
+
 
 class rule_003(block_rule.Rule):
     '''
@@ -55,52 +57,20 @@ class rule_003(block_rule.Rule):
             for iToken, oToken in enumerate(lTokens):
                 iLine = utils.increment_line_number(iLine, oToken)
 
-                if isinstance(oToken, parser.comment):
-                    iComment += 1
-                    if iComment == iComments:
+                if not rules_utils.token_is_comment(oToken):
+                    continue
 
-                        if not self.allow_indenting:
-                            oToken.set_indent(0)
+                iComment += 1
+                if iComment < iComments:
+                    continue
 
-                        if self.allow_indenting:
-                            iWhitespace = self.indentSize * oToken.get_indent()
-                        else:
-                            iWhitespace = 0
+                sFooter = self.build_footer(oToken)
 
-                        sFooter = '--'
-                        if self.footer_left is not None:
-                            sFooter += self.footer_left
-                            iFooter_left = len(self.footer_left)
-                        else:
-                            iFooter_left = 0
-
-                        if self.footer_string is None:
-                            sFooter += self.footer_left_repeat * (self.max_footer_column - iWhitespace - len(sFooter))
-                        elif self.footer_alignment == 'center':
-                            iLength = int((self.max_footer_column - iWhitespace - len(self.footer_string)) / 2) - iFooter_left - 2
-                            sFooter += self.footer_left_repeat * (iLength)
-                            sFooter += self.footer_string
-                            sFooter += self.footer_right_repeat * (self.max_footer_column - len(sFooter))
-                        elif self.footer_alignment == 'left':
-                            sFooter += self.footer_left_repeat
-                            sFooter += self.footer_string
-                            iLength = self.max_footer_column - iWhitespace - len(sFooter)
-                            sFooter += self.footer_right_repeat * (self.max_footer_column - len(sFooter))
-                        elif self.footer_alignment == 'right':
-                            iLength = self.max_footer_column - iWhitespace - len(sFooter) - len(self.footer_string) - 1
-                            sFooter += self.footer_left_repeat * (iLength)
-                            sFooter += self.footer_string
-                            sFooter += self.footer_right_repeat
-
-                        sComment = oToken.get_value()
-                        
-                        try:
-                            if block_rule.is_footer(sComment):
-                                self.set_token_indent(oToken)
-                                if sComment != sFooter:
-                                    sSolution = 'Change block comment footer to : ' + sFooter
-                                    oViolation = violation.New(iLine, oToi, sSolution)
-                                    self.add_violation(oViolation)
-                                    break
-                        except IndexError:
-                            break
+                sComment = oToken.get_value()
+                
+                if block_rule.is_footer(sComment):
+                    self.set_token_indent(oToken)
+                    if sComment != sFooter:
+                        sSolution = 'Change block comment footer to : ' + sFooter
+                        oViolation = violation.New(iLine, oToi, sSolution)
+                        self.add_violation(oViolation)
