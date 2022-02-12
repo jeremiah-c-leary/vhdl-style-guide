@@ -9,7 +9,6 @@ def get_consecutive_lines_starting_with_token(search_token, min_num_lines, lAllT
     lSearchLines = get_line_numbers_of_tokens_which_start_line(search_token, oTokenMap)
     lGroups = group_lines(lSearchLines)
     lFilteredGroups = filter_groups_based_on_number_of_lines(lGroups, min_num_lines)
-    iStart = None
 
     for lGroup in lFilteredGroups:
         iStartLine = lGroup[0]

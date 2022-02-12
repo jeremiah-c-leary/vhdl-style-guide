@@ -6,8 +6,6 @@ from vsg import violation
 
 from vsg.vhdlFile import utils
 
-from vsg.rules import utils as rules_utils
-
 
 class rule_003(block_rule.Rule):
     '''
@@ -45,15 +43,15 @@ class rule_003(block_rule.Rule):
         self.configuration.extend(['footer_left', 'footer_left_repeat', 'footer_string', 'footer_right_repeat', 'footer_alignment', 'max_footer_column'])
 
     def analyze_comments(self, oToi):
-    
+
         iLine, lTokens = utils.get_toi_parameters(oToi)
         iComments = utils.count_token_types_in_list_of_tokens(parser.comment, lTokens)
-    
+
         iComment = 0
-        for iToken, oToken in enumerate(lTokens):
+        for oToken in lTokens:
             iLine = utils.increment_line_number(iLine, oToken)
             iComment = utils.increment_comment_counter(iComment, oToken)
-    
+
             if last_comment(iComment, iComments):
                 analyze_footer(self, oToken, iLine, oToi)
 

@@ -40,11 +40,11 @@ class rule_002(block_rule.Rule):
         iLine, lTokens = utils.get_toi_parameters(oToi)
         iComments = utils.count_token_types_in_list_of_tokens(parser.comment, lTokens)
         iComment = 0
-    
-        for iToken, oToken in enumerate(lTokens):
+
+        for oToken in lTokens:
             iLine = utils.increment_line_number(iLine, oToken)
             iComment = utils.increment_comment_counter(iComment, oToken)
-    
+
             if middle_comment(iComment, iComments, oToken):
                 analyze_middle_comment(self, oToken, oToi, iLine)
 
