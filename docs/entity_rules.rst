@@ -732,6 +732,29 @@ This rule checks for blank lines above the **generic** keyword in entity specifi
    entity fifo is
      generic (
 
+entity_300
+##########
+
+|phase_4| |error| |indent|
+
+This rule checks the indent of the **begin** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   entity FIFO is
+
+        begin
+
+**Fix**
+
+.. code-block:: vhdl
+
+   entity FIFO is
+
+   begin
+
 entity_600
 ##########
 
