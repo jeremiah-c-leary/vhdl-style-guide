@@ -755,6 +755,35 @@ This rule checks the indent of the **begin** keyword.
 
    begin
 
+entity_500
+##########
+
+|phase_6| |error| |case| |case_keyword|
+
+This rule checks the **begin** keyword has proper case.
+
+|configuring_uppercase_and_lowercase_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   entity fifo is
+
+   BEGIN
+
+   end entity;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   entity fifo is
+
+   begin
+
+   end entity;
+
 entity_600
 ##########
 
