@@ -680,6 +680,34 @@ This rule checks for code after the semicolon.
    end entity;
    architecture
 
+entity_029
+##########
+
+|phase_1| |error| |structure|
+
+This rule checks the **begin** keyword is on it's own line.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   entity FIFO is
+     port (
+       I_INPUT : in std_logic
+     ); begin
+   end entity;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   entity FIFO is
+     port (
+       I_INPUT : in std_logic
+     );
+   begin
+   end entity;
+
 entity_200
 ##########
 
