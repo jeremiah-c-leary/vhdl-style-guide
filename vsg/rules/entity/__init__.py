@@ -21,6 +21,7 @@ from .rule_019 import rule_019
 from .rule_020 import rule_020
 from .rule_021 import rule_021
 from .rule_022 import rule_022
+from .rule_023 import rule_023
 
 from .rule_200 import rule_200
 

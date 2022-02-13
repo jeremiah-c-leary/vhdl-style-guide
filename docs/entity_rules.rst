@@ -548,6 +548,30 @@ This rule checks the identifier is on the same line as the **entity** keyword.
 
    entity fifo is
 
+entity_023
+##########
+
+|phase_1| |error| |structure|
+
+This rule checks the end **entity** keyword is on the same line as the **end** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   end entity;
+
+   end
+     entity;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   end entity;
+
+   end entity;
+
 entity_200
 ##########
 
