@@ -732,6 +732,75 @@ This rule checks for blank lines above the **generic** keyword in entity specifi
    entity fifo is
      generic (
 
+entity_201
+##########
+
+|phase_3| |error| |blank_line|
+
+This rule ensures no blank lines after the **is** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   entity fifo is
+
+
+     port (
+
+**Fix**
+
+.. code-block:: vhdl
+
+   entity fifo is
+     port (
+
+entity_202
+##########
+
+|phase_3| |error| |blank_line|
+
+This rule checks for blank lines above the **port** keyword in entity specifications.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   entity fifo is
+
+
+
+     port (
+
+**Fix**
+
+.. code-block:: vhdl
+
+   entity fifo is
+     port (
+
+entity_203
+##########
+
+|phase_3| |error| |blank_line|
+
+This rule checks for blank lines below the semicolon in entity specifications.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   end entity;
+   library ieee;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   end entity;
+
+   library ieee;
+
 entity_300
 ##########
 
