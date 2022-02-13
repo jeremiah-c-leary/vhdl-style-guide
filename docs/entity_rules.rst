@@ -524,6 +524,30 @@ This rule checks the **end** keyword is on it's own line.
    );
    end entity;
 
+entity_022
+##########
+
+|phase_1| |error| |structure|
+
+This rule checks the identifier is on the same line as the **entity** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   entity fifo is
+
+   entity
+     fifo is
+
+**Fix**
+
+.. code-block:: vhdl
+
+   entity fifo is
+
+   entity fifo is
+
 entity_200
 ##########
 
