@@ -9,22 +9,22 @@ from vsg.rules import utils
 class rule_200(Rule):
     '''
     This rule removes consecutive blank lines.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        a <= b;
-    
-    
+
+
        c <= d;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        a <= b;
-    
+
        c <= d;
     '''
 
