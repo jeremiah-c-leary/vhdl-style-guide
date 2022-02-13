@@ -7,20 +7,20 @@ from vsg.token import entity_declaration as token
 class rule_203(Rule):
     '''
     This rule checks for blank lines below the semicolon in entity specifications.
-    
+
     **Violation**
-    
+
     .. code-block:: vhdl
-    
+
        end entity;
        library ieee;
-    
+
     **Fix**
-    
+
     .. code-block:: vhdl
-    
+
        end entity;
-    
+
        library ieee;
     '''
 
