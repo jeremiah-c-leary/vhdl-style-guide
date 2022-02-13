@@ -620,6 +620,66 @@ This rule checks the semicolon is not on it's own line.
 
    end entity;
 
+entity_026
+##########
+
+|phase_1| |error| |structure|
+
+This rule checks for code after the **is** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   entity FIFO is port (
+
+**Fix**
+
+.. code-block:: vhdl
+
+   entity FIFO is
+     port (
+
+entity_027
+##########
+
+|phase_1| |error| |structure|
+
+This rule checks for code after the **begin** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   begin end entity;
+
+**Fix**
+
+.. code-block:: vhdl
+
+    begin
+    end entity;
+
+entity_028
+##########
+
+|phase_1| |error| |structure|
+
+This rule checks for code after the semicolon.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   end entity; architecture
+
+**Fix**
+
+.. code-block:: vhdl
+
+   end entity;
+   architecture
+
 entity_200
 ##########
 
