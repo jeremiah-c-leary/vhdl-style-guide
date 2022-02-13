@@ -1,30 +1,12 @@
 
-from vsg.rules import remove_excessive_blank_lines_below_line_ending_with_token
-
-from vsg.token import context_declaration as token
+from vsg import deprecated_rule
 
 
-class rule_026(remove_excessive_blank_lines_below_line_ending_with_token):
+class rule_026(deprecated_rule.Rule):
     '''
-    This rule ensures a single blank line after the **context** keword.
-
-    **Violation**
-
-    .. code-block:: vhdl
-
-       context c1 is
-
-
-
-         library ieee;
-
-    **Fix**
-
-    .. code-block:: vhdl
-
-       context c1 is
-
-         library ieee;
+    The function of this rule has been moved to whitespace_200.
     '''
+
     def __init__(self):
-        remove_excessive_blank_lines_below_line_ending_with_token.__init__(self, 'context', '026', [token.is_keyword])
+        deprecated_rule.Rule.__init__(self, 'context', '026')
+        self.message.append('Rule ' + self.unique_id + ' has been moved to whitespace_200.')
