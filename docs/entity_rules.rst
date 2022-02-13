@@ -572,6 +572,54 @@ This rule checks the end **entity** keyword is on the same line as the **end** k
 
    end entity;
 
+entity_024
+##########
+
+|phase_1| |error| |structure|
+
+This rule checks the end entity simple name is not on it's own line.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   end entity FIFO;
+
+   end entity
+     FIFO;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   end entity FIFO;
+
+   end entity FIFO;
+
+entity_025
+##########
+
+|phase_1| |error| |structure|
+
+This rule checks the semicolon is not on it's own line.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   end entity;
+
+   end entity
+   ;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   end entity;
+
+   end entity;
+
 entity_200
 ##########
 
