@@ -500,6 +500,30 @@ Following extra configurations are supported:
        data_o : in std_logic  -- Data output
    );
 
+entity_021
+##########
+
+|phase_1| |error| |structure|
+
+This rule checks the **end** keyword is on it's own line.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   port (
+      ...
+   ); end entity;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   port (
+      ...
+   );
+   end entity;
+
 entity_200
 ##########
 
