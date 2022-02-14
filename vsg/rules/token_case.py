@@ -1,6 +1,7 @@
 
 from vsg.rule_group import case
 from vsg.rules import case_utils
+from vsg.rules import utils
 
 
 class token_case(case.Rule):
@@ -32,7 +33,7 @@ class token_case(case.Rule):
         self.exceptions = []
 
     def _get_tokens_of_interest(self, oFile):
-        self.exceptions_lower = lowercase_list(self.exceptions)
+        self.exceptions_lower = utils.lowercase_list(self.exceptions)
         return oFile.get_tokens_matching(self.lTokens)
 
     def _analyze(self, lToi):
@@ -49,10 +50,3 @@ class token_case(case.Rule):
         dAction = oViolation.get_action()
         lTokens[0].set_value(dAction['value'])
         oViolation.set_tokens(lTokens)
-
-
-def lowercase_list(lList):
-    lReturn = []
-    for sItem in lList:
-        lReturn.append(sItem.lower())
-    return lReturn

@@ -5,6 +5,7 @@ from vsg import token
 from vsg import violation
 from vsg.rule_group import case
 from vsg.rules import case_utils
+from vsg.rules import utils
 
 
 class token_case_formal_part_of_association_element_in_map_between_tokens(case.Rule):
@@ -43,7 +44,7 @@ class token_case_formal_part_of_association_element_in_map_between_tokens(case.R
         self.oEnd = oEnd
 
     def _get_tokens_of_interest(self, oFile):
-        self.exceptions_lower = lowercase_list(self.exceptions)
+        self.exceptions_lower = utils.lowercase_list(self.exceptions)
         return oFile.get_tokens_bounded_by(self.oStart, self.oEnd)
 
     def _analyze(self, lToi):
@@ -78,10 +79,3 @@ class token_case_formal_part_of_association_element_in_map_between_tokens(case.R
         dAction = oViolation.get_action()
         lTokens[dAction['index']].set_value(dAction['value'])
         oViolation.set_tokens(lTokens)
-
-
-def lowercase_list(lList):
-    lReturn = []
-    for sItem in lList:
-        lReturn.append(sItem.lower())
-    return lReturn

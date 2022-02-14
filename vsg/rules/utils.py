@@ -242,3 +242,10 @@ def remove_toi_if_token_is_at_the_end_of_the_line(lToi):
             continue
         lReturn.append(oToi)
     return lReturn
+
+
+def lowercase_list(lList):
+    lReturn = []
+    for sItem in lList:
+        lReturn.append(sItem.lower())
+    return lReturn
