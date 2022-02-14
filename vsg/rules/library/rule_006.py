@@ -4,7 +4,7 @@ from vsg import token
 from vsg.rules import single_space_between_token_pairs
 
 lTokens = []
-lTokens.append([token.use_clause.keyword, token.use_clause.selected_name])
+lTokens.append([token.use_clause.keyword, token.use_clause.library_name])
 
 
 class rule_006(single_space_between_token_pairs):

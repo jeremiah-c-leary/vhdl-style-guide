@@ -29,15 +29,18 @@ class token_case(case.Rule):
         self.lTokens = lTokens
         self.prefix_exceptions = []
         self.suffix_exceptions = []
+        self.exceptions = []
 
     def _get_tokens_of_interest(self, oFile):
+        self.exceptions_lower = lowercase_list(self.exceptions)
         return oFile.get_tokens_matching(self.lTokens)
 
     def _analyze(self, lToi):
         check_prefix = case_utils.is_exception_enabled(self.prefix_exceptions)
         check_suffix = case_utils.is_exception_enabled(self.suffix_exceptions)
+        check_whole = case_utils.is_exception_enabled(self.exceptions)
         for oToi in lToi:
-            oViolation = case_utils.check_for_case_violation(oToi, self, check_prefix, check_suffix)
+            oViolation = case_utils.check_for_case_violation(oToi, self, check_prefix, check_suffix, check_whole)
             if oViolation is not None:
                 self.add_violation(oViolation)
 
@@ -46,3 +49,10 @@ class token_case(case.Rule):
         dAction = oViolation.get_action()
         lTokens[0].set_value(dAction['value'])
         oViolation.set_tokens(lTokens)
+
+
+def lowercase_list(lList):
+    lReturn = []
+    for sItem in lList:
+        lReturn.append(sItem.lower())
+    return lReturn

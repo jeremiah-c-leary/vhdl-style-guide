@@ -10,12 +10,12 @@
 --
 
 library IEEE;
-  use IEEE.std_logic_1164.all;
-  use IEEE.std_logic_unsigned.all;
-  use work.cpu_pack.ALL;
+  use ieee.std_logic_1164.all;
+  use ieee.std_logic_unsigned.all;
+  use work.cpu_pack.all;
 
 library UNISIM;
-  use UNISIM.VComponents.all;
+  use unisim.vcomponents.all;
 
 entity BOARD_CPU is
   port (

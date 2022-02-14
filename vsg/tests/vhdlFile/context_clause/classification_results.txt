@@ -16,7 +16,11 @@
 --------------------------------------------------------------------------------
 4 | use ieee.std_logic.1164;
 <class 'vsg.token.use_clause.keyword'>
-<class 'vsg.token.use_clause.selected_name'>
+<class 'vsg.token.use_clause.library_name'>
+<class 'vsg.token.use_clause.dot'>
+<class 'vsg.token.use_clause.package_name'>
+<class 'vsg.token.use_clause.dot'>
+<class 'vsg.token.use_clause.item_name'>
 <class 'vsg.token.use_clause.semicolon'>
 --------------------------------------------------------------------------------
 5 |
@@ -40,9 +44,17 @@
 --------------------------------------------------------------------------------
 8 | use ieee.std_logic.1164, ieee.std_logic_arith.all;
 <class 'vsg.token.use_clause.keyword'>
-<class 'vsg.token.use_clause.selected_name'>
+<class 'vsg.token.use_clause.library_name'>
+<class 'vsg.token.use_clause.dot'>
+<class 'vsg.token.use_clause.package_name'>
+<class 'vsg.token.use_clause.dot'>
+<class 'vsg.token.use_clause.item_name'>
 <class 'vsg.token.use_clause.comma'>
-<class 'vsg.token.use_clause.selected_name'>
+<class 'vsg.token.use_clause.library_name'>
+<class 'vsg.token.use_clause.dot'>
+<class 'vsg.token.use_clause.package_name'>
+<class 'vsg.token.use_clause.dot'>
+<class 'vsg.token.use_clause.all_keyword'>
 <class 'vsg.token.use_clause.semicolon'>
 --------------------------------------------------------------------------------
 9 |
@@ -59,9 +71,17 @@
 --------------------------------------------------------------------------------
 11 | use ieee.std_logic.1164, ieee.std_logic_arith.all;
 <class 'vsg.token.use_clause.keyword'>
-<class 'vsg.token.use_clause.selected_name'>
+<class 'vsg.token.use_clause.library_name'>
+<class 'vsg.token.use_clause.dot'>
+<class 'vsg.token.use_clause.package_name'>
+<class 'vsg.token.use_clause.dot'>
+<class 'vsg.token.use_clause.item_name'>
 <class 'vsg.token.use_clause.comma'>
-<class 'vsg.token.use_clause.selected_name'>
+<class 'vsg.token.use_clause.library_name'>
+<class 'vsg.token.use_clause.dot'>
+<class 'vsg.token.use_clause.package_name'>
+<class 'vsg.token.use_clause.dot'>
+<class 'vsg.token.use_clause.all_keyword'>
 <class 'vsg.token.use_clause.semicolon'>
 --------------------------------------------------------------------------------
 12 | context name4, name5, name6;

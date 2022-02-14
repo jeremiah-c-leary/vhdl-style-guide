@@ -1,8 +1,8 @@
 library IEEE;
-  use IEEE.STD_LOGIC_1164.ALL;
-  use IEEE.STD_LOGIC_ARITH.ALL;
-  use IEEE.STD_LOGIC_UNSIGNED.ALL;
-  use STD.TEXTIO.ALL;
+  use ieee.std_logic_1164.all;
+  use ieee.std_logic_arith.all;
+  use ieee.std_logic_unsigned.all;
+  use std.textio.all;
 
 --  Uncomment the following lines to use the declarations that are
 --  provided for instantiating Xilinx primitive components.

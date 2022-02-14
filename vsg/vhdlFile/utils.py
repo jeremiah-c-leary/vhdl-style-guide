@@ -230,14 +230,11 @@ def find_previous_non_whitespace_token(iToken, lObjects):
 
 
 def detect_submodule(iToken, lObjects, module):
-    iEnd = len(lObjects) - 1
     iLast = -1
     iReturn = iToken
     while iLast != iReturn:
         if is_next_token('end', iReturn, lObjects):
             return iToken
-        if iReturn == iEnd:
-            return iReturn
         iReturn = find_next_token(iReturn, lObjects)
         iLast = iReturn
         iReturn = module.detect(iReturn, lObjects)

@@ -13,7 +13,7 @@ library ieee;
   use ieee.numeric_std.all;
 
 library unisim;
-  use unisim.vcomponents.RAMB16;
+  use unisim.vcomponents.ramb16;
 
 entity TIMESTAMP is
   port (
