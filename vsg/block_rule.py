@@ -5,6 +5,8 @@ from vsg import parser
 
 from vsg.rule_group import structure
 
+from vsg.vhdlFile import utils
+
 
 class Rule(structure.Rule):
 
@@ -19,7 +21,31 @@ class Rule(structure.Rule):
         self.configuration.append('allow_indenting')
 
     def _get_tokens_of_interest(self, oFile):
-        return oFile.get_consecutive_lines_starting_with_token(parser.comment, self.min_height)
+        lToi = oFile.get_consecutive_lines_starting_with_token(parser.comment, self.min_height)
+        lReturn = []
+        for oToi in lToi:
+            lTokens = oToi.get_tokens()
+            iLines = utils.count_carriage_returns(lTokens) + 1
+            iLeft = 0
+            iRight = len(lTokens)
+            if 'vsg_on' in lTokens[0].get_value() or 'vsg_off' in lTokens[0].get_value():
+                iLeft = 2
+                iLines -= 1
+            if 'vsg_on' in lTokens[1].get_value() or 'vsg_off' in lTokens[1].get_value():
+                iLeft = 3
+                iLines -= 1
+            if 'vsg_on' in lTokens[-1].get_value() or 'vsg_off' in lTokens[-1].get_value():
+                if isinstance(lTokens[-2], parser.whitespace):
+                   iRight = len(lTokens) - 4
+                else:
+                   iRight = len(lTokens) - 3
+                iLines -= 1
+            if iLines >= self.min_height:
+                oNewToi = oToi.extract_tokens(iLeft, iRight)
+                lReturn.append(oToi.extract_tokens(iLeft, iRight))
+        return lReturn
+
+
 
     def _analyze(self, lToi):
 

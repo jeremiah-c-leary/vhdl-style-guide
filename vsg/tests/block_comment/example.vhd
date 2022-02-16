@@ -30,4 +30,24 @@ begin
    --! FPGA RX to Avalon-ST TX interface
        --------------------------------------------------------------------------------
 
+  -- vsg_off comment_010
+  ------------------------------<-    80 chars    ->------------------------------
+    --! FPGA RX to Avalon-ST TX interface
+  --! FPGA RX to Avalon-ST TX interface
+    --! FPGA RX to Avalon-ST TX interface
+   --! FPGA RX to Avalon-ST TX interface
+       --------------------------------------------------------------------------------
+  -- vsg_on comment_010
+
+  -- vsg_off signal_001
+         ------------------------------<-    80 chars    ->------------------------------
+     --! FPGA RX to Avalon-ST TX interface
+ --------------------------------------------------------------------------------
+  -- vsg_on signal_001
+
+  -- vsg_off signal_001
+------------------------------<-    80 chars    ->------------------------------
+      --------------------------------------------------------------------------------
+  -- vsg_on signal_001
+
 end architecture rtl;
