@@ -124,7 +124,7 @@ if_005
 
 |phase_2| |error| |whitespace|
 
-This rule checks for a single space between the **elsif** keyword and the (.
+This rule checks for a single space after the **elsif** keyword.
 
 **Violation**
 
@@ -134,6 +134,8 @@ This rule checks for a single space between the **elsif** keyword and the (.
 
   elsif   (c = '1') then
 
+  elsif    b = '0' then
+
 **Fix**
 
 .. code-block:: vhdl
@@ -141,6 +143,8 @@ This rule checks for a single space between the **elsif** keyword and the (.
   elsif (c = '1') then
 
   elsif (c = '1') then
+
+  elsif b = '0' then
 
 if_006
 ######
