@@ -579,52 +579,12 @@ This rule adds a blank line below the context semicolon.
 context_026
 ###########
 
-|phase_3| |error| |blank_line|
-
-This rule ensures a single blank line after the **context** keword.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   context c1 is
-
-
-
-     library ieee;
-
-**Fix**
-
-.. code-block:: vhdl
-
-   context c1 is
-
-     library ieee;
+The function of this rule has been moved to whitespace_200.
 
 context_027
 ###########
 
-|phase_3| |error| |blank_line|
-
-This rule ensures a single blank line before the **end** keword.
-
-**Violation**
-
-.. code-block:: vhdl
-
-     use ieee.std_logic_1164.all;
-
-
-
-   end context;
-
-**Fix**
-
-.. code-block:: vhdl
-
-     use ieee.std_logic_1164.all;
-
-   end context;
+The function of this rule has been moved to whitespace_200.
 
 context_028
 ###########

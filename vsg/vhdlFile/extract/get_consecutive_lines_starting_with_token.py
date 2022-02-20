@@ -32,6 +32,8 @@ def get_line_numbers_of_tokens_which_start_line(search_token, oTokenMap):
 
 def group_lines(lLines):
     lReturn = []
+    if len(lLines) == 0:
+        return []
     lTemp = [lLines[0]]
     for iLine in lLines[1:]:
         if iLine == lTemp[-1] + 1:
