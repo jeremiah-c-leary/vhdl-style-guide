@@ -6,6 +6,7 @@ from vsg import parser
 from vsg.rule_group import structure
 
 from vsg.vhdlFile import utils
+from vsg.rules import utils as rules_utils
 
 
 class Rule(structure.Rule):
@@ -24,28 +25,10 @@ class Rule(structure.Rule):
         lToi = oFile.get_consecutive_lines_starting_with_token(parser.comment, self.min_height)
         lReturn = []
         for oToi in lToi:
-            lTokens = oToi.get_tokens()
-            iLines = utils.count_carriage_returns(lTokens) + 1
-            iLeft = 0
-            iRight = len(lTokens)
-            if 'vsg_on' in lTokens[0].get_value() or 'vsg_off' in lTokens[0].get_value():
-                iLeft = 2
-                iLines -= 1
-            if 'vsg_on' in lTokens[1].get_value() or 'vsg_off' in lTokens[1].get_value():
-                iLeft = 3
-                iLines -= 1
-            if 'vsg_on' in lTokens[-1].get_value() or 'vsg_off' in lTokens[-1].get_value():
-                if isinstance(lTokens[-2], parser.whitespace):
-                   iRight = len(lTokens) - 4
-                else:
-                   iRight = len(lTokens) - 3
-                iLines -= 1
+            iLeft, iLines, iRight = adjust_for_code_tags(oToi)
             if iLines >= self.min_height:
-                oNewToi = oToi.extract_tokens(iLeft, iRight)
                 lReturn.append(oToi.extract_tokens(iLeft, iRight))
         return lReturn
-
-
 
     def _analyze(self, lToi):
 
@@ -148,5 +131,46 @@ def is_footer(sComment):
 def first_comment_is_a_header(oToi):
     oToken = oToi.get_first_token_matching(parser.comment)
     if is_header(oToken.get_value()):
+        return True
+    return False
+
+
+def adjust_for_code_tags(oToi):
+    lTokens = oToi.get_tokens()
+    iLeft, iLines, iRight = extract_initial_indexes_from_token_list(lTokens)
+    iLeft, iLines = adjust_indexes_for_code_tags_at_beginning_of_block_comment(lTokens, iLeft, iLines)
+    iRight, iLines = adjust_indexes_for_code_tags_at_end_of_block_comment(lTokens, iRight, iLines)
+    return iLeft, iLines, iRight
+
+
+def extract_initial_indexes_from_token_list(lTokens):
+    iLines = utils.count_carriage_returns(lTokens) + 1
+    iLeft = 0
+    iRight = len(lTokens)
+    return iLeft, iLines, iRight
+
+
+def adjust_indexes_for_code_tags_at_beginning_of_block_comment(lTokens, iLeft, iLines):
+    if code_tag_detected(lTokens[0]):
+        iLeft = 2
+        iLines -= 1
+    if code_tag_detected(lTokens[1]):
+        iLeft = 3
+        iLines -= 1
+    return iLeft, iLines
+
+
+def adjust_indexes_for_code_tags_at_end_of_block_comment(lTokens, iRight, iLines):
+    if code_tag_detected(lTokens[-1]):
+        if rules_utils.token_is_whitespace(lTokens[-2]):
+            iRight = len(lTokens) - 4
+        else:
+            iRight = len(lTokens) - 3
+        iLines -= 1
+    return iRight, iLines
+
+
+def code_tag_detected(oToken):
+    if 'vsg_on' in oToken.get_value() or 'vsg_off' in oToken.get_value():
         return True
     return False
