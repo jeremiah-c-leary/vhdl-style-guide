@@ -90,6 +90,8 @@ from vsg.rules import attribute_specification
 from vsg.rules import block
 from vsg.rules import block_comment
 from vsg.rules import case
+from vsg.rules import case_generate_alternative
+from vsg.rules import case_generate_statement
 from vsg.rules import comment
 from vsg.rules import component
 from vsg.rules import concurrent
@@ -101,12 +103,14 @@ from vsg.rules import entity_specification
 from vsg.rules import exit_statement
 from vsg.rules import file_statement
 from vsg.rules import for_loop
+from vsg.rules import for_generate_statement
 from vsg.rules import function
 from vsg.rules import generate
 from vsg.rules import generic
 from vsg.rules import generic_map
 from vsg.rules import ieee
 from vsg.rules import if_statement
+from vsg.rules import if_generate_statement
 from vsg.rules import instantiation
 from vsg.rules import iteration_scheme
 from vsg.rules import length
