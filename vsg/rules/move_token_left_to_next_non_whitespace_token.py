@@ -33,6 +33,7 @@ class move_token_left_to_next_non_whitespace_token(structure.Rule):
         self.subphase = 2
         self.token_to_move = token_to_move
         self.bInsertWhitespace = True
+        self.bRemoveTrailingWhitespace = True
 
     def _get_tokens_of_interest(self, oFile):
         lToi = oFile.get_tokens_between_non_whitespace_token_and_token(self.token_to_move)
@@ -65,7 +66,10 @@ class move_token_left_to_next_non_whitespace_token(structure.Rule):
             rules_utils.insert_whitespace(lTokens, 1)
 
         lNewTokens = utils.remove_consecutive_whitespace_tokens(lTokens)
-        lNewTokens = utils.remove_trailing_whitespace(lNewTokens)
+
+        if self.bRemoveTrailingWhitespace:
+            lNewTokens = utils.remove_trailing_whitespace(lNewTokens)
+
         lNewTokens = utils.fix_blank_lines(lNewTokens)
 
         oViolation.set_tokens(lNewTokens)

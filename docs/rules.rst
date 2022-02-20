@@ -16,27 +16,33 @@ The rules are divided into catagories depending on the part of the VHDL code bei
    block_rules.rst
    block_comment_rules.rst
    case_rules.rst
+   case_generate_alternative_rules.rst
+   case_generate_statement_rules.rst
    comment_rules.rst
    component_rules.rst
    concurrent_rules.rst
    constant_rules.rst
    context_rules.rst
    context_ref_rules.rst
+   element_association_rules.rst
    entity_rules.rst
    entity_specification_rules.rst
    exit_statement_rules.rst
    file_rules.rst
    for_loop_rules.rst
+   for_generate_statement_rules.rst
    function_rules.rst
    generate_rules.rst
    generic_rules.rst
    generic_map_rules.rst
    ieee_rules.rst
    if_rules.rst
+   if_generate_statement_rules.rst
    instantiation_rules.rst
    iteration_scheme_rules.rst
    length_rules.rst
    library_rules.rst
+   logical_operator_rules.rst
    loop_statement_rules.rst
    package_rules.rst
    package_body_rules.rst

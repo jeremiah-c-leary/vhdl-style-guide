@@ -75,7 +75,7 @@
 <class 'vsg.token.identifier_list.comma'>
 <class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
-<class 'vsg.token.mode.inout_keyword'>
+<class 'vsg.token.mode.buffer_keyword'>
 <class 'vsg.token.ieee.std_logic_1164.types.integer'>
 --------------------------------------------------------------------------------
 14 |   );
@@ -185,7 +185,7 @@
 <class 'vsg.token.identifier_list.comma'>
 <class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
-<class 'vsg.token.mode.inout_keyword'>
+<class 'vsg.token.mode.buffer_keyword'>
 <class 'vsg.token.ieee.std_logic_1164.types.integer'>
 --------------------------------------------------------------------------------
 35 |   );
