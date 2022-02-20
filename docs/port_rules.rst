@@ -719,3 +719,299 @@ This rule checks the semicolon is not on it's own line.
        I_WIDTH : in integer
      );
 
+port_600
+########
+
+|phase_7| |disabled| |error| |naming|
+
+This rule checks for valid prefixes on port identifiers for input ports.
+
+The default prefix is: *i\_*.
+
+|configuring_prefix_and_suffix_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   port (
+     wr_en    : in    std_logic;
+     rd_en    : in    std_logic
+   );
+
+
+**Fix**
+
+.. code-block:: vhdl
+
+   port (
+     i_wr_en    : in    std_logic;
+     i_rd_en    : in    std_logic
+   );
+
+port_601
+########
+
+|phase_7| |disabled| |error| |naming|
+
+This rule checks for valid prefixes on port identifiers for output ports.
+
+The default prefix is: *o\_*.
+
+|configuring_prefix_and_suffix_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   port (
+     wr_en    : out    std_logic;
+     rd_en    : out    std_logic
+   );
+
+
+**Fix**
+
+.. code-block:: vhdl
+
+   port (
+     o_wr_en    : out    std_logic;
+     o_rd_en    : out    std_logic
+   );
+
+port_602
+########
+
+|phase_7| |disabled| |error| |naming|
+
+This rule checks for valid prefixes on port identifiers for inout ports.
+
+The default prefix is: *io\_*.
+
+|configuring_prefix_and_suffix_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   port (
+     wr_en    : inout    std_logic;
+     rd_en    : inout    std_logic
+   );
+
+
+**Fix**
+
+.. code-block:: vhdl
+
+   port (
+     io_wr_en    : inout    std_logic;
+     io_rd_en    : inout    std_logic
+   );
+
+port_603
+########
+
+|phase_7| |disabled| |error| |naming|
+
+This rule checks for valid prefixes on port identifiers for buffer ports.
+
+The default prefix is: *b\_*.
+
+|configuring_prefix_and_suffix_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   port (
+     wr_en    : buffer    std_logic;
+     rd_en    : buffer    std_logic
+   );
+
+
+**Fix**
+
+.. code-block:: vhdl
+
+   port (
+     b_wr_en    : buffer    std_logic;
+     b_rd_en    : buffer    std_logic
+   );
+
+port_604
+########
+
+|phase_7| |disabled| |error| |naming|
+
+This rule checks for valid prefixes on port identifiers for linkage ports.
+
+The default prefix is: *l\_*.
+
+|configuring_prefix_and_suffix_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   port (
+     wr_en    : linkage    std_logic;
+     rd_en    : linkage    std_logic
+   );
+
+
+**Fix**
+
+.. code-block:: vhdl
+
+   port (
+     l_wr_en    : linkage    std_logic;
+     l_rd_en    : linkage    std_logic
+   );
+
+port_605
+########
+
+|phase_7| |disabled| |error| |naming|
+
+This rule checks for valid suffixes on port identifiers for input ports.
+
+The default suffix is: *_i*.
+
+|configuring_prefix_and_suffix_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   port (
+     wr_en    : in    std_logic;
+     rd_en    : in    std_logic
+   );
+
+
+**Fix**
+
+.. code-block:: vhdl
+
+   port (
+     wr_en_i    : in    std_logic;
+     rd_en_i    : in    std_logic
+   );
+
+port_606
+########
+
+|phase_7| |disabled| |error| |naming|
+
+This rule checks for valid suffixes on port identifiers for output ports.
+
+The default suffix is: *_o*.
+
+|configuring_prefix_and_suffix_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   port (
+     wr_en    : out    std_logic;
+     rd_en    : out    std_logic
+   );
+
+**Fix**
+
+.. code-block:: vhdl
+
+   port (
+     wr_en_o    : out    std_logic;
+     rd_en_o    : out    std_logic
+   );
+
+port_607
+########
+
+|phase_7| |disabled| |error| |naming|
+
+This rule checks for valid suffixes on port identifiers for inout ports.
+
+The default suffix is: *_io*.
+
+|configuring_prefix_and_suffix_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   port (
+     wr_en    : inout    std_logic;
+     rd_en    : inout    std_logic
+   );
+
+**Fix**
+
+.. code-block:: vhdl
+
+   port (
+     wr_en_io    : inout    std_logic;
+     rd_en_io    : inout    std_logic
+   );
+
+port_608
+########
+
+|phase_7| |disabled| |error| |naming|
+
+This rule checks for valid suffixes on port identifiers for buffer ports.
+
+The default suffix is: *_b*.
+
+|configuring_prefix_and_suffix_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   port (
+     wr_en    : buffer    std_logic;
+     rd_en    : buffer    std_logic
+   );
+
+**Fix**
+
+.. code-block:: vhdl
+
+   port (
+     wr_en_b    : buffer    std_logic;
+     rd_en_b    : buffer    std_logic
+   );
+
+port_609
+########
+
+|phase_7| |disabled| |error| |naming|
+
+This rule checks for valid suffixes on port identifiers for linkage ports.
+
+The default suffix is: *_l*.
+
+|configuring_prefix_and_suffix_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   port (
+     wr_en    : linkage    std_logic;
+     rd_en    : linkage    std_logic
+   );
+
+**Fix**
+
+.. code-block:: vhdl
+
+   port (
+     wr_en_l    : linkage    std_logic;
+     rd_en_l    : linkage    std_logic
+   );
+
