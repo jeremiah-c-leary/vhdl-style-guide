@@ -599,6 +599,12 @@ def count_carriage_returns(lTokens):
     return iReturn
 
 
+def increment_comment_counter(iComment, oToken):
+    if isinstance(oToken, parser.comment):
+        return iComment + 1
+    return iComment
+
+
 def find_carriage_return(lTokens, iToken=0):
     for iIndex in range(iToken, len(lTokens)):
         if isinstance(lTokens[iIndex], parser.carriage_return):

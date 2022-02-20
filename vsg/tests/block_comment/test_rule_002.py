@@ -35,7 +35,7 @@ class test_block_comment_rule(unittest.TestCase):
         oRule = block_comment.rule_002()
         oRule.comment_left = '+'
 
-        lExpected = [3, 4, 5, 15, 16, 17, 18, 22, 23, 24, 25, 60]
+        lExpected = [3, 4, 5, 15, 16, 17, 18, 22, 23, 24, 25]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -44,7 +44,7 @@ class test_block_comment_rule(unittest.TestCase):
         oRule = block_comment.rule_002()
         oRule.comment_left = '|'
 
-        lExpected = [3, 4, 5, 9, 10, 11, 22, 23, 24, 25, 46, 47, 48, 60]
+        lExpected = [3, 4, 5, 9, 10, 11, 22, 23, 24, 25, 46, 47, 48]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -53,7 +53,7 @@ class test_block_comment_rule(unittest.TestCase):
         oRule = block_comment.rule_002()
         oRule.comment_left = '!'
 
-        lExpected = [3, 4, 5, 9, 10, 11, 15, 16, 17, 18, 46, 47, 48, 60]
+        lExpected = [3, 4, 5, 9, 10, 11, 15, 16, 17, 18, 46, 47, 48]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -63,7 +63,7 @@ class test_block_comment_rule(unittest.TestCase):
         oRule.allow_indenting = False
         oRule.comment_left = '|'
 
-        lExpected = [3, 4, 5, 9, 10, 11, 22, 23, 24, 25]
+        lExpected = [3, 4, 5, 9, 10, 11, 22, 23, 24, 25, 46, 47, 48]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))

@@ -45,6 +45,12 @@ class New():
     def get_end_index(self):
         return self.iEndIndex
 
+    def get_first_token_matching(self, oTokenType):
+        for oToken in self.lTokens:
+            if isinstance(oToken, oTokenType):
+                return oToken
+        return None
+
     def token_type_exists(self, oTokenType):
         for oToken in self.lTokens:
             if isinstance(oToken, oTokenType):
