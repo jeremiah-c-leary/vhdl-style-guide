@@ -134,6 +134,9 @@ class New():
         pp=pprint.PrettyPrinter(indent=4)
         pp.pprint(self.dMap)
 
+    def get_index_of_line(self, iLine):
+        return(self.dMap['parser']['carriage_return'][iLine - 2] + 1)
+
 
 def extract_unique_id(oToken):
     lDoc = oToken.__doc__.split()

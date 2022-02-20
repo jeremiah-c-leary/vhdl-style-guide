@@ -484,8 +484,9 @@ def post_token_assignments(lTokens):
                 lTokens[iToken] = parser.character_literal(sValue)
                 continue
         else:
-            oCodeTags.update(oToken)
-            oToken.set_code_tags(oCodeTags.get_tags())
+            bVsgOn = oCodeTags.update(oToken)
+            if not bVsgOn:
+                oToken.set_code_tags(oCodeTags.get_tags())
             sValue = oToken.get_value()
             if sValue  == '+':
                 if utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken - 1, lTokens):

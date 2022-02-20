@@ -1,5 +1,6 @@
 
 from vsg import parser
+from vsg import token
 
 from vsg.vhdlFile import utils
 
@@ -241,4 +242,32 @@ def remove_toi_if_token_is_at_the_end_of_the_line(lToi):
         if left_most_token_is_at_the_end_of_a_line(lTokens):
             continue
         lReturn.append(oToi)
+    return lReturn
+
+
+def extract_identifiers_with_mode_of_input(lToi):
+    return extract_identifiers_with_mode(lToi, token.mode.in_keyword)
+
+
+def extract_identifiers_with_mode_of_out(lToi):
+    return extract_identifiers_with_mode(lToi, token.mode.out_keyword)
+
+
+def extract_identifiers_with_mode_of_inout(lToi):
+    return extract_identifiers_with_mode(lToi, token.mode.inout_keyword)
+
+
+def extract_identifiers_with_mode_of_buffer(lToi):
+    return extract_identifiers_with_mode(lToi, token.mode.buffer_keyword)
+
+
+def extract_identifiers_with_mode_of_linkage(lToi):
+    return extract_identifiers_with_mode(lToi, token.mode.linkage_keyword)
+
+
+def extract_identifiers_with_mode(lToi, oTokenType):
+    lReturn = []
+    for oToi in lToi:
+        if oToi.token_type_exists(oTokenType):
+            lReturn.append(oToi.extract_tokens(0, 0))
     return lReturn

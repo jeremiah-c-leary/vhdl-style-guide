@@ -139,8 +139,8 @@
 <class 'vsg.token.concurrent_simple_signal_assignment.target'>
 <class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
 <class 'vsg.parser.open_parenthesis'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.choice.others_keyword'>
+<class 'vsg.token.element_association.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.open_parenthesis'>
 <class 'vsg.token.unary_logical_operator.and_operator'>
@@ -168,8 +168,8 @@
 <class 'vsg.token.concurrent_simple_signal_assignment.target'>
 <class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
 <class 'vsg.parser.open_parenthesis'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.choice.others_keyword'>
+<class 'vsg.token.element_association.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.open_parenthesis'>
 <class 'vsg.token.unary_logical_operator.nand_operator'>
@@ -182,8 +182,8 @@
 <class 'vsg.token.concurrent_simple_signal_assignment.target'>
 <class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
 <class 'vsg.parser.open_parenthesis'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.choice.others_keyword'>
+<class 'vsg.token.element_association.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.open_parenthesis'>
 <class 'vsg.token.unary_logical_operator.or_operator'>
@@ -196,8 +196,8 @@
 <class 'vsg.token.concurrent_simple_signal_assignment.target'>
 <class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
 <class 'vsg.parser.open_parenthesis'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.choice.others_keyword'>
+<class 'vsg.token.element_association.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.open_parenthesis'>
 <class 'vsg.token.unary_logical_operator.nor_operator'>
@@ -210,8 +210,8 @@
 <class 'vsg.token.concurrent_simple_signal_assignment.target'>
 <class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
 <class 'vsg.parser.open_parenthesis'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.choice.others_keyword'>
+<class 'vsg.token.element_association.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.open_parenthesis'>
 <class 'vsg.token.unary_logical_operator.xor_operator'>
@@ -224,8 +224,8 @@
 <class 'vsg.token.concurrent_simple_signal_assignment.target'>
 <class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
 <class 'vsg.parser.open_parenthesis'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.choice.others_keyword'>
+<class 'vsg.token.element_association.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.open_parenthesis'>
 <class 'vsg.token.unary_logical_operator.xnor_operator'>

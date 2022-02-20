@@ -38,6 +38,7 @@ class New():
               else:
                  for sCodeTag in lValues[2:]:
                      self.remove(sCodeTag)
+              return True
           elif sValue.startswith('-- vsg_off'):
               lValues = sValue.split()
               if len(lValues) == 2:
@@ -58,3 +59,4 @@ class New():
               self.bIgnoreNextCarriageReturn = False
           else:
               self.next_line_code_tags.clear()
+      return False

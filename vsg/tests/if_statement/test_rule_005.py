@@ -27,7 +27,7 @@ class test_if_statement_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'if')
         self.assertEqual(oRule.identifier, '005')
 
-        lExpected = [19, 25]
+        lExpected = [19, 25, 31]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))

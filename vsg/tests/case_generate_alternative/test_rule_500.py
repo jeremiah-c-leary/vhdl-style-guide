@@ -2,53 +2,49 @@
 import os
 import unittest
 
-from vsg.rules import entity_specification
+from vsg.rules import case_generate_alternative
 from vsg import vhdlFile
 from vsg.tests import utils
 
 sTestDir = os.path.dirname(__file__)
 
-lFile, eError =vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_502_test_input.vhd'))
+lFile, eError =vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_500_test_input.vhd'))
 
 lExpected_lower = []
 lExpected_lower.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_502_test_input.fixed_lower.vhd'), lExpected_lower)
+utils.read_file(os.path.join(sTestDir, 'rule_500_test_input.fixed_lower.vhd'), lExpected_lower)
 
 lExpected_upper = []
 lExpected_upper.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_502_test_input.fixed_upper.vhd'), lExpected_upper)
+utils.read_file(os.path.join(sTestDir, 'rule_500_test_input.fixed_upper.vhd'), lExpected_upper)
 
-
-class test_entity_specification_statement_rule(unittest.TestCase):
+class test_case_generate_alternative_rule(unittest.TestCase):
 
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
 
-    def test_rule_502_lower(self):
-        oRule = entity_specification.rule_502()
+    def test_rule_500_lower(self):
+        oRule = case_generate_alternative.rule_500()
         self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'entity_specification')
-        self.assertEqual(oRule.identifier, '502')
+        self.assertEqual(oRule.name, 'case_generate_alternative')
+        self.assertEqual(oRule.identifier, '500')
 
-        lExpected = [6, 6]
+        lExpected = [12]
 
         oRule.analyze(self.oFile)
         self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
 
-    def test_rule_502_upper(self):
-        oRule = entity_specification.rule_502()
+    def test_rule_500_upper(self):
+        oRule = case_generate_alternative.rule_500()
         oRule.case = 'upper'
-        self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'entity_specification')
-        self.assertEqual(oRule.identifier, '502')
 
-        lExpected = [4, 4]
+        lExpected = [7]
         oRule.analyze(self.oFile)
         self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
 
-    def test_fix_rule_502_lower(self):
-        oRule = entity_specification.rule_502()
+    def test_fix_rule_500_lower(self):
+        oRule = case_generate_alternative.rule_500()
 
         oRule.fix(self.oFile)
 
@@ -59,8 +55,8 @@ class test_entity_specification_statement_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
 
-    def test_fix_rule_502_upper(self):
-        oRule = entity_specification.rule_502()
+    def test_fix_rule_500_upper(self):
+        oRule = case_generate_alternative.rule_500()
         oRule.case = 'upper'
 
         oRule.fix(self.oFile)

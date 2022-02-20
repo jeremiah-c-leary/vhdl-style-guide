@@ -3,6 +3,8 @@ from vsg import exceptions
 from vsg import parser
 
 from vsg.token import direction
+from vsg.token import choice
+from vsg.token import element_association
 from vsg.token.ieee.std_logic_1164 import types
 
 
@@ -597,6 +599,12 @@ def count_carriage_returns(lTokens):
     return iReturn
 
 
+def increment_comment_counter(iComment, oToken):
+    if isinstance(oToken, parser.comment):
+        return iComment + 1
+    return iComment
+
+
 def find_carriage_return(lTokens, iToken=0):
     for iIndex in range(iToken, len(lTokens)):
         if isinstance(lTokens[iIndex], parser.carriage_return):
@@ -786,5 +794,9 @@ def assign_special_tokens(lObjects, iCurrent, oType):
         assign_token(lObjects, iCurrent, types.unsigned)
     elif sValue.lower() == 'natural':
         assign_token(lObjects, iCurrent, types.natural)
+    elif sValue.lower() == 'others':
+        assign_token(lObjects, iCurrent, choice.others_keyword)
+    elif sValue.lower() == '=>':
+        assign_token(lObjects, iCurrent, element_association.assignment)
     else:
         assign_token(lObjects, iCurrent, oType)

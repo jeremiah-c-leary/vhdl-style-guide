@@ -300,6 +300,8 @@ class comment(item):
 
     def __init__(self, sString):
         item.__init__(self, sString)
+        self.is_block_comment = False
+        self.block_comment_indent = None
 
 
 class logical_name(item):

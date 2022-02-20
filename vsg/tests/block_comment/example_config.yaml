@@ -1,0 +1,25 @@
+rule:
+    global:
+        disable : True
+    block_comment_001:
+        disable : False
+        allow_indenting : False
+        header_left : '-'
+        header_left_repeat : '-'
+        header_string : '<-    80 chars    ->'
+        header_right_repeat : '-'
+        max_header_column : 80
+    block_comment_002:
+        disable : False
+        allow_indenting : False
+        comment_left : '!'
+    block_comment_003:
+        disable : False
+        allow_indenting : False
+        footer_left : '-'
+        footer_left_repeat : '-'
+        max_footer_column : 80
+    comment_010:
+        disable: False
+    whitespace_012:
+        disable: True
