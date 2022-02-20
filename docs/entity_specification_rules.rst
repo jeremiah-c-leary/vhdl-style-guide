@@ -92,23 +92,7 @@ This rule checks the **all** keyword has proper case.
 entity_specification_502
 ########################
 
-|phase_6| |error| |case| |case_name|
-
-This rule checks the *entity_designator* has proper case.
-
-|configuring_uppercase_and_lowercase_rules_link|
-
-**Violation**
-
-.. code-block:: vhdl
-
-   attribute coordinate of COMP_1, COMP_2 : component is (0.0, 17.5);
-
-**Fix**
-
-.. code-block:: vhdl
-
-   attribute coordinate of comp_1, comp_2 : component is (0.0, 17.5);
+This rule has been deprecated.  The case of *entity_designator* should be enforced by other rules.
 
 entity_specification_503
 ########################
