@@ -132,7 +132,7 @@ def main():
                 print(sOutputStd)
             if sOutputErr:
                 print(sOutputErr, file=sys.stderr)
-
+    
     else:
         with multiprocessing.Pool(commandLineArguments.jobs) as pool:
             for tResult in pool.imap(f, enumerate(commandLineArguments.filename)):
@@ -142,25 +142,24 @@ def main():
                     print(sOutputStd)
                 if sOutputErr:
                     print(sOutputErr, file=sys.stderr)
-
+    
     for tValue in lReturn:
         fStatus, testCase, dJsonEntry = tValue
         fExitStatus = fExitStatus or fStatus
-
+    
         if commandLineArguments.junit:
             oJunitTestsuite.add_testcase(testCase)
-
+    
         if commandLineArguments.json:
             dJson['files'].append(dJsonEntry)
-
+    
     if commandLineArguments.junit:
         oJunitFile.add_testsuite(oJunitTestsuite)
         utils.write_junit_xml_file(oJunitFile)
-
+    
     if commandLineArguments.json:
         with open(commandLineArguments.json, 'w') as oFile:
             oFile.write(json.dumps(dJson, indent=2))
-
 
     sys.exit(fExitStatus)
 
