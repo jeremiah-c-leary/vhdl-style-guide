@@ -235,7 +235,8 @@ def configure_global_rule_attributes(self, oConfig):
             if sAttributeName == 'severity':
                 self.severity = oConfig.severity_list.get_severity_named(oConfig.dConfig['rule']['global']['severity'])
             elif sAttributeName in self.__dict__:
-                self.__dict__[sAttributeName] = oConfig.dConfig['rule']['global'][sAttributeName]
+                if sAttributeName in self.configuration:
+                     self.__dict__[sAttributeName] = oConfig.dConfig['rule']['global'][sAttributeName]
     except KeyError:
         pass
 

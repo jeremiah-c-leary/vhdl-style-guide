@@ -43,4 +43,5 @@ class rule_010(token_case_in_range_bounded_by_tokens):
         token_case_in_range_bounded_by_tokens.__init__(self, 'port', '010', lTokens, token.port_clause.open_parenthesis, token.port_clause.close_parenthesis)
         self.configuration.append('prefix_exceptions')
         self.configuration.append('suffix_exceptions')
+        self.configuration.append('case_exceptions')
         self.groups.append('case::name')

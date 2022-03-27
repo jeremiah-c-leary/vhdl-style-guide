@@ -37,4 +37,5 @@ class rule_007(token_case_in_range_bounded_by_tokens):
         token_case_in_range_bounded_by_tokens.__init__(self, 'generic', '007', lTokens, oStart, oEnd)
         self.configuration.append('prefix_exceptions')
         self.configuration.append('suffix_exceptions')
+        self.configuration.append('case_exceptions')
         self.groups.append('case::name')

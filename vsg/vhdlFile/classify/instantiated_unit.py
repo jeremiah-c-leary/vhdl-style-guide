@@ -37,7 +37,8 @@ def classify(iToken, lObjects):
 
     elif utils.is_next_token('entity', iCurrent, lObjects):
         iCurrent = utils.assign_next_token_required('entity', token.entity_keyword, iCurrent, lObjects)
-        iCurrent = utils.assign_next_token(token.entity_name, iCurrent, lObjects)
+
+        iCurrent = classify_entity_name(iCurrent, lObjects)
 
         if utils.is_next_token('(', iCurrent, lObjects):
             iCurrent = utils.assign_next_token_required('(', token.open_parenthesis, iCurrent, lObjects)
@@ -45,6 +46,21 @@ def classify(iToken, lObjects):
             iCurrent = utils.assign_next_token_required(')', token.close_parenthesis, iCurrent, lObjects)
     else:
         iCurrent = utils.assign_next_token(token.component_name, iCurrent, lObjects)
+
+    return iCurrent
+
+
+def classify_entity_name(iToken, lObjects):
+    iCurrent = utils.find_next_token(iToken, lObjects)
+    sTokenValue = lObjects[iCurrent].get_value()
+    if '.' in sTokenValue:
+        lTokenValue = sTokenValue.split('.')
+        lObjects[iCurrent] = token.library_name(lTokenValue[0])
+        lObjects.insert(iCurrent + 1, token.dot('.'))
+        lObjects.insert(iCurrent + 2, token.entity_name(lTokenValue[1]))
+        iCurrent = iCurrent + 2
+    else:
+        iCurrent = utils.assign_next_token(token.entity_name, iCurrent, lObjects)
 
     return iCurrent
 

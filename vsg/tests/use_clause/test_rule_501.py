@@ -46,7 +46,7 @@ class test_use_clause_rule(unittest.TestCase):
 
     def test_rule_501_lower_with_exceptions(self):
         oRule = use_clause.rule_501()
-        oRule.exceptions = ['My_Math_Stuff', 'MY_STRING_STUFF']
+        oRule.case_exceptions = ['My_Math_Stuff', 'MY_STRING_STUFF']
 
         lExpected = []
 
@@ -64,7 +64,7 @@ class test_use_clause_rule(unittest.TestCase):
     def test_rule_501_upper_with_exceptions(self):
         oRule = use_clause.rule_501()
         oRule.case = 'upper'
-        oRule.exceptions = ['My_Math_Stuff', 'my_logic_stuff']
+        oRule.case_exceptions = ['My_Math_Stuff', 'my_logic_stuff']
 
         lExpected = []
         oRule.analyze(self.oFile)
@@ -84,7 +84,7 @@ class test_use_clause_rule(unittest.TestCase):
 
     def test_fix_rule_501_lower_with_exceptions(self):
         oRule = use_clause.rule_501()
-        oRule.exceptions = ['My_Math_Stuff', 'MY_STRING_STUFF']
+        oRule.case_exceptions = ['My_Math_Stuff', 'MY_STRING_STUFF']
 
         oRule.fix(self.oFile)
 
@@ -111,7 +111,7 @@ class test_use_clause_rule(unittest.TestCase):
     def test_fix_rule_501_upper_with_exceptions(self):
         oRule = use_clause.rule_501()
         oRule.case = 'upper'
-        oRule.exceptions = ['My_Math_Stuff', 'my_logic_stuff']
+        oRule.case_exceptions = ['My_Math_Stuff', 'my_logic_stuff']
 
         oRule.fix(self.oFile)
 

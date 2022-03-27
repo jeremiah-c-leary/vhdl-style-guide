@@ -33,7 +33,7 @@ class token_case_formal_part_of_association_element_in_map_between_tokens(case.R
         self.configuration.append('case')
         self.prefix_exceptions = []
         self.suffix_exceptions = []
-        self.exceptions = []
+        self.case_exceptions = []
         if sMapType == 'port':
             self.oMapStart = token.port_map_aspect.open_parenthesis
             self.oMapEnd = token.port_map_aspect.close_parenthesis
@@ -44,7 +44,7 @@ class token_case_formal_part_of_association_element_in_map_between_tokens(case.R
         self.oEnd = oEnd
 
     def _get_tokens_of_interest(self, oFile):
-        self.exceptions_lower = utils.lowercase_list(self.exceptions)
+        self.case_exceptions_lower = utils.lowercase_list(self.case_exceptions)
         return oFile.get_tokens_bounded_by(self.oStart, self.oEnd)
 
     def _analyze(self, lToi):

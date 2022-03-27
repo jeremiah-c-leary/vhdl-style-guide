@@ -29,4 +29,4 @@ class rule_501(Rule):
     def __init__(self):
         Rule.__init__(self, 'use_clause', '501', lTokens)
         self.groups.append('case::name')
-        self.configuration.append('exceptions')
+        self.configuration.append('case_exceptions')

@@ -23,3 +23,4 @@ class token_case_with_prefix_suffix(rules.token_case):
         rules.token_case.__init__(self, name=name, identifier=identifier, lTokens=lTokens)
         self.configuration.append('prefix_exceptions')
         self.configuration.append('suffix_exceptions')
+        self.configuration.append('case_exceptions')

@@ -46,7 +46,7 @@ class test_use_clause_rule(unittest.TestCase):
 
     def test_rule_500_lower_with_exceptions(self):
         oRule = use_clause.rule_500()
-        oRule.exceptions = ['My_Lib', 'IEEE']
+        oRule.case_exceptions = ['My_Lib', 'IEEE']
 
         lExpected = [3, 5, 7]
 
@@ -64,7 +64,7 @@ class test_use_clause_rule(unittest.TestCase):
     def test_rule_500_upper_with_exceptions(self):
         oRule = use_clause.rule_500()
         oRule.case = 'upper'
-        oRule.exceptions = ['YetAnotherLib', 'ieee']
+        oRule.case_exceptions = ['YetAnotherLib', 'ieee']
 
         lExpected = [5, 5]
         oRule.analyze(self.oFile)
@@ -84,7 +84,7 @@ class test_use_clause_rule(unittest.TestCase):
 
     def test_fix_rule_500_lower_with_exceptions(self):
         oRule = use_clause.rule_500()
-        oRule.exceptions = ['My_Lib', 'IEEE']
+        oRule.case_exceptions = ['My_Lib', 'IEEE']
 
         oRule.fix(self.oFile)
 
@@ -111,7 +111,7 @@ class test_use_clause_rule(unittest.TestCase):
     def test_fix_rule_500_upper_with_exceptions(self):
         oRule = use_clause.rule_500()
         oRule.case = 'upper'
-        oRule.exceptions = ['YetAnotherLib', 'ieee']
+        oRule.case_exceptions = ['YetAnotherLib', 'ieee']
 
         oRule.fix(self.oFile)
 
