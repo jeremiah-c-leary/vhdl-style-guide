@@ -43,17 +43,21 @@ def classify_selected_name(iToken, lObjects):
 def build_selected_name_token_list(lTokens):
     lNewTokens = []
     for iThisToken, sToken in enumerate(lTokens):
-        if iThisToken == 0:
-            lNewTokens.append(token.library_name(sToken))
-        elif sToken.lower() == 'all':
-            lNewTokens.append(token.all_keyword(sToken))
-        elif iThisToken == len(lTokens) - 1:
-            lNewTokens.append(token.item_name(sToken))
-        else:
-            lNewTokens.append(token.package_name(sToken))
-        lNewTokens.append(token.dot())
+        classify_selected_name_elements(iThisToken, sToken, lNewTokens, lTokens)
     lNewTokens.pop()
     return lNewTokens
+
+
+def classify_selected_name_elements(iThisToken, sToken, lNewTokens, lTokens):
+    if iThisToken == 0:
+        lNewTokens.append(token.library_name(sToken))
+    elif sToken.lower() == 'all':
+        lNewTokens.append(token.all_keyword(sToken))
+    elif iThisToken == len(lTokens) - 1:
+        lNewTokens.append(token.item_name(sToken))
+    else:
+        lNewTokens.append(token.package_name(sToken))
+    lNewTokens.append(token.dot())
 
 
 def replace_item_in_list_with_a_list_at_index(lFirstList, lSecondList, iIndex):

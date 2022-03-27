@@ -178,10 +178,16 @@ def check_for_lower_case(sObjectValue, oToi, iIndex, iLine):
 
 
 def check_for_lower_case_with_whole_exception(sObjectValue, self, oToi, iIndex, iLine):
-    if sObjectValue.lower() in self.case_exceptions_lower:
+    if exception_found(sObjectValue, self):
         return check_for_exception(sObjectValue, self, oToi, iIndex, iLine)
     elif not sObjectValue.islower():
         return create_case_violation(sObjectValue, sObjectValue.lower(), oToi, iIndex, iLine)
+
+
+def exception_found(sObjectValue, self):
+    if sObjectValue.lower() in self.case_exceptions_lower:
+        return True
+    return False
 
 
 def check_for_exception(sObjectValue, self, oToi, iIndex, iLine):
@@ -196,7 +202,7 @@ def check_for_upper_case(sObjectValue, oToi, iIndex, iLine):
 
 
 def check_for_upper_case_with_whole_exception(sObjectValue, self, oToi, iIndex, iLine):
-    if sObjectValue.lower() in self.case_exceptions_lower:
+    if exception_found(sObjectValue, self):
         return check_for_exception(sObjectValue, self, oToi, iIndex, iLine)
     elif not sObjectValue.isupper():
         return create_case_violation(sObjectValue, sObjectValue.upper(), oToi, iIndex, iLine)
