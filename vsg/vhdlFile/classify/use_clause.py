@@ -30,7 +30,6 @@ def classify(iToken, lObjects):
 
 def classify_selected_name(iToken, lObjects):
     iTokenIndex = utils.find_next_token(iToken, lObjects)
-    sToken = lObjects[iTokenIndex].get_value()
     lTokens = lObjects[iTokenIndex].get_value().split('.')
     if lObjects[iTokenIndex + 1].get_value().startswith('"'):
         lTokens[-1] = lObjects.pop(iTokenIndex + 1).get_value()
