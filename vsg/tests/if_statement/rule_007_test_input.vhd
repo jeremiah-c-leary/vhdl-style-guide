@@ -40,6 +40,27 @@ begin
       end if;
     end if;
 
+    -- case statement override
+
+    if a = '1' then
+
+        case x is
+        end case;
+
+    elsif c = '1' then
+
+    end if;
+
+    -- loop statement override
+
+    if a = '1' then
+
+        loop
+        end loop;
+
+    elsif c = '1' then
+
+    end if;
 
   end process;
 

@@ -59,6 +59,16 @@ begin
 
     end if;
 
+    -- loop statements
+
+    if a = '1' then
+
+    elsif c = '1' then
+
+        loop
+        end loop;
+
+    end if;
 
   end process;
 
