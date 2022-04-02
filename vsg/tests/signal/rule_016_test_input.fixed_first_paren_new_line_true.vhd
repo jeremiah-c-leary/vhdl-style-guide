@@ -13,7 +13,8 @@ architecture ARCH of ENTITY is
 
 
   -- Test record types with assignments
-  signal sig_a : t_record_type(
+  signal sig_a : t_record_type
+ (
     data(31 downto 0),
     empty(7 downto 0),
     error(0 downto 0)

@@ -1,35 +1,36 @@
 
+from vsg.rules import multiline_declaration_structure as Rule
+
 from vsg import token
 
-from vsg.rules import remove_carriage_returns_between_token_pairs
-
-lTokens = []
-lTokens.append([token.signal_declaration.signal_keyword, token.signal_declaration.semicolon])
+lTokenPairs = []
+lTokenPairs.append([token.signal_declaration.signal_keyword, token.signal_declaration.semicolon])
 
 
-class rule_016(remove_carriage_returns_between_token_pairs):
+class rule_016(Rule):
     '''
-    This rule checks the signal declaration is on a single line.
+    This rule checks the structure of multiline signal declarations.
+
+    |configuring_multiline_structure_rules_link|
+
+    .. NOTE:: The indenting of multiline array constants is handled by the rule `constant_012 <constant_rules.html#constant-012>`_.
 
     **Violation**
 
     .. code-block:: vhdl
 
-       signal sig1
-         : std_logic;
-
-       signal sig2 :
-         std_logic;
+       signal sig_a : my_type (0, 65535, 32768);
 
     **Fix**
 
     .. code-block:: vhdl
 
-       signal sig1 : std_logic;
-
-       signal sig2 : std_logic;
+       signal sig_a : romq_type (
+         0,
+         65535,
+         32768
+       );
     '''
 
     def __init__(self):
-        remove_carriage_returns_between_token_pairs.__init__(self, 'signal', '016', lTokens)
-        self.solution = 'ensure signal declaration is on a single line.'
+        Rule.__init__(self, 'signal', '016', lTokenPairs)

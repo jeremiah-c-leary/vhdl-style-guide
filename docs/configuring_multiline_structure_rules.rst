@@ -324,4 +324,5 @@ The following code would pass with this option:
 Rules Enforcing Multiline Structure Rules
 #########################################
 
-* `concurrent_011 <concurrent_rules.html#concurrent-011>`_
+* `constant_016 <constant_rules.html#constant-016>`_
+* `signal_016 <signal_rules.html#signal-016>`_

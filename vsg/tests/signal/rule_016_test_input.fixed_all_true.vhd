@@ -13,30 +13,40 @@ architecture ARCH of ENTITY is
 
 
   -- Test record types with assignments
-  signal sig_a : t_record_type(
-    data(31 downto 0),
-    empty(7 downto 0),
-    error(0 downto 0)
-  );
-
-  signal sig_a : t_record_type(data(31 downto 0), empty(7 downto 0), error(0 downto 0));
-
   signal sig_a : t_record_type
-  (
+ (
     data(31 downto 0),
     empty(7 downto 0),
     error(0 downto 0)
   );
 
   signal sig_a : t_record_type
-  (
-    data(31 downto 0),
-    empty(7 downto 0),
-    error(0 downto 0));
+ (
+ data(31 downto 0),
+ empty(7 downto 0),
+ error(0 downto 0)
+ );
 
   signal sig_a : t_record_type
   (
-    data(31 downto 0), empty(7 downto 0), error(0 downto 0));
+    data(31 downto 0),
+    empty(7 downto 0),
+    error(0 downto 0)
+  );
+
+  signal sig_a : t_record_type
+  (
+    data(31 downto 0),
+    empty(7 downto 0),
+    error(0 downto 0)
+ );
+
+  signal sig_a : t_record_type
+  (
+    data(31 downto 0),
+ empty(7 downto 0),
+ error(0 downto 0)
+ );
 
   -- Open Paren
 
@@ -55,10 +65,14 @@ architecture ARCH of ENTITY is
   );
 
   signal sig_a : t_record_type
-  ((data1(31 downto 0),
+  (
+ (
+ data1(31 downto 0),
       empty1(7 downto 0),
       error1(0 downto 0)
-    ),(data1(31 downto 0),
+    ),
+ (
+ data1(31 downto 0),
       empty1(7 downto 0),
       error1(0 downto 0)
     )
@@ -71,11 +85,13 @@ architecture ARCH of ENTITY is
     (
       data1(31 downto 0),
       empty1(7 downto 0),
-      error1(0 downto 0)),
+      error1(0 downto 0)
+ ),
     (
       data1(31 downto 0),
       empty1(7 downto 0),
-      error1(0 downto 0))
+      error1(0 downto 0)
+ )
   );
 
   -- Comment on last line check
@@ -85,22 +101,27 @@ architecture ARCH of ENTITY is
     (
       data1(31 downto 0),
       empty1(7 downto 0),
-      error1(0 downto 0)),
+      error1(0 downto 0)
+ ),
     (
       data1(31 downto 0),
       empty1(7 downto 0),
-      error1(0 downto 0))); -- Comment
+      error1(0 downto 0)
+ ) -- Comment
+ );
 
   signal sig_a : t_record_type
   (
     (
       data1(31 downto 0),
       empty1(7 downto 0),
-      error1(0 downto 0)),
+      error1(0 downto 0)
+ ),
     (
       data1(31 downto 0),
       empty1(7 downto 0),
-      error1(0 downto 0))
+      error1(0 downto 0)
+ )
   ); -- Comment
 
 begin

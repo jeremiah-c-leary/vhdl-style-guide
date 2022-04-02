@@ -36,7 +36,9 @@ architecture ARCH of ENTITY is
 
   signal sig_a : t_record_type
   (
-    data(31 downto 0), empty(7 downto 0), error(0 downto 0));
+    data(31 downto 0),
+ empty(7 downto 0),
+ error(0 downto 0));
 
   -- Open Paren
 
@@ -58,7 +60,8 @@ architecture ARCH of ENTITY is
   ((data1(31 downto 0),
       empty1(7 downto 0),
       error1(0 downto 0)
-    ),(data1(31 downto 0),
+    ),
+ (data1(31 downto 0),
       empty1(7 downto 0),
       error1(0 downto 0)
     )

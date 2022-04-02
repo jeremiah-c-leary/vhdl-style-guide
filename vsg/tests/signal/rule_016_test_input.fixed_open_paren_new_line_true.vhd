@@ -55,10 +55,13 @@ architecture ARCH of ENTITY is
   );
 
   signal sig_a : t_record_type
-  ((data1(31 downto 0),
+  (
+ (
+ data1(31 downto 0),
       empty1(7 downto 0),
       error1(0 downto 0)
-    ),(data1(31 downto 0),
+    ),(
+ data1(31 downto 0),
       empty1(7 downto 0),
       error1(0 downto 0)
     )
