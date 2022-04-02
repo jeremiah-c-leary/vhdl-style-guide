@@ -103,3 +103,20 @@ Sequential next line exclusions will also be honored:
    end process;
 
 In the above example, both process_002 and process_016 will be disabled for the line starting with the process keyword.
+
+Comments in code tags
+---------------------
+
+Code tags themselves are comments, however there is a method to allow commenting of the code tag on the same line.
+The colon character, :, can be used to document why the code tag exists.
+
+.. code-block:: vhdl
+
+   -- vsg_off process_016 process_018 : VSG errors out on the following code
+   process (write, read, full) is
+   begin
+     a <= write;
+     b <= read;
+   end process;
+   -- vsg_on process_016 process_018 : Done with exclusion until VSG is fixed
+
