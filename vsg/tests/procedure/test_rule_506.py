@@ -30,6 +30,7 @@ class test_procedure_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'procedure')
         self.assertEqual(oRule.identifier, '506')
+        oRule.case_exceptions = ['ieee']
 
         lExpected = [6]
 
