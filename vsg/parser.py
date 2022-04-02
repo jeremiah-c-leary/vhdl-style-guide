@@ -509,3 +509,14 @@ class beginning_of_file(item):
 
     def __init__(self):
         item.__init__(self, 'beginning_of_file')
+
+
+class integer(item):
+    '''
+    unique_id = parser : integer
+    '''
+
+    def __init__(self, sString):
+        item.__init__(self, sString)
+
+

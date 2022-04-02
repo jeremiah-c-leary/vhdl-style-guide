@@ -20,6 +20,7 @@ def create(sString):
     oLine.combine_characters_into_words()
     oLine.combine_character_literals()
     oLine.combine_comments()
+    oLine.split_natural_numbers()
     return oLine.lChars
 
 
@@ -115,6 +116,44 @@ class New():
             combine_comment_with_trailing_whitespace(self)
         else:
             combine_comment(self)
+
+    def split_natural_numbers(self):
+        lReturn = []
+        for sChar in self.lChars:
+            if (sChar[0].isdigit() and sChar[-1].isdigit()) or (sChar[0].isdigit() and sChar[-1].lower() == 'e'):
+                if sChar.lower().endswith('e'):
+                    sNewChar = sChar[0:-1]
+                    lNewChar = sNewChar.split('.')
+                    for sNewChar in lNewChar:
+                        if not sNewChar.isdigit():
+                            lReturn.append(sChar)
+                            break
+                    else:
+                        
+                        lReturn.append('.'.join(lNewChar))
+                        lReturn.append(sChar[-1])
+                elif 'e' in sChar.lower():
+                    iEIndex = sChar.lower().index('e')
+                    sExponent = sChar[iEIndex + 1:]
+                    if not sExponent.isdigit():
+                        lReturn.append(sChar)
+                    sBase = sChar[:iEIndex]
+                    lBase = sBase.split('.')
+                    for sBase in lBase:
+                        if not sBase.isdigit():
+                            lReturn.append(sChar)
+                            break
+                    else:
+                        lReturn.append('.'.join(lBase))
+                        lReturn.append(sChar[iEIndex])
+                        lReturn.append(sExponent)
+
+                else:
+                    lReturn.append(sChar)
+            else:
+                lReturn.append(sChar)
+
+        self.lChars = lReturn
 
 
 def combine_quote_pairs(lQuotePairs, self):

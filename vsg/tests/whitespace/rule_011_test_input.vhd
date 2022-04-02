@@ -75,6 +75,14 @@ architecture RTL of FIFO is
     -904  -- comment 5
   );
 
+  constant c_con3 : t_type := (
+    -12.36e-47,
+    45.67e+67,
+    58.6729e1093,
+    -2346.7921e90,
+    401e56
+  );
+
 begin
 
 end architecture RTL;

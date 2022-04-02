@@ -35,8 +35,12 @@ class New():
               lValues = sValue.split()
               if len(lValues) == 2:
                   self.clear()
+              elif lValues[2].startswith(':'):
+                  self.clear()
               else:
                  for sCodeTag in lValues[2:]:
+                     if sCodeTag.startswith(':'):
+                         break
                      self.remove(sCodeTag)
               return True
           elif sValue.startswith('-- vsg_off'):
@@ -44,8 +48,13 @@ class New():
               if len(lValues) == 2:
                   self.clear()
                   self.add('all')
+              elif lValues[2].startswith(':'):
+                  self.clear()
+                  self.add('all')
               else:
                  for sCodeTag in lValues[2:]:
+                     if sCodeTag.startswith(':'):
+                         break
                      self.add(sCodeTag)
           elif sValue.startswith('-- vsg_disable_next_line'):
               lValues = sValue.split()
