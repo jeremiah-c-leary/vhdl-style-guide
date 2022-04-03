@@ -4,46 +4,46 @@ from vsg import parser
 
 class New():
 
-  def __init__(self):
-      self.code_tags = []
-      self.next_line_code_tags = []
-      self.bIgnoreNextCarriageReturn = False
-      self.iLine = 0
-
-  def clear(self):
-      self.code_tags.clear()
-      self.next_line_code_tags.clear()
-
-  def remove(self, sCodeTag):
-      self.code_tags.remove(sCodeTag)
-
-  def add(self, sCodeTag):
-      if sCodeTag not in self.code_tags:
-          self.code_tags.append(sCodeTag)
-
-  def get_tags(self):
-      lReturn = []
-      lReturn.extend(self.code_tags)
-      lReturn.extend(self.next_line_code_tags)
-      return lReturn
-
-  def update(self, oToken):
-
-      if isinstance(oToken, parser.carriage_return):
-          self.iLine += 1
-          if self.bIgnoreNextCarriageReturn:
-              self.bIgnoreNextCarriageReturn = False
-          else:
-              self.next_line_code_tags.clear()
-          return None
-
-      if on_code_tag_detected(oToken):
-          remove_code_tags(self, oToken)
-      elif off_code_tag_detected(oToken):
-          add_code_tags(self, oToken)
-      elif next_line_code_tag_detected(oToken):
-          add_next_line_code_tags(self, oToken)
-          self.bIgnoreNextCarriageReturn = True
+    def __init__(self):
+        self.code_tags = []
+        self.next_line_code_tags = []
+        self.bIgnoreNextCarriageReturn = False
+        self.iLine = 0
+  
+    def clear(self):
+        self.code_tags.clear()
+        self.next_line_code_tags.clear()
+  
+    def remove(self, sCodeTag):
+        self.code_tags.remove(sCodeTag)
+  
+    def add(self, sCodeTag):
+        if sCodeTag not in self.code_tags:
+            self.code_tags.append(sCodeTag)
+  
+    def get_tags(self):
+        lReturn = []
+        lReturn.extend(self.code_tags)
+        lReturn.extend(self.next_line_code_tags)
+        return lReturn
+  
+    def update(self, oToken):
+  
+        if isinstance(oToken, parser.carriage_return):
+            self.iLine += 1
+            if self.bIgnoreNextCarriageReturn:
+                self.bIgnoreNextCarriageReturn = False
+            else:
+                self.next_line_code_tags.clear()
+            return None
+  
+        if on_code_tag_detected(oToken):
+            remove_code_tags(self, oToken)
+        elif off_code_tag_detected(oToken):
+            add_code_tags(self, oToken)
+        elif next_line_code_tag_detected(oToken):
+            add_next_line_code_tags(self, oToken)
+            self.bIgnoreNextCarriageReturn = True
 
 
 def on_code_tag_detected(oToken):
@@ -53,7 +53,7 @@ def on_code_tag_detected(oToken):
         return True
     return False
 
-    
+
 def off_code_tag_detected(oToken):
     if not isinstance(oToken, parser.comment):
         return False
