@@ -518,5 +518,3 @@ class integer(item):
 
     def __init__(self, sString):
         item.__init__(self, sString)
-
-

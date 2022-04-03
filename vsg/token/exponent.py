@@ -36,4 +36,3 @@ class integer(parser.integer):
 
     def __init__(self, sString):
         parser.integer.__init__(self, sString)
-
