@@ -28,44 +28,89 @@ class New():
       return lReturn
 
   def update(self, oToken):
-      if isinstance(oToken, parser.comment):
-          sValue = oToken.get_value()
 
-          if sValue.startswith('-- vsg_on'):
-              lValues = sValue.split()
-              if len(lValues) == 2:
-                  self.clear()
-              elif lValues[2].startswith(':'):
-                  self.clear()
-              else:
-                 for sCodeTag in lValues[2:]:
-                     if sCodeTag.startswith(':'):
-                         break
-                     self.remove(sCodeTag)
-              return True
-          elif sValue.startswith('-- vsg_off'):
-              lValues = sValue.split()
-              if len(lValues) == 2:
-                  self.clear()
-                  self.add('all')
-              elif lValues[2].startswith(':'):
-                  self.clear()
-                  self.add('all')
-              else:
-                 for sCodeTag in lValues[2:]:
-                     if sCodeTag.startswith(':'):
-                         break
-                     self.add(sCodeTag)
-          elif sValue.startswith('-- vsg_disable_next_line'):
-              lValues = sValue.split()
-              for sCodeTag in lValues[2:]:
-                 if sCodeTag not in self.next_line_code_tags:
-                     self.next_line_code_tags.append(sCodeTag)
-              self.bIgnoreNextCarriageReturn = True
-      elif isinstance(oToken, parser.carriage_return):
+      if isinstance(oToken, parser.carriage_return):
           self.iLine += 1
           if self.bIgnoreNextCarriageReturn:
               self.bIgnoreNextCarriageReturn = False
           else:
               self.next_line_code_tags.clear()
-      return False
+          return None
+
+      if on_code_tag_detected(oToken):
+          remove_code_tags(self, oToken)
+      elif off_code_tag_detected(oToken):
+          add_code_tags(self, oToken)
+      elif next_line_code_tag_detected(oToken):
+          add_next_line_code_tags(self, oToken)
+          self.bIgnoreNextCarriageReturn = True
+
+
+def on_code_tag_detected(oToken):
+    if not isinstance(oToken, parser.comment):
+        return False
+    if token_starts_with(oToken, '-- vsg_on'):
+        return True
+    return False
+
+    
+def off_code_tag_detected(oToken):
+    if not isinstance(oToken, parser.comment):
+        return False
+    if token_starts_with(oToken, '-- vsg_off'):
+        return True
+    return False
+
+
+def next_line_code_tag_detected(oToken):
+    if not isinstance(oToken, parser.comment):
+        return False
+    if token_starts_with(oToken, '-- vsg_disable_next_line'):
+        return True
+    return False
+
+
+def token_starts_with(oToken, sString):
+    if oToken.get_value().startswith(sString):
+        return True
+    return False
+
+
+def remove_code_tags(self, oToken):
+    sValue = remove_code_tag_comment(oToken)
+    lValues = sValue.split()
+    if bare_code_tag(lValues):
+        self.clear()
+    else:
+       for sCodeTag in lValues[2:]:
+           self.remove(sCodeTag)
+
+
+def add_code_tags(self, oToken):
+    sValue = remove_code_tag_comment(oToken)
+    lValues = sValue.split()
+    if bare_code_tag(lValues):
+        self.clear()
+        self.add('all')
+    else:
+       for sCodeTag in lValues[2:]:
+           self.add(sCodeTag)
+
+
+def remove_code_tag_comment(oToken):
+    lString = oToken.get_value().split(':')
+    return lString[0]
+
+
+def add_next_line_code_tags(self, oToken):
+    sValue = remove_code_tag_comment(oToken)
+    lValues = sValue.split()
+    for sCodeTag in lValues[2:]:
+       if sCodeTag not in self.next_line_code_tags:
+           self.next_line_code_tags.append(sCodeTag)
+
+
+def bare_code_tag(lValues):
+    if len(lValues) == 2:
+        return True
+    return False
