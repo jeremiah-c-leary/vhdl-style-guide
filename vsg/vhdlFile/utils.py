@@ -810,7 +810,17 @@ def assign_special_tokens(lObjects, iCurrent, oType):
             assign_token(lObjects, iCurrent, exponent.e_keyword)
         else:
             assign_token(lObjects, iCurrent, oType)
-    elif isinstance(lObjects[iCurrent - 1], exponent.e_keyword) or isinstance(lObjects[iCurrent - 1], exponent.plus_sign) or isinstance(lObjects[iCurrent - 1], exponent.minus_sign):
+    elif exponent_detected(lObjects, iCurrent):
         assign_token(lObjects, iCurrent, exponent.integer)
     else:
         assign_token(lObjects, iCurrent, oType)
+
+
+def exponent_detected(lObjects, iCurrent):
+    if isinstance(lObjects[iCurrent - 1], exponent.e_keyword):
+       return True
+    if isinstance(lObjects[iCurrent - 1], exponent.plus_sign):
+       return True
+    if isinstance(lObjects[iCurrent - 1], exponent.minus_sign):
+       return True
+    return False
