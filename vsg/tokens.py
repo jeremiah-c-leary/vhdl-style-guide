@@ -129,25 +129,25 @@ class New():
 
 
 def is_natural_number(sString):
-    if sString[0].isdigit() and sString[-1].isdigit() and 'e' in sString.lower():
-        return True
-    if sString[0].isdigit() and sString[-1].lower() == 'e':
-        return True
-    return False
+    lString = sString.lower().split('e')
+    lBase = lString[0].split('.')
+    lBase.extend(lString[1:])
+    for sNum in lBase[0:-1]:
+        if not sNum.isdigit():
+            return False
+    return True
 
 
 def parse_natural_number(sString):
     lReturn = []
     sTemp = ''
     for sChar in sString:
-        if sChar.isdigit():
-            sTemp += sChar
-        elif sChar == '.':
-            sTemp += sChar
-        elif sChar.lower() == 'e':
+        if sChar.lower() == 'e':
             lReturn.append(sTemp)
             lReturn.append(sChar)
             sTemp = ''
+        else:
+            sTemp += sChar
     if len(sTemp) > 0:
         lReturn.append(sTemp)
     return lReturn
