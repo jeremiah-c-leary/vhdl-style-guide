@@ -120,40 +120,37 @@ class New():
     def split_natural_numbers(self):
         lReturn = []
         for sChar in self.lChars:
-            if (sChar[0].isdigit() and sChar[-1].isdigit()) or (sChar[0].isdigit() and sChar[-1].lower() == 'e'):
-                if sChar.lower().endswith('e'):
-                    sNewChar = sChar[0:-1]
-                    lNewChar = sNewChar.split('.')
-                    for sNewChar in lNewChar:
-                        if not sNewChar.isdigit():
-                            lReturn.append(sChar)
-                            break
-                    else:
-                        
-                        lReturn.append('.'.join(lNewChar))
-                        lReturn.append(sChar[-1])
-                elif 'e' in sChar.lower():
-                    iEIndex = sChar.lower().index('e')
-                    sExponent = sChar[iEIndex + 1:]
-                    if not sExponent.isdigit():
-                        lReturn.append(sChar)
-                    sBase = sChar[:iEIndex]
-                    lBase = sBase.split('.')
-                    for sBase in lBase:
-                        if not sBase.isdigit():
-                            lReturn.append(sChar)
-                            break
-                    else:
-                        lReturn.append('.'.join(lBase))
-                        lReturn.append(sChar[iEIndex])
-                        lReturn.append(sExponent)
-
-                else:
-                    lReturn.append(sChar)
+            if is_natural_number(sChar):
+                lReturn.extend(parse_natural_number(sChar))
             else:
                 lReturn.append(sChar)
 
         self.lChars = lReturn
+
+
+def is_natural_number(sString):
+    if sString[0].isdigit() and sString[-1].isdigit() and 'e' in sString.lower():
+        return True
+    if sString[0].isdigit() and sString[-1].lower() == 'e':
+        return True
+    return False
+
+
+def parse_natural_number(sString):
+    lReturn = []
+    sTemp = ''
+    for sChar in sString:
+        if sChar.isdigit():
+            sTemp += sChar
+        elif sChar == '.':
+            sTemp += sChar
+        elif sChar.lower() == 'e':
+            lReturn.append(sTemp)
+            lReturn.append(sChar)
+            sTemp = ''
+    if len(sTemp) > 0:
+        lReturn.append(sTemp)
+    return lReturn
 
 
 def combine_quote_pairs(lQuotePairs, self):
