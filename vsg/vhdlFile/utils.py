@@ -818,9 +818,9 @@ def assign_special_tokens(lObjects, iCurrent, oType):
 
 def exponent_detected(lObjects, iCurrent):
     if isinstance(lObjects[iCurrent - 1], exponent.e_keyword):
-       return True
+        return True
     if isinstance(lObjects[iCurrent - 1], exponent.plus_sign):
-       return True
+        return True
     if isinstance(lObjects[iCurrent - 1], exponent.minus_sign):
-       return True
+        return True
     return False
