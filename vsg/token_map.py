@@ -70,7 +70,7 @@ class New():
         for sBaseKey in lBaseKeys:
             lSubKeys = list(self.dMap[sBaseKey].keys())
             if sBaseKey == 'parser':
-                if 'whitespace' in lSubKeys: 
+                if 'whitespace' in lSubKeys:
                     lSubKeys.remove('whitespace')
                 if 'carriage_return' in lSubKeys:
                     lSubKeys.remove('carriage_return')
