@@ -161,7 +161,6 @@ def main():
         with open(commandLineArguments.json, 'w') as oFile:
             oFile.write(json.dumps(dJson, indent=2))
 
-
     sys.exit(fExitStatus)
 
 
