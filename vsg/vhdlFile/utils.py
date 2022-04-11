@@ -5,6 +5,7 @@ from vsg import parser
 from vsg.token import direction
 from vsg.token import choice
 from vsg.token import element_association
+from vsg.token import exponent
 from vsg.token.ieee.std_logic_1164 import types
 
 
@@ -765,9 +766,15 @@ def assign_special_tokens(lObjects, iCurrent, oType):
     elif sValue == '(':
         assign_token(lObjects, iCurrent, parser.open_parenthesis)
     elif sValue == '-':
-        assign_token(lObjects, iCurrent, parser.todo)
+        if isinstance(lObjects[iCurrent - 1], exponent.e_keyword):
+            assign_token(lObjects, iCurrent, exponent.minus_sign)
+        else:
+            assign_token(lObjects, iCurrent, parser.todo)
     elif sValue == '+':
-        assign_token(lObjects, iCurrent, parser.todo)
+        if isinstance(lObjects[iCurrent - 1], exponent.e_keyword):
+            assign_token(lObjects, iCurrent, exponent.plus_sign)
+        else:
+            assign_token(lObjects, iCurrent, parser.todo)
     elif sValue == '*':
         assign_token(lObjects, iCurrent, parser.todo)
     elif sValue == '**':
@@ -798,5 +805,22 @@ def assign_special_tokens(lObjects, iCurrent, oType):
         assign_token(lObjects, iCurrent, choice.others_keyword)
     elif sValue.lower() == '=>':
         assign_token(lObjects, iCurrent, element_association.assignment)
+    elif sValue.lower() == 'e':
+        if lObjects[iCurrent + 1].get_value().isdigit() or lObjects[iCurrent + 1].get_value() == '-' or lObjects[iCurrent + 1].get_value() == '+':
+            assign_token(lObjects, iCurrent, exponent.e_keyword)
+        else:
+            assign_token(lObjects, iCurrent, oType)
+    elif exponent_detected(lObjects, iCurrent):
+        assign_token(lObjects, iCurrent, exponent.integer)
     else:
         assign_token(lObjects, iCurrent, oType)
+
+
+def exponent_detected(lObjects, iCurrent):
+    if isinstance(lObjects[iCurrent - 1], exponent.e_keyword):
+        return True
+    if isinstance(lObjects[iCurrent - 1], exponent.plus_sign):
+        return True
+    if isinstance(lObjects[iCurrent - 1], exponent.minus_sign):
+        return True
+    return False
