@@ -1,5 +1,6 @@
 
 from vsg import rules
+from vsg.rules import utils
 
 
 class token_case_in_range_bounded_by_tokens(rules.token_case):
@@ -28,4 +29,5 @@ class token_case_in_range_bounded_by_tokens(rules.token_case):
         self.oEnd = oEnd
 
     def _get_tokens_of_interest(self, oFile):
+        self.case_exceptions_lower = utils.lowercase_list(self.case_exceptions)
         return oFile.get_tokens_matching_in_range_bounded_by_tokens(self.lTokens, self.oStart, self.oEnd)
