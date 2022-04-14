@@ -699,7 +699,7 @@ def is_whitespace(oObject):
 def read_vhdlfile(sFileName):
     try:
         lLines = []
-        with open(sFileName) as oFile:
+        with open(sFileName, encoding='utf-8') as oFile:
             for sLine in oFile:
                 lLines.append(sLine)
         return lLines, None
