@@ -11,7 +11,7 @@
 --------------------------------------------------------------------------------
 3 | context name1;
 <class 'vsg.token.context_reference.keyword'>
-<class 'vsg.token.context_reference.selected_name'>
+<class 'vsg.token.context_reference.context_name'>
 <class 'vsg.token.context_reference.semicolon'>
 --------------------------------------------------------------------------------
 4 | use ieee.std_logic.1164;
@@ -37,9 +37,9 @@
 --------------------------------------------------------------------------------
 7 | context name2, name3;
 <class 'vsg.token.context_reference.keyword'>
-<class 'vsg.token.context_reference.selected_name'>
+<class 'vsg.token.context_reference.context_name'>
 <class 'vsg.token.context_reference.comma'>
-<class 'vsg.token.context_reference.selected_name'>
+<class 'vsg.token.context_reference.context_name'>
 <class 'vsg.token.context_reference.semicolon'>
 --------------------------------------------------------------------------------
 8 | use ieee.std_logic.1164, ieee.std_logic_arith.all;
@@ -86,11 +86,11 @@
 --------------------------------------------------------------------------------
 12 | context name4, name5, name6;
 <class 'vsg.token.context_reference.keyword'>
-<class 'vsg.token.context_reference.selected_name'>
+<class 'vsg.token.context_reference.context_name'>
 <class 'vsg.token.context_reference.comma'>
-<class 'vsg.token.context_reference.selected_name'>
+<class 'vsg.token.context_reference.context_name'>
 <class 'vsg.token.context_reference.comma'>
-<class 'vsg.token.context_reference.selected_name'>
+<class 'vsg.token.context_reference.context_name'>
 <class 'vsg.token.context_reference.semicolon'>
 --------------------------------------------------------------------------------
 13 |
