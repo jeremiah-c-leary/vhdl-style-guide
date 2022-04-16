@@ -2,41 +2,41 @@
 import os
 import unittest
 
-from vsg.rules import comment
+from vsg.rules import case_generate_alternative
 from vsg import vhdlFile
 from vsg.tests import utils
 
 sTestDir = os.path.dirname(__file__)
 
-lFile, eError =vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_010_test_input.vhd'))
+lFile, eError =vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_300_test_input.vhd'))
 
 dIndentMap = utils.read_indent_file()
 
 lExpected = []
 lExpected.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_010_test_input.fixed.vhd'), lExpected)
+utils.read_file(os.path.join(sTestDir, 'rule_300_test_input.fixed.vhd'), lExpected)
 
 
-class test_comment_rule(unittest.TestCase):
+class test_case_rule(unittest.TestCase):
 
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
         self.oFile.set_indent_map(dIndentMap)
 
-    def test_rule_010(self):
-        oRule = comment.rule_010()
+    def test_rule_300(self):
+        oRule = case_generate_alternative.rule_300()
         self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'comment')
-        self.assertEqual(oRule.identifier, '010')
+        self.assertEqual(oRule.name, 'case_generate_alternative')
+        self.assertEqual(oRule.identifier, '300')
 
-        lExpected = [3, 8, 10, 11, 14, 15, 16, 26, 28, 32, 34, 66, 68, 74, 80, 86]
+        lExpected = [22, 27]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
-    def test_fix_rule_010(self):
-        oRule = comment.rule_010()
+    def test_fix_rule_300(self):
+        oRule = case_generate_alternative.rule_300()
 
         oRule.fix(self.oFile)
 

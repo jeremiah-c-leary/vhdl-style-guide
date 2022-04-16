@@ -2,6 +2,8 @@
 from vsg import parser
 from vsg import token
 
+from vsg.vhdlFile import utils
+
 
 def set_token_indent(dIndentMap, lTokens):
     lTokenKeys, dIndents = process_indent_map(dIndentMap)
@@ -12,7 +14,7 @@ def set_token_indent(dIndentMap, lTokens):
     dVars = {}
     dVars['insideConcurrentSignalAssignment'] = False
 
-    for oToken in lTokens:
+    for iToken, oToken in enumerate(lTokens):
 
         if isinstance(oToken, parser.whitespace):
             continue
@@ -81,7 +83,10 @@ def set_token_indent(dIndentMap, lTokens):
         ### Comments
         if isinstance(oToken, parser.comment):
             if bLibraryFound:
-                oToken.set_indent(iIndent + 1)
+                if is_use_clause_use_keyword_next(iToken + 1, lTokens):
+                    oToken.set_indent(iIndent + 1)
+                else:
+                    oToken.set_indent(iIndent)
             elif oToken.is_block_comment:
                 if oToken.block_comment_indent == 0:
                     oToken.set_indent(0)
@@ -149,3 +154,12 @@ def process_indent_map(dIndentMap):
     lReturn = list(dReturn.keys())
 
     return lReturn, dReturn
+
+
+def is_use_clause_use_keyword_next(iIndex, lTokens):
+    iToken = utils.find_next_non_whitespace_token(iIndex, lTokens)
+    if isinstance(lTokens[iToken], token.use_clause.keyword):
+        return True
+    if isinstance(lTokens[iToken], token.context_reference.keyword):
+        return True
+    return False 

@@ -61,7 +61,7 @@ architecture RTL of FIFO is
 begin end architecture RTL;
 
 library ieee;
-  -- Comment 1
+-- Comment 1
 architecture rtl of fifo is
   -- Comment 2
 begin
@@ -69,19 +69,19 @@ begin
 end architecture rtl;
 
 library ieee;
-  -- Comment 1b
+-- Comment 1b
 entity fifo is
   -- Comment 2b
 end entity;
 
 library ieee;
-  -- Comment 1c
+-- Comment 1c
 package body fifo_pkg is
   -- Comment 2c
 end package body;
 
 library ieee;
-  -- Comment 1c
+-- Comment 1c
 package fifo_pkg is
   -- Comment 2c
 end package;
