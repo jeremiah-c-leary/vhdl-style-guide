@@ -162,4 +162,4 @@ def is_use_clause_use_keyword_next(iIndex, lTokens):
         return True
     if isinstance(lTokens[iToken], token.context_reference.keyword):
         return True
-    return False 
+    return False
