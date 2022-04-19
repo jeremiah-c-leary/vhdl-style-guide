@@ -10,7 +10,7 @@ def classify_selected_name(iToken, lObjects, token):
     lNewTokens = build_selected_name_token_list(lTokens, token)
     replace_item_in_list_with_a_list_at_index(lObjects, lNewTokens, iTokenIndex)
     iNewIndex = iToken + len(lNewTokens)
-    
+
     return iNewIndex
 
 
