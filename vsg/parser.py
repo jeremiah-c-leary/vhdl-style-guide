@@ -309,6 +309,8 @@ class comment(item):
 
     def __init__(self, sString):
         item.__init__(self, sString)
+        self.is_block_comment = False
+        self.block_comment_indent = None
 
 
 class logical_name(item):
@@ -516,3 +518,12 @@ class beginning_of_file(item):
 
     def __init__(self):
         item.__init__(self, 'beginning_of_file')
+
+
+class integer(item):
+    '''
+    unique_id = parser : integer
+    '''
+
+    def __init__(self, sString):
+        item.__init__(self, sString)

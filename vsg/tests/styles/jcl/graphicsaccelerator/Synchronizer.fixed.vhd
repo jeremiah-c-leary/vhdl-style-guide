@@ -20,8 +20,8 @@ end entity SYNCHRONIZER;
 
 architecture BEHAVIORAL of SYNCHRONIZER is
 
-  signal   x,          nx          : std_logic_vector(10 downto 0) := (others=>'0');
-  signal   y,          ny          : std_logic_vector(20 downto 0) := (others=>'0');
+  signal   x,          nx          : std_logic_vector(10 downto 0) := (others => '0');
+  signal   y,          ny          : std_logic_vector(20 downto 0) := (others => '0');
   constant tpw                     : std_logic_vector(1 downto 0) := "00";
   constant tbp                     : std_logic_vector(1 downto 0) := "01";
   constant tdp                     : std_logic_vector(1 downto 0) := "10";
@@ -56,36 +56,36 @@ begin
 
     if (CLK'event and CLK = '1') then
       if (xstate=tpw and x(7 downto 1)="1100000") then
-        x      <= (others=>'0');
+        x      <= (others => '0');
         xstate <= tbp;
       elsif (xstate=tbp and x(6 downto 1)="110000") then
-        x      <= (others=>'0');
+        x      <= (others => '0');
         xstate <= tdp;
       elsif (xstate=tdp and x(10 downto 1)="1010000000") then
-        x      <= (others=>'0');
+        x      <= (others => '0');
         xstate <= tfp;
       elsif (xstate=tfp and x(5 downto 1)="10000") then
-        x          <= (others=>'0');
+        x          <= (others => '0');
         xstate     <= tpw;
         addressofy <= naddressofy;
       else
         x <= nx;
       end if;
       if (ystate=tpw and y(12 downto 1)="11001000000") then
-        y      <= (others=>'0');
+        y      <= (others => '0');
         ystate <= tbp;
       elsif (ystate=tbp and y(16 downto 1)="101101010100000") then
-        y      <= (others=>'0');
+        y      <= (others => '0');
         ystate <= tdp;
       elsif (ystate=tdp and y(20 downto 1)="1011101110000000000") then
-        y      <= (others=>'0');
+        y      <= (others => '0');
         ystate <= tfp;
       elsif (ystate=tfp and y(14 downto 1)="1111101000000") then
-        y          <= (others=>'0');
-        x          <= (others=>'0');
+        y          <= (others => '0');
+        x          <= (others => '0');
         ystate     <= tpw;
         xstate     <= tpw;
-        addressofy <= (others=>'0');
+        addressofy <= (others => '0');
       else
         y <= ny;
       end if;

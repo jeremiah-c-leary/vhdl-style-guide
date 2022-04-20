@@ -1,6 +1,5 @@
 
 import math
-import string
 
 from vsg import block_rule
 from vsg import parser
@@ -47,8 +46,6 @@ class rule_001(block_rule.Rule):
         self._print_debug_message('Analyzing rule: ' + self.unique_id)
         lToi = self._get_tokens_of_interest(oFile)
 
-        lUpdate = []
-
         for oToi in lToi:
             lTokens = oToi.get_tokens()
 
@@ -74,7 +71,6 @@ class rule_001(block_rule.Rule):
                 sLeft = self.header_left_repeat * iLeft
                 iRight = self.max_header_column - iWhitespace - 2 - iHeader_left - len(self.header_string) - iLeft
                 sRight = self.header_right_repeat * iRight
-#                print(f'({self.max_header_column} - {iWhitespace} - {len(self.header_string)}) / 2  - {iHeader_left} = {iLeft}')
                 sHeader += sLeft + self.header_string + sRight
             elif self.header_alignment == 'left':
                 sHeader += self.header_left_repeat
@@ -91,9 +87,8 @@ class rule_001(block_rule.Rule):
                 if isinstance(oToken, parser.comment):
                     sComment = oToken.get_value()
                     try:
-                        if is_header(sComment):
-                            if not self.allow_indenting:
-                                oToken.set_indent(0)
+                        if block_rule.is_header(sComment):
+                            self.set_token_indent(oToken)
                             if sComment != sHeader:
                                 sSolution = 'Change block comment header to : ' + sHeader
                                 oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
@@ -101,24 +96,7 @@ class rule_001(block_rule.Rule):
                         break
                     except IndexError:
                         break
-            if not self.allow_indenting:
-                lUpdate.append(violation.New(0, oToi, ''))
 
-        if not self.allow_indenting:
-            oFile.update(lUpdate)
-
-
-def is_header(sComment):
-    try:
-        if sComment[2] not in string.punctuation:
-            return False
-        if sComment[2] == '!':
-            return False
-        if sComment[3] not in string.punctuation:
-            return False
-    except IndexError:
-        return True
-    return True
 
 #         1         2         3         4         5         6         7         8
 #-------------------------------<-    80 chars    ->-----------------------------

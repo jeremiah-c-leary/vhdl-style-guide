@@ -3,11 +3,14 @@ import os
 import importlib
 import inspect
 
+from vsg import exceptions
+
 from . import deprecated_rule
 from . import junit
 from . import report
 from . import utils
 from . import severity
+
 
 def get_python_modules_from_directory(sDirectoryName, lModules):
     '''
@@ -288,10 +291,10 @@ class rule_list():
                 lDeprecatedMessages.extend(oRule.configure(oConfig))
 
         if len(lDeprecatedMessages) != 0:
-            print(f'ERROR: Invalid configuration of file {self.oVhdlFile.filename}')
+            sErrorMessage = f'ERROR: Invalid configuration of file {self.oVhdlFile.filename}' + '\n'
             for sMessage in lDeprecatedMessages:
-                print(sMessage)
-            exit(2)
+                sErrorMessage += sMessage + '\n'
+            raise exceptions.ConfigurationError(sErrorMessage)
 
         try:
             if configurationFile['debug']:
@@ -318,8 +321,8 @@ class rule_list():
         lRuleNames = self.get_list_of_rule_names()
         for sRule in configurationFile['rule']:
             if rule_does_not_exist_in_list(sRule, lRuleNames):
-                print('ERROR: Rule ' + sRule + ' referenced in configuration could not be found')
-                exit(1)
+                sErrorMessage = 'ERROR: Rule ' + sRule + ' referenced in configuration could not be found'
+                raise exceptions.ConfigurationError(sErrorMessage)
 
     def get_list_of_rule_names(self):
         lReturn = []

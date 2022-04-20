@@ -1,6 +1,4 @@
 
-import string
-
 from vsg import block_rule
 from vsg import parser
 from vsg import violation
@@ -38,61 +36,36 @@ class rule_002(block_rule.Rule):
         self.comment_left = None
         self.configuration.append('comment_left')
 
-    def analyze(self, oFile):
+    def analyze_comments(self, oToi):
+        iLine, lTokens = utils.get_toi_parameters(oToi)
+        iComments = utils.count_token_types_in_list_of_tokens(parser.comment, lTokens)
+        iComment = 0
 
-        self._print_debug_message('Analyzing rule: ' + self.unique_id)
-        lToi = self._get_tokens_of_interest(oFile)
+        for oToken in lTokens:
+            iLine = utils.increment_line_number(iLine, oToken)
+            iComment = utils.increment_comment_counter(iComment, oToken)
 
-        lUpdate = []
-
-        for oToi in lToi:
-            iLine, lTokens = utils.get_toi_parameters(oToi)
-
-            iComments = utils.count_token_types_in_list_of_tokens(parser.comment, lTokens)
-
-            iComment = 0
-            for iToken, oToken in enumerate(lTokens):
-                iLine = utils.increment_line_number(iLine, oToken)
-
-                if isinstance(oToken, parser.comment):
-                    iComment += 1
-                    if iComment == 1:
-                        if not is_header(oToken.get_value()):
-                            break
-                    elif iComment > 1 and iComment < iComments:
-                        if not self.allow_indenting:
-                            oToken.set_indent(0)
-
-                        if self.comment_left is None:
-                            continue
-
-                        if isinstance(lTokens[iToken - 1], parser.whitespace):
-                            if not self.allow_indenting:
-                                break
-
-                        sHeader = '--'
-                        sHeader += self.comment_left
-                        sComment = oToken.get_value()
-                        if not sComment.startswith(sHeader):
-                            sSolution = 'Comment must start with ' + sHeader
-                            oViolation = violation.New(iLine, oToi, sSolution)
-                            self.add_violation(oViolation)
-
-            if not self.allow_indenting:
-                lUpdate.append(violation.New(0, oToi, ''))
-
-        if not self.allow_indenting:
-            oFile.update(lUpdate)
+            if middle_comment(iComment, iComments, oToken):
+                analyze_middle_comment(self, oToken, oToi, iLine)
 
 
-def is_header(sComment):
-    try:
-        if sComment[2] not in string.punctuation:
-            return False
-        if sComment[2] == '!':
-            return False
-        if sComment[3] not in string.punctuation:
-            return False
-    except IndexError:
-        return True
-    return True
+def middle_comment(iComment, iComments, oToken):
+    if isinstance(oToken, parser.comment):
+        if iComment > 1 and iComment < iComments:
+            return True
+    return False
+
+
+def analyze_middle_comment(self, oToken, oToi, iLine):
+
+    self.set_token_indent(oToken)
+
+    if self.comment_left is None:
+        return None
+
+    sHeader = self.build_comment(oToken)
+    sComment = oToken.get_value()
+    if not sComment.startswith(sHeader):
+        sSolution = 'Comment must start with ' + sHeader
+        oViolation = violation.New(iLine, oToi, sSolution)
+        self.add_violation(oViolation)

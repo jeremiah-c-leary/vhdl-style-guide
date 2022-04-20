@@ -70,14 +70,14 @@ class New():
         for sBaseKey in lBaseKeys:
             lSubKeys = list(self.dMap[sBaseKey].keys())
             if sBaseKey == 'parser':
-                lSubKeys.remove('whitespace')
-                lSubKeys.remove('carriage_return')
-                lSubKeys.remove('blank_line')
-            try:
-                if bExcludeComments:
+                if 'whitespace' in lSubKeys:
+                    lSubKeys.remove('whitespace')
+                if 'carriage_return' in lSubKeys:
+                    lSubKeys.remove('carriage_return')
+                if 'blank_line' in lSubKeys:
+                    lSubKeys.remove('blank_line')
+                if bExcludeComments and 'comment' in lSubKeys:
                     lSubKeys.remove('comment')
-            except ValueError:
-                pass
             for sSubKey in lSubKeys:
                 for iIdx in range(0, 4):
                     iSearchIdx = iStartIndex + iIdx
@@ -133,6 +133,9 @@ class New():
     def pretty_print(self):
         pp=pprint.PrettyPrinter(indent=4)
         pp.pprint(self.dMap)
+
+    def get_index_of_line(self, iLine):
+        return(self.dMap['parser']['carriage_return'][iLine - 2] + 1)
 
 
 def extract_unique_id(oToken):

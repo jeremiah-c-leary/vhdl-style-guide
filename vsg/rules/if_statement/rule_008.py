@@ -8,6 +8,7 @@ lTokens.append(token.if_statement.end_keyword)
 
 lOverrides = []
 lOverrides.append(token.case_statement.semicolon)
+lOverrides.append(token.loop_statement.semicolon)
 
 
 class rule_008(remove_excessive_blank_lines_above_line_starting_with_token):

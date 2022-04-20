@@ -6,5 +6,5 @@ rule:
       case: 'lower'
     case::name:
       case: 'upper'
-  library_600:
+  library_500:
     disable: True

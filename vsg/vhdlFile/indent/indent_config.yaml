@@ -161,6 +161,9 @@ indent:
             entity_keyword:
                 token : 0
                 after : 1
+            begin_keyword:
+                token : 0
+                after : 1
             end_keyword:
                 token : 0
                 after : 0

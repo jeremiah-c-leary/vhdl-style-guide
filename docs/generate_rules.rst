@@ -552,6 +552,56 @@ This rule checks the colons are in the same column for all declarations in the g
    constant c_period  : time;
    file my_test_input : my_file_type;
 
+generate_500
+############
+
+|phase_6| |error| |case| |case_keyword|
+
+This rule checks the **begin** keyword has the proper case.
+
+|configuring_uppercase_and_lowercase_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   for condition generate
+     BEGIN
+
+**Fix**
+
+.. code-block:: vhdl
+
+   for condition generate
+     begin
+
+generate_501
+############
+
+|phase_6| |error| |case| |case_keyword|
+
+This rule checks the **end** keyword has the proper case.
+
+|configuring_uppercase_and_lowercase_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   for condition generate
+     begin
+     END
+   end generate;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   for condition generate
+     begin
+     end
+   end generate;
+
 generate_600
 ############
 

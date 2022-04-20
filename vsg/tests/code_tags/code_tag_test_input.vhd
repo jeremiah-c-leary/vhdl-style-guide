@@ -7,15 +7,23 @@ use ieee.std_logic_arith.all;
 library ieee;
   use ieee.std_logic.all;
 
--- vsg_off
+-- vsg_off : comment
 entity FIFO is
   port (
     WRITE_EN : in std_logic;
     READ_EN  : in std_logic
   );
 end entity;
--- vsg_on
+-- vsg_on : comment
 
+-- vsg_off library_002 : comment
+library  ieee;
+-- vsg_on library_002 : comment
+library  ieee;
+-- vsg_off : comment
+library  ieee;
+-- vsg_on : comment
+library  ieee;
 
 -- vsg_off library_001 process_001
 

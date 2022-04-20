@@ -39,7 +39,7 @@ class test_block_comment_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'block_comment')
         self.assertEqual(oRule.identifier, '003')
 
-        lExpected = [8, 12, 16, 20, 24]
+        lExpected = [8, 12, 16, 20, 24, 30]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))

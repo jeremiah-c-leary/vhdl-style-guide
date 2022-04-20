@@ -20,6 +20,7 @@ def create(sString):
     oLine.combine_characters_into_words()
     oLine.combine_character_literals()
     oLine.combine_comments()
+    oLine.split_natural_numbers()
     return oLine.lChars
 
 
@@ -115,6 +116,41 @@ class New():
             combine_comment_with_trailing_whitespace(self)
         else:
             combine_comment(self)
+
+    def split_natural_numbers(self):
+        lReturn = []
+        for sChar in self.lChars:
+            if is_natural_number(sChar):
+                lReturn.extend(parse_natural_number(sChar))
+            else:
+                lReturn.append(sChar)
+
+        self.lChars = lReturn
+
+
+def is_natural_number(sString):
+    lString = sString.lower().split('e')
+    lBase = lString[0].split('.')
+    lBase.extend(lString[1:])
+    for sNum in lBase[0:-1]:
+        if not sNum.isdigit():
+            return False
+    return True
+
+
+def parse_natural_number(sString):
+    lReturn = []
+    sTemp = ''
+    for sChar in sString:
+        if sChar.lower() == 'e':
+            lReturn.append(sTemp)
+            lReturn.append(sChar)
+            sTemp = ''
+        else:
+            sTemp += sChar
+    if len(sTemp) > 0:
+        lReturn.append(sTemp)
+    return lReturn
 
 
 def combine_quote_pairs(lQuotePairs, self):

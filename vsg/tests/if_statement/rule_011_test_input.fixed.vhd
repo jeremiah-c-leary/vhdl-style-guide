@@ -36,6 +36,41 @@ begin
       end if;
     end if;
 
+    -- Check loop statements
+
+    if a = '1' then
+
+    else
+
+        LOOP_LABEL : loop
+        end loop;
+    end if;
+
+    if a = '1' then
+
+    else
+
+        loop
+        end loop;
+    end if;
+
+    if a = '1' then
+
+    else
+
+        while a = 0
+        loop
+        end loop;
+    end if;
+
+    if a = '1' then
+
+    else
+
+        for i in 0 to 13
+        loop
+        end loop;
+    end if;
 
   end process;
 

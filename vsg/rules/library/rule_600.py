@@ -1,36 +1,12 @@
 
-from vsg.rules import token_case
-
-from vsg import token
-
-lTokens = []
-lTokens.append(token.logical_name_list.logical_name)
+from vsg.deprecated_rule import Rule
 
 
-class rule_600(token_case):
+class rule_600(Rule):
     '''
-    This rule checks the logical_name in a library_clause has proper case.
-
-    |configuring_uppercase_and_lowercase_rules_link|
-
-    **Violation**
-
-    .. code-block:: vhdl
-
-       library IEEE;
-
-       library FIFO_dsn;
-
-    **Fix**
-
-    .. code-block:: vhdl
-
-       library ieee;
-
-       library fifo_dsn;
+    This rule has been moved to library_500.
     '''
 
     def __init__(self):
-        token_case.__init__(self, 'library', '600', lTokens)
-        self.groups.append('case::name')
-        self.configuration.append('case_exceptions')
+        Rule.__init__(self, 'library', '600')
+        self.message.append('Rule ' + self.unique_id + ' has been moved to rule library_500.')

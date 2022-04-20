@@ -500,6 +500,214 @@ Following extra configurations are supported:
        data_o : in std_logic  -- Data output
    );
 
+entity_021
+##########
+
+|phase_1| |error| |structure|
+
+This rule checks the **end** keyword is on it's own line.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   port (
+      ...
+   ); end entity;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   port (
+      ...
+   );
+   end entity;
+
+entity_022
+##########
+
+|phase_1| |error| |structure|
+
+This rule checks the identifier is on the same line as the **entity** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   entity fifo is
+
+   entity
+     fifo is
+
+**Fix**
+
+.. code-block:: vhdl
+
+   entity fifo is
+
+   entity fifo is
+
+entity_023
+##########
+
+|phase_1| |error| |structure|
+
+This rule checks the end **entity** keyword is on the same line as the **end** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   end entity;
+
+   end
+     entity;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   end entity;
+
+   end entity;
+
+entity_024
+##########
+
+|phase_1| |error| |structure|
+
+This rule checks the end entity simple name is not on it's own line.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   end entity FIFO;
+
+   end entity
+     FIFO;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   end entity FIFO;
+
+   end entity FIFO;
+
+entity_025
+##########
+
+|phase_1| |error| |structure|
+
+This rule checks the semicolon is not on it's own line.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   end entity;
+
+   end entity
+   ;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   end entity;
+
+   end entity;
+
+entity_026
+##########
+
+|phase_1| |error| |structure|
+
+This rule checks for code after the **is** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   entity FIFO is port (
+
+**Fix**
+
+.. code-block:: vhdl
+
+   entity FIFO is
+     port (
+
+entity_027
+##########
+
+|phase_1| |error| |structure|
+
+This rule checks for code after the **begin** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   begin end entity;
+
+**Fix**
+
+.. code-block:: vhdl
+
+    begin
+    end entity;
+
+entity_028
+##########
+
+|phase_1| |error| |structure|
+
+This rule checks for code after the semicolon.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   end entity; architecture
+
+**Fix**
+
+.. code-block:: vhdl
+
+   end entity;
+   architecture
+
+entity_029
+##########
+
+|phase_1| |error| |structure|
+
+This rule checks the **begin** keyword is on it's own line.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   entity FIFO is
+     port (
+       I_INPUT : in std_logic
+     ); begin
+   end entity;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   entity FIFO is
+     port (
+       I_INPUT : in std_logic
+     );
+   begin
+   end entity;
+
 entity_200
 ##########
 
@@ -523,6 +731,127 @@ This rule checks for blank lines above the **generic** keyword in entity specifi
 
    entity fifo is
      generic (
+
+entity_201
+##########
+
+|phase_3| |error| |blank_line|
+
+This rule ensures no blank lines after the **is** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   entity fifo is
+
+
+     port (
+
+**Fix**
+
+.. code-block:: vhdl
+
+   entity fifo is
+     port (
+
+entity_202
+##########
+
+|phase_3| |error| |blank_line|
+
+This rule checks for blank lines above the **port** keyword in entity specifications.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   entity fifo is
+
+
+
+     port (
+
+**Fix**
+
+.. code-block:: vhdl
+
+   entity fifo is
+     port (
+
+entity_203
+##########
+
+|phase_3| |error| |blank_line|
+
+This rule checks for blank lines below the semicolon in entity specifications.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   end entity;
+   library ieee;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   end entity;
+
+   library ieee;
+
+entity_300
+##########
+
+|phase_4| |error| |indent|
+
+This rule checks the indent of the **begin** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   entity FIFO is
+
+        begin
+
+**Fix**
+
+.. code-block:: vhdl
+
+   entity FIFO is
+
+   begin
+
+entity_500
+##########
+
+|phase_6| |error| |case| |case_keyword|
+
+This rule checks the **begin** keyword has proper case.
+
+|configuring_uppercase_and_lowercase_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   entity fifo is
+
+   BEGIN
+
+   end entity;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   entity fifo is
+
+   begin
+
+   end entity;
 
 entity_600
 ##########

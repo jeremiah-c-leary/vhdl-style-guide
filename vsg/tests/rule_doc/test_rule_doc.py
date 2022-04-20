@@ -138,6 +138,12 @@ class testDocGen(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
+    def test_exponent_rules_doc(self):
+
+        lExpected, lActual = compare_files('exponent')
+
+        self.assertEqual(lExpected, lActual)
+
     def test_file_rules_doc(self):
 
         lExpected, lActual = compare_files('file')

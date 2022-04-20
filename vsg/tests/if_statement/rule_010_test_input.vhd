@@ -40,6 +40,16 @@ begin
       end if;
     end if;
 
+    -- loop statements
+
+    if a = '1' then
+
+        loop
+        end loop;
+
+    else
+
+    end if;
 
   end process;
 

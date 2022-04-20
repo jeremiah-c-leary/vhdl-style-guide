@@ -7,6 +7,7 @@ from . import utils
 from . import vhdlFile
 
 from .exceptions import ClassifyError
+from .exceptions import ConfigurationError
 
 
 def create_backup_file(sFileName):
@@ -84,7 +85,16 @@ def apply_rules(commandLineArguments, oConfig, tIndexFileName):
         sOutputErr = None
         return 1, None, dJsonEntry, sOutputStd, sOutputErr
 
-    configure_rules(oConfig, oRules, configuration, iIndex, sFileName)
+    try:
+        configure_rules(oConfig, oRules, configuration, iIndex, sFileName)
+    except ConfigurationError as e:
+        fExitStatus = True
+        testCase = None
+        dJsonEntry["file_path"] = sFileName
+        dJsonEntry["violations"] = []
+        sOutputStd = ''
+        sOutputErr = e.message
+        return fExitStatus, testCase, dJsonEntry, sOutputStd, sOutputErr
 
     if commandLineArguments.fix:
         if commandLineArguments.backup:
@@ -118,7 +128,7 @@ def apply_rules(commandLineArguments, oConfig, tIndexFileName):
 
 def write_vhdl_file(oVhdlFile):
     try:
-        with open(oVhdlFile.filename, 'w') as oFile:
+        with open(oVhdlFile.filename, 'w', encoding='utf-8') as oFile:
             for sLine in oVhdlFile.get_lines()[1:]:
                 oFile.write(sLine + '\n')
     except PermissionError as err:

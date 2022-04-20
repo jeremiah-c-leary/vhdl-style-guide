@@ -268,3 +268,27 @@ This rule checks for at least a single space before and after logical operators.
   if (a = '1') and (b = '0')
   if (a = '0') or (b = '1')
 
+whitespace_200
+##############
+
+|phase_3| |error| |blank_line|
+
+This rule removes consecutive blank lines.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   a <= b;
+
+
+   c <= d;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   a <= b;
+
+   c <= d;
+

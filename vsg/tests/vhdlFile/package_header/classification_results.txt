@@ -115,7 +115,7 @@
 <class 'vsg.token.identifier_list.comma'>
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
-<class 'vsg.token.mode.inout_keyword'>
+<class 'vsg.token.mode.buffer_keyword'>
 <class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
 <class 'vsg.token.interface_signal_declaration.bus_keyword'>
 <class 'vsg.token.interface_signal_declaration.assignment'>
@@ -128,7 +128,7 @@
 <class 'vsg.token.identifier_list.comma'>
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
-<class 'vsg.token.mode.inout_keyword'>
+<class 'vsg.token.mode.linkage_keyword'>
 <class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
 <class 'vsg.token.interface_signal_declaration.bus_keyword'>
 <class 'vsg.token.interface_signal_declaration.assignment'>
@@ -177,7 +177,7 @@
 <class 'vsg.token.identifier_list.comma'>
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
-<class 'vsg.token.mode.inout_keyword'>
+<class 'vsg.token.mode.buffer_keyword'>
 <class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
 <class 'vsg.token.interface_signal_declaration.bus_keyword'>
 <class 'vsg.token.interface_list.semicolon'>
@@ -188,7 +188,7 @@
 <class 'vsg.token.identifier_list.comma'>
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
-<class 'vsg.token.mode.inout_keyword'>
+<class 'vsg.token.mode.linkage_keyword'>
 <class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
 <class 'vsg.token.interface_signal_declaration.bus_keyword'>
 <class 'vsg.token.interface_list.semicolon'>
@@ -410,7 +410,7 @@
 <class 'vsg.token.identifier_list.comma'>
 <class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.interface_variable_declaration.colon'>
-<class 'vsg.token.mode.inout_keyword'>
+<class 'vsg.token.mode.buffer_keyword'>
 <class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
 <class 'vsg.token.interface_variable_declaration.assignment'>
 <class 'vsg.parser.todo'>
@@ -422,7 +422,7 @@
 <class 'vsg.token.identifier_list.comma'>
 <class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.interface_variable_declaration.colon'>
-<class 'vsg.token.mode.inout_keyword'>
+<class 'vsg.token.mode.linkage_keyword'>
 <class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
 <class 'vsg.token.interface_variable_declaration.assignment'>
 <class 'vsg.parser.todo'>
@@ -467,7 +467,7 @@
 <class 'vsg.token.identifier_list.comma'>
 <class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.interface_variable_declaration.colon'>
-<class 'vsg.token.mode.inout_keyword'>
+<class 'vsg.token.mode.buffer_keyword'>
 <class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
@@ -477,7 +477,7 @@
 <class 'vsg.token.identifier_list.comma'>
 <class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.interface_variable_declaration.colon'>
-<class 'vsg.token.mode.inout_keyword'>
+<class 'vsg.token.mode.linkage_keyword'>
 <class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
@@ -634,7 +634,7 @@
 <class 'vsg.token.identifier_list.comma'>
 <class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
-<class 'vsg.token.mode.inout_keyword'>
+<class 'vsg.token.mode.buffer_keyword'>
 <class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
 <class 'vsg.token.interface_unknown_declaration.bus_keyword'>
 <class 'vsg.token.interface_unknown_declaration.assignment'>
@@ -646,7 +646,7 @@
 <class 'vsg.token.identifier_list.comma'>
 <class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
-<class 'vsg.token.mode.inout_keyword'>
+<class 'vsg.token.mode.linkage_keyword'>
 <class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
 <class 'vsg.token.interface_unknown_declaration.bus_keyword'>
 <class 'vsg.token.interface_unknown_declaration.assignment'>
@@ -691,7 +691,7 @@
 <class 'vsg.token.identifier_list.comma'>
 <class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
-<class 'vsg.token.mode.inout_keyword'>
+<class 'vsg.token.mode.buffer_keyword'>
 <class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
 <class 'vsg.token.interface_unknown_declaration.bus_keyword'>
 <class 'vsg.token.interface_list.semicolon'>
@@ -701,7 +701,7 @@
 <class 'vsg.token.identifier_list.comma'>
 <class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
-<class 'vsg.token.mode.inout_keyword'>
+<class 'vsg.token.mode.linkage_keyword'>
 <class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
 <class 'vsg.token.interface_unknown_declaration.bus_keyword'>
 <class 'vsg.token.interface_list.semicolon'>
