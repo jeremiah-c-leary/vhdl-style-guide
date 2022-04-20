@@ -133,6 +133,7 @@ from vsg.rules import source_file
 from vsg.rules import subprogram_body
 from vsg.rules import subtype
 from vsg.rules import type_definition
+from vsg.rules import use_clause
 from vsg.rules import variable
 from vsg.rules import variable_assignment
 from vsg.rules import wait

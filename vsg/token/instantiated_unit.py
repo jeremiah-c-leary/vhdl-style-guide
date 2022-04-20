@@ -29,6 +29,24 @@ class entity_keyword(parser.keyword):
         parser.keyword.__init__(self, sString)
 
 
+class library_name(parser.name):
+    '''
+    unique_id = instantiated_unit : library_name
+    '''
+
+    def __init__(self, sString):
+        parser.name.__init__(self, sString)
+
+
+class dot(parser.dot):
+    '''
+    unique_id = instantiated_unit : dot
+    '''
+
+    def __init__(self, sString):
+        parser.dot.__init__(self, sString)
+
+
 class entity_name(parser.name):
     '''
     unique_id = instantiated_unit : entity_name

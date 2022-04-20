@@ -306,6 +306,12 @@ class testDocGen(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
+    def test_use_clause_rules_doc(self):
+
+        lExpected, lActual = compare_files('use_clause')
+
+        self.assertEqual(lExpected, lActual)
+
     def test_variable_rules_doc(self):
 
         lExpected, lActual = compare_files('variable')

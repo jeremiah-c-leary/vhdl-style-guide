@@ -1,13 +1,13 @@
 library IEEE;
-  use IEEE.STD_LOGIC_1164.ALL;
-  use IEEE.STD_LOGIC_ARITH.ALL;
-  use IEEE.STD_LOGIC_UNSIGNED.ALL;
+  use ieee.std_logic_1164.all;
+  use ieee.std_logic_arith.all;
+  use ieee.std_logic_unsigned.all;
 
   --  Uncomment the following lines to use the declarations that are
   --  provided for instantiating Xilinx primitive components.
   -- library UNISIM;
   -- use UNISIM.VComponents.all;
-  use work.cpu_pack.ALL;
+  use work.cpu_pack.all;
 
 entity DATA_CORE is
   port (

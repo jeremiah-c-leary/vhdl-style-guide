@@ -27,7 +27,7 @@ class test_context_ref_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'context_ref')
         self.assertEqual(oRule.identifier, '002')
 
-        lExpected = [4]
+        lExpected = [4, 8]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))

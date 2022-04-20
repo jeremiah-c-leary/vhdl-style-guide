@@ -6,7 +6,7 @@
 --------------------------------------------------------------------------------
 2 | context name1;
 <class 'vsg.token.context_reference.keyword'>
-<class 'vsg.token.context_reference.selected_name'>
+<class 'vsg.token.context_reference.context_name'>
 <class 'vsg.token.context_reference.semicolon'>
 --------------------------------------------------------------------------------
 3 |
@@ -14,9 +14,9 @@
 --------------------------------------------------------------------------------
 4 | context name2, name3;
 <class 'vsg.token.context_reference.keyword'>
-<class 'vsg.token.context_reference.selected_name'>
+<class 'vsg.token.context_reference.context_name'>
 <class 'vsg.token.context_reference.comma'>
-<class 'vsg.token.context_reference.selected_name'>
+<class 'vsg.token.context_reference.context_name'>
 <class 'vsg.token.context_reference.semicolon'>
 --------------------------------------------------------------------------------
 5 |
@@ -24,11 +24,11 @@
 --------------------------------------------------------------------------------
 6 | context name4, name5, name6;
 <class 'vsg.token.context_reference.keyword'>
-<class 'vsg.token.context_reference.selected_name'>
+<class 'vsg.token.context_reference.context_name'>
 <class 'vsg.token.context_reference.comma'>
-<class 'vsg.token.context_reference.selected_name'>
+<class 'vsg.token.context_reference.context_name'>
 <class 'vsg.token.context_reference.comma'>
-<class 'vsg.token.context_reference.selected_name'>
+<class 'vsg.token.context_reference.context_name'>
 <class 'vsg.token.context_reference.semicolon'>
 --------------------------------------------------------------------------------
 7 |
