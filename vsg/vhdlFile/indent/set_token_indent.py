@@ -82,18 +82,7 @@ def set_token_indent(dIndentMap, lTokens):
 
         ### Comments
         if isinstance(oToken, parser.comment):
-            if bLibraryFound:
-                if is_use_clause_use_keyword_next(iToken + 1, lTokens):
-                    oToken.set_indent(iIndent + 1)
-                else:
-                    oToken.set_indent(iIndent)
-            elif oToken.is_block_comment:
-                if oToken.block_comment_indent == 0:
-                    oToken.set_indent(0)
-                else:
-                    oToken.set_indent(iIndent)
-            else:
-                oToken.set_indent(iIndent)
+            set_indent_of_comment(bLibraryFound, iToken, lTokens, iIndent, lTokenKeys, dIndents)
             continue
 
         ### Concurrent signal assignment
@@ -163,3 +152,31 @@ def is_use_clause_use_keyword_next(iIndex, lTokens):
     if isinstance(lTokens[iToken], token.context_reference.keyword):
         return True
     return False
+
+
+def set_indent_of_comment(bLibraryFound, iToken, lTokens, iIndent, lTokenKeys, dIndents):
+    oToken = lTokens[iToken]
+    if bLibraryFound:
+        if is_use_clause_use_keyword_next(iToken + 1, lTokens):
+            oToken.set_indent(iIndent + 1)
+        else:
+            oToken.set_indent(iIndent)
+    elif oToken.is_block_comment:
+        if oToken.block_comment_indent == 0:
+            oToken.set_indent(0)
+        else:
+            oToken.set_indent(iIndent)
+    else:
+        iTemp = get_indent_value_of_next_token(iToken, lTokens, iIndent, lTokenKeys, dIndents)
+        oToken.set_indent(iTemp)
+
+
+def get_indent_value_of_next_token(iToken, lTokens, iIndent, lTokenKeys, dIndents):
+    iIndex = utils.find_next_non_whitespace_token(iToken + 1, lTokens)
+    sUniqueId = lTokens[iIndex].get_unique_id(sJoin=':')
+    if sUniqueId in lTokenKeys:
+        token_key = dIndents[sUniqueId]['token']
+        after_key = dIndents[sUniqueId]['after']
+        iTokenIndent = update_indent_var(iIndent, token_key)
+        return iTokenIndent 
+    return iIndent
