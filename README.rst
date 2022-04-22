@@ -44,7 +44,7 @@ This would result in comment indents being enforced like this:
     begin
 
 
-Release 3.11.0 will now employ a forward looking comment indent.
+Release 3.11.0 will employ a forward looking comment indent.
 The rationale being that comments are describing what comes next and therefore should be indented to match the code that comes next.
 The code snippet above will now be formatted as:
 
@@ -60,9 +60,9 @@ The code snippet above will now be formatted as:
 
     begin
 
-With the comment `-- Comment` matching the indent of the `begin` keyword.
+With the comment **-- Comment** matching the indent of the **begin** keyword.
 
-There are existing rules in 3.10.0 which enforce this behavior, for example `case_021`.
+There are existing rules in 3.10.0 which enforce this behavior, for example **case_021**.
 These will eventually be deprecated in a future release as they are no longer required.
 
 Regards,
