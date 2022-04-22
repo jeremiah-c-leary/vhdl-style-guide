@@ -154,18 +154,33 @@ def is_use_clause_use_keyword_next(iIndex, lTokens):
 def set_indent_of_comment(cParams, iToken, lTokens):
     oToken = lTokens[iToken]
     if cParams.bLibraryFound:
-        if is_use_clause_use_keyword_next(iToken + 1, lTokens):
-            oToken.set_indent(cParams.iIndent + 1)
-        else:
-            oToken.set_indent(cParams.iIndent)
+        set_indent_of_use_clause_comment(cParams, iToken, lTokens)
     elif oToken.is_block_comment:
-        if oToken.block_comment_indent == 0:
-            oToken.set_indent(0)
-        else:
-            oToken.set_indent(cParams.iIndent)
+        set_indent_of_block_comment(cParams, iToken, lTokens)
     else:
-        iTemp = get_indent_value_of_next_token(iToken, lTokens, cParams)
-        oToken.set_indent(iTemp)
+        set_indent_of_normal_comment(cParams, iToken, lTokens)
+
+
+def set_indent_of_normal_comment(cParams, iToken, lTokens):
+    oToken = lTokens[iToken]
+    iTemp = get_indent_value_of_next_token(iToken, lTokens, cParams)
+    oToken.set_indent(iTemp)
+
+
+def set_indent_of_use_clause_comment(cParams, iToken, lTokens):
+    oToken = lTokens[iToken]
+    if is_use_clause_use_keyword_next(iToken + 1, lTokens):
+        oToken.set_indent(cParams.iIndent + 1)
+    else:
+        oToken.set_indent(cParams.iIndent)
+
+
+def set_indent_of_block_comment(cParams, iToken, lTokens):
+    oToken = lTokens[iToken]
+    if oToken.block_comment_indent == 0:
+        oToken.set_indent(0)
+    else:
+        oToken.set_indent(cParams.iIndent)
 
 
 def get_indent_value_of_next_token(iToken, lTokens, cParams):
