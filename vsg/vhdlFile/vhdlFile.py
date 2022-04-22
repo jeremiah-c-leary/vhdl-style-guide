@@ -323,13 +323,13 @@ def split_on_carriage_return(lObjects):
 def post_token_assignments(lTokens):
     oCodeTags = code_tags.New()
     for iToken, oToken in enumerate(lTokens):
-        if oCodeTags.token_has_vsg_on_code_tag(oToken):
+        if code_tags.token_has_vsg_on_code_tag(oToken):
             oToken.set_code_tags(oCodeTags.get_tags())
             oCodeTags.update(oToken)
-        elif oCodeTags.token_has_vsg_off_code_tag(oToken):
+        elif code_tags.token_has_vsg_off_code_tag(oToken):
             oCodeTags.update(oToken)
             oToken.set_code_tags(oCodeTags.get_tags())
-        elif oCodeTags.token_has_next_line_code_tag(oToken):
+        elif code_tags.token_has_next_line_code_tag(oToken):
             oCodeTags.update(oToken)
             oToken.set_code_tags(oCodeTags.get_tags())
         else:

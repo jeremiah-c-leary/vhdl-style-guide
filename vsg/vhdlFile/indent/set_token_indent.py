@@ -176,7 +176,6 @@ def get_indent_value_of_next_token(iToken, lTokens, iIndent, lTokenKeys, dIndent
     sUniqueId = lTokens[iIndex].get_unique_id(sJoin=':')
     if sUniqueId in lTokenKeys:
         token_key = dIndents[sUniqueId]['token']
-        after_key = dIndents[sUniqueId]['after']
         iTokenIndent = update_indent_var(iIndent, token_key)
-        return iTokenIndent 
+        return iTokenIndent
     return iIndent

@@ -29,15 +29,6 @@ class New():
         lReturn.extend(self.next_line_code_tags)
         return lReturn
 
-    def token_has_vsg_on_code_tag(self, oToken):
-        return on_code_tag_detected(oToken)
-
-    def token_has_vsg_off_code_tag(self, oToken):
-        return off_code_tag_detected(oToken)
-
-    def token_has_next_line_code_tag(self, oToken):
-        return next_line_code_tag_detected(oToken)
-
     def update(self, oToken):
 
         if isinstance(oToken, parser.carriage_return):
@@ -126,3 +117,15 @@ def bare_code_tag(lValues):
     if len(lValues) == 2:
         return True
     return False
+
+
+def token_has_vsg_on_code_tag(oToken):
+    return on_code_tag_detected(oToken)
+
+
+def token_has_vsg_off_code_tag(oToken):
+    return off_code_tag_detected(oToken)
+
+
+def token_has_next_line_code_tag(oToken):
+    return next_line_code_tag_detected(oToken)
