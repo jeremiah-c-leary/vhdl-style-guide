@@ -8,10 +8,12 @@ class New():
         self.code_tags = []
         self.next_line_code_tags = []
         self.bIgnoreNextCarriageReturn = False
-        self.iLine = 0
 
     def clear(self):
         self.code_tags.clear()
+        self.next_line_code_tags.clear()
+
+    def clear_next_line_code_tags(self):
         self.next_line_code_tags.clear()
 
     def remove(self, sCodeTag):
@@ -27,10 +29,18 @@ class New():
         lReturn.extend(self.next_line_code_tags)
         return lReturn
 
+    def token_has_vsg_on_code_tag(self, oToken):
+        return on_code_tag_detected(oToken)
+
+    def token_has_vsg_off_code_tag(self, oToken):
+        return off_code_tag_detected(oToken)
+
+    def token_has_next_line_code_tag(self, oToken):
+        return next_line_code_tag_detected(oToken)
+
     def update(self, oToken):
 
         if isinstance(oToken, parser.carriage_return):
-            self.iLine += 1
             if self.bIgnoreNextCarriageReturn:
                 self.bIgnoreNextCarriageReturn = False
             else:
@@ -39,8 +49,10 @@ class New():
 
         if on_code_tag_detected(oToken):
             remove_code_tags(self, oToken)
+            return False
         elif off_code_tag_detected(oToken):
             add_code_tags(self, oToken)
+            return True
         elif next_line_code_tag_detected(oToken):
             add_next_line_code_tags(self, oToken)
             self.bIgnoreNextCarriageReturn = True

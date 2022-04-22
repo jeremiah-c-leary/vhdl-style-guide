@@ -323,7 +323,18 @@ def split_on_carriage_return(lObjects):
 def post_token_assignments(lTokens):
     oCodeTags = code_tags.New()
     for iToken, oToken in enumerate(lTokens):
-        oToken.set_code_tags(oCodeTags.get_tags())
+        if oCodeTags.token_has_vsg_on_code_tag(oToken):
+            oToken.set_code_tags(oCodeTags.get_tags())
+            oCodeTags.update(oToken)
+        elif oCodeTags.token_has_vsg_off_code_tag(oToken):
+            oCodeTags.update(oToken)
+            oToken.set_code_tags(oCodeTags.get_tags())
+        elif oCodeTags.token_has_next_line_code_tag(oToken):
+            oCodeTags.update(oToken)
+            oToken.set_code_tags(oCodeTags.get_tags())
+        else:
+            oToken.set_code_tags(oCodeTags.get_tags())
+            oCodeTags.update(oToken)
         if isinstance(oToken, parser.todo):
             sValue = oToken.get_value()
             if sValue == '&':
@@ -485,9 +496,6 @@ def post_token_assignments(lTokens):
                 lTokens[iToken] = parser.character_literal(sValue)
                 continue
         else:
-            bVsgOn = oCodeTags.update(oToken)
-            if not bVsgOn:
-                oToken.set_code_tags(oCodeTags.get_tags())
             sValue = oToken.get_value()
             if sValue  == '+':
                 if utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken - 1, lTokens):
