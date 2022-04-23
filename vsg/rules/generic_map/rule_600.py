@@ -11,7 +11,30 @@ lEnd = token.generic_map_aspect.close_parenthesis
 
 class rule_600(token_suffix_between_tokens):
     '''
-    Checks for suffixes in generic map names.
+    This rule checks for valid suffixes on generic identifiers in generic maps
+    The default generic suffix is *\_g*.
+
+    Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed suffixes.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       generic map
+       (
+         WIDTH => 32,
+         DEPTH => 512
+       )
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       generic map
+       (
+         WIDTH_G => 32,
+         DEPTH_G => 512
+       )
     '''
 
     def __init__(self):

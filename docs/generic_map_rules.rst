@@ -214,13 +214,12 @@ Use explicit port mapping.
 generic_map_600
 ###############
 
-|phase_7| |disabled| |error|
+|phase_7| |disabled| |error| |naming|
 
 This rule checks for valid suffixes on generic identifiers in generic maps
 The default generic suffix is *\_g*.
 
 Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed suffixes.
-
 
 **Violation**
 
@@ -241,17 +240,16 @@ Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#conf
      WIDTH_G => 32,
      DEPTH_G => 512
    )
-   
+
 generic_map_601
 ###############
 
-|phase_7| |disabled| |error|
+|phase_7| |disabled| |error| |naming|
 
 This rule checks for valid prefixes on generic identifiers in generic maps
 The default generic suffix is *\g_*.
 
 Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed suffixes.
-
 
 **Violation**
 
