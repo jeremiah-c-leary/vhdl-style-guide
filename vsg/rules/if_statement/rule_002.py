@@ -144,17 +144,6 @@ def create_remove_action_dict(lTokens):
 
 
 def enclosing_parens_found(lTokens):
-#<<<<<<< HEAD
-#    if has_single_element(lTokens):
-#        return False
-#    if has_enclosing_parens(lTokens):
-#        return True
-#    return False
-#
-#
-#def has_enclosing_parens(lTokens):
-#=======
-#>>>>>>> 8f46bdb92579ff6fe6e05c4f0260497fcd7094b2
     if condition_starts_with_parenthesis(lTokens) and condition_ends_with_parenthesis(lTokens):
         lParens = build_parenthesis_list(lTokens)
         lNewParens = remove_inner_parenthesis(lParens)
@@ -164,15 +153,6 @@ def enclosing_parens_found(lTokens):
     return False
 
 
-#<<<<<<< HEAD
-#def has_single_element(lTokens):
-#    if len(lTokens) == 1:
-#        return True
-#    return False
-#
-#
-#=======
-#>>>>>>> 8f46bdb92579ff6fe6e05c4f0260497fcd7094b2
 def analyze_close_paren_cases(lTokens, dAction):
 
     iLength = len(lTokens)
@@ -287,8 +267,11 @@ def parens_match(lParens, lNewParens):
 def condition_starts_with_parenthesis(lTokens):
     if isinstance(lTokens[0], parser.open_parenthesis):
         return True
-    if isinstance(lTokens[1], parser.open_parenthesis):
-        return True
+    try:
+        if isinstance(lTokens[1], parser.open_parenthesis):
+            return True
+    except IndexError:
+        return False
     return False
 
 
