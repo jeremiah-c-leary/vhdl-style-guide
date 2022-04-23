@@ -39,7 +39,16 @@ library  ieee;
 
 -- vsg_on case_001 library_001
 
+architecture rtl of fifo is
 
+begin
 
+-- vsg_off comment_010
+-- Comment
+-- Comment
+-- vsg_on comment_010
 
+  a <= b;
+
+end architecture rtl;
 

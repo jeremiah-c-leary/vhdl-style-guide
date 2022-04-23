@@ -29,7 +29,7 @@ class test_block_comment_rule(unittest.TestCase):
         self.assertEqual(oRule.identifier, '001')
         self.assertEqual(oRule.groups, ['structure'])
 
-        lExpected = [6, 14, 18, 22, 26, 38]
+        lExpected = [6, 14, 18, 22, 27, 44]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -38,7 +38,7 @@ class test_block_comment_rule(unittest.TestCase):
         oRule = block_comment.rule_001()
         oRule.allow_indenting = False
 
-        lExpected = [6, 14, 18, 22, 26, 38]
+        lExpected = [6, 14, 18, 22, 27, 44]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -48,7 +48,7 @@ class test_block_comment_rule(unittest.TestCase):
         oRule.header_left = '+'
         oRule.max_header_column = 80
 
-        lExpected = [2, 14, 18, 22, 26, 38]
+        lExpected = [2, 14, 18, 22, 27, 44]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -61,7 +61,7 @@ class test_block_comment_rule(unittest.TestCase):
         oRule.header_right_repeat = '='
         oRule.header_alignment = 'center'
 
-        lExpected = [2, 6, 18, 22, 38]
+        lExpected = [2, 6, 18, 22, 44]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -74,7 +74,7 @@ class test_block_comment_rule(unittest.TestCase):
         oRule.header_right_repeat = '='
         oRule.header_alignment = 'left'
 
-        lExpected = [2, 6, 14, 22, 26, 38]
+        lExpected = [2, 6, 14, 22, 27, 44]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -87,7 +87,7 @@ class test_block_comment_rule(unittest.TestCase):
         oRule.header_right_repeat = '='
         oRule.header_alignment = 'right'
 
-        lExpected = [2, 6, 14, 18, 26, 38]
+        lExpected = [2, 6, 14, 18, 27, 44]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -100,7 +100,7 @@ class test_block_comment_rule(unittest.TestCase):
         oRule.header_alignment = 'center'
         oRule.max_header_column = 80
 
-        lExpected = [2, 6, 14, 18, 22, 26]
+        lExpected = [2, 6, 14, 18, 22, 27]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
