@@ -60,6 +60,8 @@ Rules Enforcing Prefixes and Suffixes
 +-------------------------+----------------------------------------------------------------+----------------------------------------------------------------+
 | Generic Identifier      | `generic_020 <generic_rules.html#generic-020>`_                | `generic_600 <generic_rules.html#generic-600>`_                |
 +-------------------------+----------------------------------------------------------------+----------------------------------------------------------------+
+| Generic Map Identifier  | `generic_map_601 <generic_map_rules.html#generic-map-601>`_    | `generic_map_600 <generic_map_rules.html#generic-map-600>`_    |
++-------------------------+----------------------------------------------------------------+----------------------------------------------------------------+
 | Package Identifier      | `package_017 <package_rules.html#package-017>`_                | `package_016 <package_rules.html#package-016>`_                |
 +-------------------------+----------------------------------------------------------------+----------------------------------------------------------------+
 | Package Body Identifier | `package_body_601 <package_body_rules.html#package-body-601>`_ | `package_body_600 <package_body_rules.html#package-body-600>`_ |
