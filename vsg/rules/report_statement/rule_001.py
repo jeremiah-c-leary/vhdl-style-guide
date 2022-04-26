@@ -18,7 +18,7 @@ class rule_001(remove_tokens_bounded_by_tokens_and_remove_trailing_whitespace):
 
     .. code-block:: vhdl
 
-        REPORT_LABEL : report "FIFO width is limited to 16 bits.";
+        report "FIFO width is limited to 16 bits.";
     '''
 
     def __init__(self):

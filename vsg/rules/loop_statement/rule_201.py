@@ -22,6 +22,7 @@ class rule_201(blank_line_below_line_ending_with_token):
     .. code-block:: vhdl
 
        loop
+
          a <= b;
     '''
 

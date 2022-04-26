@@ -163,8 +163,8 @@ This rule checks the **severity** keyword is on its own line for sequential asse
 
      process begin
 
-       assert WIDTH > 16
-         report "FIFO width is limited to 16 bits." severity FAILURE;
+       assert WIDTH > 16 report "FIFO width is limited to 16 bits."
+         severity FAILURE;
 
      end process;
 

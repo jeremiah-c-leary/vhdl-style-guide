@@ -20,7 +20,7 @@ This rule removes labels on report_statement_statements.
 
 .. code-block:: vhdl
 
-    REPORT_LABEL : report "FIFO width is limited to 16 bits.";
+    report "FIFO width is limited to 16 bits.";
 
 report_statement_002
 ####################

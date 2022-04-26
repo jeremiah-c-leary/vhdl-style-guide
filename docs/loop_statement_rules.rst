@@ -325,6 +325,7 @@ This rule checks for blank lines below the **loop** keyword.
 .. code-block:: vhdl
 
    loop
+
      a <= b;
 
 loop_statement_202
