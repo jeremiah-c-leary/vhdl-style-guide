@@ -26,6 +26,7 @@ class rule_003(move_token_next_to_another_token):
     .. code-block:: vhdl
 
        port map (
+
          WR_EN    => WR_EN,
          RD_EN    => RD_EN,
          OVERFLOW => OVERFLOW
