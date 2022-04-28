@@ -53,14 +53,37 @@ class New():
             return None
 
     def get_token_pair_indexes(self, oStart, oEnd):
-        lStartIndexes = self.get_token_indexes(oStart)
         lReturnEndIndexes = []
         lReturnStartIndexes = []
-        for iIndex in lStartIndexes:
-            iEndIndex = self.get_index_of_token_after_index(oEnd, iIndex)
-            if iEndIndex is not None:
-                lReturnStartIndexes.append(iIndex)
-                lReturnEndIndexes.append(iEndIndex)
+        lStartIndexes = self.get_token_indexes(oStart)
+        lEndIndexes = self.get_token_indexes(oEnd)
+        lCandidatePair = []
+#        print(f'lStartIndexes = {lStartIndexes}')
+#        print(f'lEndIndexes = {lEndIndexes}')
+        for iStartIndex in lStartIndexes:
+            for iEndIndex in lEndIndexes:
+                if iEndIndex > iStartIndex:
+                    lCandidatePair.append([iStartIndex, iEndIndex])
+                    break
+#        print(lCandidatePair)
+        lCandidatePair.reverse()
+#        print(lCandidatePair)
+        iEnd = -1
+        for pair in lCandidatePair:
+            if pair[1] != iEnd:
+                iEnd = pair[1]
+#                print(pair)
+                lReturnStartIndexes.append(pair[0])
+                lReturnEndIndexes.append(pair[1])
+
+        lReturnStartIndexes.reverse()
+        lReturnEndIndexes.reverse()
+
+#        for iIndex in lStartIndexes:
+#            iEndIndex = self.get_index_of_token_after_index(oEnd, iIndex)
+#            if iEndIndex is not None:
+#                lReturnStartIndexes.append(iIndex)
+#                lReturnEndIndexes.append(iEndIndex)
         return lReturnStartIndexes, lReturnEndIndexes
 
     def get_index_of_next_non_whitespace_token(self, iIndex, bExcludeComments=False):
