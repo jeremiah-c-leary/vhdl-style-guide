@@ -213,18 +213,22 @@ def extract_start_end_indexes(lStartIndexes, lEndIndexes):
 
 def extract_pairs(lStartIndexes, lEndIndexes):
     lCandidatePair = extract_pair_candidates(lStartIndexes, lEndIndexes)
-    lPairs = filter_pair_candidates(lCandidatePair) 
+    lPairs = filter_pair_candidates(lCandidatePair)
     return lPairs
 
 
 def extract_pair_candidates(lStartIndexes, lEndIndexes):
     lCandidatePair = []
     for iStartIndex in lStartIndexes:
-        for iEndIndex in lEndIndexes:
-            if iEndIndex > iStartIndex:
-                lCandidatePair.append([iStartIndex, iEndIndex])
-                break
+        check_for_possible_pair(iStartIndex, lEndIndexes, lCandidatePair)
     return lCandidatePair
+
+
+def check_for_possible_pair(iStartIndex, lEndIndexes, lCandidatePair):
+    for iEndIndex in lEndIndexes:
+        if iEndIndex > iStartIndex:
+            lCandidatePair.append([iStartIndex, iEndIndex])
+            break
 
 
 def filter_pair_candidates(lCandidatePair):
