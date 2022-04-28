@@ -30,7 +30,7 @@ def get_tokens_between_tokens_inclusive_while_storing_value_from_token(left_toke
 
 
 def update_value_list(lValueIndexes, lValues, lValuesPopped, iLeftIndex):
-    for iIndex, iValue in enumerate(lValueIndexes):
+    for iValue in lValueIndexes:
         if iLeftIndex > iValue and iValue not in lValuesPopped and iValue not in lValues:
             lValues.append(iValue)
 
