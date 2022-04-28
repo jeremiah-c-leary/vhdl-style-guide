@@ -9,42 +9,42 @@ def get_tokens_between_tokens_inclusive_while_storing_value_from_token(left_toke
     lReturn = []
 
     lStart, lEnd = oTokenMap.get_token_pair_indexes(left_token, right_token)
-#    print(lStart)
-    lValueIndexes = oTokenMap.get_token_indexes(value_token)
-#    print(lValueIndexes)
-    iPreviousEnd = 0
-    lValues = []
-    lPopedValues = []
-    for iStart, iEnd in zip(lStart, lEnd):
-#        sValue = None
-        push_value_index(lValueIndexes, lValues, lPopedValues, iStart) 
-#        print('='*80)
-#        print(f'iStart = {iStart}')
-#        print(f'lValues = {lValues}')
-#        print(f'lPopedValues = {lPopedValues}')
 
-        try:
-            oValueToken = lAllTokens[lValues[-1]]
-            sValue = oValueToken.get_value()
-        except IndexError:
-            sValue = None
-#        print(f'sValue = {sValue}')
- 
+    lValueIndexes = oTokenMap.get_token_indexes(value_token)
+
+    lValues = []
+    lValuesPopped = []
+    for iStart, iEnd in zip(lStart, lEnd):
+
+        update_value_list(lValueIndexes, lValues, lValuesPopped, iStart) 
+
         iLine = oTokenMap.get_line_number_of_index(iStart)
 
         oTokens = tokens.New(iStart, iLine, lAllTokens[iStart:iEnd + 1])
+        sValue = get_matching_token_value(lValues, lAllTokens)
         oTokens.set_token_value(sValue)
         lReturn.append(oTokens)
-        iPreviousEnd = iEnd
-        try:
-            lPopedValues.append(lValues.pop(-1))
-        except IndexError:
-            pass
+        update_popped_list(lValuesPopped, lValues)
 
     return lReturn
 
 
-def push_value_index(lValueIndexes, lValues, lPopedValues, iLeftIndex):
+def update_value_list(lValueIndexes, lValues, lValuesPopped, iLeftIndex):
     for iIndex, iValue in enumerate(lValueIndexes):
-        if iLeftIndex > iValue and iValue not in lPopedValues and iValue not in lValues:
+        if iLeftIndex > iValue and iValue not in lValuesPopped and iValue not in lValues:
             lValues.append(iValue)
+
+
+def get_matching_token_value(lValues, lAllTokens):
+    try:
+        oValueToken = lAllTokens[lValues[-1]]
+        return oValueToken.get_value()
+    except IndexError:
+        return None
+
+
+def update_popped_list(lValuesPopped, lValues):
+    try:
+        lValuesPopped.append(lValues.pop(-1))
+    except IndexError:
+        pass
