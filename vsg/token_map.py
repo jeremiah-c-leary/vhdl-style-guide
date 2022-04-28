@@ -53,26 +53,9 @@ class New():
             return None
 
     def get_token_pair_indexes(self, oStart, oEnd):
-        lReturnEndIndexes = []
-        lReturnStartIndexes = []
         lStartIndexes = self.get_token_indexes(oStart)
         lEndIndexes = self.get_token_indexes(oEnd)
-        lCandidatePair = []
-        for iStartIndex in lStartIndexes:
-            for iEndIndex in lEndIndexes:
-                if iEndIndex > iStartIndex:
-                    lCandidatePair.append([iStartIndex, iEndIndex])
-                    break
-        lCandidatePair.reverse()
-        iEnd = -1
-        for pair in lCandidatePair:
-            if pair[1] != iEnd:
-                iEnd = pair[1]
-                lReturnStartIndexes.append(pair[0])
-                lReturnEndIndexes.append(pair[1])
-
-        lReturnStartIndexes.reverse()
-        lReturnEndIndexes.reverse()
+        lReturnStartIndexes, lReturnEndIndexes = extract_start_end_indexes(lStartIndexes, lEndIndexes)
 
         return lReturnStartIndexes, lReturnEndIndexes
 
@@ -219,3 +202,47 @@ def process_tokens(lTokens):
 def build_default_map():
     dMap = {}
     return dMap
+
+
+def extract_start_end_indexes(lStartIndexes, lEndIndexes):
+    lPairs = extract_pairs(lStartIndexes, lEndIndexes)
+    lReturnStartIndexes, lReturnEndIndexes = extract_indexes_from_pairs(lPairs)
+
+    return lReturnStartIndexes, lReturnEndIndexes
+
+
+def extract_pairs(lStartIndexes, lEndIndexes):
+    lCandidatePair = extract_pair_candidates(lStartIndexes, lEndIndexes)
+    lPairs = filter_pair_candidates(lCandidatePair) 
+    return lPairs
+
+
+def extract_pair_candidates(lStartIndexes, lEndIndexes):
+    lCandidatePair = []
+    for iStartIndex in lStartIndexes:
+        for iEndIndex in lEndIndexes:
+            if iEndIndex > iStartIndex:
+                lCandidatePair.append([iStartIndex, iEndIndex])
+                break
+    return lCandidatePair
+
+
+def filter_pair_candidates(lCandidatePair):
+    lReturn = []
+    lCandidatePair.reverse()
+    iEnd = -1
+    for pair in lCandidatePair:
+        if pair[1] != iEnd:
+            iEnd = pair[1]
+            lReturn.append(pair)
+    lReturn.reverse()
+    return lReturn
+
+
+def extract_indexes_from_pairs(lPairs):
+    lReturnStartIndexes = []
+    lReturnEndIndexes = []
+    for pair in lPairs:
+        lReturnStartIndexes.append(pair[0])
+        lReturnEndIndexes.append(pair[1])
+    return lReturnStartIndexes, lReturnEndIndexes
