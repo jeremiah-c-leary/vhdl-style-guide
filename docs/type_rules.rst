@@ -379,6 +379,27 @@ This rule checks the indent of the closing parenthesis on multiline types.
 
    begin
 
+type_017
+########
+
+|phase_1| |error| |structure|
+
+This rule checks the identifier is on the same line as the type keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   type
+   t_record is
+
+**Fix**
+
+.. code-block:: vhdl
+
+   type t_record
+   is
+
 type_400
 ########
 
