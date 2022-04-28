@@ -16,7 +16,7 @@ def get_tokens_between_tokens_inclusive_while_storing_value_from_token(left_toke
     lValuesPopped = []
     for iStart, iEnd in zip(lStart, lEnd):
 
-        update_value_list(lValueIndexes, lValues, lValuesPopped, iStart) 
+        update_value_list(lValueIndexes, lValues, lValuesPopped, iStart)
 
         iLine = oTokenMap.get_line_number_of_index(iStart)
 
