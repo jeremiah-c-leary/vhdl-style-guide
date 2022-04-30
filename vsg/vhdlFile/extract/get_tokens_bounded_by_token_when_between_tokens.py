@@ -6,7 +6,7 @@ from vsg.vhdlFile.extract import tokens
 
 def get_tokens_bounded_by_token_when_between_tokens(oLeft, oRight, oStart, oEnd, lAllTokens, oTokenMap, include_trailing_whitespace=False):
 
-    lMyPairs = get_token_pairs(oLeft, oRight, oStart, oEnd, oTokenMap)
+    lMyPairs = get_token_pairs([oLeft, oRight], [oStart, oEnd], oTokenMap)
 
     lReturn = []
 
@@ -25,9 +25,9 @@ def get_tokens_bounded_by_token_when_between_tokens(oLeft, oRight, oStart, oEnd,
     return lReturn
 
 
-def get_token_pairs(oLeft, oRight, oStart, oEnd, oTokenMap):
-    lLeft, lRight = oTokenMap.get_token_pair_indexes(oLeft, oRight)
-    lStart, lEnd = oTokenMap.get_token_pair_indexes(oStart, oEnd)
+def get_token_pairs(lInnerPair, lOuterPair, oTokenMap):
+    lLeft, lRight = oTokenMap.get_token_pair_indexes(lInnerPair[0], lInnerPair[1])
+    lStart, lEnd = oTokenMap.get_token_pair_indexes(lOuterPair[0], lOuterPair[1])
 
     lPairs = keep_pairs_that_are_within_pairs(lLeft, lRight, lStart, lEnd)
 
@@ -38,10 +38,14 @@ def get_token_pairs(oLeft, oRight, oStart, oEnd, oTokenMap):
 def keep_pairs_that_are_within_pairs(lLeft, lRight, lStart, lEnd):
     lPairs = []
     for iStart, iEnd in zip(lStart, lEnd):
-        for iLeft, iRight in zip(lLeft, lRight):
-            if iStart < iLeft and iRight < iEnd:
-                lPairs.append([iLeft, iRight])
+        find_inner_pairs_inside_outer_pairs([iStart, iEnd], lLeft, lRight, lPairs)
     return lPairs
+
+
+def find_inner_pairs_inside_outer_pairs(lOuterPair, lLeft, lRight, lPairs):
+    for iLeft, iRight in zip(lLeft, lRight):
+        if lOuterPair[0] < iLeft and iRight < lOuterPair[1]:
+            lPairs.append([iLeft, iRight])
 
 
 def remove_duplicate_pairs(lPairs):
