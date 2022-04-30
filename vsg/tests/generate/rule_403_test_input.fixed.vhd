@@ -95,7 +95,13 @@ architecture nested of fifo is begin
     g_3 : if true generate
         signal sig0  : bit;
         signal sig00 : bit;
-    begin end generate g_3;
+    begin
+
+        G_X : if true generate
+
+        end generate G_X;
+
+    end generate g_3;
 
   else generate
 

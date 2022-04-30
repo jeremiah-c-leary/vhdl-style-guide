@@ -34,7 +34,7 @@ class test_generate_rule(unittest.TestCase):
         lExpected.extend(range(80, 82))
         lExpected.extend(range(88, 90))
         lExpected.extend(range(96, 98))
-        lExpected.extend(range(104, 106))
+        lExpected.extend(range(110, 112))
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
