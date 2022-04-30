@@ -51,3 +51,28 @@ This rule checks for code after the **record** keyword.
      b : std_logic;
    end record;
 
+record_type_definition_003
+##########################
+
+|phase_1| |error| |structure|
+
+This rule checks the **end** keyword is on it's own line.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   type t_record is record
+     a : std_logic;
+     b : std_logic; end record;
+
+
+**Fix**
+
+.. code-block:: vhdl
+
+   type t_record is record
+     a : std_logic;
+     b : std_logic;
+   end record;
+
