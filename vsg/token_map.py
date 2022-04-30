@@ -215,18 +215,23 @@ def extract_pairs(lStartIndexes, lEndIndexes):
         iMin = lEndIndexes[-1] + 1
         lPair = []
         for iStart in lStartIndexes:
-            for iEnd in lEndIndexes:
-                if iStart > iEnd:
-                    continue
-                if iEnd - iStart < iMin:
-                     lPair = [iStart, iEnd]
-                     iMin = iEnd - iStart
+            lPair = extract_closest_pair(iStart, lEndIndexes, lPair, iMin)
         lMyPairs.append(lPair)
 
         lStartIndexes.remove(lPair[0])
         lEndIndexes.remove(lPair[1])
 
     return lMyPairs
+
+
+def extract_closest_pair(iStart, lEndIndexes, lPair, iMin):
+    for iEnd in lEndIndexes:
+        if iStart > iEnd:
+            continue
+        if iEnd - iStart < iMin:
+             lPair = [iStart, iEnd]
+             iMin = iEnd - iStart
+    return lPair
 
 
 def extract_indexes_from_pairs(lPairs):
