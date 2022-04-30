@@ -137,6 +137,29 @@ This rule checks the indent of the *procedure* name.
 
    WR_EN(parameter);
 
+procedure_call_400
+##################
+
+|phase_5| |error| |alignment|
+
+This rule checks the alignment of multiline procedure calls.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   connect_ports(port_1, port_2, port_3,
+         port_4, port_5,
+                      port_6, port_7);
+
+**Fix**
+
+.. code-block:: vhdl
+
+   connect_ports(port_1, port_2, port_3,
+                 port_4, port_5,
+                 port_6, port_7);
+
 procedure_call_500
 ##################
 
