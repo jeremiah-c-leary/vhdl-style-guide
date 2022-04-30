@@ -390,8 +390,7 @@ class testMain(unittest.TestCase):
 
         mock_stdout.write.assert_has_calls(lExpected)
 
-
-    @unittest.skip('Skipping because test randomly fails depending on how the test runs on the host.')
+    @unittest.skip('disabling for the hotfix release only')
     def test_json_parameter(self):
         self.maxDiff = None
 
@@ -442,6 +441,7 @@ class testMain(unittest.TestCase):
         # Read in another alternate expected JSON file for comparison
         lAlternateExpected7 = []
         utils.read_file(os.path.join(os.path.dirname(__file__),'json-expected.alternate7.json'), lAlternateExpected7)
+
         # Read in the actual JSON file for comparison
         lActual = []
         utils.read_file(os.path.join('deleteme.json'), lActual)
