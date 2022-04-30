@@ -103,3 +103,30 @@ This rule checks the **is** keyword is on the same line as the **block** keyword
    end record
    ;
 
+record_type_definition_005
+##########################
+
+|phase_1| |error| |structure| |structure_optional|
+
+This rule checks for the optional simple name in the **end record** statement.
+
+|configuring_optional_items_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   type t_record is record
+     a : std_logic;
+     b : std_logic;
+   end record;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   type t_record is record
+     a : std_logic;
+     b : std_logic;
+   end record t_record;
+
