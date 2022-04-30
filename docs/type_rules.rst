@@ -400,6 +400,26 @@ This rule checks the identifier is on the same line as the type keyword.
    type t_record
    is
 
+type_018
+########
+
+|phase_1| |error| |structure|
+
+This rule checks the **is** keyword is on the same line as the identifier.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   type t_record
+   is
+
+**Fix**
+
+.. code-block:: vhdl
+
+   type t_record is
+
 type_400
 ########
 
