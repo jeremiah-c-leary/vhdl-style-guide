@@ -32,6 +32,6 @@ class rule_005(Rule):
 
     def __init__(self):
         Rule.__init__(self, 'record_type_definition', '005', token.record_type_simple_name, ft_token.semicolon, token.end_record_keyword, ft_token.semicolon, ft_token.identifier)
-        self.subphase = 2
+        self.subphase = 1
         self.solution = 'record type simple name'
         self.groups.append('structure::optional')
