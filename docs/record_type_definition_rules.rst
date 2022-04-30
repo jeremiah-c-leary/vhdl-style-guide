@@ -157,3 +157,29 @@ This rule checks the optional simple name is on the same line as the **record** 
    end record t_record
    ;
 
+record_type_definition_007
+##########################
+
+|phase_1| |error| |structure|
+
+This rule checks the semicolon is on the same line as the **record** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   type t_record is record
+     a : std_logic;
+     b : std_logic;
+   end record t_record
+   ;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   type t_record is record
+     a : std_logic;
+     b : std_logic;
+   end record t_record;
+
