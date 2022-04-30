@@ -76,3 +76,30 @@ This rule checks the **end** keyword is on it's own line.
      b : std_logic;
    end record;
 
+record_type_definition_004
+##########################
+
+|phase_1| |error| |structure|
+
+This rule checks the **is** keyword is on the same line as the **block** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   type t_record is record
+     a : std_logic;
+     b : std_logic;
+   end
+   record;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   type t_record is record
+     a : std_logic;
+     b : std_logic;
+   end record
+   ;
+
