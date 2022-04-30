@@ -209,6 +209,7 @@ def extract_start_end_indexes(lStartIndexes, lEndIndexes):
 
     return extract_indexes_from_pairs(lPairs)
 
+
 def extract_pairs(lStartIndexes, lEndIndexes):
     lMyPairs = []
     while len(lEndIndexes) > 0 and len(lStartIndexes) > 0:
@@ -229,8 +230,8 @@ def extract_closest_pair(iStart, lEndIndexes, lPair, iMin):
         if iStart > iEnd:
             continue
         if iEnd - iStart < iMin:
-             lPair = [iStart, iEnd]
-             iMin = iEnd - iStart
+            lPair = [iStart, iEnd]
+            iMin = iEnd - iStart
     return lPair
 
 
