@@ -270,6 +270,12 @@ class testDocGen(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
+    def test_record_type_definition_doc(self):
+
+        lExpected, lActual = compare_files('record_type_definition')
+
+        self.assertEqual(lExpected, lActual)
+
     def test_report_statement_rules_doc(self):
 
         lExpected, lActual = compare_files('report_statement')

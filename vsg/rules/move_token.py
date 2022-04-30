@@ -33,6 +33,7 @@ class move_token(structure.Rule):
         self.action = 'new_line'
         self.configuration.append('action')
         self.preserve_comment = False
+        self.insert_whitespace = False
 
     def _get_tokens_of_interest(self, oFile):
         if self.action == 'new_line' and not self.preserve_comment:
@@ -117,9 +118,13 @@ def analyze_move_left(self, lToi):
         lTokens = oToi.get_tokens()
         oFirstToken = lTokens[0]
         oLastToken = lTokens[-1]
-        sSolution = f'Move {oLastToken.get_value()} next to {oFirstToken.get_value()}.'
-        oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
-        self.add_violation(oViolation)
+        if rules_utils.number_of_carriage_returns(lTokens) > 0:
+            sSolution = f'Move {oLastToken.get_value()} next to {oFirstToken.get_value()}.'
+            oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
+            oViolation.insert_whitespace = False
+            if self.insert_whitespace:
+                oViolation.insert_whitespace = True
+            self.add_violation(oViolation)
 
 
 def fix_new_line_violations(oViolation):
@@ -149,6 +154,8 @@ def fix_move_left_violations(oViolation):
     lTokens = oViolation.get_tokens()
 
     rules_utils.insert_token(lTokens, 1, lTokens.pop())
+    if oViolation.insert_whitespace:
+        rules_utils.insert_token(lTokens, 1, parser.whitespace(' '))
 
     lNewTokens = utils.remove_consecutive_whitespace_tokens(lTokens)
     lNewTokens = utils.fix_blank_lines(lNewTokens)

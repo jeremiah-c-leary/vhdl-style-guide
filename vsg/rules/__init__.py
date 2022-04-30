@@ -126,6 +126,7 @@ from vsg.rules import procedure
 from vsg.rules import procedure_call
 from vsg.rules import process
 from vsg.rules import ranges
+from vsg.rules import record_type_definition
 from vsg.rules import report_statement
 from vsg.rules import sequential
 from vsg.rules import signal
