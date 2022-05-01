@@ -16,7 +16,7 @@ class rule_300(Rule):
             record
          a : std_logic;
          b : std_logic;
-       end record    t_record;
+       end record t_record;
 
     **Fix**
 

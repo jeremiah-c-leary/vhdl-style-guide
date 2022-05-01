@@ -304,7 +304,7 @@ This rule checks the indent of the **record** keyword if it is on it's own line.
         record
      a : std_logic;
      b : std_logic;
-   end record    t_record;
+   end record t_record;
 
 **Fix**
 
