@@ -8,3 +8,4 @@ from .rule_006 import rule_006
 from .rule_007 import rule_007
 
 from .rule_100 import rule_100
+from .rule_101 import rule_101

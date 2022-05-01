@@ -208,3 +208,28 @@ This rule checks for a single space after the **end** keyword.
      b : std_logic;
    end record t_record;
 
+record_type_definition_101
+##########################
+
+|phase_2| |error| |whitespace|
+
+This rule checks for a single space before the simple name.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   type t_record is record
+     a : std_logic;
+     b : std_logic;
+   end record    t_record;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   type t_record is record
+     a : std_logic;
+     b : std_logic;
+   end record t_record;
+
