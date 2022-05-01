@@ -54,8 +54,14 @@ class New():
 
     def get_token_pair_indexes(self, oStart, oEnd):
         lStartIndexes = self.get_token_indexes(oStart)
-        lEndIndexes = self.get_token_indexes(oEnd)
-        return extract_start_end_indexes(lStartIndexes, lEndIndexes)
+        lReturnEndIndexes = []
+        lReturnStartIndexes = []
+        for iIndex in lStartIndexes:
+            iEndIndex = self.get_index_of_token_after_index(oEnd, iIndex)
+            if iEndIndex is not None:
+                lReturnStartIndexes.append(iIndex)
+                lReturnEndIndexes.append(iEndIndex)
+        return lReturnStartIndexes, lReturnEndIndexes
 
     def get_index_of_next_non_whitespace_token(self, iIndex, bExcludeComments=False):
         iStartIndex = iIndex + 1
@@ -200,49 +206,3 @@ def process_tokens(lTokens):
 def build_default_map():
     dMap = {}
     return dMap
-
-
-def extract_start_end_indexes(lStartIndexes, lEndIndexes):
-    mylStartIndexes = lStartIndexes.copy()
-    mylEndIndexes = lEndIndexes.copy()
-    lPairs = extract_pairs(mylStartIndexes, mylEndIndexes)
-
-    return extract_indexes_from_pairs(lPairs)
-
-
-def extract_pairs(lStartIndexes, lEndIndexes):
-    lMyPairs = []
-    while len(lEndIndexes) > 0 and len(lStartIndexes) > 0:
-        iMin = lEndIndexes[-1] + 1
-        lPair = []
-        for iStart in lStartIndexes:
-            lPair = extract_closest_pair(iStart, lEndIndexes, lPair, iMin)
-        lMyPairs.append(lPair)
-
-        lStartIndexes.remove(lPair[0])
-        lEndIndexes.remove(lPair[1])
-
-    return lMyPairs
-
-
-def extract_closest_pair(iStart, lEndIndexes, lPair, iMin):
-    for iEnd in lEndIndexes:
-        if iStart > iEnd:
-            continue
-        if iEnd - iStart < iMin:
-            lPair = [iStart, iEnd]
-            iMin = iEnd - iStart
-    return lPair
-
-
-def extract_indexes_from_pairs(lPairs):
-    lReturnStartIndexes = []
-    lReturnEndIndexes = []
-    for pair in lPairs:
-        lReturnStartIndexes.append(pair[0])
-        lReturnEndIndexes.append(pair[1])
-
-    lReturnStartIndexes.sort()
-    lReturnEndIndexes.sort()
-
-    return lReturnStartIndexes, lReturnEndIndexes
