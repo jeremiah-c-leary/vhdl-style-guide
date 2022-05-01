@@ -233,3 +233,31 @@ This rule checks for a single space before the simple name.
      b : std_logic;
    end record t_record;
 
+record_type_definition_200
+##########################
+
+|phase_3| |error| |blank_line|
+
+This rule checks for blank lines below the **record** keyword.
+
+|configuring_blank_lines_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   type t_record is record
+
+     a : std_logic;
+     b : std_logic;
+   end record    t_record;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   type t_record is record
+     a : std_logic;
+     b : std_logic;
+   end record t_record;
+
