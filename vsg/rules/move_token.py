@@ -116,15 +116,20 @@ def analyze_new_line_with_preserve_comment(self, lToi):
 def analyze_move_left(self, lToi):
     for oToi in lToi:
         lTokens = oToi.get_tokens()
-        oFirstToken = lTokens[0]
-        oLastToken = lTokens[-1]
         if rules_utils.number_of_carriage_returns(lTokens) > 0:
-            sSolution = f'Move {oLastToken.get_value()} next to {oFirstToken.get_value()}.'
-            oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
-            oViolation.insert_whitespace = False
-            if self.insert_whitespace:
-                oViolation.insert_whitespace = True
+            oViolation = create_move_left_violation(self, oToi)
             self.add_violation(oViolation)
+
+
+def create_move_left_violation(self, oToi):
+    lTokens = oToi.get_tokens()
+    oFirstToken = lTokens[0]
+    oLastToken = lTokens[-1]
+    sSolution = f'Move {oLastToken.get_value()} next to {oFirstToken.get_value()}.'
+    oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
+    oViolation.insert_whitespace = False
+    oViolation.insert_whitespace = self.insert_whitespace
+    return oViolation
 
 
 def fix_new_line_violations(oViolation):
