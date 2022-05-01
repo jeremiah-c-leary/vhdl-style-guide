@@ -289,3 +289,30 @@ This rule checks for blank lines above the **end** keyword.
      b : std_logic;
    end record t_record;
 
+record_type_definition_300
+##########################
+
+|phase_4| |error| |indent|
+
+This rule checks the indent of the **record** keyword if it is on it's own line.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   type t_record is
+        record
+     a : std_logic;
+     b : std_logic;
+   end record    t_record;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   type t_record is
+   record
+     a : std_logic;
+     b : std_logic;
+   end record t_record;
+
