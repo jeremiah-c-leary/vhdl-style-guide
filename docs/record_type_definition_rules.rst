@@ -341,3 +341,30 @@ This rule checks the indent of the **end** keyword.
      b : std_logic;
    end record t_record;
 
+record_type_definition_500
+##########################
+
+|phase_6| |error| |case| |case_keyword|
+
+This rule checks the proper case of the **record** keyword.
+
+|configuring_uppercase_and_lowercase_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   type t_record is RECORD
+     a : std_logic;
+     b : std_logic;
+   end record t_record;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   type t_record is record
+     a : std_logic;
+     b : std_logic;
+   end record t_record;
+
