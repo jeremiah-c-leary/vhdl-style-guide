@@ -46,8 +46,13 @@ class testGroup(unittest.TestCase):
     @mock.patch('sys.stdout')
     def test_group_with_warning_severity(self, mock_stdout):
 
+        sOutput = ''
+        sOutput += 'WARNING: vsg/tests/groups/group_config_example.vhd(2)architecture_001 -- Indent level 0\n'
+        sOutput += 'WARNING: vsg/tests/groups/group_config_example.vhd(4)architecture_007 -- Indent level 0\n'
+        sOutput += 'WARNING: vsg/tests/groups/group_config_example.vhd(6)architecture_008 -- Indent level 0'
+
         lExpected = []
-        lExpected.append(mock.call('WARNING: vsg/tests/groups/group_config_example.vhd(6)architecture_008 -- Indent level 0'))
+        lExpected.append(mock.call(sOutput))
         lExpected.append(mock.call('\n'))
 
         sys.argv = ['vsg']
