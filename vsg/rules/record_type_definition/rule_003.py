@@ -9,7 +9,7 @@ lTokens.append(token.record_type_definition.end_keyword)
 
 class rule_003(Rule):
     '''
-    This rule checks the **end** keyword is on it's own line.
+    This rule checks the **end** keyword is on its own line.
 
     **Violation**
 

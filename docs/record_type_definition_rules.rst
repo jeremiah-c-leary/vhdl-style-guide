@@ -56,7 +56,7 @@ record_type_definition_003
 
 |phase_1| |error| |structure|
 
-This rule checks the **end** keyword is on it's own line.
+This rule checks the **end** keyword is on its own line.
 
 **Violation**
 
@@ -81,7 +81,7 @@ record_type_definition_004
 
 |phase_1| |error| |structure|
 
-This rule checks the **is** keyword is on the same line as the **block** keyword.
+This rule checks the **is** keyword is on the same line as the **record** keyword.
 
 **Violation**
 
@@ -294,7 +294,7 @@ record_type_definition_300
 
 |phase_4| |error| |indent|
 
-This rule checks the indent of the **record** keyword if it is on it's own line.
+This rule checks the indent of the **record** keyword if it is on its own line.
 
 **Violation**
 

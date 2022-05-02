@@ -6,7 +6,7 @@ from vsg.token import record_type_definition as token
 
 class rule_300(Rule):
     '''
-    This rule checks the indent of the **record** keyword if it is on it's own line.
+    This rule checks the indent of the **record** keyword if it is on its own line.
 
     **Violation**
 

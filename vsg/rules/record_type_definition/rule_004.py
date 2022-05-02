@@ -6,7 +6,7 @@ from vsg.token import record_type_definition as token
 
 class rule_004(Rule):
     '''
-    This rule checks the **is** keyword is on the same line as the **block** keyword.
+    This rule checks the **is** keyword is on the same line as the **record** keyword.
 
     **Violation**
 
