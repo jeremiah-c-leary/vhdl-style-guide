@@ -77,7 +77,7 @@ context_ref_005
 
 |phase_1| |error| |structure|
 
-This rule checks the **context** keyword is on it's own line.
+This rule checks the **context** keyword is on its own line.
 
 **Violation**
 

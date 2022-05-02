@@ -400,7 +400,7 @@ if_020
 
 |phase_1| |error| |structure|
 
-This rule checks the **end if** keyword is on it's own line.
+This rule checks the **end if** keyword is on its own line.
 
 **Violation**
 
@@ -420,7 +420,7 @@ if_021
 
 |phase_1| |error| |structure|
 
-This rule checks the **else** keyword is on it's own line.
+This rule checks the **else** keyword is on its own line.
 
 **Violation**
 
@@ -460,7 +460,7 @@ if_023
 
 |phase_1| |error| |structure|
 
-This rule checks the **elsif** keyword is on it's own line.
+This rule checks the **elsif** keyword is on its own line.
 
 **Violation**
 

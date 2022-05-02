@@ -447,7 +447,7 @@ function_300
 
 |phase_4| |error| |indent|
 
-This rule checks the indent of the closing parenthesis if it is on it's own line.
+This rule checks the indent of the closing parenthesis if it is on its own line.
 
 **Violation**
 

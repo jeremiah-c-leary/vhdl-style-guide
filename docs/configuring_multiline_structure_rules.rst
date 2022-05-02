@@ -15,9 +15,9 @@ There are several options to these rules:
 +-----------------------+---------+---------+---------------------------------------------------------+
 | Method                |   Type  | Default | Description                                             |
 +=======================+=========+=========+=========================================================+
-| first_paren_new_line  | string  |   yes   | First opening parenthesis on it's own line.             |
+| first_paren_new_line  | string  |   yes   | First opening parenthesis on its own line.             |
 +-----------------------+---------+---------+---------------------------------------------------------+
-| last_paren_new_line   | string  |   yes   | Last closing parenthesis on it's own line.              |
+| last_paren_new_line   | string  |   yes   | Last closing parenthesis on its own line.              |
 +-----------------------+---------+---------+---------------------------------------------------------+
 | open_paren_new_line   | string  |   yes   | Insert new line after open parenthesis.                 |
 +-----------------------+---------+---------+---------------------------------------------------------+

@@ -8,7 +8,7 @@ oToken = token.entity_declaration.semicolon
 
 class rule_025(Rule):
     '''
-    This rule checks the semicolon is not on it's own line.
+    This rule checks the semicolon is not on its own line.
 
     **Violation**
 

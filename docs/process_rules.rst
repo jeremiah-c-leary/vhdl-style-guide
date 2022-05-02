@@ -221,7 +221,7 @@ process_010
 
 |phase_1| |error| |structure|
 
-This rule checks the **begin** keyword is on it's own line.
+This rule checks the **begin** keyword is on its own line.
 
 **Violation**
 

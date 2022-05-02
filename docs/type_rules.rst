@@ -152,7 +152,7 @@ type_008
 
 |phase_1| |error| |structure|
 
-This rule checks the closing parenthesis of multiline enumerated types is on it's own line.
+This rule checks the closing parenthesis of multiline enumerated types is on its own line.
 
 **Violation**
 

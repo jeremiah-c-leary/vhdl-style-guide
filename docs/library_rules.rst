@@ -234,7 +234,7 @@ library_010
 
 |phase_1| |error| |structure|
 
-This rule checks the **library** keyword is on it's own line.
+This rule checks the **library** keyword is on its own line.
 
 **Violation**
 
@@ -254,7 +254,7 @@ library_011
 
 |phase_1| |error| |structure|
 
-This rule checks the **use** keyword is on it's own line.
+This rule checks the **use** keyword is on its own line.
 
 **Violation**
 

@@ -9,7 +9,7 @@ lTokens.append(token.use_clause.keyword)
 
 class rule_011(split_line_at_token):
     '''
-    This rule checks the **use** keyword is on it's own line.
+    This rule checks the **use** keyword is on its own line.
 
     **Violation**
 

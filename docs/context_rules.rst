@@ -169,7 +169,7 @@ context_008
 
 |phase_1| |error| |structure|
 
-This rule checks the **end** keyword is on it's own line.
+This rule checks the **end** keyword is on its own line.
 
 **Violation**
 

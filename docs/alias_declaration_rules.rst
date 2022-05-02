@@ -8,7 +8,7 @@ alias_declaration_001
 
 |phase_1| |error| |structure|
 
-This rule checks the **alias** keyword is on it's own line.
+This rule checks the **alias** keyword is on its own line.
 
 **Violation**
 

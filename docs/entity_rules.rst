@@ -505,7 +505,7 @@ entity_021
 
 |phase_1| |error| |structure|
 
-This rule checks the **end** keyword is on it's own line.
+This rule checks the **end** keyword is on its own line.
 
 **Violation**
 
@@ -577,7 +577,7 @@ entity_024
 
 |phase_1| |error| |structure|
 
-This rule checks the end entity simple name is not on it's own line.
+This rule checks the end entity simple name is not on its own line.
 
 **Violation**
 
@@ -601,7 +601,7 @@ entity_025
 
 |phase_1| |error| |structure|
 
-This rule checks the semicolon is not on it's own line.
+This rule checks the semicolon is not on its own line.
 
 **Violation**
 
@@ -685,7 +685,7 @@ entity_029
 
 |phase_1| |error| |structure|
 
-This rule checks the **begin** keyword is on it's own line.
+This rule checks the **begin** keyword is on its own line.
 
 **Violation**
 

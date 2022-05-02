@@ -9,7 +9,7 @@ lTokens.append(token.library_clause.keyword)
 
 class rule_010(split_line_at_token):
     '''
-    This rule checks the **library** keyword is on it's own line.
+    This rule checks the **library** keyword is on its own line.
 
     **Violation**
 

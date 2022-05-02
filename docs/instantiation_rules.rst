@@ -538,7 +538,7 @@ instantiation_035
 
 |phase_1| |error| |structure|
 
-This rule checks the semicolon is not on it's own line.
+This rule checks the semicolon is not on its own line.
 
 **Violation**
 
