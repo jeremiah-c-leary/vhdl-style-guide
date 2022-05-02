@@ -59,6 +59,7 @@ class align_tokens_in_region_between_tokens_when_between_tokens_unless_between_t
 
 
     def analyze(self, oFile):
+        self._print_debug_message('Analyzing rule: ' + self.unique_id)
         lToi = oFile.get_tokens_bounded_by_token_when_between_tokens(self.left_token, self.right_token, self.lBetween[0], self.lBetween[1])
         for oToi in lToi:
             lTokens = oToi.get_tokens()
