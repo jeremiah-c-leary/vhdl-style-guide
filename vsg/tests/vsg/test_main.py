@@ -546,3 +546,31 @@ class testMain(unittest.TestCase):
 
         mock_stdout.write.assert_has_calls(lExpected)
         self.assertEqual(cm.exception.code, 1)
+
+    @mock.patch('sys.stdout')
+    def test_syntastic_output_with_multiple_errors(self, mock_stdout):
+
+        sOutput = ''
+        sOutput += 'ERROR: vsg/tests/vsg/syntastic/syntastic.vhd(2)architecture_004 -- Change "ARCHITECTURE" to "architecture"\n'
+        sOutput += 'ERROR: vsg/tests/vsg/syntastic/syntastic.vhd(2)architecture_013 -- Change "RTL" to "rtl"\n'
+        sOutput += 'ERROR: vsg/tests/vsg/syntastic/syntastic.vhd(2)architecture_014 -- Change "FIFO" to "fifo"\n'
+        sOutput += 'ERROR: vsg/tests/vsg/syntastic/syntastic.vhd(2)architecture_019 -- Change "OF" to "of"\n'
+        sOutput += 'ERROR: vsg/tests/vsg/syntastic/syntastic.vhd(2)architecture_020 -- Change "IS" to "is"\n'
+        sOutput += 'ERROR: vsg/tests/vsg/syntastic/syntastic.vhd(4)architecture_021 -- Change "BEGIN" to "begin"\n'
+        sOutput += 'ERROR: vsg/tests/vsg/syntastic/syntastic.vhd(6)architecture_009 -- Change "END" to "end"\n'
+        sOutput += 'ERROR: vsg/tests/vsg/syntastic/syntastic.vhd(6)architecture_011 -- Change "RTL" to "rtl"\n'
+        sOutput += 'ERROR: vsg/tests/vsg/syntastic/syntastic.vhd(6)architecture_028 -- Change "ARCHITECTURE" to "architecture"'
+
+        lExpected = []
+        lExpected.append(mock.call(sOutput))
+        lExpected.append(mock.call('\n'))
+
+        sys.argv = ['vsg', '-f', 'vsg/tests/vsg/syntastic/syntastic.vhd', '-of', 'syntastic', '-p', '1']
+
+        try:
+            __main__.main()
+        except SystemExit:
+            pass
+
+        mock_stdout.write.assert_has_calls(lExpected)
+
