@@ -60,6 +60,15 @@ class test_interface(unittest.TestCase):
         self.assertEqual(lFileFixedStyleJcl, sUpdatedText.splitlines())
         sOutput = oResults.get_stdout()
         self.assertEqual(sExpectedOutput, sOutput)
+        self.assertFalse(oResults.has_violations())
+
+    def test_interface_fix_method_with_jcl_style_with_violations(self):
+        oInputArguments = self.oInterface.get_input_arguments()
+        oInputArguments.set_text(sFile)
+        oInputArguments.set_style('jcl')
+        oInputArguments.add_configuration(os.path.join(os.path.dirname(__file__), 'config_violation.yaml'))
+        oResults = self.oInterface.fix(oInputArguments)
+        self.assertTrue(oResults.has_violations())
 
     def test_interface_fix_method_with_one_configuration(self):
         oInputArguments = self.oInterface.get_input_arguments()

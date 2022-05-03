@@ -43,6 +43,8 @@ class New():
         sStdOut, sIgnore = oRules.report_violations(commandLineArguments.output_format)
         oResults.set_stdout(sStdOut)
 
+        oResults.set_violations(oRules.violations)
+
         return oResults
 
 
@@ -69,6 +71,7 @@ class Results():
     def __init__(self):
         self.text = None
         self.stdout = None
+        self.violations = True
 
     def set_text(self, sText):
         self.text = sText
@@ -81,6 +84,12 @@ class Results():
 
     def get_stdout(self):
         return self.stdout
+
+    def has_violations(self):
+        return self.violations
+
+    def set_violations(self, bViolations):
+        self.violations = bViolations
 
 
 class command_line_args():
