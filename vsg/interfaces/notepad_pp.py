@@ -9,68 +9,50 @@ class New():
 
     def __init__(self):
         self.identifier = 'notepad++ interface'
-        self.deleteme = False
-        self.inputArguments = None
-        self.results = None
-
 
     def get_input_arguments(self):
-        if self.inputArguments is None:
-            return InputArguments()
-        return self.inputArguments
+        return InputArguments()
 
-
-    def set_input_arguments(self, oInputArguments):
-        self.inputArguments = oInputArguments
-
-
-    def execute(self):
-        lText = self.inputArguments.text.splitlines()
+    def fix(self, oInputArguments):
+        lText = oInputArguments.text.splitlines()
         iIndex = 0
         sFileName = 'changeThis'
         commandLineArguments = command_line_args()
+        commandLineArguments.style = oInputArguments.style
+        commandLineArguments.configuration = oInputArguments.configuration
         oConfig = config.New(commandLineArguments)
-        fix_only = oConfig.dFixOnly
-        configuration = oConfig.dConfig
-        dIndent = oConfig.dIndent
-        oVhdlFile = vhdlFile.vhdlFile(lText, 'changeThis', None)
-        oVhdlFile.set_indent_map(dIndent)
+        oVhdlFile = vhdlFile.vhdlFile(lText, sFileName, None)
+        oVhdlFile.set_indent_map(oConfig.dIndent)
 
-        oRules = rule_list.rule_list(
-            oVhdlFile, oConfig.severity_list, commandLineArguments.local_rules
-        )
+        oRules = rule_list.rule_list(oVhdlFile, oConfig.severity_list, commandLineArguments.local_rules)
 
-        apply_rules.configure_rules(oConfig, oRules, configuration, iIndex, sFileName)
+        apply_rules.configure_rules(oConfig, oRules, oConfig.dIndent, iIndex, sFileName)
 
-        oRules.fix(
-            commandLineArguments.fix_phase, commandLineArguments.skip_phase, fix_only
-        )
+        oRules.fix(commandLineArguments.fix_phase, commandLineArguments.skip_phase, oConfig.dFixOnly)
 
         sOutput = '\n'.join(oVhdlFile.get_lines()[1:])
 
         oResults = Results()
         oResults.set_text(sOutput)
-        self.results = oResults
 
-    def get_results(self):
-        return self.results
-      
+        return oResults
 
 
 class InputArguments():
 
     def __init__(self):
         self.text = None
-        self.fix_enabled = False
+        self.style = None
+        self.configuration = []
 
     def set_text(self, sText):
         self.text = sText
 
-    def enable_fix(self):
-        self.fix_enabled = True
+    def set_style(self, sText):
+        self.style = sText
 
-    def disable_fix(self):
-        self.fix_enabled = False
+    def add_configuration(self, sText):
+        self.configuration.append(sText)
 
 
 class Results():
@@ -94,3 +76,4 @@ class command_line_args():
         self.fix_only = None
         self.local_rules = None
         self.fix_phase = 7
+        self.junit = None

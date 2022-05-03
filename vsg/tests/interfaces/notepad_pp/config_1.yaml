@@ -1,0 +1,5 @@
+rule:
+  architecture_004:
+    case : upper
+  architecture_009:
+    case : upper

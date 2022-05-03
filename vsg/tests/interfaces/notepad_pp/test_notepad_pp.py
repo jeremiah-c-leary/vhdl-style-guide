@@ -3,17 +3,24 @@ import vsg
 
 import vsg.interfaces.notepad_pp
 
-#import os
+import os
 
 import unittest
 
-#from vsg.tests import utils
-#import vsg.vhdlFile as vhdlFile
-#
-#sLrmUnit = utils.extract_lrm_unit_name(__name__)
-#
-#lFile, eError =vhdlFile.utils.read_vhdlfile(os.path.join(os.path.dirname(__file__),sLrmUnit,'classification_test_input.vhd'))
-#oFile = vhdlFile.vhdlFile(lFile)
+from vsg.tests import utils
+
+lFile = []
+utils.read_file(os.path.join(os.path.dirname(__file__),'test_input.vhd'), lFile)
+sFile = '\n'.join(lFile)
+
+lFileFixedStyleJcl = []
+utils.read_file(os.path.join(os.path.dirname(__file__),'test_input.fixed_jcl_style.vhd'), lFileFixedStyleJcl)
+
+lFileFixedConfig1 = []
+utils.read_file(os.path.join(os.path.dirname(__file__),'test_input.fixed_config_1.vhd'), lFileFixedConfig1)
+
+lFileFixedConfig2 = []
+utils.read_file(os.path.join(os.path.dirname(__file__),'test_input.fixed_config_2.vhd'), lFileFixedConfig2)
 
 
 class test_interface(unittest.TestCase):
@@ -24,31 +31,38 @@ class test_interface(unittest.TestCase):
     def test_interface_exists(self):
         self.assertEqual('notepad++ interface', self.oInterface.identifier)
 
-    def test_interface_set_input_arguments(self):
-        self.assertIsNone(self.oInterface.inputArguments)
-        oInputArguments = self.oInterface.get_input_arguments()
-        oInputArguments.set_text('Hello')
-        self.oInterface.set_input_arguments(oInputArguments)
-        self.assertEqual('Hello', self.oInterface.inputArguments.text)
-
-    def test_interface_execute_method_without_fix(self):
+    def test_interface_fix_method(self):
         oInputArguments = self.oInterface.get_input_arguments()
         oInputArguments.set_text('LIBRARY ieee;')
-        self.oInterface.set_input_arguments(oInputArguments)
-        self.oInterface.execute()
-        oResults = self.oInterface.get_results()  
-        sUpdatedText = oResults.get_text()
-        self.assertEqual('LIBRARY ieee;', sUpdatedText)
-
-    def test_interface_execute_method_with_fix(self):
-        oInputArguments = self.oInterface.get_input_arguments()
-        oInputArguments.set_text('LIBRARY ieee;')
-        oInputArguments.enable_fix()
-        self.oInterface.set_input_arguments(oInputArguments)
-        self.oInterface.execute()
-        oResults = self.oInterface.get_results()  
+        oResults = self.oInterface.fix(oInputArguments)
         sUpdatedText = oResults.get_text()
         self.assertEqual('library ieee;', sUpdatedText)
+
+    def test_interface_fix_method_with_jcl_style(self):
+        oInputArguments = self.oInterface.get_input_arguments()
+        oInputArguments.set_text(sFile)
+        oInputArguments.set_style('jcl')
+        oResults = self.oInterface.fix(oInputArguments)
+        sUpdatedText = oResults.get_text()
+        self.assertEqual(lFileFixedStyleJcl, sUpdatedText.splitlines())
+
+    def test_interface_fix_method_with_one_configuration(self):
+        oInputArguments = self.oInterface.get_input_arguments()
+        oInputArguments.set_text(sFile)
+        oInputArguments.add_configuration(os.path.join(os.path.dirname(__file__), 'config_1.yaml'))
+        oResults = self.oInterface.fix(oInputArguments)
+        sUpdatedText = oResults.get_text()
+        self.assertEqual(lFileFixedConfig1, sUpdatedText.splitlines())
+
+    def test_interface_fix_method_with_two_configurations(self):
+        oInputArguments = self.oInterface.get_input_arguments()
+        oInputArguments.set_text(sFile)
+        oInputArguments.add_configuration(os.path.join(os.path.dirname(__file__), 'config_1.yaml'))
+        oInputArguments.add_configuration(os.path.join(os.path.dirname(__file__), 'config_2.yaml'))
+        oResults = self.oInterface.fix(oInputArguments)
+        sUpdatedText = oResults.get_text()
+        self.assertEqual(lFileFixedConfig2, sUpdatedText.splitlines())
+
 
 class test_input_arguments(unittest.TestCase):
 
@@ -61,15 +75,3 @@ class test_input_arguments(unittest.TestCase):
         self.oInputArguments.set_text('This is a test.')
         self.assertEqual('This is a test.', self.oInputArguments.text)
         
-    def test_get_input_arguments_enable_fix_method(self):
-        self.assertFalse(self.oInputArguments.fix_enabled)
-        self.oInputArguments.enable_fix()
-        self.assertTrue(self.oInputArguments.fix_enabled)
-
-    def test_get_input_arguments_disable_fix_method(self):
-        self.assertFalse(self.oInputArguments.fix_enabled)
-        self.oInputArguments.enable_fix()
-        self.assertTrue(self.oInputArguments.fix_enabled)
-        self.oInputArguments.disable_fix()
-        self.assertFalse(self.oInputArguments.fix_enabled)
-
