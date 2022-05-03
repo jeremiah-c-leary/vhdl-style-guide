@@ -1,6 +1,6 @@
 
-architecture rtl of fifo is
+architecture RTL of FIFO is
 
 begin
 
-end architecture rtl;
+end architecture RTL;

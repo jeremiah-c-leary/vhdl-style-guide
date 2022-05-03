@@ -16,7 +16,7 @@ class New():
     def fix(self, oInputArguments):
         lText = oInputArguments.text.splitlines()
         iIndex = 0
-        sFileName = 'changeThis'
+        sFileName = oInputArguments.filename
         commandLineArguments = command_line_args()
         commandLineArguments.style = oInputArguments.style
         commandLineArguments.configuration = oInputArguments.configuration
@@ -35,12 +35,21 @@ class New():
         oResults = Results()
         oResults.set_text(sOutput)
 
+        oRules.clear_violations()
+        oRules.check_rules(
+            bAllPhases=commandLineArguments.all_phases,
+            lSkipPhase=commandLineArguments.skip_phase,
+        )
+        sStdOut, sIgnore = oRules.report_violations(commandLineArguments.output_format)
+        oResults.set_stdout(sStdOut)
+
         return oResults
 
 
 class InputArguments():
 
     def __init__(self):
+        self.filename = str(None)
         self.text = None
         self.style = None
         self.configuration = []
@@ -59,12 +68,19 @@ class Results():
 
     def __init__(self):
         self.text = None
+        self.stdout = None
 
     def set_text(self, sText):
         self.text = sText
 
     def get_text(self):
         return self.text
+
+    def set_stdout(self, sText):
+        self.stdout = sText
+
+    def get_stdout(self):
+        return self.stdout
 
 
 class command_line_args():
@@ -77,3 +93,6 @@ class command_line_args():
         self.local_rules = None
         self.fix_phase = 7
         self.junit = None
+        self.output_format = 'vsg'
+        self.all_phases = False
+        self.skip_phase = None

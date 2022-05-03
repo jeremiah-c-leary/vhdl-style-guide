@@ -22,6 +22,19 @@ utils.read_file(os.path.join(os.path.dirname(__file__),'test_input.fixed_config_
 lFileFixedConfig2 = []
 utils.read_file(os.path.join(os.path.dirname(__file__),'test_input.fixed_config_2.vhd'), lFileFixedConfig2)
 
+lExpectedOutput = []
+lExpectedOutput.append('================================================================================')
+lExpectedOutput.append('File:  None')
+lExpectedOutput.append('================================================================================')
+lExpectedOutput.append('Phase 7 of 7... Reporting')
+lExpectedOutput.append('Total Rules Checked: 627')
+lExpectedOutput.append('Total Violations:    0')
+lExpectedOutput.append('  Error   :     0')
+lExpectedOutput.append('  Warning :     0')
+
+sExpectedOutput = '\n'.join(lExpectedOutput)
+sExpectedOutput += '\n'
+
 
 class test_interface(unittest.TestCase):
 
@@ -45,6 +58,8 @@ class test_interface(unittest.TestCase):
         oResults = self.oInterface.fix(oInputArguments)
         sUpdatedText = oResults.get_text()
         self.assertEqual(lFileFixedStyleJcl, sUpdatedText.splitlines())
+        sOutput = oResults.get_stdout()
+        self.assertEqual(sExpectedOutput, sOutput)
 
     def test_interface_fix_method_with_one_configuration(self):
         oInputArguments = self.oInterface.get_input_arguments()
