@@ -1,4 +1,6 @@
 
+import vsg
+
 from vsg import config
 from vsg import vhdlFile
 from vsg import rule_list
@@ -21,7 +23,19 @@ class New():
         commandLineArguments.style = oInputArguments.style
         commandLineArguments.configuration = oInputArguments.configuration
         oConfig = config.New(commandLineArguments)
-        oVhdlFile = vhdlFile.vhdlFile(lText, sFileName, None)
+
+        oResults = Results()
+
+        try:
+            oVhdlFile = vhdlFile.vhdlFile(lText, sFileName, None)
+        except vsg.exceptions.ClassifyError as e:
+            oResults.error = True
+            oResults.set_violations(False)
+            oResults.set_text(oInputArguments.text)
+            sOutput = e.message
+            oResults.set_stdout(sOutput)
+            return oResults
+
         oVhdlFile.set_indent_map(oConfig.dIndent)
 
         oRules = rule_list.rule_list(oVhdlFile, oConfig.severity_list, commandLineArguments.local_rules)
@@ -32,7 +46,6 @@ class New():
 
         sOutput = '\n'.join(oVhdlFile.get_lines()[1:])
 
-        oResults = Results()
         oResults.set_text(sOutput)
 
         oRules.clear_violations()
@@ -72,6 +85,7 @@ class Results():
         self.text = None
         self.stdout = None
         self.violations = True
+        self.error = False
 
     def set_text(self, sText):
         self.text = sText
@@ -90,6 +104,9 @@ class Results():
 
     def set_violations(self, bViolations):
         self.violations = bViolations
+
+    def error_status(self):
+        return self.error
 
 
 class command_line_args():

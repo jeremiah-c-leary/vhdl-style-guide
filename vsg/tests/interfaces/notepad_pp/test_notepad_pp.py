@@ -13,6 +13,10 @@ lFile = []
 utils.read_file(os.path.join(os.path.dirname(__file__),'test_input.vhd'), lFile)
 sFile = '\n'.join(lFile)
 
+lFileSyntaxError = []
+utils.read_file(os.path.join(os.path.dirname(__file__),'test_input.syntax_error.vhd'), lFileSyntaxError)
+sFileSyntaxError = '\n'.join(lFileSyntaxError)
+
 lFileFixedStyleJcl = []
 utils.read_file(os.path.join(os.path.dirname(__file__),'test_input.fixed_jcl_style.vhd'), lFileFixedStyleJcl)
 
@@ -34,6 +38,12 @@ lExpectedOutput.append('  Warning :     0')
 
 sExpectedOutput = '\n'.join(lExpectedOutput)
 sExpectedOutput += '\n'
+
+sExpectedSyntaxErrorOutput = ''
+sExpectedSyntaxErrorOutput += '\n'
+sExpectedSyntaxErrorOutput += 'Error: Unexpected token detected while parsing architecture_body @ Line 6, Column 1 in file None\n'
+sExpectedSyntaxErrorOutput += '       Expecting : begin\n'
+sExpectedSyntaxErrorOutput += '       Found     : end\n'
 
 
 class test_interface(unittest.TestCase):
@@ -86,6 +96,22 @@ class test_interface(unittest.TestCase):
         oResults = self.oInterface.fix(oInputArguments)
         sUpdatedText = oResults.get_text()
         self.assertEqual(lFileFixedConfig2, sUpdatedText.splitlines())
+
+    def test_interface_fix_method_with_syntax_error(self):
+        oInputArguments = self.oInterface.get_input_arguments()
+        oInputArguments.set_text(sFileSyntaxError)
+
+        oResults = self.oInterface.fix(oInputArguments)
+
+        self.assertTrue(oResults.error_status())
+        self.assertFalse(oResults.has_violations())
+
+        sUpdatedText = oResults.get_text()
+        self.assertEqual(lFileSyntaxError, sUpdatedText.splitlines())
+
+        sOutput = oResults.get_stdout()
+        self.assertEqual(sExpectedSyntaxErrorOutput, sOutput)
+
 
 
 class test_input_arguments(unittest.TestCase):
