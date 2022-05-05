@@ -6,6 +6,8 @@ from vsg.token import direction
 from vsg.token import choice
 from vsg.token import element_association
 from vsg.token import exponent
+from vsg.token import predefined_attribute
+
 from vsg.token.ieee.std_logic_1164 import types
 
 
@@ -821,3 +823,13 @@ def exponent_detected(lObjects, iCurrent):
     if isinstance(lObjects[iCurrent - 1], exponent.minus_sign):
         return True
     return False
+
+
+def classify_predefined_types(lObjects, iCurrent):
+    if not isinstance(lObjects[iCurrent], parser.todo):
+        return
+    if lObjects[iCurrent].get_value().lower() in predefined_attribute.values:
+        if lObjects[iCurrent].get_value().lower() == 'event':
+            assign_token(lObjects, iCurrent, predefined_attribute.event_keyword)
+        else:
+            assign_token(lObjects, iCurrent, predefined_attribute.keyword)
