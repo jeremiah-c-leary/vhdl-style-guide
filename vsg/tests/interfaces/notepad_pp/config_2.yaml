@@ -1,0 +1,5 @@
+rule:
+  architecture_011:
+    case : upper
+  architecture_010:
+    action : 'remove'

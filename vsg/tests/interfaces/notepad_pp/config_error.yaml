@@ -1,0 +1,3 @@
+rule:
+  architecture_002:
+    case : upper

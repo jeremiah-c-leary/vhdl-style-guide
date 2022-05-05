@@ -1,0 +1,6 @@
+rule:
+  architecture_004:
+    fixable: false
+    case : upper
+  architecture_009:
+    case : upper
