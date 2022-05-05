@@ -45,6 +45,15 @@ sExpectedSyntaxErrorOutput += 'Error: Unexpected token detected while parsing ar
 sExpectedSyntaxErrorOutput += '       Expecting : begin\n'
 sExpectedSyntaxErrorOutput += '       Found     : end\n'
 
+sExpectedConfigurationErrorOutput = ''
+sExpectedConfigurationErrorOutput += 'ERROR: Invalid configuration of file None\n'
+sExpectedConfigurationErrorOutput += 'ERROR [config-001] Rule architecture_002 has been deprecated.\n'
+sExpectedConfigurationErrorOutput += '  Rule architecture_002 has been split into the following rules:\n'
+sExpectedConfigurationErrorOutput += '    architecture_030\n'
+sExpectedConfigurationErrorOutput += '    architecture_031\n'
+sExpectedConfigurationErrorOutput += '    architecture_032\n'
+sExpectedConfigurationErrorOutput += '    architecture_033\n'
+
 
 class test_interface(unittest.TestCase):
 
@@ -111,6 +120,22 @@ class test_interface(unittest.TestCase):
 
         sOutput = oResults.get_stdout()
         self.assertEqual(sExpectedSyntaxErrorOutput, sOutput)
+
+    def test_interface_fix_method_with_configuration_error(self):
+        oInputArguments = self.oInterface.get_input_arguments()
+        oInputArguments.set_text(sFile)
+        oInputArguments.add_configuration(os.path.join(os.path.dirname(__file__), 'config_error.yaml'))
+
+        oResults = self.oInterface.fix(oInputArguments)
+
+        self.assertTrue(oResults.error_status())
+        self.assertFalse(oResults.has_violations())
+
+        sUpdatedText = oResults.get_text()
+        self.assertEqual(lFile, sUpdatedText.splitlines())
+
+        sOutput = oResults.get_stdout()
+        self.assertEqual(sExpectedConfigurationErrorOutput, sOutput)
 
 
 

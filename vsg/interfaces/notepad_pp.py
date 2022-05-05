@@ -40,7 +40,15 @@ class New():
 
         oRules = rule_list.rule_list(oVhdlFile, oConfig.severity_list, commandLineArguments.local_rules)
 
-        apply_rules.configure_rules(oConfig, oRules, oConfig.dIndent, iIndex, sFileName)
+        try:
+            apply_rules.configure_rules(oConfig, oRules, oConfig.dIndent, iIndex, sFileName)
+        except vsg.exceptions.ConfigurationError as e:
+            oResults.error = True
+            oResults.set_violations(False)
+            oResults.set_text(oInputArguments.text)
+            sOutput = e.message
+            oResults.set_stdout(sOutput)
+            return oResults
 
         oRules.fix(commandLineArguments.fix_phase, commandLineArguments.skip_phase, oConfig.dFixOnly)
 
