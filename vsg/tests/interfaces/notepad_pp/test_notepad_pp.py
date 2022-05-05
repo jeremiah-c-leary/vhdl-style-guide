@@ -5,6 +5,8 @@ import vsg.interfaces.notepad_pp
 
 import os
 
+import re
+
 import unittest
 
 from vsg.tests import utils
@@ -31,7 +33,7 @@ lExpectedOutput.append('========================================================
 lExpectedOutput.append('File:  None')
 lExpectedOutput.append('================================================================================')
 lExpectedOutput.append('Phase 7 of 7... Reporting')
-lExpectedOutput.append('Total Rules Checked: 627')
+lExpectedOutput.append('Total Rules Checked: replaced')
 lExpectedOutput.append('Total Violations:    0')
 lExpectedOutput.append('  Error   :     0')
 lExpectedOutput.append('  Warning :     0')
@@ -78,6 +80,7 @@ class test_interface(unittest.TestCase):
         sUpdatedText = oResults.get_text()
         self.assertEqual(lFileFixedStyleJcl, sUpdatedText.splitlines())
         sOutput = oResults.get_stdout()
+        sOutput = re.sub(r'Total Rules Checked: [0-9][0-9]*', r'Total Rules Checked: replaced', sOutput)
         self.assertEqual(sExpectedOutput, sOutput)
         self.assertFalse(oResults.has_violations())
 
