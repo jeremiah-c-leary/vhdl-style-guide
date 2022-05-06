@@ -18,7 +18,7 @@ Welcome to vhdl-style-guide's documentation!
    styles
    configuring
    code_tags
-   editor_integration
+   editor_integration/editor_integration
    tool_integration
    pragmas
    localizing
