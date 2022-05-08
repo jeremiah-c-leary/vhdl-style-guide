@@ -2,7 +2,7 @@
 import subprocess
 import os
 
-sVersion = '3.10.0'
+sVersion = '3.11.0'
 
 try:
     from vsg import version_info
