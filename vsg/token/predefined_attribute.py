@@ -37,7 +37,7 @@ values.append('succ')
 values.append('val')
 values.append('value')
 
-#Array attributes
+# Array attributes
 values.append('ascending')
 values.append('high')
 values.append('left')
@@ -47,7 +47,7 @@ values.append('range')
 values.append('reverse_range')
 values.append('right')
 
-#Signal attributes
+# Signal attributes
 values.append('active')
 values.append('delayed')
 values.append('driving')
@@ -60,7 +60,7 @@ values.append('quiet')
 values.append('stable')
 values.append('transaction')
 
-#Everything attributes
+# Everything attributes
 values.append('instance_name')
 values.append('path_name')
 values.append('simple_name')
