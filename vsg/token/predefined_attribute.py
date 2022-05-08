@@ -19,7 +19,6 @@ class event_keyword(keyword):
         keyword.__init__(self, sString)
 
 
-
 values = []
 # Type attributes
 values.append('ascending')
