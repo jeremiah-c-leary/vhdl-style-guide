@@ -470,6 +470,7 @@ def post_token_assignments(lTokens):
 
             if sValue == "'":
                 lTokens[iToken] = parser.tic(sValue)
+                utils.classify_predefined_types(lTokens, iToken + 1)
                 continue
             if sValue.lower() == 'event':
                 lTokens[iToken] = parser.event_keyword(sValue)
