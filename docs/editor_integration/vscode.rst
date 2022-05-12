@@ -164,11 +164,15 @@ Copy the following into the `keybindings.json` file...
 
 ...and save it to the same directory as the `task.json` file.
 
-Now the open file buffer can be checked for errors using `ctrl+i`...
+Now the open file buffer can be checked for errors using `ctrl+i`.
 
 .. image:: vscode_file_with_errors.png
 
-...and then fixed by using `ctrl+f`...
+The violations are shown in the Problems tab:
+
+.. image:: vscode_problems_tab.png
+
+The violations can be fixed manually, or by using `ctrl+f`...
 
 .. image:: vscode_file_fixed.png
 
