@@ -3,6 +3,29 @@
 If Generate Statement Rules
 ---------------------------
 
+if_generate_statement_300
+#########################
+
+|phase_4| |error| |indent|
+
+This rule checks the indent of the *elsif* keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   ram_array : if condition generate
+      elsif condition generate
+   end generate;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   ram_array : if condition generate
+      elsif condition generate
+   end generate;
+
 if_generate_statement_500
 #########################
 

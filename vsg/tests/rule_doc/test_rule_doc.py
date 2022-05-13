@@ -90,6 +90,12 @@ class testDocGen(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
+    def test_if_generate_statements_rules_doc(self):
+
+        lExpected, lActual = compare_files('if_generate_statement')
+
+        self.assertEqual(lExpected, lActual)
+
     def test_comment_rules_doc(self):
 
         lExpected, lActual = compare_files('comment')
