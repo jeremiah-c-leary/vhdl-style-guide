@@ -24,7 +24,7 @@ class rule_300(Rule):
     .. code-block:: vhdl
 
        ram_array : if condition generate
-          elsif condition generate
+       elsif condition generate
        end generate;
     '''
 
