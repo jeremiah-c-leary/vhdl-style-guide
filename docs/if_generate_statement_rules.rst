@@ -23,7 +23,7 @@ This rule checks the indent of the *elsif* keyword.
 .. code-block:: vhdl
 
    ram_array : if condition generate
-      elsif condition generate
+   elsif condition generate
    end generate;
 
 if_generate_statement_500
