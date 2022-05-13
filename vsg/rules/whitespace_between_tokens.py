@@ -57,14 +57,12 @@ class Rule(whitespace.Rule):
         return False
 
     def analyze_min_and_max_are_equal(self, oToi):
-        lTokens = oToi.get_tokens()
-        iWhitespaces = len(lTokens[1].get_value())
+        iWhitespaces = extract_length_of_whitespace(oToi)
         if iWhitespaces != self.maximum_number_of_spaces:
             self.create_violation(oToi, self.minimum_number_of_spaces)
 
     def analyze_min_and_max_are_not_equal(self, oToi):
-        lTokens = oToi.get_tokens()
-        iWhitespaces = len(lTokens[1].get_value())
+        iWhitespaces = extract_length_of_whitespace(oToi)
         if iWhitespaces < self.minimum_number_of_spaces:
             self.create_violation(oToi, self.minimum_number_of_spaces)
         elif iWhitespaces > self.maximum_number_of_spaces:
@@ -85,3 +83,10 @@ class Rule(whitespace.Rule):
         else:
             rules_utils.insert_whitespace(lTokens, dAction['spaces'])
         oViolation.set_tokens(lTokens)
+
+
+def extract_length_of_whitespace(oToi):
+    lTokens = oToi.get_tokens()
+    iWhitespaces = len(lTokens[1].get_value())
+    return iWhitespaces
+
