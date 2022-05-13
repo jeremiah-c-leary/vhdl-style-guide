@@ -48,6 +48,8 @@ class Rule(whitespace.Rule):
         for oToi in lToi:
             if self.min_and_max_are_equal():
                 self.analyze_min_and_max_are_equal(oToi)
+            else:
+                self.analyze_min_and_max_are_not_equal(oToi)
 
     def min_and_max_are_equal(self):
         if self.maximum_number_of_spaces == self.minimum_number_of_spaces:
@@ -55,17 +57,25 @@ class Rule(whitespace.Rule):
         return False
 
     def analyze_min_and_max_are_equal(self, oToi):
-            lTokens = oToi.get_tokens()
-            if len(lTokens) == 2:
-                self.add_violation(violation.New(oToi.get_line_number(), oToi, self.solution))
-            else:
-                iWhitespaces = len(lTokens[1].get_value())
-                if iWhitespaces != self.maximum_number_of_spaces and iWhitespaces != self.minimum_number_of_spaces:
-                    oViolation = violation.New(oToi.get_line_number(), oToi, self.solution)
-                    dAction = {}
-                    dAction['spaces'] = self.maximum_number_of_spaces
-                    oViolation.set_action(dAction)
-                    self.add_violation(oViolation)
+        lTokens = oToi.get_tokens()
+        iWhitespaces = len(lTokens[1].get_value())
+        if iWhitespaces != self.maximum_number_of_spaces:
+            self.create_violation(oToi, self.minimum_number_of_spaces)
+
+    def analyze_min_and_max_are_not_equal(self, oToi):
+        lTokens = oToi.get_tokens()
+        iWhitespaces = len(lTokens[1].get_value())
+        if iWhitespaces < self.minimum_number_of_spaces:
+            self.create_violation(oToi, self.minimum_number_of_spaces)
+        elif iWhitespaces > self.maximum_number_of_spaces:
+            self.create_violation(oToi, self.maximum_number_of_spaces)
+
+    def create_violation(self, oToi, iNumSpaces):
+        oViolation = violation.New(oToi.get_line_number(), oToi, self.solution)
+        dAction = {}
+        dAction['spaces'] = iNumSpaces
+        oViolation.set_action(dAction)
+        self.add_violation(oViolation)
 
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
