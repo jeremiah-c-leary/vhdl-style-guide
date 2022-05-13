@@ -26,6 +26,29 @@ This rule checks the indent of the *elsif* keyword.
    elsif condition generate
    end generate;
 
+if_generate_statement_301
+#########################
+
+|phase_4| |error| |indent|
+
+This rule checks the indent of the *else* keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   ram_array : if condition generate
+      else
+   end generate;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   ram_array : if condition generate
+   else
+   end generate;
+
 if_generate_statement_500
 #########################
 
