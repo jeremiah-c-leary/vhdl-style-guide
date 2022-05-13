@@ -402,6 +402,27 @@ This rule checks the indent of the **end** keyword in the generate statement bod
    end;
    end generate;
 
+generate_300
+############
+
+|phase_4| |error| |indent|
+
+This rule checks the indent of the end keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   ram_array : for i in 0 to 7 generate
+      end generate;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   ram_array : for i in 0 to 7 generate
+   end generate;
+
 generate_400
 ############
 
