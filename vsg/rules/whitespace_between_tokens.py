@@ -46,6 +46,15 @@ class Rule(whitespace.Rule):
 
     def _analyze(self, lToi):
         for oToi in lToi:
+            if self.min_and_max_are_equal():
+                self.analyze_min_and_max_are_equal(oToi)
+
+    def min_and_max_are_equal(self):
+        if self.maximum_number_of_spaces == self.minimum_number_of_spaces:
+            return True
+        return False
+
+    def analyze_min_and_max_are_equal(self, oToi):
             lTokens = oToi.get_tokens()
             if len(lTokens) == 2:
                 self.add_violation(violation.New(oToi.get_line_number(), oToi, self.solution))
