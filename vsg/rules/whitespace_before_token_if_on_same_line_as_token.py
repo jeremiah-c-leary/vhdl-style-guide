@@ -61,4 +61,3 @@ def filter_toi(lFilter, lToi):
         if oToi.get_line_number() in lFilter:
             lReturn.append(oToi)
     return lReturn
-

@@ -26,4 +26,3 @@ class rule_012(Rule):
         Rule.__init__(self, 'architecture', '012')
         self.left_token = token.end_keyword
         self.right_token = token.end_architecture_keyword
-
