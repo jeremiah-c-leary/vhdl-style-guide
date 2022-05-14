@@ -33,10 +33,8 @@ class Rule(whitespace.Rule):
         whitespace.Rule.__init__(self, name=name, identifier=identifier)
         self.left_token = None
         self.right_token = None
-        self.maximum_number_of_spaces = 1
-        self.configuration.append('maximum_number_of_spaces')
-        self.minimum_number_of_spaces = 1
-        self.configuration.append('minimum_number_of_spaces')
+        self.number_of_spaces = 1
+        self.configuration.append('number_of_spaces')
 
     def _get_tokens_of_interest(self, oFile):
         lToi_a = oFile.get_sequence_of_tokens_matching([self.left_token, parser.whitespace, self.right_token])
@@ -46,27 +44,18 @@ class Rule(whitespace.Rule):
 
     def _analyze(self, lToi):
         for oToi in lToi:
-            if self.min_and_max_are_equal():
-                self.analyze_min_and_max_are_equal(oToi)
-            else:
-                self.analyze_min_and_max_are_not_equal(oToi)
+            if self.number_of_spaces_is_an_integer():
+                self.analyze_integer_spaces(oToi)
 
-    def min_and_max_are_equal(self):
-        if self.maximum_number_of_spaces == self.minimum_number_of_spaces:
-            return True
-        return False
+    def number_of_spaces_is_an_integer(self):
+        if isinstance(self.number_of_spaces, str):
+            return False
+        return True
 
-    def analyze_min_and_max_are_equal(self, oToi):
+    def analyze_integer_spaces(self, oToi):
         iWhitespaces = extract_length_of_whitespace(oToi)
-        if iWhitespaces != self.maximum_number_of_spaces:
-            self.create_violation(oToi, self.minimum_number_of_spaces)
-
-    def analyze_min_and_max_are_not_equal(self, oToi):
-        iWhitespaces = extract_length_of_whitespace(oToi)
-        if iWhitespaces < self.minimum_number_of_spaces:
-            self.create_violation(oToi, self.minimum_number_of_spaces)
-        elif iWhitespaces > self.maximum_number_of_spaces:
-            self.create_violation(oToi, self.maximum_number_of_spaces)
+        if iWhitespaces != self.number_of_spaces:
+            self.create_violation(oToi, self.number_of_spaces)
 
     def create_violation(self, oToi, iNumSpaces):
         oViolation = violation.New(oToi.get_line_number(), oToi, self.solution)
