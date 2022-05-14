@@ -72,6 +72,8 @@ package_body_100
 
 This rule checks for a single space between **package**, **body** and **is** keywords.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -90,6 +92,8 @@ package_body_101
 |phase_2| |error| |whitespace|
 
 This rule checks for a single space between the **end**, **package** and **body** keywords and package name.
+
+|configuring_whitespace_rules_link|
 
 **Violation**
 

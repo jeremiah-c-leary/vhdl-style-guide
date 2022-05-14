@@ -39,6 +39,8 @@ generate_002
 
 This rule checks for a single space between the label and the colon.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -171,6 +173,8 @@ generate_008
 
 This rule checks for a single space after the **end** keyword.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -276,6 +280,8 @@ generate_013
 
 This rule checks for a single space after the **generate** keyword and the label in the **end generate** keywords.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -294,6 +300,8 @@ generate_014
 |phase_2| |error| |whitespace|
 
 This rule checks for a single space between the colon and the **for** keyword.
+
+|configuring_whitespace_rules_link|
 
 **Violation**
 

@@ -155,6 +155,8 @@ block_100
 
 This rule checks for a single space between the following block elements:  label, label colon, **block** keyword, guard open parenthesis, guart close parenthesis, and **is** keywords.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -175,6 +177,8 @@ block_101
 |phase_2| |error| |whitespace|
 
 This rule checks for a single space between the **end** and **block** keywords and label.
+
+|configuring_whitespace_rules_link|
 
 **Violation**
 

@@ -39,6 +39,8 @@ variable_assignment_002
 
 This rule checks for a single space after the assignment.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl

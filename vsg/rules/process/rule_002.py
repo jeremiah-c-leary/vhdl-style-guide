@@ -13,6 +13,8 @@ class rule_002(Rule):
     '''
     This rule checks for a single space after the **process** keyword.
 
+    |configuring_whitespace_rules_link|
+
     **Violation**
 
     .. code-block:: vhdl
@@ -31,4 +33,3 @@ class rule_002(Rule):
     '''
     def __init__(self):
         Rule.__init__(self, 'process', '002', lTokens)
-        self.solution = 'Ensure a single space after the *process* keyword.'

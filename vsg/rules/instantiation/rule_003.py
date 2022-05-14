@@ -11,6 +11,8 @@ class rule_003(Rule):
     '''
     This rule checks for a single space before the colon.
 
+    |configuring_whitespace_rules_link|
+
     **Violation**
 
     .. code-block:: vhdl
@@ -25,4 +27,3 @@ class rule_003(Rule):
     '''
     def __init__(self):
         Rule.__init__(self, 'instantiation', '003', lTokens)
-        self.solution = 'Ensure only one space before the :.'

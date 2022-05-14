@@ -11,6 +11,8 @@ class rule_025(Rule):
     '''
     This rule checks for a single space after the colon and before the **process** keyword.
 
+    |configuring_whitespace_rules_link|
+
     **Violation**
 
     .. code-block:: vhdl
@@ -30,4 +32,3 @@ class rule_025(Rule):
     '''
     def __init__(self):
         Rule.__init__(self, 'process', '025', lTokens)
-        self.solution = 'Ensure a single space exists between the : and the *process* keyword.'

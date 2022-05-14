@@ -11,6 +11,8 @@ class rule_003(Rule):
     '''
     This rule checks for a single space between the **generic** keyword and the (.
 
+    |configuring_whitespace_rules_link|
+
     **Violation**
 
     .. code-block:: vhdl
@@ -29,4 +31,3 @@ class rule_003(Rule):
     '''
     def __init__(self):
         Rule.__init__(self, 'generic', '003', lTokens)
-        self.solution = 'Change spacing between "generic" and "(" to one space.'

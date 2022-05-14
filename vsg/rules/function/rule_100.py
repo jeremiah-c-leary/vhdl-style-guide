@@ -18,6 +18,8 @@ class rule_100(Rule):
     '''
     This rule checks for a single space between the following function elements:  **function** keyword, function designator, open parenthesis, close parenthesis, **return** keyword, return type and **is** keyword.
 
+    |configuring_whitespace_rules_link|
+
     **Violation**
 
     .. code-block:: vhdl
@@ -32,5 +34,3 @@ class rule_100(Rule):
     '''
     def __init__(self):
         Rule.__init__(self, 'function', '100', lTokens)
-        self.solution = 'Ensure a single space between the keywords in the opening part of a function specification.'
-

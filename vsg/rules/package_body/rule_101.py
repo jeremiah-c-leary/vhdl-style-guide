@@ -13,6 +13,8 @@ class rule_101(Rule):
     '''
     This rule checks for a single space between the **end**, **package** and **body** keywords and package name.
 
+    |configuring_whitespace_rules_link|
+
     **Violation**
 
     .. code-block:: vhdl
@@ -27,4 +29,3 @@ class rule_101(Rule):
     '''
     def __init__(self):
         Rule.__init__(self, 'package_body', '101', lTokens)
-        self.solution = 'Ensure a single space between the *package* keyword and *body* keyword and identifier and *is* keyword.'

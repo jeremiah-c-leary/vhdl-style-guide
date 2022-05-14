@@ -13,6 +13,8 @@ class rule_014(Rule):
     '''
     This rule checks for a single space between the colon and the **for** keyword.
 
+    |configuring_whitespace_rules_link|
+
     **Violation**
 
     .. code-block:: vhdl
@@ -29,4 +31,3 @@ class rule_014(Rule):
     '''
     def __init__(self):
         Rule.__init__(self, 'generate', '014', lTokens)
-        self.solution = 'Ensure a single space exists after the label colon.'

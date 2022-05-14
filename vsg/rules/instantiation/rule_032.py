@@ -11,6 +11,8 @@ class rule_032(Rule):
     '''
     This rule checks for a single space after the **component** keyword if it is used.
 
+    |configuring_whitespace_rules_link|
+
     **Violation**
 
     .. code-block:: vhdl
@@ -29,4 +31,3 @@ class rule_032(Rule):
     '''
     def __init__(self):
         Rule.__init__(self, 'instantiation', '032', lTokens)
-        self.solution = 'Ensure a single space exists between *component* and the component_name.'

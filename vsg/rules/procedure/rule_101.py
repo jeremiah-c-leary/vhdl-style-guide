@@ -8,6 +8,7 @@ lTokens.append([token.subprogram_body.end_keyword, token.subprogram_kind.procedu
 lTokens.append([token.subprogram_body.end_keyword, token.subprogram_body.designator])
 lTokens.append([token.subprogram_kind.procedure_keyword, token.subprogram_body.designator])
 
+
 class rule_101(Rule):
     '''
     This rule checks for a single space between the **end** and **procedure** keywords and procedure designator.

@@ -13,6 +13,8 @@ class rule_013(Rule):
     '''
     This rule checks for a single space after the **generate** keyword and the label in the **end generate** keywords.
 
+    |configuring_whitespace_rules_link|
+
     **Violation**
 
     .. code-block:: vhdl
@@ -27,4 +29,3 @@ class rule_013(Rule):
     '''
     def __init__(self):
         Rule.__init__(self, 'generate', '013', lTokens)
-        self.solution = 'Ensure there is only one space between the *generate* keyword and the label.'

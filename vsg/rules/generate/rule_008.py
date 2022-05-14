@@ -13,6 +13,8 @@ class rule_008(Rule):
     '''
     This rule checks for a single space after the **end** keyword.
 
+    |configuring_whitespace_rules_link|
+
     **Violation**
 
     .. code-block:: vhdl
@@ -27,4 +29,3 @@ class rule_008(Rule):
     '''
     def __init__(self):
         Rule.__init__(self, 'generate', '008', lTokens)
-        self.solution = 'Ensure there is only one space between the *end* and *generate* keywords.'

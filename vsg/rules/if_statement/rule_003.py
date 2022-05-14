@@ -12,6 +12,8 @@ class rule_003(Rule):
     '''
     This rule checks for a single space between the **if** keyword and the (.
 
+    |configuring_whitespace_rules_link|
+
     **Violation**
 
     .. code-block:: vhdl
@@ -30,4 +32,3 @@ class rule_003(Rule):
     '''
     def __init__(self):
         Rule.__init__(self, 'if', '003', lTokens)
-        self.solution = 'Ensure only a single space exists between the *if* keyword and (.'

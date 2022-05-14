@@ -42,6 +42,8 @@ generic_003
 
 This rule checks for a single space between the **generic** keyword and the (.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl

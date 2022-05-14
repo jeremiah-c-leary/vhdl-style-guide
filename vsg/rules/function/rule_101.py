@@ -13,6 +13,8 @@ class rule_101(Rule):
     '''
     This rule checks for a single space between the **end** and **function** keywords and function designator.
 
+    |configuring_whitespace_rules_link|
+
     **Violation**
 
     .. code-block:: vhdl
@@ -31,5 +33,3 @@ class rule_101(Rule):
     '''
     def __init__(self):
         Rule.__init__(self, 'function', '101', lTokens)
-        self.solution = 'Ensure a single space between the keywords in the closing part of a function specification.'
-

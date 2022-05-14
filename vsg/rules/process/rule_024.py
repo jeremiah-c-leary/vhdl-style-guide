@@ -11,6 +11,8 @@ class rule_024(Rule):
     '''
     This rule checks for a single space after the process label.
 
+    |configuring_whitespace_rules_link|
+
     **Violation**
 
     .. code-block:: vhdl
@@ -31,4 +33,3 @@ class rule_024(Rule):
     '''
     def __init__(self):
         Rule.__init__(self, 'process', '024', lTokens)
-        self.solution = 'Ensure a single space exists between process label and :.'

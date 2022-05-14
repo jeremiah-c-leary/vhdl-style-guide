@@ -12,6 +12,8 @@ class rule_007(Rule):
     '''
     This rule checks for a single space after the **end** keyword.
 
+    |configuring_whitespace_rules_link|
+
     **Violation**
 
     .. code-block:: vhdl
@@ -26,4 +28,3 @@ class rule_007(Rule):
     '''
     def __init__(self):
         Rule.__init__(self, 'process', '007', lTokens)
-        self.solution = 'Ensure a single space after the *end* keyword.'

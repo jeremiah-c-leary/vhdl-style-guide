@@ -80,6 +80,8 @@ if_003
 
 This rule checks for a single space between the **if** keyword and the (.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -102,6 +104,8 @@ if_004
 |phase_2| |error| |whitespace|
 
 This rule checks for a single space between the ) and the **then** keyword.
+
+|configuring_whitespace_rules_link|
 
 **Violation**
 
@@ -382,6 +386,8 @@ if_015
 |phase_2| |error| |whitespace|
 
 This rule checks for a single space between the **end if** keywords.
+
+|configuring_whitespace_rules_link|
 
 **Violation**
 

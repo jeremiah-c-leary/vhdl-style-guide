@@ -11,6 +11,8 @@ class rule_006(Rule):
     '''
     This rule checks for excessive spaces after the **use** keyword.
 
+    |configuring_whitespace_rules_link|
+
     **Violation**
 
     .. code-block:: vhdl
@@ -29,4 +31,3 @@ class rule_006(Rule):
     '''
     def __init__(self):
         Rule.__init__(self, 'library', '006', lTokens)
-        self.solution = 'Ensure a single space between the *use* keyword and the selected_name.'

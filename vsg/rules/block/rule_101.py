@@ -12,6 +12,8 @@ class rule_101(Rule):
     '''
     This rule checks for a single space between the **end** and **block** keywords and label.
 
+    |configuring_whitespace_rules_link|
+
     **Violation**
 
     .. code-block:: vhdl

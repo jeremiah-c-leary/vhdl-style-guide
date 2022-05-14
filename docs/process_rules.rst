@@ -37,6 +37,8 @@ process_002
 
 This rule checks for a single space after the **process** keyword.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -161,6 +163,8 @@ process_007
 |phase_2| |error| |whitespace|
 
 This rule checks for a single space after the **end** keyword.
+
+|configuring_whitespace_rules_link|
 
 **Violation**
 
@@ -336,6 +340,8 @@ process_014
 |phase_2| |error| |whitespace|
 
 This rule checks for a single space before the **is** keyword.
+
+|configuring_whitespace_rules_link|
 
 **Violation**
 
@@ -617,6 +623,8 @@ process_024
 
 This rule checks for a single space after the process label.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -641,6 +649,8 @@ process_025
 |phase_2| |error| |whitespace|
 
 This rule checks for a single space after the colon and before the **process** keyword.
+
+|configuring_whitespace_rules_link|
 
 **Violation**
 

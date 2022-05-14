@@ -11,6 +11,8 @@ class rule_002(Rule):
     '''
     This rule checks for excessive spaces after the **library** keyword.
 
+    |configuring_whitespace_rules_link|
+
     **Violation**
 
     .. code-block:: vhdl
@@ -25,4 +27,3 @@ class rule_002(Rule):
     '''
     def __init__(self):
         Rule.__init__(self, 'library', '002', lTokens)
-        self.solution = 'Ensure a single space between the *library* keyword and the logical_name.'

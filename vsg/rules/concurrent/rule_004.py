@@ -29,5 +29,4 @@ class rule_004(Rule):
     '''
     def __init__(self):
         Rule.__init__(self, 'concurrent', '004', lTokens)
-        self.solution = 'Ensure a single space between target and assignment.'
         self.number_of_spaces = '>=1'

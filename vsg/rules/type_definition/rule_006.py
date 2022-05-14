@@ -11,6 +11,8 @@ class rule_006(Rule):
     '''
     This rule checks for a single space before the **is** keyword.
 
+    |configuring_whitespace_rules_link|
+
     **Violation**
 
     .. code-block:: vhdl
@@ -25,4 +27,3 @@ class rule_006(Rule):
     '''
     def __init__(self):
         Rule.__init__(self, 'type', '006', lTokens)
-        self.solution = 'Ensure only a single space before the *is* keyword.'

@@ -8,9 +8,12 @@ lTokens.append([token.for_generate_statement.generate_label, token.for_generate_
 lTokens.append([token.if_generate_statement.generate_label, token.if_generate_statement.label_colon])
 lTokens.append([token.case_generate_statement.generate_label, token.case_generate_statement.label_colon])
 
+
 class rule_002(Rule):
     '''
     This rule checks for a single space between the label and the colon.
+
+    |configuring_whitespace_rules_link|
 
     **Violation**
 
@@ -26,4 +29,3 @@ class rule_002(Rule):
     '''
     def __init__(self):
         Rule.__init__(self, 'generate', '002', lTokens)
-        self.solution = 'Ensure a single space between label and :.'
