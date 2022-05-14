@@ -9,7 +9,6 @@ from .move_token_next_to_another_token_if_it_exists_between_tokens import move_t
 from .move_token_left_to_next_non_whitespace_token import move_token_left_to_next_non_whitespace_token
 from .previous_line import previous_line
 from .blank_line_above_line_starting_with_token import blank_line_above_line_starting_with_token
-from .single_space_between_tokens import single_space_between_tokens
 
 from .line_length import line_length
 from .file_length import file_length
