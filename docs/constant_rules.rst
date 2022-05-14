@@ -105,6 +105,8 @@ constant_006
 
 This rule checks for at least a single space before the colon.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -153,6 +155,8 @@ constant_010
 
 This rule checks for a single space before the := keyword in constant declarations.
 Having a space makes it clearer where the assignment occurs on the line.
+
+|configuring_whitespace_rules_link|
 
 **Violation**
 

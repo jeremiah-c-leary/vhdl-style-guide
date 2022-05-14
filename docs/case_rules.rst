@@ -110,6 +110,8 @@ case_005
 
 This rule checks for a single space before the **=>** operator.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl

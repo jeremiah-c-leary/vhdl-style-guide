@@ -220,6 +220,8 @@ loop_statement_102
 
 This rule checks for a single space before the **loop** keyword.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
