@@ -242,6 +242,8 @@ architecture_012
 
 This rule checks for a single space between **end** and **architecture** keywords.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
