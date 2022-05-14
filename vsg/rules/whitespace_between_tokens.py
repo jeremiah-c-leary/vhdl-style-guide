@@ -44,10 +44,10 @@ class Rule(whitespace.Rule):
 
     def _analyze(self, lToi):
         for oToi in lToi:
-            if no_whitespace_token_exists(oToi):
-                self.analyze_no_whitespace_token(oToi)
-            else:
+            if whitespace_token_exists(oToi):
                 self.analyze_whitespace_token(oToi)
+            else:
+                self.analyze_no_whitespace_token(oToi)
 
     def analyze_no_whitespace_token(self, oToi):
         iSpaces = self.extract_expected_number_of_spaces()
@@ -111,10 +111,10 @@ class Rule(whitespace.Rule):
 
     def create_solution(self, oToi, iNumSpaces):
         lTokens = oToi.get_tokens()
-        if no_whitespace_token_exists(oToi):
-            sSolution = f'Add {str(iNumSpaces)} spaces between {lTokens[0].get_value()} and {lTokens[1].get_value()}'
-        else:
+        if whitespace_token_exists(oToi):
             sSolution = f'Change the number of spaces between {lTokens[0].get_value()} and {lTokens[2].get_value()} to {str(iNumSpaces)}'
+        else:
+            sSolution = f'Add {str(iNumSpaces)} spaces between {lTokens[0].get_value()} and {lTokens[1].get_value()}'
         return sSolution
 
     def _fix_violation(self, oViolation):
@@ -132,9 +132,11 @@ def extract_length_of_whitespace(oToi):
     iWhitespaces = len(lTokens[1].get_value())
     return iWhitespaces
 
-def no_whitespace_token_exists(oToi):
+def whitespace_token_exists(oToi):
     lTokens = oToi.get_tokens()
     if len(lTokens) == 2:
+        return False
+    if isinstance(lTokens[1], parser.whitespace):
         return True
     return False
 
