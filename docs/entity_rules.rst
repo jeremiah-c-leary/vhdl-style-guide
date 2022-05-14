@@ -33,6 +33,8 @@ entity_002
 
 This rule checks for a single space after the **entity** keyword.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl

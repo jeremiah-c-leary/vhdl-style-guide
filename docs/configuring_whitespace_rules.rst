@@ -126,4 +126,5 @@ Rules Enforcing Whitespace
 ##########################
 
 * `architecture_012 <architecture_rules.html#architecture-012>`_
+* `entity_002 <entity_rules.html#entity-002>`_
 * `entity_007 <entity_rules.html#entity-007>`_
