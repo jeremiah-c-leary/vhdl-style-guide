@@ -1,7 +1,7 @@
 
 from vsg import token
 
-from vsg.rules import single_space_between_token_pairs
+from vsg.rules.whitespace_between_token_pairs import Rule
 
 lTokens = []
 lTokens.append([token.process_statement.process_keyword, token.process_statement.open_parenthesis])
@@ -9,7 +9,7 @@ lTokens.append([token.process_statement.process_keyword, token.process_statement
 lTokens.append([token.process_statement.process_keyword, token.process_statement.begin_keyword])
 
 
-class rule_002(single_space_between_token_pairs):
+class rule_002(Rule):
     '''
     This rule checks for a single space after the **process** keyword.
 
@@ -30,5 +30,5 @@ class rule_002(single_space_between_token_pairs):
        proc_a : process (rd_en, wr_en, data_in, data_out,
     '''
     def __init__(self):
-        single_space_between_token_pairs.__init__(self, 'process', '002', lTokens)
+        Rule.__init__(self, 'process', '002', lTokens)
         self.solution = 'Ensure a single space after the *process* keyword.'

@@ -2,13 +2,13 @@
 from vsg import parser
 from vsg import token
 
-from vsg.rules import single_space_between_token_pairs
+from vsg.rules.whitespace_between_token_pairs import Rule
 
 lTokens = []
 lTokens.append([token.if_statement.if_keyword, parser.open_parenthesis])
 
 
-class rule_003(single_space_between_token_pairs):
+class rule_003(Rule):
     '''
     This rule checks for a single space between the **if** keyword and the (.
 
@@ -29,5 +29,5 @@ class rule_003(single_space_between_token_pairs):
       if (a = '1') then
     '''
     def __init__(self):
-        single_space_between_token_pairs.__init__(self, 'if', '003', lTokens)
+        Rule.__init__(self, 'if', '003', lTokens)
         self.solution = 'Ensure only a single space exists between the *if* keyword and (.'

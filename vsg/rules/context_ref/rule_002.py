@@ -1,5 +1,5 @@
 
-from vsg.rules import single_space_between_token_pairs as Rule
+from vsg.rules.whitespace_between_token_pairs import Rule as Rule
 
 from vsg.token import context_reference as token
 

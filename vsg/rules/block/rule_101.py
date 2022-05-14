@@ -1,14 +1,14 @@
 
 from vsg import token
 
-from vsg.rules import single_space_between_token_pairs
+from vsg.rules.whitespace_between_token_pairs import Rule
 
 lTokens = []
 lTokens.append([token.block_statement.end_keyword, token.block_statement.end_block_keyword])
 lTokens.append([token.block_statement.end_block_keyword, token.block_statement.end_block_label])
 
 
-class rule_101(single_space_between_token_pairs):
+class rule_101(Rule):
     '''
     This rule checks for a single space between the **end** and **block** keywords and label.
 
@@ -25,4 +25,4 @@ class rule_101(single_space_between_token_pairs):
        end block block_label;
     '''
     def __init__(self):
-        single_space_between_token_pairs.__init__(self, 'block', '101', lTokens)
+        Rule.__init__(self, 'block', '101', lTokens)

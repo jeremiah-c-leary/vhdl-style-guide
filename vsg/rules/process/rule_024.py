@@ -1,13 +1,13 @@
 
 from vsg import token
 
-from vsg.rules import single_space_between_token_pairs
+from vsg.rules.whitespace_between_token_pairs import Rule
 
 lTokens = []
 lTokens.append([token.process_statement.process_label, token.process_statement.label_colon])
 
 
-class rule_024(single_space_between_token_pairs):
+class rule_024(Rule):
     '''
     This rule checks for a single space after the process label.
 
@@ -30,5 +30,5 @@ class rule_024(single_space_between_token_pairs):
        begin
     '''
     def __init__(self):
-        single_space_between_token_pairs.__init__(self, 'process', '024', lTokens)
+        Rule.__init__(self, 'process', '024', lTokens)
         self.solution = 'Ensure a single space exists between process label and :.'

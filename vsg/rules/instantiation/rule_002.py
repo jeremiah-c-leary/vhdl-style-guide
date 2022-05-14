@@ -1,7 +1,7 @@
 
 from vsg import token
 
-from vsg.rules import single_space_between_token_pairs
+from vsg.rules.whitespace_between_token_pairs import Rule
 
 lTokens = []
 lTokens.append([token.component_instantiation_statement.label_colon, token.instantiated_unit.component_keyword])
@@ -10,7 +10,7 @@ lTokens.append([token.component_instantiation_statement.label_colon, token.insta
 lTokens.append([token.component_instantiation_statement.label_colon, token.instantiated_unit.component_name])
 
 
-class rule_002(single_space_between_token_pairs):
+class rule_002(Rule):
     '''
     This rule checks for a single space after the colon.
 
@@ -27,5 +27,5 @@ class rule_002(single_space_between_token_pairs):
        U_FIFO : FIFO
     '''
     def __init__(self):
-        single_space_between_token_pairs.__init__(self, 'instantiation', '002', lTokens)
+        Rule.__init__(self, 'instantiation', '002', lTokens)
         self.solution = 'Ensure only one space after the :.'

@@ -1,5 +1,5 @@
 
-from vsg.rules import single_space_between_token_pairs
+from vsg.rules.whitespace_between_token_pairs import Rule
 
 from vsg import token
 
@@ -9,7 +9,7 @@ lTokens.append([token.concurrent_conditional_signal_assignment.target, token.con
 lTokens.append([token.concurrent_selected_signal_assignment.target, token.concurrent_selected_signal_assignment.assignment])
 
 
-class rule_004(single_space_between_token_pairs):
+class rule_004(Rule):
     '''
     This rule checks for at least a single space before the **<=** operator.
 
@@ -28,6 +28,6 @@ class rule_004(single_space_between_token_pairs):
        wr_en <= '0';
     '''
     def __init__(self):
-        single_space_between_token_pairs.__init__(self, 'concurrent', '004', lTokens)
+        Rule.__init__(self, 'concurrent', '004', lTokens)
         self.solution = 'Ensure a single space between target and assignment.'
         self.number_of_spaces = '>=1'

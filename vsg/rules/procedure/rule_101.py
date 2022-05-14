@@ -1,14 +1,14 @@
 
 from vsg import token
 
-from vsg.rules import single_space_between_token_pairs
+from vsg.rules.whitespace_between_token_pairs import Rule
 
 lTokens = []
 lTokens.append([token.subprogram_body.end_keyword, token.subprogram_kind.procedure_keyword])
 lTokens.append([token.subprogram_body.end_keyword, token.subprogram_body.designator])
 lTokens.append([token.subprogram_kind.procedure_keyword, token.subprogram_body.designator])
 
-class rule_101(single_space_between_token_pairs):
+class rule_101(Rule):
     '''
     This rule checks for a single space between the **end** and **procedure** keywords and procedure designator.
 
@@ -31,4 +31,4 @@ class rule_101(single_space_between_token_pairs):
        end average_samples;
     '''
     def __init__(self):
-        single_space_between_token_pairs.__init__(self, 'procedure', '101', lTokens)
+        Rule.__init__(self, 'procedure', '101', lTokens)
