@@ -15,4 +15,12 @@ begin
   begin
   end process;
 
+  process (a,     b,    c,     d) is
+  begin
+  end process;
+
+  process (a, b, c
+           d, e, f) is
+  begin end process;
+
 end architecture RTL;

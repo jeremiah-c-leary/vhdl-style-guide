@@ -1,15 +1,17 @@
 
 from vsg import parser
 
-from vsg.rules import n_spaces_after_tokens
+from vsg.rules.whitespace_after_token import Rule
 
 lTokens = []
 lTokens.append(parser.comma)
 
 
-class rule_007(n_spaces_after_tokens):
+class rule_007(Rule):
     '''
     This rule checks for spaces after a comma.
+
+    |configuring_whitespace_rules_link|
 
     **Violation**
 
@@ -25,5 +27,5 @@ class rule_007(n_spaces_after_tokens):
     '''
 
     def __init__(self):
-        n_spaces_after_tokens.__init__(self, 'whitespace', '007', 1, lTokens, bNIsMinimum=True)
-        self.solution = 'Add a space after comma.'
+        Rule.__init__(self, 'whitespace', '007', lTokens)
+        self.number_of_spaces = '>=1'

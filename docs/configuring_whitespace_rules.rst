@@ -200,3 +200,4 @@ Rules Enforcing Whitespace
 * `type_definition_007 <type_rules.html#type-007>`_
 * `variable_005 <variable_rules.html#variable-002>`_
 * `variable_assignment_002 <variable_assignment_rules.html#variable_assignment-002>`_
+* `whitespace_007 <whitespace_rules.html#whitespace-007>`_

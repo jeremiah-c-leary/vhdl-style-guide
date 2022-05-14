@@ -127,6 +127,8 @@ whitespace_007
 
 This rule checks for spaces after a comma.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl

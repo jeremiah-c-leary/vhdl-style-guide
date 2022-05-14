@@ -223,9 +223,12 @@ def token_list_is_the_beginning_of_a_line(lTokens):
 
 
 def left_most_token_is_at_the_end_of_a_line(lTokens):
-    for oToken in lTokens[1:3]:
-        if token_is_carriage_return(oToken) or token_is_comment(oToken):
-            return True
+    if token_is_carriage_return(lTokens[1]):
+        return True
+    if token_is_comment(lTokens[1]):
+        return True
+    if token_is_whitespace(lTokens[1]) and token_is_comment(lTokens[2]):
+        return True
     return False
 
 
