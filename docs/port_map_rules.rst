@@ -145,6 +145,8 @@ port_map_007
 
 This rule checks for a single space after the **=>** operator in port maps.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl

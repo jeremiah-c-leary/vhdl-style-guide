@@ -2,12 +2,12 @@
 
 from vsg import parser
 
-from vsg.rules.whitespace_between_tokens import Rule
+from vsg.rules.whitespace_between_tokens import Rule as WhitespaceRule
 
 from vsg.vhdlFile import utils
 
 
-class single_space_between_token_pairs_bounded_by_tokens(Rule):
+class Rule(WhitespaceRule):
     '''
     Checks for a single space between two tokens.
 
@@ -25,7 +25,7 @@ class single_space_between_token_pairs_bounded_by_tokens(Rule):
     '''
 
     def __init__(self, name, identifier, lTokens, oStart, oEnd):
-        Rule.__init__(self, name=name, identifier=identifier)
+        WhitespaceRule.__init__(self, name=name, identifier=identifier)
         self.lTokens = lTokens
         self.oStart = oStart
         self.oEnd = oEnd
