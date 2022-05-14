@@ -1,5 +1,5 @@
 
-from vsg.rules import single_space_after_token as Rule
+from vsg.rules.whitespace_after_token import Rule as Rule
 
 from vsg.token import loop_statement as token
 

@@ -1,7 +1,7 @@
 
 from vsg import token
 
-from vsg.rules import single_space_after_token
+from vsg.rules.whitespace_after_token import Rule
 
 lTokens = []
 lTokens.append(token.simple_waveform_assignment.assignment)
@@ -13,7 +13,7 @@ lTokens.append(token.conditional_waveform_assignment.assignment)
 lTokens.append(token.conditional_force_assignment.assignment)
 
 
-class rule_002(single_space_after_token):
+class rule_002(Rule):
     '''
     This rule checks for a single space after the **<=** operator.
 
@@ -32,5 +32,5 @@ class rule_002(single_space_after_token):
        rd_en <= '0';
     '''
     def __init__(self):
-        single_space_after_token.__init__(self, 'sequential', '002', lTokens)
+        Rule.__init__(self, 'sequential', '002', lTokens)
         self.solution = 'Ensure at least a single space after the <=.'

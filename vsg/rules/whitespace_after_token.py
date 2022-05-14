@@ -1,14 +1,10 @@
 
-from vsg import parser
-from vsg import violation
-
-from vsg.rule_group import whitespace
 from vsg.rules import utils
 
 from vsg.rules.whitespace_between_tokens import Rule as WhitespaceRule
 
 
-class single_space_after_token(WhitespaceRule):
+class Rule(WhitespaceRule):
     '''
     Checks for a single space after a token
 

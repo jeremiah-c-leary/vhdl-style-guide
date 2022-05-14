@@ -1,7 +1,7 @@
 
 from vsg import token
 
-from vsg.rules import single_space_after_token as Rule
+from vsg.rules.whitespace_after_token import Rule as Rule
 
 lTokens = []
 lTokens.append(token.element_association.assignment)

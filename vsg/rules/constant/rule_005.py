@@ -1,5 +1,5 @@
 
-from vsg.rules import single_space_after_token
+from vsg.rules.whitespace_after_token import Rule
 
 from vsg import token
 
@@ -7,7 +7,7 @@ lTokens = []
 lTokens.append(token.constant_declaration.colon)
 
 
-class rule_005(single_space_after_token):
+class rule_005(Rule):
     '''
     This rule checks for a single space after the colon.
 
@@ -27,4 +27,4 @@ class rule_005(single_space_after_token):
     '''
 
     def __init__(self):
-        single_space_after_token.__init__(self, 'constant', '005', lTokens)
+        Rule.__init__(self, 'constant', '005', lTokens)
