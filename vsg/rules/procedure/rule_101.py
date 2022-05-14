@@ -12,6 +12,8 @@ class rule_101(single_space_between_token_pairs):
     '''
     This rule checks for a single space between the **end** and **procedure** keywords and procedure designator.
 
+    |configuring_whitespace_rules_link|
+
     **Violation**
 
     .. code-block:: vhdl
@@ -30,5 +32,3 @@ class rule_101(single_space_between_token_pairs):
     '''
     def __init__(self):
         single_space_between_token_pairs.__init__(self, 'procedure', '101', lTokens)
-        self.solution = 'Ensure a single space between the keywords in the closing part of a procedure specification.'
-

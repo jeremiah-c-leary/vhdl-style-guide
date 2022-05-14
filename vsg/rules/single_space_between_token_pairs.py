@@ -7,8 +7,9 @@ from vsg.rule_group import whitespace
 from vsg.rules import utils as rules_utils
 from vsg.vhdlFile import utils
 
+from vsg.rules.whitespace_between_tokens import Rule
 
-class single_space_between_token_pairs(whitespace.Rule):
+class single_space_between_token_pairs(Rule):
     '''
     Checks for a single space between two tokens.
 
@@ -25,11 +26,9 @@ class single_space_between_token_pairs(whitespace.Rule):
        The tokens to check for a single space between
     '''
 
-    def __init__(self, name, identifier, lTokens, bMinimum=False, iSpaces=1):
-        whitespace.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self, name, identifier, lTokens):
+        Rule.__init__(self, name=name, identifier=identifier)
         self.lTokens = lTokens
-        self.bMinimum = bMinimum
-        self.iSpaces = iSpaces
 
     def _get_tokens_of_interest(self, oFile):
         lToi = []
@@ -39,24 +38,3 @@ class single_space_between_token_pairs(whitespace.Rule):
             lToi_a = oFile.get_sequence_of_tokens_matching(lTokenPair)
             lToi = utils.combine_two_token_class_lists(lToi, lToi_a)
         return lToi
-
-    def _analyze(self, lToi):
-        for oToi in lToi:
-            lTokens = oToi.get_tokens()
-            if len(lTokens) == 2:
-                sSolution = f'Add {self.iSpaces} space(s) between {lTokens[0].get_value()} and {lTokens[1].get_value()}'
-                oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
-                self.add_violation(oViolation)
-            elif self.bMinimum:
-                continue
-            elif len(lTokens[1].get_value()) != 1:
-                sSolution = f'Change spaces between {lTokens[0].get_value()} and {lTokens[2].get_value()} to {self.iSpaces}'
-                self.add_violation(violation.New(oToi.get_line_number(), oToi, sSolution))
-
-    def _fix_violation(self, oViolation):
-        lTokens = oViolation.get_tokens()
-        if isinstance(lTokens[1], parser.whitespace):
-            lTokens[1].set_value(' ')
-        else:
-            rules_utils.insert_whitespace(lTokens, 1)
-        oViolation.set_tokens(lTokens)

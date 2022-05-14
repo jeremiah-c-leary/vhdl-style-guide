@@ -13,6 +13,8 @@ class rule_100(single_space_between_token_pairs):
     '''
     This rule checks for a single space between the following procedure elements:  **procedure** keyword, procedure designator, open parenthesis, close parenthesis, and **is** keywords.
 
+    |configuring_whitespace_rules_link|
+
     **Violation**
 
     .. code-block:: vhdl
@@ -35,5 +37,3 @@ class rule_100(single_space_between_token_pairs):
     '''
     def __init__(self):
         single_space_between_token_pairs.__init__(self, 'procedure', '100', lTokens)
-        self.solution = 'Ensure a single space between the keywords in the opening part of a procedure specification.'
-

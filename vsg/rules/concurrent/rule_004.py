@@ -13,6 +13,8 @@ class rule_004(single_space_between_token_pairs):
     '''
     This rule checks for at least a single space before the **<=** operator.
 
+    |configuring_whitespace_rules_link|
+
     **Violation**
 
     .. code-block:: vhdl
@@ -26,5 +28,6 @@ class rule_004(single_space_between_token_pairs):
        wr_en <= '0';
     '''
     def __init__(self):
-        single_space_between_token_pairs.__init__(self, 'concurrent', '004', lTokens, bMinimum=True)
+        single_space_between_token_pairs.__init__(self, 'concurrent', '004', lTokens)
         self.solution = 'Ensure a single space between target and assignment.'
+        self.number_of_spaces = '>=1'

@@ -381,6 +381,8 @@ procedure_100
 
 This rule checks for a single space between the following procedure elements:  **procedure** keyword, procedure designator, open parenthesis, close parenthesis, and **is** keywords.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -407,6 +409,8 @@ procedure_101
 |phase_2| |error| |whitespace|
 
 This rule checks for a single space between the **end** and **procedure** keywords and procedure designator.
+
+|configuring_whitespace_rules_link|
 
 **Violation**
 
