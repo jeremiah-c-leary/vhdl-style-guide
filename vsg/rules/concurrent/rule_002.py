@@ -13,6 +13,8 @@ class rule_002(Rule):
     '''
     This rule checks for a single space after the **<=** operator.
 
+    |configuring_whitespace_rules_link|
+
     **Violation**
 
     .. code-block:: vhdl

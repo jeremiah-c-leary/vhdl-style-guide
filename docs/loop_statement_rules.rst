@@ -264,6 +264,8 @@ loop_statement_104
 
 This rule checks if a label exists that a single space exists after the colon.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl

@@ -1,7 +1,7 @@
 
 from vsg import token
 
-from vsg.rules.whitespace_after_token import Rule as Rule
+from vsg.rules.whitespace_after_token import Rule
 from vsg.rules import utils
 
 lTokens = []
@@ -18,6 +18,8 @@ oEnd = token.generic_clause.close_parenthesis
 class rule_005(Rule):
     '''
     This rule checks for a single space after the colon in a generic declaration.
+
+    |configuring_whitespace_rules_link|
 
     **Violation**
 

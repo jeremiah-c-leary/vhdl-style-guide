@@ -12,6 +12,8 @@ class rule_100(Rule):
     '''
     This rule checks for a single space after the following elements:  **attribute** keyword and colon.
 
+    |configuring_whitespace_rules_link|
+
     **Violation**
 
     .. code-block:: vhdl

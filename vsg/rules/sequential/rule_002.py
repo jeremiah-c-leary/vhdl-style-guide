@@ -17,6 +17,8 @@ class rule_002(Rule):
     '''
     This rule checks for a single space after the **<=** operator.
 
+    |configuring_whitespace_rules_link|
+
     **Violation**
 
     .. code-block:: vhdl
@@ -33,4 +35,3 @@ class rule_002(Rule):
     '''
     def __init__(self):
         Rule.__init__(self, 'sequential', '002', lTokens)
-        self.solution = 'Ensure at least a single space after the <=.'

@@ -31,6 +31,8 @@ element_association_101
 
 This rule checks for a single space after the => in an element_association.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl

@@ -30,6 +30,8 @@ alias_declaration_100
 
 This rule checks for a single space after the colon for the subtype_indication.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -71,6 +73,8 @@ alias_declaration_102
 |phase_2| |error| |whitespace|
 
 This rule checks for a single space after the **is** keyword.
+
+|configuring_whitespace_rules_link|
 
 **Violation**
 

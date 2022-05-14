@@ -1,5 +1,5 @@
 
-from vsg.rules.whitespace_after_token import Rule as Rule
+from vsg.rules.whitespace_after_token import Rule
 
 from vsg.token import loop_statement as token
 
@@ -10,6 +10,8 @@ lTokens.append(token.label_colon)
 class rule_104(Rule):
     '''
     This rule checks if a label exists that a single space exists after the colon.
+
+    |configuring_whitespace_rules_link|
 
     **Violation**
 
@@ -27,4 +29,3 @@ class rule_104(Rule):
     '''
     def __init__(self):
         Rule.__init__(self, 'loop_statement', '104', lTokens)
-        self.solution = 'Ensure a single space after the label :.'

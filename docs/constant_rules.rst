@@ -82,6 +82,8 @@ constant_005
 
 This rule checks for a single space after the colon.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -353,6 +355,8 @@ constant_100
 
 This rule checks for a single space after the := assignment in constant declarations.
 Having a space makes it clearer where the assignment occurs on the line.
+
+|configuring_whitespace_rules_link|
 
 **Violation**
 
