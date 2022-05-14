@@ -142,6 +142,8 @@ entity_007
 
 This rule checks for a single space before the **is** keyword.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl

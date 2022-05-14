@@ -56,3 +56,5 @@
 .. |configuring_uppercase_and_lowercase_rules_link| replace::
    Refer to :ref:`configuring-uppercase-and-lowercase-rules` for more information.
 
+.. |configuring_whitespace_rules_link| replace::
+   Refer to :ref:`configuring-whitespace-rules` for options on changing the number of whitespaces..

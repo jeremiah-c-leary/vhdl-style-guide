@@ -12,9 +12,7 @@ There are a couple of options to these rules, which can be selected by using the
 +--------------------------+----------------------------------------------------------+
 | Option                   | Description                                              |
 +==========================+==========================================================+
-| maximum_number_of_spaces | Determines the number of whitespace characters to allow. |
-+--------------------------+----------------------------------------------------------+
-| minimum_number_of_spaces | Determines the number of whitespace characters to allow. |
+| number_of_spaces         | Determines the number of whitespace characters to allow. |
 +--------------------------+----------------------------------------------------------+
 | align_to_next_tab        | When true, will add spaces to align with next valid tab. |
 +--------------------------+----------------------------------------------------------+
@@ -29,9 +27,6 @@ The :code:`maximum_number_of_spaces` and :code:`minimum_number_of_spaces` can ac
 | >[0-9][0-9]*          | The minimum number of spaces to enforce.                 |
 +-----------------------+----------------------------------------------------------+
 
-.. | <[0-9][0-9]*          | The maximum number of spaces to enforce.                 |
-.. +-----------------------+----------------------------------------------------------+
-
 These options combined with the values allow complete control over the number of whitespaces allowed.
 
 Example:  enforce one whitespace between end and architecture
@@ -41,8 +36,7 @@ Example:  enforce one whitespace between end and architecture
 
    rule :
      architecture_012:
-        maximum_number_of_spaces: 1
-        minimum_number_of_spaces: 1
+        number_of_spaces: 1
 
 In this example, the number of whitespaces between the keywords must be 1.
 
@@ -57,8 +51,7 @@ Example:  enforce two whitespaces between end and architecture
 
    rule :
      architecture_012:
-        maximum_number_of_spaces: 2
-        minimum_number_of_spaces: 2
+        number_of_spaces: 2
 
 In this example, the number of whitespaces between the keywords must be 2.
 
@@ -133,3 +126,4 @@ Rules Enforcing Whitespace
 ##########################
 
 * `architecture_012 <architecture_rules.html#architecture-012>`_
+* `entity_007 <entity_rules.html#entity-007>`_
