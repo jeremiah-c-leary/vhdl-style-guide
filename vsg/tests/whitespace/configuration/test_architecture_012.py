@@ -26,9 +26,13 @@ lExpected_min_2_max_10 = []
 lExpected_min_2_max_10.append('')
 utils.read_file(os.path.join(sTestDir, 'architecture_012', 'configuration_test_input.fixed_min_2_max_10.vhd'), lExpected_min_2_max_10)
 
-lExpected_min_1_max_gt1 = []
-lExpected_min_1_max_gt1.append('')
-utils.read_file(os.path.join(sTestDir, 'architecture_012', 'configuration_test_input.fixed_min_1_max_gt1.vhd'), lExpected_min_1_max_gt1)
+lExpected_spaces_gte2 = []
+lExpected_spaces_gte2.append('')
+utils.read_file(os.path.join(sTestDir, 'architecture_012', 'configuration_test_input.fixed_spaces_gte2.vhd'), lExpected_spaces_gte2)
+
+lExpected_spaces_gt2 = []
+lExpected_spaces_gt2.append('')
+utils.read_file(os.path.join(sTestDir, 'architecture_012', 'configuration_test_input.fixed_spaces_gt2.vhd'), lExpected_spaces_gt2)
 
 
 class test(unittest.TestCase):
@@ -81,26 +85,46 @@ class test(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
 
-#    def test_min_1_max_gt1(self):
-#        oRule = architecture.rule_012()
-#        oRule.minimum_number_of_spaces = 1
-#        oRule.maximum_number_of_spaces = '>1'
-#
-#        lExpected = []
-#
-#        oRule.analyze(self.oFile)
-#        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
-#
-#    def test_fix_min_1_max_gt1(self):
-#        oRule = architecture.rule_012()
-#        oRule.minimum_number_of_spaces = 1
-#        oRule.maximum_number_of_spaces = '>1'
-#
-#        oRule.fix(self.oFile)
-#
-#        lActual = self.oFile.get_lines()
-#
-#        self.assertEqual(lExpected_min_1_max_gt1, lActual)
-#
-#        oRule.analyze(self.oFile)
-#        self.assertEqual(oRule.violations, [])
+    def test_spaces_gte2(self):
+        oRule = architecture.rule_012()
+        oRule.number_of_spaces = '>=2'
+
+        lExpected = [8]
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+
+    def test_fix_spaces_gte2(self):
+        oRule = architecture.rule_012()
+        oRule.number_of_spaces = '>=2'
+
+        oRule.fix(self.oFile)
+
+        lActual = self.oFile.get_lines()
+
+        self.assertEqual(lExpected_spaces_gte2, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+
+    def test_spaces_gt2(self):
+        oRule = architecture.rule_012()
+        oRule.number_of_spaces = '>2'
+
+        lExpected = [8, 17]
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+
+    def test_fix_spaces_gt2(self):
+        oRule = architecture.rule_012()
+        oRule.number_of_spaces = '>2'
+
+        oRule.fix(self.oFile)
+
+        lActual = self.oFile.get_lines()
+
+        self.assertEqual(lExpected_spaces_gt2, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
