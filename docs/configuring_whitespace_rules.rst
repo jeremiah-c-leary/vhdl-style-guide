@@ -129,3 +129,4 @@ Rules Enforcing Whitespace
 * `entity_002 <entity_rules.html#entity-002>`_
 * `entity_007 <entity_rules.html#entity-007>`_
 * `entity_011 <entity_rules.html#entity-011>`_
+* `entity_013 <entity_rules.html#entity-013>`_

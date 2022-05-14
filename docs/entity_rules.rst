@@ -274,6 +274,8 @@ entity_013
 
 This rule checks for a single space after the **entity** keyword in the closing of the entity declaration.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
