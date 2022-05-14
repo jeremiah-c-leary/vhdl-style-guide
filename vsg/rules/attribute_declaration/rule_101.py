@@ -25,3 +25,4 @@ class rule_101(whitespace_before_token):
     '''
     def __init__(self):
         whitespace_before_token.__init__(self, 'attribute_declaration', '101', lTokens)
+        self.number_of_spaces = '>=1'

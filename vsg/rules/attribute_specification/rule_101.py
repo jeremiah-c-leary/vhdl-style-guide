@@ -1,13 +1,13 @@
 
 from vsg import token
 
-from vsg.rules import single_space_before_token
+from vsg.rules import whitespace_before_token as Rule
 
 lTokens = []
 lTokens.append(token.attribute_specification.is_keyword)
 
 
-class rule_101(single_space_before_token):
+class rule_101(Rule):
     '''
     This rule checks for a single space before the **is** keyword.
 
@@ -26,4 +26,4 @@ class rule_101(single_space_before_token):
        attribute coordinate of comp_1 : component is (0.0, 17.5);
     '''
     def __init__(self):
-        single_space_before_token.__init__(self, 'attribute_specification', '101', lTokens)
+        Rule.__init__(self, 'attribute_specification', '101', lTokens)

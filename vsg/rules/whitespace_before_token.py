@@ -6,8 +6,10 @@ from vsg import violation
 from vsg.rule_group import whitespace
 from vsg.rules import utils as rules_utils
 
+from vsg.rules.whitespace_between_tokens import Rule as WhitespaceRule
 
-class whitespace_before_token(whitespace.Rule):
+
+class whitespace_before_token(WhitespaceRule):
     '''
     Checks for a at least a single space before a token.
 
@@ -25,27 +27,20 @@ class whitespace_before_token(whitespace.Rule):
     '''
 
     def __init__(self, name, identifier, lTokens):
-        whitespace.Rule.__init__(self, name=name, identifier=identifier)
+        WhitespaceRule.__init__(self, name=name, identifier=identifier)
         self.lTokens = lTokens
 
     def _get_tokens_of_interest(self, oFile):
-        return oFile.get_token_and_n_tokens_before_it(self.lTokens, 1)
-
-    def _analyze(self, lToi):
-
+        lReturn = []
+        lToi = oFile.get_token_and_n_tokens_before_it(self.lTokens, 2)
         for oToi in lToi:
             lTokens = oToi.get_tokens()
-
-            if isinstance(lTokens[0], parser.whitespace):
-                continue
-
             if isinstance(lTokens[0], parser.carriage_return):
                 continue
-
-            oViolation = violation.New(oToi.get_line_number(), oToi, self.solution)
-            self.add_violation(oViolation)
-
-    def _fix_violation(self, oViolation):
-        lTokens = oViolation.get_tokens()
-        rules_utils.insert_whitespace(lTokens, 1)
-        oViolation.set_tokens(lTokens)
+            if isinstance(lTokens[1], parser.carriage_return):
+                continue
+            if isinstance(lTokens[1], parser.whitespace):
+                lReturn.append(oToi)
+            else:
+                lReturn.append(oToi.extract_tokens(1, 2))
+        return lReturn

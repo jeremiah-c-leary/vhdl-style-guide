@@ -28,3 +28,4 @@ class rule_006(whitespace_before_token):
     def __init__(self):
         whitespace_before_token.__init__(self, 'constant', '006', lTokens)
         self.solution = 'Ensure at least one space before colon.'
+        self.number_of_spaces = '>=1'
