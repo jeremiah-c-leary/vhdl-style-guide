@@ -241,6 +241,8 @@ generic_014
 
 This rule checks for at least a single space before the colon.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl

@@ -495,6 +495,8 @@ port_020
 
 This rule checks for at least one space before the colon.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl

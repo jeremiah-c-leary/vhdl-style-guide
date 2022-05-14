@@ -1,9 +1,7 @@
 
 
 from vsg import parser
-from vsg import violation
 
-from vsg.rule_group import whitespace
 from vsg.rules import utils as rules_utils
 
 from vsg.rules.whitespace_between_tokens import Rule as WhitespaceRule
