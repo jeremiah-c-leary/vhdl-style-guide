@@ -281,3 +281,11 @@ def extract_identifiers_with_mode(lToi, oTokenType):
         if oToi.token_type_exists(oTokenType):
             lReturn.append(oToi.extract_tokens(0, 0))
     return lReturn
+
+
+def token_is_at_beginning_of_line(lTokens):
+    if isinstance(lTokens[0], parser.carriage_return):
+        return True
+    if isinstance(lTokens[1], parser.carriage_return):
+        return True
+    return False

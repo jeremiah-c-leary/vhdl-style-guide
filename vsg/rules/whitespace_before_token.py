@@ -33,18 +33,15 @@ class Rule(WhitespaceRule):
         lToi = oFile.get_token_and_n_tokens_before_it(self.lTokens, 2)
         for oToi in lToi:
             lTokens = oToi.get_tokens()
-            if token_is_at_beginning_of_line(lTokens):
+            if rules_utils.token_is_at_beginning_of_line(lTokens):
                 continue
-            if isinstance(lTokens[1], parser.whitespace):
-                lReturn.append(oToi)
-            else:
-                lReturn.append(oToi.extract_tokens(1, 2))
+            lReturn.append(extract_toi(oToi))
         return lReturn
 
 
-def token_is_at_beginning_of_line(lTokens):
-    if isinstance(lTokens[0], parser.carriage_return):
-        return True
-    if isinstance(lTokens[1], parser.carriage_return):
-        return True
-    return False
+def extract_toi(oToi):
+    lTokens = oToi.get_tokens()
+    if isinstance(lTokens[1], parser.whitespace):
+        return oToi
+    else:
+        return oToi.extract_tokens(1, 2)
