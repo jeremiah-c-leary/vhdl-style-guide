@@ -1,5 +1,5 @@
 
-from vsg.rules import single_space_before_token_if_on_same_line_as_token as Rule
+from vsg.rules.single_space_before_token_if_on_same_line_as_token import Rule
 
 from vsg.token import alias_declaration as token
 
@@ -7,6 +7,8 @@ from vsg.token import alias_declaration as token
 class rule_101(Rule):
     '''
     This rule checks for a single space before the **is** keyword if the : is present.
+
+    |configuring_whitespace_rules_link|
 
     **Violation**
 
@@ -23,5 +25,6 @@ class rule_101(Rule):
        alias alias_designator   is name;
     '''
     def __init__(self):
-        Rule.__init__(self, 'alias_declaration', '101', token.is_keyword, token.colon)
-        self.solution = 'Ensure a single space before **is** keyword.'
+        Rule.__init__(self, 'alias_declaration', '101')
+        self.oFirstToken = token.is_keyword
+        self.oExceptToken = token.colon

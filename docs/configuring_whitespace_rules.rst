@@ -126,6 +126,7 @@ Rules Enforcing Whitespace
 ##########################
 
 * `alias_declaration_100 <alias_declaration_rules.html#alias-declaration-100>`_
+* `alias_declaration_101 <alias_declaration_rules.html#alias-declaration-101>`_
 * `alias_declaration_102 <alias_declaration_rules.html#alias-declaration-102>`_
 * `architecture_012 <architecture_rules.html#architecture-012>`_
 * `architecture_022 <architecture_rules.html#architecture-022>`_
