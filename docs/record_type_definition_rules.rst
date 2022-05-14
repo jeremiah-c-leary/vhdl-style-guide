@@ -190,6 +190,8 @@ record_type_definition_100
 
 This rule checks for a single space after the **end** keyword.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -214,6 +216,8 @@ record_type_definition_101
 |phase_2| |error| |whitespace|
 
 This rule checks for a single space before the simple name.
+
+|configuring_whitespace_rules_link|
 
 **Violation**
 

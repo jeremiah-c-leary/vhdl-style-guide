@@ -42,6 +42,8 @@ case_002
 
 This rule checks for a single space after the **case** keyword.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -62,6 +64,8 @@ case_003
 
 This rule checks for a single space before the **is** keyword.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -80,6 +84,8 @@ case_004
 |phase_2| |error| |whitespace|
 
 This rule checks for a single space after the **when** keyword.
+
+|configuring_whitespace_rules_link|
 
 **Violation**
 
@@ -126,6 +132,8 @@ case_006
 |phase_2| |error| |whitespace|
 
 This rule checks for a single space between the **end** and **case** keywords.
+
+|configuring_whitespace_rules_link|
 
 **Violation**
 

@@ -176,6 +176,8 @@ loop_statement_100
 
 This rule checks that a single space exists between the **end** and **loop** keywords
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -196,6 +198,8 @@ loop_statement_101
 |phase_2| |error| |whitespace|
 
 This rule checks for a single space before the ending loop label if it exists.
+
+|configuring_whitespace_rules_link|
 
 **Violation**
 
@@ -236,6 +240,8 @@ loop_statement_103
 |phase_2| |error| |whitespace|
 
 This rule checks if a label exists that a single space exists between the label and the colon.
+
+|configuring_whitespace_rules_link|
 
 **Violation**
 

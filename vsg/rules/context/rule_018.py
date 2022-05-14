@@ -1,12 +1,14 @@
 
-from vsg.rules import single_space_between_tokens
+from vsg.rules.whitespace_between_tokens import Rule
 
 from vsg.token import context_declaration as token
 
 
-class rule_018(single_space_between_tokens):
+class rule_018(Rule):
     '''
     This rule checks for a single space between the **end** keyword and the **context** keyword.
+
+    |configuring_whitespace_rules_link|
 
     **Violation**
 
@@ -25,5 +27,6 @@ class rule_018(single_space_between_tokens):
        end context;
     '''
     def __init__(self):
-        single_space_between_tokens.__init__(self, 'context', '018', token.end_keyword, token.end_context_keyword)
-        self.solution = 'Reduce spaces between *end* keyword and *context* keyword to a single space.'
+        Rule.__init__(self, 'context', '018')
+        self.left_token = token.end_keyword
+        self.right_token = token.end_context_keyword

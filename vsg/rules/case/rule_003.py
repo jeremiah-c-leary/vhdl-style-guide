@@ -1,14 +1,16 @@
 
 from vsg import parser
 
-from vsg.rules import single_space_between_tokens
+from vsg.rules.whitespace_between_tokens import Rule
 
 from vsg.token import case_statement as token
 
 
-class rule_003(single_space_between_tokens):
+class rule_003(Rule):
     '''
     This rule checks for a single space before the **is** keyword.
+
+    |configuring_whitespace_rules_link|
 
     **Violation**
 
@@ -23,5 +25,6 @@ class rule_003(single_space_between_tokens):
        case data is
     '''
     def __init__(self):
-        single_space_between_tokens.__init__(self, 'case', '003', parser.todo, token.is_keyword)
-        self.solution = 'Reduce spaces between the expression and the *is* keyword.'
+        Rule.__init__(self, 'case', '003')
+        self.left_token = parser.todo
+        self.right_token = token.is_keyword

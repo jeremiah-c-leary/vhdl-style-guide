@@ -126,7 +126,17 @@ Rules Enforcing Whitespace
 ##########################
 
 * `architecture_012 <architecture_rules.html#architecture-012>`_
+* `architecture_022 <architecture_rules.html#architecture-022>`_
+* `architecture_030 <architecture_rules.html#architecture-030>`_
+* `architecture_031 <architecture_rules.html#architecture-031>`_
+* `architecture_032 <architecture_rules.html#architecture-032>`_
+* `architecture_033 <architecture_rules.html#architecture-033>`_
+* `component_002 <component_rules.html#component-002>`_
+* `component_007 <component_rules.html#component-007>`_
+* `component_011 <component_rules.html#component-011>`_
+* `component_013 <component_rules.html#component-013>`_
 * `entity_002 <entity_rules.html#entity-002>`_
 * `entity_007 <entity_rules.html#entity-007>`_
-* `entity_011 <entity_rules.html#entity-011>`_
-* `entity_013 <entity_rules.html#entity-013>`_
+* `record_type_definition_100 <record_type_definition_rules.html#record_type_definition-100>`_
+* `record_type_definition_101 <record_type_definition_rules.html#record_type_definition-101>`_
+* `element_association_100 <element_association_rules.html#element_association_100>`_
