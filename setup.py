@@ -16,7 +16,7 @@ if install.installing_from_git_repo():
         os.remove(sVersionInfoFileName)
     except FileNotFoundError:
         pass
-    
+
 if not os.path.exists(sVersionInfoFileName):
     install.create_version_info_file(sVersion, sShaNum)
 
