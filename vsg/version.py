@@ -2,8 +2,6 @@
 import subprocess
 import os
 
-from vsg import install
-
 
 def print_version(oCommandLineArguments):
 
