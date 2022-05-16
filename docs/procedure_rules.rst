@@ -452,27 +452,27 @@ This rule checks for blank lines or comments above the **procedure** keyword.
 procedure_201
 #############
 
-This rule has been moved to rule `subprogram_body_201 <subprogram_rules.html#subprogram-body-201>`_.
+This rule has been moved to rule `subprogram_body_201 <subprogram_body_rules.html#subprogram-body-201>`_.
 
 procedure_202
 #############
 
-This rule has been moved to rule `subprogram_body_202 <subprogram_rules.html#subprogram-body-202>`_.
+This rule has been moved to rule `subprogram_body_202 <subprogram_body_rules.html#subprogram-body-202>`_.
 
 procedure_203
 #############
 
-This rule has been moved to rule `subprogram_body_203 <subprogram_rules.html#subprogram-body-203>`_.
+This rule has been moved to rule `subprogram_body_203 <subprogram_body_rules.html#subprogram-body-203>`_.
 
 procedure_204
 #############
 
-This rule has been moved to rule `subprogram_body_204 <subprogram_rules.html#subprogram-body-204>`_.
+This rule has been moved to rule `subprogram_body_204 <subprogram_body_rules.html#subprogram-body-204>`_.
 
 procedure_205
 #############
 
-This rule has been moved to rule `subprogram_body_205 <subprogram_rules.html#subprogram-body-205>`_.
+This rule has been moved to rule `subprogram_body_205 <subprogram_body_rules.html#subprogram-body-205>`_.
 
 procedure_401
 #############

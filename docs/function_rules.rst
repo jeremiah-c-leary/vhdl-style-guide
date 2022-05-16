@@ -117,7 +117,7 @@ This rule checks for blank lines or comments above the **function** keyword.
 function_007
 ############
 
-This rule has been moved to rule `subprogram_body_205 <subprogram_rules.html#subprogram-body-205>`_.
+This rule has been moved to rule `subprogram_body_205 <subprogram_body_rules.html#subprogram-body-205>`_.
 
 function_008
 ############
@@ -425,22 +425,22 @@ This rule checks for a single space between the **end** and **function** keyword
 function_201
 ############
 
-This rule has been moved to rule `subprogram_body_201 <subprogram_rules.html#subprogram-body-201>`_.
+This rule has been moved to rule `subprogram_body_201 <subprogram_body_rules.html#subprogram-body-201>`_.
 
 function_202
 ############
 
-This rule has been moved to rule `subprogram_body_202 <subprogram_rules.html#subprogram-body-202>`_.
+This rule has been moved to rule `subprogram_body_202 <subprogram_body_rules.html#subprogram-body-202>`_.
 
 function_203
 ############
 
-This rule has been moved to rule `subprogram_body_203 <subprogram_rules.html#subprogram-body-203>`_.
+This rule has been moved to rule `subprogram_body_203 <subprogram_body_rules.html#subprogram-body-203>`_.
 
 function_204
 ############
 
-This rule has been moved to rule `subprogram_body_204 <subprogram_rules.html#subprogram-body-204>`_.
+This rule has been moved to rule `subprogram_body_204 <subprogram_body_rules.html#subprogram-body-204>`_.
 
 function_300
 ############
