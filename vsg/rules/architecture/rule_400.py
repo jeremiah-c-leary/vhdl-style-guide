@@ -7,7 +7,7 @@ lAlign = []
 lAlign.append(token.entity_specification.colon)
 
 lUnless = []
-lUnless.append([token.subprogram_body.is_keyword,token.subprogram_body.begin_keyword])
+lUnless.append([token.subprogram_body.is_keyword, token.subprogram_body.begin_keyword])
 
 
 class rule_400(Rule):
