@@ -10,7 +10,7 @@ oStart = token.package_declaration.is_keyword
 oEnd = token.package_declaration.end_keyword
 
 lUnless = []
-lUnless.append([token.subprogram_body.is_keyword,token.subprogram_body.begin_keyword])
+lUnless.append([token.subprogram_body.is_keyword, token.subprogram_body.begin_keyword])
 
 
 class rule_402(Rule):
