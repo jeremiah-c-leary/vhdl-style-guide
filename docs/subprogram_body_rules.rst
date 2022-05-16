@@ -183,3 +183,28 @@ Following extra configurations are supported:
    rd_en      <= '0';
    v_variable := 10;
 
+subprogram_body_401
+###################
+
+|phase_5| |error| |alignment|
+
+This rule checks the colons are in the same column for all attribute specifications.
+
+|configuring_keyword_alignment_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+     attribute mark_debug of wr_en : signal is "true";
+     attribute mark_debug of almost_empty : signal is "true";
+     attribute mark_debug of full : signal is "true";
+
+**Fix**
+
+.. code-block:: vhdl
+
+     attribute mark_debug of wr_en        : signal is "true";
+     attribute mark_debug of almost_empty : signal is "true";
+     attribute mark_debug of full         : signal is "true";
+

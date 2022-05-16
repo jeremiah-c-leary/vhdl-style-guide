@@ -463,6 +463,31 @@ This rule checks the colons are in the same column for all declarations in the b
    constant c_period  : time;
    file my_test_input : my_file_type;
 
+block_402
+#########
+
+|phase_5| |error| |alignment|
+
+This rule checks the colons are in the same column for all attribute specifications.
+
+|configuring_keyword_alignment_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+     attribute mark_debug of wr_en : signal is "true";
+     attribute mark_debug of almost_empty : signal is "true";
+     attribute mark_debug of full : signal is "true";
+
+**Fix**
+
+.. code-block:: vhdl
+
+     attribute mark_debug of wr_en        : signal is "true";
+     attribute mark_debug of almost_empty : signal is "true";
+     attribute mark_debug of full         : signal is "true";
+
 block_500
 #########
 

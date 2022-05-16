@@ -23,6 +23,7 @@ from .rule_302 import rule_302
 
 from .rule_400 import rule_400
 from .rule_401 import rule_401
+from .rule_402 import rule_402
 
 from .rule_500 import rule_500
 from .rule_501 import rule_501

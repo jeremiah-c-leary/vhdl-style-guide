@@ -756,6 +756,31 @@ This rule checks for a blank line below the end architecture statement.
 
    library ieee;
 
+architecture_400
+################
+
+|phase_5| |error| |alignment|
+
+This rule checks the colons are in the same column for all attribute specifications.
+
+|configuring_keyword_alignment_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+     attribute mark_debug of wr_en : signal is "true";
+     attribute mark_debug of almost_empty : signal is "true";
+     attribute mark_debug of full : signal is "true";
+
+**Fix**
+
+.. code-block:: vhdl
+
+     attribute mark_debug of wr_en        : signal is "true";
+     attribute mark_debug of almost_empty : signal is "true";
+     attribute mark_debug of full         : signal is "true";
+
 architecture_600
 ################
 
