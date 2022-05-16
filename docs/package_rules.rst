@@ -484,3 +484,28 @@ This rule checks the alignment of inline comments in the package declarative par
 
    end package my_package;
 
+package_402
+###########
+
+|phase_5| |error| |alignment|
+
+This rule checks the colons are in the same column for all attribute specifications.
+
+|configuring_keyword_alignment_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+     attribute mark_debug of wr_en : signal is "true";
+     attribute mark_debug of almost_empty : signal is "true";
+     attribute mark_debug of full : signal is "true";
+
+**Fix**
+
+.. code-block:: vhdl
+
+     attribute mark_debug of wr_en        : signal is "true";
+     attribute mark_debug of almost_empty : signal is "true";
+     attribute mark_debug of full         : signal is "true";
+
