@@ -4,7 +4,6 @@ import sys
 import os
 import json
 import glob
-import hashlib
 import yaml
 import functools
 import multiprocessing
