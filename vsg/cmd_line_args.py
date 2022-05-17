@@ -65,6 +65,7 @@ def parse_command_line_arguments():
     parser.add_argument('-ap', '--all_phases', default=False, action='store_true',
                         help='Do not stop when a violation is detected.')
     parser.add_argument('--fix_only', action='store', help='Restrict fixing via JSON file.')
+    parser.add_argument('--quality_report', action='store', help='Create code quality report for Git Lab')
     parser.add_argument(
         "-p",
         "--jobs",

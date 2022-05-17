@@ -119,7 +119,7 @@ def apply_rules(commandLineArguments, oConfig, tIndexFileName):
     else:
         testCase = None
 
-    if commandLineArguments.json:
+    if commandLineArguments.json or commandLineArguments.quality_report:
         dJsonEntry["file_path"] = sFileName
         dJsonEntry["violations"] = oRules.extract_violation_dictionary()["violations"]
 
