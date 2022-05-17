@@ -170,7 +170,6 @@ def main():
     sys.exit(fExitStatus)
 
 
-
 def create_json_dictionary():
     '''
     Returns a dictionary to be used when the --json option is chosen.
