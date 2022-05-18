@@ -271,3 +271,40 @@ def extract_identifiers_with_mode(lToi, oTokenType):
         if oToi.token_type_exists(oTokenType):
             lReturn.append(oToi.extract_tokens(0, 0))
     return lReturn
+
+
+def extract_slice_indexes(lTokens):
+    lReturn = []
+    iParen = 0
+    iLeftParenLevel = 0
+    fSliceDetected = False
+    for iToken, oToken in enumerate(lTokens):
+        iParen = utils.update_paren_counter(iToken, lTokens, iParen)
+        if utils.token_is_open_parenthesis(iToken, lTokens):
+            iPrevious = utils.find_previous_non_whitespace_token(iToken - 1, lTokens)
+            if isinstance(lTokens[iPrevious], parser.todo):
+                iLeftParenLevel = iParen
+                iLeftParenIndex = iPrevious
+#                print(lTokens[iPrevious].get_value())
+        if iParen == iLeftParenLevel and isinstance(oToken, token.direction.downto):
+#            print('Slice Detected')
+            fSliceDetected = True
+        if utils.token_is_close_parenthesis(iToken, lTokens):
+            if iParen + 1 == iLeftParenLevel:
+#                print(lTokens[iPrevious:iToken + 1])
+                lReturn.append([iLeftParenIndex, iToken + 1])
+                fSliceDetected = False
+    return lReturn
+
+
+def combine_slice_indexes(lTokens):
+    lReturn = []
+    lSliceIndexes = extract_slice_indexes(lTokens)
+    iPreviousIndex = 0
+    for tSliceIndex in lSliceIndexes:
+        lReturn.extend(lTokens[iPreviousIndex:tSliceIndex[0]])
+        lReturn.append(parser.slice_name(lTokens[tSliceIndex[0]:tSliceIndex[1]]))
+        iPreviousIndex = tSliceIndex[1]
+    lReturn.extend(lTokens[iPreviousIndex:])
+    return lReturn
+

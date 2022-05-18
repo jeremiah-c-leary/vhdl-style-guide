@@ -509,3 +509,15 @@ class beginning_of_file(item):
 
     def __init__(self):
         item.__init__(self, 'beginning_of_file')
+
+
+class slice_name():
+    '''
+    unique_id = parser : slice_name
+    '''
+
+    def __init__(self, lTokens):
+        self.tokens = lTokens
+
+    def get_tokens(self):
+        return self.tokens
