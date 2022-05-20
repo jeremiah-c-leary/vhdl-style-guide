@@ -108,16 +108,7 @@ def _check_array_first_paren_new_line(self, oToi):
     if self.array_first_paren_new_line == 'ignore':
         return
 
-    iLine, lTokens = utils.get_toi_parameters(oToi)
-    # Find the colon to setup next loop
-    iToken = 0
-    for iToken, oToken in enumerate(lTokens):
-        iLine = utils.increment_line_number(iLine, oToken)
-        if isinstance(oToken, token.signal_declaration.colon):
-            break
-    # Assign next loop parameters
-    iToken += 1
-    iStopIndex = len(lTokens)
+    iToken, iLine, iStopIndex, lTokens = extract_analysis_parameters(oToi)
 
     while iToken < iStopIndex:
 #        print(f'==> iLine = {iLine} | iToken = {iToken}')
@@ -129,6 +120,7 @@ def _check_array_first_paren_new_line(self, oToi):
             if is_array(iToken, lTokens):
 #                print(f'Array @{iLine}')
                 iStart = utils.find_previous_non_whitespace_token(iToken - 1, lTokens)
+                iLine += rules_utils.number_of_carriage_returns(lTokens[iToken:iToken])
                 if utils.find_carriage_return(lTokens[iStart:iToken]) is None:
                     if self.array_first_paren_new_line == 'yes':
                         sSolution = 'Move parenthesis after assignment to the next line.'
@@ -141,7 +133,60 @@ def _check_array_first_paren_new_line(self, oToi):
                         self.add_violation(oViolation)
                 iNextToken = find_index_of_matching_close_paren(iToken, lTokens) + 1
 #                utils.print_lines(lTokens[iToken:iNextToken + 1])
+                iToken = iNextToken
+            else:
+                iToken += 1
+        else:
+            iToken += 1
+
+
+def extract_analysis_parameters(oToi):
+    iLine, lTokens = utils.get_toi_parameters(oToi)
+    # Find the colon to setup next loop
+    iToken = 0
+    for iToken, oToken in enumerate(lTokens):
+        iLine = utils.increment_line_number(iLine, oToken)
+        if isinstance(oToken, token.signal_declaration.colon):
+            break
+    # Assign next loop parameters
+    iToken += 1
+    iStopIndex = len(lTokens)
+
+    return iToken, iLine, iStopIndex, lTokens
+
+
+def _check_first_paren_new_line(self, oToi):
+
+    if self.first_paren_new_line == 'ignore':
+        return
+
+    iToken, iLine, iStopIndex, lTokens = extract_analysis_parameters(oToi)
+
+    while iToken < iStopIndex:
+#        print(f'==> iLine = {iLine} | iToken = {iToken}')
+        oToken = lTokens[iToken]
+        iLine = utils.increment_line_number(iLine, oToken)
+
+        if isinstance(oToken, parser.open_parenthesis):
+#            print('---> Open paren detected')
+            if is_array(iToken, lTokens):
+                iNextToken = find_index_of_matching_close_paren(iToken, lTokens) + 1
+                iNextToken = utils.find_next_non_whitespace_token(iNextToken, lTokens)
                 iLine += rules_utils.number_of_carriage_returns(lTokens[iToken:iNextToken])
+                if isinstance(lTokens[iNextToken], parser.open_parenthesis):
+#                    print(f'Array @{iLine}')
+                    iStart = utils.find_previous_non_whitespace_token(iNextToken - 1, lTokens)
+                    if utils.find_carriage_return(lTokens[iStart:iNextToken]) is None:
+                        if self.first_paren_new_line == 'yes':
+                            sSolution = 'Move parenthesis after assignment to the next line.'
+                            oViolation = _create_violation(oToi, iLine, iNextToken, iNextToken, 'first_paren_new_line', 'insert', sSolution)
+                            self.add_violation(oViolation)
+                    else:
+                        if self.first_paren_new_line == 'no':
+                            sSolution = 'Move parenthesis to same line as assignment operator.'
+                            oViolation = _create_violation(oToi, iLine, iStart, iNextToken, 'first_paren_new_line', 'remove', sSolution)
+                            self.add_violation(oViolation)
+#                    utils.print_lines(lTokens[iToken:iNextToken + 1])
                 iToken = iNextToken
             else:
                 iToken += 1
@@ -172,7 +217,7 @@ def find_index_of_matching_close_paren(iToken, lTokens):
     return None
 
 
-def _check_first_paren_new_line(self, oToi):
+def __check_first_paren_new_line(self, oToi):
 
     if self.first_paren_new_line == 'ignore':
         return
