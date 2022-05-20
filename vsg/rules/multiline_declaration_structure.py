@@ -148,29 +148,6 @@ def _check_array_first_paren_new_line(self, oToi):
         else:
             iToken += 1
 
-#    for iToken, oToken in enumerate(lTokens):
-#        iLine = utils.increment_line_number(iLine, oToken)
-#        if isinstance(oToken, token.signal_declaration.colon):
-#            bSearch = True
-#            continue
-#        if isinstance(oToken, parser.open_parenthesis) and bSearch:
-#            if not is_array(iToken, lTokens):
-#                
-#                break
-#            print(f'Got here: @{iLine}')
-#            iStart = utils.find_previous_non_whitespace_token(iToken - 1, lTokens)
-#            if utils.find_carriage_return(lTokens[iStart:iToken]) is None:
-#                if self.array_first_paren_new_line == 'yes':
-#                    sSolution = 'Move parenthesis after assignment to the next line.'
-#                    oViolation = _create_violation(oToi, iLine, iToken, iToken, 'first_paren_new_line', 'insert', sSolution)
-#                    self.add_violation(oViolation)
-#            else:
-#                if self.array_first_paren_new_line == 'no':
-#                    sSolution = 'Move parenthesis to same line as assignment operator.'
-#                    oViolation = _create_violation(oToi, iLine, iStart, iToken, 'first_paren_new_line', 'remove', sSolution)
-#                    self.add_violation(oViolation)
-#            break
-
 
 def is_array(iToken, lTokens):
     oToken = lTokens[iToken]
