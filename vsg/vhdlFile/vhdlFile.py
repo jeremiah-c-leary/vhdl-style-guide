@@ -321,6 +321,8 @@ def split_on_carriage_return(lObjects):
 
 def post_token_assignments(lTokens):
     oCodeTags = code_tags.New()
+    iParenId = 0
+    lParenId = []
     for iToken, oToken in enumerate(lTokens):
         oToken.set_code_tags(oCodeTags.get_tags())
         if isinstance(oToken, parser.todo):
@@ -354,9 +356,13 @@ def post_token_assignments(lTokens):
                 continue
             if sValue == '(':
                 lTokens[iToken] = parser.open_parenthesis()
+                iParenId += 1
+                lParenId.append(iParenId)
+                lTokens[iToken].iId = iParenId
                 continue
             if sValue == ')':
                 lTokens[iToken] = parser.close_parenthesis()
+                lTokens[iToken].iId = lParenId.pop()
                 continue
             if sValue == ',':
                 lTokens[iToken] = parser.comma()
@@ -504,6 +510,13 @@ def post_token_assignments(lTokens):
                 else:
                     lTokens[iToken] = adding_operator.minus()
                 continue
+            if sValue == '(':
+                iParenId += 1
+                lParenId.append(iParenId)
+                oToken.iId = iParenId
+            if sValue == ')':
+                oToken.iId = lParenId.pop()
+                
 
 
 def set_token_hierarchy_value(lTokens):

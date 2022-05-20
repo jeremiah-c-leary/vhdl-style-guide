@@ -14,6 +14,10 @@ lExpected_array_first_paren_new_line_true = []
 lExpected_array_first_paren_new_line_true.append('')
 utils.read_file(os.path.join(sTestDir, 'rule_016_test_input.nested_arrays.fixed_array_first_paren_new_line_true.vhd'), lExpected_array_first_paren_new_line_true)
 
+lExpected_array_first_paren_new_line_false = []
+lExpected_array_first_paren_new_line_false.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_016_test_input.nested_arrays.fixed_array_first_paren_new_line_false.vhd'), lExpected_array_first_paren_new_line_false)
+
 #lExpected_first_paren_new_line_false = []
 #lExpected_first_paren_new_line_false.append('')
 #utils.read_file(os.path.join(sTestDir, 'rule_016_test_input.fixed_first_paren_new_line_false.vhd'), lExpected_first_paren_new_line_false)
@@ -77,18 +81,20 @@ class test_rule(unittest.TestCase):
         oRule.close_paren_new_line = 'ignore'
         oRule.new_line_after_comma = 'ignore'
         oRule.assign_on_single_line = 'ignore'
-        oRule.array_first_open_paren_new_line = 'yes'
+        oRule.array_first_paren_new_line = 'yes'
+        oRule.ignore_single_line = 'no'
 
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'signal')
         self.assertEqual(oRule.identifier, '016')
 
-        lExpected = [16, 29, 25, 25]
+        lExpected = [16, 19, 25, 25]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
     def test_fix_rule_016_array_first_open_paren_new_line_yes(self):
+        self.maxDiff = None
         oRule = signal.rule_016()
         oRule.first_paren_new_line = 'ignore'
         oRule.last_paren_new_line = 'ignore'
@@ -96,7 +102,8 @@ class test_rule(unittest.TestCase):
         oRule.close_paren_new_line = 'ignore'
         oRule.new_line_after_comma = 'ignore'
         oRule.assign_on_single_line = 'ignore'
-        oRule.array_first_open_paren_new_line = 'yes'
+        oRule.array_first_paren_new_line = 'yes'
+        oRule.ignore_single_line = 'no'
 
         oRule.fix(self.oFile)
 
@@ -107,3 +114,43 @@ class test_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
 
+    def test_rule_016_array_first_open_paren_new_line_no(self):
+        oRule = signal.rule_016()
+        oRule.first_paren_new_line = 'ignore'
+        oRule.last_paren_new_line = 'ignore'
+        oRule.open_paren_new_line = 'ignore'
+        oRule.close_paren_new_line = 'ignore'
+        oRule.new_line_after_comma = 'ignore'
+        oRule.assign_on_single_line = 'ignore'
+        oRule.array_first_paren_new_line = 'no'
+        oRule.ignore_single_line = 'no'
+
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'signal')
+        self.assertEqual(oRule.identifier, '016')
+
+        lExpected = [6, 10]
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+
+    def test_fix_rule_016_array_first_open_paren_new_line_no(self):
+        self.maxDiff = None
+        oRule = signal.rule_016()
+        oRule.first_paren_new_line = 'ignore'
+        oRule.last_paren_new_line = 'ignore'
+        oRule.open_paren_new_line = 'ignore'
+        oRule.close_paren_new_line = 'ignore'
+        oRule.new_line_after_comma = 'ignore'
+        oRule.assign_on_single_line = 'ignore'
+        oRule.array_first_paren_new_line = 'no'
+        oRule.ignore_single_line = 'no'
+
+        oRule.fix(self.oFile)
+
+        lActual = self.oFile.get_lines()
+
+        self.assertEqual(lExpected_array_first_paren_new_line_false, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
