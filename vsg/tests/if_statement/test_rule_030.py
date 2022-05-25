@@ -14,6 +14,10 @@ lExpected_require_blank = []
 lExpected_require_blank.append('')
 utils.read_file(os.path.join(sTestDir, 'rule_030_test_input.fixed_require_blank.vhd'), lExpected_require_blank)
 
+lExpected_require_blank_allow_end_process  = []
+lExpected_require_blank_allow_end_process .append('')
+utils.read_file(os.path.join(sTestDir, 'rule_030_test_input.fixed_require_blank_allow_end_process.vhd'), lExpected_require_blank_allow_end_process)
+
 lExpected_require_blank_ignore_hierarchy_true  = []
 lExpected_require_blank_ignore_hierarchy_true .append('')
 utils.read_file(os.path.join(sTestDir, 'rule_030_test_input.fixed_require_blank_ignore_hierarchy_true.vhd'), lExpected_require_blank_ignore_hierarchy_true)
@@ -54,6 +58,30 @@ class test_if_statement_rule(unittest.TestCase):
         lActual = self.oFile.get_lines()
 
         self.assertEqual(lExpected_require_blank, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+
+    def test_rule_030_w_require_blank_allow_end_process(self):
+        oRule = if_statement.rule_030()
+        oRule.ignore_hierarchy = False
+        oRule.allow_end_process = True
+
+        lExpected = [32]
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+
+    def test_fix_rule_030_w_require_blank_allow_end_process(self):
+        oRule = if_statement.rule_030()
+        oRule.ignore_hierarchy = False
+        oRule.allow_end_process = True
+
+        oRule.fix(self.oFile)
+
+        lActual = self.oFile.get_lines()
+
+        self.assertEqual(lExpected_require_blank_allow_end_process, lActual)
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])

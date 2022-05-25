@@ -38,9 +38,15 @@ class rule_030(blank_line_below_line_ending_with_token):
         blank_line_below_line_ending_with_token.__init__(self, 'if', '030', lTokens)
         self.lHierarchyLimits = [0]
         self.configuration.append('ignore_hierarchy')
+        self.allow_end_ifs = False
         self.configuration.append('allow_end_ifs')
+        self.allow_end_process = False
+        self.configuration.append('allow_end_process')
 
     def _update_allow_tokens(self):
         if self.allow_end_ifs:
             self.lAllowTokens.append(token.if_statement.end_keyword)
+        if self.allow_end_process:
+            self.lAllowTokens.append(token.process_statement.end_keyword)
+
 

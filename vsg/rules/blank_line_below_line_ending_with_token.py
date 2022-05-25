@@ -34,7 +34,6 @@ class blank_line_below_line_ending_with_token(blank_line.Rule):
         self.style = 'require_blank_line'
         self.configuration.append('style')
         self.ignore_hierarchy = False
-        self.allow_end_ifs = False
 
 
     def _get_tokens_of_interest(self, oFile):
