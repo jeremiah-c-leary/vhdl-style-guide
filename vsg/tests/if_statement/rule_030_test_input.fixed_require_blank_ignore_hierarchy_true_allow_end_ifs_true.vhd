@@ -54,9 +54,7 @@ begin
         if c then
           c <= d;
         end if;
-
       end if;
-
     end if;
 
   end process;

@@ -34,10 +34,12 @@ class blank_line_below_line_ending_with_token(blank_line.Rule):
         self.style = 'require_blank_line'
         self.configuration.append('style')
         self.ignore_hierarchy = False
+        self.allow_end_ifs = False
 
 
     def _get_tokens_of_interest(self, oFile):
         self._update_hierarchy_limits()
+        self._update_allow_tokens()
             
         if self.style == 'require_blank_line':
             if self.lHierarchyLimits is None:
@@ -66,6 +68,9 @@ class blank_line_below_line_ending_with_token(blank_line.Rule):
     def _update_hierarchy_limits(self):
         if self.ignore_hierarchy:
             self.lHierarchyLimits = None
+
+    def _update_allow_tokens(self):
+        return None
 
 
 def _analyze_require_blank_line(self, lToi, lAllowTokens):
