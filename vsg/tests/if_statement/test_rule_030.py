@@ -14,6 +14,10 @@ lExpected_require_blank = []
 lExpected_require_blank.append('')
 utils.read_file(os.path.join(sTestDir, 'rule_030_test_input.fixed_require_blank.vhd'), lExpected_require_blank)
 
+lExpected_require_blank_ignore_hierarchy_true  = []
+lExpected_require_blank_ignore_hierarchy_true .append('')
+utils.read_file(os.path.join(sTestDir, 'rule_030_test_input.fixed_require_blank_ignore_hierarchy_true.vhd'), lExpected_require_blank_ignore_hierarchy_true)
+
 lExpected_no_blank = []
 lExpected_no_blank.append('')
 utils.read_file(os.path.join(sTestDir, 'rule_030_test_input.fixed_no_blank.vhd'), lExpected_no_blank)
@@ -25,8 +29,9 @@ class test_if_statement_rule(unittest.TestCase):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
 
-    def test_rule_030_w_require_blank(self):
+    def test_rule_030_w_require_blank_enforce_hierarchy(self):
         oRule = if_statement.rule_030()
+        oRule.ignore_hierarchy = False
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'if')
         self.assertEqual(oRule.identifier, '030')
@@ -36,8 +41,9 @@ class test_if_statement_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
-    def test_fix_rule_030_w_require_blank(self):
+    def test_fix_rule_030_w_require_blank_enforce_hierarchy(self):
         oRule = if_statement.rule_030()
+        oRule.ignore_hierarchy = False
 
         oRule.fix(self.oFile)
 
@@ -48,9 +54,41 @@ class test_if_statement_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
 
+    def test_rule_030_w_require_blank_ignore_hierarchy(self):
+        oRule = if_statement.rule_030()
+        oRule.ignore_hierarchy = True
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'if')
+        self.assertEqual(oRule.identifier, '030')
+
+        lExpected = [14, 16, 28, 30, 32]
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+
+    def test_fix_rule_030_w_require_blank_enforce_hierarchy(self):
+        oRule = if_statement.rule_030()
+        oRule.ignore_hierarchy = True
+
+        oRule.fix(self.oFile)
+
+        lActual = self.oFile.get_lines()
+
+        self.assertEqual(lExpected_require_blank_ignore_hierarchy_true, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+
+
+
+
+
     def test_rule_030_w_no_blank(self):
         oRule = if_statement.rule_030()
         oRule.style = 'no_blank_line'
+        oRule.ignore_hierarchy = False
+        oRule.allow_end_if = False
+        oRule.allow_other_ends = False
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'if')
         self.assertEqual(oRule.identifier, '030')
@@ -63,6 +101,9 @@ class test_if_statement_rule(unittest.TestCase):
     def test_fix_rule_030_w_no_blank(self):
         oRule = if_statement.rule_030()
         oRule.style = 'no_blank_line'
+        oRule.ignore_hierarchy = False
+        oRule.allow_end_if = False
+        oRule.allow_other_ends = False
 
         oRule.fix(self.oFile)
 

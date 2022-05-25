@@ -37,3 +37,5 @@ class rule_030(blank_line_below_line_ending_with_token):
     def __init__(self):
         blank_line_below_line_ending_with_token.__init__(self, 'if', '030', lTokens)
         self.lHierarchyLimits = [0]
+        self.configuration.append('ignore_hierarchy')
+
