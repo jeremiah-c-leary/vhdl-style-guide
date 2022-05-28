@@ -73,7 +73,7 @@ class test_if_statement_rule(unittest.TestCase):
     def test_rule_030_w_require_blank_allow_end_process(self):
         oRule = if_statement.rule_030()
         oRule.ignore_hierarchy = False
-        oRule.allow_end_process = True
+        oRule.except_end_process = True
 
         lExpected = [32, 78, 83]
 
@@ -83,7 +83,7 @@ class test_if_statement_rule(unittest.TestCase):
     def test_fix_rule_030_w_require_blank_allow_end_process(self):
         oRule = if_statement.rule_030()
         oRule.ignore_hierarchy = False
-        oRule.allow_end_process = True
+        oRule.except_end_process = True
 
         oRule.fix(self.oFile)
 
@@ -168,7 +168,7 @@ class test_if_statement_rule(unittest.TestCase):
     def test_rule_030_w_require_blank_ignore_hierarchy_allow_end_ifs(self):
         oRule = if_statement.rule_030()
         oRule.ignore_hierarchy = True
-        oRule.allow_end_ifs = True
+        oRule.except_end_if = True
 
         lExpected = [14, 16, 28, 30, 32, 53, 78, 83]
 
@@ -178,7 +178,7 @@ class test_if_statement_rule(unittest.TestCase):
     def test_fix_rule_030_w_require_blank_ignore_hierarchy_allow_end_ifs(self):
         oRule = if_statement.rule_030()
         oRule.ignore_hierarchy = True
-        oRule.allow_end_ifs = True
+        oRule.except_end_if = True
 
         oRule.fix(self.oFile)
 
@@ -188,9 +188,6 @@ class test_if_statement_rule(unittest.TestCase):
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
-
-
-
 
     def test_rule_030_w_no_blank(self):
         oRule = if_statement.rule_030()
@@ -209,8 +206,6 @@ class test_if_statement_rule(unittest.TestCase):
         oRule = if_statement.rule_030()
         oRule.style = 'no_blank_line'
         oRule.ignore_hierarchy = False
-        oRule.allow_end_if = False
-        oRule.allow_other_ends = False
 
         oRule.fix(self.oFile)
 
