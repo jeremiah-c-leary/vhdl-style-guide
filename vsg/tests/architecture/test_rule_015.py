@@ -56,7 +56,7 @@ class test_architecture_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'architecture')
         self.assertEqual(oRule.identifier, '015')
 
-        lExpected = [21]
+        lExpected = [20]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))

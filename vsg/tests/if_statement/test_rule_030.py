@@ -18,6 +18,14 @@ lExpected_require_blank_allow_end_process  = []
 lExpected_require_blank_allow_end_process .append('')
 utils.read_file(os.path.join(sTestDir, 'rule_030_test_input.fixed_require_blank_allow_end_process.vhd'), lExpected_require_blank_allow_end_process)
 
+lExpected_require_blank_allow_end_case = []
+lExpected_require_blank_allow_end_case .append('')
+utils.read_file(os.path.join(sTestDir, 'rule_030_test_input.fixed_require_blank_allow_end_case.vhd'), lExpected_require_blank_allow_end_case)
+
+lExpected_require_blank_end_case_no_blank_line = []
+lExpected_require_blank_end_case_no_blank_line .append('')
+utils.read_file(os.path.join(sTestDir, 'rule_030_test_input.fixed_require_blank_end_case_no_blank_line.vhd'), lExpected_require_blank_end_case_no_blank_line)
+
 lExpected_require_blank_ignore_hierarchy_true  = []
 lExpected_require_blank_ignore_hierarchy_true .append('')
 utils.read_file(os.path.join(sTestDir, 'rule_030_test_input.fixed_require_blank_ignore_hierarchy_true.vhd'), lExpected_require_blank_ignore_hierarchy_true)
@@ -44,7 +52,7 @@ class test_if_statement_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'if')
         self.assertEqual(oRule.identifier, '030')
 
-        lExpected = [32, 53]
+        lExpected = [32, 53, 78, 83]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -67,7 +75,7 @@ class test_if_statement_rule(unittest.TestCase):
         oRule.ignore_hierarchy = False
         oRule.allow_end_process = True
 
-        lExpected = [32]
+        lExpected = [32, 78, 83]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -86,11 +94,60 @@ class test_if_statement_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
 
+    def test_rule_030_w_require_blank_true_except_end_case_true(self):
+        oRule = if_statement.rule_030()
+        oRule.style = 'require_blank_line'
+        oRule.ignore_hierarchy = False
+        oRule.except_end_case = True
+
+        lExpected = [32, 53, 97, 103]
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+
+    def test_fix_rule_030_w_require_blank_true_except_end_case_true(self):
+        oRule = if_statement.rule_030()
+        oRule.style = 'require_blank_line'
+        oRule.ignore_hierarchy = False
+        oRule.except_end_case = True
+
+        oRule.fix(self.oFile)
+
+        lActual = self.oFile.get_lines()
+
+        self.assertEqual(lExpected_require_blank_allow_end_case, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+
+#    def test_rule_030_w_require_blank_true_end_case_no_blank_line(self):
+#        oRule = if_statement.rule_030()
+#        oRule.ignore_hierarchy = False
+#        oRule.end_case = 'no_blank_line'
+#
+#        lExpected = [32, 53, 97, 103]
+#
+#        oRule.analyze(self.oFile)
+#        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+#
+#    def test_fix_rule_030_w_require_true_end_case_no_blank_line(self):
+#        oRule = if_statement.rule_030()
+#        oRule.ignore_hierarchy = False
+#        oRule.end_case = 'no_blank_line'
+#
+#        oRule.fix(self.oFile)
+#
+#        lActual = self.oFile.get_lines()
+#
+#        self.assertEqual(lExpected_require_blank_end_case_no_blank_line, lActual)
+#
+#        oRule.analyze(self.oFile)
+#        self.assertEqual(oRule.violations, [])
+
     def test_rule_030_w_require_blank_ignore_hierarchy(self):
         oRule = if_statement.rule_030()
         oRule.ignore_hierarchy = True
-
-        lExpected = [14, 16, 28, 30, 32, 51, 52, 53]
+        lExpected = [14, 16, 28, 30, 32, 51, 52, 53, 78, 81, 82, 83, 101, 102]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -113,7 +170,7 @@ class test_if_statement_rule(unittest.TestCase):
         oRule.ignore_hierarchy = True
         oRule.allow_end_ifs = True
 
-        lExpected = [14, 16, 28, 30, 32, 53]
+        lExpected = [14, 16, 28, 30, 32, 53, 78, 83]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -139,13 +196,11 @@ class test_if_statement_rule(unittest.TestCase):
         oRule = if_statement.rule_030()
         oRule.style = 'no_blank_line'
         oRule.ignore_hierarchy = False
-        oRule.allow_end_if = False
-        oRule.allow_other_ends = False
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'if')
         self.assertEqual(oRule.identifier, '030')
 
-        lExpected = [19]
+        lExpected = [18, 97, 103]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))

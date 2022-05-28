@@ -62,3 +62,62 @@ begin
   end process;
 
 end architecture RTL;
+
+-- Test allow_end_case
+
+architecture RTL of FIFO is
+
+begin
+
+  process begin
+
+    case x is
+
+       when 32 =>
+
+       if a then
+         if b then
+           if c then
+
+             case y is
+
+               when 64 =>
+                 if x then
+                 end if;
+
+             end case;
+
+           end if;
+
+         end if;
+
+       end if;
+
+    end case;
+
+    case x is
+
+       when 32 =>
+
+       if a then
+         if b then
+           if c then
+             case y is
+
+               when 64 =>
+                 if x then
+                 end if;
+
+             end case;
+
+           end if;
+
+         end if;
+
+       end if;
+
+    end case;
+
+  end process;
+
+end architecture RTL;

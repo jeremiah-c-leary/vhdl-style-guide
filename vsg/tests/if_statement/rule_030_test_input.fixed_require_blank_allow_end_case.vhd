@@ -30,6 +30,7 @@ begin
       end if;
       b <= c;
     end if;
+
     z <= a;
 
   end process;
@@ -51,6 +52,7 @@ begin
         end if;
       end if;
     end if;
+
   end process;
 
 end architecture RTL;
@@ -95,13 +97,11 @@ begin
                when 64 =>
                  if x then
                  end if;
-
              end case;
 
            end if;
          end if;
        end if;
-
     end case;
 
   end process;

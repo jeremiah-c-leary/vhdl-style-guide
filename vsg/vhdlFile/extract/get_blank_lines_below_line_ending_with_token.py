@@ -24,7 +24,7 @@ def get_blank_lines_below_line_ending_with_token(lTokens, lHierarchy, lAllTokens
                 iEnd = lCarriageReturns[i] + 1
                 lTemp = lAllTokens[iStart:iEnd]
                 if len(lTemp) > 0:
-                    lReturn.append(tokens.New(iStart, iLine, lTemp))
+                    lReturn.append(tokens.New(iStart, iLine + 1, lTemp))
                 break
 
     return lReturn

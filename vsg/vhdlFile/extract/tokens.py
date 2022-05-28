@@ -57,6 +57,16 @@ class New():
                 return True
         return False
 
+    def tokens_start_with_types(self, lTokenTypes):
+        try:
+            for iIndex in range(0, len(lTokenTypes)):
+                if not isinstance(self.lTokens[iIndex], lTokenTypes[iIndex]):
+                    return False
+            return True
+        except IndexError:
+            return False
+
+
 
 def calculate_end_index(iStartIndex, lTokens):
     try:

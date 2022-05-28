@@ -45,6 +45,7 @@ class remove_excessive_blank_lines_below_line_ending_with_token(blank_line.Rule)
             lTokens = oToi.get_tokens()
             iCount = 0
             iLine = oToi.get_line_number()
+#            print(iLine)
             for oToken in lTokens:
                 if isinstance(oToken, parser.blank_line):
                     iCount += 1
@@ -53,7 +54,7 @@ class remove_excessive_blank_lines_below_line_ending_with_token(blank_line.Rule)
             if bOverride:
                 iCount -= 1
             if iCount > self.iAllow:
-                oViolation = violation.New(oToi.get_line_number(), oToi, self.solution)
+                oViolation = violation.New(oToi.get_line_number()  - 1, oToi, self.solution)
                 dAction = {}
                 dAction['remove'] = self.iAllow - iCount
                 oViolation.set_action(dAction)
@@ -67,7 +68,8 @@ class remove_excessive_blank_lines_below_line_ending_with_token(blank_line.Rule)
 
 
 def check_if_override_exists(oFile, iLine, lOverrides):
-    oMyToi = oFile.get_tokens_from_line(iLine + 1)
+    oMyToi = oFile.get_tokens_from_line(iLine)
+#    print(oMyToi.get_tokens())
     try:
         lTokens = oMyToi.get_tokens()
         for oOverride in lOverrides:

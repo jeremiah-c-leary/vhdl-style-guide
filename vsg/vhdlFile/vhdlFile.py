@@ -304,6 +304,9 @@ class vhdlFile():
                 return oToken.get_indent()
         return 0
 
+    def get_line_number(self, iLine):
+        return extract.get_line_number(iLine, self.lAllObjects, 1, self.oTokenMap)
+
 def split_on_carriage_return(lObjects):
     lReturn = []
     lMyObjects = []
@@ -521,18 +524,36 @@ def post_token_assignments(lTokens):
 
 
 def set_token_hierarchy_value(lTokens):
-    iIfHierarchy = 0
+    lIfHierarchy = []
     for oToken in lTokens:
         if isinstance(oToken, token.if_statement.if_keyword):
-            oToken.set_hierarchy(iIfHierarchy)
-            iIfHierarchy += 1
+            if len(lIfHierarchy) == 0:
+                lIfHierarchy.append(0)
+#            print(f'--> {lIfHierarchy}')
+            oToken.set_hierarchy(lIfHierarchy[-1])
+#            print(f'if hier = {oToken.get_hierarchy()}')
+            lIfHierarchy[-1] += 1
         if isinstance(oToken, token.if_statement.elsif_keyword):
-            oToken.set_hierarchy(iIfHierarchy - 1)
+            oToken.set_hierarchy(lIfHierarchy[-1] - 1)
         if isinstance(oToken, token.if_statement.else_keyword):
-            oToken.set_hierarchy(iIfHierarchy - 1)
+            oToken.set_hierarchy(lIfHierarchy[-1] - 1)
         if isinstance(oToken, token.if_statement.semicolon):
-            iIfHierarchy -= 1
-            oToken.set_hierarchy(iIfHierarchy)
+            lIfHierarchy[-1] -= 1
+            oToken.set_hierarchy(lIfHierarchy[-1])
+#            print(f'end if hier = {oToken.get_hierarchy()}')
+            if lIfHierarchy[-1] == 0:
+                lIfHierarchy.pop()
+#            print(f'<-- {lIfHierarchy}')
+        if isinstance(oToken, token.case_statement.case_keyword):
+#            print(f'== begin case')
+            lIfHierarchy.append(0)
+        if isinstance(oToken, token.case_statement.semicolon):
+#            print(f'== end case')
+            try:
+                if lIfHierarchy[-1] == 0:
+                    lIfHierarchy.pop()
+            except IndexError:
+                pass
 
 
 def combine_use_clause_selected_name(lTokens):

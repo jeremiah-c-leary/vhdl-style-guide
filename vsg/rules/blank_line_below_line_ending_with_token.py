@@ -39,24 +39,42 @@ class blank_line_below_line_ending_with_token(blank_line.Rule):
     def _get_tokens_of_interest(self, oFile):
         self._update_hierarchy_limits()
         self._update_allow_tokens()
-            
+        lReturn = []    
         if self.style == 'require_blank_line':
             if self.lHierarchyLimits is None:
-                return oFile.get_line_below_line_ending_with_token(self.lTokens)
+                lToi = oFile.get_line_below_line_ending_with_token(self.lTokens)
             else:
-                return oFile.get_line_below_line_ending_with_token_with_hierarchy(self.lTokens, self.lHierarchyLimits)
+                lToi = oFile.get_line_below_line_ending_with_token_with_hierarchy(self.lTokens, self.lHierarchyLimits)
+            for oToi in lToi:
+                oToi.style = 'require_blank_line'
+                lReturn.append(oToi)
         elif self.style == 'no_blank_line':
-            return oFile.get_blank_lines_below_line_ending_with_token(self.lTokens, self.lHierarchyLimits)
+            lToi = oFile.get_blank_lines_below_line_ending_with_token(self.lTokens, self.lHierarchyLimits)
+            for oToi in lToi:
+                oToi.style = 'no_blank_line'
+                lReturn.append(oToi)
+        return lReturn
 
     def _analyze(self, lToi):
-        if self.style == 'require_blank_line':
-            _analyze_require_blank_line(self, lToi, self.lAllowTokens)
-        elif self.style == 'no_blank_line':
-            _analyze_no_blank_line(self, lToi, self.lAllowTokens)
+        for oToi in lToi:
+            if oToi.style == 'require_blank_line':
+#                print('require_blank_line')
+                self._analyze_require_blank_line(oToi, self.lAllowTokens)
+            elif oToi.style == 'no_blank_line':
+#                print('No_blank_line')
+#                print(oToi.get_tokens())
+#                print(oToi.get_line_number())
+                self._analyze_no_blank_line(oToi, self.lAllowTokens)
+#        if self.style == 'require_blank_line':
+#            self._analyze_require_blank_line(lToi, self.lAllowTokens)
+#        elif self.style == 'no_blank_line':
+#            self._analyze_no_blank_line(lToi, self.lAllowTokens)
 
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
         dAction = oViolation.get_action()
+#        print(lTokens)
+#        print(dAction)
         if dAction['action'] == 'Insert':
             rules_utils.insert_carriage_return(lTokens, 0)
             rules_utils.insert_blank_line(lTokens, 0)
@@ -72,41 +90,43 @@ class blank_line_below_line_ending_with_token(blank_line.Rule):
         return None
 
 
-def _analyze_require_blank_line(self, lToi, lAllowTokens):
-        for oToi in lToi:
-            lTokens = oToi.get_tokens()
-            if _is_allowed_token(lAllowTokens, lTokens):
-                continue
-            if len(lTokens) == 1:
-                if isinstance(lTokens[0], parser.blank_line):
-                    continue
-            sSolution = 'Insert blank line below'
-            oViolation = violation.New(oToi.get_line_number() - 1, oToi, sSolution)
-            dAction = {}
-            dAction['action'] = 'Insert'
-            oViolation.set_action(dAction)
-            self.add_violation(oViolation)
+    def _analyze_require_blank_line(self, oToi, lAllowTokens):
+#        print('_analyze_require_blank_line')
+        lTokens = oToi.get_tokens()
+        if self._is_allowed_token(lAllowTokens, lTokens):
+            return None
+        if len(lTokens) == 1:
+            if isinstance(lTokens[0], parser.blank_line):
+                return None
+        sSolution = 'Insert blank line below'
+        oViolation = violation.New(oToi.get_line_number() - 1, oToi, sSolution)
+        dAction = {}
+        dAction['action'] = 'Insert'
+        oViolation.set_action(dAction)
+        self.add_violation(oViolation)
 
 
-def _analyze_no_blank_line(self, lToi, lAllowTokens):
-        for oToi in lToi:
-            sSolution = 'Remove blank lines below'
-            oViolation = violation.New(oToi.get_line_number() + 1, oToi, sSolution)
-            dAction = {}
-            dAction['action'] = 'Remove'
-            oViolation.set_action(dAction)
-            self.add_violation(oViolation)
+    def _analyze_no_blank_line(self, oToi, lAllowTokens):
+#        print('_analyze_no_blank_line')
+        sSolution = 'Remove blank lines below'
+#        print(oToi.get_tokens())
+#        print(oToi.get_line_number())
+        oViolation = violation.New(oToi.get_line_number() - 1, oToi, sSolution)
+        dAction = {}
+        dAction['action'] = 'Remove'
+        oViolation.set_action(dAction)
+        self.add_violation(oViolation)
 
 
-def _is_allowed_token(lAllowTokens, lTokens):
-    bSkip = False
-    for oAllowToken in lAllowTokens:
-        for oToken in lTokens:
-            if isinstance(oToken, oAllowToken):
-                bSkip = True
-                break
+    def _is_allowed_token(self, lAllowTokens, lTokens):
+        bSkip = False
+        for oAllowToken in lAllowTokens:
+            for oToken in lTokens:
+                if isinstance(oToken, oAllowToken):
+                    bSkip = True
+                    break
+            if bSkip:
+               break
         if bSkip:
-           break
-    if bSkip:
-        return True
-    return False
+            return True
+        return False

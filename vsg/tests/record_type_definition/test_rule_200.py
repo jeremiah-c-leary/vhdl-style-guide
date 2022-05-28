@@ -27,7 +27,7 @@ class test_record_type_definition_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'record_type_definition')
         self.assertEqual(oRule.identifier, '200')
 
-        lExpected = [10]
+        lExpected = [9]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
