@@ -12,10 +12,8 @@ begin
         if c then
           c <= d;
         end if;
-
         a <= b;
       end if;
-
       b <= c;
     end if;
 
@@ -28,10 +26,8 @@ begin
         if c then
           c <= d;
         end if;
-
         a <= b;
       end if;
-
       b <= c;
     end if;
 
@@ -134,13 +130,11 @@ begin
 
                  if x then
                  end if;
-
              end loop;
 
            end if;
          end if;
        end if;
-
     end loop;
 
     loop
@@ -151,13 +145,11 @@ begin
              loop
                  if x then
                  end if;
-
              end loop;
 
            end if;
          end if;
        end if;
-
     end loop;
 
   end process;

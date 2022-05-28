@@ -554,6 +554,16 @@ def set_token_hierarchy_value(lTokens):
                     lIfHierarchy.pop()
             except IndexError:
                 pass
+        if isinstance(oToken, token.loop_statement.loop_keyword):
+#            print(f'== begin case')
+            lIfHierarchy.append(0)
+        if isinstance(oToken, token.loop_statement.semicolon):
+#            print(f'== end case')
+            try:
+                if lIfHierarchy[-1] == 0:
+                    lIfHierarchy.pop()
+            except IndexError:
+                pass
 
 
 def combine_use_clause_selected_name(lTokens):

@@ -45,6 +45,8 @@ class rule_030(blank_line_below_line_ending_with_token):
         self.configuration.append('except_end_process')
         self.except_end_case = False
         self.configuration.append('except_end_case')
+        self.except_end_loop = False
+        self.configuration.append('except_end_loop')
 
     def _get_tokens_of_interest(self, oFile):
         self._update_hierarchy_limits()
@@ -67,6 +69,9 @@ class rule_030(blank_line_below_line_ending_with_token):
 
                 if self.except_end_if:
                     something(oToi, token.if_statement.end_keyword, lReturn, oFile)
+
+                if self.except_end_loop:
+                    something(oToi, token.loop_statement.end_keyword, lReturn, oFile)
 
         elif self.style == 'no_blank_line':
             lToi = oFile.get_blank_lines_below_line_ending_with_token(self.lTokens, self.lHierarchyLimits)

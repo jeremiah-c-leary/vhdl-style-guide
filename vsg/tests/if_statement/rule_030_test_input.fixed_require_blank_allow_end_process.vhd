@@ -110,3 +110,51 @@ begin
   end process;
 
 end architecture RTL;
+
+-- Test allow_end_loop
+
+architecture RTL of FIFO is
+
+begin
+
+  process begin
+
+    loop
+
+       if a then
+         if b then
+           if c then
+
+             loop
+
+                 if x then
+                 end if;
+
+             end loop;
+
+           end if;
+         end if;
+       end if;
+
+    end loop;
+
+    loop
+
+       if a then
+         if b then
+           if c then
+             loop
+                 if x then
+                 end if;
+
+             end loop;
+
+           end if;
+         end if;
+       end if;
+
+    end loop;
+
+  end process;
+
+end architecture RTL;
