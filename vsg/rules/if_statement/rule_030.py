@@ -66,30 +66,32 @@ class rule_030(blank_line_below_line_ending_with_token):
             oToi.style = self.style
             lReturn.append(oToi)
 
-            self.update_style_per_exceptions(oToi, lReturn, oFile)
+            self.update_style_per_exceptions(lReturn, oFile)
 
         return lReturn
 
-    def update_style_per_exceptions(self, oToi, lReturn, oFile):
-        self.invert_style_if_token_detected(oToi, token.case_statement.end_keyword, lReturn, oFile, self.except_end_case)
+    def update_style_per_exceptions(self, lReturn, oFile):
+        self.invert_style_if_token_detected(token.case_statement.end_keyword, lReturn, oFile, self.except_end_case)
 
-        self.invert_style_if_token_detected(oToi, token.process_statement.end_keyword, lReturn, oFile, self.except_end_process)
+        self.invert_style_if_token_detected(token.process_statement.end_keyword, lReturn, oFile, self.except_end_process)
 
-        self.invert_style_if_token_detected(oToi, token.if_statement.end_keyword, lReturn, oFile, self.except_end_if)
+        self.invert_style_if_token_detected(token.if_statement.end_keyword, lReturn, oFile, self.except_end_if)
 
-        self.invert_style_if_token_detected(oToi, token.loop_statement.end_keyword, lReturn, oFile, self.except_end_loop)
+        self.invert_style_if_token_detected(token.loop_statement.end_keyword, lReturn, oFile, self.except_end_loop)
 
-        self.invert_style_if_token_detected(oToi, token.subprogram_body.end_keyword, lReturn, oFile, self.except_end_subprogram_body)
+        self.invert_style_if_token_detected(token.subprogram_body.end_keyword, lReturn, oFile, self.except_end_subprogram_body)
 
-    def invert_style_if_token_detected(self, oToi, oTokenType, lReturn, oFile, bDoIt):
-        if not bDoIt:
+    def invert_style_if_token_detected(self, oTokenType, lReturn, oFile, bException):
+        if not bException:
             return None
 
         sNewStyle = self.inverse_style()
 
+        oToi = lReturn[-1]
+
         if oToi.tokens_start_with_types([parser.whitespace, oTokenType]):
-            lReturn[-1].style = sNewStyle
+            oToi.style = sNewStyle
         elif oToi.tokens_start_with_types([parser.blank_line]):
             oNextLineToi = oFile.get_line_succeeding_line(oToi.get_line_number())
             if oNextLineToi.tokens_start_with_types([parser.whitespace, oTokenType]):
-                lReturn[-1].style = sNewStyle
+                oToi.style = sNewStyle
