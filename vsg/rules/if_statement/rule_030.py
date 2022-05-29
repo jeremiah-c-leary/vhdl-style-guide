@@ -88,8 +88,8 @@ class rule_030(blank_line_below_line_ending_with_token):
         sNewStyle = self.inverse_style()
 
         if oToi.tokens_start_with_types([parser.whitespace, oTokenType]):
-           lReturn[-1].style = sNewStyle
+            lReturn[-1].style = sNewStyle
         elif oToi.tokens_start_with_types([parser.blank_line]):
             oNextLineToi = oFile.get_line_succeeding_line(oToi.get_line_number())
             if oNextLineToi.tokens_start_with_types([parser.whitespace, oTokenType]):
-                 lReturn[-1].style = sNewStyle
+                lReturn[-1].style = sNewStyle
