@@ -175,7 +175,6 @@ architecture RTL of FIFO is
       end if;
       b <= c;
     end if;
-
   end procedure proc1;
 
   procedure proc1 is
@@ -189,7 +188,6 @@ architecture RTL of FIFO is
       end if;
       b <= c;
     end if;
-
   end procedure proc1;
 
 begin
@@ -211,7 +209,6 @@ architecture RTL of FIFO is
       end if;
 
     end if;
-
   end procedure proc1;
 
 begin

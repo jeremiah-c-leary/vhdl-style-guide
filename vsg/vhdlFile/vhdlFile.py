@@ -19,6 +19,7 @@ from vsg.token.ieee.std_logic_1164 import function
 
 from vsg.vhdlFile import extract
 from vsg.vhdlFile import utils
+from vsg.vhdlFile import hierarchy
 
 from vsg.vhdlFile.classify import blank
 from vsg.vhdlFile.classify import comment
@@ -91,7 +92,7 @@ class vhdlFile():
         post_token_assignments(self.lAllObjects)
         self.lAllObjects = combine_use_clause_selected_name(self.lAllObjects)
 
-        set_token_hierarchy_value(self.lAllObjects)
+        hierarchy.set_token_hierarchy_value(self.lAllObjects)
         self.oTokenMap = process_tokens(self.lAllObjects)
 
     def update(self, lUpdates):
@@ -213,14 +214,14 @@ class vhdlFile():
     def get_line_above_line_starting_with_token_with_hierarchy(self, lTokens, lHierarchy, bIncludeComments):
         return extract.get_line_above_line_starting_with_token_with_hierarchy(lTokens, self.lAllObjects, lHierarchy, self.oTokenMap, bIncludeComments)
 
-    def get_line_below_line_ending_with_token(self, lTokens):
-        return extract.get_line_below_line_ending_with_token(lTokens, self.lAllObjects, self.oTokenMap)
+    def get_line_below_line_ending_with_token(self, lTokens, bIncludeCarriageReturn=False):
+        return extract.get_line_below_line_ending_with_token(lTokens, self.lAllObjects, self.oTokenMap, bIncludeCarriageReturn)
 
     def get_line_below_line_ending_with_several_possible_tokens(self, lTokens):
         return extract.get_line_below_line_ending_with_several_possible_tokens(lTokens, self.lAllObjects, self.oTokenMap)
 
-    def get_line_below_line_ending_with_token_with_hierarchy(self, lTokens, lHierarchy):
-        return extract.get_line_below_line_ending_with_token_with_hierarchy(lTokens, self.lAllObjects, lHierarchy, self.oTokenMap)
+    def get_line_below_line_ending_with_token_with_hierarchy(self, lTokens, lHierarchy, bIncludeCarriageReturn=False):
+        return extract.get_line_below_line_ending_with_token_with_hierarchy(lTokens, self.lAllObjects, lHierarchy, self.oTokenMap, bIncludeCarriageReturn)
 
     def get_line_which_includes_tokens(self, lTokens):
         return extract.get_line_which_includes_tokens(lTokens, self.lAllObjects, self.oTokenMap)
@@ -303,6 +304,9 @@ class vhdlFile():
             if oToken.get_indent() is not None:
                 return oToken.get_indent()
         return 0
+
+    def get_line_number(self, iLine):
+        return extract.get_line_number(iLine, self.lAllObjects, 1, self.oTokenMap)
 
 def split_on_carriage_return(lObjects):
     lReturn = []
@@ -518,21 +522,6 @@ def post_token_assignments(lTokens):
                 else:
                     lTokens[iToken] = adding_operator.minus()
                 continue
-
-
-def set_token_hierarchy_value(lTokens):
-    iIfHierarchy = 0
-    for oToken in lTokens:
-        if isinstance(oToken, token.if_statement.if_keyword):
-            oToken.set_hierarchy(iIfHierarchy)
-            iIfHierarchy += 1
-        if isinstance(oToken, token.if_statement.elsif_keyword):
-            oToken.set_hierarchy(iIfHierarchy - 1)
-        if isinstance(oToken, token.if_statement.else_keyword):
-            oToken.set_hierarchy(iIfHierarchy - 1)
-        if isinstance(oToken, token.if_statement.semicolon):
-            iIfHierarchy -= 1
-            oToken.set_hierarchy(iIfHierarchy)
 
 
 def combine_use_clause_selected_name(lTokens):

@@ -12,8 +12,10 @@ begin
         if c then
           c <= d;
         end if;
+
         a <= b;
       end if;
+
       b <= c;
     end if;
 
@@ -26,8 +28,10 @@ begin
         if c then
           c <= d;
         end if;
+
         a <= b;
       end if;
+
       b <= c;
     end if;
 
@@ -52,7 +56,6 @@ begin
         end if;
       end if;
     end if;
-
   end process;
 
 end architecture RTL;
@@ -78,13 +81,11 @@ begin
                when 64 =>
                  if x then
                  end if;
-
              end case;
 
            end if;
          end if;
        end if;
-
     end case;
 
     case x is
@@ -99,13 +100,11 @@ begin
                when 64 =>
                  if x then
                  end if;
-
              end case;
 
            end if;
          end if;
        end if;
-
     end case;
 
   end process;
@@ -130,13 +129,11 @@ begin
 
                  if x then
                  end if;
-
              end loop;
 
            end if;
          end if;
        end if;
-
     end loop;
 
     loop
@@ -147,13 +144,11 @@ begin
              loop
                  if x then
                  end if;
-
              end loop;
 
            end if;
          end if;
        end if;
-
     end loop;
 
   end process;
@@ -171,11 +166,12 @@ architecture RTL of FIFO is
         if c then
           c <= d;
         end if;
+
         a <= b;
       end if;
+
       b <= c;
     end if;
-
   end procedure proc1;
 
   procedure proc1 is
@@ -185,11 +181,12 @@ architecture RTL of FIFO is
         if c then
           c <= d;
         end if;
+
         a <= b;
       end if;
+
       b <= c;
     end if;
-
   end procedure proc1;
 
 begin
@@ -207,11 +204,8 @@ architecture RTL of FIFO is
         if c then
           c <= d;
         end if;
-
       end if;
-
     end if;
-
   end procedure proc1;
 
 begin

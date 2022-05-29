@@ -12,8 +12,10 @@ begin
         if c then
           c <= d;
         end if;
+
         a <= b;
       end if;
+
       b <= c;
     end if;
 
@@ -26,8 +28,10 @@ begin
         if c then
           c <= d;
         end if;
+
         a <= b;
       end if;
+
       b <= c;
     end if;
 
@@ -171,8 +175,10 @@ architecture RTL of FIFO is
         if c then
           c <= d;
         end if;
+
         a <= b;
       end if;
+
       b <= c;
     end if;
 
@@ -185,8 +191,10 @@ architecture RTL of FIFO is
         if c then
           c <= d;
         end if;
+
         a <= b;
       end if;
+
       b <= c;
     end if;
 
@@ -207,9 +215,7 @@ architecture RTL of FIFO is
         if c then
           c <= d;
         end if;
-
       end if;
-
     end if;
 
   end procedure proc1;

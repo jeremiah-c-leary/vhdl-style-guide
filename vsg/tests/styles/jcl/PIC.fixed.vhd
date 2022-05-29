@@ -94,11 +94,13 @@ begin
           count_cmd <= 0;
           int_pt    <= "000";
           pt        <= (others => (others => '0'));
+
           if (RST_I = '0') then
             next_s <= get_commands;
           else
             next_s <= reset_s;
           end if;
+
           DATABUS <= (others => 'Z');
 
         when get_commands =>                                       -- Get commands and operating mode from the processor.

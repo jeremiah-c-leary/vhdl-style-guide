@@ -1,6 +1,7 @@
 
 from vsg.rules import blank_line_below_line_ending_with_token
 
+from vsg import parser
 from vsg import token
 
 lTokens = []
@@ -37,3 +38,60 @@ class rule_030(blank_line_below_line_ending_with_token):
     def __init__(self):
         blank_line_below_line_ending_with_token.__init__(self, 'if', '030', lTokens)
         self.lHierarchyLimits = [0]
+        self.configuration.append('ignore_hierarchy')
+        self.except_end_if = False
+        self.configuration.append('except_end_if')
+        self.except_end_process = False
+        self.configuration.append('except_end_process')
+        self.except_end_case = False
+        self.configuration.append('except_end_case')
+        self.except_end_loop = False
+        self.configuration.append('except_end_loop')
+        self.except_end_subprogram_body = False
+        self.configuration.append('except_end_subprogram_body')
+
+    def _get_tokens_of_interest(self, oFile):
+        self._update_hierarchy_limits()
+
+        if self.lHierarchyLimits is None:
+            lToi = oFile.get_line_below_line_ending_with_token(self.lTokens, bIncludeCarriageReturn=True)
+        else:
+            lToi = oFile.get_line_below_line_ending_with_token_with_hierarchy(self.lTokens, self.lHierarchyLimits, bIncludeCarriageReturn=True)
+
+        return self.set_style_in_toi_list(lToi, oFile)
+
+    def set_style_in_toi_list(self, lToi, oFile):
+        lReturn = []
+        for oToi in lToi:
+            oToi.style = self.style
+            lReturn.append(oToi)
+
+            self.update_style_per_exceptions(lReturn, oFile)
+
+        return lReturn
+
+    def update_style_per_exceptions(self, lReturn, oFile):
+        self.invert_style_if_token_detected(token.case_statement.end_keyword, lReturn, oFile, self.except_end_case)
+
+        self.invert_style_if_token_detected(token.process_statement.end_keyword, lReturn, oFile, self.except_end_process)
+
+        self.invert_style_if_token_detected(token.if_statement.end_keyword, lReturn, oFile, self.except_end_if)
+
+        self.invert_style_if_token_detected(token.loop_statement.end_keyword, lReturn, oFile, self.except_end_loop)
+
+        self.invert_style_if_token_detected(token.subprogram_body.end_keyword, lReturn, oFile, self.except_end_subprogram_body)
+
+    def invert_style_if_token_detected(self, oTokenType, lReturn, oFile, bException):
+        if not bException:
+            return None
+
+        sNewStyle = self.inverse_style()
+
+        oToi = lReturn[-1]
+
+        if oToi.tokens_start_with_types([parser.whitespace, oTokenType]):
+            oToi.style = sNewStyle
+        elif oToi.tokens_start_with_types([parser.blank_line]):
+            oNextLineToi = oFile.get_line_succeeding_line(oToi.get_line_number())
+            if oNextLineToi.tokens_start_with_types([parser.whitespace, oTokenType]):
+                oToi.style = sNewStyle

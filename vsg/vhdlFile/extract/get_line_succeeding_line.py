@@ -4,12 +4,15 @@ from vsg import parser
 from vsg.vhdlFile.extract import tokens
 
 
-def get_line_succeeding_line(iLine, lAllTokens, iNumLines, oTokenMap):
+def get_line_succeeding_line(iLine, lAllTokens, iNumLines, oTokenMap, bIncludeCarriageReturn=False):
     lCarriageReturns = oTokenMap.get_token_indexes(parser.carriage_return)
 
     iStart = lCarriageReturns[iLine - 1] + 1
     try:
         iEnd = lCarriageReturns[iLine + iNumLines - 1]
+
+        if bIncludeCarriageReturn:
+            iEnd += 1
 
         lTemp = lAllTokens[iStart:iEnd]
 

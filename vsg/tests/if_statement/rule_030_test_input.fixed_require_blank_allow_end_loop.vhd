@@ -130,13 +130,11 @@ begin
 
                  if x then
                  end if;
-
              end loop;
 
            end if;
          end if;
        end if;
-
     end loop;
 
     loop
@@ -147,13 +145,11 @@ begin
              loop
                  if x then
                  end if;
-
              end loop;
 
            end if;
          end if;
        end if;
-
     end loop;
 
   end process;

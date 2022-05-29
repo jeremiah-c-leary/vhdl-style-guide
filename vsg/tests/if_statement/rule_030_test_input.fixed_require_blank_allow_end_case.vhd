@@ -78,13 +78,11 @@ begin
                when 64 =>
                  if x then
                  end if;
-
              end case;
 
            end if;
          end if;
        end if;
-
     end case;
 
     case x is
@@ -99,13 +97,11 @@ begin
                when 64 =>
                  if x then
                  end if;
-
              end case;
 
            end if;
          end if;
        end if;
-
     end case;
 
   end process;
