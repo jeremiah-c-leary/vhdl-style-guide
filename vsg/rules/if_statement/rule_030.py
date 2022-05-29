@@ -52,13 +52,14 @@ class rule_030(blank_line_below_line_ending_with_token):
 
     def _get_tokens_of_interest(self, oFile):
         self._update_hierarchy_limits()
+
+        if self.lHierarchyLimits is None:
+            lToi = oFile.get_line_below_line_ending_with_token(self.lTokens, bIncludeCarriageReturn=True)
+        else:
+            lToi = oFile.get_line_below_line_ending_with_token_with_hierarchy(self.lTokens, self.lHierarchyLimits, bIncludeCarriageReturn=True)
+        lReturn = []
             
         if self.style == 'require_blank_line':
-            if self.lHierarchyLimits is None:
-                lToi = oFile.get_line_below_line_ending_with_token(self.lTokens)
-            else:
-                lToi = oFile.get_line_below_line_ending_with_token_with_hierarchy(self.lTokens, self.lHierarchyLimits)
-            lReturn = []
             for oToi in lToi:
                 oToi.style = self.style
                 lReturn.append(oToi)
@@ -78,19 +79,7 @@ class rule_030(blank_line_below_line_ending_with_token):
                 if self.except_end_subprogram_body:
                     something(oToi, token.subprogram_body.end_keyword, lReturn, oFile)
 
-#        elif self.style == 'no_blank_line':
-#            lToi = oFile.get_blank_lines_below_line_ending_with_token(self.lTokens, self.lHierarchyLimits)
-#            lReturn = []
-#            for oToi in lToi:
-#                oToi.style = 'no_blank_line'
-#                lReturn.append(oToi)
-
         elif self.style == 'no_blank_line':
-            if self.lHierarchyLimits is None:
-                lToi = oFile.get_line_below_line_ending_with_token(self.lTokens, bIncludeCarriageReturn=True)
-            else:
-                lToi = oFile.get_line_below_line_ending_with_token_with_hierarchy(self.lTokens, self.lHierarchyLimits, bIncludeCarriageReturn=True)
-            lReturn = []
             for oToi in lToi:
                 oToi.style = self.style
                 lReturn.append(oToi)
@@ -104,7 +93,7 @@ class rule_030(blank_line_below_line_ending_with_token):
 
 def something(oToi, oTokenType, lReturn, oFile):
     if oToi.tokens_start_with_types([parser.whitespace, oTokenType]):
-       lReturn.pop()
+       lReturn[-1].style = 'no_blank_line'
     else:
         oNextLineToi = oFile.get_line_succeeding_line(oToi.get_line_number())
         if oNextLineToi.tokens_start_with_types([parser.whitespace, oTokenType]) and oToi.tokens_start_with_types([parser.blank_line]):
@@ -120,6 +109,3 @@ def something_else(oToi, oTokenType, lReturn, oFile):
         oNextLineToi = oFile.get_line_succeeding_line(oToi.get_line_number())
         if oNextLineToi.tokens_start_with_types([parser.whitespace, oTokenType]):
             lReturn[-1].style = 'require_blank_line'
-#            oMyToi_w_carraige_return = oFile.get_line_number(oToi.get_line_number())
-#            oMyToi_w_carraige_return.style = 'require_blank_line'
-#            lReturn[-1] = oMyToi_w_carraige_return
