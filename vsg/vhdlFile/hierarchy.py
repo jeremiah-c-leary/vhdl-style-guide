@@ -31,7 +31,7 @@ def insert_hierarchy_index(lIfHierarchy):
 
 def remove_hierarchy_index(lIfHierarchy):
     if len(lIfHierarchy) > 0 and lIfHierarchy[-1] == 0:
-            lIfHierarchy.pop()
+        lIfHierarchy.pop()
 
 
 def check_if_statement(oToken, lIfHierarchy):
