@@ -26,6 +26,10 @@ lExpected_require_blank_allow_end_subprogram_body = []
 lExpected_require_blank_allow_end_subprogram_body.append('')
 utils.read_file(os.path.join(sTestDir, 'rule_030_test_input.fixed_require_blank_allow_end_subprogram_body.vhd'), lExpected_require_blank_allow_end_subprogram_body)
 
+lExpected_require_blank_all_true = []
+lExpected_require_blank_all_true.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_030_test_input.fixed_require_blank_all_true.vhd'), lExpected_require_blank_all_true)
+
 lExpected_require_blank_allow_end_case = []
 lExpected_require_blank_allow_end_case .append('')
 utils.read_file(os.path.join(sTestDir, 'rule_030_test_input.fixed_require_blank_allow_end_case.vhd'), lExpected_require_blank_allow_end_case)
@@ -174,6 +178,40 @@ class test_if_statement_rule(unittest.TestCase):
         lActual = self.oFile.get_lines()
 
         self.assertEqual(lExpected_require_blank_allow_end_subprogram_body, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+
+    def test_rule_030_w_require_blank_true_all_true(self):
+        oRule = if_statement.rule_030()
+        oRule.style = 'require_blank_line'
+        oRule.ignore_hierarchy = True
+        oRule.except_end_if = True
+        oRule.except_end_process = True
+        oRule.except_end_case = True
+        oRule.except_end_loop = True
+        oRule.except_end_subprogram_body = True
+
+        lExpected = [14, 16, 28, 30, 32, 97, 103, 143, 149, 167, 169, 180, 182, 184]
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+
+    def test_fix_rule_030_w_require_blank_true_all_true(self):
+        oRule = if_statement.rule_030()
+        oRule.style = 'require_blank_line'
+        oRule.ignore_hierarchy = True
+        oRule.except_end_if = True
+        oRule.except_end_process = True
+        oRule.except_end_case = True
+        oRule.except_end_loop = True
+        oRule.except_end_subprogram_body = True
+
+        oRule.fix(self.oFile)
+
+        lActual = self.oFile.get_lines()
+
+        self.assertEqual(lExpected_require_blank_all_true, lActual)
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
