@@ -39,19 +39,24 @@ class blank_line_below_line_ending_with_token(blank_line.Rule):
         self._update_hierarchy_limits()
         lReturn = []
         if self.style == 'require_blank_line':
-            if self.lHierarchyLimits is None:
-                lToi = oFile.get_line_below_line_ending_with_token(self.lTokens)
-            else:
-                lToi = oFile.get_line_below_line_ending_with_token_with_hierarchy(self.lTokens, self.lHierarchyLimits)
-            for oToi in lToi:
-                oToi.style = 'require_blank_line'
-                lReturn.append(oToi)
+            lToi = self._get_require_blank_line_tois(oFile)
         elif self.style == 'no_blank_line':
-            lToi = oFile.get_blank_lines_below_line_ending_with_token(self.lTokens, self.lHierarchyLimits)
-            for oToi in lToi:
-                oToi.style = 'no_blank_line'
-                lReturn.append(oToi)
+            lToi = self._get_no_blank_line_tois(oFile)
+
+        for oToi in lToi:
+            oToi.style = self.style
+            lReturn.append(oToi)
+
         return lReturn
+
+    def _get_require_blank_line_tois(self, oFile):
+        if self.lHierarchyLimits is None:
+            return oFile.get_line_below_line_ending_with_token(self.lTokens)
+        else:
+            return oFile.get_line_below_line_ending_with_token_with_hierarchy(self.lTokens, self.lHierarchyLimits)
+
+    def _get_no_blank_line_tois(self, oFile):
+        return oFile.get_blank_lines_below_line_ending_with_token(self.lTokens, self.lHierarchyLimits)
 
     def _analyze(self, lToi):
         for oToi in lToi:
