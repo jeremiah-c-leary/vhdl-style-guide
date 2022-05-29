@@ -71,27 +71,25 @@ class rule_030(blank_line_below_line_ending_with_token):
         return lReturn
 
     def update_style_per_exceptions(self, oToi, lReturn, oFile):
-        if self.except_end_case:
-            self.invert_style_if_token_detected(oToi, token.case_statement.end_keyword, lReturn, oFile)
+        self.invert_style_if_token_detected(oToi, token.case_statement.end_keyword, lReturn, oFile, self.except_end_case)
 
-        if self.except_end_process:
-            self.invert_style_if_token_detected(oToi, token.process_statement.end_keyword, lReturn, oFile)
+        self.invert_style_if_token_detected(oToi, token.process_statement.end_keyword, lReturn, oFile, self.except_end_process)
 
-        if self.except_end_if:
-            self.invert_style_if_token_detected(oToi, token.if_statement.end_keyword, lReturn, oFile)
+        self.invert_style_if_token_detected(oToi, token.if_statement.end_keyword, lReturn, oFile, self.except_end_if)
 
-        if self.except_end_loop:
-            self.invert_style_if_token_detected(oToi, token.loop_statement.end_keyword, lReturn, oFile)
+        self.invert_style_if_token_detected(oToi, token.loop_statement.end_keyword, lReturn, oFile, self.except_end_loop)
 
-        if self.except_end_subprogram_body:
-            self.invert_style_if_token_detected(oToi, token.subprogram_body.end_keyword, lReturn, oFile)
+        self.invert_style_if_token_detected(oToi, token.subprogram_body.end_keyword, lReturn, oFile, self.except_end_subprogram_body)
 
-    def invert_style_if_token_detected(self, oToi, oTokenType, lReturn, oFile):
+    def invert_style_if_token_detected(self, oToi, oTokenType, lReturn, oFile, bDoIt):
+        if not bDoIt:
+            return None
+
         sNewStyle = self.inverse_style()
-        
+
         if oToi.tokens_start_with_types([parser.whitespace, oTokenType]):
            lReturn[-1].style = sNewStyle
         elif oToi.tokens_start_with_types([parser.blank_line]):
             oNextLineToi = oFile.get_line_succeeding_line(oToi.get_line_number())
             if oNextLineToi.tokens_start_with_types([parser.whitespace, oTokenType]):
-                lReturn[-1].style = sNewStyle
+                 lReturn[-1].style = sNewStyle
