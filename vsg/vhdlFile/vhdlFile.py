@@ -213,14 +213,14 @@ class vhdlFile():
     def get_line_above_line_starting_with_token_with_hierarchy(self, lTokens, lHierarchy, bIncludeComments):
         return extract.get_line_above_line_starting_with_token_with_hierarchy(lTokens, self.lAllObjects, lHierarchy, self.oTokenMap, bIncludeComments)
 
-    def get_line_below_line_ending_with_token(self, lTokens):
-        return extract.get_line_below_line_ending_with_token(lTokens, self.lAllObjects, self.oTokenMap)
+    def get_line_below_line_ending_with_token(self, lTokens, bIncludeCarriageReturn=False):
+        return extract.get_line_below_line_ending_with_token(lTokens, self.lAllObjects, self.oTokenMap, bIncludeCarriageReturn)
 
     def get_line_below_line_ending_with_several_possible_tokens(self, lTokens):
         return extract.get_line_below_line_ending_with_several_possible_tokens(lTokens, self.lAllObjects, self.oTokenMap)
 
-    def get_line_below_line_ending_with_token_with_hierarchy(self, lTokens, lHierarchy):
-        return extract.get_line_below_line_ending_with_token_with_hierarchy(lTokens, self.lAllObjects, lHierarchy, self.oTokenMap)
+    def get_line_below_line_ending_with_token_with_hierarchy(self, lTokens, lHierarchy, bIncludeCarriageReturn=False):
+        return extract.get_line_below_line_ending_with_token_with_hierarchy(lTokens, self.lAllObjects, lHierarchy, self.oTokenMap, bIncludeCarriageReturn)
 
     def get_line_which_includes_tokens(self, lTokens):
         return extract.get_line_which_includes_tokens(lTokens, self.lAllObjects, self.oTokenMap)

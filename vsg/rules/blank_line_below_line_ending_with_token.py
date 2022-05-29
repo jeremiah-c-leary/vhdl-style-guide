@@ -95,9 +95,8 @@ class blank_line_below_line_ending_with_token(blank_line.Rule):
         lTokens = oToi.get_tokens()
         if self._is_allowed_token(lAllowTokens, lTokens):
             return None
-        if len(lTokens) == 1:
-            if isinstance(lTokens[0], parser.blank_line):
-                return None
+        if isinstance(lTokens[0], parser.blank_line):
+            return None
         sSolution = 'Insert blank line below'
         oViolation = violation.New(oToi.get_line_number() - 1, oToi, sSolution)
         dAction = {}
@@ -107,15 +106,17 @@ class blank_line_below_line_ending_with_token(blank_line.Rule):
 
 
     def _analyze_no_blank_line(self, oToi, lAllowTokens):
-#        print('_analyze_no_blank_line')
+        lTokens = oToi.get_tokens()
         sSolution = 'Remove blank lines below'
 #        print(oToi.get_tokens())
 #        print(oToi.get_line_number())
-        oViolation = violation.New(oToi.get_line_number() - 1, oToi, sSolution)
-        dAction = {}
-        dAction['action'] = 'Remove'
-        oViolation.set_action(dAction)
-        self.add_violation(oViolation)
+        if isinstance(lTokens[0], parser.blank_line):
+            oViolation = violation.New(oToi.get_line_number() - 1, oToi, sSolution)
+            dAction = {}
+            dAction['action'] = 'Remove'
+            oViolation.set_action(dAction)
+            self.add_violation(oViolation)
+        return None
 
 
     def _is_allowed_token(self, lAllowTokens, lTokens):

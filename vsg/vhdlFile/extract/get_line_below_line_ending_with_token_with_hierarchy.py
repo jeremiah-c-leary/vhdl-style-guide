@@ -4,7 +4,7 @@ from vsg.vhdlFile.extract import utils
 from vsg.vhdlFile.extract.get_line_succeeding_line import get_line_succeeding_line
 
 
-def get_line_below_line_ending_with_token_with_hierarchy(lTokens, lAllTokens, lHierarchy, oTokenMap):
+def get_line_below_line_ending_with_token_with_hierarchy(lTokens, lAllTokens, lHierarchy, oTokenMap, bIncludeCarriageReturn=False):
 
 #    print('--> get_line_below_line...')
 #    print(lHierarchy)
@@ -26,6 +26,6 @@ def get_line_below_line_ending_with_token_with_hierarchy(lTokens, lAllTokens, lH
 #    print(lLine)
 
     for iLine in lLine:
-        lReturn.append(get_line_succeeding_line(iLine, lAllTokens, 1, oTokenMap))
+        lReturn.append(get_line_succeeding_line(iLine, lAllTokens, 1, oTokenMap, bIncludeCarriageReturn))
 
     return lReturn

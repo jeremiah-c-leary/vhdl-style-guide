@@ -5,7 +5,7 @@ from vsg.vhdlFile.extract import utils
 from vsg.vhdlFile.extract.get_line_succeeding_line import get_line_succeeding_line
 
 
-def get_line_below_line_ending_with_token(lTokens, lAllTokens, oTokenMap):
+def get_line_below_line_ending_with_token(lTokens, lAllTokens, oTokenMap, bIncludeCarriageReturn=False):
 
     lReturn = []
 
@@ -17,7 +17,7 @@ def get_line_below_line_ending_with_token(lTokens, lAllTokens, oTokenMap):
 
     lLine = utils.get_line_numbers_of_indexes_in_list(lIndexes, oTokenMap)
     for iLine in lLine:
-        oToi = get_line_succeeding_line(iLine, lAllTokens, 1, oTokenMap)
+        oToi = get_line_succeeding_line(iLine, lAllTokens, 1, oTokenMap, bIncludeCarriageReturn)
         if oToi is not None:
             lReturn.append(oToi)
 

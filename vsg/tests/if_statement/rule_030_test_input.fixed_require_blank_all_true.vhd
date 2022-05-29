@@ -192,3 +192,22 @@ architecture RTL of FIFO is
 begin
 
 end architecture RTL;
+
+-- Test no blank line and end ifs
+
+architecture RTL of FIFO is
+
+  procedure proc1 is
+  begin
+    if a then
+      if b then
+        if c then
+          c <= d;
+        end if;
+      end if;
+    end if;
+  end procedure proc1;
+
+begin
+
+end architecture RTL;
