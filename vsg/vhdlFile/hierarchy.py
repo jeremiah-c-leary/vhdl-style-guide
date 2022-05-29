@@ -20,11 +20,18 @@ def check_loop_statement(oToken, lIfHierarchy):
 
 def check_for_hierarchy_nesting(oToken, lIfHierarchy, oStartToken, oEndToken):
     if tokens_match(oToken, oStartToken):
-        lIfHierarchy.append(0)
-    if tokens_match(oToken, oEndToken):
-        if len(lIfHierarchy) > 0:
-            if lIfHierarchy[-1] == 0:
-                lIfHierarchy.pop()
+        insert_hierarchy_index(lIfHierarchy)
+    elif tokens_match(oToken, oEndToken):
+        remove_hierarchy_index(lIfHierarchy)
+
+
+def insert_hierarchy_index(lIfHierarchy):
+    lIfHierarchy.append(0)
+
+
+def remove_hierarchy_index(lIfHierarchy):
+    if len(lIfHierarchy) > 0 and lIfHierarchy[-1] == 0:
+            lIfHierarchy.pop()
 
 
 def check_if_statement(oToken, lIfHierarchy):
