@@ -173,3 +173,43 @@ begin
   end process;
 
 end architecture RTL;
+
+-- Test allow_end_subpogram_body
+
+architecture RTL of FIFO is
+
+  procedure proc1 is
+  begin
+    if a then
+      if b then
+        if c then
+          c <= d;
+        end if;
+
+        a <= b;
+      end if;
+
+      b <= c;
+    end if;
+
+  end procedure proc1;
+
+  procedure proc1 is
+  begin
+    if a then
+      if b then
+        if c then
+          c <= d;
+        end if;
+
+        a <= b;
+      end if;
+
+      b <= c;
+    end if;
+
+  end procedure proc1;
+
+begin
+
+end architecture RTL;

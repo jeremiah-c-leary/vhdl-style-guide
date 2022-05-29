@@ -30,6 +30,7 @@ begin
       end if;
       b <= c;
     end if;
+
     z <= a;
 
   end process;
@@ -51,6 +52,7 @@ begin
         end if;
       end if;
     end if;
+
   end process;
 
 end architecture RTL;
@@ -76,11 +78,13 @@ begin
                when 64 =>
                  if x then
                  end if;
+
              end case;
 
            end if;
          end if;
        end if;
+
     end case;
 
     case x is
@@ -126,11 +130,13 @@ begin
 
                  if x then
                  end if;
+
              end loop;
 
            end if;
          end if;
        end if;
+
     end loop;
 
     loop
@@ -182,7 +188,6 @@ architecture RTL of FIFO is
       end if;
       b <= c;
     end if;
-
   end procedure proc1;
 
 begin
