@@ -67,7 +67,6 @@ class New():
             return False
 
 
-
 def calculate_end_index(iStartIndex, lTokens):
     try:
         iReturn = iStartIndex

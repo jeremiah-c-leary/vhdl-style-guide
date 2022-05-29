@@ -54,7 +54,7 @@ class remove_excessive_blank_lines_below_line_ending_with_token(blank_line.Rule)
             if bOverride:
                 iCount -= 1
             if iCount > self.iAllow:
-                oViolation = violation.New(oToi.get_line_number()  - 1, oToi, self.solution)
+                oViolation = violation.New(oToi.get_line_number() - 1, oToi, self.solution)
                 dAction = {}
                 dAction['remove'] = self.iAllow - iCount
                 oViolation.set_action(dAction)
