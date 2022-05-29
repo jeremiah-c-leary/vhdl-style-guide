@@ -19,6 +19,7 @@ from vsg.token.ieee.std_logic_1164 import function
 
 from vsg.vhdlFile import extract
 from vsg.vhdlFile import utils
+from vsg.vhdlFile import hierarchy
 
 from vsg.vhdlFile.classify import blank
 from vsg.vhdlFile.classify import comment
@@ -91,7 +92,7 @@ class vhdlFile():
         post_token_assignments(self.lAllObjects)
         self.lAllObjects = combine_use_clause_selected_name(self.lAllObjects)
 
-        set_token_hierarchy_value(self.lAllObjects)
+        hierarchy.set_token_hierarchy_value(self.lAllObjects)
         self.oTokenMap = process_tokens(self.lAllObjects)
 
     def update(self, lUpdates):
@@ -521,49 +522,6 @@ def post_token_assignments(lTokens):
                 else:
                     lTokens[iToken] = adding_operator.minus()
                 continue
-
-
-def set_token_hierarchy_value(lTokens):
-    lIfHierarchy = []
-    for oToken in lTokens:
-        if isinstance(oToken, token.if_statement.if_keyword):
-            if len(lIfHierarchy) == 0:
-                lIfHierarchy.append(0)
-#            print(f'--> {lIfHierarchy}')
-            oToken.set_hierarchy(lIfHierarchy[-1])
-#            print(f'if hier = {oToken.get_hierarchy()}')
-            lIfHierarchy[-1] += 1
-        if isinstance(oToken, token.if_statement.elsif_keyword):
-            oToken.set_hierarchy(lIfHierarchy[-1] - 1)
-        if isinstance(oToken, token.if_statement.else_keyword):
-            oToken.set_hierarchy(lIfHierarchy[-1] - 1)
-        if isinstance(oToken, token.if_statement.semicolon):
-            lIfHierarchy[-1] -= 1
-            oToken.set_hierarchy(lIfHierarchy[-1])
-#            print(f'end if hier = {oToken.get_hierarchy()}')
-            if lIfHierarchy[-1] == 0:
-                lIfHierarchy.pop()
-#            print(f'<-- {lIfHierarchy}')
-        if isinstance(oToken, token.case_statement.case_keyword):
-#            print(f'== begin case')
-            lIfHierarchy.append(0)
-        if isinstance(oToken, token.case_statement.semicolon):
-#            print(f'== end case')
-            try:
-                if lIfHierarchy[-1] == 0:
-                    lIfHierarchy.pop()
-            except IndexError:
-                pass
-        if isinstance(oToken, token.loop_statement.loop_keyword):
-#            print(f'== begin case')
-            lIfHierarchy.append(0)
-        if isinstance(oToken, token.loop_statement.semicolon):
-#            print(f'== end case')
-            try:
-                if lIfHierarchy[-1] == 0:
-                    lIfHierarchy.pop()
-            except IndexError:
-                pass
 
 
 def combine_use_clause_selected_name(lTokens):
