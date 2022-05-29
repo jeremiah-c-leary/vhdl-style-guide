@@ -31,6 +31,7 @@ class blank_line_below_line_ending_with_token(blank_line.Rule):
             self.lAllowTokens = []
         else:
             self.lAllowTokens = lAllowTokens
+        self.possible_styles = ['require_blank_line', 'no_blank_line']
         self.style = 'require_blank_line'
         self.configuration.append('style')
         self.ignore_hierarchy = False
@@ -131,3 +132,9 @@ class blank_line_below_line_ending_with_token(blank_line.Rule):
         if bSkip:
             return True
         return False
+
+    def inverse_style(self):
+        if self.style == 'require_blank_line':
+            return 'no_blank_line'
+        return 'require_blank_line'
+

@@ -57,55 +57,41 @@ class rule_030(blank_line_below_line_ending_with_token):
             lToi = oFile.get_line_below_line_ending_with_token(self.lTokens, bIncludeCarriageReturn=True)
         else:
             lToi = oFile.get_line_below_line_ending_with_token_with_hierarchy(self.lTokens, self.lHierarchyLimits, bIncludeCarriageReturn=True)
+
+        return self.set_style_in_toi_list(lToi, oFile)
+
+    def set_style_in_toi_list(self, lToi, oFile):
         lReturn = []
-            
-        if self.style == 'require_blank_line':
-            for oToi in lToi:
-                oToi.style = self.style
-                lReturn.append(oToi)
+        for oToi in lToi:
+            oToi.style = self.style
+            lReturn.append(oToi)
 
-                if self.except_end_case:
-                    something(oToi, token.case_statement.end_keyword, lReturn, oFile)
-
-                if self.except_end_process:
-                    something(oToi, token.process_statement.end_keyword, lReturn, oFile)
-
-                if self.except_end_if:
-                    something(oToi, token.if_statement.end_keyword, lReturn, oFile)
-
-                if self.except_end_loop:
-                    something(oToi, token.loop_statement.end_keyword, lReturn, oFile)
-
-                if self.except_end_subprogram_body:
-                    something(oToi, token.subprogram_body.end_keyword, lReturn, oFile)
-
-        elif self.style == 'no_blank_line':
-            for oToi in lToi:
-                oToi.style = self.style
-                lReturn.append(oToi)
-
-                if self.except_end_if:
-                    something_else(oToi, token.if_statement.end_keyword, lReturn, oFile)
-
+            self.update_style_per_exceptions(oToi, lReturn, oFile)
 
         return lReturn
 
+    def update_style_per_exceptions(self, oToi, lReturn, oFile):
+        if self.except_end_case:
+            self.invert_style_if_token_detected(oToi, token.case_statement.end_keyword, lReturn, oFile)
 
-def something(oToi, oTokenType, lReturn, oFile):
-    if oToi.tokens_start_with_types([parser.whitespace, oTokenType]):
-       lReturn[-1].style = 'no_blank_line'
-    else:
-        oNextLineToi = oFile.get_line_succeeding_line(oToi.get_line_number())
-        if oNextLineToi.tokens_start_with_types([parser.whitespace, oTokenType]) and oToi.tokens_start_with_types([parser.blank_line]):
-            oMyToi_w_carraige_return = oFile.get_line_number(oToi.get_line_number())
-            oMyToi_w_carraige_return.style = 'no_blank_line'
-            lReturn[-1] = oMyToi_w_carraige_return
+        if self.except_end_process:
+            self.invert_style_if_token_detected(oToi, token.process_statement.end_keyword, lReturn, oFile)
 
+        if self.except_end_if:
+            self.invert_style_if_token_detected(oToi, token.if_statement.end_keyword, lReturn, oFile)
 
-def something_else(oToi, oTokenType, lReturn, oFile):
-    if oToi.tokens_start_with_types([parser.whitespace, oTokenType]):
-       lReturn[-1].style = 'require_blank_line'
-    elif oToi.tokens_start_with_types([parser.blank_line]):
-        oNextLineToi = oFile.get_line_succeeding_line(oToi.get_line_number())
-        if oNextLineToi.tokens_start_with_types([parser.whitespace, oTokenType]):
-            lReturn[-1].style = 'require_blank_line'
+        if self.except_end_loop:
+            self.invert_style_if_token_detected(oToi, token.loop_statement.end_keyword, lReturn, oFile)
+
+        if self.except_end_subprogram_body:
+            self.invert_style_if_token_detected(oToi, token.subprogram_body.end_keyword, lReturn, oFile)
+
+    def invert_style_if_token_detected(self, oToi, oTokenType, lReturn, oFile):
+        sNewStyle = self.inverse_style()
+        
+        if oToi.tokens_start_with_types([parser.whitespace, oTokenType]):
+           lReturn[-1].style = sNewStyle
+        elif oToi.tokens_start_with_types([parser.blank_line]):
+            oNextLineToi = oFile.get_line_succeeding_line(oToi.get_line_number())
+            if oNextLineToi.tokens_start_with_types([parser.whitespace, oTokenType]):
+                lReturn[-1].style = sNewStyle
