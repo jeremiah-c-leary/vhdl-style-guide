@@ -128,3 +128,26 @@ class test(unittest.TestCase):
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
+
+    def test_spaces_2_plus(self):
+        oRule = architecture.rule_012()
+        oRule.number_of_spaces = '2+'
+
+        lExpected = [8]
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+
+    def test_fix_spaces_2_plus(self):
+        oRule = architecture.rule_012()
+        oRule.number_of_spaces = '2+'
+
+        oRule.fix(self.oFile)
+
+        lActual = self.oFile.get_lines()
+
+        self.assertEqual(lExpected_spaces_gte2, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+

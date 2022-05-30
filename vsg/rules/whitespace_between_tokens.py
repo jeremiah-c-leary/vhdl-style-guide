@@ -68,6 +68,8 @@ class Rule(whitespace.Rule):
             self.analyze_gte_spaces(oToi)
         elif self.number_of_spaces_is_gt():
             self.analyze_gt_spaces(oToi)
+        elif self.number_of_spaces_is_plus():
+            self.analyze_plus_spaces(oToi)
 
     def number_of_spaces_is_gt(self):
         if self.number_of_spaces.startswith('>'):
@@ -87,6 +89,17 @@ class Rule(whitespace.Rule):
 
     def analyze_gte_spaces(self, oToi):
         iSpaces = int(self.number_of_spaces[2:])
+        iWhitespaces = extract_length_of_whitespace(oToi)
+        if iWhitespaces < iSpaces:
+            self.create_violation(oToi, iSpaces)
+
+    def number_of_spaces_is_plus(self):
+        if self.number_of_spaces.endswith('+'):
+            return True
+        return False
+
+    def analyze_plus_spaces(self, oToi):
+        iSpaces = int(self.number_of_spaces[0:-1])
         iWhitespaces = extract_length_of_whitespace(oToi)
         if iWhitespaces < iSpaces:
             self.create_violation(oToi, iSpaces)
