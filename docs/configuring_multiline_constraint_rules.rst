@@ -126,18 +126,17 @@ The following code illustrates a multiline constraint and where the options will
 .. +------------------------+--------------------------------------------------------------------+
 
 
-This is an example which would replicate the previous code snippet.
+The following configuration replicates the above code snippet.
 
 .. code-block:: yaml
 
    rule :
-     constant_012:
+     signal_016:
         record_constraint_open_paren : 'add_new_line'
         record_constraint_close_paren : 'add_new_line'
         record_constraint_comma : 'remove_new_line'
         record_constraint_element : 'add_new_line'
         array_constraint : 'all_in_one_line'
-
 
 .. NOTE:: All examples use the above configuration.
 
