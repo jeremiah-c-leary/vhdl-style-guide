@@ -22,13 +22,13 @@ Both rules are required to ensure proper formatting of multiline constraints.
 There are several options to the structure rules:
 
 .. |values| replace::
-   add_new_line remove_new_line ignore
+   add_new_line, remove_new_line, ignore
 
 .. |values2| replace::
-   remove_new_line ignore
+   remove_new_line, ignore
 
 .. |values3| replace::
-   all_in_one_line one_line_per_dimension ignore
+   all_in_one_line, one_line_per_dimension, ignore
 
 .. |green_diamond| image:: img/green_diamond.png
 
@@ -60,7 +60,7 @@ There are several options to the structure rules:
 +===============================+====================+===========+========================+============================+
 | record_constraint_open_paren  | |green_diamond|    | |values|  | opening parenthesis    | * |add_new_line|           |
 +-------------------------------+--------------------+-----------+------------------------+ * |remove_new_line|        |
-| record_constraint_close_paren | |red_penta_star|   | |values|  | closing_parenthesis    | * |ignore|                 |
+| record_constraint_close_paren | |red_penta_star|   | |values|  | closing parenthesis    | * |ignore|                 |
 +-------------------------------+--------------------+-----------+------------------------+                            |
 | record_constraint_comma       | |purple_hexa_star| | |values2| | comma                  |                            |
 +-------------------------------+--------------------+-----------+------------------------+                            |
@@ -87,7 +87,7 @@ There are several options to the structure rules:
 .. | array_constraint              | string  | all_in_one_line | grey box         | array range indication |
 .. +-------------------------------+---------+-----------------+------------------+------------------------+
 
-The following code illustrates a multiline constraint and where the options will be applied.
+The following figure illustrates a multiline constraint and where the options will be applied.
 
 .. image:: img/constraints_code.png
 
@@ -150,19 +150,19 @@ Setting the `record_constraint_open_paren` option to `remove_new_line` will resu
    signal sig8 : record_type_3(
      element1(7 downto 0),
      element2(4 downto 0)(7 downto 0)(
-         element2(7 downto 0),
-         element3(3 downto 0)
-       ),
-       element3(3 downto 0)(
-           element2(4 downto 1),
-           element3(1 downto 0)
-         ),
-       element5(
-           element2(3 downto 0),
-           element3(7 downto 0)
-         ),
-       element6(4 downto 0),
-       element7(7 downto 0)
+       elementA(7 downto 0),
+       elementB(3 downto 0)
+     ),
+     element3(3 downto 0)(
+       elementC(4 downto 1),
+       elementD(1 downto 0)
+     ),
+     element5(
+       elementE(3 downto 0),
+       elementF(7 downto 0)
+     ),
+     element6(4 downto 0),
+     element7(7 downto 0)
    );
 
 Example: record_constraint_close_paren set to 'remove_new_line'
@@ -177,18 +177,18 @@ Setting the `record_constraint_close_paren` option to `remove_new_line` will res
      element1(7 downto 0),
      element2(4 downto 0)(7 downto 0)
        (
-         element2(7 downto 0),
-         element3(3 downto 0)),
-       element3(3 downto 0)
-         (
-           element2(4 downto 1),
-           element3(1 downto 0)),
-       element5
-         (
-           element2(3 downto 0),
-           element3(7 downto 0)),
-       element6(4 downto 0),
-       element7(7 downto 0));
+         elementA(7 downto 0),
+         elementB(3 downto 0)),
+     element3(3 downto 0)
+       (
+         elementC(4 downto 1),
+         elementD(1 downto 0)),
+     element5
+       (
+         elementE(3 downto 0),
+         elementF(7 downto 0)),
+     element6(4 downto 0),
+     element7(7 downto 0));
 
 Example: record_constraint_element set to 'remove_new_line'
 ###########################################################
@@ -202,27 +202,27 @@ Setting the `record_constraint_element` option to `remove_new_line` will result 
      element1(7 downto 0),
      element2(4 downto 0)(7 downto 0)
        (
-         element2(7 downto 0),
-         element3(3 downto 0)
+         elementA(7 downto 0),
+         elementB(3 downto 0)
        ),
-       element3(3 downto 0)
-         (
-           element2(4 downto 1),
-           element3(1 downto 0)
-         ),
-       element5
-         (
-           element2(3 downto 0),
-           element3(7 downto 0)
-         ),
-       element6(4 downto 0),
-       element7(7 downto 0)
+     element3(3 downto 0)
+       (
+         elementC(4 downto 1),
+         elementD(1 downto 0)
+       ),
+     element5
+       (
+         elementE(3 downto 0),
+         elementF(7 downto 0)
+       ),
+     element6(4 downto 0),
+     element7(7 downto 0)
    );
 
 Example: array_constraint set to 'one_line_per_dimension'
 #########################################################
 
-Setting the `record_constraint_element` option to `remove_new_line` will result in the following formatting:
+Setting the `array_constraint` option to `one_line_per_dimension` will result in the following formatting:
 
 .. code-block:: vhdl
 
@@ -234,30 +234,30 @@ Setting the `record_constraint_element` option to `remove_new_line` will result 
        (4 downto 0)
        (7 downto 0)
        (
-         element2
+         elementA
            (7 downto 0),
-         element3
+         elementB
            (3 downto 0)
        ),
-       element3
-         (3 downto 0)
-         (
-           element2
-             (4 downto 1),
-           element3
-             (1 downto 0)
-         ),
-       element5
-         (
-           element2
-             (3 downto 0),
-           element3
-             (7 downto 0)
-         ),
-       element6
-         (4 downto 0),
-       element7
-         (7 downto 0)
+     element3
+       (3 downto 0)
+       (
+         elementC
+           (4 downto 1),
+         elementD
+           (1 downto 0)
+       ),
+     element5
+       (
+         elementE
+           (3 downto 0),
+         elementF
+           (7 downto 0)
+       ),
+     element6
+       (4 downto 0),
+     element7
+       (7 downto 0)
    );
 
 Rules Enforcing Multiline Constraint Rules
