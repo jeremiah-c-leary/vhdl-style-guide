@@ -39,6 +39,8 @@ instantiation_002
 
 This rule checks for a single space after the colon.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -57,6 +59,8 @@ instantiation_003
 |phase_2| |error| |whitespace|
 
 This rule checks for a single space before the colon.
+
+|configuring_whitespace_rules_link|
 
 **Violation**
 
@@ -463,6 +467,8 @@ instantiation_032
 |phase_2| |error| |whitespace|
 
 This rule checks for a single space after the **component** keyword if it is used.
+
+|configuring_whitespace_rules_link|
 
 **Violation**
 

@@ -1,15 +1,17 @@
 
 from vsg import token
 
-from vsg.rules import single_space_between_token_pairs
+from vsg.rules.whitespace_between_token_pairs import Rule
 
 lTokens = []
 lTokens.append([token.if_statement.end_keyword, token.if_statement.end_if_keyword])
 
 
-class rule_015(single_space_between_token_pairs):
+class rule_015(Rule):
     '''
     This rule checks for a single space between the **end if** keywords.
+
+    |configuring_whitespace_rules_link|
 
     **Violation**
 
@@ -24,5 +26,4 @@ class rule_015(single_space_between_token_pairs):
        end if;
     '''
     def __init__(self):
-        single_space_between_token_pairs.__init__(self, 'if', '015', lTokens)
-        self.solution = 'Ensure only a single space exists between the *end* and *if* keywords.'
+        Rule.__init__(self, 'if', '015', lTokens)

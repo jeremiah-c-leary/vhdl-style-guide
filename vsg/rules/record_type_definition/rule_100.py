@@ -1,5 +1,5 @@
 
-from vsg.rules import single_space_between_tokens as Rule
+from vsg.rules.whitespace_between_tokens import Rule as Rule
 
 from vsg.token import record_type_definition as token
 
@@ -7,6 +7,8 @@ from vsg.token import record_type_definition as token
 class rule_100(Rule):
     '''
     This rule checks for a single space after the **end** keyword.
+
+    |configuring_whitespace_rules_link|
 
     **Violation**
 
@@ -27,5 +29,6 @@ class rule_100(Rule):
        end record t_record;
     '''
     def __init__(self):
-        Rule.__init__(self, 'record_type_definition', '100', token.end_keyword, token.end_record_keyword)
-        self.solution = 'Reduce spaces between *end* keyword and *record* keyword to a single space.'
+        Rule.__init__(self, 'record_type_definition', '100')
+        self.left_token = token.end_keyword
+        self.right_token = token.end_record_keyword

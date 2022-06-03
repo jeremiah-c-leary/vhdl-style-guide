@@ -1,12 +1,14 @@
 
-from vsg.rules import single_space_between_tokens
+from vsg.rules.whitespace_between_tokens import Rule
 
 from vsg.token import entity_declaration as token
 
 
-class rule_007(single_space_between_tokens):
+class rule_007(Rule):
     '''
     This rule checks for a single space before the **is** keyword.
+
+    |configuring_whitespace_rules_link|
 
     **Violation**
 
@@ -21,5 +23,6 @@ class rule_007(single_space_between_tokens):
        entity fifo is
     '''
     def __init__(self):
-        single_space_between_tokens.__init__(self, 'entity', '007', token.identifier, token.is_keyword)
-        self.solution = 'Reduce spaces between identifier and *is* keyword to a single space.'
+        Rule.__init__(self, 'entity', '007')
+        self.left_token = token.identifier
+        self.right_token = token.is_keyword

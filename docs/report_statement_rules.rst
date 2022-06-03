@@ -49,6 +49,8 @@ report_statement_100
 
 This rule checks for a single space after the **report** keyword.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -67,6 +69,8 @@ report_statement_101
 |phase_2| |error| |whitespace|
 
 This rule checks for a single space after the **severity** keyword.
+
+|configuring_whitespace_rules_link|
 
 **Violation**
 

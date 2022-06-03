@@ -33,6 +33,8 @@ entity_002
 
 This rule checks for a single space after the **entity** keyword.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -142,6 +144,8 @@ entity_007
 
 This rule checks for a single space before the **is** keyword.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -228,6 +232,8 @@ entity_011
 
 This rule checks for a single space after the **end** keyword.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -267,6 +273,8 @@ entity_013
 |phase_2| |error| |whitespace|
 
 This rule checks for a single space after the **entity** keyword in the closing of the entity declaration.
+
+|configuring_whitespace_rules_link|
 
 **Violation**
 

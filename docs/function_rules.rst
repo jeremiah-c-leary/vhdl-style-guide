@@ -387,6 +387,8 @@ function_100
 
 This rule checks for a single space between the following function elements:  **function** keyword, function designator, open parenthesis, close parenthesis, **return** keyword, return type and **is** keyword.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -405,6 +407,8 @@ function_101
 |phase_2| |error| |whitespace|
 
 This rule checks for a single space between the **end** and **function** keywords and function designator.
+
+|configuring_whitespace_rules_link|
 
 **Violation**
 

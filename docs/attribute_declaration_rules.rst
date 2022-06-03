@@ -10,6 +10,8 @@ attribute_declaration_100
 
 This rule checks for a single space after the following elements:  **attribute** keyword and colon.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -28,6 +30,8 @@ attribute_declaration_101
 |phase_2| |error| |whitespace|
 
 This rule checks for at least a single space before the colon.
+
+|configuring_whitespace_rules_link|
 
 **Violation**
 

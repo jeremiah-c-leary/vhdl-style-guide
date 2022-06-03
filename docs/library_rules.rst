@@ -33,6 +33,8 @@ library_002
 
 This rule checks for excessive spaces after the **library** keyword.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -137,6 +139,8 @@ library_006
 |phase_2| |error| |whitespace|
 
 This rule checks for excessive spaces after the **use** keyword.
+
+|configuring_whitespace_rules_link|
 
 **Violation**
 

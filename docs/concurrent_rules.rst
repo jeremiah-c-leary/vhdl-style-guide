@@ -37,6 +37,8 @@ concurrent_002
 
 This rule checks for a single space after the **<=** operator.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -88,6 +90,8 @@ concurrent_004
 |phase_2| |error| |whitespace|
 
 This rule checks for at least a single space before the **<=** operator.
+
+|configuring_whitespace_rules_link|
 
 **Violation**
 

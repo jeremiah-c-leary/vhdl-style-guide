@@ -33,6 +33,8 @@ package_002
 
 This rule checks for a single space between **package** and **is** keywords.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -181,6 +183,8 @@ package_009
 |phase_2| |error| |whitespace|
 
 This rule checks for a single space between the **end** and **package** keywords and package name.
+
+|configuring_whitespace_rules_link|
 
 **Violation**
 

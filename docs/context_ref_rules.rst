@@ -31,6 +31,8 @@ context_ref_002
 
 This rule checks for a single space between the **context** keyword and the context selected name.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl

@@ -10,6 +10,8 @@ iteration_scheme_100
 
 This rule checks that a single space exists after the **while** keyword.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -32,6 +34,8 @@ iteration_scheme_101
 |phase_2| |error| |whitespace|
 
 This rule checks that a single space exists after the **for** keyword.
+
+|configuring_whitespace_rules_link|
 
 **Violation**
 

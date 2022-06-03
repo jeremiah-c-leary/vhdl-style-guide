@@ -33,6 +33,8 @@ context_002
 
 This rule checks for a single space between the **context** keyword and the context identifier.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -377,6 +379,8 @@ context_017
 
 This rule checks for a single space between the context identifier and the **is** keyword.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -395,6 +399,8 @@ context_018
 |phase_2| |error| |whitespace|
 
 This rule checks for a single space between the **end** keyword and the **context** keyword.
+
+|configuring_whitespace_rules_link|
 
 **Violation**
 
@@ -418,6 +424,8 @@ context_019
 |phase_2| |error| |whitespace|
 
 This rule checks for a single space between the **context** keyword and the context identifier.
+
+|configuring_whitespace_rules_link|
 
 **Violation**
 

@@ -1,7 +1,7 @@
 
 from vsg import token
 
-from vsg.rules import whitespace_before_tokens_in_between_tokens
+from vsg.rules.whitespace_before_tokens_in_between_tokens import Rule
 
 lTokens = []
 lTokens.append(token.interface_constant_declaration.colon)
@@ -14,9 +14,11 @@ oStart = token.generic_clause.open_parenthesis
 oEnd = token.generic_clause.close_parenthesis
 
 
-class rule_014(whitespace_before_tokens_in_between_tokens):
+class rule_014(Rule):
     '''
     This rule checks for at least a single space before the colon.
+
+    |configuring_whitespace_rules_link|
 
     **Violation**
 
@@ -35,5 +37,5 @@ class rule_014(whitespace_before_tokens_in_between_tokens):
        g_depth : integer := 512;
     '''
     def __init__(self):
-        whitespace_before_tokens_in_between_tokens.__init__(self, 'generic', '014', lTokens, oStart, oEnd)
-        self.solution = 'Add a space before the :.'
+        Rule.__init__(self, 'generic', '014', lTokens, oStart, oEnd)
+        self.number_of_spaces = '>=1'

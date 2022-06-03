@@ -132,6 +132,12 @@ class testDocGen(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
+    def test_element_association_rules_doc(self):
+
+        lExpected, lActual = compare_files('element_association')
+
+        self.assertEqual(lExpected, lActual)
+
     def test_entity_ref_rules_doc(self):
 
         lExpected, lActual = compare_files('entity')

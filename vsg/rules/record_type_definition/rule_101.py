@@ -1,5 +1,5 @@
 
-from vsg.rules import single_space_between_tokens as Rule
+from vsg.rules.whitespace_between_tokens import Rule as Rule
 
 from vsg.token import record_type_definition as token
 
@@ -7,6 +7,8 @@ from vsg.token import record_type_definition as token
 class rule_101(Rule):
     '''
     This rule checks for a single space before the simple name.
+
+    |configuring_whitespace_rules_link|
 
     **Violation**
 
@@ -27,5 +29,6 @@ class rule_101(Rule):
        end record t_record;
     '''
     def __init__(self):
-        Rule.__init__(self, 'record_type_definition', '101', token.end_record_keyword, token.record_type_simple_name)
-        self.solution = 'Reduce spaces between record and simple name.'
+        Rule.__init__(self, 'record_type_definition', '101')
+        self.left_token = token.end_record_keyword
+        self.right_token = token.record_type_simple_name

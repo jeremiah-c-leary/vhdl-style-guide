@@ -163,6 +163,8 @@ generic_map_007
 
 This rule checks for a single space after the **=>** keyword in generic maps.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl

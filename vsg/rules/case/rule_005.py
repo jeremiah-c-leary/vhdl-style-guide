@@ -1,12 +1,14 @@
 
-from vsg.rules import single_space_before_token
+from vsg.rules.whitespace_before_token import Rule
 
 from vsg.token import case_statement_alternative as token
 
 
-class rule_005(single_space_before_token):
+class rule_005(Rule):
     '''
     This rule checks for a single space before the **=>** operator.
+
+    |configuring_whitespace_rules_link|
 
     **Violation**
 
@@ -25,5 +27,4 @@ class rule_005(single_space_before_token):
         when 3 =>
     '''
     def __init__(self):
-        single_space_before_token.__init__(self, 'case', '005', [token.assignment])
-        self.solution = 'Reduce spaces before the assignment operator to a single space.'
+        Rule.__init__(self, 'case', '005', [token.assignment])

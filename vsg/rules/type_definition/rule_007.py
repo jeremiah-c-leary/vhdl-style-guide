@@ -1,7 +1,7 @@
 
 from vsg import token
 
-from vsg.rules import single_space_between_token_pairs
+from vsg.rules.whitespace_between_token_pairs import Rule
 
 lTokens = []
 lTokens.append([token.full_type_declaration.is_keyword, token.enumeration_type_definition.open_parenthesis])
@@ -13,9 +13,11 @@ lTokens.append([token.full_type_declaration.is_keyword, token.access_type_defini
 lTokens.append([token.full_type_declaration.is_keyword, token.file_type_definition.file_keyword])
 
 
-class rule_007(single_space_between_token_pairs):
+class rule_007(Rule):
     '''
     This rule checks for a single space after the **is** keyword.
+
+    |configuring_whitespace_rules_link|
 
     **Violation**
 
@@ -30,5 +32,4 @@ class rule_007(single_space_between_token_pairs):
        type state_machine is (idle, write, read, done);
     '''
     def __init__(self):
-        single_space_between_token_pairs.__init__(self, 'type', '007', lTokens)
-        self.solution = 'Ensure only a single space after the *is* keyword.'
+        Rule.__init__(self, 'type', '007', lTokens)

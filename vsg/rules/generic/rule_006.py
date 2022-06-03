@@ -2,7 +2,7 @@
 from vsg import parser
 from vsg import token
 
-from vsg.rules import single_space_between_token_pairs_bounded_by_tokens
+from vsg.rules.whitespace_between_token_pairs_bounded_by_tokens import Rule
 
 lTokens = []
 lTokens.append([token.interface_constant_declaration.assignment, parser.todo])
@@ -14,7 +14,7 @@ oStart = token.generic_clause.open_parenthesis
 oEnd = token.generic_clause.close_parenthesis
 
 
-class rule_006(single_space_between_token_pairs_bounded_by_tokens):
+class rule_006(Rule):
     '''
     This rule checks for a single space after the default assignment.
 
@@ -33,5 +33,4 @@ class rule_006(single_space_between_token_pairs_bounded_by_tokens):
        g_depth : integer := 512;
     '''
     def __init__(self):
-        single_space_between_token_pairs_bounded_by_tokens.__init__(self, 'generic', '006', lTokens, oStart, oEnd)
-        self.solution = 'Reduce number of spaces after the colon to 1.'
+        Rule.__init__(self, 'generic', '006', lTokens, oStart, oEnd)

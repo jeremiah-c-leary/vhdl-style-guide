@@ -1,15 +1,17 @@
 
 from vsg import token
 
-from vsg.rules import single_space_between_token_pairs
+from vsg.rules.whitespace_between_token_pairs import Rule
 
 lTokens = []
 lTokens.append([token.process_statement.label_colon, token.process_statement.process_keyword])
 
 
-class rule_025(single_space_between_token_pairs):
+class rule_025(Rule):
     '''
     This rule checks for a single space after the colon and before the **process** keyword.
+
+    |configuring_whitespace_rules_link|
 
     **Violation**
 
@@ -29,5 +31,4 @@ class rule_025(single_space_between_token_pairs):
        begin
     '''
     def __init__(self):
-        single_space_between_token_pairs.__init__(self, 'process', '025', lTokens)
-        self.solution = 'Ensure a single space exists between the : and the *process* keyword.'
+        Rule.__init__(self, 'process', '025', lTokens)

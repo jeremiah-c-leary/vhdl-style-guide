@@ -27,7 +27,7 @@ class test_context_rule(unittest.TestCase):
         self.assertEqual(oRule.identifier, '007')
         self.assertEqual(oRule.groups, ['whitespace'])
 
-        lExpected = [6, 6, 6, 14, 14, 14]
+        lExpected = [6, 6, 6, 14, 14, 14, 22]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))

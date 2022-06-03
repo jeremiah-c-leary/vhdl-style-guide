@@ -1,12 +1,14 @@
 
-from vsg.rules import single_space_between_tokens
+from vsg.rules.whitespace_between_tokens import Rule
 
 from vsg.token import architecture_body as token
 
 
-class rule_031(single_space_between_tokens):
+class rule_031(Rule):
     '''
     This rule checks for a single space between the name and the **of** keyword.
+
+    |configuring_whitespace_rules_link|
 
     **Violation**
 
@@ -21,5 +23,6 @@ class rule_031(single_space_between_tokens):
        architecture rtl of fifo is
     '''
     def __init__(self):
-        single_space_between_tokens.__init__(self, 'architecture', '031', token.identifier, token.of_keyword)
-        self.solution = 'Reduce spaces between identifier and *of* keyword to a single space.'
+        Rule.__init__(self, 'architecture', '031')
+        self.left_token = token.identifier
+        self.right_token = token.of_keyword

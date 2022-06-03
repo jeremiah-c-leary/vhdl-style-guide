@@ -1,14 +1,16 @@
 
 from vsg import parser
 
-from vsg.rules import single_space_between_tokens
+from vsg.rules.whitespace_between_tokens import Rule
 
 from vsg.token import case_statement_alternative as token
 
 
-class rule_004(single_space_between_tokens):
+class rule_004(Rule):
     '''
     This rule checks for a single space after the **when** keyword.
+
+    |configuring_whitespace_rules_link|
 
     **Violation**
 
@@ -27,5 +29,6 @@ class rule_004(single_space_between_tokens):
         when 3 =>
     '''
     def __init__(self):
-        single_space_between_tokens.__init__(self, 'case', '004', token.when_keyword, parser.todo)
-        self.solution = 'Reduce spaces between the *when* keyword and choices to a single space.'
+        Rule.__init__(self, 'case', '004')
+        self.left_token = token.when_keyword
+        self.right_token = parser.todo

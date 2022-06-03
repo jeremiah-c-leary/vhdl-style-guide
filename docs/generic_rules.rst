@@ -42,6 +42,8 @@ generic_003
 
 This rule checks for a single space between the **generic** keyword and the (.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -89,6 +91,8 @@ generic_005
 |phase_2| |error| |whitespace|
 
 This rule checks for a single space after the colon in a generic declaration.
+
+|configuring_whitespace_rules_link|
 
 **Violation**
 
@@ -236,6 +240,8 @@ generic_014
 |phase_2| |error| |whitespace|
 
 This rule checks for at least a single space before the colon.
+
+|configuring_whitespace_rules_link|
 
 **Violation**
 

@@ -1,13 +1,13 @@
 
 from vsg import token
 
-from vsg.rules import single_space_between_token_pairs
+from vsg.rules.whitespace_between_token_pairs import Rule
 
 lTokens = []
 lTokens.append([token.port_clause.port_keyword, token.port_clause.open_parenthesis])
 
 
-class rule_003(single_space_between_token_pairs):
+class rule_003(Rule):
     '''
     This rule checks for a single space after the **port** keyword and (.
 
@@ -28,5 +28,5 @@ class rule_003(single_space_between_token_pairs):
        port (
     '''
     def __init__(self):
-        single_space_between_token_pairs.__init__(self, 'port', '003', lTokens)
+        Rule.__init__(self, 'port', '003', lTokens)
         self.solution = 'Change spacing between "port" and "(" to one space.'

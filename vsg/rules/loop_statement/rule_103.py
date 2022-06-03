@@ -1,12 +1,14 @@
 
-from vsg.rules import single_space_between_tokens
+from vsg.rules.whitespace_between_tokens import Rule
 
 from vsg.token import loop_statement as token
 
 
-class rule_103(single_space_between_tokens):
+class rule_103(Rule):
     '''
     This rule checks if a label exists that a single space exists between the label and the colon.
+
+    |configuring_whitespace_rules_link|
 
     **Violation**
 
@@ -23,5 +25,6 @@ class rule_103(single_space_between_tokens):
          label : for index in 0 to 100 loop
     '''
     def __init__(self):
-        single_space_between_tokens.__init__(self, 'loop_statement', '103', token.loop_label, token.label_colon)
-        self.solution = 'Ensure a single space between label and :.'
+        Rule.__init__(self, 'loop_statement', '103')
+        self.left_token = token.loop_label
+        self.right_token = token.label_colon

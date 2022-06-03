@@ -1,12 +1,14 @@
 
-from vsg.rules import single_space_between_tokens
+from vsg.rules.whitespace_between_tokens import Rule
 
 from vsg.token import component_declaration as token
 
 
-class rule_013(single_space_between_tokens):
+class rule_013(Rule):
     '''
     This rule checks for a single space after the **component** keyword in the **end component** line.
+
+    |configuring_whitespace_rules_link|
 
     **Violation**
 
@@ -21,5 +23,6 @@ class rule_013(single_space_between_tokens):
        end component fifo;
     '''
     def __init__(self):
-        single_space_between_tokens.__init__(self, 'component', '013', token.end_component_keyword, token.component_simple_name)
-        self.solution = 'Reduce spaces between *end* keyword and *component* keyword.'
+        Rule.__init__(self, 'component', '013')
+        self.left_token = token.end_component_keyword
+        self.right_token = token.component_simple_name

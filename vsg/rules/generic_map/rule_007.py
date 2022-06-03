@@ -1,7 +1,7 @@
 
 from vsg import token
 
-from vsg.rules import single_space_between_token_pairs_bounded_by_tokens
+from vsg.rules.whitespace_between_token_pairs_bounded_by_tokens import Rule
 
 lTokens = []
 lTokens.append([token.association_element.assignment, token.association_element.actual_part])
@@ -10,9 +10,11 @@ lStart = token.generic_map_aspect.open_parenthesis
 lEnd = token.generic_map_aspect.close_parenthesis
 
 
-class rule_007(single_space_between_token_pairs_bounded_by_tokens):
+class rule_007(Rule):
     '''
     This rule checks for a single space after the **=>** keyword in generic maps.
+
+    |configuring_whitespace_rules_link|
 
     **Violation**
 
@@ -35,5 +37,4 @@ class rule_007(single_space_between_token_pairs_bounded_by_tokens):
        )
     '''
     def __init__(self):
-        single_space_between_token_pairs_bounded_by_tokens.__init__(self, 'generic_map', '007', lTokens, lStart, lEnd)
-        self.solution = 'Only a single space after => operator.'
+        Rule.__init__(self, 'generic_map', '007', lTokens, lStart, lEnd)

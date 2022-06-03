@@ -1,7 +1,7 @@
 
 from vsg import token
 
-from vsg.rules import single_space_between_token_pairs
+from vsg.rules.whitespace_between_token_pairs import Rule
 
 lTokens = []
 lTokens.append([token.block_statement.block_label, token.block_statement.label_colon])
@@ -11,9 +11,11 @@ lTokens.append([token.block_statement.block_keyword, token.block_statement.guard
 lTokens.append([token.block_statement.guard_close_parenthesis, token.block_statement.is_keyword])
 
 
-class rule_100(single_space_between_token_pairs):
+class rule_100(Rule):
     '''
     This rule checks for a single space between the following block elements:  label, label colon, **block** keyword, guard open parenthesis, guart close parenthesis, and **is** keywords.
+
+    |configuring_whitespace_rules_link|
 
     **Violation**
 
@@ -30,5 +32,4 @@ class rule_100(single_space_between_token_pairs):
        block_label : block is
     '''
     def __init__(self):
-        single_space_between_token_pairs.__init__(self, 'block', '100', lTokens)
-        self.solution = 'Ensure a single space between the *package* keyword and *body* keyword and identifier and *is* keyword.'
+        Rule.__init__(self, 'block', '100', lTokens)

@@ -39,6 +39,8 @@ variable_assignment_002
 
 This rule checks for a single space after the assignment.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -59,6 +61,8 @@ variable_assignment_003
 |phase_2| |error| |whitespace|
 
 This rule checks for at least a single space before the assignment.
+
+|configuring_whitespace_rules_link|
 
 **Violation**
 
