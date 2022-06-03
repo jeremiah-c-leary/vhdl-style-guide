@@ -198,25 +198,13 @@ Setting the `record_constraint_element` option to `remove_new_line` will result 
 .. code-block:: vhdl
 
    signal sig8 : record_type_3
-   (
-     element1(7 downto 0),
-     element2(4 downto 0)(7 downto 0)
-       (
-         elementA(7 downto 0),
-         elementB(3 downto 0)
-       ),
-     element3(3 downto 0)
-       (
-         elementC(4 downto 1),
-         elementD(1 downto 0)
-       ),
-     element5
-       (
-         elementE(3 downto 0),
-         elementF(7 downto 0)
-       ),
-     element6(4 downto 0),
-     element7(7 downto 0)
+   (element1(7 downto 0), element2(4 downto 0)(7 downto 0)
+       (elementA(7 downto 0), elementB(3 downto 0)
+       ), element3(3 downto 0)
+       (elementC(4 downto 1), elementD(1 downto 0)
+       ), element5
+       (elementE(3 downto 0), elementF(7 downto 0)
+       ), element6(4 downto 0), element7(7 downto 0)
    );
 
 Example: array_constraint set to 'one_line_per_dimension'
