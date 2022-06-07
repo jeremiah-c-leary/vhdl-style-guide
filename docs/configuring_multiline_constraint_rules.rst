@@ -55,76 +55,25 @@ There are several options to the structure rules:
 .. |one_line_per_dimension| replace::
    The setting "one_line_per_dimension" will place each dimension on it's own line
 
-+-------------------------------+--------------------+-----------+------------------------+----------------------------+
-| Option                        | Symbol             | Values    | Structural Element     | Description                |
-+===============================+====================+===========+========================+============================+
-| record_constraint_open_paren  | |green_diamond|    | |values|  | opening parenthesis    | * |add_new_line|           |
-+-------------------------------+--------------------+-----------+------------------------+ * |remove_new_line|        |
-| record_constraint_close_paren | |red_penta_star|   | |values|  | closing parenthesis    | * |ignore|                 |
-+-------------------------------+--------------------+-----------+------------------------+                            |
-| record_constraint_comma       | |purple_hexa_star| | |values2| | comma                  |                            |
-+-------------------------------+--------------------+-----------+------------------------+                            |
-| record_constraint_element     | |orange_triangle|  | |values|  | new element            |                            |
-+-------------------------------+--------------------+-----------+------------------------+----------------------------+
-| array_constraint              | |grey_box|         | |values3| | array range indication | * |all_in_one_line|        |
-|                               |                    |           |                        | * |one_line_per_dimension| |
-|                               |                    |           |                        | * |ignore|                 |
-+-------------------------------+--------------------+-----------+------------------------+----------------------------+
-
-.. other table:
-.. 
-.. +-------------------------------+---------+-----------------+------------------+------------------------+
-.. | Option                        |  Type   | Default         | Symbol           | structural element     |
-.. +===============================+=========+=================+==================+========================+
-.. | record_constraint_open_paren  | string  | add_new_line    | green diamond    | opening parenthesis    |
-.. +-------------------------------+---------+-----------------+------------------+------------------------+
-.. | record_constraint_close_paren | string  | add_new_line    | red penta-star   | closing_parenthesis    |
-.. +-------------------------------+---------+-----------------+------------------+------------------------+
-.. | record_constraint_comma       | string  | remove_new_line | purple hexa-star | comma                  |
-.. +-------------------------------+---------+-----------------+------------------+------------------------+
-.. | record_constraint_element     | string  | add_new_line    | orange triangle  | new element            |
-.. +-------------------------------+---------+-----------------+------------------+------------------------+
-.. | array_constraint              | string  | all_in_one_line | grey box         | array range indication |
-.. +-------------------------------+---------+-----------------+------------------+------------------------+
++---------------------------------------+--------------------+-----------+------------------------+----------------------------+
+| Option                                | Symbol             | Values    | Structural Element     | Description                |
++=======================================+====================+===========+========================+============================+
+| :code:`record_constraint_open_paren`  | |green_diamond|    | |values|  | opening parenthesis    | * |add_new_line|           |
++---------------------------------------+--------------------+-----------+------------------------+ * |remove_new_line|        |
+| :code:`record_constraint_close_paren` | |red_penta_star|   | |values|  | closing parenthesis    | * |ignore|                 |
++---------------------------------------+--------------------+-----------+------------------------+                            |
+| :code:`record_constraint_comma`       | |purple_hexa_star| | |values2| | comma                  |                            |
++---------------------------------------+--------------------+-----------+------------------------+                            |
+| :code:`record_constraint_element`     | |orange_triangle|  | |values|  | new element            |                            |
++---------------------------------------+--------------------+-----------+------------------------+----------------------------+
+| :code:`array_constraint`              | |grey_box|         | |values3| | array range indication | * |all_in_one_line|        |
+|                                       |                    |           |                        | * |one_line_per_dimension| |
+|                                       |                    |           |                        | * |ignore|                 |
++---------------------------------------+--------------------+-----------+------------------------+----------------------------+
 
 The following figure illustrates a multiline constraint and where the options will be applied.
 
 .. image:: img/constraints_code.png
-
-.. The options :code:`record_constraint_open_paren`, :code:`record_constraint_close_paren`, and :code:`record_constraint_element` allow for three values:
-.. 
-.. +----------------------+--------------------------------------------------------------------+
-.. | Option Value         | Action                                                             |
-.. +======================+====================================================================+
-.. | add_new_line         | Adds a carriage return before the structural element.              |
-.. +----------------------+--------------------------------------------------------------------+
-.. | remove_new_line      | Removes whitespace and carriage returns before structural element. |
-.. +----------------------+--------------------------------------------------------------------+
-.. | ignore               | Disables the option and no formatting checks will be performed.    |
-.. +----------------------+--------------------------------------------------------------------+
-.. 
-.. The option :code:`record_constraint_comma` allows for two values:
-.. 
-.. +----------------------+--------------------------------------------------------------------+
-.. | Option Value         | Action                                                             |
-.. +======================+====================================================================+
-.. | remove_new_line      | Removes whitespace and carriage returns before structural element. |
-.. +----------------------+--------------------------------------------------------------------+
-.. | ignore               | Disables the option and no formatting checks will be performed.    |
-.. +----------------------+--------------------------------------------------------------------+
-.. 
-.. The :code:`array_constraint` option allows the following values:
-.. 
-.. +------------------------+--------------------------------------------------------------------+
-.. | Option Value           | Action                                                             |
-.. +========================+====================================================================+
-.. | all_in_one_line        | Combine array_constraint into a single line.                       |
-.. +------------------------+--------------------------------------------------------------------+
-.. | one_line_per_dimension | Place each dimension on it's own line.                             |
-.. +------------------------+--------------------------------------------------------------------+
-.. | ignore                 | Disables the option and no formatting checks will be performed.    |
-.. +------------------------+--------------------------------------------------------------------+
-
 
 The following configuration replicates the above code snippet.
 
@@ -140,10 +89,10 @@ The following configuration replicates the above code snippet.
 
 .. NOTE:: All examples use the above configuration.
 
-Example: record_constraint_open_paren set to 'remove_new_line'
-##############################################################
+Example: :code:`record_constraint_open_paren` set to :code:`remove_new_line`
+############################################################################
 
-Setting the `record_constraint_open_paren` option to `remove_new_line` will result in the following formatting:
+Setting the :code:`record_constraint_open_paren` option to :code:`remove_new_line` will result in the following formatting:
 
 .. code-block:: vhdl
 
@@ -165,10 +114,10 @@ Setting the `record_constraint_open_paren` option to `remove_new_line` will resu
      element7(7 downto 0)
    );
 
-Example: record_constraint_close_paren set to 'remove_new_line'
-###############################################################
+Example: :code:`record_constraint_close_paren` set to :code:`remove_new_line`
+#############################################################################
 
-Setting the `record_constraint_close_paren` option to `remove_new_line` will result in the following formatting:
+Setting the :code:`record_constraint_close_paren` option to :code:`remove_new_line` will result in the following formatting:
 
 .. code-block:: vhdl
 
@@ -176,24 +125,24 @@ Setting the `record_constraint_close_paren` option to `remove_new_line` will res
    (
      element1(7 downto 0),
      element2(4 downto 0)(7 downto 0)
-       (
-         elementA(7 downto 0),
-         elementB(3 downto 0)),
+     (
+       elementA(7 downto 0),
+       elementB(3 downto 0)),
      element3(3 downto 0)
-       (
-         elementC(4 downto 1),
-         elementD(1 downto 0)),
+     (
+       elementC(4 downto 1),
+       elementD(1 downto 0)),
      element5
-       (
-         elementE(3 downto 0),
-         elementF(7 downto 0)),
+     (
+       elementE(3 downto 0),
+       elementF(7 downto 0)),
      element6(4 downto 0),
      element7(7 downto 0));
 
-Example: record_constraint_element set to 'remove_new_line'
-###########################################################
+Example: :code:`record_constraint_element` set to :code:`remove_new_line`
+#########################################################################
 
-Setting the `record_constraint_element` option to `remove_new_line` will result in the following formatting:
+Setting the :code:`record_constraint_element` option to :code:`remove_new_line` will result in the following formatting:
 
 .. code-block:: vhdl
 
@@ -207,10 +156,10 @@ Setting the `record_constraint_element` option to `remove_new_line` will result 
        ), element6(4 downto 0), element7(7 downto 0)
    );
 
-Example: array_constraint set to 'one_line_per_dimension'
-#########################################################
+Example: :code:`array_constraint` set to :code:`one_line_per_dimension`
+#######################################################################
 
-Setting the `array_constraint` option to `one_line_per_dimension` will result in the following formatting:
+Setting the :code:`array_constraint` option to :code:`one_line_per_dimension` will result in the following formatting:
 
 .. code-block:: vhdl
 
