@@ -21,6 +21,7 @@ class test_function(unittest.TestCase):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
 
+    @unittest.skip('Remove')
     def test_extract_slice_indexes(self):
         lActual = rules_utils.extract_slice_indexes(self.oFile.lAllObjects)
 
@@ -41,6 +42,7 @@ class test_function(unittest.TestCase):
         self.assertEqual(lExpected, lActual)
 
 
+    @unittest.skip('Remove')
     def test_combine_slice_indexes(self):
         lActual = rules_utils.combine_slice_indexes(self.oFile.lAllObjects)
         

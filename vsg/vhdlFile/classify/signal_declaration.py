@@ -27,7 +27,8 @@ def classify(iToken, lObjects):
     iCurrent = identifier_list.classify_until([':'], iCurrent, lObjects, token.identifier)
     iCurrent = utils.assign_next_token_required(':', token.colon, iCurrent, lObjects)
 
-    iCurrent = subtype_indication.classify_until([';', ':=', 'bus', 'register'], iCurrent, lObjects)
+#    iCurrent = subtype_indication.classify_until([';', ':=', 'bus', 'register'], iCurrent, lObjects)
+    iCurrent = subtype_indication.classify(iCurrent, lObjects)
 
     iCurrent = signal_kind.detect(iToken, lObjects)
 

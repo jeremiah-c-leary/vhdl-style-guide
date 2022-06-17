@@ -29,11 +29,11 @@
 <class 'vsg.token.signal_declaration.identifier'>
 <class 'vsg.token.signal_declaration.colon'>
 <class 'vsg.token.ieee.std_logic_1164.types.std_logic_vector'>
-<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.direction.downto'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
 <class 'vsg.token.signal_declaration.semicolon'>
 --------------------------------------------------------------------------------
 7 |
@@ -44,11 +44,11 @@
 <class 'vsg.token.signal_declaration.identifier'>
 <class 'vsg.token.signal_declaration.colon'>
 <class 'vsg.token.ieee.std_logic_1164.types.std_logic_vector'>
-<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.direction.downto'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
 <class 'vsg.token.signal_declaration.assignment_operator'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.signal_declaration.semicolon'>

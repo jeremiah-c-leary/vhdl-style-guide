@@ -1,0 +1,337 @@
+--------------------------------------------------------------------------------
+0 |
+--------------------------------------------------------------------------------
+1 | architecture rtl of fifo is
+<class 'vsg.token.architecture_body.architecture_keyword'>
+<class 'vsg.token.architecture_body.identifier'>
+<class 'vsg.token.architecture_body.of_keyword'>
+<class 'vsg.token.architecture_body.entity_name'>
+<class 'vsg.token.architecture_body.is_keyword'>
+--------------------------------------------------------------------------------
+2 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+3 | signal sig8 : record_type_3(
+<class 'vsg.token.signal_declaration.signal_keyword'>
+<class 'vsg.token.signal_declaration.identifier'>
+<class 'vsg.token.signal_declaration.colon'>
+<class 'vsg.token.subtype_indication.type_mark'>
+<class 'vsg.token.record_constraint.open_parenthesis'>
+--------------------------------------------------------------------------------
+4 |   element1(7 downto 0),
+<class 'vsg.token.record_element_constraint.record_element_simple_name'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.downto'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.record_constraint.comma'>
+--------------------------------------------------------------------------------
+5 |   element2(4 downto 0)(7 downto 0)(
+<class 'vsg.token.record_element_constraint.record_element_simple_name'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.downto'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.downto'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.record_constraint.open_parenthesis'>
+--------------------------------------------------------------------------------
+6 |     elementA(7 downto 0),
+<class 'vsg.token.record_element_constraint.record_element_simple_name'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.downto'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.record_constraint.comma'>
+--------------------------------------------------------------------------------
+7 |     elementB(3 downto 0)
+<class 'vsg.token.record_element_constraint.record_element_simple_name'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.downto'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+--------------------------------------------------------------------------------
+8 |   ),
+<class 'vsg.token.record_constraint.close_parenthesis'>
+<class 'vsg.token.record_constraint.comma'>
+--------------------------------------------------------------------------------
+9 |   element3(3 downto 0)(
+<class 'vsg.token.record_element_constraint.record_element_simple_name'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.downto'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.record_constraint.open_parenthesis'>
+--------------------------------------------------------------------------------
+10 |     elementC(4 downto 1),
+<class 'vsg.token.record_element_constraint.record_element_simple_name'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.downto'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.record_constraint.comma'>
+--------------------------------------------------------------------------------
+11 |     elementD(1 downto 0)
+<class 'vsg.token.record_element_constraint.record_element_simple_name'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.downto'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+--------------------------------------------------------------------------------
+12 |   ),
+<class 'vsg.token.record_constraint.close_parenthesis'>
+<class 'vsg.token.record_constraint.comma'>
+--------------------------------------------------------------------------------
+13 |   element5(
+<class 'vsg.token.record_element_constraint.record_element_simple_name'>
+<class 'vsg.token.record_constraint.open_parenthesis'>
+--------------------------------------------------------------------------------
+14 |     elementE(3 downto 0),
+<class 'vsg.token.record_element_constraint.record_element_simple_name'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.downto'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.record_constraint.comma'>
+--------------------------------------------------------------------------------
+15 |     elementF(7 downto 0)
+<class 'vsg.token.record_element_constraint.record_element_simple_name'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.downto'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+--------------------------------------------------------------------------------
+16 |   ),
+<class 'vsg.token.record_constraint.close_parenthesis'>
+<class 'vsg.token.record_constraint.comma'>
+--------------------------------------------------------------------------------
+17 |   element6(4 downto 0),
+<class 'vsg.token.record_element_constraint.record_element_simple_name'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.downto'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.record_constraint.comma'>
+--------------------------------------------------------------------------------
+18 |   element7(7 downto 0)
+<class 'vsg.token.record_element_constraint.record_element_simple_name'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.downto'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+--------------------------------------------------------------------------------
+19 | );
+<class 'vsg.token.record_constraint.close_parenthesis'>
+<class 'vsg.token.signal_declaration.semicolon'>
+--------------------------------------------------------------------------------
+20 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+21 |   signal sig9 : record_type_3(func1(A, 5, 6) downto func2(4, 6, 8));
+<class 'vsg.token.signal_declaration.signal_keyword'>
+<class 'vsg.token.signal_declaration.identifier'>
+<class 'vsg.token.signal_declaration.colon'>
+<class 'vsg.token.subtype_indication.type_mark'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.comma'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.comma'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.direction.downto'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.comma'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.comma'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.signal_declaration.semicolon'>
+--------------------------------------------------------------------------------
+22 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+23 |   signal sig9 : record_type_3(7 downto 0);
+<class 'vsg.token.signal_declaration.signal_keyword'>
+<class 'vsg.token.signal_declaration.identifier'>
+<class 'vsg.token.signal_declaration.colon'>
+<class 'vsg.token.subtype_indication.type_mark'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.downto'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.signal_declaration.semicolon'>
+--------------------------------------------------------------------------------
+24 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+25 |   signal sig9 : record_type_3(0 to 7);
+<class 'vsg.token.signal_declaration.signal_keyword'>
+<class 'vsg.token.signal_declaration.identifier'>
+<class 'vsg.token.signal_declaration.colon'>
+<class 'vsg.token.subtype_indication.type_mark'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.to'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.signal_declaration.semicolon'>
+--------------------------------------------------------------------------------
+26 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+27 |   signal sig9 : record_type_3(7 downto 0, 3 to 4);
+<class 'vsg.token.signal_declaration.signal_keyword'>
+<class 'vsg.token.signal_declaration.identifier'>
+<class 'vsg.token.signal_declaration.colon'>
+<class 'vsg.token.subtype_indication.type_mark'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.downto'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.comma'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.to'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.signal_declaration.semicolon'>
+--------------------------------------------------------------------------------
+28 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+29 |   signal sig9 : record_type_3(blah'range);
+<class 'vsg.token.signal_declaration.signal_keyword'>
+<class 'vsg.token.signal_declaration.identifier'>
+<class 'vsg.token.signal_declaration.colon'>
+<class 'vsg.token.subtype_indication.type_mark'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.tic'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.signal_declaration.semicolon'>
+--------------------------------------------------------------------------------
+30 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+31 |   signal sig9 : record_type_3(element1(7 downto 0));
+<class 'vsg.token.signal_declaration.signal_keyword'>
+<class 'vsg.token.signal_declaration.identifier'>
+<class 'vsg.token.signal_declaration.colon'>
+<class 'vsg.token.subtype_indication.type_mark'>
+<class 'vsg.token.record_constraint.open_parenthesis'>
+<class 'vsg.token.record_element_constraint.record_element_simple_name'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.downto'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.record_constraint.close_parenthesis'>
+<class 'vsg.token.signal_declaration.semicolon'>
+--------------------------------------------------------------------------------
+32 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+33 |   signal sig9 : record_type_3(blah);
+<class 'vsg.token.signal_declaration.signal_keyword'>
+<class 'vsg.token.signal_declaration.identifier'>
+<class 'vsg.token.signal_declaration.colon'>
+<class 'vsg.token.subtype_indication.type_mark'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.signal_declaration.semicolon'>
+--------------------------------------------------------------------------------
+34 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+35 |   signal sig9 : record_type_3( blah );
+<class 'vsg.token.signal_declaration.signal_keyword'>
+<class 'vsg.token.signal_declaration.identifier'>
+<class 'vsg.token.signal_declaration.colon'>
+<class 'vsg.token.subtype_indication.type_mark'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.signal_declaration.semicolon'>
+--------------------------------------------------------------------------------
+36 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+37 |   signal sig9 : record_type_3( blah --Comment
+<class 'vsg.token.signal_declaration.signal_keyword'>
+<class 'vsg.token.signal_declaration.identifier'>
+<class 'vsg.token.signal_declaration.colon'>
+<class 'vsg.token.subtype_indication.type_mark'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+38 |  );
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.signal_declaration.semicolon'>
+--------------------------------------------------------------------------------
+39 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+40 |   signal sig9 : integer range 0 to 31;
+<class 'vsg.token.signal_declaration.signal_keyword'>
+<class 'vsg.token.signal_declaration.identifier'>
+<class 'vsg.token.signal_declaration.colon'>
+<class 'vsg.token.subtype_indication.type_mark'>
+<class 'vsg.token.range_constraint.range_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.to'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.signal_declaration.semicolon'>
+--------------------------------------------------------------------------------
+41 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+42 |   signal sig9 : integer range 0 to 31 := 20;
+<class 'vsg.token.signal_declaration.signal_keyword'>
+<class 'vsg.token.signal_declaration.identifier'>
+<class 'vsg.token.signal_declaration.colon'>
+<class 'vsg.token.subtype_indication.type_mark'>
+<class 'vsg.token.range_constraint.range_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.to'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.signal_declaration.assignment_operator'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.signal_declaration.semicolon'>
+--------------------------------------------------------------------------------
+43 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+44 | begin
+<class 'vsg.token.architecture_body.begin_keyword'>
+--------------------------------------------------------------------------------
+45 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+46 | end architecture rtl;
+<class 'vsg.token.architecture_body.end_keyword'>
+<class 'vsg.token.architecture_body.end_architecture_keyword'>
+<class 'vsg.token.architecture_body.architecture_simple_name'>
+<class 'vsg.token.architecture_body.semicolon'>

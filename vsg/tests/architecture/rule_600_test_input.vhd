@@ -7,7 +7,7 @@ end entity;
 
 architecture rtl of fifo is
 
-  signal w_data : std_logic_vector(g_width - 1 dowtno 0);
+  signal w_data : std_logic_vector(g_width - 1 downto 0);
 
 begin
 

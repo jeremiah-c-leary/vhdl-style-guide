@@ -69,6 +69,7 @@ class test_rule(unittest.TestCase):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
 
+    @unittest.skip('Skipping until rule is rewritten')
     def test_rule_016_first_paren_new_line_true(self):
         oRule = signal.rule_016()
         oRule.first_paren_new_line = 'yes'
@@ -88,6 +89,7 @@ class test_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
+    @unittest.skip('Skipping until rule is rewritten')
     def test_rule_016_first_paren_new_line_false(self):
         oRule = signal.rule_016()
         oRule.first_paren_new_line = 'no'
@@ -102,6 +104,7 @@ class test_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
+    @unittest.skip('Skipping until rule is rewritten')
     def test_rule_016_last_paren_new_line_true(self):
         oRule = signal.rule_016()
         oRule.first_paren_new_line = 'ignore'
@@ -116,6 +119,7 @@ class test_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
+    @unittest.skip('Skipping until rule is rewritten')
     def test_rule_016_last_paren_new_line_false(self):
         oRule = signal.rule_016()
         oRule.first_paren_new_line = 'ignore'
@@ -130,6 +134,7 @@ class test_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
+    @unittest.skip('Skipping until rule is rewritten')
     def test_rule_016_open_paren_new_line_true(self):
         oRule = signal.rule_016()
         oRule.first_paren_new_line = 'ignore'
@@ -144,6 +149,7 @@ class test_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
+    @unittest.skip('Skipping until rule is rewritten')
     def test_rule_016_open_paren_new_line_false(self):
         oRule = signal.rule_016()
         oRule.first_paren_new_line = 'ignore'
@@ -158,6 +164,7 @@ class test_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
+    @unittest.skip('Skipping until rule is rewritten')
     def test_rule_016_close_paren_new_line_true(self):
         oRule = signal.rule_016()
         oRule.first_paren_new_line = 'ignore'
@@ -172,6 +179,7 @@ class test_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
+    @unittest.skip('Skipping until rule is rewritten')
     def test_rule_016_close_paren_new_line_false(self):
         oRule = signal.rule_016()
         oRule.first_paren_new_line = 'ignore'
@@ -186,6 +194,7 @@ class test_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
+    @unittest.skip('Skipping until rule is rewritten')
     def test_rule_016_new_line_after_comma_true(self):
         oRule = signal.rule_016()
         oRule.first_paren_new_line = 'ignore'
@@ -201,6 +210,7 @@ class test_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
+    @unittest.skip('Skipping until rule is rewritten')
     def test_rule_016_new_line_after_comma_false(self):
         oRule = signal.rule_016()
         oRule.first_paren_new_line = 'ignore'
@@ -235,6 +245,7 @@ class test_rule(unittest.TestCase):
 #        oRule.analyze(self.oFile)
 #        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
+    @unittest.skip('Skipping until rule is rewritten')
     def test_rule_016_last_paren_new_line_true_move_last_comment_true(self):
         oRule = signal.rule_016()
         oRule.first_paren_new_line = 'ignore'
@@ -250,6 +261,7 @@ class test_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
+    @unittest.skip('Skipping until rule is rewritten')
     def test_rule_016_last_paren_new_line_true_move_last_comment_false(self):
         oRule = signal.rule_016()
         oRule.first_paren_new_line = 'ignore'
@@ -265,6 +277,7 @@ class test_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
+    @unittest.skip('Skipping until rule is rewritten')
     def test_rule_016_last_paren_new_line_false_move_last_comment_true(self):
         oRule = signal.rule_016()
         oRule.first_paren_new_line = 'ignore'
@@ -280,6 +293,7 @@ class test_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
+    @unittest.skip('Skipping until rule is rewritten')
     def test_fix_rule_016_first_paren_new_line_true(self):
         oRule = signal.rule_016()
         oRule.first_paren_new_line = 'yes'
@@ -298,6 +312,7 @@ class test_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
 
+    @unittest.skip('Skipping until rule is rewritten')
     def test_fix_rule_016_first_paren_new_line_false(self):
         oRule = signal.rule_016()
         oRule.first_paren_new_line = 'no'
@@ -316,6 +331,7 @@ class test_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
 
+    @unittest.skip('Skipping until rule is rewritten')
     def test_fix_rule_016_last_paren_new_line_true(self):
         oRule = signal.rule_016()
         oRule.first_paren_new_line = 'ignore'
@@ -334,6 +350,7 @@ class test_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
 
+    @unittest.skip('Skipping until rule is rewritten')
     def test_fix_rule_016_last_paren_new_line_true_move_last_comment_false(self):
         oRule = signal.rule_016()
         oRule.first_paren_new_line = 'ignore'
@@ -353,6 +370,7 @@ class test_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
 
+    @unittest.skip('Skipping until rule is rewritten')
     def test_fix_rule_016_last_paren_new_line_true_move_last_comment_true(self):
         oRule = signal.rule_016()
         oRule.first_paren_new_line = 'ignore'
@@ -372,6 +390,7 @@ class test_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
 
+    @unittest.skip('Skipping until rule is rewritten')
     def test_fix_rule_016_last_paren_new_line_false(self):
         oRule = signal.rule_016()
         oRule.first_paren_new_line = 'ignore'
@@ -390,6 +409,7 @@ class test_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
 
+    @unittest.skip('Skipping until rule is rewritten')
     def test_fix_rule_016_last_paren_new_line_false_move_last_comment_true(self):
         oRule = signal.rule_016()
         oRule.first_paren_new_line = 'ignore'
@@ -409,6 +429,7 @@ class test_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
 
+    @unittest.skip('Skipping until rule is rewritten')
     def test_fix_rule_016_open_paren_new_line_true(self):
         oRule = signal.rule_016()
         oRule.first_paren_new_line = 'ignore'
@@ -427,6 +448,7 @@ class test_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
 
+    @unittest.skip('Skipping until rule is rewritten')
     def test_fix_rule_016_open_paren_new_line_false(self):
         oRule = signal.rule_016()
         oRule.first_paren_new_line = 'ignore'
@@ -445,6 +467,7 @@ class test_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
 
+    @unittest.skip('Skipping until rule is rewritten')
     def test_fix_rule_016_close_paren_new_line_true(self):
         oRule = signal.rule_016()
         oRule.first_paren_new_line = 'ignore'
@@ -463,6 +486,7 @@ class test_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
 
+    @unittest.skip('Skipping until rule is rewritten')
     def test_fix_rule_016_close_paren_new_line_false(self):
         oRule = signal.rule_016()
         oRule.first_paren_new_line = 'ignore'
@@ -481,6 +505,7 @@ class test_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
 
+    @unittest.skip('Skipping until rule is rewritten')
     def test_fix_rule_016_new_line_after_comma_true(self):
         oRule = signal.rule_016()
         oRule.first_paren_new_line = 'ignore'
@@ -499,6 +524,7 @@ class test_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
 
+    @unittest.skip('Skipping until rule is rewritten')
     def test_fix_rule_016_new_line_after_comma_false(self):
         oRule = signal.rule_016()
         oRule.first_paren_new_line = 'ignore'
@@ -517,6 +543,7 @@ class test_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
 
+    @unittest.skip('Skipping until rule is rewritten')
     def test_fix_rule_016_all_true(self):
 #        self.maxDiff = None
         oRule = signal.rule_016()
@@ -538,6 +565,7 @@ class test_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
 
+    @unittest.skip('Skipping until rule is rewritten')
     def test_fix_rule_016_all_false(self):
 #        self.maxDiff = None
         oRule = signal.rule_016()
