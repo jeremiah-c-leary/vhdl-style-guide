@@ -17,6 +17,8 @@ def detect(iToken, lObjects):
         iTemp = utils.find_next_token(iToken, lObjects) + 1
         if utils.is_next_token('(', iTemp, lObjects):
             return iToken
+        if utils.is_next_token(')', iTemp, lObjects):
+            return iToken
         if utils.is_next_token(';', iTemp, lObjects):
             return iToken
         if utils.is_next_token(':=', iTemp, lObjects):

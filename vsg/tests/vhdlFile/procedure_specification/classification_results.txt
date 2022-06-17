@@ -308,11 +308,11 @@
 <class 'vsg.token.interface_variable_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.token.ieee.std_logic_1164.types.std_logic_vector'>
-<class 'vsg.parser.open_parenthesis'>
-<class 'vsg.token.interface_variable_declaration.subtype_indication'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
 <class 'vsg.token.direction.downto'>
-<class 'vsg.token.interface_variable_declaration.subtype_indication'>
-<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
 <class 'vsg.token.procedure_specification.close_parenthesis'>
 <class 'vsg.token.subprogram_declaration.semicolon'>
 --------------------------------------------------------------------------------
