@@ -341,6 +341,9 @@ def post_token_assignments(lTokens):
             if sValue.lower() == 'std_logic':
                 lTokens[iToken] = types.std_logic(sValue)
 
+            if sValue.lower() == 'integer':
+                lTokens[iToken] = types.integer(sValue)
+
         elif isinstance(oToken, parser.todo):
             sValue = oToken.get_value()
             if sValue == '&':

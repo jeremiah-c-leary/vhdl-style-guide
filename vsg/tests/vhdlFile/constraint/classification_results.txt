@@ -298,7 +298,7 @@
 <class 'vsg.token.signal_declaration.signal_keyword'>
 <class 'vsg.token.signal_declaration.identifier'>
 <class 'vsg.token.signal_declaration.colon'>
-<class 'vsg.token.subtype_indication.type_mark'>
+<class 'vsg.token.ieee.std_logic_1164.types.integer'>
 <class 'vsg.token.range_constraint.range_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.direction.to'>
@@ -312,7 +312,7 @@
 <class 'vsg.token.signal_declaration.signal_keyword'>
 <class 'vsg.token.signal_declaration.identifier'>
 <class 'vsg.token.signal_declaration.colon'>
-<class 'vsg.token.subtype_indication.type_mark'>
+<class 'vsg.token.ieee.std_logic_1164.types.integer'>
 <class 'vsg.token.range_constraint.range_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.direction.to'>
