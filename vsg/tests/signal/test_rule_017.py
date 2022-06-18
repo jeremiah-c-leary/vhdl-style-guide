@@ -355,7 +355,7 @@ class test_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'signal')
         self.assertEqual(oRule.identifier, '017')
 
-        lExpected = [4, 5, 5, 7, 8, 11, 11, 11, 14, 17, 19, 21, 23]
+        lExpected = [4, 5, 5, 7, 9, 11, 11, 11, 14, 16, 19, 21, 23]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))

@@ -53,6 +53,8 @@ class multiline_constraint_structure(structure.Rule):
             _fix_add_new_line(oViolation)
         elif dAction['action'] == 'remove_new_line':
             _fix_remove_new_line(oViolation)
+        elif dAction['action'] == 'add_new_line_and_remove_carraige_returns':
+            _fix_add_new_line_and_remove_carraige_returns(oViolation)
 
 
 def _fix_add_new_line(oViolation):
@@ -60,6 +62,17 @@ def _fix_add_new_line(oViolation):
     rules_utils.remove_leading_whitespace_tokens(lTokens)
     rules_utils.insert_whitespace(lTokens, 0)
     rules_utils.insert_carriage_return(lTokens, 0)
+    oViolation.set_tokens(lTokens)
+
+
+def _fix_add_new_line_and_remove_carraige_returns(oViolation):
+    lTokens = oViolation.get_tokens()
+    lTokens = utils.remove_carriage_returns_from_token_list(lTokens)
+    rules_utils.remove_leading_whitespace_tokens(lTokens)
+    rules_utils.insert_whitespace(lTokens, 0)
+    rules_utils.insert_carriage_return(lTokens, 0)
+    rules_utils.change_all_whitespace_to_single_character(lTokens)
+    utils.fix_blank_lines(lTokens)
     oViolation.set_tokens(lTokens)
 
 
@@ -78,6 +91,13 @@ def _check_array_constraint(self, oToi):
 
     if self.array_constraint == 'ignore':
         return
+    elif self.array_constraint == 'all_in_one_line':
+        _check_array_constraint_all_in_one_line(self, oToi)
+    elif self.array_constraint == 'one_line_per_dimension':
+        _check_array_constraint_one_line_per_dimension(self, oToi) 
+
+
+def _check_array_constraint_all_in_one_line(self, oToi):
 
     iLine, lTokens = rules_utils.get_toi_parameters(oToi)
     oStartToken = token.index_constraint.open_parenthesis
@@ -101,6 +121,28 @@ def _check_array_constraint(self, oToi):
                 self.add_violation(oViolation)
 
 
+def _check_array_constraint_one_line_per_dimension(self, oToi):
+
+    iLine, lTokens = rules_utils.get_toi_parameters(oToi)
+    oStartToken = token.index_constraint.open_parenthesis
+    oEndToken = token.index_constraint.close_parenthesis
+ 
+    for iToken, oToken in enumerate(lTokens):
+        iLine = utils.increment_line_number(iLine, oToken)
+        if isinstance(oToken, oStartToken):
+            iStart = iToken
+            iStartLine = iLine
+        if isinstance(oToken, oEndToken):
+            if not _token_at_beginning_of_line(iStart, lTokens):
+                sSolution = 'Move parenthesis to next line.'
+                if isinstance(lTokens[iStart - 1], parser.whitespace):
+                   iStart = iStart - 1
+                oViolation = _create_violation(oToi, iStartLine, iStart, iToken, 'add_new_line_and_remove_carraige_returns', sSolution)
+                self.add_violation(oViolation)
+            elif rules_utils.number_of_carriage_returns(lTokens[iStart:iToken]) > 0:
+                sSolution = 'Move parenthesis to next line.'
+                oViolation = _create_violation(oToi, iStartLine, iStart, iToken, 'remove_new_line', sSolution)
+                self.add_violation(oViolation)
 
 
 def _check_record_constraint_open_paren(self, oToi):
