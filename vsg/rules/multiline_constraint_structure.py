@@ -43,6 +43,7 @@ class multiline_constraint_structure(structure.Rule):
             _check_record_constraint_close_paren(self, oToi)
             _check_record_constraint_comma(self, oToi)
             _check_record_constraint_element(self, oToi)
+            _check_array_constraint(self, oToi)
 
         self._sort_violations()
 
@@ -64,11 +65,37 @@ def _fix_add_new_line(oViolation):
 
 def _fix_remove_new_line(oViolation):
     lTokens = oViolation.get_tokens()
-    lTokens.insert(0, lTokens.pop())
+    lTokens = utils.remove_carriage_returns_from_token_list(lTokens)
     utils.remove_consecutive_whitespace_tokens(lTokens)
+    rules_utils.remove_leading_whitespace_tokens(lTokens)
+    rules_utils.change_all_whitespace_to_single_character(lTokens)
     lNewTokens = utils.remove_trailing_whitespace(lTokens)
     utils.fix_blank_lines(lNewTokens)
     oViolation.set_tokens(lNewTokens)
+
+
+def _check_array_constraint(self, oToi):
+
+    if self.array_constraint == 'ignore':
+        return
+
+    iLine, lTokens = rules_utils.get_toi_parameters(oToi)
+    oStartToken = token.index_constraint.open_parenthesis
+    oEndToken = token.index_constraint.close_parenthesis
+ 
+    for iToken, oToken in enumerate(lTokens):
+        iLine = utils.increment_line_number(iLine, oToken)
+        if isinstance(oToken, oStartToken):
+            iStart = iToken
+            iStartLine = iLine
+        if isinstance(oToken, oEndToken):
+            if _token_at_beginning_of_line(iStart, lTokens):
+                sSolution = 'Move parenthesis to next line.'
+                if isinstance(lTokens[iStart - 1], parser.whitespace):
+                   iStart = iStart - 2
+                oViolation = _create_violation(oToi, iStartLine, iStart, iToken, 'remove_new_line', sSolution)
+                self.add_violation(oViolation)
+
 
 
 def _check_record_constraint_open_paren(self, oToi):

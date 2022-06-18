@@ -279,6 +279,12 @@ def remove_leading_whitespace_tokens(lTokens):
            lTokens.pop(0)
 
 
+def change_all_whitespace_to_single_character(lTokens):
+    for oToken in lTokens:
+       if isinstance(oToken, parser.whitespace):
+           oToken.set_value(' ')
+
+
 #def extract_slice_indexes(lTokens):
 #    lReturn = []
 #    iParen = 0
