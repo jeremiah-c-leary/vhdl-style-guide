@@ -40,6 +40,7 @@ class multiline_constraint_structure(structure.Rule):
         for oToi in lToi:
 
             _check_record_constraint_open_paren(self, oToi)
+            _check_record_constraint_close_paren(self, oToi)
 
         self._sort_violations()
 
@@ -69,12 +70,21 @@ def _fix_remove_new_line(oViolation):
 
 def _check_record_constraint_open_paren(self, oToi):
 
-    if self.record_constraint_open_paren == 'ignore':
+    _check_add_new_line_and_remove_new_line(self, oToi, self.record_constraint_open_paren, token.record_constraint.open_parenthesis)
+
+
+def _check_record_constraint_close_paren(self, oToi):
+
+    _check_add_new_line_and_remove_new_line(self, oToi, self.record_constraint_close_paren, token.record_constraint.close_parenthesis)
+
+
+def _check_add_new_line_and_remove_new_line(self, oToi, sOption, oTokenType):
+    if sOption == 'ignore':
         return
-    elif self.record_constraint_open_paren == 'add_new_line':
-        _check_add_new_line(self, oToi, token.record_constraint.open_parenthesis)
-    elif self.record_constraint_open_paren == 'remove_new_line':
-        _check_remove_new_line(self, oToi, token.record_constraint.open_parenthesis)
+    elif sOption == 'add_new_line':
+        _check_add_new_line(self, oToi, oTokenType)
+    elif sOption == 'remove_new_line':
+        _check_remove_new_line(self, oToi, oTokenType)
 
 
 def _check_add_new_line(self, oToi, oTokenType):
