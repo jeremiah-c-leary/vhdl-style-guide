@@ -25,6 +25,8 @@ def detect(iToken, lObjects):
             return iToken
         if utils.is_next_token('range', iTemp, lObjects):
             return iToken
+        if utils.is_next_token('bus', iTemp, lObjects):
+            return iToken
         return classify(iToken, lObjects)
     return iToken
 

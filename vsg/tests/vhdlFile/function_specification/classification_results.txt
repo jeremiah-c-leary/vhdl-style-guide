@@ -128,7 +128,7 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.inout_keyword'>
-<class 'vsg.token.interface_signal_declaration.subtype_indication'>
+<class 'vsg.token.subtype_indication.type_mark'>
 <class 'vsg.token.function_specification.close_parenthesis'>
 <class 'vsg.token.function_specification.return_keyword'>
 <class 'vsg.token.type_mark.name'>
@@ -146,11 +146,11 @@
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.token.ieee.std_logic_1164.types.signed'>
-<class 'vsg.parser.open_parenthesis'>
-<class 'vsg.token.interface_signal_declaration.subtype_indication'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
 <class 'vsg.token.direction.downto'>
-<class 'vsg.token.interface_signal_declaration.subtype_indication'>
-<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 21 |                     signal b: in signed(3 downto 0);
@@ -159,11 +159,11 @@
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.token.ieee.std_logic_1164.types.signed'>
-<class 'vsg.parser.open_parenthesis'>
-<class 'vsg.token.interface_signal_declaration.subtype_indication'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
 <class 'vsg.token.direction.downto'>
-<class 'vsg.token.interface_signal_declaration.subtype_indication'>
-<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 22 |                     signal sum : out signed (3 downto 0)) return std_logic_vector;
@@ -172,11 +172,11 @@
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.out_keyword'>
 <class 'vsg.token.ieee.std_logic_1164.types.signed'>
-<class 'vsg.parser.open_parenthesis'>
-<class 'vsg.token.interface_signal_declaration.subtype_indication'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
 <class 'vsg.token.direction.downto'>
-<class 'vsg.token.interface_signal_declaration.subtype_indication'>
-<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
 <class 'vsg.token.function_specification.close_parenthesis'>
 <class 'vsg.token.function_specification.return_keyword'>
 <class 'vsg.token.type_mark.name'>
@@ -197,7 +197,7 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.inout_keyword'>
-<class 'vsg.token.interface_signal_declaration.subtype_indication'>
+<class 'vsg.token.subtype_indication.type_mark'>
 <class 'vsg.token.function_specification.close_parenthesis'>
 <class 'vsg.token.function_specification.return_keyword'>
 <class 'vsg.token.type_mark.name'>
@@ -244,7 +244,7 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.inout_keyword'>
-<class 'vsg.token.interface_signal_declaration.subtype_indication'>
+<class 'vsg.token.subtype_indication.type_mark'>
 <class 'vsg.token.function_specification.close_parenthesis'>
 <class 'vsg.token.function_specification.return_keyword'>
 <class 'vsg.token.type_mark.name'>
@@ -311,7 +311,7 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.inout_keyword'>
-<class 'vsg.token.interface_signal_declaration.subtype_indication'>
+<class 'vsg.token.subtype_indication.type_mark'>
 <class 'vsg.token.function_specification.close_parenthesis'>
 <class 'vsg.token.function_specification.return_keyword'>
 <class 'vsg.token.type_mark.name'>

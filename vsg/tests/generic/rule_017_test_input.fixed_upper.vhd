@@ -26,7 +26,7 @@ entity FIFO is
     G_GEN3 : STD_LOGIC_VECTOR(3 downto 0);
     G_GEN4 : SIGNED(15 downto 0);
     G_GEN5 : UNSIGNED(7 downto 0);
-    G_GEN6 : STD_ULOGIC
+    G_GEN6 : STD_ULOGIC;
     G_GEN7 : T_USER1
   );
 

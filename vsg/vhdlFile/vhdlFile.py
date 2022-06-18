@@ -10,6 +10,7 @@ from vsg.token import logical_operator
 from vsg.token import miscellaneous_operator
 from vsg.token import multiplying_operator
 from vsg.token import relational_operator
+from vsg.token import resolution_indication
 from vsg.token import sign
 from vsg.token import subtype_indication
 from vsg.token import unary_logical_operator
@@ -326,7 +327,7 @@ def post_token_assignments(lTokens):
     lParenId = []
     for iToken, oToken in enumerate(lTokens):
         oToken.set_code_tags(oCodeTags.get_tags())
-        if isinstance(oToken, subtype_indication.type_mark):
+        if isinstance(oToken, subtype_indication.type_mark) or isinstance(oToken, resolution_indication.resolution_function_name):
             sValue = oToken.get_value()
             ### IEEE values
             if sValue.lower() == 'std_logic_vector':
@@ -343,6 +344,9 @@ def post_token_assignments(lTokens):
 
             if sValue.lower() == 'integer':
                 lTokens[iToken] = types.integer(sValue)
+
+            if sValue.lower() == 'signed':
+                lTokens[iToken] = types.signed(sValue)
 
         elif isinstance(oToken, parser.todo):
             sValue = oToken.get_value()
