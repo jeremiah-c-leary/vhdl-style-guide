@@ -14,8 +14,7 @@ architecture rtl of fifo is
   ,
       elementF(7 downto 0)
     ),
-    element6(4 downto
-  0),
+    element6(4 downto 0),
     element7(7 downto 0));
 
 begin

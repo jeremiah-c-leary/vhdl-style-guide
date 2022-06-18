@@ -95,6 +95,11 @@ def _check_array_constraint(self, oToi):
                    iStart = iStart - 2
                 oViolation = _create_violation(oToi, iStartLine, iStart, iToken, 'remove_new_line', sSolution)
                 self.add_violation(oViolation)
+            elif rules_utils.number_of_carriage_returns(lTokens[iStart:iToken]) > 0:
+                sSolution = 'Move parenthesis to next line.'
+                oViolation = _create_violation(oToi, iStartLine, iStart, iToken, 'remove_new_line', sSolution)
+                self.add_violation(oViolation)
+
 
 
 
