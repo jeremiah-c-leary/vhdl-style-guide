@@ -8,9 +8,7 @@ architecture rtl of fifo is
 ,
       elementB(3 downto 0)
     ),
-    element3(3 downto 0)(
-      elementC(4 downto 1),
-      elementD(1 downto 0)
+    element3(3 downto 0)(elementC(4 downto 1), elementD(1 downto 0)
  ),
     element5(
       elementE

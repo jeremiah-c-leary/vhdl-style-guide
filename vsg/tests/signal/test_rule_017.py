@@ -30,6 +30,14 @@ lExpected_record_constraint_comma__remove_new_line = []
 lExpected_record_constraint_comma__remove_new_line.append('')
 utils.read_file(os.path.join(sTestDir, 'rule_017_test_input.fixed_record_constraint_comma__remove_new_line.vhd'), lExpected_record_constraint_comma__remove_new_line)
 
+lExpected_record_constraint_element__add_new_line = []
+lExpected_record_constraint_element__add_new_line.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_017_test_input.fixed_record_constraint_element__add_new_line.vhd'), lExpected_record_constraint_element__add_new_line)
+
+lExpected_record_constraint_element__remove_new_line = []
+lExpected_record_constraint_element__remove_new_line.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_017_test_input.fixed_record_constraint_element__remove_new_line.vhd'), lExpected_record_constraint_element__remove_new_line)
+
 
 class test_rule(unittest.TestCase):
 
@@ -51,7 +59,7 @@ class test_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'signal')
         self.assertEqual(oRule.identifier, '017')
 
-        lExpected = [3, 11, 14]
+        lExpected = [3, 11, 12]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -123,7 +131,7 @@ class test_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'signal')
         self.assertEqual(oRule.identifier, '017')
 
-        lExpected = [13, 25]
+        lExpected = [11, 23]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -159,7 +167,7 @@ class test_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'signal')
         self.assertEqual(oRule.identifier, '017')
 
-        lExpected = [10, 22]
+        lExpected = [10, 20]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -195,7 +203,7 @@ class test_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'signal')
         self.assertEqual(oRule.identifier, '017')
 
-        lExpected = [8, 20]
+        lExpected = [8, 18]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -213,6 +221,78 @@ class test_rule(unittest.TestCase):
         lActual = self.oFile.get_lines()
 
         self.assertEqual(lExpected_record_constraint_comma__remove_new_line , lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+
+    def test_rule_017_record_constraint_element__add_new_line(self):
+        oRule = signal.rule_017()
+        oRule.record_constraint_open_paren = 'ignore'
+        oRule.record_constraint_close_paren = 'ignore'
+        oRule.record_constraint_comma = 'ignore'
+        oRule.record_constraint_element = 'add_new_line'
+        oRule.array_constraint = 'ignore'
+
+        self.assertEqual(oRule.groups, ['structure'])
+
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'signal')
+        self.assertEqual(oRule.identifier, '017')
+
+        lExpected = [11, 11]
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+
+    def test_fix_rule_017_record_constraint_element__add_new_line(self):
+        oRule = signal.rule_017()
+        oRule.record_constraint_open_paren = 'ignore'
+        oRule.record_constraint_close_paren = 'ignore'
+        oRule.record_constraint_comma = 'ignore'
+        oRule.record_constraint_element = 'add_new_line'
+        oRule.array_constraint = 'ignore'
+
+        oRule.fix(self.oFile)
+
+        lActual = self.oFile.get_lines()
+
+        self.assertEqual(lExpected_record_constraint_element__add_new_line , lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+
+    def test_rule_017_record_constraint_element__remove_new_line(self):
+        oRule = signal.rule_017()
+        oRule.record_constraint_open_paren = 'ignore'
+        oRule.record_constraint_close_paren = 'ignore'
+        oRule.record_constraint_comma = 'ignore'
+        oRule.record_constraint_element = 'remove_new_line'
+        oRule.array_constraint = 'ignore'
+
+        self.assertEqual(oRule.groups, ['structure'])
+
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'signal')
+        self.assertEqual(oRule.identifier, '017')
+
+        lExpected = [4, 5, 7, 9, 11, 12, 13, 19, 21, 23]
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+
+    def test_fix_rule_017_record_constraint_element__remove_new_line(self):
+        oRule = signal.rule_017()
+        oRule.record_constraint_open_paren = 'ignore'
+        oRule.record_constraint_close_paren = 'ignore'
+        oRule.record_constraint_comma = 'ignore'
+        oRule.record_constraint_element = 'remove_new_line'
+        oRule.array_constraint = 'ignore'
+
+        oRule.fix(self.oFile)
+
+        lActual = self.oFile.get_lines()
+
+        self.assertEqual(lExpected_record_constraint_element__remove_new_line , lActual)
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])

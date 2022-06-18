@@ -273,6 +273,12 @@ def extract_identifiers_with_mode(lToi, oTokenType):
     return lReturn
 
 
+def remove_leading_whitespace_tokens(lTokens):
+    if len(lTokens) > 1:
+       if isinstance(lTokens[0], parser.whitespace):
+           lTokens.pop(0)
+
+
 #def extract_slice_indexes(lTokens):
 #    lReturn = []
 #    iParen = 0

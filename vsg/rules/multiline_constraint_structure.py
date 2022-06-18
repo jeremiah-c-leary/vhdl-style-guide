@@ -42,6 +42,7 @@ class multiline_constraint_structure(structure.Rule):
             _check_record_constraint_open_paren(self, oToi)
             _check_record_constraint_close_paren(self, oToi)
             _check_record_constraint_comma(self, oToi)
+            _check_record_constraint_element(self, oToi)
 
         self._sort_violations()
 
@@ -55,6 +56,7 @@ class multiline_constraint_structure(structure.Rule):
 
 def _fix_add_new_line(oViolation):
     lTokens = oViolation.get_tokens()
+    rules_utils.remove_leading_whitespace_tokens(lTokens)
     rules_utils.insert_whitespace(lTokens, 0)
     rules_utils.insert_carriage_return(lTokens, 0)
     oViolation.set_tokens(lTokens)
@@ -84,6 +86,11 @@ def _check_record_constraint_comma(self, oToi):
     _check_add_new_line_and_remove_new_line(self, oToi, self.record_constraint_comma, token.record_constraint.comma)
 
 
+def _check_record_constraint_element(self, oToi):
+
+    _check_add_new_line_and_remove_new_line(self, oToi, self.record_constraint_element, token.record_element_constraint.record_element_simple_name)
+
+
 def _check_add_new_line_and_remove_new_line(self, oToi, sOption, oTokenType):
     if sOption == 'ignore':
         return
@@ -102,7 +109,10 @@ def _check_add_new_line(self, oToi, oTokenType):
         if isinstance(oToken, oTokenType):
             if not _token_at_beginning_of_line(iToken, lTokens):
                 sSolution = 'Move parenthesis to next line.'
-                oViolation = _create_violation(oToi, iLine, iToken, iToken, 'add_new_line', sSolution)
+                iStart = iToken
+                if isinstance(lTokens[iToken -1], parser.whitespace):
+                   iStart = iToken - 1
+                oViolation = _create_violation(oToi, iLine, iStart, iToken, 'add_new_line', sSolution)
                 self.add_violation(oViolation)
 
 
@@ -121,7 +131,9 @@ def _check_remove_new_line(self, oToi, oTokenType):
 
 
 def _token_at_beginning_of_line(iToken, lTokens):
-    if isinstance(lTokens[iToken - 1], parser.carriage_return) or isinstance(lTokens[iToken - 2], parser.carriage_return):
+    if isinstance(lTokens[iToken - 1], parser.carriage_return):
+        return True
+    if isinstance(lTokens[iToken - 1], parser.whitespace) and isinstance(lTokens[iToken - 2], parser.carriage_return):
         return True
     return False
 
