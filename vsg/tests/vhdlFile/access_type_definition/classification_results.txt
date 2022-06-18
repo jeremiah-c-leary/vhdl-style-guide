@@ -29,14 +29,12 @@
 7 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-8 |     type type1 is access subtype_indication more other;
+8 |     type type1 is access subtype_indication;
 <class 'vsg.token.full_type_declaration.type_keyword'>
 <class 'vsg.token.full_type_declaration.identifier'>
 <class 'vsg.token.full_type_declaration.is_keyword'>
 <class 'vsg.token.access_type_definition.access_keyword'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.subtype_indication.type_mark'>
 <class 'vsg.token.full_type_declaration.semicolon'>
 --------------------------------------------------------------------------------
 9 |
