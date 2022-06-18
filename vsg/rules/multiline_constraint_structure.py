@@ -61,17 +61,26 @@ def _check_record_constraint_open_paren(self, oToi):
     if self.record_constraint_open_paren == 'ignore':
         return
 
+    _check_add_new_line(self, oToi, token.record_constraint.open_parenthesis)
+
+
+def _check_add_new_line(self, oToi, oTokenType):
+
     iLine, lTokens = rules_utils.get_toi_parameters(oToi)
 
     for iToken, oToken in enumerate(lTokens):
         iLine = utils.increment_line_number(iLine, oToken)
-        if isinstance(oToken, token.record_constraint.open_parenthesis):
-            if isinstance(lTokens[iToken - 1], parser.carriage_return) or isinstance(lTokens[iToken - 2], parser.carriage_return):
-                continue
-            else:
+        if isinstance(oToken, oTokenType):
+            if not _token_at_beginning_of_line(iToken, lTokens):
                 sSolution = 'Move parenthesis to next line.'
                 oViolation = _create_violation(oToi, iLine, iToken, iToken, 'add_new_line', sSolution)
                 self.add_violation(oViolation)
+
+
+def _token_at_beginning_of_line(iToken, lTokens):
+    if isinstance(lTokens[iToken - 1], parser.carriage_return) or isinstance(lTokens[iToken - 2], parser.carriage_return):
+        return True
+    return False
 
 
 def _create_violation(oToi, iLine, iStartIndex, iEndIndex, sAction, sSolution):
