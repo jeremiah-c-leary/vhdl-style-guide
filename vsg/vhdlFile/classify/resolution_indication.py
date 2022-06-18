@@ -1,4 +1,6 @@
 
+from vsg import parser
+
 from vsg.token import resolution_indication as token
 
 from vsg.vhdlFile import utils
@@ -26,6 +28,8 @@ def detect(iToken, lObjects):
         if utils.is_next_token('range', iTemp, lObjects):
             return iToken
         if utils.is_next_token('bus', iTemp, lObjects):
+            return iToken
+        if utils.is_next_token('is', iTemp, lObjects):
             return iToken
         return classify(iToken, lObjects)
     return iToken
