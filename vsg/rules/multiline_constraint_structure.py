@@ -51,7 +51,6 @@ class multiline_constraint_structure(structure.Rule):
 
 def _fix_add_new_line(oViolation):
     lTokens = oViolation.get_tokens()
-    dAction = oViolation.get_action()
     rules_utils.insert_whitespace(lTokens, 0)
     rules_utils.insert_carriage_return(lTokens, 0)
     oViolation.set_tokens(lTokens)
@@ -71,18 +70,17 @@ def _check_record_constraint_open_paren(self, oToi):
                 continue
             else:
                 sSolution = 'Move parenthesis to next line.'
-                oViolation = _create_violation(oToi, iLine, iToken, iToken, 'record_constraint_open_paren', 'add_new_line', sSolution)
+                oViolation = _create_violation(oToi, iLine, iToken, iToken, 'add_new_line', sSolution)
                 self.add_violation(oViolation)
 
 
-def _create_violation(oToi, iLine, iStartIndex, iEndIndex, sType, sAction, sSolution):
-    dAction = _create_action_dictionary(sType, sAction)
+def _create_violation(oToi, iLine, iStartIndex, iEndIndex, sAction, sSolution):
+    dAction = _create_action_dictionary(sAction)
     oViolation = violation.New(iLine, oToi.extract_tokens(iStartIndex, iEndIndex), sSolution)
     oViolation.set_action(dAction)
     return oViolation
 
-def _create_action_dictionary(sType, sAction):
+def _create_action_dictionary(sAction):
     dReturn = {}
-    dReturn['type'] = sType
     dReturn['action'] = sAction
     return dReturn
