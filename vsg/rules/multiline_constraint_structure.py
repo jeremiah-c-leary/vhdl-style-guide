@@ -41,6 +41,7 @@ class multiline_constraint_structure(structure.Rule):
 
             _check_record_constraint_open_paren(self, oToi)
             _check_record_constraint_close_paren(self, oToi)
+            _check_record_constraint_comma(self, oToi)
 
         self._sort_violations()
 
@@ -76,6 +77,11 @@ def _check_record_constraint_open_paren(self, oToi):
 def _check_record_constraint_close_paren(self, oToi):
 
     _check_add_new_line_and_remove_new_line(self, oToi, self.record_constraint_close_paren, token.record_constraint.close_parenthesis)
+
+
+def _check_record_constraint_comma(self, oToi):
+
+    _check_add_new_line_and_remove_new_line(self, oToi, self.record_constraint_comma, token.record_constraint.comma)
 
 
 def _check_add_new_line_and_remove_new_line(self, oToi, sOption, oTokenType):

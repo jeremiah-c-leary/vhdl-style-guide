@@ -4,9 +4,9 @@ architecture rtl of fifo is
     element1(7 downto 0),
     element2(4 downto 0)(7 downto 0)
     (
-      elementA(7 downto 0)
-,
-      elementB(3 downto 0)),
+      elementA(7 downto 0),
+      elementB(3 downto 0)
+    ),
     element3(3 downto 0)(
       elementC(4 downto 1),
       elementD(1 downto 0)),
@@ -15,9 +15,9 @@ architecture rtl of fifo is
         (3 downto
             0)
         (6
- downto 0)
-  ,
-      elementF(7 downto 0)),
+ downto 0),
+      elementF(7 downto 0)
+    ),
     element6(4 downto
   0),
     element7(7 downto 0));
