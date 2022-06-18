@@ -47,6 +47,8 @@ class multiline_constraint_structure(structure.Rule):
         dAction = oViolation.get_action()
         if dAction['action'] == 'add_new_line':
             _fix_add_new_line(oViolation)
+        elif dAction['action'] == 'remove_new_line':
+            _fix_remove_new_line(oViolation)
 
 
 def _fix_add_new_line(oViolation):
@@ -56,12 +58,23 @@ def _fix_add_new_line(oViolation):
     oViolation.set_tokens(lTokens)
 
 
+def _fix_remove_new_line(oViolation):
+    lTokens = oViolation.get_tokens()
+    lTokens.insert(0, lTokens.pop())
+    utils.remove_consecutive_whitespace_tokens(lTokens)
+    lNewTokens = utils.remove_trailing_whitespace(lTokens)
+    utils.fix_blank_lines(lNewTokens)
+    oViolation.set_tokens(lNewTokens)
+
+
 def _check_record_constraint_open_paren(self, oToi):
 
     if self.record_constraint_open_paren == 'ignore':
         return
-
-    _check_add_new_line(self, oToi, token.record_constraint.open_parenthesis)
+    elif self.record_constraint_open_paren == 'add_new_line':
+        _check_add_new_line(self, oToi, token.record_constraint.open_parenthesis)
+    elif self.record_constraint_open_paren == 'remove_new_line':
+        _check_remove_new_line(self, oToi, token.record_constraint.open_parenthesis)
 
 
 def _check_add_new_line(self, oToi, oTokenType):
@@ -74,6 +87,20 @@ def _check_add_new_line(self, oToi, oTokenType):
             if not _token_at_beginning_of_line(iToken, lTokens):
                 sSolution = 'Move parenthesis to next line.'
                 oViolation = _create_violation(oToi, iLine, iToken, iToken, 'add_new_line', sSolution)
+                self.add_violation(oViolation)
+
+
+def _check_remove_new_line(self, oToi, oTokenType):
+
+    iLine, lTokens = rules_utils.get_toi_parameters(oToi)
+
+    for iToken, oToken in enumerate(lTokens):
+        iLine = utils.increment_line_number(iLine, oToken)
+        if isinstance(oToken, oTokenType):
+            if _token_at_beginning_of_line(iToken, lTokens):
+                sSolution = 'Move parenthesis to previous line.'
+                iStart = utils.find_previous_non_whitespace_token(iToken - 1, lTokens) + 1
+                oViolation = _create_violation(oToi, iLine, iStart, iToken, 'remove_new_line', sSolution)
                 self.add_violation(oViolation)
 
 
