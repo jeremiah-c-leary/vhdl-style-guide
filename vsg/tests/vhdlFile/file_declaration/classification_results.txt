@@ -15,7 +15,7 @@
 <class 'vsg.token.file_declaration.file_keyword'>
 <class 'vsg.token.file_declaration.identifier'>
 <class 'vsg.token.file_declaration.colon'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.subtype_indication.type_mark'>
 <class 'vsg.token.file_declaration.semicolon'>
 --------------------------------------------------------------------------------
 4 |
@@ -25,7 +25,7 @@
 <class 'vsg.token.file_declaration.file_keyword'>
 <class 'vsg.token.file_declaration.identifier'>
 <class 'vsg.token.file_declaration.colon'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.subtype_indication.type_mark'>
 <class 'vsg.token.file_open_information.is_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.file_declaration.semicolon'>
@@ -37,7 +37,7 @@
 <class 'vsg.token.file_declaration.file_keyword'>
 <class 'vsg.token.file_declaration.identifier'>
 <class 'vsg.token.file_declaration.colon'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.subtype_indication.type_mark'>
 <class 'vsg.token.file_open_information.open_keyword'>
 <class 'vsg.token.file_open_information.file_open_kind_expression'>
 <class 'vsg.token.file_open_information.is_keyword'>
@@ -55,7 +55,7 @@
 <class 'vsg.token.identifier_list.comma'>
 <class 'vsg.token.file_declaration.identifier'>
 <class 'vsg.token.file_declaration.colon'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.subtype_indication.type_mark'>
 <class 'vsg.token.file_open_information.open_keyword'>
 <class 'vsg.token.file_open_information.file_open_kind_expression'>
 <class 'vsg.token.file_open_information.is_keyword'>
@@ -69,7 +69,7 @@
 <class 'vsg.token.file_declaration.file_keyword'>
 <class 'vsg.token.file_declaration.identifier'>
 <class 'vsg.token.file_declaration.colon'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.subtype_indication.type_mark'>
 <class 'vsg.token.file_open_information.open_keyword'>
 <class 'vsg.token.file_open_information.file_open_kind_expression'>
 <class 'vsg.token.file_open_information.is_keyword'>

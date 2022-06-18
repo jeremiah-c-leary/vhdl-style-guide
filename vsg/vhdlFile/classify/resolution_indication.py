@@ -31,6 +31,8 @@ def detect(iToken, lObjects):
             return iToken
         if utils.is_next_token('is', iTemp, lObjects):
             return iToken
+        if utils.is_next_token('open', iTemp, lObjects):
+            return iToken
         return classify(iToken, lObjects)
     return iToken
 
