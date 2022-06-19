@@ -539,7 +539,6 @@ def post_token_assignments(lTokens):
                 oToken.iId = iParenId
             if sValue == ')':
                 oToken.iId = lParenId.pop()
-                
 
 
 def set_token_hierarchy_value(lTokens):

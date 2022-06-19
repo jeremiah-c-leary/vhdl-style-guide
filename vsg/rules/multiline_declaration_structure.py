@@ -195,7 +195,6 @@ def _check_first_paren_new_line(self, oToi):
 
 
 def is_array(iToken, lTokens):
-    oToken = lTokens[iToken]
 #    print(oToken.iId)
 #    print(f'upper_bounds = {lTokens[iToken + 1].get_value()}')
     iMatchingCloseParen = find_index_of_matching_close_paren(iToken, lTokens)
@@ -341,9 +340,6 @@ def _check_close_paren_new_line(self, oToi):
 
     iLine, lTokens = utils.get_toi_parameters(oToi)
 
-    bAssignmentFound = False
-    bOthersClause = False
-
 #    iToken = _find_colon(lTokens) + 1
 #    iStopIndex = _find_last_closing_paren(lTokens)
     bFirstParenFound = False
@@ -484,7 +480,7 @@ def _check_assign_on_single_line(self, oToi):
 
 def _is_record_type(oToi):
 
-    iLine, lTokens = utils.get_toi_parameters(oToi)
+    lTokens = oToi.get_tokens()
     for iToken, oToken in enumerate(lTokens):
         if isinstance(oToken, token.signal_declaration.colon):
             if utils.find_in_range(',', iToken, ';', lTokens):
@@ -508,7 +504,7 @@ def something_else_else(lTokens):
             return True
     return False
 
-        
+
 def _fix_array_first_paren_new_line(oViolation):
     lTokens = oViolation.get_tokens()
     dAction = oViolation.get_action()

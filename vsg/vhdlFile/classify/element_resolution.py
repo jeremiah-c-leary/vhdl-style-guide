@@ -1,9 +1,5 @@
 
-from vsg.token import sensitivity_clause as token
-
 from vsg.vhdlFile import utils
-
-from vsg.vhdlFile.classify import sensitivity_list
 
 
 def classify_until(lUntils, iToken, lObjects):

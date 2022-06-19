@@ -10,32 +10,27 @@ lTokenPairs.append([token.signal_declaration.signal_keyword, token.signal_declar
 
 class rule_400(Rule):
     '''
-    jcl - rewrite this
-    This rule checks alignment of multiline concurrent simple signal assignments.
-    Succesive lines should align to the space after the assignment operator.
-    However, there is a special case if there are parenthesis in the assignment.
-    If the parenthesis are not closed on the same line, then the next line will be aligned to the parenthesis.
-    Aligning to the parenthesis improves readability.
+    This rule checks alignment of multiline constraints in signal declarations.
+
+    |configuring_multiline_indent_rules_link|
 
     **Violation**
 
     .. code-block:: vhdl
 
-       O_FOO <= (1 => q_foo(63 downto 32),
-                0 => q_foo(31 downto  0));
-
-       n_foo <= resize(unsigned(I_FOO) +
-                unsigned(I_BAR), q_foo'length);
+       signal sig_a : my_record(
+                element1(7 downto 0),
+       element2(3 downto 0)
+               );
 
     **Fix**
 
     .. code-block:: vhdl
 
-       O_FOO <= (1 => q_foo(63 downto 32),
-                 0 => q_foo(31 downto  0));
-
-       n_foo <= resize(unsigned(I_FOO) +
-                       unsigned(I_BAR), q_foo'length);
+       signal sig_a : my_record(
+           element1(7 downto 0),
+           element2(3 downto 0)
+         );
     '''
 
     def __init__(self):

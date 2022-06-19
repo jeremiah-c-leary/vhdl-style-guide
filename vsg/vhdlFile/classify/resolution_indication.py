@@ -5,8 +5,6 @@ from vsg.token import resolution_indication as token
 
 from vsg.vhdlFile import utils
 
-from vsg.vhdlFile.classify import element_resolution
-
 
 def detect(iToken, lObjects):
     '''

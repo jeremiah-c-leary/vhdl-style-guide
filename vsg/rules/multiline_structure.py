@@ -376,7 +376,7 @@ def _check_assign_on_single_line(self, oToi):
 
 def _is_open_paren_after_assignment(oToi):
 
-    iLine, lTokens = utils.get_toi_parameters(oToi)
+    lTokens = oToi.get_tokens()
     for iToken, oToken in enumerate(lTokens):
         if isinstance(oToken, token.constant_declaration.assignment_operator):
             if utils.are_next_consecutive_token_types_ignoring_whitespace([token.constant_declaration.assignment_operator, parser.open_parenthesis], iToken, lTokens):

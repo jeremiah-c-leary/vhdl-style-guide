@@ -1,11 +1,5 @@
 
-from vsg.token import index_constraint as token
-
 from vsg.vhdlFile import utils
-
-from vsg.vhdlFile.classify import discrete_range
-
-from vsg import parser
 
 
 def detect(iToken, lObjects):
@@ -16,7 +10,7 @@ def detect(iToken, lObjects):
     '''
     if check_for_range_attribute_name(iToken, lObjects):
         return True
-    return check_for_direction(iToken, lObjects) 
+    return check_for_direction(iToken, lObjects)
 
 
 def check_for_range_attribute_name(iToken, lObjects):
@@ -29,7 +23,7 @@ def check_for_range_attribute_name(iToken, lObjects):
             if iTodoTokens == 1:
                 return True
             return False
-        sValue = lObjects[iIndex].get_value()
+
         if not utils.token_is_whitespace_or_comment(lObjects[iIndex]):
             iTodoTokens += 1
         if iParens == 0:

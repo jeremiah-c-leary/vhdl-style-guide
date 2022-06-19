@@ -94,7 +94,7 @@ def _check_array_constraint(self, oToi):
     elif self.array_constraint == 'all_in_one_line':
         _check_array_constraint_all_in_one_line(self, oToi)
     elif self.array_constraint == 'one_line_per_dimension':
-        _check_array_constraint_one_line_per_dimension(self, oToi) 
+        _check_array_constraint_one_line_per_dimension(self, oToi)
 
 
 def _check_array_constraint_all_in_one_line(self, oToi):
@@ -102,7 +102,7 @@ def _check_array_constraint_all_in_one_line(self, oToi):
     iLine, lTokens = rules_utils.get_toi_parameters(oToi)
     oStartToken = token.index_constraint.open_parenthesis
     oEndToken = token.index_constraint.close_parenthesis
- 
+
     for iToken, oToken in enumerate(lTokens):
         iLine = utils.increment_line_number(iLine, oToken)
         if isinstance(oToken, oStartToken):
@@ -126,7 +126,7 @@ def _check_array_constraint_one_line_per_dimension(self, oToi):
     iLine, lTokens = rules_utils.get_toi_parameters(oToi)
     oStartToken = token.index_constraint.open_parenthesis
     oEndToken = token.index_constraint.close_parenthesis
- 
+
     for iToken, oToken in enumerate(lTokens):
         iLine = utils.increment_line_number(iLine, oToken)
         if isinstance(oToken, oStartToken):

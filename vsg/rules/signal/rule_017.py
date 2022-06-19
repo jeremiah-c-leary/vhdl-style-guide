@@ -13,27 +13,22 @@ class rule_017(Rule):
 
     |configuring_multiline_constraint_rules_link|
 
-    .. NOTE:: The indenting of multiline signal constraints is handled by the rule `jcl - fix this`_.
+    .. NOTE:: The indenting of multiline signal constraints is handled by the rule `signal_400 <signal_rules.html#signal-400>`_.
 
     **Violation**
 
-    jcl - fix this
-
     .. code-block:: vhdl
 
-       signal sig_a : my_type (0, 65535, 32768);
+       signal sig_a : my_record(element1(7 downto 0), element2(3 downto 0));
 
     **Fix**
 
-    jcl - fix this
-
     .. code-block:: vhdl
 
-       signal sig_a : romq_type (
-         0,
-         65535,
-         32768
-       );
+       signal sig_a : my_record(
+           element1(7 downto 0),
+           element2(3 downto 0)
+         );
     '''
 
     def __init__(self):

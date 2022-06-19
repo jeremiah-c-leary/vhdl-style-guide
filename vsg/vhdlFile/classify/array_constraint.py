@@ -4,7 +4,6 @@ from vsg.token import array_constraint as token
 from vsg.vhdlFile import utils
 
 from vsg.vhdlFile.classify import array_element_constraint
-from vsg.vhdlFile.classify import element_resolution
 from vsg.vhdlFile.classify import index_constraint
 
 
