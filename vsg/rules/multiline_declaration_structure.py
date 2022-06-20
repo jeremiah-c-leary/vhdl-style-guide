@@ -51,7 +51,6 @@ class multiline_declaration_structure(structure.Rule):
         self.new_line_after_comma = 'no'
         self.configuration.append('new_line_after_comma')
         self.assign_on_single_line = 'no'
-#        self.configuration.append('assign_on_single_line')
         self.ignore_single_line = 'yes'
         self.configuration.append('ignore_single_line')
         self.move_last_comment = 'ignore'
@@ -68,7 +67,6 @@ class multiline_declaration_structure(structure.Rule):
 
     def _analyze(self, lToi):
         for oToi in lToi:
-#            print('='*80)
             if rules_utils.is_single_line(oToi) and self.ignore_single_line == 'yes':
                 continue
 
@@ -81,7 +79,6 @@ class multiline_declaration_structure(structure.Rule):
             _check_open_paren_new_line(self, oToi)
             _check_close_paren_new_line(self, oToi)
             _check_new_line_after_comma(self, oToi)
-#            _check_assign_on_single_line(self, oToi)
 
         self._sort_violations()
 
@@ -111,14 +108,11 @@ def _check_array_first_paren_new_line(self, oToi):
     iToken, iLine, iStopIndex, lTokens = extract_analysis_parameters(oToi)
 
     while iToken < iStopIndex:
-#        print(f'==> iLine = {iLine} | iToken = {iToken}')
         oToken = lTokens[iToken]
         iLine = utils.increment_line_number(iLine, oToken)
 
         if isinstance(oToken, parser.open_parenthesis):
-#            print('---> Open paren detected')
             if is_array(iToken, lTokens):
-#                print(f'Array @{iLine}')
                 iStart = utils.find_previous_non_whitespace_token(iToken - 1, lTokens)
                 iLine += rules_utils.number_of_carriage_returns(lTokens[iToken:iToken])
                 if utils.find_carriage_return(lTokens[iStart:iToken]) is None:
@@ -132,7 +126,6 @@ def _check_array_first_paren_new_line(self, oToi):
                         oViolation = _create_violation(oToi, iLine, iStart, iToken, 'array_first_paren_new_line', 'remove', sSolution)
                         self.add_violation(oViolation)
                 iNextToken = find_index_of_matching_close_paren(iToken, lTokens) + 1
-#                utils.print_lines(lTokens[iToken:iNextToken + 1])
                 iToken = iNextToken
             else:
                 iToken += 1
@@ -163,18 +156,15 @@ def _check_first_paren_new_line(self, oToi):
     iToken, iLine, iStopIndex, lTokens = extract_analysis_parameters(oToi)
 
     while iToken < iStopIndex:
-#        print(f'==> iLine = {iLine} | iToken = {iToken}')
         oToken = lTokens[iToken]
         iLine = utils.increment_line_number(iLine, oToken)
 
         if isinstance(oToken, parser.open_parenthesis):
-#            print('---> Open paren detected')
             if is_array(iToken, lTokens):
                 iNextToken = find_index_of_matching_close_paren(iToken, lTokens) + 1
                 iNextToken = utils.find_next_non_whitespace_token(iNextToken, lTokens)
                 iLine += rules_utils.number_of_carriage_returns(lTokens[iToken:iNextToken])
                 if isinstance(lTokens[iNextToken], parser.open_parenthesis):
-#                    print(f'Array @{iLine}')
                     iStart = utils.find_previous_non_whitespace_token(iNextToken - 1, lTokens)
                     if utils.find_carriage_return(lTokens[iStart:iNextToken]) is None:
                         if self.first_paren_new_line == 'yes':
@@ -186,7 +176,6 @@ def _check_first_paren_new_line(self, oToi):
                             sSolution = 'Move parenthesis to same line as assignment operator.'
                             oViolation = _create_violation(oToi, iLine, iStart, iNextToken, 'first_paren_new_line', 'remove', sSolution)
                             self.add_violation(oViolation)
-#                    utils.print_lines(lTokens[iToken:iNextToken + 1])
                 iToken = iNextToken
             else:
                 iToken += 1
@@ -195,17 +184,12 @@ def _check_first_paren_new_line(self, oToi):
 
 
 def is_array(iToken, lTokens):
-#    print(oToken.iId)
-#    print(f'upper_bounds = {lTokens[iToken + 1].get_value()}')
     iMatchingCloseParen = find_index_of_matching_close_paren(iToken, lTokens)
-#    print(iMatchingCloseParen)
-#    print(lTokens[iMatchingCloseParen].iId)
-#    print(lTokens[iToken:iMatchingCloseParen + 1])
     iNextToken = utils.find_next_non_whitespace_token(iMatchingCloseParen + 1, lTokens)
-#    print(lTokens[iNextToken])
     if utils.token_is_open_parenthesis(iNextToken, lTokens):
         return True
     return False
+
 
 def find_index_of_matching_close_paren(iToken, lTokens):
     iParenId = lTokens[iToken].iId
@@ -298,9 +282,9 @@ def _check_open_paren_new_line(self, oToi):
 
         if isinstance(oToken, parser.open_parenthesis):
             if bFirstParenFound:
-               iPreviousIndex = utils.find_previous_non_whitespace_token(iToken - 1, lTokens)
-               if something(iPreviousIndex, lTokens):
-                   continue
+                iPreviousIndex = utils.find_previous_non_whitespace_token(iToken - 1, lTokens)
+                if something(iPreviousIndex, lTokens):
+                    continue
             bFirstParenFound = True
             if utils.is_token_at_end_of_line(iToken, lTokens):
                 if self.open_paren_new_line == 'no':
@@ -318,8 +302,6 @@ def _check_open_paren_new_line(self, oToi):
 
 
 def something(iToken, lTokens):
-#    print('--> Something')
-#    print(lTokens[iToken].get_value())
     if utils.token_is_open_parenthesis(iToken, lTokens):
         return False
     if utils.token_is_comma(iToken, lTokens):
@@ -340,11 +322,8 @@ def _check_close_paren_new_line(self, oToi):
 
     iLine, lTokens = utils.get_toi_parameters(oToi)
 
-#    iToken = _find_colon(lTokens) + 1
-#    iStopIndex = _find_last_closing_paren(lTokens)
     bFirstParenFound = False
     for iToken in range(_find_colon(lTokens) + 1, _find_last_closing_paren(lTokens)):
-#    while iToken < iStopIndex:
 
         oToken = lTokens[iToken]
 
@@ -399,9 +378,9 @@ def _check_new_line_after_comma(self, oToi):
             iToken, bAssignmentFound = _classify_assignment(iToken, lTokens)
 
             if bAssignmentFound:
-               iToken += 1
-               bPositionalFound = False
-               continue
+                iToken += 1
+                bPositionalFound = False
+                continue
 
         oToken = lTokens[iToken]
 
@@ -460,13 +439,11 @@ def _check_assign_on_single_line(self, oToi):
             iToken, bAssignmentFound = _classify_assignment(iToken, lTokens)
 
             if bAssignmentFound:
-#                rules_utils.print_debug(lTokens[iPreviousToken:iToken + 1])
                 if rules_utils.number_of_carriage_returns(lTokens[iPreviousToken:iToken]) > 0:
-                     iErrorLine = rules_utils.number_of_carriage_returns(lTokens[:iPreviousToken]) + iLine
-                     sSolution = 'Remove carriage returns for assignments.'
-                     oViolation = _create_violation(oToi, iErrorLine, iPreviousToken, iToken, 'assign_on_single_line', 'remove', sSolution)
-                     self.add_violation(oViolation)
-
+                    iErrorLine = rules_utils.number_of_carriage_returns(lTokens[:iPreviousToken]) + iLine
+                    sSolution = 'Remove carriage returns for assignments.'
+                    oViolation = _create_violation(oToi, iErrorLine, iPreviousToken, iToken, 'assign_on_single_line', 'remove', sSolution)
+                    self.add_violation(oViolation)
 
         oToken = lTokens[iToken]
 
@@ -491,15 +468,12 @@ def _is_record_type(oToi):
 def something_else_else(lTokens):
     bInsideFunction = False
     for iToken, oToken in enumerate(lTokens):
-#        print(oToken.get_value())
-#        print(bInsideFunction)
         if utils.token_is_open_parenthesis(iToken, lTokens):
-           iPreviousIndex = utils.find_previous_non_whitespace_token(iToken - 1, lTokens)
-           if something(iPreviousIndex, lTokens):
-               bInsideFunction = True
+            iPreviousIndex = utils.find_previous_non_whitespace_token(iToken - 1, lTokens)
+            if something(iPreviousIndex, lTokens):
+                bInsideFunction = True
         if utils.token_is_close_parenthesis(iToken, lTokens):
             bInsideFunction = False
-#        print(f'{oToken.get_value()} | {bInsideFunction}')
         if utils.token_is_comma(iToken, lTokens) and not bInsideFunction:
             return True
     return False
@@ -679,19 +653,13 @@ def _classify_assignment(iToken, lTokens):
                 iEnd = iToken + iReturn
                 iCloseParen += 1
                 if iCloseParen > iOpenParen:
-#                    print(lTokens[iToken:iEnd -1])
-#                    rules_utils.print_debug(lTokens[iToken:iEnd + 1])
                     iEnd = utils.find_previous_non_whitespace_token(iEnd - 1, lTokens)
                     return iEnd, True
                 elif iOpenParen == iCloseParen:
-#                    print(lTokens[iToken:iEnd])
-#                    rules_utils.print_debug(lTokens[iToken:iEnd + 1])
                     return iEnd, True
             elif isinstance(oToken, parser.comma):
                 if iOpenParen == iCloseParen:
                     iEnd = iToken + iReturn - 1
-#                    print(lTokens[iToken:iEnd])
-#                    rules_utils.print_debug(lTokens[iToken:iEnd + 1])
                     return iEnd, True
         return None
     return iToken, False
