@@ -324,6 +324,59 @@ This rule checks the structure of multiline signal declarations.
      32768
    );
 
+signal_017
+##########
+
+|phase_1| |error| |structure|
+
+This rule checks the structure of signal constraints.
+
+|configuring_multiline_constraint_rules_link|
+
+.. NOTE:: The indenting of multiline signal constraints is handled by the rule `signal_400 <signal_rules.html#signal-400>`_.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   signal sig_a : my_record(element1(7 downto 0), element2(3 downto 0));
+
+**Fix**
+
+.. code-block:: vhdl
+
+   signal sig_a : my_record(
+       element1(7 downto 0),
+       element2(3 downto 0)
+     );
+
+signal_400
+##########
+
+|phase_5| |error| |alignment|
+
+This rule checks alignment of multiline constraints in signal declarations.
+
+|configuring_multiline_indent_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   signal sig_a : my_record(
+            element1(7 downto 0),
+   element2(3 downto 0)
+           );
+
+**Fix**
+
+.. code-block:: vhdl
+
+   signal sig_a : my_record(
+       element1(7 downto 0),
+       element2(3 downto 0)
+     );
+
 signal_600
 ##########
 

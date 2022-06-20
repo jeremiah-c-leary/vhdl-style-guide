@@ -153,4 +153,5 @@ Rules Enforcing Multiline Indent Rules
 * `if_004 <if_rules.html#if-004>`_
 * `process_020 <process_rules.html#process-020>`_
 * `sequential_004 <sequential_rules.html#sequential-004>`_
+* `signal_400 <signal_rules.html#signal-400>`_
 * `variable_assignment_004 <variable_assignment_rules.html#variable-assignment-004>`_

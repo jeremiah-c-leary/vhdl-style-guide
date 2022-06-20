@@ -199,6 +199,5 @@ Setting the :code:`array_constraint` option to :code:`one_line_per_dimension` wi
 
 Rules Enforcing Multiline Constraint Rules
 ##########################################
-.. 
-.. * `constant_016 <constant_rules.html#constant-016>`_
-.. * `signal_016 <signal_rules.html#signal-016>`_
+
+* `signal_017 <signal_rules.html#signal-017>`_

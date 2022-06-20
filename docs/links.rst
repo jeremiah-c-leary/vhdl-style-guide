@@ -35,6 +35,9 @@
 .. |configuring_multiline_structure_rules_link| replace::
    Refer to :ref:`configuring-multiline-structure-rules` for more information.
 
+.. |configuring_multiline_constraint_rules_link| replace::
+   Refer to :ref:`configuring-multiline-constraint-rules` for more information.
+
 .. |configuring_number_of_signals_in_signal_declaration_link| replace::
    Refer to :ref:`configuring-number-of-signals-in-signal-declaration` for more information.
 
