@@ -10,7 +10,7 @@ def detect(iToken, lObjects):
     '''
     if check_for_range_attribute_name(iToken, lObjects):
         return True
-    return check_for_direction(iToken, lObjects)
+    return detect_direction(iToken, lObjects)
 
 
 def check_for_range_attribute_name(iToken, lObjects):
@@ -31,15 +31,20 @@ def check_for_range_attribute_name(iToken, lObjects):
                 return True
     return False
 
-def check_for_direction(iToken, lObjects):
+
+def detect_direction(iToken, lObjects):
     iParens = 0
     for iIndex in range(iToken, len(lObjects)):
         iParens = utils.update_paren_counter(iIndex, lObjects, iParens)
         if iParens == -1:
             return False
-        if iParens == 0:
-            if utils.object_value_is(lObjects, iIndex, 'downto'):
-                return True
-            if utils.object_value_is(lObjects, iIndex, 'to'):
-                return True
+        if check_for_direction(iParens, iIndex, lObjects):
+            return True
+    return False
+
+
+def check_for_direction(iParens, iIndex, lObjects):
+    if iParens == 0:
+        if utils.is_next_token_one_of(['downto', 'to'], iIndex, lObjects):
+            return True
     return False
