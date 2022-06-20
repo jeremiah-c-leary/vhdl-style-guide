@@ -11,38 +11,43 @@ def detect(iToken, lObjects):
     resolution_indication ::=
         resolution_function_name | ( element_resolution )
     '''
-    if utils.is_next_token('(', iToken, lObjects):
-        return classify(iToken, lObjects)
-    else:
-        iTemp = utils.find_next_token(iToken, lObjects) + 1
-        if utils.is_next_token('(', iTemp, lObjects):
-            return iToken
-        if utils.is_next_token(')', iTemp, lObjects):
-            return iToken
-        if utils.is_next_token(';', iTemp, lObjects):
-            return iToken
-        if utils.is_next_token(':=', iTemp, lObjects):
-            return iToken
-        if utils.is_next_token('range', iTemp, lObjects):
-            return iToken
-        if utils.is_next_token('bus', iTemp, lObjects):
-            return iToken
-        if utils.is_next_token('is', iTemp, lObjects):
-            return iToken
-        if utils.is_next_token('open', iTemp, lObjects):
-            return iToken
-        return classify(iToken, lObjects)
+    if detect_element_resolution(iToken, lObjects):
+        return classify_element_resolution(iToken, lObjects)
+    elif detect_resolution_function_name(iToken, lObjects):
+        return classify_resolution_function_name(iToken, lObjects)
     return iToken
 
 
-def classify(iToken, lObjects):
+def classify_element_resolution(iToken, lObjects):
 
-    iCurrent = iToken
-
-    if utils.is_next_token('(', iCurrent, lObjects):
-        iCurrent = utils.assign_next_token_required('(', token.open_parenthesis, iCurrent, lObjects)
-        iCurrent = utils.assign_tokens_until_matching_closing_paren(parser.todo, iCurrent, lObjects)
-    else:
-        iCurrent = utils.assign_next_token(token.resolution_function_name, iCurrent, lObjects)
+    iCurrent = utils.assign_next_token_required('(', token.open_parenthesis, iToken, lObjects)
+    iCurrent = utils.assign_tokens_until_matching_closing_paren(parser.todo, iCurrent, lObjects)
 
     return iCurrent
+
+
+def classify_resolution_function_name(iToken, lObjects):
+
+    return utils.assign_next_token(token.resolution_function_name, iToken, lObjects)
+
+
+def detect_element_resolution(iToken, lObjects):
+    if utils.is_next_token('(', iToken, lObjects):
+        return True
+    return False
+
+
+def detect_resolution_function_name(iToken, lObjects):
+    if detect_escape_value(iToken, lObjects):
+        return False
+    return True
+
+
+lEscapeValues = ['(', ')', ';', ':=', 'range', 'bus', 'is', 'open']
+
+
+def detect_escape_value(iToken, lObjects):
+    iTemp = utils.find_next_token(iToken, lObjects) + 1
+    if utils.is_next_token_one_of(lEscapeValues, iTemp, lObjects):
+        return True
+    return False 
