@@ -30,11 +30,11 @@ signal sig8 : record_type_3(
 
   signal sig9 : record_type_3(element1(7 downto 0));
 
-  signal sig9 : record_type_3(blah);
+  signal sig9 : record_type_3(blah'range);
 
-  signal sig9 : record_type_3( blah );
+  signal sig9 : record_type_3( blah'range );
 
-  signal sig9 : record_type_3( blah --Comment
+  signal sig9 : record_type_3( blah'range --Comment
  );
 
   signal sig9 : integer range 0 to 31;

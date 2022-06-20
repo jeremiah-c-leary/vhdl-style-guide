@@ -252,12 +252,14 @@
 32 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-33 |   signal sig9 : record_type_3(blah);
+33 |   signal sig9 : record_type_3(blah'range);
 <class 'vsg.token.signal_declaration.signal_keyword'>
 <class 'vsg.token.signal_declaration.identifier'>
 <class 'vsg.token.signal_declaration.colon'>
 <class 'vsg.token.subtype_indication.type_mark'>
 <class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.tic'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.index_constraint.close_parenthesis'>
 <class 'vsg.token.signal_declaration.semicolon'>
@@ -265,12 +267,14 @@
 34 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-35 |   signal sig9 : record_type_3( blah );
+35 |   signal sig9 : record_type_3( blah'range );
 <class 'vsg.token.signal_declaration.signal_keyword'>
 <class 'vsg.token.signal_declaration.identifier'>
 <class 'vsg.token.signal_declaration.colon'>
 <class 'vsg.token.subtype_indication.type_mark'>
 <class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.tic'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.index_constraint.close_parenthesis'>
 <class 'vsg.token.signal_declaration.semicolon'>
@@ -278,12 +282,14 @@
 36 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-37 |   signal sig9 : record_type_3( blah --Comment
+37 |   signal sig9 : record_type_3( blah'range --Comment
 <class 'vsg.token.signal_declaration.signal_keyword'>
 <class 'vsg.token.signal_declaration.identifier'>
 <class 'vsg.token.signal_declaration.colon'>
 <class 'vsg.token.subtype_indication.type_mark'>
 <class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.tic'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.comment'>
 --------------------------------------------------------------------------------

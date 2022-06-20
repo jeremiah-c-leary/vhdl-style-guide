@@ -15,21 +15,33 @@ def detect(iToken, lObjects):
 
 def check_for_range_attribute_name(iToken, lObjects):
     iParens = 0
-    iTodoTokens = 0
     for iIndex in range(iToken, len(lObjects)):
         iParens = utils.update_paren_counter(iIndex, lObjects, iParens)
 
-        if iParens == -1:
-            if iTodoTokens == 1:
-                return True
+        if token_is_matching_close_parenthesis(iParens):
             return False
+        if token_is_tic(iParens, iIndex, lObjects):
+            return True
 
-        if not utils.token_is_whitespace_or_comment(lObjects[iIndex]):
-            iTodoTokens += 1
-        if iParens == 0:
-            if utils.object_value_is(lObjects, iIndex, "'"):
-                return True
     return False
+
+
+def token_is_matching_close_parenthesis(iParens):
+    if iParens == -1:
+        return True
+    return False
+
+
+def check_for_todo_token(iIndex, lObjects):
+    if utils.token_is_whitespace_or_comment(lObjects[iIndex]):
+        return False
+    return True
+
+
+def token_is_tic(iParens, iIndex, lObjects):
+    if iParens == 0:
+        if utils.object_value_is(lObjects, iIndex, "'"):
+            return True
 
 
 def detect_direction(iToken, lObjects):
