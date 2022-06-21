@@ -112,7 +112,7 @@ def _check_array_constraint_all_in_one_line(self, oToi):
             if _token_at_beginning_of_line(iStart, lTokens):
                 sSolution = 'Move parenthesis to next line.'
                 if isinstance(lTokens[iStart - 1], parser.whitespace):
-                   iStart = iStart - 2
+                    iStart = iStart - 2
                 oViolation = _create_violation(oToi, iStartLine, iStart, iToken, 'remove_new_line', sSolution)
                 self.add_violation(oViolation)
             elif rules_utils.number_of_carriage_returns(lTokens[iStart:iToken]) > 0:
@@ -136,7 +136,7 @@ def _check_array_constraint_one_line_per_dimension(self, oToi):
             if not _token_at_beginning_of_line(iStart, lTokens):
                 sSolution = 'Move parenthesis to next line.'
                 if isinstance(lTokens[iStart - 1], parser.whitespace):
-                   iStart = iStart - 1
+                    iStart = iStart - 1
                 oViolation = _create_violation(oToi, iStartLine, iStart, iToken, 'add_new_line_and_remove_carraige_returns', sSolution)
                 self.add_violation(oViolation)
             elif rules_utils.number_of_carriage_returns(lTokens[iStart:iToken]) > 0:
@@ -184,8 +184,8 @@ def _check_add_new_line(self, oToi, oTokenType):
             if not _token_at_beginning_of_line(iToken, lTokens):
                 sSolution = 'Move parenthesis to next line.'
                 iStart = iToken
-                if isinstance(lTokens[iToken -1], parser.whitespace):
-                   iStart = iToken - 1
+                if isinstance(lTokens[iToken - 1], parser.whitespace):
+                    iStart = iToken - 1
                 oViolation = _create_violation(oToi, iLine, iStart, iToken, 'add_new_line', sSolution)
                 self.add_violation(oViolation)
 
@@ -217,6 +217,7 @@ def _create_violation(oToi, iLine, iStartIndex, iEndIndex, sAction, sSolution):
     oViolation = violation.New(iLine, oToi.extract_tokens(iStartIndex, iEndIndex), sSolution)
     oViolation.set_action(dAction)
     return oViolation
+
 
 def _create_action_dictionary(sAction):
     dReturn = {}
