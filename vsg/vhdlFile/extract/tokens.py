@@ -11,6 +11,7 @@ class New():
         self.iLine = iLine
         self.sTokenValue = None
         self.iEndIndex = calculate_end_index(iStartIndex, lTokens)
+        self.dMetaData = {}
 
     def get_tokens(self):
         return self.lTokens
@@ -56,6 +57,12 @@ class New():
             if isinstance(oToken, oTokenType):
                 return True
         return False
+
+    def set_meta_data(self, sKey, sValue):
+        self.dMetaData[sKey] = sValue
+
+    def get_meta_data(self, sKey):
+        return self.dMetaData[sKey]
 
 
 def calculate_end_index(iStartIndex, lTokens):
