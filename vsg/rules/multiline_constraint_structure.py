@@ -131,10 +131,11 @@ def create_array_constraint_all_in_one_line_violation(oToi):
     iStartLine = oToi.get_meta_data('iStartLine')
     iToken = oToi.get_meta_data('iToken')
     lTokens = oToi.get_tokens()
-    sSolution = 'Move parenthesis to next line.'
+    oToi.set_meta_data('sSolution', 'Move parenthesis to next line.')
+    oToi.set_meta_data('sAction', 'remove_new_line')
     if isinstance(lTokens[iStart - 1], parser.whitespace):
-        iStart = iStart - 2
-    oViolation = _create_violation(oToi, iStartLine, iStart, iToken, 'remove_new_line', sSolution)
+        oToi.set_meta_data('iStart', iStart - 2)
+    oViolation = _create_violation(oToi)
     return oViolation
 
 
@@ -171,10 +172,11 @@ def create_array_constraint_one_line_violation(oToi):
     iStartLine = oToi.get_meta_data('iStartLine')
     iToken = oToi.get_meta_data('iToken')
     lTokens = oToi.get_tokens()
-    sSolution = 'Move parenthesis to next line and remove carriage returns in array constraint.'
+    oToi.set_meta_data('sSolution', 'Move parenthesis to next line and remove carriage returns in array constraint.')
+    oToi.set_meta_data('sAction', 'add_new_line_and_remove_carraige_returns')
     if isinstance(lTokens[iStart - 1], parser.whitespace):
-        iStart = iStart - 1
-    oViolation = _create_violation(oToi, iStartLine, iStart, iToken, 'add_new_line_and_remove_carraige_returns', sSolution)
+        oToi.set_meta_data('iStart', iStart - 1)
+    oViolation = _create_violation(oToi)
     return oViolation
 
 
@@ -182,8 +184,9 @@ def create_array_constraint_remove_carriage_return_violation(oToi):
     iStart = oToi.get_meta_data('iStart')
     iStartLine = oToi.get_meta_data('iStartLine')
     iToken = oToi.get_meta_data('iToken')
-    sSolution = 'Remove carriage returns in array constraint.'
-    oViolation = _create_violation(oToi, iStartLine, iStart, iToken, 'remove_new_line', sSolution)
+    oToi.set_meta_data('sSolution', 'Remove carriage returns in array constraint.')
+    oToi.set_meta_data('sAction', 'remove_new_line')
+    oViolation = _create_violation(oToi)
     return oViolation
 
 
@@ -223,13 +226,33 @@ def _check_add_new_line(self, oToi, oTokenType):
     for iToken, oToken in enumerate(lTokens):
         iLine = utils.increment_line_number(iLine, oToken)
         if isinstance(oToken, oTokenType):
-            if not _token_at_beginning_of_line(iToken, lTokens):
-                sSolution = 'Move parenthesis to next line.'
-                iStart = iToken
-                if isinstance(lTokens[iToken - 1], parser.whitespace):
-                    iStart = iToken - 1
-                oViolation = _create_violation(oToi, iLine, iStart, iToken, 'add_new_line', sSolution)
-                self.add_violation(oViolation)
+            oToi.set_meta_data('iStartLine', iLine)
+            oToi.set_meta_data('iStart', iToken)
+            oToi.set_meta_data('iToken', iToken)
+            analyze_add_new_line(self, oToi)
+
+
+def analyze_add_new_line(self, oToi):
+    iToken = oToi.get_meta_data('iToken')
+    lTokens = oToi.get_tokens()
+    if not _token_at_beginning_of_line(iToken, lTokens):
+        oViolation = create_add_new_line_violation(oToi)
+        self.add_violation(oViolation)
+
+
+def create_add_new_line_violation(oToi):
+    iStart = oToi.get_meta_data('iStart')
+    iStartLine = oToi.get_meta_data('iStartLine')
+    iToken = oToi.get_meta_data('iToken')
+    lTokens = oToi.get_tokens()
+
+    oToi.set_meta_data('iStart', iToken)
+    oToi.set_meta_data('sSolution', 'Move parenthesis to next line.')
+    oToi.set_meta_data('sAction', 'add_new_line')
+    if isinstance(lTokens[iToken - 1], parser.whitespace):
+        oToi.set_meta_data('iStart', iToken - 1)
+    oViolation = _create_violation(oToi)
+    return oViolation
 
 
 def _check_remove_new_line(self, oToi, oTokenType):
@@ -239,11 +262,30 @@ def _check_remove_new_line(self, oToi, oTokenType):
     for iToken, oToken in enumerate(lTokens):
         iLine = utils.increment_line_number(iLine, oToken)
         if isinstance(oToken, oTokenType):
-            if _token_at_beginning_of_line(iToken, lTokens):
-                sSolution = 'Move parenthesis to previous line.'
-                iStart = utils.find_previous_non_whitespace_token(iToken - 1, lTokens) + 1
-                oViolation = _create_violation(oToi, iLine, iStart, iToken, 'remove_new_line', sSolution)
-                self.add_violation(oViolation)
+            oToi.set_meta_data('iStartLine', iLine)
+            oToi.set_meta_data('iStart', iToken)
+            oToi.set_meta_data('iToken', iToken)
+            analyze_remove_new_line(self, oToi)
+
+
+def analyze_remove_new_line(self, oToi):
+    iToken = oToi.get_meta_data('iToken')
+    lTokens = oToi.get_tokens()
+    if _token_at_beginning_of_line(iToken, lTokens):
+        oViolation = create_remove_new_line_violation(self, oToi)
+        self.add_violation(oViolation)
+
+
+def create_remove_new_line_violation(self, oToi):
+    iStart = oToi.get_meta_data('iStart')
+    iStartLine = oToi.get_meta_data('iStartLine')
+    iToken = oToi.get_meta_data('iToken')
+    lTokens = oToi.get_tokens()
+    oToi.set_meta_data('sSolution', 'Move parenthesis to previous line.')
+    oToi.set_meta_data('sAction', 'remove_new_line')
+    oToi.set_meta_data('iStart', utils.find_previous_non_whitespace_token(iToken - 1, lTokens) + 1)
+    oViolation = _create_violation(oToi)
+    return oViolation
 
 
 def _token_at_beginning_of_line(iToken, lTokens):
@@ -254,9 +296,16 @@ def _token_at_beginning_of_line(iToken, lTokens):
     return False
 
 
-def _create_violation(oToi, iLine, iStartIndex, iEndIndex, sAction, sSolution):
+def _create_violation(oToi):
+    iStartIndex = oToi.get_meta_data('iStart')
+    iStartLine = oToi.get_meta_data('iStartLine')
+    iEndIndex = oToi.get_meta_data('iToken')
+    sSolution = oToi.get_meta_data('sSolution')
+    sAction = oToi.get_meta_data('sAction')
+    lTokens = oToi.get_tokens()
+
     dAction = _create_action_dictionary(sAction)
-    oViolation = violation.New(iLine, oToi.extract_tokens(iStartIndex, iEndIndex), sSolution)
+    oViolation = violation.New(iStartLine, oToi.extract_tokens(iStartIndex, iEndIndex), sSolution)
     oViolation.set_action(dAction)
     return oViolation
 
