@@ -50,4 +50,4 @@ def detect_escape_value(iToken, lObjects):
     iTemp = utils.find_next_token(iToken, lObjects) + 1
     if utils.is_next_token_one_of(lEscapeValues, iTemp, lObjects):
         return True
-    return False 
+    return False

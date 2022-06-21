@@ -11,12 +11,9 @@ def detect(iToken, lObjects):
     record_constraint ::=
         ( record_element_constraint { , record_element_constraint } )
     '''
-#    print('--> record_constraint.detect')
     if utils.is_next_token('(', iToken, lObjects):
-#        print('Got Here')
         iTemp = utils.find_next_token(iToken, lObjects) + 1
         if record_element_constraint.detect(iTemp, lObjects):
-#            print('Got Here 2')
             return classify(iToken, lObjects)
     return iToken
 
