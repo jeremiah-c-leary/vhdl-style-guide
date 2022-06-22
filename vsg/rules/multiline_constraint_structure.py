@@ -202,13 +202,12 @@ def _check_add_new_line_and_remove_new_line(self, oToi, sOption, oTokenType):
     if sOption == 'ignore':
         return
     elif sOption == 'add_new_line':
-        _check_add_new_line(self, oToi, oTokenType)
+        analyze_with_function(self, oToi, oTokenType, analyze_add_new_line)
     elif sOption == 'remove_new_line':
-        _check_remove_new_line(self, oToi, oTokenType)
+        analyze_with_function(self, oToi, oTokenType, analyze_remove_new_line)
 
 
-def _check_add_new_line(self, oToi, oTokenType):
-
+def analyze_with_function(self, oToi, oTokenType, fFunction):
     iLine, lTokens = rules_utils.get_toi_parameters(oToi)
 
     for iToken, oToken in enumerate(lTokens):
@@ -217,7 +216,7 @@ def _check_add_new_line(self, oToi, oTokenType):
             oToi.set_meta_data('iStartLine', iLine)
             oToi.set_meta_data('iStart', iToken)
             oToi.set_meta_data('iToken', iToken)
-            analyze_add_new_line(self, oToi)
+            fFunction(self, oToi)
 
 
 def analyze_add_new_line(self, oToi):
@@ -241,19 +240,6 @@ def create_add_new_line_violation(oToi):
         oToi.set_meta_data('iStart', iToken - 1)
     oViolation = _create_violation(oToi)
     return oViolation
-
-
-def _check_remove_new_line(self, oToi, oTokenType):
-
-    iLine, lTokens = rules_utils.get_toi_parameters(oToi)
-
-    for iToken, oToken in enumerate(lTokens):
-        iLine = utils.increment_line_number(iLine, oToken)
-        if isinstance(oToken, oTokenType):
-            oToi.set_meta_data('iStartLine', iLine)
-            oToi.set_meta_data('iStart', iToken)
-            oToi.set_meta_data('iToken', iToken)
-            analyze_remove_new_line(self, oToi)
 
 
 def analyze_remove_new_line(self, oToi):
@@ -382,20 +368,21 @@ def filter_tokens(oToi):
 
 
 def add_index_constraint_open_parenthesis(oToken, lReturn):
-    if isinstance(oToken, token.index_constraint.open_parenthesis):
-        lReturn.append(token.index_constraint.open_parenthesis())
+    add_token_type(oToken, lReturn, token.index_constraint.open_parenthesis)
 
 
 def add_index_constraint_close_parenthesis(oToken, lReturn):
-    if isinstance(oToken, token.index_constraint.close_parenthesis):
-        lReturn.append(token.index_constraint.close_parenthesis())
+    add_token_type(oToken, lReturn, token.index_constraint.close_parenthesis)
 
 
 def add_record_constraint_open_parenthesis(oToken, lReturn):
-    if isinstance(oToken, token.record_constraint.open_parenthesis):
-        lReturn.append(token.record_constraint.open_parenthesis())
+    add_token_type(oToken, lReturn, token.record_constraint.open_parenthesis)
 
 
 def add_record_constraint_close_parenthesis(oToken, lReturn):
-    if isinstance(oToken, token.record_constraint.close_parenthesis):
-        lReturn.append(token.record_constraint.close_parenthesis())
+    add_token_type(oToken, lReturn, token.record_constraint.close_parenthesis)
+
+
+def add_token_type(oToken, lReturn, oTokenType):
+    if isinstance(oToken, oTokenType):
+        lReturn.append(oTokenType())
