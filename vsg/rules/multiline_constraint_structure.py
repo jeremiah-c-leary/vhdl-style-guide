@@ -97,25 +97,9 @@ def _check_array_constraint(self, oToi):
     if self.array_constraint == 'ignore':
         return
     elif self.array_constraint == 'all_in_one_line':
-        _check_array_constraint_all_in_one_line(self, oToi)
+        analyze_array_constraint_with_function(self, oToi, analyze_for_array_constraint_all_in_one_line)
     elif self.array_constraint == 'one_line_per_dimension':
-        _check_array_constraint_one_line_per_dimension(self, oToi)
-
-
-def _check_array_constraint_all_in_one_line(self, oToi):
-
-    iLine, lTokens = rules_utils.get_toi_parameters(oToi)
-    oStartToken = token.index_constraint.open_parenthesis
-    oEndToken = token.index_constraint.close_parenthesis
-
-    for iToken, oToken in enumerate(lTokens):
-        iLine = utils.increment_line_number(iLine, oToken)
-        if isinstance(oToken, oStartToken):
-            oToi.set_meta_data('iStart', iToken)
-            oToi.set_meta_data('iStartLine', iLine)
-        if isinstance(oToken, oEndToken):
-            oToi.set_meta_data('iToken', iToken)
-            analyze_for_array_constraint_all_in_one_line(self, oToi)
+        analyze_array_constraint_with_function(self, oToi, analyze_for_array_constraint_one_line_per_dimension)
 
 
 def analyze_for_array_constraint_all_in_one_line(self, oToi):
@@ -144,8 +128,7 @@ def create_array_constraint_all_in_one_line_violation(oToi):
     return oViolation
 
 
-def _check_array_constraint_one_line_per_dimension(self, oToi):
-
+def analyze_array_constraint_with_function(self, oToi, fFunction):
     iLine, lTokens = rules_utils.get_toi_parameters(oToi)
     oStartToken = token.index_constraint.open_parenthesis
     oEndToken = token.index_constraint.close_parenthesis
@@ -157,7 +140,7 @@ def _check_array_constraint_one_line_per_dimension(self, oToi):
             oToi.set_meta_data('iStartLine', iLine)
         if isinstance(oToken, oEndToken):
             oToi.set_meta_data('iToken', iToken)
-            analyze_for_array_constraint_one_line_per_dimension(self, oToi)
+            fFunction(self, oToi)
 
 
 def analyze_for_array_constraint_one_line_per_dimension(self, oToi):
