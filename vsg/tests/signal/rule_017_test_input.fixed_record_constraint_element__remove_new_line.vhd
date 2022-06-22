@@ -12,6 +12,11 @@ architecture rtl of fifo is
     ),element6(4 downto
   0),element7(7 downto 0));
 
+  signal sig9 : t_data_struct(data(7 downto 0));
+
+  signal sig9 : t_data_struct(data(7 downto 0)
+  );
+
 begin
 
 end architecture rtl;

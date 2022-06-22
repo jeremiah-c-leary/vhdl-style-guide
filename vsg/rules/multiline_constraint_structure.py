@@ -28,6 +28,8 @@ class multiline_constraint_structure(structure.Rule):
         self.configuration.append('record_constraint_element')
         self.array_constraint = 'ignore'
         self.configuration.append('array_constraint')
+        self.exceptions = []
+        self.configuration.append('exceptions')
 
     def _get_tokens_of_interest(self, oFile):
         lToi = []
@@ -38,6 +40,9 @@ class multiline_constraint_structure(structure.Rule):
 
     def _analyze(self, lToi):
         for oToi in lToi:
+
+            if exception_applied(self, oToi):
+                continue
 
             _check_record_constraint_open_paren(self, oToi)
             _check_record_constraint_close_paren(self, oToi)
@@ -314,3 +319,54 @@ def _create_action_dictionary(sAction):
     dReturn = {}
     dReturn['action'] = sAction
     return dReturn
+
+
+def exception_applied(self, oToi):
+    if _check_for_exception_one(self, oToi):
+        return True
+    return False
+
+
+def _check_for_exception_one(self, oToi):
+    if 'keep_record_constraint_with_single_element_on_one_line' not in self.exceptions:
+        return False
+    lTokens = filter_tokens(oToi)
+    lCheckType = []
+    lCheckType.append(token.record_constraint.open_parenthesis)
+    lCheckType.append(token.index_constraint.open_parenthesis)
+    lCheckType.append(token.index_constraint.close_parenthesis)
+    lCheckType.append(token.record_constraint.close_parenthesis)
+    if len(lCheckType) != len(lTokens):
+        return False
+    for iIndex in range(0, len(lCheckType)):
+        if not isinstance(lTokens[iIndex], lCheckType[iIndex]):
+            return False
+    iLine, lTokens = rules_utils.get_toi_parameters(oToi)
+    for iToken, oToken in enumerate(lTokens):
+        iLine = utils.increment_line_number(iLine, oToken)
+        if isinstance(oToken, token.record_constraint.open_parenthesis):
+            iStart = iToken
+            iStartLine = iLine
+            oToi.set_meta_data('iStart', iStart)
+            oToi.set_meta_data('iStartLine', iStartLine)
+        if isinstance(oToken, token.record_constraint.close_parenthesis):
+            oToi.set_meta_data('iToken', iToken)
+            if rules_utils.number_of_carriage_returns(lTokens[iStart:iToken]) > 0:
+                oViolation = create_array_constraint_remove_carriage_return_violation(oToi)
+                self.add_violation(oViolation)
+    return True
+
+
+def filter_tokens(oToi):
+    lReturn = []
+    lTokens = oToi.get_tokens()
+    for oToken in lTokens:
+        if isinstance(oToken, token.index_constraint.open_parenthesis):
+            lReturn.append(token.index_constraint.open_parenthesis())
+        if isinstance(oToken, token.index_constraint.close_parenthesis):
+            lReturn.append(token.index_constraint.close_parenthesis())
+        if isinstance(oToken, token.record_constraint.open_parenthesis):
+            lReturn.append(token.record_constraint.open_parenthesis())
+        if isinstance(oToken, token.record_constraint.close_parenthesis):
+            lReturn.append(token.record_constraint.close_parenthesis())
+    return lReturn

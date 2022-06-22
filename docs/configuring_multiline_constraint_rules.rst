@@ -197,6 +197,24 @@ Setting the :code:`array_constraint` option to :code:`one_line_per_dimension` wi
        (7 downto 0)
    );
 
+Exceptions
+##########
+
+Exceptions to the above rules exist to allow formatting of specific structures.
+These exceptions can be enabled by adding them to the :code:`exceptions` option.
+The following exceptions are defined:
+
+* keep_record_constraint_with_single_element_on_one_line
+
+keep_record_constraint_with_single_element_on_one_line
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This exception will force a record constraint with a single element to a single line.
+
+.. code-block:: vhdl
+
+   signal my_sig : t_data_struct(data(7 downto 0));
+
 Rules Enforcing Multiline Constraint Rules
 ##########################################
 
