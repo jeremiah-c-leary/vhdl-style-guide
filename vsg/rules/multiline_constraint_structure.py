@@ -346,16 +346,25 @@ def analyze_exception_one(self, oToi):
     iLine, lTokens = rules_utils.get_toi_parameters(oToi)
     for iToken, oToken in enumerate(lTokens):
         iLine = utils.increment_line_number(iLine, oToken)
-        if isinstance(oToken, token.record_constraint.open_parenthesis):
-            iStart = iToken
-            iStartLine = iLine
-            oToi.set_meta_data('iStart', iStart)
-            oToi.set_meta_data('iStartLine', iStartLine)
-        if isinstance(oToken, token.record_constraint.close_parenthesis):
-            oToi.set_meta_data('iToken', iToken)
-            if rules_utils.number_of_carriage_returns(lTokens[iStart:iToken]) > 0:
-                oViolation = create_array_constraint_remove_carriage_return_violation(oToi)
-                self.add_violation(oViolation)
+        oToi.set_meta_data('iToken', iToken)
+        record_constraint_open_paren_detected(oToi, iLine, oToken)
+        record_constraint_close_paren_detected(self, oToi, oToken)
+
+
+def record_constraint_open_paren_detected(oToi, iLine, oToken):
+    if isinstance(oToken, token.record_constraint.open_parenthesis):
+        oToi.set_meta_data('iStart', oToi.get_meta_data('iToken'))
+        oToi.set_meta_data('iStartLine', iLine)
+
+
+def record_constraint_close_paren_detected(self, oToi, oToken):
+    if isinstance(oToken, token.record_constraint.close_parenthesis):
+        lTokens = oToi.get_tokens()
+        iStart = oToi.get_meta_data('iStart')
+        iToken = oToi.get_meta_data('iToken')
+        if rules_utils.number_of_carriage_returns(lTokens[iStart:iToken]) > 0:
+            oViolation = create_array_constraint_remove_carriage_return_violation(oToi)
+            self.add_violation(oViolation)
 
 
 def token_pattern_match(oToi):
@@ -393,15 +402,17 @@ def add_index_constraint_open_parenthesis(oToken, lReturn):
     if isinstance(oToken, token.index_constraint.open_parenthesis):
         lReturn.append(token.index_constraint.open_parenthesis())
 
+
 def add_index_constraint_close_parenthesis(oToken, lReturn):
     if isinstance(oToken, token.index_constraint.close_parenthesis):
         lReturn.append(token.index_constraint.close_parenthesis())
+
 
 def add_record_constraint_open_parenthesis(oToken, lReturn):
     if isinstance(oToken, token.record_constraint.open_parenthesis):
         lReturn.append(token.record_constraint.open_parenthesis())
 
+
 def add_record_constraint_close_parenthesis(oToken, lReturn):
     if isinstance(oToken, token.record_constraint.close_parenthesis):
         lReturn.append(token.record_constraint.close_parenthesis())
-
