@@ -107,7 +107,7 @@ def analyze_for_array_constraint_all_in_one_line(self, oToi):
     iToken = oToi.get_meta_data('iToken')
     lTokens = oToi.get_tokens()
 
-    if _token_at_beginning_of_line(iStart, lTokens):
+    if rules_utils.token_at_beginning_of_line_in_token_list(iStart, lTokens):
         oViolation = create_array_constraint_all_in_one_line_violation(oToi)
         self.add_violation(oViolation)
     elif rules_utils.number_of_carriage_returns(lTokens[iStart:iToken]) > 0:
@@ -118,9 +118,8 @@ def analyze_for_array_constraint_all_in_one_line(self, oToi):
 def create_array_constraint_all_in_one_line_violation(oToi):
     iStart = oToi.get_meta_data('iStart')
     iStartLine = oToi.get_meta_data('iStartLine')
-    iToken = oToi.get_meta_data('iToken')
     lTokens = oToi.get_tokens()
-    oToi.set_meta_data('sSolution', 'Move parenthesis to next line.')
+    oToi.set_meta_data('sSolution', 'Move parenthesis to next line and remove carriage returns in array constraint.')
     oToi.set_meta_data('sAction', 'remove_new_line')
     if isinstance(lTokens[iStart - 1], parser.whitespace):
         oToi.set_meta_data('iStart', iStart - 2)
@@ -147,7 +146,7 @@ def analyze_for_array_constraint_one_line_per_dimension(self, oToi):
     iStart = oToi.get_meta_data('iStart')
     iToken = oToi.get_meta_data('iToken')
     lTokens = oToi.get_tokens()
-    if not _token_at_beginning_of_line(iStart, lTokens):
+    if not rules_utils.token_at_beginning_of_line_in_token_list(iStart, lTokens):
         oViolation = create_array_constraint_one_line_violation(oToi)
         self.add_violation(oViolation)
     elif rules_utils.number_of_carriage_returns(lTokens[iStart:iToken]) > 0:
@@ -158,7 +157,6 @@ def analyze_for_array_constraint_one_line_per_dimension(self, oToi):
 def create_array_constraint_one_line_violation(oToi):
     iStart = oToi.get_meta_data('iStart')
     iStartLine = oToi.get_meta_data('iStartLine')
-    iToken = oToi.get_meta_data('iToken')
     lTokens = oToi.get_tokens()
     oToi.set_meta_data('sSolution', 'Move parenthesis to next line and remove carriage returns in array constraint.')
     oToi.set_meta_data('sAction', 'add_new_line_and_remove_carraige_returns')
@@ -222,7 +220,7 @@ def analyze_with_function(self, oToi, oTokenType, fFunction):
 def analyze_add_new_line(self, oToi):
     iToken = oToi.get_meta_data('iToken')
     lTokens = oToi.get_tokens()
-    if not _token_at_beginning_of_line(iToken, lTokens):
+    if not rules_utils.token_at_beginning_of_line_in_token_list(iToken, lTokens):
         oViolation = create_add_new_line_violation(oToi)
         self.add_violation(oViolation)
 
@@ -245,7 +243,7 @@ def create_add_new_line_violation(oToi):
 def analyze_remove_new_line(self, oToi):
     iToken = oToi.get_meta_data('iToken')
     lTokens = oToi.get_tokens()
-    if _token_at_beginning_of_line(iToken, lTokens):
+    if rules_utils.token_at_beginning_of_line_in_token_list(iToken, lTokens):
         oViolation = create_remove_new_line_violation(self, oToi)
         self.add_violation(oViolation)
 
@@ -261,13 +259,6 @@ def create_remove_new_line_violation(self, oToi):
     oViolation = _create_violation(oToi)
     return oViolation
 
-
-def _token_at_beginning_of_line(iToken, lTokens):
-    if isinstance(lTokens[iToken - 1], parser.carriage_return):
-        return True
-    if isinstance(lTokens[iToken - 1], parser.whitespace) and isinstance(lTokens[iToken - 2], parser.carriage_return):
-        return True
-    return False
 
 
 def _create_violation(oToi):
