@@ -328,19 +328,21 @@ def exception_applied(self, oToi):
 
 
 def _check_for_exception_one(self, oToi):
-    if 'keep_record_constraint_with_single_element_on_one_line' not in self.exceptions:
+    if not exception_enabled(self):
         return False
-    lTokens = filter_tokens(oToi)
-    lCheckType = []
-    lCheckType.append(token.record_constraint.open_parenthesis)
-    lCheckType.append(token.index_constraint.open_parenthesis)
-    lCheckType.append(token.index_constraint.close_parenthesis)
-    lCheckType.append(token.record_constraint.close_parenthesis)
-    if len(lCheckType) != len(lTokens):
+    if not token_pattern_match(oToi):
         return False
-    for iIndex in range(0, len(lCheckType)):
-        if not isinstance(lTokens[iIndex], lCheckType[iIndex]):
-            return False
+    analyze_exception_one(self, oToi)
+    return True
+
+
+def exception_enabled(self):
+    if 'keep_record_constraint_with_single_element_on_one_line' in self.exceptions:
+        return True
+    return False
+
+
+def analyze_exception_one(self, oToi):
     iLine, lTokens = rules_utils.get_toi_parameters(oToi)
     for iToken, oToken in enumerate(lTokens):
         iLine = utils.increment_line_number(iLine, oToken)
@@ -354,19 +356,52 @@ def _check_for_exception_one(self, oToi):
             if rules_utils.number_of_carriage_returns(lTokens[iStart:iToken]) > 0:
                 oViolation = create_array_constraint_remove_carriage_return_violation(oToi)
                 self.add_violation(oViolation)
+
+
+def token_pattern_match(oToi):
+    lActual = filter_tokens(oToi)
+    lExpected = create_expected_token_pattern()
+    if len(lExpected) != len(lActual):
+        return False
+    for iIndex in range(0, len(lExpected)):
+        if not isinstance(lActual[iIndex], lExpected[iIndex]):
+            return False
     return True
+
+
+def create_expected_token_pattern():
+    lCheckType = []
+    lCheckType.append(token.record_constraint.open_parenthesis)
+    lCheckType.append(token.index_constraint.open_parenthesis)
+    lCheckType.append(token.index_constraint.close_parenthesis)
+    lCheckType.append(token.record_constraint.close_parenthesis)
+    return lCheckType
 
 
 def filter_tokens(oToi):
     lReturn = []
     lTokens = oToi.get_tokens()
     for oToken in lTokens:
-        if isinstance(oToken, token.index_constraint.open_parenthesis):
-            lReturn.append(token.index_constraint.open_parenthesis())
-        if isinstance(oToken, token.index_constraint.close_parenthesis):
-            lReturn.append(token.index_constraint.close_parenthesis())
-        if isinstance(oToken, token.record_constraint.open_parenthesis):
-            lReturn.append(token.record_constraint.open_parenthesis())
-        if isinstance(oToken, token.record_constraint.close_parenthesis):
-            lReturn.append(token.record_constraint.close_parenthesis())
+        add_index_constraint_open_parenthesis(oToken, lReturn)
+        add_index_constraint_close_parenthesis(oToken, lReturn)
+        add_record_constraint_open_parenthesis(oToken, lReturn)
+        add_record_constraint_close_parenthesis(oToken, lReturn)
     return lReturn
+
+
+def add_index_constraint_open_parenthesis(oToken, lReturn):
+    if isinstance(oToken, token.index_constraint.open_parenthesis):
+        lReturn.append(token.index_constraint.open_parenthesis())
+
+def add_index_constraint_close_parenthesis(oToken, lReturn):
+    if isinstance(oToken, token.index_constraint.close_parenthesis):
+        lReturn.append(token.index_constraint.close_parenthesis())
+
+def add_record_constraint_open_parenthesis(oToken, lReturn):
+    if isinstance(oToken, token.record_constraint.open_parenthesis):
+        lReturn.append(token.record_constraint.open_parenthesis())
+
+def add_record_constraint_close_parenthesis(oToken, lReturn):
+    if isinstance(oToken, token.record_constraint.close_parenthesis):
+        lReturn.append(token.record_constraint.close_parenthesis())
+
