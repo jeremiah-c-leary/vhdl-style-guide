@@ -119,7 +119,7 @@ def create_array_constraint_all_in_one_line_violation(oToi):
     iStart = oToi.get_meta_data('iStart')
     iStartLine = oToi.get_meta_data('iStartLine')
     lTokens = oToi.get_tokens()
-    oToi.set_meta_data('sSolution', 'Move parenthesis to next line and remove carriage returns in array constraint.')
+    oToi.set_meta_data('sSolution', 'Move open parenthesis to previous line and remove carriage returns in array constraint.')
     oToi.set_meta_data('sAction', 'remove_new_line')
     if isinstance(lTokens[iStart - 1], parser.whitespace):
         oToi.set_meta_data('iStart', iStart - 2)
@@ -158,7 +158,7 @@ def create_array_constraint_one_line_violation(oToi):
     iStart = oToi.get_meta_data('iStart')
     iStartLine = oToi.get_meta_data('iStartLine')
     lTokens = oToi.get_tokens()
-    oToi.set_meta_data('sSolution', 'Move parenthesis to next line and remove carriage returns in array constraint.')
+    oToi.set_meta_data('sSolution', 'Move open parenthesis to next line and remove carriage returns in array constraint.')
     oToi.set_meta_data('sAction', 'add_new_line_and_remove_carraige_returns')
     if isinstance(lTokens[iStart - 1], parser.whitespace):
         oToi.set_meta_data('iStart', iStart - 1)
@@ -258,7 +258,6 @@ def create_remove_new_line_violation(self, oToi):
     oToi.set_meta_data('iStart', utils.find_previous_non_whitespace_token(iToken - 1, lTokens) + 1)
     oViolation = _create_violation(oToi)
     return oViolation
-
 
 
 def _create_violation(oToi):
