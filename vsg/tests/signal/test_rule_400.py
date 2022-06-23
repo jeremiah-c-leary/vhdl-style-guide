@@ -34,7 +34,7 @@ class test_signal_rule(unittest.TestCase):
         self.assertEqual(oRule.groups, ['alignment'])
 
         lExpected = []
-        lExpected.extend(range(4, 20))
+        lExpected.extend(range(5, 20))
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))

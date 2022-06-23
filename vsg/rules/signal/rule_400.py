@@ -37,3 +37,4 @@ class rule_400(Rule):
         Rule.__init__(self, 'signal', '400', lTokenPairs)
         self.phase = 5
         self.subphase = 3
+        self.bIgnoreStartParen = True
