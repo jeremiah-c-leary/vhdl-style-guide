@@ -495,6 +495,8 @@ port_020
 
 This rule checks for at least one space before the colon.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -698,7 +700,7 @@ port_027
 
 |phase_1| |error| |structure|
 
-This rule checks the semicolon is not on it's own line.
+This rule checks the semicolon is not on its own line.
 
 **Violation**
 

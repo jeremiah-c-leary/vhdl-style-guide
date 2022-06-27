@@ -28,6 +28,7 @@ The rules are divided into catagories depending on the part of the VHDL code bei
    entity_rules.rst
    entity_specification_rules.rst
    exit_statement_rules.rst
+   exponent_rules.rst
    file_rules.rst
    for_loop_rules.rst
    for_generate_statement_rules.rst
@@ -59,6 +60,7 @@ The rules are divided into catagories depending on the part of the VHDL code bei
    subprogram_body_rules.rst
    subtype_rules.rst
    type_rules.rst
+   use_clause_rules.rst
    variable_rules.rst
    variable_assignment_rules.rst
    wait_rules.rst

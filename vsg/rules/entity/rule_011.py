@@ -1,12 +1,14 @@
 
-from vsg.rules import single_space_between_tokens
+from vsg.rules.whitespace_between_tokens import Rule
 
 from vsg.token import entity_declaration as token
 
 
-class rule_011(single_space_between_tokens):
+class rule_011(Rule):
     '''
     This rule checks for a single space after the **end** keyword.
+
+    |configuring_whitespace_rules_link|
 
     **Violation**
 
@@ -21,5 +23,6 @@ class rule_011(single_space_between_tokens):
        end entity fifo;
     '''
     def __init__(self):
-        single_space_between_tokens.__init__(self, 'entity', '011', token.end_keyword, token.end_entity_keyword)
-        self.solution = 'Reduce spaces between *end* keyword and *entity* keyword to a single space.'
+        Rule.__init__(self, 'entity', '011')
+        self.left_token = token.end_keyword
+        self.right_token = token.end_entity_keyword

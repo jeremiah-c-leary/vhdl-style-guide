@@ -5,6 +5,9 @@ from vsg import parser
 from vsg.token import direction
 from vsg.token import choice
 from vsg.token import element_association
+from vsg.token import exponent
+from vsg.token import predefined_attribute
+
 from vsg.token.ieee.std_logic_1164 import types
 
 
@@ -243,14 +246,11 @@ def find_previous_non_whitespace_token(iToken, lObjects):
 
 
 def detect_submodule(iToken, lObjects, module):
-    iEnd = len(lObjects) - 1
     iLast = -1
     iReturn = iToken
     while iLast != iReturn:
         if is_next_token('end', iReturn, lObjects):
             return iToken
-        if iReturn == iEnd:
-            return iReturn
         iReturn = find_next_token(iReturn, lObjects)
         iLast = iReturn
         iReturn = module.detect(iReturn, lObjects)
@@ -709,7 +709,7 @@ def is_whitespace(oObject):
 def read_vhdlfile(sFileName):
     try:
         lLines = []
-        with open(sFileName) as oFile:
+        with open(sFileName, encoding='utf-8') as oFile:
             for sLine in oFile:
                 lLines.append(sLine)
         return lLines, None
@@ -776,9 +776,15 @@ def assign_special_tokens(lObjects, iCurrent, oType):
     elif sValue == '(':
         assign_token(lObjects, iCurrent, parser.open_parenthesis)
     elif sValue == '-':
-        assign_token(lObjects, iCurrent, parser.todo)
+        if isinstance(lObjects[iCurrent - 1], exponent.e_keyword):
+            assign_token(lObjects, iCurrent, exponent.minus_sign)
+        else:
+            assign_token(lObjects, iCurrent, parser.todo)
     elif sValue == '+':
-        assign_token(lObjects, iCurrent, parser.todo)
+        if isinstance(lObjects[iCurrent - 1], exponent.e_keyword):
+            assign_token(lObjects, iCurrent, exponent.plus_sign)
+        else:
+            assign_token(lObjects, iCurrent, parser.todo)
     elif sValue == '*':
         assign_token(lObjects, iCurrent, parser.todo)
     elif sValue == '**':
@@ -809,5 +815,32 @@ def assign_special_tokens(lObjects, iCurrent, oType):
         assign_token(lObjects, iCurrent, choice.others_keyword)
     elif sValue.lower() == '=>':
         assign_token(lObjects, iCurrent, element_association.assignment)
+    elif sValue.lower() == 'e':
+        if lObjects[iCurrent + 1].get_value().isdigit() or lObjects[iCurrent + 1].get_value() == '-' or lObjects[iCurrent + 1].get_value() == '+':
+            assign_token(lObjects, iCurrent, exponent.e_keyword)
+        else:
+            assign_token(lObjects, iCurrent, oType)
+    elif exponent_detected(lObjects, iCurrent):
+        assign_token(lObjects, iCurrent, exponent.integer)
     else:
         assign_token(lObjects, iCurrent, oType)
+
+
+def exponent_detected(lObjects, iCurrent):
+    if isinstance(lObjects[iCurrent - 1], exponent.e_keyword):
+        return True
+    if isinstance(lObjects[iCurrent - 1], exponent.plus_sign):
+        return True
+    if isinstance(lObjects[iCurrent - 1], exponent.minus_sign):
+        return True
+    return False
+
+
+def classify_predefined_types(lObjects, iCurrent):
+    if not isinstance(lObjects[iCurrent], parser.todo):
+        return
+    if lObjects[iCurrent].get_value().lower() in predefined_attribute.values:
+        if lObjects[iCurrent].get_value().lower() == 'event':
+            assign_token(lObjects, iCurrent, predefined_attribute.event_keyword)
+        else:
+            assign_token(lObjects, iCurrent, predefined_attribute.keyword)

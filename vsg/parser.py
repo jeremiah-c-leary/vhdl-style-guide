@@ -275,6 +275,15 @@ class comma(item):
         item.__init__(self, sString)
 
 
+class dot(item):
+    '''
+    unique_id = parser : dot
+    '''
+
+    def __init__(self, sString='.'):
+        item.__init__(self, sString)
+
+
 class semicolon(item):
     '''
     unique_id = parser : semicolon
@@ -521,3 +530,12 @@ class slice_name():
 
     def get_tokens(self):
         return self.tokens
+
+
+class integer(item):
+    '''
+    unique_id = parser : integer
+    '''
+
+    def __init__(self, sString):
+        item.__init__(self, sString)

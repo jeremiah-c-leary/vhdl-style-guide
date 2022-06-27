@@ -33,6 +33,8 @@ entity_002
 
 This rule checks for a single space after the **entity** keyword.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -142,6 +144,8 @@ entity_007
 
 This rule checks for a single space before the **is** keyword.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -228,6 +232,8 @@ entity_011
 
 This rule checks for a single space after the **end** keyword.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -267,6 +273,8 @@ entity_013
 |phase_2| |error| |whitespace|
 
 This rule checks for a single space after the **entity** keyword in the closing of the entity declaration.
+
+|configuring_whitespace_rules_link|
 
 **Violation**
 
@@ -505,7 +513,7 @@ entity_021
 
 |phase_1| |error| |structure|
 
-This rule checks the **end** keyword is on it's own line.
+This rule checks the **end** keyword is on its own line.
 
 **Violation**
 
@@ -577,7 +585,7 @@ entity_024
 
 |phase_1| |error| |structure|
 
-This rule checks the end entity simple name is not on it's own line.
+This rule checks the end entity simple name is not on its own line.
 
 **Violation**
 
@@ -601,7 +609,7 @@ entity_025
 
 |phase_1| |error| |structure|
 
-This rule checks the semicolon is not on it's own line.
+This rule checks the semicolon is not on its own line.
 
 **Violation**
 
@@ -685,7 +693,7 @@ entity_029
 
 |phase_1| |error| |structure|
 
-This rule checks the **begin** keyword is on it's own line.
+This rule checks the **begin** keyword is on its own line.
 
 **Violation**
 

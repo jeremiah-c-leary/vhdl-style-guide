@@ -31,6 +31,8 @@ context_ref_002
 
 This rule checks for a single space between the **context** keyword and the context selected name.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -67,34 +69,17 @@ This rule checks the **context** keyword has proper case.
 context_ref_004
 ###############
 
-|phase_6| |error| |case| |case_name|
+This rule has been split into the following rules:
 
-This rule checks the context selected names have proper case in the context reference.
-
-|configuring_uppercase_and_lowercase_rules_link|
-
-**Violation**
-
-.. code-block:: vhdl
-
-   context C1;
-
-   context CON1, Con2;
-
-**Fix**
-
-.. code-block:: vhdl
-
-   context c1;
-
-   context con1, con2;
+* :ref:`context_ref_500`
+* :ref:`context_ref_501`
 
 context_ref_005
 ###############
 
 |phase_1| |error| |structure|
 
-This rule checks the **context** keyword is on it's own line.
+This rule checks the **context** keyword is on its own line.
 
 **Violation**
 
@@ -214,4 +199,46 @@ This rule checks for multiple selected names in a single reference.
    context c1;
    context c2;
    context c3;
+
+context_ref_500
+###############
+
+|phase_6| |error| |case| |case_name|
+
+This rule checks the library name called out in the selected name has proper case.
+
+|configuring_uppercase_and_lowercase_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   context my_LIB.all;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   context my_lib.all;
+
+context_ref_501
+###############
+
+|phase_6| |error| |case| |case_name|
+
+This rule checks the context name called out in the selected name has proper case.
+
+|configuring_uppercase_and_lowercase_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   context my_lib.INTERFACES;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   context my_lib.interfaces;
 

@@ -1,15 +1,17 @@
 
 from vsg import token
 
-from vsg.rules import whitespace_before_token
+from vsg.rules.whitespace_before_token import Rule
 
 lTokens = []
 lTokens.append(token.signal_declaration.colon)
 
 
-class rule_006(whitespace_before_token):
+class rule_006(Rule):
     '''
     This rule checks for at least a single space before the colon.
+
+    |configuring_whitespace_rules_link|
 
     **Violation**
 
@@ -26,5 +28,5 @@ class rule_006(whitespace_before_token):
        signal rd_en   : std_logic;
     '''
     def __init__(self):
-        whitespace_before_token.__init__(self, 'signal', '006', lTokens)
-        self.solution = 'Ensure at least a single space exists before the :'
+        Rule.__init__(self, 'signal', '006', lTokens)
+        self.number_of_spaces = '>=1'

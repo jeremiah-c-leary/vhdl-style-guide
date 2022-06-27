@@ -1,7 +1,7 @@
 
 from vsg import token
 
-from vsg.rules import single_space_after_token as Rule
+from vsg.rules.whitespace_after_token import Rule
 
 lTokens = []
 lTokens.append(token.alias_declaration.is_keyword)
@@ -10,6 +10,8 @@ lTokens.append(token.alias_declaration.is_keyword)
 class rule_102(Rule):
     '''
     This rule checks for a single space after the **is** keyword.
+
+    |configuring_whitespace_rules_link|
 
     **Violation**
 

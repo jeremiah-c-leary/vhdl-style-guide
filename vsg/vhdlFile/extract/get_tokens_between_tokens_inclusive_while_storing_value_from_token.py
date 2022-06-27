@@ -12,27 +12,39 @@ def get_tokens_between_tokens_inclusive_while_storing_value_from_token(left_toke
 
     lValueIndexes = oTokenMap.get_token_indexes(value_token)
 
-    iPreviousEnd = 0
+    lValues = []
+    lValuesPopped = []
     for iStart, iEnd in zip(lStart, lEnd):
-        sValue = None
 
-        iValueIndex = bisect.bisect_left(lValueIndexes, iEnd) - 1
-        if iValueIndex >= 0:
-            iValue = lValueIndexes[iValueIndex]
-
-            oValueToken = lAllTokens[iValue]
-            if iValue < iPreviousEnd:
-                sValue = None
-            else:
-                sValue = oValueToken.get_value()
-        else:
-            sValue = None
+        update_value_list(lValueIndexes, lValues, lValuesPopped, iStart)
 
         iLine = oTokenMap.get_line_number_of_index(iStart)
 
         oTokens = tokens.New(iStart, iLine, lAllTokens[iStart:iEnd + 1])
+        sValue = get_matching_token_value(lValues, lAllTokens)
         oTokens.set_token_value(sValue)
         lReturn.append(oTokens)
-        iPreviousEnd = iEnd
+        update_popped_list(lValuesPopped, lValues)
 
     return lReturn
+
+
+def update_value_list(lValueIndexes, lValues, lValuesPopped, iLeftIndex):
+    for iValue in lValueIndexes:
+        if iLeftIndex > iValue and iValue not in lValuesPopped and iValue not in lValues:
+            lValues.append(iValue)
+
+
+def get_matching_token_value(lValues, lAllTokens):
+    try:
+        oValueToken = lAllTokens[lValues[-1]]
+        return oValueToken.get_value()
+    except IndexError:
+        return None
+
+
+def update_popped_list(lValuesPopped, lValues):
+    try:
+        lValuesPopped.append(lValues.pop(-1))
+    except IndexError:
+        pass

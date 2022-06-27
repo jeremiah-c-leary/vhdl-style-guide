@@ -44,6 +44,10 @@ lTrailingWhitespace, eAlignmentsError = vhdlFile.utils.read_vhdlfile(os.path.joi
 oTrailingWhitespace = vhdlFile.vhdlFile(lTrailingWhitespace)
 oTrailingWhitespace.set_indent_map(dIndentMap)
 
+lComments, eAlignmentsError = vhdlFile.utils.read_vhdlfile(os.path.join(sSourceCodeDir,'comments.vhd'))
+oComments = vhdlFile.vhdlFile(lComments)
+oComments.set_indent_map(dIndentMap)
+
 oConfig = utils.read_configuration(os.path.join(os.path.dirname(__file__),'..','..','..','styles', 'jcl.yaml'))
 
 oSeverityList = severity.create_list({})
@@ -148,3 +152,18 @@ class testCodeExample(unittest.TestCase):
         self.assertFalse(oRuleList.violations)
         oRuleList.check_rules()
         self.assertFalse(oRuleList.violations)
+
+    def test_comments(self):
+        oRuleList = rule_list.rule_list(oComments, oSeverityList)
+        oRuleList.configure(oConfig)
+        oRuleList.fix()
+
+        lExpected = ['']
+        utils.read_file(os.path.join(os.path.dirname(__file__),'comments.fixed.vhd'), lExpected)
+
+        self.assertEqual(lExpected, oComments.get_lines())
+
+        self.assertFalse(oRuleList.violations)
+        oRuleList.check_rules()
+        self.assertFalse(oRuleList.violations)
+

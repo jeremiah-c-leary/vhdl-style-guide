@@ -80,6 +80,7 @@ Use explicit port mapping.
 .. code-block:: vhdl
 
    port map (
+
      WR_EN    => WR_EN,
      RD_EN    => RD_EN,
      OVERFLOW => OVERFLOW
@@ -143,6 +144,8 @@ port_map_007
 |phase_2| |error| |whitespace|
 
 This rule checks for a single space after the **=>** operator in port maps.
+
+|configuring_whitespace_rules_link|
 
 **Violation**
 
@@ -219,4 +222,34 @@ This rule checks multiple port assignments on the same line.
      RD_EN => w_rd_en,
      OVERFLOW => w_overflow
    );
+
+port_map_200
+############
+
+|phase_3| |error| |blank_line|
+
+This rule checks for a blank line below the open parenthesis in a port map.
+
+|configuring_blank_lines_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+  port map (
+
+    WR_EN => w_wr_en,
+    RD_EN => w_rd_en,
+    OVERFLOW => w_overflow
+  );
+
+**Fix**
+
+.. code-block:: vhdl
+
+  port map (
+    WR_EN => w_wr_en,
+    RD_EN => w_rd_en,
+    OVERFLOW => w_overflow
+  );
 

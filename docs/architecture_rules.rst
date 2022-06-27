@@ -242,6 +242,8 @@ architecture_012
 
 This rule checks for a single space between **end** and **architecture** keywords.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -470,6 +472,8 @@ architecture_022
 
 This rule checks for a single space before the entity name in the end architecture declaration.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -663,6 +667,8 @@ architecture_030
 
 This rule checks for a single space between **architecture** and the name.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -681,6 +687,8 @@ architecture_031
 |phase_2| |error| |whitespace|
 
 This rule checks for a single space between the name and the **of** keyword.
+
+|configuring_whitespace_rules_link|
 
 **Violation**
 
@@ -701,6 +709,8 @@ architecture_032
 
 This rule checks for a single space between the **of** keyword and the entity_name.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -719,6 +729,8 @@ architecture_033
 |phase_2| |error| |whitespace|
 
 This rule checks for a single space between the entity_name and the **is** keyword.
+
+|configuring_whitespace_rules_link|
 
 **Violation**
 
@@ -755,6 +767,31 @@ This rule checks for a blank line below the end architecture statement.
    end architecture;
 
    library ieee;
+
+architecture_400
+################
+
+|phase_5| |error| |alignment|
+
+This rule checks the colons are in the same column for all attribute specifications.
+
+|configuring_keyword_alignment_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+     attribute mark_debug of wr_en : signal is "true";
+     attribute mark_debug of almost_empty : signal is "true";
+     attribute mark_debug of full : signal is "true";
+
+**Fix**
+
+.. code-block:: vhdl
+
+     attribute mark_debug of wr_en        : signal is "true";
+     attribute mark_debug of almost_empty : signal is "true";
+     attribute mark_debug of full         : signal is "true";
 
 architecture_600
 ################

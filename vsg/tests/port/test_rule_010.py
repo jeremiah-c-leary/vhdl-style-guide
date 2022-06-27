@@ -29,6 +29,7 @@ class test_port_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'port')
         self.assertEqual(oRule.identifier, '010')
+        oRule.case_exceptions = ['ieee']
 
         lExpected = [4, 5, 6, 7]
 

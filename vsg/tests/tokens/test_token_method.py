@@ -819,3 +819,38 @@ class testTokenMethod(unittest.TestCase):
         lActual = tokens.create(sLine)
   
         self.assertEqual(lTokens, lActual)
+
+    def test_real_number(self):
+        sLine = '23.45e-100 6e-8 70e+8 71.6e+8 50e90 50.23e91'
+        lTokens = []
+        lTokens.append('23.45')
+        lTokens.append('e')
+        lTokens.append('-')
+        lTokens.append('100')
+        lTokens.append(' ')
+        lTokens.append('6')
+        lTokens.append('e')
+        lTokens.append('-')
+        lTokens.append('8')
+        lTokens.append(' ')
+        lTokens.append('70')
+        lTokens.append('e')
+        lTokens.append('+')
+        lTokens.append('8')
+        lTokens.append(' ')
+        lTokens.append('71.6')
+        lTokens.append('e')
+        lTokens.append('+')
+        lTokens.append('8')
+        lTokens.append(' ')
+        lTokens.append('50')
+        lTokens.append('e')
+        lTokens.append('90')
+        lTokens.append(' ')
+        lTokens.append('50.23')
+        lTokens.append('e')
+        lTokens.append('91')
+  
+        lActual = tokens.create(sLine)
+  
+        self.assertEqual(lTokens, lActual)

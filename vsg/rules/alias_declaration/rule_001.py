@@ -9,7 +9,7 @@ lTokens.append(token.alias_declaration.alias_keyword)
 
 class rule_001(Rule):
     '''
-    This rule checks the **alias** keyword is on it's own line.
+    This rule checks the **alias** keyword is on its own line.
 
     **Violation**
 

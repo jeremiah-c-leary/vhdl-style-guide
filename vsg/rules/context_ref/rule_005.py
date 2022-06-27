@@ -9,7 +9,7 @@ lTokens.append(token.context_reference.keyword)
 
 class rule_005(split_line_at_token):
     '''
-    This rule checks the **context** keyword is on it's own line.
+    This rule checks the **context** keyword is on its own line.
 
     **Violation**
 

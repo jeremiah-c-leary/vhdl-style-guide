@@ -9,7 +9,7 @@ lTokens.append(token.if_statement.elsif_keyword)
 
 class rule_023(split_line_at_token):
     '''
-    This rule checks the **elsif** keyword is on it's own line.
+    This rule checks the **elsif** keyword is on its own line.
 
     **Violation**
 

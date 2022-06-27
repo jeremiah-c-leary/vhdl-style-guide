@@ -106,7 +106,7 @@ class rule_029(structure.Rule):
             iStartIndex = 0
             for iToken, oToken in enumerate(lTokens):
                 if self.clock == 'edge':
-                    if utils.are_next_consecutive_token_types_ignoring_whitespace([parser.tic, parser.event_keyword, token.logical_operator.and_operator, None, token.relational_operator.equal], iToken + 1, lTokens):
+                    if utils.are_next_consecutive_token_types_ignoring_whitespace([parser.tic, token.predefined_attribute.event_keyword, token.logical_operator.and_operator, None, token.relational_operator.equal], iToken + 1, lTokens):
                         bEventFound = True
                         iStartIndex = iToken
                         sSolution = 'Change event to rising_edge/falling_edge.'
@@ -171,7 +171,7 @@ class rule_029(structure.Rule):
             lTokens = []
             lTokens.append(parser.todo(dAction['clock']))
             lTokens.append(parser.tic("'"))
-            lTokens.append(parser.event_keyword('event'))
+            lTokens.append(token.predefined_attribute.event_keyword('event'))
             lTokens.append(parser.whitespace(' '))
             lTokens.append(token.logical_operator.and_operator('and'))
             lTokens.append(parser.whitespace(' '))

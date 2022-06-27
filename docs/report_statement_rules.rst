@@ -20,14 +20,14 @@ This rule removes labels on report_statement_statements.
 
 .. code-block:: vhdl
 
-    REPORT_LABEL : report "FIFO width is limited to 16 bits.";
+    report "FIFO width is limited to 16 bits.";
 
 report_statement_002
 ####################
 
 |phase_1| |error| |structure|
 
-This rule checks the **severity** keyword is on it's own line.
+This rule checks the **severity** keyword is on its own line.
 
 **Violation**
 
@@ -49,6 +49,8 @@ report_statement_100
 
 This rule checks for a single space after the **report** keyword.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -67,6 +69,8 @@ report_statement_101
 |phase_2| |error| |whitespace|
 
 This rule checks for a single space after the **severity** keyword.
+
+|configuring_whitespace_rules_link|
 
 **Violation**
 

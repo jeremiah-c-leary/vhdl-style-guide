@@ -9,7 +9,7 @@ lTokens.append(token.if_statement.end_keyword)
 
 class rule_020(split_line_at_token):
     '''
-    This rule checks the **end if** keyword is on it's own line.
+    This rule checks the **end if** keyword is on its own line.
 
     **Violation**
 

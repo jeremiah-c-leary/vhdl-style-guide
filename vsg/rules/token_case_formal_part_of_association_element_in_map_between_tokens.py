@@ -5,6 +5,7 @@ from vsg import token
 from vsg import violation
 from vsg.rule_group import case
 from vsg.rules import case_utils
+from vsg.rules import utils
 
 
 class token_case_formal_part_of_association_element_in_map_between_tokens(case.Rule):
@@ -32,6 +33,7 @@ class token_case_formal_part_of_association_element_in_map_between_tokens(case.R
         self.configuration.append('case')
         self.prefix_exceptions = []
         self.suffix_exceptions = []
+        self.case_exceptions = []
         if sMapType == 'port':
             self.oMapStart = token.port_map_aspect.open_parenthesis
             self.oMapEnd = token.port_map_aspect.close_parenthesis
@@ -42,13 +44,16 @@ class token_case_formal_part_of_association_element_in_map_between_tokens(case.R
         self.oEnd = oEnd
 
     def _get_tokens_of_interest(self, oFile):
+        self.case_exceptions_lower = utils.lowercase_list(self.case_exceptions)
         return oFile.get_tokens_bounded_by(self.oStart, self.oEnd)
 
     def _analyze(self, lToi):
         check_prefix = case_utils.is_exception_enabled(self.prefix_exceptions)
         check_suffix = case_utils.is_exception_enabled(self.suffix_exceptions)
+        check_whole = case_utils.is_exception_enabled(self.suffix_exceptions)
         for oToi in lToi:
             lTokens = oToi.get_tokens()
+
             bMapFound = False
             bFormalFound = False
             iLine = oToi.get_line_number()
@@ -61,10 +66,9 @@ class token_case_formal_part_of_association_element_in_map_between_tokens(case.R
                     break
                 if isinstance(oToken, parser.carriage_return):
                    iLine += 1
-
                 if isinstance(oToken, token.association_element.formal_part) and not bFormalFound and bMapFound:
                     bFormalFound = True
-                    oViolation = case_utils.check_for_case_violation(oToi, self, check_prefix, check_suffix, iToken, iLine)
+                    oViolation = case_utils.check_for_case_violation(oToi, self, check_prefix, check_suffix, check_whole, iToken, iLine)
                     if oViolation is not None:
                         self.add_violation(oViolation)
                 if isinstance(oToken, token.association_element.assignment):

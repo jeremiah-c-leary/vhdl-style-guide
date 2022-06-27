@@ -227,7 +227,7 @@
 <class 'vsg.token.index_constraint.open_parenthesis'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.tic'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.predefined_attribute.keyword'>
 <class 'vsg.token.index_constraint.close_parenthesis'>
 <class 'vsg.token.signal_declaration.semicolon'>
 --------------------------------------------------------------------------------
@@ -260,7 +260,7 @@
 <class 'vsg.token.index_constraint.open_parenthesis'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.tic'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.predefined_attribute.keyword'>
 <class 'vsg.token.index_constraint.close_parenthesis'>
 <class 'vsg.token.signal_declaration.semicolon'>
 --------------------------------------------------------------------------------
@@ -275,7 +275,7 @@
 <class 'vsg.token.index_constraint.open_parenthesis'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.tic'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.predefined_attribute.keyword'>
 <class 'vsg.token.index_constraint.close_parenthesis'>
 <class 'vsg.token.signal_declaration.semicolon'>
 --------------------------------------------------------------------------------
@@ -290,7 +290,7 @@
 <class 'vsg.token.index_constraint.open_parenthesis'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.tic'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.predefined_attribute.keyword'>
 <class 'vsg.parser.comment'>
 --------------------------------------------------------------------------------
 38 |  );

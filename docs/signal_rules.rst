@@ -91,6 +91,8 @@ signal_005
 
 This rule checks for a single space after the colon.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -111,6 +113,8 @@ signal_006
 |phase_2| |error| |whitespace|
 
 This rule checks for at least a single space before the colon.
+
+|configuring_whitespace_rules_link|
 
 **Violation**
 

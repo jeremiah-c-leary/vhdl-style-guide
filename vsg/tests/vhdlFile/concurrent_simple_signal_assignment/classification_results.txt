@@ -241,6 +241,8 @@
 <class 'vsg.token.component_instantiation_statement.instantiation_label'>
 <class 'vsg.token.component_instantiation_statement.label_colon'>
 <class 'vsg.token.instantiated_unit.entity_keyword'>
+<class 'vsg.token.instantiated_unit.library_name'>
+<class 'vsg.token.instantiated_unit.dot'>
 <class 'vsg.token.instantiated_unit.entity_name'>
 --------------------------------------------------------------------------------
 39 |     generic map (

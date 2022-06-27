@@ -36,7 +36,7 @@ rule :
   process_019 :
     case : upper
   # Ignored rules
-  library_600 :
+  library_500 :
     disable : True
   # Set alignment rules
   architecture_026 :

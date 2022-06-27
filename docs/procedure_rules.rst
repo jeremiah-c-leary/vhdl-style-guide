@@ -200,7 +200,7 @@ procedure_006
 
 |phase_4| |error| |indent|
 
-This rule checks the indent of the closing parenthesis if it is on it's own line.
+This rule checks the indent of the closing parenthesis if it is on its own line.
 
 **Violation**
 
@@ -381,6 +381,8 @@ procedure_100
 
 This rule checks for a single space between the following procedure elements:  **procedure** keyword, procedure designator, open parenthesis, close parenthesis, and **is** keywords.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -407,6 +409,8 @@ procedure_101
 |phase_2| |error| |whitespace|
 
 This rule checks for a single space between the **end** and **procedure** keywords and procedure designator.
+
+|configuring_whitespace_rules_link|
 
 **Violation**
 
@@ -452,27 +456,27 @@ This rule checks for blank lines or comments above the **procedure** keyword.
 procedure_201
 #############
 
-This rule has been moved to rule `subprogram_body_201 <subprogram_rules.html#subprogram-body-201>`_.
+This rule has been moved to rule `subprogram_body_201 <subprogram_body_rules.html#subprogram-body-201>`_.
 
 procedure_202
 #############
 
-This rule has been moved to rule `subprogram_body_202 <subprogram_rules.html#subprogram-body-202>`_.
+This rule has been moved to rule `subprogram_body_202 <subprogram_body_rules.html#subprogram-body-202>`_.
 
 procedure_203
 #############
 
-This rule has been moved to rule `subprogram_body_203 <subprogram_rules.html#subprogram-body-203>`_.
+This rule has been moved to rule `subprogram_body_203 <subprogram_body_rules.html#subprogram-body-203>`_.
 
 procedure_204
 #############
 
-This rule has been moved to rule `subprogram_body_204 <subprogram_rules.html#subprogram-body-204>`_.
+This rule has been moved to rule `subprogram_body_204 <subprogram_body_rules.html#subprogram-body-204>`_.
 
 procedure_205
 #############
 
-This rule has been moved to rule `subprogram_body_205 <subprogram_rules.html#subprogram-body-205>`_.
+This rule has been moved to rule `subprogram_body_205 <subprogram_body_rules.html#subprogram-body-205>`_.
 
 procedure_401
 #############

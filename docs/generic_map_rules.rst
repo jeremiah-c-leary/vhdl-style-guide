@@ -163,6 +163,8 @@ generic_map_007
 
 This rule checks for a single space after the **=>** keyword in generic maps.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -210,4 +212,64 @@ Use explicit port mapping.
      RD_EN    => RD_EN,
      OVERFLOW => OVERFLOW
    );
+
+generic_map_600
+###############
+
+|phase_7| |disabled| |error| |naming|
+
+This rule checks for valid suffixes on generic identifiers in generic maps
+The default generic suffix is *\_g*.
+
+Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed suffixes.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   generic map
+   (
+     WIDTH => 32,
+     DEPTH => 512
+   )
+
+**Fix**
+
+.. code-block:: vhdl
+
+   generic map
+   (
+     WIDTH_G => 32,
+     DEPTH_G => 512
+   )
+
+generic_map_601
+###############
+
+|phase_7| |disabled| |error| |naming|
+
+This rule checks for valid prefixes on generic identifiers in generic maps
+The default generic suffix is *\g_*.
+
+Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed suffixes.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   generic map
+   (
+     WIDTH => 32,
+     DEPTH => 512
+   )
+
+**Fix**
+
+.. code-block:: vhdl
+
+   generic map
+   (
+     G_WIDTH => 32,
+     G_DEPTH => 512
+   )
 

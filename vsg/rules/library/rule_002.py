@@ -1,15 +1,17 @@
 
 from vsg import token
 
-from vsg.rules import single_space_between_token_pairs
+from vsg.rules.whitespace_between_token_pairs import Rule
 
 lTokens = []
 lTokens.append([token.library_clause.keyword, token.logical_name_list.logical_name])
 
 
-class rule_002(single_space_between_token_pairs):
+class rule_002(Rule):
     '''
     This rule checks for excessive spaces after the **library** keyword.
+
+    |configuring_whitespace_rules_link|
 
     **Violation**
 
@@ -24,5 +26,4 @@ class rule_002(single_space_between_token_pairs):
        library ieee;
     '''
     def __init__(self):
-        single_space_between_token_pairs.__init__(self, 'library', '002', lTokens)
-        self.solution = 'Ensure a single space between the *library* keyword and the logical_name.'
+        Rule.__init__(self, 'library', '002', lTokens)

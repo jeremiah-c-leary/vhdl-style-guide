@@ -1,15 +1,17 @@
 
 from vsg import token
 
-from vsg.rules import single_space_after_token
+from vsg.rules.whitespace_after_token import Rule
 
 lTokens = []
 lTokens.append(token.report_statement.severity_keyword)
 
 
-class rule_101(single_space_after_token):
+class rule_101(Rule):
     '''
     This rule checks for a single space after the **severity** keyword.
+
+    |configuring_whitespace_rules_link|
 
     **Violation**
 
@@ -26,4 +28,4 @@ class rule_101(single_space_after_token):
           severity FAILURE;
     '''
     def __init__(self):
-        single_space_after_token.__init__(self, 'report_statement', '101', lTokens)
+        Rule.__init__(self, 'report_statement', '101', lTokens)

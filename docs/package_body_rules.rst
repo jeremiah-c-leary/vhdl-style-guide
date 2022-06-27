@@ -72,6 +72,8 @@ package_body_100
 
 This rule checks for a single space between **package**, **body** and **is** keywords.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -90,6 +92,8 @@ package_body_101
 |phase_2| |error| |whitespace|
 
 This rule checks for a single space between the **end**, **package** and **body** keywords and package name.
+
+|configuring_whitespace_rules_link|
 
 **Violation**
 
@@ -300,6 +304,31 @@ This rule checks the colons are in the same column for all declarations in the p
      constant c_period : time;
 
    end package my_package;
+
+package_body_402
+################
+
+|phase_5| |error| |alignment|
+
+This rule checks the colons are in the same column for all attribute specifications.
+
+|configuring_keyword_alignment_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+     attribute mark_debug of wr_en : signal is "true";
+     attribute mark_debug of almost_empty : signal is "true";
+     attribute mark_debug of full : signal is "true";
+
+**Fix**
+
+.. code-block:: vhdl
+
+     attribute mark_debug of wr_en        : signal is "true";
+     attribute mark_debug of almost_empty : signal is "true";
+     attribute mark_debug of full         : signal is "true";
 
 package_body_500
 ################

@@ -9,7 +9,6 @@ from .move_token_next_to_another_token_if_it_exists_between_tokens import move_t
 from .move_token_left_to_next_non_whitespace_token import move_token_left_to_next_non_whitespace_token
 from .previous_line import previous_line
 from .blank_line_above_line_starting_with_token import blank_line_above_line_starting_with_token
-from .single_space_between_tokens import single_space_between_tokens
 
 from .line_length import line_length
 from .file_length import file_length
@@ -35,18 +34,9 @@ from .insert_carriage_return_after_token_if_it_is_not_followed_by_a_comment_and_
 from .align_consecutive_lines_starting_with_a_comment_above_line_starting_with_token import align_consecutive_lines_starting_with_a_comment_above_line_starting_with_token
 
 from .align_consecutive_lines_after_line_starting_with_token_and_stopping_with_token import align_consecutive_lines_after_line_starting_with_token_and_stopping_with_token
-from .whitespace_before_token import whitespace_before_token
-from .whitespace_before_tokens_in_between_tokens import whitespace_before_tokens_in_between_tokens
 from .remove_blank_lines_above_line_starting_with_token import remove_blank_lines_above_line_starting_with_token
-from .single_space_after_token import single_space_after_token
-from .single_space_before_token import single_space_before_token
-from .single_space_before_token_if_on_same_line_as_token import single_space_before_token_if_on_same_line_as_token
 from .blank_lines_between_token_pairs import blank_lines_between_token_pairs
-from .single_space_between_token_pairs import single_space_between_token_pairs
-from .single_space_between_token_pairs_bounded_by_tokens import single_space_between_token_pairs_bounded_by_tokens
-from .n_spaces_between_token_pairs_when_bounded_by_tokens import n_spaces_between_token_pairs_when_bounded_by_tokens
 from .n_spaces_before_and_after_tokens import n_spaces_before_and_after_tokens
-from .n_spaces_after_tokens import n_spaces_after_tokens
 from .spaces_before_and_after_tokens_when_bounded_by_tokens import spaces_before_and_after_tokens_when_bounded_by_tokens
 from .consistent_token_case import consistent_token_case
 from .consistent_case_of_tokens_from_between_tokens_applied_to_region import consistent_case_of_tokens_from_between_tokens_applied_to_region
@@ -104,6 +94,7 @@ from vsg.rules import context_ref
 from vsg.rules import entity
 from vsg.rules import entity_specification
 from vsg.rules import exit_statement
+from vsg.rules import exponent
 from vsg.rules import file_statement
 from vsg.rules import for_loop
 from vsg.rules import for_generate_statement
@@ -128,6 +119,7 @@ from vsg.rules import procedure
 from vsg.rules import procedure_call
 from vsg.rules import process
 from vsg.rules import ranges
+from vsg.rules import record_type_definition
 from vsg.rules import report_statement
 from vsg.rules import sequential
 from vsg.rules import signal
@@ -135,6 +127,7 @@ from vsg.rules import source_file
 from vsg.rules import subprogram_body
 from vsg.rules import subtype
 from vsg.rules import type_definition
+from vsg.rules import use_clause
 from vsg.rules import variable
 from vsg.rules import variable_assignment
 from vsg.rules import wait

@@ -1,5 +1,5 @@
 
-from vsg.rules import single_space_after_token as Rule
+from vsg.rules.whitespace_after_token import Rule
 
 from vsg.token import alias_declaration as token
 
@@ -7,6 +7,8 @@ from vsg.token import alias_declaration as token
 class rule_100(Rule):
     '''
     This rule checks for a single space after the colon for the subtype_indication.
+
+    |configuring_whitespace_rules_link|
 
     **Violation**
 
@@ -24,4 +26,3 @@ class rule_100(Rule):
     '''
     def __init__(self):
         Rule.__init__(self, 'alias_declaration', '100', [token.colon])
-        self.solution = 'Ensure a single space after :.'

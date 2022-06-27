@@ -33,6 +33,8 @@ library_002
 
 This rule checks for excessive spaces after the **library** keyword.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -138,6 +140,8 @@ library_006
 
 This rule checks for excessive spaces after the **use** keyword.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -234,7 +238,7 @@ library_010
 
 |phase_1| |error| |structure|
 
-This rule checks the **library** keyword is on it's own line.
+This rule checks the **library** keyword is on its own line.
 
 **Violation**
 
@@ -254,7 +258,7 @@ library_011
 
 |phase_1| |error| |structure|
 
-This rule checks the **use** keyword is on it's own line.
+This rule checks the **use** keyword is on its own line.
 
 **Violation**
 
@@ -269,7 +273,7 @@ This rule checks the **use** keyword is on it's own line.
    context c1 is library ieee;
        use ieee.std_logic_1164.all; end context c1;
 
-library_600
+library_500
 ###########
 
 |phase_6| |error| |case| |case_name|
@@ -293,4 +297,9 @@ This rule checks the logical_name in a library_clause has proper case.
    library ieee;
 
    library fifo_dsn;
+
+library_600
+###########
+
+This rule has been moved to library_500.
 

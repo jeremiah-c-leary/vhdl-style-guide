@@ -39,8 +39,8 @@ class rule_005(split_line_at_token_when_between_tokens_unless_token_is_found):
 
          process begin
 
-           assert WIDTH > 16
-             report "FIFO width is limited to 16 bits." severity FAILURE;
+           assert WIDTH > 16 report "FIFO width is limited to 16 bits."
+             severity FAILURE;
 
          end process;
 

@@ -72,7 +72,7 @@ block_004
 
 |phase_1| |error| |structure|
 
-This rule checks the **begin** keyword is on it's own line.
+This rule checks the **begin** keyword is on its own line.
 
 **Violation**
 
@@ -112,7 +112,7 @@ block_006
 
 |phase_1| |error| |structure|
 
-This rule checks the **end** keyword is on it's own line.
+This rule checks the **end** keyword is on its own line.
 
 **Violation**
 
@@ -155,6 +155,8 @@ block_100
 
 This rule checks for a single space between the following block elements:  label, label colon, **block** keyword, guard open parenthesis, guart close parenthesis, and **is** keywords.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -175,6 +177,8 @@ block_101
 |phase_2| |error| |whitespace|
 
 This rule checks for a single space between the **end** and **block** keywords and label.
+
+|configuring_whitespace_rules_link|
 
 **Violation**
 
@@ -462,6 +466,31 @@ This rule checks the colons are in the same column for all declarations in the b
    variable var2      : natural;
    constant c_period  : time;
    file my_test_input : my_file_type;
+
+block_402
+#########
+
+|phase_5| |error| |alignment|
+
+This rule checks the colons are in the same column for all attribute specifications.
+
+|configuring_keyword_alignment_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+     attribute mark_debug of wr_en : signal is "true";
+     attribute mark_debug of almost_empty : signal is "true";
+     attribute mark_debug of full : signal is "true";
+
+**Fix**
+
+.. code-block:: vhdl
+
+     attribute mark_debug of wr_en        : signal is "true";
+     attribute mark_debug of almost_empty : signal is "true";
+     attribute mark_debug of full         : signal is "true";
 
 block_500
 #########

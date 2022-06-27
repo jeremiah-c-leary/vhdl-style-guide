@@ -9,7 +9,7 @@ lTokens.append(token.function_specification.close_parenthesis)
 
 class rule_300(token_indent):
     '''
-    This rule checks the indent of the closing parenthesis if it is on it's own line.
+    This rule checks the indent of the closing parenthesis if it is on its own line.
 
     **Violation**
 

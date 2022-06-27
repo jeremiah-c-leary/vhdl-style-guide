@@ -84,6 +84,18 @@ class testDocGen(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
+    def test_case_generate_alternative_rules_doc(self):
+
+        lExpected, lActual = compare_files('case_generate_alternative')
+
+        self.assertEqual(lExpected, lActual)
+
+    def test_if_generate_statements_rules_doc(self):
+
+        lExpected, lActual = compare_files('if_generate_statement')
+
+        self.assertEqual(lExpected, lActual)
+
     def test_comment_rules_doc(self):
 
         lExpected, lActual = compare_files('comment')
@@ -120,6 +132,12 @@ class testDocGen(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
+    def test_element_association_rules_doc(self):
+
+        lExpected, lActual = compare_files('element_association')
+
+        self.assertEqual(lExpected, lActual)
+
     def test_entity_ref_rules_doc(self):
 
         lExpected, lActual = compare_files('entity')
@@ -135,6 +153,12 @@ class testDocGen(unittest.TestCase):
     def test_exit_statement_rules_doc(self):
 
         lExpected, lActual = compare_files('exit_statement')
+
+        self.assertEqual(lExpected, lActual)
+
+    def test_exponent_rules_doc(self):
+
+        lExpected, lActual = compare_files('exponent')
 
         self.assertEqual(lExpected, lActual)
 
@@ -258,6 +282,12 @@ class testDocGen(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
+    def test_record_type_definition_doc(self):
+
+        lExpected, lActual = compare_files('record_type_definition')
+
+        self.assertEqual(lExpected, lActual)
+
     def test_report_statement_rules_doc(self):
 
         lExpected, lActual = compare_files('report_statement')
@@ -297,6 +327,12 @@ class testDocGen(unittest.TestCase):
     def test_type_rules_doc(self):
 
         lExpected, lActual = compare_files('type')
+
+        self.assertEqual(lExpected, lActual)
+
+    def test_use_clause_rules_doc(self):
+
+        lExpected, lActual = compare_files('use_clause')
 
         self.assertEqual(lExpected, lActual)
 

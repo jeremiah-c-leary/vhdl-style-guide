@@ -39,6 +39,8 @@ instantiation_002
 
 This rule checks for a single space after the colon.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -57,6 +59,8 @@ instantiation_003
 |phase_2| |error| |whitespace|
 
 This rule checks for a single space before the colon.
+
+|configuring_whitespace_rules_link|
 
 **Violation**
 
@@ -464,6 +468,8 @@ instantiation_032
 
 This rule checks for a single space after the **component** keyword if it is used.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -538,7 +544,7 @@ instantiation_035
 
 |phase_1| |error| |structure|
 
-This rule checks the semicolon is not on it's own line.
+This rule checks the semicolon is not on its own line.
 
 **Violation**
 

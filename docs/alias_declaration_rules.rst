@@ -8,7 +8,7 @@ alias_declaration_001
 
 |phase_1| |error| |structure|
 
-This rule checks the **alias** keyword is on it's own line.
+This rule checks the **alias** keyword is on its own line.
 
 **Violation**
 
@@ -29,6 +29,8 @@ alias_declaration_100
 |phase_2| |error| |whitespace|
 
 This rule checks for a single space after the colon for the subtype_indication.
+
+|configuring_whitespace_rules_link|
 
 **Violation**
 
@@ -51,6 +53,8 @@ alias_declaration_101
 
 This rule checks for a single space before the **is** keyword if the : is present.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -71,6 +75,8 @@ alias_declaration_102
 |phase_2| |error| |whitespace|
 
 This rule checks for a single space after the **is** keyword.
+
+|configuring_whitespace_rules_link|
 
 **Violation**
 

@@ -9,6 +9,10 @@ lTokens.append(token.if_statement.else_keyword)
 lOverrides = []
 lOverrides.append(token.case_statement.case_label)
 lOverrides.append(token.case_statement.case_keyword)
+lOverrides.append(token.loop_statement.loop_label)
+lOverrides.append(token.loop_statement.loop_keyword)
+lOverrides.append(token.iteration_scheme.while_keyword)
+lOverrides.append(token.iteration_scheme.for_keyword)
 
 
 class rule_011(remove_excessive_blank_lines_below_line_ending_with_token):

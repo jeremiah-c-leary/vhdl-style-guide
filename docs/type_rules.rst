@@ -116,6 +116,8 @@ type_006
 
 This rule checks for a single space before the **is** keyword.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -135,6 +137,8 @@ type_007
 
 This rule checks for a single space after the **is** keyword.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -152,7 +156,7 @@ type_008
 
 |phase_1| |error| |structure|
 
-This rule checks the closing parenthesis of multiline enumerated types is on it's own line.
+This rule checks the closing parenthesis of multiline enumerated types is on its own line.
 
 **Violation**
 
@@ -378,6 +382,47 @@ This rule checks the indent of the closing parenthesis on multiline types.
      );
 
    begin
+
+type_017
+########
+
+|phase_1| |error| |structure|
+
+This rule checks the identifier is on the same line as the type keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   type
+   t_record is
+
+**Fix**
+
+.. code-block:: vhdl
+
+   type t_record
+   is
+
+type_018
+########
+
+|phase_1| |error| |structure|
+
+This rule checks the **is** keyword is on the same line as the identifier.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   type t_record
+   is
+
+**Fix**
+
+.. code-block:: vhdl
+
+   type t_record is
 
 type_400
 ########

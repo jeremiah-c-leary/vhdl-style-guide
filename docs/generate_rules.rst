@@ -39,6 +39,8 @@ generate_002
 
 This rule checks for a single space between the label and the colon.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -171,6 +173,8 @@ generate_008
 
 This rule checks for a single space after the **end** keyword.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -276,6 +280,8 @@ generate_013
 
 This rule checks for a single space after the **generate** keyword and the label in the **end generate** keywords.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -294,6 +300,8 @@ generate_014
 |phase_2| |error| |whitespace|
 
 This rule checks for a single space between the colon and the **for** keyword.
+
+|configuring_whitespace_rules_link|
 
 **Violation**
 
@@ -400,6 +408,28 @@ This rule checks the indent of the **end** keyword in the generate statement bod
    ram_array : for i in 0 to 7 generate
    begin
    end;
+   end generate;
+
+generate_019
+############
+
+|phase_1| |error| |structure|
+
+This rule checks the **end** keyword is on its own line.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   ram_array : for i in 0 to 7 generate
+    a <= b; end generate;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   ram_array : for i in 0 to 7 generate
+     a <= b;
    end generate;
 
 generate_400

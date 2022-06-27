@@ -231,9 +231,12 @@ def token_list_is_the_beginning_of_a_line(lTokens):
 
 
 def left_most_token_is_at_the_end_of_a_line(lTokens):
-    for oToken in lTokens[1:3]:
-        if token_is_carriage_return(oToken) or token_is_comment(oToken):
-            return True
+    if token_is_carriage_return(lTokens[1]):
+        return True
+    if token_is_comment(lTokens[1]):
+        return True
+    if token_is_whitespace(lTokens[1]) and token_is_comment(lTokens[2]):
+        return True
     return False
 
 
@@ -252,6 +255,13 @@ def remove_toi_if_token_is_at_the_end_of_the_line(lToi):
         lReturn.append(oToi)
     return lReturn
 
+
+def lowercase_list(lList):
+    lReturn = []
+    for sItem in lList:
+        lReturn.append(sItem.lower())
+    return lReturn
+  
 
 def extract_identifiers_with_mode_of_input(lToi):
     return extract_identifiers_with_mode(lToi, token.mode.in_keyword)
@@ -290,3 +300,11 @@ def change_all_whitespace_to_single_character(lTokens):
     for oToken in lTokens:
         if isinstance(oToken, parser.whitespace):
             oToken.set_value(' ')
+
+
+def token_is_at_beginning_of_line(lTokens):
+    if isinstance(lTokens[0], parser.carriage_return):
+        return True
+    if isinstance(lTokens[1], parser.carriage_return):
+        return True
+    return False

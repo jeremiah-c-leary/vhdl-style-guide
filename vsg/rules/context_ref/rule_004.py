@@ -1,35 +1,17 @@
 
-from vsg.rules import token_case_with_prefix_suffix
-
-from vsg import token
-
-lTokens = []
-lTokens.append(token.context_reference.selected_name)
+from vsg import deprecated_rule
 
 
-class rule_004(token_case_with_prefix_suffix):
+class rule_004(deprecated_rule.Rule):
     '''
-    This rule checks the context selected names have proper case in the context reference.
+    This rule has been split into the following rules:
 
-    |configuring_uppercase_and_lowercase_rules_link|
-
-    **Violation**
-
-    .. code-block:: vhdl
-
-       context C1;
-
-       context CON1, Con2;
-
-    **Fix**
-
-    .. code-block:: vhdl
-
-       context c1;
-
-       context con1, con2;
+    * :ref:`context_ref_500`
+    * :ref:`context_ref_501`
     '''
 
     def __init__(self):
-        token_case_with_prefix_suffix.__init__(self, 'context_ref', '004', lTokens)
-        self.groups.append('case::name')
+        deprecated_rule.Rule.__init__(self, 'context_ref', '004')
+        self.message.append('Rule ' + self.unique_id + ' has been split into the following rules:')
+        self.message.append('  context_ref_500')
+        self.message.append('  context_ref_501')

@@ -8,7 +8,7 @@ oToken = token.port_clause.semicolon
 
 class rule_027(Rule):
     '''
-    This rule checks the semicolon is not on it's own line.
+    This rule checks the semicolon is not on its own line.
 
     **Violation**
 

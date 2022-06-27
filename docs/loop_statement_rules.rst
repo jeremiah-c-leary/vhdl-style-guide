@@ -28,7 +28,7 @@ loop_statement_002
 
 |phase_1| |error| |structure|
 
-This rule checks the **end** keyword is on it's own line.
+This rule checks the **end** keyword is on its own line.
 
 **Violation**
 
@@ -176,6 +176,8 @@ loop_statement_100
 
 This rule checks that a single space exists between the **end** and **loop** keywords
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -197,6 +199,8 @@ loop_statement_101
 
 This rule checks for a single space before the ending loop label if it exists.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -215,6 +219,8 @@ loop_statement_102
 |phase_2| |error| |whitespace|
 
 This rule checks for a single space before the **loop** keyword.
+
+|configuring_whitespace_rules_link|
 
 **Violation**
 
@@ -237,6 +243,8 @@ loop_statement_103
 
 This rule checks if a label exists that a single space exists between the label and the colon.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -257,6 +265,8 @@ loop_statement_104
 |phase_2| |error| |whitespace|
 
 This rule checks if a label exists that a single space exists after the colon.
+
+|configuring_whitespace_rules_link|
 
 **Violation**
 
@@ -325,6 +335,7 @@ This rule checks for blank lines below the **loop** keyword.
 .. code-block:: vhdl
 
    loop
+
      a <= b;
 
 loop_statement_202

@@ -6,6 +6,7 @@ from vsg import tokens
 
 from vsg.token import adding_operator
 from vsg.token import direction
+from vsg.token import exponent
 from vsg.token import logical_operator
 from vsg.token import miscellaneous_operator
 from vsg.token import multiplying_operator
@@ -326,7 +327,18 @@ def post_token_assignments(lTokens):
     iParenId = 0
     lParenId = []
     for iToken, oToken in enumerate(lTokens):
-        oToken.set_code_tags(oCodeTags.get_tags())
+        if code_tags.token_has_vsg_on_code_tag(oToken):
+            oToken.set_code_tags(oCodeTags.get_tags())
+            oCodeTags.update(oToken)
+        elif code_tags.token_has_vsg_off_code_tag(oToken):
+            oCodeTags.update(oToken)
+            oToken.set_code_tags(oCodeTags.get_tags())
+        elif code_tags.token_has_next_line_code_tag(oToken):
+            oCodeTags.update(oToken)
+            oToken.set_code_tags(oCodeTags.get_tags())
+        else:
+            oToken.set_code_tags(oCodeTags.get_tags())
+            oCodeTags.update(oToken)
         if isinstance(oToken, subtype_indication.type_mark) or isinstance(oToken, resolution_indication.resolution_function_name):
             sValue = oToken.get_value()
             ### IEEE values
@@ -487,6 +499,7 @@ def post_token_assignments(lTokens):
 
             if sValue == "'":
                 lTokens[iToken] = parser.tic(sValue)
+                utils.classify_predefined_types(lTokens, iToken + 1)
                 continue
             if sValue.lower() == 'event':
                 lTokens[iToken] = parser.event_keyword(sValue)
@@ -513,13 +526,12 @@ def post_token_assignments(lTokens):
                 lTokens[iToken] = parser.character_literal(sValue)
                 continue
         else:
-            bVsgOn = oCodeTags.update(oToken)
-            if not bVsgOn:
-                oToken.set_code_tags(oCodeTags.get_tags())
             sValue = oToken.get_value()
             if sValue  == '+':
                 if utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken - 1, lTokens):
                     lTokens[iToken] = sign.plus()
+                elif utils.are_previous_consecutive_token_types_ignoring_whitespace([exponent.e_keyword], iToken - 1, lTokens):
+                    continue
                 elif utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.keyword], iToken - 1, lTokens):
                     lTokens[iToken] = sign.plus()
                 else:
@@ -528,6 +540,8 @@ def post_token_assignments(lTokens):
             if sValue  == '-':
                 if utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken - 1, lTokens):
                     lTokens[iToken] = sign.minus()
+                elif utils.are_previous_consecutive_token_types_ignoring_whitespace([exponent.e_keyword], iToken - 1, lTokens):
+                    continue
                 elif utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.keyword], iToken - 1, lTokens):
                     lTokens[iToken] = sign.minus()
                 else:

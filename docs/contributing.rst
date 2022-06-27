@@ -55,7 +55,7 @@ Pull requests are always welcome.
 
 VSG was developed using a Test Driven Development (TDD) process.
 There are over 1000 tests which cover individual rules and other features of VSG.
-For each pull request, an accompaning test to validate the pull request would be appreciated.
+For each pull request, an accompanying test to validate the pull request would be appreciated.
 
 Refer to `Setting up a Development Environment <setting_up_a_development_environment.html#running-unit-tests>`_ for more information on how to get started.
 
@@ -68,5 +68,5 @@ This project uses the following open source tools to help with code quality:
 * *Codacy* and *Code Climate* to check for code style issues.
 * *Codcov* to check the code coverage of the tests.
 
-The results will be available on the pull request Github page.
+The results will be available on the pull request GitHub page.
 

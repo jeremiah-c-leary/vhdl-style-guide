@@ -80,6 +80,8 @@ if_003
 
 This rule checks for a single space between the **if** keyword and the (.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -103,6 +105,8 @@ if_004
 
 This rule checks for a single space between the ) and the **then** keyword.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -125,6 +129,8 @@ if_005
 |phase_2| |error| |whitespace|
 
 This rule checks for a single space after the **elsif** keyword.
+
+|configuring_whitespace_rules_link|
 
 **Violation**
 
@@ -383,6 +389,8 @@ if_015
 
 This rule checks for a single space between the **end if** keywords.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -400,7 +408,7 @@ if_020
 
 |phase_1| |error| |structure|
 
-This rule checks the **end if** keyword is on it's own line.
+This rule checks the **end if** keyword is on its own line.
 
 **Violation**
 
@@ -420,7 +428,7 @@ if_021
 
 |phase_1| |error| |structure|
 
-This rule checks the **else** keyword is on it's own line.
+This rule checks the **else** keyword is on its own line.
 
 **Violation**
 
@@ -460,7 +468,7 @@ if_023
 
 |phase_1| |error| |structure|
 
-This rule checks the **elsif** keyword is on it's own line.
+This rule checks the **elsif** keyword is on its own line.
 
 **Violation**
 

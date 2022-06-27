@@ -8,7 +8,7 @@ oToken = token.entity_declaration.entity_simple_name
 
 class rule_024(Rule):
     '''
-    This rule checks the end entity simple name is not on it's own line.
+    This rule checks the end entity simple name is not on its own line.
 
     **Violation**
 

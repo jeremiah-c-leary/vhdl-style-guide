@@ -39,6 +39,8 @@ component_002
 
 This rule checks for a single space after the **component** keyword.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -158,6 +160,8 @@ component_007
 
 This rule checks for a single space before the **is** keyword.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -242,6 +246,8 @@ component_011
 
 This rule checks for single space after the **end** keyword.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -281,6 +287,8 @@ component_013
 |phase_2| |error| |whitespace|
 
 This rule checks for a single space after the **component** keyword in the **end component** line.
+
+|configuring_whitespace_rules_link|
 
 **Violation**
 

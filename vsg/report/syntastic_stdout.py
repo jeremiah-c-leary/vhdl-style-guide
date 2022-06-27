@@ -11,7 +11,7 @@ def print_output(dRunInfo):
     '''
     sOutputString = ''
     for dViolation in dRunInfo['violations']:
-        sOutputString = _set_violation_type(dViolation)
+        sOutputString += _set_violation_type(dViolation)
         sOutputString += dRunInfo['filename']
         sOutputString += '('
         sOutputString += str(dViolation['lineNumber'])

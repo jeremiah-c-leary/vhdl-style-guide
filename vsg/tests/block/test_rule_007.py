@@ -31,12 +31,13 @@ class test_block_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'block')
         self.assertEqual(oRule.identifier, '007')
 
-        lExpected = [10]
+        lExpected = [17, 22, 24]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
     def test_fix_rule_007_add(self):
+        self.maxDiff = None
         oRule = block.rule_007()
 
         oRule.fix(self.oFile)
@@ -52,7 +53,7 @@ class test_block_rule(unittest.TestCase):
         oRule = block.rule_007()
         oRule.action = 'remove'
 
-        lExpected = [6]
+        lExpected = [6, 11, 13]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))

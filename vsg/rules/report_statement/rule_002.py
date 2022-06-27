@@ -12,7 +12,7 @@ oEnd = token.report_statement.semicolon
 
 class rule_002(split_line_at_token_when_between_tokens):
     '''
-    This rule checks the **severity** keyword is on it's own line.
+    This rule checks the **severity** keyword is on its own line.
 
     **Violation**
 
@@ -30,4 +30,4 @@ class rule_002(split_line_at_token_when_between_tokens):
 
     def __init__(self):
         split_line_at_token_when_between_tokens.__init__(self, 'report_statement', '002', lTokens, oStart, oEnd)
-        self.solution = "Place **severity** keyword on it's own line."
+        self.solution = "Place **severity** keyword on its own line."
