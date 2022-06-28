@@ -286,18 +286,16 @@ def _check_new_line_after_comma(self, oToi):
 
         if bFirstParenFound:
             iToken, bOthersClause = _classify_others(iToken, lTokens)
+            iToken, bAssignmentFound = _classify_assignment(iToken, lTokens)
 
             if bOthersClause:
                 bPositionalFound = True
                 iToken += 1
-                continue
 
-            iToken, bAssignmentFound = _classify_assignment(iToken, lTokens)
 
             if bAssignmentFound:
                 iToken += 1
                 bPositionalFound = False
-                continue
 
         oToken = lTokens[iToken]
 
@@ -307,7 +305,6 @@ def _check_new_line_after_comma(self, oToi):
         if isinstance(oToken, parser.comma):
             if bPositionalFound and self.new_line_after_comma == 'ignore_positional':
                 iToken += 1
-                bPositionalFound = True
                 continue
 
             if utils.is_token_at_end_of_line(iToken, lTokens):
