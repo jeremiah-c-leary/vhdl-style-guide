@@ -239,8 +239,8 @@ def _check_close_paren_new_line(self, oToi):
             iToken, bAssignmentFound = _classify_assignment(iToken, lTokens)
 
             if bAssignmentFound:
-               iToken += 1
-               continue
+                iToken += 1
+                continue
 
         oToken = lTokens[iToken]
 
@@ -295,9 +295,9 @@ def _check_new_line_after_comma(self, oToi):
             iToken, bAssignmentFound = _classify_assignment(iToken, lTokens)
 
             if bAssignmentFound:
-               iToken += 1
-               bPositionalFound = False
-               continue
+                iToken += 1
+                bPositionalFound = False
+                continue
 
         oToken = lTokens[iToken]
 
@@ -356,13 +356,11 @@ def _check_assign_on_single_line(self, oToi):
             iToken, bAssignmentFound = _classify_assignment(iToken, lTokens)
 
             if bAssignmentFound:
-#                rules_utils.print_debug(lTokens[iPreviousToken:iToken + 1])
                 if rules_utils.number_of_carriage_returns(lTokens[iPreviousToken:iToken]) > 0:
-                     iErrorLine = rules_utils.number_of_carriage_returns(lTokens[:iPreviousToken]) + iLine
-                     sSolution = 'Remove carriage returns for assignments.'
-                     oViolation = _create_violation(oToi, iErrorLine, iPreviousToken, iToken, 'assign_on_single_line', 'remove', sSolution)
-                     self.add_violation(oViolation)
-
+                    iErrorLine = rules_utils.number_of_carriage_returns(lTokens[:iPreviousToken]) + iLine
+                    sSolution = 'Remove carriage returns for assignments.'
+                    oViolation = _create_violation(oToi, iErrorLine, iPreviousToken, iToken, 'assign_on_single_line', 'remove', sSolution)
+                    self.add_violation(oViolation)
 
         oToken = lTokens[iToken]
 
@@ -551,19 +549,13 @@ def _classify_assignment(iToken, lTokens):
                 iEnd = iToken + iReturn
                 iCloseParen += 1
                 if iCloseParen > iOpenParen:
-#                    print(lTokens[iToken:iEnd -1])
-#                    rules_utils.print_debug(lTokens[iToken:iEnd + 1])
                     iEnd = utils.find_previous_non_whitespace_token(iEnd - 1, lTokens)
                     return iEnd, True
                 elif iOpenParen == iCloseParen:
-#                    print(lTokens[iToken:iEnd])
-#                    rules_utils.print_debug(lTokens[iToken:iEnd + 1])
                     return iEnd, True
             elif isinstance(oToken, parser.comma):
                 if iOpenParen == iCloseParen:
                     iEnd = iToken + iReturn - 1
-#                    print(lTokens[iToken:iEnd])
-#                    rules_utils.print_debug(lTokens[iToken:iEnd + 1])
                     return iEnd, True
         return None
     return iToken, False
