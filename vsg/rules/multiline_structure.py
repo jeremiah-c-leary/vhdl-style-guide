@@ -62,15 +62,21 @@ class multiline_structure(structure.Rule):
         for lTokenPair in self.lTokenPairs:
             aToi = oFile.get_tokens_bounded_by(lTokenPair[0], lTokenPair[1], bExcludeLastToken=self.bExcludeLastToken, bIncludeTillEndOfLine=True)
             lToi = utils.combine_two_token_class_lists(lToi, aToi)
-        return lToi
 
-    def _analyze(self, lToi):
+        lReturn = []
         for oToi in lToi:
             if rules_utils.is_single_line(oToi) and self.ignore_single_line:
                 continue
 
             if not _is_open_paren_after_assignment(oToi):
                 continue
+
+            lReturn.append(oToi)
+
+        return lReturn
+
+    def _analyze(self, lToi):
+        for oToi in lToi:
 
             _check_first_paren_new_line(self, oToi)
             _check_last_paren_new_line(self, oToi)
