@@ -304,29 +304,9 @@ By default, this rule will only flag more than two signal declarations.
 signal_016
 ##########
 
-|phase_1| |error| |structure|
+This rule was depricated and replaced with rule:
 
-This rule checks the structure of multiline signal declarations.
-
-|configuring_multiline_structure_rules_link|
-
-.. NOTE:: The indenting of multiline array constants is handled by the rule `constant_012 <constant_rules.html#constant-012>`_.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   signal sig_a : my_type (0, 65535, 32768);
-
-**Fix**
-
-.. code-block:: vhdl
-
-   signal sig_a : romq_type (
-     0,
-     65535,
-     32768
-   );
+* `signal_017 <signal_rules.html#signal-017>`_
 
 signal_017
 ##########
