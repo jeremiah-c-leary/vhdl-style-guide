@@ -39,9 +39,8 @@ def check_for_todo_token(iIndex, lObjects):
 
 
 def token_is_tic(iParens, iIndex, lObjects):
-    if iParens == 0:
-        if utils.object_value_is(lObjects, iIndex, "'"):
-            return True
+    if iParens == 0 and utils.object_value_is(lObjects, iIndex, "'"):
+        return True
 
 
 def detect_direction(iToken, lObjects):
@@ -56,7 +55,6 @@ def detect_direction(iToken, lObjects):
 
 
 def check_for_direction(iParens, iIndex, lObjects):
-    if iParens == 0:
-        if utils.is_next_token_one_of(['downto', 'to'], iIndex, lObjects):
-            return True
+    if iParens == 0 and utils.is_next_token_one_of(['downto', 'to'], iIndex, lObjects):
+        return True
     return False

@@ -188,8 +188,8 @@ def _check_open_paren_new_line(self, oToi):
             iToken, bAssignmentFound = _classify_assignment(iToken, lTokens)
 
             if bAssignmentFound:
-               iToken += 1
-               continue
+                iToken += 1
+                continue
 
         oToken = lTokens[iToken]
 
@@ -292,7 +292,6 @@ def _check_new_line_after_comma(self, oToi):
                 bPositionalFound = True
                 iToken += 1
 
-
             if bAssignmentFound:
                 iToken += 1
                 bPositionalFound = False
@@ -374,7 +373,8 @@ def _is_open_paren_after_assignment(oToi):
     lTokens = oToi.get_tokens()
     for iToken, oToken in enumerate(lTokens):
         if isinstance(oToken, token.constant_declaration.assignment_operator):
-            if utils.are_next_consecutive_token_types_ignoring_whitespace([token.constant_declaration.assignment_operator, parser.open_parenthesis], iToken, lTokens):
+            lExpectedTokens = [token.constant_declaration.assignment_operator, parser.open_parenthesis]
+            if utils.are_next_consecutive_token_types_ignoring_whitespace(lExpectedTokens, iToken, lTokens):
                 return True
     return False
 
@@ -550,8 +550,7 @@ def _classify_assignment(iToken, lTokens):
                     return iEnd, True
                 elif iOpenParen == iCloseParen:
                     return iEnd, True
-            elif isinstance(oToken, parser.comma):
-                if iOpenParen == iCloseParen:
+            elif isinstance(oToken, parser.comma) and iOpenParen == iCloseParen:
                     iEnd = iToken + iReturn - 1
                     return iEnd, True
         return None

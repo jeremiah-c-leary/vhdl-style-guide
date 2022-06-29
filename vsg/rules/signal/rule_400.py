@@ -1,5 +1,4 @@
 
-#from vsg.rules import multiline_constraint_indent as Rule
 from vsg.rules import multiline_alignment_between_tokens as Rule
 
 from vsg import token
