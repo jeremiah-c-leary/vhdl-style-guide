@@ -315,3 +315,8 @@ def update_open_paren_counter(oToken, iOpenParen):
         return iOpenParen + 1
     return iOpenParen
 
+
+def update_close_paren_counter(oToken, iCloseParen):
+    if token_is_close_paren(oToken):
+        return iCloseParen + 1
+    return iCloseParen

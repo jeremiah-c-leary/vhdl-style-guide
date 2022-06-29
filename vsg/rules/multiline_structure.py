@@ -547,9 +547,9 @@ def _classify_assignment(iToken, lTokens):
         iCloseParen = 0
         for iReturn, oToken in enumerate(lTokens[iToken:]):
             iOpenParen = rules_utils.update_open_paren_counter(oToken, iOpenParen)
+            iCloseParen = rules_utils.update_close_paren_counter(oToken, iCloseParen)
             if isinstance(oToken, parser.close_parenthesis):
                 iEnd = iToken + iReturn
-                iCloseParen += 1
                 if iCloseParen > iOpenParen:
                     iEnd = utils.find_previous_non_whitespace_token(iEnd - 1, lTokens)
                     return iEnd, True
