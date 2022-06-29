@@ -546,9 +546,8 @@ def _classify_assignment(iToken, lTokens):
         iOpenParen = 0
         iCloseParen = 0
         for iReturn, oToken in enumerate(lTokens[iToken:]):
-            if isinstance(oToken, parser.open_parenthesis):
-                iOpenParen += 1
-            elif isinstance(oToken, parser.close_parenthesis):
+            iOpenParen = rules_utils.update_open_paren_counter(oToken, iOpenParen)
+            if isinstance(oToken, parser.close_parenthesis):
                 iEnd = iToken + iReturn
                 iCloseParen += 1
                 if iCloseParen > iOpenParen:
@@ -557,8 +556,8 @@ def _classify_assignment(iToken, lTokens):
                 elif iOpenParen == iCloseParen:
                     return iEnd, True
             elif isinstance(oToken, parser.comma) and iOpenParen == iCloseParen:
-                    iEnd = iToken + iReturn - 1
-                    return iEnd, True
+                iEnd = iToken + iReturn - 1
+                return iEnd, True
         return None
     return iToken, False
 

@@ -308,3 +308,10 @@ def token_is_at_beginning_of_line(lTokens):
     if isinstance(lTokens[1], parser.carriage_return):
         return True
     return False
+
+
+def update_open_paren_counter(oToken, iOpenParen):
+    if token_is_open_paren(oToken):
+        return iOpenParen + 1
+    return iOpenParen
+
