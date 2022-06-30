@@ -185,6 +185,12 @@ def token_is_close_paren(oToken):
     return False
 
 
+def token_is_parenthesis(oToken):
+    if token_is_open_paren(oToken) or token_is_close_paren(oToken):
+        return True
+    return False
+
+
 def token_is_whitespace(oToken):
     if isinstance(oToken, parser.whitespace):
         return True

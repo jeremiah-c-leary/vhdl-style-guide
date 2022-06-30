@@ -550,9 +550,7 @@ def _inside_others_clause(iToken, lTokens):
     for oToken in lTokens[iToken + 1:]:
         if utils.token_is_whitespace_or_comment(oToken):
             continue
-        elif isinstance(oToken, parser.open_parenthesis):
-            return False
-        elif isinstance(oToken, parser.close_parenthesis):
+        elif rules_utils.token_is_parenthesis(oToken):
             return False
         else:
             if oToken.get_value().lower() == 'others':
@@ -634,18 +632,16 @@ def other_thing(oToken, iOpenParen, iCloseParen):
 
 
 def something_else(oToken, iOpenParen, iCloseParen):
-    if isinstance(oToken, parser.close_parenthesis):
-        if iCloseParen == iOpenParen:
+    if isinstance(oToken, parser.close_parenthesis) and iCloseParen == iOpenParen:
             return True
     return False
-    
+
 
 def something(oToken, iOpenParen, iCloseParen):
-    if isinstance(oToken, parser.close_parenthesis):
-        if iCloseParen > iOpenParen:
+    if isinstance(oToken, parser.close_parenthesis) and iCloseParen > iOpenParen:
             return True
     return False
-    
+
 
 def _classify_others(iToken, lTokens):
     oToken = lTokens[iToken]
