@@ -218,4 +218,6 @@ This exception will force a record constraint with a single element to a single 
 Rules Enforcing Multiline Constraint Rules
 ##########################################
 
+* `constant_017 <constant_rules.html#constant-017>`_
 * `signal_017 <signal_rules.html#signal-017>`_
+* `variable_017 <variable_rules.html#variable-017>`_
