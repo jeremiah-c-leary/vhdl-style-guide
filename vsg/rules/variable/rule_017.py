@@ -13,6 +13,8 @@ class rule_017(Rule):
 
     |configuring_multiline_constraint_rules_link|
 
+    .. NOTE:: The indenting of multiline variable constraints is handled by the rule `variable_400 <variable_rules.html#variable-400>`_.
+
     **Violation**
 
     .. code-block:: vhdl
