@@ -18,5 +18,3 @@ class close_parenthesis(parser.close_parenthesis):
 
     def __init__(self, sString=')'):
         parser.close_parenthesis.__init__(self)
-
-
