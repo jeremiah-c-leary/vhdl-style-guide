@@ -55,21 +55,32 @@ There are several options to the structure rules:
 .. |one_line_per_dimension| replace::
    The setting :code:`one_line_per_dimension` will place each dimension on it's own line
 
-+---------------------------------------+--------------------+-----------+------------------------+----------------------------+
-| Option                                | Symbol             | Values    | Structural Element     | Description                |
-+=======================================+====================+===========+========================+============================+
-| :code:`record_constraint_open_paren`  | |green_diamond|    | |values|  | opening parenthesis    | * |add_new_line|           |
-+---------------------------------------+--------------------+-----------+------------------------+ * |remove_new_line|        |
-| :code:`record_constraint_close_paren` | |red_penta_star|   | |values|  | closing parenthesis    | * |ignore|                 |
-+---------------------------------------+--------------------+-----------+------------------------+                            |
-| :code:`record_constraint_comma`       | |purple_hexa_star| | |values2| | comma                  |                            |
-+---------------------------------------+--------------------+-----------+------------------------+                            |
-| :code:`record_constraint_element`     | |orange_triangle|  | |values|  | new element            |                            |
-+---------------------------------------+--------------------+-----------+------------------------+----------------------------+
-| :code:`array_constraint`              | |grey_box|         | |values3| | array range indication | * |all_in_one_line|        |
-|                                       |                    |           |                        | * |one_line_per_dimension| |
-|                                       |                    |           |                        | * |ignore|                 |
-+---------------------------------------+--------------------+-----------+------------------------+----------------------------+
+.. |exceptions| replace::
+   Refer to :ref:`exceptions` for more information.
+
+.. |default_remove_new_line| replace::
+   :code:`remove_new_line`
+
+.. |default_array_constraint| replace::
+   :code:`all_in_one_line`
+
++---------------------------------------+--------------------+-----------+------------------------+----------------------------+----------------------------+
+| Option                                | Symbol             | Values    | Structural Element     | Default value              | Description                |
++=======================================+====================+===========+========================+============================+============================+
+| :code:`record_constraint_open_paren`  | |green_diamond|    | |values|  | opening parenthesis    | |default_remove_new_line|  | * |add_new_line|           |
++---------------------------------------+--------------------+-----------+------------------------+----------------------------+ * |remove_new_line|        |
+| :code:`record_constraint_close_paren` | |red_penta_star|   | |values|  | closing parenthesis    | |default_remove_new_line|  | * |ignore|                 |
++---------------------------------------+--------------------+-----------+------------------------+----------------------------+                            |
+| :code:`record_constraint_comma`       | |purple_hexa_star| | |values2| | comma                  | |default_remove_new_line|  |                            |
++---------------------------------------+--------------------+-----------+------------------------+----------------------------+                            |
+| :code:`record_constraint_element`     | |orange_triangle|  | |values|  | new element            | |default_remove_new_line|  |                            |
++---------------------------------------+--------------------+-----------+------------------------+----------------------------+----------------------------+
+| :code:`array_constraint`              | |grey_box|         | |values3| | array range indication | |default_array_constraint| | * |all_in_one_line|        |
+|                                       |                    |           |                        |                            | * |one_line_per_dimension| |
+|                                       |                    |           |                        |                            | * |ignore|                 |
++---------------------------------------+--------------------+-----------+------------------------+----------------------------+----------------------------+
+| :code:`exceptions`                    | NA                 | NA        | NA                     | NA                         | |exceptions|               |
++---------------------------------------+--------------------+-----------+------------------------+----------------------------+----------------------------+
 
 The following figure illustrates a multiline constraint in a signal declaration and where the options will be applied.
 The same structure applies for constraints in constant and variable declarations.
